@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: použití vlastních dat'
 titleSuffix: Azure Machine Learning
-description: Čtvrtá část řady Začínáme s Azure ML vám ukáže, jak používat vlastní data ve vzdáleném školicím běhu.
+description: Část 4 Azure Machine Learning série Začínáme ukazuje, jak používat vlastní data ve vzdáleném školicím běhu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,46 +11,46 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 876ba76655572979a1d831a1ca07e5f3871a3283
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 13d43eb788c750a2f24033a6138ebf00ac57fffe
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372561"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Kurz: použití vlastních dat (část 4 ze 4)
 
 V tomto kurzu se dozvíte, jak nahrát a používat vlastní data pro učení modelů strojového učení v Azure Machine Learning.
 
-Tento kurz je **čtvrtou částí série kurzů** , ve které se seznámíte se základy Azure Machine Learning a dokončení úloh strojového učení na základě úloh v Azure. Tento kurz sestaví práci, kterou jste dokončili v [části 1: nastavení](tutorial-1st-experiment-sdk-setup-local.md), [část 2: spuštění Hello World](tutorial-1st-experiment-hello-world.md)a [část 3: výuka modelu](tutorial-1st-experiment-sdk-train.md).
+Tento kurz je čtvrtou *částí série kurzů* , ve které se seznámíte se základy Azure Machine Learning a dokončení úloh strojového učení na základě úloh v Azure. Tento kurz sestaví na práci, kterou jste dokončili v [části 1: nastavení](tutorial-1st-experiment-sdk-setup-local.md), [2. část: Run "Hello World!"](tutorial-1st-experiment-hello-world.md)a [část 3: výuka modelu](tutorial-1st-experiment-sdk-train.md).
 
-V [části 3: výuka modelu](tutorial-1st-experiment-sdk-train.md), data byla stažena pomocí metody sestavené `torchvision.datasets.CIFAR10` v rozhraní PyTorch API. V mnoha případech ale budete chtít používat vlastní data ve vzdáleném školicím běhu. Tento článek ukazuje pracovní postup, který můžete použít pro práci s vlastními daty v Azure Machine Learning.
+V [části 3: výuka modelu](tutorial-1st-experiment-sdk-train.md), data byla stažena prostřednictvím sestavené `torchvision.datasets.CIFAR10` metody v rozhraní PyTorch API. V mnoha případech ale budete chtít používat vlastní data ve vzdáleném školicím běhu. Tento článek ukazuje pracovní postup, který můžete použít pro práci s vlastními daty v Azure Machine Learning.
 
 V tomto kurzu jste:
 
 > [!div class="checklist"]
-> * Konfigurace školicího skriptu pro použití dat v místním adresáři
-> * Místní testování školicího skriptu
-> * Nahrání dat do Azure
-> * Vytvořit řídicí skript
-> * Pochopení nových konceptů Azure Machine Learning (předávání parametrů, datových sad, úložiště dat)
-> * Odeslat a spustit školicí skript
-> * Zobrazení výstupu kódu v cloudu
+> * Nakonfigurujte školicí skript, který bude používat data v místním adresáři.
+> * Otestujte školicí skript místně.
+> * Nahrajte data do Azure.
+> * Vytvořte skript ovládacího prvku.
+> * Pochopení nových konceptů Azure Machine Learning (předávání parametrů, datových sad, úložišť dat).
+> * Odešlete a spusťte školicí skript.
+> * Zobrazte si výstup kódu v cloudu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Dokončete [část 3](tutorial-1st-experiment-sdk-train.md) řady.
+* Dokončení [třetí části](tutorial-1st-experiment-sdk-train.md) série.
 * Úvodní znalost jazyka Pythonu a pracovních postupů strojového učení.
-* Místní vývojové prostředí. To zahrnuje, ale není omezené na Visual Studio Code, Jupyter nebo PyCharm.
-* Python (verze 3.5 – 3.7).
+* Místní vývojové prostředí, například Visual Studio Code, Jupyter nebo PyCharm.
+* Python (verze 3,5 až 3,7).
 
 ## <a name="adjust-the-training-script"></a>Úprava školicího skriptu
-Teď máte školicí skript (kurz/src/vlak. py) běžící v Azure Machine Learning a můžete monitorovat výkon modelu. Pojďme parametrize školicí skript tím, že zavedete argumenty. Použití argumentů vám umožní snadno porovnat různé hyperparmeters.
+Teď máte školicí skript (kurz/src/vlak. py) běžící v Azure Machine Learning a můžete monitorovat výkon modelu. Řekněme, že skript školicího skriptu zavádíme argumenty. Použití argumentů vám umožní snadno porovnat různé parametry.
 
-Náš školicí skript je v současnosti nastavený tak, aby při každém spuštění stahoval datovou sadu CIFAR10. Kód Pythonu níže byl upraven tak, aby četl data z adresáře.
+Náš školicí skript je teď nastavený tak, aby při každém spuštění stahoval datovou sadu CIFAR10. Následující kód Pythonu byl upraven tak, aby četl data z adresáře.
 
 >[!NOTE] 
-> Použití nástroje `argparse` k parametizeí skriptu.
+> Použití `argparse` parameterizes skriptu.
 
 ```python
 # tutorial/src/train.py
@@ -130,7 +130,7 @@ if __name__ == "__main__":
 
 ### <a name="understanding-the-code-changes"></a>Porozumění změnám kódu
 
-Kód použitý v nástroji využívá `train.py` `argparse` knihovnu k nastavení `data_path` , `learning_rate` a `momentum` .
+Kód v nástroji `train.py` použil `argparse` knihovnu k nastavení `data_path` , `learning_rate` a `momentum` .
 
 ```python
 # .... other code
@@ -180,14 +180,14 @@ Pokud chcete upravený školicí skript spustit místně, zavolejte:
 python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
 ```
 
-Nemusíte si stahovat datovou sadu CIFAR10 předáním místní cesty k datům. Také můžete experimentovat s různými hodnotami pro _kurzy učení_ a _potenciál_ , aniž byste je museli v školicím skriptu zakódovat.
+Nemusíte si stahovat datovou sadu CIFAR10 předáním místní cesty k datům. Můžete také experimentovat s různými hodnotami pro _studijní_ kurzy a _potenciál_ parametry, aniž byste je museli v školicím skriptu zakódovat.
 
 ## <a name="upload-the-data-to-azure"></a>Nahrajte data do Azure.
 
-Aby bylo možné tento skript spustit v Azure Machine Learning, je nutné, aby byla v Azure dostupná vaše školicí data. Váš pracovní prostor Azure Machine Learning obsahuje _výchozí_ **úložiště dat** – účet úložiště Azure Blob, který můžete použít k uložení školicích dat.
+Pokud chcete tento skript spustit v Azure Machine Learning, je potřeba, abyste v Azure mohli zpřístupnit vaše školicí údaje. Váš pracovní prostor Azure Machine Learning vybaven _výchozím_ úložištěm dat. Toto je účet Azure Blob Storage, do kterého můžete ukládat školicí data.
 
 >[!NOTE] 
-> Azure Machine Learning umožňuje propojit další cloudová úložiště dat, která ukládají vaše data. Další podrobnosti najdete v [dokumentaci k datastores](./concept-data.md).  
+> Azure Machine Learning umožňuje propojit další cloudová úložiště dat, která ukládají vaše data. Další podrobnosti najdete v dokumentaci k [úložiště dat](./concept-data.md).  
 
 Vytvořte nový skript řízení Pythonu s názvem `05-upload-data.py` v `tutorial` adresáři:
 
@@ -199,12 +199,12 @@ datastore = ws.get_default_datastore()
 datastore.upload(src_dir='./data', target_path='datasets/cifar10', overwrite=True)
 ```
 
-`target_path`Určuje cestu k úložišti dat, kam budou odeslána data CIFAR10.
+`target_path`Hodnota určuje cestu k úložišti dat, kam budou odeslána data CIFAR10.
 
 >[!TIP] 
-> I když používáte Azure Machine Learning k nahrávání dat, můžete k nahrání souborů ad hoc použít [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) . Pokud potřebujete nástroj ETL, [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) se dá použít k ingestování dat do Azure.
+> Když používáte Azure Machine Learning k nahrávání dat, můžete k nahrání souborů ad hoc použít [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) . Pokud potřebujete nástroj ETL, můžete k ingestování dat do Azure použít [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) .
 
-Spusťte soubor Pythonu pro nahrání dat (Poznámka: nahrávání by mělo být rychlé, méně než 60 sekund.)
+Spusťte soubor Pythonu pro nahrání dat. (Nahrávání by mělo být rychlé, méně než 60 sekund.)
 
 ```bash
 python 05-upload-data.py
@@ -264,14 +264,14 @@ if __name__ == "__main__":
 
 ### <a name="understand-the-code-changes"></a>Pochopení změn kódu
 
-Řídicí skript je podobný jako z [třetí části této série](tutorial-1st-experiment-sdk-train.md) s následujícími novými řádky:
+Řídicí skript je podobný jako z [třetí části této série](tutorial-1st-experiment-sdk-train.md)s následujícími novými řádky:
 
 :::row:::
    :::column span="":::
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      [Datová sada](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) se používá k odkazování na data, která jste nahráli do úložiště objektů BLOB v Azure. Datové sady jsou abstraktní vrstva nad daty, která jsou navržena pro zlepšení spolehlivosti a věrohodnosti.
+      [Datová sada](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) se používá k odkazování na data, která jste nahráli do Azure Blob Storage. Datové sady jsou abstraktní vrstva nad daty, která jsou navržena pro zlepšení spolehlivosti a věrohodnosti.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -283,7 +283,7 @@ if __name__ == "__main__":
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-run-to-azure-machine-learning"></a>Odeslat běh do Azure Machine Learning
+## <a name="submit-the-run-to-azure-machine-learning"></a>Odeslat běh do Azure Machine Learning
 
 Nyní spusťte znovu spuštění, aby se použila nová konfigurace:
 
@@ -291,11 +291,11 @@ Nyní spusťte znovu spuštění, aby se použila nová konfigurace:
 python 06-run-pytorch-data.py
 ```
 
-Tato akce vytiskne adresu URL k experimentu v Azure Machine Learning Studio. Pokud přejdete na tento odkaz, uvidíte, že se váš kód spouští.
+Tento kód vytiskne adresu URL k experimentu v Azure Machine Learning Studiu. Pokud přejdete na tento odkaz, uvidíte, že váš kód běží.
 
-### <a name="inspect-the-70_driver_log-log-file"></a>Kontrola souboru protokolu 70_driver_log
+### <a name="inspect-the-log-file"></a>Kontrola souboru protokolu
 
-V Azure Machine Learning Studiu přejděte ke spuštění experimentu (kliknutím na výstup adresy URL z výše uvedené buňky) a potom na **výstupy + protokoly**. Klikněte na 70_driver_log.txt soubor – měl by se zobrazit následující výstup:
+V studiu přejdete na experimentový běh (výběrem předchozího výstupu adresy URL) následovaných **výstupy + protokoly**. Vyberte `70_driver_log.txt` soubor. Měl by se zobrazit následující výstup:
 
 ```txt
 Processing 'input'.
@@ -331,8 +331,8 @@ LIST FILES IN DATA PATH...
 
 Šestiměsíční
 
-1. Azure Machine Learning do výpočetního clusteru automaticky připojil úložiště objektů blob za vás.
-2. ``dataset.as_named_input('input').as_mount()``Použití v řídicím skriptu se překládá na přípojný bod.
+- Azure Machine Learning k výpočetnímu clusteru automaticky připojen Blob Storage.
+- ``dataset.as_named_input('input').as_mount()``Použití v řídicím skriptu se překládá na přípojný bod.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -348,4 +348,4 @@ Zjistili jste, jak upravit školicí skript, aby přijímal cestu k datům prost
 
 Teď, když máte model, Naučte se:
 
-* Postup [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md)
+* Postup [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).

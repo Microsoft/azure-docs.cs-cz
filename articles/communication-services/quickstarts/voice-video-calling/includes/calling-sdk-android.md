@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: c0213b050745712a5c77d4861b9cfba4fc953dfd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aec9d2049a69aebc7102a70274e5fb2a3ef865a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936478"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377574"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -81,8 +81,8 @@ DeviceManage deviceManager = await callClient.getDeviceManager().get();
 
 ## <a name="place-an-outgoing-call-and-join-a-group-call"></a>Umístěte odchozí volání a připojte se k volání skupiny.
 
-Chcete-li vytvořit a spustit volání, je třeba zavolat `CallClient.call()` metodu a zadat `Identifier` volaného (y).
-Chcete-li se připojit k volání skupiny, je třeba zavolat `CallClient.join()` metodu a poskytnout identifikátor skupiny. ID skupin musí být ve formátu GUID nebo UUID.
+Chcete-li vytvořit a spustit volání, je třeba zavolat `CallAgent.call()` metodu a zadat `Identifier` volaného (y).
+Chcete-li se připojit k volání skupiny, je třeba zavolat `CallAgent.join()` metodu a poskytnout identifikátor skupiny. ID skupin musí být ve formátu GUID nebo UUID.
 
 Vytvoření a spuštění volání je synchronní. Instance volání umožňuje přihlásit se k odběru všech událostí volání.
 
@@ -106,7 +106,7 @@ PhoneNumber acsUser2 = new PhoneNumber("<PHONE_NUMBER>");
 CommunicationIdentifier participants[] = new CommunicationIdentifier[]{ acsUser1, acsUser2 };
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-Call groupCall = callClient.call(participants, startCallOptions);
+Call groupCall = callAgent.call(participants, startCallOptions);
 ```
 
 ### <a name="place-a-11-call-with-with-video-camera"></a>Nakonání volání 1:1 s videokamerou
@@ -266,7 +266,7 @@ Po úspěšném zpracování zprávy nabízených oznámení a obslužné rutiny
 
 ### <a name="unregister-push-notification"></a>Zrušit registraci nabízeného oznámení
 
-- Aplikace můžou kdykoli zrušit registraci nabízených oznámení. Jednoduše zavolejte `unregisterPushNotification()` metodu na callAgent.
+- Aplikace můžou kdykoli zrušit registraci nabízených oznámení. Zavolejte `unregisterPushNotification()` metodu na callAgent pro zrušení registrace.
 
 ```java
 try {
@@ -300,12 +300,12 @@ CommunicationIdentifier callerId = call.getCallerId();
 ```java
 CallState callState = call.getState();
 ```
-Vrátí řetězec reprensting aktuálního stavu volání:
+Vrátí řetězec představující aktuální stav volání:
 * None – počáteční stav volání
 * ' Příchozí ' – označuje, že volání je příchozí, musí být buď přijato, nebo odmítnuto.
 * Probíhá připojování – počáteční přechodový stav po umístění nebo přijetí volání.
 * "Vyzvánění" – pro odchozí volání – indikuje, že volání bude vyzvánět pro vzdálené účastníky, jedná se o "příchozí", ale na svou stranu
-* ' EarlyMedia ' – označuje stav, ve kterém je přehráno oznámení před připojením volání
+* ' EarlyMedia ' – označuje stav, ve kterém je přehráno oznámení před připojením k volání.
 * Připojeno – volání je připojené.
 * Blokováno – volání je blokováno, žádné médium neprobíhá mezi místním koncovým bodem a vzdáleným účastníkem (y).
 * "Odpojení" – přechodový stav před voláním do stavu "Odpojeno"
@@ -385,7 +385,7 @@ Každý vzdálený účastník má k sadu vlastností a kolekcí, které jsou k 
 * Získat identifikátor pro tohoto vzdáleného účastníka.
 Identita je jedním z typů identifikátorů.
 ```java
-CommunicationIdentifier participantIdentity = remoteParticipant.getId();
+CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
 ```
 
 * Získat stav tohoto vzdáleného účastníka.
@@ -397,7 +397,7 @@ Stav může být jedna z
 * Probíhá připojování – přechodový stav, zatímco se účastník připojuje k volání.
 * Připojeno – účastník je připojený k volání.
 * ' Hold ' – účastník je blokován
-* ' EarlyMedia '-oznámení se přehraje před tím, než se účastník připojí k volání.
+* ' EarlyMedia ' – před připojením účastníka k volání se přehraje oznámení.
 * ' Odpojeno ' – konečný stav – účastník je odpojen od volání
 
 

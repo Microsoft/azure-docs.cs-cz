@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afef3d41212c9366aa696bfcd0abff6c8cfc4eb3
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 3e85d2ef9d75bbff6357466e76ffcf60e3716e78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662425"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273670"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
 
@@ -302,7 +302,7 @@ Nejprve změňte metodu přihlašování:
 
 5. Na stránce **Povolit jednotné přihlašování** zadejte přihlašovací údaje účtu správce domény a pak vyberte **Další**.
 
-   ![Snímek obrazovky se stránkou pro povolení jednotného přihlašování](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image9.png)<br />
+   ![Snímek obrazovky se stránkou pro povolení jednotného přihlašování, kde můžete zadat přihlašovací údaje účtu správce domény.](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image9.png)<br />
 
    > [!NOTE]
    > K povolení bezproblémového jednotného přihlašování se vyžadují přihlašovací údaje účtu správce domény. Proces provede následující akce, které vyžadují tato oprávnění vyšší úrovně. Přihlašovací údaje účtu správce domény nejsou uložené v Azure AD Connect ani ve službě Azure AD. Přihlašovací údaje účtu správce domény se používají jenom k zapnutí této funkce. Po úspěšném dokončení procesu se přihlašovací údaje zahodí.
@@ -324,7 +324,7 @@ Nejprve změňte metodu přihlašování:
    * **Bezproblémové jednotné přihlašování** je nastavené na **povoleno**.
    * **Synchronizace hesla** je nastavená na **povoleno**.<br /> 
 
-   ![Snímek obrazovky, který zobrazuje nastavení v oddílu přihlášení uživatele](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
+   ![Snímek obrazovky, který zobrazuje nastavení v části přihlášení uživatele na portálu Azure AD.](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
 
 Přejděte k [testování a dalším krokům](#testing-and-next-steps).
 

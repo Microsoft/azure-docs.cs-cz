@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: spuštění skriptu Pythonu "Hello World"'
+title: 'Kurz: spuštění "Hello World!" Skript jazyka Python'
 titleSuffix: Azure Machine Learning
-description: Část 2 série Začínáme v Azure ML ukazuje, jak odeslat jednoduchý skript "Hello World" do cloudu.
+description: Část 2 Azure Machine Learning série Začínáme ukazuje, jak odeslat triviální "Hello World!" Skript Pythonu do cloudu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,35 +11,34 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 52a9932db4fc261b8f3d740a316af3e852559a32
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 980347c658c65a0c08dfc50c08f50741fb9a00fd
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320485"
+ms.locfileid: "91372540"
 ---
-# <a name="tutorial-run-hello-world-python-script-part-2-of-4"></a>Kurz: spuštění skriptu Pythonu "Hello World" (část 2 ze 4)
+# <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Kurz: spuštění "Hello World!" Skript Pythonu (část 2 ze 4)
 
-V tomto kurzu se naučíte, jak pomocí Azure Machine Learning Python SDK odeslat a spustit skript Pythonu "Hello World".
+V tomto kurzu se naučíte, jak pomocí sady Azure Machine Learning SDK pro Python Odeslat a spustit Python "Hello World!". pravidel.
 
-Tento kurz je **druhou částí série kurzů** , ve které se seznámíte se základy Azure Machine Learning a dokončení úloh strojového učení na základě úloh v Azure. Tento kurz sestaví práci, kterou jste dokončili v [části kurz 1: nastavení místního počítače pro Azure Machine Learning](
-tutorial-1st-experiment-sdk-setup-local.md).
+Tento kurz je třetí *částí série kurzů* , ve které se seznámíte se základy Azure Machine Learning a dokončení úloh strojového učení na základě úloh v Azure. Tento kurz sestaví na práci, kterou jste dokončili v [části 1: nastavení místního počítače pro Azure Machine Learning](tutorial-1st-experiment-sdk-setup-local.md).
 
-V tomto kurzu provedete tyto kroky:
+V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
-> * Vytvoření a spuštění skriptu Pythonu "Hello World" místně
-> * Vytvoření skriptu ovládacího prvku Python pro odeslání "Hello World" pro Azure Machine Learning
-> * Pochopení Azure Machine Learning konceptů v řídicím skriptu
-> * Odeslat a spustit "Hello World"
-> * Zobrazení výstupu kódu v cloudu
+> * Vytvoří a spustí "Hello World!" Skript v jazyce Python lokálně.
+> * Vytvoření skriptu ovládacího prvku Python pro odeslání "Hello World!" Azure Machine Learning.
+> * Pochopení Azure Machine Learning konceptů v řídicím skriptu.
+> * Odeslat a spustit "Hello World!" pravidel.
+> * Zobrazte si výstup kódu v cloudu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Kompletní [část kurzu týkající se nastavení místního počítače](tutorial-1st-experiment-sdk-setup-local.md) , pokud ještě nemáte Azure Machine Learning pracovní prostor.
+- Dokončení [části 1](tutorial-1st-experiment-sdk-setup-local.md) , pokud ještě nemáte Azure Machine Learning pracovní prostor.
 - Úvodní znalost jazyka Pythonu a pracovních postupů strojového učení.
-- Místní vývojové prostředí. To zahrnuje, ale není omezené na Visual Studio Code, Jupyter nebo PyCharm.
-- Python (verze 3.5 – 3.7).
+- Místní vývojové prostředí, například Visual Studio Code, Jupyter nebo PyCharm.
+- Python (verze 3,5 až 3,7).
 
 ## <a name="create-and-run-a-python-script-locally"></a>Místní vytvoření a spuštění skriptu v jazyce Python
 
@@ -64,7 +63,7 @@ tutorial
 
 ### <a name="test-your-script-locally"></a>Místní otestování skriptu
 
-Svůj kód můžete spustit lokálně, což má výhodu interaktivního ladění kódu pomocí vašeho oblíbeného integrovaného vývojového prostředí (IDE) nebo prostřednictvím terminálu:
+Svůj kód můžete spustit lokálně pomocí svého oblíbeného integrovaného vývojového prostředí (IDE) nebo terminálu. Místní spuštění kódu má výhodu interaktivního ladění kódu.
 
 ```bash
 cd <path/to/tutorial>
@@ -73,9 +72,9 @@ python ./src/hello.py
 
 ## <a name="create-a-control-script"></a>Vytvoření skriptu ovládacího prvku
 
-*Řídicí skript* umožňuje spuštění `hello.py` skriptu v cloudu.  Řídicí skript vám umožní řídit, jak a kde se spouští kód strojového učení.  
+*Řídicí skript* umožňuje spuštění `hello.py` skriptu v cloudu. Řídicí skript slouží k řízení, jak a kde se spouští kód strojového učení.  
 
-V adresáři kurzu vytvořte nový soubor Pythonu s názvem `03-run-hello.py` a zkopírujte a vložte kód uvedený níže do tohoto souboru:
+V adresáři kurzu vytvořte nový soubor Python s názvem `03-run-hello.py` a zkopírujte nebo vložte do tohoto souboru následující kód:
 
 ```python
 # tutorial/03-run-hello.py
@@ -116,7 +115,7 @@ Tady je popis toho, jak skript ovládacího prvku funguje:
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) zabalí váš `hello.py` kód a předá ho do vašeho pracovního prostoru. Jak název navrhuje, můžete tuto třídu použít ke _konfiguraci_ způsobu, jakým se má _skript_ _spouštět_ v Azure Machine Learning. Také určuje, na jaký cíl výpočtů se skript spustí.  V tomto kódu je cílem výpočetní cluster, který jste vytvořili v [kurzu instalace](tutorial-1st-experiment-sdk-setup-local.md).
+      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) zabalí váš `hello.py` kód a předá ho do vašeho pracovního prostoru. Jak název navrhuje, můžete tuto třídu použít ke _konfiguraci_ způsobu, jakým se má _skript_ _spouštět_ v Azure Machine Learning. Také určuje, na jaký cíl výpočtů se skript spustí. V tomto kódu je cílem výpočetní cluster, který jste vytvořili v [kurzu instalace](tutorial-1st-experiment-sdk-setup-local.md).
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -124,7 +123,7 @@ Tady je popis toho, jak skript ovládacího prvku funguje:
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       Odešle váš skript. Toto odeslání se nazývá [spuštění](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true).  Spuštění zapouzdřuje jedno spuštění kódu. Pomocí spuštění můžete monitorovat průběh skriptu, zachytit výstup, analyzovat výsledky, vizualizovat metriky a další.
+       Odešle váš skript. Toto odeslání se nazývá [spuštění](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true). Spuštění zapouzdřuje jedno spuštění kódu. Pomocí spuštění můžete monitorovat průběh skriptu, zachytit výstup, analyzovat výsledky, vizualizovat metriky a další.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -132,7 +131,7 @@ Tady je popis toho, jak skript ovládacího prvku funguje:
       `aml_url = run.get_portal_url()` 
    :::column-end:::
    :::column span="2":::
-        `run`Objekt poskytuje popisovač pro spuštění kódu. Monitorujte svůj průběh z Azure Machine Learning Studio s adresou URL, která se tiskne ze skriptu Pythonu.  
+        `run`Objekt poskytuje popisovač pro spuštění kódu. Sledujte jeho průběh z Azure Machine Learning studia s adresou URL, která se vytiskla ze skriptu Pythonu.  
    :::column-end:::
 :::row-end:::
 
@@ -144,11 +143,11 @@ Spusťte skript ovládacího prvku, který zase běží `hello.py` na výpočetn
 python 03-run-hello.py
 ```
 
-## <a name="monitor-your-code-in-the-cloud-using-studio"></a>Monitorování kódu v cloudu pomocí studia
+## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>Monitorování kódu v cloudu pomocí studia
 
-Výstup bude obsahovat odkaz na Azure Machine Learning Studio, který vypadá přibližně takto: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
+Výstup bude obsahovat odkaz na Studio, který vypadá nějak takto: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
 
-Použijte odkaz a přejděte na kartu **výstupy + protokoly** . Tady vidíte soubor, který by měl `70_driver_log.txt` vypadat takto:
+Použijte odkaz a přejděte na kartu **výstupy + protokoly** . Tady vidíte `70_driver_log.txt` soubor, který vypadá takto:
 
 ```txt
  1: [2020-08-04T22:15:44.407305] Entering context manager injector.
@@ -178,7 +177,7 @@ Na řádku 8 se zobrazí zpráva "Hello World!" výkonem.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provedli jednoduchý skript Hello World a spustili ho v Azure. Zjistili jste, jak se připojit ke svému pracovnímu prostoru Azure Machine Learning, vytvořit experiment a odeslat svůj `hello.py` kód do cloudu.
+V tomto kurzu jste provedli jednoduché "Hello World!" skripty a běžely v Azure. Zjistili jste, jak se připojit ke svému pracovnímu prostoru Azure Machine Learning, vytvořit experiment a odeslat svůj `hello.py` kód do cloudu.
 
 V dalším kurzu sestavíte pomocí těchto výukových kurzů s něčím zajímavější než `print("Hello world!")` .
 
@@ -186,4 +185,4 @@ V dalším kurzu sestavíte pomocí těchto výukových kurzů s něčím zajím
 > [Kurz: Trénování modelu](tutorial-1st-experiment-sdk-train.md)
 
 >[!NOTE] 
-> Pokud chcete dokončit řadu kurzů zde a nepostupovat k dalšímu kroku, nezapomeňte [vyčistit své prostředky](tutorial-1st-experiment-bring-data.md#clean-up-resources) .
+> Pokud chcete dokončit řadu kurzů zde a nepostupovat k dalšímu kroku, nezapomeňte [vyčistit své prostředky](tutorial-1st-experiment-bring-data.md#clean-up-resources).

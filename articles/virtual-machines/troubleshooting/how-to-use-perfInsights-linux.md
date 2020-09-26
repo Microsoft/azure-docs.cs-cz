@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: ce60f360a6839d43b0cbc209242a1385a0984c9d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d4d25d8e79c30933546af2b823e328a652f482eb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088540"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360527"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
 
@@ -218,8 +218,8 @@ V rámci souboru **PerformanceDiagnostics \_ yyyy-MM-DD \_ HH-MM-SS-FFF. tar. gz
 
 Karta **Přehled** poskytuje základní podrobnosti o spuštění a informace o virtuálním počítači. Na kartě **nálezy** se zobrazí souhrn doporučení ze všech různých částí sestavy PerfInsights.
 
-![Snímek obrazovky sestavy PerfInsights](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
-![Snímek obrazovky sestavy PerfInsights](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
+![Snímek obrazovky s kartou přehled sestavy PerfInsights](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
+![Snímek obrazovky s kartou Linux sestavy PerfInsights](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
 
 > [!NOTE]
 > Nálezy zařazené do kategorie vysoká jsou známé problémy, které mohou způsobit problémy s výkonem. Nálezy kategorizované jako střední představuje neoptimální konfigurace, které nemusí nutně způsobovat problémy s výkonem. Nálezy zařazené do kategorie nízká jsou informativní pouze informativní příkazy.

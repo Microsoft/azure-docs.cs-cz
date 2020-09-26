@@ -3,12 +3,12 @@ title: Azure Service Bus geograficky zotavení po havárii | Microsoft Docs
 description: Použití geografických oblastí k převzetí služeb při selhání a zotavení po havárii v Azure Service Bus
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: fcdeb499b8ebecc4ecddbfcbe32b812ce7e3efe5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c203ed197c1e5bfb15cfb503a04df79b85c630e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341474"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372519"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geografické zotavení po havárii
 
@@ -107,7 +107,7 @@ Pokud jste udělali chybu; například jste spároval nesprávné oblasti při p
 
 Pokud máte scénář, ve kterém nemůžete změnit připojení výrobců a uživatelů, můžete název oboru názvů použít jako název aliasu. Tady najdete [ukázkový kód na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR_existing_namespace_name).
 
-## <a name="samples"></a>ukázky
+## <a name="samples"></a>Ukázky
 
 [Ukázky na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) ukazují, jak nastavit a iniciovat převzetí služeb při selhání. Tyto ukázky ukazují následující koncepty:
 
@@ -117,7 +117,7 @@ Pokud máte scénář, ve kterém nemůžete změnit připojení výrobců a už
 - Postup nebo umožnění geografického zotavení po havárii prostřednictvím PowerShellu nebo rozhraní příkazového řádku.
 - [Odeslat a přijmout](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1) z aktuálního primárního nebo sekundárního oboru názvů pomocí aliasu
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Vezměte v úvahu následující skutečnosti:
 
@@ -149,7 +149,7 @@ Pokud se pokusíte vytvořit párování mezi primárním oborem názvů s priv�
 > [!NOTE]
 > Pokud se pokusíte spárovat primární obor názvů se soukromým koncovým bodem a sekundárním oborem názvů, proces ověření kontroluje pouze to, zda privátní koncový bod existuje v sekundárním oboru názvů. Nekontroluje, jestli koncový bod funguje nebo bude po převzetí služeb při selhání fungovat. Je vaše zodpovědnost za to, že sekundární obor názvů s privátním koncovým bodem bude po převzetí služeb při selhání fungovat podle očekávání.
 >
-> Chcete-li otestovat, zda jsou konfigurace privátních koncových bodů stejné, zaslat požadavek [Get Queues](/rest/api/servicebus/queues/get) sekundárnímu oboru názvů mimo virtuální síť a ověřte, že se od služby zobrazí chybová zpráva.
+> Chcete-li otestovat, zda jsou konfigurace privátních koncových bodů stejné, zaslat požadavek [Get Queues](/rest/api/servicebus/stable/queues/get) sekundárnímu oboru názvů mimo virtuální síť a ověřte, že se od služby zobrazí chybová zpráva.
 
 ### <a name="existing-pairings"></a>Existující párování
 Pokud párování mezi primárním a sekundárním oborem názvů už existuje, vytvoření privátního koncového bodu na primárním oboru názvů se nezdaří. Chcete-li tento problém vyřešit, vytvořte nejprve privátní koncový bod v sekundárním oboru názvů a potom jej vytvořte pro primární obor názvů.
@@ -179,7 +179,7 @@ Výhodou tohoto přístupu je, že k převzetí služeb při selhání může do
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Tady najdete referenční](/rest/api/servicebus/disasterrecoveryconfigs)informace o geografickém zotavení po havárii REST API.
+- [Tady najdete referenční](/rest/api/servicebus/stable/disasterrecoveryconfigs)informace o geografickém zotavení po havárii REST API.
 - Spusťte ukázku geografického zotavení po havárii [na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2).
 - Podívejte se na ukázku obnovení geografického po havárii [, které odesílá zprávy do aliasu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1).
 

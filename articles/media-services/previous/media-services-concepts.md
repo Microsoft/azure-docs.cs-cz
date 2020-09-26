@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: e75dde14cf7182f5153b3a42b26f1c7e8a4e78ac
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 2a251ef426d41413cf81f46ca05b11640f01e87a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258023"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333762"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services koncepty
 
@@ -103,12 +103,11 @@ Media Services poskytuje dynamické balení, které vám umožní doručovat obs
 
 Pokud chcete využít výhod [dynamického balení](media-services-dynamic-packaging-overview.md), musíte soubor Mezzanine (zdrojový soubor) kódovat do sady souborů MP4 s adaptivní přenosovou rychlostí nebo s adaptivní přenosovou rychlostí Smooth Streaming soubory a mít aspoň jeden koncový bod streamování Standard nebo Premium ve stavu spuštěno.
 
-Media Services podporuje následující kodéry na vyžádání, které jsou popsány v tomto článku:
+Media Services podporuje následující kodér na vyžádání, který je popsaný v tomto článku:
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
-* [Pracovní postup kodéru Media Encoder Premium](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-Informace o podporovaných kodérech najdete v tématu [kodéry](media-services-encode-asset.md).
+Informace o tomto podporovaném kodéru naleznete v tématu [Encoder](media-services-encode-asset.md).
 
 ## <a name="live-streaming"></a>Živé streamování
 V Azure Media Services kanál představuje kanál pro zpracování obsahu živého streamování. Kanál přijímá živé vstupní proudy jedním ze dvou způsobů:
@@ -133,7 +132,7 @@ Každý program (událost) je přidružen k Assetu. Pro publikování programu m
 
 Kanál podporuje až tři současně spuštěné programy, takže si můžete vytvořit několik archivů stejného příchozího datového proudu. To vám umožní podle potřeby publikovat a archivovat různé části události. Požadavek vaší firmy může být například takový, že chcete archivovat 6 hodin programu, ale vysílat jenom posledních 10 minut. K tomu potřebujete vytvořit dva současně spuštěné programy. Jeden program nastavíte, aby archivoval 6 hodin události, ale tento program nebudete publikovat. Druhý program nastavíte, aby archivoval 10 minut a tento program budete publikovat.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Práce s kanály, které jsou povolené k provádění Live Encoding s Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)
 * [Práce s kanály, které přijímají živé datové proudy s více přenosovými rychlostmi z místních kodérů](media-services-live-streaming-with-onprem-encoders.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: Zhchia
-ms.openlocfilehash: 00e5f750c1acfa49aea2caadbc95fd75cef0b24b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d37034057f7d1bc39c065110b20a8a2cdce13b62
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256042"
+ms.locfileid: "91360476"
 ---
 # <a name="tutorial-configure-mixpanel-for-automatic-user-provisioning"></a>Kurz: Konfigurace Mixpanelu pro Automatické zřizování uživatelů
 
@@ -88,7 +88,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte **adresu URL vašeho tenanta** mixpanelu a **tajný token**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k mixpanelu. Pokud se připojení nepovede, ujistěte se, že má váš účet Mixpanelu oprávnění správce, a zkuste to znovu.
 
-    ![zřizování](./media/mixpanel-provisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně přihlašovací údaje správce, kde můžete zadat svého tenanta U R L a tajného tokenu.](./media/mixpanel-provisioning-tutorial/provisioning.png)
 
 6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem**.
 

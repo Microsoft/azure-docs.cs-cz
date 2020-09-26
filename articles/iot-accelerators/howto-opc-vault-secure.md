@@ -8,18 +8,21 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: caa3717fdf915e205c1a4f82f4e199346ca29fcb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e95edf21b7d6dce29b31220533269439fac120e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082802"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281946"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>Použití služby správy certifikátů trezoru OPC
 
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
+
 Tento článek vysvětluje, jak registrovat aplikace a jak vydávat podepsané certifikáty aplikací pro zařízení OPC UA.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="deploy-the-certificate-management-service"></a>Nasazení služby správy certifikátů
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 05/21/2020
 ms.author: arremana
-ms.openlocfilehash: 079574ab4c5846eae6266d1e13240baf99428a69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ed355f82b88f460ff4b372484a690f166a15550
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449239"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359507"
 ---
 # <a name="upgrade-azure-vm-with-sles-12-to-sles-15-sp1"></a>Upgrade virtuálního počítače Azure s SLES 12 až SLES 15 SP1
 
@@ -70,7 +70,7 @@ Aby bylo možné pokračovat v SLES 15 SP1, musí být aktuální verze SLES SLE
 
 8. Po restartování systému s novým jádrem se zobrazí následující zpráva.
 
-     ![Snímek obrazovky se zprávami v konzole sériového portu](./media/linux-upgrade-suse-15sp1/output-message.png)
+     ![Snímek obrazovky se zprávami v konzole sériového portu po restartování systému s novým jádrem](./media/linux-upgrade-suse-15sp1/output-message.png)
 9. Ověřte jádro a verzi operačního systému, abyste zkontrolovali, jestli se systém úspěšně Upgradoval.
 
     ```
@@ -85,4 +85,4 @@ K ověření verze generování můžete použít jednu z následujících metod
 - V terminálu SLES spusťte příkaz `dmidecode | grep -i hyper` . Pokud se jedná o virtuální počítač generace V1, nevrátí se žádný výstup. U virtuálních počítačů generace v2 se zobrazí následující výstup:
 
      ![Snímek obrazovky s výstupem pro virtuální počítač 2. generace](./media/linux-upgrade-suse-15sp1/output-gen2.png)
-- V [Azure Portal](https://portal.azure.com)přejít na **vlastnosti** virtuálního počítače a potom zkontrolujte pole **generování virtuálního počítače** .
+- V [Azure Portal](https://portal.azure.com)přejít na **vlastnosti**  virtuálního počítače a potom zkontrolujte pole **generování virtuálního počítače** .

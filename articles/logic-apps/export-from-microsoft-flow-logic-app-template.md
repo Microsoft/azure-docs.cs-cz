@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: b2a45218118282f4f1cadb29c9022fc05b30f907
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269552"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Export toků z Power Automate a nasazení do Azure Logic Apps
 
@@ -24,7 +24,7 @@ Pokud chcete rozšířit a rozšířit možnosti toku, můžete tento tok migrov
 >
 > * Pokud chcete zjistit, které Logic Apps konektory nemají ekvivalenty vypnutí napájení, přečtěte si téma [Logic Apps konektory](/connectors/connector-reference/connector-reference-powerautomate-connectors).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -96,7 +96,7 @@ Další informace najdete v tématu [o nárůstu až Azure Logic Apps](https://f
 
    1. Pro každý krok, který vyžaduje autorizované připojení, rozbalte tento krok a vyberte **Přidat nový**.
 
-      ![Přidat nové připojení](./media/export-from-microsoft-flow-logic-app-template/add-new-connection.png)
+      ![Snímek obrazovky, který zobrazuje tlačítko pro přidání nového, které je vybrané v okně připojení](./media/export-from-microsoft-flow-logic-app-template/add-new-connection.png)
 
    1. Přihlaste se ke každé službě nebo poskytněte potřebná pověření pro autorizaci připojení.
 

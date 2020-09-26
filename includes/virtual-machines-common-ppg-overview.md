@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: c7e3c9292b53aeb073e11a5293459e39a22ca81d
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89570222"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376375"
 ---
 Umístění virtuálních počítačů v jedné oblasti omezuje fyzickou vzdálenost mezi instancemi. Jejich umístění v rámci jedné zóny dostupnosti se také fyzicky přiblíží dohromady. Pokud se ale nároky na Azure rozroste, může jedna zóna dostupnosti zahrnovat několik fyzických datových center, což může způsobit, že vaše aplikace bude mít vliv na latenci sítě. 
 
@@ -47,6 +47,39 @@ Skupiny umístění pro Proximity nabízí společné umístění ve stejném da
 -   V případě elastických úloh, kde můžete přidat a odebrat instance virtuálních počítačů, které mají omezení skupiny umístění blízkosti, může dojít k selhání splnění žádosti s výsledkem **AllocationFailure** chyby. 
 - Zastavení (zrušení přidělení) a spuštění virtuálních počítačů podle potřeby je další způsob, jak dosáhnout pružnosti. Vzhledem k tomu, že kapacita není po zastavení (přidělení) virtuálního počítače zachovaná, může dojít k chybě **AllocationFailure** .
 
+## <a name="planned-maintenance-and-proximity-placement-groups"></a>Plánovaná údržba a skupiny umístění pro Proximity
+
+Plánované události údržby, jako je vyřazení hardwaru v datacentru Azure, by mohly mít vliv na zarovnání prostředků v blízkosti skupin umístění. Prostředky je možné přesunout do jiného datového centra a narušit očekávání v rámci umístění a latence spojené se skupinou umístění blízkosti.
+
+### <a name="check-the-alignment-status"></a>Kontrolovat stav zarovnání
+
+Chcete-li zjistit stav zarovnání skupin umístění blízkosti, můžete provést následující postup.
+
+
+- Stav blízkosti skupiny umístění blízkosti lze zobrazit pomocí portálu, rozhraní příkazového řádku a prostředí PowerShell.
+
+    -   Při použití PowerShellu se stav souběžného umístění dá získat pomocí rutiny Get-AzProximityPlacementGroup včetně volitelného parametru-ColocationStatus.
+
+    -   Při použití rozhraní příkazového řádku je možné získat stav `az ppg show` souběžného umístění pomocí zahrnutí volitelného parametru--Include-Location-status.
+
+- Pro každou skupinu umístění blízkosti poskytuje vlastnost **stav kolokace** aktuální souhrn stavu zarovnání seskupených prostředků. 
+
+    - **Zarovnané**: prostředek je v rámci stejné latence skupiny umístění blízkosti.
+
+    - **Neznámé**: nejméně jeden z prostředků virtuálního počítače se nadělil. Po úspěšném spuštění zpět by se měl stav vrátit na **zarovnaný**.
+
+    - **Nezarovnáno**: nejméně jeden prostředek virtuálního počítače není zarovnán se skupinou umístění blízkosti. Konkrétní prostředky, které nejsou zarovnány, budou také vyvolány samostatně v části členství.
+
+- V případě skupin dostupnosti můžete zobrazit informace o zarovnání jednotlivých virtuálních počítačů na stránce Přehled skupiny dostupnosti.
+
+- Pro sady škálování je možné zobrazit informace o zarovnání jednotlivých instancí na kartě **instance** stránky **Přehled** pro sadu škálování. 
+
+
+### <a name="re-align-resources"></a>Znovu zarovnat prostředky 
+
+Pokud je skupina umístění blízkosti `Not Aligned` , můžete stop\deallocate a pak restartovat ovlivněné prostředky. Pokud je virtuální počítač ve skupině dostupnosti nebo sadě škálování, musí být všechny virtuální počítače v sadě dostupnosti nebo sadě škálování stopped\deallocated jako první, než je restartujete.
+
+Pokud v důsledku omezení nasazení dojde k chybě přidělení, možná budete muset nejprve stop\deallocate všechny prostředky v ovlivněné skupině umístění blízkosti (včetně zarovnaných prostředků) a pak je znovu spustit, aby se zarovnání obnovilo.
 
 ## <a name="best-practices"></a>Osvědčené postupy 
 - Pro nejnižší latenci používejte skupiny umístění pro Proximity společně s akcelerovanými síťovými službami. Další informace najdete v tématu [Vytvoření virtuálního počítače se systémem Linux s akcelerovanými sítěmi](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [Vytvoření virtuálního počítače s Windows s akcelerovanými síťovými](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)službami.

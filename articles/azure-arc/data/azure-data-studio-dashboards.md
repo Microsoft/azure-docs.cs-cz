@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: c2dd0ce3c3e9a0f1f699b58ed2657394ad9acbe1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 608f984b3e3a3020863e0c28b0aa2ad504531e3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936383"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273219"
 ---
 # <a name="azure-data-studio-dashboards"></a>Řídicí panely Azure Data Studio
 
@@ -49,7 +49,7 @@ NAME                      TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)
 controller-svc-external   LoadBalancer   10.0.175.137   52.154.152.24    30080:32192/TCP                               22h
 ```
 
-Pokud používáte typ vyrovnávání zatížení, budete chtít zkopírovat externí IP adresu a číslo portu 300080.  Pokud používáte NodePort, budete chtít použít IP adresu vašeho serveru rozhraní Kubernetes API a číslo portu uvedené ve sloupci PORT (S).
+Pokud používáte typ vyrovnávání zatížení, budete chtít zkopírovat externí IP adresu a číslo portu. Pokud používáte NodePort, budete chtít použít IP adresu vašeho serveru rozhraní Kubernetes API a číslo portu uvedené ve sloupci PORT (S).
 
 Teď budete chtít vytvořit adresu URL pro koncový bod tak, že sloučíte tyto informace, například:
 

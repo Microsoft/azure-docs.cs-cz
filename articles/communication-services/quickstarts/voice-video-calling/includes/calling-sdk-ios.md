@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: fa7fd73a7d8019919a89dd9e9522b7389dc9c18f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 31f7e348a805c86964a8856fb81b83831c611de5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936474"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377022"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +31,7 @@ V Xcode vytvořte nový projekt iOS a vyberte šablonu aplikace s **jedním zobr
 Přidejte do svého projektu komunikační služby Azure s voláním klientské knihovny a jejích závislostí (AzureCore. Framework a AzureCommunication. Framework).
 
 > [!NOTE]
-> S vydáním sady AzureCommunicationCalling SDK najdete skript bash `BuildAzurePackages.sh` . Skript při spuštění vám `sh ./BuildAzurePackages.sh` poskytne cestu k vygenerovaným balíčkům rozhraní, které je třeba importovat do ukázkové aplikace v dalším kroku. Všimněte si, že budete muset nastavit nástroje příkazového řádku Xcode, pokud jste to ještě neudělali předtím, než spustíte skript: Spusťte Xcode, vyberte Předvolby-> umístění. Vyberte verzi Xcode pro nástroje příkazového řádku.
+> S vydáním sady AzureCommunicationCalling SDK najdete skript bash `BuildAzurePackages.sh` . Skript při spuštění vám `sh ./BuildAzurePackages.sh` poskytne cestu k vygenerovaným balíčkům rozhraní, které je třeba importovat do ukázkové aplikace v dalším kroku. Všimněte si, že budete muset nastavit nástroje příkazového řádku Xcode, pokud jste to ještě neudělali předtím, než spustíte skript: Spusťte Xcode, vyberte Předvolby-> umístění. Vyberte verzi Xcode pro nástroje příkazového řádku. **Všimněte si, že skript BuildAzurePackages.sh funguje jenom s Xcode 11,5 a novějším.**
 
 1. Stáhněte si službu Azure Communications Calling Client Library pro iOS.
 2. V Xcode klikněte na soubor projektu na a vyberte cíl sestavení a otevřete tak editor nastavení projektu.

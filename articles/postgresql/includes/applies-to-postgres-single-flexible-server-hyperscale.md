@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: 745ac3831def524326b5483eeb8da05cff701caf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4d61bc5d608b865802d216c0a056867a79eacb90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90881980"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376493"
 ---
-<Token>**Platí pro:** :::image type="content" source="../media/applies-to/yes.png" alt-text="Yes-single-Server":::Azure Database for PostgreSQL-Single server- :::image type="content" source="../media/applies-to/yes.png" alt-text="Flexible-Server":::Azure Database for PostgreSQL-flexibilní server :::image type="content" source="../media/applies-to/yes.png" alt-text="Ano-škálovatelné":::Azure Database for PostgreSQL-měřítko</Token>
+<Token>**platí pro:** :::image type="icon" source="../media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL – server :::image type="icon" source="../media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL flexibilního serveru :::image type="icon" source="../media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL – škálovatelné</Token>

@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c67440453e5ca8395464369d75bfac418a564764
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947017"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377005"
 ---
 V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure s voláním klientské knihovny pro iOS.
 
@@ -28,21 +28,21 @@ K dokončení tohoto kurzu budete potřebovat následující požadavky:
 
 ### <a name="creating-the-xcode-project"></a>Vytvoření projektu Xcode
 
-V Xcode vytvořte nový projekt iOS a vyberte šablonu aplikace s **jedním zobrazením** . V tomto kurzu se používá [SwiftUI Framework](https://developer.apple.com/xcode/swiftui/), takže byste měli nastavit **jazyk** na **SWIFT** a **uživatelské rozhraní** na **SwiftUI**. V tomto rychlém startu nebudete vytvářet testy jednotek nebo testy uživatelského rozhraní. Nebojte se zrušit kontrolu **včetně testů jednotek** a také zrušit kontrolu **včetně testů uživatelského rozhraní**.
+V Xcode vytvořte nový projekt iOS a vyberte šablonu aplikace s **jedním zobrazením** . V tomto kurzu se používá [SwiftUI Framework](https://developer.apple.com/xcode/swiftui/), takže byste měli nastavit **jazyk** na **SWIFT** a **uživatelské rozhraní** **SwiftUI**. V tomto rychlém startu nebudete vytvářet testy. Můžete si klidně zrušit kontrolu **včetně testů**.
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Snímek obrazovky s oknem pro vytvoření nového projektu v rámci Xcode.":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Snímek obrazovky znázorňující okno nového projektu v rámci Xcode.":::
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
 Přidejte do svého projektu komunikační služby Azure s voláním klientské knihovny a jejích závislostí (AzureCore. Framework a AzureCommunication. Framework).
 
 > [!NOTE]
-> S vydáním sady AzureCommunicationCalling SDK najdete skript bash `BuildAzurePackages.sh` . Skript při spuštění vám `sh ./BuildAzurePackages.sh` poskytne cestu k vygenerovaným balíčkům rozhraní, které je třeba importovat do ukázkové aplikace v dalším kroku. Všimněte si, že budete muset nastavit nástroje příkazového řádku Xcode, pokud jste to ještě neudělali předtím, než spustíte skript: Spusťte Xcode, vyberte Předvolby-> umístění. Vyberte verzi Xcode pro nástroje příkazového řádku.
+> S vydáním sady AzureCommunicationCalling SDK najdete skript bash `BuildAzurePackages.sh` . Skript při spuštění vám `sh ./BuildAzurePackages.sh` poskytne cestu k vygenerovaným balíčkům rozhraní, které je třeba importovat do ukázkové aplikace v dalším kroku. Všimněte si, že budete muset nastavit nástroje příkazového řádku Xcode, pokud jste to ještě neudělali předtím, než spustíte skript: Spusťte Xcode, vyberte Předvolby-> umístění. Vyberte verzi Xcode pro nástroje příkazového řádku. **Skript BuildAzurePackages.sh funguje jenom s Xcode 11,5 a novějším.**
 
-1. Stáhněte si službu Azure Communications Calling Client Library pro iOS.
+1. [Stáhněte si](https://github.com/Azure/Communication/releases) službu Azure Communications Calling Client Library pro iOS.
 2. V Xcode klikněte na soubor projektu na a vyberte cíl sestavení a otevřete tak editor nastavení projektu.
 3. Na kartě **Obecné** přejděte do části **rámce, knihovny a vložený obsah** a klikněte na ikonu **"+"** .
-4. V levém dolním rohu dialogového okna zvolte možnost **Přidat soubory**, přejděte do adresáře **AzureCommunicationCalling. Framework** balíčku klientské knihovny nástroje unzip.
+4. V levém dolním rohu dialogového okna vyberte možnost **Přidat soubory**, přejděte do adresáře **AzureCommunicationCalling. Framework** balíčku GetClient Library.
     1. Opakujte poslední krok pro přidání rozhraní **AzureCore. Framework** a **AzureCommunication. Framework**.
 5. Otevřete kartu **nastavení sestavení** v editoru nastavení projektu a přejděte k části **cesty hledání** . Přidá novou položku **cest hledání architektury** pro adresář obsahující rozhraní **AzureCommunicationCalling. Framework**.
     1. Přidejte jinou položku cest hledání architektury ukazující na složku, která obsahuje závislosti.
@@ -51,7 +51,7 @@ Přidejte do svého projektu komunikační služby Azure s voláním klientské 
 
 ### <a name="request-access-to-the-microphone"></a>Požádat o přístup k mikrofonu
 
-Aby bylo možné získat přístup k mikrofonu zařízení, je třeba aktualizovat seznam vlastností informací o aplikaci pomocí `NSMicrophoneUsageDescription` . Nastavte přidruženou hodnotu na `string` , která bude součástí dialogu, který systém používá k vyžádání žádosti o přístup od uživatele.
+Aby bylo možné získat přístup k mikrofonu zařízení, je třeba aktualizovat seznam vlastností informací o aplikaci pomocí `NSMicrophoneUsageDescription` . Nastavili jste přidruženou hodnotu na `string` , která bude obsažena v dialogovém okně, které systém používá k vyžádání přístupu od uživatele.
 
 Klikněte pravým tlačítkem myši na `Info.plist` položku stromové struktury projektu a vyberte **Otevřít jako**  >  **zdrojový kód**. Přidejte následující řádky do části nejvyšší úrovně `<dict>` a pak soubor uložte.
 
@@ -121,7 +121,7 @@ Následující třídy a rozhraní zpracovávají některé hlavní funkce komun
 | ACSCallClient | CallClient je hlavní vstupní bod pro volání klientské knihovny.|
 | ACSCallAgent | CallAgent se používá ke spouštění a správě volání. |
 | CommunicationUserCredential | CommunicationUserCredential se používá jako přihlašovací údaje tokenu pro vytvoření instance CallAgent.| 
-| CommunicationIndentifier | CommunicationIndentifier se používá k reprezentaci identity uživatele, která může být jedna z následujících: CommunicationUser/PhoneNumber/CallingApplication. |
+| CommunicationIdentifier | CommunicationIdentifier se používá k reprezentaci identity uživatele, která může být jedna z následujících: CommunicationUser/PhoneNumber/CallingApplication. |
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -190,7 +190,7 @@ func endCall()
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-Spuštění aplikace v simulátoru iOS můžete sestavit tak, že vyberete **Product**možnost  >  **spuštění** produktu nebo pomocí klávesové zkratky (&#8984;-R).
+Můžete sestavit a spustit aplikaci v simulátoru iOS tak, že **Product**vyberete možnost  >  **spuštění** produktu nebo pomocí klávesové zkratky (&#8984;-R).
 
 :::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Konečný vzhled a chování aplikace rychlý Start":::
 
@@ -199,6 +199,6 @@ Odchozí volání VOIP můžete vytvořit zadáním ID uživatele v textovém po
 > [!NOTE]
 > Při prvním volání vás systém vyzve k zadání přístupu k mikrofonu. V produkční aplikaci byste měli použít `AVAudioSession` rozhraní API, abyste [zkontrolovali stav oprávnění](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources) a korektně aktualizovali chování aplikace, když není udělené oprávnění.
 
-## <a name="sample"></a>Ukázka
+## <a name="sample-code"></a>Příklad kódu
 
-Ukázkovou aplikaci si můžete stáhnout z [GitHubu](https://github.com/Azure/Communication/tree/master/samples/AzureCommunicationCalling/iOS/Swift) .
+Ukázkovou aplikaci si můžete stáhnout z [GitHubu](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/iOS/Swift) .

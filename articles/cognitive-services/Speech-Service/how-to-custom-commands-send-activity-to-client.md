@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 520b38f4c733e7bf28a2a06429ad14d016c5bd28
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 6e8e6feb064a5d26eb6cb72b521d3f9df0380086
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027609"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360102"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Odeslat aktivitu vlastních příkazů klientské aplikaci
 
@@ -29,8 +29,8 @@ Dokončili jste následující úkoly:
 ## <a name="prerequisites"></a>Požadavky
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) nebo vyšší. Tato příručka používá Visual Studio 2019
-> * Klíč předplatného Azure pro službu Speech Service: [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com)
-> * Dříve [vytvořená aplikace vlastních příkazů](quickstart-custom-commands-application.md)
+> * Klíč předplatného Azure pro službu Speech: [Získejte ho zdarma](overview.md#try-the-speech-service-for-free) nebo si ho vytvořte na webu [Azure Portal](https://portal.azure.com)
+> * Už [vytvořená aplikace Vlastní příkazy](quickstart-custom-commands-application.md)
 > * Klientská aplikace podporující sadu Speech SDK: [Postupy: integrace s klientskou aplikací pomocí sady Speech SDK](./how-to-custom-commands-setup-speech-sdk.md)
 
 ## <a name="setup-send-activity-to-client"></a>Nastavit aktivitu odeslání na klienta 
@@ -146,12 +146,12 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 };
 ```
 
-## <a name="try-it-out"></a>Vyzkoušejte si to.
+## <a name="try-it-out"></a>Vyzkoušet
 
 1. Spuštění aplikace
-1. Vyberte Povolit mikrofon.
-1. Výběr tlačítka rozhovor
-1. Uvést`turn on the tv`
+1. Select Enable microphone (Povolit mikrofon).
+1. Vyberte tlačítko pro hlasové ovládání.
+1. Vyslovte `turn on the tv`.
 1. Vizuální stav televizoru by se měl změnit na zapnuto
    > [!div class="mx-imgBorder"]
    > ![Datová část aktivity odeslání](media/custom-commands/send-activity-to-client-turn-on-tv.png)
