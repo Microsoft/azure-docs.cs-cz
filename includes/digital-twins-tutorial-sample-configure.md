@@ -5,20 +5,20 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 3b68df1b3fc2f03d7659205fe03fdae09ecc3f7a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4ac748c606d8ec3c8ba754c34d9c9e7512344a83
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827308"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292666"
 ---
 ## <a name="configure-the-sample-project"></a>Konfigurace ukázkového projektu
 
-Dále nastavte ukázkovou klientskou aplikaci, která bude pracovat s vaší instancí digitálních vláken Azure. Pokud jste ještě nestáhli ukázkový projekt, Získejte ho hned na úvodní stránce [*ukázek digitálních vláken Azure*](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) , a to tak, že v nadpisu vyberete tlačítko *Stáhnout ZIP* .
+Dále nastavte ukázkovou klientskou aplikaci, která bude pracovat s vaší instancí digitálních vláken Azure.
 
-Přejděte na stažený soubor na svém počítači a rozbalte ho.
+V počítači přejděte do souboru, který jste si stáhli ze [*vzorků digitálních vláken Azure*](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) (a rozbalte ho, pokud jste to ještě neudělali).
 
-Jednou do složky getzip přejděte do _AdtSampleApp_. Otevřete _**AdtE2ESample. sln**_ v aplikaci Visual Studio 2019. 
+Ve složce přejděte do _AdtSampleApp_. Otevřete _**AdtE2ESample. sln**_ v aplikaci Visual Studio 2019. 
 
 V aplikaci Visual Studio použijte podokno *Průzkumník řešení* k vytvoření kopie _> SampleClientApp **serviceConfig.jsna. Soubor šablony** _ (k zkopírování a vložení můžete použít nabídky ze seznamu pravým tlačítkem myši). Přejmenujte *serviceConfig.jskopie na*. Tato akce bude sloužit jako předem nastavený soubor JSON s nezbytnými konfiguračními proměnnými pro spuštění projektu.
 

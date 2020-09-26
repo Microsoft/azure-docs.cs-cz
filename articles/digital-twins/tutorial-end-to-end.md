@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 0b7e277518337072659bf5ccddd3436c05ff5201
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 0db39884ef54310db849abcef1062adbaeb9f22e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563790"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292664"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -85,6 +85,16 @@ Můžete ověřit, které vlákna byly vytvořeny spuštěním následujícího 
 ```cmd/sh
 Query
 ```
+
+>[!TIP]
+> Tato zjednodušená metoda je k dispozici jako součást projektu _**AdtE2ESample**_ . Mimo kontext tohoto ukázkového kódu se můžete kdykoli dotazovat na všechny vlákna ve vaší instanci pomocí [rozhraní API pro dotazy](how-to-use-apis-sdks.md) nebo [příkazů rozhraní příkazového řádku](how-to-use-cli.md).
+>
+> Tady je úplný text dotazu, který vám umožní získat všechny digitální vlákna ve vaší instanci:
+> 
+> ```sql
+> SELECT *
+> FROM DIGITALTWINS
+> ``` 
 
 Potom můžete zastavit běh projektu. Nechejte řešení otevřené v aplikaci Visual Studio, i když ho budete dál používat v celém kurzu.
 
@@ -255,13 +265,13 @@ Dále nakonfigurujte simulátor zařízení, aby odesílal data do instance IoT 
 Začněte získáním *připojovacího řetězce centra IoT* pomocí tohoto příkazu:
 
 ```azurecli
-az iot hub show-connection-string -n <your-IoT-hub-name>
+az iot hub connection-string show -n <your-IoT-hub-name>
 ```
 
 Pak Získejte *připojovací řetězec zařízení* pomocí tohoto příkazu:
 
 ```azurecli
-az iot hub device-identity show-connection-string --device-id thermostat67 --hub-name <your-IoT-hub-name>
+az iot hub device-identity connection-string show --device-id thermostat67 --hub-name <your-IoT-hub-name>
 ```
 
 Tyto hodnoty připojíte do kódu simulátoru zařízení v místním projektu a připojíte simulátor do tohoto zařízení IoT Hub a IoT Hub.
@@ -278,7 +288,7 @@ connectionString = <Iot-hub-connection-string>
 deviceConnectionString = <device-connection-string>
 ```
 
-Soubor uložte.
+Uložte soubor.
 
 Nyní chcete-li zobrazit výsledky simulace dat, kterou jste nastavili, spusťte projekt **DeviceSimulator** pomocí tohoto tlačítka na panelu nástrojů:
 
@@ -436,7 +446,7 @@ Tady je přehled scénáře, který jste vytvořili v tomto kurzu.
 
 Pokud už prostředky vytvořené v tomto kurzu nepotřebujete, odstraňte je pomocí těchto kroků. 
 
-Pomocí [Azure Cloud Shell](https://shell.azure.com)můžete odstranit všechny prostředky Azure ve skupině prostředků pomocí příkazu [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) . Tím odeberete skupinu prostředků. instance digitálního vlákna Azure; Centrum IoT a registrace zařízení v centru téma Event Grid a související odběry; a aplikace Azure Functions, včetně funkcí a přidružených prostředků, jako je Storage.
+Pomocí [Azure Cloud Shell](https://shell.azure.com)můžete odstranit všechny prostředky Azure ve skupině prostředků pomocí příkazu [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) . Tím odeberete skupinu prostředků. instance digitálního vlákna Azure; Centrum IoT a registrace zařízení v centru téma Event Grid a související odběry; a aplikace Azure Functions, včetně funkcí a přidružených prostředků, jako je Storage.
 
 > [!IMPORTANT]
 > Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. 

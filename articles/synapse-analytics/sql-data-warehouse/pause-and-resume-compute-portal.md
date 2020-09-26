@@ -11,16 +11,16 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 25f12d038b2a83688c12d95adefef3d4fb39be43
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: aa86161bce0b52eb1043d792fb2f4770df0992ee
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214464"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369412"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Rychlý Start: pozastavení a obnovení výpočetní kapacity ve fondu synapse SQL prostřednictvím Azure Portal
 
-Azure Portal můžete použít k pozastavení a obnovení výpočetních prostředků fondu SQL synapse (datový sklad). Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Azure Portal můžete použít k pozastavení a obnovení výpočetních prostředků fondu SQL synapse (datový sklad). Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -46,10 +46,10 @@ Pomocí těchto kroků pozastavíte fond SQL:
     ![COMPUTE online](././media/pause-and-resume-compute-portal/compute-online.png)
 
 4. Chcete-li pozastavit fond SQL, klikněte na tlačítko **pozastavit** . 
-5. V případě, že chcete pokračovat, se zobrazí dotaz s potvrzením. Klikněte na tlačítko **Ano**.
+5. V případě, že chcete pokračovat, se zobrazí dotaz s potvrzením. Klikněte na **Ano**.
 6. Chvíli počkejte a pak si všimněte, že se **stav** **pozastavuje**.
 
-    ![Pozastaveno](./media/pause-and-resume-compute-portal/pausing.png)
+    ![Snímek obrazovky ukazuje Azure Portal pro ukázkový datový sklad s hodnotou stavu pozastaveno.](./media/pause-and-resume-compute-portal/pausing.png)
 
 7. Po dokončení operace pozastavení je stav **pozastaveno** a přepínač je **obnoven**.
 8. Výpočetní prostředky pro fond SQL jsou teď offline. Za výpočetní výkon se vám nebude účtovat, dokud službu neobnovíte.
@@ -68,10 +68,10 @@ Pomocí těchto kroků obnovíte fond SQL.
     ![COMPUTE offline](././media/pause-and-resume-compute-portal/compute-offline.png)
 
 4. Chcete-li obnovit fond SQL, klikněte na tlačítko **obnovit**. 
-5. Zobrazí se dotaz s dotazem, zda chcete spustit. Klikněte na tlačítko **Ano**.
+5. Zobrazí se dotaz s dotazem, zda chcete spustit. Klikněte na **Ano**.
 6. Všimněte si, že se **stav** **obnovuje**.
 
-    ![Obnovování](./media/pause-and-resume-compute-portal/resuming.png)
+    ![Snímek obrazovky se zobrazí Azure Portal pro ukázkový datový sklad s vybraným tlačítkem Start a stavovou hodnotou obnovení.](./media/pause-and-resume-compute-portal/resuming.png)
 
 7. Když je fond SQL zase online, je stav **online** a přepínač je **pozastaven**.
 8. Výpočetní prostředky pro fond SQL jsou teď online a službu můžete používat. Poplatky za výpočetní prostředky se obnovily.
