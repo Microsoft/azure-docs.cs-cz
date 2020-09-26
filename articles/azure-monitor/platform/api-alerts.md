@@ -4,21 +4,21 @@ description: REST API výstrahy Log Analytics umožňuje vytvářet a spravovat 
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: eec7aeab32aa071ce9d4476b15740c89210f0606
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dce340db90c1528c46c1be0bc172751a04feaf31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322325"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294071"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytváření a Správa pravidel výstrah v Log Analytics s využitím REST API 
 
+> [!IMPORTANT]
+> Jak bylo [oznámeno](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), pracovní prostory Log Analytics vytvořené od *1. června 2019* spravují pravidla výstrah pomocí aktuálního [rozhraní API scheduledQueryRules](/rest/api/monitor/scheduledqueryrules/). Zákazníkům se doporučuje [Přejít na aktuální rozhraní API](./alerts-log-api-switch.md) ve starších pracovních prostorech a využít [výhody](./alerts-log-api-switch.md#benefits)Azure monitor scheduledQueryRules. Tento článek popisuje správu pravidel upozornění využívajících starší verze rozhraní API.
+
 REST API výstrahy Log Analytics umožňuje vytvářet a spravovat výstrahy v Log Analytics.  Tento článek poskytuje podrobné informace o rozhraní API a několika příkladech pro provádění různých operací.
 
-> [!IMPORTANT]
-> Jak jsme [oznámili dřív](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), pracovní prostory Log Analytics vytvořené od *1. června 2019* – budou moct spravovat pravidla výstrah **jenom** pomocí [REST API](/rest/api/monitor/scheduledqueryrules/)Azure scheduledQueryRules, [šablony Azure Resource Manager](./alerts-log.md#managing-log-alerts-using-azure-resource-template) a [rutiny PowerShellu](./alerts-log.md#managing-log-alerts-using-powershell). Zákazníci můžou snadno [Přepnout do preferovaného způsobu správy pravidel výstrah](./alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) pro starší pracovní prostory a využít Azure monitor scheduledQueryRules jako výchozí a získat spoustu [nových výhod](./alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) , jako je možnost použití nativních rutin PowerShellu, což je zvýšené lookbacké časové období v pravidlech, vytváření pravidel v samostatné skupině prostředků nebo předplatném a mnohem víc.
-
-Log Analytics vyhledávání REST API je RESTful a lze k němu přistupovat prostřednictvím REST API Azure Resource Manager. V tomto dokumentu najdete příklady, ve kterých je k rozhraní API přistup z příkazového řádku PowerShellu pomocí [ARMClient](https://github.com/projectkudu/ARMClient), open source nástroje příkazového řádku, který zjednodušuje vyvolání rozhraní Azure Resource Manager API. Použití ARMClient a PowerShellu je jedním z mnoha možností pro přístup k rozhraní API pro hledání Log Analytics. Pomocí těchto nástrojů můžete využít rozhraní RESTful Azure Resource Manager API k volání Log Analytics pracovních prostorů a provádění příkazů hledání v nich. Rozhraní API bude výstupem výsledků hledání ve formátu JSON, což vám umožní používat výsledky hledání mnoha různými způsoby prostřednictvím kódu programu.
+Log Analytics vyhledávání REST API je RESTful a lze k němu přistupovat prostřednictvím REST API Azure Resource Manager. V tomto dokumentu najdete příklady, ve kterých je k rozhraní API přistup z příkazového řádku PowerShellu pomocí  [ARMClient](https://github.com/projectkudu/ARMClient), open source nástroje příkazového řádku, který zjednodušuje vyvolání rozhraní Azure Resource Manager API. Použití ARMClient a PowerShellu je jedním z mnoha možností pro přístup k rozhraní API pro hledání Log Analytics. Pomocí těchto nástrojů můžete využít rozhraní RESTful Azure Resource Manager API k volání Log Analytics pracovních prostorů a provádění příkazů hledání v nich. Rozhraní API bude výstupem výsledků hledání ve formátu JSON, což vám umožní používat výsledky hledání mnoha různými způsoby prostřednictvím kódu programu.
 
 ## <a name="prerequisites"></a>Požadavky
 V současné době je možné výstrahy vytvořit pouze s uloženým hledáním v Log Analytics.  Další informace najdete v [REST API prohledávání protokolu](../log-query/log-query-overview.md) .
@@ -139,7 +139,7 @@ Plán by měl mít jednu a jenom jednu akci výstrahy.  Akce výstrahy mají jed
 | Sekce | Popis | Využití |
 |:--- |:--- |:--- |
 | Prahová hodnota |Kritéria pro spuštění akce.| Vyžaduje se pro každé upozornění, před nebo po rozšíření na Azure. |
-| Severity |Popisek, který se používá k klasifikaci výstrahy, když se aktivuje| Vyžaduje se pro každé upozornění, před nebo po rozšíření na Azure. |
+| Závažnost |Popisek, který se používá k klasifikaci výstrahy, když se aktivuje| Vyžaduje se pro každé upozornění, před nebo po rozšíření na Azure. |
 | Potlačit |Možnost zastavení oznámení z výstrahy. | Volitelné pro každou výstrahu před nebo po rozšíření na Azure. |
 | Skupiny akcí |ID služby Azure Action, kde jsou zadány požadované akce, jako jsou e-maily, SMSs, hlasové hovory, Webhooky, Runbooky automatizace, konektory ITSM atd.| Vyžadované po rozšíření upozornění na Azure|
 | Přizpůsobení akcí|Úprava standardního výstupu pro vybrané akce ze služby Action| Volitelné pro každou výstrahu můžete použít po rozšíření upozornění na Azure. |
@@ -185,7 +185,7 @@ $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','p
 armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 ```
 
-#### <a name="severity"></a>Severity
+#### <a name="severity"></a>Závažnost
 Log Analytics umožňuje klasifikovat výstrahy do kategorií a umožnit tak snazší správu a třídění. Definovaná Závažnost výstrahy je: informativní, varovná a kritická. Ty jsou namapovány na normalizované měřítko závažnosti výstrah Azure jako:
 
 |Úroveň závažnosti Log Analytics  |Úroveň závažnosti výstrah Azure  |
