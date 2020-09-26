@@ -8,20 +8,18 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4526e4916a89b53ae13a31bcdef6cd4715dd7e8c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8c6cb08f8236ab6164a71b710656951203be3d19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979587"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314569"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
 Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
 
-## <a name="feature-announcements-in-2020"></a>Oznámení funkcí v 2020
-
-### <a name="september-2020"></a>Září 2020
+## <a name="september-2020"></a>Září 2020
 
 Vytvořte v Azure Active Directory identitu pro vyhledávací službu a pak pomocí oprávnění RBAC Udělte identitě oprávnění jen pro čtení ke zdrojům dat Azure. Volitelně můžete zvolit možnost [výjimky důvěryhodné služby](search-indexer-howto-access-trusted-service-exception.md) , pokud pravidla protokolu IP nejsou možností.
 
@@ -34,13 +32,13 @@ Vytvořte v Azure Active Directory identitu pro vyhledávací službu a pak pomo
 | [REST API správy (2020-08-01 – Preview)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Přidá prostředek sdíleného privátního propojení pro databáze Azure Functions a Azure SQL pro MySQL. | Verze Public Preview. |
 | [Sada Management .NET SDK 4,0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | Aktualizace sady Azure SDK pro sadu Management SDK, cílené REST API verze 2020-08-01. | Všeobecně k dispozici. |
 
-### <a name="august-2020"></a>Srpen 2020
+## <a name="august-2020"></a>Srpen 2020
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |---------|------------------|-------------|---------------|
 | [dvojité šifrování](search-security-overview.md#encryption) | Zabezpečení | Povolte dvojité šifrování ve vrstvě úložiště nakonfigurováním šifrování CMK (Customer-Managed Key) pro nové vyhledávací služby. Vytvořte novou službu, [nakonfigurujte a používejte klíče spravované zákazníkem](search-security-manage-encryption-keys.md) pro indexy nebo mapy synonym a využijte při šifrování tohoto obsahu dvojité šifrování. | Všeobecně dostupná pro všechny služby vyhledávání vytvořené 1. srpna 2020 v těchto oblastech: Západní USA 2, Východní USA, Střed USA – jih, US Gov – Virginie US Gov – Arizona. K vytvoření služby použijte portál, rozhraní REST API pro správu nebo sady SDK. |
 
-### <a name="july-2020"></a>Červenec 2020
+## <a name="july-2020"></a>Červenec 2020
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |---------|------------------|-------------|---------------|
@@ -48,16 +46,16 @@ Vytvořte v Azure Active Directory identitu pro vyhledávací službu a pak pomo
 | [ Klientská knihovnaazure.search.documents](/python/api/overview/azure/search-documents-readme)  | Azure SDK pro Python| Klientská knihovna Python vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami Pythonu. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30. | Všeobecně k dispozici. </br> Nainstalujte [balíček Azure-Search-Documents](https://pypi.org/project/azure-search-documents/) z PyPI. |
 | [@azure/search-documents Klientská knihovna](/javascript/api/overview/azure/search-documents-readme)  | Azure SDK for JavaScript | Klientská knihovna pro JavaScript vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami JavaScript. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30. | Všeobecně k dispozici. </br> Nainstalujte [ @azure/search-documents balíček](https://www.npmjs.com/package/@azure/search-documents) z npm. |
 
-### <a name="june-2020"></a>Červen 2020
+## <a name="june-2020"></a>Červen 2020
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |---------|------------------|-------------|---------------|
 [**Knowledge Store**](knowledge-store-concept-intro.md) | Obohacení AI | Výstup indexeru s obohaceným AI, který ukládá obsah v Azure Storage pro použití v jiných aplikacích a procesech. | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](/rest/api/searchservice/) nebo novější nebo na portálu. |
 | [**Hledat REST API 2020-06-30**](/rest/api/searchservice/) | REST | Nová stabilní verze rozhraní REST API. Kromě znalostní báze Knowledge Store zahrnuje tato verze vylepšení vyhledávání relevance a bodování. | Všeobecně k dispozici. |
-| [**Okapi BM25 – algoritmus relevance**](https://en.wikipedia.org/wiki/Okapi_BM25) | Dotaz | Nový algoritmus hodnocení relevance se automaticky používá pro všechny nové služby vyhledávání vytvořené po 15. červenci. Pro služby, které jste vytvořili dřív, se můžete rozhodnout, že nastavíte `similarity` vlastnost u polí index. | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](/rest/api/searchservice/) nebo novější, nebo REST API 2019-05-06. |
+| [**Okapi BM25 – algoritmus relevance**](https://en.wikipedia.org/wiki/Okapi_BM25) | Dotazy | Nový algoritmus hodnocení relevance se automaticky používá pro všechny nové služby vyhledávání vytvořené po 15. červenci. Pro služby, které jste vytvořili dřív, se můžete rozhodnout, že nastavíte `similarity` vlastnost u polí index. | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](/rest/api/searchservice/) nebo novější, nebo REST API 2019-05-06. |
 | **executionEnvironment** | Zabezpečení (indexery) | Explicitně nastavte tuto vlastnost konfigurace indexeru tak, aby `private` vynutila všechna připojení k externím zdrojům dat v rámci privátního koncového bodu. Platí pouze pro služby vyhledávání, které využívají privátní propojení Azure. | Všeobecně k dispozici. </br> K nastavení tohoto obecného parametru konfigurace použijte [Search REST API 2020-06-30](/rest/api/searchservice/) . |
 
-### <a name="may-2020-microsoft-build"></a>Květen 2020 (Microsoft Build)
+## <a name="may-2020-microsoft-build"></a>Květen 2020 (Microsoft Build)
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |---------|------------------|-------------|---------------|
@@ -66,23 +64,23 @@ Vytvořte v Azure Active Directory identitu pro vyhledávací službu a pak pomo
 | [**Privátní odkaz na Azure pro soukromý koncový bod hledání**](service-create-private-endpoint.md) | Zabezpečení| Propojte vyhledávací službu z veřejného Internetu tak, že ji spustíte jako prostředek privátního propojení, který je přístupný jenom pro klientské aplikace a další služby Azure ve stejné virtuální síti. | Všeobecně k dispozici. </br> Použijte [správu REST API 2020-03-13](/rest/api/searchmanagement/) nebo novější nebo na portálu. |
 | [**Identita spravovaná systémem (verze Preview)**](search-howto-managed-identities-data-sources.md) | Zabezpečení (indexery) | Zaregistrujte vyhledávací službu jako důvěryhodnou službu s Azure Active Directory pro nastavení připojení k podporovanému zdroji dat Azure pro indexování. Platí pro [indexery](search-indexer-overview.md) , které ingestují obsah ze zdrojů dat Azure, jako jsou Azure SQL Database, Azure Cosmos DB a Azure Storage. | Verze Public Preview. </br> K registraci vyhledávací služby použijte portál. |
 | [**parametr dotazu SessionID**](index-similarity-and-scoring.md), [scoringStatistics = Global – parametr](index-similarity-and-scoring.md#scoring-statistics) | Dotaz (relevance) | Přidejte sessionID do dotazu a navažte relaci pro výpočet skóre hledání s scoringStatistics = Global pro shromažďování skóre ze všech horizontálních oddílů a pro přesnější výpočty skóre hledání. | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](/rest/api/searchservice/) nebo novější, nebo REST API 2019-05-06. |
-| [**featuresMode (Preview)**](index-similarity-and-scoring.md#featuresMode-param) | Dotaz | Přidejte tento parametr dotazu, abyste rozšířili skóre relevance tak, aby se zobrazilo více podrobností: skóre podobnosti za pole, frekvence termínů a počet jedinečných tokenů podle pole. Tyto datové body můžete využívat v algoritmech vlastního bodování. Ukázku, která tuto schopnost předvádí, najdete v tématu věnovaném [Přidání strojového učení (LearnToRank) k vyhledávání relevance](https://github.com/Azure-Samples/search-ranking-tutorial). | Verze Public Preview. </br> Použijte [Search REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) nebo REST API 2019-05-06-Preview. |
+| [**featuresMode (Preview)**](index-similarity-and-scoring.md#featuresMode-param) | Dotazy | Přidejte tento parametr dotazu, abyste rozšířili skóre relevance tak, aby se zobrazilo více podrobností: skóre podobnosti za pole, frekvence termínů a počet jedinečných tokenů podle pole. Tyto datové body můžete využívat v algoritmech vlastního bodování. Ukázku, která tuto schopnost předvádí, najdete v tématu věnovaném [Přidání strojového učení (LearnToRank) k vyhledávání relevance](https://github.com/Azure-Samples/search-ranking-tutorial). | Verze Public Preview. </br> Použijte [Search REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) nebo REST API 2019-05-06-Preview. |
 
-### <a name="march-2020"></a>Březen 2020
+## <a name="march-2020"></a>Březen 2020
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |---------|------------------|-------------|---------------|
 | [**Obnovitelné odstranění nativního objektu BLOB (Preview)**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | Indexery | Indexovací člen služby Azure Blob Storage v Azure Kognitivní hledání rozpozná objekty blob, které jsou ve stavu undeleteded, a během indexování odebere odpovídající hledaný dokument. | Verze Public Preview. </br> Pomocí služby [Search REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) a REST API 2019-05-06-Preview se spuštěním indexeru na zdroji dat objektu BLOB v Azure, který má povolené nativní "obnovitelné odstranění". |
 | [**REST API správy (2020-03-13)**](/rest/api/searchmanagement/management-api-versions) | REST | Nové stabilní REST API pro vytváření a správu vyhledávací služby. Přidání podpory protokolu IP a privátních odkazů | Všeobecně k dispozici. |
 
-### <a name="february-2020"></a>Únor 2020
+## <a name="february-2020"></a>Únor 2020
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |---------|------------------|-------------|---------------|
 | [**Detekce PII (Preview)**](cognitive-search-skill-pii-detection.md) | Obohacení AI | Nový způsob rozpoznávání používaný při indexování, který extrahuje osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby. | Verze Public Preview. </br> Použijte portál nebo [Search REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) nebo REST API 2019-05-06-Preview. |
 | [**Vyhledávání vlastních entit (Preview)**](cognitive-search-skill-custom-entity-lookup.md )| Obohacení AI | Nová schopnost rozpoznávání, která hledá text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale ne přesně. | Verze Public Preview. </br> Použijte portál nebo [Search REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) nebo REST API 2019-05-06-Preview. |
 
-### <a name="january-2020"></a>Leden 2020
+## <a name="january-2020"></a>Leden 2020
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |---------|------------------|-------------|---------------|
@@ -90,7 +88,7 @@ Vytvořte v Azure Active Directory identitu pro vyhledávací službu a pak pomo
 | [**Pravidla protokolu IP pro podporu brány firewall vázané na hranice (Preview)**](service-configure-firewall.md) | Zabezpečení | Omezte přístup ke koncovému bodu vyhledávací služby na konkrétní IP adresy. Rozhraní API ve verzi Preview má nové vlastnosti **IpRule** a **NetworkRuleSet** v [rozhraní CreateOrUpdate API](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service). Tato funkce ve verzi Preview je dostupná ve vybraných oblastech. |  Verze Public Preview s použitím rozhraní API-Version = 2019-10 -01-Preview.  |
 | [**Privátní odkaz Azure pro soukromý koncový bod hledání (Preview)**](service-create-private-endpoint.md) | Zabezpečení| Propojte vyhledávací službu z veřejného Internetu tak, že ji spustíte jako prostředek privátního propojení, který je přístupný jenom pro klientské aplikace a další služby Azure ve stejné virtuální síti. | Verze Public Preview s použitím rozhraní API-Version = 2019-10 -01-Preview.  |
 
-## <a name="feature-announcements-in-2019"></a>Oznámení funkcí v 2019
+## <a name="features-in-2019"></a>Funkce v 2019
 
 ### <a name="december-2019"></a>Prosinec 2019
 

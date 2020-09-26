@@ -3,16 +3,16 @@ title: Připojení počítačů mimo Azure k Azure Security Center
 description: Přečtěte si, jak připojit počítače mimo Azure k Security Center
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2602df2e8a2699914ee32138a8aeba31d7f58cdb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 82b8161f92f337002e9d8bbdc45cd53d5921fc00
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935553"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280670"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Připojení počítačů mimo Azure k Security Center
 
@@ -89,7 +89,7 @@ Další informace o instalaci a konfiguraci agenta najdete v tématu [připojen�
 
 
 ## <a name="verifying"></a>Ověřoval
-Gratulujeme! Teď můžete na jednom místě zobrazit počítače s Azure a mimo Azure společně. Otevřete [stránku inventarizace assetů](asset-inventory.md) a vyfiltrujte příslušné typy prostředků. Tyto dvě ikony rozlišují tyto typy:
+Blahopřejeme! Teď můžete na jednom místě zobrazit počítače s Azure a mimo Azure společně. Otevřete [stránku inventarizace assetů](asset-inventory.md) a vyfiltrujte příslušné typy prostředků. Tyto dvě ikony rozlišují tyto typy:
 
   ![icon1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Počítač mimo Azure
 

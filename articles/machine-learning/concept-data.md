@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 85aa78223b8db76cfb430341b19878bc6bbe87d7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ac0b3c151b379096ffb60e049d18b8f6219b1445
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651174"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359677"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Zabezpečení přístupu k datům v Azure Machine Learning
 
@@ -48,7 +48,7 @@ Až budete připraveni použít data v cloudovém řešení úložiště, doporu
 
 Následující diagram nabízí vizuální ukázku tohoto doporučeného pracovního postupu.
 
-![Data-koncept-diagram](./media/concept-data/data-concept-diagram.svg)
+![Diagram znázorňuje službu Azure Storage, která se zachází do úložiště dat, které se přetéká do datové sady. Datová sada natéká do modelu školení, která přechází na posun dat, který přetéká zpět na datovou sadu.](./media/concept-data/data-concept-diagram.svg)
 
 ## <a name="datastores"></a>Úložiště dat
 

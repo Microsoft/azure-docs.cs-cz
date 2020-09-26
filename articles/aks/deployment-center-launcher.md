@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: 42bdde45b3a289a35c5bf4c4651e5a50a639f049
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 36b2e829e56cf4d3b5ace64af989fa7f71725c44
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251769"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360833"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Centrum nasazení pro Azure Kubernetes
 
@@ -54,7 +54,7 @@ V tomto kurzu provedete následující:
 
 1. Vyberte cluster AKS a v levém okně vyberte **centrum nasazení (Preview)** . Vyberte **Začínáme**.
 
-   ![nastavení](media/deployment-center-launcher/settings.png)
+   ![Snímek obrazovky ukazuje Azure Portal se šipkou ukazující na centrum nasazení.](media/deployment-center-launcher/settings.png)
 
 1. Zvolte umístění kódu a vyberte **Další**. Pak vyberte jedno z aktuálně podporovaných úložišť: **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** nebo **GitHub**.
 
@@ -66,7 +66,7 @@ V tomto kurzu provedete následující:
 
     - **GitHub**: autorizovat a vyberte úložiště pro váš účet GitHub.
 
-        ![GitHub](media/deployment-center-launcher/github.gif)
+        ![Animace znázorňuje proces v GitHubu výběru GitHubu jako zdroje a následného výběru úložiště.](media/deployment-center-launcher/github.gif)
 
 
 1. Centrum nasazení analyzuje úložiště a detekuje vaše souboru Dockerfile. Pokud chcete aktualizovat souboru Dockerfile, můžete označené číslo portu upravit.
@@ -75,7 +75,7 @@ V tomto kurzu provedete následující:
 
     Pokud úložiště neobsahuje souboru Dockerfile, zobrazí systém zprávu pro potvrzení jednoho.
 
-    ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
+    ![Snímek obrazovky se zobrazením centra nasazení se zprávou nebylo možné najít souboru Dockerfile v úložišti.](media/deployment-center-launcher/dockerfile.png)
 
 1. Vyberte existující registr kontejnerů nebo ho vytvořte a pak vyberte **Dokončit**. Kanál se vytvoří automaticky a zařadí do fronty sestavení v [Azure Pipelines](/azure/devops/pipelines/index?view=azure-devops).
 
@@ -87,7 +87,7 @@ V tomto kurzu provedete následující:
 
 1. Po dokončení nasazení se zobrazí úspěšné protokoly.
 
-    ![Protokoly](media/deployment-center-launcher/logs.png)
+    ![Snímek obrazovky ukazuje centrum nasazení s verzí-1 označenou zeleným znakem zaškrtnutí.](media/deployment-center-launcher/logs.png)
 
 ## <a name="examine-the-ci-pipeline"></a>Prozkoumání kanálu CI
 

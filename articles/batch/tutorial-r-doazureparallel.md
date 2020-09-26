@@ -5,12 +5,12 @@ ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
 ms.custom: mvc
-ms.openlocfilehash: dc5c022b4722f844e0b3c117bb5961843865bd55
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2c988075031be326f01e02bceff1c948295d5845
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84418173"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292859"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Kurz: Spuštění paralelní simulace jazyka R ve službě Azure Batch 
 
@@ -24,7 +24,7 @@ V tomto kurzu se dozvíte, jak nasadit fond služby Batch a spustit ve službě 
 > * Vytvoření fondu služby Batch jako paralelního back-endu pro relaci jazyka R
 > * Spuštění ukázkové paralelní simulace v tomto fondu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalovaná distribuce [R](https://www.r-project.org/), například [Microsoft R Open](https://mran.microsoft.com/open). Použijte jazyk R verze 3.3.1 nebo novější.
 
@@ -193,7 +193,7 @@ hist(closingPrices_s)
 
 Výstup je podobný tomuto:
 
-![Distribuce koncových cen](media/tutorial-r-doazureparallel/closing-prices-local.png)
+![Snímek obrazovky znázorňující histogram konečných cen](media/tutorial-r-doazureparallel/closing-prices-local.png)
   
 Místní simulace se dokončí za pár sekund nebo hned:
 

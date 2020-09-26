@@ -12,12 +12,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9cd70d534cebf35938285208dc76bd4a6d94533
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 3d9f59906c566d80344891c0796a85b0a4972e68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279002"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313089"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Kurz: nastavení KOSMETICE jako zálohy pro AD FS v Azure AD Connect
 
@@ -29,7 +29,7 @@ Následující kurz vás provede nastavením synchronizace hodnot hash hesel jak
 >[!NOTE]
 >V případě, že nemáte přístup k serveru Azure AD Connect nebo server nemá přístup k Internetu, můžete kontaktovat [Podpora Microsoftu](https://support.microsoft.com/en-us/contactus/) a pomoct se změnami na straně Azure AD.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tento kurz sestaví na tomto [kurzu: federovat jedno prostředí doménové struktury AD do cloudu](tutorial-federation.md) a před pokusem o provedení tohoto kurzu je v jednotlivých požadavcích.  Pokud jste tento kurz nedokončili, udělejte to ještě před provedením kroků v tomto dokumentu.
 
 >[!IMPORTANT]
@@ -72,9 +72,9 @@ Teď vám ukážeme, jak přepnout na synchronizaci hodnot hash hesel. Než zač
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Vyzkoušejte si přihlašování jedním z našich uživatelů
 
-1. Přejít na [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com).
 2. Přihlaste se pomocí uživatelského účtu vytvořeného v našem novém tenantovi.  Budete se muset přihlásit pomocí následujícího formátu: ( user@domain.onmicrosoft.com ). Použijte stejné heslo, které uživatel používá k místnímu přihlášení.</br>
-   ![Ověříte](media/tutorial-password-hash-sync/verify1.png)</br>
+   ![Snímek obrazovky, který zobrazuje úspěšnou zprávu při testování přihlášení. ](media/tutorial-password-hash-sync/verify1.png)</br>
 
 ## <a name="switch-back-to-federation"></a>Přepnout zpátky na federaci
 Teď vám ukážeme, jak přejít zpátky k Federaci.  Uděláte to takto:
@@ -91,7 +91,7 @@ Teď vám ukážeme, jak přejít zpátky k Federaci.  Uděláte to takto:
 10. Po dokončení konfigurace klikněte na **Další**.
 ![Konfigurace](media/tutorial-phs-backup/backup4.png)</br>
 11. Na obrazovce **ověřit připojení federace** klikněte na **ověřit**.  Možná budete muset nakonfigurovat záznamy DNS (přidat záznamy a a AAAA), aby se tato konfigurace úspěšně dokončila.
-![Ověříte](media/tutorial-phs-backup/backup5.png)</br>
+![Snímek obrazovky zobrazující obrazovku ověřit připojení federace a tlačítko ověřit](media/tutorial-phs-backup/backup5.png)</br>
 12. Klikněte na tlačítko **konec**.
 
 ## <a name="reset-the-ad-fs-and-azure-trust"></a>Resetování AD FS a vztahu důvěryhodnosti Azure
@@ -106,11 +106,11 @@ Teď je potřeba resetovat vztah důvěryhodnosti mezi AD FS a Azure.
 6.  Na obrazovce **připojit k AD FS** zadejte uživatelské jméno a heslo CONTOSO\Administrator a klikněte na **Další.**
 7.  Na obrazovce **certifikáty** klikněte na **Další**.
 
-## <a name="test-signing-in-with-one-of-our-users"></a>Vyzkoušejte si přihlašování jedním z našich uživatelů
+## <a name="test-signing-in-with-a-user"></a>Testování přihlášení pomocí uživatele
 
-1.  Přejít na [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1.  Přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com).
 2. Přihlaste se pomocí uživatelského účtu vytvořeného v našem novém tenantovi.  Budete se muset přihlásit pomocí následujícího formátu: ( user@domain.onmicrosoft.com ). Použijte stejné heslo, které uživatel používá k místnímu přihlášení.
-![Ověříte](media/tutorial-password-hash-sync/verify1.png)
+![Ověření](media/tutorial-password-hash-sync/verify1.png)
 
 Nyní jste úspěšně nastavili hybridní prostředí identity, které můžete použít k otestování a seznámení s tím, co Azure nabízí.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 18a9de8a2eaa2364e89e831db8dab5cbbb061c10
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 4bdca8921a99db764cbc8ee1edfdad8cf8b8568f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299241"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360935"
 ---
 # <a name="what-is-a-voice-assistant"></a>Co je hlasový asistent?
 
@@ -27,7 +27,7 @@ Služba hlasového asistenta poskytuje rychlou a spolehlivou interakci mezi zař
 
 Prvním krokem k vytvoření hlasového asistenta je rozhodování o tom, co by mělo dělat. Služba rozpoznávání řeči poskytuje více a doplňková řešení pro vytváření interakcí pomocníka. Do flexibilního a flexibilního robota vytvořeného pomocí Azure Bot Service s kanálem [Direct line Speech](direct-line-speech.md) můžete přidat hlas a možnosti hlasu a využít jednoduchost vytváření [vlastních příkazů](custom-commands.md) pro jednoduché scénáře hlasových příkazů.
 
-| Jestli chceš... | Pak zvažte... | Například... |
+| Jestli chceš... | Pak zvažte... | Příklad: |
 |-------------------|------------------|----------------|
 |Nedokončená konverzace s robustními integrací dovedností a úplným řízením nasazení | Azure Bot Service robot s [přímým line Speech](direct-line-speech.md) Channel | <ul><li>"Potřebuji přejít na Seattle"</li><li>"Jaký druh pizza můžu objednat?"</li></ul>
 |Hlasové příkazy nebo jednoduché konverzace orientované na úlohy se zjednodušeným vytvářením a hostováním | [Vlastní příkazy](custom-commands.md) | <ul><li>"Zapnout režijní světlo"</li><li>"Udělejte si 5 stupňů zahřívání"</li><li>Další ukázky [k dispozici](https://speech.microsoft.com/customcommands)</li></ul>
@@ -81,7 +81,7 @@ Hlasové asistenti sestavené pomocí služby Azure Speech Services můžou vyu�
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získejte zdarma klíč předplatného služby Speech](get-started.md)
+* [Získejte zdarma klíč předplatného služby Speech](overview.md#try-the-speech-service-for-free)
 * [Další informace o vlastních příkazech](custom-commands.md)
 * [Další informace o funkci Direct line Speech](direct-line-speech.md)
 * [Získat sadu Speech SDK](speech-sdk.md)

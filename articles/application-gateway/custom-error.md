@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 953be98de855162127fd8b8b8273fe9817668db7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ff3e9db4dcfe0bedc348323dbbddd1e66124fc5d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934816"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360153"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Vytvořit Application Gateway vlastní chybové stránky
 
@@ -48,7 +48,7 @@ Po zadání chybové stránky ji služba Application Gateway stáhne z umístěn
 
 1. Na portálu přejděte na Application Gateway a vyberte Application Gateway.
 
-    ![AG – přehled](media/custom-error/ag-overview.png)
+    ![Snímek obrazovky se zobrazí stránka s přehledem pro aplikační bránu.](media/custom-error/ag-overview.png)
 2. Klikněte na **naslouchací procesy** a přejděte na konkrétní naslouchací proces, kde chcete zadat chybovou stránku.
 
     ![Naslouchací procesy Application Gateway](media/custom-error/ag-listener.png)

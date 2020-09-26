@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 226e35452e4b266c3c0a698505d47ab9a53b9761
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984385"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280466"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Provedení obnovení k určitému bodu v čase u dat objektů blob bloku
 
@@ -54,9 +54,7 @@ Následující obrázek ukazuje účet úložiště nakonfigurovaný pro obnoven
 
 Pokud chcete nakonfigurovat obnovení k bodu v čase pomocí PowerShellu, nejdřív nainstalujte modul [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) verze 2.6.0 nebo novější. Pak zavolejte příkaz Enable-AzStorageBlobRestorePolicy a povolte tak obnovení k bodu v čase pro účet úložiště.
 
-Následující příklad umožňuje obnovitelné odstranění a nastavuje dobu uchování s mírným odstraněním, povoluje kanál změn a pak umožňuje obnovení k určitému bodu v čase. Před spuštěním tohoto příkladu použijte Azure Portal nebo šablonu Azure Resource Manager, abyste mohli taky povolit správu verzí objektů BLOB.
-
-Při spuštění tohoto příkladu Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
+Následující příklad umožňuje obnovitelné odstranění a nastavuje dobu uchovávání obnovitelného odstranění, umožňuje změnit kanál a správu verzí a pak umožňuje obnovení k určitému bodu v čase.    Při spuštění tohoto příkladu Nezapomeňte nahradit hodnoty v lomených závorkách vlastními hodnotami:
 
 ```powershell
 # Sign in to your Azure account.
@@ -71,10 +69,11 @@ Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -RetentionDays 14
 
-# Enable change feed.
+# Enable change feed and versioning.
 Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -EnableChangeFeed $true
+    -EnableChangeFeed $true `
+    -IsVersioningEnabled $true
 
 # Enable point-in-time restore with a retention period of 7 days.
 # The retention period for point-in-time restore must be at least
@@ -250,5 +249,5 @@ Chcete-li spustit operaci obnovení synchronně a zablokovat spuštění, dokud 
 
 - [Obnovení bodu v čase pro objekty blob bloku](point-in-time-restore-overview.md)
 - [Obnovitelné odstranění](soft-delete-overview.md)
-- [Změnit kanál](storage-blob-change-feed.md)
+- [Změna kanálu](storage-blob-change-feed.md)
 - [Správa verzí objektů BLOB](versioning-overview.md)

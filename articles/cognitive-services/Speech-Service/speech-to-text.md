@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Převod řeči na text, převod řeči na textový software
-ms.openlocfilehash: 804acd17f3df91cc3df949d6d9ccac0450bb225f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: f4392881c2f572b1e53d7c283ef5c1debc1d20ea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569216"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359932"
 ---
 # <a name="what-is-speech-to-text"></a>Co je převod řeči na text?
 
@@ -58,5 +58,5 @@ Batch přepis je sada REST API operací, které umožňují přepisovat velké m
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Získejte zdarma klíč předplatného služby Speech](get-started.md)
+- [Získejte zdarma klíč předplatného služby Speech](overview.md#try-the-speech-service-for-free)
 - [Získat sadu Speech SDK](speech-sdk.md)

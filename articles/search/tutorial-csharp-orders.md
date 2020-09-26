@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 9819615039a6dd6aceec796a3ec1c7338f6f3968
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: a6114791a1909a0cd02b96a4cdcc4c133b8e662e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998522"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280840"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Kurz: seřazení výsledků hledání pomocí sady .NET SDK
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Filtrovat výsledky podle vzdálenosti od zeměpisného bodu
 > * Seřazení výsledků na základě profilu vyhodnocování
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 

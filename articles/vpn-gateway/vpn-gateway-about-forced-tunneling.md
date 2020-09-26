@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: Konfigurace vynuceného tunelování – připojení typu Site-to-site: Classic'
-description: Postup přesměrování nebo vynucení veškerého provozu vázaného na Internet zpátky do místního umístění.
+description: Naučte se konfigurovat vynucené tunelování pro virtuální sítě vytvořené pomocí modelu nasazení Classic.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: fe06257127ff352f68fb27d3507cee0229e31498
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5999ef8431ce1e128c3775450eedf13644505918
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77201573"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313531"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Konfigurace vynuceného tunelování pomocí modelu nasazení Classic
 

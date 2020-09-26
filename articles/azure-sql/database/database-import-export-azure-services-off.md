@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: ea5f2d5838c926fa8ee7b92278b0854264346a7b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 7d36984e7117305b22381e4266575e998c080ae5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543754"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360187"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Import nebo export Azure SQL Database, aniž by bylo možné povolit službám Azure přístup k serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ Následující kroky ukazují, jak se připojit k virtuálnímu počítači pomo
 
 1. Po dokončení nasazení přejděte k prostředku virtuálního počítače.
 
-   ![Virtuální počítač](./media/database-import-export-azure-services-off/vm.png)  
+   ![Snímek obrazovky s tlačítkem připojit zobrazí stránku s přehledem virtuálního počítače.](./media/database-import-export-azure-services-off/vm.png)  
 
 2. Vyberte **Připojit**.
 
