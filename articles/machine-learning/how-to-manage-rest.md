@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 39000a34d1d19026ce406eeb996f89d1acc7ea04
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b733fbc44deefe46e3496e288ebad525346ef005
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897370"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322304"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Vytváření, spouštění a odstraňování prostředků Azure ML pomocí REST
 
 
 
-K dispozici je několik způsobů, jak spravovat prostředky Azure ML. Můžete použít [portál](https://portal.azure.com/), [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)nebo [sadu Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true). Případně můžete zvolit REST API. REST API používá operace HTTP standardním způsobem k vytváření, načítání, aktualizaci a odstraňování prostředků. REST API funguje s jakýmkoli jazykem nebo nástrojem, který může provádět požadavky HTTP. Jednoduchá struktura je často vhodná pro vytváření skriptovacích prostředí a pro automatizaci MLOps. 
+K dispozici je několik způsobů, jak spravovat prostředky Azure ML. Můžete použít [portál](https://portal.azure.com/), [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)nebo [sadu Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true). Případně můžete zvolit REST API. REST API používá operace HTTP standardním způsobem k vytváření, načítání, aktualizaci a odstraňování prostředků. REST API funguje s jakýmkoli jazykem nebo nástrojem, který může provádět požadavky HTTP. Jednoduchá struktura je často vhodná pro vytváření skriptovacích prostředí a pro automatizaci MLOps. 
 
 V tomto článku získáte informace o těchto tématech:
 

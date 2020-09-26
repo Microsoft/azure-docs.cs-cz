@@ -3,12 +3,12 @@ title: Nastavte hesla pro virtuální počítače v Azure Lab Services | Microso
 description: Naučte se, jak nastavit a resetovat hesla pro virtuální počítače v učebných laboratořích Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6012123b729bd1be6b4ff0fdb00d71aca56cfa09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49615b37875b8340f46ed900a1e7144256c7cb7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443770"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334068"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Nastavení a správa fondu virtuálních počítačů 
 V tomto článku se dozvíte, jak provádět následující úlohy:
@@ -24,7 +24,7 @@ Chcete-li zvýšit nebo snížit kapacitu testovacího prostředí (počet virtu
 2. Zadejte nový **počet virtuálních počítačů** , které chcete v testovacím prostředí. Tento počet musí být větší nebo roven počtu uživatelů registrovaných v testovacím prostředí. 
 3. Pak vyberte **Uložit**. 
 
-    ![Tlačítko spustit vše](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
+    ![Snímek obrazovky, který zobrazuje okno kapacity testovacího prostředí s vybraným tlačítkem "maximum počítačů v testovacím prostředí" a "Uložit".](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
 4. Pokud jste zvýšili kapacitu, uvidíte virtuální počítač nebo virtuální počítače, které jsou vytvářeny. Pokud v seznamu nevidíte nový virtuální počítač, aktualizujte stránku. 
 
     ![Vytvářený virtuální počítač](./media/how-to-set-virtual-machine-passwords/vm-being-created.png)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 30a782c7d7c13eb9c92e4a4bf64e268416a2b382
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bd8eee2fd6134bb36c0b0ab45492567f4fdbec26
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561546"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297500"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
@@ -127,7 +127,7 @@ DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred
 Console.WriteLine($"Service client created – ready to go");
 ```
 
-Soubor uložte. 
+Uložte soubor. 
 
 Všimněte si, že v tomto příkladu se používá interaktivní přihlašovací údaje prohlížeče:
 ```csharp
@@ -234,8 +234,7 @@ await foreach (ModelData md in modelDataList)
     Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
 }
 ```
-
-Předtím, než program znovu spustíte pro otestování tohoto nového kódu, zajistěte, aby jste svůj model nahráli již při posledním spuštění programu. Digitální vlákna Azure vám neumožní nahrát stejný model dvakrát, takže se při opětovném spuštění programu očekává, že se zobrazí výjimka.
+Předtím, než program znovu spustíte pro otestování tohoto nového kódu, zajistěte, aby jste svůj model nahráli již při posledním spuštění programu. Digitální vlákna Azure vám neumožní nahrát stejný model dvakrát, takže pokud se pokusíte znovu nahrát stejný model, program by měl vyvolat výjimku.
 
 Nyní spusťte program znovu s tímto příkazem v příkazovém okně:
 
@@ -258,7 +257,6 @@ try {
     Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
 }
 ```
-
 Pokud program spustíte `dotnet run` v okně příkazového okna nyní, uvidíte, že se vám vrátí kód chyby. Výstup bude vypadat nějak takto:
 
 ```cmd/sh
@@ -270,11 +268,11 @@ Load model: 409:Service request failed.
 Status: 409 (Conflict)
 
 Content:
-{"error":{"code":"DocumentAlreadyExists","message":"A document with same identifier already exists.","details":[]}}
+{"error":{"code":"ModelAlreadyExists","message":"Model with same ID already exists dtmi:com:contoso:SampleModel;1. Use Model_List API to view models that already exist. See the Swagger example. (http://aka.ms/ModelListSwSmpl):}}
 
 Headers:
 api-supported-versions: REDACTED
-Date: Tue, 05 May 2020 01:57:51 GMT
+Date: Thu, 10 Sep 2020 01:57:51 GMT
 Content-Length: 115
 Content-Type: application/json; charset=utf-8
 
@@ -392,6 +390,25 @@ await ListRelationships(client, "sampleTwin-0");
 ```
 
 V příkazovém okně spusťte program pomocí příkazu `dotnet run` . Měl by se zobrazit seznam všech relací, které jste vytvořili.
+
+Tady je příklad výstupu:
+
+```cmd/sh
+Hello World!
+Service client created - ready to go
+
+Upload a model
+Type name: System.Collections.Generic.Dictionary'2[System.String,System.String]: dtmi:contosocom:DigitalTwins:SampleModel;1
+Create twin: sampleTwin-0
+Create twin: sampleTwin-1
+Create twin: sampleTwin-2
+Created relationship successfully
+Created relationship successfully
+Twin sampleTwin-0 is connected to:
+-contains->sampleTwin-1
+-contains->sampleTwin-2
+
+```
 
 ### <a name="query-digital-twins"></a>Dotazování na digitální vlákna
 

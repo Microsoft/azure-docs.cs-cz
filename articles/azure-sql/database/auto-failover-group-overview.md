@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 7b4a85077c8e0147f926f9a86fc8a003591ec8ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 469620456fecb7c0cb398988c4a4fc25da97f863
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277729"
+ms.locfileid: "91357705"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -153,7 +153,7 @@ Pokud chcete převzít služby při selhání skupiny převzetí služeb při se
 
 Skupina automatického převzetí služeb při selhání musí být nakonfigurovaná na primárním serveru a bude připojena k sekundárnímu serveru v jiné oblasti Azure. Skupiny mohou obsahovat všechny nebo některé databáze na těchto serverech. Následující diagram znázorňuje typickou konfiguraci geograficky redundantní cloudové aplikace s využitím více databází a skupiny s automatickým převzetím služeb při selhání.
 
-![automatické převzetí služeb při selhání](./media/auto-failover-group-overview/auto-failover-group.png)
+![Diagram znázorňuje typickou konfiguraci geograficky redundantní cloudové aplikace s využitím více databází a skupiny s automatickým převzetím služeb při selhání.](./media/auto-failover-group-overview/auto-failover-group.png)
 
 > [!NOTE]
 > Podrobný kurz přidání databáze v SQL Database do skupiny převzetí služeb při selhání najdete v tématu [přidání SQL Database do skupiny převzetí služeb při selhání](failover-group-add-single-database-tutorial.md) .

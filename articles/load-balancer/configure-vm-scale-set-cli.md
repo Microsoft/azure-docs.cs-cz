@@ -1,17 +1,17 @@
 ---
 title: Konfigurace sady škálování virtuálních počítačů s existujícím Azure Load Balancer – Azure CLI
-description: Naučte se konfigurovat sadu škálování virtuálního počítače s existujícím Azure Load Balancer.
+description: Naučte se konfigurovat sadu škálování virtuálního počítače s existujícím Azure Load Balancer pomocí rozhraní příkazového řádku Azure CLI.
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 2d734e5242ff2a250d332de78cfa3b7f017a3fff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 990380d553cc12d1a87b2e1c7ca9b09864801294
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809470"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333975"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-cli"></a>Konfigurace sady škálování virtuálních počítačů s existujícím Azure Load Balancer pomocí rozhraní příkazového řádku Azure
 

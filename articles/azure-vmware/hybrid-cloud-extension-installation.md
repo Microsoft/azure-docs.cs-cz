@@ -3,12 +3,12 @@ title: Nainstalovat VMware HCX
 description: Nastavení řešení VMware HCX pro privátní cloud řešení Azure VMware
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.openlocfilehash: 76a7432b78ec2141039dcdc5dd1d7572335b18e1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a101712f2d80e0d8e70d37bd5b7b08931f62ba3d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263197"
+ms.locfileid: "91356549"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Nainstalovat HCX pro řešení VMware pro Azure
 
@@ -40,7 +40,7 @@ Po dokončení instalace můžete postupovat podle doporučených dalších krok
 
 Při přípravě na použití řešení Azure VMware pro privátní cloud HCX je zásadní krok plánování pro změnu velikosti úloh na výpočetní prostředky a prostředky úložiště. Vyřešte krok změny velikosti jako součást prvotního plánování prostředí privátního cloudu. 
 
-Velikost úloh můžete také provádět provedením [posouzení řešení Azure VMware](https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) na portálu Azure Migrate.
+Velikost úloh můžete také provádět provedením [posouzení řešení Azure VMware](../migrate/how-to-create-azure-vmware-solution-assessment.md) na portálu Azure Migrate.
 
 ## <a name="software-version-requirements"></a>Požadavky na verzi softwaru
 

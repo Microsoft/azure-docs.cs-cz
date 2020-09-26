@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 44ed9c0d19b6e0034b49e36448765d098d575273
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f3c7c166b72a43b6b11dc1830643332b032abad2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325313"
+ms.locfileid: "91356864"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Použití geografického obnovení k obnovení víceklientské aplikace SaaS ze záloh databáze
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 V tomto kurzu se seznámíte s úplným scénářem zotavení po havárii pro víceklientské aplikace SaaS, která je implementovaná u databáze na model tenanta. [Geografické obnovení](recovery-using-backups.md) použijete k obnovení katalogu a databází tenantů z automatického udržování geograficky redundantních záloh do alternativní oblasti obnovení. Po vyřešení výpadku použijete [geografickou replikaci](active-geo-replication-overview.md) k vrácení změněných databází do jejich původní oblasti.
 
-![Geografické obnovení – architektura](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
+![Diagram znázorňuje původní oblast a oblasti obnovení, které mají aplikaci, katalog, původní nebo zrcadlené image serverů a fondů, automatické zálohování do úložiště, s oblastí obnovení, která přijímá geografickou replikaci zálohy a má server a fond pro nové klienty.](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
 Geografické obnovení je řešení zotavení po havárii s nejnižšími náklady pro Azure SQL Database. Obnovení z geograficky redundantní zálohy ale může způsobit ztrátu dat o jednu hodinu. Může to trvat značnou dobu v závislosti na velikosti každé databáze. 
 

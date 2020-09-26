@@ -4,12 +4,12 @@ description: Tento článek popisuje postup vytvoření aplikace .NET Core, kter
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1bf41eb5ef5b43a59330d1735086ca595d7604b5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 639be20b1d87dec3a7c85e5fcccc0c483337c5b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010578"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334221"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Odesílání událostí do a příjem událostí z Azure Event Hubs – .NET (Azure. Messaging. EventHubs) 
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí knihovny .NET **Azure. Messaging. EventHubs** . 
@@ -19,7 +19,7 @@ V tomto rychlém startu se dozvíte, jak odesílat události do centra událost�
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
 
 K dokončení tohoto rychlého startu potřebujete následující požadavky:
@@ -196,7 +196,7 @@ V tomto rychlém startu použijete Azure Storage jako úložiště kontrolního 
         static async Task ProcessEventHandler(ProcessEventArgs eventArgs)
         {
             // Write the body of the event to the console window
-            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+            Console.WriteLine("\tReceived event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.Array, eventArgs.Data.Body.Offset, eventArgs.Data.Body.Count));
 
             // Update checkpoint in the blob storage so that the app receives only new events the next time it's run
             await eventArgs.UpdateCheckpointAsync(eventArgs.CancellationToken);

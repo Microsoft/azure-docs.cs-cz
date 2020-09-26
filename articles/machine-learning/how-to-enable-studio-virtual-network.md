@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 5dce7cde3c46fbcf3f764819f730f42cace4a74c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0c5f91f1423bc20b2202589c488c9b225ed3fbaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897538"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333847"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Použití Azure Machine Learning studia ve službě Azure Virtual Network
 
@@ -56,8 +56,7 @@ Pokud například používáte skupiny zabezpečení sítě (NSG) k omezení odc
 
 ## <a name="access-data-using-the-studio"></a>Přístup k datům pomocí studia
 
-Pokud jsou vaše data uložená ve virtuální síti, musíte nakonfigurovat účty úložiště tak, aby používaly [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) , a udělit přístup k vašim datům v studiu.
-
+Po [Přidání účtu úložiště Azure do virtuální sítě](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)musíte svůj účet úložiště nakonfigurovat tak, aby používal [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) k udělení přístupu studia k vašim datům. Studio podporuje účty úložiště nakonfigurované pro použití koncových bodů služby nebo privátních koncových bodů. Účty úložiště ve výchozím nastavení používají koncové body služby. Postup povolení privátních koncových bodů pro úložiště najdete v tématu [použití privátních koncových bodů pro Azure Storage](../storage/common/storage-private-endpoints.md)
 
 Pokud nepovolíte spravovanou identitu, zobrazí se tato chyba, navíc se `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` zakážou tyto operace:
 
@@ -72,7 +71,6 @@ Studio podporuje čtení dat z následujících typů úložiště dat ve virtu�
 * Azure Data Lake Storage Gen1
 * Azure Data Lake Storage Gen2
 * Azure SQL Database
-
 
 ### <a name="configure-datastores-to-use-managed-identity"></a>Konfigurace úložiště dat pro použití spravované identity
 

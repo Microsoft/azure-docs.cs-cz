@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 4312c6b89a7ba3e56e39050d76c673aa532f6f92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cfc746d883b565fe7a082a316ce314f385225df
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737338"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358147"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Vytvoření služby privátního propojení pomocí Azure CLI
 V tomto článku se dozvíte, jak vytvořit službu privátního propojení v Azure pomocí rozhraní příkazového řádku Azure CLI.
@@ -88,7 +88,7 @@ Služba privátního propojení vyžaduje IP adresu z libovolné podsítě podle
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
 ```
  
-## <a name="create-a-private-link-service"></a>Vytvoření služby privátního propojení  
+## <a name="create-a-private-link-service-using-standard-load-balancer"></a>Vytvoření služby privátního propojení pomocí Standard Load Balancer 
  
 Vytvoření služby privátního propojení pomocí Standard Load Balancer konfigurace IP adresy front [-Endu pomocí AZ Network Private-Link-Service Create](/cli/azure/network/private-link-service#az-network-private-link-service-create). Tento příklad vytvoří službu privátního propojení s názvem *myPLS* pomocí Standard Load Balancer s názvem *myLoadBalancer* ve skupině prostředků s názvem *myResourceGroup*. 
  

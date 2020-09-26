@@ -10,19 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: seodec2018, devx-track-javascript
-ms.openlocfilehash: 97d5c78264f9b2d9f21c618597ccd1c3709c9e0f
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: seodec2018, devx-track-js
+ms.openlocfilehash: ea78b90719200bd1176b90986b021d44b34e06e1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405921"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298405"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Rychlý Start: vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API a Node.js
 
 V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání na webu. Tato Node.js aplikace odešle požadavek na hledání do rozhraní API a zobrazí odpověď JSON. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 

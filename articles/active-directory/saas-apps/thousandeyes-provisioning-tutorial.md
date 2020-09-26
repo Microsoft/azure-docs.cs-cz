@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: a009361267a364f04237716f3623921c892e2708
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7958ef9195c9dcef65fab70fbf48edf2021ff94b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546419"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355818"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Kurz: Konfigurace ThousandEyes pro Automatické zřizování uživatelů
 
@@ -23,7 +23,7 @@ Cílem tohoto kurzu je Ukázat kroky, které musíte v ThousandEyes a Azure AD p
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 * Tenant Azure Active Directory
 * Tenant ThousandEyes se [standardním plánem](https://www.thousandeyes.com/pricing) nebo lepším povoleným 
@@ -61,13 +61,13 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
 3. Vyberte svou instanci ThousandEyes a pak vyberte kartu **zřizování** .
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Zřizování ThousandEyes](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
+    ![Snímek obrazovky zobrazuje kartu zřizování pro ThousandEyes s automatickým vybraným pro režim zřizování.](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
 5. V části **přihlašovací údaje správce**  zadejte **token nosiče OAuth** generovaný účtem ThousandEyes (můžete najít nebo vygenerovat token v části **profil** účtu ThousandEyes).
 
-    ![Zřizování ThousandEyes](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
+    ![Snímek obrazovky ukazuje, kde najít odkaz nastavení účtu pro aktuální skupinu účtů.](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 
 6. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci ThousandEyes. Pokud se připojení nepovede, ujistěte se, že má váš účet ThousandEyes oprávnění správce, a zkuste krok 5 znovu.
 
@@ -77,7 +77,7 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
 9. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé ThousandEyes**.
 
-10. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do ThousandEyes. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v ThousandEyes pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+10. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do ThousandEyes. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v ThousandEyes pro operace aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
 11. Pokud chcete povolit službu Azure AD Provisioning pro ThousandEyes, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
@@ -94,4 +94,4 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).

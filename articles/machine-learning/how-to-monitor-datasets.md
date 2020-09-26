@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d60a963f8ad4b29d3c282d30e6aca9973208860b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8f54ece9a932ed4cc0adc29747e1c58ee22646c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905152"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333864"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Zjištění posunu dat (Preview) u datových sad
 
@@ -41,7 +41,7 @@ Metriky pro posun dat můžete zobrazit pomocí sady Python SDK nebo v Azure Mac
 ## <a name="prerequisites"></a>Požadavky
 
 K vytváření a práci s monitory datových sad potřebujete:
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 * [Nainstalovaná sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true), která zahrnuje balíček AzureML-DataSet Sets.
 * Strukturovaná (tabulková) data s časovým razítkem zadaným v cestě k souboru, názvu souboru nebo sloupci v datech.
@@ -85,12 +85,12 @@ Proveďte analýzu minulých dat. | Tento scénář se dá použít k pochopení
 
 Monitory datových sad závisí na následujících službách Azure.
 
-|Služba Azure  |Description  |
+|Služba Azure  |Popis  |
 |---------|---------|
 | *Datová sada* | Při načítání školicích dat a porovnávání dat pro školení modelů posun používá Machine Learning datové sady.  Generování profilu dat se používá ke generování některých hlášených metrik, jako jsou minimální, maximální a jedinečné hodnoty, počet jedinečných hodnot. |
 | *Kanál a výpočetní prostředí pro AzureML* | Úloha výpočtu posunu je hostovaná v kanálu AzureML.  Úloha se aktivuje na vyžádání nebo podle plánu, aby běžela na výpočetním prostředí nakonfigurovaném v době vytváření odchodu sledování.
 | *Application Insights*| Posun vygeneruje metriky pro Application Insights patřící do pracovního prostoru Machine Learning.
-| *Úložiště objektů BLOB v Azure*| Posun vygeneruje metriky ve formátu JSON do úložiště objektů BLOB v Azure.
+| *Azure Blob Storage*| Posun vygeneruje metriky ve formátu JSON do úložiště objektů BLOB v Azure.
 
 ## <a name="how-dataset-monitors-data"></a>Jak datová sada monitoruje data
 
@@ -102,7 +102,7 @@ Cílová datová sada musí mít `timeseries` nastavenou vlastnost zadáním slo
 
 ### <a name="python-sdk"></a><a name="sdk-dataset"></a>Python SDK
 
-[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)Metoda třídy [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) definuje sloupec časového razítka pro datovou sadu.
+[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)Metoda třídy [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) definuje sloupec časového razítka pro datovou sadu.
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -129,7 +129,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-Úplný příklad použití `timeseries` vlastnosti datových sad naleznete v dokumentaci k [ukázkovému poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) nebo [sadě SDK datových sad](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
+Úplný příklad použití `timeseries` vlastnosti datových sad naleznete v dokumentaci k [ukázkovému poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) nebo [sadě SDK datových sad](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
 

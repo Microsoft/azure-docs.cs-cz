@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76902702"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322423"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scénář: Zpracování výjimek a protokolování chyb v aplikacích logiky
 
@@ -90,7 +90,7 @@ Používáme aktivační událost **požadavku** , jak je znázorněno v násled
 ```
 
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Postup
 
 Je potřeba protokolovat zdroj (žádost) záznamu pacienta z portálu Dynamics CRM Online.
 
@@ -103,15 +103,15 @@ Je potřeba protokolovat zdroj (žádost) záznamu pacienta z portálu Dynamics 
 
    **Vložit položku protokolu**
 
-   ![Vložit položku protokolu](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
+   ![Snímek obrazovky z návrháře aplikace logiky ukazující nastavení konfigurace pro InsertLogEntry.](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
    **Vložit položku chyby**
 
-   ![Vložit položku protokolu](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
+   ![Snímek obrazovky z návrháře aplikace logiky ukazující nastavení konfigurace pro CreateErrorRecord.](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
    **Vyhledat selhání při vytváření záznamu**
 
-   ![Podmínka](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![Snímek obrazovky CreateErrorRecord v návrháři aplikace logiky zobrazující pole pro vytvoření položky chyby](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>Zdrojový kód aplikace logiky
 
@@ -468,7 +468,7 @@ Rozhraní API zavoláme z aplikace logiky pomocí následující syntaxe:
 
 Výraz v předchozí ukázce kódu kontroluje *Create_NewPatientRecord* stav **selhání**.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 * V aplikaci logiky můžete snadno implementovat protokolování a zpracování chyb.
 * Jako úložiště pro záznamy protokolů a chyb (dokumenty) můžete použít Azure Cosmos DB.

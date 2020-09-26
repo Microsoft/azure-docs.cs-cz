@@ -1,14 +1,14 @@
 ---
 title: Jak získat přístup k testovacímu prostředí v učebně v Azure Lab Services | Microsoft Docs
-description: V tomto kurzu získáte přístup k virtuálním počítačům v prostředí učebny, které je nastavené pomocí Educator.
+description: Naučte se, jak se zaregistrovat do testovacího prostředí, Zobrazit všechny laboratoře, ke kterým máte přístup, jak spustit nebo zastavit virtuální počítač v testovacím prostředí a jak se připojit k virtuálnímu počítači.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 34b61be1ca3fc938032b75358842f2067e5c011c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd06bfc2dff27f1ef1bc84f01b001b8dbd282cf4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443566"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334051"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Jak získat přístup k testovacímu prostředí v učebně v Azure Lab Services
 Tento článek popisuje, jak se zaregistrovat do testovacího prostředí, Zobrazit všechny laboratoře, ke kterým máte přístup, jak spustit nebo zastavit virtuální počítač v testovacím prostředí a jak se připojit k virtuálnímu počítači. 

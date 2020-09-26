@@ -34,12 +34,14 @@
         - name: Přehled služby Azure Defender
           href: azure-defender.md
         - name: Azure Defender pro servery
+          displayName: VM
           href: defender-for-servers-introduction.md
         - name: Azure Defender pro App Service
           href: defender-for-app-service-introduction.md
         - name: Azure Defender pro úložiště
           href: defender-for-storage-introduction.md
         - name: Azure Defender pro SQL
+          displayName: database
           href: defender-for-sql-introduction.md
         - name: Azure Defender for IoT
           href: defender-for-iot-introduction.md
@@ -55,6 +57,7 @@
         - name: Další ochrana před hrozbami
           href: other-threat-protections.md
     - name: Funkce zabezpečení kontejnerů služby Security Center
+      displayName: 'kubernetes, aks, acr, registries'
       href: container-security.md
     - name: Ceny
       href: security-center-pricing.md
@@ -134,6 +137,7 @@
         - name: Správa doporučení zabezpečení
           items:
             - name: Automatizace odpovědí na doporučení
+              displayName: workflow
               href: workflow-automation.md
             - name: Export doporučení
               href: continuous-export.md
@@ -222,6 +226,7 @@
         - name: Ověření konfigurace výstrah (testovací soubor EICAR)
           href: security-center-alert-validation.md
         - name: Automatizace odpovědí na výstrahy
+          displayName: workflow
           href: workflow-automation.md
         - name: Export výstrah
           displayName: continuous

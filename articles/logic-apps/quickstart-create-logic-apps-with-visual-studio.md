@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/07/2020
-ms.openlocfilehash: 0a985e7a4a0a332d3824f9cffa2a191429cfdb33
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: cdc4dfe23cce7c2f58e4c9b44f2cea46e2337e00
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029609"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322440"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rychlé zprovoznění: Vytváření automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio
 
@@ -22,7 +22,7 @@ Pokud s Azure Logic Apps teprve začínáte a chcete jenom základní koncepty, 
 
 V tomto rychlém startu vytvoříte stejnou aplikaci logiky pomocí sady Visual Studio jako rychlý Start Azure Portal. Tato aplikace logiky monitoruje informační kanál RSS webu a odesílá e-maily pro každou novou položku v tomto informačním kanálu. Vaše dokončená aplikace logiky bude vypadat jako tento pracovní postup vysoké úrovně:
 
-![Hotová aplikace logiky](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
+![Snímek obrazovky, který zobrazuje pracovní postup dokončené aplikace logiky na nejvyšší úrovni.](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
 
 <a name="prerequisites"></a>
 

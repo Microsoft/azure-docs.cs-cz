@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 23af7ff9e4740b88d3d1f8cffb3d79a46c8d0d61
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6cb2c90658a69f3e63e9ebe08db41eea0a9bc7fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544447"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299693"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Kurz: Konfigurace GoToMeeting pro Automatické zřizování uživatelů
 
@@ -23,7 +23,7 @@ Cílem tohoto kurzu je Ukázat kroky, které musíte v GoToMeeting a Azure AD po
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 *   Tenant Azure Active Directory.
 *   Předplatné s povoleným GoToMeetingm jednotným přihlašováním.
@@ -60,7 +60,7 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
 1. Nastavte režim **zřizování** na **automaticky**. 
 
-    ![zřizování](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky s kartou zřizování pro GoToMeeting v Azure Portal. Režim zřizování je nastaven na automatické a je zvýrazněné uživatelské jméno správce, heslo a testovací připojení.](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
 1. V části pověření správce proveďte následující kroky:
    
@@ -76,7 +76,7 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
 1. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé GoToMeeting.**
 
-1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do GoToMeeting. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v GoToMeeting pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do GoToMeeting. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v GoToMeeting pro operace aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
 1. Pokud chcete povolit službu Azure AD Provisioning pro GoToMeeting, změňte **stav zřizování** na **zapnuto** v části nastavení.
 

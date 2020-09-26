@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 5a0a158f91695bb0aba07aa412f5ba234906d493
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 889ad3b74a2f7c0baa006a0c45e3f14664d6cd0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707692"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325874"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>Rychlý Start: přiřazení uživatelů k aplikaci, která používá službu Azure AD jako zprostředkovatele identity
 
 V předchozím rychlém startu jste nakonfigurovali vlastnosti pro aplikaci. Při nastavování vlastností jste nakonfigurovali prostředí pro přiřazené i nepřiřazené uživatele. Tento rychlý Start vás provede procesem přiřazování uživatelů k aplikaci.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete přiřadit uživatele k aplikaci, kterou jste přidali do svého tenanta Azure AD, budete potřebovat:
 
@@ -55,8 +55,7 @@ Pokud chcete přiřadit uživatele k aplikaci, kterou jste přidali do svého te
     > Pokud aplikace nepodporuje výběr rolí, přiřadí se výchozí role přístupu. V takovém případě aplikace spravuje úroveň přístupu uživatelů.
 9. V podokně **Přidat přiřazení** vyberte v dolní části podokna tlačítko **přiřadit** .
 
-> [!NOTE]
-> Pomocí stejného postupu můžete zrušit přiřazení uživatelů nebo skupin. Vyberte uživatele nebo skupinu, kterým chcete zrušit přiřazení, a pak vyberte **Odebrat**. Některé aplikace Microsoft 365 a Office 365 vyžadují použití PowerShellu. 
+Pomocí stejného postupu můžete zrušit přiřazení uživatelů nebo skupin. Vyberte uživatele nebo skupinu, kterým chcete zrušit přiřazení, a pak vyberte **Odebrat**. Některé aplikace Microsoft 365 a Office 365 vyžadují použití PowerShellu. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -66,4 +65,9 @@ Až budete s rychlým startem hotovi, zvažte odstranění aplikace. Tímto způ
 
 V dalším článku se dozvíte, jak nastavit jednotné přihlašování pro aplikaci.
 > [!div class="nextstepaction"]
-> [Nastavení jednotného přihlašování](add-application-portal-setup-sso.md)
+> [Nastavení jednotného přihlašování založeného na SAML](add-application-portal-setup-sso.md)
+
+NEBO
+
+> [!div class="nextstepaction"]
+> [Nastavení jednotného přihlašování založeného na OIDC](add-application-portal-setup-oidc-sso.md)

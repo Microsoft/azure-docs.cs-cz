@@ -3,12 +3,12 @@ title: Příručka pro řízení chování při vypínání Windows v Azure Lab 
 description: Postup automatického vypnutí nečinného virtuálního počítače s Windows a odebrání příkazu pro vypnutí systému Windows.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e17f6e79c3d18d82dd206954dcfb0e06b02b4d53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c20bc2bb79faf53c4f3fbd113c18c5c6d923e59
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445164"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334017"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>Průvodce řízením chování při vypínání Windows
 
@@ -61,7 +61,7 @@ Nebo se můžete rozhodnout, že budete postupovat podle těchto ručních krok�
 
 1. V **části Konfigurace počítače > Šablony pro správu > součásti systému Windows > služba Vzdálená plocha > hostitel relace vzdálené plochy > časový limit relace**.  
 
-    ![Editor místních zásad skupiny](./media/how-to-windows-shutdown/group-policy-idle.png)
+    ![Snímek obrazovky, který zobrazuje "Editor místních zásad skupiny" s "časovým limitem relace", který je vybrán.](./media/how-to-windows-shutdown/group-policy-idle.png)
    
 1. Klikněte pravým tlačítkem na **nastavit časový limit aktivních a nečinných relací vzdálené plochy**a klikněte na **Upravit**.
 

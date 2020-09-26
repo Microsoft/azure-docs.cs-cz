@@ -3,24 +3,33 @@ title: Spuštění a zastavení služby Azure Kubernetes (AKS)
 description: Naučte se zastavit nebo spustit cluster Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 09/18/2020
+ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 44c33aa018971cc2b2f5eb215597a63e8b55c853
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 460b592924a19449d77ce8d45f470f3e3129f4a6
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278562"
+ms.locfileid: "91357943"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Zastavení a spuštění clusteru Azure Kubernetes Service (AKS) (Preview)
 
-Vaše úlohy AKS nemusí být potřeba spouštět nepřetržitě, například cluster pro vývoj, který se používá jenom během pracovní doby. To vede k časem, kdy by cluster služby Azure Kubernetes (AKS) mohl být nečinný a běžela více než systémové součásti. Můžete omezit nároky na clustery tím, že [změníte měřítko všech `User` fondů uzlů na hodnotu 0](scale-cluster.md#scale-user-node-pools-to-0), ale [ `System` fond](use-system-pools.md) je stále nutný ke spuštění systémových součástí, když je cluster spuštěný. Pokud chcete své náklady dále optimalizovat během těchto období, můžete cluster úplně vypnout (zastavit). Tato akce zastaví všechny uzly řídicí plochy a agentů, což vám umožní ušetřit všechny náklady na výpočetní výkon a přitom zachovat všechny vaše objekty a stav clusteru uložený při jejich opětovném spuštění. To vám umožní vybrat hned, kde zbývá po víkendu, nebo nechat cluster spuštěný jenom při spouštění dávkových úloh.
+Vaše úlohy AKS nemusí být potřeba spouštět nepřetržitě, například cluster pro vývoj, který se používá jenom během pracovní doby. To vede k časem, kdy by cluster služby Azure Kubernetes (AKS) mohl být nečinný a běžela více než systémové součásti. Můžete omezit nároky na clustery tím, že [změníte měřítko všech `User` fondů uzlů na hodnotu 0](scale-cluster.md#scale-user-node-pools-to-0), ale [ `System` fond](use-system-pools.md) je stále nutný ke spuštění systémových součástí, když je cluster spuštěný. Pokud chcete své náklady dále optimalizovat během těchto období, můžete cluster úplně vypnout (zastavit). Tato akce zastaví všechny uzly řídicí plochy a agentů, což vám umožní ušetřit všechny náklady na výpočetní výkon a přitom zachovat všechny vaše objekty a stav clusteru uložený při jejich opětovném spuštění. Pak můžete vybrat hned tam, kde zbývá po víkendu, nebo nechat cluster spuštěný jenom při spouštění dávkových úloh.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
+
+
+### <a name="limitations"></a>Omezení
+
+Při použití funkce Spustit/zastavit pro cluster platí následující omezení:
+
+- Tato funkce je podporována pouze pro Virtual Machine Scale Sets zálohovaných clusterů.
+- Stav clusteru zastaveného clusteru AKS se uchová po dobu až 12 měsíců. Pokud je váš cluster zastavený déle než 12 měsíců, nelze obnovit stav clusteru. Další informace najdete v tématu [zásady podpory AKS](support-policies.md).
+- Můžete spustit nebo odstranit zastavený cluster AKS. Chcete-li provést jakoukoli operaci, jako je například škálování nebo upgrade, spusťte nejprve svůj cluster.
 
 ### <a name="install-the-aks-preview-azure-cli"></a>Instalace rozhraní příkazového `aks-preview` řádku Azure 
 
@@ -33,11 +42,6 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ``` 
-
-> [!WARNING]
-> Stav clusteru zastaveného clusteru AKS se uchová po dobu až 12 měsíců. Pokud je váš cluster zastavený déle než 12 měsíců, nelze obnovit stav clusteru. Další informace najdete v tématu [zásady podpory AKS](support-policies.md).
-> Můžete spustit nebo odstranit zastavený cluster AKS. Chcete-li provést jakoukoli operaci, jako je například škálování nebo upgrade, spusťte nejprve svůj cluster.
-
 
 ### <a name="register-the-startstoppreview-preview-feature"></a>Registrace `StartStopPreview` funkce Preview
 

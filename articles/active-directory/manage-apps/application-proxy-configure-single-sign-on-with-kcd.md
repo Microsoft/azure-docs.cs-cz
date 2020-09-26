@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ae642df48fbd18d8ead439d89ced88aa3da327c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8320f5c034eb3a6de8c912ba23a9fb3f69a8a53c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317541"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299744"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Omezené delegování protokolu Kerberos pro jednotné přihlašování k aplikacím pomocí proxy aplikací
 
@@ -32,7 +32,7 @@ Můžete povolit jednotné přihlašování k aplikacím pomocí integrovaného 
 ## <a name="how-single-sign-on-with-kcd-works"></a>Jak jednotné přihlašování pomocí KCD funguje
 Tento diagram vysvětluje tok, když se uživatel pokusí o přístup k místní aplikaci, která používá IWA.
 
-![Diagram toku ověřování Microsoft AAD](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
+![Diagram toku ověřování Microsoft AAD](./media/application-proxy-configure-single-sign-on-with-kcd/authdiagram.png)
 
 1. Uživatel zadá adresu URL pro přístup k místní aplikaci prostřednictvím proxy aplikace.
 2. Proxy aplikace přesměruje požadavek na služby ověřování Azure AD na předběžné ověření. V tomto okamžiku Azure AD aplikuje jakékoli použitelné zásady ověřování a autorizace, jako je například vícefaktorové ověřování. Pokud je uživatel ověřený, Azure AD vytvoří token a odešle ho uživateli.
@@ -62,7 +62,7 @@ Konfigurace služby Active Directory se liší v závislosti na tom, jestli je k
 5. Vyberte možnost pro **použití libovolného protokolu pro ověřování**.
 6. V části **služby, kterým může tento účet prezentovat delegovaná pověření** přidejte hodnotu pro identitu hlavního názvu služby aplikačního serveru. To umožňuje konektoru proxy aplikací zosobnit uživatele v rámci služby AD proti aplikacím definovaným v seznamu.
 
-   ![Konektor – počítače okno Vlastnosti snímek obrazovky](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
+   ![Konektor – počítače okno Vlastnosti snímek obrazovky](./media/application-proxy-configure-single-sign-on-with-kcd/properties.jpg)
 
 #### <a name="connector-and-application-server-in-different-domains"></a>Konektor a aplikační server v různých doménách
 1. Seznam požadavků pro práci s KCD napříč doménami najdete v tématu [omezené delegování protokolu Kerberos napříč doménami](https://technet.microsoft.com/library/hh831477.aspx).
@@ -97,7 +97,6 @@ Konfigurace služby Active Directory se liší v závislosti na tom, jestli je k
 
    ![Rozšířená konfigurace aplikace](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 
-
 ## <a name="sso-for-non-windows-apps"></a>Jednotné přihlašování pro aplikace, které nejsou v systému Windows
 
 Tok delegování protokolu Kerberos ve službě Azure Proxy aplikací služby AD se spustí, když Azure AD ověří uživatele v cloudu. Jakmile požadavek dorazí do místního prostředí, konektor Azure Proxy aplikací služby AD vydá jménem uživatele lístek protokolu Kerberos, který bude spolupracovat s místní službou Active Directory. Tento proces se označuje jako omezené delegování pomocí protokolu Kerberos (KCD). 
@@ -106,7 +105,7 @@ V další fázi se do aplikace back-end pošle požadavek pomocí tohoto lístku
 
 Existuje několik mechanismů definujících způsob odeslání lístku protokolu Kerberos v takových požadavcích. Většina serverů s jiným systémem než Windows očekává, že ji obdrží ve formě tokenu SPNEGO. Tento mechanismus je podporovaný v Azure Proxy aplikací služby AD, ale ve výchozím nastavení je zakázaný. Konektor se dá nakonfigurovat pro SPNEGO nebo standardní token protokolu Kerberos, ale ne pro obojí.
 
-Pokud nakonfigurujete počítač konektoru pro SPNEGO, ujistěte se, že jsou všechny ostatní konektory v této skupině konektorů nakonfigurované také pomocí nástroje SPNEGO. Aplikace, které očekávají standardní token protokolu Kerberos, by se měly směrovat přes jiné konektory, které nejsou nakonfigurované pro SPNEGO.
+Pokud nakonfigurujete počítač konektoru pro SPNEGO, ujistěte se, že jsou všechny ostatní konektory v této skupině konektorů nakonfigurované také pomocí nástroje SPNEGO. Aplikace, které očekávají standardní token protokolu Kerberos, by se měly směrovat přes jiné konektory, které nejsou nakonfigurované pro SPNEGO. Některé webové aplikace přijímají oba formáty bez nutnosti změny v konfiguraci. 
  
 
 Povolení SPNEGO:
@@ -129,13 +128,15 @@ Tato možnost umožňuje mnoha organizacím, které mají různé místní i clo
 * Mít více domén interně ( joe@us.contoso.com , joe@eu.contoso.com ) a jednu doménu v cloudu ( joe@contoso.com ).
 * Název domény, který není směrovatelný, interně ( joe@contoso.usa ) a v cloudu musí být jiný.
 * Nepoužívejte názvy domén interně (Jana)
-* Používejte jiné aliasy místně a v cloudu. Například joe-johns@contoso.com vs.joej@contoso.com  
+* Používejte jiné aliasy místně a v cloudu. Například joe-johns@contoso.com vs. joej@contoso.com  
 
 Pomocí proxy aplikací můžete vybrat identitu, kterou chcete použít k získání lístku protokolu Kerberos. Toto nastavení je na aplikaci. Některé z těchto možností jsou vhodné pro systémy, které nepodporují formát e-mailové adresy. jiné jsou navržené pro alternativní přihlášení.
 
 ![Snímek pro delegovaný přihlašovací parametr identity](./media/application-proxy-configure-single-sign-on-with-kcd/app_proxy_sso_diff_id_upn.png)
 
 Pokud se použije delegovaná identita přihlášení, hodnota nemusí být jedinečná napříč všemi doménami nebo doménovými strukturami ve vaší organizaci. Tomuto problému se můžete vyhnout tak, že tyto aplikace publikujete dvakrát pomocí dvou různých skupin konektorů. Vzhledem k tomu, že každá aplikace má jinou cílovou skupinu uživatelů, můžete připojit své konektory k jiné doméně.
+
+Pokud se pro identitu přihlášení používá **místní název účtu SAM** , musí se počítač, který je hostitelem konektoru, přidat do domény, ve které se nachází uživatelský účet.
 
 ### <a name="configure-sso-for-different-identities"></a>Konfigurace jednotného přihlašování pro různé identity
 1. Nakonfigurujte nastavení Azure AD Connect tak, aby byla hlavní identitou e-mailová adresa (e-mail). Tato operace se provádí v rámci procesu přizpůsobení změnou pole **hlavní název uživatele** v nastavení synchronizace. Tato nastavení také určují, jak se uživatelé přihlašují k Office 365, Windows10 zařízením a dalším aplikacím, které používají Azure AD jako úložiště identit.  

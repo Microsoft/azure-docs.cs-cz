@@ -1,6 +1,6 @@
 ---
 title: Sériová konzola Azure pro Windows | Microsoft Docs
-description: Obousměrná sériová Konzola pro Azure Virtual Machines a Virtual Machine Scale Sets.
+description: Obousměrná sériová Konzola pro Azure Virtual Machines a Virtual Machine Scale Sets pomocí příkladu Windows.
 services: virtual-machines-windows
 documentationcenter: ''
 author: asinn826
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c30999a5f0239e60c842084b60b44c165fb7182e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c5c139cb94358d70d1f23b68f2a369adb953da08
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423996"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325976"
 ---
 # <a name="azure-serial-console-for-windows"></a>Sériová konzola Azure pro Windows
 
@@ -34,7 +34,7 @@ Dokumentaci k sériové konzole pro Linux najdete v tématu věnovaném [sériov
 > Sériová konzola je aktuálně nekompatibilní se spravovaným účtem úložiště diagnostiky spouštění. Pokud chcete použít sériovou konzolu, ujistěte se, že používáte vlastní účet úložiště.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí používat model nasazení správy prostředků. Klasická nasazení nejsou podporovaná.
 
@@ -160,7 +160,7 @@ Pokud je uživatel připojen ke konzole sériového portu a jiný uživatel úsp
 > [!CAUTION]
 > To znamená, že odpojený uživatel nebude odhlášen. Možnost vymáhat odhlášení po odpojení (pomocí SIGHUP nebo podobného mechanismu) je stále v plánu. V případě systému Windows je v konzole SAC povolen automatický časový limit. pro Linux můžete nakonfigurovat nastavení časový limit terminálu.
 
-## <a name="accessibility"></a>Přístupnost
+## <a name="accessibility"></a>Usnadnění
 Přístupnost je klíčovým fokusem pro konzolu sériového rozhraní Azure. Za tímto účelem jsme zajistili přístup ke konzole sériového rozhraní pro lidi, kteří mají zhoršené zhoršení, nebo kteří mají těžkou sluchu, a také uživatele, kteří by nemohli používat myš.
 
 ### <a name="keyboard-navigation"></a>Navigace přes klávesnici
@@ -194,27 +194,27 @@ Vložení dlouhých řetězců nefunguje. | Konzola sériového portu omezuje d�
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Otázka: Jak mohu odeslat zpětnou vazbu?**
+**Č. Jak mohu odeslat zpětnou vazbu?**
 
 A. Poskytněte zpětnou vazbu vytvořením problému GitHubu na adrese https://aka.ms/serialconsolefeedback . Případně (méně upřednostňovaná) můžete odeslat zpětnou vazbu prostřednictvím azserialhelp@microsoft.com nebo v kategorii virtuálního počítače v https://feedback.azure.com .
 
-**Otázka: podporuje konzola sériového kopírování/vkládání?**
+**Č. Podporuje sériová konzola kopírování/vkládání?**
 
-A. Yes. Pomocí **kombinace kláves CTRL** + **+ SHIFT**+ Shift + + **C** **Ctrl** + **Shift** + **V** zkopírujte a vložte do terminálu.
+A. Ano. Pomocí **kombinace kláves CTRL** + **+ SHIFT**+ Shift + + **C** **Ctrl** + **Shift** + **V** zkopírujte a vložte do terminálu.
 
-**Otázka. kdo může povolit nebo zakázat sériovou konzolu pro moje předplatné?**
+**Č. Kdo může povolit nebo zakázat sériovou konzolu pro moje předplatné?**
 
 A. Pokud chcete povolit nebo zakázat sériovou konzolu na úrovni předplatného, musíte mít oprávnění k zápisu do předplatného. Role, které mají oprávnění k zápisu, zahrnují role správce nebo vlastníka. Vlastní role můžou mít taky oprávnění k zápisu.
 
-**Dotaz, který má přístup ke konzole sériového připojení k virtuálnímu počítači?**
+**Č. Kdo má přístup ke konzole sériového připojení k virtuálnímu počítači?**
 
 A. Aby virtuální počítač měl přístup ke konzole sériového připojení virtuálního počítače, musíte mít roli Přispěvatel virtuálních počítačů nebo vyšší.
 
-**Otázka. moje konzola sériového zobrazení nezobrazuje vše, co mám dělat?**
+**Č. Moje konzola sériového zobrazení nezobrazuje vše, co mám dělat?**
 
 A. Bitová kopie je pro přístup k sériové konzole nejspíš nesprávně nakonfigurovaná. Informace o konfiguraci image pro povolení konzole sériového prostředí najdete v tématu [Povolení sériové konzoly ve vlastních nebo starších bitových kopiích](#enable-the-serial-console-in-custom-or-older-images).
 
-**Otázka. je k dispozici konzola sériového portu pro služby Virtual Machine Scale Sets?**
+**Č. Je k dispozici sériová Konzola pro sady škálování virtuálních počítačů?**
 
 A. Ano, je! Další informace najdete v tématu [sériová Konzola pro Virtual Machine Scale Sets](./serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 

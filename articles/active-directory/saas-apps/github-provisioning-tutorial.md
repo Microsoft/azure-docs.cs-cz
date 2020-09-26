@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: 7408d7609cbceb4ac39298680b6d3854a2d71306
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b88408480bb0822a061e97336eee5c6b3ccfc8e0
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589210"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358317"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Kurz: Konfigurace GitHubu pro Automatické zřizování uživatelů
 
@@ -23,7 +23,7 @@ Cílem tohoto kurzu je Ukázat kroky, které musíte provést na GitHubu a Azure
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 * Tenant Azure Active Directory
 * Organizace GitHubu vytvořená v [GitHub Enterprise cloudu](https://help.github.com/articles/github-s-products/#github-enterprise), která vyžaduje [fakturační plán pro GitHub Enterprise](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)
@@ -63,19 +63,19 @@ Tato část vás provede připojením k rozhraní API pro zřizování uživatel
 
 3. Vyberte svou instanci GitHubu a pak vyberte kartu **zřizování** .
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
     ![Zřizování GitHubu](./media/github-provisioning-tutorial/GitHub1.png)
 
-5. V části **přihlašovací údaje správce** klikněte na **autorizovat**. Tato operace otevře dialogové okno pro autorizaci GitHubu v novém okně prohlížeče. Všimněte si, že musíte zajistit, abyste měli jistotu, že budete schvalovat přístup. Postupujte podle pokynů popsaných [tady](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization).
+5. V části **Přihlašovací údaje správce** klikněte na **Autorizovat**. Tato operace otevře dialogové okno pro autorizaci GitHubu v novém okně prohlížeče. Všimněte si, že musíte zajistit, abyste měli jistotu, že budete schvalovat přístup. Postupujte podle pokynů popsaných [tady](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization).
 
-6. V novém okně se přihlaste k GitHubu pomocí účtu správce. V dialogovém okně výsledné autorizace vyberte tým GitHubu, pro který chcete povolit zřizování, a pak vyberte **autorizovat**. Až se dokončí, vraťte se do Azure Portal a dokončete konfiguraci zřizování.
+6. V novém okně se přihlaste k GitHubu pomocí účtu správce. V dialogovém okně výsledné autorizace vyberte tým GitHubu, pro který chcete povolit zřizování, a pak vyberte **autorizovat**. Po dokončení se vraťte na Azure Portal a dokončete konfiguraci zřizování.
 
-    ![Dialogové okno autorizace](./media/github-provisioning-tutorial/GitHub2.png)
+    ![Snímek obrazovky se zobrazí přihlašovací stránka GitHubu.](./media/github-provisioning-tutorial/GitHub2.png)
 
 7. V Azure Portal zadejte **adresu URL klienta** a klikněte na **Test připojení** . tím zajistíte, aby se služba Azure AD mohla připojit k vaší aplikaci GitHub. Pokud se připojení nepovede, ujistěte se, že váš účet GitHub má oprávnění správce a **Adresa URL tenanta** je zavedená správně, a pak zkuste znovu provést krok autorizovat ( **můžete být v** `https://api.github.com/scim/v2/organizations/<Organization_name>` rámci svého účtu GitHubu, který můžete najít **Settings**  >  **Organizations**).
 
-    ![Dialogové okno autorizace](./media/github-provisioning-tutorial/GitHub3.png)
+    ![Snímek obrazovky se zobrazí stránka organizace v GitHubu.](./media/github-provisioning-tutorial/GitHub3.png)
 
 8. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail s oznámením** , a zaškrtněte políčko Odeslat e-mailové oznámení, když dojde k chybě.
 
@@ -83,7 +83,7 @@ Tato část vás provede připojením k rozhraní API pro zřizování uživatel
 
 10. V části mapování vyberte **synchronizovat Azure Active Directory uživatelů do GitHubu**.
 
-11. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do GitHubu. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v GitHubu pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+11. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do GitHubu. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v GitHubu pro operace aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
 12. Pokud chcete povolit službu Azure AD Provisioning pro GitHub, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
@@ -100,4 +100,4 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).

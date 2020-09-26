@@ -1,14 +1,15 @@
 ---
 title: Uspořádání prostředků pomocí skupin pro správu – zásady správného řízení Azure
 description: Další informace o skupinách pro správu, fungování jejich oprávnění a způsobu jejich využití
-ms.date: 07/06/2020
+ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: d259f44b8424afa9fcfc94b3f1812a0485ab2993
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.custom: contperfq1
+ms.openlocfilehash: e0404cdc934771f8ebc0125ce9e21559739aee35
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659244"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334153"
 ---
 # <a name="what-are-azure-management-groups"></a>Co jsou skupiny pro správu Azure?
 
@@ -22,7 +23,7 @@ Zásady můžete například použít pro skupinu pro správu, která omezuje ob
 Můžete vytvořit flexibilní strukturu skupin pro správu a předplatných a uspořádat tak prostředky do hierarchie umožňující využít jednotné zásady a správu přístupu. Následující diagram ukazuje příklad vytvoření hierarchie pro zásady správného řízení s využitím skupin pro správu.
 
 :::image type="complex" source="./media/tree.png" alt-text="Diagram ukázkové hierarchie skupin pro správu" border="false":::
-   Diagram kořenové skupiny pro správu, který má skupiny pro správu i odběry. Některé podřízené skupiny pro správu uchovávají skupiny pro správu, některá předplatná a některá se uchovávají. Jedním z příkladů v ukázkové hierarchii je 4 úrovně skupin pro správu s podřízenou úrovní všech předplatných.
+   Diagram kořenové skupiny pro správu, který má skupiny pro správu i odběry. Některé podřízené skupiny pro správu uchovávají skupiny pro správu, některá předplatná a některá se uchovávají. Jedním z příkladů v ukázkové hierarchii jsou čtyři úrovně skupin pro správu, které mají úroveň podřízenosti všechna předplatná.
 :::image-end:::
 
 Můžete vytvořit hierarchii, která aplikuje zásadu, například omezení umístění virtuálních počítačů na oblast USA – západ ve skupině s názvem Produkce. Tato zásada bude dědit na všechna předplatná smlouva Enterprise (EA), která jsou následníky této skupiny pro správu a bude platit pro všechny virtuální počítače v těchto předplatných. Tuto zásadu zabezpečení nemůže změnit vlastník prostředku ani předplatného. Výsledkem je vylepšení zásad správného řízení.
@@ -74,7 +75,7 @@ U několika adresářů, které začaly využívat skupiny pro správu v rané f
 Tento problém můžete vyřešit dvěma způsoby.
 
 - Odebrání všech přiřazení rolí a zásad z kořenové skupiny pro správu
-  - Odebrání všech přiřazení zásad a rolí z kořenové skupiny pro správu způsobí, že tato služba obnoví všechna předplatná do hierarchie při příštím nočním cyklu. Smyslem tohoto procesu je zajistit, že se žádnému z klientských předplatných neposkytne náhodný přístup nebo přiřazení zásad.
+  - Odebráním všech přiřazení zásad a rolí z kořenové skupiny pro správu služba vyplní všechna předplatná do hierarchie dalším jednodenním cyklem. Smyslem tohoto procesu je zajistit, že se žádnému z klientských předplatných neposkytne náhodný přístup nebo přiřazení zásad.
   - Nejlepší způsob, jak to provést bez dopadu na vaše služby, je použít přiřazení zásad nebo rolí o jednu úroveň pod kořenovou skupinu pro správu. Potom můžete všechna přiřazení z kořenového oboru odebrat.
 - Přímé volání rozhraní API pro zahájení procesu obnovení
   - Libovolný uživatel adresáře může volat rozhraní API _TenantBackfillStatusRequest_ nebo _StartTenantBackfillRequest_. Rozhraní API StartTenantBackfillRequest po zavolání zahájí proces nastavení přesunu všech předplatných do hierarchie. Tento proces také začne vynucovat, aby se všechna nová předplatná stala podřízeným elementem kořenové skupiny pro správu.
@@ -167,7 +168,7 @@ Tento scénář můžete vyřešit několika různými možnostmi:
 
 Existují určitá omezení, která existují při použití vlastních rolí ve skupinách pro správu. 
 
- - V oborech přiřazení nové role můžete definovat jenom jednu skupinu pro správu. Toto omezení je zavedeno, aby se snížil počet situací, kdy se odpojí definice rolí a přiřazení rolí. K této situaci dochází, když je předplatné nebo skupina pro správu s přiřazením role přesunuta na jinou nadřazenou položku, která nemá definici role.  
+ - V oborech přiřazení nové role můžete definovat jenom jednu skupinu pro správu. Toto omezení je zavedeno, aby se snížil počet situací, kdy se odpojí definice rolí a přiřazení rolí. K této situaci dochází, když se předplatné nebo skupina pro správu s přiřazením role přesune na jiný nadřazený prvek, který nemá definici role.  
  - Akce roviny dat RBAC nelze definovat ve vlastních rolích skupiny pro správu. Toto omezení je v platnosti, protože došlo k potížím s latencí s aktualizacemi poskytovatelů prostředků datové roviny pomocí akcí RBAC.
    Tato latence se právě zpracovává a tyto akce budou z definice role zakázané, aby se snížila rizika.
  - Azure Resource Manager neověřuje existenci skupiny pro správu v oboru přiřazení definice role. Pokud je v seznamu uvedeno překlep nebo nesprávné ID skupiny pro správu, bude definice role stále vytvořena.  

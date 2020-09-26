@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e267a30d6f73b48f825c4b61b3bc1106133b8cdf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935454"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285379"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>Horizontální navýšení kapacity PostgreSQL skupiny serverů s rozšířením Azure ARC přidáním dalších pracovních uzlů
 Tento dokument vysvětluje, jak škálovat PostgreSQL skupinu serverů s povoleným rozšířením Azure ARC. Provede vás prostřednictvím scénáře. **Pokud nechcete spouštět přes scénář a chcete jen si přečíst informace o tom, jak horizontální navýšení kapacity, přejděte na [horizontální](#scale-out)** navýšení kapacity odstavce.
@@ -151,7 +151,11 @@ Obecný formát příkazu pro horizontální navýšení kapacity je:
 azdata arc postgres server edit -n <server group name> -w <target number of worker nodes>
 ```
 
-Například můžete zvýšit počet pracovních uzlů od 2 na 4 spuštěním následujícího příkazu:
+> [!CAUTION]
+> Verze Preview nepodporuje opětovné navýšení kapacity. Například ještě není možné snížit počet pracovních uzlů. V takovém případě je třeba data extrahovat nebo zálohovat, vyřadit skupinu serverů, vytvořit novou skupinu serverů s méně pracovními uzly a následně data importovat.
+
+V tomto příkladu zvýšíme počet pracovních uzlů od 2 na 4 spuštěním následujícího příkazu:
+
 ```console
 azdata arc postgres server edit -n postgres01 -w 4
 ```
@@ -196,7 +200,8 @@ Vrátí seznam skupin serverů vytvořených ve vašem oboru názvů a označuje
 NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
 postgres01   Ready   4/4          10.0.0.4:31066      4d20h
 ```
-> **Poznámka:** Pokud jste vytvořili skupinu serverů verze 11 PostgreSQL a ne 12, spusťte následující příkaz: _kubectl Get PostgreSQL-11_
+> [!NOTE]
+> Pokud jste vytvořili skupinu serverů verze 11 PostgreSQL a ne 12, spusťte následující příkaz: _kubectl Get PostgreSQL-11_
 
 #### <a name="with-a-sql-query"></a>S dotazem SQL:
 Připojte se ke skupině serverů pomocí nástroje klienta podle vašeho výběru a spusťte následující dotaz:
@@ -230,7 +235,6 @@ Všimněte si doby spuštění.
 >* [Vysoce výkonné HTAP se škálováním Azure PostgreSQL (Citus)](https://www.youtube.com/watch?v=W_3e07nGFxY)
 >* [Sestavování aplikací HTAP pomocí Pythonu & Azure PostgreSQL s měřítkem (Citus)](https://www.youtube.com/watch?v=YDT8_riLLs0)
 
-> Verze Preview nepodporuje opětovné navýšení kapacity. Například ještě není možné snížit počet pracovních uzlů. V takovém případě je třeba data extrahovat nebo zálohovat, vyřadit skupinu serverů, vytvořit novou skupinu serverů s méně pracovními uzly a následně data importovat.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,19 +7,19 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c5afd7d912142dd8556e71ba9e0a522b2fa0da1c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-js
+ms.openlocfilehash: 554a7504e4e72eb2b2921c56e535343398cfa8b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684588"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333643"
 ---
 # <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Nasazení Next.js webů vygenerovaných serverem ve službě Azure static Web Apps Preview
 
 V tomto kurzu se naučíte nasadit [Next.js](https://nextjs.org) generovaný statický web do služby [Azure static Web Apps](overview.md). Pokud chcete začít, naučíte se, jak nastavit, nakonfigurovat a nasadit aplikaci Next.js. Během tohoto procesu se naučíte také řešit běžné výzvy, které se často vyskytují při generování statických stránek pomocí Next.js
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/).
 - Účet GitHub. [Vytvořte si účet zdarma](https://github.com/join).

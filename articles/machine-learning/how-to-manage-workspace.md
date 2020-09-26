@@ -9,13 +9,13 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 38784b006acac4c3ff70b2aa3c38648e939eddeb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: how-to, fasttrack-edit
+ms.openlocfilehash: 6462226436aa7976f5293a5c271258be8a340cd4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889921"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322325"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Vytváření a Správa pracovních prostorů Azure Machine Learning v Azure Portal
 
@@ -24,7 +24,7 @@ V tomto článku vytvoříte, zobrazíte a odstraníte [**Azure Machine Learning
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
-K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí přihlašovacích údajů předplatného Azure. 
 
@@ -40,18 +40,19 @@ K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud ješt�
 
 1. Zadáním následujících informací nakonfigurujte nový pracovní prostor:
 
-   Pole|Description 
+   Pole|Popis 
    ---|---
    Název pracovního prostoru |Zadejte jedinečný název, který identifikuje váš pracovní prostor. V tomto příkladu používáme **docs-WS**. Názvy musí být v rámci skupiny prostředků jedinečné. Použijte název, který se dá snadno vyvolat a odlišit z pracovních prostorů vytvořených jinými uživateli. V názvu pracovního prostoru se nerozlišují malá a velká písmena.
    Předplatné |Vyberte předplatné Azure, které chcete použít.
    Skupina prostředků | Použijte stávající skupinu prostředků, kterou máte v předplatném, nebo zadejte název a vytvořte novou skupinu prostředků. Skupina prostředků obsahuje související prostředky pro řešení Azure. V tomto příkladu používáme **docs-AML**. Chcete-li použít existující skupinu prostředků, potřebujete roli *Přispěvatel* nebo *vlastník* .  Další informace o přístupu najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
-   Umístění | Vyberte umístění, které je nejblíže vašim uživatelům a datovým prostředkům, abyste mohli vytvořit pracovní prostor.
-   Umístění | Vyberte umístění, které je nejblíže vašim uživatelům a datovým prostředkům, abyste mohli vytvořit pracovní prostor.
+   Region | Vyberte oblast Azure, která je nejblíže vašim uživatelům a datovým prostředkům k vytvoření pracovního prostoru.
+   Edice pracovního prostoru | Vyberte **Basic** nebo **Enterprise**.  Tato edice pracovního prostoru určuje funkce, ke kterým budete mít přístup a ceny. Přečtěte si další informace o [Azure Machine Learning](overview-what-is-azure-ml.md). 
 
     ![Konfigurace pracovního prostoru](./media/how-to-manage-workspace/select-edition.png)
 
-1. Po dokončení konfigurace pracovního prostoru vyberte **zkontrolovat + vytvořit**.
-2. Zkontrolujte nastavení a proveďte další změny nebo opravy. Až budete s nastavením spokojeni, vyberte **vytvořit**.
+1. Po dokončení konfigurace pracovního prostoru vyberte **zkontrolovat + vytvořit**. Volitelně můžete pomocí oddílů [sítě](#networking) a [Upřesnit](#advanced) nakonfigurovat další nastavení pracovního prostoru.
+
+1. Zkontrolujte nastavení a proveďte další změny nebo opravy. Až budete s nastavením spokojeni, vyberte **vytvořit**.
 
    > [!Warning] 
    > Vytvoření pracovního prostoru v cloudu může trvat několik minut.
@@ -59,6 +60,66 @@ K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud ješt�
    Po dokončení procesu se zobrazí zpráva o úspěšném nasazení. 
  
  1. Pokud chcete zobrazit nový pracovní prostor, vyberte **Přejít k prostředku**.
+
+### <a name="networking"></a>Sítě  
+
+> [!IMPORTANT]  
+> Další informace o používání privátního koncového bodu a virtuální sítě s vaším pracovním prostorem najdete v tématu věnovaném [izolaci sítě a ochraně osobních údajů](how-to-enable-virtual-network.md).  
+1. Výchozí konfigurací sítě je použití __veřejného koncového bodu__, který je přístupný na veřejném Internetu. Pokud chcete omezit přístup k vašemu pracovnímu prostoru na Virtual Network Azure, kterou jste vytvořili, můžete místo toho vybrat jako __metodu připojení__ __privátní koncový bod__ (Preview) a pak pomocí __+ Přidat__ nakonfigurovat koncový bod.   
+
+   > [!IMPORTANT]   
+   > Používání privátního koncového bodu s Azure Machine Learning pracovním prostorem je v současnosti ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.  
+   > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+   :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="Výběr privátního koncového bodu":::  
+
+1. Ve formuláři __Vytvoření privátního koncového bodu__ nastavte umístění, název a virtuální síť, které se mají použít. Pokud chcete použít koncový bod se zónou Privátní DNS, vyberte možnost __integrovat s privátní zónou DNS__ a vyberte zónu pomocí pole __privátní DNS zóna__ . Vyberte __OK__ a vytvořte koncový bod.   
+
+   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Vytvoření privátního koncového bodu":::   
+
+1. Po dokončení konfigurace sítě můžete vybrat možnost __zkontrolovat + vytvořit__nebo přejít k volitelné __Rozšířené__ konfiguraci. 
+
+    > [!WARNING]    
+    > Při vytváření privátního koncového bodu se vytvoří nová zóna Privátní DNS s názvem __privatelink.API.AzureML.MS__ . Obsahuje odkaz na virtuální síť. Pokud vytvoříte více pracovních prostorů s privátními koncovými body ve stejné skupině prostředků, může být do zóny DNS přidána pouze virtuální síť pro první privátní koncový bod. Chcete-li přidat položky pro virtuální sítě používané dalšími koncovými body nebo soukromými koncovými body, použijte následující postup: 
+    >   
+    > 1. V [Azure Portal](https://portal.azure.com)vyberte skupinu prostředků, která obsahuje pracovní prostor. Pak vyberte prostředek zóny Privátní DNS s názvem __privatelink.API.AzureML.MS__.    
+    > 2. V __Nastavení__vyberte __odkazy virtuální sítě__. 
+    > 3. Vyberte __Přidat__. Na stránce __Přidat virtuální síť__ zadejte jedinečný __název odkazu__a potom vyberte __virtuální síť__ , kterou chcete přidat. Kliknutím na __tlačítko OK__ přidejte síťové propojení.    
+    >   
+    > Další informace najdete v tématu [Konfigurace DNS privátního koncového bodu Azure](/azure/private-link/private-endpoint-dns).   
+
+### <a name="vulnerability-scanning"></a>Kontrola ohrožení zabezpečení
+
+Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami. Měli byste Azure Security Center, abyste mohli kontrolovat prostředky a dodržovat doporučení. Další informace najdete v tématu  [Azure Container Registry prověřování imagí Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration) a [Azure Kubernetes Services integration with Security Center](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration).
+
+### <a name="advanced"></a>Upřesnit    
+
+Ve výchozím nastavení se metriky a metadata pro pracovní prostor ukládají do Azure Cosmos DB instance, kterou Microsoft udržuje. Tato data se šifrují pomocí klíčů spravovaných Microsoftem.  
+
+Pokud chcete omezit data, která Microsoft shromažďuje v pracovním prostoru, vyberte __vysoký pracovní prostor dopad na firmu__. Další informace o tomto nastavení najdete v části [šifrování v klidovém umístění](concept-enterprise-security.md#encryption-at-rest).
+
+> [!IMPORTANT]  
+> Výběr vysokého dopadu na firmu se dá udělat jenom při vytváření pracovního prostoru. Po vytvoření pracovního prostoru toto nastavení nemůžete změnit.   
+Pokud používáte verzi Azure Machine Learning __Enterprise__ , můžete místo toho zadat vlastní klíč. Tím se vytvoří instance Azure Cosmos DB, která ukládá metriky a metadata v předplatném Azure. Použijte následující postup, chcete-li použít vlastní klíč:    
+
+> [!IMPORTANT]  
+> Před provedením tohoto postupu je třeba nejprve provést následující akce:   
+>   
+> 1. Autorizaci __aplikace Machine Learning__ (v části Správa identit a přístupu) s oprávněními přispěvatele v předplatném.  
+> 1. Postupujte podle kroků v části [konfigurace klíčů spravovaných zákazníkem](/azure/cosmos-db/how-to-setup-cmk) na:   
+>     * Registrace poskytovatele Azure Cosmos DB   
+>     * Vytvoření a konfigurace Azure Key Vault 
+>     * Vygenerovat klíč  
+>   
+>     Nemusíte vytvářet instanci Azure Cosmos DB ručně, ta se vytvoří během vytváření pracovního prostoru. Tato instance Azure Cosmos DB se vytvoří v samostatné skupině prostředků s použitím názvu založeného na tomto vzoru: `<your-workspace-resource-name>_<GUID>` .   
+>   
+> Po vytvoření pracovního prostoru toto nastavení nemůžete změnit. Pokud odstraníte Azure Cosmos DB, kterou používá váš pracovní prostor, musíte také odstranit pracovní prostor, který ho používá.   
+1. Vyberte __klíče spravované zákazníkem__a pak vyberte __možnost kliknutím vyberte klíč__.   
+
+    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Klíče spravované zákazníkem":::   
+
+1. Na Azure Key Vault ve formuláři __Vyberte klíč__ vyberte existující Azure Key Vault, klíč, který obsahuje, a verzi klíče. Tento klíč slouží k šifrování dat uložených v Azure Cosmos DB. Nakonec k použití tohoto klíče použijte tlačítko __Vybrat__ . 
+
+   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Vyberte klíč.":::
 
 ### <a name="download-a-configuration-file"></a>Stažení konfiguračního souboru
 
@@ -93,7 +154,7 @@ V [Azure Portal](https://portal.azure.com/)v horní části pracovního prostoru
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 

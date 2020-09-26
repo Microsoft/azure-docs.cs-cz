@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 2a39e27c0a9fc7999d7f363767ad62513d383192
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/24/2020
+ms.openlocfilehash: 5df596560e97ea9dba38dca4d4ca58e38caabd37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520728"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333949"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Nastavení protokolů Azure Monitor a shromažďování diagnostických dat pro Azure Logic Apps
 
@@ -19,9 +19,9 @@ Pokud chcete získat bohatší ladicí informace o aplikacích logiky během bě
 
 Pokud chcete nastavit protokolování pro aplikaci logiky, můžete [povolit Log Analytics při vytváření aplikace logiky](#logging-for-new-logic-apps)nebo můžete [řešení pro správu Logic Apps nainstalovat](#install-management-solution) do svého pracovního prostoru Log Analytics pro existující aplikace logiky. Toto řešení poskytuje agregované informace pro vaše spuštění aplikace logiky a zahrnuje konkrétní podrobnosti, jako je stav, doba provádění, stav opětovného odeslání a ID korelace. Pokud pak chcete povolit protokolování a vytváření dotazů pro tyto informace, [nastavte protokoly Azure monitor](#set-up-resource-logs).
 
-Tento článek popisuje, jak povolit Log Analytics, když vytváříte aplikace logiky, jak nainstalovat a nastavit řešení pro správu Logic Apps a jak nastavit a vytvářet dotazy na protokoly Azure Monitor.
+Tento článek ukazuje, jak povolit Log Analytics pro nové Logic Apps a stávající aplikace logiky, jak nainstalovat a nastavit řešení pro správu Logic Apps a jak nastavit a vytvářet dotazy na protokoly Azure Monitor.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, potřebujete [Log Analytics pracovní prostor](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). Pokud nemáte pracovní prostor, přečtěte si, [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
@@ -89,6 +89,9 @@ Pokud jste při vytváření aplikace logiky zapnuli Log Analytics, přeskočte 
 
 Když ukládáte informace o událostech a datech modulu runtime v [protokolech Azure monitor](../azure-monitor/platform/data-platform-logs.md), můžete vytvořit [dotazy protokolu](../azure-monitor/log-query/log-query-overview.md) , které vám pomůžou najít a zkontrolovat tyto informace.
 
+> [!NOTE]
+> Po povolení nastavení diagnostiky můžou data diagnostiky po dobu až 30 minut přecházet do protokolů v zadaném cíli, jako je Log Analytics, centrum událostí nebo účet úložiště. Tato prodleva znamená, že diagnostická data z tohoto časového období nemusí pro kontrolu existovat. Dokončené události a [sledované vlastnosti](#extend-data) se nemusí zobrazit v pracovním prostoru Log Analytics po dobu 10-15 minut.
+
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte svou aplikaci logiky.
 
 1. V nabídce aplikace logiky v části **monitorování**vyberte **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky**.
@@ -140,13 +143,12 @@ Po spuštění aplikace logiky můžete zobrazit data o těchto spuštěních v 
 
    ![Zobrazení běhu a stavu aplikace logiky](./media/monitor-logic-apps-log-analytics/logic-app-run-details.png)
 
+   > [!NOTE]
+   > Možnost opětovného **odeslání** na této stránce není momentálně k dispozici.
+
    V případě akcí, ve kterých jste [nastavili sledované vlastnosti](#extend-data), můžete tyto vlastnosti zobrazit také tak, že ve sloupci **sledované vlastnosti** vyberete **zobrazení** . Chcete-li vyhledat sledované vlastnosti, použijte filtr sloupce.
 
    ![Zobrazení sledovaných vlastností aplikace logiky](./media/monitor-logic-apps-log-analytics/logic-app-tracked-properties.png)
-
-   > [!NOTE]
-   > Sledované vlastnosti nebo události, které jsou dokončené, můžou během Log Analytics pracovního prostoru nastat v 10-15 minutách.
-   > Možnost opětovného **odeslání** na této stránce je také momentálně nedostupná.
 
 1. Pokud chcete filtrovat výsledky, můžete provést filtrování na straně klienta i na straně serveru.
 

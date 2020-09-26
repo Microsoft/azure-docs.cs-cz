@@ -3,12 +3,12 @@ title: Architektura zařízení Azure Migrate
 description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 028e0e5b0bbf83c08b5f9cd6d24d7914513ae89a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514559"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322253"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Architektura zařízení Azure Migrate
 
@@ -21,7 +21,7 @@ Zařízení Azure Migrate se používá v následujících scénářích.
 **Scénář** | **Nástroj** | **Použití** 
 --- | --- | ---
 **Posouzení virtuálního počítače VMware** | Azure Migrate: posouzení serveru | Vyhledejte virtuální počítače VMware.<br/><br/> Objevte aplikace a závislosti počítačů.<br/><br/> Shromažďovat metadata počítačů a metadata o výkonu a odesílat je do Azure.
-**Migrace virtuálních počítačů VMware (bez agentů)** | Azure Migrate: Migrace serveru | Zjistit virtuální počítače VMware<br/><br/>  Replikace virtuálních počítačů VMware s [migrací bez agentů](server-migrate-overview.md)
+**Migrace virtuálních počítačů VMware (bez agentů)** | Azure Migrate: Migrace serveru | Zjišťování virtuálních počítačů VMware<br/><br/>  Replikace virtuálních počítačů VMware s [migrací bez agentů](server-migrate-overview.md)
 **Posouzení virtuálního počítače Hyper-V** | Azure Migrate: posouzení serveru | Objevte virtuální počítače Hyper-V.<br/><br/> Shromažďovat metadata počítačů a metadata o výkonu a odesílat je do Azure.
 **Fyzický počítač** |  Azure Migrate: posouzení serveru |  Objevte fyzické servery.<br/><br/> Shromažďovat metadata počítačů a metadata o výkonu a odesílat je do Azure.
 
@@ -72,7 +72,7 @@ Zařízení komunikuje s vCenter servery a hostiteli nebo clustery Hyper-V pomoc
 2. **Shromážděte metadata a data o výkonu**:
     - Zařízení používá relaci model CIM (Common Information Model) (CIM) ke shromažďování dat virtuálních počítačů Hyper-V z hostitele Hyper-V na portu 5985.
     - Zařízení ve výchozím nastavení komunikuje s portem 443, aby mohla shromažďovat data virtuálních počítačů VMware z vCenter Server.
-3. **Odeslat data**: zařízení odesílá shromážděná data pro Azure Migrate posouzení serveru a migraci Azure Migrate serveru přes SSL port 443. Zařízení se může připojit k Azure přes Internet nebo můžete použít ExpressRoute s veřejným partnerským vztahem/Microsoftu.
+3. **Odeslat data**: zařízení odesílá shromážděná data pro Azure Migrate posouzení serveru a migraci Azure Migrate serveru přes SSL port 443. Zařízení se může připojit k Azure přes Internet nebo přes ExpressRoute (vyžaduje partnerský vztah Microsoftu).
     - Pro data o výkonu zařízení shromažďuje data o využití v reálném čase.
         - Údaje o výkonu se shromažďují každých 20 sekund pro VMware a každých 30 sekund pro Hyper-V pro každou metriku výkonu.
         - Shromážděná data jsou zahrnuta k vytvoření jednoho datového bodu po dobu 10 minut.

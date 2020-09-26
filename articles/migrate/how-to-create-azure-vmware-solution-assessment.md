@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: b2917c10e13f110d7ac9784da16a10fc61eb9298
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 192780f1340b09cd2579e31f4023acb101d0e1f9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288865"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358079"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Vytvoření posouzení řešení Azure VMware (AVS)
 
@@ -33,8 +33,8 @@ Existují dva typy hodnocení, které můžete vytvořit pomocí Azure Migrate: 
 
 **Typ posouzení** | **Podrobnosti**
 --- | --- 
-**Virtuální počítač Azure** | Posouzení migrace vašich místních serverů do virtuálních počítačů Azure. <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md), [virtuální počítače Hyper-V](how-to-set-up-appliance-hyper-v.md)a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci do Azure. [Další informace](concepts-assessment-calculation.md)
-**Azure VMware Solution (AVS)** | Posouzení migrace místních serverů do [Řešení Azure VMware (AVS)](../azure-vmware/introduction.md). <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
+**Virtuální počítač Azure** | Posouzení vhodnosti místních serverů k migraci na virtuální počítače Azure. <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md), [virtuální počítače Hyper-V](how-to-set-up-appliance-hyper-v.md)a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci do Azure. [Další informace](concepts-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Posouzení vhodnosti místních serverů k migraci do služby [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> Pomocí tohoto typu posouzení můžete posoudit vhodnost místních [virtuálních počítačů VMware](how-to-set-up-appliance-vmware.md) k migraci do služby Azure VMware Solution (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
 
 > [!NOTE]
 > Posouzení řešení Azure VMware (AVS) je aktuálně ve verzi Preview a je možné ho vytvořit jenom pro virtuální počítače VMware.
@@ -52,31 +52,31 @@ Existují dva typy kritérií změny velikosti, které můžete použít k vytvo
 
 Spusťte posouzení řešení Azure VMware (AVS) následujícím způsobem:
 
-1. Projděte si [osvědčené postupy](best-practices-assessment.md) pro vytváření hodnocení.
+1. Projděte si [osvědčené postupy](best-practices-assessment.md) pro vytváření posouzení.
 
 2. Na kartě **servery** na dlaždici **Azure Migrate: vyhodnocování serveru** klikněte na možnost **vyhodnotit**.
 
-    ![Posouzení](./media/how-to-create-assessment/assess.png)
+    ![Snímek obrazovky ukazuje Azure Migrate servery s vyhodnocením vybraným v části nástroje pro posouzení.](./media/how-to-create-assessment/assess.png)
 
 3. V okně **vyhodnotit servery**vyberte typ posouzení jako "Azure VMware Solution (AVS)", vyberte zdroj zjišťování a zadejte název posouzení.
 
-    ![Základy hodnocení](./media/how-to-create-avs-assessment/assess-servers-avs.png)
+    ![Základní informace o posouzení](./media/how-to-create-avs-assessment/assess-servers-avs.png)
 
 4. Kliknutím na **Zobrazit vše** zobrazíte vlastnosti posouzení.
 
     ![Vlastnosti vyhodnocení pro funkci AVS](./media/how-to-create-avs-assessment/avs-view-all.png)
 
-5. Klikněte na tlačítko **Další** a **Vyberte počítače, které chcete vyhodnotit**. V **Vyberte nebo vytvořte skupinu**vyberte **vytvořit novou**a zadejte název skupiny. Skupina shromažďuje jeden nebo více virtuálních počítačů dohromady pro posouzení.
+5. Kliknutím na **Další** přejděte do části **Vybrat počítače, které se mají posoudit**. V části **Vybrat nebo vytvořit skupinu** vyberte **Vytvořit novou** a zadejte název skupiny. Skupina sdružuje jeden nebo více virtuálních počítačů pro posouzení.
 
 6. V části **přidat počítače do skupiny**vyberte virtuální počítače, které chcete do skupiny přidat.
 
-7. Kliknutím **next** na další **Projděte si téma** a podrobnější informace o posouzení a Projděte si podrobnosti o posouzení.
+7. Kliknutím na **Další** přejděte do části **Zkontrolovat a vytvořit posouzení** a zkontrolujte podrobnosti o posouzení.
 
 8. Kliknutím na **vytvořit posouzení** vytvořte skupinu a spusťte posouzení.
 
     ![Vytvoření hodnocení AVS](./media/how-to-create-avs-assessment/avs-assessment-create.png)
 
-9. Po vytvoření posouzení ho zobrazte na stránce **servery**  >  **Azure Migrate: vyhodnocení vyhodnocení serveru**  >  **Assessments**.
+9. Po vytvoření můžete posouzení zobrazit v části **Servery** > **Azure Migrate: Hodnocení serverů** > **Posouzení**.
 
 10. Klikněte na **Exportovat posouzení** a stáhněte ho jako excelový soubor.
 
@@ -91,7 +91,7 @@ Posouzení řešení Azure VMware (AVS) popisuje:
 - **Odhad měsíčních nákladů**: Odhadované měsíční náklady na všechny uzly řešení Azure VMware (AVS), na kterých běží místní virtuální počítače.
 
 
-### <a name="view-an-assessment"></a>Zobrazit posouzení
+### <a name="view-an-assessment"></a>Zobrazení posouzení
 
 1. V případě **migrace**  >   na**serverech**klikněte na **posouzení** v **Azure Migrate: posouzení serveru**.
 
@@ -117,7 +117,7 @@ Posouzení řešení Azure VMware (AVS) popisuje:
 
 
 
-### <a name="review-cost-details"></a>Podrobnosti o kontrole nákladů
+### <a name="review-cost-details"></a>Kontrola podrobností o nákladech
 
 Toto zobrazení ukazuje odhadované náklady na běžící virtuální počítače v řešení Azure VMware (AVS).
 

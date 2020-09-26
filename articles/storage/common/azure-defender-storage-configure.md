@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: d2ad302042b277cf29b3a7b22af88b662686b3fd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994392"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289765"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Konfigurace Azure Defenderu pro úložiště
 
@@ -23,11 +23,11 @@ Azure Defender pro úložiště poskytuje další vrstvu zabezpečení, která d
 
 Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy zabezpečení jsou integrovány do [Azure Security Center](https://azure.microsoft.com/services/security-center/)a jsou také odesílány prostřednictvím e-mailu správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak tyto hrozby prozkoumat a opravit.
 
-Služba ingestuje protokoly prostředků žádostí o čtení, zápis a odstranění do úložiště objektů BLOB a do souborů Azure (Preview) pro detekci hrozeb. Pokud chcete prozkoumat výstrahy z Azure Defenderu, můžete zobrazit související aktivitu úložiště pomocí protokolování Analýza úložiště. Další informace najdete v tématu **Konfigurace protokolování** v [monitorování účtu úložiště v Azure Portal](storage-monitor-storage-account.md#configure-logging).
+Služba ingestuje protokoly prostředků žádostí o čtení, zápis a odstranění do úložiště objektů BLOB a do souborů Azure pro detekci hrozeb. Pokud chcete prozkoumat výstrahy z Azure Defenderu, můžete zobrazit související aktivitu úložiště pomocí protokolování Analýza úložiště. Další informace najdete v tématu **Konfigurace protokolování** v [monitorování účtu úložiště v Azure Portal](storage-monitor-storage-account.md#configure-logging).
 
 ## <a name="availability"></a>Dostupnost
 
-Služba Azure Defender pro úložiště je aktuálně dostupná pro úložiště objektů blob, soubory Azure (Preview) a Azure Data Lake Storage Gen2 (Preview). Mezi typy účtů, které podporují Azure Defender, patří obecné účely v2, objekty blob bloku a účty BLOB Storage. Azure Defender pro úložiště je k dispozici ve všech veřejných cloudech a v cloudech státní správy USA, ale ne v jiných oblastech cloudu nebo Azure Government cloudových oblastech.
+Služba Azure Defender pro úložiště je aktuálně dostupná pro úložiště objektů blob, soubory Azure a Azure Data Lake Storage Gen2. Mezi typy účtů, které podporují Azure Defender, patří obecné účely v2, objekty blob bloku a účty BLOB Storage. Azure Defender pro úložiště je k dispozici ve všech veřejných cloudech a v cloudech státní správy USA, ale ne v jiných oblastech cloudu nebo Azure Government cloudových oblastech.
 
 Účty s hierarchickými obory názvů povolené pro Data Lake Storage podporují transakce pomocí rozhraní API služby Azure Blob Storage i Data Lake Storage rozhraní API. Azure File Shares podporuje transakce přes SMB.
 
@@ -37,8 +37,8 @@ Následující seznam shrnuje dostupnost služby Azure Defender pro úložiště
 
 - Stav vydaných verzí:
   - [BLOB Storage](https://azure.microsoft.com/services/storage/blobs/) (Obecná dostupnost)
-  - [Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (Preview podporuje transakce SMB a REST)
-  - Azure Data Lake Storage Gen2 (Preview)
+  - [Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (všeobecně dostupné)
+  - Azure Data Lake Storage Gen2 (Obecná dostupnost)
 - Cloud<br>
     ✔ Komerční cloudy<br>
     ✔ US Gov<br>

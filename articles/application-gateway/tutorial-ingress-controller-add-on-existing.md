@@ -1,18 +1,18 @@
 ---
-title: Povolit doplněk kontroleru příchozího přenosu pro stávající AKS cluster se stávajícím Azure Application Gateway
+title: 'Kurz: Povolení doplňku příchozího řadiče pro existující cluster AKS se stávajícím Azure Application Gateway'
 description: Pomocí tohoto kurzu můžete pro stávající cluster AKS povolit doplněk příchozího řadiče s existujícím Application Gateway
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 35d9396ac1f4569002b95549a8752745537621cf
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: d0ce58c5bb6de4712117959f10b48ae3449f0b97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595933"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285617"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Kurz: Povolení doplňku Application Gateway příchozího adaptéru pro existující cluster AKS s existujícím Application Gateway prostřednictvím Azure CLI (Preview)
 
@@ -29,7 +29,9 @@ V tomto kurzu se naučíte:
 > * Nasazení ukázkové aplikace pomocí AGIC pro příchozí přenosy v clusteru AKS
 > * Ověřte, že je aplikace dosažitelná prostřednictvím Application Gateway
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+## <a name="prerequisites"></a>Požadavky
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -151,7 +153,6 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* [Další informace o zakázání doplňku AGIC](./ingress-controller-disable-addon.md)
-* [Další informace o tom, které poznámky jsou podporované pomocí AGIC](./ingress-controller-annotations.md)
-* [Řešení potíží s AGIC](./ingress-controller-troubleshoot.md)
 
+> [!div class="nextstepaction"]
+> [Další informace o zakázání doplňku AGIC](./ingress-controller-disable-addon.md)
