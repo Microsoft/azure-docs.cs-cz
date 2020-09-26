@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: b52c493a700cd258e1458b0127aa19cebc714822
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b5bf29969f8b6d54215e2b2f1a2d0b1587faad6f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891606"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332181"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Nejčastější dotazy k Azure Synapse Linku pro Azure Cosmos DB
 
@@ -82,7 +82,7 @@ Analytické úložiště je úložiště jen pro čtení v kontejneru Azure Cosm
 
 ### <a name="is-the-autosync-replication-from-transactional-store-to-the-analytical-store-asynchronous-or-synchronous-and-what-are-the-latencies"></a>Je replikace automatické synchronizace z transakčního úložiště do analytického úložiště asynchronní nebo synchronní a jaká je latence?
 
-Replikace je asynchronní a v současné době je očekávaná latence kolem 2 minut.
+Latence automatické synchronizace je obvykle do 2 minut. V případě sdílené databáze propustnosti s velkým počtem kontejnerů může být latence automatické synchronizace v jednotlivých kontejnerech vyšší a trvat až 5 minut. Rádi bychom se dozvěděli, jak tato latence vyhovuje vašim scénářům. V takovém případě se prosím obraťte na [tým Azure Cosmos DB](mailto:cosmosdbsynapselink@microsoft.com).
 
 ### <a name="are-there-any-scenarios-where-the-items-from-the-transactional-store-are-not-automatically-propagated-to-the-analytical-store"></a>Existují nějaké scénáře, kdy položky z transakčního úložiště nejsou automaticky šířeny do analytického úložiště?
 

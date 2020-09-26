@@ -4,12 +4,12 @@ description: Naučte se průběžně sestavovat, testovat a nasazovat šablony A
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 433811cb632aae0d7370fc8e401c01fe36621a5b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892673"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333232"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines
 
@@ -33,7 +33,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 
@@ -180,7 +180,7 @@ Vytvoření kanálu s krokem pro nasazení šablony:
     * **Režim nasazení**: vyberte **přírůstkové**.
     * **Název nasazení**: zadejte **DeployPipelineTemplate**. Než uvidíte **název nasazení**, vyberte **Upřesnit** .
 
-    ![Krok Azure Resource Manager Azure DevOps Azure Pipelines](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
+    ![Snímek obrazovky zobrazující stránku nasazení šablony ARM s zadanými požadovanými hodnotami.](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
 1. Vyberte **Přidat**.
 
@@ -188,7 +188,7 @@ Vytvoření kanálu s krokem pro nasazení šablony:
 
     Soubor YML by měl vypadat nějak takto:
 
-    ![Azure Resource Manager Azure DevOps Azure Pipelines YAML](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
+    ![Snímek obrazovky zobrazující stránku recenze s novým kanál s názvem zkontrolujte YAML kanálu.](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
 
 1. Vyberte **Uložit a spustit**.
 1. V podokně **Uložit a spustit** vyberte **Uložit a spustit** znovu. Kopie souboru YAML se uloží do připojeného úložiště. Soubor YAML můžete zobrazit tak, že přejdete do úložiště.
@@ -198,7 +198,7 @@ Vytvoření kanálu s krokem pro nasazení šablony:
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Otevřete skupinu prostředků. Název je to, co jste zadali v souboru YAML kanálu.  Uvidíte, že se vytvořil jeden účet úložiště.  Název účtu úložiště začíná na **Storu**.
 1. Vyberte název účtu úložiště, který chcete otevřít.
 1. Vyberte **Vlastnosti**. Všimněte si, že **replikace** je **místně redundantní úložiště (LRS)**.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 6b66db639e0b22a7e0c45486465a1fa395aba33d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4494af89ac35a391f7dc6097b14d135a911d99dd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653507"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359609"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
 
@@ -324,7 +324,7 @@ Azure Virtual Machines je řešení pro organizace, které potřebují výpočet
 
 V tomto článku jsme pokryli postup nasazení aplikací SAP na virtuálních počítačích v Azure, včetně alternativních možností nasazení a řešení potíží. Tento článek sestaví na informacích v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide]. Také doplňuje dokumentaci k instalaci SAP a poznámky SAP, které jsou primárními prostředky pro instalaci a nasazení softwaru SAP.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -543,11 +543,11 @@ Vzhledem k tomu, že různé verze operačního systému nebo DBMS mají jiné p
 Pomocí různých kroků můžete vytvořit soukromou bitovou kopii pro Linux, než je vytvoříte pro Windows.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > K přípravě image Windows, kterou můžete použít k nasazení více virtuálních počítačů, musí být nastavení systému Windows (například identifikátor SID Windows a název hostitele) abstraktní nebo zobecněná na místním virtuálním počítači. K tomu můžete použít [Nástroj Sysprep](/previous-versions/windows/it-pro/windows-8.1-and-8/hh825084(v=win.10)) .
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > K přípravě image pro Linux, kterou můžete použít k nasazení více virtuálních počítačů, je nutné, aby některá nastavení systému Linux byla na místním virtuálním počítači abstraktní nebo zobecněná. K tomu můžete použít `waagent -deprovision`  . Další informace najdete v tématu [zachycení virtuálního počítače se systémem Linux běžícího v Azure][virtual-machines-linux-capture-image] a v [uživatelské příručce agenta Azure Linux][virtual-machines-linux-agent-user-guide-command-line-options].
 >
@@ -683,11 +683,11 @@ V tomto scénáři se agent virtuálního počítače během **nasazování auto
 Další informace o agentovi virtuálního počítače Azure najdete v následujících zdrojích informací.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Logo Windows][Logo_Windows] Windows
 >
 > [Přehled agenta virtuálního počítače Azure][virtual-machines-windows-agent-user-guide]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Logo Linux.][Logo_Linux] Linux
 >
 > [Uživatelská příručka nástroje Azure Linux Agent][virtual-machines-linux-agent-user-guide]
 >
@@ -1010,7 +1010,7 @@ Instalace rozšíření Azure pro SAP pomocí Azure CLI:
    cat /var/lib/AzureEnhancedMonitor/PerfCounters
    ```
 
-   Výstup bude vypadat nějak takto:
+   Výstup vypadá takto:
 
    ```output
    ...
@@ -1309,7 +1309,7 @@ Pokud některá z dat infrastruktury nejsou dodána správně, jak je uvedeno v 
 > [!NOTE]
 > Existují dvě verze rozšíření virtuálního počítače. Tato kapitola se zabývá výchozím rozšířením virtuálního počítače. Pokud jste nainstalovali nové rozšíření virtuálních počítačů, přečtěte si kapitolu [Poradce při potížích s novým rozšířením Azure pro SAP][deployment-guide-5.3-new].
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Čítače výkonu Azure se vůbec nezobrazují
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Logo Windows][Logo_Windows] Čítače výkonu Azure se vůbec nezobrazují
 
 Služba systému Windows AzureEnhancedMonitoring shromažďuje metriky výkonu v Azure. Pokud služba není nainstalovaná správně nebo pokud ve vašem VIRTUÁLNÍm počítači není spuštěná, nemůžete shromažďovat metriky výkonu.
 
@@ -1350,13 +1350,13 @@ Služba AzureEnhancedMonitoring systému Windows existuje a je povolená, ale ne
 
 Konfigurace je nesprávná. Restartujte rozšíření Azure pro SAP na virtuálním počítači, jak je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5].
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Chybí některé čítače výkonu Azure.
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Logo Windows][Logo_Windows] Chybí některé čítače výkonu Azure.
 
 Služba systému Windows AzureEnhancedMonitoring shromažďuje metriky výkonu v Azure. Služba získává data z několika zdrojů. Některá konfigurační data se shromažďují místně a některé metriky výkonu se čtou z Azure Diagnostics. Čítače úložiště se používají z vašeho protokolování na úrovni předplatného úložiště.
 
 Pokud řešení potíží pomocí SAP Note [1999351] problém nevyřeší, spusťte znovu `Set-AzVMAEMExtension` konfigurační skript. Možná budete muset počkat hodinu, protože diagnostické a diagnostické čítače nemusí být vytvořené hned po povolení. Pokud se problém opakuje, otevřete zprávu zákaznická podpora SAP na komponentě BC-OP-NT-AZR pro Windows nebo BC-OP-LNX-AZR pro virtuální počítač se systémem Linux.
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Čítače výkonu Azure se vůbec nezobrazují
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Logo Linux.][Logo_Linux] Čítače výkonu Azure se vůbec nezobrazují
 
 Metriky výkonu v Azure se shromažďují pomocí démona. Pokud démon není spuštěn, nelze shromáždit žádné metriky výkonu.
 
@@ -1389,7 +1389,7 @@ Spuštění azperfli.exe jak bylo popsáno výše, můžete získat výsledek, k
 Zprávy jsou způsobeny faktem, že standardní Managed Disks neposkytují rozhraní API používaná rozšířením SAP pro SAP pro kontrolu statistik standardních Azure Storagech účtů. Nejedná se o obavy. Důvod, proč se shromažďování dat pro účty Standard Disk Storage omezuje na vstupy a výstupy, ke kterým došlo často. Služba Managed disks se vyhne omezování tím, že omezuje počet disků v účtu úložiště. Proto tento typ dat není kritický.
 
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Chybí některé čítače výkonu Azure.
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Logo Linux.][Logo_Linux] Chybí některé čítače výkonu Azure.
 
 Metriky výkonu v Azure se shromažďují pomocí démona, který získává data z několika zdrojů. Některá konfigurační data se shromažďují místně a některé metriky výkonu se čtou z Azure Diagnostics. Čítače úložiště přicházejí z protokolů v rámci vašeho předplatného úložiště.
 
@@ -1402,7 +1402,7 @@ Pokud problém nevyřešíte pomocí SAP Note [1999351] , spusťte konfiguračn�
 > [!NOTE]
 > Existují dvě verze rozšíření virtuálního počítače. Tato kapitola se zabývá novým rozšířením virtuálního počítače. Pokud jste nainstalovali výchozí rozšíření virtuálního počítače, přečtěte si kapitolu [Poradce při potížích s rozšířením Azure pro SAP][deployment-guide-5.3].
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Čítače výkonu Azure se vůbec nezobrazují
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Logo Windows][Logo_Windows] Čítače výkonu Azure se vůbec nezobrazují
 
 Proces AzureEnhancedMonitoring shromažďuje metriky výkonu v Azure. Pokud proces ve vašem VIRTUÁLNÍm počítači neběží, nemůžete shromažďovat metriky výkonu.
 
@@ -1416,13 +1416,13 @@ Instalační adresář C: \\ \\ moduly plug-in \\ Microsoft. zákaznického pora
 
 Rozšíření není nainstalované. Určete, zda se jedná o problém s proxy serverem (jak je popsáno výše). Možná budete muset restartovat počítač nebo znovu nainstalovat rozšíření virtuálního počítače.
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Chybí některé čítače výkonu Azure.
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Logo Windows][Logo_Windows] Chybí některé čítače výkonu Azure.
 
 Proces Windows AzureEnhancedMonitoring shromažďuje metriky výkonu v Azure. Proces získává data z několika zdrojů. Některá konfigurační data se shromažďují místně a některé metriky výkonu se čtou z Azure Monitor.
 
 Pokud problém nevyřešíte pomocí protokolu SAP Note [1999351] , otevřete zprávu zákaznická podpora SAP na komponentě BC-op-NT-AZR pro Windows nebo BC-op-LNX-AZR pro virtuální počítač se systémem Linux. Připojte prosím soubor protokolu C: \\ balíčky \\ plugins \\ Microsoft. zákaznického poradního. AzureEnhancedMonitoring. MonitorX64Windows \\ &lt;>\\logapp.txt k incidentu.
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Čítače výkonu Azure se vůbec nezobrazují
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Logo Linux.][Logo_Linux] Čítače výkonu Azure se vůbec nezobrazují
 
 Metriky výkonu v Azure se shromažďují pomocí démona. Pokud démon není spuštěn, nelze shromáždit žádné metriky výkonu.
 
@@ -1436,7 +1436,7 @@ Složka \\ var \\ lib waagent neobsahuje podadresář \\ \\ pro rozšíření Az
 
 Rozšíření není nainstalované. Určete, zda se jedná o problém s proxy serverem (jak je popsáno výše). Možná budete muset restartovat počítač nebo znovu nainstalovat rozšíření virtuálního počítače.
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Chybí některé čítače výkonu Azure.
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Logo Linux.][Logo_Linux] Chybí některé čítače výkonu Azure.
 
 Metriky výkonu v Azure se shromažďují pomocí démona, který získává data z několika zdrojů. Některá konfigurační data se shromažďují místně a některé metriky výkonu se čtou z Azure Monitor.
 
@@ -1495,7 +1495,7 @@ Postupujte podle kroků v části [Konfigurace rozšíření Azure pro SAP][depl
 
 Pokud chyby nezmizí, obraťte se na [podporu][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kontaktování podpory
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kontaktujte podporu
 
 Neočekávaná chyba nebo neexistuje žádné známé řešení. Shromážděte soubor AzureEnhancedMonitoring_service. log umístěný ve složce C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) nebo/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) a požádejte o další pomoc podporu SAP.
 

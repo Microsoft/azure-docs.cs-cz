@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 2d81749e7023bdbf5353e5c8da633674ea8e8ce9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4077bbe0a98f6b7788af9b6c44f73abbc936c6aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946851"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332234"
 ---
-# <a name="sms-client-library-overview"></a>Přehled klientské knihovny SMS
+# <a name="sms-client-library-overview"></a>Přehled klientských knihoven pro SMS
 
 [!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
@@ -37,7 +37,7 @@ Následující seznam uvádí sadu funkcí, které jsou aktuálně k dispozici v
 | Telefonní číslo      | Bezplatné telefonní číslo                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
 | Řídící        | Zpracování výslovných výjimek                                                                      | ✔️   | ✔️    | ✔️    | ✔️      |
 | Monitorování        | Monitorování využití odesílaných a přijatých zpráv                                          | ✔️   | ✔️    | ✔️    | ✔️      |
-| Volání do veřejné telefonní sítě      | Přidání schopností volání do veřejné telefonní číslo do telefonního čísla s podporou serveru SMS                    | ✔️   | ✔️    | ✔️    | ✔️      |
+| Volání do veřejné telefonní sítě      | Přidání schopností volání přes telefonní číslo do bezplatného čísla s povoleným serverem SMS (privátní verze Preview)                    | ✔️   | ✔️    | ✔️    | ✔️      |
 
 ## <a name="next-steps"></a>Další kroky
 

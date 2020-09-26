@@ -2,15 +2,15 @@
 title: Řešení potíží s Azure Automation Update Management
 description: V tomto článku se dozvíte, jak řešit problémy s Azure Automation Update Management.
 services: automation
-ms.date: 06/30/2020
+ms.date: 09/25/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: b0b1e31a8c10ba372473c36e35c19044ef02898a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 26ce59c1d4ec8e3e2bf2096a4688b7639148410f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003350"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359235"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Řešení problémů s Update Managementem
 
@@ -65,9 +65,9 @@ Pokud se nahradí nahrazené aktualizace 100 procent, měli byste změnit stav s
 
 1. V účtu Automation vyberte **Update Management** pro zobrazení stavu počítače. Viz [zobrazení posouzení aktualizací](../update-management/update-mgmt-view-update-assessments.md).
 
-2. Zkontrolujte nahrazenou aktualizaci a ujistěte se, že se nejedná o 100%. 
+2. Zkontrolujte nahrazenou aktualizaci a ujistěte se, že se nejedná o 100%.
 
-3. Pokud nemáte dotaz týkající se aktualizace, označte ji jako odmítnutou. 
+3. Pokud nemáte dotaz týkající se aktualizace, označte ji jako odmítnutou.
 
 4. Vyberte **počítače** a ve sloupci **dodržování předpisů** vynuťte opětovné prohledání dodržování předpisů. Viz [Správa aktualizací pro virtuální počítače](../update-management/update-mgmt-manage-updates-for-vm.md).
 
@@ -112,9 +112,9 @@ K tomuto problému může dojít při potížích s místními konfiguracemi neb
    | summarize by Computer, Solutions
    ```
 
-4. Pokud počítač ve výsledcích dotazu nevidíte, nebude nedávno vrácen se změnami. Pravděpodobně došlo k potížím s místní konfigurací a je třeba [agenta přeinstalovat](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). 
+4. Pokud počítač ve výsledcích dotazu nevidíte, nebude nedávno vrácen se změnami. Pravděpodobně došlo k potížím s místní konfigurací a je třeba [agenta přeinstalovat](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
-5. Pokud se Váš počítač zobrazí ve výsledcích dotazu, vyhledejte problémy s konfigurací rozsahu. [Konfigurace oboru](../update-management/update-mgmt-scope-configuration.md) určuje, které počítače jsou nakonfigurovány pro Update Management. 
+5. Pokud se Váš počítač zobrazí ve výsledcích dotazu, vyhledejte problémy s konfigurací rozsahu. [Konfigurace oboru](../update-management/update-mgmt-scope-configuration.md) určuje, které počítače jsou nakonfigurovány pro Update Management.
 
 6. Pokud se Váš počítač zobrazuje v pracovním prostoru, ale ne v Update Management, musíte nakonfigurovat konfiguraci oboru, aby se na počítač nastavil cíl. Další informace o tom, jak to udělat, najdete v tématu [Povolení počítačů v pracovním prostoru](../update-management/update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace).
 
@@ -180,7 +180,7 @@ Pokud vaše předplatné není pro poskytovatele prostředků služby Automation
 
 1. V [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)přejděte na seznam služeb Azure.
 
-2. Vyberte **všechny služby**a potom vyberte **předplatná** ve skupině obecné služby. 
+2. Vyberte **všechny služby**a potom vyberte **předplatná** ve skupině obecné služby.
 
 3. Vyhledá předplatné definované v oboru pro vaše nasazení.
 
@@ -251,7 +251,7 @@ Použijte následující postup, chcete-li zjistit, zda dotazy fungují správn�
     | project id, location, name, tags
     ```
 
-2. Zkontrolujte, jestli jsou v seznamu výsledků dotazu uvedené počítače, které chcete najít. 
+2. Zkontrolujte, jestli jsou v seznamu výsledků dotazu uvedené počítače, které chcete najít.
 
 3. Pokud počítače nejsou uvedené, pravděpodobně došlo k potížím s filtrem vybraným v dynamické skupině. Podle potřeby upravte konfiguraci skupiny.
 
@@ -325,7 +325,7 @@ Pokud používáte Klonovaný obrázek, mají různé názvy počítačů stejn�
 
 3. Spusťte `Restart-Service HealthService` pro restartování služby Health Service. Tato operace znovu vytvoří klíč a vygeneruje nový UUID.
 
-4. Pokud tento přístup nefunguje, nejprve na imagi spusťte nástroj Sysprep a pak nainstalujte MMA.
+4. Pokud tento přístup nefunguje, nejprve na imagi spusťte nástroj Sysprep a pak nainstalujte agenta Log Analytics pro Windows.
 
 ## <a name="scenario-you-receive-a-linked-subscription-error-when-you-create-an-update-deployment-for-machines-in-another-azure-tenant"></a><a name="multi-tenant"></a>Scénář: při vytváření nasazení aktualizace pro počítače v jiném tenantovi Azure se zobrazí chyba propojeného předplatného.
 
@@ -343,7 +343,7 @@ K této chybě dojde, když vytvoříte nasazení aktualizace, které obsahuje v
 
 ### <a name="resolution"></a>Řešení
 
-K naplánování těchto položek použijte následující alternativní řešení. K vytvoření plánu můžete použít rutinu [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) s `ForUpdateConfiguration` parametrem. Pak použijte rutinu [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) a předejte do parametru počítače v druhém tenantovi `NonAzureComputer` . Následující příklad ukazuje, jak to provést:
+K naplánování těchto položek použijte následující alternativní řešení. K vytvoření plánu můžete použít rutinu [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule) s `ForUpdateConfiguration` parametrem. Pak použijte rutinu [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration) a předejte do parametru počítače v druhém tenantovi `NonAzureComputer` . Následující příklad ukazuje, jak to provést:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -386,24 +386,15 @@ K této chybě může dojít z některého z následujících důvodů:
 * Počítač už neexistuje.
 * Počítač je vypnutý a nedosažitelný.
 * Počítač má problém s připojením k síti, a proto je hybridní pracovní proces na počítači nedosažitelný.
-* Byla zjištěna aktualizace MMA, která změnila ID zdrojového počítače.
+* Byla zjištěna aktualizace agenta Log Analytics, který změnil ID zdrojového počítače.
 * Pokud jste dosáhli limitu 200 souběžných úloh v účtu Automation, vaše spuštění aktualizace bylo omezené. Každé nasazení se považuje za úlohu a každý počítač v nasazení aktualizace se počítá jako úloha. Jakékoli jiné úlohy služby Automation nebo nasazení aktualizací, které aktuálně běží ve vašem účtu Automation, se počítá s limitem souběžných úloh.
 
 ### <a name="resolution"></a>Řešení
 
 V případě potřeby použijte pro nasazení aktualizací [dynamické skupiny](../update-management/update-mgmt-groups.md) . Kromě toho můžete provést následující kroky.
 
-1. Ověřte, že počítač stále existuje a je dostupný. 
-2. Pokud počítač neexistuje, upravte nasazení a odeberte počítač.
-3. V části [Plánování sítě](../update-management/update-mgmt-overview.md#ports) najdete seznam portů a adres, které jsou potřeba pro Update Management, a pak ověřte, že váš počítač splňuje tyto požadavky.
-4. Ověřte připojení k Hybrid Runbook Worker pomocí Poradce při potížích Hybrid Runbook Worker agenta. Další informace o poradci při potížích najdete v tématu [Poradce při potížích s aktualizací agenta](update-agent-issues.md).
-5. Spuštěním následujícího dotazu v Log Analytics Najděte počítače ve vašem prostředí, pro které se změnilo ID zdrojového počítače. Hledejte počítače, které mají stejnou `Computer` hodnotu, ale jinou `SourceComputerId` hodnotu.
-
-   ```kusto
-   Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
-   ```
-
-6. Po nalezení ovlivněných počítačů upravte nasazení aktualizace, která cílí na tyto počítače, a pak je odeberte a přečtěte, aby `SourceComputerId` odrážela správnou hodnotu.
+1. Ověřte, zda váš počítač nebo server splňuje [požadavky](../update-management/update-mgmt-overview.md#client-requirements).
+2. Ověřte připojení k Hybrid Runbook Worker pomocí Poradce při potížích Hybrid Runbook Worker agenta. Další informace o poradci při potížích najdete v tématu [Poradce při potížích s aktualizací agenta](update-agent-issues.md).
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Scénář: aktualizace se instalují bez nasazení.
 
@@ -466,7 +457,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 ### <a name="cause"></a>Příčina
 
-Server proxy, brány nebo brány firewall můžou blokovat síťovou komunikaci. 
+Server proxy, brány nebo brány firewall můžou blokovat síťovou komunikaci.
 
 ### <a name="resolution"></a>Řešení
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.custom: sqldbrb=1
 author: stevestein
 ms.author: sstein
-ms.reviewer: sashan, moslake, carlrab
+ms.reviewer: sashan, moslake
 ms.date: 05/28/2020
-ms.openlocfilehash: 0193e7f7001fb8f63794a379c4d2b8e28abd5c0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8c7671e655594456621e4489cb06191d820b134
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297864"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333150"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrace Azure SQL Database z modelu založeného na DTU do modelu založeného na vCore
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -168,13 +168,13 @@ Následující tabulka poskytuje pokyny pro konkrétní scénáře migrace:
 |Aktuální úroveň služby|Cílová úroveň služby|Typ migrace|Akce uživatele|
 |---|---|---|---|
 |Standard|Obecné účely|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore, jak je popsáno výše.|
-|Premium|Důležité pro podnikání|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore, jak je popsáno výše.|
-|Standard|Důležité pro podnikání|Upgrade|Nejprve je třeba migrovat sekundární|
-|Důležité pro podnikání|Standard|Downgrade|Nejprve je třeba migrovat primární|
+|Premium|Pro důležité obchodní informace|Boku|Může migrovat v libovolném pořadí, ale musí zajistit odpovídající velikost vCore, jak je popsáno výše.|
+|Standard|Pro důležité obchodní informace|Upgrade|Nejprve je třeba migrovat sekundární|
+|Pro důležité obchodní informace|Standard|Downgrade|Nejprve je třeba migrovat primární|
 |Premium|Obecné účely|Downgrade|Nejprve je třeba migrovat primární|
 |Obecné účely|Premium|Upgrade|Nejprve je třeba migrovat sekundární|
-|Důležité pro podnikání|Obecné účely|Downgrade|Nejprve je třeba migrovat primární|
-|Obecné účely|Důležité pro podnikání|Upgrade|Nejprve je třeba migrovat sekundární|
+|Pro důležité obchodní informace|Obecné účely|Downgrade|Nejprve je třeba migrovat primární|
+|Obecné účely|Pro důležité obchodní informace|Upgrade|Nejprve je třeba migrovat sekundární|
 ||||
 
 ## <a name="migrate-failover-groups"></a>Migrace skupin převzetí služeb při selhání
