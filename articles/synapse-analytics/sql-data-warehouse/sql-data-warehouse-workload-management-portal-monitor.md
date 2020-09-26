@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f46ed1890bb62acc92eea28c55bf9abd6153e8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13b0dc3af524b16430408f8a920c7477c412414d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208684"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362725"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Analýza Azure synapse Analytics – úlohy Portál pro správu monitorování
 
@@ -26,7 +26,7 @@ Existují dvě různé kategorie metrik skupin úloh, které jsou k dispozici pr
 
 ## <a name="workload-management-metric-definitions"></a>Definice metrik správy úloh
 
-|Název metriky                    |Description  |Typ agregace |
+|Název metriky                    |Popis  |Typ agregace |
 |-------------------------------|-------------|-----------------|
 |Procento efektivního Cap prostředku | *Procentuální hodnota efektivního* limitu prostředků je pevně nastavená procentuální hodnota z prostředků, které skupina úloh zpřístupní, přičemž vezme v úvahu *efektivní minimální procento prostředků* přidělených pro jiné skupiny úloh. Metrika *procenta efektivního limitu prostředků* je nakonfigurovaná pomocí `CAP_PERCENTAGE_RESOURCE` parametru v SYNTAXI [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Platné hodnoty jsou popsány zde.<br><br>Pokud je například `DataLoads` vytvořená skupina úloh s `CAP_PERCENTAGE_RESOURCE` = 100 a je vytvořena jiná skupina úloh s platným minimálním procentem 25%, je *procento prostředku efektivního limitu* pro `DataLoads` skupinu úloh 75%.<br><br>*Procentuální hodnota prostředku efektivního Cap* určuje horní mez souběžnosti (a tudíž potenciální propustnost), kterou může skupina úloh dosáhnout.  Pokud je potřeba další propustnost, než je aktuálně hlášena metrikou *procentuální hodnoty efektivního snížení kapacity prostředku* , zvětšete `CAP_PERCENTAGE_RESOURCE` , snižte `MIN_PERCENTAGE_RESOURCE` počet ostatních skupin úloh nebo nahorizontální navýšení kapacity instance, aby bylo možné přidat další prostředky.  Snížení úrovně `REQUEST_MIN_RESOURCE_GRANT_PERCENT` může zvýšit souběžnost, ale nemusí zvyšovat celkovou propustnost.| Min, AVG, Max |
 |Efektivní minimální procento prostředků |*Platný* minimální procento prostředků je minimální procento rezervovaných a izolovaných prostředků pro skupinu úloh, které berou v úvahu minimum úrovně služby.  Metrika platných minimálních procentuálních hodnot prostředků je nakonfigurovaná pomocí `MIN_PERCENTAGE_RESOURCE` parametru v syntaxi [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Platné hodnoty jsou popsány [zde](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values).<br><br>Pokud chcete monitorovat celkovou izolaci úloh nakonfigurovanou v systému, použijte typ agregace Sum, pokud je tato metrika nefiltrovaná, a nerozdělujte.<br><br>*Hodnota platné minimální procento prostředků* určuje dolní mez garantované souběžnosti (a tak zaručenou propustnost), kterou může skupina úloh dosáhnout.  Pokud jsou požadovány další garantované prostředky, které jsou aktuálně hlášeny v *hodnotě efektivní minimální* metriky prostředku, zvyšte `MIN_PERCENTAGE_RESOURCE` parametr nakonfigurovaný pro skupinu úloh.  Snížení úrovně `REQUEST_MIN_RESOURCE_GRANT_PERCENT` může zvýšit souběžnost, ale nemusí zvyšovat celkovou propustnost. |Min, AVG, Max|
@@ -58,8 +58,9 @@ WITH ( WORKLOAD_GROUP = 'wgPriority'
 Následující graf je nakonfigurován následujícím způsobem:<br>
 Metrika 1: *efektivní minimální procento prostředků* (průměrná agregace, `blue line` )<br>
 Metrika 2: *přidělení skupiny úloh podle systému v procentech* (průměrná agregace, `purple line` )<br>
-Filtr: [skupina úloh] =`wgPriority`<br>
-![underutilized-wg.png](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) grafu znázorňuje, že s 25% izolací úloh se v průměru používá jenom 10%.  V takovém případě `MIN_PERCENTAGE_RESOURCE` může být hodnota parametru snížena na 10 nebo 15 a umožní jiným úlohám v systému využívat prostředky.
+Filtr: [skupina úloh] = `wgPriority`<br>
+![Snímek obrazovky se zobrazením grafu se dvěma metrikami a filtrem.](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png)
+Graf ukazuje, že s 25% izolací úloh se v průměru používá jenom 10%.  V takovém případě `MIN_PERCENTAGE_RESOURCE` může být hodnota parametru snížena na 10 nebo 15 a umožní jiným úlohám v systému využívat prostředky.
 
 ### <a name="workload-group-bottleneck"></a>Kritické místo skupiny úloh
 
@@ -80,8 +81,9 @@ Následující graf je nakonfigurován následujícím způsobem:<br>
 Metrika 1: *procentuální hodnota prostředku Cap* (průměrná agregace, `blue line` )<br>
 Metrika 2: *přidělení skupiny úloh podle maximálního počtu prostředků* (průměrnou agregaci `purple line` )<br>
 Metrika 3: *skupiny úloh ve frontě – dotazy* (agregace Sum, `turquoise line` )<br>
-Filtr: [skupina úloh] =`wgDataAnalyst`<br>
-![WG v lahvích – ](./media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) graf ukazuje, že s 9% Cap k prostředkům je skupina úlohy 90% + využitá (od *přidělení skupiny úloh podle maximálního procenta kapacity prostředku*).  Existuje stálá fronta dotazů, jak je znázorněno v *metriku dotazů ve skupině úloh ve frontě*.  V takovém případě zvýšení `CAP_PERCENTAGE_RESOURCE` hodnoty na hodnotu vyšší než 9% umožní souběžné spuštění více dotazů.  Zvýšením `CAP_PERCENTAGE_RESOURCE` předpokládáme, že je k dispozici dostatek prostředků a nejsou izolované jinými skupinami úloh.  Ověřte zvýšení limitu tím, že zkontrolujete *metriku procentuální hodnoty efektivního limitu prostředků*.  Pokud je žádoucí větší propustnost, zvažte také zvýšení `REQUEST_MIN_RESOURCE_GRANT_PERCENT` hodnoty na hodnotu větší než 3.  Zvýšení `REQUEST_MIN_RESOURCE_GRANT_PERCENT` může umožní rychlejší spouštění dotazů.
+Filtr: [skupina úloh] = `wgDataAnalyst`<br>
+![Snímek obrazovky znázorňuje graf se třemi metrikami a filtrem.](./media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png)
+V grafu je vidět, že s 9% uzávěrem prostředků je skupina úloh 90% + využitá (od *přidělení skupiny úloh podle maximálního procenta kapacity prostředku*).  Existuje stálá fronta dotazů, jak je znázorněno v *metriku dotazů ve skupině úloh ve frontě*.  V takovém případě zvýšení `CAP_PERCENTAGE_RESOURCE` hodnoty na hodnotu vyšší než 9% umožní souběžné spuštění více dotazů.  Zvýšením `CAP_PERCENTAGE_RESOURCE` předpokládáme, že je k dispozici dostatek prostředků a nejsou izolované jinými skupinami úloh.  Ověřte zvýšení limitu tím, že zkontrolujete *metriku procentuální hodnoty efektivního limitu prostředků*.  Pokud je žádoucí větší propustnost, zvažte také zvýšení `REQUEST_MIN_RESOURCE_GRANT_PERCENT` hodnoty na hodnotu větší než 3.  Zvýšení `REQUEST_MIN_RESOURCE_GRANT_PERCENT` může umožní rychlejší spouštění dotazů.
 
 ## <a name="next-steps"></a>Další kroky
 

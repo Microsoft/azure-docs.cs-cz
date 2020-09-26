@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: 1493a15a97ca88d0ed914f78b1906088c03dff10
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a0cc70f5bf994e03088511a0d10796746a434bd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037405"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300305"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Škálování Stream Analytics úlohy pomocí funkcí Azure Machine Learning Studio (Classic)
 
@@ -25,7 +25,7 @@ Tento článek popisuje, jak efektivně škálovat Azure Stream Analytics úlohy
 
 Machine Learning funkce v Stream Analytics lze použít jako regulární volání funkce v dotazovacím jazyce Stream Analytics. Na pozadí jsou však tato volání funkcí skutečně Azure Machine Learning požadavky webové služby.
 
-V rámci jednoho volání rozhraní API webové služby můžete vylepšit propustnost Machine Learning požadavků webové služby dávkování více řádků najednou. Toto seskupení se nazývá mini-Batch. Další informace najdete v tématu [webové služby Azure Machine Learning Studio (Classic)](../machine-learning/studio/consume-web-services.md). Podpora Azure Machine Learning Studio (Classic) v Stream Analytics je ve verzi Preview.
+V rámci jednoho volání rozhraní API webové služby můžete vylepšit propustnost Machine Learning požadavků webové služby dávkování více řádků najednou. Toto seskupení se nazývá mini-Batch. Další informace najdete v tématu [webové služby Azure Machine Learning Studio (Classic)](../machine-learning/classic/consume-web-services.md). Podpora Azure Machine Learning Studio (Classic) v Stream Analytics je ve verzi Preview.
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Konfigurace úlohy Stream Analytics pomocí funkcí Machine Learning
 
@@ -58,7 +58,7 @@ Obecně platí, že ***b*** pro velikost dávky, ***L*** pro latenci webové slu
 
 Ve webové službě Machine Learning můžete také nakonfigurovat maximální počet souběžných volání. Doporučuje se nastavit tento parametr na maximální hodnotu (v současné době 200).
 
-Další informace o tomto nastavení najdete v článku o [škálování pro Machine Learning webové služby](../machine-learning/studio/create-endpoint.md).
+Další informace o tomto nastavení najdete v článku o [škálování pro Machine Learning webové služby](../machine-learning/classic/create-endpoint.md).
 
 ## <a name="example--sentiment-analysis"></a>Příklad – Analýza mínění
 Následující příklad obsahuje úlohu Stream Analytics s funkcí analýzy mínění Machine Learning, jak je popsáno v [kurzu Stream Analytics Machine Learning Integration](stream-analytics-machine-learning-integration-tutorial.md).

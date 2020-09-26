@@ -6,14 +6,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5748ff87e94daef80b140e015371eb7a334fffac
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134814"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361479"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače nebo fyzického serveru VMware
+# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzických serverů nebo virtuálních počítačů VMware
 
 Místní konfigurační server nastavíte při použití [Azure Site Recovery](site-recovery-overview.md) k zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure. Konfigurační server koordinuje komunikaci mezi místními VMware a Azure a spravuje replikaci dat. Tento článek shrnuje běžné úlohy správy konfiguračního serveru po jeho nasazení.
 
@@ -71,7 +71,7 @@ Pokud jste při OVF nasazení konfiguračního serveru nenechali přidávat při
 
 1. Po [přihlášení](#access-configuration-server)vyberte **spravovat přihlašovací údaje virtuálního počítače**.
 2. Klikněte na **Přidat přihlašovací údaje virtuálního počítače**.
-    ![Přidání – mobilita – přihlašovací údaje](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![Snímek obrazovky se zobrazí v podokně spravovat přihlašovací údaje virtuálního počítače pomocí odkazu přidat přihlašovací údaje virtuálního počítače.](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Zadejte nové přihlašovací údaje a klikněte na **Přidat**.
 
 Přihlašovací údaje můžete také přidat prostřednictvím CSPSConfigtool.exe.
@@ -212,7 +212,7 @@ Spusťte instalační soubor následujícím způsobem:
 
 ### <a name="parameters"></a>Parametry
 
-|Název parametru| Typ | Description| Hodnoty|
+|Název parametru| Typ | Popis| Hodnoty|
 |-|-|-|-|
 | /ServerMode|Vyžadováno|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
 |/InstallLocation|Vyžadováno|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|

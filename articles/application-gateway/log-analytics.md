@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 9a5925b9667cf0db5003584c3bf6a30d8611c5ce
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 881dbd02a6bf069fbe68108cc6eab0cb6b909a13
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985997"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362646"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>Použití Log Analytics pro kontrolu Application Gateway protokolů firewallu webových aplikací (WAF)
 
@@ -80,7 +80,7 @@ AzureDiagnostics
 
 Když vytvoříte dotaz, můžete ho přidat na řídicí panel.  V pravém horním rohu pracovního prostoru Log Analytics vyberte **Připnout na řídicí panel** . Pomocí předchozích čtyř dotazů připnuté na vzorový řídicí panel se jedná o data, která vidíte na první pohled:
 
-![Řídicí panel](media/log-analytics/dashboard.png)
+![Snímek obrazovky ukazuje řídicí panel Azure, kde můžete přidat dotaz.](media/log-analytics/dashboard.png)
 
 ## <a name="next-steps"></a>Další kroky
 

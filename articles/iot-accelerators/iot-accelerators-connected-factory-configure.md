@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820116"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290683"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurace akcelerátoru řešení propojené továrny
+
+> [!IMPORTANT]
+> I když aktualizujeme Tento článek, přečtěte si nejaktuálnější obsah v tématu [Azure Data IoT](https://azure.github.io/Industrial-IoT/) .
 
 Akcelerátor řešení propojené továrny zobrazuje simulovaný řídicí panel pro fiktivní společnost Contoso. V této společnosti jsou globální továrny v mnoha globálních umístěních.
 
@@ -109,13 +112,13 @@ Společné vlastnosti  `<global_configuration>` ,, a `<factory_configuration>` 
 
   Jednoznačně identifikuje uzel topologie.
 
-`<factory_configuration>`má vlastnost:
+`<factory_configuration>` má vlastnost:
 
 * **Umístění** (typ `<location_definition>` )
 
   Určuje, kde se nachází objekt pro vytváření.
 
-`<station_configuration>`má vlastnosti:
+`<station_configuration>` má vlastnosti:
 
 * **OpcUri** (typ řetězce)
 
@@ -124,7 +127,7 @@ Společné vlastnosti  `<global_configuration>` ,, a `<factory_configuration>` 
 
 * **OpcNodes**, což jsou pole uzlů OPC UA (typ `<opc_node_description>` )
 
-`<location_definition>`má vlastnosti:
+`<location_definition>` má vlastnosti:
 
 * **City** (typ řetězce)
 
@@ -142,7 +145,7 @@ Společné vlastnosti  `<global_configuration>` ,, a `<factory_configuration>` 
 
   Zeměpisná délka místa
 
-`<performance_definition>`má vlastnosti:
+`<performance_definition>` má vlastnosti:
 
 * **Minimum** (typ Double)
 
@@ -188,7 +191,7 @@ Společné vlastnosti  `<global_configuration>` ,, a `<factory_configuration>` 
   * **CallOpcMethod**: informace o uzlu a parametry metody OPC UA pro volání ve formátu "NodeId nadřazených uzlů", NodeId metody volání, identifikátor URI serveru OPC UA. "
   * **OpenWebPage**: adresa URL, která se má zobrazit v okně prohlížeče.
 
-`<opc_node_description>`obsahuje informace o uzlech OPC UA ve stanici (OPC UA Server). Uzly, které nepředstavují žádné existující uzly OPC UA, ale používají se jako úložiště v logice výpočtu propojené továrny, jsou také platné. Má následující vlastnosti:
+`<opc_node_description>` obsahuje informace o uzlech OPC UA ve stanici (OPC UA Server). Uzly, které nepředstavují žádné existující uzly OPC UA, ale používají se jako úložiště v logice výpočtu propojené továrny, jsou také platné. Má následující vlastnosti:
 
 * **NodeId** (typ řetězce)
 
@@ -262,10 +265,10 @@ Všechny vlastnosti použité v konfiguračním souboru lze seskupit do různýc
 
 ### <a name="visual-appearance"></a>Vzhled vizuálu
 
-Vlastnosti v této kategorii definují vizuální vzhled řídicího panelu propojené továrny. Mezi příklady patří:
+Vlastnosti v této kategorii definují vizuální vzhled řídicího panelu propojené továrny. Příklady:
 
-* Name
-* Description
+* Název
+* Popis
 * Image
 * Umístění
 * Jednotky
@@ -291,7 +294,7 @@ Objekty uzlu UA OPC ve stanicích umožňují tagování pro použití při výp
 Propojená továrna podporuje jednoduchý mechanismus generování výstrah na základě prahové hodnoty minima a maxima. V reakci na tyto výstrahy můžete nakonfigurovat řadu předdefinovaných akcí. Tento mechanismus řídí následující vlastnosti:
 
 * Maximum
-* Minimální
+* Minimum
 * MaximumAlertActions
 * MinimumAlertActions
 

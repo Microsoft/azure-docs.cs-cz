@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74185877"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362193"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Jak funguje replikace Hyper-V?
 
@@ -30,7 +30,7 @@ Migrace Azure Migrate serveru je nástroj pro migraci místních úloh a cloudov
 
 ## <a name="architectural-components"></a>Komponenty architektury
 
-![Architektura](./media/hyper-v-replication-architecture/architecture.png)
+![Diagram znázorňuje zdrojovou síť Hyper-V s datovým kanálem H T T P S, na Microsoft Azure s podrobnostmi popsanými v tabulce.](./media/hyper-v-replication-architecture/architecture.png)
 
 
 

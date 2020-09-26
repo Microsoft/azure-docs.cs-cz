@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 03e6f51d2ab7138675f7d79c04faa2e4dffec60c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 98514bad6a04e0c3058faf3133fc44333039ce53
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825680"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361462"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Řešení potíží s virtuálním počítačem Linux, když není k dispozici přístup ke konzole sériového rozhraní Azure a rozložení disku používá LVM (Správce logických svazků)
 
@@ -88,7 +88,7 @@ lsblk
 
 Vyhledejte cestu k připojení logického svazku, který obsahuje oddíl/(root). Obsahuje konfigurační soubory, jako je například/etc/default/grub
 
-V tomto příkladu převezme výstup z předchozího příkazu **lsblk** **rootvg-rootlv** správnou **kořenovou** hodnotu LV pro připojení a dá se použít v dalším příkazu.
+V tomto příkladu převezme výstup z předchozího příkazu **lsblk**  **rootvg-rootlv** správnou **kořenovou** hodnotu LV pro připojení a dá se použít v dalším příkazu.
 
 Výstup dalšího příkazu zobrazí cestu pro připojení pro **kořene** LV.
 
@@ -143,7 +143,7 @@ mount  /dev/mapper/rootvg-usrlv /rescue/usr
 Příkazy lze použít k instalaci, odebrání a aktualizaci softwaru. Pokud chcete opravit chyby, vyřešte problémy s virtuálními počítači.
 
 
-Spusťte příkaz lsblk a/Rescue je nyní/a/Rescue/Boot je/Boot ![ Chrooted](./media/chroot-logical-volume-manager/chrooted.png)
+Spusťte příkaz lsblk a/Rescue je teď/a/Rescue/Boot je/Boot ![ snímek obrazovky, kde se zobrazí okno konzoly s příkazem BLK l s a jeho výstupní stromová struktura.](./media/chroot-logical-volume-manager/chrooted.png)
 
 ## <a name="perform-fixes"></a>Provést opravy
 
@@ -169,7 +169,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 *Podrobné*
 
 Příkaz **grep** vypíše seznam jader, na které **grub. cfg** ví.
-![Jádra](./media/chroot-logical-volume-manager/kernels.png)
+![Snímek obrazovky znázorňující okno konzoly zobrazující výsledek hledání grep pro jádro.](./media/chroot-logical-volume-manager/kernels.png)
 
 **seznam grub2-editenv** zobrazuje, které jádro se načte při výchozím nastavení dalších spouštěcích ![ jader.](./media/chroot-logical-volume-manager/kernel-default.png)
 
@@ -190,7 +190,7 @@ Spuštěním příkazu **LVS** ověřte, které **LVS** jsou k dispozici pro př
 
 Ukončení prostředí **chroot** připojit požadované **LV**
 
-![Upřesnit](./media/chroot-logical-volume-manager/advanced.png)
+![Snímek obrazovky ukazuje okno konzoly s příkazem l v s a pak připojení L V.](./media/chroot-logical-volume-manager/advanced.png)
 
 Teď znovu přihlaste k prostředí **chroot** spuštěním
 

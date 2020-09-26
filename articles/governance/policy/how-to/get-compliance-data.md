@@ -3,12 +3,12 @@ title: Získat data dodržování zásad
 description: Azure Policy hodnocení a účinky určují dodržování předpisů. Přečtěte si, jak získat podrobnosti o dodržování předpisů pro vaše prostředky Azure.
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2ab75bdab0dcf910da91eb60b5f0cf23892d6c51
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 83bf00710346193a89b59c6a72a0e4840dd5abfb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895428"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291011"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -134,9 +134,9 @@ V přiřazení není prostředek **nekompatibilní** , pokud nedodržuje pravidl
 | Stav prostředku | Účinek | Vyhodnocení zásad | Stav dodržování předpisů |
 | --- | --- | --- | --- |
 | Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Ano | Neodpovídající |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Nepravda | Odpovídající |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Ne | Odpovídající |
 | Nová | Audit, AuditIfNotExist\* | Ano | Neodpovídající |
-| Nová | Audit, AuditIfNotExist\* | Nepravda | Odpovídající |
+| Nová | Audit, AuditIfNotExist\* | Ne | Odpovídající |
 
 \* Efekty upravit, připojit, DeployIfNotExist a AuditIfNotExist vyžadují, aby příkaz IF byl pravdivý. Tyto účinky také vyžadují, aby existovala podmínka, která musí nabývat hodnoty FALSE, aby byla zásada vyhodnocena jako Nevyhovující předpisům. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
 
@@ -605,12 +605,17 @@ PolicyDefinitionAction     : deny
 PolicyDefinitionCategory   : tbd
 ```
 
-Příklad: získávání událostí souvisejících s neodpovídajícími prostředky virtuální sítě, k nimž došlo po určitém datu.
+Příklad: získávání událostí souvisejících s neodpovídajícími prostředky virtuální sítě, k nimž došlo po určitém datu, převedení na objekt sdíleného svazku clusteru a exportování do souboru.
 
 ```azurepowershell-interactive
-PS> Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2018-05-19'
+$policyEvents = Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2020-09-19'
+$policyEvents | ConvertTo-Csv | Out-File 'C:\temp\policyEvents.csv'
+```
 
-Timestamp                  : 5/19/2018 5:18:53 AM
+Výstup `$policyEvents` objektu vypadá následovně:
+
+```output
+Timestamp                  : 9/19/2020 5:18:53 AM
 ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
                              crosoft.Network/virtualNetworks/RG-Tags-vnet
 PolicyAssignmentId         : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
@@ -642,7 +647,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
-Pokud máte [pracovní prostor Log Analytics](../../../azure-monitor/log-query/log-query-overview.md) s `AzureActivity` z [Activity log Analyticsho řešení](../../../azure-monitor/platform/activity-log.md) , které je svázáno s vaším předplatným, můžete také výsledky nedodržování předpisů zobrazit v rámci zkušebního cyklu pomocí jednoduchých dotazů Kusto a `AzureActivity` tabulky. S podrobnostmi v protokolech Azure Monitor můžete výstrahy nakonfigurovat tak, aby sledovaly nedodržování předpisů.
+Pokud máte [pracovní prostor Log Analytics](../../../azure-monitor/log-query/log-query-overview.md) s `AzureActivity` z [Activity log Analyticsho řešení](../../../azure-monitor/platform/activity-log.md) svázaného s vaším předplatným, můžete si také zobrazit výsledky nedodržení předpisů ze hodnocení nových a aktualizovaných prostředků pomocí jednoduchých dotazů Kusto a `AzureActivity` tabulky. S podrobnostmi v protokolech Azure Monitor můžete výstrahy nakonfigurovat tak, aby sledovaly nedodržování předpisů.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Snímek obrazovky Azure Monitor protokolů se zobrazenými Azure Policy akcemi v tabulce AzureActivity" border="false":::
 

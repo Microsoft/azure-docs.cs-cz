@@ -8,13 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.custom: mqtt, devx-track-javascript
-ms.openlocfilehash: 45637a093361a177de880788bb7eda69f365dad2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mqtt, devx-track-js
+ms.openlocfilehash: cfc0fa45c08f917b2e0b4a0b055e801173a4ba39
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420800"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251998"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>Začínáme se správou zařízení (Node.js)
 
@@ -34,7 +34,7 @@ Na konci tohoto kurzu máte dvě Node.js konzolové aplikace:
 
 * **dmpatterns_getstarted_service.js**, která volá přímou metodu v aplikaci simulovaného zařízení, zobrazuje odpověď a zobrazuje aktualizované hlášené vlastnosti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Node.js verze 10.0. x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node.js pro tento kurz v systému Windows nebo Linux.
 
@@ -42,7 +42,7 @@ Na konci tohoto kurzu máte dvě Node.js konzolové aplikace:
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 

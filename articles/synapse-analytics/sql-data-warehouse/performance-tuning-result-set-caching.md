@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 2c29ad48e8dc626617786e519e84c92875bc6170
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: aeeca38afb82e2dcd86e111d1ae5dcb2e7499f42
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378521"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362261"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Ladění výkonu s využitím ukládání sad výsledků do mezipaměti
 
@@ -56,11 +56,11 @@ WHERE request_id  = <'request_id'>;
 
 Tady je příklad výstupu pro dotaz, který se spustil s povoleným ukládáním sady výsledků dotazu.
 
-![Dotaz-kroky-with-RSC – disabled](./media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
+![Snímek obrazovky zobrazuje výsledky dotazu, včetně typu umístění a příkazu.](./media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
 
 Tady je příklad výstupu dotazu spuštěného s povoleným ukládáním sady výsledků.
 
-![Dotaz-kroky-with-RSC – povoleno](./media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
+![Snímek obrazovky zobrazuje výsledky dotazu s vybraným příkazem * from [D W ResultCache D] tečka d b o.](./media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
 
 ## <a name="when-cached-results-are-used"></a>Když se použijí výsledky uložené v mezipaměti
 

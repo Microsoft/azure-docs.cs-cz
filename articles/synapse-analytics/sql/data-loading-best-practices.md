@@ -11,24 +11,24 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fe847dfa24e618d2e837943309475f0a436d3a44
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 4c07ad2aaf6c682dc370e3223dba1f199242ca2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459296"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289227"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>Osvědčené postupy načítání dat pro datové sklady
 
-Doporučení a optimalizace výkonu pro načítání dat
+V tomto článku najdete doporučení a optimalizace výkonu pro načítání dat.
 
 ## <a name="prepare-data-in-azure-storage"></a>Příprava dat v Azure Storage
 
-Vrstvu úložiště i datový sklad uložte společně do stejného umístění, abyste minimalizovali latenci.
+K minimalizaci latence Najděte vrstvu úložiště a datový sklad.
 
 Při exportu dat do formátu souboru ORC může dojít k chybám s nedostatkem paměti Java, pokud se zde nacházejí velké textové sloupce. Toto omezení můžete obejít tím, že importujete jen podmnožinu sloupců.
 
-Technologie PolyBase nedokáže načíst řádky, které obsahují více než 1 000 000 bajtů dat. Když vkládáte data do textových souborů v úložišti Azure Blob nebo ve službě Azure Data Lake Store, musí tyto soubory obsahovat méně než 1 000 000 bajtů dat. Toto omezení platí bez ohledu na schéma tabulky.
+Základová databáze nemůže načíst řádky, které mají více než 1 000 000 bajtů dat. Když vkládáte data do textových souborů v úložišti Azure Blob nebo ve službě Azure Data Lake Store, musí tyto soubory obsahovat méně než 1 000 000 bajtů dat. Toto omezení platí bez ohledu na schéma tabulky.
 
 Všechny formáty souborů mají jiné výkonové charakteristiky. Pokud chcete docílit nejrychlejšího načtení, použijte komprimované textové soubory s oddělovači. Rozdíl mezi výkonem kódování UTF-8 a UTF-16 je minimální.
 
@@ -64,7 +64,7 @@ Spouštějte načítání v rámci statických, a ne dynamických, tříd prost�
 
 ## <a name="allow-multiple-users-to-load"></a>Povolení načtení více uživatelů
 
-Často je potřeba, aby data do datového skladu načítalo více uživatelů. Načítání pomocí [Create Table jako Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) vyžaduje oprávnění k řízení databáze.  Oprávnění CONTROL poskytuje přístup pro řízení ke všem schématům. Pravděpodobně ale nebudete chtít, aby všichni uživatelé, kteří načítají data, měli oprávnění CONTROL pro přístup ke všem schématům. K omezení oprávnění slouží příkaz DENY CONTROL.
+Často je potřeba, aby data do datového skladu načítalo více uživatelů. Načítání pomocí [Create Table jako Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) vyžaduje oprávnění k řízení databáze.  Oprávnění CONTROL poskytuje přístup pro řízení ke všem schématům. Pravděpodobně ale nebudete chtít, aby všichni uživatelé, kteří načítají data, měli oprávnění CONTROL pro přístup ke všem schématům. K omezení oprávnění slouží příkaz DENY CONTROL.
 
 Představte si například schémata databáze schema_A pro oddělení A a schema_B pro oddělení B. Uživatelé databáze user_A a user_B budou uživateli pro načítání PolyBase v oddělení A, respektive oddělení B. Oba uživatelé mají k databázi udělená oprávnění CONTROL. Autoři schémat A a B nyní svá schémata uzamknou pomocí příkazu DENY:
 
@@ -83,10 +83,10 @@ Myslete na to, že načítání je většinou dvoufázový proces, kdy napřed n
 
 ## <a name="load-to-a-columnstore-index"></a>Načíst do indexu columnstore
 
-Indexy columnstore vyžadují hodně paměti, aby mohly komprimovat data do vysoce kvalitních skupin řádků. Kvůli zajištění co nejlepší účinnosti komprese a indexování musí index columnstore do každé skupiny řádků zkomprimovat maximální počet 1 048 576 řádků. V případě nedostatku paměti nemusí index columnstore dosahovat maximální míry komprese. To zase ovlivňuje výkon dotazů. Podrobné informace najdete v tématu [Optimalizace paměti pro columnstore](data-load-columnstore-compression.md).
+Indexy columnstore vyžadují hodně paměti, aby mohly komprimovat data do vysoce kvalitních skupin řádků. Kvůli zajištění co nejlepší účinnosti komprese a indexování musí index columnstore do každé skupiny řádků zkomprimovat maximální počet 1 048 576 řádků. V případě nedostatku paměti nemusí index columnstore dosahovat maximální míry komprese. Tato dopad na výkon dotazů. Podrobné informace najdete v tématu [Optimalizace paměti pro columnstore](data-load-columnstore-compression.md).
 
 - Pokud chcete zajistit, aby měl nahrávající uživatel dostatek paměti pro dosažení maximální míry komprese, použijte uživatele načítání, kteří jsou členy střední nebo velké třídy prostředků.
-- Načtěte dostatek dat pro úplně naplnění nových skupin řádků. Při hromadném načítání dat se každých 1 048 576 řádků zkomprimuje přímo do indexu columnstore jako kompletní skupina řádků. Při načítání méně než 102 400 řádků se řádky odesílají do tabulky deltastore, kde se řádky uchovávají v indexu B-stromu. Pokud načtete příliš málo řádků, můžou se všechny dostat do indexu deltastore, a nebudou se okamžitě komprimovat do formátu columnstore.
+- Načtěte dostatek dat pro úplně naplnění nových skupin řádků. Při hromadném načítání se každých 1 048 576 řádků komprimuje přímo do columnstore jako úplné skupiny řádků. Při načítání méně než 102 400 řádků se řádky odesílají do tabulky deltastore, kde se řádky uchovávají v indexu B-stromu. Pokud načtete příliš málo řádků, můžou se všechny dostat do indexu deltastore, a nebudou se okamžitě komprimovat do formátu columnstore.
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Zvýšit velikost dávky při použití rozhraní SQLBulkCopy API nebo BCP
 
@@ -100,13 +100,13 @@ Pokud chcete nezapsané záznamy opravit, ujistěte se, že jsou definice formá
 
 ## <a name="insert-data-into-a-production-table"></a>Vložení dat do produkční tabulky
 
-Při jednorázovém načtení malé tabulky [příkazem INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) nebo i při pravidelně se opakujícím načítání funkcí look-up pravděpodobně vystačíte s následujícím příkazem: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Vkládání jednotlivých záznamů ale není tak účinné jako hromadné načtení.
+Při jednorázovém načtení malé tabulky [příkazem INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) nebo i při pravidelně se opakujícím načítání funkcí look-up pravděpodobně vystačíte s následujícím příkazem: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Vkládání typu Singleton ale není tak efektivní jako provádění hromadného zatížení.
 
 Pokud máte za den tisíce nebo více samostatných vložení, vytvořte z nich dávku, abyste je mohli načíst hromadně.  Vyvíjejte své procesy tak, aby samostatná vkládání připojovaly do souboru, a pak vytvořte další proces, který tento soubor bude pravidelně načítat.
 
 ## <a name="create-statistics-after-the-load"></a>Vytvoření statistiky po načtení
 
-Pro zlepšení výkonu dotazů je důležité vytvořit statistiku pro všechny sloupce všech tabulek po prvním načtení, nebo když v datech dojde k zásadnějším změnám.  To můžete provést ručně nebo můžete povolit [Automatické vytváření statistik](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Chcete-li zlepšit výkon dotazů, je důležité vytvořit statistiku pro všechny sloupce všech tabulek po prvním načtení nebo v datech dojde k významným změnám. Vytváření statistik můžete provést ručně nebo můžete povolit [Automatické vytváření statistik](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 Podrobné vysvětlení statistiky najdete v tématu [Statistika](develop-tables-statistics.md). Následující příklad ukazuje, jak ručně vytvořit statistiku pro pět sloupců Customer_Speed tabulky.
 
@@ -124,7 +124,7 @@ Osvědčeným postupem zabezpečení je pravidelně měnit přístupový klíč 
 
 Obměna klíčů účtu služby Azure Storage:
 
-Pro každý účet úložiště, jehož klíč se změnil, vydejte příkaz [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Pro každý účet úložiště, jehož klíč se změnil, vydejte příkaz [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 Příklad:
 

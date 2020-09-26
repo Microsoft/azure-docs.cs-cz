@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d6be74e5748d364fd9f56f4af96bb3229ddb61c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50d077c1d7c9e4e421a43a4e0379b57608d1192c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85113684"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361762"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>Princip rozdílů mezi NoSQL a relačními databázemi
 
@@ -49,7 +49,7 @@ V době, kdy se v relačních databázích objevily různé formy "síťových" 
 
 Pokud udržujete složitou síť relací ve vaší databázi, možná budete chtít zvážit databázi grafu, jako je [Azure Cosmos DB rozhraní API Gremlin](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) pro správu těchto dat.
 
-:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Graph":::
+:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Databázový diagram zobrazuje několik zaměstnanců a oddělení připojených k sobě navzájem.":::
 
 Azure Cosmos DB je databázová služba pro více modelů, která nabízí projekci rozhraní API pro všechny hlavní typy modelů NoSQL; Sloupce – rodina, dokument, graf a klíč-hodnota. Vrstvy rozhraní API pro [Gremlin (Graph)](https://docs.microsoft.com/azure/cosmos-db/gremlin-support) a SQL (Core) jsou plně interoperabilní. Přináší to výhody pro přepínání mezi různými modely na úrovni programovatelnosti. Obchody s grafy je možné dotazovat v podobě složitých síťových procházení a transakcí modelování jako záznamů dokumentů ve stejném úložišti.
 

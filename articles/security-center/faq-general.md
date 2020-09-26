@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 782884f53f0ec17c47b79cf66504d0e3ad3fc29d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695f9fa090419d803f4f3603b45b771321e5ce9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783210"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301444"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Nejčastější dotazy – obecné otázky týkající se Azure Security Center
 
@@ -59,7 +59,7 @@ Informace o tom, jak nakonfigurovat zásady zabezpečení, najdete [v tématu Na
 
 
 ## <a name="what-is-a-security-recommendation"></a>Co je to doporučení zabezpečení?
-Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když se identifikují potenciální slabá místa zabezpečení, vytvoří se doporučení. Doporučení vás provede procesem konfigurace potřebného ovládacího prvku. Můžete například:
+Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když se identifikují potenciální slabá místa zabezpečení, vytvoří se doporučení. Doporučení vás provede procesem konfigurace potřebného ovládacího prvku. Příklady:
 
 * Zřizování ochrany proti malwaru, které vám pomůžou identifikovat a odebrat škodlivý software
 * [Skupiny zabezpečení sítě](../virtual-network/security-overview.md) a pravidla pro řízení provozu do virtuálních počítačů
@@ -70,7 +70,6 @@ Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. K
 Tady se zobrazí jenom doporučení, která jsou povolená v zásadách zabezpečení.
 
 
-
 ## <a name="what-triggers-a-security-alert"></a>Co aktivuje výstrahu zabezpečení?
 Azure Security Center automaticky shromažďuje, analyzuje a uchovává data protokolu z vašich prostředků Azure, sítě a partnerských řešení, jako jsou antimalware a brány firewall. Při zjištění ohrožení zabezpečení se vytvoří výstraha zabezpečení. Příklady zahrnují zjišťování následujících situací:
 
@@ -78,10 +77,6 @@ Azure Security Center automaticky shromažďuje, analyzuje a uchovává data pro
 * Byl zjištěn rozšířený malware pomocí zasílání zpráv o chybách systému Windows.
 * Útoky hrubou silou na virtuální počítače
 * Výstrahy zabezpečení z integrovaných řešení zabezpečení partnerů, jako jsou například anti-malware nebo brány firewall webových aplikací
-
-
-## <a name="why-did-secure-score-values-change"></a>Proč se hodnoty zabezpečeného skóre změnily? <a name="secure-score-faq"></a>
-Od února 2019 Security Center upraveno skóre několika doporučení, aby lépe vyhovoval jejich závažnosti. Výsledkem této úpravy můžou být změny v celkových hodnotách bezpečného skóre.  Další informace o zabezpečeném skóre najdete [v tématu Rozšířené zabezpečení skóre v Azure Security Center](secure-score-security-controls.md).
 
 
 ## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Jaký je rozdíl mezi zjištěnými hrozbami a výstrahou z centra zabezpečení Microsoft Security Center oproti Azure Security Center?

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3cb35cdf217d497b612dee12aedb869b0583e464
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 556177b0f3eb156f5b128995cb81555aa77bc8d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986686"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289901"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -70,7 +70,7 @@ Pokud povolíte Azure Defender z oblasti **ceny a nastavení** Azure Security Ce
 - [Azure Defender pro servery](defender-for-servers-introduction.md)
 - [Azure Defender pro App Service](defender-for-app-service-introduction.md)
 - [Azure Defender pro úložiště](defender-for-storage-introduction.md)
-- [Azure Defender pro SQL](defender-for-sql-introduction.md)
+- [Azure Defender for SQL](defender-for-sql-introduction.md)
 - [Azure Defender for IoT](defender-for-iot-introduction.md)
 - [Azure Defender pro trezor klíčů](defender-for-key-vault-introduction.md)
 - [Azure Defender pro Kubernetes](defender-for-kubernetes-introduction.md)
@@ -288,7 +288,7 @@ Výchozí hodnoty zabezpečení poskytují předem nakonfigurovaná nastavení z
 
 Security Center teď poskytuje doporučení zabezpečení vždy, když identifikuje předplatné Azure bez povolených výchozích hodnot zabezpečení. Až do této chvíle Security Center doporučeno povolit vícefaktorové ověřování pomocí podmíněného přístupu, který je součástí licence Azure Active Directory (AD) Premium. Pro zákazníky, kteří používají Azure AD Free, teď doporučujeme povolit výchozí nastavení zabezpečení. 
 
-Naším cílem je povzbudit větší počet zákazníků k zabezpečení svých cloudových prostředí pomocí vícefaktorového ověřování a zmírnit jedno z nejvyšších rizik, která jsou také největší dopadem na vaše [zabezpečené skóre](https://docs.microsoft.com/azure/security-center/secure-score-security-controls).
+Naším cílem je povzbudit větší počet zákazníků k zabezpečení svých cloudových prostředí pomocí vícefaktorového ověřování a zmírnit jedno z nejvyšších rizik, která jsou také největší dopadem na vaše [zabezpečené skóre](secure-score-security-controls.md).
 
 Přečtěte si další informace o [výchozích hodnotách zabezpečení](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults).
 
@@ -429,7 +429,7 @@ Doporučení také zahrnují funkci rychlé opravy.
 
 Přečtěte si další informace o každé z těchto informací na [referenční stránce doporučení zabezpečení](recommendations-reference.md).
 
-Přečtěte si další informace o [ochraně před hrozbami v Azure Security Center](https://docs.microsoft.com/azure/security-center/threat-protection).
+Přečtěte si další informace o [ochraně před hrozbami v Azure Security Center](azure-defender.md).
 
 
 
@@ -442,13 +442,13 @@ Abychom vylepšili přehlednost a pokyny týkající se schopností zabezpečen�
 
 Další informace o zabezpečení kontejneru Security Center najdete v následujících článcích:
 
-- [Přehled funkcí zabezpečení kontejneru Security Center](https://docs.microsoft.com/azure/security-center/container-security)
-- [Podrobnosti o integraci s Azure Container Registry](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
-- [Podrobnosti o integraci se službou Azure Kubernetes](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)
-- [Jak kontrolovat registry a posílit svoje hostitele Docker](https://docs.microsoft.com/azure/security-center/monitor-container-security)
-- [Výstrahy zabezpečení z funkcí ochrany před hrozbami pro clustery služby Azure Kubernetes](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
-- [Výstrahy zabezpečení z funkcí ochrany před hrozbami pro hostitele služeb Azure Kubernetes](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
-- [Doporučení zabezpečení pro kontejnery](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
+- [Přehled funkcí zabezpečení kontejneru Security Center](container-security.md)
+- [Podrobnosti o integraci s Azure Container Registry](defender-for-container-registries-introduction.md)
+- [Podrobnosti o integraci se službou Azure Kubernetes](defender-for-kubernetes-introduction.md)
+- [Jak kontrolovat registry a posílit svoje hostitele Docker](container-security.md)
+- [Výstrahy zabezpečení z funkcí ochrany před hrozbami pro clustery služby Azure Kubernetes](alerts-reference.md#alerts-akscluster)
+- [Výstrahy zabezpečení z funkcí ochrany před hrozbami pro hostitele služeb Azure Kubernetes](alerts-reference.md#alerts-containerhost)
+- [Doporučení zabezpečení pro kontejnery](recommendations-reference.md#recs-containers)
 
 
 
@@ -537,10 +537,9 @@ Doporučení také obsahují možnosti rychlé opravy, které vám pomůžou ury
 
 Další informace o těchto dvou nových doporučeních najdete v tabulce s [doporučeními pro výpočty a aplikace](recommendations-reference.md#recs-computeapp) .
 
-Přečtěte si další informace o tom, jak Azure Security Center používá agenta v tématu [co je agent Log Analytics?](https://docs.microsoft.com/azure/security-center/faq-data-collection-agents#what-is-the-log-analytics-agent).
+Přečtěte si další informace o tom, jak Azure Security Center používá agenta v tématu [co je agent Log Analytics?](faq-data-collection-agents.md#what-is-the-log-analytics-agent).
 
-Přečtěte si další informace o [rozšířeních pro počítače s obloukem Azure ARC](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal).
-
+Přečtěte si další informace o [rozšířeních pro počítače s obloukem Azure ARC](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal).
 
 
 ### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>Nové zásady pro vytváření nepřetržitého exportu a konfigurace automatizace pracovních postupů ve velkém měřítku
@@ -597,7 +596,7 @@ Zásady najdete v části zásady Azure:
 | [V Virtual Machines by měla být povolena rozšířená ochrana před internetovými útoky.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
 |                                                                                                                                                                                                                                                                       |                                      |
 
-Přečtěte si další informace o [ochraně před hrozbami v Azure Security Center](https://docs.microsoft.com/azure/security-center/threat-protection).
+Přečtěte si další informace o [ochraně před hrozbami v Azure Security Center](azure-defender.md).
 
 
 
@@ -721,7 +720,7 @@ Přečtěte si další [informace o vylepšení vlastních doporučení s podrob
 
 ### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>Funkce analýzy výpisu stavu systému při migraci na detekci útoku typu soubor 
 
-Do [detekce útoku typu soubor](https://docs.microsoft.com/azure/security-center/threat-protection#windows-fileless)se integruje možnosti detekce CDA (Windows Crash Analysis). Analýza detekce útoků bez souborů přináší vylepšené verze těchto výstrah zabezpečení pro počítače s Windows: zjištěné injektáže kódu, zjištěná maskující modul Windows, zjištěná skrytý spustitelný kód a zjištěn podezřelý segment kódu.
+Do [detekce útoku typu soubor](defender-for-servers-introduction.md#what-are-the-benefits-of-azure-defender-for-servers)se integruje možnosti detekce CDA (Windows Crash Analysis). Analýza detekce útoků bez souborů přináší vylepšené verze těchto výstrah zabezpečení pro počítače s Windows: zjištěné injektáže kódu, zjištěná maskující modul Windows, zjištěná skrytý spustitelný kód a zjištěn podezřelý segment kódu.
 
 Některé z výhod tohoto přechodu:
 

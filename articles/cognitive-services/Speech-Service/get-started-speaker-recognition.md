@@ -12,12 +12,12 @@ ms.date: 09/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: rozpoznávání mluvčího, Voice biometry
-ms.openlocfilehash: dd77de482289037764eb6c442502ef71cc594729
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cfb16d95c0de7fabb7e939e53903f0a611f749e9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326979"
+ms.locfileid: "91362550"
 ---
 # <a name="get-started-with-speaker-recognition"></a>Začínáme s rozpoznávání mluvčího
 
@@ -31,7 +31,7 @@ Základní informace o konceptech rozpoznávání řeči najdete v článku [Př
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](get-started.md).
+V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](overview.md#try-the-speech-service-for-free).
 
 > [!IMPORTANT]
 > Rozpoznávání mluvčího se aktuálně podporuje *jenom* v prostředcích Azure pro rozpoznávání řeči vytvořených v `westus` oblasti.

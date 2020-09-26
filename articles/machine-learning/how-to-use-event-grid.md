@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 7b1030c816bff5b50c0c47a16fa5f1812bb16b15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e033f00f7657f7f4e5e63509672e924979ce03e7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250823"
+ms.locfileid: "91362512"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Aktivovat aplikace, procesy nebo pracovní postupy CI/CD na základě Azure Machine Learningch událostí (Preview)
 
@@ -126,7 +126,7 @@ Azure Event Grid umožňuje zákazníkům vytvářet nespojené obslužné rutin
 
 1. Vyberte koncový bod, do kterého se má událost publikovat. Na následujícím snímku obrazovky je __centrum událostí__ vybraným koncovým bodem:
 
-    ![Obslužná rutina události](./media/how-to-use-event-grid/select-event-handler.png)
+    ![Snímek obrazovky se zobrazí v podokně vytvořit odběr události s otevřeným oknem vybrat centrum událostí.](./media/how-to-use-event-grid/select-event-handler.png)
 
 Po potvrzení výběru klikněte na __vytvořit__. Po dokončení konfigurace budou tyto události vloženy do koncového bodu.
 
@@ -164,15 +164,15 @@ Pomocí [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) můžet
 
 1. V Azure Portal přejdete do pracovního prostoru Azure Machine Learning a na levém panelu vyberete kartu události. Tady vyberte __Logic Apps__. 
 
-    ![Výběr-Logic-App](./media/how-to-use-event-grid/select-logic-ap.png)
+    ![Snímek obrazovky ukazuje stránku události Machine Learning pracovního prostoru s Logic Apps.](./media/how-to-use-event-grid/select-logic-ap.png)
 
 1. Přihlaste se do uživatelského rozhraní aplikace logiky a jako typ tématu vyberte Machine Learning Service. 
 
-    ![typ tématu](./media/how-to-use-event-grid/select-topic-type.png)
+    ![Snímek obrazovky se zobrazí dialogové okno když dojde k události prostředku se službou Machine Learning vybranou jako typ prostředku.](./media/how-to-use-event-grid/select-topic-type.png)
 
 1. Vyberte události, které mají být oznamovány. Například následující snímek obrazovky __RunCompleted__.
 
-    ![Vybrat – událost-spustit – dokončeno](./media/how-to-use-event-grid/select-event-runcomplete.png)
+    ![Snímek obrazovky se zobrazí dialogové okno když dojde k události prostředku s vybraným typem události.](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
 1. Můžete použít metodu filtrování v části výše nebo přidat filtry, aby se aktivovala pouze aplikace logiky pro podmnožinu typů událostí. Na následujícím snímku obrazovky je použit __Filtr předpony__ __/datadriftID/runs/__ .
 
@@ -180,15 +180,15 @@ Pomocí [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) můžet
 
 1. Dále přidejte krok pro použití této události a hledání e-mailu. K příjmu událostí můžete použít několik různých poštovních účtů. Můžete taky nakonfigurovat podmínky, kdy se má poslat e-mailové upozornění.
 
-    ![e-mail – akce](./media/how-to-use-event-grid/select-email-action.png)
+    ![Snímek obrazovky se zobrazí dialogové okno zvolit akci s e-mailem zadaným na řádku pro hledání.](./media/how-to-use-event-grid/select-email-action.png)
 
 1. Vyberte __Odeslat e-mail__ a vyplňte parametry. V předmětu můžete zahrnout __Typ události__ a __téma__ , které vám pomůžou události filtrovat. Do textu zprávy můžete také přidat odkaz na stránku pracovního prostoru pro spuštění. 
 
-    ![Konfigurace – e-mail](./media/how-to-use-event-grid/configure-email-body.png)
+    ![Snímek obrazovky se zobrazí dialogové okno Odeslat e-mail s tématem a typem události přidaným do řádku předmětu ze seznamu doprava.](./media/how-to-use-event-grid/configure-email-body.png)
 
 1. Pokud chcete tuto akci Uložit, vyberte **Uložit jako** v levém horním rohu stránky. Z pravého panelu, který se zobrazí, potvrďte vytvoření této akce.
 
-    ![Confirm-Logic-App-vytváření](./media/how-to-use-event-grid/confirm-logic-app-create.png)
+    ![Snímek obrazovky ukazuje tlačítka Uložit jako a vytvořit v Návrháři Logic Apps.](./media/how-to-use-event-grid/confirm-logic-app-create.png)
 
 
 ### <a name="example-data-drift-triggers-retraining"></a>Příklad: přeškolení triggerů dat
@@ -204,7 +204,7 @@ Než začnete, proveďte následující akce:
 
 V tomto příkladu se k kopírování souborů do úložiště objektů BLOB a spuštění publikovaného kanálu Machine Learning používá jednoduchý kanál Data Factory. Další informace o tomto scénáři najdete v tématu Postup nastavení [Machine Learning kroku v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)
 
-![ADF – mlpipeline](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
+![Snímek obrazovky znázorňující školicí kanál v materiálech továrny s kopií Data1 krmení M L Execute Pipeline1.](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
 
 1. Začněte vytvářením aplikace logiky. Otevřete [Azure Portal](https://portal.azure.com), vyhledejte Logic Apps a vyberte vytvořit.
 
@@ -212,31 +212,31 @@ V tomto příkladu se k kopírování souborů do úložiště objektů BLOB a s
 
 1. Vyplňte požadované informace. Pro zjednodušení prostředí použijte stejné předplatné a skupinu prostředků jako Azure Data Factory kanál a Azure Machine Learning pracovní prostor.
 
-    ![nastavení-Logic-App-ADF](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
+    ![Snímek obrazovky se zobrazí v podokně vytvořit aplikaci logiky.](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
 
 1. Po vytvoření aplikace logiky vyberte, __kdy dojde k události Event Grid prostředku__. 
 
-    ![SELECT-eventgrid – Trigger](./media/how-to-use-event-grid/select-event-grid-trigger.png)
+    ![Snímek obrazovky ukazuje návrháře Logic Apps se začátkem s možnostmi běžné aktivace, včetně toho, kdy dojde k události Event Grid prostředků.](./media/how-to-use-event-grid/select-event-grid-trigger.png)
 
 1. Přihlaste se a vyplňte podrobnosti události. Nastavte __název prostředku__ na název pracovního prostoru. Nastavte __Typ události__ na __DatasetDriftDetected__.
 
-    ![přihlášení – přidat-událost](./media/how-to-use-event-grid/login-and-add-event.png)
+    ![Snímek obrazovky ukazuje, když dojde k události prostředku s vybranou položkou typu události.](./media/how-to-use-event-grid/login-and-add-event.png)
 
 1. Přidejte nový krok a vyhledejte __Azure Data Factory__. Vyberte __vytvořit spuštění kanálu__. 
 
-    ![Vytvoření-ADF-kanál-spuštění](./media/how-to-use-event-grid/create-adfpipeline-run.png)
+    ![Snímek obrazovky se zobrazí v podokně zvolit akci s vybraným možnostmi vytvořit spuštění kanálu.](./media/how-to-use-event-grid/create-adfpipeline-run.png)
 
 1. Přihlaste se a zadejte publikovaný Azure Data Factory kanál, který se má spustit.
 
-    ![zadání – adfpipeline](./media/how-to-use-event-grid/specify-adf-pipeline.png)
+    ![Snímek obrazovky se zobrazí v podokně vytvořit kanál s různými hodnotami.](./media/how-to-use-event-grid/specify-adf-pipeline.png)
 
 1. Uložte a vytvořte aplikaci logiky pomocí tlačítka **Uložit** v levém horním rohu stránky. Pokud chcete zobrazit svou aplikaci, přejděte do pracovního prostoru v [Azure Portal](https://portal.azure.com) a klikněte na **události**.
 
-    ![show-logicapp – Webhook](./media/how-to-use-event-grid/show-logic-app-webhook.png)
+    ![Snímek obrazovky zobrazuje události s zvýrazněnou aplikací logiky.](./media/how-to-use-event-grid/show-logic-app-webhook.png)
 
 Kanál Data Factory se teď aktivuje, když dojde k posunu. Zobrazte si podrobnosti o běhu posunu dat a kanálu Machine Learning na [novém portálu pracovního prostoru](https://ml.azure.com). 
 
-![zobrazení – pracovní prostor](./media/how-to-use-event-grid/view-in-workspace.png)
+![Snímek obrazovky ukazuje koncové body kanálu.](./media/how-to-use-event-grid/view-in-workspace.png)
 
 ### <a name="example-deploy-a-model-based-on-tags"></a>Příklad: nasazení modelu založeného na značkách
 

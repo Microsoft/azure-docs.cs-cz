@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dcbaaeb2868a421a41227e1b5d9fdd84a96248eb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6c8e6fee2b9f01b8d7ab48990760aa4c4d6e11b2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852357"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361496"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Přístup k datovým sadám pomocí Pythonu a klientské knihovny služby Azure Machine Learning pro Python
 Náhled klientské knihovny Microsoft Azure Machine Learning Pythonu může povolit zabezpečený přístup k vašim datovým sadám Azure Machine Learning z místního prostředí Pythonu a umožňuje vytváření a správu datových sad v pracovním prostoru.
@@ -71,7 +71,7 @@ Fragmenty kódu, které poskytuje Azure Machine Learning Studio (Classic) pro po
 
 Z bezpečnostních důvodů je funkce fragmentu kódu dostupná jenom uživatelům, kteří mají roli nastavenou jako **vlastník** pracovního prostoru. Vaše role se zobrazí v Azure Machine Learning Studio (Classic) na stránce **Uživatelé** v části **Nastavení**.
 
-![Zabezpečení][security]
+![Snímek obrazovky zobrazuje nastavení na stránce Uživatelé Azure Machine Learning Studio.][security]
 
 Pokud vaše role není nastavená jako **vlastník**, můžete buď požádat o pozvání jako vlastník, nebo požádat vlastníka pracovního prostoru, aby vám poskytl fragment kódu.
 
@@ -92,7 +92,7 @@ Autorizační tokeny se spravují na stránce **AUTORIZAČNÍ tokeny** v **Nasta
 2. Vyberte datovou sadu, ke které se chcete dostat. Můžete vybrat libovolnou datovou sadu ze seznamu **Moje datové sady** nebo ze seznamu **ukázek** .
 3. V dolním panelu nástrojů klikněte na možnost **generovat kód pro přístup k datům**. Pokud jsou data ve formátu nekompatibilním s klientskou knihovnou Pythonu, toto tlačítko je zakázané.
    
-    ![Datové sady][datasets]
+    ![Snímek obrazovky ukazuje datovou sadu s kódem pro přístup k datům.][datasets]
 4. V okně, které se zobrazí, vyberte fragment kódu a zkopírujte ho do schránky.
    
     ![Tlačítko pro generování kódu pro přístup k datům][dataset-access-code]
@@ -348,7 +348,7 @@ print(ws.datasets['existing dataset'].name)    # IndexError
 
 `data_type_id`Parametry a `name` `description` jsou volitelné a výchozí jejich předchozí hodnota. `dataframe`Parametr je vždy vyžadován.
 
-Pokud jsou vaše data už serializovaná, použijte `update_from_raw_data` místo `update_from_dataframe` . Pokud pouze předáte `raw_data` místo `dataframe` , funguje podobným způsobem.
+Pokud jsou vaše data už serializovaná, použijte `update_from_raw_data` místo `update_from_dataframe` . Pokud pouze předáte `raw_data` místo  `dataframe` , funguje podobným způsobem.
 
 <!-- Images -->
 [security]:./media/python-data-access/security.png

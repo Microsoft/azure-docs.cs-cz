@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: e3814c753a182ce11d9062a665adc137f80c206f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1363ccfcf20312fb7273526349e27e8f424b6b41
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255617"
+ms.locfileid: "91361547"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Kurz: Konfigurace TeamVieweru pro Automatické zřizování uživatelů
 
@@ -99,7 +99,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte `ttps://webapi.teamviewer.com/scim/v2`  do pole **Adresa URL pro dodržení** a zadejte token skriptu, který jste vytvořili dříve v **tokenu tajného**kódu. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k TeamVieweru. Pokud se připojení nepovede, ujistěte se, že váš účet TeamViewer má oprávnění správce, a zkuste to znovu.
 
-    ![zřizování](./media/teamViewer-provisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně přihlašovací údaje správce, kde můžete zadat svého tenanta U R L a tajného tokenu.](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
 6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem**.
 

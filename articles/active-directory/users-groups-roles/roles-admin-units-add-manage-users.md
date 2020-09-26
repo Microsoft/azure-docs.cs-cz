@@ -1,5 +1,5 @@
 ---
-title: Přidání, odebrání a výpis uživatelů v jednotce pro správu (Preview) – Azure Active Directory | Microsoft Docs
+title: Přidání, odebrání a výpis uživatelů v jednotce pro správu – Azure Active Directory | Microsoft Docs
 description: Správa uživatelů a jejich oprávnění role v jednotce pro správu v Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9b76ac103b873026dce3d3f8f92e54dc3afc14c
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 37e1ac36df35fabb9709cfecadcfb0e7330df5da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850929"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265102"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Přidat a spravovat uživatele v jednotce pro správu v Azure Active Directory
 
@@ -35,11 +35,11 @@ Uživatelům můžete přiřadit jednotky pro správu dvěma způsoby.
 
 1. Individuální přiřazení
 
-    1. Na portálu můžete přejít na Azure AD a vybrat uživatele a vybrat uživatele, který se má přiřadit jednotce pro správu. Na levém panelu pak můžete vybrat jednotky pro správu. Uživatel může být přiřazen k jedné nebo více jednotkám správy kliknutím na položku přiřadit jednotce pro správu a výběrem jednotek pro správu, ke kterým má být uživatel přiřazen.
+    1. Na portálu můžete přejít na Azure AD a vybrat uživatele a vybrat uživatele, který se má přiřadit jednotce pro správu. Na levém panelu pak můžete vybrat jednotky pro správu. Uživatele můžete přiřadit k jedné nebo více jednotkám pro správu kliknutím na * * přiřadit k jednotce pro správu a výběrem jednotek pro správu, ke kterým se má uživatel přiřadit.
 
        ![Vyberte Přidat a potom zadejte název jednotky pro správu.](./media/roles-admin-units-add-manage-users/assign-users-individually.png)
 
-    1. Na portálu můžete přejít na Azure AD a v levém podokně vybrat jednotky pro správu a pak vybrat jednotku správy, ke které se mají uživatelé přiřazovat. V levém podokně vyberte všichni uživatelé a pak vyberte Přidat člena. Pak můžete pokračovat a vybrat jednoho nebo více uživatelů, kteří mají být přiřazeni k jednotce pro správu v pravém podokně.
+    1. Na portálu můžete přejít na Azure AD a v levém podokně vybrat jednotky pro správu a pak vybrat jednotku správy, ke které se mají uživatelé přiřazovat. Vyberte **Všichni uživatelé** a pak vyberte **Přidat člena**. Pak můžete pokračovat a vybrat jednoho nebo více uživatelů, kteří mají být přiřazeni k jednotce pro správu v pravém podokně.
 
         ![Vyberte jednotku pro správu a pak vyberte Přidat člena.](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
 
@@ -82,13 +82,15 @@ Příklad:
 
 ### <a name="azure-portal"></a>portál Azure
 
-V Azure Portal můžete otevřít profil uživatele tak, že kliknete na uživatele Azure AD >. Kliknutím na uživatele otevřete profil uživatele.
+V Azure Portal můžete otevřít profil uživatele:
 
-![Otevřete profil uživatele v Azure Active Directory](./media/roles-admin-units-add-manage-users/user-profile-admin-units.png)
+1. Otevírají se uživatelé **Azure AD**  >  **Users**.
 
-Vyberte **jednotky pro správu** na levém panelu, abyste zobrazili seznam jednotek pro správu, ke kterým byl uživatel přiřazen.
+1. Výběrem uživatele otevřete profil uživatele.
 
-![Seznam jednotek pro správu pro uživatele](./media/roles-admin-units-add-manage-users/list-user-admin-units.png)
+1. Vyberte **jednotky pro správu** a zobrazí se seznam jednotek pro správu, ke kterým byl uživatel přiřazen.
+
+   ![Seznam jednotek pro správu pro uživatele](./media/roles-admin-units-add-manage-users/list-user-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 

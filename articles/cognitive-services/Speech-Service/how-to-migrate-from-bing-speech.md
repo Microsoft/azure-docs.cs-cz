@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 7b78bdb070cdf1364fe7fbdc75f175be7ce145ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43679c52727f8cc84c7292592b68dddae7f1ea68
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80656452"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362074"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrace z Zpracování řeči Bingu do služby pro rozpoznávání řeči
 
@@ -37,7 +37,7 @@ Jeden klíč předplatného služby Speech uděluje přístup k následujícím 
 
 Služba rozpoznávání řeči je převážně podobná Zpracování řeči Bingu, s následujícími rozdíly.
 
-| Funkce | Zpracování řeči Bingu | Služba Speech | Podrobnosti |
+| Příznak | Zpracování řeči Bingu | Služba Speech | Podrobnosti |
 |--|--|--|--|
 | C# SDK | :heavy_check_mark: | :heavy_check_mark: | Služba rozpoznávání řeči podporuje Windows 10, Univerzální platforma Windows (UWP) a .NET Standard 2,0. |
 | C++ SDK | : heavy_minus_sign: | :heavy_check_mark: | Služba rozpoznávání řeči podporuje systémy Windows a Linux. |
@@ -51,7 +51,7 @@ Služba rozpoznávání řeči je převážně podobná Zpracování řeči Bing
 | Jednoduché rozpoznávání záměrů | : heavy_minus_sign: | :heavy_check_mark: |
 | Dávkové přepisy dlouhých audio souborů | : heavy_minus_sign: | :heavy_check_mark: |
 | Režim rozpoznávání | Ruční prostřednictvím identifikátoru URI koncového bodu | Automaticky | Ve službě Speech není dostupný režim rozpoznávání. |
-| Prostředí koncového bodu | Globální | Oblastní | Místní koncové body zlepšují latenci. |
+| Prostředí koncového bodu | Globální | Regionální | Místní koncové body zlepšují latenci. |
 | Rozhraní REST API | :heavy_check_mark: | :heavy_check_mark: | Rozhraní REST API služby Speech jsou kompatibilní s Zpracování řeči Bingu (jiný koncový bod). Rozhraní REST API podporují funkci převodu textu na řeč a omezené funkce řeči na text. |
 | Protokoly WebSockets | :heavy_check_mark: | :heavy_check_mark: | Rozhraní API WebSockets služby Speech je kompatibilní s Zpracování řeči Bingu (jiný koncový bod). Pokud je to možné, migrujte na sadu Speech SDK, abyste zjednodušili kód. |
 | Volání rozhraní API služby-služba | :heavy_check_mark: | : heavy_minus_sign: | K dispozici v Zpracování řeči Bingu prostřednictvím knihovny služby C#. |
@@ -87,7 +87,7 @@ Podporu služby Speech SDK a rozhraní API najdete na [stránce podpory](support
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vyzkoušejte si službu Speech Service zdarma](get-started.md)
+* [Vyzkoušejte si službu Speech Service zdarma](overview.md#try-the-speech-service-for-free)
 * [Rychlý Start: rozpoznávání řeči v aplikaci UWP pomocí sady Speech SDK](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>Viz také

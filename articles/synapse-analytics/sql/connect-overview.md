@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9a9b8b9ed3e65ae9b8500017b838dc320ecbaac
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bbd82f856213bb36e71625eabc8bce9999ccd53f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005016"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289391"
 ---
 # <a name="connect-to-synapse-sql"></a>Připojení k synapse SQL
 Připojte se k funkci synapse SQL ve službě Azure synapse Analytics.
@@ -37,8 +37,8 @@ Název serveru pro SQL na vyžádání v následujícím příkladu: showdemoweu
 Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
 
 1. Přejděte na web [Azure Portal](https://portal.azure.com).
-2. Klikněte na **synapse pracovní prostory**.
-3. Klikněte na pracovní prostor, ke kterému se chcete připojit.
+2. Vyberte v **pracovních prostorech synapse**.
+3. Vyberte pracovní prostor, ke kterému se chcete připojit.
 4. Přejít na přehled
 5. Vyhledejte úplný název serveru.
 
@@ -51,7 +51,7 @@ Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
 ![Úplný název serveru SQL na vyžádání](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Podporované ovladače a připojovací řetězce
-Synapse SQL podporuje [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)a [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Chcete-li najít nejnovější verzi a dokumentaci, klikněte na jeden z předchozích ovladačů. Chcete-li automaticky vygenerovat připojovací řetězec pro ovladač, který používáte z Azure Portal, klikněte na příkaz **Zobrazit databázové připojovací řetězce** z předchozího příkladu. Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
+Synapse SQL podporuje [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)a [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Pokud chcete najít nejnovější verzi a dokumentaci, vyberte jeden z předchozích ovladačů. Chcete-li automaticky vygenerovat připojovací řetězec pro ovladač, který používáte z Azure Portal, vyberte v předchozím příkladu **Zobrazit databázové připojovací řetězce** . Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
 
 > [!NOTE]
 > Zvažte nastavení časového limitu připojení na 300 sekund, pokud chcete, aby vaše připojení přestálo krátká období nedostupnosti.
@@ -81,14 +81,14 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 ```
 
 ## <a name="connection-settings"></a>Nastavení připojení
-Synapse SQL v rámci připojení a vytváření objektů standardizace některá nastavení. Tato nastavení nelze přepsat a zahrnují:
+Synapse SQL v rámci připojení a vytváření objektů standardizace některá nastavení. Tato nastavení nelze přepsat a zahrnout:
 
 | Nastavení databáze | Hodnota |
 |:--- |:--- |
-| [ANSI_NULLS](/sql/t-sql/statements/set-ansi-nulls-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |ON |
-| [QUOTED_IDENTIFIERS](/sql/t-sql/statements/set-quoted-identifier-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |ON |
-| [DATEFORMAT](/sql/t-sql/statements/set-dateformat-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |mdy |
-| [DATEFIRST](/sql/t-sql/statements/set-datefirst-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |7 |
+| [ANSI_NULLS](/sql/t-sql/statements/set-ansi-nulls-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |ON |
+| [QUOTED_IDENTIFIERS](/sql/t-sql/statements/set-quoted-identifier-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |ON |
+| [DATEFORMAT](/sql/t-sql/statements/set-dateformat-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |mdy |
+| [DATEFIRST](/sql/t-sql/statements/set-datefirst-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |7 |
 
 ## <a name="recommendations"></a>Doporučení
 

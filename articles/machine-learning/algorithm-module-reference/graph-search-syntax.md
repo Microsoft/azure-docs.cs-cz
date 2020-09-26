@@ -1,5 +1,5 @@
 ---
-title: Syntaxe dotazu na hledání grafu
+title: Syntaxe dotazů prohledávání grafů
 titleSuffix: Azure Machine Learning
 description: Naučte se používat syntaxi vyhledávacího dotazu k vyhledání uzlů v v diagramu kanálu.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 8/24/2020
-ms.openlocfilehash: 122da78206ef2055b4867727b174293e74133c05
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 166b87159b5ac2434c3ce7a7c66529a4b61ee565
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817422"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290496"
 ---
-# <a name="graph-search-query-syntax"></a>Syntaxe dotazu na hledání grafu
+# <a name="graph-search-query-syntax"></a>Syntaxe dotazů prohledávání grafů
 
 V tomto článku se dozvíte o syntaxi dotazu vyhledávacího grafu v Azure Machine Learning. Funkce hledání v grafu umožňuje vyhledat uzel podle jeho názvu a vlastností. 
 
@@ -49,7 +49,7 @@ Při vyhledávání v grafu se jako syntaxe fulltextového vyhledávání v uzlu
  
 - Shoda se zástupnými znaky: 
     - `machi?e learning`
-    -   `mach*ing`
+    - `mach*ing`
  
 >[!NOTE]
 > Nelze spustit dotaz Lucene se znakem "*".
@@ -59,7 +59,7 @@ Při vyhledávání v grafu se jako syntaxe fulltextového vyhledávání v uzlu
  
 Filtrovat dotazy pomocí následujícího vzoru:
  
-    **[key1] [operator1] [value1]; [key2] [operator1] [value2];**
+`**[key1] [operator1] [value1]; [key2] [operator1] [value2];**`
 
  
 Následující vlastnosti uzlu můžete použít jako klíče:

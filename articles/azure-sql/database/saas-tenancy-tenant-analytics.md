@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 80658839e804112ae9c8a049943bca54441b015b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cd80f0b2a5e2ad1fd4c2cff73728d57a2beafc7e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437390"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361513"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Analýza mezi klienty pomocí extrahované aplikace pro jednoho tenanta
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Co se v tomto kurzu naučíte:
 > - Dotazování analytické databáze
 > - Pomocí Power BI pro vizualizaci dat zvýrazněte trendy v datech tenanta a udělejte doporučení na vylepšení.
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics/architectureOverview.png)
+![Diagram zobrazuje přehled architektury používané pro tento článek.](./media/saas-tenancy-tenant-analytics/architectureOverview.png)
 
 ## <a name="offline-tenant-analytics-pattern"></a>Model analýzy klientů offline
 
@@ -138,7 +138,7 @@ Každá úloha extrahuje svá data a odešle je do úložiště analýz. V rámc
 4. Stisknutím klávesy F5 spusťte skript, který vytvoří a spustí úlohu, která extrahuje údaje o lístkech a zákaznících z každé databáze tenanta. Úloha uloží data do úložiště analýz.
 5. Dotaz na tabulku TicketsRawData v databázi tenantanalytics, aby se zajistilo, že se tabulka vyplní informacemi z lístků ze všech tenantů.
 
-![ticketExtracts](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
+![Snímek obrazovky zobrazuje databázi ExtractTickets s TicketsRawDataem d b o vybraným v Průzkumník objektů.](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
 
 Opakujte předchozí kroky, kromě této doby nahraďte **\ExtractTickets.SQL** pomocí **\ExtractVenuesEvents.SQL** v kroku 2.
 
@@ -177,21 +177,21 @@ Pomocí následujících kroků se připojte k Power BI a importujte zobrazení,
 
 5. V levém podokně vyberte **databáze** a pak zadejte uživatelské jméno = *vývojář*a zadejte heslo = *P \@ ssword1*. Klikněte na **Připojit**.  
 
-    ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
+    ![Snímek obrazovky se zobrazí v dialogovém okně SQL Server databázi, kde můžete zadat uživatelské jméno a heslo.](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
 6. V podokně **navigátor** v části analytická databáze vyberte tabulky schématu hvězdiček: fact_Tickets, dim_Events, dim_Venues, dim_Customers a dim_Dates. Pak vyberte **načíst**. 
 
-Gratulujeme! Data byla úspěšně načtena do Power BI. Teď můžete začít zkoumat zajímavé vizualizace, které vám pomůžou získat přehled o vašich klientech. Dále vám ukážeme, jak vám analýza umožní poskytnout doporučení na základě dat pro obchodní tým Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
+Blahopřejeme! Data byla úspěšně načtena do Power BI. Teď můžete začít zkoumat zajímavé vizualizace, které vám pomůžou získat přehled o vašich klientech. Dále vám ukážeme, jak vám analýza umožní poskytnout doporučení na základě dat pro obchodní tým Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
 
 Začnete analýzou dat o prodeji lístků, abyste viděli variaci využití v rámci míst. Vyberte následující možnosti v Power BI k vykreslení pruhového grafu celkového počtu lístků prodávaných každým jejich konáním. V důsledku náhodné variace generátoru lístků se vaše výsledky můžou lišit.
  
-![TotalTicketsByVenues](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues.PNG)
+![Snímek obrazovky ukazuje vizualizaci a ovládací prvky pro vizualizaci dat na pravé straně.](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues.PNG)
 
 Předchozí vykreslení potvrdí, že počet lístků prodávaných jednotlivými místy se liší. Místa, která prodávají další lístky, využívají vaši službu více než místo míst, které prodávají méně lístků. Tady může být příležitost přizpůsobit přidělování prostředků podle různých potřeb tenanta.
 
 Data můžete dál analyzovat, abyste viděli, jak se v průběhu času mění prodej lístku. Vyberte následující možnosti v Power BI pro vykreslení celkového počtu lístků prodaných každý den po dobu 60 dnů.
  
-![SaleVersusDate](./media/saas-tenancy-tenant-analytics/SaleVersusDate.PNG)
+![Snímek obrazovky zobrazuje vizualizaci Power B s názvem distribuce prodeje lístků vs. den prodeje.](./media/saas-tenancy-tenant-analytics/SaleVersusDate.PNG)
 
 V předchozím grafu se zobrazuje špička prodeje lístků pro určité místo. Tyto špičky posílí představu o tom, že některá místa můžou spotřebovávat systémové prostředky neúměrně. Zatím v době, kdy dojde k špičkám, neexistuje žádný zřejmý vzor.
 
@@ -217,7 +217,7 @@ AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CA
 
 Vyberte následující možnosti vizualizace k vykreslení procentuálních lístků prodávaných každým místem k určení jejich relativního úspěchu.
 
-![AvgTicketsByVenues](./media/saas-tenancy-tenant-analytics/AvgTicketsByVenues.PNG)
+![Snímek obrazovky zobrazuje vizualizaci Power B s názvem průměrné lístky prodávané každým jejich konáním.](./media/saas-tenancy-tenant-analytics/AvgTicketsByVenues.PNG)
 
 Předchozí vykreslení ukazuje, že i když většina míst prodává více než 80% svých lístků, některé jsou působit potíže, aby vyplnily více než polovinu stanic. Pokud chcete vybrat maximální nebo minimální procento lístků, které se prodávají pro každé místo, začněte s hodnotami.
 
@@ -236,7 +236,7 @@ V tomto kurzu jste se naučili:
 > - Dotazování analytické databáze 
 > - Použití Power BI pro vizualizaci dat ke sledování trendů v datech tenanta 
 
-Gratulujeme!
+Blahopřejeme!
 
 ## <a name="additional-resources"></a>Další zdroje
 
