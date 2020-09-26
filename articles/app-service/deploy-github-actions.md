@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python
-ms.openlocfilehash: 264976fdfe514a8778c60fe9242ac555f268718d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 54e4ce409eb9f2a6bedd7861b3e268311f886b49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962566"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273241"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Nasazení do App Service pomocí akcí GitHubu
 
@@ -24,11 +24,27 @@ ms.locfileid: "88962566"
 
 Pracovní postup je definovaný souborem YAML (. yml) v `/.github/workflows/` cestě v úložišti. Tato definice obsahuje různé kroky a parametry, které tvoří pracovní postup.
 
+## <a name="use-the-deployment-center"></a>Použití centra nasazení
+
+Pomocí centra nasazení App Service můžete rychle začít s akcemi GitHubu. Tím se automaticky vygeneruje soubor pracovního postupu na základě vašeho zásobníku aplikace a potvrdí se do úložiště GitHub ve správném adresáři.
+
+1. Přejděte na WebApp na webu Azure Portal.
+1. Na levé straně klikněte na **centrum nasazení** .
+1. V části **průběžné nasazování (CI/CD)** vyberte **GitHub** .
+1. Pak vyberte **Akce GitHubu** .
+1. Výběr úložiště GitHubu, větve a zásobníku aplikací pomocí rozevíracích seznamů
+    - Pokud je vybraná větev chráněná, můžete i nadále přidávat soubor pracovního postupu. Než budete pokračovat, nezapomeňte zkontrolovat ochranu větví.
+1. Na poslední obrazovce si můžete prohlédnout své volby a zobrazit náhled souboru pracovního postupu, který se potvrdí do úložiště. Pokud jsou výběry správné, klikněte na **Dokončit** .
+
+Tím se soubor pracovního postupu potvrdí do úložiště. Spustí se okamžitě pracovní postup sestavení a nasazení vaší aplikace.
+
+## <a name="add-the-workflow-manually"></a>Přidat pracovní postup ručně
+
 V případě pracovního postupu Azure App Service má soubor tři části:
 
 |Sekce  |Úlohy  |
 |---------|---------|
-|**Ověřování** | 1. Definujte instanční objekt. <br /> 2. Vytvořte tajný klíč GitHubu. |
+|**Authentication** | 1. Definujte instanční objekt. <br /> 2. Vytvořte tajný klíč GitHubu. |
 |**Sestavení** | 1. Nastavte prostředí. <br /> 2. Sestavte webovou aplikaci. |
 |**Nasazení** | 1. Nasaďte webovou aplikaci. |
 
