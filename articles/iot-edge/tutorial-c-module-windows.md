@@ -2,19 +2,19 @@
 title: Kurz vývoj modulu C pro Windows – Azure IoT Edge | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak vytvořit modul IoT Edge s kódem jazyka C a jak ho nasadit na zařízení s Windows se systémem IoT Edge
 services: iot-edge
-author: shizn
+author: kgremban
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 2da31944a58fb3e5834938b7de32348f30ed7e25
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: edfe0a383ab68b640b5bc7e7e0a1fdd038d0fa38
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439814"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318326"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: vývoj modulu C IoT Edge pro zařízení s Windows
 
@@ -43,7 +43,7 @@ Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modu
 | -- | ------------------ | ------------------ |
 | **Systém Windows AMD64** |  | ![Vývoj modulů C pro WinAMD64 v aplikaci Visual Studio](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz pro nastavení vývojového prostředí pro vývoj kontejnerů Windows: [vývoj IoT Edgech modulů pro zařízení s Windows](tutorial-develop-for-windows.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 

@@ -3,12 +3,12 @@ title: Obnovitelné odstranění pro Azure Backup
 description: Naučte se používat funkce zabezpečení v Azure Backup k zajištění většího zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 76928b98bdb21ffa79fce8435bfe4dda92e0c72d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d7998c7f9def6ce9965ded3b6ec700f7975891eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179959"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271541"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Obnovitelné odstranění pro Azure Backup
 
@@ -29,7 +29,7 @@ Tento vývojový diagram zobrazuje různé kroky a stavy zálohované položky, 
 
 Obnovitelné odstranění je ve výchozím nastavení povolené u nově vytvořených trezorů za účelem ochrany zálohovaných dat před náhodnými nebo škodlivými odstraněními.  Zakázání této funkce se nedoporučuje. Jediným případem, kdy byste měli zvážit zakázání obnovitelného odstranění, je, že plánujete přesunutí chráněných položek do nového trezoru a nemůžete počkat 14 dní před odstraněním a obnovením ochrany (například v testovacím prostředí). Tuto funkci může zakázat pouze vlastník trezoru. Pokud tuto funkci zakážete, všechna budoucí odstranění chráněných položek budou mít za následek okamžité odebrání bez možnosti obnovení. Zálohovaná data, která existují v tichém odstraněném stavu před zakázáním této funkce, zůstanou v tichém odstraněné stavu po dobu 14 dnů. Pokud chcete tyto okamžité odstranění trvale odstranit, musíte je znovu odstranit a znovu odstranit, abyste se mohli trvale odstranit.
 
- Je důležité si uvědomit, že jakmile je obnovitelné odstranění zakázané, funkce se zakáže pro všechny typy úloh, včetně úloh SQL Server a SAP HANA. Pokud je například u předplatného povolená možnost [SQL Server/SAP HANA Preview](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview) , nemůžete zakázat obnovitelné odstranění jenom pro SQL Server nebo SAP HANA databáze a přitom ponechat povolený virtuální počítač ve stejném trezoru. Pro podrobné řízení můžete vytvořit samostatné trezory.
+Je důležité si uvědomit, že jakmile je obnovitelné odstranění zakázané, funkce se zakáže pro všechny typy úloh. Nemůžete například zakázat obnovitelné odstranění jenom pro SQL Server nebo SAP HANA databáze a přitom ponechat povolený virtuální počítač ve stejném trezoru. Pro podrobné řízení můžete vytvořit samostatné trezory.
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>Zákaz obnovitelného odstranění pomocí Azure Portal
 
@@ -69,7 +69,7 @@ Zálohovaná data v tichém odstraněném stavu před zakázáním této funkce 
 
 ### <a name="using-azure-portal"></a>Pomocí webu Azure Portal
 
-Postupujte následovně:
+Postupujte takto:
 
 1. Chcete-li [Zakázat obnovitelné odstranění](#enabling-and-disabling-soft-delete), postupujte podle pokynů.
 
@@ -160,7 +160,7 @@ Ne, chcete-li obnovit, je nutné obnovit neodstraněný prostředek. Operace zru
 
 ### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>Budou se moje snímky řídit stejným životním cyklem jako body obnovení v trezoru?
 
-Yes.
+Ano.
 
 ### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>Jak můžu znovu aktivovat naplánované zálohy u prostředku odstraněného z nějakého obnovitelného?
 

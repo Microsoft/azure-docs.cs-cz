@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 207e5b8d9735004b6dc1a9662a3f66fbed8c2307
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 1dcca8409022ba4cf1f988b7c777e3a1fa511060
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422687"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318360"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidání vlastního panelu na řídicí panel ve webovém uživatelském rozhraní akcelerátoru řešení vzdáleného monitorování
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak přidat nový panel na stránku řídicího pa
 
 Vzorový panel v tomto článku se zobrazí na existující stránce řídicího panelu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto průvodci, potřebujete na svém místním vývojovém počítači nainstalovaný následující software:
 
@@ -50,7 +50,7 @@ Chcete-li začít, obsahuje soubor **Src/názor/komponenty, stránky/Řídicí p
 
 Zkopírujte **zdroj/návod/komponenty/stránky/Řídicí panel/panely/panely/složka examplePanel** do složky **Src/Components/Pages/paneles/panely** .
 
-Přidejte následující export do souboru **Src/názorného/Components/Pages/Dashboard** /paneles/index.js:
+Přidejte následující export do souboru **Src/názorného/Components/Pages/Dashboard ** /paneles/index.js:
 
 ```js
 export * from './examplePanel';

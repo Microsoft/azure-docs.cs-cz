@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 897c0f3c51d6d9bea1f90a66ccf50aa51e22f118
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: c46d977b6ce4eaa62aefc6874ce2b855a4711670
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088302"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317508"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Řešení potíží s připojením služby Azure AD
 Tento článek vysvětluje, jak funguje konektivita mezi Azure AD Connect a Azure AD a jak řešit problémy s připojením. Tyto problémy se pravděpodobně zobrazují v prostředí s proxy server.
@@ -85,7 +85,7 @@ Pokud chcete ověřit, jestli má server Azure AD Connect skutečné připojení
 
 PowerShell ke kontaktování proxy serveru používá konfiguraci v souboru machine.config. Nastavení v příkazu winhttp/netsh by na tyto rutiny nemělo mít vliv.
 
-Pokud je proxy server správně nakonfigurovaný, měli byste získat stav úspěch: ![ proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
+Pokud je proxy server správně nakonfigurovaný, měli byste získat stav úspěch: ![ snímek obrazovky, který zobrazuje stav úspěch, pokud je proxy server správně nakonfigurovaný.](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
 Pokud se vám **nedaří připojit ke vzdálenému serveru**, PowerShell se pokusí provést přímé volání bez použití proxy serveru nebo DNS není správně nakonfigurovaný. Ujistěte se, že je soubor **machine.config** správně nakonfigurovaný.
 ![unabletoconnect](./media/tshoot-connect-connectivity/invokewebrequestunable.png)

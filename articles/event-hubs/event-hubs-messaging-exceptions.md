@@ -1,17 +1,22 @@
 ---
-title: Event Hubs Azure – výjimky
+title: Azure Event Hubs – výjimky (starší verze)
 description: Tento článek poskytuje seznam výjimek zasílání zpráv Azure Event Hubs a navrhovaných akcí.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b3a7023dc44d7280284fec1eccf00a3dbe88b7ec
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5a7ca32893a106cd59df548ae3118665acaea654
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908378"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318479"
 ---
-# <a name="event-hubs-messaging-exceptions---net"></a>Výjimky zasílání zpráv Event Hubs – .NET
+# <a name="event-hubs-messaging-exceptions---net-legacy"></a>Výjimky zasílání zpráv Event Hubs – .NET (starší verze)
 V této části jsou uvedeny výjimky rozhraní .NET generované rozhraním API .NET Framework. 
+
+> [!IMPORTANT]
+> Některé z výjimek uvedených v článku se vztahují jenom na starší knihovny Event Hubs .NET. Například: Microsoft. ServiceBus. * Exceptions.
+> 
+> Informace o EventHubsException vyvolaném novou knihovnou .NET najdete v tématu [EventHubsException-.NET](exceptions-dotnet.md) .
 
 ## <a name="exception-categories"></a>Kategorie výjimek
 

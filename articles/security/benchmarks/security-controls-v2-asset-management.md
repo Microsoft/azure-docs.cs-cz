@@ -4,17 +4,17 @@ description: Správa prostředků Azure Security benchmark v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ba010c0dd3384af895c68d980fcae788c2d6d45a
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 845c4f3194f35c68306e74734e5ecc6109d9c103
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059195"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318020"
 ---
-# <a name="security-control-asset-management"></a>Řízení zabezpečení: Správa prostředků
+# <a name="security-control-v2-asset-management"></a>Řízení zabezpečení v2: Správa prostředků
 
 Správa prostředků pokrývá ovládací prvky pro zajištění viditelnosti zabezpečení a zásad správného řízení pro prostředky Azure. To zahrnuje doporučení týkající se oprávnění pro bezpečnostní pracovníky, přístup k zabezpečení inventáře prostředků a správu schválení pro služby a prostředky (inventarizace, sledování a opravy).
 
@@ -22,7 +22,7 @@ Správa prostředků pokrývá ovládací prvky pro zajištění viditelnosti za
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| DOP. 1 | 1,1, 1,2, 1,3, 1,4, 9,1, 12,1 | CM-7, CM-8, CM-11, PM-5 |
+| DOP. 1 | 1,1, 1,2 | CM-8, PM-5 |
 
 Ujistěte se, že jsou bezpečnostním týmům udělená oprávnění čtenáře zabezpečení ve vašem tenantovi Azure a předplatných, aby mohli monitorovat bezpečnostní rizika pomocí Azure Security Center. 
 
@@ -38,7 +38,7 @@ Poznámka: k získání přehledu o úlohách a službách může být potřeba 
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -48,7 +48,7 @@ Poznámka: k získání přehledu o úlohách a službách může být potřeba 
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| DOP. 2 | 1.5 | CM-8, PM-5 |
+| DOP. 2 | 1,1, 1,2, 1,4, 1,5, 9,1, 12,1 | CM-8, PM-5 |
 
 Ujistěte se, že týmy zabezpečení mají přístup k průběžně aktualizovaným inventáři prostředků v Azure. Týmy zabezpečení často potřebují tento inventář, aby vyhodnotili potenciální expozici své organizace vznikajícím rizikům a jako vstup pro průběžná vylepšení zabezpečení. 
 
@@ -64,7 +64,7 @@ Logicky organizovat prostředky podle taxonomie vaší organizace pomocí znače
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -86,7 +86,7 @@ Pomocí Azure Policy můžete auditovat a omezovat, které služby můžou uživ
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Správa dodržování předpisů zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -106,7 +106,7 @@ Odeberte prostředky Azure, když už je nepotřebujete.
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -126,7 +126,7 @@ Pomocí podmíněného přístupu Azure AD omezte schopnost uživatelů komuniko
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Správa stavu](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
@@ -136,7 +136,7 @@ Pomocí podmíněného přístupu Azure AD omezte schopnost uživatelů komuniko
 
 | ID Azure | ID ovládacích prvků CIS v 7.1 | NIST SP800 – 53 R4 ID |
 |--|--|--|--|
-| DOP. 6 | 2,6 | AC-3, CM-7, CM-8, CM-10, CM-11 |
+| DOP. 6 | 2,6, 2,7 | AC-3, CM-7, CM-8, CM-10, CM-11 |
 
 Ujistěte se, že se spustí jenom autorizovaný software, a veškerý neautorizovaný software se zablokuje, aby se spustil v Azure Virtual Machines.
 
@@ -156,7 +156,7 @@ K vyhledání a identifikaci neschváleného softwaru můžete také použít ř
 
 **Zodpovědnost**: zákazník
 
-**Účastníci zabezpečení zákazníka**:
+**Účastníci zabezpečení zákazníků** ([Další informace](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Zabezpečení infrastruktury a koncových bodů](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 

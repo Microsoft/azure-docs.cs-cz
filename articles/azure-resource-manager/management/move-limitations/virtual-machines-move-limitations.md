@@ -2,13 +2,13 @@
 title: Přesun virtuálních počítačů Azure do nového předplatného nebo skupiny prostředků
 description: K přesunutí virtuálních počítačů do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 3878113f6874c40953bec87518a89519bdc6cb1a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/21/2020
+ms.openlocfilehash: 219a8b438d2715f6e97085a527b386e51759ec2c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230955"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317102"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Pokyny pro přesunutí virtuálních počítačů
 
@@ -50,7 +50,7 @@ Pokud je pro virtuální počítač povolené [obnovitelné odstranění](../../
    1. Najděte umístění virtuálního počítače.
    2. Vyhledejte skupinu prostředků s následujícím vzorem pojmenování: `AzureBackupRG_<VM location>_1` . Název je například ve formátu *AzureBackupRG_westus2_1*.
    3. V Azure Portal zaškrtnout **Zobrazit skryté typy**.
-   4. Vyhledejte prostředek typu **Microsoft. COMPUTE/restorePointCollections** , který má vzor pojmenování `AzureBackup_<name of your VM that you're trying to move>_###########` .
+   4. Vyhledejte prostředek typu **Microsoft. COMPUTE/restorePointCollections** , který má vzor pojmenování `AzureBackup_<VM name>_###########` .
    5. Odstranit tento prostředek. Tato operace odstraní pouze rychlé body obnovení, nikoli zálohovaná data v trezoru.
    6. Po dokončení operace odstranění můžete virtuální počítač přesunout.
 
@@ -63,16 +63,31 @@ Pokud je pro virtuální počítač povolené [obnovitelné odstranění](../../
 
 1. Vyhledejte skupinu prostředků se vzorem pojmenování `AzureBackupRG_<VM location>_1` . Název může být například `AzureBackupRG_westus2_1` .
 
-1. Pro získání kolekce bodů obnovení použijte následující příkaz.
+1. Pokud přesouváte jenom jeden virtuální počítač, Získejte pro tento virtuální počítač kolekci bodů obnovení.
 
-   ```azurepowershell
-   $RestorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -ResourceType Microsoft.Compute/restorePointCollections
+   ```azurepowershell-interactive
+   $restorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -name AzureBackup_<VM name>* -ResourceType Microsoft.Compute/restorePointCollections
    ```
 
-1. Odstranit tento prostředek. Tato operace odstraní pouze rychlé body obnovení, nikoli zálohovaná data v trezoru.
+   Odstranit tento prostředek. Tato operace odstraní pouze rychlé body obnovení, nikoli zálohovaná data v trezoru.
 
-   ```azurepowershell
-   Remove-AzResource -ResourceId $RestorePointCollection.ResourceId -Force
+   ```azurepowershell-interactive
+   Remove-AzResource -ResourceId $restorePointCollection.ResourceId -Force
+   ```
+
+1. Pokud přesouváte všechny virtuální počítače s back-výstupními zdroji v tomto umístění, získáte pro tyto virtuální počítače kolekce bodů obnovení.
+
+   ```azurepowershell-interactive
+   $restorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -ResourceType Microsoft.Compute/restorePointCollections
+   ```
+
+   Odstraňte jednotlivé prostředky. Tato operace odstraní pouze rychlé body obnovení, nikoli zálohovaná data v trezoru.
+
+   ```azurepowershell-interactive
+   foreach ($restorePoint in $restorePointCollection)
+   {
+     Remove-AzResource -ResourceId $restorePoint.ResourceId -Force
+   }
    ```
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -81,18 +96,28 @@ Pokud je pro virtuální počítač povolené [obnovitelné odstranění](../../
 
 1. Vyhledejte skupinu prostředků se vzorem pojmenování `AzureBackupRG_<VM location>_1` . Název může být například `AzureBackupRG_westus2_1` .
 
-1. K získání kolekce bodů obnovení použijte následující příkaz.
+1. Pokud přesouváte jenom jeden virtuální počítač, Získejte pro tento virtuální počítač kolekci bodů obnovení.
 
-   ```azurecli
-   az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections
+   ```azurecli-interactive
+   RESTOREPOINTCOL=$(az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections --query "[?starts_with(name, 'AzureBackup_<VM name>')].id" --output tsv)
    ```
 
-1. Vyhledejte ID prostředku pro prostředek se vzorem pojmenování. `AzureBackup_<VM name>_###########`
+   Odstranit tento prostředek. Tato operace odstraní pouze rychlé body obnovení, nikoli zálohovaná data v trezoru.
 
-1. Odstranit tento prostředek. Tato operace odstraní pouze rychlé body obnovení, nikoli zálohovaná data v trezoru.
+   ```azurecli-interactive
+   az resource delete --ids $RESTOREPOINTCOL
+   ```
 
-   ```azurecli
-   az resource delete --ids /subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/restorePointCollections/<name>
+1. Pokud přesouváte všechny virtuální počítače s back-výstupními zdroji v tomto umístění, získáte pro tyto virtuální počítače kolekce bodů obnovení.
+
+   ```azurecli-interactive
+   RESTOREPOINTCOL=$(az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections)
+   ```
+
+   Odstraňte jednotlivé prostředky. Tato operace odstraní pouze rychlé body obnovení, nikoli zálohovaná data v trezoru.
+
+   ```azurecli-interactive
+   az resource delete --ids $RESTOREPOINTCOL
    ```
 
 ## <a name="next-steps"></a>Další kroky

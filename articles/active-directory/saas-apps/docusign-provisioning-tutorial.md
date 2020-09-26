@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 5b4e74d5db2d1454360370c05d75cdf826875143
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d56f9890396d0381d24676964dabc57e2020ec28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535930"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317425"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Kurz: Konfigurace DocuSign pro Automatické zřizování uživatelů
 
@@ -23,7 +23,7 @@ Cílem tohoto kurzu je Ukázat kroky, které musíte v DocuSign a Azure AD použ
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 *   Tenant Azure Active Directory.
 *   Předplatné s povoleným DocuSignm jednotným přihlašováním.
@@ -63,9 +63,9 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
 1. Vyberte svou instanci DocuSign a pak vyberte kartu **zřizování** .
 
-1. Nastavte **režim zřizování** na **automaticky**. 
+1. Nastavte **Režim zřizování** na hodnotu **Automaticky**. 
 
-    ![zřizování](./media/docusign-provisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky s kartou zřizování pro DocuSign v Azure Portal. Režim zřizování je nastaven na automatické a je zvýrazněné uživatelské jméno správce, heslo a testovací připojení.](./media/docusign-provisioning-tutorial/provisioning.png)
 
 1. V části **přihlašovací údaje správce** zadejte následující nastavení konfigurace:
    
@@ -84,7 +84,7 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
 1. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé Docusign.**
 
-1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do Docusign. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Docusign pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do Docusign. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Docusign pro operace aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
 1. Pokud chcete povolit službu Azure AD Provisioning pro DocuSign, změňte **stav zřizování** na **zapnuto** v části nastavení.
 

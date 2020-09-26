@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 678b7571d54c8938c163801a584ad813c6e5963f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9e7ac5afb176e58ce47f918ddcbab742ecb90baf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551162"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317442"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Kurz: Konfigurace Concur pro Automatické zřizování uživatelů
 
@@ -23,7 +23,7 @@ Cílem tohoto kurzu je Ukázat kroky, které musíte v Concur a Azure AD použí
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 *   Tenant Azure Active Directory.
 *   Předplatné s povoleným Concurm jednotným přihlašováním.
@@ -94,9 +94,9 @@ Z následujících důvodů by se tato akce neměla provádět s profilem, kter�
 
 8. Vyberte svou instanci Concur a pak vyberte kartu **zřizování** .
 
-9. Nastavte **režim zřizování** na **automaticky**. 
+9. Nastavte **Režim zřizování** na hodnotu **Automaticky**. 
  
-    ![zřizování](./media/concur-provisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky s kartou zřizování pro Concur v Azure Portal. Režim zřizování je nastaven na automatické a zvýrazní se tlačítko Test připojení.](./media/concur-provisioning-tutorial/provisioning.png)
 
 10. V části **přihlašovací údaje správce** zadejte **uživatelské jméno** a **heslo** správce Concur.
 
@@ -108,7 +108,7 @@ Z následujících důvodů by se tato akce neměla provádět s profilem, kter�
 
 14. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé Concur.**
 
-15. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do Concur. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Concur pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+15. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do Concur. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Concur pro operace aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
 16. Pokud chcete povolit službu Azure AD Provisioning pro Concur, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 

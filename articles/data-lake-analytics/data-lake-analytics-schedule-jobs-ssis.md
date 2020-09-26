@@ -8,18 +8,18 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: ac747b87cf1a0f2d7c85d05975a31f953bfa5aae
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a5c7b9fb6a3431534d743f1ebd0b21f1da9fab7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132496"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318700"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Plánování úloh U-SQL pomocí služba SSIS (SQL Server Integration Services) (SSIS)
 
 V tomto dokumentu se dozvíte, jak orchestrovat a vytvářet úlohy U-SQL pomocí služby SQL Server Integration Service (SSIS). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [Azure Feature Pack pro integrační služby](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud) poskytuje [úlohu Azure Data Lake Analytics](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017) a [Správce připojení Azure Data Lake Analytics](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017) , který pomáhá připojit se ke službě Azure Data Lake Analytics. Chcete-li použít tuto úlohu, nezapomeňte nainstalovat:
 
@@ -56,7 +56,7 @@ Postupujte podle následujících kroků a nastavte připojení mezi úlohou Azu
 
 V zobrazení návrhu balíčku SSIS přidejte **úlohu systému souborů Azure Data Lake Store**, **kontejner smyčky foreach** a **úlohu Azure Data Lake Analytics** do kontejneru smyčky foreach. Úloha Azure Data Lake Store systému souborů pomáhá stahovat soubory U-SQL v účtu ADLS do dočasné složky. Kontejner smyčky foreach a úloha Azure Data Lake Analytics pomůžou odeslat každý soubor U-SQL pod dočasnou složkou do Azure Data Lake Analytics účtu jako úlohu U-SQL.
 
-![Použití souborů U-SQL v Azure Data Lake Store](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
+![Diagram, který ukazuje úkol systému souborů Azure Data Lake Store přidaný do kontejneru smyčky foreach.](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
 
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>Konfigurace úlohy systému souborů Azure Data Lake Store
 
@@ -77,7 +77,7 @@ V zobrazení návrhu balíčku SSIS přidejte **úlohu systému souborů Azure D
 
 3. Nastavte **soubory** v **konfiguraci enumerátoru** tak `*.usql` , aby kontejner smyčky zachytává pouze soubory končící na `.usql` .
 
-    ![Konfigurovat kontejner smyčky foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
+    ![Snímek obrazovky zobrazující Editor smyčky foreach s vybraným kolekcí a zvýrazněné konfigurační oddíly výčtu a čítače výčtu.](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
 4. Na stránce **mapování proměnných** přidejte uživatelsky definovanou proměnnou pro získání názvu souboru u každého souboru U-SQL. Pro získání názvu souboru nastavte **index** na 0. V tomto příkladu definujte proměnnou s názvem `User::FileName` . Tato proměnná se použije k dynamickému získání připojení souboru skriptu U-SQL a nastavení názvu úlohy U-SQL v Azure Data Lake Analytics úlohy.
 
@@ -94,7 +94,7 @@ V zobrazení návrhu balíčku SSIS přidejte **úlohu systému souborů Azure D
    1. Vyberte možnost **\<New Connection...>** v nastavení připojení \.
    2. Nastavte **typ využití** na **existující soubor**a nastavte **soubor** na cestu k souboru existujícímu souboru.
 
-       ![Konfigurovat kontejner smyčky foreach](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       ![Snímek obrazovky, který zobrazuje Editor Správce připojení souborů s vybraným "existujícím souborem", pro "typ využití".](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. V zobrazení **Správci připojení** klikněte pravým tlačítkem myši na vytvořené připojení k souboru a vyberte možnost **vlastnosti**.
 

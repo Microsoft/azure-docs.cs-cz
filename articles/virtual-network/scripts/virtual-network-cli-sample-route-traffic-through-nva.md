@@ -1,6 +1,6 @@
 ---
 title: Směrování provozu přes síťové virtuální zařízení – ukázkový skript Azure CLI
-description: Ukázkový skript Azure CLI – Směrování provozu přes síťové virtuální zařízení brány firewall
+description: Směrování provozu přes síťové virtuální zařízení brány firewall – ukázkový skript Azure CLI.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cc539800cb9cb75ecc69f0d7ae923ed3edfd2ad0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 964fda8168867c115502c7262dc1d41e55075866
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87492288"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317646"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance---azure-cli-script-sample"></a>Směrování provozu přes síťové virtuální zařízení – ukázkový skript Azure CLI
 

@@ -14,12 +14,12 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0306ae3193dc53f25a1e82eae1eb09c7d26ba9b6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 2a2c3c112183e102f6c3c4a0bebb83376c7e8d85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055448"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317533"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivace mých rolí Azure AD v PIM
 
@@ -40,11 +40,11 @@ Od listopadu 2019 se v části Privileged Identity Management role Azure AD aktu
 
 # <a name="new-version"></a>[Nová verze](#tab/new)
 
-## <a name="activate-a-role"></a>Aktivace role
+## <a name="activate-a-role-for-new-version"></a>Aktivovat roli pro novou verzi
 
 Pokud potřebujete převzít roli Azure AD, můžete požádat o aktivaci otevřením **Moje role** v Privileged Identity Management.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**. Informace o tom, jak přidat dlaždici Privileged Identity Management do řídicího panelu, najdete v tématu [Začínáme používat Privileged Identity Management](pim-getting-started.md).
 
@@ -80,7 +80,7 @@ Pokud potřebujete převzít roli Azure AD, můžete požádat o aktivaci otevř
 
     ![Žádost o aktivaci čeká na oznámení o schválení.](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
 
-## <a name="view-the-status-of-your-requests"></a>Zobrazení stavu vašich žádostí
+## <a name="view-the-status-of-your-requests-for-new-version"></a>Zobrazit stav vašich žádostí o novou verzi
 
 Stav vašich nevyřízených žádostí můžete zobrazit a aktivovat.
 
@@ -92,7 +92,7 @@ Stav vašich nevyřízených žádostí můžete zobrazit a aktivovat.
 
 1. Posunutím doprava zobrazíte sloupec **stav žádosti** .
 
-## <a name="cancel-a-pending-request"></a>Zrušení žádosti, která čeká na vyřízení
+## <a name="cancel-a-pending-request-for-new-version"></a>Zrušení žádosti o novou verzi, která čeká na vyřízení
 
 Pokud nepotřebujete aktivovat roli, která vyžaduje schválení, můžete žádost kdykoli zrušit.
 
@@ -106,7 +106,7 @@ Pokud nepotřebujete aktivovat roli, která vyžaduje schválení, můžete žá
 
    ![Seznam mých žádostí s zvýrazněnou akcí zrušit](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot-for-new-version"></a>Řešení potíží s novou verzí
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Po aktivaci role nedojde k udělení oprávnění
 
@@ -122,7 +122,7 @@ Když v Privileged Identity Management aktivujete roli, aktivace se nemusí okam
 
 Pokud potřebujete převzít roli Azure AD, můžete požádat o aktivaci pomocí možnosti navigace **Moje role** v Privileged Identity Management.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**. Informace o tom, jak přidat dlaždici Privileged Identity Management do řídicího panelu, najdete v tématu [Začínáme používat Privileged Identity Management](pim-getting-started.md).
 

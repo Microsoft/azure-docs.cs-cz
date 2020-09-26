@@ -3,12 +3,12 @@ title: Podpora migrace Hyper-V v Azure Migrate
 description: Přečtěte si o podpoře migrace Hyper-V s Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 4f3609560fa59c08c4d92f4faa36c7fbbffb95d7
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 0054b6983e7d11dd36a92f21cd1cb20314fb9408
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051147"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318224"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Matice podpory pro migraci technologie Hyper-V
 
@@ -38,12 +38,12 @@ Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud 
 | :----------------------------- | :------------------- |
 | **Operační systém** | Všechny operační systémy [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) a [Linux](../virtual-machines/linux/endorsed-distros.md) podporované Azure. |
 **Windows Server 2003** | Pro virtuální počítače s Windows serverem 2003 je nutné před migrací [nainstalovat integrační služby technologie Hyper-V](prepare-windows-server-2003-migration.md) . | 
-**Virtuální počítače se systémem Linux v Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné spouštět v Azure.<br/><br/> Pro Linux Azure Migrate provede změny automaticky pro tyto operační systémy:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> – CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> – Debian 7, 8. Pro jiné operační systémy provedete [požadované změny](prepare-for-migration.md#linux-machines) ručně.
+**Virtuální počítače se systémem Linux v Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné spouštět v Azure.<br/><br/> Pro Linux Azure Migrate provede změny automaticky pro tyto operační systémy:<br/> -Red Hat Enterprise Linux 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> – SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> – Debian 7, 8 <br/> Oracle Linux 7,7, 7,7-CI<br/> Pro jiné operační systémy provedete [požadované změny](prepare-for-migration.md#verify-required-changes-before-migrating) ručně.
 | **Požadované změny pro Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné spouštět v Azure. Před migrací proveďte úpravy ručně. Příslušné články obsahují pokyny k tomu, jak to provést. |
 | **Spouštění ze systému Linux**                 | Pokud je/Boot ve vyhrazeném oddílu, měl by být umístěn na disku s operačním systémem a nesmí být rozložen na více disků.<br/> Pokud je/Boot součástí kořenového oddílu (/), musí být oddíl '/' na disku s operačním systémem a nesmí zabírat jiné disky. |
-| **Spouštění UEFI**                  | Podporuje se. Ujistěte se, že jste vybrali velikost virtuálního počítače, kterou virtuální počítač Azure Generation 2 podporuje.  |
+| **Spouštění UEFI**                  | Podporuje se. Virtuální počítače založené na rozhraní UEFI se migrují na virtuální počítače Azure generace 2.  |
 | **Rozhraní UEFI – zabezpečené spouštění**         | Migrace se nepodporuje.|
-| **Velikost disku**                  | 2 TB pro disk s operačním systémem, 4 TB pro datové disky.|
+| **Velikost disku**                  | 2 TB pro disk s operačním systémem (spouštěcí počítač BIOS), 4 TB pro disk s operačním systémem (spouštění UEFI), 4 TB pro datové disky.|
 | **Číslo disku** | Maximálně 16 disků na virtuální počítač.|
 | **Šifrované disky/svazky**    | Migrace se nepodporuje.|
 | **RDM/průchozí disky**      | Migrace se nepodporuje.|
@@ -54,7 +54,7 @@ Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud 
 | **IPv6** | Nepodporováno|
 | **Seskupování síťových adaptérů** | Nepodporováno|
 | **Azure Site Recovery** | Pokud je virtuální počítač povolený pro replikaci pomocí Azure Site Recovery, nejde replikovat pomocí Azure Migrate migrace serveru.|
-| **Porty** | Odchozí připojení na portu HTTPS 443 pro odesílání dat replikace virtuálních počítačů.|
+| **Přístavu** | Odchozí připojení na portu HTTPS 443 pro odesílání dat replikace virtuálních počítačů.|
 
 ### <a name="url-access-public-cloud"></a>Přístup k adrese URL (veřejný cloud)
 

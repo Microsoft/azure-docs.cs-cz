@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 450d0675f81f161e68a207fbe0460c68fcafef29
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e3fce15cdeb1792749224299167b52fc2311d04e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526370"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318270"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Zřizování zařízení pomocí služby Azure IoT Hub Device Provisioning Service
 Microsoft Azure poskytuje bohatou sadu integrovaných veřejných cloudových služeb pro všechny potřeby vašeho řešení IoT. IoT Hub Device Provisioning Service (DPS) je pomocná služba pro IoT Hub, která umožňuje nulovému zřizování za běhu do správného služby IoT Hub bez nutnosti zásahu člověka. DPS umožňuje bezpečným a škálovatelným způsobem zřizovat miliony zařízení.
@@ -123,7 +123,9 @@ DPS automatizuje zřizování zařízení pomocí Azure IoT Hub. Přečtěte si 
 
 ## <a name="next-steps"></a>Další kroky
 Teď máte přehled o zřizování zařízení IoT v Azure. Dalším krokem je vyzkoušet si kompletní scénář IoT.
-> [!div class="nextstepaction"]
-> [Nastavení IoT Hub Device Provisioning Service s Azure Portal](quick-setup-auto-provision.md) 
->  [Vytvoření a zřízení simulovaného zařízení](quick-create-simulated-device.md) 
->  [Nastavení zařízení pro zřizování](tutorial-set-up-device.md)
+
+[Nastavení IoT Hub Device Provisioning Service s Azure Portal](quick-setup-auto-provision.md)
+
+[Vytvoření a zřízení simulovaného zařízení](quick-create-simulated-device.md)
+
+[Nastavení zařízení pro zřizování](tutorial-set-up-device.md)

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e105d4909705622a931c51bcb7cf0a9db4179525
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 58b4bbcac110398ee4ff132b76ce8c4868ee17f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279597"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317587"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Naplnění Azure AD UserPrincipalName
 
@@ -54,7 +54,7 @@ Alternativní ID přihlášení vám umožní nakonfigurovat přihlašovací pro
 
 Pokud chcete povolit alternativní přihlašovací ID k Azure AD, při použití Azure AD Connect se nevyžadují žádné další kroky konfigurace. Alternativní ID lze nakonfigurovat přímo z průvodce. Viz Konfigurace přihlášení ke službě Azure AD pro vaše uživatele v části synchronizace. V rozevíracím seznamu **hlavní název uživatele** vyberte atribut pro alternativní ID přihlášení.
 
-![Neověřené domény](./media/plan-connect-userprincipalname/altloginid.png)  
+![Snímek obrazovky, který zvýrazní seznam hlavních názvů uživatelů, kde můžete vybrat alternativní atribut ID přihlášení.](./media/plan-connect-userprincipalname/altloginid.png)  
 
 Další informace najdete v tématu [Konfigurace alternativního přihlašovacího ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) a [Konfigurace přihlášení ke službě Azure AD](how-to-connect-install-custom.md#azure-ad-sign-in-configuration) .
 

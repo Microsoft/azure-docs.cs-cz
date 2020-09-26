@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: aa11cd9dedc2446b3952378e53b1f7248abbfa47
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3c2fba1cba2c06e07b262e37eac651afb5c102cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526206"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317497"
 ---
 # <a name="tutorial-configure-workteam--for-automatic-user-provisioning"></a>Kurz: Konfigurace Workteam pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je předvést kroky, které je třeba provést v Workteam a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů nebo skupin pro Workteam.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
@@ -54,15 +54,15 @@ Před konfigurací Workteam pro Automatické zřizování uživatelů pomocí Az
 
 1. Přihlaste se k [Workteam](https://app.workte.am/account/signin). Klikněte na nastavení **organizace**  >  **Nastavení**.
 
-    ![Workteam](media/workteam-provisioning-tutorial/settings.png)
+    ![Snímek obrazovky Workteam U I s možnostmi nastavení organizace a nastavení s názvem.](media/workteam-provisioning-tutorial/settings.png)
 
 2. Přejděte na konec a povolte možnosti zřizování Workteam.
 
-    ![Workteam](media/workteam-provisioning-tutorial/icon.png)
+    ![Snímek obrazovky dolní části oddílu nastavení s ikonou zřizování uživatelů S C I M, která se vyvolala](media/workteam-provisioning-tutorial/icon.png)
 
 3. Zkopírujte **základní adresu URL** a **nosný token**. Tyto hodnoty se zadají do pole **Adresa URL klienta**a **tajný token** na kartě zřizování vaší aplikace Workteam ve Azure Portal.
 
-    ![Workteam](media/workteam-provisioning-tutorial/scim.png)
+    ![Snímek obrazovky S dialogovým oknem nastavení S C I M se ZÁKLADNÍmi textovými poli TOKENu pro R L a NOSIČem](media/workteam-provisioning-tutorial/scim.png)
 
 
 ## <a name="add-workteam--from-the-gallery"></a>Přidání Workteam z Galerie
@@ -96,21 +96,21 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-workteam--in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Workteam ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Workteam**.
 
     ![Odkaz Workteam v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
-    ![Karta zřizování](common/provisioning.png)
+    ![Snímek obrazovky s možnostmi správy pomocí možnosti zřizování s názvem.](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Karta zřizování](common/provisioning-automatic.png)
+    ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
 5. V části přihlašovací údaje správce zadejte **základní adresu URL** a hodnoty **nosných tokenů** NAČTENÉ dříve v **adrese URL tenanta** a **tajného tokenu** v uvedeném pořadí. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Workteam. Pokud se připojení nepovede, ujistěte se, že má váš účet Workteam oprávnění správce, a zkuste to znovu.
 
@@ -118,7 +118,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
-    ![E-mail s oznámením](common/provisioning-notification-email.png)
+    ![Oznamovací e-mail](common/provisioning-notification-email.png)
 
 7. Klikněte na **Uložit**.
 
@@ -130,19 +130,19 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Atributy uživatele Workteam](media/workteam-provisioning-tutorial/userattribute.png)
 
-11. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+11. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 12. Pokud chcete povolit službu Azure AD Provisioning pro Workteam, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+    ![Zapnutý přepínač Stav zřizování](common/provisioning-toggle-on.png)
 
 13. Definujte uživatele nebo skupiny, které chcete zřídit pro Workteam, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-14. Až budete připraveni zřídit, klikněte na **Uložit**.
+14. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
-    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než následné synchronizace. Další informace o tom, jak dlouho bude trvat pro uživatele a/nebo skupiny, najdete v článku [Jak dlouho bude trvat, než budou uživatelé zřizovat](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 
@@ -155,4 +155,4 @@ Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat p
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).

@@ -2,7 +2,7 @@
 title: Dynamické balení v Azure Media Services V3
 titleSuffix: Azure Media Services
 description: Tento článek obsahuje přehled dynamického balení v Azure Media Services.
-author: IngridAtMicrosoft
+author: myoungerman
 manager: femila
 editor: ''
 services: media-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: dfa87921bc6a5a6c34b4dec33f4aae1907507730
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.author: v-myoung
+ms.openlocfilehash: 3607ecb7d1ef01b968b67c704e12136cc1888b69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291615"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296225"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
@@ -27,7 +27,7 @@ ms.locfileid: "89291615"
 
 Microsoft Azure Media Services lze použít ke kódování mnoha mediálních formátů souborů. Dodává je prostřednictvím různých protokolů streamování s ochranou obsahu nebo bez nich, aby se dosáhlo všech hlavních zařízení (jako jsou zařízení s iOS a Androidem). Tito klienti rozumí různým protokolům. Například iOS vyžaduje doručení datových proudů ve formátu HTTP Live Streaming (HLS) a zařízení s Androidem podporují HLS a také formát MPEG POMLČKy.
 
-V Media Services představuje [koncový bod streamování](streaming-endpoint-concept.md) (Origin) dynamické (za běhu) balení a službu origining, která může doručovat obsah živě a na vyžádání přímo do aplikace klienta v přehrávači. Používá jeden z běžných protokolů multimediálních datových proudů uvedených v následující části. *Dynamické balení* je funkce, která nabízí standard pro všechny koncové body streamování (Standard nebo Premium).
+V Media Services představuje [koncový bod streamování](streaming-endpoint-concept.md) (Origin) dynamické (za běhu) balení a službu origining, která může doručovat obsah živě a na vyžádání přímo do aplikace klienta v přehrávači. Používá jeden z běžných protokolů multimediálních datových proudů uvedených v následující části. *Dynamické balení* je funkce, která nabízí standard pro všechny koncové body streamování.
 
 > [!NOTE]
 > Pomocí [Azure Portal](https://portal.azure.com/) můžete spravovat V3 [Live události](live-events-outputs-concept.md), zobrazit [prostředky](assets-concept.md)v3 a získat informace o přístupu k rozhraním API. Pro všechny ostatní úlohy správy (například transformace a úlohy) použijte [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
@@ -132,7 +132,7 @@ Informace o živém streamování v Media Services V3 najdete v tématu [Přehle
 Dynamické balení podporuje videosoubory, které jsou ve formátu souboru kontejneru MP4, a obsahuje video, které je kódované pomocí [h. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC nebo AVC1) nebo [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 nebo hvc1).
 
 > [!NOTE]
-> Rozlišení až 4K a snímkových frekvencí až 60 snímků za sekundu byly testovány s *dynamickým balením*. [Kodér úrovně Premium](../previous/media-services-encode-asset.md#media-encoder-premium-workflow) podporuje kódování do H. 265 prostřednictvím starších rozhraní API v2.
+> Rozlišení až 4K a snímkových frekvencí až 60 snímků za sekundu byly testovány s *dynamickým balením*.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Zvukové kodeky podporované dynamickým balením
 

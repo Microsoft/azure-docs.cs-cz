@@ -1,5 +1,5 @@
 ---
-title: Nahrajte inventář prostředků, data o využití, metriky a protokoly a Azure Monitor
+title: Nahrajte data o využití, metriky a protokoly do Azure Monitor
 description: Nahrajte inventář prostředků, data o využití, metriky a protokoly a Azure Monitor
 services: azure-arc
 ms.service: azure-arc
@@ -9,25 +9,59 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ac6ffd2b5bf48079db6a0cd261dbe2535e1821ac
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7c8e92604cc6188d17411a266f8b27db55c8fbad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936039"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317272"
 ---
-# <a name="upload-resource-inventory-usage-data-metrics-and-logs-to-azure-monitor"></a>Nahrajte inventář prostředků, data o využití, metriky a protokoly a Azure Monitor
+# <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Nahrajte data o využití, metriky a protokoly do Azure Monitor
 
-S datovými službami ARC v Azure můžete *volitelně* nahrát metriky a protokoly, které Azure monitor, takže můžete agregovat a analyzovat metriky, protokoly, vyvolat výstrahy, odesílat oznámení nebo aktivovat automatizované akce. Odesílání dat do Azure Monitor umožňuje také ukládat data monitorování a protokolů mimo lokalitu a ve velkém měřítku, což umožňuje dlouhodobé uložení dat pro pokročilou analýzu.  Pokud máte více lokalit, které mají datové služby Azure ARC, můžete použít Azure Monitor jako centrální umístění ke shromáždění všech protokolů a metrik napříč vašimi lokalitami.
+Monitorování je jednou z mnoha integrovaných možností, které s ním přináší datové služby s podporou ARC Azure. 
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+## <a name="upload-usage-data"></a>Odeslat data o využití
 
-## <a name="before-you-begin"></a>Než začnete
+Informace o využití, jako jsou inventarizace a využití prostředků, se dají do Azure nahrát v následujícím dvoufázovém postupu:
+
+1. Pomocí příkazu exportujte data o využití následujícím ```azdata export``` způsobem:
+
+   ```console
+   #login to the data controller and enter the values at the prompt
+   azdata login
+
+   #run the export command
+   azdata arc dc export --type usage --path usage.json
+   ```
+   Tento příkaz vytvoří `usage.json` soubor se všemi datovými zdroji s povoleným obloukem Azure, jako jsou spravované instance SQL, PostgreSQL instancemi s ochranou velkého rozsahu atd., které se vytvářejí na řadiči dat.
+
+2. Nahrání dat o využití pomocí ```azdata upload``` příkazu
+
+   > [!NOTE]
+   > Před spuštěním nahrávání prosím počkejte aspoň 24 hodin po vytvoření řadiče dat ARC Azure.
+
+   ```console
+   #login to the data controller and enter the values at the prompt
+   azdata login
+
+   #run the upload command
+   azdata arc dc upload --path usage.json
+   ```
+
+## <a name="upload-metrics-and-logs"></a>Odeslání metrik a protokolů
+
+Pomocí služby Azure ARC Data Services můžete volitelně nahrát metriky a protokoly, abyste mohli Azure Monitor agregovat a analyzovat metriky, protokoly, vyvolat upozornění, odesílat oznámení nebo aktivovat automatizované akce. 
+
+Odesílání dat do Azure Monitor umožňuje také ukládat data monitorování a protokolů mimo lokalitu a ve velkém měřítku, což umožňuje dlouhodobé uložení dat pro pokročilou analýzu.
+
+Pokud máte více lokalit, které mají datové služby Azure ARC, můžete použít Azure Monitor jako centrální umístění ke shromáždění všech protokolů a metrik napříč vašimi lokalitami.
+
+### <a name="before-you-begin"></a>Než začnete
 
 Pro povolení scénářů nahrávání protokolů a metrik je potřeba pár časových kroků pro instalaci:
 
-1) Vytvořte instanční objekt/Azure Active Directory aplikaci, včetně vytvoření tajného klíče klienta, a přiřaďte tento instanční objekt k roli "monitorovat metriky" v předplatných, kde se nachází vaše prostředky instance databáze.
-2) Vytvořte pracovní prostor Log Analytics a získejte klíče a nastavte informace v proměnných prostředí.
+1. Vytvořte instanční objekt/Azure Active Directory aplikaci, včetně vytvoření tajného klíče klienta, a přiřaďte tento instanční objekt k roli "monitorovat metriky" v předplatných, kde se nachází vaše prostředky instance databáze.
+2. Vytvořte pracovní prostor Log Analytics a získejte klíče a nastavte informace v proměnných prostředí.
 
 K odeslání metrik se vyžaduje první položka a druhá z nich se vyžaduje k nahrání protokolů.
 
@@ -51,7 +85,7 @@ az ad sp create-for-rbac --name <a name you choose>
 
 Příklad výstupu:
 
-```console
+```output
 "appId": "2e72adbf-de57-4c25-b90d-2f73f126e123",
 "displayName": "azure-arc-metrics",
 "name": "http://azure-arc-metrics",
@@ -59,36 +93,47 @@ Příklad výstupu:
 "tenant": "72f988bf-85f1-41af-91ab-2d7cd01ad1234"
 ```
 
-Uložte hodnoty appId a tenant do proměnné prostředí pro pozdější použití:
+Uložte hodnoty appId a tenant do proměnné prostředí pro pozdější použití. 
 
-```console
-#PowerShell
+Pokud chcete uložit hodnoty appId a tenant pomocí PowerShellu, postupujte podle tohoto příkladu:
 
+```powershell
 $Env:SPN_CLIENT_ID='<the 'appId' value from the output of the 'az ad sp create-for-rbac' command above>'
 $Env:SPN_CLIENT_SECRET='<the 'password' value from the output of the 'az ad sp create-for-rbac' command above>'
 $Env:SPN_TENANT_ID='<the 'tenant' value from the output of the 'az ad sp create-for-rbac' command above>'
-
-#Linux/macOS
-
-export SPN_CLIENT_ID='<the 'appId' value from the output of the 'az ad sp create-for-rbac' command above>'
-export SPN_CLIENT_SECRET='<the 'password' value from the output of the 'az ad sp create-for-rbac' command above>'
-export SPN_TENANT_ID='<the 'tenant' value from the output of the 'az ad sp create-for-rbac' command above>'
-
-#Example (using Linux):
-export SPN_CLIENT_ID='2e72adbf-de57-4c25-b90d-2f73f126e123'
-export SPN_CLIENT_SECRET='5039d676-23f9-416c-9534-3bd6afc78123'
-export SPN_TENANT_ID='72f988bf-85f1-41af-91ab-2d7cd01ad1234'
 ```
+
+Případně můžete v systému Linux nebo macOS uložit hodnoty appId a tenant pomocí tohoto příkladu:
+
+   ```console
+   export SPN_CLIENT_ID='<the 'appId' value from the output of the 'az ad sp create-for-rbac' command above>'
+   export SPN_CLIENT_SECRET='<the 'password' value from the output of the 'az ad sp create-for-rbac' command above>'
+   export SPN_TENANT_ID='<the 'tenant' value from the output of the 'az ad sp create-for-rbac' command above>'
+
+   #Example (using Linux):
+   export SPN_CLIENT_ID='2e72adbf-de57-4c25-b90d-2f73f126e123'
+   export SPN_CLIENT_SECRET='5039d676-23f9-416c-9534-3bd6afc78123'
+   export SPN_TENANT_ID='72f988bf-85f1-41af-91ab-2d7cd01ad1234'
+   ```
 
 Spuštěním tohoto příkazu přiřaďte instanční objekt k roli monitorování metrik sledování v předplatném, kde jsou umístěné prostředky vaší instance databáze:
 
+
+> [!NOTE]
+> Při spuštění z prostředí systému Windows je třeba použít pro názvy rolí dvojité uvozovky.
+
+
 ```console
-az role assignment create --assignee <appId value from output above> --role 'Monitoring Metrics Publisher' --scope subscriptions/<sub ID>
+az role assignment create --assignee <appId value from output above> --role "Monitoring Metrics Publisher" --scope subscriptions/<sub ID>
 az role assignment create --assignee <appId value from output above> --role 'Contributor' --scope subscriptions/<sub ID>
 
 #Example:
-#az role assignment create --assignee 2e72adbf-de57-4c25-b90d-2f73f126ede5 --role 'Monitoring Metrics Publisher' --scope subscriptions/182c901a-129a-4f5d-56e4-cc6b29459123
+#az role assignment create --assignee 2e72adbf-de57-4c25-b90d-2f73f126ede5 --role "Monitoring Metrics Publisher" --scope subscriptions/182c901a-129a-4f5d-56e4-cc6b29459123
 #az role assignment create --assignee 2e72adbf-de57-4c25-b90d-2f73f126ede5 --role 'Contributor' --scope subscriptions/182c901a-129a-4f5d-56e4-cc6b29459123
+
+#On Windows environment
+#az role assignment create --assignee 2e72adbf-de57-4c25-b90d-2f73f126ede5 --role "Monitoring Metrics Publisher" --scope subscriptions/182c901a-129a-4f5d-56e4-cc6b29459123
+#az role assignment create --assignee 2e72adbf-de57-4c25-b90d-2f73f126ede5 --role "Contributor" --scope subscriptions/182c901a-129a-4f5d-56e4-cc6b29459123
 ```
 
 Příklad výstupu:
@@ -96,12 +141,12 @@ Příklad výstupu:
 ```console
 {
   "canDelegate": null,
-  "id": "/subscriptions/182c901a-129a-4f5d-86e4-cc6b29459123/providers/Microsoft.Authorization/roleAssignments/f82b7dc6-17bd-4e78-93a1-3fb733b912d",
+  "id": "/subscriptions/<Subscription ID>/providers/Microsoft.Authorization/roleAssignments/f82b7dc6-17bd-4e78-93a1-3fb733b912d",
   "name": "f82b7dc6-17bd-4e78-93a1-3fb733b9d123",
   "principalId": "5901025f-0353-4e33-aeb1-d814dbc5d123",
   "principalType": "ServicePrincipal",
-  "roleDefinitionId": "/subscriptions/182c901a-129a-4f5d-86e4-cc6b29459123/providers/Microsoft.Authorization/roleDefinitions/3913510d-42f4-4e42-8a64-420c39005123",
-  "scope": "/subscriptions/182c901a-129a-4f5d-86e4-cc6b29459123",
+  "roleDefinitionId": "/subscriptions/<Subscription ID>/providers/Microsoft.Authorization/roleDefinitions/3913510d-42f4-4e42-8a64-420c39005123",
+  "scope": "/subscriptions/<Subscription ID>",
   "type": "Microsoft.Authorization/roleAssignments"
 }
 ```
@@ -114,19 +159,19 @@ Potom spuštěním těchto příkazů vytvořte pracovní prostor Log Analytics 
 > Tento krok přeskočte, pokud již máte pracovní prostor.
 
 ```console
-az monitor log-analytics workspace create --resource-group <resource group name> --name <some name you choose>
+az monitor log-analytics workspace create --resource-group <resource group name> --workspace-name <some name you choose>
 
 #Example:
-#az monitor log-analytics workspace create --resource-group MyResourceGroup --name MyLogsWorkpace
+#az monitor log-analytics workspace create --resource-group MyResourceGroup --workspace-name MyLogsWorkpace
 ```
 
 Příklad výstupu:
 
-```console
+```output
 {
   "customerId": "d6abb435-2626-4df1-b887-445fe44a4123",
   "eTag": null,
-  "id": "/subscriptions/182c901a-129a-4f5d-86e4-cc6b29459123/resourcegroups/user-arc-demo/providers/microsoft.operationalinsights/workspaces/user-logworkspace",
+  "id": "/subscriptions/<Subscription ID>/resourcegroups/user-arc-demo/providers/microsoft.operationalinsights/workspaces/user-logworkspace",
   "location": "eastus",
   "name": "user-logworkspace",
   "portalUrl": null,
@@ -162,7 +207,7 @@ export WORKSPACE_ID='<the customerId from the 'log-analytics workspace create' c
 Tento příkaz vytiskne přístupové klíče vyžadované pro připojení k pracovnímu prostoru Log Analytics:
 
 ```console
-az monitor log-analytics workspace get-shared-keys --resource-group MyResourceGroup --name MyLogsWorkpace
+az monitor log-analytics workspace get-shared-keys --resource-group MyResourceGroup --workspace-name MyLogsWorkpace
 ```
 
 Příklad výstupu:
@@ -222,25 +267,61 @@ echo $SPN_AUTHORITY
 
 ## <a name="upload-metrics-to-azure-monitor"></a>Nahrát metriky do Azure Monitor
 
-Pokud chcete nahrát metriky pro vaše spravované instance Azure SQL a Azure Database for PostgreSQL spouštět skupiny serverů s vlastním škálováním, použijte následující příkazy rozhraní příkazového řádku:
+Pokud chcete nahrát metriky pro spravované instance Azure s podporou ARC a Azure ARC s povoleným PostgreSQL, spusťte následující příkazy rozhraní příkazového řádku:
 
-Tento příkaz exportuje všechny metriky do zadaného souboru:
+1. Exportovat všechny metriky do zadaného souboru:
+
+   ```console
+   #login to the data controller and enter the values at the prompt
+   azdata login
+
+   #export the metrics
+   azdata arc dc export --type metrics --path metrics.json
+   ```
+
+2. Nahrajte metriky do Azure monitoru:
+
+   ```console
+   #login to the data controller and enter the values at the prompt
+   azdata login
+
+   #upload the metrics
+   azdata arc dc upload --path metrics.json
+   ```
+
+   >[!NOTE]
+   >Počkejte aspoň 30 minut, než se vytvoří instance dat s povoleným obloukem Azure ARC pro první nahrání.
+   >
+   >Ujistěte `upload` se, že metriky hned po `export` Azure monitor akceptují jenom metriky za posledních 30 minut. [Další informace](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)
+
+
+Pokud se při exportu zobrazí nějaké chyby znamenající "selhání získání metrik", zkontrolujte, jestli je shromažďování dat nastavené ```true``` spuštěním tohoto příkazu:
 
 ```console
-azdata arc dc export -t metrics --path metrics.json
+azdata arc dc config show
 ```
 
-Tímto příkazem se nahrají metriky do služby Azure Monitor:
+a podívejte se na oddíl zabezpečení.
 
-```console
-azdata arc dc upload --path metrics.json
+```output
+ "security": {
+      "allowDumps": true,
+      "allowNodeMetricsCollection": true,
+      "allowPodMetricsCollection": true,
+      "allowRunAsRoot": false
+    },
 ```
+
+Ověřte, zda `allowNodeMetricsCollection` `allowPodMetricsCollection` jsou vlastnosti a nastaveny na hodnotu `true` .
 
 ## <a name="view-the-metrics-in-the-portal"></a>Zobrazení metrik na portálu
 
-Po nahrání metrik byste je měli být schopni vizualizovat na webu Azure Portal.
+Jakmile budou vaše metriky nahrány, můžete je zobrazit z Azure Portal.
+> [!NOTE]
+> Všimněte si, že může trvat několik minut, než se nahraná data zpracují, než budete moct zobrazit metriky na portálu.
 
-Pokud chcete metriky zobrazit na portálu, pomocí tohoto speciálního odkazu otevřete portál: pak na <https://portal.azure.com> panelu hledání vyhledejte instanci databáze podle názvu:
+
+Pokud chcete metriky zobrazit na portálu, pomocí tohoto odkazu otevřete portál: <https://portal.azure.com> pak na panelu hledání vyhledejte instanci databáze podle názvu:
 
 Využití CPU můžete zobrazit na stránce Přehled, nebo pokud chcete podrobnější metriky, můžete v levém navigačním panelu kliknout na metriky.
 
@@ -255,19 +336,27 @@ Změňte četnost na posledních 30 minut:
 
 ## <a name="upload-logs-to-azure-monitor"></a>Nahrání protokolů do služby Azure Monitor
 
- Pokud chcete nahrát protokoly pro spravované instance Azure SQL a Azure Database for PostgreSQL skupiny serverů s vlastním škálováním, spusťte následující příkazy rozhraní příkazového řádku (CLI).
+ Pokud chcete nahrát protokoly pro spravované instance SQL ARC a AzureArc povolené PostgreSQL skupiny serverů s vlastním škálováním, spusťte následující příkazy rozhraní příkazového řádku (CLI).
 
-Tento příkaz exportuje všechny protokoly do zadaného souboru:
+1. Exportovat všechny protokoly do zadaného souboru:
 
-```console
-azdata arc dc export -t logs --path logs.json
-```
+   ```console
+   #login to the data controller and enter the values at the prompt
+   azdata login
 
-Tato akce nahraje protokoly do pracovního prostoru Log Analytics v Azure monitor:
+   #export the logs
+   azdata arc dc export --type logs --path logs.json
+   ```
 
-```console
-azdata arc dc upload --path logs.json
-```
+2. Nahrajte protokoly do pracovního prostoru Log Analytics v Azure monitor:
+
+   ```console
+   #login to the data controller and enter the values at the prompt
+   azdata login
+
+   #Upload the logs
+   azdata arc dc upload --path logs.json
+   ```
 
 ## <a name="view-your-logs-in-azure-portal"></a>Zobrazení protokolů v Azure Portal
 
@@ -276,18 +365,18 @@ Po nahrání protokolů byste je měli být schopni dotazovat pomocí Průzkumn�
 1. Otevřete Azure Portal a potom v horním panelu hledání vyhledejte svůj pracovní prostor podle jména a pak ho vyberte.
 2. Na levém panelu klikněte na Protokoly.
 3. Kliknutím na Začínáme (nebo kliknutím na odkazy na stránce Začínáme se dozvíte další informace o Log Analytics, pokud s ním ještě nezačínáte.)
-4. V tomto kurzu se dozvíte víc o Log Analytics, pokud je to váš první čas.
+4. V tomto kurzu se dozvíte více o Log Analytics, pokud používáte poprvé Log Analytics
 5. V dolní části seznamu tabulek rozbalte Vlastní protokoly a zobrazí se tabulka sql_instance_logs_CL.
 6. Klikněte na ikonu oka vedle názvu tabulky.
 7. Klikněte na tlačítko Zobrazit v editoru dotazů.
-8. Editor dotazů teď bude obsahovat dotaz, který zobrazí 10 nejnovějších událostí v protokolu.
+8. Teď budete mít dotaz v editoru dotazů, ve kterém se zobrazí nejnovější 10 událostí v protokolu.
 9. Tady můžete experimentovat s dotazováním protokolů pomocí editoru dotazů, nastavit upozornění atd.
 
-## <a name="automating-metrics-and-logs-uploads-optional"></a>Automatizace metrik a protokolů – nahrávání (volitelné)
+## <a name="automating-uploads-optional"></a>Automatizace nahrávání (volitelné)
 
-Pokud chcete průběžně nahrávat metriky a protokoly, můžete vytvořit skript a spustit ho v časovači každých pár minut.  Níže je příklad automatizace nahrávání pomocí skriptu prostředí systému Linux.
+Pokud chcete nahrávat metriky a protokoly na základě plánu, můžete vytvořit skript a spustit ho v časovači každých pár minut. Níže je příklad automatizace nahrávání pomocí skriptu prostředí systému Linux.
 
-V oblíbeném editoru textu nebo kódu přidejte do souboru obsah skriptu a uložte ho jako spustitelný soubor skriptu, jako je například. sh (Linux/Mac) nebo. cmd,. bat,. ps1.
+V oblíbeném editoru textu nebo kódu přidejte do souboru následující skript a uložte ho jako spustitelný soubor skriptu, jako je například. sh (Linux/Mac) nebo. cmd,. bat,. ps1.
 
 ```console
 azdata arc dc export --type metrics --path metrics.json --force
@@ -300,10 +389,24 @@ Nastavit soubor skriptu jako spustitelný
 chmod +x myuploadscript.sh
 ```
 
-Spusťte skript každé 2 minuty:
+Spusťte skript každých 20 minut:
 
 ```console
-watch -n 120 ./myuploadscript.sh
+watch -n 1200 ./myuploadscript.sh
 ```
 
 Můžete také použít Plánovač úloh, jako je cron nebo Windows Plánovač úloh nebo Orchestrator, jako je Ansible, Puppet nebo.
+
+## <a name="general-guidance-on-exporting-and-uploading-usage-metrics"></a>Obecné pokyny pro export a nahrávání využití, metriky
+
+Operace vytvoření, čtení, aktualizace a odstranění (CRUD) na datových službách s podporou ARC Azure jsou protokolovány pro účely fakturace a monitorování. K dispozici jsou služby na pozadí, které sledují tyto operace CRUD a patřičně vypočítávají spotřebu. Skutečný výpočet využití nebo spotřeby probíhá na plánovaném základu a provede se na pozadí. 
+
+Během období Preview se tento proces děje v noci. Obecně platí, že je možné nahrávat použití jenom jednou za den. Pokud se informace o použití exportují a nahrají víckrát během jednoho období 24 hodin, aktualizuje se v Azure Portal jenom inventář prostředků, ale ne využití prostředků.
+
+V případě nahrávání metrik akceptuje Azure monitor jenom posledních 30 minut dat ([Další informace](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)). Pokyny pro nahrávání metrik je odeslání metrik ihned po vytvoření souboru exportu, takže můžete zobrazit celou sadu dat v Azure Portal. Pokud jste například exportovali metriky na 2:00 PM a spustili jste příkaz pro nahrání na 2:50 odp. Vzhledem k tomu, že Azure Monitor akceptuje jenom data za posledních 30 minut, na portálu se nemusí zobrazovat žádná data. 
+
+## <a name="next-steps"></a>Další kroky
+
+[Nahrání fakturačních dat do Azure a jejich zobrazení v Azure Portal](view-billing-data-in-azure.md)
+
+[Zobrazit prostředek datového kontroleru Azure ARC v Azure Portal](view-data-controller-in-azure-portal.md)

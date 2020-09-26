@@ -2,13 +2,13 @@
 title: Přehled Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje Azure Monitor pro kontejnery, které monitorují řešení AKS Container Insights a hodnotu, kterou zajišťuje, pomocí monitorování stavu clusterů AKS a Container Instances v Azure.
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: 85adae1b79609f13be6bb73eb4e57000beda6d77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/08/2020
+ms.openlocfilehash: 215427adc38ebd554ca7ac650ec65a05f5a781e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320268"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317153"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Přehled služby Azure Monitor pro kontejnery
 
@@ -17,11 +17,11 @@ Azure Monitor for Containers je funkce navržená tak, aby sledovala výkon úlo
 - Managed Kubernetes clusterů hostovaných ve [službě Azure Kubernetes (AKS)](../../aks/intro-kubernetes.md)
 - Samostatné spravované clustery Kubernetes hostované v Azure pomocí [stroje AKS](https://github.com/Azure/aks-engine)
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
-- Samostatné spravované clustery Kubernetes hostované na [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) nebo místně
+- Samostatné spravované clustery Kubernetes hostované na [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910&preserve-view=true) nebo místně
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 - [Kubernetes s povoleným ARC Azure](../../azure-arc/kubernetes/overview.md) (Preview)
 
-Azure Monitor for Containers podporuje clustery s operačním systémem Linux a Windows Server 2019.
+Azure Monitor for Containers podporuje clustery s operačním systémem Linux a Windows Server 2019. Moduly runtime kontejnerů, které podporuje, jsou Docker, Moby a jakýkoli CRI kompatibilní modul runtime, jako je například CRI-O a kontejner.
 
 Monitorování vašich kontejnerů je důležité, zejména pokud používáte produkční cluster ve velkém měřítku s více aplikacemi.
 
@@ -40,7 +40,7 @@ Azure Monitor for Containers poskytuje komplexní monitorování s využitím r�
 * Pochopení chování clusteru v rámci průměrného a nejtěžšího zatížení. Tato znalostní báze vám pomůže identifikovat požadavky na kapacitu a určit maximální zatížení, které může cluster tolerovat.
 * Nakonfigurujte výstrahy tak, aby vás proaktivně upozornily nebo zaznamenaly, když využití procesoru a paměti na uzlech nebo kontejnerech překračuje vaše prahové hodnoty nebo když dojde ke změně stavu v clusteru v souhrnu stavu infrastruktury nebo uzlů.
 * Integrací s [Prometheus](https://prometheus.io/docs/introduction/overview/) můžete zobrazit metriky aplikací a úloh, které shromažďuje z uzlů a Kubernetes pomocí [dotazů](container-insights-log-search.md) pro vytváření vlastních výstrah, řídicích panelů a podrobných podrobných analýz.
-* Monitorujte úlohy kontejneru [nasazené do](https://github.com/Azure/aks-engine) místního a AKSového stroje AKS engine [na Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
+* Monitorujte úlohy kontejneru [nasazené do](https://github.com/Azure/aks-engine) místního a AKSového stroje AKS engine [na Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true).
 * Monitorujte úlohy kontejneru [nasazené do Azure Red Hat OpenShift](../../openshift/intro-openshift.md).
 
     >[!NOTE]

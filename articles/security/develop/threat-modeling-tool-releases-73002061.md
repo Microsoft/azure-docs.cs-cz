@@ -1,17 +1,17 @@
 ---
 title: Microsoft Threat Modeling Tool verze 02/11/2020 – Azure
-description: Dokumentující poznámky k verzi pro nástroj pro modelování hrozeb
+description: Dokumentace k verzi nástroje pro modelování hrozeb verze 7.3.00206.1.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: da4e61d6c89e62c3598570b30ce749390915ca1b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fa89ffcfd37629f95fbf281a6a703a173acd5d48
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259326"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317918"
 ---
 # <a name="threat-modeling-tool-update-release-73002061---02112020"></a>Threat Modeling Tool vydání aktualizace 7.3.00206.1-02/11/2020
 
