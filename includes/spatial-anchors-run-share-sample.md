@@ -4,17 +4,19 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 8/27/2020
 ms.author: rgarcia
-ms.openlocfilehash: 8e3f58a5a88495263396c4e915a6363ad065c202
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: efd5ff494620d4fab3fb904d9bcf054b57a3290b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89570063"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358752"
 ---
 ## <a name="android"></a>[Android](#tab/Android)
 
 Ukázka Java Android podporuje sdílení přes zařízení.
 Otevřete soubor `SharedActivity.java` ze složky Samples v Android Studio. Zadejte adresu URL, kterou jste získali v předchozím kroku (z nasazení Azure Web App ASP.NET) jako hodnotu `SharingAnchorsServiceUrl` v `SharedActivity.java` souboru. Nahraďte `index.html` adresu v adrese URL `api/anchors` . Mělo by to vypadat takto: `https://<app_name>.azurewebsites.net/api/anchors` .
+
+[!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
@@ -23,12 +25,16 @@ Otevřete soubor `SharedActivity.java` ze složky Samples v Android Studio. Zade
 Ukázka "cíl-C iOS" podporuje sdílení přes zařízení.
 Otevřete soubor `SharedDemoViewController.m` ve složce Samples. Zadejte adresu URL, kterou jste získali v předchozím kroku (z nasazení Azure Web App ASP.NET) jako hodnotu `SharingAnchorsServiceUrl` v `SharedDemoViewController.m` souboru. Nahraďte `index.html` adresu v adrese URL `api/anchors` . Mělo by to vypadat takto: `https://<app_name>.azurewebsites.net/api/anchors` .
 
+Nasaďte aplikaci do svého zařízení. Po spuštění aplikace vyberte možnost **spustit sdílenou ukázku klepnutím na tlačítko** . Postupujte podle pokynů v aplikaci. Můžete vybrat **klepnutím pro vyhledání kotvy číslem kotvy** nebo **klepnutím vytvořit kotvu a uložit ji do služby**.
+
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ## <a name="xamarin"></a>[Xamarin](#tab/Xamarin)
 
 Ukázky pro Xamarin Android i iOS podporují sdílení přes zařízení.
 Otevřete soubor `AccountDetails.cs` ve složce Samples. Zadejte adresu URL, kterou jste získali v předchozím kroku (z nasazení Azure Web App ASP.NET) jako hodnotu `AnchorSharingServiceUrl` v `AccountDetails.cs` souboru. Nahraďte `index.html` adresu v adrese URL `api/anchors` . Mělo by to vypadat takto: `https://<app_name>.azurewebsites.net/api/anchors` .
+
+[!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 

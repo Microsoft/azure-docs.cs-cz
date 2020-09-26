@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: tutorial
-ms.date: 11/14/2019
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 68a9f051bf3d59cbf32377cb503e9ded0a54d5e9
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 58002140cd6ec0cd90eefc506dc743be05e7be7e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74049222"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274465"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Kurz: vytvoření aplikační brány pomocí brány firewall webových aplikací pomocí Azure Portal
 
@@ -32,7 +32,9 @@ V tomto kurzu se naučíte:
 
 <!---If you prefer, you can complete this tutorial using [Azure PowerShell](tutorial-restrict-web-traffic-powershell.md) or [Azure CLI](tutorial-restrict-web-traffic-cli.md).--->
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+## <a name="prerequisites"></a>Požadavky
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -209,7 +211,7 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Vytvoření účtu úložiště a konfigurace diagnostiky
 
-### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 Pro účely tohoto článku používá Aplikační brána účet úložiště k ukládání dat pro účely detekce a prevence. K zaznamenávání dat můžete použít také protokoly Azure Monitor nebo centra událostí.
 

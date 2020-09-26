@@ -3,12 +3,12 @@ title: Konfigurace nastavení autostart pro virtuální počítač v Azure DevTe
 description: Přečtěte si, jak nakonfigurovat nastavení autostart pro virtuální počítače v testovacím prostředí. Toto nastavení umožňuje, aby se virtuální počítače v testovacím prostředí automaticky spustily podle plánu.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4ff2a156367b6a65e75b1c8b907da91dc3c88eb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83e7b0836273a59eaaf66471bd0cb42d63ccf1c3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482781"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328475"
 ---
 # <a name="auto-startup-lab-virtual-machines"></a>Virtuální počítače pro automatické spuštění laboratoře  
 Azure DevTest Labs umožňuje nakonfigurovat virtuální počítače v testovacím prostředí tak, aby se automaticky spustily a vypnuly na základě plánu. Informace o konfiguraci nastavení pro automatické vypnutí najdete [v tématu Správa zásad pro automatické vypínání pro testovací prostředí v Azure DevTest Labs](devtest-lab-auto-shutdown.md). 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak nakonfigurovat zásady pro automatické spouš
 1. Přejděte na domovskou stránku vašeho testovacího prostředí. 
 2. V nabídce vlevo vyberte **Konfigurace a zásady** . 
 
-    ![Nabídka konfigurace a zásady](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
+    ![Snímek obrazovky, který zobrazuje nabídku Konfigurace a zásady v testovacím prostředí DevTest](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
 3. Na stránce **Konfigurace a zásady** proveďte následující kroky:
     
     1. Vyberte **zapnuto** , pokud chcete, aby se **virtuálním počítačům naplánovalo automatické spuštění funkce automatického** spuštění pro toto testovací prostředí. 

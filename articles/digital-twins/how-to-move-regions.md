@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: e2cb8ee282666d7a9a567ca04762b26de3b3b9bd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89443037"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328491"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Přesunutí instance digitálních vláken Azure do jiné oblasti Azure
 
@@ -88,7 +88,7 @@ Nyní byste měli mít ukázkovou aplikaci Průzkumníka ADT spuštěnou v prohl
 
 Chcete-li ověřit připojení, můžete stisknout tlačítko *Spustit dotaz* a spustit výchozí dotaz, který v grafu zobrazí všechny vazby a relace v grafu v poli *Průzkumník grafů* .
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Tlačítko spustit dotaz poblíž horního okraje okna je zvýrazněno." lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Tlačítko "spustit dotaz" poblíž horního okraje okna je zvýrazněno." lightbox="media/how-to-move-regions/run-query.png":::
 
 Můžete nechat Průzkumníka aplikace ADT spuštěnou, protože ho později budete moct později v tomto článku znovu nahrát do nové instance v cílové oblasti.
 
@@ -113,7 +113,7 @@ Dále dokončíte přesunutí instance vytvořením nové instance v cílové ob
 
 ### <a name="create-a-new-instance"></a>Vytvořit novou instanci
 
-Nejdřív **vytvořte novou instanci digitálních vláken Azure v cílové oblasti**. Provedete to podle kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-scripted.md)a zachovávání těchto ukazatelů:
+Nejdřív **vytvořte novou instanci digitálních vláken Azure v cílové oblasti**. Provedete to podle kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md)a zachovávání těchto ukazatelů:
 * Stejný název můžete zachovat pro novou instanci, **Pokud** se nachází v jiné skupině prostředků. Pokud potřebujete použít stejnou skupinu prostředků, která obsahuje původní instanci, bude vaše nová instance potřebovat vlastní jedinečný název.
 * Až se zobrazí výzva k zadání umístění, zadejte cílovou novou oblast.
 * Registraci aplikace **nemusíte** vytvářet znovu. Vaše nová instance může znovu použít stejnou registraci aplikace, kterou už máte.

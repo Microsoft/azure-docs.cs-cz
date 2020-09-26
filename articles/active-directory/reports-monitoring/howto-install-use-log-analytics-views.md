@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56eee39a9e99e9d6752d1b4f6eb7182043ff14d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 168b41534f6ea6055294cc9e9cec139853904fea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230581"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358895"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Instalace a použití zobrazení Log Analytics pro Azure Active Directory
 
@@ -31,7 +31,7 @@ Azure Active Directory zobrazení Log Analytics pomáhá analyzovat a hledat pro
 * Protokoly auditu: [Sestava aktivity protokoly auditu](concept-audit-logs.md) vám poskytne přístup k historii všech úloh, které provedete ve vašem tenantovi.
 * Protokoly přihlašování: pomocí [sestavy aktivita přihlášení](concept-sign-ins.md)můžete určit, kdo provedl úkoly hlášené v protokolech auditu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat zobrazení Log Analytics, potřebujete:
 
@@ -56,7 +56,7 @@ Pokud chcete používat zobrazení Log Analytics, potřebujete:
 
 3. Vyberte jedno z těchto zobrazení pro přechod do jednotlivých sestav. Výstrahy můžete také nastavit pro libovolný parametr sestavy. Můžete například nastavit výstrahu pro pokaždé, když dojde k chybě přihlášení. Pokud to chcete provést, vyberte nejprve zobrazení **události přihlášení** , vyberte možnost **chyby přihlášení v průběhu** sestavy a potom vyberte **Analytics** . otevře se stránka s podrobnostmi s skutečným dotazem za sestavu. 
 
-    ![Podrobnosti](./media/howto-install-use-log-analytics-views/details.png)
+    ![Snímek obrazovky zobrazující stránku podrobností analýzy, která obsahuje dotaz na sestavu.](./media/howto-install-use-log-analytics-views/details.png)
 
 
 4. Vyberte **nastavit výstrahu**a potom vyberte pokaždé, když je v části **kritéria výstrahy** vybraná možnost ** &lt; &gt; nedefinovaná logika vlastního protokolu** . Vzhledem k tomu, že chceme upozornit vždy, když dojde k chybě přihlášení, nastavte **prahovou hodnotu** výchozí logiky výstrahy na **1** a potom vyberte **Hotovo**. 

@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 24897826c6a70d0810b239b9b8f639787c3dac2a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 9df5d702019063ffba6d79cc63370cd25a7242fd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843381"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358777"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Příprava aplikací logiky a runbooků na migraci klasických pravidel upozornění
 
@@ -76,7 +76,7 @@ Pokud používáte Logic Apps s klasickými výstrahami, musíte upravit logiku 
 
 1. Použijte šablonu obslužná rutina výstrahy Azure Monitor – metriky. Tato šablona obsahuje aktivační událost **požadavku HTTP** s definovaným příslušným schématem.
 
-    ![Logic-App-Template](media/alerts-migration/logic-app-template.png "Šablona výstrahy metriky")
+    ![Snímek obrazovky ukazuje dvě tlačítka, prázdná aplikace logiky a Azure Monitor – obslužná rutina výstrahy metriky.](media/alerts-migration/logic-app-template.png "Šablona výstrahy metriky")
 
 1. Přidejte akci pro hostování logiky zpracování.
 

@@ -5,14 +5,14 @@ ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.custom: mvc, cli-validate, seodec18, devx-track-javascript
+ms.custom: mvc, cli-validate, seodec18, devx-track-js
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: a409af7468daf2ac9de731bcdba5e8f355422ddd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4fc79f8508f46f5003b99289d725b303feef78aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084457"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312001"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Kurz: Vytvoření aplikace Node.js a MongoDB v Azure
 
@@ -99,7 +99,7 @@ Upozornění config.domain ignorujte. Po úplném načtení aplikace se zobrazí
 --
 MEAN.JS – vývojové prostředí
 
-Prostředí: vývojový server: http://0.0.0.0:3000 databáze: MongoDB://localhost/Mean-dev verze aplikace: 0.5.0 MEAN.JS verze: 0.5.0--
+Prostředí: vývojový server:          http://0.0.0.0:3000 databáze: MongoDB://localhost/Mean-dev verze aplikace: 0.5.0 MEAN.JS verze: 0.5.0--
 </pre>
 
 V prohlížeči přejděte na `http://localhost:3000`. V horní nabídce klikněte na **Zaregistrovat se** a vytvořte testovacího uživatele. 

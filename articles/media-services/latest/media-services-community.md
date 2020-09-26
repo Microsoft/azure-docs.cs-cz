@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5c54c3702dabf254e50068aadeac0992e3a20cb2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 445155ed48334c9680dfa0be7b5402d057c98cef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262460"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329716"
 ---
 # <a name="azure-media-services-v3-community"></a>Komunita Azure Media Services V3
 
@@ -42,7 +42,7 @@ Následující fóra se dají použít k dotazování otázek týkajících se a
 
 V současné době je MSDN Media Servicesm hlavním komunitním fóru týmu.
 
-[![MSDN](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
+[![Snímek obrazovky s logem MSDN pro hlavní Komunitní fórum Media Services týmu.](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
 
 Tým také sleduje otázky označené Stack Overflow pomocí Azure-Media-Services.
 

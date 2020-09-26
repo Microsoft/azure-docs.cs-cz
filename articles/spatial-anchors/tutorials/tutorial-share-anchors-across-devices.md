@@ -8,18 +8,18 @@ ms.author: rgarcia
 ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 12a15a2d0cd45207b4adefc7315e48c6d642c0f7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 8b6c3608165ed592cc2f0daf475226c9d35de012
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810159"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358754"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Kurz: sdílení prostorových kotev Azure napříč relacemi a zařízeními
 
 V tomto kurzu se dozvíte, jak pomocí [prostorových kotev Azure](../overview.md) vytvořit kotvy během jedné relace a pak je najít, na stejném zařízení nebo na jiném. Stejné kotvy můžou být také umístěny na více zařízeních na stejném místě a zároveň.
 
-![Uchování](./media/persistence.gif)
+![Animace zobrazuje prostorové kotvy Azure vytvořené mobilním zařízením a v průběhu dnů používá jiné zařízení.](./media/persistence.gif)
 
 Prostorové kotvy Azure je služba pro vývojáře napříč platformami, která umožňuje vytvářet hybridní prostředí realit pomocí objektů, které v průběhu času trvale uchovávají jejich umístění v rámci zařízení. Až budete hotovi, budete mít aplikaci, která se dá nasadit na dvě nebo víc zařízení. Prostorové kotvy Azure vytvořené jednou instancí lze sdílet s ostatními.
 
