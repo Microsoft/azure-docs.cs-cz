@@ -311,8 +311,6 @@
           href: compute-benchmark-scores.md
     - name: Schválené distribuce
       href: endorsed-distros.md
-    - name: Vyhrazení hostitelé
-      href: dedicated-hosts.md
     - name: Údržba a aktualizace
       href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Diskové úložiště
@@ -391,11 +389,12 @@
         - name: Kopírování nebo klonování virtuálního počítače
           href: copy-vm.md
         - name: Využití vyhrazených hostitelů
+          href: ../dedicated-hosts.md
           items:
             - name: Rozhraní příkazového řádku
               href: dedicated-hosts-cli.md
             - name: Portál
-              href: dedicated-hosts-portal.md
+              href: ../dedicated-hosts-portal.md
         - name: Nasazení spotových virtuálních počítačů
           items:
             - name: Rozhraní příkazového řádku
@@ -858,6 +857,7 @@
         - name: Změna skupiny dostupnosti
           href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Vytvoření skupiny umístění bezkontaktní komunikace
+          displayName: PPG aligned colocation co-location
           items:
             - name: Rozhraní příkazového řádku
               href: proximity-placement-groups.md
