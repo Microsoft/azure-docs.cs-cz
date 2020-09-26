@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 310a7578fe9d3af8c4600968178cb677658feaa6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 326d3a4783b058855d86e17198cbe8d7492feba2
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254325"
+ms.locfileid: "91370636"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Instalace a spuštění kontejnerů pro čtení (Preview)
 
@@ -172,11 +172,11 @@ Kontejner poskytuje rozhraní API prediktivního koncového bodu pro dotazy zalo
 
 # <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-1)
 
-Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`. Cestu Swagger můžete zobrazit v umístění: `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` .
+Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`. Cestu Swagger můžete zobrazit v umístění: `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` .
 
 # <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
 
-Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`. Cestu Swagger můžete zobrazit v umístění: `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` .
+Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`. Cestu Swagger můžete zobrazit v umístění: `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` .
 
 ---
 

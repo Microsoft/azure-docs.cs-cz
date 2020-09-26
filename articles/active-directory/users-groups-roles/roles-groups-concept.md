@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2932bfc2f9606326ae38711237e5e10912d41aca
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 1c3143dac79b37ff6dac04856311394440dec9a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053765"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317408"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Použití skupin cloudů ke správě přiřazení rolí v Azure Active Directory (Preview)
 
@@ -64,7 +64,7 @@ Následující scénáře se teď nepodporují:
   - Čas ukončení přiřazení role se může zobrazit nesprávně.
   - Na portálu PIM můžou **Moje role** zobrazovat jenom jedno přiřazení role bez ohledu na to, kolik metod má přiřazení uděleno (přes jednu nebo víc skupin a přímo).
 - *Jenom licencovaní zákazníci Azure AD P2* I po odstranění skupiny se stále zobrazuje oprávněný člen role v uživatelském rozhraní PIM. Funkční není žádný problém. je to jen problém s mezipamětí v Azure Portal.  
-- Centrum pro správu Exchange nerozpozná členství v rolích pomocí skupiny, ale rutina prostředí PowerShell bude fungovat.
+- Použijte nové [Centrum pro správu Exchange](https://admin.exchange.microsoft.com/) pro přiřazení rolí prostřednictvím členství ve skupině. Původní centrum pro správu Exchange tuto funkci ještě nepodporuje. Rutiny prostředí Exchange PowerShell budou fungovat podle očekávání.
 - Portál Azure Information Protection (portál Classic) nerozpozná členství v rolích prostřednictvím skupiny. Můžete [migrovat na sjednocenou platformu označování citlivostí](/azure/information-protection/configure-policy-migrate-labels) a potom použít Centrum kompatibility Office 365 Security & k použití přiřazení skupin pro správu rolí.
 
 Opravujeme tyto problémy.

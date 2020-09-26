@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c214e9f8df88d6f48968e485b23d80c778d4d7ab
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 6689a6d8a19dd690aa19aeecd29ead35ef6c2db1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422670"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318343"
 ---
 # <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidání vlastní služby do webového uživatelského rozhraní akcelerátoru řešení vzdáleného monitorování
 
@@ -27,7 +27,7 @@ Ukázková služba v tomto článku obsahuje data pro mřížku, kterou do člá
 
 V reakci aplikace se služba obvykle komunikuje s back-end službou. Mezi příklady v akcelerátoru řešení vzdáleného monitorování patří služby, které komunikují se správcem služby IoT Hub a konfiguračními mikroslužbami.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto průvodci, potřebujete na svém místním vývojovém počítači nainstalovaný následující software:
 

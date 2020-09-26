@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 49ab515c265b4b4444e7d4ca5b93c4e898e4cf54
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: a4186909db3d784938ada4baaaf08aba02b31d30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527305"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317119"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení protokolů služby Azure Monitor
 
@@ -62,7 +62,7 @@ Díky řízení přístupu na základě role (RBAC) můžete uživatelům a skup
 
 Data, ke kterým má uživatel přístup, závisí na kombinaci faktorů, které jsou uvedeny v následující tabulce. Jednotlivé jsou popsány v následujících částech.
 
-| Faktor | Description |
+| Faktor | Popis |
 |:---|:---|
 | [Režim přístupu](#access-mode) | Metoda, kterou uživatel používá pro přístup k pracovnímu prostoru.  Definuje rozsah dostupných dat a režim řízení přístupu, který se použije. |
 | [Režim řízení přístupu](#access-control-mode) | Nastavení v pracovním prostoru definující, zda jsou oprávnění použita na úrovni pracovního prostoru nebo prostředku. |
@@ -131,22 +131,31 @@ Azure Monitor je služba data ve velkém měřítku, která slouží tisícům z
 
 Když do pracovního prostoru odešlete data rychlostí vyšší než 80% prahové hodnoty nakonfigurované ve vašem pracovním prostoru, do tabulky *operace* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Když je rychlost příjmu dat vyšší než prahová hodnota, některá data se zahozena a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud vaše rychlost ingestování stále překročí prahovou hodnotu nebo jste se k nim neočekávali, můžete požádat o jejich zvýšení otevřením žádosti o podporu. 
 
-Chcete-li být upozorněni na approching nebo dosažení limitu přenosové rychlosti pro příjem dat ve vašem pracovním prostoru, vytvořte [pravidlo upozornění protokolu](alerts-log.md) pomocí následujícího dotazu se základem výstrahy výstrah, který je založen na počtu výsledků větší než nula, zkušební období 5 minut a četnosti 5 minut.
+Pokud chcete být ve svém pracovním prostoru upozorněni na přístup nebo dosažení limitu přenosové rychlosti pro přijímání, vytvořte [pravidlo upozornění protokolu](alerts-log.md) pomocí následujícího dotazu se základní logikou výstrahy na základě počtu výsledků, který je větší než nula, zkušební období 5 minut a frekvence 5 minut.
 
-Počet dosažených objemů příjmu 80% prahové hodnoty:
+Míra zpracování příjmu překročila prahovou hodnotu.
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Error"
 ```
 
-Prahová hodnota dosažené míry objemu přijímání:
+Frekvence zpracování příjmu překročila 80% prahové hodnoty.
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Warning"
 ```
 
+Frekvence zpracování příjmu překročila 70% prahové hodnoty.
+```Kusto
+Operation
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Info"
+```
 
 ## <a name="recommendations"></a>Doporučení
 

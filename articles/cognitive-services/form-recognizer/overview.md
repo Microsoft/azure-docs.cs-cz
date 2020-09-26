@@ -1,43 +1,47 @@
 ---
 title: Co je služba Rozpoznávání formulářů?
 titleSuffix: Azure Cognitive Services
-description: Nástroj pro rozpoznávání formulářů Azure Cognitive Services umožňuje identifikovat a extrahovat páry klíč/hodnota a tabulková data z dokumentů formuláře.
+description: Služba rozpoznávání formulářů Azure umožňuje identifikovat a extrahovat páry klíč/hodnota a tabulková data z dokumentů formuláře a také extrahovat hlavní informace z prodejních příjmů a vizitek.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 08/05/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.openlocfilehash: 070796cd260e56bb51115a7ef33ced8455bfb6a9
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.custom: cog-serv-seo-aug-2020
+keywords: automatizované zpracování dat, zpracování dokumentů, automatizované zadávání dat, zpracování formulářů
+ms.openlocfilehash: 5243c170e1f6b5f647057b8cfafbcac9b2fb4db3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394393"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318955"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Nástroj pro rozpoznávání formulářů Azure je výtahová služba, která pomocí technologie strojového učení identifikuje a extrahuje z dokumentů formuláře páry textů, dvojic klíč/hodnota a tabulková data. Ingestuje text z formulářů a vypíše strukturovaná data, která zahrnují relace v původním souboru. Rychle získáte přesné výsledky, které jsou přizpůsobené vašemu konkrétnímu obsahu bez nutnosti ručních zásahů nebo rozsáhlých znalostí z oblasti datové vědy. Nástroj pro rozpoznávání formulářů se skládá z vlastních modelů, předem připraveného modelu příjemek a rozhraní API pro rozložení. Můžete volat modely pro rozpoznávání formulářů pomocí REST API ke snížení složitosti a jejich integraci do pracovního postupu nebo aplikace.
+Nástroj pro rozpoznávání formulářů Azure je softwarová služba, která umožňuje sestavovat automatizovaný software pro zpracování dat pomocí technologie strojového učení. Identifikujte a extrahujte páry text, klíč/hodnota a tabulková data z formuláře &mdash; . Tato služba obsahuje výstup strukturovaných dat, která zahrnují relace v původním souboru. Rychle získáte přesné výsledky, které jsou přizpůsobené vašemu konkrétnímu obsahu bez nutnosti ručních zásahů nebo rozsáhlých znalostí z oblasti datové vědy. Použijte nástroj pro rozpoznávání formulářů k automatizaci zadávání dat ve vašich aplikacích.
+
+Nástroj pro rozpoznávání formulářů zahrnuje vlastní modely zpracování dokumentů, předem připravené modely pro příjem a obchodní karty a rozhraní API pro rozložení. Můžete volat modely pro rozpoznávání formulářů pomocí REST API nebo sad SDK klientské knihovny, abyste snížili složitost a mohli je integrovat do pracovního postupu nebo aplikace.
 
 Nástroj pro rozpoznávání formulářů se skládá z následujících služeb:
-* **Vlastní modely** – z formulářů extrahuje páry klíč/hodnota a tabulková data. Tyto modely jsou vyškolené s vašimi vlastními daty, takže jsou přizpůsobené vašim formám.
-* Předem **připravené modely** – extrakce dat z jedinečných typů formulářů pomocí předem sestavených modelů. Aktuálně dostupné jsou předem připravené modely pro prodejní příjemky a obchodní karty v angličtině.
-* **Rozhraní API pro rozložení** – rozbalí textové a tabulkové struktury spolu s jejich souřadnicemi ohraničovacího rámečku z dokumentů.
-
-<!-- add diagram -->
+* **[Vlastní modely](#custom-models)** – z formulářů extrahuje páry klíč/hodnota a tabulková data. Tyto modely jsou vyškolené s vašimi vlastními daty, takže jsou přizpůsobené vašim formám.
+* Předem **[připravené modely](#prebuilt-models)** – extrakce dat z jedinečných typů formulářů pomocí předem sestavených modelů. Aktuálně dostupné jsou předem připravené modely pro prodejní příjemky a obchodní karty v angličtině.
+* **[Rozhraní API pro rozložení](#layout-api)** – rozbalí textové a tabulkové struktury spolu s jejich souřadnicemi ohraničovacího rámečku z dokumentů.
 
 ## <a name="custom-models"></a>Vlastní modely
 
-Vlastní modely pro rozpoznávání formulářů se spouštějí na vaše vlastní data a stačí, abyste mohli začít jenom pět vzorových vstupních formulářů. Vyškolený model může výstupovat strukturovaná data, která obsahují vztahy v původním dokumentu formuláře. Po proškolování modelu můžete otestovat a znovu ho využít a nakonec ho použít k spolehlivé extrakci dat z dalších formulářů podle vašich potřeb.
+Vlastní modely pro rozpoznávání formulářů se spouštějí na vaše vlastní data a stačí, abyste mohli začít jenom pět vzorových vstupních formulářů. Model zpracování dokumentů s příškolením může vyvýstupovat strukturovaná data, která obsahují relace v původním dokumentu formuláře. Po proškolování modelu můžete otestovat a znovu ho využít a nakonec ho použít k spolehlivé extrakci dat z dalších formulářů podle vašich potřeb.
 
 Při výuce vlastních modelů máte k dispozici následující možnosti: školení s popisky dat a bez označení dat.
 
 ### <a name="train-without-labels"></a>Výuka bez popisků
 
 Ve výchozím nastavení používá nástroj pro rozpoznávání formulářů nepod dohledem informace o rozložení a vztazích mezi poli a položkami ve formulářích. Když odešlete vstupní formuláře, algoritmus clusteruje formuláře podle typu, zjistí, jaké klíče a tabulky jsou k dispozici, a přidruží hodnoty k klíčům a záznamům k tabulkám. To nevyžaduje ruční označování dat nebo psaní kódu a údržby a doporučujeme tuto metodu vyzkoušet jako první.
+
+Tipy k shromažďování školicích dokumentů najdete v tématu [Vytvoření školicích dat sady](./build-training-data-set.md) .
 
 ### <a name="train-with-labels"></a>Výuka s popisky
 
@@ -47,15 +51,17 @@ Nástroj pro rozpoznávání formulářů používá [rozhraní API pro rozlože
 
 ## <a name="prebuilt-models"></a>Předem připravené modely
 
-Nástroj pro rozpoznávání formulářů obsahuje také předem připravené modely pro jedinečné typy formulářů.
+Nástroj pro rozpoznávání formulářů obsahuje také předem připravené modely pro automatizované zpracování dat jedinečných typů formulářů.
 
 ### <a name="prebuilt-receipt-model"></a>Předem sestavený model příjmu
-Předem sestavený model příjmu se používá pro čtení prodejních příjmů z Austrálie, Kanady, České Británie, Indie a USA &mdash; typu používaného v restauracích, čerpacích stanicích, maloobchodním prodeji a tak dále. Tento model extrahuje klíčové informace, jako je čas a datum transakce, informace o obchodníkech, množství daní, položek na řádku, součty a další. Předem sestavený model příjmu je navíc vyškolen pro rozpoznání a vrácení veškerého textu na účtence. 
+
+Předem sestavený model příjmu se používá pro čtení prodejních příjmů z Austrálie, Kanady, České Británie, Indie a USA &mdash; typu používaného v restauracích, čerpacích stanicích, maloobchodním prodeji a tak dále. Tento model extrahuje klíčové informace, jako je čas a datum transakce, informace o obchodníkech, množství daní, položek na řádku, součty a další. Předem sestavený model příjmu je navíc vyškolen pro rozpoznání a vrácení veškerého textu na účtence. Další informace najdete v koncepční příručce pro [příjem](./concept-receipts.md) .
 
 ![Ukázka účtenky](./media/contoso-receipt-small.png)
 
 ### <a name="prebuilt-business-cards-model"></a>Model předdefinovaných vizitek
-Model vizitek vám umožňuje extrahovat v angličtině informace, jako je jméno osoby, název úlohy, adresa, e-mail, společnost a telefonní číslo z obchodních karet. 
+
+Model vizitek vám umožňuje extrahovat v angličtině informace, jako je jméno osoby, název úlohy, adresa, e-mail, společnost a telefonní číslo z obchodních karet. Další informace najdete v koncepční příručce pro [obchodní karty](./concept-business-cards.md) .
 
 ![Ukázka vizitky](./media/business-card-english.jpg)
 
@@ -67,7 +73,7 @@ Nástroj pro rozpoznávání formulářů také může extrahovat textovou a tab
 
 Pomocí rychlého startu můžete začít extrahovat data z formulářů. Při učení technologie doporučujeme používat bezplatnou službu. Mějte na paměti, že počet bezplatných stránek je omezený na 500 za měsíc.
 
-* [Rychlý Start knihovny klienta](./quickstarts/client-library.md) (všechny jazyky, více scénářů)
+* [Rychlé starty klientské knihovny](./quickstarts/client-library.md) (všechny jazyky, více scénářů)
 * Rychlé starty webového uživatelského rozhraní
   * [Výuka pomocí popisků – vzorový Nástroj pro označování](quickstarts/label-tool.md)
 * Rychlé starty REST
@@ -99,19 +105,8 @@ Pomocí následujících rozhraní API můžete vyškolit modely a extrahovat st
 Další informace najdete v [referenční dokumentaci k REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) . Pokud jste obeznámeni s předchozí verzí rozhraní API, přečtěte si článek [co je nového](./whats-new.md) , kde se dozvíte o nejnovějších změnách.
 
 ## <a name="input-requirements"></a>Požadavky na vstup
-### <a name="custom-model"></a>Vlastní model
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
-
-### <a name="prebuilt"></a>Předem připravených
-
-Vstupní požadavky pro model příjemky se mírně liší.
-
-* Formát musí být JPEG, PNG, PDF (text nebo naskenovaný) nebo TIFF.
-* Velikost souboru musí být menší než 20 MB.
-* Rozměry obrázku musí být mezi 50 × 50 pixelů a 10000 × 10000 pixelů.
-* Rozměry PDF musí být maximálně 17 × 17 palců, které odpovídají zákonným nebo a3 velikosti papíru a menšímu.
-* Pro PDF a TIFF se zpracovávají jenom první 200 stránky (s předplatným úrovně Free, zpracovávají se jenom první dvě stránky).
 
 ## <a name="data-privacy-and-security"></a>Ochrana osobních údajů a zabezpečení dat
 
@@ -119,4 +114,4 @@ Stejně jako u všech služeb rozpoznávání by měli vývojáři, kteří pou�
 
 ## <a name="next-steps"></a>Další kroky
 
-Dokončete [rychlý Start](quickstarts/curl-train-extract.md) , abyste mohli začít s [rozhraními API pro rozpoznávání formulářů](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm).
+Dokončete [rychlý Start knihovny klienta](quickstarts/client-library.md) , abyste mohli začít psát aplikaci zpracovávající formuláře pomocí nástroje pro rozpoznávání formulářů v jazyce podle vašeho výběru.

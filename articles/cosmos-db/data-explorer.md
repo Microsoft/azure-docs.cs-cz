@@ -4,14 +4,14 @@ description: Azure Cosmos DB Explorer je samostatné webové rozhraní, které u
 author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: 918f5a4a572f5518e5ae1b08db3d88d559571ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebfb175de67d7bb8ea011ac340b57f5d62d9e223
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261881"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318802"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Práce s daty s využitím průzkumníka Azure Cosmos 
 
@@ -39,7 +39,7 @@ Azure Cosmos DB Explorer je samostatné webové rozhraní, které umožňuje zob
 
    **Číst** – když sdílíte adresu URL jen pro čtení s ostatními uživateli, můžou si Zobrazit databáze, kolekce, dotazy a další prostředky, které jsou přidružené k tomuto konkrétnímu účtu. Pokud třeba chcete sdílet výsledky dotazu s ostatními týmu, kteří nemají přístup k Azure Portal nebo vašemu účtu Azure Cosmos DB, můžete je zadat pomocí této adresy URL.
 
-   Vyberte typ přístupu, se kterým chcete účet otevřít, a klikněte na **otevřít**. Po otevření Průzkumníka je prostředí stejné jako při použití karty Průzkumník dat v Azure Portal.   
+   Vyberte typ přístupu, se kterým chcete účet otevřít, a klikněte na **otevřít**. Po otevření Průzkumníka je prostředí stejné jako při použití karty Průzkumník dat v Azure Portal.
 
    :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Otevřít Azure Cosmos DB Explorer":::
 
@@ -49,7 +49,10 @@ Aktuálně otevřené prostředí na **celé obrazovce** , které vám umožní 
 
 V současné době není v Průzkumník dat podporováno zobrazení dokumentů, které obsahují identifikátor UUID. To nemá vliv na načítání kolekcí, zobrazení pouze jednotlivých dokumentů nebo dotazů, které obsahují tyto dokumenty. Chcete-li zobrazit a spravovat tyto dokumenty, měli by uživatelé nadále používat nástroj, který byl původně použit k vytvoření těchto dokumentů.
 
+Zákazníci, kteří získají chyby HTTP-401, můžou být kvůli nedostatečným oprávněním RBAC pro účet Azure zákazníka, zejména v případě, že má účet vlastní roli RBAC. `Microsoft.DocumentDB/databaseAccounts/listKeys/*`Pokud se přihlašujete pomocí přihlašovacích údajů Azure Active Directory, musí mít všechny vlastní role akci pro použití Průzkumník dat.
+
 ## <a name="next-steps"></a>Další kroky
+
 Teď, když jste se naučili, jak začít s Azure Cosmos DB Explorer pro správu vašich dat, můžete následující:
 
 * Začněte s definováním [dotazů](sql-api-query-reference.md) pomocí syntaxe SQL a provádějte [programování na straně serveru](stored-procedures-triggers-udfs.md) pomocí uložených procedur, UDF a triggerů. 

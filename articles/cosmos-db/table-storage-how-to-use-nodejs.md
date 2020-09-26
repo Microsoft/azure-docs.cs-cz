@@ -1,6 +1,6 @@
 ---
 title: Použití služby Azure Table Storage nebo Azure Cosmos DB rozhraní API pro tabulky z Node.js
-description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
+description: Ukládat strukturovaná data v cloudu pomocí služby Azure Table Storage nebo Azure Cosmos DB rozhraní API pro tabulky z Node.js.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
-ms.custom: devx-track-javascript
-ms.openlocfilehash: cfcb5645a6284214e233758705537486f32967c6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: 6ce4354faec73f8fe42a936e677bee473796701d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079293"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318768"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
 
@@ -81,7 +81,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 
 ### <a name="add-an-azure-cosmos-db-connection"></a>Přidání připojení ke službě Azure Cosmos DB
 
-Pokud chcete přidat Azure Cosmos DB připojení, vytvořte `TableService` objekt a zadejte název svého účtu, primární klíč a koncový bod. Tyto hodnoty můžete zkopírovat z **Nastavení**  >  **připojovací řetězec** v Azure Portal pro účet Cosmos DB. Například:
+Pokud chcete přidat Azure Cosmos DB připojení, vytvořte `TableService` objekt a zadejte název svého účtu, primární klíč a koncový bod. Tyto hodnoty můžete zkopírovat z **Nastavení**  >  **připojovací řetězec** v Azure Portal pro účet Cosmos DB. Příklad:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -192,10 +192,10 @@ Příklad odpovědi:
 
 Existující entitu můžete aktualizovat několika metodami:
 
-* `replaceEntity`– Aktualizuje existující entitu tím, že ji nahradíte.
-* `mergeEntity`– Aktualizuje existující entitu tak, že se do existující entity sloučí nové hodnoty vlastností.
-* `insertOrReplaceEntity`– Aktualizuje existující entitu tím, že ji nahradíte. Pokud žádná entita neexistuje, vloží se nová entita.
-* `insertOrMergeEntity`– Aktualizuje existující entitu tak, že sloučí nové hodnoty vlastností do existující. Pokud žádná entita neexistuje, vloží se nová entita.
+* `replaceEntity` – Aktualizuje existující entitu tím, že ji nahradíte.
+* `mergeEntity` – Aktualizuje existující entitu tak, že se do existující entity sloučí nové hodnoty vlastností.
+* `insertOrReplaceEntity` – Aktualizuje existující entitu tím, že ji nahradíte. Pokud žádná entita neexistuje, vloží se nová entita.
+* `insertOrMergeEntity` – Aktualizuje existující entitu tak, že sloučí nové hodnoty vlastností do existující. Pokud žádná entita neexistuje, vloží se nová entita.
 
 Následující příklad ukazuje aktualizaci entity pomocí `replaceEntity` :
 
@@ -211,7 +211,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > Ve výchozím nastavení se při aktualizaci entity nekontroluje, jestli se aktualizovaná data dříve neupravila jiným procesem. Zajištění podpory souběžných aktualizací:
 >
 > 1. Získejte značku entity aktualizovaného objektu. Ta se vrací jako součást `response` pro všechny operace související s entitou a je možné ji načíst prostřednictvím příkazu `response['.metadata'].etag`.
-> 2. Při provádění operace aktualizace entity přidejte do nové entity dříve načtené informace o značce entity. Například:
+> 2. Při provádění operace aktualizace entity přidejte do nové entity dříve načtené informace o značce entity. Příklad:
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. Proveďte operaci aktualizace. Pokud se od načtení hodnoty značky entity daná entita upravila, například jinou instancí aplikace, vrátí se `error` oznamující, že nebyla splněná podmínka aktualizace zadaná v požadavku.

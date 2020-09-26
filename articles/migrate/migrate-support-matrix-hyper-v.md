@@ -3,12 +3,12 @@ title: Podpora pro vyhodnocení technologie Hyper-V v Azure Migrate
 description: Další informace o podpoře pro vyhodnocení technologie Hyper-V s Azure Migrate posouzení serveru
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 3d55d71fc4e9551fa19afe8c3f37d31107e4d2e7
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 16eeb0822a8d598c74ab5118fbd39bda84186db0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641819"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318173"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Matice podpory pro posouzení technologie Hyper-V
 
@@ -23,7 +23,7 @@ Pokud chcete nastavit posouzení virtuálního počítače Hyper-V, vytvořte pr
 --- | ---
 **Omezení hodnocení** | V jednom [Azure Migrate projektu](migrate-support-matrix.md#azure-migrate-projects)můžete vyhledat a posoudit až 35 000 virtuálních počítačů Hyper-V.
 **Omezení projektu** | V předplatném Azure můžete vytvořit více projektů. Kromě virtuálních počítačů Hyper-V může projekt zahrnovat virtuální počítače VMware a fyzické servery až po omezení pro posouzení jednotlivých.
-**Zjišťování** | Zařízení Azure Migrate může zjistit až 5000 virtuálních počítačů Hyper-V.<br/><br/> Zařízení se může připojit k až 300 hostitelům Hyper-V.
+**Rozpoznávání** | Zařízení Azure Migrate může zjistit až 5000 virtuálních počítačů Hyper-V.<br/><br/> Zařízení se může připojit k až 300 hostitelům Hyper-V.
 **Posouzení** | Do jedné skupiny můžete přidat až 35 000 počítačů.<br/><br/> V jednom posouzení pro skupinu můžete vyhodnotit až 35 000 virtuálních počítačů.
 
 [Přečtěte si další informace](concepts-assessment-calculation.md) o posouzení.
@@ -46,7 +46,7 @@ Pokud chcete nastavit posouzení virtuálního počítače Hyper-V, vytvořte pr
 | :----------------------------- | :------------------- |
 | **Operační systém** | Pro migraci se dají zhodnotit všechny operační systémy.  |
 | **Služba Integration Services**       | Aby bylo možné zachytit informace o operačním systému, musí být na virtuálních počítačích, které jste vyhodnotili, spuštěny [integrační služby technologie Hyper-v](/virtualization/hyper-v-on-windows/reference/integration-services) . |
-
+| **Storage** | Místní disk, DAS, JBOD, prostory úložiště, CSV, SMB. Podporují se tyto úložiště hostitele Hyper-V, na kterém jsou uložené disky VHD/VHDX. <br/> Podporují se virtuální řadiče IDE a SCSI| 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Požadavky zařízení Azure Migrate
 

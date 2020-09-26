@@ -3,12 +3,12 @@ title: Další informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbe7257b577f0526e0d34c13e0102305e58cc656
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bb4345426eddb8b0b5250980eb46cf0509a22cff
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322457"
+ms.locfileid: "91369990"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Principy Azure Policy pro clustery Kubernetes
 
@@ -85,9 +85,6 @@ Následující doporučení platí pouze pro AKS a doplněk Azure Policy:
 ## <a name="install-azure-policy-add-on-for-aks"></a>Instalace doplňku Azure Policy pro AKS
 
 Před instalací doplňku Azure Policy nebo povolením jakékoli funkce služby musí vaše předplatné umožňovat poskytovatele prostředků **Microsoft. ContainerService** a **Microsoft. PolicyInsights** .
-
-> [!IMPORTANT]
-> Všeobecná dostupnost (GA) Azure Policy v AKS se aktivně uvolňuje napříč všemi oblastmi. Očekávané globální dokončení verze GA je 9/29/2020. Použití v oblastech bez verze GA vyžaduje postup registrace ve verzi Preview. Tato akce se ale automaticky aktualizuje na verzi GA, pokud je v oblasti dostupná.
 
 1. Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.12.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 

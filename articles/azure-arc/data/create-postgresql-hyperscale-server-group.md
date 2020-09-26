@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e845136c4fed5a3d2e6863fdab0aa9f70fb30b5d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fb628df5151f9124d7b7f319ff109ffca030ee90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936426"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317340"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Vytvoření skupiny serverů s povoleným PostgreSQLm rozšířením Azure ARC
 
@@ -59,7 +59,7 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 Před přechodem k dalšímu kroku implementujte tento krok. Pokud chcete nasadit skupinu serverů PostgreSQL s vlastním škálováním na Red Hat OpenShift v jiném projektu než ve výchozím nastavení, musíte pro svůj cluster spustit následující příkazy, abyste mohli aktualizovat omezení zabezpečení. Tento příkaz uděluje potřebná oprávnění účtům služeb, které budou spouštět PostgreSQL skupinu serverů s vlastním škálováním. V poli omezení kontextu zabezpečení (SCC) **_ARC – data-SCC_** je ten, který jste přidali při nasazení řadiče dat ARC Azure.
 
 ```console
-oc adm policy add-scc-to-group arc-data-scc -z <server-group-name> -n <namespace name>
+oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace name>
 ```
 
 _**Server-Group-Name** je název skupiny serverů, kterou vytvoříte během dalšího kroku._
@@ -72,7 +72,7 @@ Teď můžete implementovat další krok.
 Pokud chcete ve službě Azure ARC vytvořit Azure Database for PostgreSQL skupinu serverů se škálováním na více systému, použijte následující příkaz:
 
 ```console
-azdata arc postgres server create -n <name> --workers 2 --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
+azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2> --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
 
 #Example
 #azdata arc postgres server create -n postgres01 --workers 2
@@ -80,25 +80,14 @@ azdata arc postgres server create -n <name> --workers 2 --storage-class-data <st
 
 > [!NOTE]
 > - **K dispozici jsou další parametry příkazového řádku.  Úplný seznam možností zobrazíte spuštěním `azdata arc postgres server create --help` .**
-> - Ve verzi Preview musíte určit třídu úložiště pro zálohy (_--Storage-Class-Backup-SCB_) při vytváření skupiny serverů, aby bylo možné provést zálohování a obnovení.
+> - Třída úložiště používaná pro zálohy (_--Storage-Class-Backup-SCB_) je ve výchozím nastavení pro třídu úložiště dat řadiče dat, pokud není k dispozici.
 > - Jednotka přijatá parametrem--Volume-Size-* je množství prostředků Kubernetes (celé číslo následované jedním z těchto pokusů (T, G, M, K, m) nebo jejich mocniny dvou ekvivalentů (ti, GI, mi, Ki)).
-> - Název musí mít délku maximálně 10 znaků a musí odpovídat konvencím názvů DNS.
+> - Názvy musí být delší než 12 znaků a musí odpovídat konvencím názvů DNS.
 > - Zobrazí se výzva k zadání hesla pro standardního administrativního uživatele _Postgres_ .  Interaktivní výzvu můžete přeskočit nastavením `AZDATA_PASSWORD` proměnné prostředí relace před spuštěním příkazu CREATE.
-> - Pokud jste nasadili řadič dat pomocí AZDATA_USERNAME a AZDATA_PASSWORD ve stejné relaci terminálu, pak se hodnoty pro AZDATA_USERNAME a AZDATA_PASSWORD použijí také k nasazení skupiny serverů PostgreSQL s velkým měřítkem. Název výchozího správce pro databázový stroj PostgreSQL ve velkém měřítku je _PostgreSQL_ a v tomto okamžiku jej nelze změnit.
+> - Pokud jste nasadili řadič dat pomocí AZDATA_USERNAME a AZDATA_PASSWORD proměnných prostředí relace ve stejné relaci terminálu, pak se hodnoty pro AZDATA_PASSWORD použijí i k nasazení skupiny serverů PostgreSQL s velkým měřítkem. Pokud dáváte přednost použití jiného hesla, buď (1) aktualizujte hodnotu pro AZDATA_PASSWORD nebo (2) odstraňte proměnnou prostředí AZDATA_PASSWORD nebo při vytváření skupiny serverů v případě, že odstraníte její hodnotu, se zobrazí výzva k interaktivnímu zadání hesla.
+> - Název výchozího správce pro databázový stroj PostgreSQL ve velkém měřítku je _Postgres_ a v tomto okamžiku jej nelze změnit.
 > - Když vytvoříte skupinu serverů PostgreSQL s škálovatelným škálováním, nebudou se prostředky hned registrovat přímo v Azure. V rámci procesu nahrávání [inventáře prostředků](upload-metrics-and-logs-to-azure-monitor.md)  nebo dat o [využití](view-billing-data-in-azure.md) do Azure se prostředky vytvoří v Azure a vaše prostředky budete moct zobrazit v Azure Portal.
-> - Parametr--port nelze v tomto okamžiku změnit.
-> - Pokud ve vašem clusteru Kubernetes nemáte výchozí třídu úložiště, budete muset použít parametr--metadataStorageClass a zadat ho. Pokud to neprovedete, výsledkem bude selhání příkazu CREATE. Pokud chcete ověřit, jestli máte ve vašem clusteru Kubernetes deklarovanou výchozí třídu úložiště, Rung následující příkaz: 
->
->   ```console
->   kubectl get sc
->   ```
->
-> - Pokud je třída úložiště nakonfigurovaná jako výchozí třída úložiště, zobrazí se **hodnota (výchozí)** připojená k názvu třídy úložiště. Příklad:
->
->   ```output
->   NAME                       PROVISIONER                        AGE
->   local-storage (default)    kubernetes.io/no-provisioner       4d18h
->   ```
+
 
 
 ## <a name="list-your-azure-database-for-postgresql-server-groups-created-in-your-arc-setup"></a>Výpis skupin Azure Database for PostgreSQL serverů vytvořených v nastavení ARC

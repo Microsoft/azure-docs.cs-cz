@@ -23,7 +23,7 @@
       href: cognitive-services-apis-create-account-client-library.md
     - name: Vytvoření nového prostředku pomocí šablony ARM
       displayName: Resource Manager
-      href: resource-manager-template.md
+      href: create-account-resource-manager-template.md
     - name: Protokolování diagnostiky
       href: diagnostic-logging.md
 - name: Zabezpečení

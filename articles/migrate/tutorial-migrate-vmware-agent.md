@@ -4,12 +4,12 @@ description: Naučte se spouštět migraci virtuálních počítačů VMware zal
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: bf33c61783b6d7399cd880f53009033a97625bca
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: f437c0f3b9f786863d3b58f10d1a7384b0f1e8ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378844"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296140"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrace virtuálních počítačů VMware do Azure (na základě agentů)
 
@@ -27,12 +27,12 @@ V tomto článku se dozvíte, jak migrovat místní virtuální počítače VMwa
 > * Spusťte úplnou migraci do Azure.
 
 > [!NOTE]
-> Kurzy vám ukážou nejjednodušší cestu nasazení pro scénář, abyste mohli rychle nastavit zkušební verzi. Kurzy používají výchozí možnosti, pokud je to možné, a nezobrazují všechna možná nastavení a cesty. 
+> Kurzy vám ukážou nejjednodušší cestu nasazení pro scénář, abyste mohli rychle nastavit zkušební verzi. V těchto kurzech se v rámci možností používají jen výchozí možnosti a neuvádějí se všechny varianty nastavení ani všechny cesty. 
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, [Přečtěte si](./agent-based-migration-architecture.md) architekturu migrace založenou na agentech VMware.
 
@@ -40,7 +40,7 @@ Než začnete s tímto kurzem, [Přečtěte si](./agent-based-migration-architec
 
 Dokončete úkoly v tabulce a připravte Azure na migraci založenou na agentech.
 
-**Úkol** | **Podrobnosti**
+**Úloha** | **Podrobnosti**
 --- | ---
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje k vytvoření projektu oprávnění přispěvatele nebo vlastníka.
 **Ověření oprávnění účtu Azure** | Váš účet Azure potřebuje oprávnění k vytvoření virtuálního počítače a zápis na spravovaný disk Azure.
@@ -50,12 +50,12 @@ Dokončete úkoly v tabulce a připravte Azure na migraci založenou na agentech
 Pokud nemáte projekt Azure Migrate, ověřte oprávnění a vytvořte ho.
 
 
-1. V Azure Portal otevřete předplatné a vyberte **řízení přístupu (IAM)**.
+1. Na webu Azure Portal otevřete předplatné a vyberte **Řízení přístupu (IAM)** .
 2. V části **kontrolovat přístup**Najděte příslušný účet a kliknutím na něj Zobrazte oprávnění.
 3. Ověřte, zda máte oprávnění **Přispěvatel** nebo **Owner** .
 
-    - Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého předplatného.
-    - Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte roli.
+    - Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vašeho předplatného.
+    - Pokud nejste vlastníkem předplatného, přidělte odpovídající roli ve spolupráci s vlastníkem.
     
 ### <a name="assign-azure-account-permissions"></a>Přiřazení oprávnění účtu Azure
 
@@ -84,7 +84,7 @@ Migrace Azure Migrate serveru potřebuje přístup k serverům VMware ke zjišt�
 
 #### <a name="vmware-account-permissions"></a>Oprávnění účtu VMware
 
-**Úkol** | **Role/oprávnění** | **Podrobnosti**
+**Úloha** | **Role/oprávnění** | **Podrobnosti**
 --- | --- | ---
 **Zjišťování virtuálních počítačů** | Alespoň uživatel jen pro čtení<br/><br/> Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli **bez přístupu** s **podřízeným objektem rozšířit do podřízeného** objektu.
 **Replikace** |  Vytvořte roli (Azure_Site_Recovery) s požadovanými oprávněními a pak ji přiřaďte uživateli nebo skupině VMware.<br/><br/> Objekt datového centra –> Rozšířit na podřízený objekt, role=Azure_Site_Recovery<br/><br/> Úložiště dat –> Přidělit prostor, procházet úložiště dat, operace se soubory nízké úrovně, odebrat soubor, aktualizovat soubory virtuálního počítače<br/><br/> Síť –> Přiřazení sítě<br/><br/> Prostředek –> Přiřadit virtuální počítač k fondu prostředků, migrovat vypnutý virtuální počítač, migrovat zapnutý virtuální počítač<br/><br/> Úlohy –> Vytvořit úlohu, aktualizovat úlohu<br/><br/> Virtuální počítač –> Konfigurace<br/><br/> Virtuální počítač –> Interakce –> zodpovědět dotazy, připojení zařízení, konfigurovat disk CD, konfigurovat disketu, vypnout, zapnout, instalace nástrojů VMware<br/><br/> Virtuální počítač –> Inventář –> Vytvořit, zaregistrovat, zrušit registraci<br/><br/> Virtuální počítač –> Zřizování –> Povolit stažení virtuálního počítače, povolit nahrávání souborů virtuálního počítače<br/><br/> Virtuální počítač –> Snímky –> Odebrat snímky | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte k podřízeným objektům (hostitelé vSphere, úložiště dat, VMsa, ND sítě) roli **bez přístupu** s **podřízeným objektem šířit do podřízeného** objektu.
@@ -150,7 +150,7 @@ Pokud máte projekt, přidejte nástroj následujícím způsobem:
 3. V části **Přehled** klikněte na **Posoudit a migrovat servery**.
 4. V části **zjišťování, vyhodnocení a migrace serverů**klikněte na možnost **zhodnotit a migrovat servery**.
 
-    ![Zjišťování a vyhodnocení serverů](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
+    ![Zjištění a posouzení serverů](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
 
 1. V části **Zjistit, posoudit a migrovat servery** klikněte na **Přidat nástroje**.
 2. V části **Projekt migrace** vyberte své předplatné Azure a vytvořte skupinu prostředků, pokud ji ještě nemáte.
@@ -223,7 +223,7 @@ Dokončete nastavení a zaregistrujte zařízení replikace.
 
 1. V nastavení zařízení vyberte **nastavení připojení**.
 2. Vyberte síťovou kartu (ve výchozím nastavení existuje jenom jedna síťová karta), kterou zařízení pro replikaci používá pro zjišťování virtuálních počítačů, a proveďte nabízenou instalaci služby mobility na zdrojové počítače.
-3. Vyberte síťovou kartu, kterou zařízení replikace používá pro připojení k Azure. Pak vyberte **Uložit**. Po nakonfigurování tohoto nastavení už toto nastavení nemůžete změnit.
+3. Vyberte síťovou kartu, kterou zařízení replikace používá pro připojení k Azure. Potom vyberte **Uložit**. Po nakonfigurování tohoto nastavení už toto nastavení nemůžete změnit.
 4. Pokud je zařízení umístěné za proxy server, je nutné zadat nastavení proxy serveru.
     - Zadejte název proxy jako **http://ip-address** nebo **http://FQDN** . Proxy servery HTTPS nejsou podporované.
 5. Po zobrazení výzvy k zadání předplatného, skupin prostředků a podrobností o trezoru přidejte podrobnosti, které jste si poznamenali při stažení šablony zařízení.
@@ -251,7 +251,7 @@ Vyberte virtuální počítače pro migraci.
 
 1. V Azure Migrate Project > **servery** **Azure Migrate: Migrace serveru**klikněte na **replikovat**.
 
-    ![Replikace virtuálních počítačů](./media/tutorial-migrate-vmware-agent/select-replicate.png)
+    ![Snímek obrazovky serverů v Azure Migrate. Tlačítko replika je vybrané v Azure Migrate: Migrace serveru v části nástroje pro migraci.](./media/tutorial-migrate-vmware-agent/select-replicate.png)
 
 2. V části **Replikovat** > **Nastavení zdroje** > **Máte počítače ve virtuální podobě?** vyberte **Ano, s VMware vSphere**.
 3. V části **místní zařízení**vyberte název zařízení Azure Migrate, které jste nastavili.
@@ -259,7 +259,7 @@ Vyberte virtuální počítače pro migraci.
 5. V části **procesový Server**vyberte název zařízení replikace.
 6. Do pole **přihlašovací údaje hosta**zadejte účet správce virtuálních počítačů, který se bude používat pro nabízenou instalaci služby mobility. Pak klikněte na **Další: virtuální počítače**.
 
-    ![Replikace virtuálních počítačů](./media/tutorial-migrate-vmware-agent/source-settings.png)
+    ![Snímek obrazovky karty nastavení zdroje na obrazovce replikace Pole s přihlašovacími údaji hosta je zvýrazněné a hodnota je nastavená na VM-admin-Account.](./media/tutorial-migrate-vmware-agent/source-settings.png)
 
 7. V **Virtual Machines**vyberte počítače, které chcete replikovat.
 

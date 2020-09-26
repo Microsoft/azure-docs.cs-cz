@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 7a4e6d80d80441a1b94c1fb2bd8f82f247235fe3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057666"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318088"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Vytvoření účtu Azure Remote Renderingu
 
@@ -57,7 +57,7 @@ Hodnoty pro **`arrAccountId`** a **`arrAccountKey`** lze nalézt na portálu, ja
 
 ![Filtr předplatných](./media/azure-subscription-filter.png)
 
-Kliknutím na svůj účet přejdete na tuto obrazovku, ve které se hned zobrazuje **ID účtu** :
+Kliknutím na svůj účet přejdete na tuto obrazovku, ve které se hned zobrazuje  **ID účtu** :
 
 ![ID účtu Azure](./media/azure-account-id.png)
 
@@ -83,7 +83,7 @@ Nyní se předpokládá, že máte účet úložiště. Přejděte na portál na
 
  Kliknutím na tlačítko **Přidat** na dlaždici přidat přiřazení role přidejte první roli:
 
-![Úložiště IAM účtu úložiště](./media/azure-add-role-assignment.png)
+![Účet úložiště IAM – přidání přiřazení role](./media/azure-add-role-assignment.png)
 
 * První role, která se má přiřadit, je **vlastník** , jak je znázorněno na snímku obrazovky výše.
 * V rozevíracím seznamu **přiřadit přístup k** vyberte **účet vzdáleného vykreslování** .
@@ -95,11 +95,13 @@ Nyní se předpokládá, že máte účet úložiště. Přejděte na portál na
 Pro odpovídající výběry v rozevírací nabídce **role** znovu přidejte další nové role:
 
 * **Přispěvatel účtů úložiště**
-* **Přispěvatel dat objektu BLOB služby Storage**
+* **Přispěvatel dat v objektech blob služby Storage**
 
 Ostatní rozevírací seznamy jsou vybrány jako v prvním kroku.
 
 Pokud jste přidali všechny tři role, má účet vzdáleného vykreslování Azure přístup k vašemu účtu úložiště pomocí identit spravované služby přiřazené systémem.
+> [!IMPORTANT]
+> Přiřazení rolí Azure se Azure Storage ukládá do mezipaměti, takže může trvat až 30 minut, než udělíte přístup k účtu vzdáleného vykreslování a když ho můžete použít pro přístup k účtu úložiště. Podrobnosti najdete v [dokumentaci k základnímu řízení přístupu role](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#role-assignment-changes-are-not-being-detected) .
 
 ## <a name="next-steps"></a>Další kroky
 

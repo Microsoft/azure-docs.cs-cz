@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 599d13daac2e062c8f71f5f7d7133646a1447123
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ac915aa3baba910895e10d21148b899347e8ae4e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266584"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370483"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure PowerShell
 
@@ -49,6 +49,14 @@ $hostGroup = New-AzHostGroup `
    -ResourceGroupName $rgName `
    -Zone 1
 ```
+
+
+Přidejte `-SupportAutomaticPlacement true` parametr, který bude mít vaše virtuální počítače a instance sady škálování automaticky umístěné na hostitelích v rámci skupiny hostitelů. Další informace najdete v tématu [Ruční a automatické umístění ](../dedicated-hosts.md#manual-vs-automatic-placement).
+
+> [!IMPORTANT]
+> Automatické umístění je aktuálně ve verzi Public Preview.
+> Chcete-li se zúčastnit verze Preview, dokončete průzkum registrace ve verzi Preview na adrese [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-host"></a>Vytvoření hostitele
 
@@ -164,6 +172,32 @@ Name                   : myHost
 Location               : eastus
 Tags                   : {}
 ```
+
+## <a name="create-a-scale-set-preview"></a>Vytvoření sady škálování (Preview)
+
+> [!IMPORTANT]
+> Virtual Machine Scale Sets na vyhrazených hostitelích je aktuálně ve verzi Public Preview.
+> Chcete-li se zúčastnit verze Preview, dokončete průzkum registrace ve verzi Preview na adrese [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Když nasadíte sadu škálování, zadáte skupinu hostitelů.
+
+```azurepowershell-interactive
+New-AzVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS" `
+  -VMScaleSetName "myDHScaleSet" `
+  -VirtualNetworkName "myVnet" `
+  -SubnetName "mySubnet" `
+  -PublicIpAddressName "myPublicIPAddress" `
+  -LoadBalancerName "myLoadBalancer" `
+  -UpgradePolicyMode "Automatic"`
+  -HostGroupId $hostGroup.Id
+```
+
+Pokud chcete ručně zvolit, který hostitel má nasadit sadu škálování na, přidejte a zadejte `--host` název hostitele.
+
+
 
 ## <a name="add-an-existing-vm"></a>Přidat existující virtuální počítač 
 

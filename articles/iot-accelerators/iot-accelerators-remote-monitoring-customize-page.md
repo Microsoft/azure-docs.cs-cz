@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8101c01762749c2ceb085516936fa0c421fdb5f3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: e585bc52121943102522f8c44291a4f9453d6214
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422704"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318394"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Přidat vlastní stránku do webového uživatelského rozhraní akcelerátoru řešení vzdáleného monitorování
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak přidat novou stránku do webového uživatels
 
 Další průvodce návody rozšiřuje tento scénář, aby bylo možné na stránku, kterou přidáte, přidat další funkce.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto průvodci, potřebujete na svém místním vývojovém počítači nainstalovaný následující software:
 

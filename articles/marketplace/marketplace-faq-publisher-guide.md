@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: fa8ee205952d1bd39e932ca6c91e3cffe608bf95
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5bf94faff86edf954c687ca3024c63229829ca04
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032108"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369718"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
@@ -229,7 +229,7 @@ Uživatelský účet musí mít oprávnění *vlastníka* nebo *přispěvatele* 
 
 Zákazníci mohou získat řešení z komerčního tržiště v 141 místech po celém světě.
 
-Pokud si chcete prohlédnout seznam umístění, přečtěte si [informace o zdanění pro komerční vydavatele na webu Marketplace](partner-center-portal/tax-details-paid-transactions.md).
+Pokud si chcete prohlédnout seznam umístění, přečtěte si [informace o zdanění pro komerční vydavatele na webu Marketplace](/partner-center/tax-details-marketplace?context=/azure/marketplace/context/context).
 
 ### <a name="what-currencies-are-supported-with-the-commercial-marketplace"></a>Jaké měny podporuje komerční tržiště?
 
@@ -274,32 +274,32 @@ Zákazníci se obvykle účtují měsíčně za všechny nákupy v předchozím 
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>Jak často budu dostávat výběry pro prodej prostřednictvím komerčního tržiště?
 
-Výběry se vyskytují měsíčně. Podrobnosti o platebních plánech, hledání nadcházejících výběrů v partnerském centru a o tom, jak se zabývat zákazníky neplatbami, najdete v [podrobnostech o vyřazení podrobností o zásadách](partner-center-portal/payout-policy-details.md).
+Výběry se vyskytují měsíčně. Podrobnosti o platebních plánech, hledání nadcházejících výběrů v partnerském centru a o tom, jak se zabývat zákazníky neplatbami, najdete v [podrobnostech o vyřazení podrobností o zásadách](/partner-center/payout-policy-details?context=/azure/marketplace/context/context).
 
 - V případě transakcí, kde zákazník použil smlouva Enterprise, jsou vydávány výběry v dalším cyklu vydaných po 30 dnech odeslání faktury zákazníkovi. 
 - V případě transakcí, kde zákazník použil platební kartu, je po obdržení platby k dispozici další 30denní v úschově období, po kterém se doručí za to, že prostředky budou jasné a nehrozí žádné vratek nebo podezření na podvod.
 
 Výběry se vydávají jenom v případě, že prodeje dosáhly minimální kombinované hodnoty $50,00.
 
-Další informace najdete v tématu [prahové hodnoty pro platby, metody a časové rámce](partner-center-portal/payment-thresholds-methods-timeframes.md).
+Další informace najdete v tématu [prahové hodnoty pro platby, metody a časové rámce](/partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context).
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>V jakých zemích nebo oblastech jsou daně spravovány mým jménem?
 
 Zákazníci můžou najít řešení z komerčního tržiště po celém světě a spravovat daně v mnoha umístěních. 
 
-Pokud si chcete projít úplný seznam umístění, přečtěte si [informace o zdanění pro komerční vydavatele na webu Marketplace](partner-center-portal/tax-details-paid-transactions.md).
+Pokud si chcete projít úplný seznam umístění, přečtěte si [informace o zdanění pro komerční vydavatele na webu Marketplace](/partner-center/tax-details-marketplace?context=/azure/marketplace/context/context).
 
 ### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>Kde najdu sestavy výběrů pro komerční tržiště?
 
 V rámci partnerského centra může uživatel s oprávněním *vlastníka* nebo *finančního přispěvatele* zobrazit sestavy výběrů. Tito uživatelé mají přístup k sestavám vpravo nahoře tím, že si vyberete ikonu ukazující ruku.
 
-Další informace najdete v tématu [vytváření sestav pro výběr](partner-center-portal/payout-summary.md).
+Další informace naleznete v tématu [Výběr příkazů](/partner-center/payout-statement?context=/azure/marketplace/context/context).
 
 ### <a name="how-do-i-configure-my-payout-method-and-destination"></a>Návody nakonfigurovat metodu a cíl pro výběr?
 
 S partnerským centrem může uživatel s oprávněním *vlastníka* nastavit účet výběr a daňové formuláře. Uživatelé to můžou udělat tak, že v pravém horním rohu vyberete tlačítko **Nastavení** (ikona ozubeného kolečka).
 
-Další informace najdete na webu [Výběr účtu a daňové formuláře](partner-center-portal/set-up-your-payout-account-tax-forms.md).
+Další informace najdete v tématu [Nastavení účtu výběr a daňového formuláře](/partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context).
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>Jsou vracené a refundace podporované na komerčním webu Marketplace?
 

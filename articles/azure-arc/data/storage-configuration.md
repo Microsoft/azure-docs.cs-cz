@@ -9,12 +9,12 @@ ms.author: umajay
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 782a046b92c9d6cf755bfea0551d7f8153faa859
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c1560325f21fd60e6bdb2a64eb987359a7246ff2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936090"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317323"
 ---
 # <a name="storage-configuration"></a>Konfigurace úložiště
 
@@ -151,10 +151,11 @@ Důležité faktory, které je potřeba vzít v úvahu při výběru třídy úl
 
 - Je **nutné** použít vzdálenou, sdílenou třídu úložiště, aby se zajistila odolnost dat, a to tak, aby v případě, že uzel pod nebo uzel zemře, bylo-li vráceno do zálohy, se může znovu připojit k trvalému svazku.
 - Data zapsaná do služby Controller SQL instance, metriky DB a log DB jsou obvykle poměrně nízká a nejsou citlivá na latenci, takže úložiště Ultra-rychlé výkon není důležité. Pokud máte uživatele, kteří často používají rozhraní Grafana a Kibana a máte velký počet instancí databáze, může vám vaše uživatelé vytěžit z rychlejšího provádění úložiště.
-- Požadovaná kapacita úložiště je proměnná s počtem instancí databáze, které jste nasadili, protože se shromažďují protokoly a metriky pro každou instanci databáze. Data se uchovávají v protokolech a DATABÁZÍch metriky po dobu 2 týdnů, než se vyprázdní. TODO: kolik úložiště se vyžaduje pro jednu instanci databáze?
+- Požadovaná kapacita úložiště je proměnná s počtem instancí databáze, které jste nasadili, protože se shromažďují protokoly a metriky pro každou instanci databáze. Data se uchovávají v protokolech a DATABÁZÍch metriky po dobu 2 týdnů, než se vyprázdní. 
 - Změna po nasazení třídy úložiště je velmi obtížná, není dokumentována a není podporována. Nezapomeňte v době nasazení zvolit správně třídu úložiště.
 
-> **Poznámka:** Pokud není zadána žádná třída úložiště, bude použita výchozí třída úložiště. Pro každý cluster Kubernetes může existovat jenom jedna výchozí třída úložiště. Můžete [změnit výchozí třídu úložiště](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/).
+> [!NOTE]
+> Pokud není zadána žádná třída úložiště, bude použita výchozí třída úložiště. Pro každý cluster Kubernetes může existovat jenom jedna výchozí třída úložiště. Můžete [změnit výchozí třídu úložiště](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/).
 
 ### <a name="database-instance-storage-configuration"></a>Konfigurace úložiště instance databáze
 
@@ -162,7 +163,8 @@ Každá instance databáze obsahuje data, protokoly a záložní trvalé svazky.
 
 Při vytváření instance pomocí `azdata arc sql mi create` příkazů nebo `azdata arc postgres server create` jsou k dispozici dva parametry, které lze použít k nastavení tříd úložiště:
 
-> **Poznámka:** Některé z těchto parametrů jsou ve vývoji a budou k dispozici `azdata arc sql mi create` v `azdata arc postgres server create` nadcházejících verzích a.
+> [!NOTE]
+> Některé z těchto parametrů jsou ve vývoji a budou k dispozici `azdata arc sql mi create` v `azdata arc postgres server create` nadcházejících verzích a.
 
 |Název parametru, krátký název|Použití|
 |---|---|
@@ -173,14 +175,14 @@ Při vytváření instance pomocí `azdata arc sql mi create` příkazů nebo `a
 
 Následující tabulka uvádí cesty uvnitř kontejneru spravované instance Azure SQL, který je namapovaný na trvalý svazek pro data a protokoly:
 
-|Název parametru, krátký název|Cesta uvnitř kontejneru MSSQL-MIAA|Description|
+|Název parametru, krátký název|Cesta uvnitř kontejneru MSSQL-MIAA|Popis|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt|Obsahuje adresáře pro instalaci MSSQL a další systémové procesy. Adresář MSSQL obsahuje výchozí data (včetně transakčních protokolů), protokol chyb & záložní adresáře.|
 |`--storage-class-logs`, `-scl`|/var/log|Obsahuje adresáře, které ukládají výstup konzoly (stderr, stdout), další informace o protokolování procesů uvnitř kontejneru.|
 
 Následující tabulka uvádí cesty uvnitř kontejneru instance PostgreSQL, který je namapovaný na trvalý svazek pro data a protokoly:
 
-|Název parametru, krátký název|Cesta uvnitř kontejneru Postgres|Description|
+|Název parametru, krátký název|Cesta uvnitř kontejneru Postgres|Popis|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt/postgresql|Obsahuje data a adresáře protokolu pro instalaci Postgres.|
 |`--storage-class-logs`, `-scl`|/var/log|Obsahuje adresáře, které ukládají výstup konzoly (stderr, stdout), další informace o protokolování procesů uvnitř kontejneru.|

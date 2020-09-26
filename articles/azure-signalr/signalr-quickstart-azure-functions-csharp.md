@@ -6,14 +6,14 @@ ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.date: 03/04/2019
+ms.date: 09/25/2020
 ms.author: zhshang
-ms.openlocfilehash: 02a9ed6b0e11aeb4f50b145cff6c747f09f1c2bd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: be26fdafe0a8a52669fe41fd5514c808f10df745
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294032"
+ms.locfileid: "91369123"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Rychlý Start: vytvoření chatovací místnosti pomocí Azure Functions a služby signalizace pomocí jazyka C\#
 
@@ -21,11 +21,11 @@ Služba Azure SignalR Service umožňuje snadné přidávání funkcí v reáln�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
+Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
 
 Tento kurz můžete spustit také na příkazovém řádku (macOS, Windows nebo Linux) pomocí [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing), [.NET Core SDK](https://dotnet.microsoft.com/download)a vašeho oblíbeného editoru kódu.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Pokud ještě nemáte předplatné Azure, [vytvořte ho zdarma](https://azure.microsoft.com/free/dotnet) ještě před tím, než začnete.
 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qscsharp)
 
@@ -55,13 +55,13 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 1. Vyberte a zkopírujte primární připojovací řetězec.
 
-1. Přejděte zpět do sady Visual Studio a v Průzkumníkovi řešení přejmenujte *local.settings.sample.json* na *local.settings.json*.
+1. Zpět v aplikaci Visual Studio – **Průzkumník řešení**přejmenovat *local.settings.sample.jsna* na *local.settings.jszapnuto*.
 
-1. V souboru **local.settings.json** vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Uložte soubor.
+1. V souboru *local.settings.json* vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Uložte soubor.
 
-1. Otevřete **Functions.cs**. Tato aplikace funkcí zahrnuje dvě funkce aktivované protokolem HTTP:
+1. Otevřete *Functions.cs*. Tato aplikace funkcí zahrnuje dvě funkce aktivované protokolem HTTP:
 
-    - **GetSignalRInfo**: Používá vstupní vazbu *SignalRConnectionInfo* ke generování a vracení informací o platném připojení.
+    - **GetSignalRInfo** – používá `SignalRConnectionInfo` vstupní vazbu k vygenerování a vrácení platných informací o připojení.
     - **SendMessage**: Přijímá zprávy chatu v textu žádosti a používá výstupní vazbu *SignalR* k vysílání zpráv všem připojeným klientským aplikacím.
 
 1. Pomocí jedné z následujících možností můžete spustit aplikaci funkce Azure místně.

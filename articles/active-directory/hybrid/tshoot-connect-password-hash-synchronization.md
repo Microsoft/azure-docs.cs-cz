@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbc9e5a9187f9ef16ea03cfa6c97e438c2b26c99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77271679306b0fbde10c748afc7535f3ad3d0945
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807600"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317561"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží se synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 
@@ -120,7 +120,7 @@ Každý místní konektor služby Active Directory má svůj vlastní kanál syn
 
 Pokud účet služba AD DS, který používá místní konektor služby Active Directory k synchronizaci hodnot hash hesel, nemá příslušná oprávnění, vrátí se následující chyba:
 
-![Nesprávné pověření](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
+![Snímek obrazovky zobrazující chybu, která se vrátí, když služba AD DS účet obsahuje nesprávné uživatelské jméno nebo heslo.](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
 
 #### <a name="incorrect-ad-ds-account-username-or-password"></a>Nesprávné uživatelské jméno nebo heslo účtu služba AD DS
 
@@ -338,11 +338,11 @@ Můžete snadno řešit potíže se synchronizací hodnot hash hesel tak, že zk
 
     i. Kliknutím na **vlastnosti objektu úložiště metaverse** zobrazte seznam atributů uživatele.  
 
-    ![Informace v úložišti Metaverse](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
+    ![Snímek obrazovky, který zobrazuje seznam atributů uživatele pro vlastnosti objektu Metaverse.](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
 
     Ověřte, že není přítomen žádný atribut **cloudFiltered** . Ujistěte se, že atributy domény (domainFQDN a domainNetBios) mají očekávané hodnoty.
 
-    j. Klikněte na kartu **konektory** . Ujistěte se, že jste viděli konektory do místní služby Active Directory a Azure AD.
+    j. Klikněte na kartu **konektory** . Ujistěte se, že se zobrazují konektory pro místní službu Active Directory a Azure AD.
 
     ![Informace v úložišti Metaverse](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
 
@@ -356,14 +356,14 @@ Sloupec status (stav) může obsahovat následující hodnoty:
 
 | Status | Popis |
 | --- | --- |
-| Úspěch |Heslo bylo úspěšně synchronizováno. |
+| Success |Heslo bylo úspěšně synchronizováno. |
 | FilteredByTarget |Heslo je nastavené na hodnotu **uživatel musí změnit heslo při příštím přihlášení**. Heslo nebylo synchronizováno. |
 | NoTargetConnection |V úložišti metaverse nebo v prostoru konektoru služby Azure AD není žádný objekt. |
 | SourceConnectorNotPresent |V prostoru konektoru služby Active Directory nebyl nalezen žádný objekt. |
 | TargetNotExportedToDirectory |Objekt v prostoru konektoru služby Azure AD ještě není exportovaný. |
 | MigratedCheckDetailsForMoreInfo |Záznam v protokolu byl vytvořen před sestavením 1.0.9125.0 a je zobrazen ve starším stavu. |
 | Chyba |Služba vrátila neznámou chybu. |
-| Není známo |Při pokusu o zpracování dávky hodnot hash hesel došlo k chybě.  |
+| Neznámý |Při pokusu o zpracování dávky hodnot hash hesel došlo k chybě.  |
 | MissingAttribute |Konkrétní atributy (například hash protokolu Kerberos) vyžadované Azure AD Domain Services nejsou k dispozici. |
 | RetryRequestedByTarget |Konkrétní atributy (například hash protokolu Kerberos) vyžadované Azure AD Domain Services nebyly dříve k dispozici. Pokus o opětovnou synchronizaci hodnoty hash hesla uživatele je proveden. |
 
