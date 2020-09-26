@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 83f518326b38e9832c46997a0a2791eb9f35705e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-js
+ms.openlocfilehash: 30c7caef4143b1a7cdba959971ff7689f986cb9e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371630"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333252"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Řešení potíží s načtením sady SDK pro webové aplikace v jazyce JavaScript
 
@@ -115,7 +115,7 @@ Pokud při použití této minimální konfigurace stále zobrazujete výjimku J
 
 Pokud výjimka zmizí, pak problém je pravděpodobně způsoben neshodou typu nebo neočekávanou hodnotou. Začněte přidávat konfigurační možnosti zpátky jednou a testovat, dokud nedojde k výjimce znovu. Pak vyhledejte v dokumentaci položku, která tento problém způsobila. Pokud je dokumentace nejasná nebo potřebujete pomoc, zapište [problém na GitHubu](https://github.com/Microsoft/ApplicationInsights-JS/issues).
 
-Pokud byla konfigurace dříve nasazena a pracovala, ale právě začala nahlásit tuto výjimku, může se jednat o problém s nově nasazenou verzí, ověřit, jestli má vliv jenom na malou skupinu uživatelů nebo prohlížečů, a jak [zaslat problém na GitHubu](https://github.com/Microsoft/ApplicationInsights-JS/issues) nebo [vytvořit nový lístek podpory](https://azure.microsoft.com/support/create-ticket/).
+Pokud byla konfigurace dříve nasazena a pracovala, ale právě začala nahlásit tuto výjimku, může se jednat o problém s nově nasazenou verzí, ověřit, jestli má vliv jenom na malou skupinu uživatelů nebo prohlížečů, a jak [zaslat problém na GitHubu](https://github.com/Microsoft/ApplicationInsights-JS/issues) nebo  [vytvořit nový lístek podpory](https://azure.microsoft.com/support/create-ticket/).
 
 ### <a name="enable-console-debugging"></a>Povolit ladění konzoly
 

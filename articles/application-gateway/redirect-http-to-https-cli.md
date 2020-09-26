@@ -1,19 +1,19 @@
 ---
 title: Přesměrování HTTP na HTTPS pomocí rozhraní příkazového řádku
 titleSuffix: Azure Application Gateway
-description: Naučte se vytvořit Aplikační bránu a přidat certifikát pro ukončení TLS pomocí Azure CLI.
+description: Naučte se vytvořit přesměrování HTTP na HTTPS a přidat certifikát pro ukončení TLS pomocí Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/15/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 828012e7e41f8710dc57f1c830b81d403507d27d
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 7dbfa877f634256c86166892a38d048a95e56baa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594238"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331025"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Vytvoření aplikační brány s přesměrováním HTTP na HTTPS pomocí Azure CLI
 
@@ -223,13 +223,6 @@ Pokud chcete přijímat upozornění zabezpečení v případě použití certif
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
-> * Nastavit síť
-> * Vytvořit aplikační bránu s certifikátem
-> * Přidat pravidlo naslouchacího procesu a přesměrování
-> * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
+- [Vytvoření aplikační brány s interním přesměrování pomocí Azure CLI](redirect-internal-site-cli.md)
 
 

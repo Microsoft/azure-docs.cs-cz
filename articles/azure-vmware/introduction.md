@@ -3,14 +3,14 @@ title: Úvod
 description: Seznamte se s funkcemi a výhodami řešení Azure VMware pro nasazení a správu úloh na bázi VMware v Azure.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: 3d6801a6cdec7600cc6003711a08e6af8c86483e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c01f7a21b4a7c46469c3b6a63b0c426715da896d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005050"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332793"
 ---
-# <a name="what-is-azure-vmware-solution-preview"></a>Co je Azure VMware Solution Preview?
+# <a name="what-is-azure-vmware-solution"></a>Co je Azure VMware Solution?
 
 Řešení Azure VMware poskytuje privátní cloudy v Azure. Tyto privátní cloudy obsahují clustery vSphere a využívají vyhrazenou infrastrukturu holých počítačů Azure. Clustery v privátních cloudech můžete škálovat na 3 až 16 hostitelů a v jednom privátním cloudu můžete mít více clusterů. Všechny privátní cloudy se zřídí s vCenter Server, síti vSAN, vSphere a NSX-T. Do privátních cloudů můžete migrovat úlohy z místních prostředků, můžete v nich vytvářet nebo nasazovat nové virtuální počítače a využívat v nich služby Azure.
 
@@ -28,9 +28,7 @@ Nové privátní cloudy se nasazují prostřednictvím Azure Portal nebo Azure C
 
 ## <a name="networking"></a>Sítě
 
-Při nasazení privátního cloudu se vytvoří privátní sítě pro správu, zřizování a vMotion. Tyto privátní sítě se používají pro přístup ke Správci vCenter a NSX-T a pro vMotion nebo nasazení virtuálních počítačů. Všechny privátní sítě jsou přístupné z virtuální sítě v Azure nebo z místních prostředí. ExpressRoute Global Reach slouží k propojení privátních cloudů s místními prostředími a toto připojení vyžaduje virtuální síť s okruhem ExpressRoute v rámci vašeho předplatného.
-
-Přístup k Internetu a službám Azure se zřídí při nasazení privátního cloudu. Přístup je k dispozici, aby virtuální počítače v sítích produkčních úloh mohly využívat služby Azure nebo internetové služby. Přístup k Internetu je ve výchozím nastavení zakázán pro nové privátní cloudy a může být kdykoli povolen nebo zakázán.
+[!INCLUDE [avs-networking-description](includes/avs-networking-description.md)]
 
 Další informace o sítích a vzájemné propojení najdete v článku [Koncepty sítě](concepts-networking.md) .
 
@@ -46,7 +44,7 @@ Pravidelná upgrade privátního cloudu řešení Azure VMware a softwaru VMware
 
 ## <a name="monitoring-your-private-cloud"></a>Monitorování privátního cloudu
 
-Pomocí [protokolů v Azure monitor](../azure-monitor/overview.md) můžete shromažďovat protokoly na virtuálních počítačích, které běží ve vašem privátním cloudu řešení Azure VMware. [Agenta MMA můžete stáhnout a nainstalovat](../azure-monitor/platform/log-analytics-agent.md#installation-options) na virtuální počítače se systémem Linux a Windows v privátních cloudech řešení Azure VMware pomocí stejných dotazů, které spouštíte na místních virtuálních počítačích. Můžete spouštět stejné dotazy, které byste normálně spustili na virtuálních počítačích, a to jenom stejně. Další informace o vytváření dotazů najdete v tématu [Postup zápisu dotazů](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries).
+Po nasazení řešení Azure VMware do svého předplatného [Azure monitor protokoly](../azure-monitor/overview.md) se generují automaticky. Kromě toho můžete shromažďovat protokoly na všech virtuálních počítačích v rámci privátního cloudu. [Agenta MMA můžete stáhnout a nainstalovat](../azure-monitor/platform/log-analytics-agent.md#installation-options) na virtuální počítače se systémem Linux a Windows, které běží v privátních cloudech řešení Azure VMware, a povolit [rozšíření Azure Diagnostics](../azure-monitor/platform/diagnostics-extension-overview.md). Můžete dokonce spouštět stejné dotazy, které obvykle spouštíte na virtuálních počítačích. Další informace o vytváření dotazů najdete v tématu [Postup zápisu dotazů](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries). Vzorce monitorování v řešení Azure VMware jsou podobné Azure Virtual Machines v rámci platformy IaaS. Další informace a postupy najdete v tématu [monitorování virtuálních počítačů Azure pomocí Azure monitor](../azure-monitor/insights/monitor-vm-azure.md).
 
 ## <a name="next-steps"></a>Další kroky
 

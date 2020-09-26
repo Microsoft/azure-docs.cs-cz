@@ -10,19 +10,19 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 76c0f4f021646b4cbf1a09559e085176353a4a3c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 44f2195fb68b5a17eab3980f72cbc5374e1c033a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525608"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312902"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Kurz: Konfigurace boxu pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v poli a Azure AD pro automatické zřízení a zrušení zřizování uživatelských účtů ze služby Azure AD do boxu.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -91,19 +91,19 @@ Cílem této části je obrysy, jak povolit zřizování uživatelských účtů
 
 3. Vyberte instanci pole a pak vyberte kartu **zřizování** .
 
-4. Nastavte **režim zřizování** na **automaticky**. 
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**. 
 
-    ![zřizování](./media/box-userprovisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky s kartou zřizování pro box v Azure Portal. Režim zřizování je nastaven na automatické a v přihlašovacích údajích správce je zvýrazněná možnost autorizovat.](./media/box-userprovisioning-tutorial/provisioning.png)
 
 5. V části **přihlašovací údaje správce** klikněte na **autorizovat** . otevře se dialogové okno přihlášení k boxu v novém okně prohlížeče.
 
 6. Na stránce **přihlášení pro udělení přístupu k poli** zadejte požadované přihlašovací údaje a klikněte na **autorizovat**. 
    
-    ![Povolit automatické zřizování uživatelů](./media/box-userprovisioning-tutorial/IC769546.png "Povolit automatické zřizování uživatelů")
+    ![Snímek obrazovky přihlášení, který uděluje přístup k boxu, zobrazuje položku pro E-mail a heslo a tlačítko autorizovat.](./media/box-userprovisioning-tutorial/IC769546.png "Povolit automatické zřizování uživatelů")
 
 7. Kliknutím na **udělit přístup k tomuto poli** autorizujte tuto operaci a vraťte se k Azure Portal. 
    
-    ![Povolit automatické zřizování uživatelů](./media/box-userprovisioning-tutorial/IC769549.png "Povolit automatické zřizování uživatelů")
+    ![Snímek obrazovky s přístupem pro autorizaci v krabici, která zobrazuje vysvětlující zprávu a tlačítko pro udělení přístupu k boxu.](./media/box-userprovisioning-tutorial/IC769549.png "Povolit automatické zřizování uživatelů")
 
 8. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k aplikaci box. Pokud se připojení nepovede, ujistěte se, že má váš účet box oprávnění správce týmu, a zkuste znovu provést krok **autorizovat** .
 
@@ -113,7 +113,7 @@ Cílem této části je obrysy, jak povolit zřizování uživatelských účtů
 
 11. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé do boxu.**
 
-12. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do boxu. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v poli pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+12. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do boxu. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v poli pro operace aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
 13. Pokud chcete povolit službu Azure AD Provisioning pro box, změňte **stav zřizování** na **zapnuto** v části nastavení.
 

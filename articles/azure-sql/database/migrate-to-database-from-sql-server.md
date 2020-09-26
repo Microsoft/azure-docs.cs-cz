@@ -1,5 +1,5 @@
 ---
-title: Migrace databáze SQL Server do Azure SQL Database
+title: Migrace databáze z SQL Serveru do Azure SQL Database
 description: Přečtěte si o SQL Server migrace databáze do Azure SQL Database.
 keywords: migrace databáze, migrace databáze systému sql server, nástroje pro migraci databáze, migrace databáze, migrace sql database
 services: sql-database
@@ -10,16 +10,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 02/11/2019
-ms.openlocfilehash: 106337fb4756052ee682624290620093bf4a70b3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 275ad3f2dfa04241b1f2a5687cb5dc32b7a31e75
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081906"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333167"
 ---
-# <a name="sql-server-database-migration-to-azure-sql-database"></a>Migrace databáze SQL Server do Azure SQL Database
+# <a name="sql-server-database-migration-to-azure-sql-database"></a>Migrace databáze z SQL Serveru do Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 V tomto článku se dozvíte o primárních metodách migrace databáze SQL Server 2005 nebo novější na Azure SQL Database. Informace o migraci do spravované instance Azure SQL najdete v tématu [migrace Instance SQL Server do spravované instance Azure SQL](../managed-instance/migrate-to-instance-from-sql-server.md). Informace o migraci z jiných platforem najdete v tématu [Průvodce migrací databáze Azure](https://datamigration.microsoft.com/).

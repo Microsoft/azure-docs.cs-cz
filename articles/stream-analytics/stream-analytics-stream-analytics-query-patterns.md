@@ -8,13 +8,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/18/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 0eabe147563ee712e20e57aafc1029daf2a8610a
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.custom: devx-track-js
+ms.openlocfilehash: 84e3ced20b828087cd3f2b9e7534826debf1706a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641037"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279973"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Běžné vzory dotazů v Azure Stream Analytics
 
@@ -56,7 +56,7 @@ Pro výstup dat do různých výstupních umyvadel lze použít vícenásobné p
 
 **Výstupní AlertOutput**:
 
-| Značka | Čas | Count |
+| Značka | Čas | Počet |
 | --- | --- | --- |
 | Make2 |2015-01-01T00:00:10.0000000 Z |3 |
 
@@ -415,14 +415,14 @@ Dobu trvání události lze vypočítat vyhledáním poslední události spušt�
 
 **Vstup**:  
 
-| Uživatel | Funkce | Událost | Čas |
+| Uživatel | Příznak | Událost | Čas |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Spustit |2015-01-01T00:00:01.0000000 Z |
 | user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000 Z |
 
 **Výstup**:  
 
-| Uživatel | Funkce | Doba trvání |
+| Uživatel | Příznak | Doba trvání |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
@@ -728,7 +728,7 @@ Například hodiny zařízení pro *TollID* 2 jsou pět sekund za *TollID* 1 a h
 
 **Výstup**:
 
-| TollID | Count |
+| TollID | Počet |
 | --- | --- |
 | 1 | 2 |
 | 2 | 2 |
@@ -930,7 +930,7 @@ Dotaz umožňuje výrobci automaticky monitorovat umístění počítačů a zí
 
 Další informace najdete v článku [scénáře použití geografických zón a geoprostorové agregace s Azure Stream Analytics](geospatial-scenarios.md) článkem.
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

@@ -1,15 +1,15 @@
 ---
 title: Bezpečné nasazení napříč oblastmi – Azure Deployment Manager
-description: Popisuje, jak nasadit službu ve více oblastech pomocí Azure Deployment Manager. Zobrazuje bezpečné postupy nasazení, které před zavedením do všech oblastí ověřují stabilitu nasazení.
+description: Naučte se, jak nasadit službu v mnoha oblastech pomocí Azure Deployment Manager a o postupech bezpečného nasazení.
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 27e8c9c0aa2ee86b490d266fc6ff76f263eee7ef
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8b950fdc36fe3fbea1ce9436bdd7f7372c64c055
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130218"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333201"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Povolení postupů bezpečného nasazení pomocí Azure Deployment Manager (Public Preview)
 
@@ -191,7 +191,7 @@ Každé zavedení může mít mnoho skupin kroků. Každá skupina kroků má je
 
 V šabloně zavedení vytvoříte zdroj artefaktů pro binární soubory, které potřebujete nasadit do služby. Tento zdroj artefaktu je podobný [zdroji artefaktů pro šablony](#artifact-source-for-templates), s výjimkou, že obsahuje skripty, webové stránky, zkompilovaný kód nebo jiné soubory, které vaše služba vyžaduje.
 
-### <a name="steps"></a>Kroky
+### <a name="steps"></a>Postup
 
 Můžete definovat krok, který se provede buď před, nebo po operaci nasazení. V současné době `wait` je k dispozici pouze krok a krok "healthCheck".
 

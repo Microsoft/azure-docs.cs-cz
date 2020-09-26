@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 100e1b974e54d8c0065194bc7beb18f458011434
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b02c669439c54f34afb4212949b20f6793784103
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616871"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359421"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>Zálohování a obnovení operačního systému pro SKU typu II u razítek revize 3
 
@@ -69,7 +69,7 @@ Následující příkaz ukazuje obnovení souboru */etc/fstabfrom* zálohy zálo
 
 Následující snímek obrazovky ukazuje obnovení úplné zálohy:
 
-![HowtoRestoreaBackup.PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
+![Snímek obrazovky s obnovením zobrazuje okno příkazového řádku.](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
 
 ## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>Jak nainstalovat zadní nástroj a změnit konfiguraci? 
 
@@ -86,7 +86,7 @@ Pro operační systém **RHEL** použijte následující příkaz:
 ```
 #yum install rear -y
 ```
-Chcete-li nakonfigurovat zadní nástroj, je nutné aktualizovat parametry **OUTPUT_URL** a **BACKUP_URL** v *souboru/etc/Rear/Local.conf*.
+Chcete-li nakonfigurovat zadní nástroj, je nutné aktualizovat parametry **OUTPUT_URL**  a **BACKUP_URL**  v *souboru/etc/Rear/Local.conf*.
 ```
 OUTPUT=ISO
 ISO_MKISOFS_BIN=/usr/bin/ebiso
@@ -99,4 +99,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-Následující snímek obrazovky ukazuje obnovení úplné zálohy: ![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+Následující snímek obrazovky ukazuje obnovení úplné zálohy: ![ snímek obrazovky zobrazuje okno příkazového řádku s obnovením pomocí zadního nástroje.](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

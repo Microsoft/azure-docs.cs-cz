@@ -12,12 +12,12 @@ ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 1d196ea33eafbfae0d9db68588c0adb131a383f4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2ebba2bb957a1c05fd591181f0a784ed778c6c57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91000954"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333371"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Oprávnění podnikových aplikací pro vlastní role v Azure Active Directory
 
@@ -119,7 +119,7 @@ Chcete-li delegovat schopnost povolit přístup k aplikaci pro zřizování. Př
 
 ## <a name="full-list-of-permissions"></a>Úplný seznam oprávnění
 
-Oprávnění | Description
+Oprávnění | Popis
 ---------- | -----------
 Microsoft. Directory/applicationPolicies/allProperties/Read | Načte všechny vlastnosti pro zásady použití.
 Microsoft. Directory/applicationPolicies/allProperties/Update | Aktualizuje všechny vlastnosti pro zásady použití.
@@ -138,7 +138,6 @@ Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Read | Načte přiřaze
 Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Aktualizuje přiřazení rolí instančního objektu.
 Microsoft. Directory/servicePrincipals/appRoleAssignments/Read | Umožňuje číst přiřazení rolí přiřazená k instančním objektům.
 Microsoft. Directory/servicePrincipals/publikum/Update | Aktualizuje vlastnosti cílové skupiny u instančních objektů.
-Microsoft. Directory/servicePrincipals/Authentication/Read |  
 Microsoft. Directory/servicePrincipals/Authentication/Update | Aktualizuje vlastnosti ověřování u instančních objektů.
 Microsoft. Directory/servicePrincipals/Basic/Update | Aktualizuje základní vlastnosti objektů služby.
 Microsoft. Directory/servicePrincipals/Create | Vytváření instančních objektů.

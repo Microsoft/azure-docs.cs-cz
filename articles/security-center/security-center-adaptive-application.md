@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: bbabceeea2fd009efe1098e37a0b1c9dcb8a48aa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 17a3d0364f3085e4baf4e0faa40f117d9fbbb04f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894735"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268158"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Použití adaptivních řízení aplikací k omezení ploch útoků počítačů
 
@@ -229,4 +229,4 @@ Některé funkce, které jsou dostupné z REST API:
 V tomto dokumentu jste zjistili, jak použít adaptivní řízení aplikací v Azure Security Center k definování seznamů povolených aplikací běžících na počítačích Azure a mimo Azure. Další informace o některých dalších funkcích ochrany úloh v cloudu Security Center najdete v tématech:
 
 * [Porozumění přístupu k virtuálnímu počítači JIT (just-in-time)](just-in-time-explained.md)
-* [Zabezpečení clusterů Azure Kubernetes](azure-kubernetes-service-integration.md)
+* [Zabezpečení clusterů Azure Kubernetes](defender-for-kubernetes-introduction.md)
