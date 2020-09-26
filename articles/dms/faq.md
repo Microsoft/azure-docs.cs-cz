@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 3383a16624ecf045753609865931f9d0c44b6b3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad49db3eb61b77805b0c7a3e1e9583fb22bd4373
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196578"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291966"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Nejčastější dotazy týkající se použití Azure Database Migration Service
 
@@ -24,19 +24,19 @@ V tomto článku jsou uvedené Nejčastější dotazy týkající se použití A
 
 ## <a name="overview"></a>Přehled
 
-**Otázka. co je Azure Database Migration Service?**
+**Č. Co je Azure Database Migration Service?**
 Azure Database Migration Service je plně spravovaná služba navržená tak, aby umožňovala bezproblémové migrace z více databázových zdrojů do datových platforem Azure s minimálními výpadky. Služba je aktuálně obecně dostupná a průběžné vývojové úsilí se zaměřuje na:
 
 * Spolehlivost a výkon.
 * Iterativní přidání párů zdroj-cíl.
 * Pokračující investice do migrace bez problémů.
 
-**Otázka. Jaké páry zdroj/cíl Azure Database Migration Service aktuálně podporují?**
+**Č. Které páry zdroj/cíl Azure Database Migration Service aktuálně podporují?**
 Služba aktuálně podporuje nejrůznější páry zdroj/cíl nebo scénáře migrace. Úplný seznam stavů každého dostupného scénáře migrace najdete v článku [o stavu scénářů migrace podporovaných Azure Database Migration Service](https://docs.microsoft.com/azure/dms/resource-scenario-status).
 
 Další scénáře migrace jsou ve verzi Preview a vyžadují odeslání jmenování prostřednictvím webu DMS Preview. Úplný seznam scénářů ve verzi Preview a o tom, jak se zaregistrovat k účasti v jedné z těchto nabídek, najdete na [webu DMS Preview](https://aka.ms/dms-preview/).
 
-**Dotaz: Jaké verze SQL Server Azure Database Migration Service podporují jako zdroj?**
+**Č. Jaké verze SQL Server Azure Database Migration Service podporují jako zdroj?**
 Při migraci z SQL Server jsou podporované zdroje pro Azure Database Migration Service SQL Server 2005 až SQL Server 2019.
 
 **Otázka: při použití Azure Database Migration Service, jaký je rozdíl mezi offline a online migrací?**
@@ -45,15 +45,15 @@ Pomocí Azure Database Migration Service můžete provádět offline a online mi
 > [!NOTE]
 > Použití Azure Database Migration Service k provedení online migrace vyžaduje vytvoření instance založené na cenové úrovni Premium. Další informace najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/database-migration/) Azure Database Migration Service.
 
-**Dotaz. jak Azure Database Migration Service porovnat s jinými nástroji pro migraci databáze Microsoft, jako je třeba databáze Pomocník s migrací (DMA) nebo Pomocník s migrací SQL Serveru (SSMA)?**
+**Č. Jak Azure Database Migration Service porovnat s jinými nástroji pro migraci databáze Microsoft, jako je třeba databáze Pomocník s migrací (DMA) nebo Pomocník s migrací SQL Serveru (SSMA)?**
 Azure Database Migration Service je upřednostňovanou metodou migrace databáze pro Microsoft Azure ve velkém měřítku. Podrobnější informace o tom, jak Azure Database Migration Service porovnává s dalšími nástroji pro migraci databáze Microsoft a doporučení týkající se používání služby pro různé scénáře, najdete v příspěvku na blogu, který [rozlišuje služby a nástroje pro migraci databáze od Microsoftu](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529).
 
-**Dotaz: jak Azure Database Migration Service porovnat s nabídkou Azure Migrate?**
+**Č. Jak Azure Database Migration Service porovnat s nabídkou Azure Migrate?**
 Azure Migrate pomáhá s migrací místních virtuálních počítačů do Azure IaaS. Služba posuzuje vhodnost migrace a velikost na základě výkonu a poskytuje odhad nákladů na provoz místních virtuálních počítačů v Azure. Azure Migrate je užitečná pro migrace z místních virtuálních počítačů na virtuální počítače Azure s IaaS do virtuálních počítačů s využitím virtuálních počítačů. Ale na rozdíl od Azure Database Migration Service Azure Migrate není specializovaná služba migrace databáze pro platformy Azure PaaS relačních databází, jako je například Azure SQL Database nebo spravovaná instance Azure SQL.
 
 ## <a name="setup"></a>Nastavení
 
-**Otázka. Jaké jsou požadavky na používání Azure Database Migration Service?**
+**Č. Jaké jsou požadavky na používání Azure Database Migration Service?**
 K zajištění plynulého chodu Azure Database Migration Service při provádění migrace databáze je nutné provést několik požadovaných požadavků. Některé požadavky platí ve všech scénářích (páry zdroj-cíl) podporované službou, zatímco jiné požadavky jsou jedinečné pro konkrétní scénář.
 
 Mezi všechny podporované scénáře migrace Azure Database Migration Service společné předpoklady, které zahrnují nutnost:
@@ -64,7 +64,7 @@ Mezi všechny podporované scénáře migrace Azure Database Migration Service s
 
 Seznam všech požadavků požadovaných k konkurenci konkrétních scénářů migrace pomocí Azure Database Migration Service najdete v souvisejících kurzech v [dokumentaci](https://docs.microsoft.com/azure/dms/dms-overview) k Azure Database Migration Service na docs.Microsoft.com.
 
-**Otázka. Návody najít IP adresu pro Azure Database Migration Service, aby bylo možné vytvořit seznam povolených pravidel brány firewall používaných pro přístup do zdrojové databáze pro migraci?**
+**Č. Návody najít IP adresu pro Azure Database Migration Service, aby bylo možné vytvořit seznam povolených pravidel brány firewall používaných pro přístup ke zdrojové databázi pro migraci?**
 Možná budete muset přidat pravidla firewallu, která Azure Database Migration Service umožní přístup ke zdrojové databázi pro migraci. IP adresa pro tuto službu je dynamická, ale pokud používáte ExpressRoute, tato adresa je soukromá a přiřazuje ji podnikovou síť. Nejjednodušší způsob, jak identifikovat příslušnou IP adresu, je vyhledat ve stejné skupině prostředků jako zřízené Azure Database Migration Service prostředku a najít tak přidružené síťové rozhraní. Obvykle název prostředku síťového rozhraní začíná předponou síťové karty a následuje jedinečným znakem a sekvencí, například síťový adaptér jj6tnztnmarpsskr82rbndyp. Výběrem tohoto prostředku síťového rozhraní můžete zobrazit IP adresu, která musí být zahrnutá do seznamu povolených položek na stránce Přehled prostředků Azure Portal.
 
 Je také možné, že budete muset zahrnout zdroj portu, který SQL Server naslouchá na seznamu povolených. Ve výchozím nastavení je to port 1433, ale zdrojová SQL Server může být nakonfigurována tak, aby naslouchala i na dalších portech. V takovém případě je potřeba zahrnout tyto porty i na seznam povolených. Můžete určit port, na kterém SQL Server naslouchá, pomocí dotazu zobrazení dynamické správy:
@@ -85,12 +85,12 @@ Můžete také určit port, který SQL Server naslouchá, pomocí dotazování p
     GO
 ```
 
-**Q. Návody nastavit Microsoft Azure Virtual Network?**
+**Č. Návody nastavit Microsoft Azure Virtual Network?**
 I když máte několik kurzů Microsoftu, které vás provedou procesem nastavení virtuální sítě, zobrazí se oficiální dokumentace v článku [Virtual Network Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
 ## <a name="usage"></a>Využití
 
-**Otázka. co je souhrn kroků vyžadovaných k provedení migrace databáze pomocí Azure Database Migration Service?**
+**Č. Co je souhrn kroků vyžadovaných k provedení migrace databáze pomocí Azure Database Migration Service?**
 Během typické migrace databáze postupujte takto:
 
 1. Vytvořte cílové databáze (y).
@@ -105,13 +105,13 @@ Během typické migrace databáze postupujte takto:
 
 ## <a name="troubleshooting-and-optimization"></a>Řešení potíží a optimalizace
 
-**Otázka. jsem nastavil projekt migrace v DMS a mám potíže s připojením ke zdrojové databázi. Co mám dělat?**
+**Č. Jsem v DMS nastavil (a) projekt migrace a mám potíže s připojením ke zdrojové databázi. Co mám dělat?**
 Pokud máte při práci na migraci problémy s připojením k vašemu zdrojovému databázovému systému, vytvořte virtuální počítač ve virtuální síti, se kterou jste nastavili instanci DMS. Na virtuálním počítači byste měli být schopni spustit test připojení, například použít soubor UDL k otestování připojení k SQL Server nebo stažení 3Tu Robo pro testování připojení MongoDB. Pokud je test připojení úspěšný, neměli byste mít problém s připojením ke zdrojové databázi. Pokud se test připojení nezdařil, obraťte se na správce sítě.
 
-**Otázka. Proč je můj Azure Database Migration Service nedostupný nebo zastavený?**
+**Č. Proč je můj Azure Database Migration Service nedostupný nebo zastavený?**
 Pokud uživatel explicitně zastaví Azure Database Migration Service (DMS) nebo pokud je služba neaktivní po dobu 24 hodin, služba bude v zastaveném nebo automaticky pozastaveném stavu. V každém případě nebude služba k dispozici a je ve stavu Zastaveno.  Chcete-li obnovit aktivní migrace, restartujte službu.
 
-**Otázka. existují doporučení pro optimalizaci výkonu Azure Database Migration Service?**
+**Č. Existují nějaká doporučení pro optimalizaci výkonu Azure Database Migration Service?**
 K urychlení migrace databáze pomocí služby můžete použít několik věcí:
 
 * Při vytváření instance služby použijte cenovou úroveň Pro obecné účely více PROCESORů, aby služba mohla využívat více vCPU k paralelnímu a rychlejšímu přenosu dat.
