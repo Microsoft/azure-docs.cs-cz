@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/25/2019
-ms.openlocfilehash: 66375d83dca4edef17919e3b493d5e45be37cc40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0dbab7db45a9f97db48bbf97aba55b5943f623a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255623"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282438"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Kurz: migrace MongoDB do rozhraní API služby Azure Cosmos DB pro MongoDB online pomocí DMS
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Vytvořte instanci služby Azure Database Migration Service.
 > * Vytvořte projekt migrace pomocí Azure Database Migration Service.
 > * Spuštění migrace
-> * Monitorování migrace
+> * Monitorujte migraci.
 > * Až budete připraveni, dokončete migraci.
 
 V tomto kurzu migrujete datovou sadu v MongoDB hostovaném na virtuálním počítači Azure, abyste Azure Cosmos DB rozhraní API pro MongoDB s minimálními výpadky pomocí Azure Database Migration Service. Pokud ještě nemáte nastavený zdroj MongoDB, přečtěte si článek [instalace a konfigurace MongoDB na virtuálním počítači s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb).
@@ -201,7 +201,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
     > [!NOTE]
     > Migraci a shromažďování databáze můžete provádět paralelně pomocí několika instancí Azure Database Migration Service v případě potřeby zrychlit spuštění.
 
-   Můžete také zadat horizontálních oddílů klíč, který bude využívat [dělení v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview) pro zajištění optimální škálovatelnosti. Nezapomeňte si projít [osvědčené postupy pro výběr klíče horizontálních oddílů/partition](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). Pokud nemáte klíč oddílu, můžete pro lepší propustnost vždy použít **_ID** jako klíč horizontálních oddílů.
+   Můžete také zadat horizontálních oddílů klíč, který bude využívat [dělení v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview) pro zajištění optimální škálovatelnosti. Nezapomeňte si projít  [osvědčené postupy pro výběr klíče horizontálních oddílů/partition](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey). Pokud nemáte klíč oddílu, můžete pro lepší propustnost vždy použít **_ID** jako klíč horizontálních oddílů.
 
    ![Vybrat tabulky kolekcí](media/tutorial-mongodb-to-cosmosdb-online/dms-collection-setting1.png)
 

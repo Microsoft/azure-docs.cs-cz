@@ -1,6 +1,6 @@
 ---
 title: Rozšíření a funkce virtuálních počítačů Azure pro Linux
-description: Zjistěte, jaká rozšíření jsou k dispozici pro virtuální počítače Azure seskupená podle toho, co poskytují nebo zlepšují.
+description: Zjistěte, jaká rozšíření jsou k dispozici pro virtuální počítače Azure v systému Linux, seskupená podle toho, co poskytují nebo zlepšují.
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: bc29a62f469b0b9d091fcdef2488afba764a09fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b61bbacf889df23455266fb81124e14ef44388d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080348"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336118"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozšíření a funkce virtuálních počítačů pro Linux
 
@@ -37,7 +37,7 @@ K dispozici je několik různých rozšíření virtuálních počítačů Azure
 
 Kromě rozšíření specifických pro procesy je k dispozici rozšíření vlastních skriptů pro virtuální počítače s Windows i Linux. Rozšíření vlastních skriptů pro Linux umožňuje spustit libovolný skript bash na virtuálním počítači. Vlastní skripty jsou užitečné pro navrhování nasazení Azure, která vyžadují konfiguraci, a to nad rámec toho, co můžou využít nativní nástroje Azure. Další informace najdete v tématu [rozšíření vlastních skriptů pro virtuální počítače Linux](custom-script-linux.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro zpracování rozšíření na virtuálním počítači potřebujete nainstalovaného agenta Azure Linux. Některá jednotlivá rozšíření mají požadavky, jako je například přístup k prostředkům nebo závislostem.
 
@@ -105,7 +105,7 @@ info:    Executing command vm extension set
 info:    vm extension set command OK
 ```
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Rozšíření virtuálních počítačů je možné použít pro existující virtuální počítač prostřednictvím Azure Portal. Vyberte virtuální počítač na portálu, klikněte na **rozšíření**a pak vyberte **Přidat**. V seznamu dostupných rozšíření vyberte požadované rozšíření a postupujte podle pokynů v průvodci.
 
@@ -231,7 +231,7 @@ Vydavatelé zpřístupňují aktualizace oblastí v různých časech, takže je
 
 #### <a name="agent-updates"></a>Aktualizace agenta
 
-Agent virtuálního počítače se systémem Linux obsahuje kód *agenta zřizování* a *rozšíření pro zpracování* kódu v jednom balíčku, který nelze oddělit. *Agent zřizování* můžete zakázat, pokud chcete zřídit Azure pomocí Cloud-init. Postup najdete v tématu [použití Cloud-init](../linux/using-cloud-init.md).
+Agent virtuálního počítače se systémem Linux obsahuje kód *agenta zřizování* a *rozšíření pro zpracování*  kódu v jednom balíčku, který nelze oddělit. *Agent zřizování* můžete zakázat, pokud chcete zřídit Azure pomocí Cloud-init. Postup najdete v tématu [použití Cloud-init](../linux/using-cloud-init.md).
 
 Podporované verze agentů můžou používat automatické aktualizace. Jediný kód, který lze aktualizovat, je *kód pro zpracování rozšíření*, nikoli kód zřizování. *Kód zřizovacího agenta* je kód spustit jako.
 

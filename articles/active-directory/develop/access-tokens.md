@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 09/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 9aa5eb54d79d98627697c51ee7dcb16a44fccb60
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c59dbe9464e70c1a071b64fabf91ce56f409d8d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053204"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258517"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Tokeny přístupu Microsoft Identity Platform
 
@@ -266,9 +266,17 @@ Aktualizační tokeny může server odvolat z důvodu změny přihlašovacích �
 | Správce odvolá všechny aktualizační tokeny pro uživatele [prostřednictvím PowerShellu](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) . | Odvoláno | Odvoláno |Odvoláno | Odvoláno | Odvoláno |
 | Jednotné odhlašování ([v 1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out), [v 2.0](v2-protocols-oidc.md#single-sign-out) ) na webu | Odvoláno | Zůstane aktivní | Odvoláno | Zůstane aktivní | Zůstane aktivní |
 
+#### <a name="non-password-based"></a>Založené na jiných heslách
+
+Přihlášení *bez hesla* je jeden z nich, kdy uživatel nezadal heslo pro jeho získání. Příklady přihlášení pomocí hesla bez hesla zahrnují:
+
+- Použití vaší plochy ve Windows Hello
+- FIDO2 klíč
+- SMS
+- Hlas
+- PIN 
+
 > [!NOTE]
-> Přihlášení "nezaložené na heslech" je jedno, kde uživatel nezadal heslo pro jeho získání. Například použití vaší obličeje s Windows Hello, klíčem FIDO2 nebo PIN kódem.
->
 > Primární obnovovací tokeny (PRT) ve Windows 10 jsou oddělené na základě přihlašovacích údajů. Například Windows Hello a heslo mají své odpovídající PRTs, které jsou izolované od sebe. Když se uživatel přihlásí pomocí přihlašovacích údajů Hello (PIN nebo biometrika) a pak změní heslo, bude odvolaný PRT založený na hesle, který jste dříve získali. Při opětovném přihlášení pomocí hesla se zruší platnost starého PRT a vyžádá se nový.
 >
 > Při použití k načtení nového přístupového tokenu a obnovení tokenu se tokeny pro aktualizaci neověřují nebo odvolají.  Vaše aplikace by ale měla staré zrušit, jakmile se použije, a nahradit ji novým, protože nový token má nový čas vypršení platnosti. 

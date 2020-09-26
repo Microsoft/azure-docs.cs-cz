@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 997064ad030d22531277f1c412add6916eb7733f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230462"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294524"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Instalace agenta Log Analytics do počítačů se systémem Linux
 Tento článek poskytuje podrobné informace o instalaci agenta Log Analytics v počítačích se systémem Linux pomocí následujících metod:
@@ -93,7 +93,7 @@ V následující tabulce jsou vysvětlené balíčky požadované pro [Podporova
 >[!NOTE]
 >Aby bylo možné shromažďovat zprávy syslog, jsou vyžadovány buď rsyslog, nebo syslog-ng. Výchozí démon procesu Syslog verze 5 Red Hat Enterprise Linux, CentOS a verze Oracle Linux (sysklog) není pro shromažďování událostí syslog podporován. Aby bylo možné shromažďovat data syslog z této verze těchto distribucí, je třeba nainstalovat démona rsyslog a nakonfigurovat tak, aby nahradila sysklog.
 
-## <a name="network-requirements"></a>Síťové požadavky
+## <a name="network-requirements"></a>Požadavky sítě
 Požadavky na síť pro agenta pro Linux najdete v tématu [Přehled agenta Log Analytics](log-analytics-agent.md#network-requirements) .
 
 ## <a name="agent-install-package"></a>Balíček pro instalaci agenta
@@ -102,10 +102,10 @@ Agent Log Analytics pro Linux se skládá z více balíčků. Soubor verze obsah
 
 **Balíček** | **Verze** | **Popis**
 ----------- | ----------- | --------------
-omsagent | 1.12.15 | Agent Log Analytics pro Linux
+omsagent | 1.13.9 | Agent Log Analytics pro Linux
 omsconfig | 1.1.1 | Agent konfigurace pro agenta Log Analytics
-OMI | 1.6.3 | Otevřete infrastrukturu pro správu (OMI) – server Lightweight CIM. *Všimněte si, že OMI vyžaduje přístup k hlavnímu adresáři, aby bylo možné spustit úlohu cron potřebnou pro fungování služby.*
-SCX | 1.6.3 | OMI poskytovatelé CIM pro metriky výkonu operačního systému
+OMI | 1.6.4 | Otevřete infrastrukturu pro správu (OMI) – server Lightweight CIM. *Všimněte si, že OMI vyžaduje přístup k hlavnímu adresáři, aby bylo možné spustit úlohu cron potřebnou pro fungování služby.*
+SCX | 1.6.4 | OMI poskytovatelé CIM pro metriky výkonu operačního systému
 Apache – cimprov | 1.0.1 | Poskytovatel sledování výkonu serveru Apache HTTP pro OMI. Instaluje se jenom v případě, že se zjistí server Apache HTTP.
 MySQL – cimprov | 1.0.1 | Poskytovatel sledování výkonu serveru MySQL pro OMI. Instaluje se jenom v případě, že se zjistil server MySQL/MariaDB.
 Docker – cimprov | 1.0.0 | Poskytovatel Docker pro OMI. Instaluje se jenom v případě, že se detekuje Docker.

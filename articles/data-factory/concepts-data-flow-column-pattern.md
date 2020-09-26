@@ -6,19 +6,19 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: c6a2d38644d844cb1231a24465478b7f70a85111
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/16/2020
+ms.openlocfilehash: 74656401d7b0ef12cf509674921a6a5153ce992d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531136"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282914"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Použití vzorů sloupců v mapování toku dat
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Několik transformací toku dat mapování vám umožní odkazovat na sloupce šablon na základě vzorů namísto pevně kódovaných názvů sloupců. Tato shoda se označuje jako *vzory sloupců*. Můžete definovat vzory, které odpovídají sloupcům na základě názvu, datového typu, datového proudu nebo pozice místo vyžadování přesných názvů polí. Existují dva scénáře, kdy jsou vhodné vzory sloupců:
+Několik transformací toku dat mapování vám umožní odkazovat na sloupce šablon na základě vzorů namísto pevně kódovaných názvů sloupců. Tato shoda se označuje jako *vzory sloupců*. Můžete definovat vzory, které odpovídají sloupcům na základě názvu, datového typu, datového proudu, zdroje nebo pozice místo vyžadování přesných názvů polí. Existují dva scénáře, kdy jsou vhodné vzory sloupců:
 
 * Pokud se pole příchozího zdroje často mění, například případ změny sloupců v textových souborech nebo NoSQL databázích. Tento scénář je známý jako [posun schématu](concepts-data-flow-schema-drift.md).
 * Pokud chcete provést běžnou operaci pro velkou skupinu sloupců. Například, chcete-li přetypování každého sloupce, který má "Total" v názvu sloupce na hodnotu Double.
@@ -31,7 +31,7 @@ Chcete-li přidat vzorek sloupce do odvozeného sloupce, agregace nebo transform
 
 ![vzory sloupců](media/data-flow/add-column-pattern.png "Vzory sloupců")
 
-K zadání podmínky shody použijte [Tvůrce výrazů](concepts-data-flow-expression-builder.md) . Vytvořte logický výraz, který odpovídá sloupcům na základě `name` , `type` , `stream` a `position` sloupce. Vzor bude mít vliv na libovolný sloupec, posunovaná nebo definovaná, kde podmínka vrátí hodnotu true.
+K zadání podmínky shody použijte [Tvůrce výrazů](concepts-data-flow-expression-builder.md) . Vytvořte logický výraz, který odpovídá sloupcům na základě `name` , `type` , `stream` , `origin` a `position` sloupce. Vzor bude mít vliv na libovolný sloupec, posunovaná nebo definovaná, kde podmínka vrátí hodnotu true.
 
 Dvě pole výrazu pod podmínkou shody určují nové názvy a hodnoty ovlivněných sloupců. Slouží `$$` k odkazování na existující hodnotu spárovaného pole. Levý rámeček výrazu definuje název a pravé pole výrazu definuje hodnotu.
 
@@ -45,7 +45,7 @@ Pokud chcete ověřit, jestli je vaše shoda podmínky správná, můžete ově�
 
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Mapování na základě pravidel pro výběr a jímku
 
-Při mapování sloupců ve zdroji a výběru transformací můžete přidat buď pevné mapování, nebo mapování na základě pravidel. Odpovídá na základě `name` sloupců, `type` , a `stream` `position` . Můžete mít libovolnou kombinaci s pevným mapováním a mapování na základě pravidel. Ve výchozím nastavení budou všechny projekce s více než 50 sloupci standardně mapování na základě pravidel, které se shoduje s každým sloupcem a výstupem zadaného názvu. 
+Při mapování sloupců ve zdroji a výběru transformací můžete přidat buď pevné mapování, nebo mapování na základě pravidel. Odpovídá na základě `name` sloupců, `type` , `stream` , `origin` a `position` . Můžete mít libovolnou kombinaci s pevným mapováním a mapování na základě pravidel. Ve výchozím nastavení budou všechny projekce s více než 50 sloupci standardně mapování na základě pravidel, které se shoduje s každým sloupcem a výstupem zadaného názvu. 
 
 Chcete-li přidat mapování na základě pravidla, klikněte na tlačítko **Přidat mapování** a vyberte **mapování na základě pravidel**.
 
@@ -82,6 +82,7 @@ Výše uvedený příklad se shoduje se všemi podsloupci komplexního sloupce `
 * `type` představuje datový typ každého příchozího sloupce.
 * `stream` představuje název spojený s každým datovým proudem nebo transformaci v toku.
 * `position` je pořadové místo sloupců v toku dat
+* `origin` je transformace, ve které sloupec pochází nebo byl naposledy aktualizován.
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [jazyku výrazu](data-flow-expression-functions.md) mapování dat pro transformaci dat

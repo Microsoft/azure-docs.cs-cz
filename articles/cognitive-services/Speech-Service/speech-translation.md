@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Překlad řeči
-ms.openlocfilehash: 67bb418926932ebb7e443e77c65dd12c7352049d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e4bc2f07fce3917bfa59f79305498bb91889344d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401210"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359796"
 ---
 # <a name="what-is-speech-translation"></a>Co je překlad řeči?
 
@@ -63,5 +63,5 @@ Pokud vaše aplikace, nástroje nebo produkty používají [Translator Speech AP
 ## <a name="next-steps"></a>Další kroky
 
 * Dokončete [rychlý Start](get-started-speech-translation.md) překladu řeči.
-* [Získejte zdarma klíč předplatného služby Speech](get-started.md)
+* [Získejte zdarma klíč předplatného služby Speech](overview.md#try-the-speech-service-for-free)
 * [Získat sadu Speech SDK](speech-sdk.md)

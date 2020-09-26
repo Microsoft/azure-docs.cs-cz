@@ -4,12 +4,12 @@ description: Naučte se škálovat webovou aplikaci prostředků, cloudovou slu�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d37b1bad397e6170e2a7992a0a9671d6ca9c25ef
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: f784ce9eb4c465c83bea28e05e7f423e0b55c947
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651720"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294245"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatické škálování v Azure
 Tento článek popisuje, jak nastavit nastavení automatického škálování pro váš prostředek v portál Microsoft Azure.
@@ -59,7 +59,7 @@ Teď si projdeme jednoduchý podrobný návod k vytvoření vašeho prvního nas
    ![Škálování na základě procesoru][8]
 1. Klikněte na **Uložit**.
 
-Gratulujeme! Úspěšně jste vytvořili první nastavení škálování pro automatické škálování webové aplikace na základě využití procesoru.
+Blahopřejeme! Úspěšně jste vytvořili první nastavení škálování pro automatické škálování webové aplikace na základě využití procesoru.
 
 > [!NOTE]
 > Stejné kroky jsou použitelné pro zahájení práce se sadou škálování virtuálních počítačů nebo s rolí cloudové služby.
@@ -119,7 +119,7 @@ Při horizontálním navýšení kapacity na více instancí může App Service 
 
 ### <a name="health-check-path"></a>Cesta kontroly stavu
 
-Cesta musí odpovídat do dvou minut se stavovým kódem mezi 200 a 299 (včetně). Pokud cesta nereaguje do dvou minut nebo vrátí stavový kód mimo daný rozsah, instance se považuje za "není v pořádku". Při kontrole stavu se integruje s funkcemi ověřování a autorizace App Service, bude systém kontaktovat koncový bod i v případě, že jsou povolené tyto funkce secuity. Pokud používáte vlastní ověřovací systém, musí cesta k kontrole stavu umožňovat anonymní přístup. Pokud má lokalita povolenou možnost HTTP, služba Healthcheck nejprve narazí na koncový**bod HTTP a** pak dodrží přesměrování HTTP 307 na koncový bod HTTPS.
+Cesta musí odpovídat do dvou minut se stavovým kódem mezi 200 a 299 (včetně). Pokud cesta nereaguje do dvou minut nebo vrátí stavový kód mimo daný rozsah, instance se považuje za "není v pořádku". Při kontrole stavu se integruje s funkcemi ověřování a autorizace App Service, bude systém kontaktovat koncový bod i v případě, že jsou povolené tyto funkce secuity. Pokud používáte vlastní ověřovací systém, musí cesta k kontrole stavu umožňovat anonymní přístup. Pokud má lokalita povolenou možnost HTTP**s**, bude žádost Healthcheck odeslána prostřednictvím protokolu HTTP**s**.
 
 Cesta pro kontrolu stavu by měla kontrolovat kritické součásti aplikace. Například pokud vaše aplikace závisí na databázi a systému zasílání zpráv, koncový bod kontroly stavu by se měl k těmto součástem připojit. Pokud se aplikace nemůže připojit k důležité součásti, měla by tato cesta vracet kód odpovědi 500 na úrovni, aby označoval, že aplikace není v pořádku.
 

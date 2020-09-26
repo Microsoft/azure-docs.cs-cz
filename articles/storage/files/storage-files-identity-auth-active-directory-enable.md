@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 1a517b5eeac12f7d1ff342206300831d7c38ed28
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: f64cad731998fefb2cfa694314e42f0dfb629eb4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563399"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322066"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Přehled – místní Active Directory Domain Services ověřování pomocí protokolu SMB pro sdílené složky Azure
 
@@ -24,7 +24,7 @@ Pokud se sdílenými složkami Azure teprve začínáte, doporučujeme si přeč
 
 - Služba AD DS identit, které se používají pro místní služba AD DS ověřování souborů Azure, musí být synchronizované do Azure AD. Synchronizace hodnot hash hesel je volitelná. 
 - Podporuje sdílené složky Azure spravované pomocí Azure File Sync.
-- Podporuje ověřování pomocí protokolu Kerberos se službou AD s šifrováním RC4-HMAC a AES 256. Šifrování Kerberos 128 se ještě nepodporuje.
+- Podporuje ověřování pomocí protokolu Kerberos se službou AD s šifrováním RC4-HMAC a [AES 256](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption). Šifrování Kerberos 128 se ještě nepodporuje.
 - Podporuje prostředí s jednotným přihlašováním.
 - Podporuje se jenom na klientech, na kterých běží novější verze operačních systémů než Windows 7 nebo Windows Server 2008 R2.
 - Podporuje se jenom s doménovou strukturou služby AD, na kterou je účet úložiště zaregistrovaný. Ve výchozím nastavení můžete přistupovat ke sdíleným složkám Azure jenom s přihlašovacími údaji služba AD DS z jedné doménové struktury. Pokud potřebujete mít přístup ke sdílené složce Azure z jiné doménové struktury, ujistěte se, že máte nakonfigurovanou správnou důvěryhodnost doménové struktury. Podrobnosti najdete v [nejčastějších dotazech](storage-files-faq.md#ad-ds--azure-ad-ds-authentication) .

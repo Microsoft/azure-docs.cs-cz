@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: 4b4e454532dec31cbcc92269d63c8be1ff92a9f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 25a50a2841a03929804be45be8012f9b5d0457ff
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247519"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357127"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorování a Diagnostika pro Azure Service Fabric
 
@@ -39,7 +39,7 @@ Service Fabric poskytuje ucelenou sadu událostí z boxu. K těmto [událostem S
 
 * Eventstoru – Eventstoru je funkce nabízená platformou, která poskytuje Service Fabric události platformy dostupné v Service Fabric Explorer a REST API. Pro každou entitu, např. Node, službu, aplikace a dotaz na základě času události, se můžete podívat na to, co se ve vašem clusteru chystá. Další informace o Eventstoru najdete v tématu [Přehled eventstoru](service-fabric-diagnostics-eventstore.md).    
 
-![Eventstoru](media/service-fabric-diagnostics-overview/eventstore.png)
+![Snímek obrazovky se zobrazí na kartě události v podokně uzly několik událostí, včetně události NodeDown.](media/service-fabric-diagnostics-overview/eventstore.png)
 
 Poskytnuté diagnostiky jsou ve formě komplexní sady událostí mimo pole. Tyto [události Service Fabric](service-fabric-diagnostics-events.md) ilustrují akce prováděné platformou na různých entitách, jako jsou uzly, aplikace, služby, oddíly atd. Pokud by byl uzel v posledním výše uvedeném případě mimo provoz, platforma by vygenerovala `NodeDown` událost a můžete ji okamžitě upozornit vámi zvoleným monitorovacím nástrojem. Mezi další běžné příklady patří `ApplicationUpgradeRollbackStarted` nebo `PartitionReconfigured` během převzetí služeb při selhání. **Stejné události jsou k dispozici v clusterech s Windows i Linux.**
 

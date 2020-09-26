@@ -8,14 +8,14 @@ ms.custom: sqldbrb=1
 ms.topic: tutorial
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 11/21/2019
-ms.openlocfilehash: d89bc33b0ddd0793a3c55dbd64bef9678bd723e7
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9d6592ccfb3ba5236a660d689d8b5d2cd1600c48
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920139"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283186"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Kurz: Konfigurace transakční replikace mezi spravovanou instancí Azure SQL a SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -85,7 +85,7 @@ Vytvořte virtuální počítač s SQL Server pomocí [Azure Portal](https://por
 - Název: `sql-vm-sub`
 - Obrázek: SQL Server 2016 nebo vyšší
 - Skupina prostředků: stejná jako spravovaná instance
-- Virtuální síť:`sql-vm-sub-vnet`
+- Virtuální síť: `sql-vm-sub-vnet`
 
 Další informace o nasazení SQL Server virtuálního počítače do Azure najdete v tématu [rychlý Start: Vytvoření virtuálního počítače s SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md).
 
@@ -146,7 +146,7 @@ Privátní zóna DNS umožňuje směrování DNS mezi spravovanými instancemi a
 
 ### <a name="create-a-private-dns-zone"></a>Vytvoření privátní zóny DNS
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Pokud chcete vytvořit nový prostředek Azure, vyberte **vytvořit prostředek** .
 1. Hledat `private dns zone` na Azure Marketplace.
 1. Zvolte prostředek **zóny privátní DNS** publikovaný Microsoftem a pak vyberte **vytvořit** a vytvořte zónu DNS.
@@ -184,11 +184,11 @@ Privátní zóna DNS umožňuje směrování DNS mezi spravovanými instancemi a
 
 [Vytvořte účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) pro pracovní adresář a pak vytvořte [sdílenou složku](../../storage/files/storage-how-to-create-file-share.md) v rámci účtu úložiště.
 
-Zkopírujte cestu ke sdílené složce ve formátu:`\\storage-account-name.file.core.windows.net\file-share-name`
+Zkopírujte cestu ke sdílené složce ve formátu: `\\storage-account-name.file.core.windows.net\file-share-name`
 
 Příklad: `\\replstorage.file.core.windows.net\replshare`
 
-Zkopírujte připojovací řetězec přístupového klíče k úložišti ve formátu:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Zkopírujte připojovací řetězec přístupového klíče k úložišti ve formátu: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
 Příklad: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
 
@@ -377,8 +377,8 @@ Pravděpodobnou příčinou je to, že port 445 je uzavřený buď v bráně fir
 
 Tato chyba může způsobit použití lomítka místo zpětného lomítka v cestě k souboru pro sdílenou složku.
   
-  - To je v pořádku:`\\replstorage.file.core.windows.net\replshare`
-  - Příčinou může být Chyba operačního systému 55:`'\\replstorage.file.core.windows.net/replshare'`
+  - To je v pořádku: `\\replstorage.file.core.windows.net\replshare`
+  - Příčinou může být Chyba operačního systému 55: `'\\replstorage.file.core.windows.net/replshare'`
 
 ### <a name="could-not-connect-to-subscriber"></a>Nepovedlo se připojit k předplatiteli.
 

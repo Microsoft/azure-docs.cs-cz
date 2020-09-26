@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 1e7f832faffc09cb7bbbcca73763b09f58cbb412
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: d93ced4b45befec207494909de61d30a98d2a67e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019789"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333728"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Shromažďování dat telemetrie pro vyhledávání analýz provozu
 
@@ -51,7 +51,7 @@ Zástupce, který funguje pro některé typy projektů aplikace Visual Studio, s
 
 1. Pro vývoj aplikací Visual Studio a ASP.NET otevřete řešení a vyberte **projekt**  >  **Přidat telemetrie Application Insights**.
 
-1. Klikněte **na Začínáme.**
+1. Klikněte na **Začít**.
 
 1. Zaregistrujte svou aplikaci poskytnutím účet Microsoft, předplatným Azure a prostředku Application Insights (výchozí prostředek je výchozí). Klikněte na **Zaregistrovat**.
 

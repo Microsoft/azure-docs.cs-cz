@@ -1,7 +1,7 @@
 ---
 title: Použití rozhraní API pro kontrolu pravopisu Bingu
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si o režimech Kontrola pravopisu Bingu, nastavení a dalších informacích týkajících se rozhraní API.
+description: Přečtěte si o režimech Kontrola pravopisu Bingu, nastavení a dalších informacích, které se vztahují k rozhraní API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: c5c9ad8be8bd4cd834b01a0c67e0bbc81b8cdd4a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a17ed0f13e352fb185d20d9dc2d7bfffa74ac957
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68881887"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334765"
 ---
 # <a name="using-the-bing-spell-check-api"></a>Použití rozhraní API pro kontrolu pravopisu Bingu
 
@@ -40,11 +40,11 @@ Režim `Spell` je agresivnější a vrací lepší výsledky hledání. Režim `
 > * Maximální podporovaná délka dotazu je níže. Pokud dotaz překračuje maximální délku, dotaz a jeho výsledky se nezmění.
 >    * 130 znaků pro následující kódy jazyků: EN, de, ES, FR, pl, PT, sv, ru, NL, NB, TR-tr, IT, zh, Ko. 
 >    * 65 znaků pro všechny ostatní.
-> * Režim pravopisu nepodporuje v dotazech hranaté`[` závorky `]`(a) a může způsobit nekonzistentní výsledky. Při použití režimu pravopisu je doporučujeme odebrat z vašich dotazů.
+> * Režim pravopisu nepodporuje v dotazech hranaté závorky ( `[` a `]` ) a může způsobit nekonzistentní výsledky. Při použití režimu pravopisu je doporučujeme odebrat z vašich dotazů.
 
 ## <a name="market-setting"></a>Nastavení trhu
 
-V žádosti by se měl zadat [kód na trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes) s parametrem `mkt` dotazu. Rozhraní API bude jinak používat výchozí trh na základě IP adresy žádosti.
+V žádosti by se měl zadat [kód na trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes) s `mkt` parametrem dotazu. Rozhraní API bude jinak používat výchozí trh na základě IP adresy žádosti.
 
 
 ## <a name="http-post-and-get-support"></a>Podpora HTTP POST a GET

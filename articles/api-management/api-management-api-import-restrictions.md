@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86ed7f3941965bcac525a2ba71786d20a4753489
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513367"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335496"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Omezení pro import rozhraní API a známé problémy
 
@@ -34,15 +34,15 @@ Pokud obdržíte chyby při importu dokumentu OpenAPI, ujistěte se, že jste ho
 ### <a name="general"></a><a name="open-api-general"> </a>Obecné
 
 -   Požadované parametry v obou cestách i dotazech musí mít jedinečné názvy. (V OpenAPI musí být název parametru jedinečný jenom v rámci umístění, například cesta, dotaz, záhlaví. V API Management ale povolujeme, aby byly operace rozlišené pomocí cest i parametrů dotazů (které OpenAPI nepodporuje). To je důvod, proč potřebujeme, aby názvy parametrů byly jedinečné v rámci celé šablony URL.)
--   `\$ref`Ukazatelé nemůžou odkazovat na externí soubory.
--   `x-ms-paths`a `x-servers` jsou jediná podporovaná rozšíření.
+-   `\$ref` Ukazatelé nemůžou odkazovat na externí soubory.
+-   `x-ms-paths` a `x-servers` jsou jediná podporovaná rozšíření.
 -   Vlastní rozšíření se při importu ignorují a neukládají se ani neuchovávají pro export.
--   `Recursion`-API Management nepodporuje definice, které jsou definovány rekurzivně (například schémata odkazující samy na sebe).
+-   `Recursion` -API Management nepodporuje definice, které jsou definovány rekurzivně (například schémata odkazující samy na sebe).
 -   Adresa URL zdrojového souboru (je-li k dispozici) se použije na relativní adresy URL serveru.
 -   Definice zabezpečení jsou ignorovány.
 -   Vložené definice schématu pro operace rozhraní API nejsou podporovány. Definice schématu jsou definované v oboru rozhraní API a můžou se na ně odkazovat v oborech požadavků a odpovědích na operace rozhraní API.
 -   Definovaný parametr adresy URL musí být součástí šablony adresy URL.
--   `Produces`klíčové slovo, které popisuje typy MIME vracené rozhraním API, se nepodporuje. 
+-   `Produces` klíčové slovo, které popisuje typy MIME vracené rozhraním API, se nepodporuje. 
 
 ### <a name="openapi-version-2"></a><a name="open-api-v2"> </a>Openapi verze 2
 
@@ -51,13 +51,17 @@ Pokud obdržíte chyby při importu dokumentu OpenAPI, ujistěte se, že jste ho
 ### <a name="openapi-version-3"></a><a name="open-api-v3"> </a>Openapi verze 3
 
 -   Pokud `servers` je zadáno mnoho, API Management se pokusí vybrat první adresu URL https. Pokud nejsou žádné adresy URL protokolu HTTPs, první adresa URL protokolu HTTP. Pokud neexistují žádné adresy URL protokolu HTTP, adresa URL serveru bude prázdná.
--   `Examples`není podporován, ale `example` je.
+-   `Examples` není podporován, ale `example` je.
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI mechanismy importu, aktualizací a exportu
 
+### <a name="general"></a><a name="open-import-export-general"> </a>Obecné
+
+-   Definice rozhraní API exportované z API Management služby jsou primárně určené pro aplikace, které jsou externí pro API Management službu, které potřebují volat rozhraní API hostované ve službě API Management Service. Exportované definice rozhraní API nejsou určené k importování do stejné nebo jiné API Management služby. Pro správu konfigurace rozhraní API defiitions napříč různými či/envionments najdete informace v dokumentaci týkající se používání služby API Management v Gitu. 
+
 ### <a name="add-new-api-via-openapi-import"></a>Přidání nového rozhraní API prostřednictvím importu OpenAPI
 
-Pro každou operaci nalezenou v dokumentu OpenAPI se vytvoří nová operace s názvem prostředku Azure a zobrazovaným názvem nastaveným na `operationId` a `summary` v uvedeném pořadí. `operationId`hodnota je normalizována podle pravidel popsaných níže. `summary`hodnota je importována tak, jak je, a její délka je omezena na 300 znaků.
+Pro každou operaci nalezenou v dokumentu OpenAPI se vytvoří nová operace s názvem prostředku Azure a zobrazovaným názvem nastaveným na `operationId` a `summary` v uvedeném pořadí. `operationId` hodnota je normalizována podle pravidel popsaných níže. `summary` hodnota je importována tak, jak je, a její délka je omezena na 300 znaků.
 
 Pokud `operationId` není zadaný (tj. není přítomen, `null` nebo je prázdný), bude hodnota názvu prostředku Azure vygenerována kombinací metody HTTP a šablony cesty, například `get-foo` .
 
@@ -86,7 +90,7 @@ Normalizační pravidla pro operationId
 
 - Převést na malá písmena.
 - Nahraďte každou sekvenci nealfanumerických znaků jednou pomlčkou, například, `GET-/foo/{bar}?buzz={quix}` do `get-foo-bar-buzz-quix-` .
-- Na obou stranách můžete oříznout pomlčky, například se `get-foo-bar-buzz-quix-` stane`get-foo-bar-buzz-quix`
+- Na obou stranách můžete oříznout pomlčky, například se `get-foo-bar-buzz-quix-` stane `get-foo-bar-buzz-quix`
 - Ořízne tak, aby odpovídala 76 znakům, čtyři znaky menší než maximální omezení pro název prostředku.
 - V případě potřeby použijte zbývající čtyři znaky pro příponu odstranění duplicitních dat ve formě `-1, -2, ..., -999` .
 

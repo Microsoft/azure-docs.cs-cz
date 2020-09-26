@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: c32b3ee5c4689e960834d543de1ca377e918751d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b36641677dbf36402c7f578b9b1887c52f441afd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82106283"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322474"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Dekódovat zprávy EDIFACT pro Azure Logic Apps s Enterprise Integration Pack
 
@@ -84,13 +84,13 @@ Dekódovaný EDIFACT konektor provádí tyto úlohy:
   * Kontroluje kontrolní číslo sady transakcí s jinými čísly řízení sady transakcí v této skupině.
 * Rozdělí výměnu na sady transakcí nebo zachová celý výměnu:
   * Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě: rozdělí výměnu na sady transakcí a analyzuje každou sadu transakcí. 
-  Akce dekódování X12 výstupuje pouze ty sady transakcí, které selžou při ověřování `badMessages` , a výstup zbývajících transakcí nastaví na `goodMessages` .
+  Akce dekódování EDIFACT výstupuje pouze ty sady transakcí, které selžou při ověřování `badMessages` , a výstup zbývajících transakcí nastaví na `goodMessages` .
   * Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě: rozděluje výměnu do sad transakcí a analyzuje každou sadu transakcí. 
-  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování X12 vypíše všechny sady transakcí v tomto přenosu do `badMessages` .
+  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování EDIFACT vypíše všechny sady transakcí v tomto přenosu do `badMessages` .
   * Zachovat výměnu – pozastavit sady transakcí při chybě: zachovejte výměnu a zpracujte celý dávkový vydaný výměnný. 
-  Akce dekódování X12 výstupuje pouze ty sady transakcí, které selžou při ověřování `badMessages` , a výstup zbývajících transakcí nastaví na `goodMessages` .
+  Akce dekódování EDIFACT výstupuje pouze ty sady transakcí, které selžou při ověřování `badMessages` , a výstup zbývajících transakcí nastaví na `goodMessages` .
   * Zachovat výměnu – pozastavit výměnu při chybě: zachovejte výměnu a zpracujte celý dávkový výměnný. 
-  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování X12 vypíše všechny sady transakcí v tomto přenosu do `badMessages` .
+  Pokud jedna nebo více transakcí v rámci výměny selže, akce dekódování EDIFACT vypíše všechny sady transakcí v tomto přenosu do `badMessages` .
 * Generuje technický (ovládací) nebo funkční potvrzení (Pokud je nakonfigurováno).
   * Technické potvrzení nebo potvrzení CONTRLu hlásí výsledky syntaktické kontroly kompletního přijímaného přenosu.
   * Funkční potvrzení potvrdí přijetí nebo odmítnutí přijatého výměny nebo skupiny.

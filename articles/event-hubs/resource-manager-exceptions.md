@@ -3,12 +3,12 @@ title: Výjimky pro Azure Event Hubs – Správce prostředků | Microsoft Docs
 description: Seznam výjimek Event Hubs Azure, které jsou Surface Azure Resource Manager a navrhovaných akcí
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: aa1a3ca647bbf9e6590446549455a9853411fd7d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cec24696d0d49ba408860f6562c34dd14876c311
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281034"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334204"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Výjimky pro Azure Event Hubs – Správce prostředků
 Tento článek uvádí výjimky vygenerované při interakci s Azure Event Hubs s využitím šablon nebo přímých volání prostřednictvím šablon Azure Resource Manager.
@@ -44,7 +44,7 @@ V následujících oddílech jsou uvedeny různé výjimky a chyby, které jsou 
 | Důvodu chybného požadavku | žádné | Nejde aktualizovat obor názvů, který je sekundární. | Obor názvů se nedá aktualizovat, protože se jedná o sekundární obor názvů ve [párování GeoDR](event-hubs-geo-dr.md). | V případě potřeby proveďte změnu na primární obor názvů v tomto párování. Jinak přerušte párování GeoDR, aby se změna provedla. |
 | Důvodu chybného požadavku | žádné | Nejde nastavit automatické rozploché v základní skladové jednotce (SKU). | Automatické vystavení nelze povolit na úrovni Basic Event Hubs obory názvů. | Pokud chcete [Povolit automatické rozplochení](event-hubs-auto-inflate.md) v oboru názvů, ujistěte se, že je na úrovni Standard. |
 | Důvodu chybného požadavku | žádné | Pro vytvoření oboru názvů není k dispozici dostatek kapacity. Obraťte se na správce Event Hubs. | Vybraná oblast má kapacitu a další obory názvů nelze vytvořit. | Vyberte jinou oblast, do které se má obor názvů zahouse. |
-| Důvodu chybného požadavku | žádné | Operaci nejde u typu entity ' Consumer ' provést, protože obor názvů ' název oboru názvů ' používá ' základní ' úroveň.  | Obory názvů úrovně Basic Event Hubs mají [kvótu](event-hubs-quotas.md#event-hubs-basic-and-standard---quotas-and-limits) jedné skupiny uživatelů (výchozí). Vytváření více skupin uživatelů se nepodporuje. | Pokračujte v používání výchozí skupiny uživatelů ($Default), nebo pokud je potřeba víc, zvažte místo toho použití Event Hubs oboru názvů úrovně Standard. | 
+| Důvodu chybného požadavku | žádné | Operaci nejde u typu entity ' Consumer ' provést, protože obor názvů ' název oboru názvů ' používá ' základní ' úroveň.  | Obory názvů úrovně Basic Event Hubs mají kvótu (Event-hub-quotas.md) jedné skupiny příjemců (výchozí nastavení). Vytváření více skupin uživatelů se nepodporuje. | Pokračujte v používání výchozí skupiny uživatelů ($Default), nebo pokud je potřeba víc, zvažte místo toho použití Event Hubs oboru názvů úrovně Standard. | 
 | Důvodu chybného požadavku | žádné | Obor názvů "název oboru názvů" neexistuje. | Zadaný obor názvů nebyl nalezen. | Dvakrát ověřte, že je název oboru názvů správný a najdete ho v předplatném. Pokud ne, [vytvořte obor názvů Event Hubs](event-hubs-create.md). | 
 | Důvodu chybného požadavku | žádné | Vlastnost Location prostředku se neshoduje s oborem názvů, který ho obsahuje. | Vytvoření centra událostí v konkrétní oblasti se nezdařilo, protože se neshodovalo s oblastí oboru názvů. | Zkuste vytvořit centrum událostí ve stejné oblasti jako obor názvů. | 
 

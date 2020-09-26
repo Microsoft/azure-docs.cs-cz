@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: c8868cd6f5c50b84f263155518ee553145afcfa9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a25f28b19e0f00830fd0290ff0296c317b9a5ed9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602364"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371714"
 ---
 **Objem shromažďování dat a jejich uchovávání** 
 
@@ -70,20 +70,30 @@ Azure Monitor je služba data ve velkém měřítku, která slouží tisícům z
 
 Když do pracovního prostoru odešlete data rychlostí vyšší než 80% prahové hodnoty nakonfigurované ve vašem pracovním prostoru, do tabulky *operace* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Když je rychlost příjmu dat vyšší než prahová hodnota, některá data se zahozena a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud vaše rychlost ingestování stále překročí prahovou hodnotu nebo jste se k nim neočekávali, můžete požádat o jejich zvýšení otevřením žádosti o podporu. 
 
-Chcete-li být upozorněni na approching nebo dosažení limitu přenosové rychlosti pro příjem dat ve vašem pracovním prostoru, vytvořte [pravidlo upozornění protokolu](../articles/azure-monitor/platform/alerts-log.md) pomocí následujícího dotazu se základní logikou výstrahy na základě počtu výsledků od 0, zkušebního období 5 minut a frekvence 5 minut.
+Pokud chcete být ve svém pracovním prostoru upozorněni na přístup nebo dosažení limitu přenosové rychlosti pro přijímání, vytvořte [pravidlo upozornění protokolu](../articles/azure-monitor/platform/alerts-log.md) pomocí následujícího dotazu se základní logikou výstrahy na základě počtu výsledků od nuly, zkušebního období 5 minut a frekvence 5 minut.
 
-Počet dosažených objemů příjmu 80% prahové hodnoty:
+Míra zpracování příjmu překročila prahovou hodnotu.
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Error"
 ```
 
-Prahová hodnota dosažené míry objemu přijímání:
+Frekvence zpracování příjmu překročila 80% prahové hodnoty.
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Warning"
+```
+
+Frekvence zpracování příjmu překročila 70% prahové hodnoty.
+```Kusto
+Operation
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Info"
 ```
 
 >[!NOTE]

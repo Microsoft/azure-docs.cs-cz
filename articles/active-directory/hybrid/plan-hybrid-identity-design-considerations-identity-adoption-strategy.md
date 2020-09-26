@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1608039b051cb17684ca77cf7f00c705c9a8e7b5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659522"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294858"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definice strategie přijetí hybridní identity
 V této úloze definujete strategii přijetí hybridní identity pro vaše řešení hybridní identity, která bude vyhovovat obchodním požadavkům, které byly popsané v tématu:
@@ -55,7 +55,7 @@ Následující tabulka vám pomůže určit výhody a nevýhody každé z násle
 | Strategie | Výhody | Nevýhody |
 | --- | --- | --- |
 | **Cloudové identity** |Jednodušší Správa v malých organizacích. <br> Není nic k místní instalaci. Není potřeba žádný další hardware.<br>Snadno zakázané, pokud uživatel odejde ze společnosti |Uživatelé se budou muset přihlásit při přístupu k úlohám v cloudu. <br> Hesla můžou nebo nemusí být stejná pro cloudové a místní identity. |
-| **Shoda** |Místní heslo ověřuje místní i cloudové adresáře. <br>Jednodušší Správa pro malé, střední nebo velké organizace <br>Uživatelé můžou mít pro některé prostředky jednotné přihlašování (SSO). <br> Upřednostňovaná metoda pro synchronizaci Microsoftu <br> Jednodušší Správa |Někteří zákazníci se můžou zdráhají synchronizovat své adresáře s použitím zásad konkrétní společnosti v cloudu. |
+| **Shoda** |Místní heslo ověřuje místní i cloudové adresáře. <br>Jednodušší Správa pro malé, střední nebo velké organizace <br>Uživatelé můžou mít pro některé prostředky jednotné přihlašování (SSO). <br> Upřednostňovaná metoda pro synchronizaci Microsoftu <br> Jednodušší Správa |Někteří zákazníci se můžou zdráhají synchronizovat své adresáře s konkrétními podnikovými zásadami, které jsou v cloudu splatné. |
 | **Federovaní** |Uživatelé můžou mít jednotné přihlašování (SSO). <br>Pokud je uživatel ukončený nebo opustí, může být účet okamžitě zakázán a přístup odvolaný,<br> Podporuje pokročilé scénáře, které se nedají provést synchronizovaným |Další kroky k nastavení a konfiguraci <br> Vyšší údržba <br> Může vyžadovat další hardware pro infrastrukturu STS. <br> Může vyžadovat další hardware pro instalaci federačního serveru. Pokud se používá AD FS, vyžaduje se další software. <br> Vyžadovat rozsáhlou instalaci jednotného přihlašování <br> Kritický bod selhání v případě výpadku federačního serveru, uživatelé se nebudou moci ověřit |
 
 ### <a name="client-experience"></a>Možnosti klienta

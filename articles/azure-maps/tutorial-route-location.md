@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: jak zobrazit směry tras pomocí služby Microsoft Azure Maps a mapového ovládacího prvku'
-description: Naučte se zobrazovat směry tras pomocí služby Microsoft Azure Maps a mapového ovládacího prvku.
+title: 'Kurz: Vyhledání trasy do umístění | Mapy Microsoft Azure'
+description: Kurz o tom, jak najít trasu k bodu zájmu. Přečtěte si, jak nastavit souřadnice adres a dotazovat se na službu Azure Maps Route, kde najdete pokyny k bodu.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/01/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 35a3f6d1e7894eec9baa4ea5432a8e3fec138a21
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 3cb9bee65ab7fa2c29185c40ecb48fd531192187
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085038"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321709"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Kurz: jak zobrazit směry tras pomocí služby Azure Maps Route Service a mapového ovládacího prvku
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak pomocí [rozhraní Azure Maps Route Service API](
 
 Úplný zdrojový kód pro ukázku můžete získat [zde](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html). Ukázku najdete [tady](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
@@ -218,7 +218,7 @@ V této části se dozvíte, jak používat rozhraní API pro Azure Maps trasy k
 
      :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Služba Směrování a řízení mapy Azure":::
 
-    Úplný zdrojový kód pro ukázku můžete získat [zde](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html). Ukázku najdete [tady](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination).
+Úplný zdrojový kód pro ukázku můžete získat [zde](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html). Ukázku najdete [tady](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c2ce40f7d8a8d08e191fce11c98bd780e0c2fda1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4b25458cc934097b5477c174ae7ecc47762e2929
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230071"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280296"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Povolení a Správa obnovitelného odstranění pro kontejnery (Preview)
 
-Obnovitelné odstranění kontejneru (Preview) chrání vaše data před náhodným nebo omylem úpravou nebo odstraněním. Pokud je pro účet úložiště povolené obnovitelné odstranění kontejneru, kontejner a jeho obsah se může po odstranění v rámci zadané doby uchování obnovit.
+Obnovitelné odstranění kontejneru (Preview) chrání vaše data před náhodným nebo omylem úpravou nebo odstraněním. Pokud je pro účet úložiště povolené obnovitelné odstranění kontejneru, může se kontejner a jeho obsah obnovit po jeho odstranění v rámci zadané doby uchování.
 
 Pokud existuje možnost, že by vaše data mohla být omylem upravována nebo odstraněna aplikací nebo jiným uživatelem účtu úložiště, společnost Microsoft doporučuje zapnout u kontejneru obnovitelné odstranění. V tomto článku se dozvíte, jak povolit obnovitelné odstranění kontejnerů. Další podrobnosti o obnovitelném odstranění kontejneru, včetně toho, jak se zaregistrovat pro verzi Preview, najdete v tématu [obnovitelné odstranění pro kontejnery (Preview)](soft-delete-container-overview.md).
 
@@ -93,7 +93,7 @@ Chcete-li zobrazit kontejnery odstraněné v Azure Portal, postupujte takto:
 V rámci doby uchování můžete obnovit dočasná odstraněný kontejner a jeho obsah. Chcete-li obnovit odstraněný kontejner v Azure Portal, postupujte podle následujících kroků:
 
 1. V Azure Portal přejděte na svůj účet úložiště a zobrazte seznam kontejnerů.
-1. Zobrazte kontextovou nabídku pro kontejner, který chcete odstranit, a v nabídce vyberte možnost zrušit **odstranění** .
+1. Zobrazte kontextovou nabídku pro kontejner, který chcete obnovit, a v nabídce vyberte možnost **zrušit odstranění** .
 
     :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Snímek obrazovky, který ukazuje, jak obnovit odstraněný kontejner v Azure Portal":::
 

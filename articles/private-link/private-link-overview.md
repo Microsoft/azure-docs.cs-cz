@@ -7,13 +7,13 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2d2a520540ad69697da869833d52ab10e63a7730
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.custom: fasttrack-edit, references_regions
+ms.openlocfilehash: bee3d265554367b816c744ed892975ed60712f8b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527186"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318105"
 ---
 # <a name="what-is-azure-private-link"></a>Co je privátní propojení Azure? 
 Privátní odkaz Azure vám umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám, které hostuje zákaznická/Partnerská služba Azure, prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti.
@@ -38,37 +38,40 @@ Privátní propojení Azure přináší následující výhody:
 ## <a name="availability"></a>Dostupnost 
  V následující tabulce jsou uvedeny služby privátních odkazů a oblasti, kde jsou k dispozici. 
 
-|Podporované služby  |Dostupné oblasti | Další aspekty | Stav  |
+|Podporované služby  |Dostupné oblasti | Další aspekty | Status  |
 |:-------------------|:-----------------|:----------------|:--------|
-|Služby privátního propojení za standardním Azure Load Balancer | Všechny veřejné oblasti<br/> Všechny oblasti státní správy  | Podporováno v Standard Load Balancer | GA <br/> [Další informace](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
-| Úložiště objektů BLOB v Azure (včetně Data Lake Storage Gen2)       |  Všechny veřejné oblasti       |  Podporováno na druhu účtu Pro obecné účely v2 | GA <br/> [Další informace](/azure/storage/common/storage-private-endpoints)  |
-| Soubory Azure | Všechny veřejné oblasti      | |   GA <br/> [Další informace](/azure/storage/files/storage-files-networking-endpoints)   |
+|Služby privátního propojení za standardním Azure Load Balancer | Všechny veřejné oblasti<br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti  | Podporováno v Standard Load Balancer | GA <br/> [Další informace](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+| Úložiště objektů BLOB v Azure (včetně Data Lake Storage Gen2)       |  Všechny veřejné oblasti<br/> Všechny oblasti státní správy       |  Podporováno na druhu účtu Pro obecné účely v2 | GA <br/> [Další informace](/azure/storage/common/storage-private-endpoints)  |
+| Soubory Azure | Všechny veřejné oblasti<br/> Všechny oblasti státní správy      | |   GA <br/> [Další informace](/azure/storage/files/storage-files-networking-endpoints)   |
 | Synchronizace souborů Azure | Všechny veřejné oblasti      | |   GA <br/> [Další informace](/azure/storage/files/storage-sync-files-networking-endpoints)   |
-| Azure Queue Storage       |  Všechny veřejné oblasti       |  Podporováno na druhu účtu Pro obecné účely v2 | GA <br/> [Další informace](/azure/storage/common/storage-private-endpoints)  |
-| Azure Table Storage       |  Všechny veřejné oblasti       |  Podporováno na druhu účtu Pro obecné účely v2 | GA <br/> [Další informace](/azure/storage/common/storage-private-endpoints)  |
-|  Azure SQL Database         | Všechny veřejné oblasti <br/> Všechny oblasti státní správy      |  Podporováno pro [zásady připojení](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) proxy | GA <br/> [Další informace](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
+| Azure Queue Storage       |  Všechny veřejné oblasti<br/> Všechny oblasti státní správy       |  Podporováno na druhu účtu Pro obecné účely v2 | GA <br/> [Další informace](/azure/storage/common/storage-private-endpoints)  |
+| Azure Table Storage       |  Všechny veřejné oblasti<br/> Všechny oblasti státní správy       |  Podporováno na druhu účtu Pro obecné účely v2 | GA <br/> [Další informace](/azure/storage/common/storage-private-endpoints)  |
+|  Azure SQL Database         | Všechny veřejné oblasti <br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti      |  Podporováno pro [zásady připojení](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) proxy | GA <br/> [Další informace](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
 |Azure Synapse Analytics (dříve SQL Data Warehouse)| Všechny veřejné oblasti <br/> Všechny oblasti státní správy |  Podporováno pro [zásady připojení](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) proxy |GA <br/> [Další informace](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
-|Azure Cosmos DB|  Všechny veřejné oblasti<br/> Všechny oblasti státní správy | |GA <br/> [Další informace](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
-|  Azure Database for PostgreSQL – jeden server         | Všechny veřejné oblasti <br/> Všechny oblasti státní správy     | Podporováno pro Pro obecné účely a paměťově optimalizované cenové úrovně | GA <br/> [Další informace](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
-|  Azure Database for MySQL         | Všechny veřejné oblasti<br/> Všechny oblasti státní správy      |  | GA <br/> [Další informace](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
-|  Azure Database for MariaDB         | Všechny veřejné oblasti<br/> Všechny oblasti státní správy     |  | GA <br/> [Další informace](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
+|Azure Cosmos DB|  Všechny veřejné oblasti<br/> Všechny oblasti státní správy</br> Všechny čínské oblasti | |GA <br/> [Další informace](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  Azure Database for PostgreSQL – jeden server         | Všechny veřejné oblasti <br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti     | Podporováno pro Pro obecné účely a paměťově optimalizované cenové úrovně | GA <br/> [Další informace](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
+|  Azure Database for MySQL         | Všechny veřejné oblasti<br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti      |  | GA <br/> [Další informace](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
+|  Azure Database for MariaDB         | Všechny veřejné oblasti<br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti     |  | GA <br/> [Další informace](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
 |  Azure Key Vault         | Všechny veřejné oblasti<br/> Všechny oblasti státní správy      |  | GA   <br/> [Další informace](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
 |Azure Kubernetes Service – rozhraní API pro Kubernetes | Všechny veřejné oblasti      |  | GA   <br/> [Další informace](https://docs.microsoft.com/azure/aks/private-clusters)   |
 |Azure Search | Všechny veřejné oblasti <br/> Všechny oblasti státní správy | Podporováno u služby v privátním režimu | GA   <br/> [Další informace](https://docs.microsoft.com/azure/search/search-security-overview#endpoint-access)    |
 |Azure Container Registry | Všechny veřejné oblasti<br/> Všechny oblasti státní správy    | Podporováno s úrovní Premium registru kontejneru. [Kliknutí pro úrovně](https://docs.microsoft.com/azure/container-registry/container-registry-skus)| GA   <br/> [Další informace](https://docs.microsoft.com/azure/container-registry/container-registry-private-link)   |
-|Azure App Configuration | Všechny veřejné oblasti      |  | Preview   |
+|Azure App Configuration | Všechny veřejné oblasti      |  | Náhled   |
 |Azure Backup | Všechny veřejné oblasti<br/> Všechny oblasti státní správy   |  | GA   <br/> [Další informace](https://docs.microsoft.com/azure/backup/private-endpoints)   |
 |Azure Event Hub | Všechny veřejné oblasti<br/>Všechny oblasti státní správy      |   | GA   <br/> [Další informace](https://docs.microsoft.com/azure/event-hubs/private-link-service)  |
 |Azure Service Bus | Všechny veřejné oblasti<br/>Všechny oblasti státní správy  | Podporováno s úrovní Premium Azure Service Bus. [Kliknutí pro úrovně](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging) | GA   <br/> [Další informace](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
-|Azure Relay | Všechny veřejné oblasti      |  | Preview <br/> [Další informace](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
+|Azure Relay | Všechny veřejné oblasti      |  | Náhled <br/> [Další informace](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
 |Azure Event Grid| Všechny veřejné oblasti<br/> Všechny oblasti státní správy       |  | GA   <br/> [Další informace](https://docs.microsoft.com/azure/event-grid/network-security) |
-|Azure Web Apps | Všechny veřejné oblasti      | Podporováno pro PremiumV2 Windows a Linux a elastické funkce Premium  | Preview   <br/> [Další informace](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
-|Azure Machine Learning | VÝCHODNÍ USA, STŘED USA – JIH, ZÁPADNÍ USA 2      |  | Preview   <br/> [Další informace](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
-| Azure Automation  | Všechny veřejné oblasti |  | Preview | |
+|Azure Web Apps | Všechny veřejné oblasti      | Podporováno pro PremiumV2 Windows a Linux a elastické funkce Premium  | Náhled   <br/> [Další informace](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|Azure Machine Learning | VÝCHODNÍ USA, STŘED USA – JIH,<br/>USA – ZÁPAD, ZÁPADNÍ USA 2,<br/>STŘEDNÍ KANADA, JIHOVÝCHODNÍ ASIE,<br/>JAPONSKO – VÝCHOD, SEVERNÍ EVROPA,<br/>VELKÁ BRITÁNIE – JIH, VÝCHODNÍ AUSTRÁLIE     |  | Náhled   <br/> [Další informace](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
+| Azure Automation  | Všechny veřejné oblasti |  | Náhled | |
 | Azure IoT Hub | Všechny veřejné oblasti    |  | GA   <br/> [Další informace](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
-| Azure SignalR | VÝCHODNÍ USA, ZÁPADNÍ USA 2, STŘED USA – JIH      |  | Preview   <br/> [Další informace](https://aka.ms/asrs/privatelink)   |
+| Azure SignalR | VÝCHODNÍ USA, STŘED USA – JIH,<br/>ZÁPADNÍ USA 2, všechny čínské oblasti      |  | Náhled   <br/> [Další informace](https://aka.ms/asrs/privatelink)   |
 | Azure Monitor <br/>(Log Analytics & Application Insights) | Všechny veřejné oblasti      |  | GA   <br/> [Další informace](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
-| Azure Batch | VÝCHODNÍ USA, ZÁPADNÍ USA 2, STŘED USA – JIH, STŘED USA – ZÁPAD, FRANCIE – STŘED, VÝCHODNÍ ASIE, VELKÁ BRITÁNIE – JIH, USA – GOV) – VIRGINIA, USA GOV ARIZONA  | | GA <br/> [Další informace](https://docs.microsoft.com/azure/batch/private-connectivity) |
+| Azure Batch | STŘED USA, STŘED USA – SEVER, STŘED USA – JIH, STŘED USA – ZÁPAD, VÝCHODNÍ USA, VÝCHODNÍ USA 2, ZÁPADNÍ USA, ZÁPADNÍ USA 2, VÝCHODNÍ ASIE, FRANCIE – STŘED, AUSTRÁLIE – JIH, SEVERNÍ EVROPA, ZÁPADNÍ EVROPA, JAPONSKO – VÝCHOD, JAPONSKO – ZÁPAD, AUSTRÁLIE – VÝCHOD <br/> Všechny oblasti státní správy  | | GA <br/> [Další informace](https://docs.microsoft.com/azure/batch/private-connectivity) |
+|Azure Data Factory | Všechny veřejné oblasti<br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti    | Přihlašovací údaje musí být uložené v trezoru klíčů Azure.| GA   <br/> [Další informace](https://docs.microsoft.com/azure/data-factory/data-factory-private-link)   |
+
+
 
 Nejaktuálnější oznámení najdete na [stránce s aktualizacemi privátních odkazů Azure](https://azure.microsoft.com/updates/?product=private-link).
 

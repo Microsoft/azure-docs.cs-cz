@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2be5df88a665c800f55f773b2470cc095fa27b2b
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: fb6813875858ab6cc438df5abb78a75391adfeac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058678"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280653"
 ---
-# <a name="overview-of-the-azure-security-benchmark"></a>Přehled srovnávacích testů zabezpečení Azure
+# <a name="overview-of-the-azure-security-benchmark-v2"></a>Přehled srovnávacích testů zabezpečení Azure (v2)
 
 Srovnávací test zabezpečení Azure (dokumentem SSAE) poskytuje doporučené osvědčené postupy a doporučení, které vám pomůžou zlepšit zabezpečení zatížení, dat a služeb v Azure.
 
@@ -24,6 +24,7 @@ Tento srovnávací test je součástí sady holistických pokynů pro zabezpeče
 - **Rozhraní pro přijetí do cloudu** – doprovodné materiály k zabezpečení, včetně [strategie](/azure/cloud-adoption-framework/strategy/define-security-strategy), [rolí a odpovědností](/azure/cloud-adoption-framework/organize/cloud-security), [osvědčených postupů pro Azure Top 10](/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)a [referenční implementace](/azure/cloud-adoption-framework/ready/enterprise-scale/).
 - **Architekturu Azure ve správném prostředí** – pokyny k [zabezpečení vašich úloh](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) v Azure.
 - **Osvědčené postupy zabezpečení od Microsoftu** – [doporučení](/security/compass/microsoft-security-compass-introduction) s příklady v Azure.
+
  Srovnávací test zabezpečení Azure se zaměřuje na oblasti řízení zaměřené na Cloud. Tyto ovládací prvky jsou konzistentní s dobře známými srovnávacími testy zabezpečení, jako jsou ty, které jsou popsány v centru pro řízení internetového zabezpečení (CIS) verze 7,1 a National Institute of Standards and Technology (NIST) SP800-53.
 Srovnávací testy zabezpečení Azure obsahují následující ovládací prvky:
 
@@ -52,7 +53,7 @@ Každé doporučení zahrnuje následující informace:
 - **NIST SP800-53 R4 ID**: ovládací prvky NIST SP800-53 R4 (mírný), které odpovídají tomuto doporučení.
 - **Podrobnosti**: odůvodnění doporučení a odkazy na pokyny k jeho implementaci. Pokud Azure Security Center doporučení podporuje, budou tyto informace také uvedené.
 - **Zodpovědnost**: Určuje, zda je pro implementaci tohoto doporučení zodpovědný zákazník, poskytovatel služeb nebo obojí. Bezpečnostní odpovědnost se sdílí ve veřejném cloudu. Některé ovládací prvky zabezpečení jsou dostupné jenom poskytovateli cloudové služby, a proto je poskytovatel zodpovědný za jejich adresování. Jedná se o obecná pozorování – pro některé jednotlivé služby se bude odpovědnost lišit od toho, co je uvedeno v srovnávacím testu zabezpečení Azure. Tyto rozdíly jsou popsané v základních doporučeních pro jednotlivé služby.
-- **Účastníci zabezpečení zákazníka**: bezpečnostní funkce v organizaci zákazníka, které mohou být pro příslušný ovládací prvek vyúčtovány, zodpovědné nebo konzultované. Může se lišit od organizace až po organizaci v závislosti na struktuře organizace zabezpečení vaší společnosti a rolích a zodpovědností, které jste si nastavili v souvislosti se zabezpečením Azure.
+- **Účastníci zabezpečení zákazníka**: [bezpečnostní funkce](/azure/cloud-adoption-framework/organize/cloud-security#security-functions) v organizaci zákazníka, které mohou být pro příslušný ovládací prvek vyúčtovány, zodpovědné nebo konzultované. Může se lišit od organizace až po organizaci v závislosti na struktuře organizace zabezpečení vaší společnosti a rolích a zodpovědností, které jste si nastavili v souvislosti se zabezpečením Azure.
 
 > [!NOTE]
 > Mapování ovládacích prvků mezi dokumentem SSAE a oborovými srovnávacími testy (jako je NIST a SNS) znamená pouze to, že konkrétní funkce Azure lze použít k plnému nebo částečnému vyřešení požadavku na řízení definovaného v NIST nebo CIS. Je třeba si uvědomit, že taková implementace nemusí nutně překládat na celé dodržování předpisů odpovídajícím ovládacím prvkům v CIS nebo NIST.

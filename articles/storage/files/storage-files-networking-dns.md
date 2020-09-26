@@ -1,18 +1,18 @@
 ---
 title: Konfigurace předávání DNS pro soubory Azure | Microsoft Docs
-description: Přehled možností sítě pro soubory Azure.
+description: Přečtěte si, jak nakonfigurovat předávání DNS pro soubory Azure.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6404115e64ba0ac1f65ba1cfc8d26604f1ce9cfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b5ce48cf15c890fbdb3dfd90d9d0ab922a2f4b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509961"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320264"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>Konfigurace přesměrování DNS pro Azure Files
 Služba soubory Azure umožňuje vytvářet soukromé koncové body pro účty úložiště obsahující sdílené složky. I když je to užitečné pro mnoho různých aplikací, soukromé koncové body jsou obzvláště užitečné pro připojení ke sdíleným složkám Azure ze své místní sítě pomocí připojení VPN nebo ExpressRoute pomocí privátního partnerského vztahu. 
@@ -151,7 +151,7 @@ Pokud jste už nastavili připojení VPN nebo ExpressRoute, můžete také použ
 Test-NetConnection -ComputerName storageaccount.file.core.windows.net -CommonTCPPort SMB
 ```
 
-## <a name="see-also"></a>Viz také:
-- [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
+## <a name="see-also"></a>Viz také
+- [Plánování nasazení Azure Files](storage-files-planning.md)
 - [Požadavky na síť pro Azure Files](storage-files-networking-overview.md)
 - [Konfigurace koncových bodů sítě služby soubory Azure](storage-files-networking-endpoints.md)

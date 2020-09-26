@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a013af680ecc84a2a981341ba4bb95148adc799f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357252"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319873"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Používání konektorů s Azure AD Connect synchronizace Service Manager
 
-![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
+![Snímek obrazovky zobrazující Service Manager synchronizace](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
 
 Karta konektory slouží ke správě všech systémů, ke kterým je synchronizační modul připojen.
 
@@ -47,7 +47,7 @@ Karta konektory slouží ke správě všech systémů, ke kterým je synchroniza
 
 ### <a name="delete"></a>Odstranit
 Akce Odstranit se používá pro dvě různé věci.  
-![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
+![Snímek obrazovky, který zobrazuje okno Odstranit spojnici s vybranou možnost odstranit pouze prostor konektoru](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
 
 Možnost **Odstranit místo konektoru odebere jenom** všechna data, ale ponechá konfiguraci.
 
@@ -58,17 +58,17 @@ Obě možnosti synchronizují všechny objekty a aktualizují objekty Metaverse.
 ### <a name="configure-run-profiles"></a>Konfigurovat profily spuštění
 Tato možnost umožňuje zobrazit profily spuštění nakonfigurované pro konektor.
 
-![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
+![Snímek obrazovky, který zobrazuje okno Konfigurovat profily spuštění s vybraným rozdílovým importem](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
 
 ### <a name="search-connector-space"></a>Hledat místo v konektoru
 Akce místa konektoru hledání je užitečná pro hledání objektů a řešení problémů s daty.
 
-![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
+![Snímek obrazovky, který zobrazuje okno "prostor pro hledání konektoru".](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
 Začněte výběrem **oboru**. Můžete vyhledávat na základě dat (RDN, DN, kotvy, podstromy) nebo stavu objektu (všechny ostatní možnosti).  
-![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
+![Snímek obrazovky, který zobrazuje rozevírací nabídku "obor".](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
 Pokud například provedete dílčí stromové hledání, získáte všechny objekty v jedné organizační jednotce.  
-![Synchronizovat Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
+![Snímek obrazovky, který zobrazuje příklad hledání "sub-Tree".](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
 Z této mřížky můžete vybrat objekt, vybrat **vlastnosti**a [sledovat ho](tshoot-connect-object-not-syncing.md) z prostoru zdrojového konektoru, do úložiště metaverse a do cílového prostoru konektoru.
 
 ### <a name="changing-the-ad-ds-account-password"></a>Změna hesla účtu služby AD DS

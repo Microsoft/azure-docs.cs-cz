@@ -3,13 +3,13 @@ title: Přepsání výchozích koncových bodů sady SDK v Azure Application Ins
 description: Upravte výchozí Azure Monitor koncové body sady Application Insights SDK pro oblasti, jako je Azure Government.
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.custom: references_regions, devx-track-javascript
-ms.openlocfilehash: 22f81b327c161df4f6605cfcb64b48b8d75beed3
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: references_regions, devx-track-js
+ms.openlocfilehash: d6cea9044cd4898480fcc30532a05e6c8a407012
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373126"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333286"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights přepsání výchozích koncových bodů
 
@@ -79,7 +79,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 Pro Azure Functions se teď doporučuje použít [připojovací řetězce](./sdk-connection-string.md?tabs=net) nastavené v nastavení aplikace funkce. Chcete-li získat přístup k nastavení aplikace pro funkci v podokně funkce vyberte **Nastavení**  >  **Konfigurace**  >  **nastavení aplikace**. 
 
-Název: `APPLICATIONINSIGHTS_CONNECTION_STRING` hodnota:`Connection String Value`
+Název: `APPLICATIONINSIGHTS_CONNECTION_STRING` hodnota: `Connection String Value`
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -158,7 +158,7 @@ Pokyny k úpravě koncového bodu ingestování pro sadu SDK opencensus-Python s
 
 V současné době jsou k [disAzure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) a [Azure Čína](/azure/china/resources-developer-guide)jedinými oblastmi, které vyžadují úpravy koncových bodů.
 
-|Oblast |  Název koncového bodu | Hodnota |
+|Region |  Název koncového bodu | Hodnota |
 |-----------------|:------------|:-------------|
 | Azure (Čína) | Kanál telemetrie | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure (Čína) | QuickPulse (živé metriky) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -170,7 +170,7 @@ V současné době jsou k [disAzure Government](../../azure-government/compare-a
 Pokud aktuálně používáte [REST API Application Insights](https://dev.applicationinsights.io/
 ) , ke kterému se běžně používá API.ApplicationInsights.IO prostřednictvím "", budete muset použít koncový bod, který je místní pro vaši oblast:
 
-|Oblast |  Název koncového bodu | Hodnota |
+|Region |  Název koncového bodu | Hodnota |
 |-----------------|:------------|:-------------|
 | Azure (Čína) | REST API | `api.applicationinsights.azure.cn` |
 | Azure Government | REST API | `api.applicationinsights.us`|

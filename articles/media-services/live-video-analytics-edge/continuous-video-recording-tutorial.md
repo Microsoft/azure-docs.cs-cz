@@ -3,12 +3,12 @@ title: Kurz nepřetržitého nahrávání videa do cloudu a přehrávání z clo
 description: V tomto kurzu se naučíte používat Azure Live video Analytics na Azure IoT Edge k nepřetržitému nahrávání videa do cloudu a streamování libovolné části tohoto videa pomocí Azure Media Services.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: c94f87068d003fc260d861cb99c60326d4a53258
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: a5cb857dcd5f457a68b947d2ece5d78c158e78f0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566788"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336475"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Kurz: nepřetržité nahrávání videa do cloudu a přehrávání z cloudu
 
@@ -131,7 +131,7 @@ Pak přejděte do složky src/Cloud-to-Device-Console-App Tady se zobrazí appse
 
 Manifest nasazení definuje, které moduly jsou nasazeny do hraničního zařízení a nastavení konfigurace pro tyto moduly. Pomocí těchto kroků vygenerujte manifest ze souboru šablony a potom ho nasaďte do hraničního zařízení.
 
-1. Spuštění nástroje Visual Studio Code
+1. Spusťte Visual Studio Code.
 1. Nastavte připojovací řetězec IoT Hub tak, že v levém dolním rohu vyberete ikonu **Další akce** vedle PODOKNA **Azure IoT Hub** . Zkopírujte řetězec z src/Cloud-to-Device-Console-App/appsettings.jsv souboru. 
 
     ![Nastavit připojovací řetězec IoT Hub](./media/quickstarts/set-iotconnection-string.png)
@@ -164,7 +164,7 @@ Při použití nástroje Live video Analytics v modulu IoT Edge k nahrání stre
 1. V uzlu **GraphTopologySet** upravte následující položky:
 
     `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
-1. V dalším kroku v uzlech **GraphInstanceSet** a **GraphTopologyDelete** zajistěte, aby hodnota vlastnosti **topologického** odpovídala hodnotě vlastnosti **Name** v předchozí topologii grafu:
+1. V dalším kroku v uzlu **GraphInstanceSet** zajistěte, aby hodnota vlastnosti **topologického** odpovídala hodnotě vlastnosti **Name** v předchozí topologii grafu:
 
     `"topologyName" : "CVRToAMSAsset"`  
 1. Otevřete [topologii](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json) v prohlížeči a podívejte se na assetNamePattern. Abyste se ujistili, že máte Asset s jedinečným názvem, můžete změnit název instance grafu v operations.jssouboru (z výchozí hodnoty Sample-Graph-1).

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 0800a287b747a8a421958d20f0b1ce56247d6d01
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: c9f7168bc0524b483413ade9792af18ff9cfebfa
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362155"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358538"
 ---
 # <a name="what-is-custom-commands"></a>Co jsou vlastní příkazy?
 
@@ -52,7 +52,7 @@ Až budete s rychlým startem hotovi, Prozkoumejte naše příručky, kde najdet
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získejte zdarma klíč předplatného služby Speech](get-started.md)
+* [Získejte zdarma klíč předplatného služby Speech](overview.md#try-the-speech-service-for-free)
 * [Ukázky najdete v našem úložišti hlasových asistentů na GitHubu.](https://aka.ms/speech/cc-samples)
 * [Pokud si chcete vyzkoušet vlastní příkazy, přejdete do sady Speech Studio.](https://speech.microsoft.com/customcommands)
 * [Získat sadu Speech SDK](speech-sdk.md)

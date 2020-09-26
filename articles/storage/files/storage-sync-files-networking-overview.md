@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync síťové požadavky | Microsoft Docs
-description: Přehled možností sítě pro Azure File Sync.
+description: Naučte se konfigurovat síť pro použití Azure File Sync k ukládání souborů do mezipaměti v místním prostředí.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: af5561a010ca1c2d45cf10a37a3b302d5e224158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b291bd45b4003dd2241f40c810ed9d78af9f8bc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512573"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267784"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure File Sync síťové požadavky
 Ke sdílené složce Azure se můžete připojit dvěma způsoby:
@@ -142,7 +142,7 @@ TimeToExpiration       : 2419200
 DefaultTTL             : 300
 ```
 
-Pokud spustíte stejný příkaz z místního prostředí, uvidíte, že stejný název účtu úložiště se přeloží na veřejnou IP adresu účtu úložiště. `storageaccount.file.core.windows.net`je záznam CNAME pro `storageaccount.privatelink.file.core.windows.net` , který je zase záznam CNAME pro cluster úložiště Azure hostující účet úložiště:
+Pokud spustíte stejný příkaz z místního prostředí, uvidíte, že stejný název účtu úložiště se přeloží na veřejnou IP adresu účtu úložiště. `storageaccount.file.core.windows.net` je záznam CNAME pro `storageaccount.privatelink.file.core.windows.net` , který je zase záznam CNAME pro cluster úložiště Azure hostující účet úložiště:
 
 ```Output
 Name                              Type   TTL   Section    NameHost
@@ -170,6 +170,6 @@ Připojení od agenta Azure File Sync k vaší sdílené složce Azure nebo slu�
 
 Další informace o šifrování v přenosu najdete v tématu [vyžadování zabezpečeného přenosu ve službě Azure Storage](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 - [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)
 - [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)

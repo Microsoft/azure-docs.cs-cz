@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: a1fca14035dd4a9af00ecfb8d1d01dc27ab0b8d0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.custom: devx-track-js
+ms.openlocfilehash: f339ae4ff1ea90929ce7811efe002f5860f7b47d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658173"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269331"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Přidat a spustit fragmenty kódu pomocí vloženého kódu v Azure Logic Apps
 
@@ -261,7 +261,7 @@ Pokud vyberete možnost **Akce**, budete vyzváni k zadání akcí, které chcet
 
 1. Chcete-li přidat další akci, vyberte možnost **Přidat novou položku**.
 
-## <a name="reference"></a>Reference
+## <a name="reference"></a>Referenční informace
 
 Další informace o struktuře a syntaxi akce **Spustit kód JavaScriptu** v základní definici pracovního postupu aplikace logiky pomocí jazyka definice pracovního postupu najdete v [referenční části](../logic-apps/logic-apps-workflow-actions-triggers.md#run-javascript-code)této akce.
 

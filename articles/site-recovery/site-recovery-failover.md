@@ -4,12 +4,12 @@ description: Jak převzít služby při selhání virtuálních počítačů neb
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: d2f7fed25955d6a34c6162b87b82bfae5e58ff41
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 481e7c692be24bbebd14584f8158740a5b7043ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563977"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317884"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Spuštění převzetí služeb při selhání z místního prostředí do Azure
 
@@ -46,7 +46,7 @@ Spusťte plán obnovení převzetí služeb při selhání následujícím způs
 1. V Site Recovery trezoru vyberte **plány obnovení**  >  *recoveryplan_name*.
 2. Klikněte na **převzetí služeb při selhání**.
 
-    ![Snímek obrazovky zobrazuje podokno ADRP s převzetím služeb při selhání vybrané z nabídky další.](./media/site-recovery-failover/Failover.png)
+    ![Snímek obrazovky z Azure Site Recovery zobrazující podokno ADRP s převzetím služeb při selhání vybrané z nabídky další.](./media/site-recovery-failover/Failover.png)
 
 3. V **Failover**  >  části**směr převzetí**služeb při selhání přenechejte výchozí nastavení, pokud se chystáte replikovat do Azure.
 4. V části **převzetí služeb při selhání**vyberte **bod obnovení** , u kterého chcete převzít služby při selhání.
@@ -81,7 +81,7 @@ Pro virtuální počítače Hyper-V můžete spustit plánované převzetí slu�
 
 K převzetí služeb při selhání je přidruženo několik úloh.
 
-![Převzetí služeb při selhání](./media/site-recovery-failover/FailoverJob.png)
+![Snímek obrazovky stránky úlohy zobrazující seznam úloh se skupinou 1: začátek (1) rozbalený ve sloupci název. Řádek pro úlohu SQLServer je zvýrazněný.](./media/site-recovery-failover/FailoverJob.png)
 
 - **Kontroly předpokladů**: zajišťuje splnění všech podmínek vyžadovaných pro převzetí služeb při selhání.
 - **Převzetí služeb při selhání**: zpracovává data, aby bylo možné z ní vytvořit virtuální počítač Azure. Pokud jste zvolili **nejnovější** bod obnovení, vytvoří se bod obnovení z dat, která byla odeslána do služby.

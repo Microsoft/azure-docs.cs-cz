@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: 9397c5f075c1d6653920d19766d5d6a740294ec7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68d0459153fbdb34216c1313f70e292119b93a7c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67330762"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269794"
 ---
 Při vytváření vlastního certifikátu jsou povolené tyto certifikační autority:
 
@@ -23,6 +23,7 @@ Při vytváření vlastního certifikátu jsou povolené tyto certifikační aut
 - ÁZEV infračervené certifikační autority 02
 - Ameroot
 - APCA-DM3P
+- Atos TrustedRoot 2011
 - Kořenová certifikační autorita autopilot
 - Baltimore CyberTrust Root
 - Veřejná primární certifikační autorita třídy 3
@@ -52,8 +53,12 @@ Při vytváření vlastního certifikátu jsou povolené tyto certifikační aut
 - Kořenová certifikační autorita GlobalSign
 - Přejít na kořenovou certifikační autoritu Daddy – G2
 - Přejít na Daddy Secure Certificate Authority – G2
+- Pojďme šifrovat autoritu X3
 - QuoVadis root CA2 G3
 - RapidSSL RSA CA 2018
+- RootCA1 komunikace zabezpečení
+- RootCA2 komunikace zabezpečení
+- RootCA3 komunikace zabezpečení
 - CA Symantec Class 3 EV SSL – G3
 - Zabezpečený serverová CA Symantec Class 3 – G4
 - Symantec Enterprise Mobile root pro Microsoft

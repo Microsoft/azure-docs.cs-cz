@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: sashan, moslake, carlrab
+ms.reviewer: sashan, moslake
 ms.date: 01/30/2020
-ms.openlocfilehash: 37dd6881876df010b548a8bb48ca88bb72dab764
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: c1f60888a3d1fda50e63c7d11ea5d871f7c1e9fc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986599"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321335"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database a úrovně služeb spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -39,25 +39,25 @@ Následující tabulka popisuje klíčové rozdíly mezi úrovněmi služeb pro 
 
 |-| Typ prostředku | Pro obecné účely |  Hyperškálování | Pro důležité obchodní informace |
 |:---:|:---:|:---:|:---:|:---:|
-| **Nejlepší pro** | |  Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem. | Většina obchodních úloh. Automatické škálování velikosti úložiště až na 100 TB, škálování kapalinových vertikálních a horizontálních výpočetních škálování a rychlé obnovení databáze. | OLTP aplikace s vysokou mírou transakcí a nízkou latencí v/v. Nabízí nejvyšší odolnost proti chybám a rychlé převzetí služeb při selhání s využitím několika synchronně aktualizovaných replik.|
+| **Nejvhodnější pro** | |  Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem. | Většina obchodních úloh. Automatické škálování velikosti úložiště až na 100 TB, škálování kapalinových vertikálních a horizontálních výpočetních škálování a rychlé obnovení databáze. | OLTP aplikace s vysokou mírou transakcí a nízkou latencí v/v. Nabízí nejvyšší odolnost proti chybám a rychlé převzetí služeb při selhání s využitím několika synchronně aktualizovaných replik.|
 |  **K dispozici v typu prostředku:** ||SQL Database/spravované instance SQL | Jeden Azure SQL Database | SQL Database/spravované instance SQL |
-| **Velikost výpočetního prostředí**| Databáze SQL | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra |
+| **Velikost výpočetního prostředí**| SQL Database | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra |
 | | Spravovaná instance SQL | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Není k dispozici | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
-| | Fondy spravované instance SQL | 2, 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Není k dispozici | Není k dispozici |
+| | Fondy spravované instance SQL | 2, 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra | N/A | N/A |
 | **Typ úložiště** | Vše | Premium Remote Storage (na instanci) | Oddělené úložiště s místní mezipamětí SSD (na instanci) | Vysoce rychlé místní SSD úložiště (na instanci) |
-| **Velikost databáze** | Databáze SQL | 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
+| **Velikost databáze** | SQL Database | 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
 | | Spravovaná instance SQL  | 32 GB – 8 TB | Není k dispozici | 32 GB – 4 TB |
-| **Velikost úložiště** | Databáze SQL | 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
+| **Velikost úložiště** | SQL Database | 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
 | | Spravovaná instance SQL  | 32 GB – 8 TB | Není k dispozici | 32 GB – 4 TB |
-| **Velikost databáze TempDB** | Databáze SQL | [32 GB na vCore](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) | [32 GB na vCore](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5) | [32 GB na vCore](resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen4) |
+| **Velikost databáze TempDB** | SQL Database | [32 GB na vCore](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) | [32 GB na vCore](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5) | [32 GB na vCore](resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen4) |
 | | Spravovaná instance SQL  | [24 GB na vCore](../managed-instance/resource-limits.md#service-tier-characteristics) | Není k dispozici | Až 4 TB – [omezeno velikostí úložiště](../managed-instance/resource-limits.md#service-tier-characteristics) |
-| **Propustnost zápisu protokolu** | Databáze SQL | [1,875 MB/s na vCore (max. 30 MB/s)](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/s | [6 MB/s na vCore (max. 96 MB/s)](resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen4) |
+| **Propustnost zápisu protokolu** | SQL Database | [1,875 MB/s na vCore (max. 30 MB/s)](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/s | [6 MB/s na vCore (max. 96 MB/s)](resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen4) |
 | | Spravovaná instance SQL | [3 MB/s na vCore (max. 22 MB/s)](../managed-instance/resource-limits.md#service-tier-characteristics) | Není k dispozici | [4 MB/s na Vcore (max. 48 MB/s)](../managed-instance/resource-limits.md#service-tier-characteristics) |
 |**Dostupnost**|Vše| 99,99 % |  [99,95% s jednou sekundární replikou, 99,99% s více replikami](service-tier-hyperscale-frequently-asked-questions-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99,99 % <br/> [99,995% s redundantní jedinou databází zóny](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**Zálohování**|Vše|RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů)| RA-GRS, 7 dní, časový interval pro obnovení v čase konstanty (PITR) | RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů) |
-|**OLTP v paměti** | | Není k dispozici | Není k dispozici | K dispozici |
+|**OLTP v paměti** | | N/A | N/A | K dispozici |
 |**Repliky jen pro čtení**| | 0 – předdefinovaná <br> 0-4 použití [geografické replikace](active-geo-replication-overview.md) | 0-4 integrovaný | 1 Integrovaná, zahrnutá v ceně <br> 0-4 použití [geografické replikace](active-geo-replication-overview.md) |
-|**Ceny a fakturace** | Databáze SQL | účtují se [Vcore, rezervované úložiště a úložiště záloh](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se neúčtuje. | účtují se [Vcore pro každou repliku a využité úložiště](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se ještě neúčtuje. | účtují se [Vcore, rezervované úložiště a úložiště záloh](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se neúčtuje. |
+|**Ceny a fakturace** | SQL Database | účtují se [Vcore, rezervované úložiště a úložiště záloh](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se neúčtuje. | účtují se [Vcore pro každou repliku a využité úložiště](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se ještě neúčtuje. | účtují se [Vcore, rezervované úložiště a úložiště záloh](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se neúčtuje. |
 || Spravovaná instance SQL | účtují se [Vcore, rezervované úložiště a úložiště zálohování](https://azure.microsoft.com/pricing/details/sql-database/managed/) . <br/>IOPS se neúčtuje.| Není k dispozici | účtují se [Vcore, rezervované úložiště a úložiště zálohování](https://azure.microsoft.com/pricing/details/sql-database/managed/) . <br/>IOPS se neúčtuje.| 
 |**Modely slev**| | [Rezervované instance](reserved-capacity-overview.md)<br/>[Zvýhodněné hybridní využití Azure](../azure-hybrid-benefit.md) (není k dispozici v předplatných pro vývoj a testování)<br/>Předplatné [Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) a průběžné [platby podle](https://azure.microsoft.com/offers/ms-azr-0023p/) aktuálního využití pro vývoj/testování| [Zvýhodněné hybridní využití Azure](../azure-hybrid-benefit.md) (není k dispozici v předplatných pro vývoj a testování)<br/>Předplatné [Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) a průběžné [platby podle](https://azure.microsoft.com/offers/ms-azr-0023p/) aktuálního využití pro vývoj/testování| [Rezervované instance](reserved-capacity-overview.md)<br/>[Zvýhodněné hybridní využití Azure](../azure-hybrid-benefit.md) (není k dispozici v předplatných pro vývoj a testování)<br/>Předplatné [Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) a průběžné [platby podle](https://azure.microsoft.com/offers/ms-azr-0023p/) aktuálního využití pro vývoj/testování|
 

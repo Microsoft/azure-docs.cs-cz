@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: abb6f8bcaa3b8e356bea00185702bc0ae783e071
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/25/2020
+ms.openlocfilehash: 1f67d7228da8529699a26539f20efd55f9a20c27
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270228"
+ms.locfileid: "91370976"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Vytváření stavových a bezstavových pracovních postupů v Visual Studio Code s rozšířením Azure Logic Apps (Preview)
 
@@ -72,11 +72,11 @@ Rozšíření Azure Logic Apps (Preview) přináší do místního prostředí p
 
 * *Bezstavová*
 
-  Vytvářejte bezstavové aplikace logiky, pokud nepotřebujete ukládat, kontrolovat nebo odkazovat data z předchozích událostí. Tyto aplikace logiky udržují vstup a výstup pro každou akci a jejich stavy pracovního postupu pouze v paměti místo přenosu těchto informací do externího úložiště. V důsledku toho jsou bezstavové aplikace logiky kratší spuštění, které obvykle nepřesahují dobu 5 minut, rychlejší výkon při rychlejší odezvě, vyšší propustnost a snížené provozní náklady, protože podrobnosti a historie spuštění nejsou uchovávány v externím úložišti. Pokud ale dojde k výpadku, přerušené běhy se automaticky neobnoví, takže volající musí ručně znovu odeslat přerušené běhy. Pro snazší ladění můžete [Povolit historii spuštění](#run-history) pro bezstavové Logic Apps.
+  Vytvářejte bezstavové aplikace logiky, pokud nepotřebujete ukládat, kontrolovat nebo odkazovat data z předchozích událostí v externím úložišti pro pozdější kontrolu. Tyto aplikace logiky udržují vstup a výstup pro každou akci a jejich stavy pracovního postupu pouze v paměti místo přenosu těchto informací do externího úložiště. V důsledku toho jsou bezstavové aplikace logiky kratší spuštění, které obvykle nepřesahují dobu 5 minut, rychlejší výkon při rychlejší odezvě, vyšší propustnost a snížené provozní náklady, protože podrobnosti a historie spuštění nejsou uchovávány v externím úložišti. Pokud ale dojde k výpadku, přerušené běhy se automaticky neobnoví, takže volající musí ručně znovu odeslat přerušené běhy. Tyto aplikace logiky lze spustit pouze synchronně a pro snazší ladění můžete [Povolit historii spuštění](#run-history), která má nějaký dopad na výkon.
 
   Bezstavové pracovní postupy aktuálně podporují jenom akce pro [spravované konektory](../connectors/apis-list.md#managed-api-connectors), ne triggery. Pokud chcete spustit pracovní postup, vyberte [integrovaný požadavek, Event Hubs nebo aktivační událost Service Bus](../connectors/apis-list.md#built-ins). Další informace o nepodporovaných triggerech, akcích a konektorech najdete v tématu [nepodporované funkce](#unsupported).
 
-Rozdíly ve způsobu, jakým se vnořené aplikace logiky chovají mezi stavovou a bezstavovou aplikací logiky, najdete v tématu [rozdíly v vnořování chování mezi stavovou a bezstavovou aplikací logiky](#nested-behavior)
+Informace o tom, jak se vnořené aplikace logiky chovají odlišně mezi stavovou a bezstavovou logicovou aplikací, najdete v tématu [rozdíly v vnořování chování mezi stavovou a bezstavovou logikou aplikace](#nested-behavior)
 
 <a name="pricing-model"></a>
 
@@ -918,7 +918,7 @@ Pomocí [nástroje rozhraní příkazového řádku (CLI) .NET Core](/dotnet/cor
 
 ## <a name="nested-behavior-differences-between-stateful-and-stateless-logic-apps"></a>Rozdíly mezi vnořenými chováními mezi stavové a bezstavové aplikace logiky
 
-[Pracovní postup aplikace logiky můžete vyvolat](../logic-apps/logic-apps-http-endpoint.md) z jiných pracovních postupů aplikací logiky pomocí triggeru [žádosti](../connectors/connectors-native-reqres.md) , triggeru [Webhooku protokolu HTTP](../connectors/connectors-native-webhook.md) nebo triggerů spravovaného konektoru, které mají [typ ApiConnectionWehook](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) a můžou přijímat požadavky HTTPS.
+[Pracovní postup aplikace logiky můžete vyvolat](../logic-apps/logic-apps-http-endpoint.md) z dalších pracovních postupů aplikace logiky, které existují ve stejném zdroji aplikace logiky **(Preview)** pomocí triggeru [žádosti](../connectors/connectors-native-reqres.md) , triggeru [Webhooku protokolu HTTP](../connectors/connectors-native-webhook.md) nebo aktivační události spravovaného konektoru, které mají [typ ApiConnectionWehook](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) a můžou přijímat požadavky HTTPS.
 
 Tady jsou vzory chování, které mohou vnořené pracovní postupy aplikace logiky použít po volání nadřazeného pracovního postupu pro podřízený pracovní postup:
 
@@ -930,7 +930,7 @@ Tady jsou vzory chování, které mohou vnořené pracovní postupy aplikace log
 
   Podřízená položka potvrdí volání okamžitým vrácením `202 ACCEPTED` odpovědi a Nadřazená položka pokračuje k další akci, aniž by bylo nutné čekat na výsledky z podřízeného objektu. Místo toho nadřazený objekt obdrží výsledky po dokončení podřízeného prvku. Podřízené stavové pracovní postupy, které neobsahují akci odpovědi, se vždy řídí synchronním vzorem. V případě podřízených stavových pracovních postupů je k dispozici historie spuštění, kterou si můžete projít.
 
-  Pokud chcete toto chování povolit, v definici JSON pracovního postupu nastavte `OperationOptions` vlastnost na `DisableAsyncPattern` . Další informace naleznete v tématu [Trigger a typy akcí – možnosti operací](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options).
+  Pokud chcete toto chování povolit, v definici JSON pracovního postupu nastavte `operationOptions` vlastnost na `DisableAsyncPattern` . Další informace naleznete v tématu [Trigger a typy akcí – možnosti operací](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options).
 
 * Aktivovat a počkat
 
@@ -966,7 +966,9 @@ Pro tuto veřejnou verzi Preview nejsou tyto možnosti k dispozici nebo nejsou p
 
 * Vytvoření nového prostředku **Aplikace logiky (Preview)** není v současné době v MacOS k dispozici.
 
-* Vlastní konektory, triggery založené na webhookech a posuvná aktivační událost okna nejsou v této verzi Preview podporovaná. Pro nestavové pracovní postupy aplikace logiky můžete přidat jenom akce pro [spravované konektory](../connectors/apis-list.md#managed-api-connectors), ne triggery. Pokud chcete spustit pracovní postup, použijte [integrovaný požadavek, Event Hubs nebo aktivační událost Service Bus](../connectors/apis-list.md#built-ins).
+* Pokud chcete spustit pracovní postup, použijte [Trigger Request, http, Event Hubs nebo Service Bus](../connectors/apis-list.md). V současné době se v této verzi Preview v současnosti nepodporují služby [Enterprise Connectors](../connectors/apis-list.md#enterprise-connectors), [místní triggery dat](../connectors/apis-list.md#on-premises-connectors), triggery založené na webhookech, aktivační událost posuvných oken, [vlastní konektory](../connectors/apis-list.md#custom-apis-and-connectors), účty pro integraci, jejich artefakty a [jejich konektory](../connectors/apis-list.md#integration-account-connectors) . Funkce volání funkce Azure je nedostupná, takže teď použijte *akci* http pro volání adresy URL žádosti pro funkci Azure Functions.
+
+  Pracovní postupy bezstavových aplikací logiky můžou používat jenom akce pro [spravované konektory](../connectors/apis-list.md#managed-api-connectors), ne triggery. S výjimkou dříve zadaných triggerů můžou stavové pracovní postupy pro spravované konektory použít triggery i akce.
 
 * Nový typ prostředku **Aplikace logiky (Preview)** můžete nasadit jenom do [plánu hostování Premium nebo App Service v Azure](#publish-azure) nebo do [kontejneru Docker](#deploy-docker), a ne do [prostředí ISEs (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Plány hostování **spotřeby** nejsou podporované ani nejsou k dispozici pro nasazení tohoto typu prostředku.
 

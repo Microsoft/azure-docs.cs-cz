@@ -5,15 +5,15 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 7d1d7f9759fc8e2826da6232981eb3a389576c07
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: b0957219308dfaab2d375fb7c23926a13c745344
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935027"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314670"
 ---
-# <a name="monitor-metrics-azure-database-for-postgresql---flexible-server"></a>Monitorovat metriky Azure Database for PostgreSQL – flexibilní Server
+# <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>Monitorování metrik na Azure Database for PostgreSQL – flexibilní Server
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL – flexibilní Server je ve verzi Preview.
@@ -27,8 +27,9 @@ Azure Database for PostgreSQL poskytuje různé metriky, které poskytují přeh
 Pro PostgreSQL flexibilní Server jsou k dispozici následující metriky:
 
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Description|
+|Metrika|Zobrazovaný název metriky|Jednotka|Popis|
 |---|---|---|---|
+| active_connections | Aktivní připojení | Počet | Počet připojení k serveru | 
 | backup_storage_used | Využité úložiště záloh | Bajty | Velikost využitého úložiště záloh Tato metrika představuje součet úložiště spotřebovaného všemi úplnými zálohami databáze, rozdílové zálohy a zálohy protokolů, které jsou zachovány na základě nastaveného období uchovávání záloh pro server. Frekvence zálohování je spravována službou. V případě geograficky redundantního úložiště je využití úložiště zálohování dvakrát místní redundantní úložiště. |
 | connections_failed | Neúspěšná připojení | Počet | Připojení se nezdařila. |
 | connections_succeeded | Úspěšná připojení | Počet | Úspěšná připojení. |

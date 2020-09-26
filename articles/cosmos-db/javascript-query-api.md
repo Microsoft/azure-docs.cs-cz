@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 56fbcc3950a739c4c9fc3df86468301e2e2ff4d8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 1e8e1aa9d8e582644d1d625fc8a97cc0e0c790df
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421123"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334391"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Rozhraní API pro dotazování v jazyce JavaScript v Azure Cosmos DB
 
@@ -35,7 +35,7 @@ Kromě vydávání dotazů pomocí rozhraní SQL API v Azure Cosmos DB poskytuje
 Při zahrnutí do predikátu a/nebo funkce selektoru jsou následující konstrukce JavaScriptu automaticky optimalizované pro spuštění přímo na Azure Cosmos DB indexy:
 
 - Jednoduché operátory `=` `+` `-` `*` : `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
-- Literály, včetně literálu objektu:{}
+- Literály, včetně literálu objektu: {}
 - var, Return
 
 Následující konstrukce jazyka JavaScript nejsou optimalizované pro Azure Cosmos DB indexy:
@@ -50,7 +50,7 @@ Další informace najdete v dokumentaci k [JavaScriptu na straně serveru Cosmos
 Následující tabulka uvádí různé dotazy SQL a odpovídající dotazy JavaScriptu. Stejně jako u dotazů SQL jsou u vlastností (například item.id) rozlišována malá a velká písmena.
 
 > [!NOTE]
-> `__`(dvojité podtržítko) je alias pro `getContext().getCollection()` při použití rozhraní API pro dotazování jazyka JavaScript.
+> `__` (dvojité podtržítko) je alias pro `getContext().getCollection()` při použití rozhraní API pro dotazování jazyka JavaScript.
 
 |**SQL**|**Rozhraní API pro dotazy jazyka JavaScript**|**Popis**|
 |---|---|---|

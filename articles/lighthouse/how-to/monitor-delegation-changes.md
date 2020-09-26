@@ -3,12 +3,12 @@ title: Sledování změn delegování ve vašem tenantovi pro správu
 description: Přečtěte si, jak monitorovat aktivitu delegování z klientů zákazníka do vašeho spravovaného tenanta.
 ms.date: 09/08/2020
 ms.topic: how-to
-ms.openlocfilehash: 19c8cd4fa2b43961c46640a736a91e3fed3ac79d
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 15e96939d4115bd93260687f637143cc798a4331
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567601"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336594"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Sledování změn delegování ve vašem tenantovi pro správu
 
@@ -46,7 +46,7 @@ Vzhledem k tomu, že se jedná o širokou úroveň přístupu, doporučujeme př
 
 - [Vytvoří nový účet instančního objektu](../../active-directory/develop/howto-create-service-principal-portal.md) , který se bude používat jenom pro tuto funkci, a ne přiřazení této role k existujícímu instančnímu objektu, který se používá pro jiné služby Automation.
 - Ujistěte se, že tento instanční objekt nemá přístup k žádným delegovaným zákaznickým prostředkům.
-- [Použijte certifikát k ověření](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in) a [bezpečnému jeho uložení v Azure Key Vault](../../key-vault/general/best-practices.md).
+- [Použijte certifikát k ověření](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) a [bezpečnému jeho uložení v Azure Key Vault](../../key-vault/general/best-practices.md).
 - Omezte uživatele, kteří mají přístup ke službě Act jménem instančního objektu.
 
 > [!NOTE]

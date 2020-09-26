@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 7c1a2cf4b9b476a8f31f38fea45b2e1ef3fe4307
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0b80c2f125e7eddaa427b75e3e0fe2aff6c679be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531765"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334323"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Formát JSON v Azure Data Factory
 
@@ -217,6 +217,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem JSON. Tyt
 | Obsahuje komentáře | Vyberte **má komentáře** , pokud data JSON obsahují komentáře ve stylu C nebo C++. | ne | `true` nebo `false` | asComments |
 | Jednoduché v uvozovkách | Přečte sloupce JSON, které nejsou obklopené uvozovkami. | ne | `true` nebo `false` | singleQuoted |
 | Zpětné lomítko – řídicí | Vyberte **zpětné lomítko** , pokud se k řídicím znakům v datech JSON použijí zpětná lomítka. | ne | `true` nebo `false` | backslashEscape |
+| Nenalezeny žádné soubory | Pokud je nastaveno na true, chyba není vyvolána, pokud nebyly nalezeny žádné soubory. | ne | `true` nebo `false` | ignoreNoFilesFound |
 
 ### <a name="source-format-options"></a>Možnosti formátu zdroje
 
