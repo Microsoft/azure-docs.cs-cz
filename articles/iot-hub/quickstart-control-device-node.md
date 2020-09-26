@@ -14,14 +14,14 @@ ms.custom:
 - seo-javascript-october2019
 - mqtt
 - 'Role: Cloud Development'
-- devx-track-javascript
+- devx-track-js
 ms.date: 06/21/2019
-ms.openlocfilehash: 5f3064b9be35d9b9d02be3e18469ed12b33757a6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 13baface2bce9e98f08e37b8a16ba1e2b435205a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421548"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281571"
 ---
 # <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>Rychlý Start: použití Node.js k řízení zařízení připojeného ke službě Azure IoT Hub
 
@@ -29,7 +29,7 @@ ms.locfileid: "87421548"
 
 V tomto rychlém startu použijete přímou metodu k řízení simulovaného zařízení připojeného k Azure IoT Hub. IoT Hub je služba Azure, která umožňuje spravovat zařízení IoT z cloudu a ingestovat velké objemy telemetrie zařízení do cloudu za účelem uložení nebo zpracování. Přímé metody můžete použít k provádění vzdálených změn chování zařízení připojeného k centru IoT. V tomto rychlém startu se používají dvě Node.js aplikace: aplikace simulovaného zařízení, která reaguje na přímé metody volané z back-endové aplikace a back-endové aplikace, která volá přímé metody na simulovaném zařízení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -57,7 +57,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-node.md), můžete tento krok přeskočit.
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f43ba78bc9c48b003d4718945dc47b0a076a048f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 82b0b53b1933a7ca08163a12b2b7649b7b9538f4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134526"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361632"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Využití restartování virtuálních počítačů infrastruktury Azure k dosažení "vyšší dostupnosti" systému SAP
 
@@ -210,7 +210,7 @@ ms.locfileid: "86134526"
 
 > Tato část se týká:
 >
-> ![Windows][Logo_Windows] Okna a ![Linux][Logo_Linux] Linux
+> ![Logo Windows][Logo_Windows] Okna a ![Logo Linux.][Logo_Linux] Linux
 >
 
 Pokud se rozhodnete, že nebudete používat funkce, jako je Windows Server Failover Clustering (WSFC) nebo Pacemaker v systému Linux (aktuálně se podporuje jenom pro SUSE Linux Enterprise Server [SLES] 12 a novější), využije se restart virtuálního počítače Azure. Chrání systémy SAP proti plánovanému a neplánovanému výpadku infrastruktury fyzického serveru Azure a celkové základní platformy Azure.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 41ffd7606cb4c01cd8c2da56898b67cf177c358e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 850db53cbf88968a413d72527d76463e17aa8f5d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329172"
+ms.locfileid: "91361700"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Kurz: Konfigurace 8x8 pro Automatické zřizování uživatelů
 
@@ -104,7 +104,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zkopírujte **adresu url 8x8** z Configuration Manager do **adresy URL tenanta**. Zkopírujte **token rozhraní API 8x8** z Configuration Manager do **tajného tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k 8x8. Pokud se připojení nepovede, ujistěte se, že má váš účet 8x8 oprávnění správce, a zkuste to znovu.
 
-    ![Zřizování](./media/8x8-provisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně přihlašovací údaje správce, kde můžete zadat svého tenanta U R L a tajného tokenu.](./media/8x8-provisioning-tutorial/provisioning.png)
 
 6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem**.
 

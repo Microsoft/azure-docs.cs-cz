@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 6f1eb48655c4e38e2cf0520409e5e2b38750baf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 079d187f66cf77585121198df06cabafc454fea1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324143"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362125"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replikace do Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -58,7 +58,7 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
 | [**Snímek**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Yes|
 | [**Sloučit replikaci**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | No | No|
 | [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | No | No|
-| [**Obousměrné**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Ano|
+| [**Obousměrné**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Yes|
 | [**Odběry, které by možné aktualizovat**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | No | No|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -78,7 +78,7 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
 
 ## <a name="replication-architecture"></a>Architektura replikace  
 
-![replikace do SQL – databáze](./media/replication-to-sql-database/replication-to-sql-database.png)  
+![Diagram znázorňuje architekturu replikace s Azure SQL Database, která obsahuje několik clusterů pro předplatitele v různých oblastech, a místní virtuální počítače Azure, které obsahují vydavatele, spustitelný soubor LogRead a distributory, které se připojují ke vzdáleným clusterům.](./media/replication-to-sql-database/replication-to-sql-database.png)  
 
 ## <a name="scenarios"></a>Scénáře  
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: 305242e13dab23b6a003c5d864073372a052601a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d6b1085d51d7345b233087986127cbc97c0597e1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593167"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362057"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrace z Translator Speech API do služby pro rozpoznávání řeči
 
@@ -61,7 +61,7 @@ Pokud vy nebo vaše organizace máte aplikace ve vývojovém nebo produkčním p
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vyzkoušejte si službu Speech Service zdarma](get-started.md)
+* [Vyzkoušejte si službu Speech Service zdarma](overview.md#try-the-speech-service-for-free)
 * [Rychlý Start: rozpoznávání řeči v aplikaci UWP pomocí sady Speech SDK](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>Viz také

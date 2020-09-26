@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 711c4ce8af613181d35d2850393c6c24d795c280
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: fc9a5e604e6ac52eb0e853725123272ca924fa36
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799260"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362227"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Co je vědecké zpracování týmových dat?
 
@@ -51,7 +51,7 @@ Tento životní cyklus je navržený pro projekty pro datové vědy, které se d
 
 Tady je vizuální reprezentace **životního cyklu vědeckého zpracování týmových dat**. 
 
-![TDSP – Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
+![Diagram znázorňuje životní cyklus pro datové vědy, včetně podnikového porozumění, získávání a porozumění dat, modelování a nasazování.](./media/overview/tdsp-lifecycle2.png) 
 
 Cíle, úlohy a artefakty dokumentace pro každou fázi životního cyklu v TDSP jsou popsány v tématu [životní cyklus procesu vědeckého zpracování dat týmu](lifecycle.md) . Tyto úlohy a artefakty jsou přidruženy k rolím projektu:
 

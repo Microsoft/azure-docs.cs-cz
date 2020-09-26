@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 00b0c1b1a40ad16db177916c57dba6e9d5a187a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bff9457220efbb6a6b318550a5b2dd9af4ae230f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67175535"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361381"
 ---
 Použijte postup podle svých konkrétních okolností.
 
@@ -35,7 +35,7 @@ Tyto kroky použijte pouze v případě, že není k dispozici žádný způsob,
     - USA: Ne: sériové číslo procesového serveru.
     - IP/název: IP adresa a název počítače, na kterém běží procesový Server.
     - Prezenční signál: poslední prezenční signál z počítače procesového serveru.
-    ![Zrušit registraci – cmd](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
+    ! [Snímek obrazovky zobrazuje nešifrované zobrazení informací o procesových serverech a textu. Zvolte prosím jeden z výše uvedených serverů pro zrušení registrace. (Media/Site-Recovery-VMware-Unregister-Process-Server/Unregister-cmd.PNG)
 
 4. Zadejte sériové číslo procesového serveru, který chcete zrušit.
 5. Zrušení registrace procesového serveru odebere ze systému všechny jeho podrobnosti a zobrazí zprávu: **úspěšně odregistrované servery – název> (Server-IP-Address)**

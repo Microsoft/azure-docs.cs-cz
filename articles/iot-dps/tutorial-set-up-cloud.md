@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 925d1178ad630699cfd3d9e48677c0f029fc75af
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f45c3def84c548ba12221efa59e9ebbd4699df71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74976719"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316065"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Kurz: Konfigurace cloudových prostředků pro zřizování zařízení pomocí IoT Hub Device Provisioning Service
 
@@ -21,15 +21,15 @@ Tento kurz ukazuje, jak nastavit cloud pro automatické zřizování zařízení
 
 > [!div class="checklist"]
 > * Vytvoření služby IoT Hub Device Provisioning a získání rozsahu ID pomocí webu Azure Portal
-> * Vytvoření centra IoT
+> * Vytvoření centra IoT (neboli IoT Hubu)
 > * Propojení centra IoT se službou Device Provisioning
 > * Nastavení zásad přidělování ve službě Device Provisioning
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
+## <a name="prerequisites"></a>Požadavky
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-device-provisioning-service-instance-and-get-the-id-scope"></a>Vytvoření instance služby Device Provisioning a získání rozsahu ID
 
@@ -52,13 +52,13 @@ Pomocí těchto kroků vytvořte novou instanci služby Device Provisioning.
 
    ![Zadání základních informací o službě Device Provisioning na portálu](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. Klikněte na možnost **Vytvořit**. Za malou chvíli se vytvoří instance služby Device Provisioning a zobrazí se stránka **Přehled**.
+5. Klikněte na **Vytvořit**. Za malou chvíli se vytvoří instance služby Device Provisioning a zobrazí se stránka **Přehled**.
 
 6. Ze stránky **Přehled** pro novou instanci služby zkopírujte pro pozdější použití hodnotu položky **Obor ID**. Tato hodnota slouží k identifikaci ID registrací a poskytuje záruku, že je ID registrace jedinečné.
 
 7. Pro pozdější použití zkopírujte i hodnotu položky **Koncový bod služby**. 
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -116,7 +116,7 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Vytvoření služby IoT Hub Device Provisioning a získání rozsahu ID pomocí webu Azure Portal
-> * Vytvoření centra IoT
+> * Vytvoření centra IoT (neboli IoT Hubu)
 > * Propojení centra IoT se službou Device Provisioning
 > * Nastavení zásad přidělování ve službě Device Provisioning
 

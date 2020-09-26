@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/20/2020
-ms.openlocfilehash: f7327079e365bcd8a99a8274828f7c14e2337a34
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3487b5a069b1862ec302a979318ea78722b1433c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121550"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361683"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Smlouva standard pro komerční tržiště Microsoftu
 
@@ -21,7 +21,7 @@ Microsoft nabízí standardní smlouvu pro komerční tržiště Microsoftu. To 
 Podmínky a ujednání pro nabídku jsou definovány při vytváření nabídky v partnerském centru. Místo poskytování vlastních podmínek a ujednání můžete zvolit, že se má používat standardní smlouva pro komerční tržiště Microsoftu.
 
 >[!Note]
->Po publikování nabídky pomocí standardní smlouvy pro komerční tržiště společnosti Microsoft nebudete moci používat vlastní podmínky a ujednání. Jedná se o scénář "nebo". Vaše řešení si buď nabídnete v rámci standardní smlouvy, *nebo* podle vašich vlastních podmínek. Pokud chcete upravit podmínek standardní smlouvy, můžete to udělat prostřednictvím standardních změn smlouvy.
+>Po publikování nabídky s použitím standardní smlouvy pro komerční tržiště Microsoftu nebudete moct používat vlastní podmínky a ujednání. Vaše řešení si buď nabídnete v rámci standardní smlouvy, *nebo* podle vašich vlastních podmínek. Vlastní podmínky a ujednání jsou definovány na úrovni nabídky a platí pro všechny plány; na stránce **vlastností** vaší nabídky v partnerském centru napište vlastní podmínky a ujednání. Pokud chcete upravit podmínek standardní smlouvy, můžete to udělat prostřednictvím standardních změn smlouvy.
 
 ## <a name="standard-contract-amendments"></a>Změny smlouvy Standard
 

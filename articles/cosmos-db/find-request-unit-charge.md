@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d692a884688d81fdf16261edff816fa8f0215877
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 81660bee32cace458424c9975c74ca7980148e29
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422313"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316184"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Najděte poplatek za jednotku žádosti v Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Pokud používáte rozhraní API SQL, máte k dispozici několik možností, jak
 
 V současné době můžete v Azure Portal vyhledat poplatek za požadavek pouze pro dotaz SQL.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account) a zajistěte ho s daty nebo vyberte existující účet Azure Cosmos, který už obsahuje data.
 
@@ -119,7 +119,7 @@ Další informace najdete v tématu [rychlý Start: Vytvoření aplikace Java po
 
 ### <a name="use-the-nodejs-sdk"></a>Použití sady Node.js SDK
 
-Objekty, které jsou vráceny ze [sady SDKNode.js](https://www.npmjs.com/package/@azure/cosmos) zpřístupňují `headers` podobjekt, který mapuje všechny hlavičky vrácené podkladovým rozhraním API protokolu HTTP. Poplatek za požadavek je k dispozici pod `x-ms-request-charge` klíčem:
+Objekty, které jsou vráceny ze [ sady SDKNode.js](https://www.npmjs.com/package/@azure/cosmos) zpřístupňují `headers` podobjekt, který mapuje všechny hlavičky vrácené podkladovým rozhraním API protokolu HTTP. Poplatek za požadavek je k dispozici pod `x-ms-request-charge` klíčem:
 
 ```javascript
 const item = await client
@@ -176,7 +176,7 @@ Poplatek za RU je vystavený pomocí [příkazu vlastní databáze](https://docs
 
 V současné době můžete poplatek za požadavek najít v Azure Portal jenom pro dotaz.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account) a zajistěte ho s daty nebo vyberte existující účet, který už obsahuje data.
 

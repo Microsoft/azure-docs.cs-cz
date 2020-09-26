@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: bc503213169f909850460edf5e50ed3f1b34fbe2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 52964c906df7a96685c8eb80c1d23ef9a9efc6e1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288592"
+ms.locfileid: "91361836"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Použití vícefaktorového ověřování AAD s synapse SQL (podpora SSMS pro MFA)
 
@@ -26,7 +26,7 @@ Tento článek popisuje rozdíly mezi různými možnostmi ověřování a také
 
 Pro všechny funkce popsané v tomto článku použijte minimálně červenec 2017, verze 17,2.  Dialogové okno nejaktuálnější připojení by mělo vypadat podobně jako na následujícím obrázku:
 
-![1mfa – Universal-Connect](./media/mfa-authentication/1mfa-universal-connect.png "Dokončí pole uživatelské jméno.")  
+![Snímek obrazovky se zobrazí dialogové okno připojit k serveru, kde můžete vybrat název serveru a možnost ověřování.](./media/mfa-authentication/1mfa-universal-connect.png "Dokončí pole uživatelské jméno.")  
 
 ## <a name="the-five-authentication-options"></a>Pět možností ověřování  
 
@@ -63,7 +63,7 @@ Chcete-li zadat parametr (počínaje SSMS verze 17,2), v dialogovém okně **př
 
 Zaškrtněte pole **název domény služby AD nebo ID tenanta** a poskytněte ověřovací autoritu, jako je například název domény (**contosotest.onmicrosoft.com**) nebo identifikátor GUID ID tenanta.  
 
-   ![MFA – tenant – SSMS](./media/mfa-authentication/mfa-tenant-ssms.png)
+   ![Snímek obrazovky ukazuje připojit k serveru na kartě Vlastnosti připojení s zadanými hodnotami.](./media/mfa-authentication/mfa-tenant-ssms.png)
 
 Pokud používáte SSMS 18. x nebo novější, pak název domény služby AD nebo ID tenanta už není potřeba pro uživatele typu Host, protože 18. x nebo novější ho automaticky rozpoznává.
 

@@ -4,12 +4,12 @@ description: Přizpůsobení webové aplikace v jazyce C# .NET pomocí smyčky v
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9ce4c433a038008b1ffd75dc6c4b2f9d0b57fde
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 59881a749676f4f5408c1ffc87b3bcf75c512e1e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935615"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316218"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Kurz: Přidání přizpůsobení do webové aplikace .NET
 
@@ -254,7 +254,7 @@ Sestavte a spusťte HttpRequestFeaturesExample pomocí jedné z následujících
 Přes webový prohlížeč můžete odeslat žádost o zařazení a žádost o odměnu, zobrazit jejich odpovědi a také funkce žádosti HTTP extrahované z vašeho prostředí.
 
 > [!div class="mx-imgBorder"]
-> ![Sestavte a spusťte projekt HTTPRequestFeaturesExample. Otevře se okno prohlížeče, ve kterém se zobrazí jedna stránková aplikace.](./media/tutorial-web-app/web-app-single-page.png)
+> ![Snímek obrazovky ukazuje příklad funkce požadavku HTTP ve webovém prohlížeči.](./media/tutorial-web-app/web-app-single-page.png)
 
 ## <a name="demonstrate-the-personalizer-loop"></a>Ukázka smyčky přizpůsobeného přizpůsobování
 
@@ -267,7 +267,7 @@ Přes webový prohlížeč můžete odeslat žádost o zařazení a žádost o o
 1. Nastavte hodnotu odměňování a pak vyberte tlačítko pro **odeslání žádosti o Nemotivaci** . Pokud hodnotu neměníte, klientská aplikace vždy pošle hodnotu do přizpůsobeného `1` .
 
     > [!div class="mx-imgBorder"]
-    > ![Sestavte a spusťte projekt HTTPRequestFeaturesExample. Otevře se okno prohlížeče, ve kterém se zobrazí jedna stránková aplikace.](./media/tutorial-web-app/reward-score-api-call.png)
+    > ![Snímek obrazovky se zobrazí v oddílu žádosti o odměnu.](./media/tutorial-web-app/reward-score-api-call.png)
 
     Pro vaši vlastní budoucí aplikaci může generování skóre odměňování nastat po shromáždění informací z chování uživatele v klientovi, spolu s obchodní logikou na serveru.
 

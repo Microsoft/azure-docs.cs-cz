@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 96557a6049b316a69c32e96012206eab128e024a
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 4f6bbbdbbee6cf83a6bea463cf200be0cf671897
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317051"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights používání AI k monitorování a řešení potíží s výkonem databáze (Preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -73,10 +73,10 @@ Dostupné možnosti Intelligent Insights jsou:
 
 | Možnost Intelligent Insights | Podpora Azure SQL Database | Podpora spravované instance Azure SQL |
 | :----------------------------- | ----- | ----- |
-| **Nakonfigurujte Intelligent Insights** – nakonfigurujte Intelligent Insights analýzy pro vaše databáze. | Ano | Ano |
-| **Stream Insights do Azure SQL Analytics** --Stream insights pro Azure SQL Analytics. | Ano | Ano |
-| **Stream Insights do Azure Event Hubs** -Stream insights pro Event Hubs pro další vlastní integrace. | Ano | Ano |
-| **Stream Insights do Azure Storage** -Stream Insights, které Azure Storage k další analýze a dlouhodobé archivaci. | Ano | Ano |
+| **Nakonfigurujte Intelligent Insights** – nakonfigurujte Intelligent Insights analýzy pro vaše databáze. | Yes | Yes |
+| **Stream Insights do Azure SQL Analytics** --Stream insights pro Azure SQL Analytics. | Yes | Yes |
+| **Stream Insights do Azure Event Hubs** -Stream insights pro Event Hubs pro další vlastní integrace. | Yes | Yes |
+| **Stream Insights do Azure Storage** -Stream Insights, které Azure Storage k další analýze a dlouhodobé archivaci. | Yes | Yes |
 
 > [!NOTE]
 > Inteligentní přehledy jsou funkce ve verzi Preview, která není dostupná v následujících oblastech: Západní Evropa, Severní Evropa, Západní USA 1 a Východní USA 1.

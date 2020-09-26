@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8cab2e3490703cbf955ed1ed5c6e753a3ccfc753
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78252752"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361428"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Kurz: Zabalení a nasazení kontejnerů jako aplikace Service Fabric pomocí Yeomanu
 
@@ -278,7 +278,7 @@ Otevřete prohlížeč a přejděte na Service Fabric Explorer na adrese http: \
 
 Pokud se chcete připojit ke spuštěné aplikaci, otevřete webový prohlížeč a pokračujte na adresu URL clusteru – například http: \/ /containertestcluster.eastus.cloudapp.Azure.com:80. Ve webovém uživatelském rozhraní byste měli vidět aplikaci Voting.
 
-![aplikacevoting][votingapp]
+![Snímek obrazovky se zobrazí v hlasovací aplikaci Azure s tlačítky pro kočky, psy a Reset a součty.][votingapp]
 
 ## <a name="clean-up"></a>Vyčištění
 

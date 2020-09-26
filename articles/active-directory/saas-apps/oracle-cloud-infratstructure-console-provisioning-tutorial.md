@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7efe58081604708ff090d28f7274c738406c5007
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 665e4870619751bbda062473d0c2549b26352d94
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255879"
+ms.locfileid: "91361598"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>Kurz: Konfigurace konzoly Oracle Cloud Infrastructure pro Automatické zřizování uživatelů
 
@@ -108,7 +108,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** ve formátu `https://<IdP ID>.identity.oraclecloud.com/admin/v1` . Příklad: `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`. Zadejte hodnotu tajného tokenu získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit ke konzole cloudové infrastruktury Oracle. Pokud se připojení nepovede, zajistěte, aby měl účet konzoly pro cloudovou infrastrukturu Oracle oprávnění správce, a zkuste to znovu.
 
-    ![zřizování](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně přihlašovací údaje správce, kde můžete zadat svého tenanta U R L a tajného tokenu.](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/provisioning.png)
 
 6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem**.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/14/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7031bc0398e77dc308f9c08180338975831b411e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c8934e1344ff2d7df97c3854f4e025f19fb37f1e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321930"
+ms.locfileid: "91361615"
 ---
 # <a name="tutorial-configure-new-relic-by-organization-for-automatic-user-provisioning"></a>Kurz: konfigurace nového Relic podle organizace pro Automatické zřizování uživatelů
 
@@ -97,7 +97,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte `https://scim-provisioning.service.newrelic.com/scim/v2` adresu URL tenanta. Zadejte hodnotu SCIM tokenu ověřování získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k nové Relic. Pokud se připojení nepovede, zajistěte, aby měl váš nový účet Relic oprávnění správce, a zkuste to znovu.
 
-    ![zřizování](./media/new-relic-by-organization-provisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně přihlašovací údaje správce, kde můžete zadat svého tenanta U R L a tajného tokenu.](./media/new-relic-by-organization-provisioning-tutorial/provisioning.png)
 
 6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem**.
 

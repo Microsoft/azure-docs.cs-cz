@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/05/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 42b2ff0b7c2d43beb1d5f0b2136a97e67c0143a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a38d65e66debd8e718964efdce27fe42772d8e0a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905070"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315537"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Vysvětlení výsledků automatizovaného strojového učení
 
@@ -30,7 +30,7 @@ Přečtěte si další informace:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Vytvořte experiment pro automatizované spuštění strojového učení, a to buď pomocí sady SDK, nebo v Azure Machine Learning Studiu.
 
@@ -226,8 +226,8 @@ Následující metriky jsou uloženy v každé iteraci spuštění pro úlohu re
 
 |Metrika|Popis|Výpočet|Další parametry
 --|--|--|--|
-explained_variance|Vysvětlení odchylky je poměr, ke kterému chcete vytvořit matematické modely pro variaci dané datové sady. Jedná se o procento snížení odchylky původních dat s odchylkou chyb. Pokud je střední hodnota chyb 0, je rovna vysvětlit odchylku.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Žádné|
-r2_score|R2 je koeficient určení nebo procento snížení počtu kvadratických chyb v porovnání se základním modelem, který má za následek výstup středníku. |[Kalkulační](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Žádné|
+explained_variance|Vysvětlení odchylky je poměr, ke kterému chcete vytvořit matematické modely pro variaci dané datové sady. Jedná se o procento snížení odchylky původních dat s odchylkou chyb. Pokud je střední hodnota chyb 0, rovná se součiniteli určení (viz r2_score níže).|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Žádné|
+r2_score|R ^ 2 je koeficient stanovení nebo procento snížení počtu kvadratických chyb v porovnání se základním modelem, který má za následek výstup středníku. |[Kalkulační](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Žádné|
 spearman_correlation|Korelace Spearman je neparametrová míra monotonicity vztahu mezi dvěma datovými sadami. Na rozdíl od korelace Pearsonova nepředpokládá korelace Spearman, že obě datové sady jsou normálně distribuovány. Podobně jako u jiných korelačních korelace se tato hodnota liší v rozsahu-1 až + 1 s 0, což neimplikuje žádnou korelaci. Korelace-1 nebo + 1 implikuje přesný vztah monotónní. Kladné korelace znamenají, že při zvýšení hodnoty x, takže ano. Záporná korelace implikuje za následek, že při zvyšování hodnoty x se sníží hodnota y.|[Kalkulační](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|Žádné|
 mean_absolute_error|Střední absolutní chyba je očekávaná hodnota absolutní hodnoty rozdíl mezi cílem a předpovědí.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Žádné|
 normalized_mean_absolute_error|Normalizovaná střední chyba znamená absolutní chybu dělenou rozsahem dat.|[Kalkulační](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Rozdělit podle rozsahu dat|

@@ -6,13 +6,13 @@ ms.topic: conceptual
 description: Revize a testování změn z žádosti o přijetí změn přímo ve službě Azure Kubernetes pomocí akcí GitHubu a Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, akce GitHubu, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5e3417f16791b71d53a0eec9263532219c779440
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: devx-track-js
+ms.openlocfilehash: 25cb0de10e83069514c7918a5a2cdac019fe1ebb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212498"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316099"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akce GitHubu & službě Azure Kubernetes (Preview)
 
@@ -28,7 +28,7 @@ V tomto průvodci se naučíte:
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 * [Nainstalované rozhraní Azure CLI][azure-cli-installed]
@@ -51,7 +51,7 @@ Uložte hodnotu *loginServer* z výstupu, protože se používá v pozdějším 
 
 ## <a name="create-a-service-principal-for-authentication"></a>Vytvoření instančního objektu pro ověřování
 
-K vytvoření instančního objektu použijte [příkaz AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Například:
+K vytvoření instančního objektu použijte [příkaz AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Příklad:
 
 ```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
@@ -149,7 +149,7 @@ git push origin bike-images
 
 Po dokončení nahrávání přejděte do rozvětvené úložiště na GitHubu a vytvořte žádost o přijetí změn s *Hlavní* větví ve vašem rozvětvené úložišti jako základní větev v porovnání s větví *Bike-images* .
 
-Po otevření žádosti o přijetí změn přejděte na kartu *Akce* . Ověřte, zda byla spuštěna nová akce a sestavuje službu *Bikes* .
+Po otevření žádosti o získání dat přejděte na kartu *Akce* . Ověřte, že byla spuštěna nová akce a probíhá vytváření služby *Bikes* .
 
 ## <a name="view-the-child-space-with-your-changes"></a>Zobrazení podřízeného prostoru vašimi změnami
 

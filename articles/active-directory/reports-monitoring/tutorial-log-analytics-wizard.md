@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93caf52d8b4a11f9843ad5f18ebf968d1d0730cd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 643010ef1f6e941a57673a711e1871aafd1e341d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226203"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361904"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Kurz: Konfigurace Průvodce Log Analytics
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření vlastního sešitu pomocí šablony pro rychlý Start
 > * Přidat dotaz do existující šablony sešitu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure s alespoň jedním správcem licencované licence P1. Pokud nemáte předplatné Azure, můžete si [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 
@@ -72,7 +72,7 @@ Konfigurace pracovního prostoru Log Analytics se skládá ze dvou hlavních kro
 
 3. Na stránce pracovní prostory Log Analytics klikněte na **Přidat**.
 
-    ![Přidat](./media/tutorial-log-analytics-wizard/add.png)
+    ![Snímek obrazovky se zobrazí na stránce pracovní prostory Log Analytics tlačítko Přidat.](./media/tutorial-log-analytics-wizard/add.png)
 
 4.  Na stránce **vytvořit Log Analytics pracovní prostor** proveďte následující kroky:
 
@@ -260,7 +260,7 @@ Tento postup ukazuje, jak odeslat výstrahy při použití účtu breakglass.
 
 14. Na stránce **vytvořit skupinu akcí** proveďte následující kroky:
 
-    ![Podrobnosti instance](./media/tutorial-log-analytics-wizard/instance-details.png)
+    ![Podrobnosti o instancích](./media/tutorial-log-analytics-wizard/instance-details.png)
 
     1. Do textového pole **název skupiny akcí** zadejte **moje skupina akcí**.
 
@@ -268,7 +268,7 @@ Tento postup ukazuje, jak odeslat výstrahy při použití účtu breakglass.
 
     3. Klikněte na **Zkontrolovat a vytvořit**. 
 
-    4. Klikněte na možnost **Vytvořit**.
+    4. Klikněte na **Vytvořit**.
 
 
 15. V části **přizpůsobit akci**proveďte následující kroky:
@@ -305,7 +305,7 @@ Tento postup ukazuje, jak vytvořit nový sešit pomocí šablony pro rychlý St
 
 3. V části **monitorování** klikněte na možnost **sešity**.
 
-    ![Workbooks](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![Snímek obrazovky ukazuje monitorování v nabídce Azure Portal s vybranými sešity.](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. V části **rychlý Start** klikněte na **prázdné**.
 
@@ -357,7 +357,7 @@ Tento postup ukazuje, jak přidat dotaz do existující šablony sešitu. Tento 
 
 3. V části **monitorování** klikněte na možnost **sešity**.
 
-    ![Workbooks](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![Snímek obrazovky s vybranými sešity zobrazuje v nabídce monitorování.](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. V části **podmíněný přístup** klikněte na **přehledy podmíněného přístupu a vytváření sestav**.
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 1524e51fff64b00a798f15425973145feee730fe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 67ab15a6b890bc5f28cd18fca8a35adbc7437778
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651641"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280976"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží ve službě Azure Machine Learning
 
@@ -291,12 +291,12 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **ModuleErrors (žádný modul s názvem)**: Pokud při odesílání experimentů ve službě Azure ml používáte systém ModuleErrors, znamená to, že školicí skript očekává, že je balíček nainstalovaný, ale nepřidá se. Po zadání názvu balíčku nainstaluje Azure ML balíček do prostředí používaného pro váš školicí běh. 
 
-    Pokud používáte [odhady](concept-azure-machine-learning-architecture.md#estimators) k odesílání experimentů, můžete zadat název balíčku prostřednictvím `pip_packages` nebo `conda_packages` parametr v Estimator na základě toho, ze kterého zdroje chcete balíček nainstalovat. Můžete také zadat soubor YML se všemi vašimi závislostmi pomocí `conda_dependencies_file` nebo vypsat všechny požadavky PIP v souboru txt pomocí `pip_requirements_file` parametru. Pokud máte vlastní objekt prostředí Azure ML, který chcete přepsat výchozí image, kterou používá Estimator, můžete toto prostředí zadat prostřednictvím `environment` parametru konstruktoru Estimator.
+    Pokud používáte odhady k odesílání experimentů, můžete zadat název balíčku prostřednictvím `pip_packages` nebo `conda_packages` parametr v Estimator na základě toho, ze kterého zdroje chcete balíček nainstalovat. Můžete také zadat soubor YML se všemi vašimi závislostmi pomocí `conda_dependencies_file` nebo vypsat všechny požadavky PIP v souboru txt pomocí `pip_requirements_file` parametru. Pokud máte vlastní objekt prostředí Azure ML, který chcete přepsat výchozí image, kterou používá Estimator, můžete toto prostředí zadat prostřednictvím `environment` parametru konstruktoru Estimator.
 
     Azure ML také poskytuje odhady specificky pro rozhraní pro TensorFlow, PyTorch, chainer a skriptu sklearn. Pomocí těchto odhady se zajistí, že se závislosti Core Frameworku nainstalují vaším jménem do prostředí používaného pro školení. Máte možnost zadat další závislosti, jak je popsáno výše. 
  
     Azure ML zachovává image Docker a jejich obsah se může zobrazit v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers).
-    Závislosti specifické pro rozhraní jsou uvedeny v dokumentaci k příslušnému rozhraní – [chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#&preserve-view=trueremarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#&preserve-view=trueremarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#&preserve-view=trueremarks), [skriptu sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#&preserve-view=trueremarks).
+    Závislosti specifické pro rozhraní jsou uvedeny v dokumentaci k příslušnému rozhraní – [chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), [skriptu sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks).
 
     > [!Note]
     > Pokud si myslíte, že konkrétní balíček je dostatečně společný, aby ho bylo možné přidat do spravovaných imagí a prostředí Azure ML, vyřešte v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers)problém GitHubu. 
@@ -305,7 +305,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **Horovod byla vypnuta**: ve většině případů, pokud se zobrazí zpráva "AbortedError: Horovod byla vypnuta" Tato výjimka znamená, že došlo k základní výjimce v jednom z procesů, které způsobily vypnutí Horovod. Každé pořadí v úloze MPI získá vlastní vyhrazený soubor protokolu v Azure ML. Tyto protokoly jsou pojmenovány `70_driver_logs` . V případě distribuovaného školení jsou názvy protokolů s příponou a usnadňují `_rank` odlišení protokolů. Pokud chcete najít přesnou chybu, která způsobila vypnutí Horovod, Projděte všechny soubory protokolů a hledejte na `Traceback` konci driver_log souborů. Jeden z těchto souborů vám poskytne vlastní podkladovou výjimku. 
 
-* **Spuštění nebo experimentování při odstraňování**: experimenty se dají archivovat pomocí metody [experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truearchive--) nebo na kartě experiment v Azure Machine Learning klientovi studia pomocí tlačítka "archivní experiment". Tato akce skryje experiment ze seznamu dotazy a zobrazení, ale neodstraní ho.
+* **Spuštění nebo experimentování při odstraňování**: experimenty se dají archivovat pomocí metody [experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truearchive--) nebo na kartě experiment v Azure Machine Learning klientovi studia pomocí tlačítka "archivní experiment". Tato akce skryje experiment ze seznamu dotazy a zobrazení, ale neodstraní ho.
 
     Trvalé odstranění individuálních experimentů nebo spuštění není aktuálně podporováno. Další informace o odstraňování prostředků pracovního prostoru najdete v tématu [Export nebo odstranění dat pracovního prostoru služby Machine Learning](how-to-export-delete-data.md).
 
@@ -320,7 +320,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>Automatizované strojové učení
 
-* **Nedávná aktualizace závislostí AutoML na novější verze bude compatibilitity**: od verze 1.13.0 sady SDK nebudou modely načteny do starších sad SDK z důvodu nekompatibility se staršími verzemi, které jsme připnuli v předchozích balíčcích, a novějších verzích, které teď zapnete. Zobrazí se chyba, například:
+* **Poslední upgrade závislostí AutoML na novější verze bude mít za následek porušení kompatibility**: od verze 1.13.0 sady SDK nebudou modely načteny do starších sad SDK z důvodu nekompatibility mezi staršími verzemi, které jsme připnuli v předchozích balíčcích, a novějšími verzemi, které teď zapnete. Zobrazí se chyba, například:
   * Modul nebyl nalezen: ex. `No module named 'sklearn.decomposition._truncated_svd` ,
   * Chyby importu: ex. `ImportError: cannot import name 'RollingOriginValidator'` ,
   * Chyby atributů: ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
@@ -340,7 +340,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade scikit-learn==0.20.3
   ```
  
-* **Předpověď na pozici R2 je vždycky nulová**: k tomuto problému dochází, pokud mají poskytnuté školicí údaje časovou řadu, která obsahuje stejnou hodnotu pro poslední `n_cv_splits`  +  `forecasting_horizon` datové body. Pokud tento model v časové řadě očekáváte, můžete přepínat primární metriku na normalizovanou průměrnou chybu v kořenovém čtverci.
+* **Předpověď na pozici R2 je vždycky nulová**: k tomuto problému dochází, pokud mají poskytnuté školicí údaje časovou řadu, která obsahuje stejnou hodnotu pro poslední `n_cv_splits`  +  `forecasting_horizon` datové body. Pokud je tento model očekáván v časové řadě, můžete přepínat primární metriku na normalizovaný základní průměrnou chybu.
  
 * **TensorFlow**: od verze 1.5.0 sady SDK služba automatizovaného strojového učení neinstaluje modely TensorFlow ve výchozím nastavení. Pokud chcete nainstalovat TensorFlow a používat ho s automatizovanými experimenty ML, nainstalujte TensorFlow = = 1.12.0 prostřednictvím CondaDependecies. 
  
@@ -366,7 +366,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     * Zajistěte, aby byl nainstalován conda 64, nikoli 32-bit spuštěním `conda info` příkazu. `platform`Měla by být `win-64` pro Windows nebo `osx-64` pro Mac.
     * Ujistěte se, že je nainstalovaný conda 4.4.10 nebo novější. Verzi můžete ověřit pomocí příkazu `conda -V` . Pokud máte nainstalovanou předchozí verzi, můžete ji aktualizovat pomocí příkazu: `conda update conda` .
     * Linux `gcc: error trying to exec 'cc1plus'`
-      *  Pokud `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` dojde k chybě, nainstalujte základy sestavení pomocí příkazu tónování `sudo apt-get install build-essential` .
+      *  Pokud `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` dojde k chybě, nainstalujte základy sestavení pomocí příkazu `sudo apt-get install build-essential` .
       * Pokud chcete automl_setup vytvořit nové prostředí Conda, předejte nový název jako první parametr. Zobrazit existující prostředí conda pomocí `conda env list` a odebrat je pomocí `conda env remove -n <environmentname>` .
       
 * **automl_setup_linux. sh se nezdařila**: Pokud se v Ubuntu Linux automl_setup_linus. sh, došlo k chybě: `unable to execute 'gcc': No such file or directory`-
@@ -376,7 +376,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   4. Spustit `automl_setup_linux.sh` znovu
 
 * **konfigurace. ipynb se nezdařila**:
-  * Pro místní conda nejdříve zajistěte, aby byla v automl_setup spuštěná susccessfully.
+  * V případě místních conda nejdříve zajistěte, aby byl úspěšně spuštěn automl_setup.
   * Ujistěte se, že je subscription_id správná. Subscription_id na webu Azure Portal najdete tak, že vyberete všechny služby a potom předplatné. Znaky "<" a ">" by neměly být zahrnuty do hodnoty subscription_id. Například `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` má platný formát.
   * Zajistěte přístup k předplatnému pro přispěvatele nebo vlastníka.
   * Ověřte, zda je oblast jednou z podporovaných oblastí: `eastus2` , `eastus` , `westcentralus` , `southeastasia` , `westeurope` , `australiaeast` , `westus2` , `southcentralus` .
@@ -390,15 +390,15 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   3. Pokud se používá nové předplatné, skupina prostředků, pracovní prostor nebo oblast, ujistěte se, že jste `configuration.ipynb` Poznámkový blok znovu spustili. Přímá změna config.jsna přímo bude fungovat jenom v případě, že pracovní prostor už existuje v zadané skupině prostředků v rámci zadaného předplatného.
   4. Pokud chcete změnit oblast, změňte prosím pracovní prostor, skupinu prostředků nebo předplatné. `Workspace.create` pracovní prostor nebude vytvořen ani aktualizován, pokud již existuje, i když je zadaná oblast odlišná.
   
-* **Ukázkový Poznámkový blok**se nepovede: Pokud se ukázkový Poznámkový blok nepovede s chybou, že v nástroji neexistuje analýza, metoda nebo knihovna:
-  * Ujistěte se, že je v poznámkovém bloku Jupyter vybraná možnost jádro correctcorrect. Jádro se zobrazí v pravém horním rohu stránky poznámkového bloku. Výchozí hodnota je azure_automl. Všimněte si, že jádro je uloženo jako součást poznámkového bloku. Pokud tedy přepnete na nové prostředí Conda, budete muset vybrat nové jádro v poznámkovém bloku.
+* **Ukázkový Poznámkový blok se nezdařil**: Pokud ukázkový Poznámkový blok selhává s chybou, že vlastnost, metoda nebo knihovna neexistuje:
+  * Ujistěte se, že jste v poznámkovém bloku Jupyter vybrali správné jádro. Jádro se zobrazí v pravém horním rohu stránky poznámkového bloku. Výchozí hodnota je azure_automl. Všimněte si, že jádro je uloženo jako součást poznámkového bloku. Pokud tedy přepnete na nové prostředí Conda, budete muset vybrat nové jádro v poznámkovém bloku.
       * V případě Azure Notebooks by měl být Python 3,6. 
-      * V místních prostředích conda by měl být název envioronment Conda, který jste zadali v automl_setup.
+      * V místních prostředích conda by měl být název prostředí Conda, který jste zadali v automl_setup.
   * Zajistěte, aby byl Poznámkový blok pro verzi sady SDK, kterou používáte. Verzi sady SDK můžete kontrolovat spuštěním `azureml.core.VERSION` v buňce Jupyter poznámkového bloku. Předchozí verzi ukázkových poznámkových bloků můžete stáhnout z GitHubu tak, že kliknete na `Branch` tlačítko, vyberete `Tags` kartu a pak vyberete verzi.
 
 * **Numpy import se v systému Windows nezdařil. v**některých prostředích systému Windows se zobrazí chyba při načítání numpy s nejnovější verzí jazyka Python 3.6.8. Pokud se tento problém zobrazí, vyzkoušejte Python verze 3.6.7.
 
-* **Import numpy se nezdařil**: Podívejte se na verzi tensorflow v prostředí conda automatizovaného ml. Podporované verze jsou < 1,13. Odinstalace tensorflow z prostředí Pokud je verze >= 1,13, můžete zjistit verzi tensorflow a odinstalovat ji následujícím způsobem –
+* **Import numpy se nezdařil**: Podívejte se na verzi TensorFlow v prostředí conda automatizovaného ml. Podporované verze jsou < 1,13. Odinstalace TensorFlow z prostředí Pokud je verze >= 1,13, můžete zjistit verzi TensorFlow a odinstalovat ji následujícím způsobem –
   1. Spusťte příkazové prostředí, aktivujte prostředí Conda, ve kterém jsou nainstalované automatizované balíčky ml.
   2. Zadejte `pip freeze` a vyhledejte `tensorflow` , pokud se nachází, uvedená verze by měla být < 1,13
   3. Pokud uvedená verze není podporovanou verzí, `pip uninstall tensorflow` v příkazovém prostředí a zadejte y pro potvrzení.

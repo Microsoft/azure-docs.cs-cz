@@ -1,14 +1,16 @@
 ---
 title: 'Rychlý Start: Vytvoření aplikace – LUIS'
 description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci LUIS, která používá předem vytvořenou doménu `HomeAutomation` pro zapnutí a vypnutí světla a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/05/2020
-ms.openlocfilehash: cefa9d5995f876ef3f07cc32324e747125e9cbf7
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 28bf79b61c0278a3f45820a23cd2c69f0b609700
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701272"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316477"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace domácí automatizace
 
@@ -27,7 +29,7 @@ Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace)
 1. Jako jazykovou verzi vyberte **angličtinu** .
 1. Zadejte volitelný popis.
 1. Nevybírejte prostředek předpovědi, pokud jste ještě nevytvořili prostředek. Chcete-li použít koncový bod předpovědi vaší aplikace (pracovní nebo produkční), je nutné přiřadit prostředek předpovědi.
-1. Vyberte **Done** (Hotovo).
+1. Vyberte **Hotovo**.
 
     LUIS vytvoří aplikaci.
 

@@ -2,13 +2,13 @@
 title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: 56c50354a6ecbd6ba1d9a806f986cea1c4f3215f
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.date: 09/23/2020
+ms.openlocfilehash: 0ee19140d3105e101c44ce70d77ccc9427600aa0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235974"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317085"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -107,7 +107,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | batchAccounts | Oblast | 3–24 | Malá písmena a číslice. |
+> | batchAccounts | Region | 3–24 | Malá písmena a číslice. |
 > | batchAccounts/aplikace | účet Batch | 1-64 | Alfanumerické znaky, podtržítka a spojovníky. |
 > | batchAccounts/certifikáty | účet Batch | 5-45 | Alfanumerické znaky, podtržítka a spojovníky. |
 > | batchAccounts/fondy | účet Batch | 1-64 | Alfanumerické znaky, podtržítka a spojovníky. |
@@ -174,8 +174,8 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Galerie/image/verze | image | 32-bitové celé číslo | Čísla a tečky. |
 > | images | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Konec s alfanumerickým nebo podtržítkem. |
 > | snímky | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Konec s alfanumerickým nebo podtržítkem. |
-> | virtualMachines | skupina prostředků | 1-15 (Windows)<br>1-64 (Linux)<br><br>Viz poznámka níže. | Nejde použít:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nelze začínat podtržítkem. Nemůže končit tečkou nebo spojovníkem. |
-> | virtualMachineScaleSets | skupina prostředků | 1-15 (Windows)<br>1-64 (Linux)<br><br>Viz poznámka níže. | Nejde použít:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nelze začínat podtržítkem. Nemůže končit tečkou nebo spojovníkem. |
+> | virtualMachines | skupina prostředků | 1-15 (Windows)<br>1-64 (Linux)<br><br>Viz poznámka níže. | Nelze použít mezeru ani tyto znaky:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nelze začínat podtržítkem. Nemůže končit tečkou nebo spojovníkem. |
+> | virtualMachineScaleSets | skupina prostředků | 1-15 (Windows)<br>1-64 (Linux)<br><br>Viz poznámka níže. | Nelze použít mezeru ani tyto znaky:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nelze začínat podtržítkem. Nemůže končit tečkou nebo spojovníkem. |
 
 > [!NOTE]
 > Virtuální počítače Azure mají dva odlišné názvy: název prostředku a název hostitele. Když na portálu vytvoříte virtuální počítač, použije se stejná hodnota pro oba názvy. Omezení v předchozí tabulce jsou pro název hostitele. Název vlastního prostředku může mít až 64 znaků.
@@ -543,7 +543,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | Řešení | pracovní prostor | – | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
+> | Řešení | pracovní prostor | Není k dispozici | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 
@@ -653,7 +653,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | storageAccounts/managementPolicies | účet úložiště |  | Musí být `default` . |
 > | blob | kontejner | 1–1024 | Všechny znaky adresy URL, rozlišovat velikost písmen |
 > | fronta | účet úložiště | 3–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. Nelze použít po sobě jdoucí spojovníky. |
-> | table | účet úložiště | 3–63 | Alfanumerické znaky.<br><br>Začíná písmenem. |
+> | stolu | účet úložiště | 3–63 | Alfanumerické znaky.<br><br>Začíná písmenem. |
 
 ## <a name="microsoftstoragesync"></a>Microsoft. StorageSync
 

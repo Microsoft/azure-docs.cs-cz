@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e20863cd971a55142283676fe035d3238520ae1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80293951"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361360"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Konektor SAP LaMa pro Azure
 
@@ -47,7 +47,7 @@ V této příručce se dozvíte, jak nastavit konektor Azure pro SAP LaMa, vytvo
 > [!NOTE]
 > Konektor je k dispozici pouze v edici SAP LaMa Enterprise.
 
-## <a name="resources"></a>Zdroje
+## <a name="resources"></a>Zdroje a prostředky
 
 Následující poznámky SAP souvisejí s tématem SAP LaMa v Azure:
 
@@ -129,7 +129,7 @@ Otevřete web SAP LaMa a přejděte na infrastruktura. Přejděte na kartu cloud
 * Popisek: vyberte název instance konektoru.
 * Uživatelské jméno: ID nebo ID aplikace instančního objektu, který je přiřazený identitě uživatele virtuálního počítače. Další informace najdete v tématu [použití identity přiřazené systémem nebo uživatelem].
 * Heslo: klíč nebo heslo instančního objektu služby. Toto pole můžete nechat prázdné, pokud použijete identitu přiřazenou systémem nebo uživatelem.
-* Adresa URL: zachovat výchozí`https://management.azure.com/`
+* Adresa URL: zachovat výchozí `https://management.azure.com/`
 * Interval monitorování (sekundy): mělo by být aspoň 300.
 * Použití spravované identity: SAP LaMa může k ověřování pomocí rozhraní API Azure použít identitu přiřazenou systémem nebo uživatelem. V této příručce najdete v části [použití spravované identity k získání přístupu k rozhraní Azure API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) .
 * ID předplatného: ID předplatného Azure
@@ -260,14 +260,14 @@ V níže uvedených příkladech předpokládáme, že nainstalujete SAP HANA se
 
 Než začnete se správcem SAP software Provisioning Manager (SWPM), musíte připojit IP adresu virtuálního hostitele ASCS. Doporučeným způsobem je použít sapacext. Pokud IP adresu připojíte pomocí sapacext, nezapomeňte po restartování připojit IP adresu znovu.
 
-![Linux][Logo_Linux] Linux
+![Logo Linux.][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-ascs -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Logo Windows][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
@@ -276,7 +276,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-as
 
 Spusťte SWPM a pro *název hostitele instance ASCS*použijte *ah1-ASCS* .
 
-![Linux ][Logo_Linux] Linux  
+![Logo Linux.][Logo_Linux] Linux  
 Do profilu agenta hostitele SAP, který se nachází na adrese/usr/SAP/hostctrl/exe/host_profile, přidejte následující parametr profilu. Další informace najdete v tématu SAP Note [2628497].
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
@@ -387,14 +387,14 @@ Spusťte instalaci instance databáze SWPM na virtuálním počítači aplikačn
 
 Před spuštěním Správce SAP software Provisioning (SWPM) musíte připojit IP adresu virtuálního hostitele aplikačního serveru. Doporučeným způsobem je použít sapacext. Pokud IP adresu připojíte pomocí sapacext, nezapomeňte po restartování připojit IP adresu znovu.
 
-![Linux][Logo_Linux] Linux
+![Logo Linux.][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-di-0 -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Logo Windows][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>

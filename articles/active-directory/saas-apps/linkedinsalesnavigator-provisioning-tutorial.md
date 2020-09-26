@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: ef87a1c7163825fcee8f4a27408719839d8a6d43
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e908c8d19a4640995c536580b6584558212ada3e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549700"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361565"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Kurz: Konfigurace programu LinkedIn Sales Navigator pro Automatické zřizování uživatelů
 
@@ -23,7 +23,7 @@ Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v nástroji Link
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 
 * Tenanta Azure Active Directory.
 * Tenant pro LinkedIn Sales Navigator 
@@ -71,12 +71,12 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
     > [!NOTE]
     > Pokud není povoleno automatické přiřazování licencí, znamená to, že budou synchronizována pouze uživatelská data.
 
-    ![Zřizování pro LinkedIn Sales Navigator](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
+    ![Snímek obrazovky ukazuje globální nastavení centra účtů LinkedIn.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
 
     > [!NOTE]
     > Pokud je povoleno přiřazení autolicense, je nutné poznamenat instanci aplikace a typ licence. Licence se přiřazují k prvnímu, prvnímu a zajišťují, aby se všechny licence vycházely.
 
-    ![Zřizování pro LinkedIn Sales Navigator](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
+    ![Snímek obrazovky se zobrazí stránka Instalace S C I M.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
 
 5. Klikněte na **vygenerovat token**. V poli **přístupový token** byste měli vidět zobrazení přístupového tokenu.
 
@@ -88,9 +88,9 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
 
 9. Vyberte instanci aplikace LinkedIn Sales Navigator a pak vyberte kartu **zřizování** .
 
-10. Nastavte **režim zřizování** na **automaticky**.
+10. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Zřizování pro LinkedIn Sales Navigator](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
+    ![Snímek obrazovky se stránkou zřizování pro stránku LinkedIn úrovně.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
 11. Do následujících polí zadejte v části **přihlašovací údaje správce** :
 
@@ -104,9 +104,9 @@ Prvním krokem je načtení přístupového tokenu LinkedIn. Pokud jste podnikov
 
 13. Klikněte na **Uložit**.
 
-14. V části **mapování atributů** zkontrolujte atributy uživatelů a skupin, které se budou synchronizovat z Azure AD do služby LinkedIn Sales Navigator. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity ke spárování uživatelských účtů a skupin v nástroji LinkedIn Sales Navigator pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+14. V části **mapování atributů** zkontrolujte atributy uživatelů a skupin, které se budou synchronizovat z Azure AD do služby LinkedIn Sales Navigator. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti budou použity ke spárování uživatelských účtů a skupin v nástroji LinkedIn Sales Navigator pro operace aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
-    ![Zřizování pro LinkedIn Sales Navigator](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
+    ![Snímek obrazovky ukazuje mapování, včetně mapování atributů.](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
 
 15. Pokud chcete povolit službu zřizování Azure AD pro LinkedIn Sales Navigator, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 

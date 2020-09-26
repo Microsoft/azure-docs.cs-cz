@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: kumud
-ms.openlocfilehash: c3223bed6c8335a31b1bfb918e6d44e3b54a7787
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bd88493324867dc957922a732506f5cfb8bbc20
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047270"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361230"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Přizpůsobení modelu značek pomocí Video Indexer webu
 
@@ -42,7 +42,7 @@ Máte možnost nastavit, jestli chcete, aby se zjistily značky z databáze zna�
 
 3. Chcete-li upravit značky, vyberte kartu **značky** .
 
-    ![Přizpůsobení modelu značek v Video Indexer](./media/customize-brand-model/customize-brand-model.png)
+    ![Snímek obrazovky dialogového okna přizpůsobení modelu obsahu zobrazí kartu značky.](./media/customize-brand-model/customize-brand-model.png)
 
 4. Pokud chcete, aby Video Indexer zjistila značky navržené v rámci Bingu, přečtěte si možnost **Zobrazit značky navržené podle Bingu** . Pokud to neuděláte, nechte možnost nezaškrtnutou.
 
@@ -54,7 +54,7 @@ Oddíl **include** Tags reprezentuje vlastní značky, které chcete video index
 
 1. Vyberte **+ Přidat značku**.
 
-    ![Přizpůsobení modelu značek v Video Indexer](./media/customize-brand-model/add-brand.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně zahrnout značky, kde můžete přidat značky.](./media/customize-brand-model/add-brand.png)
 
     Zadejte název (povinné), kategorii (volitelné), popis (nepovinné) a adresu URL odkazu (volitelné).
     Pole kategorie je určeno, aby vám pomohly označit značky. Toto pole se zobrazuje jako *značka* značky při použití video indexer rozhraní API. Například značka "Azure" může být označená nebo Kategorizovaná jako "Cloud".

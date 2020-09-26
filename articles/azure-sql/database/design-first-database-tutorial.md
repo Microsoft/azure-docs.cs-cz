@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
-ms.openlocfilehash: b56dd81cd0cdc5d9a6917b0bf43c3fceeff63c4a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1e0ab1d6c1266b37dfcba461fbbdc373fc526783
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84216547"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362159"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>Kurz: návrh relační databáze v Azure SQL Database pomocí SSMS
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Azure SQL Database je relační databáze jako služba (DBaaS) v Microsoft Cloud
 > [!NOTE]
 > Pro účely tohoto kurzu používáme Azure SQL Database. Můžete použít také databázi ve fondu v elastickém fondu nebo v spravované instanci SQL. Informace o připojení ke spravované instanci SQL najdete v těchto rychlých startech spravované instance SQL: [rychlý Start: konfigurace virtuálního počítače Azure pro připojení ke spravované instanci Azure SQL](../managed-instance/connect-vm-instance-configure.md) a [rychlé zprovoznění: Konfigurace připojení typu Point-to-site k spravované instanci Azure SQL z místního](../managed-instance/point-to-site-p2s-configure.md)prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro dokončení tohoto kurzu se ujistěte, že jste nainstalovali:
 
@@ -48,7 +48,7 @@ Pro dokončení tohoto kurzu se ujistěte, že jste nainstalovali:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-database-in-azure-sql-database"></a>Vytvoření prázdné databáze v Azure SQL Database
 
@@ -56,7 +56,7 @@ Databáze v Azure SQL Database se vytvoří s definovanou sadou výpočetních p
 
 Pomocí těchto kroků vytvořte prázdnou databázi.
 
-1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Create a resource** (Vytvořit prostředek).
 2. Na stránce **Nový** v části Azure Marketplace vyberte **Databases** a potom klikněte v části **Doporučené** na **SQL Database**.
 
    ![Vytvoření prázdné databáze](./media/design-first-database-tutorial/create-empty-database.png)
@@ -92,14 +92,14 @@ Pomocí těchto kroků vytvořte prázdnou databázi.
 
 9. Na panelu nástrojů klikněte na **Oznámení** a sledujte proces nasazení.
 
-   ![oznámení](./media/design-first-database-tutorial/notification.png)
+   ![Snímek obrazovky s probíhajícím nasazením zobrazuje nabídku oznámení.](./media/design-first-database-tutorial/notification.png)
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Vytvoření pravidla brány firewall protokolu IP na úrovni serveru
 
 Azure SQL Database vytvoří bránu firewall protokolu IP na úrovni serveru. Tato brána firewall zabraňuje externím aplikacím a nástrojům v připojení k serveru a libovolné databázi na serveru, pokud pravidlo brány firewall nepovoluje jejich IP adresu přes bránu firewall. Pokud chcete povolit externí připojení k vaší databázi, musíte nejdřív přidat pravidlo brány firewall protokolu IP pro vaši IP adresu (nebo rozsah IP adres). Pomocí těchto kroků vytvořte [pravidlo brány firewall protokolu IP na úrovni serveru](firewall-configure.md).
 
 > [!IMPORTANT]
-> Azure SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit k této službě v rámci podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit k databázi, pokud správce neotevře port 1433.
+> Azure SQL Database používá ke komunikaci port 1433. Pokud se pokoušíte připojit k této službě v rámci podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit k databázi, pokud správce neotevře port 1433.
 
 1. Po dokončení nasazení vyberte **databáze SQL** z nabídky Azure Portal nebo vyhledejte a vyberte *databáze SQL* z libovolné stránky.  
 
@@ -128,14 +128,14 @@ Vaše IP adresa teď může projít bránou firewall protokolu IP. Nyní se mů�
 
 K navázání připojení k databázi použijte [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) .
 
-1. Otevřete SQL Server Management Studio.
+1. Otevřete sadu SQL Server Management Studio.
 2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
 
    | Nastavení       | Navrhovaná hodnota | Popis |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Typ serveru** | Databázový stroj | Tato hodnota se vyžaduje. |
    | **Název serveru** | Plně kvalifikovaný název serveru | Například *yourserver.Database.Windows.NET*. |
-   | **Ověřování** | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který jsme nakonfigurovali v tomto kurzu. |
+   | **Authentication** | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který jsme nakonfigurovali v tomto kurzu. |
    | **Přihlásit** | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
    | **Heslo** | Heslo pro účet správce serveru | Heslo, které jste zadali při vytváření serveru. |
 
@@ -155,7 +155,7 @@ K navázání připojení k databázi použijte [SQL Server Management Studio](/
 
 Vytvořte schéma databáze se čtyřmi tabulkami, které modelují systém správy studentů univerzity, pomocí [Transact-SQL](/sql/t-sql/language-reference):
 
-- Person (Osoba)
+- Osoba
 - Kurz
 - Student
 - Kredit

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4ca601a3f149d8287137265665379d407d10b988
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 08bbe1000d457cc4f4d6b655051ec640d4dcecf4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192686"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362091"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Kurz: Přidání vlastní domény do koncového bodu Azure CDN
 V tomto kurzu se dozvíte, jak přidat vlastní doménu do koncového bodu služby Azure Content Delivery Network (CDN). Pokud k doručování obsahu používáte síť CDN a chcete, aby se v adrese URL sítě CDN zobrazoval název vaší vlastní domény, potřebujete vlastní doménu. Srozumitelný název domény může být praktický pro vaše zákazníky a užitečný při budování značky. 
@@ -90,7 +90,7 @@ Například postup pro registrátora domén GoDaddy je následující:
 
 5. Vyplňte následující pole záznamu CNAME:
 
-    ![Záznam CNAME](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
+    ![Snímek obrazovky zobrazuje položku názvu v jazyce C s hodnotami typ, hostitel, body a T T L pro dočasnou subdoménu cdnverify.](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
 
     - Type (Typ): Ponechte vybranou hodnotu *CNAME*.
 
@@ -104,7 +104,7 @@ Například postup pro registrátora domén GoDaddy je následující:
  
     Záznam CNAME se přidá do tabulky záznamů DNS.
 
-    ![Tabulka záznamů DNS](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-dns-table.png)
+    ![Snímek obrazovky ukazuje, že položka názvu jazyka C byla přidána do tabulky záznamů D N S pro dočasnou subdoménu cdnverify.](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-dns-table.png)
 
 
 ## <a name="associate-the-custom-domain-with-your-cdn-endpoint"></a>Přidružení vlastní domény ke koncovému bodu CDN
@@ -188,7 +188,7 @@ Například postup pro registrátora domén GoDaddy je následující:
 
 5. Vyplňte pole záznamu CNAME:
 
-    ![Záznam CNAME](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
+    ![Snímek obrazovky zobrazuje položku názvu v jazyce C s hodnotami typ, hostitel, body a T T L pro trvalou vlastní doménu.](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
 
     - Type (Typ): Ponechte vybranou hodnotu *CNAME*.
 
@@ -202,7 +202,7 @@ Například postup pro registrátora domén GoDaddy je následující:
  
     Záznam CNAME se přidá do tabulky záznamů DNS.
 
-    ![Tabulka záznamů DNS](./media/cdn-map-content-to-custom-domain/cdn-dns-table.png)
+    ![Snímek obrazovky ukazuje, že položka názvu jazyka C byla přidána do tabulky záznamů D N S pro trvalou vlastní doménu.](./media/cdn-map-content-to-custom-domain/cdn-dns-table.png)
 
 7. Pokud máte záznam CNAME cdnverify, vyberte ikonu tužky vedle něj a pak vyberte ikonu koše.
 
