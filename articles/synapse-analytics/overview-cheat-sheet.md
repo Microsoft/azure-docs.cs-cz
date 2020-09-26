@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e4b96092107e3411f33411f1044fd7cc839f132
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 98fc8b23369f961ca023832430d47c8868e42158
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90051984"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260661"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Tabulka tahák analýzy Azure synapse
 
@@ -26,17 +26,17 @@ List tahák Analytics pro Azure synapse vás provede základními koncepty služ
 
 **Pracovní prostor synapse** je zabezpečená hranice spolupráce pro cloudové podnikové analýzy v Azure. Pracovní prostor je nasazený v konkrétní oblasti a má přidružený ADLS Gen2 účet a systém souborů (pro ukládání dočasných dat). Pracovní prostor je pod skupinou prostředků.
 
-Pracovní prostor umožňuje provádět analýzy pomocí SQL a Apache Sparku. Prostředky dostupné pro SQL a Spark Analytics jsou uspořádané do **fondů**. Existují tři druhy fondů.
-* **Fondy SQL**. Poskytují **vyhrazenou** kapacitu analýzy SQL.
-* **Fond na vyžádání SQL**. Každý pracovní prostor má právě jeden fond SQL na vyžádání. To zajišťuje kapacitu SQL Analytics bez **serveru** na základě dotazu.
-* **Fondy Spark**. Poskytují kapacitu Spark Analytics.
+Pracovní prostor umožňuje provádět analýzy pomocí SQL a Apache Sparku. Prostředky dostupné pro SQL a Spark Analytics jsou uspořádány do **fondů**SQL a Spark. 
+
+## <a name="synapse-sql"></a>Synapse SQL
+**Synapse SQL** je schopnost provádět analýzy založené na T-SQL v pracovním prostoru synapse. Synapse SQL má dva modely spotřeby: vyhrazené a bez serveru.  Pro vyhrazený model použijte vyhrazené **fondy SQL**. Pracovní prostor může mít libovolný nubmer z těchto fondů. Chcete-li použít model bez serveru, použijte fond SQL bez serveru s názvem "SQL na vyžádání". Každý pracovní prostor má jeden z těchto fondů.
+
+## <a name="apache-spark-for-synapse"></a>Apache Spark pro synapse
+Pokud chcete používat Spark Analytics, vytvářejte a používejte **fondy Sparku** v pracovním prostoru synapse.
+
 ## <a name="terminology"></a>Terminologie
-| Označení                         | Definice      |
+| Období                         | Definice      |
 |:---                                 |:---                 |
-| **Pracovní prostor synapse** | Zabezpečená hranice spolupráce pro cloudové podnikové analýzy v Azure. Pracovní prostor je nasazený v konkrétní oblasti a má přidružený ADLS Gen2 účet a systém souborů (pro ukládání dočasných dat). Pracovní prostor je pod skupinou prostředků. |
-| **Synapse SQL**   | Spusťte analytiky s využitím fondů nebo možností na vyžádání.  |
-| **Fond SQL**   | od 0 do N prostředků SQL zřízené s odpovídajícími databázemi se dají nasadit v pracovním prostoru. Každý fond SQL má přidruženou databázi. Fond SQL se dá škálovat, pozastavit a obnovit ručně nebo automaticky. Fond SQL se může škálovat z 100 DWU až 30 000 DWU.       |
-| **SQL na vyžádání**   | Distribuovaný systém zpracování dat sestavený pro rozsáhlá data, který umožňuje spouštění dotazů T-SQL nad daty v Data Lake. Nejedná se o server, takže nemusíte spravovat infrastrukturu.       |
 |**Apache Spark pro synapse** | Čas spuštění Sparku používaný ve fondu Spark. Aktuální podporovaná verze je Spark 2,4 s Pythonem 3.6.1, Scala 2.11.12, podpora rozhraní .NET pro Apache Spark 0,5 a rozdílový Lake 0,3.  | 
 | **Fond Apache Spark**  | do pracovního prostoru můžete nasadit prostředky z 0 do N Spark zřízené pomocí jejich odpovídajících databází. Fond Spark se dá automaticky pozastavit, obnovit a škálovat.  |
 | **Aplikace Spark**  |   Skládá se z procesu ovladače a sady procesů prováděcího modulu. Aplikace Spark běží ve fondu Spark.            |

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sashan, carlrab
+ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: a6f400db2a068953080e734148e024b575e3e1e9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 598bb30d21a17b2c39f69a845690c3c754ec2145
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070849"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325245"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL do skupiny převzetí služeb při selhání
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Přidejte spravované instance spravované instance Azure SQL do skupiny převze
   > [!NOTE]
   > - Při procházení tohoto kurzu se ujistěte, že konfigurujete prostředky s [požadavky pro nastavení skupin převzetí služeb při selhání pro spravovanou instanci SQL](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets). 
   > - Vytvoření spravované instance může trvat poměrně dlouhou dobu. V důsledku toho může dokončení tohoto kurzu trvat několik hodin. Další informace o časech zřizování najdete v tématu [operace správy spravované instance SQL](sql-managed-instance-paas-overview.md#management-operations). 
-  > - Spravované instance účastnící se skupiny převzetí služeb při selhání vyžadují buď [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) , nebo dvě připojené brány VPN Gateway. Globální partnerský vztah virtuálních sítí se nepodporuje. Tento kurz popisuje kroky pro vytvoření a připojení bran VPN. Tento postup přeskočte, pokud již máte nakonfigurovanou ExpressRoute. 
+  > - Spravované instance účastnící se skupiny převzetí služeb při selhání vyžadují buď [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) , nebo dvě připojené brány VPN Gateway. Globální VNET Peering se nepodporuje. Tento kurz popisuje kroky pro vytvoření a připojení bran VPN. Tento postup přeskočte, pokud již máte nakonfigurovanou ExpressRoute. 
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -762,7 +762,7 @@ Vytvořte bránu pro virtuální síť vaší primární spravované instance po
     | **Pole** | Hodnota |
     | --- | --- |
     | **Předplatné** |  Předplatné, ve kterém je vaše primární spravovaná instance. |
-    | **Name** | Název brány virtuální sítě, například `primary-mi-gateway` . | 
+    | **Název** | Název brány virtuální sítě, například `primary-mi-gateway` . | 
     | **Oblast** | Oblast, ve které je vaše primární spravovaná instance. |
     | **Typ brány** | Vyberte **VPN**. |
     | **Typ sítě VPN** | Vyberte **směrování založené na trasách**. |
@@ -843,7 +843,7 @@ Pomocí Azure Portal vytvořte podsíť virtuální sítě a bránu pro sekundá
    | **Pole** | Hodnota |
    | --- | --- |
    | **Předplatné** |  Předplatné, ve kterém je vaše sekundární spravovaná instance. |
-   | **Name** | Název brány virtuální sítě, například `secondary-mi-gateway` . | 
+   | **Název** | Název brány virtuální sítě, například `secondary-mi-gateway` . | 
    | **Oblast** | Oblast, ve které je vaše sekundární spravovaná instance. |
    | **Typ brány** | Vyberte **VPN**. |
    | **Typ sítě VPN** | Vyberte **směrování založené na trasách**. |

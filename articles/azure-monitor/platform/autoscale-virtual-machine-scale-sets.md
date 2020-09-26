@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 37245711008442acd0379a35b393ac88c3775482
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 96d8c32791bd968dd8740a2d4633496b42e9f3f4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505532"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360969"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Rozšířená konfigurace automatického škálování pomocí šablon Správce prostředků pro VM Scale Sets
 Můžete škálovat a škálovat v Virtual Machine Scale Sets na základě prahových hodnot metriky výkonu, podle plánu opakování nebo podle konkrétního data. Můžete také nakonfigurovat oznámení e-mailu a Webhooku pro akce škálování. Tento názorný postup ukazuje příklad konfigurace všech těchto objektů pomocí Správce prostředků šablony v sadě škálování virtuálního počítače.
@@ -63,7 +63,7 @@ V tomto návodu použijeme [Azure Resource Explorer](https://resources.azure.com
 
 6. Klikněte na Upravit. **Nahraďte** element Profiles v nastavení automatického škálování následující konfigurací:
 
-    ![uživatelů](media/autoscale-virtual-machine-scale-sets/profiles.png)
+    ![Snímek obrazovky ukazuje element Profiles.](media/autoscale-virtual-machine-scale-sets/profiles.png)
 
     ```
     {

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d33403f49429398d9bc006187c23bb8091d9b4a1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93f23cdcfb3fb7107e3b1838b48b3e58ccc2d028
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885338"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288762"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS s synapse SQL
 
@@ -29,8 +29,7 @@ Pokud chcete dokončit následující úlohy, můžete použít možnost vytvoř
 
 ## <a name="cetas-in-sql-pool"></a>CETAS ve fondu SQL
 
-Informace o použití a syntaxi CETAS fondu SQL najdete v tématu [vytvoření externí tabulky jako příkazu SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) . Další informace o pokynech k CTAS s využitím fondu SQL najdete v článku [CREATE TABLE AS Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .
-Informace o použití a syntaxi CETAS fondu SQL najdete v tématu [vytvoření externí tabulky jako příkazu SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) . Další informace o pokynech k CTAS s využitím fondu SQL najdete v článku [CREATE TABLE AS Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .
+V případě fondu SQL, použití a syntaxe CETAS zaškrtněte políčko [vytvořit externí tabulku jako](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) článek. Další informace o pokynech k CTAS s využitím fondu SQL najdete v článku [CREATE TABLE AS Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .
 
 ## <a name="cetas-in-sql-on-demand"></a>CETAS v SQL na vyžádání
 
@@ -159,9 +158,9 @@ CETAS lze použít k uložení sad výsledků s následujícími datovými typy 
 - bit
 
 > [!NOTE]
-> Objekty LOBs s nelze použít s CETAS.
+> Objekty LOBs s se nedá použít s CETAS.
 
-V rámci vybrané části CETAS nelze použít následující datové typy:
+V rámci vybrané části CETAS se nedají použít následující datové typy:
 
 - nchar
 - nvarchar

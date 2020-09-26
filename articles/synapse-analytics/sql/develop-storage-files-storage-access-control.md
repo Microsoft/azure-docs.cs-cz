@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: fd4cc4cfa7b7be9085ac404cab7fc7447b6d66a7
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.reviewer: jrasnick
+ms.openlocfilehash: b3df83bc68cfa1952238b792fceffe57c0dc0ce7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987133"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288932"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Řízení přístupu účtu úložiště pro SQL na vyžádání (Preview)
 
@@ -26,7 +26,7 @@ Tento článek popisuje typy přihlašovacích údajů, které můžete použít
 
 ## <a name="supported-storage-authorization-types"></a>Podporované typy autorizace úložiště
 
-Uživatel, který byl přihlášen k prostředku na vyžádání SQL, musí mít autorizaci pro přístup k souborům v Azure Storage, pokud nejsou soubory veřejně dostupné. Pro přístup k neveřejné [identitě uživatelů](?tabs=user-identity)úložiště, [sdílenému přístupovému podpisu](?tabs=shared-access-signature)a [spravované identitě](?tabs=managed-identity)můžete použít tři typy autorizace.
+Uživatel, který se přihlásil k prostředku na vyžádání SQL, musí mít oprávnění k přístupu k souborům v Azure Storage, pokud nejsou veřejně dostupné, a dotazování na ně. Pro přístup k neveřejné [identitě uživatelů](?tabs=user-identity)úložiště, [sdílenému přístupovému podpisu](?tabs=shared-access-signature)a [spravované identitě](?tabs=managed-identity)můžete použít tři typy autorizace.
 
 > [!NOTE]
 > **Předávací služba Azure AD** je výchozím chováním při vytváření pracovního prostoru.
@@ -49,11 +49,11 @@ Uživatel, který byl přihlášen k prostředku na vyžádání SQL, musí mít
 Token SAS můžete získat tak, že přejdete na **účet úložiště > Azure Portal – > sdílený přístup – > konfigurace oprávnění – > generovat SAS a připojovací řetězec.**
 
 > [!IMPORTANT]
-> Při vygenerování tokenu SAS obsahuje znak otazníku (?) na začátku tokenu. Pokud chcete použít token v SQL na vyžádání, musíte při vytváření přihlašovacích údajů odebrat otazník (?). Například:
+> Při vygenerování tokenu SAS obsahuje znak otazníku (?) na začátku tokenu. Pokud chcete použít token v SQL na vyžádání, musíte při vytváření přihlašovacích údajů odebrat otazník (?). Příklad:
 >
 > Token SAS:? sv = 2018-03-28&SS = bfqt&SRT aplikace = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
-Aby bylo možné povolit přístup pomocí tokenu SAS, je nutné vytvořit pověření v oboru databáze nebo na serveru.
+Pokud chcete povolit přístup pomocí tokenu SAS, musíte vytvořit přihlašovací údaje v oboru databáze nebo na serveru. 
 
 ### <a name="managed-identity"></a>[Spravovaná identita](#tab/managed-identity)
 
@@ -87,7 +87,7 @@ Můžete použít následující kombinace autorizačních a Azure Storagech typ
 | [Spravovaná identita](?tabs=managed-identity#supported-storage-authorization-types) | Podporováno      | Podporováno        | Podporováno     |
 | [Identita uživatele](?tabs=user-identity#supported-storage-authorization-types)    | Podporováno\*      | Podporováno\*        | Podporováno\*     |
 
-\*Token SAS a identita Azure AD lze použít pro přístup k úložišti, které není chráněno bránou firewall.
+\* Token SAS a identita Azure AD lze použít pro přístup k úložišti, které není chráněno bránou firewall.
 
 > [!IMPORTANT]
 > Při přístupu k úložišti chráněnému bránou firewall se dá použít jenom spravovaná identita. Je nutné, aby byly [povoleny důvěryhodné služby společnosti Microsoft... nastavení](../../storage/common/storage-network-security.md#trusted-microsoft-services) a explicitně [přiřadíte roli Azure](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) pro [spravovanou identitu přiřazenou systémem](../../active-directory/managed-identities-azure-resources/overview.md) pro danou instanci prostředku. V takovém případě rozsah přístupu pro instanci odpovídá roli Azure přiřazené spravované identitě.
@@ -119,7 +119,7 @@ Aby bylo zajištěno bezproblémové předávací prostředí Azure AD, budou m�
 
 ## <a name="server-scoped-credential"></a>Přihlašovací údaje v oboru serveru
 
-Přihlašovací údaje v oboru serveru se používají, když funkce přihlášení `OPENROWSET` k SQL funguje bez `DATA_SOURCE` čtení souborů v některém účtu úložiště. Název přihlašovacích údajů v oboru serveru se **musí** shodovat s adresou URL úložiště Azure. Přihlašovací údaje se přidají spuštěním [Vytvoření přihlašovacích údajů](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Budete muset zadat argument název PŘIHLAŠOVACÍch údajů. Musí odpovídat buď části cesty, nebo celé cestě k datům v úložišti (viz níže).
+Přihlašovací údaje v oboru serveru se používají, když funkce přihlášení `OPENROWSET` k SQL funguje bez `DATA_SOURCE` čtení souborů v některém účtu úložiště. Název přihlašovacích údajů v oboru serveru se **musí** shodovat s adresou URL úložiště Azure. Přihlašovací údaje se přidají spuštěním [Vytvoření přihlašovacích údajů](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Budete muset zadat argument název PŘIHLAŠOVACÍch údajů. Musí odpovídat buď části cesty, nebo celé cestě k datům v úložišti (viz níže).
 
 > [!NOTE]
 > `FOR CRYPTOGRAPHIC PROVIDER`Argument není podporován.
@@ -155,7 +155,7 @@ GO
 
 ### <a name="managed-identity"></a>[Spravovaná identita](#tab/managed-identity)
 
-Následující skript vytvoří přihlašovací údaje na úrovni serveru, které můžou používat `OPENROWSET` funkce pro přístup k jakémukoli souboru v úložišti Azure pomocí spravované identity pracovního prostoru.
+Následující skript vytvoří přihlašovací údaje na úrovni serveru, které můžou používat `OPENROWSET` funkce pro přístup k jakémukoli souboru v úložišti Azure pomocí identity spravované v pracovním prostoru.
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
@@ -170,7 +170,7 @@ Přihlašovací údaje v oboru databáze nejsou nutné k povolení přístupu k 
 
 ## <a name="database-scoped-credential"></a>Přihlašovací údaje v rámci databáze
 
-Přihlašovací údaje v oboru databáze se používají, když jakákoli instanční `OPENROWSET` funkce volá funkci `DATA_SOURCE` nebo vybere data z [externí tabulky](develop-tables-external-tables.md) , která nepřistupuje k veřejným souborům. Přihlašovací údaje v oboru databáze se nemusí shodovat s názvem účtu úložiště, protože se explicitně použijí ve zdroji dat, který definuje umístění úložiště.
+Přihlašovací údaje v oboru databáze se používají, když jakákoli instanční `OPENROWSET` funkce volá funkci `DATA_SOURCE` nebo vybere data z [externí tabulky](develop-tables-external-tables.md) , která nepřistupuje k veřejným souborům. Přihlašovací údaje v oboru databáze nemusí odpovídat názvu účtu úložiště. Použije se explicitně ve zdroji dat, který definuje umístění úložiště.
 
 Přihlašovací údaje v rámci databáze umožňují přístup k úložišti Azure pomocí následujících typů ověřování:
 
@@ -309,7 +309,7 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet',
 
 ```
 
-Uživatel databáze může číst obsah souborů ze zdroje dat pomocí [externí tabulky](develop-tables-external-tables.md) nebo funkce [OpenRowset](develop-openrowset.md) , která odkazuje na zdroj dat:
+Uživatel databáze může číst obsah souborů ze zdroje dat pomocí [externí tabulky](develop-tables-external-tables.md) nebo funkce [OpenRowset](develop-openrowset.md)  , která odkazuje na zdroj dat:
 
 ```sql
 SELECT TOP 10 * FROM dbo.userdata;

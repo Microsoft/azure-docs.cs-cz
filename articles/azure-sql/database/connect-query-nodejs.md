@@ -11,20 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 05/29/2020
-ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2, devx-track-javascript
-ms.openlocfilehash: c079d9bad15de6dac93cd9be23631786673bd009
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2, devx-track-js
+ms.openlocfilehash: 44530577972839aacb803d1722fa97716088fa0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756380"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325432"
 ---
 # <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití Node.js k dotazování databáze v Azure SQL Database nebo spravované instanci SQL Azure
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 V tomto rychlém startu použijete Node.js pro připojení k databázi a dotazování na data.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Co budete potřebovat k dokončení tohoto rychlého startu:
 
@@ -72,7 +72,7 @@ Co budete potřebovat k dokončení tohoto rychlého startu:
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Přejít na stránku **databáze SQL**  nebo **spravované instance SQL** .
 

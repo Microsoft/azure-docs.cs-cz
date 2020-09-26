@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 0ff76ea3bd39f31880d0140e182ad99f293689e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f539786de589dbab3a191a5343ba315349533447
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505359"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360986"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Odeslat metriky hostovaného operačního systému do Azure Monitor klasický Cloud Services úložiště metrik 
 
@@ -26,7 +26,7 @@ Ukládání do tohoto umístění vám umožní přístup ke stejným akcím, kt
 
 Proces, který je popsaný v tomto článku, funguje jenom pro čítače výkonu v Azure Cloud Services. Nefunguje pro jiné vlastní metriky. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Musíte být [správcem služeb nebo spolusprávcem](../../cost-management-billing/manage/add-change-subscription-administrator.md) svého předplatného Azure. 
 
@@ -173,7 +173,7 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
 1. Přejděte na Azure Portal. 
 
-   ![Azure Portal metriky](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
+   ![Snímek obrazovky zobrazuje Azure Portal s monitorováním, vybrané metriky.](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
 
 2. V nabídce vlevo vyberte **monitor.**
 
@@ -187,7 +187,7 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
 K zobrazení celkové paměti, kterou používá konkrétní role nebo instance role, můžete použít funkce filtrování a rozdělování dimenzí. 
 
- ![Azure Portal metriky](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
+ ![Snímek obrazovky zobrazuje data metrik.](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
 
 ## <a name="next-steps"></a>Další kroky
 

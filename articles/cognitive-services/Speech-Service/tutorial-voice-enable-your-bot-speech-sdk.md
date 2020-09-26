@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2806ce18cc9febfdf15d48052d301da48b3c226f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3b0c85f2c9ba04ac999911e534b906c634d457b8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360952"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: hlas – povolení robota pomocí sady Speech SDK
 
@@ -54,7 +54,7 @@ V tomto kurzu se dozvíte, co tento kurz popisuje:
 > * Přidat vlastní aktivaci klíčového slova
 > * Naučte se změnit jazyk rozpoznaného a mluveného řeči.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tady je postup, který budete potřebovat k dokončení tohoto kurzu:
 
@@ -75,7 +75,7 @@ Klientská aplikace, kterou vytvoříte v tomto kurzu, používá několik služ
    * Zadejte název vaší **skupiny prostředků**. Doporučujeme **SpeechEchoBotTutorial-Resource**.
    * V rozevíracím seznamu **oblast** vyberte možnost **západní USA**.
 1. Klikněte na **Zkontrolovat a vytvořit**. Měla by se zobrazit informační zpráva s **potvrzením**, že čtení bylo úspěšné.
-1. Klikněte na možnost **Vytvořit**. Vytvoření skupiny prostředků může trvat několik minut.
+1. Klikněte na **Vytvořit**. Vytvoření skupiny prostředků může trvat několik minut.
 1. Stejně jako u prostředků, které vytvoříte později v tomto kurzu, je vhodné Připnout tuto skupinu prostředků na řídicí panel a získat tak snadný přístup. Pokud byste chtěli Připnout tuto skupinu prostředků, klikněte na ikonu připnutí vpravo od názvu skupiny prostředků.
 
 ### <a name="choosing-an-azure-region"></a>Výběr oblasti Azure
@@ -124,7 +124,7 @@ Dalším krokem je vytvoření plánu App Service. Plán služby App Service def
    * V **oblasti oblast**vyberte **západní USA**.
    * V případě **cenové úrovně**se ujistěte, že je vybraná **úroveň Standard S1** . Mělo by se jednat o výchozí hodnotu. Pokud ne, ujistěte se, že jste nastavili **operační systém** na **Windows** , jak je popsáno výše.
 5. Klikněte na **Zkontrolovat a vytvořit**. Měla by se zobrazit informační zpráva s **potvrzením**, že čtení bylo úspěšné.
-6. Klikněte na možnost **Vytvořit**. Vytvoření skupiny prostředků může trvat několik minut.
+6. Klikněte na **Vytvořit**. Vytvoření skupiny prostředků může trvat několik minut.
 
 V tomto okamžiku ověřte, že vaše skupina prostředků (**SpeechEchoBotTutorial-resourceName**) má dva prostředky:
 
@@ -158,7 +158,7 @@ Teď, když jste vytvořili nějaké prostředky, pojďme vytvořit robota. Bude
 4. Po načtení projektu stiskněte klávesu <kbd>F5</kbd> a sestavte a spusťte projekt.
 5. Spustí se prohlížeč a zobrazí se vám obrazovka podobná této.
     > [!div class="mx-imgBorder"]
-    > [![echobot – běžící – v místním počítači](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "EchoBot běžící na místním hostiteli")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
+    > [![Snímek obrazovky zobrazující stránku EchoBot se zprávou, že robot je připravený!](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "EchoBot běžící na místním hostiteli")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
 
 ### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>Test ukázky robota pomocí emulátoru bot Framework
 
@@ -174,7 +174,7 @@ Teď, když jste vytvořili nějaké prostředky, pojďme vytvořit robota. Bude
    ```
    a stiskněte klávesu "připojit".
 4. Robot by měl mít na vás přání "Hello a Welcome!" . Zadejte jakoukoli textovou zprávu a potvrďte, že od robota dostanete odpověď.
-5. To znamená, že výměna komunikace s instancí robota s odezvou může vypadat jako: [ ![robot-Framework-emulátor](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Emulátor pro robot Framework")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
+5. To znamená, že výměna komunikace s instancí bot robota může vypadat jako: [ ![snímek obrazovky ukazuje emulátor rozhraní bot Framework.](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Emulátor pro robot Framework")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>Nasazení robota na Azure App Service
 
@@ -201,7 +201,7 @@ Dalším krokem je nasazení nástroje echo bot do Azure. Existuje několik způ
    * U **předplatného**nastavte na **bezplatnou zkušební verzi** .
    * V případě **skupiny prostředků**vyberte **SpeechEchoBotTutorial-Resource** .
    * V případě **plánu hostování**vyberte **SpeechEchoBotTutorial-AppServicePlan**
-1. Klikněte na možnost **Vytvořit**. Na obrazovce finálního průvodce klikněte na **Dokončit**.
+1. Klikněte na **Vytvořit**. Na obrazovce finálního průvodce klikněte na **Dokončit**.
 1. Na pravé straně obrazovky publikování klikněte na **publikovat** . Visual Studio nasadí robot do Azure.
 1. V okně výstupu sady Visual Studio by se měla zobrazit zpráva o úspěchu, která vypadá takto:
 
@@ -478,7 +478,7 @@ Pokud nebudete nadále používat službu echo-bot nasazenou v tomto kurzu, mů�
 * Nasazení do [oblasti Azure, která podporuje hlasy vysoké kvality neuronové TTS](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)
 * Ceny spojené s kanálem Direct line Speech:
   * [Ceny služby bot Service](https://azure.microsoft.com/pricing/details/bot-service/)
-  * [Služba Speech](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
+  * [Služba řeči](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * Sestavování a nasazování vlastního robota s povoleným hlasem:
   * Sestavte [robota bot Framework](https://dev.botframework.com/). Zaregistrujte si ho pomocí [kanálu Direct line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) a [Přizpůsobte si robota pro hlas](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0) .
   * Prozkoumejte stávající [řešení pro robotická rozhraní](https://microsoft.github.io/botframework-solutions/index): vytvoření [virtuálního asistenta](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) a [jeho rozšiřování na přímé čáry – řeč](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

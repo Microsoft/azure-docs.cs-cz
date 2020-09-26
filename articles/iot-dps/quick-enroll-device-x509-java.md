@@ -1,5 +1,5 @@
 ---
-title: Registrace zařízení X. 509 do služby Azure Device Provisioning pomocí Java
+title: Rychlý Start – registrace zařízení X. 509 do služby Azure Device Provisioning pomocí jazyka Java
 description: V tomto rychlém startu se používají skupinové i jednotlivé registrace. V tomto rychlém startu zaregistrujete zařízení X. 509 do Azure IoT Hub Device Provisioning Service (DPS) pomocí Java.
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 1d1b4e2573519fbd033121763d3e7fe6b071f075
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 924cf1e1b5bc155bfdbd2f5f766c5459d599fed5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327017"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276182"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí Javy
 
@@ -203,7 +203,7 @@ Pokud plánujete prozkoumat ukázku služby Java, neprovádějte čištění pro
 
 1. Zavřete na svém počítači okno výstupu ukázky v Javě.
 1. Zavřete na svém počítači okno _Generátoru certifikátů X.509_.
-1. Přejděte do vaší služby Device Provisioning v Azure Portal, vyberte **spravovat registrace**a pak vyberte kartu **skupiny** registrací. zaškrtněte políčko vedle *názvu skupiny* pro zařízení X. 509, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části podokna.  
+1. V Azure Portal přejděte do vaší služby Device Provisioning, vyberte **spravovat registrace**a pak vyberte kartu **skupiny** registrací. Zaškrtněte políčko vedle *názvu skupiny* pro zařízení X. 509, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části podokna.  
 
 ## <a name="next-steps"></a>Další kroky
 V tomto rychlém startu jste do své služby Device Provisioning zaregistrovali simulovanou skupinu zařízení X. 509. Pokud se chcete se zřizováním zařízení seznámit podrobněji, pokračujte ke kurzu nastavení služby Device Provisioning na webu Azure Portal. 

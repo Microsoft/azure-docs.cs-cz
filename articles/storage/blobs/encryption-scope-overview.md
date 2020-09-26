@@ -4,17 +4,17 @@ description: Obory šifrování poskytují možnost správy šifrování na úro
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 041b0bf57f57fd8ddd74c8330888d75e31aacc83
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6fb3c9b6dbbab036ddb00edd7e1d5980bb425ebe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995135"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326112"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>Obory šifrování pro úložiště objektů BLOB (Preview)
 
@@ -22,7 +22,7 @@ Obory šifrování poskytují možnost správy šifrování na úrovni kontejner
 
 Ve výchozím nastavení je účet úložiště zašifrovaný pomocí klíče, který je vymezený na celý účet úložiště. S rozsahem šifrování můžete určit, že jeden nebo více kontejnerů je šifrovaných klíčem, který je vymezen pouze pro tyto kontejnery.
 
-Pro ochranu a řízení přístupu ke klíči, který šifruje vaše data, se můžete rozhodnout pro použití klíčů spravovaných společností Microsoft nebo klíčů spravovaných zákazníkem, které jsou uložené v Azure Key Vault nebo Key Vault spravovaného modelu hardwarového zabezpečení (HSM) (Preview). Různé obory šifrování ve stejném účtu úložiště můžou používat klíče spravované Microsoftem nebo zákazníky.
+Pomocí klíčů spravovaných Microsoftem nebo klíčů spravovaných zákazníkem, které jsou uložené v Azure Key Vault, můžete chránit a řídit přístup ke klíči, který data šifruje. Různé obory šifrování ve stejném účtu úložiště můžou používat klíče spravované Microsoftem nebo zákazníky.
 
 Po vytvoření oboru šifrování můžete zadat obor šifrování pro požadavek na vytvoření kontejneru nebo objektu BLOB. Další informace o tom, jak vytvořit rozsah šifrování, najdete v tématu [Vytvoření a Správa oborů šifrování (Preview)](encryption-scope-manage.md).
 
@@ -50,7 +50,7 @@ Když zakážete rozsah šifrování, všechny následné operace čtení nebo z
 
 Pokud je zakázaný obor šifrování, už se vám neúčtují. Zakažte všechny obory šifrování, které nepotřebujete, aby nedocházelo k zbytečným poplatkům.
 
-Pokud je váš obor šifrování chráněný pomocí klíčů spravovaných zákazníkem, můžete taky odstranit přidružený klíč v trezoru klíčů nebo spravovaném modulu HSM, aby se tento obor šifrování zakázal. Mějte na paměti, že klíče spravované zákazníkem jsou chráněné pomocí ochrany proti odstranění a vyprázdnění, a to v trezoru klíčů nebo spravovaném HSM. odstraněný klíč podléhá chování definovanému těmito vlastnostmi. Další informace najdete v následujících tématech v dokumentaci k Azure Key Vault:
+Pokud je váš obor šifrování chráněný pomocí klíčů spravovaných zákazníkem, můžete ho také odstranit v trezoru klíčů, aby se tento obor šifrování zakázal. Mějte na paměti, že klíče spravované zákazníkem jsou chráněny pomocí ochrany proti odstranění a vyprázdnění v trezoru klíčů a odstraněný klíč podléhá chování definovanému pro tyto vlastnosti. Další informace najdete v následujících tématech v dokumentaci k Azure Key Vault:
 
 - [Použití obnovitelného odstranění s využitím PowerShellu](../../key-vault/general/soft-delete-powershell.md)
 - [Jak používat obnovitelné odstranění pomocí rozhraní příkazového řádku](../../key-vault/general/soft-delete-cli.md)

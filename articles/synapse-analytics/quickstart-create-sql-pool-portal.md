@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 768b559ddaf7364726cb26a34d12f357d4126426
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.reviewer: jrasnick
+ms.openlocfilehash: c89bd01cb2e6947df5ed192d66e0dbae08cf66d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274250"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260627"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-the-azure-portal"></a>Rychlý Start: vytvoření synapse fondu SQL (ve verzi Preview) pomocí Azure Portal
 
@@ -24,14 +24,14 @@ V tomto rychlém startu se dozvíte, jak vytvořit fond SQL v pracovním prostor
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Pracovní prostor synapse](./quickstart-create-workspace.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="navigate-to-the-synapse-workspace"></a>Přejděte do pracovního prostoru synapse.
 
@@ -56,7 +56,7 @@ Přihlaste se na [Azure Portal](https://portal.azure.com/).
     > [!IMPORTANT]
     > Všimněte si, že existují určitá omezení pro názvy, které můžou fondy SQL použít. Názvy nesmí obsahovat speciální znaky, musí být delší než 15 znaků, nesmí obsahovat vyhrazená slova a v pracovním prostoru být jedinečné.
 
-3. Vyberte **Další: Další nastavení**.
+3. Až skončíte, vyberte **Další: Další nastavení**.
 4. Pokud chcete zřídit fond SQL bez dat, vyberte **none** . Ponechte vybranou výchozí kolaci.
 ![Postup vytvoření fondu SQL – karta Další nastavení](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 

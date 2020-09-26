@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 141b19ca73c3465e59d8c94a3bdc3657d0900b8d
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 413d1f787a39a5a79b94fa06b49436b49337d286
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458909"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325585"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Vytvoření svazku NFS pro Azure NetApp Files
 
@@ -62,7 +62,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 
         Název svazku musí být v rámci každého fondu kapacity jedinečný. Musí mít aspoň tři znaky dlouhé. Můžete použít jakékoli alfanumerické znaky.   
 
-        `default`Název svazku nelze použít.
+        Nemůžete použít `default` nebo `bin` jako název svazku.
 
     * **Fond kapacit**  
         Zadejte fond kapacit, ve kterém chcete vytvořit svazek.
@@ -71,6 +71,11 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
         Určuje velikost logického úložiště, které je přidělené svazku.  
 
         Pole **Dostupná kvóta** zobrazuje množství nevyužitého místa ve zvoleném fondu kapacity, které můžete použít k vytvoření nového svazku. Velikost nového svazku nesmí překročit dostupnou kvótu.  
+
+    * **Propustnost (MiB/S)**   
+        Pokud je svazek vytvořený v manuálním fondu kapacity QoS, určete propustnost, kterou pro svazek požadujete.   
+
+        Pokud se svazek vytvoří ve fondu kapacity auto QoS, hodnota zobrazená v tomto poli je (propustnost × úroveň služby).   
 
     * **Virtuální síť**  
         Zadejte službu Azure Virtual Network (VNet), ze které chcete získat přístup ke svazku.  

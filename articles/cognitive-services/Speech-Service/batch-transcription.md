@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3b9a491f7546fbaa8722498b164bfa56353dfcfc
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: fe864212eaccb67335586ef8b25049529ab36b81
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050178"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360748"
 ---
 # <a name="how-to-use-batch-transcription"></a>Použití dávkového přepisu
 
@@ -43,7 +43,7 @@ Nemůžete odhadnout, kdy se úloha změní do běžícího stavu, ale v rámci 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Stejně jako u všech funkcí služby pro rozpoznávání řeči vytvoříte pomocí [příručky Začínáme](get-started.md)klíč předplatného z [Azure Portal](https://portal.azure.com) .
+Stejně jako u všech funkcí služby pro rozpoznávání řeči vytvoříte pomocí [příručky Začínáme](overview.md#try-the-speech-service-for-free)klíč předplatného z [Azure Portal](https://portal.azure.com) .
 
 >[!NOTE]
 > K použití dávkového přepisu se vyžaduje standardní předplatné (S0) pro službu Speech. Klíče bezplatného předplatného (F0) nefungují. Další informace najdete v tématu [ceny a omezení](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).

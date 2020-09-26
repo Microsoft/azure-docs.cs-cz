@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 300470b2e8fb10fda7cfc59517cef00c07bf0632
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a6aabe7ef3500a114525fe6c8bc993826295e36
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537002"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275349"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Koncepty serveru v Azure Database for MySQL
 
@@ -41,10 +41,24 @@ Následující prvky vám pomůžou zajistit bezpečný přístup k vaší datab
 |     |     |
 | :-- | :-- |
 | **Ověřování a autorizace** | Azure Database for MySQL server podporuje nativní ověřování MySQL. K serveru se můžete připojit a ověřit pomocí přihlašovacích údajů správce serveru. |
-| **Protocol (Protokol)** | Služba podporuje protokol založený na zprávách, který používá MySQL. |
+| **Protokol** | Služba podporuje protokol založený na zprávách, který používá MySQL. |
 | **TCP/IP** | Protokol je podporován přes protokoly TCP/IP a přes rozhraní UNIX-Domain Sockets. |
-| **Servery** | Pro lepší ochranu dat pravidlo brány firewall zabraňuje všem přístupům k vašemu databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Viz [pravidla brány firewall serveru Azure Database for MySQL](./concepts-firewall-rules.md). |
+| **Brána firewall** | Pro lepší ochranu dat pravidlo brány firewall zabraňuje všem přístupům k vašemu databázovému serveru, dokud neurčíte, které počítače mají oprávnění. Viz [pravidla brány firewall serveru Azure Database for MySQL](./concepts-firewall-rules.md). |
 | **SSL** | Služba podporuje vynucování připojení SSL mezi vašimi aplikacemi a vaším databázovým serverem.  Podívejte se na téma [Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k Azure Database for MySQL](./howto-configure-ssl.md). |
+
+## <a name="stopstart-an-azure-database-for-mysql-preview"></a>Zastavení/spuštění Azure Database for MySQL (Preview)
+
+Azure Database for MySQL vám umožní **zastavit** Server, pokud se nepoužívá, a **Spustit** Server při obnovení aktivity. To je v podstatě hotové, aby se ušetřily náklady na databázové servery a platily jenom za prostředek, který se používá. To je ještě důležitější pro úlohy vývoje a testování, a pokud server používáte jenom během dne. Po zastavení serveru budou všechna aktivní připojení vyhozena. Později, pokud chcete převést Server zpátky do režimu online, můžete použít [Azure Portal](how-to-stop-start-server.md) nebo [CLI](how-to-stop-start-server.md).
+
+Pokud je server v **zastaveném** stavu, výpočetní služba se neúčtuje. Úložiště se ale nadále bude účtovat, protože úložiště serveru zůstává, aby se zajistilo, že datové soubory budou k dispozici, až se server znovu spustí.
+
+> [!IMPORTANT]
+> Když **zastavíte** Server, zůstane v tomto stavu po dobu dalších 7 dnů roztažení. Pokud ji během této doby **nespustíte** ručně, server bude automaticky spuštěn na konci 7 dnů. Pokud nepoužíváte server, můžete ho znovu **zastavit** .
+
+Během tohoto časového serveru nelze na serveru provádět žádné operace správy. Aby bylo možné změnit nastavení konfigurace na serveru, bude nutné [spustit server](how-to-stop-start-server.md).
+
+### <a name="limitations-of-stopstart-operation"></a>Omezení operace zastavení/spuštění
+- Nepodporováno s konfigurací repliky pro čtení (zdroj a repliky).
 
 ## <a name="how-do-i-manage-a-server"></a>Návody spravovat Server?
 

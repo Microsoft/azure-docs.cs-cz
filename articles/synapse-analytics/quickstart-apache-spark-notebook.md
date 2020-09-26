@@ -4,17 +4,17 @@ description: V tomto rychlém startu se dozvíte, jak pomocí webových nástroj
 services: synapse-analytics
 author: euangMS
 ms.author: euang
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 4ca718db8d2d2d57c73e8e492e2edbee221cb3ec
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: aca58328ada4f01072cf3779735bcd5cb518ef0a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049804"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260763"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Rychlý Start: Vytvoření fondu Apache Spark ve službě Azure synapse Analytics pomocí nástrojů pro web
 
@@ -49,7 +49,7 @@ Poznámkový blok je interaktivní prostředí, které podporuje různé program
 4. V okně **vlastnosti** zadejte název poznámkového bloku.
 5. Na panelu nástrojů klikněte na **publikovat**.
 6. Pokud je ve vašem pracovním prostoru jenom jeden Apache Spark fond, pak je vybraný ve výchozím nastavení. Pomocí rozevíracího seznamu vyberte správný fond Apache Spark, pokud není vybraný žádný.
-7. Klikněte na **přidat kód**. Výchozí jazyk je `Pyspark` . Budete používat kombinaci Pyspark a Spark SQL, takže je výchozí volba velmi jemná.
+7. Klikněte na **přidat kód**. Výchozí jazyk je `Pyspark` . Budete používat kombinaci Pyspark a Spark SQL, takže je výchozí volba velmi jemná. Další podporované jazyky jsou Scala a .NET pro Spark.
 8. Dále vytvoříte jednoduchý objekt Spark dataframe pro manipulaci. V tomto případě jej vytvoříte z kódu. Existují tři řádky a tři sloupce:
 
    ```python

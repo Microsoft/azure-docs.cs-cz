@@ -17,12 +17,12 @@ ms.date: 09/02/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a15024362b31d49e51b291c10401bbf2965f1d82
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 8aa31c6e196f916b4c7633da0c54a30ab9d7b548
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469860"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361275"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
 
@@ -85,7 +85,7 @@ To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazen
 
 Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
-![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtr")
+![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtrovat")
 
 
 ## <a name="filter-provisioning-activities"></a>Filtrovat aktivity zřizování
@@ -95,11 +95,11 @@ Ve výchozím zobrazení můžete vybrat následující filtry:
 
 - Identita
 - Datum
-- Stav
+- Status
 - Akce
 
 
-![Přidání filtrů](./media/concept-provisioning-logs/default-filter.png "Filtr")
+![Přidání filtrů](./media/concept-provisioning-logs/default-filter.png "Filtrovat")
 
 Filtr **identit** umožňuje zadat název nebo identitu, o které se zajímáte. Tato identita by mohla být uživatel, skupina, role nebo jiný objekt. Můžete hledat podle názvu nebo ID objektu. ID se liší podle scénáře. Například při zřizování objektu ze služby Azure AD do SalesForce je ID zdroje ID objektu uživatele ve službě Azure AD, zatímco TargetID je ID uživatele v Salesforce. Při zřizování z Workday do služby Active Directory je zdrojem ID ID zaměstnance pracovního procesu Workday. Všimněte si, že jméno uživatele nemusí být vždy k dispozici ve sloupci identita. Vždy bude existovat jedno ID. 
 
@@ -131,7 +131,7 @@ Filtr **akcí** umožňuje filtrovat:
 - Aktualizace
 - Odstranit
 - Zakázat
-- Jiné
+- Další
 
 Kromě toho můžete také nastavit následující filtry pro filtry výchozího zobrazení:
 
@@ -190,7 +190,7 @@ Karta **kroky** popisuje kroky podniknuté při zřizování objektu. Zřizován
 
 
 
-![Postup](./media/concept-provisioning-logs/steps.png "Filtr")
+![Snímek obrazovky se zobrazí na kartě kroky, na které se zobrazují kroky zřizování.](./media/concept-provisioning-logs/steps.png "Filtrovat")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Řešení potíží a doporučení

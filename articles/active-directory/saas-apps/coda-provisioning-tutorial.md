@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: Zhchia
-ms.openlocfilehash: 95ee630c1190167227a4ab3514a0c36db0401e45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ce70a4df50be9004182e80711de449bab146a800
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273360"
+ms.locfileid: "91360901"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>Kurz: Konfigurace Coda pro Automatické zřizování uživatelů
 
@@ -93,7 +93,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte adresu URL vašeho tenanta CODA a tajný token, který jste dříve získali v kroku 2. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Coda. Pokud se připojení nepovede, ujistěte se, že váš účet Coda má oprávnění správce, a zkuste to znovu.
 
-    ![zřizování](./media/coda-provisioning-tutorial/provisioning.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně přihlašovací údaje správce, kde můžete zadat svého tenanta U R L a tajného tokenu.](./media/coda-provisioning-tutorial/provisioning.png)
 
 6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem**.
 

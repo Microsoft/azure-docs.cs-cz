@@ -9,12 +9,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: ac0f885a370269a87e45b5e31ec1de6ac397080a
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: d538625785020b2d3ab39b88c3c7a0ddcf18bfc8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017209"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249599"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí jazyka Java
 
@@ -252,7 +252,7 @@ static public void UploadFile(DataLakeFileSystemClient fileSystemClient)
 
     File file = new File("C:\\mytestfile.txt");
 
-    InputStream targetStream = new FileInputStream(file);
+    InputStream targetStream = new BufferedInputStream(new FileInputStream(file));
 
     long fileSize = file.length();
 
@@ -397,7 +397,7 @@ static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClien
 
 * [Referenční dokumentace k rozhraní API](/java/api/overview/azure/storage-file-datalake-readme)
 * [Balíček (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)
-* [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
+* [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
 * [Mapování Gen1 na Gen2](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 * [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-java/issues)

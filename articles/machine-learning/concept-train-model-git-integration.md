@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: bd77af133b88e1ba93054dbb7e0f896d8d418f89
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 71ac7793fe5226215c5d4eab98f84dba356b114c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893559"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275961"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Integrace Gitu pro Azure Machine Learning
 
@@ -35,13 +35,95 @@ Doporučujeme, abyste naklonoval úložiště do adresáře uživatelů, aby ost
 
 Můžete klonovat jakékoli úložiště Git, na které můžete ověřovat (GitHub, Azure Repos, BitBucket atd.).
 
-Návod, jak používat rozhraní příkazového řádku Git, [si můžete přečíst zde.](https://guides.github.com/introduction/git-handbook/)
+Další informace o klonování najdete v příručce k použití rozhraní příkazového [řádku Git](https://guides.github.com/introduction/git-handbook/).
+
+## <a name="authenticate-your-git-account-with-ssh"></a>Ověření účtu Git pomocí SSH
+### <a name="generate-a-new-ssh-key"></a>Vygenerovat nový klíč SSH
+1) [Otevřete okno terminálu](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal) na kartě Poznámkový blok Azure Machine Learning.
+
+2) Níže vložte text a nahraďte svou e-mailovou adresu.
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+Tím se vytvoří nový klíč SSH s použitím poskytnutého e-mailu jako popisku.
+
+```
+> Generating public/private rsa key pair.
+```
+
+3) Po zobrazení výzvy k zadání souboru, ve kterém se má klíč uložit, stiskněte klávesu ENTER. Tím se přijme výchozí umístění souboru.
+
+4) Ověřte, zda je výchozí umístění "/Home/azureuser/.ssh" a stiskněte klávesu ENTER. V opačném případě zadejte umístění '/Home/azureuser/.ssh '.
+
+> [!TIP]
+> Ujistěte se, že je klíč SSH uložený v '/Home/azureuser/.ssh '. Tento soubor je uložený na výpočetní instanci je dostupný jenom vlastníkem výpočetní instance.
+
+```
+> Enter a file in which to save the key (/home/azureuser/.ssh/id_rsa): [Press enter]
+```
+
+5) Na příkazovém řádku zadejte zabezpečené heslo. Pro zvýšení zabezpečení doporučujeme pro svůj klíč SSH přidat přístupové heslo.
+
+```
+> Enter passphrase (empty for no passphrase): [Type a passphrase]
+> Enter same passphrase again: [Type passphrase again]
+```
+
+### <a name="add-the-public-key-to-git-account"></a>Přidání veřejného klíče do účtu Git
+1) V okně terminálu zkopírujte obsah souboru veřejného klíče. Pokud jste přejmenovali klíč, nahraďte id_rsa. pub názvem souboru veřejného klíče.
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+> [!TIP]
+> **Kopírování a vkládání v terminálu**
+> * Windows: `Ctrl-Insert` kopírování a používání `Ctrl-Shift-v` nebo `Shift-Insert` vložení.
+> * Mac OS: `Cmd-c` pro kopírování a `Cmd-v` vložení.
+> * Aplikace FireFox/IE nemusí správně podporovat oprávnění schránky.
+
+2) Vyberte a zkopírujte výstup klíče ve schránce.
+
++ [GitHub](https://docs.github.com/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
+
++ [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
+
++ [DevOps Azure](https://docs.microsoft.com/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  Začněte v **kroku 2**.
+
++ [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). Začněte v **kroku 4**.
+
+### <a name="clone-the-git-repository-with-ssh"></a>Klonování úložiště Git pomocí SSH
+
+1) Zkopírujte adresu URL klonu SSH git z úložiště Git.
+
+2) Vložte adresu URL do `git clone` následujícího příkazu, aby bylo možné použít adresu URL úložiště Git SSH. To bude vypadat přibližně takto:
+
+```bash
+git clone git@example.com:GitUser/azureml-example.git
+Cloning into 'azureml-example'...
+```
+
+Zobrazí se odpověď, třeba:
+
+```bash
+The authenticity of host 'example.com (192.30.255.112)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of known hosts.
+```
+
+SSH může zobrazit otisk prstu serveru SSH a požádat ho o ověření. Měli byste ověřit, že zobrazený otisk prstu odpovídá jednomu otisku prstu na stránce veřejných klíčů SSH.
+
+SSH zobrazí tento otisk prstu, když se připojí k neznámému hostiteli, aby vás chránil před [útoky](https://technet.microsoft.com/library/cc959354.aspx)prostředníkem. Až přijměte otisk prstu hostitele, SSH se znovu nezobrazí, pokud se otisk prstu nezmění.
+
+3) Až se zobrazí dotaz, jestli chcete pokračovat v připojování, zadejte `yes` . Git naklonuje úložiště a nastaví počáteční vzdálenou aplikaci pro připojení k SSH pro budoucí příkazy Gitu.
 
 ## <a name="track-code-that-comes-from-git-repositories"></a>Sledovat kód, který pochází z úložišť Git
 
 Když odešlete školicí běh ze sady Python SDK nebo Machine Learning CLI, soubory potřebné pro výuku modelu se nahrají do vašeho pracovního prostoru. Pokud `git` je příkaz k dispozici ve vašem vývojovém prostředí, proces nahrávání je používá ke kontrole, zda jsou soubory uloženy v úložišti Git. V takovém případě jsou informace z úložiště Git také nahrány v rámci školicího běhu. Tyto informace jsou uloženy v následujících vlastnostech pro školicí běh:
 
-| Vlastnost | Příkaz git použitý k získání hodnoty | Description |
+| Vlastnost | Příkaz git použitý k získání hodnoty | Popis |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |
@@ -110,7 +192,7 @@ run.properties['azureml.git.commit']
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-Další informace najdete v referenční dokumentaci [AZ ml Run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest) reference.
+Další informace najdete v referenční dokumentaci [AZ ml Run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true) reference.
 
 ## <a name="next-steps"></a>Další kroky
 

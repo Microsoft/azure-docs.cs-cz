@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d80a1ba515aa137eba57051f080b4a2b4f311072
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708640"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259132"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci Saviynt s využitím Azure Active Directory B2C
 
-V tomto ukázkovém kurzu poskytujeme pokyny, jak integrovat Azure Active Directory (AD) B2C s [Saviynt](https://saviynt.com/). Platforma správce zabezpečení Saviynt poskytuje přehled, zabezpečení a zásady správného řízení, které dnes potřebují, na jediné sjednocené platformě. Saviynt zahrnuje riziko aplikace a zásady správného řízení, správu infrastruktury, správu privilegovaných účtů a analýzu rizik zákazníků.
+V tomto ukázkovém kurzu poskytujeme pokyny, jak integrovat Azure Active Directory (AD) B2C s [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/). Platforma správce zabezpečení Saviynt poskytuje přehled, zabezpečení a zásady správného řízení, které dnes potřebují, na jediné sjednocené platformě. Saviynt zahrnuje riziko aplikace a zásady správného řízení, správu infrastruktury, správu privilegovaných účtů a analýzu rizik zákazníků.
 
 V tomto ukázkovém kurzu nastavíte Saviynt tak, aby poskytovalo podrobné řízení přístupu na základě delegované správy pro Azure AD B2C uživatele. Saviynt provede následující kontroly, abyste zjistili, jestli má uživatel oprávnění ke správě Azure AD B2C uživatelů.
 
@@ -46,7 +46,7 @@ Integrace Saviynt zahrnuje tyto komponenty:
 
 - [Azure AD B2C](https://azure.microsoft.com/services/active-directory/external-identities/b2c/) – identitu typu Business-to-Customer jako službu, která umožňuje vlastní kontrolu nad tím, jak se vaši zákazníci můžou registrovat, přihlašovat a spravovat svoje profily.
 
-- [Saviynt](https://saviynt.com/) – platforma pro zásady správného řízení identit, která poskytuje jemně odstupňovanou delegovanou správu pro správu životního cyklu uživatelů a přístup k zásadám správného řízení Azure AD B2C uživatelů.  
+- [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/) – platforma pro zásady správného řízení identit, která poskytuje jemně odstupňovanou delegovanou správu pro správu životního cyklu uživatelů a přístup k zásadám správného řízení Azure AD B2C uživatelů.  
 
 - [Rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) – toto rozhraní API poskytuje rozhraní pro Saviynt ke správě Azure AD B2Cch uživatelů a jejich přístupu v Azure AD B2C.
 
@@ -54,7 +54,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ![Obrázek znázorňující diagram architektury saviynt](./media/partner-saviynt/saviynt-architecture-diagram.png)
 
-|Krok | Description |
+|Krok | Popis |
 |:-----| :-----------|
 | 1. | Delegovaný správce spustí uživatelskou operaci spravovat Azure AD B2C pomocí Saviynt.
 | 2. | Saviynt ověří pomocí svého autorizačního modulu, pokud může provést konkrétní operace.
@@ -73,7 +73,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Konfigurace Azure AD B2C pomocí Saviynt
 
-### <a name="creating-an-azure-ad-application-for-saviynt"></a>Vytvoření aplikace Azure AD pro Saviynt
+### <a name="create-an-azure-ad-application-for-saviynt"></a>Vytvoření aplikace Azure AD pro Saviynt
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/#home).
 
@@ -108,7 +108,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 
 15. K dokončení nastavení v Saviynt bude nutné ID tenanta, ID klienta a tajný klíč klienta.
 
-### <a name="enabling-saviynt-to-delete-users"></a>Povolení Saviynt odstraňování uživatelů
+### <a name="enable-saviynt-to-delete-users"></a>Povolit Saviynt odstraňování uživatelů
 
 Níže uvedené kroky vysvětlují, jak povolit Saviynt k provádění operací odstraňování uživatelů v Azure AD B2C.
 
