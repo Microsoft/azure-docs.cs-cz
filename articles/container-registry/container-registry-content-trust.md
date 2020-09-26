@@ -3,12 +3,12 @@ title: Správa podepsaných imagí
 description: Naučte se, jak povolit důvěryhodnost obsahu pro službu Azure Container Registry, a nahrajte a vyžádat si podepsané image. Vztah důvěryhodnosti obsahu je funkcí úrovně Premium Service.
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 34bb56bab869cb1f12541b65c59b06a73b215377
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36d2a8ddef184804facdace2d517d7e2fdf1b24c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076854"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253475"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Důvěryhodnost obsahu ve službě Azure Container Registry
 
@@ -40,7 +40,7 @@ Prvním krokem je povolení důvěryhodnosti obsahu na úrovni registru. Jakmile
 
 Pokud chcete pro svůj registr povolit důvěryhodnost obsahu, nejprve přejděte do tohoto registru na webu Azure Portal. V části **zásady**vyberte možnost Uložit povolený **vztah důvěryhodnosti obsahu**  >  **Enabled**  >  **Save**. V Azure CLI taky můžete použít příkaz [AZ ACR config Content-Trust Update][az-acr-config-content-trust-update] .
 
-![Povolení důvěryhodnosti obsahu pro registr na webu Azure Portal][content-trust-01-portal]
+![Snímek obrazovky ukazuje povolení vztahu důvěryhodnosti obsahu pro registr v Azure Portal.][content-trust-01-portal]
 
 ## <a name="enable-client-content-trust"></a>Povolení důvěryhodnosti obsahu u klientů
 
@@ -76,7 +76,7 @@ Do vašeho registru můžou odesílat důvěryhodné image pouze uživatelé neb
 
 Následují podrobnosti o udělení role `AcrImageSigner` na webu Azure Portal a v Azure CLI.
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Přejděte do registru v Azure Portal a pak vyberte **řízení přístupu (IAM)**  >  **Přidat přiřazení role**. V části **Přidat přiřazení role**vyberte `AcrImageSigner` v části **role**, **Vyberte** jednoho nebo více uživatelů nebo instančních objektů a pak klikněte na **Uložit**.
 
