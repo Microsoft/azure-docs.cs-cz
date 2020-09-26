@@ -3,15 +3,15 @@ title: Problémy s diagnostikou virtuálních počítačů s Windows – Azure
 description: Jak používat funkci diagnostiky virtuálních klientských počítačů Windows k diagnostice problémů.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 09/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 50fe1eb6e5aed551b56bcd1526daa5d441185501
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 70676bd1a07acdfcbba071a906b390ed66d70074
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121404"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279854"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>Identifikace a Diagnostika problémů s virtuálními počítači s Windows
 
@@ -24,10 +24,10 @@ Připojení, která nedosáhnou virtuálního klienta Windows, se nezobrazí ve 
 
 ## <a name="common-error-scenarios"></a>Běžné chybové scénáře
 
-Scénáře chyb jsou rozdělené do kategorií interní pro službu a externí pro virtuální počítače s Windows.
+Tabulka WVDErrors sleduje chyby napříč všemi typy aktivit. Sloupec s názvem "ServiceError" poskytuje další příznak označený buď "true" nebo "false". Tento příznak vám sdělí, jestli chyba souvisí se službou.
 
-* Vnitřní problém: Určuje scénáře, které zákazník nemůže zmírnit a který je potřeba vyřešit jako problém podpory. Při poskytování zpětné vazby prostřednictvím [odborné komunity pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)zadejte ID korelace a přibližný časový rámec, kdy k problému došlo.
-* Externí problém: vztah ke scénářům, které může zákazník zmírnit. Jedná se o externí funkce pro virtuální počítače s Windows.
+* Pokud je hodnota "true", tým služby již mohl tento problém prozkoumat. Pokud se to týká prostředí pro uživatele a zobrazí se vám vysoký počet pokusů, doporučujeme odeslat lístek podpory pro virtuální počítač s Windows.
+* Pokud je hodnota false, může to být chybná konfigurace, kterou můžete opravit sami. Chybová zpráva vám může sdělit, kde začít.
 
 V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správci běžet.
 
@@ -46,7 +46,7 @@ V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správc
 |Nepovedlo se zrušit přiřazení uživatele ze skupiny aplikací.|Nepovedlo se zrušit publikování skupiny aplikací pro uživatele. Zkontrolujte, jestli je uživatel k dispozici ve službě Azure AD. Zkontrolujte, jestli je uživatel součástí skupiny uživatelů, na kterou je publikovaná skupina aplikací. |
 |Při načítání dostupných umístění došlo k chybě. |Ověřte umístění virtuálního počítače používaného v Průvodci vytvořením fondu hostitelů. Pokud není v tomto umístění k dispozici obrázek, přidejte do tohoto umístění obrázek nebo vyberte jiné umístění virtuálního počítače. |
 
-### <a name="external-connection-error-codes"></a>Kódy chyb externího připojení
+### <a name="connection-error-codes"></a>Kódy chyb připojení
 
 |Číselný kód|Kód chyby|Navrhované řešení|
 |---|---|---|

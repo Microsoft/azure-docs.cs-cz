@@ -4,12 +4,12 @@ description: Správa výkonu aplikací a monitorování využití živých webov
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 4576c8a7657ea3da1f8a732c2efd38302f33300c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f00eea37c43fba10e0a89498dd81366630852db7
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974048"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371373"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
 Application Insights, funkce [Azure monitor](../overview.md), je rozšiřitelná služba pro správu výkonu aplikací (APM) pro vývojáře a odborníky v oblasti DevOps. Použijte ho k monitorování svých živých aplikací. Automaticky detekuje anomálie výkonu a obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé s vaší aplikací skutečně dělají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje pro aplikace na nejrůznějších platformách, jako jsou .NET, Node.js, Java a Python hostované místně, hybridním nebo jakýmkoli veřejným cloudem. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
@@ -51,7 +51,7 @@ Data se dají prozkoumávat mnoha způsoby. Podívejte se na tyto články:
 | --- | --- |
 | [**Inteligentní zjišťování a ruční výstrahy**](./proactive-diagnostics.md)<br/>Nastavte automatické výstrahy, které se přizpůsobí normálním vzorům telemetrie a triggeru vaší aplikace, když je něco mimo obvyklý vzor. Můžete také [nastavit výstrahy](../platform/alerts-log.md) na konkrétní úrovně vlastních nebo standardních metrik. |![Ukázka výstrah](./media/app-insights-overview/alerts-tn.png) |
 | [**Mapa aplikace**](./app-map.md)<br/>Prozkoumejte komponenty vaší aplikace s klíčovými metrikami a výstrahami. |![Mapa aplikace](./media/app-insights-overview/appmap-tn.png)  |
-| [**Profiler**](./profiler.md)<br/>Zkontrolujte profily spouštění u vzorků požadavků. |![Snímek obrazovky ukazuje profily spuštění vzorků požadavků.](./media/app-insights-overview/profiler.png) |
+| [**profiler**](./profiler.md)<br/>Zkontrolujte profily spouštění u vzorků požadavků. |![Snímek obrazovky ukazuje profily spuštění vzorků požadavků.](./media/app-insights-overview/profiler.png) |
 | [**Analýza využití**](./usage-overview.md)<br/>Analyzujte segmentaci a udržení uživatelů.|![Nástroj Udržení](./media/app-insights-overview/retention.png) |
 | [**Diagnostické vyhledávání dat instancí**](./diagnostic-search.md)<br/>Události vyhledávání a filtrování, jako jsou třeba požadavky, výjimky, volání závislosti, trasování protokolů a zobrazení stránek.  |![Telemetrie vyhledávání](./media/app-insights-overview/search-tn.png) |
 | [**Průzkumník metrik pro agregovaná data**](../platform/metrics-charts.md)<br/>Prozkoumání, filtrování a segmentace agregovaných dat, jako jsou třeba frekvence požadavků, selhání a výjimek, doby odezvy a časy načtení stránek. |![Metriky](./media/app-insights-overview/metrics-tn.png) |
@@ -66,7 +66,7 @@ Data se dají prozkoumávat mnoha způsoby. Podívejte se na tyto články:
 
 ## <a name="how-do-i-use-application-insights"></a>Jak se Application Insights dá využít?
 
-### <a name="monitor"></a>Monitor
+### <a name="monitor"></a>Monitorování
 Nainstalujte Application Insights ve vaší aplikaci, nastavte [webové testy dostupnosti](./monitor-web-app-availability.md) a:
 
 * Podívejte se na výchozí [řídicí panel aplikace](./overview-dashboard.md) pro svou týmovou místnost, abyste měli přehled o zatížení, odezvě a výkonu vašich závislostí, načtení stránek a voláních AJAX.
@@ -122,6 +122,7 @@ Začínáme při vývoji:
 * [Java](./java-get-started.md)
 * [Node.js](./nodejs.md)
 * [Python](./opencensus-python.md)
+* [JavaScript](./javascript.md)
 
 
 ## <a name="support-and-feedback"></a>Podpora a zpětná vazba

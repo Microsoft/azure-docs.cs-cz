@@ -4,12 +4,12 @@ description: Monitorování výkonu aplikací bez kódu pro aplikace Java běž�
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 561a6405a49d8f15affbf6d8d4de1a7f4886826a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 93b0b89cff7e48ddc4eb9173c9423961f96ec4bb
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056094"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371299"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Možnosti konfigurace – samostatný agent Java pro Azure Monitor Application Insights
 
@@ -49,7 +49,18 @@ To je povinné. Připojovací řetězec najdete v prostředku Application Insigh
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Připojovací řetězec Application Insights":::
 
+
+```json
+{
+  "instrumentationSettings": {
+    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
+  }
+}
+```
+
 Připojovací řetězec můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_CONNECTION_STRING` .
+
+Při nastavení připojovacího řetězce se agent Java zakáže.
 
 ## <a name="cloud-role-name"></a>Název cloudové role
 
@@ -93,7 +104,7 @@ Instanci cloudové role můžete také nastavit pomocí proměnné prostředí `
 
 Application Insights Java 3,0 Preview automaticky zachycuje protokolování aplikací prostřednictvím log4j, Logback a Java. util. Logging.
 
-Ve výchozím nastavení bude zachytávání veškerého protokolování provedené na `WARN` úrovni nebo výše.
+Ve výchozím nastavení bude zachytávání veškerého protokolování provedené na `INFO` úrovni nebo výše.
 
 Pokud chcete změnit tuto prahovou hodnotu:
 
@@ -103,13 +114,15 @@ Pokud chcete změnit tuto prahovou hodnotu:
     "preview": {
       "instrumentation": {
         "logging": {
-          "threshold": "ERROR"
+          "threshold": "WARN"
         }
       }
     }
   }
 }
 ```
+
+Prahovou hodnotu protokolování můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_LOGGING_THRESHOLD` .
 
 Jedná se o platné `threshold` hodnoty, které můžete zadat v `ApplicationInsights.json` souboru a jak odpovídají úrovním protokolování napříč různými architekturami protokolování:
 
@@ -136,9 +149,9 @@ Pokud máte nějaké JMX metriky, které vás zajímají, zachytíte:
     "preview": {
       "jmxMetrics": [
         {
-          "objectName": "java.lang:type=ClassLoading",
-          "attribute": "LoadedClassCount",
-          "display": "Loaded Class Count"
+          "objectName": "java.lang:type=Runtime",
+          "attribute": "Uptime",
+          "display": "JVM uptime (millis)"
         },
         {
           "objectName": "java.lang:type=MemoryPool,name=Code Cache",
@@ -150,6 +163,10 @@ Pokud máte nějaké JMX metriky, které vás zajímají, zachytíte:
   }
 }
 ```
+
+Metriky JMX můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_JMX_METRICS` .
+
+Obsah této proměnné prostředí musí být data JSON shodná s výše uvedenou strukturou, např. `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Code Cache", "attribute": "Usage.used", "display": "Code Cache Used"}]`
 
 ## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Mikroměřič (včetně metrik ze pružinového spouštěcího válce)
 
@@ -214,6 +231,8 @@ Tady je příklad, jak nastavit vzorkování na **10% všech transakcí** – Uj
   }
 }
 ```
+
+Procentuální hodnotu vzorkování můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` .
 
 ## <a name="http-proxy"></a>Proxy server HTTP
 

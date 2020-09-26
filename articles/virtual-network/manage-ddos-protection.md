@@ -16,18 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 73036ba1a72d657fd07a826bbee8651781f70e9b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 706379649b47846b5c020dc76493a98e346c4a8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931960"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317680"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS Protection Standard pomocí Azure Portal
 
 Naučte se, jak povolit a zakázat distribuovanou ochranu před útoky na DDoS (Denial of Service), a využijte telemetrii k omezení DDoS útoku pomocí Azure DDoS Protection Standard. DDoS Protection Standard chrání prostředky Azure, jako jsou virtuální počítače, nástroje pro vyrovnávání zatížení a aplikační brány, které mají přiřazenou [veřejnou IP adresu](virtual-network-public-ip-address.md) Azure. Další informace o službě DDoS Protection Standard a jejích funkcích najdete v tématu [přehled DDoS Protection úrovně Standard](ddos-protection-overview.md).
 
-Před dokončením všech kroků v tomto kurzu se přihlaste k Azure Portal v https://portal.azure.com rámci pomocí účtu přiřazeného k roli [přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazena k příslušným akcím uvedeným v [oprávněních](#permissions).
+Před dokončením všech kroků v tomto kurzu se přihlaste k Azure Portal v https://portal.azure.com rámci pomocí účtu přiřazeného k roli [přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazena k příslušným akcím uvedeným v [oprávněních](#permissions-and-restrictions).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -191,7 +191,7 @@ Protokoly o omezeních toků útoků na útoky umožňují kontrolovat vyřazen�
     - **Archivace do účtu úložiště**: data se zapisují do účtu Azure Storage. Další informace o této možnosti najdete v tématu [archivní protokoly prostředků](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Streamování do centra událostí**: umožňuje přijímači protokolu vybírat protokoly pomocí centra událostí Azure. Centra událostí umožňují integraci s Splunk nebo jinými systémy SIEM. Další informace o této možnosti najdete v tématu [streamování protokolů prostředků do centra událostí](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Odeslat do Log Analytics**: zapisuje protokoly do služby Azure monitor. Další informace o této možnosti najdete v tématu [shromáždění protokolů pro použití v protokolech Azure monitor](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-1. Pokud chcete zobrazit data protokolů toku na řídicím panelu Azure Analytics, můžete si ukázkový řídicí panel naimportovat z https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
+1. Pokud chcete zobrazit data protokolů toků v Azure Analytics, můžete si ukázkový řídicí panel naimportovat z https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20DDoS%20Protection%20Workbook
 
 Protokoly toku budou obsahovat následující pole: 
 - Zdrojová IP adresa
@@ -225,11 +225,11 @@ Chcete-li zobrazit výstrahy, otevřete **Security Center** v Azure Portal. V č
 
 Výstrahy obsahují obecné informace o veřejné IP adrese, která se nachází v rámci útoku, geograficky a informací o analýze hrozeb a nápravných krocích.
 
-## <a name="permissions"></a>Oprávnění
+## <a name="permissions-and-restrictions"></a>Oprávnění a omezení
 
 Aby bylo možné pracovat s plány ochrany DDoS Protection, musí být váš účet přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, která je přiřazena k příslušným akcím uvedeným v následující tabulce:
 
-| Akce                                            | Název                                     |
+| Akce                                            | Name                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/ddosProtectionPlans/Read        | Přečíst plán DDoS Protection              |
 | Microsoft. Network/ddosProtectionPlans/Write       | Vytvořit nebo aktualizovat plán DDoS Protection  |
@@ -237,6 +237,9 @@ Aby bylo možné pracovat s plány ochrany DDoS Protection, musí být váš ú�
 | Microsoft. Network/ddosProtectionPlans/JOIN/Action | Připojit se k plánu DDoS Protection              |
 
 Aby bylo možné povolit DDoS ochranu pro virtuální síť, musí mít váš účet také přiřazeny příslušné [akce pro virtuální sítě](manage-virtual-network.md#permissions).
+
+### <a name="azure-policy"></a>Azure Policy
+Pro zákazníky, kteří mají různá předplatná a kteří chtějí zajistit, aby byl pro řízení nákladů nasazený jeden plán pro Azure DDoS Protection Standard, můžete pomocí Azure Policy [omezit vytváření Azure DDoS Protection standardních plánů](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Restrict%20creation%20of%20Azure%20DDoS%20Protection%20Standard%20Plans%20with%20Azure%20Policy). Tato zásada zablokuje vytváření jakýchkoli plánů DDoS, pokud předplatné předtím neoznačilo výjimku. V této zásadě se zobrazí také seznam všech předplatných, která mají nasazený plán DDoS, ale neměly by se jim označit jako nedodržující předpisy. 
 
 ## <a name="next-steps"></a>Další kroky
 

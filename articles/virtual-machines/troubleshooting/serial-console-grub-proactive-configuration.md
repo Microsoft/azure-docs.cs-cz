@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: c48ef0321ece2e7e0ffcdfcb8c0907c5f839e738
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: aba47500400004c1d6a7044a266bad6f20d5d9c9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831358"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360544"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proaktivní zajištění přístupu k GRUB a SysRq vám může ušetřit spoustu času.
 
@@ -57,9 +57,9 @@ Pomocí konzole sériového prostředí Azure můžete s VIRTUÁLNÍm počítač
 
 Můžete manipulovat s mnoha konfiguračními soubory, včetně způsobu, jakým se jádro spustí. 
 
-Zkušení správci systému Linux/UNIX budou porušovat **jednotlivé uživatelské** a **nouzové režimy** , které jsou přístupné prostřednictvím konzoly Azure Serial, což provádí swap disku a odstraňování virtuálních počítačů pro mnoho scénářů obnovení.
+Zkušení správci systému Linux/UNIX budou porušovat **jednotlivé uživatelské** a  **nouzové režimy** , které jsou přístupné prostřednictvím konzoly Azure Serial, což provádí swap disku a odstraňování virtuálních počítačů pro mnoho scénářů obnovení.
 
-Metoda obnovení závisí na problému, ke kterému došlo, například ztracené nebo nesprávně umístěné heslo je možné resetovat prostřednictvím Azure Portal možností – > **resetovat heslo**. Funkce **reset Password** se nazývá rozšíření a komunikuje s agentem hosta v systému Linux.
+Metoda obnovení závisí na problému, ke kterému došlo, například ztracené nebo nesprávně umístěné heslo je možné resetovat prostřednictvím Azure Portal možností – >  **resetovat heslo**. Funkce **reset Password** se nazývá rozšíření a komunikuje s agentem hosta v systému Linux.
 
 K dispozici jsou i další rozšíření, jako je vlastní skript, ale tyto možnosti vyžadují, aby se Linux **waagent** v dobrém stavu, který není vždycky v případě případu.
 
@@ -117,7 +117,7 @@ Dynamické konfigurace parametru jádra
 
 Pokud nemáte **kořenový** přístup nebo je sudo, nebude možné konfigurovat SysRq z příkazového řádku prostředí.
 
-V tomto scénáři můžete povolit SysRq pomocí Azure Portal. Tato metoda může být výhodná, pokud byl soubor **sudoers. d/waagent** poškozen nebo byl odstraněn.
+V tomto scénáři můžete povolit SysRq pomocí Azure Portal. Tato metoda může být výhodná, pokud byl soubor  **sudoers. d/waagent** poškozen nebo byl odstraněn.
 
 Pomocí funkce Azure Portal Operations-> spustit příkaz > RunShellScript vyžaduje, aby byl proces waagent v pořádku, abyste mohli povolit SysRq, můžete tento příkaz Vložit.
 
@@ -210,11 +210,11 @@ Přerušení SPOUŠTĚCÍho procesu a přístup k GRUB nabídce
 
 Vyberte rozšířené možnosti pro Ubuntu a stiskněte ENTER.
 
-![ubunturec1](./media/virtual-machines-serial-console/ubunturec1.png)
+![Snímek obrazovky ukazuje Sériová konzola s vybranými pokročilými možnostmi pro Ubuntu.](./media/virtual-machines-serial-console/ubunturec1.png)
 
 Vyberte řádek se zobrazením *(režim obnovení)* nestiskněte klávesu ENTER, ale stiskněte klávesu "e".
 
-![ubunturec2](./media/virtual-machines-serial-console/ubunturec2.png)
+![Snímek obrazovky ukazuje Sériová konzola se zvolenou verzí režimu obnovení.](./media/virtual-machines-serial-console/ubunturec2.png)
 
 Vyhledejte řádek, který načte jádro, a nahraďte poslední parametr **nomodeset** jako cíl jako **Console = ttyS0** .
 
@@ -226,12 +226,12 @@ change to
 linux /boot/vmlinuz-4.15.0-1023-azure root=UUID=21b294f1-25bd-4265-9c4e-d6e4aeb57e97 ro recovery console=ttyS0
 ```
 
-![ubunturec3](./media/virtual-machines-serial-console/ubunturec3.png)
+![Snímek obrazovky zobrazuje Sériová konzola se změněnou hodnotou.](./media/virtual-machines-serial-console/ubunturec3.png)
 
 Stisknutím **kombinace kláves CTRL + x** spusťte a načtěte jádro.
 Pokud vše proběhne správně, uvidíte tyto další možnosti, které vám můžou pomáhat s dalšími možnostmi obnovení.
 
-![ubunturec4](./media/virtual-machines-serial-console/ubunturec4.png)
+![Snímek obrazovky ukazuje Sériová konzola v nabídce obnovení, která nabízí další možnosti obnovení.](./media/virtual-machines-serial-console/ubunturec4.png)
 
 
 ## <a name="red-hat-grub-configuration"></a>Konfigurace Red Hat GRUB
@@ -335,13 +335,13 @@ terminal --timeout=5 serial console
 ```
 
 
-Poslední řádek *terminál –-timeout = 5 sériové konzole* zvýší časový limit **grub** přidáním výzvy k zadání 5 sekund a **pokračováním stisknutí libovolné klávesy.**
+Poslední řádek  *terminál –-timeout = 5 sériové konzole* zvýší časový limit **grub** přidáním výzvy k zadání 5 sekund a **pokračováním stisknutí libovolné klávesy.**
 
-![RH6-1](./media/virtual-machines-serial-console/rh6-1.png)
+![Snímek obrazovky ukazuje konzolu s výstupem.](./media/virtual-machines-serial-console/rh6-1.png)
 
 Nabídka GRUB by se měla zobrazit na obrazovce pro nakonfigurovaný časový limit = 15, aniž by bylo nutné stisknout klávesu ESC. Nezapomeňte kliknout na konzolu v prohlížeči a aktivovat tak nabídku a vybrat požadované jádro.
 
-![RH6 – 2](./media/virtual-machines-serial-console/rh6-2.png)
+![Snímek obrazovky zobrazuje konzolu se dvěma možnostmi systému Linux.](./media/virtual-machines-serial-console/rh6-2.png)
 
 ## <a name="suse"></a>SuSE
 
@@ -405,18 +405,18 @@ Budete mít přístup k prostředí bez nutnosti zadávat heslo. Pak můžete po
 Přístup k GRUB vám umožňuje přerušit proces inicializace. Tato interakce je užitečná pro mnoho postupů obnovení.
 Pokud nemáte kořenové heslo a jeden uživatel vyžaduje, abyste měli kořenové heslo, můžete spustit jádro, které nahradí inicializační program pomocí bash výzvy – toto přerušení je možné dosáhnout připojením init =/bin/bash ke spouštěcímu řádku jádra.
 
-![bash1](./media/virtual-machines-serial-console/bash1.png)
+![Snímek obrazovky zobrazuje konzolu s aktualizovaným spouštěcím řádkem.](./media/virtual-machines-serial-console/bash1.png)
 
 Opětovně připojte soubor/(root) systém souborů RW pomocí příkazu.
 
 `mount -o remount,rw /`
 
-![bash2](./media/virtual-machines-serial-console/bash2.png)
+![Snímek obrazovky ukazuje konzolu s akcí znovu připojit.](./media/virtual-machines-serial-console/bash2.png)
 
 
 Nyní můžete provést změnu kořenového hesla nebo mnoho dalších změn konfigurace systému Linux.
 
-![bash3](./media/virtual-machines-serial-console/bash3.png)
+![Snímek obrazovky ukazuje konzolu, kde můžete změnit kořenové heslo a další konfiguraci.](./media/virtual-machines-serial-console/bash3.png)
 
 Restartujte virtuální počítač s 
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a5db76f0258eb08f6b1f8ed102dc29e26c8d8bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e72129b1f391996f6d5b085fe602adb35a3aecbe
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206440"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371214"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Zabezpečený přístup k místním rozhraním API pomocí Azure Proxy aplikací služby AD
 
@@ -43,7 +43,7 @@ Vzhledem k tomu, že služba Azure Proxy aplikací služby AD ověřování a au
 Pokud chcete postupovat podle tohoto návodu, budete potřebovat:
 
 - Přístup správce k adresáři Azure pomocí účtu, který může vytvářet a registrovat aplikace
-- Ukázkové webové rozhraní API a nativní klientské aplikace z[https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp)
+- Ukázkové webové rozhraní API a nativní klientské aplikace z [https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp](https://github.com/jeevanbisht/API-NativeApp-ADAL-SampleApp)
 
 ## <a name="publish-the-api-through-application-proxy"></a>Publikování rozhraní API prostřednictvím proxy aplikace
 
@@ -185,7 +185,7 @@ Pokud chcete nakonfigurovat nativní aplikaci pro připojení k Azure Active Dir
 
 Po nakonfigurování parametrů Sestavte a spusťte nativní aplikaci. Když vyberete tlačítko **Přihlásit** , aplikace vám umožní přihlásit se a pak zobrazí obrazovku po úspěchu, která potvrdí, že se úspěšně připojil k SecretAPI.
 
-![Úspěch](./media/application-proxy-secure-api-access/success.png)
+![Snímek obrazovky se zobrazí jako tajný klíč zprávy P I úspěch a tlačítko OK.](./media/application-proxy-secure-api-access/success.png)
 
 ## <a name="next-steps"></a>Další kroky
 

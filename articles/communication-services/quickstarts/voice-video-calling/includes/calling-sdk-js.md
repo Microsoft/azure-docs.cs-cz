@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 6922ab2aac8529da8ba55a98f465e3c0e3123b53
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5542ca2f50152e7588f32e9ac8717f691fdb4d63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936479"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376456"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -80,11 +80,11 @@ Aby bylo možné volat do veřejné telefonní služby, musí být prostředek k
 
 const userCallee = { communicationUserId: <ACS_USER_ID> }
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
-const groupCall = callClient.call([userCallee, pstnCallee], placeCallOptions);
+const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>Nakonání volání 1:1 s videokamerou
+### <a name="place-a-11-call-with-video-camera"></a>Vložení volání 1:1 s videokamerou
 > [!WARNING]
 > V tuto chvíli nemůže být k dispozici více než jeden odchozí datový proud v místním videu.
 Chcete-li umístit audiovizuální volání, je nutné vytvořit výčet místních fotoaparátů pomocí `getCameraList` rozhraní deviceManager API.
@@ -95,7 +95,7 @@ const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
 localVideoStream = new LocalVideoStream(videoDeviceInfo);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
-const call = callClient.call(['acsUserId'], placeCallOptions);
+const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
@@ -104,7 +104,7 @@ Chcete-li spustit nové volání skupiny nebo se připojit k průběžnému vol�
 ```js
 
 const context = { groupId: <GUID>}
-const call = callClient.join(context);
+const call = callAgent.join(context);
 
 ```
 
@@ -113,19 +113,19 @@ const call = callClient.join(context);
 Můžete získat přístup k vlastnostem volání a provádět různé operace během volání ke správě nastavení souvisejících s videem a zvukem.
 
 ### <a name="call-properties"></a>Vlastnosti volání
-* Získá jedinečné ID pro toto volání.
+* Získá jedinečné ID (řetězce) pro toto volání.
 ```js
 
 const callId: string = call.id;
 
 ```
 
-* Pokud se chcete dozvědět víc o dalších účastnících volání, zkontrolujte `remoteParticipant` kolekci v `call` instanci.
+* Pokud se chcete dozvědět víc o dalších účastnících volání, zkontrolujte `remoteParticipant` kolekci v `call` instanci. Pole obsahuje `RemoteParticipant` objekty seznamu
 ```js
-const remoteParticipants: RemoteParticipants = call.remoteParticipants;
+const remoteParticipants = call.remoteParticipants;
 ```
 
-* Identita volajícího, pokud je volání příchozí.
+* Identita volajícího, pokud je volání příchozí. Identita je jedním z `Identifier` typů
 ```js
 
 const callerIdentity = call.callerIdentity;
@@ -135,7 +135,7 @@ const callerIdentity = call.callerIdentity;
 * Získejte stav volání.
 ```js
 
-const callState: CallState = call.state;
+const callState = call.state;
 
 ```
 Vrátí řetězec představující aktuální stav volání:
@@ -153,35 +153,34 @@ Vrátí řetězec představující aktuální stav volání:
 * Chcete-li zjistit, proč dané volání skončilo, zkontrolujte `callEndReason` vlastnost.
 ```js
 
-const callEndReason: CallEndReason = call.callEndReason;
+const callEndReason = call.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* Chcete-li zjistit, zda je aktuální volání příchozím voláním, zkontrolujte `isIncoming` vlastnost, kterou vrátí `Boolean` .
+```js
+const isIncoming = call.isIncoming;
+```
+
+*  Pokud chcete zkontrolovat, jestli je aktuální mikrofon ztlumený, zkontrolujte `muted` vlastnost a vrátí se `Boolean` .
+```js
+
+const muted = call.isMicrophoneMuted;
 
 ```
 
-* Pokud chcete zjistit, jestli aktuální volání je příchozí volání, zkontrolujte `isIncoming` vlastnost.
+* Chcete-li zjistit, zda je datový proud sdílení obrazovky odesílán z daného koncového bodu, zkontrolujte `isScreenSharingOn` vlastnost a vrátí `Boolean` .
 ```js
 
-const isIncoming: boolean = call.isIncoming;
+const isScreenSharingOn = call.isScreenSharingOn;
 
 ```
 
-*  Pokud chcete zkontrolovat, jestli je aktuální mikrofon ztlumený, zkontrolujte `muted` vlastnost:
+* Pokud chcete zkontrolovat aktivní streamy videa, zkontrolujte `localVideoStreams` kolekci, která obsahuje `LocalVideoStream` objekty.
 ```js
 
-const muted: boolean = call.isMicrophoneMuted;
-
-```
-
-* Chcete-li zjistit, zda je datový proud sdílení obrazovky odesílán z daného koncového bodu, zkontrolujte `isScreenSharingOn` vlastnost:
-```js
-
-const isScreenSharingOn: boolean = call.isScreenSharingOn;
-
-```
-
-* Pokud chcete zkontrolovat aktivní streamy videa, zkontrolujte `localVideoStreams` kolekci:
-```js
-
-const localVideoStreams: LocalVideoStream[] = call.localVideoStreams;
+const localVideoStreams = call.localVideoStreams;
 
 ```
 
@@ -194,7 +193,7 @@ Chcete-li ztlumit nebo zrušit ztlumení místního koncového bodu, můžete po
 //mute local device 
 await call.mute();
 
-//unmute device 
+//unmute local device 
 await call.unmute();
 
 ```
@@ -206,7 +205,7 @@ Chcete-li spustit video, je nutné vytvořit výčet kamer pomocí `getCameraLis
 
 
 ```js
-const localVideoStream = new SDK.LocalVideoStream(videoDeviceInfo);
+const localVideoStream = new LocalVideoStream(videoDeviceInfo);
 await call.startVideo(localVideoStream);
 
 ```
@@ -254,49 +253,49 @@ Vzdálený účastník má sadu vlastností a kolekcí, které jsou k němu při
 * Získat identifikátor pro tohoto vzdáleného účastníka.
 Identita je jedním z typů identifikátorů:
 ```js
-
-const identity: CommunicationUser | PhoneNumber | CallingApplication | UnknownIdentifier;
-
+const identifier = remoteParticipant.identifier;
+//It can be one of:
+// { communicationUserId: '<ACS_USER_ID'> } - object representing ACS User
+// { phoneNumber: '<E.164>' } - object representing phone number in E.164 format
 ```
 
 * Získat stav tohoto vzdáleného účastníka.
 ```js
 
-const state: RemoteParticipantState = remoteParticipant.state;
+const state = remoteParticipant.state;
 ```
 Stav může být jedna z
 * Nečinné – počáteční stav
 * Probíhá připojování – přechodový stav, zatímco se účastník připojuje k volání.
 * Připojeno – účastník je připojený k volání.
 * ' Hold ' – účastník je blokován
-* ' EarlyMedia '-oznámení se přehraje před tím, než se účastník připojí k volání.
+* ' EarlyMedia ' – před připojením účastníka k volání se přehraje oznámení.
 * ' Odpojeno ' – konečný stav – účastník je odpojen od volání
 
 Chcete-li zjistit, proč účastník opustil hovor, zkontrolujte `callEndReason` vlastnost:
 ```js
 
-const callEndReason: CallEndReason = remoteParticipant.callEndReason;
+const callEndReason = remoteParticipant.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* Pokud chcete zkontrolovat, jestli je tento vzdálený účastník ztlumený, zkontrolujte `isMuted` vlastnost, která vrátí. `Boolean`
+```js
+const isMuted = remoteParticipant.isMuted;
+```
+
+* Chcete-li zkontrolovat, zda tento vzdálený účastník mluví nebo není, zkontrolujte `isSpeaking` vlastnost, kterou vrátí `Boolean`
+```js
+
+const isSpeaking = remoteParticipant.isSpeaking;
 
 ```
 
-* Pokud chcete zkontrolovat, jestli je tento vzdálený účastník ztlumený, zkontrolujte `isMuted` vlastnost:
+* Pokud chcete zkontrolovat všechny streamy videa, které daný účastník posílá při volání, zkontrolujte `videoStreams` shromažďování, obsahuje `RemoteVideoStream` objekty.
 ```js
 
-const isMuted: boolean = remoteParticipant.isMuted;
-
-```
-
-* Chcete-li zkontrolovat, zda tento vzdálený účastník mluví nebo není, zkontrolujte `isSpeaking` vlastnost:
-```js
-
-const isSpeaking: boolean = remoteParticipant.isSpeaking;
-
-```
-
-* Chcete-li zkontrolovat všechny streamy videa, které daný účastník odesílá v rámci tohoto volání, zkontrolujte `videoStreams` kolekci:
-```js
-
-const videoStreams: RemoteVideoStream[] = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
 
 ```
 
@@ -312,7 +311,6 @@ const userIdentifier = { communicationUserId: <ACS_USER_ID> };
 const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>}
 const remoteParticipant = call.addParticipant(userIdentifier);
 const remoteParticipant = call.addParticipant(pstnIdentifier);
-
 ```
 
 ### <a name="remove-participant-from-a-call"></a>Odebrat účastníka volání
@@ -333,7 +331,6 @@ await call.removeParticipant(pstnIdentifier);
 Pokud chcete zobrazit seznam streamů a sdílení obrazovky pro vzdálené účastníky, Prozkoumejte tyto `videoStreams` kolekce:
 
 ```js
-
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.type;
 ```

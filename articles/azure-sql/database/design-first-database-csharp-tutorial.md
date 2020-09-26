@@ -10,12 +10,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 07/29/2019
-ms.openlocfilehash: 3cf73816b89d0a89ff8066fe45ceaece60c230b8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe4bcb10db33c6f68abeb779e668726fc1a59345
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321726"
+ms.locfileid: "91360238"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>Kurz: návrh relační databáze v Azure SQL Database C&#x23; a ADO.NET
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -82,7 +82,7 @@ Pomocí těchto kroků vytvořte prázdnou databázi.
 
 9. Na panelu nástrojů klikněte na **Oznámení** a sledujte proces nasazení.
 
-   ![oznámení](./media/design-first-database-csharp-tutorial/notification.png)
+   ![Snímek obrazovky zobrazuje oznámení v Azure Portal s probíhajícím nasazením.](./media/design-first-database-csharp-tutorial/notification.png)
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Vytvoření pravidla brány firewall protokolu IP na úrovni serveru
 

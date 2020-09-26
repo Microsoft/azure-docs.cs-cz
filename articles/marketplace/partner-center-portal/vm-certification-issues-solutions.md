@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 5b6d1ee41434d8aebac81d38ced9cadd93e51ba8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6d7f9ccd1c87b6105988a1f5d23700cb58693062
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181438"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296446"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problémy a řešení během certifikace virtuálních počítačů 
 
@@ -21,7 +21,7 @@ Když publikujete image virtuálního počítače do Azure Marketplace, tým Azu
 Tento článek vysvětluje běžné chybové zprávy během publikování imagí virtuálních počítačů společně se souvisejícími řešeními.
 
 > [!NOTE]
-> Pokud máte dotazy nebo připomínky ke zlepšení, obraťte se na [podporu partnerského centra](https://partner.microsoft.com/support/v2/?stage=1).
+> Pokud máte dotazy nebo připomínky ke zlepšení, kontaktujte prosím [podporu partnerského centra](https://partner.microsoft.com/support/v2/?stage=1).
 
 ## <a name="approved-base-image"></a>Schválená základní image
 
@@ -33,6 +33,9 @@ Chcete-li tento problém vyřešit, načtěte obrázek z Azure Marketplace a pro
 
 - [Image Linux](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Bitové kopie systému Windows](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
+
+> [!Note]
+> Pokud používáte základní image Linux, která není z webu Marketplace, můžete posunout první oddíl o 2048 KB. To umožňuje, aby neformátované místo bylo možné použít k přidání nových fakturačních informací, a umožní službě Azure začít s publikováním virtuálního počítače na Marketplace.  
 
 ## <a name="vm-extension-failure"></a>Selhání rozšíření virtuálního počítače
 
@@ -270,9 +273,12 @@ V následující tabulce najdete případné problémy, které vznikají při st
 |6|Podmíněná hlavička HTTP|Adresa URL SAS není platná.|Získejte správnou adresu URL SAS.|
 |7|Neplatný název VHD|Zkontrolujte, zda nějaké speciální znaky, například znak procenta (%) nebo uvozovky (") existují v názvu VHD.|Přejmenujte soubor VHD odebráním speciálních znaků.|
 
-## <a name="first-1-mb-partition"></a>První oddíl 1-MB
+## <a name="first-mb-2048-kb-partition-only-for-linux"></a>Prvních MB (2048 KB) oddíl (pouze pro Linux)
 
-Když odešlete VHD, ujistěte se, že první oddíl 1 MB virtuálního pevného disku je prázdný. V opačném případě se vaše žádost nezdaří.
+Když odešlete VHD, ujistěte se, že první 2048 KB virtuálního pevného disku je prázdné. V opačném případě se vaše žádost nezdařila *.
+
+>[!NOTE]
+>* U určitých speciálních imagí, jako jsou ty, které jsou postavené na základních imagích Azure pro Windows a které se vycházejí z Azure Marketplace, zkontrolujeme fakturační značku a ignorujte oddíl MB, pokud se fakturační značka vyskytuje a odpovídá našim hodnotám, které jsou k dispozici.
 
 ## <a name="default-credentials"></a>Výchozí pověření
 

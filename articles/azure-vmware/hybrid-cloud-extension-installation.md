@@ -3,18 +3,18 @@ title: Nainstalovat VMware HCX
 description: Nastavení řešení VMware HCX pro privátní cloud řešení Azure VMware
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.openlocfilehash: a101712f2d80e0d8e70d37bd5b7b08931f62ba3d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: cdeffa41db5aac597d8dfcf3a735cbeb7f0d8a8e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356549"
+ms.locfileid: "91370840"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Nainstalovat HCX pro řešení VMware pro Azure
 
 V tomto článku Vás provedeme postupy pro nastavení řešení VMWare HCX pro privátní cloud řešení Azure VMWare. HCX umožňuje migrovat úlohy VMware do cloudu a další připojené lokality prostřednictvím různých integrovaných typů migrace HCX.
 
-HCX Advanced – výchozí instalace podporuje až tři připojení lokality (v místním prostředí nebo cloudu do cloudu). Pokud potřebujete víc než tři připojení lokalit, zákazníci mají možnost povolit doplněk HCX Enterprise prostřednictvím podpory, která je aktuálně ve verzi Preview. HCX Enterprise přináší zákazníkům po obecné dostupnosti další poplatky (GA), ale poskytuje [Další funkce](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
+HCX Advanced – výchozí instalace podporuje až tři připojení lokality (v místním prostředí nebo cloudu do cloudu). Pokud potřebujete víc než tři připojení k webu nebo HCX [podnikové funkce](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) , zákazníci mají možnost povolit doplněk HCX Enterprise prostřednictvím podpory, která je aktuálně ve verzi Preview. HCX EE je k dispozici ve službě AVS jako funkce nebo služba ve verzi Preview. Zatímco HCX EE pro službu AVS je ve verzi Preview, je to bezplatná funkce nebo služba a podléhá podmínkám a ujednáním služby ve verzi Preview. Jakmile bude služba HCX EE v GA, dostanete 30denní oznámení o tom, že účtování bude přepnuto. Také budete mít možnost přepnout/odhlásit službu.
 
 
 [Před zahájením, před začátkem](#before-you-begin), [požadavky na verzi softwaru](#software-version-requirements)a [požadavky nejprve důkladně](#prerequisites) prostudujte. 
@@ -63,17 +63,15 @@ Na součástech infrastruktury musí běžet požadovaná minimální verze.
 
 * Místní HCX IX a NE zařízení by měly být schopné dosáhnout infrastruktury vCenter a ESXi.
 
-* Aby bylo možné nasadit zařízení WAN Interconnect kromě bloku síťových adres CIDR/22 používaného pro nasazení SDDC v Azure Portal, HCX vyžaduje blok/29. Nezapomeňte tento požadavek zvážit do plánování vaší sítě.
+* Aby bylo možné nasadit zařízení WAN Interconnect, konkrétní rozsahy CIDR jsou již od zákazníka přiděleny \ 22 pro vytvoření privátního cloudu.
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>Nasazení HCX vajíček v místním prostředí VMware
 
 1. Přihlaste se ke službě Azure VMware Solution Manager HCX Manager na `https://x.x.x.9` portu 443 s přihlašovacími údaji uživatele **cloudadmin** a pak pokračujte na **podporu**.
 
-1. Vyberte odkaz ke stažení pro soubor VMware HCX vajíček. 
+1. Vyberte odkaz ke stažení pro soubor VMware HCX vajíček, který se má nasadit do vCenter.
 
-1. Přihlaste se k Azure VMware Solution SDDC vCenter a vyberte **HCX**.
-   
-1. Přejít na místní Server vCenter a vybrat šablonu OVF, která se nasadí do místního serveru vCenter.  
+1. Přejít na místní Server vCenter a vybrat nově staženou šablonu OVF pro nasazení do místního serveru vCenter.  
 
    :::image type="content" source="media/hybrid-cloud-extension-installation/select-template.png" alt-text="Pak přejdete na místní Server vCenter a vyberte šablonu OVF, která se nasadí do místního serveru vCenter.":::
 

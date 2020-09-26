@@ -11,10 +11,8 @@
       href: publish-service-catalog-app.md
     - name: Nasazení aplikace katalogu služeb
       href: deploy-service-catalog-quickstart.md
-- name: Výukové kurzy
+- name: Kurzy
   items:
-    - name: Publikování aplikace Marketplace
-      href: publish-marketplace-app.md
     - name: Vytvoření spravované aplikace s využitím vlastního zprostředkovatele
       href: tutorial-create-managed-app-with-custom-provider.md
 - name: ukázky
@@ -41,6 +39,8 @@
           href: create-uidefinition-overview.md
         - name: Otestování rozhraní portálu
           href: test-createuidefinition.md
+        - name: Vytvoření nabídky aplikací Azure
+          href: ../../marketplace/partner-center-portal/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
         - name: Vyžádání přístupu za běhu
           href: request-just-in-time-access.md
         - name: Použití existující virtuální sítě

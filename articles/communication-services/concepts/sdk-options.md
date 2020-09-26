@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f39aa76e4bd2ce3d298e555f56b09d0218ef0862
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2d5637be547b28c231ef757b5dd4355692dab88f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935340"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318819"
 ---
 # <a name="client-libraries-and-rest-apis"></a>Klientské knihovny a rozhraní REST API
 
@@ -28,8 +28,8 @@ Funkce služby Azure Communication Services jsou koncepčně rozdělené do šes
 | ---------------------- | --------------------- | ---|-------------------------- | --------------------------------------------------------------------------- |
 | Azure Resource Manager | REST | Otevřít            | Azure. ResourceManager. Communication | Zřizování a Správa prostředků komunikačních služeb             |
 | Společné                 | REST | Otevřít               | Azure. Communication. Common          | Poskytuje základní typy pro jiné klientské knihovny. |
-| Správa         | REST |                | Azure. Communications. Administration  | Spravujte uživatele, přístupové tokeny a telefonní čísla, přidělte STUN a zapněte servery. |
-| Prostřednictvím                   | REST s proprietárními signály | Otevřít s zavřeným balíčkem zdrojového signálu    | Azure. Communication. chat            | Přidání textu založeného na textu v reálném čase do vašich aplikací  |
+| Správa         | REST | Otevřít               | Azure. Communications. Administration  | Spravujte uživatele, přístupové tokeny a telefonní čísla, přidělte STUN a zapněte servery. |
+| Chat                   | REST s proprietárními signály | Otevřít s zavřeným balíčkem zdrojového signálu    | Azure. Communication. chat            | Přidání textu založeného na textu v reálném čase do vašich aplikací  |
 | SMS                    | REST | Otevřít              | Azure. Communication. SMS             | Odesílání a příjem zpráv SMS |
 | Videohovory                | Proprietární přenos | Uzavřená |Azure. Communication. Calling         | Využití hlasu, videa, sdílení obrazovky a dalších možností komunikace dat v reálném čase          |
 
@@ -37,12 +37,12 @@ Funkce služby Azure Communication Services jsou koncepčně rozdělené do šes
 
 Pokyny k dostupnosti a časové osy pro jednotlivé balíčky klientských knihoven jsou podrobně popsané níže. [Průvodce Azure](https://azure.microsoft.com/updates/) obsahuje další informace o nadcházejících funkcích.
 
-| Oblast           | JavaScript | .NET | Python | Java | SWIFT nebo obj-C | Java (Android) | Jiné                          |
+| Oblast           | JavaScript | .NET | Python | Java | SWIFT nebo obj-C | Java (Android) | Další                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
 | Azure Resource Manager | ✔️         | ✔️    | ✔️      | -    | -              | *Zatím nepodporováno*  | Rozhraní příkazového řádku Azure *ještě není podporované* |
 | Společné         | ✔️         | ✔️    | -      | ✔️   | ✔️            | ✔️             | -                              |
 | Správa | ✔️         | ✔️    | ✔️      | ✔️   | -              | -              | Rozhraní příkazového řádku                            |
-| Prostřednictvím           | ✔️         | ✔️    | ✔️      | ✔️   | *Zatím nepodporováno*  | *Zatím nepodporováno*  | -                              |
+| Chat           | ✔️         | ✔️    | ✔️      | ✔️   | *Zatím nepodporováno*  | *Zatím nepodporováno*  | -                              |
 | SMS            | ✔️         | ✔️    | ✔️      | ✔️   | -              | -              | -                              |
 | Videohovory        | ✔️         | -      | -      | -     | (Obj-C) ✔️     | ✔️            | -                              |
 

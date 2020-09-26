@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/18/2020
-ms.openlocfilehash: fef873d5122fefb48c85281f71e206f95f3fbe48
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: dd59d0b09a28febfc0afe35d9f008ba0e0ee19ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986725"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295710"
 ---
 # <a name="server-group-size"></a>Velikost skupiny serverů
 
@@ -26,13 +26,13 @@ Velikost skupiny serverů, s ohledem na počet uzlů a jejich hardwarovou kapaci
 
 Pro ty, které se migrují na Citus (a) z existující instance databáze PostgreSQL s jedním uzlem, doporučujeme vybrat cluster, ve kterém je celkový počet pracovních virtuální jádraů a paměti RAM v celkovém rozsahu stejný jako původní instance. V takových scénářích jsme viděli 3x vylepšení výkonu, protože horizontálního dělení vylepšuje využití prostředků a povoluje menší indexy atd.
 
-Počet virtuální jádra vyžadovaných pro uzel koordinátora závisí na stávajícím zatížení (propustnost zápisu/čtení). Uzel koordinátora nevyžaduje jako pracovní uzly tolik paměti RAM, ale přidělování paměti RAM se určuje na základě počtu vCore (jak je popsáno v [možnostech konfigurace pro škálování na úrovni](concepts-hyperscale-configuration-options.md)cloudu), takže počet Vcore je v podstatě reálné rozhodnutí.
+Počet virtuální jádra vyžadovaných pro uzel koordinátora závisí na stávajícím zatížení (propustnost zápisu/čtení). Uzel koordinátora nevyžaduje jako pracovní uzly tolik paměti RAM, ale přidělování paměti RAM se určuje na základě počtu vCore (jak je popsáno v [možnostech konfigurace Citus)](concepts-hyperscale-configuration-options.md), takže počet Vcore je v podstatě skutečným rozhodnutím.
 
 ### <a name="real-time-analytics-use-case"></a>Případ použití analýzy v reálném čase
 
 Total virtuální jádra: při práci s daty v paměti RAM můžete očekávat lineární vylepšení výkonu na úrovni Citus (s poměrem k počtu jader pracovních procesů). Pro určení správného počtu virtuální jádra pro vaše potřeby zvažte aktuální latenci pro dotazy v databázi s jedním uzlem a požadovanou latenci v rámci škálování (Citus). Aktuální latenci vydělte požadovanou latencí a výsledek zaokrouhlete.
 
-Pracovní paměť RAM: Ideální by bylo zajistit dostatek paměti, aby se do ní vešla pracovní sady. Typ dotazů, které vaše aplikace používá, ovlivňuje požadavky na paměť. Pokud chcete zjistit, kolik paměti vyžaduje, můžete spustit příkaz vysvětlit analyzovat na dotazu. Pamatujte, že virtuální jádra a paměť RAM se škálují společně, jak je popsáno v článku [Možnosti konfigurace pro škálování na úrovni](concepts-hyperscale-configuration-options.md) .
+Pracovní paměť RAM: Ideální by bylo zajistit dostatek paměti, aby se do ní vešla pracovní sady. Typ dotazů, které vaše aplikace používá, ovlivňuje požadavky na paměť. Pokud chcete zjistit, kolik paměti vyžaduje, můžete spustit příkaz vysvětlit analyzovat na dotazu. Pamatujte na to, že virtuální jádra a paměť RAM se škálují společně, jak je popsáno v článku [Možnosti konfigurace pro Citus (AutoScale)](concepts-hyperscale-configuration-options.md) .
 
 ## <a name="scale-a-hyperscale-citus-server-group"></a>Škálování skupiny serverů Citus (Scale-Scale)
 

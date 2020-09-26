@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5cf1181c41af1edc752205f4477f18b78680f484
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 66e0ac622479d38d2e2a3cbf499bb7900251571d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81253998"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359387"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Azure CDN
 
@@ -80,7 +80,7 @@ Pokud chcete povolit HTTPS pro vlastní doménu, postupujte následovně:
 
 4. V seznamu vlastních domén vyberte vlastní doménu, pro kterou chcete povolit HTTPS.
 
-    ![Seznam vlastních domén](./media/cdn-custom-ssl/cdn-custom-domain.png)
+    ![Snímek obrazovky zobrazující stránku vlastní doména s možností použít vlastní certifikát](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
     Zobrazí se stránka **Vlastní doména**.
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: b98406984f2c9f2adfca030369a6ea3d47a786f3
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: c7ddff70d24fe87380c4bf1439811042418ac76a
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762773"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369565"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>Kurz: Vytvoření aplikace video Analytics – objekt a detekce pohybu v Azure IoT Central
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření šablony zařízení pro zařízení IoT Edge brány
 > * Přidání zařízení brány do aplikace IoT Central
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení této série kurzů potřebujete:
 
@@ -119,7 +119,7 @@ Později v tomto kurzu při konfiguraci IoT Edge brány potřebujete některá k
 
 V části **Správa** vyberte **svou aplikaci** a poznamenejte si **adresu URL aplikace** a **ID aplikace** v souboru *scratchpad.txt* :
 
-:::image type="content" source="./media/tutorial-video-analytics-create-app/administration.png" alt-text="Správa":::
+:::image type="content" source="./media/tutorial-video-analytics-create-app/administration.png" alt-text="Snímek obrazovky se zobrazí v podokně Správa stránky video Analytics se zvýrazněnou možností aplikace U R L a aplikace I D.":::
 
 Vyberte **tokeny API** a vygenerujte nový token s názvem **LVAEdgeToken** pro roli **operátora** :
 
@@ -250,7 +250,7 @@ V šabloně zařízení **brány lva Edge** v části **moduly/lva Edge Gateway*
 |Detektor pohybu LVA Edge   |Použijte výchozí.   |Zařízení detektoru pohybu LVA Edge |
 |Detektor objektu LVA Edge   |Použijte výchozí.   |Zařízení LVA Edge pro detektor objektů |
 
-Pak vyberte **Uložit**.
+Potom vyberte **Uložit**.
 
 :::image type="content" source="media/tutorial-video-analytics-create-app/relationships.png" alt-text="Přidat relace":::
 

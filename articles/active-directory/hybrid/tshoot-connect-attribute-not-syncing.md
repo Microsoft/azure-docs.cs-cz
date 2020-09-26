@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1111b56a08343f1e12c3b2d582e350907ab37b46
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: a6df1347eab57a6971fe2e39c0a55869c8f23939
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276027"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317483"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Řešení potíží s atributem, který se nesynchronizuje v Azure AD Connect
 
@@ -67,7 +67,7 @@ Než prozkoumáte problémy se synchronizací atributů, Podívejme se na **Azur
 
 * Dvojitým kliknutím na **konektor služby Active Directory** zobrazíte atributy **prostoru konektoru** . Klikněte na tlačítko **Náhled** . v následujícím dialogovém okně klikněte na tlačítko **vygenerovat náhled** .
 
-  ![Atributy prostoru konektoru](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
+  ![Snímek obrazovky zobrazující obrazovku vlastností objektu prostoru konektoru s zvýrazněným tlačítkem náhledu](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
 
 * Nyní klikněte na **tok importovaného atributu**, který ukazuje tok atributů z **prostoru konektoru služby Active Directory do úložiště** **Metaverse**. Sloupec **pravidlo synchronizace** zobrazuje, které **pravidlo synchronizace** přispělo k tomuto atributu. Sloupec **zdroj dat** zobrazuje atributy z **prostoru konektoru**. Sloupec **atributu Metaverse** zobrazuje atributy v **úložišti Metaverse**. Zde můžete vyhledat atribut, který zde není synchronizován. Pokud zde atribut nenajdete, není to namapováno a je třeba vytvořit nové vlastní **synchronizační pravidlo** pro mapování atributu.
 
@@ -75,7 +75,7 @@ Než prozkoumáte problémy se synchronizací atributů, Podívejme se na **Azur
 
 * Kliknutím na **tok atributů exportu** v levém podokně zobrazíte tok atributů z úložiště **Metaverse** zpátky do **prostoru konektoru služby Active Directory** pomocí **pravidel odchozí synchronizace**.
 
-  ![Atributy prostoru konektoru](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
+  ![Snímek obrazovky, který zobrazuje tok atributů z úložiště metaverse zpátky do prostoru konektoru služby Active Directory pomocí pravidel odchozí synchronizace.](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
 
 * Podobně můžete zobrazit objekt **prostoru konektoru Azure Active Directory** a můžete vygenerovat **Náhled** pro zobrazení toku atributů z úložiště **Metaverse** do **prostoru konektoru** a naopak, což vám umožní zjistit, proč se atribut nesynchronizuje.
 

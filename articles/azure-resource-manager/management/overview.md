@@ -4,12 +4,12 @@ description: Popisuje, jak Azure Resource Manager využívat k nasazení, správ
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 2dc33093df0d9bc0bd75410bac8d200fe6555257
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f78b6015846253d79020752522c10af96839a854
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293944"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372268"
 ---
 # <a name="what-is-azure-resource-manager"></a>Co je Azure Resource Manager?
 
@@ -49,7 +49,7 @@ Pomocí Správce prostředků můžete:
 
 * Definujte závislosti mezi prostředky tak, aby byly nasazeny ve správném pořadí.
 
-* Použijte řízení přístupu ke všem službám, protože Access Control na základě rolí je nativně integrovaná do platformy pro správu.
+* Použijte řízení přístupu pro všechny služby, protože řízení přístupu na základě role Azure (Azure RBAC) je nativně integrované do platformy pro správu.
 
 * Použijte značky pro prostředky k logickému uspořádání všech prostředků v rámci vašeho předplatného.
 
@@ -83,7 +83,7 @@ Při definování skupin prostředků byste měli vzít v úvahu některé důle
 
    Pokud je oblast skupiny prostředků dočasně nedostupná, nemůžete aktualizovat prostředky ve skupině prostředků, protože metadata nejsou k dispozici. Prostředky v jiných oblastech budou pořád fungovat podle očekávání, ale nemůžete je aktualizovat. Další informace o vytváření spolehlivých aplikací najdete v tématu [navrhování spolehlivých aplikací Azure](/azure/architecture/checklist/resiliency-per-service).
 
-* Skupinu prostředků lze využít k určení rozsahu řízení přístupu pro akce správy. Pokud chcete spravovat skupinu prostředků, můžete přiřadit [zásady Azure](../../governance/policy/overview.md), [role RBAC](../../role-based-access-control/role-assignments-portal.md)nebo [zámky prostředků](lock-resources.md).
+* Skupinu prostředků lze využít k určení rozsahu řízení přístupu pro akce správy. Pokud chcete spravovat skupinu prostředků, můžete přiřadit [zásady Azure](../../governance/policy/overview.md), [role Azure](../../role-based-access-control/role-assignments-portal.md)nebo [zámky prostředků](lock-resources.md).
 
 * Značky můžete [použít](tag-resources.md) pro skupinu prostředků. Prostředky ve skupině prostředků tyto značky nedědí.
 

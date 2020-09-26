@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 66335548381a6f7e3ebf93c97eb212255639644c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604083"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280554"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Rychlý Start: Vytvoření první statické webové aplikace v Azure Portal
 
@@ -37,9 +37,9 @@ Teď, když je úložiště vytvořené, můžete z Azure Portal vytvořit stati
 1. Vybrat **statické Web Apps (Náhled)**
 1. Vyberte **Vytvořit**.
 
-Na kartě _základy_ začněte konfigurací nové aplikace a propojením s úložištěm GitHub.
+V části _základy_ začněte konfigurací nové aplikace a propojením s úložištěm GitHub.
 
-:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="Karta základy":::
+:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="Oddíl základy":::
 
 1. Výběr vašeho _předplatného Azure_
 1. Vyberte nebo vytvořte novou _skupinu prostředků_ .
