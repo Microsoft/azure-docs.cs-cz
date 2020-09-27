@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: c9483363dcf6b4a5c05d71daa75d680dd25b8308
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 54c14f1ef78694055c567ded0fdccede062605ba
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002682"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400311"
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení služby Azure Identity Management
 
@@ -41,7 +41,7 @@ Cílem tohoto článku je poskytnout přehled základních funkcí zabezpečení
 * Jednotné přihlašování
 * Reverzní proxy server
 * Multi-Factor Authentication
-* Řízení přístupu na základě role v Azure (Azure RBAC)
+* Řízení přístupu na základě role Azure (Azure RBAC)
 * Monitorování zabezpečení, výstrahy a sestavy založené na strojovém učení
 * Správa identit a přístupu uživatelů
 * Registrace zařízení
@@ -54,7 +54,7 @@ Cílem tohoto článku je poskytnout přehled základních funkcí zabezpečení
 
 SSO znamená přístup k všem aplikacím a prostředkům, které musíte udělat v podniku, a to tak, že se jednou přihlásíte pomocí jednoho uživatelského účtu. Jakmile se přihlásíte, budete mít přístup ke všem aplikacím, které potřebujete, aniž by bylo nutné je ověřit (například zadat heslo) podruhé.
 
-Mnoho organizací spoléhá na SaaS aplikace, jako je například Office 365, box a Salesforce, pro produktivitu uživatelů. Historicky zaměstnanci IT potřebují pro jednotlivé aplikace SaaS vytvářet a aktualizovat uživatelské účty a uživatelé si museli pamatovat heslo pro každou aplikaci SaaS.
+Mnoho organizací spoléhá na SaaS aplikace, jako jsou Microsoft 365, box a Salesforce, pro produktivitu uživatelů. Historicky zaměstnanci IT potřebují pro jednotlivé aplikace SaaS vytvářet a aktualizovat uživatelské účty a uživatelé si museli pamatovat heslo pro každou aplikaci SaaS.
 
 Azure AD rozšiřuje místní prostředí Active Directory do cloudu a umožňuje uživatelům používat jejich primární účet organizace k přihlašování nejen ke svým zařízením připojeným k doméně a prostředkům společnosti, ale také ke všem webovým a SaaS aplikacím, které potřebují pro své úlohy.
 
@@ -91,10 +91,10 @@ Další informace:
 
 Azure RBAC je autorizační systém založený na Azure Resource Manager, který poskytuje jemně odstupňovanou správu přístupu k prostředkům v Azure. Azure RBAC umožňuje detailní kontrolu úrovně přístupu uživatelů. Můžete například omezit uživatele tak, aby spravovali jenom virtuální sítě a jiného uživatele a spravovali všechny prostředky ve skupině prostředků. Azure obsahuje několik předdefinovaných rolí, které můžete využít. V následujícím seznamu najdete čtyři základní předdefinované role. První tři se vztahují ke všem typům prostředků.
 
-- [Owner (vlastník](/azure/role-based-access-control/built-in-roles#owner) ) – má úplný přístup ke všem prostředkům, včetně práva delegovat přístup ostatním uživatelům. 
-- [Přispěvatel](/azure/role-based-access-control/built-in-roles#contributor) – může vytvářet a spravovat všechny typy prostředků Azure, ale nemůže udělovat přístup jiným uživatelům.
+- [Vlastník](/azure/role-based-access-control/built-in-roles#owner) – má plný přístup ke všem prostředkům, včetně práva delegovat přístup na ostatní uživatele. 
+- [Přispěvatel](/azure/role-based-access-control/built-in-roles#contributor) – může vytvářet a spravovat všechny typy prostředků Azure, ale nemůže udělovat přístup ostatním.
 - [Čtenář](/azure/role-based-access-control/built-in-roles#reader) – může zobrazit existující prostředky Azure.
-- [Správce přístupu uživatele](/azure/role-based-access-control/built-in-roles#user-access-administrator) – umožňuje spravovat přístup uživatelů k prostředkům Azure.
+- [Správce uživatelských přístupů](/azure/role-based-access-control/built-in-roles#user-access-administrator) – může spravovat uživatelský přístup k prostředkům Azure.
 
 Další informace:
 
@@ -147,14 +147,14 @@ Další informace:
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-Pomocí Azure AD Privileged Identity Management můžete spravovat, řídit a monitorovat své privilegované identity a přistupovat k prostředkům v Azure AD a také k dalším online služby Microsoftu, jako je třeba Office 365 a Microsoft Intune.
+Pomocí Azure AD Privileged Identity Management můžete spravovat, řídit a monitorovat své privilegované identity a přistupovat k prostředkům v Azure AD a také k dalším online služby Microsoftu, jako je třeba Microsoft 365 a Microsoft Intune.
 
-Uživatelé někdy potřebují provádět privilegované operace v prostředcích Azure nebo Office 365 nebo v jiných aplikacích SaaS. To často znamená, že organizace musí uživatelům udělit trvalý privilegovaný přístup ve službě Azure AD. Takový přístup je rostoucí bezpečnostní riziko pro prostředky hostované v cloudu, protože organizace nemůžou dostatečně monitorovat, co dělají uživatelé s oprávněními správce. Kromě toho platí, že pokud dojde k ohrožení bezpečnosti uživatelského účtu s privilegovaným přístupem, může toto porušení ovlivnit celkové cloudové zabezpečení organizace. Azure AD Privileged Identity Management pomáhá zmírnit toto riziko.
+Uživatelé někdy potřebují provádět privilegované operace v Azure nebo Microsoft 365ch prostředcích nebo v jiných aplikacích SaaS. To často znamená, že organizace musí uživatelům udělit trvalý privilegovaný přístup ve službě Azure AD. Takový přístup je rostoucí bezpečnostní riziko pro prostředky hostované v cloudu, protože organizace nemůžou dostatečně monitorovat, co dělají uživatelé s oprávněními správce. Kromě toho platí, že pokud dojde k ohrožení bezpečnosti uživatelského účtu s privilegovaným přístupem, může toto porušení ovlivnit celkové cloudové zabezpečení organizace. Azure AD Privileged Identity Management pomáhá zmírnit toto riziko.
 
 Pomocí Azure AD Privileged Identity Management můžete:
 
 * Podívejte se, kteří uživatelé jsou správci služby Azure AD.
-* Povolit přístup pro správu JIT (just-in-time) na vyžádání ke službám Microsoftu, jako je třeba Office 365 a Intune.
+* Povolit přístup pro správu JIT (just-in-time) na vyžádání ke službám Microsoftu, jako je například Microsoft 365 a Intune.
 * Získejte sestavy o historii přístupu správce a změnách v přiřazeních správce.
 * Získejte výstrahy týkající se přístupu k privilegované roli.
 
@@ -174,7 +174,7 @@ Další informace:
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Hybridní Správa identit/Azure AD Connect
 
-Řešení pro správu identit od Microsoftu pokrývá místní i cloudové funkce a vytvářejí jedinou identitu uživatele pro ověřování a autorizaci u všech prostředků bez ohledu na umístění. Tomu se říká hybridní identita. Azure AD Connect je nástroj od Microsoftu, jehož účelem je splnit a zajistit cíle hybridní identity. To umožní poskytovat společnou identitu pro uživatele pro aplikace Office 365, Azure a SaaS integrované s Azure AD. Má následující funkce:
+Řešení pro správu identit od Microsoftu pokrývá místní i cloudové funkce a vytvářejí jedinou identitu uživatele pro ověřování a autorizaci u všech prostředků bez ohledu na umístění. Tomu se říká hybridní identita. Azure AD Connect je nástroj od Microsoftu, jehož účelem je splnit a zajistit cíle hybridní identity. Umožňuje zajistit pro vaše uživatele společnou identitu pro Microsoft 365, Azure a aplikace SaaS integrované s využitím Azure AD. Má následující funkce:
 
 * Synchronizace
 * Integrace AD FS a federace

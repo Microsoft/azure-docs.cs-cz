@@ -7,16 +7,16 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: e0e152b3c0e10c34bc6213ddf867b79c58d1d767
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9b10778e665675e9e033953e2a8b9df16dd636d3
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832973"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400770"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Správa e-mailů, kontaktů a kalendářů v Office 365 Outlooku s využitím Azure Logic Apps
 
-Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Office 365 Outlook](/connectors/office365connector/)můžete vytvářet automatizované úlohy a pracovní postupy, které spravují účet Office 365 pomocí vytváření Logic Apps. Tyto úlohy můžete automatizovat například takto:
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Office 365 Outlook](/connectors/office365connector/)můžete vytvářet automatizované úlohy a pracovní postupy, které spravují svůj pracovní nebo školní účet pomocí vytváření Logic Apps. Tyto úlohy můžete automatizovat například takto:
 
 * Získání, odeslání a odpověď na e-mail. 
 * Naplánujte schůzky v kalendáři.
@@ -27,13 +27,13 @@ Libovolný Trigger můžete použít ke spuštění pracovního postupu, napří
 > [!NOTE]
 > K automatizaci úloh pro @outlook.com @hotmail.com účet nebo použijte [konektor Outlook.com](../connectors/connectors-create-api-outlook.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-* [Účet Office 365](https://www.office.com/)
+* [Pracovní nebo školní účet](https://www.office.com/)
 
-* Aplikace logiky, ke které chcete získat přístup k účtu Office 365 Outlook. Abyste mohli pracovní postup spustit pomocí triggeru Office 365 Outlooku, musíte mít [prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Chcete-li do pracovního postupu přidat akci sady Office 365 Outlook, aplikace logiky musí mít již Trigger.
+* Aplikace logiky, ke které chcete získat přístup k pracovnímu nebo školnímu účtu. Abyste mohli pracovní postup spustit pomocí triggeru Office 365 Outlooku, musíte mít [prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Chcete-li do pracovního postupu přidat akci sady Office 365 Outlook, aplikace logiky musí mít již Trigger.
 
 ## <a name="add-a-trigger"></a>Přidání triggeru
 
@@ -45,7 +45,7 @@ Libovolný Trigger můžete použít ke spuštění pracovního postupu, napří
    
    ![Výběr triggeru pro spuštění aplikace logiky](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
-1. Pokud se zobrazí výzva k přihlášení, zadejte přihlašovací údaje pro Office 365, aby se vaše aplikace logiky mohla připojit k vašemu účtu. V opačném případě, pokud vaše připojení již existuje, zadejte informace o vlastnostech triggeru.
+1. Pokud se zobrazí výzva k přihlášení, zadejte své pracovní nebo školní přihlašovací údaje, aby se vaše aplikace logiky mohla připojit k vašemu účtu. V opačném případě, pokud vaše připojení již existuje, zadejte informace o vlastnostech triggeru.
 
    > [!NOTE]
    > Vaše připojení nevyprší, dokud nebude zrušeno, a to ani v případě, že změníte přihlašovací údaje pro přihlášení. Další informace najdete v tématu [konfigurovatelné životnosti tokenů v Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md).
@@ -78,7 +78,7 @@ Teď přidejte akci, která se spustí po aktivování triggeru. Můžete např�
 
    ![Vyberte akci, která se má spustit v aplikaci logiky.](./media/connectors-create-api-office365-outlook/office365-actions.png) 
 
-1. Pokud se zobrazí výzva k přihlášení, zadejte přihlašovací údaje pro Office 365, aby se vaše aplikace logiky mohla připojit k vašemu účtu. V opačném případě, pokud vaše připojení již existuje, zadejte informace o vlastnostech akce.
+1. Pokud se zobrazí výzva k přihlášení, zadejte své pracovní nebo školní přihlašovací údaje, aby se vaše aplikace logiky mohla připojit k vašemu účtu. V opačném případě, pokud vaše připojení již existuje, zadejte informace o vlastnostech akce.
 
    > [!NOTE]
    > Vaše připojení nevyprší, dokud nebude zrušeno, a to ani v případě, že změníte přihlašovací údaje pro přihlášení. Další informace najdete v tématu [konfigurovatelné životnosti tokenů v Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md).

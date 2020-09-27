@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: b7cf0d35ae610c3f9fe477267e28e5449459148b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 334cbef7460306ef2954881a1cab918573e1e371
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924576"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400634"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Nastavení zotavení po havárii VMware v prostředí s více tenantůmi pomocí programu Cloud Solution Provider (CSP)
 
-[Program CSP](https://partner.microsoft.com/cloud-solution-provider) podporuje lepší scénáře pro cloudové služby Microsoftu, včetně Office 365, Enterprise Mobility Suite a Microsoft Azure. U CSP vznikne klient s koncovými vztahy se zákazníky a stane se primárním kontaktním bodem vztahu. Partneři můžou nasazovat předplatná Azure pro zákazníky a kombinovat předplatná s vlastními přidanými nabídkami přizpůsobených hodnot.
+[Program CSP](https://partner.microsoft.com/cloud-solution-provider) podporuje lepší scénáře pro cloudové služby Microsoftu, včetně Microsoft 365, Enterprise Mobility Suite a Microsoft Azure. U CSP vznikne klient s koncovými vztahy se zákazníky a stane se primárním kontaktním bodem vztahu. Partneři můžou nasazovat předplatná Azure pro zákazníky a kombinovat předplatná s vlastními přidanými nabídkami přizpůsobených hodnot.
 
 S [Azure Site Recovery](site-recovery-overview.md)můžou jako partneři spravovat zotavení po havárii pro zákazníky přímo prostřednictvím CSP. Alternativně můžete použít CSP k nastavení Site Recovery prostředí a zákazníkům umožnit správu vlastních potřeb pro zotavení po havárii v samoobslužné službě. V obou scénářích jsou partneři spojení mezi Site Recovery a jejich zákazníky. Partneři vyplní vztah zákazníka a účtují zákazníky za využití Site Recovery.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 05/30/2019
-ms.openlocfilehash: 6fca3429ab96a63b01eaa7e9d1f0ae83dc46e9c7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 246fbcd9bc72683e41489daf105f174f9380c029
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119748"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400260"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Pracovní účty společnosti a partnerské Centrum
 
@@ -20,7 +20,7 @@ Partnerské centrum používá pracovní účty společnosti, označované také
 
 ## <a name="check-whether-your-company-already-has-a-work-account"></a>Ověřte, jestli vaše společnost už má pracovní účet.
 
-Pokud se vaše společnost přihlásila k odběru cloudové služby Microsoftu, jako je Azure, Microsoft Intune nebo Office 365, pak už máte pracovní e-mailový účet (označovaný také jako Azure Active Directory tenant), který se dá použít s partnerským centrem.
+Pokud se vaše společnost přihlásila k odběru cloudové služby Microsoftu, jako je Azure, Microsoft Intune nebo Microsoft 365, pak už máte pracovní e-mailový účet domény (označovaný také jako tenant Azure Active Directory), který se dá použít s partnerským centrem.
 
 Pomocí těchto kroků zkontrolujete:
 1. Přihlaste se na portál pro správu Azure na adrese https://portal.azure.com .
@@ -37,7 +37,7 @@ Než se rozhodnete použít stávající pracovní účet, vezměte v úvahu, ko
 
 Chcete-li vytvořit nový pracovní účet pro vaši společnost, postupujte podle následujících kroků. Možná budete muset požádat o pomoc od osoby, která má oprávnění správce na účtu Microsoft Azure vaší společnosti.
 
-1. Přihlaste se na web [Microsoft Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Microsoft Azure Portal](https://portal.azure.com).
 2. V navigační nabídce vlevo vyberte **Azure Active Directory**  ->  **Uživatelé**.
 3. Vyberte **Nový uživatel** a vytvořte nový pracovní účet Azure zadáním jména a e-mailové adresy. Ujistěte se, že je **role adresáře** nastavená na hodnotu **uživatel** a v dolní části zaškrtněte políčko **Zobrazit heslo** , a poznamenejte si automaticky vygenerované heslo.
 4. Výběrem **vytvořit** uložte nového uživatele.

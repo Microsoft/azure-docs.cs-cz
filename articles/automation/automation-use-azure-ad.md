@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak používat Azure AD v rámci Azur
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: c17c9cdc02c87037a39b8d6029bc4506afa8ad28
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd1f977b548c2b8e7980709ea125c07e22b1fa2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064394"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400668"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Použití Azure AD k ověření v Azure
 
@@ -21,7 +21,7 @@ Službu Azure AD můžete povolit prostřednictvím následujících modulů Pow
 
 * Azure Active Directory PowerShell pro Graph (AzureRM and AZ moduls). Azure Automation se dodává s modulem AzureRM a jeho nedávným upgradem, a to pomocí modulu AZ Module. Funkce zahrnují neinteraktivní ověřování do Azure pomocí ověřování na základě přihlašovacích údajů uživatelů Azure AD (OrgId). Viz [Azure AD 2.0.2.76](https://www.powershellgallery.com/packages/AzureAD/2.0.2.76).
 
-* Microsoft Azure Active Directory prostředí Windows PowerShell (modul MSOnline). Tento modul umožňuje spolupráci s Microsoft Online, včetně Office 365.
+* Microsoft Azure Active Directory prostředí Windows PowerShell (modul MSOnline). Tento modul umožňuje spolupráci s Microsoft Online, včetně Microsoft 365.
 
 >[!NOTE]
 >PowerShell Core nepodporuje modul MSOnline. Pokud chcete použít rutiny modulu, musíte je spustit z Windows PowerShellu. Doporučujeme místo modulu MSOnline používat novější Azure Active Directory PowerShellu pro moduly grafů. 
@@ -46,7 +46,7 @@ Předtím, než na svém počítači nainstalujete moduly Azure AD:
 ### <a name="install-the-msonline-module"></a>Instalace modulu MSOnline
 
 >[!NOTE]
->Chcete-li nainstalovat modul MSOnline, musíte být členem role správce systému Office 365. Další informace najdete v tématu [o rolích správce](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide).
+>Chcete-li nainstalovat modul MSOnline, musíte být členem role správce. Další informace najdete v tématu [o rolích správce](/microsoft-365/admin/add-users/about-admin-roles).
 
 1. Ujistěte se, že je v počítači povolená funkce Microsoft .NET Framework 3.5. x. Je možné, že je v počítači nainstalovaná novější verze, ale zpětná kompatibilita se staršími verzemi .NET Framework může být povolená nebo zakázaná. 
 

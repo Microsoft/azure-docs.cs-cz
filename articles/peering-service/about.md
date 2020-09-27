@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 548d4f90bd9632e4807547120ac1be589668e8fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03ece391b6f33b47f34705cec1c5907602ac7b23
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872033"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400175"
 ---
 # <a name="azure-peering-service-overview"></a>Přehled služby Azure peering
 
-Azure peering Service je síťová služba, která vylepšuje připojení zákazníků ke cloudovým službám Microsoftu, jako jsou Office 365, Dynamics 365, software jako služba (SaaS), Azure nebo jakékoli služby Microsoftu přístupné prostřednictvím veřejného Internetu. Společnost Microsoft spolupracuje s poskytovateli poskytovatelů internetových služeb (ISP), internetovými partnery (IXPs) a softwarově definovanými poskytovateli cloudových propojení (SDCI) po celém světě, aby poskytovala spolehlivé a vysoce náročné veřejné připojení s optimálním směrováním od zákazníka k síti Microsoftu.
+Azure peering Service je síťová služba, která vylepšuje připojení zákazníků ke cloudovým službám Microsoftu, jako jsou Microsoft 365, Dynamics 365, služby software jako služba (SaaS), Azure nebo jakékoli služby Microsoftu přístupné prostřednictvím veřejného Internetu. Společnost Microsoft spolupracuje s poskytovateli poskytovatelů internetových služeb (ISP), internetovými partnery (IXPs) a softwarově definovanými poskytovateli cloudových propojení (SDCI) po celém světě, aby poskytovala spolehlivé a vysoce náročné veřejné připojení s optimálním směrováním od zákazníka k síti Microsoftu.
 
 Se službou peering Service můžou zákazníci vybrat dobře připojeného poskytovatele služby partnera v dané oblasti. Veřejné připojení je optimalizované pro zajištění vysoké spolehlivosti a minimální latence z cloudových služeb až po umístění koncového uživatele.
 
@@ -50,7 +50,7 @@ Peering Service není produkt privátního připojení, jako je Azure ExpressRou
 
 ## <a name="background"></a>Pozadí
 
-Office 365, Dynamics 365 a jakékoli jiné služby Microsoft SaaS Services se hostují v několika datových centrech Microsoftu a dají se k nim dostat z libovolného geografického umístění. V globální síti Microsoft se nachází umístění Microsoft Edge Point-of-prezence (PoP) po celém světě, kde se může připojit k koncovému uživateli přes jejich poskytovatelé služeb. 
+Microsoft 365, Dynamics 365 a jakékoli jiné služby Microsoft SaaS Services se hostují v několika datových centrech Microsoftu a dají se k nim dostat z libovolného zeměpisného umístění. V globální síti Microsoft se nachází umístění Microsoft Edge Point-of-prezence (PoP) po celém světě, kde se může připojit k koncovému uživateli přes jejich poskytovatelé služeb. 
 
 Poskytovatelé služeb Microsoftu a partnerů zajišťují, aby přenosy pro předpony registrované s připojením služby peering Service vstoupily do nejbližšího umístění PoP Microsoft Edge v globální síti Microsoftu a ukončili je. Microsoft zajistí, aby se provoz síťových přenosů z předpon zaregistrovaných u připojení ke službě peering Service měl nejbližších umístění PoP Microsoft Edge v globální síti Microsoftu.
 

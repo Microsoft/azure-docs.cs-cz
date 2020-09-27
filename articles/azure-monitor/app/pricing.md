@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5dd1fd1209be29774d19a155b6e585fa6ebcc036
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b695205c08f9039fbf91eaeddb7622b784d81d12
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930481"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400583"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro službu Application Insights
 
@@ -264,7 +264,7 @@ Výchozí doba uchování pro Application Insights prostředky je 90 dní. Pro k
 
 Pokud chcete změnit dobu uchovávání, z prostředku Application Insights přejděte na stránku **využití a odhadované náklady** a vyberte možnost **uchování dat** :
 
-![Upravit denní limit telemetrie](./media/pricing/pricing-005.png)
+![Snímek obrazovky, který ukazuje, kde změnit dobu uchovávání dat.](./media/pricing/pricing-005.png)
 
 Když je doba uchování nižší, před odebráním nejstarší dat se zobrazí několik dní po dobu odkladu.
 

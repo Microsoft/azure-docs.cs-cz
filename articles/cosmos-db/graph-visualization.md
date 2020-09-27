@@ -1,18 +1,18 @@
 ---
 title: Vizualizace dat grafu ve Azure Cosmos DB rozhraní API Gremlin
 description: Naučte se integrovat Azure Cosmos DB data grafu s řešeními vizualizace (Linkurious Enterprise, Cambridge Intelligence).
-author: luisbosquez
-ms.author: lbosq
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 07/02/2019
-ms.openlocfilehash: 9999dad15cd02577eda85c15b67b98780a27b4a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9850af3ea2365aa73d8b9f08b2e706c79062860
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261779"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400515"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Vizualizace dat grafu uložených v Azure Cosmos DB rozhraní API Gremlin pomocí řešení pro vizualizaci dat
 
@@ -46,7 +46,7 @@ Tyto sady nástrojů vám umožňují navrhovat vysoce výkonné vizualizace gra
 
 
 ## <a name="next-steps"></a>Další kroky
- 
+
 - [Vyzkoušejte si sady nástrojů](https://cambridge-intelligence.com/try/)
 - [Přehled technologie s linkami](https://cambridge-intelligence.com/keylines/technology/)
 - [Přehled technologie pro nové grafy](https://cambridge-intelligence.com/regraph/technology/)

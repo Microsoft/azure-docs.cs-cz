@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: derekol
 Customer intent: Customer wants to measure their connection telemetry per prefix to Microsoft services with Azure Peering Service .
-ms.openlocfilehash: 163f93ab93890f27eb2a9b18cc23804595fcb822
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a12bfa042c8741814cedc70f1dcb67dedbfd331e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84872711"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400430"
 ---
 # <a name="tutorial-register-a-peering-service-connection-using-azure-powershell"></a>Kurz: registrace připojení ke službě peering Service pomocí Azure PowerShell
 
 V tomto kurzu se naučíte registrovat službu peering Service pomocí Azure PowerShell.
 
-Azure peering Service je síťová služba, která vylepšuje připojení zákazníků ke cloudovým službám Microsoftu, jako jsou Office 365, Dynamics 365, software jako služba (SaaS), Azure nebo jakékoli služby Microsoftu přístupné prostřednictvím veřejného Internetu. V tomto článku se dozvíte, jak zaregistrovat připojení služby partnerského vztahu pomocí Azure PowerShell.
+Azure peering Service je síťová služba, která vylepšuje připojení zákazníků ke cloudovým službám Microsoftu, jako jsou Microsoft 365, Dynamics 365, služby software jako služba (SaaS), Azure nebo jakékoli služby Microsoftu přístupné prostřednictvím veřejného Internetu. V tomto článku se dozvíte, jak zaregistrovat připojení služby partnerského vztahu pomocí Azure PowerShell.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) hned teď.
 
@@ -32,7 +32,7 @@ Nakonec, pokud používáte PowerShell místně, budete také muset spustit `Con
 Použijte modul Azure PowerShell k registraci a správě služby peering Service. Službu partnerského vztahu můžete zaregistrovat nebo spravovat z příkazového řádku PowerShellu nebo ve skriptech.
 
 
-## <a name="prerequisites"></a>Předpoklady  
+## <a name="prerequisites"></a>Požadavky  
 Musíte mít následující:
 
 ### <a name="azure-account"></a>Účet Azure

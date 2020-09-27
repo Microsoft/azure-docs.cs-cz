@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: dddf402455292e19bf0fcda3c50d9ce10d5888d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71099061"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400702"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Konfigurace a ověření připojení k virtuální síti nebo k síti VPN
 
@@ -182,7 +182,7 @@ Tento scénář je podporován, je-li na síti VPN typu Site-to-site mezi partne
 
 ### <a name="configure-transit-routing-in-an-expressroute-connection"></a>Konfigurace směrování přenosu v připojení ExpressRoute
 
-Azure ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes vyhrazené soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 nebo Dynamics 365. Další informace najdete v článku [Přehled ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
+Azure ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes vyhrazené soukromé připojení zajišťované poskytovatelem připojení. V ExpressRoute můžete vytvořit připojení ke cloudovým službám, jako je Microsoft Azure, Microsoft 365 a Dynamics 365. Další informace najdete v článku [Přehled ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
 
 ![ExpressRoute připojení privátního partnerského vztahu k virtuálním sítím Azure](./media/virtual-network-configure-vnet-connections/4034395_en_1.png)
 

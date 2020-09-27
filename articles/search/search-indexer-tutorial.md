@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/23/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c8647e28701316ecd7305e206918c53281deb6b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e04c7da40719f77ca478f2ce577688af773f523d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004251"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399223"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Kurz: indexování dat SQL Azure pomocí sady .NET SDK
 
@@ -30,7 +30,7 @@ Tento kurz používá jazyk C# a [sadu .NET SDK](/dotnet/api/overview/azure/sear
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/)
@@ -57,7 +57,7 @@ Pokud máte existující prostředek Azure SQL Database, můžete do něj přida
 
 1. Najděte nebo vytvořte **SQL Database**. Můžete použít výchozí hodnoty a nejnižší cenovou úroveň. Jednou z výhod vytvoření serveru je, že můžete zadat uživatelské jméno a heslo správce, které jsou potřeba k vytvoření a načtení tabulek v pozdějším kroku.
 
-   ![Stránka Nová databáze](./media/search-indexer-tutorial/indexer-new-sqldb.png "Stránka Nová databáze")
+   :::image type="content" source="media/search-indexer-tutorial/indexer-new-sqldb.png" alt-text="Stránka Nová databáze" border="false":::
 
 1. Kliknutím na tlačítko **zkontrolovat + vytvořit** nasaďte nový server a databázi. Počkejte na nasazení serveru a databáze.
 
@@ -69,7 +69,7 @@ Pokud máte existující prostředek Azure SQL Database, můžete do něj přida
 
 1. Vyberte tento soubor a klikněte na **Otevřít**. Váš skript by měl vypadat jako na následujícím snímku obrazovky:
 
-   ![Skript SQL](./media/search-indexer-tutorial/sql-script.png "Skript SQL")
+   :::image type="content" source="media/search-indexer-tutorial/sql-script.png" alt-text="Skript SQL" border="false":::
 
 1. Kliknutím na **Spustit** dotaz spusťte. V podokně výsledků by se na 3 řádcích měla zobrazit zpráva o úspěšném provedení dotazu.
 
@@ -99,7 +99,7 @@ Volání rozhraní API vyžadují adresu URL služby a přístupový klíč. Vyh
 
 1. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-   ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
+   :::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="Získání koncového bodu HTTP a přístupového klíče" border="false":::
 
 ## <a name="2---set-up-your-environment"></a>2. nastavení prostředí
 
@@ -201,7 +201,7 @@ Objekt indexeru je Platform-nezávislá, kde konfigurace, plánování a volán�
 
 Stisknutím klávesy F5 Sestavte a spusťte řešení. Program se spustí v režimu ladění. V okně konzoly se bude hlásit stav jednotlivých operací.
 
-   ![Výstup konzoly](./media/search-indexer-tutorial/console-output.png "Výstup konzoly")
+   :::image type="content" source="media/search-indexer-tutorial/console-output.png" alt-text="Výstup konzoly" border="false":::
 
 Váš kód se spouští místně v sadě Visual Studio a připojuje se k vaší vyhledávací službě v Azure, která se zase připojuje k Azure SQL Database a načítá datovou sadu. U této řady operací existuje několik potenciálních bodů selhání. Pokud se zobrazí chyba, nejdřív ověřte následující podmínky:
 
@@ -217,7 +217,7 @@ K ověření vytvoření objektu použijte Azure Portal a pak pomocí **Průzkum
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby otevřete jednotlivé seznamy a ověřte, zda je objekt vytvořen. **Indexy**, **indexery**a **zdroje dat** budou mít "hotely", "Azure-SQL-indexer" a "Azure-SQL" v uvedeném pořadí.
 
-   ![Dlaždice Indexery a Zdroje dat](./media/search-indexer-tutorial/tiles-portal.png)
+   :::image type="content" source="media/search-indexer-tutorial/tiles-portal.png" alt-text="Dlaždice Indexery a Zdroje dat" border="false":::
 
 1. Vyberte index hotelů. Na stránce hotely je jako první karta **Průzkumník vyhledávání** . 
 
@@ -225,7 +225,7 @@ K ověření vytvoření objektu použijte Azure Portal a pak pomocí **Průzkum
 
    Vrátí se tři položky ve vašem indexu jako dokumenty JSON. Průzkumník služby Search vrací dokumenty ve formátu JSON, abyste mohli zobrazit celou jejich strukturu.
 
-   ![Dotazování indexu](./media/search-indexer-tutorial/portal-search.png "Dotazování indexu")
+   :::image type="content" source="media/search-indexer-tutorial/portal-search.png" alt-text="Dotazování indexu" border="false":::
    
 1. Dále zadejte hledaný řetězec `search=river&$count=true`. 
 

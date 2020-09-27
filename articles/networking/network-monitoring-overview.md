@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e2d3f0b5abcd7a9dcd4f49c120353adacffcb31
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67672182"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399648"
 ---
 # <a name="network-monitoring-solutions"></a>Řešení monitorování sítě 
 
@@ -65,7 +65,7 @@ NPM for ExpressRoute nabízí komplexní monitorování ExpressRoute pro privát
 * Detekce síťové topologie z místního prostředí do cloudových aplikací
 * Plánování kapacity, analýza využití šířky pásma
 * Monitorování a upozorňování na primární i sekundární cestě
-* Monitorování připojení ke službám Azure, jako je například Office 365, Dynamics 365,... přes ExpressRoute
+* Monitorování připojení ke službám Azure, jako je Microsoft 365, Dynamics 365,... přes ExpressRoute
 * Zjištění degradace připojení k virtuální sítě
 
 ![Geografické mapování znázorňující přenos napříč oblastmi](./media/network-monitoring-overview/expressroute-topology-map.png) 
@@ -84,7 +84,7 @@ Díky monitorování připojení služby teď můžete testovat dostupnost aplik
 * Test dosažitelnosti aplikace z více umístění uživatelů po celém světě
 * Určení latence sítě a ztráty paketů pro vaše obchodní a SaaS aplikace
 * Určení aktivních bodů v síti, které mohou způsobovat špatný výkon aplikace
-* Pomocí integrovaných testů pro systém Microsoft Office 365, Dynamics 365, Skype pro firmy a dalších služeb Microsoftu můžete monitorovat dostupnost aplikací Office 365.
+* Monitorování dostupnosti pro Microsoft 365 aplikací pomocí integrovaných testů pro Microsoft 365, Dynamics 365, Skype pro firmy a další služby Microsoftu
 
 Další informace najdete v následujících článcích:
 

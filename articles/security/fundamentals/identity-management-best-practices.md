@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: b354fda4d23d13b8defed4381335ab147bbece5d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 69aac7dff80b7c85212602f1c03957a117628737
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835897"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400328"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy zabezpečení správy identit a řízení přístupu v Azure
 
@@ -229,7 +229,7 @@ Zabezpečení privilegovaného přístupu je důležitým prvním krokem k ochra
 
 Privilegované účty jsou účty, které spravují a spravují systémy IT. Internetoví útočníci cílí na tyto účty, aby získali přístup k datům a systémům organizace. Aby bylo možné zabezpečit privilegovaný přístup, měli byste izolovat účty a systémy od rizika vystaveného uživateli se zlými úmysly.
 
-Doporučujeme vyvinout a postupovat podle plánu zabezpečení privilegovaného přístupu proti internetovým útočníkům. Informace o vytvoření podrobného plánu pro zabezpečení identit a přístupu, které jsou spravované nebo nahlášené v Azure AD, Microsoft Azure, Office 365 a dalších cloudových službách, najdete [v popisu zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](/azure/active-directory/users-groups-roles/directory-admin-roles-secure).
+Doporučujeme vyvinout a postupovat podle plánu zabezpečení privilegovaného přístupu proti internetovým útočníkům. Informace o vytvoření podrobného plánu pro zabezpečení identit a přístupu, které jsou spravované nebo nahlášené ve službě Azure AD, Microsoft Azure, Microsoft 365 a dalších cloudových službách, najdete [v popisu zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](/azure/active-directory/users-groups-roles/directory-admin-roles-secure).
 
 Následující shrnuje osvědčené postupy, které najdete v článku [zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](/azure/active-directory/users-groups-roles/directory-admin-roles-secure):
 
@@ -240,7 +240,7 @@ Následující shrnuje osvědčené postupy, které najdete v článku [zabezpe�
 **Podrobnosti**: Odeberte všechny uživatelské účty z klíčových rolí správce (například účty Microsoft, jako je hotmail.com, live.com a Outlook.com).
 
 **Osvědčený postup**: Ujistěte se, že všechny důležité role správců mají samostatný účet pro úlohy správy, aby se zabránilo útokům phishing a dalším útokům na ohrožení oprávnění správce.
-**Podrobnosti**: Vytvořte samostatný účet správce, kterému je přiřazeno oprávnění potřebná k provádění úloh správy. Zablokovat používání těchto účtů pro správu každodenních nástrojů pro zvýšení produktivity, jako je systém Microsoft Office 365 e-mailu nebo prohlížení libovolného webu.
+**Podrobnosti**: Vytvořte samostatný účet správce, kterému je přiřazeno oprávnění potřebná k provádění úloh správy. Zablokujte používání těchto účtů pro správu každodenních nástrojů pro zvýšení produktivity, jako je Microsoft 365 e-mailu nebo prohlížení libovolného webu.
 
 **Osvědčený postup**: identifikace a kategorizace účtů, které jsou ve vysoce privilegovaných rolích.   
 **Podrobnosti**: po zapnutí Azure AD Privileged Identity Management se podívejte na uživatele, kteří jsou v globálním správci, správce privilegovaných rolí a další role s vysokou úrovní oprávnění. Odeberte všechny účty, které už v těchto rolích nepotřebujete, a zařaďte do kategorií zbývající účty, které jsou přiřazené rolím Správce:
@@ -281,7 +281,7 @@ Vyžadovat Multi-Factor Authentication Azure při přihlášení pro všechny u�
 **Podrobnosti**: má zavedený proces, který zakáže nebo odstraní účty správců, když zaměstnanci odejdou z vaší organizace.
 
 **Osvědčený postup**: pravidelné testování účtů správců pomocí současných technik útoku.
-**Podrobnosti**: k provádění reálných scénářů útoku ve vaší organizaci použijte simulátor útoku Office 365 nebo nabídku třetí strany. To vám může pomáhat najít ohrožené uživatele předtím, než dojde k reálnému útoku.
+**Podrobnosti**: Microsoft 365 simulátoru útoku nebo nabídky třetí strany ke spouštění reálných scénářů útoku ve vaší organizaci. To vám může pomáhat najít ohrožené uživatele předtím, než dojde k reálnému útoku.
 
 **Osvědčený postup**: proveďte kroky pro zmírnění nejčastěji používaných technik útoku.  
 **Podrobnosti**: [Identifikujte účty Microsoft v rolích pro správu, které je potřeba přepnout na pracovní nebo školní účty](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts) .  
@@ -294,11 +294,11 @@ Vyžadovat Multi-Factor Authentication Azure při přihlášení pro všechny u�
 
 [Vyžadovat Multi-Factor Authentication pro uživatele ve všech privilegovaných rolích a také vyexponovaných uživatelů](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
 
-[Získání zabezpečeného skóre Office 365 (při použití Office 365)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
+[Získat Microsoft 365 zabezpečeného skóre (Pokud používáte Microsoft 365)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
 
-[Přečtěte si pokyny pro zabezpečení a dodržování předpisů Office 365 (Pokud používáte Office 365).](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[Přečtěte si pokyny pro zabezpečení Microsoft 365 (Pokud používáte Microsoft 365).](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
 
-[Konfigurace monitorování aktivit Office 365 (při použití Office 365)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#configure-office-365-activity-monitoring-if-using-office-365)  
+[Konfigurace monitorování aktivity Microsoft 365 (při použití Microsoft 365)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#configure-office-365-activity-monitoring-if-using-office-365)  
 
 [Navázání vlastníků plánů pro incidenty nebo naléhavé reakce](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#establish-incidentemergency-response-plan-owners)  
 

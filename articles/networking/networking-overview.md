@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 39601da6cc8e10ba8f4a24eeddb97cfe677c031f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 364f4f38599508e4dfb455f1336d4a6978cdf5b6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651739"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400447"
 ---
 # <a name="azure-networking-services-overview"></a>Přehled služby Azure Networking Services
 
@@ -34,7 +34,7 @@ Tato část popisuje služby, které poskytují připojení mezi prostředky Azu
 |[Virtuální síť](#vnet)|Umožňuje prostředkům Azure zabezpečeně komunikovat mezi sebou, internetem a místními sítěmi.| <p>[Filtrování provozu sítě](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[Směrování provozu sítě](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[Omezení síťového přístupu k prostředkům](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[Připojení virtuálních sítí](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
 |[ExpressRoute](#expressroute)|Rozšiřuje vaše místní sítě do cloudu Microsoftu přes soukromé připojení, které usnadňuje poskytovatel připojení.|<p>[Vytvoření a úprava okruhu ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[Propojení virtuální sítě s okruhem ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[Konfigurace a Správa filtrů tras pro okruhy ExpressRoute](../expressroute/how-to-routefilter-portal.md)</p>|
 |[VPN Gateway](#vpngateway)|Odesílá zašifrovaný provoz mezi virtuální sítí Azure a místním umístěním přes veřejný Internet.|<p>[Připojení typu site-to-site](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[Připojení typu VNet-to-VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Připojení Point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
-|[Virtual WAN](#virtualwan)|Optimalizuje a automatizuje připojení větví k Azure. Oblasti Azure slouží jako centra, ke kterým se můžete připojit ke svým větvím.|<p>[Připojení Site-to-site](../virtual-wan/virtual-wan-site-to-site-portal.md), [připojení ExpressRoute](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
+|[Virtuální síť WAN](#virtualwan)|Optimalizuje a automatizuje připojení větví k Azure. Oblasti Azure slouží jako centra, ke kterým se můžete připojit ke svým větvím.|<p>[Připojení Site-to-site](../virtual-wan/virtual-wan-site-to-site-portal.md), [připojení ExpressRoute](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
 |[Azure DNS](#dns)|Hostuje domény DNS, které poskytují překlad názvů pomocí Microsoft Azure infrastruktury.|<p>[Hostování vaší domény v Azure DNS](../dns/dns-delegate-domain-azure-dns.md)</p><p>[Vytvoření záznamů DNS pro webovou aplikaci](../dns/dns-web-sites-custom-domain.md)</p> <p>[Vytvořit záznam aliasu pro Traffic Manager](../dns/tutorial-alias-tm.md)</p> <p>[Vytvořit záznam aliasu pro veřejnou IP adresu](../dns/tutorial-alias-pip.md)</p> <p>[Vytvoří záznam aliasu pro záznam prostředku zóny.](../dns/tutorial-alias-rr.md)</p>|
 |[Azure Bastion](#bastion)|Nakonfigurujte zabezpečené a bezproblémové připojení RDP/SSH k virtuálním počítačům přímo v Azure Portal přes TLS. Když se připojujete přes Azure bastionu, virtuální počítače nepotřebují veřejnou IP adresu.|<p>[Vytvoření hostitele služby Azure Bastion](../bastion/bastion-create-host-portal.md)</p><p>[Připojení pomocí SSH k virtuálnímu počítači se systémem Linux](../bastion/bastion-connect-vm-ssh.md)</p><p>[Připojení pomocí protokolu RDP k virtuálnímu počítači s Windows](../bastion/bastion-connect-vm-rdp.md)</p>|
 |[Brána NAT služby Virtual Network](#nat)|Vytvořte bránu NAT pro zajištění odchozího připojení pro virtuální počítač.|<p>[Vytvoření brány NAT](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
@@ -53,7 +53,7 @@ Azure Virtual Network (VNet) je základní stavební blok vaší privátní sít
 Další informace najdete v tématu [co je Azure Virtual Network?](../virtual-network/virtual-networks-overview.md).
 
 ### <a name="expressroute"></a><a name="expressroute"></a>ExpressRoute
-ExpressRoute umožňuje rozšiřování místních sítí do cloudu Microsoftu přes soukromé připojení, které usnadňuje poskytovatel připojení. Toto připojení je soukromé. Provoz se nepřenáší přes internet. Pomocí ExpressRoute můžete vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 nebo Dynamics 365.  Další informace najdete v tématu [co je ExpressRoute?](../expressroute/expressroute-introduction.md).
+ExpressRoute umožňuje rozšiřování místních sítí do cloudu Microsoftu přes soukromé připojení, které usnadňuje poskytovatel připojení. Toto připojení je soukromé. Provoz se nepřenáší přes internet. V ExpressRoute můžete vytvořit připojení ke cloudovým službám, jako je Microsoft Azure, Microsoft 365 a Dynamics 365.  Další informace najdete v tématu [co je ExpressRoute?](../expressroute/expressroute-introduction.md).
 
 ![Azure ExpressRoute](./media/networking-overview/expressroute-connection-overview.png)
 
@@ -65,7 +65,7 @@ Následující diagram znázorňuje více připojení VPN typu Site-to-site ke s
 
 Další informace o různých typech připojení k síti VPN najdete v tématu [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtual WAN
+### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtuální síť WAN
 Azure Virtual WAN je síťová služba, která poskytuje optimalizované a automatizované připojení větví k Azure. Oblasti Azure slouží jako centra, ke kterým se můžete připojit ke svým větvím. Můžete využít páteřní síť Azure a taky připojit větve a využít připojení k virtuální síti. Služba Azure Virtual WAN přináší dohromady mnoho služeb cloudového připojení Azure, jako je VPN typu Site-to-site, ExpressRoute, User VPN typu Point-to-site, do jediného provozního rozhraní. Připojení ke službě Azure virtuální sítě se vytváří pomocí připojení k virtuální síti. Další informace najdete v tématu [co je Azure Virtual WAN?](../virtual-wan/virtual-wan-about.md).
 
 ![Diagram virtuální sítě WAN](./media/networking-overview/virtualwan1.png)
@@ -84,7 +84,7 @@ Virtual Network NAT (překlad síťových adres) zjednodušuje připojení k Int
 ![Brána NAT služby Virtual Network](./media/networking-overview/flow-map.png)
 
 ### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a> Služba partnerských vztahů Azure
-Služba Azure peering vylepšuje připojení zákazníků ke cloudovým službám Microsoftu, jako jsou Office 365, Dynamics 365, software jako služba (SaaS), Azure nebo jakékoli služby Microsoftu přístupné prostřednictvím veřejného Internetu. Další informace najdete v tématu [co je služba Azure peering Service?](../peering-service/about.md).
+Azure peering Service vylepšuje připojení zákazníků ke cloudovým službám Microsoftu, jako jsou Microsoft 365, Dynamics 365, služby software jako služba (SaaS), Azure nebo jakékoli služby Microsoftu přístupné prostřednictvím veřejného Internetu. Další informace najdete v tématu [co je služba Azure peering Service?](../peering-service/about.md).
 
 ## <a name="application-protection-services"></a><a name="protect"></a>Služby ochrany aplikací
 
@@ -93,7 +93,7 @@ Tato část popisuje síťové služby v Azure, které vám pomůžou chránit v
 |Služba|Proč použít?|Scénář|
 |---|---|---|
 |[Ochrana DDoS](#ddosprotection) |Vysoká dostupnost pro vaše aplikace s ochranou před nadměrnými poplatky za přenosy IP|[Správa Azure DDoS Protection](../virtual-network/manage-ddos-protection.md)|
-|[Firewall webových aplikací](#waf)|<p>[Azure WAF s Application Gateway](../web-application-firewall/ag/ag-overview.md) poskytuje místní ochranu entit ve veřejných a privátních adresních prostorech.</p><p>[Azure WAF s předními dveřmi](../web-application-firewall/afds/afds-overview.md) zajišťuje ochranu v hraniční síti do veřejných koncových bodů.</p>|<p>[Konfigurace pravidel ochrany bot](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[Konfigurace vlastního kódu odpovědi](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[Konfigurovat pravidla omezení IP adres](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[Konfigurovat pravidlo omezení četnosti](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
+|[Web Application Firewall (Brána firewall webových aplikací)](#waf)|<p>[Azure WAF s Application Gateway](../web-application-firewall/ag/ag-overview.md) poskytuje místní ochranu entit ve veřejných a privátních adresních prostorech.</p><p>[Azure WAF s předními dveřmi](../web-application-firewall/afds/afds-overview.md) zajišťuje ochranu v hraniční síti do veřejných koncových bodů.</p>|<p>[Konfigurace pravidel ochrany bot](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[Konfigurace vlastního kódu odpovědi](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[Konfigurovat pravidla omezení IP adres](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[Konfigurovat pravidlo omezení četnosti](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
 |[Azure Firewall](#firewall)|Azure Firewall je spravovaná cloudová služba síťového zabezpečení, která chrání vaše prostředky ve virtuálních sítích Azure. Jedná se o plně stavovou bránu firewall jako službu s integrovanou vysokou dostupností a neomezenou škálovatelností v cloudu.|<p>[Nasazení Azure Firewall ve virtuální síti](../firewall/tutorial-firewall-deploy-portal.md)</p> <p>[– Nasazení Azure Firewall v hybridní síti](../firewall/tutorial-hybrid-ps.md)</p> <p>[Filtrování příchozího provozu pomocí Azure Firewall DNAT](../firewall/tutorial-firewall-dnat.md)</p>|
 |[Skupiny zabezpečení sítě](#nsg)|Úplný podrobný ovládací prvek distribuovaného uzlu na virtuálním počítači/podsíti pro všechny toky síťových přenosů|[Filtrování provozu sítě s využitím skupin zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md)|
 |[Koncové body služby pro virtuální síť](#serviceendpoints)|Umožňuje omezit síťový přístup k některým prostředkům služby Azure na podsíť virtuální sítě.|[Omezení síťového přístupu k prostředkům PaaS](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
@@ -104,13 +104,13 @@ Tato část popisuje síťové služby v Azure, které vám pomůžou chránit v
 
 ![DDoS Protection](./media/networking-overview/ddos-protection.png)
 
-### <a name="web-application-firewall"></a><a name="waf"></a>Firewall webových aplikací
+### <a name="web-application-firewall"></a><a name="waf"></a>Web Application Firewall (Brána firewall webových aplikací)
 
 [Firewall webových aplikací Azure](../web-application-firewall/overview.md) (WAF) poskytuje ochranu webových aplikací před běžnými webovými útoky a ohroženími zabezpečení, jako je například vkládání SQL a skriptování mezi weby. Azure WAF poskytuje předem chráněnou ochranu od OWASP hlavních chyb zabezpečení prostřednictvím spravovaných pravidel. Zákazníci navíc můžou nakonfigurovat také vlastní pravidla, která jsou zákaznická pravidla pro zajištění další ochrany založená na zdrojovém rozsahu IP adres, a požadavky na atributy, jako jsou hlavičky, soubory cookie, datová pole formuláře nebo parametry řetězce dotazu.
 
 Zákazníci se můžou rozhodnout nasadit [Azure WAF s Application Gateway](../application-gateway/waf-overview.md) , která poskytuje regionální ochranu entit ve veřejných a privátních adresních prostorech. Zákazníci si také můžou nasadit [Azure WAF s předními dveřmi](../frontdoor/waf-overview.md) , které poskytují ochranu na hraničních sítích pro veřejné koncové body.
 
-![Firewall webových aplikací](./media/networking-overview/waf-overview.png)
+![Web Application Firewall (Brána firewall webových aplikací)](./media/networking-overview/waf-overview.png)
 
 
 ### <a name="azure-firewall"></a><a name="firewall"></a>Azure Firewall

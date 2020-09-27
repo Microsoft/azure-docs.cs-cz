@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/10/2020
-ms.openlocfilehash: a4e686fe7adcc7e990a26484bc5850de977e862a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 3ecef629e38e2823bea101af47899f9b7d6845f0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924584"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399835"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Kurz: sestavení a nasazení vlastní dovednosti pomocí Azure Machine Learning 
 
@@ -33,7 +33,7 @@ Jsou k dispozici dvě datové sady. Pokud chcete model naučit sami sebe, je vy�
 > [!IMPORTANT] 
 > Tato dovednost je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). V tuto chvíli není podporovaná žádná podpora sady .NET SDK.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – Získejte [bezplatné předplatné](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Služba Kognitivní hledání](./search-get-started-arm.md)
@@ -82,8 +82,7 @@ Oddíl 4 v poznámkovém bloku obsahuje čtyři buňky, které aktualizují dove
 
 Na portálu přejít na dovednosti a vyberte odkaz definice dovednosti (JSON). Portál zobrazí kód JSON vašeho dovednosti, který byl vytvořen v první buňce poznámkového bloku. Napravo od zobrazení je rozevírací nabídka, ve které můžete vybrat šablonu definice dovednosti. Vyberte šablonu Azure Machine Learning (AML). Zadejte název pracovního prostoru Azure ML a koncový bod modelu nasazeného do odvozeného clusteru. Šablona bude aktualizována pomocí identifikátoru URI a klíče koncového bodu.
 
-> [!div class="mx-imgBorder"]
-> ![Šablona definice dovednosti](media/cognitive-search-aml-skill/portal-aml-skillset-definition.png)
+> :::image type="content" source="media/cognitive-search-aml-skill/portal-aml-skillset-definition.png" alt-text="Šablona definice dovednosti":::
 
 Zkopírujte šablonu dovednosti z okna a vložte ji do definice dovednosti na levé straně. Upravte šablonu, aby poskytovala chybějící hodnoty pro:
 

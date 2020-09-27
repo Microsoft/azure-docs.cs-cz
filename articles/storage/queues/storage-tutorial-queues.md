@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7474cfbd0182797bd62e97979e83e2aeb5244cbc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 23684dbbc5cb8c2d5fc4880ae8fe1999450928e0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008790"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400566"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>Kurz: práce s frontami úložiště Azure v .NET
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > - Vyhledat argumenty příkazového řádku
 > - Sestavte a spusťte aplikaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Získejte bezplatnou kopii [Visual Studio Codeového](https://code.visualstudio.com/download) editoru pro různé platformy.
 - Stáhněte a nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download) verze 3,1 nebo novější.
@@ -227,6 +227,8 @@ Vytvořte novou metodu pro načtení zprávy z fronty. Po úspěšném přijetí
    # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
    Tato metoda přijímá zprávu z fronty voláním [ReceiveMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync), předáním 1 do prvního parametru pro načtení pouze další zprávy ve frontě. Po přijetí zprávy ji vymažte z fronty voláním [DeleteMessageAsync](/dotnet/api/azure.storage.queues.queueclient.deletemessageasync).
+
+   Při odeslání zprávy do fronty s verzí sady SDK před V12 je automaticky kódována v kódování Base64. Počínaje V12 se odstranila funkčnost. Když načtete zprávu pomocí sady V12 SDK, není automaticky dekódované v kódování Base64. Obsah musíte explicitně [dekódovat](/dotnet/api/system.convert.frombase64string) sami.
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 

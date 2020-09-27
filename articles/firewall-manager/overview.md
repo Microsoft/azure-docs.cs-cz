@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: victorh
-ms.openlocfilehash: 6768da698838856582d29e9f302acae2bc6c28bd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 74d83ecc240fa4b48421dbaa1c5cc9e62990655d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252217"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399444"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Co je Azure Firewall Manager?
 
@@ -76,9 +76,9 @@ Zásady Azure Firewall lze používat napříč oblastmi. Můžete například v
 
 Azure Firewall Manager má následující známé problémy:
 
-|Problém  |Popis  |Omezení rizik  |
+|Problém  |Description  |Omezení rizik  |
 |---------|---------|---------|
-|Rozdělení provozu|Rozdělování provozu Office 365 a Azure Public PaaS se v tuto chvíli nepodporuje. V takovém případě je třeba vybrat poskytovatele třetí strany pro V2I nebo B2I také odeslat veškerý provoz Azure Public PaaS a Office 365 prostřednictvím partnerské služby.|Zkoumání rozdělení provozu v centru.
+|Rozdělení provozu|Rozdělení provozu Microsoft 365 a Azure Public PaaS se v tuto chvíli nepodporuje. V takovém případě je třeba vybrat poskytovatele třetí strany pro V2I nebo B2I, který prostřednictvím partnerské služby pošle veškerý veřejný PaaS a Microsoft 365 provoz Azure.|Zkoumání rozdělení provozu v centru.
 |Jeden zabezpečený virtuální rozbočovač na oblast|Pro každou oblast nemůžete mít více než jedno zabezpečené virtuální rozbočovače.|Vytvoření více virtuálních sítí WAN v určité oblasti.|
 |Základní zásady musí být ve stejné oblasti jako místní zásada.|Vytvořte všechny místní zásady ve stejné oblasti jako základní zásady. Můžete přesto použít zásadu, která byla vytvořena v jedné oblasti v zabezpečeném centru z jiné oblasti.|Prověřování|
 |Filtrování provozu mezi rozbočovači v nasazeních zabezpečených virtuálních rozbočovačů|Zabezpečené virtuální rozbočovače na zabezpečené filtrování komunikace virtuálního rozbočovače se ještě nepodporuje. Nicméně komunikace centra s centrem funguje i v případě, že filtrování privátních přenosů prostřednictvím Azure Firewall není povolené.|Prověřování|

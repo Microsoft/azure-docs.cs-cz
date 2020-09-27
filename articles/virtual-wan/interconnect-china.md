@@ -7,16 +7,16 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: sukishen
-ms.openlocfilehash: d95330c14e0d088bdee03c0edbc2eb9d1deb12cb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 83cc7757f31a631af755155b49c7c26753618426
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329223"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399104"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Propojení s Čínou pomocí Azure Virtual WAN a zabezpečeného centra
 
-Při prohlížení společného automobilu, výroby, logistického odvětví nebo jiných ústavů, jako je velvyslanectví, často existuje otázka, jak vylepšit vzájemné propojení s Čínou. Tato vylepšení jsou většinou relevantní pro použití Cloud Services, jako jsou například Office 365, globální služby Azure nebo větve propojení v Číně s páteřní sítí zákazníka.
+Při prohlížení společného automobilu, výroby, logistického odvětví nebo jiných ústavů, jako je velvyslanectví, často existuje otázka, jak vylepšit vzájemné propojení s Čínou. Tato vylepšení jsou většinou relevantní pro použití Cloud Services jako Microsoft 365, globálních služeb Azure nebo větví propojení v Číně s páteřní sítí zákazníka.
 
 Ve většině případů se zákazníci působit potíže s vysokou latencí, nízkou šířkou pásma, nestabilním připojením a s vysokou propustností, které se připojují k mimo Čína (například Evropa nebo USA).
 
@@ -95,7 +95,7 @@ Následující obrázek ukazuje oba příklady pro tento scénář.
 
 ![Global Reach](./media/interconnect-china/global.png)
 
-## <a name="secure-internet-breakout-for-office-365"></a><a name="secure"></a>Zabezpečená internetová užitečných pro Office 365
+## <a name="secure-internet-breakout-for-microsoft-365"></a><a name="secure"></a>Zabezpečená internetová užitečných pro Microsoft 365
 
 Dalším aspektem je zabezpečení sítě a protokolování pro vstupní bod mezi Čínou a virtuální sítí WAN vytvořená páteřní součást a páteřní síť zákazníka. Ve většině případů je třeba užitečných na Internet v Hongkongu, aby přímo dosáhly sítě Microsoft Edge a s tím se servery front-dveří Azure používané pro Microsoft 365 služby.
 
@@ -109,7 +109,7 @@ Příklad tohoto scénáře vidíte na následujícím obrázku:
 
 V závislosti na vaší volbě, která se týká připojení k Hongkongu, se celková architektura může mírně měnit. V této části se zobrazují tři dostupné architektury v různých kombinacích s VPN nebo SDWAN a/nebo ExpressRoute.
 
-Všechny tyto možnosti využívají zabezpečené centrum Azure Virtual WAN pro přímé připojení M365 v Hongkongu. Tyto architektury také podporují požadavky na dodržování předpisů pro [Office 365 multi-Geo](https://docs.microsoft.com/office365/enterprise/office-365-multi-geo) a udržují provoz v blízkosti dalšího umístění front-dveří Office 365. V důsledku toho je také lepší využití Microsoft 365 mimo Čína.
+Všechny tyto možnosti využívají zabezpečené centrum Azure Virtual WAN pro přímé připojení Microsoft 365 v Hongkongu. Tyto architektury také podporují požadavky na dodržování předpisů pro [Microsoft 365 s více geografickými](/microsoft-365/enterprise/microsoft-365-multi-geo) oblastmi a udržují provoz v blízkosti dalšího umístění front-dveří Azure. V důsledku toho je také lepší využití Microsoft 365 mimo Čína.
 
 Při použití Azure Virtual WAN společně s připojením k Internetu může každé připojení těžit z dalších služeb, jako je [Microsoft Azure služby partnerského vztahu (Maps)](https://docs.microsoft.com/azure/peering-service/about). Služba MAPS byla navržena pro optimalizaci provozu přicházejícího do globální sítě Microsoft od poskytovatelů internetových služeb třetích stran.
 

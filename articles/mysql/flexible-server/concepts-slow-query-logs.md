@@ -6,20 +6,17 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 8b413b82ceb148374bd89fd2baec7d4db13f54d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 512a103f5ac116f1f4eb18631cdc8e4a8b9380c9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329544"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399206"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Pomalé dotazy v protokolech v Azure Database for MySQL flexibilním serveru (Preview)
 
 > [!IMPORTANT] 
 > Azure Database for MySQL – flexibilní Server je momentálně ve verzi Public Preview.
-
-> [!NOTE]
-> Integrace s Azure Monitor nastavení diagnostiky pro přístup k protokolům probíhá nasazování a kompletní funkce budou brzy k dispozici.
 
 V Azure Database for MySQL flexibilním serveru je protokol pomalých dotazů dostupný uživatelům, aby mohli konfigurovat a přistupovat. Pomalé protokoly dotazů jsou ve výchozím nastavení zakázané a můžou být povolené, aby při řešení potíží pomohly identifikovat problém s výkonem.
 
@@ -42,10 +39,7 @@ Další parametry, které můžete upravit pro řízení chování pomalého pro
 
 ## <a name="access-slow-query-logs"></a>Přístup k protokolům pomalým dotazům
 
-> [!NOTE]
-> Integrace s Azure Monitor nastavení diagnostiky pro přístup k protokolům probíhá nasazování a kompletní funkce budou brzy k dispozici.
-
-Pomalé protokoly dotazů jsou integrované s Azure Monitor nastavení diagnostiky. Po povolení protokolů auditu na flexibilním serveru MySQL je můžete vygenerovat k Azure Monitor protokolů, Event Hubs nebo Azure Storage. Další informace o nastavení diagnostiky najdete v [dokumentaci k diagnostickým protokolům](../../azure-monitor/platform/platform-logs-overview.md). Další informace o tom, jak povolit nastavení diagnostiky v Azure Portal, najdete v [článku pomalým na portálu pro protokol dotazů](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics).
+Pomalé protokoly dotazů jsou integrované s Azure Monitor nastavení diagnostiky. Po povolení protokolů pomalých dotazů na flexibilním serveru MySQL je můžete vygenerovat, abyste Azure Monitor protokoly, Event Hubs nebo Azure Storage. Další informace o nastavení diagnostiky najdete v [dokumentaci k diagnostickým protokolům](../../azure-monitor/platform/platform-logs-overview.md). Další informace o tom, jak povolit nastavení diagnostiky v Azure Portal, najdete v [článku pomalým na portálu pro protokol dotazů](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics).
 
 Následující tabulka popisuje výstup pomalého protokolu dotazů. V závislosti na metodě Output se pole, která jsou součástí, a pořadí, ve kterém se zobrazují, můžou lišit.
 

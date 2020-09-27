@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08e6491e1d8d94e8e6e9112e5a19682018103325
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551703"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400345"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Kurz: Zálohování a obnova souborů pro virtuální počítače s Linuxem v Azure
 
@@ -70,7 +70,7 @@ V tomto příkladu ukazujeme obnovení výchozí webové stránky serveru NGINX 
  
 1. Na svém místním počítači otevřete prohlížeč a zadejte do něj veřejnou IP adresu svého virtuálního počítače. Zobrazí se výchozí webová stránka serveru NGINX.
 
-    ![Výchozí webová stránka serveru NGINX](./media/tutorial-backup-vms/nginx-working.png)
+    ![Snímek obrazovky, který zobrazuje výchozí webovou stránku Nginx](./media/tutorial-backup-vms/nginx-working.png)
 
 1. Připojte se k virtuálnímu počítači přes SSH.
 
@@ -86,7 +86,7 @@ V tomto příkladu ukazujeme obnovení výchozí webové stránky serveru NGINX 
     
 4. Na svém místním počítači aktualizujte prohlížeč stisknutím Ctrl + F5. Výchozí stránka serveru NGINX bude pryč.
 
-    ![Výchozí webová stránka serveru NGINX](./media/tutorial-backup-vms/nginx-broken.png)
+    ![Snímek obrazovky, který zobrazuje výchozí stránku Nginx, je pryč.](./media/tutorial-backup-vms/nginx-broken.png)
     
 1. V místním počítači se přihlaste k webu [Azure Portal](https://portal.azure.com/).
 6. V nabídce na levé straně vyberte **Virtuální počítače**. 

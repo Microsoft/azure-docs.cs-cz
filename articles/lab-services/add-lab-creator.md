@@ -3,12 +3,12 @@ title: Přidat uživatele jako autora testovacího prostředí v Azure Lab Servi
 description: Tento článek ukazuje, jak přidat uživatele do role testovacího prostředí pro účet testovacího prostředí v Azure Lab Services. Tvůrci testovacího prostředí můžou vytvářet Labs v rámci tohoto účtu testovacího prostředí.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 34fbf9085f36d008607b648825585d3435cc2895
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fdeb33dab60a2fb9f1680295c355e2c7c0e775a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444280"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399478"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Přidání tvůrců testovacího prostředí do účtu testovacího prostředí v Azure Lab Services
 V tomto článku se dozvíte, jak přidat uživatele jako tvůrci testovacích prostředí do účtu testovacího prostředí v Azure Lab Services. Tato použití pak mohou v účtu testovacího prostředí vytvořit učebnu. 
@@ -31,7 +31,7 @@ Chcete-li poskytnout pedagogům oprávnění k vytváření cvičení pro své t
 ## <a name="add-a-non-microsoft-account-user-as-a-lab-creator"></a>Přidání uživatele bez účet Microsoft jako autora testovacího prostředí
 Pokud chcete přidat uživatele jako tvůrce testovacího prostředí, použijte své e-mailové účty. Můžou se používat tyto typy e-mailových účtů:
 
-- E-mailový účet, který poskytuje Office 365 Azure Active Directory vaší univerzity (AAD). 
+- E-mailový účet, který vám poskytla vaše Azure Active Directoryá univerzita.
 - E-mailový účet Microsoftu, jako `@outlook.com` je,, `@hotmail.com` `@msn.com` nebo `@live.com` .
 - E-mailový účet, který není od Microsoftu, který poskytuje společnost Yahoo nebo Google. Tyto typy účtů však musí být propojeny s účet Microsoft.
 - Účet GitHub. Tento účet musí být propojený s účet Microsoft.

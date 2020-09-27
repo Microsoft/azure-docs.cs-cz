@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: b82b79d076871b961d5c496bc70beac1b5067b2d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2a5204be638f108b40e431b148c9cb97788c4a52
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288111"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400753"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps
 
@@ -40,7 +40,7 @@ V rámci této zásady platí, že když použijete účet příjemce Gmail, mů
 
 * Služby Google: Gmail, Kalendář Google, Kontakty Google, disk Google, tabulky Google a úkoly Google
 
-* Schválené služby Microsoftu: Dynamics 365, Excel Online, Microsoft teams, Office 365, OneDrive a SharePoint Online
+* Schválené služby Microsoftu: Dynamics 365, Excel Online, Microsoft teams, Microsoft 365, OneDrive a SharePoint Online
 
 * Konektory pro zdroje dat spravované zákazníkem: FTP, RSS, SFTP, SMTP a SQL Server
 

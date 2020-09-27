@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
-ms.openlocfilehash: 7438351aa9849e3110952043eff8f7d860b5b7de
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a2d2c4d29a6af073e3e4e6a74c257cb864b8a78c
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015828"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400685"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Správa účtu komerčního tržiště v partnerském centru
 
@@ -306,7 +306,7 @@ Další informace o správě rolí a oprávnění v jiných oblastech partnersk�
 
 ## <a name="manage-tenants"></a>Správa tenantů
 
-Tenant Azure Active Directory (AD), označovaný také jako "pracovní účet" v celé této dokumentaci, je reprezentace vaší organizace nastavená v Azure Portal a pomůže vám spravovat konkrétní instanci cloudových služeb Microsoftu pro interní a externí uživatele. Pokud se vaše organizace přihlásila k odběru cloudové služby Microsoftu, jako je například Azure, Microsoft Intune nebo Office 365, byl vytvořen tenant služby Azure AD za vás.
+Tenant Azure Active Directory (AD), označovaný také jako "pracovní účet" v celé této dokumentaci, je reprezentace vaší organizace nastavená v Azure Portal a pomůže vám spravovat konkrétní instanci cloudových služeb Microsoftu pro interní a externí uživatele. Pokud se vaše organizace přihlásila k odběru cloudové služby Microsoftu, jako je Azure, Microsoft Intune nebo Microsoft 365, vytvořil se tenant Azure AD za vás.
 
 Můžete nastavit více tenantů pro použití s partnerským centrem. Každý uživatel s rolí **správce** v účtu partnerského centra bude mít možnost Přidat a odebrat klienty služby Azure AD z tohoto účtu.  
 

@@ -7,18 +7,18 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 247a5c89b52c6b58f2e1d04723f4f73b85aeb153
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607491"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400736"
 ---
 # <a name="cloud-solution-provider-program"></a>Program Cloud Solution Provider
 
 Tento článek vysvětluje, jak nakonfigurovat nabídku, která bude k dispozici pro program poskytovatele Cloud Solution Provider (CSP). Kromě publikování vašich nabídek prostřednictvím služby [komerčního obchodu na webu Marketplace](comparing-appsource-azure-marketplace.md)můžete také provést prodej prostřednictvím programu CSP, abyste mohli oslovit miliony kvalifikovaných zákazníků Microsoftu, které tento program obsluhuje.
 
-Můžete nakonfigurovat nové nebo existující nabídky k dostupnosti v programu CSP na základě výslovného souhlasu, který partnerům CSP umožní prodávat vaše produkty a vytvářet řešení pro zákazníky.
+Můžete nakonfigurovat nové nebo existující nabídky pro dostupnost v programu CSP na základě výslovného souhlasu, který partnerům CSP umožní prodávat vaše produkty a vytvářet řešení pro zákazníky.
 
 Vydavatelé zodpovídají za poskytování podpory opravných řešení koncovým zákazníkům a poskytování mechanismů pro partnery v programu CSP a/nebo zákazníkům, aby vás kontaktovali o podporu. Osvědčeným postupem je poskytnout partnerům v programu CSP pomocí dokumentace uživatele, školení a oznámení o stavu/výpadku, aby partneři v programu CSP mohli zpracovávat žádosti o podporu vrstvy 1 od zákazníků.  
 

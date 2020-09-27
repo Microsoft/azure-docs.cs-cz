@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: d861388c8c7a5ff64a17607736d4c8a292343dec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3dd209d90947ebef7eb7b074992a55305005e7bb
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071587"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399529"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 Tento článek poskytuje Úvod do služby zabezpečení v Azure, které vám pomůžou chránit vaše data, prostředky a aplikace v cloudu a splňovat požadavky na zabezpečení vaší firmy.
@@ -68,7 +68,7 @@ Níže jsou uvedené základní možnosti správy identit Azure:
 
 - Jednotné přihlašování
 
-- Vícefaktorové ověřování
+- Ověřování pomocí služby Multi-Factor Authentication
 
 - Monitorování zabezpečení, výstrahy a sestavy založené na strojovém učení
 
@@ -84,13 +84,13 @@ Níže jsou uvedené základní možnosti správy identit Azure:
 
 [Jednotné přihlašování (SSO)](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) znamená přístup k všem aplikacím a prostředkům, které potřebujete udělat, pomocí jediného uživatelského účtu, když se přihlásíte jenom jednou. Jakmile se přihlásíte, budete mít přístup ke všem aplikacím, které potřebujete, aniž byste je museli ověřovat (například zadat heslo) podruhé.
 
-Mnoho organizací spoléhá na aplikace typu software jako služba (SaaS), jako je například Office 365, box a Salesforce, pro produktivitu koncových uživatelů. Historicky zaměstnanci IT potřebují pro jednotlivé aplikace SaaS vytvářet a aktualizovat uživatelské účty a uživatelé si museli pamatovat heslo pro každou aplikaci SaaS.
+Mnoho organizací spoléhá na aplikace typu software jako služba (SaaS), jako jsou Microsoft 365, box a Salesforce, pro produktivitu koncových uživatelů. Historicky zaměstnanci IT potřebují pro jednotlivé aplikace SaaS vytvářet a aktualizovat uživatelské účty a uživatelé si museli pamatovat heslo pro každou aplikaci SaaS.
 
 [Azure AD rozšiřuje místní službu Active Directory do cloudu](../../active-directory/manage-apps/what-is-single-sign-on.md)a umožňuje uživatelům používat jejich primární účet organizace jenom k tomu, aby se přihlásili jenom k zařízením připojeným k doméně a prostředkům společnosti, ale také k aplikacím web a SaaS, které potřebuje pro svou práci.
 
 Nejen uživatelé nepotřebují spravovat více sad uživatelských jmen a hesel, přístup k aplikaci se dá automaticky zřídit nebo zrušit na základě organizačních skupin a jejich stavu jako zaměstnanec. [Azure AD zavádí zabezpečení a přístup k řízení zásad správného řízení](../../active-directory/active-directory-enterprise-apps-manage-sso.md) , které vám umožní centrálně spravovat přístup uživatelů napříč SaaS aplikacemi.
 
-#### <a name="multi-factor-authentication"></a>Vícefaktorové ověřování
+#### <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
 
 [Azure Multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) je metoda ověřování, která vyžaduje použití více než jedné metody ověřování a přidává kritickou druhou vrstvu zabezpečení pro přihlášení a transakce uživatelů. [Vícefaktorové ověřování pomáhá chránit](../../active-directory/authentication/concept-mfa-howitworks.md) přístup k datům a aplikacím a současně splňuje požadavky uživatelů na jednoduchý proces přihlašování. Zajišťuje silné ověřování prostřednictvím řady možností ověřování – telefonní hovor, textová zpráva nebo oznámení mobilní aplikace nebo ověřovací kód a tokeny OAuth třetích stran.
 
@@ -126,15 +126,15 @@ Při kombinaci s řešením [správy mobilních zařízení (MDM)](https://www.m
 
 #### <a name="privileged-identity-management"></a>Privileged Identity Management
 
-[Azure Active Directory (AD) Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) umožňuje spravovat, řídit a monitorovat vaše privilegované identity a přístup k prostředkům v Azure AD a také dalším online službym Microsoftu, jako je například sada Office 365 nebo Microsoft Intune.
+[Azure Active Directory (AD) Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) umožňuje spravovat, řídit a monitorovat vaše privilegované identity a přistupovat k prostředkům v Azure AD i k dalším online služby Microsoftu, jako je Microsoft 365 nebo Microsoft Intune.
 
-Někdy uživatelé potřebují provádět privilegované operace v prostředcích Azure nebo v prostředcích Office 365 nebo v jiných aplikacích SaaS. To často znamená, že organizace musí udělit trvalý privilegovaný přístup ve službě Azure AD. Toto je rostoucí bezpečnostní riziko pro prostředky hostované v cloudu, protože organizace nemůžou dostatečně monitorovat, co dělají uživatelé s oprávněními správce. Kromě toho platí, že pokud dojde k ohrožení bezpečnosti uživatelského účtu s privilegovaným přístupem, může to mít vliv na celkové zabezpečení cloudu. Azure AD Privileged Identity Management pomáhá řešení tohoto rizika.
+Někdy uživatelé potřebují provádět privilegované operace v Azure nebo Microsoft 365ch prostředcích nebo jiných aplikacích SaaS. To často znamená, že organizace musí udělit trvalý privilegovaný přístup ve službě Azure AD. Toto je rostoucí bezpečnostní riziko pro prostředky hostované v cloudu, protože organizace nemůžou dostatečně monitorovat, co dělají uživatelé s oprávněními správce. Kromě toho platí, že pokud dojde k ohrožení bezpečnosti uživatelského účtu s privilegovaným přístupem, může to mít vliv na celkové zabezpečení cloudu. Azure AD Privileged Identity Management pomáhá řešení tohoto rizika.
 
 Azure AD Privileged Identity Management vám umožní:
 
 - Zobrazit uživatele, kteří jsou správci Azure AD
 
-- Povolení přístupu pro správu k online službám Microsoftu, jako je například Office 365 a Intune, na vyžádání a za běhu
+- Povolit přístup pro správu k online službám Microsoftu, jako je například Microsoft 365 a Intune, v čase na vyžádání.
 
 - Získat sestavy o historii přístupu správce a změnách v přiřazeních správce
 

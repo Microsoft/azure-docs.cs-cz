@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: victorh
-ms.openlocfilehash: da5100fafc98ae38809c93e9b3db5ef41c58766a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68789d3b8a4be51a381e95d6e6f840331b46b4e9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82863412"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400107"
 ---
 # <a name="azure-firewall-remote-work-support"></a>Podpora vzdálené práce Azure Firewall
 
@@ -24,7 +24,7 @@ Práce z domácích zásad vyžaduje mnoho organizací IT, aby bylo možné ře�
 
 ## <a name="azure-windows-virtual-desktop-support"></a>Podpora virtuálních počítačů Azure s Windows
 
-Windows Virtual Desktop je komplexní služba pro desktopovou a aplikační virtualizaci běžící v Azure. Je to jediná infrastruktura virtuálních klientských počítačů (VDI), která nabízí zjednodušenou správu, Windows 10 s více relacemi, optimalizace pro Office 365 ProPlus a podporu pro prostředí vzdálené plochy (RDS). Stolní počítače a aplikace Windows můžete v Azure nasadit a škálovat v řádu minut a získat integrované funkce zabezpečení a dodržování předpisů. Virtuální počítač s Windows nevyžaduje, abyste otevřeli žádný příchozí přístup k vaší virtuální síti. Je ale potřeba, abyste povolili sadu odchozích síťových připojení pro virtuální počítače virtuálních počítačů s Windows, které běží ve vaší virtuální síti. Další informace najdete v tématu [použití Azure firewall k ochraně nasazení virtuálních ploch](protect-windows-virtual-desktop.md)v systému Windows.
+Windows Virtual Desktop je komplexní služba pro desktopovou a aplikační virtualizaci běžící v Azure. Je to jediná infrastruktura virtuálních klientských počítačů (VDI), která nabízí zjednodušenou správu, Windows 10 s více relacemi, optimalizace pro Microsoft 365 aplikací pro podniky a podporu pro prostředí vzdálené plochy (RDS). Stolní počítače a aplikace Windows můžete v Azure nasadit a škálovat v řádu minut a získat integrované funkce zabezpečení a dodržování předpisů. Virtuální počítač s Windows nevyžaduje, abyste otevřeli žádný příchozí přístup k vaší virtuální síti. Je ale potřeba, abyste povolili sadu odchozích síťových připojení pro virtuální počítače virtuálních počítačů s Windows, které běží ve vaší virtuální síti. Další informace najdete v tématu [použití Azure firewall k ochraně nasazení virtuálních ploch](protect-windows-virtual-desktop.md)v systému Windows.
 
 ## <a name="next-steps"></a>Další kroky
 

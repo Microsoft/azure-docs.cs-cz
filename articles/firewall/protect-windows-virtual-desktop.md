@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: c725673281b564958bb081fb47fe51a0ad66bea2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae33d763bda49756e9f90a05feda5089b63ef28b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611131"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400152"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Ochrana nasazení virtuálních ploch s Windows pomocí Azure Firewallu
 
@@ -61,7 +61,7 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 
 ## <a name="host-pool-outbound-access-to-the-internet"></a>Odchozí přístup k Internetu z fondu hostitelů
 
-V závislosti na potřebách vaší organizace možná budete chtít povolit zabezpečený odchozí přístup k Internetu koncovým uživatelům. V případech, kdy je seznam povolených cílů dobře definovaný (například [přístup k Office 365](https://docs.microsoft.com/Office365/Enterprise/office-365-ip-web-service)), můžete ke konfiguraci požadovaného přístupu použít Azure firewallová pravidla aplikace a sítě. Tento postup směruje přenosy koncového uživatele přímo na Internet za účelem dosažení nejlepšího výkonu.
+V závislosti na potřebách vaší organizace možná budete chtít povolit zabezpečený odchozí přístup k Internetu koncovým uživatelům. V případech, kdy je seznam povolených cílů dobře definovaný (například [Microsoft 365 přístup](/microsoft-365/enterprise/microsoft-365-ip-web-service)), můžete pomocí Azure firewall aplikace a pravidel sítě nakonfigurovat požadovaný přístup. Tento postup směruje přenosy koncového uživatele přímo na Internet za účelem dosažení nejlepšího výkonu.
 
 Pokud chcete filtrovat odchozího internetového provozu pomocí existující místní zabezpečené webové brány, můžete nakonfigurovat webové prohlížeče nebo jiné aplikace běžící na fondu hostitelů virtuálních ploch Windows s explicitní konfigurací proxy serveru. Například viz [jak použít možnosti příkazového řádku Microsoft Edge ke konfiguraci nastavení proxy serveru](https://docs.microsoft.com/deployedge/edge-learnmore-cmdline-options-proxy-settings). Tato nastavení proxy mají vliv na přístup k Internetu koncovým uživatelům, což umožňuje, aby odchozí přenosy platformy virtuálních počítačů s Windows přímo prostřednictvím Azure Firewall.
 

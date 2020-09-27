@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: deda5b9dab416258f9db1c76e9b41f781101e2fd
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 373463ff9024ec3b657df6d141ed830142b23f2e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033009"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400056"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -27,8 +27,8 @@ Propustnost můžete zřídit na úrovni kontejneru nebo databáze na úrovni je
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Maximální počet ru na kontejner ([zřízený režim vyhrazené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . |
-| Maximální počet ru na databázi ([zřízený režim sdílené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . |
+| Maximální počet ru na kontejner ([zřízený režim vyhrazené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](create-support-request-quota-increase.md) . |
+| Maximální počet ru na databázi ([zřízený režim sdílené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](create-support-request-quota-increase.md) . |
 | Maximální počet ru na (logický) oddíl | 10 000 |
 | Maximální velikost úložiště napříč všemi položkami na (logický) oddíl | 20 GB |
 | Maximální počet různých (logických) klíčů oddílu | Unlimited |
@@ -79,8 +79,8 @@ Bez [serveru](serverless.md) můžete používat prostředky Azure Cosmos DB v z
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Maximální počet účtů databáze na předplatné | 50 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) .|
-| Maximální počet regionálních převzetí služeb při selhání | ve výchozím nastavení 1 hodina. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) .|
+| Maximální počet účtů databáze na předplatné | 50 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](create-support-request-quota-increase.md) .|
+| Maximální počet regionálních převzetí služeb při selhání | ve výchozím nastavení 1 hodina. Můžete ho rozšířit [podáním lístku podpory Azure](create-support-request-quota-increase.md) .|
 
 > [!NOTE]
 > Regionální převzetí služeb při selhání platí jenom pro jeden region zápis účtů. Účty pro zápis ve více oblastech nevyžadují nebo nemají omezení pro změnu oblasti zápisu.
@@ -120,7 +120,7 @@ V závislosti na tom, jaké rozhraní API používáte, může kontejner Azure C
 | Maximální počet cest na jedinečné omezení klíče|16bitovém <sup>*</sup>|
 | Maximální hodnota TTL |2147483647|
 
-<sup>*</sup> Můžete zvýšit množství těchto omezení na kontejner tím, že se obrátíte na podporu Azure.
+<sup>*</sup> Můžete zvýšit libovolný z těchto limitů pro kontejner vytvořením [support Request Azure](create-support-request-quota-increase.md).
 
 ## <a name="per-item-limits"></a>Omezení podle položek
 
@@ -160,7 +160,7 @@ Cosmos DB používá pro autorizaci HMAC. K prostředkům, jako jsou kontejnery,
 | --- | --- |
 | Maximální doba vypršení platnosti hlavního tokenu | 15 min  |
 | Minimální čas vypršení platnosti tokenu prostředku | 10 min  |
-| Maximální doba vypršení platnosti tokenu prostředku | ve výchozím nastavení je 24 h. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) .|
+| Maximální doba vypršení platnosti tokenu prostředku | ve výchozím nastavení je 24 h. Můžete ho rozšířit [podáním lístku podpory Azure](create-support-request-quota-increase.md) .|
 | Maximální časové zkosení pro autorizaci tokenů| 15 min |
 
 Cosmos DB podporuje provádění triggerů během zápisu. Služba podporuje maximálně jednu aktivační událost a jednu operaci post-Trigger na operaci zápisu.
@@ -202,7 +202,7 @@ Cosmos DB podporuje dotazování na položky pomocí [jazyka SQL](how-to-sql-que
 | Maximální počet vyloučených cest na kontejner| 500 |
 | Maximální vlastnosti ve složeném indexu| 8 |
 
-<sup>*</sup> Tyto limity dotazu SQL můžete zvýšit kontaktováním podpory Azure.
+<sup>*</sup> Můžete zvýšit libovolné z těchto omezení SQL dotazu vytvořením [support Request Azure](create-support-request-quota-increase.md).
 
 ## <a name="mongodb-api-specific-limits"></a>Omezení specifická pro rozhraní API MongoDB
 

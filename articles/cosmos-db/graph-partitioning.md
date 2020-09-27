@@ -1,19 +1,19 @@
 ---
 title: Dělení dat v rozhraní Azure Cosmos DB Gremlin API
 description: Naučte se, jak můžete použít rozdělený graf v Azure Cosmos DB. Tento článek také popisuje požadavky a osvědčené postupy pro oddílový graf.
-author: luisbosquez
-ms.author: lbosq
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78c15da1ea9fe5f6307ce388e4d64d372e9eb8c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a993779bc47f1a9b2be8851fafe628ae4286f4a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261762"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400498"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Použití děleného grafu ve službě Azure Cosmos DB
 
@@ -33,39 +33,39 @@ Následující pokyny popisují, jak strategie dělení v Azure Cosmos DB funguj
 
 - **Okraje budou uloženy spolu s jejich zdrojovými vrcholy**. Jinými slovy, pro každý vrchol svůj klíč oddílu definuje, kde jsou uloženy spolu s odchozími hranami. Tato optimalizace se zabrání v dotazech mezi oddíly při použití `out()` mohutnosti v dotazech grafu.
 
-- **Okraje obsahují odkazy na vrcholy, na které odkazují**. Všechny hrany jsou uloženy s klíči oddílu a identifikátory vrcholů, na které odkazují. Tento výpočet zpřístupňuje všechny `out()` směrové dotazy v oboru, který není v oboru, a ne na neslepém dotazu mezi oddíly. 
+- **Okraje obsahují odkazy na vrcholy, na které odkazují**. Všechny hrany jsou uloženy s klíči oddílu a identifikátory vrcholů, na které odkazují. Tento výpočet zpřístupňuje všechny `out()` směrové dotazy v oboru, který není v oboru, a ne na neslepém dotazu mezi oddíly.
 
 - **Dotazy grafů musí zadat klíč oddílu**. Pokud chcete plně využít horizontální dělení v Azure Cosmos DB, klíč oddílu by měl být zadaný při výběru jednoho vrcholu, kdykoli je to možné. Níže jsou uvedené dotazy pro výběr jednoho nebo více vrcholů v rozděleném grafu:
 
-    - `/id`a `/label` nejsou podporované jako klíče oddílů pro kontejner v rozhraní Gremlin API.
+    - `/id` a `/label` nejsou podporované jako klíče oddílů pro kontejner v rozhraní Gremlin API.
 
 
-    - Výběr vrcholu podle ID a následné ** `.has()` zadání vlastnosti klíče oddílu pomocí kroku**: 
-    
+    - Výběr vrcholu podle ID a následné ** `.has()` zadání vlastnosti klíče oddílu pomocí kroku**:
+
         ```java
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
         ```
-    
-    - Výběr vrcholu **zadáním řazené kolekce členů, včetně hodnoty klíče oddílu a ID**: 
-    
+
+    - Výběr vrcholu **zadáním řazené kolekce členů, včetně hodnoty klíče oddílu a ID**:
+
         ```java
         g.V(['partitionKey_value', 'vertex_id'])
         ```
-        
+
     - Zadání **pole n-tice hodnot klíčů oddílu a ID**:
-    
+
         ```java
         g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
         ```
-        
-    - Výběr sady vrcholů s jejich ID a **Určení seznamu hodnot klíčů oddílu**: 
-    
+
+    - Výběr sady vrcholů s jejich ID a **Určení seznamu hodnot klíčů oddílu**:
+
         ```java
         g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
         ```
 
-    - Použití **strategie oddílu** na začátku dotazu a určení oddílu pro rozsah zbytku dotazu Gremlin: 
-    
+    - Použití **strategie oddílu** na začátku dotazu a určení oddílu pro rozsah zbytku dotazu Gremlin:
+
         ```java
         g.withStrategies(PartitionStrategy.build().partitionKey('partitionKey').readPartitions('partitionKey_value').create()).V()
         ```

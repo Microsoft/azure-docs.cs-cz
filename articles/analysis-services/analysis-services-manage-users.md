@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 15ae1ca6902c27732812a591f492430150c84ecb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c44ac820349973240328fbb92dea14668b019a12
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926174"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400787"
 ---
 # <a name="authentication-and-user-permissions"></a>Ověřování a uživatelská oprávnění
 
@@ -22,19 +22,19 @@ Azure Analysis Services podporuje [spolupráci Azure AD B2B](../active-directory
 
 ![Azure Analysis Services Architektura ověřování](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Všechny klientské aplikace a nástroje používají k připojení k serveru jednu nebo více Analysis Services [klientských knihoven](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (AMO, MSOLAP, ADOMD). 
 
 Všechny tři klientské knihovny podporují jak interaktivní tok Azure AD, tak i neinteraktivní metody ověřování. Dvě neinteraktivní metody, heslo služby Active Directory a integrované metody ověřování služby Active Directory, se dají použít v aplikacích, které využívají AMOMD a MSOLAP. Tyto dvě metody nikdy nevedou k místním dialogovým oknům.
 
-Klientské aplikace, jako je Excel a Power BI Desktop, a nástroje, jako je například SSMS a Analysis Services Project Extensions pro sadu Visual Studio, nainstalují nejnovější verze knihoven až po aktualizaci na nejnovější verzi. Rozšíření projektů Power BI Desktop, SSMS a Analysis Services se aktualizují měsíčně. Excel je [aktualizovaný pomocí Office 365](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Aktualizace Office 365 jsou méně časté a některé organizace používají odložený kanál, což znamená, že aktualizace jsou odložené až na tři měsíce.
+Klientské aplikace, jako je Excel a Power BI Desktop, a nástroje, jako je například SSMS a Analysis Services Project Extensions pro sadu Visual Studio, nainstalují nejnovější verze knihoven až po aktualizaci na nejnovější verzi. Rozšíření projektů Power BI Desktop, SSMS a Analysis Services se aktualizují měsíčně. Aplikace Excel je [aktualizována pomocí Microsoft 365](https://support.microsoft.com/office/when-do-i-get-the-newest-features-for-microsoft-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Aktualizace Microsoft 365 jsou méně časté a některé organizace používají odložený kanál, což znamená, že aktualizace se odúčtují až po třech měsících.
 
 V závislosti na klientské aplikaci nebo nástroji, které používáte, se typ ověřování a způsob, jakým se přihlašujete, může lišit. Každá aplikace může podporovat různé funkce pro připojení ke cloudovým službám, jako je Azure Analysis Services.
 
 Power BI Desktop, Visual Studio a SSMS podporují univerzální ověřování služby Active Directory, což je interaktivní metoda, která podporuje taky Azure Multi-Factor Authentication (MFA). Azure MFA pomáhá chránit přístup k datům a aplikacím a současně poskytuje jednoduchý proces přihlašování. Zajišťuje silné ověřování s několika možnostmi ověřování (telefonní hovor, textová zpráva, čipové karty s kódem PIN nebo oznámením v mobilní aplikaci). Interaktivní vícefaktorové ověřování pomocí Azure AD může mít za následek automaticky otevírané okno k ověření. **Doporučuje se univerzální ověřování**.
 
-Pokud se přihlašujete k Azure pomocí účtu systému Windows a univerzální ověřování není vybráno nebo není k dispozici (Excel), je požadováno [Active Directory Federation Services (AD FS) (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) . U federace se uživatelé Azure AD a Office 365 ověřují pomocí místních přihlašovacích údajů a můžou získat přístup k prostředkům Azure.
+Pokud se přihlašujete k Azure pomocí účtu systému Windows a univerzální ověřování není vybráno nebo není k dispozici (Excel), je požadováno [Active Directory Federation Services (AD FS) (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) . Pomocí federace se uživatelé Azure AD a Microsoft 365 ověřují pomocí místních přihlašovacích údajů a můžou získat přístup k prostředkům Azure.
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 
@@ -81,4 +81,4 @@ Role na této úrovni se vztahují na uživatele nebo účty, které potřebují
 [Správa přístupu k prostředkům pomocí skupin Azure Active Directory](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Správa databázových rolí a uživatelů](analysis-services-database-users.md)  
 [Správa správců serveru](analysis-services-server-admins.md)  
-[Řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md)  
+[Řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md)  

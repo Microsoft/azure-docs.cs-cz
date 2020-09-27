@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d702a3cca6a24819d2d184dc6df09153c9dcc860
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 01213cd4d04783d0d877b4565493f06fa3718f8d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281877"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399631"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>Bezpečně spusťte službu Správa certifikátů trezoru OPC.
 
@@ -94,7 +94,7 @@ Všechny systémy je potřeba průběžně monitorovat a aktualizovat s nejnově
 
 ### <a name="security-monitoring"></a>Monitorování zabezpečení
 
-Přihlaste se k odběru nebo implementujte příslušné monitorování zabezpečení. Například můžete se přihlásit k odběru řešení centrálního monitorování (například Azure Security Center nebo řešení pro monitorování sady Office 365) a nakonfigurovat ho tak, aby bylo zajištěno, že události zabezpečení budou přeneseny do řešení monitorování.
+Přihlaste se k odběru nebo implementujte příslušné monitorování zabezpečení. Například se přihlaste k odběru řešení centrálního monitorování (například Azure Security Center nebo Microsoft 365 monitorování) a nakonfigurujte ho tak, aby bylo zajištěno, že se události zabezpečení přenáší do řešení monitorování.
 
 > [!IMPORTANT]
 > Ve výchozím nastavení je služba trezoru OPC nasazená s [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) jako řešení monitorování. Důrazně doporučujeme přidat řešení zabezpečení, jako je [Azure Security Center](https://azure.microsoft.com/services/security-center/) .

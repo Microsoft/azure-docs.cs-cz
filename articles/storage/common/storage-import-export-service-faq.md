@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: f3a41fbd3cbd5b7c8eccfbea8833fdfedee97510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08c105bd8ae9b5e0667ef5279e6c9484c631bd48
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512403"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399036"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Služba import/export v Azure: nejčastější dotazy
 
@@ -35,9 +35,9 @@ Ano. Služba Azure import/export podporuje import do Azure File Storage. V tuto 
 
 Ano. Služba import/export pro Azure podporuje odběry Cloud Solution Provider (CSP).
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>Můžu použít službu import/export Azure ke kopírování poštovních schránek PST a dat SharePointu do O365?
+### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-microsoft-365"></a>Můžu použít službu import/export Azure ke kopírování poštovních schránek PST a dat SharePointu do Microsoft 365?
 
-Ano. Další informace najdete v pro [Import souborů PST nebo dat služby SharePoint do sady Office 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx).
+Ano. Další informace najdete v článku [Přehled importu souborů PST vaší organizace](/microsoft-365/compliance/importing-pst-files-to-office-365).
 
 ### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>Můžu použít službu import/export Azure ke kopírování záloh do offline služby Azure Backup?
 
@@ -45,17 +45,17 @@ Ano. Další informace najdete [v pracovní postup offline zálohování v Azure
 
 ### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>Můžu koupit jednotky pro úlohy importu/exportu od Microsoftu?
 
-Ne. Pro úlohy importu a exportu musíte dodávat vlastní jednotky.
+No. Pro úlohy importu a exportu musíte dodávat vlastní jednotky.
 
 ## <a name="preparing-disks-for-importexport"></a>Příprava disků pro import a export
 
 ### <a name="can-i-skip-the-drive-preparation-step-for-an-import-job-can-i-prepare-a-drive-without-copying"></a>Můžu pro úlohu importu přeskočit krok přípravy jednotky? Můžu připravit jednotku bez kopírování?
 
-Ne. Libovolná jednotka používaná k importu dat musí být připravená pomocí nástroje Azure WAImportExport Tool. Pomocí tohoto nástroje můžete také kopírovat data na disk.
+No. Libovolná jednotka používaná k importu dat musí být připravená pomocí nástroje Azure WAImportExport Tool. Pomocí tohoto nástroje můžete také kopírovat data na disk.
 
 ### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Potřebuji při vytváření úlohy exportu provést přípravu na disk?
 
-Ne. Doporučuje se provést několik předkontrol. Pokud chcete zjistit počet požadovaných disků, použijte příkaz PreviewExport nástroje WAImportExport. Další informace najdete v tématu [zobrazení náhledu využití jednotky u úlohy exportu](https://msdn.microsoft.com/library/azure/dn722414.aspx). Příkaz vám pomůže zobrazit náhled využití jednotky pro vybrané objekty blob, a to na základě velikosti jednotek, které budete používat. Také ověřte, zda můžete číst a zapisovat na pevný disk, který je dodán pro úlohu exportu.
+No. Doporučuje se provést několik předkontrol. Pokud chcete zjistit počet požadovaných disků, použijte příkaz PreviewExport nástroje WAImportExport. Další informace najdete v tématu [zobrazení náhledu využití jednotky u úlohy exportu](https://msdn.microsoft.com/library/azure/dn722414.aspx). Příkaz vám pomůže zobrazit náhled využití jednotky pro vybrané objekty blob, a to na základě velikosti jednotek, které budete používat. Také ověřte, zda můžete číst a zapisovat na pevný disk, který je dodán pro úlohu exportu.
 
 ## <a name="importexport-jobs"></a>Úlohy importu/exportu
 
@@ -128,7 +128,7 @@ Datové centrum Azure vrátí jednotku, která nedodržuje podporované požadav
 
 ### <a name="does-the-service-format-the-drives-before-returning-them"></a>Naformátuje služba jednotky před jejich vrácením?
 
-Ne. Všechny jednotky jsou šifrovány pomocí nástroje BitLocker.
+No. Všechny jednotky jsou šifrovány pomocí nástroje BitLocker.
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Jak mohu získat přístup k datům, která jsou importována touto službou?
 
@@ -144,7 +144,7 @@ Závislosti. Při přípravě jednotky můžete určit, jestli se mají cílové
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Je nástroj WAImportExport kompatibilní s 32 operačními systémy?
 
-Ne. Nástroj WAImportExport je kompatibilní jenom s 64 operačními systémy Windows. Úplný seznam podporovaného operačního systému najdete v části [podporované operační systémy](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements).
+No. Nástroj WAImportExport je kompatibilní jenom s 64 operačními systémy Windows. Úplný seznam podporovaného operačního systému najdete v části [podporované operační systémy](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements).
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Jaký je maximální velikost objektů blob bloku a velikosti objektu blob stránky podporované službou Azure import/export?
 

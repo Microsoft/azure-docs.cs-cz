@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 1a829f4e5f45394d9c5bbed0db9289727b816917
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a73a2bc82c7f4e77808f751bb8ba24adcacd2e31
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315027"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400379"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Konfigurace a přístup k protokolům pomalým dotazům pro Azure Database for MySQL-flexibilní Server pomocí Azure Portal
 
@@ -45,9 +45,6 @@ Na stránce **parametry serveru** se můžete vrátit do seznamu protokolů tím
 
 ## <a name="set-up-diagnostics"></a>Nastavení diagnostiky
 
-> [!NOTE]
-> Integrace s Azure Monitor nastavení diagnostiky pro přístup k protokolům probíhá nasazování a kompletní funkce budou brzy k dispozici.
-
 Pomalé protokoly dotazů jsou integrované s Azure Monitor nastavení diagnostiky, které vám umožní přesměrovat protokoly do Azure Monitor protokolů, Event Hubs nebo Azure Storage.
 
 1. V části **monitorování** na bočním panelu vyberte **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky**.
@@ -66,7 +63,7 @@ Pomalé protokoly dotazů jsou integrované s Azure Monitor nastavení diagnosti
 
 1. Přístup k protokolům pomalým dotazům můžete prozkoumat v datech, která jste nakonfigurovali. Zobrazení protokolů může trvat až 10 minut.
 
-Pokud jste do kanálu Azure Monitor protokoly (Log Analytics), podívejte se na některé [Ukázkové dotazy](concepts-audit-logs.md#analyze-logs-in-azure-monitor-logs) , které můžete použít k analýze. 
+Pokud jste do kanálu Azure Monitor protokoly (Log Analytics), podívejte se na některé [Ukázkové dotazy](concepts-slow-query-logs.md#analyze-logs-in-azure-monitor-logs) , které můžete použít k analýze. 
 
 ## <a name="next-steps"></a>Další kroky
 <!-- - See [Access slow query Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download slow query logs programmatically.-->

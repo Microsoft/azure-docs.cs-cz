@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
-ms.openlocfilehash: b9e6561c1ed9870b669ec5e9825a376f8bd03c4d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b67de07777fa3f4f2b6190d8b003eb0495e66d15
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145707"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400481"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Extrakce informací v Excelu pomocí Analýza textu a automatizace 
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 - Prostředek Analýza textu. Pokud ho ještě nemáte, můžete [ho vytvořit v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) a k dokončení tohoto kurzu použít bezplatnou úroveň.
 - [Klíč a koncový bod](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , který jste vygenerovali během registrace.
 - Tabulka obsahující problémy klienta. Ukázková data jsou k dispozici na GitHubu
-- Office 365 s OneDrivem pro firmy.
+- Microsoft 365 s OneDrivem pro firmy.
 
 ## <a name="add-the-excel-file-to-onedrive-for-business"></a>Přidání excelového souboru do OneDrivu pro firmy
 
@@ -78,10 +78,10 @@ Do proměnných, které jste vytvořili, přidejte následující informace. Př
 
 | Akce |Název   | Typ | Hodnota |
 |---------|---------|---|---|
-| Inicializovat proměnnou | var_person | Řetězec | Person (Osoba) |
+| Inicializovat proměnnou | var_person | Řetězec | Osoba |
 | Inicializovat proměnnou 2 | var_phone | Řetězec | Phone_Number |
 | Inicializovat proměnnou 3 | var_plumbing | Řetězec | vložení |
-| Inicializovat proměnnou 4 | var_other | Řetězec | ostatní | 
+| Inicializovat proměnnou 4 | var_other | Řetězec | other | 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/flow-variables.png" alt-text="informace obsažené v proměnných toku":::
@@ -123,7 +123,7 @@ V toku zadejte následující informace, chcete-li vytvořit nové připojení A
 
 | Pole           | Hodnota                                                                                                             |
 |-----------------|-------------------------------------------------------------------------------------------------------------------|
-| Název připojení | Název připojení k vašemu prostředku Analýza textu. Například `TAforPowerAutomate`. |
+| Název připojení | Název připojení k vašemu prostředku Analýza textu. Například, `TAforPowerAutomate`. |
 | Klíč účtu     | Klíč pro prostředek Analýza textu.                                                                                   |
 | Adresa URL webu        | Koncový bod pro prostředek Analýza textu.                                                       |
 
@@ -218,7 +218,7 @@ V části **Pokud není** podmínka klikněte na **přidat akci**a vyberte **akt
 
 ## <a name="test-the-workflow"></a>Test pracovního postupu
 
-V pravém horním rohu obrazovky klikněte na **Uložit**a pak na **test**. Vyberte možnost **provedem akci aktivace**. Klikněte na **uložit & test**, **Spustit tok**a potom na **Hotovo**.
+V pravém horním rohu obrazovky klikněte na **Uložit**a pak na **test**. Vyberte možnost  **provedem akci aktivace**. Klikněte na **uložit & test**, **Spustit tok**a potom na **Hotovo**.
 
 Excelový soubor se aktualizuje v účtu OneDrive. Bude vypadat podobně jako v následujícím příkladu.
 

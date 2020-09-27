@@ -3,12 +3,12 @@ title: Konfigurace nastavení využití v učebně Labs Azure Lab Services
 description: Přečtěte si, jak nakonfigurovat počet studentů pro testovací prostředí, jak je zaregistrované v testovacím prostředí, určete počet hodin, po které může virtuální počítač používat, a další.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 229147891d1456d7b7b11fd5297755842d85e600
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 742fcd2b504bce7ad2257edd559e4b66a9172d24
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445946"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399665"
 ---
 # <a name="add-and-manage-lab-users"></a>Přidání a správa uživatelů testovacího prostředí
 
@@ -16,7 +16,7 @@ Tento článek popisuje, jak přidat uživatele studenta do testovacího prostř
 
 ## <a name="add-users-to-a-lab"></a>Přidání uživatelů do testovacího prostředí
 
-V této části přidáte studenty do testovacího prostředí ručně nebo nahrajete soubor CSV. Udělejte toto:
+V této části přidáte studenty do testovacího prostředí ručně nebo nahrajete soubor CSV. Postupujte následovně:
 
 1. V levém podokně vyberte **Uživatelé**. 
 
@@ -166,7 +166,7 @@ Pokud chcete nastavit další kvóty, udělejte toto:
 
 Pokud chcete přidat studenty do testovacího prostředí učebny, použijte jejich e-mailové účty. Studenti můžou mít tyto typy e-mailových účtů:
 
-- E-mailový účet studenta poskytnutý instancí Azure Active Directory vysoké školy pro Office 365. 
+- E-mailový účet studenta poskytnutý instancí Azure Active Directory vaší univerzity
 - E-mailový účet Microsoft-doména, například *Outlook.com*, *hotmail.com*, *MSN.com*nebo *Live.com*.
 - E-mailový účet jiný než Microsoft, který poskytuje Yahoo! nebo Google. Tyto typy účtů však musí být propojeny s účet Microsoft.
 - Účet GitHub. Tento účet musí být propojený s účet Microsoft.

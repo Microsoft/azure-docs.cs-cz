@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
-ms.openlocfilehash: 973426c6d9d3a4c642e5f37aebe60acce54d581b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ade4a6b791a8aca963a056800bd8c58767aeb766
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326401"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400090"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -121,7 +121,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft. DevTestLab](#microsoftdevtestlab) |
 | [Microsoft. LabServices](#microsoftlabservices) |
 | [Microsoft. VisualStudio](#microsoftvisualstudio) |
-| **Migrate** |
+| **Migrace** |
 | [Microsoft. migruje](#microsoftmigrate) |
 | [Microsoft. OffAzure](#microsoftoffazure) |
 | **Monitorování** |
@@ -5098,7 +5098,7 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 
 ### <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
 
-Služba Azure: [Machine Learning Studio (Classic)](../machine-learning/studio/index.yml)
+Služba Azure: [Machine Learning Studio (Classic)](../machine-learning/classic/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -5242,36 +5242,6 @@ Služba Azure: [služba Machine Learning](../machine-learning/index.yml)
 > | Microsoft. MachineLearningServices/pracovní prostory/služby/AKS/klíče listkey/Action | Seznam klíčů pro služby AKS Services v Machine Learning Servicesch pracovních prostorech |
 > | Microsoft. MachineLearningServices/pracovní prostory/služby/AKS/DELETE | Odstraní služby AKS v Machine Learning Servicesch pracovních prostorech. |
 > | Microsoft. MachineLearningServices/pracovní prostory/služby/AKS/skore/Action | Hodnocení služby AKS v pracovních prostorech v Machine Learning Services |
-
-
-### <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
-
-Služba Azure: [Machine Learning Studio (Classic)](../machine-learning/classic/index.yml)
-
-> [!div class="mx-tableFixed"]
-> | Akce | Popis |
-> | --- | --- |
-> | Microsoft. MachineLearning/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků webové služby Machine Learning a povolí vytváření webových služeb. |
-> | Microsoft. MachineLearning/WebServices/Action | Vytvoření vlastností místních webových služeb pro podporované oblasti |
-> | Microsoft. MachineLearning/commitmentPlans/Read | Přečtěte si jakýkoliv plán závazku Machine Learning |
-> | Microsoft. MachineLearning/commitmentPlans/Write | Vytvořit nebo aktualizovat jakýkoliv plán závazku Machine Learning |
-> | Microsoft. MachineLearning/commitmentPlans/DELETE | Odstranit jakýkoli plán závazku Machine Learning |
-> | Microsoft. MachineLearning/commitmentPlans/JOIN/Action | Zapojit se do plánu závazku Machine Learning |
-> | Microsoft. MachineLearning/commitmentPlans/commitmentAssociations/Read | Přečtěte si Machine Learning přidružení plánu závazku. |
-> | Microsoft. MachineLearning/commitmentPlans/commitmentAssociations/Move/Action | Přesunout Machine Learning přidružení plánu závazku |
-> | Microsoft. MachineLearning/Locations/operationresults/Read | Získání výsledku operace Machine Learning |
-> | Microsoft. MachineLearning/Locations/operationsstatus/Read | Získat stav probíhající Machine Learning operace |
-> | Microsoft. MachineLearning/Operations/Read | Získat Machine Learning operace |
-> | Microsoft. MachineLearning/SKU/číst | Získat Machine Learning SKU plánu závazku |
-> | Microsoft. MachineLearning/WebServices/číst | Čtení libovolné Machine Learning webové služby |
-> | Microsoft. MachineLearning/WebServices/Write | Vytvoření nebo aktualizace jakékoli webové služby Machine Learning |
-> | Microsoft. MachineLearning/WebServices/DELETE | Odstranění jakékoli webové služby Machine Learning |
-> | Microsoft. MachineLearning/WebServices/klíče listkey/Read | Získání klíčů pro Machine Learning webovou službu |
-> | Microsoft. MachineLearning/pracovní prostory/číst | Číst všechny pracovní prostor Machine Learning |
-> | Microsoft. MachineLearning/pracovní prostory/zápis | Vytvořit nebo aktualizovat jakékoli pracovní prostor Machine Learning |
-> | Microsoft. MachineLearning/pracovní prostory/odstranit | Odstranit všechny pracovní prostor Machine Learning |
-> | Microsoft. MachineLearning/pracovní prostory/listworkspacekeys/Action | Seznam klíčů pro pracovní prostor Machine Learning |
-> | Microsoft. MachineLearning/pracovní prostory/resyncstoragekeys/Action | Opětovná synchronizace klíčů účtu úložiště nakonfigurovaného pro pracovní prostor Machine Learning |
 
 ## <a name="internet-of-things"></a>Internet věcí
 
@@ -6897,7 +6867,7 @@ Služba Azure: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 > | Microsoft. VisualStudio/Project/DELETE | Odstranit projekt |
 > | Microsoft. VisualStudio/Project/Read | Přečíst projekt |
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrace
 
 ### <a name="microsoftmigrate"></a>Microsoft. migruje
 
@@ -8239,7 +8209,7 @@ Služba Azure: [Azure Policy](../governance/policy/overview.md), [azure RBAC](ov
 > | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Authorization/elevateAccess/Action | Udělit volajícímu přístup Správce uživatelských přístupů v oboru tenanta |
-> | Microsoft. Authorization/classicAdministrators/Read | Přečte Správce předplatného. |
+> | Microsoft. Authorization/classicAdministrators/Read | Přečte Správce předplatného. Nemá vliv, pokud se používá jako NotAction ve vlastní roli. |
 > | Microsoft. Authorization/classicAdministrators/Write | Umožňuje přidat nebo upravit správce k předplatnému. |
 > | Microsoft. Authorization/classicAdministrators/DELETE | Odebere správce z předplatného. |
 > | Microsoft. Authorization/classicAdministrators/operationstatuses/Read | Získá stav operace Správce předplatného. |
@@ -9459,7 +9429,7 @@ Služba Azure: přehledy monitorování Microsoftu
 > | Microsoft. Intune/diagnosticsettings/DELETE | Odstranění nastavení diagnostiky |
 > | Microsoft. Intune/diagnosticsettingscategories/Read | Čtení kategorií nastavení diagnostiky |
 
-## <a name="other"></a>Další
+## <a name="other"></a>Jiné
 
 ### <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
