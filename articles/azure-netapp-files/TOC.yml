@@ -4,7 +4,7 @@
   items:
     - name: Co je služba Azure NetApp Files
       href: azure-netapp-files-introduction.md
-    - name: Vysvětlení hierarchie úložiště
+    - name: Hierarchie úložiště služby Azure NetApp Files
       href: azure-netapp-files-understand-storage-hierarchy.md
 - name: Rychlé starty
   expanded: true
@@ -61,6 +61,8 @@
       href: azure-netapp-files-create-netapp-account.md
     - name: Nastavení fondu kapacity
       href: azure-netapp-files-set-up-capacity-pool.md
+    - name: Správa fondu ručně zřizovaného kapacity QoS
+      href: manage-manual-qos-capacity-pool.md
     - name: Delegování podsítě do Azure NetApp Files
       href: azure-netapp-files-delegate-subnet.md
     - name: Vytvoření a správa svazku NFS
@@ -109,8 +111,12 @@
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
     - name: Řešení potíží
       items:
+        - name: Řešení potíží s fondy kapacity
+          href: troubleshoot-capacity-pools.md
         - name: Řešení potíží s replikací mezi oblastmi
           href: troubleshoot-cross-region-replication.md
+        - name: Řešení potíží se zásadami snímků
+          href: troubleshoot-snapshot-policies.md
 - name: Referenční informace
   items:
     - name: REST

@@ -6,19 +6,47 @@
       href: expressroute-introduction.md
 - name: Rychlý start
   items:
+    - name: Vytvoření okruhu ExpressRoute – portál
+      href: expressroute-howto-circuit-portal-resource-manager.md
+    - name: Vytvoření okruhu ExpressRoute – PowerShell
+      href: expressroute-howto-circuit-arm.md
+    - name: Vytvoření okruhu ExpressRoute – CLI
+      href: howto-circuit-cli.md
     - name: Vytvoření okruhu ExpressRoute – šablona ARM
       href: quickstart-create-expressroute-vnet-template.md
   expanded: true
 - name: Kurzy
   items:
-    - name: Vytvoření a změny okruhu
-      href: expressroute-howto-circuit-portal-resource-manager.md
     - name: Vytvoření a změny konfigurace partnerského vztahu
-      href: expressroute-howto-routing-portal-resource-manager.md
+      items:
+        - name: portál Azure
+          href: expressroute-howto-routing-portal-resource-manager.md
+        - name: Azure PowerShell
+          href: expressroute-howto-routing-arm.md
+        - name: Azure CLI
+          href: howto-routing-cli.md
+    - name: Konfigurace brány virtuální sítě pro ExpressRoute
+      items:
+        - name: portál Azure
+          href: expressroute-howto-add-gateway-portal-resource-manager.md
+        - name: Azure PowerShell
+          href: expressroute-howto-add-gateway-resource-manager.md
     - name: Propojení virtuální sítě k okruhu ExpressRoute
-      href: expressroute-howto-linkvnet-portal-resource-manager.md
+      items:
+        - name: portál Azure
+          href: expressroute-howto-linkvnet-portal-resource-manager.md
+        - name: Azure PowerShell
+          href: expressroute-howto-linkvnet-arm.md
+        - name: Azure CLI
+          href: howto-linkvnet-cli.md
     - name: Konfigurace filtrů směrování pro partnerský vztah Microsoftu
-      href: how-to-routefilter-portal.md
+      items:
+        - name: portál Azure
+          href: how-to-routefilter-portal.md
+        - name: Azure PowerShell
+          href: how-to-routefilter-powershell.md
+        - name: Azure CLI
+          href: how-to-routefilter-cli.md
 - name: Koncepty
   items:
     - name: Práce na dálku
@@ -27,20 +55,24 @@
           href: ../networking/working-remotely-support.md?toc=%2fazure%2fexpressroute%2ftoc.json
         - name: Hybridní připojení pro vzdálené uživatele
           href: work-remotely-support.md
-    - name: Modely připojení
-      href: expressroute-connectivity-models.md
+    - name: Než začnete využívat ExpressRoute
+      items:
+        - name: Požadavky
+          href: expressroute-prerequisites.md
+        - name: Modely připojení
+          href: expressroute-connectivity-models.md
+        - name: Pracovní postupy
+          href: expressroute-workflows.md
+        - name: Požadavky směrování
+          href: expressroute-routing.md
     - name: Umístění a partneři
       items:
         - name: Poskytovatelé podle umístění
           href: expressroute-locations-providers.md
         - name: Umístění podle poskytovatele
           href: expressroute-locations.md
-    - name: Požadavky
-      href: expressroute-prerequisites.md
-    - name: Pracovní postupy
-      href: expressroute-workflows.md
-    - name: Požadavky směrování
-      href: expressroute-routing.md
+    - name: ExpressRoute – nejčastější dotazy
+      href: expressroute-faqs.md
     - name: Okruhy a peering
       items:
         - name: Informace o okruzích a peeringu
@@ -49,10 +81,8 @@
           href: about-upgrade-circuit-bandwidth.md
         - name: Přesun okruhů z modelu nasazení Classic do Resource Manager
           href: expressroute-move.md
-    - name: BFD přes ExpressRoute
-      href: expressroute-bfd.md
-    - name: Požadavky QoS
-      href: expressroute-qos.md
+    - name: Informace o branách Expressroute
+      href: expressroute-about-virtual-network-gateways.md
     - name: Informace o službě ExpressRoute FastPath
       href: about-fastpath.md
     - name: O službě ExpressRoute Direct
@@ -61,28 +91,16 @@
       href: expressroute-global-reach.md
     - name: Informace o šifrování ExpressRoute
       href: expressroute-about-encryption.md
-    - name: Zabezpečení
-      items:
-        - name: Standardní hodnoty zabezpečení
-          href: security-baseline.md
-        - name: Atributy zabezpečení
-          href: expressroute-security-controls.md
-    - name: Informace o branách virtuální sítě
-      href: expressroute-about-virtual-network-gateways.md
     - name: Připojení Azure k veřejným cloudům
       href: expressroute-connect-azure-to-public-cloud.md
-    - name: Interoperabilita možností připojení back-endu
-      items:
-        - name: Úvod a nastavení testu
-          href: ../networking/connectivty-interoperability-preface.md?toc=%2fazure%2fexpressroute%2ftoc.json
-        - name: Konfigurace nastavení testu
-          href: ../networking/connectivty-interoperability-configuration.md?toc=%2fazure%2fexpressroute%2ftoc.json
-        - name: Analýza roviny řízení
-          href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
-        - name: Analýza roviny dat
-          href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Možnosti připojení mezi sítěmi
       href: cross-network-connectivity.md
+    - name: Atributy zabezpečení
+      href: expressroute-security-controls.md
+    - name: BFD přes ExpressRoute
+      href: expressroute-bfd.md
+    - name: Požadavky QoS
+      href: expressroute-qos.md
     - name: Vysoká dostupnost – návrh
       href: designing-for-high-availability-with-expressroute.md
     - name: Zotavení po havárii – návrh
@@ -93,87 +111,24 @@
           href: use-s2s-vpn-as-backup-for-expressroute-privatepeering.md
 - name: Návody
   items:
-    - name: Vytvoření a změny okruhu
+    - name: Konfigurace funkce ExpressRoute Direct
       items:
-        - name: portál Azure
-          href: expressroute-howto-circuit-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-circuit-arm.md
-        - name: Azure CLI
-          href: howto-circuit-cli.md
-        - name: Šablona Azure Resource Manageru
-          displayName: 'ARM,resource manager template'
-          href: expressroute-howto-circuit-resource-manager-template.md
-    - name: Vytvoření a změny konfigurace partnerského vztahu
-      items:
-        - name: portál Azure
-          href: expressroute-howto-routing-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-routing-arm.md
-        - name: Azure CLI
-          href: howto-routing-cli.md
-    - name: Propojení virtuální sítě k okruhu ExpressRoute
-      items:
-        - name: portál Azure
-          href: expressroute-howto-linkvnet-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-linkvnet-arm.md
-        - name: Azure CLI
-          href: howto-linkvnet-cli.md
-    - name: Šifrování provozu přes okruhy
-      items:
-        - name: Konfigurace sítě VPN typu Site-to-Site přes partnerský uzel Microsoftu
-          href: site-to-site-vpn-over-microsoft-peering.md
-        - name: Konfigurace režimu přenosu IPsec pro hostitele s Windows
-          href: expressroute-howto-ipsec-transport-private-windows.md
+        - name: Konfigurace ExpressRoute Direct
+          items:
+            - name: portál Azure
+              href: how-to-expressroute-direct-portal.md
+            - name: Azure PowerShell
+              href: expressroute-howto-erdirect.md
+            - name: Azure CLI
+              href: expressroute-howto-expressroute-direct-cli.md
+        - name: Konfigurace MACsec pro porty ExpressRoute Direct
+          href: expressroute-howto-macsec.md
     - name: Konfigurace služby ExpressRoute Global Reach
       items:
         - name: Azure PowerShell
           href: expressroute-howto-set-global-reach.md
         - name: Azure CLI
           href: expressroute-howto-set-global-reach-cli.md
-    - name: Konfigurace brány virtuální sítě pro ExpressRoute
-      items:
-        - name: portál Azure
-          href: expressroute-howto-add-gateway-portal-resource-manager.md
-        - name: Azure PowerShell
-          href: expressroute-howto-add-gateway-resource-manager.md
-    - name: Konfigurace společně používaných připojení typu Site-to-Site a ExpressRoute
-      href: expressroute-howto-coexist-resource-manager.md
-    - name: Konfigurace ExpressRoute Direct
-      items:
-        - name: portál Azure
-          href: how-to-expressroute-direct-portal.md
-        - name: Azure PowerShell
-          href: expressroute-howto-erdirect.md
-        - name: Azure CLI
-          href: expressroute-howto-expressroute-direct-cli.md
-    - name: Konfigurace MACsec pro porty ExpressRoute Direct
-      href: expressroute-howto-macsec.md
-    - name: Konfigurace filtrů směrování pro partnerský vztah Microsoftu
-      items:
-        - name: portál Azure
-          href: how-to-routefilter-portal.md
-        - name: Azure PowerShell
-          href: how-to-routefilter-powershell.md
-        - name: Azure CLI
-          href: how-to-routefilter-cli.md
-    - name: Povolení a zákaz peeringu
-      href: expressroute-howto-reset-peering.md
-    - name: Přechod od veřejného partnerského uzlu k partnerskému uzlu Microsoftu
-      href: how-to-move-peering.md
-    - name: Přesun okruhu z modelu nasazení Classic do Resource Manager
-      href: expressroute-howto-move-arm.md
-    - name: Migrace přidružených virtuálních sítí z modelu nasazení Classic do Resource Manageru
-      href: expressroute-migration-classic-resource-manager.md
-    - name: Vytvoření zónově redundantní brány virtuální sítě v zónách dostupnosti Azure
-      href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
-    - name: Konfigurace směrovače pro ExpressRoute
-      items:
-        - name: Konfigurace směrovače
-          href: expressroute-config-samples-routing.md
-        - name: Ukázky konfigurace směrovače pro překlad adres (NAT)
-          href: expressroute-config-samples-nat.md
     - name: Monitorování
       items:
         - name: 'Monitorování, metriky a výstrahy služby ExpressRoute'
@@ -182,20 +137,32 @@
           href: how-to-npm.md
         - name: Konfigurace vlastních upozornění pro monitorování inzerovaných tras
           href: how-to-custom-route-alert.md
-    - name: Classic a články starší verze
+    - name: Správa peeringu
       items:
-        - name: Úprava okruhu
-          href: expressroute-howto-circuit-classic.md
-        - name: Vytvoření a změny konfigurace partnerského vztahu
-          href: expressroute-howto-routing-classic.md
-        - name: Propojení virtuální sítě k okruhu ExpressRoute
-          href: expressroute-howto-linkvnet-classic.md
-        - name: Konfigurace společně používaných připojení typu S2S a ExpressRoute
-          href: expressroute-howto-coexist-classic.md
-        - name: Přidání brány do virtuální sítě
-          href: expressroute-howto-add-gateway-classic.md
-        - name: Vytvoření a úprava veřejného partnerského vztahu
-          href: about-public-peering.md
+        - name: Povolení a zákaz peeringu
+          href: expressroute-howto-reset-peering.md
+        - name: Přechod od veřejného partnerského uzlu k partnerskému uzlu Microsoftu
+          href: how-to-move-peering.md
+    - name: Šifrování provozu přes okruhy
+      items:
+        - name: Konfigurace sítě VPN typu Site-to-Site přes partnerský uzel Microsoftu
+          href: site-to-site-vpn-over-microsoft-peering.md
+        - name: IPsec VPN přes privátní partnerské vztahy
+          href: ../vpn-gateway/site-to-site-vpn-private-peering.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: Konfigurace režimu přenosu IPsec pro hostitele s Windows
+          href: expressroute-howto-ipsec-transport-private-windows.md
+    - name: Redundance
+      items:
+        - name: Konfigurace společně používaných připojení typu Site-to-Site a ExpressRoute
+          href: expressroute-howto-coexist-resource-manager.md
+        - name: Vytvoření zónově redundantní brány virtuální sítě v zónách dostupnosti Azure
+          href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
+    - name: Přechod z modelu nasazení Classic na Resource Manager
+      items:
+        - name: Přesun okruhu z modelu nasazení Classic do Resource Manager
+          href: expressroute-howto-move-arm.md
+        - name: Migrace přidružených virtuálních sítí z modelu nasazení Classic do Resource Manageru
+          href: expressroute-migration-classic-resource-manager.md
     - name: Osvědčené postupy
       items:
         - name: Osvědčené postupy pro zabezpečení sítě a cloudové služby
@@ -233,8 +200,22 @@
       href: /azure/templates/microsoft.network/expressroutecircuits
 - name: Zdroje a prostředky
   items:
-    - name: ExpressRoute – nejčastější dotazy
-      href: expressroute-faqs.md
+    - name: Konfigurace směrovače pro ExpressRoute
+      items:
+        - name: Konfigurace směrovače
+          href: expressroute-config-samples-routing.md
+        - name: Ukázky konfigurace směrovače pro překlad adres (NAT)
+          href: expressroute-config-samples-nat.md
+    - name: Interoperabilita možností připojení back-endu
+      items:
+        - name: Úvod a nastavení testu
+          href: ../networking/connectivty-interoperability-preface.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: Konfigurace nastavení testu
+          href: ../networking/connectivty-interoperability-configuration.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: Analýza roviny řízení
+          href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: Analýza roviny dat
+          href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Případové studie
@@ -274,3 +255,19 @@
           href: 'https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/'
         - name: Nastavení veřejného partnerského uzlu pro váš okruh
           href: 'https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/'
+    - name: Classic a články starší verze
+      items:
+        - name: Úprava okruhu
+          href: expressroute-howto-circuit-classic.md
+        - name: Vytvoření a změny konfigurace partnerského vztahu
+          href: expressroute-howto-routing-classic.md
+        - name: Propojení virtuální sítě k okruhu ExpressRoute
+          href: expressroute-howto-linkvnet-classic.md
+        - name: Konfigurace společně používaných připojení typu S2S a ExpressRoute
+          href: expressroute-howto-coexist-classic.md
+        - name: Přidání brány do virtuální sítě
+          href: expressroute-howto-add-gateway-classic.md
+        - name: Vytvoření a úprava veřejného partnerského vztahu
+          href: about-public-peering.md
+    - name: Standardní hodnoty zabezpečení
+      href: security-baseline.md

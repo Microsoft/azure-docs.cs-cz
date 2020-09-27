@@ -2,7 +2,7 @@
 title: Dokumentace k Managed HSM služby Azure Key Vault
 summary: Naučte se využívat Managed HSM k vytváření a správě klíčů, které zajišťují přístup k vašim cloudovým prostředkům, aplikacím a řešením a jejich šifrování. Kurzy, reference k rozhraní API a další zdroje informací
 metadata:
-  title: Dokumentace k Azure Managed HSM
+  title: Dokumentace ke službě Azure Managed HSM
   description: Naučte se využívat tuto službu k vytváření a správě klíčů, které zajišťují přístup k vašim cloudovým prostředkům, aplikacím a řešením a jejich šifrování. Kurzy, reference k rozhraní API a další zdroje informací
   services: key-vault
   ms.service: key-vault
@@ -11,12 +11,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 09/15/2020
-  ms.openlocfilehash: d17d119528c04b270e9dffe5b824bafcc89472dc
-  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.openlocfilehash: e8f53bbc7d08b30d8c3431d5542f72762789a2bc
+  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90991956"
+  ms.lasthandoff: 09/25/2020
+  ms.locfileid: "91320570"
 landingContent:
 - title: Informace o Managed HSM služby Azure Key Vault (Preview)
   linkLists:

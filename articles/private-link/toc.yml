@@ -24,6 +24,10 @@
     - name: Vytvoření služby Private Link – šablona Resource Manageru
       displayName: Resource Manager
       href: create-private-link-service-template.md
+- name: Kurzy
+  items:
+    - name: Připojení k účtu úložiště
+      href: tutorial-private-endpoint-storage-portal.md
 - name: Koncepty
   items:
     - name: Privátní koncový bod
@@ -38,8 +42,6 @@
           href: security-baseline.md
 - name: Postup
   items:
-    - name: Privátní připojení k účtu úložiště
-      href: create-private-endpoint-storage-portal.md
     - name: Privátní připojení k účtu Cosmos DB
       href: create-private-endpoint-cosmosdb-portal.md
     - name: Privátní připojení k webové aplikaci

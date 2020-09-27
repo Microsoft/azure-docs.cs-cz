@@ -16,6 +16,8 @@
       href: connectivity.md
     - name: Konfigurace úložiště
       href: storage-configuration.md
+    - name: Pokyny pro stanovení velikosti
+      href: sizing-guidance.md
 - name: Návody
   items:
     - name: Instalace nástrojů
@@ -47,7 +49,7 @@
         - name: Vytvoření kontroleru dat (azdata)
           href: create-data-controller-using-azdata.md
         - name: Vytvoření kontroleru dat s využitím Kubernetes
-          href: create-data-controller-using-k8s-native-tools.md
+          href: create-data-controller-using-kubernetes-native-tools.md
     - name: Běžná prostředí pro datové služby s podporou služby Azure Arc
       items:
         - name: Monitorování pomocí řídicích panelů (Azure Data Studio)
@@ -90,6 +92,8 @@
           href: create-postgresql-hyperscale-server-group.md
         - name: Vytvoření skupiny serverů hyperškálování Postgres (Azure Data Studio)
           href: create-postgresql-hyperscale-server-group-azure-data-studio.md
+        - name: Vytvoření skupiny serverů Postgres Hyperscale – nástroje nativní pro Kubernetes
+          href: create-postgresql-hyperscale-server-group-kubernetes-native-tools.md
         - name: Připojit
           href: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
     - name: Koncepty
@@ -148,6 +152,8 @@
           href: create-sql-managed-instance.md
         - name: Vytvoření SQL Managed Instance (Azure Data Studio)
           href: create-sql-managed-instance-azure-data-studio.md
+        - name: Vytvoření s použitím nástrojů Kubernetes
+          href: create-sql-managed-instance-using-kubernetes-native-tools.md
         - name: Připojit
           href: connect-managed-instance.md
     - name: Postupy

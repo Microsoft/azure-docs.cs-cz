@@ -10,12 +10,12 @@ metadata:
   author: keferna
   ms.author: keferna
   ms.date: 09/02/2020
-  ms.openlocfilehash: 39d0f00bd59663da8ec5529e9a7be185d93e4de0
-  ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+  ms.openlocfilehash: 16c122bd0efafce395be3ff931ef5324c0b757d1
+  ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/03/2020
-  ms.locfileid: "89421675"
+  ms.lasthandoff: 09/25/2020
+  ms.locfileid: "91371469"
 landingContent:
 - title: Práce na komerčním marketplace
   linkLists:
@@ -97,14 +97,14 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Generování sestav plateb
-      url: ./partner-center-portal/payout-summary-overview.md
+    - text: Výpisy plateb
+      url: /partner-center/payout-statement?context=/azure/marketplace/context/context
     - text: Prahové hodnoty, způsoby a časové rámce plateb
-      url: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+      url: /partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context
     - text: Nastavení platebního účtu a daňových formulářů
-      url: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+      url: /partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context
     - text: Podrobné informace o daních
-      url: ./partner-center-portal/tax-details-paid-transactions.md
+      url: /partner-center/tax-details-marketplace?context=/azure/marketplace/context/context
     - text: Fakturace pro komerční marketplace
       url: ./partner-center-portal/billing-details.md
 - title: API – referenční informace

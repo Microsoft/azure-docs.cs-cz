@@ -115,6 +115,8 @@
           href: windows-stop-error-bad-system-config-info.md
         - name: Chyba zastavení Windows – stav nedostatku paměti
           href: troubleshoot-windows-stop-error.md
+        - name: Chyba zastavení Windows – ukončení systémového procesu
+          href: windows-stop-error-system-process-terminated.md
 - name: Nejde se připojit k virtuálnímu počítači
   items:
     - name: Protokol RDP

@@ -27,6 +27,8 @@
       href: roles.md
     - name: Pokročilá detekce útoků s více fázemi
       href: fusion.md
+    - name: Použití vlastní platformy strojového učení
+      href: bring-your-own-ml.md
     - name: Rozšíření Azure Sentinelu napříč pracovními prostory a tenanty
       href: extend-sentinel-across-workspaces-tenants.md
     - name: Identifikace pokročilých hrozeb pomocí UEBA
@@ -66,6 +68,8 @@
               href: connect-microsoft-defender-advanced-threat-protection.md
             - name: Microsoft Defender pro identity (dříve Azure ATP)
               href: connect-azure-atp.md
+            - name: Microsoft Defender for Office 365 (dříve Office 365 ATP)
+              href: connect-office-365-advanced-threat-protection.md
             - name: Azure DDoS Protection
               href: connect-azure-ddos-protection.md
             - name: Azure Firewall

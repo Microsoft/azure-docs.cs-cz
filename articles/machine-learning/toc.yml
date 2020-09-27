@@ -15,19 +15,18 @@
 - name: Kurzy
   expanded: true
   items:
-    - name: Python (1. den)
+    - name: Python (1. den) – začínáme
       expanded: true
       items:
         - name: 1. Nastavení místního počítače
           href: tutorial-1st-experiment-sdk-setup-local.md
-        - name: 2. Hello World
+        - name: 2. Hello world
           href: tutorial-1st-experiment-hello-world.md
-        - name: 3. Učení modelu
+        - name: 3. Trénování modelu
           href: tutorial-1st-experiment-sdk-train.md
         - name: 4. Přineste si vlastní data
           href: tutorial-1st-experiment-bring-data.md
     - name: Poznámkové bloky Jupyter
-      expanded: true
       items:
         - name: Klasifikace obrázků (data MNIST)
           items:
@@ -331,8 +330,13 @@
               displayName: parameter
               href: how-to-tune-hyperparameters.md
         - name: Práce s využitím MLflow
-          displayName: 'log, monitor, deploy, metrics, Databricks, model registry, register'
-          href: how-to-use-mlflow.md
+          items:
+            - name: Sledování experimentů s využitím MLflow
+              displayName: 'log, monitor, deploy, metrics,  model registry, register'
+              href: how-to-use-mlflow.md
+            - name: Sledování spuštění Azure Databricks s využitím MLflow
+              displayName: 'log, monitor, deploy, metrics, databricks'
+              href: how-to-use-mlflow-azure-databricks.md
         - name: Scikit-learn
           href: how-to-train-scikit-learn.md
         - name: TensorFlow
@@ -552,6 +556,9 @@
     - name: Integrované služby Azure Policy
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
+    - name: Kurátorovaná prostředí
+      displayName: 'environments, curated environments'
+      href: resource-curated-environments.md
 - name: Zdroje a prostředky
   items:
     - name: "Poznámky k\_verzi"
@@ -578,6 +585,3 @@
     - name: Funkce usnadnění pro návrháře
       displayName: 'accessibility, designer, visual interface, screen reader, keyboard shortcuts'
       href: designer-accessibility.md
-    - name: Kurátorovaná prostředí
-      displayName: 'environments, curated environments'
-      href: resource-curated-environments.md

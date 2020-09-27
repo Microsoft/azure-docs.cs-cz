@@ -138,8 +138,6 @@
               href: point-to-site-how-to-vpn-client-install-azure-cert.md
             - name: Vytvoření a instalace konfiguračních souborů klienta VPN
               href: point-to-site-vpn-client-configuration-azure-cert.md
-            - name: Správa relací
-              href: p2s-session-management.md
         - name: Ověřování RADIUS
           items:
             - name: Konfigurace P2S VPN
@@ -170,6 +168,8 @@
               href: vpn-gateway-howto-openvpn-clients.md
             - name: Přechod na protokol OpenVPN nebo IKEv2 od SSTP
               href: ikev2-openvpn-from-sstp.md
+        - name: Konfigurace správy relací P2S
+          href: p2s-session-management.md
         - name: Přechod na certifikát veřejné brány CA pro P2S
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Konfigurace tunelu zařízení VPN AlwaysOn

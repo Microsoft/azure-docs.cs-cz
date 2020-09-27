@@ -354,6 +354,9 @@
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Stavy a životní cyklus
       href: ../states-lifecycle.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: Volání PUT pro operace vytváření nebo aktualizace
+      href: ../put-calls-create-or-update.md
+      maintainContext: true
     - name: Monitorování
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Diagnostika spouštění
@@ -373,7 +376,7 @@
             - name: PowerShell
               href: dedicated-hosts-powershell.md
             - name: Portál
-              href: dedicated-hosts-portal.md
+              href: ../dedicated-hosts-portal.md
         - name: Nasazení spotových virtuálních počítačů
           items:
             - name: Portál
@@ -499,7 +502,7 @@
                 - name: Vytvoření virtuálního počítače z verze image
                   href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: Řešení potíží se sdílenými imagemi
-              href: troubleshooting-shared-images.md
+              href: ../troubleshooting-shared-images.md
             - name: Použití klíčů spravovaných zákazníkem
               displayName: 'SSE, CMK, encrypt'
               href: ../image-version-encryption.md
@@ -510,7 +513,7 @@
             - name: Použití Image Builderu
               items:
                 - name: CLI
-                  href: ../linux/image-builder.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: image-builder.md
                 - name: PowerShell
                   href: image-builder-powershell.md
             - name: Použití virtuální sítě
@@ -525,8 +528,8 @@
                   href: ../linux/image-builder-permissions-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Úloha DevOps
               href: ../linux/image-builder-devops-task.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Referenční informace k šablonám ARM
-              displayName: Azure Resource Manager
+            - name: Referenční informace k šabloně Image Builderu
+              displayName: json
               href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Sestavení pro galerie imagí
               href: image-builder-gallery.md
@@ -535,7 +538,7 @@
             - name: Ukládání skriptů
               href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Řešení potíží
-              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
+              href: ../linux/image-builder-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Vyhledání a použití imagí
           href: cli-ps-findimage.md
         - name: Informace o plánu nákupu
@@ -818,8 +821,9 @@
         - name: Virtual Machine Scale Sets
           href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: Vysoká dostupnost
-          href: manage-availability.md
+          href: ../manage-availability.md
         - name: Vytvoření skupiny umístění bezkontaktní komunikace
+          displayName: ppg aligned colocation co-location
           items:
             - name: Portál
               href: proximity-placement-groups-portal.md

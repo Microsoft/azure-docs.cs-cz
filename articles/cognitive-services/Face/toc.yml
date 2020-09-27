@@ -13,7 +13,7 @@
       items:
         - name: Rozpoznávání tváří na obrázku
           items:
-            - name: 'C#'
+            - name: C#
               href: QuickStarts/CSharp.md
             - name: cURL
               href: QuickStarts/curl.md
@@ -35,7 +35,7 @@
   items:
     - name: S využitím klientské sady SDK
       items:
-        - name: 'C#'
+        - name: C#
           href: Tutorials/FaceAPIinCSharpTutorial.md
 - name: Koncepty
   items:
@@ -47,9 +47,7 @@
   items:
     - name: Rozpoznávání tváří
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-    - name: Identifikace tváří
-      href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
-    - name: Přidání tváří
+    - name: Přidání tváří do skupiny
       href: Face-API-How-to-Topics/how-to-add-faces.md
     - name: Použití atributu HeadPose
       href: Face-API-How-to-Topics/how-to-use-headpose.md

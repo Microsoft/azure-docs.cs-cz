@@ -277,19 +277,19 @@
     - name: Vyplacení
       items:
         - name: Vyplacení
-          href: partner-center-portal/get-paid.md
+          href: /partner-center/marketplace-get-paid?context=/azure/marketplace/context/context
         - name: Nastavení platebního účtu a daňových formulářů
-          href: partner-center-portal/set-up-your-payout-account-tax-forms.md
-        - name: 'Prahové hodnoty, způsoby a časové rámce plateb'
-          href: partner-center-portal/payment-thresholds-methods-timeframes.md
-        - name: Souhrnný přehled plateb
-          href: partner-center-portal/payout-summary-overview.md
-        - name: Přehledy plateb
-          href: partner-center-portal/payout-summary.md
+          href: /partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context
+        - name: Prahové hodnoty a časové rámce plateb
+          href: /partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context
+        - name: Výpisy plateb
+          href: /partner-center/payout-statement?context=/azure/marketplace/context/context
         - name: Podrobnosti zásad plateb
-          href: partner-center-portal/payout-policy-details.md
+          href: /partner-center/payout-policy-details?context=/azure/marketplace/context/context
         - name: Podrobné informace o daních
-          href: partner-center-portal/tax-details-paid-transactions.md
+          href: /partner-center/tax-details-marketplace?context=/azure/marketplace/context/context
+        - name: Nejčastější dotazy k platbám
+          href: /partner-center/payout-faq?context=/azure/marketplace/context/context
     - name: Referenční materiály k rozhraní API CPP
       items:
         - name: Přehled

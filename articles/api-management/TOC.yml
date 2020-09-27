@@ -197,6 +197,8 @@
       items:
         - name: Nastavení nebo úprava zásad
           href: set-edit-policies.md
+        - name: Ladění zásad
+          href: api-management-debug-policies.md
         - name: Výrazy zásad
           href: api-management-policy-expressions.md
         - name: Vlastní ukládání do mezipaměti
@@ -221,6 +223,8 @@
           href: api-management-cross-domain-policies.md
         - name: Zásady transformace
           href: api-management-transformation-policies.md
+        - name: Zásady integrace Dapr (Distributed Application Runtime)
+          href: api-management-dapr-policies.md
     - name: Správa v produkčním prostředí
       items:
         - name: Export rozhraní API do prostředí Power Platform

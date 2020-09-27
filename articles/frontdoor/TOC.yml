@@ -9,6 +9,10 @@
   items:
     - name: Vytvoření služby Front Door – portál
       href: quickstart-create-front-door.md
+    - name: Vytvoření služby Front Door – PowerShell
+      href: quickstart-create-front-door-powershell.md
+    - name: Vytvoření služby Front Door – CLI
+      href: quickstart-create-front-door-cli.md
     - name: Vytvoření služby Front Door – šablona ARM
       href: quickstart-create-front-door-template.md
 - name: Kurzy

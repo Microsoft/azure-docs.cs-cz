@@ -40,6 +40,10 @@
           href: costs/understand-work-scopes.md
         - name: Možnosti filtrování a seskupení
           href: costs/group-filter.md
+        - name: Plánování pro správu nákladů
+          href: understand/plan-manage-costs.md
+        - name: Jak zabránit neočekávaným nákladům
+          href: understand/analyze-unexpected-charges.md
         - name: Správa nákladů s využitím automatizace
           href: costs/manage-automation.md
         - name: Cost Management pro partnery
@@ -114,6 +118,8 @@
           href: understand/mca-overview.md
         - name: Fakturační účty pro smlouvu s partnerem Microsoftu
           href: understand/mpa-overview.md
+        - name: Informace o přenosu předplatných
+          href: understand/subscription-transfer.md
         - name: Přenos předplatných mezi partnery (Preview)
           href: manage/azure-plan-subscription-transfer-partners.md
 - name: Návody
@@ -124,7 +130,7 @@
           items:
             - name: Úlohy správce účtu
               href: manage/account-admin-tasks.md
-            - name: Úprava profilu
+            - name: Úprava kontaktních údajů pro fakturaci
               href: manage/change-azure-account-profile.md
             - name: Řešení zůstatku po splatnosti
               href: manage/resolve-past-due-balance.md
@@ -246,8 +252,6 @@
               href: manage/upgrade-azure-subscription.md
     - name: Provádění klíčových úloh správy nákladů
       items:
-        - name: Jak zabránit neočekávaným nákladům
-          href: manage/getting-started.md
         - name: Výpočet cen
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Použití analýzy nákladů pro běžné úlohy
