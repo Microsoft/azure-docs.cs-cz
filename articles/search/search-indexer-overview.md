@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 09/25/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3f3c53d412105489a814f082bbc0fd209476ecf9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7f6be959bf09cbe20bb37dfa3d17d64467758bd6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971389"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397891"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexery ve službě Azure Cognitive Search
 
@@ -60,7 +60,7 @@ Pokud je index při počátečním spuštění prázdný, načtou se indexer vš
 
 Pro každý dokument, který ingestuje, indexer implementuje nebo koordinuje více kroků od načtení dokumentu do konečného vyhledávacího modulu pro indexování. V případě potřeby je indexer také instrumentací pro dovednosti provádění a výstupy za předpokladu, že je definována dovednosti.
 
-![Fáze indexeru](./media/search-indexer-overview/indexer-stages.png "fáze indexeru")
+:::image type="content" source="media/search-indexer-overview/indexer-stages.png" alt-text="Fáze indexeru" border="false":::
 
 ### <a name="stage-1-document-cracking"></a>Fáze 1: trhliny dokumentů
 

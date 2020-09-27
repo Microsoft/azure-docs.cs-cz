@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: a2469768c2207210e17035a67d4b05fb0cc6bb6c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 28116a373b66aa5bfa6d3ebbf027c2db6d24ba5d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254172"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397126"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>Konfigurace kontejnerů Docker Počítačové zpracování obrazu
 
@@ -33,10 +33,12 @@ Kontejner také obsahuje následující nastavení konfigurace specifické pro k
 
 |Vyžadováno|Nastavení|Účel|
 |--|--|--|
-|No|ReadEngineConfig:ResultExpirationPeriod|Doba vypršení platnosti výsledku v hodinách Výchozí hodnota je 48 hodin. Nastavení určuje, kdy má systém vymazat výsledky rozpoznávání. Například pokud `resultExpirationPeriod=1` systém vymaže výsledek rozpoznávání 1 hodina po procesu. Pokud `resultExpirationPeriod=0` systém vymaže výsledek rozpoznávání po načtení výsledku.|
-|No|Mezipaměť: Redis|Povoluje úložiště Redis pro ukládání výsledků. Mezipaměť je *vyžadována* , pokud je za nástroj pro vyrovnávání zatížení umístěno více kontejnerů pro čtení.|
-|No|Fronta: RabbitMQ|Povoluje RabbitMQ pro odesílání úloh. Toto nastavení je užitečné, když je za nástroj pro vyrovnávání zatížení umístěno více kontejnerů pro čtení.|
-|No|Storage::D ocumentStore:: MongoDB|Povoluje MongoDB pro trvalé úložiště výsledků.|
+|No|ReadEngineConfig:ResultExpirationPeriod| pouze kontejnery v 2.0. Doba vypršení platnosti výsledku v hodinách Výchozí hodnota je 48 hodin. Nastavení určuje, kdy má systém vymazat výsledky rozpoznávání. Například pokud `resultExpirationPeriod=1` systém vymaže výsledek rozpoznávání 1 hodina po procesu. Pokud `resultExpirationPeriod=0` systém vymaže výsledek rozpoznávání po načtení výsledku.|
+|No|Mezipaměť: Redis| pouze kontejnery v 2.0. Povoluje úložiště Redis pro ukládání výsledků. Mezipaměť je *vyžadována* , pokud je za nástroj pro vyrovnávání zatížení umístěno více kontejnerů pro čtení.|
+|No|Fronta: RabbitMQ|pouze kontejnery v 2.0. Povoluje RabbitMQ pro odesílání úloh. Toto nastavení je užitečné, když je za nástroj pro vyrovnávání zatížení umístěno více kontejnerů pro čtení.|
+|No|Fronta: Azure: QueueVisibilityTimeoutInMilliseconds | pouze kontejnery v3. x. Čas, kdy bude zpráva viditelná, když ji jiný pracovník zpracovává. |
+|No|Storage::D ocumentStore:: MongoDB|pouze kontejnery v 2.0. Povoluje MongoDB pro trvalé úložiště výsledků. |
+|No|Storage: ObjectStore: Azureblobu: ConnectionString| pouze kontejnery v3. x. Připojovací řetězec služby Azure Blob Storage. |
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
@@ -118,6 +120,30 @@ Nahradit {_argument_name_} vlastními hodnotami:
 Následující příklady Docker jsou určené pro kontejner pro čtení.
 
 
+# <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-1)
+
+### <a name="basic-example"></a>Základní příklad
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+
+```
+
+### <a name="logging-example"></a>Příklad protokolování 
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+Logging:Console:LogLevel:Default=Information
+```
+
 # <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
 
 ### <a name="basic-example"></a>Základní příklad
@@ -141,13 +167,13 @@ ApiKey={API_KEY}
 Logging:Console:LogLevel:Default=Information
 ```
 
-# <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-1)
+# <a name="version-20-preview"></a>[Verze 2,0-Preview](#tab/version-2)
 
 ### <a name="basic-example"></a>Základní příklad
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -158,7 +184,7 @@ ApiKey={API_KEY}
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

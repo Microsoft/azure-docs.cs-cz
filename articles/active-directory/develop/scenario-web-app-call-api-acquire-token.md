@@ -1,5 +1,6 @@
 ---
-title: Získání tokenu ve webové aplikaci, která volá webová rozhraní API – Microsoft Identity Platform | Azure
+title: Získání tokenu ve webové aplikaci, která volá webová rozhraní API | Azure
+titleSuffix: Microsoft identity platform
 description: Zjistěte, jak získat token pro webovou aplikaci, která volá webová rozhraní API.
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2020
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4904cd95dc81aad959c88c1dfdb09416923046e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4fe3744f3f8cb39a7493ce788ee9badc1b31b75e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518177"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396174"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webová aplikace, která volá webová rozhraní API: Získá token pro aplikaci.
 
@@ -27,7 +28,11 @@ Sestavili jste objekt klientské aplikace. Teď ho použijete k získání token
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Metody kontroleru jsou chráněné `[Authorize]` atributem, který vynucuje ověřování uživatelů pro používání webové aplikace. Zde je kód, který volá Microsoft Graph:
+*Microsoft. identity. Web* přidává rozšiřující metody, které poskytují praktické služby pro volání Microsoft Graph nebo webového rozhraní API pro příjem dat. Tyto metody jsou podrobně vysvětleny ve [webové aplikaci, která volá webová rozhraní API: volání rozhraní API](scenario-web-app-call-api-call-api.md). Pomocí těchto pomocných metod není nutné ručně získat token.
+
+Pokud ale chcete token získat ručně, následující kód ukazuje příklad použití *Microsoft. identity. Web* k tomu, aby byl v rámci domovského kontroleru. Volá Microsoft Graph pomocí REST API (místo sady Microsoft Graph SDK). Chcete-li získat token pro volání rozhraní API pro příjem dat, vložíte `ITokenAcquisition` službu pomocí injektáže závislosti do konstruktoru kontroleru (nebo vašeho konstruktoru stránky, pokud používáte Blazor), a použijete ji v akcích kontroleru, získáte token pro uživatele ( `GetAccessTokenForUserAsync` ) nebo pro vlastní aplikaci ( `GetAccessTokenForAppAsync` ) ve scénáři démon.
+
+Metody kontroleru jsou chráněné `[Authorize]` atributem, který zajišťuje, aby webová aplikace mohla používat jenom ověření uživatelé.
 
 ```csharp
 [Authorize]
@@ -82,7 +87,7 @@ Kód pro ASP.NET je podobný kódu, který je zobrazený pro ASP.NET Core:
 - Akce kontroleru chráněná atributem [autorizovat] extrahuje ID tenanta a ID uživatele `ClaimsPrincipal` člena kontroleru. (ASP.NET používá `HttpContext.User` .)
 - Odtud vytvoří `IConfidentialClientApplication` objekt MSAL.NET.
 - Nakonec volá `AcquireTokenSilent` metodu důvěrné klientské aplikace.
-- Pokud je vyžadována interakce, musí webová aplikace požádat uživatele (znovu přihlásit) a požádat o další deklarace identity.
+- Pokud se vyžaduje interakce, Webová aplikace musí uživatele vyzvat (znovu přihlásit) a požádat o další deklarace identity.
 
 Následující fragment kódu se extrahuje z [HomeController. cs # L157-L192](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/257c8f96ec3ff875c351d1377b36403eed942a18/WebApp/Controllers/HomeController.cs#L157-L192) v ukázce kódu [MS-identity-ASPNET-webapp-openidconnect](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect) ASP.NET MVC:
 

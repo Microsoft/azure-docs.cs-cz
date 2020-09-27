@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 0a383e8e2c38dbd00e0a55f9debb9b4daf40fa9c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0f67939358a4395416ea28c1c459d4890ab0351d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832752"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397806"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme s operátory IT Azure
 
@@ -68,7 +68,7 @@ Azure poskytuje několik PaaS výpočetních nabídek, včetně funkce Web Apps 
 
 SaaS je software, který je centrálně hostovaný a spravovaný. Obvykle je založena na víceklientské architektuře – jedna verze aplikace se používá pro všechny zákazníky. Dá se škálovat na více instancí, abyste zajistili nejlepší výkon ve všech umístěních. SaaS software je obvykle licencován prostřednictvím měsíčního nebo ročního předplatného. Výrobci softwaru SaaS jsou odpovědní za všechny komponenty softwarového zásobníku, takže spravovat budou jenom poskytované služby.
 
-Systém Microsoft Office 365 je dobrým příkladem nabídky SaaS. Předplatitelé platí měsíční nebo roční poplatek za předplatné a jako službu získají Microsoft Exchange, Microsoft OneDrive a zbytek systém Microsoft Office Suite. Předplatitelé vždycky získají nejnovější verzi a pro vás spravuje Exchange Server. V porovnání s instalací a upgradem Office každý rok je to levnější a vyžaduje menší úsilí.
+Microsoft 365 je dobrým příkladem nabídky SaaS. Předplatitelé platí měsíční nebo roční poplatek za předplatné a jako službu získají Microsoft Exchange, Microsoft OneDrive a zbytek systém Microsoft Office Suite. Předplatitelé vždycky získají nejnovější verzi a pro vás spravuje Exchange Server. V porovnání s instalací a upgradem Office každý rok je to levnější a vyžaduje menší úsilí.
 
 ## <a name="azure-services"></a>Služby Azure
 
@@ -156,7 +156,7 @@ Skupina prostředků Azure je kontejner, který obsahuje související prostřed
 
 Šablona Azure Resource Manager je soubor JavaScript Object Notation (JSON), který definuje jeden nebo více prostředků pro nasazení do skupiny prostředků. Definuje také závislosti mezi nasazenými prostředky. Šablony Správce prostředků jsou podrobněji popsány dále v této příručce.
 
-### <a name="automation"></a>Automatizace
+### <a name="automation"></a>Automation
 
 Kromě vytváření, správy a odstraňování prostředků pomocí Azure Portal můžete automatizovat tyto aktivity pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure (CLI).
 

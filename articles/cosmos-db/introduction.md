@@ -1,17 +1,17 @@
 ---
-title: Úvod do Azure Cosmos DB
+title: Úvod do služby Azure Cosmos DB
 description: Přečtěte si něco o službě Azure Cosmos DB. Tato globálně distribuovaná databáze s více modely je navržená s ohledem na nízkou latenci, elastickou škálovatelnost a vysokou dostupnost a nabízí nativní podporu pro data NoSQL.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: bfac783fcb8ce88977fc8d97f821a7350f57aab8
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 4e9d632880b792d16ffe752a55396c649c6688e5
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118572"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398814"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Udržování schématu databáze a indexů v synchronizaci se schématem aplikac
 
 ### <a name="battle-tested-database-service"></a>Testovaná databázová služba pro výročí
 
-Cosmos DB je základní služba v Azure. Skoro pro desetiletí Cosmos DB používala řada produktů Microsoftu pro kritické aplikace v globálním měřítku, včetně Skype, Xbox, Office 365, Azure a mnoha dalších. V současné době je Cosmos DB jednou z nejrychlejších rostoucích služeb v Azure, které používá mnoho externích zákazníků a důležitých aplikací, které vyžadují Elastické škálování, klíč globální distribuci, replikaci více hlavních serverů pro zajištění nízké latence a vysokou dostupnost obou operací čtení i zápisu.
+Cosmos DB je základní služba v Azure. Skoro pro desetiletí Cosmos DB používala řada produktů Microsoftu pro kritické aplikace v globálním měřítku, včetně Skype, Xbox, Microsoft 365, Azure a mnoha dalších. V současné době je Cosmos DB jednou z nejrychlejších rostoucích služeb v Azure, které používá mnoho externích zákazníků a důležitých aplikací, které vyžadují Elastické škálování, klíč globální distribuci, replikaci více hlavních serverů pro zajištění nízké latence a vysokou dostupnost obou operací čtení i zápisu.
 
 ### <a name="ubiquitous-regional-presence"></a>Všudypřítomný regionální přítomnost
 
@@ -64,7 +64,7 @@ Cosmos DB je k dispozici ve všech oblastech Azure po celém světě, včetně 5
 
 ### <a name="secure-by-default-and-enterprise-ready"></a>Zabezpečení ve výchozím nastavení a připraveno pro podniky
 
-Cosmos DB je certifikovaný pro [nejrůznější standardy dodržování předpisů](compliance.md). Kromě toho jsou všechna data v Cosmos DB šifrována v klidovém stavu a v pohybu. Cosmos DB poskytuje autorizaci na úrovni řádků a dodržuje přísné standardy zabezpečení.
+Cosmos DB je certifikovaný pro [nejrůznější standardy dodržování předpisů](compliance.md). Veškerá data se navíc šifrují v klidovém stavu i v pohybu. Poskytuje autorizaci na úrovni řádků a dodržuje přísné standardy zabezpečení.
 
 ### <a name="significant-tco-savings"></a>Významné úspory celkových nákladů na vlastnictví
 

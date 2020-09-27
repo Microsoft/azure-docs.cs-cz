@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 9420d52cf7d88ff84fd23928f92cdc62e9627619
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 00199f81e2dc8ca699fabf312955bf7a8a2b5cbd
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280898"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398385"
 ---
 # <a name="microsoft-global-network"></a>Globální síť Microsoftu
 
 Společnost Microsoft vlastní a provozuje jednu z největších páteřních sítí na světě. Tato globální a složitá architektura, která pokrývá více než 160 000 mil, spojuje naše datová centra a zákazníky. 
  
-Každý den se zákazníci po celém světě připojí a předají bilióny žádosti Microsoft Azure, Bingu, Dynamics 365, Office 365, XBox a mnoha dalším. Bez ohledu na typ zákazníci očekávají rychlou spolehlivost a odezvu od našich služeb. 
+Každý den se zákazníci po celém světě připojí a předají bilióny žádosti Microsoft Azure, Bingu, Dynamics 365, Microsoft 365, XBox a mnoha dalším. Bez ohledu na typ zákazníci očekávají rychlou spolehlivost a odezvu od našich služeb. 
  
 [Microsoft Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) je centrální součástí poskytování skvělého cloudového prostředí. Díky propojení našich [Datacenter Microsoftu v](https://azure.microsoft.com/global-infrastructure/) rámci 54 oblastí Azure a rozsáhlé sítě hraničních uzlů, které jsou strategicky umístěné po celém světě, přináší naše globální síť dostupnost, kapacitu a flexibilitu, aby splnila jakékoli požadavky.
 

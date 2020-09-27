@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: d3e70384a99e2dad3f19825cb85b83861e4647e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab3597ddba3e41e88c8b2b575ed5857aca01e610
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083816"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397959"
 ---
-# <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Řešení chyb replikace virtuálních počítačů z Azure do Azure
+# <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Řešení chyb replikace virtuálních počítačů Azure do Azure
 
 Tento článek popisuje, jak řešit běžné chyby v Azure Site Recovery během replikace a obnovení virtuálních počítačů Azure z jedné oblasti do druhé. Další informace o podporovaných konfiguracích najdete v [matrici podpory pro replikaci virtuálních počítačů Azure](azure-to-azure-support-matrix.md).
 
@@ -197,11 +197,11 @@ Pokuste se získat přístup k serveru DNS z virtuálního počítače. Pokud se
 
 #### <a name="possible-cause"></a>Možná příčina
 
-Nejde navázat připojení k ověřování Office 365 a koncovým bodům IP4 identity.
+Nelze navázat připojení k Microsoft 365 ověřování a koncovým bodům IP4 identity.
 
 #### <a name="fix-the-problem"></a>Oprava problému
 
-Azure Site Recovery požadovaný přístup k rozsahům IP adres Office 365 pro ověřování.
+Azure Site Recovery požadovaný přístup pro Microsoft 365 rozsahy IP adres pro ověřování.
 Pokud k řízení odchozího připojení k síti na virtuálním počítači používáte pravidla skupiny zabezpečení sítě Azure (NSG) nebo proxy serveru brány firewall, ujistěte se, že používáte pro povolení přístupu k AAD pravidlo NSG na základě [značky služby Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) . Už nepodporujeme pravidla NSG založená na IP adresách.
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problém 3: Konfigurace Site Recovery se nezdařila (151197)
@@ -225,8 +225,8 @@ Vlastní nastavení proxy serveru je neplatné a agent služby mobility automati
 1. Agent služby mobility detekuje nastavení proxy serveru z IE ve Windows a `/etc/environment` v systému Linux.
 1. Pokud dáváte přednost nastavení proxy serveru jenom pro službu mobility, můžete zadat podrobnosti o proxy serveru v souboru _ProxyInfo. conf_ , který najdete na adrese:
 
-   - **Linux**:`/usr/local/InMage/config/`
-   - **Windows**:`C:\ProgramData\Microsoft Azure Site Recovery\Config`
+   - **Linux**: `/usr/local/InMage/config/`
+   - **Windows**: `C:\ProgramData\Microsoft Azure Site Recovery\Config`
 
 1. _ProxyInfo. conf_ by mělo mít nastavení proxy v následujícím formátu _ini_ .
 

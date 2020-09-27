@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0cc54bcc23e354ae8cc807e63a0039286e295181
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1157a18954c30e1f1d93aa33dbea6104491b5353
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90970946"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396447"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure Disk Encryption v izolované síti
 
@@ -43,7 +43,7 @@ Všechna použitá nastavení skupiny zabezpečení sítě musí stále umožňo
 
 Pokud používáte [Azure Disk Encryption s Azure AD (předchozí verze)](disk-encryption-overview-aad.md), bude nutné ručně nainstalovat [knihovnu Azure Active Directory](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) pro všechny distribuce (kromě balíčků odpovídajících distribuce, jak je [uvedeno výše](#package-management)).
 
-Když se povolí šifrování s [přihlašovacími údaji Azure AD](disk-encryption-linux-aad.md), cílový virtuální počítač musí umožňovat připojení ke koncovým bodům Azure Active Directory i k Key Vault koncovým bodům. Aktuální Azure Active Directory koncové body ověřování se udržují v oddílech 56 a 59 v dokumentaci k [adresám URL a rozsahům IP adres sady Office 365](/office365/enterprise/urls-and-ip-address-ranges) . Pokyny pro Key Vault najdete v dokumentaci týkající se [přístupu Azure Key Vault za bránou firewall](../../key-vault/general/access-behind-firewall.md).
+Když se povolí šifrování s [přihlašovacími údaji Azure AD](disk-encryption-linux-aad.md), cílový virtuální počítač musí umožňovat připojení ke koncovým bodům Azure Active Directory i k Key Vault koncovým bodům. Aktuální Azure Active Directory koncové body ověřování jsou uchovávány v oddílech 56 a 59 [Microsoft 365 adres URL a v dokumentaci rozsahů IP adres](/microsoft-365/enterprise/urls-and-ip-address-ranges) . Pokyny pro Key Vault najdete v dokumentaci týkající se [přístupu Azure Key Vault za bránou firewall](../../key-vault/general/access-behind-firewall.md).
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: adcd07ad370ad9f1301caa41c494a33958743dd8
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929784"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398404"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Rychlý Start: použití Průzkumníka pro hledání ke spouštění dotazů na portálu
 
@@ -21,7 +21,7 @@ ms.locfileid: "88929784"
 
 V tomto rychlém startu se k předvedení Průzkumníka služby Search použije existující index. Žádosti se formulují pomocí [REST API vyhledávání](/rest/api/searchservice/)s odpověďmi vrácenými jako dokumenty JSON.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte mít následující:
 
@@ -37,11 +37,11 @@ Než začnete, musíte mít následující:
 
 1. Otevřete Průzkumníka služby Search na panelu příkazů:
 
-   ![Příkaz Průzkumníka vyhledávání na portálu](./media/search-explorer/search-explorer-cmd2.png "Příkaz Průzkumníka vyhledávání na portálu")
+   :::image type="content" source="media/search-explorer/search-explorer-cmd2.png" alt-text="Příkaz Průzkumníka vyhledávání na portálu" border="false":::
 
     Nebo na otevřeném indexu použijte kartu vloženého **Průzkumníka služby Search** :
 
-   ![Karta Hledat v Průzkumníkovi](./media/search-explorer/search-explorer-tab.png "Karta Hledat v Průzkumníkovi")
+   :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="Karta Hledat v Průzkumníkovi" border="false":::
 
 ## <a name="unspecified-query"></a>Neurčený dotaz
 
@@ -55,7 +55,7 @@ Ekvivalentní syntaxe pro prázdné hledání je `*` nebo `search=*` .
 
    **Výsledky**
    
-   ![Příklad prázdného dotazu](./media/search-explorer/search-explorer-example-empty.png "Příklad nekvalifikovaného nebo prázdného dotazu")
+   :::image type="content" source="media/search-explorer/search-explorer-example-empty.png" alt-text="Příklad nekvalifikovaného nebo prázdného dotazu" border="false":::
 
 ## <a name="free-text-search"></a>Bezplatné vyhledávání textu
 
@@ -71,7 +71,7 @@ Všimněte si, že když zadáte kritéria hledání, jako jsou například podm
 
    Pomocí kombinace kláves CTRL-F můžete vyhledat konkrétní důležité výrazy v rámci výsledků.
 
-   ![Příklad dotazů na volný text](./media/search-explorer/search-explorer-example-freetext.png "Příklad dotazů na volný text")
+   :::image type="content" source="media/search-explorer/search-explorer-example-freetext.png" alt-text="Příklad dotazů na volný text" border="false":::
 
 ## <a name="count-of-matching-documents"></a>Počet vyhovujících dokumentů 
 
@@ -83,7 +83,7 @@ Přidejte **$Count = true** pro získání počtu shod nalezených v indexu. Př
 
    **Výsledky**
 
-   ![Počet dokumentů – příklad](./media/search-explorer/search-explorer-example-count.png "Počet vyhovujících dokumentů v indexu")
+   :::image type="content" source="media/search-explorer/search-explorer-example-count.png" alt-text="Počet vyhovujících dokumentů v indexu" border="false":::
 
 ## <a name="limit-fields-in-search-results"></a>Omezit pole ve výsledcích hledání
 
@@ -95,7 +95,7 @@ Přidejte [**$Select**](search-query-odata-select.md) pro omezení výsledků do
 
    **Výsledky**
 
-   ![Příklad omezení polí](./media/search-explorer/search-explorer-example-selectfield.png "Omezit pole ve výsledcích hledání")
+   :::image type="content" source="media/search-explorer/search-explorer-example-selectfield.png" alt-text="Omezit pole ve výsledcích hledání" border="false":::
 
 ## <a name="return-next-batch-of-results"></a>Vrátit další dávku výsledků
 
@@ -107,7 +107,7 @@ Azure Kognitivní hledání vrátí nejvyšší 50 shody na základě pořadí h
 
    **Výsledky**
 
-   ![Výsledky dávkového vyhledávání](./media/search-explorer/search-explorer-example-topskip.png "Vrátit další dávku výsledků hledání")
+   :::image type="content" source="media/search-explorer/search-explorer-example-topskip.png" alt-text="Vrátit další dávku výsledků hledání" border="false":::
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>Výrazy filtru (větší než, menší než, rovno)
 
@@ -119,7 +119,7 @@ Použijte parametr [**$Filter**](search-query-odata-filter.md) , pokud chcete za
    
    **Výsledky**
 
-   ![Výraz filtru](./media/search-explorer/search-explorer-example-filter.png "Filtrovat podle kritérií")
+   :::image type="content" source="media/search-explorer/search-explorer-example-filter.png" alt-text="Filtrovat podle kritérií" border="false":::
 
 ## <a name="order-by-expressions"></a>Výrazy ORDER by
 
@@ -131,7 +131,7 @@ Přidejte [**$OrderBy**](search-query-odata-orderby.md) pro řazení výsledků 
    
    **Výsledky**
 
-   ![Výraz OrderBy](./media/search-explorer/search-explorer-example-ordery.png "Změna pořadí řazení")
+   :::image type="content" source="media/search-explorer/search-explorer-example-ordery.png" alt-text="Změna pořadí řazení" border="false":::
 
 **$Filter** i **$OrderBy** výrazy jsou konstrukce OData. Další informace najdete v tématu věnovaném [syntaxi jazyka OData pro filtry](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 

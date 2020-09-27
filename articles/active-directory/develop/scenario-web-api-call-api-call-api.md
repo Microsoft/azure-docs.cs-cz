@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b1582af2bbd97579852ead0d4462f80f3a50fe6a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9212e99ae317a3abec4bebfc7fb131c6774f8e4d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257142"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396191"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Webové rozhraní API, které volá webová rozhraní API: volá rozhraní API.
 
@@ -28,11 +28,11 @@ Po vytvoření tokenu můžete zavolat chráněné webové rozhraní API. Rozhra
 
 Pokud používáte *Microsoft. identity. Web*, máte tři scénáře použití:
 
-- [Microsoft Graph volání](#call-microsoft-graph)
-- [Volání webového rozhraní API jiného než Microsoft Graph](#call-web-api-other-than-microsoft-graph)
-- [Ruční získání tokenu](#acquire-a-token-manually)
+- [Možnost 1: volání Microsoft Graph s využitím sady Microsoft Graph SDK](#option-1-call-microsoft-graph-with-the-sdk)
+- [Možnost 2: volání webového rozhraní API pro příjem dat s podpůrnou třídou](#option-2-call-a-downstream-web-api-with-the-helper-class)
+- [Možnost 3: volání podřízeného webového rozhraní API bez pomocné třídy](#option-3-call-a-downstream-web-api-without-the-helper-class)
 
-#### <a name="call-microsoft-graph"></a>Microsoft Graph volání
+#### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>Možnost 1: volání Microsoft Graph se sadou SDK
 
 V tomto scénáři jste přidali `.AddMicrosoftGraph()` v *Startup.cs* , jak je uvedeno v části [Konfigurace kódu](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph), a můžete přímo vložit `GraphServiceClient` do svého kontroleru nebo konstruktoru stránky pro použití v akcích. Následující příklad stránky Razor zobrazuje fotografii přihlášeného uživatele.
 
@@ -68,7 +68,7 @@ V tomto scénáři jste přidali `.AddMicrosoftGraph()` v *Startup.cs* , jak je 
  }
 ```
 
-#### <a name="call-web-api-other-than-microsoft-graph"></a>Volání webového rozhraní API jiné než Microsoft Graph
+#### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>Možnost 2: volání webového rozhraní API pro příjem dat s podpůrnou třídou
 
 V tomto scénáři jste přidali `.AddDownstreamWebApi()` v *Startup.cs* , jak je uvedeno v části [Konfigurace kódu](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph), a můžete přímo vložit `IDownstreamWebApi` službu do vašeho kontroleru nebo konstruktoru stránky a použít ji v akcích:
 
@@ -115,7 +115,7 @@ V tomto scénáři jste přidali `.AddDownstreamWebApi()` v *Startup.cs* , jak j
  }
 ```
 
-#### <a name="acquire-a-token-manually"></a>Ruční získání tokenu
+#### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>Možnost 3: volání podřízeného webového rozhraní API bez pomocné třídy
 
 Pokud jste se rozhodli získat token ručně pomocí `ITokenAcquisition` služby, je teď nutné použít token. V takovém případě následující kód pokračuje v ukázkovém kódu zobrazeném ve [webovém rozhraní API, které volá webová rozhraní API: Získejte token pro aplikaci](scenario-web-api-call-api-acquire-token.md). Kód se volá v akcích řadičů rozhraní API. Volá rozhraní API pro příjem dat s názvem *ToDoList*.
 

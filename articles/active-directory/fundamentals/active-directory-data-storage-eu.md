@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dc229b366a7816c861da665c73d6421e67545c6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985913"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395885"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Úložiště dat identity pro evropské zákazníky v Azure Active Directory
 Data identity ukládá služba Azure AD v geografickém umístění na základě adresy poskytnuté vaší organizací při přihlášení k odběru online služby Microsoftu, jako je Microsoft 365 a Azure. Informace o tom, kde jsou uložená data identity, můžete najít v části [umístění vašich dat?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v centru zabezpečení Microsoftu.
@@ -35,6 +35,10 @@ Pro cloudové Multi-Factor Authentication Azure se ověřování dokončí v nej
 * Žádosti o vícefaktorové ověřování pomocí kódů OATH, které pocházejí z datových center EU, se ověřují v EU.
 
 Další informace o tom, jaké informace o uživateli shromažďuje služba Azure Multi-Factor Authentication Server (MFA Server) a cloudová služba Azure MFA, najdete v článku [shromažďování uživatelských dat v azure Multi-Factor Authentication](../authentication/howto-mfa-reporting-datacollection.md).
+
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Jednotné přihlašování založené na heslech pro podnikové aplikace
+ 
+Pokud zákazník vytvoří novou podnikovou aplikaci (ať už přes Galerii Azure AD nebo mimo galerii) a povolí jednotné přihlašování založené na heslech, přihlašovací adresa URL aplikace a vlastní zachytávání přihlašovacích polí se ukládají do USA. Další informace o této funkci najdete v tématu [Konfigurace jednotného přihlašování založeného na heslech](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md) .
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 

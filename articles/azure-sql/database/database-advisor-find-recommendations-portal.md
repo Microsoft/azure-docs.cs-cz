@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 0e13d69b8d821267a993cd2ca9a3b6d0d686ccf9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e96db18993dbb18ebf51d0b30e9172901d10df5b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284530"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398267"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení pro výkon
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Doporučení týkající se výkonu se zobrazují v tabulce podobné tomu na ná
 
 Doporučení jsou seřazená podle jejich potenciálního dopadu na výkon do následujících kategorií:
 
-| Dopad | Popis |
+| Dopad | Description |
 |:--- |:--- |
 | Vysoké |Doporučení s vysokým dopadem by měla poskytovat nejvýznamnější dopad na výkon. |
 | Střední |Doporučení středně velkých dopadů by měla zlepšit výkon, ale ne podstatně. |
@@ -103,7 +103,7 @@ Databázi můžete nastavit tak, aby automaticky implementovala doporučení. Ja
    ![Nastavení Poradce](./media/database-advisor-find-recommendations-portal/settings.png)
 2. Vyberte akce, které chcete automatizovat:
 
-   ![Doporučené indexy](./media/database-advisor-find-recommendations-portal/server.png)
+   ![Snímek obrazovky, který ukazuje, kde vybrat akce k automatizaci](./media/database-advisor-find-recommendations-portal/server.png)
 
 > [!NOTE]
 > Upozorňujeme, že možnost **DROP_INDEX** aktuálně není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu.
@@ -139,7 +139,7 @@ Použití doporučení nemusí okamžitě probíhat. Portál poskytuje podrobné
 
 Kliknutím na místní doporučení ze seznamu zobrazíte další informace:
 
-![Doporučené indexy](./media/database-advisor-find-recommendations-portal/operations.png)
+![Snímek obrazovky, který zobrazuje seznam doporučených postupů.](./media/database-advisor-find-recommendations-portal/operations.png)
 
 ### <a name="reverting-a-recommendation"></a>Vrácení doporučení zpět
 
@@ -172,4 +172,4 @@ Sledujte vaše doporučení a pokračujte v jejich použití pro zlepšení výk
 
 * [Úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx)
 * [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md)
+* [Řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md)

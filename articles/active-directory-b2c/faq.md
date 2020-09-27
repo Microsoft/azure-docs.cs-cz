@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85ce79644ead939eaeffa5cfffeb495da15e7fe5
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: e701ac8cee15a338c363ec2697e02e82bb4f4e68
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270661"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396429"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
 
@@ -29,9 +29,9 @@ Existují dva běžné důvody, proč rozšíření Azure AD nefunguje za vás. 
 
 Azure AD a Azure AD B2C jsou samostatné nabídky produktů a nemůžou koexistovat ve stejném tenantovi. Tenant Azure AD představuje organizaci. Tenant Azure AD B2C představuje kolekci identit, které se mají používat s aplikacemi předávající strany. Přidáním **nového poskytovatele OpenID Connect** v rámci **Azure AD B2C > zprostředkovatelů identity** nebo s vlastními zásadami Azure AD B2C může federovat do Azure AD umožnit ověřování zaměstnanců v organizaci.
 
-### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Můžu použít Azure AD B2C k poskytování sociálního přihlášení (Facebook a Google +) do sady Office 365?
+### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-microsoft-365"></a>Můžu použít Azure AD B2C k poskytování sociálního přihlášení (Facebook a Google +) do Microsoft 365?
 
-Azure AD B2C nelze použít k ověřování uživatelů pro systém Microsoft Office 365. Azure AD je řešení Microsoftu pro správu přístupu zaměstnanců k aplikacím SaaS a obsahuje funkce navržené pro tento účel, jako je licencování a podmíněný přístup. Azure AD B2C poskytuje platformu pro správu identit a přístupu pro vytváření webových a mobilních aplikací. Když je Azure AD B2C nakonfigurovaná tak, aby federovat na tenanta Azure AD, tenant Azure AD spravuje přístup zaměstnanců k aplikacím, které spoléhají na Azure AD B2C.
+Azure AD B2C nelze použít k ověřování uživatelů pro Microsoft 365. Azure AD je řešení Microsoftu pro správu přístupu zaměstnanců k aplikacím SaaS a obsahuje funkce navržené pro tento účel, jako je licencování a podmíněný přístup. Azure AD B2C poskytuje platformu pro správu identit a přístupu pro vytváření webových a mobilních aplikací. Když je Azure AD B2C nakonfigurovaná tak, aby federovat na tenanta Azure AD, tenant Azure AD spravuje přístup zaměstnanců k aplikacím, které spoléhají na Azure AD B2C.
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Co jsou místní účty v Azure AD B2C? Jak se liší od pracovních nebo školních účtů ve službě Azure AD?
 

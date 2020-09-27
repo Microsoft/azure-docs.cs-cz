@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b5b3d1240c621a1bcdc135825e70fe164452a428
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5dc41522add580b96e178328f47bd88fc1fbf052
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500391"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397058"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Kurz: Zálohování a obnova souborů pro virtuální počítače s Windows v Azure
 
@@ -36,7 +36,7 @@ Po dokončení přenosu dat se snímek odstraní a vytvoří se bod obnovení.
 ## <a name="create-a-backup"></a>Vytvoření zálohy
 Vytvořte jednoduché plánované denní zálohování do trezoru služby Recovery Services. 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. V nabídce na levé straně vyberte **Virtuální počítače**. 
 1. V seznamu vyberte virtuální počítač, který chcete zálohovat.
 1. V okně virtuální počítač v části **operace** klikněte na **zálohovat**. Otevře se okno **Povolit zálohování** .
@@ -59,7 +59,7 @@ V tomto příkladu ukážeme, jak obnovit soubor s obrázkem, který se použív
 
 1. Otevřete prohlížeč a připojte se na IP adresu virtuálního počítače, aby se zobrazila výchozí stránka IIS.
 
-    ![Výchozí webová stránka IIS](./media/tutorial-backup-vms/iis-working.png)
+    ![Snímek obrazovky, který zobrazuje výchozí webovou stránku služby IIS.](./media/tutorial-backup-vms/iis-working.png)
 
 1. Připojte se k virtuálnímu počítači.
 1. Ve virtuálním počítači otevřete **Průzkumníka souborů**, přejděte na \inetpub\wwwroot a odstraňte soubor **iisstart.png**.

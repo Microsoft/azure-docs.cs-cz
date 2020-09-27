@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e0bb3c3f3a6a1a38f974acf361937928ad4e2cfd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b537fecefd0b8b00967894daa94881a084d5c8f2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983286"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398506"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault základní koncepty
 
@@ -23,7 +23,7 @@ Azure Key Vault je cloudová služba pro bezpečné ukládání a přístup k ta
 
 Tady jsou další důležité výrazy:
 
-- **Tenant:** Tenant je organizace, která vlastní a spravuje konkrétní instanci cloudových služeb Microsoftu. Nejčastěji se používá k odkazování na sadu služeb Azure a Office 365 pro organizaci.
+- **Tenant:** Tenant je organizace, která vlastní a spravuje konkrétní instanci cloudových služeb Microsoftu. Nejčastěji se používá k odkazování na sadu služeb Azure a Microsoft 365 pro organizaci.
 
 - **Vlastník trezoru:** Vlastník trezoru může vytvořit trezor klíčů a získat k němu úplný přístup a kontrolu. Vlastník trezoru může také nastavit auditování a protokolování toho, kdo získává přístup ke klíčům a tajným klíčům. Správci můžou řídit životní cyklus klíčů. Můžou přejít na novou verzi klíče, zálohovat ho a provádět související úlohy.
 

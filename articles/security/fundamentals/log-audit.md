@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: bd0f42507e22559690e2682a391c53b9c090aa6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5ac9daeb741d400a759603c7a3e3e462cc9294f
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75750787"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398865"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Protokolování a auditování zabezpečení Azure
 
@@ -68,4 +68,4 @@ V následující tabulce jsou uvedeny nejdůležitější typy protokolů, kter�
 
 - [Konfigurace nastavení auditování pro kolekci webů](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US): Pokud jste správcem kolekce webů, načtěte historii akcí jednotlivých uživatelů a historii akcí provedených během konkrétního rozsahu dat.
 
-- [Hledání v protokolu auditu v centru zabezpečení office 365 security & Security Center](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US): pomocí centra dodržování předpisů sady office & 365 pro hledání v protokolu Unified audit a zobrazení aktivity uživatelů a správců v organizaci 365 sady Office.
+- [Hledání v protokolu auditu v Microsoft 365 Security Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance): pomocí Microsoft 365 Security Center můžete vyhledat jednotný protokol auditu a zobrazit aktivitu uživatelů a správců ve vaší organizaci.

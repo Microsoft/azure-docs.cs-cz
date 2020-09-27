@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
-ms.openlocfilehash: 363af1012b327a55703cc6e35a02dc1f27869bd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99d90e4d93f0e4a70350a5a33a65700c3e14acb4
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629061"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398319"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Kopírování nových a změněných souborů pomocí LastModifiedDate s Azure Data Factory
 
@@ -69,13 +69,13 @@ Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů 
 
     ![Spuštění kanálu](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
 
-6. Zkontrolujte výsledek. Zobrazí se pouze soubory poslední změny v nakonfigurovaném časovém rozmezí byly zkopírovány do cílového úložiště.
+6. Prohlédněte si výsledek. Zobrazí se pouze soubory poslední změny v nakonfigurovaném časovém rozmezí byly zkopírovány do cílového úložiště.
 
     ![Kontrola výsledku](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png)
     
 7. Nyní můžete přidat bubnovou aktivační událost Windows pro automatizaci tohoto kanálu, aby kanál vždy mohl pravidelně kopírovat nové a změněné soubory pouze pomocí LastModifiedDate.  Vyberte **Přidat aktivační událost**a vyberte **Nová/upravit**.
 
-    ![Kontrola výsledku](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
+    ![Snímek obrazovky, který zvýrazní možnost nabídky nová/upravit, která se zobrazí, když vyberete Přidat Trigger.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
     
 8. V okně **Přidat aktivační události** vyberte **+ Nový**.
 
@@ -101,9 +101,9 @@ Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů 
 
 13. V levém navigačním panelu vyberte kartu **monitorování** a počkejte asi 15 minut, pokud se opakování triggeru nastavilo na každých 15 minut. 
 
-14. Zkontrolujte výsledek. Váš kanál se zobrazí automaticky každých 15 minut a do cílového úložiště v každém spuštění kanálu se zkopírují jenom nové nebo změněné soubory ze zdrojového úložiště.
+14. Prohlédněte si výsledek. Váš kanál se zobrazí automaticky každých 15 minut a do cílového úložiště v každém spuštění kanálu se zkopírují jenom nové nebo změněné soubory ze zdrojového úložiště.
 
-    ![Kontrola výsledku](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
+    ![Snímek obrazovky, který zobrazuje výsledky, které se vrátí při aktivaci kanálu.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
     
 ## <a name="next-steps"></a>Další kroky
 

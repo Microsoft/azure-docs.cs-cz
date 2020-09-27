@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 61b6d5ea903d00519c58556bc99da7065741a6e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7126cd38a9d0f9ed0079a73e1235cb08a99bcbcf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184056"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396531"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Co je Azure Active Directory B2C?
 
@@ -105,7 +105,7 @@ Kliknutím na tlačítko **vytvořit** dojde Azure AD B2C k přesměrování už
 
 Když zákazník vybere jednu z možností v části **Obchodní zákazníci**, vyvolá web Woodgrove nákupů jinou zásadu Azure AD B2C, než má jednotliví zákazníci.
 
-Tato zásada prezentuje uživateli možnost použít své podnikové přihlašovací údaje pro registraci a přihlášení. V WoodGrove příkladu se uživatelům zobrazí výzva, abyste se přihlásili pomocí účtu Office 365 nebo Azure AD. Tato zásada využívá [víceklientské aplikace Azure AD](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) a koncový bod `/common` Azure AD k federovat Azure AD B2C se všemi zákazníky s Office 365 na světě.
+Tato zásada prezentuje uživateli možnost použít své podnikové přihlašovací údaje pro registraci a přihlášení. V WoodGrove příkladu se uživatelům zobrazí výzva, abyste se přihlásili pomocí pracovního nebo školního účtu. Tato zásada využívá [víceklientské aplikace Azure AD](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) a `/common` koncový bod Azure ad k federovat Azure AD B2C s jakýmkoli Microsoft 365 zákazníkem na světě.
 
 ### <a name="authenticate-partners"></a>Ověřování partnerů
 

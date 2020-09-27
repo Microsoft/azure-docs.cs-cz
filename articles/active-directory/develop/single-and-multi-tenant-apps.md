@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 09/24/2020
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: dfb9cb80bdcd2854a3ddd5b273806fbcdda916b0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 0868d87d977b15a552b04d5dbd6d19de6931f0ae
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705635"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395902"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Tenantů v Azure Active Directory
 
@@ -43,7 +43,7 @@ V Azure Portal můžete svou aplikaci nakonfigurovat tak, aby byla jedním nebo 
 Vytváření skvělých aplikací s více klienty může být náročné kvůli počtu různých zásad, které správci IT můžou ve svých klientech nastavit. Pokud se rozhodnete sestavit aplikaci pro více tenantů, postupujte podle těchto osvědčených postupů:
 
 * Otestujte svoji aplikaci v tenantovi, která má nakonfigurované [zásady podmíněného přístupu](../azuread-dev/conditional-access-dev-guide.md).
-* Postupujte podle principu minimálního přístupu uživatelů, abyste měli jistotu, že vaše aplikace žádá jenom o oprávnění, která skutečně potřebují. Vyhněte se Požadování oprávnění, která vyžadují souhlas správce, protože by to mohlo zabránit uživatelům v používání vaší aplikace v některých organizacích. 
+* Postupujte podle principu minimálního přístupu uživatelů, abyste měli jistotu, že vaše aplikace žádá jenom o oprávnění, která skutečně potřebují. 
 * Poskytněte vhodné názvy a popisy pro všechna oprávnění, která vystavíte v rámci vaší aplikace. To pomáhá uživatelům a správcům zjistit, na co se dohodli při pokusu o použití rozhraní API vaší aplikace. Další informace najdete v části osvědčené postupy v [Průvodci oprávněními](v2-permissions-and-consent.md).
 
 ## <a name="next-steps"></a>Další kroky

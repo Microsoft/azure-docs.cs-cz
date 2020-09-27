@@ -7,24 +7,24 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4de696e2538bf1fa4823aafe30f931b7852535a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5046e40ea15a27e80f4e92ebf36488dedeee1821
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82191732"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396004"
 ---
-# <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy mezi konzistencí, dostupností a výkonem
+# <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>Latence, dostupnost a výkon při kompromisech s různými Azure Cosmos DBmi úrovněmi konzistence
 
 Distribuované databáze, které se kvůli zajištění vysoké dostupnosti, nízké latence nebo obojího spoléhají na replikaci, musí dělat kompromisy. Tyto kompromisy jsou mezi konzistencí čtení a dostupností, latencí a propustností.
 
 Azure Cosmos DB přistupuje k konzistenci dat jako spektrum možností. Tento přístup zahrnuje více možností než dvě extrémní silná a konečná konzistence. Pro spektrum konzistence si můžete vybrat z pěti jasně definovaných úrovní. Od nejsilnějších po nejslabších úrovních jsou tyto úrovně:
 
-- *Silné*
+- *Silná*
 - *Ohraničená neaktuálnost*
 - *Relace*
 - *Konzistentní předpona*
-- *Nahodilé*
+- *Konečné*
 
 Jednotlivé úrovně poskytují kompromisy k dostupnosti a výkonu a jsou zajištěny ucelenou SLA.
 
@@ -49,13 +49,13 @@ Přesná latence RTT je funkce rychlosti a topologie sítě Azure. Azure Network
 
 - Pro daný typ operace zápisu, například INSERT, Replace, Upsert a DELETE, je propustnost zápisu pro jednotky požadavků stejná pro všechny úrovně konzistence.
 
-|**Úrovně konzistence**|**Čtení kvora**|**Zápisy kvora**|
+|**Úroveň konzistence**|**Čtení kvora**|**Zápisy kvora**|
 |--|--|--|
-|**Silné**|Místní menšina|Globální většina|
-|**Omezená neaktuálnost**|Místní menšina|Místní většina|
+|**Silná**|Místní menšina|Globální většina|
+|**Ohraničená neaktuálnost**|Místní menšina|Místní většina|
 |**Relace**|Jedna replika (pomocí tokenu relace)|Místní většina|
 |**Konzistentní předpona**|Jedna replika|Místní většina|
-|**Nahodilé**|Jedna replika|Místní většina|
+|**Konečné**|Jedna replika|Místní většina|
 
 ## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>Úrovně konzistence a trvanlivost dat
 
@@ -63,12 +63,12 @@ V globálně distribuovaném databázovém prostředí existuje přímý vztah m
 
 Následující tabulka definuje vztah mezi modelem konzistence a odolností dat při výpadku oblasti v rámci sítě. Je důležité si uvědomit, že v distribuovaném systému, a to i se silnou konzistencí, není možné mít distribuovanou databázi s cílem RPO a RTO nula z důvodu věta CAP. Další informace o tom, proč najdete [v tématu úrovně konzistence v Azure Cosmos DB](consistency-levels.md).
 
-|**Oblast (y)**|**Režim replikace**|**Úroveň konzistence**|**Cíl bodu obnovení**|**RTO**|
+|**Oblast (y)**|**Režim replikace**|**Úroveň konzistence**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Jedna nebo více hlavních serverů|Jakákoli úroveň konzistence|< 240 minut|<1 týden|
 |>1|Jedna hlavní|Relace, konzistentní předpona, případný|< 15 minut|< 15 minut|
 |>1|Jedna hlavní|Omezená neaktuálnost|*K*  &  *T*|< 15 minut|
-|>1|Jedna hlavní|Silné|0|< 15 minut|
+|>1|Jedna hlavní|Silná|0|< 15 minut|
 |>1|Vícenásobný hlavní|Relace, konzistentní předpona, případný|< 15 minut|0|
 |>1|Vícenásobný hlavní|Omezená neaktuálnost|*K*  &  *T*|0|
 

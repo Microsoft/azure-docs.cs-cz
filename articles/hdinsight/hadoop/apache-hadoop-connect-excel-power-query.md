@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: acb5171048b5a12310b6c0af5d652b7e615a71f5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8664efd40bb5392f56803515f09cccc800fdf21c
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087805"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397109"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Připojení Excelu k Apache Hadoop pomocí Power Query
 
@@ -23,7 +23,7 @@ Jedním z klíčových funkcí řešení pro velké objemy dat společnosti Micr
 
 * Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 * Pracovní stanice se systémem Windows 10, 7, Windows Server 2008 R2 nebo novějším operačním systémem.
-* Office 2016, Office 2013 Professional Plus, Office 365 ProPlus, Excel 2013 Standalone nebo Office 2010 Professional Plus.
+* Microsoft 365 aplikace pro podniky, Office 2016, Office 2013 Professional Plus, Excel 2013 Standalone nebo Office 2010 Professional Plus.
 
 ## <a name="install-microsoft-power-query"></a>Nainstalovat Microsoft Power Query
 
@@ -73,7 +73,7 @@ Doplněk Power Query pro Excel usnadňuje import dat z clusteru HDInsight do Exc
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak pomocí Power Query načíst data z HDInsight do Excelu. Podobně můžete data z HDInsight načíst do Azure SQL Database. Je také možné nahrávat data do HDInsight. Další informace najdete v následujících článcích:
+V tomto článku jste zjistili, jak pomocí Power Query načíst data z HDInsight do Excelu. Podobně můžete data z HDInsight načíst do Azure SQL Database. Je také možné nahrávat data do HDInsight. Další informace najdete v těchto článcích:
 
 * [Vizualizujte Apache Hive data pomocí Microsoft Power BI ve službě Azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
 * [Vizualizovat data podregistru interaktivního dotazu pomocí Power BI ve službě Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).

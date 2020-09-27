@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2622d7a2e54dac710ac09d61dee639ab1d104f02
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f2162ee6df551e1bc64741229aec99d5e697fd29
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078992"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395987"
 ---
 # <a name="security-control-data-protection"></a>Řízení zabezpečení: Ochrana dat
 
@@ -74,7 +74,7 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 Pokud není k dispozici žádná funkce pro konkrétní službu v Azure, použijte k identifikaci všech citlivých informací uložených, zpracovávaných nebo odeslaných technologickými systémy organizace, které jsou umístěné na pracovišti, nebo na vzdáleném poskytovateli služeb, a aktualizujte inventář citlivých informací organizace pomocí nástroje pro aktivní zjišťování třetí strany.
 
-K identifikaci citlivých informací v dokumentech Office 365 použijte Azure Information Protection.
+K identifikaci citlivých informací v rámci Microsoft 365 dokumentů použijte Azure Information Protection.
 
 Využijte Azure SQL Information Protection k usnadnění klasifikace a označování informací uložených v Azure SQL Database.
 
@@ -98,7 +98,7 @@ K řízení přístupu k datům a prostředkům použijte řízení přístupu n
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 4,7 | 14,7 | Shared |
+| 4.7 | 14,7 | Shared |
 
 Pokud je to nutné pro dodržování předpisů u výpočetních prostředků, implementujte nástroj třetí strany, například řešení ochrany před únikem informací na základě automatizovaného hostitele, abyste vynutili řízení přístupu k datům i v případě, že se data zkopírují mimo systém.
 

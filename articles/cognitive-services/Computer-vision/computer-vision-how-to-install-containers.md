@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 326d3a4783b058855d86e17198cbe8d7492feba2
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 2c21c872649e3b171f2658ef6bdb0476552f0e59
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370636"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397181"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Instalace a spuštění kontejnerů pro čtení (Preview)
 
@@ -24,9 +24,26 @@ ms.locfileid: "91370636"
 
 Kontejnery umožňují spouštět rozhraní API Počítačového zpracování obrazu ve vlastním prostředí. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejner Počítačového zpracování obrazu.
 
-Kontejner *pro čtení* umožňuje detekovat a extrahovat *vytištěný text* z obrázků různých objektů s různými povrchy a pozadími, jako jsou například příjmy, plakáty a vizitky. Kromě toho kontejner *pro čtení* detekuje *rukou psaný text* v obrázcích a poskytuje podporu PDF, TIFF a vícestránkového souboru. Další informace najdete v dokumentaci k rozhraní API [pro čtení](concept-recognizing-text.md#read-api) .
+Kontejner *pro čtení* umožňuje detekovat a extrahovat *vytištěný text* z obrázků různých objektů s různými povrchy a pozadími, jako jsou například příjmy, plakáty a vizitky. Kromě toho kontejner *pro čtení* detekuje *rukou psaný text* v obrázcích a poskytuje podporu PDF, TIFF a vícestránkového souboru. Další informace najdete v [dokumentaci k rozhraní API pro čtení](concept-recognizing-text.md#read-api).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Ve verzi Preview jsou k dispozici dvě verze kontejnerů 3. x. Obě verze poskytují další přesnost a funkce oproti předchozímu kontejneru.
+
+Kontejner Read 3,0-Preview poskytuje:
+* Nové modely pro vyšší přesnost.
+* Podpora více jazyků v rámci jednoho dokumentu
+* Podpora: Holandština, angličtina, francouzština, němčina, italština, portugalština a španělština.
+* Jedna operace pro dokumenty a obrázky.
+* Podpora větších dokumentů a obrázků.
+* Výsledky spolehlivosti od 0 do 1.
+* Podpora dokumentů pomocí tiskového i rukopisného textu
+
+Kontejner Read 3,1-Preview nabízí stejné výhody jako v 3.0 – Preview s dalšími funkcemi:
+
+* Podpora pro zjednodušenou čínštinu a japonštinu.
+* hodnocení a popisky spolehlivosti pro vytištěné a ručně psaný text. 
+* Možnost extrahovat text z vybraných stránek v dokumentu.
+
+Když zvažujete, kterou verzi kontejneru chcete použít, Všimněte si, že verze v 3.1 – Preview je ve starší verzi Preview. Pokud dnes používáte kontejnery Read 2,0, přečtěte si informace o změnách v nových verzích v [Průvodci migrací](read-container-migration-guide.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,6 +54,8 @@ Před použitím kontejnerů musíte splnit následující předpoklady:
 |Docker Engine| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
 |Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
 |Prostředek Počítačové zpracování obrazu |Aby bylo možné kontejner používat, musíte mít:<br><br>Prostředek Azure **počítačové zpracování obrazu** a přidružený klíč rozhraní API identifikátor URI koncového bodu. Obě hodnoty jsou k dispozici na stránkách přehledu a klíčů pro daný prostředek a jsou požadovány ke spuštění kontejneru.<br><br>**{API_KEY}**: jeden ze dvou dostupných klíčů prostředků na stránce **klíče**<br><br>**{ENDPOINT_URI}**: koncový bod uvedený na stránce **Přehled**|
+
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="request-approval-to-run-the-container"></a>Požádat o schválení ke spuštění kontejneru
 
@@ -71,6 +90,7 @@ K dispozici jsou image kontejneru pro čtení.
 
 | Kontejner | Název Container Registry/úložiště/image |
 |-----------|------------|
+| Přečíst 2,0 – Preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
 | Přečíst 3,0 – Preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
 | Přečíst 3,1 – Preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
 
@@ -88,6 +108,12 @@ docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
 
 ```bash
 docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview
+```
+
+# <a name="version-20-preview"></a>[Verze 2,0-Preview](#tab/version-2)
+
+```bash
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
 ```
 
 ---
@@ -142,6 +168,23 @@ Tento příkaz:
 * Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
 
+# <a name="version-20-preview"></a>[Verze 2,0-Preview](#tab/version-2)
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
+
+Tento příkaz:
+
+* Spustí načtený kontejner z image kontejneru.
+* Přiděluje 8 PROCESORových jader a 16 gigabajtů (GB) paměti.
+* Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
+* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
+
 ---
 
 
@@ -177,6 +220,10 @@ Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`. Cestu 
 # <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
 
 Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`. Cestu Swagger můžete zobrazit v umístění: `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` .
+
+# <a name="version-20-preview"></a>[Verze 2,0-Preview](#tab/version-2)
+
+Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`. Cestu Swagger můžete zobrazit v umístění: `http://localhost:5000/swagger/vision-v2.0-preview-read/swagger.json` .
 
 ---
 
@@ -330,6 +377,67 @@ Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **
 }
 ```
 
+# <a name="version-20-preview"></a>[Verze 2,0-Preview](#tab/version-2)
+
+Můžete použít `POST /vision/v2.0/read/core/asyncBatchAnalyze` `GET /vision/v2.0/read/operations/{operationId}` operace a společně k asynchronnímu čtení obrázku, podobně jako služba počítačové zpracování obrazu používá tyto odpovídající operace REST. Asynchronní metoda POST vrátí `operationId` hodnotu, která se používá jako identifikátorem požadavku HTTP GET.
+
+V uživatelském rozhraní Swagger vyberte `asyncBatchAnalyze` a rozbalte ho v prohlížeči. Pak vyberte **vyzkoušet**pro výběr  >  **souboru**. V tomto příkladu použijeme následující obrázek:
+
+![tabulátory vs – mezery](media/tabs-vs-spaces.png)
+
+Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **HTTP 202** . V rámci odpovědi je k dispozici `operation-location` záhlaví, které obsahuje výsledný koncový bod pro požadavek.
+
+```http
+ content-length: 0
+ date: Fri, 13 Sep 2019 16:23:01 GMT
+ operation-location: http://localhost:5000/vision/v2.0/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
+ server: Kestrel
+```
+
+`operation-location`Je plně kvalifikovaná adresa URL, ke které se dostanete prostřednictvím HTTP GET. Tady je odpověď JSON z vykonání `operation-location` adresy URL z předchozího obrázku:
+
+```json
+{
+  "status": "Succeeded",
+  "recognitionResults": [
+    {
+      "page": 1,
+      "clockwiseOrientation": 2.42,
+      "width": 502,
+      "height": 252,
+      "unit": "pixel",
+      "lines": [
+        {
+          "boundingBox": [ 56, 39, 317, 50, 313, 134, 53, 123 ],
+          "text": "Tabs VS",
+          "words": [
+            {
+              "boundingBox": [ 90, 43, 243, 53, 243, 123, 94, 125 ],
+              "text": "Tabs",
+              "confidence": "Low"
+            },
+            {
+              "boundingBox": [ 259, 55, 313, 62, 313, 122, 259, 123 ],
+              "text": "VS"
+            }
+          ]
+        },
+        {
+          "boundingBox": [ 221, 148, 417, 146, 417, 206, 227, 218 ],
+          "text": "Spaces",
+          "words": [
+            {
+              "boundingBox": [ 230, 148, 416, 141, 419, 211, 232, 218 ],
+              "text": "Spaces"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 ---
 
 > [!IMPORTANT]
@@ -346,6 +454,10 @@ K synchronnímu čtení obrázku můžete použít následující operaci.
 # <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
 
 `POST /vision/v3.0/read/syncAnalyze`
+
+# <a name="version-20-preview"></a>[Verze 2,0-Preview](#tab/version-2)
+
+`POST /vision/v2.0/read/core/Analyze`
 
 ---
 

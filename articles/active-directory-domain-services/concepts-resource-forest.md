@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 62a2ffeea1d15a16c4ec4aa6a2b88c8e34763064
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 88069c6ac90fce7e33cac6ed3c30accb18ded8bf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480403"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396395"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Koncepty a funkce doménové struktury prostředků pro Azure Active Directory Domain Services
 
-Azure Active Directory Domain Services (Azure služba AD DS) poskytuje přihlašovací prostředí pro starší místní obchodní aplikace. Uživatelé, skupiny a hodnoty hash hesel místních i cloudových uživatelů se synchronizují do spravované domény Azure služba AD DS. Tato synchronizovaná hodnota hash hesla dává uživatelům jedinou sadu přihlašovacích údajů, které můžou používat pro místní služba AD DS, Office 365 a Azure Active Directory.
+Azure Active Directory Domain Services (Azure služba AD DS) poskytuje přihlašovací prostředí pro starší místní obchodní aplikace. Uživatelé, skupiny a hodnoty hash hesel místních i cloudových uživatelů se synchronizují do spravované domény Azure služba AD DS. Tato synchronizovaná hodnota hash hesla dává uživatelům jedinou sadu přihlašovacích údajů, které můžou používat pro místní služba AD DS, Microsoft 365 a Azure Active Directory.
 
 I když zabezpečení a poskytuje další výhody zabezpečení, některé organizace nemůžou synchronizovat hodnoty hash hesel uživatelů do služby Azure AD nebo Azure služba AD DS. Uživatelé v organizaci nemusí znát heslo, protože používají jenom ověřování pomocí čipové karty. Tato omezení brání některým organizacím v používání Azure služba AD DS k přenesení a posunutí místních klasických aplikací do Azure.
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ec38f16c5a658848eab505794ed1a2d072f22aea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6e2b3badcda872db3ddb1d237b813615a1332ad0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749620"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396327"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Požadavky na návrh virtuální sítě a možnosti konfigurace pro Azure Active Directory Domain Services
 
@@ -91,7 +91,7 @@ Překlad adres IP můžete povolit pomocí podmíněného přeposílání DNS na
 
 Spravovaná doména vytvoří během nasazení některé síťové prostředky. Tyto prostředky jsou nutné pro úspěšnou operaci a správu spravované domény a neměli byste je konfigurovat ručně.
 
-| Prostředek Azure                          | Popis |
+| Prostředek Azure                          | Description |
 |:----------------------------------------|:---|
 | Síťová karta                  | Azure služba AD DS hostuje spravovanou doménu na dvou řadičích domény (DCs), které běží na Windows serveru jako virtuální počítače Azure. Každý virtuální počítač má virtuální síťové rozhraní, které se připojuje k podsíti virtuální sítě. |
 | Dynamická standardní veřejná IP adresa      | Azure služba AD DS komunikuje se službou synchronizace a správy pomocí veřejné IP adresy standardní SKU. Další informace o veřejných IP adresách najdete v tématu [typy IP adres a metody přidělování v Azure](../virtual-network/public-ip-addresses.md). |
@@ -110,11 +110,13 @@ Aby mohla spravovaná doména poskytovat služby ověřování a správy, vyžad
 
 | Číslo portu | Protokol | Zdroj                             | Cíl | Akce | Vyžadováno | Účel |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Ano      | Synchronizace s vaším klientem služby Azure AD. |
-| 3389        | TCP      | CorpNetSaw                         | Všechny         | Povolit  | Ano      | Správa vaší domény. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Ano      | Správa vaší domény. |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Yes      | Synchronizace s vaším klientem služby Azure AD. |
+| 3389        | TCP      | CorpNetSaw                         | Všechny         | Povolit  | Yes      | Správa vaší domény. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Yes      | Správa vaší domény. |
 
 Vytvoří se standardní nástroj pro vyrovnávání zatížení Azure, který vyžaduje, aby se tato pravidla mohla umístit. Tato skupina zabezpečení sítě zabezpečuje službu Azure služba AD DS a je potřeba, aby správně fungovala spravovaná doména. Tuto skupinu zabezpečení sítě neodstraňujte. Nástroj pro vyrovnávání zatížení nebude bez něj správně fungovat.
+
+V případě potřeby můžete [vytvořit požadovanou skupinu zabezpečení sítě a pravidla pomocí Azure PowerShell](powershell-create-instance.md#create-a-network-security-group).
 
 > [!WARNING]
 > Neupravujte ručně tyto síťové prostředky a konfigurace. Pokud přiřadíte nesprávně nakonfigurovanou skupinu zabezpečení sítě nebo uživatelem definovanou tabulku směrování s podsítí, ve které je spravovaná doména nasazená, můžete narušit schopnost služby a správy domény od Microsoftu. Dojde také k přerušení synchronizace mezi vaším klientem služby Azure AD a vaší spravovanou doménou.

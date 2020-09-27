@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 4cc8f2c90e74b5b3ab6df3169df0524f1134b66e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94b5b3d2ab1f576f87ead23b389252ec96a20f11
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85113598"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397347"
 ---
-# <a name="globally-scale-provisioned-throughput"></a>Globální škálování zřízené propustnosti 
+# <a name="how-does-azure-cosmos-db-globally-scale-the-provisioned-throughput"></a>Jak Azure Cosmos DB globálně škálovat zřízenou propustnost?
 
 V Azure Cosmos DB je zajištěná propustnost reprezentovaná jako jednotka žádosti za sekundu (RU/s nebo ru ve formě plural). Ru změřte náklady na operace čtení i zápisu na kontejneru Cosmos, jak je znázorněno na následujícím obrázku:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: f3699892471a1535cda5fc182a4c9121fd3c250c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2f34723bec6dc2212f8897eca849e6535d737fc8
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317599"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397415"
 ---
 # <a name="power-bi-app-creation-overview"></a>Přehled vytváření aplikací Power BI
 
@@ -23,7 +23,7 @@ Tento článek vysvětluje, jak publikovat aplikaci Power BI do Microsoft [AppSo
 Výhody publikování na komerčním webu Marketplace:
 
 - Propagujte svoji společnost pomocí značky Microsoftu.
-- Může mít více než 100 000 000 Office 365 a Dynamics 365 uživatelů na AppSource a více než 200 000 organizací prostřednictvím Azure Marketplace.
+- Aplikace může dosáhnout více než 100 000 000 Microsoft 365 a uživatelů Dynamics 365 na AppSource a více než 200 000 organizací prostřednictvím Azure Marketplace.
 - Dostanou vysoce kvalitní zájemce z těchto tržišť.
 - Povýšit vaše služby na pole Microsoftu a prodejní týmy.
 

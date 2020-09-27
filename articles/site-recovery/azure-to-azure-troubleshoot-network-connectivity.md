@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 8be0349bfff9ebc858d76928344039b6879d2b80
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 59bbca9461ff174ebe2451a6c01d84dee404cf56
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357059"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398302"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Řešení potíží s připojením k síti virtuálních počítačů z Azure do Azure
 
@@ -51,16 +51,16 @@ Pokuste se získat přístup k serveru DNS z virtuálního počítače. Pokud se
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Problém 2: Konfigurace Site Recovery se nezdařila (151196)
 
 > [!NOTE]
-> Pokud jsou virtuální počítače za **standardním** interním nástrojem pro vyrovnávání zatížení, má ve výchozím nastavení přístup k IP adresám Office 365, jako je například `login.microsoftonline.com` . Buď změňte na **základní** typ interního nástroje pro vyrovnávání zatížení, nebo vytvořte odchozí přístup, jak je uvedeno v článku [konfigurace vyrovnávání zatížení a odchozích pravidel v Standard Load Balancer pomocí](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration)rozhraní příkazového řádku Azure.
+> Pokud jsou virtuální počítače za **standardním** interním nástrojem pro vyrovnávání zatížení, má ve výchozím nastavení přístup k Microsoft 365m IP adresám, jako je například `login.microsoftonline.com` . Buď změňte na **základní** typ interního nástroje pro vyrovnávání zatížení, nebo vytvořte odchozí přístup, jak je uvedeno v článku [konfigurace vyrovnávání zatížení a odchozích pravidel v Standard Load Balancer pomocí](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration)rozhraní příkazového řádku Azure.
 
 #### <a name="possible-cause"></a>Možná příčina
 
-Nejde navázat připojení k ověřování Office 365 a koncovým bodům IP4 identity.
+Nelze navázat připojení k Microsoft 365 ověřování a koncovým bodům IP4 identity.
 
 #### <a name="resolution"></a>Řešení
 
-- Azure Site Recovery vyžaduje přístup k rozsahům IP adres Office 365 pro ověřování.
-- Pokud k řízení odchozího připojení k síti na virtuálním počítači používáte pravidla skupiny zabezpečení sítě Azure (NSG) nebo proxy serveru brány firewall, ujistěte se, že jste povolili komunikaci s rozsahy IP adres Office 365. Azure Active Directory vytvořte pravidlo NSG založené na [značkách služby Azure AD](../virtual-network/security-overview.md#service-tags) , které umožňuje přístup ke všem IP adresám, které odpovídají službě Azure AD.
+- Azure Site Recovery vyžaduje přístup k rozsahům IP adres Microsoft 365 pro ověřování.
+- Pokud k řízení odchozího připojení k síti na virtuálním počítači používáte pravidla skupiny zabezpečení sítě Azure (NSG) nebo proxy serveru brány firewall, ujistěte se, že jste povolili komunikaci s rozsahy IP adres Microsoft 365. Azure Active Directory vytvořte pravidlo NSG založené na [značkách služby Azure AD](../virtual-network/security-overview.md#service-tags) , které umožňuje přístup ke všem IP adresám, které odpovídají službě Azure AD.
 - Pokud v budoucnu přidáte do Azure AD nové adresy, budete muset vytvořit nová pravidla NSG.
 
 ### <a name="example-nsg-configuration"></a>Příklad konfigurace NSG

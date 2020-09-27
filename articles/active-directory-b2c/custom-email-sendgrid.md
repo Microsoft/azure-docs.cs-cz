@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 952659746bbb99108c6177166ad60ad2272cbce6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e2040f52efae1955cf5a7b530358f2cec07b5fbf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88584933"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396514"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Vlastní ověření e-mailu pomocí SendGrid
 
@@ -62,7 +62,6 @@ Když jste vytvořili účet SendGrid a klíč rozhraní SendGrid API uložený 
 
     <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en"><head id="Head1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Contoso demo account email verification code</title><meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
-       <!-- Template B O365 -->
        <style>
            table td {border-collapse:collapse;margin:0;padding:0;}
        </style>

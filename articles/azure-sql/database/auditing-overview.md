@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: de41d9c1dc69726f5f7f031616462b2d1d330476
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a7edbbb50777cc2d91332260c9ebe72be042874b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333184"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396242"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Auditování pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -86,7 +86,7 @@ V následující části je popsána konfigurace auditování pomocí Azure Port
 2. V záhlaví zabezpečení v podokně **SQL Database** nebo **SQL serveru** přejděte na **audit** .
 3. Pokud dáváte přednost nastavení zásad auditování serveru, můžete vybrat odkaz **Zobrazit nastavení serveru** na stránce auditování databáze. Pak můžete zobrazit nebo upravit nastavení auditování serveru. Zásady auditování serveru se vztahují na všechny existující a nově vytvořené databáze na tomto serveru.
 
-    ![Navigační podokno](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
+    ![Snímek obrazovky se zvýrazněným odkazem zobrazit nastavení serveru na stránce auditování databáze.](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
 
 4. Pokud chcete povolit auditování na úrovni databáze, přepněte **auditování** na **zapnuto**. Pokud je povolené auditování serveru, bude audit konfigurovaný pro databázi existovat vedle sebe s auditem serveru.
 
@@ -163,7 +163,7 @@ Pokud jste se rozhodli zapsat protokoly auditu do účtu služby Azure Storage, 
 
 - Použijete [Azure Portal](https://portal.azure.com)  Otevřete příslušnou databázi. V horní části stránky **auditování** databáze klikněte na **Zobrazit protokoly auditu**.
 
-    ![Navigační podokno](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![Snímek obrazovky, který zobrazuje tlačítko Zobrazit protokoly auditu zvýrazněné na stránce auditování databáze.](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
 
     Otevře se **záznamy auditu** , ze kterých budete moci zobrazit protokoly.
 
@@ -171,14 +171,14 @@ Pokud jste se rozhodli zapsat protokoly auditu do účtu služby Azure Storage, 
   - Můžete přepínat mezi záznamy auditu vytvořenými *zásadami auditu serveru* a *zásadami auditu databáze* přepnutím **zdroje auditu**.
   - Zaškrtnutím políčka  **Zobrazit pouze záznamy auditu pro INJEKTÁŽE SQL** můžete zobrazit pouze záznamy auditu související s injektáže SQL.
 
-       ![Navigační podokno]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
+       ![Snímek obrazovky, který zobrazuje možnosti zobrazení záznamů auditu.]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
 - Pomocí systémové funkce **Sys. fn_get_audit_file** (T-SQL) Vraťte data protokolu auditu v tabulkovém formátu. Další informace o použití této funkce naleznete v tématu [Sys. fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 - Použít **soubory pro sloučení auditu** v SQL Server Management Studio (počínaje SSMS 17):
     1. V nabídce SSMS vyberte **soubor**  >  **otevřít**  >  **Sloučit soubory auditu**.
 
-        ![Navigační podokno](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
+        ![Snímek obrazovky, který ukazuje možnost nabídky soubory auditu sloučení](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
     2. Otevře se dialogové okno **Přidat soubory auditu** . Vyberte jednu z možností **Přidání** a zvolte, jestli chcete soubory auditu sloučit z místního disku, nebo je naimportujte z Azure Storage. Je nutné zadat podrobnosti Azure Storage a klíč účtu.
 
     3. Po přidání všech souborů ke sloučení klikněte na **OK** , aby se operace sloučení dokončila.
@@ -218,7 +218,7 @@ V produkčním prostředí pravděpodobně pravidelně aktualizujete klíče úl
 
 1. Otevřete **Podrobnosti úložiště**. V poli **přístupový klíč k úložišti** vyberte **sekundární**a klikněte na **OK**. Pak v horní části stránky Konfigurace auditování klikněte na **Uložit** .
 
-    ![Navigační podokno](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
+    ![Snímek obrazovky, který ukazuje proces pro výběr sekundárního přístupového klíče úložiště.](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. Přejděte na stránku konfigurace úložiště a znovu vygenerujte primární přístupový klíč.
 
     ![Navigační podokno](./media/auditing-overview/6_auditing_get_started_regenerate_key.png)

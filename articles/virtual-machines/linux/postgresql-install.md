@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 321f6bd6324613967001139e365d96521217d50b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fdde7613627c9fec0694f3985f78cf10e52f59c2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87267247"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397092"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalace a konfigurace PostgreSQL v Azure
 PostgreSQL je pokročilá open source databáze podobná Oracle a DB2. Zahrnuje funkce připravené pro podnikové prostředí, jako je plně KYSELé dodržování předpisů, spolehlivé zpracování transakcí a řízení souběžnosti s více verzemi. Podporuje také standardy, jako je ANSI SQL a SQL/MED (včetně obálek cizích dat pro Oracle, MySQL, MongoDB a mnoho dalších). Je vysoce rozšiřitelná s podporou více než 12 procedurálních jazyků, GIN a registrových indexů, podpory prostorových dat a několika NoSQL funkcí podobných funkcím pro aplikace založené na formátu JSON nebo klíč-hodnota.
@@ -164,7 +164,7 @@ Připojte se k virtuálnímu počítači se systémem Linux, který jste vytvoř
 
     Měl by se zobrazit následující výstup:
 
-![image](./media/postgresql-install/no1.png)
+![Snímek obrazovky, který zobrazuje výstup po inicializaci databáze.](./media/postgresql-install/no1.png)
 
 ## <a name="set-up-postgresql"></a>Nastavení PostgreSQL
 <!--    [postgres@ test ~]$ exit -->
@@ -185,7 +185,7 @@ Upravte v souboru/etc/init.d/PostgreSQL dvě proměnné. Předpona je nastavena 
 # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 ```
 
-![image](./media/postgresql-install/no2.png)
+![Snímek obrazovky, který zobrazuje předponu instalace a datový adresář.](./media/postgresql-install/no2.png)
 
 Změňte soubor tak, aby byl spustitelný jako spustitelný:
 
@@ -207,7 +207,7 @@ Ověřte, zda je koncový bod PostgreSQL zapnutý:
 
 Měl by se zobrazit následující výstup:
 
-![image](./media/postgresql-install/no3.png)
+![Snímek obrazovky zobrazující koncový bod PostgreSQL je zapnutý.](./media/postgresql-install/no3.png)
 
 ## <a name="connect-to-the-postgres-database"></a>Připojení k databázi Postgres
 Přepněte znovu na uživatele Postgres:
@@ -246,11 +246,11 @@ Nyní jste nastavili tabulku se čtyřmi sloupci s následujícími názvy a ome
 
 Pokud se tabulka úspěšně vytvořila, mělo by se zobrazit následující:
 
-![image](./media/postgresql-install/no4.png)
+![Snímek obrazovky zobrazující zprávu, která se zobrazí po úspěšném vytvoření tabulky](./media/postgresql-install/no4.png)
 
 Strukturu tabulky můžete také ověřit pomocí následujícího příkazu:
 
-![image](./media/postgresql-install/no5.png)
+![Snímek obrazovky zobrazující příkaz pro kontrolu struktury tabulky](./media/postgresql-install/no5.png)
 
 ### <a name="add-data-to-a-table"></a>Přidání dat do tabulky
 Nejprve vložte informace do řádku:
@@ -261,7 +261,7 @@ INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Cassero
 
 Měli byste vidět tento výstup:
 
-![image](./media/postgresql-install/no6.png)
+![Snímek obrazovky, který zobrazuje informace o řádku, které jste přidali.](./media/postgresql-install/no6.png)
 
 Do tabulky můžete přidat i několik dalších lidí. Tady je několik možností, nebo můžete vytvořit vlastní:
 
@@ -282,7 +282,7 @@ select * from potluck;
 
 Výstup bude následující:
 
-![image](./media/postgresql-install/no7.png)
+![Snímek obrazovky, který zobrazuje výstup příkazu pro zobrazení tabulky](./media/postgresql-install/no7.png)
 
 ### <a name="delete-data-in-a-table"></a>Odstranění dat v tabulce
 Pomocí následujícího příkazu odstraňte data v tabulce:

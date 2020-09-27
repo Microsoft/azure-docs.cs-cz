@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: b5bf29969f8b6d54215e2b2f1a2d0b1587faad6f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b2fc13158d197aaa2e870d1b772386628ee3f9bc
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332181"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398797"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Nejčastější dotazy k Azure Synapse Linku pro Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Odkaz na Azure synapse pro Azure Cosmos DB vytvoří těsnou integraci mezi Azur
 
 ### <a name="is-synapse-link-supported-for-all-azure-cosmos-db-apis"></a>Podporuje se propojení synapse pro všechna Azure Cosmos DB rozhraní API?
 
-V rámci verze Public Preview se odkaz synapse podporuje pro rozhraní API Azure Cosmos DB SQL (Core) a pro rozhraní Azure Cosmos DB API pro MongoDB. Podpora rozhraní API Cassandra je aktuálně v rámci služby gated Preview. Pokud chcete požádat o přístup k ověřované verzi Preview, můžete se obrátit na [tým Azure Cosmos DB](mailto:cosmosdbsynapselink@microsoft.com).
+V rámci verze Public Preview se odkaz synapse podporuje pro rozhraní API Azure Cosmos DB SQL (Core) a pro rozhraní Azure Cosmos DB API pro MongoDB. 
 
 ### <a name="is-synapse-link-supported-for-multi-region-azure-cosmos-accounts"></a>Podporuje se propojení synapse pro účty Azure Cosmos ve více oblastech?
 

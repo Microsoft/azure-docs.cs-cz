@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: d833a4cf26ee8ab69d16cbd1d776ca49a2df4bc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 273e9f7ce65cdd15000b1cc4ac7c19cde5992992
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738211"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396769"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Monitorování bran VPN pomocí Network Watcher řešení potíží
 
@@ -42,7 +42,7 @@ Než začnete tento scénář, musíte mít následující požadavky:
 
 - Účet Azure Automation v Azure. Ujistěte se, že účet Automation má nejnovější moduly a má také modul AzureRM. Network. Modul AzureRM. Network je dostupný v galerii modulů, pokud ho potřebujete přidat do svého účtu Automation.
 - Musíte mít v Azure Automation nakonfigurovanou sadu přihlašovacích údajů. Další informace o [Azure Automation zabezpečení](../automation/automation-security-overview.md)
-- Platný server SMTP (Office 365, váš místní e-mail nebo jiný) a přihlašovací údaje definované v Azure Automation
+- Platný server SMTP (Microsoft 365, místní e-mail nebo jiný) a přihlašovací údaje definované v Azure Automation
 - Nakonfigurovaná Virtual Network brána v Azure.
 - Existující účet úložiště s existujícím kontejnerem pro ukládání protokolů.
 
@@ -53,7 +53,7 @@ Než začnete tento scénář, musíte mít následující požadavky:
 
 Prvním krokem ke konfiguraci příkladu je vytvoření Runbooku. V tomto příkladu se používá účet Spustit jako. Další informace o účtech Spustit jako najdete v webu [ověřování runbooků pomocí účtu Spustit jako pro Azure](../automation/automation-create-runas-account.md) .
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 V [Azure Portal](https://portal.azure.com) přejděte na Azure Automation a klikněte na **Runbooky** .
 
@@ -85,7 +85,7 @@ Jako tlačítko **Uložit** použijte následující kód.
 
 ```powershell
 # Set these variables to the proper values for your environment
-$o365AutomationCredential = "<Office 365 account>"
+$automationCredential = "<work or school account>"
 $fromEmail = "<from email address>"
 $toEmail = "<to email address>"
 $smtpServer = "<smtp.office365.com>"
@@ -99,8 +99,8 @@ $storageAccountName = "<storage account name>"
 $storageAccountResourceGroup = "<resource group name>"
 $storageAccountContainer = "<container name>"
 
-# Get credentials for Office 365 account
-$cred = Get-AutomationPSCredential -Name $o365AutomationCredential
+# Get credentials for work or school account
+$cred = Get-AutomationPSCredential -Name $automationCredential
 
 # Get the connection "AzureRunAsConnection "
 $servicePrincipalConnection=Get-AutomationConnection -Name $runAsConnectionName
@@ -155,7 +155,7 @@ Je nutné vytvořit nový plán. Klikněte na **připojit plán k sadě Runbook*
 
 ![Krok 7][7]
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 V okně **plán** klikněte na **vytvořit nový plán** .
 

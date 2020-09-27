@@ -7,13 +7,13 @@ author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ea0dac74d4f995e41513b3451dd28d177040e672
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935020"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397364"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Vzory návrhu pro víceklientské aplikace SaaS a Azure Kognitivní hledání
 
@@ -76,7 +76,8 @@ V případě víceklientské scénáře používá vývojář aplikace jednu neb
 3. *Kombinace obou:* Větším, více aktivním klientům se přiřazují vyhrazené služby, zatímco v rámci sdílených služeb jsou v menších klientech přiřazeny jednotlivé indexy.
 
 ## <a name="1-index-per-tenant"></a>1. index na tenanta
-![Portrayal modelu indexu na tenanta](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png" alt-text="Portrayal modelu indexu na tenanta" border="false":::
 
 V modelu indexu založeném na tenantovi nabízí více tenantů jednu službu Azure Kognitivní hledání, kde má každý tenant svůj vlastní index.
 
@@ -93,7 +94,8 @@ Azure Kognitivní hledání umožňuje škálovat jednotlivé indexy a celkový 
 Pokud celkový počet indexů roste pro jednu službu příliš velký, je nutné zřídit jinou službu, která bude vyhovovat novým klientům. Pokud je potřeba přesunout indexy mezi vyhledávacími službami, když se přidají nové služby, data z indexu je potřeba ručně zkopírovat z jednoho indexu do druhého, protože Azure Kognitivní hledání nepovoluje přesun indexu.
 
 ## <a name="2-service-per-tenant"></a>2. služba na tenanta
-![Portrayal modelu služby – na tenanta](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="Portrayal modelu služby – na tenanta" border="false":::
 
 V architektuře pro jednotlivé klienty má každý tenant vlastní vyhledávací službu.
 

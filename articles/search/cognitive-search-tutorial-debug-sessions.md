@@ -7,13 +7,13 @@ ms.author: terrychr
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 05/19/2020
-ms.openlocfilehash: b6164ef955ac92a7ef8776e560ea4d3a92abaf8d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 8bbd0b1979da69e5d4d18009100a7caee5a3d722
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935972"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397398"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Kurz: Diagnostika, oprava a potvrzení změn ve vašem dovednosti
 
@@ -25,7 +25,7 @@ V tomto článku použijete Azure Portal k přístupu k relacím ladění, abyst
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
 > * Předplatné Azure. Vytvoření [bezplatného účtu](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) nebo použití aktuálního předplatného
@@ -59,7 +59,7 @@ Volání REST vyžadují pro každý požadavek adresu URL služby a přístupov
 
 1. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
+:::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="Získání koncového bodu HTTP a přístupového klíče" border="false":::
 
 Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
@@ -78,15 +78,13 @@ V této části se účtují a poskytnutá kolekce používají k vytvoření zd
 1. Zadejte storageConnectionString ze stránky klíče účtu Azure Storage.
 1. Zadejte ContainerName pro kontejner, který jste vytvořili v účtu úložiště.
 
-> [!div class="mx-imgBorder"]
-> ![Upravit proměnné v post](media/cognitive-search-debug/postman-enter-variables.png)
+> :::image type="content" source="media/cognitive-search-debug/postman-enter-variables.png" alt-text="Upravit proměnné v post":::
 
 Kolekce obsahuje čtyři různá volání REST, která se používají k dokončení této části.
 
 První volání vytvoří zdroj dat. `clinical-trials-ds`. Druhé volání vytvoří dovednosti, `clinical-trials-ss` . Třetí volání vytvoří index, `clinical-trials` . Čtvrtý a poslední hovor vytvoří indexer, `clinical-trials-idxr` . Po dokončení všech volání v kolekci zavřete po a vraťte se do Azure Portal.
 
-> [!div class="mx-imgBorder"]
-> ![použití metody post pro vytvoření zdroje dat](media/cognitive-search-debug/postman-create-data-source.png)
+> :::image type="content" source="media/cognitive-search-debug/postman-create-data-source.png" alt-text="použití metody post pro vytvoření zdroje dat":::
 
 ## <a name="check-the-results"></a>Výsledky kontroly
 
@@ -109,8 +107,7 @@ Vraťte se na obrazovku Přehled vyhledávací služby.
 
 ## <a name="start-your-debug-session"></a>Spuštění relace ladění
 
-> [!div class="mx-imgBorder"]
-> ![spustit novou relaci ladění](media/cognitive-search-debug/new-debug-session-screen-required.png)
+> :::image type="content" source="media/cognitive-search-debug/new-debug-session-screen-required.png" alt-text="spustit novou relaci ladění":::
 
 1. Klikněte na kartu relace ladění (Preview).
 1. Vybrat + NewDebugSession
@@ -123,8 +120,7 @@ Vraťte se na obrazovku Přehled vyhledávací služby.
 > [!Important]
 > Ladicí relace funguje pouze s jedním dokumentem. Konkrétní dokument v sadě dat je možné > vybrat, jinak se relace nastaví jako výchozí první dokument.
 
-> [!div class="mx-imgBorder"]
-> ![Začala nová ladicí relace.](media/cognitive-search-debug/debug-execution-complete1.png)
+> :::image type="content" source="media/cognitive-search-debug/debug-execution-complete1.png" alt-text="Začala nová ladicí relace.":::
 
 Po dokončení relace ladění se ve výchozím nastavení relace karta rozšíření AI zvýrazní a zvýrazní se graf dovedností.
 
@@ -144,8 +140,7 @@ Na kartě chyby/upozornění došlo k chybě pro operaci s označením `Enrichme
 1. Vyberte **</>** symbol na začátku řádku a otevřete vyhodnocovací filtr výrazů.
 1. Kliknutím na tlačítko **vyhodnocení** potvrďte, že tento výraz má za následek chybu. Ověří, že vlastnost "languageCode" není platný vstup.
 
-> [!div class="mx-imgBorder"]
-> ![Vyhodnocovač výrazů](media/cognitive-search-debug/expression-evaluator-language.png)
+> :::image type="content" source="media/cognitive-search-debug/expression-evaluator-language.png" alt-text="Vyhodnocovač výrazů":::
 
 Existují dva způsoby, jak tuto chybu v relaci prozkoumat. První je podívat se na to, odkud vstup přichází – jakou odbornost v hierarchii by měl tento výsledek vyvolat? Karta spuštění v podokně Podrobnosti dovednosti by měla zobrazit zdroj vstupu. Pokud neexistuje žádný zdroj, znamená to, že došlo k chybě mapování pole.
 
@@ -153,8 +148,7 @@ Existují dva způsoby, jak tuto chybu v relaci prozkoumat. První je podívat s
 1. Podívejte se na vstupy a vyhledejte "languageCode". Pro tento vstup není uveden žádný zdroj. 
 1. Přepněte v levém podokně, aby se zobrazila obohacená datová struktura. Neexistuje žádná mapovaná cesta odpovídající "languageCode".
 
-> [!div class="mx-imgBorder"]
-> ![Obohacená datová struktura](media/cognitive-search-debug/enriched-data-structure-language.png)
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-language.png" alt-text="Obohacená datová struktura":::
 
 Pro jazyk je namapovaná cesta. V nastavení dovedností proto dojde k překlepu. Chcete-li tento výraz opravit, je nutné aktualizovat výraz v #1 dovednost s výrazem '/Document/Language '.
 
@@ -170,13 +164,11 @@ Po dokončení spuštění relace ladění klikněte na kartu chyby/upozornění
 
 ## <a name="fix-missing-skill-output-values"></a>Oprava chybějících výstupních hodnot dovedností
 
-> [!div class="mx-imgBorder"]
-> ![Chyby a upozornění](media/cognitive-search-debug/warnings-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/warnings-missing-value-locations-organizations.png" alt-text="Chyby a upozornění":::
 
 Z dovednosti chybí výstupní hodnoty. Chcete-li identifikovat dovednost s chybou přejít do rozšířené datové struktury, vyhledejte název hodnoty a podívejte se na jeho původní zdroj. V případě chybějících organizací a hodnot umístění se jedná o výstupy #1ch dovedností. Otevření vyhodnocovacího filtru výrazů </> pro každou cestu zobrazí výrazy uvedené jako "/Document/Content/Organizations" a "/Document/Content/Locations" (v uvedeném pořadí).
 
-> [!div class="mx-imgBorder"]
-> ![Entita vyhodnocení výrazu – entita organizace](media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png" alt-text="Entita vyhodnocení výrazu – entita organizace":::
 
 Výstup těchto entit je prázdný a neměl by být prázdný. Jaké jsou vstupy vytvářející tento výsledek?
 
@@ -184,16 +176,14 @@ Výstup těchto entit je prázdný a neměl by být prázdný. Jaké jsou vstupy
 1. V pravém podokně podrobností dovednosti vyberte kartu **spuštění** .
 1. Otevřete vyhodnocovací filtr výrazů **</>** pro vstup "text".
 
-> [!div class="mx-imgBorder"]
-> ![Vstup pro textovou dovednost](media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png" alt-text="Vstup pro textovou dovednost":::
 
 Zobrazený výsledek tohoto vstupu nevypadá jako textový vstup. Vypadá jako obrázek, který je ohraničen novými řádky. Nedostatek textu znamená, že není možné identifikovat žádné entity. V hierarchii dovednosti se zobrazuje obsah nejprve zpracován dovedností #6 (OCR) a pak se předává do dovednosti #5 (sloučení). 
 
 1. Vyberte dovednost #5 (sloučit) v **grafu dovedností**.
 1. Vyberte kartu **spuštění** v pravém podokně podrobností o dovednostech a otevřete vyhodnocovací filtr výrazů **</>** pro výstupy "mergedText".
 
-> [!div class="mx-imgBorder"]
-> ![Výstup pro dovednost sloučení](media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png" alt-text="Výstup pro dovednost sloučení":::
 
 Zde je text spárován s obrázkem. Podívejte se na výraz "/Document/merged_content", zobrazí se chyba v cestách "organizace" a "umístění" pro #1 dovednost. Místo použití '/Document/Content ' by mělo být pro vstupy "text" použito '/Document/merged_content '.
 
@@ -213,8 +203,7 @@ Po skončení běhu indexeru jsou chyby stále k dispozici. Vraťte se k dovedno
 1. Přejděte na **Nastavení dovedností** a vyhledejte "výstupy".
 1. Otevřete vyhodnocovací filtr výrazů **</>** pro entitu "organizace".
 
-> [!div class="mx-imgBorder"]
-> ![Výstup pro entitu organizace](media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png" alt-text="Výstup pro entitu organizace":::
 
 Vyhodnocení výsledku výrazu dává správný výsledek. Dovednost pracuje na určení správné hodnoty pro entitu "organizace". Mapování výstupu v cestě entity však stále vyvolává chybu. Při porovnávání výstupní cesty v dovednosti s výstupní cestou v této chybě se jedná o dovednosti, které jsou nadřazené výstupům, organizacím a umístěním pod uzlem/Document/Content. Mapování polí pro výstup očekává, že výsledky budou nadřazené v uzlu/Document/merged_content. V předchozím kroku se vstup změnil z '/Document/Content ' na '/Document/merged_content '. Kontext v nastavení dovedností se musí změnit, aby se zajistilo, že se výstup vygeneruje pomocí správného kontextu.
 
@@ -225,8 +214,7 @@ Vyhodnocení výsledku výrazu dává správný výsledek. Dovednost pracuje na 
 1. Klikněte na **Uložit** v podokně Podrobnosti o dovednostech vpravo.
 1. V nabídce okna relace klikněte na **Spustit** . Tím se zahájí další spuštění dovednosti s použitím dokumentu.
 
-> [!div class="mx-imgBorder"]
-> ![Oprava kontextu v nastavení dovedností](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png" alt-text="Oprava kontextu v nastavení dovedností":::
 
 Všechny chyby byly vyřešeny.
 

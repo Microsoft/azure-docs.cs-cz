@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: 4e970f242d1c51218865fe459b8012f97add3d02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 836a5a003268a98dd8e63eed9bfdba741abcf4ed
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299285"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397041"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Použití spravovaných identit ve službě Azure Kubernetes
 
@@ -30,6 +30,8 @@ Musíte mít nainstalované následující prostředky:
 * Existující clustery AKS se nedají migrovat na spravované identity.
 * Během operací s **upgradem** clusteru je spravovaná identita dočasně nedostupná.
 * Klienti se přesunou/nemigrují spravované clustery s povolenou identitou nejsou podporováni.
+* Pokud je cluster `aad-pod-identity` povolený, lusky NMI (Node Managed identity) upraví uzly na softwaru iptables tak, aby zachytil volání koncového bodu metadat instance Azure. Tato konfigurace znamená, že všechny požadavky na koncový bod metadat jsou zachyceny NMI i v případě, že pole pod nepoužívá `aad-pod-identity` . AzurePodIdentityException CRD je možné nakonfigurovat tak, aby informovala `aad-pod-identity` , že všechny požadavky na koncový bod metadat pocházející z objektu pod, který odpovídá popiskům definovaným v CRD, by měly být proxy bez jakéhokoli zpracování v NMI. Systém lusky s `kubernetes.azure.com/managedby: aks` návěštím v oboru názvů _Kube-System_ by měl být vyloučený v `aad-pod-identity` konfiguraci AzurePodIdentityException CRD. Další informace najdete v tématu [zakázání identity AAD-pod-identity pro konkrétního pod nebo aplikaci](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md).
+  Chcete-li konfigurovat výjimku, nainstalujte [YAML s výjimkou mikrofonu](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
 
 ## <a name="summary-of-managed-identities"></a>Souhrn spravovaných identit
 
@@ -37,7 +39,7 @@ AKS používá několik spravovaných identit pro předdefinované služby a dop
 
 | Identita                       | Name    | Případ použití | Výchozí oprávnění | Přineste si vlastní identitu
 |----------------------------|-----------|----------|
-| Řídicí rovina | neviditelné | Používá se v AKS pro spravované síťové prostředky, včetně nástrojů pro vyrovnávání zatížení vstupu a AKS spravované veřejné IP adresy. | Role přispěvatele pro skupinu prostředků uzlu | Náhled
+| Řídicí rovina | neviditelné | Používá se v AKS pro spravované síťové prostředky, včetně nástrojů pro vyrovnávání zatížení vstupu a AKS spravované veřejné IP adresy. | Role přispěvatele pro skupinu prostředků uzlu | Preview
 | Kubelet | Název clusteru AKS – neznámá | Ověřování pomocí Azure Container Registry (ACR) | NEDEF (pro Kubernetes v 1.15 +) | Aktuálně se nepodporuje.
 | Doplněk | AzureNPM | Není nutná žádná identita. | Není k dispozici | No
 | Doplněk | Monitorování sítě AzureCNI | Není nutná žádná identita. | Není k dispozici | No

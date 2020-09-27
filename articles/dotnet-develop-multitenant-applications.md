@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: ad77278d593e4b2165708e0c9110a9ffff19a255
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 71114b6663d010437e5778d288eacf4e120b3da5
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017698"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395970"
 ---
 # <a name="multitenant-applications-in-azure"></a>Multitenantové aplikace v Azure
-Víceklientské aplikace je sdílený prostředek, který umožňuje uživatelům v samostatných klientech zobrazit aplikaci, jako by byla vlastní. Typický scénář, který se sám zapůjčuje do víceklientské aplikace, je ten, ve kterém všichni uživatelé aplikace z různých tenantů můžou chtít přizpůsobit uživatelské prostředí, ale v opačném případě mají stejné základní obchodní požadavky. Příklady rozsáhlých víceklientské aplikací jsou Office 365, Outlook.com a visualstudio.com.
+Víceklientské aplikace je sdílený prostředek, který umožňuje uživatelům v samostatných klientech zobrazit aplikaci, jako by byla vlastní. Typický scénář, který se sám zapůjčuje do víceklientské aplikace, je ten, ve kterém všichni uživatelé aplikace z různých tenantů můžou chtít přizpůsobit uživatelské prostředí, ale v opačném případě mají stejné základní obchodní požadavky. Příklady rozsáhlých víceklientské aplikací jsou Microsoft 365, Outlook.com a visualstudio.com.
 
 Z perspektivy poskytovatele aplikace se výhody víceklientské architektury týkají zejména provozní a nákladové efektivity. Jedna verze vaší aplikace může splňovat potřeby mnoha klientů nebo zákazníků, což umožňuje konsolidaci úloh správy systému, jako je monitorování, optimalizace výkonu, údržba softwaru a zálohování dat.
 

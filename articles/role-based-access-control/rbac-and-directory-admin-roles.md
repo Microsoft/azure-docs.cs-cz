@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 8809b5fdce382b7c8f913823ca8e176226d5837b
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: b85f1d8bd7249ad26ff957a72a9cc7285158caba
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536170"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397721"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Role správců pro klasický odběr, role Azure a role Azure AD
 
@@ -101,7 +101,7 @@ Role Azure AD slouží ke správě prostředků Azure AD v adresáři, jako je v
 | --- | --- | --- |
 | [Globální správce](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>Správa přístupu ke všem administrativním funkcím v Azure Active Directory i službám federovaným do Azure Active Directory</li><li>Přiřazení rolí správce dalším uživatelům</li><li>Resetování hesel uživatelů a všech ostatních správců</li></ul> | Osoba, která se zaregistruje v tenantovi Azure Active Directory, se stává globálním správcem. |
 | [Správce uživatele](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>Vytváření a správa všech aspektů uživatelů a skupin</li><li>Správa lístků podpory</li><li>Monitorování stavu služby</li><li>Změna hesel pro uživatele, správce helpdesku a další správce uživatelů</li></ul> |  |
-| [Správce fakturace](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Nové nákupy</li><li>Spravovat předplatná</li><li>Správa lístků podpory</li><li>Monitorování stavu služby</li></ul> |  |
+| [Správce fakturace](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Nové nákupy</li><li>Správa předplatných</li><li>Správa lístků podpory</li><li>Monitorování stavu služby</li></ul> |  |
 
 V Azure Portal uvidíte seznam rolí Azure AD v okně **role a správci** . Seznam všech rolí Azure AD najdete v tématu [oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
@@ -122,7 +122,7 @@ Role Azure na nejvyšší úrovni řídí oprávnění ke správě prostředků 
 
 Ve výchozím nastavení role Azure a role Azure AD nezahrnují Azure a Azure AD. Pokud ale globální správce zvyšuje svůj přístup, vyberte v Azure Portal přepínač **Správa přístupu pro prostředky Azure** . globální správce udělí roli [Správce přístupu uživatele](built-in-roles.md#user-access-administrator) (role Azure) ve všech předplatných pro konkrétního tenanta. Role správce uživatelských přístupů uživateli umožňuje udělit dalším uživatelům přístup k prostředkům Azure. Tento přepínač může být užitečný pro opakované získání přístupu k předplatnému. Další informace najdete v tématu [zvýšení úrovně přístupu ke správě všech předplatných Azure a skupin pro správu](elevate-access-global-admin.md).
 
-Několik rolí Azure AD zahrnuje Azure AD a systém Microsoft Office 365, například role globálního správce a Správce uživatelů. Pokud jste například členem role Globální správce, máte funkce globálního správce v Azure AD a Office 365 a můžete mimo jiné provádět změny v Microsoft Exchangi a Microsoft SharePointu. Ve výchozím nastavení ale globální správce nemá přístup k prostředkům Azure.
+Několik rolí Azure AD zahrnuje Azure AD a Microsoft 365, jako jsou globální role správců a správců uživatelů. Pokud jste například členem role globálního správce, máte možnosti globálního správce v Azure AD a Microsoft 365, jako je například provádění změn v systému Microsoft Exchange a Microsoft SharePoint. Ve výchozím nastavení ale globální správce nemá přístup k prostředkům Azure.
 
 ![Role Azure RBAC oproti rolím Azure AD](./media/rbac-and-directory-admin-roles/azure-office-roles.png)
 

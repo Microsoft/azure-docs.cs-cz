@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: adcd6aa2c232bf87dc82284acbe2815484660ca7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 49dc551039e0fd82ddb4374713c59fca2f493b62
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998556"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397942"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Kurz: Vytvoření první aplikace pro vyhledávání pomocí sady .NET SDK
 
@@ -42,10 +42,10 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 
 Toto jedno volání iniciuje hledání dat Azure a vrátí výsledky.
 
-![Hledání "fondu"](./media/tutorial-csharp-create-first-app/azure-search-pool.png)
+:::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-pool.png" alt-text="Hledání * fondu *" border="false":::
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -58,7 +58,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 1. Pomocí sady Visual Studio přejděte na a otevřete řešení pro stránku základní vyhledávání a vyberte **Spustit bez ladění** (nebo stiskněte klávesu F5).
 1. Zadejte některá slova (například "WiFi", "View", "bar", "parkování") a Prohlédněte si výsledky.
 
-    ![Hledání "WiFi"](./media/tutorial-csharp-create-first-app/azure-search-wifi.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="Hledání * Wi-Fi *" border="false":::
 
 Snad tento projekt bude pracovat hladce a máte spuštěnou aplikaci Azure. Tato jedna aplikace obsahuje mnoho základních komponent pro složitější hledání, takže je vhodné ji projít a znovu vytvořit krok za krokem.
 
@@ -68,15 +68,15 @@ Pokud chcete tento projekt vytvořit úplně od začátku, a proto vám pomůže
 
 1. V aplikaci Visual Studio 2017 nebo novější vyberte možnost **Nový/projekt** a pak **ASP.NET Core webová aplikace**. Dejte projektu název, jako je například "FirstAzureSearchApp".
 
-    ![Vytvoření cloudového projektu](./media/tutorial-csharp-create-first-app/azure-search-project1.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="Vytvoření cloudového projektu" border="false":::
 
 2. Po kliknutí na **OK** pro tento typ projektu se vám nabídne druhá sada možností, které se vztahují na tento projekt. Vyberte možnost **Webová aplikace (model-zobrazení-kontroler)**.
 
-    ![Vytvoření projektu MVC](./media/tutorial-csharp-create-first-app/azure-search-project2.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="Vytvoření projektu MVC":::
 
 3. Potom v nabídce **nástroje** vyberte **Správce balíčků NuGet** a pak **spravujte balíčky NuGet pro řešení...**. Je potřeba nainstalovat jeden balíček. Vyberte kartu **Procházet** a do vyhledávacího pole zadejte "Azure kognitivní hledání". Nainstalujte **Microsoft. Azure. Search** , když se objeví v seznamu (verze 9.0.1 nebo novější). Abyste mohli instalaci dokončit, budete muset kliknout na několik dalších dialogových oken.
 
-    ![Přidání knihoven Azure pomocí NuGet](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Přidání knihoven Azure pomocí NuGet" border="false":::
 
 ### <a name="initialize-azure-cognitive-search"></a>Inicializovat Azure Kognitivní hledání
 
@@ -93,7 +93,7 @@ V této ukázce používáme veřejně dostupná data o hotelu. Tato data jsou l
 
 2. Tento soubor ještě není hotový, vyberte vlastnosti pro tento soubor a změňte nastavení **Kopírovat do výstupního adresáře** na kopírovat, pokud je **novější**.
 
-    ![Kopírování nastavení aplikace do výstupu](./media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="Kopírování nastavení aplikace do výstupu" border="false":::
 
 ## <a name="model-data-structures"></a>Modelování datových struktur
 
@@ -513,11 +513,11 @@ Teď zkontrolujeme, jestli je aplikace správně spuštěná.
 
 1. Vyberte **ladit/spustit bez ladění** nebo stiskněte klávesu F5. Pokud máte správně kódované věci, zobrazí se počáteční zobrazení indexu.
 
-     ![Otevírání aplikace](./media/tutorial-csharp-create-first-app/azure-search-index.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="Otevírání aplikace" border="false":::
 
 2. Zadejte text, například "plážový" (nebo libovolný text, který je na mysli), a klikněte na ikonu hledání. Měli byste získat nějaké výsledky.
 
-     ![Hledání "pláž"](./media/tutorial-csharp-create-first-app/azure-search-beach.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="Hledání * pláž *" border="false":::
 
 3. Zkuste zadat "pět hvězdiček". Všimněte si, že nezískáte žádné výsledky. Propracovanější hledání má za následek "pět hvězdiček" jako synonymum "luxus" a vrátí tyto výsledky. Použití synonym je k dispozici v Azure Kognitivní hledání, ale nebudeme je pokrýt v prvním výukovém programu.
  
@@ -533,7 +533,7 @@ Je důležité ověřit, že naše funkce zpracování chyb fungují tak, jak by
 
 2. Spusťte aplikaci, jako hledaný text zadejte "bar" a klikněte na ikonu hledání. Výjimka by měla být výsledkem zobrazení chyby.
 
-     ![Vynutit chybu](./media/tutorial-csharp-create-first-app/azure-search-error.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="Vynutit chybu" border="false":::
 
     > [!Important]
     > Je považováno za bezpečnostní riziko, které vrátí čísla interních chyb na chybové stránce. Pokud je vaše aplikace určena pro obecné použití, proveďte některé šetření na zabezpečené a osvědčené postupy, které se vrátí, když dojde k chybě.

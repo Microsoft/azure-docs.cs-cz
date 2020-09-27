@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 337deec076a25183a4dd866362c7dc55a485834d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224488"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397245"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování neaktivních uložených dat v Azure
 
@@ -81,13 +81,13 @@ Při implementaci neaktivního šifrování se používá více než jeden šifr
 
 Služby Microsoft Cloud Services se používají ve všech třech cloudových modelech: IaaS, PaaS, SaaS. Níže najdete příklady toho, jak se vejdou na jednotlivé modely:
 
-- Softwarové služby označované jako software jako server nebo SaaS, které obsahují aplikace poskytované cloudem, jako je například Office 365.
+- Softwarové služby označované jako software jako server nebo SaaS, které obsahují aplikace poskytované cloudem, jako je například Microsoft 365.
 - Služby platformy, které zákazníci využívají cloud ve svých aplikacích, a to s využitím cloudu pro věci, jako jsou úložiště, analýza a funkce služby Service Bus.
 - Služby infrastruktury, neboli infrastruktura jako služba (IaaS), ve které zákazník nasazuje operační systémy a aplikace hostované v cloudu a případně využívá jiné cloudové služby.
 
 ### <a name="encryption-at-rest-for-saas-customers"></a>Šifrování v klidovém případě pro zákazníky SaaS
 
-Zákazníci SaaS (software jako služba) obvykle mají povolené šifrování v klidovém provozu nebo dostupné v každé službě. Sada Office 365 má několik možností, jak zákazníkům ověřit nebo povolit šifrování v klidovém umístění. Informace o službách Office 365 najdete v tématu [šifrování v sadě office 365](https://docs.microsoft.com/office365/securitycompliance/encryption).
+Zákazníci SaaS (software jako služba) obvykle mají povolené šifrování v klidovém provozu nebo dostupné v každé službě. Microsoft 365 má několik možností, jak zákazníkům ověřit nebo povolit šifrování v klidovém umístění. Informace o Microsoft 365 Services najdete v tématu [šifrování v Microsoft 365](/microsoft-365/compliance/encryption).
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>Šifrování v klidovém případě pro zákazníky PaaS
 

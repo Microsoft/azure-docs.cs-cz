@@ -4,12 +4,12 @@ description: Naučte se volat obchodní procesy z aplikace App Service. Posílá
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 5aa563e55c64893d57522dd1154a64c7e90a1690
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962192"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397432"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Kurz: odesílání e-mailů a vyvolání dalších obchodních procesů z App Service
 
@@ -84,7 +84,8 @@ Nasaďte aplikaci s použitím jazykové architektury podle vašeho výběru na 
 1. V dolní části návrháře klikněte na **Nový krok**, do vyhledávacího pole Akce zadejte **Gmail** a vyhledejte a vyberte **Odeslat e-mail (v2)**.
     
     > [!TIP]
-    > Můžete hledat další typy integrace, například SendGrid, MailChimp, Office 365 a SalesForce. Další informace najdete v [dokumentaci Logic Apps](../logic-apps/index.yml).
+    > Můžete hledat další typy integrace, například SendGrid, MailChimp, Microsoft 365 a SalesForce. Další informace najdete v [dokumentaci Logic Apps](../logic-apps/index.yml).
+
 1. V dialogovém okně **Gmail** vyberte **Přihlásit** se a přihlaste se k účtu Gmail, ze kterého chcete e-mail odeslat.
 
     ![Snímek obrazovky, který zobrazuje dialogové okno Gmail, pomocí kterého se přihlašujete k účtu Gmail, ze kterého chcete odesílat e-maily.](./media/tutorial-send-email/gmail-sign-in.png)

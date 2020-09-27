@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: df337736a676c40f1345310afb9a2e685ddc1d5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0540fa9c7a29456aaf343adce83509b2d0e390e4
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872019"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398916"
 ---
 # <a name="peering-service-connection"></a>Připojení ke službě peering Service
 
@@ -29,7 +29,7 @@ Připojení obvykle odkazuje na logickou sadu informací, která identifikuje sl
 Zákazník může na základě požadavku vytvořit jedno nebo více připojení. Připojení se používá také jako jednotka kolekce telemetrie. Například pro upozornění na výstrahy telemetrie musí zákazník definovat připojení, které se bude monitorovat.
 
 > [!Note]
-> Když se přihlásíte ke službě partnerského vztahu, analyzujeme vaše telemetrie Windows a Office 365, abychom vám poskytli měření latence pro vybrané předpony.
+> Když se přihlásíte ke službě peering Service, analyzujeme vaši telemetrii ve Windows a Microsoft 365, abychom vám poskytli měření latence pro vybrané předpony.
 >Další informace o telemetrii připojení najdete v tématu [telemetrie připojení ke službě peering Service](connection-telemetry.md).
 >
 

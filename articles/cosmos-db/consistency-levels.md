@@ -1,19 +1,19 @@
 ---
-title: Úrovně konzistence v Azure Cosmos DB
+title: Úrovně konzistence ve službě Azure Cosmos DB
 description: Azure Cosmos DB má pět úrovní konzistence, které vám pomůžou vyvážit případné kompromisy v konzistenci, dostupnosti a latenci.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5ba3fc70a2ccfbe342e222dbb475658629ec60a4
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 8f482c4fe6817c75079ceb98e981c846c395ad13
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851703"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396021"
 ---
-# <a name="consistency-levels-in-azure-cosmos-db"></a>Úrovně konzistence v Azure Cosmos DB
+# <a name="what-are-consistency-levels-in-azure-cosmos-db"></a>Co jsou úrovně konzistence v Azure Cosmos DB?
 
 Distribuované databáze, které využívají replikaci pro vysokou dostupnost, nízkou latenci nebo obojí, provedou základní kompromisy mezi konzistencí čtení a dostupností, latencí a propustností. Většina komerčně dostupných distribuovaných databází požádá vývojáře o výběr mezi dvěma extrémními modely konzistence: silná *konzistence a* konečná konzistence. *strong* Linearizability modelu silné konzistence je Gold Standard pro programovatelnost dat. Ale přidává cenu vyšší latence zápisu (v ustáleném stavu) a omezenou dostupnost (během selhání). Na druhé straně, konečná konzistence nabízí vyšší dostupnost a lepší výkon, ale zpřístupňuje programové aplikace.
 
@@ -91,12 +91,12 @@ Následující obrázek znázorňuje konzistenci předpon konzistence se hudebn�
 
   :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="video":::
 
-- Kdy **: neexistuje**záruka na řazení pro čtení. Při absenci dalších zápisů se repliky nakonec konvergují.  
+- Kdy **: neexistuje**záruka na řazení pro čtení. Pokud nedojde k žádným dalším operacím zápisu, repliky se nakonec konvergují.  
 Konečná konzistence představuje slabší formu konzistence, protože klient může číst hodnoty, které jsou starší než ty, které se předtím četly. Konečná konzistence je ideální, pokud aplikace nevyžaduje žádné záruky na řazení. Mezi příklady patří počet re, podobně jako u jiných než vlákenných komentářů. Následující obrázek znázorňuje konečnou konzistenci se hudebními poznámkami.
 
   :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="video":::
 
-## <a name="additional-reading"></a>Další čtení
+## <a name="additional-reading"></a>Další materiály ke čtení
 
 Další informace o konceptech konzistence najdete v následujících článcích:
 

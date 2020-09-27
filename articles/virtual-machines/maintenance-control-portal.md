@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4232f4cd39c3f6dd6efa0bf78959798ea842e2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b174e2631131e6bf26d7b1cb62442c8a99102e2e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676042"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397279"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>Řízení aktualizací s využitím řízení údržby a Azure Portal
 
@@ -26,15 +26,15 @@ ms.locfileid: "84676042"
 
    ![Snímek obrazovky znázorňující otevření konfigurací údržby](media/virtual-machines-maintenance-control-portal/maintenance-configurations-search.png)
 
-1. Klikněte na tlačítko **Add** (Přidat).
+1. Klikněte na **Přidat**.
 
    ![Snímek obrazovky ukazující, jak přidat konfiguraci údržby](media/virtual-machines-maintenance-control-portal/maintenance-configurations-add.png)
 
-1. Vyberte předplatné a skupinu prostředků, zadejte název konfigurace a vyberte oblast. Klikněte na **Další**.
+1. Vyberte předplatné a skupinu prostředků, zadejte název konfigurace a vyberte oblast. Klikněte na **Next** (Další).
 
    ![Snímek obrazovky se základními informacemi o konfiguraci údržby](media/virtual-machines-maintenance-control-portal/maintenance-configurations-basics.png)
 
-1. Přidejte značky a hodnoty. Klikněte na **Další**.
+1. Přidejte značky a hodnoty. Klikněte na **Next** (Další).
 
    ![Snímek obrazovky ukazující Přidání značek do konfigurace údržby](media/virtual-machines-maintenance-control-portal/maintenance-configurations-tags.png)
 
@@ -76,7 +76,7 @@ Existují také dva způsoby, jak ověřit, zda čekají aktualizace na konfigur
 
 Můžete také kontrolovat konkrétního hostitele pomocí **Virtual Machines** nebo vlastností vyhrazeného hostitele. 
 
-![Snímek obrazovky znázorňující kontrolu údržby hostitele](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending-vm.png)
+![Snímek obrazovky zobrazující zvýrazněný stav údržby](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending-vm.png)
 
 ## <a name="apply-updates"></a>Instalace aktualizací
 
@@ -94,7 +94,7 @@ Můžete se podívat na průběh aktualizací pro konfiguraci v části **Konfig
 
 Pokud chcete konfiguraci odstranit, otevřete podrobnosti konfigurace a klikněte na **Odstranit**.
 
-![Snímek obrazovky znázorňující kontrolu údržby hostitele](media/virtual-machines-maintenance-control-portal/maintenance-configurations-delete.png)
+![Snímek obrazovky, který ukazuje, jak odstranit konfiguraci.](media/virtual-machines-maintenance-control-portal/maintenance-configurations-delete.png)
 
 
 ## <a name="next-steps"></a>Další kroky

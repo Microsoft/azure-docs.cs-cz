@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: ecfb569f2791b674fe842e1c21cba972a8e9d2a7
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 61732f66aef58f5a9edcb9e095782e19e8aaffdd
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89443003"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397211"
 ---
 # <a name="vpn-gateway-design"></a>VPN Gateway návrh
 
@@ -77,7 +77,7 @@ Pokud virtuální síť splňuje určité požadavky, je možné k vytvoření p
 
 ## <a name="expressroute-private-connection"></a><a name="ExpressRoute"></a>ExpressRoute (soukromé připojení)
 
-ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 a CRM Online. Připojení může být ze sítě typu any-to-Any (IP VPN), sítě Ethernet typu Point-to-Point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení v zařízení, ve kterém se nachází.
+ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako jsou Microsoft Azure, Microsoft 365 a CRM Online. Připojení může být ze sítě typu any-to-Any (IP VPN), sítě Ethernet typu Point-to-Point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení v zařízení, ve kterém se nachází.
 
 Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. To dovoluje připojením ExpressRoute poskytovat větší spolehlivost, vyšší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes internet.
 

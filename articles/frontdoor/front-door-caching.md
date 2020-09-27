@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2020
 ms.author: duau
-ms.openlocfilehash: 221627a756c69d11ec5385b12970bb835d6a0a0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9279b3e77147449ae0ede0cc0b76e57f130c9a44
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318450"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398027"
 ---
 # <a name="caching-with-azure-front-door"></a>Ukládání do mezipaměti s předními dvířky Azure
 Následující dokument určuje chování před dveřmi pomocí pravidel směrování s povoleným ukládáním do mezipaměti. Přední dvířka jsou moderní Content Delivery Network (CDN), a to společně s akcelerací a vyrovnáváním zatížení na dynamickém webu, ale také podporuje chování ukládání do mezipaměti stejně jako jakékoli jiné CDN.
@@ -83,7 +83,7 @@ Když požadavek na prostředek určí kompresi a výsledkem požadavku dojde k 
 
 ## <a name="query-string-behavior"></a>Chování řetězce dotazu
 S předními dvířky můžete řídit, jak jsou soubory ukládány do mezipaměti pro webový požadavek, který obsahuje řetězec dotazu. V rámci webové žádosti s řetězcem dotazu je řetězec dotazu ta část požadavku, která se vyskytuje po otazníku (?). Řetězec dotazu může obsahovat jednu nebo více párů klíč-hodnota, ve kterých je název pole a jeho hodnota oddělená symbolem rovná se (=). Jednotlivé páry klíč-hodnota jsou oddělené znakem ampersand (&). Například, `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Pokud je v řetězci dotazu požadavku více než jedna dvojice klíč-hodnota, nezáleží na jejich pořadí.
-- **Ignorovat řetězce dotazů**: výchozí režim. V tomto režimu předá přední dvířka řetězce dotazů od žadatele k back-endu na první požadavek a uloží Asset do mezipaměti. Všechny následné požadavky na prostředky, které jsou obsluhovány z prostředí front-dveří, ignorují řetězce dotazu do vypršení platnosti prostředku uloženého v mezipaměti.
+- **Ignorovat řetězce dotazů**: v tomto režimu předá přední dvířka řetězce dotazů od žadatele k back-endu na první požadavek a uloží Asset do mezipaměti. Všechny následné požadavky na prostředky, které jsou obsluhovány z prostředí front-dveří, ignorují řetězce dotazu do vypršení platnosti prostředku uloženého v mezipaměti.
 
 - **Ukládat do mezipaměti každou jedinečnou adresu URL**: v tomto režimu se každý požadavek s jedinečnou adresou URL, včetně řetězce dotazu, považuje za jedinečný prostředek s vlastní mezipamětí. Například odpověď z back-endu pro požadavek na `www.example.ashx?q=test1` se ukládá do mezipaměti v prostředí front-endu a vrátí se pro následné mezipaměti se stejným řetězcem dotazu. Požadavek na `www.example.ashx?q=test2` aplikaci se ukládá do mezipaměti jako samostatný prostředek s vlastním nastavením Time to Live.
 

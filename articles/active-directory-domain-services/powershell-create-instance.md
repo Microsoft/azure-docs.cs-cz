@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 07/09/2020
 ms.author: iainfou
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 27fec8b8b76bec4c5ac428258b1495fc1bef1abe
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3ae9c99187e54ae941cc5f96d144b6db8ec91980
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068962"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396488"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Povolení Azure Active Directory Domain Services pomocí prostředí PowerShell
 
@@ -82,7 +82,7 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-## <a name="create-supporting-azure-resources"></a>Vytváření pomocných prostředků Azure
+## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
 Nejdřív Zaregistrujte poskytovatele prostředků Azure AD Domain Services pomocí rutiny [Register-AzResourceProvider][Register-AzResourceProvider] :
 
@@ -108,12 +108,14 @@ Vytvořte podsítě pomocí rutiny [New-AzVirtualNetworkSubnetConfig][New-AzVirt
 
 ```powershell
 $VnetName = "myVnet"
+$SubnetName = "DomainServices"
 
-# Create the dedicated subnet for AAD Domain Services.
+# Create the dedicated subnet for Azure AD Domain Services.
 $AaddsSubnet = New-AzVirtualNetworkSubnetConfig `
-  -Name DomainServices `
+  -Name $SubnetName `
   -AddressPrefix 10.0.0.0/24
 
+# Create an additional subnet for your own VM workloads
 $WorkloadSubnet = New-AzVirtualNetworkSubnetConfig `
   -Name Workloads `
   -AddressPrefix 10.0.1.0/24
@@ -125,6 +127,68 @@ $Vnet= New-AzVirtualNetwork `
   -Name $VnetName `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $AaddsSubnet,$WorkloadSubnet
+```
+
+### <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
+
+Azure služba AD DS potřebuje skupinu zabezpečení sítě k zabezpečení portů potřebných pro spravovanou doménu a blokování všech ostatních příchozích přenosů. [Skupina zabezpečení sítě (NSG)][nsg-overview] obsahuje seznam pravidel, která povolují nebo zakazují síťový provoz do provozu ve službě Azure Virtual Network. V Azure služba AD DS skupina zabezpečení sítě funguje jako další vrstva ochrany, která umožňuje uzamknout přístup ke spravované doméně. Chcete-li zobrazit požadované porty, přečtěte si téma [skupiny zabezpečení sítě a požadované porty][network-ports].
+
+Následující rutiny PowerShellu používají rutinu [New-AzNetworkSecurityRuleConfig][New-AzNetworkSecurityRuleConfig] k vytvoření pravidel a pak rutinu [New-AzNetworkSecurityGroup][New-AzNetworkSecurityGroup] k vytvoření skupiny zabezpečení sítě. Skupina zabezpečení sítě a pravidla se pak přidruží k podsíti virtuální sítě pomocí rutiny [set-AzVirtualNetworkSubnetConfig][Set-AzVirtualNetworkSubnetConfig] .
+
+```powershell
+$NSGName = "aaddsNSG"
+
+# Create a rule to allow inbound TCP port 443 traffic for synchronization with Azure AD
+$nsg101 = New-AzNetworkSecurityRuleConfig `
+    -Name AllowSyncWithAzureAD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 101 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 443
+
+# Create a rule to allow inbound TCP port 3389 traffic from Microsoft secure access workstations for troubleshooting
+$nsg201 = New-AzNetworkSecurityRuleConfig -Name AllowRD `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 201 `
+    -SourceAddressPrefix CorpNetSaw `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 3389
+
+# Create a rule to allow TCP port 5986 traffic for PowerShell remote management
+$nsg301 = New-AzNetworkSecurityRuleConfig -Name AllowPSRemoting `
+    -Access Allow `
+    -Protocol Tcp `
+    -Direction Inbound `
+    -Priority 301 `
+    -SourceAddressPrefix AzureActiveDirectoryDomainServices `
+    -SourcePortRange * `
+    -DestinationAddressPrefix * `
+    -DestinationPortRange 5986
+
+# Create the network security group and rules
+$nsg = New-AzNetworkSecurityGroup -Name $NSGName `
+    -ResourceGroupName $ResourceGroupName `
+    -Location $AzureLocation `
+    -SecurityRules $nsg101,$nsg201,$nsg301
+
+# Get the existing virtual network resource objects and information
+$vnet = Get-AzVirtualNetwork -Name $VnetName
+$subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $SubnetName
+$addressPrefix = $subnet.AddressPrefix
+
+# Associate the network security group with the virtual network subnet
+Set-AzVirtualNetworkSubnetConfig -Name $SubnetName `
+    -VirtualNetwork $vnet `
+    -AddressPrefix $addressPrefix `
+    -NetworkSecurityGroup $nsg
+$vnet | Set-AzVirtualNetwork
 ```
 
 ## <a name="create-a-managed-domain"></a>Vytvoření spravované domény
@@ -155,8 +219,6 @@ Když Azure Portal ukáže, že se dokončilo zřizování spravované domény, 
 
 * Aktualizujte nastavení DNS pro virtuální síť, aby virtuální počítače mohly najít spravovanou doménu pro připojení k doméně nebo ověřování.
     * Pokud chcete nakonfigurovat DNS, vyberte spravovanou doménu na portálu. V okně **Přehled** se zobrazí výzva k automatické konfiguraci těchto nastavení DNS.
-* Vytvořte skupinu zabezpečení sítě, která bude omezovat provoz ve virtuální síti pro spravovanou doménu. Vytvoří se standardní nástroj pro vyrovnávání zatížení Azure, který vyžaduje, aby se tato pravidla mohla umístit. Tato skupina zabezpečení sítě zabezpečuje službu Azure služba AD DS a je potřeba, aby správně fungovala spravovaná doména.
-    * Pokud chcete vytvořit skupinu zabezpečení sítě a požadovaná pravidla, nejdřív nainstalujte `New-AzureAddsNetworkSecurityGroup` skript pomocí `Install-Script -Name New-AaddsNetworkSecurityGroup` příkazu a potom spusťte příkaz `New-AaddsNetworkSecurityGroup` . Pro vás se vytvoří požadovaná pravidla pro spravovanou doménu.
 * [Povolte synchronizaci hesel do Azure služba AD DS](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) tak, aby se koncoví uživatelé mohli přihlásit ke spravované doméně pomocí svých podnikových přihlašovacích údajů.
 
 ## <a name="complete-powershell-script"></a>Dokončení skriptu PowerShellu
@@ -242,8 +304,6 @@ Když Azure Portal ukáže, že se dokončilo zřizování spravované domény, 
 
 * Aktualizujte nastavení DNS pro virtuální síť, aby virtuální počítače mohly najít spravovanou doménu pro připojení k doméně nebo ověřování.
     * Pokud chcete nakonfigurovat DNS, vyberte spravovanou doménu na portálu. V okně **Přehled** se zobrazí výzva k automatické konfiguraci těchto nastavení DNS.
-* Vytvořte skupinu zabezpečení sítě, která bude omezovat provoz ve virtuální síti pro spravovanou doménu. Vytvoří se standardní nástroj pro vyrovnávání zatížení Azure, který vyžaduje, aby se tato pravidla mohla umístit. Tato skupina zabezpečení sítě zabezpečuje službu Azure služba AD DS a je potřeba, aby správně fungovala spravovaná doména.
-    * Pokud chcete vytvořit skupinu zabezpečení sítě a požadovaná pravidla, nejdřív nainstalujte `New-AzureAddsNetworkSecurityGroup` skript pomocí `Install-Script -Name New-AaddsNetworkSecurityGroup` příkazu a potom spusťte příkaz `New-AaddsNetworkSecurityGroup` . Pro vás se vytvoří požadovaná pravidla pro spravovanou doménu.
 * [Povolte synchronizaci hesel do Azure služba AD DS](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) tak, aby se koncoví uživatelé mohli přihlásit ke spravované doméně pomocí svých podnikových přihlašovacích údajů.
 
 ## <a name="next-steps"></a>Další kroky
@@ -254,6 +314,8 @@ Pokud chcete spravovanou doménu zobrazit v akci, můžete se [připojit k virtu
 [windows-join]: join-windows-vm.md
 [tutorial-ldaps]: tutorial-configure-ldaps.md
 [tutorial-phs]: tutorial-configure-password-hash-sync.md
+[nsg-overview]: ../virtual-network/network-security-groups-overview.md
+[network-ports]: network-considerations.md#network-security-groups-and-required-ports
 
 <!-- EXTERNAL LINKS -->
 [Connect-AzAccount]: /powershell/module/Az.Accounts/Connect-AzAccount
@@ -270,3 +332,6 @@ Pokud chcete spravovanou doménu zobrazit v akci, můžete se [připojit k virtu
 [Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
 [cloud-shell]: ../cloud-shell/cloud-shell-windows-users.md
 [availability-zones]: ../availability-zones/az-overview.md
+[New-AzNetworkSecurityRuleConfig]: /powershell/module/az.network/new-aznetworksecurityruleconfig
+[New-AzNetworkSecurityGroup]: /powershell/module/az.network/new-aznetworksecuritygroup
+[Set-AzVirtualNetworkSubnetConfig]: /powershell/module/az.network/set-azvirtualnetworksubnetconfig

@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 663c852574667e45a39241575d6b50038495c33d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319584"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397075"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -31,7 +31,7 @@ Praktické přehledy o používání řešení Azure SQL Analytics a typických 
 
 Azure SQL Analytics je pouze cloudové řešení monitorování, které podporuje streamování diagnostické telemetrie pro všechny vaše databáze SQL Azure. Vzhledem k tomu, že Azure SQL Analytics nepoužívá agenty pro připojení k Azure Monitor, nepodporuje monitorování SQL Server hostovaných místně nebo na virtuálních počítačích.
 
-| Připojený zdroj | Podporováno | Popis |
+| Připojený zdroj | Podporováno | Description |
 | --- | --- | --- |
 | [Nastavení diagnostiky](../platform/diagnostic-settings.md) | **Ano** | Data metriky a protokolu Azure se odesílají do protokolů Azure Monitor přímo pomocí Azure. |
 | [Účet úložiště Azure](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Monitor nečtou data z účtu úložiště. |
@@ -43,7 +43,7 @@ Azure SQL Analytics je pouze cloudové řešení monitorování, které podporuj
 
 Následující tabulka obsahuje přehled podporovaných možností pro dvě verze řídicího panelu Azure SQL Analytics, jeden pro Azure SQL Database a druhý pro databáze spravované instance Azure SQL.
 
-| Možnost Azure SQL Analytics | Popis | Podpora SQL Database | Podpora SQL Managed Instance |
+| Možnost Azure SQL Analytics | Description | Podpora SQL Database | Podpora SQL Managed Instance |
 | --- | ------- | ----- | ----- |
 | Prostředek podle typu | Perspektiva, která počítá všechny monitorované prostředky. | Yes | Yes |
 | Insights | Poskytuje hierarchické procházení k podrobnostem Intelligent Insights do výkonu. | Yes | Yes |
@@ -90,11 +90,11 @@ Pokud se některé metriky nebo protokoly nestreamují do Azure Monitor, dlaždi
 
 Po výběru dlaždice Azure SQL Analytics pro databázi se zobrazí řídicí panel monitorování.
 
-![Přehled Azure SQL Analytics](./media/azure-sql/azure-sql-sol-overview.png)
+![Snímek obrazovky, který zobrazuje řídicí panel monitorování.](./media/azure-sql/azure-sql-sol-overview.png)
 
 Když vyberete některou dlaždici, otevře se v konkrétní perspektivě sestava s podrobnostmi. Po výběru perspektivy se otevře sestava procházení sestav.
 
-![Azure SQL Analytics vypršení časových limitů](./media/azure-sql/azure-sql-sol-metrics.png)
+![Snímek obrazovky, který zobrazuje sestavu přechodu k podrobnostem v konkrétní perspektivě.](./media/azure-sql/azure-sql-sol-metrics.png)
 
 Každá perspektiva v tomto zobrazení poskytuje souhrny na úrovni předplatného, serveru, elastického fondu a databáze. Kromě toho Každá perspektiva zobrazuje perspektivu specifickou pro sestavu na pravé straně. Výběr předplatného, serveru, fondu nebo databáze ze seznamu pokračuje v procházení podrobností.
 

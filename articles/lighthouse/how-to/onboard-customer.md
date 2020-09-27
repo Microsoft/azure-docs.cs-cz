@@ -3,12 +3,12 @@ title: Onboarding zákazníků do služby Azure Lighthouse
 description: Naučte se, jak začlenit zákazníka do Azure Lighthouse, který umožňuje získat a spravovat jejich prostředky prostřednictvím vlastního tenanta pomocí delegované správy prostředků Azure.
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 0b941c82c2ba0e98f524587f5ef4c4ecf86249eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e404c471990575460ccda3a26e7cdcb3ec1cf1d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336543"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396667"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding zákazníků do služby Azure Lighthouse
 
@@ -69,7 +69,7 @@ Pro zjednodušení správy doporučujeme používat pro každou roli skupiny už
 Při definování autorizací nezapomeňte postupovat podle principu minimálního oprávnění, aby uživatelé měli jenom oprávnění potřebná k dokončení své úlohy. Pokyny a informace o podporovaných rolích najdete [v tématu Klienti, uživatelé a role ve scénářích Azure Lighthouse](../concepts/tenants-users-roles.md).
 
 > [!IMPORTANT]
-> Aby bylo možné přidat oprávnění pro skupinu Azure AD, musí být **typ skupiny** **zabezpečení** , a ne **Sada Office 365**. Tato možnost je vybrána při vytváření skupiny. Další informace najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+> Aby bylo možné přidat oprávnění pro skupinu Azure AD, musí být **typ skupiny** nastavený na **zabezpečení**. Tato možnost je vybrána při vytváření skupiny. Další informace najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Pokud chcete definovat autorizaci, budete muset znát hodnoty ID pro každého uživatele, skupinu uživatelů nebo instanční objekt v tenantovi poskytovatele služeb, ke kterému chcete udělit přístup. Také budete potřebovat ID definice role pro každou předdefinovanou roli, kterou chcete přiřadit. Pokud je ještě nemáte, můžete je načíst spuštěním příkazů níže v rámci tenanta poskytovatele služeb.
 

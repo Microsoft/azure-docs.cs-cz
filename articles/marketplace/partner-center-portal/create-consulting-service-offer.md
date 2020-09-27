@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 6ca03e56d49d26fcd34a25ce1e3734db65b19b65
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7b42c12499977b5f7bc1704c57904e90be2e8466
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646840"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398010"
 ---
 # <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultačních služeb
 
@@ -25,7 +25,7 @@ Před vytvořením nabídky si přečtěte předpoklady v části [požadavky na
 Výhody publikování na komerčním webu Marketplace:
 
 - Propagujte svoji společnost pomocí značky Microsoftu.
-- Může mít více než 100 000 000 Office 365 a Dynamics 365 uživatelů na AppSource a více než 200 000 organizací prostřednictvím Azure Marketplace.
+- Aplikace může dosáhnout více než 100 000 000 Microsoft 365 a uživatelů Dynamics 365 na AppSource a více než 200 000 organizací prostřednictvím Azure Marketplace.
 - Dostanou vysoce kvalitní zájemce z těchto tržišť.
 - Povýšit vaše služby na pole Microsoftu a prodejní týmy
 
@@ -101,7 +101,7 @@ Tato stránka umožňuje nastavit primární produkt, který vaše konzultační
     - Analýzy
     - Modernizace aplikací
     - Archiv
-    - AI a strojové učení
+    - AI a Machine Learning
     - Backup
     - Velký objem dat
     - Datová platforma
@@ -141,7 +141,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 4. Obory
 5. Název nabídky
 6. Shrnutí
-7. Popis
+7. Description
 8. Snímky obrazovky a videa
 
 <br>Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSource (uvedené ceny jsou například jenom pro účely a nejsou určené k tomu, aby odrážely skutečné náklady):
@@ -156,7 +156,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 4. Obory
 5. Název nabídky
 6. Shrnutí
-7. Popis
+7. Description
 8. Snímky obrazovky a videa
 9. Dokumenty
 
@@ -174,7 +174,7 @@ Název:
 
 Zadejte krátký popis vaší nabídky. Může to být až 100 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

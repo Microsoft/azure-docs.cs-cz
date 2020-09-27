@@ -7,12 +7,12 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 07e5ce5cb6fee11e3f55ce808da51ccad59b9ff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 037598212773ca75abbdd086fe0577e0660f2218
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801355"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398574"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Použití pracovních postupů k integraci aplikace IoT Central Azure s dalšími Cloud Services
 
@@ -22,12 +22,12 @@ Můžete vytvořit pravidla v IoT Central, která spouštějí akce, jako je nap
 
 Konektor Azure IoT Central v3 pro automatické automatizace a Azure Logic Apps umožňuje vytvořit pokročilejší pravidla pro automatizaci operací v IoT Central:
 
-- Když pravidlo v aplikaci Azure IoT Central vyvolá, může aktivovat pracovní postup v Power Automate nebo Azure Logic Apps. Tyto pracovní postupy můžou spouštět akce v jiných cloudových službách, jako je například Office 365 nebo služba třetí strany.
-- Událost v jiné cloudové službě, jako je například Office 365, může aktivovat pracovní postup v automatizaci nebo Azure Logic Apps. Tyto pracovní postupy mohou spouštět akce nebo načítat data z aplikace IoT Central.
+- Když pravidlo v aplikaci Azure IoT Central vyvolá, může aktivovat pracovní postup v Power Automate nebo Azure Logic Apps. Tyto pracovní postupy můžou spouštět akce v jiných cloudových službách, jako je Microsoft 365 nebo služba třetí strany.
+- Událost v jiné cloudové službě, jako je například Microsoft 365, může aktivovat pracovní postup v Power Automate nebo Azure Logic Apps. Tyto pracovní postupy mohou spouštět akce nebo načítat data z aplikace IoT Central.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Nastavení řešení vyžaduje verzi 3 IoT Central aplikaci. Informace o tom, jak zjistit verzi vaší aplikace, najdete v tématu [o vaší aplikaci](./howto-get-app-info.md). Informace o tom, jak vytvořit aplikaci IoT Central, najdete v tématu [Vytvoření aplikace Azure IoT Central](./quick-deploy-iot-central.md).
 
@@ -66,14 +66,14 @@ Postup přidání konektoru služby **Azure IoT Central V3-Preview** jako akce v
 1. V Power automatu na panelu **Zvolte akci** vyberte **vlastní** kartu.
 1. Vyhledejte *IoT Central* a vyberte konektor **Azure IoT Central V3-Preview** .
 1. V seznamu akcí vyberte akci IoT Central, kterou chcete použít.
-1. V kroku akce dokončete konfiguraci pro akci, kterou jste zvolili. Pak vyberte **Uložit**.
+1. V kroku akce dokončete konfiguraci pro akci, kterou jste zvolili. Potom vyberte **Uložit**.
 
 Postup přidání konektoru služby **Azure IoT Central V3-Preview** jako akce v Azure Logic Apps:
 
 1. V **návrháři Logic Apps**v panelu **Zvolte akci** vyberte **vlastní** kartu.
 1. Vyhledejte *IoT Central*a vyberte konektor **Azure IoT Central V3-Preview** .
 1. V seznamu akcí vyberte akci IoT Central, kterou chcete použít.
-1. V kroku akce dokončete konfiguraci pro akci, kterou jste zvolili. Pak vyberte **Uložit**.
+1. V kroku akce dokončete konfiguraci pro akci, kterou jste zvolili. Potom vyberte **Uložit**.
 
 :::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Najděte konektor Azure IoT Central v3 a vyberte akci.":::
 

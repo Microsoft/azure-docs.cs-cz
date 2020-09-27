@@ -5,12 +5,12 @@ author: EMaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 5e1d772deb71e03311489ea61d012415860cbe54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf1b9db8de2c0f2c852a41d1e30343c5cef1b20b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445317"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396684"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Průvodce nastavením počítače se šablonou Windows v Azure Lab Services
 
@@ -61,7 +61,7 @@ Pokud jste na počítači, který nepoužívá službu Active Directory, mohou u
 
 Pokud je váš virtuální počítač připojený ke službě Active Directory, můžete nastavit, aby počítač s šablonou automaticky vyzval své studenty a přesunuli známé složky na OneDrive.  
 
-Nejdřív budete muset načíst ID tenanta Office.  Další pokyny najdete v tématu [Vyhledání ID tenanta pro Office 365](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id).  ID klienta Office 365 můžete také získat pomocí následujícího prostředí PowerShell.
+Nejdřív budete muset načíst ID vaší organizace.  Další pokyny najdete v tématu [Vyhledání ID vaší Microsoft 365 organizace](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id).  ID organizace můžete také získat pomocí následujícího prostředí PowerShell.
 
 ```powershell
 Install-Module MSOnline -Confirm
@@ -71,7 +71,7 @@ $officeTenantID = Get-MSOLCompanyInformation |
     Select-Object -expand Guid
 ```
 
-Jakmile budete mít ID tenanta Office 365, nastavte OneDrive tak, aby se na OneDrive přesunuly známé složky pomocí následujícího prostředí PowerShell.
+Jakmile budete mít ID vaší organizace, nastavte OneDrive tak, aby se na OneDrive přesunuly známé složky pomocí následujícího prostředí PowerShell.
 
 ```powershell
 if ($officeTenantID -eq $null)
@@ -95,7 +95,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
 
 ### <a name="silently-sign-in-users-to-onedrive"></a>Tiché přihlášení uživatelů do OneDrivu
 
-OneDrive se dá nastavit tak, aby se automaticky přihlásil s přihlašovacími údaji Windows přihlášeného uživatele.  Automatické přihlašování je užitečné pro třídy, ve kterých se student přihlašuje pomocí přihlašovacích údajů Office 365 School.
+OneDrive se dá nastavit tak, aby se automaticky přihlásil s přihlašovacími údaji Windows přihlášeného uživatele.  Automatické přihlašování je užitečné pro třídy, kde se student přihlásí pomocí svých školních přihlašovacích údajů.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -115,7 +115,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
 
 ### <a name="set-the-maximum-size-of-a-file-that-to-be-download-automatically"></a>Nastavte maximální velikost souboru, který se má automaticky stáhnout.
 
-Toto nastavení se používá společně s bezobslužným přihlášením uživatelů do synchronizačního klienta OneDrivu s přihlašovacími údaji Windows na zařízeních, která nemají povolený soubor OneDrive na vyžádání. Každý uživatel, který má OneDrive větší, než je zadaná prahová hodnota (v MB), bude vyzván k výběru složek, které chtějí synchronizovat před tím, než klient synchronizace OneDrive (OneDrive.exe) stáhne soubory.  V našem příkladu je "1111-2222-3333-4444" ID tenanta sady Office 365 a 0005000 nastaví prahovou hodnotu 5 GB.
+Toto nastavení se používá společně s bezobslužným přihlášením uživatelů do synchronizačního klienta OneDrivu s přihlašovacími údaji Windows na zařízeních, která nemají povolený soubor OneDrive na vyžádání. Každý uživatel, který má OneDrive větší, než je zadaná prahová hodnota (v MB), bude vyzván k výběru složek, které chtějí synchronizovat před tím, než klient synchronizace OneDrive (OneDrive.exe) stáhne soubory.  V našem příkladu je "1111-2222-3333-4444" ID organizace a 0005000 nastaví prahovou hodnotu 5 GB.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -124,23 +124,23 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
     -Name "1111-2222-3333-4444" -Value "0005000" -PropertyType DWORD
 ```
 
-## <a name="install-and-configure-microsoft-office-365"></a>Instalace a konfigurace systém Microsoft Office 365
+## <a name="install-and-configure-microsoft-365"></a>Instalace a konfigurace Microsoft 365
 
-### <a name="install-microsoft-office-365"></a>Nainstalovat systém Microsoft Office 365
+### <a name="install-microsoft-365"></a>Nainstalovat Microsoft 365
 
-Pokud Váš počítač šablony potřebuje sadu Office, doporučujeme nainstalovat Office prostřednictvím nástroje pro [nasazení Office (ODT)](https://www.microsoft.com/download/details.aspx?id=49117 ). Budete muset vytvořit opakovaně použitelný konfigurační soubor pomocí [služby konfigurace klienta Office 365](https://config.office.com/) , abyste si zvolili, jakou architekturu budete potřebovat v Office, a jak často se aktualizuje.
+Pokud Váš počítač šablony potřebuje sadu Office, doporučujeme nainstalovat Office prostřednictvím nástroje pro [nasazení Office (ODT)](https://www.microsoft.com/download/details.aspx?id=49117). Budete muset vytvořit opakovaně použitelný konfigurační soubor pomocí [centra pro správu Microsoft 365Ch aplikací](https://config.office.com/) , abyste si zvolili, jakou architekturu budete potřebovat v Office, a jak často se aktualizuje.
 
-1. Spusťte [službu konfigurace klienta Office 365](https://config.office.com/) a Stáhněte si vlastní konfigurační soubor.
+1. Přejít do [centra pro správu Microsoft 365Ch aplikací](https://config.office.com/) a stáhnout vlastní konfigurační soubor.
 2. Stáhněte si [Nástroj pro nasazení Office](https://www.microsoft.com/download/details.aspx?id=49117).  Stažený soubor bude `setup.exe` .
 3. Spusťte `setup.exe /download configuration.xml` a stáhněte součásti Office.
 4. Spusťte `setup.exe /configure configuration.xml` pro instalaci součástí systému Office.
 
-### <a name="change-the-microsoft-office-365-update-channel"></a>Změna kanálu aktualizace systém Microsoft Office 365
+### <a name="change-the-microsoft-365-update-channel"></a>Změna kanálu aktualizace Microsoft 365
 
-Pomocí nástroje Konfigurace Office můžete nastavit, jak často Office dostávají aktualizace. Pokud ale potřebujete změnit, jak často Office obdrží aktualizace po instalaci, můžete změnit adresu URL kanálu aktualizace. Adresy URL kanálu aktualizace se dají najít při [změně kanálu aktualizací Office 365 ProPlus pro zařízení ve vaší organizaci](https://docs.microsoft.com/deployoffice/change-update-channels). Následující příklad ukazuje, jak nastavit Office 365 pro použití měsíčního kanálu aktualizace.
+Pomocí nástroje Konfigurace Office můžete nastavit, jak často Office dostávají aktualizace. Pokud ale potřebujete změnit, jak často Office obdrží aktualizace po instalaci, můžete změnit adresu URL kanálu aktualizace. Adresy URL kanálu aktualizace se dají najít při [změně kanálu aktualizace Microsoft 365 Apps pro zařízení ve vaší organizaci](https://docs.microsoft.com/deployoffice/change-update-channels). Následující příklad ukazuje, jak nastavit Microsoft 365 pro použití měsíčního aktualizačního kanálu.
 
 ```powershell
-# Update to the Office 365 Monthly Channel
+# Update to the Microsoft 365 Monthly Channel
 Set-ItemProperty
     -Path "HKLM:\SOFTWARE\Microsoft\Office\ClickToRun\Configuration\CDNBaseUrl"
     -Name "CDNBaseUrl"
@@ -228,7 +228,7 @@ Nainstalujte další aplikace, které se běžně používají k výuce v aplika
 
 ## <a name="conclusion"></a>Závěr
 
-V tomto článku jste si ukázali volitelné kroky pro přípravu virtuálního počítače šablony Windows pro efektivní třídu.  Postup zahrnuje instalaci OneDrivu a instalaci Office 365, instalaci aktualizací pro Windows a instalaci aktualizací pro aplikace Microsoft Store.  Také jsme probrali, jak nastavit aktualizace na plán, který bude pro vaši třídu nejlépe fungovat.  
+V tomto článku jste si ukázali volitelné kroky pro přípravu virtuálního počítače šablony Windows pro efektivní třídu.  Postup zahrnuje instalaci OneDrivu a instalaci Microsoft 365, instalaci aktualizací pro Windows a instalaci aktualizací pro Microsoft Store aplikace.  Také jsme probrali, jak nastavit aktualizace na plán, který bude pro vaši třídu nejlépe fungovat.  
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si článek o tom, jak řídit chování při vypnutí Windows, které vám pomůže se správou nákladů: [Průvodce řízením chování při vypínání Windows](how-to-windows-shutdown.md)

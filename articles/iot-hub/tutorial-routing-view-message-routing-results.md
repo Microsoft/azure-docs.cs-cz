@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: fb86b25fc24ea505ae258cc44d5554a019723af6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ddba41acfcfe497059a661b701906cda0d4d77c6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019160"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398353"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Kurz: část 2 – zobrazení směrovaných zpráv
 
@@ -82,7 +82,7 @@ Fronta Service Bus se použije pro příjem zpráv označených jako kritické. 
 
    ![Možnosti Office 365](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
-8. Přihlaste se ke svému účtu Office 365 a nastavte připojení. Pokud vyprší časový limit, zkuste to znovu. Zadejte e-mailové adresy příjemců e-mailu. Také zadejte předmět a zprávu, kterou chcete mít v těle zprávy. Pro testování zadejte jako adresu příjemce vlastní e-mail.
+8. Přihlaste se ke svému pracovnímu nebo školnímu účtu a nastavte připojení. Pokud vyprší časový limit, zkuste to znovu. Zadejte e-mailové adresy příjemců e-mailu. Také zadejte předmět a zprávu, kterou chcete mít v těle zprávy. Pro testování zadejte jako adresu příjemce vlastní e-mail.
 
    Pokud chcete zobrazit obsah zprávy, kterou můžete zahrnout, vyberte **Přidat dynamický obsah** . Vyberte **Obsah** – příchozí zpráva bude zahrnuta do e-mailu.
 

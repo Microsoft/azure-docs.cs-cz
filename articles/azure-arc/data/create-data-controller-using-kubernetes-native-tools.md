@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c5a2aa6ca75e352a824716c19af923c8628efde
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 087b021f088e344926a44f7e009f273d265dd82b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91342012"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397619"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Vytvoření řadiče dat ARC Azure pomocí nástrojů pro Kubernetes
 
@@ -30,6 +30,20 @@ Pokud chcete vytvořit řadič dat ARC Azure pomocí nástrojů Kubernetes, bude
 
 > [!NOTE]
 > Některé kroky pro vytvoření kontroleru dat ARC Azure, které jsou uvedené níže, vyžadují oprávnění správce clusteru Kubernetes.  Pokud nejste správcem clusteru Kubernetes, budete muset mít správce clusteru Kubernetes provést tyto kroky vaším jménem.
+
+#### <a name="cleanup-from-past-installations"></a>Vyčištění z minulých instalací
+
+Pokud jste v minulosti nainstalovali řadič dat ARC Azure do stejného clusteru a odstranili jste řadič dat ARC Azure pomocí `azdata arc dc delete` příkazu, můžou existovat objekty na úrovni clusteru, které by se ještě musely odstranit. Spuštěním následujících příkazů odstraňte objekty na úrovni clusteru datového kontroleru Azure ARC:
+
+```
+# Cleanup azure arc data service artifacts
+kubectl delete crd datacontrollers.arcdata.microsoft.com 
+kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 
+kubectl delete postgresql-11s.arcdata.microsoft.com 
+kubectl delete postgresql-12s.arcdata.microsoft.com
+kubectl delete clusterroles azure-arc-data:cr-arc-metricsdc-reader
+kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
+```
 
 ## <a name="overview"></a>Přehled
 

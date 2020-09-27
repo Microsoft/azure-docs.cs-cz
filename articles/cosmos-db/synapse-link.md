@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4226676ed7fbaf5b2998306fa5240316c327d59c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 89282b0cc07f210e7bbf80503c9dbef5f97b13a2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891480"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397330"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Co je Azure synapse Link pro Azure Cosmos DB (Preview)?
 
@@ -116,7 +116,7 @@ Odkaz synapse se nedoporučuje, pokud hledáte tradiční požadavky na datový 
 
 ## <a name="limitations"></a>Omezení
 
-* Odkaz na Azure synapse se podporuje pro rozhraní API Azure Cosmos DB SQL (Core) a rozhraní Azure Cosmos DB API pro MongoDB. Podpora rozhraní API Cassandra je aktuálně v rámci ověřované verze Preview. Pokud chcete požádat o přístup k ověřované verzi Preview, pošlete [Azure Cosmos DB týmu](mailto:cosmosdbsynapselink@microsoft.com)e-mail.
+* Odkaz na Azure synapse se podporuje pro rozhraní API Azure Cosmos DB SQL (Core) a rozhraní Azure Cosmos DB API pro MongoDB.
 
 * V současné době se analytické úložiště dá povolit jenom pro nové kontejnery. Pokud chcete použít analytické úložiště pro existující kontejnery, migrujte data z existujících kontejnerů do nových kontejnerů pomocí [nástrojů pro migraci Azure Cosmos DB](cosmosdb-migrationchoices.md). Můžete povolit synapse odkaz na nové a existující účty Azure Cosmos DB.
 

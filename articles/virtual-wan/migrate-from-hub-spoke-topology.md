@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4c39a24664d36e4a69a44b7fe06835572e0cfe75
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b07ed4589a54948ef87f516ac4bb97ef8492283e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329240"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398831"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migrace do Azure Virtual WAN
 
@@ -72,7 +72,7 @@ Souhrn:
 - Rozbočovače také poskytují ukončení sítě VPN pro roaming uživatelů napříč různými typy klientů pomocí připojení OpenVPN k globální síti sítě a umožňují přístup nejen k aplikacím migrováným do Azure, ale i k jakýmkoli místním prostředkům.
 - Připojení k Internetu pro prostředky v rámci virtuální sítě poskytované službou Azure Virtual WAN.
 
-Připojení k Internetu pro vzdálené lokality, které poskytuje i služba Azure Virtual WAN. Místní internetový užitečných podporované prostřednictvím integrace partnerů pro optimalizovaný přístup k SaaS službám, jako je například Office 365.
+Připojení k Internetu pro vzdálené lokality, které poskytuje i služba Azure Virtual WAN. Místní internetový užitečných podporované prostřednictvím integrace partnerů pro optimalizaci přístupu ke službám SaaS, jako je Microsoft 365.
 
 ## <a name="migrate-to-virtual-wan"></a>Migrace na Virtual WAN
 

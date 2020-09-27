@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 7dbb1b4a8b85350b8bf8a6df0c9035a19055444c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3af8a7de7dad3ce20d4f0247892bca83f06c9d22
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79409015"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397296"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog nejčastějších dotazech
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Data Catalog.
@@ -34,11 +34,11 @@ Data Catalog je navržená pro technické a netechnické uživatele, včetně t�
 Služba Data Catalog Services je aktuálně dostupná v následujících datových centrech:
 
 * USA – západ
-* USA – východ
-* Západní Evropa
+* East US
+* West Europe
 * Severní Evropa
 * Austrálie – východ
-* Jihovýchodní Asie
+* Southeast Asia
 
 ## <a name="what-are-its-limits-on-the-number-of-data-assets"></a>Jaké jsou omezení počtu datových assetů?
 Bezplatná edice Data Catalog je omezená na 5 000 registrovaných datových assetů.
@@ -55,7 +55,7 @@ Pokud chcete odesílat žádosti o funkce a další zpětnou vazbu, na webu [fó
 
 ## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>Proč se mi při pokusu o vytvoření nového katalogu objeví *katalog* chyb?
 
-Když si koupíte Office 365 E5 s licencí Power BI Pro, Microsoft automaticky vytvoří výchozí katalog v oblasti předplatného. Tento katalog používá bezplatnou SKLADOVOU položku. Licence na uživatele Office 365/Power BI je spravovaná na stránce pro správu sady Office 365. 
+Když si koupíte Office 365 E5 s licencí Power BI Pro, Microsoft automaticky vytvoří výchozí katalog v oblasti předplatného. Tento katalog používá bezplatnou SKLADOVOU položku. Licence na uživatele Office 365/Power BI je spravovaná na stránce Správa. 
 
 Tento typ katalogu dat však nemá **možnost Správce** a není zobrazen v **Azure Portal**. Tento typ katalogu dat nelze odstranit. Podobně nemáte oprávnění k přejmenování katalogu Data Catalog a nemůžete ho přesunout do jiné oblasti. 
 
