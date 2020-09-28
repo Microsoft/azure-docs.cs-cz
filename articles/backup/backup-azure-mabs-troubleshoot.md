@@ -4,12 +4,12 @@ description: Řešení potíží s instalací, registrací Azure Backup Server a
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: d3b2ee87dda09fe1b5611d00ce567304aec33a6f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 09e5fe5da7e316257cbbdcb89074fe8a4bc692c0
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298367"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403003"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
 
@@ -142,7 +142,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Operace | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- | --- |
-| Nastavení e-mailových oznámení pomocí účtu Office 365 |ID chyby: 2013| **Příčina:**<br> Pokus o použití účtu Office 365 <br>**Doporučená akce:**<ol><li> První věc, kterou je potřeba zajistit, je, že u serveru DPM je nastavená možnost "povolení anonymního přenosu na konektoru pro příjem" pro server DPM. Další informace o tom, jak to nakonfigurovat, najdete v tématu [Povolení anonymního přenosu v konektoru pro příjem](/exchange/mail-flow/connectors/allow-anonymous-relay).</li> <li> Pokud nemůžete použít interní předávání SMTP a potřebujete ho nastavit pomocí serveru Office 365, můžete nastavit, aby služba IIS byla přenosová. Nakonfigurujte server DPM pro [přenos SMTP do O365 pomocí služby IIS](/exchange/mail-flow/test-smtp-with-telnet).<br><br>  Nezapomeňte použít \@ formát Domain.com uživatele, *ne* doména \ uživatel.<br><br><li>Najeďte na to, aby aplikace DPM používala název místního serveru jako server SMTP, port 587. Pak ji nasměrujte na e-mail uživatele, ze kterého by měly přijít e-maily.<li> Uživatelské jméno a heslo na stránce nastavení SMTP DPM by měly být pro doménový účet v doméně, ve které je aplikace DPM zapnutá. </li><br> Když měníte adresu serveru SMTP, proveďte změnu na nové nastavení, zavřete okno nastavení a pak ho znovu otevřete, abyste se ujistili, že odráží novou hodnotu.  Pouhou změnou a testováním nemusí vždy dojít k tomu, že se nové nastavení projeví, takže testování tímto způsobem je osvědčeným postupem.<br><br>V každém okamžiku tohoto procesu můžete tato nastavení vymazat zavřením konzole DPM a úpravou následujících klíčů registru: **HKLM\SOFTWARE\Microsoft\Microsoft data Protection Manager\Notification\ <br/> Delete SMTPPassword and SMTPUserName Keys**. Můžete je přidat zpátky do uživatelského rozhraní, když ho znovu spustíte.
+| Nastavení e-mailových oznámení pomocí pracovního nebo školního účtu |ID chyby: 2013| **Příčina:**<br> Probíhá pokus o použití pracovního nebo školního účtu. <br>**Doporučená akce:**<ol><li> První věc, kterou je potřeba zajistit, je, že u serveru DPM je nastavená možnost "povolení anonymního přenosu na konektoru pro příjem" pro server DPM. Další informace o tom, jak to nakonfigurovat, najdete v tématu [Povolení anonymního přenosu v konektoru pro příjem](/exchange/mail-flow/connectors/allow-anonymous-relay).</li> <li> Pokud nemůžete použít interní předávání SMTP a potřebujete ho nastavit pomocí serveru Office 365, můžete nastavit, aby služba IIS byla přenosová. Nakonfigurujte server DPM tak, aby k [přenosu SMTP do sady Office 365 používal službu IIS](/exchange/mail-flow/test-smtp-with-telnet).<br><br>  Nezapomeňte použít \@ formát Domain.com uživatele, *ne* doména \ uživatel.<br><br><li>Najeďte na to, aby aplikace DPM používala název místního serveru jako server SMTP, port 587. Pak ji nasměrujte na e-mail uživatele, ze kterého by měly přijít e-maily.<li> Uživatelské jméno a heslo na stránce nastavení SMTP DPM by měly být pro doménový účet v doméně, ve které je aplikace DPM zapnutá. </li><br> Když měníte adresu serveru SMTP, proveďte změnu na nové nastavení, zavřete okno nastavení a pak ho znovu otevřete, abyste se ujistili, že odráží novou hodnotu.  Pouhou změnou a testováním nemusí vždy dojít k tomu, že se nové nastavení projeví, takže testování tímto způsobem je osvědčeným postupem.<br><br>V každém okamžiku tohoto procesu můžete tato nastavení vymazat zavřením konzole DPM a úpravou následujících klíčů registru: **HKLM\SOFTWARE\Microsoft\Microsoft data Protection Manager\Notification\ <br/> Delete SMTPPassword and SMTPUserName Keys**. Můžete je přidat zpátky do uživatelského rozhraní, když ho znovu spustíte.
 
 ## <a name="common-issues"></a>Běžné problémy
 

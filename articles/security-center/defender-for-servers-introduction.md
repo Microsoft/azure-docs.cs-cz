@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d0e75ab8a2e4d853fa2edc66174502dd3a7930e9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5e4244c0526dbac3bb8e9b2d3856eb01e1b2a2b7
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301665"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403485"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Seznámení s Azure Defenderem pro servery
 
@@ -41,7 +41,7 @@ Mezi možnosti detekce a ochrany před hrozbami, které poskytuje Azure Defender
 
 - **Adaptivní řízení aplikací (AAC)** – Adaptivní řízení aplikací představují inteligentní a automatizované řešení pro definování seznamů povolených aplikací, které jsou pro vaše počítače bezpečné.
 
-    Pokud jste povolili a nakonfigurovali Adaptivní řízení aplikací, obdržíte výstrahy zabezpečení, pokud nějaká aplikace běží jinak než ty, které jste definovali jako bezpečné. [Přečtěte si další informace](security-center-adaptive-network-hardening.md).
+    Pokud jste povolili a nakonfigurovali Adaptivní řízení aplikací, obdržíte výstrahy zabezpečení, pokud nějaká aplikace běží jinak než ty, které jste definovali jako bezpečné. [Přečtěte si další informace](security-center-adaptive-application.md).
 
 - **Adaptivní posílení zabezpečení sítě (Anh)** – použití skupin zabezpečení sítě (NSG) k filtrování provozu do a z prostředků, vylepšuje zabezpečení vaší sítě stav. Přesto však může být v některých případech, kdy je skutečný přenos toků přes NSG podmnožinou definovaných pravidel NSG. V těchto případech je možné zvýšit stav zabezpečení tím, že posílíte pravidla NSG, a to na základě skutečných schémat přenosů.
 
@@ -58,7 +58,7 @@ Mezi možnosti detekce a ochrany před hrozbami, které poskytuje Azure Defender
 
 - **Detekce útoků typu soubor (jenom Windows)** – útoky pomocí souborů nemůžou do paměti vložit škodlivá data, aby se zabránilo detekci pomocí technik skenování na disku. Datová část útočníka pak přetrvává v paměti napadených procesů a provádí široké spektrum škodlivých aktivit.
 
-  Díky detekci útoků bez souborů můžou automatizované techniky forenzní paměti identifikovat sady nástrojů, techniky a chování pro útoky bez souborů. Toto řešení pravidelně kontroluje počítač za běhu a extrahuje přehledy přímo z paměti procesů. Konkrétní přehledy pro Linux zahrnují identifikaci: 
+  Díky detekci útoků bez souborů můžou automatizované techniky forenzní paměti identifikovat sady nástrojů, techniky a chování pro útoky bez souborů. Toto řešení pravidelně kontroluje počítač za běhu a extrahuje přehledy přímo z paměti procesů. Konkrétní přehledy zahrnují identifikaci: 
 
   - Dobře známé sady nástrojů a software pro dolování kryptografických softwaru 
 

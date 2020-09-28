@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f76d28018fdf55314593dabc44ef1e9a1dab9494
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321883"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403122"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Postup aktivace složitých akcí s výstrahami Azure Monitor
 
@@ -108,7 +108,7 @@ Postup je podobný, pokud chcete, aby aplikace logiky prováděla jinou akci.
 
     ![Akce týmů Microsoftu](media/action-groups-logic-app/microsoft-teams-actions.png "Akce týmů Microsoftu")
 
-12. Nakonfigurujte akci Microsoft Teams. **Návrhář Logic Apps** vás vyzve k ověření vašeho účtu Office 365. Vyberte **ID týmu** a **ID kanálu** , do kterého se má zpráva poslat.
+12. Nakonfigurujte akci Microsoft Teams. **Návrhář Logic Apps** vás vyzve, abyste ověřili svůj pracovní nebo školní účet. Vyberte **ID týmu** a **ID kanálu** , do kterého se má zpráva poslat.
 
 13. Nakonfigurujte zprávu pomocí kombinace statického textu a odkazů na \<fields\> dynamický obsah. Zkopírujte následující text a vložte ho do pole **zpráva** :
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: faa61dc351bebd3d2a85ad229036e5b9fba9256e
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: c0494fe39f8ae64ba65db4e3cd728069aa4a5052
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514607"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403207"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Zabránit položkám DNS v dangling a vyhnout se převzetí subdomény
 
@@ -117,14 +117,7 @@ Pokud jste globálním správcem tenanta vaší organizace, zvyšte svůj účet
 
 ### <a name="run-the-script"></a>Spuštění skriptu
 
-Existují dvě verze skriptu, oba mají stejné vstupní parametry a vyvolávají podobný výstup:
-
-|Skript  |Informace  |
-|---------|---------|
-|**Get-DanglingDnsRecordsPsCore.ps1**    |Paralelní režim je podporován pouze v prostředí PowerShell verze 7 a vyšší, jinak spustí sériového režimu.|
-|**Get-DanglingDnsRecordsPsDesktop.ps1** |Podporuje se jenom v PowerShellu nebo verzi nižší než 6, protože tento skript používá [pracovní postup Windows](https://docs.microsoft.com/dotnet/framework/windows-workflow-foundation/overview).|
-
-Přečtěte si další informace a Stáhněte si skripty PowerShellu z GitHubu: https://aka.ms/DanglingDNSDomains .
+Přečtěte si další informace o skriptu PowerShellu, **Get-DanglingDnsRecords.ps1**a Stáhněte si ho z GitHubu: https://aka.ms/DanglingDNSDomains .
 
 ## <a name="remediate-dangling-dns-entries"></a>Napravit dangling položky DNS 
 

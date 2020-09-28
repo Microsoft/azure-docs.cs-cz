@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 255e5533dc19036624042a0b82116c4dc107d762
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 420ab87591e230592ec8f728c6acb155266b5912
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336220"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403522"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>Řízení zabezpečení v2: zásady správného řízení a strategie
 
@@ -28,21 +28,21 @@ Ujistěte se, že jste dokument a komunikovali s jasnými strategiemi pro nepře
 
 Tato strategie by měla zahrnovat zdokumentované doprovodné materiály, zásady a standardy pro následující prvky: 
 
--   Standardní klasifikace dat v souladu s obchodními riziky
+- Standardní klasifikace dat v souladu s obchodními riziky
 
--   Organizace zabezpečení – přehled o rizicích a inventáři prostředků 
+- Organizace zabezpečení – přehled o rizicích a inventáři prostředků 
 
--   Schválení organizace služby Azure pomocí organizace zabezpečení 
+- Schválení organizace služby Azure pomocí organizace zabezpečení 
 
--   Zabezpečení prostředků prostřednictvím jejich životního cyklu
+- Zabezpečení prostředků prostřednictvím jejich životního cyklu
 
--   Požadovaná strategie řízení přístupu v souladu s klasifikací dat organizace
+- Požadovaná strategie řízení přístupu v souladu s klasifikací dat organizace
 
--   Používání funkcí Azure Native a ochrany dat třetích stran
+- Používání funkcí Azure Native a ochrany dat třetích stran
 
--   Požadavky na šifrování dat pro případy použití v přenosech a v REST
+- Požadavky na šifrování dat pro případy použití v přenosech a v REST
 
--   Příslušné kryptografické standardy
+- Příslušné kryptografické standardy
 
 Další informace najdete v následujících odkazech:
 - [Doporučení architektury zabezpečení Azure – úložiště, data a šifrování](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
@@ -51,9 +51,9 @@ Další informace najdete v následujících odkazech:
 
 - [Rozhraní pro přijetí do cloudu – osvědčené postupy zabezpečení a šifrování dat Azure](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
 
-- [Test zabezpečení Azure – Správa prostředků](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Test zabezpečení Azure – Správa prostředků](security-controls-v2-asset-management.md)
 
-- [Azure Security test – ochrana dat](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure Security test – ochrana dat](security-controls-v2-data-protection.md)
 
 **Zodpovědnost**: zákazník
 
@@ -93,7 +93,7 @@ Zajistěte, aby se strategie segmentace implementovala konzistentně napříč t
 
 Nepřetržitě změřte a zmírnit rizika pro jednotlivé prostředky a prostředí, ve kterém jsou hostovány. Určete prioritu prostředků s vysokou hodnotou a vysoce vydaných ploch útoků, jako jsou publikované aplikace, příchozí a výstupní body sítě, koncové body uživatele a správce atd.
 
-- [Azure Security test – stav a Správa ohrožení zabezpečení](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure Security test – stav a Správa ohrožení zabezpečení](security-controls-v2-posture-vulnerability-management.md)
 
 **Zodpovědnost**: zákazník
 
@@ -131,23 +131,23 @@ Navažte přístup k zabezpečení sítě Azure v rámci celkové strategie ří
 
 Tato strategie by měla zahrnovat zdokumentované doprovodné materiály, zásady a standardy pro následující prvky: 
 
--   Centralizovaná správa sítě a zodpovědnost zabezpečení
+- Centralizovaná správa sítě a zodpovědnost zabezpečení
 
--   Model segmentace virtuální sítě zarovnané na strategii podnikového segmentace
+- Model segmentace virtuální sítě zarovnané na strategii podnikového segmentace
 
--   Strategie oprav v různých scénářích hrozeb a útoků
+- Strategie oprav v různých scénářích hrozeb a útoků
 
--   Strategie pro Internet Edge a příchozí a odchozí přenosy
+- Strategie pro Internet Edge a příchozí a odchozí přenosy
 
--   Hybridní cloudová a místní vzájemné propojení strategie
+- Hybridní cloudová a místní vzájemné propojení strategie
 
--   Aktuální artefakty zabezpečení sítě (například síťové diagramy, referenční Síťová architektura)
+- Aktuální artefakty zabezpečení sítě (například síťové diagramy, referenční Síťová architektura)
 
 Další informace najdete v následujících odkazech:
 
 - [Osvědčené postupy zabezpečení Azure 11 – architektura. Jednotná strategie zabezpečení](https://aka.ms/AzSec11)
 
-- [Testování zabezpečení Azure – zabezpečení sítě](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Testování zabezpečení Azure – zabezpečení sítě](security-controls-v2-network-security.md)
 
 - [Přehled zabezpečení sítě Azure](../fundamentals/network-overview.md)
 
@@ -169,25 +169,25 @@ V rámci celkové strategie řízení přístupu k zabezpečení vaší organiza
 
 Tato strategie by měla zahrnovat zdokumentované doprovodné materiály, zásady a standardy pro následující prvky: 
 
--   Centralizovaný systém identit a ověřování a jeho vzájemné propojení s dalšími interními a externími systémy identit
+- Centralizovaný systém identit a ověřování a jeho vzájemné propojení s dalšími interními a externími systémy identit
 
--   Metody silného ověřování v různých případech a podmínkách použití
+- Metody silného ověřování v různých případech a podmínkách použití
 
--   Ochrana vysoce privilegovaných uživatelů
+- Ochrana vysoce privilegovaných uživatelů
 
--   Anomálie monitorování a zpracování aktivit uživatelů  
+- Anomálie monitorování a zpracování aktivit uživatelů  
 
--   Uživatelská identita a kontrola přístupu a proces odsouhlasení
+- Uživatelská identita a kontrola přístupu a proces odsouhlasení
 
 Další informace najdete v následujících odkazech:
 
-- [Azure Security benchmark – Správa identit](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure Security benchmark – Správa identit](security-controls-v2-identity-management.md)
 
-- [Azure Security test – privilegovaný přístup](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure Security test – privilegovaný přístup](security-controls-v2-privileged-access.md)
 
 - [Osvědčené postupy zabezpečení Azure 11 – architektura. Jednotná strategie zabezpečení](https://aka.ms/AzSec11)
 
-- [Přehled zabezpečení služby Azure Identity Management](../fundamentals/identity-management-overview.md) 
+- [Přehled zabezpečení služby Azure Identity Management](../fundamentals/identity-management-overview.md)
 
 **Zodpovědnost**: zákazník
 
@@ -205,26 +205,26 @@ Navažte strategii odezvy a reakce na hrozby, která umožňuje rychle detekovat
 
 Tato strategie by měla zahrnovat zdokumentované doprovodné materiály, zásady a standardy pro následující prvky: 
 
--   Role a odpovědnosti organizace v oblasti operací zabezpečení (SecOps) 
+- Role a odpovědnosti organizace v oblasti operací zabezpečení (SecOps) 
 
--   Dobře definovaný proces reakce na incidenty, který je v souladu s NIST nebo jiným oborovým rozhraním 
+- Dobře definovaný proces reakce na incidenty, který je v souladu s NIST nebo jiným oborovým rozhraním 
 
--   Shromažďování a uchovávání protokolů pro podporu detekce hrozeb, reakce na incidenty a požadavků na dodržování předpisů
+- Shromažďování a uchovávání protokolů pro podporu detekce hrozeb, reakce na incidenty a požadavků na dodržování předpisů
 
--   Centralizované zobrazení a korelační informace o hrozbách, používání SIEM, nativních možností Azure a dalších zdrojů 
+- Centralizované zobrazení a korelační informace o hrozbách, používání SIEM, nativních možností Azure a dalších zdrojů 
 
--   Komunikace a plán oznámení vašim zákazníkům, dodavatelům a veřejným stranám zájmu
+- Komunikace a plán oznámení vašim zákazníkům, dodavatelům a veřejným stranám zájmu
 
--   Použití nativních platforem Azure a platforem třetích stran pro zpracování incidentů, jako je například protokolování a detekce hrozeb, forenzní a náprava či eradikace útoků
+- Použití nativních platforem Azure a platforem třetích stran pro zpracování incidentů, jako je například protokolování a detekce hrozeb, forenzní a náprava či eradikace útoků
 
--   Procesy pro zpracování incidentů a aktivit po incidentech, jako jsou zjištěné lekce a uchovávání důkazů
+- Procesy pro zpracování incidentů a aktivit po incidentech, jako jsou zjištěné lekce a uchovávání důkazů
 
 Další informace najdete v následujících odkazech:
-- [Azure Security test benchmark – protokolování a detekce hrozeb](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure Security test benchmark – protokolování a detekce hrozeb](security-controls-v2-logging-threat-detection.md)
 
-- [Srovnávací test zabezpečení Azure – odpověď na incident](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Srovnávací test zabezpečení Azure – odpověď na incident](security-controls-v2-incident-response.md)
 
-- [Doporučený postup zabezpečení Azure 4 – proces. Aktualizace procesů reakce na incidenty pro Cloud](https://aka.ms/AzSec11)
+- [Doporučený postup zabezpečení Azure 4 – proces. Aktualizace procesů reakce na incidenty pro Cloud](https://aka.ms/AzSec4)
 
 - [Průvodce rozhodnutím o přijetí, protokolování a vytváření sestav pro Azure](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
 
@@ -246,14 +246,14 @@ Vytvořte si strategii zálohování a obnovení Azure pro vaši organizaci.
 
 Tato strategie by měla zahrnovat zdokumentované doprovodné materiály, zásady a standardy pro následující prvky: 
 
--   Definice plánované doby obnovení (RTO) a cíl bodu obnovení (RPO) v souladu s vašimi cíli vaší obchodní odolnosti
+- Definice plánované doby obnovení (RTO) a cíl bodu obnovení (RPO) v souladu s vašimi cíli vaší obchodní odolnosti
 
--   Návrh redundance ve vašich aplikacích a nastavení infrastruktury
+- Návrh redundance ve vašich aplikacích a nastavení infrastruktury
 
--   Ochrana zálohování pomocí řízení přístupu a šifrování dat
+- Ochrana zálohování pomocí řízení přístupu a šifrování dat
 
 Další informace najdete v následujících odkazech:
-- [Azure Security test – zálohování a obnovení](/azure/security/benchmarks/security-benchmark-v2-backup-recovery)
+- [Azure Security test – zálohování a obnovení](security-controls-v2-backup-recovery.md)
 
 - [Architektura prostředí Azure – architektura – zálohování a zotavení po havárii pro aplikace Azure](/azure/architecture/framework/resiliency/backup-and-recovery)
 

@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9bb3f0d57f7d47e4cb754305627c52003273ca09
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: eb93321e0eb1b3d2dc7963f03715b1aedb4cfdcb
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377008"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403683"
 ---
 # <a name="azure-managed-applications-overview"></a>Přehled spravovaných aplikací Azure
 
@@ -77,7 +77,7 @@ Když zákazník spravovanou aplikaci odstraní, dojde i k odstranění spravova
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Můžete použít [Azure Policy](../../governance/policy/overview.md) k auditování spravované aplikace. Můžete použít definice zásad a zajistit, aby nasazené instance spravované aplikace splňovaly požadavky na data a zabezpečení. Pokud aplikace pracuje s citlivými daty, nezapomeňte vyhodnotit, jak by se měla tato data chránit. Například pokud vaše aplikace komunikuje s daty z Office 365, použijte definici zásady, abyste zajistili, že je povolené šifrování dat.
+Můžete použít [Azure Policy](../../governance/policy/overview.md) k auditování spravované aplikace. Můžete použít definice zásad a zajistit, aby nasazené instance spravované aplikace splňovaly požadavky na data a zabezpečení. Pokud aplikace pracuje s citlivými daty, nezapomeňte vyhodnotit, jak by se měla tato data chránit. Například pokud vaše aplikace komunikuje s daty z Microsoft 365, použijte definici zásady, abyste se ujistili, že je povolené šifrování dat.
 
 ## <a name="next-steps"></a>Další kroky
 

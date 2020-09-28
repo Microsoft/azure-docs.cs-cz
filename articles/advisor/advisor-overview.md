@@ -2,13 +2,13 @@
 title: Seznámení s Azure Advisorem
 description: K optimalizaci nasazení Azure použijte Azure Advisor.
 ms.topic: article
-ms.date: 02/01/2019
-ms.openlocfilehash: 27e49fa28e7b02b873ca145d514920784689b407
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 09/27/2020
+ms.openlocfilehash: 12e56bf44a29a32b2149bca14f7c99f319c9c4ea
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654017"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405203"
 ---
 # <a name="introduction-to-azure-advisor"></a>Seznámení s Azure Advisorem
 
@@ -24,7 +24,7 @@ Pomocí Poradce můžete:
 
 Ke službě Advisor můžete přistupovat prostřednictvím [Azure Portal](https://aka.ms/azureadvisordashboard). Přihlaste se k [portálu](https://portal.azure.com), vyhledejte **Poradce** v navigační nabídce nebo ho vyhledejte v nabídce **všechny služby** .
 
-Řídicí panel poradce zobrazuje individuální doporučení pro všechna Vaše předplatná.  Filtry můžete použít k zobrazení doporučení pro konkrétní předplatná a typy prostředků.  Doporučení jsou rozdělená na pět kategorií: 
+Řídicí panel poradce zobrazuje individuální doporučení pro všechna Vaše předplatná.  Filtry můžete použít k zobrazení doporučení pro konkrétní předplatná a typy prostředků.  Doporučení se dělí do pěti kategorií: 
 
 * **Spolehlivost (dříve označovaná jako vysoká dostupnost)**: zajištění a zlepšení kontinuity důležitých podnikových aplikací. Další informace najdete v tématu [doporučení pro spolehlivost Advisoru](advisor-high-availability-recommendations.md).
 * **Zabezpečení**: detekuje hrozby a ohrožení zabezpečení, které by mohly vést k porušení zabezpečení. Další informace najdete v tématu [doporučení pro zabezpečení služby Advisor](advisor-security-recommendations.md).
@@ -68,7 +68,9 @@ Chcete-li odložit nebo zrušit doporučení, klikněte na odkaz **odložit** . 
 Další informace o doporučení Advisoru najdete tady:
 
 * [Začínáme se službou Advisor](advisor-get-started.md)
+* [Skóre Advisoru](azure-advisor-score.md)
 * [Doporučení pro spolehlivost Advisoru](advisor-high-availability-recommendations.md)
 * [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)
 * [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)
 * [Doporučení pro náklady na poradce](advisor-cost-recommendations.md)
+* [Doporučení provozní kvality Advisoru](advisor-operational-excellence-recommendations.md)

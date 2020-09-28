@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: f22380f65b91976e7696551ee0a65a5bf6dfd097
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 13a0966413519e56199cfce150d9dd7973d634ec
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334306"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404714"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Formát Parquet v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -79,7 +79,7 @@ V části *** \* jímka \* *** aktivity kopírování jsou podporovány následu
 
 | Vlastnost      | Popis                                                  | Povinné |
 | ------------- | ------------------------------------------------------------ | -------- |
-| typ          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **ParquetSink**. | Yes      |
+| typ          | Vlastnost Type jímky aktivity kopírování musí být nastavená na **ParquetSink**. | Yes      |
 | formatSettings | Skupina vlastností V tabulce **nastavení zápisu Parquet** najdete níže. |    No      |
 | storeSettings | Skupina vlastností, jak zapisovat data do úložiště dat. Každý konektor založený na souborech má vlastní podporované nastavení zápisu v rámci `storeSettings` . **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | No       |
 
@@ -127,7 +127,7 @@ source(allowSchemaDrift: true,
 
 ### <a name="sink-properties"></a>Vlastnosti jímky
 
-V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem Parquet. Tyto vlastnosti můžete upravit na kartě **Možnosti zdrojového kódu** .
+V níže uvedené tabulce jsou uvedeny vlastnosti, které Parquet jímka podporuje. Tyto vlastnosti můžete upravit na kartě **Nastavení** .
 
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |

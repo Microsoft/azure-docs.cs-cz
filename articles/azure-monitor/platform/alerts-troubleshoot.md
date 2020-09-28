@@ -6,12 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: c3eed095d87d1e1fa1f210b360822ceefdbe0521
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d86c6d8b67546aede86a3fc3c905f6feb40d92db
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045238"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403411"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Řešení potíží s výstrahami Azure Monitor
 
@@ -61,7 +61,7 @@ Pokud se na webu Azure Portal zobrazuje aktivované upozornění, ale neobdržel
     Zkontrolujte také následující:
 
    - nastavení spamu ve vašem e-mailovém klientovi (jako je Outlook nebo Gmail)
-      - limity odesílatele, nastavení spamu nebo nastavení karantény na vašem e-mailovém serveru (jako je Exchange, Office 365 nebo G-suite)
+      - nastavení omezení a nastavení nevyžádané pošty/karantény e-mailového serveru (například Exchange, Microsoft 365, G-Suite)
       - nastavení vašeho zařízení zabezpečení e-mailu (například Barracuda, Cisco).
 
 1. **Omylem jste odhlásili odběr skupiny akcí?**
@@ -203,7 +203,7 @@ Pokud se na portálu zobrazuje aktivované upozornění, ale související pravi
 
     Na upozornění na stav služby (služba monitorování = Service Health) se pravidla akcí nevztahují. 
 
-1. **Jednalo pravidlo akce u vaší výstrahy?** 
+1. **Reagovalo pravidlo akce na vaše upozornění?** 
 
     Zkontrolujte, jestli pravidlo akce zpracovalo vaše upozornění. Provedete to tak, že na portálu kliknete na aktivované upozornění a podíváte se na kartu Historie.
 
@@ -216,7 +216,7 @@ Pokud se na portálu zobrazuje aktivované upozornění, ale související pravi
     ![Akce se opakuje ve více skupinách akcí.](media/alerts-troubleshoot/action-repeated-multi-action-groups.png)
  
 
-1. **Odpovídá rozsah pravidla a filtr akcí aktivovanému upozornění?** 
+1. **Odpovídají rozsah a filtr pravidla akce aktivovanému upozornění?** 
 
     Pokud si myslíte, že se pravidlo akce mělo aktivovat, ale neaktivovalo se, nebo že se nemělo aktivovat, ale aktivovalo se, pečlivě prozkoumejte rozsah a podmínky filtru pravidla akce a porovnejte je s vlastnostmi aktivovaného upozornění. 
 

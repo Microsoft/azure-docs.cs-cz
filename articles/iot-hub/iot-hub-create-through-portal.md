@@ -9,12 +9,12 @@ ms.date: 09/06/2018
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 8f7555129f5f514d1954ac56cf87872a85ca91d0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c7414728ab65258f73f80ee7fb303c7e6b961052
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326728"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404953"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Vytvoření centra IoT pomocí Azure Portal
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak vytvořit a spravovat centra IoT pomocí [Azure Por
 
 Pokud chcete použít kroky v tomto kurzu, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -78,7 +78,7 @@ Trasy jsou první kartou v podokně směrování zpráv. Pokud chcete přidat no
 
 ![Snímek obrazovky znázorňující přidání nové trasy](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
-Pojmenujte svůj rozbočovač. Název musí být jedinečný v rámci seznamu tras pro toto centrum. 
+Pojmenujte trasu. Název trasy musí být jedinečný v rámci seznamu tras pro toto centrum. 
 
 V případě **koncového bodu**můžete vybrat jeden z rozevíracího seznamu nebo přidat nový. V tomto příkladu je už dostupný účet úložiště a kontejner. Pokud je chcete přidat jako koncový bod, klikněte na +**Přidat** vedle rozevíracího seznamu koncových bodů a vyberte **BLOB Storage**. Na následující obrazovce vidíte, kde je zadaný účet úložiště a kontejner.
 

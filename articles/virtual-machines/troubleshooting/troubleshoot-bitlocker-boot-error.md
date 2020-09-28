@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 23523a3618ad31e34a81152e48d4ee0f606e5aac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ac1105f1fce2ac04abfa8a809161580104952917
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088525"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404897"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Chyby spuštění nástroje BitLocker na virtuálním počítači Azure
 
@@ -43,7 +43,7 @@ K tomuto problému může dojít, pokud virtuální počítač nemůže najít s
 
 ## <a name="solution"></a>Řešení
 
-Pokud chcete tento problém vyřešit, zastavte a uvolněte virtuální počítač a pak ho znovu spusťte. Tato operace vynutí, aby virtuální počítač načetl soubor klíče bek z Azure Key Vault a pak ho umístil na zašifrovaný disk. 
+Pokud chcete tento problém vyřešit, zastavte a uvolněte virtuální počítač a potom ho spusťte. Tato operace vynutí, aby virtuální počítač načetl soubor klíče bek z Azure Key Vault a pak ho umístil na zašifrovaný disk. 
 
 Pokud tato metoda problém nevyřeší, postupujte podle těchto kroků a obnovte soubor klíče bek ručně:
 

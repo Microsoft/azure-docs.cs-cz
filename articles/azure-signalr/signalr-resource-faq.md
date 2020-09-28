@@ -7,38 +7,18 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: d5dd765dd9b174ffbfec35b63ad5e55ce84193ad
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 5d6b46e288007bc0bbac53a97b1bdd5e727b8ac8
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489557"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405118"
 ---
 # <a name="azure-signalr-service-faq"></a>Nejčastější dotazy ke službě Azure Signal
 
 ## <a name="is-azure-signalr-service-ready-for-production-use"></a>Je služba signálu Azure připravená na použití v produkčním prostředí?
 
-Yes.
-Informace o celkové dostupnosti najdete v tématu [Služba Azure Signal Service je teď všeobecně dostupná](https://azure.microsoft.com/blog/azure-signalr-service-now-generally-available/). 
-
-[Signál ASP.NET Core](https://docs.microsoft.com/aspnet/core/signalr/introduction) je plně podporovaný.
-
-Podpora ASP.NET signalizace je stále ve *verzi Public Preview*. [Zde je příklad kódu](https://github.com/aspnet/AzureSignalR-samples/tree/master/aspnet-samples/ChatRoom).
-
-## <a name="the-client-connection-closes-with-the-error-message-no-server-available-what-does-it-mean"></a>Připojení klienta se zavře s chybovou zprávou "není k dispozici server." Co to znamená?
-
-K této chybě dochází pouze v případě, že klienti odesílají zprávy do služby Azure Signal.
-
-Pokud nemáte žádný aplikační server a používáte jenom REST API služby pro signály Azure, toto chování je *záměrné*.
-V architektuře bez serveru jsou připojení klientů v režimu *naslouchání* a neodesílají žádné zprávy do služby Azure Signal Service.
-Přečtěte si [Další informace o REST API](./signalr-quickstart-rest-api.md).
-
-Pokud máte aplikační servery, tato chybová zpráva znamená, že k vaší instanci služby signalizace Azure není připojený žádný aplikační server.
-
-Možné příčiny:
-- Ke službě Azure Signal Service není připojený žádný aplikační server. V protokolech aplikačního serveru vyhledejte možné chyby připojení. V takovém případě se jedná o nastavení vysoké dostupnosti, které má více než jeden aplikační server.
-- Existují problémy s připojením k instancím služby Azure Signal Service. Tento problém je přechodný a instance se automaticky obnoví.
-Pokud bude trvat déle než hodinu, [otevřete problém na GitHubu](https://github.com/Azure/azure-signalr/issues/new) nebo [vytvořte žádost o podporu v Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Ano, všeobecně dostupná je podpora pro nástroj [ASP.NET Core signaler](https://dotnet.microsoft.com/apps/aspnet/signalr) i [signalizace ASP.NET](https://docs.microsoft.com/aspnet/signalr/overview/getting-started/introduction-to-signalr) .
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Pokud je k dispozici více aplikačních serverů, jsou klientské zprávy odesílány na všechny servery nebo pouze na jednu z nich?
 
@@ -68,7 +48,7 @@ No.
 
 Služba signalizace Azure poskytuje všechny tři přenosy, které ASP.NET Core signál podporuje ve výchozím nastavení. Nedá se nakonfigurovat. Služba signalizace Azure zpracuje připojení a přenosy pro všechna připojení klientů.
 
-Můžete nakonfigurovat přenosy na straně klienta, jak je popsáno v [ASP.NET Core konfigurace signalizace](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1&tabs=dotnet#configure-allowed-transports-2).
+Můžete nakonfigurovat přenosy na straně klienta, jak je popsáno v [ASP.NET Core konfigurace signalizace](https://docs.microsoft.com/aspnet/core/signalr/configuration#configure-allowed-transports-1).
 
 ## <a name="what-is-the-meaning-of-metrics-like-message-count-or-connection-count-shown-in-the-azure-portal-which-kind-of-aggregation-type-should-i-choose"></a>Jaký je význam metrik, jako je počet zpráv nebo počet připojení zobrazený v Azure Portal? Jaký druh agregačního typu mám zvolit?
 
@@ -78,19 +58,22 @@ V podokně Přehled prostředků služby signalizace Azure jsme už pro vás zvo
 
 ## <a name="what-is-the-meaning-of-the-default-serverless-and-classic-service-modes-how-can-i-choose"></a>Jaký je význam `Default` `Serverless` režimů, a `Classic` služby? Jak si můžu vybrat?
 
-Zde jsou informace o režimech:
-* `Default` režim *vyžaduje* Server rozbočovače. V tomto režimu služba signalizace Azure směruje provoz klienta na jeho připojená připojení hub serveru. Služba signalizace Azure kontroluje připojený server hub. Pokud služba nemůže najít připojený hub Server, odmítne příchozí připojení klientů. *Rozhraní API pro správu* v tomto režimu můžete použít také ke správě připojených klientů přímo prostřednictvím služby Azure Signal.
-* `Serverless` režim *nepovoluje žádné* připojení k serveru. To znamená, že se odmítnou všechna připojení serveru. Všichni klienti musí být v režimu bez serveru. Klienti se připojují ke službě Azure Signal Service a uživatelé obvykle používají pro zpracování logiky centra technologie bez serveru, například *Azure Functions* . [Podívejte se na jednoduchý příklad](https://docs.microsoft.com/azure/azure-signalr/signalr-quickstart-azure-functions-javascript?WT.mc_id=signalrquickstart-github-antchu) , který ve službě Azure Signal Service používá režim bez serveru.
-* `Classic` režim je smíšený stav. Když má rozbočovač připojení k serveru, nový klient bude směrován do serveru rozbočovače. V takovém případě klient přejde do režimu bez serveru. 
+Pro nové aplikace by se mělo použít jenom výchozí režim bez serveru. Hlavní rozdíl je bez ohledu na to, zda máte aplikační servery, které navážou připojení serveru ke službě (tj. slouží `AddAzureSignalR()` k připojení ke službě). Pokud ano, použijte výchozí režim, jinak použít režim bez serveru.
 
-  To může způsobit problém. Například pokud dojde ke ztrátě všech připojení k serveru, budou někteří klienti zadávat režim bez serveru namísto směrování do serveru hub.
+Klasický režim je určený pro zpětnou kompatibilitu pro existující aplikace, takže by se neměl používat pro nové aplikace.
 
-Tady jsou některé pokyny pro výběr režimu:
-- Pokud není k dispozici žádný hub Server, vyberte `Serverless` .
-- Pokud má všechna centra rozbočovače servery, vyberte `Default` .
-- Pokud některé rozbočovače mají servery rozbočovače, ale jiné ne, můžete si vybrat `Classic` , ale to může způsobit problém. Lepším způsobem je vytvořit dvě instance: jedna je `Serverless` a druhá `Default` .
+Další informace o režimu služby v [tomto dokumentu](concept-service-mode.md).
+
+## <a name="can-i-send-message-from-client-in-serverless-mode"></a>Můžu poslat zprávu z klienta v režimu bez serveru?
+
+Můžete odeslat zprávu z klienta, pokud nakonfigurujete v instanci signalizace možnost nadřazený. Nadřazený objekt je sada koncových bodů, které mohou přijímat zprávy a události připojení ze služby signalizace. Pokud není nakonfigurované žádné nadřazené, budou se zprávy z klienta ignorovat.
+
+Další informace o nadřazeného zobrazení najdete v [tomto dokumentu](concept-upstream.md).
+
+V současnosti je ve verzi Public Preview.
 
 ## <a name="are-there-any-feature-differences-in-using-azure-signalr-service-with-aspnet-signalr"></a>Existují nějaké rozdíly ve funkcích používání služby signalizace Azure pomocí ASP.NET signalizace?
+
 Pokud používáte službu Azure Signaler, některá rozhraní API a funkce signálu ASP.NET nejsou podporované:
 - Možnost předat libovolný stav mezi klienty a centrem (často se označuje jako `HubState` ) není podporována.
 - `PersistentConnection`Třída není podporována.

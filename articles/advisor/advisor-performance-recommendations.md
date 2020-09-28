@@ -2,13 +2,13 @@
 title: Zlepšení výkonu aplikací Azure pomocí služby Advisor
 description: Využijte doporučení k výkonu v Azure Advisor ke zlepšení rychlosti a odezvy vašich důležitých podnikových aplikací.
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 9a8499e85a264488c756a3d497565398f2e1c229
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 07/29/2020
+ms.openlocfilehash: 9625bb3b063234e9cadb20aacfcc5ca8a28b35cc
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651587"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405152"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 
@@ -63,8 +63,6 @@ Poradce identifikuje tabulky, které nemají aktuální [statistiku tabulek](../
 
 Analýza Advisor může znamenat, že vaše aplikace připojující se k serveru MySQL nemusí efektivně spravovat připojení. Tato podmínka by mohla vést k zbytečným spotřebám prostředků a celkové vyšší latenci aplikace. Pokud chcete zlepšit správu připojení, doporučujeme snížit počet krátkodobých připojení a eliminovat zbytečná nečinná připojení. Tato vylepšení můžete udělat konfigurací Pooler připojení na straně serveru, jako je ProxySQL.
 
-## <a name="update-your-current-compute-management-sdk-version-to-the-most-recent-version"></a>Aktualizace stávající verze sady SDK pro správu výpočtů na nejnovější verzi
-Advisor identifikuje odběry, které mají operace používající zastaralé verze sady Management SDK pro sadu Compute. To může mít vliv na zabezpečení a výkon vašich úloh, a proto Advisor doporučuje přepnout na nejnovější verzi sady COMPUTE Management SDK. 
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Horizontální navýšení kapacity pro optimalizaci využití mezipaměti v tabulkách Azure synapse Analytics ke zvýšení výkonu dotazů
 
@@ -170,6 +168,14 @@ Analýza Advisor indikuje, že váš server MySQL může vydávat zbytečné vst
 ## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Distribuce dat ve skupině serverů za účelem distribuce zatížení mezi uzly
 Poradce identifikuje skupiny serverů, na kterých nebyla data distribuována, ale zůstává v koordinátorovi. Na základě tohoto doporučení doporučuje poradce, aby Citus výhody distribuce dat na pracovních uzlech pro skupiny serverů. Tím se vylepšit výkon dotazů pomocí prostředku každého uzlu ve skupině serverů. [Další informace](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
+## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>Vylepšení uživatelského prostředí a připojení díky nasazení virtuálních počítačů blíže k umístění nasazení virtuálního klienta Windows
+Zjistili jsme, že se vaše virtuální počítače nacházejí v jiné oblasti, než ze které se připojují vaši uživatelé pomocí služby Windows Virtual Desktop, nebo v příliš vzdálené oblasti. To může způsobit delší dobu odezvy připojení a ovlivnit celkové uživatelské prostředí služby WVD. Při vytváření virtuálních počítačů pro fondy hostitelů byste se měli snažit používat oblasti blíže uživatelům. Těsná blízkost zajistí trvalou spokojenost se službou WVD a celkově vyšší kvalitu prostředí. [Další informace o latenci připojení najdete tady](https://docs.microsoft.com/azure/virtual-desktop/connection-latency).
+
+## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>Upgrade na nejnovější verzi sady SDK Asistivní čtečky
+V tomto předplatném jsme identifikovali prostředky využívající zastaralé verze sady SDK Asistivní čtečky. Použitím nejnovější verze sady SDK Asistivní čtečky získáte aktualizované funkce zabezpečení, funkce pro zajištění výkonu a rozšířenou sadu funkcí pro přizpůsobení a vylepšení prostředí integrace.
+Přečtěte si další informace o [sadě moderního čtecího zařízení](https://aka.ms/ImmersiveReaderAzureAdvisorSDKLearnMore).
+
+
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak získat přístup k doporučením k výkonu v Advisoru
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pak otevřete [Poradce](https://aka.ms/azureadvisordashboard).
@@ -182,6 +188,7 @@ Další informace o doporučení Advisoru najdete tady:
 
 * [Úvod do Advisoru](advisor-overview.md)
 * [Začínáme se službou Advisor](advisor-get-started.md)
+* [Skóre Advisoru](azure-advisor-score.md)
 * [Doporučení Advisoru týkající se cen](advisor-cost-recommendations.md)
 * [Doporučení pro spolehlivost Advisoru](advisor-high-availability-recommendations.md)
 * [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)

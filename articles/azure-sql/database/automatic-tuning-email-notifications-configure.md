@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/03/2019
-ms.openlocfilehash: 01daf0af039a00f6a81b850b07cfcf6d901a7732
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 606d3c78e96491a92b2e09aa74801247369ba0ab
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284631"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403275"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mailová oznámení pro automatické ladění
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -187,7 +187,7 @@ K dokončení řešení, jako v posledním kroku, vytvořte tok automatizace v M
 
 - "**Azure Automation-Create Job**" – slouží ke spuštění skriptu PowerShellu k načtení doporučení automatického ladění v rámci sady Azure Automation Runbook.
 - "**Azure Automation-získat výstup úlohy**" – slouží k načtení výstupu z spouštěného skriptu PowerShellu.
-- "**Office 365 Outlook – poslat e-mail**" – slouží k odeslání e-mailu. E-maily se odesílají pomocí účtu Office 365 jednotlivce, který vytváří tok.
+- "**Office 365 Outlook – poslat e-mail**" – slouží k odeslání e-mailu. E-maily se odesílají pomocí pracovního nebo školního účtu jednotlivce, který vytváří tok.
 
 Další informace o funkcích Microsoft Flow najdete v tématu [Začínáme s Microsoft Flow](https://docs.microsoft.com/flow/getting-started).
 

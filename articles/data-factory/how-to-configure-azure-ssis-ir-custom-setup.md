@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/15/2020
-ms.openlocfilehash: ff56ef55066fd0f56b5b8dc7507bfb63b8b8baa0
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 09/28/2020
+ms.openlocfilehash: 4ef569864b27eff7f57aa2b0a922034fa28f587c
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090593"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405237"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro Azure-SSIS Integration Runtime
 
@@ -154,6 +154,10 @@ Pokud vyberete možnost **instalovat licencovaný typ součásti** pro aplikaci 
    * Pokud vyberete **Xtrahovat software Theobald** , můžete nainstalovat [xtrahovat je](https://theobald-software.com/en/xtract-is/) sada konektorů pro systémy SAP (ERP, s/4HANA, černobílý) od Theobald softwaru na vašich Azure-SSIS IR. Provedete to tak, že přetáhnete & přetáhněte nebo nahrajte soubor licence produktu, který jste si z nich koupili, do vstupního pole **soubor s licencí** . Aktuální integrovaná verze je **6.1.1.3**.
 
    * Pokud vyberete součást **integrační služby AecorSoft** , můžete [nainstalovat sadu](https://www.aecorsoft.com/en/products/integrationservice) konektorů konektorů pro systémy SAP a Salesforce z AecorSoft na své Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **3.0.00**.
+
+   * Vyberete-li **standardní součást balíčku CDATA SSIS** , můžete nainstalovat sadu [SSIS Standard](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) pro nejoblíbenější součásti z CDATA, například konektory služby Microsoft SharePoint, na Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **19,7354**.
+
+   * Pokud vyberete součást **balíčku CDATA Extended Package SSIS** , můžete na svém Azure-SSIS IR nainstalovat sadu [SSIS Extended Package](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) pro všechny komponenty z CDATA, například Microsoft Dynamics 365 Business Central Connectors a další komponenty v jejich **standardním balíčku SSIS**. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **19,7354**. Vzhledem k velké velikosti, aby nedocházelo k vypršení časového limitu instalace, zajistěte, aby měl váš Azure-SSIS IR aspoň 4 jádra procesoru na jeden uzel.
 
 Přidaná expresní vlastní nastavení se zobrazí na stránce **Upřesnit nastavení** . Pokud je chcete odebrat, zaškrtněte příslušná políčka a potom vyberte **Odstranit**.
 

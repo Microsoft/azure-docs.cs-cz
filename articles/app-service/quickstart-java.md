@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 7f8e87b22e3d8f6e265789f910863b2790024cbf
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 4041623d1c6ae464afd20e3beff753fb89e0a350
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532405"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405067"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Rychlý Start: Vytvoření aplikace Java na Azure App Service
 
@@ -71,21 +71,24 @@ Proces nasazení Azure App Service bude používat přihlašovací údaje Azure 
 Spusťte následující příkaz Maven a nakonfigurujete nasazení. Tento příkaz vám pomůže nastavit App Service operační systém, verzi Java a verzi Tomcat.
 
 ```bash
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 ```
 
 ::: zone pivot="platform-windows"
 
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. Po zobrazení výzvy vyberte **systém Windows** zadáním `2` .
-2. Pomocí výchozí verze Java 1,8 stiskněte klávesu ENTER.
-3. Nakonec stiskněte klávesu ENTER na poslední výzvu k potvrzení výběru.
+1. Po zobrazení výzvy s možností **předplatného** vyberte správnou položku `Subscription` zadáním čísla tisk na začátku řádku.
+1. Po zobrazení výzvy s možností **webové aplikace** přijměte možnost defaut `<create>` stisknutím klávesy ENTER.
+1. Po zobrazení výzvy s možností **OS** vyberte **Windows** zadáním `2` .
+1. Pomocí výchozí verze Java 1,8 stiskněte klávesu ENTER.
+1. Nakonec stiskněte klávesu ENTER na poslední výzvu k potvrzení výběru.
 
     Váš souhrnný výstup bude vypadat podobně jako fragment uvedený níže.
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007390755
     ResourceGroup : spring-boot-1599007390755-rg
     Region : westeurope
@@ -106,7 +109,9 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. Po zobrazení výzvy vyberte **systém Windows** zadáním `2` .
+1. Po zobrazení výzvy s možností **předplatného** vyberte správnou položku `Subscription` zadáním čísla tisk na začátku řádku.
+1. Po zobrazení výzvy s možností **webové aplikace** přijměte možnost defaut `<create>` stisknutím klávesy ENTER.
+1. Po zobrazení výzvy s možností **OS** vyberte **Windows** zadáním `2` .
 1. Pomocí výchozí verze Java 1,8 stiskněte klávesu ENTER.
 1. Pomocí výchozího webového kontejneru Tomcat 8,5 stiskněte klávesu ENTER.
 1. Nakonec stiskněte klávesu ENTER na poslední výzvu k potvrzení výběru.
@@ -115,6 +120,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003152123
     ResourceGroup : helloworld-1599003152123-rg
     Region : westeurope
@@ -140,12 +146,15 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 ### <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. Po zobrazení výzvy vyberte **Linux** stisknutím klávesy ENTER.
-2. Pomocí výchozí verze Java 1,8 stiskněte klávesu ENTER.
-3. Nakonec stiskněte klávesu ENTER na poslední výzvu k potvrzení výběru.
+1. Po zobrazení výzvy s možností **předplatného** vyberte správnou položku `Subscription` zadáním čísla tisk na začátku řádku.
+1. Po zobrazení výzvy s možností **webové aplikace** přijměte možnost defaut `<create>` stisknutím klávesy ENTER.
+1. Po zobrazení výzvy s možností **OS** vyberte **Linux** stisknutím klávesy ENTER.
+1. Pomocí výchozí verze Java 1,8 stiskněte klávesu ENTER.
+1. Nakonec stiskněte klávesu ENTER na poslední výzvu k potvrzení výběru.
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007116351
     ResourceGroup : spring-boot-1599007116351-rg
     Region : westeurope
@@ -165,13 +174,16 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 ### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. Po zobrazení výzvy vyberte **Linux** stisknutím klávesy ENTER.
+1. Po zobrazení výzvy s možností **předplatného** vyberte správnou položku `Subscription` zadáním čísla tisk na začátku řádku.
+1. Po zobrazení výzvy s možností **webové aplikace** přijměte možnost defaut `<create>` stisknutím klávesy ENTER.
+1. Po zobrazení výzvy s možností **OS** vyberte **Linux** stisknutím klávesy ENTER.
 1. Pomocí výchozí verze Java 1,8 stiskněte klávesu ENTER.
 1. Pomocí výchozího webového kontejneru Tomcat 8,5 stiskněte klávesu ENTER.
 1. Nakonec stiskněte klávesu ENTER na poslední výzvu k potvrzení výběru.
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003744223
     ResourceGroup : helloworld-1599003744223-rg
     Region : westeurope
@@ -198,6 +210,7 @@ Konfigurace pro App Service můžete v `pom.xml` případě potřeby upravit př
 Vlastnost | Požaduje se | Popis | Verze
 ---|---|---|---
 `<schemaVersion>` | false (nepravda) | Zadejte verzi schématu konfigurace. Podporované hodnoty jsou: `v1` , `v2` . | 1.5.2
+`<subscriptionId>` | false (nepravda) | Zadejte ID předplatného. | 0.1.0 +
 `<resourceGroup>` | true | Skupina prostředků Azure pro vaši webovou aplikaci | 0.1.0 +
 `<appName>` | true | Název vaší webové aplikace | 0.1.0 +
 `<region>` | true | Určuje oblast, do které se webová aplikace hostuje. Výchozí hodnota je **westeurope**. Všechny platné oblasti v části [podporované oblasti](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) . | 0.1.0 +

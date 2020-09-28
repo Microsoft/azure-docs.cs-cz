@@ -2,13 +2,13 @@
 title: Vylepšení spolehlivosti aplikace pomocí služby Advisor
 description: Pomocí Azure Advisor můžete zajistit a zlepšit spolehlivost vašich důležitých nasazení v Azure.
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 3e556f8bc672705e6c83daced2c82a884e3ddf46
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/27/2020
+ms.openlocfilehash: 1e256d99f8d78ddff318f963dcb21e9b4537f110
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264588"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405186"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Zlepšení spolehlivosti aplikace pomocí Azure Advisor
 
@@ -109,6 +109,12 @@ Od 1. července 2020 nebudete moci vytvářet nové clustery Spark pomocí Spark
 ## <a name="enable-virtual-machine-replication"></a>Povolení replikace virtuálních počítačů
 Virtuální počítače, které nemají povolenou replikaci do jiné oblasti, nejsou odolné vůči nemožnostem regionálních výpadků. Replikace virtuálních počítačů redukuje nepříznivý dopad na firmu během výpadků v oblasti Azure. Advisor detekuje virtuální počítače, u kterých není replikace povolená, a doporučuje ji povolit. Pokud povolíte replikaci, můžete v případě výpadku rychle vytvořit virtuální počítače ve vzdálené oblasti Azure. [Přečtěte si další informace o replikaci virtuálních počítačů.](../site-recovery/azure-to-azure-quickstart.md)
 
+## <a name="upgrade-to-the-latest-version-of-the-azure-connected-machine-agent"></a>Upgrade na nejnovější verzi agenta Azure Connected Machine
+[Agent připojeného počítače Azure](https://docs.microsoft.com/azure/azure-arc/servers/manage-agent) se pravidelně aktualizuje s opravami chyb, vylepšeními stability a novými funkcemi. Zjistili jsme prostředky, které nefungují na nejnovější verzi agenta Machine agent, a toto doporučení Advisoru vám pomůže upgradovat agenta na nejnovější verzi, aby se dosáhlo nejlepšího prostředí Azure ARC.
+
+## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>Nepřepisujte název hostitele, aby se zajistila integrita webu.
+Poradce doporučujeme, abyste se vyhnuli přepsání názvu hostitele při konfiguraci Application Gateway. Má-li jiná doména na front-endu Application Gateway, než je ta, která se používá pro přístup k back-endu, může potenciálně vést k souborům cookie nebo přesměrovat adresy URL. Všimněte si, že to nemusí být ve všech situacích a že některé kategorie back-endu (například REST API) obecně jsou pro tyto případy méně citlivé. Ujistěte se prosím, že se tento back-end může vypořádat s touto aktualizací, nebo aktualizujte konfiguraci Application Gateway, aby název hostitele nemusel být přepsán směrem k back-endu. Při použití s App Service připojte k webové aplikaci vlastní název domény a vyhněte se použití *názvu hostitele. azurewebsites.NET směrem k back-endu.* [Přečtěte si další informace o vlastní doméně](https://aka.ms/appgw-advisor-usecustomdomain).
+
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak získat přístup k doporučením vysoké dostupnosti v Advisoru
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pak otevřete [Poradce](https://aka.ms/azureadvisordashboard).
@@ -120,6 +126,7 @@ Virtuální počítače, které nemají povolenou replikaci do jiné oblasti, ne
 Další informace o doporučeních služby Advisor najdete v těchto tématech:
 * [Úvod do Advisoru](advisor-overview.md)
 * [Začínáme se službou Advisor](advisor-get-started.md)
+* [Skóre Advisoru](azure-advisor-score.md)
 * [Doporučení Advisoru týkající se cen](advisor-cost-recommendations.md)
 * [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)
 * [Doporučení pro zabezpečení Advisoru](advisor-security-recommendations.md)

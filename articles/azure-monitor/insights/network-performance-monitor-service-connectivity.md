@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: dd8dcbe136558e997ca16a2d9754cbf1c4e7620b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b7b6a7202392e083aaaa5cdc8adcf0c81cfb0e0d
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326099"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403700"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorování připojení služby
 
@@ -19,8 +19,8 @@ Pomocí možnosti monitorování připojení služby v nástroji [Network Perfor
 
 S monitorováním připojení služby můžete provádět následující funkce: 
 
-- Monitorujte síťové připojení k vašim aplikacím a síťovým službám z několika poboček nebo umístění. Mezi aplikace a síťové služby patří Office 365, Dynamics CRM, interní obchodní aplikace a databáze SQL.
-- Pomocí integrovaných testů můžete monitorovat síťové připojení k koncovým bodům Office 365 a Dynamics 365. 
+- Monitorujte síťové připojení k vašim aplikacím a síťovým službám z několika poboček nebo umístění. Mezi aplikace a síťové služby patří Microsoft 365, Dynamics CRM, interní obchodní aplikace a databáze SQL.
+- Pomocí integrovaných testů můžete monitorovat připojení k síti Microsoft 365 a koncovým bodům Dynamics 365. 
 - Určete dobu odezvy, latenci sítě a ztrátu paketů, které se při připojování ke koncovému bodu vyskytly.
 - Určete, zda je slabý výkon aplikace z důvodu sítě nebo kvůli nějakému problému na konci poskytovatele aplikace.
 - Identifikujte aktivní body v síti, které mohou způsobovat špatný výkon aplikace, zobrazením latence, na kterou přispělo každé směrování na mapě topologie.

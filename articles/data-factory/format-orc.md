@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 3aa42d6060ecdd93dd97438a025c4f5e4f05ac52
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 9e6b8511164cd7e9a855a70d9edba4ce6492c3a3
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531725"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404713"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Formát ORC v Azure Data Factory
 
@@ -32,12 +32,13 @@ Formát ORC se podporuje pro následující konektory: [Amazon S3](connector-ama
 | ---------------- | ------------------------------------------------------------ | -------- |
 | typ             | Vlastnost Type datové sady musí být nastavená na **ORC**. | Yes      |
 | location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location` . **Podrobnosti najdete v článku o konektoru – > vlastnosti datové sady**. | Yes      |
+| compressionCodec         | Kompresní kodek, který se má použít při zápisu do souborů ORC Při čtení ze souborů ORC určují datové továrny automaticky kodek komprese na základě metadat souboru.<br>Podporované typy jsou **none**, **zlib**, **přichycení** (výchozí) a **LZO**. Poznámka: v současné době kopírování nepodporuje LZO při čtení a zápisu ORC souborů. | No      |
 
 Níže je příklad datové sady ORC v Azure Blob Storage:
 
 ```json
 {
-    "name": "ORCDataset",
+    "name": "OrcDataset",
     "properties": {
         "type": "Orc",
         "linkedServiceName": {
@@ -60,7 +61,6 @@ Je třeba počítat s následujícím:
 
 * Komplexní datové typy se nepodporují (struktura, mapování, seznam, SJEDNOCENí).
 * Prázdné znaky v názvu sloupce nejsou podporovány.
-* Soubory ORC mají tři [možnosti komprese](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB a SNAPPY. Data Factory podporuje čtení dat ze souborů ORC v libovolném z těchto komprimovaných formátů. K načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru ORC ale Data Factory využívá možnost ZLIB, která je pro formát ORC výchozí. V současnosti toto chování nejde potlačit.
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
@@ -81,7 +81,7 @@ V části *** \* jímka \* *** aktivity kopírování jsou podporovány následu
 
 | Vlastnost      | Popis                                                  | Povinné |
 | ------------- | ------------------------------------------------------------ | -------- |
-| typ          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **OrcSink**. | Yes      |
+| typ          | Vlastnost Type jímky aktivity kopírování musí být nastavená na **OrcSink**. | Yes      |
 | formatSettings | Skupina vlastností V tabulce **nastavení zápisu ORC** najdete níže. |    No      |
 | storeSettings | Skupina vlastností, jak zapisovat data do úložiště dat. Každý konektor založený na souborech má vlastní podporované nastavení zápisu v rámci `storeSettings` . **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | No       |
 
@@ -92,6 +92,67 @@ Podporovaná **nastavení zápisu ORC** v rámci `formatSettings` :
 | typ          | Typ formatSettings musí být nastaven na hodnotu **OrcWriteSettings**. | Yes                                                   |
 | maxRowsPerFile | Při zápisu dat do složky můžete zvolit zápis do více souborů a zadat maximální počet řádků na soubor.  | No |
 | fileNamePrefix | Platí při `maxRowsPerFile` konfiguraci.<br> Při zápisu dat do více souborů zadejte předponu názvu souboru. Výsledkem je tento vzor: `<fileNamePrefix>_00000.<fileExtension>` . Pokud tento parametr nezadáte, automaticky se vygeneruje Předpona názvu souboru. Tato vlastnost se nevztahuje na to, že zdroj je úložiště založené na souborech nebo v [úložišti dat s povolenými možnostmi pro oddíly](copy-activity-performance-features.md).  | No |
+
+## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
+
+V části mapování toků dat můžete číst a zapisovat do formátu ORC v následujících úložištích dat: [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
+
+Můžete odkazovat na soubory ORC buď pomocí datové sady ORC, nebo pomocí [vložené datové sady](data-flow-source.md#inline-datasets).
+
+### <a name="source-properties"></a>Vlastnosti zdroje
+
+V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem ORC. Tyto vlastnosti můžete upravit na kartě **Možnosti zdrojového kódu** .
+
+Při použití vložené datové sady se zobrazí další nastavení souborů, která jsou stejná jako vlastnosti popsané v části [Vlastnosti datové sady](#dataset-properties) .
+
+| Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Formát | Formát musí být `orc` | ano | `orc` | formát |
+| Cesty k zástupným kartám | Budou zpracovány všechny soubory, které odpovídají zástupné cestě. Přepíše složku a cestu k souboru nastavenou v datové sadě. | ne | Řetězec [] | wildcardPaths |
+| Kořenová cesta oddílu | Pro souborová data, která jsou rozdělená na oddíly, můžete zadat kořenovou cestu oddílu, aby bylo možné číst rozdělené složky jako sloupce. | ne | Řetězec | partitionRootPath |
+| Seznam souborů | Určuje, zda váš zdroj odkazuje na textový soubor se seznamem souborů, které se mají zpracovat. | ne | `true` nebo `false` | fileList |
+| Sloupec, ve kterém se má uložit název souboru | Vytvoří nový sloupec s názvem a cestou ke zdrojovému souboru. | ne | Řetězec | rowUrlColumn |
+| Po dokončení | Odstraní nebo přesune soubory po zpracování. Cesta k souboru začíná z kořene kontejneru | ne | Odstranit: `true` nebo `false` <br> Pøesunout `[<from>, <to>]` | purgeFiles <br> moveFiles |
+| Filtrovat podle poslední změny | Zvolit filtrování souborů podle toho, kdy se naposledy změnily | ne | Timestamp | modifiedAfter <br> modifiedBefore |
+| Nenalezeny žádné soubory | Pokud je nastaveno na true, chyba není vyvolána, pokud nebyly nalezeny žádné soubory. | ne | `true` nebo `false` | ignoreNoFilesFound |
+
+### <a name="source-example"></a>Zdrojový příklad
+
+Přidružený skript toku dat pro konfiguraci zdroje ORC je:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    rowUrlColumn: 'fileName',
+    format: 'orc') ~> OrcSource
+```
+
+### <a name="sink-properties"></a>Vlastnosti jímky
+
+V níže uvedené tabulce jsou uvedeny vlastnosti, které ORC jímka podporuje. Tyto vlastnosti můžete upravit na kartě **Nastavení** .
+
+Při použití vložené datové sady se zobrazí další nastavení souborů, která jsou stejná jako vlastnosti popsané v části [Vlastnosti datové sady](#dataset-properties) .
+
+| Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Formát | Formát musí být `orc` | ano | `orc` | formát |
+| Vymazat složku | Pokud před zápisem není cílová složka smazána | ne | `true` nebo `false` | zkrátit |
+| Možnost názvu souboru | Formát názvů zapsaných dat. Ve výchozím nastavení je jeden soubor na oddíl ve formátu `part-#####-tid-<guid>` | ne | Vzor: řetězec <br> Na oddíl: řetězec [] <br> Jako data ve sloupci: String <br> Výstup do jednoho souboru: `['<fileName>']` | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+
+### <a name="sink-example"></a>Příklad jímky
+
+Přidružený skript toku dat konfigurace jímky ORC je:
+
+```
+OrcSource sink(
+    format: 'orc',
+    filePattern:'output[n].orc',
+    truncate: true,
+    allowSchemaDrift: true,
+    validateSchema: false,
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> OrcSink
+```
 
 ## <a name="using-self-hosted-integration-runtime"></a>Použití Integration Runtime pro místní hostování
 

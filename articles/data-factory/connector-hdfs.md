@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 2a0093ebb6e3214553cf5603151831d6ae53d862
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 96603de7014419b142cc35714b891f9e4b15ec99
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332045"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405079"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Kopírování dat ze serveru HDFS pomocí Azure Data Factory
 
@@ -42,7 +42,7 @@ Konkrétně konektor HDFS podporuje:
 - Kopírování souborů pomocí protokolu *webhdfs* nebo integrované podpory *DistCp* .
 - Kopírování souborů tak, jak jsou, nebo analýzou nebo generováním souborů s [podporovanými formáty souborů a kompresními kodeky](supported-file-formats-and-compression-codecs.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -253,7 +253,7 @@ Tato část popisuje chování, které je výsledkem použití cesty seznamu sou
 
 Aktivita kopírování podporuje použití DistCp ke kopírování souborů do úložiště objektů BLOB v Azure (včetně [připravené kopie](copy-activity-performance.md)) nebo Azure Data Lake Store. V takovém případě může DistCp využít výkon vašeho clusteru místo spuštění v místním prostředí Integration runtime. Použití DistCp poskytuje lepší propustnost kopírování, zejména v případě, že je cluster velmi výkonný. Na základě konfigurace ve vaší datové továrně aktivita kopírování automaticky vytvoří příkaz DistCp, odešle ho do vašeho clusteru Hadoop a monitoruje stav kopírování.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete pomocí DistCp kopírovat soubory z HDFS do úložiště objektů BLOB v Azure (včetně připravené kopie) nebo Azure Data Lake Store, ujistěte se, že cluster Hadoop splňuje následující požadavky:
 
@@ -279,6 +279,34 @@ K dispozici jsou dvě možnosti nastavení místního prostředí pro použití 
 * Možnost 1: [připojení počítače s místním prostředím Integration runtime ve sféře protokolu Kerberos](#kerberos-join-realm)
 * Možnost 2: [Povolení vzájemné důvěry mezi doménou systému Windows a sférou protokolu Kerberos](#kerberos-mutual-trust)
 
+U obou možností se ujistěte, že jste zapnuli webhdfs pro cluster Hadoop:
+
+1. Vytvořte objekt zabezpečení HTTP a keytab pro webhdfs.
+
+    > [!IMPORTANT]
+    > Objekt zabezpečení protokolu HTTP Kerberos musí začínat řetězcem**http/**, podle specifikace protokolu Kerberos http SPNEGO.
+
+    ```bash
+    Kadmin> addprinc -randkey HTTP/<namenode hostname>@<REALM.COM>
+    Kadmin> ktadd -k /etc/security/keytab/spnego.service.keytab HTTP/<namenode hostname>@<REALM.COM>
+    ```
+
+2. Možnosti konfigurace HDFS: přidejte následující tři vlastnosti v `hdfs-site.xml` .
+    ```xml
+    <property>
+        <name>dfs.webhdfs.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>dfs.web.authentication.kerberos.principal</name>
+        <value>HTTP/_HOST@<REALM.COM></value>
+    </property>
+    <property>
+        <name>dfs.web.authentication.kerberos.keytab</name>
+        <value>/etc/security/keytab/spnego.service.keytab</value>
+    </property>
+    ```
+
 ### <a name="option-1-join-a-self-hosted-integration-runtime-machine-in-the-kerberos-realm"></a><a name="kerberos-join-realm"></a>Možnost 1: připojení počítače s místním prostředím Integration runtime ve sféře protokolu Kerberos
 
 #### <a name="requirements"></a>Požadavky
@@ -287,13 +315,24 @@ K dispozici jsou dvě možnosti nastavení místního prostředí pro použití 
 
 #### <a name="how-to-configure"></a>Jak nakonfigurovat
 
+**Na serveru KDC:**
+
+Vytvořte objekt zabezpečení, který Azure Data Factory použít, a zadejte heslo.
+
+> [!IMPORTANT]
+> Uživatelské jméno by nemělo obsahovat název hostitele.
+
+```bash
+Kadmin> addprinc <username>@<REALM.COM>
+```
+
 **Na počítači místního prostředí Integration Runtime:**
 
 1.  Spusťte nástroj Ksetup a nakonfigurujte server a sféru protokolu Kerberos služba KDC (Key Distribution Center) (KDC).
 
     Počítač musí být nakonfigurován jako člen pracovní skupiny, protože se liší sféra protokolu Kerberos od domény systému Windows. Tuto konfiguraci můžete dosáhnout nastavením sféry protokolu Kerberos a přidáním serveru služby KDC spuštěním následujících příkazů. Nahraďte *REALM.com* názvem vaší sféry.
 
-    ```console
+    ```cmd
     C:> Ksetup /setdomain REALM.COM
     C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
     ```
@@ -302,7 +341,7 @@ K dispozici jsou dvě možnosti nastavení místního prostředí pro použití 
 
 2.  Ověřte konfiguraci pomocí `Ksetup` příkazu. Výstup by měl vypadat takto:
 
-    ```output
+    ```cmd
     C:> Ksetup
     default realm = REALM.COM (external)
     REALM.com:

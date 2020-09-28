@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 34e81076c27086ad838cca23de0e150a3c1b076c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c5a442a3d3711b85c0bad30218cb1ffab92558d9
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798903"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403717"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Řešení Network Performance Monitor v Azure
 
@@ -28,7 +28,7 @@ Network Performance Monitor nabízí tři široké možnosti:
 
 * [Monitorování připojení služby](network-performance-monitor-service-connectivity.md): můžete monitorovat připojení uživatelů ke službám, které vás zajímají, určit infrastrukturu v cestě a určit, kde dochází k kritickým bodům sítě. Můžete znát výpadky před vašimi uživateli a zobrazit přesné umístění problémů podél síťové cesty. 
 
-    Tato schopnost vám pomůže provádět testy založené na protokolech HTTP, HTTPS, TCP a ICMP a monitorovat téměř v reálném čase nebo historicky dostupnou dostupnost a dobu odezvy vaší služby. Můžete také monitorovat příspěvek sítě při výpadku a latenci paketů. Pomocí mapy topologie sítě můžete izolovat zpomalování sítě. Můžete identifikovat problematické body, ke kterým dojde podél síťové cesty z uzlu ke službě, a data latence u každého segmentu směrování. Pomocí integrovaných testů můžete monitorovat síťové připojení k Office 365 a Dynamics CRM bez nutnosti předem nakonfigurovat. Díky této funkci můžete monitorovat síťové připojení k jakémukoli koncovému bodu podporujícímu protokol TCP, jako jsou websites, aplikace SaaS, PaaS aplikace a databáze SQL.
+    Tato schopnost vám pomůže provádět testy založené na protokolech HTTP, HTTPS, TCP a ICMP a monitorovat téměř v reálném čase nebo historicky dostupnou dostupnost a dobu odezvy vaší služby. Můžete také monitorovat příspěvek sítě při výpadku a latenci paketů. Pomocí mapy topologie sítě můžete izolovat zpomalování sítě. Můžete identifikovat problematické body, ke kterým dojde podél síťové cesty z uzlu ke službě, a data latence u každého segmentu směrování. Pomocí integrovaných testů můžete monitorovat síťové připojení k Microsoft 365 a Dynamics CRM bez nutnosti předem nakonfigurovat. Díky této funkci můžete monitorovat síťové připojení k jakémukoli koncovému bodu podporujícímu protokol TCP, jako jsou websites, aplikace SaaS, PaaS aplikace a databáze SQL.
 
 * [Monitorování ExpressRoute](network-performance-monitor-expressroute.md): monitorujte komplexní konektivitu a výkon mezi firemními pobočkami a Azure, a to prostřednictvím Azure ExpressRoute.  
 
@@ -58,7 +58,7 @@ NPM může monitorovat propojení mezi sítěmi a aplikacemi v jakékoli části
 * Jižní Velká Británie
 * Východní Asie
 * Jižní Korea – střed
-* Střed Indie
+* Indie – střed
 * ) – Virginia vlády USA
 * Arizona vlády USA
 * Čína – východ 2
@@ -82,7 +82,7 @@ Základní procesy použijte k instalaci agentů na adrese [připojení počíta
 
     Chcete-li monitorovat síťové propojení, nainstalujte agenty do obou koncových bodů tohoto propojení. Pokud si nejste jisti topologií sítě, nainstalujte agenty na serverech s kritickými úlohami, mezi kterými chcete monitorovat výkon sítě. Například pokud chcete monitorovat síťové připojení mezi webovým serverem a serverem se systémem SQL, nainstalujte agenta na oba servery. Agenti monitorují připojení k síti (propojení) mezi hostiteli, nikoli se samotnými hostiteli. 
 
-* **Monitorování připojení služby**: na všechny uzly, ze kterých chcete monitorovat síťové připojení ke koncovému bodu služby, nainstalujte agenta Log Analytics. Příkladem je, že chcete monitorovat síťové připojení k Office 365 z webů Office označených jako O1, O2 a O3. Nainstalujte agenta Log Analytics na alespoň jeden uzel každý v umístění O1, O2 a O3. 
+* **Monitorování připojení služby**: na všechny uzly, ze kterých chcete monitorovat síťové připojení ke koncovému bodu služby, nainstalujte agenta Log Analytics. Příkladem je, že chcete monitorovat síťové připojení k Microsoft 365 z webů Office označených O1, O2 a O3. Nainstalujte agenta Log Analytics na alespoň jeden uzel každý v umístění O1, O2 a O3. 
 
 * **ExpressRoute monitor**: ve vaší virtuální síti Azure nainstalujte aspoň jednoho agenta Log Analytics. Nainstalujte také alespoň jednoho agenta do místní podsítě, který je připojen prostřednictvím privátního partnerského vztahu ExpressRoute.  
 
@@ -128,7 +128,7 @@ Network Performance Monitor používá syntetické transakce k monitorování v�
 
    ![Zobrazení sledování výkonu](media/network-performance-monitor/npm-synthetic-transactions.png)
     
-   **Monitorování připojení služby**: funkce poskytuje předdefinované předem nakonfigurované testy pro monitorování síťového připojení k Office 365 a Dynamics 365 z vašich agentů. Zvolte služby Office 365 a Dynamics 365, které chcete monitorovat, zaškrtnutím políček vedle nich. Chcete-li vybrat agenty, ze kterých chcete monitorovat, vyberte možnost **přidat agenty**. Pokud tuto funkci nechcete používat nebo ji chcete nastavit později, nevybírejte nic a vyberte **uložit & pokračovat**.
+   **Monitorování připojení služby**: funkce poskytuje integrované předkonfigurované testy pro monitorování připojení k síti Microsoft 365 a Dynamics 365 od vašich agentů. Zvolte Microsoft 365 a služby Dynamics 365, které chcete monitorovat, zaškrtnutím políček vedle nich. Chcete-li vybrat agenty, ze kterých chcete monitorovat, vyberte možnost **přidat agenty**. Pokud tuto funkci nechcete používat nebo ji chcete nastavit později, nevybírejte nic a vyberte **uložit & pokračovat**.
 
    ![Zobrazení monitorování připojení služby](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ced838d05ef9d8ca9f6c724d88fabdad010ed727
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77666633"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403547"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Protokolování času pro příjem dat ve službě Azure Monitor
 Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. K dispozici jsou často dotazy týkající se času, po který se data protokolu budou k dispozici po shromáždění. Tento článek vysvětluje různé faktory, které mají vliv na tuto latenci.
@@ -51,7 +51,7 @@ Jakmile budou data v bodu příjmu k dispozici, budou data pro dotazování trva
 ### <a name="management-solutions-collection"></a>Kolekce řešení pro správu
 Některá řešení neshromažďují svá data z agenta a můžou používat metodu shromažďování, která zavádí další latenci. Některá řešení shromažďují data v pravidelných intervalech bez pokusu o shromažďování téměř v reálném čase. Konkrétní příklady zahrnují následující:
 
-- Řešení pro Office 365 dotazuje protokoly aktivit pomocí rozhraní API pro správu sady Office 365, které v současné době neposkytuje žádné záruky téměř v reálném čase.
+- Microsoft 365 řešení pro dotazování v protokolech aktivit pomocí rozhraní API pro správu aktivit, které v současné době neposkytuje záruky za téměř reálné časové prodlevy.
 - Řešení Windows Analytics (například Update Compliance) se shromažďují podle každodenní frekvence.
 
 Chcete-li zjistit četnost shromažďování dat, přečtěte si dokumentaci pro každé řešení.

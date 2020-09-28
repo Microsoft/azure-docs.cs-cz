@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: 255fa9e058fdbb3b7edb73e75fd53f4a2490bfca
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 5bb5599c6ab6e630e0f26c6d4a13e9c9af8a15a7
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023852"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405169"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Kopírování a transformace dat v Snowflake pomocí Azure Data Factory
 
@@ -357,7 +357,7 @@ Pokud zdrojové úložiště a formát dat splňují kritéria popsaná v této 
 
 #### <a name="staged-copy-to-snowflake"></a>Příprava kopírování na Snowflake
 
-Pokud vaše úložiště nebo formát dat jímky nejsou nativně kompatibilní s příkazem kopírování Snowflake, jak je uvedeno v poslední části, povolte vestavěnou dvoufázové kopii pomocí dočasné instance služby Azure Blob Storage. Funkce dvoufázové kopírování nabízí také lepší propustnost. Data Factory automaticky převede data tak, aby splňovala požadavky na formát dat Snowflake. Potom vyvolá příkaz COPY pro načtení dat do Snowflake. Nakonec vymaže vaše dočasná data z úložiště objektů BLOB. Podrobnosti o kopírování dat pomocí přípravy najdete v tématu [připravené kopírování](copy-activity-performance-features.md#staged-copy) .
+Pokud vaše zdrojové úložiště dat nebo formát není nativně kompatibilní s příkazem kopírování Snowflake, jak je uvedeno v poslední části, povolte vestavěnou dvoufázové kopii pomocí dočasné instance služby Azure Blob Storage. Funkce dvoufázové kopírování nabízí také lepší propustnost. Data Factory automaticky převede data tak, aby splňovala požadavky na formát dat Snowflake. Potom vyvolá příkaz COPY pro načtení dat do Snowflake. Nakonec vymaže vaše dočasná data z úložiště objektů BLOB. Podrobnosti o kopírování dat pomocí přípravy najdete v tématu [připravené kopírování](copy-activity-performance-features.md#staged-copy) .
 
 Pokud chcete tuto funkci použít, vytvořte [propojenou službu Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) , která jako průběžné přípravy odkazuje na účet služby Azure Storage. Pak zadejte `enableStaging` vlastnosti a `stagingSettings` v aktivitě kopírování.
 
@@ -414,7 +414,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem Snowflake
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Tabulka | Vyberete-li možnost tabulka jako vstup, bude tok dat při použití vložené datové sady načítat všechna data z tabulky zadané v datové sadě Snowflake nebo v možnostech zdroje. | No | Řetězec | *(pouze pro vloženou datovou sadu)*<br>tableName<br>schemaName |
-| Dotazy | Pokud jako vstup vyberete dotaz, zadejte dotaz, který načte data z Snowflake. Toto nastavení přepisuje jakoukoli tabulku, kterou jste zvolili v datové sadě.<br>Pokud názvy schématu, tabulky a sloupců obsahují malá písmena, citujte v dotazu identifikátor objektu, např. `select * from "schema"."myTable"` . | No | Řetězec | query |
+| Dotaz | Pokud jako vstup vyberete dotaz, zadejte dotaz, který načte data z Snowflake. Toto nastavení přepisuje jakoukoli tabulku, kterou jste zvolili v datové sadě.<br>Pokud názvy schématu, tabulky a sloupců obsahují malá písmena, citujte v dotazu identifikátor objektu, např. `select * from "schema"."myTable"` . | No | Řetězec | query |
 
 #### <a name="snowflake-source-script-examples"></a>Příklady zdrojového skriptu Snowflake
 
