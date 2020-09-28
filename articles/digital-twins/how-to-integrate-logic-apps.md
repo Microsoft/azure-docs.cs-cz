@@ -82,7 +82,7 @@ Na následující stránce *vytvořit Logic Apps vlastní konektor* vyberte své
 
 Tím přejdete na kartu *Revize + vytvořit* , kde *můžete v dolní části vytvořit prostředek* .
 
-:::image type="content" source="media/how-to-integrate-logic-apps/review-logic-apps-custom-connector.png" alt-text="Karta Revize a vytvoření vlastního konektoru v Azure Portal na stránce "revize Logic Apps Custom Connector". Zvýraznění kolem tlačítka pro vytvoření":::
+:::image type="content" source="media/how-to-integrate-logic-apps/review-logic-apps-custom-connector.png" alt-text="Karta Revize a vytvoření vlastního konektoru v Azure Portal na stránce revize Logic Apps Custom Connector. Zvýraznění kolem tlačítka pro vytvoření":::
 
 Přejdete na stránku pro nasazení konektoru. Po dokončení nasazení klikněte na tlačítko *Přejít do prostředku* a zobrazte podrobnosti o konektoru na portálu.
 
