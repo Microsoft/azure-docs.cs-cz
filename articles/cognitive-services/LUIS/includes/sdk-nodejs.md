@@ -188,7 +188,7 @@ Metody vytváření entit jsou součástí třídy [modelu](https://docs.microso
 
 Kód pro vytvoření entity vytvoří entitu strojového učení s podentitami a funkcemi použitými u `Quantity` subentit.
 
-:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Částečná obrazovka z portálu znázorňující vytvořenou entitu, entitu strojového učení s podentitami a funkcemi použitou pro subentity "množství".":::
+:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="Částečná obrazovka z portálu znázorňující vytvořenou entitu, entitu strojového učení s podentitami a funkcemi použitou pro subentity množství.":::
 
 [!code-javascript[Create entities for the app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddEntities)]
 
