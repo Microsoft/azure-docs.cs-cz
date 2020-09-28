@@ -118,6 +118,8 @@
           href: ./security-controls-policy.md
         - name: Zabezpečení prostředků indexeru
           href: search-indexer-securing-resources.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Návody
   items:
     - name: Vytváření indexů a konstrukcí
