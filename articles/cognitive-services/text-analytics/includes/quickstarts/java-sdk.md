@@ -10,12 +10,12 @@ ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: f9f5a8904ff8038b0747fa8f086bc9894971428c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 61240b6238b4653ff45985a8403534570cbf0773
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332299"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400944"
 ---
 <a name="HOLTop"></a>
 
@@ -180,7 +180,46 @@ V `main()` metodě programu zavolejte metodu ověřování pro vytvoření insta
 > * Analýza mínění obsahuje názory na analýzu dolování, která je volitelným příznakem. 
 > * Dolování stanovisek obsahuje aspekty a mínění úrovně názoru. 
 
+Vytvořte novou funkci s názvem `sentimentAnalysisExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `analyzeSentiment()` funkci. Vrácený `AnalyzeSentimentResult` objekt bude obsahovat `documentSentiment` a `sentenceSentiments` v případě úspěchu, nebo `errorMessage` if not. 
+
+```java
+static void sentimentAnalysisExample(TextAnalyticsClient client)
+{
+    // The text that need be analyzed.
+    String text = "I had the best day of my life. I wish you were there with me.";
+
+    DocumentSentiment documentSentiment = client.analyzeSentiment(text);
+    System.out.printf(
+        "Recognized document sentiment: %s, positive score: %s, neutral score: %s, negative score: %s.%n",
+        documentSentiment.getSentiment(),
+        documentSentiment.getConfidenceScores().getPositive(),
+        documentSentiment.getConfidenceScores().getNeutral(),
+        documentSentiment.getConfidenceScores().getNegative());
+
+    for (SentenceSentiment sentenceSentiment : documentSentiment.getSentences()) {
+        System.out.printf(
+            "Recognized sentence sentiment: %s, positive score: %s, neutral score: %s, negative score: %s.%n",
+            sentenceSentiment.getSentiment(),
+            sentenceSentiment.getConfidenceScores().getPositive(),
+            sentenceSentiment.getConfidenceScores().getNeutral(),
+            sentenceSentiment.getConfidenceScores().getNegative());
+        }
+    }
+}
+```
+
+### <a name="output"></a>Výstup
+
+```console
+Recognized document sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
+Recognized sentence sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
+Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.77, negative score: 0.02.
+```
+
+### <a name="opinion-mining"></a>Dolování názoru
+
 Chcete-li provést analýzu mínění s využitím dolování, vytvořte novou funkci s názvem `sentimentAnalysisWithOpinionMiningExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `analyzeSentiment()` funkci s nastavením objektu Option `AnalyzeSentimentOptions` . Vrácený `AnalyzeSentimentResult` objekt bude obsahovat `documentSentiment` a `sentenceSentiments` v případě úspěchu, nebo `errorMessage` if not. 
+
 
 ```java
 static void sentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client)

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd635d4c0563c35979f8d85c33dfbde35f05f9e6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75468352"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400976"
 ---
 Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterých SQL Server Skupina dostupnosti naslouchá. Chcete-li vytvořit naslouchací proces skupiny dostupnosti, postupujte následovně:
 
@@ -30,7 +30,7 @@ Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterýc
 
     b. V podokně **role** klikněte pravým tlačítkem myši na název skupiny dostupnosti a pak vyberte **Přidat prostředek**  >  **Klientský přístupový bod**.
 
-   ![Klientský přístupový bod](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
+   ![Snímek obrazovky zobrazující možnost nabídky bodu přístupu klienta](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
     c. V poli **název** vytvořte název pro tento nový naslouchací proces. 
    Název nového naslouchacího procesu je síťový název, který aplikace používá pro připojení k databázím ve skupině dostupnosti SQL Server.
@@ -50,7 +50,7 @@ Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterýc
 
     c. V části **IP adresa**klikněte na **statická IP adresa**. Nastavte IP adresu jako stejnou adresu, kterou jste použili při nastavování adresy nástroje pro vyrovnávání zatížení na Azure Portal.
 
-   ![Prostředek IP](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
+   ![Snímek obrazovky, na kterém se zobrazuje, kde můžete nastavit IP adresu](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
     <!-----------------------I don't see this option on server 2016
     1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
@@ -64,7 +64,7 @@ Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterýc
 
     c. Na kartě závislosti přidejte název prostředku klientského přístupového bodu (naslouchacího procesu).
 
-   ![Prostředek IP](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
+   ![Snímek obrazovky, který ukazuje, kde přidat název na kartě závislosti](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
     d. Klikněte na **OK**.
 
@@ -74,23 +74,23 @@ Naslouchací proces skupiny dostupnosti je IP adresa a název sítě, na kterýc
 
     b. Na kartě **prostředky** klikněte pravým tlačítkem na prostředek klientského přístupového bodu v části **název serveru**a pak klikněte na **vlastnosti**. 
 
-   ![Prostředek IP](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
+   ![Snímek obrazovky, který zobrazuje možnost nabídky vlastnosti pro název serveru](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-    c. Klikněte na kartu **závislosti** . Ověřte, zda je IP adresa závislá. Pokud tomu tak není, nastavte závislost na IP adrese. Pokud je v seznamu uvedeno více prostředků, ověřte, zda IP adresa obsahuje nebo, nikoli a, závislosti. Klikněte na **OK**. 
+    c. Klikněte na kartu **závislosti** . Ověřte, že IP adresa je závislá. Pokud tomu tak není, nastavte závislost na IP adrese. Pokud je v seznamu uvedeno více prostředků, ověřte, zda IP adresa obsahuje nebo, nikoli a, závislosti. Klikněte na **OK**. 
 
    ![Prostředek IP](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
     >[!TIP]
-    >Můžete ověřit, zda jsou závislosti správně nakonfigurovány. V Správce clusteru s podporou převzetí služeb při selhání přejděte na role, klikněte pravým tlačítkem na skupinu dostupnosti, klikněte na **Další akce**a pak klikněte na **Zobrazit sestavu závislostí**. Pokud jsou závislosti správně nakonfigurovány, je skupina dostupnosti závislá na názvu sítě a název sítě závisí na IP adrese. 
+    >Můžete ověřit, zda jsou závislosti správně nakonfigurovány. V Správce clusteru s podporou převzetí služeb při selhání přejděte na role, klikněte pravým tlačítkem na skupinu dostupnosti, klikněte na **Další akce**a pak klikněte na  **Zobrazit sestavu závislostí**. Pokud jsou závislosti správně nakonfigurovány, je skupina dostupnosti závislá na názvu sítě a název sítě závisí na IP adrese. 
 
 
 1. <a name="setparam"></a>Nastavte parametry clusteru v prostředí PowerShell.
 
    a. Zkopírujte následující skript prostředí PowerShell do jedné z vašich SQL Serverch instancí. Aktualizujte proměnné pro vaše prostředí.
 
-   - `$ListenerILBIP`je IP adresa, kterou jste vytvořili v nástroji pro vyrovnávání zatížení Azure pro naslouchací proces skupiny dostupnosti.
+   - `$ListenerILBIP` je IP adresa, kterou jste vytvořili v nástroji pro vyrovnávání zatížení Azure pro naslouchací proces skupiny dostupnosti.
     
-   - `$ListenerProbePort`je port, který jste nakonfigurovali v nástroji pro vyrovnávání zatížení Azure pro naslouchací proces skupiny dostupnosti.
+   - `$ListenerProbePort` je port, který jste nakonfigurovali v nástroji pro vyrovnávání zatížení Azure pro naslouchací proces skupiny dostupnosti.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -122,9 +122,9 @@ V případě potřeby opakujte výše uvedené kroky a nastavte parametry cluste
   
    a. Zkopírujte následující skript prostředí PowerShell do jedné z vašich SQL Serverch instancí. Aktualizujte proměnné pro vaše prostředí.
 
-   - `$ClusterCoreIP`je IP adresa, kterou jste vytvořili v nástroji pro vyrovnávání zatížení Azure pro prostředek clusteru Core služby WSFC. Liší se od IP adresy pro naslouchací proces skupiny dostupnosti.
+   - `$ClusterCoreIP` je IP adresa, kterou jste vytvořili v nástroji pro vyrovnávání zatížení Azure pro prostředek clusteru Core služby WSFC. Liší se od IP adresy pro naslouchací proces skupiny dostupnosti.
 
-   - `$ClusterProbePort`je port, který jste nakonfigurovali v nástroji pro vyrovnávání zatížení Azure pro sondu stavu služby WSFC. Liší se od sondy pro naslouchací proces skupiny dostupnosti.
+   - `$ClusterProbePort` je port, který jste nakonfigurovali v nástroji pro vyrovnávání zatížení Azure pro sondu stavu služby WSFC. Liší se od sondy pro naslouchací proces skupiny dostupnosti.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)

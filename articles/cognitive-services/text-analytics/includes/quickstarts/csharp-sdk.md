@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 07/27/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 8dbbdf16df62cd59e8a798fc547d8b171a6ee3e2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7e074bf898667bb0019d4147ec9abaea2c674d74
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332298"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91401054"
 ---
 <a name="HOLTop"></a>
 
@@ -252,6 +252,8 @@ Document sentiment: Positive
         Negative score: 0.02
         Neutral score: 0.77
 ```
+
+### <a name="opinion-mining"></a>Dolování názoru
 
 Vytvořte novou funkci s názvem `SentimentAnalysisWithOpinionMiningExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `AnalyzeSentimentBatch()` funkci s `AdditionalSentimentAnalyses.OpinionMining` možností. Vrácený `AnalyzeSentimentResultCollection` objekt bude obsahovat kolekci, `AnalyzeSentimentResult` ve které představuje `Response<DocumentSentiment>` . Rozdíl mezi `SentimentAnalysis()` a `SentimentAnalysisWithOpinionMiningExample()` je v tom, že se `MinedOpinion` v každé větě bude zobrazovat analyzovaný aspekt a související názory. Pokud došlo k chybě, vyvolá se `RequestFailedException` .
 

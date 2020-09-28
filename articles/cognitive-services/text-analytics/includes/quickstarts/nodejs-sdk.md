@@ -10,12 +10,12 @@ ms.date: 07/27/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: ea5d2106b349386e549dbd793d4a32af62e361ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5d9c3c8e795b6651595a17d540aafa849ce81471
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332296"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91401040"
 ---
 <a name="HOLTop"></a>
 
@@ -226,6 +226,8 @@ ID: 0
                 Sentences Scores:
                 Positive: 0.21  Negative: 0.02  Neutral: 0.77
 ```
+
+### <a name="opinion-mining"></a>Dolování názoru
 
 Chcete-li provést analýzu mínění s využitím dolování stanovisek, vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte `analyzeSentiment()` metodu klienta s přidáním příznaku možnosti `includeOpinionMining: true` a získejte vráceného `SentimentBatchResult` objektu. Procházejte seznamem výsledků a vytiskněte ID každého dokumentu, mínění na úrovni dokumentu s výsledky spolehlivosti. Výsledek pro každý dokument obsahuje nejen mínění úrovně vět, jak je uvedeno výše, ale také aspekt a úroveň názoru mínění.
 
