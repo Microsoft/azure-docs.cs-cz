@@ -6,19 +6,18 @@ ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.date: 11/04/2019
+ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: 6c330b201c74a2ce56283e30be90cd117b1022f6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 77ab19296d1e310e48cdf3609c9f109dc42f6ec1
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050518"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408291"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rychlý Start: vytvoření chatovací místnosti pomocí služby Signal
 
-
-Azure SignalR je služba Azure, která vývojářům pomáhá snadno vytvářet webové aplikace s funkcemi v reálném čase. Tato služba je založená na nástroji [Signal pro ASP.NET Core 2,1](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-2.1), ale podporuje také [signalizaci pro ASP.NET Core 3,0](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-3.0).
+Azure SignalR je služba Azure, která vývojářům pomáhá snadno vytvářet webové aplikace s funkcemi v reálném čase. Tato služba byla původně založena na nástroji [Signal pro ASP.NET Core 2,1](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1), ale nyní podporuje novější verze.
 
 V tomto článku se dozvíte, jak začít se službou Azure SignalR. V tomto rychlém startu vytvoříte aplikaci Chat pomocí webové aplikace ASP.NET Core MVC. Tato aplikace naváže připojení k vašemu prostředku služby Azure SignalR a umožní tak aktualizace obsahu v reálném čase. Webovou aplikaci budete hostovat místně a připojíte se s více klienty prohlížeče. Každý klient bude moct nabízet aktualizace obsahu do všech ostatních klientů. 
 
@@ -26,8 +25,7 @@ K dokončení kroků v tomto rychlém startu můžete použít jakýkoli editor 
 
 Kód pro tento kurz je k dispozici ke stažení v [úložišti GitHub AzureSignalR-samples](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom). Prostředky Azure používané v tomto rychlém startu můžete také vytvořit pomocí [skriptu vytvoření skriptu služby signalizace](scripts/signalr-cli-create-service.md).
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -64,20 +62,20 @@ V této části přidáte do svého projektu [Nástroj Správce tajných klíč�
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
+
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
         <UserSecretsId>SignalRChatRoomEx</UserSecretsId>
     </PropertyGroup>
+
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+        <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+        <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.2" />
     </ItemGroup>
-    <ItemGroup>
-        <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
-        <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
-    </ItemGroup>
-    </Project>    
+
+    </Project>
     ```
-    
+
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnetcore)
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>Přidání služby Azure SignalR do webové aplikace
@@ -101,80 +99,68 @@ V této části přidáte do svého projektu [Nástroj Správce tajných klíč�
     Tento příkaz musíte spustit ve stejném adresáři jako soubor *. csproj* .
 
     ```dotnetcli
-    dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
+    dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"
     ```
 
     Správce tajného klíče se použije jenom pro testování webové aplikace, když je hostovaný místně. V pozdějším kurzu nasadíte webovou aplikaci Chat do Azure. Po nasazení webové aplikace do Azure použijete nastavení aplikace místo uložení připojovacího řetězce pomocí Správce tajných klíčů.
 
-    K tomuto tajnému kódu se dostanete pomocí konfiguračního rozhraní API. Dvojtečka (:) funguje v názvu konfigurace s rozhraním API konfigurace na všech podporovaných platformách. Viz [Konfigurace podle prostředí](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0). 
+    K tomuto tajnému kódu se dostanete pomocí konfiguračního rozhraní API. Dvojtečka (:) funguje v názvu konfigurace s rozhraním API konfigurace na všech podporovaných platformách. Viz [Konfigurace podle prostředí](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider).
 
 
-4. Otevřete soubor *Startup.cs* a aktualizujte metodu `ConfigureServices` tak, aby používala službu Azure SignalR, a to zavoláním metody `services.AddSignalR().AddAzureSignalR()`:
+4. Otevřete soubor *Startup.cs* a aktualizujte metodu `ConfigureServices` tak, aby používala službu Azure SignalR, a to zavoláním metody `AddSignalR()`:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddMvc();
-        services.AddSignalR().AddAzureSignalR();
+        services.AddSignalR();
     }
     ```
 
-    Když nepředá parametr do `AddAzureSignalR()` , tento kód použije výchozí konfigurační klíč pro připojovací řetězec prostředků služby Signal. Výchozí konfigurační klíč je *Azure: signaler: ConnectionString*.
+    Když nepředá parametr do `AddSignalR()` , tento kód použije výchozí konfigurační klíč pro připojovací řetězec prostředků služby Signal. Výchozí konfigurační klíč je *Azure: signaler: ConnectionString*.
 
-5. Také v *Startup.cs*aktualizujte metodu tak, že `Configure` nahradíte volání `app.UseStaticFiles()` s následujícím kódem a uložíte soubor, pouze pro ASP.NET Core 2.
-
-    ```csharp
-    app.UseFileServer();
-    app.UseAzureSignalR(routes =>
-    {
-        routes.MapHub<Chat>("/chat");
-    });
-    ```            
-    Pro ASP.NET Core 3 + nahraďte výše uvedený kód:
+5. V *Startup.cs*aktualizujte `Configure` metodu tak, že ji nahradíte následujícím kódem.
 
     ```csharp
-    app.UseFileServer();
-    app.UseRouting();
-    app.UseAuthorization();
-
-    app.UseEndpoints(routes =>
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        routes.MapHub<Chat>("/chat");
-    });
+        app.UseRouting();
+        app.UseFileServer();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapHub<ChatHub>("/chat");
+        });
+    }
     ```
 
 ### <a name="add-a-hub-class"></a>Přidání třídy centra
 
-V nástroji Signal je rozbočovač základní komponentou, která zveřejňuje sadu metod, které mohou být volány z klienta. V této části nadefinujete třídu centra se dvěma metodami: 
+V nástroji Signal je rozbočovač základní komponentou, která zveřejňuje sadu metod, které mohou být volány z klienta. V této části nadefinujete třídu centra se dvěma metodami:
 
 * `Broadcast`: Tato metoda rozešle zprávu do všech klientů.
 * `Echo`: Tato metoda odešle zprávu zpět volajícímu.
 
 Obě metody používají `Clients` rozhraní, které poskytuje sada SDK signalizace ASP.NET Core. Toto rozhraní vám umožní přístup ke všem připojeným klientům, takže můžete nabízet obsah vašim klientům.
 
-1. Do adresáře vašeho projektu přidejte novou složku *Hub*. Do nové složky přidejte nový soubor s kódem centra *Chat.cs*.
+1. Do adresáře vašeho projektu přidejte novou složku *Hub*. Do nové složky přidejte nový soubor s kódem centra s názvem *ChatHub.cs* .
 
-2. Přidáním následujícího kódu do *chat.cs* Definujte třídu centra a uložte soubor. 
+2. Přidáním následujícího kódu do *ChatHub.cs* Definujte třídu centra a uložte soubor.
 
-    Pokud jste použili jiný název projektu než *chattest*, aktualizujte obor názvů pro tuto třídu.
+    Aktualizujte obor názvů pro tuto třídu, pokud jste použili název projektu, který se liší od *signalizace. Mvc*.
 
     ```csharp
     using Microsoft.AspNetCore.SignalR;
-
-    namespace chattest
+    using System.Threading.Tasks;
+    
+    namespace SignalR.Mvc
     {
-
-        public class Chat : Hub
+        public class ChatHub : Hub
         {
-            public void BroadcastMessage(string name, string message)
-            {
+            public Task BroadcastMessage(string name, string message) =>
                 Clients.All.SendAsync("broadcastMessage", name, message);
-            }
-
-            public void Echo(string name, string message)
-            {
-                Clients.Client(Context.ConnectionId).SendAsync("echo", name, message + " (echo from server)");
-            }
+    
+            public Task Echo(string name, string message) =>
+                Clients.Client(Context.ConnectionId)
+                       .SendAsync("echo", name, $"{message} (echo from server)");
         }
     }
     ```
@@ -183,23 +169,153 @@ Obě metody používají `Clients` rozhraní, které poskytuje sada SDK signaliz
 
 Uživatelské rozhraní klienta pro tuto aplikaci chatovací místnosti se bude skládat z HTML a JavaScriptu v souboru s názvem *index.html* v adresáři *wwwroot* .
 
-Zkopírujte soubor *index.htm* , složku *CSS* a složku *skripty* ze složky *wwwroot* v [úložišti ukázek](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot). Vložte je do složky *wwwroot* vašeho projektu.
+Zkopírujte soubor *CSS/Web. CSS* ze složky *wwwroot* [úložiště ukázek](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot). Nahraďte *šablonu CSS/Web. CSS* projektu, kterou jste zkopírovali.
 
-Tady je hlavní kód *index.html*: 
+Tady je hlavní kód *index.html*:
 
-```javascript
-var connection = new signalR.HubConnectionBuilder()
-                            .withUrl('/chat')
-                            .build();
-bindConnectionMessage(connection);
-connection.start()
-    .then(function () {
-        onConnected(connection);
-    })
-    .catch(function (error) {
-        console.error(error.message);
-    });
-```    
+Vytvořte nový soubor v adresáři *wwwroot* s názvem *index.html*, zkopírujte a vložte následující kód HTML do nově vytvořeného souboru:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+    <title>Azure SignalR Group Chat</title>
+</head>
+<body>
+    <h2 class="text-center" style="margin-top: 0; padding-top: 30px; padding-bottom: 30px;">Azure SignalR Group Chat</h2>
+    <div class="container" style="height: calc(100% - 110px);">
+        <div id="messages" style="background-color: whitesmoke; "></div>
+        <div style="width: 100%; border-left-style: ridge; border-right-style: ridge;">
+            <textarea id="message"
+                      style="width: 100%; padding: 5px 10px; border-style: hidden;"
+                      placeholder="Type message and press Enter to send..."></textarea>
+        </div>
+        <div style="overflow: auto; border-style: ridge; border-top-style: hidden;">
+            <button class="btn-warning pull-right" id="echo">Echo</button>
+            <button class="btn-success pull-right" id="sendmessage">Send</button>
+        </div>
+    </div>
+    <div class="modal alert alert-danger fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>Connection Error...</div>
+                    <div><strong style="font-size: 1.5em;">Hit Refresh/F5</strong> to rejoin. ;)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Reference the SignalR library. -->
+    <script src="https://cdn.jsdelivr.net/npm/@microsoft/signalr@3.1.8/dist/browser/signalr.min.js"></script>
+
+    <!--Add script to update the page and send messages.-->
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const generateRandomName = () =>
+                Math.random().toString(36).substring(2, 10);
+
+            let username = generateRandomName();
+            const promptMessage = 'Enter your name:';
+            do {
+                username = prompt(promptMessage, username);
+                if (!username || username.startsWith('_') || username.indexOf('<') > -1 || username.indexOf('>') > -1) {
+                    username = '';
+                    promptMessage = 'Invalid input. Enter your name:';
+                }
+            } while (!username)
+
+            const messageInput = document.getElementById('message');
+            messageInput.focus();
+
+            function createMessageEntry(encodedName, encodedMsg) {
+                var entry = document.createElement('div');
+                entry.classList.add("message-entry");
+                if (encodedName === "_SYSTEM_") {
+                    entry.innerHTML = encodedMsg;
+                    entry.classList.add("text-center");
+                    entry.classList.add("system-message");
+                } else if (encodedName === "_BROADCAST_") {
+                    entry.classList.add("text-center");
+                    entry.innerHTML = `<div class="text-center broadcast-message">${encodedMsg}</div>`;
+                } else if (encodedName === username) {
+                    entry.innerHTML = `<div class="message-avatar pull-right">${encodedName}</div>` +
+                        `<div class="message-content pull-right">${encodedMsg}<div>`;
+                } else {
+                    entry.innerHTML = `<div class="message-avatar pull-left">${encodedName}</div>` +
+                        `<div class="message-content pull-left">${encodedMsg}<div>`;
+                }
+                return entry;
+            }
+
+            function bindConnectionMessage(connection) {
+                var messageCallback = function (name, message) {
+                    if (!message) return;
+                    var encodedName = name;
+                    var encodedMsg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                    var messageEntry = createMessageEntry(encodedName, encodedMsg);
+
+                    var messageBox = document.getElementById('messages');
+                    messageBox.appendChild(messageEntry);
+                    messageBox.scrollTop = messageBox.scrollHeight;
+                };
+                connection.on('broadcastMessage', messageCallback);
+                connection.on('echo', messageCallback);
+                connection.onclose(onConnectionError);
+            }
+
+            function onConnected(connection) {
+                console.log('connection started');
+                connection.send('broadcastMessage', '_SYSTEM_', username + ' JOINED');
+                document.getElementById('sendmessage').addEventListener('click', function (event) {
+                    if (messageInput.value) {
+                        connection.send('broadcastMessage', username, messageInput.value);
+                    }
+
+                    messageInput.value = '';
+                    messageInput.focus();
+                    event.preventDefault();
+                });
+                document.getElementById('message').addEventListener('keypress', function (event) {
+                    if (event.keyCode === 13) {
+                        event.preventDefault();
+                        document.getElementById('sendmessage').click();
+                        return false;
+                    }
+                });
+                document.getElementById('echo').addEventListener('click', function (event) {
+                    connection.send('echo', username, messageInput.value);
+
+                    messageInput.value = '';
+                    messageInput.focus();
+                    event.preventDefault();
+                });
+            }
+
+            function onConnectionError(error) {
+                if (error && error.message) {
+                    console.error(error.message);
+                }
+                var modal = document.getElementById('myModal');
+                modal.classList.add('in');
+                modal.style = 'display: block;';
+            }
+
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl('/chat')
+                .build();
+            bindConnectionMessage(connection);
+            connection.start()
+                .then(() => onConnected(connection))
+                .catch(error => console.error(error.message));
+        });
+    </script>
+</body>
+</html>
+```
 
 Kód v *index.html* volá, `HubConnectionBuilder.build()` aby se provedlo připojení HTTP k prostředku nástroje Azure Signal.
 
@@ -217,14 +333,11 @@ V této části přidáte prostředí pro vývoj pro ASP.NET Core. Další infor
 
     ```json
     {
-        "profiles" : 
-        {
-            "ChatRoom": 
-            {
+        "profiles" : {
+            "ChatRoom": {
                 "commandName": "Project",
                 "launchBrowser": true,
-                "environmentVariables": 
-                {
+                "environmentVariables": {
                     "ASPNETCORE_ENVIRONMENT": "Development"
                 },
                 "applicationUrl": "http://localhost:5000/"
@@ -243,7 +356,7 @@ V této části přidáte prostředí pro vývoj pro ASP.NET Core. Další infor
     dotnet build
     ```
 
-2. Po úspěšném dokončení sestavení spusťte následující příkaz pro místní spuštění webové aplikace:
+1. Po úspěšném dokončení sestavení spusťte následující příkaz pro místní spuštění webové aplikace:
 
     ```dotnetcli
     dotnet run
@@ -252,14 +365,19 @@ V této části přidáte prostředí pro vývoj pro ASP.NET Core. Další infor
     Aplikace bude hostována místně na portu 5000, jak je nakonfigurováno v našem profilu vývojového modulu runtime:
 
     ```output
-    E:\Testing\chattest>dotnet run
-    Hosting environment: Development
-    Content root path: E:\Testing\chattest
-    Now listening on: http://localhost:5000
-    Application started. Press Ctrl+C to shut down.    
+    info: Microsoft.Hosting.Lifetime[0]
+          Now listening on: https://localhost:5001
+    info: Microsoft.Hosting.Lifetime[0]
+          Now listening on: http://localhost:5000
+    info: Microsoft.Hosting.Lifetime[0]
+          Application started. Press Ctrl+C to shut down.
+    info: Microsoft.Hosting.Lifetime[0]
+          Hosting environment: Development
+    info: Microsoft.Hosting.Lifetime[0]
+          Content root path: E:\Testing\chattest
     ```
 
-3. Otevřete dvě okna prohlížeče. V každém prohlížeči přejít na `http://localhost:5000` . Budete vyzváni k zadání jména. Zadejte název klienta pro oba klienty a otestujte obsah zprávy mezi klienty pomocí tlačítka **Odeslat** .
+1. Otevřete dvě okna prohlížeče. V každém prohlížeči přejít na `http://localhost:5000` . Budete vyzváni k zadání jména. Zadejte název klienta pro oba klienty a otestujte obsah zprávy mezi klienty pomocí tlačítka **Odeslat** .
 
     ![Příklad chatu skupiny signalizace v Azure](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 
@@ -273,19 +391,15 @@ Pokud jste hotovi s ukázkovou aplikací pro rychlé zprovoznění, můžete ods
 
 > [!IMPORTANT]
 > Odstranění skupiny prostředků je nevratné a zahrnuje všechny prostředky v této skupině. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky v existující skupině prostředků, která obsahuje prostředky, které chcete zachovat, můžete každý prostředek z jeho okna odstranit jednotlivě, místo aby se odstranila skupina prostředků.
-> 
-> 
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
 
 Do textového pole **filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto rychlém startu se používala skupina prostředků *SignalRTestResources*. Ve vaší skupině prostředků v seznamu výsledků vyberte tři tečky (**...**) > **Odstranit skupinu prostředků**.
 
-   
 ![Výběry pro odstranění skupiny prostředků](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
-
 Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název vaší skupiny prostředků, který chcete potvrdit, a vyberte **Odstranit**.
-   
+
 Po chvíli se skupina prostředků včetně všech prostředků, které obsahuje, odstraní.
 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnetcore)
@@ -298,4 +412,3 @@ V tomto rychlém startu jste vytvořili nový prostředek služby Azure Signal S
 > [Ověřování pomocí služby Azure SignalR](./signalr-concept-authenticate-oauth.md)
 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnetcore)
-

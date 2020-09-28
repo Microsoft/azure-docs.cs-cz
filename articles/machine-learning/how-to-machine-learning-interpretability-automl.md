@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 7cb40df6a4619e11694e65020bfcb560cf695795
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 35bf66549cedba22ec14999c4fea62a2c449416e
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897455"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408011"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Výklad: vysvětlení modelů v automatizovaném strojovém učení (Preview)
 
@@ -33,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Funkce pro vyhodnocení. `pip install azureml-interpret azureml-contrib-interpret`Pro získání potřebných balíčků spusťte.
+- Funkce pro vyhodnocení. `pip install azureml-interpret`Pro získání potřebného balíčku spusťte příkaz.
 - Znalosti o sestavování automatizovaných experimentů ML. Další informace o tom, jak používat sadu Azure Machine Learning SDK, získáte v tomto [kurzu regresní model](tutorial-auto-train-models.md) nebo v tématu Jak [Konfigurovat automatizované experimenty ml](how-to-configure-auto-train.md).
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>Možnost interpretace během školení pro nejlepší model
@@ -53,7 +53,7 @@ Načtěte vysvětlení z `best_run` , který obsahuje vysvětlení pro inženýr
 Můžete použít `ExplanationClient` ke stažení vysvětlivek k funkcím z úložiště artefaktů `best_run` . 
 
 ```python
-from azureml.explain.model._internal.explanation_client import ExplanationClient
+from azureml.interpret import ExplanationClient
 
 client = ExplanationClient.from_run(best_run)
 engineered_explanations = client.download_model_explanation(raw=False)
@@ -99,7 +99,7 @@ K vygenerování vysvětlení pro modely AutoML použijte `MimicWrapper` třídu
 MimicWrapper také převezme `automl_run` objekt, do kterého se nahrají inženýrská vysvětlení.
 
 ```python
-from azureml.explain.model.mimic_wrapper import MimicWrapper
+from azureml.interpret import MimicWrapper
 
 # Initialize the Mimic Explainer
 explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,

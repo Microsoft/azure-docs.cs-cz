@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: Gremlin API s využitím PHP-Azure Cosmos DB'
 description: Tento rychlý start ukazuje, jak použít rozhraní Azure Cosmos DB Gremlin API k vytvoření aplikace pomocí portálu Azure a jazyka PHP.
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2019
-ms.author: lbosq
-ms.openlocfilehash: 4a979fd4b3947be62f77bbd6d7c046c6af78466c
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.author: jasonh
+ms.openlocfilehash: e8848ee0a1fe5755316b59432c465b3836a0bab1
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118280"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409353"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Rychlý Start: vytvoření databáze grafů v Azure Cosmos DB pomocí PHP a Azure Portal
 
@@ -209,8 +209,8 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
     Klíč | Hodnota | Poznámky
     ----|----|----
-    **účet** | ashley | Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
-    **gender (pohlaví)** | female (žena) | 
+    **id** | ashley | Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
+    **pohlaví** | female (žena) | 
     **tech (technologie)** | java | 
 
     > [!NOTE]
@@ -226,8 +226,8 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
     
     Klíč | Hodnota | Poznámky
     ----|----|----
-    **účet** | rakesh | Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
-    **gender (pohlaví)** | male (muž) | 
+    **id** | rakesh | Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
+    **pohlaví** | male (muž) | 
     **school (škola)** | MIT | 
 
 10. Klikněte na **OK**. 

@@ -1,18 +1,18 @@
 ---
 title: Modelování dat grafu pro Azure Cosmos DB rozhraní Gremlin API
 description: Naučte se modelovat databázi grafu pomocí rozhraní Azure Cosmos DB Gremlin API. Tento článek popisuje, kdy použít databázi grafů a osvědčené postupy pro modelování entit a vztahů.
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
-ms.author: lbosq
-ms.openlocfilehash: ea3aab76c8d7eaad46ae1c20f6ddb4547b25b5b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: jasonh
+ms.openlocfilehash: 6526119a8b20a7c60879fe690aefe96159b062a7
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261813"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409761"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modelování dat grafu pro Azure Cosmos DB rozhraní Gremlin API
 

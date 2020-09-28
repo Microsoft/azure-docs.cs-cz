@@ -1,20 +1,20 @@
 ---
 title: Sestavení Node.js aplikace Azure Cosmos DB pomocí rozhraní Gremlin API
 description: Obsahuje ukázku kódu Node.js, kterou můžete použít pro připojení a dotazování databáze Azure Cosmos.
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
-ms.author: lbosq
+ms.author: jasonh
 ms.custom: devx-track-js
-ms.openlocfilehash: 5ad102bd241e9abd85d40e736d131875b0743f63
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c44f7218734af4bc3144137356b85e8845208f6f
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328679"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409370"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Rychlý Start: sestavení aplikace Node.js pomocí účtu rozhraní API Azure Cosmos DB Gremlin
 

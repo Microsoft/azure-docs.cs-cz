@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 3180fa34b85c3ec5f7cb1d2d9da8c2e1b528bd69
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5efcf944f5d22759f9d448da5862bcf1f19e2efe
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855796"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409557"
 ---
 # <a name="what-is-virtual-network-nat"></a>Co je Virtual Network NAT?
 
@@ -32,7 +32,7 @@ Virtual Network NAT (překlad síťových adres) zjednodušuje připojení k Int
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="Virtual Network NAT">
+  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP (PIP) and an IP prefix." width="256" title="Virtual Network NAT">
 </p>
 
 
@@ -51,11 +51,11 @@ Veškerý odchozí provoz pro podsíť se zpracovává automaticky pomocí přek
 
 NAT používá "překlad síťových adres portu" (PNAT nebo PAT) a doporučuje se pro většinu úloh. Dynamické nebo odchylované úlohy je možné snadno přizpůsobit pomocí odchozího toku na vyžádání. Vyhněte se rozsáhlému plánování, předběžnému přidělení a konečnému nadměrnému zajišťování odchozích prostředků. Prostředky portu SNAT jsou sdílené a dostupné ve všech podsítích pomocí konkrétního prostředku brány NAT a v případě potřeby jsou k dispozici.
 
-Veřejná IP adresa připojená k NAT poskytuje až 64 000 souběžných toků pro UDP a TCP. Můžete začít s jednou IP adresou a škálovat až 16 veřejných IP adres.
+Veřejná IP adresa připojená k překladu adres (NAT) poskytuje až 64 000 souběžných toků pro UDP a TCP. Můžete začít s jednou IP adresou a škálovat až 16 IP adres pomocí veřejných IP adres nebo předpon veřejných IP adres nebo obojího.  Prostředek brány NAT bude používat všechny IP adresy přidružené k prostředku pro odchozí připojení ze všech podsítí nakonfigurovaných se stejným prostředkem brány NAT.
 
 Překlad adres (NAT) umožňuje vytvářet toky z virtuální sítě na Internet. Návratový provoz z Internetu je povolený jenom v reakci na aktivní tok.
 
-Na rozdíl od odchozí SNAT nástroje pro vyrovnávání zatížení nemá překlad adres (NAT) žádná omezení, která privátní IP instance virtuálního počítače může vytvořit odchozí připojení.  Sekundární konfigurace IP adresy můžou vytvářet odchozí připojení k Internetu pomocí překladu adres (NAT).
+Na rozdíl od odchozí SNAT nástroje pro vyrovnávání zatížení nemá překlad adres (NAT) žádná omezení, která privátní IP instance virtuálního počítače může vytvořit odchozí připojení.  Primární a sekundární konfigurace IP adres můžou vytvářet odchozí připojení k Internetu pomocí překladu adres (NAT).
 
 ## <a name="coexistence-of-inbound-and-outbound"></a>Koexistence příchozích a odchozích
 

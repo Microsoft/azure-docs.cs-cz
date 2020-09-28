@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: f331c62060b2d8a39a87bab95b00225f363b4a56
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 31733abc945fe7c751f786649fb05b753a7c243d
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400243"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408810"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Monitorování připojení k síti pomocí monitorování připojení (Preview)
 
@@ -34,7 +34,7 @@ Tady jsou některé případy použití pro monitorování připojení (Preview)
 - Vaše hybridní aplikace potřebuje připojení ke koncovému bodu Azure Storage. Vaše místní lokalita a vaše aplikace Azure se připojí ke stejnému koncovému bodu Azure Storage. Chcete porovnat latence místního serveru s latencí aplikace Azure.
 - Chcete kontrolovat konektivitu mezi místními nastaveními a virtuálními počítači Azure, které hostují vaši cloudovou aplikaci.
 
-V této fázi Preview spojuje monitorování připojení nejlepší ze dvou funkcí: funkci [monitorování připojení](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) Network Watcher a funkci [monitorování připojení služby](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity) Network Performance Monitor (npm).
+V této fázi Preview spojuje monitorování připojení nejlepší ze dvou funkcí: funkce [monitorování připojení](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) Network Watcher a monitorování připojení [služby](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity)Network Performance Monitor (npm), [monitorování ExpressRoute](https://docs.microsoft.com/azure/expressroute/how-to-npm)a [monitorování výkonu](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor) .
 
 Zde jsou některé výhody monitorování připojení (Preview):
 
@@ -94,9 +94,8 @@ Zdroji můžou být virtuální počítače Azure nebo místní počítače, kte
 1. Na domovské stránce Azure Portal přejít na **Network Watcher**.
 1. Na levé straně v části **monitorování** vyberte **monitorování připojení (Preview)**.
 1. Zobrazí se všechna monitorování připojení, která byla vytvořena v monitorování připojení (Preview). Chcete-li zobrazit monitory připojení vytvořené v klasickém prostředí monitorování připojení, přejděte na kartu **monitorování připojení** .
-
-    ![Snímek obrazovky zobrazující monitory připojení, které byly vytvořeny v monitorování připojení (Preview)](./media/connection-monitor-2-preview/cm-resource-view.png)
-
+    
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Snímek obrazovky zobrazující monitory připojení, které byly vytvořeny v monitorování připojení (Preview)" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
 
 ### <a name="create-a-connection-monitor"></a>Vytvoření monitorování připojení
 
@@ -156,7 +155,7 @@ Po vytvoření monitorování připojení zdroje kontrolují připojení k cíl�
 
 Na základě protokolu, který jste zvolili v konfiguraci testu, se v monitorování připojení (Preview) spustí série kontrol dvojice zdroj-cíl. Kontroly se spustí podle četnosti testů, kterou jste zvolili.
 
-Pokud používáte protokol HTTP, služba vypočítá počet odpovědí HTTP, které vrátily kód odpovědi. Výsledek určuje procento neúspěšných kontrol. Pro výpočet času RTT služba měří čas mezi voláním HTTP a odpovědí.
+Pokud používáte protokol HTTP, služba vypočítá počet odpovědí HTTP, které vrátily platný kód odpovědi. Platné kódy odpovědí je možné nastavit pomocí PowerShellu a rozhraní příkazového řádku. Výsledek určuje procento neúspěšných kontrol. Pro výpočet času RTT služba měří čas mezi voláním HTTP a odpovědí.
 
 Pokud používáte protokol TCP nebo ICMP, služba vypočítá procento ztrát paketů a určí Procento neúspěšných kontrol. Pokud chcete Vypočítat čas RTT, služba měří dobu trvání přijetí potvrzení (ACK) pro odeslané pakety. Pokud jste povolili traceroute data pro testy sítě, můžete zobrazit ztrátu směrování po směrování a latenci pro vaši místní síť.
 
@@ -166,7 +165,11 @@ Na základě dat, která kontroly vrací, můžou testy obsahovat následující
 
 * **Pass** – skutečné hodnoty pro Procento neúspěšných kontrol a RTT jsou v rámci zadaných prahových hodnot.
 * **Selhání** – skutečné hodnoty pro Procento neúspěšných kontrol nebo RTT překročily zadané prahové hodnoty. Pokud není zadána žádná prahová hodnota, test dosáhne stavu selhání, pokud je procento neúspěšných kontrol 100.
-* **Upozornění** – pro Procento neúspěšných kontrol nebyla zadána žádná kritéria. Při nepřítomnosti zadaných kritérií přiřadí monitor připojení (Preview) automaticky prahovou hodnotu. Při překročení této prahové hodnoty se stav testu změní na upozornění.
+* **Upozornění** – 
+     * Pokud je zadaná prahová hodnota a monitor připojení (Preview) sleduje kontroly, které selhaly procento více než 80% prahové hodnoty, test je označený jako upozornění.
+     * Pokud neexistují zadané prahové hodnoty, monitor připojení (Preview) automaticky přiřadí prahovou hodnotu. Při překročení této prahové hodnoty se stav testu změní na upozornění.Pro dobu odezvy v testech TCP nebo ICMP je prahová hodnota 750msec. Pro kontroly, které selhaly, je prahová hodnota 10%. 
+* **Neurčitelné**   – V pracovním prostoru Log Analytics nejsou žádná data.Kontrolovat metriky. 
+* **Nespuštěno**   – Zakázáno zakázáním testovací skupiny  
 
 ### <a name="data-collection-analysis-and-alerts"></a>Shromažďování, analýza a výstrahy dat
 
@@ -192,77 +195,71 @@ Na řídicím panelu můžete rozbalit každé monitorování připojení a zobr
 
 Seznam můžete filtrovat podle:
 
-* **Filtry nejvyšší úrovně** – vyberte odběry, oblasti, zdroje časových razítek a cílové typy. Viz Box 2 na následujícím obrázku.
-* **Filtry založené na stavu** – filtrujte podle stavu monitorování připojení, testovací skupiny nebo testu. Viz šipka 3 na následujícím obrázku.
-* **Vlastní filtry** – Chcete-li provést Obecné hledání, zvolte **možnost Vybrat vše** . Pokud chcete hledat podle konkrétní entity, vyberte z rozevíracího seznamu. Viz šipka 4 na následujícím obrázku.
+* **Filtry nejvyšší úrovně** – hledání v seznamu podle textu, typu entity (sledování připojení, testovací skupina nebo test) časové razítko a rozsah. Scope zahrnuje odběry, oblasti, zdroje a cílové typy. Viz box 1 na následujícím obrázku.
+* **Filtry založené na stavu** – filtrujte podle stavu monitorování připojení, testovací skupiny nebo testu. Viz Box 2 na následujícím obrázku.
+* **Filtr založený na výstrahách** : filtrování podle výstrah vyvolaných v prostředku monitorování připojení. Viz Box 3 na následujícím obrázku.
 
-![Snímek obrazovky ukazující, jak filtrovat zobrazení monitorování připojení, testovacích skupin a testů v monitorování připojení (Preview)](./media/connection-monitor-2-preview/cm-view.png)
-
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="Snímek obrazovky ukazující, jak filtrovat zobrazení monitorování připojení, testovacích skupin a testů v monitorování připojení (Preview)" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
+    
 Pokud například chcete zobrazit všechny testy v monitorování připojení (Preview), kde je zdrojová IP adresa 10.192.64.56:
 1. Změňte zobrazení na **test**.
 1. Do vyhledávacího pole zadejte *10.192.64.56*
-1. V rozevíracím seznamu vyberte možnost **zdroje**.
+1. V **oblasti** filtr na nejvyšší úrovni vyberte **zdroje**.
 
 Chcete-li zobrazit pouze neúspěšné testy v monitorování připojení (Preview), kde je zdrojová adresa IP 10.192.64.56:
 1. Změňte zobrazení na **test**.
 1. U filtru založeného na stavu vyberte **selhání**.
 1. Do vyhledávacího pole zadejte *10.192.64.56*
-1. V rozevíracím seznamu vyberte možnost **zdroje**.
+1. V **oblasti** filtr na nejvyšší úrovni vyberte **zdroje**.
 
 Chcete-li zobrazit pouze neúspěšné testy v monitorování připojení (Preview), kde je cíl outlook.office365.com:
 1. Změňte zobrazení na **test**.
 1. U filtru založeného na stavu vyberte **selhání**.
 1. Do vyhledávacího pole zadejte *Outlook.office365.com*
-1. V rozevíracím seznamu vyberte **cílová místa**.
+1. V **oblasti** filtr na nejvyšší úrovni vyberte **cílová místa**.
+  
+  :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="Snímek obrazovky znázorňující zobrazení, které se filtruje tak, aby se zobrazily jenom neúspěšné testy pro cíl Outlook.Office365.com" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
 
-   ![Snímek obrazovky znázorňující zobrazení, které se filtruje tak, aby se zobrazily jenom neúspěšné testy pro cíl Outlook.Office365.com](./media/connection-monitor-2-preview/tests-view.png)
-
+Chcete-li zjistit příčinu selhání monitorování připojení nebo skupiny testů nebo testu, klikněte na sloupec s názvem důvod.  Tím se dozvíte, jaká prahová hodnota (kontroly, které selhaly% nebo RTT), se porušila a související diagnostické zprávy.
+  
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-reason-of-failure.png" alt-text="Snímek obrazovky znázorňující důvod selhání pro monitorování připojení, test nebo testovací skupinu" lightbox="./media/connection-monitor-2-preview/cm-reason-of-failure.png":::
+    
 Zobrazení trendů v RTT a Procento neúspěšných kontrol pro monitorování připojení:
-1. Vyberte monitorování připojení, které chcete prozkoumat. Ve výchozím nastavení jsou data monitorování uspořádána podle testovací skupiny.
+1. Vyberte monitorování připojení, které chcete prozkoumat.
 
-   ![Snímek obrazovky zobrazující metriky pro monitorování připojení zobrazené skupinou testů](./media/connection-monitor-2-preview/cm-drill-landing.png)
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing.png" alt-text="Snímek obrazovky zobrazující metriky pro monitorování připojení zobrazené skupinou testů" lightbox="./media/connection-monitor-2-preview/cm-drill-landing.png":::
 
-1. Vyberte testovací skupinu, kterou chcete prozkoumat.
+1. Zobrazí se následující oddíly.  
+    1. Essentials – vlastnosti pro vybrané monitorování připojení pro konkrétní prostředek 
+    1. Shrnut 
+        1. Agregované spojnice trendů pro čas RTT a Procento neúspěšných kontrol pro všechny testy v monitorování připojení. Můžete nastavit určitý čas pro zobrazení podrobností.
+        1. Prvních 5 napříč testovacími skupinami, zdroji a cíli na základě času RTT nebo procenta neúspěšných kontrol. 
+    1. Karty pro testovací skupiny, zdroje, cíle a konfigurace testu – seznam testovacích skupin, zdrojů nebo cílů v monitorování připojení. Kontrola testů se nezdařila, agregovaná doba RTT a kontrola neúspěšných% hodnot.  Můžete se také vrátit v čase a zobrazit data. 
+    1. Problémy – problémy úrovně směrování pro každý test v monitorování připojení. 
 
-   ![Snímek obrazovky znázorňující, kde vybrat testovací skupinu](./media/connection-monitor-2-preview/cm-drill-select-tg.png)
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing-2.png" alt-text="Snímek obrazovky zobrazující metriky pro monitorování připojení zobrazené skupinou testů část 2" lightbox="./media/connection-monitor-2-preview/cm-drill-landing-2.png":::
 
-    V závislosti na času RTT nebo procentu neúspěšných kontrol se zobrazí vaše testovací skupina s pěti nejoblíbenějšími neúspěšnými testy. Pro každý test vidíte řádky čas a trend pro Procento neúspěšných kontrol.
-1. Vyberte test ze seznamu nebo zvolte jiný test, který chcete prozkoumat. Pro váš časový interval a Procento neúspěšných kontrol vidíte prahovou a skutečnou hodnotu. Pro čas RTT vidíte hodnoty pro mezní hodnotu, průměr, minimum a maximum.
+1. Můžeš
+    * Klikněte na Zobrazit všechny testy – pro zobrazení všech testů v monitorování připojení.
+    * Klikněte na Zobrazit všechny testovací skupiny, konfigurace testu, zdroje a cíle – pro zobrazení podrobností specifických pro každou z nich. 
+    * Vyberte testovací skupinu, konfiguraci testu, zdroj nebo cíl – Chcete-li zobrazit všechny testy v entitě.
 
-   ![Snímek obrazovky znázorňující výsledky testu RTT a Procento neúspěšných kontrol](./media/connection-monitor-2-preview/cm-drill-charts.png)
-
-1. Změňte časový interval pro zobrazení více dat.
-1. Změňte zobrazení tak, aby se zobrazily zdroje, cíle nebo konfigurace testu. 
-1. Vyberte zdroj založený na neúspěšných testech a prozkoumejte pět neúspěšných testů. Můžete například vybrat **zobrazení podle**  >  **zdrojů** a **Zobrazit podle**  >  **umístění** a prozkoumat příslušné testy v monitorování připojení.
-
-   ![Snímek obrazovky znázorňující metriky výkonu pro pět prvních neúspěšných testů](./media/connection-monitor-2-preview/cm-drill-select-source.png)
+1. V zobrazení všechny testy můžete:
+    * Vyberte testy a klikněte na porovnat.
+    
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-compare-test.png" alt-text="Snímek obrazovky znázorňující porovnání dvou testů" lightbox="./media/connection-monitor-2-preview/cm-compare-test.png":::
+    
+    * Pomocí clusteru rozbalíte složené prostředky, jako jsou virtuální sítě, podsítě do jejích podřízených prostředků.
+    * Kliknutím na topologie Zobrazte topologii pro všechny testy.
 
 Chcete-li zobrazit trendy v času RTT a Procento neúspěšných kontrol pro skupinu testů:
-
 1. Vyberte testovací skupinu, kterou chcete prozkoumat. 
-
-    Ve výchozím nastavení jsou data monitorování uspořádána podle zdrojů, cílů a konfigurací testování (testy). Později můžete změnit zobrazení z testovacích skupin na zdroje, cíle nebo konfigurace testu. Pak vyberte entitu, kterou chcete prozkoumat pět prvních neúspěšných testů. Můžete například změnit zobrazení na zdroje a cíle a prozkoumat příslušné testy ve vybraném monitorování připojení.
-1. Vyberte test, který chcete prozkoumat.
-
-   ![Snímek obrazovky znázorňující, kde vybrat test](./media/connection-monitor-2-preview/tg-drill.png)
-
-    Pro váš časový interval a pro Procento neúspěšných kontrol vidíte prahové hodnoty a skutečné hodnoty. Pro čas RTT vidíte hodnoty pro hodnotu prahová hodnota, průměr, minimum a maximum. Také se zobrazí aktivované výstrahy pro vybraný test.
-1. Změňte časový interval pro zobrazení více dat.
+1. Zobrazí se podobné monitorování připojení – základy, souhrn, tabulka pro testovací skupiny, zdroje, cíle a konfigurace testů. Procházejte stejným způsobem jako u monitorování připojení
 
 Zobrazení trendů v RTT a Procento neúspěšných kontrol testu:
-1. Vyberte zdroj, cíl a konfiguraci testu, které chcete prozkoumat.
+1. Vyberte test, který chcete prozkoumat. Zobrazí se topologie sítě a koncové grafy trendu pro kontroly, které selhaly% a čas odezvy. Zjištěné problémy zobrazíte tak, že v topologii vyberete jakékoli směrování v cestě. (Tyto segmenty jsou prostředky Azure.) Tato funkce není aktuálně k dispozici pro místní sítě.
 
-    Pro váš časový interval a Procento neúspěšných kontrol vidíte prahové hodnoty a skutečné hodnoty. Pro čas RTT vidíte hodnoty pro hodnotu prahová hodnota, průměr, minimum a maximum. Také se zobrazí aktivované výstrahy pro vybraný test.
-
-   ![Snímek obrazovky zobrazující metriky pro test](./media/connection-monitor-2-preview/test-drill.png)
-
-1. Chcete-li zobrazit topologii sítě, vyberte možnost **topologie**.
-
-   ![Snímek obrazovky znázorňující kartu síťová topologie](./media/connection-monitor-2-preview/test-topo.png)
-
-1. Zjištěné problémy zobrazíte tak, že v topologii vyberete jakékoli směrování v cestě. (Tyto segmenty jsou prostředky Azure.) Tato funkce není aktuálně k dispozici pro místní sítě.
-
-   ![Snímek obrazovky znázorňující vybraný odkaz na směrování na kartě topologie](./media/connection-monitor-2-preview/test-topo-hop.png)
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-test-topology.png" alt-text="Snímek obrazovky s zobrazením topologie testu" lightbox="./media/connection-monitor-2-preview/cm-test-topology.png":::
 
 #### <a name="log-queries-in-log-analytics"></a>Dotazy protokolu v Log Analytics
 
@@ -272,35 +269,38 @@ Pomocí Log Analytics můžete vytvořit vlastní zobrazení dat monitorování.
 
 Ve sledováních připojení, které byly vytvořeny před zobrazením připojení (Preview), jsou k dispozici všechny čtyři metriky:% PROBE selhaly, AverageRoundtripMs, ChecksFailedPercent (Preview) a RoundTripTimeMs (Preview). V zobrazeních připojení, která byla vytvořena v prostředí monitorování připojení (Preview), jsou data k dispozici pouze pro metriky, které jsou označeny pomocí *(Preview)*.
 
-![Snímek obrazovky zobrazující metriky v monitorování připojení (Preview)](./media/connection-monitor-2-preview/monitor-metrics.png)
+  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="Snímek obrazovky zobrazující metriky v monitorování připojení (Preview)" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
 Když použijete metriky, nastavte typ prostředku jako Microsoft. Network/networkWatchers/connectionMonitors.
 
-| Metrika | Zobrazované jméno | Jednotka | Typ agregace | Description | Dimenze |
+| Metrika | Zobrazované jméno | Jednotka | Typ agregace | Popis | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % PROBE selhalo | Procento | Průměr | Procento sond monitorování připojení selhalo. | Žádné dimenze |
 | AverageRoundtripMs | Průměrná doba odezvy (MS) | Milisekund | Průměr | Průměrná doba odezvy sítě pro testy monitorování připojení odesílané mezi zdrojem a cílem |             Žádné dimenze |
-| ChecksFailedPercent (Preview) | % Kontroly selhaly (Preview) | Procento | Průměr | Procento neúspěšných kontrol testu | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Parametr sourceresourceid <br>SourceType <br>Protokol <br>DestinationAddress <br>Cílový. <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
-| RoundTripTimeMs (Preview) | Doba odezvy (MS) (Preview) | Milisekund | Průměr | Čas RTT pro kontroly odeslané mezi zdrojem a cílem. Tato hodnota není průměrná. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Parametr sourceresourceid <br>SourceType <br>Protokol <br>DestinationAddress <br>Cílový. <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| ChecksFailedPercent (Preview) | % Kontroly selhaly (Preview) | Procento | Průměr | Procento neúspěšných kontrol testu | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Parametr sourceresourceid <br>SourceType <br>Protokol <br>DestinationAddress <br>Cílový. <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region (Oblast) |
+| RoundTripTimeMs (Preview) | Doba odezvy (MS) (Preview) | Milisekund | Průměr | Čas RTT pro kontroly odeslané mezi zdrojem a cílem. Tato hodnota není průměrná. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Parametr sourceresourceid <br>SourceType <br>Protokol <br>DestinationAddress <br>Cílový. <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region (Oblast) |
 
-#### <a name="metric-alerts-in-azure-monitor"></a>Výstrahy metriky v Azure Monitor
+#### <a name="metric-based-alerts-for-connection-monitor"></a>Výstrahy založené na metrikách pro monitorování připojení
 
-Chcete-li vytvořit výstrahu v Azure Monitor:
+Výstrahy metriky můžete pro monitorování připojení vytvořit pomocí níže uvedených metod. 
 
-1. Vyberte prostředek sledování připojení, který jste vytvořili v části monitorování připojení (Preview).
-1. Zajistěte, aby se **metrika** zobrazila jako typ signálu pro monitorování připojení.
-1. V části **Přidat podmínku**pro **Název signálu**vyberte **ChecksFailedPercent (Preview)** nebo **RoundTripTimeMs (Preview)**.
-1. Jako **typ signálu**vyberte **metriky**. Vyberte například **ChecksFailedPercent (Preview)**.
-1. V seznamu jsou uvedeny všechny dimenze metriky. Vyberte název dimenze a hodnotu dimenze. Vyberte například možnost **zdrojová adresa** a poté zadejte IP adresu libovolného zdroje v monitoru připojení.
-1. V **logice výstrahy**zadejte následující podrobnosti:
-   * **Typ podmínky**: **static**.
-   * **Podmínka** a **prahová hodnota**.
-   * **Členitost agregace a frekvence hodnocení**: monitorování připojení (Preview) aktualizuje data každou minutu.
-1. V **Možnosti akce**vyberte skupinu akcí.
-1. Zadejte podrobnosti výstrahy.
-1. Vytvořte pravidlo výstrahy.
+1. V monitorování připojení (Preview) během vytváření monitorování připojení [pomocí Azure Portal](connection-monitor-preview-create-using-portal.md#) 
+1. Z monitorování připojení (Preview) pomocí příkazu konfigurovat výstrahy na řídicím panelu 
+1. Z Azure Monitor – Chcete-li vytvořit výstrahu v Azure Monitor: 
+    1. Vyberte prostředek sledování připojení, který jste vytvořili v části monitorování připojení (Preview).
+    1. Zajistěte, aby se **metrika** zobrazila jako typ signálu pro monitorování připojení.
+    1. V části **Přidat podmínku**pro **Název signálu**vyberte **ChecksFailedPercent (Preview)** nebo **RoundTripTimeMs (Preview)**.
+    1. Jako **typ signálu**vyberte **metriky**. Vyberte například **ChecksFailedPercent (Preview)**.
+    1. V seznamu jsou uvedeny všechny dimenze metriky. Vyberte název dimenze a hodnotu dimenze. Vyberte například možnost **zdrojová adresa** a poté zadejte IP adresu libovolného zdroje v monitoru připojení.
+    1. V **logice výstrahy**zadejte následující podrobnosti:
+        * **Typ podmínky**: **static**.
+        * **Podmínka** a **prahová hodnota**.
+        * **Členitost agregace a frekvence hodnocení**: monitorování připojení (Preview) aktualizuje data každou minutu.
+    1. V **Možnosti akce**vyberte skupinu akcí.
+    1. Zadejte podrobnosti výstrahy.
+    1. Vytvořte pravidlo výstrahy.
 
-   ![Snímek obrazovky znázorňující oblast vytvořit pravidlo v Azure Monitor; Je zvýrazněna zdrojová adresa a název zdrojového koncového bodu.](./media/connection-monitor-2-preview/mdm-alerts.jpg)
+  :::image type="content" source="./media/connection-monitor-2-preview/mdm-alerts.jpg" alt-text="Snímek obrazovky znázorňující oblast vytvořit pravidlo v Azure Monitor. Je zvýrazněna zdrojová adresa a název zdrojového koncového bodu." lightbox="./media/connection-monitor-2-preview/mdm-alerts.jpg":::
 
 ## <a name="diagnose-issues-in-your-network"></a>Diagnostikujte problémy ve vaší síti
 
@@ -347,3 +347,8 @@ Pro sítě, jejichž zdroje jsou virtuálními počítači Azure, se dají zjist
 * Provoz se zastavil kvůli systémovým trasám nebo UDR.
 * Protokol BGP není v připojení brány povolen.
 * Sonda DIP je mimo provoz nástroje pro vyrovnávání zatížení.
+
+## <a name="next-steps"></a>Další kroky
+    
+   * Zjistěte [, jak vytvořit monitorování připojení (Preview) pomocí Azure Portal](connection-monitor-preview-create-using-portal.md)  
+   * Informace [o tom, jak vytvořit monitorování připojení (Preview) pomocí ARMClient](connection-monitor-preview-create-using-arm-client.md)  

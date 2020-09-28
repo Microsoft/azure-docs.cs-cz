@@ -1,20 +1,20 @@
 ---
 title: Použití knihovny .NET hromadně prováděcího modulu graphu s rozhraním API Azure Cosmos DB Gremlin
 description: Naučte se používat knihovnu hromadných prováděcích modulů k hromadnému importu dat grafu do Azure Cosmos DB kontejneru rozhraní API Gremlin.
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 05/28/2019
-ms.author: lbosq
+ms.author: jasonh
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6fd81a844832fbe6ad7410ec786baa431ca9930c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: dbb2ce5c7765e9b2784e5a60f94919b3ee855a39
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004098"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408060"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Použití knihovny .NET Bulk prováděče k provádění hromadných operací v rozhraní Azure Cosmos DB API Gremlin
 
@@ -114,7 +114,7 @@ e.AddProperty("customProperty", "value");
 
 ## <a name="sample-application"></a>Ukázková aplikace
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 * Visual Studio 2019 s úlohou vývoje Azure. Můžete začít pracovat se sadou [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) zdarma.
 * Předplatné Azure. [Tady si můžete vytvořit bezplatný účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Případně můžete vytvořit účet databáze Cosmos s možností vyzkoušet si [Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure.
 * Databáze rozhraní Gremlin API služby Azure Cosmos DB s **neomezenou kolekcí**. Tato příručka ukazuje, jak začít s rozhraním [Gremlin API služby Azure Cosmos DB v .NET](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet).

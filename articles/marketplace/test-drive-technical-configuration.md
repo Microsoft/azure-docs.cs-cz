@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 9ba3d25a07e4d6c32bd14c315018f0d008032b73
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7d22226721d4fc09b4f5affc15047b6799ed0d19
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250483"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409472"
 ---
 # <a name="test-drive-technical-configuration"></a>Technická konfigurace testovací verze
 
@@ -30,7 +30,7 @@ Společnost Microsoft může odebrat složitost nastavení testovacích jednotek
 
 - **Maximální počet souběžných testovacích jednotek** (požadováno) – nastaví maximální počet zákazníků, kteří můžou použít testovací jednotku najednou. Každý souběžný uživatel bude používat licenci Dynamics 365, zatímco je testovací jednotka aktivní, takže je nutné mít k dispozici dostatek licencí, aby podporovaly maximální nastavený limit. Doporučená hodnota je 3-5.
 
-- **Doba trvání testovacích jednotek** (požadováno) – zadejte počet hodin, po který bude testovací jednotka aktivní. Po uplynutí této doby bude relace končit a už nebude spotřebovávat jednu z vašich licencí. V závislosti na složitosti vaší nabídky doporučujeme hodnotu 2-24 hodin. Tato doba může být nastavena pouze na celé hodiny (například "2" hodiny jsou platné; "1,5" není). Uživatel může požádat o novou relaci, pokud dojde k nedostatku času a chcete znovu získat přístup k testovací jednotce.
+- **Doba trvání testovacích jednotek** (požadováno) – zadejte počet hodin, po který bude testovací jednotka aktivní (nejméně jedna hodina). Po uplynutí této doby bude relace končit a už nebude spotřebovávat jednu z vašich licencí. V závislosti na složitosti vaší nabídky doporučujeme hodnotu 2-24 hodin. Tato doba může být nastavena pouze na celé hodiny (například "2" hodiny jsou platné; "1,5" není). Uživatel může požádat o novou relaci, pokud dojde k nedostatku času a chcete znovu získat přístup k testovací jednotce.
 
 - **Adresa URL instance** (požadováno) – adresa URL, na které zákazník zahájí svoji zkušební verzi. Obvykle adresa URL vaší instance Dynamics 365 spouští vaši aplikaci s nainstalovanou ukázkovou daty (například `https://testdrive.crm.dynamics.com` ).
 
@@ -48,7 +48,7 @@ Tento typ testovacích jednotek není hostitelem společnosti Microsoft. Použij
 
 - **Maximální počet souběžných testovacích jednotek** (požadováno) – nastaví maximální počet zákazníků, kteří můžou použít testovací jednotku najednou. Tyto testovací jednotky jsou už nasazené a umožňují zákazníkům okamžitý přístup k nim bez čekání na nasazení.
 
-- **Doba trvání testovacího disku** (požadováno) – zadejte dobu, po kterou bude testovací jednotka aktivní, v počtu hodin. Testovací jednotka se po skončení tohoto časového období ukončí automaticky.
+- **Doba trvání testovacích jednotek** (požadováno) – zadejte počet hodin, po který bude testovací jednotka aktivní (nejméně jedna hodina). Testovací jednotka se po skončení tohoto časového období ukončí automaticky.
 
 - **Název skupiny prostředků Azure** (požadováno) – zadejte název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md#resource-groups), kde se vaše testovací jednotka aplikace logiky uloží.
 

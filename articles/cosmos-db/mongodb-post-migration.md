@@ -1,22 +1,22 @@
 ---
 title: Kroky optimalizace po migraci s rozhraním API Azure Cosmos DB pro MongoDB
 description: Tento dokument poskytuje techniky optimalizace po migraci z MongoDB k rozhraní APi pro Azure Cosmos DB pro Mongo DB.
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
-ms.author: lbosq
-ms.openlocfilehash: 93a9058dec66ffe2e1c7ad4b15d9bf4eba12c647
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.author: jasonh
+ms.openlocfilehash: f21aa30de2b2dfcf85e45c7ed4d5c485fe45eed7
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358521"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409693"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Kroky optimalizace po migraci při použití rozhraní API Azure Cosmos DB pro MongoDB
 
-Po migraci dat uložených v databázi MongoDB Azure Cosmos DB k rozhraní API pro MongoDB se můžete připojit k Azure Cosmos DB a spravovat data. Tento průvodce popisuje kroky, které byste měli zvážit po dokončení migrace. Postup migrace najdete v [kurzu migrace MongoDB Azure Cosmos DB do rozhraní API pro MongoDB](../dms/tutorial-mongodb-cosmos-db.md) .
+Po migraci dat uložených v databázi MongoDB do rozhraní API služby Azure Cosmos DB pro MongoDB se můžete připojit ke službě Azure Cosmos DB a spravovat tato data. Tento průvodce uvádí kroky, které byste po migraci měli zvážit. Postup migrace najdete v [kurzu migrace MongoDB Azure Cosmos DB do rozhraní API pro MongoDB](../dms/tutorial-mongodb-cosmos-db.md) .
 
 V tomto průvodci se naučíte:
 

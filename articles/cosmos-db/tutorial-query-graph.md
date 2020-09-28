@@ -1,20 +1,20 @@
 ---
 title: Jak provádět dotazy na data grafu ve službě Azure Cosmos DB?
 description: Naučte se, jak zadávat dotazy na data grafu z Azure Cosmos DB pomocí dotazů Gremlin.
-author: luisbosquez
-ms.author: lbosq
+author: jasonwhowell
+ms.author: jasonh
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f699f6ace6989cec7c3050e7c0bd050f3b84c3c6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f5d3542527f73d4a172e26a0d9222eaa077523c3
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019483"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409455"
 ---
 # <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>Kurz: Dotazování rozhraní Gremlin API služby Azure Cosmos DB pomocí Gremlin
 
@@ -25,7 +25,7 @@ Tento článek se zabývá následujícími úkony:
 > [!div class="checklist"]
 > * Dotazování dat pomocí Gremlin
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Aby tyto dotazy fungovaly, musíte mít účet služby Azure Cosmos DB a data grafu v kontejneru. Něco z toho nemáte? Vytvořte účet a naplňte databázi dokončením [5minutového rychlého startu](create-graph-dotnet.md) nebo [kurzu pro vývojáře](tutorial-query-graph.md). Následující dotazy můžete spustit pomocí [konzoly Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) nebo oblíbeného ovladače Gremlin.
 

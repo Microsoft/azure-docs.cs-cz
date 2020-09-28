@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 09/28/2020
 ms.author: victorh
-ms.openlocfilehash: eb7cf1899b24ed225941f0a02040206504e6486b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16e128fd61c8b0aeae017e5298ae1d8aed6e97e9
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095577"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408503"
 ---
 # <a name="azure-firewall-features"></a>Funkce Azure Firewallu
 
@@ -24,7 +24,7 @@ Azure Firewall obsahuje následující funkce:
 
 - [Integrovaná vysoká dostupnost](#built-in-high-availability)
 - [Zóny dostupnosti](#availability-zones)
-- [Neomezená cloudová škálovatelnost](#unrestricted-cloud-scalability)
+- [Neomezená škálovatelnost cloudu](#unrestricted-cloud-scalability)
 - [Pravidla filtrování plně kvalifikovaných názvů domén aplikací](#application-fqdn-filtering-rules)
 - [Pravidla filtrování síťového provozu](#network-traffic-filtering-rules)
 - [Značky plně kvalifikovaných názvů domén](#fqdn-tags)
@@ -62,11 +62,11 @@ Bránu Azure Firewall můžete vertikálně škálovat tak, jak to vyžadují zm
 
 ## <a name="application-fqdn-filtering-rules"></a>Pravidla filtrování plně kvalifikovaných názvů domén aplikací
 
-Můžete omezit odchozí provoz HTTP/S nebo Azure SQL provoz (Preview) na zadaný seznam plně kvalifikovaných názvů domény (FQDN), včetně zástupných karet. Tato funkce nevyžaduje ukončení protokolu TLS.
+Odchozí provoz HTTP/S můžete omezit nebo provoz Azure SQL na zadaný seznam plně kvalifikovaných názvů domény (FQDN), včetně zástupných karet. Tato funkce nevyžaduje ukončení protokolu TLS.
 
 ## <a name="network-traffic-filtering-rules"></a>Pravidla filtrování síťového provozu
 
-Můžete centrálně vytvořit pravidla pro *povolení* nebo *blokování* podle zdrojové a cílové IP adresy, portu a protokolu. Brána Azure Firewall je plně stavová, takže dokáže odlišit legitimní pakety pro různé typy spojení. Pravidla jsou vynucována a protokolována napříč různými předplatnými a virtuálními sítěmi.
+Můžete centrálně *vytvořit pravidla* *filtrování sítě pomocí* zdrojové a cílové IP adresy, portu a protokolu. Brána Azure Firewall je plně stavová, takže dokáže odlišit legitimní pakety pro různé typy spojení. Pravidla jsou vynucována a protokolována napříč různými předplatnými a virtuálními sítěmi.
 
 ## <a name="fqdn-tags"></a>Značky plně kvalifikovaných názvů domén
 
@@ -78,7 +78,7 @@ Můžete centrálně vytvořit pravidla pro *povolení* nebo *blokování* podle
 
 ## <a name="threat-intelligence"></a>Analýza hrozeb
 
-Filtrování na základě [logiky hrozeb](threat-intel.md)lze povolit pro bránu firewall pro upozornění a zamítnutí provozu z/do známých škodlivých IP adres a domén. IP adresy a domény se naúčtují z informačního kanálu Microsoft Threat Intelligence.
+Filtrování na základě [logiky hrozeb](threat-intel.md)lze povolit pro bránu firewall pro upozornění a zamítnutí provozu z/do známých škodlivých IP adres a domén. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu.
 
 ## <a name="outbound-snat-support"></a>Podpora pro odchozí SNAT
 
@@ -96,8 +96,8 @@ Pomocí brány firewall můžete přidružit [několik veřejných IP adres](dep
 
 To umožňuje následující scénáře:
 
-- **DNAT** – můžete přeložit několik standardních instancí portů na servery back-end. Pokud máte například dvě veřejné IP adresy, můžete přeložit TCP port 3389 (RDP) na obě IP adresy.
-- **SNAT** – pro odchozí připojení SNAT jsou k dispozici další porty, což snižuje potenciál vyčerpání portů SNAT. V tuto chvíli Azure Firewall náhodně vybere zdrojovou veřejnou IP adresu, která se má použít pro připojení. Pokud máte v síti filtrování pro příjem dat, je potřeba, abyste povolili všechny veřejné IP adresy přidružené k bráně firewall. Pro zjednodušení této konfigurace zvažte použití [předpony veřejných IP adres](../virtual-network/public-ip-address-prefix.md) .
+- **DNAT** – můžete přeložit několik standardních instancí portů na servery back-end. Například pokud máte dvě veřejné IP adresy, můžete pro obě IP adresy překládat port TCP 3389 (RDP).
+- **SNAT** – pro odchozí připojení SNAT jsou k dispozici další porty, což snižuje potenciál vyčerpání portů SNAT. V tuto chvíli Azure Firewall náhodně vybere zdrojovou veřejnou IP adresu, která se má použít pro připojení. Pokud ve své síti využíváte následné filtrování, musíte povolit všechny veřejné IP adresy přidružené k vaší bráně firewall. Pro zjednodušení této konfigurace zvažte použití [předpony veřejných IP adres](../virtual-network/public-ip-address-prefix.md) .
 
 ## <a name="azure-monitor-logging"></a>Protokolování Azure Monitor
 

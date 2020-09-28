@@ -1,5 +1,5 @@
 ---
-title: Distribuované transakce v cloudových databázích
+title: Distribuované transakce v cloudových databázích (Preview)
 description: Přehled transakcí Elastic Database s Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 5c94234644fcefb70a40ba0b2c21e6e205be0e65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60f6863bbe051338308c30e22c6969d84670dc64
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829410"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409727"
 ---
-# <a name="distributed-transactions-across-cloud-databases"></a>Distribuované transakce v cloudových databázích
+# <a name="distributed-transactions-across-cloud-databases-preview"></a>Distribuované transakce v cloudových databázích (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Transakce elastické databáze pro Azure SQL Database umožňují spouštět transakce, které jsou rozloženy na více databází v SQL Database. Transakce elastické databáze pro SQL Database jsou k dispozici pro aplikace .NET s využitím rozhraní ADO .NET a jsou integrovány se známým programovacím prostředím pomocí tříd [System. Transactions](https://msdn.microsoft.com/library/system.transactions.aspx) . Pokud chcete získat knihovnu, přečtěte si téma [.NET Framework 4.6.1 (Webová instalační služba)](https://www.microsoft.com/download/details.aspx?id=49981).
+Transakce elastické databáze pro Azure SQL Database umožňují spouštět transakce, které jsou rozloženy na více databází v SQL Database. Transakce elastické databáze pro SQL Database jsou k dispozici pro aplikace .NET s využitím ADO.NET a integrují se se známým programovacím prostředím pomocí tříd [System. Transactions](https://msdn.microsoft.com/library/system.transactions.aspx) . Pokud chcete získat knihovnu, přečtěte si téma [.NET Framework 4.6.1 (Webová instalační služba)](https://www.microsoft.com/download/details.aspx?id=49981).
 
 V místním prostředí takový scénář obvykle vyžaduje spuštění Microsoft DTC (Distributed Transaction Coordinator) (MSDTC). Vzhledem k tomu, že Služba MSDTC není k dispozici pro aplikaci typu platforma jako služba v Azure, možnost koordinace distribuovaných transakcí je teď přímo integrovaná do SQL Database. Aplikace se mohou připojit k libovolné databázi v SQL Database spustit distribuované transakce a jedna z databází bude transparentně koordinovat distribuovanou transakci, jak je znázorněno na následujícím obrázku.
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: d892d04eddb572ab644693503e454e9f00e0b39c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 82d9c143f84dfced639c928bf12693024079c2ba
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281085"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409489"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Rychlý Start: nasazení virtuálního počítače s důvěrnými výpočetními prostředími Azure na webu Marketplace
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. V horní části zadejte do panelu hledání **důvěrné výpočetní prostředí Azure** .
 
@@ -124,7 +124,7 @@ Další informace o připojení k virtuálním počítačům s Linuxem najdete v
 > [!NOTE]
 > Pokud se zobrazí výstraha zabezpečení výstupů na klíč hostitele serveru, který není uložen do mezipaměti v registru, vyberte z následujících možností. Pokud tomuto hostiteli důvěřujete, vyberte **Ano** a přidejte klíč do mezipaměti pro výstup a pokračujte v připojování. Chcete-li provést připojení pouze jednou, aniž byste museli přidat klíč do mezipaměti, vyberte možnost **ne**. Pokud tomuto hostiteli nedůvěřujete, vyberte **Zrušit** , aby se připojení zrušilo.
 
-## <a name="install-the-open-enclave-sdk-oe-sdk"></a>Instalace Open enklávy SDK (OE SDK)<a id="Install"></a>
+## <a name="install-the-open-enclave-sdk-oe-sdk"></a>Instalace Open enklávy SDK (OE SDK) <a id="Install"></a>
 
 Postupujte podle podrobných pokynů k instalaci sady [OE SDK](https://github.com/openenclave/openenclave) na virtuálním počítači s DCsv2-Series s Ubuntu 18,04 LTS Gen 2. 
 
@@ -179,9 +179,7 @@ Vyberte skupinu prostředků pro virtuální počítač a pak vyberte **Odstrani
 
 V tomto rychlém startu jste nasadili důvěrný výpočetní virtuální počítač a nainstalovali jste Open enklávy SDK. Další informace o důvěrných výpočetních virtuálních počítačích v Azure najdete v tématu [řešení na Virtual Machines](virtual-machine-solutions.md). 
 
-Pokud jste nasadili virtuální počítač s Windows, přečtěte si, jak vytvářet aplikace s [ukázkami OE SDK pro Windows](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md) na GitHubu. 
-
-Zjistěte, jak můžete vytvářet důvěrné výpočetní aplikace na platformě Linux tím, že budete pokračovat s otevřenými ukázkami sady enklávy SDK Linux na GitHubu. 
+Zjistěte, jak můžete vytvářet důvěrné výpočetní aplikace, a to tak, že budete pokračovat na otevřené ukázky sady enklávy SDK na GitHubu. 
 
 > [!div class="nextstepaction"]
-> [Sestavování otevřených ukázek sady enklávy SDK v systému Linux](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)
+> [Sestavování otevřených ukázek sady enklávy SDK](https://github.com/openenclave/openenclave/blob/master/samples/README.md)

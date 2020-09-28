@@ -1,5 +1,5 @@
 ---
-title: Dotazování SQL Database pomocí Editoru dotazů v Azure Portal
+title: Dotazování SQL Database pomocí Editoru dotazů v Azure Portal (Preview)
 description: Naučte se používat Editor dotazů ke spouštění dotazů jazyka Transact-SQL (T-SQL) pro databázi v Azure SQL Database.
 titleSuffix: Azure SQL Database
 keywords: připojení k SQL Database, dotazování SQL Database, Azure Portal, Portal, Editor dotazů
@@ -13,14 +13,14 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: sstein
 ms.date: 05/29/2020
-ms.openlocfilehash: 2b6a54c25430cd2c1e68c42571f0f9039449ce96
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4eb02c65a8ce486ea152863d8b6c6d0600280893
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335088"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409578"
 ---
-# <a name="quickstart-use-the-azure-portals-query-editor-to-query-an-azure-sql-database"></a>Rychlý Start: použití Editoru dotazů Azure Portal k dotazování Azure SQL Database
+# <a name="quickstart-use-the-azure-portals-query-editor-preview-to-query-an-azure-sql-database"></a>Rychlý Start: použití Editoru dotazů Azure Portal (Preview) k dotazování na Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Editor dotazů je nástroj v Azure Portal pro spouštění dotazů SQL pro vaši databázi v Azure SQL Database nebo datového skladu ve službě Azure synapse Analytics. 

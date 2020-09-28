@@ -2,20 +2,20 @@
 title: Kurz – vytvoření šablony & nasazení
 description: Vytvořte svou první šablonu Azure Resource Manager. V tomto kurzu se dozvíte o syntaxi souboru šablony a o tom, jak nasadit účet úložiště.
 author: mumian
-ms.date: 06/10/2020
+ms.date: 09/28/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 124df19287062a7fc8a6b9cf8b9d32eb3863b581
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 6eb2cf792eb5a458bff8508bc21e1e0690e2e1f3
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069233"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409212"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Kurz: vytvoření a nasazení první šablony ARM
 
-V tomto kurzu se seznámíte s Azure Resource Manager (ARM) šablonou. Ukazuje, jak vytvořit úvodní šablonu a jak ji nasadit do Azure. Seznámíte se se strukturou šablony a nástroji, které budete potřebovat pro práci se šablonami. Dokončení tohoto kurzu trvá přibližně **12 minut** , ale skutečný čas se bude lišit podle toho, kolik nástrojů potřebujete nainstalovat.
+V tomto kurzu se seznámíte s Azure Resource Manager šablonou (šablony ARM). Ukazuje, jak vytvořit úvodní šablonu a jak ji nasadit do Azure. Seznámíte se se strukturou šablony a nástroji, které budete potřebovat pro práci se šablonami. Dokončení tohoto kurzu trvá přibližně **12 minut** , ale skutečný čas se bude lišit podle toho, kolik nástrojů potřebujete nainstalovat.
 
 Tento kurz je první z řad. Jak budete postupovat podle řady, upravíte úvodní šablonu krok za krokem, dokud neprojdete všechny základní části šablony ARM. Tyto prvky jsou stavebními bloky pro mnohem složitější šablony. Doufáme, že na konci řady jste si jistí, že máte jistotu, že vytváříte vlastní šablony a jste připraveni automatizovat nasazení pomocí šablon.
 
@@ -25,7 +25,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 ## <a name="get-tools"></a>Získat nástroje
 
-Pojďme začít tím, že budete mít k dispozici nástroje, které potřebujete k vytváření a nasazování šablon.
+Pojďme začít tím, že budete mít k dispozici nástroje, které potřebujete k vytváření a nasazování šablon. Nainstalujte tyto nástroje na místní počítač.
 
 ### <a name="editor"></a>Editor
 
@@ -76,7 +76,7 @@ V pořádku budete připraveni začít se získáváním informací o šablonác
     - **contentversion –**: Určuje verzi šablony (například 1.0.0.0). Pro tento prvek můžete zadat libovolnou hodnotu. Tuto hodnotu použijte k dokumentování významných změn v šabloně. Při nasazování prostředků pomocí šablony můžete tuto hodnotu použít k tomu, abyste se ujistili, že je používána pravá šablona.
     - **prostředky**: obsahuje prostředky, které chcete nasadit nebo aktualizovat. V současné době je prázdná, ale později přidáte prostředky.
 
-1. Soubor uložte.
+1. Uložte soubor.
 
 Blahopřejeme, vytvořili jste svou první šablonu.
 
@@ -184,7 +184,7 @@ Příkaz pro nasazení vrátí výsledky. Vyhledejte, pokud `ProvisioningState` 
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 

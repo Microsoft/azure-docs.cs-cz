@@ -6,25 +6,26 @@ ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.date: 04/20/2019
+ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: 8797d17ac439882415a9f5360fded28cb55484d5
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 8c7d7f84e02cdd2cd4f53bc9eb42c78f936146ae
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050530"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408365"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Rychlý Start: vytvoření chatovací místnosti pomocí služby ASP.NET and Signal Service
 
-Služba signalizace Azure je založená na nástroji [Signal pro ASP.NET Core 2,0](https://docs.microsoft.com/aspnet/core/signalr/introduction), což není **100%** kompatibilní s nástrojem ASP.NET Signal. Služba signálů Azure znovu implementovala protokol dat signálu ASP.NET na základě nejnovějších technologií ASP.NET Core. Při použití služby signalizace Azure pro signál ASP.NET už některé funkce nástroje ASP.NET Signal nejsou podporované, například služba Azure Signal nehraje zprávy, když se klient znovu připojí. Také přenos snímků navždy a JSONP nejsou podporovány. Některé změny kódu a správnou verzi závislých knihoven jsou potřeba k tomu, aby aplikace ASP.NET signalizace fungovala se službou Signal. 
+Služba signalizace Azure je založená na nástroji [Signal pro ASP.NET Core 2,1](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1), což není **100%** kompatibilní s nástrojem ASP.NET Signal. Služba signálů Azure znovu implementovala protokol dat signálu ASP.NET na základě nejnovějších technologií ASP.NET Core. Při použití služby signalizace Azure pro signál ASP.NET už některé funkce nástroje ASP.NET Signal nejsou podporované, například služba Azure Signal nehraje zprávy, když se klient znovu připojí. Také přenos snímků navždy a JSONP nejsou podporovány. Některé změny kódu a správnou verzi závislých knihoven jsou potřeba k tomu, aby aplikace ASP.NET signalizace fungovala se službou Signal.
 
-Úplný seznam porovnání funkcí mezi signálem ASP.NET a signálem ASP.NET Core naleznete v [dokumentu rozdíly v verzích](https://docs.microsoft.com/aspnet/core/signalr/version-differences?view=aspnetcore-2.2) .
+Úplný seznam porovnání funkcí mezi signálem ASP.NET a signálem ASP.NET Core naleznete v [dokumentu rozdíly v verzích](https://docs.microsoft.com/aspnet/core/signalr/version-differences?preserve-view=true&view=aspnetcore-3.1) .
 
 V tomto rychlém startu se dozvíte, jak začít s ASP.NET a službou Azure Signaler pro podobnou [aplikaci chatovací místnosti](./signalr-quickstart-dotnet-core.md).
 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
@@ -71,7 +72,7 @@ Zatímco probíhá nasazování služby, pojďme se podívat na práci s kódem.
 
 1. Vyberte a zkopírujte primární připojovací řetězec.
 
-1. Nyní nastavte připojovací řetězec v souboru web.config.
+1. Nyní nastavte připojovací řetězec v souboru *web.config* .
 
     ```xml
     <configuration>
@@ -82,7 +83,7 @@ Zatímco probíhá nasazování služby, pojďme se podívat na práci s kódem.
     </configuration>
     ```
 
-1. V *Startup.cs*, namísto volání `MapSignalR()` , je třeba volat `MapAzureSignalR({your_applicationName})` a předávat připojovací řetězec, aby se aplikace připojovala ke službě namísto samotného hostitelského signálu. Nahraďte `{YourApplicationName}` názvem vaší aplikace. Tento název je jedinečný název, který rozlišuje tuto aplikaci od ostatních aplikací. Můžete použít `this.GetType().FullName` jako hodnotu.
+1. V *Startup.cs*, namísto volání `MapSignalR()` , je třeba volat `MapAzureSignalR({YourApplicationName})` a předávat připojovací řetězec, aby se aplikace připojovala ke službě namísto samotného hostitelského signálu. Nahraďte `{YourApplicationName}` názvem vaší aplikace. Tento název je jedinečný název, který rozlišuje tuto aplikaci od ostatních aplikací. Můžete použít `this.GetType().FullName` jako hodnotu.
 
     ```cs
     public void Configuration(IAppBuilder app)
@@ -103,24 +104,19 @@ Zatímco probíhá nasazování služby, pojďme se podívat na práci s kódem.
     > [!NOTE]
     > V implementaci `/signalr/negotiate` je vystavený koncový bod pro vyjednávání pomocí sady SDK služby Azure Signal. Při pokusu klienta o připojení a přesměrování klientů na koncový bod služby definovaný v připojovacím řetězci vrátí speciální odpověď na vyjednávání.
 
-1. Stisknutím klávesy **F5** spusťte projekt v režimu ladění. Můžete vidět, že se aplikace spouští místně. Místo hostování modulu runtime signálu pomocí samotné aplikace se nyní připojí ke službě Azure Signal.
+1. Stisknutím klávesy <kbd>F5</kbd> spusťte projekt v režimu ladění. Můžete vidět, že se aplikace spouští místně. Místo hostování modulu runtime signálu pomocí samotné aplikace se nyní připojí ke službě Azure Signal.
 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-
-
 > [!IMPORTANT]
 > Odstranění skupiny prostředků je nevratné a skupina prostředků včetně všech v ní obsažených prostředků bude trvale odstraněna. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete místo odstranění skupiny prostředků odstranit jednotlivé prostředky z jejich odpovídajících oken.
-> 
-> 
 
 Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
 
 Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto rychlém startu se používala skupina prostředků *SignalRTestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
 
-   
 ![Odstranit](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
 Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
@@ -135,4 +131,3 @@ V tomto rychlém startu jste vytvořili nový prostředek služby signalizace Az
 > [Služba signalizace Azure pomocí ASP.NET Core](./signalr-quickstart-dotnet-core.md)
 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsnet)
-

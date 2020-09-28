@@ -1,20 +1,20 @@
 ---
 title: 'Rychlý Start: Gremlin API pomocí Pythonu – Azure Cosmos DB'
 description: Tento rychlý start ukazuje, jak použít rozhraní Azure Cosmos DB Gremlin API k vytvoření aplikace pomocí portálu Azure a jazyka Python.
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
-ms.author: lbosq
+ms.author: jasonh
 ms.custom: devx-track-python
-ms.openlocfilehash: b927a0a64256283536a73002cc5915bcaddd2efc
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 624aa946df5e637c98a11ada3b455c50dec896f5
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873139"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409336"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Rychlý Start: vytvoření databáze grafů v Azure Cosmos DB pomocí Pythonu a Azure Portal
 
@@ -186,7 +186,7 @@ Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobr
 
 5. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností. Všimněte si, že pro každou osobu v grafu můžete vytvořit jedinečné vlastnosti. Vyžaduje se pouze klíč id.
 
-    Klíč|value|Poznámky
+    key|hodnota|Poznámky
     ----|----|----
     PK|/pk| 
     id|ashley|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
@@ -204,7 +204,7 @@ Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobr
 
 9. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností:
 
-    Klíč|value|Poznámky
+    key|hodnota|Poznámky
     ----|----|----
     PK|/pk| 
     id|rakesh|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
