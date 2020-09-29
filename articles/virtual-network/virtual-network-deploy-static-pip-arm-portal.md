@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 745b12e2278c487ed49a9d2d726a760a7df8f276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e06e4079a5118e0aa9dedb1fca719f0b28e5716
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703163"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448623"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresou pomocí Azure Portal
 
@@ -38,8 +38,8 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |---|---|
     |Název|myVM|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
-    |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Předplatné| Vyberte své předplatné.|
+    |Heslo| Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    |Předplatné| Vyberte předplatné.|
     |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
     |Umístění| Vyberte **východní USA**|
 
@@ -60,13 +60,13 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 9. Po nasazení virtuálního počítače do vyhledávacího pole v horní části portálu zadejte *myPublicIpAddress* . Pokud se ve výsledcích hledání zobrazí **myPublicIpAddress** , vyberte ji.
 10. Můžete zobrazit veřejnou IP adresu, která je přiřazená a adresa je přiřazena k virtuálnímu počítači **myVM** , jak je znázorněno na následujícím obrázku:
 
-    ![Zobrazit veřejnou IP adresu](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
+    ![Snímek obrazovky se zobrazí v podokně adresa pro veřejné I P s adresou I P a názvem, který se nazývá. ](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
 
     Azure přiřadil veřejnou IP adresu z adres používaných v oblasti, ve které jste virtuální počítač vytvořili. Můžete si stáhnout seznam rozsahů (předpon) pro [veřejný](https://www.microsoft.com/download/details.aspx?id=56519) cloud Azure a cloudy Azure [US Government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) a [Germany](https://www.microsoft.com/download/details.aspx?id=57064).
 
 11. Vyberte **konfiguraci** a potvrďte, že přiřazení je **statické**.
 
-    ![Zobrazit veřejnou IP adresu](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
+    ![Snímek obrazovky zobrazuje podokno adresa veřejné I P s vybranou položkou konfigurace.](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
 
 > [!WARNING]
 > Neměňte nastavení IP adresy v operačním systému virtuálního počítače. Operační systém neznáte veřejné IP adresy Azure. I když můžete do operačního systému přidat nastavení privátních IP adres, doporučujeme, abyste to neučinili, pokud není potřeba, a ne až po čtení [Přidání privátní IP adresy do operačního systému](virtual-network-network-interface-addresses.md#private).

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: 353ed321ce3b6161b28bf67d852a81f809880603
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d7ff9efcedc1a6a5f92555a62e429be0431f2098
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81733013"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448514"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Kurz: konfigurace zařízení IoT Edge
 
@@ -37,7 +37,7 @@ V této části vytvoříme certifikáty podepsané svým držitelem pomocí Ima
 
 3. Pokud ještě není spuštěný, spusťte **Docker for Windows** v nabídce Start systému Windows.
 
-4. Otevřete nástroj Visual Studio Code.
+4. Otevřete Visual Studio Code.
 
 5. Vyberte **soubor**  >  **Otevřít složku...** a zvolte **C: \\ source \\ IoTEdgeAndMlSample \\ CreateCertificates**.
 
@@ -167,7 +167,7 @@ Potom spuštěním skriptu vytvořte virtuální počítač pro zařízení IoT 
     * Vytvořte skupinu prostředků, pokud již neexistuje.
     * Vytvoření virtuálního počítače
     * Přidání výjimek NSG pro virtuální počítač pro porty 22 (SSH), 5671 (AMQP), 5672 (AMPQ) a 443 (TLS)
-    * Instalace rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
+    * Instalace rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli-apt)
 
 7. Skript vytvoří výstup připojovacího řetězce SSH pro připojení k virtuálnímu počítači. Zkopírujte připojovací řetězec pro další krok.
 

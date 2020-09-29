@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: e422b019dd17c8c56ba99b5826e9f6215459c382
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f7268f698dcc26dbe99b517c9dd4584be67c3a82
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825357"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448458"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Používání řešení Service Map v Azure
 
@@ -169,7 +169,7 @@ Některé procesy obsluhují konkrétní role na počítačích: webové servery
 
 Neúspěšná připojení se zobrazují v Service Map mapách pro procesy a počítače se přerušovanou červenou čárou, která značí, že se klientský systém nedaří připojit k procesu nebo portu. Neúspěšná připojení se oznamují z libovolného systému pomocí nasazeného agenta Service Map, pokud je tento systém jedním pokusem o připojení, které selhalo. Service Map měří tento proces pomocí soketů TCP, u kterých se nepodaří navázat připojení. K této chybě mohlo dojít z brány firewall, chybné konfigurace klienta nebo serveru nebo vzdálené služby, která není k dispozici.
 
-![Neúspěšná připojení](media/service-map/failed-connections.png)
+![Snímek obrazovky s jednou částí Service Map zvýraznění přerušované červené čáry, která označuje neúspěšné spojení mezi procesem backup.pl a portem 4475.](media/service-map/failed-connections.png)
 
 Porozumění neúspěšným připojením může pomáhat při řešení potíží, ověřování migrace, analýze zabezpečení a celkovém porozumění architektuře. Neúspěšná připojení jsou někdy neškodná, ale často přímo odkazují na problém, například prostředí s podporou převzetí služeb při selhání se náhle stane nedosažitelné, nebo dvě aplikační vrstvy, které nemůžou mluvit po migraci do cloudu.
 
@@ -189,11 +189,11 @@ Skupiny portů serveru jsou pole, která představují porty serveru na serverec
 
 ![Skupiny portů serveru](media/service-map/server-port-groups.png)
 
-## <a name="context-menu"></a>Místní nabídka
+## <a name="context-menu"></a>Kontextová nabídka
 
 Kliknutím na tlačítko se třemi tečkami (...) v pravém horním rohu kteréhokoli serveru se zobrazí místní nabídka pro tento server.
 
-![Neúspěšná připojení](media/service-map/context-menu.png)
+![Snímek obrazovky otevřené kontextové nabídky pro server v Service Map. V nabídce jsou možnosti načíst Mapa serveru a zobrazit odkazy na sebe.](media/service-map/context-menu.png)
 
 ### <a name="load-server-map"></a>Načíst mapu serveru
 
@@ -258,7 +258,7 @@ Service Map integrace s Change Tracking je automatická, pokud jsou obě řešen
 
 V podokně **Change Tracking počítače** jsou uvedeny všechny změny, s nejnovějšími posledními, spolu s odkazem pro přechod k podrobnostem o hledání v protokolu, kde najdete další podrobnosti.
 
-![Počítač Change Tracking – podokno](media/service-map/change-tracking.png)
+![Snímek obrazovky s podoknem počítače Change Tracking v Service Map](media/service-map/change-tracking.png)
 
 Následující obrázek je detailní zobrazení události ConfigurationChange, která se může zobrazit po výběru možností **Zobrazit v Log Analytics**.
 
@@ -300,7 +300,7 @@ Service Map integrace s Update Management je automatická, pokud jsou obě řeš
 
 Podokno **aktualizace počítače** zobrazuje data z řešení Update Management pro vybraný server. V podokně jsou uvedeny souhrnné informace o chybějících aktualizacích serveru během vybraného časového rozsahu.
 
-![Počítač Change Tracking – podokno](media/service-map/machine-updates.png)
+![Snímek obrazovky s podoknem aktualizace počítače v Service Map.](media/service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
 

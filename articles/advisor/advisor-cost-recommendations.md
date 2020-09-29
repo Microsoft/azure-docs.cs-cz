@@ -3,12 +3,12 @@ title: Snížení nákladů na službu pomocí Azure Advisor
 description: Využijte Azure Advisor k optimalizaci nákladů na nasazení Azure.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 7576ccb478a4f221ae7d7f68b14787f6f8bf7e88
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 3b7e57aa178380ff4cf0561718c292dc1e6c6aa9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405220"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448170"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Snížení nákladů na službu pomocí Azure Advisor
 
@@ -59,8 +59,8 @@ Advisor analyzuje vzorce využití za posledních 30 dní pro následující pro
 ### <a name="azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB rezervovanou kapacitu
 Advisor analyzuje vzorce používání Azure Cosmos DB za posledních 30 dnů a doporučuje nákup rezervovaných kapacit pro optimalizaci nákladů. Pomocí rezervované kapacity si můžete předběžně koupit Azure Cosmos DB hodinové využití a ušetřit náklady za průběžné platby. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí ročních cen rezervací a extrapolací vzorců využití zjištěných za posledních 30 dnů. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
 
-### <a name="sql-paas-reserved-capacity"></a>Vyhrazená kapacita SQL PaaS
-Advisor analyzuje fondy elastické databáze SQL PaaS a vzory využití spravované instance SQL za posledních 30 dní. Pak doporučí rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity můžete předem zakoupit SQL DB po hodinách využití a ušetřit náklady na výpočetní výkon SQL. Vaše licence SQL se účtuje samostatně a rezervace se nesleví. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí ročních cen rezervací a extrapolací vzorců využití zjištěných za posledních 30 dnů. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory.
+### <a name="sql-database-and-sql-managed-instance-reserved-capacity"></a>SQL Database a Rezervovaná kapacita spravované instance SQL
+Advisor analyzuje SQL Database a vzory využití spravované instance SQL za posledních 30 dní. Pak doporučí rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity můžete předem zakoupit SQL DB po hodinách využití a ušetřit náklady na výpočetní výkon SQL. Vaše licence SQL se účtuje samostatně a rezervace se nesleví. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Advisor vypočítá Odhadované úspory pro jednotlivá předplatná pomocí ročních cen rezervací a extrapolací vzorců využití zjištěných za posledních 30 dnů. Doporučení ke sdílenému rozsahu jsou k dispozici pro rezervované nákupy kapacity a můžou zvýšit úspory. Podrobnosti najdete v tématu [Azure SQL Database & rezervované kapacity spravované instance SQL](https://docs.microsoft.com/azure/azure-sql/database/reserved-capacity-overview).
 
 ### <a name="app-service-stamp-fee-reserved-capacity"></a>App Service vyhrazenou kapacitu pro poplatky za razítko
 Advisor v posledních 30 dnech analyzuje vzor použití poplatku za Azure App Service izolované prostředí a doporučuje rezervované nákupy kapacity, které optimalizují náklady. Pomocí rezervované kapacity si můžete předem koupit hodinové využití pro poplatek za izolované prostředí a ušetřit náklady za průběžné platby. Rezervovaná kapacita se vztahuje pouze na poplatky za razítko a nikoli na App Service instance. Rezervovaná kapacita je fakturační zvýhodnění, které se automaticky vztahuje na nová i existující nasazení. Služba Advisor počítá s uložením odhadů pro jednotlivá předplatná za použití ceny za 3 roky na základě vzorců využití za posledních 30 dní.

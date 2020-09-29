@@ -9,22 +9,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 66767d4329a0a757de99308e1f586b56b327a515
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4beba141fec7a819df52e4c3a669312a4ad76998
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399918"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449298"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Back-endy a back-endové fondy v Azure front-endu
-Tento článek popisuje, jak namapovat nasazení aplikace pomocí front-bran Azure. Vysvětluje taky různé výrazy v konfiguraci front-endu v případě back-endu aplikací.
+Tento článek popisuje informace o tom, jak namapovat nasazení webové aplikace s využitím front-dveří Azure. Vysvětluje také různé terminologií, které se používají v konfiguraci front-endu v případě back-endy aplikace.
 
 ## <a name="backends"></a>Back-endy
-Back-end je stejný jako instance nasazení aplikace v oblasti. Přední dvířka podporují back-endy Azure i mimo Azure, takže tato oblast není omezená jenom na oblasti Azure. Může to být také vaše místní datacentrum nebo instance aplikace v jiném cloudu.
+Back-end odkazuje na nasazení webové aplikace v oblasti. Přední dvířka podporují prostředky Azure i mimo Azure ve fondu back-endu. Aplikace může být buď v místním datovém centru, nebo umístěná v jiném poskytovateli cloudu.
 
-Back-endové přední dveře odkazují na název hostitele nebo veřejnou IP adresu vaší aplikace, která může obsluhovat požadavky klientů. Back-endy by se neměly zaměňovat s vaší databázovou vrstvou, vrstvou úložiště a tak dále. Back-endy by se mělo zobrazit jako veřejný koncový bod vaší aplikace. Když přidáte back-end do back-endu back-endu, je nutné přidat také následující:
+Back-endové přední dveře označují název hostitele nebo veřejnou IP adresu vaší aplikace, která obsluhuje požadavky klientů. Back-endy by se neměly zaměňovat s vaší databázovou vrstvou, vrstvou úložiště a tak dále. Back-endy by se mělo zobrazit jako veřejný koncový bod pro back-end aplikace. Když přidáte back-end do front back-endu back-endu, je nutné přidat také následující:
 
 - **Typ hostitele back-endu**. Typ prostředku, který chcete přidat. Přední dvířka podporují automatické zjišťování back-endu vaší aplikace ze služby App Service, cloudové služby nebo úložiště. Pokud chcete jiný prostředek v Azure nebo dokonce back-end, vyberte **vlastní hostitel**.
 
@@ -41,13 +41,13 @@ Back-endové přední dveře odkazují na název hostitele nebo veřejnou IP adr
 
 ### <a name="backend-host-header"></a><a name = "hostheader"></a>Hlavička hostitele back-endu
 
-Požadavky předané předními dveřmi do back-endu obsahují pole hlavičky hostitele, které back-end používá k načtení cílového prostředku. Hodnota tohoto pole obvykle pochází z back-endu URI a má hostitele a port.
+Požadavky předané předními dveřmi do back-endu obsahují pole hlavičky hostitele, které back-end používá k načtení cílového prostředku. Hodnota tohoto pole obvykle pochází z identifikátoru URI back-endu, který obsahuje hlavičku a port hostitele.
 
 Například žádost, která byla vytvořena pro, `www.contoso.com` bude mít hlavičku hostitele www.contoso.com. Pokud ke konfiguraci back-endu použijete Azure Portal, výchozí hodnota tohoto pole je název hostitele back-endu. Pokud je váš back-end contoso-westus.azurewebsites.net, v Azure Portal bude automaticky vyplněná hodnota pro hlavičku hostitele back-end contoso-westus.azurewebsites.net. Pokud však použijete šablony Azure Resource Manager nebo jinou metodu bez explicitního nastavení tohoto pole, odešle fronta název příchozího hostitele jako hodnotu pro hlavičku hostitele. Pokud se žádost nastavila pro \. webcontoso.com a vaše back-end je contoso-westus.azurewebsites.NET, který má prázdné pole hlavičky, nastaví se na začátku jako na webové \. contoso.com záhlaví hostitele.
 
 Většina back-endy aplikace (Azure Web Apps, BLOB Storage a Cloud Services) vyžaduje, aby Hlavička hostitele odpovídala doméně back-endu. Nicméně hostitel s front-end, který směruje na váš back-end, bude používat jiný název hostitele, například www.contoso.net.
 
-Pokud váš back-end vyžaduje, aby se hlavička hostitele shodovala s názvem hostitele back-endu, ujistěte se, že Hlavička hostitele back-endu obsahuje název hostitele back-end.
+Pokud váš back-end vyžaduje, aby Hlavička hostitele odpovídala názvu hostitele back-endu, ujistěte se, že Hlavička hostitele back-endu obsahuje název hostitele back-endu.
 
 #### <a name="configuring-the-backend-host-header-for-the-backend"></a>Konfigurace hlavičky hostitele back-endu pro back-end
 

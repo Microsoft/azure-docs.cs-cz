@@ -6,12 +6,12 @@ ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 31dc1973af42a1785a2a65cb1887f479e44af162
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 61679e1ee3843ed866ef12138a0edeff8877b1e6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553899"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448591"
 ---
 # <a name="refresh-with-azure-automation"></a>Aktualizace pomocí Azure Automation
 
@@ -19,11 +19,11 @@ Pomocí Azure Automation a PowerShellových runbooků můžete provádět operac
 
 Příklad v tomto článku používá [modul SQL SQLServer](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps). Ukázková sada Runbook PowerShellu, která demonstruje aktualizaci modelu, je k dispozici dále v tomto článku.  
 
-## <a name="authentication"></a>Ověřování uživatelů
+## <a name="authentication"></a>Authentication
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2).  Příklad v tomto článku používá k ověření Azure Analysis Services instanční objekt (SPN). Další informace najdete v tématu [Vytvoření instančního objektu pomocí služby Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!IMPORTANT]
 > Následující příklad předpokládá, že je brána firewall Azure Analysis Services zakázaná. Pokud je povolená brána firewall, musí být do pravidla brány firewall zahrnutá veřejná IP adresa iniciátoru žádosti.
@@ -54,15 +54,15 @@ Objekt služby, který vytvoříte, musí mít na serveru oprávnění správce 
 
 1. V účtu Automation vytvořte prostředek s **přihlašovacími údaji** , který se použije k bezpečnému uložení instančního objektu.
 
-    ![Vytvořit přihlašovací údaj](./media/analysis-services-refresh-azure-automation/6.png)
+    ![Snímek obrazovky zobrazující stránku přihlašovací údaje se zvolenou akcí přidat pověření](./media/analysis-services-refresh-azure-automation/6.png)
 
 2. Zadejte podrobnosti přihlašovacích údajů. Do pole **uživatelské jméno**zadejte ID aplikace instančního objektu (AppID) a potom zadejte do pole **heslo**tajný klíč instančního objektu.
 
     ![Vytvořit přihlašovací údaj](./media/analysis-services-refresh-azure-automation/7.png)
 
-3. Import Runbooku služby Automation
+3. Importujte Runbook služby Automation.
 
-    ![Importovat Runbook](./media/analysis-services-refresh-azure-automation/8.png)
+    ![Snímek obrazovky zobrazující stránku sady Runbook s vybranou akcí importovat sadu Runbook](./media/analysis-services-refresh-azure-automation/8.png)
 
 4. Vyhledejte soubor [Refresh-Model.ps1](#sample-powershell-runbook) , zadejte **název** a **Popis**a pak klikněte na **vytvořit**.
 
@@ -80,7 +80,7 @@ Objekt služby, který vytvoříte, musí mít na serveru oprávnění správce 
 
 6. Otestujte Runbook kliknutím na tlačítko **Start**.
 
-    ![Spuštění runbooku](./media/analysis-services-refresh-azure-automation/11.png)
+    ![Snímek obrazovky zobrazující stránku "Přehled" se zvolenou akcí spustit.](./media/analysis-services-refresh-azure-automation/11.png)
 
 7. Vyplňte parametry **DatabaseName**, **ANALYSISSERVER**a **REFRESHTYPE** a pak klikněte na **OK**. Parametr **WEBHOOKDATA** není při ručním spuštění sady Runbook vyžadován.
 
@@ -108,7 +108,7 @@ Dá se nakonfigurovat takto:
 
 4. Vyplňte parametry pro daný plán. Budou použity při každém spuštění triggeru sady Runbook. Parametr **WEBHOOKDATA** by měl zůstat prázdný při spuštění prostřednictvím plánu.
 
-    ![Konfigurovat parametry](./media/analysis-services-refresh-azure-automation/16.png)
+    ![Konfigurace parametrů](./media/analysis-services-refresh-azure-automation/16.png)
 
 5. Klikněte na **OK**.
 

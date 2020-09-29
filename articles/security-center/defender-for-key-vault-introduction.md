@@ -4,16 +4,16 @@ description: Přečtěte si o výhodách a funkcích Azure Defenderu pro Key Vau
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 78a522922f8580003e2d2ff588cbf10dbf5fff9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6649a8d470a75922aac423bf0b411163bdd79f71
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301767"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449098"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>Seznámení s Azure Defenderem pro Key Vault
 
@@ -27,7 +27,7 @@ Povolit **Azure Defender pro Key Vault** pro Azure – nativní a rozšířenou 
 |----|:----|
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|**Azure Defender pro Key Vault** se účtuje tak, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-key-vault"></a>Jaké jsou výhody Azure Defenderu pro Key Vault?

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: ffe3d457d4827250418c9c2d838df35c11e01af7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 496dab24f636c97e1c7b27b871e1fded9216277d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974711"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448565"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Vytváření vlastních polí v pracovním prostoru Log Analytics v Azure Monitor (Preview)
 
@@ -101,7 +101,7 @@ Ve vlastnosti **RenderedDescription** se zvýrazní název služby a k identifik
 
 Uvidíme, že název služby je pro některé záznamy správně identifikovaný, ale ne pro jiné.   Ve **výsledcích hledání** se nevybere část názvu **adaptéru výkonu služby WMI** .  V **souhrnu** se zobrazí, že místo **instalačního programu pro moduly systému Windows**jeden záznam identifikoval **moduly** .  
 
-![Výsledky hledání](media/custom-fields/search-results-01.png)
+![Snímek obrazovky znázorňující části názvu služby zvýrazněné v podokně výsledků hledání a jeden nesprávný název služby zvýrazněný v souhrnu.](media/custom-fields/search-results-01.png)
 
 Začneme záznamem **adaptéru výkonu služby WMI** .  Kliknu na ikonu pro úpravu a pak na **změnit toto zvýraznění**.  
 
@@ -113,7 +113,7 @@ Zvětšili jsme zvýraznění tak, aby obsahovalo **rozhraní WMI** pro Word, a 
 
 Vidíte, že položky pro **adaptér výkonu WMI** byly opraveny, a Log Analytics také tyto informace použít k opravě záznamů pro **Instalační službu modulu systému Windows**.
 
-![Výsledky hledání](media/custom-fields/search-results-02.png)
+![Snímek obrazovky zobrazující úplný název služby zvýrazněný v podokně výsledků hledání a správné názvy služeb zvýrazněné v souhrnu](media/custom-fields/search-results-02.png)
 
 Teď můžeme spustit dotaz, který ověří **Service_CF** je vytvořený, ale ještě není přidaný do žádných záznamů. Důvodem je skutečnost, že vlastní pole nefunguje u stávajících záznamů, takže musíme počkat na shromáždění nových záznamů.
 

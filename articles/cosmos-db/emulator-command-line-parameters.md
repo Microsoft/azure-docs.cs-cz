@@ -6,12 +6,13 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
-ms.openlocfilehash: 70e68c566ccb0fe08ce3b8d2dc11fc3c141c16bc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: contperfq1
+ms.openlocfilehash: f8bcadf25ac8e001657f2be012f99ddb507e672d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995836"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445183"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>Reference k příkazovému řádku a prostředí PowerShell pro emulátor Azure Cosmos DB
 
@@ -25,7 +26,7 @@ Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort]
 
 Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Microsoft.Azure.Cosmos.Emulator.exe /?`.
 
-|**Možnost** | **Popis** | **Příkaz**| **Arguments**|
+|**Možnost** | **Popis** | **Příkaz**| **Argumenty**|
 |---|---|---|---|
 |[Žádné argumenty] | Spustí emulátor Azure Cosmos s výchozími nastaveními. |Microsoft.Azure.Cosmos.Emulator.exe| |
 |[Nápověda] |Zobrazí seznam podporovaných argumentů příkazového řádku.|Microsoft.Azure.Cosmos.Emulator.exe/? | |
@@ -84,7 +85,7 @@ Zde je uveden seznam příkazů pro řízení emulátoru z PowerShellu:
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Syntax**
+**Syntaxe**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -94,7 +95,7 @@ Vrátí jednu z těchto hodnot ServiceControllerStatus: ServiceControllerStatus.
 
 ### `Start-CosmosDbEmulator`
 
-**Syntax**
+**Syntaxe**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -104,7 +105,7 @@ Spustí emulátor. Ve výchozím nastavení tento příkaz čeká, dokud emulát
 
 ### `Stop-CosmosDbEmulator`
 
-**Syntax**
+**Syntaxe**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -114,7 +115,7 @@ Zastaví emulátor. Ve výchozím nastavení tento příkaz čeká, až emuláto
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Syntax**
+**Syntaxe**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 3526510e4cbd77ffe1f468512e1128dcebe9b1da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 33ad1deff4d543564db1b52bce986b11758042c9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330838"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445064"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Vytvoření a použití aktivní geografické replikace – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -118,7 +118,7 @@ Aby vaše aplikace mohla hned po převzetí služeb při selhání přistupovat 
 
 ## <a name="configuring-secondary-database"></a>Konfigurace sekundární databáze
 
-U primárních i sekundárních databází je potřeba, aby měly stejnou úroveň služby. Také se důrazně doporučuje vytvořit sekundární databázi se stejnou výpočetní velikostí (DTU nebo virtuální jádra) jako primární. Pokud primární databáze má velkou zátěžovou úlohu pro zápis, může se stát, že se sekundární s nižší výpočetní velikostí nedokáže s ním udržet. To způsobí opakování prodlevy u sekundárního a potenciálního nedostupnosti sekundárního. Aktivní geografická replikace omezí četnost transakčního protokolu, pokud je to nutné, aby bylo možné tato rizika zmírnit.
+U primárních i sekundárních databází je potřeba, aby měly stejnou úroveň služby. Také se důrazně doporučuje, abyste vytvořili sekundární databázi se stejnou redundancí záložního úložiště a výpočetní velikostí (DTU nebo virtuální jádra) jako primární. Pokud primární databáze má velkou zátěžovou úlohu pro zápis, může se stát, že se sekundární s nižší výpočetní velikostí nedokáže s ním udržet. To způsobí opakování prodlevy u sekundárního a potenciálního nedostupnosti sekundárního. Aktivní geografická replikace omezí četnost transakčního protokolu, pokud je to nutné, aby bylo možné tato rizika zmírnit.
 
 Další příčinou nevyvážené sekundární konfigurace je to, že po převzetí služeb při selhání může výkon aplikace utrpět kvůli nedostatečné výpočetní kapacitě nového primárního objektu. V takovém případě bude nutné škálovat cíl databázové služby na potřebnou úroveň, což může trvat poměrně dlouho a výpočetní prostředky a bude vyžadovat převzetí služeb při selhání s [vysokou dostupností](high-availability-sla.md) na konci procesu horizontálního navýšení kapacity.
 
@@ -126,8 +126,13 @@ Pokud se rozhodnete vytvořit sekundární s nižší výpočetní velikostí, g
 
 Omezení míry transakčního protokolu na primárním základě důvodu nižší výpočetní velikosti u sekundárního nástroje se oznamuje pomocí typu Wait HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO, který je viditelný v zobrazeních databáze [Sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a [Sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) .
 
+Ve výchozím nastavení je redundance záložního úložiště sekundárního úložiště stejná jako primární databáze. Můžete zvolit konfiguraci sekundární s jinou redundancí úložiště zálohování. Zálohování se vždycky provádí v primární databázi. Pokud je sekundární nakonfigurovaná s jinou redundancí záložního úložiště, po převzetí služeb při selhání na primárním počítači se budou zálohy účtovat podle redundance úložiště vybrané na nové primární (předchozí sekundární). 
+
 > [!NOTE]
 > Frekvence transakčního protokolu na primárním počítači může být omezena z důvodů, které nesouvisí s nižší výpočetní velikostí na sekundárním. Tento druh omezování může nastat i v případě, že sekundární má stejnou nebo vyšší výpočetní velikost než primární. Podrobnosti, včetně typů čekání pro různé druhy omezení přenosové rychlosti, najdete v tématu zásady [správného řízení sazeb transakčních protokolů](resource-limits-logical-server.md#transaction-log-rate-governance).
+
+> [!NOTE]
+> Služba Azure SQL Database konfigurovatelný záložní úložiště je v současnosti dostupná jenom ve verzi Public Preview v oblasti Azure jihovýchodní Asie. Pokud je ve verzi Preview vytvořená místně redundantní nebo redundantní záložní záloha v rámci zóny, vytváření sekundární databáze v jiné oblasti Azure se nepodporuje. 
 
 Další informace o SQL Database velikosti výpočetních prostředků najdete v tématu [co jsou SQL Database úrovně služeb](purchasing-models.md).
 

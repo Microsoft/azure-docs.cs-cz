@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: 7412a28b53f3b17fb888e3877ecbe50a19c4a3d3
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: fd5c4043d417a99c7ffa57534fd7808f1710190a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552233"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448587"
 ---
 # <a name="refresh-with-logic-apps"></a>Aktualizace pomocí Logic Apps
 
@@ -20,7 +20,7 @@ Pomocí Logic Apps a volání REST můžete provádět automatizované operace a
 
 Další informace o použití rozhraní REST API s Azure Analysis Services najdete v tématu [asynchronní aktualizace s REST API](analysis-services-async-refresh.md).
 
-## <a name="authentication"></a>Ověřování uživatelů
+## <a name="authentication"></a>Authentication
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2).  Příklady v tomto článku budou k ověření Azure Analysis Services použít instanční objekt (SPN). Další informace najdete v tématu [Vytvoření instančního objektu pomocí služby Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -29,7 +29,7 @@ Všechna volání musí být ověřena pomocí platného tokenu Azure Active Dir
 > [!IMPORTANT]
 > V následujících příkladech se předpokládá, že je brána firewall Azure Analysis Services zakázaná. Pokud je povolená brána firewall, musí být v bráně Azure Analysis Services firewall povolená veřejná IP adresa iniciátoru žádosti. Další informace o Azure Logic Apps rozsahech IP adres na oblast najdete v tématu [omezení a informace o konfiguraci pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#configuration).
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 #### <a name="create-a-service-principal-spn"></a>Vytvoření instančního objektu (SPN)
 
@@ -53,9 +53,9 @@ Po uložení aplikace logiky se tento krok naplní adresou URL POST protokolu HT
 
 2. Přidejte nový krok a vyhledejte **http**.  
 
-   ![Přidat aktivitu HTTP](./media/analysis-services-async-refresh-logic-app/9.png)
+   ![Snímek obrazovky s vybranou částí "zvolit akci" se zvolenou ikonou "HTTP".](./media/analysis-services-async-refresh-logic-app/9.png)
 
-   ![Přidat aktivitu HTTP](./media/analysis-services-async-refresh-logic-app/10.png)
+   ![Snímek obrazovky okna HTTP s vybranou dlaždicí HTTP-HTTP](./media/analysis-services-async-refresh-logic-app/10.png)
 
 3. Vyberte **http** a přidejte tuto akci.
 
@@ -67,9 +67,9 @@ Aktivitu HTTP nakonfigurujte následujícím způsobem:
 |---------|---------|
 |**Metoda**     |POST         |
 |**Identifikátor URI**     | https://*na server region*/Servers/*AAS název serveru*/Models/*název vaší databáze*/refreshes <br /> <br /> Příklad: https: \/ /westus.asazure.Windows.NET/Servers/MyServer/Models/AdventureWorks/refreshes|
-|**Záhlaví**     |   Content-Type, Application/JSON <br /> <br />  ![Hlavičky](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Hlavičky**     |   Content-Type, Application/JSON <br /> <br />  ![Hlavičky](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Text**     |   Další informace o vytváření textu žádosti najdete v tématu [asynchronní aktualizace pomocí REST API-post/refreshes](analysis-services-async-refresh.md#post-refreshes). |
-|**Ověřování uživatelů**     |Protokol OAuth pro Active Directory         |
+|**Ověřování**     |Protokol OAuth pro Active Directory         |
 |**Tenant**     |Vyplňte Azure Active Directory TenantId         |
 |**Cílová skupina**     |https://*. asazure. Windows. NET         |
 |**ID klienta**     |Zadejte své hlavní název služby ClientID.         |
@@ -98,15 +98,15 @@ Pokud neplánujete použití nástroje Orchestration, jako je například Data F
 
 Pomocí výše uvedeného příkladu odstraňte první aktivitu a nahraďte ji aktivitou **plánu** .
 
-![Aktivita plánu](./media/analysis-services-async-refresh-logic-app/12.png)
+![Snímek obrazovky zobrazující stránku "Logic Apps" s vybranou ikonou "plán".](./media/analysis-services-async-refresh-logic-app/12.png)
 
-![Aktivita plánu](./media/analysis-services-async-refresh-logic-app/13.png)
+![Snímek obrazovky zobrazující stránku triggery](./media/analysis-services-async-refresh-logic-app/13.png)
 
 V tomto příkladu se použije **opakování**.
 
 Po přidání aktivity nakonfigurujte interval a četnost a pak přidejte nový parametr a zvolte **v těchto hodinách**.
 
-![Aktivita plánu](./media/analysis-services-async-refresh-logic-app/16.png)
+![Snímek obrazovky, který zobrazuje oddíl opakování s vybraným parametrem "v této době".](./media/analysis-services-async-refresh-logic-app/16.png)
 
 Vyberte požadované hodiny.
 

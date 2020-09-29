@@ -9,29 +9,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 6864a854215d899043607b3d01cffbd343ee7751
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e72443e33d1b6f097f61f4c027b5f547b43ee2a9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399510"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449232"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Podpora protokolů hlaviček protokolu HTTP v front-dveřích Azure
 Tento článek popisuje protokol, který přední dveře podporuje s částmi cesty volání (viz obrázek). V následujících částech najdete další informace o hlavičkách HTTP podporovaných předními dvířky.
 
-![Protokol hlaviček HTTP služby Azure front-dveří][1]
+:::image type="content" source="./media/front-door-http-headers-protocol/front-door-protocol-summary.png" alt-text="Protokol hlaviček HTTP služby Azure front-dveří":::
 
 >[!IMPORTANT]
 >Přední dveře nepotvrzují žádné hlavičky HTTP, které tady nejsou popsané.
 
 ## <a name="client-to-front-door"></a>Klient do front-dveří
-Přední dvířka přijímají většinu hlaviček z příchozího požadavku bez změny. Některá rezervovaná záhlaví jsou při odeslání odebrána z příchozího požadavku, včetně hlaviček s předponou X-FD-*.
+Přední dvířka přijímají většinu hlaviček pro příchozí požadavek beze změny. Některá rezervovaná záhlaví jsou při odeslání odebrána z příchozího požadavku, včetně hlaviček s předponou X-FD-*.
 
 ## <a name="front-door-to-backend"></a>Přední dveře do back-endu
 
-Přední dvířka obsahují záhlaví z příchozího požadavku, pokud nejsou odebrána z důvodu omezení. Přední dvířka také přidávají následující hlavičky:
+Pokud nejsou odebrány z důvodu omezení, obsahují přední dvířka hlavičky pro příchozí požadavek. Přední dvířka také přidávají následující hlavičky:
 
 | Záhlaví  | Příklad a popis |
 | ------------- | ------------- |
@@ -52,12 +52,9 @@ Všechny hlavičky odeslané do front-endu z back-endu jsou také předány klie
 
 | Záhlaví  | Příklad |
 | ------------- | ------------- |
-| X – Azure – ref |  *X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Toto je jedinečný referenční řetězec, který identifikuje požadavek poskytovaný předními dveřmi. To je důležité pro řešení potíží, které se používá k vyhledávání protokolů přístupu.|
+| X – Azure – ref |  *X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Toto je jedinečný referenční řetězec, který identifikuje požadavek poskytovaný předními dveřmi, což je důležité pro řešení potíží, které se používá k vyhledávání protokolů přístupu.|
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření služby Front Door](quickstart-create-front-door.md)
 - [Jak fungují přední dveře](front-door-routing-architecture.md)
-
-<!--Image references-->
-[1]: ./media/front-door-http-headers-protocol/front-door-protocol-summary.png

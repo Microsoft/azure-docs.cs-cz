@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 47e9b616a2a686a7ce82a592ee81966041371048
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 052fd0ea7619d566e78806580ee7b39e49cc85d2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327999"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448619"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan-preview"></a>Azure Monitor Insights pro virtuální síť WAN (Preview)
 
@@ -37,7 +37,7 @@ Přejít na **Azure Portal**  >  **virtuální síť WAN**. V nabídce **monitor
 
 **Obrázek 1: nabídka monitorování >ch přehledů**
 
-:::image type="content" source="./media/azure-monitor-insights/monitor-menu.png" alt-text="Snímek obrazovky zobrazující možnost nabídky Insights" lightbox="./media/azure-monitor-insights/monitor-menu.png":::
+:::image type="content" source="./media/azure-monitor-insights/monitor-menu.png" alt-text="Snímek obrazovky zobrazující zobrazení přehledy (Preview)" lightbox="./media/azure-monitor-insights/monitor-menu.png":::
 
 V zobrazení **přehledů** můžete zobrazit informace o prostředcích virtuálních sítí WAN. Mezi tyto prostředky patří centra, brány, brány firewall, připojení a virtuální sítě typu paprsek, síťová virtuální zařízení třetích stran a větve v komplexní virtuální síti WAN. Příklad najdete na **obrázku 2**.
 
@@ -45,7 +45,7 @@ Stav a stav prostředku jsou barevně odlišené a překrývají se na ikonách 
 
 **Obrázek 2: zobrazení Insights**
 
-:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="Snímek obrazovky zobrazující zobrazení přehledů" lightbox="./media/azure-monitor-insights/insights-view.png":::
+:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="Snímek obrazovky zobrazující zobrazení přehledy (Preview)" lightbox="./media/azure-monitor-insights/insights-view.png":::
 
 ## <a name="dependency-view"></a><a name="dependency"></a>Zobrazení závislostí
 
@@ -53,7 +53,7 @@ Zobrazení **závislostí** pro virtuální síť WAN vám pomůže vizualizovat
 
 **Obrázek 3: zobrazení závislosti VWAN**
 
-:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="Snímek obrazovky, který zobrazuje zobrazení závislostí." lightbox="./media/azure-monitor-insights/dependency-map.png":::
+:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="Snímek obrazovky zobrazující zobrazení přehledy (Preview)" lightbox="./media/azure-monitor-insights/dependency-map.png":::
 
 Mapa zobrazení **závislostí** zobrazuje následující prostředky jako připojený graf:
 
@@ -69,13 +69,13 @@ Mapa závislostí umožňuje snadnou navigaci na nastavení konfigurace každéh
 
 **Obrázek 4: přechod k informacím specifickým pro prostředky**
 
-:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="Snímek obrazovky, který ukazuje, jak přejít na informace specifické pro prostředky.":::
+:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="Snímek obrazovky zobrazující zobrazení přehledy (Preview)":::
 
 Panel hledání a filtrování v zobrazení **závislostí** poskytuje snadný způsob, jak hledat v grafu. Různé filtry poskytují podporu k zúžení vyhledávání na určitou cestu a stav.
 
 **Obrázek 5: hledání a filtrování**
 
-:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="Snímek obrazovky, který zobrazuje panel hledání a filtrování." lightbox="./media/azure-monitor-insights/search-filter.png":::
+:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="Snímek obrazovky zobrazující zobrazení přehledy (Preview)" lightbox="./media/azure-monitor-insights/search-filter.png":::
 
 ## <a name="detailed-metrics"></a><a name="detailed"></a>Podrobné metriky
 
@@ -83,7 +83,7 @@ Můžete vybrat **Zobrazit podrobné metriky** a získat přístup k podrobnoste
 
 **Obrázek 6: podrobný řídicí panel metrik**
 
-:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="Snímek obrazovky, který zobrazuje podrobný řídicí panel metriky." lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
+:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="Snímek obrazovky zobrazující zobrazení přehledy (Preview)" lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
 
 ## <a name="next-steps"></a>Další kroky
 

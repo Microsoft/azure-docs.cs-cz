@@ -4,24 +4,24 @@ description: Tato stránka popisuje, jak vytvořit žádost o podporu pro zvýš
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
-ms.topic: conceptual
+ms.topic: how-to
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: 4557d2ecdb49cd50396986f0ea30277f50ecf9f7
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: cfcdd143a26d36ed3c4646122fce7c19c41976d0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987280"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448851"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Zvýšení kvóty požadavků pro Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Tento článek vysvětluje, jak požádat o zvýšení kvóty pro Azure SQL Database a Azure SQL Managed instance. Vysvětluje také, jak povolit přístup k předplatnému v určité oblasti.
 
-## <a name="create-a-new-support-request"></a><a id="newquota"></a>Vytvořit novou žádost o podporu
+## <a name="create-a-new-support-request"></a><a id="newquota"></a> Vytvořit novou žádost o podporu
 
 Pomocí následujícího postupu můžete vytvořit novou žádost o podporu z Azure Portal pro SQL Database.
 
@@ -56,7 +56,7 @@ Pomocí následujícího postupu můžete vytvořit novou žádost o podporu z A
 
 Kliknutím na **zadat podrobnosti** zobrazíte okno s **podrobnostmi o kvótě** , které vám umožní přidat další informace. Následující části popisují různé možnosti pro **SQL Database** a SQL Database typy kvót **spravované instance** .
 
-## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a>SQL Database typy kvót
+## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a> SQL Database typy kvót
 
 Následující části popisují možnosti zvýšení kvóty pro **SQL Database** typy kvót:
 
@@ -93,7 +93,7 @@ Pomocí následujících kroků můžete požádat o zvýšení počtu serverů 
 
 Další informace najdete v tématu [SQL Database omezení prostředků a zásady správného řízení prostředků](resource-limits-logical-server.md).
 
-### <a name="enable-subscription-access-to-a-region"></a><a id="region"></a>Povolit přístup k předplatnému pro oblast
+### <a name="enable-subscription-access-to-a-region"></a><a id="region"></a> Povolit přístup k předplatnému pro oblast
 
 Některé typy nabídek nejsou k dispozici v každé oblasti. Může se zobrazit chyba, například následující:
 
@@ -107,9 +107,9 @@ Pokud vaše předplatné potřebuje přístup v konkrétní oblasti, vyberte mo�
 
 1. Zadejte **Model nákupu**a očekávané podrobnosti o **spotřebě** .
 
-   ![Přístup k oblasti žádostí](./media/quota-increase-request/quota-details-whitelisting.png)
+   ![Přístup k oblasti žádostí](./media/quota-increase-request/quota-request.png)
 
-### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a>Povolit přístup k oblasti M-Series
+### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a> Povolit přístup k oblasti M-Series
 
 Pokud chcete povolit hardware řady M-Series pro předplatné a oblast, je nutné otevřít žádost o podporu.
 
@@ -118,9 +118,9 @@ Pokud chcete povolit hardware řady M-Series pro předplatné a oblast, je nutn�
 1. V seznamu **Vybrat umístění** vyberte oblast Azure, kterou chcete použít. Kvóta je vázaná na předplatné v každé oblasti.
 
 
-   ![Přístup k oblasti žádostí](./media/quota-increase-request/quota-m-series.png)
+   ![Žádost o přístup k oblasti řady M-Series](./media/quota-increase-request/quota-m-series.png)
 
-## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a>Typ kvóty spravované instance SQL
+## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> Typ kvóty spravované instance SQL
 
 Pro typ kvóty **spravované instance SQL** použijte následující postup:
 
