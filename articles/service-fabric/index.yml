@@ -6,14 +6,38 @@ metadata:
   ms.topic: landing-page
   author: erikadoyle
   ms.author: edoyle
-  ms.date: 12/04/2019
-  ms.openlocfilehash: a2651387a425439d09ad68b0e763ff0c6c3f7f27
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 07/31/2020
+  ms.openlocfilehash: 9bce6570cef2703bf1ad63d92c55bb3794927a8b
+  ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75452211"
+  ms.lasthandoff: 09/28/2020
+  ms.locfileid: "91408697"
 landingContent:
+- title: Vyzkoušení spravovaných clusterů služby Service Fabric (Preview)
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Co jsou spravované clustery služby Service Fabric (Preview)
+      url: overview-managed-cluster.md
+    - text: Nasazení spravovaného clusteru (Preview)
+      url: quickstart-managed-cluster-template.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření spravovaného clusteru (Preview)
+      url: tutorial-managed-cluster-deploy.md
+    - text: Škálování typu uzlu spravovaného clusteru na více instancí (Preview)
+      url: tutorial-managed-cluster-scale.md
+    - text: Přidání a odebrání typů uzlu spravovaného clusteru (Preview)
+      url: tutorial-managed-cluster-add-remove-node-type.md
+    - text: Nasazení aplikace do spravovaného clusteru (Preview)
+      url: tutorial-managed-cluster-deploy-app.md
+    - text: Přidání rozšíření škálovací sady virtuálních počítačů do typu uzlu spravovaného clusteru (Preview)
+      url: how-to-managed-cluster-vmss-extension.md
+  - linkListType: whats-new
+    links:
+    - text: Nejčastější dotazy ke spravovaným clusterům služby Service Fabric
+      url: faq-managed-cluster.md
 - title: Informace o službě Azure Service Fabric
   linkLists:
   - linkListType: overview

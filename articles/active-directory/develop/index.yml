@@ -3,18 +3,18 @@ title: Dokumentace k platformě Microsoft Identity Platform
 summary: Microsoft Identity Platform poskytuje službu ověřování, opensourcové knihovny a nástroje pro správu aplikací. Prostřednictvím našich rychlých zprovoznění, kurzů a ukázek kódu se naučíte vytvářet moderní řešení ověřování založená na standardech. Vytvářejte aplikace, ke kterým se uživatelé a zákazníkům přihlásí pomocí svých identit Microsoft nebo účtů na sociálních sítí, a autorizujte přístup k vašim rozhraním API nebo rozhraním API Microsoftu, jako je Microsoft Graph.
 metadata:
   ms.topic: landing-page
-  ms.date: 08/11/2020
+  ms.date: 09/26/2020
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: c0f87da61b0fa2d4aed57eeef7ee9829a17d0f80
-  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+  ms.openlocfilehash: d80d722594e717319bda473e2cb86551acc8d9f0
+  ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/25/2020
-  ms.locfileid: "91258366"
+  ms.lasthandoff: 09/28/2020
+  ms.locfileid: "91403139"
 landingContent:
 - title: O platformě Microsoft Identity Platform
   linkLists:
@@ -62,10 +62,10 @@ landingContent:
     links:
     - text: ASP.NET
       url: quickstart-v2-aspnet-webapp.md
-    - text: ASP.NET Core
+    - text: Jádro ASP.NET
       url: quickstart-v2-aspnet-core-webapp.md
-    - text: Python
-      url: quickstart-v2-python-webapp.md
+    - text: Blazor Server
+      url: tutorial-blazor-server.md
 - title: Mobilní/nativní aplikace
   linkLists:
   - linkListType: get-started
@@ -120,6 +120,8 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: 'Kurz: Blazor Server'
+      url: tutorial-blazor-server.md
     - text: 'Rychlý start: Ochrana webového rozhraní API ASP.NET Core'
       url: quickstart-v2-aspnet-core-web-api.md
     - text: Referenční informace k rozhraní Python API pro MSAL
@@ -136,5 +138,3 @@ landingContent:
       url: msal-android-handling-exceptions.md
     - text: Atributy rozšíření schématu adresáře v deklaracích identity
       url: active-directory-schema-extensions.md
-    - text: Ověřovací kód MSAL.js 2.0 + PKCE a CORS
-      url: quickstart-v2-javascript-auth-code.md

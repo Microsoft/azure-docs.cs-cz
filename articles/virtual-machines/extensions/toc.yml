@@ -52,12 +52,14 @@
           href: vmsnapshot-linux.md
         - name: Windows
           href: vmsnapshot-windows.md
-    - name: Agent Network Watcher
+    - name: Rozšíření služby Network Watcher
       items:
         - name: Linux
           href: network-watcher-linux.md
         - name: Windows
           href: network-watcher-windows.md
+        - name: Aktualizace na nejnovější verzi
+          href: network-watcher-update.md
     - name: Ovladače InfiniBand
       items:
         - name: Linux

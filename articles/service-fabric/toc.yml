@@ -4,12 +4,16 @@
   items:
     - name: Co je Service Fabric?
       href: service-fabric-overview.md
+    - name: Spravované clustery služby Service Fabric
+      href: overview-managed-cluster.md
 - name: Rychlé starty
   expanded: true
   items:
     - name: Šablona ARM
       displayName: Resource Manager
       href: quickstart-cluster-template.md
+    - name: Spravovaný cluster
+      href: quickstart-managed-cluster-template.md
     - name: Vytvoření aplikace .NET
       href: service-fabric-quickstart-dotnet.md
     - name: Nasazení aplikace typu kontejner pro Linux
@@ -64,6 +68,16 @@
           href: service-fabric-tutorial-package-containers.md
         - name: 3. Převzetí služeb při selhání a škálování
           href: service-fabric-tutorial-containers-failover.md
+    - name: Vytvoření spravovaného clusteru Service Fabric
+      items:
+        - name: 1. Nasazení spravovaného clusteru Service Fabric
+          href: tutorial-managed-cluster-deploy.md
+        - name: 2. Škálování typu uzlu spravovaného clusteru na více instancí
+          href: tutorial-managed-cluster-scale.md
+        - name: 3. Přidání a odebrání typů uzlu spravovaného clusteru
+          href: tutorial-managed-cluster-add-remove-node-type.md
+        - name: 4. Připojení ke spravovanému clusteru a nasazení aplikace
+          href: tutorial-managed-cluster-deploy-app.md
     - name: Vytvoření a správa clusteru
       items:
         - name: 1. Vytvoření clusteru v Azure
@@ -155,7 +169,7 @@
           items:
             - name: Přehled kontejnerů
               href: service-fabric-containers-overview.md
-            - name: Docker Compose (Preview)
+            - name: Docker Compose
               href: service-fabric-docker-compose.md
             - name: Sondy
               href: probes-codepackage.md
@@ -430,7 +444,7 @@
               href: service-fabric-deploy-existing-app.md
         - name: Sestavení služby kontejneru
           items:
-            - name: Docker Compose (Preview)
+            - name: Docker Compose
               href: service-fabric-docker-compose.md
             - name: Svazek a ovladače protokolování
               href: service-fabric-containers-volume-logging-drivers.md
@@ -509,7 +523,7 @@
                   href: service-fabric-application-secret-management-windows.md
                 - name: Nastavení šifrovacího certifikátu a šifrování tajných kódů v Linuxu
                   href: service-fabric-application-secret-management-linux.md
-                - name: Bezpečné ukládání tajných kódů pomocí KeyVaultReference (Preview)
+                - name: Bezpečné ukládání tajných kódů pomocí KeyVaultReference
                   href: service-fabric-keyvault-references.md
             - name: Konfigurace reverzního proxy serveru pro zabezpečenou komunikaci
               href: service-fabric-reverseproxy-configure-secure-communication.md
@@ -675,6 +689,8 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: Upgrade
               items:
+                - name: Přidání rozšíření škálovací sady virtuálních počítačů do typu uzlu spravovaného clusteru
+                  href: how-to-managed-cluster-vmss-extension.md
                 - name: Upgrade verze Service Fabric
                   href: service-fabric-cluster-upgrade-version-azure.md
                 - name: Upgrade konfigurace clusteru
@@ -901,6 +917,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Časté dotazy
       href: service-fabric-common-questions.md
+    - name: Běžné dotazy ke spravovaným clusterům služby Service Fabric
+      href: faq-managed-cluster.md
     - name: Stránka s dotazy na Microsoft Q&A
       href: /answers/topics/azure-service-fabric.html
     - name: Ochranné mantinely nasazení Azure Resource Manageru

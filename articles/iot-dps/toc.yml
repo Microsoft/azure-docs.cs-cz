@@ -46,7 +46,7 @@
         - name: Zřizování pro architekturu s více tenanty
           href: how-to-provision-multitenant.md
         - name: Používání vlastních zásad přidělování
-          href: how-to-use-custom-allocation-policies.md
+          href: tutorial-custom-allocation-policies.md
 - name: ukázky
   items:
     - name: Ukázka ověřování simulovaného zařízení TPM
@@ -109,6 +109,8 @@
   items:
     - name: Připojení sady MXChip IoT DevKit ke službě IoT Hub
       href: how-to-connect-mxchip-iot-devkit.md
+    - name: Zřizování zařízení s využitím vlastních zásad přidělování
+      href: how-to-use-custom-allocation-policies.md
     - name: Správa služby zřizování zařízení
       items:
         - name: Správa registrací – portál
