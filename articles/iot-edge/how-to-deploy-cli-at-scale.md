@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: ebc4f25496588eeaffbfe89e110bad57dbbc848e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8b9c8107c102409b717da0a277b7cdd360e9c8ee
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501555"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439665"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Nasazení a sledování IoT Edgech modulů ve velkém měřítku pomocí rozhraní příkazového řádku Azure
 
@@ -29,7 +29,7 @@ V tomto článku nastavíte rozhraní příkazového řádku Azure a rozšířen
 
 * [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) ve vašem předplatném Azure.
 * [IoT Edge zařízení](how-to-register-device.md#prerequisites-for-the-azure-cli) s nainstalovaným modulem runtime IoT Edge.
-* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az --version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack.
+* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) ve vašem prostředí. Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az --version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack.
 * [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension)
 
 ## <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení
@@ -183,7 +183,7 @@ Další informace o tom, jaké jsou vlákna a značky zařízení, najdete [v t�
 
 Moduly můžete nasadit do cílových zařízení vytvořením nasazení, které se skládá z manifestu nasazení a také dalších parametrů.
 
-Pomocí příkazu [AZ IoT Edge Deployment Create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-create) vytvořte nasazení:
+Pomocí příkazu [AZ IoT Edge Deployment Create](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-create) vytvořte nasazení:
 
 ```cli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
@@ -216,7 +216,7 @@ Pokud aktualizujete cílovou podmínku, dojde k následujícím aktualizacím:
 
 Nemůžete aktualizovat obsah nasazení, který zahrnuje moduly a trasy definované v manifestu nasazení. Pokud chcete aktualizovat obsah nasazení, provedete to tak, že vytvoříte nové nasazení, které cílí na stejná zařízení s vyšší prioritou. Můžete upravit některé vlastnosti existujícího modulu, včetně cílové podmínky, popisků, metrik a priority.
 
-Pomocí příkazu [AZ IoT Edge Deployment Update](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-update) aktualizujte nasazení:
+Pomocí příkazu [AZ IoT Edge Deployment Update](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-update) aktualizujte nasazení:
 
 ```cli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
@@ -225,9 +225,9 @@ az iot edge deployment update --deployment-id [deployment id] --hub-name [hub na
 Příkaz pro aktualizaci nasazení má následující parametry:
 
 * **--Deployment-ID** – název nasazení, které existuje ve službě IoT Hub.
-* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu.`az account set -s [subscription name]`
+* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu. `az account set -s [subscription name]`
 * **--set** -aktualizuje vlastnost v nasazení. Můžete aktualizovat tyto vlastnosti:
-  * targetCondition – například`targetCondition=tags.location.state='Oregon'`
+  * targetCondition – například `targetCondition=tags.location.state='Oregon'`
   * popisky
   * upřednostněn
 * **--Přidat** – přidá do nasazení novou vlastnost, včetně cílových podmínek nebo popisků.
@@ -237,7 +237,7 @@ Příkaz pro aktualizaci nasazení má následující parametry:
 
 Při odstranění nasazení převezmou všechna zařízení nasazení s další nejvyšší prioritou. Pokud zařízení nesplňuje cílovou podmínku jakéhokoli jiného nasazení, moduly se po odstranění nasazení neodeberou.
 
-Pomocí příkazu [AZ IoT Edge Deployment Delete](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-delete) odstraňte nasazení:
+Pomocí příkazu [AZ IoT Edge Deployment Delete](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-delete) odstraňte nasazení:
 
 ```cli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name]
@@ -246,7 +246,7 @@ az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub na
 Příkaz pro odstranění nasazení má následující parametry:
 
 * **--Deployment-ID** – název nasazení, které existuje ve službě IoT Hub.
-* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu.`az account set -s [subscription name]`
+* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu. `az account set -s [subscription name]`
 
 ## <a name="next-steps"></a>Další kroky
 

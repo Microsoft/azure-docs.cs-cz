@@ -7,17 +7,17 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 556177b0f3eb156f5b128995cb81555aa77bc8d2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b1bd0ff28906f35ddc56afbd0287bbe29879deb4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289901"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91438938"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -245,7 +245,7 @@ Doporučení **verze Preview** navíc nevykreslují prostředek "není v pořád
 
 Příklad doporučení verze Preview:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Doporučení s příznakem Preview":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Zahrnout zjištění zabezpečení – přepnout do konfigurace průběžného exportu":::
 
 [Přečtěte si další informace o zabezpečeném skóre](secure-score-security-controls.md).
 
@@ -254,7 +254,7 @@ Příklad doporučení verze Preview:
 
 Stránka s podrobnostmi pro doporučení nyní obsahuje indikátor intervalu aktuálnosti (kdykoli je to relevantní) a jasné zobrazení závažnosti doporučení.
 
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Stránka s doporučeními ukazující aktuálnost a závažnost":::
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Zahrnout zjištění zabezpečení – přepnout do konfigurace průběžného exportu":::
 
 
 
@@ -335,7 +335,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 ||||
 
 
-|Zásady|Obor|
+|Zásada|Obor|
 |----|:----|
 |**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9|Integrované|
 |**Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.**<br>ID zásady: 760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
@@ -350,7 +350,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 |**Ohrožení zabezpečení ve vašich virtuálních počítačích by se mělo opravit.**<br>Klíč: 1195afff-c881-495E-9bc5-1486211ae03f|Předdefinované + BYOL|
 ||||
 
-|Zásady|Obor|
+|Zásada|Obor|
 |----|:----|
 |[**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Předdefinované + BYOL|
 ||||
@@ -551,7 +551,7 @@ K nasazení konfigurací automatizace napříč vaší organizací použijte tyt
 Zásady najdete v části zásady Azure:
 
 
-|Cíl  |Zásady  |ID zásady  |
+|Cíl  |Zásada  |ID zásady  |
 |---------|---------|---------|
 |Průběžný export do centra událostí|[Nasazení exportu do centra událostí pro Azure Security Center výstrahy a doporučení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
 |Průběžný export do pracovního prostoru Log Analytics|[Nasazení exportu do Log Analytics pracovního prostoru pro Azure Security Center výstrahy a doporučení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
@@ -584,7 +584,7 @@ Nové zásady níže byly přidány do výchozí iniciativy ASC a jsou určeny p
 Zásady najdete v části zásady Azure:
 
 
-| Zásady                                                                                                                                                                                                                                                                | ID zásady                            |
+| Zásada                                                                                                                                                                                                                                                                | ID zásady                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
 | [V Azure SQL Databasech serverech by mělo být povolené rozšířené zabezpečení dat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)     | 7fe3b40f-802b-4cdd-8bd4-fd799c948cc2 |
 | [Rozšířené zabezpečení dat by mělo být povoleno na serverech SQL na počítačích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b) | 6581d072-105e-4418-827f-bd446d56421b |
@@ -678,7 +678,7 @@ Ovládací prvky zabezpečení – a tento přepínač jsou součástí nového 
 
 Přečtěte si další informace o ovládacích prvcích zabezpečení v [rozšířeném zabezpečeném skóre (Preview) v Azure Security Center](secure-score-security-controls.md).
 
-:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Přepínací tlačítko Seskupit podle ovládacích prvků pro doporučení":::
+:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Zahrnout zjištění zabezpečení – přepnout do konfigurace průběžného exportu":::
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Rozšířené řízení zabezpečení "implementovat osvědčené postupy zabezpečení" 
 

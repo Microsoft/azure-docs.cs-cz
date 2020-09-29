@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: f0ff647581447ad4436daf6c8b1d2ecbf817f7f8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 78165e9c14d4a83dbc20cbccd2f31dc8ac4c79ed
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983636"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440857"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Protokoly a metriky služby Azure Virtual WAN
 
@@ -66,7 +66,7 @@ Následující kroky vám pomůžou najít a zobrazit metriky:
 
 4. Na stránce **metriky** můžete zobrazit metriky, které vás zajímají.
 
-   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="Stránka metriky":::
+   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="Snímek obrazovky zobrazuje podokno site to site V P N s zobrazením Azure Monitor vybrané.":::
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic"></a>Diagnostické protokoly
 
@@ -93,15 +93,15 @@ Následující kroky vám pomůžou najít a zobrazit diagnostiku:
 
 1. Na portálu přejděte na prostředek virtuální sítě WAN. V části **Přehled** na stránce virtuální síť WAN na portálu vyberte **základy** a rozbalte zobrazení a získejte informace o skupině prostředků. Zkopírujte informace o skupině prostředků.
 
-   :::image type="content" source="./media/logs-metrics/3.png" alt-text="Stránka metriky":::
+   :::image type="content" source="./media/logs-metrics/3.png" alt-text="Snímek obrazovky zobrazuje podokno site to site V P N s zobrazením Azure Monitor vybrané.":::
 
 2. V části monitorování přejděte do skupiny prostředků. Vyberte **nastavení diagnostiky**a pak zadejte informace o zdroji. Toto jsou informace o prostředcích, které jste zkopírovali v kroku 2 v části [Zobrazit metriky brány](#metrics-steps) , dříve v tomto článku.
 
-   :::image type="content" source="./media/logs-metrics/4.png" alt-text="Stránka metriky":::
+   :::image type="content" source="./media/logs-metrics/4.png" alt-text="Snímek obrazovky zobrazuje podokno site to site V P N s zobrazením Azure Monitor vybrané.":::
 
 3. Na stránce výsledky vyberte **+ Přidat nastavení diagnostiky**a pak vyberte možnost. Můžete se rozhodnout, že se má Log Analytics, streamovat do centra událostí nebo jednoduše archivovat do účtu úložiště.
 
-   :::image type="content" source="./media/logs-metrics/5.png" alt-text="Stránka metriky":::
+   :::image type="content" source="./media/logs-metrics/5.png" alt-text="Snímek obrazovky zobrazuje podokno site to site V P N s zobrazením Azure Monitor vybrané.":::
 
 ### <a name="log-analytics-sample-query"></a><a name="sample-query"></a>Ukázkový dotaz Log Analytics
 

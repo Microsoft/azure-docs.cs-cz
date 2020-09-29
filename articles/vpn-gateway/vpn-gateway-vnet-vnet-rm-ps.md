@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1b1cd0adb8581c7aa94f0de85a9f8beab38da112
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: edd9f9f3127178f168f6c768b092a7ec6311e7bf
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398558"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440933"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí PowerShellu
 
@@ -67,7 +67,7 @@ Pro toto cvičení můžete konfigurace kombinovat nebo prostě vybrat tu, se kt
 
 * [Virtuální sítě patřící do stejného předplatného:](#samesub) V postupu pro tuto konfiguraci se používají sítě TestVNet1 a TestVNet4.
 
-  ![Diagram v2v](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+  ![Diagram, který znázorňuje síťové kroky NET-to-V pro sítě V sítích, které jsou umístěné ve stejném předplatném.](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 * [Virtuální sítě nacházející se v různých předplatných](#difsub): kroky pro tuto konfiguraci využívají virtuální sítě testvnet1 a TestVNet5.
 
@@ -203,7 +203,7 @@ V příkladech používáme následující hodnoty:
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-Až skončíte s příkazy, může trvat až 45 minut, než se tato brána vytvoří. Pokud používáte Azure Cloud Shell, můžete restartovat relaci Cloudshellu kliknutím do levého horního rohu Cloud Shell terminálu a potom nakonfigurovat virtuální sítě testvnet4. Nemusíte čekat, než se dokončí Brána virtuální sítě testvnet1.
+Až skončíte s příkazy, může trvat až 45 minut, než se tato brána vytvoří. Pokud používáte Azure Cloud Shell, můžete relaci Cloud Shell restartovat kliknutím do levého horního rohu Cloud Shell terminálu a pak na nakonfigurovat virtuální sítě testvnet4. Nemusíte čekat, než se dokončí Brána virtuální sítě testvnet1.
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>Krok 3: Vytvoření a konfigurace virtuální sítě TestVNet4
 
@@ -475,7 +475,7 @@ Jelikož brány v tomto příkladu patří do různých předplatných, rozděl�
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-[!INCLUDE [verify connections powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+[!INCLUDE [verify connections PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
 ## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>Nejčastější dotazy týkající se propojení VNet-to-VNet
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c2589b47c1619dd528ab843dcf4befd0da227d16
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b8ee222b7d65fe9b6b9a605bf055e127aef58ff9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331484"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439299"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disků virtuálních počítačů Azure IaaS a spravovaných a nespravovaných disků Premium
 
@@ -304,7 +304,7 @@ No. K dispozici je Azure Site Recovery ochrany Azure do Azure pro virtuální po
 
 **Můžu migrovat virtuální počítače s nespravovanými disky, které se nacházejí v účtech úložiště, které jsou nebo byly předtím zašifrované na spravované disky?**
 
-Yes
+Ano
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks a Šifrování služby Storage
 
@@ -342,7 +342,7 @@ Ano. Všechny spravované snímky a obrázky se zašifrují automaticky.
 
 **Můžu převést virtuální počítače s nespravovanými disky, které se nacházejí v účtech úložiště, které jsou nebo byly předtím zašifrované na spravované disky?**
 
-Yes
+Ano
 
 **Bude exportovaný virtuální pevný disk ze spravovaného disku nebo snímku taky zašifrovaný?**
 
@@ -398,7 +398,7 @@ Ne, standardní disky SSD na libovolné velikosti se nedají použít u nespravo
 
 **Jaká je největší velikost spravovaného disku podporovaná pro operační systém a datové disky?**
 
-Typ oddílu, který Azure podporuje pro disk s operačním systémem, je hlavním spouštěcím záznamem (MBR). Formát MBR podporuje velikost disku až 2 TiB. Největší velikost, kterou Azure podporuje pro disk s operačním systémem, je 4 TiB. Azure podporuje až 32 TiB pro spravované datové disky.
+Typ oddílu, který Azure podporuje pro disk s operačním systémem, je hlavním spouštěcím záznamem (MBR) a tabulkou oddílů GUID (GPT) pro virtuální počítače s 1 a 2. generace. Formát MBR podporuje velikost disku až 2 TiB. U virtuálních počítačů 1.1 můžete v případě, že přidělíte až 4 TiB, použít pouze až 2 TiB tohoto místa na disku pro operační systém. V případě virtuálních počítačů 2. generace je největší velikost, kterou můžete přidělit a používat pro disk s operačním systémem, 4 TiB. Azure podporuje až 32 TiB pro spravované datové disky.
 
 **Jaká je největší velikost nespravovaného disku podporovaná pro operační systém a datové disky?**
 

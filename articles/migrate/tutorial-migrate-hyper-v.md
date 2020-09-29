@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 10e17a4fba1adbccf71497c54060fda2f60088ab
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 842513536bf4dbfc0a3e3bd82905b397da9fa6c4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90525333"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439071"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrace virtuálních počítačů Hyper-V do Azure 
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak migrovat místní virtuální počítače Hype
 Tento kurz je třetí v řadě, který ukazuje, jak vyhodnocovat a migrovat počítače do Azure. 
 
 > [!NOTE]
-> Kurzy vám ukážou nejjednodušší cestu nasazení pro scénář, abyste mohli rychle nastavit zkušební verzi. Kurzy používají výchozí možnosti, pokud je to možné, a nezobrazují všechna možná nastavení a cesty. 
+> Kurzy vám ukážou nejjednodušší cestu nasazení pro scénář, abyste mohli rychle nastavit zkušební verzi. V těchto kurzech se v rámci možností používají jen výchozí možnosti a neuvádějí se všechny varianty nastavení ani všechny cesty. 
 
  V tomto kurzu se naučíte:
 
@@ -31,7 +31,7 @@ Tento kurz je třetí v řadě, který ukazuje, jak vyhodnocovat a migrovat poč
 > * Spusťte test migrace a ujistěte se, že vše funguje podle očekávání.
 > * Spusťte úplnou migraci virtuálního počítače.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -133,7 +133,7 @@ Po dokončení zjišťování můžete zahájit replikaci virtuálních počíta
 
     ![Nastavení výpočetního virtuálního počítače](./media/tutorial-migrate-hyper-v/compute-settings.png)
 
-12. V části **Disky** zadejte, jestli se mají disky virtuálních počítačů replikovat do Azure, a vyberte typ disků (disky SSD nebo HDD úrovně Standard nebo spravované disky úrovně Premium) v Azure. Potom klikněte na **Další**.
+12. V části **disky**zadejte disky virtuálních počítačů, které se musí replikovat do Azure. Potom klikněte na **Další**.
     - Disky můžete z replikace vyloučit.
     - Pokud disky vyloučíte, po migraci nebudou na virtuálním počítači Azure. 
 

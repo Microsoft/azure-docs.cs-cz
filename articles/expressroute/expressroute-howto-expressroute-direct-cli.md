@@ -1,23 +1,23 @@
 ---
 title: 'Azure ExpressRoute: Konfigurace ExpressRoute Direct: CLI'
-description: Přečtěte si, jak pomocí Azure CLI nakonfigurovat Azure ExpressRoute Direct pro přímé připojení k globální síti Microsoftu v umístěních partnerských vztahů po celém světě.
+description: Naučte se pomocí Azure CLI nakonfigurovat Azure ExpressRoute Direct pro přímé připojení k globální síti Microsoft.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 09/28/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4eea79d6166ef4beae3b2d61e47e7df0bc82624c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e8c305da074f3090ced0dfc16b4a3faa4c757699
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395957"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440210"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurace ExpressRoute Direct pomocí Azure CLI
 
-Azure ExpressRoute Direct můžete použít k přímému připojení k globální síti Microsoftu při partnerských umístěních, která jsou strategicky distribuována po celém světě. Další informace najdete v tématu [informace o přímém připojení ExpressRoute](expressroute-erdirect-about.md).
+ExpressRoute Direct vám umožní přímo se připojit k globální síti Microsoftu prostřednictvím umístění partnerských vztahů, které jsou v celém světě strategické distribuce. Další informace najdete v tématu [informace o přímém připojení ExpressRoute](expressroute-erdirect-about.md).
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Vytvoření prostředku
 
@@ -209,7 +209,13 @@ Azure ExpressRoute Direct můžete použít k přímému připojení k globáln�
    }  
    ```
 
-## <a name="change-adminstate-for-links"></a><a name="state"></a>Změnit AdminState pro odkazy
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Vygenerovat písmeno autorizace (LOA)
+
+Zadejte nedávno vytvořený název prostředku ExpressRoute Direct, název skupiny prostředků a název zákazníka pro zápis LOA do a (volitelně) definujte umístění souboru pro uložení dokumentu. Pokud na cestu k souboru neodkazuje, dokument se stáhne do aktuálního adresáře.
+
+```azurecli
+az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
+```
 
 Tento postup použijte k provedení testu vrstvy 1. Ujistěte se, že každé připojení mezi jednotlivými směrovači v primárních a sekundárních portech je správně opravené.
 
@@ -287,7 +293,8 @@ Další šířky pásma okruhů v ExpressRoute můžete použít jenom pro podpo
 
 **SkuTier** může být Local, Standard nebo Premium.
 
-**SkuFamily** musí být MeteredData pouze v případě, že v ExpressRoute Direct není podporována žádná neomezená velikost.
+**SkuFamily** může být MeteredData. V ExpressRoute Direct se nepodporuje neomezený počet.
+
 Vytvořte okruh na prostředku ExpressRoute Direct:
 
   ```azurecli

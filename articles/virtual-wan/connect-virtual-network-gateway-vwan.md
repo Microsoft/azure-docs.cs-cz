@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6dac922f1a50dd54973f7eefff7011aab3b49994
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 29f5b549bd5f5dbc421487739bb1eb8c7f120bb0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983747"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441029"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Připojit VPN Gateway (bránu virtuální sítě) k virtuální síti WAN
 
@@ -83,7 +83,7 @@ V této části si stáhnete konfigurační soubor sítě VPN pro každý z web�
 
 1. V horní části stránky **sítě VPN** virtuálních sítí WAN vyberte **lokalitu**a pak vyberte možnost **Stáhnout konfiguraci sítě VPN typu Site-to-site**. Azure vytvoří konfigurační soubor s nastavením.
 
-   ![stažení konfiguračního souboru](./media/connect-virtual-network-gateway-vwan/download.png "stáhnout")
+   ![Snímek obrazovky zobrazující stránku VPN Sites s vybranou akcí stáhnout konfiguraci site-to-Site VPN](./media/connect-virtual-network-gateway-vwan/download.png "stáhnout")
 2. Stáhněte a otevřete konfigurační soubor.
 3. Opakujte tento postup pro druhý Web. Jakmile budete mít oba konfigurační soubory otevřené, můžete přejít k další části.
 
@@ -98,7 +98,7 @@ V této části vytvoříte dvě brány místní sítě Azure VPN Gateway. Konfi
    * **Předplatné, skupina prostředků a umístění** jsou stejné jako pro virtuální síť WAN.
 2. Zkontrolujte a vytvořte bránu místní sítě. Brána místní sítě by měla vypadat podobně jako v tomto příkladu.
 
-   ![stažení konfiguračního souboru](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
+   ![Snímek obrazovky zobrazující stránku konfigurace s zvýrazněnou IP adresou a vybranou možností konfigurovat nastavení protokolu BGP](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
 3. Zopakováním těchto kroků vytvořte jinou bránu místní sítě, ale tentokrát použijte hodnoty ' položku instance1 ' namísto hodnot ' Instance0 ' z konfiguračního souboru.
 
    ![stažení konfiguračního souboru](./media/connect-virtual-network-gateway-vwan/lng2.png "položku instance1")

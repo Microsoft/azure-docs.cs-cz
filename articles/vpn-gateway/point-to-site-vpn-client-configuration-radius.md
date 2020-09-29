@@ -1,22 +1,22 @@
 ---
 title: 'Azure VPN Gateway: vytvoření & instalace konfiguračních souborů klienta VPN – připojení RADIUS P2S'
-description: Vytvořte konfigurační soubory klienta VPN pro Windows, Mac OS X a Linux pro připojení, která používají ověřování pomocí protokolu RADIUS.
+description: Vytvořte konfigurační soubory klienta VPN systému Windows, OS X a Linux pro připojení, která používají ověřování pomocí protokolu RADIUS.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 35631c8a0b66ade1457228ba16150f94f761f7b3
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: e6d811e19bb19c8c8bf96764cfcca2b1294f4a85
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419907"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440065"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro ověřování RADIUS P2S
 
-Pokud se chcete připojit k virtuální síti přes Point-to-Site (P2S), musíte nakonfigurovat klientské zařízení, ze kterého se budete připojovat. Můžete vytvořit P2S připojení VPN z klientských zařízení s Windows, Mac OS X a Linux. 
+Pokud se chcete připojit k virtuální síti přes Point-to-Site (P2S), musíte nakonfigurovat klientské zařízení, ze kterého se budete připojovat. Můžete vytvořit P2S připojení VPN z klientských zařízení s Windows, OS X a Linux. 
 
 Pokud používáte ověřování RADIUS, je k dispozici více možností ověřování: ověřování uživatelského jména a hesla, ověřování certifikátů a další typy ověřování. Konfigurace klienta VPN se liší pro každý typ ověřování. Chcete-li nakonfigurovat klienta VPN, použijte konfigurační soubory klienta, které obsahují požadovaná nastavení. Tento článek vám pomůže vytvořit a nainstalovat konfiguraci klienta VPN pro typ ověřování RADIUS, který chcete použít.
 
@@ -36,7 +36,7 @@ Pracovní postup konfigurace pro ověřování RADIUS P2S je následující:
 >
 >
 
-Chcete-li použít části v tomto článku, nejprve se rozhodněte, jaký typ ověřování chcete použít: uživatelské jméno/heslo, certifikát nebo jiné typy ověřování. Každá část obsahuje kroky pro Windows, Mac OS X a Linux (k dispozici jsou v tuto chvíli omezené kroky).
+Chcete-li použít části v tomto článku, nejprve se rozhodněte, jaký typ ověřování chcete použít: uživatelské jméno/heslo, certifikát nebo jiné typy ověřování. Každá část obsahuje kroky pro Windows, OS X a Linux (k dispozici jsou jenom omezené kroky).
 
 
 ## <a name="usernamepassword-authentication"></a><a name="adeap"></a>Ověřování uživatelského jména a hesla
@@ -142,9 +142,9 @@ Pomocí následujících kroků nakonfigurujte nativního klienta VPN systému W
 10. Připojení VPN se zobrazuje jako **IkeV2-VPN**. Název můžete změnit tak, že aktualizujete soubor **mobileconfig** .
 
     ![Podrobnosti o připojení VPN](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
-11. Vyberte **nastavení ověřování**. V seznamu vyberte **uživatelské jméno** a zadejte svoje přihlašovací údaje. Pokud jste dříve zadali přihlašovací údaje, pak se **uživatelské jméno** automaticky vybere v seznamu a uživatelské jméno a heslo se předem vyplní. Kliknutím na **OK** uložte nastavení.
+11. Vyberte **nastavení ověřování**. V seznamu vyberte **uživatelské jméno** a zadejte svoje přihlašovací údaje. Pokud jste dříve zadali přihlašovací údaje, pak se **uživatelské jméno** automaticky vybere v seznamu a uživatelské jméno a heslo budou předem vyplněné. Kliknutím na **OK** uložte nastavení.
 
-    ![Nastavení ověřování](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
+    ![Snímek obrazovky, který zobrazuje rozevírací seznam "nastavení ověřování" s vybraným názvem "username".](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
 12. Zpátky v dialogovém okně **síť** vyberte **použít** a uložte změny. Připojení spustíte tak, že vyberete **připojit**.
 
 #### <a name="linux-vpn-client-setup-through-strongswan"></a><a name="adlinuxcli"></a>Nastavení klienta VPN pro Linux prostřednictvím klient strongswan

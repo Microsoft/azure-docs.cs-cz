@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 880d8ee0e6e2b3984f6bea4b994642724085d512
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 28afa98313ef1c9577e90ed161a1d20cbf5faf75
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90980541"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440199"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Kurz: nasazení a procházení šablonou aplikace centra pro pořizování
 
@@ -62,11 +62,11 @@ Z řídicího panelu můžete:
    * Zobrazení plánu a umístění automatických dopravců v rámci struktury plnění.
    * Příkazy triggeru, jako je resetování systému řízení, aktualizace firmwaru dopravce a změna konfigurace sítě.
 
-     ![Snímek obrazovky s horní polovinou řídicího panelu Northwind Traders Micro-doplňování](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Snímek obrazovky s horní polovinou řídicího panelu pro Northwind Traders Micro Center](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
    * Podívejte se na příklad řídicího panelu, který může operátor použít k monitorování podmínek v rámci centra plnění. 
    * Monitorujte stav datových částí, které jsou spuštěny na zařízení brány v rámci centra plnění.    
 
-     ![Snímek obrazovky Botton poloviny řídicího panelu centra Northwind Traders Micro](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Snímek obrazovky Botton poloviny řídicího panelu pro Northwind Traders Micro.](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
 
 ## <a name="device-template"></a>Šablona zařízení
 Pokud vyberete kartu šablony zařízení, uvidíte, že existují dva různé typy zařízení, které jsou součástí šablony: 

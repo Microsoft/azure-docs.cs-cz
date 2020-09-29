@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 09/28/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d03391ba5a82c128197c86ea6ed84389552fadb9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908597"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439840"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Prvky e-mailu s pozvánkou pro spolupráci B2B Azure Active Directory
 
@@ -75,7 +75,21 @@ Další část e-mailu obsahuje informace o tom, kde se Pozvánka přijme po př
 Zápatí obsahuje další informace o odeslané pozvánce. K blokování budoucích pozvánek je vždy k dispozici možnost pozvání. Pokud organizace [nastavila prohlášení o zásadách ochrany osobních údajů](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area), zobrazí se tady odkaz na tento příkaz.  V opačném případě Poznámka znamená, že organizace nevytvořila prohlášení o zásadách ochrany osobních údajů.
 
 ![Obrázek části zápatí v e-mailu](media/invitation-email-elements/footer-section.png)
- 
+
+### <a name="blocking-an-organization-unsubscribing"></a>Blokování organizace (zrušení odběru)
+
+V pozvání od organizace obsahuje zápatí možnost **blokovat budoucí pozvánky**. Uživatel typu Host může vybrat tento odkaz k blokování všech budoucích pozvání z organizace. Tato akce také přidá organizaci do seznamu odhlášeného uživatele v [https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) .
+
+### <a name="viewing-organizations-youve-blocked"></a>Zobrazení organizací, které jste zablokovali
+
+Uživatel typu Host může podle těchto kroků zobrazit nebo exportovat organizace, které zablokovali:
+
+1. Přejít na [https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) .
+2. Zadejte svůj e-mail a postupujte podle kroků pro přihlášení k e-mailu ověřování jednorázového hesla.
+3. Zobrazte si organizace, které jste zablokovali, nebo je exportujte pomocí kopírování a vložení.
+   > [!NOTE]
+   > Pokud chcete organizaci, kterou jste zablokovali, dovolit, aby vás pozvala, můžete zvolit organizaci a vybrat **Další**.
+
 ## <a name="how-the-language-is-determined"></a>Způsob určení jazyka
 
 Jazyk prezentovaný uživateli hosta v e-mailu s pozvánkou se určuje pomocí následujících nastavení. Tato nastavení jsou uvedena v pořadí podle priority. Pokud není nastavení nakonfigurované, bude jazyk určovat další nastavení v seznamu.

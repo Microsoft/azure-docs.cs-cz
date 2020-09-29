@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 8c89fcf22f669c97f2b17acce57c293eabcf96de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3179324dd71ebf3bb44cb68f0fd84486bb88e2ce
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009692"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441044"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Řešení potíží s aktivací virtuálního počítače Azure s Windows
 
@@ -61,7 +61,7 @@ Pro virtuální počítač vytvořený z vlastní image musíte nakonfigurovat p
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. Pokud se ve výstupu příkazu **slmgr.vbs /dlv** zobrazí kanál RETAIL, spuštěním následujících příkazů nastavte [instalační klíč klienta KMS](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v=ws.11)?f=255&MSPPError=-2147217396) pro používanou verzi Windows Serveru a vynuťte opakování aktivace: 
+2. Pokud se ve výstupu příkazu **slmgr.vbs /dlv** zobrazí kanál RETAIL, spuštěním následujících příkazů nastavte [instalační klíč klienta KMS](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys) pro používanou verzi Windows Serveru a vynuťte opakování aktivace: 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>
@@ -114,17 +114,17 @@ Pro virtuální počítač vytvořený z vlastní image musíte nakonfigurovat p
     
     **Aktivace systému Windows (R), edice ServerDatacenter (12345678-1234-1234-1234-12345678)...  Produkt byl úspěšně aktivován.**
 
-## <a name="faq"></a>Časté otázky 
+## <a name="faq"></a>Nejčastější dotazy 
 
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>Vytvořil (a) jsem Windows Server 2016 z Azure Marketplace. Potřebuji nakonfigurovat klíč služby správy klíčů pro aktivaci Windows serveru 2016? 
 
  
-Ne. Bitová kopie ve Azure Marketplace má již nakonfigurovaný příslušný instalační klíč klienta služby správy klíčů. 
+No. Bitová kopie ve Azure Marketplace má již nakonfigurovaný příslušný instalační klíč klienta služby správy klíčů. 
 
 ### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>Funguje aktivace Windows stejným způsobem bez ohledu na to, jestli virtuální počítač používá zvýhodněné hybridní využití Azure (centrum), nebo ne? 
 
  
-Yes. 
+Ano. 
  
 
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Co se stane, když vyprší doba aktivace Windows? 

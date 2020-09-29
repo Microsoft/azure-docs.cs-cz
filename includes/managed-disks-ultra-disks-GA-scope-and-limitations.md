@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/25/2020
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: db377a933507f9a25b377ba52ebd956416a1dfd2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7b41105bafedb8eeaffe5f266f5dd824957c57e0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328195"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441208"
 ---
 V současnosti mají extrémně disky další omezení, jsou následující:
 
@@ -35,7 +35,9 @@ V následující tabulce jsou popsány oblasti Ultra disks jsou k dispozici v n�
 |USA (Gov) – Arizona     |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
 |USA (Gov) – Virginia     |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
 |USA – západ     |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)        |
+|Austrálie – střed    |Pouze jeden virtuální počítač (skupiny dostupnosti a sady škálování virtuálních počítačů nejsou podporovány)|
 |Austrálie – východ     |Tři zóny dostupnosti         |
+|Southeast Asia    |Tři zóny dostupnosti        |
 |Kanada – střed *     |Tři zóny dostupnosti          |
 |USA – střed     |Tři zóny dostupnosti          |
 |East US     |Tři zóny dostupnosti          |
@@ -60,7 +62,7 @@ V následující tabulce jsou popsány oblasti Ultra disks jsou k dispozici v n�
     - [Dsv4](../articles/virtual-machines/dv4-dsv4-series.md#dsv4-series)
     - [FSv2](../articles/virtual-machines/fsv2-series.md)
     - [LSv2](../articles/virtual-machines/lsv2-series.md)
-    - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
+    - [Ú](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Ne všechny velikosti virtuálních počítačů jsou k dispozici v každé podporované oblasti s disky Ultra.
 - Jsou k dispozici pouze jako datové disky. 

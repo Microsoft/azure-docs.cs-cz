@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: aa262b0be3902f6e143a53f8f1302156fc5aede6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82c800df03826386c8b79d45584f4b26b0bc45e4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582990"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440661"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Správa uživatelských dat nalezených v Azure Security Center šetření
 Tento článek poskytuje informace o tom, jak spravovat uživatelská data zjištěná v rámci vyšetřovací funkce Azure Security Center. Data o vyšetřování jsou uložená v [protokolech Azure monitor](../log-analytics/log-analytics-overview.md) a zpřístupněna v Security Center. Správa uživatelských dat zahrnuje možnost odstraňovat nebo exportovat data.

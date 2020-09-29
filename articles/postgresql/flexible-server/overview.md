@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/22/2020
-ms.openlocfilehash: 71cf11673756dcefb828ad1fad0412a791b43efd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 268eedf6f9d64d52539e20006322b6b1dd9964e8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946919"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439969"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL – flexibilní Server
 
@@ -49,15 +49,14 @@ Při výpadku plánovaných nebo neplánovaných událostí pro převzetí služ
 1. Zřizuje se nový virtuální počítač pro výpočet Linux.
 2. Úložiště s datovými soubory je namapované na nový virtuální počítač.
 3. Databázový stroj PostgreSQL se na novém virtuálním počítači přepne do online režimu.
-4. Služba brány zajišťuje transparentní převzetí služeb při selhání, které nevyžadují žádné změny na straně aplikace.
 
 Následující obrázek ukazuje přechod pro virtuální počítač a selhání úložiště.
 
- :::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine-storage-failure.png" alt-text="Flexibilní selhání serveru – virtuální počítače a úložiště":::
+ :::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine.png" alt-text="Flexibilní selhání serveru – virtuální počítače a úložiště":::
 
 Pokud je nakonfigurovaná vysoká dostupnost zóny, služba zřídí a udržuje aktivní pohotovostní server napříč zónou dostupnosti v rámci stejné oblasti Azure. Změny dat na zdrojovém serveru se synchronně replikují na pohotovostní server, aby se zajistila nulová ztráta dat. Pokud se po aktivaci plánované nebo neplánované události převzetí služeb při selhání spustí záložní server s vysokou dostupností, bude pohotovostní server okamžitě online a bude k dispozici pro zpracování příchozích transakcí. To umožňuje odolnost služby před selháním zóny dostupnosti v oblasti Azure, která podporuje více zón dostupnosti, jak je znázorněno na obrázku níže.
 
- :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Redundantní vysoká dostupnost zóny":::
+ :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Flexibilní selhání serveru – virtuální počítače a úložiště":::
 
  Další podrobnosti najdete v [dokumentu vysoké dostupnosti](./concepts-high-availability.md) .
 

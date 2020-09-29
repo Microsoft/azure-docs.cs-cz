@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 6f13a465aa43f0c45fa99d2ea396a5ca92d75d66
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 47cf0a1f1d40b9e8358d6bdb4a3ea6a501b67da2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85446364"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439214"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>Odeslání protokolu aktivit Azure do Log Analytics pracovního prostoru pomocí Azure Portal
 Protokol aktivit je protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného. To zahrnuje informace, jako je například změna prostředku nebo spuštění virtuálního počítače. Protokol aktivit můžete zobrazit v Azure Portal nebo načíst položky pomocí PowerShellu a rozhraní příkazového řádku. V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit pracovní prostor Log Analytics a nastavení diagnostiky k odeslání protokolu aktivit do Azure Monitor protokolů, kde je můžete analyzovat pomocí [dotazů protokolu](../log-query/log-query-overview.md) a povolit další funkce, jako jsou například výstrahy a [sešity](../platform/workbooks-overview.md) [protokolu](../platform/alerts-log-query.md) . 
@@ -21,10 +21,10 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 
 
-## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru služby Log Analytics
+## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru Log Analytics
 V Azure Portal vyhledejte a potom vyberte **pracovní prostory Log Analytics**. 
 
-![portál Azure](media/quick-create-workspace/azure-portal-01.png)
+![Snímek obrazovky Azure Portal se ve vyhledávacím poli zobrazuje "pracovní prostory Log Analytics" a Log Analytics v pracovních prostorech zvýrazněných v části služby.](media/quick-create-workspace/azure-portal-01.png)
   
 Klikněte na **Přidat**a zadejte hodnoty pro **skupinu prostředků**, **název**pracovního prostoru a **umístění**. Název pracovního prostoru musí být v rámci všech předplatných Azure jedinečný.
 
@@ -36,7 +36,7 @@ Kliknutím na tlačítko **zkontrolovat + vytvořit** zkontrolujte nastavení a 
 ## <a name="create-diagnostic-setting"></a>Vytvoření nastavení diagnostiky
 V Azure Portal vyhledejte a pak vyberte **monitor**. 
 
-![portál Azure](media/quick-collect-activity-log/azure-portal-monitor.png)
+![Snímek obrazovky Azure Portal se slovem "monitor" ve vyhledávacím poli a monitorování zvýrazněným v části služby.](media/quick-collect-activity-log/azure-portal-monitor.png)
 
 Vyberte **Protokol aktivit**. Měli byste vidět nedávné události pro aktuální předplatné. Kliknutím na **nastavení diagnostiky** zobrazíte nastavení diagnostiky pro odběr.
 

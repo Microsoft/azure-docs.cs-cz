@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: a70f7ccd1c3ca078bab0ff473283b505c0ded316
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 028250e25f4d67628c08970e25b4621e78526b6a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441557"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440832"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Vzdálená práce s využitím Azure VPN Gateway Point-to-site
 
@@ -30,13 +30,13 @@ Připojení brány VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečen
 
 V následující tabulce jsou uvedeny klientské operační systémy a možnosti ověřování, které jsou pro ně k dispozici. Je užitečné vybrat metodu ověřování založenou na operačním systému klienta, který se už používá. Vyberte například OpenVPN s ověřováním na základě certifikátu, pokud máte kombinaci klientských operačních systémů, které se potřebují připojit. Upozorňujeme také, že síť VPN typu Point-to-site je podporována pouze u bran sítě VPN založených na trasách.
 
-![Point-to-site](./media/working-remotely-support/ostable.png "Operační systém")
+![Snímek obrazovky se zobrazenými klientskými operačními systémy a dostupnými možnostmi ověřování.](./media/working-remotely-support/ostable.png "Operační systém")
 
 ## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>Scénář 1 – uživatelé potřebují přístup k prostředkům jenom v Azure
 
 V tomto scénáři potřebují vzdálení uživatelé přístup jenom k prostředkům, které jsou v Azure.
 
-![Point-to-site](./media/working-remotely-support/scenario1.png "Scénář 1")
+![Diagram, který zobrazuje scénář Point-to-site pro uživatele, kteří potřebují přístup k prostředkům jenom v Azure.](./media/working-remotely-support/scenario1.png "Scénář 1")
 
 Aby se uživatelé mohli bezpečně připojit k prostředkům Azure, je na nejvyšší úrovni potřeba provést tyto kroky:
 
@@ -55,7 +55,7 @@ Aby se uživatelé mohli bezpečně připojit k prostředkům Azure, je na nejvy
 
 V tomto scénáři potřebují vzdálení uživatelé přístup k prostředkům, které jsou v Azure, a v místních datových centrech.
 
-![Point-to-site](./media/working-remotely-support/scenario2.png "Scénář 2")
+![Diagram, který zobrazuje scénář pro uživatele, kteří potřebují přístup k prostředkům v Azure.](./media/working-remotely-support/scenario2.png "Scénář 2")
 
 Aby se uživatelé mohli bezpečně připojit k prostředkům Azure, je na nejvyšší úrovni potřeba provést tyto kroky:
 

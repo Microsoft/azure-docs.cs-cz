@@ -4,16 +4,16 @@ description: Další informace o virtuálních počítačích s Ultra pro virtu�
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 681804eadc1f710eb5fbf6980fabca4beaaf5439
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e57317dce64b58e5c92684152d840955a30df660
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328197"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441210"
 ---
 # <a name="using-azure-ultra-disks"></a>Použití disků Azure Ultra
 
@@ -155,7 +155,7 @@ Tato část popisuje nasazení virtuálního počítače vybaveného diskem Ultr
 - Změňte hodnoty položky **velikost vlastního disku (GIB)**, **IOPS disku**a **propustnosti disku** na ty podle vašeho výběru.
 - V obou oknech vyberte **OK** .
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Snímek obrazovky okna vyberte velikost disku, Ultra disk vybraný pro typ úložiště, další hodnoty zvýrazněné.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Snímek obrazovky s oknem vytvořit nový disk se zvýrazněnou změnou velikosti":::
 
 - Pokračujte s nasazením virtuálního počítače, stejně jako při nasazení jakýchkoli jiných virtuálních počítačů.
 
@@ -250,7 +250,7 @@ Případně, pokud je váš stávající virtuální počítač v oblasti oblast
 - Změňte **typ účtu** na **Ultra disk**.
 - Změňte hodnoty položky **velikost vlastního disku (GIB)**, **IOPS disku**a **propustnosti disku** na ty podle vašeho výběru.
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Snímek obrazovky okna vyberte velikost disku, Ultra disk vybraný pro typ úložiště, další hodnoty zvýrazněné.":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="Snímek obrazovky s oknem vytvořit nový disk se zvýrazněnou změnou velikosti":::
 
 - Vyberte **OK** a pak vyberte **vytvořit**.
 - Až se vrátíte do okna disku, vyberte **Uložit**.
@@ -409,4 +409,5 @@ Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate 
 
 ## <a name="next-steps"></a>Další kroky
 
-Viz [použití disků Azure Ultra ve službě Azure Kubernetes Service (Preview)](../aks/use-ultra-disks.md).
+- [Použijte Azure Ultra disks ve službě Azure Kubernetes Service (Preview)](../aks/use-ultra-disks.md).
+- [Migrujte disk protokolu na disk Ultra](../azure-sql/virtual-machines/windows/storage-migrate-to-ultradisk.md).

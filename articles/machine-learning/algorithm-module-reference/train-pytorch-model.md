@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 0ba603dad7d48be725f308f3a3296676c5f4f108
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: 9127df2805a7eef5b119a64fd8d8ccdab52f22f8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883241"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439096"
 ---
 # <a name="train-pytorch-model"></a>Trénování modelu PyTorch
 
@@ -49,7 +49,7 @@ V tomto článku se dozvíte, jak pomocí modulu **Pytorch** designeru Azure Mac
 
 8.  V případě **trpělivosti**určete, kolik epochs se má v předčasném zastavení školení zastavit, pokud se ztráta ověřování nesníží po sobě. ve výchozím nastavení 3.
 
-9.  Odešlete kanál. Pokud má datová sada větší velikost, bude chvíli trvat.
+9.  Odešlete kanál. Pokud má datová sada větší velikost, bude to chvíli trvat, ale doporučí se výpočetní prostředí GPU.
 
 ## <a name="results"></a>Výsledky
 
@@ -58,7 +58,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 ## <a name="technical-notes"></a>Technické poznámky
 ###  <a name="expected-inputs"></a>Očekávané vstupy  
 
-| Název               | Typ                    | Description                              |
+| Název               | Typ                    | Popis                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | Nevlakový model    | UntrainedModelDirectory | Nevlakový model, vyžadovat pytorch         |
 | Datová sada školení   | ImageDirectory          | Datová sada školení                         |
@@ -66,17 +66,17 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="module-parameters"></a>Parametry modulu  
 
-| Name          | Rozsah            | Typ    | Výchozí | Description                              |
+| Název          | Rozsah            | Typ    | Výchozí | Popis                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
-| Epochs        | > 0               | Celé číslo | 5       | Výběr sloupce obsahujícího sloupec popisek nebo výsledek |
-| Velikost dávky    | > 0               | Celé číslo | 16      | Kolik instancí se má naučit v dávce   |
+| Epochs        | > 0               | Integer | 5       | Výběr sloupce obsahujícího sloupec popisek nebo výsledek |
+| Velikost dávky    | > 0               | Integer | 16      | Kolik instancí se má naučit v dávce   |
 | Rychlost učení | >= Double. Kurzív | Float   | 0,001   | Počáteční rychlost učení pro Optimalizátor stochastického gradientu klesání. |
-| Náhodné osazení   | Všechny              | Celé číslo | 1       | Počáteční hodnota pro generátor náhodných čísel používaný modelem |
-| Trpělivost      | > 0               | Celé číslo | 3       | Kolik epochs k předčasnému zastavení školení   |
+| Náhodné osazení   | Všechny              | Integer | 1       | Počáteční hodnota pro generátor náhodných čísel používaný modelem |
+| Trpělivost      | > 0               | Integer | 3       | Kolik epochs k předčasnému zastavení školení   |
 
 ###  <a name="outputs"></a>Výstupy  
 
-| Název          | Typ           | Description   |
+| Název          | Typ           | Popis   |
 | ------------- | -------------- | ------------- |
 | Školený model | ModelDirectory | Školený model |
 

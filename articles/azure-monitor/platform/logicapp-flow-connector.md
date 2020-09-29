@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 2ef7095d186902425adb5065c470325be1283023
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: d06501abe69ce9b06656cfa8949c42bb53a03983
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475732"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439239"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Konektor protokolů Azure Monitor pro Logic Apps a automatizace
 [Azure Logic Apps](../../logic-apps/index.yml) a [Power](https://flow.microsoft.com) Automata umožňují vytvářet automatizované pracovní postupy s využitím stovek akcí pro nejrůznější služby. Konektor protokolů Azure Monitor umožňuje vytvářet pracovní postupy, které načítají data z pracovního prostoru Log Analytics nebo Application Insights aplikace v Azure Monitor. Tento článek popisuje akce, které konektor obsahuje, a poskytuje návod k sestavení pracovního postupu pomocí těchto dat.
@@ -68,7 +68,7 @@ Kliknutím na **+ Nový krok** přidáte akci, která se spustí po akci opakov�
 
 Klikněte na **Azure Log Analytics – spusťte dotaz a vizualizujte výsledky**.
 
-![Spustit dotaz a vizualizovat výsledky výsledků](media/logicapp-flow-connector/select-query-action-visualize.png)
+![Snímek obrazovky s novou akcí, která se přidává do kroku v návrháři aplikace logiky Protokoly Azure Monitor jsou v části zvolit akci zvýrazněné.](media/logicapp-flow-connector/select-query-action-visualize.png)
 
 
 ### <a name="add-azure-monitor-logs-action"></a>Akce přidání protokolů Azure Monitor
@@ -87,7 +87,7 @@ Event
 
 Jako **časový rozsah** a **tabulku HTML** pro **typ grafu**vyberte *nastavit v dotazu* .
    
-![Spustit dotaz a vizualizovat výsledky výsledků](media/logicapp-flow-connector/run-query-visualize-action.png)
+![Snímek obrazovky s nastavením pro novou Azure Monitor protokoluje akci s názvem spustit dotaz a vizualizovat výsledky.](media/logicapp-flow-connector/run-query-visualize-action.png)
 
 E-mail odešle účet přidružený k aktuálnímu připojení. Kliknutím na **změnit připojení**můžete zadat jiný účet.
 

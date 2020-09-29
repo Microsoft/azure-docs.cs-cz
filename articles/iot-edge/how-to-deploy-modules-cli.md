@@ -10,18 +10,18 @@ ms.reviewer: menchi
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 222e3e75d61096dc7aebb409213b8016e478c72b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 24630295eaea04044273c412760d25bcddf41335
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501572"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439692"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Nasazení modulů Azure IoT Edge pomocí Azure CLI
 
 Jakmile vytvoříte IoT Edge moduly s obchodní logikou, chcete je nasadit do svých zařízení, aby fungovaly na hraničních zařízeních. Pokud máte více modulů, které spolupracují při shromažďování a zpracování dat, můžete je nasadit najednou a deklarovat pravidla směrování, která je spojují.
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) je open source nástroj příkazového řádku pro různé platformy, který slouží ke správě prostředků Azure, jako je IoT Edge. Umožňuje spravovat prostředky Azure IoT Hub, instance služby Device Provisioning a propojená centra. Nové rozšíření IoT rozšiřuje rozhraní příkazového řádku Azure pomocí funkcí, jako je Správa zařízení a kompletní funkce IoT Edge.
+[Azure CLI](/cli/azure) je open source nástroj příkazového řádku pro různé platformy, který slouží ke správě prostředků Azure, jako je IoT Edge. Umožňuje spravovat prostředky Azure IoT Hub, instance služby Device Provisioning a propojená centra. Nové rozšíření IoT rozšiřuje rozhraní příkazového řádku Azure pomocí funkcí, jako je Správa zařízení a kompletní funkce IoT Edge.
 
 Tento článek ukazuje, jak vytvořit manifest nasazení JSON a pak ho použít k nahrání nasazení do zařízení IoT Edge. Informace o vytvoření nasazení, které cílí na více zařízení na základě jejich sdílených značek, najdete v tématu [nasazení a sledování IoT Edgech modulů ve velkém měřítku](how-to-deploy-cli-at-scale.md) .
 
@@ -29,7 +29,7 @@ Tento článek ukazuje, jak vytvořit manifest nasazení JSON a pak ho použít 
 
 * [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) ve vašem předplatném Azure.
 * [IoT Edge zařízení](how-to-register-device.md#register-with-the-azure-cli) s nainstalovaným modulem runtime IoT Edge.
-* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az --version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack.
+* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) ve vašem prostředí. Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az --version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack.
 * [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension)
 
 ## <a name="configure-a-deployment-manifest"></a>Konfigurace manifestu nasazení

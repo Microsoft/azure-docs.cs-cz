@@ -6,13 +6,13 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 07a38e106b765fd28a8c3c1115e5fe84744ade62
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: devx-track-csharp, contperfq1
+ms.openlocfilehash: eb148801011b2d1c8c1f975edb870ba594b085a7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303085"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440689"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Instalace a použití emulátoru Azure Cosmos pro místní vývoj a testování
 
@@ -80,13 +80,13 @@ Emulátor Azure Cosmos se `C:\Program Files\Azure Cosmos DB Emulator` ve výchoz
 
 Po spuštění emulátoru se zobrazí ikona v oznamovací oblasti hlavního panelu systému Windows. V prohlížeči se v této adrese URL automaticky otevře Průzkumník dat Azure Cosmos `https://localhost:8081/_explorer/index.html` .
 
-:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Oznámení o Azure Cosmos DB hlavním emulátoru hlavního emulátoru":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Vyberte tlačítko Start nebo stiskněte klávesu Windows, začněte psát emulátor Azure Cosmos a vyberte ze seznamu aplikací emulátor.":::
 
 Emulátor můžete také spustit a zastavit z příkazového řádku nebo příkazů PowerShellu. Další informace najdete v [referenčním článku k nástroji příkazového řádku](emulator-command-line-parameters.md) .
 
 Emulátor Azure Cosmos ve výchozím nastavení běží na místním počítači (localhost), který naslouchá na portu 8081. Adresa se zobrazí jako `https://localhost:8081/_explorer/index.html`. Pokud zavřete Průzkumníka a chcete ho znovu otevřít později, můžete buď otevřít adresu URL v prohlížeči, nebo ji spustit z emulátoru Azure Cosmos v ikoně na hlavním panelu Windows, jak je znázorněno níže.
 
-:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Spouštěč Průzkumníka dat místního emulátoru Azure Cosmos":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Vyberte tlačítko Start nebo stiskněte klávesu Windows, začněte psát emulátor Azure Cosmos a vyberte ze seznamu aplikací emulátor.":::
 
 ## <a name="use-the-emulator-on-docker-for-windows"></a><a id="run-on-windows-docker"></a>Použít emulátor na Docker for Windows
 
@@ -289,7 +289,7 @@ Pokud pracujete na Macu, použijte následující postup:
 
 1. Otevřete kontextovou nabídku pro tuto konkrétní položku, vyberte možnost *získat položku* a v části *důvěřovat*  >  *při použití tohoto certifikátu* vyberte možnost *vždy důvěřovat*. 
 
-   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Otevřete kontextovou nabídku pro tuto konkrétní položku, vyberte získat položku a v části důvěřovat – při použití tohoto certifikátu vyberte možnost vždy důvěřovat.":::
+   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Vyberte tlačítko Start nebo stiskněte klávesu Windows, začněte psát emulátor Azure Cosmos a vyberte ze seznamu aplikací emulátor.":::
   
 ### <a name="option-2-disable-the-ssl-validation-in-the-application"></a><a id="disable-ssl-validation"></a>Možnost 2: Zakázání ověřování SSL v aplikaci
 

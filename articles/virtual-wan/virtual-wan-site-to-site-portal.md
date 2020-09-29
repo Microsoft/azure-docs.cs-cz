@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: eceb9e4c8c839e4da333e005e879ea6094936092
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5f39f5a8f758f390536e5d113629b185252c05d9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525149"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439372"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Kurz: Vytvoření připojení typu site-to-site pomocí služby Azure Virtual WAN
 
@@ -231,7 +231,7 @@ Pokud potřebujete pokyny ke konfiguraci zařízení, můžete použít pokyny n
 
 Nastavení služby VPN Gateway můžete kdykoli zobrazit a nakonfigurovat tak, že vyberete **Zobrazit nebo konfigurovat**.
 
-:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="Zobrazit konfiguraci" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
+:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="Snímek obrazovky zobrazující stránku VPN (site-to-site) se šipkou ukazující na akci zobrazit/konfigurovat." lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
 
 Na stránce **upravit VPN Gateway** můžete zobrazit následující nastavení:
 
@@ -240,7 +240,7 @@ Na stránce **upravit VPN Gateway** můžete zobrazit následující nastavení:
 * VPN Gateway výchozí IP adresu protokolu BGP (přiřazený přes Azure)
 * Možnost konfigurace pro vlastní IP adresu protokolu BGP: Toto pole je vyhrazené pro APIPa (automatické přidělování privátních IP adres). Azure podporuje IP adresu BGP v oblastech 169.254.21. * a 169.254.22. *. Azure v těchto rozsahech přijímá připojení BGP, ale vytočí připojení s výchozí IP adresou protokolu BGP.
 
-   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Zobrazit konfiguraci" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Snímek obrazovky zobrazující stránku VPN (site-to-site) se šipkou ukazující na akci zobrazit/konfigurovat." lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="next-steps"></a>Další kroky
 

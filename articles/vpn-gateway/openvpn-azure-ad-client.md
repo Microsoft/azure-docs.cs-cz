@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: a1e2804b45efe95ee1f67c3aadbefccd805d1aa2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 279c66fa16ac82335a074da60bce35325d4b4499
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981880"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439468"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Ověřování Azure Active Directory: Konfigurace klienta VPN pro připojení protokolu P2S OpenVPN
 
@@ -58,7 +58,7 @@ Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním u�
 
 1. Zvýrazněte profil klienta VPN, který chcete exportovat, vyberte **...** a pak vyberte **exportovat**.
 
-    ![export](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![Snímek obrazovky zobrazující stránku Azure VPN Client se zvolenými třemi tečkami a zvýrazněnou možností exportovat](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. Vyberte umístění, do kterého chcete uložit tento profil, ponechte název souboru tak, jak je, a pak vyberte **Uložit** a uložte soubor XML.
 
@@ -68,19 +68,19 @@ Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním u�
 
 1. Na stránce vyberte **importovat**.
 
-    ![import](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![Snímek obrazovky, který zobrazuje vybrané tlačítko Přidat a v dolní levé části okna se zvýrazní akce import.](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. Přejděte k souboru XML profilu a vyberte ho. Když je vybraný soubor, vyberte **otevřít**.
 
-    ![import](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![Snímek obrazovky, který zobrazuje vybraný profilový soubor × m l.](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. Zadejte název profilu a vyberte **Uložit**.
 
-    ![import](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![Snímek obrazovky znázorňující zvýrazněné "název připojení" a vybrané tlačítko Uložit.](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. Vyberte **připojit** a připojte se k síti VPN.
 
-    ![import](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![Snímek obrazovky, který zobrazuje vybrané tlačítko sítě VPN a připojení.](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. Po připojení se ikona změní na zelenou a znamená se **připojit**.
 
@@ -90,7 +90,7 @@ Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním u�
 
 1. Vyberte tři tečky vedle profilu klienta, který chcete odstranit. Pak vyberte **Odebrat**.
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![Snímek obrazovky zobrazující tři tečky a možnost odebrat](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. Vyberte **Odebrat** a odstraňte.
 
@@ -100,19 +100,19 @@ Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním u�
 
 1. Na stránce vyberte **+** a potom **+ Přidat**.
 
-    ![připojení](./media/openvpn-azure-ad-client/create/create1.jpg)
+    ![Snímek obrazovky, který zobrazuje vybrané tlačítko Přidat](./media/openvpn-azure-ad-client/create/create1.jpg)
 
 2. Vyplňte informace o připojení. Pokud si hodnoty nejste jistí, obraťte se na správce. Po vyplnění hodnot vyberte **Uložit**.
 
-    ![připojení](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![Snímek obrazovky zobrazující zvýrazněné vlastnosti připojení VPN a vybrané tlačítko Uložit](./media/openvpn-azure-ad-client/create/create2.jpg)
 
 3. Vyberte **připojit** a připojte se k síti VPN.
 
-    ![připojení](./media/openvpn-azure-ad-client/create/create3.jpg)
+    ![Snímek obrazovky, který zobrazuje vybrané tlačítko připojit](./media/openvpn-azure-ad-client/create/create3.jpg)
 
 4. Vyberte správné přihlašovací údaje a pak vyberte **pokračovat**.
 
-    ![připojení](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![Snímek obrazovky se zvýrazněnými ukázkovými pověřeními a vybraným tlačítkem "pokračovat".](./media/openvpn-azure-ad-client/create/create4.jpg)
 
 5. Po úspěšném připojení se ikona změní na zelenou a znamená se **připojit**.
 
@@ -124,15 +124,15 @@ Tyto kroky vám pomůžou nakonfigurovat připojení pro automatické připojen�
 
 1. Na domovské stránce klienta VPN vyberte **nastavení sítě VPN**.
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![Snímek obrazovky domovské stránky VPN s vybraným "nastavení sítě VPN".](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. V dialogovém okně přepnout aplikace vyberte **Ano** .
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![Snímek obrazovky "jste se rozhodli, že jste přepnuli aplikace?" Dialogové okno s vybraným tlačítkem Ano](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. Ujistěte se, že připojení, které chcete nastavit, ještě není připojené, zvýrazněte profil a zaškrtněte políčko **Připojit automaticky** .
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![Snímek obrazovky okna nastavení se zaškrtnutým políčkem připojit automaticky](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. Kliknutím na **připojit** zahajte připojení k síti VPN.
 
@@ -142,15 +142,15 @@ Tyto kroky vám pomůžou nakonfigurovat připojení pro automatické připojen�
 
 1. K diagnostice problémů s připojením můžete použít nástroj pro **diagnostiku** . Vyberte **...** vedle připojení VPN, které chcete diagnostikovat, aby se nabídka zobrazila. Pak vyberte **Diagnostika**.
 
-    ![diagnóz](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
+    ![Snímek obrazovky se třemi tečkami a "Diagnosticed Selected"](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
 2. Na stránce **Vlastnosti připojení** vyberte **Spustit diagnostiku**.
 
-    ![diagnóz](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
+    ![Snímek obrazovky zobrazující stránku vlastnosti připojení s vybraným možnost spustit diagnostiku](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
 3. Přihlaste se pomocí svých přihlašovacích údajů.
 
-    ![diagnóz](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
+    ![Snímek obrazovky s vybraným pracovním nebo školním účtem, který se zobrazí v dialogovém okně přihlášený k vám](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
 
 4. Zobrazení výsledků diagnostiky.
 

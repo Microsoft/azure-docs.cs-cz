@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9ad0ad7b1ff2f0b706595daf8b8c93f480f0e00b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 68d2ed0d6702a42f44e502f2f7d3a91c0221ff6a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421709"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440939"
 ---
 # <a name="about-point-to-site-vpn"></a>O síti VPN typu Point-to-site
 
@@ -68,7 +68,7 @@ Server RADIUS se taky může integrovat se službou AD Certificate Services. To 
 
 Server RADIUS se taky může integrovat s jinými externími systémy identit. Tím se otevře dostatek možností ověřování pro P2S VPN, včetně Multi-Factor Options.
 
-![Point-to-site](./media/point-to-site-about/p2s.png "Point-to-Site")
+![Diagram, který zobrazuje síť VPN typu Point-to-site s místní lokalitou.](./media/point-to-site-about/p2s.png)
 
 ## <a name="what-are-the-client-configuration-requirements"></a>Jaké jsou požadavky na konfiguraci klienta?
 

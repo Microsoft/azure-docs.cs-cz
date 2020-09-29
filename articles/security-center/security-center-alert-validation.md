@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: f8f17a55-e672-4d86-8ba9-6c3ce2e71a57
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: ac76ce5d4fb788e6c2fb3dc9ec01c8d88bfb55cb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0c777c2461047f21e8fb413faec6d5f1140fc75f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268064"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91438799"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Ověřování výstrah v Azure Security Center
 Pomocí tohoto dokumentu se naučíte ověřovat, jestli je váš systém správně nakonfigurovaný pro výstrahy služby Azure Security Center.

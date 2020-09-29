@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 5b2446aa62b16dcf9773c367d87faac65d79fa0b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4a709527c0de2e092bcca2bbd9bc596aa0eb4cc0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904856"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440732"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Zabezpečení portů pro správu pomocí přístupu za běhu
 
@@ -37,7 +37,7 @@ Tato stránka vás učí, jak do programu zabezpečení zahrnout JIT. Dozvíte s
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Podporované virtuální počítače:|![Ano ](./media/icons/yes-icon.png) virtuální počítače nasazené prostřednictvím Azure Resource Manager.<br>![Nejsou ](./media/icons/no-icon.png) nasazené žádné virtuální počítače s klasickými modely nasazení. [Přečtěte si další informace o těchto modelech nasazení](../azure-resource-manager/management/deployment-models.md).<br>![Žádné ](./media/icons/no-icon.png) virtuální počítače chráněné pomocí brány firewall Azure řízené nástrojem [Azure firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview)|
 |Požadované role a oprávnění:|Role **Čtenář** a **SecurityReader** můžou zobrazovat stav a parametry JIT.<br>Chcete-li vytvořit vlastní role, které mohou pracovat s JIT, přečtěte si téma [jaká oprávnění jsou nutná ke konfiguraci a používání JIT?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Chcete-li vytvořit roli s nejnižšími oprávněními pro uživatele, kteří potřebují vyžadovat přístup JIT k virtuálnímu počítači a provádět žádné jiné operace JIT, použijte [skript set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) ze stránky komunity GitHub Security Center.|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -241,7 +241,7 @@ Každá z těchto možností je vysvětlena na samostatné kartě níže.
 
 Pokud má virtuální počítač povolený kompilátor JIT, budete muset požádat o přístup, abyste se k němu mohli připojit. Přístup můžete vyžádat libovolným z podporovaných způsobů bez ohledu na to, jak jste povolili JIT.
 
-:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="Vyžadování přístupu JIT z Security Center":::
+:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="Konfigurace přístupu k virtuálnímu počítači JIT v Azure Security Center":::
 
 1. Na stránce **přístup k virtuálnímu počítači za běhu** vyberte **nakonfigurovanou** kartu.
 

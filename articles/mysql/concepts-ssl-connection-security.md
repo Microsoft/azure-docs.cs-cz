@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 641ff13ec440bb8267e546c54b684ab4453f91a7
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 6807f3d4ef0596b4dbb51f6bc8c0348901e78d0e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052932"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439951"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>Připojení SSL/TLS v Azure Database for MySQL
 
@@ -61,6 +61,17 @@ Například nastavení hodnoty minimální verze nastavení TLS na TLS 1,0 zname
 > Jakmile vynucujete minimální verzi protokolu TLS, nemůžete později zakázat vynucení minimální verze.
 
 Informace o nastavení nastavení TLS pro Azure Database for MySQL najdete v tématu [Konfigurace nastavení TLS](howto-tls-configurations.md).
+
+## <a name="cipher-support-by-azure-database-for-mysql-single-server"></a>Podpora šifry pomocí Azure Database for MySQL jednoho serveru
+
+V rámci komunikace SSL/TLS se šifrovací sady ověřují a podporují jenom šifrovací obleky, které můžou komunikovat s Serer databáze. Ověřování šifrovací sady se řídí ve [vrstvě brány](concepts-connectivity-architecture.md#connectivity-architecture) a ne explicitně na samotném uzlu. Pokud šifrovací sady neodpovídají jedné z níže uvedených sad, připojení příchozích klientů se odmítnou.
+
+### <a name="cipher-suite-supported"></a>Podporovaná šifrovací sada
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="next-steps"></a>Další kroky
 
