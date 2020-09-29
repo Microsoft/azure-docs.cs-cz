@@ -15,12 +15,12 @@ ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: e504a3ed2d9193bdc85fc08b3ea91c4f4f2c160c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f96e48d0c7b14178185f751b8c708e75ab3f322
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329500"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441833"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Řešení potíží s Azure RBAC
 
@@ -63,7 +63,7 @@ $ras.Count
 
     Existují dva způsoby, jak potenciálně vyřešit tuto chybu. Prvním způsobem je přiřazení role [čtenáři adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) k instančnímu objektu, aby bylo možné číst data v adresáři.
 
-    Druhým způsobem, jak tuto chybu vyřešit, je vytvořit přiřazení role pomocí `--assignee-object-id` parametru místo `--assignee` . Pomocí rozhraní `--assignee-object-id` příkazového řádku Azure CLI přeskočí vyhledávání Azure AD. Budete muset získat ID objektu uživatele, skupiny nebo aplikace, ke které chcete přiřadit roli. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](role-assignments-cli.md#new-service-principal).
+    Druhým způsobem, jak tuto chybu vyřešit, je vytvořit přiřazení role pomocí `--assignee-object-id` parametru místo `--assignee` . Pomocí rozhraní `--assignee-object-id` příkazového řádku Azure CLI přeskočí vyhledávání Azure AD. Budete muset získat ID objektu uživatele, skupiny nebo aplikace, ke které chcete přiřadit roli. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope).
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
@@ -150,7 +150,7 @@ Podobně platí, že pokud toto přiřazení role vypíšete pomocí Azure CLI, 
 }
 ```
 
-Nejedná se o problém s ponechání těchto přiřazení rolí, kde byl odstraněn objekt zabezpečení. Pokud chcete, můžete tato přiřazení role odebrat pomocí kroků, které jsou podobné jiným přiřazením rolí. Informace o tom, jak odebrat přiřazení rolí, najdete v tématu [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)nebo [Azure CLI](role-assignments-cli.md#remove-a-role-assignment) .
+Nejedná se o problém s ponechání těchto přiřazení rolí, kde byl odstraněn objekt zabezpečení. Pokud chcete, můžete tato přiřazení role odebrat pomocí kroků, které jsou podobné jiným přiřazením rolí. Informace o tom, jak odebrat přiřazení rolí, najdete v tématu [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)nebo [Azure CLI](role-assignments-cli.md#remove-role-assignment) .
 
 Pokud se v prostředí PowerShell pokusíte odstranit přiřazení rolí pomocí ID objektu a definice role a na základě parametrů se shoduje více než jedno přiřazení role, zobrazí se chybová zpráva: "zadané informace nejsou namapovány na přiřazení role". Následující výstup ukazuje příklad chybové zprávy:
 

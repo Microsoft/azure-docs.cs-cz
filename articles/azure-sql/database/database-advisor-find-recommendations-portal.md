@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: e96db18993dbb18ebf51d0b30e9172901d10df5b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 0b7aab13871f1450a3c6907b30b446869b2fefa7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398267"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443880"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení pro výkon
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Doporučení týkající se výkonu se zobrazují v tabulce podobné tomu na ná
 
 Doporučení jsou seřazená podle jejich potenciálního dopadu na výkon do následujících kategorií:
 
-| Dopad | Description |
+| Dopad | Popis |
 |:--- |:--- |
 | Vysoké |Doporučení s vysokým dopadem by měla poskytovat nejvýznamnější dopad na výkon. |
 | Střední |Doporučení středně velkých dopadů by měla zlepšit výkon, ale ne podstatně. |
@@ -156,7 +156,7 @@ Po úspěšném dokončení implementace doporučení (v současné době platí
 
 ![Sledovat dopad na výkon](./media/database-advisor-find-recommendations-portal/query-insights.png)
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Azure SQL Database poskytuje doporučení pro zlepšení výkonu databáze. Díky skriptům T-SQL získáte pomoc při optimalizaci databáze a nakonec se zlepší výkon dotazů.
 

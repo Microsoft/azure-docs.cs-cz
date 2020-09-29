@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
-ms.openlocfilehash: b53e37384ba85770b445f834c440075cd35b6eb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8eafd99f07c64c20565a954216341f3dea9541b0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041872"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442656"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Elastic Database klientské knihovny s Entity Framework
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -134,7 +134,7 @@ public DbSet<Blog> Blogs { get; set; }
   * Mapa horizontálních oddílů vytvoří otevřené připojení k horizontálních oddílů, které obsahuje shardletu pro daný klíč horizontálního dělení.
   * Toto otevřené připojení se předává zpět do konstruktoru základní třídy DbContext, který označuje, že toto připojení má být použito v EF místo toho, aby EF vytvořilo nové připojení automaticky. Tímto způsobem bylo připojení označeno rozhraním API klienta elastické databáze, aby mohlo zaručit konzistenci v rámci operací správy mapy horizontálních oddílů.
 
-Použijte nový konstruktor pro podtřídu DbContext namísto výchozího konstruktoru ve vašem kódu. Zde naleznete příklad:
+Použijte nový konstruktor pro podtřídu DbContext namísto výchozího konstruktoru ve vašem kódu. Tady je příklad:
 
 ```csharp
 // Create and save a new blog.

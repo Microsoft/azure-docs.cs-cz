@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8ffad738a8f10816f26760fa34c5ce686fac5bad
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 428c24236aad9a57a9d52eb0a6ff3a7aeb9fe541
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401142"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442160"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí Azure CLI
 
@@ -70,7 +70,7 @@ Pro toto cvičení můžete konfigurace kombinovat nebo prostě vybrat tu, se kt
 
 * [Virtuální sítě nacházející se ve stejném předplatném:](#samesub) Kroky pro tuto konfiguraci využívají virtuální sítě testvnet1 a virtuální sítě testvnet4.
 
-  ![Diagram v2v](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
+  ![Diagram, který znázorňuje síťové kroky NET-to-V pro sítě V sítích, které jsou umístěné ve stejném předplatném.](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
 * [Virtuální sítě patřící do různých předplatných:](#difsub) V postupu pro tuto konfiguraci se používají sítě TestVNet1 a TestVNet5.
 

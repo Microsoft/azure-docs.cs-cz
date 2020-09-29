@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: 8dcaecb1e4eb91ee01e3ccb39000e087b3455ba2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ced546f8f4375433d9fcd59f7ce46f9604f72921
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832351"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443118"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Vytváření sestav napříč cloudových databází s horizontálním škálováním (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -165,7 +165,7 @@ Klauzule distribuce určuje distribuci dat použitou pro tuto tabulku. Procesor 
 
 **Odkaz na datovou vrstvu**: instance DDL externí tabulky odkazuje na externí zdroj dat. Externí zdroj dat určuje mapu horizontálních oddílů, která poskytuje externí tabulku s informacemi potřebnými k vyhledání všech databází v datové vrstvě.
 
-### <a name="security-considerations"></a>Aspekty zabezpečení
+### <a name="security-considerations"></a>Důležité informace o zabezpečení
 
 Uživatelé s přístupem k externí tabulce automaticky získají přístup k podkladovým vzdáleným tabulkám v rámci přihlašovacích údajů uvedených v definici externího zdroje dat. Vyhněte se neočekávaným zvýšením oprávnění prostřednictvím přihlašovacích údajů externího zdroje dat. Použijte udělení nebo odvolat pro externí tabulku, jako by šlo o běžnou tabulku.  
 

@@ -5,14 +5,14 @@ author: lisaguthrie
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
-ms.date: 01/14/2020
+ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 12b66dc173a8d3f93f97fb369ce03533299a65d7
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 4643e18088fe32f6b02f684b7a71307798b12c12
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235260"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441576"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace ASP.NET Core
 
@@ -22,229 +22,124 @@ Knihovny pro správu funkcí .NET Core přesahují rámec s kompletní podporou 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-- [.NET Core SDK](https://dotnet.microsoft.com/download).
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/dotnet) .
+* [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 
-[!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+[!INCLUDE[Azure App Configuration resource creation steps](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **správce funkcí**  >  **+ Přidat** a přidejte příznak funkce s názvem `Beta` .
+7. Vyberte **Operations**  >  **Manager**–  >  **Přidat** a přidejte příznak funkce s názvem *beta*.
 
     > [!div class="mx-imgBorder"]
     > ![Povolit příznak funkce s názvem beta](media/add-beta-feature-flag.png)
 
-    `label`Pro teď nechte nedefinovaného. Výběrem **použít** uložte příznak nové funkce.
+    Pro nyní nechejte **popisek** prázdné. Výběrem **použít** uložte příznak nové funkce.
 
 ## <a name="create-an-aspnet-core-web-app"></a>Vytvoření webové aplikace ASP.NET Core
 
-K vytvoření nového projektu webové aplikace ASP.NET Core MVC použijte [rozhraní příkazového řádku .NET Core (CLI)](https://docs.microsoft.com/dotnet/core/tools/) . Výhodou použití .NET Core CLI místo sady Visual Studio je, že .NET Core CLI je k dispozici v rámci platforem Windows, macOS a Linux.
+K vytvoření nového projektu ASP.NET Core MVC použijte [rozhraní příkazového řádku .NET Core (CLI)](/dotnet/core/tools) . Výhodou použití .NET Core CLI místo sady Visual Studio je, že .NET Core CLI je k dispozici v rámci platforem Windows, macOS a Linux.
 
-1. Vytvořte novou složku pro váš projekt. V tomto rychlém startu pojmenujte ho *TestFeatureFlags*.
+Spuštěním následujícího příkazu vytvořte projekt ASP.NET Core MVC v nové složce *TestFeatureFlags* :
 
-1. V nové složce spusťte následující příkaz pro vytvoření nového projektu webové aplikace ASP.NET Core MVC:
+```dotnetcli
+dotnet new mvc --no-https --output TestFeatureFlags
+```
 
-   ```    
-   dotnet new mvc --no-https
-   ```
-
-## <a name="add-secret-manager"></a>Přidat správce tajných klíčů
-
-Chcete-li použít Správce tajných klíčů, přidejte `UserSecretsId` element do souboru *. csproj* .
-
-1. Otevřete soubor *. csproj* .
-
-1.  Přidejte `UserSecretsId` element, jak je znázorněno zde. Můžete použít stejný identifikátor GUID, nebo můžete tuto hodnotu nahradit vlastními.
-
-    > [!IMPORTANT]
-    > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
-
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
-
-    ```xml
-    <Project Sdk="Microsoft.NET.Sdk.Web">
-
-        <PropertyGroup>
-            <TargetFramework>netcoreapp2.1</TargetFramework>
-            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
-        </PropertyGroup>
-
-        <ItemGroup>
-            <PackageReference Include="Microsoft.AspNetCore.App" />
-            <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
-        </ItemGroup>
-
-    </Project>
-    ```
-
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
-
-    ```xml
-    <Project Sdk="Microsoft.NET.Sdk.Web">
-
-        <PropertyGroup>
-            <TargetFramework>netcoreapp3.1</TargetFramework>
-            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
-        </PropertyGroup>
-
-    </Project>
-    ```
-    ---
-
-1. Uložte soubor *. csproj* .
-
-Nástroj Secret Manager ukládá citlivá data související s vývojem mimo strom vašeho projektu. Tento přístup pomáhá zabránit náhodnému sdílení tajných kódů aplikace ve zdrojovém kódu.
-
-> [!TIP]
-> Další informace o Správci tajných klíčů najdete v tématu [bezpečné úložiště tajných kódů aplikací ve vývoji v ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/app-secrets).
+[!INCLUDE[Add Secret Manager support to an ASP.NET Core project](../../includes/azure-app-configuration-add-secret-manager.md)]
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` `Microsoft.FeatureManagement.AspNetCore` balíčky a balíčky NuGet spuštěním následujících příkazů:
+1. Nainstalujte balíček NuGet [Microsoft. Azure. AppConfiguration. AspNetCore](https://www.nuget.org/packages/Microsoft.Azure.AppConfiguration.AspNetCore) a [Microsoft. FeatureManagement. AspNetCore](https://www.nuget.org/packages/Microsoft.FeatureManagement.AspNetCore) spuštěním následujících příkazů:
 
     ```dotnetcli
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
+    ```
+
+    ```dotnetcli
     dotnet add package Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. Spusťte následující příkaz pro obnovení balíčků pro váš projekt:
+1. Spusťte následující příkaz ve stejném adresáři jako soubor *. csproj* . Příkaz používá správce tajných klíčů k ukládání tajného kódu s názvem `ConnectionStrings:AppConfig` , který ukládá připojovací řetězec pro úložiště konfigurace aplikace. `<your_connection_string>`Zástupný symbol nahraďte připojovacím řetězcem konfiguračního úložiště aplikace. Připojovací řetězec najdete v části **přístupové klíče** v Azure Portal.
 
     ```dotnetcli
-    dotnet restore
+    dotnet user-secrets set ConnectionStrings:AppConfig "<your_connection_string>"
     ```
 
-1. Přidejte tajný klíč s názvem **connectionStrings: appconfig** do správce tajných klíčů.
+    Správce tajného klíče se používá jenom k místnímu testování webové aplikace. Když se aplikace nasadí do [Azure App Service](https://azure.microsoft.com/services/app-service/web), použijte nastavení aplikace **připojovací řetězce** v App Service namísto správce tajných klíčů k uložení připojovacího řetězce.
 
-    Tento tajný klíč obsahuje připojovací řetězec pro přístup k úložišti konfigurace aplikace. `<your_connection_string>`Hodnotu v následujícím příkazu nahraďte připojovacím řetězcem pro úložiště konfigurace aplikace. Primární připojovací řetězec klíče jen pro čtení najdete v části **přístupové klíče** v Azure Portal.
+    Přístup k tomuto tajnému kódu pomocí konfiguračního rozhraní API .NET Core. Dvojtečka ( `:` ) funguje v názvu konfigurace s rozhraním API konfigurace na všech podporovaných platformách. Další informace najdete v tématu [konfigurační klíče a hodnoty](/aspnet/core/fundamentals/configuration#configuration-keys-and-values).
 
-    Tento příkaz se musí spustit ve stejném adresáři jako soubor *.csproj*.
-
-    ```dotnetcli
-    dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
-    ```
-
-    Správce tajného kódu se používá jenom k místnímu testování webové aplikace. Když nasadíte aplikaci do [Azure App Service](https://azure.microsoft.com/services/app-service)například použijete nastavení aplikace s názvem **připojovací řetězce** v App Service namísto použití Správce tajných klíčů k uložení připojovacího řetězce.
-
-    K tomuto tajnému kódu můžete přistupovat pomocí rozhraní API konfigurace aplikace. Dvojtečka (:) funguje v názvu konfigurace s rozhraním API konfigurace aplikace na všech podporovaných platformách. Viz [Konfigurace podle prostředí](https://docs.microsoft.com/aspnet/core/fundamentals/configuration).
-
-1. V *program.cs*aktualizujte `CreateWebHostBuilder` metodu tak, aby používala konfiguraci aplikace, voláním `config.AddAzureAppConfiguration()` metody.
+1. V *program.cs*aktualizujte `CreateWebHostBuilder` metodu tak, aby používala konfiguraci aplikace, voláním `AddAzureAppConfiguration` metody.
 
     > [!IMPORTANT]
-    > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
-
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
-
-    ```csharp
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                var settings = config.Build();
-                config.AddAzureAppConfiguration(options => {
-                    options.Connect(settings["ConnectionStrings:AppConfig"])
-                        .UseFeatureFlags();
-                });
-            })
-            .UseStartup<Startup>();
-    ```
+    > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3. x. Vyberte správnou syntaxi na základě vašeho prostředí.
 
     #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
-        .ConfigureWebHostDefaults(webBuilder =>
-        webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-        {
-            var settings = config.Build();
-            config.AddAzureAppConfiguration(options => {
-                options.Connect(settings["ConnectionStrings:AppConfig"])
-                    .UseFeatureFlags();
-            });
-        })
-        .UseStartup<Startup>());
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration(config =>
+                {
+                    var settings = config.Build();
+                    var connection = settings.GetConnectionString("AppConfig");
+                    config.AddAzureAppConfiguration(options =>
+                        options.Connect(connection).UseFeatureFlags());
+                }).UseStartup<Startup>());
     ```
+
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+
+    ```csharp
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration(config =>
+               {
+                   var settings = config.Build();
+                   var connection = settings.GetConnectionString("AppConfig");
+                   config.AddAzureAppConfiguration(options =>
+                       options.Connect(connection).UseFeatureFlags());
+               }).UseStartup<Startup>();
+    ```
+
     ---
 
-1. Otevřete *Startup.cs*a přidejte odkazy na správce funkcí .NET Core:
+    V předchozí změně byl [Poskytovatel konfigurace pro konfiguraci aplikace](https://go.microsoft.com/fwlink/?linkid=2074664) zaregistrován s rozhraním .NET Core Configuration API.
+
+1. Do *Startup.cs*přidejte odkaz na správce funkcí .NET Core:
 
     ```csharp
     using Microsoft.FeatureManagement;
     ```
 
-1. Aktualizujte `ConfigureServices` metodu pro přidání podpory příznaků funkcí voláním `services.AddFeatureManagement()` metody. Volitelně můžete zahrnout jakýkoli filtr, který se má použít s příznaky funkcí voláním `services.AddFeatureFilter<FilterType>()` :
+1. Aktualizujte `Startup.ConfigureServices` metodu pro přidání podpory příznaků funkcí voláním `AddFeatureManagement` metody. Volitelně můžete zahrnout jakýkoli filtr, který se má použít s příznaky funkcí voláním `AddFeatureFilter<FilterType>()` :
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
-    ```csharp
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);        
-        services.AddFeatureManagement();
-    }
-    ```
     #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+
     ```csharp    
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllersWithViews();
         services.AddFeatureManagement();
     }
+    ```
+
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddMvc()
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+        services.AddFeatureManagement();
+    }
+    ```
 
     ---
 
-1. Update the `Configure` method to add a middleware to allow the feature flag values to be refreshed at a recurring interval while the ASP.NET Core web app continues to receive requests.
-
-    #### [.NET Core 2.x](#tab/core2x)
-    ```csharp
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-    {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
-
-            app.UseStaticFiles();
-            app.UseCookiePolicy();
-            app.UseAzureAppConfiguration();
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
-    }
-    ```
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
-    ```csharp
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-    {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
-            app.UseStaticFiles();
-            app.UseRouting();
-            app.UseAuthorization();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
-            app.UseAzureAppConfiguration();
-    }
-    ```
-    ---
-
-1. Přidat soubor *MyFeatureFlags.cs* :
+1. Do kořenového adresáře projektu přidejte soubor *MyFeatureFlags.cs* s následujícím kódem:
 
     ```csharp
     namespace TestFeatureFlags
@@ -256,7 +151,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     }
     ```
 
-1. Přidejte *BetaController.cs* do adresáře *Controllers* :
+1. Přidejte soubor *BetaController.cs* do adresáře *Controllers* pomocí následujícího kódu:
 
     ```csharp
     using Microsoft.AspNetCore.Mvc;
@@ -269,29 +164,26 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
         {
             private readonly IFeatureManager _featureManager;
 
-            public BetaController(IFeatureManagerSnapshot featureManager)
-            {
+            public BetaController(IFeatureManagerSnapshot featureManager) =>
                 _featureManager = featureManager;
-            }
 
             [FeatureGate(MyFeatureFlags.Beta)]
-            public IActionResult Index()
-            {
-                return View();
-            }
+            public IActionResult Index() => View();
         }
     }
     ```
 
-1. Otevřete *_ViewImports. cshtml* v adresáři *zobrazení* a přidejte pomocníka značek správce funkcí:
+1. V *zobrazeních/_ViewImports. cshtml*Zaregistrujte pomocníka značky správce funkcí pomocí `@addTagHelper` direktivy:
 
-    ```html
+    ```cshtml
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. Otevřete *_Layout. cshtml* ve sdíleném adresáři *views* \\ *Shared* a nahraďte `<nav>` Čárový kód `<body>`  >  `<header>` následujícím kódem:
+    Předchozí kód umožňuje `<feature>` použití pomocné rutiny tag v souborech *. cshtml* projektu.
 
-    ```html
+1. V *zobrazení/Shared/_Layout. cshtml*nahraďte `<nav>` Čárový kód `<body>`  >  `<header>` následujícím kódem:
+
+    ```cshtml
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TestFeatureFlags</a>
@@ -318,59 +210,59 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     </nav>
     ```
 
-1. V části *zobrazení* vytvořte adresář *beta* a přidejte do něj *index. cshtml* :
+    V předchozím kódu si všimněte `<feature>` pomocníka značek, který je ohraničen položkou seznamu *beta verze* .
 
-    ```html
+1. Vytvořte adresář *views/beta* a soubor *index. cshtml* obsahující následující kód:
+
+    ```cshtml
     @{
         ViewData["Title"] = "Beta Home Page";
     }
 
-    <h1>
-        This is the beta website.
-    </h1>
+    <h1>This is the beta website.</h1>
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
 
 1. Pokud chcete aplikaci vytvořit pomocí .NET Core CLI, spusťte v příkazovém prostředí následující příkaz:
 
-    ```
+    ```dotnetcli
     dotnet build
     ```
 
 1. Po úspěšném dokončení sestavení spusťte následující příkaz pro místní spuštění webové aplikace:
 
-    ```
+    ```dotnetcli
     dotnet run
     ```
 
-1. Otevřete okno prohlížeče a pro `https://localhost:5000` webovou aplikaci hostovanou místně použijte výchozí adresu URL.
-    Pokud pracujete na Azure Cloud Shell, klikněte na tlačítko *Náhled webu* a potom na *Konfigurovat*.  Po zobrazení výzvy vyberte port 5000.
+1. Otevřete okno prohlížeče a pro `http://localhost:5000` webovou aplikaci hostovanou místně použijte výchozí adresu URL. Pokud pracujete na Azure Cloud Shell, klikněte na tlačítko **Náhled webu** a potom na **Konfigurovat**. Po zobrazení výzvy vyberte port 5000.
 
     ![Najít tlačítko Náhled webu](./media/quickstarts/cloud-shell-web-preview.png)
 
     V prohlížeči by se měla zobrazit stránka podobná následujícímu obrázku.
-    ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+    :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-before.png" alt-text="Místní aplikace pro rychlý Start před změnou" border="true":::
 
-1. Vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
-1. Vraťte se do příkazového řádku a stisknutím klávesy zrušte běžící `dotnet` proces `Ctrl-C` .  Restartujte aplikaci pomocí `dotnet run` .
+1. Vyberte **správce funkcí**a změňte stav *beta* klíče na **zapnuto**.
+
+1. Vraťte se do příkazového prostředí. Spuštění procesu ukončíte `dotnet` stisknutím <kbd>kombinace kláves CTRL + C</kbd>. Restartujte aplikaci pomocí `dotnet run` .
 
 1. Aktualizujte stránku prohlížeče, aby se zobrazilo nové nastavení konfigurace.
 
-    ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/aspnet-core-feature-flag-local-after.png)
+    :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-after.png" alt-text="Místní aplikace pro rychlý Start před změnou" border="true":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-[!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
+[!INCLUDE[Azure App Configuration cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho ke správě funkcí v ASP.NET Core webové aplikaci přes [knihovny pro správu funkcí](https://go.microsoft.com/fwlink/?linkid=2074664).
 
-- Přečtěte si další informace o [správě funkcí](./concept-feature-management.md).
-- [Správa příznaků funkcí](./manage-feature-flags.md).
-- [Používání příznaků funkcí v aplikaci ASP.NET Core](./use-feature-flags-dotnet-core.md).
-- [Použití dynamické konfigurace v aplikaci ASP.NET Core](./enable-dynamic-configuration-aspnet-core.md)
+* Přečtěte si další informace o [správě funkcí](./concept-feature-management.md).
+* [Správa příznaků funkcí](./manage-feature-flags.md).
+* [Používání příznaků funkcí v aplikaci ASP.NET Core](./use-feature-flags-dotnet-core.md).
+* [Použití dynamické konfigurace v aplikaci ASP.NET Core](./enable-dynamic-configuration-aspnet-core.md)

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: e743d557f70aaa92e464244d0198debbc25a1e46
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 10be0fc28b53d114a8ff87f01980513ce1759dec
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956895"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443308"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Sestava napříč cloudových databází s horizontálním škálováním (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -133,7 +133,7 @@ Všechny řádky z tabulky **Customers** uložené v různých horizontálních 
 
 Nyní můžete používat výkonné funkce pro vizualizaci dat v Excelu. Připojovací řetězec s názvem vašeho serveru, názvem databáze a přihlašovacími údaji můžete použít k propojení nástrojů pro integraci BI a dat s databází elastického dotazu. Ujistěte se, že je pro nástroj SQL Server podporována jako zdroj dat. Na databázi elastických dotazů a externích tabulkách můžete odkazovat stejně jako na jakékoli jiné SQL Server databáze a SQL Server tabulky, ke kterým se připojíte pomocí nástroje.
 
-### <a name="cost"></a>Náklady
+### <a name="cost"></a>Cost
 Pro použití funkce dotazu Elastic Database se neúčtují žádné další poplatky.
 
 Informace o cenách najdete v článku informace o [cenách SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).

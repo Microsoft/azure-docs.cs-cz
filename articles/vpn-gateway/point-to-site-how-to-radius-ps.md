@@ -1,18 +1,18 @@
 ---
 title: 'Připojení počítače k virtuální síti s použitím ověřování typu Point-to-site a ověřování RADIUS: PowerShell | Azure'
-description: Připojte klienty Windows a Mac OS X bezpečně k virtuální síti pomocí ověřování P2S a RADIUS.
+description: Připojte klienty Windows a OS X bezpečně k virtuální síti pomocí ověřování P2S a RADIUS.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2a93f612f5aeb5c2d3a4b83d580b9548f45e4c05
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c8d7ae3cd40f118399e5ff60fa0738b07249c5ef
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329155"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442401"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurace připojení typu Point-to-site k virtuální síti pomocí ověřování RADIUS: PowerShell
 
@@ -28,7 +28,7 @@ Připojení VPN typu P2S se zahájí ze zařízení se systémem Windows nebo Ma
 
 Tento článek vám pomůže nakonfigurovat konfiguraci P2S s ověřováním pomocí serveru RADIUS. Pokud se chcete ověřit pomocí vygenerovaných certifikátů a nativního ověřování certifikátů pomocí služby VPN Gateway, přečtěte si téma [Konfigurace připojení typu Point-to-site k virtuální síti pomocí ověřování nativního certifikátu pomocí brány VPN](vpn-gateway-howto-point-to-site-rm-ps.md) nebo [Vytvoření klienta Azure Active Directory pro připojení protokolu P2S OpenVPN](openvpn-azure-ad-tenant.md) pro ověřování Azure Active Directory.
 
-![Diagram připojení – RADIUS](./media/point-to-site-how-to-radius-ps/p2sradius.png)
+![Diagram, který zobrazuje konfiguraci P2S s ověřováním pomocí serveru protokolu RADIUS.](./media/point-to-site-how-to-radius-ps/p2sradius.png)
 
 Připojení typu Point-to-Site nevyžadují zařízení VPN ani veřejnou IP adresu. P2S vytvoří připojení VPN prostřednictvím protokolu SSTP (Secure Socket Tunneling Protocol), OpenVPN nebo IKEv2.
 
@@ -65,7 +65,7 @@ Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure
 
 ### <a name="working-with-azure-powershell"></a>Práce s Azure PowerShell
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ### <a name="example-values"></a><a name="example"></a>Příklady hodnot
 
@@ -280,7 +280,7 @@ V dialogovém okně Síť vyhledejte klientský profil, který chcete použít, 
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-p2s-include.md)]
 
-## <a name="faq"></a><a name="faq"></a>Časté otázky
+## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
 
 Tyto nejčastější dotazy platí pro P2S pomocí ověřování RADIUS.
 

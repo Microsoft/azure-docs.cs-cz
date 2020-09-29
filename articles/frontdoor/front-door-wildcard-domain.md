@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2020
 ms.author: duau
-ms.openlocfilehash: 349c00b312ba7c3f18bab04fb059199732b4f1b3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: edeaaf97c818831aa1eda5823ea491110f784549
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398745"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442360"
 ---
 # <a name="wildcard-domains"></a>Domény se zástupnými znaky
 
@@ -72,7 +72,7 @@ Pokud nechcete, aby se pro subdoménu spouštěla zásada WAF, můžete vytvoři
 Při konfiguraci pravidla směrování můžete jako front-end hostitele Vybrat doménu se zástupnými znaky. Pro domény se zástupnými znaky a subdomény můžete také použít jiné chování směrování. Jak je popsáno v tématu Jak se na [frontách Azure nachází párování směrování](front-door-route-matching.md), je za běhu zvolena nejvíce specifická shoda pro doménu napříč různými pravidly směrování.
 
 > [!IMPORTANT]
-> Musíte mít stejné vzory cest napříč pravidly směrování, jinak se zobrazí selhání. Máte například dvě pravidla směrování, jako je třeba trasa 1 ( `*.foo.com/*` namapovaná na fond back-end a) a trasa 2 ( `bar.foo.com/somePath/*` namapovaná na back-end fond B). Pak přijde žádost o `bar.foo.com/anotherPath/*` . Přední dvířka Azure vybírá trasu 2 na základě přesnější shody domény, a to jenom v případě, že v cestách neodpovídají vzory cest.
+> Musíte mít stejné vzory cest napříč pravidly směrování, jinak se zobrazí selhání. Máte například dvě pravidla směrování, jako je třeba trasa 1 ( `*.foo.com/*` namapovaná na fond back-end a) a trasa 2 ( `/bar.foo.com/somePath/*` namapovaná na back-end fond B). Pak přijde žádost o `bar.foo.com/anotherPath/*` . Přední dvířka Azure vybírá trasu 2 na základě přesnější shody domény, a to jenom v případě, že v cestách neodpovídají vzory cest.
 
 ## <a name="next-steps"></a>Další kroky
 

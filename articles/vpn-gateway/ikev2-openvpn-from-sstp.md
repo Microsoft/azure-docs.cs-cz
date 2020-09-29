@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: aec5a08bf56cd9a9ba18159ffc28a129163571b0
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: c7f71d24ab516044a0ce48ad40f78bc659268866
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426278"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442175"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Přechod na Protokol OpenVPN nebo IKEv2 z SSTP
 
@@ -47,7 +47,7 @@ Přidání IKEv2 do existující brány VPN SSTP nebude mít vliv na stávajíc�
 
 Pokud chcete přidat IKEv2 do existující brány, stačí přejít na kartu Konfigurace Point-to-site na portálu Virtual Network Gateway na portálu a v rozevíracím seznamu vybrat **IKEv2 a SSTP (SSL)** .
 
-![Point-to-site](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
+![Snímek obrazovky zobrazující stránku konfigurace Point-to-site s otevřeným rozevíracím seznamem Typ tunelového propojení a vybraný protokol IKEv2 a SSTP (SSL).](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
 
 
 ### <a name="option-2---remove-sstp-and-enable-openvpn-on-the-gateway"></a>Možnost 2 – odebrání SSTP a povolení OpenVPN v bráně

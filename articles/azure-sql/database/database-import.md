@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: migrate
 ms.custom: sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 574bc4721f83d60fdd8c75b4fedb824522968822
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5f7aad271f04bcb4eb63472716ea2fe9f98a0e33
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070040"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443703"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: Import souboru BACPAC do databáze ve službě Azure SQL Database nebo Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -147,6 +147,10 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 - Import do databáze v elastickém fondu se nepodporuje. Můžete importovat data do jednoúčelové databáze, kterou pak můžete přesunout do elastického fondu.
 - Služba import exportu nefunguje, když je povolený přístup ke službám Azure. Problém ale můžete obejít tak, že ručně spustíte sqlpackage.exe z virtuálního počítače Azure nebo exportujete přímo do kódu pomocí rozhraní API DACFx.
+- Import nepodporuje zadání redundance záložního úložiště při vytváření nové databáze a vytváří se s výchozí geograficky redundantní redundancí úložiště záloh. Pro alternativní řešení nejprve vytvořte prázdnou databázi s požadovanou redundancí záložního úložiště pomocí Azure Portal nebo PowerShellu a pak importujte BACPAC do této prázdné databáze. 
+
+> [!NOTE]
+> Služba Azure SQL Database konfigurovatelný záložní úložiště je v současnosti dostupná jenom ve verzi Public Preview v oblasti Azure jihovýchodní Asie.
 
 ## <a name="import-using-wizards"></a>Import pomocí průvodců
 

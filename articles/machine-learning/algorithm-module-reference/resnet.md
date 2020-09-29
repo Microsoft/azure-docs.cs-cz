@@ -8,19 +8,23 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 5d8806b8c93f5a8cbceaa6efa16dfff978dda42e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: bd0431a8e503605c6137d948cf207c1bd2fa45b4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905204"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442037"
 ---
 # <a name="resnet"></a>ResNet
 
 Tento článek popisuje, jak pomocí modulu **ResNet** v Návrháři Azure Machine Learning vytvořit model klasifikace obrázků pomocí algoritmu ResNet..  
 
-Tento algoritmus klasifikace je metoda učení pod dohledem a vyžaduje datovou sadu s popiskem. Další informace o tom, jak získat adresář obrázků s popiskem, najdete v tématu [převod na modul adresáře imagí](convert-to-image-directory.md) . Model můžete vytvořit tak, že poskytnete model a s popiskem adresář obrázků jako vstupy pro [výuku modelu Pytorch](train-pytorch-model.md). Školený model se pak dá použít k předpovědi hodnot pro nové vstupní příklady pomocí [modelu obrázku skóre](score-image-model.md).
+Tento algoritmus klasifikace je metoda učení pod dohledem a vyžaduje datovou sadu s popiskem. 
+> [!NOTE]
+> Tento modul nepodporuje s popiskem datovou sadu generovanou z *popisků dat* v nástroji Studio, ale podporuje pouze označený adresář imagí vygenerovaný z části [převést na Image adresář](convert-to-image-directory.md) . 
+
+Model můžete vytvořit tak, že poskytnete model a s popiskem adresář obrázků jako vstupy pro [výuku modelu Pytorch](train-pytorch-model.md). Školený model se pak dá použít k předpovědi hodnot pro nové vstupní příklady pomocí [modelu obrázku skóre](score-image-model.md).
 
 ### <a name="more-about-resnet"></a>Další informace o ResNet
 
@@ -46,7 +50,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="module-parameters"></a>Parametry modulu  
 
-| Name       | Rozsah | Typ    | Výchozí           | Description                              |
+| Název       | Rozsah | Typ    | Výchozí           | Popis                              |
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
 | Název modelu | Všechny   | Mode    | resnext101 \_ 32x8d | Název určité struktury ResNet       |
 | Předvlakované | Všechny   | Logická hodnota | Ano              | Jestli se má používat model předučený na ImageNet |
@@ -54,7 +58,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="output"></a>Výstup  
 
-| Název            | Typ                    | Description                              |
+| Název            | Typ                    | Popis                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Nevlakový model | UntrainedModelDirectory | Nevlakový model ResNet, který se dá připojit ke Pytorch modelu výuky. |
 

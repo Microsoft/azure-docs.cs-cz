@@ -7,17 +7,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: operations
 ms.devlang: PowerShell
-ms.topic: conceptual
+ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
-ms.openlocfilehash: 3acbdd5c933bc2010a26e2039ece378774055d30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1006cce4125adf67b9e3009bf8e27c0123acfd1
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84050398"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443635"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>PowerShell pro Azure SQL Database aliasu DNS
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -103,7 +103,7 @@ Používají se následující příkazy:
 - [AZ SQL Server DNS-alias set](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): upraví název serveru, na který je alias nakonfigurován, aby odkazoval na, ze serveru 1 na server 2.
 - [AZ SQL Server DNS-alias Delete](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Odeberte alias ze serveru 2 pomocí názvu aliasu.
 
-Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ```azurecli-interactive
 $subscriptionName = '<subscriptionName>';

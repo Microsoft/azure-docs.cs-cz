@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 78668eaadca872d7c25ab909fad5b9838bbc01d3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0a368e54c940ff580b7e8f49dd108fafddde5b17
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894817"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441492"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Nejčastější dotazy týkající se shromažďování dat, agentů a pracovních prostorů
 
@@ -166,7 +166,7 @@ Automatické zřizování pro vaše předplatná můžete vypnout v zásadách z
 
 1. Pokud je u vašeho předplatného Azure Defender povolený, otevřete pro toto předplatné zásadu zabezpečení a vyberte **Azure Defender vypnuto**.
 
-   ![Cenová úroveň][1]
+    :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Povolit nebo zakázat Azure Defender":::
 
 1. V dalším kroku vypnout automatické zřizování výběrem možnosti **vypnuto** na stránce **zásady zabezpečení – shromažďování dat** .
    ![Shromažďování dat][2]
@@ -200,7 +200,7 @@ Ručně nainstalujte rozšíření agenta Log Analytics, aby Security Center moh
 
 Agenta můžete připojit k jakémukoli existujícímu vlastnímu pracovnímu prostoru nebo Security Center vytvořenému pracovnímu prostoru. Pokud vlastní pracovní prostor nemá povolená řešení Security nebo SecurityCenterFree, budete muset použít řešení. Pokud ho chcete použít, vyberte vlastní pracovní prostor nebo předplatné a pomocí stránky **zásady zabezpečení – cenová** úroveň použijte cenovou úroveň.
 
-   ![Cenová úroveň][1]
+:::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Povolit nebo zakázat Azure Defender":::
 
 Security Center umožní správné řešení v pracovním prostoru na základě vybrané cenové úrovně.
 
@@ -271,7 +271,6 @@ Agent spotřebovává jmenovité množství systémových prostředků a měl by
 
 
 <!--Image references-->
-[1]: ./media/security-center-platform-migration-faq/pricing-tier.png
 [2]: ./media/security-center-platform-migration-faq/data-collection.png
 [3]: ./media/security-center-platform-migration-faq/remove-the-agent.png
 [4]: ./media/security-center-platform-migration-faq/use-another-workspace.png

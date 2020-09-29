@@ -4,12 +4,12 @@ description: Naučte se zjišťovat místní virtuální počítače Hyper-V pom
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: eb17ba9fc1b68f09f60e857cd20a3f0885bfdb05
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e62effc31ab5dbc687e0509617b89561c5f2a3b6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603947"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442316"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Kurz: zjišťování virtuálních počítačů Hyper-V pomocí posouzení serveru
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy ukazují nejrychlejší cestu k vyzkoušení scénáře a používají výchozí možnosti.  
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,7 +39,7 @@ Než začnete s tímto kurzem, Projděte si tyto požadavky.
 **Požadavek** | **Podrobnosti**
 --- | ---
 **Hostitel Hyper-V** | Hostitelé Hyper-V, na kterých jsou virtuální počítače umístěné, můžou být samostatné nebo v clusteru.<br/><br/> V hostiteli musí být spuštěný systém Windows Server 2019, Windows Server 2016 nebo Windows Server 2012 R2.<br/><br/> Ověřte, že jsou povolená příchozí připojení na portu WinRM 5985 (HTTP), aby se zařízení mohlo připojit k vyžádanému metadatům virtuálních počítačů a datům výkonu pomocí model CIM (Common Information Model) (CIM) relace.
-**Nasazení zařízení** | vCenter Server potřebuje prostředky k přidělení virtuálního počítače pro zařízení:<br/><br/> – Windows Server 2016<br/><br/> -32 GB paměti RAM<br/><br/> – Osm vCPU<br/><br/> – Přibližně 80 GB diskového úložiště.<br/><br/> – Externí virtuální přepínač.<br/><br/> – Přístup k Internetu na virtuálním počítači přímo nebo prostřednictvím proxy serveru.
+**Nasazení zařízení** | Hostitel Hyper-v potřebuje prostředky k přidělení virtuálního počítače pro zařízení:<br/><br/> – Windows Server 2016<br/><br/> – 16 GB paměti RAM<br/><br/> – Osm vCPU<br/><br/> – Přibližně 80 GB diskového úložiště.<br/><br/> – Externí virtuální přepínač.<br/><br/> – Přístup k Internetu na virtuálním počítači přímo nebo prostřednictvím proxy serveru.
 **Virtuální počítače** | Virtuální počítače můžou běžet s operačním systémem Windows nebo Linux. 
 
 Než začnete, můžete [zkontrolovat data](migrate-appliance.md#collected-data---hyper-v) , která zařízení shromáždí během zjišťování.
@@ -50,7 +50,7 @@ Chcete-li vytvořit projekt Azure Migrate a zaregistrovat Azure Migrate zaříze
 - Oprávnění přispěvatele nebo vlastníka v předplatném Azure.
 - Oprávnění k registraci aplikací Azure Active Directory.
 
-Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
+Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vašeho předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
 
 
 1. V Azure Portal vyhledejte "předplatná" a v části **služby**vyberte **předplatná**.
@@ -72,6 +72,8 @@ Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého p
 8. V **nastavení uživatele**ověřte, že uživatelé Azure AD můžou registrovat aplikace (ve výchozím nastavení nastavené na **Ano** ).
 
     ![Ověřte v uživatelských nastaveních, která můžou uživatelé registrovat v aplikacích Active Directory.](./media/tutorial-discover-hyper-v/register-apps.png)
+
+9. Alternativně může tenant nebo globální správce přiřadit roli **vývojář aplikací** k účtu, aby umožnil registraci aplikací AAD. [Přečtěte si další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-hyper-v-hosts"></a>Příprava hostitelů technologie Hyper-V
 
@@ -115,7 +117,7 @@ V tomto kurzu se nastavuje zařízení na virtuálním počítači s technologi�
 
 ### <a name="generate-the-azure-migrate-project-key"></a>Vygenerovat klíč projektu Azure Migrate
 
-1. V **Azure Migrate cíle migrace**  >  **Servers**  >  **Azure Migrate: Server Assessment**vyberte **Vyhledat**.
+1. V části **Cíle migrace** > **Servery** > **Azure Migrate: Hodnocení serverů** vyberte **Zjistit**.
 2. V rozevíracích **seznamech počítačů**  >  , ve**kterých jsou počítače virtualizované?** vyberte **Ano, s technologií Hyper-V**.
 3. V **1: vygenerujte Azure Migrate klíč projektu**, zadejte název pro Azure Migrate zařízení, které nastavíte pro zjišťování virtuálních počítačů Hyper-V. název by měl být alfanumerický a nesmí obsahovat víc než 14 znaků.
 1. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Během vytváření prostředků prosím Nezavírejte stránku zjišťovacích počítačů.
@@ -135,7 +137,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
 2. Spusťte následující příkaz prostředí PowerShell, který vygeneruje hodnotu hash pro soubor ZIP.
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
-    - Příklady použití: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
+    - Příklady použití: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
 3.  Ověřte nejnovější verze zařízení a hodnoty hash:
 
@@ -143,13 +145,13 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
         **Scénář** | **Stáhnout** | **SHA256**
         --- | --- | ---
-        Hyper-V (10,4 GB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
+        Hyper-V (8,91 GB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140422) |  40aa037987771794428b1c6ebee2614b092e6d69ac56d48a2bbc75eeef86c99a
 
     - Pro Azure Government:
 
         **Případě*** | **Stáhnout** | **SHA256**
         --- | --- | ---
-        Hyper-V (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140424) |  0769c5f8df1e8c1ce4f685296f9ee18e1ca63e4a111d9aa4e6982e069df430d7
+        Hyper-V (85,8 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140424) |  cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
 
 ### <a name="create-the-appliance-vm"></a>Vytvoření virtuálního počítače zařízení
 
@@ -214,7 +216,7 @@ Pokud používáte na SMB virtuální pevné disky, musíte povolit delegování
 1. Na virtuálním počítači zařízení spusťte tento příkaz. HyperVHost1/HyperVHost2 jsou příklady názvů hostitelů.
 
     ```
-    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
     ```
 
 2. Případně to udělejte v Editor místních zásad skupiny na zařízení:
@@ -252,7 +254,7 @@ Spustí se zjišťování. Zabere přibližně 2 minuty na hostitele, aby se met
 
 Po dokončení zjišťování můžete ověřit, že se virtuální počítače zobrazují na portálu.
 
-1. Otevřete řídicí panel Azure Migrate.
+1. Otevřete řídicí panel služby Azure Migrate.
 2. V **Azure Migrate-servery**  >  **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
 
 ## <a name="next-steps"></a>Další kroky

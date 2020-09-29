@@ -4,12 +4,12 @@ description: Naučte se zjišťovat místní fyzické servery s Azure Migrate po
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 0436ce3a02b6e271a62fe827d1a2d9a8b77dbfbe
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 00fb4073bc8a7b1375f92202b5a6bd0a59a23816
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600734"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442293"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>Kurz: zjištění fyzických serverů pomocí posouzení serveru
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy ukazují nejrychlejší cestu k vyzkoušení scénáře a používají výchozí možnosti.  
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,7 +37,7 @@ Než začnete s tímto kurzem, Projděte si tyto požadavky.
 
 **Požadavek** | **Podrobnosti**
 --- | ---
-**Náplně** | Potřebujete počítač, na kterém chcete spustit zařízení Azure Migrate. Počítač by měl mít:<br/><br/> – Nainstalovaný systém Windows Server 2016. Spuštění zařízení na počítači s Windows serverem 2019 se nepodporuje.<br/><br/> – 16 GB RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externí virtuální přepínač.<br/><br/> – Statická nebo dynamická IP adresa s přístupem k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
+**Náplně** | Potřebujete počítač, na kterém chcete spustit zařízení Azure Migrate. Počítač by měl mít:<br/><br/> – Nainstalovaný systém Windows Server 2016. _(V současné době se nasazení zařízení podporuje jenom v systému Windows Server 2016.)_<br/><br/> – 16 GB RAM, 8 vCPU, přibližně 80 GB diskového úložiště<br/><br/> – Statická nebo dynamická IP adresa s přístupem k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
 **Windows servery** | Povolí příchozí připojení na portu WinRM 5985 (HTTP), takže zařízení může vyžádat metadata o konfiguraci a výkonu.
 **Servery s Linuxem** | Povolí příchozí připojení na portu 22 (TCP).
 
@@ -47,7 +47,7 @@ Chcete-li vytvořit projekt Azure Migrate a zaregistrovat Azure Migrate zaříze
 - Oprávnění přispěvatele nebo vlastníka v předplatném Azure.
 - Oprávnění k registraci aplikací Azure Active Directory.
 
-Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
+Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vašeho předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
 
 1. V Azure Portal vyhledejte "předplatná" a v části **služby**vyberte **předplatná**.
 
@@ -69,7 +69,7 @@ Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého p
 
     ![Ověřte v uživatelských nastaveních, která můžou uživatelé registrovat v aplikacích Active Directory.](./media/tutorial-discover-physical/register-apps.png)
 
-
+9. Alternativně může tenant nebo globální správce přiřadit roli **vývojář aplikací** k účtu, aby umožnil registraci aplikací AAD. [Přečtěte si další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-physical-servers"></a>Příprava fyzických serverů
 
@@ -113,7 +113,7 @@ Nastavení zařízení:
 
 ### <a name="generate-the-azure-migrate-project-key"></a>Vygenerovat klíč projektu Azure Migrate
 
-1. V **Azure Migrate cíle migrace**  >  **Servers**  >  **Azure Migrate: Server Assessment**vyberte **Vyhledat**.
+1. V části **Cíle migrace** > **Servery** > **Azure Migrate: Hodnocení serverů** vyberte **Zjistit**.
 2. V možnosti **zjišťovat počítače**  >  **jsou virtualizované počítače?** vyberte **fyzické nebo jiné (AWS, GCP, Xen atd.)**.
 3. V **1: vygenerujte Azure Migrate klíč projektu**, zadejte název pro Azure Migrate zařízení, které nastavíte pro zjišťování fyzických nebo virtuálních serverů. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
 1. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Během vytváření prostředků prosím Nezavírejte stránku zjišťovacích počítačů.
@@ -139,13 +139,13 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
         **Scénář** | **Stáhnout*** | **Hodnota hash**
         --- | --- | ---
-        Fyzický (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140334) | 207157bab39303dca1c2b93562d6f1deaa05aa7c992f480138e17977641163fb
+        Fyzický (85,8 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140334) | ce5e6f0507936def8020eb7b3109173dad60fc51dd39c3bd23099bc9baaabe29
 
     - Pro Azure Government:
 
         **Scénář** | **Stáhnout*** | **Hodnota hash**
         --- | --- | ---
-        Fyzický (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
+        Fyzický (85,8 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
  
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Spusťte skript instalačního programu Azure Migrate
@@ -235,11 +235,11 @@ Nyní se z zařízení připojte k fyzickým serverům, které se mají zjistit,
 
 Spustí se zjišťování. Bude trvat přibližně 2 minuty na server, aby se metadata zjištěného serveru zobrazila v Azure Portal.
 
-## <a name="verify-servers-in-the-portal"></a>Ověřit servery na portálu
+## <a name="verify-servers-in-the-portal"></a>Ověření serverů na portálu
 
 Po dokončení zjišťování můžete ověřit, že se servery zobrazují na portálu.
 
-1. Otevřete řídicí panel Azure Migrate.
+1. Otevřete řídicí panel služby Azure Migrate.
 2. V **Azure Migrate-servery**  >  **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
 ## <a name="next-steps"></a>Další kroky
 

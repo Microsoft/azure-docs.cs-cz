@@ -4,18 +4,18 @@ description: Pochopte, jak jsou strukturované protokoly auditu Azure SQL Databa
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: reference
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
-ms.openlocfilehash: 17d985681ab7a547bf715b1f8bb8d37cbf7ab662
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 49e885862a49bb3bbea718566ee5389e6b08e860
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954107"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444591"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database formát protokolu auditu
 
@@ -46,7 +46,7 @@ Události auditu se zapisují do Log Analytics pracovního prostoru definovanéh
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>Pole protokolu auditu
 
-| Název (objekt BLOB) | Název (Event Hubs/Log Analytics) | Description | Typ objektu blob | Typ Event Hubs/Log Analytics |
+| Název (objekt BLOB) | Název (Event Hubs/Log Analytics) | Popis | Typ objektu blob | Typ Event Hubs/Log Analytics |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | ID akce | varchar (4) | řetězec |
 | action_name | action_name_s | Název akce | Není k dispozici | řetězec |

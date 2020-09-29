@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: 339b66310d75e228bc6107635ac39b8d27d774c1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5c05db4d6e0c98935fc13325b5656f8023c6228e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119109"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443337"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Vytvoření a správa úloh Elastic Database pomocí jazyka Transact-SQL (T-SQL) (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -1342,7 +1342,7 @@ Zobrazí všechny členy všech cílových skupin.
 |**elastic_pool_name**|nvarchar (128)|Název elastického fondu obsažený v cílové skupině. Zadáno pouze v případě, že target_type je ' SqlElasticPool '.|
 |**shard_map_name**|nvarchar (128)|Název map horizontálních oddílů obsažených v cílové skupině. Zadáno pouze v případě, že target_type je ' SqlShardMap '.|
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 - ![Ikona odkazu na téma](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "Ikona odkazu na téma") [– konvence syntaxe Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 

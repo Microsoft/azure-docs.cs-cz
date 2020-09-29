@@ -4,12 +4,12 @@ description: Naučte se zjišťovat místní virtuální počítače VMware pomo
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: cbe1561f58af8f65285ffb005b0232bff8225d3b
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: f39ad3cbc357575f735b963346c8a8b0cc95e7c8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604049"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442220"
 ---
 # <a name="tutorial-discover-vmware-vms-with-server-assessment"></a>Kurz: Vyhledání virtuálních počítačů VMware pomocí posouzení serveru
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy ukazují nejrychlejší cestu k vyzkoušení scénáře a používají výchozí možnosti, pokud je to možné.  
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -50,7 +50,7 @@ Chcete-li vytvořit projekt Azure Migrate a zaregistrovat Azure Migrate zaříze
 - Oprávnění přispěvatele nebo vlastníka v předplatném Azure.
 - Oprávnění k registraci aplikací Azure Active Directory.
 
-Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
+Pokud jste si právě vytvořili bezplatný účet Azure, jste vlastníkem vašeho předplatného. Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte oprávnění následujícím způsobem:
 
 1. V Azure Portal vyhledejte "předplatná" a v části **služby**vyberte **předplatná**.
 
@@ -72,6 +72,7 @@ Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého p
 
     ![Ověřte v uživatelských nastaveních, která můžou uživatelé registrovat v aplikacích Active Directory.](./media/tutorial-discover-vmware/register-apps.png)
 
+9. Alternativně může tenant nebo globální správce přiřadit roli **vývojář aplikací** k účtu, aby umožnil registraci aplikací AAD. [Přečtěte si další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-vmware"></a>Příprava VMware
 
@@ -144,7 +145,7 @@ K nastavení zařízení pomocí šablony vajíček:
 
 ### <a name="generate-the-azure-migrate-project-key"></a>Vygenerovat klíč projektu Azure Migrate
 
-1. V **Azure Migrate cíle migrace**  >  **Servers**  >  **Azure Migrate: Server Assessment**vyberte **Vyhledat**.
+1. V části **Cíle migrace** > **Servery** > **Azure Migrate: Hodnocení serverů** vyberte **Zjistit**.
 2. V možnosti **zjišťovat počítače**  >  **jsou vaše počítače virtualizované?** vyberte **Ano, pomocí VMware vSphere hypervisor**.
 3. V **1: vygenerujte Azure Migrate klíč projektu**, zadejte název Azure Migrate zařízení, které nastavíte pro zjišťování virtuálních počítačů VMware. název by měl být alfanumerický a musí obsahovat maximálně 14 znaků.
 1. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Během vytváření prostředků prosím Nezavírejte stránku zjišťovacích počítačů.
@@ -165,7 +166,7 @@ Před nasazením ověřte, zda je soubor sady vajíček zabezpečený:
   
    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
    
-   Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+   Příklady použití: ```C:\>CertUtil -HashFile C:\Users\Administrator\Desktop\MicrosoftAzureMigration.ova SHA256```
 
 3. Ověřte nejnovější verze zařízení a hodnoty hash:
 
@@ -173,13 +174,13 @@ Před nasazením ověřte, zda je soubor sady vajíček zabezpečený:
     
         **Algoritmus** | **Stáhnout** | **SHA256**
         --- | --- | ---
-        VMware (11,6 GB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
+        VMware (11,9 GB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140333) | bd5c19eec93a62d52cc507a6b7b408d07f33f92b7d39b8a1e3dfec4ec62830d7
 
     - Pro Azure Government:
     
         **Algoritmus** | **Stáhnout** | **SHA256**
         --- | --- | ---
-        VMware (85 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140337) | 47179f47eba2842337bbe533c424dd1da56baccdcf68b1d87b71a5a4280108c2
+        VMware (85,8 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2140337) | 2daaa2a59302bf911e8ef195f8add7d7c8352de77a9af0b860e2a627979085ca
 
 
 

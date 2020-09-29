@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 1cd03814e1590abebb74db490a2692d492a9207d
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 02ec24677519902c299babb72e089f75dcf8b34b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064940"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443030"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Nasazení služby dělení a slučování pro přesun dat mezi databázemi horizontálně dělené
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Soubory jsou umístěny v adresáři s názvem **Microsoft. Azure. SqlDatabase. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Vytvořte databázi Azure SQL Database, která bude použita jako databáze stavu rozdělení a sloučení. Přejděte na [Azure Portal](https://portal.azure.com). Vytvoří nový **SQL Database**. Zadejte název databáze a vytvořte nového správce a heslo. Nezapomeňte si název a heslo zaznamenat pro pozdější použití.
+1. Vytvořte databázi Azure SQL Database, která bude použita jako databáze stavu rozdělení a sloučení. Přejděte na web [Azure Portal](https://portal.azure.com). Vytvoří nový **SQL Database**. Zadejte název databáze a vytvořte nového správce a heslo. Nezapomeňte si název a heslo zaznamenat pro pozdější použití.
 
 1. Ujistěte se, že váš server umožňuje připojení služeb Azure. Na portálu v **nastavení brány firewall**ověřte, že nastavení **povolený přístup ke službám Azure** je nastavené na **zapnuto**. Klikněte na ikonu Uložit.
 
@@ -108,7 +108,7 @@ Spusťte následující příkaz ze stejného okna, ve kterém bylo provedeno Ma
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>Nahrání souboru PFX do cloudové služby
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 2. Vyberte **Cloud Services**.
 3. Vyberte cloudovou službu, kterou jste vytvořili výše pro službu dělení a sloučení.
 4. V horní nabídce klikněte na **certifikáty** .
@@ -141,7 +141,7 @@ Upozorňujeme, že pro produkční nasazení by se měly pro certifikační auto
 
 ## <a name="deploy-your-service"></a>Nasazení služby
 
-1. Přejít na [Azure Portal](https://portal.azure.com)
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 2. Vyberte cloudovou službu, kterou jste vytvořili dříve.
 3. Klikněte na **Přehled**.
 4. Zvolte testovací prostředí a pak klikněte na **nahrát**.
@@ -188,7 +188,7 @@ K dispozici jsou tyto soubory skriptu:
    <table style="width:100%">
      <tr>
        <th>Soubor PowerShellu</th>
-       <th>Kroky</th>
+       <th>Postup</th>
      </tr>
      <tr>
        <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
@@ -210,7 +210,7 @@ K dispozici jsou tyto soubory skriptu:
    <table style="width:100%">
      <tr>
        <th>Soubor PowerShellu</th>
-       <th>Kroky</th>
+       <th>Postup</th>
      </tr>
    <tr>
        <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>

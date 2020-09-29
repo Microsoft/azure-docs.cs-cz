@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 50f7af3bb1ad543dea0263304b82287225500a21
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 29187ef99ce6628359819739ab5e4b34213eeb8a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526880"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441628"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurace nastavení služby Azure Multi-Factor Authentication
 
@@ -57,7 +57,7 @@ Chcete-li nakonfigurovat nastavení uzamčení účtů, proveďte následující
 
 ## <a name="block-and-unblock-users"></a>Blokování a odblokování uživatelů
 
-Pokud došlo ke ztrátě nebo odcizení zařízení uživatele, můžete pro přidružený účet blokovat pokusy o ověření. Všechny pokusy o ověření zablokovaných uživatelů se automaticky zamítnou. Uživatelé zůstanou zablokovaní po dobu 90 dnů od data zablokování.
+Pokud došlo ke ztrátě nebo odcizení zařízení uživatele, můžete u přidruženého účtu zablokovat pokusy o Multi-Factor Authentication Azure. Všechny pokusy služby Azure Multi-Factor Authentication pro blokované uživatele budou automaticky odepřeny. Uživatelé zůstanou zablokovaní po dobu 90 dnů od data zablokování.
 
 ### <a name="block-a-user"></a>Blokování uživatele
 
@@ -85,7 +85,7 @@ Funkce upozornění na podvod uživatelům umožňuje nahlásit podvodné pokusy
 
 K dispozici jsou následující možnosti konfigurace upozornění na podvod:
 
-* **Automaticky zablokovat uživatele, kteří**nahlásí podvod: Pokud uživatel ohlásí podvod, je jejich účet zablokován po dobu 90 dnů nebo dokud správce neblokuje svůj účet. Správce může kontrolovat přihlášení pomocí sestavy přihlášení a provést vhodná opatření, aby se předešlo budoucímu podvodování. Správce pak může [odblokovat](#unblock-a-user) účet uživatele.
+* **Automaticky blokovat uživatele, kteří nahlásili podvod**: Pokud uživatel nahlásí podvod, pokusy o ověření Azure MFA pro uživatelský účet jsou zablokované na 90 dní nebo dokud správce neblokuje svůj účet. Správce může kontrolovat přihlášení pomocí sestavy přihlášení a provést vhodná opatření, aby se předešlo budoucímu podvodování. Správce pak může [odblokovat](#unblock-a-user) účet uživatele.
 * **Kód pro nahlášení podvodu při úvodním pozdravu**: když uživatelé obdrží telefonní hovor, aby provedl ověřování Multi-Factor Authentication, normálně se jim **#** potvrdili, že se přihlásí. Chcete-li nahlásit podvod, uživatel zadá kód před stisknutím klávesy **#** . Tento kód je ve výchozím nastavení **0** , ale můžete ho přizpůsobit.
 
    > [!NOTE]

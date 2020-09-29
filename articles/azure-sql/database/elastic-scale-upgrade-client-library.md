@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 3bc575dfd815ce4d967fb4328a0a412fce1e8d81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 657ddc9f772d31e8845631501e72175ecfbc78d7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829495"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442691"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Upgrade aplikace na použití nejnovější klientské knihovny pro elastickou databázi
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -48,8 +48,8 @@ Provedení těchto kroků v pořadí zajistí, že starší verze klientské kni
 ***Možnost 1: upgrade metadat pomocí PowerShellu***
 
 1. Stáhněte si nejnovější nástroj příkazového řádku pro NuGet z [tohoto místa](https://nuget.org/nuget.exe) a uložte ho do složky.
-2. Otevřete příkazový řádek, přejděte do stejné složky a vydejte příkaz:`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
-3. Přejděte do podsložky obsahující novou verzi klientské knihovny DLL, kterou jste právě stáhli, například:`cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
+2. Otevřete příkazový řádek, přejděte do stejné složky a vydejte příkaz: `nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
+3. Přejděte do podsložky obsahující novou verzi klientské knihovny DLL, kterou jste právě stáhli, například: `cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
 4. Stáhněte si skript upgradu klienta elastické databáze z [centra skriptů](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)a uložte ho do stejné složky, která obsahuje knihovnu DLL.
 5. Z této složky spusťte z příkazového řádku PowerShell .\upgrade.ps1 a postupujte podle zobrazených výzev.
 

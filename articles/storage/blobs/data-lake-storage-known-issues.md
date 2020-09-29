@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c1e9e3d63e8a4f7fe461e2d33603da91d3d9bec6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923734"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441785"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -113,11 +113,9 @@ Nastavení pro dny uchování se ještě nepodporuje, ale protokoly můžete ods
 
 ### <a name="lifecycle-management-policies"></a>Zásady správy životního cyklu
 
-- Zásady správy životního cyklu ještě nejsou v účtech úložiště úrovně Premium BlockBlobStorage podporované. 
+- Zásady správy životního cyklu se podporují jenom u účtů pro obecné účely v2. V účtech úložiště úrovně Premium BlockBlobStorage ještě nejsou podporované.
+- Data nejde přesunout z úrovně Premium do nižších úrovní.
 
-- Data nejde přesunout z úrovně Premium do nižších úrovní. 
-
-- Akce **odstranění objektu BLOB** se v tuto chvíli nepodporuje. 
 
 ### <a name="hdinsight-support"></a>Podpora HDInsight
 

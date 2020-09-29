@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 049c30613c358bf22616eaa2042a7fd6e42b9f61
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 489b4bfee1eaa2c381b16e88dbcc0bcb7fd8555f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326031"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441508"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integrace System Center Operations Manager s funkcí map Azure Monitor pro virtuální počítače
 
@@ -73,11 +73,11 @@ Chcete-li nakonfigurovat integraci mapování Azure Monitor pro virtuální poč
 
 6. Volitelné: Vyberte fond zdrojů všech serverů pro správu, který bude komunikovat s Log Analytics a pak klikněte na **Přidat pracovní prostor**.
 
-    ![Fond zdrojů konfigurace Operations Manager](media/service-map-scom/scom-config-pool.png)
+    ![Snímek obrazovky fondu serverů v části přidat Microsoft Operations Management Suite pracovní prostor se zvoleným fondem zdrojů všech serverů pro správu.](media/service-map-scom/scom-config-pool.png)
 
     Konfigurace a registrace Log Analytics pracovního prostoru může trvat několik minut. Po nakonfigurování Operations Manager inicializuje první synchronizaci mapování.
 
-    ![Fond zdrojů konfigurace Operations Manager](media/service-map-scom/scom-config-success.png)
+    ![Snímek obrazovky s doplňováním v pracovním prostoru přidat Microsoft Operations Management Suite potvrzující, že byl pracovní prostor přidán.](media/service-map-scom/scom-config-success.png)
 
 ## <a name="monitor-integration"></a>Monitorování integrace
 
@@ -98,11 +98,11 @@ Složka Service Map má čtyři uzly:
 
 * **Zobrazení závislostí skupiny počítačů**: vypíše všechny skupiny počítačů, které jsou synchronizované z funkce mapa. Kliknutím na libovolnou skupinu můžete zobrazit její diagram distribuované aplikace.
 
-    ![Diagram Operations Manager distribuované aplikace](media/service-map-scom/scom-group-dad.png)
+    ![Snímek obrazovky z Service Map zobrazující diagram s obrázky pro každou skupinu počítačů a řádky, které označují závislosti mezi nimi.](media/service-map-scom/scom-group-dad.png)
 
 * **Zobrazení závislostí serveru**: vypíše všechny servery, které jsou synchronizované z funkce mapa. Pro zobrazení diagramu distribuované aplikace můžete kliknout na libovolný server.
 
-    ![Diagram Operations Manager distribuované aplikace](media/service-map-scom/scom-dad.png)
+    ![Snímek obrazovky z Service Map zobrazující diagram s obrázky pro každý server a řádky, které označují závislosti mezi nimi](media/service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Upravit nebo odstranit pracovní prostor
 

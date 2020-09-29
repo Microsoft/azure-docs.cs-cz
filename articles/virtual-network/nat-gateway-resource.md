@@ -13,19 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2020
+ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: ef1f8966497492f5a4969aca594c43abdf80945c
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 62c1b323899f03a043904f4b10d5fe3bb551e0f4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612906"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441765"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT
 
-Prostředky brány NAT jsou součástí [Virtual Network NAT](nat-overview.md) a poskytují odchozí připojení k Internetu pro jednu nebo více podsítí virtuální sítě. Podsíť stavu virtuální sítě, která se použije pro bránu NAT. Překlad adres (NAT) pro podsíť poskytuje překlad adres (SNAT).  Prostředky brány NAT určují, které statické IP adresy virtuální počítače používají při vytváření odchozích toků. Statické IP adresy pocházejí z prostředků veřejné IP adresy, prostředků předpony veřejných IP adres nebo obojího. Pokud se používá prostředek předpony veřejných IP adres, všechny IP adresy celého prostředku předpony veřejné IP adresy se spotřebují prostředkem brány NAT. Prostředek brány NAT může využít celkem až 16 statických IP adres z obou.
-
+Prostředky brány NAT jsou součástí [Virtual Network NAT](nat-overview.md) a poskytují odchozí připojení k Internetu pro jednu nebo více podsítí virtuální sítě. Podsíť stavu virtuální sítě, která se použije pro bránu NAT. Překlad adres (NAT) pro podsíť poskytuje překlad adres (SNAT).  Prostředky brány NAT určují, které statické IP adresy virtuální počítače používají při vytváření odchozích toků. Statické IP adresy pocházejí z prostředků veřejné IP adresy (PIP), prostředků předpony veřejných IP adres nebo obojího. Pokud se používá prostředek předpony veřejných IP adres, všechny IP adresy celého prostředku předpony veřejné IP adresy se spotřebují prostředkem brány NAT. Prostředek brány NAT může využít celkem až 16 statických IP adres z obou.
 
 <p align="center">
   <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="Virtual Network překlad adres (NAT) pro odchozí připojení do Internetu">
@@ -231,7 +230,7 @@ I když se zdá, že se tento scénář bude pracovat, jeho model stavu a režim
 
 Každý prostředek brány NAT může poskytovat propustnost až 50 GB/s. Nasazení můžete rozdělit do několika podsítí a přiřadit každou podsíť nebo skupiny podsítí a bránu NAT pro horizontální navýšení kapacity.
 
-Každá brána NAT může podporovat 64 000 připojení na přiřazenou odchozí IP adresu.  Podrobné informace a pokyny k [řešení problémů najdete](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat) v následující části o překladu zdrojového síťového adres (SNAT).
+Každá brána NAT podporuje 64 000 toků pro TCP a UDP na přiřazenou odchozí IP adresu.  Podrobné informace a pokyny k [řešení problémů najdete](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat) v následující části o překladu zdrojového síťového adres (SNAT).
 
 ## <a name="source-network-address-translation"></a>Překlad zdrojové síťové adresy
 
@@ -239,27 +238,39 @@ Zdrojový překlad adres (SNAT) přepíše zdroj toku, který má být vytvořen
 
 ### <a name="fundamentals"></a>Základy
 
-Pojďme se podívat na příklad čtyř toků a vysvětlit základní koncept.  Brána NAT používá 65.52.0.2 prostředku s veřejnou IP adresou.
+Pojďme se podívat na příklad čtyř toků a vysvětlit základní koncept.  Brána NAT používá prostředek 65.52.1.1 veřejné IP adresy a virtuální počítač vytváří připojení k 65.52.0.1.
 
 | Tok | Zdrojová řazená kolekce členů | Cílová řazená kolekce členů |
 |:---:|:---:|:---:|
 | 1 | 192.168.0.16:4283 | 65.52.0.1:80 |
 | 2 | 192.168.0.16:4284 | 65.52.0.1:80 |
 | 3 | 192.168.0.17.5768 | 65.52.0.1:80 |
-| 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
 
 Tyto toky můžou vypadat takto po přijetí PAT:
 
 | Tok | Zdrojová řazená kolekce členů | SNAT'ed zdrojová řazená kolekce členů | Cílová řazená kolekce členů | 
 |:---:|:---:|:---:|:---:|
-| 1 | 192.168.0.16:4283 | 65.52.0.2:234 | 65.52.0.1:80 |
-| 2 | 192.168.0.16:4284 | 65.52.0.2:235 | 65.52.0.1:80 |
-| 3 | 192.168.0.17.5768 | 65.52.0.2:236 | 65.52.0.1:80 |
-| 4 | 192.168.0.16:4285 | 65.52.0.2:237 | 65.52.0.2:80 |
+| 1 | 192.168.0.16:4283 | **65.52.1.1:1234** | 65.52.0.1:80 |
+| 2 | 192.168.0.16:4284 | **65.52.1.1:1235** | 65.52.0.1:80 |
+| 3 | 192.168.0.17.5768 | **65.52.1.1:1236** | 65.52.0.1:80 |
 
-Cíl se zobrazí jako 65.52.0.2 (zdrojová řazená kolekce členů na SNAT) se zobrazeným přiřazeným portem.  PAT, jak je znázorněno v předchozí tabulce, se označuje také jako maskování portů SNAT.  Několik privátních zdrojů je maskovaných za IP adresou a portem.
+Cíl se zobrazí jako 65.52.0.1 (zdrojová řazená kolekce členů na SNAT) se zobrazeným přiřazeným portem.  PAT, jak je znázorněno v předchozí tabulce, se označuje také jako maskování portů SNAT.  Několik privátních zdrojů je maskovaných za IP adresou a portem.  
 
-Neprovádějte závislost na konkrétním způsobu, jakým jsou přiřazeny zdrojové porty.  Předchozí je příkladem základního konceptu.
+#### <a name="source-snat-port-reuse"></a>zdroj (SNAT) opakované použití portu
+
+Brány NAT oportunisticky znovu používat zdrojový port (SNAT).  Následující příklad znázorňuje tento koncept jako dodatečný tok pro předchází sadu toků.  Virtuální počítač v příkladu je tok, který se 65.52.0.2.
+
+| Tok | Zdrojová řazená kolekce členů | Cílová řazená kolekce členů |
+|:---:|:---:|:---:|
+| 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
+
+Brána NAT bude pravděpodobně překládat tok 4 na port, který může být použit i pro jiné cíle.  Další diskuzi o správném určení velikosti zřizování IP adres najdete v tématu [škálování](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#scaling) .
+
+| Tok | Zdrojová řazená kolekce členů | SNAT'ed zdrojová řazená kolekce členů | Cílová řazená kolekce členů | 
+|:---:|:---:|:---:|:---:|
+| 4 | 192.168.0.16:4285 | 65.52.1.1:**1234** | 65.52.0.2:80 |
+
+Neprovádějte závislost na konkrétním způsobu, jakým zdrojové porty jsou přiřazeny v předchozím příkladu.  Předchozí je příkladem základního konceptu.
 
 SNAT, kterou poskytuje překlad adres (NAT), se liší od [Load Balancer](../load-balancer/load-balancer-outbound-connections.md) v několika aspektech.
 
@@ -292,7 +303,12 @@ Po vydání portu SNAT je možné ho použít pro libovolný virtuální počít
 
 SNAT namapuje privátní adresy na jednu nebo více veřejných IP adres a přepíše zdrojové adresy a zdrojový port v procesech. Prostředek brány NAT bude pro tento překlad používat porty 64 000 (porty SNAT) podle nakonfigurované veřejné IP adresy. Prostředky brány NAT můžou škálovat až na 16 IP adres a 1 milion portů SNAT. Pokud je zadaný prostředek předpony veřejných IP adres, každá IP adresa v rámci předpony poskytuje inventář portů SNAT. A přidáním dalších veřejných IP adres zvýšíte dostupné porty SNAT inventáře. TCP a UDP jsou samostatné inventáře portů SNAT a nesouvisející.
 
-Prostředky brány NAT oportunisticky znovu použít zdrojové porty. Pro účely škálování byste měli předpokládat, že každý tok vyžaduje nový port SNAT a škálovat celkový počet dostupných IP adres pro odchozí provoz.
+Prostředky brány NAT oportunisticky opakované použití zdrojového kódu (SNAT). Jako pokyny k návrhu pro účely škálování byste měli předpokládat, že každý tok vyžaduje nový port SNAT a škálovat celkový počet dostupných IP adres pro odchozí provoz.  Měli byste pečlivě zvážit škálování, které navrhujete, a zajistit, aby se odpovídajícím způsobem zřídily IP adresy.
+
+Porty SNAT do různých cílů se pravděpodobně znovu použijí, pokud je to možné. A jako přístupy k vyčerpání portů SNAT nemusí být toky úspěšné.  
+
+Podívejte se například na [základy SNAT](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#source-network-address-translation) .
+
 
 ### <a name="protocols"></a>Protokoly
 
@@ -344,11 +360,9 @@ Chceme zjistit, jak můžeme službu vylepšit. Chybí funkce? Udělejte si př�
   - [Šablona](./quickstart-create-nat-gateway-template.md)
 * Další informace o rozhraní API prostředků brány NAT
   - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
-  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
+  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway)
   - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
 * Přečtěte si o [zónách dostupnosti](../availability-zones/az-overview.md).
 * Přečtěte si o [službě Load Balancer úrovně Standard](../load-balancer/load-balancer-standard-overview.md).
 * Seznamte [se se zónami dostupnosti a standardním nástrojem pro vyrovnávání zatížení](../load-balancer/load-balancer-standard-availability-zones.md).
 * [Řekněte nám, co se má sestavit příště pro Virtual Network překlad adres (NAT) ve službě UserVoice](https://aka.ms/natuservoice).
-
-

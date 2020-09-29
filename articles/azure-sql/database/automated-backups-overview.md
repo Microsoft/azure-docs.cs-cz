@@ -9,14 +9,14 @@ ms.custom: references_regions
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, sstein, danil
-ms.date: 08/04/2020
-ms.openlocfilehash: 24611853749a5fa675b8c26d5e27c18e44590eaf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: mathoma, carlrab, danil
+ms.date: 09/25/2020
+ms.openlocfilehash: b28c175656b0951980f861198c93ccd794605839
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284716"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444311"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
 
@@ -38,22 +38,21 @@ Při obnovení databáze služba Určuje, které zálohy úplného, rozdílovéh
 
 Ve výchozím nastavení SQL Database a SQL Managed instance ukládají data v geograficky redundantních objektech [BLOB úložiště](../../storage/common/storage-redundancy.md) (RA-GRS), které se replikují do [spárované oblasti](../../best-practices-availability-paired-regions.md). To pomáhá chránit před výpadky, které mají vliv na úložiště zálohování v primární oblasti a umožňují obnovit server do jiné oblasti v případě havárie. 
 
-Služba SQL Managed instance zavádí možnost změnit redundanci úložiště na místně redundantní (LRS) nebo objekty blob redundantní pro zóny (ZRS) úložiště, aby se zajistilo, že vaše data zůstanou ve stejné oblasti, ve které je nasazená vaše spravovaná instance. Mechanismy redundance úložiště ukládají více kopií vašich dat, aby byly chráněné před plánovanými i neplánovanými událostmi, včetně přechodného selhání hardwaru, sítě nebo výpadků napájení nebo obrovského přirozeného katastrofy. 
+Možnost konfigurace redundance záložního úložiště poskytuje flexibilitu pro výběr mezi místně redundantními, redundantními a geograficky redundantními objekty blob úložiště pro spravovanou instanci SQL nebo SQL Database. Aby se zajistilo, že vaše data zůstanou ve stejné oblasti, ve které je nasazená vaše spravovaná instance nebo databáze SQL, můžete změnit výchozí geograficky redundantní záložní úložiště záloh a nakonfigurovat místně redundantní (LRS) nebo ZRS (Storage-redundantní) objekty blob úložiště pro zálohy. Mechanismy redundance úložiště ukládají více kopií vašich dat, aby byly chráněné před plánovanými i neplánovanými událostmi, včetně přechodného selhání hardwaru, sítě nebo výpadků napájení nebo obrovského přirozeného katastrofy. Nakonfigurovaná redundance záložního úložiště se používá pro nastavení krátkodobého uchovávání záloh, která se používají pro obnovení v časovém intervalu (PITR) a dlouhodobé zálohy uchovávání dat, které se používají k dlouhodobému zálohování (LTR). 
 
-Možnost konfigurace redundance záložního úložiště poskytuje flexibilitu pro výběr mezi LRS, ZRS a GRS BLOB úložiště pro spravovanou instanci SQL. Konfigurace redundance úložiště zálohování během procesu vytváření spravované instance, když je prostředek zřízený, už není možné změnit redundanci úložiště. (Zóna – redundantní úložiště (ZRS) je v tuto chvíli dostupné jenom v [určitých oblastech](../../storage/common/storage-redundancy.md#zone-redundant-storage)).
+Pro SQL Database lze redundanci úložiště zálohování nakonfigurovat v době vytváření databáze nebo aktualizovat pro existující databázi. změny provedené v existující databázi platí pouze pro budoucí zálohy. Po aktualizaci redundance záložního úložiště existující databáze může trvat až 48 hodin, než se změny použijí. Všimněte si, že je geografická obnova zakázaná, jakmile se databáze aktualizuje tak, aby používala místní nebo zóny redundantní úložiště. 
 
 
 > [!IMPORTANT]
-> Ve spravované instanci SQL se nakonfigurovaná redundance zálohy používá pro nastavení krátkodobého uchovávání záloh, které se používá pro obnovení v časovém intervalu (PITR) a dlouhodobé zálohy uchovávání informací používané pro dlouhodobé zálohování (LTR).
+> Konfigurace redundance úložiště zálohování během procesu vytváření spravované instance, když je prostředek zřízený, už není možné změnit redundanci úložiště. 
 
+> [!IMPORTANT]
+> Redundantní úložiště v zóně je aktuálně dostupné jenom v [určitých oblastech](../../storage/common/storage-redundancy.md#zone-redundant-storage). 
 
 > [!NOTE]
-> Azure SQL Database konfigurovatelný redundance úložiště záloh je aktuálně k dispozici jako omezená privátní verze Preview pro určité zákazníky v oblasti jihovýchodní Asie v Azure. Pokud se chcete v této privátní verzi Preview považovat za registraci, kontaktujte prosím [sqlbackuppreview@microsoft.com](mailto:sqlbackuppreview@microsoft.com) . 
-
-Pokud vaše pravidla ochrany dat vyžadují, aby vaše zálohy byly dostupné po delší dobu (až 10 let), můžete nakonfigurovat [dlouhodobé uchovávání](long-term-retention-overview.md) pro databáze s jednou i ve fondu.
+> Služba Azure SQL Database konfigurovatelný záložní úložiště je v současnosti dostupná jenom ve verzi Public Preview v oblasti Azure jihovýchodní Asie.  
 
 ### <a name="backup-usage"></a>Využití zálohy
-
 
 Tyto zálohy rovněž umožňují:
 
@@ -61,7 +60,7 @@ Tyto zálohy rovněž umožňují:
 - **Obnovení odstraněné databáze**  -  v okamžiku v čase [Obnovení odstraněné databáze do doby odstranění](recovery-using-backups.md#deleted-database-restore) nebo do libovolného bodu v čase v rámci doby uchování. Odstraněnou databázi lze obnovit pouze na stejném serveru nebo ve spravované instanci, kde byla vytvořena původní databáze. Při odstraňování databáze služba před odstraněním zabere v konečném zálohování protokolu transakcí, aby nedošlo ke ztrátě dat.
 - **Geografické obnovení**  -  [Obnovte databázi do jiné geografické oblasti](recovery-using-backups.md#geo-restore). Geografické obnovení umožňuje obnovení z geografické havárie, když nemůžete získat přístup k databázi nebo zálohám v primární oblasti. Vytvoří novou databázi na jakémkoli existujícím serveru nebo spravované instanci v libovolné oblasti Azure.
    > [!IMPORTANT]
-   > Geografické obnovení je dostupné jenom pro spravované instance s nakonfigurovaným geograficky redundantním úložištěm záloh (RA-GRS).
+   > Geografické obnovení je dostupné jenom pro databáze SQL nebo spravované instance nakonfigurované s geograficky redundantním úložištěm záloh.
 - **Obnovení z dlouhodobého zálohování**  -  [Obnovte databázi z určité dlouhodobé zálohy](long-term-retention-overview.md) izolované databáze nebo databáze ve fondu, pokud je databáze nakonfigurovaná s použitím dlouhodobých zásad uchovávání informací (LTR). LTR umožňuje obnovit starou verzi databáze pomocí [Azure Portal](long-term-backup-retention-configure.md#using-the-azure-portal) nebo [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) , aby splňovala požadavek na dodržování předpisů nebo spustil starou verzi aplikace. Další informace najdete v tématu [Dlouhodobé uchovávání](long-term-retention-overview.md).
 
 Chcete-li provést obnovení, přečtěte si téma [obnovení databáze ze zálohy](recovery-using-backups.md).
@@ -136,6 +135,9 @@ Uchovávání záloh pro účely PITR během posledních 1-35 dnů se někdy ozn
 
 V případě SQL Database i SQL spravované instance můžete v úložišti objektů BLOB v Azure nakonfigurovat dlouhodobé uchovávání po dobu až 10 let (LTR). Po nakonfigurování zásad LTR se všechny zálohy automaticky zkopírují do jiného kontejneru úložiště. Pro splnění různých požadavků na dodržování předpisů můžete pro týdenní, měsíční nebo roční úplné zálohování vybrat jiné doby uchování. Spotřeba úložiště závisí na zvolené četnosti a období uchovávání záloh LTR. Pomocí [cenové kalkulačky ltr](https://azure.microsoft.com/pricing/calculator/?service=sql-database) můžete odhadnout náklady na úložiště ltr.
 
+> [!IMPORTANT]
+> Aktualizace redundance záložního úložiště pro existující Azure SQL Database se týká pouze budoucích záloh provedených pro databázi. Všechny existující zálohy LTR pro databázi budou nadále umístěny v existujícím objektu BLOB úložiště a nové zálohy budou uloženy v požadovaném typu objektu BLOB úložiště. 
+
 Další informace o LTR najdete v tématu [dlouhodobé uchovávání záloh](long-term-retention-overview.md).
 
 ## <a name="storage-costs"></a>Náklady na úložiště
@@ -162,7 +164,7 @@ V případě spravovaných instancí je celková fakturovatelná velikost úlož
 
 `Total billable backup storage size = (total size of full backups + total size of differential backups + total size of log backups) – maximum instance data storage`
 
-Celkové Fakturovatelné úložiště záloh se bude účtovat za GB za měsíc. Tato spotřeba úložiště záloh bude záviset na zatížení a velikosti jednotlivých databází, elastických fondů a spravovaných instancí. Vysoce upravované databáze mají větší rozdílové a zaprotokolované zálohy, protože velikost těchto záloh je úměrná množství změn dat. Proto budou mít tyto databáze vyšší poplatky za zálohování.
+Celkové Fakturovatelné úložiště zálohování, pokud je nějaké, se bude účtovat za GB za měsíc podle sazby využité redundance úložiště zálohy. Tato spotřeba úložiště záloh bude záviset na zatížení a velikosti jednotlivých databází, elastických fondů a spravovaných instancí. Vysoce upravované databáze mají větší rozdílové a zaprotokolované zálohy, protože velikost těchto záloh je úměrná množství změn dat. Proto budou mít tyto databáze vyšší poplatky za zálohování.
 
 Služba SQL Database a SQL Managed instance počítá vaše celkové Fakturovatelné úložiště záloh jako kumulativní hodnotu ve všech zálohovaných souborech. Každou hodinu se tato hodnota oznamuje fakturačnímu kanálu Azure, který agreguje Toto hodinové použití, aby se na konci každého měsíce využívala spotřeba úložiště záloh. Pokud dojde k odstranění databáze, spotřeba úložiště zálohování se postupně sníží, protože staré stáří záloh vyprší a odstraní se. Vzhledem k tomu, že rozdílové zálohy a zálohy protokolů vyžadují, aby se obnovitelné dřívější úplné zálohování, všechny tři typy zálohování se v týdenních sadách vyprázdní. Po odstranění všech záloh se ukončí fakturace. 
 
@@ -184,13 +186,13 @@ Redundance záložního úložiště ovlivňuje náklady na zálohování násle
 Další podrobnosti o cenách za úložiště zálohování najdete na stránce s cenami [Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/) a na [stránce s cenami Azure SQL Managed instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
 
 > [!IMPORTANT]
-> Konfigurovatelná redundance úložiště pro zálohy je aktuálně dostupná jenom pro spravovanou instanci SQL a dá se zadat jenom během procesu vytváření spravované instance. Po zřízení prostředku nemůžete změnit možnost redundance úložiště zálohování.
+> Konfigurovatelná redundance úložiště zálohování pro spravovanou instanci SQL je dostupná ve všech oblastech Azure a aktuálně dostupná v oblasti jihovýchodní Asie – Azure jenom pro SQL Database. U spravované instance se dá zadat jenom během procesu vytváření spravované instance. Po zřízení prostředku nemůžete změnit možnost redundance úložiště zálohování.
 
 ### <a name="monitor-costs"></a>Sledovat náklady
 
 Pokud chcete pochopit náklady na úložiště zálohování, v Azure Portal klikněte na **cost management + fakturace** , vyberte **cost management**a pak vyberte **Analýza nákladů**. Vyberte požadované předplatné jako **obor**a potom vyfiltrujte časový interval a službu, které vás zajímají.
 
-Přidejte filtr pro **název služby**a potom v rozevíracím seznamu vyberte **SQL Database** . Filtr **podkategorie měřiče** použijte k výběru čítače fakturace pro vaši službu. Pro izolovanou databázi nebo fond elastické databáze vyberte **Single/elastický fond Pitr úložiště zálohování**. V případě spravované instance vyberte **mi Pitr úložiště zálohování**. Podkategorie **úložišť** a **výpočtů** vám můžou zajímat i to, že nejsou spojené s náklady na úložiště zálohování.
+Přidejte filtr pro **název služby**a potom v rozevíracím seznamu vyberte **SQL Database** . Filtr **podkategorie měřiče** použijte k výběru čítače fakturace pro vaši službu. Pro izolovanou databázi nebo fond elastické databáze vyberte **Single/elastický fond PITR úložiště zálohování**. V případě spravované instance vyberte **mi PITR úložiště zálohování**. Podkategorie **úložišť** a **výpočtů** vám můžou zajímat i to, že nejsou spojené s náklady na úložiště zálohování.
 
 ![Analýza nákladů na úložiště zálohování](./media/automated-backups-overview/check-backup-storage-cost-sql-mi.png)
 
@@ -369,17 +371,80 @@ Další informace najdete v tématu [REST API uchovávání záloh](https://docs
 ## <a name="configure-backup-storage-redundancy"></a>Konfigurace redundance úložiště zálohování
 
 > [!NOTE]
-> Konfigurovatelná redundance úložiště pro zálohy je aktuálně dostupná jenom pro spravovanou instanci SQL a dá se zadat jenom během procesu vytváření spravované instance. Po zřízení prostředku nemůžete změnit možnost redundance úložiště zálohování.
+> Nastavitelná redundance úložiště pro zálohování pro spravovanou instanci SQL se dá zadat jenom během procesu vytváření spravované instance. Po zřízení prostředku nemůžete změnit možnost redundance úložiště zálohování. Pro SQL Database je verze Public Preview této funkce aktuálně dostupná jenom v oblasti jihovýchodní Asie – Azure. 
 
-Redundanci úložiště zálohy spravované instance lze nastavit pouze během vytváření instance. Výchozí hodnota je geograficky redundantní úložiště (RA-GRS). Pro rozdíly v cenách mezi místně redundantními (LRS), ZRS a geograficky redundantním úložištěm zálohování navštivte [stránku s cenami spravované instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
+Redundanci úložiště zálohy spravované instance lze nastavit pouze během vytváření instance. Pro SQL Database může být nastavená při vytváření databáze nebo může být aktualizována pro existující databázi. Výchozí hodnota je geograficky redundantní úložiště (RA-GRS). Pro rozdíly v cenách mezi místně redundantními (LRS), ZRS a geograficky redundantním úložištěm zálohování navštivte [stránku s cenami spravované instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
 
 ### <a name="configure-backup-storage-redundancy-by-using-the-azure-portal"></a>Konfigurace redundance úložiště zálohování pomocí Azure Portal
 
+#### <a name="sql-database"></a>[SQL Database](#tab/single-database)
+
+V Azure Portal můžete v okně **vytvořit SQL Database** nakonfigurovat redundanci úložiště zálohování. Tato možnost je k dispozici v části redundance záložního úložiště. 
+![Otevřít okno pro vytvoření SQL Database](./media/automated-backups-overview/sql-database-backup-storage-redundancy.png)
+
+#### <a name="sql-managed-instance"></a>[Spravovaná instance SQL](#tab/managed-instance)
+
 V Azure Portal se při vytváření spravované instance SQL na kartě základy v případě, že vytváříte spravovanou instanci SQL, v okně **COMPUTE a úložiště** , které je dostupné na kartě **základy** , **nachází možnost změnit** redundanci záložního úložiště.
-![Otevření konfigurace COMPUTE + úložiště – okno](./media/automated-backups-overview/open-configuration-blade-mi.png)
+![Otevření konfigurace COMPUTE + úložiště – okno](./media/automated-backups-overview/open-configuration-blade-managedinstance.png)
 
 V okně **COMPUTE + úložiště** Najděte možnost vybrat redundanci úložiště zálohování.
-![Konfigurace redundance úložiště zálohování](./media/automated-backups-overview/select-backup-storage-redundancy-mi.png)
+![Konfigurace redundance úložiště zálohování](./media/automated-backups-overview/select-backup-storage-redundancy-managedinstance.png)
+
+---
+
+### <a name="configure-backup-storage-redundancy-by-using-powershell"></a>Konfigurace redundance úložiště zálohování pomocí PowerShellu
+
+#### <a name="sql-database"></a>[SQL Database](#tab/single-database)
+
+Při konfiguraci redundance záložního úložiště při vytváření nové databáze můžete zadat parametr-BackupStoageRedundancy. Možné hodnoty jsou geografické, zóna a místní. Ve výchozím nastavení používají všechny databáze SQL geograficky redundantní úložiště k zálohování. Geografická Obnova je zakázaná, pokud je databáze vytvořená s místním nebo záložním úložištěm zálohování zóny. 
+
+```powershell
+# Create a new database with geo-redundant backup storage.  
+New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database03" -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen5" -BackupStorageRedundancy Geo
+```
+
+Podrobnosti najdete v [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase).
+
+Pokud chcete aktualizovat redundanci záložního úložiště existující databáze, můžete použít parametr-BackupStorageRedundancy. Možné hodnoty jsou geografické, zóna a místní.
+Všimněte si, že může trvat až 48 hodin, než se změny použijí v databázi. Přepnutí z geograficky redundantního úložiště zálohování na místní nebo do redundantního úložiště zóny zakáže geografické obnovení. 
+
+```powershell
+# Change the backup storage redundancy for Database01 to zone-redundant. 
+Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01" -ServerName "Server01" -BackupStorageRedundancy Zone
+```
+
+Podrobnosti najdete v [sadě set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) .
+
+
+#### <a name="sql-managed-instance"></a>[Spravovaná instance SQL](#tab/managed-instance)
+
+Pro konfiguraci redundance záložního úložiště během vytváření spravované instance můžete zadat parametr-BackupStoageRedundancy. Možné hodnoty jsou geografické, zóna a místní.
+
+```powershell
+New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -Edition "GeneralPurpose" -ComputeGeneration Gen4 -BackupStorageRedundancy Geo
+```
+
+Další podrobnosti najdete v [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance).
+
+## <a name="use-azure-policy-to-enforce-backup-storage-redundancy"></a>Použití Azure Policy k vymáhání redundance úložiště zálohování
+
+Pokud máte požadavky na data, které vyžadují, abyste zachovali všechna vaše data v jedné oblasti Azure, můžete pro SQL Database nebo spravovanou instanci vynutit zálohy na základě zóny nebo místně redundantního zálohování pomocí Azure Policy. Azure Policy je služba, kterou můžete použít k vytváření, přiřazování a správě zásad, které používají pravidla pro prostředky Azure. Azure Policy vám pomůže zajistit, aby tyto prostředky vyhovovaly vašim firemním standardům a smlouvám o úrovni služeb. Další informace najdete v tématu [přehled Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview). 
+
+### <a name="built-in-backup-storage-redundancy-policies"></a>Integrované zásady redundance záložního úložiště 
+
+Přidají se nové předdefinované zásady, které se dají přiřadit na úrovni předplatného nebo skupiny prostředků, aby se blokovaly vytváření nových databází nebo instancí s geograficky redundantním úložištěm záloh. 
+
+[SQL Database by se nemělo používat redundanci zálohování GRS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb219b9cf-f672-4f96-9ab0-f5a3ac5e1c13)
+
+[Spravované instance SQL by se neměly používat redundanci GRS Backup](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa9934fd7-29f2-4e6d-ab3d-607ea38e9079)
+
+Úplný seznam předdefinovaných definic zásad pro SQL Database a spravovanou instanci najdete [tady](https://docs.microsoft.com/azure/azure-sql/database/policy-reference).
+
+K vykonání požadavků na uspořádání dat na úrovni organizace je možné tyto zásady přiřadit k předplatnému. Po přiřazení na úrovni předplatného nebudou uživatelé v daném předplatném moct vytvořit databázi nebo spravovanou instanci s geograficky redundantním úložištěm zálohování prostřednictvím Azure Portal nebo Azure PowerShell. Pamatujte na to, že při vytváření databáze prostřednictvím T-SQL se vynutily zásady Azure. 
+
+Naučte se přiřazovat zásady pomocí [Azure Portal](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) nebo [Azure PowerShell](https://docs.microsoft.com/azure/governance/policy/assign-policy-powershell)
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8a7efdee772c3a871fb8f26655dfc1160c275959
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46eee878ba8cf1d12edf262241d5df8ef8ccc82f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84044182"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442935"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Začínáme s nástroji pro Elastic Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -58,7 +58,7 @@ Chcete-li vytvořit soubory JAR a začít s ukázkovým projektem, postupujte n�
 
     ![Průběh – Java][5]
 
-Gratulujeme! Úspěšně jste vytvořili a spustili svou první aplikaci horizontálně dělené pomocí nástrojů Elastic Database v Azure SQL Database. Pomocí sady Visual Studio nebo SQL Server Management Studio se připojte k databázi a Prohlédněte si horizontálních oddílů, kterou ukázka vytvořila. Všimnete si nových ukázkových databází horizontálních oddílů a databáze správce map horizontálních oddílů, kterou vytvořila ukázka.
+Blahopřejeme! Úspěšně jste vytvořili a spustili svou první aplikaci horizontálně dělené pomocí nástrojů Elastic Database v Azure SQL Database. Pomocí sady Visual Studio nebo SQL Server Management Studio se připojte k databázi a Prohlédněte si horizontálních oddílů, kterou ukázka vytvořila. Všimnete si nových ukázkových databází horizontálních oddílů a databáze správce map horizontálních oddílů, kterou vytvořila ukázka.
 
 Chcete-li přidat knihovnu klienta do vlastního projektu Maven, přidejte do souboru POM následující závislost:
 
@@ -95,7 +95,7 @@ Chcete-li stáhnout a spustit ukázku, postupujte podle následujících kroků:
 
    ![Průběh][4]
 
-Gratulujeme! Úspěšně jste vytvořili a spustili svou první aplikaci horizontálně dělené pomocí nástrojů Elastic Database v SQL Database. Pomocí sady Visual Studio nebo SQL Server Management Studio se připojte k databázi a Prohlédněte si horizontálních oddílů, kterou ukázka vytvořila. Všimnete si nových ukázkových databází horizontálních oddílů a databáze správce map horizontálních oddílů, kterou vytvořila ukázka.
+Blahopřejeme! Úspěšně jste vytvořili a spustili svou první aplikaci horizontálně dělené pomocí nástrojů Elastic Database v SQL Database. Pomocí sady Visual Studio nebo SQL Server Management Studio se připojte k databázi a Prohlédněte si horizontálních oddílů, kterou ukázka vytvořila. Všimnete si nových ukázkových databází horizontálních oddílů a databáze správce map horizontálních oddílů, kterou vytvořila ukázka.
 
 > [!IMPORTANT]
 > Doporučujeme vždy používat nejnovější verzi Management Studio, abyste měli stále synchronizovaný s aktualizacemi Azure a SQL Database. [Aktualizovat aplikaci SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
@@ -116,7 +116,7 @@ Gratulujeme! Úspěšně jste vytvořili a spustili svou první aplikaci horizon
 
 * **Sloučení existujících horizontálních oddílů**: sloučení horizontálních oddílů se také provádí pomocí nástroje pro dělení na více koncových sloučených. Další informace najdete v tématu [přesun dat mezi vysoce škálovatelnými cloudových databází](elastic-scale-overview-split-and-merge.md).
 
-## <a name="cost"></a>Náklady
+## <a name="cost"></a>Cost
 
 Knihovna nástrojů Elastic Database je zadarmo. Při použití Elastic Databasech nástrojů se neúčtují žádné další poplatky nad náklady na využití Azure.
 

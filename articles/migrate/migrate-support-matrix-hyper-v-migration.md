@@ -3,12 +3,12 @@ title: Podpora migrace Hyper-V v Azure Migrate
 description: Přečtěte si o podpoře migrace Hyper-V s Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 0054b6983e7d11dd36a92f21cd1cb20314fb9408
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4ba8b8cea784167ad045c5635ce512a68b48d897
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318224"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442302"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Matice podpory pro migraci technologie Hyper-V
 
@@ -38,7 +38,7 @@ Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud 
 | :----------------------------- | :------------------- |
 | **Operační systém** | Všechny operační systémy [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) a [Linux](../virtual-machines/linux/endorsed-distros.md) podporované Azure. |
 **Windows Server 2003** | Pro virtuální počítače s Windows serverem 2003 je nutné před migrací [nainstalovat integrační služby technologie Hyper-V](prepare-windows-server-2003-migration.md) . | 
-**Virtuální počítače se systémem Linux v Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné spouštět v Azure.<br/><br/> Pro Linux Azure Migrate provede změny automaticky pro tyto operační systémy:<br/> -Red Hat Enterprise Linux 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> – SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> – Debian 7, 8 <br/> Oracle Linux 7,7, 7,7-CI<br/> Pro jiné operační systémy provedete [požadované změny](prepare-for-migration.md#verify-required-changes-before-migrating) ručně.
+**Virtuální počítače se systémem Linux v Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné spouštět v Azure.<br/><br/> Pro Linux Azure Migrate provede změny automaticky pro tyto operační systémy:<br/> -Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -Cent OS 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> – SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> – Debian 7, 8 <br/> Oracle Linux 7,7, 7,7-CI<br/> Pro jiné operační systémy provedete [požadované změny](prepare-for-migration.md#verify-required-changes-before-migrating) ručně.
 | **Požadované změny pro Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné spouštět v Azure. Před migrací proveďte úpravy ručně. Příslušné články obsahují pokyny k tomu, jak to provést. |
 | **Spouštění ze systému Linux**                 | Pokud je/Boot ve vyhrazeném oddílu, měl by být umístěn na disku s operačním systémem a nesmí být rozložen na více disků.<br/> Pokud je/Boot součástí kořenového oddílu (/), musí být oddíl '/' na disku s operačním systémem a nesmí zabírat jiné disky. |
 | **Spouštění UEFI**                  | Podporuje se. Virtuální počítače založené na rozhraní UEFI se migrují na virtuální počítače Azure generace 2.  |
