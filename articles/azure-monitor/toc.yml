@@ -292,7 +292,7 @@
               href: log-query/query-optimization.md
             - name: Analýza textových dat
               href: log-query/parse-text.md
-        - name: Pracovní prostory
+        - name: Pracovní prostory a clustery
           items:
             - name: Návrh nasazení pracovního prostoru
               href: platform/design-logs-deployment.md
@@ -312,6 +312,8 @@
               href: platform/service-providers.md
             - name: Správa přístupu
               href: platform/manage-access.md
+            - name: Vyhrazené clustery
+              href: log-query/logs-dedicated-clusters.md
     - name: Průzkumník metrik
       items:
         - name: Začínáme s Průzkumníkem metrik
