@@ -3,12 +3,12 @@ title: Replikace Azure Stackch virtuálních počítačů do Azure pomocí Azure
 description: Naučte se, jak nastavit zotavení po havárii do Azure pro Azure Stack virtuálních počítačů pomocí služby Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 5bc78dc5b01bb4790190268b303cb894de2b6f71
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333711"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448970"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikace virtuálních počítačů Azure Stack do Azure
 
@@ -314,26 +314,7 @@ Pak spusťte převzetí služeb při selhání následujícím způsobem:
 
 ### <a name="fail-back-to-azure-stack"></a>Navrácení služeb po obnovení do Azure Stack
 
-Když je vaše primární lokalita znovu spuštěná, můžete navrátit služby po obnovení z Azure do Azure Stack. K tomu je potřeba stáhnout virtuální pevný disk Azure a nahrát ho do Azure Stack.
-
-1. Vypněte virtuální počítač Azure, aby se virtuální pevný disk mohl stáhnout.
-2. Pokud chcete začít stahovat VHD, nainstalujte [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
-3. Přejděte na virtuální počítač na webu Azure Portal (pomocí názvu virtuálního počítače).
-4. V části **disky**klikněte na název disku a Shromážděte nastavení.
-
-    - Příkladem je identifikátor URI virtuálního pevného disku, který se používá v našem testu: `https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd` lze rozdělit a získat tak následující vstupní parametry, které se používají ke stažení virtuálního pevného disku.
-        - Účet úložiště: 502055westcentralus
-        - Kontejner: wahv9b8d2ceb284fb59287
-        - Název virtuálního pevného disku: copied-3676553984. VHD
-
-5. Nyní ke stažení virtuálního pevného disku použijte Průzkumník služby Azure Storage.
-6. Pomocí [těchto kroků](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)nahrajte virtuální pevný disk a Azure Stack.
-7. V existujícím virtuálním počítači nebo novém virtuálním počítači připojte nahrané virtuální pevné disky.
-8. Ověřte, že je disk s operačním systémem správný, a spusťte virtuální počítač.
-
-
-V této fázi bylo dokončeno navrácení služeb po obnovení.
-
+Když je vaše primární lokalita znovu spuštěná, můžete navrátit služby po obnovení z Azure do Azure Stack. Provedete to podle kroků uvedených [tady](https://docs.microsoft.com/azure-stack/operator/site-recovery-failback?view=azs-2005).
 
 ## <a name="conclusion"></a>Závěr
 
