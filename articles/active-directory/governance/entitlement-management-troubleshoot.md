@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296aabdd79e1cd5c37248a0a44d57ebf17a4ea44
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4ba90724f75635ea9fd5f72f75de6a46d7b6d288
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979421"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447003"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Řešení potíží se správou nároků Azure AD
 
@@ -33,7 +33,7 @@ Tento článek popisuje některé položky, které byste měli ověřit, abyste 
 
 * Pokud se při vytváření nebo zobrazování balíčků pro přístup zobrazí zpráva o odepření přístupu a jste členem skupiny Creator Creator, musíte [vytvořit katalog](entitlement-management-catalog-create.md) před vytvořením prvního přístupového balíčku.
 
-## <a name="resources"></a>Zdroje informací
+## <a name="resources"></a>Zdroje a prostředky
 
 * Role pro aplikace definují samotné aplikace a spravují se v Azure AD. Pokud aplikace nemá žádné role prostředků, Správa nároků přiřadí uživatelům **výchozí roli přístupu** .
 
@@ -146,7 +146,7 @@ Můžete zrušit pouze nevyřízenou žádost, která ještě nebyla doručena, 
     | P1 | Konkrétní uživatelé a skupiny v adresáři nebo konkrétní připojené organizace |
     | P2 | Všichni členové adresáře (kromě hostů) |
     | P3 | Všichni uživatelé v adresáři (včetně hostů) nebo konkrétní spojené organizace |
-    | P4 | Všechny připojené organizace nebo všichni uživatelé (všechny připojené organizace a všichni noví externí uživatelé) |
+    | P4 | Všechny nakonfigurované připojené organizace nebo všichni uživatelé (všechny připojené organizace a všichni noví externí uživatelé) |
     
     Pokud je některá zásada v kategorii s vyšší prioritou, kategorie s nižší prioritou se ignorují. Příklad toho, jak se v žadateli zobrazují různé zásady se stejnou prioritou, najdete v tématu [Výběr zásady](entitlement-management-request-access.md#select-a-policy).
 

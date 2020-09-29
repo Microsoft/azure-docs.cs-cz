@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4deab6fcadda36ad729096ff2f38e40ce81c7ae9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86057003"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446095"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti pomocí Load Balanceru úrovně Standard na webu Azure Portal
 
@@ -56,8 +56,8 @@ Load Balancer úrovně Standard podporuje pouze standardní veřejnou IP adresu.
     | ---                     | ---                                                |
     | Předplatné               | Vyberte předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte *MyResourceGroupLBAZ* .|
-    | Name                   | *myLoadBalancer*                                   |
-    | Region         | Vyberte **Západní Evropa**.                                        |
+    | Název                   | *myLoadBalancer*                                   |
+    | Region (Oblast)         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
     | SKU           | Vyberte **Standard**.                          |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
@@ -93,7 +93,7 @@ Vytvořte skupinu zabezpečení sítě, která definuje příchozí připojení 
     - *myNetworkSecurityGroup* – název skupiny zabezpečení sítě.
     - *myResourceGroupLBAZ* – název existující skupiny prostředků.
    
-![Vytvoření virtuální sítě](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
+![Snímek obrazovky se zobrazí v podokně vytvořit skupinu zabezpečení sítě.](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
 ### <a name="create-network-security-group-rules"></a>Vytvoření pravidel skupiny zabezpečení sítě
 
@@ -112,7 +112,7 @@ V této části vytvoříte pravidla skupiny zabezpečení sítě, která povol�
     - Jako popis pravidla nástroje pro vyrovnávání zatížení zadejte *Povolení protokolu HTTP*.
 4. Klikněte na **OK**.
  
-   ![Vytvoření virtuální sítě](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![Snímek obrazovky se zobrazí v podokně Přidat příchozí pravidlo zabezpečení.](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. Zopakováním kroků 2 až 4 vytvořte další pravidlo *myRDPRule*, které povolí příchozí připojení RDP na portu 3389, s použitím následujících hodnot:
     - Jako **Zdroj** zadejte *Značka služby*.
     - Jako **Značka zdrojové služby** zadejte *Internet*.

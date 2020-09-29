@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 7459d674cde123bc45544322347bc4c1fe89e820
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1fb05b52bbe3e8f544b17537ef9070e5b2b0b77b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009609"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460165"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
 Toto téma popisuje konfigurace dostupné pro instance Redis v mezipaměti Azure. Toto téma také popisuje výchozí konfiguraci serveru Redis pro Azure cache pro instance Redis.
@@ -37,20 +37,20 @@ Pomocí **nabídky prostředků**můžete zobrazit a nakonfigurovat následujíc
 * [Diagnóza a řešení problémů](#diagnose-and-solve-problems)
 * [Nastavení](#settings)
     * [Přístupové klíče](#access-keys)
-    * [Rozšířená nastavení](#advanced-settings)
+    * [Pokročilá nastavení](#advanced-settings)
     * [Mezipaměť Azure pro poradce Redis](#azure-cache-for-redis-advisor)
     * [Škálování](#scale)
     * [Velikost clusteru](#cluster-size)
     * [Trvalost dat](#redis-data-persistence)
     * [Plán aktualizací](#schedule-updates)
-    * [Geografická replikace](#geo-replication)
+    * [Geografickou replikací](#geo-replication)
     * [Virtual Network](#virtual-network)
     * [Brána firewall](#firewall)
     * [Vlastnosti](#properties)
     * [Zámky](#locks)
     * [Automatizační skript](#automation-script)
 * Správa
-    * [Importovat data](#importexport)
+    * [Import dat](#importexport)
     * [Exportovat data](#importexport)
     * [Restartování](#reboot)
 * [Monitorování](#monitoring)
@@ -89,13 +89,13 @@ Klikněte na **Diagnostika a řešení problémů** , které se budou poskytovat
 Část **Nastavení** vám umožní získat přístup k následujícím nastavením pro mezipaměť a nakonfigurovat je.
 
 * [Přístupové klíče](#access-keys)
-* [Rozšířená nastavení](#advanced-settings)
+* [Pokročilá nastavení](#advanced-settings)
 * [Mezipaměť Azure pro poradce Redis](#azure-cache-for-redis-advisor)
 * [Škálování](#scale)
 * [Velikost clusteru](#cluster-size)
 * [Trvalost dat](#redis-data-persistence)
 * [Plán aktualizací](#schedule-updates)
-* [Geografická replikace](#geo-replication)
+* [Geografickou replikací](#geo-replication)
 * [Virtual Network](#virtual-network)
 * [Brána firewall](#firewall)
 * [Vlastnosti](#properties)
@@ -109,7 +109,7 @@ Kliknutím na **přístupové klíče** zobrazíte nebo znovu vygenerujete pří
 
 ![Mezipaměť Azure pro přístupové klíče Redis](./media/cache-configure/redis-cache-manage-keys.png)
 
-### <a name="advanced-settings"></a>Rozšířená nastavení
+### <a name="advanced-settings"></a>Pokročilá nastavení
 V okně **Upřesnit nastavení** jsou nakonfigurovaná následující nastavení.
 
 * [Přístupové porty](#access-ports)
@@ -132,7 +132,7 @@ Nastavení zásad paměti pro mezipaměť **Maxmemory zásady**, **Maxmemory rez
 
 **Zásady Maxmemory** nakonfigurují zásady vyřazení pro mezipaměť a umožňují vám vybírat z následujících zásad vyřazení:
 
-* `volatile-lru`– Toto je výchozí zásada vyřazení.
+* `volatile-lru` – Toto je výchozí zásada vyřazení.
 * `allkeys-lru`
 * `volatile-random`
 * `allkeys-random`
@@ -141,9 +141,9 @@ Nastavení zásad paměti pro mezipaměť **Maxmemory zásady**, **Maxmemory rez
 
 Další informace o `maxmemory` zásadách najdete v tématu [Zásady vyřazení](https://redis.io/topics/lru-cache#eviction-policies).
 
-Nastavení **rezervované pro maxmemory** konfiguruje velikost paměti (v MB), která je vyhrazena pro jiné operace než mezipaměti, jako je například replikace během převzetí služeb při selhání. Nastavení této hodnoty vám umožní mít jednotnější prostředí Redis serveru, když se vaše zatížení mění. Tato hodnota by měla být nastavená na vyšší pro úlohy, které jsou náročné na zápis. Pokud je paměť vyhrazena pro tyto operace, není k dispozici pro ukládání dat uložených v mezipaměti.
+Nastavení **rezervované pro maxmemory** konfiguruje velikost paměti v MB na instanci v clusteru, která je vyhrazena pro operace, které nejsou uložené v mezipaměti, jako je například replikace během převzetí služeb při selhání. Nastavení této hodnoty vám umožní mít jednotnější prostředí Redis serveru, když se vaše zatížení mění. Tato hodnota by měla být nastavená na vyšší pro úlohy, které jsou náročné na zápis. Pokud je paměť vyhrazena pro tyto operace, není k dispozici pro ukládání dat uložených v mezipaměti.
 
-Nastavení **rezervované pro maxfragmentationmemory** konfiguruje velikost paměti v MB, která je vyhrazena pro fragmentaci paměti. Když nastavíte tuto hodnotu, budete mít k dispozici jednotnější možnosti Redis serveru, když je mezipaměť plná nebo téměř kompletní, a poměr fragmentace je vysoký. Pokud je paměť vyhrazena pro tyto operace, není k dispozici pro ukládání dat uložených v mezipaměti.
+Nastavení **rezervované pro maxfragmentationmemory** konfiguruje velikost paměti v MB na instanci v clusteru, která je vyhrazena pro fragmentaci paměti. Když nastavíte tuto hodnotu, budete mít k dispozici jednotnější možnosti Redis serveru, když je mezipaměť plná nebo téměř kompletní, a poměr fragmentace je vysoký. Pokud je paměť vyhrazena pro tyto operace, není k dispozici pro ukládání dat uložených v mezipaměti.
 
 Jedna věc, kterou je potřeba vzít v úvahu při výběru nové hodnoty rezervace paměti (**maxmemory-rezervováno** nebo **maxfragmentationmemory**), je to, jak může tato změna ovlivnit mezipaměť, která už je spuštěná s velkým objemem dat. Pokud máte například mezipaměť 53 GB s 49 GB dat, změňte hodnotu rezervace na 8 GB. Tato změna způsobí, že maximální dostupná paměť systému vyřadí hodnotu až 45 GB. Pokud vaše aktuální `used_memory` `used_memory_rss` hodnota nebo hodnoty jsou vyšší než nové omezení 45 GB, bude systém muset data vyřadit, dokud `used_memory` `used_memory_rss` nebudou a nižší než 45 GB. Vyřazení může zvýšit zatížení serveru a fragmentaci paměti. Další informace o metrikách mezipaměti `used_memory` , jako jsou a `used_memory_rss` , najdete v tématu [dostupné metriky a intervaly generování sestav](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
@@ -241,7 +241,7 @@ Chcete-li určit časový interval pro správu a údržbu, zaškrtněte požadov
 >
 >
 
-### <a name="geo-replication"></a>Geografická replikace
+### <a name="geo-replication"></a>Geografickou replikací
 
 Okno **geografické replikace** poskytuje mechanismus pro propojení dvě mezipaměti Azure úrovně Premium pro instance Redis. Jedna mezipaměť je určena jako primární propojená mezipaměť a druhá jako sekundární propojená mezipaměť. Sekundární propojená mezipaměť se bude jen pro čtení a data zapsaná do primární mezipaměti se replikují do sekundární propojené mezipaměti. Tato funkce se dá použít k replikaci mezipaměti napříč oblastmi Azure.
 
@@ -290,7 +290,7 @@ Nastavení v části **Správa** umožňují provádět následující úlohy sp
 
 ![Správa](./media/cache-configure/redis-cache-administration.png)
 
-* [Importovat data](#importexport)
+* [Import dat](#importexport)
 * [Exportovat data](#importexport)
 * [Restartování](#reboot)
 

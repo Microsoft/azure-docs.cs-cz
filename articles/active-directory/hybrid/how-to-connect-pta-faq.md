@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7046ab3c30e120aaaf285c32e25fce03524a0cf4
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6db477a288ef41c2946cd550af6ff87999eff2f0
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89280158"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461270"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: nejčastější dotazy
 
@@ -35,13 +35,9 @@ Přečtěte si [tuto příručku](./choose-ad-authn.md) , kde najdete porovnán�
 
 Předávací ověřování je bezplatná funkce. Nepotřebujete žádné placené edice Azure AD, abyste ho mohli používat.
 
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloud-and-the-microsoft-azure-government-cloud"></a>Je k dispozici předávací ověřování v [cloudu Microsoft Azure (Německo)](https://www.microsoft.de/cloud-deutschland) a [Microsoft Azure Government cloudu](https://azure.microsoft.com/features/gov/)?
-
-No. Předávací ověřování je dostupné jenom v celosvětové instanci Azure AD.
-
 ## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Pracuje [podmíněný přístup](../conditional-access/overview.md) s předávacím ověřováním?
 
-Yes. Všechny funkce podmíněného přístupu, včetně Azure Multi-Factor Authentication, fungují s předávacím ověřováním.
+Ano. Všechny funkce podmíněného přístupu, včetně Azure Multi-Factor Authentication, fungují s předávacím ověřováním.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Podporuje předávací ověřování "alternativní ID" jako uživatelské jméno místo "userPrincipalName"?
 Ano, přihlaste se pomocí nestandardní hodnoty (UPN), jako je například alternativní e-mail, se podporuje jak předávací ověřování (PTA), tak i synchronizace hodnot hash hesel (KOSMETICE). Další informace o [alternativním přihlašovacím ID](../authentication/howto-authentication-use-email-signin.md)
@@ -56,7 +52,7 @@ Když pomocí Azure AD Connect přepnete metodu přihlašování z synchronizace
 
 ## <a name="can-i-install-an-azure-ad-application-proxy-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Můžu nainstalovat konektor [Azure proxy aplikací služby AD](../manage-apps/application-proxy.md) na stejný server jako předávací ověřovací Agent?
 
-Yes. Verze předaného agenta předávacího ověřování, verze 1.5.193.0 nebo novější, podporují tuto konfiguraci.
+Ano. Verze předaného agenta předávacího ověřování, verze 1.5.193.0 nebo novější, podporují tuto konfiguraci.
 
 ## <a name="what-versions-of-azure-ad-connect-and-pass-through-authentication-agent-do-you-need"></a>Jaké verze Azure AD Connect a předávacího agenta pro ověřování potřebujete?
 
@@ -82,7 +78,7 @@ Pokud jste nenakonfigurovali zpětný zápis hesla pro konkrétního uživatele 
 
 ## <a name="can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server"></a>Můžou předávací ověřovací agenti komunikovat přes odchozí web proxy server?
 
-Yes. Pokud je v místním prostředí povoleno automatické zjišťování webového proxy serveru (WPAD), ověřovací agenti se automaticky pokusí vyhledat a použít webový proxy server v síti.
+Ano. Pokud je v místním prostředí povoleno automatické zjišťování webového proxy serveru (WPAD), ověřovací agenti se automaticky pokusí vyhledat a použít webový proxy server v síti.
 
 Pokud ve svém prostředí nemáte WPAD, můžete přidat informace o proxy serveru (jak je vidět níže) a povolit agentovi předávacího ověřování komunikovat s Azure AD:
 - Před instalací agenta předávacího ověřování na server nakonfigurujte v aplikaci Internet Explorer informace o proxy serveru. To vám umožní dokončit instalaci ověřovacího agenta, ale na portálu pro správu se pořád zobrazí jako **neaktivní** .
@@ -121,7 +117,7 @@ Pokud provádíte migraci z AD FS (nebo jiných federačních technologií) na p
 
 ## <a name="can-i-use-pass-through-authentication-in-a-multi-forest-active-directory-environment"></a>Je možné používat předávací ověřování v prostředí Active Directory s více doménovými strukturami?
 
-Yes. Prostředí s více doménovými strukturami jsou podporovaná, pokud existují vztahy důvěryhodnosti mezi doménovými strukturami služby Active Directory (obousměrně) a pokud je Směrování přípon názvů správně nakonfigurované.
+Ano. Prostředí s více doménovými strukturami jsou podporovaná, pokud existují vztahy důvěryhodnosti mezi doménovými strukturami služby Active Directory (obousměrně) a pokud je Směrování přípon názvů správně nakonfigurované.
 
 ## <a name="does-pass-through-authentication-provide-load-balancing-across-multiple-authentication-agents"></a>Poskytuje předávací ověřování vyrovnávání zatížení mezi více agenty ověřování?
 

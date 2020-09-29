@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: b50f6c4b2ed86b950e68cf8c55b63af687ff9ead
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e0d6694d44fdac9958acdf70be067348fadde57f
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298045"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461236"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -41,13 +41,11 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-AE` | Arabština (Spojené arabské emiráty)     | Jazykový model                                    |
 | `ar-BH` | Arabština (Bahrajn), moderní Standard | Jazykový model                                    |
 | `ar-EG` | Arabština (Egypt)                    | Jazykový model                                    |
-| `ar-IL` | Arabština (Izrael)                   | No                                                |
 | `ar-IQ` | Arabština (Irák)                     | Jazykový model                                    |
 | `ar-JO` | Arabština (Jordánsko)                   | Jazykový model                                    |
 | `ar-KW` | Arabština (Kuvajt)                   | Jazykový model                                    |
 | `ar-LB` | Arabština (Libanon)                  | Jazykový model                                    |
 | `ar-OM` | Arabština (Omán)                     | Jazykový model                                    |
-| `ar-PS` | Arabština (stav palestinská samospráva)       | No                                                |
 | `ar-QA` | Arabština (Katar)                    | Jazykový model                                    |
 | `ar-SA` | Arabština (Saúdská Arábie)             | Jazykový model                                    |
 | `ar-SY` | Arabština (Sýrie)                    | Jazykový model                                    |
@@ -182,7 +180,7 @@ Další informace o regionální dostupnosti najdete v tématu [oblasti](regions
 | `it-IT` <sup>Nová</sup> | italština (Itálie) | Male | `it-IT-DiegoNeural` | Obecné |
 | `ja-JP` | Japonština (Japonsko) | Female | `ja-JP-NanamiNeural` | Obecné |
 | `ja-JP` <sup>Nová</sup> | japonština (Japonsko) | Male | `ja-JP-KeitaNeural` | Obecné |
-| `ko-KR` | Korejština (Jižní Korea) | Female | `ko-KR-SunHiNeural` | Obecné |
+| `ko-KR` | Korejština (Korea) | Female | `ko-KR-SunHiNeural` | Obecné |
 | `ko-KR` <sup>Nová</sup> | korejština (Jižní Korea) | Male | `ko-KR-InJoonNeural` | Obecné |
 | `ms-MY` <sup>Nová</sup> | malajština (Malajsie) | Female | `ms-MY-YasminNeural` | Obecné |
 | `nb-NO` | Norština, Bokmål (Norsko) | Female | `nb-NO-IselinNeural` | Obecné |
@@ -273,7 +271,7 @@ Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a n
 | `ja-JP` | japonština (Japonsko) | Female | `ja-JP-Ayumi` |
 | `ja-JP` | japonština (Japonsko) | Female | `ja-JP-HarukaRUS` |
 | `ja-JP` | japonština (Japonsko) | Male | `ja-JP-Ichiro` |
-| `ko-KR` | Korejština (Jižní Korea) | Female | `ko-KR-HeamiRUS` |
+| `ko-KR` | korejština (Jižní Korea) | Female | `ko-KR-HeamiRUS` |
 | `ms-MY` | malajština (Malajsie) | Male | `ms-MY-Rizwan` |
 | `nb-NO` | Norština, Bokmål (Norsko) | Female | `nb-NO-HuldaRUS` |
 | `nl-NL` | nizozemština (Nizozemsko) | Female | `nl-NL-HannaRUS` |
@@ -402,18 +400,18 @@ V následující tabulce najdete podporované jazyky pro různá rozhraní API r
 | Národní prostředí | Jazyk | Ověřování závislé na textu | Ověřování nezávislé na textu | Identifikace nezávislá na textu |
 |----|----|----|----|----|
 | cs-CZ | Angličtina (USA) | ano | ano | ano |
-|zh-CN    |Čínština (Mandarin, zjednodušená)|    Není k dispozici|    ano|    ano|
-|de-DE    |němčina (Německo)    |Není k dispozici    |ano    |ano|
-|en-GB    |Angličtina (Spojené království)    |Není k dispozici    |ano    |ano|
-|fr-FR    |francouzština (Francie)    |Není k dispozici    |ano    |ano|
-|EN-AU    |Angličtina (Austrálie)    |Není k dispozici    |ano    |ano|
-|en-CA    |Angličtina (Kanada)    |Není k dispozici|    ano|    ano|
-|fr – CA    |Francouzština (Kanada)    |Není k dispozici    |ano|    ano|
-|it-IT    |Italština|    Není k dispozici    |ano|    ano|
-|es-ES|    Španělština (Španělsko)    |Není k dispozici    |ano|    ano|
-|ES – MX    |Španělština (Mexiko)    |Není k dispozici|    ano|    ano|
-|ja-JP|    Japonština    |Není k dispozici    |ano    |ano|
-|pt-BR|    Portugalština (Brazílie)|    Není k dispozici|    ano|    ano|
+|zh-CN    |Čínština (Mandarin, zjednodušená)|    neuvedeno|    ano|    ano|
+|de-DE    |němčina (Německo)    |neuvedeno    |ano    |ano|
+|en-GB    |Angličtina (Spojené království)    |neuvedeno    |ano    |ano|
+|fr-FR    |francouzština (Francie)    |neuvedeno    |ano    |ano|
+|EN-AU    |Angličtina (Austrálie)    |neuvedeno    |ano    |ano|
+|en-CA    |Angličtina (Kanada)    |neuvedeno|    ano|    ano|
+|fr – CA    |Francouzština (Kanada)    |neuvedeno    |ano|    ano|
+|it-IT    |Italština|    neuvedeno    |ano|    ano|
+|es-ES|    Španělština (Španělsko)    |neuvedeno    |ano|    ano|
+|ES – MX    |Španělština (Mexiko)    |neuvedeno|    ano|    ano|
+|ja-JP|    Japonština    |neuvedeno    |ano    |ano|
+|pt-BR|    Portugalština (Brazílie)|    neuvedeno|    ano|    ano|
 
 ## <a name="next-steps"></a>Další kroky
 

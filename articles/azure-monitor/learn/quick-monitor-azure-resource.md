@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 0e29b25f5d846cae1563ea90271cf007d02e248c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a17546f11db881ecacd39986bcd80d9d63b24644
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324263"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448210"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Rychlý Start: monitorování prostředku Azure pomocí Azure Monitor
 [Azure monitor](../overview.md) spustí shromažďování dat z prostředků Azure okamžikem, kdy se vytváří. V tomto rychlém startu najdete Stručný návod k datům, která se automaticky shromažďují pro určitý prostředek, a o tom, jak je zobrazit v Azure Portal pro konkrétní prostředek. Později můžete přidat konfiguraci pro shromažďování dalších dat a můžete přejít do nabídky Azure Monitor a použít stejné nástroje pro přístup k datům shromážděným pro všechny prostředky v rámci vašeho předplatného.
@@ -40,11 +40,11 @@ Protokol aktivit nabízí přehled o operacích u jednotlivých prostředků Azu
 1. V horní části nabídky prostředku vyberte **Protokol aktivit**.
 2. Aktuální filtr je nastaven na události související s vaším prostředkem. Pokud nevidíte žádné události, zkuste změnit časový **rozsah tak, že změníte** časový rozsah.
 
-    ![Protokol aktivit](media/quick-monitor-azure-resource/activity-log-resource.png)
+    ![Snímek obrazovky s protokolem aktivity prostředku Azure Portal zobrazuje seznam operací pro prostředek generovaný pomocí výchozích kritérií filtru.](media/quick-monitor-azure-resource/activity-log-resource.png)
 
 4. Pokud chcete zobrazit události z jiných prostředků v rámci vašeho předplatného, změňte kritéria ve filtru nebo dokonce odeberte vlastnosti filtru.
 
-    ![Protokol aktivit](media/quick-monitor-azure-resource/activity-log-all.png)
+    ![Snímek obrazovky s protokolem aktivity prostředku Azure Portal zobrazuje seznam operací pro prostředek generovaný pomocí upravených kritérií filtru.](media/quick-monitor-azure-resource/activity-log-all.png)
 
 
 
@@ -54,15 +54,15 @@ Metriky jsou číselné hodnoty, které popisují určitý aspekt prostředku v 
 1. V části **monitorování** v nabídce prostředku vyberte možnost **metriky**. Otevře se Průzkumník metrik s oborem nastaveným na váš prostředek.
 2. Kliknutím na **Přidat metriku** přidáte metriku do grafu.
    
-   ![Průzkumník metrik](media/quick-monitor-azure-resource/metrics-explorer-01.png)
+   ![Snímek obrazovky s Průzkumníkem metrik v Azure Portal zobrazující metriky pro prostředek Pro přidání nových metrik je otevřený rozevírací seznam metriky.](media/quick-monitor-azure-resource/metrics-explorer-01.png)
    
 4. Vyberte **metriku** z rozevíracího seznamu a potom **agregaci**. To definuje, jak budou shromážděné hodnoty vzorkovat v každém časovém intervalu.
 
-    ![Průzkumník metrik](media/quick-monitor-azure-resource/metrics-explorer-02.png)
+    ![Snímek obrazovky s Průzkumníkem metrik v Azure Portal zobrazující metriky pro prostředek Rozevírací seznam agregace je otevřený a je vybraný prům.](media/quick-monitor-azure-resource/metrics-explorer-02.png)
 
 5. Kliknutím na **Přidat metriku** přidejte do grafu další kombinace metriky a agregace.
 
-    ![Průzkumník metrik](media/quick-monitor-azure-resource/metrics-explorer-03.png)
+    ![Snímek obrazovky s Průzkumníkem metrik v Azure Portal zobrazující metriky pro prostředek](media/quick-monitor-azure-resource/metrics-explorer-03.png)
 
 
 

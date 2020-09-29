@@ -4,12 +4,12 @@ description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete zí
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 80b60e9f93720d0e06c1df1576834c5f462e7358
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449449"
+ms.locfileid: "91460083"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
 
@@ -211,6 +211,17 @@ Nahrajte všechny metriky Azure Monitor a využijte je tam, kde je potřebujete.
 ![Logo QRadar](./media/partners/qradar.png)
 
 Protokol Microsoft Azure DSM a Microsoft Azure centra událostí je k dispozici ke stažení na [webu podpory IBM](https://www.ibm.com/support). Další informace o integraci s Azure najdete v [dokumentaci k QRadar](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
+
+
+## <a name="rsa"></a>RSA
+
+![Logo RSA](./media/partners/rsa.png)
+
+Platforma RSA NetWitness je špičková platforma pro detekci hrozeb a odpověď, která přináší dohromady vytvořená SIEM a rozšířená řešení pro zjišťování a odpovědi. Řešení poskytují nepřekročené možnosti viditelnosti, analýzy a automatizované odezvy. Tyto kombinované funkce umožňují týmům zabezpečení pracovat efektivněji a efektivně, zvýšit úroveň jejich loveckých hrozeb a umožnit jim rychlejší vyšetřování a reakci na hrozby v celé infrastruktuře organizace – ať už v cloudu, místní nebo virtuální. 
+
+Integrace platformy RSA NetWitness s Azure Monitor poskytuje rychlé funkce box pro ingestování dat událostí a protokolů z Azure Monitor nativně do platformy RSA NetWitness prostřednictvím intuitivního uživatelského rozhraní a robustních funkcí nativní analýzy. Získejte rychlý přehled o aktivitách, diagnostice, událostech služby Active Directory a dalších datech centra událostí a podívejte se na tato data spolu s dalšími informacemi o zabezpečení podniku v kompletním řešení pro detekci hrozeb a odpovědi.
+
+[Další informace](https://community.rsa.com/docs/DOC-101239)
 
 
 ## <a name="sciencelogic"></a>ScienceLogic

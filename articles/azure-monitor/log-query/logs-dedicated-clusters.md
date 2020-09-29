@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: e5ab3800e2d20bec34f321e0992240be8624404c
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 4ad3aa7169fcf7eeda6e56a2eab6669b8783d77d
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400859"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461457"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor protokolovat vyhrazené clustery
 
@@ -70,11 +70,10 @@ Uživatelský účet, který vytváří clustery, musí mít standardní oprávn
 **PowerShell**
 
 ```powershell
-invoke-command -scriptblock { New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -Location {region-name} -SkuCapacity {daily-ingestion-gigabyte} } -asjob
+New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -Location {region-name} -SkuCapacity {daily-ingestion-gigabyte} -AsJob
 
 # Check when the job is done
-Get-Job
-
+Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 ```
 
 **REST**
@@ -106,13 +105,16 @@ Mělo by být 200 OK a záhlaví.
 
 ### <a name="check-provisioning-status"></a>Kontrola stavu zřizování
 
-Zřizování clusteru Log Analytics trvá delší dobu. Stav zřizování můžete zjistit dvěma způsoby:
+Zřizování clusteru Log Analytics trvá delší dobu. Stav zřizování můžete zjistit několika způsoby:
 
-1. Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle kontroly stavu asynchronních operací.
+- Spusťte příkaz Get-AzOperationalInsightsCluster prostředí PowerShell s názvem skupiny prostředků a ověřte vlastnost ProvisioningState. Hodnota je *ProvisioningAccount* při zřizování a *úspěšném* dokončení.
+  ```powershell
+  New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} 
+  ```
 
-   NEBO
+- Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle kontroly stavu asynchronních operací.
 
-1. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na hodnotu *provisioningState* . Hodnota je *ProvisioningAccount* při zřizování a *úspěšném* dokončení.
+- Odešlete požadavek GET na prostředek *clusteru* a podívejte se na hodnotu *provisioningState* . Hodnota je *ProvisioningAccount* při zřizování a *úspěšném* dokončení.
 
    ```rst
    GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -275,10 +277,10 @@ K připojení ke clusteru použijte následující příkaz prostředí PowerShe
 $clusterResourceId = (Get-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name}).id
 
 # Link the workspace to the cluster
-invoke-command -scriptblock { Set-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId } -asjob
+Set-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId -AsJob
 
 # Check when the job is done
-Get-Job
+Get-Job -Command "Set-AzOperationalInsightsLinkedService" | Format-List -Property *
 ```
 
 

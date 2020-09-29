@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 547712d16cb6a7504d1a875b6155a587746d86bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 289bca140392ec77fa453e594aface6be9befeca
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279191"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446608"
 ---
 # <a name="create-a-vm-using-a-specialized-image"></a>Vytvoření virtuálního počítače pomocí specializované image 
 
 Vytvořte virtuální počítač ze specializované verze Image uložené v galerii sdílených imagí. Pokud chcete vytvořit virtuální počítač s použitím generalizované image, přečtěte si téma [Vytvoření virtuálního počítače pomocí generalizované image](vm-generalized-image-version-powershell.md).
 
-Jakmile budete mít specializovanou verzi image, můžete vytvořit jeden nebo více nových virtuálních počítačů. Pomocí rutiny [New-AzVM](/powershell/module/az.compute/new-azvm) . 
+Jakmile budete mít specializovanou verzi image, můžete vytvořit jeden nebo více nových virtuálních počítačů pomocí rutiny [New-AzVM](/powershell/module/az.compute/new-azvm) . 
 
 V tomto příkladu používáme ID definice image k tomu, abyste zajistili, že váš nový virtuální počítač bude používat nejnovější verzi image. Můžete také použít konkrétní verzi pomocí ID verze image pro `Set-AzVMSourceImage -Id` . Například pro použití image verze *1.0.0* typ: `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` . 
 

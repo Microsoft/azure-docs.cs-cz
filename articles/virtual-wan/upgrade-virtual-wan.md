@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 769aa6c0d546b7a9bcbe355136bad811fb4f47b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6290d89ed0ee539b4df4c2c8bc9070097da98c81
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753311"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447363"
 ---
 # <a name="upgrade-a-virtual-wan-from-basic-to-standard"></a>Upgrade virtuální sítě WAN z úrovně Basic na standard
 
@@ -26,13 +26,13 @@ Následující tabulka uvádí dostupné konfigurace pro každý typ sítě WAN:
 
 1. Na stránce pro virtuální síť WAN vyberte **Konfigurace** a otevřete stránku konfigurace.
 
-   ![Diagram virtuální sítě WAN](./media/upgrade-virtual-wan/1.png)
-2. V rozevíracím seznamu typ virtuální sítě WAN vyberte možnost **Standard** .
+   ![Snímek obrazovky se stránkou "konfigurace" se textovým polem o upgradu na virtuální síť WAN se standardním typem zvýrazněnou na konci.](./media/upgrade-virtual-wan/1.png)
+2. Jako typ virtuální sítě WAN vyberte v rozevíracím seznamu možnost **standardní** .
 
-   ![Diagram virtuální sítě WAN](./media/upgrade-virtual-wan/2.png)
+   ![Snímek obrazovky, který zobrazuje rozevírací nabídku "typ virtuální sítě WAN".](./media/upgrade-virtual-wan/2.png)
 3. Pochopte, že pokud upgradujete na standardní virtuální síť WAN, nebudete se moct vrátit zpátky na základní virtuální síť WAN. Vyberte **Potvrdit** , pokud chcete provést upgrade.
 
-   ![Diagram virtuální sítě WAN](./media/upgrade-virtual-wan/4.png)
+   ![Snímek obrazovky se zobrazeným dialogovým oknem pro potvrzení upgradu](./media/upgrade-virtual-wan/4.png)
 4. Po uložení změn bude stránka Virtual WAN vypadat podobně jako v tomto příkladu.
 
    ![Diagram virtuální sítě WAN](./media/upgrade-virtual-wan/5.png)

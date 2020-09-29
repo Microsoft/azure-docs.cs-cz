@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 6d6431aa26637e4b956d5c334a2862f689f845bf
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 20d55de7ef0f7b7f49b922409f8cb61874fae0f6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319316"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448159"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Připojit Configuration Manager k Azure Monitor
 Prostředí Microsoft Endpoint Configuration Manager můžete připojit, aby se Azure Monitor synchronizovaná data kolekce zařízení a odkazovala na tyto kolekce v Azure Monitor a Azure Automation.  
@@ -135,7 +135,7 @@ Po dokončení počáteční konfigurace pro import kolekcí zařízení z vaš�
 4. Vyberte **skupiny počítačů** a pak vyberte **SCCM**.  
 5. Vyberte **Import Configuration Manager členství v kolekcích** a pak klikněte na **Uložit**.  
    
-    ![Skupiny počítačů – karta SCCM](./media/collect-sccm/sccm-computer-groups01.png)
+    ![Snímek obrazovky s rozšířenými nastaveními skupiny počítačů pro S C C M, který obsahuje možnost pro import Configuration Manager členství v kolekcích.](./media/collect-sccm/sccm-computer-groups01.png)
 
 ## <a name="view-data-from-configuration-manager"></a>Zobrazit data z Configuration Manager
 
@@ -143,7 +143,7 @@ Po přidání Log Analytics připojení Configuration Manager a instalaci agenta
 
 Po importu kolekcí můžete zjistit, kolik počítačů s členstvím v kolekci bylo zjištěno. Můžete také zobrazit počet importovaných kolekcí.
 
-![Skupiny počítačů – karta SCCM](./media/collect-sccm/sccm-computer-groups02.png)
+![Snímek obrazovky s rozšířenými nastaveními skupiny počítačů pro S C C M ukazující možnost importu vybraných členství kolekce Configuration Manager.](./media/collect-sccm/sccm-computer-groups02.png)
 
 Když kliknete na jeden, otevře se Editor dotazů protokolů, ve kterém se zobrazí všechny importované skupiny nebo všechny počítače, které patří do jednotlivých skupin. Pomocí [prohledávání protokolů](../log-query/log-query-overview.md)můžete provádět podrobnější analýzu dat členství v kolekci.
 

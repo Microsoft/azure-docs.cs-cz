@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ac0b3c151b379096ffb60e049d18b8f6219b1445
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: a36c7076de0c4db64b67f4eba38de4daf4213bca
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91359677"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446685"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Zabezpečení přístupu k datům v Azure Machine Learning
 
@@ -38,7 +38,7 @@ Až budete připraveni použít data v cloudovém řešení úložiště, doporu
 3. Pokud chcete tuto datovou sadu použít ve vašem experimentu machine learningu, můžete buď
     1. Připojte ho ke výpočetnímu cíli experimentu pro školení modelů.
 
-        **ANI** 
+        **OR** 
 
     1. Využijte ji přímo v Azure Machine Learning řešení, jako je automatické spouštění strojového učení (automatizované ML), kanály strojového učení nebo [návrhář Azure Machine Learning](concept-designer.md).
 
@@ -67,7 +67,7 @@ Podporované cloudové služby úložiště v Azure, které se dají registrovat
 
 ## <a name="datasets"></a>Datové sady
 
-Azure Machine Learning datové sady jsou odkazy, které odkazují na data ve vaší službě úložiště. Nejedná se o kopie vašeho dataBy, který vytváří datovou sadu Azure Machine Learning, vytvoříte odkaz na umístění zdroje dat společně s kopií jeho metadat. 
+Azure Machine Learning datové sady nejsou kopie vašich dat. Vytvořením datové sady vytvoříte odkaz na data ve službě úložiště společně s kopií jeho metadat. 
 
 Vzhledem k tomu, že datové sady jsou vyhodnoceny laxně vytvářená a data zůstávají v jejím existujícím umístění, je
 

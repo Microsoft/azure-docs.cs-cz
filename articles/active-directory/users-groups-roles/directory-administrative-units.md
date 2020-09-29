@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a31c4a5c9d20b5b248f7d722ed3d9289bbb4dded
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7aa356c806b6b96fa6a22f8642b005b2002f7c2a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335812"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447909"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Jednotky pro správu v Azure Active Directory
 
@@ -48,7 +48,7 @@ Jednotky pro správu můžete spravovat pomocí Azure Portal, rutin prostředí 
 
 - [Vytváření, odebírání, naplnění a přidávání rolí do jednotek pro správu](roles-admin-units-manage.md): kompletní postupy postupů
 - [Práce s jednotkami](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)pro správu: jak pracovat s jednotkami pro správu pomocí PowerShellu
-- [Podpora grafu jednotek pro správu](/graph/api/resources/administrativeunit?view=graph-rest-beta&preserve-view=true): podrobná dokumentace k Microsoft Graph pro jednotky pro správu.
+- [Podpora grafu jednotek pro správu](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true): podrobná dokumentace k Microsoft Graph pro jednotky pro správu.
 
 ### <a name="planning-your-administrative-units"></a>Plánování jednotek pro správu
 
@@ -95,9 +95,6 @@ Oprávnění |   MS Graph/PowerShell   | Portál Azure AD | Centrum pro správu 
 Správa vlastností skupin a členů s rozsahem jednotky pro správu     |  Podporováno   |    Podporováno    |  Nepodporováno
 Správa licencování skupin pro správu s rozsahem jednotky   |    Podporováno  |    Podporováno   |   Nepodporováno
 
-> [!NOTE]
->
-> Správci s oborem jednotky pro správu nemůžou spravovat pravidla členství v dynamické skupině.
 
 Jednotky pro správu se vztahují pouze na oprávnění pro správu. Nebrání členům ani správcům používat [výchozí uživatelská oprávnění](../fundamentals/users-default-permissions.md) k procházení jiných uživatelů, skupin nebo prostředků mimo jednotky pro správu. V centru pro správu Microsoft 365 se odfiltrují uživatelé mimo jednotky pro správu s vymezeným oborem správy, ale můžete procházet jiné uživatele na portálu Azure AD, PowerShellu a dalších službách Microsoftu.
 

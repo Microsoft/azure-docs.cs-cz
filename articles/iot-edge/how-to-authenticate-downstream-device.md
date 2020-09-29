@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3ccb8d29d0ec52c31913a43358c7daa1c0693df7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9d2116062dc45f3602bf5ee0efba31ad815c0c9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308842"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447845"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Ověření podřízeného zařízení pro Azure IoT Hub
 
@@ -69,7 +69,7 @@ K provedení stejné operace taky můžete použít [rozšíření IoT pro Azure
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
-Další informace o příkazech rozhraní příkazového řádku Azure pro vytváření zařízení a správě nadřazených a podřízených objektů najdete v referenčním obsahu pro příkaz [AZ IoT Hub Device-identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) .
+Další informace o příkazech rozhraní příkazového řádku Azure pro vytváření zařízení a správě nadřazených a podřízených objektů najdete v referenčním obsahu pro příkaz [AZ IoT Hub Device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) .
 
 Pak [načtěte a upravte připojovací řetězec](#retrieve-and-modify-connection-string) tak, aby se vaše zařízení vědělo o připojení přes bránu.
 
@@ -126,7 +126,7 @@ K dokončení stejné operace vytváření zařízení můžete použít také [
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
-Další informace o příkazech rozhraní příkazového řádku Azure pro vytváření zařízení, generování certifikátů a nadřazené a podřízené správě najdete v referenčním obsahu pro příkaz [AZ IoT Hub Device-identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) .
+Další informace o příkazech rozhraní příkazového řádku Azure pro vytváření zařízení, generování certifikátů a nadřazené a podřízené správě najdete v referenčním obsahu pro příkaz [AZ IoT Hub Device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) .
 
 Pak [načtěte a upravte připojovací řetězec](#retrieve-and-modify-connection-string) tak, aby se vaše zařízení vědělo o připojení přes bránu.
 
@@ -172,7 +172,7 @@ K dokončení stejné operace vytváření zařízení můžete použít také [
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
-Další informace najdete v referenčním obsahu Azure CLI pro příkazy [AZ IoT Hub Device-identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) .
+Další informace najdete v referenčním obsahu Azure CLI pro příkazy [AZ IoT Hub Device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) .
 
 Pak [načtěte a upravte připojovací řetězec](#retrieve-and-modify-connection-string) tak, aby se vaše zařízení vědělo o připojení přes bránu.
 
@@ -182,15 +182,23 @@ Po vytvoření identity zařízení IoT na portálu můžete načíst primární
 
 Připojovací řetězce pro zařízení pro příjem dat potřebují následující komponenty:
 
-* Centrum IoT, ke kterému se zařízení připojuje:`Hostname={iothub name}.azure-devices.net`
-* ID zařízení zaregistrované u centra:`DeviceID={device ID}`
-* Buď primární, nebo sekundární klíč:`SharedAccessKey={key}`
-* Zařízení brány, ke kterému se zařízení připojuje Zadejte hodnotu **názvu hostitele** ze souboru config. yaml zařízení IoT Edge brány:`GatewayHostName={gateway hostname}`
+* Centrum IoT, ke kterému se zařízení připojuje: `Hostname={iothub name}.azure-devices.net`
+* ID zařízení zaregistrované u centra: `DeviceID={device ID}`
+* Metoda ověřování, bez ohledu na certifikáty symetrického klíče nebo X. 509
+  * Pokud používáte ověřování symetrického klíče, zadejte buď primární, nebo sekundární klíč: `SharedAccessKey={key}`
+  * Pokud používáte ověřování pomocí certifikátu X. 509, zadejte příznak: `x509=true`
+* Zařízení brány, ke kterému se zařízení připojuje Zadejte hodnotu **názvu hostitele** ze souboru config. yaml zařízení IoT Edge brány: `GatewayHostName={gateway hostname}`
 
 Celý připojovací řetězec se všemi dohromady vypadá takto:
 
 ```
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
+```
+
+Ani
+
+```
+HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
 Pokud jste pro toto zařízení pro příjem dat vytvořili vztah nadřazenosti/podřízenosti, můžete připojovací řetězec zjednodušit voláním brány přímo jako hostitele připojení. Pro ověřování X. 509 se vyžadují relace nadřazený-podřízený, ale volitelné pro ověřování symetrického klíče. Příklad:

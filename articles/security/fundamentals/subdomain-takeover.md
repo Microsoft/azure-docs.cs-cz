@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/23/2020
+ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: c0494fe39f8ae64ba65db4e3cd728069aa4a5052
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: bde4b21f9dfff62ef43afc9c9d8e5a858631d304
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403207"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447369"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Zabránit položkám DNS v dangling a vyhnout se převzetí subdomény
 
@@ -107,11 +107,13 @@ Spusťte dotaz jako uživatel, který má:
 - minimální přístup k předplatným Azure na úrovni čtenářů
 - přístup pro čtení do grafu prostředků Azure
 
-Pokud jste globálním správcem tenanta vaší organizace, zvyšte svůj účet tak, aby měl přístup ke všem předplatným vaší organizace pomocí pokynů v části [zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin).
+Pokud jste globálním správcem tenanta vaší organizace, zvyšte svůj účet tak, aby měl přístup ke všem předplatným vaší organizace pomocí pokynů v části [zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu](../../role-based-access-control/elevate-access-global-admin.md).
 
 
 > [!TIP]
-> Azure Resource Graph má omezení a omezení stránkování, které byste měli zvážit, pokud máte velké prostředí Azure. [Přečtěte si další informace](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) o práci s velkými sadami dat prostředků Azure. 
+> Azure Resource Graph má omezení a omezení stránkování, které byste měli zvážit, pokud máte velké prostředí Azure. 
+> 
+> [Přečtěte si další informace o práci s velkými sadami dat prostředků Azure](../../governance/resource-graph/concepts/work-with-data.md).
 > 
 > Nástroj používá dávkování předplatného, aby tato omezení nedocházelo.
 
@@ -145,7 +147,7 @@ Některé služby Azure nabízí funkce, které pomáhají při vytváření pre
 
 ### <a name="use-azure-dns-alias-records"></a>Použití záznamů aliasů Azure DNS
 
-[Záznamy aliasů](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) Azure DNS můžou zabránit odkazům na dangling prostřednictvím propojení životního cyklu záznamu DNS s prostředkem Azure. Předpokládejme například, že záznam DNS, který je kvalifikován jako záznam aliasu, odkazuje na veřejnou IP adresu nebo profil Traffic Manager. Pokud tyto podkladové prostředky odstraníte, bude se záznam aliasu DNS nacházet v prázdné sadě záznamů. Již neodkazuje na odstraněný prostředek. Je důležité si uvědomit, že existují omezení k tomu, co můžete chránit pomocí záznamů aliasů. V dnešní době je seznam omezen na:
+[Záznamy aliasů](../../dns/dns-alias.md#scenarios) Azure DNS můžou zabránit odkazům na dangling prostřednictvím propojení životního cyklu záznamu DNS s prostředkem Azure. Předpokládejme například, že záznam DNS, který je kvalifikován jako záznam aliasu, odkazuje na veřejnou IP adresu nebo profil Traffic Manager. Pokud tyto podkladové prostředky odstraníte, bude se záznam aliasu DNS nacházet v prázdné sadě záznamů. Již neodkazuje na odstraněný prostředek. Je důležité si uvědomit, že existují omezení k tomu, co můžete chránit pomocí záznamů aliasů. V dnešní době je seznam omezen na:
 
 - Azure Front Door
 - Profily služby Traffic Manager
@@ -154,7 +156,7 @@ Některé služby Azure nabízí funkce, které pomáhají při vytváření pre
 
 Bez ohledu na to, co je dnes omezené nabídky služeb, doporučujeme pomocí záznamů aliasů chránit před převzetím subdomény, kdykoli je to možné.
 
-[Přečtěte si další informace](https://docs.microsoft.com/azure/dns/dns-alias#capabilities) o možnostech záznamů aliasů Azure DNS.
+[Přečtěte si další informace o možnostech záznamů aliasů Azure DNS](../../dns/dns-alias.md#capabilities).
 
 
 
@@ -164,7 +166,7 @@ Při vytváření položek DNS pro Azure App Service vytvořte asuid. subdomény
 
 Tyto záznamy nebrání někomu v vytvoření Azure App Service se stejným názvem, který se nachází v záznamu CNAME. Bez možnosti prokázat vlastnictví názvu domény nemůžou aktéri hrozeb přijímat přenosy ani řídit obsah.
 
-[Přečtěte si další informace](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain) o mapování stávajícího vlastního názvu DNS na Azure App Service.
+[Přečtěte si další informace o mapování stávajícího vlastního názvu DNS na Azure App Service](../../app-service/app-service-web-tutorial-custom-domain.md).
 
 
 
@@ -178,13 +180,13 @@ Pro vývojáře a provozní týmy je často možné spouštět procesy čištěn
 
     - Při vyřazení služby ze seznamu požadovaných kontrol vložte položku "odebrat položku DNS".
 
-    - Pro všechny prostředky, které mají vlastní položku DNS, umístěte [zámky pro odstranění](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) . Zámek proti odstranění slouží jako indikátor, že mapování musí být odebráno před zrušením zřízení prostředku. Takové míry můžou fungovat jenom v kombinaci s interními vzdělávacími programy.
+    - Pro všechny prostředky, které mají vlastní položku DNS, umístěte [zámky pro odstranění](../../azure-resource-manager/management/lock-resources.md) . Zámek proti odstranění slouží jako indikátor, že mapování musí být odebráno před zrušením zřízení prostředku. Takové míry můžou fungovat jenom v kombinaci s interními vzdělávacími programy.
 
 - **Vytvořit procedury pro zjišťování:**
 
     - Pravidelně kontrolujte své záznamy DNS, abyste měli jistotu, že jsou všechny subdomény namapované na prostředky Azure, které:
 
-        - Existují – dotaz na zóny DNS pro prostředky odkazující na subdomény Azure, jako je například *. azurewebsites.net nebo *. cloudapp.azure.com (viz [Tento seznam odkazů](azure-domains.md)).
+        - Existují – dotazování na zóny DNS pro prostředky odkazující na poddomény Azure, jako je například *. azurewebsites.net nebo *. cloudapp.azure.com (viz [referenční seznam domén Azure](azure-domains.md)).
         - Vlastníte – potvrďte, že vlastníte všechny prostředky, na které vaše subdomény DNS cílí.
 
     - Udržujte katalog služeb pro koncové body plně kvalifikovaného názvu domény (FQDN) Azure a vlastníky aplikace. Pokud chcete sestavit katalog služeb, spusťte následující skript dotazu Azure Resource Graph. Tento skript vypisuje informace o koncovém názvu domény (FQDN) prostředků, ke kterým máte přístup, a vytváří jejich výstupy v souboru CSV. Pokud máte přístup ke všem předplatným pro vašeho tenanta, tento skript posuzuje všechna tato předplatná, jak je znázorněno v následujícím ukázkovém skriptu. Pokud chcete výsledky omezit na konkrétní sadu předplatných, upravte skript tak, jak je znázorněno na obrázku.
@@ -200,8 +202,8 @@ Pro vývojáře a provozní týmy je často možné spouštět procesy čištěn
 
 Další informace o souvisejících službách a funkcích Azure, které můžete použít k obraně před převzetím subdomény, najdete na následujících stránkách.
 
-- [Azure DNS podporuje použití záznamů aliasů pro vlastní domény.](https://docs.microsoft.com/azure/dns/dns-alias#prevent-dangling-dns-records)
+- [Prevence dangling záznamů DNS pomocí Azure DNS](../../dns/dns-alias.md#prevent-dangling-dns-records)
 
-- [Při přidávání vlastních domén do Azure App Service použijte ID ověření domény.](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#get-domain-verification-id) 
+- [Při přidávání vlastních domén do Azure App Service použít ID ověření domény](../../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
 
-- [Rychlý Start: spuštění prvního dotazu na diagram prostředku pomocí Azure PowerShell](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)
+- [Rychlý Start: spuštění prvního dotazu na diagram prostředku pomocí Azure PowerShell](../../governance/resource-graph/first-query-powershell.md)

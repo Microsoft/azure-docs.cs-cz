@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 939d78fb75dc69af91cbc920fadce69945a24e39
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392450"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447729"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Přidání přiřazení rolí Azure pomocí šablon Azure Resource Manager
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Kromě používání Azure PowerShell nebo rozhraní příkazového řádku Azure CLI můžete role přiřadit pomocí [šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md). Šablony mohou být užitečné, pokud potřebujete nasadit prostředky konzistentně a opakovaně. Tento článek popisuje, jak přiřadit role pomocí šablon.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Kromě používání Azure PowerShell nebo rozhraní příkazového řádku Azure CLI můžete role přiřadit pomocí [šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md). Šablony mohou být užitečné, pokud potřebujete nasadit prostředky konzistentně a opakovaně. Tento článek popisuje, jak přiřadit role pomocí šablon.
 
 ## <a name="get-object-ids"></a>Získat ID objektů
 
@@ -40,7 +40,7 @@ $objectid = (Get-AzADUser -DisplayName "{name}").id
 objectid=$(az ad user show --id "{email}" --query objectId --output tsv)
 ```
 
-### <a name="group"></a>Skupina
+### <a name="group"></a>Group (Skupina)
 
 Pokud chcete získat ID skupiny, můžete použít příkazy [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) nebo [AZ AD Group show](/cli/azure/ad/group#az-ad-group-show) .
 
@@ -298,7 +298,7 @@ Pokud vytvoříte nový instanční objekt a hned se pokusíte přiřadit roli k
 Následující šablona znázorňuje:
 
 - Postup vytvoření nového objektu spravované služby identity
-- Jak zadat`principalType`
+- Jak zadat `principalType`
 - Přiřazení role Přispěvatel k tomuto instančnímu objektu v oboru skupiny prostředků
 
 Chcete-li použít šablonu, je nutné zadat následující vstupy:
@@ -365,7 +365,7 @@ Když ve službě Azure RBAC odeberete přístup k prostředku Azure, odeberete 
 
 - [Azure Portal](role-assignments-portal.md#remove-a-role-assignment)
 - [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
-- [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
+- [Azure CLI](role-assignments-cli.md#remove-role-assignment)
 - [REST API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>Další kroky
@@ -373,4 +373,4 @@ Když ve službě Azure RBAC odeberete přístup k prostředku Azure, odeberete 
 - [Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 - [Pochopení struktury a syntaxe šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
 - [Vytvoření skupin prostředků a prostředků na úrovni předplatného](../azure-resource-manager/templates/deploy-to-subscription.md)
-- [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/?term=rbac)
+- [Šablony Azure pro rychlý start](https://azure.microsoft.com/resources/templates/?term=rbac)

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5be484c613c4a18e86df7b5a83f95ca75aec6077
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7854aff0b4194efae7c4df653dee18e2676fdd41
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903317"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446319"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>Kurz: Konfigurace certifikátů pro Azure Stack Edge pro pomocí GPU
 
@@ -51,11 +51,11 @@ Než nakonfigurujete a nastavíte Azure Stack Edge pro zařízení s grafickým 
 
     - Pokud jste změnili název zařízení nebo doménu DNS, zobrazí se stav certifikátů jako **neplatných**. 
 
-        ![Stránka místní webové uživatelské rozhraní "certifikáty"](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
+        ![Místní uživatelské rozhraní webu "certifikáty" – Stránka 2](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
 
         Vyberte certifikát pro zobrazení podrobností o stavu.
 
-        ![Stránka místní webové uživatelské rozhraní "certifikáty"](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
+        ![Místní uživatelské rozhraní webu "certifikáty" – Stránka 3](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
 
         Důvodem je to, že certifikáty neodrážejí aktualizovaný název zařízení a doménu DNS (které se používají v názvu subjektu a alternativním předmětu). Pokud chcete zařízení úspěšně aktivovat, vyberte jednu z následujících možností: 
     
@@ -108,11 +108,11 @@ Pomocí těchto kroků znovu vygenerujte a stáhněte certifikáty zařízení A
 
 4. Vyberte odkaz pro stažení certifikátu a po zobrazení výzvy certifikát uložte. 
 
-    ![Vygenerovat a stáhnout certifikát 6](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
+    ![Vygenerovat a stáhnout certifikát 8](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
 
 5. Tento postup opakujte pro všechny certifikáty, které chcete stáhnout. 
     
-    ![Vygenerovat a stáhnout certifikát 7](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
+    ![Vygenerovat a stáhnout certifikát 9](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
 
     Certifikáty vygenerované zařízením se ukládají jako certifikáty DER s následujícím formátem názvu: 
 
@@ -135,31 +135,31 @@ Pomocí těchto kroků můžete přidat vlastní certifikáty včetně podpisov�
 
 1. Certifikát nahrajete tak, že na stránce **certifikát** vyberete **+ Přidat certifikát**.
 
-    ![Stránka místní webové uživatelské rozhraní "certifikáty"](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
+    ![Místní uživatelské rozhraní webu "certifikáty" – Stránka 4](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
 
 2. Nejdřív nahrajte podpisový řetěz a vyberte **ověřit & přidat**.
 
-    ![Stránka místní webové uživatelské rozhraní "certifikáty"](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
+    ![Místní uživatelské rozhraní webu "certifikáty" – Stránka 5](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
 
 3. Teď můžete nahrávat další certifikáty. Můžete například nahrát certifikáty koncového bodu služby Azure Resource Manager a BLOB Storage.
 
-    ![Stránka místní webové uživatelské rozhraní "certifikáty"](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
+    ![Místní uživatelské rozhraní webu "certifikáty" – Stránka 6](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
 
     Můžete také nahrát místní certifikát webového uživatelského rozhraní. Po nahrání tohoto certifikátu budete muset spustit prohlížeč a vymazat mezipaměť. Pak se budete muset připojit k místnímu webovému uživatelskému rozhraní zařízení.  
 
-    ![Stránka místní webové uživatelské rozhraní "certifikáty"](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
+    ![Místní webové uživatelské rozhraní "Stránka 7" certifikátů](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
 
     Můžete také nahrát certifikát uzlu.
 
-    ![Stránka místní webové uživatelské rozhraní "certifikáty"](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
+    ![Místní webové uživatelské rozhraní "Stránka 8"](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
 
     Kdykoli můžete vybrat certifikát a zobrazit podrobnosti, abyste se ujistili, že se shodují s certifikátem, který jste nahráli.
 
-    ![Stránka místní webové uživatelské rozhraní "certifikáty"](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
+    ![Místní webové uživatelské rozhraní "Stránka 9" – certifikáty](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
 
     Stránka certifikát by se měla aktualizovat tak, aby odrážela nově přidané certifikáty.
 
-    ![Stránka místní webové uživatelské rozhraní "certifikáty"](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
+    ![Místní webové uživatelské rozhraní "Stránka 10" – certifikáty](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
 
     > [!NOTE]
     > S výjimkou veřejného cloudu Azure je nutné před aktivací pro všechny konfigurace cloudu (Azure Government nebo Azure Stack) uvést certifikáty podpisového řetězce.

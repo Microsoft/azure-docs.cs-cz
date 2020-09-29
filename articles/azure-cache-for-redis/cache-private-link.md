@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 932d138a4b594aa51b73c365cc3e753f49f886f6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1bf204cb1eddb86daee604f791601bbf44884d50
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328963"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460063"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure cache pro Redis s privátním propojením Azure (Public Preview)
 V tomto článku se dozvíte, jak vytvořit virtuální síť a mezipaměť Azure pro instanci Redis s privátním koncovým bodem pomocí Azure Portal. Naučíte se také, jak přidat privátní koncový bod do existující služby Azure cache pro instanci Redis.
@@ -24,7 +24,7 @@ Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukr
 > [!NOTE]
 > Tato funkce je aktuálně ve verzi Public Preview pro omezené oblasti. Pokud nemáte možnost vytvořit privátní koncový bod, [kontaktujte nás](mailto:azurecache@microsoft.com). Chcete-li použít soukromé koncové body, je nutné, aby byla instance Azure cache for Redis vytvořena po 28. července 2020.
 >
-> Oblasti s přístupem Public Preview: Středozápadní USA, Střed USA – sever, Západní USA, Východní USA 2, Norsko – východ, Evropa – sever, východní Asie, Japonsko – východ a Indie – střed.
+> Oblasti s přístupem Public Preview: Středozápadní USA, Střed USA – sever, Západní USA, Západní USA 2, Východní USA, Východní USA 2, Norsko – východ, Norsko – západ, Evropa – západ, Evropa – západ, Asie – východ, Japonsko – východ, USA – střed, Severní Korea, Kanada – střed, USA – střed, Švýcarsko – sever, Austrálie – střed, Indie – západ, Austrálie – východ a Brazílie – jih.
 >
 
 ## <a name="create-a-private-endpoint-with-a-new-azure-cache-for-redis-instance"></a>Vytvoření privátního koncového bodu s novou mezipamětí Azure pro instanci Redis 
@@ -71,7 +71,7 @@ Chcete-li vytvořit instanci mezipaměti, postupujte podle těchto kroků.
    
 1. Na stránce **Nový** vyberte **databáze** a pak vyberte **Azure cache pro Redis**.
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Vyberte mezipaměť Azure pro Redis.":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Vyberte vytvořit prostředek.":::
    
 1. Na stránce **nový Redis Cache** nakonfigurujte nastavení pro novou mezipaměť.
    
@@ -89,7 +89,7 @@ Chcete-li vytvořit instanci mezipaměti, postupujte podle těchto kroků.
 
 1. Klikněte na tlačítko **Přidat** a vytvořte tak privátní koncový bod.
 
-    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="V článku sítě přidejte privátní koncový bod.":::
+    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="Vyberte vytvořit prostředek.":::
 
 1. Na stránce **Vytvoření privátního koncového bodu** nakonfigurujte nastavení privátního koncového bodu pomocí virtuální sítě a podsítě, kterou jste vytvořili v poslední části, a vyberte **OK**. 
 
@@ -153,7 +153,7 @@ Pokud chcete vytvořit privátní koncový bod, postupujte podle těchto kroků.
 
 1. V Azure Portal vyhledejte **mezipaměť Azure pro Redis** a stiskněte klávesu ENTER nebo ji vyberte v návrzích hledání.
 
-    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="Vyhledejte službu Azure cache pro Redis.":::
+    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="Vyberte vytvořit prostředek.":::
 
 2. Vyberte instanci mezipaměti, do které chcete přidat privátní koncový bod.
 
@@ -161,7 +161,7 @@ Pokud chcete vytvořit privátní koncový bod, postupujte podle těchto kroků.
 
 4. Kliknutím na tlačítko **privátního koncového bodu** vytvořte soukromý koncový bod.
 
-    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="Přidat privátní koncový bod":::
+    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="Vyberte vytvořit prostředek.":::
 
 5. Na **stránce vytvoření privátního koncového bodu**nakonfigurujte nastavení privátního koncového bodu.
 

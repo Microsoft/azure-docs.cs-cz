@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 132e21c861f50caca37fb6fc5df660ff413d07a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 92c73fed84910e525378aa18e02456960acf9911
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905491"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447276"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat v Azure Security Center
 Security Center shromažďuje data z vašich virtuálních počítačů Azure, virtuálních počítačů a kontejnerů IaaS a jiných než Azure (včetně místních) počítačů, které monitorují chyby zabezpečení a hrozby. Data se shromažďují pomocí Log Analytics agenta, který čte různé konfigurace a protokoly událostí související se zabezpečením z počítače a kopíruje data do pracovního prostoru pro účely analýzy. Příklady takových dat: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel.
@@ -71,7 +71,7 @@ Security Center může automaticky vytvořit výchozí pracovní prostor, do kte
 Výběr pracovního prostoru vytvořeného nástrojem Security Center:
 
 1. V části **výchozí konfigurace pracovního prostoru**vyberte použít pracovní prostory vytvořené službou Security Center.
-   ![Vybrat cenovou úroveň][10] 
+    :::image type="content" source="./media/security-center-enable-data-collection/workspace-selection.png" alt-text="Povolení automatického zřizování agenta Log Analytics"::: 
 
 1. Klikněte na **Uložit**.<br>
     Security Center vytvoří novou skupinu prostředků a výchozí pracovní prostor v tomto geografickém umístění a připojí agenta k tomuto pracovnímu prostoru. Konvence pojmenování pro pracovní prostor a skupinu prostředků:<br>
@@ -99,8 +99,7 @@ Pokud chcete používat stávající pracovní prostor Log Analytics, musíte m�
 Vyberte existující pracovní prostor Log Analytics:
 
 1. V části **výchozí konfigurace pracovního prostoru**vyberte **použít jiný pracovní prostor**.
-
-   ![Použít jiný pracovní prostor][2]
+    :::image type="content" source="./media/security-center-enable-data-collection/use-another-workspace.png" alt-text="Povolení automatického zřizování agenta Log Analytics"::: 
 
 2. V rozevírací nabídce vyberte pracovní prostor pro ukládání shromážděných dat.
 
@@ -191,10 +190,10 @@ Zde je úplný rozpis ID událostí zabezpečení a zámků aplikací pro každo
 >
 
 Výběr zásad filtrování:
-1. Na stránce **shromažďování dat** vyberte zásadu filtrování v části **události zabezpečení**.
-2. Vyberte **Uložit**.
-
-   ![Zvolit zásadu filtrování][5]
+1. Na stránce **shromažďování dat** vyberte zásadu filtrování v části **Uložit další nezpracovaná data – události zabezpečení systému Windows**.
+ 
+1. Vyberte **Uložit**.
+    :::image type="content" source="./media/security-center-enable-data-collection/data-collection-tiers.png" alt-text="Povolení automatického zřizování agenta Log Analytics":::
 
 ### <a name="automatic-provisioning-in-cases-of-a-pre-existing-agent-installation"></a>Automatické zřizování v případech již existující instalace agenta <a name="preexisting"></a> 
 
@@ -224,7 +223,7 @@ Vypnutí automatického zřizování agenta Log Analytics:
 1. V nabídce Security Center na portálu vyberte **cenové & nastavení**.
 2. Vyberte příslušné předplatné.
 
-   ![Výběr předplatného][7]
+    :::image type="content" source="./media/security-center-enable-data-collection/select-subscription.png" alt-text="Povolení automatického zřizování agenta Log Analytics":::
 
 3. Vyberte **shromažďování dat**.
 4. V části **Automatické zřizování**vyberte **vypnuto** a zakažte Automatické zřizování.
@@ -309,13 +308,7 @@ Tento článek ukazuje, jak funguje shromažďování dat a Automatické zřizov
 
 
 <!--Image references-->
-[1]: ./media/security-center-enable-data-collection/enable-automatic-provisioning.png
-[2]: ./media/security-center-enable-data-collection/use-another-workspace.png
 [3]: ./media/security-center-enable-data-collection/reconfigure-monitored-vm.png
-[5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
-[7]: ./media/security-center-enable-data-collection/select-subscription.png
-[8]: ./media/security-center-enable-data-collection/manual-provision.png
 [9]: ./media/security-center-enable-data-collection/pricing-tier.png
-[10]: ./media/security-center-enable-data-collection/workspace-selection.png
 [11]: ./media/security-center-enable-data-collection/log-analytics.png
 [12]: ./media/security-center-enable-data-collection/log-analytics2.png

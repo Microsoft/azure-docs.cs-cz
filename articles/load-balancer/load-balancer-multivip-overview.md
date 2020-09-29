@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: b24514ed477d1acd31dbc4ef0daa3aa89b8739f9
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2e27b168087966701fb53cc8df19d264861257d6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530824"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448099"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Několik front-endu pro Azure Load Balancer
 
@@ -64,8 +64,8 @@ Definujeme dvě pravidla:
 
 | Pravidlo | Mapování front-endu | Do back-endu fondu |
 | --- | --- | --- |
-| 1 |![zelený front-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 |![Virtuální IP adresa](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| 1 |![zelený front-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zelený back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![zelený back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 2 |![Virtuální IP adresa](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![Nachový back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![Nachový back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 Úplné mapování v Azure Load Balancer je teď následující:
 
@@ -143,8 +143,8 @@ Definujeme dvě pravidla:
 
 | Pravidlo | Front-end | Mapovat na back-end fond |
 | --- | --- | --- |
-| 1 |![pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (v VM1 a VM2) |
-| 2 |![pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (v VM1 a VM2) |
+| 1 |![zelené pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![zelený back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (v VM1 a VM2) |
+| 2 |![fialové pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![Nachový back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (v VM1 a VM2) |
 
 V následující tabulce je uvedeno úplné mapování v nástroji pro vyrovnávání zatížení:
 

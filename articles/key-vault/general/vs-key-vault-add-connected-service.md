@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: d0d0465e2e60945649958911c508e06aee877ac9
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: addccf337f82b1695c76ae975c4a33f44ba50f8a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378861"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448144"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání Key Vault do webové aplikace pomocí připojených služeb sady Visual Studio
 
@@ -148,7 +148,7 @@ Tato část identifikuje přesné změny provedené v projektu ASP.NET při při
 
 Má vliv na soubor projektu .NET References a odkazy na balíček NuGet.
 
-| Typ | Reference |
+| Typ | Referenční informace |
 | --- | --- |
 | NuGet | Microsoft. AspNetCore. AzureKeyVault. HostingStartup |
 
@@ -184,11 +184,14 @@ Tato část identifikuje přesné změny provedené v projektu ASP.NET při při
 
 Má vliv na soubor projektu .NET References a `packages.config` (odkazy NuGet).
 
-| Typ | Reference |
+| Typ | Referenční informace |
 | --- | --- |
 | Pohyby NuGet | Azure. identity |
 | Pohyby NuGet | Azure. Security. Keys – trezory. Keys |
 | Pohyby NuGet | Azure. Security. klíčů trezor. tajných kódů |
+
+> [!IMPORTANT] 
+> Ve výchozím nastavení je nainstalovaná služba Azure. identity 1.1.1, která nepodporuje přihlašovací údaje sady Visual Studio. Odkaz na balíček můžete aktualizovat ručně na 1,2 + pomocí pověření sady Visual Studio.
 
 ### <a name="added-files-for-aspnet-framework"></a>Přidané soubory pro ASP.NET Framework
 

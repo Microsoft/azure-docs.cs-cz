@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/17/2020
+ms.date: 09/25/2020
 ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 2f6ade3a01022bf3bcc4d6b522e45ae98fe29b33
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c5866ddfee049499a4179505e0c1a206b1c68945
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258407"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447297"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform (Preview)
 
@@ -46,11 +46,11 @@ Klienti používají přístupové tokeny pro přístup k chráněnému prostře
 
 ### <a name="saml-tokens"></a>Tokeny SAML
 
-Tokeny SAML používá mnoho webových aplikací SAAS, které se získávají pomocí koncového bodu protokolu typu Saml2 v systému Azure Active Directory. Využívají je i aplikace, které používají WS-Federation. Výchozí doba platnosti tokenu je 1 hodina. V perspektivě aplikace je doba platnosti tokenu určena hodnotou NotOnOrAfter `<conditions …>` elementu v tokenu. Po ukončení doby platnosti tokenu musí klient iniciovat nový požadavek na ověření, který se často splní bez interaktivního přihlášení v důsledku tokenu relace jednotného přihlašování (SSO).
+Tokeny SAML jsou používány mnoha webovými SAAS aplikacemi a jsou získány pomocí koncového bodu protokolu typu Saml2 v systému Azure Active Directory. Využívají je i aplikace, které používají WS-Federation. Výchozí doba platnosti tokenu je 1 hodina. V perspektivě aplikace je doba platnosti tokenu určena hodnotou NotOnOrAfter `<conditions …>` elementu v tokenu. Po ukončení doby platnosti tokenu musí klient iniciovat nový požadavek na ověření, který se často splní bez interaktivního přihlášení v důsledku tokenu relace jednotného přihlašování (SSO).
 
 Hodnotu NotOnOrAfter lze změnit pomocí `AccessTokenLifetime` parametru v `TokenLifetimePolicy` . Nastaví se na životní cyklus nakonfigurovanou v zásadě, pokud existuje, a koeficient pro zešikmení s hodinami 5 minut.
 
-Všimněte si, že NotOnOrAfter potvrzení předmětu zadané v `<SubjectConfirmationData>` elementu není ovlivněné konfigurací životnosti tokenu. 
+Potvrzení předmětu NotOnOrAfter zadané v elementu není `<SubjectConfirmationData>` ovlivněné konfigurací životnosti tokenu. 
 
 ### <a name="refresh-tokens"></a>Aktualizovat tokeny
 
@@ -103,7 +103,7 @@ Zásada životního cyklu tokenu je typ objektu zásad, který obsahuje pravidla
 | Maximální neaktivní čas obnovovacího tokenu (vydaný pro důvěrné klienty) |Aktualizovat tokeny (vydané pro důvěrné klienty) |90 dnů |
 | Maximální stáří obnovovacího tokenu (vydané pro důvěrné klienty) |Aktualizovat tokeny (vydané pro důvěrné klienty) |Do-neodvolán |
 
-* <sup>1</sup> federované uživatele, kteří mají nedostatečné informace o odvolání, zahrnují všechny uživatele, kteří nemají atribut "LastPasswordChangeTimestamp" synchronizovaný. Těmto uživatelům se doručí krátký maximální stáří, protože AAD nemůže ověřit, jestli se mají odvolat tokeny, které jsou svázané se starým přihlašovacím údaji (třeba s heslem, které se změnilo), a musí se vrátit častěji, aby se zajistilo, že uživatel a přidružené tokeny jsou pořád v dobrém umístění. Aby bylo možné toto prostředí zlepšit, Správci klientů musí zajistit, aby synchronizoval tento atribut "LastPasswordChangeTimestamp" (dá se nastavit v objektu User pomocí PowerShellu nebo prostřednictvím AADSync).
+* <sup>1</sup> federované uživatele, kteří mají nedostatečné informace o odvolání, zahrnují všechny uživatele, kteří nemají atribut "LastPasswordChangeTimestamp" synchronizovaný. Těmto uživatelům se doručí krátké maximální stáří, protože Azure Active Directory nedokáže ověřit, kdy odvolat tokeny, které jsou svázané s původními přihlašovacími údaji (například s heslem, které se změnily), a musí se vrátit častěji, aby bylo zajištěno, že uživatel a přidružené tokeny jsou stále v dobrém umístění. Aby bylo možné toto prostředí zlepšit, Správci klientů musí zajistit, aby synchronizoval tento atribut "LastPasswordChangeTimestamp" (dá se nastavit v objektu User pomocí PowerShellu nebo prostřednictvím AADSync).
 
 ### <a name="policy-evaluation-and-prioritization"></a>Vyhodnocení zásad a stanovení priorit
 Můžete vytvořit a následně přiřadit zásady životnosti tokenů ke konkrétní aplikaci, vaší organizaci a objektům služby. U konkrétní aplikace může platit více zásad. Zásada životního cyklu tokenu, která se projeví, se řídí těmito pravidly:
@@ -382,170 +382,37 @@ V tomto příkladu vytvoříte několik zásad, abyste se dozvěděli, jak syst�
 
 ## <a name="cmdlet-reference"></a>Reference k rutinám
 
+Jedná se o rutiny v [modulu Azure Active Directory PowerShell pro graf Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#service-principals&preserve-view=true&preserve-view=true).
+
 ### <a name="manage-policies"></a>Správa zásad
 
 Ke správě zásad můžete použít následující rutiny.
 
-#### <a name="new-azureadpolicy"></a>New-AzureADPolicy
-
-Vytvoří novou zásadu.
-
-```powershell
-New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
-```
-
-| Parametry | Popis | Příklad |
-| --- | --- | --- |
-| <code>&#8209;Definition</code> |Pole dokument JSON, které obsahuje všechna pravidla zásad. | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;DisplayName</code> |Řetězec názvu zásady |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;IsOrganizationDefault</code> |Pokud je nastaveno na true, nastaví zásady jako výchozí zásady organizace. Pokud má hodnotu false, neprovede žádnou akci. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code> |Typ zásady U životností tokenů vždy používejte "TokenLifetimePolicy". | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> Volitelné |Nastaví alternativní ID pro zásadu. |`-AlternativeIdentifier "myAltId"` |
-
-</br></br>
-
-#### <a name="get-azureadpolicy"></a>Get-AzureADPolicy
-Načte všechny zásady Azure AD nebo zadané zásady.
-
-```powershell
-Get-AzureADPolicy
-```
-
-| Parametry | Popis | Příklad |
-| --- | --- | --- |
-| <code>&#8209;Id</code> Volitelné |**ObjectID (ID)** zásady, kterou chcete. |`-Id <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadpolicyappliedobject"></a>Get-AzureADPolicyAppliedObject
-Načte všechny aplikace a instanční objekty, které jsou propojené se zásadou.
-
-```powershell
-Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
-```
-
-| Parametry | Popis | Příklad |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectID (ID)** zásady, kterou chcete. |`-Id <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="set-azureadpolicy"></a>Set-AzureADPolicy
-Aktualizuje existující zásady.
-
-```powershell
-Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
-```
-
-| Parametry | Popis | Příklad |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectID (ID)** zásady, kterou chcete. |`-Id <ObjectId of Policy>` |
-| <code>&#8209;DisplayName</code> |Řetězec názvu zásady |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code> Volitelné |Pole dokument JSON, které obsahuje všechna pravidla zásad. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code> Volitelné |Pokud je nastaveno na true, nastaví zásady jako výchozí zásady organizace. Pokud má hodnotu false, neprovede žádnou akci. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code> Volitelné |Typ zásady U životností tokenů vždy používejte "TokenLifetimePolicy". |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> Volitelné |Nastaví alternativní ID pro zásadu. |`-AlternativeIdentifier "myAltId"` |
-
-</br></br>
-
-#### <a name="remove-azureadpolicy"></a>Remove-AzureADPolicy
-Odstraní zadané zásady.
-
-```powershell
- Remove-AzureADPolicy -Id <ObjectId of Policy>
-```
-
-| Parametry | Popis | Příklad |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectID (ID)** zásady, kterou chcete. | `-Id <ObjectId of Policy>` |
-
-</br></br>
+| Rutina | Popis | 
+| --- | --- |
+| [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Vytvoří novou zásadu. |
+| [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Načte všechny zásady Azure AD nebo zadané zásady. |
+| [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) | Načte všechny aplikace a instanční objekty, které jsou propojené se zásadou. |
+| [Set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Aktualizuje existující zásady. |
+| [Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Odstraní zadané zásady. |
 
 ### <a name="application-policies"></a>Zásady použití
 Pro zásady použití můžete použít následující rutiny.</br></br>
 
-#### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy
-Propojí zadané zásady s aplikací.
-
-```powershell
-Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
-```
-
-| Parametry | Popis | Příklad |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectID (ID)** aplikace | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |**Identifikátor objectID** zásady | `-RefObjectId <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadapplicationpolicy"></a>Get-AzureADApplicationPolicy
-Získá zásadu, která je přiřazena aplikaci.
-
-```powershell
-Get-AzureADApplicationPolicy -Id <ObjectId of Application>
-```
-
-| Parametry | Popis | Příklad |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectID (ID)** aplikace | `-Id <ObjectId of Application>` |
-
-</br></br>
-
-#### <a name="remove-azureadapplicationpolicy"></a>Remove-AzureADApplicationPolicy
-Odebere zásadu z aplikace.
-
-```powershell
-Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
-```
-
-| Parametry | Popis | Příklad |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectID (ID)** aplikace | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |**Identifikátor objectID** zásady | `-PolicyId <ObjectId of Policy>` |
-
-</br></br>
+| Rutina | Popis | 
+| --- | --- |
+| [Add-AzureADApplicationPolicy](/powershell/module/azuread/add-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | Propojí zadané zásady s aplikací. |
+| [Get-AzureADApplicationPolicy](/powershell/module/azuread/get-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | Získá zásadu, která je přiřazena aplikaci. |
+| [Remove-AzureADApplicationPolicy](/powershell/module/azuread/remove-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | Odebere zásadu z aplikace. |
 
 ### <a name="service-principal-policies"></a>Zásady instančních objektů
 Pro zásady instančního objektu můžete použít následující rutiny.
 
-#### <a name="add-azureadserviceprincipalpolicy"></a>Add-AzureADServicePrincipalPolicy
-Propojí zadané zásady s instančním objektem.
-
-```powershell
-Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
-```
-
-| Parametry | Popis | Příklad |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectID (ID)** aplikace | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |**Identifikátor objectID** zásady | `-RefObjectId <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadserviceprincipalpolicy"></a>Get-AzureADServicePrincipalPolicy
-Načte všechny zásady propojené se zadaným objektem služby.
-
-```powershell
-Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
-```
-
-| Parametry | Popis | Příklad |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectID (ID)** aplikace | `-Id <ObjectId of Application>` |
-
-</br></br>
-
-#### <a name="remove-azureadserviceprincipalpolicy"></a>Remove-AzureADServicePrincipalPolicy
-Odebere zásadu ze zadaného instančního objektu.
-
-```powershell
-Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
-```
-
-| Parametry | Popis | Příklad |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectID (ID)** aplikace | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |**Identifikátor objectID** zásady | `-PolicyId <ObjectId of Policy>` |
+| Rutina | Popis | 
+| --- | --- |
+| [Add-AzureADServicePrincipalPolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Propojí zadané zásady s instančním objektem. |
+| [Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Načte všechny zásady propojené se zadaným objektem služby.|
+| [Remove-AzureADServicePrincipalPolicy](/powershell/module/azuread/remove-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Odebere zásadu ze zadaného instančního objektu.|
 
 ## <a name="license-requirements"></a>Licenční požadavky
 

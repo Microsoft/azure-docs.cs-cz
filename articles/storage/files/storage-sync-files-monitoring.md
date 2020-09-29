@@ -4,15 +4,15 @@ description: Přečtěte si, jak monitorovat nasazení Azure File Sync pomocí A
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/05/2019
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9db8a0397c836e8cbc45404d9c4f149255fc76fa
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1ef24522f688c5ae1176630a2f370cd7ee7c3cd7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271052"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448058"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
@@ -35,8 +35,10 @@ Pomocí [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview)
 Metriky pro Azure File Sync jsou ve výchozím nastavení povolené a odesílají se Azure Monitor každých 15 minut.
 
 **Jak zobrazit metriky Azure File Sync v Azure Monitor**
-- Přejděte do **služby synchronizace úložiště** v **Azure Portal** a klikněte na **metriky**.
-- Klikněte na rozevírací seznam **metrika** a vyberte metriku, kterou chcete zobrazit.
+1. Přejděte do **služby synchronizace úložiště** v **Azure Portal** a klikněte na **metriky**.
+2. Klikněte na rozevírací seznam **metrika** a vyberte metriku, kterou chcete zobrazit.
+
+![Snímek obrazovky Azure File Sync metriky](media/storage-sync-files-troubleshoot/file-sync-metrics.png)
 
 V Azure Monitor jsou k dispozici následující metriky pro Azure File Sync:
 
@@ -58,15 +60,15 @@ Výstrahy proaktivně upozorňují na skutečnost, že jsou ve vašich datech mo
 
 **Jak vytvořit výstrahy pro Azure File Sync**
 
-- V **Azure Portal**přejdete do **služby synchronizace úložiště** . 
-- V části monitorování klikněte na **výstrahy** a pak klikněte na **+ nové pravidlo výstrahy**.
-- Klikněte na **vybrat podmínku** a zadejte pro tuto výstrahu následující informace: 
+1. V **Azure Portal**přejdete do **služby synchronizace úložiště** . 
+2. V části monitorování klikněte na **výstrahy** a pak klikněte na **+ nové pravidlo výstrahy**.
+3. Klikněte na **vybrat podmínku** a zadejte pro tuto výstrahu následující informace: 
     - **Metrika**
     - **Název dimenze**
     - **Logika výstrahy**
-- Klikněte na **Vybrat skupinu akcí** a přidejte do ní skupinu akcí (E-mail, SMS atd.), a to buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
-- Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
-- Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.  
+4. Klikněte na **Vybrat skupinu akcí** a přidejte do ní skupinu akcí (E-mail, SMS atd.), a to buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
+5. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
+6. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.  
 
 V následující tabulce jsou uvedeny příklady scénářů, které je třeba monitorovat, a správnou metriku pro použití výstrahy:
 
@@ -96,6 +98,8 @@ Chcete-li zobrazit stav nasazení Azure File Sync v **Azure Portal**, přejděte
 
 Chcete-li zobrazit **registrovaný stav serveru** na portálu, přejděte do části **registrované servery** **služby synchronizace úložiště**.
 
+![Snímek obrazovky stavu registrovaných serverů](media/storage-sync-files-troubleshoot/file-sync-registered-servers.png)
+
 - Pokud je stav **registrovaného serveru** **online**, server úspěšně komunikuje se službou.
 - Pokud je stav **registrovaného serveru** **zobrazený v režimu offline**, proces monitorování synchronizace úložiště (AzureStorageSyncMonitor.exe) není spuštěný nebo Server nemůže získat přístup ke službě Azure File Sync. Pokyny najdete v [dokumentaci k řešení problémů](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity) .
 
@@ -103,7 +107,9 @@ Chcete-li zobrazit **registrovaný stav serveru** na portálu, přejděte do č�
 
 Pokud chcete zobrazit stav **koncového bodu serveru** na portálu, přejděte do části **skupiny synchronizace** **služby synchronizace úložiště** a vyberte **skupinu synchronizace**.
 
-- Aktivita **stav koncového bodu serveru** a **synchronizace** na portálu je založena na událostech synchronizace, které jsou zaznamenány do protokolu událostí TELEMETRIE na serveru (ID 9102 a 9302). Pokud relace synchronizace selže kvůli přechodné chybě, například při zrušení chyby, synchronizace bude na portálu stále zobrazena, pokud aktuální relace synchronizace probíhá (soubory jsou aplikovány). Událost s ID 9302 je událost průběhu synchronizace a ID události 9102 se protokoluje po dokončení relace synchronizace.  Další informace najdete v tématu [synchronizace stavu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) a [průběhu synchronizace](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session). Pokud se na portálu zobrazí chyba, protože synchronizace neprobíhá, přečtěte si pokyny v [dokumentaci k řešení potíží](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) .
+![Snímek obrazovky stavu koncového bodu serveru](media/storage-sync-files-troubleshoot/file-sync-server-endpoint-health.png)
+
+- Aktivita **stav koncového bodu serveru** a **synchronizace** na portálu je založena na událostech synchronizace, které jsou zaznamenány do protokolu událostí TELEMETRIE na serveru (ID 9102 a 9302). Pokud relace synchronizace selže kvůli přechodné chybě, například k chybě, bude koncový bod **serveru na portálu** stále zobrazen, pokud aktuální relace synchronizace probíhá (soubory jsou aplikovány). Událost s ID 9302 je událost průběhu synchronizace a ID události 9102 se protokoluje po dokončení relace synchronizace.  Další informace najdete v tématu [synchronizace stavu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) a [průběhu synchronizace](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session). Pokud stav koncového bodu serveru zobrazuje **chybu** nebo **žádná aktivita**, přečtěte si pokyny v [dokumentaci k řešení potíží](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) .
 - Počet **souborů, které nejsou synchronizované** na portálu, vychází z ID události 9121, které se zaznamená do protokolu událostí telemetrie na serveru. Tato událost se zaznamená do protokolu pro každou položku chyby, jakmile se relace synchronizace dokončí. Chcete-li vyřešit chyby jednotlivých položek, přečtěte si téma [návody v tématu, zda existují konkrétní soubory nebo složky, které se nesynchronizují?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
 - Pokud chcete na portálu zobrazit **efektivitu vrstev cloudu** , přejděte do části **Vlastnosti koncového bodu serveru** a přejděte do části **vrstvení cloudu** . Data poskytnutá pro efektivitu vrstvení cloudu vycházejí z ID události 9071, které se zaznamená do protokolu událostí telemetrie na serveru. Další informace najdete v tématu [Přehled vrstvení cloudu](https://docs.microsoft.com/azure/storage/files/storage-sync-cloud-tiering).
 - Pokud chcete zobrazit soubory, které **nejsou vrstvení** a **navrácení chyb** na portálu, přejděte do části **Vlastnosti koncového bodu serveru** a přejděte do části **vrstvení cloudu** . **Soubory, které nejsou vrstvení** , jsou založené na id události 9003, které se zaznamená do protokolu událostí telemetrie na serveru, a **chyby odvolání** vycházejí z ID události 9006. Chcete-li prozkoumat soubory, které se nedaří navrátit do vrstvy nebo se odvolat, přečtěte si téma [Postup řešení potíží se soubory, které se nepodařilo](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-tier) [vyzvat a jak řešit problémy se selháním](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled).
@@ -142,7 +148,7 @@ Synchronizovat stav
 
 - Událost s ID 9121 se zaznamená do protokolu pro každou položku chyby, jakmile se relace synchronizace dokončí. Tuto událost použijte k určení počtu souborů, u kterých se synchronizace s touto chybou nezdařila (**PersistentCount** a **TransientCount**). Trvalá chyba pro jednotlivé položky by se měla prozkoumat v tématu [návody zjistit, jestli nejsou nějaké konkrétní soubory nebo složky, které se nesynchronizují?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
 
-- Událost s ID 9302 se protokoluje každých 5 až 10 minut, pokud dojde k aktivní relaci synchronizace. Tuto událost použijte k určení, jestli aktuální relace synchronizace provádí průběh (**AppliedItemCount > 0**). Pokud synchronizace neprobíhá, relace synchronizace by se nakonec nezdařila a událost s ID 9102 bude protokolována s chybou. Další informace najdete v [dokumentaci průběh synchronizace](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
+- Událost s ID 9302 se protokoluje každých 5 až 10 minut, pokud dojde k aktivní relaci synchronizace. Tuto událost použijte k určení, kolik položek se má synchronizovat (**TotalItemCount**), počet položek synchronizovaných tak daleko (**AppliedItemCount**) a počet položek, které se nezdařily z důvodu chyby pro jednotlivé položky (**PerItemErrorCount**). Pokud synchronizace neprovádí postup (**AppliedItemCount = 0**), relace synchronizace nakonec selže a ID události 9102 se zaprotokoluje s chybou. Další informace najdete v [dokumentaci průběh synchronizace](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
 Stav registrovaného serveru
 
@@ -248,6 +254,7 @@ V této části najdete příklady výstrah pro Azure File Sync.
      - Typ agregace: **Maximum**  
      - Prahová hodnota (v bajtech): **1** 
      - Vyhodnoceno na základě členitosti agregace = **1 hodina** | Frekvence vyhodnocení = **každých 30 minut** 
+        - Všimněte si, že metriky se odesílají do Azure Monitor každých 15 až 20 minut. Nenastavujte **četnost vyhodnocení** na méně než 30 minut (vygeneruje falešná upozornění).
      - Klikněte na **Hotovo.** 
 8. Kliknutím na **Vybrat skupinu akcí** přidejte skupinu akcí (E-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
 9. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.

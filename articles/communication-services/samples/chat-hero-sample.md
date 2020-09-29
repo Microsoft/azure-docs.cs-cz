@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fe5fe29a66483934ae47f70512a310a4ae6bb1b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b97b80927739d9a8658213a00b415c0bf321528b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303232"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460556"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Začínáme s příkladem skupiny Hero chat
 
@@ -42,11 +42,11 @@ Ukázka vypadá takto:
 
 Po stisknutí tlačítka Spustit chat načte webová aplikace token přístupu uživatele z aplikace na straně serveru. Tento token se pak použije k připojení klientské aplikace ke komunikačním službám Azure. Po načtení tokenu se zobrazí výzva k zadání vašeho jména a Emoji, která bude představovat chat. 
 
-:::image type="content" source="./media/chat/pre-chat.png" alt-text="Snímek obrazovky s obrazovkou předběžného chatu aplikace":::
+:::image type="content" source="./media/chat/pre-chat.png" alt-text="Snímek obrazovky s úvodní stránkou ukázkové aplikace":::
 
 Jakmile nakonfigurujete své zobrazované jméno a Emoji, můžete se připojit k relaci chatu. Teď se zobrazí hlavní plátno pro chat, kde se nachází v základním prostředí chatu.
 
-:::image type="content" source="./media/chat/main-app.png" alt-text="Snímek obrazovky znázorňující hlavní obrazovku ukázkové aplikace":::
+:::image type="content" source="./media/chat/main-app.png" alt-text="Snímek obrazovky s úvodní stránkou ukázkové aplikace":::
 
 Součásti hlavní obrazovky chatu:
 
@@ -61,7 +61,7 @@ Níže najdete další informace o požadavcích a krocích pro nastavení ukáz
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js (8.11.2 a vyšší)](https://nodejs.org/en/download/)
 - [Visual Studio (2017 a novější)](https://visualstudio.microsoft.com/vs/)
-- [.NET Core 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2) (Ujistěte se, že je nainstalována verze, která odpovídá vaší instanci sady Visual studio, 32 vs 64 bitů)
+- [.NET Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (Ujistěte se, že je nainstalována verze, která odpovídá vaší instanci sady Visual studio, 32 vs 64 bitů)
 - Vytvořte prostředek služby Azure Communication Services. Podrobnosti najdete v tématu [vytvoření prostředku komunikace Azure](../quickstarts/create-communication-resource.md). Pro tento rychlý Start budete muset zaznamenat **připojovací řetězec** prostředků.
 
 ## <a name="locally-deploying-the-service--client-app"></a>Místní nasazení klientské aplikace & služby

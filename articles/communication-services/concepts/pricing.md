@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 94a34937af92eefa6146c7a043b6d5d68cf6b852
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0b82d7dc8f6aaaa28a5293966440f058fbf42dc1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946861"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460930"
 ---
 # <a name="pricing-scenarios"></a>Cenové scénáře
 
@@ -53,7 +53,7 @@ Alice provedla volání skupiny s kolegy, Bobem a Charlie. Alice a Bob použily 
 
 **Celkové náklady na volání skupiny**: $0,48 + $0,172 = $0,652
 
-## <a name="chat"></a>Prostřednictvím
+## <a name="chat"></a>Chat
 
 Pomocí komunikačních služeb můžete rozšířit aplikaci o možnost odesílat a přijímat zprávy chatu mezi 2 nebo více uživateli. Chat pro klientské knihovny jsou k dispozici pro jazyky JavaScript, .NET, Python a Java. [Další informace o knihovnách klienta najdete na této stránce](./sdk-options.md) .
 

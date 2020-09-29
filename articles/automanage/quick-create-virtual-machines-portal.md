@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: f1dc37173dff8e694ba4d1e5aa9a1b14e462581a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d66c19ce3a9786a5ca0f1390acb398c2a9cf502f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311576"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445792"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Rychlý Start: povolení služby Azure automanage pro virtuální počítače v Azure Portal
 
@@ -49,34 +49,36 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
     1. Zaškrtněte políčko u každého virtuálního počítače, který chcete připojit.
     1. Klikněte na tlačítko **Vybrat** .
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="Vyberte existující virtuální počítač ze seznamu dostupných virtuálních počítačů.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="Povolit na stávajícím virtuálním počítači.":::
 
 4. V části **konfigurační profil**klikněte na **Procházet a změňte profily a předvolby**.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Procházet a změnit profily a předvolby.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Povolit na stávajícím virtuálním počítači.":::
 
 5. V okně **vybrat konfigurační profil + Předvolby** :
     1. Vyberte profil vlevo: *vývoj/testování* pro testování, výrobní *zakázka* pro produkci.
     1. Klikněte na tlačítko **Vybrat** .
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Procházet konfigurační profil v produkčním prostředí":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Povolit na stávajícím virtuálním počítači.":::
 
 6. Klikněte na tlačítko **Povolit**.
 
 
 ## <a name="enable-automanage-for-vms-on-a-new-vm"></a>Povolení automanage pro virtuální počítače na novém virtuálním počítači
 
+Pokud chcete vytvořit nový virtuální počítač a povolit možnost automanage, přihlaste [se k Azure Portal](https://aka.ms/automanageportalnextstep) .
+
 1. Postupujte podle kroků pro vytvoření v [rychlém startu – vytvoření virtuálního počítače s Windows v Azure Portal](..\virtual-machines\windows\quick-create-portal.md).
 
 2. Po nasazení virtuálního počítače na stránce Stav nasazení budete mít na konci doporučené **Další kroky** .
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\create-next-steps.png" alt-text="Část další kroky najdete na konci stránky nasazení.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\create-next-steps.png" alt-text="Povolit na stávajícím virtuálním počítači.":::
 
 3. V části **Další kroky**vyberte možnost **Povolit autospravovat osvědčené postupy pro virtuální počítače**.
 
 4. Na stránce s **osvědčenými postupy pro automatickou správu – Azure Virtual Machine Best Practices** se **počítače** automaticky naplní nově vytvořeným virtuálním počítačem.
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\create-new-enable-overview.png" alt-text="Nově vytvořený virtuální počítač se zobrazí jako vybraný počítač.":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\create-new-enable-overview.png" alt-text="Povolit na stávajícím virtuálním počítači.":::
 
 5. V části **konfigurační profil**klikněte na **Procházet a změňte profily a předvolby**.
 
@@ -84,16 +86,15 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
     1. Vyberte profil vlevo: *vývoj/testování* pro testování, výrobní *zakázka* pro produkci.
     1. Klikněte na tlačítko **Vybrat** .
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Procházet konfigurační profil v produkčním prostředí":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Povolit na stávajícím virtuálním počítači.":::
 
 7. Klikněte na tlačítko **Povolit**.
-
 
 ## <a name="disable-automanage-for-vms"></a>Zakázat pro virtuální počítače automanage
 
 Rychlé ukončení používání služby Azure automanage pro virtuální počítače zakázáním automatizované správy.
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Zakázání automanage na virtuálním počítači.":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Povolit na stávajícím virtuálním počítači.":::
 
 1. Navštivte stránku pro automatické spravování **– osvědčené postupy pro virtuální počítače Azure** se seznamem všech vašich automatických spravovaných virtuálních počítačů.
 1. Zaškrtněte políčko vedle virtuálního počítače, který chcete zakázat.

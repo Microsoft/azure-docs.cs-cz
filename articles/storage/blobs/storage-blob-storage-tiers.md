@@ -3,34 +3,34 @@ title: Horké, studené a archivní úrovně přístupu pro objekty blob – Azu
 description: Přečtěte si o horké, studené a archivní úrovni přístupu pro úložiště objektů BLOB v Azure. Zkontrolujte účty úložiště, které podporují vrstvení. Porovná možnosti úložiště objektů blob bloku.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/27/2020
+ms.date: 09/28/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 59a0433a3b22877808fbe2b8371258e00f214d10
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 569e785cd8fc3ec4bbf9960cef63258e83496847
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226178"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460726"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: Horká, studená a archivní úroveň přístupu
 
-Služba Azure Storage nabízí různé úrovně přístupu, které umožňují ukládat data objektů BLOB nejefektivnějším způsobem. Dostupné úrovně přístupu zahrnují:
+Služba Azure Storage nabízí různé úrovně přístupu, které umožňují ukládat data objektů BLOB nejefektivnějším způsobem. Dostupné úrovně přístupu:
 
 - **Horká** – optimalizovaná pro ukládání dat, ke kterým dochází často.
 - **Studená** – optimalizovaná pro ukládání dat, která se nepoužívají zřídka a ukládají se aspoň na 30 dní.
 - **Archivní** – optimalizované pro ukládání dat, která se zřídka používají a ukládají se nejméně 180 dní s požadavky flexibilní latence (v řádu hodin).
 
-U různých úrovní přístupu platí následující požadavky:
+Informace platné pro různé úrovně přístupu:
 
-- Na úrovni účtu se dá nastavit jenom horká a studená úroveň přístupu. Úroveň přístupu archivu není k dispozici na úrovni účtu.
-- Horké, studené a archivní úrovně je možné nastavit na úrovni objektu BLOB během nahrávání nebo po nahrání.
-- Data ve studené úrovni přístupu můžou tolerovat mírně nižší dostupnost, ale stále vyžadují vysokou odolnost, latenci načítání a charakteristiky propustnosti, podobně jako aktivní data. U studených dat jsou pro nižší náklady na úložiště přijatelné kompromisy smlouvy o úrovni služeb (SLA) a vyšších nákladů na přístup v porovnání s horkými daty.
-- Archivní úložiště ukládá data do offline režimu a nabízí nejnižší náklady na úložiště, ale také nejvyšší náklady na dehydratované a přístup k datům.
+- Na úrovni účtu je možné nastavit jenom horkou nebo studenou úroveň přístupu. Na úrovni účtu není k dispozici archivní úroveň přístupu.
+- Horkou, studenou nebo archivní úroveň přístupu je možné nastavit na úrovni objektu blob při jeho nahrání nebo po něm.
+- Data se studenou úrovní přístupu můžou tolerovat mírně nižší dostupnost, ale stále vyžadují podobnou vysokou odolnost, latenci načítání a propustnost jako horká data. U studených dat platí mírně horší dostupnost odpovídající smlouvě SLA a vyšší přístupové náklady oproti horkým datům. Tyto slabiny jsou přijatelným způsobem vyváženy nižšími náklady na úložiště.
+- V archivním úložišti jsou data uložena offline. Tato úroveň nabízí nejnižší náklady na úložiště, a nejvyšší náklady na obnovení (rehydrování) dat a přístup k nim.
 
-Data uložená v cloudu se rozšiřují exponenciálním tempem. Pokud chcete náklady na rozšiřující se úložiště udržet pod kontrolou, je pro optimalizaci nákladů vhodné uspořádat data podle vlastností, jako je četnost přístupu a plánovaná doba uchování. Data uložená v cloudu se můžou lišit podle toho, jak se generují, zpracovávají a přistupovaly během své životnosti. Některá data se během svojí existence využívají nebo mění často. Některá data se používají často v rané fázi svého životního cyklu, ale s tím jak stárnou, přístup k nim výrazně klesá. Některá data zůstávají v cloudu nečinná a v případě potřeby jsou po uložení k dispozici zřídka.
+Data uložená v cloudu se rozšiřují exponenciálním tempem. Pokud chcete náklady na rozšiřující se úložiště udržet pod kontrolou, je pro optimalizaci nákladů vhodné uspořádat data podle vlastností, jako je četnost přístupu a plánovaná doba uchování. Data uložená v cloudu se můžou během svojí existence lišit způsobem generování, zpracování a přístupu k nim. Některá data se během svojí existence využívají nebo mění často. Některá data se používají často v rané fázi svého životního cyklu, ale s tím jak stárnou, přístup k nim výrazně klesá. Některá data zůstanou v cloudu neaktivní, protože se k nim po uložení přistupuje velice vzácně (pokud vůbec).
 
 Každý z těchto scénářů přístupu k datům je výhodou z jiné úrovně přístupu, která je optimalizována pro konkrétní vzor přístupu. Díky horké, studené a archivní úrovni přístupu Azure Blob Storage tuto potřebu vyžaduje pro rozdílné úrovně přístupu s oddělenými cenovými modely.
 
@@ -44,14 +44,14 @@ Datové vrstvy úložiště objektů mezi horkou, studenou a archivní funkcí j
 
 ## <a name="hot-access-tier"></a>Horká úroveň úložiště
 
-Úroveň Hot Access má vyšší náklady na úložiště než studená a archivní úroveň, ale nejnižší náklady na přístup. Mezi příklady scénářů použití pro vrstvu Hot Access patří:
+Horká úroveň přístupu má vyšší náklady na úložiště než studená a archivní úroveň, ale má nejnižší náklady na přístup. Mezi příklady scénářů použití horké úrovně přístupu patří:
 
-- Data, která jsou v aktivním použití nebo se očekávají pro přístup k častým datům (ke čtení a zápisu).
-- Data, která jsou připravená pro zpracování a případné migrace na studenou úroveň přístupu.
+- Data, která se aktivně používají nebo u kterých se očekává, že se budou často číst a zapisovat.
+- Data, která jsou připravená pro zpracování a případnou migraci na studenou úroveň přístupu.
 
 ## <a name="cool-access-tier"></a>Studená úroveň úložiště
 
-Studená úroveň přístupu má nižší náklady na úložiště a vyšší náklady na přístup v porovnání s horkým úložištěm. Tato úroveň je určená pro data, která zůstanou ve studené vrstvě nejméně 30 dnů. Mezi příklady scénářů použití pro studenou úroveň přístupu patří:
+Studená úroveň přístupu má v porovnání s horkou úrovní nižší náklady na uložení a vyšší náklady na přístup. Tato úroveň je určená pro data, která zůstanou ve studené vrstvě nejméně 30 dnů. Mezi příklady scénářů použití studené úrovně přístupu patří:
 
 - Krátkodobé zálohování a datové sady pro zotavení po havárii.
 - Starší obsah a média, které se již nezobrazují často, ale které by však měly být na vyžádání okamžitě dostupné.
@@ -121,7 +121,7 @@ V následující tabulce jsou popsány porovnání úložiště objektů blob bl
 |                                           | **Výkon úrovně Premium**   | **Horká vrstva** | **Studená vrstva**       | **Úroveň archivu**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Dostupnost**                          | 99,9 %                     | 99,9 %        | 99 %                 | Offline           |
-| **Dostupnost** <br> **(přístupy pro čtení RA-GRS)**  | –                       | 99,99 %       | 99,9 %               | Offline           |
+| **Dostupnost** <br> **(přístupy pro čtení RA-GRS)**  | Není k dispozici                       | 99,99 %       | 99,9 %               | Offline           |
 | **Poplatky za využití**                         | Vyšší náklady na úložiště, nižší přístup a náklady na transakce | Vyšší náklady na úložiště, nižší přístup a náklady na transakce | Snížení nákladů na úložiště, vyššího přístupu a transakčních nákladů | Nejnižší náklady na úložiště, nejvyšší přístup a náklady na transakce |
 | **Minimální velikost objektu**                   | N/A                       | N/A          | N/A                 | N/A               |
 | **Minimální doba uložení**              | N/A                       | N/A          | 30 dnů<sup>1</sup> | 180 dnů
@@ -144,7 +144,7 @@ V této části se při použití Azure Portal a PowerShellu ukázaly následuj�
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>Změna výchozí úrovně přístupu u účtu GPv2 nebo Blob Storage
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V Azure Portal vyhledejte a vyberte **všechny prostředky**.
 
@@ -172,7 +172,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Změna úrovně objektu BLOB v účtu GPv2 nebo BLOB Storage
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V Azure Portal vyhledejte a vyberte **všechny prostředky**.
 
@@ -235,7 +235,7 @@ Cenová struktura se u účtů GPv1 a GPv2 liší a zákazníci by před volbou 
 
 **Můžu ve stejném účtu ukládat objekty ve všech třech (horká, studená a archivní) úrovních?**
 
-Yes. Atribut **úroveň přístupu** nastavený na úrovni účtu představuje výchozí úroveň účtu, která se vztahuje na všechny objekty v daném účtu bez explicitní nastavené úrovně. Vrstvení na úrovni objektů BLOB umožňuje nastavit úroveň přístupu na úrovni objektu bez ohledu na to, jaká je nastavení vrstvy přístupu na účtu. V rámci stejného účtu můžou existovat objekty BLOB v některé ze tří úrovní přístupu (horká, studená nebo archivní).
+Ano. Atribut **úroveň přístupu** nastavený na úrovni účtu představuje výchozí úroveň účtu, která se vztahuje na všechny objekty v daném účtu bez explicitní nastavené úrovně. Vrstvení na úrovni objektů BLOB umožňuje nastavit úroveň přístupu na úrovni objektu bez ohledu na to, jaká je nastavení vrstvy přístupu na účtu. V rámci stejného účtu můžou existovat objekty BLOB v některé ze tří úrovní přístupu (horká, studená nebo archivní).
 
 **Můžu změnit výchozí úroveň přístupu účtu úložiště BLOB nebo GPv2?**
 
@@ -248,6 +248,10 @@ No. Jako výchozí úroveň přístupu se dá nastavit jenom horká a studená �
 **Ve kterých oblastech jsou horké, studené a archivní úrovně přístupu dostupné v?**
 
 Horká a studená úroveň přístupu spolu s ovládáním datových vrstev na úrovni objektů BLOB jsou dostupná ve všech oblastech. Úložiště archivu bude zpočátku dostupné pouze ve vybraných oblastech. Úplný seznam najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).
+
+**Jaké možnosti redundance jsou podporovány pro horké, studené a archivní úrovně přístupu?**
+
+Horká a studená vrstva podporují všechny možnosti redundance. Úroveň archivu podporuje jenom LRS, GRS a RA-GRS. ZRS, GZRS a RA-GZRS nejsou podporovány pro archivní vrstvu.
 
 **Chovají se objekty blob ve studené úrovni přístupu jinak než ty, které jsou v úrovni Hot Accessu?**
 

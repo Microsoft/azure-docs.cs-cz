@@ -1,27 +1,29 @@
 ---
-title: Kontejnery Docker – LUIS
+title: Instalace a spuštění kontejnerů Docker pro LUIS
 titleSuffix: Azure Cognitive Services
-description: Kontejner LUIS načte vaši vyškolenou nebo publikovanou aplikaci do kontejneru Docker a poskytne přístup k dotazu předpovědi z koncových bodů rozhraní API kontejneru.
+description: Pomocí kontejneru LUIS můžete načítat vyškolené nebo publikované aplikace a získat přístup k jejímu předpovědiu v místním prostředí.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: bec96f45de69ab2698f3f0cf26f08222e4595ea5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: místní, Docker, kontejner
+ms.openlocfilehash: c65a81d9daed85b5bf056d24949e36ec227c19c6
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889510"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460981"
 ---
-# <a name="install-and-run-luis-docker-containers"></a>Instalace a spuštění kontejnerů Docker LUIS
+# <a name="install-and-run-docker-containers-for-luis"></a>Instalace a spuštění kontejnerů Docker pro LUIS
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
+Kontejnery umožňují používat LUIS ve vlastním prostředí. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejner LUIS.
 
 Kontejner Language Understanding (LUIS) načte váš vyškolený nebo publikovaný Language Understanding model. Kontejner Docker jako [aplikace Luis](https://www.luis.ai)poskytuje přístup k dotazu předpovědi z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrajte je zpátky do aplikace Language Understanding, aby se zlepšila přesnost předpovědi aplikace.
 
@@ -29,7 +31,7 @@ Následující video znázorňuje použití tohoto kontejneru.
 
 [![Ukázka kontejneru pro Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -375,7 +377,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postup pro stažení, instalaci a spuštění kontejnerů Language Understanding (LUIS). Souhrn:
 

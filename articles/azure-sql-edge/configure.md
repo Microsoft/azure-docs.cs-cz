@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: b2c52457972d94b2e999c137d19d3a434ff17a7d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6284e85d8c4e9ad9f9896081f04c6b7669b8e1c0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888399"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446952"
 ---
 # <a name="configure-azure-sql-edge"></a>Konfigurace Edge Azure SQL
 
@@ -32,8 +32,9 @@ Azure SQL Edge zpřístupňuje několik různých proměnných prostředí, kter
 
 Následující nové proměnné prostředí se přidaly do Azure SQL Edge. 
 
-| Proměnná prostředí | Description | Hodnoty |     
-|-----|-----| ---------- |   
+| Proměnná prostředí | Popis | Hodnoty |     
+|-----|-----| ---------- | 
+| **PlanId** | Určuje skladovou jednotku Azure SQL Edge, která se má použít při inicializaci. Tato proměnná prostředí se vyžaduje jenom v případě, že nasazujete Azure SQL Edge pomocí Azure IoT Edge. | **asde – Developer-on-IoT-Edge** nebo **asde-Premium-on-IoT-Edge** | 
 | **MSSQL_TELEMETRY_ENABLED** | Povolí nebo zakáže shromažďování dat o využití a diagnostice. | TRUE nebo FALSE |  
 | **MSSQL_TELEMETRY_DIR** | Nastaví cílový adresář pro soubory auditu shromažďování dat využití a diagnostiky. | Umístění složky v kontejneru SQL Edge. Tuto složku lze namapovat na svazek hostitele pomocí přípojných bodů nebo datových svazků. | 
 | **MSSQL_PACKAGE** | Určuje umístění balíčku DACPAC nebo BacPac, který má být nasazen. | Složka, soubor nebo adresa URL SAS obsahující balíčky DACPAC nebo BacPac Další informace najdete v tématu [nasazení balíčků SQL Database DACPAC a BacPac v SQL Edge](deploy-dacpac.md). |
@@ -41,7 +42,7 @@ Následující nové proměnné prostředí se přidaly do Azure SQL Edge.
 
 Následující proměnná prostředí SQL Server on Linux pro Azure SQL Edge podporována. Pokud je tato proměnná prostředí definována, bude při inicializaci kontejneru ignorována.
 
-| Proměnná prostředí | Description |
+| Proměnná prostředí | Popis |
 |-----|-----|
 | **MSSQL_ENABLE_HADR** | Povolte skupinu dostupnosti. Například hodnota **1** je povolena a **hodnota 0** je zakázána. |
 

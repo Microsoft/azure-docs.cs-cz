@@ -6,13 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
+ms.custom: contperfq1
 ms.date: 06/21/2019
-ms.openlocfilehash: de8b69cbe3117a3ec248cee4808b676b39c56658
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 271cae3504601ffa42c077029541cef8c7726053
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324790"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461032"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Nastavení upozornění pro Azure Stream Analytics úlohy
 
@@ -57,12 +58,12 @@ Následující příklad ukazuje, jak nastavit upozornění, když vaše úloha 
 
 Následující výstrahy jsou doporučeny pro sledování výkonu Stream Analytics úlohy. Tyto metriky by se měly vyhodnocovat každou minutu za poslední období 5 minut.
 
-|Metrika|Podmínka|Časová agregace|Prahová hodnota|Nápravné akce|
+|Metrika|Stav|Časová agregace|Prahová hodnota|Nápravné akce|
 |-|-|-|-|-|
-|Využití SU%|Větší než|Maximum|80|Existuje několik faktorů, které zvyšují využití SU%. Můžete škálovat pomocí paralelního zpracování dotazů nebo zvýšit počet jednotek streamování. Další informace najdete v tématu [Využití paralelizace dotazů v Azure Stream Analytics](stream-analytics-parallelization.md).|
-|Běhové chyby|Větší než|Celkem|0|Projděte si protokoly aktivit nebo prostředků a proveďte příslušné změny ve vstupech, dotazech nebo výstupech.|
-|Zpoždění vodoznaku|Větší než|Maximum|V případě, že průměrná hodnota této metriky za posledních 15 minut je větší než pozdě tolerance doručení (v sekundách). Pokud jste nezměnili toleranci pozdního doručení, je výchozí hodnota nastavená na 5 sekund.|Zkuste zvýšit počet služby SUs nebo virtuálního dotazu. Další informace o službě SUs najdete v tématu [pochopení a úprava jednotek streamování](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). Další informace o virtuálního dotazu naleznete v tématu [využití paralelismu dotazů v Azure Stream Analytics](stream-analytics-parallelization.md).|
-|Chyby při deserializaci vstupu|Větší než|Celkem|0|Zkontrolujte aktivity nebo protokoly prostředků a proveďte příslušné změny ve vstupu. Další informace o protokolech prostředků najdete v tématu [řešení potíží s Azure Stream Analytics pomocí protokolů prostředků](stream-analytics-job-diagnostic-logs.md) .|
+|Využití SU%|Je větší než|Maximum|80|Existuje několik faktorů, které zvyšují využití SU%. Můžete škálovat pomocí paralelního zpracování dotazů nebo zvýšit počet jednotek streamování. Další informace najdete v tématu [Využití paralelizace dotazů v Azure Stream Analytics](stream-analytics-parallelization.md).|
+|Běhové chyby|Je větší než|Celkem|0|Projděte si protokoly aktivit nebo prostředků a proveďte příslušné změny ve vstupech, dotazech nebo výstupech.|
+|Zpoždění vodoznaku|Je větší než|Maximum|V případě, že průměrná hodnota této metriky za posledních 15 minut je větší než pozdě tolerance doručení (v sekundách). Pokud jste nezměnili toleranci pozdního doručení, je výchozí hodnota nastavená na 5 sekund.|Zkuste zvýšit počet služby SUs nebo virtuálního dotazu. Další informace o službě SUs najdete v tématu [pochopení a úprava jednotek streamování](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). Další informace o virtuálního dotazu naleznete v tématu [využití paralelismu dotazů v Azure Stream Analytics](stream-analytics-parallelization.md).|
+|Chyby při deserializaci vstupu|Je větší než|Celkem|0|Zkontrolujte aktivity nebo protokoly prostředků a proveďte příslušné změny ve vstupu. Další informace o protokolech prostředků najdete v tématu [řešení potíží s Azure Stream Analytics pomocí protokolů prostředků](stream-analytics-job-diagnostic-logs.md) .|
 
 ## <a name="next-steps"></a>Další kroky
 

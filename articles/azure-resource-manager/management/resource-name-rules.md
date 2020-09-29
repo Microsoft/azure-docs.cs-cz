@@ -3,12 +3,12 @@ title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 0ee19140d3105e101c44ce70d77ccc9427600aa0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a4c3bf58bf5e84051b1e21863d2d581af5fa9f23
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317085"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447523"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -39,8 +39,8 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | service | global | 1-50 | Alfanumerické znaky a spojovníky.<br><br>Začíná písmenem a končí alfanumerickým znakem. |
 > | služba/rozhraní API | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | služba/rozhraní API/problémy | api | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | služba/rozhraní API/problémy/přílohy | chybu | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | služba/rozhraní API/problémy/komentáře | chybu | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | služba/rozhraní API/problémy/přílohy | issue | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | služba/rozhraní API/problémy/komentáře | issue | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | služba/rozhraní API/operace | api | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | služba/rozhraní API/operace/značky | operation | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | služba/rozhraní API/verze | api | 1–80 | Alfanumerické znaky, podtržítka a spojovníky.<br><br>Zahajte a končí alfanumerickým znakem nebo podtržítkem. |
@@ -107,7 +107,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | batchAccounts | Region | 3–24 | Malá písmena a číslice. |
+> | batchAccounts | Region (Oblast) | 3–24 | Malá písmena a číslice. |
 > | batchAccounts/aplikace | účet Batch | 1-64 | Alfanumerické znaky, podtržítka a spojovníky. |
 > | batchAccounts/certifikáty | účet Batch | 5-45 | Alfanumerické znaky, podtržítka a spojovníky. |
 > | batchAccounts/fondy | účet Batch | 1-64 | Alfanumerické znaky, podtržítka a spojovníky. |
@@ -392,7 +392,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | actionGroups | skupina prostředků | 1-260 | Nejde použít:<br>`/` <br><br>Nemůže končit mezerou nebo tečkou.  |
+> | actionGroups | skupina prostředků | 1-260 | Nejde použít:<br>`/&%\?` <br><br>Nemůže končit mezerou nebo tečkou.  |
 > | konstrukční | skupina prostředků | 1-260 | Nejde použít:<br>`%&\?/` <br><br>Nemůže končit mezerou nebo tečkou.  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft. IoTCentral

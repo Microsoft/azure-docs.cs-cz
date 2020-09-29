@@ -1,24 +1,25 @@
 ---
-title: Jak nainstalovat a spustit kontejnery – Počítačové zpracování obrazu
+title: Instalace a spuštění kontejnerů Docker pro rozhraní Počítačové zpracování obrazu Read API
 titleSuffix: Azure Cognitive Services
-description: Postup stažení, instalace a spuštění kontejnerů pro Počítačové zpracování obrazu v tomto výukovém kurzu.
+description: Pomocí kontejneru Docker pro rozhraní Počítačové zpracování obrazu Read API můžete detekovat a extrahovat text z imagí místně.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.custom: seodec18
-ms.openlocfilehash: 2c21c872649e3b171f2658ef6bdb0476552f0e59
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.custom: seodec18, cog-serv-seo-aug-2020
+keywords: místní, Docker, kontejner
+ms.openlocfilehash: 17aa0050ed3e2a2f5a2cc83964d032caa4b8c098
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397181"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460437"
 ---
-# <a name="install-and-run-read-containers-preview"></a>Instalace a spuštění kontejnerů pro čtení (Preview)
+# <a name="install-and-run-docker-containers-for-the-read-api-preview"></a>Instalace a spuštění kontejnerů Docker pro rozhraní API pro čtení (Preview) 
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 
@@ -495,7 +496,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů Počítačové zpracování obrazu. Souhrn:
 

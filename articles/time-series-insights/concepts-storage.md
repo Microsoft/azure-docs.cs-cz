@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: d8e3c7258a70902fe362ee73c2f366146484ce54
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b186c2d2c4b5efc8e1e052a63505549e860b5619
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287527"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460824"
 ---
 # <a name="data-storage"></a>Úložiště dat
 
@@ -26,15 +26,14 @@ Tento článek popisuje úložiště dat v Azure Time Series Insights Gen2. Zab�
 Když vytvoříte prostředí Azure Time Series Insights Gen2, máte následující možnosti:
 
 * Úložiště studených dat:
-   * Vytvořte nový prostředek Azure Storage v předplatném a oblasti, kterou jste si zvolili pro vaše prostředí.
-   * Připojte již existující účet Azure Storage. Tato možnost je k dispozici pouze při nasazení ze [šablony](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)Azure Resource Manager a není viditelná v Azure Portal.
+  * Vytvořte nový prostředek Azure Storage v předplatném a oblasti, kterou jste si zvolili pro vaše prostředí.
+  * Připojte již existující účet Azure Storage. Tato možnost je k dispozici pouze při nasazení ze [šablony](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)Azure Resource Manager a není viditelná v Azure Portal.
 * Úložiště dat s teplou:
-   * Záložní úložiště je volitelné a může být povoleno nebo zakázáno během zřizování nebo po jeho spuštění. Pokud se rozhodnete povolit teplé úložiště později a data v chladírenských skladech jsou již k dispozici, [Přečtěte si následující část](concepts-storage.md#warm-store-behavior) , abyste pochopili očekávané chování. Doba uchovávání dat v úložišti teplého úložiště se dá nakonfigurovat na 7 až 31 dnů a můžete ji také upravit podle potřeby.
+  * Záložní úložiště je volitelné a může být povoleno nebo zakázáno během zřizování nebo po jeho spuštění. Pokud se rozhodnete povolit teplé úložiště později a data v chladírenských skladech jsou již k dispozici, [Přečtěte si následující část](concepts-storage.md#warm-store-behavior) , abyste pochopili očekávané chování. Doba uchovávání dat v úložišti teplého úložiště se dá nakonfigurovat na 7 až 31 dnů a můžete ji také upravit podle potřeby.
 
 Při příjmu události je tato událost indexována v teplém úložišti (Pokud je povoleno) a v chladírenském úložišti.
 
 [![Přehled služby Storage](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
-
 
 > [!WARNING]
 > Jako vlastník účtu služby Azure Blob Storage, ve kterém jsou uložená data, máte plný přístup ke všem datům v účtu. Tento přístup zahrnuje oprávnění k zápisu a odstraňování. Neupravujte ani neodstraňujte data, která Azure Time Series Insights Gen2 zápisy, protože to může způsobit ztrátu dat.
@@ -50,11 +49,11 @@ Azure Time Series Insights Gen2 oddíly a data indexů pro optimální výkon do
 
 Data v teplém úložišti jsou k dispozici pouze prostřednictvím [rozhraní API pro dotazování časové řady](./time-series-insights-update-tsq.md), nástroje [Azure Time Series Insights Explorer](./time-series-insights-update-explorer.md)nebo [konektoru Power BI](./how-to-connect-power-bi.md). Dotazy na záložní úložiště jsou bezplatné a není k dispozici žádná kvóta, ale [limit 30](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits) souběžných požadavků.
 
-### <a name="warm-store-behavior"></a>Chování teplého úložiště 
+### <a name="warm-store-behavior"></a>Chování teplého úložiště
 
 * Pokud je tato možnost povolená, všechna data zasílaná do vašeho prostředí se budou směrovat do vašeho úložiště s teplem bez ohledu na časové razítko události. Mějte na paměti, že kanál pro příjem dat do streamování je sestavený pro streamování téměř v reálném čase a historické události se [nepodporují](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion).
 * Doba uchování se vypočítá na základě toho, kdy byla událost indexována v teplém úložišti, nikoli v časovém razítku události. To znamená, že data již nejsou v teplém úložišti k dispozici po uplynutí doby uchování, a to i v případě, že je časové razítko události pro budoucnost.
-  - Příklad: událost s 10 hodinami předpověď počasí je ingestovaná a indexovaná v kontejneru teplého úložiště nakonfigurovaném s dobou uchování 7 dnů. Po 7 dnech je předpověď už v záložním úložišti přístupná, ale dá se k ní dotazovat z studeného provozu. 
+  * Příklad: událost s 10 hodinami předpověď počasí je ingestovaná a indexovaná v kontejneru teplého úložiště nakonfigurovaném s dobou uchování 7 dní. Po 7 dnech je předpověď už v záložním úložišti přístupná, ale dá se k ní dotazovat z studeného provozu.
 * Pokud zapnete úložiště na stávajícím prostředí, které už má v studeném úložišti poslední data, je potřeba si uvědomit, že vaše teplé úložiště nebude s těmito daty zase vyplněné.
 * Pokud jste právě povolili služby teplého úložiště a dochází k problémům s prohlížením vašich nejnovějších dat v Průzkumníkovi, můžete dočasně přepnout dotazy služby tepl Store mimo:
 

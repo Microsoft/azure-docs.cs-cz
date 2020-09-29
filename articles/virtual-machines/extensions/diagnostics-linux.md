@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 2ce2b7dab3e9eb4c9635ce4abc2933fd954844d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325999"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448197"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití diagnostického rozšíření Linuxu k monitorování metrik a protokolů
 
@@ -202,7 +202,7 @@ Tato sada informací o konfiguraci obsahuje citlivé informace, které by měly 
 }
 ```
 
-Name | Hodnota
+Název | Hodnota
 ---- | -----
 storageAccountName | Název účtu úložiště, ve kterém se má rozšíření zapsat data
 storageAccountEndPoint | volitelné Koncový bod identifikující Cloud, ve kterém existuje účet úložiště. Pokud toto nastavení chybí, LAD se výchozí nastavení pro veřejný cloud Azure, `https://core.windows.net` . Pokud chcete použít účet úložiště v Azure Německo, Azure Government nebo Azure Čína, nastavte tuto hodnotu odpovídajícím způsobem.
@@ -219,7 +219,7 @@ Požadovaný token SAS můžete snadno vytvořit prostřednictvím Azure Portal.
 1. Proveďte příslušné oddíly, jak je popsáno výše.
 1. Klikněte na tlačítko generovat SAS.
 
-![image](./media/diagnostics-linux/make_sas.png)
+![Snímek obrazovky se stránkou sdíleného přístupového podpisu s generovat S A S.](./media/diagnostics-linux/make_sas.png)
 
 Zkopírujte vygenerované SAS do pole storageAccountSasToken; Odeberte úvodní otazník (?).
 
@@ -242,7 +242,7 @@ Tento volitelný oddíl definuje další cíle, do kterých rozšíření odesí
 
 Prvek | Hodnota
 ------- | -----
-jméno | Řetězec, který se používá k odkazování na tuto jímku na jiné místo v konfiguraci rozšíření.
+name | Řetězec, který se používá k odkazování na tuto jímku na jiné místo v konfiguraci rozšíření.
 typ | Typ definované jímky. Určuje další hodnoty (pokud existují) v instancích tohoto typu.
 
 Diagnostické rozšíření pro Linux verze 3,0 podporuje dva typy jímky: EventHub a JsonBlob.
@@ -777,7 +777,7 @@ V každém případě se data nahrají taky do:
 
 Pomocí Azure Portal zobrazte data výkonu nebo nastavte výstrahy:
 
-![image](./media/diagnostics-linux/graph_metrics.png)
+![Snímek obrazovky zobrazuje Azure Portal s využitým místem na disku u vybrané metriky a výsledným grafem.](./media/diagnostics-linux/graph_metrics.png)
 
 `performanceCounters`Data jsou vždy uložena v Azure Storage tabulce. Rozhraní API pro Azure Storage jsou k dispozici pro mnoho jazyků a platforem.
 
@@ -786,7 +786,7 @@ Data odesílaná do jímky JsonBlob se ukládají v objektech blob v účtu úlo
 Kromě toho můžete použít tyto nástroje uživatelského rozhraní pro přístup k datům v Azure Storage:
 
 * Průzkumník serveru sady Visual Studio.
-* [Průzkumník služby Microsoft Azure Storage](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
+* [Snímek obrazovky ukazuje kontejnery a tabulky v Průzkumník služby Azure Storage.](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
 
 Tento snímek relace Průzkumník služby Microsoft Azure Storage zobrazuje vygenerované Azure Storage tabulky a kontejnery ze správně nakonfigurovaného rozšíření LAD 3,0 na testovacím virtuálním počítači. Obrázek se přesně neshoduje s [ukázkovou konfigurací LAD 3,0](#an-example-lad-30-configuration).
 

@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 08/26/2020
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 2177b37fe5723be64896fd5ee4e90c0137dc9be0
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 1721c2a9ede949bb6183c60e65f540869bb95e43
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370500"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446145"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>Partneři připojení ExpressRoute a umístění partnerského vztahu
 
@@ -86,10 +86,10 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | Podporováno | Podporováno | Tokio |
 | **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |Podporováno |Podporováno |Kapské město, Johannesburg|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Podporováno |Podporováno |Montreal, Toronto, Quebec City |
-| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Podporováno |Podporováno |Amsterdam, Amsterdam2, Hongkong – zvláštní správní oblast, Johannesburg, Londýn, Newport (Wales), Svatý Paulo, Silicon sedl, Singapur, Sydney, Tokio, Washington DC |
+| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Podporováno |Podporováno |Amsterdam, Amsterdam2, Hongkong – zvláštní správní oblast, Johannesburg, Londýn, Newport (Wales), Paříž, Svatý Paulo, Silicon sedl, Singapur, Sydney, Tokio, Washington DC |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |Podporováno |Podporováno |Miami |
 | **CDC** | Podporováno | Podporováno | Canberra, Canberra2 |
-| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Podporováno |Podporováno |Amsterdam2, Chicago, Frankfurt, Hongkong, Las Vegas, London2, New York, Paříž, San Antonio, Silicon sedl, Tokio, Toronto, Washington DC, Washington DC2 |
+| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Podporováno |Podporováno |Amsterdam2, Chicago, Dublin, Frankfurt, Hongkong, Las Vegas, London2, New York, Paříž, San Antonio, Silicon sedl, Tokio, Toronto, Washington DC, Washington DC2 |
 | **[Hlavní telekomunikační systémy](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |Podporováno |Podporováno |Hongkong, Taipei |
 | **Čína – mobilní mezinárodní** |Podporováno |Podporováno | Hongkong, Hongkong Kong2, Singapur |
 | **China Telecom Global** |Podporováno |Podporováno |Hongkong, Hongkong Kong2 |
@@ -161,7 +161,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Telia dopravce](https://www.teliacarrier.com/)** | Podporováno | Podporováno |Amsterdam, Chicago, Praha, Frankfurt, Hongkong, Londýn, Oslo, Paříž, Silicon sedl, Stockholm, Washington DC |
 | **Telmex Uninet**| Podporováno | Podporováno | Dallas |
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Podporováno |Podporováno |Melbourne, Singapur, Sydney |
-| **[Telus](https://www.telus.com)** |Podporováno |Podporováno |Montreal, Seattle, Toronto |
+| **[Telus](https://www.telus.com)** |Podporováno |Podporováno |Montreal, Seattle, Toronto, Vancouver |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Podporováno |Podporováno |Kapské město, Johannesburg |
 | **[ČASOVÉ dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | Podporováno | Podporováno | Kuala Lumpur |
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |Podporováno |Podporováno |Praha, Queretaro (Mexiko)|

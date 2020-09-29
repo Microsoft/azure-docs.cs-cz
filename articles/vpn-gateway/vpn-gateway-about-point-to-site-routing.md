@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: a3603c7a4b704327f829588f0fc5827d97288be0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1e88afd91c0e0b344cc0eb8d82b637a88d5a1656
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440809"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447965"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Směrování VPN typu Point-to-Site
 
 Tento článek vám pomůže pochopit, jak se chová směrování typu Point-to-Site VPN. Chování směrování sítě VPN P2S závisí na operačním systému klienta, protokolu používaném pro připojení VPN a způsobu vzájemného propojení virtuálních sítí (virtuální sítě).
 
-Azure v současné době podporuje dva protokoly pro vzdálený přístup, IKEv2 a SSTP. IKEv2 se podporuje v mnoha klientských operačních systémech, mezi které patří Windows, Linux, MacOS, Android a iOS. SSTP se podporuje jenom v systému Windows. Pokud provedete změnu topologie sítě a máte klienty VPN se systémem Windows, musí se balíček klienta VPN pro klienty se systémem Windows stáhnout a nainstalovat znovu, aby se změny projevily u klienta.
+Azure v současné době podporuje dva protokoly pro vzdálený přístup, IKEv2 a SSTP. IKEv2 se podporuje v mnoha klientských operačních systémech, mezi které patří Windows, Linux, macOS, Android a iOS. SSTP se podporuje jenom v systému Windows. Pokud provedete změnu topologie sítě a máte klienty VPN se systémem Windows, musí se balíček klienta VPN pro klienty se systémem Windows stáhnout a nainstalovat znovu, aby se změny projevily u klienta.
 
 > [!NOTE]
 > Tento článek se týká pouze IKEv2.
@@ -195,7 +195,7 @@ V tomto příkladu je připojení brány VPN typu Point-to-site pro VNet1. VNet1
 
 Všichni klienti mají přístup jenom k VNet1.
 
-![připojení S2S a pobočky s více virtuálními sítěmi](./media/vpn-gateway-about-point-to-site-routing/7.jpg "připojení S2S a pobočky s více virtuálními sítěmi")
+![Diagram, který zobrazuje S2S a pobočku s více virtuálními sítěmi.](./media/vpn-gateway-about-point-to-site-routing/7.jpg "připojení S2S a pobočky s více virtuálními sítěmi")
 
 ### <a name="address-space"></a>Adresní prostor
 

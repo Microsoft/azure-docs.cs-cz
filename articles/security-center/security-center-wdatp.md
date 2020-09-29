@@ -7,17 +7,17 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: 28242341ddd21adea33e56c3e1f35f0677e5921a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 66a04ebec6eb9d7219d4d5db3bdd1dfd780a730f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907364"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446000"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky v programu Microsoft Defender pomocí Azure Security Center
 
@@ -30,9 +30,9 @@ Azure Security Center se integruje s [pokročilou ochranou před internetovými 
 |----|:----|
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|Vyžaduje [Azure Defender](security-center-pricing.md) .|
-|Podporované počítače:|![Yes](./media/icons/yes-icon.png) Počítače Azure s Windows<br>![Yes](./media/icons/yes-icon.png) Počítače ARC Azure s Windows|
+|Podporované počítače:|![Ano](./media/icons/yes-icon.png) Počítače Azure s Windows<br>![Ano](./media/icons/yes-icon.png) Počítače ARC Azure s Windows|
 |Požadované role a oprávnění:|Povolení nebo zakázání integrace: **Správce zabezpečení** nebo **vlastník**<br>Zobrazení upozornění MDATP v Security Center: **čtecí modul zabezpečení**, **Čtenář**, **Přispěvatel skupiny prostředků**, **vlastník skupiny prostředků**, **Správce zabezpečení**, **vlastník předplatného**nebo **přispěvatele předplatného**|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy.<br>![No](./media/icons/no-icon.png) Zákazníci v RSZ, kteří mají spuštěné úlohy ve veřejných cloudech Azure<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy.<br>![Ne](./media/icons/no-icon.png) Zákazníci v RSZ, kteří mají spuštěné úlohy ve veřejných cloudech Azure<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 

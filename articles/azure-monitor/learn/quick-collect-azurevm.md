@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 91a4e2f6a770282e9d031c31fdf1af15f0cd00bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb7a32199117be76e411155910d558ef187398ab
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067554"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448249"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Shromažďování dat z virtuálního počítače Azure pomocí Azure Monitor
 
@@ -28,7 +28,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 1. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 
-    ![Portál Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
+    ![portál Azure](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Vyberte **vytvořit**a pak vyberte volby pro následující položky:
 
@@ -87,7 +87,7 @@ Azure Monitor může shromažďovat události z protokolů událostí systému W
 
 7. Při první konfiguraci čítačů výkonu Windows pro nový pracovní prostor služby Log Analytics máte možnost rychle vytvořit několik běžných čítačů. Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.
 
-    ![Vybrané výchozí čítače výkonu Windows](media/quick-collect-azurevm/windows-perfcounters-default.png)
+    ![Snímek obrazovky s podoknem čítače výkonu systému Windows se seznamem vybraných čítačů a vybraným tlačítkem Přidat vybrané čítače výkonu](media/quick-collect-azurevm/windows-perfcounters-default.png)
 
     Vyberte **Přidat vybrané čítače výkonu**.  Čítače se přidají a přednastaví s použitím ukázkového desetisekundového intervalu shromažďování.
   
@@ -107,7 +107,7 @@ Azure Monitor může shromažďovat události z protokolů událostí systému W
 
 6. Při první konfiguraci linuxových čítačů výkonu pro nový pracovní prostor služby Log Analytics máte možnost rychle vytvořit několik běžných čítačů. Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.
 
-    ![Vybrané výchozí čítače výkonu Windows](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
+    ![Snímek obrazovky s podoknem čítače výkonu pro Linux se seznamem vybraných čítačů a vybraným tlačítkem Přidat vybrané čítače výkonu](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     Vyberte **použít níže konfiguraci na moje počítače** a pak vyberte **Přidat vybrané čítače výkonu**.  Čítače se přidají a přednastaví s použitím ukázkového desetisekundového intervalu shromažďování.  
 

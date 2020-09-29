@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: bf22e20a6c6187677f000e0c50ac64582233c3cd
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 005bfd4b7e7d062640a79896ccd3d7f76e3d6fb3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019661"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447200"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Konfigurace plánu oprav operačního systému pro clustery HDInsight se systémem Linux
 
 > [!IMPORTANT]
-> Image Ubuntu budou k dispozici pro nové vytvoření clusteru Azure HDInsight do tří měsíců od jejich publikování. Od ledna 2019 nejsou spuštěné clustery automaticky opraveny. Pokud chtějí zákazníci opravit běžící cluster, musí použít akce skriptu nebo jiné mechanismy. Nově vytvořené clustery budou mít vždycky nejnovější dostupné aktualizace, včetně nejnovějších oprav zabezpečení.
+> Image Ubuntu budou k dispozici pro nové vytvoření clusteru Azure HDInsight do tří měsíců od jejich publikování. Spuštěné clustery nejsou automaticky opraveny. Pokud chtějí zákazníci opravit běžící cluster, musí použít akce skriptu nebo jiné mechanismy. Jako osvědčený postup můžete spustit tyto akce skriptu a použít aktualizace zabezpečení hned po vytvoření clusteru.
 
 HDInsight poskytuje podporu pro provádění běžných úloh v clusteru, jako je například instalace oprav operačního systému, aktualizace zabezpečení a restartování uzlů. Tyto úlohy se provádějí pomocí následujících dvou skriptů, které se dají spustit jako [akce skriptu](hdinsight-hadoop-customize-cluster-linux.md), a nakonfigurují se pomocí parametrů:
 
@@ -52,7 +52,7 @@ Plán skriptu [–](https://hdiconfigactions.blob.core.windows.net/linuxospatchi
 
 `schedule-reboots script`Přijímá jeden číselný parametr:
 
-| Parametr | Přípustné hodnoty | Definice |
+| parametr | Přípustné hodnoty | Definice |
 | --- | --- | --- |
 | Typ restartování, který se má provést | 1 nebo 2 | Hodnota 1 povolí restart plánu (naplánováno během 12-24 hodin). Hodnota 2 umožňuje okamžité restartování (5 minut). Pokud není zadán žádný parametr, výchozí hodnota je 1. |  
 
@@ -62,7 +62,7 @@ Skript [install-Updates-Schedule-Reboots.sh](https://hdiconfigactions.blob.core.
 
 `install-updates-schedule-reboots`Skript přijímá dva číselné parametry, jak je popsáno v následující tabulce:
 
-| Parametr | Přípustné hodnoty | Definice |
+| parametr | Přípustné hodnoty | Definice |
 | --- | --- | --- |
 | Typ aktualizací, které se mají nainstalovat | 0, 1 nebo 2 | Hodnota 0 nainstaluje pouze aktualizace jádra. Hodnota 1 nainstaluje všechny aktualizace a 2 nainstaluje pouze aktualizace jádra a zabezpečení. Pokud není zadán žádný parametr, výchozí hodnota je 0. |
 | Typ restartování, který se má provést | 0, 1 nebo 2 | Hodnota 0 zakáže restart. Hodnota 1 umožňuje naplánovat restart a 2 umožňuje okamžité restartování. Pokud není zadán žádný parametr, výchozí hodnota je 0. Uživatel musí změnit vstupní parametr 1 na vstupní parametr 2. |

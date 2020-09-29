@@ -3,12 +3,12 @@ title: Nastavení zařízení Azure Migrate pro Hyper-V
 description: Naučte se, jak nastavit zařízení Azure Migrate pro vyhodnocení a migraci virtuálních počítačů Hyper-V.
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: c53f82268bd1a5d94659a8b749a14fd026f91ce1
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 8841f934ba21fda6cc36b856ea773ed0f53cfe32
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087146"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448081"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Nastavení zařízení pro virtuální počítače Hyper-V
 
@@ -34,7 +34,7 @@ Nastavení zařízení pomocí šablony VHD:
 
 ### <a name="generate-the-azure-migrate-project-key"></a>Vygenerovat klíč projektu Azure Migrate
 
-1. V **Azure Migrate cíle migrace**  >  **Servers**  >  **Azure Migrate: Server Assessment**vyberte **Vyhledat**.
+1. V části **Cíle migrace** > **Servery** > **Azure Migrate: Hodnocení serverů** vyberte **Zjistit**.
 2. V rozevíracích **seznamech počítačů**  >  , ve**kterých jsou počítače virtualizované?** vyberte **Ano, s technologií Hyper-V**.
 3. V **1: vygenerujte Azure Migrate klíč projektu**, zadejte název pro Azure Migrate zařízení, které nastavíte pro zjišťování virtuálních počítačů Hyper-V. název by měl být alfanumerický a nesmí obsahovat víc než 14 znaků.
 1. Kliknutím na **vygenerovat klíč** spustíte vytváření požadovaných prostředků Azure. Během vytváření prostředků prosím Nezavírejte stránku zjišťovacích počítačů.
@@ -58,7 +58,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 1. Na počítači, do kterého jste soubor stáhli, otevřete jako správce příkazový řádek.
 2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro virtuální pevný disk.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
+    - Příklady použití: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
 
 
@@ -130,7 +130,7 @@ Pokud používáte na SMB virtuální pevné disky, musíte povolit delegování
 1. Na virtuálním počítači zařízení spusťte tento příkaz. HyperVHost1/HyperVHost2 jsou příklady názvů hostitelů.
 
     ```
-    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
     ```
 
 2. Případně to udělejte v Editor místních zásad skupiny na zařízení:
@@ -169,7 +169,7 @@ Spustí se zjišťování. Zabere přibližně 2 minuty na hostitele, aby se met
 
 Po dokončení zjišťování můžete ověřit, že se virtuální počítače zobrazují na portálu.
 
-1. Otevřete řídicí panel Azure Migrate.
+1. Otevřete řídicí panel služby Azure Migrate.
 2. V **Azure Migrate-servery**  >  **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
 
 

@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 7f04483415253145cd485ccf870160e83a6e0e4b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f4e5880a39d6ad299fd6e7f29bd0e3aefadc3bcd
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319112"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446898"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Posílání zpráv z cloudu na zařízení pomocí IoT Hub (Java)
 
@@ -88,14 +88,25 @@ V této části upravíte aplikaci simulovaného zařízení, kterou jste vytvo�
     client.open();
     ```
 
-    > [!NOTE]
-    > Pokud jako přenos použijete HTTPS místo MQTT nebo AMQP, zkontroluje instance **DeviceClient** zprávy z IoT Hub zřídka (méně než každých 25 minut). Další informace o rozdílech mezi MQTT, AMQP a podporou protokolu HTTPS a omezením IoT Hub naleznete v [části zasílání zpráv v příručce pro vývojáře IoT Hub](iot-hub-devguide-messaging.md).
-
 4. Aplikaci **simulated-device** pomocí nástroje Maven sestavíte tak, že v příkazovém řádku ve složce simulated-device spustíte následující příkaz:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
+
+`execute`Metoda ve `AppMessageCallback` třídě vrátí `IotHubMessageResult.COMPLETE` . Tím se upozorní IoT Hub, že zpráva byla úspěšně zpracována a že zprávu lze bezpečně odebrat z fronty zařízení. Zařízení by mělo tuto hodnotu vrátit, když se její zpracování úspěšně dokončí bez ohledu na to, který protokol používá.
+
+V případě AMQP a HTTPS, ale ne MQTT, může zařízení také:
+
+* Opuštění zprávy, která má za následek IoT Hub uchování zprávy ve frontě zařízení pro budoucí spotřebu.
+* Odmítněte zprávu, která trvale odstraní zprávu z fronty zařízení.
+
+Pokud dojde k nějakému problému, který zabrání zařízení v dokončení, zrušení nebo odmítnutí zprávy, IoT Hub po pevném časovém limitu zařadí do fronty zprávu pro doručení znovu. Z tohoto důvodu musí být logika zpracování zpráv v aplikaci zařízení *idempotentní*, aby se stejná zpráva zobrazovala vícekrát, což má stejný výsledek.
+
+Podrobnější informace o tom, jak IoT Hub zpracovává zprávy typu cloud-zařízení, včetně podrobností o životním cyklu zpráv z cloudu na zařízení, najdete v tématu [posílání zpráv z cloudu na zařízení ze služby IoT Hub](iot-hub-devguide-messages-c2d.md).
+
+> [!NOTE]
+> Pokud jako přenos použijete HTTPS místo MQTT nebo AMQP, zkontroluje instance **DeviceClient** zprávy z IoT Hub zřídka (minimálně každých 25 minut). Další informace o rozdílech mezi podporou MQTT, AMQP a HTTPS najdete v tématu [pokyny pro komunikaci z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md) a [Vyberte komunikační protokol](iot-hub-devguide-protocols.md).
 
 ## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
 

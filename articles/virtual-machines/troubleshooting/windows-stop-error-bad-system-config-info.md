@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 071b5786127af31a2ad3266c128dbfb7cacad656
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4f2b338b8629209363acb7bbe0533831a089fe6f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942079"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447327"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Chyba stop systému Windows – 0x00000074 chybné informace o konfiguraci systému
 
@@ -61,10 +61,10 @@ Kód **BAD_SYSTEM_CONFIG_INFO** stop dojde, pokud je podregistr **systémového*
 1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
 1. Vyhledejte poškození podregistru.
 1. Pomocí Připojení ke vzdálené ploše se připojte k opravnému virtuálnímu počítači.
-1. Zkopírujte `\windows\system32\config` složku a uložte ji buď v dobrém oddílu disku, nebo v jiném bezpečném umístění. Zazálohujte tuto složku jako preventivní, protože budete upravovat důležité soubory registru.
+1. Zkopírujte `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` složku a uložte ji buď v dobrém oddílu disku, nebo v jiném bezpečném umístění. Zazálohujte tuto složku jako preventivní, protože budete upravovat důležité soubory registru. 
 
 > [!NOTE]
-> Vytvořte kopii `\windows\system32\config` složky jako zálohu pro případ, že budete potřebovat vrátit zpět všechny změny, které provedete v registru.
+> Vytvořte kopii `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` složky jako zálohu pro případ, že budete potřebovat vrátit zpět všechny změny, které provedete v registru.
 
 ### <a name="check-for-hive-corruption"></a>Kontrolovat poškození podregistru
 
@@ -72,7 +72,7 @@ Následující pokyny vám pomůžou určit, jestli příčina byla způsobená 
 
 1. Na VIRTUÁLNÍm počítači s opravou otevřete aplikaci **Editor registru** . Zadáním příkazu regedit na panelu hledání systému Windows ho vyhledejte.
 1. V editoru registru vyberte **HKEY_LOCAL_MACHINE** pro zvýraznění a pak vyberte **soubor > Načíst podregistr...** z nabídky.
-1. Vyhledejte `\windows\system32\config\SYSTEM` a vyberte **otevřít**.
+1. Vyhledejte `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM` a vyberte **otevřít**.
 1. Po zobrazení výzvy k zadání názvu zadejte **BROKENSYSTEM**.
 
    1. Pokud se podregistr nepovede otevřít, nebo pokud je prázdný, je podregistr poškozený. Pokud je podregistr poškozený, [otevřete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

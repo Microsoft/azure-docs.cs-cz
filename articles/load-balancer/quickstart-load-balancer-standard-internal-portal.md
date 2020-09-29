@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: ddb4a825dda704d818cbc8d3537775743b5b0b45
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: beafff2276d0b6dc525b586fa2d5943675012981
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396718"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446107"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
@@ -64,7 +64,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | Skupina prostředků   | Vybrat **myResourceGroupLB** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Region           | Vyberte **západní Evropa** |
+    | Region (Oblast)           | Vyberte **západní Evropa** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -110,8 +110,8 @@ V této části vytvoříte virtuální síť a podsíť.
     | ---                     | ---                                                |
     | Předplatné               | Vyberte předplatné.    |    
     | Skupina prostředků         | Vyberte **myResourceGroupLB** vytvořené v předchozím kroku.|
-    | Name                   | Zadejte **myLoadBalancer**                                   |
-    | Region         | Vyberte **Západní Evropa**.                                        |
+    | Název                   | Zadejte **myLoadBalancer**                                   |
+    | Region (Oblast)         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
     | SKU           | Vybrat **Standard** |
     | Virtuální síť | Vyberte **myVNet** vytvořené v předchozím kroku. |
@@ -123,7 +123,7 @@ V této části vytvoříte virtuální síť a podsíť.
 
 4. Na kartě **Revize + vytvořit** vyberte **vytvořit**.   
     
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-standard-internal-load-balancer.png" alt-text="Vytvoření standardního interního nástroje pro vyrovnávání zatížení" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-standard-internal-load-balancer.png" alt-text="Vytvořte standardní interní nástroj pro vyrovnávání zatížení." border="true":::
  
 ## <a name="create-load-balancer-resources"></a>Vytvoření prostředků nástroje pro vyrovnávání zatížení
 
@@ -226,7 +226,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Skupina prostředků | Vybrat **myResourceGroupLB** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM1** |
-    | Region | Vyberte **západní Evropa** |
+    | Region (Oblast) | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vybrat **zóny dostupnosti** |
     | Zóna dostupnosti | Vyberte **1** |
     | Image | Vyberte **Windows Server 2019 Datacenter** |
@@ -264,7 +264,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2|
     | ------- | ----- |
-    | Name |  **myVM2** |
+    | Název |  **myVM2** |
     | Zóna dostupnosti | **2** |
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**|
 
@@ -297,7 +297,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | Skupina prostředků   | Vybrat **myResourceGroupLB** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Region           | Vyberte **západní Evropa** |
+    | Region (Oblast)           | Vyberte **západní Evropa** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -343,8 +343,8 @@ V této části vytvoříte virtuální síť a podsíť.
     | ---                     | ---                                                |
     | Předplatné               | Vyberte předplatné.    |    
     | Skupina prostředků         | Vyberte **myResourceGroupLB** vytvořené v předchozím kroku.|
-    | Name                   | Zadejte **myLoadBalancer**                                   |
-    | Region         | Vyberte **Západní Evropa**.                                        |
+    | Název                   | Zadejte **myLoadBalancer**                                   |
+    | Region (Oblast)         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
     | SKU           | Vybrat **základní** |
     | Virtuální síť | Vyberte **myVNet** vytvořené v předchozím kroku. |
@@ -355,7 +355,7 @@ V této části vytvoříte virtuální síť a podsíť.
 
 4. Na kartě **Revize + vytvořit** vyberte **vytvořit**.   
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-basic-internal-load-balancer.png" alt-text="Vytvoření standardního interního nástroje pro vyrovnávání zatížení" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-basic-internal-load-balancer.png" alt-text="Vytvořte standardní interní nástroj pro vyrovnávání zatížení." border="true":::
 
 ## <a name="create-load-balancer-resources"></a>Vytvoření prostředků nástroje pro vyrovnávání zatížení
 
@@ -465,7 +465,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Skupina prostředků | Vybrat **myResourceGroupLB** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM1** |
-    | Region | Vyberte **západní Evropa** |
+    | Region (Oblast) | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vyberte **Skupina dostupnosti**. |
     | Skupina dostupnosti | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název**zadejte **myAvailabilitySet** . </br> Vybrat **OK** |
     | Image | **Windows Server 2019 Datacenter** |
@@ -499,7 +499,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2 |
     | ------- | ----- |
-    | Name |  **myVM2** |
+    | Název |  **myVM2** |
     | Skupina dostupnosti| Vybrat **myAvailabilitySet** |
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**|
 
@@ -537,7 +537,7 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
     | Skupina prostředků | Vybrat **myResourceGroupLB** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myTestVM** |
-    | Region | Vyberte **západní Evropa** |
+    | Region (Oblast) | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury** . |
     | Image | Vyberte **Windows Server 2019 Datacenter** |
     | Instance Azure Spot | Vybrat **ne** |
@@ -614,7 +614,7 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
 
 8. Zadejte IP adresu z předchozího kroku do panelu Adresa v prohlížeči. V prohlížeči se zobrazí výchozí stránka webového serveru služby IIS.
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Vytvoření standardního interního nástroje pro vyrovnávání zatížení" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Vytvořte standardní interní nástroj pro vyrovnávání zatížení." border="true":::
    
 Pokud chcete zobrazit distribuci provozu nástroje pro vyrovnávání zatížení napříč virtuálními počítači, můžete přizpůsobit výchozí stránku webového serveru IIS každého virtuálního počítače a potom vynutit aktualizaci webového prohlížeče z klientského počítače.
 

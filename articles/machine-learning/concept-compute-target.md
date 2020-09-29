@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f75853a66c43c69ec191f28951f8f6ffc4353f93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6b166e46c8ebb640e15c005e2ddae3161e141f10
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330158"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446782"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Jaké jsou výpočetní cíle v Azure Machine Learning? 
 
@@ -90,7 +90,7 @@ Další informace o podporovaných řadách a omezeních najdete v následujíc�
 | FSv2 | Žádné | 
 | HBv2 | Vyžaduje schválení |  
 | KLIENTOVI HCS | Vyžaduje schválení |  
-| M | Vyžaduje schválení |
+| Ú | Vyžaduje schválení |
 | NC | Žádné |    
 | NCsv2 | Vyžaduje schválení |
 | NCsv3 | Vyžaduje schválení |  
@@ -101,6 +101,20 @@ Další informace o podporovaných řadách a omezeních najdete v následujíc�
 
 
 I když Azure Machine Learning podporuje tyto řady virtuálních počítačů, nemusí být k dispozici ve všech oblastech Azure. Řadu virtuálních počítačů, které jsou k dispozici, najdete tady: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
+
+### <a name="compute-isolation"></a>Izolace výpočtů
+
+Azure Machine Learning COMPUTE nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka. Izolované velikosti virtuálních počítačů jsou nejvhodnější pro úlohy, které vyžadují vysokou úroveň izolace od úloh jiných zákazníků z důvodů, které zahrnují dodržování předpisů a zákonné požadavky na schůzku. Využitím izolované velikosti zaručujete, že váš virtuální počítač bude jediným operačním systémem, který běží na konkrétní instanci serveru.
+
+Mezi aktuální nabídky izolovaných virtuálních počítačů patří:
+* Standard_M128ms
+* Standard_F72s_v2
+* Standard_NC24s_v3
+* Standard_NC24rs_v3 *
+
+*Podpora RDMA
+
+Další informace o [izolaci ve veřejném cloudu Azure](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices)najdete tady.
 
 ## <a name="unmanaged-compute"></a>Nespravované výpočetní prostředky
 

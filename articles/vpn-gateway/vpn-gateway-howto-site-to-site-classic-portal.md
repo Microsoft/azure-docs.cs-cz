@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1f096993645aca6999667af88c91d3f55f79d914
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de3ef63600b36e1bcee8a2f5db8a1c1248524173
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983049"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445927"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Vytvoření připojení typu Site-to-Site pomocí webu Azure Portal (Classic)
 
@@ -112,7 +112,7 @@ Místní lokalita obvykle odkazuje na vaše místní umístění. Obsahuje IP ad
    - **IP adresa brány VPN:** Toto je veřejná IP adresa zařízení VPN pro vaši místní síť. Zařízení VPN vyžaduje veřejnou IP adresu IPv4. Zadejte platnou veřejnou IP adresu pro zařízení VPN, ke kterému se chcete připojit. Musí být dosažitelný pomocí Azure. Pokud neznáte IP adresu zařízení VPN, pořád můžete použít zástupnou hodnotu (pokud je ve formátu platné veřejné IP adresy) a změnit ji později.
    - **Klientský adresní prostor:** Vypište rozsahy IP adres, které chcete přes tuto bránu směrovat do místní sítě. Můžete přidat více různých rozsahů adres. Ujistěte se, že se zde zadané rozsahy nepřekrývají s rozsahy jiných sítí, ke kterým se vaše virtuální síť připojuje, nebo s rozsahy adres samotné virtuální sítě.
 
-   ![Místní lokalita](./media/vpn-gateway-howto-site-to-site-classic-portal/localnetworksite.png "Konfigurovat místní lokalitu")
+   ![Snímek obrazovky se systémem Windows "nové připojení k síti VPN a" místní web ".](./media/vpn-gateway-howto-site-to-site-classic-portal/localnetworksite.png)
 
 Kliknutím na tlačítko **OK** zavřete stránku místní lokalita. **Kliknutím na tlačítko OK zavřete stránku nové připojení VPN**.
 

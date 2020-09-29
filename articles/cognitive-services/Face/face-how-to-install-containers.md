@@ -1,29 +1,30 @@
 ---
-title: Instalace a spuštění kontejnerů – Face
+title: Instalace a spuštění kontejnerů Docker pro Face API
 titleSuffix: Azure Cognitive Services
-description: V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejnery pro tvář v tomto výukovém kurzu.
+description: Pomocí kontejneru Docker pro Face API můžete detekovat a identifikovat lidské plošky na obrázcích.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 766af570c959ff2c49256058dfbfffdd1021295f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+keywords: místní, Docker, kontejner, identifikace
+ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548459"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461508"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Instalace a spuštění kontejnerů obličeje (Preview)
 
 > [!IMPORTANT]
 > Došlo k dosažení limitu počtu uživatelů kontejnerů Rozpoznávání tváře. V současné době nepřijímáme nové přihlášky ke kontejnerům Rozpoznávání tváře.
 
-Azure Cognitive Services Face poskytuje standardizovaný kontejner pro Linux pro Docker, který detekuje lidské obličeje na obrázcích. Také identifikuje atributy, které zahrnují orientační orientační prvky, jako jsou například nos a oči, pohlaví, věk a další funkce obličeje v počítači. Kromě detekce může ploška kontrolovat, jestli dvě plošky ve stejné imagi nebo v různých imagích jsou stejné pomocí skóre spolehlivosti. Ploška také může porovnat plošky s databází a zjistit, zda již existuje podobný vzhled nebo identický obličej. Můžete také uspořádat podobné plošky do skupin pomocí sdílených vizuálních vlastností.
+Azure Cognitive Services Face API poskytuje kontejner pro Linux Docker, který detekuje a analyzuje lidské obličeje na obrázcích. Také identifikuje atributy, které zahrnují orientační orientační prvky, jako jsou například nos a oči, pohlaví, věk a další funkce obličeje v počítači. Kromě detekce může ploška kontrolovat, jestli dvě plošky ve stejné imagi nebo v různých imagích jsou stejné pomocí skóre spolehlivosti. Ploška také může porovnat plošky s databází a zjistit, zda již existuje podobný vzhled nebo identický obličej. Můžete také uspořádat podobné plošky do skupin pomocí sdílených vizuálních vlastností.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
@@ -49,7 +50,7 @@ V následující tabulce jsou popsány minimální a doporučené PROCESORy a pa
 
 | Kontejner | Minimum | Doporučeno | Transakcí za sekundu<br>(Minimum, maximum)|
 |-----------|---------|-------------|--|
-|Rozpoznávání tváře | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |10, 20|
+|Tvář | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |10, 20|
 
 * Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
 * Transakcí za sekundu (TPS).
@@ -62,7 +63,7 @@ K dispozici jsou image kontejneru pro službu obličeje.
 
 | Kontejner | Repository |
 |-----------|------------|
-| Rozpoznávání tváře | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
+| Tvář | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -141,7 +142,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů služeb obličeje. Souhrn:
 

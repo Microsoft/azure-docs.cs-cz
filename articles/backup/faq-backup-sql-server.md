@@ -4,12 +4,12 @@ description: Získejte odpovědi na běžné dotazy týkající se zálohování
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 9c6e99b81ce10cfabd4109bb18376b2579edef20
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 6abfdb09fe16272e870fff517359759968417f79
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500330"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461219"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se SQL Server databází, které běží na zálohování virtuálních počítačů Azure
 
@@ -39,7 +39,7 @@ Automatické zaretušování je ve výchozím nastavení povolené pro všechny 
 
 ## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Můžu řídit, kolik souběžných záloh běží na SQL serveru?
 
-Yes. Rychlost, s jakou se zásady zálohování spouštějí, můžete omezit tak, aby se minimalizoval dopad na instanci SQL Server. Postup změny nastavení:
+Ano. Rychlost, s jakou se zásady zálohování spouštějí, můžete omezit tak, aby se minimalizoval dopad na instanci SQL Server. Postup změny nastavení:
 
 1. V SQL Server instanci v adresáři *C:\Program Files\Azure úlohy Backup\bin* vytvořte *ExtensionSettingsOverrides.jsv* souboru.
 2. V *ExtensionSettingsOverrides.jsv* souboru změňte nastavení **DefaultBackupTasksThreshold** na nižší hodnotu (například 5). <br>
@@ -101,6 +101,10 @@ Můžete vybrat databázi, která je teď přejmenovaná, a nakonfigurovat na ni
 Databáze, kterou [přidáte do autoprotected instance](backup-sql-server-database-azure-vms.md#enable-auto-protection) , se nemusí hned zobrazit v části chráněné položky. Důvodem je to, že zjišťování se obvykle spouští každých 8 hodin. Můžete však okamžitě vyhledat a chránit nové databáze, pokud ručně spustíte zjišťování výběrem možnosti znovu **zjistit databáze**, jak je znázorněno na následujícím obrázku:
 
   ![Ruční zjištění nově přidané databáze](./media/backup-azure-sql-database/view-newly-added-database.png)
+  
+## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>Můžu chránit databáze, které mají TDE (transparentní šifrování dat) zapnuté a že databáze zůstane zašifrovaná prostřednictvím celého procesu zálohování?
+
+Ano, Azure Backup podporuje zálohování databází SQL Server nebo serveru s povoleným TDE. Zálohování podporuje [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) pomocí klíčů spravovaných pomocí Azure nebo klíčů spravovaných zákazníkem (BYOK).  Zálohování neprovádí v rámci procesu zálohování žádné šifrování SQL, takže databáze zůstane při zálohování zašifrovaná.
 
 ## <a name="next-steps"></a>Další kroky
 

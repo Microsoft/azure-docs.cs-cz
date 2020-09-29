@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 74df878baa6ed4e2ba902a73a7830c0b075c58ce
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1905db8f28bde41dadbe619894cb76830efca992
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981527"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445830"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření tenanta Azure Active Directory pro připojení typu point-to-site přes protokol OpenVPN
 
@@ -47,7 +47,7 @@ Postup v [tomto článku](../active-directory/fundamentals/add-users-azure-activ
 
 1. Vyhledejte ID adresáře adresáře, který chcete použít pro ověřování. Je uveden v části Properties (vlastnosti) stránky Active Directory.
 
-    ![ID adresáře](./media/openvpn-create-azure-ad-tenant/directory-id.png)
+    ![Snímek obrazovky se zvýrazněnou stránkou vlastnosti adresáře s číslem ID adresáře](./media/openvpn-create-azure-ad-tenant/directory-id.png)
 
 2. Zkopírujte ID adresáře.
 
@@ -73,7 +73,7 @@ Postup v [tomto článku](../active-directory/fundamentals/add-users-azure-activ
     https://login-us.microsoftonline.de/common/oauth2/authorize?client_id=538ee9e6-310a-468d-afef-ea97365856a9&response_type=code&redirect_uri=https://portal.microsoftazure.de&nonce=1234&prompt=admin_consent
     ````
 
-    Azure (Čína) 21Vianet
+    Azure China 21Vianet
 
     ```
     https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
@@ -89,7 +89,7 @@ Postup v [tomto článku](../active-directory/fundamentals/add-users-azure-activ
 
 7. V rámci Azure AD se v **podnikových aplikacích**zobrazí uvedená služba **Azure VPN** .
 
-    ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
+    ![Snímek obrazovky zobrazující stránku všechny aplikace](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
     
 8. Pokud ještě nemáte funkční prostředí Point-to-site, postupujte podle pokynů a vytvořte si ho. Pokud chcete vytvořit a nakonfigurovat bránu VPN typu Point-to-site, přečtěte si téma [vytvoření sítě VPN typu Point-to-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md) . 
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: 7718bd5cbc3c3fc3c9632818f769c05cd1617361
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cd0a510480673c48f23b25f48ead5d75e2d05c84
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321866"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447653"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Shromažďování protokolů aktivit Azure do Azure Monitor napříč klienty Azure Active Directory (starší verze)
 
@@ -102,7 +102,7 @@ Aplikace logiky se skládá z následujících částí:
 - [Akce Vytvořit](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action) pro převod formátu JSON na objekt.
 - [Log Analytics odeslat datový konektor](/connectors/azureloganalyticsdatacollector/) pro odeslání dat do pracovního prostoru Log Analytics.
 
-   ![obrázek přidání triggeru centra událostí ve službě Logic Apps](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
+   ![Snímek obrazovky návrháře aplikace logiky znázorňující kroky pro shromažďování protokolů aktivit z centra událostí a jejich zápis do pracovního prostoru Log Analytics.](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
 ### <a name="logic-app-requirements"></a>Požadavky aplikace logiky
 Před vytvořením aplikace logiky se ujistěte, že z předchozích kroků máte následující informace:
@@ -145,7 +145,7 @@ V Návrháři pro Logic Apps se teď zobrazí dostupné konektory a jejich trigg
 
 1. Do vyhledávacího pole v Návrháři pro Logic Apps zadejte jako filtr *event hubs*. Vyberte trigger **Event Hubs – Když jsou k dispozici události v centru událostí **.
 
-   ![obrázek přidání triggeru centra událostí ve službě Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
+   ![Snímek návrháře aplikace logiky s událostmi "Event Hubs-when", které jsou k dispozici v centru událostí "vybrané pro Event Hubs službu.](media/collect-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
 
 2. Po zobrazení výzvy k zadání přihlašovacích údajů se připojte ke svému oboru názvů služby Event Hubs. Zadejte název připojení a pak připojovací řetězec, který jste si zkopírovali.  Vyberte **Vytvořit**.
 
@@ -315,7 +315,7 @@ Když je pracovní postup dokončený, můžete ho v návrháři otestovat a ov�
 
 V Návrháři pro Logic Apps klikněte na **Spustit** a otestujte aplikaci logiky. U každého kroku v aplikaci logiky se zobrazí ikona stavu, kdy bílá značka zaškrtnutí v zeleném kroužku značí úspěch.
 
-   ![Test aplikace logiky](media/collect-activity-logs-subscriptions/test-logic-app.png)
+   ![Snímek obrazovky návrháře aplikace logiky po spuštění testu Každý krok aplikace logiky má značka zaškrtnutí označující úspěch.](media/collect-activity-logs-subscriptions/test-logic-app.png)
 
 Pokud chcete zobrazit podrobné informace o jednotlivých krocích, kliknutím na název krok rozbalte. Kliknutím na **Zobrazit nezpracované vstupy** a **Zobrazit nezpracované výstupy** zobrazíte další informace o přijímaných a odesílaných datech v každém kroku.
 
@@ -333,7 +333,7 @@ Posledním krokem je kontrola pracovního prostoru služby Log Analytics a ově�
 > Protokoly aktivit se zapisují do vlastní tabulky a nezobrazují se v [řešení protokolu aktivit](./activity-log.md).
 
 
-![Test aplikace logiky](media/collect-activity-logs-subscriptions/log-analytics-results.png)
+![Snímek obrazovky hledání AzureActivity_CL v podokně prohledávání protokolu zobrazující tabulku výsledků s rozbaleným jedním výsledkem a zobrazení podrobností o aktivitě.](media/collect-activity-logs-subscriptions/log-analytics-results.png)
 
 ## <a name="next-steps"></a>Další kroky
 

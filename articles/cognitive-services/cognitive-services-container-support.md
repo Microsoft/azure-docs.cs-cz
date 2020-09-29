@@ -1,28 +1,31 @@
 ---
-title: Kontejnery Azure Cognitive Services
+title: Použití kontejnerů Azure Cognitive Services v místním prostředí
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak můžou kontejnery Docker získat Cognitive Services blíž k vašim datům.
+description: Naučte se používat kontejnery Docker k použití Cognitive Services v místním prostředí.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 09/10/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: bda6fae31e3f5ef63d2c917937d80b2c1ea4fc48
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: místní, Docker, kontejner, Kubernetes
+ms.openlocfilehash: 48bfad4b101556dfcc4e57cf684341bda8063202
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906998"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461202"
 ---
 # <a name="azure-cognitive-services-containers"></a>Kontejnery Azure Cognitive Services
 
 > [!WARNING]
 > 11. června 2020 Microsoft oznámil, že nebude prodávat technologii rozpoznávání tváří policejním oddělením v USA, dokud nebude zavedena přísná regulace založená na lidských právech. Zákazníci tak nebudou moci používat funkce rozpoznávání obličeje nebo funkce, které jsou součástí služeb Azure, jako je například obličej nebo Video Indexer, pokud je zákazník nebo je povolen používání těchto služeb v rámci nebo pro, policejní oddělení v USA.
 
-Podpora kontejnerů v Azure Cognitive Services umožňuje vývojářům používat stejná bohatá rozhraní API, která jsou k dispozici v Azure, a nabízí flexibilitu v tom, kde nasadit a hostovat služby, které jsou dodávány s [kontejnery Docker](https://www.docker.com/what-container). Podpora kontejnerů je aktuálně k dispozici pro podmnožinu Azure Cognitive Services, včetně částí:
+Azure Cognitive Services poskytuje několik [kontejnerů Docker](https://www.docker.com/what-container) , které umožňují používat stejná rozhraní API, která jsou dostupná v Azure, v místním prostředí. Pomocí těchto kontejnerů získáte flexibilitu Cognitive Services blíž k vašim datům v případě dodržování předpisů, zabezpečení nebo jiných provozních důvodů. 
+
+Podpora kontejnerů je aktuálně k dispozici pro podmnožinu Azure Cognitive Services, včetně částí:
 
 > [!div class="checklist"]
 > * [Detektor anomálií][ad-containers]
@@ -42,8 +45,8 @@ Cognitive Services prostředky jsou k dispozici v [Microsoft Azure](https://azur
 ## <a name="features-and-benefits"></a>Funkce a výhody
 
 - **Neměnná infrastruktura**: umožňuje týmům DevOps využívat konzistentní a spolehlivé sady známých systémových parametrů a může se tak přizpůsobit. Kontejnery poskytují flexibilitu pro Pivot v předvídatelném ekosystému a nepoužívejte přitom posun konfigurace.
-- **Kontrola nad daty**: umožňuje zákazníkům zvolit, kde Cognitive Services zpracovávat jejich data. To je nezbytné pro zákazníky, kteří nemůžou posílat data do cloudu, ale potřebují přístup k Cognitive Services technologii. Podpora konzistence v hybridních prostředích – napříč daty, správou, identitou a zabezpečením.
-- **Řízení aktualizací modelů**: Poskytněte zákazníkům flexibilitu při vytváření verzí a aktualizaci modelů nasazených ve svých řešeních.
+- **Kontrola nad daty**: Určete, kam se budou data zpracovávat pomocí Cognitive Services. To může být nezbytné v případě, že nemůžete odesílat data do cloudu, ale potřebujete přístup k rozhraní API služeb Cognitive Services. Podpora konzistence v hybridních prostředích – napříč daty, správou, identitou a zabezpečením.
+- **Řízení aktualizací modelů**: flexibilita při vytváření verzí a aktualizaci modelů nasazených ve svých řešeních.
 - **Přenosná architektura**: umožňuje vytvořit přenosnou architekturu aplikace, která se dá nasadit v Azure, místně i na hraničních zařízeních. Kontejnery se dají nasadit přímo do [služby Azure Kubernetes](../aks/index.yml), [Azure Container Instances](../container-instances/index.yml)nebo do clusteru [Kubernetes](https://kubernetes.io/) nasazeného do [Azure Stack](/azure-stack/operator). Další informace najdete v tématu [nasazení Kubernetes do Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
 - **Vysoká propustnost/nízká latence**: Poskytněte zákazníkům možnost škálování pro zajištění vysoké propustnosti a nízké latence tím, že umožníte, aby Cognitive Services běžet fyzicky blízko jejich aplikační logiky a dat. Kontejnery nemění počet transakcí za sekundu (TPS) a dají se škálovat na maximum i na kapacitu, pokud zadáte potřebné hardwarové prostředky.
 - **Škálovatelnost**: s neustále rostoucím oblíbenkou pro kontejnery a software orchestrace kontejnerů, jako je Kubernetes; škálovatelnost je k dispozici na Forefrontu technologických předběžných. Sestavování s škálovatelnou Clusterovou nadací aplikace pro vývoj aplikací pro vysokou dostupnost.
@@ -52,7 +55,7 @@ Cognitive Services prostředky jsou k dispozici v [Microsoft Azure](https://azur
 
 Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů Docker, z nichž každá obsahuje podmnožinu funkcí ze služeb v Azure Cognitive Services:
 
-| Služba | Podporovaná cenová úroveň | Kontejner | Description |
+| Služba | Podporovaná cenová úroveň | Kontejner | Popis |
 |--|--|--|--|
 | [Detektor anomálií][ad-containers] | F0, S0 | **Anomálie-detektor** ([Obrázek](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Rozhraní API pro detekci anomálií umožňuje monitorovat a zjišťovat anomálie v datech časových řad pomocí strojového učení.<br>[Vyžádání přístup][request-access] |
 | [Počítačové zpracování obrazu][cv-containers] | F0, S1 | **Oprávnění** | Extrahuje vytištěný text z obrázků různých objektů s různými povrchy a pozadími, jako jsou například příjmy, plakáty a vizitky. Kontejner pro čtení také detekuje *ručně psaný text* v obrázcích a poskytuje podporu PDF/TIFF/vícestránkového textu.<br/><br/>**Důležité informace:** Kontejner pro čtení aktuálně funguje pouze v angličtině. |
@@ -76,8 +79,8 @@ Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů D
 
 Kromě toho jsou některé kontejnery podporovány v Cognitive Services klíče prostředků [**nabídky vše v jednom**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) . Můžete vytvořit jeden Cognitive Services prostředek All-in-One a použít stejný fakturační klíč v rámci podporovaných služeb pro následující služby:
 
-* Počítačové zpracování obrazu
-* Rozpoznávání tváře
+* Computer Vision
+* Tvář
 * LUIS
 * Analýza textu
 

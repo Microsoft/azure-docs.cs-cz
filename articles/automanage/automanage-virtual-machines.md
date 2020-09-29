@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 089cf07854f1f29eda7028db614edb1028e5d66a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 54a81ac36fb0b99f6931b372543dc3e4bca6a12c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311559"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447916"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage pro virtuální počítače
 
@@ -46,6 +46,7 @@ Před tím, než se pokusíte povolit službu Azure na virtuálních počítač�
 - Virtuální počítače musí být v podporované oblasti.
 - Uživatel musí mít správná oprávnění.
 - Virtuální počítače nesmí odkazovat na pracovní prostor Log Analytics v jiném předplatném.
+- Automanage v tuto chvíli nepodporuje odběry izolovaného prostoru (sandbox).
 
 Abyste mohli povolit autosprávu pomocí stávajícího účtu pro správu, musíte mít roli **Přispěvatel** . Pokud povolujete možnost autospráva pomocí nového účtu pro autosprávu, budete potřebovat následující oprávnění: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatele** .
 
@@ -111,7 +112,7 @@ V prostředí Azure Portal máte při povolování funkce automanage na vašich 
 
 V Azure Portal přejdete na stránku s **osvědčenými postupy pro automatické spravování – Azure Virtual Machine** , kde najdete seznam všech vašich automatických spravovaných virtuálních počítačů. Tady se zobrazí celkový stav každého virtuálního počítače.
 
-:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Seznam nakonfigurovaných virtuálních počítačů.":::
+:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Inteligentně zaregistrované služby.":::
 
 Pro každý uvedený virtuální počítač se zobrazí následující podrobnosti: název, konfigurační profil, předvolby konfigurace, stav, účet, předplatné a skupina prostředků.
 
@@ -129,7 +130,7 @@ Můžete se rozhodnout jeden den, abyste mohli na určitých virtuálních poč�
 
 Pokud to chcete udělat v Azure Portal, přečtěte si stránku s **osvědčenými postupy pro automatické spravování – Azure Virtual Machine** , která obsahuje seznam všech vašich automatických spravovaných virtuálních počítačů. Zaškrtněte políčko u virtuálního počítače, který chcete zakázat z možnosti spravovat, a pak klikněte na tlačítko **Zakázat autosprávu** .
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Zakázání automanage na virtuálním počítači.":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Inteligentně zaregistrované služby.":::
 
 Než se odsouhlaste s **zakázáním**, důkladně si přečtěte zprávy ve výsledném okně.
 

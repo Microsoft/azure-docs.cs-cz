@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: b48b02d20ed3d0b731f04d2c6568274bc0262e2e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fd9299d49f42eb021d64ae25447fd13e7378ff3f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933354"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447874"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -55,7 +55,7 @@ Ve výsledcích si všimněte, že všechny položky telemetrie sdílejí kořen
 
 Při volání `GET /api/stock/value` externí služby potřebujete znát identitu tohoto serveru, abyste mohli `dependency.target` odpovídajícím způsobem nastavit pole. Pokud externí služba nepodporuje monitorování, `target` je nastavena na název hostitele služby (například `stock-prices-api.com` ). Pokud však služba identifikuje sebe sama vrácením předdefinované hlavičky HTTP, `target` obsahuje identitu služby, která umožňuje Application Insights sestavit distribuované trasování pomocí dotazování telemetrie z této služby.
 
-## <a name="correlation-headers"></a>Hlavičky korelace
+## <a name="correlation-headers-using-w3c-tracecontext"></a>Korelační hlavičky pomocí formátu W3C TraceContext
 
 Application Insights se převádí na [kontext trasování W3C](https://w3c.github.io/trace-context/), který definuje:
 
@@ -70,6 +70,18 @@ Nejnovější verze Application Insights SDK podporuje protokol kontextu trasov�
 - `Correlation-Context`: Přenese kolekci dvojic název-hodnota pro distribuované vlastnosti trasování.
 
 Application Insights také definuje [rozšíření](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) pro protokol HTTP korelace. Používá `Request-Context` páry název-hodnota ke šíření kolekce vlastností používaných přímým volajícím nebo volaným. Sada Application Insights SDK používá tuto hlavičku k nastavení `dependency.target` polí a `request.source` .
+
+Mapování datových modelů v [kontextu W3C Trace-Context](https://w3c.github.io/trace-context/) a Application Insights následujícím způsobem:
+
+| Application Insights                   | W3C TraceContext                                      |
+|------------------------------------    |-------------------------------------------------    |
+| `Request`, `PageView`                  | `SpanKind` je server v případě synchronního; `SpanKind` je příjemcem, pokud je asynchronní                    |
+| `Dependency`                           | `SpanKind` je klient v případě synchronního; `SpanKind` je producent, pokud je asynchronní                   |
+| `Id` z `Request` a `Dependency`     | `SpanId`                                            |
+| `Operation_Id`                         | `TraceId`                                           |
+| `Operation_ParentId`                   | `SpanId` nadřazeného rozsahu tohoto rozsahu. Pokud se jedná o kořenový rozsah, musí být toto pole prázdné.     |
+
+Další informace najdete v tématu [Application Insights datovém modelu telemetrie](../../azure-monitor/app/data-model.md).
 
 ### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>Povolení podpory distribuovaného trasování W3C pro klasické aplikace ASP.NET
  
@@ -204,25 +216,11 @@ Tato funkce je v systému `Microsoft.ApplicationInsights.JavaScript` . Ve výcho
   </script>
   ```
 
-## <a name="opentracing-and-application-insights"></a>OpenTracing a Application Insights
-
-Datové modely [OpenTracing a specifikace datového modelu](https://opentracing.io/) pro Application Insights mapují následujícím způsobem:
-
-| Application Insights                   | OpenTracing                                        |
-|------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `Span` řetězce `span.kind = server`                    |
-| `Dependency`                           | `Span` řetězce `span.kind = client`                    |
-| `Id` z `Request` a `Dependency`     | `SpanId`                                            |
-| `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | `Reference` typu `ChildOf` (nadřazený rozsah)     |
-
-Další informace najdete v tématu [Application Insights datovém modelu telemetrie](../../azure-monitor/app/data-model.md).
-
-Definice konceptů OpenTracing najdete v tématu [specifikace](https://github.com/opentracing/specification/blob/master/specification.md) OpenTracing a [sémantické konvence](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
-
 ## <a name="telemetry-correlation-in-opencensus-python"></a>Korelace telemetrie v OpenCensus Pythonu
 
-OpenCensus Python sleduje `OpenTracing` specifikace datového modelu popsané výše. Podporuje také [kontext trasování W3C](https://w3c.github.io/trace-context/) bez nutnosti jakékoli konfigurace.
+OpenCensus Python podporuje [kontext trasování W3C](https://w3c.github.io/trace-context/) bez nutnosti další konfigurace.
+
+Jako referenci se dá datový model OpenCensus najít [tady](https://github.com/census-instrumentation/opencensus-specs/tree/master/trace).
 
 ### <a name="incoming-request-correlation"></a>Korelace příchozích požadavků
 

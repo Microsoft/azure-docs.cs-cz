@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 956e3e83686677f3eb9895354a008783df5f7dcd
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e4739c0c550988e1639e89a647815e5dd86b17b7
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003703"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461338"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Jak nastavit geografickou replikaci pro Azure cache pro Redis
 
@@ -145,8 +145,8 @@ Ano, geografická replikace mezipamětí v virtuální sítě se podporuje s upo
 - Geografická replikace mezi mezipamětí ve stejné virtuální síti je podporovaná.
 - Je také podporována geografická replikace mezi mezipamětí v různých virtuální sítě.
   - Pokud se virtuální sítě nacházejí ve stejné oblasti, můžete je propojit pomocí [partnerského vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuálních sítí nebo [VPN Gateway připojení typu VNet-to-VNet](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V).
-  - Pokud se virtuální sítě nacházejí v různých oblastech, geografická replikace pomocí partnerského vztahu virtuálních sítí není podporována z důvodu omezení se základními interními nástroji pro vyrovnávání zatížení. Další informace o omezeních partnerských vztahů virtuálních sítí najdete v tématu [Virtual Network-peer-to-požadavky a omezení](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints). Doporučené řešení je použití VPN Gateway připojení typu VNET-to-VNET.
-
+  - Pokud se virtuální sítě nacházejí v různých oblastech, je geografická replikace pomocí partnerského vztahu virtuálních sítí podporovaná, ale klientský virtuální počítač ve virtuální síti 1 (region 1) nebude mít přístup k mezipaměti ve virtuální síti 2 (region 2) prostřednictvím názvu DNS z důvodu omezení se základními interními nástroji pro vyrovnávání zatížení. Další informace o omezeních partnerských vztahů virtuálních sítí najdete v tématu [Virtual Network-peer-to-požadavky a omezení](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints). Doporučené řešení je použití VPN Gateway připojení typu VNET-to-VNET.
+  
 Pomocí [této šablony Azure](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)můžete rychle nasadit dvě geograficky replikované mezipaměti do virtuální sítě připojené s VPN Gateway připojení typu VNet-to-VNet.
 
 ### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Jaký je plán replikace pro geografickou replikaci Redis?

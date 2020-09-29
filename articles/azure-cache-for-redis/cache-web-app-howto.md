@@ -4,23 +4,23 @@ description: V tomto rychlém startu se dozvíte, jak vytvořit webovou aplikaci
 author: yegu-ms
 ms.service: cache
 ms.topic: quickstart
-ms.date: 06/18/2018
+ms.date: 09/29/2020
 ms.author: yegu
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 8bf301413abaa090682f14d1e7a6f9fa7096bd66
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 963021e26036969a51f77641376c693e94ac5061
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209220"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460336"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Rychlý Start: použití mezipaměti Azure pro Redis s webovou aplikací ASP.NET 
 
 V tomto rychlém startu použijete Visual Studio 2019 k vytvoření webové aplikace v ASP.NET, která se připojí ke službě Azure cache pro Redis, aby ukládala a načetla data z mezipaměti. Pak nasadíte aplikaci do Azure App Service.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/dotnet) .
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohami vývoje **ASP.NET a web** a **vývoj pro Azure** .
 
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
@@ -76,7 +76,7 @@ V dalším kroku vytvoříte pro aplikaci mezipaměť.
     > [!TIP]
     > Při rotaci klíčů můžete použít sekundární přístupový klíč jako alternativní klíč během opětovného generování primárního přístupového klíče.
    >
-1. Soubor uložte.
+1. Uložte soubor.
 
 ## <a name="update-the-mvc-application"></a>Aktualizace aplikace MVC
 
@@ -134,52 +134,41 @@ Modul runtime ASP.NET sloučí obsah externího souboru se značkami v elementu 
     public ActionResult RedisCache()
     {
         ViewBag.Message = "A simple example with Azure Cache for Redis on ASP.NET.";
-
-        var lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-        {
-            string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
-            return ConnectionMultiplexer.Connect(cacheConnection);
-        });
-
-        // Connection refers to a property that returns a ConnectionMultiplexer
-        // as shown in the previous example.
             
-        using (ConnectionMultiplexer redis = lazyConnection.Value)
+        IDatabase cache = Connection.GetDatabase();
+
+        // Perform cache operations using the cache object...
+
+        // Simple PING command
+        ViewBag.command1 = "PING";
+        ViewBag.command1Result = cache.Execute(ViewBag.command1).ToString();
+
+        // Simple get and put of integral data types into the cache
+        ViewBag.command2 = "GET Message";
+        ViewBag.command2Result = cache.StringGet("Message").ToString();
+
+        ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
+        ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
+
+        // Demonstrate "SET Message" executed as expected...
+        ViewBag.command4 = "GET Message";
+        ViewBag.command4Result = cache.StringGet("Message").ToString();
+
+        // Get the client list, useful to see if connection list is growing...
+        ViewBag.command5 = "CLIENT LIST";
+        StringBuilder sb = new StringBuilder();
+
+        var endpoint = (System.Net.DnsEndPoint)Connection.GetEndPoints()[0];
+        var server = Connection.GetServer(endpoint.Host, endpoint.Port);
+        var clients = server.ClientList();
+
+        sb.AppendLine("Cache response :");
+        foreach (var client in clients)
         {
-            IDatabase cache = redis.GetDatabase();
+            sb.AppendLine(client.Raw);
+        }
 
-            // Perform cache operations using the cache object...
-
-            // Simple PING command
-            ViewBag.command1 = "PING";
-            ViewBag.command1Result = cache.Execute(ViewBag.command1).ToString();
-
-            // Simple get and put of integral data types into the cache
-            ViewBag.command2 = "GET Message";
-            ViewBag.command2Result = cache.StringGet("Message").ToString();
-
-            ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
-            ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
-
-            // Demonstrate "SET Message" executed as expected...
-            ViewBag.command4 = "GET Message";
-            ViewBag.command4Result = cache.StringGet("Message").ToString();
-
-            // Get the client list, useful to see if connection list is growing...
-            ViewBag.command5 = "CLIENT LIST";
-            StringBuilder sb = new StringBuilder();
-
-            var endpoint = (System.Net.DnsEndPoint)Connection.GetEndPoints()[0];
-            var server = Connection.GetServer(endpoint.Host, endpoint.Port);
-            var clients = server.ClientList();
-
-            sb.AppendLine("Cache response :");
-            foreach (var client in clients)
-            {
-                sb.AppendLine(client.Raw);
-            }
-
-            ViewBag.command5Result = sb.ToString();
+        ViewBag.command5Result = sb.ToString();
 
         return View();
     }

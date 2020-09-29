@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 43b6f5d4367cfc641183a17fda89cf1381c22a6c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8f92501bdb8261a67d3dc2b8aefbe1fb1498ef1e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258595"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445894"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Windows v clusteru Service Fabric
 
@@ -63,7 +63,7 @@ POA se skládá z následujících podsoučástí:
 > [!NOTE]
 > POA používá službu Service Fabric Repair Manager k zakázání nebo povolení uzlu a provádění kontrol stavu. Úloha opravy vytvořená v POA sleduje průběh web Windows Update pro každý uzel.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!NOTE]
 > Požadovaná minimální verze .NET Framework je 4,6.
@@ -296,9 +296,9 @@ Abychom vám pomohli porozumět tomu, jak aktualizace postupují v uzlu, pojďme
 
    V části POA verze 1.4.0 a novější můžete zjistit stav aktualizace zobrazením událostí stavu v NodeAgentService s vlastností WUOperationStatus- \<NodeName> Property. Zvýrazněné části na následujících obrázcích ukazují stav aktualizací Windows na uzlech *poanode_0* a *poanode_2*:
 
-   [![Obrázek stavu operace web Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+   [![Snímek obrazovky ukazuje okno konzoly web Windows Update stav operace se zvýrazněným poanode_0em.](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 
-   [![Obrázek stavu operace web Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+   [![Snímek obrazovky ukazuje okno konzoly web Windows Update stav operace se zvýrazněným poanode_1em.](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
    Podrobnosti můžete získat také pomocí prostředí PowerShell. Provedete to tak, že se připojíte ke clusteru a načtete stav úlohy opravit pomocí [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps). 
    
@@ -328,7 +328,7 @@ Abychom vám pomohli porozumět tomu, jak aktualizace postupují v uzlu, pojďme
 
 1. V rodu POA verze 1.4.0 a novější, když se dokončí pokus o aktualizaci uzlu, se na NodeAgentService pošle událost s vlastností WUOperationStatus-[Název_uzlu], která vás upozorní, když začne další pokus o stažení a instalaci aktualizací Windows. Zobrazuje se na následujícím obrázku:
 
-     [![Obrázek stavu operace web Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+     [![Snímek obrazovky ukazuje okno konzoly s web Windows Update stav operace s NodeAgentService.](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
 
 ### <a name="diagnostics-logs"></a>Protokoly diagnostiky
 

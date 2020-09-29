@@ -11,25 +11,30 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
+ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 15289727c3ee4d498fa50058ef98f0ae5b3d1b12
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e526b8e2e4f31187bb958ec37c2ffa4d30f0265b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277797"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461151"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Použití ověřování Multi-Factor Azure Active Directory
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics podporují připojení od [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) pomocí ověřování *MFA (Azure Active Directory – Universal* ). Tento článek popisuje rozdíly mezi různými možnostmi ověřování a také omezení související s používáním univerzálního ověřování v Azure Active Directory (Azure AD) pro Azure SQL.
 
-**Stáhněte si nejnovější SSMS** -v klientském počítači, Stáhněte si nejnovější verzi nástroje SSMS, od [Stažení SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
+**Stáhněte si nejnovější SSMS** -v klientském počítači, Stáhněte si nejnovější verzi nástroje SSMS, od [Stažení SQL Server Management Studio (SSMS)](https://aka.ms/ssms). 
+
+> [!Note]
+> V prosinci 2021 nebudou verze SSMS starší než 18,6 ověřovány prostřednictvím Azure Active Directory s MFA. Pokud chcete i nadále využívat Azure Active Directory ověřování pomocí MFA, nainstalujte nebo aktualizujte SSMS 18,6 nebo novější.
 
 Pro všechny funkce popsané v tomto článku použijte minimálně červenec 2017, verze 17,2. Dialogové okno nejaktuálnější připojení by mělo vypadat podobně jako na následujícím obrázku:
 
-  ![Snímek obrazovky dialogového okna připojit k serveru v SQL Server Management Studio, v němž se zobrazí nastavení pro typ serveru, název serveru a ověřování.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)  
+  ![Snímek obrazovky dialogového okna připojit k serveru v SQL Server Management Studio, v němž se zobrazí nastavení pro typ serveru, název serveru a ověřování.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)
+  
+    
 
 ## <a name="authentication-options"></a>Možnosti ověřování
 
