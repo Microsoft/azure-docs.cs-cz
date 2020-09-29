@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/19/2020
+ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 20cbc9b33e567ffe306aae694bb835d95c2d861e
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: b2e597ff8fc761b66de6228063c471933a364144
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88704973"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449653"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Konfigurace klienta NFS pro Azure NetApp Files
 
@@ -46,6 +46,9 @@ Bez ohledu na to, jaký systém Linux používáte, jsou potřeba následující
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou= OU=$YOUROU,DC=$DOMAIN,DC=TLD`
 
 ## <a name="ubuntu-configuration"></a>Konfigurace Ubuntu 
+Tato část popisuje konfiguraci Ubuntu pro klienty NFS.  
+
+### <a name="if-you-are-using-nfsv41-kerberos-encryption"></a>Pokud používáte šifrování protokolu Kerberos NFSv 4.1 
 
 1. Instalovat balíčky:  
     `sudo yum -y install realmd packagekit sssd adcli samba-common krb5-workstation chrony`
@@ -55,6 +58,26 @@ Bez ohledu na to, jaký systém Linux používáte, jsou potřeba následující
 
 3. Připojte se k Doména služby Active Directory:  
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou= OU=$YOUROU,DC=$DOMAIN,DC=TLD`
+
+### <a name="if-you-are-using-dual-protocol"></a>Pokud používáte duální protokol  
+
+1. Spuštěním následujícího příkazu upgradujte nainstalované balíčky:  
+    `sudo apt update && sudo apt install libnss-ldap libpam-ldap ldap-utils nscd`
+
+    Příklad:   
+
+    `base dc=hariscus,dc=com` `uri ldap://10.20.0.4:389/`
+    `ldap_version 3`
+    `rootbinddn cn=admin,cn=Users,dc=hariscus,dc=com`
+    `pam_password ad`
+ 
+2. Spusťte následující příkaz pro restartování a povolení služby:   
+    `sudo systemctl restart nscd && sudo systemctl enable nscd`
+
+V následujícím příkladu se dotazuje serveru služby AD LDAP z klienta LDAP Ubuntu na uživatele LDAP `ldapu1` :   
+
+`root@cbs-k8s-varun4-04:/home/cbs# getent passwd hari1`   
+`hari1:*:1237:1237:hari1:/home/hari1:/bin/bash`   
 
 ## <a name="next-steps"></a>Další kroky  
 

@@ -4,16 +4,16 @@ description: Přečtěte si o výhodách a funkcích Azure Defenderu pro SQL.
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: dcdbc3efba53f78890816721b6659aa69553d6ea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 328a565dbb22a13c71a7001d43941e7be062dff9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301597"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449054"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Seznámení se službou Azure Defender pro SQL
 
@@ -26,7 +26,7 @@ Azure Defender pro SQL zahrnuje dva plány Azure Defenderu, které rozšiřuje [
 |Stav vydaných verzí:|**Azure Defender pro servery Azure SQL Database** – všeobecně dostupné (GA)<br>**Azure Defender pro SQL servery na počítačích** – Preview|
 |Stanov|Dva plány, které tvoří **Azure Defender pro SQL** , se účtují, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
 |Chráněné verze SQL:|Azure SQL Database <br>Spravovaná instance Azure SQL<br>Azure Synapse Analytics (dříve SQL DW)<br>SQL Server (všechny podporované verze)|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 ## <a name="what-does-azure-defender-for-sql-protect"></a>Co je Azure Defender pro SQL Protect?

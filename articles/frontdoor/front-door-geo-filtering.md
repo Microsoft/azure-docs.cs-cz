@@ -10,23 +10,23 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 09/28/2020
 ms.author: duau
 ms.reviewer: tyao
-ms.openlocfilehash: 558d1c098f07f8e09a6a68a065cac9b7b38cfbf3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 42697a57d39f4a34eee4866b67e2cde947db1ff5
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399646"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449263"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Geografické filtrování v doméně pro přední dveře Azure
 
-Ve výchozím nastavení reagují přední dveře Azure na požadavky uživatelů bez ohledu na umístění uživatele, který požadavek odeslal. V některých případech však můžete chtít omezit přístup k vašim webovým aplikacím podle země nebo oblasti. Služba WAF (Web Application firewall) ve front-dveřích umožňuje definovat zásadu s použitím pravidel vlastního přístupu pro konkrétní cestu ke koncovému bodu a povolit nebo blokovat přístup ze zadaných zemí nebo oblastí. 
+Ve výchozím nastavení budou přední dveře Azure reagovat na všechny požadavky uživatelů bez ohledu na umístění, ze kterého pochází požadavek. V některých scénářích můžete chtít omezit přístup k webové aplikaci podle zemí nebo oblastí. Služba brány firewall webových aplikací (WAF) v frontách pro webové aplikace umožňuje definovat zásadu pomocí vlastního pravidla přístupu pro konkrétní cestu na koncovém bodu, aby buď povolila nebo zablokovala přístup ze zadaných zemí nebo oblastí. 
 
-Zásada WAF obvykle zahrnuje sadu vlastních pravidel. Pravidlo se skládá z podmínek shody, akce a priority. V podmínce shody definujete proměnnou shody, operátor a hodnotu shody.  Pro pravidlo geografického filtrování, které odpovídá proměnné, je REMOTE_ADDR, je operátor geograficky shodný, hodnota je dvě písmena v kódu země/oblasti, kterou je důležité. Kombinací podmínky GeoMatch a podmínky shody řetězce REQUEST_URI můžete vytvořit pravidlo geografického filtrování na základě cesty.
+Zásady WAF obsahují sadu vlastních pravidel. Pravidlo se skládá z podmínek shody, akce a priority. V podmínce shody definujete shodnou proměnnou, operátor a hodnotu shody. Pro pravidlo geografického filtrování je REMOTE_ADDR, že je proměnná shodná, je operátor geograficky shodný a hodnota je dvě číslice, o kterou má daný kód země/oblasti zájem. Pokud chcete vytvořit pravidlo geografického filtrování založené na cestě, můžete zkombinovat podmínku zjištění shody a REQUEST_URI podmínku shody řetězců.
 
-Zásady geografického filtrování pro vaše přední dveře můžete nakonfigurovat buď pomocí [Azure PowerShell](front-door-tutorial-geo-filtering.md) , nebo pomocí naší [šablony pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
+Zásady geografického filtrování pro vaše přední dveře můžete nakonfigurovat pomocí [Azure PowerShell](front-door-tutorial-geo-filtering.md) nebo pomocí [šablony pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
 
 ## <a name="countryregion-code-reference"></a>Odkaz na kód země/oblasti
 
@@ -212,5 +212,5 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [zabezpečení aplikační vrstvy pomocí služby Front Door](front-door-application-security.md).
 - Přečtěte si, jak [vytvořit Front Door](quickstart-create-front-door.md).
+- Projděte si Hot a [nastavte geograficky FILTROVACÍ WAF zásadu](front-door-tutorial-geo-filtering.md).

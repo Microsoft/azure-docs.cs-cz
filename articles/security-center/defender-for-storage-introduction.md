@@ -4,15 +4,15 @@ description: Seznamte se s výhodami a funkcemi Azure Defenderu pro úložiště
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1c47c1cd464c9dc0ac8dc78f5d6f91f33481922a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8b6faa6e2e8928e008370cb0eca00595712a679d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307513"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449017"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Seznámení se službou Azure Defender pro službu Storage
 
@@ -28,7 +28,7 @@ Tato vrstva ochrany umožňuje řešit hrozby, *aniž* byste museli být odborn�
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|**Azure Defender pro úložiště** se fakturuje, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
 |Typy chráněných úložišť|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 

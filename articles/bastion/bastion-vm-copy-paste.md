@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: charwen
-ms.openlocfilehash: ad1476847874f7cea53c6e9c0c3d9f142c949dac
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6835c5e1ecbf0fc99a14754d17bb6e6380eda6c8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987711"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445344"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Zkopírování a vložení do virtuálního počítače: Azure bastionu
 
@@ -35,13 +35,13 @@ Po připojení k virtuálnímu počítači pomocí [Azure Portal ](https://porta
 1. Zkopíruje text nebo obsah z místního zařízení do místní schránky.
 1. Během vzdálené relace spusťte na paletě nástrojů pro přístup ke schránce bastionu výběr dvou šipek. Šipky se nacházejí v levém středu relace.
 
-   ![Paleta nástrojů](./media/bastion-vm-manage/left.png)
+   ![Snímek obrazovky znázorňující šipky spuštění pro paletu nástrojů zvýrazněné na levé straně okna](./media/bastion-vm-manage/left.png)
 
    ![Snímek obrazovky se zobrazí ve schránce pro text zkopírovaný v bastionu.](./media/bastion-vm-manage/clipboard.png)
 1. Zkopírovaný text se obvykle automaticky zobrazuje na paletě pro vložení bastionu kopírování. Pokud text tam není, vložte text do textové oblasti na paletě.
 1. Jakmile je text v oblasti textu, můžete ho vložit do vzdálené relace.
 
-   ![Vlož](./media/bastion-vm-manage/local.png)
+   ![Snímek obrazovky, který zobrazuje zvýrazněné tlačítko Kopírovat/vložit a ukázkový textový řetězec zkopírovaný do vzdálené relace.](./media/bastion-vm-manage/local.png)
 
 ## <a name="copy-from-a-remote-session"></a><a name="from"></a>Kopírovat ze vzdálené relace
 

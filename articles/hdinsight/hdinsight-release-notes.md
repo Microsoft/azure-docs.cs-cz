@@ -7,72 +7,59 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: fd0412459e7d6e51b6abdccbc8782d157acee6b9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.date: 09/27/2020
+ms.openlocfilehash: f6527a0c5712d68756310b699d214013e89f38e1
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319793"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449585"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
 Tento článek poskytuje informace **o nejnovějších aktualizacích vydaných** verzí Azure HDInsight. Informace o dřívějších verzích najdete v tématu [archiv zpráv k vydání verze HDInsight](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky, kteří se týkají Open Source analýz v Azure.
 
-## <a name="release-date-08092020"></a>Datum vydání: 08/09/2020
+## <a name="release-date-09282020"></a>Datum vydání: 09/28/2020
 
-Tato verze se vztahuje jenom na HDInsight 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
+Tato verze se týká HDInsight 3,6 i HDInsight 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
 
 ## <a name="new-features"></a>Nové funkce
-### <a name="support-for-sparkcruise"></a>Podpora pro SparkCruise
-SparkCruise je systém automatického využití výpočtů pro Spark. Vybere běžné dílčí výrazy, které se vyhodnotit na základě úlohy minulého dotazu. SparkCruise materializuje tyto dílčí výrazy jako součást zpracování dotazů a opakované použití výpočtu se automaticky aplikují na pozadí. Můžete využívat výhod SparkCruise bez jakýchkoli úprav kódu Sparku.
- 
-### <a name="support-hive-view-for-hdinsight-40"></a>Podpora zobrazení podregistru pro HDInsight 4,0
-Zobrazení podregistru Apache Ambari je navržené tak, aby vám usnadnilo vytváření, optimalizaci a spouštění dotazů na podregistr z webového prohlížeče. Zobrazení podregistru se nativně podporuje pro clustery HDInsight 4,0 od této verze. Neplatí pro existující clustery. K získání integrovaného zobrazení podregistru budete potřebovat vyřadit a znovu vytvořit cluster.
- 
-### <a name="support-tez-view-for-hdinsight-40"></a>Podpora zobrazení tez pro HDInsight 4,0
-Zobrazení Apache Tez slouží ke sledování a ladění provádění úlohy tez podregistru. Zobrazení tez se nativně podporuje pro HDInsight 4,0 od této verze. Neplatí pro existující clustery. Pokud chcete získat integrované zobrazení tez, musíte cluster vyřadit a znovu vytvořit.
+### <a name="llap-cluster-auto-scale-general-available"></a>Obecné dostupné automatické škálování clusteru LLAP
+Automatické škálování pro typ clusteru LLAP je teď obecně dostupné (GA). Všechny LLAP clustery vytvořené po 27. srpna 2020 budou mít podporu GA pro automatické škálování.
+
+### <a name="hbase-cluster-supports-premium-adls-gen2"></a>Cluster HBA podporuje prémiové ADLS Gen2
+HDInsight teď podporuje Premium ADLS Gen2 jako primární účet úložiště pro clustery HDInsight 3,6 a 4,0. Společně s [akcelerovanými zápisy](./hbase/apache-hbase-accelerated-writes.md)můžete dosáhnout lepšího výkonu clusterů HBA.
+
+### <a name="kafka-partition-distribution-on-azure-fault-domains"></a>Kafka rozdělení oddílu do domén selhání Azure
+Doména selhání je logické seskupení základního hardwaru v datovém centru Azure. Všechny domény selhání sdílí společný zdroje napájení a síťový přepínač. Předtím, než HDInsight Kafka může ukládat všechny repliky oddílů ve stejné doméně selhání. Od této verze už HDInsight podporuje automatickou distribuci oddílů Kafka na základě domén selhání Azure. 
+
+### <a name="encryption-in-transit"></a>Šifrování během přenosu
+Zákazníci můžou povolit šifrování při přenosu mezi uzly clusteru pomocí šifrování IPSec s klíči spravovanými platformou. Tuto možnost můžete povolit v době vytváření clusteru. Přečtěte si další podrobnosti o [tom, jak povolit šifrování při přenosu](./domain-joined/encryption-in-transit.md).
+
+### <a name="encryption-at-host"></a>Šifrování na hostiteli
+Pokud povolíte šifrování na hostiteli, data uložená na hostiteli virtuálního počítače se zašifrují v klidovém stavu a toky se zašifrují do služby úložiště. V této verzi můžete při vytváření clusteru **zapnout šifrování na hostiteli na dočasném datovém disku** . Šifrování na hostiteli se podporuje jenom u [některých SKU virtuálních počítačů v omezených oblastech](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-host-based-encryption-portal). HDInsight podporuje [následující konfiguraci uzlů a SKU](./hdinsight-supported-node-configuration.md). Podívejte se na další podrobnosti o [tom, jak povolit šifrování na hostiteli](https://docs.microsoft.com/azure/hdinsight/disk-encryption#encryption-at-host-using-platform-managed-keys).
+
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Přechod na Azure Virtual Machine Scale Sets
+HDInsight teď pomocí virtuálních počítačů Azure zřídí cluster. Od této verze se služba postupně migruje na [Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview). Celý proces může trvat měsíce. Po migraci vašich oblastí a předplatných se nově vytvořené clustery HDInsight spustí ve službě Virtual Machine Scale Sets bez akcí zákazníků. Neočekává se žádná neprůlomová změna.
 
 ## <a name="deprecation"></a>Vyřazení
-### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Ukončení podpory Sparku 2.1 a 2.2 v clusteru HDInsight 3.6 Spark
-Od července 1 2020 nemohou zákazníci vytvářet nové clustery Spark pomocí Sparku 2,1 a 2,2 ve službě HDInsight 3,6. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na Spark 2,3 ve službě HDInsight 3,6 pomocí června 30 2020, aby se předešlo potenciálnímu přerušení systému/podpory.
- 
-### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>Ukončení podpory Sparku 2.3 v clusteru HDInsight 4.0 Spark
-Od července 1 2020 nemohou zákazníci vytvářet nové clustery Spark se Sparkem 2,3 ve službě HDInsight 4,0. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na Spark 2.4 v HDInsight 4.0 nejpozději do 30. června 2020, abyste se vyhnuli možnému přerušení služeb nebo podpory.
- 
-### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Ukončení podpory Kafka 1.1 v clusteru HDInsight 4.0 Kafka
-Od července 1 2020 nebudou zákazníci moci vytvářet nové clustery Kafka s Kafka 1,1 ve službě HDInsight 4,0. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na Kafka 2.1 v HDInsight 4.0 nejpozději do 30. června 2020, abyste se vyhnuli možnému přerušení služeb nebo podpory.
+Pro tuto verzi není zastaralost.
 
 ## <a name="behavior-changes"></a>Změny chování
-### <a name="ambari-stack-version-change"></a>Změna verze zásobníku Ambari
-V této verzi se verze Ambari mění z 2. x. x. x na 4,1. Můžete ověřit verzi zásobníku (HDInsight 4,1) v Ambari: Ambari > verze > uživatele.
+Žádná změna chování pro tuto verzi.
 
 ## <a name="upcoming-changes"></a>Nadcházející změny
-Žádné nadcházející nepotřebné změny, ke kterým byste měli věnovat pozornost.
+V nadcházejících verzích dojde k následujícím změnám.
+
+### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Možnost výběru různých Zookeeper SKU pro služby Spark, Hadoop a ML
+HDInsight dnes nepodporuje změnu Zookeeper SKU pro typy clusterů Spark, Hadoop a ML. Používá A2_v2 SKU/a2 pro uzly Zookeeper a zákazníkům se za ně neúčtují poplatky. V nadcházející verzi můžou zákazníci podle potřeby měnit SKU Zookeeper pro služby Spark, Hadoop a ML. Zookeeper uzly s jinou skladovou jednotkou než A2_v2/a2 budou účtovány. Výchozí SKU bude i nadále A2_V2/a2 a zadarmo.
 
 ## <a name="bug-fixes"></a>Opravy chyb
 HDInsight nadále zdokonaluje spolehlivost a výkon clusteru. 
 
-Pod JIRAs jsou pro podregistr back-Transported:
-* [PODREGISTR-23619](https://issues.apache.org/jira/browse/HIVE-23619)
-* [PODREGISTR-21223](https://issues.apache.org/jira/browse/HIVE-21223)
-* [PODREGISTR-22599](https://issues.apache.org/jira/browse/HIVE-22599)
-* [PODREGISTR-22121](https://issues.apache.org/jira/browse/HIVE-22121)
-* [PODREGISTR-22136](https://issues.apache.org/jira/browse/HIVE-22136)
-* [PODREGISTR-18786](https://issues.apache.org/jira/browse/HIVE-18786)
-
-Pod JIRAs jsou pro adaptéry HBA back-Transported:
-* [HBA – 21458](https://issues.apache.org/jira/browse/HBASE-21458)
-* [HBA – 24208](https://issues.apache.org/jira/browse/HBASE-24208)
-* [HBA – 24205](https://issues.apache.org/jira/browse/HBASE-24205)
-
 ## <a name="component-version-change"></a>Změna verze součásti
 Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
-
-## <a name="known-issues"></a>Známé problémy
-
-Na webu Azure Portal se vyřešil problém, kdy u uživatelů docházelo k chybě při vytváření clusteru Azure HDInsight s využitím ověřování SSH pomocí veřejného klíče. Když uživatelé kliknuli na **Zkontrolovat a vytvořit**, zobrazila se jim chyba Nesmí obsahovat žádné tři po sobě jdoucí znaky z uživatelského jména SSH. Tento problém se již vyřešil, ale možná budete muset stisknutím CTRL + F5 aktualizovat mezipaměť prohlížeče, aby se načetlo opravené zobrazení. Alternativním řešením tohoto problému je vytvořit cluster pomocí šablony ARM. 

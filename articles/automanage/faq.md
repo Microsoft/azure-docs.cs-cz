@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: fa24c0db398c4c799d218ff5e8ec8e3d3e321742
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 348106c405e6e096f7bfd9a225fc783c4454b1ad
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311542"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449762"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Nejčastější dotazy k Azure automanage pro virtuální počítače
 
@@ -33,12 +33,13 @@ Níže jsou uvedené předpoklady pro povolení služby Azure automanage:
 - Uživatel musí mít správná oprávnění.
 - Jenom virtuální počítače bez škálování
 - Virtuální počítače nesmí odkazovat na pracovní prostor Log Analytics v jiném předplatném.
+- Automanage v tuto chvíli nepodporuje odběry izolovaného prostoru (sandbox).
 
 **Jaká oprávnění RBAC je potřeba k povolení automanage?**
 
-Pokud povolíte možnost automanage na virtuálním počítači s existujícím účtem pro správu, budete potřebovat roli přispěvatele pro skupinu prostředků, ve které se virtuální počítač nachází. 
+Pokud povolíte možnost automanage na virtuálním počítači s existujícím účtem pro správu, budete potřebovat roli přispěvatele pro skupinu prostředků, ve které se virtuální počítač nachází.
 
-Pokud při povolování používáte nový účet automanage, uživatelé musí mít roli vlastníka nebo mít k předplatnému roli správce přístupu Přispěvatel + uživatel.
+Pokud při povolování používáte nový účet automanage, musíte mít roli vlastníka nebo mít k předplatnému roli správce přístupu Přispěvatel + uživatel.
 
 
 **Které oblasti jsou podporovány?**
@@ -50,6 +51,9 @@ Podporovány jsou virtuální počítače v následujících oblastech: Západn�
 
 Automaticky spravujte registraci, konfiguraci a monitorování v průběhu životního cyklu virtuálního počítače. [zde](virtual-machines-best-practices.md)jsou uvedené služby.
 
+**Funguje Azure automanage s virtuálními počítači s podporou ARC Azure?**
+
+Služba automanage aktuálně nepodporuje virtuální počítače s podporou ARC.
 
 **Můžu přizpůsobit konfigurace v Azure automanage?**
 
@@ -88,7 +92,7 @@ Ano, máme vestavěnou zásadu, která automaticky aplikuje správu na všechny 
 
 **Při povolování automanage má vliv na všechny další virtuální počítače kromě vybraných virtuálních počítačů?**
 
-Pokud je váš virtuální počítač propojený s existujícím pracovním prostorem Log Analytics, bude možné tento pracovní prostor použít k použití těchto řešení: Change Tracking, inventarizaci a Update Management. Všem virtuálním počítačům připojeným k tomuto pracovnímu prostoru budou tato řešení povolena. 
+Pokud je váš virtuální počítač propojený s existujícím pracovním prostorem Log Analytics, bude možné tento pracovní prostor použít k použití těchto řešení: Change Tracking, inventarizaci a Update Management. Všem virtuálním počítačům připojeným k tomuto pracovnímu prostoru budou tato řešení povolena.
 
 
 **Můžu změnit konfigurační profil mého virtuálního počítače?**

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: ccdf5885dd1199ff8ed8000e5feaf80662aae42a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4dc5b84ff127aef173deecfd2be705004d92ee0c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318058"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449928"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Řešení monitorování sítě Azure v Azure Monitor
 
@@ -87,10 +87,10 @@ K instalaci a konfiguraci řešení Azure Application Gateway Analytics použijt
 1. V Azure Portal přejděte na prostředek Application Gateway a sledujte ho.
 2. Výběrem *diagnostické protokoly* otevřete následující stránku.
 
-   ![Obrázek prostředku Azure Application Gateway](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
+   ![Snímek obrazovky se stránkou diagnostické protokoly pro prostředek Application Gateway, který ukazuje možnost zapnout diagnostiku.](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
 3. Kliknutím na *zapnout diagnostiku* otevřete následující stránku.
 
-   ![Obrázek prostředku Azure Application Gateway](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
+   ![Snímek obrazovky stránky pro konfiguraci nastavení diagnostiky Možnost pro odeslání do Log Analytics je vybrána, protože se jedná o tři typy protokolů a metriku.](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
 4. Pokud chcete zapnout diagnostiku, klikněte *na pod* položkou *stav*.
 5. Kliknutím na zaškrtávací políčko pro *odeslání Log Analytics*.
 6. Vyberte existující pracovní prostor Log Analytics nebo vytvořte pracovní prostor.
@@ -123,9 +123,9 @@ Po kliknutí na dlaždici **Azure Application Gateway Analytics** v přehledu m�
   * Stav hostitele pro Application Gateway
   * Maximální a 95. percentilu pro Application Gateway neúspěšné žádosti
 
-![Obrázek řídicího panelu analýzy Azure Application Gateway](media/azure-networking-analytics/log-analytics-appgateway01.png)
+![Snímek obrazovky s řídicím panelem protokolů Application Gateway, kde se zobrazují dlaždice s daty pro chyby brány, požadavky a žádosti o selhání](media/azure-networking-analytics/log-analytics-appgateway01.png)
 
-![Obrázek řídicího panelu analýzy Azure Application Gateway](media/azure-networking-analytics/log-analytics-appgateway02.png)
+![Snímek obrazovky s řídicím panelem protokolů Application Gateway, ve kterém se zobrazují dlaždice s daty pro chyby podle uživatelského agenta, stavu hostitele a neúspěšných požadavků.](media/azure-networking-analytics/log-analytics-appgateway02.png)
 
 Na řídicím panelu **Azure Application Gateway Analytics** zkontrolujte souhrnné informace v jednom z oken a potom kliknutím na jednu Zobrazte podrobné informace na stránce prohledávání protokolu.
 
@@ -158,10 +158,10 @@ K instalaci a konfiguraci řešení Azure Networking Analytics použijte násled
 1. V Azure Portal přejděte na prostředek skupiny zabezpečení sítě, který se bude monitorovat.
 2. Výběrem *diagnostické protokoly* otevřete následující stránku
 
-   ![Obrázek prostředku skupiny zabezpečení sítě Azure](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
+   ![Snímek obrazovky se stránkou diagnostické protokoly pro prostředek skupiny zabezpečení sítě, který ukazuje možnost zapnout diagnostiku.](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
 3. Kliknutím na *zapnout diagnostiku* otevřete následující stránku.
 
-   ![Obrázek prostředku skupiny zabezpečení sítě Azure](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
+   ![Snímek obrazovky stránky pro konfiguraci nastavení diagnostiky Stav je nastaven na zapnuto, je vybrána možnost Odeslat do Log Analytics a jsou vybrány dva typy protokolů.](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
 4. Pokud chcete zapnout diagnostiku, *klikněte na* pod položkou *stav* .
 5. Kliknutím na zaškrtávací políčko pro *odeslání Log Analytics*
 6. Vyberte existující pracovní prostor Log Analytics nebo vytvořte pracovní prostor.
@@ -189,9 +189,9 @@ Po kliknutí na dlaždici **Azure Network Security Group Analytics** na přehled
   * Pravidla skupiny zabezpečení sítě s povolenými toky
   * Adresy MAC s povolenými toky
 
-![Obrázek řídicího panelu analýzy skupin zabezpečení sítě Azure](media/azure-networking-analytics/log-analytics-nsg01.png)
+![Snímek obrazovky s daty pro skupinu zabezpečení sítě: blokované toky, včetně pravidel s blokovanými toky a adresou MAC s blokovanými toky.](media/azure-networking-analytics/log-analytics-nsg01.png)
 
-![Obrázek řídicího panelu analýzy skupin zabezpečení sítě Azure](media/azure-networking-analytics/log-analytics-nsg02.png)
+![Snímek obrazovky dlaždic s daty pro skupinu zabezpečení sítě: povolené toky, včetně pravidel s povolenými toky a adresami MAC s povolenými toky.](media/azure-networking-analytics/log-analytics-nsg02.png)
 
 Na řídicím panelu **Analytics skupiny zabezpečení sítě Azure** zkontrolujte souhrnné informace v jednom z oken a potom kliknutím na jednu Zobrazte podrobné informace na stránce prohledávání protokolu.
 
@@ -221,7 +221,7 @@ Použití aktualizovaných řešení:
    + Pro každé pole, které má \_ v názvu příponu s, \_ d nebo \_ g, změňte první znak na malá písmena.
    + Pro každé pole, které má příponu \_ o v názvu, jsou data rozdělena do jednotlivých polí na základě názvů vnořených polí.
 4. Odeberte řešení *Azure Networking Analytics (zastaralé)* .
-   + Pokud používáte PowerShell, použijte`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
+   + Pokud používáte PowerShell, použijte `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 
 Data shromážděná před změnou nejsou v novém řešení viditelná. Můžete pokračovat v dotazování na tato data pomocí starého názvu typu a pole.
 

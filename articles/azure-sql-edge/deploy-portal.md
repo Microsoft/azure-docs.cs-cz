@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: ffd967797a4e586387a0385169672220727f78a7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 683a3fc148d3521366beef4427e87200ea81a9f3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886762"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445725"
 ---
 # <a name="deploy-azure-sql-edge"></a>Nasazení Edge Azure SQL 
 
@@ -62,7 +62,6 @@ Azure Marketplace je tržiště aplikací a služeb online, kde můžete prochá
 
    |**Parametr**  |**Popis**|
    |---------|---------|
-   | Name | Název modulu. |
    | MSSQL_SA_PASSWORD  | Změnou výchozí hodnoty určete silné heslo pro účet správce SQL Edge. |
    | MSSQL_LCID   | Změnou výchozí hodnoty nastavte požadované ID jazyka pro použití pro SQL Edge. Například 1036 je francouzština. |
    | MSSQL_COLLATION | Změnou výchozí hodnoty nastavte výchozí kolaci pro SQL Edge. Toto nastavení přepíše výchozí mapování ID jazyka (LCID) na kolaci. |
@@ -110,7 +109,7 @@ Azure Marketplace je tržiště aplikací a služeb online, kde můžete prochá
    
 8. V podokně **aktualizovat IoT Edge modul** klikněte na **aktualizovat**.
 9. Na stránce **nastavit moduly na zařízení** klikněte na **další: trasy >** , pokud potřebujete definovat trasy pro vaše nasazení. V opačném případě klikněte na tlačítko **zkontrolovat + vytvořit**. Další informace o konfiguraci tras najdete v tématu [nasazení modulů a vytváření tras v IoT Edge](../iot-edge/module-composition.md).
-11. V podokně **aktualizovat IoT Edge modul** klikněte na **vytvořit**.
+11. Na stránce **nastavit moduly na zařízení** klikněte na **vytvořit**.
 
 ## <a name="connect-to-azure-sql-edge"></a>Připojení k Edge SQL Azure
 

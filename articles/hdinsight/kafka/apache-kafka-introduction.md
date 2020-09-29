@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
-ms.openlocfilehash: 8c22ff3cc79d326da09c44167519adbea48b5643
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c6209ae985f8e59e1acae2d8fd6a1c821acae5a7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651331"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449544"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Co je Apache Kafka ve službě Azure HDInsight
 
@@ -33,7 +33,9 @@ Tady jsou konkrétní charakteristiky systému Kafka ve službě HDInsight:
 
     Další informace najdete v tématu [Vysoká dostupnost s Apache Kafka v HDInsight](apache-kafka-high-availability.md).
 
-* HDInsight umožňuje změnit počet pracovních uzlů (které jsou hostiteli zprostředkovatele Kafka) po vytvoření clusteru. Škálování lze provádět z webu Azure Portal, prostředí Azure PowerShell a dalších rozhraní správy Azure. V případě platformy Kafka byste po operacích škálování měli obnovit rovnováhu replik oddílů. Díky vyrovnání rovnováhy oddílů může platforma Kafka využívat nový počet pracovních uzlů.
+* HDInsight umožňuje změnit počet pracovních uzlů (které jsou hostiteli zprostředkovatele Kafka) po vytvoření clusteru. Škálování směrem nahoru se dá provádět z Azure Portal, Azure PowerShell a dalších rozhraní pro správu Azure. V případě platformy Kafka byste po operacích škálování měli obnovit rovnováhu replik oddílů. Díky vyrovnání rovnováhy oddílů může platforma Kafka využívat nový počet pracovních uzlů.
+
+   HDInsight Kafka nepodporuje škálování směrem dolů ani snížení počtu zprostředkovatelů v rámci clusteru. Pokud je proveden pokus o snížení počtu uzlů, `InvalidKafkaScaleDownRequestErrorCode` je vrácena chyba.
 
     Další informace najdete v tématu [Vysoká dostupnost s Apache Kafka v HDInsight](apache-kafka-high-availability.md).
 

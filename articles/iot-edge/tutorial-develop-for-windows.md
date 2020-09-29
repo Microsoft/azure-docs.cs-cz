@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d4846a69f548c99de735cc9d9e06bd6bb263b4bd
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: a0bc934d32a2d09fcd6b52ec1f186855bf0da92c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439689"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449624"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Kurz: vývoj modulů IoT Edge pro zařízení s Windows
 
@@ -51,7 +51,7 @@ V následující tabulce jsou uvedeny podporované vývojářské scénáře pro
 | **Jazyky** | C# (ladění není podporováno) | C <br> C# |
 | **Další informace** | [Azure IoT Edge pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)<br>[Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vývojový počítač:
 
@@ -281,7 +281,7 @@ Ověřili jste, že jsou sestavené image kontejneru uložené v registru kontej
 
    ![Vytvoření nasazení pro jedno zařízení](./media/tutorial-develop-for-windows/create-deployment.png)
 
-3. V Průzkumníku souborů přejděte do konfigurační složky vašeho projektu a vyberte **deployment.windows-amd64.jsv** souboru. Tento soubor se často nachází v`C:\Users\<username>\source\repos\CSharpTutorialApp\CSharpTutorialApp\config\deployment.windows-amd64.json`
+3. V Průzkumníku souborů přejděte do konfigurační složky vašeho projektu a vyberte **deployment.windows-amd64.jsv** souboru. Tento soubor se často nachází v `C:\Users\<username>\source\repos\CSharpTutorialApp\CSharpTutorialApp\config\deployment.windows-amd64.json`
 
    Nepoužívejte deployment.template.jsv souboru, ve kterém nejsou k dispozici úplné hodnoty imagí modulu.
 

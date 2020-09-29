@@ -1,22 +1,22 @@
 ---
-title: Nastavení výstrah a oznámení (Azure Portal)
+title: Nastavení výstrah a oznámení v Azure Portal
 description: Pomocí Azure Portal můžete vytvářet výstrahy, které můžou aktivovat oznámení nebo automatizaci při splnění podmínek, které zadáte.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: fdfa709d50f351d3202a01c5d3df65bb3015e887
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2fdaaf153f242a25e1ad9d8f926d6ac77d285df2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335107"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444910"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Vytváření upozornění pro Azure SQL Database a Azure synapse Analytics pomocí Azure Portal
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]

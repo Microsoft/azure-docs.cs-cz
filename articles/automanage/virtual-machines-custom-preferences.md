@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: cf8e7340ce3554bf27364335457a5b7eadcdc049
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7a716ed9bca6d34ad4dbcd2566837a839f71153b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935229"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450307"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>Vytvoření vlastní preference v Azure automanage pro virtuální počítače
 
@@ -34,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 > Bezplatné zkušební účty nemají přístup k virtuálním počítačům použitým v tomto kurzu. Upgradujte prosím na předplatné s průběžnými platbami.
 
 > [!IMPORTANT]
-> Následující oprávnění RBAC je potřeba k povolení funkce automanage: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatelů** .
+> K povolení funkce automanage můžete použít následující oprávnění RBAC: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatelů** .
 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
@@ -57,11 +57,11 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 4. V části **konfigurační profil**klikněte na **Procházet a změňte profily a předvolby**.
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="Procházet a změnit profily a předvolby.":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="Vyberte existující virtuální počítač ze seznamu dostupných virtuálních počítačů.":::
 
 5. V okně **vybrat konfigurační profil + Předvolby** vyberte profil na levé straně: *vývoj/testování* pro testování, *prod* pro produkci.
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="Procházet konfigurační profil v produkčním prostředí":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="Vyberte existující virtuální počítač ze seznamu dostupných virtuálních počítačů.":::
 
 6. Ve vybraném profilu je v části **Předvolby konfigurace** k dispozici rozevírací seznam, ve kterém můžete upravit konkrétní služby.
     1. Klikněte na **vytvořit nové předvolby**.
@@ -69,9 +69,9 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
         1. Předplatné
         1. Skupina prostředků
         1. Název předvolby
-        1. Oblast
+        1. Region (Oblast)
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Vyplňte předvolby konfigurace.":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Vyberte existující virtuální počítač ze seznamu dostupných virtuálních počítačů.":::
 
 7. Přejít na kartu Předvolby a upravte požadované předvolby konfigurace.
         
@@ -88,7 +88,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 Rychlé ukončení používání služby Azure automanage pro virtuální počítače zakázáním automatizované správy.
 
-:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="Zakázání automanage na virtuálním počítači.":::
+:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="Vyberte existující virtuální počítač ze seznamu dostupných virtuálních počítačů.":::
 
 1. Navštivte stránku pro automatické spravování **– osvědčené postupy pro virtuální počítače Azure** se seznamem všech vašich automatických spravovaných virtuálních počítačů.
 1. Zaškrtněte políčko vedle virtuálního počítače, který chcete zakázat.

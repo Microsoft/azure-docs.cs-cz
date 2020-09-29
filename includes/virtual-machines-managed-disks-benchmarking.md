@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: da5811abec889bcc47d08878a0950df7f0983663
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5fea0cb8c6ac3f706cfef5e4a153fbbf4ff465b8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010817"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91451580"
 ---
 *Zahřívání mezipaměti*  
 Disk s ukládáním do mezipaměti hostitele jen pro čtení umožňuje poskytnout vyšší IOPS, než je limit disku. Chcete-li získat tento maximální výkon pro čtení z mezipaměti hostitele, nejprve je nutné zahříváním mezipaměti tohoto disku. Tím se zajistí, že se v IOs pro čtení, který nástroj pro srovnávací testy na svazek CacheReads, bude ve skutečnosti načítat mezipaměť, a ne přímo disk. Výsledkem přístupů do mezipaměti je další IOPS z disku s povolenou jedinou mezipamětí.
@@ -25,7 +25,7 @@ Disk s ukládáním do mezipaměti hostitele jen pro čtení umožňuje poskytno
 
 ### <a name="iometer"></a>Iometer
 
-[Stáhněte si nástroj IOMeter](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) na virtuálním počítači.
+[Stáhněte si nástroj IOMeter](http://sourceforge.net/projects/iometer/files/iometer-stable/1.1.0/iometer-1.1.0-win64.x86_64-bin.zip/download) na virtuálním počítači.
 
 #### <a name="test-file"></a>Testovací soubor
 

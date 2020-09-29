@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 160137ca2d14e0012a524ee0818b7fb269fa7984
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b7b70e8a408c22be0331bfd0dcbe01830b072ab8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90980178"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449976"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Nastavení žádosti o změnu pro balíček přístupu v Azure AD – Správa nároků
 
@@ -125,8 +125,8 @@ Postupujte podle těchto kroků, pokud chcete uživatelům, kteří nejsou ve va
     |  |  |
     | --- | --- |
     | **Konkrétní propojené organizace** | Tuto možnost vyberte, pokud chcete vybrat ze seznamu organizací, které jste přidali jako správce. Přístup k tomuto balíčku můžou vyžádat všichni uživatelé z vybraných organizací. |
-    | **Všechny připojené organizace** | Tuto možnost vyberte, pokud všichni uživatelé ze všech připojených organizací můžou tento balíček přístupu požádat. |
-    | **Všichni uživatelé (všechny připojené organizace a všichni noví externí uživatelé)** | Tuto možnost vyberte, pokud všichni uživatelé ze všech připojených organizací můžou požádat o tento balíček přístupu a že nastavení seznam povolených a zakázaných B2B by mělo mít přednost pro všechny nové externí uživatele. |
+    | **Všechny nakonfigurované připojené organizace** | Tuto možnost vyberte, pokud všichni uživatelé ze všech nakonfigurovaných připojených organizací můžou tento balíček přístupu požádat. Pouze uživatelé z konfigurovaných organizací můžou žádat o přístup k balíčkům, které se zobrazují uživatelům ze všech nakonfigurovaných organizací. |
+    | **Všichni uživatelé (všechny připojené organizace a všichni noví externí uživatelé)** | Tuto možnost vyberte, pokud má některý uživatel na Internetu možnost požádat o tento balíček přístupu.  Pokud nepatří do připojené organizace ve vašem adresáři, při vyžádání balíčku se automaticky vytvoří připojená organizace. Automaticky vytvořená propojená organizace bude v **navrhovaném** stavu. Další informace o navrhovaných stavech najdete v tématu [Vlastnosti stavu propojených organizací](entitlement-management-organization.md#state-properties-of-connected-organizations). |
 
     Připojená organizace je externí adresář nebo doména služby Azure AD, ke kterým máte relaci.
 

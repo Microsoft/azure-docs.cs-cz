@@ -1,22 +1,22 @@
 ---
 title: 'Azure ExpressRoute: Konfigurace ExpressRoute Direct'
-description: Přečtěte si, jak pomocí Azure PowerShell nakonfigurovat Azure ExpressRoute Direct pro přímé připojení k globální síti Microsoftu v umístěních partnerských vztahů po celém světě.
+description: Naučte se, jak pomocí Azure PowerShell nakonfigurovat Azure ExpressRoute Direct pro přímé připojení k globální síti Microsoft.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: c4ce764f50f85ef9979d5a14235759c16228f6b7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 1748db76aa2d1f65ea21046bcff2fff43ca732b0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396025"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450190"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Jak nakonfigurovat ExpressRoute Direct
 
-ExpressRoute Direct nabízí možnost připojit se přímo k globální síti Microsoftu při partnerských umístěních, která jsou strategicky distribuována po celém světě. Další informace najdete v článku o [ExpressRoute Direct](expressroute-erdirect-about.md).
+ExpressRoute Direct vám umožní přímo se připojit k globální síti Microsoftu prostřednictvím umístění partnerských vztahů, které jsou v celém světě strategické distribuce. Další informace najdete v článku o [ExpressRoute Direct](expressroute-erdirect-about.md).
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Vytvoření prostředku
 
@@ -155,10 +155,20 @@ ExpressRoute Direct nabízí možnost připojit se přímo k globální síti Mi
    Circuits                   : []
    ```
 
-## <a name="change-admin-state-of-links"></a><a name="state"></a>Změnit stav Správce odkazů
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>Vygenerovat písmeno autorizace (LOA)
 
-  Tento proces by měl být použit k provedení testu vrstvy 1, čímž se zajistí, že každé připojení mezi jednotlivými směrovači je u primárních a sekundárních zařízení správně opraveno.
-1. Získat podrobnosti o ExpressRoute
+Odkažte na nedávno vytvořený ExpressRoute přímý prostředek, zadejte název zákazníka pro zápis LOA do a (volitelně) definujte umístění souboru pro uložení dokumentu. Pokud na cestu k souboru neodkazuje, dokument se stáhne do aktuálního adresáře.
+
+  ```powershell 
+   New-AzExpressRoutePortLOA -ExpressRoutePort $ERDirect -CustomerName TestCustomerName -Destination "C:\Users\SampleUser\Downloads" 
+   ```
+ **Příklad výstupu**
+
+   ```powershell
+   Written Letter of Authorization To: C:\Users\SampleUser\Downloads\LOA.pdf
+
+  This process should be used to conduct a Layer 1 test, ensuring that each cross-connection is properly patched into each router for primary and secondary.
+1. Get ExpressRoute Direct details.
 
    ```powershell
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
@@ -227,13 +237,13 @@ ExpressRoute Direct nabízí možnost připojit se přímo k globální síti Mi
 
 ## <a name="create-a-circuit"></a><a name="circuit"></a>Vytvoření okruhu
 
-Ve výchozím nastavení můžete vytvořit 10 okruhů v rámci předplatného, kde je prostředek ExpressRoute Direct. To se dá zvýšit podporou. Zodpovídáte za sledování zřízené i využité šířky pásma. Zřízená šířka pásma je celková šířka šířky pásma všech okruhů v prostředku ExpressRoute Direct a využité šířky pásma je fyzické využití základních fyzických rozhraní.
+Ve výchozím nastavení můžete vytvořit 10 okruhů v rámci předplatného, kde je prostředek ExpressRoute Direct. Toto omezení se dá zvýšit díky podpoře. Zodpovídáte za sledování zřízené i využité šířky pásma. Zřízená šířka pásma je celková šířka šířky pásma všech okruhů v prostředku ExpressRoute Direct a využité šířky pásma je fyzické využití základních fyzických rozhraní.
 
-K dispozici jsou další šířky pásma okruhů, které je možné využít na ExpressRoute přímo pro podporu scénářů uvedených výše. Jsou to tyto: 40Gbps a 100Gbps.
+K dispozici jsou další šířky pásma okruhů, které je možné využít na ExpressRoute přímo k podpoře pouze těch scénářů uvedených výše. Tyto šířky pásma jsou 40 GB/s a 100 GB/s.
 
 **SkuTier** může být Local, Standard nebo Premium.
 
-**SkuFamily** musí být MeteredData pouze v případě, že v ExpressRoute Direct není podporována žádná neomezená velikost.
+**SkuFamily** může být MeteredData. V ExpressRoute Direct se nepodporuje neomezený počet.
 
 Vytvořte okruh na prostředku ExpressRoute Direct.
 

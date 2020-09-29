@@ -3,12 +3,12 @@ title: Zařízení Azure Migrate
 description: Poskytuje souhrn podpory pro zařízení Azure Migrate.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: e2bd3f2fa40bbf31713393f18a04624d70cbd244
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084766"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450048"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -20,9 +20,9 @@ Zařízení Azure Migrate se používá v následujících scénářích.
 
 **Scénář** | **Nástroj** | **Použití** 
 --- | --- | ---
-**Posouzení virtuálního počítače VMware** | Azure Migrate: posouzení serveru | Zjistit virtuální počítače VMware<br/><br/> Zjistit aplikace a závislosti počítačů<br/><br/> Shromažďovat metadata počítače a metadata výkonu pro posouzení.
-**Migrace bez agentů virtuálního počítače VMware** | Azure Migrate: Migrace serveru | Zjistit virtuální počítače VMware <br/><br/> Replikace virtuálních počítačů VMware s migrací bez agentů
-**Posouzení virtuálního počítače Hyper-V** | Azure Migrate: posouzení serveru | Zjistit virtuální počítače Hyper-V<br/><br/> Shromažďovat metadata počítače a metadata výkonu pro posouzení.
+**Posouzení virtuálního počítače VMware** | Azure Migrate: posouzení serveru | Zjišťování virtuálních počítačů VMware<br/><br/> Zjistit aplikace a závislosti počítačů<br/><br/> Shromažďovat metadata počítače a metadata výkonu pro posouzení.
+**Migrace bez agentů virtuálního počítače VMware** | Azure Migrate: Migrace serveru | Zjišťování virtuálních počítačů VMware <br/><br/> Replikace virtuálních počítačů VMware s migrací bez agentů
+**Posouzení virtuálního počítače Hyper-V** | Azure Migrate: posouzení serveru | Zjišťování virtuálních počítačů Hyper-V<br/><br/> Shromažďovat metadata počítače a metadata výkonu pro posouzení.
 **Posouzení fyzického počítače** |  Azure Migrate: posouzení serveru |  Objevte fyzické servery (nebo virtuální počítače, které považujete za fyzické servery).<br/><br/> Shromažďovat metadata počítače a metadata výkonu pro posouzení.
 
 ## <a name="deployment-methods"></a>Metody nasazení
@@ -47,12 +47,12 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 **Podporované nasazení** | Nasaďte jako virtuální počítač VMware pomocí šablony vajíček.<br/><br/> Nasaďte jako virtuální počítač VMware nebo fyzický počítač pomocí instalačního skriptu PowerShellu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Omezení zjišťování** | Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.<br/> Zařízení se může připojit k jednomu vCenter Server.
-**Šablona vajíček** | Stáhnout z portálu nebo [odsud](https://go.microsoft.com/fwlink/?linkid=2140333)<br/><br/> Velikost ke stažení je 11,6 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
+**Šablona vajíček** | Stáhnout z portálu nebo [odsud](https://go.microsoft.com/fwlink/?linkid=2140333)<br/><br/> Velikost ke stažení je 11,9 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
 **Skript prostředí PowerShell** | Informace najdete v tomto [článku](./deploy-appliance-script.md#set-up-the-appliance-for-vmware).<br/><br/> 
 **Software a hardware** |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 32-GB RAM, 8 vCPU, kolem 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud spustíte zařízení na virtuálním počítači VMware, budete potřebovat dostatek prostředků na vCenter Server k přidělení virtuálního počítače, který splňuje požadavky.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware.
 **Požadavky VMware** | Pokud zařízení nasadíte jako virtuální počítač VMware, musí být nasazen na hostiteli ESXi se spuštěnou verzí 5,5 nebo novější.<br/><br/> vCenter Server se spouští 5,5, 6,0, 6,5 nebo 6,7.
 **VDDK (migrace bez agenta)** | Pokud zařízení nasadíte jako virtuální počítač VMware a máte spuštěnou migraci bez agenta, musí být na virtuálním počítači zařízení nainstalovaná VMware vSphere VDDK.
-**Hodnota hash – VAJÍČKa** | [Ověřte](tutorial-assess-vmware.md#verify-security) hodnoty hash šablony vajíček.
+**Hodnota hash – VAJÍČKa** | [Ověřte](tutorial-discover-vmware.md#verify-security) hodnoty hash šablony vajíček.
 **Hodnota hash – skript prostředí PowerShell** | [Ověřte](deploy-appliance-script.md#verify-file-security) hodnoty hash skriptu PowerShellu.
 
 
@@ -67,11 +67,11 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 **Podporované nasazení** | Nasaďte jako virtuální počítač Hyper-V pomocí šablony VHD.<br/><br/> Nasaďte jako virtuální počítač Hyper-V nebo fyzický počítač pomocí instalačního skriptu PowerShellu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Omezení zjišťování** | Zařízení může zjistit až 5000 virtuálních počítačů Hyper-V.<br/> Zařízení se může připojit k až 300 hostitelům Hyper-V.
-**Šablona VHD** | Složka zip, včetně VHD. Stáhněte si ho z portálu nebo [tady](https://go.microsoft.com/fwlink/?linkid=2140422).<br/><br/> Velikost ke stažení je 10,4 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
+**Šablona VHD** | Složka zip, včetně VHD. Stáhněte si ho z portálu nebo [tady](https://go.microsoft.com/fwlink/?linkid=2140422).<br/><br/> Velikost ke stažení je 8,91 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
 **Skript prostředí PowerShell** | Informace najdete v tomto [článku](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).<br/><br/> 
-**Software a hardware***   |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 16 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte jako virtuální počítač Hyper-V, budete potřebovat dostatek prostředků na hostiteli Hyper-V, abyste mohli přidělit 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externí přepínač pro virtuální počítač zařízení.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware. 
+**Software a hardware***   |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 16 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte jako virtuální počítač Hyper-V, budete potřebovat dostatek prostředků na hostiteli Hyper-V, abyste mohli přidělit hardwarové požadavky.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware. 
 **Požadavky technologie Hyper-V** | Pokud nasadíte zařízení se šablonou VHD, virtuální počítač zařízení, který poskytuje Azure Migrate, je Hyper-V VM verze 5,0.<br/><br/> Na hostiteli Hyper-V musí běžet Windows Server 2012 R2 nebo novější. 
-**Hodnota hash – VHD** | Hodnoty hash šablony VHD
+**Hodnota hash – VHD** | [Ověřit](tutorial-discover-hyper-v.md#verify-security) Hodnoty hash šablony VHD
 **Hodnota hash – skript prostředí PowerShell** | [Ověřte](deploy-appliance-script.md#verify-file-security) hodnoty hash skriptu PowerShellu.
 
 
@@ -84,9 +84,9 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 **Podporované nasazení** | Nasaďte jako vyhrazený fyzický počítač nebo virtuální počítač pomocí instalačního skriptu PowerShellu. Skript je k dispozici ke stažení na portálu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Omezení zjišťování** | Zařízení může zjistit až 1000 fyzických serverů.
-**Skript prostředí PowerShell** | Stáhněte si skript (AzureMigrateInstaller.ps1) ve složce zip z portálu nebo z [tohoto místa](https://go.microsoft.com/fwlink/?linkid=2140334). [Přečtěte si další informace](tutorial-discover-physical.md).<br/><br/> Velikost ke stažení je 85 MB.
-**Software a hardware** |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 16 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware.<br/> Spuštění zařízení na počítači s Windows serverem 2019 se nepodporuje.
-**Hodnota hash** | [Ověřte](deploy-appliance-script.md#verify-file-security) hodnoty hash skriptu PowerShellu.
+**Skript prostředí PowerShell** | Stáhněte si skript (AzureMigrateInstaller.ps1) ve složce zip z portálu nebo z [tohoto místa](https://go.microsoft.com/fwlink/?linkid=2140334). [Přečtěte si další informace](tutorial-discover-physical.md).<br/><br/> Velikost ke stažení je 85,8 MB.
+**Software a hardware** |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 16 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware.<br/>_(V současné době se nasazení zařízení podporuje jenom v systému Windows Server 2016.)_
+**Hodnota hash** | [Ověřte](tutorial-discover-physical.md#verify-security) hodnoty hash skriptu PowerShellu.
 
 ## <a name="url-access"></a>Přístup URL
 
@@ -180,7 +180,7 @@ IPv6 adresy | síť. Guest.Net
 Propustnost čtení (MB za sekundu) | NET. Received. Average
 Propustnost zápisu (MB za sekundu) | NET. přenášeno. Average
 **Podrobnosti o cestě inventáře** | 
-Name | vnitřního. GetType (). Jméno
+Název | vnitřního. GetType (). Jméno
 Typ podřízeného objektu | vnitřního. ChildType
 Referenční informace | vnitřního. MoRef
 Podrobnosti nadřazené položky | Kontejner. Parent
@@ -227,7 +227,7 @@ Tady jsou funkce data, která zařízení shromažďuje z každého virtuálníh
 
 **Data**  | **Rutina PowerShellu** | **Vlastnost**
 --- | --- | ---
-Name  | Get – WindowsFeature  | Name
+Název  | Get – WindowsFeature  | Název
 Typ funkce | Get – WindowsFeature  | FeatureType
 Nadřazený  | Get – WindowsFeature  | Nadřazený
 
@@ -237,7 +237,7 @@ Tady jsou metadata SQL serveru, která zařízení shromažďuje z virtuálních
 
 **Data**  | **Umístění registru**  | **Klíč**
 --- | --- | ---
-Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Název  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
 Edice  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Edice 
 Aktualizace Service Pack  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
 Verze  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Verze 
@@ -248,7 +248,7 @@ Zde jsou data operačního systému, která zařízení shromažďují každý v
 
 Data  | Třída WMI  | Vlastnost třídy WMI
 --- | --- | ---
-Name  | Win32_operatingsystem  | Titulek
+Název  | Win32_operatingsystem  | Titulek
 Verze  | Win32_operatingsystem  | Verze
 Architektura  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Tady je nainstalovaná data aplikace, která zařízení shromažďuje z každé
 
 Data  | Příkaz
 --- | --- 
-Name | ot./min., bázi dpkg – dotaz, přichycení
+Název | ot./min., bázi dpkg – dotaz, přichycení
 Verze | ot./min., bázi dpkg – dotaz, přichycení
 Poskytovatel | ot./min., bázi dpkg – dotaz, přichycení
 
@@ -268,7 +268,7 @@ Zde jsou data operačního systému, která zařízení shromažďují každý v
 
 **Data**  | **Příkaz** 
 --- | --- | ---
-Name <br/> verze | Shromážděno z jednoho nebo více následujících souborů:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Název <br/> verze | Shromážděno z jednoho nebo více následujících souborů:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 Architektura | uname
 
 

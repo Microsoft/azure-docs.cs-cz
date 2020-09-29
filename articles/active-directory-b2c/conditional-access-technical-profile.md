@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2a62b55ce7f8cd408afeb2f10fd40f42b36d53d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ef7599441cbfa11c555453adea0ca135569524b5
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393934"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91459825"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu podmíněného přístupu v Azure Active Directory B2C vlastní zásady
 
@@ -53,7 +53,7 @@ Pro každé přihlášení Azure AD B2C vyhodnotí všechny zásady a před udě
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Typem operace OperationType | Yes | Musí být **vyhodnocena**.  |
+| Typem operace OperationType | Ano | Musí být **vyhodnocena**.  |
 
 ### <a name="input-claims"></a>Vstupní deklarace identity
 
@@ -61,10 +61,10 @@ Element **InputClaims** obsahuje seznam deklarací pro odeslání do podmíněn�
 
 | ClaimReferenceId | Vyžadováno | Typ dat | Popis |
 | --------- | -------- | ----------- |----------- |
-| UserId | Yes | řetězec | Identifikátor uživatele, který se přihlásí. |
-| AuthenticationMethodsUsed | Yes |Třída StringCollection | Seznam metod, které uživatel použil k přihlášení Možné hodnoty: `Password` , a `OneTimePasscode` . |
-| Federované | Yes |boolean | Označuje, jestli se uživatel přihlásil pomocí federovaného účtu. Hodnota musí být `false` . |
-| IsMfaRegistered | Yes |boolean | Označuje, zda již uživatel zaregistroval telefonní číslo pro službu Multi-Factor Authentication. |
+| UserId | Ano | řetězec | Identifikátor uživatele, který se přihlásí. |
+| AuthenticationMethodsUsed | Ano |Třída StringCollection | Seznam metod, které uživatel použil k přihlášení Možné hodnoty: `Password` , a `OneTimePasscode` . |
+| Federované | Ano |boolean | Označuje, jestli se uživatel přihlásil pomocí federovaného účtu. Hodnota musí být `false` . |
+| IsMfaRegistered | Ano |boolean | Označuje, zda již uživatel zaregistroval telefonní číslo pro službu Multi-Factor Authentication. |
 
 
 Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací identity nebo k vygenerování nových objektů před jejich odesláním do služby podmíněného přístupu.
@@ -75,8 +75,8 @@ Element **OutputClaims** obsahuje seznam deklarací generovaných ConditionalAcc
 
 | ClaimReferenceId | Vyžadováno | Typ dat | Popis |
 | --------- | -------- | ----------- |----------- |
-| Výzvy | Yes |Třída StringCollection | Seznam akcí pro nápravu identifikované hrozby. Možné hodnoty: `block` |
-| MultiConditionalAccessStatus | Yes | Třída StringCollection |  |
+| Výzvy | Ano |Třída StringCollection | Seznam akcí pro nápravu identifikované hrozby. Možné hodnoty: `block` |
+| MultiConditionalAccessStatus | Ano | Třída StringCollection |  |
 
 Element **OutputClaimsTransformations** může obsahovat kolekci prvků **OutputClaimsTransformation** , které se používají k úpravě výstupních deklarací identity nebo k vygenerování nových.
 
@@ -92,7 +92,7 @@ Následující příklad ukazuje technický profil podmíněného přístupu, kt
     <Item Key="OperationType">Evaluation</Item>
   </Metadata>
   <InputClaimsTransformations>
-    <InputClaimsTransformation ReferenceId="IsMfaRegistered" />
+    <InputClaimsTransformation ReferenceId="IsMfaRegisteredCT" />
   </InputClaimsTransformations>
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="UserId" />
@@ -115,7 +115,7 @@ Režim **oprav** pro technický profil podmíněného přístupu informuje Azure
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Typem operace OperationType | Yes | Je nutné provést **nápravu**.  |
+| Typem operace OperationType | Ano | Je nutné provést **nápravu**.  |
 
 ### <a name="input-claims"></a>Vstupní deklarace identity
 
@@ -123,7 +123,7 @@ Element **InputClaims** obsahuje seznam deklarací pro odeslání do podmíněn�
 
 | ClaimReferenceId | Vyžadováno | Typ dat | Popis |
 | --------- | -------- | ----------- |----------- |
-| ChallengesSatisfied | Yes | Třída StringCollection| Seznam uspokojivých výzev k nápravě identifikované hrozby jako návrat z režimu vyhodnocení, s nárokem na výzvy.|
+| ChallengesSatisfied | Ano | Třída StringCollection| Seznam uspokojivých výzev k nápravě identifikované hrozby jako návrat z režimu vyhodnocení, s nárokem na výzvy.|
 
 
 Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputClaimsTransformation** , které se používají k úpravě vstupních deklarací identity nebo k vygenerování nových před voláním služby podmíněného přístupu.
@@ -367,6 +367,7 @@ Do prvku TrustFrameworkPolicy přidejte tyto dílčí cesty, jak je znázorněno
         </OrchestrationStep>
       </OrchestrationSteps>
     </SubJourney>
+  </SubJourneys>
 
 ```
 
@@ -376,7 +377,7 @@ Přidejte cestu uživatele, která používá nové deklarace identity, jak je z
   <UserJourneys>
     <UserJourney Id="SignUpOrSignInWithCA">
       <OrchestrationSteps>
-        <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsigninsam">
+        <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
           <ClaimsProviderSelections>
             <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
 
@@ -412,20 +413,14 @@ Přidejte cestu uživatele, která používá nové deklarace identity, jak je z
           </ClaimsExchanges>
         </OrchestrationStep>
 
-        <OrchestrationStep Order="4" Type="ClaimsExchange">
-          <ClaimsExchanges>
-            <ClaimsExchange Id="UserJourneyContext" TechnicalProfileReferenceId="SimpleUJContext" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-
-        <OrchestrationStep Order="5" Type="InvokeSubJourney">
+        <OrchestrationStep Order="4" Type="InvokeSubJourney">
           <JourneyList>
             <Candidate SubJourneyReferenceId="ConditionalAccess_Evaluation" />
           </JourneyList>
         </OrchestrationStep>
 
         <!--MFA based on Conditional Access-->
-        <OrchestrationStep Order="6" Type="ClaimsExchange">
+        <OrchestrationStep Order="5" Type="ClaimsExchange">
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
               <Value>CAChallengeIsMfa</Value>
@@ -443,7 +438,7 @@ Přidejte cestu uživatele, která používá nové deklarace identity, jak je z
         </OrchestrationStep>
 
         <!--Save MFA phone number: The precondition verifies whether the user provided a new number in the previous step. If so, the phone number is stored in the directory for future authentication requests.-->
-        <OrchestrationStep Order="7" Type="ClaimsExchange">
+        <OrchestrationStep Order="6" Type="ClaimsExchange">
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
               <Value>newPhoneNumberEntered</Value>
@@ -455,7 +450,7 @@ Přidejte cestu uživatele, která používá nové deklarace identity, jak je z
           </ClaimsExchanges>
         </OrchestrationStep>
 
-        <OrchestrationStep Order="8" Type="ClaimsExchange" >
+        <OrchestrationStep Order="7" Type="ClaimsExchange" >
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
               <Value>CAChallengeIsBlock</Value>
@@ -474,12 +469,12 @@ Přidejte cestu uživatele, která používá nové deklarace identity, jak je z
 
         <!--If a user has reached this point, this means a remediation was applied-->
         <!--  You can add a precondition here to call remediation only if a Conditional Access challenge was issued-->
-        <OrchestrationStep Order="9" Type="InvokeSubJourney">
+        <OrchestrationStep Order="8" Type="InvokeSubJourney">
           <JourneyList>
             <Candidate SubJourneyReferenceId="ConditionalAccess_Remediation" />
           </JourneyList>
         </OrchestrationStep>
-        <OrchestrationStep Order="10" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        <OrchestrationStep Order="9" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
       </OrchestrationSteps>
       <ClientDefinition ReferenceId="DefaultWeb" />
     </UserJourney>

@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 6f5051dd7dedcc49320557f17148bcdc9bf539ab
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: a1e77b5f669d1b492f2d71063a6c77bec1178696
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399748"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449273"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Monitorování metrik a protokolů v frontách Azure na předních dveřích
 
 Pomocí front-dveří Azure můžete monitorovat prostředky následujícími způsoby:
 
-- **Metriky**. Přední dveře Azure mají v současné době sedm metrik pro zobrazení čítačů výkonu.
+- **Metriky**. Přední dveře Azure mají v současnosti osm metrik pro zobrazení čítačů výkonu.
 - **Protokoly**. Protokoly aktivit a diagnostiky umožňují uložit nebo spotřebovat data z prostředku pro účely monitorování.
 
 ### <a name="metrics"></a>Metriky
@@ -52,16 +52,16 @@ Přístup k protokolům aktivit ve front-Vratích nebo ve všech protokolech pro
 1. Vyberte instanci front-dveří.
 2. Vyberte **Protokol aktivit**.
 
-    ![Protokol aktivit](./media/front-door-diagnostics/activity-log.png)
+    :::image type="content" source="./media/front-door-diagnostics/activity-log.png" alt-text="Protokol aktivit":::
 
 3. Zvolte rozsah filtrování a pak vyberte **použít**.
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>Diagnostické protokoly
 Diagnostické protokoly poskytují obsáhlé informace o operacích a chybách, které jsou důležité pro auditování a řešení potíží. Diagnostické protokoly se liší od protokolů aktivit.
 
-Protokoly aktivit poskytují přehled o operacích provedených v prostředcích Azure. Diagnostické protokoly poskytují přehled o operacích, které provedl váš prostředek. Další informace najdete v tématu [Azure monitor diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md).
+Protokoly aktivit poskytují přehled o operacích provedených v prostředcích Azure. Diagnostické protokoly poskytují přehled o operacích, které váš prostředek dokončil. Další informace najdete v tématu [Azure monitor diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md).
 
-![Diagnostické protokoly](./media/front-door-diagnostics/diagnostic-log.png)
+:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="Protokol aktivit":::
 
 Konfigurace diagnostických protokolů pro vaše přední dveře:
 
@@ -103,7 +103,6 @@ Přední dveře aktuálně poskytují protokoly diagnostiky (v dávce po hodiná
 | Pravidlo směrování s povoleným ukládáním do mezipaměti. Přístup do mezipaměti na hraničním okně Edge | 1 | Hraniční kód POP | Obsahovat | Nepravda | KLEPNUTÍ |
 | Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na hraničním zařízení POP, ale přístupy do mezipaměti v nadřazené mezipaměti | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. prázdné | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. PARTIAL_HIT |
 | Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na úrovni POP hraničních i nadřazených cache | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. back-end, který pomáhá naplnit mezipaměť | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. NEÚSPĚŠNÉ |
-
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 09/28/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50c5c02327aa9f48a605607de901258827b14896
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 96106cc1d9f9040f98c7d9201f05b4cff87af7e5
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783939"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449896"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Přidání propojené organizace v Azure AD – Správa nároků
 
@@ -66,6 +66,8 @@ Pokud chcete přidat externí adresář nebo doménu služby Azure AD jako přip
 
     ![Podokno základy přidat připojenou organizaci](./media/entitlement-management-organization/organization-basics.png)
 
+1. Stav se automaticky nastaví na **nakonfigurováno** , když vytváříte novou propojenou organizaci. Další informace o vlastnostech stavu najdete v tématu [Vlastnosti stavu připojených organizací](#state-properties-of-connected-organizations) .
+
 1. Vyberte kartu **adresář + doména** a pak vyberte **Přidat adresář + doména**.
 
     Otevře se podokno **Vybrat adresáře a domény** .
@@ -109,7 +111,7 @@ Pokud se připojená organizace změní v jiné doméně, změní se název orga
 
 1. V levém podokně vyberte **propojené organizace**a pak ji otevřete, když vyberete připojenou organizaci.
 
-1. V podokně přehledu připojené organizace vyberte **Upravit** a změňte název nebo popis organizace.  
+1. V podokně přehledu připojené organizace vyberte **Upravit** a změňte název organizace, popis nebo stav.  
 
 1. V podokně **adresář a doména** vyberte **aktualizovat adresář + doména** , aby se změnila na jiný adresář nebo doménu.
 
@@ -135,6 +137,23 @@ Pokud už nebudete mít relaci s externím adresářem nebo doménou služby Azu
 ## <a name="managing-a-connected-organization-programmatically"></a>Programové řízení připojené organizace
 
 Připojené organizace můžete také vytvořit, vypsat, aktualizovat a odstranit pomocí Microsoft Graph. Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API pro správu objektů [connectedOrganization](/graph/api/resources/connectedorganization?view=graph-rest-beta) a pro ně nastavit sponzory.
+
+## <a name="state-properties-of-connected-organizations"></a>Vlastnosti stavu propojených organizací
+
+Existují dva různé typy vlastností stavu pro připojené organizace ve správě nároků Azure AD, které jsou aktuálně, nakonfigurovány a navrhovány: 
+
+- Nakonfigurovaná propojená organizace je plně funkční propojená organizace, která umožňuje uživatelům v této organizaci přístup k balíčkům. Když správce vytvoří v Azure Portal novou propojenou organizaci, bude se ve výchozím nastavení **nakonfigurované** , protože správce vytvořil a chce použít tuto připojenou organizaci. Pokud je připojená organizace vytvořená programově prostřednictvím rozhraní API, je potřeba **nakonfigurovat** výchozí stav, pokud není explicitně nastaven na jiný stav. 
+
+    Nakonfigurované připojené organizace se zobrazí v rozevíracích sestavách pro připojené organizace a budou v oboru pro všechny zásady, které cílí na všechny připojené organizace.
+
+- Navrhovaná propojená organizace je připojená organizace, která se automaticky vytvořila, ale nemá oprávnění k vytvoření nebo schválení organizace. Když se uživatel zaregistruje do balíčku pro přístup mimo nakonfigurovanou připojenou organizaci, všechny automaticky vytvořené organizace se budou nacházet v **navrhovaném** stavu, protože žádný správce v tenantovi tuto spolupráci nenastavuje. 
+    
+    Navrhované připojené organizace se v sestavách pro nakonfigurované připojené organizace nezobrazují a nejsou v oboru pro nastavení všechny nakonfigurované organizace u všech zásad. 
+
+Přístup k balíčkům, které jsou k dispozici uživatelům ze všech nakonfigurovaných organizací, můžou vyžádat jenom uživatelé, kteří jsou nakonfigurovaní připojení. Uživatelé z navrhovaných propojených organizací mají zkušenosti, jako by pro tuto doménu neexistovala žádná připojená organizace, a dokud stav nezmění správce, nebude mít přístup k balíčku pro přístup.
+
+> [!NOTE]
+> V rámci zavedení této nové funkce byly všechny připojené organizace vytvořené před 09/09/20 považovány za **nakonfigurované**. Pokud máte balíček pro přístup, který umožňuje uživatelům ze všech organizací registraci, měli byste si projít seznam propojených organizací, které byly vytvořené před tímto datem, aby se zajistilo, že žádná nebude správně zařazená do kategorie **nakonfigurovaná**.  Správce může podle potřeby aktualizovat vlastnost **State** . Pokyny najdete v tématu [aktualizace propojené organizace](#update-a-connected-organization).
 
 ## <a name="next-steps"></a>Další kroky
 

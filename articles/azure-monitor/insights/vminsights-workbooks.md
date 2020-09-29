@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ae8c633bdfca72d6e383715cac9b1bcdddd9d17
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480449"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449795"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Vytváření interaktivních sestav ve službě Azure Monitor pro virtuální počítače s využitím sešitů
 
@@ -26,7 +26,7 @@ Sešity jsou užitečné pro scénáře, jako například:
 
 Následující tabulka shrnuje sešity, které Azure Monitor pro virtuální počítače obsahuje, abyste mohli začít.
 
-| sešit | Description | Rozsah |
+| sešit | Popis | Obor |
 |----------|-------------|-------|
 | Výkon | Poskytuje přizpůsobitelnou verzi našeho horního zobrazení seznamu a grafů v jednom sešitu, který využívá všechny čítače výkonu Log Analytics, které jste povolili.| Ve velkém měřítku |
 | Čítače výkonu | Zobrazení grafu na nejvyšší úrovni napříč celou sadou čítačů výkonu. | Ve velkém měřítku |
@@ -44,7 +44,7 @@ Následující tabulka shrnuje sešity, které Azure Monitor pro virtuální po�
 
 Sešit je tvořen oddíly, které se skládají z nezávisle upravitelných grafů, tabulek, textových a vstupních ovládacích prvků. Abychom lépe porozuměli sešitům, začněte tím, že otevřete šablonu a projdeme vytvořením vlastního sešitu. 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **Virtual Machines**.
 
@@ -66,7 +66,7 @@ Sešit je tvořen oddíly, které se skládají z nezávisle upravitelných graf
 
 Sešity mají dva režimy: **režim úprav**a **režim čtení**. Když se poprvé spustí nový sešit, otevře se v **režimu úprav**. Zobrazuje celý obsah sešitu včetně všech kroků a parametrů, které jsou jinak skryté. **Režim čtení** prezentuje zjednodušené zobrazení stylů sestav. Režim čtení vám umožňuje vyříznout složitost, která se stala vytvořením sestavy, zatímco pořád má podkladovou mechaniku jenom pár kliknutí v případě potřeby pro úpravy.
 
-![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
+![Snímek obrazovky oddílu Virtual Machines sešitu v Azure Monitor zobrazení nového sešitu v režimu úprav s zvýrazněnými ovládacími prvky pro úpravy](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 
 1. Po dokončení úprav oddílu klikněte v levém dolním rohu oddílu na **hotové úpravy** .
 
@@ -102,7 +102,7 @@ Chcete-li zahrnout data z jiných Log Analytics pracovních prostorů nebo z kon
 
 Každá část má vlastní Rozšířená nastavení, která jsou přístupná prostřednictvím ![ ikony pro úpravy oddílu sešity nastavení ](media/vminsights-workbooks/006-settings.png) umístěné napravo od tlačítka **přidat parametry** .
 
-![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/007-settings-expanded.png)
+![Snímek obrazovky dialogového okna Upřesnit nastavení v části sešit Virtual Machines Azure Monitor. Ikona, která otevře dialogové okno, je zvýrazněna.](media/vminsights-workbooks/007-settings-expanded.png)
 
 |         |          |
 | ---------------- |:-----|
@@ -118,11 +118,11 @@ Jeden z předem připravených sešitů – **přenos TCP**poskytuje informace o
 
 První část sešitu je založena na datech dotazů protokolu. Druhá část je také založená na datech dotazů protokolu, ale výběr řádku v první tabulce bude interaktivně aktualizovat obsah grafů:
 
-![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
+![Snímek obrazovky oddílu Virtual Machines v Azure Monitor zobrazující předem sestavený provoz TCP v sešitu.](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
 
 Chování je možné prostřednictvím použití **při výběru položky, export** upřesňujících nastavení parametrů, které jsou povoleny v dotazu protokolu tabulky.
 
-![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/009-settings-export.png)
+![Snímek obrazovky dialogového okna Upřesnit nastavení pro sešit Virtual Machines s možností "když je položka vybrána, možnost exportovat parametr".](media/vminsights-workbooks/009-settings-export.png)
 
 Druhý dotaz protokolu pak použije exportované hodnoty, když se vybere řádek, aby se vytvořila sada hodnot, která se pak používá v záhlaví oddílu a grafech. Pokud není vybraný žádný řádek, skryje nadpis a grafy oddílu. 
 
@@ -141,7 +141,7 @@ Oddíly metrik poskytují úplný přístup, který umožňuje začlenit do inte
 
 Tady je příklad dat virtuálního počítače, která jsou načítána do sešitu, aby bylo možné vytvořit vizualizaci mřížky výkonu procesoru:
 
-![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/010-metrics-grid.png)
+![Snímek obrazovky s oddílem metriky v sešitu virtuálního počítače v Azure Monitor. Výkon procesoru pro každý virtuální počítač se zobrazuje graficky.](media/vminsights-workbooks/010-metrics-grid.png)
 
 ## <a name="adding-parameter-sections"></a>Přidávání oddílů parametrů
 
@@ -180,11 +180,11 @@ Pokud je sloupec typem řetězce, hodnota null nebo prázdný řetězec se pova�
 
 Pojďme se podívat na parametry, které jsou k dispozici v sestavě Přehled připojení. Klikněte na symbol úprav vedle **směr**.
 
-![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/011-workbook-using-dropdown.png)
+![Snímek obrazovky s oddílem pro přidání a úpravu parametrů sestavy v Azure Monitor. Je vybrána ikona pro úpravu pro parametr směru.](media/vminsights-workbooks/011-workbook-using-dropdown.png)
 
 Tím se spustí položka nabídky **Upravit parametr** .
 
-![Ovládací prvky pro úpravy oddílu Azure Monitor pro virtuální počítače sešity](media/vminsights-workbooks/012-workbook-edit-parameter.png)
+![Snímek obrazovky dialogového okna Upravit parametr Název parametru je směr, typ parametru je rozevírací seznam a je vybrána možnost získat data z formátu JSON.](media/vminsights-workbooks/012-workbook-edit-parameter.png)
 
 KÓD JSON umožňuje vygenerovat libovolnou tabulku naplněnou obsahem. Například následující kód JSON generuje v rozevíracím seznamu dvě hodnoty:
 

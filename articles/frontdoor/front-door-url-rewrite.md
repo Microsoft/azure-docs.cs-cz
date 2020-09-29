@@ -9,36 +9,36 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 8f4a6283f762d9792f50651b9caee17795df6d55
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: eb5b4ab8a23a374aec54d65dd5390ab3fec3e905
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398933"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445490"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>Přepsání adresy URL (vlastní předávací cesta)
-Přední dvířka Azure podporují přepis adres URL tím, že vám umožní nakonfigurovat volitelnou **cestu pro přesměrování** , která se má použít při vytváření žádosti pro předání do back-endu. Pokud není zadaná žádná vlastní předávací cesta, ve výchozím nastavení služba Front Door zkopíruje příchozí cestu URL do adresy URL použité v přesměrovaném požadavku. Hlavička hostitele použitá v přesměrovaném požadavku odpovídá konfiguraci pro vybraný back-end. Přečtěte si [hlavičku back-end hostitele](front-door-backend-pool.md#hostheader) , kde se dozvíte, co dělá a jak ho můžete nakonfigurovat.
+Přední dvířka Azure podporují přepis adres URL tím, že nakonfigurují volitelnou **vlastní cestu pro přesměrování** , která se má použít při vytváření žádosti, která se předává do back-endu. Ve výchozím nastavení platí, že pokud není k dispozici vlastní cesta pro přesměrování, pak se na front-dveří zkopíruje adresa URL příchozí adresy URL použité v přesměrovaném požadavku. Hlavička hostitele použitá v přesměrovaném požadavku odpovídá konfiguraci pro vybraný back-end. Přečtěte si [hlavičku back-end hostitele](front-door-backend-pool.md#hostheader) , kde se dozvíte, co dělá a jak ho můžete nakonfigurovat.
 
-Výkonná součást přepsání adresy URL pomocí vlastního předávacího postupu spočívá v tom, že zkopíruje všechny části příchozí cesty, které odpovídají zástupným cestám, do přesměrované cesty (tyto segmenty cest jsou **zelenými** segmenty v následujícím příkladu):
+Výkonná součást přepsání adresy URL je taková, že vlastní cesta pro přesměrování zkopíruje všechny součásti příchozí cesty, které odpovídají zástupným cestám, do přesměrované cesty (tyto segmenty cesty jsou **zelenými** segmenty v příkladu níže):
 </br>
-![Přepsání adresy URL z předních dveří Azure][1]
+
+:::image type="content" source="./media/front-door-url-rewrite/front-door-url-rewrite-example.jpg" alt-text="Přepsání adresy URL z předních dveří Azure":::
 
 ## <a name="url-rewrite-example"></a>Příklad přepsání adresy URL
-Vezměte v úvahu pravidlo směrování s nakonfigurovanými následujícími hostiteli a cestami front-endu:
+Vezměte v úvahu pravidlo směrování s následující kombinací hostitelů front-end a nakonfigurovaných cest:
 
 | Hostitelé      | Cesty       |
 |------------|-------------|
-| Webová \. contoso.com | /\*         |
+| Webová \. contoso.com | /\*   |
 |            | /foo        |
 |            | foo\*     |
 |            | /foo/bar/\* |
 
-První sloupec v tabulce ukazuje příklady příchozích požadavků a druhý sloupec zobrazuje, co by bylo "" nejlépe se "vyhovující" cesta ".  Třetím a dalším sloupcem prvního řádku tabulky jsou příklady konfigurovaných **vlastních cest předávání**, ve kterých zbylé řádky v těchto sloupcích představují příklady toho, co by byla přesměrovaná cesta požadavku shodná s požadavkem v tomto řádku.
+První sloupec v tabulce ukazuje příklady příchozích požadavků a druhý sloupec zobrazuje, co by bylo "" nejlépe se "vyhovující" cesta ".  Třetím a následným sloupcem tabulky jsou příklady konfigurovaných **vlastních cest přesměrování**.
 
 Pokud je například čteno v druhém řádku, znamená to, že pro příchozí požadavek se v `www.contoso.com/sub` případě, že byla vytvořena vlastní cesta přesměrování `/` , přesměrovaná cesta bude `/sub` . Pokud byla cesta pro vlastní přesměrování `/fwd/` , přesměrovaná cesta bude `/fwd/sub` . A tak dále pro zbývající sloupce. **Zvýrazněné** části níže uvedených cest představují části, které jsou součástí porovnávání se zástupnými znaky.
-
 
 | Příchozí žádost       | Konkrétní cesta shody | /          | /fwd/          | foo          | /foo/bar/          |
 |------------------------|--------------------------|------------|----------------|----------------|--------------------|
@@ -49,18 +49,12 @@ Pokud je například čteno v druhém řádku, znamená to, že pro příchozí 
 | Webová \. contoso.com/foo/        | foo\*                  | /          | /fwd/          | foo          | /foo/bar/          |
 | \.contoso.com/foo/**panel** www | foo\*                  | /**příčk**   | **panel** /FWD/   | **panel** /foo/   | **panel** /foo/bar/   |
 
-
 ## <a name="optional-settings"></a>Volitelná nastavení
 K dispozici jsou další volitelná nastavení, která můžete zadat také pro všechna zadaná nastavení pravidla směrování:
 
-* **Konfigurace mezipaměti** – Pokud je zakázaná nebo není zadaná, pak se požadavky odpovídající tomuto pravidlu směrování nebudou pokoušet použít obsah uložený v mezipaměti a místo toho se načte z back-endu. Přečtěte si další informace o [ukládání do mezipaměti s předními dvířky](front-door-caching.md).
-
-
+* **Konfigurace mezipaměti** – Pokud je zakázaná nebo není zadaná, požadavky, které se shodují s tímto pravidlem směrování, se nebudou pokoušet použít obsah uložený v mezipaměti a místo toho se načítají z back-endu. Přečtěte si další informace o [ukládání do mezipaměti s předními dvířky](front-door-caching.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si, jak [vytvořit Front Door](quickstart-create-front-door.md).
 - Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).
-
-<!--Image references-->
-[1]: ./media/front-door-url-rewrite/front-door-url-rewrite-example.jpg

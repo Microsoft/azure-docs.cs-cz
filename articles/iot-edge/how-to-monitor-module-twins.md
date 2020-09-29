@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c24cef2cf9e4c54d16ebc75eb1a56273d8826355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bf2e3f07d9e5576f62ef9badd9c8a46ac92fad0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84221402"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450158"
 ---
 # <a name="monitor-module-twins"></a>Monitorování dvojčat modulu
 
 Moduly se v Azure neplní, IoT Hub umožňují monitorování dostupnosti a stavu nasazení IoT Edge. Moduly s dvojitou platností ukládají užitečné informace ve službě IoT Hub o výkonu spuštěných modulů. [Agenti IoT Edge](iot-edge-runtime.md#iot-edge-agent) a moduly runtime [centra IoT Edge](iot-edge-runtime.md#iot-edge-hub) v nich udržují své moduly v chodu `$edgeAgent` a v `$edgeHub` uvedeném pořadí:
 
-* `$edgeAgent`obsahuje data o stavu a připojení týkající se IoT Edgeho agenta a modulů runtime centra IoT Edge a vašich vlastních modulů. Agent IoT Edge zodpovídá za nasazení modulů, jejich monitorování a stav připojení sestav do služby Azure IoT Hub.
-* `$edgeHub`obsahuje data o komunikaci mezi IoT Edgem rozbočovačem běžícím na zařízení a ve službě Azure IoT Hub. To zahrnuje zpracování příchozích zpráv ze zařízení pro příjem dat. Centrum IoT Edge zodpovídá za zpracování komunikace mezi IoT Hub Azure a IoT Edgemi zařízeními a moduly.
+* `$edgeAgent` obsahuje data o stavu a připojení týkající se IoT Edgeho agenta a modulů runtime centra IoT Edge a vašich vlastních modulů. Agent IoT Edge zodpovídá za nasazení modulů, jejich monitorování a stav připojení sestav do služby Azure IoT Hub.
+* `$edgeHub` obsahuje data o komunikaci mezi IoT Edgem rozbočovačem běžícím na zařízení a ve službě Azure IoT Hub. To zahrnuje zpracování příchozích zpráv ze zařízení pro příjem dat. Centrum IoT Edge zodpovídá za zpracování komunikace mezi IoT Hub Azure a IoT Edgemi zařízeními a moduly.
 
 Data jsou uspořádána do metadat, značek, spolu s požadovanými a nahlášenými vlastnostmi v modulech, které jsou ve strukturách JSON. Požadované vlastnosti, které jste zadali v deployment.jssouboru, se zkopírují do nevláken modulu. Agent IoT Edge a centrum IoT Edge každé aktualizuje hlášené vlastnosti pro jejich moduly.
 
@@ -100,7 +100,7 @@ Následující vlastnosti jsou důležité pro kontrolu řešení potíží:
 
 * **runtimeStatus** – může to být jedna z následujících hodnot:
 
-    | Hodnota | Description |
+    | Hodnota | Popis |
     | --- | --- |
     | Neznámý | Výchozí stav, dokud se nevytvoří nasazení. |
     | omezení rychlosti | Spuštění modulu je naplánováno, ale aktuálně není spuštěno. Tato hodnota je užitečná pro modul, který provádí změny stavu při restartování. V případě, že se neúspěšný modul čeká na restartování během doby chladnutí, modul bude ve stavu omezení rychlosti. |
@@ -213,7 +213,7 @@ Pokud provedete změny, vyberte možnost **aktualizovat modul s dvojitým** kód
 
 Pokud chcete zjistit, jestli je IoT Edge spuštěná, použijte příkaz [AZ IoT Hub Invoke-Module-Method](how-to-edgeagent-direct-method.md#ping) k otestování agenta IoT Edge.
 
-[Modul AZ IoT Hub Module-zdvojená](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-twin) struktura poskytuje tyto příkazy:
+[Modul AZ IoT Hub Module-zdvojená](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-twin) struktura poskytuje tyto příkazy:
 
 * **AZ IoT Hub Module-zdvojené zobrazení** -zobrazení definice vlákna v modulu
 * **AZ IoT Hub Module-zdvojená aktualizace** – aktualizuje definici s dvojím načtením.

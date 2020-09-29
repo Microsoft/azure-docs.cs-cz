@@ -4,15 +4,15 @@ description: Přečtěte si o výhodách a funkcích Azure Defenderu pro Kuberne
 author: memildin
 ms.author: memildin
 ms.date: 9/12/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a7fb97f1036515f82fa3e61c18f95eadf0af704d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3308a72421b851402642f12daf56359c7e3c9216
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301699"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449066"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Seznámení s Azure Defenderem pro Kubernetes
 
@@ -31,7 +31,7 @@ Detekce hrozeb na úrovni hostitele pro uzly se systémem Linux AKS je k dispozi
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|**Azure Defender pro Kubernetes** se účtuje tak, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
 |Požadované role a oprávnění:|**Správce zabezpečení** může zrušit výstrahy.<br>**Čtenář zabezpečení** může zobrazit zjištění.|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Jaké jsou výhody Azure Defenderu pro Kubernetes?

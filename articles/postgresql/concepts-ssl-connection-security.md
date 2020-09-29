@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 872daf3a208452e8b7ec27b2326e394b416a1c5f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e54b8bc51817d2a56153dcc0c14f45e76b9ae88b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902043"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444939"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>Konfigurace připojení TLS v Azure Database for PostgreSQL – jeden server
 
@@ -92,6 +92,17 @@ Například nastavení minimální verze nastavení TLS na TLS 1,0 znamená, že
 > Jakmile vynucujete minimální verzi protokolu TLS, nemůžete později zakázat vynucení minimální verze.
 
 Informace o tom, jak nastavit nastavení TLS pro váš Azure Database for PostgreSQL samostatný server, najdete v článku [jak nakonfigurovat nastavení TLS](howto-tls-configurations.md).
+
+## <a name="cipher-support-by-azure-database-for-postgresql-single-server"></a>Podpora šifry pomocí Azure Database for PostgreSQL jednoho serveru
+
+V rámci komunikace SSL/TLS se šifrovací sady ověřují a podporují jenom šifrovací obleky, které můžou komunikovat s Serer databáze. Ověřování šifrovací sady se řídí ve [vrstvě brány](concepts-connectivity-architecture.md#connectivity-architecture) a ne explicitně na samotném uzlu. Pokud šifrovací sady neodpovídají jedné z níže uvedených sad, připojení příchozích klientů se odmítnou.
+
+### <a name="cipher-suite-supported"></a>Podporovaná šifrovací sada
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="next-steps"></a>Další kroky
 

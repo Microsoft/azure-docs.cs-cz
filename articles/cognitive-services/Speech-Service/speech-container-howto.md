@@ -1,23 +1,25 @@
 ---
-title: Instalace funkcí Speech Containers – Speech Service
+title: Instalace a spuštění kontejnerů Docker pro rozhraní API služby pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: Instalace a spuštění kontejnerů řeči. Převod řeči na text transcribes zvukové streamy na text v reálném čase, které mohou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Převod textu na řeč převede vstupní text na syntetizované řeč podobné člověku.
+description: Pomocí kontejnerů Docker pro službu Speech můžete provádět rozpoznávání řeči, přepis, generaci a další místní prostředí.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: be4b7f6a0f8afae9188b1f969956424041e77d9e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: cog-serv-seo-aug-2020
+keywords: místní, Docker, kontejner
+ms.openlocfilehash: 45edd1b13d4fe6f78eb127e7aad8feb611bce1d1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371673"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460046"
 ---
-# <a name="install-and-run-speech-service-containers"></a>Instalace a spuštění kontejnerů služby Speech 
+# <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Instalace a spuštění kontejnerů Docker pro rozhraní API služby pro rozpoznávání řeči 
 
 Kontejnery umožňují spouštět některá z rozhraní API služby Speech ve vlastním prostředí. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejner služby Speech.
 
@@ -43,7 +45,7 @@ Kontejnery služby Speech umožňují zákazníkům vytvořit architekturu aplik
 | Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | 2.5.0 |
 | Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.7.0 |
 | Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.7.0 |
-| Rozpoznávání jazyka řeči | Zjišťuje jazyk používaný v zvukových souborech. | 1,0 |
+| Rozpoznávání jazyka řeči | Zjišťuje jazyk používaný v zvukových souborech. | 1.0 |
 | Neuronové převodu textu na řeč | Převede text na přirozený zvuk hlasu pomocí vysoce neuronové síťové technologie a umožní vám tak více přirozeného řeči. | 1.2.0 |
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
@@ -482,7 +484,7 @@ ApiKey={API_KEY}
 
 Tento příkaz: 
 
-* Spustí kontejner rozpoznávání jazyka řeči z image kontejneru. V současné době se vám neúčtují za běhu této image. 
+* Spustí kontejner rozpoznávání jazyka řeči z image kontejneru. V současné době se vám neúčtují za běhu této image.
 * Přiděluje 1 jádra procesoru a 1 gigabajt (GB) paměti.
 * Zveřejňuje port TCP 5003 a přiděluje pro kontejner pseudo TTY.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
@@ -668,7 +670,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů řeči. Souhrn:
 

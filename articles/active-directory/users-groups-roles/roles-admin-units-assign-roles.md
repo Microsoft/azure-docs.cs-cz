@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b5f39363e4c8b2fd3a0d74a8c013d315bff1fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0ae663b2c7a88e116315464c11b8d162135f0aff
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264918"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450374"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Přiřazení vymezených rolí k jednotce pro správu
 
@@ -38,6 +38,12 @@ Správce licencí  |  Může přiřazovat, odebírat a aktualizovat přiřazení
 Správce hesel  |  Může resetovat hesla správců, kteří nejsou správci a hesla, jenom v rámci přiřazené jednotky pro správu.
 Správce uživatele  |  Může spravovat všechny aspekty uživatelů a skupin, včetně resetování hesel pro omezené správce v rámci přiřazené jednotky pro správu.
 
+## <a name="security-principals-that-can-be-assigned-to-an-au-scoped-role"></a>Objekty zabezpečení, které je možné přiřadit k vymezené roli AU
+K roli s vymezeným oborem AU se dají přiřadit tyto objekty zabezpečení:
+* Uživatelé
+* Role cloudových skupin s přiřazením (Preview)
+* Hlavní název služby (SPN)
+
 ## <a name="assign-a-scoped-role"></a>Přiřazení vymezené role
 
 ### <a name="azure-portal"></a>portál Azure
@@ -50,15 +56,19 @@ Vyberte roli, kterou chcete přiřadit, a pak vyberte **Přidat přiřazení**. 
 
 ![Vyberte roli pro obor a pak vyberte přidat přiřazení.](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
+> [!Note]
+>
+> Pokud chcete přiřadit roli v jednotce pro správu pomocí PIM [, postupujte podle těchto kroků.](/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md#assign-a-role-with-restricted-scope)
+
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
 $AdminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
 $Role = Get-AzureADDirectoryRole | Where-Object -Property DisplayName -EQ -Value "User Account Administrator"
-$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
 $RoleMember = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo
 $RoleMember.ObjectId = $AdminUser.ObjectId
-Add-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
+Add-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
 ```
 
 Zvýrazněný oddíl se může změnit podle potřeby pro konkrétní prostředí.
@@ -67,7 +77,7 @@ Zvýrazněný oddíl se může změnit podle potřeby pro konkrétní prostřed�
 
 ```http
 Http request
-POST /administrativeUnits/{id}/scopedRoleMembers
+POST /directory/administrativeUnits/{id}/scopedRoleMembers
     
 Request body
 {
@@ -87,8 +97,8 @@ Všechna přiřazení rolí prováděná s oborem administrativní jednotky se d
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
-Get-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
+$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+Get-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
 ```
 
 Zvýrazněný oddíl se může změnit podle potřeby pro konkrétní prostředí.
@@ -97,7 +107,7 @@ Zvýrazněný oddíl se může změnit podle potřeby pro konkrétní prostřed�
 
 ```http
 Http request
-GET /administrativeUnits/{id}/scopedRoleMembers
+GET /directory/administrativeUnits/{id}/scopedRoleMembers
 Request body
 {}
 ```

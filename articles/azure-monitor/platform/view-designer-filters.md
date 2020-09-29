@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: 4f4b914fe5851df0928df9ccc41ca3b20c5d3469
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d428382493e15d2e0571f4cb4b6f090cf9056fe4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955951"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449303"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Filtry v zobrazeních Azure Monitor
 **Filtr** v [zobrazení Azure monitor](view-designer.md) umožňuje uživatelům filtrovat data v zobrazení podle hodnoty určité vlastnosti beze změny zobrazení.  Můžete například uživatelům zobrazení dovolit filtrovat zobrazení dat pouze z konkrétního počítače nebo sady počítačů.  V jednom zobrazení můžete vytvořit více filtrů, které umožní uživatelům filtrovat podle více vlastností.  Tento článek popisuje, jak použít filtr a přidat ho do vlastního zobrazení.
@@ -19,12 +19,12 @@ ms.locfileid: "85955951"
 ## <a name="using-a-filter"></a>Použití filtru
 Kliknutím na rozsah data a času v horní části zobrazení otevřete rozevírací nabídku, kde můžete změnit rozsah data a času pro zobrazení.
 
-![Příklad filtru](media/view-designer-filters/filters-example-time.png)
+![Snímek obrazovky rozevírací nabídky časového rozsahu pro zobrazení v Azure Monitor, které zobrazuje přepínač za posledních 7 dnů.](media/view-designer-filters/filters-example-time.png)
 
 Kliknutím na **+** přidejte filtr pomocí vlastních filtrů, které jsou definovány pro zobrazení. Buď vyberte hodnotu pro filtr z rozevíracího seznamu, nebo zadejte hodnotu. Pokračujte přidáním filtrů kliknutím na **+** . 
 
 
-![Příklad filtru](media/view-designer-filters/filters-example-custom.png)
+![Snímek obrazovky dialogového okna pro přidání vlastního filtru v Azure Monitor. Vlastnost Computers je vybrána v rozevírací nabídce vybrat vlastnost.](media/view-designer-filters/filters-example-custom.png)
 
 Pokud odeberete všechny hodnoty pro filtr, pak tento filtr nebude nadále použit.
 
@@ -37,7 +37,7 @@ Při [úpravách zobrazení](view-designer.md)vytvořte filtr na kartě **filtry
 
 Následující tabulka popisuje nastavení pro filtr.
 
-| Nastavení | Description |
+| Nastavení | Popis |
 |:---|:---|
 | Název pole | Název pole, které se používá pro filtrování  Toto pole se musí shodovat s polem Shrnutí v **dotazu pro hodnoty**. |
 | Dotaz na hodnoty | Dotaz pro spuštění, který naplní rozevírací seznam filtru pro uživatele.  Tento dotaz musí k zadání jedinečných hodnot pro určité pole použít [Souhrn](/azure/kusto/query/summarizeoperator) nebo [jedinečnou](/azure/kusto/query/distinctoperator) hodnotu a musí se shodovat s **názvem pole**.  K řazení hodnot zobrazených uživateli můžete použít [řazení](/azure/kusto/query/sortoperator) . |
@@ -50,8 +50,8 @@ Následující tabulka obsahuje několik příkladů běžných filtrů.
 | Název pole | Dotaz na hodnoty | Značka |
 |:--|:--|:--|
 | Počítač   | Prezenční signál &#124; jedinečný počítač &#124; seřadit podle počítače ASC | Počítače |
-| EventLevelName | Událost &#124; DISTINCT EventLevelName | Severity |
-| SeverityLevel | Syslog &#124; jedinečný SeverityLevel | Severity |
+| EventLevelName | Událost &#124; DISTINCT EventLevelName | Závažnost |
+| SeverityLevel | Syslog &#124; jedinečný SeverityLevel | Závažnost |
 | SvcChangeType | ConfigurationChange &#124; odlišné svcChangeType | ChangeType |
 
 

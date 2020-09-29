@@ -7,14 +7,14 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 82f92a6dc33173918102015c8cedea1755d77805
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e76fffd17ee565d4103ca8a7bf1523bbd16209d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744200"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445386"
 ---
-# <a name="enable-and-work-with-bastion-resource-logs"></a>Povolení a práce s protokoly prostředků bastionu
+# <a name="enable-and-work-with-bastion-resource-logs"></a>Povolení protokolů prostředků služby Bastion a práce s nimi
 
 Uživatelé, kteří se připojují k úlohám pomocí Azure bastionu, můžou bastionu protokolovat diagnostiku vzdálených relací. Pak můžete pomocí diagnostiky zobrazit, kteří uživatelé se k nimž mají připojené úlohy, v jakém čase, kdy a dalších relevantních informací o protokolování. Aby bylo možné používat diagnostiku, musíte povolit diagnostické protokoly v Azure bastionu. Tento článek vám pomůže povolit diagnostické protokoly a pak zobrazit protokoly.
 
@@ -22,13 +22,13 @@ Uživatelé, kteří se připojují k úlohám pomocí Azure bastionu, můžou b
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do svého prostředku Azure bastionu a na stránce Azure bastionu vyberte **nastavení diagnostiky** .
 
-   ![nastavení diagnostiky](./media/diagnostic-logs/1diagnostics-settings.png)
+   ![Snímek obrazovky zobrazující stránku "nastavení diagnostiky".](./media/diagnostic-logs/1diagnostics-settings.png)
 2. Vyberte **nastavení diagnostiky**a pak vyberte **+ Přidat nastavení diagnostiky** a přidejte tak cíl pro protokoly.
 
-   ![Přidat nastavení diagnostiky](./media/diagnostic-logs/2add-diagnostic-setting.png)
+   ![Snímek obrazovky zobrazující stránku nastavení diagnostiky s vybraným tlačítkem Přidat nastavení diagnostiky](./media/diagnostic-logs/2add-diagnostic-setting.png)
 3. Na stránce **nastavení diagnostiky** vyberte typ účtu úložiště, který se má použít k ukládání diagnostických protokolů.
 
-   ![vybrat umístění úložiště](./media/diagnostic-logs/3add-storage-account.png)
+   ![Snímek stránky "nastavení diagnostiky" s oddílem pro výběr umístění úložiště zvýrazněné](./media/diagnostic-logs/3add-storage-account.png)
 4. Po dokončení nastavení bude vypadat podobně jako v tomto příkladu:
 
    ![Příklad nastavení](./media/diagnostic-logs/4example-settings.png)

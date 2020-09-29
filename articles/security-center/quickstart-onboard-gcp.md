@@ -4,15 +4,15 @@ description: Monitorování prostředků GCP z Azure Security Center
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: how-to
+ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c4020bc5e96ff35fa2d04a872216e43abbba5323
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 71f1de7b4ff265a5740181a2bb2032f33a83abe3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328305"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448992"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Připojení účtů GCP k Azure Security Center
 
@@ -36,10 +36,10 @@ Na snímku obrazovky níže vidíte projekty GCP zobrazené na řídicím panelu
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Náhled|
+|Stav vydaných verzí:|Preview|
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Požadované role a oprávnění:|**Vlastník** nebo **Přispěvatel** v příslušném předplatném Azure|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>Připojení účtu GCP
@@ -80,7 +80,7 @@ Přečtěte si další informace o [rozhraní příkazového centra pro zabezpe�
     1. Vyberte **Přidat**.
     1. Do pole **noví členové** vložte **hodnotu e-mailu** , kterou jste zkopírovali dříve.
     1. Zadejte roli jako **Security Center admin Viewer** a pak vyberte Uložit.
-        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="Nastavení relevantních oprávnění GCP":::
+        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="3 projekty GCP uvedené na řídicím panelu přehled Security Center":::
 
 
 ### <a name="step-4-create-a-private-key-for-the-dedicated-service-account"></a>Krok 4: Vytvořit privátní klíč pro vyhrazený účet služby
@@ -107,7 +107,7 @@ Přečtěte si další informace o [rozhraní příkazového centra pro zabezpe�
 Po úspěšném vytvoření konektoru a GCP Security Center je správně nakonfigurovaný.
 
 - Standard GCP CIS se zobrazí v řídicím panelu dodržování předpisů pro Security Center.
-- Doporučení zabezpečení pro prostředky GCP se zobrazí na portálu Security Center a na řídicím panelu dodržování předpisů 5-10 minut po dokončení zprovoznění:   :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="GCP prostředky a doporučení na stránce doporučení Security Center":::
+- Doporučení zabezpečení pro prostředky GCP se zobrazí na portálu Security Center a na řídicím panelu dodržování předpisů 5-10 minut po dokončení zprovoznění:   :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="3 projekty GCP uvedené na řídicím panelu přehled Security Center":::
 
 
 ## <a name="monitoring-your-gcp-resources"></a>Monitorování prostředků GCP
@@ -116,7 +116,7 @@ Jak vidíte výše, stránka doporučení pro zabezpečení Azure Security Cente
 
 Pokud chcete zobrazit všechna aktivní doporučení pro vaše prostředky podle typu prostředku, použijte stránku inventáře assetů Security Center a filtrujte na typ prostředku GCP, ve kterém máte zájem:
 
-:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="Filtr typu prostředku stránky inventáře prostředků zobrazující možnosti GCP"::: 
+:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="3 projekty GCP uvedené na řídicím panelu přehled Security Center"::: 
 
 
 ## <a name="next-steps"></a>Další kroky

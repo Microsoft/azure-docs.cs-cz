@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: b310f195477f4cba83ef30c6fb5ea2fd24c4df9a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46435ef773e90234538bb755e20035990bbf1066
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897377"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460029"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Spouštění poznámkových bloků Jupyter ve vlastním pracovním prostoru
 
@@ -32,7 +32,7 @@ Podívejte se, jak můžete:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
 ## <a name="create-notebooks"></a><a name="create"></a> Vytvoření poznámkových bloků
@@ -80,15 +80,20 @@ Přístup k terminálu:
 1. Vyberte **výpočetní** cíl nebo vytvořte nový a počkejte, než se spustí.
 1. Vyberte ikonu **otevřeného terminálu** .
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Otevření terminálu":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Create new file":::
 
 1. Pokud ikonu nevidíte, vyberte **...** napravo od cíle výpočtů a pak vyberte **otevřít terminál**.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Otevřít terminál z...":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Create new file":::
 
 
 Přečtěte si další informace o [klonování úložišť Git do systému souborů pracovního prostoru](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system).
 
+### <a name="copy-and-paste-in-terminal"></a>Kopírování a vkládání v terminálu
+
+> * Windows: `Ctrl-Insert` kopírování a používání `Ctrl-Shift-v` nebo `Shift-Insert` vložení.
+> * Mac OS: `Cmd-c` pro kopírování a `Cmd-v` vložení.
+> * Aplikace FireFox/IE nemusí správně podporovat oprávnění schránky.
 
 ### <a name="share-notebooks-and-other-files"></a>Sdílení poznámkových bloků a dalších souborů
 
@@ -121,7 +126,7 @@ V průběhu vytváření poznámkového bloku obvykle skončíte s buňkami, kte
 1. Spusťte všechny buňky v poznámkovém bloku.
 1. Vyberte buňku obsahující kód, který chcete spustit pro nový Poznámkový blok. Například kód, který odesílá experiment, nebo možná kód, který registruje model.
 1. Vyberte ikonu **shromáždit** , která se zobrazí na panelu nástrojů buňky.
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Snímek obrazovky: výběr ikony shromáždění":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Create new file":::
 1. Zadejte název nového poznámkového bloku "shromážděného".  
 
 Nový Poznámkový blok obsahuje jenom buňky kódu se všemi buňkami, které jsou potřebné k vytvoření stejných výsledků jako buňky, kterou jste vybrali pro shromažďování.
@@ -132,7 +137,7 @@ Azure Machine Learning vytvoří soubor kontrolního bodu při vytváření soub
 
 Na panelu nástrojů poznámkového bloku vyberte nabídku a pak **soubor &gt; uložte a kontrolní bod** , abyste ručně uložili Poznámkový blok a přidali do něj soubor kontrolního bodu, který je přidružený k poznámkovému bloku.
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Snímek obrazovky s nástrojem pro uložení v panelu nástrojů Poznámkový blok":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Create new file":::
 
 Každý Poznámkový blok se automaticky uloží každých 30 sekund.Automatické ukládání aktualizuje pouze počáteční soubor *ipynb*   , nikoli soubor kontrolního bodu.
  
@@ -227,7 +232,7 @@ Indikátor vedle rozevíracího seznamu **COMPUTE** zobrazuje jeho stav.  Stav j
 |Color |Stav výpočtů |
 |---------|---------| 
 | Green | Spuštěná výpočetní prostředí |
-| Red |Výpočet se nezdařil | 
+| Červený |Výpočet se nezdařil | 
 | Black | Služba COMPUTE byla zastavena |
 |  Světle modrá |Výpočetní prostředí pro vytváření, spouštění, restartování a nastavování |
 |  Les |Výpočetní odstranění, zastavení |

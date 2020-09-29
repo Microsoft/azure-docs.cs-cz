@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 0b6a6eac04711b564d602408a57b92f833fb5d5d
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: db25e0a9ebe01a45c594fe214efcdd3551cf6c14
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782426"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449361"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Instanční objekty aplikací a služeb v Azure Active Directory
 
@@ -49,7 +49,7 @@ Aby bylo možné získat přístup k prostředkům, které jsou zabezpečeny kli
 
 Instanční objekt je místní reprezentace nebo instance aplikace globálního objektu aplikace v jednom tenantovi nebo adresáři. Instanční objekt je konkrétní instance vytvořená z objektu aplikace a dědí určité vlastnosti z tohoto objektu aplikace.  Instanční objekt se vytvoří v každém tenantovi, kde se aplikace používá, a odkazuje na globálně jedinečný objekt aplikace.  Objekt instančního objektu definuje, co může aplikace ve skutečnosti dělat v konkrétním tenantovi, kdo má přístup k aplikaci a k jakým prostředkům může aplikace přistupovat.
 
-Když aplikace udělí oprávnění k přístupu k prostředkům v tenantovi (při registraci nebo [souhlasu](developer-glossary.md#consent)), vytvoří se objekt instančního objektu. Objekt instančního objektu můžete také vytvořit v tenantovi pomocí [Azure PowerShell](howto-authenticate-service-principal-powershell.md), Azure CLI, [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?view=graph-rest-1.0&tabs=http), [Azure Portal][AZURE-Portal]a dalších nástrojů.  Při použití portálu se instanční objekt vytvoří automaticky při registraci aplikace.
+Když aplikace udělí oprávnění k přístupu k prostředkům v tenantovi (při registraci nebo [souhlasu](developer-glossary.md#consent)), vytvoří se objekt instančního objektu. Objekt instančního objektu můžete také vytvořit v tenantovi pomocí [Azure PowerShell](howto-authenticate-service-principal-powershell.md), [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest), [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?view=graph-rest-1.0&tabs=http), [Azure Portal][AZURE-Portal]a dalších nástrojů.  Při použití portálu se instanční objekt vytvoří automaticky při registraci aplikace.
 
 Okno **podnikové aplikace** na portálu slouží k vypsání a správě objektů služby v tenantovi. Můžete se podívat na oprávnění instančního objektu, uživatelská oprávnění, která uživatelé provedli, kteří si ho udělali, informace o přihlášení a další.
 

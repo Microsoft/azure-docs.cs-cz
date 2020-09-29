@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: dccd953d2a31b306994c06ae644959e18332f5da
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: be50deb836082354db899e84ef24d75c4d403432
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090172"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450400"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Řešení VMware Monitoring (nepoužívané) v Azure Monitor
 
@@ -42,7 +42,7 @@ Vytvořte virtuální počítač s operačním systémem Linux pro příjem vše
 ### <a name="configure-syslog-collection"></a>Konfigurovat shromažďování syslog
 1. Nastavte předávání syslog pro VSphere. Podrobné informace, které vám pomůžou nastavit předávání syslog, najdete v tématu [Konfigurace protokolu syslog na ESXi 5,0 a vyšší (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Přejít na **konfiguraci hostitele ESXi**  >  **Software**  >  **Rozšířené nastavení**  >  **syslog**.
    ![vsphereconfig](./media/vmware/vsphere1.png)  
-1. Do pole *syslog. Global. logHost* přidejte server Linux a číslo portu *1514*. Příklad: `tcp://hostname:1514` nebo `tcp://123.456.789.101:1514`
+1. Do pole *syslog. Global. logHost* přidejte server Linux a číslo portu *1514*. Příkladem je `tcp://hostname:1514` nebo `tcp://123.456.789.101:1514`.
 1. Otevřete hostitelskou bránu firewall ESXi pro syslog. **Konfigurace**  >  hostitele ESXi **Software**  >  **Profil zabezpečení**  >  **Brána firewall** a otevřené **vlastnosti**.  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
@@ -133,16 +133,16 @@ Další podrobnosti můžete zobrazit kliknutím na hostitele ESXi nebo na typ u
 
 Když kliknete na název hostitele ESXi, zobrazí se informace z tohoto hostitele ESXi. Pokud chcete zúžit výsledky s typem události, přidejte je `“ProcessName_s=EVENT TYPE”` do vyhledávacího dotazu. Ve vyhledávacím filtru můžete vybrat možnost **Process** . Tím se omezí informace za vás.
 
-![Drob](./media/vmware/eventhostdrilldown.png)
+![Snímek obrazovky hostitele ESXi na počet událostí a rozpis na typ události v zobrazení řídicího panelu VMware Monitoring.](./media/vmware/eventhostdrilldown.png)
 
 #### <a name="find-high-vm-activities"></a>Najít vysoké aktivity virtuálních počítačů
 Virtuální počítač se dá vytvořit a odstranit na jakémkoli hostiteli ESXi. Správce může zjistit, kolik virtuálních počítačů vytvoří hostitel ESXi. To zase pomáhá pochopit plánování výkonu a kapacity. Sledování událostí aktivit virtuálních počítačů je klíčové při správě vašeho prostředí.
 
-![Drob](./media/vmware/vmactivities1.png)
+![Snímek obrazovky okna aktivity virtuálního počítače na řídicím panelu VMware Monitoring, ve kterém se zobrazuje graf vytváření a odstraňování virtuálních počítačů pomocí hostitele ESXi.](./media/vmware/vmactivities1.png)
 
 Pokud se chcete podívat na další data o vytváření virtuálních počítačů hostitele ESXi, klikněte na název hostitele ESXi.
 
-![Drob](./media/vmware/createvm.png)
+![Snímek obrazovky podokna z řídicího panelu VMware Monitoring zobrazuje tabulku s řádkem dat pro jednotlivé vytváření virtuálních počítačů pomocí hostitele ESXi.](./media/vmware/createvm.png)
 
 #### <a name="common-log-queries"></a>Běžné dotazy protokolu
 Řešení zahrnuje další užitečné dotazy, které vám pomůžou spravovat hostitele ESXi, jako je třeba vysoký prostor úložiště, latence úložiště a selhání cesty.
@@ -172,7 +172,7 @@ Ano, můžete. V vSphere můžete použít nastavení úrovně protokolu hostite
 Došlo k chybě hostitele ESXi pro časové razítko syslog. Další informace najdete v [článku znalostní báze VMware](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2111202). Po použití alternativního řešení by měl hostitel fungovat normálně.
 
 ### <a name="can-i-have-multiple-esxi-hosts-forwarding-syslog-data-to-a-single-vm-with-omsagent"></a>Můžu více hostitelů ESXi předávat data syslogu do jednoho virtuálního počítače pomocí omsagent?
-Yes. K jednomu virtuálnímu počítači s omsagent může předávat víc hostitelů ESXi.
+Ano. K jednomu virtuálnímu počítači s omsagent může předávat víc hostitelů ESXi.
 
 ### <a name="why-dont-i-see-data-flowing-into-log-analytics"></a>Proč se mi nezobrazuje tok dat do Log Analytics?
 Může existovat několik důvodů:

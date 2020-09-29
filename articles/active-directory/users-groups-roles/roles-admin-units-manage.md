@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b673994e20f01dde504adb438aa1b199c96d88
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1166d2ad17aea97a4dd7fdda53c42d6b3df75936
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264687"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450370"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Správa jednotek pro správu v Azure Active Directory
 
@@ -33,9 +33,6 @@ Pro přesnější administrativní řízení v Azure Active Directory (Azure AD)
 
     ![Snímek obrazovky ukazující odkaz na udělení souhlasu správce](./media/roles-admin-units-manage/select-graph-explorer.png)
 
-    b. V Průzkumníku grafů vyberte **beta** verzi.
-
-    ![Snímek obrazovky zobrazující vybranou verzi beta](./media/roles-admin-units-manage/select-beta-version.png)
 
 1. Použijte verzi Preview služby Azure AD PowerShell.
 
@@ -59,7 +56,7 @@ Než se pokusíte spustit následující příkazy, nainstalujte Azure AD PowerS
 
 ```powershell
 Connect-AzureAD
-New-AzureADAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
+New-AzureADMSAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
 ```
 
 V případě potřeby můžete upravit hodnoty, které jsou uzavřeny v uvozovkách.
@@ -91,8 +88,8 @@ V Azure AD můžete odebrat jednotku pro správu, kterou už nebudete potřebova
 ### <a name="use-powershell"></a>Použití prostředí PowerShell
 
 ```powershell
-$delau = Get-AzureADAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
-Remove-AzureADAdministrativeUnit -ObjectId $delau.ObjectId
+$delau = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
+Remove-AzureADMSAdministrativeUnit -ObjectId $delau.ObjectId
 ```
 
 Hodnoty, které jsou uzavřeny v uvozovkách, můžete upravit podle potřeby konkrétního prostředí.

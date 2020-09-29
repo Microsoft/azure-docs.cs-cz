@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: adbded5a577a6bca42f2894a1a846993ca2330fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 85a5e2f6b28b9332e5ad3a38cdad3fb02bb3da87
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296990"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450138"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>Registrace zařízení Azure IoT Edge
 
@@ -113,17 +113,17 @@ Můžete také vybrat možnost **získat informace o zařízení** z nabídky kl
 
 ## <a name="register-with-the-azure-cli"></a>Registrace pomocí Azure CLI
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) je open source nástroj příkazového řádku pro různé platformy, který slouží ke správě prostředků Azure, jako je IoT Edge. Umožňuje spravovat prostředky Azure IoT Hub, instance služby Device Provisioning a propojená centra. Rozšíření IoT rozšiřuje rozhraní příkazového řádku Azure pomocí funkcí, jako je Správa zařízení a plná IoT Edge funkce.
+[Azure CLI](/cli/azure) je open source nástroj příkazového řádku pro různé platformy, který slouží ke správě prostředků Azure, jako je IoT Edge. Umožňuje spravovat prostředky Azure IoT Hub, instance služby Device Provisioning a propojená centra. Rozšíření IoT rozšiřuje rozhraní příkazového řádku Azure pomocí funkcí, jako je Správa zařízení a plná IoT Edge funkce.
 
 ### <a name="prerequisites-for-the-azure-cli"></a>Předpoklady pro rozhraní příkazového řádku Azure
 
 * [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) ve vašem předplatném Azure.
-* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az --version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack.
+* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) ve vašem prostředí. Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az --version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack.
 * [Rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension)
 
 ### <a name="create-an-iot-edge-device-with-the-azure-cli"></a>Vytvoření zařízení IoT Edge pomocí Azure CLI
 
-Pomocí příkazu [AZ IoT Hub Device-identity Create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) vytvořte novou identitu zařízení ve službě IoT Hub. Příklad:
+Pomocí příkazu [AZ IoT Hub Device-identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) vytvořte novou identitu zařízení ve službě IoT Hub. Příklad:
 
    ```azurecli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled
@@ -139,7 +139,7 @@ Tento příkaz obsahuje tři parametry:
 
 ### <a name="view-iot-edge-devices-with-the-azure-cli"></a>Zobrazení IoT Edge zařízení pomocí Azure CLI
 
-Pomocí příkazu [AZ IoT Hub Device-identity list](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-list) zobrazíte všechna zařízení ve službě IoT Hub. Příklad:
+Pomocí příkazu [AZ IoT Hub Device-identity list](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) zobrazíte všechna zařízení ve službě IoT Hub. Příklad:
 
    ```azurecli
    az iot hub device-identity list --hub-name [hub name]
@@ -149,7 +149,7 @@ Všechna zařízení, která jsou zaregistrovaná jako zařízení IoT Edge, bud
 
 ### <a name="retrieve-the-connection-string-with-the-azure-cli"></a>Načtení připojovacího řetězce pomocí Azure CLI
 
-Až budete připraveni k nastavení zařízení, potřebujete připojovací řetězec, který propojuje vaše fyzické zařízení s jeho identitou ve službě IoT Hub. K vrácení připojovacího řetězce pro jedno zařízení použijte příkaz [AZ IoT Hub Device-identity Connection-String show](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string?view=azure-cli-latest#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) :
+Až budete připraveni k nastavení zařízení, potřebujete připojovací řetězec, který propojuje vaše fyzické zařízení s jeho identitou ve službě IoT Hub. K vrácení připojovacího řetězce pro jedno zařízení použijte příkaz [AZ IoT Hub Device-identity Connection-String show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) :
 
    ```azurecli
    az iot hub device-identity connection-string show --device-id [device id] --hub-name [hub name]

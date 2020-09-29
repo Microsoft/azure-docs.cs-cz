@@ -9,21 +9,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: c96dac55df2cdc15b7d3699e947c851a9fe69b02
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4cbeea8ad20d41daff3d4ad086a36df5e988991f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399629"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449247"
 ---
 # <a name="health-probes"></a>Sondy stavu
 
-Aby bylo možné určit stav a blízkost každého back-endu z určitého prostředí front-endu, každé prostředí front-endu pravidelně odesílá do každého nakonfigurovaného back-endu syntetickou žádost HTTP/HTTPS. Služba Front Door pak s využitím odpovědí z těchto sond určí nejlepší back-endy, do kterých má směrovat skutečné požadavky klientů. 
+Aby bylo možné určit stav a blízkost každého back-endu pro dané prostředí front-endu, každé prostředí front-endu pravidelně pošle syntetickou žádost HTTP/HTTPS do každého nakonfigurovaného back-endu. Přední dveře pak pomocí těchto odpovědí z sondy určí "nejlepší" back-endové prostředky pro směrování požadavků klientů. 
 
 > [!WARNING]
-> Vzhledem k tomu, že přední dvířka mají globálně mnoho hraničních prostředí, může být objem požadavků na vaše back-endy poměrně vysoký od 25 požadavků každou minutu až po 1200 požadavků za minutu, v závislosti na konfiguraci frekvence sond stavu. S výchozí frekvencí sondy 30 sekund by měl mít svazek sondy na back-endu přibližně 200 požadavků za minutu.
+> Vzhledem k tomu, že přední dvířka mají globálně mnoho hraničních prostředí, může být objem sondy stavu pro back-endy poměrně vysoký od 25 požadavků každou minutu až po 1200 požadavků za minutu, v závislosti na konfiguraci frekvence sond stavu. S výchozí frekvencí sondy 30 sekund by měl mít svazek sondy na back-endu přibližně 200 požadavků za minutu.
 
 ## <a name="supported-protocols"></a>Podporované protokoly
 
@@ -43,7 +43,7 @@ Přední dvířka podporují následující metody protokolu HTTP pro odesílán
 
 | Odpovědi  | Popis | 
 | ------------- | ------------- |
-| Určování stavu  |  200 OK stavový kód označuje, že back-end je v pořádku. Všechno ostatní je považováno za selhání. Pokud z nějakého důvodu (včetně selhání sítě) neobdrží platná odpověď HTTP, bude test paměti počítán jako selhání.|
+| Určování stavu  |  200 OK stavový kód označuje, že back-end je v pořádku. Všechno ostatní je považováno za selhání. Pokud z nějakého důvodu (včetně selhání sítě) neobdrží platná odpověď protokolu HTTP pro sondu, bude sonda započítána jako selhání.|
 | Latence měření  | Latence je čas na zeď měřený od okamžiku těsně před odesláním žádosti o test do okamžiku, kdy obdržíte poslední bajt odpovědi. Pro každý požadavek používáme nové připojení TCP, takže toto měření není posunuté směrem k back-endu se stávajícími teplými připojeními.  |
 
 ## <a name="how-front-door-determines-backend-health"></a>Jak přední dveře určují stav back-endu
@@ -59,7 +59,7 @@ Přední dveře Azure používají pro určení stavu stejný postup tří krok�
 
     * _x_ se konfiguruje změnou vlastnosti SuccessfulSamplesRequired v nastavení vyrovnávání zatížení.
 
-3. Ze sady bezproblémového back-endu ve fondu back-endu navíc přední dveře měří a udržuje latenci (dobu odezvy) pro každý back-end.
+3. V případě sad bezproblémového back-endu v back-end fondu navíc přední dveře měří a udržuje latenci (dobu odezvy) pro každý back-end.
 
 
 ## <a name="complete-health-probe-failure"></a>Dokončit selhání sondy stavu

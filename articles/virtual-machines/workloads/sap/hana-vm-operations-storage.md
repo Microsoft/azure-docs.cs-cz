@@ -7,20 +7,20 @@ author: msjuergent
 manager: bburns
 editor: ''
 tags: azure-resource-manager
-keywords: ''
+keywords: SAP, Azure HANA, úložiště Ultra disk, Premium Storage
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/03/2020
+ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60947a8138972834f30274715226648d1b2360a1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440690"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449383"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -266,65 +266,9 @@ Doporučení často překračují minimální požadavky SAP, jak je uvedeno vý
 
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>Svazky NFS v 4.1 na Azure NetApp Files
-Azure NetApp Files poskytuje nativní sdílené složky systému souborů NFS, které se dají použít pro svazky **/Hana/Shared**, **/Hana/data**a **/Hana/log** . Použití sdílených složek systému souborů NFS založených na ANF pro svazky **/Hana/data** a **/Hana/log** vyžaduje použití protokolu NFS v 4.1. Protokol NFS verze 3 není podporován pro použití **/Hana/data** a **/Hana/log** svazků při založení sdílených složek na ANF. 
-
-> [!IMPORTANT]
-> Protokol NFS v3 implementovaný v Azure NetApp Files **není podporován pro** použití pro **/Hana/data** a **/Hana/log**. Použití NFS 4,1 je povinné pro svazky **/Hana/data** a **/Hana/log** z funkčního bodu zobrazení. Vzhledem k tomu, že je možné použít pro svazek **/Hana/Shared** systém souborů NFS v3 nebo NFS verze 4.1, ze funkčního hlediska.
-
-### <a name="important-considerations"></a>Důležité informace
-Při zvažování Azure NetApp Files SAP NetWeaver a SAP HANA si pamatujte na následující důležité informace:
-
-- Minimální fond kapacit je 4 TiB.  
-- Minimální velikost svazku je 100 GiB
-- Azure NetApp Files a všech virtuálních počítačů, kde se Azure NetApp Files svazky připojí, musí být ve stejné oblasti jako Azure Virtual Network nebo ve [virtuálních sítích s partnerským vztahem](../../../virtual-network/virtual-network-peering-overview.md) .  
-- Vybraná virtuální síť musí mít podsíť, delegovanou na Azure NetApp Files.
-- Propustnost svazku Azure NetApp je funkcí kvóty svazku a úrovně služeb, jak je uvedeno v části [úroveň služby pro Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-service-levels.md). Při změně velikosti svazků NetApp HANA Azure se ujistěte, že výsledná propustnost splňuje požadavky na systém HANA.  
-- Azure NetApp Files nabízí [zásady exportu](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md): můžete řídit povolené klienty, typ přístupu (čtení&zápisu, jen pro čtení atd.). 
-- Azure NetApp Files funkce zatím nereaguje na zóny. Aktuálně Azure NetApp Files funkce není nasazená ve všech zónách dostupnosti v oblasti Azure. Mějte na paměti, že v některých oblastech Azure máte vliv na potenciální latenci.  
-- Je důležité mít virtuální počítače nasazené v těsné blízkosti úložiště Azure NetApp pro nízkou latenci. 
-- ID uživatele pro ADM s <b>identifikátorem SID</b>a ID skupiny pro `sapsys` virtuální počítače musí odpovídat konfiguraci v Azure NetApp Files. 
-
-> [!IMPORTANT]
-> U SAP HANA úloh je nízká latence kritická. Spolupracujte se zástupcem Microsoftu a zajistěte, aby se virtuální počítače a Azure NetApp Files svazky nasadily v těsné blízkosti.  
-
-> [!IMPORTANT]
-> Pokud dojde k neshodě mezi ID uživatele pro ADM se <b>zabezpečením SID</b>a ID skupiny `sapsys` mezi virtuálním počítačem a konfigurací Azure NetApp, zobrazí se oprávnění soubory na svazcích Azure NetApp připojených k virtuálním počítačům `nobody` . Nezapomeňte zadat správné ID uživatele pro ADM s <b>identifikátorem SID</b>a ID skupiny pro `sapsys` , když se při [připojování nového systému do Azure NetApp Files nový systém](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) .
-
-### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Určení velikosti databáze HANA v Azure NetApp Files
-
-Propustnost svazku Azure NetApp je funkce velikosti svazku a úrovně služby, jak je uvedeno v části [úroveň služby pro Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-service-levels.md). 
-
-Při návrhu infrastruktury pro SAP v Azure byste měli znát minimální požadavky na propustnost úložiště v SAP, která se přeloží na minimální propustnost:
-
-- Povolit čtení a zápis v **/Hana/logu** s 250 MB/s a velikosti 1 MB vstupu/výstupu  
-- Povolit aktivitu čtení minimálně 400 MB/s pro **/Hana/data** pro velikost I/O 16 mb a 64 MB  
-- Povolit aktivitu zápisu alespoň 250 MB/s pro **/Hana/data** s 16 mb a 64 MB I/O velikosti  
-
-[Omezení propustnosti Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-service-levels.md) na 1 TIB kvót:
-- Úroveň úložiště úrovně Premium – 64 MiB/s  
-- Úroveň úložiště úrovně Ultra – 128 MiB/s  
-
-> [!IMPORTANT]
-> Nezávisle na kapacitě, kterou nasazujete na jednom svazku NFS, se očekává, že propustnost stabilní úrovně v rozsahu od 1.2 do 1,4 GB/s (šířka pásma), kterou využívá spotřebitel ve virtuálním počítači. To se musí udělat se základní architekturou nabídky ANF a souvisejícími omezeními pro Linux Sessions pro systém souborů NFS. Údaje o výkonu a propustnosti popsané v článku [výsledky testování testů výkonnosti pro Azure NetApp Files](../../../azure-netapp-files/performance-benchmarks-linux.md) byly provedeny na jednom sdíleném svazku systému souborů NFS s několika klientskými virtuálními počítači a v důsledku více relací. Tento scénář se liší od scénáře, který je v SAP k disměrnému scénáři. Místo měření propustnosti z jednoho virtuálního počítače na svazek systému souborů NFS. hostováno v ANF.
-
-Aby splňovala požadavky na minimální propustnost SAP pro data a protokol a podle pokynů pro `/hana/shared` , Doporučené velikosti by vypadaly takto:
-
-| Svazek | Velikost<br /> Premium Storage úroveň | Velikost<br /> Úroveň úložiště Ultra Storage | Podporovaný protokol NFS |
-| --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TB | v 4.1 |
-| /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
-| /hana/shared | Max (512 GB, 1xRAM) na 4 pracovní uzly | Max (512 GB, 1xRAM) na 4 pracovní uzly | V3 nebo v 4.1 |
+Podrobné informace o ANF pro HANA najdete v dokumentu o [svazcích systému souborů NFS v 4.1 Azure NetApp Files pro SAP HANA](./hana-vm-operations-netapp.md)
 
 
-> [!NOTE]
-> Tady uvedená doporučení pro změny velikosti Azure NetApp Files cílí na to, aby splňovala minimální požadavky SAP na jejich poskytovatele infrastruktury. V reálných scénářích nasazení zákazníků a úloh, které nemusí být dostatečné. Tato doporučení použijte jako výchozí bod a přizpůsobte je na základě požadavků konkrétního zatížení.  
-
-Proto byste měli zvážit, jak nasadit podobnou propustnost pro ANF svazky, jak je uvedeno pro úložiště Ultra disk již. Vezměte v úvahu také velikosti pro velikosti uvedené pro svazky pro různé skladové položky virtuálních počítačů, které jsou v tabulkách s Ultra diskem již provedeny.
-
-> [!TIP]
-> Můžete znovu nastavit velikost svazků Azure NetApp Files dynamicky bez nutnosti `unmount` svazků, zastavit virtuální počítače nebo zastavit SAP HANA. To umožňuje flexibilitu v závislosti na očekávané i nepředvídatelné propustnosti požadavků.
-
-Dokumentace k nasazení SAP HANA konfigurace škálování na více instancí s pohotovostním uzlem pomocí systému souborů NFS v 4.1, který je hostovaný v ANF, se zveřejňuje v SAP HANA škálování na více instancích [s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na SUSE Linux Enterprise Server](./sap-hana-scale-out-standby-netapp-files-suse.md).
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Řešení na vědomí nákladů pomocí služby Azure Premium Storage
@@ -366,6 +310,6 @@ V seznamu jsou uvedené typy virtuálních počítačů, které nejsou certifiko
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 - [SAP HANA Průvodce vysokou dostupností pro virtuální počítače Azure](./sap-hana-availability-overview.md).

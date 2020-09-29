@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: overview
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein
+ms.topic: conceptual
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 03/10/2020
-ms.openlocfilehash: 78758fbfd14810cb7320d95026f8d4af647a3f2f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6b4b31ab4bc0cb1fe5bd9140870df86db6841ff3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334952"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450343"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí databázových úloh
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -249,7 +249,7 @@ Následující příklady ukazují, jak se při spuštění úlohy dynamicky zji
 **Příklad 4** ukazuje cílovou skupinu, která jako cíl obsahuje elastický fond. Podobně jako v *příkladu 2* se fond automaticky zjistí za běhu úlohy a určí se seznam databází ve fondu.
 <br><br>
 
-![Příklady cílových skupin](./media/job-automation-overview/targetgroup-examples2.png)
+![Příklady dalších cílových skupin](./media/job-automation-overview/targetgroup-examples2.png)
 
 **Příklad 5** a **Příklad 6** ukazují pokročilé scénáře, kdy se servery, elastické fondy a databáze dají kombinovat pomocí pravidel zahrnutí a vyloučení.<br>
 **Příklad 7** ukazuje, že za běhu úlohy je možné vyhodnotit také horizontální oddíly v mapě horizontálních oddílů.

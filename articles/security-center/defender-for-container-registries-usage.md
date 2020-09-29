@@ -4,15 +4,15 @@ description: Přečtěte si, jak používat Azure Defender pro Registry kontejne
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 04a7b7f40e1591a919668e940a883dde9a6f4689
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1ff28b13d9adc120f8ee40bcd0119bf9b6883d6a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302005"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449116"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Použití Azure Defenderu pro Registry kontejnerů k prohledávání imagí pro ohrožení zabezpečení
 
@@ -30,7 +30,7 @@ Když skener ohlásí chyby zabezpečení pro Security Center, Security Center j
 |Stanov|**Azure Defender pro Registry kontejnerů** se účtuje, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
 |Podporované registry a Image:|![Ano ](./media/icons/yes-icon.png) . ACR Registry hostované pro Linux, které jsou přístupné z veřejného Internetu a poskytují přístup k prostředí.<br>![Žádné ](./media/icons/no-icon.png) Registry ACR hostované v systému Windows.<br>![Žádné ](./media/icons/no-icon.png) ' privátní ' Registry-Security Center vyžaduje, aby vaše registry byly přístupné z veřejného Internetu. Security Center se aktuálně nemůže připojit k registrům s přístupem, které jsou omezené pomocí brány firewall, koncového bodu služby nebo privátních koncových bodů, jako je například privátní odkaz Azure.<br>![Žádné ](./media/icons/no-icon.png) Image minimalist, jako jsou [pomocné image Docker](https://hub.docker.com/_/scratch/) , nebo Image "Distroless", které obsahují jenom aplikaci a její závislosti modulu runtime bez správce balíčků, prostředí nebo operačního systému.|
 |Požadované role a oprávnění:|Role **Čtenář zabezpečení** a [Azure Container Registry Reader](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -150,7 +150,7 @@ Vytvoření pravidla:
 1. Postup zobrazení, přepsání nebo odstranění pravidla: 
     1. Vyberte **zakázat pravidlo**.
     1. V seznamu oborů se předplatná s aktivními pravidly zobrazí jako **použitá pravidla**.
-        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Upravit nebo odstranit existující pravidlo":::
+        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Vytvoření pravidla zákazu pro zjištění v registru pro VA":::
     1. Chcete-li zobrazit nebo odstranit pravidlo, vyberte nabídku se třemi tečkami ("...").
 
 

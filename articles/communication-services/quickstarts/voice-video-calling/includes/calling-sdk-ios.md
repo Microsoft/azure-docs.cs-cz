@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 31f7e348a805c86964a8856fb81b83831c611de5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7ca15baffd3fac4a1f3635ac7377bac620673446
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377022"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91451564"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ Přidejte do svého projektu komunikační služby Azure s voláním klientské 
 5. Otevřete kartu **nastavení sestavení** v editoru nastavení projektu a přejděte k části **cesty hledání** . Přidá novou položku **cest hledání architektury** pro adresář obsahující rozhraní **AzureCommunicationCalling. Framework**.
     1. Přidejte jinou položku cest hledání architektury ukazující na složku, která obsahuje závislosti.
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Snímek obrazovky s aktualizací cest hledání architektury v rámci XCode":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Snímek obrazovky s oknem pro vytvoření nového projektu v rámci Xcode.":::
 
 ### <a name="request-access-to-the-microphone"></a>Požádat o přístup k mikrofonu
 
@@ -113,7 +113,7 @@ Předat objekt CommunicationUserCredential, který je vytvořený výše, do ACS
 callClient = ACSCallClient()
 callClient?.createCallAgent(userCredential!,
     withCompletionHandler: { (callAgent, error) in
-        if error != nil {
+        if error == nil {
             print("Create agent succeeded")
             self.callAgent = callAgent
         } else {
@@ -186,7 +186,7 @@ Mobilní nabízené oznámení je místní oznámení, které se zobrazí v mobi
 - Krok 2: Xcode-> podepisování možností & – > přidání možnosti – > režimy na pozadí
 - Krok 3: "režimy na pozadí" – > vybrat "Voice over IP" a "Vzdálená oznámení"
 
-:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Snímek obrazovky, který ukazuje, jak přidat funkce v Xcode." lightbox="../media/ios/xcode-push-notification.png":::
+:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Snímek obrazovky s oknem pro vytvoření nového projektu v rámci Xcode." lightbox="../media/ios/xcode-push-notification.png":::
 
 #### <a name="register-for-push-notifications"></a>Registrace nabízených oznámení
 

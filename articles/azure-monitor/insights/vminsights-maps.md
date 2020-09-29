@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: 3227585b62583d0a05f8dbc0444ee5bb4a27df77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 32ad92b333eda8cd429303177dba160f0b58af54
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320506"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445531"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Použití funkce map Azure Monitor pro virtuální počítače k porozumění součástem aplikace
 V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné součásti aplikace na virtuálních počítačích s Windows a Linux, které běží v Azure nebo ve vašem prostředí. Virtuální počítače můžete sledovat dvěma způsoby. Zobrazit mapu přímo z virtuálního počítače nebo zobrazit mapu z Azure Monitor, abyste viděli komponenty napříč skupinami virtuálních počítačů. Tento článek vám pomůže pochopit tyto dvě metody zobrazení a způsob použití funkce map. 
@@ -19,7 +19,7 @@ V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné souč�
 Informace o konfiguraci Azure Monitor pro virtuální počítače najdete v tématu [povolení Azure monitor pro virtuální počítače](vminsights-enable-overview.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se na [Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="introduction-to-the-map-experience"></a>Seznámení s mapovým prostředím
 Předtím, než se začnete na mapové prostředí, byste měli pochopit, jak prezentuje a vizualizují informace. Bez ohledu na to, jestli vyberete funkci mapa přímo z virtuálního počítače nebo z Azure Monitor, funkce mapa prezentuje konzistentní prostředí. Jediným rozdílem je, že od Azure Monitor jedna mapa zobrazuje všechny členy více aplikací nebo clusterů s více vrstvami.
@@ -95,7 +95,7 @@ Mapa vizualizuje závislosti virtuálních počítačů pomocí zjišťování s
 
 Ve výchozím nastavení Mapa zobrazuje posledních 30 minut. Pokud chcete vidět, jak se závislosti prohlédly v minulosti, můžete se dotázat na historické časové rozsahy až na jednu hodinu. Chcete-li spustit dotaz, použijte selektor **TimeRange** v levém horním rohu. Můžete spustit dotaz, například během incidentu nebo zobrazit stav před změnou.  
 
-![Přehled mapování přímých virtuálních počítačů](./media/vminsights-maps/map-direct-vm-01.png)
+![Snímek obrazovky karty mapa v části Přehled monitorování Azure Portal zobrazuje Diagram závislostí mezi virtuálními počítači.](./media/vminsights-maps/map-direct-vm-01.png)
 
 ## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>Zobrazení mapy ze sady škálování virtuálních počítačů
 
@@ -111,7 +111,7 @@ Pokud chcete načíst mapu pro určitou instanci, nejdřív vyberte tuto instanc
 
 Ve výchozím nastavení Mapa zobrazuje posledních 30 minut. Pokud chcete vidět, jak se závislosti prohlédly v minulosti, můžete se dotázat na historické časové rozsahy až na jednu hodinu. Chcete-li spustit dotaz, použijte selektor **TimeRange** . Můžete spustit dotaz, například během incidentu nebo zobrazit stav před změnou.
 
-![Přehled mapování přímých virtuálních počítačů](./media/vminsights-maps/map-direct-vmss-01.png)
+![Snímek obrazovky s kartou map v části Přehled monitorování Azure Portal zobrazuje Diagram závislostí mezi sadami škálování virtuálních počítačů.](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
 >Přístup k mapě konkrétní instance můžete získat také ze zobrazení **instance** pro sadu škálování virtuálního počítače. V části **Nastavení** přejdete na **instance**  >  **přehledy**.

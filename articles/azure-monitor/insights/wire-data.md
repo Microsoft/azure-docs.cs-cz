@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: 340eb1a983f074a5ab934a30c55649852ec08b62
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 06698ad3ab2ceb76278e23bc1ac0002b9c2284f9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325147"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445771"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Řešení Wire Data 2.0 (Preview) v Azure Monitor
 
@@ -102,7 +102,7 @@ V následujících částech najdete seznam podporovaných operačních systém�
 - Windows 10
 - Windows 8.1
 - Windows 8
-- Windows 7
+- Windows 7
 
 #### <a name="supported-linux-operating-systems"></a>Podporované operační systémy Linux
 V následujících částech najdete seznam podporovaných operačních systémů pro agenta závislostí v systému Linux.  
@@ -115,7 +115,7 @@ V následujících částech najdete seznam podporovaných operačních systém�
 
 | Verze operačního systému | Verze jádra |
 |:--|:--|
-| 7.4 | 3.10.0-693 |
+| 7,4 | 3.10.0-693 |
 | 7,5 | 3.10.0-862 |
 | 7.6 | 3.10.0-957 |
 
@@ -183,7 +183,7 @@ Agent závislostí je nainstalován na počítačích se systémem Windows prost
 K instalaci agenta závislostí do každého počítače se systémem Windows použijte následující postup:
 
 1. Nainstalujte agenta Log Analytics podle kroků v části [shromáždění dat z počítačů s Windows hostovaných ve vašem prostředí](../platform/agent-windows.md).
-2. Pomocí odkazu v předchozí části Stáhněte agenta závislostí systému Windows a spusťte jej pomocí následujícího příkazu:`InstallDependencyAgent-Windows.exe`
+2. Pomocí odkazu v předchozí části Stáhněte agenta závislostí systému Windows a spusťte jej pomocí následujícího příkazu: `InstallDependencyAgent-Windows.exe`
 3. Pomocí průvodce agenta nainstalujte.
 4. Pokud se nepovede spustit agenta závislostí, podrobnější informace o chybě najdete v protokolech. U agentů pro Windows se adresář protokolu nachází zde: %Programfiles%\Microsoft Dependency Agent\logs.
 
@@ -226,10 +226,10 @@ InstallDependencyAgent-Linux64.bin -help
 
 Soubory pro agenta závislostí jsou umístěny v následujících adresářích:
 
-| **Spis** | **Umístění** |
+| **Soubory** | **Umístění** |
 | --- | --- |
 | Základní soubory | /opt/microsoft/dependency-agent |
-| Soubory protokolu | /var/opt/microsoft/dependency-agent/log |
+| Soubory protokolů | /var/opt/microsoft/dependency-agent/log |
 | Konfigurační soubory | /etc/opt/microsoft/dependency-agent/config |
 | Spustitelné soubory služby | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br><br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
 | Binární soubory úložiště | /var/opt/microsoft/dependency-agent/storage |
@@ -364,15 +364,15 @@ Na stránce **Přehled** pracovního prostoru služby Log Analytics na Azure Por
 
 V okně **Agenti zachytávající síťový přenos** můžete zjistit, kolik šířky pásma sítě spotřebovávají jednotlivé počítače. Toto okno vám pomůže snadno najít počítač s _největší komunikací_ ve vašem prostředí. Takové počítače mohou být přetížené, chovat se abnormálně nebo používat více síťových prostředků než normálně.
 
-![Příklad prohledávání protokolu](./media/wire-data/log-search-example01.png)
+![Snímek obrazovky okna agenti zachytávající síťový provoz na řídicím panelu Wire Data 2.0 ukazující šířku pásma sítě spotřebovaná jednotlivými počítači.](./media/wire-data/log-search-example01.png)
 
 V okně **Místní podsítě** můžete podobně zjistit, jak velký síťový provoz probíhá přes vaše podsítě. Uživatelé často definují podsítě pro kritické oblasti svých aplikací. Toto okno vám umožní tyto oblasti zobrazit.
 
-![Příklad prohledávání protokolu](./media/wire-data/log-search-example02.png)
+![Snímek obrazovky okna místní podsítě na řídicím panelu Wire Data 2.0 ukazující šířku pásma sítě spotřebovaná jednotlivými LocalSubnet.](./media/wire-data/log-search-example02.png)
 
 V okně **Protokoly na úrovni aplikace** můžete zjistit, jaké protokoly se používají. Můžete například očekávat, že se ve vašem síťovém prostředí nepoužívá protokol SSH. Prohlédnutím informací dostupných v tomto okně můžete tento předpoklad rychle potvrdit nebo vyvrátit.
 
-![Příklad prohledávání protokolu](./media/wire-data/log-search-example03.png)
+![Snímek obrazovky okna protokoly na úrovni aplikace na řídicím panelu Wire Data 2.0 ukazující šířku pásma sítě spotřebovaná každým protokolem.](./media/wire-data/log-search-example03.png)
 
 Je také užitečné vědět, jestli se provoz přes protokol časem zvyšuje nebo snižuje. Pokud se například množství dat přenášených nějakou aplikací zvyšuje, může se jednat o něco, o čem byste měli vědět nebo co může stát za povšimnutí.
 
@@ -395,7 +395,7 @@ Pro každý typ vstupních dat se vytvoří záznam typu _WireData_. Záznamy Wi
 | IPVersion | Verze protokolu IP |
 | Směr | Příchozí nebo odchozí |
 | MaliciousIP | IP adresa známého škodlivého zdroje |
-| Severity | Závažnost podezřelého malwaru |
+| Závažnost | Závažnost podezřelého malwaru |
 | RemoteIPCountry | Země nebo oblast vzdálené IP adresy |
 | ManagementGroupName | Název skupiny pro správu nástroje Operations Manager |
 | SourceSystem | Zdroj, kde byla data shromážděna |

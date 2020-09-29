@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 8f482c4fe6817c75079ceb98e981c846c395ad13
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: aa09b1ec1e3f73547d211fab0907c9e3388c008b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396021"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445335"
 ---
 # <a name="what-are-consistency-levels-in-azure-cosmos-db"></a>Co jsou úrovně konzistence v Azure Cosmos DB?
 
@@ -43,9 +43,7 @@ Sémantika pěti úrovní konzistence je popsána zde:
 
   Následující obrázek znázorňuje silnou konzistenci se hudebními poznámkami. Po zapsání dat do oblasti "Západní USA 2" se při čtení dat z jiných oblastí zobrazí nejnovější hodnota:
 
-  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="video":::
-
-- **Ohraničená neaktuálnost**: čtení jsou zaručena, aby se zaručila záruka konzistentní s předponou. Čtení můžou na konci zápisu zajímat maximálně *"K"* verzí (to znamená "aktualizace") položky nebo časového intervalu *"T"* , podle toho, co je dosaženo jako první. Jinými slovy, pokud vyberete možnost ohraničená neaktuálnost, lze nakonfigurovat "zastaralost" dvěma způsoby:
+  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Konzistence jako spektrum" dvěma způsoby:
 
 - Počet verzí položky (*KB*)
 - Časový interval (*T*), kterým mohou číst prodlevy za zápisy
@@ -61,9 +59,7 @@ V rámci okna zastaralost poskytuje ohraničená neaktuálnost následující z�
 
   Ohraničená neaktuálnost se často volí globálně distribuovanými aplikacemi, které očekávají nízkou latenci zápisu, ale vyžadují celkovou záruku globální objednávky. Ohraničená neaktuálnost je ideální pro aplikace, které nabízí spolupráci skupin a sdílení, burzovní, doplňování a publikování a zařazování do fronty atd. Následující obrázek znázorňuje konzistenci s ohraničenou neaktuálností pomocí hudebních poznámek. Po zapsání dat do oblasti "Západní USA 2" přečtou oblasti "Východní USA 2" a "Austrálie – východ" písemnou hodnotu na základě nakonfigurovaného maximálního času prodlevy nebo maximálního počtu operací:
 
-  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="video":::
-
-- **Relace**: v rámci jediného čtení klientské relace jsou zaručené respektování konzistentní předpony, monotónní čtení, monotónní zápisu, čtení a zápisů a záruky za zápis. Předpokládá se jedna relace "zapisovače" nebo sdílení tokenu relace pro více modulů pro zápis.
+  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="Konzistence jako spektrum" nebo sdílení tokenu relace pro více modulů pro zápis.
 
 Klientům mimo relaci, která provádí zápis, se zobrazí následující záruky:
 
@@ -74,7 +70,7 @@ Klientům mimo relaci, která provádí zápis, se zobrazí následující záru
 
   Konzistence relací je nejčastěji používaná úroveň konzistence pro jednu oblast i pro globálně distribuované aplikace. Poskytuje latence zápisu, dostupnost a propustnost čtení srovnatelné s tím, že má konečnou konzistenci, ale také poskytuje záruky konzistence, které vyhovují potřebám aplikací zapsaných v kontextu uživatele. Následující obrázek znázorňuje konzistenci relace se hudebními poznámkami. "Západní USA 2 Writer" a "Západní USA 2 Reader" používají stejnou relaci (relaci A), aby obě současně četly stejná data. Vzhledem k tomu, že oblast Austrálie – východ používá "relaci B", získá data později, ale ve stejném pořadí jako zápisy.
 
-  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="video":::
+  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Konzistence jako spektrum":::
 
 - **Konzistentní předpona**: vrácené aktualizace obsahují předponu všech aktualizací bez mezer. Konzistentní předpony úrovně konzistence, které nemají nikdy vidět zápisy mimo pořadí.
 
@@ -89,12 +85,12 @@ Níže jsou uvedené záruky konzistence pro konzistentní předpony:
 
 Následující obrázek znázorňuje konzistenci předpon konzistence se hudebními poznámkami. Ve všech oblastech čtení nikdy nevidí zápisy mimo pořadí:
 
-  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="video":::
+  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Konzistence jako spektrum":::
 
 - Kdy **: neexistuje**záruka na řazení pro čtení. Pokud nedojde k žádným dalším operacím zápisu, repliky se nakonec konvergují.  
 Konečná konzistence představuje slabší formu konzistence, protože klient může číst hodnoty, které jsou starší než ty, které se předtím četly. Konečná konzistence je ideální, pokud aplikace nevyžaduje žádné záruky na řazení. Mezi příklady patří počet re, podobně jako u jiných než vlákenných komentářů. Následující obrázek znázorňuje konečnou konzistenci se hudebními poznámkami.
 
-  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="video":::
+  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="Konzistence jako spektrum":::
 
 ## <a name="additional-reading"></a>Další materiály ke čtení
 

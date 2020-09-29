@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22992f66d45b9bdb76383301cccff645c98a74d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7f9af8ee3bf87cfd5d2e74adfce618c7cf8c7e63
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264775"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450332"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Jednotky pro správu Azure AD: řešení potíží a nejčastější dotazy
 
@@ -67,9 +67,9 @@ Aby se zabránilo zvýšení oprávnění, správce s rozsahem jednotky pro spr�
 
 **Otázka: jsou jednotky pro správu podporované v PowerShellu a v Graph API?**
 
-**Odpověď:** Ano. Najdete podporu pro jednotky pro správu v [dokumentaci k rutinám prostředí PowerShell](/powershell/module/Azuread/?view=azureadps-2.0-preview&preserve-view=true) a v [ukázkových skriptech](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview&preserve-view=true).
+**Odpověď:** Ano. Najdete podporu pro jednotky pro správu v [dokumentaci k rutinám prostředí PowerShell](/powershell/module/Azuread/?view=azureadps-2.0&preserve-view=true) a v [ukázkových skriptech](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true).
 
-V Microsoft Graph najdete podporu pro [typ prostředku administrativeUnit](/graph/api/resources/administrativeunit?view=graph-rest-beta&preserve-view=true) .
+V Microsoft Graph najdete podporu pro [typ prostředku administrativeUnit](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true) .
 
 ## <a name="next-steps"></a>Další kroky
 

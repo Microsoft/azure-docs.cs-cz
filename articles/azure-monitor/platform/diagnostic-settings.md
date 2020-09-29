@@ -1,5 +1,5 @@
 ---
-title: Vytvoření nastavení diagnostiky pro odesílání protokolů a metrik platforem do různých umístění
+title: Vytvoření nastavení diagnostiky pro odesílání metrik a protokolů platformy do různých cílů
 description: Pomocí nastavení diagnostiky můžete posílat metriky a protokoly platformy Azure Monitor do protokolů Azure Monitor, úložiště Azure nebo Azure Event Hubs.
 author: bwren
 ms.author: bwren
@@ -7,14 +7,14 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: c0fdf256409608c2eb3c6490dc25342d9d324832
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 48d2a657059908417bc81fd8cc2a132d2d131530
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614036"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449336"
 ---
-# <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Vytvoření nastavení diagnostiky pro odesílání protokolů a metrik platforem do různých umístění
+# <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Vytvoření nastavení diagnostiky pro odesílání metrik a protokolů platformy do různých cílů
 [Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. [Metriky platformy](data-platform-metrics.md) se ve výchozím nastavení shromažďují a obvykle se ukládají do databáze Azure monitor metrik. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání metrik platforem a protokolů platforem do různých umístění.
 
 > [!IMPORTANT]
@@ -73,15 +73,15 @@ Nastavení diagnostiky můžete nakonfigurovat v Azure Portal, a to buď z nabí
 
    - U jednoho prostředku klikněte v nabídce prostředku na položku **nastavení diagnostiky** v části **monitorování** .
 
-        ![Nastavení diagnostiky](media/diagnostic-settings/menu-resource.png)
+        ![Snímek obrazovky s oddílem monitorování v nabídce prostředků v Azure Portal s zvýrazněným diagnostickým nastavením](media/diagnostic-settings/menu-resource.png)
 
    - Pro jeden nebo více prostředků klikněte na **nastavení diagnostiky** v části **nastavení** v nabídce Azure monitor a potom klikněte na prostředek.
 
-      ![Nastavení diagnostiky](media/diagnostic-settings/menu-monitor.png)
+        ![Snímek obrazovky s oddílem nastavení v nabídce Azure Monitor se zvýrazněným diagnostickým nastavením](media/diagnostic-settings/menu-monitor.png)
 
    - V části Protokol aktivit klikněte na **Protokol aktivit** v nabídce **Azure monitor** a pak na **nastavení diagnostiky**. Ujistěte se, že jste zakázali všechny starší konfigurace protokolu aktivit. Podrobnosti najdete v tématu [zakázání existujících nastavení](./activity-log.md#legacy-collection-methods) .
 
-        ![Nastavení diagnostiky](media/diagnostic-settings/menu-activity-log.png)
+        ![Snímek obrazovky nabídky Azure Monitor s vybraným protokolem aktivit a nastavením diagnostiky, které se zvýrazní v řádku nabídek log monitor-Activity](media/diagnostic-settings/menu-activity-log.png)
 
 2. Pokud u vybraného prostředku neexistuje žádné nastavení, zobrazí se výzva k vytvoření nastavení. Klikněte na **Přidat nastavení diagnostiky**.
 

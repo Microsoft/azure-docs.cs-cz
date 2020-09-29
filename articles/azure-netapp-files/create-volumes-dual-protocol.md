@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 972f9b1ac96ca180aa6eaeead7cde51b60ec0e93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ce65d6f1806965a55a91117725d2232d4d6460bd
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278480"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449640"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
 
@@ -38,6 +38,8 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 * Ujistěte se, že splňujete [požadavky pro připojení ke službě Active Directory](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
 * Na serveru DNS vytvořte zónu zpětného vyhledávání a přidejte do této zóny zpětného vyhledávání záznam ukazatele (PTR) hostitelského počítače služby AD. V opačném případě se vytvoření svazku se dvěma protokoly nezdaří.
 * Zajistěte, aby byl klient systému souborů NFS aktuální a běžel nejnovější aktualizace operačního systému.
+* Ujistěte se, že je server služby Active Directory (AD) LDAP v provozu a funguje ve službě AD. To se provádí instalací a konfigurací role [Služba AD LDS (Active Directory Lightweight Directory Services) (AD LDS)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) na počítači AD.
+* Ujistěte se, že certifikační autorita (CA) je ve službě AD vytvořená pomocí role [služby AD CS (Active Directory Certificate Services)](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) , která generuje a exportuje certifikát kořenové certifikační autority podepsané svým držitelem.   
 
 ## <a name="create-a-dual-protocol-volume"></a>Vytvoření svazku se dvěma protokoly
 
@@ -136,6 +138,11 @@ Pomocí modulu snap-in konzoly MMC Uživatelé a počítače služby Active Dire
 
 ![Editor atributů služby Active Directory](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
+Pro uživatele LDAP a skupiny LDAP musíte nastavit následující atributy: 
+* Požadované atributy pro uživatele LDAP:   
+    `uid`: Alice, `uidNumber` : 139, `gidNumber` : 555, `objectClass` : posixAccount
+* Požadované atributy pro skupiny LDAP:   
+    `objectClass`: "POSIX", `gidNumber` : 555
 
 ## <a name="configure-the-nfs-client"></a>Konfigurace klienta NFS 
 

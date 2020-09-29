@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: bc01c283fd4e2b6e3494c18c1908152aecee2c5f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4ff4d5a810eb79fb11e66591cd0b695062b1c9f6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489108"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450177"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Monitorování nasazení IoT Edge
 
@@ -25,7 +25,7 @@ Zařízení i moduly mají podobná data, například připojení, takže se hod
 
 Služba IoT Hub shromažďuje data hlášená nevlákenou zařízení a modulu a poskytuje počty různých stavů, které zařízení mohou mít. Služba IoT Hub uspořádá tato data do čtyř skupin metrik:
 
-| Typ | Description |
+| Typ | Popis |
 | --- | ---|
 | Targeted | Zobrazuje IoT Edge zařízení, která se shodují s podmínkou cílení nasazení. |
 | Použito | Zobrazuje cílené IoT Edge zařízení, na která necílí jiné nasazení s vyšší prioritou. |
@@ -55,7 +55,7 @@ Pokud chcete zobrazit podrobnosti o nasazení a monitorovat zařízení, která 
     | Čas vytvoření | Časové razítko od vytvoření nasazení. Toto časové razítko se používá k přerušení vztahů, pokud dvě nasazení mají stejnou prioritu. |
 
 1. Vyberte nasazení, které chcete monitorovat.  
-1. Na stránce **Podrobnosti nasazení** se posuňte dolů k dolní části a vyberte kartu **cílová podmínka** . výběrem **Zobrazit zobrazíte** seznam zařízení, která odpovídají cílové podmínce. Můžete změnit podmínku a také **prioritu**. Pokud jste provedli změny, vyberte **Uložit** .
+1. Na stránce **Podrobnosti nasazení** se posuňte dolů k dolní části a vyberte kartu **cílová podmínka** . Výběrem **Zobrazit zobrazíte** seznam zařízení, která odpovídají cílové podmínce. Můžete změnit podmínku a také **prioritu**. Pokud jste provedli změny, vyberte **Uložit** .
 
    ![Zobrazení cílových zařízení pro nasazení](./media/how-to-monitor-iot-edge-deployments/target-devices.png)
 
@@ -63,12 +63,11 @@ Pokud chcete zobrazit podrobnosti o nasazení a monitorovat zařízení, která 
 
    ![Zobrazit metriky pro nasazení](./media/how-to-monitor-iot-edge-deployments/deployment-metrics-tab.png)
 
-
 Chcete-li provést změny v nasazení, přečtěte si téma [Změna nasazení](how-to-deploy-at-scale.md#modify-a-deployment).
 
 ## <a name="monitor-a-deployment-with-azure-cli"></a>Monitorování nasazení pomocí Azure CLI
 
-Podrobnosti o jednom nasazení zobrazíte pomocí příkazu [az IoT Edge Deployment show](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show) :
+Podrobnosti o jednom nasazení zobrazíte pomocí příkazu [az IoT Edge Deployment show](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) :
 
 ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
@@ -77,7 +76,7 @@ az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name
 Příkaz pro zobrazení nasazení má následující parametry:
 
 * **--Deployment-ID** – název nasazení, které existuje ve službě IoT Hub. Jedná se o požadovaný parametr.
-* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu.`az account set -s [subscription name]`
+* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu. `az account set -s [subscription name]`
 
 Prozkoumejte nasazení v příkazovém okně.Vlastnost **metriky** uvádí počet pro každou metriku, která je vyhodnocována jednotlivými rozbočovači:
 
@@ -86,7 +85,7 @@ Prozkoumejte nasazení v příkazovém okně.Vlastnost **metriky** uvádí poče
 * **reportedSuccessfulCount** – metrika zařízení, která určuje počet IoT Edge zařízení v rámci generování sestav nasazení v IoT Edge modulu runtime klienta.
 * **reportedFailedCount** – metrika zařízení, která určuje počet IoT Edge zařízení v hlášení nasazení, které se nezdařily z modulu runtime klienta IoT Edge.
 
-Pomocí příkazu [az IoT Edge Deployment show-metric](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show-metric) můžete zobrazit seznam ID zařízení nebo objektů pro každou z těchto metrik:
+Pomocí příkazu [az IoT Edge Deployment show-metric](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) můžete zobrazit seznam ID zařízení nebo objektů pro každou z těchto metrik:
 
 ```cli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]

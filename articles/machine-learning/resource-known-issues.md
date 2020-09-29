@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 67ab15a6b890bc5f28cd18fca8a35adbc7437778
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3a1d5c70913f7e2a56eaf04be333a931c1adbc3d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280976"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450060"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží ve službě Azure Machine Learning
 
@@ -61,7 +61,7 @@ V některých případech může být užitečné, pokud při dotazování na n�
      
 * **Při instalaci nástroje AzureML-vlak-automl-Client není zaručena instalace balíčku s vysvětlením:** 
    
-   Při spuštění vzdáleného spuštění AutoML s povoleným vysvětlením modelu se zobrazí chybová zpráva "instalace balíčku AzureML-vysvětlit-model pro vysvětlení modelu". Jedná se o známý problém. Alternativním řešením je postupovat podle jednoho z následujících kroků:
+   Při spuštění vzdáleného spuštění AutoML s povoleným vysvětlením modelu se zobrazí chybová zpráva "instalace balíčku AzureML-vysvětlit-model pro vysvětlení modelu". Jde o známý problém. Alternativním řešením je postupovat podle jednoho z následujících kroků:
   
   1. Nainstalujte si příkaz AzureML-vysvětlit-model místně.
    ```
@@ -209,6 +209,9 @@ Pokud používáte sdílenou složku pro jiné úlohy, jako je třeba přenos da
     ```
 
     Pokud nezadáte úvodní lomítko, "/", budete muset zadat předponu pracovního adresáře, např. `/mnt/batch/.../tmp/dataset` na výpočetním cíli, abyste označili, kam chcete datovou sadu připojit.
+
+### <a name="mount-dataset"></a>Připojit datovou sadu
+* **Inicializace datové sady se nezdařila: čekání na přípravu přípojného bodu vypršel časový limit**: pro zmírnění problému byla přidána logika opakování `azureml-sdk >=1.12.0` . Pokud jste v předchozích verzích sady AzureML-SDK, upgradujte prosím na nejnovější verzi. Pokud už jste zapnuti `azureml-sdk>=1.12.0` , vytvořte prosím znovu prostředí, abyste měli k opravě k dispozici nejnovější opravu.
 
 ### <a name="data-labeling-projects"></a>Projekty označování dat
 

@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 07/27/2020
-ms.openlocfilehash: 3a02581ab898fad0440f45626676ec6bdd7227eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/29/2020
+ms.openlocfilehash: de372b9800f4b76b42624b30f05848bc570ae6e7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318258"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450131"
 ---
 # <a name="execute-python-script-module"></a>Spustit modul Python Script
 
@@ -56,6 +56,9 @@ if spec is None:
 
 > [!NOTE]
 > Pokud váš kanál obsahuje několik modulů spuštění skriptu Pythonu, které vyžadují balíčky, které nejsou v předinstalovaném seznamu, nainstalujte balíčky v každém modulu.
+
+> [!WARNING]
+> Modul excute Python Script nepodporuje instalaci balíčků, které jsou závislé na dalších nativních knihovnách, a to pomocí příkazu "apt-get", jako je Java, PyODBC a atd. Důvodem je to, že se tento modul spouští v jednoduchém prostředí s předem nainstalovaným Pythonem a s oprávněními bez oprávnění správce.  
 
 ## <a name="upload-files"></a>Nahrání souborů
 Modul spuštění skriptu Python podporuje nahrávání souborů pomocí [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#upload-file-name--path-or-stream-).
@@ -140,7 +143,10 @@ Modul spuštění skriptu Pythonu obsahuje ukázkový kód Pythonu, který můž
 
     Do návrháře lze vrátit dvě datové sady, které musí být sekvence typu `pandas.DataFrame` . V kódu Pythonu můžete vytvořit další výstupy a zapsat je přímo do služby Azure Storage.
 
-6. Odešlete kanál, nebo vyberte modul a vyberte **Spustit vybrané** , aby se spouštěl jenom skript Pythonu.
+    > [!WARNING]
+    > V **modulu spuštění skriptu Pythonu** **se nedoporučuje připojit** k databázi ani k jiným externím úložištím. Můžete použít modul [Import dat](./import-data.md) a [exportovat data](./export-data.md) .     
+
+6. Odešlete kanál.
 
     Všechna data a kód se načtou do virtuálního počítače a spustí se pomocí zadaného prostředí Pythonu.
 

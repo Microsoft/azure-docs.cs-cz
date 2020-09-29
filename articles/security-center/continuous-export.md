@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: memildin
-ms.openlocfilehash: 416968229e37fe6474da38df5402b0cebf02d54c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d0ada1b615d4673f696c6f1b003288f3e7aa02e4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301971"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449150"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Export doporučení a výstrah zabezpečení
 
@@ -36,7 +36,7 @@ Pomocí těchto nástrojů můžete:
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|Free|
 |Požadované role a oprávnění:|**Role správce zabezpečení** ve skupině prostředků (nebo **vlastníkovi**)<br>Musí mít taky oprávnění k zápisu pro cílový prostředek.|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) Čína gov (do centra událostí), ostatní gov|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ano](./media/icons/yes-icon.png) Čína gov (do centra událostí), ostatní gov|
 |||
 
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b55d8bcc2f2042dc36c6875750893a345deb552
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 000bc150b1a4addb4b68bd86b8d72524ec1015fc
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468602"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450419"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Co je primární obnovovací token?
 
@@ -199,6 +199,9 @@ Následující diagramy znázorňují základní podrobnosti o vydávání, obno
 | D | Modul plug-in CloudAP vytvoří soubor cookie PRT, přihlaste se pomocí klíče relace vázané na čip TPM a odešlete ho zpátky do nativního klientského hostitele. V případě, že je soubor cookie podepsán klíčem relace, nemůže být poškozen. |
 | E | Nativní klient klienta vrátí tento soubor cookie PRT do prohlížeče, který bude obsahovat jako součást hlavičky požadavku s názvem x-MS-RefreshTokenCredential a žádosti o tokeny od Azure AD. |
 | F | Azure AD ověří signaturu klíče relace v souboru cookie PRT, ověří hodnotu nonce, ověří, že je zařízení v tenantovi platné, a vydá token ID pro webovou stránku a šifrovaný soubor cookie relace pro prohlížeč. |
+
+> [!NOTE]
+> Tok jednotného přihlašování prohlížeče popsaný v předchozích krocích se nevztahuje na relace v privátních režimech, jako je InPrivate ve službě Microsoft Edge nebo anonymním v Google Chrome (při použití rozšíření účtů Microsoft).
 
 ## <a name="next-steps"></a>Další kroky
 

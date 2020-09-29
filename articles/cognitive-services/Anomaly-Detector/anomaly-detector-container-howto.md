@@ -1,36 +1,41 @@
 ---
-title: Jak nainstalovat a spustit kontejnery pro použití rozhraní API detektoru anomálií
+title: Instalace a spuštění kontejnerů Docker pro rozhraní API detektoru anomálií
 titleSuffix: Azure Cognitive Services
-description: Naučte se instalovat a používat kontejner pro použití pokročilých algoritmů rozhraní API detektoru anomálií.
+description: Pomocí algoritmu rozhraní API pro detekci anomálií můžete najít anomálie ve vašich datech v místním prostředí pomocí kontejneru Docker.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: 2a4ff7da16524e0706601e43dff39325952990ff
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: cog-serv-seo-aug-2020
+keywords: místní, Docker, kontejner, streamování, algoritmy
+ms.openlocfilehash: ff4d15b33cb261e71ea883c0245afe5781005e38
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903557"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91459996"
 ---
-# <a name="install-and-run-anomaly-detector-containers"></a>Instalace a spuštění kontejnerů Detektoru anomálií 
+# <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Instalace a spuštění kontejnerů Docker pro rozhraní API detektoru anomálií 
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
-Detektor anomálií nabízí následující funkce kontejneru:
+Kontejnery umožňují používat rozhraní API detektoru anomálií ve vašem vlastním prostředí. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejner detektoru anomálií.
 
-| Funkce | Funkce |
-|--|--|
-| Detektor anomálií | <li> Detekuje anomálie při jejich výskytu v reálném čase. <li> Detekuje anomálie v celé sadě dat jako dávku. <li> Detekuje body změny trendu ve vaší datové sadě jako dávku.<li> Odvodí očekávaný normální rozsah dat. <li> Podporuje úpravu citlivosti detekce anomálií, aby lépe vyhovovala vašim datům. |
+Detektor anomálií nabízí jeden kontejner Docker pro použití v místním rozhraní API. Použít kontejner pro:
+* Použití algoritmů detektoru anomálií pro vaše data
+* Monitorujte streamovaná data a zjišťují anomálie při jejich výskytu v reálném čase.
+* Detekuje anomálie v celé sadě dat jako dávku. 
+* Detekuje body změny trendu ve vaší datové sadě jako dávku.
+* Upravte citlivost algoritmu pro detekci anomálií, aby lépe vyhovovala vašim datům.
 
-Podrobné informace o rozhraních API najdete v těchto tématech:
+Podrobné informace o tomto rozhraní API najdete v těchto tématech:
 * [Další informace o službě rozhraní API detektoru anomálií](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -174,7 +179,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů detektoru anomálií. Souhrn:
 
