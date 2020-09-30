@@ -69,8 +69,10 @@
       href: load-balancer-tcp-reset.md
     - name: Load Balancer úrovně Standard a zóny dostupnosti
       href: load-balancer-standard-availability-zones.md
-    - name: Integrované ovládací prvky zabezpečení
-      href: load-balancer-security-controls.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Správa back-endových fondů
       href: backend-pool-management.md
     - name: Standard Load Balancer a Virtual Machine Scale Sets

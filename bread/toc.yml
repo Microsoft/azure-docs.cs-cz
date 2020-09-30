@@ -598,12 +598,9 @@
         - name: Virtuální počítač pro datové vědy
           tocHref: /azure/machine-learning/data-science-virtual-machine
           topicHref: /azure/machine-learning/data-science-virtual-machine/
-    - name: Marketplace Consumer
-      tocHref: /azure/marketplace-consumer/
+    - name: Komerční marketplace
+      tocHref: /azure/marketplace
       topicHref: /azure/marketplace/
-    - name: Marketplace Publishing
-      tocHref: /azure/marketplace-publishing/
-      topicHref: /azure/marketplace/marketplace-publishers-guide
     - name: Media Services
       tocHref: /azure/media-services/
       topicHref: /azure/media-services/
