@@ -1,15 +1,15 @@
 ---
 title: Práce s rozsáhlými datovými sadami
 description: Seznamte se s tím, jak ve velkých datových sadách získat záznamy, které se mají při práci se službou Azure Resource Graph získávat, formátovat, stránkovat a přeskakovat.
-ms.date: 08/10/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f3073986e424c641d884e1c2427d3d519658d37
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ee552908696aa652931bf3555391adcfec0fc6d3
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005934"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578491"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Práce s velkými sadami dat prostředků Azure
 
@@ -48,7 +48,7 @@ V současné době **má aktuálně maximální** povolenou hodnotu _5000_, kter
 Další možností pro práci s velkými sadami dat je ovládací prvek **Skip** . Tento ovládací prvek umožňuje vašemu dotazu přeskočit nebo přeskočit definovaný počet záznamů před vrácením výsledků. Funkce **Skip** je užitečná pro dotazy, které seřadí výsledky smysluplně, kde je záměrem získat záznamy někam uprostřed sady výsledků dotazu. Pokud jsou požadované výsledky na konci vrácené datové sady, je efektivnější použít jinou konfiguraci řazení a načíst výsledky z horní části sady dat.
 
 > [!NOTE]
-> Při použití příkazu **Přeskočit**doporučujeme seřazení výsledků alespoň v jednom sloupci pomocí `asc` nebo `desc` . Bez řazení jsou vrácené výsledky náhodné a nelze je opakovat.
+> Při použití příkazu **Přeskočit**doporučujeme seřazení výsledků alespoň v jednom sloupci pomocí `asc` nebo `desc` . Bez řazení jsou vrácené výsledky náhodné a nelze je opakovat. Pokud `limit` `take` jsou v dotazu nebo použity, **přeskočení** je ignorováno.
 
 Následující příklady ukazují, jak přeskočit prvních _10_ záznamů, které dotaz by měl mít za následek, že se místo toho spustí vrácená sada výsledků s jedenáctým záznamem:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: b899069a03b39d068f2b4059cf26d3baf1f3beae
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 502b93b4459fba4da04207d9186f8c7ce6b298c2
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905427"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578474"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Rozšíření Azure Sentinelu napříč pracovními prostory a tenanty
 
@@ -27,23 +27,23 @@ ms.locfileid: "90905427"
 
 Azure Sentinel je postavená na Log Analytics pracovním prostoru. Všimněte si, že prvním krokem při připojování služby Azure Sentinel je výběr pracovního prostoru Log Analytics, který chcete pro tento účel použít.
 
-Pokud používáte jeden pracovní prostor, můžete získat plnou výhodu prostředí Sentinel Azure. I tak existují některé okolnosti, které mohou vyžadovat, abyste měli více pracovních prostorů. V následující tabulce jsou uvedeny některé z těchto situací a pokud je to možné, navrhuje, jak může být požadavek splněn s jedním pracovním prostorem:
+Všechny výhody Azure Sentinelu můžete plně využít při použití jednoho pracovního prostoru. I tak existují některé okolnosti, které mohou vyžadovat, abyste měli více pracovních prostorů. V následující tabulce jsou uvedeny některé z těchto situací a pokud je to možné, navrhuje, jak může být požadavek splněn s jedním pracovním prostorem:
 
-| Požadavek | Description | Způsoby omezení počtu pracovních prostorů |
+| Požadavek | Popis | Způsoby snížení počtu pracovních prostorů |
 |-------------|-------------|--------------------------------|
 | Suverenita a dodržování předpisů | Pracovní prostor je vázaný na konkrétní oblast. Pokud se data musí uchovávat v různých [zeměpisných oblastech Azure](https://azure.microsoft.com/global-infrastructure/geographies/) , aby splňovaly zákonné požadavky, musí být rozdělené do samostatných pracovních prostorů. |  |
 | Vlastnictví dat | Hranice vlastnictví dat, například dceřinými společnostmi nebo přidruženými společnostmi, jsou lépe vymezeny pomocí samostatných pracovních prostorů. |  |
-| Několik tenantů Azure | Služba Azure Sentinel podporuje shromažďování dat z prostředků Microsoft a Azure SaaS jenom v rámci své vlastní hranice tenanta Azure Active Directory (Azure AD). Proto každý tenant služby Azure AD vyžaduje samostatný pracovní prostor. |  |
-| Podrobné řízení přístupu k datům | Organizace může pro přístup k některým datům shromažďovaných službou Azure Sentinel vyžadovat v rámci organizace nebo mimo ni jiné skupiny. Příklad:<br><ul><li>Vlastníci prostředků mají přístup k datům, která se týkají jejich prostředků.</li><li>Regionální nebo dceřiné Socy – přístup k datům relevantním pro jejich části organizace</li></ul> | Použití RBAC nebo na [úrovni tabulky](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) pro práci s [prostředky](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) |
+| Několik tenantů Azure | Služba Azure Sentinel podporuje shromažďování dat z prostředků Microsoft a Azure SaaS jenom v rámci své vlastní hranice tenanta Azure Active Directory (Azure AD). Každý tenant služby Azure AD proto vyžaduje samostatný pracovní prostor. |  |
+| Odstupňované řízení přístupu k datům | Organizace může pro přístup k některým datům shromažďovaných službou Azure Sentinel vyžadovat v rámci organizace nebo mimo ni jiné skupiny. Například:<br><ul><li>Vlastníci prostředků mají přístup k datům, která se týkají jejich prostředků.</li><li>Regionální nebo dceřiné Socy – přístup k datům relevantním pro jejich části organizace</li></ul> | Použití RBAC nebo na [úrovni tabulky](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) pro práci s [prostředky](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) |
 | Podrobné nastavení uchovávání informací | Historicky bylo několik pracovních prostorů jediným způsobem, jak nastavit různá období uchovávání pro různé datové typy. Díky zavedení nastavení uchování na úrovni tabulky už to v mnoha případech nepotřebujeme. | Použití [Nastavení uchování na úrovni tabulky](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) nebo automatizace [odstranění dat](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) |
-| Rozdělit fakturaci | Když umístíte pracovní prostory do samostatných předplatných, můžou se fakturovat různým stranám. | Vytváření sestav využití a vzájemné zpoplatnění |
-| Starší verze architektury | Použití několika pracovních prostorů může vyrazit z historických návrhů, které vzaly v úvahu omezení nebo osvědčené postupy, které už nedrží hodnotu true. Může to být také libovolná volba návrhu, která se dá upravit tak, aby lépe vyhovovala službě Azure Sentinel.<br><br>Příklady:<br><ul><li>Použití výchozího pracovního prostoru pro každé předplatné při nasazení Azure Security Center</li><li>Nutnost podrobnějšího řízení přístupu nebo nastavení uchovávání, řešení, pro která jsou relativně nová</li></ul> | Nové architekty pracovních prostorů |
+| Rozdělená fakturace | Když umístíte pracovní prostory do samostatných předplatných, můžou se fakturovat různým stranám. | Použijte vykazování a přeúčtování. |
+| Zastaralá architektura | Použití několika pracovních prostorů může vyrazit z historických návrhů, které vzaly v úvahu omezení nebo osvědčené postupy, které už nedrží hodnotu true. Může se také jednat o volbu návrhu, který lze upravit tak, aby lépe vyhovoval Azure Sentinelu.<br><br>Příklady:<br><ul><li>Použití výchozího pracovního prostoru pro každé předplatné při nasazení Azure Security Center</li><li>Nutnost podrobnějšího řízení přístupu nebo nastavení uchovávání, řešení, pro která jsou relativně nová</li></ul> | Změňte architekturu pracovních prostorů. |
 
 ### <a name="managed-security-service-provider-mssp"></a>Spravovaný poskytovatel služby zabezpečení (MSSP)
 
 Konkrétní případ použití, který používá několik pracovních prostorů, je MSSP služba Azure Sentinel. V tomto případě platí, že mnoho, pokud ne všechny výše uvedené požadavky platí, představuje několik pracovních prostorů v rámci klientů, což je nejlepší postup. MSSP může použít [Azure Lighthouse](../lighthouse/overview.md) k rozšiřování funkcí mezi pracovními prostory Azure Sentinel napříč klienty.
 
-## <a name="azure-sentinel-multiple-workspace-architecture"></a>Architektura Azure Sentinel Multiple Workspace
+## <a name="azure-sentinel-multiple-workspace-architecture"></a>Architektura s více pracovními prostory Azure Sentinelu
 
 Vzhledem k výše uvedeným požadavkům jsou k dispozici případy, kdy je nutné centrálně monitorovat a spravovat více pracovních prostorů Azure Sentinel, potenciálně v rámci klientů Azure Active Directory (Azure AD), a to v jednom SOC.
 
@@ -63,7 +63,7 @@ Tento model nabízí významné výhody oproti plně centralizovanému modelu, v
 
 - Méně výzev týkajících se vlastnictví dat, ochrany osobních údajů a dodržování legislativních předpisů.
 
-- Minimální latence sítě a poplatky.
+- Minimální latence sítě a poplatky
 
 - Snadné zprovoznění a odregistrace nových poboček nebo zákazníků.
 
@@ -131,7 +131,7 @@ Viz také [nasazení a Správa služby Azure Sentinel jako kódu](https://techco
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Správa pracovních prostorů napříč klienty pomocí Azure Lighthouse
 
-Jak je uvedeno výše, v mnoha scénářích se můžou různé pracovní prostory Azure Sentinel nacházet v různých klientech Azure AD. Pomocí [Azure Lighthouse](../lighthouse/overview.md) můžete v rámci hranic klientů rozšíříte všechny aktivity mezi jednotlivými pracovními prostory a umožníte uživatelům v tenantovi pro správu pracovat v pracovních prostorech Azure Sentinel ve všech klientech. Po [zprovoznění](../lighthouse/how-to/onboard-customer.md)služby Azure Lighthouse můžete pomocí [voliče adresář a odběr](./multiple-tenants-service-providers.md#how-to-access-azure-sentinel-from-other-tenants) v Azure Portal vybrat všechna předplatná obsahující pracovní prostory, které chcete spravovat, aby se zajistilo, že budou všechny dostupné v různých selektorech pracovního prostoru na portálu.
+Jak je uvedeno výše, v mnoha scénářích se můžou různé pracovní prostory Azure Sentinel nacházet v různých klientech Azure AD. Pomocí [Azure Lighthouse](../lighthouse/overview.md) můžete v rámci hranic klientů rozšíříte všechny aktivity mezi jednotlivými pracovními prostory a umožníte uživatelům v tenantovi pro správu pracovat v pracovních prostorech Azure Sentinel ve všech klientech. Po [zprovoznění](../lighthouse/how-to/onboard-customer.md)služby Azure Lighthouse můžete pomocí [voliče adresář a odběr](./multiple-tenants-service-providers.md#how-to-access-azure-sentinel-in-managed-tenants) v Azure Portal vybrat všechna předplatná obsahující pracovní prostory, které chcete spravovat, aby se zajistilo, že budou všechny dostupné v různých selektorech pracovního prostoru na portálu.
 
 Při používání Azure Lighthouse se doporučuje vytvořit skupinu pro každou roli Sentinel Azure a delegovat oprávnění z každého tenanta na tyto skupiny.
 
