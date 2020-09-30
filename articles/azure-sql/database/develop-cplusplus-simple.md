@@ -81,7 +81,7 @@ Případně můžete vytvořit soubor DSN pomocí průvodce, který se spustí, 
 
 ![Vytvořit soubor DSN](./media/develop-cplusplus-simple/datasource.png)
 
-Blahopřejeme! Úspěšně jste se připojili k Azure SQL pomocí C++ a ODBC ve Windows. Můžete pokračovat v čtení, aby to bylo stejné i pro Linux Platform.
+Gratulujeme! Úspěšně jste se připojili k Azure SQL pomocí C++ a ODBC ve Windows. Můžete pokračovat v čtení, aby to bylo stejné i pro Linux Platform.
 
 ## <a name="step-5-connecting-from-a-linux-cc-application"></a><a id="Linux"></a>Krok 5: připojení z linuxové aplikace C/C++
 
@@ -131,7 +131,7 @@ Pokud bylo připojení úspěšné, měl by se teď zobrazit aktuální název d
 
 ![Výstup okna konzoly pro Linux](./media/develop-cplusplus-simple/linuxconsolewindow.png)
 
-Blahopřejeme! Úspěšně jste dokončili kurz a můžete se teď připojit k Azure SQL Database z C++ na platformách Windows a Linux.
+Gratulujeme! Úspěšně jste dokončili kurz a můžete se teď připojit k Azure SQL Database z C++ na platformách Windows a Linux.
 
 ## <a name="get-the-complete-cc-tutorial-solution"></a><a id="GetSolution"></a>Získání kompletního řešení kurzu pro C/C++
 
@@ -145,7 +145,7 @@ Blahopřejeme! Úspěšně jste dokončili kurz a můžete se teď připojit k A
 * Přečtěte si téma [Přehled vývoje SQL Database](develop-overview.md) .
 * Další informace o [referenci rozhraní API ODBC](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Vzory návrhu pro aplikace SaaS s více tenanty využívající Azure SQL Database](saas-tenancy-app-design-patterns.md)
 * Prozkoumejte všechny [schopnosti služby SQL Database](https://azure.microsoft.com/services/sql-database/).

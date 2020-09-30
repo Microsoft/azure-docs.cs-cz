@@ -22,7 +22,7 @@ ms.locfileid: "91448267"
 
 Přehled spravovaného modulu HSM najdete v tématu [co je spravovaný modul HSM?](overview.md) .
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 

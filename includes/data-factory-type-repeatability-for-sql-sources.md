@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 24bb7a1fcb1569922fb34034fb3c0d003cdd7061
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9447cec55c53861ca57d5416a91ffefd35fdd20b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67175474"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91571956"
 ---
 ## <a name="repeatability-during-copy"></a>Opakovatelnost během kopírování
 Při kopírování dat do Azure SQL/SQL Server z jiných úložišť dat je nutné mít na paměti, aby se zabránilo nezamýšleným výsledkům. 
@@ -74,7 +74,7 @@ Nic nového se nemuselo dělat. Aktivita kopírování spustila skript vyčišt�
 
 ### <a name="mechanism-2"></a>Mechanismus 2
 > [!IMPORTANT]
-> sliceIdentifierColumnName se v tuto chvíli nepodporuje pro Azure SQL Data Warehouse. 
+> sliceIdentifierColumnName se v tuto chvíli nepodporuje pro Azure synapse Analytics. 
 
 Dalším mechanismem, který se má dosáhnout opakovatelnosti, je vytvoření vyhrazeného sloupce (**sliceIdentifierColumnName**) v cílové tabulce. Tento sloupec Azure Data Factory použít k tomu, aby bylo zajištěno, že zůstane synchronizován zdroj a cíl. Tento přístup funguje v případě, že dojde k flexibilitě při změně nebo definování schématu cílové tabulky SQL. 
 

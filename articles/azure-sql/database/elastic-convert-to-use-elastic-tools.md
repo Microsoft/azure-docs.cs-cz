@@ -150,7 +150,7 @@ Get-Shards -ShardMap $ShardMap
 Get-Mappings -ShardMap $ShardMap
 ```
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Po dokončení instalace můžete začít používat klientskou knihovnu Elastic Database. Můžete také použít [Směrování závislé na datech](elastic-scale-data-dependent-routing.md) a [dotaz multi-horizontálních oddílů](elastic-scale-multishard-querying.md).
 
@@ -162,7 +162,7 @@ Nástroje jsou také na GitHubu: [Azure nebo elastické databáze-Tools](https:/
 
 Pomocí nástroje pro dělení k přesunu dat do nebo z modelu více tenantů na jeden model tenanta. Viz [Nástroj rozdělit sloučení](elastic-scale-get-started.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 Informace o běžných vzorech architektury dat databázových aplikací softwaru s více tenanty jako služby (SaaS) naleznete v části [Vzory návrhu pro aplikace SaaS s více tenanty s databází Azure SQL Database](saas-tenancy-app-design-patterns.md).
 

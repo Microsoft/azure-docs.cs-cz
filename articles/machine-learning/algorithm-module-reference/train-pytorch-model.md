@@ -58,7 +58,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 ## <a name="technical-notes"></a>Technické poznámky
 ###  <a name="expected-inputs"></a>Očekávané vstupy  
 
-| Název               | Typ                    | Popis                              |
+| Název               | Typ                    | Description                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | Nevlakový model    | UntrainedModelDirectory | Nevlakový model, vyžadovat pytorch         |
 | Datová sada školení   | ImageDirectory          | Datová sada školení                         |
@@ -66,7 +66,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="module-parameters"></a>Parametry modulu  
 
-| Název          | Rozsah            | Typ    | Výchozí | Popis                              |
+| Name          | Rozsah            | Typ    | Výchozí | Description                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Epochs        | > 0               | Integer | 5       | Výběr sloupce obsahujícího sloupec popisek nebo výsledek |
 | Velikost dávky    | > 0               | Integer | 16      | Kolik instancí se má naučit v dávce   |
@@ -76,7 +76,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="outputs"></a>Výstupy  
 
-| Název          | Typ           | Popis   |
+| Název          | Typ           | Description   |
 | ------------- | -------------- | ------------- |
 | Školený model | ModelDirectory | Školený model |
 

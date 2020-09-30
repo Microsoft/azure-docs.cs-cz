@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: b1da644d8aca0b197e21ec03c7d0ac0b454f92a9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 2dc802166b605ad7853c0910f1bab2a51f1f7297
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926293"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574139"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Zabezpečení dat uložených ve službě Azure Data Lake Storage Gen1
 Zabezpečení dat v Azure Data Lake Storage Gen1 je třístavový přístup.  Řízení přístupu na základě role (RBAC) a seznamy řízení přístupu (ACL) musí být nastavené tak, aby plně povolovaly přístup k datům pro uživatele a skupiny zabezpečení.
 
-1. Začněte vytvořením skupin zabezpečení v Azure Active Directory (AAD). Tyto skupiny zabezpečení se používají k implementaci řízení přístupu na základě rolí Azure (Azure RBAC) v Azure Portal. Další informace najdete v tématu [Azure RBAC](../role-based-access-control/role-assignments-portal.md).
-2. Přiřaďte skupiny zabezpečení AAD k účtu Data Lake Storage Gen1. Tato kontrola řídí přístup k účtu Data Lake Storage Gen1 z portálu a operací správy z portálu nebo rozhraní API.
-3. Přiřaďte skupiny zabezpečení AAD jako seznamy řízení přístupu (ACL) v systému souborů Data Lake Storage Gen1.
+1. Začněte vytvořením skupin zabezpečení v Azure Active Directory (Azure AD). Tyto skupiny zabezpečení se používají k implementaci řízení přístupu na základě rolí Azure (Azure RBAC) v Azure Portal. Další informace najdete v tématu [Azure RBAC](../role-based-access-control/role-assignments-portal.md).
+2. Přiřaďte skupiny zabezpečení Azure AD k účtu Data Lake Storage Gen1. Tato kontrola řídí přístup k účtu Data Lake Storage Gen1 z portálu a operací správy z portálu nebo rozhraní API.
+3. Přiřaďte skupiny zabezpečení Azure AD jako seznamy řízení přístupu (ACL) v systému souborů Data Lake Storage Gen1.
 4. Kromě toho můžete také nastavit rozsah IP adres pro klienty, kteří budou mít přístup k datům v Data Lake Storage Gen1.
 
 Tento článek poskytuje pokyny, jak použít Azure Portal k provedení výše uvedených úloh. Podrobné informace o tom, jak Data Lake Storage Gen1 implementuje zabezpečení na úrovni účtu a dat, najdete v tématu [zabezpečení v Azure Data Lake Storage Gen1](data-lake-store-security-overview.md). Podrobné informace o tom, jak se v Data Lake Storage Gen1 implementují seznamy řízení přístupu (ACL), najdete v tématu [přehled Access Control v Data Lake Storage Gen1](data-lake-store-access-control.md).
@@ -36,7 +36,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 * **Účet Data Lake Storage Gen1**. Pokyny, jak ho vytvořit, najdete v tématu Začínáme [s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) .
 
 ## <a name="create-security-groups-in-azure-active-directory"></a>Vytvoření skupin zabezpečení v Azure Active Directory
-Pokyny k vytvoření skupin zabezpečení AAD a přidání uživatelů do této skupiny najdete v tématu [Správa skupin zabezpečení v Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+Pokyny k vytvoření skupin zabezpečení služby Azure AD a přidání uživatelů do této skupiny najdete v tématu [Správa skupin zabezpečení v Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 > [!NOTE] 
 > Do skupiny v Azure AD můžete přidat jak uživatele, tak i jiné skupiny pomocí Azure Portal. Pokud ale chcete přidat instanční objekt do skupiny, použijte [modul PowerShellu služby Azure AD](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
@@ -104,12 +104,12 @@ Přiřazením skupin uživatelů a zabezpečení do Data Lake Storage Gen1 syst�
     ![Přidat skupinu](./media/data-lake-store-secure-data/adl.acl.3.png "Přidat skupinu")
 5. Klikněte na **vybrat oprávnění**, vyberte oprávnění, jestli se mají oprávnění použít pro rekurzivní a jestli chcete přiřadit oprávnění jako přístupový seznam ACL, výchozí seznam ACL nebo obojí. Klikněte na **OK**.
    
-    ![Přiřazení oprávnění ke skupině](./media/data-lake-store-secure-data/adl.acl.4.png "Přiřazení oprávnění ke skupině")
+    ![Snímek obrazovky s oknem oprávnění k přiřazení s možností vybrat oprávnění, která se vyvolala a v okně vybrat oprávnění s možností OK.](./media/data-lake-store-secure-data/adl.acl.4.png "Přiřazení oprávnění ke skupině")
    
     Další informace o oprávněních v Data Lake Storage Gen1 a o výchozích nebo přístupových seznamech řízení přístupu najdete [v tématu Access Control v Data Lake Storage Gen1](data-lake-store-access-control.md).
 6. Po kliknutí na **OK** v okně **vybrat oprávnění** se teď nově přidaná skupina a přidružená oprávnění zobrazí v okně **přístup** .
    
-    ![Přiřazení oprávnění ke skupině](./media/data-lake-store-secure-data/adl.acl.5.png "Přiřazení oprávnění ke skupině")
+    ![Snímek obrazovky okna s přístupem s možností strojírenství dat s názvem.](./media/data-lake-store-secure-data/adl.acl.5.png "Přiřazení oprávnění ke skupině")
    
    > [!IMPORTANT]
    > V aktuální verzi můžete v části **přiřazená oprávnění**mít až 28 položek. Pokud chcete přidat více než 28 uživatelů, měli byste vytvořit skupiny zabezpečení, přidat uživatele do skupin zabezpečení, přidat uživatelům přístup k těmto skupinám zabezpečení pro účet Data Lake Storage Gen1.
@@ -123,7 +123,7 @@ Data Lake Storage Gen1 vám umožní dál uzamknout přístup k úložišti dat 
 ![Nastavení brány firewall a přístup k protokolu IP](./media/data-lake-store-secure-data/firewall-ip-access.png "Nastavení a IP adresa brány firewall")
 
 ## <a name="remove-security-groups-for-a-data-lake-storage-gen1-account"></a>Odebrání skupin zabezpečení pro účet Data Lake Storage Gen1
-Když odeberete skupiny zabezpečení z Data Lake Storage Gen1 účtů, mění se jenom přístup k operacím správy na účtu pomocí webu Azure Portal a rozhraní API Azure Resource Manager.  
+Když odeberete skupiny zabezpečení z Data Lake Storage Gen1 účtů, měníte jenom přístup k operacím správy na účtu pomocí rozhraní API Azure Portal a Azure Resource Manager.  
 
 Přístup k datům se nezměnil a je stále spravovaný pomocí seznamů ACL přístupu.  Výjimkou jsou uživatelé nebo skupiny v roli vlastníci.  Uživatelé/skupiny odebrané z role vlastníci už nejsou Super uživatelé a jejich přístup se vrátí k nastavení seznamu ACL přístupu. 
 
@@ -145,7 +145,7 @@ Když odeberete seznamy řízení přístupu (ACL) skupiny zabezpečení z Data 
     ![Nastavení seznamů ACL pro Data Lake Storage Gen1 systému souborů](./media/data-lake-store-secure-data/adl.acl.1.png "Nastavení seznamů ACL pro Data Lake Storage Gen1 systému souborů")
 3. V okně **přístup** klikněte na skupinu zabezpečení, kterou chcete odebrat. V okně **Podrobnosti o přístupu** klikněte na **Odebrat**.
    
-    ![Přiřazení oprávnění ke skupině](./media/data-lake-store-secure-data/adl.remove.acl.png "Přiřazení oprávnění ke skupině")
+    ![Snímek obrazovky s oknem přístup s možností inženýrství dat s názvem a podrobností o přístupu s možností odebrat s názvem.](./media/data-lake-store-secure-data/adl.remove.acl.png "Přiřazení oprávnění ke skupině")
 
 ## <a name="see-also"></a>Viz také
 * [Přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md)

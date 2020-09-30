@@ -25,4 +25,4 @@ V tomto kroku vytvoříte připojení mezi rozbočovačem a virtuální sítí. 
     * **Hubs** (Rozbočovače) – vyberte rozbočovač, který chcete k tomuto připojení přidružit.
     * **Subscription** (Předplatné) – ověřte předplatné.
     * **Virtual network** (Virtuální síť) – vyberte virtuální síť, kterou chcete připojit k tomuto rozbočovači. Virtuální síť nesmí mít existující bránu virtuální sítě.
-1. Vyberte **OK** a vytvořte připojení.
+1. Výběrem možnosti **OK** vytvořte připojení.
