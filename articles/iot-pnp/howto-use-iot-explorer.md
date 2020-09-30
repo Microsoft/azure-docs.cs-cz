@@ -1,23 +1,23 @@
 ---
 title: Instalace a použití aplikace Azure IoT Explorer | Microsoft Docs
-description: Nainstalujte nástroj Azure IoT Explorer a použijte ho k interakci se zařízeními IoT technologie Plug and Play ve verzi Preview připojenou ke službě IoT Hub.
+description: Nainstalujte nástroj Azure IoT Explorer a použijte ho k interakci se zařízeními IoT technologie Plug and Play připojenými ke službě IoT Hub.
 author: rido-min
 ms.author: rmpablos
-ms.date: 05/06/2020
+ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 083dcde44e56af34f17d952c46e554b234818f27
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: e64586ced7a619de02ae3a9d6beda35660ca04a9
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352161"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577573"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Instalace a použití Azure IoT Exploreru
 
-Azure IoT Explorer je grafický nástroj pro interakci s a testováním zařízení IoT technologie Plug and Play ve verzi Preview. Po instalaci nástroje na místním počítači ho můžete použít pro připojení k centru. Nástroj můžete použít k zobrazení telemetrie, kterou zařízení odesílá, k práci s vlastnostmi zařízení a k vyvolání příkazů.
+Azure IoT Explorer je grafický nástroj pro interakci s a testováním zařízení technologie Plug and Play IoT. Po instalaci nástroje na místním počítači ho můžete použít pro připojení k centru. Nástroj můžete použít k zobrazení telemetrie, kterou zařízení odesílá, k práci s vlastnostmi zařízení a k vyvolání příkazů.
 
 V tomto článku se dozvíte, jak:
 
@@ -28,23 +28,19 @@ V tomto článku se dozvíte, jak:
 
 K použití nástroje Azure IoT Explorer potřebujete:
 
-- Azure IoT Hub. Existuje mnoho způsobů, jak přidat službu IoT Hub k předplatnému Azure, jako je [vytvoření centra IoT pomocí rozhraní příkazového řádku Azure](../iot-hub/iot-hub-create-using-cli.md). K spuštění nástroje Azure IoT Explorer potřebujete připojovací řetězec služby IoT Hub. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Zařízení zaregistrované ve službě IoT Hub. K registraci zařízení můžete použít následující příkaz rozhraní příkazového řádku Azure CLI. Nezapomeňte nahradit `{YourIoTHubName}` `{YourDeviceID}` zástupné symboly a pomocí vašich hodnot:
-
-    ```azurecli-interactive
-    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
-    ```
+- Azure IoT Hub. Existuje mnoho způsobů, jak přidat službu IoT Hub k předplatnému Azure, jako je [vytvoření centra IoT pomocí rozhraní příkazového řádku Azure](../iot-hub/iot-hub-create-using-cli.md). K spuštění nástroje Azure IoT Explorer potřebujete připojovací řetězec služby IoT Hub. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Zařízení zaregistrované ve službě IoT Hub. K vytváření a správě registrací zařízení v IoT Hub můžete použít Průzkumníka IoT.
 
 ## <a name="install-azure-iot-explorer"></a>Nainstalovat Azure IoT Explorer
 
 V [Azure IoT Exploreru](https://github.com/Azure/azure-iot-explorer/releases) Vydáte verze a rozbalte seznam assetů pro nejnovější verzi. Stáhněte a nainstalujte nejnovější verzi aplikace.
 
 >[!Important]
->V Průzkumníku IoT Explorer verze 0.11.0 podporuje pouze verzi IoT technologie Plug and Play květen 2020 verze Preview. Pokud chcete používat funkce, které jsou k dispozici v předchozím náhledu – verze z srpna 2019, musíte nainstalovat 0.10. x.
+>V Průzkumníku IoT Explorer verze 0.11.0 podporuje jenom verzi IoT technologie Plug and Play GA (od září 2020). Pokud chcete používat funkce, které jsou k dispozici v předchozí verzi Preview – vydání z verze VIII 2019 nainstalujte verzi 0.10. x.
 
 ## <a name="use-azure-iot-explorer"></a>Použití Azure IoT Exploreru
 
-V případě zařízení můžete buď připojit vlastní zařízení, nebo použít některé z našich ukázkových simulovaných zařízení. Pomocí [těchto pokynů](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/iothub_client/samples) spusťte ukázku simulovaného zařízení.
+V případě zařízení můžete buď připojit vlastní zařízení, nebo použít jedno z ukázkových simulovaných zařízení. Pomocí [těchto pokynů](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples) spusťte ukázku simulovaného zařízení.
 
 ### <a name="connect-to-your-hub"></a>Připojení k centru
 
@@ -65,7 +61,7 @@ Postup odebrání zdroje:
 
 Změnit zdrojové priority:
 
-Jeden ze zdrojů definice modelu můžete přetáhnout do jiného hodnocení v seznamu. 
+Jeden ze zdrojů definice modelu můžete přetáhnout do jiného hodnocení v seznamu.
 
 ### <a name="view-devices"></a>Zobrazení zařízení
 
@@ -82,7 +78,7 @@ Na stránce seznam **zařízení** výběrem hodnoty ve sloupci **ID zařízení
 
 ### <a name="device"></a>Zařízení
 
-Tato část obsahuje **identitu zařízení**, vydanou **zařízení**, **telemetrii**, **přímou metodu**, **zprávu Cloud-zařízení**, karty **identity modulu** .
+Tato část obsahuje **identitu zařízení**, vydanou  **zařízení**, **telemetrii**, **přímou metodu**, **zprávu Cloud-zařízení**, karty **identity modulu**  .
 
 - Informace o [identitě zařízení](../iot-hub/iot-hub-devguide-identity-registry.md) můžete zobrazit a aktualizovat na kartě **Identita zařízení** .
 - Na kartě **zařízení** , na které se nachází, můžete získat přístup k [dvojitým](../iot-hub/iot-hub-devguide-device-twins.md) informacím o zařízení.
@@ -103,7 +99,7 @@ Na stránce **Komponenta** můžete zobrazit vlastnosti jen pro čtení, aktuali
 
 #### <a name="properties"></a>Vlastnosti
 
-:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Zobrazit vlastnosti v Azure IoT Exploreru":::
+:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Zobrazit součásti v Azure IoT Exploreru":::
 
 Vlastnosti jen pro čtení definované v rozhraní můžete zobrazit na kartě **vlastnosti (jen pro čtení)** . Můžete aktualizovat vlastnosti s možností zápisu definované v rozhraní na kartě **vlastnosti (zapisovatelné)** :
 
@@ -127,6 +123,16 @@ Pokud chcete odeslat příkaz do zařízení, použijte kartu **příkazy** :
 #### <a name="telemetry"></a>Telemetrie
 
 Chcete-li zobrazit telemetrii pro vybrané rozhraní, přejít na kartu **telemetrie** .
+
+#### <a name="known-issues"></a>Známé problémy
+
+- Podpora IoT Edge: aktuální verze nezobrazuje IoT Edge zařízení v seznamu zařízení.
+- Funkce jazyka DTDL: aplikace IoT Explorer 0.12. x není plně kompatibilní s DTDL v2, funkce, které se nepodporují, zahrnují:
+  - Dědičnost rozhraní s `extends`
+  - Mapa v mapě (vnořená mapa)
+  - Typ pole
+  - Vlastní schémata
+  - Vlastní sémantické typy
 
 ## <a name="next-steps"></a>Další kroky
 

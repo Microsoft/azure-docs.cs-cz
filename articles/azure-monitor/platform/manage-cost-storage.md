@@ -11,17 +11,17 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 09/29/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 8d1e2454dc4b9a9fbc85d2e5edc5ba3ede33f9c0
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: af168fe4c4dca71077464fdb9caf30f27c4b9fe2
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595647"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578253"
 ---
-# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitor    
+# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
 > [!NOTE]
 > Tento článek popisuje, jak pochopit a řídit náklady na protokoly Azure Monitor. Související článek, [sledování využití a odhadované náklady](usage-estimated-costs.md) popisuje, jak zobrazit využití a odhadované náklady napříč více funkcemi monitorování Azure pro různé cenové modely. Všechny ceny a náklady uvedené v tomto článku jsou třeba jenom pro účely. 
@@ -46,9 +46,9 @@ Všimněte si také, že některá řešení, jako je [Azure Security Center](ht
 
 ### <a name="log-analytics-dedicated-clusters"></a>Log Analytics vyhrazené clustery
 
-Log Analytics vyhrazené clustery jsou kolekce pracovních prostorů do jednoho spravovaného clusteru Azure Průzkumník dat, který podporuje pokročilé scénáře, jako jsou [klíče spravované zákazníky](customer-managed-keys.md).  Log Analytics vyhrazené clustery podporují jenom cenový model rezervace kapacity od 1000 GB za den s 25% slevou ve srovnání s cenami za průběžné platby. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb. Rezervace kapacity clusteru má po zvýšení úrovně rezervace 31 dní období závazku. Během období závazku nelze úroveň rezervace kapacity snížit, ale je možné ji kdykoli zvýšit. Přečtěte si další informace o [vytváření clusterů Log Analytics](customer-managed-keys.md#create-cluster-resource) a [jejich přiřazování k pracovním prostorům](customer-managed-keys.md#workspace-association-to-cluster-resource).  
+Log Analytics vyhrazené clustery jsou kolekce pracovních prostorů do jednoho spravovaného clusteru Azure Průzkumník dat, který podporuje pokročilé scénáře, jako jsou [klíče spravované zákazníky](customer-managed-keys.md).  Log Analytics vyhrazené clustery používají cenový model rezervace kapacity, který musí být nakonfigurovaný aspoň 1000 GB/měsíc. Tato úroveň kapacity má ve srovnání s cenami za průběžné platby 25% slevu. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb. Rezervace kapacity clusteru má po zvýšení úrovně rezervace 31 dní období závazku. Během období závazku nelze úroveň rezervace kapacity snížit, ale je možné ji kdykoli zvýšit. Když jsou pracovní prostory přidruženy k clusteru, účtování příjmu dat pro tyto pracovní prostory se provádí na úrovni clusteru pomocí nakonfigurované úrovně rezervace kapacity. Přečtěte si další informace o [vytváření clusterů Log Analytics](customer-managed-keys.md#create-cluster-resource) a [jejich přiřazování k pracovním prostorům](customer-managed-keys.md#workspace-association-to-cluster-resource). Informace o cenách rezervací kapacity najdete na [stránce s cenami Azure monitor]( https://azure.microsoft.com/pricing/details/monitor/).  
 
-Úroveň rezervace kapacity clusteru je nakonfigurována prostřednictvím programově Azure Resource Manager s použitím `Capacity` parametru v `Sku` . `Capacity`Hodnota je určena v jednotkách GB a může mít hodnoty 1000 GB/den nebo více v přírůstcích po 100 GB za den. Tato podrobná [Azure monitor klíč spravovaný zákazníkem](customer-managed-keys.md#create-cluster-resource). Pokud váš cluster potřebuje rezervaci nad 2000 GB za den, kontaktujte nás na adrese [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
+Úroveň rezervace kapacity clusteru je konfigurována prostřednictvím programu programově s Azure Resource Manager pomocí `Capacity` parametru v `Sku` . `Capacity`Hodnota je určena v jednotkách GB a může mít hodnoty 1000 GB/den nebo více v přírůstcích po 100 GB za den. Tato podrobná [Azure monitor klíč spravovaný zákazníkem](customer-managed-keys.md#create-cluster-resource). Pokud váš cluster potřebuje rezervaci nad 2000 GB za den, kontaktujte nás na adrese [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
 
 Existují dva režimy fakturace pro použití v clusteru. Tyto parametry mohou být zadány `billingType` parametrem při [konfiguraci clusteru](customer-managed-keys.md#cmk-management). Tyto dva režimy: 
 
@@ -56,7 +56,7 @@ Existují dva režimy fakturace pro použití v clusteru. Tyto parametry mohou b
 
 2. **Pracovní prostory**: náklady na rezervaci kapacity pro váš cluster se úměrně připočítají k pracovním prostorům v clusteru (po zaúčtování pro přidělení podle uzlu z [Azure Security Center](https://docs.microsoft.com/azure/security-center/) pro každý pracovní prostor.) Pokud je celkový objem dat zpracovaných v pracovním prostoru za den menší než rezervace kapacity, pak se každý pracovní prostor fakturuje za jeho ingestovaná data na základě sazby za nevyužitou kapacitu na GB tím, že je vyúčtováním zlomku kapacity rezervace a nevyužité části rezervace kapacity se účtují do prostředku clusteru. Pokud celkový objem dat, který se během dne ingestuje do pracovního prostoru, je větší než rezervace kapacity, pak se pro každý pracovní prostor účtuje zlomek kapacity na základě jeho zlomku a v každém pracovním prostoru se podílem přijatých dat nad rámec rezervace kapacity. K prostředku clusteru se nic neúčtuje, pokud je celkový objem dat ingestný do pracovního prostoru za den nad rezervací kapacity.
 
-V možnostech fakturace clusteru se uchovávání dat účtuje na úrovni pracovního prostoru. Všimněte si, že při vytváření clusteru začíná fakturace clusteru bez ohledu na to, jestli byly pracovní prostory přidružené ke clusteru. Všimněte si také, že pracovní prostory přidružené k clusteru už nemají cenovou úroveň.
+V možnostech fakturace clusteru se uchovávání dat účtuje podle pracovního prostoru. Všimněte si, že při vytváření clusteru začíná fakturace clusteru bez ohledu na to, jestli byly pracovní prostory přidružené ke clusteru. Všimněte si také, že pracovní prostory přidružené k clusteru už nemají cenovou úroveň.
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>Odhad nákladů na správu prostředí 
 
@@ -234,12 +234,12 @@ Denní limit se dá nakonfigurovat přes ARM nastavením `dailyQuotaGb` parametr
 
 Když při splnění prahové hodnoty limitu dat prezentujeme Azure Portal vizuální sestavování, toto chování se nemusí nutně sjednotit na to, jak budete spravovat provozní problémy, které vyžadují okamžitou pozornost.  Chcete-li dostávat oznámení o výstrahách, můžete v Azure Monitor vytvořit nové pravidlo výstrahy.  Další informace najdete v tématu [jak vytvářet, zobrazovat a spravovat výstrahy](alerts-metric.md).
 
-Pokud chcete začít, tady je doporučené nastavení pro tuto výstrahu:
+Pokud chcete začít, tady je doporučené nastavení výstrahy dotazování `Operation` tabulky pomocí `_LogOperation` funkce. 
 
 - Cíl: Vyberte prostředek Log Analytics
 - Měřítk 
    - Název signálu: prohledávání vlastního protokolu
-   - Vyhledávací dotaz: operace | kde detail má ' překročení kvóty '
+   - Vyhledávací dotaz: `_LogOperation | where Detail has 'OverQuota'`
    - Podle: počet výsledků
    - Podmínka: je větší než
    - Prahová hodnota: 0
@@ -441,7 +441,7 @@ Mezi návrhy na snížení objemu shromažďovaných protokolů patří:
 
 | Zdroj velkého objemu dat | Postup snížení objemu dat |
 | -------------------------- | ------------------------- |
-| Přehledy kontejnerů         | [Nakonfigurujte službu Container Insights](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-cost#controlling-ingestion-to-reduce-cost) tak, aby shromáždila pouze data, která požadujete. |
+| Přehledy o kontejnerech         | [Nakonfigurujte službu Container Insights](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-cost#controlling-ingestion-to-reduce-cost) tak, aby shromáždila pouze data, která požadujete. |
 | Události zabezpečení            | Vyberte [běžné nebo minimální události zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier). <br> Změňte zásady auditu zabezpečení tak, aby se shromažďovaly jenom potřebné události. Zaměřte se hlavně na potřebu shromažďovat události pro <br> - [audit platformy Filtering Platform](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [audit registru](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [audit systému souborů](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [audit objektu jádra](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [audit manipulace s popisovačem](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> – audit vyměnitelného úložiště |
 | Čítače výkonu       | Změňte [konfiguraci čítačů výkonu](data-sources-performance-counters.md) tak, aby se: <br> – Snížila četnost shromažďování dat <br> – Snížil počet čítačů výkonu |
 | Protokoly událostí                 | Změňte [konfiguraci protokolů událostí](data-sources-windows-events.md) tak, aby se: <br> – Snížil počet shromažďovaných protokolů událostí <br> – Shromažďovaly pouze požadované úrovně událostí Například zrušte shromažďování událostí úrovně *Informace*. |

@@ -1,31 +1,28 @@
 ---
 title: Přehled služby Azure Defender a dostupných plánů
-description: Přečtěte si o plánech, ochranných a výstrahách Azure Defenderu. Pak pokračujte v povolení Azure Defenderu na vašich předplatných.
+description: Přečtěte si o plánech, ochranných a výstrahách Azure Defenderu. Potom povolte Azure Defender na vašich předplatných pro pokročilé zabezpečení.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5a5b96d5a9ea6aa05da30238690b8f5fa745b3f3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bfff96666981a522cd6d91828604696a12ecad56
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448432"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576846"
 ---
 # <a name="introduction-to-azure-defender"></a>Seznámení s Azure Defenderem
 
 Funkce Azure Security Center pokrývají dva široké pilíře zabezpečení cloudu:
 
-- **Stav Správa cloudového zabezpečení (CSPM)**
-- **Ochrana úloh v cloudu (CWP)**
+- **CSPM (Cloud Security stav Management)** – Security Center k dispozici **zdarma** všem uživatelům Azure. Bezplatné prostředí zahrnuje CSPM funkce, jako je bezpečné skóre, detekce chybných konfigurací zabezpečení v počítačích Azure, inventáři prostředků a dalších. Pomocí těchto funkcí CSPM můžete posílit své hybridní cloudové stav a sledovat dodržování předpisů pomocí integrovaných zásad.
 
-CSPM Security Center funkce, jako je například zabezpečení skóre, detekce chybných konfigurací zabezpečení v počítačích Azure s Windows a Linux, jsou všechny části bezplatné Security Center dostupné všem uživatelům Azure. Pomocí těchto funkcí CSPM posílit své stav a zajistěte dodržování legislativních předpisů.
+- **Cloudová ochrana zatížení (CWP)** Security Center – integrovaná cloudová platforma pro ochranu zatížení (CWPP), **Azure Defender**, přináší pokročilou, inteligentní a chráněnou službu Azure a hybridní prostředky a úlohy. Povolení služby Azure Defender přináší řadu dalších funkcí zabezpečení, jak je popsáno na této stránce. Kromě integrovaných zásad můžete při povolení jakéhokoli plánu Azure Defenderu přidat vlastní zásady a iniciativy. Můžete přidat zákonné standardy, jako je NIST a Azure CIS, a srovnávací test zabezpečení Azure pro skutečně přizpůsobený pohled na dodržování předpisů.
 
-**Azure Defender** je platforma ochrany zatížení cloudu (CWPP) integrovaná v rámci Security Center pro pokročilou, inteligentní a chráněnou službu Azure a hybridní úlohy.
-
-Toto je řídicí panel Azure Defender v Azure Security Center:
+Řídicí panel Azure Defender v Security Center poskytuje viditelnost a kontrolu nad funkcemi CWP pro vaše prostředí:
 
 :::image type="content" source="./media/azure-defender/sample-defender-dashboard.png" alt-text="Příklad řídicího panelu Azure Defenderu" lightbox="./media/azure-defender/sample-defender-dashboard.png":::
 
@@ -55,11 +52,13 @@ Stejně jako při obraně prostředí Azure můžete do svého hybridního cloud
 - Chraňte své virtuální počítače v jiných cloudech (například AWS a GCP)
 - Ochrana zařízení IoT
 
-Přizpůsobíte si přizpůsobenou analýzu hrozeb a upozornění podle konkrétního prostředí, abyste se mohli soustředit na to, co nejvíc věcí
+V závislosti na konkrétním prostředí budete mít přizpůsobenou analýzu hrozeb a výstrahy s upřednostněním priorit, abyste se mohli soustředit na to, co nejvíc věcí.
 
-Nasaďte [Azure ARC](https://azure.microsoft.com/services/azure-arc/) a umožněte službě Azure Defender, aby rozšířila ochranu na místní a více cloudových virtuálních počítačů a databází SQL. Azure ARC pro servery je bezplatná služba, ale služby, které se používají na serverech s podporou ARC, například Azure Defender, se budou účtovat podle ceny za tuto službu.
+K rozšiřování ochrany virtuálních počítačů a databází SQL, které jsou v jiných cloudech nebo v místním prostředí, nasaďte [Azure ARC](https://azure.microsoft.com/services/azure-arc/) a povolte Azure Defender. Azure ARC pro servery je bezplatná služba, ale služby, které se používají na serverech s podporou ARC, například Azure Defender, se budou účtovat podle ceny za tuto službu. Další informace najdete v [přidávání počítačů mimo Azure pomocí ARC Azure](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc).
 
-[Přečtěte si další informace o ARC Azure](https://docs.microsoft.com/azure/azure-arc/overview).
+> [!TIP]
+> Nativní konektor pro AWS transparentně zpracovává nasazení ARC Azure za vás. Další informace najdete v informacích [o připojení účtů AWS k Azure Security Center](quickstart-onboard-aws.md).
+
 
 
 ## <a name="azure-defender-alerts"></a>Upozornění Azure Defenderu 

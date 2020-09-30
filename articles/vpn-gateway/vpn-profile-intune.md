@@ -7,16 +7,20 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: fba8433a7964b10901527894eee98722ece970ec
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 7105597ec34e804c2f2b85b01feb4824d63005c5
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602189"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578117"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>Vytvoření profilu Intune pro nasazení profilů klientů VPN
 
 Profily pro klienty Azure VPN (Windows 10) můžete nasadit pomocí Microsoft Intune. Tento článek vám pomůže vytvořit profil Intune s využitím vlastních nastavení.
+
+> [!NOTE]
+> Tato metoda bude fungovat jenom v případě, že nasazujete profily, které používají Azure Active Directory, nebo společný certifikát pro ověřování klientů. Pokud se používají jedinečné klientské certifikáty, bude muset každý uživatel vybrat správný certifikát ručně v rámci klienta Azure VPN.
+>
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -76,13 +80,13 @@ V této části vytvoříte profil Microsoft Intune s vlastním nastavením.
 
    Vyberte ikonu složky a vyberte soubor, který jste uložili v kroku 6 v krocích [XML](#xml) . Vyberte **Přidat**.
 
-   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="Nastavení konfigurace" lightbox="./media/create-profile-intune/configuration-settings.png":::
+   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="Konfigurační profily" lightbox="./media/create-profile-intune/configuration-settings.png":::
 1. Vyberte **Další**.
 1. V části **přiřazení**vyberte skupinu, do které chcete doručovat konfiguraci. Pak vyberte **Další**.
 1. Pravidla použitelnosti jsou volitelná. V případě potřeby definujte jakákoli pravidla a pak vyberte **Další**.
 1. Na stránce **Revize + vytvořit** vyberte **vytvořit**.
 
-    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="Vytvořit profil":::
+    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="Konfigurační profily":::
 1. Váš vlastní profil se teď vytvoří. Microsoft Intune postup nasazení tohoto profilu najdete v tématu [přiřazení profilů uživatelů a zařízení](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign).
  
 ## <a name="next-steps"></a>Další kroky

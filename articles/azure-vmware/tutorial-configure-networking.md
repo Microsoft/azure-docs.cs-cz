@@ -3,12 +3,12 @@ title: Kurz – konfigurace sítě pro privátní cloud VMware v Azure
 description: Naučte se vytvářet a konfigurovat sítě potřebné k nasazení privátního cloudu v Azure.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 503043391b717753ab054197508483827565ef39
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6aff39284f3ea786080055552ac001ac5dd7b394
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254770"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578342"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Kurz: konfigurace sítě pro privátní cloud VMware v Azure
 
@@ -27,7 +27,7 @@ Virtuální síť, kterou jste vytvořili [privátní cloud řešení Azure VMwa
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Přejděte do skupiny prostředků, kterou jste vytvořili v [kurzu Vytvoření privátního cloudu](tutorial-create-private-cloud.md) , a vyberte **+ Přidat** k definování nového prostředku. 
 
@@ -76,7 +76,7 @@ Teď, když jste vytvořili virtuální síť, vytvoříte bránu virtuální s�
    | **Rozsah adres podsítě brány** | Tato hodnota se naplní při výběru virtuální sítě. Neměňte výchozí hodnotu. |
    | **Veřejná IP adresa** | Vyberte, že chcete **vytvořit novou** IP adresu. |
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Zadejte hodnoty pro pole a pak vyberte zkontrolovat + vytvořit." border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Vyberte zkontrolovat + vytvořit." border="true":::
 
 1. Ověřte správnost podrobností a výběrem **vytvořit** spusťte nasazení brány virtuální sítě. 
 1. Až se nasazení dokončí, přejděte k další části a připojte připojení ExpressRoute k bráně virtuální sítě, která obsahuje váš privátní cloud řešení Azure VMware.
@@ -85,7 +85,7 @@ Teď, když jste vytvořili virtuální síť, vytvoříte bránu virtuální s�
 
 Teď, když jste nasadili bránu virtuální sítě, přidáte mezi ně připojení a privátní cloud řešení Azure VMware.
 
-[!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-to-vnet.md)]
+[!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-vnet.md)]
 
 
 ## <a name="locate-the-urls-for-vcenter-and-nsx-manager"></a>Vyhledání adres URL pro vCenter a NSX Manager
@@ -94,7 +94,7 @@ K přihlášení do vCenter a NSX Manager budete potřebovat adresy URL webovéh
 
 Přejděte do privátního cloudu řešení Azure VMware. v části **Spravovat**vyberte **Identita**, tady najdete potřebné informace.
 
-:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="Přejděte do privátního cloudu řešení Azure VMware. v části Spravovat vyberte identita, tady najdete potřebné informace." border="true":::
+:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="Vyberte zkontrolovat + vytvořit." border="true":::
 
 ## <a name="next-steps"></a>Další kroky
 

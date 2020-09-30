@@ -1,18 +1,18 @@
 ---
 title: Pochopení technologie Plug and Play digitálních vláken IoT
-description: Vysvětlení způsobu, jakým technologie Plug and Play IoT Preview používá digitální vlákna
+description: Vysvětlení způsobu, jakým technologie Plug and Play IoT používá digitální vlákna
 author: prashmo
 ms.author: prashmo
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1908abfb3d0ea20c69a68344d54076c6760e9e63
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352181"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578049"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>Pochopení technologie Plug and Play digitálních vláken IoT
 
@@ -34,13 +34,13 @@ Digitální vlákna rozhraní API pracují s konstrukcemi na vysoké úrovni v r
 
 V zařízení je stav vlastnosti s možností zápisu rozdělen mezi požadované a nahlášené oddíly. Všechny vlastnosti jen pro čtení jsou k dispozici v části nahlášené.
 
-V digitálním vlákna je k dispozici jednotný pohled na aktuální a požadovaný stav vlastnosti. Stav synchronizace pro danou vlastnost je uložen v odpovídající části na úrovni kořenového adresáře nebo součásti `$metadata` .
+V digitálním vlákna je k dispozici jednotný pohled na aktuální a požadovaný stav vlastnosti. Stav synchronizace pro danou vlastnost je uložen v příslušné části výchozí součásti `$metadata` .
 
 ### <a name="digital-twin-json-format"></a>Formát digitálního vlákna JSON
 
 Při reprezentaci jako objektu JSON obsahuje digitální vlákna následující pole:
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | `$dtId` | Uživatelem zadaný řetězec představující ID digitálního vlákna zařízení |
 | `{propertyName}` | Hodnota vlastnosti ve formátu JSON |
@@ -48,12 +48,12 @@ Při reprezentaci jako objektu JSON obsahuje digitální vlákna následující 
 | `$metadata.{propertyName}.desiredValue` | [Pouze pro zapisovatelné vlastnosti] Požadovaná hodnota zadané vlastnosti |
 | `$metadata.{propertyName}.desiredVersion` | [Pouze pro zapisovatelné vlastnosti] Verze požadované hodnoty udržovaná IoT Hub|
 | `$metadata.{propertyName}.ackVersion` | [Povinné, pouze pro zapisovatelné vlastnosti] Verze potvrzená zařízením, které implementuje digitální vlákna, musí být větší nebo rovna požadované verzi. |
-| `$metadata.{propertyName}.ackCode` | [Povinné, pouze pro zapisovatelné vlastnosti] `ack`Kód vrácený aplikací pro zařízení implementující digitální vlákna |
-| `$metadata.{propertyName}.ackDescription` | [Volitelné, pouze pro zapisovatelné vlastnosti] `ack`Popis vrácený aplikací pro zařízení implementující digitální dvojitou vlákenou |
+| `$metadata.{propertyName}.ackCode` | [Povinné, pouze pro zapisovatelné vlastnosti] `ack` Kód vrácený aplikací pro zařízení implementující digitální vlákna |
+| `$metadata.{propertyName}.ackDescription` | [Volitelné, pouze pro zapisovatelné vlastnosti] `ack` Popis vrácený aplikací pro zařízení implementující digitální dvojitou vlákenou |
 | `$metadata.{propertyName}.lastUpdateTime` | IoT Hub udržuje časové razítko poslední aktualizace vlastnosti zařízením. Časová razítka jsou v UTC a kódovaná ve formátu ISO8601 YYYY-MM-DDTHH: MM: SS. mmmZ |
-| `{componentName}` | Objekt JSON obsahující hodnoty a metadata vlastnosti komponenty, podobně jako u kořenového objektu. |
+| `{componentName}` | Objekt JSON, který obsahuje hodnoty vlastností a metadat komponenty. |
 | `{componentName}.{propertyName}` | Hodnota vlastnosti komponenty ve formátu JSON |
-| `{componentName}.$metadata` | Informace metadat pro komponentu, podobně jako na úrovni kořenového adresáře`$metadata` |
+| `{componentName}.$metadata` | Informace metadat pro komponentu. |
 
 #### <a name="device-twin-sample"></a>Ukázka vlákna zařízení
 
@@ -131,7 +131,7 @@ Vlastnosti jsou datová pole, která představují stav entity (jako jsou vlastn
 
 #### <a name="read-only-property"></a>Vlastnost jen pro čtení
 
-XSD
+Schéma:
 
 ```json
 {
@@ -171,7 +171,7 @@ Následující fragmenty kódu ukazují souběžnou reprezentaci JSON `serialNum
 
 #### <a name="writable-property"></a>Vlastnost s možností zápisu
 
-Řekněme, že zařízení má také následující vlastnost s možností zápisu na úrovni root:
+Řekněme, že zařízení má také následující vlastnost s možností zápisu ve výchozí komponentě:
 
 ```json
 {
@@ -228,7 +228,7 @@ Následující fragmenty kódu ukazují souběžnou reprezentaci JSON `serialNum
    :::column-end:::
 :::row-end:::
 
-V tomto příkladu `3.0` je aktuální hodnota `fanSpeed` vlastnosti hlášené zařízením. `2.0`je požadovaná hodnota nastavená řešením. Požadovaná hodnota a stav synchronizace vlastnosti root-Level je nastavena v rámci kořenové úrovně `$metadata` pro digitální vlákna. Když zařízení přejde do režimu online, může tuto aktualizaci použít a nahlásit zpět aktualizovanou hodnotu.
+V tomto příkladu `3.0` je aktuální hodnota `fanSpeed` vlastnosti hlášené zařízením. `2.0` je požadovaná hodnota nastavená řešením. Požadovaná hodnota a stav synchronizace vlastnosti root-Level je nastavena v rámci kořenové úrovně `$metadata` pro digitální vlákna. Když zařízení přejde do režimu online, může tuto aktualizaci použít a nahlásit zpět aktualizovanou hodnotu.
 
 ### <a name="components"></a>Komponenty
 
@@ -240,8 +240,8 @@ V zařízení je komponenta označena `{ "__t": "c"}` značkou. V digitálním v
 
 V tomto příkladu `thermostat1` je komponentou se dvěma vlastnostmi:
 
-- `maxTempSinceLastReboot`je vlastnost jen pro čtení.
-- `targetTemperature`je vlastnost s možností zápisu, která byla úspěšně synchronizována zařízením. Požadovaná hodnota a stav synchronizace těchto vlastností je součástí `$metadata` .
+- `maxTempSinceLastReboot` je vlastnost jen pro čtení.
+- `targetTemperature` je vlastnost s možností zápisu, která byla úspěšně synchronizována zařízením. Požadovaná hodnota a stav synchronizace těchto vlastností je součástí `$metadata` .
 
 Následující fragmenty kódu znázorňují souběžnou reprezentaci `thermostat1` komponenty:
 
@@ -373,6 +373,9 @@ content-encoding:utf-8
   }
 ]
 ```
+
+> [!NOTE]
+> Pokud jsou v zařízení i v oznámení o změně digitálního vlákna, jsou zdvojené zprávy s oznámením o změně zapnuté.
 
 ## <a name="next-steps"></a>Další kroky
 

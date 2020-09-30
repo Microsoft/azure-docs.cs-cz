@@ -1,20 +1,20 @@
 ---
-title: Glosář pojmů – IoT technologie Plug and Play Preview | Microsoft Docs
-description: Koncepty – Glosář běžných termínů týkajících se IoT technologie Plug and Play ve verzi Preview.
+title: Glosář termínů – IoT technologie Plug and Play | Microsoft Docs
+description: Koncepty – Glosář běžných termínů týkajících se technologie Plug and Play IoT.
 author: dominicbetts
 ms.author: dobett
 ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2320bed07f574c096be1883a9d82da7311e92fa7
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: d44866e2d04ab1bab5d2eca01374350a7d73a0ea
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854215"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577335"
 ---
-# <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Glosář pojmů pro IoT technologie Plug and Play Preview
+# <a name="glossary-of-terms-for-iot-plug-and-play"></a>Glosář termínů pro IoT technologie Plug and Play
 
 Definice běžných termínů, jak se používají v článcích technologie Plug and Play IoT.
 
@@ -38,7 +38,7 @@ IoT Hub je spravovaná služba hostovaná v cloudu, která funguje jako centrum 
 
 ## <a name="azure-iot-device-sdk"></a>Sada SDK pro zařízení Azure IoT
 
-K dispozici jsou sady SDK pro zařízení, které můžete použít k vytvoření klientských aplikací IoT technologie Plug and Play zařízení.
+K dispozici jsou sady SDK pro zařízení, které můžete použít k vytvoření klientských aplikací IoT technologie Plug and Play zařízení. Použijte **DeviceClient** pro zařízení a **ModuleClient** pro moduly a IoT Edge moduly.
 
 ## <a name="commands"></a>Příkazy
 
@@ -55,13 +55,19 @@ Připojovací řetězec zapouzdřuje informace potřebné pro připojení ke kon
 - Připojovací řetězce zařízení umožňují [zařízením iot technologie Plug and Play](#iot-plug-and-play-device) připojit se k koncovým bodům připojeným k zařízení ve službě IoT Hub. Klientský kód v zařízení používá připojovací řetězec k navázání zabezpečeného připojení ke službě IoT Hub.
 - Připojovací řetězce IoT Hub umožňují zabezpečené připojení k koncovým bodům pro služby v centru IoT. Tato řešení a nástroje spravují centrum IoT a zařízení, která jsou k němu připojená.
 
+## <a name="default-component"></a>Výchozí součást
+
+Všechny [modely zařízení](#device-model) mají výchozí komponentu. Model jednoduchého zařízení má pouze výchozí komponentu, což je také označováno jako žádné zařízení součásti. Složitější model má více komponent vnořených pod výchozí komponentu.
+
 ## <a name="device-certification"></a>Certifikace zařízení
 
 Program pro certifikaci zařízení IoT technologie Plug and Play ověří, jestli zařízení splňuje požadavky na certifikaci technologie Plug and Play IoT. Certifikované zařízení můžete přidat do seznamu veřejně [certifikovaných pro katalog zařízení Azure IoT](https://aka.ms/devicecatalog).
 
 ## <a name="device-model"></a>Model zařízení
 
-Model zařízení popisuje [zařízení IoT technologie Plug and Play](#iot-plug-and-play-device) a definuje [součásti](#component) , které tvoří zařízení. Jednoduchý model zařízení nemá žádné samostatné komponenty a obsahuje definici pro jedno rozhraní na kořenové úrovni. Složitější model zařízení obsahuje několik komponent. Model zařízení obvykle odpovídá fyzickému zařízení, produktu nebo SKU. K definování modelu zařízení použijete [jazyk Digital s definicí verze 2](#digital-twins-definition-language) .
+Model zařízení popisuje [zařízení IoT technologie Plug and Play](#iot-plug-and-play-device) a definuje [součásti](#component) , které tvoří zařízení. Jednoduchý model zařízení nemá žádné samostatné komponenty a obsahuje definici pro jedno rozhraní. Nástroj Azure IoT Explorer zobrazuje jednoduchý model jako jednu [výchozí komponentu](#default-component).
+
+Složitější model zařízení zahrnuje více komponent. Model zařízení obvykle odpovídá fyzickému zařízení, produktu nebo SKU. K definování modelu zařízení použijete [jazyk Digital s definicí verze 2](#digital-twins-definition-language) .
 
 ## <a name="device-builder"></a>Tvůrce zařízení
 
@@ -69,7 +75,7 @@ Nástroj pro sestavovatele zařízení používá model a [rozhraní](#interface
 
 ## <a name="device-modeling"></a>Modelování zařízení
 
-Nástroj pro [sestavovatele zařízení](#device-builder) používá [jazyk definice digitálních vláken](#digital-twins-definition-language) , který umožňuje modelovat schopnosti [zařízení technologie Plug and Play IoT](#iot-plug-and-play-device). [Tvůrce řešení](#solution-builder) může nakonfigurovat řešení IoT z modelu.
+[Tvůrce zařízení](#device-builder) nebo [modul pro sestavovatele modulů](#module-builder)používá k modelování možností [technologie Plug and Play zařízení IoT](#iot-plug-and-play-device), [jazyk definice digitálních vláken](#digital-twins-definition-language) . [Tvůrce řešení](#solution-builder) může nakonfigurovat řešení IoT z modelu.
 
 ## <a name="digital-twin"></a>Digitální vlákna
 
@@ -89,15 +95,19 @@ Trasa nastavená ve [IoT Hub](#azure-iot-hub) pro doručování [událostí digi
 
 ## <a name="interface"></a>Rozhraní
 
-Rozhraní popisuje související možnosti, které jsou implementovány [zařízením IoT technologie Plug and Play](#iot-plug-and-play-device) nebo z [digitálního vlákna](#digital-twin). Můžete opakovaně používat rozhraní napříč různými [modely zařízení](#device-model). Když se v modelu zařízení používá rozhraní, definuje [komponentu](#component) zařízení.
+Rozhraní popisuje související možnosti, které jsou implementovány [zařízením IoT technologie Plug and Play](#iot-plug-and-play-device) nebo z [digitálního vlákna](#digital-twin). Můžete opakovaně používat rozhraní napříč různými [modely zařízení](#device-model). Když se v modelu zařízení používá rozhraní, definuje [komponentu](#component) zařízení. Jednoduché zařízení obsahuje pouze výchozí rozhraní.
 
 ## <a name="iot-hub-query-language"></a>Dotazovací jazyk IoT Hub
 
 Dotazovací jazyk IoT Hub slouží k více účelům. Jazyk můžete například použít k vyhledání zařízení zaregistrovaných ve službě IoT Hub nebo k upřesnění chování [digitálního zdvojeného směrování](#digital-twin-route) .
 
+## <a name="iot-plug-and-play-bridge"></a>Most IoT technologie Plug and Play
+
+IoT technologie Plug and Play most je open-source aplikace, která umožňuje stávající senzory a periferní zařízení připojená k bránám systému Windows nebo Linux připojit se jako [zařízení technologie Plug and Play IoT](#iot-plug-and-play-device).
+
 ## <a name="iot-plug-and-play-device"></a>Zařízení IoT technologie Plug and Play
 
-Zařízení IoT technologie Plug and Play je typicky malé škálované samostatné výpočetní zařízení, které shromažďuje data nebo řídí jiná zařízení a spouští software nebo firmware, který implementuje [model zařízení](#device-model).  Například zařízení IoT technologie Plug and Play může být zařízením pro monitorování prostředí nebo kontroler pro zavlažovací systémy s inteligentním zemědělstvím. Řešení IoT hostované v cloudu můžete napsat pro příkazy, řízení a příjem dat ze zařízení IoT technologie Plug and Play.
+Zařízení IoT technologie Plug and Play je typicky malé škálované samostatné výpočetní zařízení, které shromažďuje data nebo řídí jiná zařízení a spouští software nebo firmware, který implementuje [model zařízení](#device-model).  Například zařízení IoT technologie Plug and Play může být zařízením pro monitorování prostředí nebo kontroler pro zavlažovací systémy s inteligentním zemědělstvím. Zařízení IoT technologie Plug and Play může být implementováno přímo nebo jako IoT Edge modul. Řešení IoT hostované v cloudu můžete napsat pro příkazy, řízení a příjem dat ze zařízení IoT technologie Plug and Play.
 
 ## <a name="iot-plug-and-play-conventions"></a>Konvence IoT Plug and Play
 
@@ -114,6 +124,10 @@ Když se zařízení IoT technologie Plug and Play připojuje k IoT Hub, pošle 
 ## <a name="model-repository-rest-api"></a>REST API úložiště modelu
 
 Rozhraní API pro správu a interakci s úložištěm modelu. Rozhraní API můžete například použít k přidání a hledání [modelů zařízení](#device-model).
+
+## <a name="module-builder"></a>Tvůrce modulů
+
+Tvůrce modulů používá [model zařízení](#device-model) a [rozhraní](#interface) při implementaci kódu ke spuštění na [zařízení IoT technologie Plug and Play](#iot-plug-and-play-device). Tvůrci modulů implementují kód jako modul nebo modul IoT Edge k nasazení do modulu runtime IoT Edge na zařízení.
 
 ## <a name="properties"></a>Vlastnosti
 

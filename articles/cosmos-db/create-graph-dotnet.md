@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: jasonh
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: f0d5043146288095be586892fbca85f6e465a9e6
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 72b3f8a4e4a6da434ef20c8e505718ccd3e2deff
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409421"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578376"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Rychlý Start: vytvoření .NET Framework nebo základní aplikace pomocí účtu rozhraní API Azure Cosmos DB Gremlin
 
@@ -110,7 +110,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
    **Koncový bod Gremlin** – Tato hodnota se použije, když se k účtu databáze grafů připojíte s využitím knihovny Gremlin.Net.
 
-    :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="Kopírování koncového bodu":::
+    :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="Kopírování koncového bodu&quot;:::
 
    Pokud chcete tuto ukázku spustit, zkopírujte hodnotu **Gremlin koncového bodu** , odstraňte číslo portu na konci, což znamená, že se identifikátor URI naplní `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` . Hodnota koncového bodu by měla vypadat nějak takto. `testgraphacct.gremlin.cosmosdb.azure.com`
 
@@ -119,11 +119,11 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 1. Po zkopírování identifikátoru URI a primárního klíče účtu ho uložte do nové proměnné prostředí v místním počítači, na kterém je spuštěná aplikace. Chcete-li nastavit proměnnou prostředí, otevřete okno příkazového řádku a spusťte následující příkaz. Nezapomeňte nahradit <Your_Azure_Cosmos_account_URI> a hodnoty <Your_Azure_Cosmos_account_PRIMARY_KEY>.
 
    ```console
-   setx EndpointUrl "<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com"
-   setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+   setx Host &quot;<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com&quot;
+   setx PrimaryKey &quot;<Your_Azure_Cosmos_account_PRIMARY_KEY>&quot;
    ```
 
-1. Otevřete soubor *program.cs* a aktualizujte proměnné "Database a Container" pomocí databáze a kontejneru (což je také název grafu), které jste vytvořili výše.
+1. Otevřete soubor *program.cs* a aktualizujte proměnné &quot;Database a Container" pomocí databáze a kontejneru (což je také název grafu), které jste vytvořili výše.
 
     `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 
@@ -147,7 +147,20 @@ Teď se můžete vrátit do Průzkumníku dat na webu Azure Portal, procházet n
 
     Graf můžete přiblížit nebo oddálit, můžete rozšířit prostor pro zobrazení grafu, přidat další vrcholy a přesouvat vrcholy na zobrazovací ploše.
 
-    :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="Zobrazení grafu v Průzkumníku dat na webu Azure Portal":::
+    :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="Kopírování koncového bodu&quot;:::
+
+   Pokud chcete tuto ukázku spustit, zkopírujte hodnotu **Gremlin koncového bodu** , odstraňte číslo portu na konci, což znamená, že se identifikátor URI naplní `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` . Hodnota koncového bodu by měla vypadat nějak takto. `testgraphacct.gremlin.cosmosdb.azure.com`
+
+1. Potom přejděte na kartu **klíče** a zkopírujte hodnotu **primárního klíče** z Azure Portal. 
+
+1. Po zkopírování identifikátoru URI a primárního klíče účtu ho uložte do nové proměnné prostředí v místním počítači, na kterém je spuštěná aplikace. Chcete-li nastavit proměnnou prostředí, otevřete okno příkazového řádku a spusťte následující příkaz. Nezapomeňte nahradit <Your_Azure_Cosmos_account_URI> a hodnoty <Your_Azure_Cosmos_account_PRIMARY_KEY>.
+
+   ```console
+   setx Host &quot;<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com&quot;
+   setx PrimaryKey &quot;<Your_Azure_Cosmos_account_PRIMARY_KEY>&quot;
+   ```
+
+1. Otevřete soubor *program.cs* a aktualizujte proměnné &quot;Database a Container":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 

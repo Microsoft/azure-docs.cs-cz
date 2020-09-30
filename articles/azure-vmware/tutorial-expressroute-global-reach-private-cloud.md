@@ -3,12 +3,12 @@ title: Kurz – partnerské místní prostředí do privátního cloudu
 description: Naučte se, jak vytvořit partnerský vztah ExpressRoute Global Reach k privátnímu cloudu v řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 679887e1998a534001e72ddff7a1a184a84bd831
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 07b7e1c2636f3754eda56af574586a1027403d3e
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254705"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576723"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Kurz: partnerských místních prostředí do privátního cloudu
 
@@ -46,11 +46,11 @@ Než povolíte připojení mezi dvěma okruhy ExpressRoute pomocí ExpressRoute 
 
 2. Zadejte název autorizačního klíče a vyberte **vytvořit**. 
 
-   :::image type="content" source="media/expressroute-global-reach/create-global-reach-auth-key.png" alt-text="Kliknutím na vytvořit vytvořte nový autorizační klíč. ":::
+   :::image type="content" source="media/expressroute-global-reach/create-global-reach-auth-key.png" alt-text="Vyberte možnost připojení > ExpressRoute > požádejte o autorizační klíč, aby zahájí nový požadavek.":::
 
    Po vytvoření se nový klíč zobrazí v seznamu autorizačních klíčů pro privátní cloud. 
 
-   :::image type="content" source="media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="Potvrďte, že se nový autorizační klíč zobrazuje v seznamu klíčů pro privátní cloud. ":::
+   :::image type="content" source="media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="Vyberte možnost připojení > ExpressRoute > požádejte o autorizační klíč, aby zahájí nový požadavek.":::
 
 3. Poznamenejte si autorizační klíč a ID ExpressRoute spolu s blokem adresy/29. Použijete je v dalším kroku k dokončení partnerského vztahu. 
 
@@ -64,7 +64,7 @@ Teď, když jste vytvořili autorizační klíč pro okruh privátního cloudu E
 
 1. V **přehledu**privátní cloud vyberte v části spravovat možnost **připojení > ExpressRoute Global REACH > přidat**.
 
-   :::image type="content" source="./media/expressroute-global-reach/expressroute-global-reach-tab.png" alt-text="V nabídce vyberte připojení, kartu Global Reach ExpressRoute a pak přidejte.":::
+   :::image type="content" source="./media/expressroute-global-reach/expressroute-global-reach-tab.png" alt-text="Vyberte možnost připojení > ExpressRoute > požádejte o autorizační klíč, aby zahájí nový požadavek.":::
 
 1. Místní cloudové připojení můžete vytvořit jedním z následujících způsobů:
 
@@ -76,7 +76,7 @@ Teď, když jste vytvořili autorizační klíč pro okruh privátního cloudu E
 >[!TIP]
 >Připojení můžete ze seznamu odstranit nebo odpojit výběrem možnosti **Další**.  
 >
-> :::image type="content" source="./media/expressroute-global-reach/on-premises-connection-disconnect.png" alt-text="Odpojení nebo odstranění místního připojení":::
+> :::image type="content" source="./media/expressroute-global-reach/on-premises-connection-disconnect.png" alt-text="Vyberte možnost připojení > ExpressRoute > požádejte o autorizační klíč, aby zahájí nový požadavek.":::
 
 ### <a name="azure-cli-in-a-cloud-shell-method"></a>Rozhraní příkazového řádku Azure v metodě Cloud Shell
 
@@ -88,13 +88,13 @@ Vylepšili jsme příkazy rozhraní [příkazového řádku](../expressroute/exp
 
 1. Přihlaste se k Azure Portal pomocí stejného předplatného jako místní okruh ExpressRoute a otevřete Cloud Shell. Nechejte prostředí v bash.
  
-   :::image type="content" source="media/expressroute-global-reach/open-cloud-shell.png" alt-text="Přihlaste se k Azure Portal a otevřete Cloud Shell.":::
+   :::image type="content" source="media/expressroute-global-reach/open-cloud-shell.png" alt-text="Vyberte možnost připojení > ExpressRoute > požádejte o autorizační klíč, aby zahájí nový požadavek.":::
  
 2. Na příkazovém řádku zadejte příkaz Azure CLI pro vytvoření partnerského vztahu s použitím konkrétních informací a ID prostředku, autorizačního klíče a/29 síťového bloku CIDR. 
 
    Následuje příklad příkazu, který budete používat, a výstupu indikující úspěšné partnerské vztahy. Vzorový příkaz je založený na příkazu použitém v [kroku 3 tématu "povolení připojení mezi okruhy ExpressRoute v různých předplatných Azure"](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions).
 
-   :::image type="content" source="media/expressroute-global-reach/azure-command-with-results.png" alt-text="Vytvoření partnerského vztahu ExpressRoute Global Reach pomocí příkazu Azure CLI ve Cloud Shell.":::
+   :::image type="content" source="media/expressroute-global-reach/azure-command-with-results.png" alt-text="Vyberte možnost připojení > ExpressRoute > požádejte o autorizační klíč, aby zahájí nový požadavek.":::
  
    Nyní byste měli být schopni se připojit z místních prostředí k privátnímu cloudu prostřednictvím partnerského vztahu ExpressRoute Global Reach.
 
@@ -109,7 +109,7 @@ V tomto kurzu jste zjistili, jak vytvořit druhý autorizační klíč pro okruh
 Přejděte k dalšímu kurzu, kde se dozvíte, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 
 > [!div class="nextstepaction"]
-> [Nasazení a konfigurace HCX VMware](hybrid-cloud-extension-installation.md)
+> [Nasazení a konfigurace HCX VMware](tutorial-deploy-vmware-hcx.md)
 
 
 <!-- LINKS - external-->

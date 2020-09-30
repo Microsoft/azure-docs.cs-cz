@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0dd5d1da41c5fcc596e4c70f797e75c30997ce0b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511315"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578542"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování koncových uživatelů s Azure Data Lake Storage Gen1 pomocí Azure Active Directory
 > [!div class="op_single_selector"]
@@ -97,17 +97,17 @@ Pro načtení identifikátoru URI přesměrování proveďte následující krok
 
 2. V okně **Nastavení** aplikace klikněte na **požadovaná oprávnění**a pak klikněte na **Přidat**.
 
-    ![ID klienta](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
+    ![Snímek obrazovky okna nastavení s parametrem redirect U R I s názvem a přesměrování U R I v okně s skutečným U R, které jsem vyvolal](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
 3. V okně **Přidat přístup přes rozhraní API** klikněte na **Vybrat rozhraní API**, klikněte na **Azure Data Lake**a pak klikněte na **Vybrat**.
 
-    ![ID klienta](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
+    ![Snímek obrazovky okna přidat přístup přes rozhraní API pomocí možnosti vyberte rozhraní API, které se vyvolaly, a vyberte okno vybrat rozhraní API s možností Azure Data Lake a možnost vybrat s názvem.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
 
 4.  V okně **Přidat přístup přes rozhraní API** klikněte na **vybrat oprávnění**. Zaškrtnutím políčka udělíte **úplný přístup k Data Lake Store**a potom klikněte na **Vybrat**.
 
-    ![ID klienta](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
+    ![Snímek obrazovky okna přidat přístup přes rozhraní API s možností vybrat oprávnění a v okně Povolit přístup s úplným přístupem k možnosti služby Azure Data Lake a s možností vybrat s názvem.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
-    Klikněte na **Done** (Hotovo).
+    Klikněte na **Hotovo**.
 
 5. Zopakováním posledních dvou kroků udělíte taky oprávnění pro **Windows Azure rozhraní API pro správu služeb** .
 

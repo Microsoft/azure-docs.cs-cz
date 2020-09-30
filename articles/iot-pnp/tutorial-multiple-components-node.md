@@ -1,6 +1,6 @@
 ---
-title: Ukázka připojení IoT technologie Plug and Play Preview Node.js kódu zařízení komponenty do IoT Hub | Microsoft Docs
-description: Sestavujte a spusťte ukázkovou technologie Plug and Play IoT Preview Node.js kódu zařízení, který používá více komponent a připojuje se ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
+title: Připojení ukázky IoT technologie Plug and Play Node.js kódu zařízení komponenty do IoT Hub | Microsoft Docs
+description: Sestavte a spouštějte ukázkový technologie Plug and Play IoT Node.js kód zařízení, který používá více komponent a připojuje se ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
 author: olivakar
 ms.author: olkar
 ms.date: 07/10/2020
@@ -8,22 +8,22 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: devx-track-js
-ms.openlocfilehash: 24bfbf4199671da497844444a57e566e66eb8c90
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ea7b1ba159aa5d11a20ff565390ce0b24e38c1d2
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308210"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577182"
 ---
-# <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-nodejs"></a>Kurz: připojení ukázkové IoT technologie Plug and Play ve verzi Preview aplikace zařízení s více součástmi pro IoT Hub (Node.js)
+# <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-nodejs"></a>Kurz: připojení ukázkové aplikace IoT technologie Plug and Play více aplikací zařízení k IoT Hub (Node.js)
 
 [!INCLUDE [iot-pnp-tutorials-device-selector.md](../../includes/iot-pnp-tutorials-device-selector.md)]
 
-V tomto kurzu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play pro zařízení pomocí komponent a kořenového rozhraní, připojit ho ke službě IoT Hub a pomocí nástroje Azure IoT Explorer zobrazit informace, které posílá do centra. Ukázková aplikace je napsaná pro Node.js a je obsažená v sadě SDK pro zařízení Azure IoT Hub pro Node.js. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+V tomto kurzu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení pomocí komponent, připojit ji k centru IoT a pomocí nástroje Azure IoT Explorer zobrazit informace, které posílá do centra. Ukázková aplikace je napsaná pro Node.js a je obsažená v sadě SDK pro zařízení Azure IoT Hub pro Node.js. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
 
 ## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 K dokončení tohoto kurzu potřebujete Node.js na svém vývojovém počítači. Nejnovější doporučenou verzi si můžete stáhnout z [NodeJS.org](https://nodejs.org)na víc platforem.
 
@@ -33,32 +33,9 @@ Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověř
 node --version
 ```
 
-### <a name="azure-iot-explorer"></a>Průzkumník Azure IoT
-
-Pokud chcete s ukázkovým zařízením pracovat v druhé části tohoto kurzu, použijte nástroj **Azure IoT Explorer** . [Stáhněte a nainstalujte si nejnovější verzi Azure IoT Exploreru](./howto-use-iot-explorer.md) pro váš operační systém.
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-Spuštěním následujícího příkazu Získejte _připojovací řetězec služby IoT Hub_ pro vaše centrum. Poznamenejte si tento připojovací řetězec, použijete ho později v tomto kurzu:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> Připojovací řetězec služby IoT Hub můžete najít také pomocí nástroje Azure IoT Explorer.
-
-Spuštěním následujícího příkazu Získejte _připojovací řetězec zařízení_ pro zařízení, které jste přidali do centra. Poznamenejte si tento připojovací řetězec, použijete ho později v tomto kurzu:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
-
 ## <a name="download-the-code"></a>Stáhněte si kód
 
-V tomto kurzu připravíte vývojové prostředí, které můžete použít k klonování a sestavení sady SDK pro zařízení Azure IoT Hub pro Node.js.
+Pokud jste dokončili [rychlý Start: Připojte ukázkovou aplikaci IoT technologie Plug and Play zařízení běžící v systému Windows k IoT Hub (Node)](quickstart-connect-device-node.md), již jste naklonoval úložiště.
 
 Otevřete příkazový řádek v adresáři dle vašeho výběru. Spusťte následující příkaz, který naklonuje [sadu Microsoft Azure IoT SDK pro Node.js](https://github.com/Azure/azure-iot-sdk-node) úložiště GitHub do tohoto umístění:
 
@@ -66,11 +43,9 @@ Otevřete příkazový řádek v adresáři dle vašeho výběru. Spusťte násl
 git clone https://github.com/Azure/azure-iot-sdk-node
 ```
 
-Dokončení této operace může trvat několik minut.
-
 ## <a name="install-required-libraries"></a>Nainstalovat požadované knihovny
 
-Pomocí sady SDK pro zařízení sestavíte zahrnutý vzorový kód. Aplikace, kterou vytváříte, simuluje technologie Plug and Play zařízení s více komponentami a kořenovým rozhraním, které se připojuje ke službě IoT Hub. Aplikace odesílá telemetrie a vlastnosti a přijímá příkazy.
+Pomocí sady SDK pro zařízení sestavíte zahrnutý vzorový kód. Aplikace, kterou vytváříte, simuluje technologie Plug and Play zařízení s více komponentami, které se připojují ke službě IoT Hub. Aplikace odesílá telemetrie a vlastnosti a přijímá příkazy.
 
 1. V místním okně terminálu přejděte do složky naklonovaného úložiště a přejděte do složky */Azure-IoT-SDK-Node/Device/Samples/PNP* . Pak spuštěním následujícího příkazu nainstalujte požadované knihovny:
 
@@ -79,12 +54,6 @@ npm install
 ```
 
 Tím se nainstalují relevantní soubory npm potřebné ke spuštění ukázek ve složce.
-
-1. Nakonfigurujte proměnnou prostředí pomocí připojovacího řetězce zařízení, který jste si poznamenali dříve:
-
-```cmd/sh
-set DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
-```
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
@@ -96,45 +65,51 @@ Kód v souboru *pnpTemperatureController.js* implementuje zařízení adaptéru 
 
 Otevřete soubor *pnpTemperatureController.js* v editoru kódu dle vašeho výběru. Vzorový kód ukazuje, jak:
 
-1. Definujte, `modelId` který z nich je DTMI pro zařízení, které je právě implementováno. Tato DTMI je definovaná uživatelem a musí odpovídat DTMI [modelu DTDL řadiče teploty](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json).
+- Definujte, `modelId` který z nich je DTMI pro zařízení, které je právě implementováno. Tato DTMI je definovaná uživatelem a musí odpovídat DTMI [modelu DTDL řadiče teploty](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json).
 
-2. Implementujte komponenty definované v modelu DTDL řadiče teploty. Komponenty v reálném teplotním adaptéru by měly implementovat tato dvě rozhraní. Tato dvě rozhraní jsou již publikována v centrálním úložišti. V této ukázce jsou tato dvě rozhraní:
+- Implementujte komponenty definované v modelu DTDL řadiče teploty. Komponenty v reálném teplotním adaptéru by měly implementovat tato dvě rozhraní. Tato dvě rozhraní jsou již publikována v centrálním úložišti. V této ukázce jsou tato dvě rozhraní:
+
   - Termostat
   - Informace o zařízeních vyvinutých v Azure
 
-3. Definujte názvy součástí. Tato ukázka má dvě termostaty a jednu komponentu informací o zařízení.
+- Definujte názvy součástí. Tato ukázka má dvě termostaty a jednu komponentu informací o zařízení.
 
-4. Zadejte název příkazu. Toto jsou příkazy, na které zařízení reaguje.
+- Zadejte název příkazu. Toto jsou příkazy, na které zařízení reaguje.
 
-5. Definujte `serialNumber` konstantu. Toto `serialNumber` zařízení je pevně dané.
+- Definujte `serialNumber` konstantu. Toto `serialNumber` zařízení je pevně dané.
 
-6. Definujte obslužné rutiny příkazů.
+- Definujte obslužné rutiny příkazů.
 
-7. Definujte funkce pro odeslání odpovědí na příkazy.
+- Definujte funkce pro odeslání odpovědí na příkazy.
 
-8. Definujte pomocné funkce pro protokolování požadavků příkazu.
+- Definujte pomocné funkce pro protokolování požadavků příkazu.
 
-9. Definujte pomocnou funkci pro vytvoření vlastností.
+- Definujte pomocnou funkci pro vytvoření vlastností.
 
-10. Definujte naslouchací proces pro aktualizace vlastností.
+- Definujte naslouchací proces pro aktualizace vlastností.
 
-11. Definujte funkci pro odeslání telemetrie z tohoto zařízení. Všechna termostaty i kořenové komponenty odesílají telemetrii. Tato funkce přijímá název komponenty jako parametr.
+- Definujte funkci pro odeslání telemetrie z tohoto zařízení. Všechna termostaty i výchozí součást odesílají telemetrii. Tato funkce přijímá název komponenty jako parametr.
 
-12. Definujte `main` funkci, která:
+- Definujte `main` funkci, která:
 
-    1. Pomocí sady SDK pro zařízení vytvořte klienta zařízení a připojte se ke službě IoT Hub. Zařízení dodá `modelId` , aby IoT Hub mohl zařízení identifikovat jako zařízení technologie Plug and Play IoT.
+  - Pomocí sady SDK pro zařízení vytvořte klienta zařízení a připojte se ke službě IoT Hub. Zařízení dodá `modelId` , aby IoT Hub mohl zařízení identifikovat jako zařízení technologie Plug and Play IoT.
 
-    1. Spustí naslouchání žádostí o příkazy pomocí `onDeviceMethod` funkce. Funkce nastaví naslouchací proces pro požadavky příkazu ze služby:
-        - DTDL zařízení definuje `reboot` `getMaxMinReport` příkazy a.
-        - `commandHandler`Funkce definuje způsob, jakým zařízení reaguje na příkaz.
+  - Spustí naslouchání žádostí o příkazy pomocí `onDeviceMethod` funkce. Funkce nastaví naslouchací proces pro požadavky příkazu ze služby:
 
-    1. Spustí odesílání telemetrie pomocí `setInterval` a `sendTelemetry` .
+    - DTDL zařízení definuje `reboot` `getMaxMinReport` příkazy a.
+    - `commandHandler`Funkce definuje způsob, jakým zařízení reaguje na příkaz.
 
-    1. Pomocí `helperCreateReportedPropertiesPatch` funkce vytvoří vlastnosti a `updateComponentReportedProperties` aktualizuje vlastnosti.
+  - Spustí odesílání telemetrie pomocí `setInterval` a `sendTelemetry` .
 
-    1. Nástroj používá `desiredPropertyPatchListener` k naslouchání aktualizacím vlastností.
+  - Pomocí `helperCreateReportedPropertiesPatch` funkce vytvoří vlastnosti a `updateComponentReportedProperties` aktualizuje vlastnosti.
 
-    1. Zakáže všechny naslouchací procesy a úlohy a ukončí smyčku po stisknutí **q** nebo **q**.
+  - Nástroj používá `desiredPropertyPatchListener` k naslouchání aktualizacím vlastností.
+
+  - Zakáže všechny naslouchací procesy a úlohy a ukončí smyčku po stisknutí **q** nebo **q**.
+
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+Další informace o ukázkové konfiguraci najdete v [ukázkovém souboru Readme](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md).
 
 Teď, když jste viděli kód, použijte následující příkaz ke spuštění ukázky:
 
@@ -161,4 +136,4 @@ Po spuštění ukázky klienta zařízení použijte nástroj Azure IoT Explorer
 V tomto kurzu jste se naučili připojit zařízení IoT technologie Plug and Play k komponentám do služby IoT Hub. Další informace o modelech zařízení IoT technologie Plug and Play najdete v tématech:
 
 > [!div class="nextstepaction"]
-> [Příručka pro vývojáře pro modelování IoT technologie Plug and Play Preview](concepts-developer-guide.md)
+> [Příručka pro vývojáře IoT technologie Plug and Play Modeling](concepts-developer-guide-device-csharp.md)

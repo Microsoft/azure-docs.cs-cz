@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8b6faa6e2e8928e008370cb0eca00595712a679d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 4677426337a48d4fde74f61b8a4ad6fcb695f420
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449017"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577811"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Seznámení se službou Azure Defender pro službu Storage
 
@@ -27,7 +27,7 @@ Tato vrstva ochrany umožňuje řešit hrozby, *aniž* byste museli být odborn�
 |----|:----|
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|**Azure Defender pro úložiště** se fakturuje, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
-|Typy chráněných úložišť|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)|
+|Typy chráněných úložišť:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)|
 |Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 

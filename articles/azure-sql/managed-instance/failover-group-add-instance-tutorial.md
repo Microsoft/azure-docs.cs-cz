@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 598bb30d21a17b2c39f69a845690c3c754ec2145
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 034940a0990fc97118e62caab051a5a9e2ffd3e7
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325245"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578559"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL do skupiny převzetí služeb při selhání
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -55,6 +55,8 @@ K dokončení tohoto kurzu se ujistěte, že máte následující položky:
 ## <a name="create-a-resource-group-and-primary-managed-instance"></a>Vytvoření skupiny prostředků a primární spravované instance
 
 V tomto kroku vytvoříte skupinu prostředků a primární spravovanou instanci pro skupinu převzetí služeb při selhání pomocí Azure Portal nebo PowerShellu. 
+
+Nasaďte spravované instance do [spárovaných oblastí](../../best-practices-availability-paired-regions.md) z důvodů výkonu. Spravované instance nacházející se v geograficky spárované oblasti mají mnohem lepší výkon v porovnání s nespárovanými oblastmi. 
 
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal) 
@@ -740,6 +742,8 @@ Aby se dvě spravované instance účastnily skupiny převzetí služeb při sel
 
 Tento článek popisuje kroky pro vytvoření dvou bran sítě VPN a jejich připojení, ale můžete přeskočit k vytvoření skupiny převzetí služeb při selhání, pokud jste místo toho nakonfigurovali ExpressRoute. 
 
+> [!NOTE]
+> SKU brány má vliv na výkon propustnosti. Tento kurz nasadí bránu se základní JEDNOTKou ( `HwGw1` ). Pokud `VpnGw3` chcete dosáhnout vyšší propustnosti, nasaďte vyšší hodnotu SKU (příklad:). Všechny dostupné možnosti najdete v tématu [SKU brány](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) .
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 

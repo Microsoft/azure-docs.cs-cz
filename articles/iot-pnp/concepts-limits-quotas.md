@@ -1,26 +1,26 @@
 ---
-title: Omezení a kvóty IoT technologie Plug and Play Preview | Microsoft Docs
-description: Seznamte se s limity, kvótami a omezeními, které platí při použití IoT technologie Plug and Play ve verzi Preview.
+title: Omezení a kvóty technologie Plug and Play IoT | Microsoft Docs
+description: Seznamte se s limity, kvótami a omezeními, které platí při použití IoT technologie Plug and Play.
 author: prashmo
 ms.author: prashmo
 ms.date: 07/21/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5c4377120f61792b580225a22b9f5ff51b5e1b64
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d965d9cb8b87ce0b67f4fe0c07b660fdfd69cc07
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337394"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577981"
 ---
-# <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>Limity, kvóty a omezení pro IoT technologie Plug and Play Preview
+# <a name="iot-plug-and-play-limits-quotas-and-throttles"></a>Omezení, kvóty a omezení technologie Plug and Play IoT
 
-V tomto článku se dozvíte o omezeních, kvótách a omezeních specifických pro IoT technologie Plug and Play, která se vztahují ve verzi Public Preview. Existují stávající [kvóty IoT Hub a omezení](../iot-hub/iot-hub-devguide-quotas-throttling.md) , které platí i pro ně.
+V tomto článku se dozvíte o omezeních, kvótách a omezeních specifických pro IoT technologie Plug and Play. Existují stávající [kvóty IoT Hub a omezení](../iot-hub/iot-hub-devguide-quotas-throttling.md) , které platí i pro ně.
 
 ## <a name="iot-hub"></a>IoT Hub
 
-Ve verzi Public Preview platí následující omezení a kvóty pro Centrum IoT:
+Následující omezení a kvóty platí pro Centrum IoT:
 
 | Omezení, omezení a omezení | Hodnota | Poznámky |
 |-----|-----|-----|

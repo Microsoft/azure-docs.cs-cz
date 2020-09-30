@@ -1,18 +1,21 @@
 ---
 title: Přehled agenta připojeného počítače systému Windows
 description: Tento článek poskytuje podrobný přehled dostupného agenta serverů s podporou ARC Azure, který podporuje monitorování virtuálních počítačů hostovaných v hybridních prostředích.
-ms.date: 09/24/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 01f1b291fee57d94b95bdeeef5f9f24b011e9fca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0fa406692ae0ff011c65a2683ea04ad969bdc3b5
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255039"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577216"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Přehled agenta serverů s podporou ARC Azure
 
 Agent počítače připojené k serverům s podporou Azure ARC vám umožní spravovat počítače se systémem Windows a Linux hostované mimo Azure ve vaší podnikové síti nebo jiném poskytovateli cloudu. Tento článek poskytuje podrobný přehled požadavků na agenty, systém a síť a různé metody nasazení.
+
+>[!NOTE]
+>Počínaje obecným vydáním serverů s podporou Azure ARC v září 2020 budou všechny předběžné verze agenta připojeného počítače Azure (agenti s verzemi nižšími než 1,0) od **2. února 2021** **zastaralé** .  Tento časový rámec vám umožní upgradovat na verzi 1,0 nebo vyšší, než předem vypraví agenti nebudou moct komunikovat se službou servery s podporou Azure ARC.
 
 ## <a name="agent-component-details"></a>Podrobnosti komponenty agenta
 
@@ -44,7 +47,7 @@ Agenta připojeného počítače Azure pro Windows a Linux se dá upgradovat na 
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Pro agenta připojeného počítače Azure jsou oficiálně podporované následující verze operačního systému Windows a Linux: 
+Pro agenta připojeného počítače Azure jsou oficiálně podporované následující verze operačního systému Windows a Linux:
 
 - Windows Server 2012 R2 a vyšší (včetně jádra Windows serveru)
 - Ubuntu 16,04 a 18,04 LTS (x64)
@@ -85,7 +88,7 @@ Značky služby:
 
 Adrese
 
-| Prostředek agenta | Popis |
+| Prostředek agenta | Description |
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
@@ -154,7 +157,7 @@ Po instalaci agenta připojeného počítače pro Windows se aplikují následuj
 
 * Během instalace se vytvoří následující instalační složky.
 
-    |Složka |Popis |
+    |Složka |Description |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |Výchozí instalační cesta obsahující soubory podpory agenta.|
     |%ProgramData%\AzureConnectedMachineAgent |Obsahuje konfigurační soubory agenta.|
@@ -166,21 +169,21 @@ Po instalaci agenta připojeného počítače pro Windows se aplikují následuj
 
 * Následující služby systému Windows se v cílovém počítači vytvoří během instalace agenta.
 
-    |Název služby |Zobrazované jméno |Název procesu |Popis |
+    |Název služby |Zobrazované jméno |Název procesu |Description |
     |-------------|-------------|-------------|------------|
     |himds |Hybridní Instance Metadata Service Azure |himds.exe |Tato služba implementuje službu metadat Azure instance (IMDS) pro správu připojení k Azure a identitě Azure připojeného počítače.|
     |DscService |Služba konfigurace hosta |dsc_service.exe |Základ kódu pro konfiguraci požadovaného stavu (DSC v2) používaný v rámci Azure k implementaci zásad hosta.|
 
 * Během instalace agenta se vytvoří následující proměnné prostředí.
 
-    |Name |Výchozí hodnota |Popis |
+    |Name |Výchozí hodnota |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Pro řešení potíží je k dispozici několik souborů protokolu. Jsou popsány v následující tabulce.
 
-    |Protokol |Popis |
+    |Protokol |Description |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Zaznamenává údaje služby agenti (HIMDS) a interakce s Azure.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Obsahuje výstup příkazů nástroje azcmagent, pokud je použit argument verbose (-v).|
@@ -205,7 +208,7 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 * Během instalace se vytvoří následující instalační složky.
 
-    |Složka |Popis |
+    |Složka |Description |
     |-------|------------|
     |/var/opt/azcmagent/ |Výchozí instalační cesta obsahující soubory podpory agenta.|
     |/opt/azcmagent/ |
@@ -217,14 +220,14 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 * Následující procesy démon jsou vytvořeny v cílovém počítači během instalace agenta.
 
-    |Název služby |Zobrazované jméno |Název procesu |Popis |
+    |Název služby |Zobrazované jméno |Název procesu |Description |
     |-------------|-------------|-------------|------------|
     |himdsd. Service |Hybridní Instance Metadata Service Azure |/opt/azcmagent/bin/himds |Tato služba implementuje službu metadat Azure instance (IMDS) pro správu připojení k Azure a identitě Azure připojeného počítače.|
     |dscd. Service |Služba konfigurace hosta |/opt/DSC/dsc_linux_service |Toto je základ kódu požadovaného stavu (DSC v2), který se používá v Azure k implementaci zásad hosta.|
 
 * Pro řešení potíží je k dispozici několik souborů protokolu. Jsou popsány v následující tabulce.
 
-    |Protokol |Popis |
+    |Protokol |Description |
     |----|------------|
     |/var/opt/azcmagent/log/himds.log |Zaznamenává údaje služby agenti (HIMDS) a interakce s Azure.|
     |/var/opt/azcmagent/log/azcmagent.log |Obsahuje výstup příkazů nástroje azcmagent, pokud je použit argument verbose (-v).|
@@ -235,7 +238,7 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 * Během instalace agenta se vytvoří následující proměnné prostředí. Tyto proměnné jsou nastaveny v `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Výchozí hodnota |Popis |
+    |Name |Výchozí hodnota |Description |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||

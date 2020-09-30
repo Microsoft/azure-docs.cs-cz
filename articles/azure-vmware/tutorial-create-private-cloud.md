@@ -3,12 +3,12 @@ title: Kurz – nasazení clusteru vSphere v Azure
 description: Naučte se nasadit cluster vSphere v Azure pomocí řešení Azure VMWare.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 47ad5ca5e9d6b116ea48e1120b5ad3defaec7509
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3fab49640364ef1b2e68953d366b20f77556b486
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254620"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578308"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Kurz: nasazení privátního cloudu řešení Azure VMware v Azure
 
@@ -39,7 +39,7 @@ Privátní cloud řešení Azure VMware můžete vytvořit pomocí [Azure Portal
 
 ### <a name="azure-portal"></a>portál Azure
 
-[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-avs-private-cloud-azure-portal-steps.md)]
+[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -53,8 +53,8 @@ Vyberte **vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete 
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
 
-```
-azurecli-interactive
+```azurecli-interactive
+
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -71,8 +71,7 @@ Zadejte název skupiny prostředků a privátního cloudu, umístění a velikos
 | **--Network-Block**     | Blok IP adres CIDR pro síť, který se má použít pro privátní cloud. Blok adres by neměl překrývat bloky adres používané v jiných virtuálních sítích, které jsou ve vašem předplatném a v místních sítích.        |
 | **--SKU** | Hodnota SKU: AV36 |
 
-```
-azurecli-interactive
+```azurecli-interactive
 az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
 ```
 

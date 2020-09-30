@@ -1,14 +1,14 @@
 ---
 title: Vytváření zásad pro vlastnosti polí u prostředků
 description: Naučte se pracovat s parametry pole a výrazy jazyka pole, vyhodnotit alias [*] a přidat prvky pomocí pravidel Definice Azure Policy.
-ms.date: 08/17/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 5b9392a943e264ae5eca989ee87eb9ff09b36972
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: c67982197c0161d99f29747d6fd11166cba86079
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048478"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576893"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Vytváření zásad pro vlastnosti pole v prostředcích Azure
 
@@ -194,12 +194,24 @@ Následující výsledky jsou výsledkem kombinace podmínky a ukázkového prav
 |`{<field>,"Equals":"127.0.0.1"}` |Nothing |Všechny shody |Jeden prvek pole se vyhodnotí jako true (127.0.0.1 = = 127.0.0.1) a jeden jako false (127.0.0.1 = = 192.168.1.1), takže podmínka **Equals** je _false_ a efekt se neaktivuje. |
 |`{<field>,"Equals":"10.0.4.1"}` |Nothing |Všechny shody |Obě prvky pole jsou vyhodnoceny jako false (10.0.4.1 = = 127.0.0.1 a 10.0.4.1 = = 192.168.1.1), takže podmínka **Equals** je _false_ a účinek není aktivován. |
 
-## <a name="the-append-effect-and-arrays"></a>Efekt připojení a pole
+## <a name="modifying-arrays"></a>Úprava polí
 
-[Efekt připojení](../concepts/effects.md#append) se chová odlišně v závislosti na tom, zda je v **poli Podrobnosti** **\[\*\]** alias.
+Příkazy [připojit](../concepts/effects.md#append) a [Upravit](../concepts/effects.md#modify) vlastnosti prostředku během vytváření nebo aktualizace. Při práci s vlastnostmi pole závisí chování těchto efektů na tom, zda se operace pokouší změnit  **\[\*\]** alias nebo ne:
 
-- Pokud se nejedná o **\[\*\]** alias, příkaz append nahradí celé pole vlastností **Value** .
-- Když **\[\*\]** alias připojí, přidá vlastnost **Value** do existujícího pole nebo vytvoří nové pole.
+> [!NOTE]
+> Použití `modify` efektu s aliasy je v současnosti ve **verzi Preview**.
+
+|Alias |Účinek | Výsledek |
+|-|-|-|
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `append` | Pokud chybí, Azure Policy připojí celé pole zadané v podrobnostech o účinku. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify` s `add` operací | Pokud chybí, Azure Policy připojí celé pole zadané v podrobnostech o účinku. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify` s `addOrReplace` operací | Azure Policy připojí celé pole zadané v podrobnostech o účinku, pokud chybí nebo nahradí existující pole. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `append` | Azure Policy připojí člena pole zadaného v podrobnostech o vlivu. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify` s `add` operací | Azure Policy připojí člena pole zadaného v podrobnostech o vlivu. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify` s `addOrReplace` operací | Azure Policy odebere všechny existující členy pole a připojí člena pole zadaného v podrobnostech o účinku. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `append` | Azure Policy připojí hodnotu k `action` vlastnosti každého člena pole. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify` s `add` operací | Azure Policy připojí hodnotu k `action` vlastnosti každého člena pole. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify` s `addOrReplace` operací | Azure Policy připojí nebo nahradí existující `action` vlastnost každého člena pole. |
 
 Další informace najdete v [příkladech připojení](../concepts/effects.md#append-examples).
 

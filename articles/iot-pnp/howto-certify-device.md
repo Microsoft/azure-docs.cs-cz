@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bdb6bf166e84bb9134bbd14454899bcefbf0a887
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 6aa4273933190ccfe495bcaf243ee15a5ce823fb
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949894"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577641"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>Jak certifikovat technologie Plug and Play zařízení IoT
 
@@ -42,18 +42,18 @@ Abyste splnili požadavky na certifikaci, vaše zařízení musí:
 - Implementací telemetrie, vlastností nebo příkazů podle konvence technologie Plug and Play IoT.
 - Popište interakce zařízení s modelem [DTDL v2](https://aka.ms/dtdl) .
 - Publikování modelu a všech požadovaných rozhraní v [úložišti veřejného modelu Azure IoT](https://devicemodels.azureiotsolutions.com/)
-- Odešlete ID modelu během [registrace DPS](concepts-developer-guide.md#dps-payload) v datové části zřizování DPS.
-- Během [připojení MQTT](concepts-developer-guide.md#model-id-announcement)oznamuje ID modelu.
+- Odešlete ID modelu během [registrace DPS](concepts-developer-guide-device-csharp.md#dps-payload) v datové části zřizování DPS.
+- Během [připojení MQTT](concepts-developer-guide-device-csharp.md#model-id-announcement)oznamuje ID modelu.
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>Testování pomocí rozhraní příkazového řádku rozšíření Azure IoT
 
-[Rozšíření Azure IoT CLI](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/product?view=azure-cli-latest) umožňuje ověřit, že implementace zařízení odpovídá modelu předtím, než odešlete zařízení pro certifikaci prostřednictvím portálu zařízení s certifikací Azure.
+[Rozšíření Azure IoT CLI](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/product?view=azure-cli-latest&preserve-view=true) umožňuje ověřit, že implementace zařízení odpovídá modelu předtím, než odešlete zařízení pro certifikaci prostřednictvím portálu zařízení s certifikací Azure.
 
 Následující kroky ukazují, jak připravit a spustit ověřovací testy pomocí rozhraní příkazového řádku:
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>Instalace rozšíření Azure IoT pro rozhraní příkazového řádku Azure
 
-Podívejte se na pokyny k instalaci a nastavte [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) ve vašem prostředí.
+Podívejte se na pokyny k instalaci a nastavte [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) ve vašem prostředí.
 
 Pokud chcete nainstalovat rozšíření Azure IoT, spusťte následující příkaz:
 
@@ -61,7 +61,7 @@ Pokud chcete nainstalovat rozšíření Azure IoT, spusťte následující pří
 az extension add --name azure-iot
 ```
 
-Další informace najdete v tématu [Azure CLI pro Azure IoT](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot?view=azure-cli-latest).
+Další informace najdete v tématu [Azure CLI pro Azure IoT](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot?view=azure-cli-latest&preserve-view=true).
 
 ### <a name="create-a-new-product-test"></a>Vytvořit nový test produktu
 
@@ -75,7 +75,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> Když použijete rozhraní příkazového řádku, musíte se [Přihlásit](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) ke svému předplatnému.
+> Když použijete rozhraní příkazového řádku, musíte se [Přihlásit](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) ke svému předplatnému.
 
 Výstup JSON z příkazu obsahuje `primaryKey` , `registrationId` a, `scopeID` který se použije při připojení zařízení.
 
@@ -166,9 +166,6 @@ Příklad výstupu testovacího běhu
 
 Následující kroky ukazují, jak používat [portál zařízení s certifikací Azure](https://aka.ms/acdp) ke zprovoznění, registraci podrobností produktů, odeslání příručky Začínáme a spuštění testů certifikace.
 
-> [!NOTE]
-> V době psaní nebude portál podporovat publikování do [katalogu zařízení s certifikací pro Azure IoT](https://aka.ms/devicecatalog).
-
 ### <a name="onboarding"></a>Onboarding
 
 Pokud chcete používat [certifikační portál](https://aka.ms/acdp), musíte použít Azure Active Directory ze svého pracovního nebo školního tenanta.
@@ -203,6 +200,14 @@ Existují tři kroky, které je třeba provést:
 1. Připojte a vyhledejte rozhraní. Zařízení se musí připojit k certifikační službě Azure IoT prostřednictvím DPS. Vyberte metodu ověřování (X. 509 certifikát, symetrický klíč nebo modul Trusted Platform Module), abyste mohli používat a aktualizovat aplikaci pro zařízení pomocí informací DPS.
 1. Zkontrolujte rozhraní. Zkontrolujte rozhraní a ujistěte se, že každý z nich má vstupy datové části, které jsou vhodné pro testování.
 1. Napaden. Systém testuje jednotlivé modely zařízení, aby zkontroloval, jestli telemetrie, vlastnosti a příkazy popsané v modelu dodržují konvence technologie Plug and Play IoT. Po dokončení testu vyberte odkaz **Zobrazit protokoly** a zobrazte telemetrii ze zařízení a nezpracovaná data odesílaná do IoT Hub vlastností zařízení.
+
+### <a name="submit-and-publish"></a>Odeslat a publikovat
+
+Poslední požadovaná fáze je odeslat projekt ke kontrole. Tento krok oznamuje členovi týmu zařízení Certified v Azure, aby zkontroloval úplnost projektu, včetně podrobností o zařízení a marketingu a úvodní příručce. Člen týmu vás může kontaktovat na e-mailové adrese společnosti, která byla dříve k dispozici s dotazy nebo upravit žádosti před schválením.
+
+Pokud vaše zařízení vyžaduje další ruční ověření v rámci certifikace, obdržíte v tomto okamžiku oznámení.
+
+Když je zařízení certifikováno, můžete se rozhodnout publikovat podrobnosti o produktu v katalogu zařízení s certifikací Azure pomocí funkce **publikovat do katalogu** na stránce souhrnu produktu.
 
 ## <a name="next-steps"></a>Další kroky
 

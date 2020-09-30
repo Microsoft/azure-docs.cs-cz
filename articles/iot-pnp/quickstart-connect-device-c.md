@@ -1,28 +1,28 @@
 ---
-title: Připojte si ukázkový kód zařízení v IoT technologie Plug and Play Preview pro IoT Hub | Microsoft Docs
-description: Sestavování a spouštění IoT technologie Plug and Play Preview ukázkový kód zařízení v systému Linux nebo Windows, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
+title: Připojte si ukázkový kód zařízení jazyka C pro IoT technologie Plug and Play k IoT Hub | Microsoft Docs
+description: Sestavte a spouštějte ukázkový kód zařízení technologie Plug and Play IoT v systému Linux nebo Windows, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: afe7396ebdada97b9311d0afe903f40757084586
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: d8782bf6cab85b1b87c0cfc418a4731cc134db8f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426108"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577063"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>Rychlý Start: připojení ukázkové aplikace IoT technologie Plug and Play ve verzi Preview spuštěné v systému Linux nebo Windows do IoT Hub (C)
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>Rychlý Start: připojení ukázkové aplikace IoT technologie Plug and Play zařízení běžící v systému Linux nebo Windows do IoT Hub (C)
 
 [!INCLUDE [iot-pnp-quickstarts-device-selector.md](../../includes/iot-pnp-quickstarts-device-selector.md)]
 
 V tomto rychlém startu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení, jak ji připojit k centru IoT a použít nástroj Azure IoT Explorer k zobrazení telemetrie, kterou posílá. Ukázková aplikace je napsaná v jazyce C a je obsažená v sadě SDK pro zařízení Azure IoT pro jazyk C. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 Tento rychlý Start můžete spustit v systému Linux nebo Windows. Příkazy prostředí v tomto rychlém startu se řídí konvencí pro oddělovače cest pro Linux `/` , pokud sledujete v systému Windows, nezapomeňte tyto oddělovače pro použít `\` .
 
@@ -52,32 +52,9 @@ gcc --version
 
 K dokončení tohoto rychlého startu ve Windows nainstalujte do svého místního prostředí Windows následující software:
 
-* [Visual Studio (komunita, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/) – nezapomeňte při [instalaci](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) sady Visual Studio zahrnout **desktopový vývoj s** využitím úlohy C++.
+* [Visual Studio (komunita, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/) – nezapomeňte při [instalaci](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) sady Visual Studio zahrnout **desktopový vývoj s** využitím úlohy C++.
 * [Git](https://git-scm.com/download/).
 * [Cmake](https://cmake.org/download/).
-
-### <a name="azure-iot-explorer"></a>Průzkumník Azure IoT
-
-Pokud chcete s ukázkovým zařízením pracovat v druhé části tohoto rychlého startu, použijte nástroj **Azure IoT Explorer** . [Stáhněte a nainstalujte si nejnovější verzi Azure IoT Exploreru](./howto-use-iot-explorer.md) pro váš operační systém.
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-Spuštěním následujícího příkazu Získejte _připojovací řetězec služby IoT Hub_ pro vaše centrum. Poznamenejte si tento připojovací řetězec, budete ho používat později v tomto rychlém startu:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> Připojovací řetězec služby IoT Hub můžete najít také pomocí nástroje Azure IoT Explorer.
-
-Spuštěním následujícího příkazu Získejte _připojovací řetězec zařízení_ pro zařízení, které jste přidali do centra. Poznamenejte si tento připojovací řetězec, budete ho používat později v tomto rychlém startu:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
 
 ## <a name="download-the-code"></a>Stáhněte si kód
 
@@ -108,7 +85,7 @@ Pomocí sady SDK pro zařízení sestavíte zahrnutý vzorový kód:
 1. Spusťte následující příkazy a Sestavte sadu SDK a ukázky:
 
     ```cmd\bash
-    cmake ..
+    cmake -Duse_prov_client=ON -Dhsm_type_symm_key=ON -Drun_e2e_tests=OFF ..
     cmake --build .
     ```
 
@@ -117,12 +94,11 @@ Pomocí sady SDK pro zařízení sestavíte zahrnutý vzorový kód:
 
 ## <a name="run-the-device-sample"></a>Spuštění ukázky zařízení
 
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+Další informace o ukázkové konfiguraci najdete v [ukázkovém souboru Readme](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/pnp/readme.md).
+
 Pokud chcete spustit ukázkovou aplikaci v sadě SDK, která simuluje zařízení IoT technologie Plug and Play odesílající telemetrii do služby IoT Hub:
-
-Vytvořte dvě proměnné prostředí pro konfiguraci ukázky pro připojení ke službě IoT Hub pomocí připojovacího řetězce:
-
-- **IOTHUB_DEVICE_SECURITY_TYPE** s hodnotou `"connectionString"`
-- **IOTHUB_DEVICE_CONNECTION_STRING** Uložit připojovací řetězec zařízení, který jste si poznamenali dříve.
 
 Ve složce _cmake_ přejděte do složky, která obsahuje spustitelný soubor, a spusťte ho:
 
@@ -177,8 +153,6 @@ Kód používá knihovnu Parson k analýze objektů JSON v datových vytížení
 // JSON parser
 #include "parson.h"
 ```
-
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

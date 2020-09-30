@@ -1,6 +1,7 @@
 ---
-title: Přidání přihlašování pomocí Microsoftu do webové aplikace v ASP.NET | Azure
-description: Naučte se implementovat přihlášení Microsoftu do webové aplikace v ASP.NET pomocí OpenID Connect.
+title: 'Rychlý Start: Přidání přihlašování pomocí Microsoftu do webové aplikace ASP.NET | Azure'
+titleSuffix: Microsoft identity platform
+description: V tomto rychlém startu se dozvíte, jak implementovat přihlašování Microsoftu ve webové aplikaci v ASP.NET pomocí OpenID Connect.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,16 +12,22 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperfq1
-ms.openlocfilehash: ada6e36e03f326ab3161306b0f5da2e097e57e0c
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e621d50280adcccb8dbd82f4ceb0de7956e98e4b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369667"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576961"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Rychlý Start: přidání přihlášení k platformě Microsoft Identity Platform do webové aplikace v ASP.NET
 V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se webová aplikace ASP.NET přihlašuje k osobním účtům (hotmail.com, outlook.com, ostatním) a pracovním a školním účtům z jakékoli instance Azure Active Directory (Azure AD).  (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>Požadavky
+>
+> * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
+> * [.NET Framework 4.7.2 +](https://dotnet.microsoft.com/download/visual-studio-sdks)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
 > Aplikaci pro rychlý start můžete spustit dvěma způsoby:
 > * [Expresní] [Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -69,7 +76,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se webová aplikace
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: vaše aplikace je nakonfigurovaná a připravená ke spuštění.
-> Nakonfigurovali jsme projekt s hodnotami vlastností vaší aplikace. 
+> Nakonfigurovali jsme projekt s hodnotami vlastností vaší aplikace.
 
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>Krok 3: spuštění projektu sady Visual Studio
@@ -114,7 +121,7 @@ Můžete nastavit ověřovací kanál využívající ověřování na základě
 ```powershell
 Install-Package Microsoft.Owin.Security.OpenIdConnect
 Install-Package Microsoft.Owin.Security.Cookies
-Install-Package Microsoft.Owin.Host.SystemWeb  
+Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
 ### <a name="owin-startup-class"></a>Třída OWIN Startup
@@ -156,7 +163,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Kde  | Popis |
+> |Kde  | Description |
 > |---------|---------|
 > | `ClientId`     | ID aplikace, kterou jste zaregistrovali na portálu Azure Portal |
 > | `Authority`    | Koncový bod služby tokenů zabezpečení pro uživatele k ověření, obvykle `https://login.microsoftonline.com/{tenant}/v2.0` pro veřejný cloud, kde hodnota {tenant} představuje název tenanta, ID tenanta nebo hodnotu *common* odkazující na společný koncový bod (používaný u multitenantních aplikací) |
@@ -195,13 +202,11 @@ public void SignIn()
 
 Řadič a jeho akce můžete chránit pomocí atributu `[Authorize]`. Tento atribut omezuje přístup k řadiči nebo akcím tak, že ho umožňuje pouze ověřeným uživatelům. To znamená, že výzva ověřování se iniciuje automaticky, pokud o přístup k některé z akcí nebo řadiči s nastaveným atributem `[Authorize]` pokusí *neověřený* uživatel.
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
 Vyzkoušejte kurz pro ASP.NET, který nabízí vyčerpávající podrobný návod k vytváření aplikací a nových funkcí, včetně detailního vysvětlení těchto pokynů pro rychlý start.
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Zjistěte, jak vytvořit aplikaci použitou v tomto rychlém startu
-
 > [!div class="nextstepaction"]
-> [Kurz týkající se přihlašování](./tutorial-v2-asp-webapp.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [Přidání přihlašování do webové aplikace v ASP.NET](tutorial-v2-asp-webapp.md)

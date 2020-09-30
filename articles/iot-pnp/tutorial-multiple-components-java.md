@@ -1,62 +1,39 @@
 ---
-title: Připojte si ukázkový kód zařízení s komponentou IoT technologie Plug and Play Preview k IoT Hub | Microsoft Docs
-description: Sestavte a spouštějte ukázkový kód zařízení Java ve verzi Preview technologie Plug and Play, který používá více komponent a připojuje se ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
+title: Připojte si ukázkový kód zařízení Java Component technologie Plug and Play k IoT Hub | Microsoft Docs
+description: Sestavte a technologie Plug and Play spouštějte ukázkový kód zařízení Java, který používá více komponent a připojuje se k centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1d16d8c54939c4f659b6a1530e2d360b957a09ad
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: a7c1f0d207a113b2c12010cbc0a8876edd9269bc
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352763"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577250"
 ---
-# <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-java"></a>Kurz: připojení ukázkové IoT technologie Plug and Play ve verzi Preview aplikace zařízení s více komponentami pro IoT Hub (Java)
+# <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-java"></a>Kurz: připojení ukázkové aplikace IoT technologie Plug and Play více aplikací zařízení k IoT Hub (Java)
 
 [!INCLUDE [iot-pnp-tutorials-device-selector.md](../../includes/iot-pnp-tutorials-device-selector.md)]
 
 V tomto kurzu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení s více komponentami, jak ji připojit ke službě IoT Hub a použít Azure CLI k zobrazení telemetrie, kterou posílá. Ukázková aplikace je napsaná v jazyce Java a je obsažená v sadě SDK pro zařízení Azure IoT pro jazyk Java. Tvůrce řešení může pomocí Azure CLI porozumět možnostem zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
 
-V tomto kurzu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play pro zařízení pomocí komponent a kořenového rozhraní, připojit ho ke službě IoT Hub a pomocí nástroje Azure IoT Explorer zobrazit informace, které posílá do centra. Ukázková aplikace je napsaná v jazyce Java a je obsažená v sadě SDK pro zařízení Azure IoT pro jazyk Java. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
+V tomto kurzu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení pomocí komponent, připojit ji k centru IoT a pomocí nástroje Azure IoT Explorer zobrazit informace, které posílá do centra. Ukázková aplikace je napsaná v jazyce Java a je obsažená v sadě SDK pro zařízení Azure IoT pro jazyk Java. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="prerequisites"></a>Předpoklady
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 Pro dokončení tohoto kurzu ve Windows nainstalujte do svého místního prostředí Windows následující software:
 
-* Java SE Development Kit 8. V [dlouhodobé podpoře jazyka Java pro Azure a Azure Stack](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)v části **Dlouhodobá podpora**vyberte **Java 8**.
+* Java SE Development Kit 8. V [dlouhodobé podpoře jazyka Java pro Azure a Azure Stack](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)v části **Dlouhodobá podpora**vyberte **Java 8**.
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
-
-### <a name="azure-iot-explorer"></a>Průzkumník Azure IoT
-
-Pokud chcete s ukázkovým zařízením pracovat v druhé části tohoto rychlého startu, použijte nástroj **Azure IoT Explorer** . [Stáhněte a nainstalujte si nejnovější verzi Azure IoT Exploreru](./howto-use-iot-explorer.md) pro váš operační systém.
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-Spuštěním následujícího příkazu Získejte _připojovací řetězec služby IoT Hub_ pro vaše centrum. Poznamenejte si tento připojovací řetězec, budete ho používat později v tomto rychlém startu:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> Připojovací řetězec služby IoT Hub můžete najít také pomocí nástroje Azure IoT Explorer.
-
-Spuštěním následujícího příkazu Získejte _připojovací řetězec zařízení_ pro zařízení, které jste přidali do centra. Poznamenejte si tento připojovací řetězec, budete ho používat později v tomto rychlém startu:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
 
 ## <a name="download-the-code"></a>Stáhněte si kód
 
-V tomto kurzu připravíte vývojové prostředí, které můžete použít k klonování a sestavení sady SDK pro zařízení s IoT Hub v jazyce Java.
+Pokud jste dokončili [rychlý Start: Připojte ukázkovou aplikaci IoT technologie Plug and Play zařízení běžící v systému Windows k IoT Hub (Java)](quickstart-connect-device-java.md), již jste naklonoval úložiště.
 
 Otevřete příkazový řádek v adresáři dle vašeho výběru. Spusťte následující příkaz, který naklonuje úložiště GitHubu pro [Azure IoT Java SDK a knihovny](https://github.com/Azure/azure-iot-sdk-java) do tohoto umístění:
 
@@ -68,21 +45,19 @@ Očekává se, že dokončení této operace trvá několik minut.
 
 ## <a name="build-the-code"></a>Sestavení kódu
 
-Ve Windows přejděte do kořenové složky naklonovaného úložiště sady Java SDK. Pak přejděte do složky *\device\iot-Device-samples\pnp-Device-sample\temerature-Controller-Device-Sample* .
+Ve Windows přejděte do kořenové složky naklonovaného úložiště sady Java SDK. Spuštěním následujícího příkazu Sestavte závislosti:
 
-Spusťte následující příkaz, který sestaví ukázkovou aplikaci:
-
-```java
-mvn clean package
+```cmd/sh
+mvn install -T 2C -DskipTests
 ```
 
 ## <a name="run-the-device-sample"></a>Spuštění ukázky zařízení
 
-Vytvořte proměnnou prostředí s názvem **IOTHUB_DEVICE_CONNECTION_STRING** pro uložení připojovacího řetězce zařízení, který jste si poznamenali dříve.
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
 
-Chcete-li spustit ukázkovou aplikaci, spusťte následující příkaz:
+Chcete-li spustit ukázkovou aplikaci, přejděte do složky *\device\iot-Device-samples\pnp-Device-sample\temperature-Controller-Device-Sample* a spusťte následující příkaz:
 
-```java
+```cmd/sh
 mvn exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.device.TemperatureController"
 ```
 
@@ -166,7 +141,7 @@ K zobrazení telemetrie a vlastností ze dvou součástí termostatu použijte n
 
 :::image type="content" source="media/tutorial-multiple-components-java/multiple-component.png" alt-text="Více zařízení komponent v Azure IoT Exploreru":::
 
-Pomocí nástroje Azure IoT Explorer můžete také volat příkazy v některé ze dvou součástí termostatu nebo v kořenovém rozhraní.
+Pomocí nástroje Azure IoT Explorer můžete také volat příkazy v obou dvou přísoučástcích termostatu nebo ve výchozí součásti.
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
@@ -175,4 +150,4 @@ Pomocí nástroje Azure IoT Explorer můžete také volat příkazy v některé 
 V tomto kurzu jste se naučili připojit zařízení IoT technologie Plug and Play k komponentám do služby IoT Hub. Další informace o modelech zařízení IoT technologie Plug and Play najdete v tématech:
 
 > [!div class="nextstepaction"]
-> [Příručka pro vývojáře pro modelování IoT technologie Plug and Play Preview](concepts-developer-guide.md)
+> [Příručka pro vývojáře IoT technologie Plug and Play Modeling](concepts-developer-guide-device-csharp.md)

@@ -7,16 +7,16 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 0b04b5170c13f6f6c3fd74976461f03e4367060a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dedb799121fcdbc6bab38865132ae46a78aa6494
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77046067"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578171"
 ---
 # <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>Technologie a služby Azure pro vytváření řešení IoT
 
-Technologie a služby Azure IoT poskytují možnosti pro vytváření nejrůznějších řešení IoT, která umožňují digitální transformaci vaší organizace. Můžete například provést následující věci:
+Technologie a služby Azure IoT poskytují možnosti pro vytváření nejrůznějších řešení IoT, která umožňují digitální transformaci vaší organizace. Můžete například:
 
 - Pomocí služby [Azure IoT Central](https://apps.azureiotcentral.com), spravované aplikační platformy IoT můžete sestavovat a nasazovat zabezpečené řešení IoT na podnikové úrovni. IoT Central nabízí kolekci šablon aplikací specifických pro odvětví, jako je maloobchodní a zdravotní péče, k urychlení procesu vývoje vašeho řešení.
 - Pokud chcete implementovat běžný scénář IoT, jako je vzdálené monitorování nebo prediktivní údržba, rozšíříte základ Open-Source kódu pro [akcelerátor řešení](https://www.azureiotsolutions.com) Azure IoT.
@@ -55,9 +55,9 @@ Pokud chcete vytvořit řešení IoT od začátku nebo rozšíříte řešení v
 
 ### <a name="devices"></a>Zařízení
 
-Pomocí sady [Azure IoT Starter Kit](https://catalog.azureiotsolutions.com/kits) můžete vyvíjet zařízení IoT nebo si vybrat zařízení, které chcete použít v [katalogu zařízení s certifikací Azure Certified for IoT](https://catalog.azureiotsolutions.com). Implementujte vložený kód pomocí [sad SDK](../iot-hub/iot-hub-devguide-sdks.md)Open Source zařízení. Sady SDK pro zařízení podporují více operačních systémů, například Linux, Windows a operační systémy v reálném čase. Existují sady SDK pro více programovacích jazyků, například [C](https://github.com/Azure/azure-iot-sdk-c), [Node. js](https://github.com/Azure/azure-iot-sdk-node), [Java](https://github.com/Azure/azure-iot-sdk-java), [.NET](https://github.com/Azure/azure-iot-sdk-csharp)a [Python](https://github.com/Azure/azure-iot-sdk-python).
+Pomocí sady [Azure IoT Starter Kit](https://catalog.azureiotsolutions.com/kits) můžete vyvíjet zařízení IoT nebo si vybrat zařízení, které chcete použít v [katalogu zařízení s certifikací Azure Certified for IoT](https://catalog.azureiotsolutions.com). Implementujte vložený kód pomocí [sad SDK](../iot-hub/iot-hub-devguide-sdks.md)Open Source zařízení. Sady SDK pro zařízení podporují více operačních systémů, například Linux, Windows a operační systémy v reálném čase. Existují sady SDK pro více programovacích jazyků, například [C](https://github.com/Azure/azure-iot-sdk-c), [Node.js](https://github.com/Azure/azure-iot-sdk-node), [Java](https://github.com/Azure/azure-iot-sdk-java), [.NET](https://github.com/Azure/azure-iot-sdk-csharp)a [Python](https://github.com/Azure/azure-iot-sdk-python).
 
-Můžete ještě více zjednodušit vytváření vloženého kódu pro vaše zařízení pomocí služby [IoT technologie Plug and Play ve verzi Preview](../iot-pnp/overview-iot-plug-and-play.md) . IoT technologie Plug and Play umožňuje vývojářům řešení integrovat zařízení s jejich řešeními bez psaní vloženého kódu. V jádru IoT technologie Plug and Play je schéma _modelu schopností zařízení_ , které popisuje možnosti zařízení. Pomocí modelu schopností zařízení vygenerujte svůj integrovaný kód zařízení a nakonfigurujte cloudové řešení, jako je například aplikace IoT Central.
+Můžete ještě více zjednodušit vytváření vloženého kódu pro vaše zařízení pomocí služby [IoT technologie Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) . IoT technologie Plug and Play umožňuje vývojářům řešení integrovat zařízení s jejich řešeními bez psaní vloženého kódu. V jádru IoT technologie Plug and Play je schéma _modelu schopností zařízení_ , které popisuje možnosti zařízení. Pomocí modelu schopností zařízení vygenerujte svůj integrovaný kód zařízení a nakonfigurujte cloudové řešení, jako je například aplikace IoT Central.
 
 [Azure IoT Edge](../iot-edge/about-iot-edge.md) umožňuje přesměrovat části úlohy IoT z cloudových služeb Azure na vaše zařízení. IoT Edge může snížit latenci ve vašem řešení, omezit objem dat, která vaše zařízení vyměňuje s cloudem, a povolit online scénáře. Zařízení IoT Edge můžete spravovat z IoT Central a některých akcelerátorů řešení.
 

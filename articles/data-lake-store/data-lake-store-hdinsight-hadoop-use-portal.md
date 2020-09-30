@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fd49ddcb59e0d0f3a706f566cf0c011116b1501a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 8b516180f09634dfa430275ef39370f0328a0927
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229221"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577896"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Vytváření clusterů HDInsight pomocí Azure Data Lake Storage Gen1 pomocí Azure Portal
 
@@ -25,7 +25,7 @@ ms.locfileid: "89229221"
 
 Naučte se, jak pomocí Azure Portal vytvořit cluster HDInsight s účtem služby Azure Data Lake Storage Gen1 jako výchozí úložiště nebo další úložiště. I když je pro cluster HDInsight volitelné další úložiště, doporučuje se ukládat obchodní data do dalších účtů úložiště.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že jste splnili následující požadavky:
 
@@ -45,11 +45,11 @@ V této části vytvoříte cluster HDInsight s účty Data Lake Storage Gen1 ja
 
 Pokud chcete vytvořit cluster HDInsight s účtem Data Lake Storage Gen1 jako výchozí účet úložiště:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Pro obecné informace o vytváření clusterů HDInsight postupujte podle pokynů v části [Vytvoření clusterů](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) .
 3. V okně **úložiště** v části **typ primárního úložiště**vyberte **Azure Data Lake Storage Gen1**a potom zadejte následující informace:
 
-    ![Přidání instančního objektu do clusteru HDInsight](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "Přidání instančního objektu do clusteru HDInsight")
+    ![Snímek obrazovky okna úložiště s možností primárního úložiště jako typ vyberte možnost Data Lake Store účet a možnost přístup Data Lake Store vyvolala.](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "Přidání instančního objektu do clusteru HDInsight")
 
     * **Vyberte data Lake Store účet**: Vyberte existující účet Data Lake Storage Gen1. Je vyžadován existující účet Data Lake Storage Gen1.  Viz [Požadavky](#prerequisites).
     * **Kořenová cesta**: zadejte cestu, kam se mají ukládat soubory specifické pro daný cluster. Na snímku obrazovky je __/Clusters/myhdiadlcluster/__, ve kterém musí existovat složka __/Clusters__ , a portál vytvoří složku *myhdicluster* .  *Myhdicluster* je název clusteru.
@@ -64,11 +64,11 @@ Následující pokyny Vytvoří cluster HDInsight s účtem služby Azure Storag
 
 Pokud chcete vytvořit cluster HDInsight s účtem Data Lake Storage Gen1 jako další účet úložiště:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Pro obecné informace o vytváření clusterů HDInsight postupujte podle pokynů v části [Vytvoření clusterů](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) .
 3. V okně **úložiště** v části **typ primárního úložiště**vyberte **Azure Storage**a potom zadejte následující informace:
 
-    ![Přidání instančního objektu do clusteru HDInsight](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.png "Přidání instančního objektu do clusteru HDInsight")
+    ![Snímek obrazovky okna úložiště s možností primárního typu úložiště a možností přístupu Data Lake Store s názvem.](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.png "Přidání instančního objektu do clusteru HDInsight")
 
     * **Metoda výběru** – Pokud chcete zadat účet úložiště, který je součástí vašeho předplatného Azure, vyberte **Moje předplatné**a pak vyberte účet úložiště. Pokud chcete zadat účet úložiště, který se nachází mimo předplatné Azure, vyberte **přístupový klíč**a potom zadejte informace pro externí účet úložiště.
 
@@ -95,7 +95,7 @@ Použití existujícího instančního objektu z Azure Portal:
 1. Vyberte **instanční objekt**a potom vyberte instanční objekt.
 1. Nahrajte certifikát (soubor. pfx), který je přidružený k vybranému instančnímu objektu, a pak zadejte heslo certifikátu.
 
-    ![Přidání instančního objektu do clusteru HDInsight](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png "Přidání instančního objektu do clusteru HDInsight")
+    ![Snímek obrazovky okna s přístupem k Data Lake Storage Gen1 s možností použít existující, která se vyvolala, a vyberte okno pro výběr instančního objektu s možností h d Insight s p a vyberte možnost s názvem.](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png "Přidání instančního objektu do clusteru HDInsight")
 
 1. Vyberte **přístup** ke konfiguraci přístupu ke složce.  Viz téma [Konfigurace oprávnění k souborům](#configure-file-permissions).
 
@@ -121,7 +121,7 @@ Přiřazení oprávnění na úrovni kořenového účtu Data Lake Storage Gen1:
 1. V okně **přístup k Data Lake Storage Gen1** vyberte **přístup**. Otevře se okno **vybrat oprávnění souboru** . Obsahuje seznam všech Data Lake Storage Gen1 účtů v předplatném.
 1. Najeďte myší (neklepejte) myší na název účtu Data Lake Storage Gen1, aby bylo políčko viditelné, a zaškrtněte políčko.
 
-    ![Přidání instančního objektu do clusteru HDInsight](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3.png "Přidání instančního objektu do clusteru HDInsight")
+    ![Snímek obrazovky s oknem oprávnění k samostatnému souboru zobrazující zvýrazněný a vybraný účet Data Lake Storage Gen 1](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3.png "Přidání instančního objektu do clusteru HDInsight")
 
    Ve výchozím nastavení jsou všechny vybrané, __číst__, __zapisovat__a __spouštět__ .
 
@@ -149,11 +149,11 @@ Po dokončení instalace clusteru ověřte v okně clusteru výsledky pomocí je
 
 * Pokud chcete ověřit, jestli je přidruženým úložištěm pro cluster Data Lake Storage Gen1 účet, který jste zadali, v levém podokně vyberte **účty úložiště** .
 
-    ![Přidání instančního objektu do clusteru HDInsight](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6-1.png "Přidání instančního objektu do clusteru HDInsight")
+    ![Snímek obrazovky s Data Lake Storage účet 1. generace s zvýrazněnou možností účty úložiště](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6-1.png "Přidání instančního objektu do clusteru HDInsight")
 
 * Pokud chcete ověřit, jestli je instanční objekt správně přidružený k clusteru HDInsight, vyberte v levém podokně **Data Lake Storage Gen1 přístup** .
 
-    ![Přidání instančního objektu do clusteru HDInsight](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6.png "Přidání instančního objektu do clusteru HDInsight")
+    ![Snímek obrazovky s Data Lake Storage účet 1. generace s zvýrazněnou možností přístupu Data Lake Storage Gen 1](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6.png "Přidání instančního objektu do clusteru HDInsight")
 
 ## <a name="examples"></a>Příklady
 

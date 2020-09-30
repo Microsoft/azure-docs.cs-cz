@@ -10,38 +10,44 @@ ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/10/2020
+ms.date: 09/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aed5dcf98e37b0d075804985355bdabe3b50b712
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: db10f53033e305aa2306bce230e7880140f35189
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295341"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578274"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace Azure AD Connect
-**Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](how-to-connect-install-express.md) nevyhovuje nasazení nebo topologii.
+Azure AD Connect **vlastní nastavení** se používají, když chcete další možnosti instalace.  Například pokud máte několik doménových struktur nebo pokud chcete nakonfigurovat volitelné funkce. Používá se ve všech případech, kde možnost [**rychlá instalace**](how-to-connect-install-express.md) nevyhovuje nasazení nebo topologii.
 
 Před zahájením instalace Azure AD Connect nezapomeňte [stáhnout Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) a provést požadovanou přípravu popsanou v tématu [Azure AD Connect: Hardware a nezbytné předpoklady](how-to-connect-install-prerequisites.md). Taky se ujistěte, jestli máte požadované účty, které jsou popsané v tématu [Účty a oprávnění Azure AD Connect](reference-connect-accounts-permissions.md).
 
-Pokud vlastní nastavení neodpovídá vaší topologii, například když chcete upgradovat DirSync, seznamte se s dalšími scénáři v související dokumentaci.
-
 ## <a name="custom-settings-installation-of-azure-ad-connect"></a>Instalace Azure AD Connect s vlastním nastavením
+
 ### <a name="express-settings"></a>Expresní nastavení
-Na této stránce kliknutím na **Přizpůsobit** spustíte instalaci s vlastním nastavením.
+Na této stránce kliknutím na **Přizpůsobit** spustíte instalaci s vlastním nastavením.  Zbývající část tohoto dokumentu vás provede různými obrazovkami průvodce pro vlastní instalaci.  Pomocí níže uvedených odkazů můžete rychle přejít na informace pro konkrétní obrazovku průvodce.
+
+- [Instalace požadovaných součástí](#install-required-components)
+- [Přihlášení uživatele](#user-sign-in)
+- [Připojení k Azure AD](#connect-to-azure-ad)
+- [Stránky v části Synchronizace](#pages-under-the-sync-section)
 
 ### <a name="install-required-components"></a>Instalace požadovaných součástí
-Při instalaci služeb synchronizace můžete nechat volitelnou konfiguraci nezaškrtnutou a Azure AD Connect nastaví všechno automaticky. Nastaví instanci SQL Server 2012 Express LocalDB, vytvoří příslušné skupiny a přiřadí oprávnění. Pokud chcete změnit výchozí nastavení, následující tabulka vás seznámí s volitelnými možnostmi konfigurace, které jsou dostupné.
+Při instalaci služeb synchronizace můžete nechat volitelnou konfiguraci nezaškrtnutou a Azure AD Connect nastaví všechno automaticky. Nastaví SQL Server instanci LocalDB 2012 Express, vytvoří příslušné skupiny a přiřadí oprávnění. Pokud chcete změnit výchozí hodnoty, můžete to provést zaškrtnutím příslušných políček.  Následující tabulka obsahuje souhrn těchto možností a odkazy na Další informace. 
 
 ![Požadované součásti](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
 | Volitelná konfigurace | Popis |
 | --- | --- |
+|Zadat vlastní umístění instalace| Umožňuje změnit výchozí instalační cestu pro Azure AD Connect.|
 | Použít existující server SQL Server |Umožňuje zadat název serveru SQL Server a název instance. Tuto možnost zvolte, pokud už máte databázový server, který chcete použít. Pokud SQL Server nemá povoleno procházení, zadejte do položky **Název instance** požadovaný název instance, za nímž následuje čárka a číslo portu.  Pak zadejte název databáze Azure AD Connect.  Vaše oprávnění SQL určují, jestli se vytvoří nová databáze nebo že správce SQL musí databázi vytvořit předem.  Pokud máte oprávnění SA SQL, podívejte [se, jak nainstalovat pomocí existující databáze](how-to-connect-install-existing-database.md).  Pokud máte delegovaná oprávnění (DBO), přečtěte si téma [instalace Azure AD Connect s oprávněními delegovaného správce SQL](how-to-connect-install-sql-delegation.md). |
 | Použít existující účet služby |Ve výchozím nastavení použije Azure AD Connect virtuální účet služby, který můžou služby synchronizace používat. Pokud používáte vzdálený server SQL nebo používáte proxy server vyžadující ověření, potřebujete mít **účet spravované služby** nebo účet služby v dané doméně a znát heslo. V těchto případech zadejte účet, který chcete použít. Ujistěte se, jestli uživatel, který provádí instalaci, je SA v SQL, aby bylo možné vytvořit přihlašovací jméno pro účet služby.  Viz [Azure AD Connect účty a oprávnění](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>S nejnovějším sestavením teď může databáze vzdáleně zřizovat správce SQL a pak je instalovat správce služby Azure AD Connect s oprávněními vlastníka databáze.  Další informace najdete v tématu [Instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL](how-to-connect-install-sql-delegation.md).|
 | Zadat vlastní skupiny pro synchronizaci |Ve výchozím nastavení vytvoří Azure AD Connect při instalaci služeb synchronizace čtyři skupiny, které jsou místní pro server. Jde o tyto skupiny: skupina Administrators, skupina Operators, skupina Browse a skupina Password Reset. Tady můžete zadat vlastní skupiny. Skupiny musí být místní na serveru a nemůžou být umístěny v doméně. |
+|Importovat nastavení synchronizace (Preview)|Umožňuje importovat nastavení z jiných verzí Azure AD Connect.  Další informace najdete v tématu [Import a export nastavení konfigurace Azure AD Connect](how-to-connect-import-export-config.md).|
 
 ### <a name="user-sign-in"></a>Přihlášení uživatele
 Po instalaci požadovaných součástí budete vyzváni, abyste vybrali metodu jednotného přihlašování uživatelů. Následující tabulka obsahuje stručný popis dostupných možností. Úplný popis metod přihlášení najdete v tématu [Přihlášení uživatele](plan-connect-user-signin.md).
@@ -167,7 +173,7 @@ Na této obrazovce můžete vybrat volitelné funkce pro konkrétní scénáře.
 >
 >Nejnovější verzi služby Azure AD Connect si můžete stáhnout po kliknutí [sem](https://www.microsoft.com/download/details.aspx?id=47594).
 
-![Volitelné funkce](./media/how-to-connect-install-custom/optional2.png)
+ ![Volitelné funkce](./media/how-to-connect-install-custom/optional2a.png)
 
 > [!WARNING]
 > Pokud máte aktuálně aktivní nástroj DirSync nebo Azure AD Sync, neaktivujte žádnou z funkcí zpětného zápisu v Azure AD Connect.
@@ -388,7 +394,7 @@ Pokud chcete ověřit, že je kompletní ověřování úspěšné, měli byste 
 * Ověřte, že se můžete přihlásit ze zařízení z extranetu. Na domácím počítači nebo na mobilním zařízení se připojte k https://myapps.microsoft.com a zadejte přihlašovací údaje.
 * Ověřte přihlášení plně funkčního klienta. Připojte se k https://testconnectivity.microsoft.com, vyberte kartu **Office 365** a vyberte možnost **Test jednotného přihlašování Office 365**.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 Následující část popisuje řešení potíží a obsahuje informace, které můžete využít, pokud narazíte na problém s instalací Azure AD Connect.
 
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>„Databáze ADSync již obsahuje data a není možné ji přepsat.“

@@ -12,19 +12,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: 42326247117c0710c93b45c896bb6e7cb3a8120f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444383"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577505"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurace skupiny převzetí služeb při selhání pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 V tomto tématu se naučíte, jak nakonfigurovat [skupinu automatického převzetí služeb při selhání](auto-failover-group-overview.md) pro Azure SQL Database a Azure SQL Managed instance.
 
-## <a name="single-database-in-azure-sql-database"></a>Jedna databáze v Azure SQL Database
+## <a name="single-database"></a>Izolovaná databáze
 
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí Azure Portal nebo PowerShellu.
 
@@ -192,7 +192,7 @@ Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
 > [!IMPORTANT]
 > Pokud potřebujete sekundární databázi odstranit, odeberte ji ze skupiny převzetí služeb při selhání před jejím odstraněním. Odstranění sekundární databáze před jejím odebráním ze skupiny převzetí služeb při selhání může způsobit nepředvídatelné chování.
 
-## <a name="elastic-pools-in-azure-sql-database"></a>Elastické fondy v Azure SQL Database
+## <a name="elastic-pool"></a>Elastický fond
 
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastický fond pomocí Azure Portal nebo PowerShellu.  
 
@@ -346,7 +346,9 @@ Převzetí služeb při selhání sekundárním serverem:
 
 Vytvořte skupinu převzetí služeb při selhání mezi dvěma spravovanými instancemi ve spravované instanci SQL Azure pomocí Azure Portal nebo PowerShellu.
 
-Budete muset buď nakonfigurovat [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) , nebo vytvořit bránu pro virtuální síť každé spravované instance SQL, připojit tyto dvě brány a pak vytvořit skupinu převzetí služeb při selhání.
+Budete muset buď nakonfigurovat [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) , nebo vytvořit bránu pro virtuální síť každé spravované instance SQL, připojit tyto dvě brány a pak vytvořit skupinu převzetí služeb při selhání. 
+
+Nasaďte spravované instance do [spárovaných oblastí](../../best-practices-availability-paired-regions.md) z důvodů výkonu. Spravované instance nacházející se v geograficky spárované oblasti mají mnohem lepší výkon v porovnání s nespárovanými oblastmi. 
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -360,6 +362,9 @@ Vezměte v úvahu následující požadavky:
 ### <a name="create-primary-virtual-network-gateway"></a>Vytvořit primární bránu virtuální sítě
 
 Pokud jste nenakonfigurovali [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md), můžete vytvořit primární bránu virtuální sítě pomocí Azure Portal nebo PowerShellu.
+
+> [!NOTE]
+> SKU brány má vliv na výkon propustnosti. Tento článek nasadí bránu se základní JEDNOTKou ( `HwGw1` ). Pokud `VpnGw3` chcete dosáhnout vyšší propustnosti, nasaďte vyšší hodnotu SKU (příklad:). Všechny dostupné možnosti najdete v tématu [SKU brány](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) . 
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 

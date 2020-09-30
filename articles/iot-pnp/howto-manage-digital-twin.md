@@ -1,24 +1,24 @@
 ---
 title: Jak spravovat IoT technologie Plug and Play digitálních vláken
-description: Jak spravovat zařízení IoT technologie Plug and Play ve verzi Preview pomocí digitálních vláken API
+description: Jak spravovat zařízení IoT technologie Plug and Play pomocí digitálních vláken API
 author: prashmo
 ms.author: prashmo
 ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f86bf17c34d88fa48df4933e979a590fbc89820b
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: bfbfc6e5e4a0f5721d620c2936e5ea0aa685f8ad
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352162"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577590"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>Správa IoT technologie Plug and Play digitálních vláken
 
 IoT technologie Plug and Play podporuje **získání digitálního** zdvojených operací a **aktualizaci digitálních** vláken, které umožňují spravovat digitální vlákna. Můžete použít buď [rozhraní REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) , nebo jednu ze [sad SDK služby](libraries-sdks.md).
 
-V době psaní je digitální nevlákenná verze API pro verzi Public Preview `2020-05-31-preview` .
+V době psaní je digitální nevlákenná verze rozhraní API `2020-09-30` .
 
 ## <a name="update-a-digital-twin"></a>Aktualizace digitálního vlákna
 
@@ -72,7 +72,7 @@ Můžete například aktualizovat `targetTemperature` vlastnost následujícím 
 ]
 ```
 
-Předchozí aktualizace nastaví požadovanou hodnotu vlastnosti v odpovídající úrovni kořenového adresáře nebo komponenty `$metadata` , jak je znázorněno v následujícím fragmentu kódu. IoT Hub aktualizuje požadovanou verzi vlastnosti:
+Předchozí aktualizace nastaví požadovanou hodnotu vlastnosti v odpovídající úrovni komponenty `$metadata` , jak je znázorněno v následujícím fragmentu kódu. IoT Hub aktualizuje požadovanou verzi vlastnosti:
 
 ```json
 "thermostat1": {
@@ -130,7 +130,7 @@ Následující ukázka opravy JSON ukazuje, jak přidat, nahradit nebo odebrat k
 
 Operace přidat nebo nahradit nastaví požadovanou hodnotu vlastnosti. Zařízení může synchronizovat stav a ohlásit aktualizaci hodnoty spolu s `ack` kódem, verzí a popisem.
 
-Odebráním vlastnosti se vymaže požadovaná hodnota vlastnosti, pokud je nastavená. Zařízení pak může tuto vlastnost zastavit a tato vlastnost je odebrána z kořenové úrovně nebo ze součásti. Pokud je tato vlastnost poslední v součásti, je odebrána i tato součást.
+Odebráním vlastnosti se vymaže požadovaná hodnota vlastnosti, pokud je nastavená. Zařízení pak může tuto vlastnost přestat hlásit a ta se odebere z komponenty. Pokud je tato vlastnost poslední v součásti, je odebrána i tato součást.
 
 Následující ukázka opravy JSON ukazuje, jak přidat, nahradit nebo odebrat vlastnost v rámci součásti:
 

@@ -7,22 +7,25 @@ ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d736721e2676a42da90aead3144f8016329f730
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: c82858294054b50d6edae42a3d41e9fcb89ca89d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475494"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577794"
 ---
 # <a name="azure-iot-model-repository"></a>Úložiště modelu Azure IoT
 
 Úložiště modelu Azure IoT umožňuje tvůrcům zařízení spravovat a sdílet modely zařízení IoT technologie Plug and Play. Modely zařízení jsou definice dokumentů JSON LD, které jsou definované pomocí [DTDL (Digital vlákna Modeling Language)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Modely uložené ve službě úložiště modelů se dají sdílet s vývojáři řešení soukromě prostřednictvím řízení přístupu nebo veřejně, aniž by museli k integraci a vývoji cloudového řešení IoT technologie Plug and Play použít jakékoli ověřování.
 
+> [!NOTE]
+> Tvůrci zařízení se můžou rozhodnout implementovat modely IoT technologie Plug and Play zařízení přímo na zařízení, používat moduly nebo v modulu IoT Edge.
+
 K úložišti modelu můžete přistupovat pomocí:
 
 - Portál [Azure IoT model úložiště](https://aka.ms/iotmodelrepo)
 - [REST API úložiště modelu Azure IoT](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)
-- [Příkazy úložiště modelu IoT Azure CLI](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest)
+- [Příkazy úložiště modelu IoT Azure CLI](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest&preserve-view=true)
 
 ## <a name="public-models"></a>Veřejné modely
 
@@ -45,10 +48,10 @@ var httpClient = new HttpClient();
 httpClient.BaseAddress = new Uri("https://repo.azureiotrepository.com");
 
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
+var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-09-30").ConfigureAwait(false);
 ```
 
-Pokud chcete zobrazit veřejný model pomocí rozhraní příkazového řádku, přečtěte si příkaz Azure CLI [Get model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show) .
+Pokud chcete zobrazit veřejný model pomocí rozhraní příkazového řádku, přečtěte si příkaz Azure CLI [Get model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) .
 
 ## <a name="company-models"></a>Modely společnosti
 
@@ -68,7 +71,7 @@ Informace o tom, jak nastavit tenanta Azure AD a jak vytvořit uživatele nebo i
 
 Následující tabulka shrnuje podporované možnosti v úložišti podnikového modelu a jejich přidružená oprávnění:
 
-| Schopnost  | Oprávnění| Popis|
+| Schopnost  | Oprávnění| Description|
 |-------------|-----------|------------|
 |Čtení modelů|Čtení modelů|Ve výchozím nastavení mohou všichni uživatelé v tenantovi společnosti zobrazit své firemní modely. Kromě toho může uživatel zobrazit také soukromé modely, které jim sdílely jiné společnosti.|
 |Správa přístupu|Správa přístupu|Správa přiřazení role uživatele (přidání nebo odebrání) pro ostatní uživatele v organizaci.|
@@ -115,10 +118,10 @@ Chcete-li zobrazit společnost nebo sdílený model pomocí REST API, přečtět
 
 ```csharp
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
+var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-09-30").ConfigureAwait(false);
 ```
 
-Postup zobrazení modelu společnosti nebo sdíleného modelu pomocí rozhraní příkazového řádku najdete v příkazu Azure CLI [Get model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show) .
+Postup zobrazení modelu společnosti nebo sdíleného modelu pomocí rozhraní příkazového řádku najdete v příkazu Azure CLI [Get model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) .
 
 ### <a name="manage-roles"></a>Správa rolí
 
@@ -161,10 +164,10 @@ Pokud chcete nahrát model pomocí REST API, přečtěte si téma Vytvoření ro
 ```csharp
 var httpContent = new StringContent(jsonLdModel, Encoding.UTF8, "application/json");
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-05-01-preview", httpContent).ConfigureAwait(false);
+var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-09-30", httpContent).ConfigureAwait(false);
 ```
 
-Postup nahrání modelu pomocí rozhraní příkazového řádku najdete v tématu příkaz Azure CLI [Create a model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create) .
+Postup nahrání modelu pomocí rozhraní příkazového řádku najdete v tématu příkaz Azure CLI [Create a model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create&preserve-view=true) .
 
 ### <a name="publish-a-model"></a>Publikování modelu
 
@@ -189,7 +192,10 @@ Publikování modelu pomocí portálu:
 
 Postup publikování modelu pomocí REST API naleznete v dokumentaci k [publikování modelu](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdateasync/createorupdateasync) REST API. Zadejte parametr řetězce dotazu `update-metadata=true` pro publikování modelu pomocí REST API. Informace o tom, jak předat autorizační hlavičku JWT v žádosti HTTP, najdete v tématu [předání tokenu zabezpečení při přístupu k podnikovým modelům pomocí REST API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api) .
 
-Pokud chcete publikovat model pomocí rozhraní příkazového řádku, přečtěte si příkaz Azure CLI [publikování modelu](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-publish) .
+Pokud chcete publikovat model pomocí rozhraní příkazového řádku, přečtěte si příkaz Azure CLI [publikování modelu](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-publish&preserve-view=true) .
+
+> [!NOTE]
+> Než spustíte testy certifikace, musí být modely publikované v úložišti modelu. Další informace najdete v tématu [jak certifikovat technologie Plug and Play zařízení IoT](howto-certify-device.md).
 
 ### <a name="share-a-model"></a>Sdílení modelu
 

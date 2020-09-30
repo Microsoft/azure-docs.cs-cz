@@ -1,77 +1,63 @@
 ---
-title: Připojení technologie Plug and Play IoT Preview ukázka kódu zařízení v C# k IoT Hub | Microsoft Docs
-description: Sestavujte a spouštějte ukázkový kód zařízení ve Windows ve verzi Preview technologie Plug and Play, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
+title: Připojte si ukázkový kód zařízení v jazyce C# technologie Plug and Play k IoT Hub | Microsoft Docs
+description: Sestavte a spouštějte ukázkový kód zařízení technologie Plug and Play IoT v systému Windows, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 015e20fa975563fee8ac2d61f9bad1f9f03738ce
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d1deac1c7932a8f3cec06d9c264ba401f7f1341d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352900"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577029"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-windows-to-iot-hub-c"></a>Rychlý Start: připojení ukázkové aplikace IoT technologie Plug and Play ve verzi Preview, která běží na Windows k IoT Hub (C#)
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-windows-to-iot-hub-c"></a>Rychlý Start: připojení ukázkové aplikace IoT technologie Plug and Play zařízení běžící v systému Windows k IoT Hub (C#)
 
 [!INCLUDE [iot-pnp-quickstarts-device-selector.md](../../includes/iot-pnp-quickstarts-device-selector.md)]
 
 V tomto rychlém startu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení, jak ji připojit k centru IoT a použít nástroj Azure IoT Explorer k zobrazení telemetrie, kterou posílá. Ukázková aplikace je napsaná v CSharp a je obsažená v sadě SDK pro zařízení Azure IoT pro jazyk C#. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu ve Windows nainstalujte do svého místního prostředí Windows následující software:
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
+
+K dokončení tohoto rychlého startu ve Windows potřebujete na svém vývojovém počítači nainstalovaný následující software:
 
 * [Visual Studio (komunita, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/).
 * [Git](https://git-scm.com/download/).
-* [Cmake](https://cmake.org/download/).
-
-### <a name="azure-iot-explorer"></a>Průzkumník Azure IoT
-
-Pokud chcete s ukázkovým zařízením pracovat v druhé části tohoto rychlého startu, použijte nástroj **Azure IoT Explorer** . [Stáhněte a nainstalujte si nejnovější verzi Azure IoT Exploreru](./howto-use-iot-explorer.md) pro váš operační systém.
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-Spuštěním následujícího příkazu Získejte _připojovací řetězec služby IoT Hub_ pro vaše centrum. Poznamenejte si tento připojovací řetězec, budete ho používat později v tomto rychlém startu:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> Připojovací řetězec služby IoT Hub můžete najít také pomocí nástroje Azure IoT Explorer.
-
-Spuštěním následujícího příkazu Získejte _připojovací řetězec zařízení_ pro zařízení, které jste přidali do centra. Poznamenejte si tento připojovací řetězec, budete ho používat později v tomto rychlém startu:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
 
 ## <a name="download-the-code"></a>Stáhněte si kód
 
 V tomto rychlém startu připravíte vývojové prostředí, které můžete použít k klonování a sestavení sady SDK pro Azure IoT Hub zařízení v C#.
 
-Otevřete příkazový řádek v adresáři dle vašeho výběru. Spusťte následující příkaz, který naklonuje úložiště GitHubu do [knihovny Azure IoT C# SDK a knihovny](https://github.com/Azure/azure-iot-sdk-csharp) do tohoto umístění:
+Otevřete příkazový řádek ve složce podle vašeho výběru. Spuštěním následujícího příkazu naklonujte [Microsoft Azure ukázky IoT pro](https://github.com/Azure-Samples/azure-iot-samples-csharp) úložiště GitHubu .NET do tohoto umístění:
 
 ```cmd
-git clone https://github.com/Azure/azure-iot-sdk-csharp.git
+git clone  https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 ```
 
 ## <a name="build-the-code"></a>Sestavení kódu
 
-Otevřete soubor projektu *Azure-IoT-SDK-CSharp/iothub/Device/Samples/PnpDeviceSamples/termostat/termostat. csproj* v aplikaci Visual Studio 2019.
+Nyní můžete vytvořit ukázku v aplikaci Visual Studio a spustit ji v režimu ladění.
+
+1. Otevřete soubor projektu *Azure-IoT-Samples-csharp\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* v aplikaci Visual Studio 2019.
+
+1. V aplikaci Visual Studio přejděte na **Vlastnosti projektu > termostatu > ladit**. Pak do projektu přidejte následující proměnné prostředí:
+
+    | Name | Hodnota |
+    | ---- | ----- |
+    | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
+    | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
+    | IOTHUB_DEVICE_DPS_ID_SCOPE | Hodnota, na kterou jste si poznamenali, když jste [nastavili prostředí](set-up-environment.md) |
+    | IOTHUB_DEVICE_DPS_DEVICE_ID | Moje zařízení – PnP-Device |
+    | IOTHUB_DEVICE_DPS_DEVICE_KEY | Hodnota, na kterou jste si poznamenali, když jste [nastavili prostředí](set-up-environment.md) |
 
 Nyní můžete vytvořit ukázku v aplikaci Visual Studio a spustit ji v režimu ladění.
 
 ## <a name="run-the-device-sample"></a>Spuštění ukázky zařízení
-
-Vytvořte proměnnou prostředí s názvem **IOTHUB_DEVICE_CONNECTION_STRING** pro uložení připojovacího řetězce zařízení, který jste si poznamenali dříve.
 
 Chcete-li trasovat provádění kódu v aplikaci Visual Studio ve Windows, přidejte do `main` funkce v souboru program.cs bod přerušení.
 
@@ -121,8 +107,6 @@ using Newtonsoft.Json;
 
 DateTime since = JsonConvert.DeserializeObject<DateTime>(request.DataAsJson);
 ```
-
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

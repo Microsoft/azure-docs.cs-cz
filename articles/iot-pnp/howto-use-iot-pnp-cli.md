@@ -1,5 +1,5 @@
 ---
-title: Použití rozšíření Azure IoT pro Azure CLI k interakci se zařízeními IoT technologie Plug and Play Preview | Microsoft Docs
+title: Použití rozšíření Azure IoT pro Azure CLI k interakci se zařízeními IoT technologie Plug and Play | Microsoft Docs
 description: Nainstalujte rozšíření Azure IoT pro Azure CLI a použijte ho k interakci se zařízeními IoT technologie Plug and Play připojenými ke službě IoT Hub.
 author: dominicbetts
 ms.author: dobett
@@ -7,18 +7,18 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dadb1f044547acd6e5f0d274143123e89d7dae46
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 680cd4ef4f73c63850a2137b344fd0af6b27c673
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475477"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577454"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Instalace a použití rozšíření Azure IoT pro rozhraní příkazového řádku Azure
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) je open source nástroj příkazového řádku pro různé platformy, který slouží ke správě prostředků Azure, jako je IoT Hub. Rozhraní příkazového řádku Azure je dostupné v systémech Windows, Linux a macOS. Rozhraní příkazového řádku Azure umožňuje spravovat prostředky Azure IoT Hub, instance služby Device Provisioning a propojená centra bez nutnosti instalovat jakákoli rozšíření.
+[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) je open source nástroj příkazového řádku pro různé platformy, který slouží ke správě prostředků Azure, jako je IoT Hub. Rozhraní příkazového řádku Azure je dostupné v systémech Windows, Linux a macOS. Rozhraní příkazového řádku Azure umožňuje spravovat prostředky Azure IoT Hub, instance služby Device Provisioning a propojená centra bez nutnosti instalovat jakákoli rozšíření.
 
-Rozšíření Azure IoT pro Azure CLI je nástroj příkazového řádku pro interakci s a testování zařízení IoT technologie Plug and Play ve verzi Preview. Rozšíření můžete použít k těmto akcím:
+Rozšíření Azure IoT pro Azure CLI je nástroj příkazového řádku pro interakci s a testování zařízení IoT technologie Plug and Play. Rozšíření můžete použít k těmto akcím:
 
 - Připojte se k zařízení.
 - Podívejte se na telemetrii, kterou zařízení odesílá.
@@ -34,11 +34,11 @@ V tomto článku se dozvíte, jak:
 
 ### <a name="step-1---install-the-azure-cli"></a>Krok 1 – instalace rozhraní příkazového řádku Azure
 
-Podle [pokynů k instalaci](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nastavte Azure CLI ve vašem prostředí. Pro dosažení optimálního prostředí by verze Azure CLI měla být verze 2.9.1 nebo vyšší. Ke kontrole použijte příkaz `az -–version`.
+Podle [pokynů k instalaci](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) nastavte Azure CLI ve vašem prostředí. Pro dosažení optimálního prostředí by verze Azure CLI měla být verze 2.9.1 nebo vyšší. Ke kontrole použijte příkaz `az -–version`.
 
 ### <a name="step-2---install-iot-extension"></a>Krok 2 – instalace rozšíření IoT
 
-Soubor [Readme rozšíření IoT](https://github.com/Azure/azure-iot-cli-extension) obsahuje popis několika způsobů instalace rozšíření. Nejjednodušším způsobem je spustit příkaz `az extension add --name azure-iot`. Po instalaci můžete pomocí příkazu `az extension list` ověřit aktuálně nainstalovaná rozšíření nebo pomocí příkazu `az extension show --name azure-iot` zobrazit podrobnosti o rozšíření IoT. V době psaní je číslo verze rozšíření `0.9.7` .
+Soubor [Readme rozšíření IoT](https://github.com/Azure/azure-iot-cli-extension) obsahuje popis několika způsobů instalace rozšíření. Nejjednodušším způsobem je spustit příkaz `az extension add --name azure-iot`. Po instalaci můžete pomocí příkazu `az extension list` ověřit aktuálně nainstalovaná rozšíření nebo pomocí příkazu `az extension show --name azure-iot` zobrazit podrobnosti o rozšíření IoT. V době psaní je číslo verze rozšíření `0.10.0` .
 
 K odebrání rozšíření můžete použít příkaz `az extension remove --name azure-iot`.
 
@@ -54,7 +54,7 @@ az login
 
 Pokud chcete používat rozšíření Azure IoT pro rozhraní příkazového řádku Azure CLI, budete potřebovat:
 
-- Azure IoT Hub. Existuje mnoho způsobů, jak přidat službu IoT Hub k předplatnému Azure, jako je například [vytvoření centra IoT pomocí Azure CLI](../iot-hub/iot-hub-create-using-cli.md). Abyste mohli spouštět příkazy rozšíření Azure IoT, potřebujete připojovací řetězec služby IoT Hub. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Azure IoT Hub. Existuje mnoho způsobů, jak přidat službu IoT Hub k předplatnému Azure, jako je například [vytvoření centra IoT pomocí Azure CLI](../iot-hub/iot-hub-create-using-cli.md). Abyste mohli spouštět příkazy rozšíření Azure IoT, potřebujete připojovací řetězec služby IoT Hub. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - Zařízení zaregistrované ve službě IoT Hub. K registraci zařízení můžete použít následující příkaz rozhraní příkazového řádku Azure, nezapomeňte nahradit `{YourIoTHubName}` `{YourDeviceID}` zástupné symboly a pomocí vašich hodnot:
 

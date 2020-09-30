@@ -6,19 +6,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 09/04/2020
-ms.openlocfilehash: 565ad4267bcdab095a85ab537c10728981eadb0d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 09/29/2020
+ms.openlocfilehash: 2dfdfaae2c07adc7d9193ffb00f8549bd4090a6e
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484149"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578457"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Průvodce publikováním podle typu nabídky
 
 Tento článek popisuje typy nabídek, které jsou k dispozici na komerčním webu Marketplace. *Typ nabídky* definuje strukturu nabídky, která zahrnuje metadata, artefakty a další obsah prezentované na komerčním webu Marketplace.
 
-Až se [rozhodnete pro možnost publikování](determine-your-listing-type.md), musíte před zahájením vytváření nabídky zvolit typ nabídky. Typ nabídky bude odpovídat typu řešení, aplikace nebo nabídky služeb, které chcete publikovat, a také jeho zarovnání na produkty a služby společnosti Microsoft.
+Až se [rozhodnete pro možnost publikování](determine-your-listing-type.md), musíte před zahájením vytváření nabídky v partnerském centru zvolit typ nabídky. Typ nabídky bude odpovídat typu řešení, aplikace nebo nabídky služeb, které chcete publikovat, a také jeho zarovnání na produkty a služby společnosti Microsoft.
 
 Jeden typ nabídky můžete nakonfigurovat různými způsoby, jak povolit různé možnosti publikování, možnosti výpisu, zřizování nebo ceny. Možnost publikování a konfigurace typu nabídky také odpovídají nárokům na nabídku a technické požadavky.
 
@@ -26,18 +26,19 @@ Před vytvořením vaší nabídky si přečtěte požadavky na online obchod a 
 
 ## <a name="list-of-offer-types"></a>Seznam typů nabídek
 
-Typy nabídek Azure Marketplace jsou uvedeny v následující tabulce.
+V následující tabulce jsou uvedeny typy nabídek z komerčního tržiště v partnerském centru.
 
 | **Typ nabídky**    | **Popis**  |
 | :------------------- | :-------------------|
-| [**Virtuální počítače**](./marketplace-virtual-machines.md) | Typ nabídky virtuálního počítače použijte, když nasadíte virtuální zařízení do předplatného přidruženého k vašemu zákazníkovi. |
-| [**Šablony řešení**](./marketplace-solution-templates.md) | Použijte typ nabídky šablona řešení (označovaný také jako aplikace Azure), pokud vaše řešení vyžaduje další automatizaci nasazení a konfigurace nad rámec jednoho virtuálního počítače. Šablony řešení můžou využívat mnoho různých druhů prostředků Azure, mimo jiné jenom virtuální počítače.  |
-| [**Spravované aplikace**](./marketplace-managed-apps.md) | Použití aplikace Azure: typ nabídky spravované aplikace, pokud jsou potřeba následující podmínky: <br> <ul> <li> K nasazení řešení založeného na předplatném pro zákazníka můžete použít buď virtuální počítač, nebo celé řešení založené na IaaS. </li> <li>Vy nebo váš zákazník požadujete, aby bylo řešení spravované partnerem. </li> <ul> |
-| [**SaaS**](plan-saas-offer.md) | Pomocí typu nabídky software jako služba (SaaS) můžete zákazníkům umožnit, aby si koupili své technické řešení založené na SaaS jako předplatné. |
-| [**Nabídky kontejnerů**](./marketplace-containers.md) | Typ nabídky kontejneru použijte, pokud je vaše řešení image kontejneru Docker zřízená jako Kubernetes Azure Container Service. |
-| [**Moduly Azure IoT Edge**](./iot-edge-module.md) | Azure IoT Edge moduly jsou nejmenší výpočetní jednotky spravované IoT Edge a můžou obsahovat služby Microsoftu (například Azure Stream Analytics), služby třetích stran nebo vlastní kód specifický pro řešení. |
-| [**Konzultační služby**](./consulting-services.md) | Konzultační služby usnadňují propojení zákazníků se službami pro podporu a rozšiřování jejich používání služeb Azure, Dynamics 365 nebo Power Suite.|
-| [**Microsoft 365, Dynamics 365 a Power BI**](./appsource-offer-publishing-guide.md) | Můžete publikovat nabídky AppSource, které sestavují nebo rozšířily Dynamics 365, Microsoft 365, Power BI a Power Apps.|
+| [Aplikace Azure: **spravovaná aplikace**](./marketplace-managed-apps.md) | Použijte aplikaci Azure: typ nabídky spravované aplikace, pokud jsou potřeba následující podmínky: <br> <ul> <li> K nasazení řešení založeného na předplatném pro zákazníka můžete použít buď virtuální počítač, nebo celé řešení založené na IaaS. </li> <li>Vy nebo váš zákazník požadujete, aby bylo řešení spravované partnerem. </li> <ul> |
+| [Aplikace Azure: **Šablona řešení**](./marketplace-solution-templates.md) | Použijte nabídku aplikace Azure: typ nabídky šablona řešení, když vaše řešení vyžaduje další automatizaci nasazení a konfigurace než jeden virtuální počítač. Šablony řešení můžou využívat mnoho různých druhů prostředků Azure, mimo jiné jenom virtuální počítače.  |
+  | [**Kontejner Azure**](./marketplace-containers.md) | Pokud je vaše řešení image kontejneru Docker zřízená jako Kubernetes Azure Container Service, použijte typ nabídky kontejneru Azure. |
+| [**Virtuální počítač Azure**](./marketplace-virtual-machines.md) | Typ nabídky virtuálního počítače použijte, když nasadíte virtuální zařízení do předplatného přidruženého k vašemu zákazníkovi. |
+| [**Konzultační služba**](./consulting-services.md) | Konzultační služby usnadňují propojení zákazníků se službami pro podporu a rozšiřování jejich používání služeb Azure, Dynamics 365 nebo Power Suite.|
+| [**Dynamics 365**](./appsource-offer-publishing-guide.md) | Můžete publikovat nabídky AppSource, které sestavují nebo rozšířily Dynamics 365 Business Central, Dynamics 365 Customer Engagement, Power Apps a finance a provozní aplikace.|
+| [**Modul IoT Edge**](./iot-edge-module.md) | Azure IoT Edge moduly jsou nejmenší výpočetní jednotky spravované IoT Edge a můžou obsahovat služby Microsoftu (například Azure Stream Analytics), služby třetích stran nebo vlastní kód specifický pro řešení. |
+| [**Microsoft 365 aplikace Power BI <br/>**](./appsource-offer-publishing-guide.md) | Můžete publikovat AppSource nabídky, které sestaví nebo rozšířily Power BI a Microsoft 365.|
+| [**Software jako služba**](plan-saas-offer.md) | Pomocí typu nabídky software jako služba (SaaS) můžete zákazníkům umožnit, aby si koupili své technické řešení založené na SaaS jako předplatné. |
 | [**Integrovaná řešení**](./integrated-solutions-for-publishers.md) | Můžete publikovat integrovaná řešení zarovnaná v oboru, která kombinují technologie a služby jako jednu nabídku.|
 
 Informace o požadavcích jednotného přihlašování pomocí výpisu možností a typů nabídek najdete v tématu [**požadavky služby Azure AD**](./enable-appsource-marketplace-using-azure-ad.md).

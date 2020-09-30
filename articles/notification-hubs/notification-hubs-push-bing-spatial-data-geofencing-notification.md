@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5888eeea98a80eeacb97e625d199a3b1912d1943
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 51ad23e67a77c28d0ad8a147168a0094f5de1796
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015131"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577998"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Kurz: odeslání nabízených oznámení na základě polohy pomocí Notification Hubs a prostorových dat Bingu
 
@@ -37,7 +37,7 @@ V tomto kurzu provedete následující kroky:
 > * Nastavení back-endu
 > * Test nabízených oznámení v aplikaci pro Univerzální platformu Windows (UPW)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si  [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Visual Studio 2015 Update 1](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) nebo novější ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409))

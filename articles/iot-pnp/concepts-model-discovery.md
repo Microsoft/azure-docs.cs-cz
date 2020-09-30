@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9752589c8863cc911369225d268035d9f61c0273
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 165f83e0f021d23c26333a294ffe992838bda6b0
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032023"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577709"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>Použití modelů IoT technologie Plug and Play v řešení IoT
 
@@ -26,7 +26,7 @@ Existují dvě široké kategorie řešení IoT:
 
 Použití modelu IoT technologie Plug and Play, řešení IoT:
 
-1. Určuje ID modelu implementovaného zařízením IoT technologie Plug and Play připojeným k řešení.
+1. Určuje ID modelu implementovaného modulem IoT technologie Plug and Play zařízení, modulem nebo IoT Edge připojeným k řešení.
 
 1. Pomocí ID modelu načte definici modelu připojeného zařízení z úložiště modelu nebo vlastního úložiště.
 
@@ -40,7 +40,10 @@ IoT Hub upozorní řešení s ID modelu zařízení jako součást toku připoje
 
 ### <a name="get-device-twin-api"></a>Získat rozhraní API pro vyzdvojené zařízení
 
-Řešení může použít rozhraní API pro [získání](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) nepoužité k načtení ID modelu zařízení IoT technologie Plug and Play.
+Řešení může použít rozhraní API pro [získání](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable&preserve-view=true) nepoužité k načtení ID modelu zařízení IoT technologie Plug and Play.
+
+> [!TIP]
+> Pro moduly a moduly IoT Edge použijte [ModuleClient. getvláken](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?view=azure-java-stable&preserve-view=true).
 
 V následujícím fragmentu dvojitá reakce zařízení `modelId` obsahuje ID modelu technologie Plug and Play zařízení IoT:
 
