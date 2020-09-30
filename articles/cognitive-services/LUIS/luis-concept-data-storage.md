@@ -3,20 +3,18 @@ title: Úložiště dat – LUIS
 titleSuffix: Azure Cognitive Services
 description: LUIS ukládá data zašifrovaná v úložišti dat Azure, která odpovídají oblasti určené klíčem.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.author: diberry
-ms.openlocfilehash: e3028a9f046edb4013d8a2d6ec88d8c3cb2ca489
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: b74621f357613bc60457ab4846b58f6f85009401
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84691709"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541879"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Ukládání a odebírání dat v Language Understanding (LUIS) Cognitive Services
 LUIS ukládá data zašifrovaná v úložišti dat Azure, která odpovídají oblasti určené klíčem. Tato data jsou uložena po dobu 30 dnů. 
@@ -24,7 +22,7 @@ LUIS ukládá data zašifrovaná v úložišti dat Azure, která odpovídají ob
 ## <a name="export-and-delete-app"></a>Exportovat a odstranit aplikaci
 Uživatelé mají plnou kontrolu nad [exportem](luis-how-to-start-new-app.md#export-app) a [odstraněním](luis-how-to-start-new-app.md#delete-app) aplikace. 
 
-## <a name="utterances"></a>Projevy
+## <a name="utterances"></a>Výroky
 
 Projevy může být uložená na dvou různých místech. 
 

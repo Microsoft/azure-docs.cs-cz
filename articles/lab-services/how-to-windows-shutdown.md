@@ -2,13 +2,13 @@
 title: Příručka pro řízení chování při vypínání Windows v Azure Lab Services | Microsoft Docs
 description: Postup automatického vypnutí nečinného virtuálního počítače s Windows a odebrání příkazu pro vypnutí systému Windows.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 3c20bc2bb79faf53c4f3fbd113c18c5c6d923e59
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/29/2020
+ms.openlocfilehash: c6021131787dde4fe23ec4caad107bda2e20158a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334017"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541556"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>Průvodce řízením chování při vypínání Windows
 
@@ -31,50 +31,6 @@ V této příručce najdete kroky pro automatické vypnutí nečinného virtuál
 
 > [!NOTE]
 > Virtuální počítač se také může nečekaně odečíst od kvóty, když Student spustí svůj virtuální počítač, ale nikdy se k němu nepřipojí pomocí protokolu RDP.  Tato *Příručka aktuálně tento scénář neřeší.*  Místo toho by se měli po jeho spuštění na studenty připojit ke svému virtuálnímu počítači hned pomocí protokolu RDP; nebo by měl virtuální počítač zastavit.
-
-## <a name="automatic-rdp-disconnect-and-shutdown-for-idle-vm"></a>Automatické odpojení a vypnutí protokolu RDP pro nečinný virtuální počítač
-
-Systém Windows poskytuje **místní nastavení zásady skupiny** , pomocí kterých můžete nastavit časový limit pro automatické odpojení relace RDP, pokud se nejedná o nečinný.  V případě, že se *nejedná o žádný vstup* mouse\keyboard, je zjištěno, že relace je nečinná.  Jakékoli dlouhodobě běžící aktivity, které nezahrnují vstup mouse\keyboard, způsobí, že se virtuální počítač nachází ve stavu nečinnosti.  To zahrnuje spuštění dlouhého dotazu, streamování videa, kompilování atd.  V závislosti na potřebách vaší třídy se můžete rozhodnout nastavit časový limit nečinnosti, aby byl dostatečně dlouhý pro zpracování těchto typů aktivit.  V případě potřeby můžete například nastavit časový limit nečinnosti na 1 nebo více hodin.
-
-Toto je činnost studenta při konfiguraci **limitu nečinných relací** v kombinaci s nastavením [**automatického vypnutí při odpojení**](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect) :
- 1. Student se připojí ke svému virtuálnímu počítači s Windows pomocí protokolu RDP.
- 2. Když student opustí otevřené okno RDP a virtuální počítač je nečinný pro zadaný **limit nečinné relace** (například 5 minut), student uvidí následující dialog:
-
-    ![Časový limit nečinnosti – dialogové okno vypršení platnosti](./media/how-to-windows-shutdown/idle-time-expired.png)
-
-1. Pokud student *neklikne* na tlačítko **OK**, jejich relace RDP se automaticky odpojí po 2 minutách.
-2. Jakmile se relace RDP odpojí, jakmile se dosáhne zadaného časového rámce pro nastavení **Automatické vypnutí při odpojení** , virtuální počítač se automaticky vypíná Azure Lab Services.
-
-### <a name="set-rdp-idle-session-time-limit-on-the-template-vm"></a>Nastavení časového limitu nečinné relace protokolu RDP na virtuálním počítači šablony
-
-Pokud chcete nastavit časový limit nečinnosti relace RDP, můžete se připojit k virtuálnímu počítači šablony a spustit níže uvedený skript PowerShellu.
-
-```powershell
-# The MaxIdleTime is in milliseconds; by default, this script sets MaxIdleTime to 15 minutes.
-$maxIdleTime = 15 * 60 * 1000
-
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name "MaxIdleTime" -Value $maxIdleTime -Force
-```
-Nebo se můžete rozhodnout, že budete postupovat podle těchto ručních kroků pomocí šablony VM:
-
-1. Stiskněte klávesu Windows, zadejte **gpedit**a pak vyberte **upravit zásady skupiny (ovládací panely)**.
-
-1. V **části Konfigurace počítače > Šablony pro správu > součásti systému Windows > služba Vzdálená plocha > hostitel relace vzdálené plochy > časový limit relace**.  
-
-    ![Snímek obrazovky, který zobrazuje "Editor místních zásad skupiny" s "časovým limitem relace", který je vybrán.](./media/how-to-windows-shutdown/group-policy-idle.png)
-   
-1. Klikněte pravým tlačítkem na **nastavit časový limit aktivních a nečinných relací vzdálené plochy**a klikněte na **Upravit**.
-
-1. Zadejte následující nastavení a potom klikněte na **OK**:
-   1. Vyberte **Povoleno**.
-   1. V části **Možnosti**zadejte **limit nečinné relace**.
-
-    ![Limit nečinné relace](./media/how-to-windows-shutdown/edit-idle-time-limit.png)
-
-1. Nakonec, pokud chcete toto chování zkombinovat s nastavením **Automatické vypnutí při odpojení** , postupujte podle kroků v článku postup: [Povolení automatického vypnutí virtuálních počítačů při odpojení](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect).
-
-> [!WARNING]
-> Po nakonfigurování tohoto nastavení pomocí PowerShellu pro změnu nastavení registru přímo nebo ručně pomocí editoru Zásady skupiny musíte nejdřív restartovat virtuální počítač, aby se nastavení projevilo.  I když nakonfigurujete nastavení pomocí registru, Editor Zásady skupiny nebude vždycky aktualizovat, aby odrážel změny nastavení registru. nastavení registru se ale pořád projeví podle očekávání a při nečinnosti po dobu, kterou jste zadali, se zobrazí relace RDP odpojená.
 
 ## <a name="remove-windows-shutdown-command-from-start-menu"></a>Odebrat příkaz pro vypnutí Windows z nabídky Start
 

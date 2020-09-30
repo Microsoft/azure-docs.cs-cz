@@ -1,7 +1,7 @@
 ---
 title: DenseNet
 titleSuffix: Azure Machine Learning
-description: Naučte se vytvářet model klasifikace obrázků pomocí algoritmu densenet.
+description: Naučte se vytvářet model klasifikace obrázků pomocí algoritmu DenseNet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: d64933f7b2c8ebc8597b93cbd16b34158f936f96
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 2351012738f4cf5697fb29891c9459e4cc86cd3a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450098"
+ms.locfileid: "91536626"
 ---
 # <a name="densenet"></a>DenseNet
 
@@ -29,19 +29,19 @@ Model můžete proškolit tak, že zadáte model a s popiskem adresář obrázk�
 
 ### <a name="more-about-densenet"></a>Další informace o DenseNet
 
-Další podrobnosti najdete v [hustě propojených konvoluční sítích](https://arxiv.org/abs/1608.06993) .
+Další informace o DenseNet najdete v článku o výzkumném dokumentu, [hustě propojených konvoluční sítích](https://arxiv.org/abs/1608.06993).
 
 ## <a name="how-to-configure-densenet"></a>Jak nakonfigurovat DenseNet
 
 1.  Přidejte modul **DenseNet** do kanálu v návrháři.  
 
-2.  Jako **název modelu**zadejte název určité struktury densenet a můžete vybrat z podporovaných densenet: ' densenet121 ', ' densenet161 ', ' densenet169 ', ' densenet201 '.
+2.  Jako **název modelu**zadejte název určité struktury DenseNet a můžete vybrat z podporovaných DenseNet: ' densenet121 ', ' densenet161 ', ' densenet169 ', ' densenet201 '.
 
 3.  Pro **předvlaky**určete, jestli se má používat model předběžně vyškolený v ImageNet. Pokud je tato možnost vybraná, můžete model vyladit podle vybraného předem připraveného modelu. Pokud je tento výběr nevybraný, můžete vytvářet sestavy od začátku.
 
-4.  V případě **efektivní paměti**určete, jestli se má použít kontrolní bod, což je mnohem víc paměti, ale pomalejší. Další informace naleznete v tématu https://arxiv.org/pdf/1707.06990.pdf.
+4.  V případě **efektivní paměti**určete, jestli se má použít kontrolní bod, což je mnohem víc paměti, ale pomalejší. Další informace najdete v článku o výzkumném dokumentu, který je [efektivní pro paměť DenseNets](https://arxiv.org/pdf/1707.06990.pdf).
 
-5.  Propojte výstup modulu **DenseNet** , školení a sady dat image ověřování v [modelu Pytorch pro analýzu](train-pytorch-model.md). 
+5.  Připojte výstup modulu **DenseNet** , školení a sady dat image ověřování v [modelu Pytorch pro analýzu](train-pytorch-model.md)obrazu. 
 
 6. Odešlete kanál.
 
@@ -56,7 +56,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 | Název             | Rozsah | Typ    | Výchozí     | Popis                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
-| Název modelu       | Všechny   | Mode    | densenet201 | Název určité struktury densenet     |
+| Název modelu       | Všechny   | Mode    | densenet201 | Název určité struktury DenseNet     |
 | Předvlakované       | Všechny   | Logická hodnota | Ano        | Jestli se má používat model předučený na ImageNet |
 | Efektivní paměť | Všechny   | Logická hodnota | Nepravda       | Bez ohledu na to, jestli se má použít kontrolní bod, což je mnohem víc paměti, ale pomalejší |
 
@@ -64,7 +64,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 | Název            | Typ                    | Popis                              |
 | --------------- | ----------------------- | ---------------------------------------- |
-| Nevlakový model | UntrainedModelDirectory | Nevlakový model densenet, který se dá připojit ke Pytorch modelu výuky. |
+| Nevlakový model | UntrainedModelDirectory | Nevlakový model DenseNet, který se dá připojit ke Pytorch modelu výuky. |
 
 ## <a name="next-steps"></a>Další kroky
 

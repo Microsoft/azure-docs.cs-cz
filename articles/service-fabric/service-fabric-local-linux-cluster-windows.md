@@ -1,16 +1,14 @@
 ---
 title: Nastavení clusteru Azure Service Fabric Linux ve Windows
 description: Tento článek popisuje, jak nastavit clustery Service Fabric Linux spuštěné ve vývojových počítačích s Windows. To je užitečné hlavně při vývoji pro různé platformy.
-author: suhuruli
 ms.topic: conceptual
 ms.date: 11/20/2017
-ms.author: suhuruli
-ms.openlocfilehash: 91d055a480748ef012120aac4d329d474491e2c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 83d494d777a4a1e1586707c8848056ca8fe9780a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258579"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537068"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Nastavení clusteru se systémem Linux Service Fabric ve vašem počítači s Windows Developer
 

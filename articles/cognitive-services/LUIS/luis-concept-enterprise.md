@@ -3,20 +3,18 @@ title: Podnikové koncepce – LUIS
 titleSuffix: Azure Cognitive Services
 description: Seznamte se s koncepty návrhu pro rozsáhlé aplikace LUIS nebo více aplikacemi, včetně LUIS a QnA Maker dohromady.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.author: diberry
-ms.openlocfilehash: efef3faf3cc4ff04235254f0ff6538d92a831196
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d8c88883b839ff47ef57a17378f43918e9ecf7e2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221059"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536116"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Podnikové strategie pro aplikaci pro LUIS
 Projděte si tyto strategie návrhu pro podnikovou aplikaci.
@@ -74,7 +72,7 @@ Expediční aplikace má 500 zdrojů odeslání, které odpovídají 500 záměr
 * [Sada robot Framework SDK](https://github.com/Microsoft/botframework)
 * [Kurz pro model odeslání](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)
 * [Rozhraní příkazového řádku pro odesílání](https://github.com/Microsoft/botbuilder-tools)
-* Ukázka robota modelu odeslání – [.NET](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
+* Ukázka robota modelu odeslání – [.NET](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -2,14 +2,14 @@
 title: Použití privátních koncových bodů s účty Azure Batch
 description: Naučte se připojit soukromě k účtu Azure Batch pomocí soukromých koncových bodů.
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0fd16e4e11d0b3f08a7ba0e2f425785e3cce7927
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 7dba3dd1d34421666821c6bc7320ef76ab77bb7f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814106"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542134"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Použití privátních koncových bodů s účty Azure Batch
 
@@ -20,7 +20,7 @@ Pomocí [privátního propojení Azure](../private-link/private-link-overview.md
 Privátní odkaz umožňuje uživatelům přístup k účtu Azure Batch z virtuální sítě nebo z jakékoli partnerské virtuální sítě. Prostředky namapované na soukromé odkazy jsou k dispozici i místně přes privátní partnerský vztah prostřednictvím sítě VPN nebo [Azure ExpressRoute](../expressroute/expressroute-introduction.md). K účtu Azure Batch nakonfigurovanému pomocí privátního propojení se můžete připojit pomocí [metody automatického nebo ručního schválení](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow).
 
 > [!IMPORTANT]
-> Podpora pro privátní připojení v Azure Batch je aktuálně dostupná v následujících oblastech Azure: Střed USA, Střed USA – sever, Střed USA – jih, Středozápadní USA, Východní USA, Východní USA 2, Západní USA, Západní USA 2, Východní Asie, Francie Central, Velká Británie – jih, Severní Evropa, Západní Evropa, Japonsko – východ, Japonsko – západ, Austrálie – východ a všechny US Gov a US DoD oblasti.
+> Podpora pro privátní připojení v Azure Batch je aktuálně dostupná pro všechny veřejné oblasti kromě oblasti Německo – střed a Německo – severovýchod.
 
 Tento článek popisuje kroky pro vytvoření privátního účtu Batch a přístup k němu pomocí privátního koncového bodu.
 
@@ -35,14 +35,14 @@ Pomocí následujícího postupu vytvořte pomocí Azure Portal privátní úče
    :::image type="content" source="media/private-connectivity/private-endpoint-connections.png" alt-text="Připojení privátního koncového bodu":::
 5. V podokně **základy** zadejte nebo vyberte předplatné, skupinu prostředků, název prostředku privátního koncového bodu a podrobnosti oblasti a potom vyberte **Další: prostředek**.
 6. V podokně **prostředek** nastavte **typ prostředku** na **Microsoft.Batch/batchAccounts**. Vyberte účet privátní dávky, ke kterému chcete získat přístup, a potom vyberte **Další: Konfigurace**.
-   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Vytvoření privátního koncového bodu – podokno prostředků":::
+   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Připojení privátního koncového bodu":::
 7. V podokně **Konfigurace** zadejte nebo vyberte tyto informace:
    - **Virtuální síť**: Vyberte svou virtuální síť.
    - **Podsíť**: Vyberte svou podsíť.
    - **Integrace s privátní zónou DNS**: vyberte **Ano**. Abyste mohli soukromě propojit s vaším soukromým koncovým bodem, budete potřebovat záznam DNS. Doporučujeme integrovat privátní koncový bod s privátní zónou DNS. Můžete také použít vlastní servery DNS nebo vytvořit záznamy DNS pomocí hostitelských souborů na virtuálních počítačích.
    - **Privátní DNS zóna**: vyberte privatelink. <region> . batch.azure.com. Privátní zóna DNS je určena automaticky. Nemůžete ho změnit pomocí Azure Portal.
 8. Vyberte **zkontrolovat + vytvořit**a potom počkejte, než Azure ověří vaši konfiguraci.
-9. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
+9. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 Po zřízení privátního koncového bodu můžete k účtu Batch přistupovat z virtuálních počítačů ve stejné virtuální síti pomocí privátního koncového bodu. Postup zobrazení IP adresy z Azure Portal:
 
@@ -50,7 +50,7 @@ Po zřízení privátního koncového bodu můžete k účtu Batch přistupovat 
 2. Vyhledejte privátní koncový bod, který jste vytvořili dříve.
 3. Vyberte kartu **Přehled** a zobrazte tak nastavení DNS a IP adresy.
 
-:::image type="content" source="media/private-connectivity/access-private.png" alt-text="Nastavení DNS privátního koncového bodu a IP adresy":::
+:::image type="content" source="media/private-connectivity/access-private.png" alt-text="Připojení privátního koncového bodu":::
 
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
@@ -106,5 +106,6 @@ Při vytváření privátního účtu Batch mějte na paměti následující:
 ## <a name="next-steps"></a>Další kroky
 
 - Naučte se [vytvářet fondy Batch ve virtuálních sítích](batch-virtual-network.md).
+- Naučte se [vytvářet fondy Batch bez veřejných IP adres](batch-pool-no-public-ip-address.md) .
 - Naučte se [vytvářet fondy Batch se zadanými veřejnými IP adresami](create-pool-public-ip.md).
 - Přečtěte si o [privátních odkazech Azure](../private-link/private-link-overview.md).

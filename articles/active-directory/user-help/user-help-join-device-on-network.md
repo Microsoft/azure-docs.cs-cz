@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 146b867f1075a7eac1b6817f5fc8dbcd7ba04b02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333405"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536966"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Připojte své pracovní zařízení k síti vaší organizace.
 Připojte zařízení s Windows 10 vlastněné do sítě vaší organizace, abyste měli přístup k potenciálně omezeným prostředkům.
@@ -48,7 +48,7 @@ Pokud je vaše zařízení zcela nové a ještě není nastavené, můžete k p�
 
 4. Na svém mobilním zařízení schvalte své zařízení, aby mohl přistupovat k vašemu účtu. 
 
-    ![Obrazovka s mobilním oznámením](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
+    ![Snímek obrazovky s oznámením o zadání hesla](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
 
 5. Dokončete proces OOBE, včetně nastavení nastavení ochrany osobních údajů a nastavení Windows Hello (v případě potřeby).
 
@@ -63,7 +63,7 @@ Můžete se ujistit, že jste připojeni. Prohlédněte si nastavení.
 
 2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že je zobrazený text, který je podobný jako **PŘIPOJENÝ k *\<your_organization>* Azure AD**.
 
-    ![Přístup k pracovní nebo školní obrazovce s připojeným účtem contoso](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
+    ![Snímek obrazovky, který zobrazuje okno přístup do práce nebo do školy se zvoleným účtem "připojené k (vaší organizaci)" Azure AD ".](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
 
 ## <a name="to-join-an-already-configured-windows-10-device"></a>Připojení již nakonfigurovaného zařízení s Windows 10

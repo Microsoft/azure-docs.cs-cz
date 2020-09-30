@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8314fed43c8282c536fc6e95e6c3aa877408b09
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71309520"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542491"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Co jsou akcelerátory řešení Azure IoT?
 
@@ -46,7 +46,7 @@ Pomocí [akcelerátoru řešení propojené továrny](iot-accelerators-connected
 
 Pomocí řídicího panelu propojené továrny můžete monitorovat a spravovat svá průmyslová zařízení:
 
-[![Řídicí panel řešení propojené továrny](./media/about-iot-accelerators/cf-dashboard-inline.png)](./media/about-iot-accelerators/cf-dashboard-expanded.png#lightbox)
+:::image type="content" source="./media/about-iot-accelerators/cf-dashboard-inline.png" alt-text="Snímek obrazovky zobrazující řídicí panel řešení propojené továrny." lightbox="./media/about-iot-accelerators/cf-dashboard-expanded.png":::
 
 ### <a name="predictive-maintenance"></a>Prediktivní údržba
 
@@ -54,7 +54,7 @@ Pomocí [akcelerátoru řešení prediktivní údržby](iot-accelerators-predict
 
 Pomocí řídicího panelu prediktivní údržby můžete zobrazit analýzu prediktivní údržby:
 
-[![Řídicí panel řešení propojené továrny](./media/about-iot-accelerators/pm-dashboard-inline.png)](./media/about-iot-accelerators/pm-dashboard-expanded.png#lightbox)
+:::image type="content" source="./media/about-iot-accelerators/pm-dashboard-inline.png" alt-text="Snímek obrazovky zobrazující řídicí panel řešení propojené továrny." lightbox="./media/about-iot-accelerators/pm-dashboard-expanded.png":::
 
 ### <a name="device-simulation"></a>Simulace zařízení
 

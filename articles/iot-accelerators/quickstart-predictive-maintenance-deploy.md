@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: cecf23d61d6a12c20aa3e64e4ee0ddacddbe7823
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7266f110069155e2a9f7804d53c6e1088768ec8d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "62106809"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541845"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rychlý start: Vyzkoušení cloudového řešení za účelem spuštění analýzy prediktivní údržby na připojených zařízeních
 
@@ -26,7 +26,7 @@ Motory letadel společnosti Fabrikam jsou vybaveny snímači, které monitorují
 
 K dokončení tohoto rychlého startu potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
@@ -52,7 +52,7 @@ Po dokončení nasazení předplatného Azure se na dlaždici řešení zobrazí
 
 Na stránce **Zřízená řešení** klikněte na nový akcelerátor řešení prediktivní údržby.
 
-![Panel řešení](./media/quickstart-predictive-maintenance-deploy/solution.png)
+![Snímek obrazovky zobrazující stránku "zřízená řešení" s zvýrazněným akcelerátorem řešení prediktivní údržby.](./media/quickstart-predictive-maintenance-deploy/solution.png)
 
  Informace o akcelerátoru řešení můžete zobrazit na stránce, která se zobrazí. Zvolením možnosti **Přejít do akcelerátoru řešení** můžete zobrazit akcelerátor řešení prediktivní údržby:
 
@@ -91,4 +91,4 @@ V tomto rychlém startu jste nasadili akcelerátor řešení prediktivní údrž
 Další informace o akcelerátoru řešení a simulovaných leteckých motorech najdete v následujícím článku.
 
 > [!div class="nextstepaction"]
-> [Přehled akcelerátorů řešení prediktivní údržby](iot-accelerators-predictive-walkthrough.md)
+> [Přehled akcelerátoru řešení prediktivní údržby](iot-accelerators-predictive-walkthrough.md)

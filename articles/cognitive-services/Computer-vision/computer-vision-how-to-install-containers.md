@@ -1,7 +1,7 @@
 ---
-title: Instalace a spuštění kontejnerů Docker pro rozhraní Počítačové zpracování obrazu Read API
+title: Nainstalovat čtení kontejnerů Docker pro rozpoznávání OCR z Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Pomocí kontejneru Docker pro rozhraní Počítačové zpracování obrazu Read API můžete detekovat a extrahovat text z imagí místně.
+description: K extrakci textu z obrázků a douments v místním prostředí použijte kontejnery Docker pro rozpoznávání OCR z Počítačové zpracování obrazu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,23 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
-keywords: místní, Docker, kontejner
-ms.openlocfilehash: 17aa0050ed3e2a2f5a2cc83964d032caa4b8c098
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+keywords: místní, OCR, Docker, kontejner
+ms.openlocfilehash: acf6a391965dcba20a2dabc18648076b88c5e7c5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460437"
+ms.locfileid: "91536371"
 ---
-# <a name="install-and-run-docker-containers-for-the-read-api-preview"></a>Instalace a spuštění kontejnerů Docker pro rozhraní API pro čtení (Preview) 
+# <a name="install-read-ocr-docker-containers-preview"></a>Nainstalovat čtení kontejnerů Docker pro optické rozpoznávání znaků (Preview) 
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 
-Kontejnery umožňují spouštět rozhraní API Počítačového zpracování obrazu ve vlastním prostředí. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejner Počítačového zpracování obrazu.
+Kontejnery umožňují spouštět rozhraní API Počítačového zpracování obrazu ve vlastním prostředí. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejnery Počítačové zpracování obrazu.
 
-Kontejner *pro čtení* umožňuje detekovat a extrahovat *vytištěný text* z obrázků různých objektů s různými povrchy a pozadími, jako jsou například příjmy, plakáty a vizitky. Kromě toho kontejner *pro čtení* detekuje *rukou psaný text* v obrázcích a poskytuje podporu PDF, TIFF a vícestránkového souboru. Další informace najdete v [dokumentaci k rozhraní API pro čtení](concept-recognizing-text.md#read-api).
+Kontejner OCR *pro čtení* umožňuje extrahovat vytištěný a rukou psaný text z obrázků a dokumentů s podporou formátů souborů JPEG, PNG, BMP, PDF a TIFF. Další informace najdete v [dokumentaci k rozhraní API pro čtení](concept-recognizing-text.md#read-api).
 
+## <a name="read-3x-containers"></a>Číst kontejnery 3. x
 Ve verzi Preview jsou k dispozici dvě verze kontejnerů 3. x. Obě verze poskytují další přesnost a funkce oproti předchozímu kontejneru.
 
 Kontejner Read 3,0-Preview poskytuje:
@@ -46,7 +47,7 @@ Kontejner Read 3,1-Preview nabízí stejné výhody jako v 3.0 – Preview s dal
 
 Když zvažujete, kterou verzi kontejneru chcete použít, Všimněte si, že verze v 3.1 – Preview je ve starší verzi Preview. Pokud dnes používáte kontejnery Read 2,0, přečtěte si informace o změnách v nových verzích v [Průvodci migrací](read-container-migration-guide.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před použitím kontejnerů musíte splnit následující předpoklady:
 
@@ -496,7 +497,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů Počítačové zpracování obrazu. Souhrn:
 

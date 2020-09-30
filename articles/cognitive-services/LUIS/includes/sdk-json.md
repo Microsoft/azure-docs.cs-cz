@@ -2,20 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 08/12/2020
 ms.topic: include
 ms.custom: include file, devx-track-js
-ms.author: diberry
-ms.openlocfilehash: 0bbbae783d4e46a09674702a317489309fddc513
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 77a0f0151968a97f6ea5d682a031574bbf8bcdfc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327260"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545294"
 ---
 Odezva předpovědi je objekt JSON, včetně záměru a nalezených entit.
 

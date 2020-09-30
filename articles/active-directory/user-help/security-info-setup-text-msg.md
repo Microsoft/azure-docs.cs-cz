@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 0fe191ac827c76afd497896611430f6efc6283aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c68e01e0eb7c926f47c99b16efa87d23a10b6711
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747246"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537029"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>Nastavení zasílání textových zpráv jako metody ověřování
 
@@ -52,7 +52,7 @@ V závislosti na nastaveních vaší organizace můžete používat textové zas
 
 4. Na stránce **telefon** zadejte telefonní číslo mobilního zařízení, zvolte **text já a kód**a potom vyberte **Další**.
 
-    ![Přidat telefonní číslo a zvolit textové zprávy](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
+    ![Snímek obrazovky, který zobrazuje stránku "Phone" s vybraným textem "text-a kód".](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
 
 5. Do mobilního zařízení zadejte kód, který vám pošle textovou zprávu, a pak vyberte **Další**.
 

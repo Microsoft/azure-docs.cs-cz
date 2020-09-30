@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure Resource Health
 description: Přehled Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 345724a28441e5a6b20863da8d2fd47be0a8d6f9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c8089e907f555ac970fea06361a2ab1bbc944778
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518941"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536490"
 ---
 # <a name="azure-resource-health-faq"></a>Nejčastější dotazy k Azure Resource Health
 Přečtěte si odpovědi na nejčastější dotazy týkající se Azure Resource Health.
@@ -46,7 +46,7 @@ Ano, pokud prostředek není k dispozici, Resource Health identifikuje hlavní p
 Na portálu se uživatelem iniciované akce zobrazují pomocí modré ikony oznámení, zatímco plánované a neplánované události se zobrazují pomocí červené výstražné ikony. Další podrobnosti najdete v [přehledu Resource Health](Resource-health-overview.md).  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Můžu Resource Health integrovat s nástroji pro monitorování?
-Resource Health má [podporu Preview](resource-health-alert-arm-template-guide.md) pro výstrahy založené na protokolu aktivit. Výstrahy protokolu aktivit používají [skupiny akcí](../azure-monitor/platform/action-groups.md) k upozornění uživatelů na aktivaci výstrahy. Skupiny akcí podporují různé kanály oznámení, jako jsou e-maily, SMS, Webhooky a ITSM akce.
+Resource Health [podporuje](resource-health-alert-arm-template-guide.md) výstrahy založené na protokolu aktivit. Výstrahy protokolu aktivit používají [skupiny akcí](../azure-monitor/platform/action-groups.md) k upozornění uživatelů na aktivaci výstrahy. Skupiny akcí podporují různé kanály oznámení, jako jsou e-maily, SMS, Webhooky a ITSM akce.
 
 ## <a name="where-do-i-find-resource-health"></a>Kde najdu Resource Health?
 Až se přihlásíte k Azure Portal, máte k dispozici několik způsobů, jak získat přístup k Resource Health:
@@ -76,10 +76,10 @@ Je důležité si všimnout, že abyste mohli poskytnout kompletní přehled o u
 Ne, informace o stavu jsou k dispozici pro všechny typy prostředků, které jsou k dispozici prostřednictvím Resource Health. 
 
 ## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>Musíme Resource Health pro moji organizaci povolit?
-Ne.  Azure Resource Health je k dispozici v Azure Portal bez jakýchkoli požadavků na instalaci.
+No.  Azure Resource Health je k dispozici v Azure Portal bez jakýchkoli požadavků na instalaci.
 
 ## <a name="is-resource-health-available-free-of-charge"></a>Je Resource Health k dispozici zdarma?
-Yes.  Azure Resource Health je bezplatná.
+Ano.  Azure Resource Health je bezplatná.
 
 ## <a name="what-are-the-recommendations-that-resource-health-provides"></a>Jaká doporučení Resource Health poskytuje?
 Na základě stavu Resource Health poskytuje doporučení s cílem zkrátit čas strávený odstraňováním potíží. V případě dostupných prostředků se v doporučeních zaměřujeme na řešení nejběžnějších problémů, ke kterým se zákazníci setkávají. Pokud prostředek není k dispozici z důvodu neplánované události Azure, zaměřte se na vás během procesu obnovení a po něm. 
