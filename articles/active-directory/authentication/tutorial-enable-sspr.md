@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30a51f4b07f62b6e3491f74de78ea0d04bbb1775
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0797ff744dbbf9fb139503d73be7d60118762ac2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399969"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530727"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Kurz: povolení odemknutí účtu nebo resetování hesla uživateli pomocí samoobslužného resetování hesla Azure Active Directory
 
@@ -116,7 +116,7 @@ Pokud uživatelé potřebují další nápovědu k procesu SSPR, můžete upravi
 S povoleným a nakonfigurovaným SSPR otestujte proces SSPR s uživatelem, který je součástí skupiny, kterou jste vybrali v předchozí části, například *test-SSPR-Group*. V následujícím příkladu je použit účet *testuser* . V první části tohoto kurzu zadejte vlastní uživatelský účet, který je součástí skupiny, kterou jste povolili pro SSPR.
 
 > [!NOTE]
-> Při testování samoobslužného resetování hesla použijte účet bez oprávnění správce. Správci jsou vždycky povoleni pro Samoobslužné resetování hesla a jsou potřeba k resetování hesla pomocí dvou metod ověřování.
+> Při testování samoobslužného resetování hesla použijte účet bez oprávnění správce. Ve výchozím nastavení jsou správcům povoleny Samoobslužné resetování hesla a jsou vyžadovány k resetování hesla pomocí dvou metod ověřování. Další informace najdete v tématu [rozdíly v zásadách resetování správců](concept-sspr-policy.md#administrator-reset-policy-differences).
 
 1. Chcete-li zobrazit proces Ruční registrace, otevřete nové okno prohlížeče v režimu InPrivate nebo anonymním a přejděte na adresu [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . Uživatelé by měli být přesměrováni na tento registrační portál při příštím přihlášení.
 1. Přihlaste se pomocí testovacího uživatele bez oprávnění správce, jako je například *testuser*, a zaregistrujte kontaktní informace metod ověřování.
@@ -134,7 +134,7 @@ V následujícím kurzu tohoto seriálu nakonfigurujete zpětný zápis hesla. T
 
 Pokud už nechcete používat funkci SSPR, kterou jste nakonfigurovali v rámci tohoto kurzu, nastavte stav SSPR na **none** pomocí následujících kroků:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte **Azure Active Directory**a potom v nabídce na levé straně zvolte **resetování hesla** .
 1. Na stránce **vlastnosti** v části možnost *Samoobslužné resetování hesla povoleno*vyberte možnost **žádná**.
 1. Pokud chcete použít změnu SSPR, vyberte **Uložit**.

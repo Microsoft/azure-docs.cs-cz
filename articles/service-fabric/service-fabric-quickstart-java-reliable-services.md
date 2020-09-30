@@ -1,17 +1,15 @@
 ---
 title: 'Rychlý Start: Vytvoření aplikace Java v Azure Service Fabric'
 description: V tomto rychlém startu vytvoříte aplikaci v Javě pro Azure s využitím ukázkové aplikace Service Fabric Reliable Services.
-author: suhuruli
 ms.topic: quickstart
 ms.date: 01/29/2019
-ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: ebed4ecd499702bae02a2b1891df15186c60b5b8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2f1e5f8f73f74d4b427e574b9e6a75aaf84a4211
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320421"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529843"
 ---
 # <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>Rychlý Start: nasazení aplikace Java do Azure Service Fabric v systému Linux
 
@@ -19,7 +17,7 @@ V tomto rychlém startu nasadíte aplikaci Java do Azure Service Fabric pomocí 
 
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu mikroslužeb a kontejnerů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Prostředí Java](./service-fabric-get-started-linux.md#set-up-java-development) a [Yeoman](./service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables)
 - [Neon zatmění (4.6) +](https://www.eclipse.org/downloads/packages/) a [modul plug-in zatmění pro Service Fabric](./service-fabric-get-started-linux.md#install-the-eclipse-plug-in-optional)

@@ -1,17 +1,15 @@
 ---
 title: Nasazení aplikace Java do clusteru Service Fabric v Azure
 description: V tomto kurzu se dozvíte, jak nasadit aplikaci Service Fabric v Javě do clusteru Azure Service Fabric.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 50ae4d34cd7b238403ee95bd36a97ac82392f3ba
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3e00e478e20fbd0bc4ff6ed17b330f0d16488be6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320727"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532054"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Kurz: Nasazení aplikace v Javě do clusteru Service Fabric v Azure
 
@@ -32,7 +30,7 @@ V této sérii kurzů se naučíte:
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-java-elk.md)
 > * [Nastavení CI/CD](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 

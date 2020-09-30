@@ -1,17 +1,15 @@
 ---
 title: 'Kurz: Vytvoření aplikace Java v Azure Service Fabric'
 description: V tomto kurzu se dozvíte, jak vytvořit aplikaci spolehlivé služby v Javě s front-endem a stavovým back-endem spolehlivé služby a jak tuto aplikaci nasadit do clusteru.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 09/01/2018
-ms.author: suhuruli
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, devx-track-js
-ms.openlocfilehash: a3e58ae01fa3f30f0b13ffb176becb76371ed158
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d1f66177b1939d612a5ee80c99109c397b56cb37
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326350"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532189"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Kurz: Vytvoření aplikace s front-end službou Java API a stavovou back-end službou v Azure Service Fabric
 
@@ -36,7 +34,7 @@ V první části tohoto kurzu se naučíte:
 > * Použití vzdálené komunikace služby ke komunikaci se stavovou službou
 > * Nasazení aplikace do místního clusteru Service Fabric
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 

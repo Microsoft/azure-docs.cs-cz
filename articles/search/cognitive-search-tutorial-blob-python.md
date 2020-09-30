@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 9289002188373a91affb5829b4fd7b3de6cb152b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 34265552122c1f8d1bcbbcfe95948683a5750a71
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399852"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530999"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Kurz: použití Pythonu a AI k vygenerování prohledávatelných obsahu z objektů blob Azure
 
@@ -32,7 +32,7 @@ Tento kurz používá Python a [rozhraní REST API pro vyhledávání](/rest/api
 
 Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + [Azure Storage](https://azure.microsoft.com/services/storage/)
 + [Anaconda 3,7](https://www.anaconda.com/distribution/#download-section)
@@ -81,7 +81,7 @@ Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pr
 
 1. Vyberte *ozubeného kola-Search-demo* a potom kliknutím na **Odeslat** otevřete složku, kam jste uložili soubory ke stažení. Vyberte všechny soubory bez imagí. Měli byste mít 7 souborů. Kliknutím na tlačítko **OK** nahrajte.
 
-   :::image type="content" source="media/cognitive-search-tutorial-blob/sample-files.png" alt-text="Nahrání ukázkových souborů" border="false":::
+   :::image type="content" source="media/cognitive-search-tutorial-blob/sample-files.png" alt-text="Vytvořit účet úložiště" border="false":::
 
 1. Než ponecháte Azure Storage, Získejte připojovací řetězec, abyste mohli formulovat připojení v Azure Kognitivní hledání. 
 
@@ -117,7 +117,7 @@ Stejně jako u služby Azure Blob Storage si pro získání přístupového klí
 
    Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
-   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
+   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Vytvořit účet úložiště" border="false":::
 
 Všechny požadavky vyžadují klíč rozhraní API-Key v hlavičce všech požadavků odeslaných službě. Platný klíč vytváří vztah důvěryhodnosti na základě jednotlivých požadavků mezi aplikací odesílající požadavek a službu, která ho zpracovává.
 
@@ -190,7 +190,7 @@ Požadavek by měl vrátit stavový kód 201 potvrzující úspěch.
 
 V Azure Portal na stránce řídicí panel služby vyhledávání ověřte, že se v seznamu **zdroje dat** zobrazí položka cogsrch-py-DataSource. Stránku můžete aktualizovat kliknutím na **aktualizovat** .
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-data-source-tile.png" alt-text="Dlaždice zdroje dat na portálu" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-data-source-tile.png" alt-text="Vytvořit účet úložiště" border="false":::
 
 ### <a name="step-2-create-a-skillset"></a>Krok 2: vytvoření dovednosti
 
@@ -303,7 +303,7 @@ Pro obsah dokumentu se využijí jednotlivé dovednosti. Během zpracování Azu
 
 Grafickou reprezentaci sady dovedností najdete níže.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob/skillset.png" alt-text="Pochopení dovednosti" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob/skillset.png" alt-text="Vytvořit účet úložiště" border="false":::
 
 Výstupy mohou být mapovány na index, který slouží jako vstup pro podřízenou dovednost, nebo obojí, stejně jako u kódu jazyka. V indexu je kód jazyka užitečný při filtrování. Jako vstup se kód jazyka používá v dovednostech analýzy textu, čímž se jazykovým pravidlům poskytne informace o dělení slov.
 
@@ -315,7 +315,7 @@ V této části definujete schéma indexu zadáním polí, která mají být zah
 
 V tomto cvičení použijeme následující pole a jejich typy:
 
-| Názvy polí: | id         | obsah   | languageCode | keyPhrases         | organizations     |
+| Názvy polí: | ID         | obsah   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | Typy polí: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
@@ -472,11 +472,11 @@ pprint(json.dumps(r.json(), indent=1))
 
 V odpovědi Sledujte `"lastResult"` `"status"` `"endTime"` hodnoty a. Pravidelně spouštějte skript pro kontrolu stavu. Až se indexer dokončí, stav se nastaví na "úspěch", zadá se "Čas_ukončení" a odpověď bude obsahovat všechny chyby a upozornění, ke kterým došlo během obohacování.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png" alt-text="Indexer je vytvořený." border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png" alt-text="Vytvořit účet úložiště" border="false":::
 
 Pro určité kombinace zdrojových souborů a dovedností jsou upozornění běžná a ne vždy představují problém. Mnoho upozornění je neškodné. Pokud například nasadíte soubor JPEG, který nemá text, zobrazí se upozornění na tomto snímku obrazovky.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png" alt-text="Příklad upozornění indexeru" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png" alt-text="Vytvořit účet úložiště" border="false":::
 
 ## <a name="5---search"></a>5 – hledání
 
@@ -493,7 +493,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 Výsledky by měly vypadat podobně jako v následujícím příkladu. Snímek obrazovky zobrazuje pouze část odpovědi.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png" alt-text="Index dotazu pro všechna pole" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png" alt-text="Vytvořit účet úložiště" border="false":::
 
 Výstupem je schéma indexu s názvem, typem a atributy všech jednotlivých polí.
 
@@ -508,7 +508,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 Výsledky by měly vypadat podobně jako v následujícím příkladu. Snímek obrazovky zobrazuje pouze část odpovědi.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png" alt-text="Index dotazu pro obsah organizací" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png" alt-text="Vytvořit účet úložiště" border="false":::
 
 Opakujte pro další pole: `content` , `languageCode` , a `keyPhrases` `organizations` v tomto cvičení. Prostřednictvím `$select` můžete pomocí seznamu hodnot oddělených čárkami vrátit více než jedno pole.
 
@@ -522,7 +522,7 @@ Ve fázích předčasného experimentu vývoje je nejužitečnějším přístup
 
 Portál můžete použít k odstranění indexů, indexerů, zdrojů dat a dovednosti. Když indexer odstraníte, můžete také selektivně odstranit index, dovednosti a zdroj dat...
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png" alt-text="Odstranění objektů hledání na portálu" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png" alt-text="Vytvořit účet úložiště" border="false":::
 
 Můžete je také odstranit pomocí skriptu. Následující skript ukazuje, jak odstranit dovednosti. 
 
@@ -545,7 +545,7 @@ Nakonec jste zjistili, jak testovat výsledky a obnovit systém pro další iter
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
 

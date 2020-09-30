@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: f84dc17c6c074fc4dbda8a13fad3586a397fdf10
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0361ba7bc67948c25b842a3fb7406d2999fdd725
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055431"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530608"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions sloty nasazení
 
@@ -73,15 +73,15 @@ Chcete-li vytvořit nastavení nasazení, použijte následující postup:
 
 1. Vyberte **Konfigurace**a pak vyberte název nastavení, který chcete s aktuálním slotem vyznačit.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="Nakonfigurujte nastavení aplikace pro slot ve Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="Najděte sloty v Azure Portal." border="true":::
 
 1. Vyberte **nastavení slotu nasazení**a pak vyberte **OK**.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="Nakonfigurujte nastavení slotu nasazení." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="Najděte sloty v Azure Portal." border="true":::
 
 1. Po nastavení oddílu zmizí, vyberte **Uložit** , aby se změny zachovaly.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="Uložte nastavení slotu nasazení." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="Najděte sloty v Azure Portal." border="true":::
 
 ## <a name="deployment"></a>Nasazení
 
@@ -102,11 +102,11 @@ Slot můžete přidat prostřednictvím rozhraní příkazového [řádku](/cli/
 
 1. Vyberte možnost **sloty nasazení**a pak vyberte **+ Přidat slot**.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="Přidejte Azure Functions slot nasazení." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="Najděte sloty v Azure Portal." border="true":::
 
 1. Zadejte název slotu a vyberte **Přidat**.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add-name.png" alt-text="Název Azure Functions slot pro nasazení." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add-name.png" alt-text="Najděte sloty v Azure Portal." border="true":::
 
 ## <a name="swap-slots"></a>Prohození slotů
 
@@ -115,11 +115,11 @@ Sloty můžete prohodit přes rozhraní příkazového [řádku](/cli/azure/func
 1. Přejděte do aplikace Function App.
 1. Vyberte možnost **sloty nasazení**a pak vyberte **swap**.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="Zahodí slot nasazení." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="Najděte sloty v Azure Portal." border="true":::
 
 1. Ověřte nastavení konfigurace pro svůj swap a vyberte **prohození** .
     
-    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png" alt-text="Zahodí slot nasazení." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png" alt-text="Najděte sloty v Azure Portal." border="true":::
 
 Operace přepnutí může chvíli trvat.
 
@@ -137,15 +137,15 @@ Slot můžete odebrat přes rozhraní příkazového [řádku](/cli/azure/functi
 
 1. Vyberte **Odstranit**.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="Odstraňte slot nasazení v Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="Najděte sloty v Azure Portal." border="true":::
 
 1. Zadejte název slotu nasazení, který chcete odstranit, a pak vyberte **Odstranit**.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot-details.png" alt-text="Odstraňte slot nasazení v Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot-details.png" alt-text="Najděte sloty v Azure Portal." border="true":::
 
 1. Zavřete podokno potvrzení odstranění.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-deleted.png" alt-text="Potvrzení odstranění slotu nasazení" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-deleted.png" alt-text="Najděte sloty v Azure Portal." border="true":::
 
 ## <a name="automate-slot-management"></a>Automatizace správy slotů
 
@@ -174,7 +174,7 @@ Pomocí následujících kroků můžete změnit plán App Service přihrádky:
 
 1. Vyberte plán, na který chcete upgradovat, nebo vytvořte nový plán.
 
-    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="Změňte plán App Service v Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="Najděte sloty v Azure Portal." border="true":::
 
 1. Vyberte **OK**.
 

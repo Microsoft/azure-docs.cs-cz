@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 088d2c0a11f7d145f0c8a7ccb2c0aac5bd2d140d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 35a097f7b6d73a14ac4840839a31d9aa256aa8de
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224081"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532687"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorování v Azure Database for MariaDB
 Sledování dat o vašich serverech vám pomůže při řešení potíží a optimalizaci pro vaše úlohy. Azure Database for MariaDB poskytuje různé metriky, které poskytují přehled o chování serveru.
@@ -35,9 +35,9 @@ Tyto metriky jsou k dispozici pro Azure Database for MariaDB:
 |serverlog_storage_usage|Využité úložiště protokolu serveru|Bajty|Velikost používaného úložiště protokolu serveru.|
 |serverlog_storage_limit|Limit úložiště protokolu serveru|Bajty|Maximální úložiště protokolu serveru pro tento server.|
 |storage_limit|Omezení úložiště|Bajty|Maximální úložiště pro tento server.|
-|active_connections|Aktivní připojení|Count|Počet aktivních připojení k serveru.|
-|connections_failed|Neúspěšná připojení|Count|Počet neúspěšných připojení k serveru|
-|seconds_behind_master|Prodleva replikace v sekundách|Count|Doba v sekundách, po kterou server repliky zaostává na hlavním serveru. (Neplatí pro servery úrovně Basic.)|
+|active_connections|Aktivní připojení|Počet|Počet aktivních připojení k serveru.|
+|connections_failed|Neúspěšná připojení|Počet|Počet neúspěšných připojení k serveru|
+|seconds_behind_master|Prodleva replikace v sekundách|Počet|Doba v sekundách, po kterou server repliky odchází na zdrojovém serveru. (Neplatí pro servery úrovně Basic.)|
 |network_bytes_egress|Síťové výstupy|Bajty|Síť vyprší napříč aktivními připojeními.|
 |network_bytes_ingress|Síťové vstupy|Bajty|Síť v rámci aktivních připojení.|
 |backup_storage_used|Využité úložiště záloh|Bajty|Velikost využitého úložiště záloh. Tato metrika představuje součet úložiště spotřebovaného všemi úplnými zálohami databáze, rozdílové zálohy a zálohy protokolů, které jsou zachovány na základě nastaveného období uchovávání záloh pro server. Frekvence zálohování je spravována službou a je vysvětlena v [článku koncepty](concepts-backup.md). V případě geograficky redundantního úložiště je využití úložiště zálohování dvakrát místní redundantní úložiště.|

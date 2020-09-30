@@ -4,12 +4,12 @@ description: Obsahuje odpovědi na některé běžné dotazy týkající se ře�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 4bb713b3d50fa92728baf7b1fff1e6e65c48ed92
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: fd0c0158106a24ba12fec42e41df69f246e7f3f5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368732"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530472"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
 
@@ -67,7 +67,7 @@ Microsoft a Red Hat sdílejí integrovaný a společně umístěný tým podpory
 
 VMware HCX Enterprise Edition (EE) je k dispozici v rámci řešení Azure VMware jako funkce nebo služby ve *verzi Preview* . Řešení VMware HCX EE pro Azure VMware je ve verzi Preview, ale bezplatná funkce nebo služba a podléhá podmínkám a ujednáním služby ve verzi Preview. Jakmile se služba VMware HCX EE dostane do GA, dostanete 30denní oznámení o tom, že účtování přepíná. Také budete mít možnost přepnout nebo odhlásit službu.
 
-## <a name="compute-network-and-storage"></a>Výpočetní prostředky, sítě a úložiště
+## <a name="compute-network-storage-and-backup"></a>Výpočetní výkon, síť, úložiště a záloha
 
 #### <a name="is-there-more-than-one-type-of-host-available"></a>Je k dispozici více než jeden typ hostitele?
 
@@ -92,6 +92,14 @@ U každého hostitele ESXi je řešení Azure VMware nakonfigurované se síťov
 #### <a name="is-data-stored-on-the-vsan-datastores-encrypted-at-rest"></a>Jsou data uložená v úložišti datasíti vsans zašifrovaná v klidovém stavu?
 
 Ano, všechna síti vSAN data se ve výchozím nastavení šifrují pomocí klíčů uložených v Azure Key Vault.
+
+#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendor-isv-backup-solutions"></a>Dokumenty, které CommVault, Veritas a Veeam, rozšiřují svá záložní řešení pro práci s řešeními Azure VMware. Co jsou to jiní řešení zálohování nezávislého výrobce softwaru (ISV)?
+
+V takovém případě je potřeba, aby jakékoli řešení zálohování, které používá VMware VADP s režimem přenosu HotAdd, fungovalo přímo ze seznamu řešení Azure VMware.
+
+#### <a name="what-about-support-for-isv-backup-solutions"></a>Co je podpora řešení pro zálohování ISV?
+
+Jak jsou tato řešení pro zálohování nainstalovaná a spravovaná zákazníky, se můžou obrátit na příslušného nezávislého výrobce softwaru pro podporu. 
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Hostitelé, clustery a privátní cloudy
 

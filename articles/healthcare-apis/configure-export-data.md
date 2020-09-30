@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 3/5/2020
 ms.author: matjazl
-ms.openlocfilehash: 7ed4e471764fbf8ecc9b82a7d614ae52b97360f1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e4adceea5c2cd2a36d7a867ca9b9d2ad7c33c155
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267254"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529979"
 ---
 # <a name="configure-export-setting-and-set-up-the-storage-account"></a>Konfigurace nastavení exportu a nastavení účtu úložiště
 
@@ -40,11 +40,11 @@ Dalším krokem exportu je přiřazení oprávnění pro službu Azure API pro s
 
 Po vytvoření účtu úložiště přejděte na okno Access Control (IAM) v účtu úložiště a vyberte přidat přiřazení rolí.
 
-![Povolit spravovanou identitu](media/export-data/fhir-export-role-assignment.png)
+![Exportovat přiřazení role](media/export-data/fhir-export-role-assignment.png)
 
 Tady pak přidáte přispěvatele dat objektů BLOB úložiště rolí k našemu názvu služby.
 
-![Povolit spravovanou identitu](media/export-data/fhir-export-role-add.png)
+![Přidat roli](media/export-data/fhir-export-role-add.png)
 
 Nyní jsme připraveni k dalšímu kroku, kde můžeme vybrat účet úložiště v Azure API pro FHIR jako výchozí účet úložiště pro $export.
 
@@ -52,7 +52,7 @@ Nyní jsme připraveni k dalšímu kroku, kde můžeme vybrat účet úložišt�
 
 Posledním krokem je přiřazení účtu Azure Storage, který Azure API for FHIR použije k exportu dat do. Provedete to tak, že přejdete do okna integrace v Azure API pro službu FHIR v Azure Portal a vyberete účet úložiště.
 
-![Povolit spravovanou identitu](media/export-data/fhir-export-storage.png)
+![Úložiště exportu FHIR](media/export-data/fhir-export-storage.png)
 
 Poté, co jsme připraveni k exportu dat pomocí příkazu $export.
 

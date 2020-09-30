@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2020
+ms.date: 09/29/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17cdebb1291f78706178e129a62b932d45f38537
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6b571b2b8e0d334a02631e3f443ec54398117ee9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89263057"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532665"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Cosmos DB
 
@@ -34,7 +34,7 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 > * Získání přístupového tokenu pomocí spravované identity přiřazené systémem na virtuálním počítači s Windows k volání Azure Resource Manageru
 > * Získání přístupových klíčů z Azure Resource Manageru kvůli volání služby Cosmos DB
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -59,7 +59,7 @@ Vytvořte si účet služby Cosmos DB (pokud ho ještě nemáte). Tento krok mů
 3. Zadejte **ID** pro účet služby Cosmos DB, který použijete později.  
 4. **API** musí být nastaveno na SQL. Přístup popsaný v tomto kurzu je možné použít s ostatními dostupnými typy rozhraní API. Kroky tohoto kurzu jsou ale určené pro rozhraní API SQL.
 5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.  Vyberte **Umístění**, ve kterém je Cosmos DB k dispozici.
-6. Klikněte na možnost **Vytvořit**.
+6. Klikněte na **Vytvořit**.
 
 ### <a name="create-a-collection"></a>Vytvoření kolekce 
 
@@ -80,6 +80,10 @@ Pokud chcete spravované identitě přiřazené systémem na počítači s Windo
 $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
 New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Reader Role" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>"
 ```
+
+>[!NOTE]
+> Mějte na paměti, že pokud nemůžete provést operaci, možná nemáte správná oprávnění. Pokud chcete přístup pro zápis ke klíčům, potřebujete použít roli RBAC, jako je například Přispěvatel účtu DocumentDB nebo vytvořit vlastní roli. Další informace najdete [v Azure Cosmos DB řízení přístupu na základě rolí](../../cosmos-db/role-based-access-control.md) .
+
 ## <a name="access-data"></a>Přístup k datům
 
 V této části se dozvíte, jak volat Azure Resource Manager pomocí přístupového tokenu pro spravovanou identitu přiřazenou systémem Windows VM. Ve zbývající části kurzu použijeme k práci dříve vytvořený virtuální počítač. 

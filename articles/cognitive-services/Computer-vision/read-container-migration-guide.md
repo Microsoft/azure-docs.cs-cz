@@ -1,7 +1,7 @@
 ---
-title: Migrace z kontejneru Read v2 na V3
+title: Migrace do kontejnerů OCR v3. x
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak migrovat do kontejneru pro čtení v3.
+description: Přečtěte si, jak migrovat do kontejnerů OCR pro čtení v3.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,17 +10,16 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/21/2020
 ms.author: aahi
-ms.openlocfilehash: 7f701af86f2bca856169f6dcf0689d59930306f2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 714a4709eceea875798940de962716d34437f2a9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91348950"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530455"
 ---
-# <a name="migrate-to-the-read-v3x-container"></a>Migrace do kontejneru Read v3. x
+# <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migrace na přečtené kontejnery OCR v3. x
 
-Pokud používáte verzi 2 kontejneru Počítačové zpracování obrazu čtení, v tomto článku se dozvíte, jak upgradovat aplikaci, aby používala verzi 3. x kontejneru. 
-
+Pokud používáte verzi 2 Počítačové zpracování obrazu čtení kontejneru OCR, použijte v tomto článku informace o upgradu aplikace na použití verze 3. x kontejneru. 
 
 
 ## <a name="configuration-changes"></a>Změny konfigurace

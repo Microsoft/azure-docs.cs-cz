@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 2b26a317f7338b3e87623b8312d9f7efd10dbed1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5b430d5a8f0c2702617b7f6b3935e1b169753552
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917852"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530850"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Postup modelování komplexních datových typů v Azure Kognitivní hledání
 
@@ -62,7 +62,7 @@ Následující dokument JSON se skládá z jednoduchých polí a složitých pol
 
 ## <a name="creating-complex-fields"></a>Vytváření složitých polí
 
-Stejně jako u libovolné definice indexu můžete použít portál, [REST API](/rest/api/searchservice/create-index)nebo [.NET SDK](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) k vytvoření schématu, které obsahuje komplexní typy. 
+Stejně jako u libovolné definice indexu můžete použít portál, [REST API](/rest/api/searchservice/create-index)nebo [.NET SDK](/dotnet/api/microsoft.azure.search.models.index) k vytvoření schématu, které obsahuje komplexní typy. 
 
 Následující příklad ukazuje schéma indexu JSON s jednoduchými poli, kolekcemi a komplexními typy. Všimněte si, že v rámci komplexního typu má každé dílčí pole typ a může mít atributy, stejně jako pole nejvyšší úrovně. Schéma odpovídá výše uvedeným ukázkovým datům. `Address` je komplexní pole, které není kolekcí (Hotel má jednu adresu). `Rooms` je komplexní pole kolekce (Hotel má mnoho místností).
 

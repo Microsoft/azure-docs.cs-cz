@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ccc10327d4de4134dd15e0ed936f6b938cbe31dd
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 7714ec29b3cbe17c7700b48111ea2b455aa18b7e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403666"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532223"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -77,7 +77,7 @@ Vytvořte v Azure Active Directory identitu pro vyhledávací službu a pak pomo
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |---------|------------------|-------------|---------------|
-| [**Detekce PII (Preview)**](cognitive-search-skill-pii-detection.md) | Obohacení AI | Nový způsob rozpoznávání používaný při indexování, který extrahuje osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby. | Verze Public Preview. </br> Použijte portál nebo [Search REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) nebo REST API 2019-05-06-Preview. |
+| [**Detekce PII (Preview)**](cognitive-search-skill-pii-detection.md) | Obohacení AI | Nová funkce rozpoznávání, která se používá při indexování, která extrahuje osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby. | Verze Public Preview. </br> Použijte portál nebo [Search REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) nebo REST API 2019-05-06-Preview. |
 | [**Vyhledávání vlastních entit (Preview)**](cognitive-search-skill-custom-entity-lookup.md )| Obohacení AI | Nová schopnost rozpoznávání, která hledá text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale ne přesně. | Verze Public Preview. </br> Použijte portál nebo [Search REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) nebo REST API 2019-05-06-Preview. |
 
 ## <a name="january-2020"></a>Leden 2020

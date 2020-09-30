@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5c44f72021fa46352ae6ded8fe671ea4f1a4d60
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a94d1a4fa717bbee9974f7218e704ba06dad530d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797169"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531526"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Vytvoření nebo aktualizace dynamické skupiny v Azure Active Directory
 
@@ -40,7 +40,7 @@ Tady jsou některé příklady pokročilých pravidel nebo syntaxe, pro které d
 > [!NOTE]
 > Tvůrce pravidel nemusí být schopný zobrazit některá pravidla vytvořená v textovém poli. Když tvůrce pravidel nemůže zobrazit pravidlo, může se zobrazit zpráva. Tvůrce pravidel nemění podporovanou syntaxi, ověřování ani zpracování pravidel dynamických skupin jakýmkoli způsobem.
 
-![Přidat pravidlo členství pro dynamickou skupinu](./media/groups-create-rule/update-dynamic-group-rule.png)
+![Snímek obrazovky zobrazující stránku pravidla dynamického členství s akcí přidat výraz na kartě konfigurovat pravidla](./media/groups-create-rule/update-dynamic-group-rule.png)
 
 Příklady syntaxe, podporovaných vlastností, operátorů a hodnot pravidla členství najdete v tématu [dynamická pravidla členství pro skupiny v Azure Active Directory](groups-dynamic-membership.md).
 
@@ -54,7 +54,7 @@ Příklady syntaxe, podporovaných vlastností, operátorů a hodnot pravidla č
 
 1. Na stránce **Skupina** zadejte název a popis nové skupiny. Vyberte **typ členství** buď pro uživatele, nebo pro zařízení a pak vyberte **Přidat dynamický dotaz**. Tvůrce pravidel podporuje až pět výrazů. Chcete-li přidat více než pět výrazů, je nutné použít textové pole.
 
-   ![Přidat pravidlo členství pro dynamickou skupinu](./media/groups-create-rule/add-dynamic-group-rule.png)
+   ![Snímek obrazovky zobrazující stránku všechny skupiny se zvolenou akcí nová skupina](./media/groups-create-rule/add-dynamic-group-rule.png)
 
 1. Chcete-li zobrazit vlastnosti vlastního rozšíření, které jsou k dispozici pro váš dotaz na členství:
    1. Vyberte **získat vlastnosti vlastního rozšíření** .

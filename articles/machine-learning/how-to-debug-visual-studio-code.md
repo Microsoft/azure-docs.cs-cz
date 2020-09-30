@@ -8,25 +8,83 @@ ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 08/06/2020
-ms.openlocfilehash: a16a8432f61e39a3e36aeb748cabfa2c4b60d796
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315350"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530670"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktivní ladění pomocí Visual Studio Code
 
 
 
-Přečtěte si, jak interaktivně ladit Azure Machine Learning kanály a nasazení pomocí Visual Studio Code (VS Code) a [depugpy](https://github.com/microsoft/debugpy/).
+Naučte se, jak interaktivně ladit Azure Machine Learning experimenty, kanály a nasazení s využitím Visual Studio Code (VS Code) a [depugpy](https://github.com/microsoft/debugpy/).
+
+## <a name="run-and-debug-experiments-locally"></a>Spustit a ladit experimenty místně
+
+Pomocí rozšíření Azure Machine Learning můžete před odesláním do cloudu ověřit, spustit a ladit experimenty ve strojovém učení.
+
+### <a name="prerequisites"></a>Předpoklady
+
+* Rozšíření Azure Machine Learning VS Code (Preview). Další informace najdete v tématu [nastavení rozšíření Azure Machine Learning vs Code](tutorial-setup-vscode-extension.md).
+* [Docker](https://www.docker.com/get-started)
+  * Docker Desktop pro Mac a Windows
+  * Modul Docker pro Linux.
+* [Python 3](https://www.python.org/downloads/)
+
+> [!NOTE]
+> V systému Windows se ujistěte, že jste [nakonfigurovali Docker pro použití kontejnerů systému Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
+
+> [!TIP]
+> U Windows, i když to není nutné, se důrazně doporučuje [použít Docker v subsystému Windows pro Linux (WSL) 2](https://docs.microsoft.com/windows/wsl/tutorials/wsl-containers#install-docker-desktop).
+
+> [!IMPORTANT]
+> Před místním spuštěním experimentu se ujistěte, že je Docker spuštěný.
+
+### <a name="debug-experiment-locally"></a>Místní ladění experimentu
+
+1. V VS Code otevřete zobrazení rozšíření Azure Machine Learning.
+1. Rozbalte uzel předplatné obsahující váš pracovní prostor. Pokud ho ještě nemáte, můžete pomocí tohoto rozšíření [vytvořit pracovní prostor Azure Machine Learning](how-to-manage-resources-vscode.md#create-a-workspace) .
+1. Rozbalte uzel pracovního prostoru.
+1. Klikněte pravým tlačítkem na uzel **experimenty** a vyberte **vytvořit experiment**. Po zobrazení výzvy zadejte název experimentu.
+1. Rozbalte uzel **experimenty** , klikněte pravým tlačítkem na experiment, který chcete spustit, a vyberte možnost **Spustit experiment**.
+1. V seznamu možností pro spuštění experimentu vyberte možnost **místně**.
+1. Při **prvním použití pouze v systému Windows**. Po zobrazení výzvy k povolení sdílení souborů vyberte **Ano**. Když povolíte sdílení souborů, umožní Docker připojit adresář obsahující váš skript do kontejneru. Kromě toho umožňuje Docker ukládat protokoly a výstupy z běhu do dočasného adresáře ve vašem systému.
+1. Vyberte **Ano** , pokud chcete ladit experiment. Jinak vyberte **No** (Ne). Pokud vyberete Ne, váš experiment se spustí lokálně bez připojení k ladicímu programu.
+1. Vyberte **vytvořit novou konfiguraci spuštění** a vytvořte tak konfiguraci spuštění. Konfigurace spuštění definuje skript, který chcete spustit, závislosti a použité datové sady. Případně, pokud už nějaký máte, vyberte ho z rozevíracího seznamu.
+    1. Vyberte své prostředí. Můžete si vybrat z libovolného [Azure Machine Learning](resource-curated-environments.md) nebo si vytvořit vlastní.
+    1. Zadejte název skriptu, který chcete spustit. Cesta je relativní vzhledem k adresáři otevřenému v VS Code.
+    1. Vyberte, zda chcete použít Azure Machine Learning datovou sadu. Pomocí rozšíření můžete vytvořit [Azure Machine Learning datové sady](how-to-manage-resources-vscode.md#create-dataset) .
+    1. Debugpy se vyžaduje, aby se ladicí program připojil ke kontejneru, na kterém běží experiment. Pokud chcete přidat debugpy jako závislost, vyberte **Přidat debugpy**. V opačném případě vyberte **Přeskočit**. Nepřidání debugpy jako závislost spustí experiment bez připojení k ladicímu programu.
+    1. V editoru se otevře konfigurační soubor, který obsahuje nastavení konfigurace spuštění. Pokud jste s nastavením spokojeni, vyberte **Odeslat experiment**. Alternativně otevřete paletu příkazů (**zobrazení > paleta příkazů**) z řádku nabídek a zadejte `Azure ML: Submit experiment` příkaz do textového pole.
+1. Po odeslání experimentu se vytvoří image Docker obsahující váš skript a konfigurace zadané v konfiguraci spuštění.
+
+    Když se spustí proces sestavení image Docker, obsah `60_control_log.txt` datového proudu souboru do výstupní konzoly v vs Code.
+
+    > [!NOTE]
+    > Při prvním vytvoření image Docker může trvat několik minut.
+
+1. Po vytvoření image se zobrazí výzva ke spuštění ladicího programu. Nastavte zarážky ve skriptu a vyberte **Spustit ladicí program** , až budete připraveni začít s laděním. Tím se připojí ladicí program VS Code ke kontejneru, na kterém běží experiment. Případně můžete v rozšíření Azure Machine Learning najeďte myší na uzel aktuálního běhu a výběrem ikony Přehrát spustit ladicí program.
+
+    > [!IMPORTANT]
+    > K jednomu experimentu nemůžete mít více relací ladění. Můžete ale ladit dva nebo více experimentů pomocí více instancí VS Code.
+
+V tomto okamžiku byste měli být schopni krokovat a ladit kód pomocí VS Code.
+
+Pokud v jakémkoli okamžiku chcete zrušit spuštění, klikněte pravým tlačítkem myši na uzel spustit a vyberte možnost **zrušit spuštění**.
+
+Podobně jako u vzdálených experimentů můžete rozšířit uzel spuštění a zkontrolovat protokoly a výstupy.
+
+> [!TIP]
+> Image Docker, které používají stejné závislosti definované ve vašem prostředí, se znovu použijí mezi běhy. Pokud však spustíte experiment pomocí nového nebo jiného prostředí, vytvoří se nový obrázek. Vzhledem k tomu, že se tyto image ukládají do místního úložiště, doporučuje se odebrat staré nebo nepoužívané image Docker. K odebrání imagí ze systému použijte rozhraní [Docker CLI](https://docs.docker.com/engine/reference/commandline/rmi/) nebo [rozšíření vs Code Docker](https://code.visualstudio.com/docs/containers/overview).
 
 ## <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění kanálů strojového učení a řešení souvisejících potíží
 
 V některých případech možná budete muset interaktivně ladit kód Pythonu, který se používá v kanálu ML. Pomocí VS Code a debugpy se můžete ke kódu připojit při jeho spuštění ve školicím prostředí.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * __Azure Machine Learning pracovní prostor__ , který je nakonfigurován pro použití __Virtual Network Azure__.
 * __Kanál Azure Machine Learning__ , který jako součást postupu kanálu používá skripty Pythonu. Například PythonScriptStep.
@@ -416,7 +474,7 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
 
 V tomto okamžiku se VS Code připojí k debugpy uvnitř kontejneru Docker a zastaví se na zarážce, kterou jste předtím nastavili. Nyní můžete krokovat kód při spuštění, zobrazit proměnné atd.
 
-Další informace o použití VS Code k ladění Pythonu najdete v tématu [ladění kódu Pythonu](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019&preserve-view=true).
+Další informace o použití VS Code k ladění Pythonu najdete v tématu [ladění kódu Pythonu](https://code.visualstudio.com/docs/python/debugging).
 
 ### <a name="stop-the-container"></a>Zastavení kontejneru
 
@@ -428,6 +486,6 @@ docker stop debug
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste nastavili Visual Studio Code vzdálené, můžete použít výpočetní instanci jako vzdálenou výpočetní prostředky z Visual Studio Code k interaktivnímu ladění kódu. 
+Teď, když jste nastavili VS Code vzdálené, můžete použít výpočetní instanci jako vzdálenou výpočetní prostředky z VS Code k interaktivnímu ladění kódu. 
 
 [Kurz: analýza prvního modelu ml](tutorial-1st-experiment-sdk-train.md) ukazuje, jak používat výpočetní instanci s integrovaným poznámkovým blokem.

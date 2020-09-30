@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe4d42fd74b4efd67a01f32611bd170862ec84d0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a20b6509973c7dc7e54d2e4f702175ad61e88da8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007124"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532496"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mapování polí a transformace pomocí indexerů Azure Kognitivní hledání
 
@@ -201,7 +201,7 @@ Azure Kognitivní hledání podporuje dvě různá kódování Base64. Při kód
 
 Azure Kognitivní hledání podporuje kódování Base64 s bezpečným URL a normální kódování Base64. Řetězec, který má kódování Base64 během indexování, by měl být později dekódovaný se stejnými možnostmi kódování nebo jinak výsledek nebude odpovídat původnímu.
 
-Pokud `useHttpServerUtilityUrlTokenEncode` parametry nebo `useHttpServerUtilityUrlTokenDecode` pro kódování a dekódování jsou nastaveny na, se `true` `base64Encode` chovají jako [HttpServerUtility. UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) a `base64Decode` chovají se jako [HttpServerUtility. UrlTokenDecode](/dotnet/api/system.web.httpserverutility.urltokendecode?view=netframework-4.8).
+Pokud `useHttpServerUtilityUrlTokenEncode` parametry nebo `useHttpServerUtilityUrlTokenDecode` pro kódování a dekódování jsou nastaveny na, se `true` `base64Encode` chovají jako [HttpServerUtility. UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode) a `base64Decode` chovají se jako [HttpServerUtility. UrlTokenDecode](/dotnet/api/system.web.httpserverutility.urltokendecode).
 
 > [!WARNING]
 > Pokud `base64Encode` se používá k vytvoření hodnot klíče, `useHttpServerUtilityUrlTokenEncode` musí být nastaven na hodnotu true. Pro klíčové hodnoty lze použít pouze kódování Base64 v bezpečí adrese URL. Úplnou sadu omezení znaků v hodnotách klíčů najdete v tématu [pravidla Pojmenování &#40;Azure Kognitivní hledání&#41;](/rest/api/searchservice/naming-rules) .
@@ -210,7 +210,7 @@ Knihovny .NET v Azure Kognitivní hledání předpokládají úplný .NET Framew
 
 Následující tabulka porovnává různá kódování Base64 řetězce `00>00?00` . Chcete-li určit požadované dodatečné zpracování (pokud existuje) pro funkce Base64, použijte funkci kódování knihovny na řetězec `00>00?00` a porovnejte výstup s očekávaným výstupem `MDA-MDA_MDA` .
 
-| Encoding | Výstup kódování Base64 | Další zpracování po kódování knihovny | Další zpracování před dekódováním knihovny |
+| Kódování | Výstup kódování Base64 | Další zpracování po kódování knihovny | Další zpracování před dekódováním knihovny |
 | --- | --- | --- | --- |
 | Base64 s odsazením | `MDA+MDA/MDA=` | Používejte znaky bezpečné pro URL a odstraňte odsazení. | Použití standardních znaků Base64 a přidání odsazení |
 | Base64 bez odsazení | `MDA+MDA/MDA` | Použít znaky bezpečné pro URL | Použití standardních znaků base64 |

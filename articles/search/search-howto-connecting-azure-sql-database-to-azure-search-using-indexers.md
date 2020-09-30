@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 631f5afbac4337cd0852f46ac4a336107f042397
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b1ad4ead83c9e07966f921a5b192f2791838e6ef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331637"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530557"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Připojení a indexování obsahu Azure SQL pomocí indexeru Azure Kognitivní hledání
 
@@ -39,7 +39,7 @@ Jeden indexer může využívat pouze jednu tabulku nebo zobrazení, ale pokud c
 Můžete nastavit a nakonfigurovat indexer Azure SQL pomocí:
 
 * Průvodce importem dat v [Azure Portal](https://portal.azure.com)
-* Sada Azure Kognitivní hledání [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* Sada Azure Kognitivní hledání [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer)
 * [REST API](/rest/api/searchservice/indexer-operations) kognitivní hledání Azure
 
 V tomto článku použijeme REST API k vytváření **indexerů** a **zdrojů dat**.
@@ -348,7 +348,7 @@ Tato nastavení se používají v `parameters.configuration` objektu v definici 
     }
 ```
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Otázka: můžu použít službu Azure SQL indexer s databázemi SQL běžícími na virtuálních počítačích s IaaS v Azure?**
 

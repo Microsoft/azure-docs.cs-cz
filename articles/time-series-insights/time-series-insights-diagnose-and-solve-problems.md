@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: v-mamcge
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0630e4dfcfc01e5c20fa6fcc3a516dbea6f6f53b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 231f2e4df1445c60378ac06aab0d0e56f410c1c8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046446"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530132"
 ---
 # <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>Diagnostika a řešení problémů v prostředí Azure Time Series Insights Gen1
+
+> [!CAUTION]
+> Toto je Gen1 článek.
 
 Tento článek popisuje problémy, se kterými se můžete setkat v prostředí Azure Time Series Insights. Tento článek nabízí možné příčiny a řešení pro řešení.
 
@@ -66,8 +69,8 @@ Například pokud máte ve zdroji událostí 5 000 000 události, když se přip
 
 Pokud máte ve zdroji událostí staré události, můžete k omezování přístupu přistupovat jedním ze dvou způsobů:
 
-- Změňte limity uchování zdroje událostí, aby bylo možné odebrat staré události, které nechcete zobrazit v Azure Time Series Insights.
-- Zřídit větší velikost prostředí (počet jednotek), aby se zvýšila propustnost starých událostí. Pokud v předchozím příkladu narostete stejné prostředí S1 na pět jednotek po dobu jednoho dne, prostředí by mělo zachytit za jeden den. Pokud má vaše výroba události ustálených stavů hodnotu 1 000 000 nebo méně událostí za den, můžete kapacitu události snížit na jednu jednotku po Azure Time Series Insights úlovky.
+* Změňte limity uchování zdroje událostí, aby bylo možné odebrat staré události, které nechcete zobrazit v Azure Time Series Insights.
+* Zřídit větší velikost prostředí (počet jednotek), aby se zvýšila propustnost starých událostí. Pokud v předchozím příkladu narostete stejné prostředí S1 na pět jednotek po dobu jednoho dne, prostředí by mělo zachytit za jeden den. Pokud má vaše výroba události ustálených stavů hodnotu 1 000 000 nebo méně událostí za den, můžete kapacitu události snížit na jednu jednotku po Azure Time Series Insights úlovky.
 
 Limit pro vymáhání omezení vychází z typu SKU a kapacity prostředí. Všechny zdroje událostí v prostředí sdílejí tuto kapacitu. Pokud zdroj událostí pro Centrum IoT nebo centrum událostí přenáší data nad rámec vynuceného limitu, dojde k omezení a prodlevě.
 
@@ -128,12 +131,12 @@ První záhlaví sloupce by mělo být název vlastnosti časového razítka. Ve
 
 Následující hodnoty nebudou zobrazeny:
 
-- *(ABC)*: označuje, že Azure Time Series Insights čte datové hodnoty jako řetězce.
-- *Ikona kalendáře*: označuje, že Azure Time Series Insights čte hodnoty dat jako hodnoty DateTime.
-- *#*: Označuje, že Azure Time Series Insights čte hodnoty dat jako celá čísla.
+* *(ABC)*: označuje, že Azure Time Series Insights čte datové hodnoty jako řetězce.
+* *Ikona kalendáře*: označuje, že Azure Time Series Insights čte hodnoty dat jako hodnoty DateTime.
+* *#*: Označuje, že Azure Time Series Insights čte hodnoty dat jako celá čísla.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [tom, jak zmírnit latenci v Azure Time Series Insights](time-series-insights-environment-mitigate-latency.md).
+* Přečtěte si o [tom, jak zmírnit latenci v Azure Time Series Insights](time-series-insights-environment-mitigate-latency.md).
 
-- Naučte [se škálovat Azure Time Series Insights prostředí](time-series-insights-how-to-scale-your-environment.md).
+* Naučte [se škálovat Azure Time Series Insights prostředí](time-series-insights-how-to-scale-your-environment.md).

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60d889b232857ae69372df8ebabbd0edd01a2f17
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507841"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529826"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak nainstalovat a nakonfigurovat SAP HANA (velké instance) v Azure
 
@@ -179,7 +179,7 @@ Tyto přípojné body jsou nakonfigurovány v/etc/fstab, jak je znázorněno na 
 
 Výstup příkazu df-h na velké jednotce instance S72m HANA vypadá nějak takto:
 
-![fstab připojených svazků v jednotce velkých instancí HANA](./media/hana-installation/image2_df_output.PNG)
+![Snímek obrazovky zobrazuje výstup příkazu pro jednotku velkých instancí HANA.](./media/hana-installation/image2_df_output.PNG)
 
 
 Řadič úložiště a uzly v dlouhých razítkech instance se synchronizují se servery NTP. Když synchronizujete SAP HANA jednotky Azure (velké instance) a virtuální počítače Azure se serverem NTP, neměli byste nijak významně přetěžovat mezi infrastrukturou a výpočetními jednotkami v Azure nebo v označeních velkých instancí.

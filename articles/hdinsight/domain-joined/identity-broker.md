@@ -6,13 +6,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
-ms.date: 12/12/2019
-ms.openlocfilehash: 12d98406b21ed9a3ea27f9aa4abc0db6f536468d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/23/2020
+ms.openlocfilehash: 8f1e0a6aecc9702552a3dd66acc8dc7eb5bf1d85
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251911"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529919"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (Preview)
 
@@ -30,11 +30,13 @@ HIB poskytuje infrastrukturu ověřování, která umožňuje přechod protokolu
 
 Následující diagram znázorňuje moderní tok ověřování založený na protokolu OAuth pro všechny uživatele, včetně federovaných uživatelů po povolení zprostředkovatele ID:
 
-![Tok ověřování s zprostředkovatelem ID](./media/identity-broker/identity-broker-architecture.png)
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Tok ověřování s zprostředkovatelem ID":::
 
 V tomto diagramu musí klient (například prohlížeč nebo aplikace) nejdřív získat token OAuth a potom tokenu předložit bráně v požadavku HTTP. Pokud jste se už přihlásili k jiným službám Azure, jako je Azure Portal, můžete se ke svému clusteru HDInsight přihlásit pomocí jednotného přihlašování (SSO).
 
 Stále se může jednat o mnoho starších verzí aplikací, které podporují jenom základní ověřování (tj. uživatelské jméno a heslo). V těchto scénářích můžete k připojení ke branám clusteru používat i základní ověřování HTTP. V tomto nastavení musíte zajistit připojení k síti z uzlů brány do koncového bodu federace (koncový bod AD FS), aby se zajistila přímá řádková kontrola z uzlů brány.
+
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Tok ověřování s zprostředkovatelem ID":::
 
 Následující tabulku použijte k určení nejlepší možnosti ověřování podle potřeb vaší organizace:
 

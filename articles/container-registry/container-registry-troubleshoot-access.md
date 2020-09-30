@@ -3,12 +3,12 @@ title: Řešení potíží se sítí pomocí registru
 description: Příznaky, příčiny a řešení běžných potíží při přístupu ke službě Azure Container Registry ve virtuální síti nebo za bránou firewall
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 227eeeadb2aef4b4d3feb7923a198b129a6267d3
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 06c5b65537fd7d256010260bb3a93888721f643b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227226"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532444"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Řešení potíží se sítí pomocí registru
 
@@ -32,7 +32,7 @@ Může zahrnovat jednu nebo více z následujících možností:
 * Brána firewall nebo proxy server klienta brání v přístupu k [řešení](#configure-client-firewall-access)
 * Pravidla přístupu k veřejné síti v registru zabraňující přístupu – [řešení](#configure-public-access-to-registry)
 * Konfigurace virtuální sítě brání přístupu – [řešení](#configure-vnet-access)
-* Pokusíte se o integraci Azure Security Center s registrem, který má privátní koncový bod nebo koncový bod služby – [řešení](#configure-image-scanning-solution)
+* Pokoušíte se integrovat Azure Security Center nebo některé jiné služby Azure s registrem, který má privátní koncový bod, koncový bod služby nebo pravidla přístupu veřejných IP adres – [řešení](#configure-service-access)
 
 ## <a name="further-diagnosis"></a>Další Diagnostika 
 
@@ -96,17 +96,22 @@ Související odkazy:
 * [Kubernetes: ladění překladu DNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
 * [Značky služby virtuální sítě](../virtual-network/service-tags-overview.md)
 
-### <a name="configure-image-scanning-solution"></a>Konfigurace řešení pro kontrolu imagí
+### <a name="configure-service-access"></a>Konfigurace přístupu ke službě
 
-Pokud je váš registr nakonfigurovaný s privátním koncovým bodem nebo koncovým bodem služby, nemůžete v současnosti integrovat s Azure Security Center pro kontrolu imagí. Volitelně můžete nakonfigurovat další řešení pro kontrolu imagí, která jsou k dispozici v Azure Marketplace včetně:
+V současné době Azure Security Center nemůžou provádět [kontrolu ohrožení zabezpečení imagí](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) v registru, který omezuje přístup k privátním koncovým bodům, vybraným podsítím nebo IP adresám. Prostředky následujících služeb navíc nemůžou získat přístup k registru kontejneru s omezeními sítě:
 
-* [Azurová nativní cloudová platforma zabezpečení](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security)
-* [Edice TwistLock Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock)
+* Azure DevOps Services 
+* Azure Container Instances
+* Úlohy Azure Container Registry
+
+Pokud se vyžaduje přístup nebo integrace těchto služeb Azure s registrem kontejneru, odeberte omezení sítě. Můžete například odebrat soukromé koncové body registru nebo odebrat nebo upravit pravidla pro veřejný přístup registru.
 
 Související odkazy:
 
 * [Azure Container Registry skenování imagí Security Center](../security-center/azure-container-registry-integration.md)
 * Poskytnutí [zpětné vazby](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)
+* [Konfigurace pravidel sítě veřejných IP adres](container-registry-access-selected-networks.md)
+* [Připojení soukromě ke službě Azure Container Registry pomocí privátního odkazu Azure](container-registry-private-link.md)
 
 
 ## <a name="advanced-troubleshooting"></a>Řešení potíží na pokročilé úrovni

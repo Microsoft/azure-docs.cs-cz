@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf57bea87fcb5e1d1f1bde4eada5a79d2fef52c8
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 555673d1496ac33642e04c09233ba554ee2cca95
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706315"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531237"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Zabezpečení cloudových prostředků s Azure Multi-Factor Authentication a AD FS
 
@@ -38,12 +38,12 @@ K zabezpečení cloudových prostředků nastavte pravidlo deklarace identity ta
 
 5. V Průvodci přidáním pravidla – deklarace identity transformace vyberte v rozevíracím seznamu **Předávat nebo filtrovat příchozí deklarace** a klikněte na **Další**.
 
-   ![Průvodce přidáním pravidla deklarace identity transformace](./media/howto-mfa-adfs/trustedip3.png)
+   ![Snímek obrazovky se zobrazí Průvodce přidáním pravidla deklarace identity, kde vyberete šablonu pravidla deklarace identity.](./media/howto-mfa-adfs/trustedip3.png)
 
 6. Pojmenujte pravidlo. 
 7. Jako typ příchozí deklarace identity vyberte **Odkazy na metody ověřování**.
 8. Vyberte **Předávat všechny hodnoty deklarací identity**.
-    ![Průvodce přidáním pravidla deklarace identity transformace](./media/howto-mfa-adfs/configurewizard.png)
+    ![Snímek obrazovky s průvodcem přidat transformační pravidlo deklarace identity, kde můžete vybrat možnost předat všechny hodnoty deklarace identity.](./media/howto-mfa-adfs/configurewizard.png)
 9. Klikněte na **Finish** (Dokončit). Uzavřete konzolu pro správu služby AD FS.
 
 ## <a name="trusted-ips-for-federated-users"></a>Důvěryhodné IP adresy pro federované uživatele
@@ -63,7 +63,7 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
 4. V pravidla transformace vystavení klikněte na **Přidat pravidlo.** 
     ![ Přidání pravidla deklarace identity](./media/howto-mfa-adfs/trustedip2.png)
 5. V Průvodci přidáním pravidla – deklarace identity transformace vyberte v rozevíracím seznamu **Předávat nebo filtrovat příchozí deklarace** a klikněte na **Další**.
-   ![Průvodce přidáním pravidla deklarace identity transformace](./media/howto-mfa-adfs/trustedip3.png)
+   ![Snímek obrazovky s průvodcem pro přidání transformačního pravidla deklarace, kde můžete vybrat možnost předávat nebo filtrovat příchozí deklarace identity.](./media/howto-mfa-adfs/trustedip3.png)
 6. Do pole vedle názvu pravidla deklarace identity zadejte název pravidla. Příklad: InsideCorpNet.
 7. V rozevíracím seznamu vedle Typ příchozí deklarace vyberte **Uvnitř podnikové sítě**.
    ![Přidávání v rámci deklarace identity podnikové sítě](./media/howto-mfa-adfs/trustedip4.png)

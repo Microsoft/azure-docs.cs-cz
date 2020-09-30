@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: dd61ac9751010d57cbf5b742a5081beb3ac560e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d161b287f9706473c96d25684fa23a2c94b8c3e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826056"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532145"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrace úloh Azure Scheduleru do Azure Logic Apps
 
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak můžete naplánovat jednorázové a opakovan�
 
 Další informace najdete v tématu [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md) nebo zkuste vytvořit svou první aplikaci logiky v tomto rychlém startu: [vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -96,7 +96,7 @@ Můžete spustit více jednorázových úloh vytvořením pouze jedné aplikace 
 
    Můžete například zahrnout akci HTTP, která odešle požadavek na adresu URL, nebo akce, které pracují s frontami úložiště, Service Bus frontami nebo Service Bus témata:
 
-   ![Akce HTTP](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
+   ![Snímek obrazovky ukazuje prodlevu, dokud akce následovaná akcí H T T P s metodou POST.](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
 
 1. Až budete hotovi, uložte aplikaci logiky.
 
@@ -155,7 +155,7 @@ V Logic Apps se každou jednorázovou úlohu spouští jako jediná instance spu
 
    Můžete například zahrnout akci HTTP, která odešle požadavek na adresu URL, nebo akce, které pracují s frontami úložiště, Service Bus frontami nebo Service Bus témata:
 
-   ![Akce HTTP](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
+   ![Snímek obrazovky ukazuje akci H T T P s metodou POST.](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
 
 1. Až budete hotovi, uložte aplikaci logiky.
 
@@ -237,7 +237,7 @@ Pokud má vaše předplatné Azure placený plán podpory, můžete v Azure Port
 
 1. Vyberte požadovanou možnost podpory. Pokud máte placený plán podpory, vyberte **Další**.
 
-**Komunita**
+**Společenství**
 
 * [Microsoft Q&Stránka s otázkou pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: bee3d265554367b816c744ed892975ed60712f8b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c8d4696f2e7d181783d62df2e414329eaa246dce
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318105"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529851"
 ---
 # <a name="what-is-azure-private-link"></a>Co je privátní propojení Azure? 
 Privátní odkaz Azure vám umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám, které hostuje zákaznická/Partnerská služba Azure, prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti.
@@ -56,19 +56,19 @@ Privátní propojení Azure přináší následující výhody:
 |Azure Kubernetes Service – rozhraní API pro Kubernetes | Všechny veřejné oblasti      |  | GA   <br/> [Další informace](https://docs.microsoft.com/azure/aks/private-clusters)   |
 |Azure Search | Všechny veřejné oblasti <br/> Všechny oblasti státní správy | Podporováno u služby v privátním režimu | GA   <br/> [Další informace](https://docs.microsoft.com/azure/search/search-security-overview#endpoint-access)    |
 |Azure Container Registry | Všechny veřejné oblasti<br/> Všechny oblasti státní správy    | Podporováno s úrovní Premium registru kontejneru. [Kliknutí pro úrovně](https://docs.microsoft.com/azure/container-registry/container-registry-skus)| GA   <br/> [Další informace](https://docs.microsoft.com/azure/container-registry/container-registry-private-link)   |
-|Azure App Configuration | Všechny veřejné oblasti      |  | Náhled   |
+|Azure App Configuration | Všechny veřejné oblasti      |  | Preview   |
 |Azure Backup | Všechny veřejné oblasti<br/> Všechny oblasti státní správy   |  | GA   <br/> [Další informace](https://docs.microsoft.com/azure/backup/private-endpoints)   |
 |Azure Event Hub | Všechny veřejné oblasti<br/>Všechny oblasti státní správy      |   | GA   <br/> [Další informace](https://docs.microsoft.com/azure/event-hubs/private-link-service)  |
 |Azure Service Bus | Všechny veřejné oblasti<br/>Všechny oblasti státní správy  | Podporováno s úrovní Premium Azure Service Bus. [Kliknutí pro úrovně](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging) | GA   <br/> [Další informace](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
-|Azure Relay | Všechny veřejné oblasti      |  | Náhled <br/> [Další informace](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
+|Azure Relay | Všechny veřejné oblasti      |  | Preview <br/> [Další informace](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
 |Azure Event Grid| Všechny veřejné oblasti<br/> Všechny oblasti státní správy       |  | GA   <br/> [Další informace](https://docs.microsoft.com/azure/event-grid/network-security) |
-|Azure Web Apps | Všechny veřejné oblasti      | Podporováno pro PremiumV2 Windows a Linux a elastické funkce Premium  | Náhled   <br/> [Další informace](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
-|Azure Machine Learning | VÝCHODNÍ USA, STŘED USA – JIH,<br/>USA – ZÁPAD, ZÁPADNÍ USA 2,<br/>STŘEDNÍ KANADA, JIHOVÝCHODNÍ ASIE,<br/>JAPONSKO – VÝCHOD, SEVERNÍ EVROPA,<br/>VELKÁ BRITÁNIE – JIH, VÝCHODNÍ AUSTRÁLIE     |  | Náhled   <br/> [Další informace](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
-| Azure Automation  | Všechny veřejné oblasti |  | Náhled | |
+|Azure Web Apps | Všechny veřejné oblasti      | Podporováno pro PremiumV2 Windows a Linux a elastické funkce Premium  | Preview   <br/> [Další informace](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|Azure Machine Learning | VÝCHODNÍ USA, STŘED USA – JIH,<br/>USA – ZÁPAD, ZÁPADNÍ USA 2,<br/>STŘEDNÍ KANADA, JIHOVÝCHODNÍ ASIE,<br/>JAPONSKO – VÝCHOD, SEVERNÍ EVROPA,<br/>VELKÁ BRITÁNIE – JIH, VÝCHODNÍ AUSTRÁLIE     |  | Preview   <br/> [Další informace](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
+| Azure Automation  | Všechny veřejné oblasti |  | Preview | |
 | Azure IoT Hub | Všechny veřejné oblasti    |  | GA   <br/> [Další informace](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
-| Azure SignalR | VÝCHODNÍ USA, STŘED USA – JIH,<br/>ZÁPADNÍ USA 2, všechny čínské oblasti      |  | Náhled   <br/> [Další informace](https://aka.ms/asrs/privatelink)   |
+| Azure SignalR | VÝCHODNÍ USA, STŘED USA – JIH,<br/>ZÁPADNÍ USA 2, všechny čínské oblasti      |  | Preview   <br/> [Další informace](https://aka.ms/asrs/privatelink)   |
 | Azure Monitor <br/>(Log Analytics & Application Insights) | Všechny veřejné oblasti      |  | GA   <br/> [Další informace](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
-| Azure Batch | STŘED USA, STŘED USA – SEVER, STŘED USA – JIH, STŘED USA – ZÁPAD, VÝCHODNÍ USA, VÝCHODNÍ USA 2, ZÁPADNÍ USA, ZÁPADNÍ USA 2, VÝCHODNÍ ASIE, FRANCIE – STŘED, AUSTRÁLIE – JIH, SEVERNÍ EVROPA, ZÁPADNÍ EVROPA, JAPONSKO – VÝCHOD, JAPONSKO – ZÁPAD, AUSTRÁLIE – VÝCHOD <br/> Všechny oblasti státní správy  | | GA <br/> [Další informace](https://docs.microsoft.com/azure/batch/private-connectivity) |
+| Azure Batch | Všechny veřejné oblasti kromě: Německo – střed, Německo – SEVEROVÝCHOD <br/> Všechny oblasti státní správy  | | GA <br/> [Další informace](https://docs.microsoft.com/azure/batch/private-connectivity) |
 |Azure Data Factory | Všechny veřejné oblasti<br/> Všechny oblasti státní správy<br/>Všechny čínské oblasti    | Přihlašovací údaje musí být uložené v trezoru klíčů Azure.| GA   <br/> [Další informace](https://docs.microsoft.com/azure/data-factory/data-factory-private-link)   |
 
 
@@ -81,7 +81,7 @@ Privátní propojení Azure má integraci s Azure Monitor. Tato kombinace umož�
 
  - Archivace protokolů do účtu úložiště.
  - Streamování událostí do centra událostí.
- - Azure Monitor protokolování.
+ - Protokolování Azure Monitor
 
 Na Azure Monitor můžete získat přístup k následujícím informacím: 
 - **Privátní koncový bod**: 

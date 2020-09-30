@@ -9,30 +9,55 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c0d3d9c74be8dabaec20ff5d4c7e7cfc74d8eef
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8d1c9027b6a9a7b295ce83e26281832beca1bc33
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936051"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531951"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>Řešení potíží s PostgreSQL skupinami serverů s škálovatelným škálováním
+Tento článek popisuje některé postupy, které můžete použít k řešení potíží se skupinou serverů. Kromě tohoto článku si můžete přečíst, jak používat [Kibana](monitor-grafana-kibana.md) k hledáníí protokolů nebo k vizualizaci metriky o skupině serverů pomocí [Grafana](monitor-grafana-kibana.md) . 
 
-Poznámkové bloky můžou zdokumentovat postupy včetně obsahu Markdownu, který popisuje, jak to udělat. Může také poskytnout spustitelný kód pro automatizaci procedury.  Tento model je vhodný pro vše od standardních operačních postupů až po Průvodce odstraňováním potíží.
+## <a name="getting-more-details-about-the-execution-of-an-azdata-command"></a>Získání dalších podrobností o spuštění příkazu azdata
+Můžete přidat parametr **--Debug** k jakémukoli azdata příkazu, který spustíte. Provedete to tak, že v konzole zobrazíte další informace o spuštění tohoto příkazu. Měli byste najít informace, které vám pomůžou pochopit, jak se chování tohoto příkazu hodí.
+Můžete například spustit
+```console
+azdata arc postgres server create -n postgres01 -w 2 --debug
+```
+
+nebo
+```console
+azdata arc postgres server edit -n postgres01 --extension SomeExtensionName --debug
+```
+
+Kromě toho můžete pomocí parametru--Help na jakémkoli příkazu azdata zobrazit nápovědu, seznam parametrů pro konkrétní příkaz. Příklad:
+```console
+azdata arc postgres server create --help
+```
+
+
+## <a name="collecting-logs-of-the-data-controller-and-your-server-groups"></a>Shromažďování protokolů řadiče dat a skupin serverů
+Přečtěte si článek o [získání protokolů pro datové služby s podporou ARC Azure](troubleshooting-get-logs.md) .
+
+
+
+## <a name="interactive-troubleshooting-with-jupyter-notebooks-in-azure-data-studio"></a>Interaktivní řešení potíží s Jupyter poznámkovým blokem v Azure Data Studio
+Poznámkové bloky můžou dokumentovat postupy zahrnutím obsahu Markdown s popisem, co a jak se má udělat. Také můžou poskytovat spustitelný kód pro automatizaci určitého postupu.  Tento model je užitečný pro cokoli od standardních provozních postupů až po průvodce odstraňováním potíží.
 
 Pojďme například řešit potíže s PostgreSQL skupinou serverů s škálovatelným škálováním, které mohou mít problémy s použitím Azure Data Studio.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="install-tools"></a>Instalace nástrojů
+### <a name="install-tools"></a>Instalace nástrojů
 
 Nainstalujte Azure Data Studio `kubectl` a `azdata` na klientském počítači, který používáte ke spuštění poznámkového bloku v Azure Data Studio. Postupujte prosím podle pokynů v tématu [instalace klientských nástrojů](install-client-tools.md)
 
-## <a name="update-the-path-environment-variable"></a>Aktualizuje proměnnou prostředí PATH.
+### <a name="update-the-path-environment-variable"></a>Aktualizuje proměnnou prostředí PATH.
 
 Ujistěte se, že tyto nástroje lze vyvolat odkudkoli na tomto klientském počítači. Například na klientském počítači s Windows aktualizujte proměnnou prostředí PATH systému a přidejte složku, do které jste nainstalovali kubectl.
 
-## <a name="sign-in-with-azdata"></a>Přihlásit se pomocí `azdata`
+### <a name="sign-in-with-azdata"></a>Přihlásit se pomocí `azdata`
 
 Přihlaste se k řadiči dat ARC z tohoto klientského počítače a před spuštěním Azure Data Studio. Uděláte to tak, že spustíte příkaz jako:
 
@@ -46,7 +71,7 @@ Nahraďte `<IP address>` IP adresou vašeho clusteru Kubernetes a `<port>` porte
 azdata login --help
 ```
 
-## <a name="log-into-your-kubernetes-cluster-with-kubectl"></a>Přihlášení ke clusteru Kubernetes pomocí kubectl
+### <a name="log-into-your-kubernetes-cluster-with-kubectl"></a>Přihlášení ke clusteru Kubernetes pomocí kubectl
 
 K tomu můžete použít ukázkové příkazy uvedené v [tomto](https://blog.christianposta.com/kubernetes/logging-into-a-kubernetes-cluster-with-kubectl/) blogovém příspěvku.
 Mohli byste spustit například následující příkazy:
@@ -59,7 +84,7 @@ kubectl config set-context default/my_kubeuser/ArcDataControllerAdmin --user=Arc
 kubectl config use-context default/my_kubeuser/ArcDataControllerAdmin
 ```
 
-### <a name="the-troubleshooting-notebook"></a>Poznámkový blok řešení potíží
+#### <a name="the-troubleshooting-notebook"></a>Poznámkový blok řešení potíží
 
 Spusťte Azure Data Studio a otevřete Poznámkový blok řešení potíží. 
 
@@ -72,9 +97,9 @@ Implementujte kroky popsané v tématu  [033-Manage-Postgres-with-AzureDataStudi
 
 :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook.jpg" alt-text="Azure Data Studio – otevřít poznámkový blok pro řešení potíží s PostgreSQL":::
 
-TSG100 – Poznámkový **blok pro poradce při potížích s PostgreSQLem s podporou škálování na více koncových akcích ve službě Azure ARC** : :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio – použití PostgreSQL":::
+TSG100 – Poznámkový **blok pro poradce při potížích s PostgreSQLem s podporou škálování na více koncových akcích ve službě Azure ARC** : :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio – otevřít poznámkový blok pro řešení potíží s PostgreSQL":::
 
-### <a name="run-the-scripts"></a>Spuštění skriptů
+#### <a name="run-the-scripts"></a>Spuštění skriptů
 Vyberte tlačítko spustit vše v horní části pro spuštění poznámkového bloku najednou, nebo můžete krokovat a provádět každou buňku kódu jednu po druhém.
 
 Zobrazit výstup z provádění buněk kódu s případnými případnými problémy.

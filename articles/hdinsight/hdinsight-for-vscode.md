@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: bf31ad3311d6cbfd82ad1071d28bb7fee1bb9d2b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: bb2fff699b31d8b3b311180c4b85e2bfd1da892c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876780"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530149"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Použití nástrojů pro podregistr Spark & pro Visual Studio Code
 
@@ -21,7 +21,7 @@ Naučte se používat nástroje Apache Spark & podregistr pro Visual Studio Code
 
 Nástroje Spark & podregistr je možné nainstalovat na platformy, které Visual Studio Code podporuje. Všimněte si následujících požadavků pro různé platformy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 
@@ -29,13 +29,13 @@ K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Mono](https://www.mono-project.com/docs/getting-started/install/). Mono se vyžaduje jenom pro Linux a macOS.
 - [PySpark interaktivní prostředí pro Visual Studio Code](set-up-pyspark-interactive-environment.md).
-- Místní adresář. Tento článek používá **C:\HD\HDexample**.
+- Místní adresář. Tento článek používá  **C:\HD\HDexample**.
 
 ## <a name="install-spark--hive-tools"></a>Instalace nástrojů pro podregistr Spark &
 
 Po splnění požadavků můžete nainstalovat nástroje Spark & pro Visual Studio Code pomocí následujících kroků:
 
-1. Otevřete nástroj Visual Studio Code.
+1. Otevřete Visual Studio Code.
 
 2. V řádku nabídek přejděte k **zobrazení**  >  **rozšíření**.
 
@@ -199,11 +199,11 @@ K odeslání dotazů pomocí interaktivního příkazu PySpark použijte násled
 
 4. V pravém dolním rohu okna se zobrazí výzva k instalaci jádra PySpark. Kliknutím na tlačítko **nainstalovat** můžete pokračovat v instalaci PySpark. nebo kliknutím na tlačítko **Přeskočit** tento krok přeskočte.
 
-   ![nainstalovat jádro pyspark](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
+   ![Snímek obrazovky ukazuje možnost Přeskočit instalaci PySpark.](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
 5. Pokud ho potřebujete nainstalovat později, můžete přejít na **File**  >  **Preference**  >  **Nastavení**předvoleb souborů a pak zrušit kontrolu **HDInsight: Povolit v nastavení Přeskočit instalaci Pyspark** . 
     
-    ![nainstalovat jádro pyspark](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
+    ![Snímek obrazovky s možností povolit instalaci funkce Skip Pyspark](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
 6. Pokud instalace proběhla úspěšně v kroku 4, v pravém dolním rohu okna se zobrazí okno se zprávou "PySparked installeded" (úspěšně nainstalováno). Kliknutím na tlačítko **znovu** načíst okno znovu načtete.
     ![pyspark se úspěšně nainstaloval.](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
@@ -214,7 +214,7 @@ K odeslání dotazů pomocí interaktivního příkazu PySpark použijte násled
 
     ![interaktivní kontextová nabídka pyspark](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-9. Pokud jste nezadali výchozí cluster, vyberte cluster. Po chvíli se na nové kartě zobrazí **interaktivní výsledky Pythonu** . Kliknutím na PySpark přepněte jádro na **PySpark**a kód se úspěšně spustí. Nástroje také umožňují odeslat blok kódu namísto celého souboru skriptu pomocí místní nabídky:
+9. Pokud jste nezadali výchozí cluster, vyberte cluster. Po chvíli se **interaktivní výsledky Pythonu** zobrazí na nové kartě. Kliknutím na PySpark přepněte jádro na **PySpark**a kód se úspěšně spustí. Nástroje také umožňují odeslat blok kódu namísto celého souboru skriptu pomocí místní nabídky:
 
    ![interaktivní okno pyspark interaktivního Pythonu](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
@@ -331,7 +331,7 @@ Metoda 2: odešle soubor a Všimněte si, že `.vscode` Složka je automaticky p
 
     **Příspěvek/Batches** Text žádosti
 
-    | name | description | typ |
+    | name | Popis | typ |
     | --- | --- | --- |
     |  – soubor | Soubor obsahující aplikaci, která se má provést | Cesta (povinné) |
     | proxyUser | Uživatel, který se má zosobnit při spuštění úlohy | Řetězec |
@@ -352,7 +352,7 @@ Metoda 2: odešle soubor a Všimněte si, že `.vscode` Složka je automaticky p
 
     Tělo odpovědi vytvořeného objektu Batch
 
-    | name | description | typ |
+    | name | Popis | typ |
     | --- | ---| --- |
     | ID | ID relace | Int |
     | appId | ID aplikace této relace | Řetězec |

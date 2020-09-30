@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: 6ba0caa2546fdb9d4845e2c7adf87a06d906dd12
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265156"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531866"
 ---
 # <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
 
-Partnerské vztahy virtuálních sítí umožňují bezproblémové připojení sítí v [Azure Virtual Network](virtual-networks-overview.md). Virtuální sítě se zobrazí jako jedna pro účely připojení. Přenos dat mezi virtuálními počítači používá páteřní infrastrukturu Microsoftu. Podobně jako provoz mezi virtuálními počítači ve stejné síti se provoz směruje jenom přes *privátní* síť Microsoftu.
+Partnerské vztahy virtuálních sítí umožňují bezproblémové připojení dvou nebo více [virtuálních sítí](virtual-networks-overview.md) v Azure. Virtuální sítě se zobrazí jako jedna pro účely připojení. Přenos dat mezi virtuálními počítači ve virtuálních sítích s navázaným partnerským vztahem používá páteřní infrastrukturu Microsoftu. Podobně jako provoz mezi virtuálními počítači ve stejné síti se provoz směruje jenom přes *privátní* síť Microsoftu.
 
 Azure podporuje následující typy partnerských vztahů:
 

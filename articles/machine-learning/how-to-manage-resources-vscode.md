@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 09/03/2020
-ms.openlocfilehash: abdd04f59ee820585d58817297d161f68bd952f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/30/2020
+ms.openlocfilehash: 1120a3636b7ce24dde0d33c213f9063f910123c4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897399"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530625"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Správa prostředků Azure Machine Learning s rozšířením VS Code (Preview)
 
@@ -24,7 +24,7 @@ Naučte se spravovat Azure Machine Learning prostředky s rozšířením VS Code
 
 ![Rozšíření Azure Machine Learning VS Code](media/how-to-manage-resources-vscode/azure-machine-learning-vscode-extension.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud ho ještě nemáte, zaregistrujte se a vyzkoušejte si [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 - Visual Studio Code. Pokud ho nemáte, [nainstalujte ho](https://code.visualstudio.com/docs/setup/setup-overview).
@@ -201,6 +201,7 @@ Další informace najdete v tématu [experimenty](concept-azure-machine-learning
 1. Rozbalte uzel **experimenty** v pracovním prostoru.
 1. Klikněte pravým tlačítkem na experiment, který chcete spustit.
 1. Na řádku aktivity vyberte ikonu pro **Spuštění experimentu** .
+1. Vyberte, zda chcete experiment spustit místně nebo vzdáleně. Další informace o místním spouštění a ladění experimentů najdete v [Průvodci laděním](how-to-debug-visual-studio-code.md) .
 1. Zvolte vaše předplatné.
 1. Vyberte Azure pracovní prostor ML ke spuštění experimentu v rámci.
 1. Vyberte experiment.
@@ -320,7 +321,7 @@ Postup vytvoření konfigurace spuštění v rozšíření:
 
 1. Rozbalte uzel předplatné, který obsahuje váš pracovní prostor.
 1. Rozbalte uzel **výpočetní clustery** do vašeho pracovního prostoru.
-1. Klikněte pravým tlačítkem na cíl výpočtů, který chcete vytvořit, a vyberte **vytvořit konfiguraci spuštění**.
+1. Klikněte pravým tlačítkem na cíl výpočtů, na kterém chcete vytvořit konfiguraci spuštění, a vyberte **vytvořit konfiguraci spuštění**.
 1. Na příkazovém řádku:
     1. Zadejte název pro svůj cíl služby Compute.
     1. Vyberte nebo vytvořte nové prostředí.

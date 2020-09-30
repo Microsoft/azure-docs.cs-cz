@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: f6a042dfee000dd6341368b46db32fe36060cc72
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 2f57d20df6adbb7c1a0c73958cc10035126e29b8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171584"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530982"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Monitorování a ladění Azure Database for PostgreSQL – jeden server
 Sledování dat o vašich serverech vám pomůže při řešení potíží a optimalizaci pro vaše úlohy. Azure Database for PostgreSQL poskytuje různé možnosti monitorování, které poskytují přehled o chování serveru.
@@ -33,12 +33,12 @@ Tyto metriky jsou k dispozici pro Azure Database for PostgreSQL:
 |serverlog_storage_percent|Procentuální hodnota úložiště protokolu serveru|Procento|Procento využití úložiště protokolu serveru z maximálního úložiště protokolu serveru serveru.|
 |serverlog_storage_usage|Využité úložiště protokolu serveru|Bajty|Velikost používaného úložiště protokolu serveru.|
 |serverlog_storage_limit|Limit úložiště protokolu serveru|Bajty|Maximální úložiště protokolu serveru pro tento server.|
-|active_connections|Aktivní připojení|Count|Počet aktivních připojení k serveru.|
-|connections_failed|Neúspěšná připojení|Count|Počet navázaných připojení, u kterých došlo k chybě.|
+|active_connections|Aktivní připojení|Počet|Počet aktivních připojení k serveru.|
+|connections_failed|Neúspěšná připojení|Počet|Počet navázaných připojení, u kterých došlo k chybě.|
 |network_bytes_egress|Síťové výstupy|Bajty|Síť vyprší napříč aktivními připojeními.|
 |network_bytes_ingress|Síťové vstupy|Bajty|Síť v rámci aktivních připojení.|
 |backup_storage_used|Využité úložiště záloh|Bajty|Velikost využitého úložiště záloh. Tato metrika představuje součet úložiště spotřebovaného všemi úplnými zálohami databáze, rozdílové zálohy a zálohy protokolů, které jsou zachovány na základě nastaveného období uchovávání záloh pro server. Frekvence zálohování je spravována službou a je vysvětlena v [článku koncepty](concepts-backup.md). V případě geograficky redundantního úložiště je využití úložiště zálohování dvakrát místní redundantní úložiště.|
-|pg_replica_log_delay_in_bytes|Maximální prodleva napříč replikami|Bajty|Prodleva v bajtech mezi hlavní a nejvyšším zpožděním repliky. Tato metrika je k dispozici pouze na hlavním serveru.|
+|pg_replica_log_delay_in_bytes|Maximální prodleva napříč replikami|Bajty|Prodleva v bajtech mezi primárním a největším zpožděním repliky. Tato metrika je k dispozici pouze na primárním serveru.|
 |pg_replica_log_delay_in_seconds|Prodleva repliky|Sekundy|Čas od poslední opakované transakce. Tato metrika je k dispozici pouze pro servery repliky.|
 
 ## <a name="server-logs"></a>Protokoly serveru

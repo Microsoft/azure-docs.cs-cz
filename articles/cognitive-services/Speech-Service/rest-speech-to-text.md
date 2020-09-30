@@ -11,23 +11,26 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 874978288a38ff56ce220dd13cb6f3dfec902b2d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 98c42a61e65935446f948e35cb08ed2893dd0b7b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934578"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532513"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST API pro převod řeči na text
 
 Jako alternativu k [sadě Speech SDK](speech-sdk.md)vám služba rozpoznávání řeči umožňuje převod řeči na text pomocí REST API. Každý přístupný koncový bod je přidružen k oblasti. Vaše aplikace vyžaduje klíč předplatného pro koncový bod, který plánujete použít. REST API je velmi omezené a měl by se použít jenom v případě, že [sada Speech SDK](speech-sdk.md) nemůže.
 
-Než začnete používat převod řeči na text, REST API pochopit:
+Před použitím REST API řeči na text zvažte následující:
 
 * Požadavky, které používají REST API a přímo odesílají zvuk, můžou obsahovat až 60 sekund zvukového přenosu.
 * REST API převodu řeči na text vrátí pouze konečné výsledky. Neposkytují se částečné výsledky.
 
 Pokud je odeslání delšího zvukového požadavku nutné pro vaši aplikaci, zvažte použití [sady Speech SDK](speech-sdk.md) nebo souborového REST API, jako je například [Batch přepis](batch-transcription.md).
+
+> [!TIP]
+> Podívejte [se na koncové body Azure pro státní](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) správu (FairFax).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -46,13 +49,13 @@ Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti vaš
 > [!NOTE]
 > Parametr Language se musí připojit k adrese URL, aby nedošlo k 4xx chybě HTTP. Například jazyk nastavený na AMERICKou angličtinu pomocí Západní USAho koncového bodu je: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US` .
 
-## <a name="query-parameters"></a>Parametry dotazu
+## <a name="query-parameters"></a>Parametry dotazů
 
 Tyto parametry mohou být zahrnuty do řetězce dotazu žádosti REST.
 
 | Parametr | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `language` | Identifikuje mluvený jazyk, který se rozpozná. Viz [podporované jazyky](language-support.md#speech-to-text). | Požadováno |
+| `language` | Identifikuje mluvený jazyk, který se rozpozná. Viz [podporované jazyky](language-support.md#speech-to-text). | Vyžadováno |
 | `format` | Určuje formát výsledku. Přijaté hodnoty jsou `simple` a `detailed` . Jednoduché výsledky zahrnují `RecognitionStatus` , `DisplayText` , `Offset` a `Duration` . Podrobné odpovědi obsahují čtyři různé reprezentace zobrazovaného textu. Výchozí hodnota je `simple`. | Volitelné |
 | `profanity` | Určuje způsob zpracování vulgárních výrazů ve výsledcích rozpoznávání. Přijatelné jsou hodnoty `masked` , které nahradí vulgární znaky hvězdičkami, `removed` , které odstraní všechny vulgární výrazy z výsledku, nebo `raw` , které obsahují vulgární výrazy ve výsledku. Výchozí hodnota je `masked`. | Volitelné |
 | `cid` | Při použití [portálu Custom Speech](how-to-custom-speech.md) k vytváření vlastních modelů můžete na stránce **nasazení** použít vlastní modely přes **ID koncového bodu** . Jako argument pro parametr řetězce dotazu použijte **ID koncového bodu** `cid` . | Volitelné |
@@ -66,7 +69,7 @@ Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro žádos
 | `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Buď toto záhlaví, nebo `Authorization` je povinné. |
 | `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Buď toto záhlaví, nebo `Ocp-Apim-Subscription-Key` je povinné. |
 | `Pronunciation-Assessment` | Určuje parametry pro zobrazení skóre výslovnosti ve výsledcích rozpoznávání, které vyhodnocuje kvalitu výslovnosti vstupu řeči s indikátory přesnosti, Fluency, úplností atd. Tento parametr je JSON kódovaný v kódování Base64 obsahující několik podrobných parametrů. Informace o tom, jak vytvořit tuto hlavičku, najdete v tématu [parametry vyhodnocení výslovnosti](#pronunciation-assessment-parameters) . | Volitelné |
-| `Content-type` | Popisuje formát a kodek poskytovaných zvukových dat. Přijaté hodnoty jsou `audio/wav; codecs=audio/pcm; samplerate=16000` a `audio/ogg; codecs=opus` . | Požadováno |
+| `Content-type` | Popisuje formát a kodek poskytovaných zvukových dat. Přijaté hodnoty jsou `audio/wav; codecs=audio/pcm; samplerate=16000` a `audio/ogg; codecs=opus` . | Vyžadováno |
 | `Transfer-Encoding` | Určuje, zda jsou odesílána zvuková data v bloku, nikoli jeden soubor. Tuto hlavičku použijte pouze v případě, že jsou zvuková data v bloku. | Volitelné |
 | `Expect` | Pokud používáte přenos přes blok dat, pošlete `Expect: 100-continue` . Služba rozpoznávání řeči potvrdí počáteční požadavek a očekává další data.| Vyžaduje se, když se posílají zvuková data v bloku. |
 | `Accept` | Je-li tento příkaz zadán, musí být `application/json` . Služba rozpoznávání řeči poskytuje výsledky ve formátu JSON. Některé architektury požadavků poskytují nekompatibilní výchozí hodnotu. Je vhodné vždy zahrnout `Accept` . | Volitelné, ale doporučené. |
@@ -89,10 +92,10 @@ Tato tabulka uvádí seznam požadovaných a volitelných parametrů pro posouze
 
 | Parametr | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| ReferenceText | Text, proti kterému bude výslovnost vyhodnocena. | Požadováno |
+| ReferenceText | Text, proti kterému bude výslovnost vyhodnocena. | Vyžadováno |
 | GradingSystem | Systém bodů pro kalibraci skóre. Přijaté hodnoty jsou `FivePoint` a `HundredMark` . Výchozí hodnota je `FivePoint`. | Volitelné |
 | Členitost | Členitost vyhodnocení. Přípustné hodnoty jsou, což zobrazuje skóre pro úplný text, na úrovni aplikace Word a foném, ve kterém se zobrazuje skóre `Phoneme` `Word` pro úplný text a na úrovni slova, ve `FullText` kterém se zobrazuje skóre pouze na úrovni celého textu. Výchozí hodnota je `Phoneme`. | Volitelné |
-| Dimenze | Definuje výstupní kritéria. Akceptují se hodnoty `Basic` , které ukazují přesnost přesnosti, `Comprehensive` zobrazuje skóre dalších dimenzí (například skóre Fluency a skóre úplnosti na úrovni úplného textu, typ chyby na úrovni slova). Chcete-li zobrazit definice různých dimenzí skóre a typů chyb aplikace Word, zkontrolujte [parametry odpovědi](#response-parameters) . Výchozí hodnota je `Basic`. | Volitelné |
+| Rozměr | Definuje výstupní kritéria. Akceptují se hodnoty `Basic` , které ukazují přesnost přesnosti, `Comprehensive` zobrazuje skóre dalších dimenzí (například skóre Fluency a skóre úplnosti na úrovni úplného textu, typ chyby na úrovni slova). Chcete-li zobrazit definice různých dimenzí skóre a typů chyb aplikace Word, zkontrolujte [parametry odpovědi](#response-parameters) . Výchozí hodnota je `Basic`. | Volitelné |
 | EnableMiscue | Povolí výpočet miscue. Když je tato možnost povolená, vyslovované slova se porovnají s referenčním textem a budou označená vynechání nebo vložení na základě porovnání. Přijaté hodnoty jsou `False` a `True` . Výchozí hodnota je `False`. | Volitelné |
 | ScenarioId | Identifikátor GUID označující systém přizpůsobeného bodu. | Volitelné |
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: bf5ebafa1b1ad9e2cfabcfc3d474392ecdbc98e6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dac1a09b7984cdc8deca22ced1e8018a761979e2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268277"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531611"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Přidání automatického dokončování a návrhů do klientských aplikací
 
@@ -56,8 +56,8 @@ Pro referenční stránky REST a .NET SDK použijte tyto odkazy:
 
 + [REST API návrhů](/rest/api/searchservice/suggestions) 
 + [REST API automatického dokončování](/rest/api/searchservice/autocomplete) 
-+ [Metoda SuggestWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [Metoda AutocompleteWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [Metoda SuggestWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync)
++ [Metoda AutocompleteWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
 
 ## <a name="structure-a-response"></a>Strukturování odpovědi
 
@@ -67,7 +67,7 @@ Odpovědi jsou ve tvaru podle parametrů v žádosti. Pro automatické dokončov
 
 V případě návrhů byste měli dál vylepšit odpověď, aby nedocházelo k duplicitám nebo co se jeví jako nesouvisející výsledky. Pro řízení výsledků přidejte do žádosti více parametrů. Následující parametry se vztahují na automatické dokončování i návrhy, ale mohou být vhodnější pro návrhy, zejména v případě, že modul pro návrh obsahuje více polí.
 
-| Parametr | Využití |
+| parametr | Využití |
 |-----------|-------|
 | **$select** | Máte-li v nástroji pro návrh více **sourceFields** , pomocí **$Select** vyberte, které pole přispívá k hodnotám ( `$select=GameTitle` ). |
 | **searchFields** | Omezí dotaz na konkrétní pole. |
@@ -139,7 +139,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Navrhnout funkci
 
-Pokud používáte jazyk C# a aplikaci MVC, soubor **HomeController.cs** v adresáři Controllers je místo, kde můžete vytvořit třídu pro navrhované výsledky. V rozhraní .NET je funkce navrhovat založená na [metodě DocumentsOperationsExtensions. navrhuje](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet). Další informace o sadě .NET SDK najdete v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](./search-howto-dotnet-sdk.md).
+Pokud používáte jazyk C# a aplikaci MVC, soubor **HomeController.cs** v adresáři Controllers je místo, kde můžete vytvořit třídu pro navrhované výsledky. V rozhraní .NET je funkce navrhovat založená na [metodě DocumentsOperationsExtensions. navrhuje](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest). Další informace o sadě .NET SDK najdete v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](./search-howto-dotnet-sdk.md).
 
 `InitSearch`Metoda vytvoří ověřeného klienta http indexu pro službu Azure kognitivní hledání. Vlastnosti třídy [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters) určují, která pole se prohledávají a vrátí ve výsledcích, počet shod a zda se používá přibližná shoda. 
 
@@ -177,7 +177,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 }
 ```
 
-Funkce Suggest přebírá dva parametry, které určují, jestli se mají vracet zvýrazněné shody nebo jestli se má kromě vstupního hledaného výrazu použít i přibližná shoda. Metoda vytvoří [objekt SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), který je poté předán rozhraní API navrhnout. Výsledek se pak převede do formátu JSON, aby ho bylo možné zobrazit v klientovi.
+Funkce Suggest přebírá dva parametry, které určují, jestli se mají vracet zvýrazněné shody nebo jestli se má kromě vstupního hledaného výrazu použít i přibližná shoda. Metoda vytvoří [objekt SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters), který je poté předán rozhraní API navrhnout. Výsledek se pak převede do formátu JSON, aby ho bylo možné zobrazit v klientovi.
 
 ## <a name="autocomplete"></a>Automatické dokončování
 
@@ -220,7 +220,7 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>Funkce AutoComplete
 
-Automatické dokončování je založené na [metodě DocumentsOperationsExtensions. AutoComplete](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet). Stejně jako u návrhů by tento blok kódu byl v souboru **HomeController.cs** .
+Automatické dokončování je založené na [metodě DocumentsOperationsExtensions. AutoComplete](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete). Stejně jako u návrhů by tento blok kódu byl v souboru **HomeController.cs** .
 
 ```csharp
 public ActionResult AutoComplete(string term)

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: b77eaec0440aa4fcd22d7b35e7a205b0276164f2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: dffa8393dcfebf1cb73e3ab72890999cfa633b80
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935819"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532563"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Postup plánování indexerů v Azure Kognitivní hledání
 
@@ -110,10 +110,10 @@ Pokud je parametr **Schedule** vynechán, indexer se spustí pouze jednou ihned 
 
 Parametr **StartTime** lze nastavit na čas v minulosti. V takovém případě je naplánováno první spuštění, jako kdyby indexer běžel nepřetržitě od daného **čas_spuštění**.
 
-Plán je definován pomocí třídy [IndexingSchedule](/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) . Konstruktor **IndexingSchedule** vyžaduje parametr **intervalu** zadaný pomocí objektu **TimeSpan** . Minimální povolená hodnota intervalu je 5 minut a největší je 24 hodin. Druhý parametr **StartTime** , zadaný jako objekt **DateTimeOffset** , je volitelný.
+Plán je definován pomocí třídy [IndexingSchedule](/dotnet/api/microsoft.azure.search.models.indexingschedule) . Konstruktor **IndexingSchedule** vyžaduje parametr **intervalu** zadaný pomocí objektu **TimeSpan** . Minimální povolená hodnota intervalu je 5 minut a největší je 24 hodin. Druhý parametr **StartTime** , zadaný jako objekt **DateTimeOffset** , je volitelný.
 
 Sada .NET SDK umožňuje řídit operace indexeru pomocí třídy [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) a její vlastnosti [indexerů](/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) , která implementuje metody z rozhraní **IIndexersOperations** . 
 
 Indexer můžete na vyžádání spustit kdykoli pomocí jedné z metod [Run](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), [RunAsync](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)nebo [RunWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) .
 
-Další informace o vytváření, aktualizaci a spouštění indexerů najdete v tématu [IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet).
+Další informace o vytváření, aktualizaci a spouštění indexerů najdete v tématu [IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations).

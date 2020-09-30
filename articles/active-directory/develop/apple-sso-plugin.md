@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e43ce318ca9e9b14ad059dd296799667653e0f95
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561342"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530693"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO – modul plug-in pro zařízení Apple (Preview)
 
@@ -93,7 +93,7 @@ Do tohoto seznamu nemusíte přidávat aplikace, které používají MSAL nebo A
 
 Ve výchozím nastavení poskytuje modul plug-in Microsoft Enterprise SSO jednotné přihlašování (SSO) pro autorizované aplikace jenom v případě, že modul plug-in jednotného přihlašování už má sdílené přihlašovací údaje. Modul plug-in Microsoft Enterprise SSO může získat sdílené přihlašovací údaje, pokud je zavolá jiná aplikace založené na knihovně ADAL nebo MSAL během získávání tokenu. Většina aplikací Microsoftu používá Microsoft Authenticator nebo modul plug-in jednotného přihlašování. To znamená, že ve výchozím nastavení je nejvhodnější přihlašování mimo nativní toky aplikací.  
 
-`browser_sso_interaction_enabled`Při povolení příznaku se neMSAL aplikace a prohlížeč Safari provede počáteční zavedení a získá sdílené přihlašovací údaje. Pokud modul plug-in jednotného přihlašování (SSO) Microsoft Enterprise ještě nemá sdílené přihlašovací údaje, pokusí se ho získat pokaždé, když se na adrese URL Azure AD v prohlížeči Safari, ASWebAuthenticationSession, SafariViewController nebo jiné povolené nativní aplikace přihlásí žádost o přihlášení.  
+`browser_sso_interaction_enabled`Při povolení příznaku se neMSAL aplikace a prohlížeč Safari provede počáteční zavedení a získá sdílené přihlašovací údaje. Pokud modul plug-in jednotného přihlašování (SSO) Microsoft Enterprise ještě nemá sdílené přihlašovací údaje, pokusí se ho získat pokaždé, když se na adrese URL služby Azure AD v prohlížeči Safari, ASWebAuthenticationSession, SafariViewController nebo jiné povolené nativní aplikaci žádá o přihlášení.  
 
 - **Klíč**: `browser_sso_interaction_enabled`
 - **Zadejte**: `Integer`

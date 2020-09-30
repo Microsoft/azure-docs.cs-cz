@@ -3,12 +3,12 @@ title: Průvodce protokolem Hybrid Connections Azure Relay | Microsoft Docs
 description: Tento článek popisuje interakce na straně klienta s Hybrid Connections Relay pro připojení klientů v rolích naslouchacího procesu a odesilatele.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: fec021d961a17102f8d979c61ee46af6b938f073
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 893092124961ffa9df2535ca6de75def2930b797
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272005"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531441"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Protokol Azure Relay Hybrid Connections
 
@@ -55,7 +55,7 @@ Zakódované informace jsou platné pouze po krátkou dobu, a to v podstatě po 
 
 Kromě připojení pomocí protokolu WebSocket může naslouchací proces také přijímat z odesilatele snímky požadavků HTTP, pokud je tato funkce v hybridním připojení explicitně povolená.
 
-Naslouchací procesy, které se připojují k Hybrid Connections s podporou protokolu HTTP, musí zpracovat `request` gesto. Naslouchací proces, který nezpracovává, `request` a proto způsobuje opakované chyby vypršení časového limitu při připojení, může služba v budoucnu zakázaná.
+Naslouchací procesy, které se připojují k Hybrid Connections s podporou protokolu HTTP, musí zpracovat `request` gesto. Naslouchací proces, který nezpracovává `request` a proto způsobuje opakované chyby vypršení časového limitu při připojení, může služba v budoucnu zablokovat.
 
 Metadata hlavičky rámce protokolu HTTP jsou přeložena do formátu JSON pro jednodušší zpracování v rámci architektury naslouchacího procesu, a to také proto, že knihovny pro analýzu hlaviček protokolu HTTP jsou rarer než analyzátory JSON. Metadata HTTP, která jsou relevantní pouze pro vztahy mezi odesílatelem a předávací HTTP Gateway, včetně autorizačních informací, nejsou předávána. Tělo požadavku HTTP se transparentně přenáší jako binární rámce WebSocket.
 
@@ -326,7 +326,7 @@ Obsah JSON pro `request` je následující:
 
 ##### <a name="responding-to-requests"></a>Reakce na žádosti
 
-Přijímač musí reagovat. Opakovaná neúspěšná reakce na žádosti a při zachování připojení může vést k tomu, že naslouchací proces bude mít zakázaný.
+Přijímač musí reagovat. Opakovaná neúspěšná reakce na žádosti a při zachování připojení může vést k zablokování naslouchacího procesu.
 
 Odpovědi mohou být zasílány v libovolném pořadí, ale každý požadavek musí odpovídat do 60 sekund nebo doručení bude Hlášeno jako neúspěšné. Konečný termín 60-Second se počítá až do chvíle, kdy `response` Služba nepřijala rámec. Probíhající odpověď s více binárními snímky nemůže být nečinná po dobu delší než 60 sekund nebo se ukončí.
 

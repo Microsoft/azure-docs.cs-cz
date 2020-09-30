@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/12/2020
-ms.openlocfilehash: f72952737af9b76b76ac9a08138238138c54614b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 45c9625f0a762a0879473cc64c38d791c804d087
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642176"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530659"
 ---
 # <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-arm-template"></a>Rychlý Start: Vytvoření clusteru Apache HBA ve službě Azure HDInsight pomocí šablony ARM
 
@@ -73,7 +73,7 @@ Po dokončení rychlého startu možná budete chtít cluster odstranit. Ve slu�
 
 Z Azure Portal přejděte do svého clusteru a vyberte **Odstranit**.
 
-![Správce prostředků šablony HBA](./media/quickstart-resource-manager-template/azure-portal-delete-hbase.png)
+![Snímek obrazovky ukazuje cluster s H-Insight se skupinou prostředků, která se má odstranit.](./media/quickstart-resource-manager-template/azure-portal-delete-hbase.png)
 
 Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny prostředků a pak vybrat **Odstranit skupinu prostředků**. Odstraněním skupiny prostředků odstraníte cluster HDInsight i výchozí účet úložiště.
 

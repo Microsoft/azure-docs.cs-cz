@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 08/17/2020
+ms.date: 09/29/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 57ead9636b7218ecfc7d72bb605b469d6a7d1ac6
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: da983719dc66656aa28cab4aea0bae558c2a7162
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536347"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530408"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Konfigurace prostorových kotev Azure v projektu Unity
 
@@ -57,7 +57,7 @@ Prostorové kotvy Azure pro Unity jsou aktuálně distribuované pomocí balíč
 1. Přejít na **Upravit**  >  **nastavení projektu**  >  **Player**.
 2. Na **panelu Inspektor** pro **nastavení přehrávače**vyberte ikonu **Androidu** .
 3. V části **sestavení** zaškrtněte políčko **vlastní hlavní Gradle šablona** , čímž vygenerujete vlastní šablonu Gradle na adrese `Assets\Plugins\Android\mainTemplate.gradle` .
-4. Otevřete `mainTemplate.gradle` soubor v textovém editoru. 
+4. Otevřete `mainTemplate.gradle` soubor v textovém editoru.
 5. V `dependencies` části vložte následující závislosti:
 
     ```gradle
@@ -72,10 +72,10 @@ Až to bude hotové, vaše `dependencies` část by měla vypadat přibližně t
 ### <a name="import-the-asset-package"></a>[Import balíčku assetů](#tab/UnityAssetPackage)
 
 > [!WARNING]
-> Po instalování sady SDK verze 2.5.0 bude distribuována sada prostředků služby Unity v sadě SDK prostorových kotev Azure.
+> Distribuce balíčku prostředků Unity pro sadu SDK prostorových kotev Azure je zastaralá ve verzi 2.5.0 a už není k dispozici pro 2.6.0.
 
-1. Stáhněte si `AzureSpatialAnchors.unitypackage` soubor pro verzi, kterou chcete cílit ze [vydání GitHubu](https://github.com/Azure/azure-spatial-anchors-samples/releases). 
-2. Postupujte podle pokynů uvedených [tady](https://docs.unity3d.com/Manual/AssetPackagesImport.html) a importujte balíček Asset Unity do svého projektu.    
+1. Stáhněte si `AzureSpatialAnchors.unitypackage` soubor pro verzi, kterou chcete cílit ze [vydání GitHubu](https://github.com/Azure/azure-spatial-anchors-samples/releases).
+2. Postupujte podle pokynů uvedených [tady](https://docs.unity3d.com/Manual/AssetPackagesImport.html) a importujte balíček Asset Unity do svého projektu.
 
 ---
 

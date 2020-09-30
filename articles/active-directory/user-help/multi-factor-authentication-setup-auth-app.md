@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 953f74a18ae7874c8772cdc8179e5e5bdd1a86d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10b6b788077eccda522c9e8c6e631939ca1819fc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83738638"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530336"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Nastavení ověřovací aplikace jako metody ověřování dvou faktorů
 
@@ -33,7 +33,7 @@ Můžete nastavit ověřovací aplikaci, která odešle oznámení na mobilní z
 
 2. Vyberte možnost **přijímat oznámení pro ověření** z části **jak chcete použít oblast mobilní aplikace** a pak vyberte možnost **nastavit**.
 
-    ![Stránka Další ověření zabezpečení s možností mobilní aplikace a oznámení](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
+    ![Snímek obrazovky se stránkou "další ověření zabezpečení", s vybranou možnost "mobilní aplikace" a "dostávat oznámení k ověření".](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
 
     Zobrazí se stránka **Konfigurace mobilní aplikace** .
 
@@ -48,7 +48,7 @@ Můžete nastavit ověřovací aplikaci, která odešle oznámení na mobilní z
 
 5. Vraťte se do počítače a na stránku **Další ověření zabezpečení** , zkontrolujte, že se zobrazí zpráva s informacemi o tom, že konfigurace byla úspěšná, a pak vyberte **Další**.
 
-    ![Stránka dodatečného ověření zabezpečení se zprávou o úspěchu](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
+    ![Snímek obrazovky se stránkou "další ověření zabezpečení", která obsahuje "mobilní aplikace byla nakonfigurována..." Zpráva o úspěchu byla zvýrazněna.](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
 
     Aplikace ověřovatele pošle oznámení na vaše mobilní zařízení jako test.
 
@@ -65,7 +65,7 @@ Můžete nastavit ověřovací aplikaci, která odešle oznámení na mobilní z
     >[!Note]
     >Informace o tom, jak používat heslo aplikace pro vaše starší aplikace, najdete v tématu [Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md). Pokud budete nadále používat starší aplikace, které nepodporují dvojúrovňové ověřování, je třeba použít hesla aplikací.
 
-9. Vyberte **Done** (Hotovo).
+9. Vyberte **Hotovo**.
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-use-verification-codes"></a>Nastavení aplikace Microsoft Authenticator pro použití ověřovacích kódů
 
@@ -107,7 +107,7 @@ Můžete nastavit ověřovací aplikaci, která odešle oznámení na mobilní z
     >[!Note]
     >Informace o tom, jak používat heslo aplikace pro vaše starší aplikace, najdete v tématu [Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md). Pokud budete nadále používat starší aplikace, které nepodporují dvojúrovňové ověřování, je třeba použít hesla aplikací.
 
-9. Vyberte **Done** (Hotovo).
+9. Vyberte **Hotovo**.
 
 ## <a name="next-steps"></a>Další kroky
 

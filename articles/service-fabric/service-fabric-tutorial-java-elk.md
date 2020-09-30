@@ -1,17 +1,15 @@
 ---
 title: Monitorování aplikací v Service Fabric používání ELK v Azure
 description: V tomto kurzu se dozvíte, jak nastavit ELK a monitorovat své aplikace Service Fabric.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 5825c7d751781181794900cecab1487ed44a997f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 5faf26230618161a5b908c9a544a43ec5c33b807
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361445"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532018"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Kurz: Monitorování aplikací Service Fabric pomocí ELK
 
@@ -31,7 +29,7 @@ V této sérii kurzů se naučíte:
 > * Nastavit monitorování a diagnostiku aplikace
 > * [Nastavení CI/CD](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 

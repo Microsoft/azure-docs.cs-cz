@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: f3ac2f82882dfd7eb1e15e9a5287cf1d6f5b32d2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 87c16207f312479dcfe083ad9494d75b3538e18c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301529"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532546"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Vyloučení prostředku z doporučení a zabezpečeného skóre
 
@@ -30,10 +30,10 @@ Prostředek bude uvedený jako nepoužitý a důvod se zobrazí jako vyloučený
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Náhled|
+|Stav vydaných verzí:|Preview|
 |Stanov|Toto je funkce zásad Azure Premium, která je nabízená pro zákazníky v Azure Defenderu bez dalších nákladů. Pro ostatní uživatele se poplatky můžou v budoucnu uplatňovat.|
-|Požadované role a oprávnění:|**Vlastník předplatného** nebo **Přispěvatel zásad** pro vytvoření výjimky<br>Chcete-li vytvořit pravidlo, potřebujete oprávnění k úpravám zásad v Azure Policy.<br>Další informace najdete v [Azure Policy oprávnění RBAC](../governance/policy/overview.md#rbac-permissions-in-azure-policy).|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Požadované role a oprávnění:|**Vlastník předplatného** nebo **Přispěvatel zásad** pro vytvoření výjimky<br>Chcete-li vytvořit pravidlo, potřebujete oprávnění k úpravám zásad v Azure Policy.<br>Další informace najdete v [Azure Policy oprávnění služby Azure RBAC](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -45,7 +45,7 @@ Prostředek bude uvedený jako nepoužitý a důvod se zobrazí jako vyloučený
 
     Otevře se podokno vytvořit výjimku.
 
-    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Podokno vytvořit výjimku":::
+    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Vytvořit možnost výjimky z kontextové nabídky":::
 
 1. Zadejte kritéria a vyberte kritéria pro vyloučení tohoto prostředku:
     - **Zmírňované** – tento problém není relevantní pro prostředek, protože ho zpracovává jiný nástroj nebo proces než ten, který je navržený.
@@ -56,11 +56,11 @@ Prostředek bude uvedený jako nepoužitý a důvod se zobrazí jako vyloučený
     - Prostředek je uvedený na kartě **netýká** se stránky s podrobnostmi o doporučení.
     - Informační pruh v horní části stránky s podrobnostmi o doporučení uvádí počet vyloučených prostředků:
         
-        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Počet vyloučených prostředků":::
+        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Vytvořit možnost výjimky z kontextové nabídky":::
 
 1. Chcete-li zkontrolovat vyloučené prostředky, otevřete kartu **Nepoužito** .
 
-    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Úprava výjimky":::
+    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Vytvořit možnost výjimky z kontextové nabídky":::
 
     Důvody pro každou výjimku jsou obsaženy v tabulce (1).
 
@@ -73,7 +73,7 @@ Pravidla výjimky pomocí zásad Azure vytvoří výjimku pro prostředek na př
 
 Pomocí Azure Policy můžete sledovat veškerou výjimku na stránce **výjimka** :
 
-:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Stránka s výjimkou Azure Policy":::
+:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Vytvořit možnost výjimky z kontextové nabídky":::
 
 
 

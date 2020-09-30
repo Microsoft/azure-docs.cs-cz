@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/17/2020
+ms.date: 9/29/2020
 ms.author: yohaddad
-ms.openlocfilehash: bb2b9da291bf75542c942d785d995018b597f742
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: bdcf9417aca6ece24e5ef577620734eeb48d9362
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024294"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531152"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
@@ -47,11 +47,9 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 |  Rel. 20-09 |  [4569778]  |  .NET Framework 4.5.2 – Shrnutí zabezpečení a kvality | 2,102 | 8. září 2020 |
 |  Rel. 20-09 |  [4578013]  |  Aktualizace zabezpečení | 2,102 | 8. září 2020 |
 |  Rel. 20-09 |  [4576750]  |  Aktualizace servisního zásobníku | 5,47 | 8. září 2020 |
-|  Rel. 20-09 |  [4576479]  |  Shrnutí kvality a zabezpečení .NET Framework 4,8 | 5,47 | 8. září 2020 |
 |  Rel. 20-09 |  [4494175]  |  Vyžádal povolení mikrokódu | 5,47 | 8. září 2020 |
 |  Rel. 20-09 |  [4570332]  |  Aktualizace servisního zásobníku | 6,23 | 8. září 2020 |
 |  Rel. 20-09 |  [4570720]  |  .NET Framework 3,5 a kumulativní aktualizace 4.7.2 | 6,23 | 8. září 2020 |
-|  Rel. 20-09 |  [4576483]  |  Shrnutí zabezpečení a kvality .NET Framework 4,8 | 6,23 | 8. září 2020 |
 |  Rel. 20-09 |  [4494174]  |  Vyžádal povolení mikrokódu | 6,23 | 8. září 2020 |
 
 [4577010]: https://support.microsoft.com/kb/4577010
@@ -72,11 +70,9 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4569778]: https://support.microsoft.com/kb/4569778
 [4578013]: https://support.microsoft.com/kb/4578013
 [4576750]: https://support.microsoft.com/kb/4576750
-[4576479]: https://support.microsoft.com/kb/4576479
 [4494175]: https://support.microsoft.com/kb/4494175
 [4570332]: https://support.microsoft.com/kb/4570332
 [4570720]: https://support.microsoft.com/kb/4570720
-[4576483]: https://support.microsoft.com/kb/4576483
 [4494174]: https://support.microsoft.com/kb/4494174
 
 ## <a name="august-2020-guest-os"></a>2020. srpna hostovaný operační systém
@@ -84,29 +80,26 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 20-08 |  [4571687]  |  Kumulativní aktualizace IE | 2,101, 3,88, 4,81 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4561600]  |  Aktualizace pro Flash | 3,88, 4,81, 5,46, 6,22 | 9. června 2020 |
-|  Rel. 20-08 |  [4571694]  |  Nejnovější kumulativní aktualizace | 6,22 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4565349]  |  Nejnovější kumulativní aktualizace | 5,46 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4570673]  |  Aktualizace servisního zásobníku | 2,101 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4571729]  |  Měsíční souhrn | 2,101 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569767]  |  Shrnutí zabezpečení a kvality .NET Framework 3.5.1 | 2,101 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569780]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 2,101 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569765]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | 3,88 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569779]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 3,88 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4566426]  |  Aktualizace servisního zásobníku | 3,88 | 14. července 2020 |
-|  Rel. 20-08 |  [4571736]  |  Měsíční souhrn | 3,88 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4566425]  |  Aktualizace servisního zásobníku | 4,81 | 14. července 2020 |
-|  Rel. 20-08 |  [4571703]  |  Měsíční souhrn | 4,81 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569768]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | 4,81 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569778]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 4,81 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4494175]  |  Vyžádal povolení mikrokódu | 5,46 | 25. února 2020 |
-|  Rel. 20-08 |  [4565912]  |  Aktualizace servisního zásobníku | 5,46 | 14. července 2020 |
-|  Rel. 20-08 |  [4569746]  |  Shrnutí zabezpečení a kvality .NET Framework 4,8 | 5,46 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569776]  |  .NET Framework 3,5 a kumulativní aktualizace 4.7.2 | 6,22 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4569750]  |  Kumulativní aktualizace .NET Framework 3,5 a 4,8 | 6,22 | 11. srpna 2020 |
-|  Rel. 20-08 |  [4566424]  |  Aktualizace servisního zásobníku | 6,22 | 11. srpna 2020 |
-
+|  Rel. 20-08 |  [4571687]  |  Kumulativní aktualizace IE | [2,101], [3,88], [4,81] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4561600]  |  Aktualizace pro Flash | [3,88], [4,81], [5,46], [6,22] | 9. června 2020 |
+|  Rel. 20-08 |  [4571694]  |  Nejnovější kumulativní aktualizace | [6,22] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4565349]  |  Nejnovější kumulativní aktualizace | [5,46] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4570673]  |  Aktualizace servisního zásobníku | [2,101] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4571729]  |  Měsíční souhrn | [2,101] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569767]  |  Shrnutí zabezpečení a kvality .NET Framework 3.5.1 | [2,101] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569780]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [2,101] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569765]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [3,88] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569779]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [3,88] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4566426]  |  Aktualizace servisního zásobníku | [3,88] | 14. července 2020 |
+|  Rel. 20-08 |  [4571736]  |  Měsíční souhrn | [3,88] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4566425]  |  Aktualizace servisního zásobníku | [4,81] | 14. července 2020 |
+|  Rel. 20-08 |  [4571703]  |  Měsíční souhrn | [4,81] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569768]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | [4,81] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569778]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | [4,81] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4494175]  |  Vyžádal povolení mikrokódu | [5,46] | 25. února 2020 |
+|  Rel. 20-08 |  [4565912]  |  Aktualizace servisního zásobníku | [5,46] | 14. července 2020 |
+|  Rel. 20-08 |  [4569776]  |  .NET Framework 3,5 a kumulativní aktualizace 4.7.2 | [6,22] | 11. srpna 2020 |
+|  Rel. 20-08 |  [4566424]  |  Aktualizace servisního zásobníku | [6,22] | 11. srpna 2020 |
 
 
 [4571687]: https://support.microsoft.com/kb/4571687
@@ -127,10 +120,13 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4569778]: https://support.microsoft.com/kb/4569778
 [4494175]: https://support.microsoft.com/kb/4494175
 [4565912]: https://support.microsoft.com/kb/4565912
-[4569746]: https://support.microsoft.com/kb/4569746
 [4569776]: https://support.microsoft.com/kb/4569776
-[4569750]: https://support.microsoft.com/kb/4569750
 [4566424]: https://support.microsoft.com/kb/4566424
+[2,101]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,88]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,81]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,46]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,22]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="july-2020-guest-os"></a>Z července 2020 hostovaný operační systém
@@ -691,11 +687,11 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 |  Rel. 19-07   |  [4507460]  |  Zabezpečení Windows   |  5.33  |  9\. července 2019  |
 |  Rel. 19-07   |  [4506998]  |  .NET 3,5 & zabezpečení 4.7.2   |  6.9  |  9\. července 2019  |
 |  Rel. 19-07   |  [4507469]  |  Zabezpečení Windows   |  6.9  |  9\. července 2019  |
-|  –  |  [4503537]  |  19. června aktualizace servisního zásobníku pro (Server 2016)   |  5.33  |  14. května 2019  |
-|  –  |  [4504369]  |  19. června aktualizace servisního zásobníku pro (Server 2019)   |  6.9  |  14. května 2019  |
-|  –  |  [4503292]  |  19. června netýká se zabezpečení (Server 2008 R2)   |  2,88  |  20. května 2019  |
-|  –  |  [4503285]  |  19. června netýká se zabezpečení (Server 2012)   |  3,75  |  14. května 2019  |
-|  –  |  [4503276]  |  19. června netýká se zabezpečení (Server 2012 R2)   |  4,68  |  14. května 2019  |
+|  Není k dispozici  |  [4503537]  |  19. června aktualizace servisního zásobníku pro (Server 2016)   |  5.33  |  14. května 2019  |
+|  Není k dispozici  |  [4504369]  |  19. června aktualizace servisního zásobníku pro (Server 2019)   |  6.9  |  14. května 2019  |
+|  Není k dispozici  |  [4503292]  |  19. června netýká se zabezpečení (Server 2008 R2)   |  2,88  |  20. května 2019  |
+|  Není k dispozici  |  [4503285]  |  19. června netýká se zabezpečení (Server 2012)   |  3,75  |  14. května 2019  |
+|  Není k dispozici  |  [4503276]  |  19. června netýká se zabezpečení (Server 2012 R2)   |  4,68  |  14. května 2019  |
 
 [4507434]: https://support.microsoft.com/kb/4507434
 [4506621]: https://support.microsoft.com/kb/4506621
@@ -731,19 +727,17 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 |  Rel. 19-06   |  [4494175]  |  Vyžádal povolení mikrokódu aktualizace   |  5,32  |  3. června 2019  |
 |  Rel. 19-06   |  [4503308]  |  Blikající   |  3,74, 4,67, 5,32, 6,8  |  11. června 2019  |
 |  Rel. 19-06   |  [4503259]  |  Internet Explorer   |  2,87, 3,74, 4,67  |  13. června 2019  |
-|  –  |  [4499164]  |  Může se jednat o 19 bez zabezpečení.  |  2,87  |  14. května 2019  |
-|  –  |  [4495606]  |  Může to být 19 .NET 3,5 bez zabezpečení.  |  2,87  |  14. května 2019  |
-|  –  |  [4495596]  |  Může to být 19 .NET 4,5 bez zabezpečení.  |  2,87  |  20. května 2019  |
-|  –  |  [4499171]  |  Může se jednat o 19 bez zabezpečení.  |  3,74  |  14. května 2019  |
-|  –  |  [4495602]  |  Může to být 19 .NET 3,5 bez zabezpečení.  |  3,74  |  14. května 2019  |
-|  –  |  [4495594]  |  Může se jednat o 19 rozhraní .NET 4. x bez zabezpečení.  |  4,67  |  14. května 2019  |
-|  –  |  [4499151]  |  Může se jednat o 19 bez zabezpečení.  |  4,67  |  14. května 2019  |
-|  –  |  [4495608]  |  Může to být 19 .NET 3,5 bez zabezpečení.  |  4,67  |  14. května 2019  |
-|  –  |  [4495592]  |  Možná 19. května .NET 4.5.2 bez zabezpečení  |  4,67  |  14. května 2019  |
-|  –  |  [4495610]  |  Může se jednat o 19. kumulativní .NET 4,8  |  6.8  |  14. května 2019  |
-|  –  |  [4495618]  |  Může se jednat o 19. kumulativní .NET 4,8  |  6.8  |  14. května 2019  |
-|  –  |  [4501226]  |  Aktualizace časového pásma v letním čase pro Maroka a palestinská samospráva  |  2,87, 3,74, 4,67  |  23. května 2019  |
-|  –  |  [4490128]  |  Aktualizace časového pásma pro Svatý Tomáš a Princův ostrov a Qyzylorda  |  2,87, 3,74, 4,67  |  17. dubna 2019  |
+|  Není k dispozici  |  [4499164]  |  Může se jednat o 19 bez zabezpečení.  |  2,87  |  14. května 2019  |
+|  Není k dispozici  |  [4495606]  |  Může to být 19 .NET 3,5 bez zabezpečení.  |  2,87  |  14. května 2019  |
+|  Není k dispozici  |  [4495596]  |  Může to být 19 .NET 4,5 bez zabezpečení.  |  2,87  |  20. května 2019  |
+|  Není k dispozici  |  [4499171]  |  Může se jednat o 19 bez zabezpečení.  |  3,74  |  14. května 2019  |
+|  Není k dispozici  |  [4495602]  |  Může to být 19 .NET 3,5 bez zabezpečení.  |  3,74  |  14. května 2019  |
+|  Není k dispozici  |  [4495594]  |  Může se jednat o 19 rozhraní .NET 4. x bez zabezpečení.  |  4,67  |  14. května 2019  |
+|  Není k dispozici  |  [4499151]  |  Může se jednat o 19 bez zabezpečení.  |  4,67  |  14. května 2019  |
+|  Není k dispozici  |  [4495608]  |  Může to být 19 .NET 3,5 bez zabezpečení.  |  4,67  |  14. května 2019  |
+|  Není k dispozici  |  [4495592]  |  Možná 19. května .NET 4.5.2 bez zabezpečení  |  4,67  |  14. května 2019  |
+|  Není k dispozici  |  [4501226]  |  Aktualizace časového pásma v letním čase pro Maroka a palestinská samospráva  |  2,87, 3,74, 4,67  |  23. května 2019  |
+|  Není k dispozici  |  [4490128]  |  Aktualizace časového pásma pro Svatý Tomáš a Princův ostrov a Qyzylorda  |  2,87, 3,74, 4,67  |  17. dubna 2019  |
 
 [4503327]: https://support.microsoft.com/kb/4503327
 [4503267]: https://support.microsoft.com/kb/4503267
@@ -763,8 +757,6 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4499151]: https://support.microsoft.com/kb/KB4499151
 [4495608]: https://support.microsoft.com/kb/KB4495608
 [4495592]: https://support.microsoft.com/kb/KB4495592
-[4495610]: https://support.microsoft.com/kb/KB4495610
-[4495618]: https://support.microsoft.com/kb/KB4495618
 [4501226]: https://support.microsoft.com/kb/KB4501226
 [4490128]: https://support.microsoft.com/kb/KB4490128
 
@@ -905,15 +897,15 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 19-02 | [4487026] | Zabezpečení Windows | 5,28 | 12. února 2019 |
 | Rel. 19-02 | [4487044] | Zabezpečení Windows | 6.4 | 12. února 2019 |
 | Rel. 19-02 | [4483452] | .NET 3,5, zabezpečení 4.7.2 | 6.4 | 12. února 2019 |
-| – | [4480970] | Souhrn nezabezpečení ledna | 2.83 | 8. ledna 2019 |
-| – | [4483483] | Kumulativní rozhraní .NET 3.5.1 bez zabezpečení.  | 2.83 | 8. ledna 2019 |
-| – | [4480059] | Kumulativní rozhraní .NET 4.5.2 bez zabezpečení.  | 2.83 | 8. ledna 2019 |
-| – | [4480975] | Souhrn nezabezpečení ledna | 3,70 | 8. ledna 2019 |
-| – | [4480061] | Kumulativní aktualizace .NET 3,5 od ledna | 3,70 | 8. ledna 2019 |
-| – | [4480058] | Kumulativní rozhraní .NET 4.5.2 bez zabezpečení. | 3,70 | 8. ledna 2019 |
-| – | [4480963] | Souhrn nezabezpečení ledna | 4.63 | 8. ledna 2019 |
-| – | [4480064] | Kumulativní aktualizace .NET 3,5 od ledna | 4.63 | 8. ledna 2019 |
-| – | [4480057] | Kumulativní rozhraní .NET 4.5.2 bez zabezpečení. | 4.63 | 8. ledna 2019 |
+| Není k dispozici | [4480970] | Souhrn nezabezpečení ledna | 2.83 | 8. ledna 2019 |
+| Není k dispozici | [4483483] | Kumulativní rozhraní .NET 3.5.1 bez zabezpečení.  | 2.83 | 8. ledna 2019 |
+| Není k dispozici | [4480059] | Kumulativní rozhraní .NET 4.5.2 bez zabezpečení.  | 2.83 | 8. ledna 2019 |
+| Není k dispozici | [4480975] | Souhrn nezabezpečení ledna | 3,70 | 8. ledna 2019 |
+| Není k dispozici | [4480061] | Kumulativní aktualizace .NET 3,5 od ledna | 3,70 | 8. ledna 2019 |
+| Není k dispozici | [4480058] | Kumulativní rozhraní .NET 4.5.2 bez zabezpečení. | 3,70 | 8. ledna 2019 |
+| Není k dispozici | [4480963] | Souhrn nezabezpečení ledna | 4.63 | 8. ledna 2019 |
+| Není k dispozici | [4480064] | Kumulativní aktualizace .NET 3,5 od ledna | 4.63 | 8. ledna 2019 |
+| Není k dispozici | [4480057] | Kumulativní rozhraní .NET 4.5.2 bez zabezpečení. | 4.63 | 8. ledna 2019 |
 
 [4486474]: https://support.microsoft.com/kb/4486474
 [4487038]: https://support.microsoft.com/kb/4487038
@@ -957,15 +949,15 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 19-01 | [4480085] | Zabezpečení .NET 3. x | 2,82 | 8. ledna 2019 |
 | Rel. 19-01 | [4480979] | Blikající | 3,69, 4,62, 5,27, 6,3 | 8. ledna 2019 |
 | Rel. 19-01 | [4480965] | Internet Explorer | 2,82, 3,69, 4,62 | 8. ledna 2019 |
-| – | [4471318] | Kumulativní není v prosinci. | 2,82 | 11. prosince 2018 |
-| – | [4470641] | Nejedná se o kumulativní rozhraní .NET 3 v prosinci. x | 2,82 | 11. prosince 2018 |
-| – | [4470637] | Kumulativní rozhraní .NET 4 v prosinci bez zabezpečení | 2,82 | 11. prosince 2018 |
-| – | [4471330] | Kumulativní není v prosinci. | 3,69 | 11. prosince 2018 |
-| – | [4470629] | Nejedná se o kumulativní rozhraní .NET 3 v prosinci. x | 3,69 | 11. prosince 2018 |
-| – | [4470623] | Kumulativní rozhraní .NET 4 v prosinci bez zabezpečení | 3,69 | 11. prosince 2018 |
-| – | [4471320] | Kumulativní není v prosinci. | 4,62 | 11. prosince 2018 |
-| – | [4470630] | Nejedná se o kumulativní rozhraní .NET 3 v prosinci. x | 4,62 | 11. prosince 2018 |
-| – | [4470622] | Kumulativní rozhraní .NET 4 v prosinci bez zabezpečení | 4,62 | 11. prosince 2018 |
+| Není k dispozici | [4471318] | Kumulativní není v prosinci. | 2,82 | 11. prosince 2018 |
+| Není k dispozici | [4470641] | Nejedná se o kumulativní rozhraní .NET 3 v prosinci. x | 2,82 | 11. prosince 2018 |
+| Není k dispozici | [4470637] | Kumulativní rozhraní .NET 4 v prosinci bez zabezpečení | 2,82 | 11. prosince 2018 |
+| Není k dispozici | [4471330] | Kumulativní není v prosinci. | 3,69 | 11. prosince 2018 |
+| Není k dispozici | [4470629] | Nejedná se o kumulativní rozhraní .NET 3 v prosinci. x | 3,69 | 11. prosince 2018 |
+| Není k dispozici | [4470623] | Kumulativní rozhraní .NET 4 v prosinci bez zabezpečení | 3,69 | 11. prosince 2018 |
+| Není k dispozici | [4471320] | Kumulativní není v prosinci. | 4,62 | 11. prosince 2018 |
+| Není k dispozici | [4470630] | Nejedná se o kumulativní rozhraní .NET 3 v prosinci. x | 4,62 | 11. prosince 2018 |
+| Není k dispozici | [4470622] | Kumulativní rozhraní .NET 4 v prosinci bez zabezpečení | 4,62 | 11. prosince 2018 |
 
 [4480116]: https://support.microsoft.com/kb/4480116
 [4480961]: https://support.microsoft.com/kb/4480961
@@ -1007,10 +999,10 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 18-12 | [4470491] | Zabezpečení .NET 4. x  | 4,61| 11. prosince 2018 |
 | Rel. 18-12 | [4471331] | Blikající  | 3,68, 4,61, 5,26 | 5. prosince 2018  |
 | Rel. 18-12 | [4470199] | Internet Explorer  | 2,81, 3,68, 4,61 | 11. prosince 2018 |
-| – | [4468323] | Aktualizace časového pásma    | 2,81, 3,68, 4,61 | 13. prosince 2018 |
-| – | [4467107] | Kumulativní nezabezpečení od listopadu   | 2,81 | 13. listopadu 2018 |
-| – | [4467701] | Kumulativní nezabezpečení od listopadu     | 3,68 | 13. listopadu 2018 |
-| – | [4467697] | Kumulativní nezabezpečení od listopadu     | 4,61 | 13. listopadu 2018 |
+| Není k dispozici | [4468323] | Aktualizace časového pásma    | 2,81, 3,68, 4,61 | 13. prosince 2018 |
+| Není k dispozici | [4467107] | Kumulativní nezabezpečení od listopadu   | 2,81 | 13. listopadu 2018 |
+| Není k dispozici | [4467701] | Kumulativní nezabezpečení od listopadu     | 3,68 | 13. listopadu 2018 |
+| Není k dispozici | [4467697] | Kumulativní nezabezpečení od listopadu     | 4,61 | 13. listopadu 2018 |
 
 [4471321]: https://support.microsoft.com/kb/4471321
 [4471328]: https://support.microsoft.com/kb/4471328
@@ -1039,13 +1031,13 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 18-11 | [4467678] | Zabezpečení Windows | 3,67 | 13. listopadu 2018 |
 | Rel. 18-11 | [4467703] | Zabezpečení Windows | 4,60 | 13. listopadu 2018 |
 | Rel. 18-11 | [4467691] | Zabezpečení Windows 10 | 5,25 | 13. listopadu 2018 |
-| – | [3173426] | Aktualizace servisního zásobníku | 3,67 | 12. července 2016 |
-| – | [4465659] | Aktualizace servisního zásobníku | 5,25 | 13. listopadu 2018 |
-| – | [4462923] | Shrnutí bez zabezpečení | 2,80 | 9. října 2018 |
-| – | [4462929] | Shrnutí bez zabezpečení | 3,67 | 9. října 2018 |
-| – | [4462926] | Shrnutí bez zabezpečení | 4,60 | 9. října 2018 |
-| – | [3109976] | Překrytí kompatibility aplikace | 4,60 | 12. dubna 2016 |
-| – | [4457037] | Překrytí kompatibility aplikace | 4,60| 12. června 2018 |
+| Není k dispozici | [3173426] | Aktualizace servisního zásobníku | 3,67 | 12. července 2016 |
+| Není k dispozici | [4465659] | Aktualizace servisního zásobníku | 5,25 | 13. listopadu 2018 |
+| Není k dispozici | [4462923] | Shrnutí bez zabezpečení | 2,80 | 9. října 2018 |
+| Není k dispozici | [4462929] | Shrnutí bez zabezpečení | 3,67 | 9. října 2018 |
+| Není k dispozici | [4462926] | Shrnutí bez zabezpečení | 4,60 | 9. října 2018 |
+| Není k dispozici | [3109976] | Překrytí kompatibility aplikace | 4,60 | 12. dubna 2016 |
+| Není k dispozici | [4457037] | Překrytí kompatibility aplikace | 4,60| 12. června 2018 |
 
 [4466536]: https://support.microsoft.com/kb/4466536
 [4467694]: https://support.microsoft.com/kb/4467694
@@ -1071,16 +1063,16 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 18-10 | [4462941] | Zabezpečení Windows | 4,59 | 9. října 2018 |
 | Rel. 18-10 | [4462930] | Blikající | 3,66, 4,59, 5,24 | 9. října 2018 |
 | Rel. 18-10 | [4462949] | Internet Explorer | 2,79, 3,66, 4,59 | 9. října 2018 |
-| – | [4339284] | Aktualizace časového pásma | 2,79, 3,66, 4,59 | 24. července 2018 |
-| – | [4457144] | Shrnutí nesouvisející se zabezpečením v září | 2,79 | 11. září 2018 |
-| – | [4457044] | Kumulativní aktualizace .NET 3,5 od září | 2,79 | 11. září 2018 |
-| – | [4457038] | Kumulativní aktualizace rozhraní .NET 4.5.2 od září | 2,79 | 11. září 2018 |
-| – | [4457135] | Shrnutí nesouvisející se zabezpečením v září | 3,66 | 11. září 2018 |
-| – | [4457042] | Kumulativní aktualizace .NET 3,5 od září | 3,66 | 11. září 2018 |
-| – | [4457037] | Kumulativní aktualizace rozhraní .NET 4.5.2 od září | 3,66 | 11. září 2018 |
-| – | [4457129] | Shrnutí nesouvisející se zabezpečením v září | 4,59 | 11. září 2018 |
-| – | [4457045] | Kumulativní aktualizace .NET 3,5 od září | 4,59 | 11. září 2018 |
-| – | [4457036] | Kumulativní aktualizace rozhraní .NET 4.5.2 od září | 4,59 | 11. září 2018 |
+| Není k dispozici | [4339284] | Aktualizace časového pásma | 2,79, 3,66, 4,59 | 24. července 2018 |
+| Není k dispozici | [4457144] | Shrnutí nesouvisející se zabezpečením v září | 2,79 | 11. září 2018 |
+| Není k dispozici | [4457044] | Kumulativní aktualizace .NET 3,5 od září | 2,79 | 11. září 2018 |
+| Není k dispozici | [4457038] | Kumulativní aktualizace rozhraní .NET 4.5.2 od září | 2,79 | 11. září 2018 |
+| Není k dispozici | [4457135] | Shrnutí nesouvisející se zabezpečením v září | 3,66 | 11. září 2018 |
+| Není k dispozici | [4457042] | Kumulativní aktualizace .NET 3,5 od září | 3,66 | 11. září 2018 |
+| Není k dispozici | [4457037] | Kumulativní aktualizace rozhraní .NET 4.5.2 od září | 3,66 | 11. září 2018 |
+| Není k dispozici | [4457129] | Shrnutí nesouvisející se zabezpečením v září | 4,59 | 11. září 2018 |
+| Není k dispozici | [4457045] | Kumulativní aktualizace .NET 3,5 od září | 4,59 | 11. září 2018 |
+| Není k dispozici | [4457036] | Kumulativní aktualizace rozhraní .NET 4.5.2 od září | 4,59 | 11. září 2018 |
 
 [4462917]: https://support.microsoft.com/kb/4462917
 [4462915]: https://support.microsoft.com/kb/4462915
@@ -1111,15 +1103,15 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 18-09 | [4457056], [4457028] | .NET 3,5, 4. x – zabezpečení | 4,58 | 11. září 2018 |
 | Rel. 18-09 | [4457146] | Blikající | 3,65, 4,58, 5,23 | 11. září 2018 |
 | Rel. 18-09 | [4457426] | Internet Explorer | 2,78, 3,65, 4,58 | 11. září 2018 |
-| – | [4343900] | Souhrn nesouvisející se zabezpečením. srpna | 2,78 | 14. srpna 2018 |
-| – | [4344152] | Kumulativní aktualizace zabezpečení .NET 3,5 od srpna | 2,78 | 14. srpna 2018 |
-| – | [4344149] | Souhrnná kumulativní aktualizace zabezpečení 4x od srpna | 2,78 | 14. srpna 2018 |
-| – | [4343901] | Souhrn nesouvisející se zabezpečením. srpna | 3,65 | 14. srpna 2018 |
-| – | [4344150] | Kumulativní aktualizace zabezpečení .NET 3,5 od srpna | 3,65 | 14. srpna 2018 |
-| – | [4344148] | Souhrnná kumulativní aktualizace zabezpečení 4x od srpna | 3,65 | 14. srpna 2018 |
-| – | [4343898] | Souhrn nesouvisející se zabezpečením. srpna | 4,58 | 14. srpna 2018 |
-| – | [4344153] | Kumulativní aktualizace zabezpečení .NET 3,5 od srpna | 4,58 | 14. srpna 2018 |
-| – | [4344147] | Souhrnná kumulativní aktualizace zabezpečení 4x od srpna | 4,58 | 14. srpna 2018 |
+| Není k dispozici | [4343900] | Souhrn nesouvisející se zabezpečením. srpna | 2,78 | 14. srpna 2018 |
+| Není k dispozici | [4344152] | Kumulativní aktualizace zabezpečení .NET 3,5 od srpna | 2,78 | 14. srpna 2018 |
+| Není k dispozici | [4344149] | Souhrnná kumulativní aktualizace zabezpečení 4x od srpna | 2,78 | 14. srpna 2018 |
+| Není k dispozici | [4343901] | Souhrn nesouvisející se zabezpečením. srpna | 3,65 | 14. srpna 2018 |
+| Není k dispozici | [4344150] | Kumulativní aktualizace zabezpečení .NET 3,5 od srpna | 3,65 | 14. srpna 2018 |
+| Není k dispozici | [4344148] | Souhrnná kumulativní aktualizace zabezpečení 4x od srpna | 3,65 | 14. srpna 2018 |
+| Není k dispozici | [4343898] | Souhrn nesouvisející se zabezpečením. srpna | 4,58 | 14. srpna 2018 |
+| Není k dispozici | [4344153] | Kumulativní aktualizace zabezpečení .NET 3,5 od srpna | 4,58 | 14. srpna 2018 |
+| Není k dispozici | [4344147] | Souhrnná kumulativní aktualizace zabezpečení 4x od srpna | 4,58 | 14. srpna 2018 |
 
 ## <a name="august-2018-guest-os"></a>2018. srpna hostovaný operační systém
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1135,14 +1127,14 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 18-08 | [4346745], [4346408] | .NET 3,5, 4. x, verze OOB | 4,57 | 30. července 2018 |
 | Rel. 18-08 | [4343902] | Blikající | 3,64, 4,57, 5,22 | 14. srpna 2018 |
 | Rel. 18-08 | [4343205] | Internet Explorer | 2,77, 3,64, 4,57 | 14. srpna 2018 |
-| – | [4338818] |Souhrn nesouvisející se zabezpečením červenec |2,77 | 10. července 2018 |
-| – | [4019990] |Aktualizace kompilátoru D3D pro .NET |2,77 | 10. července 2018 |
-| – | [4338830] |Souhrn nesouvisející se zabezpečením červenec |3,64 | 10. července 2018 |
-| – | [4338421] |Kumulativní aktualizace .NET 3,5 od 1. července |3,64 | 10. července 2018 |
-| – | [4338416] |Souhrnná kumulativní aktualizace .NET 4x od 1. července |3,64 | 10. července 2018 |
-| – | [4338815] |Souhrn nesouvisející se zabezpečením červenec |4,57 | 10. července 2018 |
-| – | [4338424] |Kumulativní aktualizace .NET 3,5 od 1. července |3,64 | 10. července 2018 |
-| – | [4338415] |Souhrnná kumulativní aktualizace .NET 4x od 1. července |3,64 | 10. července 2018 |
+| Není k dispozici | [4338818] |Souhrn nesouvisející se zabezpečením červenec |2,77 | 10. července 2018 |
+| Není k dispozici | [4019990] |Aktualizace kompilátoru D3D pro .NET |2,77 | 10. července 2018 |
+| Není k dispozici | [4338830] |Souhrn nesouvisející se zabezpečením červenec |3,64 | 10. července 2018 |
+| Není k dispozici | [4338421] |Kumulativní aktualizace .NET 3,5 od 1. července |3,64 | 10. července 2018 |
+| Není k dispozici | [4338416] |Souhrnná kumulativní aktualizace .NET 4x od 1. července |3,64 | 10. července 2018 |
+| Není k dispozici | [4338815] |Souhrn nesouvisející se zabezpečením červenec |4,57 | 10. července 2018 |
+| Není k dispozici | [4338424] |Kumulativní aktualizace .NET 3,5 od 1. července |3,64 | 10. července 2018 |
+| Není k dispozici | [4338415] |Souhrnná kumulativní aktualizace .NET 4x od 1. července |3,64 | 10. července 2018 |
 
 ## <a name="july-2018-guest-os"></a>Z července 2018 hostovaný operační systém
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1160,9 +1152,9 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 18-07 | [4338613], [4338600], [4338605] |.NET 3,5, 4. x, 4,5 x Security |4,56|10. července 2018 |
 | Rel. 18-07 | [4338832] |Blikající |3,63, 4,76, 5,21 |10. července 2018 |
 | Rel. 18-07 | [4339093] |Internet Explorer |2,76, 3,63, 4,76 |10. července 2018 |
-| – | [4284826] |Kumulativní aktualizace od června |2,76 |12. června 2018 |
-| – | [4284855] |Kumulativní aktualizace od června |3,63 |12. června 2018 |
-| – | [4284815] |Kumulativní aktualizace od června |4,56 |12. června 2018 |
+| Není k dispozici | [4284826] |Kumulativní aktualizace od června |2,76 |12. června 2018 |
+| Není k dispozici | [4284855] |Kumulativní aktualizace od června |3,63 |12. června 2018 |
+| Není k dispozici | [4284815] |Kumulativní aktualizace od června |4,56 |12. června 2018 |
 
 ## <a name="june-2018-guest-os"></a>Operační systém hosta červen 2018
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1173,21 +1165,21 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 18-06 | [4284878] |Pouze zabezpečení systému Windows |4,55 |12. června 2018 |
 | Rel. 18-06 | [4230450] |Internet Explorer |2,75, 3,62, 4,75 |12. června 2018 |
 | Rel. 18-06 | [4287903] |Blikající |3,62, 4,75, 5,20 |12. června 2018 |
-| – | [4103718] |Může být souhrn bez zabezpečení. |2,75 |8. května 2018 |
-| – | [4103730] |Může být souhrn bez zabezpečení. |3,62 |8. května 2018 |
-| – | [4103725] |Může být souhrn bez zabezpečení. |4,55 |8. května 2018 |
-| – | [4040980], [4040977] |Září "17 – kumulativní nezabezpečení .NET |2,75 |14. listopadu 2017 |
-| – | [4095874] |Může vydávat rozhraní .NET 3,5 bez zabezpečení |2,75 |8. května 2018 |
-| – | [4096495] |Květen, verze .NET 4. x bez zabezpečení |2,75 |8. května 2018 |
-| – | [4040975] |Září "17 – kumulativní nezabezpečení .NET |3,62 |14. listopadu 2017 |
-| – | [4095872] |Může vydávat rozhraní .NET 3,5 bez zabezpečení |3,62 |8. května 2018 |
-| – | [4096494] |Květen, verze .NET 4. x bez zabezpečení |3,62 |8. května 2018 |
-| – | [4096416] |Může být verze .NET 4.5 x bez zabezpečení. |3,62 |8. května 2018 |
-| – | [4040974], [4040972] |Září "17 – kumulativní nezabezpečení .NET |4,55 |14. listopadu 2017 |
-| – | [4043763] |"17. kumulativní zabezpečení pro .NET v říjnu" |4,55 |12. září 2017 |
-| – | [4095876] |Květen, verze .NET 4. x bez zabezpečení |4,55 |8. května 2018 |
-| – | [4096417] |Může být verze .NET 4.5 x bez zabezpečení. |4,55 |8. května 2018 |
-| – | [4132216] |Může cestou nadřazené |5,20 |8. května 2018 |
+| Není k dispozici | [4103718] |Může být souhrn bez zabezpečení. |2,75 |8. května 2018 |
+| Není k dispozici | [4103730] |Může být souhrn bez zabezpečení. |3,62 |8. května 2018 |
+| Není k dispozici | [4103725] |Může být souhrn bez zabezpečení. |4,55 |8. května 2018 |
+| Není k dispozici | [4040980], [4040977] |Září "17 – kumulativní nezabezpečení .NET |2,75 |14. listopadu 2017 |
+| Není k dispozici | [4095874] |Může vydávat rozhraní .NET 3,5 bez zabezpečení |2,75 |8. května 2018 |
+| Není k dispozici | [4096495] |Květen, verze .NET 4. x bez zabezpečení |2,75 |8. května 2018 |
+| Není k dispozici | [4040975] |Září "17 – kumulativní nezabezpečení .NET |3,62 |14. listopadu 2017 |
+| Není k dispozici | [4095872] |Může vydávat rozhraní .NET 3,5 bez zabezpečení |3,62 |8. května 2018 |
+| Není k dispozici | [4096494] |Květen, verze .NET 4. x bez zabezpečení |3,62 |8. května 2018 |
+| Není k dispozici | [4096416] |Může být verze .NET 4.5 x bez zabezpečení. |3,62 |8. května 2018 |
+| Není k dispozici | [4040974], [4040972] |Září "17 – kumulativní nezabezpečení .NET |4,55 |14. listopadu 2017 |
+| Není k dispozici | [4043763] |"17. kumulativní zabezpečení pro .NET v říjnu" |4,55 |12. září 2017 |
+| Není k dispozici | [4095876] |Květen, verze .NET 4. x bez zabezpečení |4,55 |8. května 2018 |
+| Není k dispozici | [4096417] |Může být verze .NET 4.5 x bez zabezpečení. |4,55 |8. května 2018 |
+| Není k dispozici | [4132216] |Může cestou nadřazené |5,20 |8. května 2018 |
 
 ## <a name="may-2018-guest-os"></a>Květen 2018 hostovaného operačního systému
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1202,11 +1194,11 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 18-05 | [4054856] |.NET 4.7 x – zabezpečení |5,19 |8. května 2018 |
 | Rel. 18-05 | [4103768] |Internet Explorer |2,74, 3,61, 4,74 |8. května 2018 |
 | Rel. 18-05 | [4103729] |Blikající |3,61, 4,74, 5,19 |8. května 2018 |
-| – | [4093118] |Kumulativní nezabezpečení v dubnu |2,73 |10. dubna 2018 |
-| – | [4093123] |Kumulativní nezabezpečení v dubnu |3,61 |10. dubna 2018 |
-| – | [4093114] |Kumulativní nezabezpečení v dubnu |4,74 |10. dubna 2018 |
-| – | [4093137] |CESTOU nadřazené. dubna |5,19 |10. dubna 2018 |
-| – | [4093753] |Aktualizace časového pásma |2,74, 3,61, 4,74 |10. dubna 2018 |
+| Není k dispozici | [4093118] |Kumulativní nezabezpečení v dubnu |2,73 |10. dubna 2018 |
+| Není k dispozici | [4093123] |Kumulativní nezabezpečení v dubnu |3,61 |10. dubna 2018 |
+| Není k dispozici | [4093114] |Kumulativní nezabezpečení v dubnu |4,74 |10. dubna 2018 |
+| Není k dispozici | [4093137] |CESTOU nadřazené. dubna |5,19 |10. dubna 2018 |
+| Není k dispozici | [4093753] |Aktualizace časového pásma |2,74, 3,61, 4,74 |10. dubna 2018 |
 
 
 ## <a name="april-2018-guest-os"></a>Hostovaný operační systém od dubna 2018
@@ -1218,10 +1210,10 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 18-04 | [4093115] |Pouze zabezpečení systému Windows |4,53 |10. dubna 2018 |
 | Rel. 18-04 | [4092946] |Internet Explorer |2,73, 3,60, 4,53 |10. dubna 2018 |
 | Rel. 18-04 | [4093110] |Blikající |3,60, 4,53, 5,18 |10. dubna 2018 |
-| – | [4088875] |V březnu není kumulativní zabezpečení |2,73 |13. března 2018 |
-| – | [4099950] |Nejedná se o předběžnou součást kumulativního zabezpečení|2,73 |13. března 2018 |
-| – | [4088877] |V březnu není kumulativní zabezpečení |3,60 |13. března 2018 |
-| – | [4088876] |V březnu není kumulativní zabezpečení |4,53 |13. března 2018 |
+| Není k dispozici | [4088875] |V březnu není kumulativní zabezpečení |2,73 |13. března 2018 |
+| Není k dispozici | [4099950] |Nejedná se o předběžnou součást kumulativního zabezpečení|2,73 |13. března 2018 |
+| Není k dispozici | [4088877] |V březnu není kumulativní zabezpečení |3,60 |13. března 2018 |
+| Není k dispozici | [4088876] |V březnu není kumulativní zabezpečení |4,53 |13. března 2018 |
 
 ## <a name="march-2018-guest-os"></a>Hostovaný operační systém od března 2018
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1230,10 +1222,10 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 18-03 | [4088878], [4088880], [4088879] |Pouze zabezpečení systému Windows |2,72, 3,59, 4,52 |13. března 2018 |
 | Rel. 18-03 | [4089187] |Internet Explorer |2,72, 3,59, 4,52 |13. března 2018 |
 | Rel. 18-03 | [4074595] |Blikající |3,59, 4,52, 5,17 |13. března 2018 |
-| – | [4074598] |Souhrn nesouvisející se zabezpečením února |2,72 |13. února 2018 |
-| – | [4074593] |Souhrn nesouvisející se zabezpečením února |3,59 |13. února 2018 |
-| – | [4074594] |Souhrn nesouvisející se zabezpečením února |4,52 |13. února 2018 |
-| – | [4074837] |Aktualizace časového pásma |2,72, 3,59, 4,52 |13. února 2018 |
+| Není k dispozici | [4074598] |Souhrn nesouvisející se zabezpečením února |2,72 |13. února 2018 |
+| Není k dispozici | [4074593] |Souhrn nesouvisející se zabezpečením února |3,59 |13. února 2018 |
+| Není k dispozici | [4074594] |Souhrn nesouvisející se zabezpečením února |4,52 |13. února 2018 |
+| Není k dispozici | [4074837] |Aktualizace časového pásma |2,72, 3,59, 4,52 |13. února 2018 |
 
 
 ## <a name="february-2018-guest-os"></a>2018. února hostovaný operační systém
@@ -1243,22 +1235,22 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 18-02 | [4074587], [4074589], [4074597] |Pouze zabezpečení systému Windows |2,71, 3,58, 4,51 |13. února 2018 |
 | Rel. 18-02 | [4074736] |Internet Explorer |2,71, 3,58, 4,51 |13. února 2018 |
 | Rel. 18-02 | [4074595] |Blikající |3,58, 4,51, 5,16 |13. února 2018 |
-| – | [4056894] |Souhrn nezabezpečení ledna |2,71 |4. ledna 2018 |
-| – | [4056896] |Souhrn nezabezpečení ledna |3,58 |4. ledna 2018 |
-| – | [4056895] |Souhrn nezabezpečení ledna |4,51 |4. ledna 2018 |
-| – | [4054176], [4054172] |Kumulativní aktualizace z ledna .NET |2,71 |4. ledna 2018 |
-| – | [4054175], [4054171] |Kumulativní aktualizace z ledna .NET |3,58 |4. ledna 2018 |
-| – | [4054177], [4054170] |Kumulativní aktualizace z ledna .NET |4,51 |4. ledna 2018 |
+| Není k dispozici | [4056894] |Souhrn nezabezpečení ledna |2,71 |4. ledna 2018 |
+| Není k dispozici | [4056896] |Souhrn nezabezpečení ledna |3,58 |4. ledna 2018 |
+| Není k dispozici | [4056895] |Souhrn nezabezpečení ledna |4,51 |4. ledna 2018 |
+| Není k dispozici | [4054176], [4054172] |Kumulativní aktualizace z ledna .NET |2,71 |4. ledna 2018 |
+| Není k dispozici | [4054175], [4054171] |Kumulativní aktualizace z ledna .NET |3,58 |4. ledna 2018 |
+| Není k dispozici | [4054177], [4054170] |Kumulativní aktualizace z ledna .NET |4,51 |4. ledna 2018 |
 
 ## <a name="january-2018-guest-os"></a>Leden 2018 hostovaný operační systém
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
 | Rel. 18-01 | [4056898], [4056897], [4056899] |Pouze zabezpečení systému Windows |2,70, 3,57, 4,50 |3. ledna 2018 |
 | Rel. 18-01 | [4056890], [4056892] |Pouze zabezpečení systému Windows |5,15 |3. ledna 2018 |
-| – | [4054518] |Kumulativní není v prosinci. |2,70 |12. prosince 2017 |
-| – | [4054520] |Kumulativní není v prosinci. |3,57 |12. prosince 2017 |
-| – | [4054519] |Kumulativní není v prosinci. |4,50 |12. prosince 2017 |
-| – | [4051956] |Aktualizace časového pásma za měsíc |2,70, 3,57, 4,50 |12. prosince 2017 |
+| Není k dispozici | [4054518] |Kumulativní není v prosinci. |2,70 |12. prosince 2017 |
+| Není k dispozici | [4054520] |Kumulativní není v prosinci. |3,57 |12. prosince 2017 |
+| Není k dispozici | [4054519] |Kumulativní není v prosinci. |4,50 |12. prosince 2017 |
+| Není k dispozici | [4051956] |Aktualizace časového pásma za měsíc |2,70, 3,57, 4,50 |12. prosince 2017 |
 
 
 
@@ -1269,10 +1261,10 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 17-12 | [4054521], [4054522], [4054523] |Pouze zabezpečení systému Windows |2,69, 3,56, 4,49 |12. prosince 2017 |
 | Rel. 17-12 | [4052978] |Internet Explorer |2,69, 3,56, 4,49 |12. prosince 2017 |
 | Rel. 17-12 | [4052978] |Blikající |3,56, 4,49, 5,14 |12. prosince 2017 |
-| – | [4048957] |Kumulativní nezabezpečení od listopadu |2,69 |14. listopadu 2017 |
-| – | [4048959] |Kumulativní nezabezpečení od listopadu |3,56 |14. listopadu 2017 |
-| – | [4048958] |Kumulativní nezabezpečení od listopadu |4,49 |14. listopadu 2017 |
-| – | [4049068] |Aktualizace časového pásma z prosince |2,69, 3,56, 4,49 |12. prosince 2017 |
+| Není k dispozici | [4048957] |Kumulativní nezabezpečení od listopadu |2,69 |14. listopadu 2017 |
+| Není k dispozici | [4048959] |Kumulativní nezabezpečení od listopadu |3,56 |14. listopadu 2017 |
+| Není k dispozici | [4048958] |Kumulativní nezabezpečení od listopadu |4,49 |14. listopadu 2017 |
+| Není k dispozici | [4049068] |Aktualizace časového pásma z prosince |2,69, 3,56, 4,49 |12. prosince 2017 |
 
 ## <a name="november-2017-guest-os"></a>Operační systém hosta v listopadu 2017
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1281,12 +1273,12 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 17-11 | [4048960], [4048962], [4048961] |Pouze zabezpečení systému Windows |2,68, 3,55, 4,48 |14. listopadu 2017 |
 | Rel. 17-11 | [4047206] |Internet Explorer |2,68, 3,55, 4,48 |14. listopadu 2017 |
 | Rel. 17-11 | [4048951] |Blikající |3,55, 4,48, 5,13 |14. listopadu 2017 |
-| – | [4041681] |Shrnutí bez zabezpečení |2,68 |10. října 2017 |
-| – | [4041690] |Shrnutí bez zabezpečení |3,55 |10. října 2017 |
-| – | [4041693] |Shrnutí bez zabezpečení |4,48 |10. října 2017 |
-| – | [3191566] |Aktualizace pro Windows Management Framework 5,1  |2,68 |14. listopadu 2017 |
-| – | [3191565] |Aktualizace pro Windows Management Framework 5,1  |3,55 |14. listopadu 2017 |
-| – | [3191564] |Aktualizace pro Windows Management Framework 5,1  |4,48 |14. listopadu 2017 |
+| Není k dispozici | [4041681] |Shrnutí bez zabezpečení |2,68 |10. října 2017 |
+| Není k dispozici | [4041690] |Shrnutí bez zabezpečení |3,55 |10. října 2017 |
+| Není k dispozici | [4041693] |Shrnutí bez zabezpečení |4,48 |10. října 2017 |
+| Není k dispozici | [3191566] |Aktualizace pro Windows Management Framework 5,1  |2,68 |14. listopadu 2017 |
+| Není k dispozici | [3191565] |Aktualizace pro Windows Management Framework 5,1  |3,55 |14. listopadu 2017 |
+| Není k dispozici | [3191564] |Aktualizace pro Windows Management Framework 5,1  |4,48 |14. listopadu 2017 |
 
 ## <a name="october-2017-guest-os"></a>Října 2017 hostovaný operační systém
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1295,12 +1287,12 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 17-10 | [4041678], [4041679], [4041687] |Pouze zabezpečení systému Windows |2,67, 3,54, 4,47 |10. října 2017 |
 | Rel. 17-10 | [4040685], |Internet Explorer |2,67, 3,54, 4,47 |10. října 2017 |
 | Rel. 17-10 | [4041681], [4041690], [4041693] |Měsíční souhrny Windows |2,67, 3,54, 4,47 |10. října 2017 |
-| – | [4038777] |Shrnutí nesouvisející se zabezpečením v září |2,67 |12. září 2017 |
-| – | [4038799] |Shrnutí nesouvisející se zabezpečením v září |3,54 |12. září 2017 |
-| – | [4038792] |Shrnutí nesouvisející se zabezpečením v září |4,47 |12. září 2017 |
-| – | [4040980] |Kumulativní zabezpečení v září .NET |2,67 |12. září 2017 |
-| – | [4040979] |Kumulativní zabezpečení v září .NET |3,54 |12. září 2017 |
-| – | [4040981] |Kumulativní zabezpečení v září .NET |4,47 |12. září 2017 |
+| Není k dispozici | [4038777] |Shrnutí nesouvisející se zabezpečením v září |2,67 |12. září 2017 |
+| Není k dispozici | [4038799] |Shrnutí nesouvisející se zabezpečením v září |3,54 |12. září 2017 |
+| Není k dispozici | [4038792] |Shrnutí nesouvisející se zabezpečením v září |4,47 |12. září 2017 |
+| Není k dispozici | [4040980] |Kumulativní zabezpečení v září .NET |2,67 |12. září 2017 |
+| Není k dispozici | [4040979] |Kumulativní zabezpečení v září .NET |3,54 |12. září 2017 |
+| Není k dispozici | [4040981] |Kumulativní zabezpečení v září .NET |4,47 |12. září 2017 |
 
 ## <a name="september-2017-guest-os"></a>Hostovaný operační systém od září 2017
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1310,9 +1302,9 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 17-09 | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|Aktualizace z září na platformě .NET |2,66, 3,53, 4,46 |12. září 2017 |
 | Rel. 17-09 | [4036586] |Internet Explorer |2,66, 3,53, 4,46 |12. září 2017 |
 | CVE-2017-8704 | [4038782] |Odepření služby |5,11 |12. září 2017 |
-| – | [4034664] |Souhrn nesouvisející se zabezpečením. srpna  |2,66 |8. srpna 2017 |
-| – | [4034665] |Souhrn nesouvisející se zabezpečením. srpna |5,11 |8. srpna 2017 |
-| – | [4034681] |Souhrn nesouvisející se zabezpečením. srpna |4,46 |8. srpna 2017 |
+| Není k dispozici | [4034664] |Souhrn nesouvisející se zabezpečením. srpna  |2,66 |8. srpna 2017 |
+| Není k dispozici | [4034665] |Souhrn nesouvisející se zabezpečením. srpna |5,11 |8. srpna 2017 |
+| Není k dispozici | [4034681] |Souhrn nesouvisející se zabezpečením. srpna |4,46 |8. srpna 2017 |
 
 ## <a name="august-2017-guest-os"></a>2017. srpna hostovaný operační systém
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1337,10 +1329,10 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 17-07 | [4025343] |Pouze zabezpečení systému Windows |3,51 |11. července 2017 |
 | Rel. 17-07 | [4025376] |Blikající |3,51, 4,44, 5,9 |11. července 2017 |
 | Rel. 17-07 | [4025252] |Internet Explorer |2,64, 3,51, 4,44 |11. července 2017 |
-| – | [4020322] |Aktualizace časového pásma |2,64, 3,51, 4,44 |11. července 2017 |
-| – | [4022719] |Kumulativní aktualizace od června |2,64 |13. června 2017 |
-| – | [4022724] |Kumulativní aktualizace od června |3,51 |13. června 2017 |
-| – | [4022726] |Kumulativní aktualizace od června |4,44 |13. června 2017 |
+| Není k dispozici | [4020322] |Aktualizace časového pásma |2,64, 3,51, 4,44 |11. července 2017 |
+| Není k dispozici | [4022719] |Kumulativní aktualizace od června |2,64 |13. června 2017 |
+| Není k dispozici | [4022724] |Kumulativní aktualizace od června |3,51 |13. června 2017 |
+| Není k dispozici | [4022726] |Kumulativní aktualizace od června |4,44 |13. června 2017 |
 
 ## <a name="june-2017-guest-os"></a>Operační systém hosta červen 2017
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1353,22 +1345,22 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 17-06 | [4022719], [4022724], [4022726] |Měsíční souhrny Windows |2,63, 3,50, 4,43 |13. června 2017 |
 | Rel. 17-06 | [4022730] |Aktualizace zabezpečení pro Adobe Flash Player |3,50, 4,43, 5,8 |13. června 2017 |
 | Rel. 17-06 | [4015217], [4015221], [4015583], [4015550], [4015219] |Nové vydání CVE-2017-0167 |4,43, 5,8 |11. dubna 2017 |
-| – | [4023136] |Aktualizace časového pásma  |2,63, 3,50, 4,43 |13. června 2017 |
-| – | [4019264] |Může být souhrn bez zabezpečení. |2,63 |13. června 2017 |
-| – | [4014545] |Může být kumulativní bez zabezpečení .NET |2,63 |11. dubna 2017 |
-| – | [4014508] |Může být kumulativní bez zabezpečení .NET |2,63 |9. května 2017 |
-| – | [4014511] |Může být kumulativní bez zabezpečení .NET |2,63 |9. května 2017 |
-| – | [4014514] |Může být kumulativní bez zabezpečení .NET |2,63 |9. května 2017 |
-| – | [4019216] |Může být souhrn bez zabezpečení. |3,50 |9. května 2017 |
-| – | [4014503] |Může být kumulativní bez zabezpečení .NET |3,50 |9. května 2017 |
-| – | [4014506] |Může být kumulativní bez zabezpečení .NET |3,50 |9. května 2017 |
-| – | [4014509] |Může být kumulativní bez zabezpečení .NET |3,50 |9. května 2017 |
-| – | [4014513] |Může být kumulativní bez zabezpečení .NET |3,50 |9. května 2017 |
-| – | [4019215] |Může být souhrn bez zabezpečení. |4,43 |9. května 2017 |
-| – | [4014505] |Může být kumulativní bez zabezpečení .NET |4,43 |9. května 2017 |
-| – | [4014507] |Může být kumulativní bez zabezpečení .NET |4,43 |9. května 2017 |
-| – | [4014510] |Může být kumulativní bez zabezpečení .NET |4,43 |9. května 2017 |
-| – | [4014512] |Může být kumulativní bez zabezpečení .NET |4,43 |9. května 2017 |
+| Není k dispozici | [4023136] |Aktualizace časového pásma  |2,63, 3,50, 4,43 |13. června 2017 |
+| Není k dispozici | [4019264] |Může být souhrn bez zabezpečení. |2,63 |13. června 2017 |
+| Není k dispozici | [4014545] |Může být kumulativní bez zabezpečení .NET |2,63 |11. dubna 2017 |
+| Není k dispozici | [4014508] |Může být kumulativní bez zabezpečení .NET |2,63 |9. května 2017 |
+| Není k dispozici | [4014511] |Může být kumulativní bez zabezpečení .NET |2,63 |9. května 2017 |
+| Není k dispozici | [4014514] |Může být kumulativní bez zabezpečení .NET |2,63 |9. května 2017 |
+| Není k dispozici | [4019216] |Může být souhrn bez zabezpečení. |3,50 |9. května 2017 |
+| Není k dispozici | [4014503] |Může být kumulativní bez zabezpečení .NET |3,50 |9. května 2017 |
+| Není k dispozici | [4014506] |Může být kumulativní bez zabezpečení .NET |3,50 |9. května 2017 |
+| Není k dispozici | [4014509] |Může být kumulativní bez zabezpečení .NET |3,50 |9. května 2017 |
+| Není k dispozici | [4014513] |Může být kumulativní bez zabezpečení .NET |3,50 |9. května 2017 |
+| Není k dispozici | [4019215] |Může být souhrn bez zabezpečení. |4,43 |9. května 2017 |
+| Není k dispozici | [4014505] |Může být kumulativní bez zabezpečení .NET |4,43 |9. května 2017 |
+| Není k dispozici | [4014507] |Může být kumulativní bez zabezpečení .NET |4,43 |9. května 2017 |
+| Není k dispozici | [4014510] |Může být kumulativní bez zabezpečení .NET |4,43 |9. května 2017 |
+| Není k dispozici | [4014512] |Může být kumulativní bez zabezpečení .NET |4,43 |9. května 2017 |
 
 ## <a name="may-2017-guest-os"></a>Květen 2017 hostovaného operačního systému
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1382,21 +1374,21 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 17-05 | [4022344] |Informační zpravodaj zabezpečení společnosti Microsoft |5.7 | 9. května 2017 |
 | Rel. 17-05 | [4022345] |Informační zpravodaj zabezpečení společnosti Microsoft |5.7 | 9. května 2017 |
 | Rel. 17-05 | [4021279] |Informační zpravodaj .NET/ASP.NET Core |2,62, 3,49, 4,42, 5,7 | 9. května 2017 |
-| – | [4012864] |Aktualizace časového pásma |2,62, 3,49, 4,42 | 9. května 2017 |
-| – | [4014565] |Kumulativní nezabezpečení v dubnu .NET |2,62 | 11. dubna 2017 |
-| – | [4014559] |Kumulativní nezabezpečení v dubnu .NET |2,62 | 11. dubna 2017 |
-| – | [4015549] |Kumulativní nezabezpečení v dubnu |2,62 | 11. dubna 2017 |
-| – | [4019990] |Aktualizace D3DCompiler – požadavek pro .NET 4,7 |3,49 | 9. května 2017 |
-| – | [4014563] |Kumulativní nezabezpečení v dubnu .NET |3,49 | 11. dubna 2017 |
-| – | [4014557] |Kumulativní nezabezpečení v dubnu .NET |3,49 | 11. dubna 2017 |
-| – | [4014545] |Kumulativní nezabezpečení v dubnu .NET |3,49 | 11. dubna 2017 |
-| – | [4014548] |Kumulativní nezabezpečení v dubnu .NET |3,49 | 11. dubna 2017 |
-| – | [4015551] |Kumulativní nezabezpečení v dubnu |3,49 | 11. dubna 2017 |
-| – | [3173424] |Aktualizace servisního zásobníku  |4,42 | 12. července 2016 |
-| – | [4014555] |Kumulativní nezabezpečení v dubnu .NET  |4,42 | 11. dubna 2017 |
-| – | [4014567] |Kumulativní nezabezpečení v dubnu .NET |4,42 | 11. dubna 2017 |
-| – | [4015550] |Kumulativní nezabezpečení v dubnu |4,42 | 11. dubna 2017 |
-| – | [4013418] |Aktualizace servisního zásobníku |5.7 | 14. března 2017 |
+| Není k dispozici | [4012864] |Aktualizace časového pásma |2,62, 3,49, 4,42 | 9. května 2017 |
+| Není k dispozici | [4014565] |Kumulativní nezabezpečení v dubnu .NET |2,62 | 11. dubna 2017 |
+| Není k dispozici | [4014559] |Kumulativní nezabezpečení v dubnu .NET |2,62 | 11. dubna 2017 |
+| Není k dispozici | [4015549] |Kumulativní nezabezpečení v dubnu |2,62 | 11. dubna 2017 |
+| Není k dispozici | [4019990] |Aktualizace D3DCompiler – požadavek pro .NET 4,7 |3,49 | 9. května 2017 |
+| Není k dispozici | [4014563] |Kumulativní nezabezpečení v dubnu .NET |3,49 | 11. dubna 2017 |
+| Není k dispozici | [4014557] |Kumulativní nezabezpečení v dubnu .NET |3,49 | 11. dubna 2017 |
+| Není k dispozici | [4014545] |Kumulativní nezabezpečení v dubnu .NET |3,49 | 11. dubna 2017 |
+| Není k dispozici | [4014548] |Kumulativní nezabezpečení v dubnu .NET |3,49 | 11. dubna 2017 |
+| Není k dispozici | [4015551] |Kumulativní nezabezpečení v dubnu |3,49 | 11. dubna 2017 |
+| Není k dispozici | [3173424] |Aktualizace servisního zásobníku  |4,42 | 12. července 2016 |
+| Není k dispozici | [4014555] |Kumulativní nezabezpečení v dubnu .NET  |4,42 | 11. dubna 2017 |
+| Není k dispozici | [4014567] |Kumulativní nezabezpečení v dubnu .NET |4,42 | 11. dubna 2017 |
+| Není k dispozici | [4015550] |Kumulativní nezabezpečení v dubnu |4,42 | 11. dubna 2017 |
+| Není k dispozici | [4013418] |Aktualizace servisního zásobníku |5.7 | 14. března 2017 |
 
 ## <a name="april-2017-guest-os"></a>Hostovaný operační systém od dubna 2017
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1426,11 +1418,11 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 17-03 |  [4012213] |2017 aktualizace kvality pouze zabezpečení pro Windows 8.1 a Windows Server 2012 R2 |4,40 |14. března 2017 |
 | Rel. 17-03 |  [4012214] |Aktualizace kvality 2017 pouze zabezpečení pro Windows Server 2012|3,47 |14. března 2017 |
 | Rel. 17-03 |  [4012204] |Aktualizace zabezpečení pro Internet Explorer |2,60, 3,47, 4,40, 5,5 |14. března 2017 |
-| – |  [4012864] |Změny v letním čase ve Windows pro Severní Cypress, Mongolsko a ruština Saratovský oblast |2,60, 3,47, 4,40 |14. března 2017 |
-| – |  [3212646] |Měsíční kumulativní kvalita zabezpečení z ledna 2017 pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2,60 |14. března 2017 |
-| – |  [3205409] |Měsíční kumulativní kvalita zabezpečení z prosince 2016 pro Windows Server 2012 |3,47 |14. března 2017 |
-| – |  [3205401] |Měsíční kumulativní kvalita zabezpečení z prosince 2016 pro Windows 8.1 a Windows Server 2012 R2 |4,40 |14. března 2017 |
-| – |  [3211320] |Aktualizace servisního zásobníku pro Windows 10 verze 1607 a Windows Server 2016:24. ledna 2017 |5,5 |14. března 2017 |
+| Není k dispozici |  [4012864] |Změny v letním čase ve Windows pro Severní Cypress, Mongolsko a ruština Saratovský oblast |2,60, 3,47, 4,40 |14. března 2017 |
+| Není k dispozici |  [3212646] |Měsíční kumulativní kvalita zabezpečení z ledna 2017 pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2,60 |14. března 2017 |
+| Není k dispozici |  [3205409] |Měsíční kumulativní kvalita zabezpečení z prosince 2016 pro Windows Server 2012 |3,47 |14. března 2017 |
+| Není k dispozici |  [3205401] |Měsíční kumulativní kvalita zabezpečení z prosince 2016 pro Windows 8.1 a Windows Server 2012 R2 |4,40 |14. března 2017 |
+| Není k dispozici |  [3211320] |Aktualizace servisního zásobníku pro Windows 10 verze 1607 a Windows Server 2016:24. ledna 2017 |5,5 |14. března 2017 |
 
 ## <a name="january-2017-guest-os"></a>Leden 2017 hostovaný operační systém
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1450,9 +1442,9 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS16 – 152 |[3199709]   |Aktualizace zabezpečení pro jádro systému Windows |5.4 |DEC 13, 2016 |
 | MS16-153 |[3207328] |Aktualizace zabezpečení pro ovladač Common Log File System|2,58, 3,46, 4,39, 5,4 |DEC 13, 2016 |
 | MS16 – 155 |[3205640]   |Aktualizace zabezpečení pro .NET Framework |5.4 |DEC 13, 2016 |
-| – |[3197868] |Měsíční kumulativní kvalita zabezpečení z listopadu 2016 pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2,58 |DEC 13, 2016 |
-| – |[3197877] |Měsíční kumulativní kvalita zabezpečení z listopadu 2016 pro Windows Server 2012 |3,46 |DEC 13, 2016 |
-| – |[3197874] |Měsíční kumulativní kvalita zabezpečení z listopadu 2016 pro Windows 8.1 a Windows Server 2012 R2 |4,39 |DEC 13, 2016 |
+| Není k dispozici |[3197868] |Měsíční kumulativní kvalita zabezpečení z listopadu 2016 pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2,58 |DEC 13, 2016 |
+| Není k dispozici |[3197877] |Měsíční kumulativní kvalita zabezpečení z listopadu 2016 pro Windows Server 2012 |3,46 |DEC 13, 2016 |
+| Není k dispozici |[3197874] |Měsíční kumulativní kvalita zabezpečení z listopadu 2016 pro Windows 8.1 a Windows Server 2012 R2 |4,39 |DEC 13, 2016 |
 
 ## <a name="november-2016-guest-os"></a>Operační systém hosta v listopadu 2016
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1468,16 +1460,16 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS16-139 |[3199720] |Aktualizace zabezpečení pro jádro systému Windows |2,57 |Listopadu 8,2016 |
 | MS16 – 140 |[3193479] |Aktualizace zabezpečení pro správce spouštění |5,3, 4,38, 3,45 |8. listopadu 2016 |
 | MS16 – 142 |[3198467] |Kumulativní aktualizace zabezpečení pro Internet Explorer |2,57, 4,38, 5,3 |8. listopadu 2016 |
-| – |[3192321] |Turecko ukončí dodržování v letním čase |5,3, 4,38, 3,45, 2,57 |8. listopadu 2016 |
-| – |[3185330] |Měsíční kumulativní kvalita zabezpečení v říjnu 2016 pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2,57 |8. listopadu 2016 |
-| – |[3192403] |Října 2016 Preview Měsíční souhrn kvality pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2,57 |8. listopadu 2016 |
-| – |[3177467] |Aktualizace servisního zásobníku pro Windows 7 SP1 a Windows Server 2008 R2 SP1:20. září 2016 |2,57 |8. listopadu 2016 |
-| – |[3185332] |Měsíční kumulativní kvalita zabezpečení v říjnu 2016 pro Windows Server 2012 |3,45 |8. listopadu 2016 |
-| – |[3192406] |Říjen 2016 Preview měsíčního Shrnutí kvality pro Windows Server 2012 |3,45 |8. listopadu 2016 |
-| – |[3185331] |Měsíční kumulativní kvalita zabezpečení v říjnu 2016 pro Windows 8.1 a Windows Server 2012 R2 |4,38 |8. listopadu 2016 |
-| – |[3192404] |Říjen 2016 Preview měsíčního Shrnutí kvality pro Windows 8.1 a Windows Server 2012 R2 |4,38 |8. listopadu 2016 |
-| – |[3199986] |Aktualizace servisního zásobníku pro Windows 10 verze 1607:27. října 2016 |5.3 |8. listopadu 2016 |
-| – |[3197954] |Kumulativní aktualizace pro Windows 10 verze 1607 a Windows Server 2016:27. října 2016 |5.3 |8. listopadu 2016 |
+| Není k dispozici |[3192321] |Turecko ukončí dodržování v letním čase |5,3, 4,38, 3,45, 2,57 |8. listopadu 2016 |
+| Není k dispozici |[3185330] |Měsíční kumulativní kvalita zabezpečení v říjnu 2016 pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2,57 |8. listopadu 2016 |
+| Není k dispozici |[3192403] |Října 2016 Preview Měsíční souhrn kvality pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2,57 |8. listopadu 2016 |
+| Není k dispozici |[3177467] |Aktualizace servisního zásobníku pro Windows 7 SP1 a Windows Server 2008 R2 SP1:20. září 2016 |2,57 |8. listopadu 2016 |
+| Není k dispozici |[3185332] |Měsíční kumulativní kvalita zabezpečení v říjnu 2016 pro Windows Server 2012 |3,45 |8. listopadu 2016 |
+| Není k dispozici |[3192406] |Říjen 2016 Preview měsíčního Shrnutí kvality pro Windows Server 2012 |3,45 |8. listopadu 2016 |
+| Není k dispozici |[3185331] |Měsíční kumulativní kvalita zabezpečení v říjnu 2016 pro Windows 8.1 a Windows Server 2012 R2 |4,38 |8. listopadu 2016 |
+| Není k dispozici |[3192404] |Říjen 2016 Preview měsíčního Shrnutí kvality pro Windows 8.1 a Windows Server 2012 R2 |4,38 |8. listopadu 2016 |
+| Není k dispozici |[3199986] |Aktualizace servisního zásobníku pro Windows 10 verze 1607:27. října 2016 |5.3 |8. listopadu 2016 |
+| Není k dispozici |[3197954] |Kumulativní aktualizace pro Windows 10 verze 1607 a Windows Server 2016:27. října 2016 |5.3 |8. listopadu 2016 |
 
 ## <a name="october-2016-guest-os"></a>Října 2016 hostovaný operační systém
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1488,11 +1480,11 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS16-124 |[3193227] |Aktualizace zabezpečení pro registr systému Windows |4,37, 3,44, 2,56 |11. října 2016 |
 | MS16 – 126 |[3196067] |Aktualizace zabezpečení pro Microsoft Internet Messaging API |2,56 |11. října 2016 |
 | MS16 – 101 |[3178465] |Aktualizace zabezpečení pro metody ověřování systému Windows |4,37, 3,44, 2,56 |11. října 2016 |
-| – |[3182203] |Změna časového pásma září 2016 pro Novosibirsk |4,37, 3,44, 2,56 |11. října 2016 |
-| – |[3185278] |Kumulativní aktualizace pro Windows 7 SP1 a Windows Server 2008 R2 SP1 v září 2016 |2,56 |11. října 2016 |
-| – |[3185280] |Kumulativní aktualizace pro Windows Server 2012 ze září 2016 |3,44 |11. října 2016 |
-| – |[3185279] |Kumulativní aktualizace pro Windows 8.1 a Windows Server 2012 R2 v září 2016 |4,37 |11. října 2016 |
-| – |[3194798] |Kumulativní aktualizace pro Windows 10 verze 1607 a Windows Server 2016 |5,2 |11. října 2016 |
+| Není k dispozici |[3182203] |Změna časového pásma září 2016 pro Novosibirsk |4,37, 3,44, 2,56 |11. října 2016 |
+| Není k dispozici |[3185278] |Kumulativní aktualizace pro Windows 7 SP1 a Windows Server 2008 R2 SP1 v září 2016 |2,56 |11. října 2016 |
+| Není k dispozici |[3185280] |Kumulativní aktualizace pro Windows Server 2012 ze září 2016 |3,44 |11. října 2016 |
+| Není k dispozici |[3185279] |Kumulativní aktualizace pro Windows 8.1 a Windows Server 2012 R2 v září 2016 |4,37 |11. října 2016 |
+| Není k dispozici |[3194798] |Kumulativní aktualizace pro Windows 10 verze 1607 a Windows Server 2016 |5,2 |11. října 2016 |
 
 ## <a name="september-2016-guest-os"></a>Hostovaný operační systém od září 2016
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1505,11 +1497,11 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS16 – 114 |[3185879] |Aktualizace zabezpečení pro Windows SMB server |4,36, 3,43, 2,55 |Září 13, 2016 |
 | MS16 – 115 |[3188733] |Aktualizace zabezpečení pro PDF |4,35, 3,43 |Září 13, 2016 |
 | MS16 – 116 |[3188724] |Aktualizace zabezpečení v modulu OLE Automation pro skriptovací modul VBScript |4,36, 3,43, 2,55 |Září 13, 2016 |
-| – |[3174644] |Aktualizovaná podpora výměny klíčů Diffie-Hellman |4,36, 3,43, 2,55 |Září 13, 2016 |
-| – |[3177723] |Aktualizace časového pásma – Egypt zruší letní čas |4,36, 3,43, 2,55 |Září 13, 2016 |
-| – |[3179573] |Kumulativní aktualizace ze srpna 2016 pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2.55 |Září 13, 2016 |
-| – |[3179575] |Kumulativní aktualizace pro Windows Server 2012 ze srpna 2016 |3,43 |Září 13, 2016 |
-| – |[3179574] |Kumulativní aktualizace ze srpna 2016 pro Windows RT 8,1, Windows 8.1 a Windows Server 2012 R2 |4,36 |Září 13, 2016 |
+| Není k dispozici |[3174644] |Aktualizovaná podpora výměny klíčů Diffie-Hellman |4,36, 3,43, 2,55 |Září 13, 2016 |
+| Není k dispozici |[3177723] |Aktualizace časového pásma – Egypt zruší letní čas |4,36, 3,43, 2,55 |Září 13, 2016 |
+| Není k dispozici |[3179573] |Kumulativní aktualizace ze srpna 2016 pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2.55 |Září 13, 2016 |
+| Není k dispozici |[3179575] |Kumulativní aktualizace pro Windows Server 2012 ze srpna 2016 |3,43 |Září 13, 2016 |
+| Není k dispozici |[3179574] |Kumulativní aktualizace ze srpna 2016 pro Windows RT 8,1, Windows 8.1 a Windows Server 2012 R2 |4,36 |Září 13, 2016 |
 
 ## <a name="august-2016-guest-os"></a>2016. srpna hostovaný operační systém
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1521,9 +1513,9 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS16 – 101 |[3178465] |Aktualizace zabezpečení pro metody ověřování systému Windows |4,35, 3,42, 2,54 |Srpna 9, 2016 |
 | MS16-102 |[3182248] |Aktualizace zabezpečení pro Microsoft Windows PDF Library |4,35, 3,42 |Srpna 9, 2016 |
 | Znovu vydaná verze MS16-077 |[3165191] |Aktualizace zabezpečení pro automatické zjišťování webového proxy serveru (WPAD) |4,35, 3,42, 2,54 |Srpna 9, 2016 |
-| – |[3172605] |Kumulativní aktualizace pro Windows 7 SP1 a Windows Server 2008 R2 SP1 z července 2016 |2,54 |Srpna 9, 2016 |
-| – |[3172615] |Kumulativní aktualizace pro Windows Server 2012 z července 2016 |3,42 |Srpna 9, 2016 |
-| – |[3172614] |Kumulativní aktualizace pro Windows RT 8,1, Windows 8.1 a Windows Server 2012 R2 z července 2016 |4,35 |Srpna 9, 2016 |
+| Není k dispozici |[3172605] |Kumulativní aktualizace pro Windows 7 SP1 a Windows Server 2008 R2 SP1 z července 2016 |2,54 |Srpna 9, 2016 |
+| Není k dispozici |[3172615] |Kumulativní aktualizace pro Windows Server 2012 z července 2016 |3,42 |Srpna 9, 2016 |
+| Není k dispozici |[3172614] |Kumulativní aktualizace pro Windows RT 8,1, Windows 8.1 a Windows Server 2012 R2 z července 2016 |4,35 |Srpna 9, 2016 |
 
 ## <a name="july-2016-guest-os"></a>Z července 2016 hostovaný operační systém
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1534,12 +1526,12 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS16-091 |[3170048] |Aktualizace zabezpečení pro .NET Framework |4,34, 3,41, 2,53 |12. července 2016 |
 | MS16-092 |[3171910] |Aktualizace zabezpečení pro jádro systému Windows |4,34, 3,41 |12. července 2016 |
 | MS16-094 |[3177404] |Aktualizace zabezpečení pro zabezpečené spouštění |4,34, 3,41 |12. července 2016 |
-| – |[3162835] |Aktualizace LETNÍho času a časového pásma pro Windows v červnu 2016 |4,34, 3,41, 2,53 |12. července 2016 |
-| – |[3156417] |2016 kumulativní aktualizace pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2,53 |12. července 2016 |
-| – |[3161608] |Kumulativní aktualizace pro Windows 7 SP1 a Windows Server 2008 R2 SP1 z června 2016 |2,53 |12. července 2016 |
-| – |[3161609] |Kumulativní aktualizace pro Windows Server 2012 z června 2016 |3,41 |12. července 2016 |
-| – |[3161606] |Kumulativní aktualizace pro Windows RT 8,1, Windows 8.1 a Windows Server 2012 R2 z června 2016 |4,34 |12. července 2016 |
-| – |[3139923] |Oprava Instalační služby systému Windows (MSI) nefunguje, když je balíček MSI nainstalovaný ve sdílené složce HTTP ve Windows. |4,34 |12. července 2016 |
+| Není k dispozici |[3162835] |Aktualizace LETNÍho času a časového pásma pro Windows v červnu 2016 |4,34, 3,41, 2,53 |12. července 2016 |
+| Není k dispozici |[3156417] |2016 kumulativní aktualizace pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2,53 |12. července 2016 |
+| Není k dispozici |[3161608] |Kumulativní aktualizace pro Windows 7 SP1 a Windows Server 2008 R2 SP1 z června 2016 |2,53 |12. července 2016 |
+| Není k dispozici |[3161609] |Kumulativní aktualizace pro Windows Server 2012 z června 2016 |3,41 |12. července 2016 |
+| Není k dispozici |[3161606] |Kumulativní aktualizace pro Windows RT 8,1, Windows 8.1 a Windows Server 2012 R2 z června 2016 |4,34 |12. července 2016 |
+| Není k dispozici |[3139923] |Oprava Instalační služby systému Windows (MSI) nefunguje, když je balíček MSI nainstalovaný ve sdílené složce HTTP ve Windows. |4,34 |12. července 2016 |
 
 ## <a name="june-2016-guest-os"></a>Operační systém hosta červen 2016
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1557,16 +1549,16 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS16-077 |[3165191] |Aktualizace zabezpečení pro protokol WPAD |4,33, 3,40, 2,52 |14. června 2016 |
 | MS16-080 |[3164302] |Aktualizace zabezpečení pro Microsoft Windows PDF |4,33, 3,40 |14. června 2016 |
 | MS16-081 |[3160352] |Aktualizace zabezpečení služby Active Directory |4,33, 3,40, 2,52 |14. června 2016 |
-| – |[2922223] |Pokud je v systému Windows povolená položka registru RealTimeIsUniversal, nemůžete změnit systémový čas. |2.52 |14. června 2016 |
-| – |[3121255] |v systému Windows došlo k chybě "0x00000024" stop v FsRtlNotifyFilterReportChange a kopírování souboru se nemusí zdařit. |2.52 |14. června 2016 |
-| – |[3125424] |Zablokování služby LSASS způsobí, že systém Windows Server 2012 R2 nebo Windows Server 2012 nereaguje. |4,33, 3,40 |14. června 2016 |
-| – |[3125574] |Kumulativní aktualizace pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2.52 |14. června 2016 |
-| – |[3140245] |Aktualizace umožňující povolit TLS 1,1 a TLS 1,2 jako výchozí zabezpečené protokoly v WinHTTP ve Windows |3,40, 2,52 |14. června 2016 |
-| – |[3146604] |Služba WMI v systému Windows Server 2012 R2 nebo Windows Server 2012 dojde k náhodnému selhání. |4,33, 3,40 |14. června 2016 |
-| – |[3149157] |Vylepšení spolehlivosti a škálovatelnosti v protokolu TCP/IP pro Windows 8.1 a Windows Server 2012 R2 |4,33 |14. června 2016 |
-| – |[3156416] |Kumulativní aktualizace pro Windows Server 2012 Květen 2016 |3,40 |14. června 2016 |
-| – |[3156418] |Kumulativní aktualizace pro Windows RT 8,1, Windows 8.1 a Windows Server 2012 R2 může být 2016. |4,33 |14. června 2016 |
-| – |[3153731] |Aktualizace z 2016. května pro Ázerbájdžán, Chile, Haiti a Maroko ve Windows |4,33, 3,40, 2,52 |14. června 2016 |
+| Není k dispozici |[2922223] |Pokud je v systému Windows povolená položka registru RealTimeIsUniversal, nemůžete změnit systémový čas. |2.52 |14. června 2016 |
+| Není k dispozici |[3121255] |v systému Windows došlo k chybě "0x00000024" stop v FsRtlNotifyFilterReportChange a kopírování souboru se nemusí zdařit. |2.52 |14. června 2016 |
+| Není k dispozici |[3125424] |Zablokování služby LSASS způsobí, že systém Windows Server 2012 R2 nebo Windows Server 2012 nereaguje. |4,33, 3,40 |14. června 2016 |
+| Není k dispozici |[3125574] |Kumulativní aktualizace pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2.52 |14. června 2016 |
+| Není k dispozici |[3140245] |Aktualizace umožňující povolit TLS 1,1 a TLS 1,2 jako výchozí zabezpečené protokoly v WinHTTP ve Windows |3,40, 2,52 |14. června 2016 |
+| Není k dispozici |[3146604] |Služba WMI v systému Windows Server 2012 R2 nebo Windows Server 2012 dojde k náhodnému selhání. |4,33, 3,40 |14. června 2016 |
+| Není k dispozici |[3149157] |Vylepšení spolehlivosti a škálovatelnosti v protokolu TCP/IP pro Windows 8.1 a Windows Server 2012 R2 |4,33 |14. června 2016 |
+| Není k dispozici |[3156416] |Kumulativní aktualizace pro Windows Server 2012 Květen 2016 |3,40 |14. června 2016 |
+| Není k dispozici |[3156418] |Kumulativní aktualizace pro Windows RT 8,1, Windows 8.1 a Windows Server 2012 R2 může být 2016. |4,33 |14. června 2016 |
+| Není k dispozici |[3153731] |Aktualizace z 2016. května pro Ázerbájdžán, Chile, Haiti a Maroko ve Windows |4,33, 3,40, 2,52 |14. června 2016 |
 
 ## <a name="may-2016-guest-os"></a>Květen 2016 hostovaného operačního systému
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1580,11 +1572,11 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS16-062 |[3158222] |Aktualizace zabezpečení pro ovladače režimu jádra |4,32, 3,39, 2,51 |10. května 2016 |
 | MS16-065 |[3156757] |Aktualizace zabezpečení pro .NET Framework |4,32, 3,39, 2,51 |10. května 2016 |
 | MS16-067 |[3155784] |Aktualizace zabezpečení pro ovladač Volume Manageru |4,32, 3,39 |10. května 2016 |
-| – |[3148851] |Změny časového pásma pro Rusko v systému Windows  |4,32, 3,39, 2,51 |10. května 2016 |
-| – |[3133977] |BitLocker nemůže šifrovat jednotky kvůli selháním služby v procesu svchost.exe v systému Windows 7 nebo Windows Server 2008 R2.  |2,51 |10. května 2016 |
-| – |[3133681] |Virtuální počítače nereagují na vaši operaci v SCVMM v systému Windows Server 2012 R2  |4,32 |10. května 2016 |
-| – |[3123245] |Aktualizace vylepšuje identifikaci vyčerpání portů ve Windows Serveru 2012 R2.  |4,32 |10. května 2016 |
-| – |[Zakázat RC4] | Informační zpravodaj zabezpečení společnosti Microsoft: aktualizace pro zakázání ŠIFRy  |4,32, 3,39, 2,51 |10. května 2016 |
+| Není k dispozici |[3148851] |Změny časového pásma pro Rusko v systému Windows  |4,32, 3,39, 2,51 |10. května 2016 |
+| Není k dispozici |[3133977] |BitLocker nemůže šifrovat jednotky kvůli selháním služby v procesu svchost.exe v systému Windows 7 nebo Windows Server 2008 R2.  |2,51 |10. května 2016 |
+| Není k dispozici |[3133681] |Virtuální počítače nereagují na vaši operaci v SCVMM v systému Windows Server 2012 R2  |4,32 |10. května 2016 |
+| Není k dispozici |[3123245] |Aktualizace vylepšuje identifikaci vyčerpání portů ve Windows Serveru 2012 R2.  |4,32 |10. května 2016 |
+| Není k dispozici |[Zakázat RC4] | Informační zpravodaj zabezpečení společnosti Microsoft: aktualizace pro zakázání ŠIFRy  |4,32, 3,39, 2,51 |10. května 2016 |
 
 ## <a name="april-2016-guest-os"></a>Hostovaný operační systém od dubna 2016
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1755,17 +1747,17 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 ## <a name="march-2015-guest-os"></a>Hostovaný operační systém od března 2015
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-| MS15 – 018 |[3032359] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4,18, 3,25, 2,37 |– |
-| MS15 – 019 |[3040297] |Chyba zabezpečení skriptovacího stroje jazyka VBScript by mohla umožňovat vzdálené spuštění kódu |4,18, 3,25, 2,37 |– |
-| MS15 – 020 |[3041836] |Ohrožení zabezpečení v systému Windows by mohla umožňovat vzdálené spuštění kódu |4,18, 3,25, 2,37 |– |
-| MS15 – 021 |[3032323] |Chyby zabezpečení – ovladač Adobe font může umožňovat vzdálené spuštění kódu. |4,18, 3,25, 2,37 |– |
-| MS15 – 023 |[3034344] |Ohrožení zabezpečení v ovladači režimu jádra by mohlo umožnit zvýšení oprávnění. |4,18, 3,25, 2,37 |– |
-| MS15 – 024 |[3035132] |Ohrožení zabezpečení při zpracování PNG může umožnit vyzrazení informací. |4,18, 3,25, 2,37 |– |
-| MS15 – 025 |[3038680] |Chyby zabezpečení v jádru Windows můžou umožnit zvýšení oprávnění. |4,18, 3,25, 2,37 |– |
-| MS15 – 027 |[3002657] |Ohrožení zabezpečení v NETLOGON může umožnit falšování identity |4,18, 3,25, 2,37 |– |
-| MS15 – 028 |[3030377] |Chyba zabezpečení ve Windows Plánovač úloh mohla umožňovat obejít funkci zabezpečení. |4,18, 3,25, 2,37 |– |
-| MS15 – 029 |[3035126] |Ohrožení zabezpečení v komponentě Windows Photo Decoder může umožnit vyzrazení informací. |4,18, 3,25, 2,37 |– |
-| MS15 – 030 |[3039976] |Ohrožení zabezpečení v protokol RDP (Remote Desktop Protocol) může umožnit odepření služby. |4,18, 3,25, 2,37 |– |
+| MS15 – 018 |[3032359] |Kumulativní aktualizace zabezpečení pro Internet Explorer |4,18, 3,25, 2,37 |Není k dispozici |
+| MS15 – 019 |[3040297] |Chyba zabezpečení skriptovacího stroje jazyka VBScript by mohla umožňovat vzdálené spuštění kódu |4,18, 3,25, 2,37 |Není k dispozici |
+| MS15 – 020 |[3041836] |Ohrožení zabezpečení v systému Windows by mohla umožňovat vzdálené spuštění kódu |4,18, 3,25, 2,37 |Není k dispozici |
+| MS15 – 021 |[3032323] |Chyby zabezpečení – ovladač Adobe font může umožňovat vzdálené spuštění kódu. |4,18, 3,25, 2,37 |Není k dispozici |
+| MS15 – 023 |[3034344] |Ohrožení zabezpečení v ovladači režimu jádra by mohlo umožnit zvýšení oprávnění. |4,18, 3,25, 2,37 |Není k dispozici |
+| MS15 – 024 |[3035132] |Ohrožení zabezpečení při zpracování PNG může umožnit vyzrazení informací. |4,18, 3,25, 2,37 |Není k dispozici |
+| MS15 – 025 |[3038680] |Chyby zabezpečení v jádru Windows můžou umožnit zvýšení oprávnění. |4,18, 3,25, 2,37 |Není k dispozici |
+| MS15 – 027 |[3002657] |Ohrožení zabezpečení v NETLOGON může umožnit falšování identity |4,18, 3,25, 2,37 |Není k dispozici |
+| MS15 – 028 |[3030377] |Chyba zabezpečení ve Windows Plánovač úloh mohla umožňovat obejít funkci zabezpečení. |4,18, 3,25, 2,37 |Není k dispozici |
+| MS15 – 029 |[3035126] |Ohrožení zabezpečení v komponentě Windows Photo Decoder může umožnit vyzrazení informací. |4,18, 3,25, 2,37 |Není k dispozici |
+| MS15 – 030 |[3039976] |Ohrožení zabezpečení v protokol RDP (Remote Desktop Protocol) může umožnit odepření služby. |4,18, 3,25, 2,37 |Není k dispozici |
 
 > [!NOTE]
 > Bulletin MS15-031 se může zobrazit jako odinstalovaný. Neplatí to ale pro tuto verzi hostovaného operačního systému.
@@ -1775,13 +1767,13 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 ## <a name="february-2015-guest-os"></a>2015. února hostovaný operační systém
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-| MS15 – 009 |[3034682] |Aktualizace zabezpečení pro Internet Explorer |4,17, 3,24, 2,36 |– |
-| MS15 – 010 |[3036220] |Chyby zabezpečení v ovladačích režimu jádra systému Windows umožňují vzdálené spuštění kódu. |4,17, 3,24, 2,36 |– |
-| MS15 – 011 |[3000483] |Ohrožení zabezpečení v Zásady skupiny může umožňovat vzdálené spuštění kódu. |4,17, 3,24, 2,36 |– |
-| MS15 – 014 |[3004361] |Chyba zabezpečení v protokolu SMB by mohla dovolit obejít funkci zabezpečení |4,17, 3,24, 2,36 |– |
-| MS15 – 015 |[3031432] |Ohrožení zabezpečení v systému Microsoft Windows může umožnit zvýšení oprávnění |4,17, 3,24, 2,36 |– |
+| MS15 – 009 |[3034682] |Aktualizace zabezpečení pro Internet Explorer |4,17, 3,24, 2,36 |Není k dispozici |
+| MS15 – 010 |[3036220] |Chyby zabezpečení v ovladačích režimu jádra systému Windows umožňují vzdálené spuštění kódu. |4,17, 3,24, 2,36 |Není k dispozici |
+| MS15 – 011 |[3000483] |Ohrožení zabezpečení v Zásady skupiny může umožňovat vzdálené spuštění kódu. |4,17, 3,24, 2,36 |Není k dispozici |
+| MS15 – 014 |[3004361] |Chyba zabezpečení v protokolu SMB by mohla dovolit obejít funkci zabezpečení |4,17, 3,24, 2,36 |Není k dispozici |
+| MS15 – 015 |[3031432] |Ohrožení zabezpečení v systému Microsoft Windows může umožnit zvýšení oprávnění |4,17, 3,24, 2,36 |Není k dispozici |
 | MS15 – 016 |[3029944] |Ohrožení zabezpečení v součásti Microsoft Graphics může umožnit vyzrazení informací. |4,17, 3,24, 2,36 |N/A |
-| N/A |[3004375] |Aktualizace pro zlepšení auditování příkazového řádku systému Windows<p/>**Poznámka**: Tato možnost je nainstalovaná, ale klíč registru, který ho povolí, je vypnutý. |4,17, 3,24, 2,36 |– |
+| N/A |[3004375] |Aktualizace pro zlepšení auditování příkazového řádku systému Windows<p/>**Poznámka**: Tato možnost je nainstalovaná, ale klíč registru, který ho povolí, je vypnutý. |4,17, 3,24, 2,36 |Není k dispozici |
 
 ## <a name="january-2015-guest-os"></a>Leden 2015 hostovaný operační systém
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1802,17 +1794,17 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 ## <a name="december-2014-guest-os"></a>Operační systém hosta 2014. prosince
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-| – |[3013776] |Systém se zablokuje při použití účtu domény ke spuštění aplikace. |4,15, 3,22, 2,34 |Leden 13 2015 |
-| – |[3013043] |Data systému souborů jsou poškozena v počítači se systémem Windows, který má více než jeden uzel NUMA. |4,15, 3,22, 2,34 |Leden 13 2015 |
-| – |[3012712] |Nové bloky dat se při rozbalení rozdílového virtuálního pevného disku nesprávně inicializují |4,15, 3,22, 2,34 |Leden 13 201 |
-| – |[3004905] |Vylepšení Windows Hyper-V pro virtuální počítače se systémem Linux, které mají systémy souborů větší než 2 TB |4,15, 3,22, 2,34 |Leden 13 2015 |
-| – |[3004394] |Aktualizace z prosince 2014 pro Windows Root Certificate Program ve Windows |4,15, 3,22, 2,34 |Leden 13 2015 |
-| – |[2999323] |Text události s ID 17 se změní. |4,15, 3,22, 2,34 |Leden 13 2015 |
-| – |[3013488] |Dlouhé čekání na resetování serveru WSUS při importu souborů CSA v systému Windows Server 2012 R2 nebo Windows Server 2012 |4,15, 3,22, 2,34 |Leden 13 2015 |
-| – |[3012325] |Aktualizace záznamů databáze APN pro Windows pro operátory mobilních, Vodafone a Telekom v Windows 8.1 a Windows 8 |4,15, 3,22, 2,34 |Leden 13 2015 |
-| – |[3007054] |Možnost tisku chráněná PIN kódem se vždycky zobrazuje při tisku dokumentu v aplikaci pro Windows Store ve Windows. |4,15, 3,22, 2,34 |Leden 13 2015 |
-| – |[2999802] |V systému Windows se vytisknou plné čáry místo tečkované čáry. |4,15, 3,22, 2,34 |Leden 13 2015 |
-| – |[2896881] |Dlouhý čas přihlášení při použití příkazu AddPrinterConnection VBScript k mapování tiskáren pro uživatele během procesu přihlašování ve Windows |4,15, 3,22, 2,34 |Leden 13 2015 |
+| Není k dispozici |[3013776] |Systém se zablokuje při použití účtu domény ke spuštění aplikace. |4,15, 3,22, 2,34 |Leden 13 2015 |
+| Není k dispozici |[3013043] |Data systému souborů jsou poškozena v počítači se systémem Windows, který má více než jeden uzel NUMA. |4,15, 3,22, 2,34 |Leden 13 2015 |
+| Není k dispozici |[3012712] |Nové bloky dat se při rozbalení rozdílového virtuálního pevného disku nesprávně inicializují |4,15, 3,22, 2,34 |Leden 13 201 |
+| Není k dispozici |[3004905] |Vylepšení Windows Hyper-V pro virtuální počítače se systémem Linux, které mají systémy souborů větší než 2 TB |4,15, 3,22, 2,34 |Leden 13 2015 |
+| Není k dispozici |[3004394] |Aktualizace z prosince 2014 pro Windows Root Certificate Program ve Windows |4,15, 3,22, 2,34 |Leden 13 2015 |
+| Není k dispozici |[2999323] |Text události s ID 17 se změní. |4,15, 3,22, 2,34 |Leden 13 2015 |
+| Není k dispozici |[3013488] |Dlouhé čekání na resetování serveru WSUS při importu souborů CSA v systému Windows Server 2012 R2 nebo Windows Server 2012 |4,15, 3,22, 2,34 |Leden 13 2015 |
+| Není k dispozici |[3012325] |Aktualizace záznamů databáze APN pro Windows pro operátory mobilních, Vodafone a Telekom v Windows 8.1 a Windows 8 |4,15, 3,22, 2,34 |Leden 13 2015 |
+| Není k dispozici |[3007054] |Možnost tisku chráněná PIN kódem se vždycky zobrazuje při tisku dokumentu v aplikaci pro Windows Store ve Windows. |4,15, 3,22, 2,34 |Leden 13 2015 |
+| Není k dispozici |[2999802] |V systému Windows se vytisknou plné čáry místo tečkované čáry. |4,15, 3,22, 2,34 |Leden 13 2015 |
+| Není k dispozici |[2896881] |Dlouhý čas přihlášení při použití příkazu AddPrinterConnection VBScript k mapování tiskáren pro uživatele během procesu přihlašování ve Windows |4,15, 3,22, 2,34 |Leden 13 2015 |
 
 [4457131]: https://support.microsoft.com/kb/4457131
 [4457145]: https://support.microsoft.com/kb/4457145

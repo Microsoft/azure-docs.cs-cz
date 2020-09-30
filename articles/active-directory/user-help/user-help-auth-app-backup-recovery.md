@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3148f8ba84674c79764d0fc69acdbc02e7a12dc4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e7608196c962a6918a90b91457f856f3e11b04f0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798988"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530897"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Zálohování a obnovení přihlašovacích údajů k účtu pomocí aplikace Microsoft Authenticator
 
@@ -83,21 +83,21 @@ U osobních účtů Microsoft můžete svou identitu prokázat zadáním hesla s
 
 1. Na obrazovce **účty** aplikace Microsoft Authenticator klepněte na účet, který chcete obnovit, a otevřete zobrazení celé obrazovky tohoto účtu.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="Aplikace Microsoft Authenticator, kde se zobrazují dlaždice dostupných účtů" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="Snímek obrazovky zobrazující aplikaci Microsoft Authenticator s dostupnými dlaždicemi účtu" border="true":::
 
 1. Klepněte na dlaždici pro účet, který obnovujete, a pak klepněte na možnost pro přihlášení k obnovení. Zadejte heslo a potvrďte svoji e-mailovou adresu nebo telefonní číslo jako další ověření.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="Ověřovatel zobrazuje jednorázové heslo jako ověřovací kód." border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="Snímek obrazovky zobrazující aplikaci Microsoft Authenticator s dostupnými dlaždicemi účtu" border="true":::
 
 ### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>Poskytnutí více ověření pro pracovní nebo školní účty
 
 1. Na obrazovce **účty** aplikace Microsoft Authenticator klepněte na účet, který chcete obnovit, a otevřete zobrazení celé obrazovky tohoto účtu.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Aplikace Microsoft Authenticator, kde se zobrazují dlaždice dostupných účtů" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Snímek obrazovky zobrazující aplikaci Microsoft Authenticator s dostupnými dlaždicemi účtu" border="true":::
 
 1. V zobrazení na celé obrazovce klepněte na možnost pro skenování kódu QR pro úplné obnovení.
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Ověřovatel zobrazuje jednorázové heslo jako ověřovací kód." border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Snímek obrazovky zobrazující aplikaci Microsoft Authenticator s dostupnými dlaždicemi účtu" border="true":::
 
 >[!NOTE]
 >Další informace o kódech QR a o tom, jak ho získat, najdete v tématu Začínáme [s aplikací Microsoft Authenticator](./user-help-auth-app-download-install.md) nebo [Nastavení bezpečnostních údajů pro použití ověřovací aplikace](./security-info-setup-auth-app.md)na základě toho, jestli váš správce zapnul bezpečnostní údaje.

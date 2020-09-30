@@ -14,12 +14,12 @@ ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95b0b026b75b9b77c94451245ac4f18d487fc2e4
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: bb102c23d80095b8eb79fc25d1c1fd9d7f374fce
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783514"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529690"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Rozhraní API pro Microsoft Graph pro Privileged Identity Management (Preview)
 
@@ -51,7 +51,7 @@ Pokud k otestování volání používáte Průzkumníka grafů, můžete zadat 
 
 1. Klikněte na **Upravit oprávnění**.
 
-    ![Průzkumník grafů – Změna oprávnění](./media/pim-apis/graph-explorer.png)
+    ![Snímek obrazovky zobrazující stránku Průzkumník grafů s vybranou akcí upravit oprávnění](./media/pim-apis/graph-explorer.png)
 
 1. Zaškrtněte políčka vedle oprávnění, která chcete zahrnout. `PrivilegedAccess.ReadWrite.AzureAD` není zatím k dispozici v Graph Exploreru.
 

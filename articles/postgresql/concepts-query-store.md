@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 49eea969f987a72872cda58ae6a7c41e50a14c10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cda79e1b08e67e10d42acb5093230ce8450d67d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830277"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530914"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorování výkonu pomocí úložiště dotazů
 
@@ -116,7 +116,7 @@ Dotazy jsou normalizovány tím, že si po odebrání literálů a konstant vyhl
 ### <a name="query_storeqs_view"></a>query_store. qs_view
 Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele a ID dotazu je k dispozici jeden řádek. 
 
-|**Název**   |**Typ** | **Reference**  | **Popis**|
+|**Název**   |**Typ** | **Odkazy**  | **Popis**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | ID z runtime_stats_entries tabulky|
 |user_id    |identifikátor    |pg_authid. OID  |Identifikátor OID uživatele, který příkaz provedl|
@@ -157,7 +157,7 @@ Toto zobrazení vrátí textová data dotazu v úložišti dotazů. Pro každý 
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store. pgms_wait_sampling_view
 Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele, ID dotazu a událost je jeden řádek.
 
-|**Název**|  **Typ**|   **Reference**| **Popis**|
+|**Název**|  **Typ**|   **Odkazy**| **Popis**|
 |---|---|---|---|
 |user_id    |identifikátor    |pg_authid. OID  |Identifikátor OID uživatele, který příkaz provedl|
 |db_id  |identifikátor    |pg_database. OID    |Identifikátor objektu databáze, ve kterém byl příkaz proveden|
@@ -170,11 +170,11 @@ Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro ka�
 ### <a name="functions"></a>Functions
 Query_store. qs_reset () vrátí typ void.
 
-`qs_reset`zahodí všechny statistiky shromážděné zatím v úložišti dotazů. Tuto funkci může spustit jenom role správce serveru.
+`qs_reset` zahodí všechny statistiky shromážděné zatím v úložišti dotazů. Tuto funkci může spustit jenom role správce serveru.
 
 Query_store. staging_data_reset () vrátí typ void.
 
-`staging_data_reset`zahodí všechny statistiky shromážděné v paměti úložištěm dotazů (tj. data v paměti, která ještě nebyla vyprázdněna do databáze). Tuto funkci může spustit jenom role správce serveru.
+`staging_data_reset` zahodí všechny statistiky shromážděné v paměti úložištěm dotazů (tj. data v paměti, která ještě nebyla vyprázdněna do databáze). Tuto funkci může spustit jenom role správce serveru.
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -250,7 +250,7 @@ V následujících tabulkách jsou popsána pole pro dva typy protokolů. V záv
 ## <a name="limitations-and-known-issues"></a>Omezení a známé problémy
 - Pokud má server PostgreSQL parametr default_transaction_read_only na, nemůže úložiště dotazů zachytit data.
 - Funkce úložiště dotazů se dá přerušit, pokud dojde k dlouhým dotazům v kódování Unicode (>= 6000 bajtů).
-- [Čtení replik](concepts-read-replicas.md) replikuje data úložiště dotazů z hlavního serveru. To znamená, že úložiště dotazů repliky pro čtení neposkytuje statistiku o dotazech spuštěných v replice pro čtení.
+- [Čtení replik](concepts-read-replicas.md) replikuje data úložiště dotazů z primárního serveru. To znamená, že úložiště dotazů repliky pro čtení neposkytuje statistiku o dotazech spuštěných v replice pro čtení.
 
 
 ## <a name="next-steps"></a>Další kroky

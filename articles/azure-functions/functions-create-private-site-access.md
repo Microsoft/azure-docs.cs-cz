@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: eb3096cadc8197aeda9258bd3123c2eb760a44af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 948e4f74763efd641bc0f089c679cdaf7c2f784e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540277"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530064"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Kurz: vytvoření přístupu k privátnímu webu Azure Functions
 
@@ -45,7 +45,7 @@ Pro účely tohoto kurzu je důležité pochopit IP adresy a podsítě. Můžete
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
@@ -73,7 +73,7 @@ Prvním krokem v tomto kurzu je vytvoření nového virtuálního počítače ve
 1. Zvolte kartu _síť_ a vyberte **vytvořit novou** a nakonfigurujte novou virtuální síť.
 
     >[!div class="mx-imgBorder"]
-    >![Vytvořit novou virtuální síť pro nový virtuální počítač](./media/functions-create-private-site-access/create-vm-networking.png)
+    >![Snímek obrazovky, který zobrazuje kartu "sítě" se zvýrazněnou akcí vytvořit novou v oddílu "virtuální síť".](./media/functions-create-private-site-access/create-vm-networking.png)
 
 1. V části _vytvořit virtuální síť_použijte nastavení v tabulce pod obrázkem:
 
@@ -151,7 +151,7 @@ Dalším krokem je vytvoření aplikace Function App v Azure s využitím [plán
     | ------------ | ---------------- | ---------------- |
     | _Účet úložiště_ | Globálně jedinečný název | Vytvořte účet úložiště používaný vaší aplikací funkcí. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete použít i existující účet, který musí splňovat [požadavky na účet úložiště](./functions-scale.md#storage-account-requirements). |
     | _Operační systém_ | Preferovaný operační systém | Operační systém je předem vybraný pro vás na základě výběru zásobníku modulu runtime, ale v případě potřeby můžete změnit nastavení. |
-    | _Plán_ | Využití | [Plán hostování](./functions-scale.md) určuje, jak se aplikace funkcí škáluje, a prostředky dostupné pro jednotlivé instance. |
+    | _Plán_ | Consumption | [Plán hostování](./functions-scale.md) určuje, jak se aplikace funkcí škáluje, a prostředky dostupné pro jednotlivé instance. |
 1. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte výběry konfigurace aplikace.
 1. Klikněte na možnost **Vytvořit** a zřiďte a nasaďte aplikaci funkcí.
 

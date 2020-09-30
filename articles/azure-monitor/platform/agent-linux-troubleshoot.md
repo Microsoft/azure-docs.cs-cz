@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 98ef2b416c809789307f946ed90fb3138d9a20c1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325368"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531186"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží s agentem Log Analytics pro Linux 
 
@@ -38,7 +38,7 @@ Pokud žádný z těchto kroků nefunguje za vás, jsou k dispozici i tyto kaná
 
  Kategorie | Umístění souboru
  ----- | -----
- Syslog | `/etc/syslog-ng/syslog-ng.conf`nebo `/etc/rsyslog.conf` nebo`/etc/rsyslog.d/95-omsagent.conf`
+ Syslog | `/etc/syslog-ng/syslog-ng.conf` nebo `/etc/rsyslog.conf` nebo `/etc/rsyslog.d/95-omsagent.conf`
  Výkon, Nagios, Zabbix, výstup Log Analytics a generální agent | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
  Další konfigurace | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
@@ -150,7 +150,7 @@ Pod výstupním modulem plug-in odkomentujte následující oddíl odebráním `
 
 ### <a name="probable-causes"></a>Pravděpodobné příčiny
 * Proxy server zadaný během připojování byl nesprávný.
-* V datovém centru nejsou na seznamu povolených koncových bodů služby Azure Monitor a Azure Automation. 
+* V seznamu schválených v datovém centru nejsou zahrnuté koncové body služby Azure Monitor a Azure Automation. 
 
 ### <a name="resolution"></a>Řešení
 1. Reonboard se Azure Monitor na Log Analytics agenta pro Linux pomocí následujícího příkazu s `-v` povolenou možností. Umožňuje podrobný výstup agenta připojujícího se prostřednictvím proxy serveru k Azure Monitor. 
@@ -211,7 +211,7 @@ K chybám souvisejícím s výkonem nedojde po celou dobu a jejich reprodukován
 - Zálohování dat Log Analytics agenta pro Linux
 
 ### <a name="resolution"></a>Řešení
-1. Ověřte, jestli Azure Monitor Registrace proběhla úspěšně, a to tak, že zkontroluje, jestli tento soubor existuje:`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
+1. Ověřte, jestli Azure Monitor Registrace proběhla úspěšně, a to tak, že zkontroluje, jestli tento soubor existuje: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. Reonboard pomocí `omsadmin.sh` instrukcí příkazového řádku
 3. Pokud používáte proxy server, přečtěte si výše uvedené kroky k vyřešení serveru proxy.
 4. V některých případech platí, že pokud Agent Log Analytics pro Linux nemůže komunikovat se službou, data v agentovi jsou zařazená do fronty na celou velikost vyrovnávací paměti, což je 50 MB. Agenta byste měli restartovat spuštěním následujícího příkazu: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]` . 
@@ -394,13 +394,13 @@ Tato chyba znamená, že diagnostické rozšíření Linux (LAD) je nainstalovan
 
 **Pozadí:** Místo agenta Log Analytics pro Linux spuštěný jako privilegovaný uživatel – `root` Agent se spustí jako `omsagent` uživatel. Ve většině případů musí být pro tohoto uživatele udělené explicitní oprávnění, aby bylo možné některé soubory číst. Chcete-li udělit oprávnění `omsagent` uživateli, spusťte následující příkazy:
 
-1. Přidat `omsagent` uživatele do konkrétní skupiny`sudo usermod -a -G <GROUPNAME> <USERNAME>`
-2. Udělit k požadovanému souboru univerzální přístup pro čtení`sudo chmod -R ugo+rx <FILE DIRECTORY>`
+1. Přidat `omsagent` uživatele do konkrétní skupiny `sudo usermod -a -G <GROUPNAME> <USERNAME>`
+2. Udělit k požadovanému souboru univerzální přístup pro čtení `sudo chmod -R ugo+rx <FILE DIRECTORY>`
 
 Došlo k známému problému se stavem časování u Log Analytics agenta pro Linux verze starší než 1.1.0-217. Po aktualizaci na nejnovějšího agenta spusťte následující příkaz, který načte nejnovější verzi výstupního modulu plug-in `sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` .
 
 ## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>Problém: Pokoušíte se reonboard k novému pracovnímu prostoru
-Když se pokusíte reonboard agenta do nového pracovního prostoru, je nutné před reonboarding vyčistit konfiguraci agenta Log Analytics. Pokud chcete vyčistit starou konfiguraci od agenta, spusťte sadu prostředků prostředí pomocí nástroje.`--purge`
+Když se pokusíte reonboard agenta do nového pracovního prostoru, je nutné před reonboarding vyčistit konfiguraci agenta Log Analytics. Pokud chcete vyčistit starou konfiguraci od agenta, spusťte sadu prostředků prostředí pomocí nástroje. `--purge`
 
 ```
 sudo sh ./omsagent-*.universal.x64.sh --purge
@@ -444,4 +444,3 @@ Problém vyřešíte provedením následujících kroků.
     ```
 
 3. Upgradujte balíčky spuštěním příkazu `sudo sh ./omsagent-*.universal.x64.sh --upgrade` .
-

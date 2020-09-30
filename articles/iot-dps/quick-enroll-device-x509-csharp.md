@@ -3,18 +3,18 @@ title: 'Rychlý Start – registrace zařízení X. 509 do služby Azure Device 
 description: V tomto rychlém startu se používají skupinové registrace. V tomto rychlém startu zaregistrujete zařízení X. 509 do Azure IoT Hub Device Provisioning Service (DPS) pomocí jazyka C#.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2019
+ms.date: 09/28/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: d8d6c9e2276b2368e09cdb0697a37e34dcf487b5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 618b2c6acb8792382adb4c067aa8f33003227091
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330260"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532580"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí C#
 
@@ -28,7 +28,7 @@ I když postup v tomto článku funguje na počítačích se systémem Windows i
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte sadu [Visual Studio 2019](https://www.visualstudio.com/vs/).
 * Nainstalujte [.NET Core SDK](https://www.microsoft.com/net/download/windows).
@@ -159,12 +159,15 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
    }
    ```
 
-1. Nakonec nahraďte tělo `Main` metody následujícími řádky:
+1. Nakonec nahraďte `Main` metodu následujícími řádky:
 
    ```csharp
-   RunSample().GetAwaiter().GetResult();
-   Console.WriteLine("\nHit <Enter> to exit ...");
-   Console.ReadLine();
+    static async Task Main(string[] args)
+    {
+        await RunSample();
+        Console.WriteLine("\nHit <Enter> to exit ...");
+        Console.ReadLine();
+    }
    ```
 
 1. Sestavte řešení.

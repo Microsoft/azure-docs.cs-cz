@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4b729e975ddc9c184c1b0f39a6d3be548211cdfc
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 990d8ef275982b6d70c51819e47b33f543345023
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052711"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531271"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení účtů v Azure Active Directory
 
@@ -61,7 +61,7 @@ Jsou definovány následující možnosti zásad hesla:
 
 ## <a name="administrator-reset-policy-differences"></a>Rozdílné zásady resetování hesel pro správce
 
-Společnost Microsoft vynutila silná *výchozí zásada* pro resetování hesla pro všechny role správce Azure. Tato zásada může být jiná než ta, kterou jste definovali pro uživatele, a tato zásada se nedá změnit. Funkce resetování hesla byste měli vždycky testovat jako uživatel bez přiřazených rolí správce Azure.
+Ve výchozím nastavení se pro Samoobslužné resetování hesla povolují účty správců a vynutila se silná výchozí zásada pro resetování hesel se *dvěma branami* . Tato zásada může být jiná než ta, kterou jste definovali pro uživatele, a tato zásada se nedá změnit. Funkce resetování hesla byste měli vždycky testovat jako uživatel bez přiřazených rolí správce Azure.
 
 Díky zásadám se dvěma branami nemají správci možnost používat bezpečnostní otázky.
 
@@ -93,6 +93,8 @@ Zásady dvou bran vyžadují dvě části ověřovacích dat, jako je e-mailová
 * Pokud uplyne 30 dnů ve zkušebním předplatném, ani
 * Pro vašeho tenanta Azure AD je nakonfigurovaná vlastní doména, třeba *contoso.com*; ani
 * Azure AD Connect synchronizuje identity z místního adresáře.
+
+Pomocí rutiny [set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) prostředí PowerShell můžete zakázat použití SSPR pro účty správců. `-SelfServePasswordResetEnabled $False`Parametr ZAKÁŽE SSPR správcům.
 
 ### <a name="exceptions"></a>Výjimky
 

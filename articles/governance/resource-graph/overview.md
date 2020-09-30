@@ -3,12 +3,12 @@ title: Přehled služby Azure Resource Graph
 description: Seznamte se s tím, jak služba Azure Resource Graph umožňuje složitý dotazování na prostředky ve velkém rozsahu napříč předplatnými a klienty.
 ms.date: 08/13/2020
 ms.topic: overview
-ms.openlocfilehash: 73143c13fd83c8b784679ac28bd9a14f1c6a6888
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f2de6ce52870417eab1c74333dfce2905317e73d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798529"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531679"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co je Azure Resource Graph?
 
@@ -59,7 +59,7 @@ Nejprve se podívejte na podrobnosti o operacích a funkcích, které lze použ�
 
 ## <a name="permissions-in-azure-resource-graph"></a>Oprávnění v Azure Resource Graph
 
-Pokud chcete používat Resource Graph, musíte mít odpovídající oprávnění v [řízení přístupu na základě role](../../role-based-access-control/overview.md), a to alespoň oprávnění ke čtení pro prostředky, které chcete dotazovat. Pokud pro objekt nebo skupinu objektů Azure nemáte alespoň oprávnění `read`, nevrátí se žádné výsledky.
+Pokud chcete použít graf prostředků, musíte mít příslušná práva v [rámci řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md) s minimálním přístupem pro čtení k prostředkům, které chcete dotazovat. Pokud pro objekt nebo skupinu objektů Azure nemáte alespoň oprávnění `read`, nevrátí se žádné výsledky.
 
 > [!NOTE]
 > V grafu prostředků se při přihlášení používají předplatná, která jsou k objektu zabezpečení k dispozici. Chcete-li zobrazit prostředky nového předplatného přidaného během aktivní relace, objekt zabezpečení musí kontext aktualizovat. Tato akce se provádí automaticky při odhlašování a zpátky v.
