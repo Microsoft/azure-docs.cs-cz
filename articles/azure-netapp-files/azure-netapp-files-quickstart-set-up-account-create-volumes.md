@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 1506ab7210f8b98614f51e5168555068cce0afbb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d118bef4a7ccc263010fe176432a5301c4104118
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325670"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533889"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS 
 
@@ -53,7 +53,7 @@ Pro kroky registrace pomocí portálu otevřete relaci Cloud Shell, jak je uvede
 
 Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo novější. Aktuální verzi zjistíte spuštěním `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud budete chtít, můžete místo toho použít konzolu Cloud Shell v relaci prostředí PowerShell.
 
-1. V příkazovém řádku PowerShellu (nebo v relaci Cloud Shell PowerShellu) zadejte předplatné, které je na seznamu povolených pro Azure NetApp Files:
+1. V příkazovém řádku PowerShellu (nebo v relaci Cloud Shell PowerShellu) zadejte předplatné, které bylo schváleno pro Azure NetApp Files:
     ```powershell-interactive
     Select-AzSubscription -Subscription <subscriptionId>
     ```

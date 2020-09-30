@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9df06a9d81ef3c9fbe3380bab88325a586981db9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5ca65a428af02eaf5ae6ac461006c720da4461bd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329308"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538176"
 ---
 # <a name="cloud-tiering-overview"></a>Přehled vrstvení cloudu
 Vrstvení cloudu je volitelná funkce Azure File Sync, ve které jsou často používané soubory ukládány do mezipaměti místně na serveru, zatímco všechny ostatní soubory jsou vrstveny do souborů Azure na základě nastavení zásad. Když je soubor vrstvený, Azure File Sync filtr systému souborů (StorageSync.sys) nahradí soubor místně s ukazatelem nebo bodem rozboru. Bod rozboru představuje adresu URL souboru ve službě soubory Azure. Vrstvený soubor má atribut offline i atribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastavený v systému souborů NTFS, aby aplikace třetích stran mohli bezpečně identifikovat vrstvené soubory.
@@ -40,7 +40,7 @@ Vrstvení cloudu nezávisí na funkci systému souborů NTFS ke sledování čas
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Jaká je minimální velikost souboru pro soubor do vrstvy?
 
-U agentů verze 12 a novějších je minimální velikost souboru na vrstvu založená na velikosti clusteru systému souborů. Minimální velikost souboru způsobilá pro vytváření vrstev cloudu se počítá podle dvojnásobku velikosti clusteru a minimálně 8 KB. Následující tabulka ilustruje minimální velikosti souborů, které je možné rozvrstvit, na základě velikosti clusteru svazku:
+U agentů verze 9 a novějších je minimální velikost souboru na vrstvu založená na velikosti clusteru systému souborů. Minimální velikost souboru způsobilá pro vytváření vrstev cloudu se počítá podle dvojnásobku velikosti clusteru a minimálně 8 KB. Následující tabulka ilustruje minimální velikosti souborů, které je možné rozvrstvit, na základě velikosti clusteru svazku:
 
 |Velikost clusteru svazků (bajty) |Soubory této velikosti nebo větší lze převrstveny  |
 |----------------------------|---------|
@@ -50,7 +50,7 @@ U agentů verze 12 a novějších je minimální velikost souboru na vrstvu zalo
 |32 KB (32768)               | 64 kB   |
 |64 KB (65536) a větší    | 128 kB  |
 
-V systémech Windows Server 2019 a Azure File Sync Agent verze 12 a novějších jsou podporovány také velikosti clusterů až 2 MB a vrstvení na tyto větší velikosti clusterů funguje stejným způsobem. Starší verze operačních systémů nebo agentů podporují velikosti clusterů až do 64 KB, ale i přes tuto úroveň nefungují.
+S Windows serverem 2019 a agentem Azure File Sync verze 12 (budoucí verze agenta) se podporuje i velikost clusteru až do velikosti 2 MB a vrstvení na tyto větší velikosti clusterů funguje stejným způsobem. Starší verze operačních systémů nebo agentů podporují velikosti clusterů až do 64 KB, ale i přes tuto úroveň nefungují.
 
 Všechny systémy souborů používané systémem Windows organizují pevný disk na základě velikosti clusteru (označované také jako velikost alokační jednotky). Velikost clusteru představuje nejmenší množství místa na disku, které lze použít k uložení souboru. Když velikosti souborů nejdou na sudý násobek velikosti clusteru, je potřeba použít další místo pro uložení souboru do další násobky velikosti clusteru.
 
@@ -137,9 +137,9 @@ Existuje několik způsobů, jak ověřit, zda byl soubor vrstven do sdílené s
         
         | Písmeno atributu | Atribut | Definice |
         |:----------------:|-----------|------------|
-        | A | Archivovat | Indikuje, že by měl být soubor zálohovaný zálohovacím softwarem. Tento atribut je vždy nastaven bez ohledu na to, zda je soubor na disku povrstvený nebo uložený jako plný. |
+        | A | Archiv | Indikuje, že by měl být soubor zálohovaný zálohovacím softwarem. Tento atribut je vždy nastaven bez ohledu na to, zda je soubor na disku povrstvený nebo uložený jako plný. |
         | P | Zhuštěný soubor | Označuje, že se jedná o zhuštěný soubor. Zhuštěný soubor je specializovaný typ souboru, který systém souborů NTFS nabízí pro efektivní použití v případě, že je soubor na diskovém streamu většinou prázdný. Azure File Sync používá zhuštěné soubory, protože soubor je buď úplně vrstven, nebo částečně odvolán. V plně vrstveném souboru je datový proud souboru uložený v cloudu. V částečně vráceném souboru je tato část souboru již na disku. Pokud je soubor zcela znovu volán na disk, Azure File Sync jej převede ze zhuštěného souboru do normálního souboru. Tento atribut je nastaven pouze v systémech Windows Server 2016 a starších.|
-        | M | Odvolat při přístupu k datům | Indikuje, že data souboru nejsou plně přítomná v místním úložišti. Při čtení souboru dojde k tomu, že se alespoň část obsahu souboru načte ze sdílené složky Azure, ke které je připojený koncový bod serveru. Tento atribut je nastaven pouze v systému Windows Server 2019. |
+        | Ú | Odvolat při přístupu k datům | Indikuje, že data souboru nejsou plně přítomná v místním úložišti. Při čtení souboru dojde k tomu, že se alespoň část obsahu souboru načte ze sdílené složky Azure, ke které je připojený koncový bod serveru. Tento atribut je nastaven pouze v systému Windows Server 2019. |
         | L | Spojovací bod | Označuje, že soubor obsahuje bod rozboru. Bod rozboru je speciální ukazatel pro použití filtrem systému souborů. Azure File Sync používá spojovací body k definování do Azure File Syncho filtru systému souborů (StorageSync.sys) umístění v cloudu, kde je soubor uložený. To podporuje bezproblémový přístup. Uživatelé nebudou muset znát, že se používá Azure File Sync nebo jak získat přístup k souboru ve sdílené složce Azure. Když je soubor zcela znovu vyvolán, Azure File Sync odebere bod rozboru ze souboru. |
         | O | Offline | Indikuje, že některé nebo všechny obsahy souboru nejsou uložené na disku. Když je soubor zcela znovu vyvolán, Azure File Sync tento atribut odstraní. |
 

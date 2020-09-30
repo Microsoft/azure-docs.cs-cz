@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0caa8e2911046e18e63748fe5bde4b4c965eb965
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b57fe5879c45225f8ba22e2c94aceeb5b38369e3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502528"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539431"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>Jak vytvářet a spravovat repliky pro čtení v Azure Database for PostgreSQL pomocí prostředí PowerShell
 
@@ -22,7 +22,7 @@ V tomto článku se naučíte vytvářet a spravovat repliky pro čtení ve slu�
 
 Pomocí PowerShellu můžete vytvářet a spravovat repliky pro čtení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto průvodce budete potřebovat:
 
@@ -38,7 +38,7 @@ Pokud se rozhodnete použít prostředí PowerShell místně, připojte se k ú�
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Funkce replika čtení je k dispozici pouze pro Azure Database for PostgreSQL servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je hlavní server v jedné z těchto cenových úrovní.
+> Funkce replika čtení je k dispozici pouze pro Azure Database for PostgreSQL servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je primární server v jedné z těchto cenových úrovní.
 
 ### <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
 
@@ -51,10 +51,10 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzPostgreSqlServerReplica`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Description  |
+| Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které se vytvoří server repliky.  |
-| Name | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
+| Název | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
 
 Pokud chcete vytvořit repliku čtení ve více oblastech, použijte parametr **Location (umístění** ). V následujícím příkladu se vytvoří replika v oblasti **západní USA** .
 
@@ -65,14 +65,14 @@ Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 Další informace o tom, které oblasti můžete vytvořit repliku v, najdete v [článku věnovaném konceptům pro čtení replik](concepts-read-replicas.md).
 
-Ve výchozím nastavení se repliky čtení vytvoří se stejnou konfigurací serveru jako hlavní server, pokud není zadaný parametr **SKU** .
+Ve výchozím nastavení se repliky čtení vytvoří se stejnou konfigurací serveru jako primární, pokud není zadaný parametr **SKU** .
 
 > [!NOTE]
-> Doporučuje se udržovat konfiguraci serveru repliky ve stejné nebo větší hodnotě než hlavní, aby bylo zajištěno, že je replika schopná s hlavní hodnotou.
+> Doporučuje se udržovat konfiguraci serveru repliky ve stejné nebo větší hodnotě než primární, aby bylo zajištěno, že je replika schopná s hlavní hodnotou.
 
-### <a name="list-replicas-for-a-master-server"></a>Vypíše repliky pro hlavní server.
+### <a name="list-replicas-for-a-primary-server"></a>Vypíše repliky pro primární server.
 
-Chcete-li zobrazit všechny repliky pro daný hlavní server, spusťte následující příkaz:
+Chcete-li zobrazit všechny repliky pro daný primární server, spusťte následující příkaz:
 
 ```azurepowershell-interactive
 Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -80,10 +80,10 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMariaDReplica`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Description  |
+| Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
-| ServerName | mydemoserver | Název nebo ID hlavního serveru. |
+| ServerName | mydemoserver | Název nebo ID primárního serveru. |
 
 ### <a name="delete-a-replica-server"></a>Odstranění serveru repliky
 
@@ -93,12 +93,12 @@ Odstranění serveru repliky pro čtení se dá provést spuštěním `Remove-Az
 Remove-AzPostgreSqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-### <a name="delete-a-master-server"></a>Odstranění hlavního serveru
+### <a name="delete-a-primary-server"></a>Odstranění primárního serveru
 
 > [!IMPORTANT]
-> Odstraněním hlavního serveru se zastaví replikace na všechny servery replik a odstraní se samotný hlavní server. Ze serverů replik se stanou samostatné servery, které teď podporují čtení i zápis.
+> Odstranění primárního serveru zastaví replikaci na všechny servery repliky a odstraní samotný primární server. Ze serverů replik se stanou samostatné servery, které teď podporují čtení i zápis.
 
-Pokud chcete odstranit hlavní server, můžete spustit `Remove-AzPostgreSqlServer` rutinu.
+Pokud chcete odstranit primární server, můžete spustit `Remove-AzPostgreSqlServer` rutinu.
 
 ```azurepowershell-interactive
 Remove-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup

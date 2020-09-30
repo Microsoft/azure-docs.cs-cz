@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a8cab82511a495ed2eef444b05dc534c0f1891
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8745482ed551108044bbe5e2b2f191ad46d7a441
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422041"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538443"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Konfigurace vlastních rolí Azure AD v Privileged Identity Management
 
@@ -44,7 +44,7 @@ Pomocí těchto kroků otevřete nastavení role Azure AD.
 1. Výběrem **Nastavení** otevřete stránku **Nastavení** . Vyberte roli pro nastavení, které chcete konfigurovat.
 1. Výběrem možnosti **Upravit** otevřete stránku **Nastavení rolí** .
 
-    ![Otevření vlastní role Azure AD pro úpravu nastavení](./media/azure-ad-custom-roles-configure/edit-settings.png)
+    ![Snímek obrazovky zobrazující stránku podrobností nastavení role se zvolenou akcí upravit](./media/azure-ad-custom-roles-configure/edit-settings.png)
 
 ## <a name="role-settings"></a>Nastavení role
 

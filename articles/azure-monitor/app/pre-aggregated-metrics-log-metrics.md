@@ -6,20 +6,20 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9aba1e5b469e04c6c6d047f78cd202a073e5a769
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f7bfa15b12618715bf0d911e4b4927a1fa327107
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516936"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539125"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Metriky založené na protokolech a předem agregované metriky ve službě Application Insights
 
-Tento článek vysvětluje rozdíl mezi tradičními Application Insights metrikami, které jsou založené na protokolech, a předem agregované metriky, které jsou aktuálně ve verzi Public Preview. Oba typy metrik jsou k dispozici uživatelům Application Insights a každá z nich přináší jedinečnou hodnotu v monitorování stavu aplikací, diagnostiky a analýz. Vývojáři, kteří instrumentují aplikace, mohou rozhodnout, který typ metriky je nejvhodnější pro konkrétní scénář, v závislosti na velikosti aplikace, očekávaném objemu telemetrie a obchodních požadavcích na přesnost metrik a výstrahy.
+Tento článek vysvětluje rozdíl mezi tradičními Application Insights metrikami, které jsou založené na protokolech, a předem agregované metriky. Oba typy metrik jsou k dispozici uživatelům Application Insights a každá z nich přináší jedinečnou hodnotu v monitorování stavu aplikací, diagnostiky a analýz. Vývojáři, kteří instrumentují aplikace, mohou rozhodnout, který typ metriky je nejvhodnější pro konkrétní scénář, v závislosti na velikosti aplikace, očekávaném objemu telemetrie a obchodních požadavcích na přesnost metrik a výstrahy.
 
 ## <a name="log-based-metrics"></a>Metriky založené na protokolu
 
-Až do poslední doby, datový model telemetrie monitorování aplikací v Application Insights byl založen výhradně na malém počtu předdefinovaných typů událostí, jako jsou požadavky, výjimky, volání závislostí, zobrazení stránek atd. Vývojáři mohou použít sadu SDK k ručnímu vygenerování těchto událostí (napsáním kódu, který explicitně vyvolá sadu SDK), nebo mohou spoléhat na automatické shromažďování událostí z automatické instrumentace. V obou případech Application Insights back-end ukládá všechny shromážděné události jako protokoly a Application Insights okna v Azure Portal fungují jako analytické a diagnostické nástroje, které znázorňují data založená na událostech z protokolů.
+V minulosti byl datový model telemetrie monitorování aplikací v Application Insights výhradně založen na malém počtu předdefinovaných typů událostí, jako jsou požadavky, výjimky, volání závislostí, zobrazení stránek atd. Vývojáři mohou použít sadu SDK k ručnímu vygenerování těchto událostí (napsáním kódu, který explicitně vyvolá sadu SDK), nebo mohou spoléhat na automatické shromažďování událostí z automatické instrumentace. V obou případech Application Insights back-end ukládá všechny shromážděné události jako protokoly a Application Insights okna v Azure Portal fungují jako analytické a diagnostické nástroje, které znázorňují data založená na událostech z protokolů.
 
 Použití protokolů k uchování kompletní sady událostí může přinést skvělou analytickou a diagnostickou hodnotu. Můžete například získat přesný počet požadavků na konkrétní adresu URL s počtem různých uživatelů, kteří provedli tato volání. Nebo můžete získat podrobné trasování diagnostiky, včetně výjimek a volání závislostí pro jakoukoli relaci uživatele. Tento typ informací může významně zlepšit viditelnost stavu a využití aplikací, což umožňuje zkrátit dobu potřebnou k diagnostice problémů s aplikací.
 
@@ -35,7 +35,7 @@ Kromě metrik založených na protokolu v 2018 se tým Application Insights doda
 > [!IMPORTANT]
 > V Application Insights existují i předem agregované metriky založené na protokolu a. Pro odlišení těchto dvou Application Insights v uživatelském prostředí předběžně agregované metriky nyní označují "Standardní metriky (Preview)", zatímco tradiční metriky z událostí byly přejmenovány na "metriky založené na protokolu".
 
-Novější sady SDK ([Application Insights 2,7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK nebo novější pro .NET) předem agregované metriky během shromažďování před tím, než vychází technik pro snížení objemu telemetrie. To znamená, že přesnost nových metrik není ovlivněná vzorkováním a filtrováním při použití nejnovějších sad SDK pro Application Insights.
+Novější sady SDK ([Application Insights 2,7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK nebo novější pro .NET) předem agregované metriky během shromažďování. To platí pro  [Standardní metriky, které jsou ve výchozím nastavení posílány](../platform/metrics-supported.md#microsoftinsightscomponents) , takže se vzorkováním ani filtrováním neovlivní přesnost. Vztahuje se také na vlastní metriky odesílané pomocí [Getmetric](./api-custom-events-metrics.md#getmetric) , což vede k menšímu příjmu dat a snížení nákladů.
 
 Pro sady SDK, které neimplementují předagregační (to znamená starší verze sady Application Insights SDK nebo instrumentace prohlížeče) Application Insights back-end stále naplní nové metriky agregací událostí přijatých koncovým bodem shromažďování událostí Application Insights. To znamená, že i když nebudete využívat redukovaný objem dat přenášených po síti, můžete stále používat předem agregované metriky a využívat lepší výkon a podporu pro multidimenzionální upozorňování v reálném čase pomocí sad SDK, které během shromažďování nemají předem agregované metriky.
 
@@ -45,7 +45,7 @@ Je třeba uvést, že koncový bod kolekce před pokračováním vzorkování p�
 
 Můžete použít předběžnou agregaci s vlastními metrikami. Tyto dvě hlavní výhody jsou možností konfigurace a upozornění na dimenzi vlastní metriky a snížení objemu dat odesílaných ze sady SDK do koncového bodu kolekce Application Insights.
 
-Existuje několik [způsobů, jak odesílat vlastní metriky ze sady SDK Application Insights](./api-custom-events-metrics.md). Pokud vaše verze sady SDK nabízí metody [getmetric a TrackValue](./api-custom-events-metrics.md#getmetric) , jedná se o preferovaný způsob, jak odesílat vlastní metriky, protože v tomto případě předagregace probíhá v rámci sady SDK, nejen zmenšuje objem dat uložených v Azure, ale také objem dat přenesených ze sady sdk do Application Insights. V opačném případě použijte metodu [trackMetric](./api-custom-events-metrics.md#trackmetric) , která bude během příjmu dat předem agregovat události metriky.
+Existuje několik [způsobů, jak odesílat vlastní metriky ze sady SDK Application Insights](./api-custom-events-metrics.md). Pokud vaše verze sady SDK nabízí metody [getmetric a TrackValue](./api-custom-events-metrics.md#getmetric) , jedná se o preferovaný způsob, jak odesílat vlastní metriky, protože v tomto případě předagregace probíhá v rámci sady SDK, nejen zmenšuje objem dat uložených v Azure, ale také objem dat přenesených ze sady sdk do Application Insights. V opačném případě použijte metodu [trackMetric](./api-custom-events-metrics.md#trackmetric)  , která bude během příjmu dat předem agregovat události metriky.
 
 ## <a name="custom-metrics-dimensions-and-pre-aggregation"></a>Vlastní metriky dimenzí a předběžné agregace
 

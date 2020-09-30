@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3143dac79b37ff6dac04856311394440dec9a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c6c39fd6ceb9e5623d2b857ce8196ef29e73d78a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317408"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542304"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Použití skupin cloudů ke správě přiřazení rolí v Azure Active Directory (Preview)
 
@@ -58,7 +58,6 @@ Následující scénáře se teď nepodporují:
 
 ## <a name="known-issues"></a>Známé problémy
 
-- Dynamickou skupinu nemůžete vytvořit ani upravit, pokud je role přiřazena přes skupinu.
 - Funkce **povolit dvoufázové zavedení pro funkci přihlašování spravovaného uživatele** nepodporuje přiřazování přes skupinu.
 - *Jenom licencovaní zákazníci Azure AD P2*: nepřiřazujte skupinu jako aktivní k roli prostřednictvím Azure AD a PRIVILEGED Identity Management (PIM). Konkrétně nepřiřazujte roli skupině přiřazení role, když se vytváří *, a* přiřaďte ji ke skupině pomocí Správce cloudu později. To povede k problémům, kde uživatelé nevidí jejich aktivní přiřazení role v PIM a zároveň neumožňují odebrání tohoto přiřazení PIM. V tomto scénáři nejsou ovlivněna oprávněná přiřazení. Pokud se pokusíte toto přiřazení provést, může se zobrazit neočekávané chování, například:
   - Čas ukončení přiřazení role se může zobrazit nesprávně.

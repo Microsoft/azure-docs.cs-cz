@@ -4,13 +4,12 @@ description: Postup vytvoření aplikace LUIS Pizza
 ms.date: 05/05/2020
 ms.topic: include
 ms.custom: include file
-ms.author: diberry
-ms.openlocfilehash: 583394a31d220878eb403f702ba82b2f525d4dda
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 739a8d240f1e3c9928209dbd17e6468bc0921077
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83588927"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545490"
 ---
 1. Přihlaste se k portálu LUIS pomocí adresy URL [https://www.luis.ai](https://www.luis.ai) .
 

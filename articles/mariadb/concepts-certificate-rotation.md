@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: a52dd48bb97c8e7979771bdc2dbb50654493b088
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 3182f7fa913cd61e6c51ea91be6b46e83a1ab949
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972609"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540098"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Porozumění změnám v kořenové CA se mění Azure Database for MariaDB
 
@@ -119,7 +119,7 @@ Pro servery vytvořené po 26. října 2020 (10/26/2020) můžete použít nově
 ### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. jak často Microsoft aktualizuje svoje certifikáty nebo jaké jsou zásady vypršení platnosti?
 Certifikáty používané službou Azure Database for MariaDB poskytují důvěryhodné certifikační autority (CA). Proto je podpora těchto certifikátů na Azure Database for MariaDB vázaná na podporu těchto certifikátů certifikační autoritou. V takovém případě ale můžou být v těchto předdefinovaných certifikátech nepředvídatelné chyby, které je potřeba vyřešit nejstarší.
 
-### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-the-read-replicas"></a>11. Pokud používám repliky pro čtení, musím tuto aktualizaci provést pouze na hlavním serveru nebo v replikách pro čtení?
+### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-source-server-or-the-read-replicas"></a>11. Pokud používám repliky pro čtení, musím tuto aktualizaci provést pouze na zdrojovém serveru nebo v replikách pro čtení?
 Vzhledem k tomu, že se jedná o změnu na straně klienta, pokud klient používá ke čtení dat ze serveru repliky, budete muset změny použít i pro tyto klienty.
 
 ### <a name="12-if-i-am-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. Pokud používám replikaci dat, potřebuji provést jakoukoli akci?
@@ -137,7 +137,7 @@ Pokud pro připojení k Azure Database for MySQL používáte [replikaci dat](co
 
     Pokud se zobrazí certifikát pro CA_file, SSL_Cert a SSL_Key, budete muset soubor aktualizovat přidáním [nového certifikátu](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem).
 
-*   Pokud je replikace dat mezi dvěma Azure Database for MySQL, pak budete muset resetovat repliku tím, že vykonáte **volání MySQL. az_replication_change_master** a jako poslední [master_ssl_ca](howto-data-in-replication.md#link-the-master-and-replica-servers-to-start-data-in-replication)parametr zadáte nový duální kořenový certifikát.
+*   Pokud je replikace dat mezi dvěma Azure Database for MySQL, pak budete muset resetovat repliku tím, že vykonáte **volání MySQL. az_replication_change_master** a jako poslední [master_ssl_ca](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication)parametr zadáte nový duální kořenový certifikát.
 
 ### <a name="13-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>13. máme dotaz na straně serveru, abyste ověřili, jestli se používá SSL?
 Chcete-li ověřit, zda používáte připojení SSL pro připojení k serveru, postupujte podle tématu [ověřování SSL](howto-configure-ssl.md#verify-the-ssl-connection).

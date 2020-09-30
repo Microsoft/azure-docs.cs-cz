@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: fd35f297e88c37aec39938b0bfd60288e591a62c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ddfca965ea32ca726df39f894ba45f9580225d9d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936074"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542457"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Vnímání znalostí rozpoznávání entit
 
@@ -187,7 +187,7 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 }
 ```
 
-Všimněte si, že posuny vracené pro entity ve výstupu této dovednosti jsou přímo vráceny z [rozhraní API pro analýzu textu](../cognitive-services/text-analytics/overview.md), což znamená, že pokud je používáte k indexování do původního řetězce, měli byste použít třídu [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) v rozhraní .NET, aby bylo možné extrahovat správný obsah.  [Další podrobnosti najdete tady.](../cognitive-services/text-analytics/concepts/text-offsets.md)
+Všimněte si, že posuny vracené pro entity ve výstupu této dovednosti jsou přímo vráceny z [rozhraní API pro analýzu textu](../cognitive-services/text-analytics/overview.md), což znamená, že pokud je používáte k indexování do původního řetězce, měli byste použít třídu [StringInfo](/dotnet/api/system.globalization.stringinfo) v rozhraní .NET, aby bylo možné extrahovat správný obsah.  [Další podrobnosti najdete tady.](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
 ## <a name="error-cases"></a>Chybové případy
 Pokud kód jazyka pro dokument není podporován, je vrácena chyba a nejsou extrahovány žádné entity.

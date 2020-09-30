@@ -3,20 +3,18 @@ title: Kódy odpovědí HTTP API – LUIS
 titleSuffix: Azure Cognitive Services
 description: Informace o tom, jaké kódy odpovědí HTTP se vracejí z rozhraní API pro vytváření LUIS a koncových bodů
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 03/04/2019
-ms.author: diberry
-ms.openlocfilehash: 405381a2d80ee6469b2b90bcb25923004fe55882
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 46a7fff86d3a8c4539b77a0f271179d68e7a26d2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270252"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541675"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>Běžné kódy odpovědí rozhraní API a jejich význam
 
@@ -25,7 +23,7 @@ Rozhraní API pro [vytváření obsahu](https://go.microsoft.com/fwlink/?linkid=
 ## <a name="common-status-codes"></a>Běžné stavové kódy
 Následující tabulka uvádí některé nejběžnější stavové kódy odpovědí HTTP pro [vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) a [koncové](https://go.microsoft.com/fwlink/?linkid=2092356) rozhraní API:
 
-|kód|Rozhraní API|Vysvětlení|
+|Kód|Rozhraní API|Vysvětlení|
 |:--|--|--|
 |400|Vytváření obsahu, koncový bod|Parametry požadavku jsou nesprávné, což znamená, že požadované parametry chybí, jsou poškozené nebo jsou moc velké.|
 |400|Vytváření obsahu, koncový bod|tělo žádosti není správné, což znamená, že JSON chybí, má špatný nebo je moc velký.|

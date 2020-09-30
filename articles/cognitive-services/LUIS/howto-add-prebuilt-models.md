@@ -3,19 +3,17 @@ title: Předem připravené modely pro Language Understanding
 titleSuffix: Azure Cognitive Services
 description: LUIS zahrnuje sadu předem připravených modelů pro rychlé přidávání běžných scénářů pro konverzační uživatele.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: abf149d621d283744a71e08ea4ac2199a1994d57
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2080139732d71aa5df9a9d4ad13fcc4545128dff
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680950"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541913"
 ---
 # <a name="add-prebuilt-models-for-common-usage-scenarios"></a>Přidat předem připravené modely pro běžné scénáře použití
 
@@ -59,7 +57,7 @@ LUIS zahrnuje sadu předem připravených modelů pro rychlé přidávání bě�
     > [!div class="mx-imgBorder"]
     > ![Dialogové okno Přidat předem vytvořenou entitu](./media/luis-prebuilt-domains/add-prebuilt-entity.png)
 
-1. Vyberte **Done** (Hotovo). Po přidání entity není nutné tuto aplikaci podávat.
+1. Vyberte **Hotovo**. Po přidání entity není nutné tuto aplikaci podávat.
 
 ## <a name="add-a-prebuilt-domain-entity"></a>Přidat předem sestavenou doménovou entitu
 1. Přihlaste se k [portálu Luis](https://www.luis.ai)a vyberte své **předplatné** a **prostředek pro vytváření obsahu** , abyste viděli aplikace přiřazené k tomuto zdrojovému prostředku.
@@ -70,7 +68,7 @@ LUIS zahrnuje sadu předem připravených modelů pro rychlé přidávání bě�
 
 1. V dialogovém okně **Přidat předem připravené doménové modely** vyberte předem vytvořenou entitu domény.
 
-1. Vyberte **Done** (Hotovo). Po přidání entity není nutné tuto aplikaci podávat.
+1. Vyberte **Hotovo**. Po přidání entity není nutné tuto aplikaci podávat.
 
 ## <a name="publish-to-view-prebuilt-model-from-prediction-endpoint"></a>Publikování pro zobrazení představěného modelu z předpovědi koncového bodu
 

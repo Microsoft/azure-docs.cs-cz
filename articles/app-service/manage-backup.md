@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0aa0393544f5744c6aaf428ca4b4c27922a0c287
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f239122f7178dbc244c8dc23f3f7e7647f7330da
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987840"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539074"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [Azure App Service](overview.md) umožňuje snadno vytvářet zálohy aplikací ručně nebo podle plánu. Zálohy můžete nakonfigurovat tak, aby se zachovaly až do neurčitého množství času. Aplikaci můžete obnovit do snímku předchozího stavu přepsáním existující aplikace nebo obnovením do jiné aplikace.
@@ -70,13 +70,13 @@ Funkce zálohování podporuje následující databázová řešení:
 
 3. Na stránce **Konfigurace zálohování** klikněte na úložiště, které **není nakonfigurované** , aby se nakonfiguroval účet úložiště.
 
-    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Snímek obrazovky s oddílem úložiště zálohování s vybraným nastavením úložiště nebylo nakonfigurováno.":::
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Snímek obrazovky s proužkovou zprávou pro upgrade App Service plánu pro přístup k funkci zálohování a obnovení":::
 
 4. Zvolte cíl zálohování a vyberte **účet úložiště** a **kontejner**. Účet úložiště musí patřit do stejného předplatného jako aplikace, kterou chcete zálohovat. Pokud chcete, můžete na příslušných stránkách vytvořit nový účet úložiště nebo nový kontejner. Až skončíte, klikněte na **Vybrat**.
 
 5. Na stránce **Konfigurace zálohování** , která je stále otevřená, můžete nakonfigurovat **záložní databázi**, pak vybrat databáze, které chcete zahrnout do záloh (SQL Database nebo MySQL), a pak kliknout na **OK**.
 
-    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Snímek obrazovky oddílu záložní databáze zobrazující zahrnutí do výběru zálohy.":::
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Snímek obrazovky s proužkovou zprávou pro upgrade App Service plánu pro přístup k funkci zálohování a obnovení":::
 
     > [!NOTE]
     > Aby se databáze zobrazila v tomto seznamu, musí v části **připojovací řetězce** na stránce **nastavení aplikace** pro vaši aplikaci existovat připojovací řetězec. 
@@ -141,7 +141,7 @@ Zálohování spouštějte stejným způsobem jako obvykle [ručně](#create-a-m
 > [!NOTE]
 > Částečné zálohy vaší lokality obnovíte stejným způsobem jako při [pravidelném zálohování](web-sites-restore.md). Proces obnovení dělá správnou věc.
 > 
-> Po obnovení úplného zálohování se veškerý obsah na webu nahradí jakýmkoli obsahem v záloze. Pokud je soubor v lokalitě, ale ne v záloze, bude odstraněn. Ale při obnovení částečného zálohování zůstane libovolný obsah umístěný v jednom z zakázaných adresářů nebo v jakémkoli zakázaném souboru.
+> Po obnovení úplného zálohování se veškerý obsah na webu nahradí jakýmkoli obsahem v záloze. Pokud je soubor v lokalitě, ale ne v záloze, bude odstraněn. Při obnovení částečného zálohování ale zůstane libovolný obsah umístěný v jednom z adresářů s omezeným přístupem nebo libovolný soubor s omezeným přístupem.
 > 
 
 

@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
-ms.openlocfilehash: 9de054162a59b10fbd02bed9b3e84634ee12125b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 84588130788e9be8d3be52a8ea0f3988dce7b952
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799192"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537000"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>Vytvoření hesel aplikací ze stránky informace o zabezpečení (Preview)
 
@@ -59,7 +59,7 @@ Pokud používáte dvoustupňové ověřování u svého pracovního nebo školn
 
 4. Zadejte název aplikace, která vyžaduje heslo aplikace, a pak vyberte **Další**.
 
-    ![Stránka s heslem aplikace s názvem aplikace](media/security-info/securityinfo-myprofile-password-appname.png)
+    ![Snímek obrazovky zobrazující stránku heslo aplikace s názvem zadané aplikace](media/security-info/securityinfo-myprofile-password-appname.png)
 
 5. Zkopírujte text z pole **heslo** , vložte ho do oblasti hesla aplikace (v tomto příkladu je to pro Outlook 2010) a potom vyberte **Hotovo**.
 

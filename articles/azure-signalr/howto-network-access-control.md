@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 78b9859adbcf61ae3a9fc0d72a63d5973f90a487
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72532029b2d9258dba7dea82bb5c5fc8b2673300
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300215"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536218"
 ---
 # <a name="configure-network-access-control"></a>Konfigurace řízení přístupu k síti
 
@@ -48,7 +48,7 @@ V tomto scénáři můžete nakonfigurovat pravidlo veřejné sítě tak, aby po
 1. Chcete-li upravit výchozí akci, přepněte tlačítko **Povolit/odepřít** .
 
     > [!TIP]
-    > Výchozí akce je akce, kterou provedeme v případě, že se neshodují žádné pravidlo seznamu ACL. Například pokud je výchozí akce **Zamítnutá**, pak typy požadavků, které nejsou explicitně na seznamu pod ním, budou odepřeny.
+    > Výchozí akce je akce, kterou provedeme v případě, že se neshodují žádné pravidlo seznamu ACL. Například pokud je výchozí akce **Zamítnutá**, pak typy požadavků, které nejsou explicitně schváleny, budou odepřeny.
 
 1. Chcete-li upravit pravidlo veřejné sítě, vyberte možnost povolené typy požadavků v rámci **veřejné sítě**.
 

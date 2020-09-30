@@ -3,26 +3,24 @@ title: Výuka aplikace – LUIS
 titleSuffix: Azure Cognitive Services
 description: Školení je proces výuky vaší verze aplikace Language Understanding (LUIS), která vylepšuje svůj přirozený jazyk. LUIS aplikaci po aktualizacích modelu, jako je přidání, úpravy, označení nebo odstranění entit, záměrů nebo projevy.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.author: diberry
-ms.openlocfilehash: 7511d7379e7b51b19e3436ed7cef53fb914b80ac
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: a53857061110d5a77ac3d166277e7076f4f7f9c6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343067"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541369"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>Výuka aktivní verze aplikace LUIS
 
 Školení je proces výuky vaší aplikace Language Understanding (LUIS), která vylepšuje svůj přirozený jazyk. LUIS aplikaci po aktualizacích modelu, jako je přidání, úpravy, označení nebo odstranění entit, záměrů nebo projevy.
 
-Školení a [testování](luis-concept-test.md) aplikace je iterativní proces. Po prostudování aplikace LUIS ji otestujete pomocí ukázkového projevy, abyste viděli, jestli jsou záměry a entity správně rozpoznané. Pokud nejsou, proveďte aktualizace aplikace LUIS, školení a testování znovu.
+Školení a [testování](luis-concept-test.md) aplikace je iterativní proces. Po natrénování aplikace LUIS ji můžete otestovat s ukázkovými promluvami, abyste zjistili, jestli se správně rozpoznávají záměry a entity. Pokud nejsou, proveďte aktualizace aplikace LUIS, školení a testování znovu.
 
 Školení se aplikuje na aktivní verzi na portálu LUIS.
 

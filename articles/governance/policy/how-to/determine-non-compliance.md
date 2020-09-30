@@ -1,14 +1,14 @@
 ---
 title: Určení příčiny nedodržování předpisů
 description: Pokud prostředek není kompatibilní, existuje mnoho možných důvodů. Přečtěte si, jak zjistit, co způsobilo nedodržení předpisů.
-ms.date: 07/06/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 102a1a6a9573c73b4c1158a3c412be233e1a12b2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: df1eefec782835838add0beb8939bf4ff1a8a194
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334170"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541267"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
@@ -40,7 +40,7 @@ Chcete-li zobrazit podrobnosti o kompatibilitě, postupujte takto:
 
 1. V podokně **podrobností o dodržování předpisů** se zobrazují informace z posledního vyhodnocení prostředku na aktuální přiřazení zásad. V tomto příkladu se v poli **Microsoft. SQL/servery/verze** našla _12,0_ , zatímco definice zásady očekávala hodnotu _14,0_. Pokud prostředek z více důvodů není kompatibilní, každá z nich je uvedena v tomto podokně.
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Snímek obrazovky s podoknem podrobností o dodržování předpisů a důvody pro nedodržování předpisů, které jsou aktuální hodnotou 12 a cílová hodnota je 14." border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Snímek obrazovky s odkazem zobrazit podrobnosti o dodržování předpisů na kartě Kompatibilita prostředků" border="false":::
 
    V případě definice zásady **auditIfNotExists** nebo **deployIfNotExists** obsahuje podrobnosti informace o vlastnosti **Details. Type** a všech volitelných vlastnostech. Seznam najdete v tématu [vlastnosti auditIfNotExists](../concepts/effects.md#auditifnotexists-properties) a [vlastnosti deployIfNotExists](../concepts/effects.md#deployifnotexists-properties). **Poslední vyhodnocený prostředek** je související prostředek z oddílu **podrobností** definice.
 
@@ -69,7 +69,7 @@ Chcete-li zobrazit podrobnosti o kompatibilitě, postupujte takto:
    }
    ```
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Snímek obrazovky s podoknem podrobností o dodržování předpisů pro ifNotExists, včetně vyhodnoceného počtu prostředků" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Snímek obrazovky s odkazem zobrazit podrobnosti o dodržování předpisů na kartě Kompatibilita prostředků" border="false":::
 
 > [!NOTE]
 > Pokud chcete chránit data, když je hodnota vlastnosti _tajná_ , aktuální hodnota zobrazí hvězdičky.
@@ -104,17 +104,17 @@ V následující matrici je možné podle příslušné [podmínky](../concepts/
 |Aktuální hodnota nesmí rozlišovat velká a malá písmena. |notMatchInsensitively nebo **ne** matchInsensitively |
 |Žádné související prostředky neodpovídají podrobnostem o vlivu v definici zásady. |Prostředek typu, který je definován v **then. details. Type** a souvisí s prostředkem definovaným v části **if** pravidla zásad, neexistuje. |
 
+## <a name="component-details-for-resource-provider-modes"></a>Podrobnosti o komponentách pro režimy poskytovatele prostředků
+
+Pro přiřazení s [režimem poskytovatele prostředků](../concepts/definition-structure.md#resource-manager-modes)vyberte prostředek, který _nedodržuje předpisy_ , aby bylo možné otevřít hlubší zobrazení. Na kartě **dodržování předpisů komponent** jsou další informace, které jsou specifické pro režim poskytovatele prostředků na přiřazené zásadě ukazující **komponentu** a **ID komponenty**, _které nedodržují předpisy_ .
+
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Snímek obrazovky s odkazem zobrazit podrobnosti o dodržování předpisů na kartě Kompatibilita prostředků" border="false":::
+
 ## <a name="compliance-details-for-guest-configuration"></a>Podrobnosti o dodržování předpisů pro konfiguraci hosta
 
 U zásad _auditIfNotExists_ v kategorii _Konfigurace hosta_ může být ve virtuálním počítači vyhodnoceno více nastavení a bude nutné zobrazit podrobnosti o jednotlivých nastaveních. Pokud například provádíte audit pro seznam zásad hesel a jenom jeden z nich má _nevyhovující_stav, budete muset zjistit, které konkrétní zásady hesel nejsou kompatibilní a proč.
 
 Je také možné, že nebudete mít přístup k virtuálnímu počítači přímo, ale potřebujete podávat zprávu o tom, proč virtuální počítač _nedodržuje předpisy_.
-
-## <a name="compliance-details-for-resource-provider-modes"></a>Podrobnosti o dodržování předpisů pro režimy poskytovatele prostředků
-
-Pro přiřazení s [režimem poskytovatele prostředků](../concepts/definition-structure.md#resource-manager-modes)vyberte prostředek, který _nedodržuje předpisy_ , aby bylo možné otevřít hlubší zobrazení. Na kartě **dodržování předpisů komponent** jsou další informace, které jsou specifické pro režim poskytovatele prostředků na přiřazené zásadě ukazující **komponentu** a **ID komponenty**, _které nedodržují předpisy_ .
-
-:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Snímek obrazovky karty dodržování předpisů pro součásti a podrobnosti o dodržování předpisů pro přiřazení režimu poskytovatele prostředků." border="false":::
 
 ### <a name="azure-portal"></a>portál Azure
 
@@ -122,11 +122,11 @@ Začněte podle stejných kroků v části výše pro zobrazení podrobností o 
 
 V zobrazení podokna podrobností o dodržování předpisů vyberte odkaz **Poslední vyhodnocený prostředek**.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Snímek obrazovky se zobrazením podrobností o kompatibilitě definicí auditIfNotExists" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Snímek obrazovky s odkazem zobrazit podrobnosti o dodržování předpisů na kartě Kompatibilita prostředků" border="false":::
 
 Na stránce **přiřazení hosta** se zobrazí všechny dostupné podrobnosti o dodržování předpisů. Každý řádek v zobrazení představuje hodnocení, které bylo provedeno uvnitř počítače. Ve sloupci **důvod** se zobrazí fráze popisující, proč není přiřazení hostů _kompatibilní_. Pokud například provádíte audit zásad hesel, sloupec **důvod** by zobrazil text, včetně aktuální hodnoty pro každé nastavení.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Snímek obrazovky s podrobnostmi o dodržování předpisů pro přiřazení hostů" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Snímek obrazovky s odkazem zobrazit podrobnosti o dodržování předpisů na kartě Kompatibilita prostředků" border="false":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -205,11 +205,11 @@ V rámci nové **verze Public Preview**jsou poslední 14 dní historie změn k d
 
 1. Na stránce **Kompatibilita prostředků** vyberte kartu **historie změn (Preview)** . Zobrazí se seznam zjištěných změn, pokud existují.
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Snímek obrazovky karty historie změn a zjištěné časy změny na stránce dodržování předpisů pro prostředky" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Snímek obrazovky s odkazem zobrazit podrobnosti o dodržování předpisů na kartě Kompatibilita prostředků" border="false":::
 
 1. Vyberte jednu z zjištěných změn. _Rozdíly ve vizuálním_ zdroji se zobrazí na stránce **historie změn** .
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Snímek obrazovky s vizuálním rozdílem v historii změn stavu před a po stavu na stránce Historie změn" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Snímek obrazovky s odkazem zobrazit podrobnosti o dodržování předpisů na kartě Kompatibilita prostředků" border="false":::
 
 _Vizuální rozdíl_ Aides při identifikaci změn prostředku. Zjištěné změny nemůžou souviset s aktuálním stavem dodržování předpisů daného prostředku.
 

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: f2531ebfd8b1eafc04fa6eda660b0eec3d1147f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a662119d9ccf95eac23785c5fe9a787da882531
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417081"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537391"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Použití tajných kódů služby Azure Key Vault v aktivitách kanálu
 
@@ -23,11 +23,11 @@ ms.locfileid: "81417081"
 
 Přihlašovací údaje nebo tajné hodnoty můžete ukládat do Azure Key Vault a použít je během provádění kanálu, aby je bylo možné předat k vašim aktivitám.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zjistěte, jak funguje ze [spravované identity pro Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) a ujistěte se, že je k datové továrně přidružená jedna.
 
-## <a name="steps"></a>Kroky
+## <a name="steps"></a>Postup
 
 1. Otevřete vlastnosti datové továrny a zkopírujte hodnotu ID aplikace spravované identity.
 
@@ -35,7 +35,7 @@ Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zji
 
 2. Otevřete zásady přístupu trezoru klíčů a přidejte spravovaná oprávnění identity pro získání a výpis tajných kódů.
 
-    ![Zásady přístupu Key Vault](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
+    ![Snímek obrazovky zobrazující stránku "zásady přístupu" se zvýrazněnou akcí přidat zásadu přístupu](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
 
     ![Zásady přístupu Key Vault](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
 
@@ -51,10 +51,10 @@ Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zji
 
     |Vlastnost  |Hodnota  |
     |---------|---------|
-    |Zabezpečený výstup     |True         |
+    |Zabezpečený výstup     |Ano         |
     |URL     |[Vaše tajná hodnota identifikátoru URI]? API-Version = 7.0         |
     |Metoda     |GET         |
-    |Ověřování     |MSI         |
+    |Authentication     |MSI         |
     |Prostředek        |https://vault.azure.net       |
 
     ![Aktivita webu](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)

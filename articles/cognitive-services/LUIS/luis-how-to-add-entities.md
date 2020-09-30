@@ -2,20 +2,18 @@
 title: Přidat entity – LUIS
 description: Vytvořte entity pro extrakci klíčových dat z uživatelských projevy v aplikacích Language Understanding (LUIS). Extrahovaná data entity používá klientská aplikace pro moje požadavky zákazníků.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 61e53e6110e545d253dae81e94f8738ee17c4141
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c5c6836c2d68036bf2b9c5abe191943537349b8d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344471"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540961"
 ---
 # <a name="add-entities-to-extract-data"></a>Přidat entity pro extrakci dat
 
@@ -119,7 +117,7 @@ Následující seznam znázorňuje kanonický název a synonyma.
 |Název položky seznamu barev|Barva – synonyma|
 |--|--|
 |Červený|Crimson, krev, Apple, hasicí stroj|
-|Blue|Nebeská, kobalt|
+|Modrý|Nebeská, kobalt|
 |Green|Kelly, vápno|
 
 Pomocí postupu vytvořte entitu seznamu. Po vytvoření entity seznamu nemusíte v záměru popsat vzorový projevy. Položky seznamu a synonyma se shodují pomocí přesného textu.
@@ -179,14 +177,14 @@ V tomto postupu přidáte `origin` `destination` k předem sestavené entitě ge
 1. Pokud chcete s rolí označit popisek, vyberte v příkladu utterance popisek entity (plná čára pod textem) a pak v rozevíracím seznamu vyberte **Zobrazit v podokně entity** .
 
     > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky s výběrem zobrazení v paletě entit](media/add-entities/view-in-entity-pane.png)
+    > ![Snímek obrazovky znázorňující vybranou položku nabídky pro zobrazení v podokně entit.](media/add-entities/view-in-entity-pane.png)
 
     Na pravé straně se otevře paleta entit.
 
 1. Vyberte entitu, potom klikněte na dolní část palety a vyberte roli.
 
     > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky s výběrem zobrazení v paletě entit](media/add-entities/select-role-in-entity-palette.png)
+    > ![Snímek obrazovky ukazuje, kde vybrat roli.](media/add-entities/select-role-in-entity-palette.png)
 
 <a name="add-pattern-any-entities"></a>
 <a name="add-a-patternany-entity"></a>

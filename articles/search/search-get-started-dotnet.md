@@ -10,23 +10,23 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ffcb2c741838b1292eaf0793cd625c99d252068c
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e1a52a15012e367dc902992f7f7b905fc6c6a5eb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462067"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541539"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Rychlý Start: vytvoření indexu vyhledávání pomocí klientské knihovny Azure.Search.Documents
 
-Použijte novou [Azure.Search.Docknihovnu klienta uments (verze 11)](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) k vytvoření konzolové aplikace .NET Core v jazyce C#, která vytvoří, načte a dotazuje index vyhledávání.
+Použijte novou [Azure.Search.Docknihovnu klienta uments (verze 11)](/dotnet/api/overview/azure/search.documents-readme) k vytvoření konzolové aplikace .NET Core v jazyce C#, která vytvoří, načte a dotazuje index vyhledávání.
 
 [Stáhněte si zdrojový kód](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11) a začněte s dokončeným projektem nebo si vytvořte vlastní postup podle kroků v tomto článku.
 
 > [!NOTE]
 > Hledáte starší verzi? Podívejte [se na téma Vytvoření indexu vyhledávání pomocí Microsoft. Azure. Search v10 za účelem](search-get-started-dotnet-v10.md) místo toho.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, budete mít k dispozici následující nástroje a služby:
 
@@ -282,7 +282,7 @@ Výstup obsahuje zprávy ze [Console. WriteLIne](/dotnet/api/system.console.writ
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

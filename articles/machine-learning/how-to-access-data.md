@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: 639e4cde82fd8496c90f8ebf263dd42661a75748
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e118c22829bc55e8baafb87db20817ab043ef4df
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296803"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540774"
 ---
 # <a name="connect-to-azure-storage-services"></a>Připojení k službám úložiště Azure
 
@@ -28,7 +28,7 @@ Z [těchto řešení Azure Storage](#matrix)můžete vytvořit úložiště dat.
 
 Informace o tom, kde je úložiště dat vhodné v rámci celkového pracovního postupu pro přístup k datům v Azure Machine Learning, najdete v článku [zabezpečený přístup k datům](concept-data.md#data-workflow) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat:
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
@@ -266,5 +266,5 @@ Azure Data Factory poskytuje efektivní a odolný přenos dat s více než 80 p�
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření datové sady služby Azure Machine Learning](how-to-create-register-datasets.md)
-* [Učení modelu](how-to-train-ml-models.md)
+* [Učení modelu](how-to-set-up-training-targets.md)
 * [Nasazení modelu](how-to-deploy-and-where.md)

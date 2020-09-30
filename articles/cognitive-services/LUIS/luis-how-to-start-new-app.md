@@ -3,20 +3,18 @@ title: Vytvoření nové aplikace – LUIS
 titleSuffix: Azure Cognitive Services
 description: Vytvářejte a spravujte své aplikace na webové stránce Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/18/2020
-ms.author: diberry
-ms.openlocfilehash: 304e76a2bf8bae3e6ee2120b892ef97d89c3decc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: fcc803e87b2efd3e94b90eb17258ab3bb156359f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144399"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541424"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Vytvoření nové aplikace LUIS na portálu LUIS
 Existuje několik způsobů, jak vytvořit aplikaci LUIS. Aplikaci LUIS můžete vytvořit na portálu LUIS nebo prostřednictvím [rozhraní API](developer-reference-resource.md)pro vytváření Luis.
@@ -45,7 +43,7 @@ Novou aplikaci s rozhraními API pro vytváření obsahu můžete vytvořit něk
 
 ## <a name="create-new-app-in-luis"></a>Vytvoření nové aplikace v LUIS
 
-1. Na stránce **Moje aplikace** vyberte své **předplatné**a vytvořte **prostředek** a potom **+ vytvořit**. 
+1. Na stránce **Moje aplikace** vyberte své **předplatné**a vytvořte  **prostředek** a potom **+ vytvořit**. 
 
 > [!div class="mx-imgBorder"]
 > ![Seznam aplikací LUIS](./media/create-app-in-portal.png)
@@ -69,7 +67,7 @@ Novou aplikaci s rozhraními API pro vytváření obsahu můžete vytvořit něk
 Panel nástrojů kontextu poskytuje další akce:
 
 * Přejmenovat aplikaci
-* Import ze souboru pomocí `.lu` nebo`.json`
+* Import ze souboru pomocí `.lu` nebo `.json`
 * Exportovat aplikaci jako `.lu` (pro [LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)), `.json` nebo `.zip` (pro [kontejner Luis](luis-container-howto.md))
 * Umožňuje importovat protokoly koncových bodů kontejneru a zkontrolovat projevy koncového bodu.
 * Export protokolů koncového bodu, jako je `.csv` , pro offline analýzu

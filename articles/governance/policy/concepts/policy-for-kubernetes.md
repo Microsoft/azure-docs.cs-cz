@@ -1,14 +1,14 @@
 ---
 title: Další informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí.
-ms.date: 09/22/2020
+ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb4345426eddb8b0b5250980eb46cf0509a22cff
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 67c6af4842ea1f404468497930b08c36ecd1abb9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369990"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540247"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Principy Azure Policy pro clustery Kubernetes
 
@@ -56,7 +56,7 @@ Na Azure Policy doplňku pro clustery Kubernetes se vztahují následující obe
 - Maximální počet nevyhovujících záznamů na předplatné: **1 000 000**
 - Instalace serveru gatekeeper mimo Azure Policy doplňky se nepodporují. Než povolíte doplněk Azure Policy, odinstalujte všechny součásti nainstalované předchozí instalací serveru gatekeeper.
 - [Důvody nedodržení předpisů](../how-to/determine-non-compliance.md#compliance-reasons) nejsou k dispozici pro `Microsoft.Kubernetes.Data` 
-   [režim poskytovatele prostředků](./definition-structure.md#resource-provider-modes) .
+   [režim poskytovatele prostředků](./definition-structure.md#resource-provider-modes). Použijte [Podrobnosti součásti](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes).
 
 Následující omezení platí pouze pro Azure Policy doplněk pro AKS:
 
@@ -379,7 +379,7 @@ Jako součást _Details. constraintTemplate_ a _Details._ properties v definici 
 
 ## <a name="assign-a-built-in-policy-definition"></a>Přiřazení definice předdefinované zásady
 
-K přiřazení definice zásady ke clusteru Kubernetes je nutné přiřadit příslušné operace přiřazení zásad řízení přístupu na základě role (RBAC). Tyto operace mají v předdefinovaných rolích **zásady prostředků Přispěvatel** a **vlastník** Azure. Další informace najdete v tématu [oprávnění RBAC v Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
+Pokud chcete přiřadit definici zásady ke clusteru Kubernetes, musíte mu přiřadit příslušné operace přiřazení zásad řízení přístupu na základě role Azure (RBAC). Tyto operace mají v předdefinovaných rolích **zásady prostředků Přispěvatel** a **vlastník** Azure. Další informace najdete v tématu [oprávnění Azure RBAC v Azure Policy](../overview.md#azure-rbac-permissions-in-azure-policy).
 
 V následujících krocích najdete předdefinované definice zásad pro správu clusteru pomocí Azure Portal:
 
@@ -430,7 +430,7 @@ Pokud má obor názvů v clusteru Kubernetes některý z následujících popisk
 > [!NOTE]
 > Správce clusterů může mít oprávnění k vytváření a aktualizaci šablon omezení a prostředků, které instalují Azure Policy doplněk. Tyto scénáře nejsou podporované, protože se přepíší ruční aktualizace. Server Gatekeeper nadále vyhodnocuje zásady, které existovaly před instalací doplňku a přiřazením Azure Policy definice zásad.
 
-Každých 15 minut doplněk volá úplnou kontrolu clusteru. Po shromáždění podrobností o úplné kontrole a všech vyhodnocení v reálném čase pomocí serveru gatekeeper na základě změn v clusteru hlásí doplněk výsledky zpět do Azure Policy pro zahrnutí v [podrobnostech o dodržování předpisů](../how-to/get-compliance-data.md) , jako je jakékoli přiřazení Azure Policy. Během cyklu auditu se vrátí jenom výsledky aktivních přiřazení zásad. Výsledky auditu se taky můžou považovat za [porušení](https://github.com/open-policy-agent/gatekeeper#audit) uvedená v poli stav u neúspěšného omezení. Podrobnosti o _nekompatibilních_ prostředcích najdete v [podrobnostech o dodržování předpisů pro režimy poskytovatele prostředků](../how-to/determine-non-compliance.md#compliance-details-for-resource-provider-modes).
+Každých 15 minut doplněk volá úplnou kontrolu clusteru. Po shromáždění podrobností o úplné kontrole a všech vyhodnocení v reálném čase pomocí serveru gatekeeper na základě změn v clusteru hlásí doplněk výsledky zpět do Azure Policy pro zahrnutí v [podrobnostech o dodržování předpisů](../how-to/get-compliance-data.md) , jako je jakékoli přiřazení Azure Policy. Během cyklu auditu se vrátí jenom výsledky aktivních přiřazení zásad. Výsledky auditu se taky můžou považovat za [porušení](https://github.com/open-policy-agent/gatekeeper#audit) uvedená v poli stav u neúspěšného omezení. Podrobnosti o _nekompatibilních_ prostředcích najdete v [podrobnostech o komponentách pro režimy poskytovatele prostředků](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes).
 
 > [!NOTE]
 > Každá sestava dodržování předpisů v Azure Policy pro clustery Kubernetes zahrnuje všechna porušení během posledních 45 minut. Časové razítko indikuje, kdy došlo k porušení.

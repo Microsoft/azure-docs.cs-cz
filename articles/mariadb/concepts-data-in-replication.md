@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 1fbcc1fb27d5e6df4641f79c0d634580f74000b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66e280f20109967f029a14e368fdb0aeea269aad
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532056"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536609"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Replikovat data do Azure Database for MariaDB
 
@@ -26,20 +26,20 @@ V hlavních scénářích, které je potřeba zvážit, je použití Replikace v
 ## <a name="limitations-and-considerations"></a>Omezení a důležité informace
 
 ### <a name="data-not-replicated"></a>Nereplikovaná data
-[*Systémová databáze MySQL*](https://mariadb.com/kb/en/library/the-mysql-database-tables/) na hlavním serveru není replikovaná. Změny účtů a oprávnění na hlavním serveru se nereplikují. Pokud vytvoříte účet na hlavním serveru a tento účet potřebuje přístup k serveru repliky, pak ručně vytvořte stejný účet na straně serveru repliky. Informace o tom, jaké tabulky jsou obsaženy v systémové databázi, najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/library/the-mysql-database-tables/).
+[*Systémová databáze MySQL*](https://mariadb.com/kb/en/library/the-mysql-database-tables/) na zdrojovém serveru není replikovaná. Změny účtů a oprávnění na zdrojovém serveru se nereplikují. Pokud vytvoříte účet na zdrojovém serveru a tento účet potřebuje přístup k serveru repliky, pak na straně serveru repliky ručně vytvořte stejný účet. Informace o tom, jaké tabulky jsou obsaženy v systémové databázi, najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/library/the-mysql-database-tables/).
 
 ### <a name="requirements"></a>Požadavky
-- Verze hlavního serveru musí být minimálně MariaDB verze 10,2.
-- Verze hlavního serveru a serveru repliky musí být stejné. Oba typy musí být například MariaDB verze 10,2.
+- Verze zdrojového serveru musí být minimálně MariaDB verze 10,2.
+- Verze serveru pro zdroj a replika musí být stejné. Oba typy musí být například MariaDB verze 10,2.
 - Každá tabulka musí mít primární klíč.
-- Hlavní server by měl používat modul InnoDB.
-- Uživatel musí mít oprávnění ke konfiguraci binárního protokolování a vytváření nových uživatelů na hlavním serveru.
-- Pokud má hlavní server povolený protokol SSL, ujistěte se, že je v uložené proceduře zahrnutý certifikát certifikační autority SSL zadaný pro tuto doménu `mariadb.az_replication_change_master` . Podívejte se na následující [Příklady](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) a `master_ssl_ca` parametr.
-- Ujistěte se, že se IP adresa hlavního serveru přidala do pravidel brány firewall serveru repliky Azure Database for MariaDB. Pomocí webu [Azure Portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) nebo [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) aktualizujte pravidla brány firewall.
-- Ujistěte se, že počítač, který je hostitelem hlavního serveru, umožňuje příchozí i odchozí provoz na portu 3306.
-- Ujistěte se, že hlavní server má **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN).
+- Zdrojový server by měl používat modul InnoDB.
+- Uživatel musí mít oprávnění ke konfiguraci binárního protokolování a vytváření nových uživatelů na zdrojovém serveru.
+- Pokud je na zdrojovém serveru povolený protokol SSL, ujistěte se, že je v uložené proceduře zahrnutý certifikát certifikační autority SSL zadaný pro tuto doménu `mariadb.az_replication_change_master` . Podívejte se na následující [Příklady](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) a `master_ssl_ca` parametr.
+- Zajistěte, aby byla IP adresa zdrojového serveru přidaná do pravidel brány firewall serveru repliky Azure Database for MariaDB. Pomocí webu [Azure Portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) nebo [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) aktualizujte pravidla brány firewall.
+- Ujistěte se, že počítač, který hostuje zdrojový server, umožňuje příchozí i odchozí provoz na portu 3306.
+- Ujistěte se, že zdrojový server má **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN).
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 - Replikace dat je podporovaná jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
 
 ## <a name="next-steps"></a>Další kroky

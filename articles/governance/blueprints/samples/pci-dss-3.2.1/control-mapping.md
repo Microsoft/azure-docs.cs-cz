@@ -1,14 +1,14 @@
 ---
 title: Ovládací prvky ukázkového plánu PCI-DSS v 3.2.1
-description: Mapování ovládacího prvku ukázka zabezpečení dat v odvětví platební karty Standard v 3.2.1 pro Azure Policy a RBAC.
+description: Mapování ovládacího prvku ukázka zabezpečení dat v odvětví platební karty Standard v 3.2.1 pro Azure Policy a Azure RBAC.
 ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: e6133c4a847a6df8aa6a27bbca63e0fc2d047783
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3d7bdd62dcc5b65b0978444e74013d289f03ed6a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649223"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541641"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Mapování ovládacích prvků pro ukázka PCI-DSS v 3.2.1 podrobný plán
 
@@ -63,21 +63,21 @@ Jenom jeden vlastník předplatného Azure nepovoluje redundanci správy. I kdy�
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3,2, 7.2.1, 8.3.1. a a 8.3.1. b Správa privilegovaných přístupových práv
 
-Tento podrobný plán vám pomůže omezit a řídit privilegovaná přístupová práva tím, že přiřadí definice [Azure Policy](../../../policy/overview.md) k auditování externích účtů s oprávněním vlastníka, zápisu a čtení a účtů zaměstnanců s oprávněním vlastníka nebo zápisu, u kterých není povolené ověřování službou Multi-Factor Authentication. Azure implementuje řízení přístupu na základě role (RBAC), které umožňuje spravovat, kdo má přístup k prostředkům Azure. Princip implementace vlastních pravidel RBAC vám může pomáhat při ověřování potřeb a správné implementace, protože vlastní pravidla RBAC jsou náchylná k chybám. Tento podrobný plán také přiřadí [Azure Policy](../../../policy/overview.md) definice k auditu používání ověřování Azure Active Directory pro servery SQL. Použití ověřování Azure Active Directory zjednodušuje správu oprávnění a centralizaci správy identit uživatelů databáze a dalších společností Microsoft.  
+Tento podrobný plán vám pomůže omezit a řídit privilegovaná přístupová práva tím, že přiřadí definice [Azure Policy](../../../policy/overview.md) k auditování externích účtů s oprávněním vlastníka, zápisu a čtení a účtů zaměstnanců s oprávněním vlastníka nebo zápisu, u kterých není povolené ověřování službou Multi-Factor Authentication. Řízení přístupu na základě role v Azure (Azure RBAC) pomáhá spravovat, kdo má přístup k prostředkům Azure. Princip implementace vlastních pravidel služby Azure RBAC vám může pomáhat ověřit potřebnou a správnou implementaci, protože vlastní pravidla služby Azure RBAC jsou náchylná k chybám. Tento podrobný plán také přiřadí [Azure Policy](../../../policy/overview.md) definice k auditu používání ověřování Azure Active Directory pro servery SQL. Použití ověřování Azure Active Directory zjednodušuje správu oprávnění a centralizaci správy identit uživatelů databáze a dalších společností Microsoft.  
 services.
  
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.
 - Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
+- Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA.
 - Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.
 - Pro SQL servery by se měl zřídit správce Azure Active Directory.
 - Auditovat využití vlastních pravidel RBAC
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>Minimální oprávnění 8.1.2 a 8.1.5 a kontrola přístupových práv uživatelů
 
-Azure implementuje řízení přístupu na základě role (RBAC), které vám pomůže se správou toho, kdo má přístup k prostředkům v Azure. Pomocí Azure Portal můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice pro audit účtů, které by měly být nastavené na kontrolu, včetně odpisů účtů a externích účtů se zvýšenými oprávněními.
+Řízení přístupu na základě role Azure (Azure RBAC) pomáhá spravovat, kdo má přístup k prostředkům v Azure. Pomocí Azure Portal můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice pro audit účtů, které by měly být nastavené na kontrolu, včetně odpisů účtů a externích účtů se zvýšenými oprávněními.
 
 - Zastaralé účty by se měly odebírat z předplatného.
 - Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.
@@ -87,7 +87,7 @@ Azure implementuje řízení přístupu na základě role (RBAC), které vám po
 
 ## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 odebrání nebo úpravy přístupových práv
 
-Azure implementuje řízení přístupu na základě role (RBAC), které vám umožní spravovat, kdo má přístup k prostředkům v Azure. Pomocí Azure Active Directory a RBAC můžete aktualizovat role uživatelů tak, aby odrážely změny v organizaci. V případě potřeby se můžou účty zablokovat (nebo odebírat), což okamžitě odebere přístupová práva k prostředkům Azure. Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice k auditu účtu, který by měl být považován za odebrání.
+Řízení přístupu na základě role Azure (Azure RBAC) pomáhá spravovat, kdo má přístup k prostředkům v Azure. Pomocí Azure Active Directory a Azure RBAC můžete aktualizovat role uživatelů tak, aby odrážely změny v organizaci. V případě potřeby se můžou účty zablokovat (nebo odebírat), což okamžitě odebere přístupová práva k prostředkům Azure. Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice k auditu účtu, který by měl být považován za odebrání.
 
 - Zastaralé účty by se měly odebírat z předplatného.
 - Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.

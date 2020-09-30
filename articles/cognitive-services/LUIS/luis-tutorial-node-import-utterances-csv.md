@@ -3,20 +3,18 @@ title: Import projevy pomocí Node.js-LUIS
 titleSuffix: Azure Cognitive Services
 description: Naučte se vytvářet aplikace LUIS programově z existujících dat ve formátu CSV pomocí rozhraní API pro vytváření LUIS.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18, devx-track-js
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
-ms.author: diberry
-ms.openlocfilehash: 13e18e024c2200459e58474f53bed2431e3375a7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 58eb92f4d0bc3de4671ca2ece14a178a876e4a6b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298218"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541033"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Programové vytvoření aplikace v LUIS pomocí Node.js
 
@@ -24,7 +22,7 @@ LUIS poskytuje programové rozhraní API, které provádí všechny weby [Luis](
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Přihlaste se k webu [Luis](luis-reference-regions.md) a vyhledejte svůj [klíč pro vytváření obsahu](luis-how-to-azure-subscription.md#authoring-key) v nastavení účtu. Tento klíč použijete k volání rozhraní API pro vytváření obsahu.
 * Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).

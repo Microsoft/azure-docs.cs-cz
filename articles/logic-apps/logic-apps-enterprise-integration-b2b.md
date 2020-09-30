@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 2fd96777a5fe74d44aeed5f6de82e54b2663a024
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: afae49cf6ee44b138a55f58f415fc761308b7894
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090378"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542372"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Příjem a potvrzení zpráv B2B AS2 pomocí Azure Logic Apps a Enterprise Integration Pack
 
@@ -111,7 +111,7 @@ Chcete-li oznámit obchodnímu partnerovi, že byla zpráva přijata, můžete v
 
    Nyní se zobrazí obrazec podmínka, včetně cest pro to, zda je podmínka splněna nebo ne.
 
-   ![Obrazec podmínky s rozhodovacími cestami](./media/logic-apps-enterprise-integration-b2b/added-condition-action.png)
+   ![Snímek obrazovky zobrazuje obrazec podmínky s prázdnými cestami.](./media/logic-apps-enterprise-integration-b2b/added-condition-action.png)
 
 1. Nyní zadejte podmínku, která má být vyhodnocena. Do pole **zvolit hodnotu** zadejte tento výraz:
 
@@ -119,7 +119,7 @@ Chcete-li oznámit obchodnímu partnerovi, že byla zpráva přijata, můžete v
 
    V prostředním poli se ujistěte, že je operace porovnání nastavená na `is equal to` . Do pole na pravé straně zadejte hodnotu `Expected` . Chcete-li získat výraz pro vyřešení tohoto tokenu, přepínejte mezi návrhářem a zobrazením kódu.
 
-   ![Obrazec podmínky s rozhodovacími cestami](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
+   ![Snímek obrazovky zobrazuje obrazec podmínky s přidaným stavem.](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
 
 1. Nyní zadejte odpovědi, které mají být vráceny, pokud je akce **dekódování AS2** úspěšná nebo ne.
 

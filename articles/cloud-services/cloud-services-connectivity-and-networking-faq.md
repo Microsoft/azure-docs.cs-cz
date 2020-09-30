@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a27161ca9a218b1f7c0e3fb51c9935438d9778e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77019396"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533413"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s připojením a sítí pro Azure Cloud Services: nejčastější dotazy
 
@@ -99,7 +99,7 @@ Vzhledem k tomu, že je tato vazba hlavičky hostitele vynutila prostřednictví
 
 ## <a name="how-can-i-make-sure-the-public-facing-ip-address-of-a-cloud-service-never-changes"></a>Jak se dá zajistit, aby se veřejná IP adresa cloudové služby nikdy nezměnila?
 
-Abyste se ujistili, že se veřejná IP adresa vaší cloudové služby (označovaná také jako VIP) nikdy nemění, aby mohla být běžně povolená několika konkrétními klienty, doporučujeme, abyste k ní měli přiřazenou rezervovanou IP adresu. V opačném případě se virtuální IP adresa poskytovaná Azure z vašeho předplatného oddělí, pokud nasazení odstraníte. Pro úspěšnou operaci odkládacích adres VIP potřebujete jednotlivé rezervované IP adresy pro produkční i přípravné sloty. Bez nich operace prohození neproběhne úspěšně. Pokud si chcete vyhradit IP adresu a přidružit ji ke cloudové službě, přečtěte si tyto články:
+Abyste se ujistili, že se veřejná IP adresa vaší cloudové služby (označovaná také jako VIP) nikdy nemění, aby mohla být běžně schválená několika konkrétními klienty, doporučujeme, abyste k ní měli přiřazenou rezervovanou IP adresu. V opačném případě se virtuální IP adresa poskytovaná Azure z vašeho předplatného oddělí, pokud nasazení odstraníte. Pro úspěšnou operaci odkládacích adres VIP potřebujete jednotlivé rezervované IP adresy pro produkční i přípravné sloty. Bez nich operace prohození neproběhne úspěšně. Pokud si chcete vyhradit IP adresu a přidružit ji ke cloudové službě, přečtěte si tyto články:
 
 - [Vyhrazení IP adresy existující cloudové služby](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
 - [Přidružení rezervované IP adresy ke cloudové službě pomocí konfiguračního souboru služby](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)

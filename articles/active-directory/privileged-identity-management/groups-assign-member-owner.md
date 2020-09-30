@@ -15,12 +15,12 @@ ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06e61bb966313265f7e3772dbbf6017a03a42386
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 48c4473cfafce1215219251c47bce1d5730645fc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869631"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534416"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Přiřazení nároku na skupinu privilegovaného přístupu (Preview) v Privileged Identity Management
 
@@ -48,7 +48,7 @@ Pomocí těchto kroků můžete uživateli nastavit, aby byl členem skupiny pri
 
 1. Vyberte členy nebo vlastníky, které chcete nastavit jako oprávněné pro skupinu privilegovaný přístup.
 
-    ![Vybrat člena nebo podokno skupiny](./media/groups-assign-member-owner/add-assignments.png)
+    ![Snímek obrazovky zobrazující stránku přidat přiřazení, která obsahuje podokno vybrat člena nebo skupinu otevřené a zvýrazněné tlačítko vybrat](./media/groups-assign-member-owner/add-assignments.png)
 
 1. Výběrem **Další** nastavte dobu trvání členství nebo vlastnictví.
 

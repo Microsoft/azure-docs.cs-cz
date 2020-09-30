@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: 29b35493342b92813aa808069ebdd7ca8a7bbc56
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: feb6b36f8e5e7bbec83d8882552484f68abfd56d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208545"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537748"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Vytvoření funkce, která se integruje s Azure Logic Apps
 
@@ -47,7 +47,7 @@ Pokud jste tento krok zatím neprovedli, vraťte se k němu a vytvořte aplikaci
 
 Rozhraní API služeb Cognitive Services jsou v Azure k dispozici jako samostatné prostředky. K rozpoznávání mínění v monitorovaných tweetech použijte rozhraní API pro analýzu textu.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 
@@ -182,7 +182,7 @@ Vaše aplikace je teď připojená k Twitteru. Dále se připojíte k rozhraní 
 
 2. V části **Vybrat akci** zadejte **Analýza textu** a pak klikněte na akci **Rozpoznávání mínění**.
     
-    ![Nový krok a pak Přidat akci](media/functions-twitter-email/11-detect-sentiment.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "zvolit akci" s "Analýza textu" ve vyhledávacím poli a vybranou akcí "detekovat mínění". ](media/functions-twitter-email/11-detect-sentiment.png)
 
 3. Zadejte název připojení, například `MyCognitiveServicesConnection`, vložte klíč rozhraní API služeb Cognitive Services a koncový bod služeb Cognitive Services, které jste si uložili do textového editoru, a klikněte na **Vytvořit**.
 
@@ -202,7 +202,7 @@ Když je teď nakonfigurované rozpoznávání mínění, můžete do své funkc
   
 4. Vyberte aplikaci funkcí, kterou jste vytvořili dříve.
 
-    ![Výběr funkce](media/functions-twitter-email/15-select-function.png)
+    ![Snímek obrazovky, který zobrazuje oddíl zvolit akci s vybranou funkcí aplikace](media/functions-twitter-email/15-select-function.png)
 
 5. Vyberte funkci, kterou jste vytvořili pro tento kurz.
 
@@ -228,7 +228,7 @@ Poslední částí pracovního postupu je aktivace e-mailu, když má skóre mí
 
 3. V části **POKUD JE TRUE** klikněte na **Přidat akci**, vyhledejte `outlook.com`, klikněte na **Odeslat e-mail** a přihlaste se ke svému účtu Outlook.com.
 
-    ![Konfigurace e-mailu pro akci Odeslat e-mail](media/functions-twitter-email/20-add-outlook.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "Pokud je TRUE" s názvem "outlook.com" zadaný do vyhledávacího pole a je vybrána akce Odeslat e-mail.](media/functions-twitter-email/20-add-outlook.png)
 
     > [!NOTE]
     > Pokud nemáte účet Outlook.com, můžete zvolit jiný konektor, například Gmail nebo Office 365 Outlook.
@@ -239,7 +239,7 @@ Poslední částí pracovního postupu je aktivace e-mailu, když má skóre mí
     
 | Nastavení      |  Navrhovaná hodnota   | Popis  |
 | ----------------- | ------------ | ------------- |
-| **Schopn** | Zadejte svou e-mailovou adresu. | E-mailová adresa, která přijímá oznámení. |
+| **Záměr** | Zadejte svou e-mailovou adresu. | E-mailová adresa, která přijímá oznámení. |
 | **Předmět** | Rozpoznáno špatné mínění v tweetu  | Řádek předmětu e-mailového oznámení.  |
 | **Text** | Text tweetu, Umístění | Klikněte na parametry **Text tweetu** a **Umístění**. |
 

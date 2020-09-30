@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 40f8c36b197b0c68b9f04a02dc7731877b27ddd2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "80082311"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541658"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Kurz: Konfigurace e-mailových oznámení Apache Ambari v Azure HDInsight
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 > * Získat uživatelské jméno pro SendGrid
 > * Konfigurace e-mailových oznámení Apache Ambari
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * SendGrid e-mailový účet. Pokyny najdete v tématu [odeslání e-mailu pomocí SendGrid s Azure](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email) .
 
@@ -54,7 +54,7 @@ V tomto kurzu se naučíte:
 
 1. V okně **Správa oznámení výstrah** vyberte **+** ikonu.
 
-    ![Oznámení o vytvoření výstrahy Ambari](./media/apache-ambari-email/azure-portal-create-notification.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně Správa oznámení výstrah.](./media/apache-ambari-email/azure-portal-create-notification.png)
 
 1. V dialogovém okně **vytvořit oznámení výstrah** zadejte následující informace:
 
@@ -75,7 +75,7 @@ V tomto kurzu se naučíte:
     |Potvrzení hesla|Zadejte znovu heslo.|
     |Spustit TLS|Zaškrtněte toto políčko.|
 
-    ![Oznámení o vytvoření výstrahy Ambari](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně vytvořit oznámení výstrah.](./media/apache-ambari-email/ambari-create-alert-notification.png)
 
     Vyberte **Uložit**. Vrátíte se do okna **spravovat oznámení výstrah** .
 

@@ -3,12 +3,12 @@ title: Přehled zásad Azure
 description: Azure Policy je služba v Azure, pomocí které vytváříte, přiřazujete a spravujete definice zásad ve svém prostředí Azure.
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 662a7510013e2008d8c16cf21376b11c247e0bc0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 596e52cca2be2a347c26502434048053a8b4684c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905985"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538952"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -57,15 +57,15 @@ Následující přehled služby Azure Policy se týká sestavení 2018. Pokud ch
 
 ## <a name="getting-started"></a>Začínáme
 
-### <a name="azure-policy-and-rbac"></a>Azure Policy a RBAC
+### <a name="azure-policy-and-azure-rbac"></a>Azure Policy a Azure RBAC
 
-Mezi Azure Policy a řízením přístupu na základě role (RBAC) existuje několik klíčových rozdílů. Azure Policy vyhodnocuje stav kontrolou vlastností u prostředků, které jsou zastoupeny v Správce prostředků a vlastnostech některých poskytovatelů prostředků. Azure Policy neomezuje akce (označují se také jako _operace_). Azure Policy zajistí, aby byl stav prostředku v souladu s vašimi obchodními pravidly bez obav, kdo provedl změnu nebo kdo má oprávnění provést změnu.
+Mezi Azure Policy a řízením přístupu na základě role Azure (Azure RBAC) existuje několik klíčových rozdílů. Azure Policy vyhodnocuje stav kontrolou vlastností u prostředků, které jsou zastoupeny v Správce prostředků a vlastnostech některých poskytovatelů prostředků. Azure Policy neomezuje akce (označují se také jako _operace_). Azure Policy zajistí, aby byl stav prostředku v souladu s vašimi obchodními pravidly bez obav, kdo provedl změnu nebo kdo má oprávnění provést změnu.
 
-RBAC se zaměřuje na správu uživatelských [akcí](../../role-based-access-control/resource-provider-operations.md) v různých oborech. Je-li vyžadováno řízení akce, je nástroj RBAC správným nástrojem pro použití. I v případě, že má jednotlivec přístup k provedení určité akce, pokud je výsledkem nekompatibilní prostředek, Azure Policy stále zablokovat vytvoření nebo aktualizaci.
+Azure RBAC se zaměřuje na správu uživatelských [akcí](../../role-based-access-control/resource-provider-operations.md) v různých oborech. Pokud je potřeba řídit akci, je to správný nástroj pro použití Azure RBAC. I v případě, že má jednotlivec přístup k provedení určité akce, pokud je výsledkem nekompatibilní prostředek, Azure Policy stále zablokovat vytvoření nebo aktualizaci.
 
-Kombinace RBAC a Azure Policy poskytuje kompletní řízení oboru v Azure.
+Kombinace Azure RBAC a Azure Policy poskytuje kompletní řízení oboru v Azure.
 
-### <a name="rbac-permissions-in-azure-policy"></a>Oprávnění RBAC ve službě Azure Policy
+### <a name="azure-rbac-permissions-in-azure-policy"></a>Oprávnění Azure RBAC v Azure Policy
 
 Služba Azure Policy má několik oprávnění, která se označují jako operace, ve dvou poskytovatelích prostředků:
 
@@ -144,7 +144,7 @@ Podobně jako parametry zásad pomáhají parametry iniciativ zjednodušit sprá
 
 Jako příklad může posloužit scénář, ve kterém máte definici iniciativy **initiativeC** s definicemi zásad **policyA** a **policyB**, z nichž každá očekává jiný typ parametru:
 
-| Zásady | Název parametru |Typ parametru  |Poznámka |
+| Zásada | Název parametru |Typ parametru  |Poznámka |
 |---|---|---|---|
 | policyA | allowedLocations | array  |Tento parametr jako hodnotu očekává seznam řetězců, protože typ parametru byl definovaný jako pole. |
 | policyB | allowedSingleLocation |řetězec |Tento parametr jako hodnotu očekává jedno slovo, protože typ parametru byl definovaný jako řetězec. |

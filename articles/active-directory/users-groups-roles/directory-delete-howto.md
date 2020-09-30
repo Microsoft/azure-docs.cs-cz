@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97a8f372a90d3add99390220d89214c6ad205db6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: bf8eeb2d1f19ca0848ae5c608ba9f0d8e9526e05
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056298"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541250"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Odstranění tenanta v Azure Active Directory
 
@@ -123,19 +123,19 @@ Můžete vložit samoobslužný produkt pro registraci, jako je Microsoft Power 
 
 2. Vyberte **licence**a pak vyberte **samoobslužné registrace produktů**. Všechny samoobslužné produkty pro registraci se zobrazí odděleně od předplatných založených na pracovních stanicích. Vyberte produkt, který chcete trvale odstranit. Tady je příklad v Microsoft Power BI:
 
-    ![uživatelské jméno je netypové nebo se nenašlo.](./media/directory-delete-howto/licenses-page.png)
+    ![Snímek obrazovky zobrazující stránku licence – samoobslužné registrace produktů.](./media/directory-delete-howto/licenses-page.png)
 
 3. Vyberte **Odstranit** , pokud chcete produkt odstranit, a přijměte podmínky, že se data odstraňují okamžitě a nevratně. Tato akce odstranění odstraní všechny uživatele a odebere přístup organizace k produktu. Kliknutím na tlačítko Ano přesunete vpřed s odstraněním.  
 
-    ![uživatelské jméno je netypové nebo se nenašlo.](./media/directory-delete-howto/delete-product.png)
+    ![Snímek obrazovky se stránkou licence – samoobslužné registrace produktů pomocí okna odstranit produkt pro registraci samoobslužné služby v otevřeném okně.](./media/directory-delete-howto/delete-product.png)
 
 4. Vyberete-li možnost **Ano**, bude inicializováno odstranění produktu samoobslužné služby. K dispozici je oznámení, které vám sdělí, že probíhá odstraňování.  
 
-    ![uživatelské jméno je netypové nebo se nenašlo.](./media/directory-delete-howto/progress-message.png)
+    ![Snímek obrazovky se zobrazeným oznámením "licence – samoobslužné produkty pro registraci" na stránce s informacemi o "odstranění Probíhá odstraňování".](./media/directory-delete-howto/progress-message.png)
 
 5. Nyní se stav produktu samoobslužné registrace změnil na **odstraněno**. Po aktualizaci stránky by se měl produkt odebrat ze stránky **samoobslužné registrace** .  
 
-    ![uživatelské jméno je netypové nebo se nenašlo.](./media/directory-delete-howto/product-deleted.png)
+    ![Snímek obrazovky se stránkou "licence – samoobslužné produkty pro registraci" s panelem "odstranění produktu samoobslužné registrace" na pravé straně.](./media/directory-delete-howto/product-deleted.png)
 
 6. Po odstranění všech produktů se můžete znovu přihlásit do centra pro správu Azure AD a nemusíte nic dělat a žádné produkty neblokují odstranění vaší organizace. Měli byste být schopni úspěšně odstranit vaši organizaci Azure AD.
 

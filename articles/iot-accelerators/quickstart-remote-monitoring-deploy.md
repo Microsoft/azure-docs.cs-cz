@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/25/2019
 ms.author: dobett
-ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8d007fa7100a9880878e0b748c2c38402e5ea192
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60889976"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540230"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Rychlý start: Vyzkoušení cloudového řešení pro vzdálené monitorování
 
@@ -26,7 +26,7 @@ V tomto rychlém startu se nasadí **základní** verze akcelerátoru řešení 
 
 K dokončení tohoto rychlého startu potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
@@ -133,7 +133,7 @@ Pokud se budete chtít přesunout ke kurzům, ponechte akcelerátor řešení pr
 
 Pokud už akcelerátor řešení nepotřebujete, odstraňte ho ze stránky [zřízené řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) , a to tak, že ho vyberete a pak kliknete na **Odstranit řešení**:
 
-![Odstranění řešení](media/quickstart-remote-monitoring-deploy/deletesolution.png)
+![Snímek obrazovky zobrazující stránku zřízené řešení se zvýrazněným akcelerátorem řešení](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 
 
 ![Odstranění řešení](media/quickstart-remote-monitoring-deploy/deletesolution-page.png)

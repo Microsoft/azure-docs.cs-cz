@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 654b10a283c4dcf5a1a1866ec51799aad45a8893
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 04ce45f428604275696d83938708bcee0c6c023f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898896"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536762"
 ---
 # <a name="apply-math-operation"></a>Použití matematických operací
 
@@ -22,11 +22,11 @@ Tento článek popisuje modul návrháře Azure Machine Learning.
 
 Použijte operaci použít matematický postup k vytvoření výpočtů, které jsou použity na číselné sloupce vstupní datové sady. 
 
-Podporované matematické operace zahrnují běžné aritmetické funkce, jako je násobení a dělení, trigonometrické funkce, celá řada funkcí zaokrouhlení a speciální funkce používané v oblasti datových věd, jako je například hodnota gamma a funkce Error.  
+Matematické operace zahrnují aritmetické funkce, trigonometrické funkce, funkce zaokrouhlování a speciální funkce používané v datové vědy, jako je třeba hodnota gamma a funkce Error.  
 
 Po definování operace a spuštění kanálu jsou hodnoty přidány do datové sady. V závislosti na tom, jak nakonfigurujete modul, můžete:
 
-+ Přidejte výsledky do datové sady. To je užitečné zejména při ověřování výsledku operace.
++ Přidejte výsledky do datové sady (užitečné při ověřování výsledku operace).
 + Nahraďte hodnoty sloupců novými, vypočítanými hodnotami.
 + Vygeneruje nový sloupec pro výsledky a nezobrazuje původní data. 
 
@@ -42,7 +42,7 @@ Hledání potřebných operací v těchto kategoriích:
   
 -   [Operace](#arithmetic-operations)  
   
-     Kategorie **operace** zahrnuje základní matematické funkce: sčítání, odčítání, násobení a dělení. Můžete pracovat s buď sloupci, nebo konstantami. Například můžete přidat hodnotu do sloupce A do hodnoty ve sloupci B. Případně můžete z každé hodnoty ve sloupci A odečíst konstantu, jako je například dříve vypočtená střední hodnota.  
+     Kategorie **operací** zahrnuje základní matematické funkce: sčítání, odčítání, násobení a dělení. Můžete pracovat s buď sloupci, nebo konstantami. Například můžete přidat hodnotu do sloupce A do hodnoty ve sloupci B. Případně můžete z každé hodnoty ve sloupci A odečíst konstantu, jako je například dříve vypočtená střední hodnota.  
   
 -   [Zaokrouhlení](#rounding-operations)  
   
@@ -55,7 +55,7 @@ Hledání potřebných operací v těchto kategoriích:
 -   [Trigonometrické](#trigonometric-functions)  
   
      **Trigonometrické** kategorie zahrnuje všechny standardní trigonometrické funkce. Například můžete převést radiány na stupně nebo výpočetní funkce, jako je například Tečna v radiánech nebo stupních.
-     Tyto funkce jsou Unární, což znamená, že přebírají jeden sloupec hodnot jako vstup, aplikují trigonometrické funkci a vrátí sloupec hodnot jako výsledek.  Proto je nutné se ujistit, že vstupní sloupec je odpovídající typ a obsahuje správný druh hodnot pro určenou operaci.   
+     Tyto funkce jsou Unární, což znamená, že přebírají jeden sloupec hodnot jako vstup, aplikují trigonometrické funkci a vrátí sloupec hodnot jako výsledek. Ujistěte se, že vstupní sloupec je odpovídající typ a obsahuje správný typ hodnot pro zadanou operaci.   
 
 ## <a name="how-to-configure-apply-math-operation"></a>Postup konfigurace použití operace Math  
 
@@ -74,7 +74,7 @@ Každá instance tohoto modulu může v jednom okamžiku provádět pouze jeden 
     - Libovolný sloupec, který zvolíte, musí být číselný datový typ. 
     - Rozsah dat musí být platný pro vybranou matematickou operaci. V opačném případě může dojít k chybě nebo NaN (nejedná se o číslo). Například ln (-1,0) je neplatná operace a výsledkem je hodnota `NaN` .
   
-1.  Kliknutím na **kategorie** vyberte **typ** matematické operace, která se má provést.
+1.  Vyberte **kategorie** a vyberte **typ** matematické operace, která se má provést.
     
 1. Vyberte konkrétní operaci ze seznamu v této kategorii.
   
@@ -95,7 +95,7 @@ Vygenerujete-li výsledky pomocí možností **připojit** nebo **ResultOnly** ,
 -   **Equals (Col2_Col1)**, což značí, že jste otestovali col2 proti sloupci Sloupec1.  
 -   **Rovná se (Col2_ $10)**, což značí, že jste porovnali sloupec 2 s konstantou 10.  
 
-I když použijete možnost **umístění** , zdrojová data se neodstraní ani nezmění. sloupec v původní datové sadě je stále k dispozici v návrháři. Chcete-li zobrazit původní data, můžete připojit modul [Přidat sloupce](add-columns.md) a spojit ho s výstupem **použití matematické operace**.  
+I když použijete možnost **v místě** , zdrojová data se neodstraní ani nezmění. sloupec v původní datové sadě je stále k dispozici v návrháři. Chcete-li zobrazit původní data, můžete připojit modul [Přidat sloupce](add-columns.md) a spojit ho s výstupem **použití matematické operace**.  
     
 ## <a name="basic-math-operations"></a>Základní matematické operace 
 
@@ -124,7 +124,7 @@ Vrátí sdruženou hodnotu ve vybraném sloupci.
 Vypočítá kořenovou datovou krychli pro hodnoty ve vybraném sloupci.  
 
 ### <a name="doublefactorial"></a>DoubleFactorial  
- Vypočítá hodnotu Double faktoriál pro hodnoty ve vybraném sloupci. Dvojitý faktoriál je rozšíření normálního faktoriál funkce a je označeno jako x!!.  
+ Vypočítá hodnotu Double faktoriál pro hodnoty ve vybraném sloupci. Dvojitý faktoriál je rozšíření normálního faktoriál funkce a je označeno jako `x!!` .  
 
 ### <a name="eps"></a>EPS
 
@@ -132,7 +132,7 @@ Vrátí velikost mezery mezi aktuální hodnotou a nejbližším číslem s dvoj
   
 ### <a name="exp"></a>Exp
 
-Vrátí hodnotu e umocněnou na mocninu hodnoty ve vybraném sloupci. To je stejné jako funkce Excelu EXP.  
+Vrátí hodnotu e umocněnou na mocninu hodnoty ve vybraném sloupci. Tato funkce je stejná jako funkce Excelu EXP.  
 
 ### <a name="exp2"></a>Exp2 –
 
@@ -170,11 +170,11 @@ Základní (druhý argument) můžete určit buď jako konstantu, nebo výběrem
 
 ### <a name="log10"></a>Log10
 
-Vrátí logaritmické hodnoty o základu 10 pro vybraný sloupec.  
+Vrátí základní hodnoty 10-logaritmu pro vybraný sloupec.  
 
 ### <a name="log2"></a>Log2 –
 
-Vrátí hodnoty logaritmu základního 2 pro vybraný sloupec.  
+Vrátí hodnoty základu 2-logaritmu pro vybraný sloupec.  
 
 ### <a name="nthroot"></a>NthRoot
 Vrátí n-tý kořen hodnoty s použitím n, který zadáte.  
@@ -257,8 +257,8 @@ Operace|Num1|Num2|Sloupec výsledku|Výsledná hodnota|
 |Násobení|1|5|Vícenásobný (Num2_Num1)|5|
 |Odčítání|1|5|Odečíst (Num2_Num1)|4|
 |Odčítání|0|1|Odečíst (Num2_Num1)|0|
-|Oddělení|1|5|Dělit (Num2_Num1)|5|
-|Oddělení|0|1|Dělit (Num2_Num1)|Nekonečno|
+|Dělení|1|5|Dělit (Num2_Num1)|5|
+|Dělení|0|1|Dělit (Num2_Num1)|Nekonečno|
 
 ### <a name="add"></a>Přidat
 
@@ -360,7 +360,7 @@ Funkce Error (označovaná také jako funkce Error Gauss) je zvláštní funkcí
 
 Vrátí hodnotu doplňkové chybové funkce.  
 
-ERFC – je definována jako 1 – ERF (x).  
+`Erfc` je definován jako 1 – ERF (x).  
 
 ### <a name="erfscaled"></a>ErfScaled
 
@@ -370,7 +370,7 @@ Pomocí škálované verze funkce Error lze zabránit aritmetickému podtečení
 
 ### <a name="erfinverse"></a>ErfInverse
 
-Vrátí hodnotu inverzní funkce ERF.  
+Vrátí hodnotu inverzní `erf` funkce.  
 
 ### <a name="exponentialintegralein"></a>ExponentialIntegralEin
 

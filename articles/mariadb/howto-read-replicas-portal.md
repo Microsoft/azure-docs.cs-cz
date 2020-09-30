@@ -6,32 +6,32 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: fc435194975c0b043e74a47632d6e38f12d04c2a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 41e99d11199ae0f2a411b6e2c0b93ea8efcebca2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121193"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542525"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Jak vytvořit a spravovat repliky pro čtení v Azure Database for MariaDB pomocí Azure Portal
 
 V tomto článku se naučíte, jak vytvořit a spravovat repliky pro čtení ve službě Azure Database for MariaDB pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-portal.md) , který se bude používat jako hlavní server.
+- [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-portal.md) , který se bude používat jako zdrojový server.
 
 > [!IMPORTANT]
-> Funkce replika čtení je k dispozici pouze pro Azure Database for MariaDB servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je hlavní server v jedné z těchto cenových úrovní.
+> Funkce replika čtení je k dispozici pouze pro Azure Database for MariaDB servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je zdrojový server v jedné z těchto cenových úrovní.
 
 ## <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
 
 > [!IMPORTANT]
-> Když vytvoříte repliku pro hlavní server, který nemá žádné existující repliky, hlavní počítač se nejprve restartuje a připraví se pro replikaci. Vezměte v úvahu a udělejte tyto operace v době mimo špičku.
+> Když vytvoříte repliku pro zdroj, který nemá žádné existující repliky, zdroj se nejdřív restartuje, aby se připravil pro replikaci. Vezměte v úvahu a udělejte tyto operace v době mimo špičku.
 
 Server repliky pro čtení se dá vytvořit pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte existující server Azure Database for MariaDB, který chcete použít jako hlavní server. Tato akce otevře stránku s **přehledem** .
 
@@ -45,14 +45,14 @@ Server repliky pro čtení se dá vytvořit pomocí následujících kroků:
 
     ![Azure Database for MariaDB – název repliky](./media/howto-read-replica-portal/replica-name.png)
 
-6. Vyberte umístění serveru repliky. Výchozí umístění je stejné jako u hlavního serveru.
+6. Vyberte umístění serveru repliky. Výchozí umístění je stejné jako na zdrojovém serveru.
 
     ![Azure Database for MariaDB – umístění repliky](./media/howto-read-replica-portal/replica-location.png)
 
 7. Vyberte **OK** a potvrďte tak vytvoření repliky.
 
 > [!NOTE]
-> Repliky čtení se vytvářejí se stejnou konfigurací serveru jako hlavní. Konfiguraci serveru repliky je možné po vytvoření změnit. Doporučuje se udržovat konfiguraci serveru repliky ve stejné nebo větší hodnotě než hlavní, aby bylo zajištěno, že je replika schopná s hlavní hodnotou.
+> Repliky čtení se vytvářejí se stejnou konfigurací serveru jako hlavní. Konfiguraci serveru repliky je možné po vytvoření změnit. Doporučuje se udržovat konfiguraci serveru repliky ve stejné nebo větší hodnotě než zdroj, aby bylo zajištěno, že je replika schopná s hlavní hodnotou.
 
 Po vytvoření serveru repliky ho můžete zobrazit z okna **replikace** .
 
@@ -61,11 +61,11 @@ Po vytvoření serveru repliky ho můžete zobrazit z okna **replikace** .
 ## <a name="stop-replication-to-a-replica-server"></a>Zastavení replikace na server repliky
 
 > [!IMPORTANT]
-> Zastavení replikace na serveru je nevratné. Po zastavení replikace mezi hlavním serverem a replikou nelze vrátit zpět. Server repliky se pak stal samostatným serverem a teď podporuje čtení i zápis. Tento server nelze znovu vytvořit do repliky.
+> Zastavení replikace na serveru je nevratné. Po zastavení replikace mezi zdrojem a replikou je nelze vrátit zpět. Server repliky se pak stal samostatným serverem a teď podporuje čtení i zápis. Tento server nelze znovu vytvořit do repliky.
 
-Pokud chcete zastavit replikaci mezi hlavním serverem a serverem repliky ze Azure Portal, postupujte podle následujících kroků:
+Pokud chcete zastavit replikaci mezi zdrojem a serverem repliky ze Azure Portal, použijte následující postup:
 
-1. V Azure Portal vyberte svůj hlavní Azure Database for MariaDB Server. 
+1. V Azure Portal vyberte svůj zdrojový Azure Database for MariaDB Server. 
 
 2. V nabídce v části **Nastavení**vyberte **replikace** .
 
@@ -85,7 +85,7 @@ Pokud chcete zastavit replikaci mezi hlavním serverem a serverem repliky ze Azu
 
 K odstranění serveru repliky pro čtení z Azure Portal použijte následující postup:
 
-1. V Azure Portal vyberte svůj hlavní Azure Database for MariaDB Server.
+1. V Azure Portal vyberte svůj zdrojový Azure Database for MariaDB Server.
 
 2. V nabídce v části **Nastavení**vyberte **replikace** .
 
@@ -101,20 +101,20 @@ K odstranění serveru repliky pro čtení z Azure Portal použijte následujíc
 
    ![Azure Database for MariaDB – odstranění repliky potvrzení](./media/howto-read-replica-portal/delete-replica-confirm.png)
 
-## <a name="delete-a-master-server"></a>Odstranění hlavního serveru
+## <a name="delete-a-source-server"></a>Odstranění zdrojového serveru
 
 > [!IMPORTANT]
-> Odstraněním hlavního serveru se zastaví replikace na všechny servery replik a odstraní se samotný hlavní server. Ze serverů replik se stanou samostatné servery, které teď podporují čtení i zápis.
+> Odstraněním zdrojového serveru se zastaví replikace na všechny servery replik a odstraní se samotný zdrojový server. Ze serverů replik se stanou samostatné servery, které teď podporují čtení i zápis.
 
-K odstranění hlavního serveru z Azure Portal použijte následující postup:
+Pokud chcete odstranit zdrojový server z Azure Portal, použijte následující postup:
 
-1. V Azure Portal vyberte svůj hlavní Azure Database for MariaDB Server.
+1. V Azure Portal vyberte svůj zdrojový Azure Database for MariaDB Server.
 
 2. V **přehledu**vyberte **Odstranit**.
 
    ![Azure Database for MariaDB – odstranění hlavní větve](./media/howto-read-replica-portal/delete-master-overview.png)
 
-3. Zadejte název hlavního serveru a kliknutím na **Odstranit** potvrďte odstranění hlavního serveru.  
+3. Zadejte název zdrojového serveru a kliknutím na **Odstranit** potvrďte odstranění zdrojového serveru.  
 
    ![Azure Database for MariaDB – odstranění hlavní větve](./media/howto-read-replica-portal/delete-master-confirm.png)
 

@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: 1eaf7413b01bceacbcbf3640bfe654fdad026672
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e10cd91eadd338217845b1504e8e9160bccfc98
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700661"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537187"
 ---
 # <a name="create-or-modify-an-exchange-peering-with-route-server-in-azure-portal"></a>Vytvoření nebo úprava partnerského vztahu systému Exchange pomocí serveru Směrování v Azure Portal
 
@@ -74,7 +74,7 @@ Jako poskytovatel internetového Exchange můžete vytvořit partnerský vztah E
 1.  V části **přímé připojení partnerského vztahu**zadejte následující podrobnosti o relaci protokolu BGP:
 
     > [!div class="mx-imgBorder"]
-    > ![Konfigurovat přímý partnerský server směrování](./media/setup-exchange-conf-tab-direct-route.png)
+    > ![Snímek obrazovky zobrazuje podokno přímého partnerského vztahu s přidanými podrobnostmi.](./media/setup-exchange-conf-tab-direct-route.png)
 
 
      * Možnost partnerského vztahu vyberte příslušné fyzické umístění pro partnerský vztah.
@@ -99,19 +99,19 @@ Jako poskytovatel internetového Exchange můžete vytvořit partnerský vztah E
 1. V části nastavení vyberte **zaregistrované čísla ASN** .
 
     > [!div class="mx-imgBorder"]
-    > ![Konfigurovat přímý partnerský server směrování](./media/setup-exchange-registered-asn.png)
+    > ![Snímek obrazovky se zobrazí v podokně partnerského vztahu s registrovanou položkou nabídky NS A s názvem.](./media/setup-exchange-registered-asn.png)
 
 1. Vyberte **Přidat registrované číslo ASN** a v rámci vašeho předplatného Exchange vytvořte nové číslo ASN zákazníka.
 
     > [!div class="mx-imgBorder"]
-    > ![Konfigurovat přímý partnerský server směrování](./media/setup-exchange-register-new-asn.png)
+    > ![Snímek obrazovky ukazuje podokno registrovat a S N s názvem a s N textovými poli.](./media/setup-exchange-register-new-asn.png)
 
 1. V části zaregistrovat číslo ASN vyberte název, vyplňte číslo ASN zákazníka a klikněte na Uložit.
 
 1. V rámci registrovaného čísla ASN se ke každému ASN přiřadí přiřazený klíč předpony. Jako poskytovatel Exchange budete muset zadat tento klíč předpony pro zákazníka, aby mohli zaregistrovat službu partnerského vztahu v rámci svého předplatného.
 
     > [!div class="mx-imgBorder"]
-    > ![Konfigurovat přímý partnerský server směrování](./media/setup-exchange-register-asn-prefixkey.png)
+    > ![Snímek obrazovky znázorňující podokno registrovaný A S NS s klíči předpony.](./media/setup-exchange-register-asn-prefixkey.png)
 
 
 

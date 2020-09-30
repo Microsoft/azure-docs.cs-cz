@@ -3,12 +3,13 @@ title: Rychlý Start – sestavení image kontejneru na vyžádání v Azure
 description: Použijte Azure Container Registry příkazy k rychlému sestavení, vložení a spuštění image kontejneru Docker na vyžádání v cloudu Azure.
 ms.topic: quickstart
 ms.date: 09/25/2020
-ms.openlocfilehash: 6c73eb8ec69014858299eb940036716eff646137
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.custom: contperfq1
+ms.openlocfilehash: 36921900f64d458f1f2591897e32c98f6d22a550
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409829"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538190"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Rychlý Start: sestavení a spuštění image kontejneru pomocí Azure Container Registrych úloh
 

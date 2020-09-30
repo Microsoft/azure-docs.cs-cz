@@ -1,22 +1,22 @@
 ---
-title: Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib
-description: Naučte se používat Apache Spark MLlib k vytvoření aplikace pro strojové učení, která analyzuje datovou sadu pomocí klasifikace prostřednictvím logistické regrese.
+title: 'Kurz: Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib'
+description: V tomto kurzu se dozvíte, jak pomocí Apache Spark MLlib vytvořit aplikaci Machine Learning, která analyzuje datovou sadu pomocí klasifikace prostřednictvím logistické regrese.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.reviewer: jrasnick
-ms.topic: conceptual
+ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 2b641075a45db29c07b96c1934d4540f4c3292dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 667ce8ede9469063e5714470a8e18c218f3c2c90
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259981"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540315"
 ---
-# <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib a Azure synapse Analytics
+# <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Kurz: Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib a Azure synapse Analytics
 
 V tomto článku se naučíte, jak pomocí Apache Spark [MLlib](https://spark.apache.org/mllib/) vytvořit aplikaci pro strojové učení, která provádí jednoduchou prediktivní analýzu na otevřené datové sadě Azure. Spark nabízí integrované knihovny machine learningu. V tomto příkladu se používá *klasifikace* prostřednictvím logistické regrese.
 

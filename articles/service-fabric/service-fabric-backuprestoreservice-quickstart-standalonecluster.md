@@ -1,16 +1,14 @@
 ---
 title: Pravidelné zálohování a obnovování v samostatných Service Fabricch Azure
 description: Použijte funkci periodického zálohování a obnovení samostatného Service Fabric k povolení pravidelného zálohování dat aplikací.
-author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.author: hrushib
-ms.openlocfilehash: dd91b8eb120de24d752073fd80157e9d2a663594
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d20882ba5f7f31ef453c5d28f8bc37155cc99abd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531317"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538581"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Pravidelné zálohování a obnovování v samostatné Service Fabric
 > [!div class="op_single_selector"]
@@ -22,14 +20,14 @@ Service Fabric je platforma distribuovaných systémů usnadňující vývoj a s
 
 Service Fabric replikuje stav napříč několika uzly, aby bylo zajištěno, že je služba vysoce dostupná. I v případě, že jeden uzel v clusteru dojde k chybě, služba bude nadále k dispozici. V některých případech je však stále žádoucí, aby data služby byla spolehlivá proti širším selháním.
  
-Například služba může chtít zálohovat svá data, aby se chránila z následujících scénářů:
+Služba může například potřebovat zálohovat svá data, aby se chránila z následujících scénářů:
 - Trvalá ztráta celého clusteru Service Fabric.
 - Trvalá ztráta většiny replik oddílu služby
 - Chyby správy, při kterých se stav omylem odstranil nebo je poškozen. Například správce s dostatečným oprávněním může službu omylem odstranit.
 - Chyby ve službě, které způsobují poškození dat. K tomu může dojít například v případě, že upgrade kódu služby začne psát vadná data do spolehlivé kolekce. V takovém případě je možné, že kód i data budou muset být vráceny do předchozího stavu.
 - Zpracování offline dat. Může být vhodné mít offline zpracování dat pro business intelligence, ke kterým dochází nezávisle na službě, která data generuje.
 
-Service Fabric poskytuje předdefinované rozhraní API k tomu, aby bylo [zálohování a obnovení](service-fabric-reliable-services-backup-restore.md)k bodu v čase. Vývojáři aplikací můžou tato rozhraní API používat k pravidelnému zálohování stavu služby. Kromě toho, pokud Správci služeb chtějí aktivovat zálohování mimo službu v určitou dobu, třeba před upgradem aplikace, vývojáři potřebují vystavit zálohování (a obnovení) jako rozhraní API ze služby. Udržování záloh je nad rámec těchto nákladů vyšší. Můžete například chtít provést pět přírůstkových záloh každou půl hodiny následovaný úplným zálohováním. Po úplném zálohování můžete odstranit předchozí přírůstkové zálohy. Tento přístup vyžaduje další kód, který by měl při vývoji aplikací dopředné náklady.
+Service Fabric poskytuje integrované rozhraní API k tomu, aby bylo [zálohování a obnovení](service-fabric-reliable-services-backup-restore.md)k určitému bodu v čase. Vývojáři aplikací můžou tato rozhraní API používat k pravidelnému zálohování stavu služby. Kromě toho, pokud Správci služeb chtějí aktivovat zálohování mimo službu v určitou dobu (například před upgradem aplikace), musí vývojáři vystavit zálohování (a obnovení) jako rozhraní API ze služby. Udržování záloh je nad rámec těchto nákladů vyšší. Můžete například chtít provést pět přírůstkových záloh každou půl hodiny následovaný úplným zálohováním. Po úplném zálohování můžete odstranit předchozí přírůstkové zálohy. Tento přístup vyžaduje další kód, který by měl při vývoji aplikací dopředné náklady.
 
 Zálohování dat aplikací je v pravidelných intervalech základní nutnost spravovat distribuovanou aplikaci a chránit před ztrátou dat nebo dlouhodobou ztrátou dostupnosti služeb. Service Fabric poskytuje volitelnou službu pro zálohování a obnovení, která umožňuje konfigurovat pravidelné zálohování stavových Reliable Services (včetně služeb actor) bez nutnosti psát další kód. Také usnadňuje obnovení dříve vytvořených záloh. 
 
@@ -39,20 +37,20 @@ Service Fabric poskytuje sadu rozhraní API pro zajištění následujících fu
     - Azure Storage
     - Sdílení souborů (místně)
 - Vytvoření výčtu záloh
-- Aktivovat zálohu oddílu ad hoc
+- Aktivace neplánované zálohy oddílu
 - Obnovení oddílu pomocí předchozí zálohy
 - Dočasné pozastavení zálohování
 - Správa uchovávání záloh (nadcházející)
 
-## <a name="prerequisites"></a>Požadavky
-* Service Fabric cluster se službou Fabric verze 6,4 nebo vyšší. Postup stažení požadovaného balíčku najdete v tomto [článku](service-fabric-cluster-creation-for-windows-server.md) .
+## <a name="prerequisites"></a>Předpoklady
+* Service Fabric cluster se službou Fabric verze 6,4 nebo novější. Postup stažení požadovaného balíčku najdete v tomto [článku](service-fabric-cluster-creation-for-windows-server.md) .
 * X. 509 certifikát pro šifrování tajných kódů potřebných pro připojení k úložišti pro ukládání záloh. V [článku](service-fabric-windows-cluster-x509-security.md) najdete informace o tom, jak získat nebo vytvořit certifikát X. 509 podepsaný svým držitelem.
 
-* Service Fabric Reliable stavová aplikace vytvořená pomocí sady Service Fabric SDK verze 3,0 nebo vyšší. Pro aplikace cílené na .Net Core 2,0 by měla být aplikace sestavená pomocí sady Service Fabric SDK verze 3,1 nebo vyšší.
+* Service Fabric Reliable stavová aplikace vytvořená pomocí sady Service Fabric SDK verze 3,0 nebo vyšší. Pro aplikace cílené na .NET Core 2,0 by měla být aplikace sestavená pomocí sady Service Fabric SDK verze 3,1 nebo novější.
 * Nainstalujte modul Microsoft. ServiceFabric. PowerShell. http [v Preview] pro provedení konfiguračních volání.
 
 ```powershell
-    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+    Install-Module -Name Microsoft.ServiceFabric.PowerShell.Http -AllowPrerelease
 ```
 
 * `Connect-SFCluster`Před provedením libovolné žádosti o konfiguraci pomocí modulu Microsoft. ServiceFabric. PowerShell. http zajistěte, aby byl cluster připojen pomocí příkazu.
@@ -112,7 +110,7 @@ Nejdřív musíte ve svém clusteru povolit _službu zálohování a obnovení_ 
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Povolení pravidelného zálohování pro spolehlivou stavovou službu a Reliable Actors
 Podívejme se na postupy, které umožňují pravidelné zálohování pro spolehlivou stavovou službu a Reliable Actors. Tyto kroky předpokládají
-- Cluster se nastavuje pomocí _služby zálohování a obnovení_.
+- Cluster je nakonfigurovaný s service_ zálohování a obnovení.
 - V clusteru je nasazená spolehlivá stavová služba. Pro účely tohoto průvodce rychlým startem je identifikátor URI aplikace `fabric:/SampleApp` a identifikátor URI pro spolehlivou stavovou službu, která patří do této aplikace `fabric:/SampleApp/MyStatefulService` . Tato služba je nasazená s jedním oddílem a ID oddílu je `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7` .  
 
 ### <a name="create-backup-policy"></a>Vytvořit zásady zálohování
@@ -203,7 +201,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
     ![Povolit zálohování aplikací][3] 
 
-2. Nakonec vyberte požadovanou zásadu a klikněte na povolit zálohování.
+2. Nakonec vyberte požadovanou zásadu a vyberte *Povolit zálohování*.
 
     ![Vybrat zásadu][4]
 

@@ -3,20 +3,18 @@ title: Záměry a entity – LUIS
 titleSuffix: Azure Cognitive Services
 description: Jeden záměr představuje úkol nebo akci, kterou chce uživatel provést. Je to účel nebo cíl vyjádřený výrokem uživatele. Definujte sadu záměrů, které odpovídají akcím, které uživatelé chtějí provést ve své aplikaci.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: f2e4f91dbc03853d6f1a5240f693ea8ff510e8c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf138248e878b21531df2035dfeda1b90162ea99
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101072"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536099"
 ---
 # <a name="intents-in-your-luis-app"></a>Záměry v aplikaci LUIS
 
@@ -29,7 +27,7 @@ Cestovní záměrové aplikace   |   Ukázkové promluvy   |
  BookFlight (Rezervovat let)     |   "Book mi do Rio Next Week" <br/> "Postupování do Rio na 24 července" <br/> "Potřebuji lístek roviny další neděli do Rio de Janeiro"    |
  Pozdrav     |   Vysoké <br/>"Hello" <br/>"Dobré ráno"  |
  CheckWeather | "Jaké je počasí, jako je například Boston?" <br/> "Zobrazit prognózu pro tento víkend" |
- Žádná         | "Získat recept na soubory cookie"<br>"Lakers Win?" |
+ Žádné         | "Získat recept na soubory cookie"<br>"Lakers Win?" |
 
 Všechny aplikace jsou dodávány s předdefinovaným záměrem "[none](#none-intent)", což je záložní záměr.
 
@@ -55,8 +53,8 @@ Vytvořte záměr, když má _záměr_ uživatele spustit akci v klientské apli
 
 |Záměr   | Entita | Ukázková promluva   |
 |------------------|------------------------------|------------------------------|
-| CheckWeather | {"Type": "Location"; "entita": "Praha"}<br>{"Type": "Builtin. datetimeV2. Date", "entita": "zítra", "Solution": "2018-05-23"} | Jaký je počasí jako v `Seattle` `tomorrow`? |
-| CheckWeather | {"Type": "date_range", "entita": "Tento víkend"} | Zobrazit prognózu pro`this weekend` |
+| CheckWeather | {"Type": "Location"; "entita": "Praha"}<br>{"Type": "Builtin. datetimeV2. Date", "entita": "zítra", "Solution": "2018-05-23"} | Jaký je počasí jako v `Seattle` `tomorrow` ? |
+| CheckWeather | {"Type": "date_range", "entita": "Tento víkend"} | Zobrazit prognózu pro `this weekend` |
 ||||
 
 ## <a name="prebuilt-domain-intents"></a>Předem sestavené záměry domény

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e2858daaa834552da5a85063fd9973d2c35209d7
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f41584194f8f5e8afde630405116b8b169cb5656
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005614"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542032"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>Kurz: vytvoření tenanta ve virtuální ploše Windows (Classic)
 
@@ -126,7 +126,7 @@ Pokud chcete zjistit ID vašeho předplatného Azure:
 1. Ve stejné [Azure Portal](https://portal.azure.com) relaci vyhledejte a vyberte **odběry**.
 
    > [!div class="mx-imgBorder"]
-   > ![Snímek obrazovky s výsledky hledání "Azure Active Directory" v Azure Portal. Výsledek hledání v části služby je zvýrazněný.](../media/tenant-search-subscription.png)
+   > ![Snímek obrazovky s výsledky hledání "Azure Active Directory" v Azure Portal. Výsledky hledání pro "služby" se zvýrazní.](../media/tenant-search-subscription.png)
 
 2. Vyberte předplatné Azure, které chcete použít pro příjem oznámení služby Windows Virtual Desktop.
 3. Vyhledejte **ID předplatného**a umístěte ukazatel myši na hodnotu, dokud se nezobrazí ikona schránky. Vyberte ikonu schránky a vložte ji do užitečného umístění, abyste ji mohli použít později jako hodnotu **AzureSubscriptionId** .

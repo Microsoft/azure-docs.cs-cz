@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: fd2a6cdad01302501e30ec60a4d3ccf6efd9c266
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 348fb301d1a36c8df405c641f7644889417b11ba
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876812"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545445"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Zabezpečení kontejneru Azure Cognitive Services
 
@@ -27,7 +27,7 @@ Následující diagram znázorňuje výchozí a **nezabezpečený** přístup:
 
 ![Zabezpečení kontejneru](../media/container-security.svg)
 
-Jako alternativní a *bezpečný* přístup by spotřebitelé Cognitive Services kontejnerů mohli rozšířit kontejner s front-orientované komponentou a zachovat tak koncový bod kontejneru privátní. Pojďme se považovat za scénář, ve kterém používáme [Istio][istio] jako bránu příchozího přenosu dat. Istio podporuje protokol HTTPS/TLS a ověřování klientů a certifikátů. V tomto scénáři zveřejňuje Istio front-endu přístup k kontejneru a prezentuje klientský certifikát, který je na seznamu povolený předem s Istio.
+Jako alternativní a *bezpečný* přístup by spotřebitelé Cognitive Services kontejnerů mohli rozšířit kontejner s front-orientované komponentou a zachovat tak koncový bod kontejneru privátní. Pojďme se považovat za scénář, ve kterém používáme [Istio][istio] jako bránu příchozího přenosu dat. Istio podporuje protokol HTTPS/TLS a ověřování klientů a certifikátů. V tomto scénáři zveřejňuje Istio front-endu přístup k kontejneru a prezentuje klientský certifikát, který je schválen předem pomocí Istio.
 
 [Nginx][nginx] je další oblíbená volba ve stejné kategorii. Istio i Nginx fungují jako síť služby a nabízejí další funkce, jako například vyrovnávání zatížení, směrování a řízení sazeb.
 

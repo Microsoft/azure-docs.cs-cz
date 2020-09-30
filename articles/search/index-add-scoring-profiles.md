@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: c32e1bc6e219ff645223cc34cf78991e229b86f0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 97797e309c32c6ea996d5ae1901b9a266a683173
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935921"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537629"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Přidání profilů vyhodnocování do indexu služby Azure Cognitive Search
 
@@ -164,7 +164,7 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 |||  
 |-|-|  
 |**Váhu**|Zadejte páry název-hodnota, které poli přiřadí relativní váhu. V [příkladu](#bkmk_ex)jsou pole albumTitle, Žánr a umělec posílena 1,5, 5 a 2 v uvedeném pořadí. Proč se Žánr zvýšilo, takže je mnohem větší než ostatní? Pokud je vyhledávání provedeno nad daty, která jsou poměrně homogenní (stejně jako v případě "žánru" v rámci `musicstoreindex` ), možná budete potřebovat větší odchylku v relativních závažích. Například v `musicstoreindex` , "Rock" se zobrazuje jako žánr a v přesně frázi popis žánrů. Pokud chcete, aby měl Žánr popis žánru, bude mít pole Žánr mnohem vyšší relativní váhu.|  
-|**Functions**|Používá se, pokud jsou pro konkrétní kontexty vyžadovány další výpočty. Platné hodnoty jsou `freshness` , `magnitude` , `distance` a `tag` . Každá funkce má parametry, které jsou pro ni jedinečné.<br /><br /> -   `freshness` by měla být použita, pokud chcete zvýšit způsob, jakým je položka nová nebo stará. Tato funkce se dá použít jenom s `datetime` poli (EDM. DataTimeOffset). Všimněte si, že `boostingDuration` atribut se používá pouze s `freshness` funkcí.<br />-   `magnitude` by měla být použita, pokud chcete zvýšit úroveň na základě vysoké nebo nízké číselné hodnoty. Mezi scénáře, které volají tuto funkci, patří zvýšení úrovně zisku za ziskové marže, nejvyšší cena, nejnižší cena nebo počet souborů ke stažení. Tato funkce se dá použít jenom s poli Double a Integer.<br />     V `magnitude` případě funkce můžete změnit rozsah od nejvyšší po nejnižší, pokud chcete inverzní vzorek (například pro zvýšení ceny položek s nižší cenou více než zboží s vyšší cenou). V rámci rozsahu cen od $100 do $1 byste při zvyšování počtu položek snížení ceny nastavili hodnotu `boostingRangeStart` 100 a `boostingRangeEnd` 1.<br />-   `distance` by se měla použít, když chcete zvýšit polohu v blízkosti nebo zeměpisné poloze. Tato funkce se dá použít jenom s `Edm.GeographyPoint` poli.<br />-   `tag` by měla být použita, pokud chcete zvýšit podle značek běžných mezi dokumenty a vyhledávacími dotazy. Tato funkce se dá použít jenom s `Edm.String` `Collection(Edm.String)` poli a.<br /><br /> **Pravidla pro používání funkcí**<br /><br /> Typ funkce ( `freshness` , `magnitude` , `distance` ), `tag` musí být malými písmeny.<br /><br /> Funkce nesmí obsahovat hodnoty null nebo prázdné hodnoty. Konkrétně, pokud zahrnete NázevPole, je nutné jej nastavit na něco.<br /><br /> Funkce se dají použít jenom u filtrovaných polí. Další informace o polích, která se filtrují, najdete v tématu [vytvoření indexu &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/create-index) .<br /><br /> Funkce lze použít pouze pro pole, která jsou definována v kolekci pole v indexu.|  
+|**Functions**|Používá se, pokud jsou pro konkrétní kontexty vyžadovány další výpočty. Platné hodnoty jsou `freshness`, `magnitude`, `distance` nebo `tag`. Každá funkce má parametry, které jsou pro ni jedinečné.<br /><br /> -   `freshness` by měla být použita, pokud chcete zvýšit způsob, jakým je položka nová nebo stará. Tato funkce se dá použít jenom s `datetime` poli (EDM. DataTimeOffset). Všimněte si, že `boostingDuration` atribut se používá pouze s `freshness` funkcí.<br />-   `magnitude` by měla být použita, pokud chcete zvýšit úroveň na základě vysoké nebo nízké číselné hodnoty. Mezi scénáře, které volají tuto funkci, patří zvýšení úrovně zisku za ziskové marže, nejvyšší cena, nejnižší cena nebo počet souborů ke stažení. Tato funkce se dá použít jenom s poli Double a Integer.<br />     V `magnitude` případě funkce můžete změnit rozsah od nejvyšší po nejnižší, pokud chcete inverzní vzorek (například pro zvýšení ceny položek s nižší cenou více než zboží s vyšší cenou). V rámci rozsahu cen od $100 do $1 byste při zvyšování počtu položek snížení ceny nastavili hodnotu `boostingRangeStart` 100 a `boostingRangeEnd` 1.<br />-   `distance` by se měla použít, když chcete zvýšit polohu v blízkosti nebo zeměpisné poloze. Tato funkce se dá použít jenom s `Edm.GeographyPoint` poli.<br />-   `tag` by měla být použita, pokud chcete zvýšit podle značek běžných mezi dokumenty a vyhledávacími dotazy. Tato funkce se dá použít jenom s `Edm.String` `Collection(Edm.String)` poli a.<br /><br /> **Pravidla pro používání funkcí**<br /><br /> Typ funkce ( `freshness` , `magnitude` , `distance` ), `tag` musí být malými písmeny.<br /><br /> Funkce nesmí obsahovat hodnoty null nebo prázdné hodnoty. Konkrétně, pokud zahrnete NázevPole, je nutné jej nastavit na něco.<br /><br /> Funkce se dají použít jenom u filtrovaných polí. Další informace o polích, která se filtrují, najdete v tématu [vytvoření indexu &#40;Azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/create-index) .<br /><br /> Funkce lze použít pouze pro pole, která jsou definována v kolekci pole v indexu.|  
 
  Po definování indexu Sestavte index tak, že nahrajete schéma indexu, po kterém následují dokumenty. Pokyny k těmto operacím najdete v tématu [vytvoření indexu &#40;azure Kognitivní hledání REST API&#41;](/rest/api/searchservice/create-index) a [Přidání, aktualizace nebo odstranění dokumentů &#40;Azure kognitivní hledání REST API ](/rest/api/searchservice/addupdate-or-delete-documents)&#41;. Po vytvoření indexu byste měli mít funkční profil pro vyhodnocování, který pracuje s vašimi vyhledávacími daty.  
 
@@ -281,6 +281,6 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 
 ## <a name="see-also"></a>Viz také  
 
-+ [Odkaz na REST API](/rest/api/searchservice/)   
-+ [Vytvoření rozhraní API pro index](/rest/api/searchservice/create-index)   
-+ [Sada Azure Kognitivní hledání .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)
++ [Odkaz na REST API](/rest/api/searchservice/)
++ [Vytvoření rozhraní API pro index](/rest/api/searchservice/create-index)
++ [Sada Azure Kognitivní hledání .NET SDK](/dotnet/api/overview/azure/search?)
