@@ -13,21 +13,21 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0aa6a9114635ddc7935f7923a1552ad1583625ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7cc28aef76158f039f1174fc76d0ed29e8f67aea
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299081"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565135"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatizované zálohování v2 pro virtuální počítače Azure (Správce prostředků)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [SQL Server 2014](automated-backup-sql-2014.md)
-> * [SQL Server 2016/2017](automated-backup.md)
+> * [SQL Server 2016 +](automated-backup.md)
 
-Automatizované zálohování v2 automaticky konfiguruje [spravovanou zálohu na Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) pro všechny stávající a nové databáze na virtuálním počítači Azure se systémem SQL Server 2016/2017 Standard, Enterprise nebo Developer Edition. To vám umožní nakonfigurovat pravidelné zálohy databází, které využívají trvalé úložiště objektů BLOB v Azure. Automatizované zálohování v2 závisí na [rozšíření agenta SQL Server infrastruktury jako služby (IaaS)](sql-server-iaas-agent-extension-automate-management.md).
+Automatizované zálohování v2 automaticky konfiguruje [spravovanou zálohu na Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) pro všechny stávající a nové databáze na virtuálním počítači Azure s SQL Server 2016 nebo novějšími edicemi Standard, Enterprise nebo Developer. To vám umožní nakonfigurovat pravidelné zálohy databází, které využívají trvalé úložiště objektů BLOB v Azure. Automatizované zálohování v2 závisí na [rozšíření agenta SQL Server infrastruktury jako služby (IaaS)](sql-server-iaas-agent-extension-automate-management.md).
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -42,24 +42,21 @@ Pokud chcete používat automatizované zálohování v2, Projděte si následuj
 
 - SQL Server 2016 nebo vyšší: Developer, Standard nebo Enterprise
 
-> [!IMPORTANT]
-> Automatizované zálohování v2 funguje s SQL Server 2016 nebo novějším. Pokud používáte SQL Server 2014, můžete k zálohování databází použít automatické zálohování v1. Další informace najdete v tématu [automatizovaná záloha pro SQL Server 2014 virtuálních počítačů Azure (VM)](automated-backup-sql-2014.md).
+> [!NOTE]
+> SQL Server 2014 najdete v tématu [automatizované zálohování pro SQL Server 2014](automated-backup-sql-2014.md).
 
 **Konfigurace databáze**:
 
-- Cílové databáze musí používat úplný model obnovení. Další informace o dopadu plného modelu obnovení na zálohování najdete v [části zálohování v rámci úplného modelu obnovení](https://technet.microsoft.com/library/ms190217.aspx).
-- Systémové databáze nemusejí používat úplný model obnovení. Pokud však požadujete, aby byly zálohy protokolů provedeny pro model nebo MSDB, je nutné použít úplný model obnovení.
-- Cílové databáze musí být buď ve výchozí instanci SQL Server, nebo v [správně nainstalované](frequently-asked-questions-faq.md#administration) pojmenované instanci. 
-
-> [!NOTE]
-> Automatické zálohování spoléhá na **rozšíření agenta SQL Server IaaS**. Aktuální Image Galerie virtuálních počítačů v systému SQL toto rozšíření ve výchozím nastavení přidat. Další informace najdete v tématu [SQL Server rozšíření agenta IaaS](sql-server-iaas-agent-extension-automate-management.md).
+- Cílové _uživatelské_ databáze musí používat úplný model obnovení. Systémové databáze nemusejí používat úplný model obnovení. Pokud však požadujete, aby byly zálohy protokolů provedeny pro model nebo MSDB, je nutné použít úplný model obnovení. Další informace o dopadu plného modelu obnovení na zálohování najdete v [části zálohování v rámci úplného modelu obnovení](https://technet.microsoft.com/library/ms190217.aspx). 
+- Virtuální počítač SQL Server byl zaregistrován u poskytovatele prostředků virtuálního počítače SQL v [režimu úplné správy](sql-vm-resource-provider-register.md#upgrade-to-full). 
+-  Automatické zálohování spoléhá na úplné [rozšíření agenta SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md). V takovém případě se automatizované zálohování podporuje jenom v cílových databázích z výchozí instance nebo z jedné pojmenované instance. Pokud neexistuje žádná výchozí instance a více pojmenovaných instancí, rozšíření SQL IaaS selže a automatizované zálohování nebude fungovat. 
 
 ## <a name="settings"></a>Nastavení
 Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro automatizované zálohování v2. Skutečné kroky konfigurace se liší v závislosti na tom, jestli používáte příkazy Azure Portal nebo Azure Windows PowerShellu.
 
 ### <a name="basic-settings"></a>Základní nastavení
 
-| Nastavení | Rozsah (výchozí) | Popis |
+| Nastavení | Rozsah (výchozí) | Description |
 | --- | --- | --- |
 | **Automatizované zálohování** | Povolit/zakázat (zakázáno) | Povolí nebo zakáže automatizované zálohování pro virtuální počítač Azure se systémem SQL Server 2016/2017 Developer, Standard nebo Enterprise. |
 | **Doba uchování** | 1-30 dní (30 dní) | Počet dní uchovávání záloh. |
@@ -69,7 +66,7 @@ Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro 
 
 ### <a name="advanced-settings"></a>Upřesnit nastavení
 
-| Nastavení | Rozsah (výchozí) | Popis |
+| Nastavení | Rozsah (výchozí) | Description |
 | --- | --- | --- |
 | **Zálohy systémových databází** | Povolit/zakázat (zakázáno) | Když je tato funkce povolená, zálohuje taky systémové databáze: Master, MSDB a model. Pro databáze MSDB a model ověřte, zda jsou v režimu úplného obnovení, pokud chcete provádět zálohy protokolu. Zálohy protokolů se nikdy neprovádí pro hlavní server. A pro databázi TempDB nejsou vyřízeny žádné zálohy. |
 | **Plán zálohování** | Ruční/automatizovaná (automatizovaná) | Ve výchozím nastavení se plán zálohování automaticky určí na základě nárůstu protokolu. Plán ručního zálohování umožňuje uživateli zadat časový interval pro zálohování. V takovém případě zálohy probíhají pouze v zadaném intervalu a v určeném časovém intervalu daného dne. |

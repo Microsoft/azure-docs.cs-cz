@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 373463ff9024ec3b657df6d141ed830142b23f2e
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: e4d2da56146a14b295e08a1093fe62a50f87ecfa
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400056"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567549"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -154,11 +154,11 @@ Azure Cosmos DB podporuje [operace CRUD a dotazování](/rest/api/cosmos-db/) u 
 
 Jakmile operace jako dotaz dosáhne časového limitu spuštění nebo omezení velikosti odpovědi, vrátí klientovi stránku výsledků a token pro pokračování, aby bylo možné pokračovat v provádění. Neexistuje žádné praktické omezení pro dobu, po kterou může jeden dotaz běžet na stránkách nebo v pokračování.
 
-Cosmos DB používá pro autorizaci HMAC. K prostředkům, jako jsou kontejnery, klíče oddílů nebo položky, můžete použít buď hlavní klíč, nebo [tokeny prostředků](secure-access-to-data.md) pro jemně odstupňované řízení přístupu. Následující tabulka uvádí omezení autorizačních tokenů v Cosmos DB.
+Cosmos DB používá pro autorizaci HMAC. Pro podrobné řízení přístupu k prostředkům, jako jsou kontejnery, klíče oddílů nebo položky, můžete použít buď primární klíč, nebo [tokeny prostředků](secure-access-to-data.md) . Následující tabulka uvádí omezení autorizačních tokenů v Cosmos DB.
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Maximální doba vypršení platnosti hlavního tokenu | 15 min  |
+| Maximální doba vypršení platnosti primárního tokenu | 15 min  |
 | Minimální čas vypršení platnosti tokenu prostředku | 10 min  |
 | Maximální doba vypršení platnosti tokenu prostředku | ve výchozím nastavení je 24 h. Můžete ho rozšířit [podáním lístku podpory Azure](create-support-request-quota-increase.md) .|
 | Maximální časové zkosení pro autorizaci tokenů| 15 min |
@@ -171,7 +171,7 @@ Azure Cosmos DB udržuje systémová metadata pro každý účet. Tato metadata 
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-|Maximální počet vytvoření kolekce ZNO minuta| 5|
+|Maximální počet vytvoření kolekce za minutu| 5|
 |Maximální počet vytvoření databáze za minutu|   5|
 |Maximální zajištěná četnost aktualizací propustnosti za minutu| 5|
 

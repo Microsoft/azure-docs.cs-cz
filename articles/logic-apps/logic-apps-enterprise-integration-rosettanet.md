@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 833e2a6f64301c39ba2b9e7959585c3edeab9445
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f02cbdc7ca8822c5fcc91b106856d7f8f547536b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072585"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565101"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Zprávy Exchange RosettaNet pro integraci B2B Enterprise v Azure Logic Apps
 
@@ -51,7 +51,7 @@ Tady je několik konceptů a pojmů, které jsou jedinečné pro specifikaci Ros
 
   V případě PIP s jednou akcí je jedinou odpovědí zpráva potvrzujícího signálu. V případě, že se jedná o akci PIP s dvojitou odezvou, iniciátor obdrží zprávu odpovědi a kromě toku zpráv s jednou akcí odpoví spolu s potvrzením.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -79,11 +79,11 @@ Pokud chcete přidat konfiguraci procesu PIP do účtu pro integraci, postupujte
 
    ![Přidat podrobnosti PIP RosettaNet](media/logic-apps-enterprise-integration-rosettanet/add-rosettanet-pip.png)
 
-   | Vlastnost | Povinné | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
-   | **Název** | Yes | Název PIP |
-   | **Kód PIP** | Yes | Kód pro tři číslice v PIP. Další informace najdete v tématu [RosettaNet Pips](/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
-   | **Verze PIP** | Yes | Číslo verze PIP, které je k dispozici na základě vybraného kódu PIP |
+   | **Název** | Ano | Název PIP |
+   | **Kód PIP** | Ano | Kód pro tři číslice v PIP. Další informace najdete v tématu [RosettaNet Pips](/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
+   | **Verze PIP** | Ano | Číslo verze PIP, které je k dispozici na základě vybraného kódu PIP |
    ||||
 
    Další informace o těchto vlastnostech PIP najdete na [webu RosettaNet](https://resources.gs1us.org/RosettaNet-Standards/Standards-Library/PIP-Directory#1043208-pipsreg).
@@ -110,17 +110,17 @@ Pokud chcete přidat konfiguraci procesu PIP do účtu pro integraci, postupujte
 
    ![Přidat podrobnosti smlouvy](media/logic-apps-enterprise-integration-rosettanet/add-agreement-details.png)
 
-   | Vlastnost | Povinné | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
-   | **Název** | Yes | Název smlouvy |
-   | **Typ smlouvy** | Yes | Vyberte **RosettaNet**. |
-   | **Partner hostitele** | Yes | Smlouva vyžaduje hostitele i partnera hosta. Partner hostitele představuje organizaci, která konfiguruje smlouvu. |
-   | **Hostitelská identita** | Yes | Identifikátor hostitelského partnera |
-   | **Partner hosta** | Yes | Smlouva vyžaduje hostitele i partnera hosta. Partner hosta představuje organizaci, která provádí podnikání s hostitelským partnerem. |
-   | **Identita hosta** | Yes | Identifikátor hostovaného partnera |
+   | **Název** | Ano | Název smlouvy |
+   | **Typ smlouvy** | Ano | Vyberte **RosettaNet**. |
+   | **Partner hostitele** | Ano | Smlouva vyžaduje hostitele i partnera hosta. Partner hostitele představuje organizaci, která konfiguruje smlouvu. |
+   | **Hostitelská identita** | Ano | Identifikátor hostitelského partnera |
+   | **Partner hosta** | Ano | Smlouva vyžaduje hostitele i partnera hosta. Partner hosta představuje organizaci, která provádí podnikání s hostitelským partnerem. |
+   | **Identita hosta** | Ano | Identifikátor hostovaného partnera |
    | **Nastavení příjmu** | Různé | Tyto vlastnosti se vztahují na všechny zprávy přijaté hostitelským partnerem. |
    | **Nastavení odesílání** | Různé | Tyto vlastnosti se vztahují na všechny zprávy odesílané hostitelským partnerem. |  
-   | **Odkazy na RosettaNet PIP** | Yes | Odkazy na PIP smlouvy. Všechny zprávy RosettaNet vyžadují konfigurace PIP. |
+   | **Odkazy na RosettaNet PIP** | Ano | Odkazy na PIP smlouvy. Všechny zprávy RosettaNet vyžadují konfigurace PIP. |
    ||||
 
 1. Pokud chcete nastavit smlouvu pro příjem příchozích zpráv od partnera hosta, vyberte **přijmout nastavení**.
@@ -129,11 +129,11 @@ Pokud chcete přidat konfiguraci procesu PIP do účtu pro integraci, postupujte
 
    1. Chcete-li povolit podepisování nebo šifrování pro příchozí zprávy, vyberte v části **zprávy**možnost **zpráva by měla být podepsána** nebo **zpráva by měla být zašifrována** .
 
-      | Vlastnost | Povinné | Popis |
+      | Vlastnost | Požaduje se | Popis |
       |----------|----------|-------------|
-      | **Zpráva by měla být podepsaná.** | No | Podepsat příchozí zprávy s vybraným certifikátem. |
+      | **Zpráva by měla být podepsaná.** | Ne | Podepsat příchozí zprávy s vybraným certifikátem. |
       | **Certifikát** | Ano, pokud je povoleno podepisování | Certifikát, který se má použít pro podepisování |
-      | **Povolit šifrování zpráv** | No | Zašifruje příchozí zprávy s vybraným certifikátem. |
+      | **Povolit šifrování zpráv** | Ne | Zašifruje příchozí zprávy s vybraným certifikátem. |
       | **Certifikát** | Ano, pokud je povoleno šifrování | Certifikát, který se má použít pro šifrování |
       ||||
 
@@ -145,22 +145,22 @@ Pokud chcete přidat konfiguraci procesu PIP do účtu pro integraci, postupujte
 
    1. Chcete-li povolit podepisování nebo šifrování odchozích zpráv, v části **zprávy**vyberte možnost **povolit podepisování zpráv** nebo **Povolit šifrování zpráv** v uvedeném pořadí. Pod každým výběrem vyberte příslušný algoritmus a [certifikát](./logic-apps-enterprise-integration-certificates.md), který jste dříve přidali do svého účtu pro integraci, abyste se mohli použít k podepisování nebo šifrování.
 
-      | Vlastnost | Povinné | Popis |
+      | Vlastnost | Požaduje se | Popis |
       |----------|----------|-------------|
-      | **Povolit podepisování zpráv** | No | Podepisujte odchozí zprávy s vybraným podpisovým algoritmem a certifikátem. |
+      | **Povolit podepisování zpráv** | Ne | Podepisujte odchozí zprávy s vybraným podpisovým algoritmem a certifikátem. |
       | **Podpisový algoritmus** | Ano, pokud je povoleno podepisování | Podpisový algoritmus, který se má použít, na základě vybraného certifikátu |
       | **Certifikát** | Ano, pokud je povoleno podepisování | Certifikát, který se má použít pro podepisování |
-      | **Povolit šifrování zpráv** | No | Zašifrujte odchozí zprávy s vybraným šifrovacím algoritmem a certifikátem. |
+      | **Povolit šifrování zpráv** | Ne | Zašifrujte odchozí zprávy s vybraným šifrovacím algoritmem a certifikátem. |
       | **Šifrovací algoritmus** | Ano, pokud je povoleno šifrování | Šifrovací algoritmus, který se má použít, na základě vybraného certifikátu |
       | **Certifikát** | Ano, pokud je povoleno šifrování | Certifikát, který se má použít pro šifrování |
       ||||
 
    1. V části **koncové body**určete požadované adresy URL, které se mají použít pro posílání zpráv akce a potvrzení.
 
-      | Vlastnost | Povinné | Popis |
+      | Vlastnost | Požaduje se | Popis |
       |----------|----------|-------------|
-      | **Adresa URL akce** |  Yes | Adresa URL, která se má použít pro posílání zpráv akce Adresa URL je povinné pole pro synchronní i asynchronní zprávy. |
-      | **Potvrzovací adresa URL** | Yes | Adresa URL, která se má použít pro odesílání potvrzovacích zpráv. Adresa URL je povinné pole pro asynchronní zprávy. |
+      | **Adresa URL akce** |  Ano | Adresa URL, která se má použít pro posílání zpráv akce Adresa URL je povinné pole pro synchronní i asynchronní zprávy. |
+      | **Potvrzovací adresa URL** | Ano | Adresa URL, která se má použít pro odesílání potvrzovacích zpráv. Adresa URL je povinné pole pro asynchronní zprávy. |
       ||||
 
 1. Pokud chcete nastavit smlouvu s odkazy na RosettaNet PIP pro partnery, vyberte **odkazy ROSETTANET PIP**. V části **název PIP**vyberte název dříve vytvořeného PIP.
@@ -197,13 +197,13 @@ Chcete-li zrychlit vývoj a doporučit způsoby integrace, můžete použít ša
 
 1. Zadejte informace o vlastnostech akce:
 
-   ![Zadání podrobností o akci](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
+   ![Snímek obrazovky, který ukazuje, kde poskytnete informace pro vlastnosti akce](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
 
-   | Vlastnost | Povinné | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
-   | **Zpráva** | Yes | Zpráva RosettaNet k dekódování  |
-   | **Hlavičky** | Yes | Hlavičky protokolu HTTP, které poskytují hodnoty pro verzi, což je verze RNIF, a typ odpovědi, který označuje typ komunikace mezi partnery a může být synchronní nebo asynchronní |
-   | **Role** | Yes | Role hostitelského partnera v PIP |
+   | **Zpráva** | Ano | Zpráva RosettaNet k dekódování  |
+   | **Hlavičky** | Ano | Hlavičky protokolu HTTP, které poskytují hodnoty pro verzi, což je verze RNIF, a typ odpovědi, který označuje typ komunikace mezi partnery a může být synchronní nebo asynchronní |
+   | **Role** | Ano | Role hostitelského partnera v PIP |
    ||||
 
    Z akce dekódovat RosettaNet (výstup) spolu s dalšími vlastnostmi zahrnuje **odchozí signál**, který můžete vybrat ke kódování a návrat k partnerovi nebo provést jakoukoli jinou akci s tímto výstupem.
@@ -228,16 +228,16 @@ Chcete-li zrychlit vývoj a doporučit způsoby integrace, můžete použít ša
 
    ![Zadání podrobností o akci](media/logic-apps-enterprise-integration-rosettanet/encode-action-details.png)
 
-   | Vlastnost | Povinné | Popis |
+   | Vlastnost | Požaduje se | Popis |
    |----------|----------|-------------|
-   | **Zpráva** | Yes | Zpráva RosettaNet ke kódování  |
-   | **Partner hostitele** | Yes | Název hostitelského partnera |
-   | **Partner hosta** | Yes | Název partnerského serveru hosta |
-   | **Kód PIP** | Yes | Kód PIP |
-   | **Verze PIP** | Yes | Verze PIP |  
-   | **Identita instance PIP** | Yes | Jedinečný identifikátor pro tuto zprávu PIP |  
-   | **Typ zprávy** | Yes | Typ zprávy, která se má zakódovat |  
-   | **Role** | Yes | Role hostitelského partnera |
+   | **Zpráva** | Ano | Zpráva RosettaNet ke kódování  |
+   | **Partner hostitele** | Ano | Název hostitelského partnera |
+   | **Partner hosta** | Ano | Název partnerského serveru hosta |
+   | **Kód PIP** | Ano | Kód PIP |
+   | **Verze PIP** | Ano | Verze PIP |  
+   | **Identita instance PIP** | Ano | Jedinečný identifikátor pro tuto zprávu PIP |  
+   | **Typ zprávy** | Ano | Typ zprávy, která se má zakódovat |  
+   | **Role** | Ano | Role hostitelského partnera |
    ||||
 
    Zakódovaná zpráva je nyní připravena k odeslání partnerovi.

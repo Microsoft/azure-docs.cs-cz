@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 11901e0b68fed9a6a83287d50896bf2afc51fa37
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9aa8857ab10423f460874870a3663929e8e5a5c5
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279552"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566940"
 ---
 Povolení sdílených disků je dostupné jenom pro podmnožinu typů disků. Sdílené disky teď můžou povolit jenom disky Ultra a Premium SSD. U každého spravovaného disku, na kterém jsou povolené sdílené disky, platí následující omezení uspořádaná podle typu disku:
 
@@ -30,7 +30,6 @@ Sdílené disky Ultra jsou k dispozici ve všech oblastech, které ve výchozím
 
 ### <a name="premium-ssds"></a>Disky SSD úrovně Premium
 
-- V současné době se podporuje jenom v [podmnožině oblastí](#regional-availability).
 - V současné době omezena na Azure Resource Manager nebo podporu sady SDK. 
 - Dá se povolit jenom na datových discích, ne na discích s operačním systémem.
 - Mezipaměť dostupnosti hostitele **jen pro čtení** není k dispozici pro prémiové SSD s `maxShares>1` .
@@ -42,24 +41,4 @@ Sdílené disky Ultra jsou k dispozici ve všech oblastech, které ve výchozím
 
 #### <a name="regional-availability"></a>Regionální dostupnost
 
-Shared Premium SSD se podporuje jenom v těchto oblastech:
-
-- East US
-- USA – východ 2
-- USA – západ
-- Západní USA 2
-- USA – středozápad
-- Středojižní USA
-- USA – středosever
-- USA – střed
-- West Europe
-- Severní Evropa
-- Jižní Korea – střed
-- Střední Kanada
-- Kanada – východ
-- Japonsko – východ
-- Japonsko – západ
-- Jihovýchodní Asie
-- Východní Asie
-- USA (Gov) – Virginia
-- USA (Gov) – Arizona
+Shared Premium SSD jsou dostupné ve všech oblastech, které jsou dostupné pro správu disků.

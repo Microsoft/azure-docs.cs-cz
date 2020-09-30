@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 8f1e0a6aecc9702552a3dd66acc8dc7eb5bf1d85
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 24f15b8a4d5a5afd3a2794fe686d3acb0036cdd8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91529919"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565322"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (Preview)
 
@@ -28,16 +28,6 @@ HIB zjednodušuje nastavení komplexního ověřování v následujících scén
 
 HIB poskytuje infrastrukturu ověřování, která umožňuje přechod protokolu z OAuth (moderní) na Kerberos (starší verze), aniž by se musely synchronizovat hodnoty hash hesel pro AAD-DS. Tato infrastruktura se skládá z komponent spuštěných na virtuálním počítači s Windows serverem (s uzlem ID zprostředkovatele) společně s uzly brány clusteru.
 
-Následující diagram znázorňuje moderní tok ověřování založený na protokolu OAuth pro všechny uživatele, včetně federovaných uživatelů po povolení zprostředkovatele ID:
-
-:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Tok ověřování s zprostředkovatelem ID":::
-
-V tomto diagramu musí klient (například prohlížeč nebo aplikace) nejdřív získat token OAuth a potom tokenu předložit bráně v požadavku HTTP. Pokud jste se už přihlásili k jiným službám Azure, jako je Azure Portal, můžete se ke svému clusteru HDInsight přihlásit pomocí jednotného přihlašování (SSO).
-
-Stále se může jednat o mnoho starších verzí aplikací, které podporují jenom základní ověřování (tj. uživatelské jméno a heslo). V těchto scénářích můžete k připojení ke branám clusteru používat i základní ověřování HTTP. V tomto nastavení musíte zajistit připojení k síti z uzlů brány do koncového bodu federace (koncový bod AD FS), aby se zajistila přímá řádková kontrola z uzlů brány.
-
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Tok ověřování s zprostředkovatelem ID":::
-
 Následující tabulku použijte k určení nejlepší možnosti ověřování podle potřeb vaší organizace:
 
 |Možnosti ověřování |Konfigurace HDInsight | Faktory, které je třeba zvážit |
@@ -46,12 +36,24 @@ Následující tabulku použijte k určení nejlepší možnosti ověřování p
 | OAuth + základní ověřování | ESP + HIB | 1. webový přístup k Ambari prostřednictvím OAuth 2. Starší verze aplikací nadále používají základní ověřování. 3. Pro základní přístup k ověřování musí být vícefaktorové ověřování zakázané. 4. Předání synchronizace hodnot hash není vyžadováno. 5. Nemáte přístup SSH/kinit/keytab pro účty Prem, které nemají hodnotu hash hesla v AAD-DS. 6. Pouze cloudové účty mohou i nadále SSH/kinit. |
 | Plně základní ověřování | ŠIFROVANÉ | 1. podobá se Prem nastavením. 2. Synchronizace hodnot hash hesel do AAD-DS je povinná. 3. Účty on-Prem mohou používat SSH/kinit nebo používat keytab. 4. Pokud je úložiště zálohování ADLS Gen2, musí být zakázané MFA. |
 
+Následující diagram znázorňuje moderní tok ověřování založený na protokolu OAuth pro všechny uživatele, včetně federovaných uživatelů po povolení zprostředkovatele ID:
+
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Tok ověřování s zprostředkovatelem ID":::
+
+V tomto diagramu musí klient (například prohlížeč nebo aplikace) nejdřív získat token OAuth a potom tokenu předložit bráně v požadavku HTTP. Pokud jste se už přihlásili k jiným službám Azure, jako je Azure Portal, můžete se ke svému clusteru HDInsight přihlásit pomocí jednotného přihlašování (SSO).
+
+Stále se může jednat o mnoho starších verzí aplikací, které podporují jenom základní ověřování (tj. uživatelské jméno a heslo). V těchto scénářích můžete k připojení ke branám clusteru používat i základní ověřování HTTP. V takovém případě je potřeba zajistit připojení k síti z uzlů brány do koncového bodu federace (AD FS koncový bod), aby se zajistila přímá čára pozorování z uzlů brány. 
+
+Následující diagram znázorňuje základní tok ověřování pro federované uživatele. Nejdřív se brána pokusí dokončit ověřování pomocí [ROPC toku](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc) a v případě, že se do služby Azure AD nesynchronizují žádné hodnoty hash hesel, pak se vrátí ke zjištění AD FSho koncového bodu a dokončí ověřování přístupem ke koncovému bodu AD FS.
+
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Tok ověřování s zprostředkovatelem ID":::
+
 
 ## <a name="enable-hdinsight-id-broker"></a>Povolit HDInsight ID Broker
 
 Pokud chcete vytvořit cluster ESP s povoleným zprostředkovatelem ID, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Postupujte podle základních kroků vytváření pro cluster ESP. Další informace najdete v tématu [Vytvoření clusteru HDInsight s](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)protokolem ESP.
 1. Vyberte **Povolit zprostředkovatele ID HDInsight**.
 

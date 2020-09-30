@@ -3,12 +3,12 @@ title: Autorizace přístupu pomocí Azure Active Directory
 description: Tento článek poskytuje informace o autorizaci přístupu k prostředkům Event Hubs pomocí Azure Active Directory.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: d26838831964b66beea4ed1e3c6e9873cfce247e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 48d2bc1aa3389459077bb7b8df0ac63ce1e1a438
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270028"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566257"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Autorizace přístupu k prostředkům Event Hubs pomocí Azure Active Directory
 Azure Event Hubs podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Event Hubs prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instanční objekt služby. Další informace o rolích a přiřazení rolí najdete v tématu [Principy různých rolí](../role-based-access-control/overview.md).
@@ -35,11 +35,11 @@ Azure poskytuje následující předdefinované role Azure pro autorizaci přís
 
 | Role | Popis | 
 | ---- | ----------- | 
-[Vlastník dat Event Hubs Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) | Pomocí této role získáte úplný přístup k Event Hubs prostředkům. |
+| [Vlastník dat Event Hubs Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) | Pomocí této role získáte úplný přístup k Event Hubs prostředkům. |
 | [Odesilatel dat Event Hubs Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) | Pomocí této role udělíte přístup k prostředkům Event Hubs. |
 | [Přijímač dat Event Hubs Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) | Tuto roli použijte, pokud chcete, aby přístup k Event Hubs prostředkům poskytoval náročné a přijímaly. |
-| Nástroj pro čtení registru schématu (Preview) | Čtení a výpis skupin registru a schémat registru. |
-| Přispěvatel registru schématu (Preview) | Čtení, zápis a odstraňování skupin registru schémat a schémat. |
+
+Předdefinované role registru schématu najdete v tématu [role registru schématu](schema-registry-overview.md#role-based-access-control).
 
 ## <a name="resource-scope"></a>Obor prostředku 
 Než do objektu zabezpečení přiřadíte roli Azure, určete rozsah přístupu, který má objekt zabezpečení mít. Osvědčené postupy určují, že vždy nejlépe přidělíte jenom nejužšímu možnému rozsahu.
@@ -61,7 +61,7 @@ Další informace o tom, jak jsou předdefinované role definované, najdete v t
 
 
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>ukázky
 - [Ukázky Microsoft. Azure. EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) 
     
     Tyto ukázky používají starou knihovnu **Microsoft. Azure. EventHubs** , ale můžete ji snadno aktualizovat tak, aby používala nejnovější knihovnu **Azure. Messaging. EventHubs** . Postup přesunutí ukázky z použití staré knihovny do nové verze najdete v [Průvodci migrací z Microsoft. Azure. EventHubs do Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).

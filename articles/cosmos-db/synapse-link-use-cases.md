@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: d6039ac3bead535fd9c7de64a8e92a0d7a58f390
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2f7ef27ea5cc19c60e05fddfe4d00cd4ff234bc2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319232"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568042"
 ---
-# <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link pro Azure Cosmos DB: Případy použití analýz téměř v reálném čase
+# <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link pro Azure Cosmos DB: Případy použití pro analýzu téměř v reálném čase
 
 [Odkaz na Azure synapse](synapse-link.md) pro Azure Cosmos DB je cloudová funkce hybridního transakčního a analytického zpracování (HTAP), která umožňuje spouštět analýzy prakticky v reálném čase nad provozními daty. Synapse Link vytvoří úzkou plynulou integraci mezi Azure Cosmos DB a Azure synapse Analytics.
 
@@ -70,7 +70,7 @@ Následuje několik pokynů pro integraci dat pro dávkové & streamování dat 
 
 Prodejci dnes musí vytvářet bezpečná a škálovatelná řešení elektronického obchodování, která splňují požadavky zákazníků i firmy. Tato řešení elektronického obchodování potřebují zákazníkům zapojit prostřednictvím přizpůsobených produktů a nabídek, rychle a bezpečně zpracovávat transakce a soustředit se na plnění a poskytování služeb zákazníkům. Azure Cosmos DB spolu s nejnovějším odkazem na synapse pro Azure Cosmos DB umožňuje maloobchodníkům generovat pro zákazníky individuální doporučení v reálném čase. Pro okamžité přehledy používají nastavení konzistence s nízkou latencí a přizpůsobitelné, jak je znázorněno v následující architektuře:
 
-:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Odkaz na Azure synapse pro Azure Cosmos DB přizpůsobení v reálném čase" border="false":::
+:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Odkaz na Azure synapse pro Azure Cosmos DB v analýze dodavatelských řetězců " border="false":::
 
 Synapse odkaz pro případ použití Azure Cosmos DB:
 
@@ -82,7 +82,7 @@ Inovace průmyslových IOT se významně snížily na výpadky strojového stroj
 
 Následuje architektura, která využívá možnosti cloudového nativního HTAPu služby Azure synapse Link pro Azure Cosmos DB v prediktivní údržbě IoT:
 
-:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="Odkaz na Azure synapse pro Azure Cosmos DB v prediktivní údržbě IOT" border="false" :::
+:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="Odkaz na Azure synapse pro Azure Cosmos DB v analýze dodavatelských řetězců " border="false" :::
 
 Synapse odkaz pro případy použití Azure Cosmos DB:
 
@@ -92,7 +92,7 @@ Synapse odkaz pro případy použití Azure Cosmos DB:
 
 ## <a name="sample-scenario-htap-for-azure-cosmos-db"></a>Ukázkový scénář: HTAP pro Azure Cosmos DB
 
-Pro skoro desetiletí Azure Cosmos DB používali tisíce zákazníků pro kritické aplikace, které vyžadují Elastické škálování, klíč globální distribuci, replikaci s více hlavními servery pro nízkou latenci a vysokou dostupnost obou čtení & zápisu ve svých transakčních úlohách.
+Skoro pro desetiletí Azure Cosmos DB používali tisíce zákazníků pro kritické aplikace, které vyžadují Elastické škálování, klíč globální distribuci, replikaci s více oblastmi pro nízkou latenci a vysokou dostupnost obou čtení & zápisu ve svých transakčních úlohách.
  
 Následující seznam obsahuje přehled různých vzorů úloh, které jsou podporované provozními daty pomocí Azure Cosmos DB:
 
@@ -104,17 +104,17 @@ Následující seznam obsahuje přehled různých vzorů úloh, které jsou podp
 
 Připojení Azure synapse Azure Cosmos DB umožňuje, aby neprováděly pouze úlohy s daty z provozu, ale také k vytváření analytických úloh prakticky v reálném čase nad historickými provozními daty. Dochází k tomu bez požadavků na ETL a zaručuje izolaci výkonu z transakčních úloh.
 
-Následující obrázek ukazuje vzory úloh pomocí Azure Cosmos DB: :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="odkaz na Azure synapse pro Azure Cosmos DB vzory úloh" border="false":::
+Následující obrázek ukazuje vzory úloh pomocí Azure Cosmos DB: :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Odkaz na Azure synapse pro Azure Cosmos DB v analýze dodavatelských řetězců " border="false":::
 
 Podíváme se na příklad společnosti elektronického obchodování CompanyXYZ s globálními operacemi v 20 zemích nebo oblastech, abyste se vyhlédli výhodami výběru Azure Cosmos DB jako jedna databáze v reálném čase jak v rámci transakčního, tak i analytického požadavku platformy pro správu inventáře.
 
 * Základní firmy CompanyXYZ závisí na systému správy inventáře, takže dostupnost & spolehlivosti jsou požadavky na základní pilíř. Výhody použití Azure Cosmos DB:
 
-  * Díky důkladné integraci s infrastrukturou Azure a transparentní globální replikaci s více hlavními servery poskytuje Azure Cosmos DB v oboru špičkové [99,999% vysoké dostupnosti](high-availability.md) v rámci regionálních výpadků.
+  * Díky důkladné integraci s infrastrukturou Azure a transparentním zápisům na více oblastí, globální replikace Azure Cosmos DB poskytuje špičkovou [99,999% vysokou dostupnost](high-availability.md) před místními výpadky.
 
 * Partneři dodavatelského dodavatelských CompanyXYZ můžou být v různých geografických umístěních, ale můžou si Zobrazit jediné zobrazení inventáře produktů na celém světě, aby bylo možné podporovat jejich místní operace. To zahrnuje nutnost číst aktualizace provedené jinými partnery dodavatelských řetězců v reálném čase. I schopnost dělat aktualizace, aniž byste se museli starat o konflikty s ostatními partnery při vysoké propustnosti. Výhody použití Azure Cosmos DB:
 
-  * S jedinečným protokolem replikace s více hlavními servery a transakčním úložištěm s podporou zápisu s bezplatným zápisem Azure Cosmos DB garantuje globálně než 10 MS latence pro indexované čtení i zápisy v 99 percentilu globálně.
+  * S jeho jedinečnou mezioblastí zapisuje protokol replikace a transakční úložiště optimalizované pro zápis bez zámků, Azure Cosmos DB garantuje méně než 10 MS latence pro indexované čtení i zápisy v 99 percentilu globálně.
 
   * Ingestování s vysokou propustností datových kanálů Batch & streamování v [reálném čase](index-policy.md) v transakčním úložišti.
 

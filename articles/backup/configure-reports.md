@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 0ede2c8507032811eda26cfcb4d90f18578f3700
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d40da1ebd87ef7d7a43d0be9ae0d34911e854d0e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180282"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567430"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -23,6 +23,7 @@ Dnes Azure Backup poskytuje řešení pro vytváření sestav, které používá
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
 - Sestavy zálohování se podporují pro virtuální počítače Azure, SQL ve virtuálních počítačích Azure, SAP HANA ve virtuálních počítačích Azure, Microsoft Azure Recovery Services (MARS) agent, Microsoft Azure Backup Server (MABS) a System Center Data Protection Manager (DPM). Pro zálohování sdílené složky Azure se zobrazí data pro všechny záznamy vytvořené od 1. června 2020.
+- V případě zálohování sdílených složek Azure se v sestavách aktuálně nezobrazuje data v chráněných instancích (pro všechny zálohované položky je výchozí hodnota nulová).
 - Pro úlohy DPM jsou sestavy zálohování podporované pro DPM verze 5.1.363.0 a novější a verze agenta 2.0.9127.0 a vyšší.
 - Pro úlohy MABS jsou sestavy zálohování podporované pro MABS verze 13.0.415.0 a vyšší a verze agenta 2.0.9170.0 a vyšší.
 - Sestavy zálohování můžete zobrazit ve všech zálohovaných položkách, trezorech, předplatných a oblastech, pokud jsou data odesílána do Log Analyticsho pracovního prostoru, ke kterému má uživatel přístup. Chcete-li zobrazit sestavy pro sadu trezorů, stačí mít přístup čtenář k pracovnímu prostoru Log Analytics, do kterého trezory odesílají svá data. Nemusíte mít přístup k jednotlivým trezorům.

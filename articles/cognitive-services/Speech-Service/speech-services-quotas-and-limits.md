@@ -1,5 +1,5 @@
 ---
-title: Kvóty a omezení služby Speech Services
+title: Kvóty a omezení služeb Speech
 titleSuffix: Azure Cognitive Services
 description: Rychlá reference, podrobný popis a osvědčené postupy pro kvóty a omezení služby Speech pro rozpoznávání řeči v Azure
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/30/2020
 ms.author: alexeyo
-ms.openlocfilehash: 554dd0967979bc2457c3a9c8371152e09535381f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690132"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567158"
 ---
-# <a name="speech-services-quotas-and-limits"></a>Kvóty a omezení služby Speech Services
+# <a name="speech-services-quotas-and-limits"></a>Kvóty a omezení služeb Speech
 
 Tento článek obsahuje stručný přehled a **podrobný popis** kvót a omezení pro rozpoznávání řeči v Azure pro všechny [cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/). Obsahuje taky některé osvědčené postupy, které brání omezení požadavků. 
 
 ## <a name="quotas-and-limits-quick-reference"></a>Rychlé reference k kvótám a omezením
 Přejít k [kvótám a omezením pro převod textu na řeč](#text-to-speech-quotas-and-limits-per-speech-resource)
-### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>Kvóty a omezení řeči na text na zdrojovém řeči
+### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>Kvóty a omezení pro Převod řeči na text pro prostředek služby Speech
 V tabulce níže jsou parametry bez řádku " **Nastaviteled** " pro všechny cenové úrovně nastavitelované.
 
 | Kvóta | Zdarma (F0)<sup>1</sup> | Standardní (S0) |
@@ -33,10 +33,11 @@ V tabulce níže jsou parametry bez řádku " **Nastaviteled** " pro všechny ce
 | Měnitelný | Ne<sup>2</sup> | Ano<sup>2</sup> |
 | **Limit počtu žádostí REST API (koncové body[API Management](../../api-management/api-management-key-concepts.md) )** | 100 požadavků za 10 sekund | 100 požadavků za 10 sekund |
 | **Maximální velikost souboru datové sady pro import dat** | 2 GB | 2 GB |
-| **Maximální velikost vstupního objektu BLOB pro Batch přepisu** | – | 2,5 GB |
-| **Maximální velikost kontejneru objektů BLOB pro dávkový přepis** | – | 5 GB |
-| **Maximální počet objektů blob na kontejner pro dávku přepisu** | – | 10000 |
-| **Maximální počet souběžně spuštěných úloh pro Batch přepisu** | – | 2000  |
+| **Maximální velikost vstupního objektu BLOB pro Batch přepisu** | Není k dispozici | 2,5 GB |
+| **Maximální velikost kontejneru objektů BLOB pro dávkový přepis** | Není k dispozici | 5 GB |
+| **Maximální počet objektů blob na kontejner pro dávku přepisu** | Není k dispozici | 10000 |
+| **Maximální počet souborů na žádost o přepis pro dávku přepisu (při použití více adres URL obsahu jako vstupu)** | Není k dispozici | 1000  |
+| **Maximální počet souběžně spuštěných úloh pro Batch přepisu** | Není k dispozici | 2000  |
 
 <sup>1</sup> **bezplatná (F0)** cenová úroveň najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)také měsíční náhrady.<br/>
 <sup>2</sup> . [Další](#detailed-description-quota-adjustment-and-best-practices)informace najdete v tématu vysvětlení, [osvědčené postupy](#general-best-practices-to-mitigate-throttling-during-autoscaling)a [pokyny k úpravám](#speech-to-text-increasing-online-transcription-concurrent-request-limit).<br/> 
@@ -93,9 +94,9 @@ Existující parametr limitu souběžných požadavků není **viditelný prost�
 #### <a name="have-the-required-information-ready"></a>Připravte požadované informace:
 - Pro **základní model**:
   - ID prostředku pro rozpoznávání řeči
-  - Region
+  - Region (Oblast)
 - Pro **vlastní model**: 
-  - Region
+  - Region (Oblast)
   - ID vlastního koncového bodu
 
 - **Jak získat informace (základní model)**:  

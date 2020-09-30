@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 89282b0cc07f210e7bbf80503c9dbef5f97b13a2
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 0e02f0bf1bb9646a644a40279a8bae930de34c0b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397330"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567991"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Co je Azure synapse Link pro Azure Cosmos DB (Preview)?
 
@@ -56,7 +56,7 @@ S odkazem na Azure synapse můžete získat cenově optimalizované a plně spra
 Azure Cosmos DB analytické úložiště sleduje cenový model založený na spotřebě, který je založený na operacích úložiště dat a analytické operace čtení a zápisu a na provedených dotazech. Nevyžaduje, abyste zřídili žádnou propustnost, stejně jako v současnosti za transakční úlohy. Přístup k datům s vysoce elastickými výpočetními moduly z Azure synapse Analytics přináší celkové náklady na spuštění úložiště a výpočetní výkon.
 
 
-### <a name="analytics-for-locally-available-globally-distributed-multi-master-data"></a>Analýza pro místně dostupná, globálně distribuovaná, multi Master Data
+### <a name="analytics-for-locally-available-globally-distributed-multi-region-writes"></a>Analýza pro místně dostupná, globálně distribuovaná, vícenásobná zápisy ve více oblastech
 
 Analytické dotazy můžete efektivně spouštět proti nejbližší místní kopii dat v Azure Cosmos DB. Azure Cosmos DB poskytuje nejmodernější možnosti pro spouštění globálně distribuovaných analytických úloh spolu s transakčními úlohami aktivním aktivním způsobem.
 
@@ -104,7 +104,7 @@ Další informace o podpoře Azure synapse Analytics runtime pro Azure Cosmos DB
 
 Odkaz na synapse se doporučuje v následujících případech:
 
-* Pokud jste zákazníkem Azure Cosmos DB a chcete provozovat analýzy, BI a strojové učení přes vaše provozní data. V takových případech odkaz synapse poskytuje pokročilejší analytické prostředí, aniž by to ovlivnilo zřízenou propustnost transakčního úložiště. Příklad:
+* Pokud jste zákazníkem Azure Cosmos DB a chcete provozovat analýzy, BI a strojové učení přes vaše provozní data. V takových případech odkaz synapse poskytuje pokročilejší analytické prostředí, aniž by to ovlivnilo zřízenou propustnost transakčního úložiště. Například:
 
   * Pokud používáte analýzy nebo BI na vašich Azure Cosmos DB provozních datech přímo pomocí samostatných konektorů ještě dnes, nebo
 

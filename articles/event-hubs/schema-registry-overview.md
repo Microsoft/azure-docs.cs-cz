@@ -1,23 +1,24 @@
 ---
-title: Registry schématu Azure v Event Hubs (Preview)
+title: Registr schémat Azure v Event Hubs (Preview)
 description: Tento článek poskytuje přehled podpory registru schématu pomocí Azure Event Hubs (Preview).
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 225b36262ccb21b4942e17239b978d3ba595147e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6d478e264f38bb8a097c87e37479ca64b3d5e52d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91348959"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568365"
 ---
-# <a name="azure-schema-registry-in-event-hubs-preview"></a>Registry schématu Azure v Event Hubs (Preview)
+# <a name="azure-schema-registry-in-event-hubs-preview"></a>Registr schémat Azure v Event Hubs (Preview)
 V mnoha scénářích pro streamování událostí a zasílání zpráv obsahuje datová část události nebo zprávy strukturovaná data, která jsou buď serializovaná, nebo deserializovaná pomocí formátu založeného na schématu, jako je Apache Avro. Odesílatelé i přijímače můžou chtít ověřit integritu dat pomocí schématu dokumentu jako ve schématu JSON. V případě formátů založených na schématu je k dispozici pro příjemce zprávy je předpokladem, že příjemce může data deserializovat. 
 
 **Registry schématu Azure** je funkce Event Hubs, která poskytuje centrální úložiště pro dokumenty schématu pro aplikace zaměřené na události a pro zasílání zpráv. Poskytuje flexibilitu pro vaše aplikace producenta a příjemce pro výměnu dat bez nutnosti spravovat a sdílet schéma mezi nimi a také vyvíjet různými sazbami. Registr schématu také poskytuje jednoduché rozhraní zásad správného řízení pro opakovaně použitelná schémata a definuje vztah mezi schématy prostřednictvím seskupovací konstrukce (skupiny schémat).
 
 > [!NOTE]
-> - Funkce **registru schématu** je momentálně ve **verzi Preview** a je dostupná jenom ve **standardních** a **vyhrazených** vrstvách, ne na úrovni **Basic** .
+> - Funkce **registru schématu** je momentálně ve **verzi Preview**a nedoporučuje se pro produkční úlohy.
+> - Tato funkce je k dispozici pouze ve **standardních** a **vyhrazených** vrstvách, nikoli na úrovni **Basic** .
 > - Tato verze Preview je aktuálně dostupná jenom v **středozápadní USA** oblasti. 
 
 Rozhraní serializace založená na schématu, jako je Apache Avro, přenesení metadata serializace do sdílených schémat, mohou také pomáhat s výrazným omezením režie za zprávy typu a názvy polí, které jsou zahrnuty v každé sadě dat, protože se jedná o případ s tagovanými formáty, jako je například JSON. Díky schématům uloženým společně s událostmi a uvnitř infrastruktury pro události je zajištěno, že metadata požadovaná pro serializaci/deserializaci jsou vždy ve dosahu a schémata nelze ukládat do nesprávného umístění. 
@@ -55,8 +56,10 @@ Při přistupování k registru schématu prostřednictvím kódu programu je nu
 
 | Role | Popis | 
 | ---- | ----------- | 
-| Nástroj pro čtení registru schématu (Preview) | Čtení a výpis skupin registru a schémat registru. |
-| Přispěvatel registru schématu (Preview) | Čtení, zápis a odstraňování skupin registru schémat a schémat. |
+| Vlastník | Čtení, zápis a odstraňování skupin registru schémat a schémat. |
+| Přispěvatel | Čtení, zápis a odstraňování skupin registru schémat a schémat. |
+| [Nástroj pro čtení registru schématu (Preview)](../role-based-access-control/built-in-roles.md#schema-registry-reader-preview) | Čtení a výpis skupin registru a schémat registru. |
+| [Přispěvatel registru schématu (Preview)](../role-based-access-control/built-in-roles.md#schema-registry-reader-preview) | Čtení, zápis a odstraňování skupin registru schémat a schémat. |
 
 Pokyny k vytvoření registrace aplikace pomocí Azure Portal najdete v tématu [Registrace aplikace pomocí Azure AD](../active-directory/develop/quickstart-register-app.md). Poznamenejte si ID klienta (ID aplikace), ID tenanta a tajný klíč, který chcete použít v kódu. 
 

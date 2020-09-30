@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24f321e3c3c0fe8e85633edb505879874e8c772f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6de0a6632c53055dd3d3f428481dcc465b67ef6e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019228"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568008"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Monitorování a ladění pomocí metrik v Azure Cosmos DB
 
@@ -41,7 +41,7 @@ V podokně **metriky** jsou k dispozici následující metriky:
 
 * **Metriky konzistence** – Tato metrika ukazuje, jakým způsobem je možné konzistence modelu konzistence zvolit. U účtů s více oblastmi zobrazuje tato metrika také latenci replikace mezi oblastmi, které jste vybrali.
 
-* **Metriky systému** – Tato metrika ukazuje, kolik požadavků na metadata jsou obsluhovány hlavním oddílem. Pomůže vám také identifikovat omezené požadavky.
+* **Metriky systému** – Tato metrika ukazuje, kolik požadavků na metadata jsou obsluhovány primárním oddílem. Pomůže vám také identifikovat omezené požadavky.
 
 V následujících částech se vysvětlují běžné scénáře, kdy můžete použít Azure Cosmos DB metriky. 
 
@@ -51,13 +51,13 @@ Začněte tím, že přejdete na [Azure Portal](https://portal.azure.com) a pře
 
 Nejběžnější stavový kód chyby je 429 (omezení rychlosti/omezování). Tato chyba znamená, že požadavky na Azure Cosmos DB jsou vyšší než zajištěná propustnost. Nejběžnějším řešením tohoto problému je [horizontální navýšení kapacity ru](./set-throughput.md) pro danou kolekci.
 
-:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Počet požadavků za minutu":::
+:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Cosmos DB metriky výkonu v Azure Portal":::
 
 ## <a name="determine-the-throughput-distribution-across-partitions"></a>Určení distribuce propustnosti mezi oddíly
 
 Dobré mohutnosti klíčů oddílů je nezbytné pro libovolnou škálovatelnou aplikaci. Chcete-li určit rozdělení propustnosti děleného kontejneru rozděleného podle oddílů, přejděte do okna **metriky** v [Azure Portal](https://portal.azure.com). Na kartě **propustnost** se rozpis úložiště zobrazuje v poli **maximální spotřebované ru/sekund každého grafu fyzického oddílu** . Následující obrázek znázorňuje příklad špatné distribuce dat, jak znázorňuje zkosený oddíl úplně vlevo.
 
-:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Jeden oddíl se zobrazením velkého využití":::
+:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Cosmos DB metriky výkonu v Azure Portal":::
 
 Nerovnoměrné rozdělení propustnosti může způsobovat *aktivní* oddíly, což může vést k omezení požadavků a může vyžadovat přerozdělení na oddíly. Další informace o dělení v Azure Cosmos DB najdete v tématu [dělení a škálování v Azure Cosmos DB](./partition-data.md).
 
@@ -65,11 +65,11 @@ Nerovnoměrné rozdělení propustnosti může způsobovat *aktivní* oddíly, c
 
 Dobré mohutnosti oddílu je nezbytné pro všechny škálovatelné aplikace. Chcete-li určit distribuci úložiště děleného kontejneru rozděleného podle oddílů, přejděte na okno metriky v [Azure Portal](https://portal.azure.com). Na kartě úložiště se rozpis úložiště zobrazuje v grafu data a indexu spotřebovaného v horních klíčích oddílů. Následující obrázek znázorňuje špatnou distribuci úložiště dat, jak znázorňuje šikmý oddíl úplně vlevo.
 
-:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Příklad špatné distribuce dat":::
+:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Cosmos DB metriky výkonu v Azure Portal":::
 
 Můžete hlavní příčinu, která klíč oddílu zkosí rozdělení, kliknutím na oddíl v grafu.
 
-:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Klíč oddílu zkosí distribuci.":::
+:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Cosmos DB metriky výkonu v Azure Portal":::
 
 Po zjištění, který klíč oddílu způsobuje rozdělení v distribuci, bude pravděpodobně nutné znovu rozdělit svůj kontejner na více distribuovaných klíčů oddílu. Další informace o dělení v Azure Cosmos DB najdete v tématu [dělení a škálování v Azure Cosmos DB](./partition-data.md).
 

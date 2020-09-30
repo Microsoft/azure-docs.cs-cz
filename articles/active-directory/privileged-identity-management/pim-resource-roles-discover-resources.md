@@ -11,25 +11,28 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 09/29/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4852f841fc9ac8ebea586d5e24967a1db20b8044
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be48e6e175beae751003895e60322a458cfbc8bd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743707"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568076"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>Zjištění prostředků Azure pro správu v Privileged Identity Management
 
-Pomocí služby Azure Active Directory (Azure AD) Privileged Identity Management (PIM) můžete zlepšit ochranu vašich prostředků Azure. To je užitečné pro organizace, které už používají Privileged Identity Management k ochraně rolí Azure AD a ke skupině pro správu a vlastníkům předplatného, které hledají informace o zabezpečení produkčních prostředků.
+Pomocí služby Azure Active Directory (Azure AD) Privileged Identity Management (PIM) můžete zlepšit ochranu vašich prostředků Azure. To je užitečné pro:
 
-Když nakonfigurujete Privileged Identity Management pro prostředky Azure, je potřeba vyhledat a vybrat prostředky, které chcete chránit pomocí Privileged Identity Management. Neexistuje žádné omezení počtu prostředků, které můžete spravovat pomocí Privileged Identity Management. Doporučujeme však začít s vašimi nejdůležitějšími (provozními) prostředky.
+- Organizace, které už používají Privileged Identity Management k ochraně rolí Azure AD
+- Skupina pro správu a vlastníci předplatného, kteří se pokoušejí zabezpečit produkční prostředky
+
+Když nakonfigurujete Privileged Identity Management pro prostředky Azure, je potřeba vyhledat a vybrat prostředky, které chcete chránit pomocí Privileged Identity Management. Neexistuje žádné omezení počtu prostředků, které můžete spravovat pomocí Privileged Identity Management. Doporučujeme však začít s nejdůležitějšími provozními prostředky.
 
 ## <a name="discover-resources"></a>Zjišťování prostředků
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
@@ -45,13 +48,16 @@ Když nakonfigurujete Privileged Identity Management pro prostředky Azure, je p
 
 1. Výběrem možnosti **Vyhledat prostředky** spusťte zjišťování.
 
-    ![Podokno zjišťování se seznamem prostředků, které se dají spravovat, jako jsou předplatná a skupiny pro správu](./media/pim-resource-roles-discover-resources/discovery-pane.png)
+    ![Podokno zjišťování obsahuje seznam prostředků, které se dají spravovat, jako jsou předplatná a skupiny pro správu.](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
 1. Na stránce **zjišťování** použijte **Filtr stavu prostředku** a **Vyberte typ prostředku** pro filtrování skupin pro správu nebo odběrů, ke kterým máte oprávnění k zápisu. Je pravděpodobné, že začne začít se **všemi** počátečními.
 
-    Můžete hledat a vybírat prostředky skupiny pro správu nebo předplatného, které se dají spravovat pomocí Privileged Identity Management. Když spravujete skupinu pro správu nebo předplatné v Privileged Identity Management, můžete také spravovat její podřízené prostředky.
+   Můžete vyhledat a vybrat skupinu pro správu nebo prostředky předplatného, které chcete spravovat v Privileged Identity Management. Když spravujete skupinu pro správu nebo předplatné v Privileged Identity Management, můžete také spravovat její podřízené prostředky.
 
-1. Zaškrtněte políčko vedle všech nespravovaných prostředků, které chcete spravovat.
+   > [!Note]
+   > Když přidáte nový podřízený prostředek Azure do skupiny pro správu spravovaná pomocí PIM, můžete podřízený prostředek přenést do správy tak, že ho vyhledáte v PIM.
+
+1. Vyberte všechny nespravované prostředky, které chcete spravovat.
 
 1. Vyberte **Spravovat prostředek** a začněte spravovat vybrané prostředky.
 

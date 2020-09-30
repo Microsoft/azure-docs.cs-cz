@@ -1,5 +1,5 @@
 ---
-title: Pozastavení a obnovení výpočetní kapacity ve fondu synapse SQL prostřednictvím Azure Portal
+title: 'Rychlý Start: pozastavení a obnovení výpočetní kapacity ve fondu synapse SQL prostřednictvím Azure Portal'
 description: Pomocí Azure Portal můžete pozastavit výpočetní výkon fondu SQL a ušetřit tak náklady. Až budete připraveni k používání datového skladu, obnovte výpočetní prostředky.
 services: synapse-analytics
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: aa86161bce0b52eb1043d792fb2f4770df0992ee
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: bf9d8234be754bd6ed325713f3c9ad27bd283b79
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369412"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567634"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Rychlý Start: pozastavení a obnovení výpočetní kapacity ve fondu synapse SQL prostřednictvím Azure Portal
 
@@ -24,7 +24,7 @@ Azure Portal můžete použít k pozastavení a obnovení výpočetních prostř
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -38,7 +38,7 @@ Pokud chcete snížit náklady, můžete pozastavit a obnovit výpočetní prost
 
 Pomocí těchto kroků pozastavíte fond SQL:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. V levé navigační stránce Azure Portal klikněte na **Azure synapse Analytics (dřív SQL DW)** .
 2. Vyberte **mySampleDataWarehouse** ze stránky **Azure synapse Analytics (dříve SQL DW)** a otevřete fond SQL. 
 3. Na stránce **mySampleDataWarehouse** je **stav** oznámení **online**.

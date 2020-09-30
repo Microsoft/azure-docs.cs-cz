@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: 0e6a502ae7ed71beaeefe603e0810264e62187ba
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: bc8e5baa92f507c9abb9bc6b5305773010803f01
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707998"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567583"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Nejčastější dotazy týkající se zajištěné propustnosti automatického škálování v Azure Cosmos DB
 
@@ -37,14 +37,14 @@ Pomocí [Azure monitor metriky](how-to-choose-offer.md#measure-and-monitor-your-
 Každou hodinu se vám bude účtovat nejvyšší propustnost, `T` kterou systém během hodiny škáluje. Pokud váš prostředek neobsahoval žádné požadavky během hodiny nebo nepřekračuje rozsah `0.1 * Tmax` , bude se vám účtovat minimum z `0.1 * Tmax` . Podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) Azure Cosmos DB. 
 
 ### <a name="how-does-autoscale-show-up-on-my-bill"></a>Jak se ve vyúčtování projeví automatické škálování?
-V účtech s jednou hlavní verzí je sazba automatického škálování za 100 RU/s nastavená na 1,5 × sazba standardní (ruční) zřízené propustnosti. Ve vyúčtování se zobrazí stávající standardní měřič propustnosti. Množství tohoto měřiče se vynásobí 1,5. Například pokud je nejvyšší RU/s v systému po celou hodinu 6000 RU/s, bude se vám za tuto hodinu účtovat 60 * 1,5 = 90 jednotky měřiče.
+V rámci účtů oblastí s jedním zápisem je sazba automatického škálování za 100 RU/s nastavená na 1,5 × sazba standardní (ruční) zřízené propustnosti. Ve vyúčtování se zobrazí stávající standardní měřič propustnosti. Množství tohoto měřiče se vynásobí 1,5. Například pokud je nejvyšší RU/s v systému po celou hodinu 6000 RU/s, bude se vám za tuto hodinu účtovat 60 * 1,5 = 90 jednotky měřiče.
 
-V účtech s více hlavními servery je sazba automatického škálování na 100 RU/s stejná jako sazba pro standardní (ruční) zřízené propustnost více hlavních míst. Na faktuře se zobrazí existující měřič více hlavních serverů. Vzhledem k tomu, že sazby jsou stejné, pokud používáte automatické škálování, uvidíte stejné množství jako u standardní propustnosti.
+V účtech s více oblastmi zápisu je sazba automatického škálování za 100 RU/s stejná jako sazba pro standardní (ruční) zřízené více než jednu propustnost v oblasti zápisu. Ve vyúčtování se zobrazí existující měřič více oblastí zápisu. Vzhledem k tomu, že sazby jsou stejné, pokud používáte automatické škálování, uvidíte stejné množství jako u standardní propustnosti.
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>Funguje automatické škálování s vyhrazenou kapacitou?
-Ano. Když si koupíte rezervovanou kapacitu s jedním hlavním serverem, použije se sleva rezervace pro prostředky automatického škálování na využití měřiče v poměru 1,5 * [poměr konkrétní oblasti](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region). 
+Ano. Když si koupíte rezervovanou kapacitu pro účty s více oblastmi zápisu, použije se sleva rezervace pro prostředky automatického škálování na využití měřiče v poměru 1,5 * [poměr konkrétní oblasti](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region). 
 
-Rezervovaná kapacita s více hlavními servery funguje stejně jako automatické škálování a standardní (ruční) zřízené propustnost. Zobrazit [rezervovanou kapacitu Azure Cosmos DB](cosmos-db-reserved-capacity.md)
+Vyhrazená kapacita oblasti s více zápisy funguje stejně pro zajištění propustnosti v rámci automatického škálování a standardní (ruční). Zobrazit [rezervovanou kapacitu Azure Cosmos DB](cosmos-db-reserved-capacity.md)
 
 ### <a name="does-autoscale-work-with-free-tier"></a>Funguje automatické škálování na úrovni Free?
 Ano. Na úrovni Free můžete použít propustnost automatického škálování na kontejneru. Podpora pro sdílené databáze propustnosti automatického škálování s vlastními maximálními RU/s ještě není k dispozici. Podívejte se, jak [funguje fakturace úrovně Free s automatické škálování](understand-your-bill.md#billing-examples-with-free-tier-accounts).
@@ -52,7 +52,7 @@ Ano. Na úrovni Free můžete použít propustnost automatického škálování 
 ### <a name="is-autoscale-supported-for-all-apis"></a>Podporuje se automatické škálování pro všechna rozhraní API?
 Ano, automatické škálování se podporuje pro všechna rozhraní API: Core (SQL), Gremlin, Table, Cassandra a API pro MongoDB.
 
-### <a name="is-autoscale-supported-for-multi-master-accounts"></a>Podporuje se automatické škálování pro účty s více hlavními servery?
+### <a name="is-autoscale-supported-for-multi-region-write-accounts"></a>Podporuje se automatické škálování pro účty pro zápis ve více oblastech?
 Ano. Maximální RU/s jsou dostupné v každé oblasti, která se přidá k účtu Azure Cosmos DB. 
 
 ### <a name="how-do-i-enable-autoscale-on-new-databases-or-containers"></a>Návody povolit automatické škálování pro nové databáze nebo kontejnery?

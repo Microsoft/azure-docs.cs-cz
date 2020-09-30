@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 75ad602eb6b9a0ce52b2b4c4115f351668327c43
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d27eb4dc6c4e4bd8f0a744ad925d91aee0faa8d0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253186"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567141"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Co je Azure Cosmos DB analytické úložiště (Preview)?
 
@@ -52,7 +52,7 @@ Analytické úložiště, které je úložištěm sloupců, je vhodnější pro 
 
 Následující obrázek znázorňuje transakční úložiště řádků vs. analytické úložiště sloupců v Azure Cosmos DB:
 
-:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Transakční úložiště řádků vs. analytické úložiště sloupců v Azure Cosmos DB" border="false":::
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Ukázková provozní tabulka" border="false":::
 
 ### <a name="decoupled-performance-for-analytical-workloads"></a>Oddělitelné výkony pro analytické úlohy
 
@@ -91,7 +91,7 @@ Následující omezení se vztahují na provozní data v Azure Cosmos DB, když 
 
 ##### <a name="schema-representation"></a>Reprezentace schématu
 
-Existují dva režimy reprezentace schématu v analytickém úložišti. Tyto režimy mají kompromisy mezi jednoduchostí sloupcové reprezentace, zpracováním polymorfních schémat a jednoduchostí možnosti dotazování:
+V analytickém úložišti existují dva režimy reprezentace schématu. Tyto režimy dělají kompromisy mezi jednoduchostí sloupcové reprezentace, zpracováním polymorfních schémat a jednoduchostí dotazování:
 
 * Dobře definovaná reprezentace schématu
 * Reprezentace schématu s úplnou věrností
@@ -155,7 +155,7 @@ Tady je mapa všech datových typů vlastností a jejich reprezentace přípon v
 |Null   | ". null"   | null|
 |Řetězec|    řetězec ". String" | "ABC"|
 |Timestamp |    ". timestamp" |  Časové razítko (0, 0)|
-|DateTime   |". Date"    | ISODate ("2020-08-21T07:43:07.375 Z")|
+|Datum a čas   |". Date"    | ISODate ("2020-08-21T07:43:07.375 Z")|
 |ObjectId   |". objectId"    | ObjectId ("5f3f7b59330ec25c132623a2")|
 |Dokument   |". Object" |    {"a": "a"}|
 
@@ -171,7 +171,7 @@ Pokud máte globálně distribuovaný Azure Cosmos DB účet, pak po povolení a
 
 ### <a name="security"></a>Zabezpečení
 
-Ověřování pomocí analytického úložiště je stejné jako transakční úložiště pro danou databázi. K ověřování můžete použít hlavní klíče nebo klíče jen pro čtení. V synapse studiu můžete využít propojenou službu k tomu, aby se zabránilo vkládání klíčů Azure Cosmos DB do notebooků Spark. Přístup k této propojené službě je k dispozici všem uživatelům, kteří mají přístup k pracovnímu prostoru.
+Ověřování pomocí analytického úložiště je stejné jako transakční úložiště pro danou databázi. Pro ověřování můžete použít primární klíče nebo klíče jen pro čtení. V synapse studiu můžete využít propojenou službu k tomu, aby se zabránilo vkládání klíčů Azure Cosmos DB do notebooků Spark. Přístup k této propojené službě je k dispozici všem uživatelům, kteří mají přístup k pracovnímu prostoru.
 
 ### <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>Podpora více běhových prostředí Azure synapse Analytics
 

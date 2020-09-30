@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak aktualizovat konfiguraci trezoru 
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 8890cb541e38f8bc8b680fbcfeb821f29723e8c0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007107"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567821"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualizace konfigurace služby Azure Recovery Services trezoru pomocí REST API
 
@@ -30,20 +30,20 @@ Ve výchozím nastavení bude stav obnovitelného odstranění povolen pro všec
 Pokud chcete načíst aktuální stav obnovitelného odstranění trezoru, použijte následující operaci *Get* .
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 Identifikátor URI Get má `{subscriptionId}` `{vaultName}` parametr,, `{vaultresourceGroupName}` parametry. V tomto příkladu `{vaultName}` je "testVault" a `{vaultresourceGroupName}` je "testVaultRG". Všechny požadované parametry jsou uvedeny v identifikátoru URI, takže není nutné, aby bylo samostatné tělo požadavku.
 
 ```http
-GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="responses"></a>Odpovědi
 
 Úspěšná odpověď pro operaci GET je uvedená níže:
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
@@ -65,16 +65,16 @@ Po odeslání žádosti o získání se vrátí odpověď 200 (úspěšné).
 
 ### <a name="update-soft-delete-state-using-rest-api"></a>Aktualizovat stav obnovitelného odstranění pomocí REST API
 
-Pokud chcete aktualizovat stav obnovitelného odstranění trezoru Recovery Services pomocí REST API, použijte následující operaci *patch* .
+Pokud chcete aktualizovat stav obnovitelného odstranění trezoru Recovery Services pomocí REST API, použijte následující operaci *vložení* .
 
 ```http
-PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
-Identifikátor URI opravy má `{subscriptionId}` , `{vaultName}` , `{vaultresourceGroupName}` parametry. V tomto příkladu `{vaultName}` je "testVault" a `{vaultresourceGroupName}` je "testVaultRG". Pokud identifikátor URI nahradíte výše uvedenými hodnotami, identifikátor URI bude vypadat takto.
+Identifikátor URI pro vložení má `{subscriptionId}` , `{vaultName}` , `{vaultresourceGroupName}` parametry. V tomto příkladu `{vaultName}` je "testVault" a `{vaultresourceGroupName}` je "testVaultRG". Pokud identifikátor URI nahradíte výše uvedenými hodnotami, identifikátor URI bude vypadat takto.
 
 ```http
-PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="create-the-request-body"></a>Vytvoření textu žádosti
@@ -83,7 +83,7 @@ K vytvoření textu žádosti se použijí tyto společné definice.
 
 Další podrobnosti najdete [v dokumentaci k REST API](/rest/api/backup/backupresourcevaultconfigs/update#request-body) .
 
-|Název  |Požaduje se  |Typ  |Popis  |
+|Name  |Požaduje se  |Typ  |Description  |
 |---------|---------|---------|---------|
 |značk     |         |   Řetězec      |  Volitelné eTag       |
 |location     |  true       |Řetězec         |   Umístění prostředku      |
@@ -107,7 +107,7 @@ Následující příklad slouží k aktualizaci stavu obnovitelného odstraněn�
 
 Úspěšná odpověď pro operaci PATCH je uvedená níže:
 
-|Název  |Typ  |Popis  |
+|Název  |Typ  |Description  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 

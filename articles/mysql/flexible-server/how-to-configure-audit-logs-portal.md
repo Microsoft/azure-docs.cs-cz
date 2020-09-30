@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 9/21/2020
-ms.openlocfilehash: b8fe32a079358fda48c6f5ee0c7eec9894a543a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 9/29/2020
+ms.openlocfilehash: cadd384bc7d3222cbc5d1179271f7b4624c9224a
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295902"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565822"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Konfigurace a přístup k protokolům auditu pro Azure Database for MySQL flexibilní Server pomocí Azure Portal
 
@@ -30,45 +30,42 @@ Kroky v tomto článku vyžadují, abyste měli [flexibilní Server](quickstart-
 
 Povolte a nakonfigurujte protokolování auditu.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. Vyberte flexibilní Server.
 
 1. V části **Nastavení** na bočním panelu vyberte **parametry serveru**.
-    <!--:::image type="content" source="./media/howto-configure-audit-logs-portal/server-parameters.png" alt-text="Server parameters":::-->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/server-parameters.png" alt-text="Parametry serveru":::
 
 1. Aktualizujte parametr **audit_log_enabled** na zapnuto.
-    <!-- :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-enabled.png" alt-text="Enable audit logs":::-->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/audit-log-enabled.png" alt-text="Parametry serveru":::
 
 1. Vyberte [typy událostí](concepts-audit-logs.md#configure-audit-logging) , které se mají protokolovat, pomocí aktualizace parametru **audit_log_events** .
-    <!-- :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-events.png" alt-text="Audit log events":::-->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/audit-log-events.png" alt-text="Parametry serveru":::
 
-1. Pomocí aktualizace parametru **audit_log_exclude_users** přidejte všechny uživatele MySQL, které chcete vyloučit z protokolování. Zadejte uživatele pomocí svého uživatelského jména MySQL.
-    <!--:::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png" alt-text="Audit log exclude users":::-->
+1. Pomocí aktualizace parametrů **audit_log_exclude_users** a **audit_log_include_users** přidejte všechny uživatele MySQL, které chcete zahrnout do protokolování, nebo je z něj vyloučit. Zadejte uživatele pomocí svého uživatelského jména MySQL.
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/audit-log-exclude-users.png" alt-text="Parametry serveru":::
 
 1. Po změně parametrů můžete kliknout na **Uložit**. Nebo můžete změny **Zrušit** .
-    <!--:::image type="content" source="./media/howto-configure-audit-logs-portal/save-parameters.png" alt-text="Save":::-->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/save-parameters.png" alt-text="Parametry serveru":::
 
 ## <a name="set-up-diagnostics"></a>Nastavení diagnostiky
-
-> [!NOTE]
-> Integrace s Azure Monitor nastavení diagnostiky pro přístup k protokolům probíhá nasazování a kompletní funkce budou brzy k dispozici.
 
 Protokoly auditu jsou integrované s nastavením diagnostiky Azure Monitor, aby bylo možné přesměrovat protokoly do Azure Monitor protokolů, Event Hubs nebo Azure Storage.
 
 1. V části **monitorování** na bočním panelu vyberte **nastavení diagnostiky**.
 
-1. Klikněte na + Přidat nastavení diagnostiky.  <!-- :::image type="content" source="./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png" alt-text="Add diagnostic setting":::-->
+1. Klikněte na + Přidat nastavení diagnostiky :::image type="content" source="./media/how-to-configure-audit-logs-portal/add-diagnostic-setting.png" alt-text="Parametry serveru"::: .
 
 1. Zadejte název nastavení diagnostiky.
 
 1. Určete, která cílová umístění mají Odeslat protokoly auditu (účet úložiště, centrum událostí a pracovní prostor Log Analytics).
 
 1. Jako typ protokolu vyberte **MySqlAuditLogs** .
-    <!-- :::image type="content" source="./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png" alt-text="Configure diagnostic setting"::: -->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/configure-diagnostic-setting.png" alt-text="Parametry serveru":::
 
 1. Po nakonfigurování datových umyvadel pro přesměrování protokolů auditu na můžete kliknout na **Uložit**.
-    <!-- :::image type="content" source="./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png" alt-text="Save diagnostic setting":::-->
+    :::image type="content" source="./media/how-to-configure-audit-logs-portal/save-diagnostic-setting.png" alt-text="Parametry serveru":::
 
 1. Přihlaste se k protokolům auditu jejich zkoumáním v datových jímkach, které jste nakonfigurovali. Zobrazení protokolů může trvat až 10 minut.
 

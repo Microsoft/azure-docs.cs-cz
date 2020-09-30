@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: a73a2bc82c7f4e77808f751bb8ba24adcacd2e31
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: e2046673cda17c58153ceb12eee31edb83365092
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400379"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565683"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Konfigurace a přístup k protokolům pomalým dotazům pro Azure Database for MySQL-flexibilní Server pomocí Azure Portal
 
@@ -26,20 +26,21 @@ Kroky v tomto článku vyžadují, abyste měli [flexibilní Server](quickstart-
 ## <a name="configure-logging"></a>Konfigurovat protokolování
 Nakonfigurujte přístup k protokolu pomalého dotazu MySQL. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. Vyberte flexibilní Server.
 
 1. V části **Nastavení** na bočním panelu vyberte **parametry serveru**.
-   <!-- :::image type="content" source="./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png" alt-text="Screenshot of Server logs options":::-->
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/server-parameters.png" alt-text="Stránka parametrů serveru.":::
 
 1. Aktualizujte parametr **slow_query_log** na **zapnuto**.
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/slow-query-log-enable.png" alt-text="Stránka parametrů serveru.":::
 
 1. Změňte všechny potřebné parametry (např. `long_query_time`, `log_slow_admin_statements`). Další parametry najdete v dokumentaci k [protokolům pomalým dotazům](./concepts-slow-query-logs.md#configure-slow-query-logging) .  
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/long-query-time.png" alt-text="Stránka parametrů serveru.":::
 
 1. Vyberte **Uložit**. 
-
-   <!-- :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Screenshot of slow query log parameters and save."::: -->
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-parameters.png" alt-text="Stránka parametrů serveru.":::
 
 Na stránce **parametry serveru** se můžete vrátit do seznamu protokolů tím, že stránku zavřete.
 
@@ -49,17 +50,17 @@ Pomalé protokoly dotazů jsou integrované s Azure Monitor nastavení diagnosti
 
 1. V části **monitorování** na bočním panelu vyberte **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky**.
 
-   <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings options":::-->
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/add-diagnostic-setting.png" alt-text="Stránka parametrů serveru.":::
 
 1. Zadejte název nastavení diagnostiky.
 
 1. Určete, která cílová umístění mají Odeslat protokoly pomalých dotazů (účet úložiště, centrum událostí nebo Log Analytics pracovní prostor).
 
 1. Jako typ protokolu vyberte **MySqlSlowLogs** .
-    <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings configuration options":::-->
+    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/configure-diagnostic-setting.png" alt-text="Stránka parametrů serveru.":::
 
 1. Po nakonfigurování datových umyvadel pro přesměrování protokolů pomalých dotazů na vyberte **Uložit**.
-    <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings configuration options, with Save highlighted":::-->
+    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-diagnostic-setting.png" alt-text="Stránka parametrů serveru.":::
 
 1. Přístup k protokolům pomalým dotazům můžete prozkoumat v datech, která jste nakonfigurovali. Zobrazení protokolů může trvat až 10 minut.
 

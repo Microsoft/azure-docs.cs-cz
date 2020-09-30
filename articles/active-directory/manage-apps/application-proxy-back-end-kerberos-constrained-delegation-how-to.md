@@ -2,26 +2,21 @@
 title: Řešení potíží s vynuceným delegováním protokolu Kerberos – proxy aplikací
 description: Řešení potíží s konfigurací vynuceného delegování protokolu Kerberos pro proxy aplikací
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
-ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d086d816be17699989aafda144493d80837188b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: asteen, japere
+ms.openlocfilehash: 3ca3df010426347846b29734426edfad4536516b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760435"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568733"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s konfigurací vynuceného delegování protokolu Kerberos pro proxy aplikací
 
@@ -165,7 +160,7 @@ Pokud pořád nemůžete dělat svůj průběh, může vám pomoct podpora Micro
 
 ## <a name="other-scenarios"></a>Další scénáře
 
-- Azure Application proxy vyžaduje lístek Kerberos před odesláním žádosti do aplikace. Některé aplikace od jiných výrobců nezpůsobují tuto metodu ověřování. Tyto aplikace očekávají, že budou probíhat přísnější jednání. První požadavek je anonymní, což aplikaci umožňuje reagovat na typy ověřování, které podporuje přes 401.
+- Azure Application proxy vyžaduje lístek Kerberos před odesláním žádosti do aplikace. Některé aplikace od jiných výrobců nezpůsobují tuto metodu ověřování. Tyto aplikace očekávají, že budou probíhat přísnější jednání. První požadavek je anonymní, což aplikaci umožňuje reagovat na typy ověřování, které podporuje přes 401. Tento typ vyjednávání Kerberos se dá povolit pomocí kroků popsaných v tomto dokumentu: [omezené delegování protokolu Kerberos pro jednotné přihlašování](application-proxy-configure-single-sign-on-with-kcd.md).
 - Ověřování s více segmenty se obvykle používá ve scénářích, kdy je aplikace vrstvena s back-end a front-end, kde obě vyžadují ověřování, například SQL Server Reporting Services. Pokud chcete nakonfigurovat scénář s více segmenty směrování, přečtěte si článek podpora [omezeného delegování protokolu Kerberos ve scénářích s více segmenty směrování může vyžadovat přechod protokolu](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 
 ## <a name="next-steps"></a>Další kroky

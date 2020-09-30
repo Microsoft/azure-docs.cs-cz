@@ -3,12 +3,12 @@ title: Ověření aplikace pro přístup k prostředkům Azure Event Hubs
 description: Tento článek poskytuje informace o ověřování aplikace s Azure Active Directory pro přístup k prostředkům Azure Event Hubs.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 2b4456f63ce6d50ab1187f65deb1ee3280487580
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1c8503aa8db7350275648d9f5eda69e9e352c859
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531519"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566325"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Ověření aplikace s Azure Active Directory pro přístup k prostředkům Event Hubs
 Microsoft Azure poskytuje integrované řízení přístupu pro prostředky a aplikace založené na Azure Active Directory (Azure AD). Klíčovou výhodou použití Azure AD s Azure Event Hubs je, že už nemusíte ukládat přihlašovací údaje do kódu. Místo toho můžete požádat o přístupový token OAuth 2,0 z platformy Microsoft Identity Platform. Název prostředku pro vyžádání tokenu `https://eventhubs.azure.net/` (pro klienty Kafka je prostředek k vyžádání tokenu `https://<namespace>.servicebus.windows.net` ). Azure AD ověřuje objekt zabezpečení (uživatel, skupina nebo instanční objekt), který spouští aplikaci. Pokud je ověření úspěšné, služba Azure AD vrátí přístupový token do aplikace a aplikace pak může pomocí přístupového tokenu autorizovat požadavky na prostředky Azure Event Hubs.
@@ -24,6 +24,8 @@ Azure poskytuje následující předdefinované role Azure pro autorizaci přís
 - [Vlastník dat Event Hubs Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): pomocí této role získáte úplný přístup k prostředkům Event Hubs.
 - [Datový odesílatel Azure Event Hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): tuto roli použijte, pokud chcete udělit přístup k prostředkům Event Hubs.
 - [Příjemce dat Event Hubs Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): pomocí této role získáte příjem přístupu k prostředkům Event Hubs.   
+
+Předdefinované role registru schématu najdete v tématu [role registru schématu](schema-registry-overview.md#role-based-access-control).
 
 > [!IMPORTANT]
 > Naše verze Preview podporuje přidávání oprávnění k přístupu k datům Event Hubs k roli vlastníka nebo přispěvatele. Oprávnění pro přístup k datům pro vlastníka a roli přispěvatele se ale už neuplatňují. Pokud používáte roli vlastníka nebo přispěvatel, přepněte se na použití role vlastníka dat Event Hubs Azure.

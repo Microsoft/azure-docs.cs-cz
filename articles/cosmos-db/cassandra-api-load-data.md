@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 6a12db8e34421dd16c12d167896ef66b3377d524
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2a1e91b4c801b573e566a95950d150a2b3c4788e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "82853018"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91564914"
 ---
 # <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>Kurz: načtení ukázkových dat do rozhraní API Cassandra tabulky v Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Tento článek patří do vícedílného kurzu. Než začnete s tímto dokumentem, ujistěte se, že jste [vytvořili rozhraní API Cassandra účet, prostor a tabulku](create-cassandra-api-account-java.md).   
 

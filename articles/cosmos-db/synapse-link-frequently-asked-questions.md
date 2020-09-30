@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: b2fc13158d197aaa2e870d1b772386628ee3f9bc
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 34bc8e3775c2334b0cdbb22c8cad8f8d1dd5c732
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398797"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568602"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Nejčastější dotazy k Azure Synapse Linku pro Azure Cosmos DB
 
@@ -25,7 +25,7 @@ V rámci verze Public Preview se odkaz synapse podporuje pro rozhraní API Azure
 
 ### <a name="is-synapse-link-supported-for-multi-region-azure-cosmos-accounts"></a>Podporuje se propojení synapse pro účty Azure Cosmos ve více oblastech?
 
-Ano, pro účty Azure Cosmos ve více oblastech je data uložená v analytickém úložišti také globálně distribuována. Analytické dotazy, které se dají z Azure synapse Analytics dělat bez ohledu na jednu oblast zápisu (jeden hlavní server) nebo více oblastí zápisu (označované také jako multi-Master), je možné obsluhovat z nejbližší místní oblasti.
+Ano, pro účty Azure Cosmos ve více oblastech je data uložená v analytickém úložišti také globálně distribuována. Bez ohledu na to, jestli se využívá jedna nebo více oblastí zápisu, se analytické dotazy prováděné z Azure Synapse Analytics můžou obsluhovat z nejbližší místní oblasti.
 
 Při plánování konfigurace účtu Azure Cosmos s více oblastmi s podporou analytického úložiště se doporučuje mít v době vytváření účtu přidané všechny nezbytné oblasti.
 
@@ -120,7 +120,7 @@ Všechny transakční aktualizace a odstranění jsou zkopírovány do analytick
 
 ### <a name="what-are-the-ways-to-authenticate-with-the-analytical-store"></a>Jaké jsou způsoby ověřování pomocí analytického úložiště?
 
-Ověřování pomocí analytického úložiště je stejné jako transakční úložiště. U dané databáze se můžete ověřit pomocí hlavního klíče nebo klíče jen pro čtení. V synapse studiu můžete využít propojenou službu k tomu, aby se zabránilo vkládání klíčů Azure Cosmos DB do notebooků Spark. Přístup k této propojené službě je k dispozici všem uživatelům, kteří mají přístup k pracovnímu prostoru.
+Ověřování pomocí analytického úložiště je stejné jako transakční úložiště. Pro danou databázi se můžete ověřit pomocí primárního klíče nebo klíče jen pro čtení. V synapse studiu můžete využít propojenou službu k tomu, aby se zabránilo vkládání klíčů Azure Cosmos DB do notebooků Spark. Přístup k této propojené službě je k dispozici všem uživatelům, kteří mají přístup k pracovnímu prostoru.
 
 ## <a name="synapse-run-times"></a>Synapse doby běhu
 
@@ -150,7 +150,7 @@ Azure Cosmos DB kontejner povolený pomocí analytického úložiště má násl
 
 Kontejner transakčního úložiště bude reprezentován následující ikonou:
 
-:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Azure Cosmos DB kontejner povolen s transakčním úložištěm – ikona":::
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Azure Cosmos DB kontejner povolený pomocí analytického úložiště – ikona":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>Jak předat Azure Cosmos DB přihlašovací údaje z synapse studia?
 

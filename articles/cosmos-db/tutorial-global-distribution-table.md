@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 627086bdb13acdd29821af399f90fee8deaae432
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f0d62ae3909bc886fa6a56ba7ed32d55d27302dd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "76900184"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568653"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Nastavení globální distribuce služby Azure Cosmos DB pomocí rozhraní Table API
 
@@ -34,7 +34,7 @@ Sada Azure Cosmos DB rozhraní API pro tabulky SDK automaticky vybere nejlepší
 
 * **Žádosti o čtení:** Všechny požadavky na čtení se odesílají do nakonfigurovaného `CurrentRegion` . Na základě blízkosti se sada SDK automaticky vybere jako záložní geograficky replikovaný region pro zajištění vysoké dostupnosti.
 
-* **Požadavky na zápis:** Sada SDK automaticky pošle všechny požadavky na zápis do aktuální oblasti pro zápis. V rámci vícenásobného hlavního účtu budou aktuální oblasti sloužit i pro požadavky na zápis. Na základě blízkosti se sada SDK automaticky vybere jako záložní geograficky replikovaný region pro zajištění vysoké dostupnosti.
+* **Požadavky na zápis:** Sada SDK automaticky pošle všechny požadavky na zápis do aktuální oblasti pro zápis. V rámci účtu s zápisy ve více oblastech bude aktuální oblast obsluhovat i požadavky na zápis. Na základě blízkosti se sada SDK automaticky vybere jako záložní geograficky replikovaný region pro zajištění vysoké dostupnosti.
 
 Pokud vlastnost nezadáte `CurrentRegion` , použije sada SDK aktuální oblast zápisu pro všechny operace.
 

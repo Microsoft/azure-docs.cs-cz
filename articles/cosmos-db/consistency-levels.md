@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: aa09b1ec1e3f73547d211fab0907c9e3388c008b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 27c1a896d25a0db00ff5f263d949f6657a658e3d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445335"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567196"
 ---
 # <a name="what-are-consistency-levels-in-azure-cosmos-db"></a>Co jsou úrovně konzistence v Azure Cosmos DB?
 
@@ -52,10 +52,10 @@ Ohraničená neaktuálnost nabízí celkové globální pořadí mimo "okno pro 
 
 V rámci okna zastaralost poskytuje ohraničená neaktuálnost následující záruky konzistence:
 
-- Konzistence klientů ve stejné oblasti pro jeden hlavní účet = silná
-- Konzistence klientů v různých oblastech pro jeden hlavní účet = konzistentní předpona
-- Konzistence pro klienty zapisujících do jedné oblasti pro vícenásobný hlavní účet = konzistentní předpona
-- Konzistence pro klienty zapisujících do různých oblastí pro více hlavních účtů = případné
+- Konzistence klientů ve stejné oblasti pro účet s oblastí pro zápis s jednou oblastí zápisu = Strong
+- Konzistence klientů v různých oblastech pro účet s jednou oblastí zápisu = konzistentní předpona
+- Konzistence klientů zapisujících do jedné oblasti pro účet s více oblastmi zápisu = konzistentní předpona
+- Konzistence pro klienty zapisujících do různých oblastí pro účet s více oblastmi zápisu = případné
 
   Ohraničená neaktuálnost se často volí globálně distribuovanými aplikacemi, které očekávají nízkou latenci zápisu, ale vyžadují celkovou záruku globální objednávky. Ohraničená neaktuálnost je ideální pro aplikace, které nabízí spolupráci skupin a sdílení, burzovní, doplňování a publikování a zařazování do fronty atd. Následující obrázek znázorňuje konzistenci s ohraničenou neaktuálností pomocí hudebních poznámek. Po zapsání dat do oblasti "Západní USA 2" přečtou oblasti "Východní USA 2" a "Austrálie – východ" písemnou hodnotu na základě nakonfigurovaného maximálního času prodlevy nebo maximálního počtu operací:
 
@@ -63,10 +63,10 @@ V rámci okna zastaralost poskytuje ohraničená neaktuálnost následující z�
 
 Klientům mimo relaci, která provádí zápis, se zobrazí následující záruky:
 
-- Konzistence pro klienty ve stejné oblasti pro jeden hlavní účet = konzistentní předpona
-- Konzistence klientů v různých oblastech pro jeden hlavní účet = konzistentní předpona
-- Konzistence pro klienty zapisujících do jedné oblasti pro vícenásobný hlavní účet = konzistentní předpona
-- Konzistence klientů zapisujících do více oblastí pro více hlavních účtů = případné
+- Konzistence pro klienty ve stejné oblasti pro účet s jednou oblastí zápisu = konzistentní předpona
+- Konzistence klientů v různých oblastech pro účet s jednou oblastí zápisu = konzistentní předpona
+- Konzistence klientů zapisujících do jedné oblasti pro účet s více oblastmi zápisu = konzistentní předpona
+- Konzistence klientů zapisujících do více oblastí pro účet s více oblastmi zápisu = případné
 
   Konzistence relací je nejčastěji používaná úroveň konzistence pro jednu oblast i pro globálně distribuované aplikace. Poskytuje latence zápisu, dostupnost a propustnost čtení srovnatelné s tím, že má konečnou konzistenci, ale také poskytuje záruky konzistence, které vyhovují potřebám aplikací zapsaných v kontextu uživatele. Následující obrázek znázorňuje konzistenci relace se hudebními poznámkami. "Západní USA 2 Writer" a "Západní USA 2 Reader" používají stejnou relaci (relaci A), aby obě současně četly stejná data. Vzhledem k tomu, že oblast Austrálie – východ používá "relaci B", získá data později, ale ve stejném pořadí jako zápisy.
 
@@ -78,10 +78,10 @@ Pokud byla zápisy provedena v pořadí `A, B, C` , klient uvidí buď `A` , `A,
 
 Níže jsou uvedené záruky konzistence pro konzistentní předpony:
 
-- Konzistence pro klienty ve stejné oblasti pro jeden hlavní účet = konzistentní předpona
-- Konzistence klientů v různých oblastech pro jeden hlavní účet = konzistentní předpona
-- Konzistence pro klienty zapisujících do jedné oblasti pro vícenásobný hlavní účet = konzistentní předpona
-- Konzistence klientů zapisujících do více oblastí pro více hlavních účtů = případné
+- Konzistence pro klienty ve stejné oblasti pro účet s jednou oblastí zápisu = konzistentní předpona
+- Konzistence klientů v různých oblastech pro účet s jednou oblastí zápisu = konzistentní předpona
+- Konzistence klientů zapisujících do jedné oblasti pro účet s více oblastmi pro zápis = konzistentní předpona
+- Konzistence klientů zapisujících do více oblastí pro účet s více oblastmi zápisu = případný
 
 Následující obrázek znázorňuje konzistenci předpon konzistence se hudebními poznámkami. Ve všech oblastech čtení nikdy nevidí zápisy mimo pořadí:
 

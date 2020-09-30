@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 1721c2a9ede949bb6183c60e65f540869bb95e43
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 706a16eaaab113aab879b828e851191b4d3954dc
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446145"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566155"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>Partneři připojení ExpressRoute a umístění partnerského vztahu
 
@@ -121,7 +121,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Interxion](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Podporováno |Podporováno |Amsterdam, Amsterdam2, Kodaň, Dublin, Frankfurt, Londýn, Marseille, Paříž, Curych |
 | **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|Podporováno |Podporováno | Amsterdam, London2, Silicon sedl, Toronto, Washington DC |
 | **Jaguar síť** |Podporováno |Podporováno |Marseille|
-| **[JISC](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |Podporováno |Podporováno |Londýn |
+| **[JISC](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |Podporováno |Podporováno |Londýn, Newport (Wales) |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |Podporováno |Podporováno |Soul |
 | **[Kordia](https://www.kordia.co.nz/cloudconnect)** | Podporováno |Podporováno |Auckland, Sydney |
 | **[KPN](https://www.kpn.com/zakelijk/cloud/connect.htm)** | Podporováno | Podporováno | Amsterdam |

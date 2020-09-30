@@ -7,18 +7,18 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 3/18/2020
-ms.openlocfilehash: 2a44896ff7cabb9e44c02be9f3dba201298d4794
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 51c194ca9b091bc685f293320750da55925ad49d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903938"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565611"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Co je Azure Database for MySQL?
 
-Azure Database for MySQL je služba relačních databází v cloudu Microsoftu založená na [verzi MySQL Community Edition](https://www.mysql.com/products/community/) (k dispozici v rámci licence GPLv2) databázovému stroji verze 5,6, 5,7 a 8,0. Azure Database for MySQL poskytuje:
+Azure Database for MySQL je služba relačních databází v cloudu Microsoftu založená na [verzi MySQL Community Edition](https://www.mysql.com/products/community/) (k dispozici v rámci licence GPLv2) databázovému stroji verze 5,6, 5,7 a 8,0. Azure Database for MySQL má tyto výhody:
 
-- Integrovaná vysoká dostupnost.
+- Integrovaná vysoká dostupnost
 - Ochrana dat pomocí automatických záloh a obnovení k bodu v čase po dobu až 35 dnů.
 - Automatizovaná údržba základního hardwaru, operačního systému a databázového stroje, aby byla služba zabezpečená a aktuálnost.
 - Předvídatelný výkon s využitím celkových průběžných plateb.
@@ -42,7 +42,7 @@ Azure Database for MySQL, kterou používá služba MySQL Community Edition, je 
 
 Azure Database for MySQL jeden server je plně spravovaná databázová služba s minimálními požadavky pro přizpůsobení databáze. Platforma s jednou serverem je navržená tak, aby zpracovávala většinu funkcí správy databáze, jako jsou třeba opravy, zálohování, vysoká dostupnost, zabezpečení s minimální konfigurací a řízením uživatele. Architektura je optimalizovaná pro integrovanou vysokou dostupnost s 99,99% dostupností v jedné zóně dostupnosti. Podporuje komunitní verze MySQL 5,6, 5,7 a 8,0. Tato služba je všeobecně dostupná pro celou řadu [oblastí Azure](https://azure.microsoft.com/global-infrastructure/services/).
 
-Možnost nasazení na jeden server nabízí tři cenové úrovně: základní, Pro obecné účely a paměťově optimalizované. Každá úroveň nabízí různé schopnosti prostředků pro podporu vašich úloh databáze. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [Cenové úrovně](concepts-pricing-tiers.md).
+Nasazení typu Jeden server má tři cenové úrovně: Basic, Pro obecné účely a Optimalizováno pro paměť. Každá úroveň nabízí různé schopnosti prostředků pro podporu vašich úloh databáze. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [Cenové úrovně](concepts-pricing-tiers.md).
 
 Pro cloudové nativní aplikace navržené pro zpracování automatizovaných oprav bez nutnosti podrobného řízení plánu oprav a vlastních nastavení konfigurace MySQL se nejlépe hodí samostatné servery. 
 
@@ -58,6 +58,15 @@ Flexibilní servery jsou vhodné pro
 - Spravovaná okna údržby
 
 Podrobný přehled režimu nasazení flexibilního serveru najdete v tématu [flexibilní přehled serveru](flexible-server/overview.md).
+
+## <a name="contacts"></a>Kontakty
+Pokud máte jakékoli dotazy nebo návrhy, které byste mohli potřebovat při práci s Azure Database for MySQL, pošlete e-mail týmu Azure Database for MySQL ([ @Ask Azure DB pro MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Tato e-mailová adresa není alias technické podpory.
+
+Můžete také využít tyto komunikační kanály:
+
+- Pro podporu Azure [vytvořte lístek podpory na webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Pokud řešíte problém s účtem, podejte prostřednictvím webu Azure Portal [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+- Pokud nám chcete sdělit svůj názor nebo požádat o nové funkce, využijte nástroj [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
 ## <a name="next-steps"></a>Další kroky
 

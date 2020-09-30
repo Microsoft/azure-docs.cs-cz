@@ -1,6 +1,6 @@
 ---
-title: Dostupné protokoly souborů Azure
-description: Před vytvořením sdílené složky Azure se dozvíte o dostupných protokolech.
+title: Dostupné protokoly souborů Azure – systém souborů NFS a SMB
+description: Před vytvořením sdílené složky Azure, včetně protokolu SMB (Server Message Block) a systému souborů NFS (Network File System), se dozvíte o dostupných protokolech.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8082e694c4282759c9c38560c14eb3659fcd55ec
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708134"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568467"
 ---
 # <a name="azure-file-share-protocols"></a>Protokoly sdílení souborů Azure
 
@@ -25,8 +25,8 @@ Soubory Azure nabízí dva protokoly pro připojení a připojení ke sdíleným
 |---------|---------|---------|
 |Přístup k protokolům     |SYSTÉM SOUBORŮ NFS 4,1         |SMB 2,1, SMB 3,0         |
 |Podporovaný operační systém     |Jádro Linux verze 4.3 +         |Windows 2008 R2 +, jádro Linux verze 4.11 +         |
-|Dostupné úrovně     |Premium Storage         |Storage úrovně Premium, Standard Storage, horká, studená         |
-|Replikace     |LRS         |LRS, ZRS, GRS         |
+|[Dostupné úrovně](storage-files-planning.md#storage-tiers)     |Premium Storage         |Premium Storage, transakce optimalizovaná, horká, studená         |
+|[Redundance](storage-files-planning.md#redundancy)     |LRS         |LRS, ZRS, GRS         |
 |Authentication     |Pouze ověřování založené na hostiteli        |Ověřování na základě identity, ověřování uživatelů         |
 |Oprávnění     |Oprávnění ve stylu systému UNIX         |Oprávnění ve stylu NTFS         |
 |Sémantika systému souborů     |Kompatibilní s POSIX         |Není kompatibilní se standardem POSIX         |

@@ -3,12 +3,12 @@ title: Řešení potíží s ověřováním a autorizací – Azure Event Hubs
 description: Tento článek poskytuje informace o řešení potíží s ověřováním a autorizací pomocí Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: bed415c6180953b5a5728032a50d51618c084343
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: cd5f48dfb146a027f0b95b4ddea3dc054a315c6e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533882"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566223"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Řešení potíží s ověřováním a autorizací – Azure Event Hubs
 Článek [Poradce při](troubleshooting-guide.md) potížích s připojením poskytuje tipy pro řešení potíží s připojením pomocí Azure Event Hubs. Tento článek poskytuje tipy a doporučení pro řešení problémů s ověřováním a autorizací pomocí Azure Event Hubs. 
@@ -20,6 +20,8 @@ Pokud používáte Azure Active Directory (Azure AD) k ověřování a autorizac
 - [Vlastník dat Event Hubs Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) pro úplný přístup k prostředkům Event Hubs.
 - [Odesilatel dat Azure Event Hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) pro přístup pro odesílání.
 - [Příjemce dat Event Hubs Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) pro přístup pro příjem.
+
+Předdefinované role registru schématu najdete v tématu [role registru schématu](schema-registry-overview.md#role-based-access-control).
 
 ### <a name="resource-scopes"></a>Obory prostředků
 - **Skupina příjemců**: v tomto oboru se přiřazení role vztahuje pouze na tuto entitu. V současné době Azure Portal nepodporuje přiřazení role Azure k objektu zabezpečení na této úrovni. 

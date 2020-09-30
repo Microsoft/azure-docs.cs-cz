@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 25f3b1e6a01ba190dffaa8c43534a5e23b7d9b23
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d7938f24e408e72a84003c19e5c294d31f6b65b5
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299108"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565118"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatizované zálohování pro virtuální počítače s SQL Server 2014 (Správce prostředků)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,33 +34,30 @@ Automatizované zálohování automaticky konfiguruje [spravovanou zálohu na Mi
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete používat automatizované zálohování, vezměte v úvahu následující požadavky:
 
+
 **Operační systém**:
 
-- Windows Server 2012
-- Windows Server 2012 R2
-- Windows Server 2016
+- Windows Server 2012 a vyšší 
 
 **SQL Server verze/edice**:
 
 - Standard SQL Server 2014
 - SQL Server 2014 Enterprise
 
-> [!IMPORTANT]
-> Automatizované zálohování funguje s SQL Server 2014. Pokud používáte SQL Server 2016/2017, můžete k zálohování databází použít Automated Backup v2. Další informace najdete v tématu [automatizovaná záloha v2 pro virtuální počítače Azure s SQL Server 2016](automated-backup.md).
+> [!NOTE]
+> Informace o SQL 2016 a vyšších najdete v tématu [automatizovaná záloha pro SQL Server 2016](automated-backup.md).
 
 **Konfigurace databáze**:
 
-- Cílové databáze musí používat úplný model obnovení. Další informace o dopadu plného modelu obnovení na zálohování najdete v [části zálohování v rámci úplného modelu obnovení](https://technet.microsoft.com/library/ms190217.aspx).
-- Cílové databáze musí být ve výchozí instanci SQL Server. Rozšíření agenta SQL Server IaaS nepodporuje pojmenované instance.
-
-> [!NOTE]
-> Automatické zálohování spoléhá na rozšíření agenta SQL Server IaaS. Aktuální Image Galerie virtuálních počítačů v systému SQL toto rozšíření ve výchozím nastavení přidat. Další informace najdete v tématu [SQL Server rozšíření agenta IaaS](sql-server-iaas-agent-extension-automate-management.md).
+- Cílové _uživatelské_ databáze musí používat úplný model obnovení. Systémové databáze nemusejí používat úplný model obnovení. Pokud však požadujete, aby byly zálohy protokolů provedeny pro model nebo MSDB, je nutné použít úplný model obnovení. Další informace o dopadu plného modelu obnovení na zálohování najdete v [části zálohování v rámci úplného modelu obnovení](https://technet.microsoft.com/library/ms190217.aspx). 
+- Virtuální počítač SQL Server byl zaregistrován u poskytovatele prostředků virtuálního počítače SQL v [režimu úplné správy](sql-vm-resource-provider-register.md#upgrade-to-full). 
+-  Automatické zálohování spoléhá na úplné [rozšíření agenta SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md). V takovém případě se automatizované zálohování podporuje jenom v cílových databázích z výchozí instance nebo z jedné pojmenované instance. Pokud neexistuje žádná výchozí instance a více pojmenovaných instancí, rozšíření SQL IaaS selže a automatizované zálohování nebude fungovat. 
 
 ## <a name="settings"></a>Nastavení
 
 Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro automatizované zálohování. Skutečné kroky konfigurace se liší v závislosti na tom, jestli používáte příkazy Azure Portal nebo Azure Windows PowerShellu.
 
-| Nastavení | Rozsah (výchozí) | Popis |
+| Nastavení | Rozsah (výchozí) | Description |
 | --- | --- | --- |
 | **Automatizované zálohování** | Povolit/zakázat (zakázáno) | Povolí nebo zakáže automatizované zálohování pro virtuální počítač Azure se systémem SQL Server 2014 Standard nebo Enterprise. |
 | **Doba uchování** | 1-30 dní (30 dní) | Počet dnů uchování zálohy. |

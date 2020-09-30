@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: da17cd1ea6dac52797162e3ac2d733ad1fd50ea1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ec034ac3cf6f4cbec2d373d9dade45a00f70ddbe
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988180"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566684"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Emulátor Azure Cosmos – poznámky k verzi a informace ke stažení
 
@@ -31,7 +31,7 @@ Tento článek obsahuje poznámky k verzi emulátoru Azure Cosmos se seznamem ak
 Tato verze přidává dvě nové možnosti spuštění emulátoru Cosmos: 
 
 * "/EnablePreview" – povoluje funkce ve verzi Preview pro emulátor. Funkce verze Preview, které jsou stále ve vývoji, a ke kterým lze přistupovat prostřednictvím CI a psaní vzorků.
-* "/EnableAadAuthentication" – umožňuje emulátoru přijímat vlastní tokeny Azure Active Directory jako alternativu k hlavním klíčům Azure Cosmos. Tato funkce je stále ve vývoji; konkrétní přiřazení rolí a další nastavení související s oprávněními se aktuálně nepodporují.
+* "/EnableAadAuthentication" – umožňuje emulátoru přijímat vlastní tokeny Azure Active Directory jako alternativu k primárním klíčům Azure Cosmos. Tato funkce je stále ve vývoji; konkrétní přiřazení rolí a další nastavení související s oprávněními se aktuálně nepodporují.
 
 ### <a name="2112-07-july-2020"></a>2.11.2 (7. července 2020)
 

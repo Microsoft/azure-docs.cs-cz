@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/28/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: a0918c6cebd50231a9664811bb467e04d2d2bfd9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f0f9dfa6e3d6ae02f66ac71f62586953cb21517e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891333"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568348"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Řešení chyb certifikátů
 
@@ -30,7 +30,6 @@ V následující tabulce jsou uvedeny běžné chyby certifikátů a podrobné i
 |---|---|
 | CertificateManagement_UntrustedCertificate | Certifikát s názvem subjektu {0} má Porušený řetěz certifikátů. Před nahráním tohoto certifikátu Nahrajte certifikát podpisového řetězce.|
 | CertificateManagement_DeviceNotRegistered| Vaše zařízení není aktivované. Certifikát podpory můžete nahrát až po aktivaci.|
-| CertificateManagement_EmptySAN | Certifikát s názvem subjektu neobsahuje {0} alternativní název subjektu. Podívejte se na vlastnosti svého certifikátu a přepněte nový certifikát.|
 | CertificateManagement_ExpiredCertificate | Platnost certifikátu s typem {0} vypršela nebo brzy vyprší. Ověřte vypršení platnosti certifikátu a v případě potřeby ho přeneste do nového certifikátu.|
 | CertificateManagement_FormatMismatch | Formát certifikátu není podporován. Ověřte formát certifikátu a v případě potřeby ho přeneste do nového certifikátu.  Očekávalo {0} se, našlo se {1} . |
 | CertificateManagement_GenericError | Nelze provést operaci správy certifikátů. Zkuste tuto operaci zopakovat za pár minut. Pokud potíže potrvají, obraťte se na podpora Microsoftu. |
@@ -42,7 +41,6 @@ V následující tabulce jsou uvedeny běžné chyby certifikátů a podrobné i
 | CertificateManagement_KeySizeNotSufficient | Certifikát s názvem subjektu {0} má nedostatečnou velikost klíče {1} . Minimální velikost klíče je 4096.|
 | CertificateManagement_MissingClientOid | Certifikát s názvem subjektu nemá {0} identifikátor OID ověřování klienta. Ověřte vlastnosti certifikátu a v případě potřeby přepněte do nového certifikátu.|
 | CertificateManagement_MissingDigitalSignatureKeyUsage | Certifikát s názvem subjektu nemá {0} v použití klíče digitální podpis. Ověřte vlastnosti certifikátu a v případě potřeby přepněte do nového certifikátu. |
-| CertificateManagement_MissingEntryInSAN | Certifikát s názvem subjektu neobsahuje {0} položku názvu subjektu v alternativním názvu subjektu. Podívejte se na vlastnosti svého certifikátu a přepněte nový certifikát. |
 | CertificateManagement_MissingKeyCertSignKeyUsage | Certifikát s názvem subjektu nemá {0} při použití klíče podepisování certifikátu. Ověřte vlastnosti certifikátu a v případě potřeby přepněte do nového certifikátu.|
 | CertificateManagement_MissingKeyEnciphermentKeyUsage | Certifikát s názvem subjektu nemá {0} zašifrování klíče v použití klíče. Ověřte vlastnosti certifikátu a v případě potřeby přepněte do nového certifikátu. |
 | CertificateManagement_MissingServerOid | Certifikát s názvem subjektu neobsahuje {0} identifikátor OID ověřování serveru. Ověřte vlastnosti certifikátu a v případě potřeby přepněte do nového certifikátu.|
@@ -55,6 +53,10 @@ V následující tabulce jsou uvedeny běžné chyby certifikátů a podrobné i
 | CertificateManagement_SubjectNamesInvalid | Certifikát s názvem subjektu nemá {0} správný název předmětu nebo alternativní názvy subjektu pro {1} certifikát. Ověřte certifikát, který jste nahráli, a v případě potřeby ho přeneste do nového certifikátu. Měli byste také ověřit, že název DNS bude odpovídat názvům sítě SAN.|
 | CertificateManagement_UnreadableCertificate | Certifikát s typem {0} nelze přečíst. K této chybě dochází, pokud je certifikát nečitelný nebo poškozený. Přepněte do nového certifikátu.|
 | CertificateSubjectNotFound | Certifikát s názvem subjektu se {0} nepovedlo najít. Přepněte do nového certifikátu.|
+| CertificateRotationGenericFailure | Nepovedlo se otočit jeden nebo víc certifikátů. Zkuste to znovu za pár minut. Pokud potíže potrvají, obraťte se na podpora Microsoftu.|
+| CertificateImportFailure | Certifikát s kryptografickým otiskem {0} nebyl naimportován na uzlu {1} . Pokud potíže potrvají, obraťte se na podpora Microsoftu. |
+| CertificateApplyFailure | Certifikát s kryptografickým otiskem se {0} na uzlu nepoužil {1} . Pokud potíže potrvají, obraťte se na podpora Microsoftu.|
+| NodeNotReachable | Nepovedlo se ověřit certifikát na {0} . Prohlédněte si stav hardwaru systému a softwaru.|
 
 ## <a name="next-steps"></a>Další kroky
 

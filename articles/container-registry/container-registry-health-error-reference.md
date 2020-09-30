@@ -1,14 +1,14 @@
 ---
-title: Referenční informace o chybě pro kontroly stavu
+title: Reference k chybě pro kontroly stavu registru
 description: Kódy chyb a možná řešení problémů nalezené spuštěním příkazu AZ ACR check-Health Diagnostic v Azure Container Registry
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978310"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565594"
 ---
 # <a name="health-check-error-reference"></a>Informace o chybě kontroly stavu
 
@@ -90,7 +90,7 @@ Tato chyba znamená, že přihlašovací server registru neodpověděl pomocí p
 
 Tato chyba znamená, že klient nemohl navázat zabezpečené připojení k registru kontejneru. K této chybě obvykle dochází v případě, že používáte nebo používáte proxy server.
 
-*Možná řešení*: Další informace o práci za proxy serverem najdete [tady](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy).
+*Možná řešení*: Další informace o práci za proxy serverem najdete [tady](/cli/azure/use-cli-effectively).
 
 ## <a name="login_server_error"></a>LOGIN_SERVER_ERROR
 

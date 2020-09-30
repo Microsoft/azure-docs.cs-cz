@@ -1,5 +1,5 @@
 ---
-title: Vytvoření synapse fondu SQL pomocí Azure PowerShell
+title: 'Rychlý Start: vytvoření synapse fondu SQL pomocí Azure PowerShell'
 description: Rychle vytvořte synapse fond SQL s pravidlem brány firewall na úrovni serveru pomocí Azure PowerShell.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -11,12 +11,12 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
-ms.openlocfilehash: 098b33491076de5e7e71fed7439cc6090e0183bb
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5408944f16509f83c30b9ee066d6f0a93dab95f0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076789"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567651"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-with-azure-powershell"></a>Rychlý Start: vytvoření synapse fondu SQL pomocí Azure PowerShell
 

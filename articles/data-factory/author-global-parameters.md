@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
 ms.date: 08/31/2020
-ms.openlocfilehash: 96fba5c27115dab65f26be80ce03bef35abcdb92
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a936fbec23a38c5b96c678b38b92eed9346b88bf
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230822"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567532"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globální parametry v Azure Data Factory
 
@@ -25,11 +25,11 @@ Globální parametry jsou konstanty v rámci datové továrny, které mohou být
 
 Globální parametr vytvoříte tak, že přejdete na kartu *globální parametry* v části *Spravovat* . Výběrem **nové** otevřete stranu vytvoření – navigace.
 
-![Vytvoření globálních parametrů](media/author-global-parameters/create-global-parameter-1.png)
+![Snímek obrazovky, který zvýrazní nové tlačítko, které vyberete k vytvoření globálních parametrů.](media/author-global-parameters/create-global-parameter-1.png)
 
 Na straně vedlejší navigace zadejte název, vyberte datový typ a zadejte hodnotu parametru.
 
-![Vytvoření globálních parametrů](media/author-global-parameters/create-global-parameter-2.png)
+![Snímek obrazovky, který ukazuje, kde můžete přidat název, datový typ a hodnotu nového globálního parametru.](media/author-global-parameters/create-global-parameter-2.png)
 
 Po vytvoření globálního parametru ho můžete upravit kliknutím na název parametru. Chcete-li změnit více parametrů najednou, vyberte možnost **Upravit vše**.
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: fa3d044bbbce2a8c85f01517b918ffc57c10c759
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0792a885006cf3050002c0e275eff2850afb81c7
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316201"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566801"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Správa prostředků rozhraní SQL API Azure Cosmos DB pomocí PowerShellu
 
@@ -109,7 +109,7 @@ Tento příkaz umožňuje aktualizovat vlastnosti účtu databáze Azure Cosmos 
 * Mění se výchozí zásada konzistence.
 * Změna filtru rozsahu IP adres
 * Změna konfigurace Virtual Network
-* Povolení více hlavních serverů
+* Povolení zápisů ve více oblastech
 
 > [!NOTE]
 > Nemůžete současně přidat ani odebrat oblasti ( `locations` ) a změnit další vlastnosti pro účet Azure Cosmos. Úprava oblastí se musí provádět jako samostatná operace z jakékoli jiné změny účtu.
@@ -166,7 +166,7 @@ Update-AzCosmosDBAccountRegion `
 Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 ```
-### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-master"></a> Povolení více oblastí zápisu pro účet Azure Cosmos
+### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-region-writes"></a> Povolení více oblastí zápisu pro účet Azure Cosmos
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -175,13 +175,13 @@ $enableAutomaticFailover = $false
 $enableMultiMaster = $true
 
 # First disable automatic failover - cannot have both automatic
-# failover and multi-master on an account
+# failover and multi-region writes on an account
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
     -EnableAutomaticFailover:$enableAutomaticFailover
 
-# Now enable multi-master
+# Now enable multi-region writes
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
@@ -219,7 +219,7 @@ Update-AzCosmosDBAccount `
 
 ### <a name="list-account-keys"></a><a id="list-keys"></a> Výpis klíčů účtu
 
-Když vytvoříte účet Azure Cosmos, vygeneruje služba dva hlavní přístupové klíče, které se dají použít k ověřování při přístupu k účtu Azure Cosmos. Vygenerují se taky klíče jen pro čtení pro ověřování operací jen pro čtení.
+Když vytvoříte účet Azure Cosmos, vygeneruje služba dva primární přístupové klíče, které se dají použít k ověřování při přístupu k účtu Azure Cosmos. Vygenerují se taky klíče jen pro čtení pro ověřování operací jen pro čtení.
 Po poskytnutí dvou přístupových klíčů vám Azure Cosmos DB umožňuje znovu vygenerovat a otočit jeden klíč, a to bez přerušení pro váš účet Azure Cosmos.
 Účty Cosmos DB mají dva klíče pro čtení i zápis (primární a sekundární) a dva klíče jen pro čtení (primární a sekundární).
 
@@ -273,8 +273,8 @@ $accountName = "mycosmosaccount"
 $enableAutomaticFailover = $true
 $enableMultiMaster = $false
 
-# First disable multi-master - cannot have both automatic
-# failover and multi-master on an account
+# First disable multi-region writes - cannot have both automatic
+# failover and multi-region writes on an account
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `

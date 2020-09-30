@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: bf041163c6b2759b3d38e48ee98a0d528ec601db
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 0161c1599402fff25337549819f94b833142ba06
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606911"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567855"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Vysvětlení informací na faktuře za službu Azure Cosmos DB
 
@@ -102,11 +102,11 @@ Pokud zvýšíte zřízenou propustnost pro kontejner nebo sadu kontejnerů v 9:
 
 * Za měsíc 720 hodin, pokud po dobu 300 hodin zřídila 120 propustnost-K RU/s a 420 zbývající hodin zajištěné propustnosti byly 155-K RU/s, bude vaše měsíční vyúčtování obsahovat: 300 x $9.60/Hour + 420 × $12.40/Hour = $2 880 + $5 208 = $8088/měsíc. 
 
-:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Příklad sdílené propustnosti na faktuře":::
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Příklad vyhrazené faktury za propustnost":::
 
-## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Příklady fakturace s geografickou replikací a s více hlavními servery  
+## <a name="billing-examples-with-geo-replication-and-multi-region-writes"></a>Příklady účtování s použitím geografických replikací a zápisů ve více oblastech  
 
-Oblasti Azure kdekoli na světě můžete kdykoli přidat nebo odebrat do svého účtu databáze Azure Cosmos. Propustnost, kterou jste nakonfigurovali pro různé databáze a kontejnery Azure Cosmos, se vyhrazuje v každé oblasti Azure přidružené k vašemu účtu databáze Azure Cosmos. Pokud je součet zřízené propustnosti (RU/s) nakonfigurovaný napříč všemi databázemi a kontejnery v rámci účtu databáze Azure Cosmos (zřízený za hodinu) a počet oblastí Azure přidružených k vašemu databázovému účtu je N, celková zajištěná propustnost pro danou hodinu pro účet databáze Azure Cosmos (a) nakonfigurovaná s jednou oblastí zápisu se rovná T x N RU/s a (b) nakonfigurovaným se všemi oblastmi, které jsou schopné zpracovávat zápisy, se rovná T x (N + 1) RU/s. Zajištěná propustnost (jedna oblast zápisu) náklady $0.008/hod na 100 RU/s a zřízená propustnost s více možnostmi s možností zápisu (s více hlavními konfiguracemi) $0,016/za hodinu za 100 RU/s (viz [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)). Bez ohledu na to, jestli má jedna oblast pro zápis nebo do více oblastí pro zápis, Azure Cosmos DB umožňuje číst data z libovolné oblasti.
+Oblasti Azure kdekoli na světě můžete kdykoli přidat nebo odebrat do svého účtu databáze Azure Cosmos. Propustnost, kterou jste nakonfigurovali pro různé databáze a kontejnery Azure Cosmos, se vyhrazuje v každé oblasti Azure přidružené k vašemu účtu databáze Azure Cosmos. Pokud je součet zřízené propustnosti (RU/s) nakonfigurovaný napříč všemi databázemi a kontejnery v rámci účtu databáze Azure Cosmos (zřízený za hodinu) a počet oblastí Azure přidružených k vašemu databázovému účtu je N, celková zajištěná propustnost pro danou hodinu pro účet databáze Azure Cosmos (a) nakonfigurovaná s jednou oblastí zápisu se rovná T x N RU/s a (b) nakonfigurovaným se všemi oblastmi, které jsou schopné zpracovávat zápisy, se rovná T x (N + 1) RU/s. Zajištěná propustnost (jedna oblast zápisu) cost $0.008/Hour za 100 RU/s a zřízená propustnost s několika oblastmi s možností zápisu (konfigurace zápisů s více oblastmi) náklady $0,016/za hodinu za 100 RU/s (viz [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)). Bez ohledu na to, jestli má jedna oblast pro zápis nebo do více oblastí pro zápis, Azure Cosmos DB umožňuje číst data z libovolné oblasti.
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Příklad fakturace: účet Azure Cosmos s více oblastmi, zápisy v jedné oblasti
 
@@ -136,9 +136,9 @@ Předpokládejme, že máte v Západní USA kontejner Azure Cosmos. Kontejner se
 
 *Také předpokládáme, že každý měsíc 100 GB dat z kontejneru v Západní USA pro replikaci dat do Východní USA, Severní Evropa a Východní Asie. Účtují se za výstup podle sazeb za přenos dat.*
 
-### <a name="billing-example-azure-cosmos-account-with-multi-master-database-level-throughput-including-dedicated-throughput-mode-for-some-containers"></a>Příklad fakturace: účet Azure Cosmos s více hlavními a propustností na úrovni databáze včetně vyhrazeného režimu propustnosti pro některé kontejnery
+### <a name="billing-example-azure-cosmos-account-with-multi-region-writes-database-level-throughput-including-dedicated-throughput-mode-for-some-containers"></a>Příklad fakturace: účet Azure Cosmos s zápisy ve více oblastech, propustnost na úrovni databáze včetně vyhrazeného režimu propustnosti pro některé kontejnery
 
-Pojďme vzít v úvahu následující příklad, kde máme účet Azure Cosmos s více oblastmi, kde jsou všechny oblasti zapisovatelné (multi-Master config). V zájmu jednoduchosti předpokládáme, že velikost úložiště zůstane konstantní a nemění se a vynechá se tady, aby byl příklad jednodušší. Zřízená propustnost v měsíci je rozlišena takto (za 30 dní nebo 720 hodin): 
+Pojďme vzít v úvahu následující příklad, kde máme účet Azure Cosmos s více oblastmi, kde jsou všechny oblasti zapisovatelné (konfigurace více oblastí zápisu). V zájmu jednoduchosti předpokládáme, že velikost úložiště zůstane konstantní a nemění se a vynechá se tady, aby byl příklad jednodušší. Zřízená propustnost v měsíci je rozlišena takto (za 30 dní nebo 720 hodin): 
 
 [0-100 hodin]:  
 
@@ -192,7 +192,7 @@ Pojďme vzít v úvahu následující příklad, kde máme účet Azure Cosmos s
 
 Vizuálně na následujícím obrázku vidíte změny v celkové zřízené propustnosti během 720 hodin v měsíci: 
 
-:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Příklad reálného života":::
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Příklad vyhrazené faktury za propustnost":::
 
 Celková fakturovaná částka bude (za za 30 dní/720 hodin za měsíc) se vypočítává takto:
 
@@ -215,7 +215,7 @@ Celková fakturovaná částka bude (za za 30 dní/720 hodin za měsíc) se vypo
 || |**Celkové měsíční náklady**  | |**$38 688**   |
 
 ## <a name="billing-examples-with-free-tier-accounts"></a>Příklady fakturace s účty bezplatné úrovně
-U Azure Cosmos DB úrovně Free získáte k bezplatnému účtu první 400 RU/s a 5 GB úložiště, které se použije na úrovni účtu. Všechna RU/s a úložiště nad 400 RU/s a 5 GB se budou účtovat podle běžných sazeb za ceny na stránce s cenami. Na faktuře se vám nezobrazí poplatky za bezplatné 400 ru/s a 5 GB, a to nad rámec toho, co je zahrnuto do úrovně Free/s a úložiště. 400 RU/s se vztahuje na jakýkoliv typ propustnosti RU/s zřízených v rámci zajištění propustnosti, automatického škálování a více hlavních serverů.  
+U Azure Cosmos DB úrovně Free získáte k bezplatnému účtu první 400 RU/s a 5 GB úložiště, které se použije na úrovni účtu. Všechna RU/s a úložiště nad 400 RU/s a 5 GB se budou účtovat podle běžných sazeb za ceny na stránce s cenami. Na faktuře se vám nezobrazí poplatky za bezplatné 400 ru/s a 5 GB, a to nad rámec toho, co je zahrnuto do úrovně Free/s a úložiště. 400 RU/s se vztahuje na jakýkoliv typ pro zápisy v rámci RU/s zřízené propustnost, automatické škálování a více oblastí.  
 
 ### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>Příklad fakturace – kontejner nebo databáze s zřízenou propustností
 - Řekněme, že vytvoříme databázi nebo kontejner v účtu bezplatné úrovně s 400 RU/s a 5 GB úložiště.
@@ -231,16 +231,16 @@ U Azure Cosmos DB úrovně Free získáte k bezplatnému účtu první 400 RU/s 
 - Jakékoli úložiště nad rámec prvních 5 GB se bude účtovat za běžné sazby za úložiště. 
 
 ### <a name="billing-example---multi-region-single-write-region-account"></a>Příklad fakturace – účet s jednou oblastí zápisu s jednou oblastí
-- Řekněme, že v účtu bezplatné úrovně se vytvoří databáze nebo kontejner s 1200 RU/s a 10 GB úložiště. Replikuje účet do 3 oblastí a máme účet s jednou hlavní (oblast zápisu).
+- Řekněme, že v účtu bezplatné úrovně se vytvoří databáze nebo kontejner s 1200 RU/s a 10 GB úložiště. Replikuje účet na 3 oblasti a máme jeden účet pro zápis do regionu.
 - V celkovém případě bez bezplatné úrovně se vám účtuje 3 × 1200 RU/s = 3600 RU/s a 3 * 10 GB = 30 GB úložiště.
 - Po odebrání 400 RU/s a 5 GB úložiště se vám bude účtovat efektivní 3200 RU/s (32 jednotek) zřízené propustnosti v rámci jedné oblasti zápisu a 25 GB úložiště.
 - Měsíční náklady na RU/s by byly: 32 jednotek × $0,008 × 24 hodin × 31 dnů = $190,46. Měsíční náklady na úložiště by byly: 25 GB × 0,25/GB = $6,25. Celkové náklady by byly $190,46 + $6,25 = $196,71.
 - Poznámka: Pokud se Jednotková cena pro RU/s nebo úložiště liší v oblastech, úroveň Free 400 RU/s a 5 GB bude odpovídat sazbám oblasti, ve které byl účet vytvořen.
 
-### <a name="billing-example---multi-region-multi-master-multiple-write-region-account"></a>Příklad fakturace – účet pro více oblastí a vícenásobný hlavní (více oblastí zápisu)
+### <a name="billing-example---multi-region-account-with-multiple-write-regions"></a>Příklad fakturace – více oblastí, účet s více oblastmi zápisu
 
-Tento příklad odráží [víceúrovňové hlavní ceny](https://azure.microsoft.com/pricing/details/cosmos-db/) pro účty vytvořené po 1. prosinci 2019. 
-- Řekněme, že v účtu bezplatné úrovně se vytvoří databáze nebo kontejner s 1200 RU/s a 10 GB úložiště. Replikuje účet do 3 oblastí a máme účet s více hlavními (více oblastmi zápisu). 
+Tento příklad odráží [ceny pro zápisy ve více oblastech](https://azure.microsoft.com/pricing/details/cosmos-db/) pro účty vytvořené od 1. prosince 2019. 
+- Řekněme, že v účtu bezplatné úrovně se vytvoří databáze nebo kontejner s 1200 RU/s a 10 GB úložiště. Replikuje účet do 3 oblastí a máme k dispozici více oblastí pro zápis. 
 - V celkovém případě bez bezplatné úrovně se vám účtuje 3 × 1200 RU/s = 3600 RU/s a 3 * 10 GB = 30 GB úložiště.
 - Po odebrání 400 RU/s a 5 GB úložiště se vám bude účtovat efektivní 3200 RU/s (32 jednotek) zřízené propustnosti v rámci více oblastí zápisu a 25 GB úložiště.
 - Měsíční náklady na RU/s by byly: 32 jednotek × $0,016 × 24 hodin × 31 dnů = $380,93. Měsíční náklady na úložiště by byly: 25 GB × 0,25/GB = $6,25. Celkové náklady by byly $380,93 + $6,25 = $387,18.

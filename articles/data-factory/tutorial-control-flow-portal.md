@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: b491c63e141389f1a53a884623f1c054ff2b8b41
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b1b766e3cb337151c5ca9b35e2040a2a47124151
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276854"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568532"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Větvení a řetězení aktivit v Azure Data Factoryovém kanálu pomocí Azure Portal
 
@@ -184,7 +184,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
    ![Přetažení aktivity kopírování](./media/tutorial-control-flow-portal/drag-drop-copy-activity.png)
 5. V okně **Vlastnosti** aktivity **Kopírování** přepněte v dolní části na kartu **Zdroj** a klikněte na **+ Nový**. V tomto kroku vytvoříte zdrojovou datovou sadu pro aktivitu kopírování.
 
-   ![Zdrojová datová sada](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
+   ![Snímek obrazovky, který ukazuje, jak vytvořit zdrojovou datovou sadu pro aktivitu kopírování.](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
 6. V okně **Nová datová sada** vyberte **Azure Blob Storage** a klikněte na **Dokončit**.
 
    ![Výběr služby Azure Blob Storage](./media/tutorial-control-flow-portal/select-azure-blob-storage.png)
@@ -273,7 +273,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
         ![Nastavení druhé aktivity webu](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
 22. V návrháři kanálu vyberte aktivitu **Kopírování**, klikněte na tlačítko **+->** a vyberte **Chyba**.  
 
-    ![Nastavení druhé aktivity webu](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
+    ![Snímek obrazovky, který ukazuje, jak vybrat chybu v aktivitě kopírování v Návrháři kanálu.](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. Přetáhněte **červené** tlačítko vedle aktivity kopírování na druhou aktivitu webu **SendFailureEmailActivity**. Aktivity můžete přesunout tak, aby kanál vypadal podobně jako na následujícím obrázku:
 
     ![Úplný kanál se všemi aktivitami](./media/tutorial-control-flow-portal/full-pipeline.png)
@@ -304,7 +304,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
     ![Úspěšné spuštění kanálu](./media/tutorial-control-flow-portal/monitor-success-pipeline-run.png)
 2. Pokud chcete **zobrazit spuštění aktivit** související se spuštěním kanálu, klikněte na první odkaz ve sloupci **Akce**. Zpět na předchozí zobrazení můžete přepnout kliknutím na **Kanály** v horní části. Pomocí tlačítka **Aktualizovat** seznam aktualizujte.
 
-    ![Spuštění aktivit](./media/tutorial-control-flow-portal/activity-runs-success.png)
+    ![Snímek obrazovky, který ukazuje, jak zobrazit seznam spuštění aktivit](./media/tutorial-control-flow-portal/activity-runs-success.png)
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>Aktivace spuštění kanálu, které selže
 1. Vlevo přepněte na kartu **Upravit**.
