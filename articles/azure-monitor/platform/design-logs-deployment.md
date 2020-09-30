@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: a4186909db3d784938ada4baaaf08aba02b31d30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317119"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534195"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení protokolů služby Azure Monitor
 
@@ -26,6 +26,8 @@ Pracovní prostor Log Analytics poskytuje:
 * Geografické umístění pro ukládání dat.
 * Izolace dat udělením přístupových práv k různým uživatelům podle jedné z našich doporučených strategií návrhu.
 * Obor pro konfiguraci nastavení, jako je [cenová úroveň](./manage-cost-storage.md#changing-pricing-tier), [uchování](./manage-cost-storage.md#change-the-data-retention-period)a [capping dat](./manage-cost-storage.md#manage-your-maximum-daily-data-volume)
+
+Pracovní prostory jsou hostovány na fyzických clusterech. Ve výchozím nastavení systém vytváří a spravuje tyto clustery. Pro zákazníky, kteří ingestují víc než 4 TB/den, se očekává, že si pro své pracovní prostory vytvoří vlastní vyhrazená clustery – umožní jim lepší řízení a vyšší rychlost přijímání.
 
 Tento článek poskytuje podrobný přehled týkající se návrhu a migrace, přehled řízení přístupu a porozumění implementací návrhu, které doporučujeme pro vaši organizaci IT.
 
@@ -125,37 +127,16 @@ Režimy přístupu jsou shrnuté v následující tabulce:
 
 Informace o tom, jak změnit režim řízení přístupu na portálu, pomocí PowerShellu nebo pomocí šablony Správce prostředků, najdete v tématu [Konfigurace režimu řízení přístupu](manage-access.md#configure-access-control-mode).
 
-## <a name="ingestion-volume-rate-limit"></a>Omezení přenosové rychlosti pro přijímání
+## <a name="scale-and-ingestion-volume-rate-limit"></a>Omezení rychlosti škálování a ingestování
 
-Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. Limit přenosové rychlosti je v úmyslu izolovat Azure Monitor zákazníky od náhlých špičky příjmu v prostředí s více architekturami. Výchozí prahová hodnota frekvence pro ingestování 500 MB (komprimovaná) je definovaná v pracovních prostorech. Tato hodnota se přeloží na přibližně **6 GB/min** nekomprimovaná – skutečná velikost se může mezi datovými typy lišit v závislosti na délce protokolu a jeho kompresním poměru. Limit přenosové rychlosti se vztahuje na všechna přijatá data, ať už jsou odesílána z prostředků Azure pomocí [nastavení diagnostiky](diagnostic-settings.md), [rozhraní API kolekce dat](data-collector-api.md) nebo agentů.
+Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří posílají petabajty data každý měsíc rostoucím tempem. Pracovní prostory nejsou v prostoru úložiště omezené a můžou se rozšířit na petabajty dat. Z důvodu škálování není nutné rozdělit pracovní prostory.
 
-Když do pracovního prostoru odešlete data rychlostí vyšší než 80% prahové hodnoty nakonfigurované ve vašem pracovním prostoru, do tabulky *operace* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Když je rychlost příjmu dat vyšší než prahová hodnota, některá data se zahozena a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud vaše rychlost ingestování stále překročí prahovou hodnotu nebo jste se k nim neočekávali, můžete požádat o jejich zvýšení otevřením žádosti o podporu. 
+Pokud chcete chránit a izolovat Azure Monitor zákazníky a jeho infrastrukturu back-endu, je k dispozici výchozí limit pro přijímání zpráv, který je určený k ochraně před špičkami a zahlcením. Výchozí hodnota omezení četnosti je **6 GB/min** a je navržena tak, aby umožňovala normální přijímání. Další podrobnosti o měřeních velikosti svazků pro přijímání najdete v tématu [omezení služby Azure monitor](../service-limits.md#data-ingestion-volume-rate).
 
-Pokud chcete být ve svém pracovním prostoru upozorněni na přístup nebo dosažení limitu přenosové rychlosti pro přijímání, vytvořte [pravidlo upozornění protokolu](alerts-log.md) pomocí následujícího dotazu se základní logikou výstrahy na základě počtu výsledků, který je větší než nula, zkušební období 5 minut a frekvence 5 minut.
+Zákazníci, kteří ingestují méně než 4 TB za den, obvykle tyto limity nebudou splňovat. Zákazníci, kteří ingestují větší objemy nebo mají špičky v rámci svých běžných operací, zvažte přechod na [vyhrazené clustery](../log-query/logs-dedicated-clusters.md) , u kterých by bylo možné vystavit omezení rychlosti příjmu.
 
-Míra zpracování příjmu překročila prahovou hodnotu.
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Error"
-```
+Když je povolený limit přenosové rychlosti příjmu nebo získá 80% prahové hodnoty, přidá se do tabulky *Operations* v pracovním prostoru událost. Doporučuje se ho monitorovat a vytvořit výstrahu. Další podrobnosti najdete v tématu [frekvence zpracování objemu dat](../service-limits.md#data-ingestion-volume-rate).
 
-Frekvence zpracování příjmu překročila 80% prahové hodnoty.
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Warning"
-```
-
-Frekvence zpracování příjmu překročila 70% prahové hodnoty.
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Info"
-```
 
 ## <a name="recommendations"></a>Doporučení
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ade326b7dda19478398de4ec3ab2be8996d98535
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 7f0e994cd41fc55824cf347a51ccfed25589a310
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923207"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539533"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Upgrade na Azure Search .NET SDK verze 5
 
@@ -35,7 +35,7 @@ Verze 5 sady Azure Search .NET SDK obsahuje některé změny z dřívějších v
 Verze 5 rozhraní Azure Search .NET SDK cílí na nejnovější všeobecně dostupnou verzi Azure Search REST API, konkrétně 2017-11-11. Díky tomu je možné využít nové funkce Azure Search z aplikace .NET, včetně následujících:
 
 * [Synonyma](search-synonyms.md).
-* Nyní můžete programově přistupovat k upozorněním v historii spouštění indexeru (Další informace najdete v tématu `Warning` vlastnost `IndexerExecutionResult` v [odkazu na rozhraní .NET](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) ).
+* Nyní můžete programově přistupovat k upozorněním v historii spouštění indexeru (Další informace najdete v tématu `Warning` vlastnost `IndexerExecutionResult` v [odkazu na rozhraní .NET](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult) ).
 * Podpora pro .NET Core 2
 * Nová struktura balíčku podporuje jenom ty součásti sady SDK, které potřebujete (podrobnosti najdete v tématu zásadní [změny ve verzi 5](#ListOfChanges) ).
 

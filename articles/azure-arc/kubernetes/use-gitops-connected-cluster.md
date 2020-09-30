@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Použití GitOps pro konfiguraci clusteru s podporou ARC Azure (Preview)
 keywords: GitOps, Kubernetes, K8s, Azure, ARC, Azure Kubernetes Service, Containers
-ms.openlocfilehash: e25fdf3a51b3e9264c85707df31d3a4d107b25ea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 142c131f0382eb887d51185db920511ccf4eb735
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049972"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541624"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s povoleným ARC (Preview)
 
@@ -29,11 +29,13 @@ Stejný vzor lze použít ke správě větší kolekce clusterů, které mohou b
 
 Tato úvodní příručka vás provede použitím sady konfigurací s oborem Správce clusteru.
 
+## <a name="before-you-begin"></a>Než začnete
+
+V tomto článku se předpokládá, že máte existující cluster Kubernetes s povoleným připojením k Arc Azure. Pokud potřebujete připojený cluster, přečtěte si [rychlý Start pro připojení clusteru](./connect-cluster.md).
+
 ## <a name="create-a-configuration"></a>Vytvořit konfiguraci
 
-- Příklad úložiště:<https://github.com/Azure/arc-k8s-demo>
-
-Ukázkové úložiště je členěné kolem uživatele operátora clusteru, který by chtěl zřídit několik oborů názvů, nasadit společnou úlohu a poskytnout konfiguraci specifickou pro tým. Pomocí tohoto úložiště se ve vašem clusteru vytvoří následující prostředky:
+[Ukázkové úložiště](https://github.com/Azure/arc-k8s-demo) použité v tomto dokumentu je členěné kolem uživatele operátora clusteru, který by chtěl zřídit několik oborů názvů, nasadit společnou úlohu a poskytnout konfiguraci specifickou pro tým. Pomocí tohoto úložiště se ve vašem clusteru vytvoří následující prostředky:
 
 **Obory názvů:** `cluster-config` , `team-a` , `team-b` 
  **nasazení:** `cluster-config/azure-vote` 
@@ -47,12 +49,7 @@ Pokud přidružíte soukromé úložiště s nástrojem `sourceControlConfigurat
 Pomocí rozšíření Azure CLI pro `k8sconfiguration` , pojďme propojit náš připojený cluster s [ukázkovým úložištěm Git](https://github.com/Azure/arc-k8s-demo). Této konfiguraci přiřadíme název `cluster-config` , dáte pokyn agentovi, aby nasadil operátor do `cluster-config` oboru názvů a udělí operátorovi `cluster-admin` oprávnění.
 
 ```console
-az k8sconfiguration create \
-    --name cluster-config \
-    --cluster-name AzureArcTest1 --resource-group AzureArcTest \
-    --operator-instance-name cluster-config --operator-namespace cluster-config \
-    --repository-url https://github.com/Azure/arc-k8s-demo \
-    --scope cluster --cluster-type connectedClusters
+az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
 ```
 
 **Výkonem**
@@ -102,7 +99,7 @@ Tady jsou podporované scénáře pro parametr hodnota--úložiště-adresa URL.
 | Scénář | Formát | Popis |
 | ------------- | ------------- | ------------- |
 | Soukromé úložiště GitHub – SSH | git@github.com:username/repo | Souboru KeyPair SSH vygenerovaný tokem.  Uživatel musí do účtu GitHubu přidat veřejný klíč jako klíč pro nasazení. |
-| Veřejné úložiště GitHub | `http://github.com/username/repo`nebo git://github.com/username/repo   | Veřejné úložiště Git  |
+| Veřejné úložiště GitHub | `http://github.com/username/repo` nebo git://github.com/username/repo   | Veřejné úložiště Git  |
 
 Tyto scénáře jsou podporovány tokem, ale nikoli sourceControlConfiguration. 
 
@@ -117,15 +114,15 @@ Tyto scénáře jsou podporovány tokem, ale nikoli sourceControlConfiguration.
 
 Chcete-li upravit vytvoření konfigurace, je zde několik dalších parametrů:
 
-`--enable-helm-operator`: *Volitelný* přepínač, který povolí podporu pro nasazení grafu Helm.
+`--enable-helm-operator` : *Volitelný* přepínač, který povolí podporu pro nasazení grafu Helm.
 
-`--helm-operator-chart-values`: *Volitelné* hodnoty grafu pro operátor Helm (Pokud je povoleno).  Například: "--set Helm. verze = V3".
+`--helm-operator-chart-values` : *Volitelné* hodnoty grafu pro operátor Helm (Pokud je povoleno).  Například: "--set Helm. verze = V3".
 
-`--helm-operator-chart-version`: *Volitelná* verze grafu pro operátor Helm (Pokud je povolená). Výchozí: ' 0.6.0 '.
+`--helm-operator-chart-version` : *Volitelná* verze grafu pro operátor Helm (Pokud je povolená). Výchozí: ' 0.6.0 '.
 
-`--operator-namespace`: *Volitelný* název oboru názvů operátoru. Výchozí: výchozí
+`--operator-namespace` : *Volitelný* název oboru názvů operátoru. Výchozí: výchozí
 
-`--operator-params`: *Volitelné* parametry pro operátor. Musí být zadány v jednoduchých uvozovkách. Například ```--operator-params='--git-readonly --git-path=releases' ```.
+`--operator-params` : *Volitelné* parametry pro operátor. Musí být zadány v jednoduchých uvozovkách. Například ```--operator-params='--git-readonly --git-path=releases' ```.
 
 Možnosti podporované v--operator-params
 
@@ -159,7 +156,7 @@ Další informace najdete v [dokumentaci ke službě tokem](https://aka.ms/Fluxc
 Pomocí rozhraní příkazového řádku Azure CLI ověřte, že se `sourceControlConfiguration` úspěšně vytvořil.
 
 ```console
-az k8sconfiguration show --resource-group AzureArcTest --name cluster-config --cluster-name AzureArcTest1 --cluster-type connectedClusters
+az k8sconfiguration show --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
 Všimněte si, že `sourceControlConfiguration` prostředek je aktualizovaný se stavem dodržování předpisů, zprávami a informacemi o ladění.
@@ -193,13 +190,13 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 Při `sourceControlConfiguration` vytvoření se v digestoři stane několik věcí:
 
 1. Azure ARC `config-agent` monitoruje Azure Resource Manager pro nové nebo aktualizované konfigurace ( `Microsoft.KubernetesConfiguration/sourceControlConfiguration` ).
-1. `config-agent`oznámení o nové `Pending` konfiguraci
-1. `config-agent`přečte vlastnosti konfigurace a připraví nasazení spravované instance.`flux`
-    * `config-agent`vytvoří cílový obor názvů.
-    * `config-agent`připraví účet služby Kubernetes s příslušným oprávněním ( `cluster` nebo `namespace` oborem).
-    * `config-agent`nasadí instanci`flux`
-    * `flux`vygeneruje klíč SSH a zaprotokoluje veřejný klíč.
-1. `config-agent`oznamuje stav zpět do`sourceControlConfiguration`
+1. `config-agent` oznámení o nové `Pending` konfiguraci
+1. `config-agent` přečte vlastnosti konfigurace a připraví nasazení spravované instance. `flux`
+    * `config-agent` vytvoří cílový obor názvů.
+    * `config-agent` připraví účet služby Kubernetes s příslušným oprávněním ( `cluster` nebo `namespace` oborem).
+    * `config-agent` nasadí instanci `flux`
+    * `flux` vygeneruje klíč SSH a zaprotokoluje veřejný klíč.
+1. `config-agent` oznamuje stav zpět do `sourceControlConfiguration`
 
 Během procesu zřizování se `sourceControlConfiguration` přesunou mezi několika změnami stavu. Sledujte průběh pomocí `az k8sconfiguration show ...` příkazu výše:
 
@@ -240,7 +237,7 @@ Další informace o tom, jak tyto klíče spravovat, najdete v dokumentaci k Git
 **Pokud používáte úložiště Azure DevOps, přidejte klíč k klíčům SSH.**
 
 1. V části **nastavení uživatele** v pravém horním rohu (vedle obrázku profilu) klikněte na **veřejné klíče SSH** .
-1. Vybrat **+ nový klíč**
+1. Vybrat  **+ nový klíč**
 1. Zadejte název.
 1. Vložte veřejný klíč bez okolních nabídek.
 1. Klikněte na **Přidat** .
@@ -302,7 +299,7 @@ Odstraňte `sourceControlConfiguration` pomocí Azure CLI nebo Azure Portal.  Po
 > Změny v clusteru, které byly výsledkem nasazení ze sledovaného úložiště Git, se při odstranění neodstraní `sourceControlConfiguration` .
 
 ```console
-az k8sconfiguration delete --name '<config name>' -g '<resource group name>' --cluster-name '<cluster name>' --cluster-type connectedClusters
+az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
 **Výkonem**

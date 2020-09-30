@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: e9944e95dd452cd00e63280ad8002141591f521e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 94763cee852893057348f8eea1fa74fa742f62a1
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971433"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534722"
 ---
 # <a name="accessing-secure-resources-via-private-endpoints"></a>Přístup k zabezpečeným prostředkům prostřednictvím privátních koncových bodů
 
@@ -45,7 +45,7 @@ Seznam prostředků Azure, pro které se podporují odchozí připojení privát
 Pro účely tohoto průvodce se k předvedení REST API volání používají kombinace [ARMClient](https://github.com/projectkudu/ARMClient) a [post](https://www.postman.com/) .
 
 > [!NOTE]
-> V této příručce se předpokládá, že název vyhledávací služby je __Contoso-Search__ , který existuje ve skupině prostředků __Contoso__ předplatného s id předplatného __00000000-0000-0000-0000-000000000000__. ID prostředku této vyhledávací služby bude `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
+> V této příručce se předpokládá, že název vyhledávací služby je __Contoso-Search__ , který existuje ve skupině prostředků __Contoso__ PŘEDplatného s ID předplatného __00000000-0000-0000-0000-000000000000__. ID prostředku této vyhledávací služby bude `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
 
 Ve zbývající části tohoto průvodce se dozvíte, jak se dá nakonfigurovat služba __společnosti Contoso-Search__ , aby její indexovací indexer mohl získat přístup k datům z zabezpečeného účtu úložiště. `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage`
 

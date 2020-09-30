@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 51d6920d9ab52b907f2cb51e29d85f82dc74d45b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 842d43c82875a1a8e5e45ba14f47ceb6eac26727
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250228"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538802"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Příklad: Přidání synonym pro Azure Kognitivní hledání v jazyce C #
 
@@ -23,8 +23,8 @@ Synonyma rozšiřují dotazy hledáním shody s termíny, které jsou považovan
 V Azure Kognitivní hledání jsou synonyma definována v *mapě synonym*prostřednictvím *pravidel mapování* , která přidružuje ekvivalentní podmínky. Tento příklad popisuje základní kroky pro přidání a používání synonym s existujícím indexem. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvořte mapu synonym pomocí třídy  [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) . 
-> * Nastavte vlastnost [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) pro pole, která by měla podporovat rozbalování dotazů prostřednictvím synonym.
+> * Vytvořte mapu synonym pomocí třídy  [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap) . 
+> * Nastavte vlastnost [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps) pro pole, která by měla podporovat rozbalování dotazů prostřednictvím synonym.
 
 Můžete zadat dotaz na pole s povoleným synonymem, stejně jako normálně. Pro přístup k synonymům není nutná žádná další syntaxe dotazů.
 
@@ -33,7 +33,7 @@ Můžete vytvořit několik map synonym, zveřejnit je jako prostředky na úrov
 > [!NOTE]
 > Synonyma lze vytvořit programově, ale ne na portálu. Pokud byste uvítali podporu synonym na portálu Azure Portal, sdělte nám svůj názor na webu [UserVoice](https://feedback.azure.com/forums/263029-azure-search)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Požadavky kurzu zahrnují tyto položky:
 

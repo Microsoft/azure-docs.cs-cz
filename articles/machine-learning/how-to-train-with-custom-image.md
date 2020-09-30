@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sagopal
 author: saachigopal
-ms.date: 08/11/2020
+ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d90b56366cb22e80162983c982e861de608e4e9e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8239d037d6bd68638998cbb36c47c7dac4bce30d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893120"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537612"
 ---
 # <a name="train-a-model-using-a-custom-docker-image"></a>Výuka modelu pomocí vlastní image Docker
 
@@ -25,11 +25,11 @@ Ukázkové skripty v tomto článku se používají ke klasifikaci PET imagí vy
 
 I když Azure Machine Learning poskytuje výchozí základní image Docker, můžete k určení konkrétní základní image použít taky Azure Machine Learning prostředí, jako je například jedna ze sady udržovaných [základních imagí Azure ml](https://github.com/Azure/AzureML-Containers) nebo vlastní [Image](how-to-deploy-custom-docker-image.md#create-a-custom-base-image). Vlastní základní image umožňují pečlivě spravovat závislosti a při provádění školicích úloh udržovat užší kontrolu nad verzemi komponent. 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 Spusťte tento kód v jednom z těchto prostředí:
 * Azure Machine Learning výpočetní instance – nepotřebujete žádné soubory ke stažení nebo instalaci
     * Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.
-    * V úložišti s [příklady](https://github.com/Azure/azureml-examples)Azure Machine Learning Najděte dokončený Poznámkový blok tak, že přejdete do tohoto adresáře: **poznámkové bloky > fastai > vlak-domácích-resnet34. ipynb** 
+    * V [úložišti příkladů](https://github.com/Azure/azureml-examples)Azure Machine Learning Najděte dokončený Poznámkový blok tak, že přejdete do tohoto adresáře: **How-to-use-AzureML > ml-Frameworks > fastai > vlak-with-Custom-Docker** 
 
 * Váš vlastní server Jupyter Notebook
     * Vytvořte [konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
@@ -63,7 +63,7 @@ fastai_env = Environment("fastai2")
 fastai_env.docker.enabled = True
 ```
 
-Tato určená základní image podporuje knihovnu fast.ai, která umožňuje distribuované možnosti hloubkového učení. Další informace najdete v tématu [Fast.AI dockerhubu](https://hub.docker.com/u/fastdotai). 
+Zadaný základní obrázek níže podporuje knihovnu fast.ai, která umožňuje distribuované funkce hloubkového učení. Další informace najdete v tématu [Fast.AI dockerhubu](https://hub.docker.com/u/fastdotai). 
 
 Pokud používáte vlastní image Docker, možná jste už prostředí Python nastavili správně. V takovém případě nastavte `user_managed_dependencies` příznak na hodnotu true, aby bylo možné využít vestavěné prostředí Python vlastní image. Ve výchozím nastavení vytvoří Azure ML prostředí conda se závislostmi, které jste zadali, a spustí běh v tomto prostředí namísto použití jakýchkoli knihoven Pythonu, které jste nainstalovali na základní image.
 
@@ -98,6 +98,8 @@ fastai_env.docker.base_dockerfile = dockerfile
 fastai_env.docker.base_image = None
 fastai_env.docker.base_dockerfile = "./Dockerfile"
 ```
+
+Další informace o vytváření a správě prostředí Azure ML najdete v tématu věnovaném [vytváření & používání softwarových prostředí](how-to-use-environments.md). 
 
 ### <a name="create-or-attach-existing-amlcompute"></a>Vytvořit nebo připojit existující AmlCompute
 Budete muset vytvořit [výpočetní cíl](concept-azure-machine-learning-architecture.md#compute-targets) pro školení modelu. V tomto kurzu vytvoříte AmlCompute jako výpočetní prostředek pro školení.
@@ -136,9 +138,10 @@ Tento ScriptRunConfig nakonfiguruje vaši úlohu na provedení na požadovaném 
 ```python
 from azureml.core import ScriptRunConfig
 
-fastai_config = ScriptRunConfig(source_directory='fastai-example', script='train.py')
-fastai_config.run_config.environment = fastai_env
-fastai_config.run_config.target = compute_target
+src = ScriptRunConfig(source_directory='fastai-example',
+                      script='train.py',
+                      compute_target=compute_target,
+                      environment=fastai_env)
 ```
 
 ### <a name="submit-your-run"></a>Odeslat běh
@@ -147,14 +150,12 @@ Při odeslání školicího běhu pomocí objektu ScriptRunConfig vrátí metoda
 ```python
 from azureml.core import Experiment
 
-run = Experiment(ws,'fastai-custom-image').submit(fastai_config)
+run = Experiment(ws,'fastai-custom-image').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
 > Azure Machine Learning spouští školicí skripty zkopírováním celého zdrojového adresáře. Pokud máte citlivá data, která nechcete nahrávat, použijte [soubor. Ignore](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) nebo ho nezahrnujte do zdrojového adresáře. Místo toho přístup k datům pomocí [úložiště](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)dat.
-
-Další informace o přizpůsobení prostředí Pythonu najdete v tématu věnovaném [vytváření & používání softwarových prostředí](how-to-use-environments.md). 
 
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste proškolei model s použitím vlastní image Docker. Další informace o Azure Machine Learning najdete v těchto článcích.

@@ -8,16 +8,16 @@ author: mlearned
 ms.author: mlearned
 description: Použití GitOps s Helm pro konfiguraci clusteru s podporou ARC Azure (Preview)
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, ARC, AKS, Azure Kubernetes Service, Containers
-ms.openlocfilehash: cca48910b679ff8f72ee06f4ed990bd480fb2200
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: eea81d458ac6631c4a023134b3198e4cdb04526e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723635"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541607"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Nasazení grafů Helm pomocí GitOps v clusteru Kubernetes s povoleným ARC (Preview)
 
-Helm je open source nástroj pro balení, který vám pomůže s instalací a správou životního cyklu aplikací Kubernetes. Podobně jako správci balíčků pro Linux, jako je APT a Yumu, se Helm používá ke správě Kubernetes grafů, což jsou balíčky předkonfigurovaných prostředků Kubernetes.
+Helm je open source nástroj pro balení, který vám pomůže s instalací a správou životního cyklu aplikací Kubernetes. Podobně jako správci balíčků pro Linux, jako je APT a Yumu, se Helm používá ke správě Kubernetes grafů, což jsou balíčky předem nakonfigurovaných prostředků Kubernetes.
 
 V tomto článku se dozvíte, jak nakonfigurovat a používat Helm s povoleným Kubernetes ARC Azure.
 
@@ -25,33 +25,13 @@ V tomto článku se dozvíte, jak nakonfigurovat a používat Helm s povoleným 
 
 V tomto článku se předpokládá, že máte existující cluster Kubernetes s povoleným připojením k Arc Azure. Pokud potřebujete připojený cluster, přečtěte si [rychlý Start pro připojení clusteru](./connect-cluster.md).
 
-Nejdřív nanastavíme proměnné prostředí, které se použijí v celém tomto kurzu. Pro připojený cluster budete potřebovat název skupiny prostředků a název clusteru.
-
-```bash
-export RESOURCE_GROUP=<Resource_Group_Name>
-export CLUSTER_NAME=<ClusterName>
-```
-
-## <a name="verify-your-cluster-is-enabled-with-arc"></a>Ověření, jestli je cluster povolený pomocí ARC
-
-```bash
-az connectedk8s list -g $RESOURCE_GROUP -o table
-```
-
-Výstup:
-```bash
-Name           Location    ResourceGroup
--------------  ----------  ---------------
-arc-helm-demo  eastus      k8s-clusters
-```
-
 ## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>Přehled použití GitOps a Helm s povoleným Kubernetes ARC Azure
 
  Operátor Helm poskytuje rozšíření pro tok, který automatizuje vydávání grafů Helm. Vydaná verze grafu je popsána prostřednictvím vlastního prostředku Kubernetes s názvem HelmRelease. Tok synchronizuje Tyto prostředky z Gitu do clusteru a operátor Helm zajišťuje, aby byly grafy Helm vydávány tak, jak jsou uvedeny v prostředcích.
 
- Níže je uvedená ukázková struktura úložiště Git, kterou budeme používat v tomto kurzu:
+ [Ukázkové úložiště](https://github.com/Azure/arc-helm-demo) použité v tomto dokumentu je strukturované následujícím způsobem:
 
-```bash
+```console
 ├── charts
 │   └── azure-arc-sample
 │       ├── Chart.yaml
@@ -98,15 +78,8 @@ Další informace o HelmRelease najdete v dokumentaci k oficiálnímu [operátor
 
 Pomocí rozšíření Azure CLI pro `k8sconfiguration` , pojďme propojit náš připojený cluster s ukázkovým úložištěm Git. Této konfiguraci přiřadíme název `azure-arc-sample` a nasadíme operátor toku do `arc-k8s-demo` oboru názvů.
 
-```bash
-az k8sconfiguration create --name azure-arc-sample \
-  --resource-group $RESOURCE_GROUP --cluster-name $CLUSTER_NAME \
-  --operator-instance-name flux --operator-namespace arc-k8s-demo \
-  --operator-params='--git-readonly --git-path=releases' \
-  --enable-helm-operator --helm-operator-version='0.6.0' \
-  --helm-operator-params='--set helm.versions=v3' \
-  --repository-url https://github.com/Azure/arc-helm-demo.git  \
-  --scope namespace --cluster-type connectedClusters
+```console
+az k8sconfiguration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='0.6.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
 ```
 
 ### <a name="configuration-parameters"></a>Parametry konfigurace
@@ -118,7 +91,7 @@ Pokud chcete vytvořit konfiguraci, [Přečtěte si informace o dalších parame
 Pomocí Azure CLI ověřte, že se `sourceControlConfiguration` úspěšně vytvořil.
 
 ```console
-az k8sconfiguration show --resource-group $RESOURCE_GROUP --name azure-arc-sample --cluster-name $CLUSTER_NAME --cluster-type connectedClusters
+az k8sconfiguration show --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
 `sourceControlConfiguration`Prostředek se aktualizuje se stavem dodržování předpisů, zprávami a informacemi o ladění.
@@ -158,7 +131,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 Spusťte následující příkaz a přejděte do `localhost:8080` prohlížeče, abyste ověřili, že je aplikace spuštěná.
 
-```bash
+```console
 kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo 8080:8080
 ```
 

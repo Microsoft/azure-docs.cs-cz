@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 919585d557a668e44f229451ab202fb8bcab9079
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 9f4d1e0d43758645d43843417eadf0ce21d43cb7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985139"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533838"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Přiřazení rolí Azure AD v Privileged Identity Management
 
@@ -51,7 +51,7 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění pro roli spr�
 
 1. Vyberte **role** , abyste viděli seznam rolí pro oprávnění Azure AD.
 
-    ![Role Azure AD](./media/pim-how-to-add-role-to-user/roles-list.png)
+    ![Snímek obrazovky se stránkou role se zvolenou akcí přidat přiřazení](./media/pim-how-to-add-role-to-user/roles-list.png)
 
 1. Výběrem **Přidat přiřazení** otevřete stránku **Přidat přiřazení** .
 

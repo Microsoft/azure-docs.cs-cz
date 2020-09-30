@@ -3,21 +3,18 @@ title: Šablona pro vytvoření výstrah Resource Health
 description: Vytvářejte výstrahy programově, které vás upozorní, když vaše prostředky Azure nebudou k dispozici.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 399c37f123d06e251514d0cafc3c1c4918ce3edd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3859bb0ce2497b1c1f547c3750e53745ef6d6f28
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037922"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537425"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurace upozornění na stav prostředků s využitím šablon Resource Manageru
 
 V tomto článku se dozvíte, jak pomocí šablon Azure Resource Manager a Azure PowerShell vytvářet výstrahy protokolu aktivit Resource Health programově.
 
 Azure Resource Health vás informují o aktuálním a historickém stavu vašich prostředků Azure. Výstrahy Azure Resource Health vás můžou zobrazit téměř v reálném čase, když tyto prostředky mají změnu stavu. Vytváření výstrah Resource Health programově umožňuje uživatelům vytvářet a přizpůsobovat hromadnou výstrahu.
-
-> [!NOTE]
-> Výstrahy Resource Health jsou v tuto chvíli ve verzi Preview.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

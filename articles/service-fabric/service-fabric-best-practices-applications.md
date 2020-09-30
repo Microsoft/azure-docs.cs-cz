@@ -1,16 +1,14 @@
 ---
 title: Osvědčené postupy pro návrh aplikací pro Azure Service Fabric
 description: Osvědčené postupy a faktory návrhu pro vývoj aplikací a služeb s využitím Azure Service Fabric.
-author: markfussell
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.author: mfussell
-ms.openlocfilehash: 742cd9b1e7480fcc510b61d8987e42b499a1ff20
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ddf846e9e3ac6add7cf3f584b702de5accfb22af
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261187"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538494"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Osvědčené postupy pro návrh aplikací pro Azure Service Fabric
 
@@ -77,7 +75,7 @@ Service Fabric Reliable Actors umožňuje snadno vytvořit stavové a virtuáln�
 Přidávejte důkladnější informace o přidávání [protokolování aplikací](./service-fabric-diagnostics-event-generation-app.md) při voláních služby. Pomůže vám diagnostikovat scénáře, ve kterých se služby vzájemně volají. Například pokud volání B volá C volá D, volání se může podařit kdekoli. Pokud nemáte dostatečné protokolování, je obtížné diagnostikovat chyby. Pokud jsou služby protokolovány příliš daleko z důvodu počtu volání, nezapomeňte alespoň protokolovat chyby a upozornění.
 
 ## <a name="iot-and-messaging-applications"></a>Aplikace IoT a zasílání zpráv
-Když čtete zprávy z [azure IoT Hub](../iot-hub/index.yml) nebo [Azure Event Hubs](../event-hubs/index.yml), použijte [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor). ServiceFabricProcessor se integruje s Service Fabric Reliable Services, aby zachoval stav čtení z oddílů centra událostí a přenáší nové zprávy do služeb prostřednictvím `IEventProcessor::ProcessEventsAsync()` metody.
+Když čtete zprávy z [azure IoT Hub](../iot-hub/index.yml) nebo [Azure Event Hubs](../event-hubs/index.yml), použijte  [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor). ServiceFabricProcessor se integruje s Service Fabric Reliable Services, aby zachoval stav čtení z oddílů centra událostí a přenáší nové zprávy do služeb prostřednictvím `IEventProcessor::ProcessEventsAsync()` metody.
 
 
 ## <a name="design-guidance-on-azure"></a>Pokyny k návrhu v Azure

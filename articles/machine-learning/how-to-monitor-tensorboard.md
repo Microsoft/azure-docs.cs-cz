@@ -10,12 +10,12 @@ ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: b6d4ac2727e558ed3d4538b6d325b7304d7928f8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2ed8910db8b903dab3b81d9db6c9b5798d2b6b69
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250874"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542049"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Vizualizace běhů experimentů a metrik pomocí TensorBoard a Azure Machine Learning
 
@@ -32,15 +32,15 @@ Způsob spuštění TensorBoard s Azure Machine Learning experimenty závisí na
 > [!TIP]
 > Informace v tomto dokumentu jsou primárně určené pro odborníky přes data a vývojáře, kteří chtějí monitorovat proces školení modelu. Pokud jste správcem a chcete monitorovat využití prostředků a události z Azure Machine Learningu, jako jsou kvóty, dokončené školicí běhy nebo dokončená nasazení modelu, přečtěte si téma [monitorování Azure Machine Learning](monitor-azure-machine-learning.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Chcete-li spustit TensorBoard a zobrazit historie spuštění experimentů, vaše experimenty musí mít dříve povolené protokolování, aby bylo možné sledovat jeho metriky a výkon.  
 * Kód v tomto dokumentu může běžet v jednom z následujících prostředí: 
     * Azure Machine Learning výpočetní instance – nepotřebujete žádné soubory ke stažení nebo instalaci
         * Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.
         * Ve složce Samples na serveru poznámkového bloku najděte dva dokončené a rozšířené poznámkové bloky tak, že přejdete na tyto adresáře:
-            * **How-to-> Training – s hloubkovým učením > export-Run-History to-tensorboard > export-Run-History-to-tensorboard. ipynb**
-            * **Postup použití-AzureML > sledování a monitorování – experimenty > tensorboard. ipynb**
+            * **How-to > Track-and-monitor-Experiments > tensorboard > export-Run-History-to-tensorboard > export-Run-History-to-tensorboard. ipynb**
+            * **How-to-use-AzureML > sledování a monitorování – experimenty > tensorboard > tensorboard > tensorboard. ipynb**
     * Váš vlastní server Juptyer notebook
        * [Nainstalujte sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) s `tensorboard` dalšími
         * [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).  

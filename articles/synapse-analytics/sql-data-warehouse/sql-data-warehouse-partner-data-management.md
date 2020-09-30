@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6214174cbec0b784ec0167c59f952478b2a14625
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 8f2e41779e72d565e24b67fd8b18afd87a112e62
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425652"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542087"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Partneři pro správu dat ve službě Azure synapse Analytics
 
@@ -25,6 +25,7 @@ Tento článek popisuje partnerské společnosti Microsoftu s nástroji pro spr�
 ## <a name="data-management-partners"></a>Partneři pro správu dat
 | Partner | Popis | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
+| ![Aginity](./media/sql-data-warehouse-partner-data-management/aginity-logo.png) |**Aginity**<br>Aginity je nástroj pro vývoj analýz, který přináší celou sílu synapse platformy Microsoftu v rukou analytiků a inženýrů. Bohatá a intuitivní prostředí SQL pro vývoj umožňuje členům týmu připojit se k více než desítkovým špičkovým analytickým platformám, ingestovat data v nejrůznějších formátech a rychle sestavovat složitý výpočet, který poskytuje výsledky do Business Intelligence a Machine Learning případy použití. Celá aplikace je postavená kolem centrálního katalogu, který umožňuje spolupráci napříč týmem analýzy a sofistikované možnosti správy a jemně odstupňované zabezpečení, které Breeze zásad správného řízení. |[Stránka produktu](https://www.aginity.com/databases/microsoft/)<br> |
 | ![Alation](./media/sql-data-warehouse-partner-data-management/alation-logo.png) |**Alation**<br>Alation Data Catalog výrazně zlepšuje produktivitu, zvyšuje přesnost a zaznamená si, že pro analytiky zaznamená rozhodování na základě dat. Alation Data Catalog umožňuje všem uživatelům ve vaší organizaci vyhledávat, rozumět a řídit data. |[Stránka produktu](https://www.alation.com/product/data-catalog/)<br> |
 | ![Datové sklady ve formátu COFF](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Datové sklady ve formátu COFF**<br>Datové sklady ve formátu COFF poskytují Nexus chameleon, což je nástroj s 10 lety návrhu vyhrazeným pro dotazy na systémy. Nexus je k dispozici jako dotazovací Nástroj pro fond Azure synapse SQL. Nexus slouží k dotazování interních a cloudových počítačů a spojování dat napříč různými platformami. Klikněte na položku sestava. |[Stránka produktu](https://www.coffingdw.com/software/nexus/)<br> |
 | ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |**Inbrein MicroERD**<br>Inbrein MicroERD poskytuje nástroje, které potřebujete k vytvoření přesného datového modelu, k omezení redundance dat, zvýšení produktivity a ke sledování standardů. Pomocí svého uživatelského rozhraní, které bylo vyvinuto na základě rozsáhlého uživatelského prostředí, může Modelátor pracovat na modelech databáze snadno a pohodlně. Můžete nepřetržitě využívat nové a vylepšené funkce MicroERD prostřednictvím vylepšení funkcí a aktualizací. |[Stránka produktu](http://microerd.com/)<br> |

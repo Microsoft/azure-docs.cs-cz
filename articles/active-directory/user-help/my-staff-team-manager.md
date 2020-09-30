@@ -13,12 +13,12 @@ ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: d692302df1f5c03a7dce60858b31e0ca66de4c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56ee7df52abf97c920dfe2fa4ba5d1d858975f7d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744543"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537086"
 ---
 # <a name="delegate-user-management-with-my-staff-preview"></a>Delegování správy uživatelů pomocí mých zaměstnanců (Preview)
 
@@ -104,7 +104,7 @@ Pokud je přihlášení pomocí telefonního čísla jako uživatelské jméno (
 
 1. Až budete hotovi, vyberte **OK** .
 
-    ![Odebrání telefonního čísla pro pedagogy v mých zaměstnancích](media/my-staff-team-manager/enableforms2.png)
+    ![Snímek obrazovky, který zobrazuje "Povolit telefonní číslo pro přihlášení?" okno s vybraným tlačítkem OK](media/my-staff-team-manager/enableforms2.png)
 
 ### <a name="remove-a-phone-number"></a>Odebrat telefonní číslo
 

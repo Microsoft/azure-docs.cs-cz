@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: d3b65558a12fb6b20f449f5386c0ce7e598433b6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 47aff04dfd44ea7fd892fdee763e93d7fd13a9d1
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110296"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542389"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Volba pravého serveru MariaDB v Azure
 
@@ -37,11 +37,11 @@ Hlavní rozdíly mezi těmito možnostmi jsou uvedené v následující tabulce:
 | Opravy operačního systému        | Automaticky  | Spravováno zákazníky |
 | MariaDB opravy     | Automaticky  | Spravováno zákazníky |
 | Vysoká dostupnost | Model vysoké dostupnosti (HA) vychází z vestavěných mechanismů převzetí služeb při selhání pro případ, že dojde k přerušení na úrovni uzlu. V takových případech služba automaticky vytvoří novou instanci a připojí úložiště k této instanci. | Uživatelé architekti, implementujte, otestujete a Udržujte vysokou dostupnost. K funkcím může patřit Clustering s podporou převzetí služeb při selhání, trvalá replikace skupin, přesouvání protokolů nebo transakční replikace.|
-| Redundance zóny | Aktuálně není podporováno | Virtuální počítače Azure je možné nastavit tak, aby běžely v různých zónách dostupnosti. Pro místní řešení musí zákazníci vytvořit, spravovat a spravovat svoje vlastní sekundární datové centrum.|
-| Hybridní scénáře | Pomocí [replikace vstupních dat](https://docs.microsoft.com/azure/MariaDB/concepts-data-in-replication)můžete synchronizovat data z externího serveru MariaDB do služby Azure Database for MariaDB. Externí server může být místní, virtuální počítače nebo databázová služba, jejímž hostitelem jsou jiní poskytovatelé cloudu.<br/><br/> Pomocí funkce [pro čtení repliky](https://docs.microsoft.com/azure/mariadb/concepts-read-replicas) můžete replikovat data z hlavního serveru Azure Database for MariaDB do pěti serverů repliky jen pro čtení. Repliky jsou buď ve stejné oblasti Azure, nebo v různých oblastech. Repliky jen pro čtení se asynchronně aktualizují pomocí technologie replikace binlog.<br/><br/>Replikace čtení mezi oblastmi je aktuálně ve verzi Public Preview.| Spravováno zákazníky
+| Zónová redundance | Aktuálně není podporováno | Virtuální počítače Azure je možné nastavit tak, aby běžely v různých zónách dostupnosti. Pro místní řešení musí zákazníci vytvořit, spravovat a spravovat svoje vlastní sekundární datové centrum.|
+| Hybridní scénáře | Pomocí [replikace vstupních dat](https://docs.microsoft.com/azure/MariaDB/concepts-data-in-replication)můžete synchronizovat data z externího serveru MariaDB do služby Azure Database for MariaDB. Externí server může být místní, virtuální počítače nebo databázová služba, jejímž hostitelem jsou jiní poskytovatelé cloudu.<br/><br/> Pomocí funkce [pro čtení repliky](https://docs.microsoft.com/azure/mariadb/concepts-read-replicas) můžete replikovat data ze zdrojového serveru Azure Database for MariaDB do pěti serverů repliky jen pro čtení. Repliky jsou buď ve stejné oblasti Azure, nebo v různých oblastech. Repliky jen pro čtení se asynchronně aktualizují pomocí technologie replikace binlog.<br/><br/>Replikace čtení mezi oblastmi je aktuálně ve verzi Public Preview.| Spravováno zákazníky
 | Zálohování a obnovení | Automaticky vytvoří [zálohy serveru](https://docs.microsoft.com/azure/MariaDB/concepts-backup#backups) a uloží je v uživatelsky nakonfigurovaném úložišti, které je buď místně redundantní, nebo geograficky redundantní. Služba používá zálohy úplného, rozdílového a transakčního protokolu. | Spravováno zákazníky |
 | Monitorování operací databáze | Nabízí zákazníkům možnost [nastavit výstrahy](https://docs.microsoft.com/azure/MariaDB/concepts-monitoring) pro databázovou operaci a působit při dosažení prahových hodnot. | Spravováno zákazníky |
-| Rozšířená ochrana před internetovými útoky | Poskytuje [rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/azure/MariaDB/howto-database-threat-protection-portal). Tato ochrana detekuje aktivity neobvyklé, které naznačují neobvyklé a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.<br/><br/>Rozšířená ochrana před internetovými útoky je aktuálně ve verzi Public Preview.| Zákazníci musí tuto ochranu sami sestavit.
+| Advanced Threat Protection | Poskytuje [rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/azure/MariaDB/howto-database-threat-protection-portal). Tato ochrana detekuje aktivity neobvyklé, které naznačují neobvyklé a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.<br/><br/>Rozšířená ochrana před internetovými útoky je aktuálně ve verzi Public Preview.| Zákazníci musí tuto ochranu sami sestavit.
 | Zotavení po havárii | Ukládá automatizované zálohy v uživatelsky nakonfigurovaném [místně redundantním nebo geograficky redundantním úložišti](https://docs.microsoft.com/azure/MariaDB/howto-restore-server-portal). Zálohování může také obnovit server k určitému bodu v čase. Doba uchovávání dat je odkudkoli 7 až 35 dní. Obnovení je provedeno pomocí Azure Portal. | Plně spravovaná zákazníky. Mezi odpovědnosti patří mimo jiné plánování, testování, archivace, ukládání a uchovávání dat. Další možností je použití trezoru služby Azure Recovery Services k zálohování virtuálních počítačů a databází Azure na virtuálních počítačích. Tato možnost je ve verzi Preview. |
 | Doporučení k výkonu | Poskytuje zákazníkům doporučení týkající se [výkonu](https://techcommunity.microsoft.com/t5/Azure-Database-for-MariaDB/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110) na základě systémem generovaných souborů protokolu využití. Doporučení umožňují optimalizovat úlohy.<br/><br/>Doporučení pro výkon jsou momentálně ve verzi Public Preview. | Spravováno zákazníky |
 
@@ -49,7 +49,7 @@ Hlavní rozdíly mezi těmito možnostmi jsou uvedené v následující tabulce:
 
 Existuje několik faktorů, které mohou mít vliv na rozhodnutí zvolit PaaS nebo IaaS pro hostování databází MariaDB.
 
-### <a name="cost"></a>Náklady
+### <a name="cost"></a>Cost
 
 Omezené financování je často primárním aspektem, který určuje nejlepší řešení pro hostování databází. To platí bez ohledu na to, jestli se jedná o spuštění s malým hotovostem nebo týmem v zřízené společnosti, která funguje s přísnými rozpočtovými omezeními. Tato část popisuje základy fakturace a licencování v Azure, které se vztahují na Azure Database for MariaDB a MariaDB na virtuálních počítačích Azure.
 

@@ -3,24 +3,22 @@ title: Kontrola uživatele projevy-LUIS
 titleSuffix: Azure Cognitive Services
 description: Podívejte se na projevy zachycené aktivním učením a vyberte entity a označte je pro čtení-World projevy; přijměte změny, školení a publikování.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/07/2020
-ms.author: diberry
-ms.openlocfilehash: 58674bf38ec1efb970fa8e79f7d970ecefb36712
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 9777e4f9b2205d2f6cdf6158b035e2a18403d69f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055609"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541454"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Postup zlepšení aplikace LUIS kontrolou Endpoint projevy
 
-Proces kontroly projevy koncového bodu pro správný předpovědi se nazývá [Active Learning](luis-concept-review-endpoint-utterances.md). Active Learning zachycuje dotazy koncových bodů a vybere koncové body uživatele projevy, že si nejste jistí. Projděte si tyto projevy a vyberte záměr a označte entity pro tyto projevy reálného světa. Přijměte tyto změny do svého ukázkového projevyu a potom proveďte výuku a publikování. LUIS pak identifikuje projevy přesněji.
+Proces kontroly projevy koncového bodu pro správný předpovědi se nazývá [Active Learning](luis-concept-review-endpoint-utterances.md). Active Learning zachycuje dotazy koncových bodů a vybere koncové body uživatele projevy, že si nejste jistí. Projděte si tyto projevy a vyberte záměr a označte entity pro tyto projevy reálného světa. Přijměte tyto změny v ukázkových promluvách, natrénujte je a publikujte je. LUIS pak identifikuje projevy přesněji.
 
 ## <a name="enable-active-learning"></a>Povolit aktivní učení
 
@@ -34,7 +32,7 @@ Pomocí portálu LUIS vytvořte správný dotaz na koncový bod.
 1. Pro přiřazený prostředek předpovědi vyberte **změnit parametry dotazu**.
 
     > [!div class="mx-imgBorder"]
-    > ![Pomocí portálu LUIS můžete ukládat protokoly, které se vyžadují pro aktivní učení.](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
+    > ![Snímek obrazovky se zobrazí odkaz změnit parametry dotazu.](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
 
 1. Kliknutím na tlačítko **Dokončit**zapněte možnost **Uložit protokoly** a pak ji uložte.
 

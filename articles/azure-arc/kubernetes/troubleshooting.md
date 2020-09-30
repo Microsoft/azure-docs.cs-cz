@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Řešení běžných problémů s Kubernetes clustery s podporou ARC.
 keywords: Kubernetes, oblouk, Azure, kontejnery
-ms.openlocfilehash: 404516778255409d56dd5c3a7d1fd96711cc981f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 4a8f4c652f1ab73e0b9979f77d7de5014c8d31a8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723669"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540604"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Řešení potíží s Kubernetesem v Azure ARC (Preview)
 
@@ -100,6 +100,34 @@ Command group 'connectedk8s' is in preview. It may be changed/removed in a futur
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
 ```
+
+### <a name="helm-issue"></a>Problém Helm
+
+Helm verze obsahuje problém s tím, že se při `v3.3.0-rc.1` instalaci nebo upgradu Helm (za použití v rámci rozšíření digestoře CONNECTEDK8S CLI) spustí všechny háky, což vede k následující chybě: [issue](https://github.com/helm/helm/pull/8527)
+
+```console
+$ az connectedk8s connect -n shasbakstest -g shasbakstest
+Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
+Ensure that you have the latest helm version installed before proceeding.
+This operation might take a while...
+
+Please check if the azure-arc namespace was deployed and run 'kubectl get pods -n azure-arc' to check if all the pods are in running state. A possible cause for pods stuck in pending state could be insufficientresources on the kubernetes cluster to onboard to arc.
+ValidationError: Unable to install helm release: Error: customresourcedefinitions.apiextensions.k8s.io "connectedclusters.arc.azure.com" not found
+```
+
+Pokud chcete tento problém obnovit, postupujte takto:
+
+1. Odstraňte prostředek Kubernetes s povolenou podporou Azure ARC ve Azure Portal.
+2. Na svém počítači spusťte následující příkazy:
+    
+    ```console
+    kubectl delete ns azure-arc
+    kubectl delete clusterrolebinding azure-arc-operator
+    kubectl delete secret sh.helm.release.v1.azure-arc.v1
+    ```
+
+3. Místo verze Release Candidate nainstalujte na svém počítači [stabilní verzi](https://helm.sh/docs/intro/install/) Helm 3.
+4. Spuštěním `az connectedk8s connect` příkazu s příslušnými hodnotami připojte cluster ke službě Azure ARC.
 
 ## <a name="configuration-management"></a>Správa konfigurace
 

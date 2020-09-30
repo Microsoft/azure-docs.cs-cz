@@ -3,18 +3,18 @@ title: Nastavení prostředí pro operátor podrobného plánu
 description: Přečtěte si, jak nakonfigurovat prostředí Azure pro použití s integrovanou rolí operátora podrobného plánu Azure.
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: ef911553b4985a6497fb397a1ae405387c6539fb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ae881ac6d0714401f8c80e880b4d288f594b7cf3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051453"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535777"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Konfigurace prostředí pro operátora podrobného plánu
 
 Správa definic podrobných plánů a přiřazení podrobného plánu se dá přiřadit k různým týmům. Je běžné, že architekt nebo tým zásad správného řízení bude zodpovědný za správu životního cyklu vašich definicí podrobného plánu, zatímco provozní tým zodpovídá za správu přiřazení těchto centrálně kontrolovaných definic podrobných plánů.
 
-**Operátor** podrobného plánu řízení přístupu na základě role (RBAC) je navržený speciálně pro použití v tomto typu scénáře. Role umožňuje týmům typu operací spravovat přiřazení definic podrobného plánu, ale ne možnost je upravovat. To vyžaduje určitou konfiguraci v prostředí Azure a tento článek popisuje nezbytné kroky.
+Integrovaná role **operátoru** podrobného plánu je navržená speciálně pro použití v tomto typu scénáře. Role umožňuje týmům typu operací spravovat přiřazení definic podrobného plánu, ale ne možnost je upravovat. To vyžaduje určitou konfiguraci v prostředí Azure a tento článek popisuje nezbytné kroky.
 
 ## <a name="grant-permission-to-the-blueprint-operator"></a>Udělení oprávnění k operátoru podrobného plánu
 

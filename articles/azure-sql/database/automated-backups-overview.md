@@ -7,16 +7,16 @@ ms.service: sql-db-mi
 ms.subservice: backup-restore
 ms.custom: references_regions
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: mathoma, carlrab, danil
+author: shkale-msft
+ms.author: shkale
+ms.reviewer: mathoma, stevestein, danil
 ms.date: 09/25/2020
-ms.openlocfilehash: b28c175656b0951980f861198c93ccd794605839
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 93370050b503875d670283b720088b0871377c09
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444311"
+ms.locfileid: "91535079"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
 
@@ -415,6 +415,9 @@ Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01
 
 Podrobnosti najdete v [sadě set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) .
 
+> [!NOTE]
+> Pokud chcete použít parametr-BackupStorageRedundancy s obnovením databáze, kopírováním databáze nebo vytvořením sekundárních operací, použijte Azure PowerShell verze AZ. SQL 2.11.0. 
+
 
 #### <a name="sql-managed-instance"></a>[Spravovaná instance SQL](#tab/managed-instance)
 
@@ -425,6 +428,8 @@ New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Loc
 ```
 
 Další podrobnosti najdete v [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance).
+
+---
 
 ## <a name="use-azure-policy-to-enforce-backup-storage-redundancy"></a>Použití Azure Policy k vymáhání redundance úložiště zálohování
 
@@ -440,11 +445,13 @@ Přidají se nové předdefinované zásady, které se dají přiřadit na úrov
 
 Úplný seznam předdefinovaných definic zásad pro SQL Database a spravovanou instanci najdete [tady](https://docs.microsoft.com/azure/azure-sql/database/policy-reference).
 
-K vykonání požadavků na uspořádání dat na úrovni organizace je možné tyto zásady přiřadit k předplatnému. Po přiřazení na úrovni předplatného nebudou uživatelé v daném předplatném moct vytvořit databázi nebo spravovanou instanci s geograficky redundantním úložištěm zálohování prostřednictvím Azure Portal nebo Azure PowerShell. Pamatujte na to, že při vytváření databáze prostřednictvím T-SQL se vynutily zásady Azure. 
+K vykonání požadavků na uspořádání dat na úrovni organizace je možné tyto zásady přiřadit k předplatnému. Po přiřazení na úrovni předplatného nebudou uživatelé v daném předplatném moct vytvořit databázi nebo spravovanou instanci s geograficky redundantním úložištěm zálohování prostřednictvím Azure Portal nebo Azure PowerShell. 
+
+> [!IMPORTANT]
+> Při vytváření databáze prostřednictvím T-SQL se neuplatňují zásady Azure. Pokud chcete vyhodnotit zajistění dat při vytváření databáze pomocí T-SQL, [použijte v příkazu CREATE DATABASE možnost Local nebo Zone jako vstup BACKUP_STORAGE_REDUNDANCY parametr](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups).
 
 Naučte se přiřazovat zásady pomocí [Azure Portal](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) nebo [Azure PowerShell](https://docs.microsoft.com/azure/governance/policy/assign-policy-powershell)
 
----
 
 ## <a name="next-steps"></a>Další kroky
 

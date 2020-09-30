@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: d980764b7151183b61657434afa6c472e5058d18
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5bd1a9111528146224561995feaecf54612a1c78
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662271"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535657"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Podobnost a bodování v Azure Kognitivní hledání
 
@@ -107,6 +107,4 @@ Tyto datové body můžete využívat ve [vlastních řešeních bodování](htt
 
 ## <a name="see-also"></a>Viz také
 
- Reference k [profilům vyhodnocování](index-add-scoring-profiles.md) [REST API](/rest/api/searchservice/)   
- [Rozhraní API pro hledání dokumentů](/rest/api/searchservice/search-documents)   
- [Sada Azure Kognitivní hledání .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)
+ [Profily vyhodnocování](index-add-scoring-profiles.md) [REST API odkazech](/rest/api/searchservice/) [hledání dokumentů rozhraní API](/rest/api/searchservice/search-documents) [Azure kognitivní hledání .NET SDK](/dotnet/api/overview/azure/search)

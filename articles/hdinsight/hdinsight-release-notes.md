@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/27/2020
-ms.openlocfilehash: f6527a0c5712d68756310b699d214013e89f38e1
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: feb186fbe216305039fcc0a23a10419c44fd0483
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449585"
+ms.locfileid: "91535606"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
 Tento článek poskytuje informace **o nejnovějších aktualizacích vydaných** verzí Azure HDInsight. Informace o dřívějších verzích najdete v tématu [archiv zpráv k vydání verze HDInsight](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky, kteří se týkají Open Source analýz v Azure.
 
@@ -28,8 +28,8 @@ Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazn�
 Tato verze se týká HDInsight 3,6 i HDInsight 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
 
 ## <a name="new-features"></a>Nové funkce
-### <a name="llap-cluster-auto-scale-general-available"></a>Obecné dostupné automatické škálování clusteru LLAP
-Automatické škálování pro typ clusteru LLAP je teď obecně dostupné (GA). Všechny LLAP clustery vytvořené po 27. srpna 2020 budou mít podporu GA pro automatické škálování.
+### <a name="autoscale-for-interactive-query-with-hdinsight-40-is-now-generally-available"></a>Automatické škálování pro interaktivní dotaz s HDInsight 4,0 je teď všeobecně dostupné.
+Automatické škálování pro typ clusteru interaktivních dotazů je teď všeobecně dostupné (GA) pro HDInsight 4,0. Všechna interaktivní clustery dotazů 4,0 vytvořená po 27. srpna 2020 budou mít podporu GA pro automatické škálování.
 
 ### <a name="hbase-cluster-supports-premium-adls-gen2"></a>Cluster HBA podporuje prémiové ADLS Gen2
 HDInsight teď podporuje Premium ADLS Gen2 jako primární účet úložiště pro clustery HDInsight 3,6 a 4,0. Společně s [akcelerovanými zápisy](./hbase/apache-hbase-accelerated-writes.md)můžete dosáhnout lepšího výkonu clusterů HBA.

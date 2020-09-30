@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: e15ac501a0598ae81a295d5a04074beb33c860f6
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6e41109c65a047990577d1f2c77bdcd5219b6ed3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86085714"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537452"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Přírůstkové načtení dat ze spravované instance Azure SQL do Azure Storage pomocí Change Data Capture (CDC)
 
@@ -124,13 +124,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 5. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 6. Zrušte výběr **Povolit Git**.     
-7. Klikněte na možnost **Vytvořit**.
+7. Klikněte na **Vytvořit**.
 8. Po dokončení nasazení klikněte na **Přejít k prostředku** .
 
-   ![Domovská stránka objektu pro vytváření dat](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
+   ![Snímek obrazovky se zobrazí zpráva, že vaše nasazení je hotové a možnost přejít k prostředku.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
 
-   ![Domovská stránka objektu pro vytváření dat](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
+   ![Snímek obrazovky znázorňující datovou továrnu, kterou jste nasadili.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Azure Data Factory.
 11. Na stránce **Začínáme** přepněte na levém panelu na kartu **Upravit**, jak je znázorněno na následujícím obrázku:
 
@@ -221,7 +221,7 @@ V tomto kroku vytvoříte datovou sadu pro reprezentaci dat, která se kopíruj�
 ## <a name="create-a-pipeline-to-copy-the-changed-data"></a>Vytvoření kanálu ke zkopírování změněných dat
 V tomto kroku vytvoříte kanál, který nejprve kontroluje počet změněných záznamů v tabulce změn pomocí **aktivity vyhledávání**. Aktivita IF podmínky kontroluje, jestli je počet změněných záznamů větší než nula, a spustí **aktivitu kopírování** , která zkopíruje vložená, aktualizovaná nebo Odstraněná data z Azure SQL Database do Azure Blob Storage. Nakonec se aktivuje aktivační událost bubnového okna a časy zahájení a ukončení budou do aktivit předány jako parametry počátečního a koncového okna. 
 
-1. V uživatelském rozhraní Data Factory přepněte na kartu **Upravit** . v levém podokně klikněte na **+ (plus)** a pak klikněte na **kanál**.
+1. V uživatelském rozhraní Data Factory přepněte na kartu **Upravit** . Klikněte na **+ (plus)** v levém podokně a pak klikněte na **kanál**.
 
     ![Nabídka Nový kanál](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-pipeline-menu.png)
 2. Zobrazí se nová karta, na které můžete kanál konfigurovat. Kanál se zobrazí také ve stromovém zobrazení. V okně **Vlastnosti** změňte název kanálu na **IncrementalCopyPipeline**.
@@ -289,10 +289,10 @@ V tomto kroku vytvoříte kanál, který nejprve kontroluje počet změněných 
 
 11. Kliknutím na Náhled Ověřte, že dotaz vrátí správně změněné řádky.
 
-    ![Aktivita jímky – nastavení jímky](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
+    ![Snímek obrazovky zobrazující náhled k ověření dotazu.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
 12. Přepněte na kartu **jímka** a určete Azure Storage datovou sadu pro pole **datové sady jímky** .
 
-    ![Aktivita jímky – nastavení jímky](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
+    ![Snímek obrazovky se zobrazí karta jímka.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
 13. Klikněte zpátky na hlavní plátno kanálu a připojte aktivitu **vyhledávání** k aktivitě **podmínky if** jednu po jedné. Přetáhněte **zelené** tlačítko připojené k aktivitě **vyhledávání** do aktivity **podmínka if** .
 
     ![Propojení aktivit vyhledávání a kopírování](./media/tutorial-incremental-copy-change-data-capture-feature-portal/connect-lookup-if.png)
@@ -322,7 +322,7 @@ V tomto kroku vytvoříte aktivační událost bubnového okna pro spuštění �
     SELECT count(1) changecount FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, ''all'')')
     ```
 
-3. V poli skutečný případ aktivity **podmínky if** přejděte na aktivitu **kopírování** a klikněte na kartu **zdroj** . Zkopírujte do dotazu následující příkaz:
+3. Přejděte do aktivity **kopírování** v poli skutečný případ aktivity **podmínka if** a klikněte na kartu **zdroj** . Zkopírujte následující do dotazu:
     ```sql
     @concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
     SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
@@ -333,7 +333,7 @@ V tomto kroku vytvoříte aktivační událost bubnového okna pro spuštění �
     ```
 4. Klikněte na kartu **jímka** aktivity **kopírování** a kliknutím na tlačítko **otevřít** upravte vlastnosti datové sady. Klikněte na kartu **parametry** a přidejte nový parametr s názvem **triggerStart** .    
 
-    ![Konfigurace datové sady jímky – 3](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
+    ![Snímek obrazovky ukazuje přidání nového parametru na kartu parametry.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
 5. Dále nakonfigurujte vlastnosti datové sady tak, aby ukládaly data ve **vašich zákaznících/přírůstkovém** podadresáři s oddíly na základě data.
    1. Klikněte na kartu **připojení** vlastností datové sady a přidejte dynamický obsah pro **adresář** i pro oddíly **souborů** . 
    2. V části **adresář** zadejte následující výraz kliknutím na odkaz dynamického obsahu pod textovým polem:

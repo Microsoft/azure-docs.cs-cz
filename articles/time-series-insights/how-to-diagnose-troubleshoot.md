@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: d9a4f7aa270aa4ed2b02e61da984e14379a241a9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 106600b608586175cbab1098cf0eb7ac6fad94fa
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289927"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540298"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Diagnostika a řešení potíží s prostředím Azure Time Series Insights Gen2
 
@@ -81,11 +81,11 @@ K tomuto problému dochází, pokud klíč poskytnutý při vytváření zdroje 
 
 Pokud chcete v prostředí Time Series Insights Gen2 aktualizovat nový klíč, otevřete v Azure Portal svůj prostředek centra a zkopírujte nový klíč. Přejděte ke svému prostředku TSI a klikněte na zdroje událostí. 
 
-   [![Aktualizovat klíč](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
+   [![Snímek obrazovky s položkou nabídky zdroje událostí, která se nazývá, se zobrazí jako prostředek.](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
 
 Vyberte zdroje událostí, ze kterých se zastaví přijímání, a vložte je do nového klíče a klikněte na Uložit.
 
-   [![Aktualizovat klíč](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
+   [![Snímek obrazovky ukazuje prostředek T S, u kterého je zadaný klíč zásad rozbočovače v-T.](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Problém: název vlastnosti časového razítka zdroje události nefunguje
 
@@ -129,7 +129,7 @@ K tomuto problému může dojít, pokud vaše prostředí nemá definovánu hier
 
 K tomuto problému může dojít, pokud v Power BI Desktop nepoužíváte nejnovější verzi konektoru Power BI.
 
-[![Nenadřazené instance zobrazí upozornění.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
+[![Snímek obrazovky se zobrazí dialogové okno nelze připojit.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
 
 * Zkontrolujte verzi Power BI Desktop a ujistěte se, že používáte verzi z července 2020. Pokud ne, aktualizujte Power BI Desktop a spusťte konektor znovu. 
 

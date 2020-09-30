@@ -3,12 +3,12 @@ title: Přehled Azure Blueprints
 description: Pochopte, jak služba Azure Modrotiskys umožňuje vytvářet, definovat a nasazovat artefakty v prostředí Azure.
 ms.date: 08/27/2020
 ms.topic: overview
-ms.openlocfilehash: a687bcbaff56fa1229794b6977e3565070c56e2a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 499f2c4afa55913b6af714d20ec1d52e2ecbbc47
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302668"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541760"
 ---
 # <a name="what-is-azure-blueprints"></a>Co je Azure Blueprints?
 
@@ -78,7 +78,7 @@ K existujícímu předplatnému se dá přiřadit každá **publikovaná** **ver
 
 ## <a name="permissions-in-azure-blueprints"></a>Oprávnění v Azure Blueprints
 
-Pokud chcete použít podrobné plány, musíte mít udělená oprávnění prostřednictvím [řízení přístupu na základě role](../../role-based-access-control/overview.md). Chcete-li číst nebo zobrazit podrobný plán v Azure Portal, váš účet musí mít oprávnění ke čtení oboru, ve kterém je umístěna definice podrobného plánu.
+Chcete-li použít plány, musíte mít udělená oprávnění prostřednictvím [řízení přístupu na základě role Azure (RBAC)](../../role-based-access-control/overview.md). Chcete-li číst nebo zobrazit podrobný plán v Azure Portal, váš účet musí mít oprávnění ke čtení oboru, ve kterém je umístěna definice podrobného plánu.
 
 Abyste mohli podrobné plány vytvářet, váš účet potřebuje tato oprávnění:
 
@@ -123,10 +123,10 @@ Pro určitá pole existují následující omezení:
 
 |Objekt|Pole|Povolené znaky|Max. Délka|
 |-|-|-|-|
-|Podrobného plánu|Name|písmena, číslice, spojovníky a tečky|48|
+|Podrobného plánu|Název|písmena, číslice, spojovníky a tečky|48|
 |Podrobného plánu|Verze|písmena, číslice, spojovníky a tečky|20|
-|Přiřazení podrobného plánu|Name|písmena, číslice, spojovníky a tečky|90|
-|Artefakt podrobného plánu|Name|písmena, číslice, spojovníky a tečky|48|
+|Přiřazení podrobného plánu|Název|písmena, číslice, spojovníky a tečky|90|
+|Artefakt podrobného plánu|Název|písmena, číslice, spojovníky a tečky|48|
 
 ## <a name="video-overview"></a>Přehled videí
 

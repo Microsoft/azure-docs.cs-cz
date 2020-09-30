@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: ee23b2bc58f8c1f15a7e51b05dee954c1e584293
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5b96ac9cf43782764e88039d736ba61454d65911
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489618"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539193"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Použití služby Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -32,7 +32,7 @@ Službu Azure API Management lze nasadit v rámci virtuální sítě (VNET), aby
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků popsaných v tomto článku musíte mít:
 
@@ -138,14 +138,14 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Veřejný partnerský vztah Azure      | <ul><li>gcs.prod.monitoring.core.windows.net (**nové**)</li><li>prod.warmpath.msftcloudes.com (**bude zastaralé**)</li><li>global.prod.microsoftmetrics.com (**nové**)</li><li>global.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-black.prod.microsoftmetrics.com (**nové**)</li><li>prod3-black.prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-red.prod.microsoftmetrics.com (**nové**)</li><li>prod3-red.prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>global.prod.microsoftmetrics.com (**nové**)</li><li>global.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
-    | Azure (Čína) 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com (**nové**)</li><li>global.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com (**nové**)</li><li>global.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
 
   >[!IMPORTANT]
   > Změna clusterů výše se zónou DNS **. nsatc.NET** na **. Microsoftmetrics.com** je většinou změnou DNS. IP adresa clusteru se nezmění.
 
 + **Značky regionální služby**: NSG pravidla umožňující odchozí připojení k úložištím, SQL a klíčovým službám Event Hubs můžou používat regionální verze těchto značek odpovídající oblasti, která obsahuje instanci API Management (například Storage. WestUS pro instanci API Management v západní USA oblasti). V nasazeních ve více oblastech by NSG v každé oblasti měl umožňovat provoz do značek služeb pro tuto oblast a primární oblast.
 
-+ **Předávání SMTP**: odchozí připojení k síti pro přenos SMTP, které se řeší v rámci hostitele `smtpi-co1.msn.com` ,, `smtpi-ch1.msn.com` `smtpi-db3.msn.com` `smtpi-sin.msn.com` a`ies.global.microsoft.com`
++ **Předávání SMTP**: odchozí připojení k síti pro přenos SMTP, které se řeší v rámci hostitele `smtpi-co1.msn.com` ,, `smtpi-ch1.msn.com` `smtpi-db3.msn.com` `smtpi-sin.msn.com` a `ies.global.microsoft.com`
 
 + **Portál pro vývojáře CAPTCHA**: odchozí připojení k síti pro CAPTCHA portálu pro vývojáře, které se řeší v rámci hostitelů `client.hip.live.com` a `partner.hip.live.com` .
 
@@ -203,7 +203,7 @@ Každá další jednotka API Management škálování vyžaduje dvě další IP 
 
 ## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"> </a> IP adresy řídicí roviny
 
-IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa příchozích požadavků označená s **globálním** umístěním, musí být na seznamu povolená i IP adresa specifická pro **oblast** .
+IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa příchozích požadavků označená s **globálním** umístěním, musí být povolena společně s IP adresou specifickou pro **oblast** .
 
 | **Prostředí Azure**|   **Oblast**|  **IP adresa**|
 |-----------------|-------------------------|---------------|
@@ -218,21 +218,21 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 | Veřejný partnerský vztah Azure| Západní Indie| 40.81.89.24|
 | Veřejný partnerský vztah Azure| East US| 52.224.186.99|
 | Veřejný partnerský vztah Azure| West Europe| 51.145.179.78|
-| Veřejný partnerský vztah Azure| Japonsko – východ| 52.140.238.179|
+| Veřejný partnerský vztah Azure| Japan East| 52.140.238.179|
 | Veřejný partnerský vztah Azure| Francie – střed| 40.66.60.111|
 | Veřejný partnerský vztah Azure| Kanada – východ| 52.139.80.117|
 | Veřejný partnerský vztah Azure| Spojené arabské emiráty sever| 20.46.144.85|
-| Veřejný partnerský vztah Azure| Brazílie – jih| 191.233.24.179|
+| Veřejný partnerský vztah Azure| Brazil South| 191.233.24.179|
 | Veřejný partnerský vztah Azure| Southeast Asia| 40.90.185.46|
 | Veřejný partnerský vztah Azure| Jižní Afrika – sever| 102.133.130.197|
 | Veřejný partnerský vztah Azure| Střední Kanada| 52.139.20.34|
 | Veřejný partnerský vztah Azure| Jižní Korea – jih| 40.80.232.185|
 | Veřejný partnerský vztah Azure| Indie – střed| 13.71.49.1|
 | Veřejný partnerský vztah Azure| USA – západ| 13.64.39.16|
-| Veřejný partnerský vztah Azure| Austrálie – jihovýchod| 20.40.160.107|
+| Veřejný partnerský vztah Azure| Australia Southeast| 20.40.160.107|
 | Veřejný partnerský vztah Azure| Austrálie – střed| 20.37.52.67|
 | Veřejný partnerský vztah Azure| Indie – jih| 20.44.33.246|
-| Veřejný partnerský vztah Azure| Střední USA| 13.86.102.66|
+| Veřejný partnerský vztah Azure| USA – střed| 13.86.102.66|
 | Veřejný partnerský vztah Azure| Austrálie – východ| 20.40.125.155|
 | Veřejný partnerský vztah Azure| Západní USA 2| 51.143.127.203|
 | Veřejný partnerský vztah Azure| Východní USA 2 EUAP| 52.253.229.253|
@@ -251,12 +251,12 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 | Veřejný partnerský vztah Azure| Německo – sever| 51.116.0.0|
 | Veřejný partnerský vztah Azure| Norsko – východ| 51.120.2.185|
 | Veřejný partnerský vztah Azure| Norsko – západ| 51.120.130.134|
-| Azure (Čína) 21Vianet| Čína – sever (globální)| 139.217.51.16|
-| Azure (Čína) 21Vianet| Čína – východ (globální)| 139.217.171.176|
-| Azure (Čína) 21Vianet| Čína – sever| 40.125.137.220|
-| Azure (Čína) 21Vianet| Čína – východ| 40.126.120.30|
-| Azure (Čína) 21Vianet| Čína – sever 2| 40.73.41.178|
-| Azure (Čína) 21Vianet| Čína – východ 2| 40.73.104.4|
+| Azure China 21Vianet| Čína – sever (globální)| 139.217.51.16|
+| Azure China 21Vianet| Čína – východ (globální)| 139.217.171.176|
+| Azure China 21Vianet| Čína – sever| 40.125.137.220|
+| Azure China 21Vianet| Čína – východ| 40.126.120.30|
+| Azure China 21Vianet| Čína – sever 2| 40.73.41.178|
+| Azure China 21Vianet| Čína – východ 2| 40.73.104.4|
 | Azure Government| USGov) – Virginia (globální)| 52.127.42.160|
 | Azure Government| USGov Texas (Global)| 52.127.34.192|
 | Azure Government| USGov Virginie| 52.227.222.92|

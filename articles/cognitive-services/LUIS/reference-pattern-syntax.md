@@ -5,13 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.author: diberry
-ms.openlocfilehash: 533dc87e50abc5a689d1157b294070ece39dab9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3caccd6766226ce68b371856b081b052c1033f71
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322814"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542185"
 ---
 # <a name="pattern-syntax"></a>Syntaxe vzoru
 
@@ -24,7 +23,7 @@ Entity v vzorcích jsou obklopené složenými závorkami `{}` . Vzory mohou zah
 
 Syntaxe vzoru podporuje následující syntaxi:
 
-|Funkce|Syntax|Úroveň vnoření|Příklad|
+|Funkce|Syntaxe|Úroveň vnoření|Příklad|
 |--|--|--|--|
 |entita| {} – složené závorky|2|Kde je tvar {entity-Name}?|
 |optional|[] – hranaté závorky<BR><BR>Existuje limit 3 pro vnořování úrovní jakékoli kombinace Optional and Grouping. |2|Otazník je nepovinný [?].|
@@ -58,8 +57,8 @@ Kombinace **seskupení** s **volitelnou** syntaxí má limit 3 úrovní vnořen�
 
 |Povoleno|Příklad|
 |--|--|
-|Yes|([(Test1 &#x7c; test2)] &#x7c; test3)|
-|No|([([test1] &#x7c; test2)] &#x7c; test3)|
+|Ano|([(Test1 &#x7c; test2)] &#x7c; test3)|
+|Ne|([([test1] &#x7c; test2)] &#x7c; test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Omezení vnořování pro skupiny s syntaxí or-Lo
 
@@ -67,8 +66,8 @@ Kombinace **seskupení** se syntaxí **or-Lo** má omezení 2 svislé pruhy.
 
 |Povoleno|Příklad|
 |--|--|
-|Yes|(Test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
-|No|(Test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
+|Ano|(Test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
+|Ne|(Test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxe pro přidání entity do šablony vzoru
 Chcete-li přidat entitu do šablony vzoru, uzavřete název entity do složených závorek, například `Who does {Employee} manage?` .

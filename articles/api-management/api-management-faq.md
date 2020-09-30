@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 351503db52e4c62414cd5dcbae1f750032a37eb7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050331"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542270"
 ---
 # <a name="azure-api-management-faqs"></a>Nejčastější dotazy k Azure API Management
 Získejte odpovědi na běžné otázky, vzory a osvědčené postupy pro Azure API Management.
@@ -53,7 +53,7 @@ Máte několik možností, jak zabezpečit spojení mezi API Management bránou 
 
 * Použijte ověřování HTTP Basic. Další informace najdete v tématu [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 * Vzájemné ověřování TLS použijte, jak je popsáno v tématu [zabezpečení back-endové služby pomocí ověřování klientského certifikátu v Azure API Management](api-management-howto-mutual-certificates.md).
-* Použijte seznam povolených IP adres ve vaší back-endové službě. Na všech úrovních API Management s výjimkou úrovně spotřeby zůstane IP adresa brány konstantní, s několika upozorněními popsanými v [článku dokumentace k protokolu IP](api-management-howto-ip-addresses.md).
+* Použijte filtrování IP na vaší back-endové službě. Na všech úrovních API Management s výjimkou úrovně spotřeby zůstane IP adresa brány konstantní, s několika upozorněními popsanými v [článku dokumentace k protokolu IP](api-management-howto-ip-addresses.md).
 * Připojte svoji instanci API Management k Azure Virtual Network.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Jak můžu zkopírovat instanci služby API Management do nové instance?
@@ -73,7 +73,7 @@ Ano, API Management můžete spravovat programově pomocí:
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Jak přidám uživatele do skupiny správců?
 Zde je postup, jak můžete přidat uživatele do skupiny Administrators:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejít do skupiny prostředků, která obsahuje instanci API Management, kterou chcete aktualizovat.
 3. V API Management přiřaďte uživateli roli **Přispěvatel služby API Management** .
 
@@ -103,10 +103,10 @@ Informace o tom, jak nakonfigurovat autorizační Server OAuth 2,0 se zabezpeče
 API Management využívá [metodu směrování provozu výkonu](../traffic-manager/traffic-manager-routing-methods.md#performance) v nasazení do několika geografických umístění. Příchozí provoz se směruje na nejbližší bránu API. Pokud se jedna oblast přepne do režimu offline, příchozí provoz se automaticky směruje na další nejbližší bránu. Přečtěte si další informace o metodách směrování v [Traffic Manager metody směrování](../traffic-manager/traffic-manager-routing-methods.md).
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Můžu použít šablonu Azure Resource Manager k vytvoření instance služby API Management?
-Yes. Další informace najdete v tématu šablony rychlý Start pro [službu Azure API Management](https://aka.ms/apimtemplate) .
+Ano. Další informace najdete v tématu šablony rychlý Start pro [službu Azure API Management](https://aka.ms/apimtemplate) .
 
 ### <a name="can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end"></a>Můžu pro back-end použít certifikát TLS/SSL podepsaný svým držitelem?
-Yes. To se dá udělat prostřednictvím PowerShellu nebo přímo odeslání do rozhraní API. Tím se zakáže ověřování řetězu certifikátů, které vám umožní používat certifikáty podepsané svým držitelem nebo soukromým podpisem při komunikaci od API Management až po služby back-endu.
+Ano. To se dá udělat prostřednictvím PowerShellu nebo přímo odeslání do rozhraní API. Tím se zakáže ověřování řetězu certifikátů, které vám umožní používat certifikáty podepsané svým držitelem nebo soukromým podpisem při komunikaci od API Management až po služby back-endu.
 
 #### <a name="powershell-method"></a>PowerShell – metoda ####
 Použijte [`New-AzApiManagementBackend`](/powershell/module/az.apimanagement/new-azapimanagementbackend) (pro nový back-end) nebo [`Set-AzApiManagementBackend`](/powershell/module/az.apimanagement/set-azapimanagementbackend) (pro stávající back-end) rutiny PowerShellu a nastavte `-SkipCertificateChainValidation` parametr na `True` .
@@ -125,7 +125,7 @@ New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -
 Pokud používáte Git Credential Manager nebo pokud se pokoušíte klonovat úložiště Git pomocí sady Visual Studio, můžete se setkat se známým problémem s dialogovým oknem pověření systému Windows. Dialogové okno omezuje délku hesla na 127 znaků a zkrátí heslo generované společností Microsoft. Pracujeme na zkrácení hesla. Prozatím prosím použijte Git bash k naklonování úložiště Git.
 
 ### <a name="does-api-management-work-with-azure-expressroute"></a>Funguje API Management s Azure ExpressRoute?
-Yes. API Management funguje se službou Azure ExpressRoute.
+Ano. API Management funguje se službou Azure ExpressRoute.
 
 ### <a name="why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them"></a>Proč vyžadujeme vyhrazenou podsíť ve stylu Správce prostředků virtuální sítě, když do nich API Management nasazená?
 Požadavek na vyhrazenou podsíť pro API Management pochází ze skutečnosti, který je postaven na modelu nasazení Classic (PAAS v1 Layer). I když můžeme nasadit do virtuální sítě typu Správce prostředků (v2 Layer), jsou k dispozici důsledky. Model nasazení Classic v Azure není pevně spojený s modelem Správce prostředků, takže pokud vytvoříte prostředek ve vrstvě v2, vrstva v1 o ní neví a problémy, jako je například API Management pokus o použití IP adresy, která je již přidělena síťovému rozhraní (postavené na v2).
@@ -135,7 +135,7 @@ Pokud se chcete dozvědět víc o rozdílech mezi klasickými a Správce prostř
 Minimální velikost podsítě potřebná k nasazení API Management je [/29](../virtual-network/virtual-networks-faq.md#configuration), což je minimální velikost podsítě, kterou Azure podporuje.
 
 ### <a name="can-i-move-an-api-management-service-from-one-subscription-to-another"></a>Můžu přesunout službu API Management z jednoho předplatného do jiného?
-Yes. Další informace najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md).
+Ano. Další informace najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ### <a name="are-there-restrictions-on-or-known-issues-with-importing-my-api"></a>Existují omezení nebo známé problémy při importu rozhraní API?
 [Známé problémy a omezení](api-management-api-import-restrictions.md) pro Open API (Swagger), formáty WSDL a WADL.

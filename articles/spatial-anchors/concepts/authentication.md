@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e4d25637498bec223e294eecf2be6dc88fa2aa0d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1726f3a1ddc62cbb76a65f1d284793e57ea2f2a8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997162"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538241"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Ověřování a autorizace pro prostorové kotvy Azure
 
@@ -22,7 +22,7 @@ V této části se dozvíte o různých způsobech ověření pro prostorové ko
 
 ## <a name="overview"></a>Přehled
 
-![Přehled ověřování pro prostorové kotvy Azure](./media/spatial-anchors-authentication-overview.png)
+![Diagram, který zobrazuje přehled ověřování pro prostorové kotvy Azure.](./media/spatial-anchors-authentication-overview.png)
 
 Aby klienti mohli získat přístup k danému účtu prostorových kotev Azure, musí nejdřív získat přístupový token ze služby tokenů zabezpečení (STS) ve službě Azure Mixed reality. Tokeny získané z služby STS Live po dobu 24 hodin a obsahují informace o službách prostorových ukotvení k tomu, aby mohl účet provádět autorizační rozhodnutí, a zajišťují, že k tomuto účtu budou mít přístup jenom autorizovaní objekty zabezpečení.
 
@@ -39,7 +39,7 @@ Ověřovací tokeny Azure AD lze získat dvěma způsoby:
 
 Nejjednodušší způsob, jak začít, je použití klíčů účtu pro přístup k účtu prostorových kotev Azure. Klíče účtu najdete na Azure Portal. Přejděte ke svému účtu a vyberte kartu klíče.
 
-![Přehled ověřování pro prostorové kotvy Azure](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
+![Snímek obrazovky se zvýrazněnou stránkou s klíči s tlačítkem kopírovat u "primárního klíče".](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
 
 K dispozici jsou dva klíče, které jsou současně platné pro přístup k účtu prostorových kotev. Doporučuje se pravidelně aktualizovat klíč, který používáte pro přístup k účtu. Existují dva samostatné platné klíče, které tyto aktualizace umožňují bez výpadků; musíte aktualizovat jenom primární klíč a sekundární klíč.
 
@@ -175,7 +175,7 @@ Přístupový token Azure AD se načte pomocí [knihovny MSAL](../../active-dire
         1.  V Azure Portal přejděte na **Azure Active Directory**a vyberte **Registrace aplikací** .
         2.  Vybrat **registraci nové aplikace**
         3.  Zadejte název vaší aplikace, jako typ aplikace vyberte **Webová aplikace nebo rozhraní API** a zadejte adresu URL ověřování pro vaši službu. Pak stiskněte **vytvořit**.
-        4.  V této aplikaci přejděte na **Nastavení**a pak vyberte kartu **certifikáty a tajné** kódy. Vytvořte nový tajný klíč klienta, vyberte dobu trvání a klikněte na **Přidat**. Nezapomeňte uložit tajnou hodnotu, protože ji budete muset zahrnout do kódu vaší webové služby.
+        4.  V této aplikaci klikněte na **Nastavení**a pak vyberte kartu **certifikáty a tajné klíče** . Vytvořte nový tajný klíč klienta, vyberte dobu trvání a pak stiskněte **Přidat**. Nezapomeňte uložit tajnou hodnotu, protože ji budete muset zahrnout do kódu vaší webové služby.
     2.  Udělte vaší aplikaci nebo uživatelům přístup k vašemu prostředku:
         1.  Přejděte ke zdroji prostorových kotev v Azure Portal
         2.  Přepnout na kartu **řízení přístupu (IAM)**

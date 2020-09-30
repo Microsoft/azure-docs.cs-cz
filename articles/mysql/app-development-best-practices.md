@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 93bd6972a89065832a20fbd66949cde5b7510534
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: dc9764ce68d54418578c293833c1fd38080ba0ef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794191"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538904"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Osvědčené postupy pro sestavování aplikace pomocí Azure Database for MySQL 
 
@@ -69,9 +69,9 @@ V aplikaci může docházet k [přechodným chybám](https://docs.microsoft.com/
 Dobrým postupem je počkat na 5 sekund před prvním opakováním. Pak postupujte podle každého opakování tak, že postupně rozrostete, až 60 sekund. Omezte maximální počet opakovaných pokusů, při kterých aplikace nebere v úvahu operaci, takže se můžete dále prozkoumat. Další informace najdete v tématu [řešení chyb připojení](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-common-connection-issues) . 
 
 ### <a name="enable-read-replication-to-mitigate-failovers"></a>Povolením replikace pro čtení zmírnit převzetí služeb při selhání
-Pro scénáře převzetí služeb při selhání můžete použít [replikace vstupních dat](https://docs.microsoft.com/azure/mysql/howto-data-in-replication) . Pokud používáte repliky čtení, nedochází k automatizovanému převzetí služeb při selhání mezi hlavními servery a servery repliky. 
+Pro scénáře převzetí služeb při selhání můžete použít [replikace vstupních dat](https://docs.microsoft.com/azure/mysql/howto-data-in-replication) . Pokud používáte repliky čtení, nedochází k automatizovanému převzetí služeb při selhání mezi zdrojovým serverem a serverem repliky. 
 
-Všimněte si prodlevy mezi hlavním serverem a replikou, protože replikace je asynchronní. Prodleva sítě může být ovlivněna mnoha faktory, jako je velikost úlohy spuštěné na hlavním serveru a latence mezi datovými centry. Ve většině případů prodleva repliky vychází z několika sekund až do několika minut.
+Všimnete si prodlevy mezi zdrojem a replikou, protože replikace je asynchronní. Prodleva sítě může být ovlivněná mnoha faktory, jako je velikost úlohy spuštěné na zdrojovém serveru a latence mezi datovými centry. Ve většině případů prodleva repliky vychází z několika sekund až do několika minut.
 
 ## <a name="database-deployment"></a>Nasazení databáze 
 

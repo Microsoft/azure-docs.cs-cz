@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 87085d4a4911801933993720ae0ab23aeb19956d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974375"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541284"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů
 
@@ -39,7 +39,7 @@ Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zřizování 
 
 * **Pracovní zařazení zaměstnanců** – když se zaměstnanec v Workday odkoupí, jeho starý účet se dá automaticky znovu aktivovat nebo znovu zřídit (v závislosti na vaší preferenci) pro Active Directory, Azure Active Directory a volitelně Microsoft 365 a [Další aplikace SaaS podporované službou Azure AD](../app-provisioning/user-provisioning.md).
 
-### <a name="whats-new"></a>Novinky
+### <a name="whats-new"></a>Co je nového
 V této části jsou zachycena nedávná vylepšení integrace pracovního dne. Seznam komplexních aktualizací, plánovaných změn a archivů najdete na stránce [co je nového v Azure Active Directory?](../fundamentals/whats-new.md) 
 
 * **Květen 2020 – možnost zápisu telefonních čísel do Workday:** Navíc k e-mailu a uživatelskému jménu teď můžete do pracovního dne služby Azure AD znovu spustit zpětný zápis a číslo mobilního telefonu. Další podrobnosti najdete v [kurzu aplikace zpětného zápisu](workday-writeback-tutorial.md).
@@ -129,7 +129,7 @@ V tomto kroku vytvoříte v Workday skupinu zabezpečení systému bez omezení 
 1. Do vyhledávacího pole zadejte vytvořit skupinu zabezpečení a pak klikněte na **vytvořit skupinu zabezpečení**.
 
    > [!div class="mx-imgBorder"]
-   > ![Skupina CreateSecurity](./media/workday-inbound-tutorial/wd_isu_03.png "Skupina CreateSecurity")
+   > ![Snímek obrazovky s názvem "vytvořit skupinu zabezpečení" zadaný do vyhledávacího pole a ve výsledcích hledání se zobrazí zpráva "vytvořit skupinu zabezpečení-úkol".](./media/workday-inbound-tutorial/wd_isu_03.png)
 2. Dokončete úlohu **vytvořit skupinu zabezpečení** . 
 
    * V Workday existují dva typy skupin zabezpečení:
@@ -154,7 +154,7 @@ V tomto kroku udělíte skupině zabezpečení oprávnění zásady zabezpečen�
 
 1. Do vyhledávacího pole zadejte **Konfigurace zabezpečení domény** a potom klikněte na **sestavu konfigurace zabezpečení domény**propojit.  
    >[!div class="mx-imgBorder"]
-   >![Zásady zabezpečení domény](./media/workday-inbound-tutorial/wd_isu_06.png "Zásady zabezpečení domény")  
+   >![Snímek obrazovky, který ve vyhledávacím poli zobrazuje "konfigurace zabezpečení domény", ve výsledcích se zobrazí zpráva konfigurace zabezpečení domény.](./media/workday-inbound-tutorial/wd_isu_06.png "Zásady zabezpečení domény")  
 2. V textovém poli **doména** vyhledejte následující domény a přidejte je do filtru jednu po jedné.  
    * *Zřizování externího účtu*
    * *Data pracovního procesu: pracovní procesy*
@@ -166,10 +166,10 @@ V tomto kroku udělíte skupině zabezpečení oprávnění zásady zabezpečen�
    * *Účty Workday*
    
      >[!div class="mx-imgBorder"]
-     >![Zásady zabezpečení domény](./media/workday-inbound-tutorial/wd_isu_07.png "Zásady zabezpečení domény")  
+     >![Snímek obrazovky zobrazující sestavu konfigurace zabezpečení domény s externím účtem v textovém poli Doména](./media/workday-inbound-tutorial/wd_isu_07.png "Zásady zabezpečení domény")  
 
      >[!div class="mx-imgBorder"]
-     >![Zásady zabezpečení domény](./media/workday-inbound-tutorial/wd_isu_08.png "Zásady zabezpečení domény") 
+     >![Snímek obrazovky zobrazující sestavu konfigurace zabezpečení domény se seznamem domén vybraných.](./media/workday-inbound-tutorial/wd_isu_08.png "Zásady zabezpečení domény") 
 
      Klikněte na **OK**.
 
@@ -179,7 +179,7 @@ V tomto kroku udělíte skupině zabezpečení oprávnění zásady zabezpečen�
 
 4. Na stránce **Upravit oprávnění zásad zabezpečení domény** přejděte dolů k části **oprávnění k integraci**. Kliknutím na symbol "+" přidejte skupinu integračních systémů do seznamu skupin zabezpečení s oprávněním **získat** a **Vložit** integraci.
    >[!div class="mx-imgBorder"]
-   >![Upravit oprávnění](./media/workday-inbound-tutorial/wd_isu_10.png "Upravit oprávnění")  
+   >![Snímek obrazovky, který ukazuje zvýrazněný oddíl Integration nemáte](./media/workday-inbound-tutorial/wd_isu_10.png "Upravit oprávnění")  
 
 5. Kliknutím na symbol "+" přidejte skupinu integračních systémů do seznamu skupin zabezpečení s oprávněním **získat** a **Vložit** integraci.
 
@@ -210,12 +210,12 @@ V tomto kroku udělíte oprávnění "zabezpečení obchodních procesů" pro da
 1. Do vyhledávacího pole zadejte **zásady obchodního procesu** a pak klikněte na úlohu **upravit zásady zabezpečení obchodních procesů** .  
 
    >[!div class="mx-imgBorder"]
-   >![Zásady zabezpečení obchodních procesů](./media/workday-inbound-tutorial/wd_isu_12.png "Zásady zabezpečení obchodních procesů")  
+   >![Snímek obrazovky, který zobrazuje "zásady pro obchodní procesy" v poli hledání a "Upravit zásadu zabezpečení obchodního procesu – úkol".](./media/workday-inbound-tutorial/wd_isu_12.png "Zásady zabezpečení obchodních procesů")  
 
 2. V textovém poli **typ obchodního procesu** vyhledejte *kontakt* a vyberte **pracovní kontakt změnit** obchodní proces a klikněte na **OK**.
 
    >[!div class="mx-imgBorder"]
-   >![Zásady zabezpečení obchodních procesů](./media/workday-inbound-tutorial/wd_isu_13.png "Zásady zabezpečení obchodních procesů")  
+   >![Snímek obrazovky, který zobrazuje stránku "upravit zásady zabezpečení obchodních procesů" a "v nabídce" typ obchodního procesu "zvolené pracovní kontakt změny.](./media/workday-inbound-tutorial/wd_isu_13.png "Zásady zabezpečení obchodních procesů")  
 
 3. Na stránce **upravit zásady zabezpečení obchodního procesu** se posuňte do části **Změna pracovních kontaktních informací (webová služba)** .
     
@@ -390,9 +390,9 @@ V tomto kroku navážeme připojení k Workday a službě Active Directory v Azu
    
      | Formát URL | Použitá verze rozhraní API WWS | Jsou vyžadovány změny XPATH |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Ne |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Ne |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Ano |
 
       > [!NOTE]
      > Pokud v adrese URL nejsou zadané žádné informace o verzi, aplikace používá WWS (Workday Web Services) v 21.1 a pro výchozí výrazy rozhraní API XPATH dodávané s aplikací se nevyžadují žádné změny. Pokud chcete použít konkrétní verzi rozhraní WWS API, zadejte v adrese URL číslo verze. <br>
@@ -415,7 +415,7 @@ V tomto kroku navážeme připojení k Workday a službě Active Directory v Azu
    * Klikněte na tlačítko **Testovat připojení** . Pokud je test připojení úspěšný, klikněte na tlačítko **Uložit** v horní části. Pokud se to nepovede, dvakrát Ověřte platnost přihlašovacích údajů pracovního dne a přihlašovacích údajů služby AD nakonfigurovaných v instalaci agenta.
 
      >[!div class="mx-imgBorder"]
-     >![Azure Portal](./media/workday-inbound-tutorial/wd_1.png)
+     >![Snímek obrazovky zobrazující stránku zřizování se zadanými přihlašovacími údaji](./media/workday-inbound-tutorial/wd_1.png)
 
    * Po úspěšném uložení přihlašovacích údajů se v oddílu **mapování** zobrazí výchozí mapování **synchronizace pracovních procesů v místní službě Active Directory** .
 
@@ -480,7 +480,7 @@ V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday
 
 1. Pokud chcete uložit mapování, klikněte na **Uložit** v horní části oddílu mapování atributů.
    >[!div class="mx-imgBorder"]
-   >![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
+   >![Snímek obrazovky zobrazující stránku mapování atributů se zvolenou akcí uložit](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Níže jsou uvedeny příklady mapování atributů mezi Workday a službou Active Directory s některými běžnými výrazy.
 
@@ -942,11 +942,11 @@ Když kliknete na některý ze záznamů protokolu auditu, otevře se stránka *
 
   Vyhledejte záznam HTTP POST odpovídající časovému razítku operace exportu s *ID události = 2*. Tento záznam bude obsahovat hodnoty atributů odesílané zřizovací službou agentovi zřizování.
 
-  [![SCIM přidat](media/workday-inbound-tutorial/wd_event_viewer_05.png)](media/workday-inbound-tutorial/wd_event_viewer_05.png#lightbox)
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_05.png" alt-text="Snímek obrazovky, který zobrazuje záznam HTTP POST v protokolu &quot;zřizovacího agenta&quot;." lightbox="media/workday-inbound-tutorial/wd_event_viewer_05.png":::
 
   Hned po výše uvedené události by měla existovat jiná událost, která zachycuje odpověď na operaci vytvoření účtu služby AD. Tato událost vrátí nový identifikátor objectGuid vytvořený ve službě AD a ve službě zřizování se nastaví jako atribut TargetAnchor.
 
-  [![SCIM přidat](media/workday-inbound-tutorial/wd_event_viewer_06.png)](media/workday-inbound-tutorial/wd_event_viewer_06.png#lightbox)
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_06.png" alt-text="Snímek obrazovky, který zobrazuje záznam HTTP POST v protokolu &quot;zřizovacího agenta&quot;." lightbox="media/workday-inbound-tutorial/wd_event_viewer_06.png":::
 
 ### <a name="understanding-logs-for-manager-update-operations"></a>Principy protokolů pro operace aktualizace pro správce
 
@@ -1040,14 +1040,14 @@ Chcete-li provést tuto změnu, je nutné použít [Workday Studio](https://comm
 
 5. Vyberte **externí**a vyberte soubor WSDL Human_Resources, který jste stáhli v kroku 2.
 
-    ![Pracovní den v studiu](./media/workday-inbound-tutorial/wdstudio1.png)
+    ![Snímek obrazovky, který zobrazuje soubor "Human_Resources" otevřený v Workday studiu.](./media/workday-inbound-tutorial/wdstudio1.png)
 
 6. Nastavte pole **umístění** na `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources` , ale nahraďte "impl-CC" skutečným typem instance a "TENANT" s vaším skutečným názvem tenanta.
 
 7. Nastavit **operaci** na **Get_Workers**
 
 8.    Kliknutím na odkaz malé **Konfigurace** pod podokny žádosti a odpověď nastavte přihlašovací údaje pracovního dne. Zkontrolujte **ověřování**a potom zadejte uživatelské jméno a heslo pro účet systému pro integraci Workday. Ujistěte se, že jste naformátujete uživatelské jméno jako název \@ tenanta, a ponecháte vybranou možnost **WS-Security UsernameToken** .
-   ![Pracovní den v studiu](./media/workday-inbound-tutorial/wdstudio2.png)
+   ![Snímek obrazovky s uvedeným uživatelským jménem a heslem a vybraným uživatelským tokenem WS-Security.](./media/workday-inbound-tutorial/wdstudio2.png)
 
 9. Vyberte **OK**.
 
@@ -1086,7 +1086,7 @@ Chcete-li provést tuto změnu, je nutné použít [Workday Studio](https://comm
 
 13. Na příkazovém řádku v nabídce Workday Studio vyberte **soubor > otevřít soubor...** a otevřete soubor XML, který jste uložili. Tato akce otevře soubor v editoru XML Workday Studio.
 
-    ![Pracovní den v studiu](./media/workday-inbound-tutorial/wdstudio3.png)
+    ![Snímek obrazovky souboru X M L otevřeného v programu Workday Studio X M L Editor.](./media/workday-inbound-tutorial/wdstudio3.png)
 
 14. Ve stromu souborů přejděte přes **/ENV: obálka > ENV: tělo > průchozí: Get_Workers_Response > průchozí: Response_Data > průchozí: Worker** to Find data vašeho uživatele.
 
@@ -1112,7 +1112,7 @@ Chcete-li provést tuto změnu, je nutné použít [Workday Studio](https://comm
 
 5. Vyberte **Upravit seznam atributů pro Workday**.
 
-    ![Pracovní den v studiu](./media/workday-inbound-tutorial/wdstudio_aad1.png)
+    ![Snímek obrazovky, který zobrazuje stránku "pracovní den pro Azure A D" zřizování pro uživatele "se zvýrazněnou akcí upravit seznam atributů pro Workday".](./media/workday-inbound-tutorial/wdstudio_aad1.png)
 
 6. Posuňte se do dolní části seznamu atributů na místo, kde jsou vstupní pole.
 

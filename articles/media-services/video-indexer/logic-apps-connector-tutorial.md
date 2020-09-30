@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 41dddd677b2060c6d5d605867adde3eb27a9a5eb
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: f557794265f3bbf48fae97fc04e5e9b068b54f63
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369854"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540400"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Kurz: použití Video Indexer s aplikací logiky a automatickým automatickým zapnutím
 
@@ -35,7 +35,7 @@ V tomto kurzu se používá aplikace logiky k tomu, abyste si ukázali, jak:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Abyste mohli začít, budete potřebovat účet Video Indexer společně s [přístupem k rozhraním API přes klíč rozhraní API](video-indexer-use-apis.md). 
 * Budete také potřebovat účet Azure Storage. Poznamenejte si přístupový klíč pro váš účet úložiště. Vytvořte dva kontejnery – jeden pro ukládání videí do a jeden pro uložení přehledů vygenerovaných Video Indexer v.  
@@ -120,6 +120,12 @@ Ujistěte se, že oba toky jsou uložené, a vy můžete začít!
 
 Vyzkoušejte si nově vytvořenou aplikaci logiky nebo řešení Power automat přidáním videa do kontejneru objektů blob Azure a vraťte se do několika minut později, abyste zjistili, že se přehledy zobrazí v cílové složce. 
 
+## <a name="generate-captions"></a>Generovat titulky
+
+Postup, [jak vygenerovat titulky pomocí video indexer a Logic Apps](https://techcommunity.microsoft.com/t5/azure-media-services/generating-captions-with-video-indexer-and-logic-apps/ba-p/1672198), najdete v následujícím blogu. 
+
+Článek také ukazuje, jak automaticky indexovat video tak, že ho zkopírujete na OneDrive a uložíte titulky vygenerované Video Indexer na OneDrivu.
+ 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Až budete s tímto kurzem hotovi, můžete tuto aplikaci logiky zachovat a v případě potřeby je automatizovat a spouštět řešení. Pokud ale nechcete tuto činnost provozovat a nechcete se vám účtovat, vypněte oba toky, pokud používáte Power Automatizujte. Pokud používáte Logic Apps, zakažte oba toky. 

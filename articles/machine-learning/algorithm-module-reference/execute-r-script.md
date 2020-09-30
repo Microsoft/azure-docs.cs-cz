@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: d5ef8d6a9b0c0039b500ce9d0238609e8a8edc93
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 252ea54cf6be9dd381648d67e56a7a5ff2c7acc6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908005"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542284"
 ---
 # <a name="execute-r-script-module"></a>Spustit modul skriptu R
 
 Tento článek popisuje, jak použít modul skriptu Run R ke spuštění kódu R v kanálu návrháře Azure Machine Learning.
 
-Pomocí jazyka R můžete provádět úkoly, které stávající moduly aktuálně nepodporují, například: 
+Pomocí jazyka R můžete provádět úkoly, které nejsou podporovány existujícími moduly, například: 
 - Vytváření vlastních transformací dat
 - Použití vlastních metrik k vyhodnocení předpovědi
 - Modely sestavení pomocí algoritmů, které nejsou implementované jako samostatné moduly v Návrháři
@@ -137,7 +137,7 @@ Můžete se podívat na následující vzorový kód pro [přístup k registrova
 
 ## <a name="how-to-configure-execute-r-script"></a>Jak nakonfigurovat skript spouštěný v jazyce R
 
-Modul spuštění skriptu jazyka R obsahuje vzorový kód, který můžete použít jako výchozí bod. Pokud chcete nakonfigurovat modul skriptu Run R, poskytněte sadu vstupů a kódů, které se mají spustit.
+Modul spuštění skriptu jazyka R obsahuje vzorový kód jako výchozí bod.
 
 ![Diagram vstupů pro modul R](media/module/execute-r-script.png)
 
@@ -196,7 +196,10 @@ Datové sady uložené v návrháři se při načtení s tímto modulem automati
 
     Pokud je váš skript větší než 16 KB, použijte port **sady skriptu** , aby se předešlo chybám, jako *je příkazový řádek, který překračuje limit 16597 znaků*. 
     
-    Vytvořte balíček skriptu a dalších vlastních prostředků do souboru zip a odešlete soubor ZIP jako **datovou sadu** do studia. Pak můžete modul DataSet přetáhnout ze seznamu *Moje datové sady* v levém podokně modulu na stránce vytváření návrháře. Připojte modul DataSet k portu **skriptu** sady **spouštěného modulu R Script** .
+    1. Vytvořte balíček skriptu a dalších vlastních prostředků do souboru ZIP.
+    1. Nahrajte soubor ZIP jako **datovou sadu souboru** do studia. 
+    1. Přetáhněte modul DataSet ze seznamu *Moje datové sady* v levém podokně modulu na stránce vytváření návrháře. 
+    1. Připojte modul DataSet k portu **skriptu** sady **spouštěného modulu R Script** .
     
     Následuje ukázkový kód pro využití skriptu ve skriptovém svazku:
 
@@ -219,7 +222,7 @@ Datové sady uložené v návrháři se při načtení s tímto modulem automati
 
 ## <a name="results"></a>Výsledky
 
-Spouštění modulů skriptu jazyka R může vracet více výstupů, ale musí být zadány jako datové snímky R. Datové snímky jsou automaticky převedeny na datové sady v návrháři, aby byly kompatibilní s jinými moduly.
+Spouštění modulů skriptu jazyka R může vracet více výstupů, ale musí být zadány jako datové snímky R. Návrhář automaticky převede datové snímky na datové sady kvůli kompatibilitě s jinými moduly.
 
 Do protokolu modulu se vrátí standardní zprávy a chyby z R.
 
@@ -236,7 +239,7 @@ Modul spuštění skriptu jazyka R podporuje jako vstupy libovolné soubory skri
 
 1. Pokud chcete nahrát soubor. zip, který obsahuje kód R, do svého pracovního prostoru, otevřete stránku Asset **Sets** . Vyberte **vytvořit datovou sadu**a pak vyberte možnost **z místního souboru** a typ datové sady **souborů** .  
 
-1. Ověřte, zda je soubor zip k dispozici v seznamu **Moje datové sady** v kategorii datové **sady** ve stromu vlevo.
+1. Ověřte, že se soubor zip objevuje ve **složce** DataSets v kategorii **datové sady** ve stromu vlevo.
 
 1.  Připojte datovou sadu ke vstupnímu portu **sady skriptu** .
 
