@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 09/23/2020
 ms.custom: devx-track-java
 ms.author: anfeldma
-ms.openlocfilehash: 66677a80c2b58a87bc4a9312570d88a5f735cd72
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8910983ea5946c88d3d560c0cf0a321f8bd2c4ab
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326707"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569970"
 ---
 # <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL API: příklady Java SDK v4
 
@@ -76,7 +76,7 @@ Ukázky můžete spustit buď pomocí integrovaného vývojového prostředí (z
 Tyto proměnné prostředí musí být nastavené.
 
 ```
-ACCOUNT_HOST=your account hostname;ACCOUNT_KEY=your account master key
+ACCOUNT_HOST=your account hostname;ACCOUNT_KEY=your account primary key
 ```
 
 aby se k vašemu účtu daly získat přístup ke čtení a zápisu těchto ukázek.

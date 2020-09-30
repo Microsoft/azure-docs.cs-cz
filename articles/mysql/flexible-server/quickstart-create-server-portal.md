@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 9/21/2020
-ms.openlocfilehash: 4d4d65f9ad04ca6bf99375647684a75e8662bb4d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/29/2020
+ms.openlocfilehash: 70f2cf183a9bd93b6066516cb68e99ee21cdc1ac
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946949"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569620"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Rychlý Start: použití Azure Portal k vytvoření Azure Database for MySQL flexibilního serveru
 
@@ -36,18 +36,15 @@ Při vytváření flexibilního serveru postupujte podle těchto kroků:
 
 2. Vyberte **databáze**  >  **Azure Database for MySQL**. Službu můžete vyhledat také zadáním **MySQL** do vyhledávacího pole.
 
-    >[!div class="mx-imgBorder"]
     > :::image type="content" source="./media/quickstart-create-server-portal/navigate-to-mysql.png" alt-text="Možnost Azure Database for MySQL":::
 
 3. Jako možnost nasazení vyberte **flexibilní Server** .
      
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="Vybrat možnost nasazení":::    
+    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="Možnost Azure Database for MySQL":::    
 
 4. Ve formuláři **základy** vyplňte následující informace: 
 
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="Formulář vytvoření serveru"::: 
+    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="Možnost Azure Database for MySQL"::: 
                                     
     |**Nastavení**|**Navrhovaná hodnota**|**Popis**|
     |---|---|---|
@@ -56,12 +53,11 @@ Při vytváření flexibilního serveru postupujte podle těchto kroků:
     Název serveru |*mydemoserver*|Jedinečný název, který identifikuje flexibilní Server. Název domény *MySQL.Database.Azure.com* se připojí k názvu serveru, který zadáte. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat z 3 až 63 znaků.|
     Uživatelské jméno správce |*mydemouser*| Váš vlastní přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **admin**, **Administrator**, **root**, **Guest**ani **Public**.|
     Heslo |Vaše heslo| Nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).|
-    Oblast|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.|
+    Region (Oblast)|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.|
     Verze|5.7| Hlavní verze MySQL.|
     Výpočty + úložiště | **Shluky**, **Standard_B1ms**, **10 GIB**, **7 dní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Konfigurovat Server**. *Burstable*Mezi výchozími hodnotami pro **výpočetní vrstvu**, **výpočetní velikost**, **úložiště**a **dobu uchovávání záloh**jsou výchozí hodnoty pro *Standard_B1ms*, *10 GIB*a *7 dní* . Tyto posuvníky můžete ponechat beze změny nebo je upravit. Pokud chcete uložit tento výběr výpočtů a úložišť, vyberte **Uložit** a pokračujte v konfiguracích. Následující snímek obrazovky ukazuje možnosti výpočtů a úložiště.|
     
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Výpočty + úložiště":::
+    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Možnost Azure Database for MySQL":::
 
 5. Konfigurace možností sítě
 
@@ -70,10 +66,7 @@ Při vytváření flexibilního serveru postupujte podle těchto kroků:
     > [!NOTE]
     > Po vytvoření serveru se metoda připojení nedá změnit. Pokud jste například při vytváření vybrali *veřejný přístup (povolené IP adresy)* , nemůžete po vytvoření změnit na *privátní přístup (Integration VNET)* . Důrazně doporučujeme vytvořit server s privátním přístupem k zabezpečenému přístupu k serveru pomocí integrace virtuální sítě. Přečtěte si další informace o privátním přístupu v [článku koncepty](./concepts-networking.md).
 
-    >[!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="Konfigurace sítí":::  
-
-    <!--:::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="Select "Add current client IP address"":::-->
+    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="Možnost Azure Database for MySQL":::  
 
 6. Vyberte možnost **zkontrolovat + vytvořit** a zkontrolujte flexibilní konfiguraci serveru.
 
@@ -110,7 +103,7 @@ Pomocí mysql.exe se připojte pomocí níže uvedeného příkazu. Nahraďte ho
 Pokud chcete odstranit server, můžete kliknout na tlačítko **Odstranit** na stránce **Přehled** vašeho serveru, jak je znázorněno níže:
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="Odstranění prostředků":::
+> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="Možnost Azure Database for MySQL":::
 
 ## <a name="next-steps"></a>Další kroky
 

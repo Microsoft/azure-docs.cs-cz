@@ -8,18 +8,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/10/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: edeaaf97c818831aa1eda5823ea491110f784549
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 5194e088ce2bd35208a92c5295457e6c34cd2cc1
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91442360"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570320"
 ---
 # <a name="wildcard-domains"></a>Domény se zástupnými znaky
 
-Kromě domén vrcholů a subdomén můžete mapovat název domény se zástupnými znaky na váš seznam hostitelů front-endu nebo vlastní domény v profilu front-endu Azure. Pokud máte v konfiguraci front-end serverů ve službě Azure frontu se zástupnými znaky, zjednoduší se chování směrování provozu pro více subdomén pro rozhraní API, aplikace nebo weby ze stejného pravidla směrování. Nemusíte měnit konfiguraci, aby bylo možné přidat nebo zadat každou subdoménu samostatně. Můžete například definovat směrování pro `customer1.contoso.com` , `customer2.contoso.com` a `customerN.contoso.com` pomocí stejného pravidla směrování a přidat doménu se zástupnými znaky `*.contoso.com` .
+Kromě domén Apex a subdomén můžete také namapovat zástupnou doménu na front-end hostitele nebo vlastní domény pro profil front-endu Azure. Pokud máte v konfiguraci front-end serverů ve službě Azure frontu se zástupnými znaky, zjednoduší se chování směrování provozu pro více subdomén pro rozhraní API, aplikace nebo weby ze stejného pravidla směrování. Nemusíte měnit konfiguraci, aby bylo možné přidat nebo zadat každou subdoménu samostatně. Můžete například definovat směrování pro `customer1.contoso.com` , `customer2.contoso.com` a `customerN.contoso.com` pomocí stejného pravidla směrování a přidat doménu se zástupnými znaky `*.contoso.com` .
 
 Mezi klíčové scénáře, které jsou vylepšené podporou zástupných domén, patří:
 
@@ -47,7 +47,7 @@ Můžete přidat domény se zástupnými znaky a jejich subdomény s určitými 
 - Pokud se do profilu front-dveří Azure přidá doména se zástupnými znaky:
   - Zástupná doména se nedá přidat do žádného jiného profilu front-dveří Azure.
   - Domény se zástupnými znaky první úrovně v doméně se zástupnými znaky se nedají přidat do jiného profilu služby Azure front-dveří ani do profilu Azure Content Delivery Network.
-- Pokud se subdoménou domény se zástupnými znaky přidá do profilu služby Azure front-dveří nebo do profilu Azure Content Delivery Network, pak se zástupná doména nedá přidat do jiných profilů front-dveří Azure.
+- Pokud je subdoménou domény se zástupným znakem již přidána do profilu služby Azure front-dveří nebo do profilu služby Azure Content Delivery Network, nelze použít doménu se zástupnými znaky pro jiný profil front-end Azure.
 - Pokud mají dva profily (přední vrátka Azure nebo Azure Content Delivery Network) různé subdomény kořenové domény, pak se do těchto profilů nedají přidat zástupné domény.
 
 ## <a name="certificate-binding"></a>Vazba certifikátu
@@ -59,7 +59,7 @@ Pro přijetí provozu HTTPS v doméně se zástupnými znaky musíte povolit pro
 
 Můžete použít stejný certifikát se zástupným znakem z Azure Key Vault nebo ze služby Azure front-dveří spravované certifikáty pro subdomény.
 
-Pokud je pro doménu se zástupným znakem přidána subdoména, která již má přidružený certifikát, nelze protokol HTTPS pro subdoménu zakázat. Subdoména používá vazbu certifikátu pro doménu se zástupnými znaky, pokud se nepoužije jiný Key Vault nebo certifikát spravovaný přes frontu Azure.
+Pokud se k doméně se zástupným znakem přidá subdoménou, která už má přidružený certifikát, nemůžete pro subdoménu zakázat HTTPS. Subdoména používá vazbu certifikátu pro doménu se zástupnými znaky, pokud se nepoužije jiný Key Vault nebo certifikát spravovaný přes frontu Azure.
 
 ## <a name="waf-policies"></a>Zásady WAF
 

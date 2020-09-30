@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 051f6e6ef15cc94e2b607c74e666bae9c91c1160
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 75344204e03920c96d0868ad584b8701813fabf0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401618"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569524"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Základní hodnoty zabezpečení Azure pro Cosmos DB
 
@@ -290,7 +290,7 @@ Azure Cosmos DB poskytuje vestavěnou RBAC pro běžné scénáře správy v Azu
 
 K vyhledání účtů, které jsou členy skupin pro správu, můžete také použít modul Azure AD PowerShell k provádění dotazů ad hoc. 
 
-Kromě toho mohou být některé akce v Azure Cosmos DB řízeny pomocí Azure Active Directory a hlavních klíčů pro konkrétní účet.  K řízení přístupu ke klíčům použijte nastavení účtu disableKeyBasedMetadataWriteAccess.
+Kromě toho mohou být některé akce v Azure Cosmos DB řízeny pomocí Azure Active Directory a primárních klíčů pro konkrétní účet.  K řízení přístupu ke klíčům použijte nastavení účtu disableKeyBasedMetadataWriteAccess.
 
 Principy řízení přístupu na základě rolí v Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
@@ -298,9 +298,9 @@ Sestavujte vlastní role pomocí Azure Cosmos DBch akcí (Microsoft.Docobor náz
 
 Vytvořte novou roli v Azure Active Directory: https://docs.microsoft.com/azure/role-based-access-control/custom-roles
 
-Postup získání role adresáře v Azure Active Directory pomocí prostředí PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+Postup získání role adresáře v Azure Active Directory pomocí prostředí PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true
 
-Jak získat členy role adresáře v Azure Active Directory pomocí prostředí PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+Jak získat členy role adresáře v Azure Active Directory pomocí prostředí PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true
 
 Omezení přístupu uživatelů k datovým operacím: https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data
 
@@ -310,7 +310,7 @@ Omezení přístupu uživatelů k datovým operacím: https://docs.microsoft.com
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: Změna výchozích hesel tam, kde je to možné
 
-**Pokyny**: koncept výchozích nebo prázdných hesel neexistuje ve vztahu k Azure AD nebo Azure Cosmos DB. Místo toho Azure Cosmos DB používá dva typy klíčů k ověřování uživatelů a poskytování přístupu k jeho datům a prostředkům; hlavní klíče a tokeny prostředků. Klíče lze kdykoli znovu vygenerovat.
+**Pokyny**: koncept výchozích nebo prázdných hesel neexistuje ve vztahu k Azure AD nebo Azure Cosmos DB. Místo toho Azure Cosmos DB používá dva typy klíčů k ověřování uživatelů a poskytování přístupu k jeho datům a prostředkům; primární klíče a tokeny prostředků. Klíče lze kdykoli znovu vygenerovat.
 
 Princip zabezpečeného přístupu k datům v Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data
 
@@ -640,7 +640,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 Jak vytvářet dotazy pomocí Azure Resource graphu: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Jak zobrazit vaše předplatná Azure: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Jak zobrazit vaše předplatná Azure: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0&preserve-view=true
 
 Principy řízení přístupu na základě role v Azure: https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -792,7 +792,7 @@ Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resou
 
 - Cosmos DB by měl používat koncový bod služby virtuální sítě
 
-Jak zobrazit dostupné aliasy Azure Policy: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Jak zobrazit dostupné aliasy Azure Policy: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0&preserve-view=true
 
 Jak nakonfigurovat a spravovat Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -834,7 +834,7 @@ Pochopení Azure Policych účinků: https://docs.microsoft.com/azure/governance
 
 **Pokyny**: Pokud používáte vlastní definice Azure Policy pro Cosmos DB nebo související prostředky, použijte Azure Repos k bezpečnému ukládání a správě kódu.
 
-Azure Repos dokumentaci: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devopshttps://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Azure Repos dokumentaci: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=truehttps://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1003,7 +1003,7 @@ https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
 
 Postup obnovení Azure Key Vault tajných kódů:
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true
 
 **Monitorování Azure Security Center**: nelze použít
 

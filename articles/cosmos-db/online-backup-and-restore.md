@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 6485df342bbe0b2378a67b90e448b2bd98c5e283
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 310fee91ed98409e5a724d1be8de7bc9ccb5601b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400396"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570926"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online zálohování a obnovení dat na vyžádání v Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Díky Azure Cosmos DB, nejen k datům, ale také zálohování dat je vysoce red
 
 * Azure Cosmos DB ukládá tyto zálohy do úložiště objektů BLOB v Azure, zatímco skutečná data se nacházejí lokálně v rámci Azure Cosmos DB.
 
-* Aby se zajistila nízká latence, snímky záloh se uchovávají ve službě Azure Blob Storage ve stejné oblasti, jako je aktuální oblast zápisu (nebo **jedna** z oblastí zápisu, pokud máte konfiguraci multi-master). Aby se zajistila odolnost vůči regionálním selháním, všechny snímky zálohovaných dat ve službě Azure Blob Storage se prostřednictvím geograficky redundantního úložiště (GRS) znovu replikují do jiné oblasti. Oblast, do které se zálohy replikují, závisí na zdrojové oblasti a páru oblastí přidruženém ke zdrojové oblasti. Další informace najdete v článku [seznam geograficky redundantních párů oblastí Azure](../best-practices-availability-paired-regions.md) . K těmto zálohám nemáte přímý přístup. Pokud prostřednictvím žádosti o podporu požádáte o obnovení, tým Azure Cosmos DB vaši zálohu obnoví.
+* Aby se zajistila nízká latence, je snímek zálohy uložený ve službě Azure Blob Storage ve stejné oblasti jako aktuální oblast zápisu (nebo **jedna** z oblastí zápisu pro případ, že máte konfiguraci zápisu ve více oblastech). Aby se zajistila odolnost vůči regionálním selháním, všechny snímky zálohovaných dat ve službě Azure Blob Storage se prostřednictvím geograficky redundantního úložiště (GRS) znovu replikují do jiné oblasti. Oblast, do které se zálohy replikují, závisí na zdrojové oblasti a páru oblastí přidruženém ke zdrojové oblasti. Další informace najdete v článku [seznam geograficky redundantních párů oblastí Azure](../best-practices-availability-paired-regions.md) . K těmto zálohám nemáte přímý přístup. Pokud prostřednictvím žádosti o podporu požádáte o obnovení, tým Azure Cosmos DB vaši zálohu obnoví.
 
    Následující obrázek ukazuje, jak se kontejner Azure Cosmos se všemi třemi primárními fyzickými oddíly v Západní USA zálohuje do vzdáleného účtu Azure Blob Storage v Západní USA a pak se replikuje do Východní USA:
 
@@ -59,11 +59,11 @@ Pro změnu výchozích možností zálohování pro existující účet Azure Co
 
    * **Kopie uchovávaných dat** – ve výchozím nastavení se pro dvě záložní kopie vašich dat nabízí zdarma. Pokud potřebujete víc než dvě kopie, účtuje se další poplatek. Informace o přesné ceně za další kopie najdete na stránce s cenami v části [Spotřebované úložiště](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
-   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Konfigurace intervalu zálohování a uchování pro existující účet Azure Cosmos" border="true":::
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Periodické úplné zálohování všech entit Cosmos DB v GRS Azure Storage" border="true":::
 
 Pokud při vytváření účtu konfigurujete možnosti zálohování, můžete nakonfigurovat **zásady zálohování**, které jsou buď **periodické** , nebo **průběžné**. Pravidelné zásady vám umožní nakonfigurovat interval zálohování a uchovávání záloh. Průběžné zásady jsou aktuálně k dispozici pouze pomocí registrace. Tým Azure Cosmos DB vyhodnotí vaše zatížení a schválí vaši žádost.
 
-:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Konfigurace pravidelné nebo nepřetržité zásady zálohování pro nové účty Azure Cosmos" border="true":::
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Periodické úplné zálohování všech entit Cosmos DB v GRS Azure Storage" border="true":::
 
 ## <a name="restore-data-from-an-online-backup"></a>Obnovení dat z online zálohování
 

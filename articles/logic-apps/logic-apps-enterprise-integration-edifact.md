@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: dfe48a1348929bbe8d4af6793d94d52514df9d74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001532"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570773"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna zpráv EDIFACT pro podnikovou integraci B2B v Azure Logic Apps s využitím rozšíření Enterprise Integration Pack
 
@@ -36,7 +36,7 @@ Po [Vytvoření účtu pro integraci](../logic-apps/logic-apps-enterprise-integr
 
 ## <a name="create-an-edifact-agreement"></a>Vytvoření smlouvy EDIFACT 
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com "Portál Azure Portal"). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com "portál Azure"). 
 
 2. V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole zadejte "Integration" a pak vyberte **účty pro integraci**.
 
@@ -247,7 +247,7 @@ Po dokončení každého ověřovacího řádku se přidá další automaticky. 
 
 2.  Vaše smlouvy si můžete prohlédnout také v přehledu účtu pro integraci. V nabídce účtu pro integraci zvolte **Přehled**a pak vyberte dlaždici **smlouvy** . 
 
-    ![Vybrat dlaždici smlouvy](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![Snímek obrazovky, který zobrazuje dlaždici smlouvy](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 

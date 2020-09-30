@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 02997b421a57363e04a0d988685b76f59954439e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 401d22ee68ba0652eb684b03b06fddf0b0fe3d72
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495138"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569456"
 ---
 # <a name="create-a-new-azure-time-series-insights-gen1-environment-in-the-azure-portal"></a>Vytvoření nového prostředí Azure Time Series Insights Gen1 v Azure Portal
+
+> [!CAUTION]
+> Toto je Gen1 článek.
 
 Tento článek popisuje, jak vytvořit nové prostředí Azure Time Series Insights pomocí Azure Portal.
 
@@ -28,7 +31,7 @@ Azure Time Series Insights vám umožňuje začít vizualizovat a dotazovat tok 
 
 Pomocí těchto kroků vytvořte prostředí:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Vyberte tlačítko **+ vytvořit prostředek** .
 

@@ -2,13 +2,13 @@
 title: Azure Service Bus – vypršení platnosti zprávy
 description: Tento článek vysvětluje vypršení platnosti a dobu provozu Azure Service Busch zpráv. Po uplynutí tohoto termínu se zpráva už nedoručuje.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 41711428711533a6ecac449f59d415e86474545b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.date: 09/29/2020
+ms.openlocfilehash: 47f8bdb4440adfeb5197f90cdad5358a442ce6a7
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064719"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569925"
 ---
 # <a name="message-expiration-time-to-live"></a>Vypršení platnosti zpráv (hodnota TTL)
 
@@ -29,7 +29,7 @@ Všechny zprávy odeslané do fronty nebo tématu podléhají výchozímu vyprš
 > [!NOTE]
 > Výchozí hodnota [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) pro zprostředkované zprávy je [TimeSpan. Max](/dotnet/api/system.timespan.maxvalue) , pokud není uvedeno jinak.
 >
-> U entit zasílání zpráv (fronty a témata) je výchozí doba vypršení platnosti také [TimeSpan. Max](/dotnet/api/system.timespan.maxvalue) pro Service Bus úrovně Standard a Premium.  Pro úroveň Basic je výchozím časem vypršení platnosti 14 dní.
+> U entit zasílání zpráv (fronty a témata) je výchozí doba vypršení platnosti také [TimeSpan. Max](/dotnet/api/system.timespan.maxvalue) pro Service Bus úrovně Standard a Premium. Pro úroveň **Basic** je výchozí (také maximální) doba vypršení platnosti **14 dní**.
 
 Zprávy s vypršenou platností můžete volitelně přesunout do [fronty nedoručených](service-bus-dead-letter-queues.md) zpráv nastavením vlastnosti [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) nebo zaškrtnutím příslušného pole na portálu. Pokud je možnost ponecháno zakázaná, zprávy s vypršenou platností se vynechává. Zprávy s vypršenou platností přesunuté do fronty nedoručených zpráv je možné odlišit od jiných nedoručených zpráv vyhodnocením vlastnosti [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) , kterou zprostředkovatel ukládá v části vlastnosti uživatele. v tomto případě je hodnota [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) .
 

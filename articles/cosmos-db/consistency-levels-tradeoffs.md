@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 5046e40ea15a27e80f4e92ebf36488dedeee1821
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 3c82edd73921e11cd2f43a0d609624267af81575
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396004"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570062"
 ---
 # <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>Latence, dostupnost a výkon při kompromisech s různými Azure Cosmos DBmi úrovněmi konzistence
 
@@ -76,9 +76,9 @@ Následující tabulka definuje vztah mezi modelem konzistence a odolností dat 
 
 *T* = časový interval *"t"* od poslední aktualizace.
 
-## <a name="strong-consistency-and-multi-master"></a>Silná konzistence a vícenásobný hlavní
+## <a name="strong-consistency-and-multiple-write-regions"></a>Silná konzistence a vícenásobné oblasti zápisu
 
-Účty Cosmos nakonfigurované pro sadu multi-Master nelze nakonfigurovat pro zajištění vysoké konzistence, protože distribuovaný systém nemůže poskytnout RPO s hodnotou 0 a RTO nula. Navíc neexistují žádné výhody latence zápisu pro použití silné konzistence s více hlavními servery, které by měly být replikovány do jakékoli oblasti a jsou potvrzeny do všech nakonfigurovaných oblastí v rámci daného účtu. Výsledkem je stejná latence zápisu jako jeden hlavní účet.
+Účty Cosmos nakonfigurované s více oblastmi zápisu nelze nakonfigurovat pro zajištění vysoké konzistence, protože distribuovaný systém nemůže poskytnout RPO s hodnotou 0 a RTO nula. Navíc neexistují žádné výhody latence zápisu na používání silné konzistence s více oblastmi zápisu, protože požadavek na zápis do jakékoli oblasti musí být replikován a potvrzen do všech nakonfigurovaných oblastí v rámci účtu. Výsledkem je stejná latence zápisu jako jeden účet oblasti pro zápis.
 
 ## <a name="next-steps"></a>Další kroky
 

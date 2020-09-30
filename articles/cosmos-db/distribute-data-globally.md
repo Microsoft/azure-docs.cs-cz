@@ -1,21 +1,21 @@
 ---
 title: Globální distribuce dat pomocí Azure Cosmos DB
-description: Přečtěte si o globálním geografickou replikaci, vícenásobné replikaci, převzetí služeb při selhání a obnovení dat pomocí globálních databází z Azure Cosmos DB globálně distribuovaná databázová služba pro více modelů.
+description: Přečtěte si o geografické replikaci globálním, převzetí služeb při selhání a obnovení dat pomocí globálních databází z Azure Cosmos DB globálně distribuovanou databázovou službou pro více modelů.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: abd18132c7489153566042b0b7e3557662864f30
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 29917b0911fbab36fbb30a587ee7cac223b993f2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399461"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570193"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Globální distribuce dat pomocí Azure Cosmos DB
 
-V dnešních aplikacích je nutné, aby byly vysoce reagovaly a vždy online. Aby bylo možné dosáhnout nízké latence a vysoké dostupnosti, je třeba instance těchto aplikací nasadit v datových centrech, které jsou blízko jejich uživatelů. Tyto aplikace jsou obvykle nasazeny v několika datových centrech a jsou označovány jako globálně distribuované. Globálně distribuované aplikace potřebují globálně distribuovanou databázi, která dokáže transparentně replikovat data po celém světě, aby mohly pracovat s kopií dat, která je blízko uživatelům. 
+V současné době se od aplikací žádá, aby byly vysoce responzivní a vždy online. Aby bylo možné zajistit nízkou latenci a vysokou dostupnost, instance aplikací je potřeba nasazovat do datových center, která se nachází v blízkosti uživatelů. Tyto aplikace jsou obvykle nasazeny v několika datových centrech a jsou označovány jako globálně distribuované. Globálně distribuované aplikace potřebují globálně distribuovanou databázi, která dokáže transparentně replikovat data po celém světě, aby mohly pracovat s kopií dat, která je blízko uživatelům. 
 
 Azure Cosmos DB je globálně distribuovaná databázová služba, která je navržená tak, aby poskytovala nízkou latenci, elastickou škálovatelnost propustnosti, jasně definovanou sémantiku pro konzistenci dat a vysokou dostupnost. Krátce, pokud vaše aplikace potřebuje zaručit rychlou dobu odezvy kdekoliv na světě, pokud je potřeba, aby byla vždycky online, a potřebuje neomezenou a pružnou škálovatelnost propustnosti a úložiště, měli byste sestavit aplikaci na Azure Cosmos DB.
 
@@ -27,7 +27,7 @@ Pomocí Azure Cosmos DB můžete kdykoli přidat nebo odebrat oblasti přidruže
 
 ## <a name="key-benefits-of-global-distribution"></a>Klíčové výhody globální distribuce
 
-**Sestavování globálních aktivních – aktivních aplikací.** Díky novému protokolu replikace s více hlavními servery podporuje každá oblast i zápis a čtení. Funkce s více hlavními servery také umožňuje:
+**Sestavování globálních aktivních – aktivních aplikací.** Díky novému zápisu do více oblastí zapisuje replikační protokol každá oblast podporuje zápis i čtení. Funkce zápisu ve více oblastech taky umožňuje:
 
 - Neomezený pružný zápis a škálovatelnost pro čtení. 
 - 99,999% dostupnost čtení a zápisu všech po celém světě.
@@ -50,7 +50,7 @@ Pomocí Azure Cosmos DB rozhraní API pro více domovských míst vaše aplikace
 Přečtěte si další informace o globální distribuci v následujících článcích:
 
 * [Globální distribuce – pod pokličkou](global-dist-under-the-hood.md)
-* [Jak v aplikacích nakonfigurovat více hlavních serverů](how-to-multi-master.md)
+* [Jak nakonfigurovat zápisy ve více oblastech v aplikacích](how-to-multi-master.md)
 * [Konfigurace klientů pro vícedomé služby](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Přidat nebo odebrat oblasti z Azure Cosmos DB účtu](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Vytvoření vlastních zásad řešení konfliktů pro účty rozhraní SQL API](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

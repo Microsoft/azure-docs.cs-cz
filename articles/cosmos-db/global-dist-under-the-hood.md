@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 7e315a7366793d355967f777cbc1dda0f9277087
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c86207af51ebd1a9442afe6fa609598ec917bf15
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955909"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570446"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globální distribuce dat pomocí Azure Cosmos DB – pod kapotou
 
@@ -30,7 +30,7 @@ Když aplikace používající Cosmos DB elasticky škáluje propustnost Cosmos 
 
 Jak je znázorněno na následujícím obrázku, data v kontejneru jsou distribuována do dvou dimenzí – v oblasti a oblastech, po celém světě:  
 
-:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="fyzické oddíly" border="false":::
+:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="Systémová topologie" border="false":::
 
 Fyzický oddíl je implementován skupinou replik, která se nazývá *sada replik*. Každý počítač hostuje stovky replik, které odpovídají různým fyzickým oddílům v rámci pevně stanovené sady procesů, jak je znázorněno na obrázku výše. Repliky odpovídající fyzickým oddílům se dynamicky umísťují a vyrovnávají zatížení napříč počítači v rámci clusteru a datových center v rámci jedné oblasti.  
 
@@ -52,7 +52,7 @@ Fyzický oddíl je vyhodnocen jako samoobslužná skupina replik s vyrovnáván�
 
 Skupina fyzických oddílů, jedna z každé konfigurace s oblastmi databáze Cosmos, se skládá pro správu stejné sady klíčů replikovaných ve všech nakonfigurovaných oblastech. Tato vyšší koordinační primitivum se nazývá *oddíl-set* – geograficky distribuované dynamické překrytí fyzických oddílů, které spravují danou sadu klíčů. I když je daný fyzický oddíl (sada replik) vymezen v rámci clusteru, sada oddílů může zahrnovat clustery, datová centra a geografické oblasti, jak je znázorněno na následujícím obrázku:  
 
-:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Sady oddílů" border="false":::
+:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Systémová topologie" border="false":::
 
 Můžete si představit sadu oddílů jako geograficky rozptýlenou "Super sadu replik", která se skládá z několika sad replik, které mají stejnou sadu klíčů. Podobně jako u sady replik je členství v sadě oddílů také dynamické – mění se na základě implicitních operací správy fyzického oddílu, které přidávají nebo odebírají nové oddíly do nebo z dané sady oddílů (například při horizontálním navýšení kapacity propustnosti v kontejneru, přidání nebo odebrání oblasti do databáze Cosmos nebo při selhání). Vzhledem k tomu, že každý z oddílů (sada oddílů) spravuje členství oddílu v rámci vlastní sady replik, je členství plně decentralizované a vysoce dostupné. Během opětovné konfigurace sady oddílů je také navázána topologie překrytí mezi fyzickými oddíly. Topologie se dynamicky vybere na základě úrovně konzistence, zeměpisné vzdálenosti a dostupné šířky pásma sítě mezi zdrojovým a cílovým fyzickým oddílem.  
 
@@ -62,7 +62,7 @@ Služba umožňuje konfigurovat databáze Cosmos buď s jednou oblastí pro záp
 
 Náš návrh pro šíření aktualizací, řešení konfliktů a sledování příčin se nechte inspirovat z předchozích prací na [algoritmech epidemie](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) a [Bayou](https://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) systému. I když se zadržely jádra nápadů a poskytovaly pohodlný rámec referenčních informací pro komunikaci s návrhem systému Cosmos DB, mají také významnou transformaci, jak jsme je použili pro Cosmos DB systém. To bylo potřeba, protože předchozí systémy byly navržené bez zásad správného řízení prostředků ani s škálováním, na kterém Cosmos DB potřebuje pracovat, ani poskytovat funkce (například konzistence s ohraničenou neaktuálností) a přísné a komplexní SLA, které Cosmos DB doručí svým zákazníkům.  
 
-Odvolat, že sada oddílů je distribuována napříč několika oblastmi a následuje po Cosmos protokolu replikace databáze (Multi-master) k replikaci dat mezi fyzickými oddíly, které tvoří danou sadu oddílů. Každý fyzický oddíl (sada oddílů) přijímá zápisy a obsluhuje čtení obvykle pro klienty, kteří jsou místní k této oblasti. Zápisy přijaté fyzickým oddílem v rámci oblasti jsou trvale potvrzené a připravené v rámci fyzického oddílu před potvrzením klientovi. Jedná se o nezávazně-zápisy a šíří se do jiných fyzických oddílů v rámci sady oddílů pomocí kanálu anti-entropie. Klienti si můžou vyžádat buď nezávazně nebo potvrzené zápisy, předáním hlavičky žádosti. Šíření proti entropii (včetně četnosti šíření) je dynamické na základě topologie oddílu, oblasti a oblasti fyzických oddílů a úrovně konzistence nakonfigurované. V rámci sady oddílů Cosmos DB postupovat podle primárního schématu potvrzení s dynamicky vybraným oddílem arbiter. Výběr arbiter je dynamický a je nedílnou součástí opětovné konfigurace sady oddílů založené na topologii překrytí. Potvrzené zápisy (včetně víceřádkových nebo dávkových aktualizací) jsou zaručené pro objednání. 
+Odvolá, že sada oddílů je distribuovaná napříč několika oblastmi a následuje Cosmos databáze (zápisy ve více oblastech) pro replikaci dat mezi fyzickými oddíly, které tvoří danou sadu oddílů. Každý fyzický oddíl (sada oddílů) přijímá zápisy a obsluhuje čtení obvykle pro klienty, kteří jsou místní k této oblasti. Zápisy přijaté fyzickým oddílem v rámci oblasti jsou trvale potvrzené a připravené v rámci fyzického oddílu před potvrzením klientovi. Jedná se o nezávazně-zápisy a šíří se do jiných fyzických oddílů v rámci sady oddílů pomocí kanálu anti-entropie. Klienti si můžou vyžádat buď nezávazně nebo potvrzené zápisy, předáním hlavičky žádosti. Šíření proti entropii (včetně četnosti šíření) je dynamické na základě topologie oddílu, oblasti a oblasti fyzických oddílů a úrovně konzistence nakonfigurované. V rámci sady oddílů Cosmos DB postupovat podle primárního schématu potvrzení s dynamicky vybraným oddílem arbiter. Výběr arbiter je dynamický a je nedílnou součástí opětovné konfigurace sady oddílů založené na topologii překrytí. Potvrzené zápisy (včetně víceřádkových nebo dávkových aktualizací) jsou zaručené pro objednání. 
 
 Používáme kódované vektorové hodiny (s ID oblasti a logickými hodinami odpovídajícími jednotlivým úrovním shody v sadě replik a sadě oddílů) pro účely sledování příčin a jejich řešení ke zjištění a vyřešení konfliktů aktualizací. Topologie a algoritmus výběru druhé strany jsou navržené tak, aby se zajistila pevná a minimální velikost úložiště a minimální nároky na síť pro vektory verzí. Algoritmus garantuje striktní vlastnost konvergence.  
 

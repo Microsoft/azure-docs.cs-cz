@@ -9,12 +9,12 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
-ms.openlocfilehash: bba49014fd6b082ea015da259402a8e87bf4afff
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: df5a13b3d7c3fea98cd571a241b9d25e36ffeea6
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851977"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570632"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Centrum správy v Azure Data Factory
 
@@ -56,7 +56,7 @@ Chcete-li při publikování z větve spolupráce přepsat vygenerované paramet
 
 Triggery určují, kdy se má spustit spuštění kanálu. Aktuálně triggery můžou být na časovém plánu na zdi, pracují v pravidelných intervalech nebo závisí na události. Další informace najdete v informacích o [spuštění aktivační události](concepts-pipeline-execution-triggers.md#trigger-execution). V centru pro správu můžete vytvořit, upravit, odstranit nebo zobrazit aktuální stav triggeru.
 
-![Správa vlastních parametrů](media/author-management-hub/management-hub-triggers.png)
+![Snímek obrazovky, který ukazuje, kde vytvořit, upravit, odstranit nebo zobrazit aktuální stav triggeru](media/author-management-hub/management-hub-triggers.png)
 
 ### <a name="global-parameters"></a>Globální parametry
 

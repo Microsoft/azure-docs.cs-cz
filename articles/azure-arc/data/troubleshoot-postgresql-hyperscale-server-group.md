@@ -9,15 +9,15 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8d1c9027b6a9a7b295ce83e26281832beca1bc33
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 8e91a611084d201e6609f7e203eaa08c81e19a00
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531951"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569998"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>Řešení potíží s PostgreSQL skupinami serverů s škálovatelným škálováním
-Tento článek popisuje některé postupy, které můžete použít k řešení potíží se skupinou serverů. Kromě tohoto článku si můžete přečíst, jak používat [Kibana](monitor-grafana-kibana.md) k hledáníí protokolů nebo k vizualizaci metriky o skupině serverů pomocí [Grafana](monitor-grafana-kibana.md) . 
+Tento článek popisuje některé postupy, které můžete použít k řešení potíží se skupinou serverů. Kromě tohoto článku si můžete přečíst, jak používat [Kibana](monitor-grafana-kibana.md) k hledání protokolů, nebo k vizualizaci metriky o skupině serverů pomocí [Grafana](monitor-grafana-kibana.md) . 
 
 ## <a name="getting-more-details-about-the-execution-of-an-azdata-command"></a>Získání dalších podrobností o spuštění příkazu azdata
 Můžete přidat parametr **--Debug** k jakémukoli azdata příkazu, který spustíte. Provedete to tak, že v konzole zobrazíte další informace o spuštění tohoto příkazu. Měli byste najít informace, které vám pomůžou pochopit, jak se chování tohoto příkazu hodí.
@@ -31,7 +31,7 @@ nebo
 azdata arc postgres server edit -n postgres01 --extension SomeExtensionName --debug
 ```
 
-Kromě toho můžete pomocí parametru--Help na jakémkoli příkazu azdata zobrazit nápovědu, seznam parametrů pro konkrétní příkaz. Příklad:
+Kromě toho můžete pomocí parametru--Help na jakémkoli příkazu azdata zobrazit nápovědu, seznam parametrů pro konkrétní příkaz. Například:
 ```console
 azdata arc postgres server create --help
 ```

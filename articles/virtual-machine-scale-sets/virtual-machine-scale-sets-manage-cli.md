@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 02f868417ef9feea1771174e62152708c1257425
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d954f7cdda4cae65f822489828226e0364d0fc29
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502898"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570526"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Správa sady škálování virtuálních počítačů pomocí Azure CLI
 V průběhu životního cyklu škálovací sady virtuálních počítačů možná budete potřebovat spustit jednu nebo více úloh správy. Kromě toho možná budete chtít vytvořit skripty pro automatizaci různých úloh souvisejících s životním cyklem. Tento článek podrobně popisuje některé běžné příkazy rozhraní příkazového řádku Azure CLI, které umožňují provádět tyto úlohy.
@@ -49,6 +49,20 @@ az vmss get-instance-view \
     --instance-id 0
 ```
 
+Můžete také získat podrobné informace o *instanceView* pro všechny instance v jednom volání rozhraní API, které vám může zabránit omezení velikosti rozhraní API pro velké instalace. Zadejte vlastní hodnoty pro `--resource-group` , `--subscription` a `--name` .
+
+```azurecli
+az vmss list-instances \
+    --expand instanceView \
+    --select instanceView \
+    --resource-group <resourceGroupName> \
+    --subscription <subID> \
+    --name <vmssName>
+```
+
+```rest
+GET "https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSSName>/virtualMachines?api-version=2019-03-01&%24expand=instanceView"
+```
 
 ## <a name="list-connection-information-for-vms"></a>Vypsat informace o připojení pro virtuální počítače
 Pokud se chcete připojit k virtuálním počítačům v sadě škálování, budete přes SSH nebo RDP přiřazenou veřejnou IP adresu a číslo portu. Ve výchozím nastavení se pravidla překladu adres (NAT) přidávají do nástroje pro vyrovnávání zatížení Azure, který předává přenosy vzdáleného připojení do každého virtuálního počítače. Pokud chcete vypsat adresu a porty pro připojení k instancím virtuálních počítačů v sadě škálování, použijte příkaz [AZ VMSS list-instance-Connection-info](/cli/azure/vmss). Následující příklad vypíše informace o připojení pro instance virtuálních počítačů v sadě škálování s názvem *myScaleSet* a ve skupině prostředků *myResourceGroup* . Zadejte vlastní hodnoty pro tyto názvy:

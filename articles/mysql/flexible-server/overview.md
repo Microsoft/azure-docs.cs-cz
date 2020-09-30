@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4b79ee0999db0a19794cc167ae79ed6e58193b30
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4b629ddeb1db8dd94c1c96ecb62fafb9ca7bfc60
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947296"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569663"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -20,7 +20,7 @@ Azure Database for MySQL, kterou používá služba MySQL Community Edition, je 
 - Jeden server 
 - Flexibilní server (Preview)
 
-V tomto článku budeme poskytovat přehled a Úvod do základních konceptů flexibilního modelu nasazení serveru. 
+V tomto článku budeme poskytovat přehled a Úvod do základních konceptů flexibilního modelu nasazení serveru. Informace o tom, jak rozhodnout, jaká možnost nasazení je pro vaše zatížení vhodná, najdete v tématu [Volba správné možnosti serveru MySQL v Azure](./../select-right-deployment-type.md).
 
 ## <a name="overview"></a>Přehled
 
@@ -50,7 +50,7 @@ Pokud je nakonfigurovaná vysoká dostupnost zóny, služba zřídí a udržuje 
 
 Další podrobnosti najdete v tématu [Koncepty vysoké dostupnosti](concepts-high-availability.md) .
 
-:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Koncepční diagram redundantní vysoké dostupnosti zóny"::: 
+:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Koncepční diagram vysoké dostupnosti jedné zóny"::: 
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>Automatizované opravy pomocí spravovaného časového období údržby
 
@@ -112,6 +112,15 @@ Služba spouští komunitní verze MySQL. To umožňuje úplnou kompatibilitu ap
 
 - **Vypsat a obnovit** – pro offline migrace, kde můžou uživatelé získat nějaké výpadky, vypsat a obnovit pomocí nástrojů komunity, jako je mysqldump/mydumper, může poskytnout nejrychlejší způsob migrace. Podrobnosti najdete v tématu migrace pomocí výpisu paměti a obnovení. 
 - **Azure Database Migration Service** – pro bezproblémové a zjednodušené migrace na jediný server s minimálními výpadky je možné využít [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) . 
+
+## <a name="contacts"></a>Kontakty
+Pokud máte jakékoli dotazy nebo návrhy, které byste mohli potřebovat při práci s Azure Database for MySQL, pošlete e-mail týmu Azure Database for MySQL ([ @Ask Azure DB pro MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Tato e-mailová adresa není alias technické podpory.
+
+Můžete také využít tyto komunikační kanály:
+
+- Pro podporu Azure [vytvořte lístek podpory na webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Pokud řešíte problém s účtem, podejte prostřednictvím webu Azure Portal [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+- Pokud nám chcete sdělit svůj názor nebo požádat o nové funkce, využijte nástroj [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
 ## <a name="next-steps"></a>Další kroky
 Teď, když jste si přečetli Úvod do Azure Database for MySQL režimu nasazení na jeden server, jste připraveni:

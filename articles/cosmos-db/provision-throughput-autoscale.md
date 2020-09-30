@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87112af870100859ae008f77eefc4b58eac1b0fb
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791142"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570725"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Vytvoření kontejnerů a databází Azure Cosmos s využitím propustnosti automatického škálování
 
@@ -61,7 +61,7 @@ Vstupním bodem pro maximální propustnost pro automatické škálování `Tmax
 
 Pomocí [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) můžete povolit automatické škálování existující databáze nebo kontejneru. Můžete kdykoli přepínat mezi zajištěnou propustností automatického škálování a standardní (ruční). Další informace najdete v této [dokumentaci](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) . V současné době můžete pro všechna rozhraní API použít Azure Portal jenom k povolení automatického škálování u stávajících prostředků.
 
-## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a>Omezení propustnosti a úložiště pro automatické škálování
+## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> Omezení propustnosti a úložiště pro automatické škálování
 
 V případě jakékoli hodnoty `Tmax` může databáze nebo kontejner uchovávat celkem `0.01 * Tmax GB` . Po dosažení této velikosti úložiště se maximální počet RU/s automaticky zvýší v závislosti na nové hodnotě úložiště bez jakéhokoli dopadu na vaši aplikaci. 
 
@@ -77,7 +77,7 @@ Další podrobnosti najdete v této [dokumentaci](how-to-choose-offer.md) k výb
 | **Zřízená propustnost (RU/s)** | Ručně zřízené. | Automatické a okamžité škálování na základě vzorců využití úloh. |
 | **Frekvence – omezení požadavků/operací (429)**  | Může nastat, pokud spotřeba překročí zřízenou kapacitu. | Neproběhne, pokud použijete RU/s v rámci rozsahu propustnosti automatického škálování, který jste nastavili.    |
 | **Plánování kapacity** |  Musíte provést plánování kapacity a zajistit přesnou propustnost, kterou potřebujete. |    Systém se automaticky postará o plánování kapacity a správu kapacity. |
-| **Ceny** | Platíte za ručně zřízené RU/s za hodinu pomocí [standardu (ruční) ru/s za hodinovou sazbu](https://azure.microsoft.com/pricing/details/cosmos-db/). | Platíte za hodinu pro nejvyšší úroveň RU/s. systém bude škálovat až do hodiny. <br/><br/> U účtů oblastí s jedním zápisem platíte za použití RU/s za každou hodinu, a to pomocí [automatického ŠKÁLOVÁNÍ ru/s za hodinovou sazbu](https://azure.microsoft.com/pricing/details/cosmos-db/). <br/><br/>U účtů s více oblastmi zápisu se neúčtují žádné další poplatky za automatické škálování. Za tuto propustnost platíte za každou hodinu, a to pomocí stejné sady [multi-Master ru/s za hodinovou sazbu](https://azure.microsoft.com/pricing/details/cosmos-db/). |
+| **Ceny** | Platíte za ručně zřízené RU/s za hodinu pomocí [standardu (ruční) ru/s za hodinovou sazbu](https://azure.microsoft.com/pricing/details/cosmos-db/). | Platíte za hodinu pro nejvyšší úroveň RU/s. systém bude škálovat až do hodiny. <br/><br/> U účtů oblastí s jedním zápisem platíte za použití RU/s za každou hodinu, a to pomocí [automatického ŠKÁLOVÁNÍ ru/s za hodinovou sazbu](https://azure.microsoft.com/pricing/details/cosmos-db/). <br/><br/>U účtů s více oblastmi zápisu se neúčtují žádné další poplatky za automatické škálování. Platíte za propustnost, která se používá každou hodinu, a to za použití stejného [zápisu ru/s ve více oblastech za hodinovou sazbu](https://azure.microsoft.com/pricing/details/cosmos-db/). |
 | **Nejvhodnější pro typy úloh** |  Předvídatelné a stabilní úlohy|   Nepředvídatelné a proměnlivé úlohy  |
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,6 +1,6 @@
 ---
-title: Zálohování a obnovení pro Azure Database for PostgreSQL skupin serverů s škálovatelným škálováním
-description: Zálohování a obnovení pro Azure Database for PostgreSQL skupin serverů s škálovatelným škálováním
+title: Zálohování a obnovení pro skupiny serverů Azure Database for PostgreSQL Hyperscale
+description: Zálohování a obnovení pro skupiny serverů Azure Database for PostgreSQL Hyperscale
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d300f3e02d2a1a83410d5b7d981298a4743fb223
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dde4db7f3eb476b7645e910504e48fea8bb6df0c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936382"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569705"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Zálohování a obnovení pro skupiny serverů PostgreSQL s podporou rozšíření Azure ARC
 
@@ -52,7 +52,7 @@ Podívejte se na část s úložištěm výstupu:
     }
 ...
 ```
-Pokud se vám zobrazí část zálohy, znamená to, že vaše skupina serverů byla nakonfigurovaná tak, aby používala třídu úložiště zálohy, a je připravená na zálohování a obnovení. Pokud se nezobrazí část zálohy, musíte skupinu serverů odstranit a znovu vytvořit, aby se nakonfigurovala třída úložiště záloh. V tuto chvíli není ještě možné konfigurovat třídu úložiště zálohy po vytvoření skupiny serverů.
+Pokud se v části "zálohy" v výstupu tohoto příkazu zobrazuje název třídy úložiště, znamená to, že vaše skupina serverů byla nakonfigurovaná tak, aby používala třídu úložiště zálohy, a je připravená na zálohování a obnovení. Pokud se nezobrazí část zálohy, musíte skupinu serverů odstranit a znovu vytvořit, aby se nakonfigurovala třída úložiště záloh. V tuto chvíli není ještě možné konfigurovat třídu úložiště zálohy po vytvoření skupiny serverů.
 
 >[!IMPORTANT]
 >Pokud je vaše skupina serverů už nakonfigurovaná tak, aby používala třídu úložiště zálohy, přeskočte další krok a přejděte přímo na krok "provedení ručního úplného zálohování".
@@ -98,12 +98,12 @@ Kde:
 
 Tento příkaz koordinuje distribuovanou úplnou zálohu napříč všemi uzly, které tvoří PostgreSQL serverovou skupinu s povoleným rozšířením Azure ARC. Jinými slovy, budou zálohovat všechna data ve vašem koordinátorovi a uzlech pracovních procesů.
 
-Příklad:
+Například:
 ```console
 azdata arc postgres backup create --name MyBackup_Aug31_0730amPST --server-name postgres01
 ```
 
-Po dokončení zálohování se vrátí ID, název a stav zálohy. Příklad:
+Po dokončení zálohování se vrátí ID, název a stav zálohy. Například:
 ```console
 {
   "ID": "d134f51aa87f4044b5fb07cf95cf797f",
@@ -117,7 +117,7 @@ Po dokončení zálohování se vrátí ID, název a stav zálohy. Příklad:
 > - Naplánovat automatické zálohování
 > - Zobrazit průběh zálohování během jeho pořízení
 
-## <a name="list-backups"></a>Vypsat zálohy
+## <a name="list-backups"></a>Zobrazení seznamu záloh
 
 Zobrazí seznam záloh, které jsou k dispozici pro obnovení.
 
@@ -127,17 +127,19 @@ Chcete-li zobrazit seznam záloh, které jsou k dispozici pro obnovení, spusťt
 azdata arc postgres backup list --server-name <servergroup name>
 ```
 
-Příklad:
+Například:
 ```console
 azdata arc postgres backup list --server-name postgres01
 ```
 
 Vrátí výstup podobný tomuto:
 ```console
-ID                                Name                      State
---------------------------------  ------------------------  -------
-d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done
+ID                                Name                      State    Timestamp
+--------------------------------  ------------------------  -------  ------------------------------
+d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done     2020-08-31 14:30:00:00+00:00
 ```
+
+Časové razítko indikuje bod v čase UTC, kdy byla provedena záloha.
 
 ## <a name="restore-a-backup"></a>Obnovení zálohy
 
@@ -151,7 +153,7 @@ Kde:
 - __Backup-ID__ je ID zálohy zobrazené v příkazu pro zálohování seznamu (viz krok 3).
 Tím se koordinuje distribuované úplné obnovení napříč všemi uzly, které tvoří PostgreSQL serverovou skupinu s povoleným rozšířením Azure ARC. Jinými slovy, obnoví všechna data v koordinátorech a uzlech pracovních procesů.
 
-Příklad:
+Například:
 ```console
 azdata arc postgres backup restore --server-name postgres01 --backup-id d134f51aa87f4044b5fb07cf95cf797f
 ```

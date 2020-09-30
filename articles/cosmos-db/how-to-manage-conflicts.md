@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2ebe4fbf776ffb3b4568f996f20ba721b0cc5fca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c158bc176c329fb46d0acde64b043b1b3e669e18
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330510"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570681"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Správa zásad řešení konfliktů v Azure Cosmos DB
 
@@ -513,9 +513,9 @@ while conflict:
 Přečtěte si o následujících konceptech Azure Cosmos DB:
 
 - [Globální distribuce – pod pokličkou](global-dist-under-the-hood.md)
-- [Jak v aplikacích nakonfigurovat více hlavních serverů](how-to-multi-master.md)
+- [Jak nakonfigurovat zápisy ve více oblastech v aplikacích](how-to-multi-master.md)
 - [Konfigurace klientů pro vícedomé služby](how-to-manage-database-account.md#configure-multiple-write-regions)
 - [Přidat nebo odebrat oblasti z Azure Cosmos DB účtu](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-- [Jak v aplikacích nakonfigurovat více hlavních serverů](how-to-multi-master.md).
+- [Jak v aplikacích configuremulti zápisy do oblastí](how-to-multi-master.md).
 - [Dělení a distribuce dat](partition-data.md)
 - [Indexování ve službě Azure Cosmos DB](indexing-policies.md)

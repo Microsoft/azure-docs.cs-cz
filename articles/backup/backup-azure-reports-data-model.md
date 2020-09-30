@@ -3,12 +3,12 @@ title: Datový model pro události diagnostiky Azure Backup
 description: Tento datový model se odkazuje na režim konkrétní prostředek odeslání diagnostických událostí na Log Analytics (LA).
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: adc1442b674b9a6e947ef65967a2c2f1359e7d8a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c2c5d37596be104c4b1dc7e865586a4728a27bae
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017579"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569602"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Datový model pro události diagnostiky Azure Backup
 
@@ -38,9 +38,9 @@ Tato tabulka poskytuje informace o základních entitách zálohování, jako js
 | BackupManagementServerOSVersion   | Text          | Verze operačního systému serveru pro správu zálohování                   |
 | BackupManagementServerVersion     | Text          | Verze serveru pro správu zálohování                      |
 | LatestRecoveryPointLocation       | Text          | Umístění posledního bodu obnovení pro zálohovanou položku    |
-| LatestRecoveryPointTime           | DateTime      | Datum a čas posledního bodu obnovení pro zálohovanou položku   |
+| LatestRecoveryPointTime           | Datum a čas      | Datum a čas posledního bodu obnovení pro zálohovanou položku   |
 | OldestRecoveryPointLocation       | Text          | Umístění nejstaršího bodu obnovení pro zálohovanou položku    |
-| OldestRecoveryPointTime           | DateTime      | Datum a čas posledního bodu obnovení pro zálohovanou položku   |
+| OldestRecoveryPointTime           | Datum a čas      | Datum a čas posledního bodu obnovení pro zálohovanou položku   |
 | PolicyUniqueId                    | Text          | Jedinečné ID pro identifikaci zásad                             |
 | ProtectedContainerFriendlyName    | Text          | Popisný název chráněného serveru                        |
 | ProtectedContainerLocation        | Text          | Bez ohledu na to, jestli je chráněný kontejner umístěný místně nebo v Azure |
@@ -74,7 +74,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s výstrahami.
 | Kategorie                       | Text          | Kategorie dat diagnostiky nabízených do protokolů Azure Monitor – AddonAzureBackupAlerts |
 | AlertCode                      | Text          | Kód pro jedinečnou identifikaci typu výstrahy                     |
 | AlertConsolidationStatus       | Text          | Zjistit, jestli je výstraha konsolidovaná výstraha nebo ne         |
-| AlertOccurrenceDateTime        | DateTime      | Datum a čas, kdy byla výstraha vytvořena                     |
+| AlertOccurrenceDateTime        | Datum a čas      | Datum a čas, kdy byla výstraha vytvořena                     |
 | AlertRaisedOn                  | Text          | Typ entity, na které se aktivuje výstraha                        |
 | AlertSeverity                  | Text          | Závažnost výstrahy Například kritický                 |
 | AlertStatus                    | Text          | Stav výstrahy Například aktivní                     |
@@ -130,12 +130,12 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 | JobFailureCode                 | Text          | Řetězec kódu chyby, protože došlo k selhání úlohy    |
 | JobOperation                   | Text          | Operace, pro kterou je úloha spuštěná, například zálohování, obnovení, konfigurace zálohování |
 | JobOperationSubType            | Text          | Dílčí typ operace úlohy Například ' log ' v případě úlohy zálohování protokolu |
-| JobStartDateTime               | DateTime      | Datum a čas spuštění úlohy                       |
+| JobStartDateTime               | Datum a čas      | Datum a čas spuštění úlohy                       |
 | JobStatus                      | Text          | Stav dokončené úlohy, například dokončeno, neúspěšné   |
 | JobUniqueId                    | Text          | Jedinečné ID pro identifikaci úlohy                                |
 | ProtectedContainerUniqueId     | Text          | Jedinečný identifikátor chráněného serveru přidruženého k úloze |
 | RecoveryJobDestination         | Text          | Cíl úlohy obnovení, kde se data obnovují   |
-| RecoveryJobRPDateTime          | DateTime      | Datum a čas vytvoření obnoveného bodu obnovení |
+| RecoveryJobRPDateTime          | Datum a čas      | Datum a čas vytvoření obnoveného bodu obnovení |
 | RecoveryJobLocation            | Text          | Umístění, kam se uložil bod obnovení, který se má obnovit |
 | RecoveryLocationType           | Text          | Typ umístění pro obnovení                                |
 | SchemaVersion                  | Text          | Aktuální verze schématu, například **v2**            |
@@ -217,6 +217,29 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úložištěm.
 | VaultUniqueId                  | Text          | Jedinečné ID, které slouží k identifikaci trezoru souvisejícího s entitou úložiště |
 | VolumeFriendlyName             | Text          | Popisný název svazku úložiště                          |
 | SourceSystem                   | Text          | Zdrojový systém aktuálních dat – Azure                    |
+
+## <a name="valid-operation-names-for-each-table"></a>Platný název operace pro každou tabulku
+
+Každý záznam ve výše uvedených tabulkách má přidružený **název operace**. Název operace popisuje typ záznamu (a také určuje, která pole v tabulce jsou vyplněna pro tento záznam). Každá tabulka (kategorie) podporuje jeden nebo více jedinečných názvů operací. Níže je souhrn podporovaných názvů operací pro každou z výše uvedených tabulek.
+
+| **Název nebo kategorie tabulky**                   | **Podporované názvy operací** | **Popis**              |
+| ------------------------------------------- | ------------------------------|----------------------------- |
+| CoreAzureBackup | BackupItem | Představuje záznam obsahující všechny podrobnosti dané zálohované položky, například ID, název, typ atd. |
+| CoreAzureBackup | BackupItemAssociation | Představuje mapování mezi zálohovanou položkou a jejím přidruženým chráněným kontejnerem (Pokud je k dispozici). |
+| CoreAzureBackup | BackupItemFrontEndSizeConsumption | Představuje mapování mezi zálohovanou položkou a velikostí front-endu. |
+| CoreAzureBackup | ProtectedContainer | Představuje záznam obsahující všechny podrobnosti daného chráněného kontejneru, například ID, název, typ atd. |
+| CoreAzureBackup | ProtectedContainerAssociation | Představuje mapování mezi chráněným kontejnerem a trezorem použitým pro jeho zálohování. |
+| CoreAzureBackup | Trezor | Představuje záznam obsahující všechny podrobnosti o daném trezoru, např. ID, název, značky, umístění atd. |
+| CoreAzureBackup | RecoveryPoint | Představuje záznam, který obsahuje nejstarší a nejnovější bod obnovení pro danou zálohovanou položku. |
+| AddonAzureBackupJobs | Úloha |  Představuje záznam obsahující všechny podrobnosti dané úlohy. Například operace úlohy, počáteční čas, stav atd. |
+| AddonAzureBackupAlerts | Výstrahy | Představuje záznam obsahující všechny podrobnosti dané výstrahy. Například čas vytvoření výstrahy, závažnost, stav atd.  |
+| AddonAzureBackupStorage | Storage | Představuje záznam obsahující všechny podrobnosti dané entity úložiště. Například název úložiště, typ atd. |
+| AddonAzureBackupStorage | StorageAssociation | Představuje mapování mezi zálohovanou položkou a celková velikost cloudového úložiště spotřebovaného zálohovanou položkou. |
+| AddonAzureBackupProtectedInstance | ProtectedInstance | Představuje záznam, který obsahuje počet chráněných instancí pro každý kontejner nebo zálohovanou položku. V případě zálohování virtuálních počítačů Azure je počet chráněných instancí dostupný na úrovni zálohované položky pro jiné úlohy, které jsou dostupné na chráněné úrovni kontejneru. |
+| AddonAzureBackupPolicy | Zásady |  Představuje záznam obsahující všechny podrobnosti o zásadách zálohování a uchovávání informací. Například ID, název, nastavení uchovávání atd. |
+| AddonAzureBackupPolicy | PolicyAssociation | Představuje mapování mezi zálohovanou položkou a zásadami zálohování, které se na ně vztahují. |   
+
+Často je třeba provést spojení mezi různými tabulkami a různými sadami záznamů, které jsou součástí stejné tabulky (rozlišené podle názvu operace), a získat tak všechna pole požadovaná pro vaši analýzu. Pokud chcete začít, podívejte se na [Ukázkové dotazy](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries) . 
 
 ## <a name="next-steps"></a>Další kroky
 

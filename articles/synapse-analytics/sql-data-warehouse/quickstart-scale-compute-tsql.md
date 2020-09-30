@@ -1,5 +1,5 @@
 ---
-title: Škálování výpočetních prostředků ve službě Azure synapse Analytics – T-SQL
+title: 'Rychlý Start: škálování výpočetních prostředků ve službě Azure synapse Analytics – T-SQL'
 description: Škálujte výpočetní prostředky ve službě Azure synapse Analytics pomocí T-SQL a SQL Server Management Studio (SSMS). Kapacitu výpočetních prostředků můžete horizontálně navýšit, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 services: synapse-analytics
 author: Antvgski
@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: cb813c9a30b644459f3e586ed4313ca070b5a746
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d11474a3f3b5d8c314f67260fddbbe0a98fe5196
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212917"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569907"
 ---
 # <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Rychlý Start: škálování výpočetních prostředků ve službě Azure synapse Analytics pomocí T-SQL
 
 Škálujte výpočetní prostředky ve službě Azure synapse Analytics (dříve SQL DW) pomocí T-SQL a SQL Server Management Studio (SSMS). Kapacitu výpočetních prostředků můžete [horizontálně navýšit](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -36,7 +36,7 @@ Pomocí postupu v článku [Rychlý start: Vytvoření a připojení – portál
 
 V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) naváže připojení k serveru SQL Azure.
 
-1. Otevřete SQL Server Management Studio.
+1. Otevřete sadu SQL Server Management Studio.
 
 2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
 
@@ -63,7 +63,7 @@ Nastavení cíle služby obsahuje množství jednotek datového skladu pro datov
 Pokud se chcete podívat na aktuální jednotky svého datového skladu, postupujte takto:
 
 1. V části připojení k **mySampleDataWarehouseservername.Database.Windows.NET**rozbalte **systémové databáze**.
-2. Klikněte pravým tlačítkem na **hlavní větev** a vyberte **Nový dotaz**. Otevře se nové okno dotazu.
+2. Klikněte pravým tlačítkem na **master** a vyberte **New Query** (Nový dotaz). Otevře se nové okno dotazu.
 3. Spusťte následující dotaz pro výběr ze zobrazení dynamické správy sys.database_service_objectives.
 
     ```sql
@@ -89,7 +89,7 @@ V Azure synapse můžete zvýšit nebo snížit výpočetní prostředky tím, �
 
 Změna jednotek datového skladu:
 
-1. Klikněte pravým tlačítkem na **hlavní větev** a vyberte **Nový dotaz**.
+1. Klikněte pravým tlačítkem na **master** a vyberte **New Query** (Nový dotaz).
 2. Ke změně cíle služby použijte příkaz T-SQL [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Spusťte následující dotaz a změňte cíl služby na DW300.
 
     ```Sql
@@ -103,7 +103,7 @@ K zobrazení průběhu předchozí žádosti o změnu můžete použít syntaxi 
 
 Pokud se chcete dotázat na stav změny objektu služby:
 
-1. Klikněte pravým tlačítkem na **hlavní větev** a vyberte **Nový dotaz**.
+1. Klikněte pravým tlačítkem na **master** a vyberte **New Query** (Nový dotaz).
 2. Spuštěním následujícího dotazu se dotážete na stav DMV sys.dm_operation_status.
 
     ```sql
@@ -132,7 +132,7 @@ Pokud se chcete dotázat na stav změny objektu služby:
 
 ## <a name="check-data-warehouse-state"></a>Kontrola stavu datového skladu
 
-Když je datový sklad pozastavený, nemůžete se k němu připojit pomocí T-SQL. Pokud se chcete podívat na stav datového skladu, můžete použít powershellovou rutinu. Příklad najdete v části [Kontrola stavu datového skladu – PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state).
+Když je datový sklad pozastavený, nemůžete se k němu připojit pomocí T-SQL. Pokud se chcete podívat na stav datového skladu, můžete použít powershellovou rutinu. Příklad najdete v tématu [Zkontrolujte stav datového skladu – PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state).
 
 ## <a name="check-operation-status"></a>Kontrola stavu operace
 

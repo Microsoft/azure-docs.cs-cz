@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 8d795624097877d20f98a6fd205fb7136cf38007
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 11278f558f94fe358be94c914ecfeae6cfd5461e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069120"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570749"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>Jarní data Azure Cosmos DB v2 pro Core (SQL) API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -53,14 +53,14 @@ Ve [jarních cloudových aplikacích Azure](https://azure.microsoft.com/services
 > * [Jarní Gremliny dat pomocí Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 > Chcete se rychle dostat do budoucna?
-> 1. Nainstalujte [Minimální podporovaný běhový modul Java, JDK 8](/java/azure/jdk/?view=azure-java-stable), abyste mohli použít sadu SDK.
+> 1. Nainstalujte [Minimální podporovaný běhový modul Java, JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true), abyste mohli použít sadu SDK.
 > 2. Pomocí [počátečního startu](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)Vytvořte Azure Cosmos DBovou datovou aplikaci. Je to snadné!
 > 3. Projděte si [příručku pro vývojáře Azure Cosmos DB na jaře](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb), která vás provede základními požadavky Azure Cosmos DB.
 >
 > Pomocí [jarních Initializr](https://start.spring.io/)můžete rychle aktivovat aplikace na jaře Boot Starter.
 >
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 | Prostředek | Odkaz |
 |---|---|
@@ -170,7 +170,7 @@ Ve [jarních cloudových aplikacích Azure](https://azure.microsoft.com/services
 
 ### <a name="211-march-7-2019"></a>2.1.1 (7. března 2019)
 #### <a name="new-features"></a>Nové funkce
-* Aktualizuje hlavní verzi na 2.1.1.
+* Aktualizuje hlavní verzi na verzi 2.1.1.
 
 ### <a name="206-march-7-2019"></a>2.0.6 (7. března 2019)
 #### <a name="new-features"></a>Nové funkce
@@ -199,7 +199,7 @@ Ve [jarních cloudových aplikacích Azure](https://azure.microsoft.com/services
 #### <a name="key-bug-fixes"></a>Opravy chyb klíčů
 * Oprava chyby a zmírnění závad.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Další kroky

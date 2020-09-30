@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 371cfdc8bf2b09f703e1c7bd0153a433ff60ad16
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 4d1c68ba1e0b7db8afefa64abefc671d51e78bd4
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298959"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569517"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Vývoj pomocí rozhraní API služby Media Services v3
 
@@ -41,7 +41,7 @@ Místo vytváření instančního objektu zvažte přístup k rozhraní API slu�
 
 ### <a name="azure-ad-service-principal"></a>Instanční objekt služby Azure AD
 
-Pokud vytváříte aplikaci a instanční objekt služby Azure AD, musí být aplikace ve vlastním tenantovi. Po vytvoření aplikace udělte **přispěvateli** aplikace nebo roli **vlastníka** přístup k účtu Media Services.
+Aplikace a instanční objekt služby Azure AD by měly být ve stejném tenantovi. Po vytvoření aplikace udělte **přispěvateli** aplikace nebo roli **vlastníka** přístup k účtu Media Services.
 
 Pokud si nejste jistí, jestli máte oprávnění k vytvoření aplikace služby Azure AD, přečtěte si téma [požadovaná oprávnění](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 

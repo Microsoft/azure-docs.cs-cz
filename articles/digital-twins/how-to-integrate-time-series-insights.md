@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c6c5c9b00ec3309638a7c5618e5995c8c5f07b11
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: f64e959536b4abea4f2facb5ae3238b4843e4611
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564353"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569943"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrace digitálních vláken Azure s Azure Time Series Insights
 
@@ -65,7 +65,7 @@ Kurz digitálních vláken Azure [*: připojení uceleného řešení*](./tutori
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
     ```
 
-4. Vytvořte [koncový bod](concepts-route-events.md#create-an-endpoint) digitálních vláken Azure, který propojuje vaše téma Event Grid s instancí digitálních vláken Azure.
+4. Vytvořte [koncový bod](concepts-route-events.md#create-an-endpoint) digitálních vláken Azure, který propojuje centrum událostí s instancí digitálních vláken Azure.
 
     ```azurecli
     az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
@@ -203,11 +203,11 @@ V dalším kroku nastavíte instanci Time Series Insights pro příjem dat z dru
     1. Vyberte cenovou úroveň **PAYG (Preview)** .
     2. Pro toto prostředí budete muset zvolit **ID časové řady** . Vaše ID časové řady může mít až tři hodnoty, které použijete k hledání vašich dat v Time Series Insights. Pro tento kurz můžete použít **$dtId**. Přečtěte si další informace o výběru hodnoty ID v tématu [*osvědčené postupy pro výběr ID časové řady*](https://docs.microsoft.com/azure/time-series-insights/how-to-select-tsid).
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="UŽIVATELSKÉ rozhraní portálu pro vytváření Time Series Insightsho prostředí. Je vybrána cenová úroveň PAYG (Preview) a název vlastnosti časové řady je $dtId":::
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře, zvýrazňování Time Series Insights":::
 
 2. Vyberte **Další: zdroj události** a vyberte Event Hubs informace výše. Budete také muset vytvořit novou Event Hubs skupinu uživatelů.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="UŽIVATELSKÉ rozhraní portálu pro vytváření Time Series Insightsho zdroje událostí prostředí. Vytváříte zdroj událostí s informacemi z centra událostí výše. Vytváříte také novou skupinu příjemců.":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře, zvýrazňování Time Series Insights":::
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Zahájení odesílání dat IoT do digitálních vláken Azure
 
@@ -223,19 +223,19 @@ Nyní by data měla být předávána do instance Time Series Insights, která j
 
 1. Otevřete instanci Time Series Insights v [Azure Portal](https://portal.azure.com) (můžete vyhledat název instance na panelu hledání na portálu). Přejděte na *adresu URL aplikace Time Series Insights Explorer* zobrazená v přehledu instance.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Na kartě Přehled prostředí Time Series Insights vyberte adresu URL Time Series Insights Exploreru.":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře, zvýrazňování Time Series Insights":::
 
 2. V Průzkumníkovi se zobrazí vaše tři vlákna z digitálních vláken Azure, která se zobrazují vlevo. Vyberte _**thermostat67**_, vyberte **teplotu**a stiskněte **Přidat**.
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Vyberte * * thermostat67 * *, vyberte * * teplota * * a stiskněte * * Přidat * *.":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře, zvýrazňování Time Series Insights":::
 
 3. Nyní byste měli vidět počáteční čtení teploty z termostatu, jak je znázorněno níže. Tato stejná teplota se aktualizuje pro *room21* a *floor1*a tyto datové proudy můžete vizualizovat společně.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="Počáteční data o teplotě se graficky v Průzkumníkovi TSI. Jedná se o řádek náhodných hodnot mezi 68 a 85":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře, zvýrazňování Time Series Insights":::
 
 4. Pokud povolíte, aby simulace běžela mnohem déle, vizualizace bude vypadat přibližně takto:
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Data o teplotě pro každý z vláken se grafují ve třech paralelních řádcích různých barev.":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Zobrazení služeb Azure v rámci kompletního scénáře, zvýrazňování Time Series Insights":::
 
 ## <a name="next-steps"></a>Další kroky
 

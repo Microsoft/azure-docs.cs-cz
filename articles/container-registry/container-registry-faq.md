@@ -3,14 +3,14 @@ title: Nejčastější dotazy
 description: Odpovědi na nejčastější dotazy týkající se služby Azure Container Registry
 author: sajayantony
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 02facedda206a5621cabe62a07520303635dc3ff
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 499ef509fc9f8d9365d8db3f7058d12352db9bb2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245362"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570512"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
 
@@ -33,11 +33,11 @@ Pokyny k odstraňování potíží registru najdete v těchto tématech:
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Můžu vytvořit Azure Container Registry pomocí šablony Správce prostředků?
 
-Yes. Tady je [Šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry) , kterou můžete použít k vytvoření registru.
+Ano. Tady je [Šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry) , kterou můžete použít k vytvoření registru.
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Kontroluje se u obrázků v ACR chyba zabezpečení?
 
-Yes. Přečtěte si dokumentaci od [Azure Security Center](../security-center/azure-container-registry-integration.md), [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [azurová](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
+Ano. Přečtěte si dokumentaci od [Azure Security Center](../security-center/azure-container-registry-integration.md), [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [azurová](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Návody nakonfigurovat Kubernetes pomocí Azure Container Registry?
 
@@ -261,8 +261,8 @@ Karanténa obrázku je teď funkcí Preview ACR. Můžete povolit karanténní r
 
 Nastavení služby Azure Container registry pro anonymní (veřejné) zpřístupnění přístupu je aktuálně funkcí verze Preview. Pokud máte v registru nějaké [obory mapování (uživatelů) nebo prostředků tokenů](https://aka.ms/acr/repo-permissions) , odstraňte je prosím před vyvoláním lístku podpory (mapování oboru systému se dají ignorovat). Pokud chcete povolit veřejný přístup, otevřete prosím na adrese lístek podpory https://aka.ms/acr/support/create-ticket . Podrobnosti najdete na [fóru názory Azure](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
 
-
-
+> [!NOTE]
+> Anonymně lze získat přístup pouze k rozhraním API vyžadovaným k vyžádání známého obrázku. Žádná další rozhraní API pro operace, jako je seznam značek nebo seznam úložišť, nejsou anonymní přístupná.
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnostika a kontroly stavu
 
@@ -443,7 +443,7 @@ Obraťte se prosím na správce sítě nebo Zkontrolujte konfiguraci sítě a p�
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Proč dojde k selhání žádosti o přijetí změn nebo nabízení oznámení s nepovolenou operací?
 
 Tady je několik scénářů, ve kterých může být operace zakázaná:
-* Klasické Registry už nejsou podporované. Upgradujte prosím na podporovanou [úroveň služby](https://aka.ms/acr/skus) pomocí [AZ acr Update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) nebo Azure Portal.
+* Klasické Registry už nejsou podporované. Upgradujte prosím na podporovanou [úroveň služby](https://aka.ms/acr/skus) pomocí [AZ acr Update](/cli/azure/acr#az-acr-update) nebo Azure Portal.
 * Bitová kopie nebo úložiště je možná zamčené, aby se nemohlo odstranit ani aktualizovat. Aktuální atributy můžete zobrazit pomocí příkazu [AZ ACR show úložištì](./container-registry-image-lock.md) .
 * Pokud je obrázek v karanténě, některé operace jsou zakázané. Přečtěte si další informace o [karanténě](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 * Je možné, že váš registr dosáhl svého [limitu úložiště](container-registry-skus.md#service-tier-features-and-limits).
@@ -510,8 +510,8 @@ V tuto chvíli nepodporujeme GitLab pro aktivační události zdroje.
 |---|---|---|---|
 | GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ano |
 | Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Ano | Ano |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ano | No |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ano | No |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ne |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ano | Ne |
 
 ## <a name="run-error-message-troubleshooting"></a>Řešení potíží s chybovou zprávou
 

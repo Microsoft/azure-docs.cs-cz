@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: b65b5b847712ce32c6723d725be9cf2ed1f99050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcbf48081484941fd93f209bee21eb14c2c38310
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801514"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570133"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Vizuální monitorování služby Azure Data Factory
 
@@ -136,7 +136,7 @@ Můžete si také zobrazit historii opětovného spuštění určitého běhu ka
 
 Prostředky spotřebované spuštěním kanálu můžete zobrazit kliknutím na ikonu spotřebovat vedle spuštění. 
 
-![Monitorovat spotřebu](media/monitor-visually/monitor-consumption-1.png)
+![Snímek obrazovky, který ukazuje, kde vidíte prostředky spotřebované kanálem.](media/monitor-visually/monitor-consumption-1.png)
 
 Kliknutím na ikonu otevřete sestavu využití prostředků používaných tímto spuštěním kanálu. 
 
@@ -190,7 +190,7 @@ Pokud chcete tuto funkci seznámit a předvedení této funkce, podívejte se na
 
     ![Box pro kritéria cíle](media/monitor-visually/add-criteria-1.png)
 
-    ![Seznam kritérií](media/monitor-visually/add-criteria-2.png)
+    ![Snímek obrazovky, který ukazuje, kde vyberete jednu metriku pro nastavení podmínky upozornění.](media/monitor-visually/add-criteria-2.png)
 
     ![Seznam kritérií](media/monitor-visually/add-criteria-3.png)
 

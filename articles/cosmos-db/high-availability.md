@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 3f882375197fa45cfbc74ff7a80ed33fd33f33a3
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 1f2e90f9391654d10332b9f1a21c56fd22e2307b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400294"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570800"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Jak Azure Cosmos DB poskytovat vysokou dostupnost? 
 
@@ -30,7 +30,7 @@ Pokud je váš účet Azure Cosmos distribuován mezi *n* oblastí Azure, bude k
 
 ## <a name="slas-for-availability"></a>SLA pro dostupnost
 
-Jako globálně distribuovaná databáze Azure Cosmos DB poskytuje komplexní SLA zahrnující propustnost, latenci 99 percentilu, konzistenci a vysokou dostupnost. Následující tabulka uvádí záruky vysoké dostupnosti poskytované Azure Cosmos DB pro účty s jednou a více oblastmi. Pro zajištění vysoké dostupnosti vždy nakonfigurujte účty Azure Cosmos tak, aby měly více oblastí pro zápis (označované také jako multi-Master).
+Jako globálně distribuovaná databáze Azure Cosmos DB poskytuje komplexní SLA zahrnující propustnost, latenci 99 percentilu, konzistenci a vysokou dostupnost. Následující tabulka uvádí záruky vysoké dostupnosti poskytované Azure Cosmos DB pro účty s jednou a více oblastmi. Pro zajištění vysoké dostupnosti vždy nakonfigurujte účty Azure Cosmos tak, aby měly více oblastí pro zápis.
 
 |Typ operace  | Jedna oblast |Více oblastí (zápisy v jedné oblasti)|Více oblastí (zápisy ve více oblastech) |
 |---------|---------|---------|-------|
@@ -46,7 +46,7 @@ Ve výjimečných případech regionálního výpadku Azure Cosmos DB zajišťuj
 
 - V případě Azure Cosmos DB před potvrzením operace zápisu klientovi je data trvale potvrzená kvorem replik v rámci oblasti, která přijímá operace zápisu.
 
-- Účty s více oblastmi nakonfigurované s oblastmi s vícenásobným zápisem/s více hlavními servery budou vysoce dostupné pro zápis i čtení. Místní převzetí služeb při selhání je okamžité a nevyžaduje žádné změny aplikace.
+- Účty s více oblastmi nakonfigurované s oblastí s vícenásobným zápisem budou vysoce dostupné pro zápis i čtení. Místní převzetí služeb při selhání je okamžité a nevyžaduje žádné změny aplikace.
 
 - Účty v jedné oblasti mohou ztratit dostupnost po oblastním výpadku. Vždycky se doporučuje nastavit **aspoň dvě oblasti** (nejlépe dvě oblasti zápisu) s vaším účtem Azure Cosmos, abyste zajistili vysokou dostupnost ve všech časech.
 
@@ -125,7 +125,7 @@ az cosmosdb create \
 
 Zóny dostupnosti můžete povolit pomocí Azure Portal při vytváření účtu Azure Cosmos. Když vytváříte účet, ujistěte se, že jste povolili zápis **geografické redundance**, **více oblastí**a zvolíte oblast, kde se zóny dostupnosti podporují:
 
-:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="Povolit Zóny dostupnosti pomocí Azure Portal"::: 
+:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="Fyzické dělení"::: 
 
 ## <a name="building-highly-available-applications"></a>Vytváření vysoce dostupných aplikací
 

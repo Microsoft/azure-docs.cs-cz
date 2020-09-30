@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e378c1e25fb434e689eadd91e9e8562ffe7e61fd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846904"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570092"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Monitorování a Správa kanálů Azure Data Factory pomocí aplikace pro monitorování a správu
 > [!div class="op_single_selector"]
@@ -124,7 +124,7 @@ Kliknutím na okno aktivity můžete zobrazit podrobnosti v okně **vlastnosti**
 
 V pravém podokně se přepněte na kartu **Průzkumník okna aktivity** a zobrazí se další podrobnosti.
 
-![Průzkumník okna aktivity](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
+![Snímek obrazovky, který ukazuje, jak získat přístup k kartě Průzkumník okna aktivity.](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
 V části s **pokusy** se zobrazí také **vyřešené proměnné** pro každý pokus o spuštění aktivity.
 
@@ -162,7 +162,7 @@ Okna aktivit můžou být v jednom z následujících stavů:
     <th align="left">Status</th><th align="left">SubStatus</th><th align="left">Description</th>
 </tr>
 <tr>
-    <td rowspan="8">Čekání</td><td>ScheduleTime</td><td>Čas nepřijde o spuštění okna aktivity.</td>
+    <td rowspan="8">Čekající</td><td>ScheduleTime</td><td>Čas nepřijde o spuštění okna aktivity.</td>
 </tr>
 <tr>
 <td>DatasetDependencies</td><td>Nadřazené závislosti nejsou připravené.</td>
@@ -193,7 +193,7 @@ Okna aktivit můžou být v jednom z následujících stavů:
 <td>Zpracovává se okno aktivity.</td>
 </tr>
 <tr>
-<td rowspan="4">Failed</td><td>Vypršel časový limit</td><td>Provádění aktivit trvalo déle, než je povoleno aktivitou.</td>
+<td rowspan="4">Neúspěšný</td><td>Vypršel časový limit</td><td>Provádění aktivit trvalo déle, než je povoleno aktivitou.</td>
 </tr>
 <tr>
 <td>Zrušeno</td><td>Činnost okna byla zrušena uživatelem.</td>
@@ -210,14 +210,14 @@ Okna aktivit můžou být v jednom z následujících stavů:
 <td>Přeskočeno</td><td>-</td><td>Okno aktivity nebylo zpracováno.</td>
 </tr>
 <tr>
-<td>Žádná</td><td>-</td><td>Okno aktivity použité pro existenci jiného stavu, ale bylo resetováno.</td>
+<td>Žádné</td><td>-</td><td>Okno aktivity použité pro existenci jiného stavu, ale bylo resetováno.</td>
 </tr>
 </table>
 
 
 Když v seznamu kliknete na okno aktivity, zobrazí se vám podrobnosti v **Průzkumníkovi oken aktivity** nebo v pravém okně **vlastnosti** .
 
-![Průzkumník okna aktivity](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
+![Snímek obrazovky, který ukazuje, jak zobrazit podrobnosti o okně aktivity.](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
 ### <a name="refresh-activity-windows"></a>Aktualizovat okna aktivity
 Podrobnosti se neaktualizují automaticky, proto pomocí tlačítka Aktualizovat (druhé tlačítko) na panelu příkazů ručně aktualizujte seznam oken aktivit.  

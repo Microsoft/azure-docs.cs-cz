@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 0955cc8722c2a2b559935341cfd7e87bac6e4d3e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1e6d0343a68d502fb567f6010b8c8b3043e282a8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954651"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569497"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Celkové náklady na vlastnictví (vlastnictví) s Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Na rozdíl od cloudové databázové služby Azure Cosmos DB nevytvořili a sest
 
 Model zřizování Azure Cosmos DB bez serveru eliminuje nutnost nadměrného poskytování infrastruktury databáze. Azure Cosmos DB prostředky se poskytují bez nutnosti specializované konfigurace nebo licencování. V důsledku toho se Azure Cosmos DBé aplikace, které jsou v porovnání s databázemi OSS NoSQL, dají spouštět s využitím až 70 procent celkových nákladů na úspory vlastnictví. Příklady některých příkladů v reálném čase najdete v tématu [použití zákazníka – případy](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc). Mezi další výhody Azure Cosmos DB cenového modelu patří:
 
-* **Skvělé hodnota ceny:** Poskytovatelé trhu, zákazníci a partneři potvrdili větší hodnotu všech funkcí, které Azure Cosmos DB nabízí mnohem nižší cenu v porovnání s tím, co můžou zákazníci získat při implementaci těchto řešení na svých vlastních nebo jiných dodavatelích. Databáze funkce, jako jsou globální distribuce, víceúrovňové, jasně definované a intuitivní modely konzistence, automatické indexování výrazně zjednodušují Azure Cosmos DB bez jakýchkoli složitosti, režie nebo výpadků.
+* **Skvělé hodnota ceny:** Poskytovatelé trhu, zákazníci a partneři potvrdili větší hodnotu všech funkcí, které Azure Cosmos DB nabízí mnohem nižší cenu v porovnání s tím, co můžou zákazníci získat při implementaci těchto řešení na svých vlastních nebo jiných dodavatelích. Tato databáze zahrnuje globální distribuci, zápisy ve více oblastech, jasně definované a intuitivní modely konzistence. automatické indexování se výrazně zjednodušují s Azure Cosmos DB bez jakýchkoli složitosti, režie nebo výpadků.
 
 * **Není nutná žádná Správa NoSQL DevOps:** Když Azure Cosmos DB nikdo nepotřebuje ke správě nasazení používat DevOps, proveďte údržbu, škálování nebo opravu. Můžete spouštět všechny úlohy, které byste měli udělat s hostovaným clusterem OSS NoSQL, který je hostovaný místně nebo v cloudové infrastruktuře.
 

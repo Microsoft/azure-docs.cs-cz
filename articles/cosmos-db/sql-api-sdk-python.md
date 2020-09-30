@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 03c8f5acfc10738401f61de099f946c33497d705
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585980"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569817"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro SQL API: poznámky k verzi a prostředky
 
@@ -40,7 +40,7 @@ ms.locfileid: "88585980"
 | |  |
 |---|---|
 |**Stáhnout sadu SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python&preserve-view=true)|
 |**Pokyny k instalaci sady SDK**|[Pokyny k instalaci sady Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Začínáme**|[Začínáme se sadou Python SDK](create-sql-api-python.md)|
 |**Aktuální podporovaná platforma**|[Python 2,7](https://www.python.org/downloads/) a [Python 3.5.3 +](https://www.python.org/downloads/)|
@@ -113,7 +113,7 @@ ms.locfileid: "88585980"
 
 * 4.0.0 B2 je druhá iterace v naší snaze vytvořit klientskou knihovnu, která bude vyhovovat osvědčeným postupům jazyka Python.
 
-**Průlomové změny**
+**Změny způsobující chyby**
 
 * Připojení klienta bylo upraveno za účelem využívání kanálu HTTP definovaného v `azure.core.pipeline` .
 
@@ -126,7 +126,7 @@ ms.locfileid: "88585980"
 
 * Byl aktualizován konstruktor `CosmosClient` :
 
-  * `auth`Parametr byl přejmenován na `credential` a bude nyní přebírat typ ověřování přímo. To znamená, že hodnota hlavního klíče, slovník tokenů prostředků nebo seznam oprávnění, se dají předat. Starý formát slovníku je však stále podporován.
+  * `auth`Parametr byl přejmenován na `credential` a bude nyní přebírat typ ověřování přímo. To znamená, že hodnota primárního klíče, slovník tokenů prostředků nebo seznam oprávnění, se dají předat. Starý formát slovníku je však stále podporován.
 
   * `connection_policy`Parametr byl vytvořen jako parametr pouze klíčová slova a i když je stále podporován, každý z jednotlivých atributů zásady lze nyní předat jako explicitní argumenty klíčového slova:
 

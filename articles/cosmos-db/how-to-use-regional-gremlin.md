@@ -8,15 +8,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3dd7df738f49b14a16be8a9741fb2c82ed3bf97c
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 5537b70f9852f5b5a17362c13e2c9b8e8e9fc43c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409005"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570617"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionální koncové body pro účet Azure Cosmos DB Graph
-Databáze Azure Cosmos DB Graph je [globálně distribuovaná](distribute-data-globally.md) , takže aplikace můžou používat víc koncových bodů pro čtení. Aplikace, které potřebují oprávnění k zápisu ve více umístěních, by měly umožňovat použití [více hlavních](how-to-multi-master.md) možností.
+Databáze Azure Cosmos DB Graph je [globálně distribuovaná](distribute-data-globally.md) , takže aplikace můžou používat víc koncových bodů pro čtení. Aplikace, které potřebují oprávnění k zápisu ve více umístěních, by měly povolit možnost [zápisu ve více oblastech](how-to-multi-master.md) .
 
 Důvody pro výběr více než jedné oblasti:
 1. **Horizontální škálovatelnost čtení** – jelikož zatížení aplikace se zvyšuje, může být obezřetné směrovat provoz čtení do různých oblastí Azure.

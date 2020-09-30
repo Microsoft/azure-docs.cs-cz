@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: a68207b3e5390a26e8d62ee6b725b0768ea565a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7583e35cad03927d003de7a836de03af091b55eb
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116073"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569692"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Práce s účtem Azure Cosmos
 
@@ -21,7 +21,7 @@ Azure Cosmos DB je plně spravovaná platforma jako služba (PaaS). Pokud chcete
 
 Účet Azure Cosmos je základní jednotkou globální distribuce a vysokou dostupnost. Pro globální distribuci vašich dat a propustnosti napříč několika oblastmi Azure můžete kdykoli přidat a odebrat oblasti Azure na účet Azure Cosmos. Účet Azure Cosmos můžete nakonfigurovat tak, aby měl buď jednu, nebo více oblastí zápisu. Další informace najdete v tématu [jak přidat a odebrat oblasti Azure na účet Azure Cosmos](how-to-manage-database-account.md). Můžete nakonfigurovat výchozí úroveň [konzistence](consistency-levels.md) v účtu Azure Cosmos. Azure Cosmos DB poskytuje komplexní SLA včetně propustnosti, latence na 99 percentilu, konzistence a vysoké dostupnosti. Další informace najdete v tématu [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/).
 
-Pokud chcete bezpečně spravovat přístup ke všem datům v rámci vašeho účtu Azure Cosmos, můžete použít [hlavní klíče](secure-access-to-data.md) přidružené k vašemu účtu. Abyste mohli lépe zabezpečit přístup k vašim datům, můžete na svém účtu Azure Cosmos nakonfigurovat [koncový bod služby virtuální](vnet-service-endpoint.md) [sítě a IP adresu brány firewall](firewall-support.md) . 
+Pokud chcete bezpečně spravovat přístup ke všem datům v rámci vašeho účtu Azure Cosmos, můžete použít [primární klíče](secure-access-to-data.md) přidružené k vašemu účtu. Abyste mohli lépe zabezpečit přístup k vašim datům, můžete na svém účtu Azure Cosmos nakonfigurovat [koncový bod služby virtuální](vnet-service-endpoint.md) [sítě a IP adresu brány firewall](firewall-support.md) . 
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Prvky v účtu Azure Cosmos
 

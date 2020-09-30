@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/29/2020
-ms.openlocfilehash: d28cd7a7edd5d6405761bf21ee87ec39dc9ec9cb
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 09/29/2020
+ms.openlocfilehash: 6802e3f6c0892993f9ffe4373f43274362b8a003
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448544"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569673"
 ---
 # <a name="data-flow-script-dfs"></a>Skript toku dat (DFS)
 
@@ -210,6 +210,14 @@ Tento fragment kódu přidá novou agregovanou transformaci do toku dat, který 
 ```
 aggregate(groupBy(mycols = sha2(256,columns())),
     each(match(true()), $$ = first($$))) ~> DistinctRows
+```
+
+### <a name="check-for-nulls-in-all-columns"></a>Kontrolovat hodnoty NULL ve všech sloupcích
+Toto je fragment kódu, který můžete vložit do toku dat a obecně kontrolovat všechny sloupce pro hodnoty NULL. Tato technika využívá posun schématu k prohlédnutí všech sloupců ve všech řádcích a používá podmíněné rozdělení k oddělení řádků s hodnotami NULL z řádků bez hodnot NULL. 
+
+```
+CreateColumnArray split(contains(array(columns()),isNull(#item)),
+    disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
 ```
 
 ## <a name="next-steps"></a>Další kroky

@@ -9,16 +9,19 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: ea243ffd125a527949c4a264177e78de04a22aae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 546c53334b7700ab73c22edb2d82b324bfad61a9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046394"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569435"
 ---
 # <a name="plan-your-azure-time-series-insights-gen1-environment"></a>Plánování prostředí Azure Time Series Insights Gen1
+
+> [!CAUTION]
+> Toto je Gen1 článek.
 
 Tento článek popisuje, jak naplánovat Azure Time Series Insights prostředí Gen1 na základě očekávané míry příchozího přenosu dat a vašich požadavků na uchovávání dat.
 
@@ -48,12 +51,12 @@ Ve výchozím nastavení Azure Time Series Insights uchovává data na základě
 
 ## <a name="data-retention"></a>Uchovávání dat
 
-Nastavení **doby uchovávání dat** můžete změnit v prostředí Azure Time Series Insights. Můžete povolit až 400 dnů uchovávání. 
+Nastavení **doby uchovávání dat** můžete změnit v prostředí Azure Time Series Insights. Můžete povolit až 400 dnů uchovávání.
 
 Azure Time Series Insights má dva režimy:
 
-* Jeden režim optimalizuje pro nejaktuálnější data. Vynutila zásady pro **mazání starých dat** , která opustí poslední data dostupná s instancí. Tento režim je ve výchozím nastavení zapnutý. 
-* Ostatní data optimalizují, aby zůstala pod nakonfigurovanými limity uchování. **Pozastavení** příchozího přenosu dat znemožňuje, aby se nová data nezobrazovala, když se vybrala při **překročení limitu úložiště**.
+- Jeden režim optimalizuje pro nejaktuálnější data. Vynutila zásady pro **mazání starých dat** , která opustí poslední data dostupná s instancí. Tento režim je ve výchozím nastavení zapnutý.
+- Ostatní data optimalizují, aby zůstala pod nakonfigurovanými limity uchování. **Pozastavení** příchozího přenosu dat znemožňuje, aby se nová data nezobrazovala, když se vybrala při **překročení limitu úložiště**.
 
 Můžete upravit dobu uchovávání a přepínání mezi oběma režimy na stránce konfigurace prostředí v Azure Portal.
 
@@ -83,7 +86,7 @@ Druhá oblast, která se zaměřuje na plánování Azure Time Series Insightsho
 
 Kapacitu SKU S1 nebo S2 můžete zvýšit na 10 jednotek v jednom prostředí. Z prostředí S1 nemůžete migrovat na S2. Nemůžete migrovat z prostředí S2 na S1.
 
-V případě kapacity příchozího přenosu dat nejprve určete celkový počet příchozích dat, který budete potřebovat měsíčně. V dalším kroku určete, jaké jsou požadavky na minuty. 
+V případě kapacity příchozího přenosu dat nejprve určete celkový počet příchozích dat, který budete potřebovat měsíčně. V dalším kroku určete, jaké jsou požadavky na minuty.
 
 Omezování a latence hrají roli v rámci kapacity po minutách. Pokud máte špičku vstupních dat, která trvá méně než 24 hodin, Azure Time Series Insights se dá zachytit na míru příchozího přenosu dvou časů, jakou jsou sazby uvedené v předchozí tabulce.
 

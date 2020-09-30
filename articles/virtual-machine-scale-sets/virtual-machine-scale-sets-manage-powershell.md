@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 45bace9ac174b353bb4662a27e800c0de4eada4b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: eee4dd7fae872f6b3ddd01f60aba732edc170766
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072719"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570585"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Správa sady škálování virtuálních počítačů pomocí Azure PowerShell
 
@@ -45,6 +45,15 @@ Pokud chcete zobrazit další informace o konkrétní instanci virtuálního po�
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
 ```
 
+Můžete také získat podrobné informace o *instanceView* pro všechny instance v jednom volání rozhraní API, které vám může zabránit omezení velikosti rozhraní API pro velké instalace.
+
+```powershell
+Get-AzVmssVM -InstanceView -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
+```
+
+```rest
+GET "https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSSName>/virtualMachines?api-version=2019-03-01&%24expand=instanceView"
+```
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>Změna kapacity škálovací sady
 Předchozí příkazy ukázaly informace o vaší sadě škálování a instancích virtuálních počítačů. Pokud chcete zvýšit nebo snížit počet instancí v sadě škálování, můžete kapacitu změnit. Sada škálování automaticky vytvoří nebo odebere požadovaný počet virtuálních počítačů a potom nakonfiguruje virtuální počítače pro příjem přenosů aplikací.

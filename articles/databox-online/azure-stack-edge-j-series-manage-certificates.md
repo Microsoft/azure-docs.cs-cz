@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/28/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 59924312fe0483d11d0f70ce83b8f6e4b0e198dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e5c8a496c60d3bba81040716c74bca7b5cb6095e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890755"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569424"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Použití certifikátů se zařízením Azure Stack Edge pro GPU
 
@@ -61,7 +61,7 @@ Tyto certifikáty by mohly představovat kořenové certifikáty nebo zprostřed
 - Kořenové certifikáty by měly být podepisování certifikátů řetězu.
 - Kořenové certifikáty je možné nahrát na vaše zařízení v následujícím formátu: 
     - **Der** – tyto soubory jsou k dispozici jako `.cer` Přípona souboru.
-    - **Kódování Base-64 nebo PEM** – jsou k dispozici `.cer` také jako rozšíření.
+    - **Kódování Base-64ed** – jsou k dispozici jako `.cer` Přípona souboru.
     - **P7b** – tento formát se používá jenom pro certifikáty podpisového řetězce, které obsahují kořenové a zprostředkující certifikáty.
 - Certifikáty podpisového řetězce se nahrají vždycky před nahráním jakýchkoli dalších certifikátů.
 
@@ -275,11 +275,11 @@ Certifikáty, které jste ve výchozím nastavení vytvořili pro vaše zaříze
 
     1. Nejdřív nahrajte kořenové certifikáty. V místním webovém uživatelském rozhraní přejdete na **certifikáty > + přidat certifikát**.
 
-        ![Přidat certifikát podpisového řetězu](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
+        ![Přidat certifikát podpisového řetězce 1](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
 
     2. Následně nahrajte certifikáty koncového bodu. 
 
-        ![Přidat certifikát podpisového řetězu](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
+        ![Přidat certifikát podpisového řetězu 2](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
 
         Vyberte soubory certifikátů ve formátu *. pfx* a zadejte heslo, které jste zadali při exportu certifikátu. Použití certifikátu Azure Resource Manager může trvat několik minut.
 
@@ -383,20 +383,20 @@ Záloha souboru. pfx se teď uloží do umístění, které jste vybrali a kter�
 
 1. V osobním úložišti certifikátů vyberte kořenový certifikát. Klikněte pravým tlačítkem a vyberte **všechny úlohy > exportovat...**
 
-    ![Export certifikátu 1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
+    ![Exportovat certifikát DER 1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
 
 2. Otevře se Průvodce certifikátem. Vyberte formát **binární X. 509 kódovaný jako der (CER)**. Vyberte **Další**.
 
-    ![Export certifikátu 2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
+    ![Exportovat certifikát DER 2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
 
 3. Vyhledejte a vyberte umístění, kam chcete exportovat soubor formátu. cer.
 
-    ![Exportovat certifikát 3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
+    ![Exportovat certifikát DER 3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
 
 
 4. Vyberte **Dokončit**.
 
-    ![Export certifikátu 4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
+    ![Exportovat certifikát DER 4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
 
 
 ## <a name="supported-certificate-algorithms"></a>Podporované algoritmy certifikátů
@@ -410,11 +410,11 @@ Záloha souboru. pfx se teď uloží do umístění, které jste vybrali a kter�
 
 Pokud přenesete do vlastních certifikátů, vyprší platnost certifikátů obvykle za 1 rok nebo 6 měsíců. Chcete-li zobrazit datum vypršení platnosti vašeho certifikátu, klikněte na stránce **certifikáty** v místním webovém uživatelském rozhraní vašeho zařízení. Pokud vyberete konkrétní certifikát, můžete si prohlédnout datum vypršení platnosti certifikátu.
 
-## <a name="rotate-certificates"></a>Rotace certifikátů
+<!--## Rotate certificates
 
-V této verzi není implementováno střídání certifikátů. Neoznamujete vám také nedokončené datum vypršení platnosti vašeho certifikátu. 
+Rotation of certificates is not implemented in this release. You are also not notified of the pending expiration date on your certificate. 
 
-Zobrazte datum vypršení platnosti certifikátu na stránce **certifikáty** v místním webovém uživatelském rozhraní vašeho zařízení. Jakmile se blíží vypršení platnosti certifikátu, vytvořte a nahrajte nové certifikáty podle podrobných pokynů v tématu [Vytvoření a nahrání certifikátů](azure-stack-edge-j-series-manage-certificates.md).
+View the certificate expiration date on the **Certificates** page in the local web UI of your device. Once the certificate expiration is approaching, create and upload new certificates as per the detailed instructions in [Create and upload certificates](azure-stack-edge-j-series-manage-certificates.md).-->
 
 ## <a name="next-steps"></a>Další kroky
 

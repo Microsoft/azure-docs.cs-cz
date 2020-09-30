@@ -1,5 +1,5 @@
 ---
-title: Vytvoření šablony Azure Resource Manager pracovního prostoru Azure synapse
+title: 'Rychlý Start: Vytvoření šablony Azure Resource Manager pracovního prostoru Azure synapse'
 description: Naučte se vytvořit pracovní prostor synapse pomocí šablony Azure Resource Manager.
 services: azure-resource-manager
 author: julieMSFT
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
-ms.openlocfilehash: c64f3d835eeede79f937bbaadb0a54992176438d
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: dc6d36f2316e0ae19ce8b813fa9eb127b1a9cf1f
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500921"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569015"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-a-deployment-template"></a>Rychlý Start: vytvoření pracovního prostoru Azure synapse pomocí šablony nasazení
 
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Šablonu můžete zkontrolovat tak, že vyberete odkaz **vizualizace** následujícím způsobem:
 
-[![Vizualizace](../media/template-deployments/template-visualize-button.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
+[![Vizualizace](../media/template-deployments/template-visualize-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
 Šablona definuje dva prostředky:
 

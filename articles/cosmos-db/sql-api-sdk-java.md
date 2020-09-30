@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 406690eb1303a25002d3d787e746bd091dd83fc6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 6db0965c0b5e28ac1e70da2cbeea276728f29822
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586124"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569931"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -49,12 +49,12 @@ Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní 
 |**Přispívání do sady SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**Začínáme**|[Začínáme se sadou Java SDK](sql-api-java-get-started.md)|
 |**Kurz webové aplikace**|[Vývoj webových aplikací pomocí Azure Cosmos DB](sql-api-java-application.md)|
-|**Minimální podporovaná doba běhu**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
+|**Minimální podporovaná doba běhu**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="251"></a><a name="2.5.1"></a>2.5.1
-* Opravuje problém mezipaměti hlavního oddílu v dotazucollection dokumentu.
+* Opravuje problém v mezipaměti primárního oddílu pro dotazcollection dokumentu.
 
 ### <a name="250"></a><a name="2.5.0"></a>2.5.0
 * Byla přidána podpora pro 449 opakování vlastní konfigurace.
@@ -102,7 +102,7 @@ Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní 
 * Opravená chyba v globálním správci koncových bodů pro vynucení aktualizace.
 * Opravená chyba pro upsertuje s předběžnými podmínkami v přímém režimu.
 
-### <a name="211"></a><a name="2.1.1"></a>2.1.1
+### <a name="211"></a><a name="2.1.1"></a>bodů
 * Opravená chyba v mezipaměti adres brány
 
 ### <a name="210"></a><a name="2.1.0"></a>2.1.0
@@ -285,7 +285,7 @@ Microsoft bude před vyřazením sady SDK do novější nebo podporované verze 
 | [2.2.0](#2.2.0) |27. března 2019 |--- |
 | [2.1.3](#2.1.3) |13. března 2019 |--- |
 | [2.1.2](#2.1.2) |9. března 2019 |--- |
-| [2.1.1](#2.1.1) |DEC 13, 2018 |--- |
+| [bodů](#2.1.1) |DEC 13, 2018 |--- |
 | [2.1.0](#2.1.0) |20. listopadu 2018 |--- |
 | [2.0.0](#2.0.0) |Září 21, 2018 |--- |
 | [1.16.4](#1.16.4) |Září 10, 2018 |30. května 2020 |

@@ -6,18 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 16452337eeda86a9b019897954179bfe6db6e1b2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44a62643c459fb61e7a2a95c2a9dd55ea4f19111
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031988"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570644"
 ---
-# <a name="restrict-user-access-to-data-operations-only"></a>Omezení přístupu uživatelů jenom na datové operace
+# <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>Omezení přístupu uživatelů k operacím s daty v Azure Cosmos DB
 
 V Azure Cosmos DB existují dva způsoby, jak ověřit interakce s databázovou službou:
+
 - použití identity Azure Active Directory při interakci s Azure Portal,
-- použití [klíčů](secure-access-to-data.md#master-keys) Azure Cosmos DB nebo [tokenů prostředků](secure-access-to-data.md#resource-tokens) při vydávání volání z rozhraní API a sad SDK.
+- použití [klíčů](secure-access-to-data.md#primary-keys) Azure Cosmos DB nebo [tokenů prostředků](secure-access-to-data.md#resource-tokens) při vydávání volání z rozhraní API a sad SDK.
 
 Každá metoda ověřování poskytuje přístup k různým sadám operací s nějakým překrytím:
 
@@ -35,10 +36,10 @@ Další části tohoto článku ukazují, jak provést tyto kroky.
 > Aby bylo možné spustit příkazy v dalších částech, je nutné nainstalovat Azure PowerShell modulu 3.0.0 nebo novějším a také [roli vlastníka Azure](../role-based-access-control/built-in-roles.md#owner) v předplatném, které chcete upravit.
 
 V skriptech PowerShell v dalších částech nahraďte následující zástupné symboly hodnotami, které jsou specifické pro vaše prostředí:
-- `$MySubscriptionId`– ID předplatného, které obsahuje účet Azure Cosmos, u kterého chcete omezit oprávnění. Například: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
-- `$MyResourceGroupName`– Skupina prostředků obsahující účet Azure Cosmos. Například: `myresourcegroup`.
-- `$MyAzureCosmosDBAccountName`– Název vašeho účtu Azure Cosmos. Například: `mycosmosdbsaccount`.
-- `$MyUserName`– Přihlášení ( username@domain ) uživatele, pro kterého chcete omezit přístup. Například: `cosmosdbuser@contoso.com`.
+- `$MySubscriptionId` – ID předplatného, které obsahuje účet Azure Cosmos, u kterého chcete omezit oprávnění. Například: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
+- `$MyResourceGroupName` – Skupina prostředků obsahující účet Azure Cosmos. Například: `myresourcegroup`.
+- `$MyAzureCosmosDBAccountName` – Název vašeho účtu Azure Cosmos. Například: `mycosmosdbsaccount`.
+- `$MyUserName` – Přihlášení ( username@domain ) uživatele, pro kterého chcete omezit přístup. Například: `cosmosdbuser@contoso.com`.
 
 ## <a name="select-your-azure-subscription"></a>Vyberte své předplatné Azure.
 

@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 4e9d632880b792d16ffe752a55396c649c6688e5
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 2301219db250b97fd7ea2eb3814f5eba2c70148a
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398814"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569873"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
-V dnešních aplikacích je nutné, aby byly vysoce reagovaly a vždy online. Aby bylo možné dosáhnout nízké latence a vysoké dostupnosti, je třeba instance těchto aplikací nasadit v datových centrech, které jsou blízko jejich uživatelů. Aplikace musí v reálném čase reagovat na velké změny využití v době špičky, ukládat stále větší objemy dat a zpřístupnit tato data uživatelům v milisekundách.
+V současné době se od aplikací žádá, aby byly vysoce responzivní a vždy online. Aby bylo možné zajistit nízkou latenci a vysokou dostupnost, instance aplikací je potřeba nasazovat do datových center, která se nachází v blízkosti uživatelů. Aplikace musí v reálném čase reagovat na velké změny ve využití během špiček, ukládat stále větší a větší objemy dat a umožnit jejich dostupnost uživatelům v řádech milisekund.
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Když kliknete na tlačítko, Cosmos DB vám umožní elasticky a nezávisle škálovat propustnost a úložiště napříč libovolným počtem oblastí Azure po celém světě. Můžete elasticky škálovat propustnost a úložiště a využít rychlý přístup k datům v řádu milisekund pomocí vašich oblíbených rozhraní API, včetně: SQL, MongoDB, Cassandra, Tables nebo Gremlin. Cosmos DB poskytuje komplexní [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) (SLA) kvůli propustnosti, latenci, dostupnosti a zárukám konzistence bez dalších nabídek databázových služeb.
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Jedním kliknutím na tlačítko v ní můžete elasticky a nezávisle škálovat propustnost a úložiště v libovolném počtu oblastí Azure po celém světě. Můžete elasticky škálovat propustnost a úložiště a využít rychlý přístup k datům v řádu milisekund pomocí vašich oblíbených rozhraní API, včetně: SQL, MongoDB, Cassandra, Tables nebo Gremlin. Cosmos DB poskytuje komplexní [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) (SLA) kvůli propustnosti, latenci, dostupnosti a zárukám konzistence bez dalších nabídek databázových služeb.
 
 Můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků nebo využít [Azure Cosmos dB úrovně Free](optimize-dev-test.md#azure-cosmos-db-free-tier) k získání účtu s prvním 400 ru/s a 5 GB volného místa.
 
@@ -36,19 +36,19 @@ Cosmos DB umožňuje kdykoli přidat nebo odebrat libovolné oblasti Azure do ú
 
 ### <a name="always-on"></a>Vždy zapnuto
 
-Díky důkladné integraci s infrastrukturou Azure a [transparentní replikací s více hlavními servery](global-dist-under-the-hood.md)poskytuje Cosmos DB [99,999% vysokou dostupnost](high-availability.md) pro čtení i zápis. Cosmos DB taky poskytuje možnost programově (nebo prostřednictvím portálu) vyvolat místní převzetí služeb při selhání vašeho účtu Cosmos. Tato možnost pomáhá zajistit, že vaše aplikace bude v případě regionálních havárií navržena pro převzetí služeb při selhání.
+Díky důkladné integraci s infrastrukturou Azure a [transparentní replikací pro zápis ve více oblastech](global-dist-under-the-hood.md)poskytuje Cosmos DB [99,999% vysokou dostupnost](high-availability.md) pro čtení i zápis. Cosmos DB taky poskytuje možnost programově (nebo prostřednictvím portálu) vyvolat místní převzetí služeb při selhání vašeho účtu Cosmos. Tato možnost pomáhá zajistit, že vaše aplikace bude v případě regionálních havárií navržena pro převzetí služeb při selhání.
 
 ### <a name="elastic-scalability-of-throughput-and-storage-worldwide"></a>Elastická škálovatelnost propustnosti a úložiště po celém světě
 
-Cosmos DB navržená pomocí transparentního horizontálního dělení a replikace s více hlavními servery, nabízí neotevřenou elastickou škálovatelnost pro vaše zápisy a čtení, a to vše po celém světě. Můžete elasticky škálovat až na stovky milionů požadavků za sekundu po celém světě a jediným voláním rozhraní API a platit jenom za propustnost (a úložiště), které potřebujete. Tato možnost vám pomůže se zabývat s neočekávanými špičkami ve vašich úlohách, aniž byste museli předem poskytovat špičku. Další informace najdete v tématech [dělení v Cosmos DB](partitioning-overview.md), [zřízená propustnost na kontejnerech a databázích](set-throughput.md)a [globálně se škálováním zajištěné propustnosti](scaling-throughput.md).
+Cosmos DB navržená pomocí transparentního horizontálního dělení a replikace s více oblastmi, nabízí nepředchůdce elastické škálovatelnosti pro zápisy a čtení, a to vše po celém světě. Můžete elasticky škálovat až na stovky milionů požadavků za sekundu po celém světě a jediným voláním rozhraní API a platit jenom za propustnost (a úložiště), které potřebujete. Tato možnost vám pomůže se zabývat s neočekávanými špičkami ve vašich úlohách, aniž byste museli předem poskytovat špičku. Další informace najdete v tématech [dělení v Cosmos DB](partitioning-overview.md), [zřízená propustnost na kontejnerech a databázích](set-throughput.md)a [globálně se škálováním zajištěné propustnosti](scaling-throughput.md).
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>Garantovaná nízká latence na 99. percentilu, po celém světě
 
-Pomocí Cosmos DB můžete vytvářet vysoce reagující aplikace globálním škály. Díky novému serveru pro více hlavních serverů replikace a [databázovému stroji](index-policy.md), který je s podporou pro zápis a optimalizaci pro zápis, Cosmos DB zaručuje méně než 10 MS latence pro čtení (indexované) a zápisy na 99 percentilu, a to vše po celém světě. Tato schopnost umožňuje tolerovat přijímání dat a neuvěřitelně rychlé dotazy pro vysoce reagující aplikace.
+Pomocí Cosmos DB můžete vytvářet vysoce reagující aplikace globálním škály. Díky novému protokolu pro zápis replikace pro více oblastí a [databázovému stroji](index-policy.md)bezplatným pro zápis do více oblastí Cosmos DB garantuje méně než 10 MS latence pro čtení (indexované) a zápisy na 99 percentilu, a to vše po celém světě. Tato schopnost umožňuje tolerovat přijímání dat a neuvěřitelně rychlé dotazy pro vysoce reagující aplikace.
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Přesně definované, vícenásobné volby konzistence
 
-Při sestavování globálně distribuovaných aplikací v Cosmos DB už nemusíte provádět extrémní [kompromisy mezi konzistencí, dostupností, latencí a propustností](consistency-levels-tradeoffs.md). Pro intuitivní programovací model s nízkou latencí a vysokou dostupností pro globálně distribuovanou aplikaci je možné pečlivě vymezit protokol replikace s více hlavními servery, který nabízí [pět jasně definovaných možností konzistence](consistency-levels.md)  -  *,* *ohraničená neaktuálnost*, *relace*, *konzistentní předpona*a konečný –. *eventual* Cosmos DB
+Při sestavování globálně distribuovaných aplikací v Cosmos DB už nemusíte provádět extrémní [kompromisy mezi konzistencí, dostupností, latencí a propustností](consistency-levels-tradeoffs.md). [five well-defined consistency choices](consistency-levels.md)  -  Pro intuitivní programovací model s nízkou latencí a vysokou dostupností pro globálně distribuovanou aplikaci je vhodné, aby se pro intuitivní programovací model *session*s nízkou latencí a vysokou *eventual* dostupností pro vaši globálně distribuovanou*strong*aplikaci *bounded staleness*pečlivě vytvořil protokol replikace pro zápis s více oblastmi Cosmos DB. *consistent prefix*
 
 ### <a name="no-schema-or-index-management"></a>Žádná Správa schématu ani indexu
 
@@ -56,7 +56,7 @@ Udržování schématu databáze a indexů v synchronizaci se schématem aplikac
 
 ### <a name="battle-tested-database-service"></a>Testovaná databázová služba pro výročí
 
-Cosmos DB je základní služba v Azure. Skoro pro desetiletí Cosmos DB používala řada produktů Microsoftu pro kritické aplikace v globálním měřítku, včetně Skype, Xbox, Microsoft 365, Azure a mnoha dalších. V současné době je Cosmos DB jednou z nejrychlejších rostoucích služeb v Azure, které používá mnoho externích zákazníků a důležitých aplikací, které vyžadují Elastické škálování, klíč globální distribuci, replikaci více hlavních serverů pro zajištění nízké latence a vysokou dostupnost obou operací čtení i zápisu.
+Cosmos DB je základní služba v Azure. Skoro pro desetiletí Cosmos DB používala řada produktů Microsoftu pro kritické aplikace v globálním měřítku, včetně Skype, Xbox, Microsoft 365, Azure a mnoha dalších. Dnes je Cosmos DB jednou z nejrychlejších rostoucích služeb v Azure, které používá mnoho externích zákazníků a důležitých aplikací, které vyžadují Elastické škálování, klíč globální distribuci, replikaci s více oblastmi pro zajištění nízké latence a vysokou dostupnost pro čtení i zápis.
 
 ### <a name="ubiquitous-regional-presence"></a>Všudypřítomný regionální přítomnost
 

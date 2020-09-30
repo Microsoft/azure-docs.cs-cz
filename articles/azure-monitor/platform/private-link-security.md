@@ -1,19 +1,19 @@
 ---
-title: Použití privátního odkazu Azure k bezpečnému připojení sítí k Azure Monitor
-description: Použití privátního odkazu Azure k bezpečnému připojení sítí k Azure Monitor
+title: Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
+description: Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 author: nkiest
 ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 6045fa475b3bb112afee9ceacd8d6b136087feab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b94c782b5d7139fae7a01233bffd3b17cf43c7c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077199"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570427"
 ---
-# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití privátního odkazu Azure k bezpečnému připojení sítí k Azure Monitor
+# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 
 > [!IMPORTANT]
 > V tuto chvíli musíte **požádat o přístup** k používání této možnosti. Můžete požádat o přístup pomocí [formuláře registrace](https://aka.ms/AzMonPrivateLinkSignup).
@@ -31,7 +31,7 @@ Pomocí privátního odkazu můžete:
 - Bezpečně připojte soukromou místní síť k Azure Monitor pomocí ExpressRoute a privátního odkazu.
 - Zachovat veškerý provoz v síti Microsoft Azure páteřní sítě
 
-Další informace najdete v tématu [klíčové výhody privátního propojení](../../private-link/private-link-overview.md#key-benefits).
+Další informace najdete v tématu  [klíčové výhody privátního propojení](../../private-link/private-link-overview.md#key-benefits).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -76,13 +76,13 @@ Při plánování nastavení privátního propojení byste měli zvážit někol
 
 * Virtuální síť se může připojit jen k 1 AMPLS objektu. To znamená, že objekt AMPLS musí poskytovat přístup ke všem prostředkům Azure Monitor, ke kterým má virtuální síť přístup.
 * Prostředek Azure Monitor (pracovní prostor nebo Application Insights komponenta) se může připojit k 5 AMPLSs.
-* Objekt AMPLS se může připojit k 20 Azure Monitor prostředkům nejvíce.
+* Objekt AMPLS se může připojit k 50 Azure Monitor prostředkům.
 * Objekt AMPLS se může připojit k 10 soukromým koncovým bodům.
 
 V následující topologii:
 * Každá virtuální síť se připojuje k AMPLS objektu, takže se nemůže připojit k ostatním AMPLSs.
 * AMPLS B se připojuje k 2 virtuální sítě: pomocí 2/10 z jeho možných připojení typu privátní koncový bod.
-* AMPLS se připojí k 2 pracovním prostorům a 1 komponentě Insight Application Insights: pomocí Azure Monitor 3/20 dostupných prostředků.
+* AMPLS se připojí k 2 pracovním prostorům a 1 komponentě Insight Application Insights: pomocí Azure Monitor 3/50 dostupných prostředků.
 * Pracovní prostor 2 se připojuje k AMPLS a a AMPLS B: pomocí 2/5 z jeho možných připojení AMPLS.
 
 ![Diagram omezení AMPLS](./media/private-link-security/ampls-limits.png)
@@ -152,7 +152,7 @@ Teď, když máte prostředky připojené k AMPLS, vytvořte privátní koncový
 
 Nyní jste vytvořili nový privátní koncový bod, který je připojen k tomuto Azure Monitor oboru privátního propojení.
 
-## <a name="configure-log-analytics"></a>Konfigurace Log Analytics
+## <a name="configure-log-analytics"></a>Konfigurace služby Log Analytics
 
 Přejděte na Azure Portal. V Log Analytics prostředku pracovního prostoru je na levé straně položka nabídky **izolace sítě** . Z této nabídky můžete řídit dva různé stavy. 
 
@@ -162,10 +162,23 @@ Nejprve můžete připojit tento prostředek Log Analytics k jakýmkoli Azure Mo
 
 Za druhé můžete řídit, jak se tento prostředek dá oslovit mimo rozsahy privátních odkazů uvedených výše. Pokud nastavíte možnost **povolí přístup k veřejné síti pro** ingestování na **ne**, počítače mimo připojené obory nemůžou do tohoto pracovního prostoru nahrávat data. Pokud nastavíte možnost **povolí přístup k veřejné síti pro dotazy** na **ne**, počítače mimo rozsah nebudou mít přístup k datům v tomto pracovním prostoru. Tato data zahrnují přístup k sešitům, řídicím panelům, klientským prostředím založeném na rozhraní API pro dotazy, přehledům v Azure Portal a dalším. Prostředí spuštěné mimo Azure Portal a dotaz Log Analytics data musí být spuštěná také v rámci virtuální sítě s privátním propojením.
 
-Přístup tímto způsobem se omezuje jenom na data v pracovním prostoru. Změny konfigurace, včetně zapnutí nebo vypnutí těchto nastavení přístupu, se spravují pomocí Azure Resource Manager. Omezte přístup k Správce prostředků pomocí příslušných rolí, oprávnění, síťových ovládacích prvků a auditování. Další informace najdete v tématu [Azure monitor role, oprávnění a zabezpečení](roles-permissions-security.md).
+Omezení přístupu tímto způsobem se nevztahuje na Azure Resource Manager a má proto tato omezení:
+* Přístup k datům – při blokování dotazů z veřejných sítí se používá pro většinu Log Analyticsch prostředí, některá prostředí dotazují data prostřednictvím Azure Resource Manager a proto se nebudou moci dotazovat na data, pokud se pro Správce prostředků nepoužijí nastavení privátního propojení (funkce už brzy). Patří mezi ně například Azure Monitor řešení, sešity a přehledy a konektor LogicApp.
+* Správa pracovního prostoru – změny nastavení pracovního prostoru a konfigurace (včetně zapnutí nebo vypnutí těchto nastavení přístupu) se spravují pomocí Azure Resource Manager. Omezte přístup ke správě pracovních prostorů pomocí příslušných rolí, oprávnění, síťových ovládacích prvků a auditování. Další informace najdete v tématu [Azure monitor role, oprávnění a zabezpečení](roles-permissions-security.md).
 
 > [!NOTE]
 > Protokoly a metriky nahrané do pracovního prostoru prostřednictvím [nastavení diagnostiky](diagnostic-settings.md) přecházejí přes zabezpečený privátní kanál Microsoft a tato nastavení se nekontrolují.
+
+### <a name="log-analytics-solution-packs-download"></a>Stažení balíčků řešení Log Analytics
+
+Pokud chcete, aby mohl agent Log Analytics stahovat balíčky řešení, přidejte příslušné plně kvalifikované názvy domény do seznamu povolených bran firewall. 
+
+
+| Cloudové prostředí | Prostředek agenta | Porty | Směr |
+|:--|:--|:--|:--|
+|Veřejný partnerský vztah Azure     | scadvisorcontent.blob.core.windows.net         | 443 | Odchozí
+|Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Odchozí
+|Azure (Čína) 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Odchozí
 
 ## <a name="configure-application-insights"></a>Konfigurace Application Insights
 
@@ -221,7 +234,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -X
 $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace key>
 ```
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Chcete-li použít Azure Monitor portálu, jako je Application Insights a Log Analytics, je nutné, aby byla rozšíření Azure Portal a Azure Monitor dostupná v privátních sítích. Do brány firewall přidejte [značky služby](../../firewall/service-tags.md) **azureactivedirectory selhala**, **AzureResourceManager**, **AzureFrontDoor. FirstParty**a **AzureFrontDoor. front-endu** .
 
@@ -234,17 +247,6 @@ Přidání těchto značek vám umožní provádět akce, jako je například do
 ### <a name="application-insights-sdk-downloads-from-a-content-delivery-network"></a>Stažení sady SDK Application Insights ze sítě pro doručování obsahu
 
 Vytvořte ve svém skriptu kód JavaScriptu tak, aby se prohlížeč nepokoušel stáhnout kód ze sítě CDN. Příklad je k dispozici na [GitHubu](https://github.com/microsoft/ApplicationInsights-JS#npm-setup-ignore-if-using-snippet-setup) .
-
-### <a name="log-analytics-solution-download"></a>Stažení řešení Log Analytics
-
-Pokud chcete, aby mohl agent Log Analytics stahovat balíčky řešení, přidejte příslušné plně kvalifikované názvy domény do seznamu povolených bran firewall. 
-
-
-| Cloudové prostředí | Prostředek agenta | Porty | Směr |
-|:--|:--|:--|:--|
-|Veřejný partnerský vztah Azure     | scadvisorcontent.blob.core.windows.net         | 443 | Odchozí
-|Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Odchozí
-|Azure (Čína) 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Odchozí
 
 ### <a name="browser-dns-settings"></a>Nastavení DNS prohlížeče
 

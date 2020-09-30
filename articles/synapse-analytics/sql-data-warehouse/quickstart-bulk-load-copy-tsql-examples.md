@@ -4,17 +4,17 @@ description: Popisuje mechanismy ověřování pro hromadné načtení dat.
 services: synapse-analytics
 author: kevinvngo
 ms.service: synapse-analytics
-ms.topic: overview
+ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6f54a8993b602110e35c410338b6f0a51109738f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: e3b22b831deca47eece70d337a99346ae472c7ee
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603874"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569478"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Bezpečné načtení dat pomocí synapse SQL
 
@@ -69,14 +69,14 @@ WITH (
 
 Pokud je váš účet úložiště připojený k virtuální síti, vyžaduje se spravované ověřování identity. 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 1. Pomocí tohoto [průvodce](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) nainstalujte Azure PowerShell.
 2. Pokud máte účet úložiště pro obecné účely verze 1 nebo účet úložiště objektů blob, musíte nejprve pomocí tohoto [průvodce](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) upgradovat na účet úložiště pro obecné účely verze 2.
 3. Abyste měli přístup k tomuto účtu úložiště zapnutý, musíte mít **povolené důvěryhodné služby Microsoftu** v nabídce Azure Storage **brány firewall účtů a nastavení virtuálních sítí** . Další informace najdete v tomto [průvodci](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions).
-#### <a name="steps"></a>Kroky
+#### <a name="steps"></a>Postup
 
-1. V PowerShellu **Zaregistrujte SQL Server** pomocí Azure Active Directory (AAD):
+1. V prostředí PowerShell **Zaregistrujte SQL Server** pomocí Azure Active Directory:
 
    ```powershell
    Connect-AzAccount
@@ -110,10 +110,10 @@ Pokud je váš účet úložiště připojený k virtuální síti, vyžaduje se
     )
     ```
 
-## <a name="d-azure-active-directory-authentication-aad"></a>D. Ověřování Azure Active Directory (AAD)
-#### <a name="steps"></a>Kroky
+## <a name="d-azure-active-directory-authentication"></a>D. Ověřování Azure Active Directory
+#### <a name="steps"></a>Postup
 
-1. V části účet úložiště přejděte na **Access Control (IAM)** a vyberte **Přidat přiřazení role**. K uživateli AAD přiřaďte roli Azure **data BLOB úložiště, přispěvatele nebo čtenáře** . 
+1. V části účet úložiště přejděte na **Access Control (IAM)** a vyberte **Přidat přiřazení role**. Přiřazení role **objektu BLOB úložiště, přispěvatele nebo čtenáře** pro uživatele Azure AD. 
 
     > [!IMPORTANT]
     > Zadejte roli vlastníka **dat objektu BLOB** **úložiště** , přispěvatele nebo čtenáře Azure. Tyto role se liší od předdefinovaných rolí vlastník, přispěvatel a čtenář v Azure.
@@ -134,13 +134,13 @@ Pokud je váš účet úložiště připojený k virtuální síti, vyžaduje se
 
 
 ## <a name="e-service-principal-authentication"></a>E. Ověřování instančních objektů
-#### <a name="steps"></a>Kroky
+#### <a name="steps"></a>Postup
 
-1. [Vytvoření aplikace Azure Active Directory (AAD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
+1. [Vytvoření aplikace Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
 2. [Získat ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)
 3. [Získání ověřovacího klíče](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret)
 4. [Získat koncový bod tokenu v1 OAuth 2,0](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
-5. [Přiřazení oprávnění ke čtení, zápisu a spouštění vaší aplikace AAD](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder) na svém účtu úložiště
+5. [Přiřazení oprávnění ke čtení, zápisu a provádění vaší aplikace služby Azure AD](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder) v účtu úložiště
 6. Nyní můžete spustit příkaz COPY:
 
     ```sql
