@@ -3,22 +3,47 @@ title: Připojení počítačů mimo Azure k Azure Security Center
 description: Přečtěte si, jak připojit počítače mimo Azure k Security Center
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 9/30/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6f2889c298f525e1babf80f86d4ae140ef2ce96f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 3cdff2b844aa68de7f07faf69710aeabb5513093
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448958"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576049"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Připojení počítačů mimo Azure k Security Center
 
-Security Center může monitorovat stav zabezpečení počítačů mimo Azure, tyto prostředky je však nejprve potřeba připojit. Počítače mimo Azure můžete přidat ze stránky **Začínáme** nebo z **inventáře** , jak je popsáno níže.
+Security Center může monitorovat stav zabezpečení počítačů mimo Azure, tyto prostředky je však nejprve potřeba připojit. 
 
-## <a name="add-non-azure-computers"></a>Přidat počítače mimo Azure 
+Počítače mimo Azure můžete přidat některým z následujících způsobů:
+
+- Používání Azure ARC (**doporučeno**)
+- Ze stránek Security Center v Azure Portal (**Začínáme** a **inventář**)
+
+Každá z nich je popsána níže.
+
+## <a name="add-non-azure-machines-with-azure-arc"></a>Přidání počítačů mimo Azure pomocí ARC Azure
+
+Používání ARC Azure je preferovaným způsobem, jak přidat počítače mimo Azure do Azure Security Center.
+
+Počítač s povoleným ARC Azure se stal zdrojem Azure a zobrazí se v Security Center s doporučeními, jako jsou vaše jiné prostředky Azure. 
+
+Kromě toho Azure ARC poskytuje rozšířené možnosti, jako je možnost povolit zásady na počítači, nasadit agenta Log Analytics jako rozšíření, zjednodušit nasazení s ostatními službami Azure a další. Přehled výhod najdete v tématu [podporované scénáře](../azure-arc/servers/overview.md#supported-scenarios).
+
+**Nasazení ARC Azure:**
+
+- Pro jeden počítač postupujte podle pokynů v části [rychlý Start: připojení hybridního počítače se servery s podporou ARC Azure](../azure-arc/servers/learn/quick-enable-hybrid-vm.md).
+- Pokud chcete nasadit Azure ARC ve velkém měřítku, přečtěte si téma [připojení hybridních počítačů ke škálování Azure](../azure-arc/servers/onboard-service-principal.md) .
+
+Přečtěte si další informace o [ARC Azure](../azure-arc/servers/overview.md).
+
+> [!TIP]
+> Pokud se připojujete k AWS počítačům Security Center, konektor pro AWS transparentně zpracovává nasazení ARC Azure za vás. Další informace najdete v informacích [o připojení účtů AWS k Azure Security Center](quickstart-onboard-aws.md).
+
+## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>Přidání počítačů mimo Azure ze stránek portálu Security Center
 
 1. V nabídce Security Center otevřete stránku **Začínáme** .
 1. Vyberte kartu **Začínáme**.
@@ -29,6 +54,8 @@ Security Center může monitorovat stav zabezpečení počítačů mimo Azure, t
 
     > [!TIP]
     > Můžete taky otevřít přidat počítače **na stránce** **Přidat servery, které nepatří do Azure** .
+    > 
+    > :::image type="content" source="./media/security-center-onboarding/onboard-inventory.png" alt-text="Karta Začínáme na stránce Začínáme":::
 
     Zobrazí se seznam vašich pracovních prostorů Log Analytics. Seznam obsahuje i výchozí pracovní prostor, který pro vás vytvořila služba Security Center při povolení automatického zřizování, pokud existuje. Vyberte tento nebo jiný pracovní prostor, který chcete použít.
 
@@ -89,12 +116,13 @@ Další informace o instalaci a konfiguraci agenta najdete v tématu [připojen�
 
 
 ## <a name="verifying"></a>Ověřoval
-Blahopřejeme! Teď můžete na jednom místě zobrazit počítače s Azure a mimo Azure společně. Otevřete [stránku inventarizace assetů](asset-inventory.md) a vyfiltrujte příslušné typy prostředků. Tyto dvě ikony rozlišují tyto typy:
+Gratulujeme! Teď můžete na jednom místě zobrazit počítače s Azure a mimo Azure společně. Otevřete [stránku inventarizace assetů](asset-inventory.md) a vyfiltrujte příslušné typy prostředků. Tyto ikony rozlišují tyto typy:
 
-  ![icon1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Počítač mimo Azure
+  ![Ikona ASC pro počítač mimo Azure](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Počítač mimo Azure
 
-  ![icon2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Virtuální počítač Azure
+  ![Ikona ASC pro počítač Azure](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Virtuální počítač Azure
 
+  ![Ikona ASC pro počítač ARC Azure](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) Počítač s podporou ARC Azure
 
 ## <a name="next-steps"></a>Další kroky
 

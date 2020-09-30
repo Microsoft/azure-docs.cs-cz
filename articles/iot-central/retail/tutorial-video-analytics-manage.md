@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 76e72e8fd134c65cc9334e635375cc25e9b09a75
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: dea009d6d246d68f0686c3dc85f3518ccb13705c
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719066"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575193"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Kurz: monitorování a Správa aplikace video Analytics – objekt a detekce pohybu
 
@@ -22,12 +22,12 @@ V tomto kurzu se naučíte:
 > * Přidejte kamery detekce objektu a pohybu do aplikace IoT Central.
 > * Umožňuje spravovat streamy videa a přehrávat je, když se zjistí zajímavé události.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, měli byste dokončit:
 
 * Kurz [Vytvoření aplikace Live video Analytics v Azure IoT Central](./tutorial-video-analytics-create-app.md) kurzu.
-* Jedna z předchozích [vytvoření instance IoT Edge pro Live video Analytics (virtuální počítač se systémem Linux)](tutorial-video-analytics-iot-edge-vm.md) nebo [vytvoření instance IoT Edge pro kurzy pro virtuální počítače se systémem Linux (Live video Analytics)](tutorial-video-analytics-iot-edge-nuc.md) .
+* Jedna z předchozích [vytvoření instance IoT Edge pro Live video Analytics (virtuální počítač se systémem Linux)](tutorial-video-analytics-iot-edge-vm.md) nebo [vytvoření instance IoT Edge pro kurzy NUC (Live video Analytics)](tutorial-video-analytics-iot-edge-nuc.md) .
 
 Měli byste mít na svém místním počítači nainstalovaný [Docker](https://www.docker.com/products/docker-desktop) pro spuštění aplikace Prohlížeč videa.
 
@@ -37,7 +37,7 @@ V IoT Central aplikaci přejděte na zařízení s **bránou lva 001** , které 
 
 Použijte hodnoty v následující tabulce jako hodnoty parametrů příkazu **Přidat žádost o fotoaparát** . Hodnoty uvedené v tabulce předpokládají, že používáte simulovanou kameru na virtuálním počítači Azure. Pokud používáte skutečnou kameru, upravte hodnoty odpovídajícím způsobem:
 
-| Pole| Popis| Ukázková hodnota|
+| Pole| Description| Ukázková hodnota|
 |---------|---------|---------|
 | ID kamery      | ID zařízení pro zřizování | kamera – 003 |
 | Název kamery    | Popisný název           | Kamera detekce objektu |
@@ -61,7 +61,7 @@ Pokud máte k zařízení IoT Edge brány připojené dva fotoaparáty, opakujte
 
 Vyberte kartu **zařízení pro příjem dat** pro zařízení s **bránou lva 001** , aby se zobrazila zařízení kamera, která jste právě přidali:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Prohlížen":::
+:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Přidat kameru":::
 
 Zařízení fotoaparátu se zobrazí také v seznamu na stránce **zařízení** v aplikaci.
 
@@ -98,7 +98,7 @@ Vyberte **Uložit**.
 
 Po několika sekundách se zobrazí **přijatá** potvrzovací zpráva pro každé nastavení:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Zjištění objektu":::
+:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Přidat kameru":::
 
 ## <a name="start-lva-processing"></a>Spustit zpracování LVA
 
@@ -108,13 +108,13 @@ Spusťte příkaz **Start lva Processing** .
 
 Po dokončení příkazu si prohlédněte historii příkazů, abyste se ujistili, že nejsou k dispozici žádné chyby:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="Spustit příkaz pro zpracování LVA":::
+:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="Přidat kameru":::
 
 ## <a name="monitor-the-cameras"></a>Monitorování fotoaparátů
 
 Přejděte na zařízení **kamera-003** a vyberte kartu **řídicí panel** :
 
-:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Řídicí panel kamery":::
+:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Přidat kameru":::
 
 Na dlaždici **počet detekcí** se zobrazuje průměrný počet zjištění pro všechny vybrané objekty třídy detekce během intervalu detekce s jednou sekundou.
 
@@ -157,7 +157,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 
 Přejděte na zařízení **kamera-003** a vyberte kartu **řídicí panel** . Pak klikněte na jeden z hypertextových odkazů detekce zachyceného objektu na dlaždici **video pro odvození události** . Video se zobrazí na stránce zobrazené v místním přehrávači videa:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Fragment videa":::
+:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Přidat kameru":::
 
 ## <a name="change-the-simulated-devices-in-application-dashboards"></a>Změna simulovaných zařízení v řídicích panelech aplikací
 
@@ -182,7 +182,7 @@ Přejděte na zařízení **kamera-003** a vyberte kartu **řídicí panel** . P
 
 Řídicí panel **Real Camera Monitor** nyní zobrazuje hodnoty ze zařízení reálné kamery:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Řídicí panel aplikací Real kamery":::
+:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Přidat kameru":::
 
 ## <a name="pause-processing"></a>Pozastavit zpracování
 

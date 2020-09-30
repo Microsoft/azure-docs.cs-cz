@@ -3,12 +3,12 @@ title: Správa životního cyklu virtuálních počítačů řešení Azure VMwa
 description: Naučte se spravovat všechny aspekty životního cyklu virtuálních počítačů řešení Azure VMware pomocí Microsoft Azurech nativních nástrojů.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 20948ec088d11468b5750ca89979050965246b58
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 10e721996b2e3186417a702d2d7473b36b11237f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663911"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575468"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Správa životního cyklu virtuálních počítačů řešení Azure VMware
 
@@ -38,7 +38,7 @@ Microsoft Azure nativní nástroje vám umožní monitorovat a spravovat virtuá
 
 Následující diagram znázorňuje integrovanou architekturu monitorování pro virtuální počítače řešení Azure VMware.
 
-![Integrovaná architektura monitorování Azure](media/lifecycle-mgmt-avs-vms/integrated-azure-monitoring-architecture.png)
+![Integrovaná architektura monitorování Azure](media/lifecycle-management-azure-vmware-solutions-virtual-machines/integrated-azure-monitoring-architecture.png)
 
 ## <a name="integrating-and-deploying-azure-native-services"></a>Integrace a nasazení nativních služeb Azure
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967232"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575176"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurace převodu modelů
 
@@ -33,7 +33,6 @@ Obsah souboru by měl vyhovovat následujícímu schématu JSON:
         "scaling" : { "type" : "number", "exclusiveMinimum" : 0, "default" : 1.0 },
         "recenterToOrigin" : { "type" : "boolean", "default" : false },
         "opaqueMaterialDefaultSidedness" : { "type" : "string", "enum" : [ "SingleSided", "DoubleSided" ], "default" : "DoubleSided" },
-        "material-override" : { "type" : "string", "default" : "" },
         "gammaToLinearMaterial" : { "type" : "boolean", "default" : false },
         "gammaToLinearVertex" : { "type" : "boolean", "default" : false },
         "sceneGraphMode": { "type" : "string", "enum" : [ "none", "static", "dynamic" ], "default" : "dynamic" },
@@ -85,10 +84,6 @@ Centrování modelu může v této situaci pomáhat.
 
 * `opaqueMaterialDefaultSidedness` -Modul vykreslování předpokládá, že neprůhledné materiály jsou oboustranné.
 Pokud tento předpoklad nemá hodnotu true konkrétního modelu, tento parametr by měl být nastaven na hodnotu "SingleSided". Další informace najdete v tématu [ :::no-loc text="single sided"::: vykreslování](../../overview/features/single-sided-rendering.md).
-
-### <a name="material-overrides"></a>Přepsání materiálu
-
-* `material-override` – Tento parametr umožňuje zpracovat [přizpůsobení materiálů během převodu](override-materials.md).
 
 ### <a name="material-de-duplication"></a>Odstranění duplicit materiálu
 
@@ -305,6 +300,8 @@ V těchto případech mají modely často velmi vysoký detail v rámci malých 
 
 Poskytování nastavení pomocí souboru filename, který není specifický pro model, `conversionSettings.json` je stále podporováno, ale zastaralé.
 Místo toho prosím použijte název specifický pro daný model `<modelName>.ConversionSettings.json` .
+
+Použití `material-override` nastavení k identifikaci [souboru přepisu materiálu](override-materials.md) v souboru nastavení převodu je stále podporováno, ale zastaralé. Místo toho prosím použijte název specifický pro daný model `<modelName>.MaterialOverrides.json` .
 
 ## <a name="next-steps"></a>Další kroky
 

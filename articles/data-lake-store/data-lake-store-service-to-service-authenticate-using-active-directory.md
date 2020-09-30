@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 03a32b37f5ca29c6a0dd6b810b4e097379c6c32e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9dc195f98310e63cbde06885effe86ea3c239249
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515157"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576094"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování služba-služba pomocí Azure Data Lake Storage Gen1 s využitím Azure Active Directory
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Obě tyto možnosti mají za následek, že vaše aplikace bude k dispozici s to
 
 Tento článek pojednává o tom, jak vytvořit **webovou aplikaci Azure AD pro ověřování služby-služba**. Pokyny týkající se konfigurace aplikací Azure AD pro ověřování koncových uživatelů najdete v tématu [ověřování koncových uživatelů pomocí Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="step-1-create-an-active-directory-web-application"></a>Krok 1: Vytvoření webové aplikace Active Directory
@@ -65,12 +65,12 @@ Když se programově přihlašujete, budete potřebovat ID vaší aplikace. Poku
     ![Přidat skupinu](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "Přidat skupinu")
 6. Klikněte na **vybrat oprávnění**, vyberte oprávnění a určete, jestli chcete přiřadit oprávnění jako výchozí seznam ACL, přístup k seznamu ACL nebo obojí. Klikněte na **OK**.
    
-    ![Přiřazení oprávnění ke skupině](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Přiřazení oprávnění ke skupině")
+    ![Snímek obrazovky s oknem přidat vlastní přístup s možností vybrat oprávnění, která se vyvolala a okno vybrat oprávnění s možností OK s názvem.](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Přiřazení oprávnění ke skupině")
    
     Další informace o oprávněních v Data Lake Storage Gen1 a o výchozích nebo přístupových seznamech řízení přístupu najdete [v tématu Access Control v Data Lake Storage Gen1](data-lake-store-access-control.md).
 7. V okně **Přidat vlastní přístup** klikněte na **OK**. Nově přidané skupiny s přidruženými oprávněními jsou uvedeny v okně **přístup** .
    
-    ![Přiřazení oprávnění ke skupině](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Přiřazení oprávnění ke skupině")
+    ![Snímek obrazovky s oknem Access s nově přidanou skupinou vyvolanou v oddílu vlastní přístup](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Přiřazení oprávnění ke skupině")
 
 > [!NOTE]
 > Pokud plánujete omezit Azure Active Directory aplikace na konkrétní složku, budete také muset dát ke kořenu stejné oprávnění ke **spuštění** aplikace Azure Active Directory, aby bylo možné povolit přístup pro vytváření souborů prostřednictvím sady .NET SDK.
@@ -88,11 +88,11 @@ Když se programově přihlašujete, budete potřebovat ID vaší aplikace. Poku
 
 3. V horní části okna Registrace aplikací klikněte na **koncové body**.
 
-    ![Koncový bod tokenu OAuth](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "Koncový bod tokenu OAuth")
+    ![Snímek obrazovky služby Active Directory s možností Registrace aplikací a možností koncového bodu s názvem.](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "Koncový bod tokenu OAuth")
 
 4. V seznamu koncových bodů zkopírujte koncový bod tokenu OAuth 2,0.
 
-    ![Koncový bod tokenu OAuth](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "Koncový bod tokenu OAuth")   
+    ![Snímek obrazovky okna s koncovými body s ikonou pro kopírování KONCOVÉho bodu pro ověření 2 bodu O TOKENu s názvem.](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "Koncový bod tokenu OAuth")   
 
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste vytvořili webovou aplikaci Azure AD a shromáždili jste potřebné informace v klientských aplikacích, které vytváříte pomocí sady .NET SDK, Java, Python, REST API atd. Nyní můžete přejít k následujícím článkům, které se domluví o tom, jak používat nativní aplikaci Azure AD k prvnímu ověření pomocí Data Lake Storage Gen1 a následnému provádění dalších operací na Storu.

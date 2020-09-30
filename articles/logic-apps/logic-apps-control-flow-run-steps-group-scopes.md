@@ -6,20 +6,20 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: ef8862ebbcdd1ee79178af56b7c6cc81c7a68a43
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1ee8c7eabd33ad2d8773d55041fcdf54a7dd489b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269280"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575006"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Spouštění akcí na základě stavu skupiny pomocí oborů v Azure Logic Apps
 
 Chcete-li spouštět akce až po úspěšném nebo neúspěšném provedení jiné skupiny akcí, seskupte tyto akce do *oboru*. Tato struktura je užitečná v případě, že chcete uspořádat akce jako logickou skupinu, vyhodnotit stav této skupiny a provést akce, které jsou založeny na stavu oboru. Po dokončení všech akcí v oboru, který je spuštěn, rozsah také získá svůj stav. Můžete například použít obory, pokud chcete implementovat [výjimku a zpracování chyb](../logic-apps/logic-apps-exception-handling.md#scopes). 
 
-Ke kontrole stavu oboru můžete použít stejná kritéria, která použijete k určení stavu spuštění Logic Apps, jako je například úspěšné, neúspěšné, zrušené atd. Ve výchozím nastavení se po úspěšném dokončení všech akcí oboru stav tohoto oboru označí jako "úspěch". V případě, že dojde k selhání nebo zrušení jakékoli akce v oboru, je stav oboru označen jako "neúspěch". Omezení pro rozsahy najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
+Chcete-li zjistit stav oboru, můžete použít stejná kritéria, která použijete k určení stavu spuštění aplikace logiky, jako je například **úspěšné**, **neúspěšné**, **zrušené**a tak dále. Ve výchozím nastavení se po úspěšném dokončení všech akcí oboru stav oboru označí jako **úspěšný**. Pokud ale dojde k selhání jakékoli akce v oboru nebo zrušení, stav tohoto oboru se označí jako **neúspěšné**. Omezení pro rozsahy najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
 
-Tady je například aplikace logiky vysoké úrovně, která používá obor ke spouštění specifických akcí a podmínku pro kontrolu stavu oboru. Pokud některé akce v oboru selžou nebo neočekávaně skončí, je obor označený jako "neúspěšné" nebo "přerušeno" a aplikace logiky pošle zprávu "obor se nepovedlo". Pokud všechny akce v oboru proběhnou úspěšně, aplikace logiky pošle zprávu "obor byl úspěšný".
+Tady je například aplikace logiky vysoké úrovně, která používá obor ke spouštění specifických akcí a podmínku pro kontrolu stavu oboru. Pokud některé akce v oboru selžou nebo neočekávaně skončí, je obor označený jako **neúspěšný** nebo **přerušený** a aplikace logiky pošle zprávu "obor se nepovedlo". Pokud všechny akce v oboru proběhnou úspěšně, aplikace logiky pošle zprávu "obor byl úspěšný".
 
 ![Diagram znázorňuje tok oboru aplikace logiky s příklady "obor se selháním" a "obor byl úspěšný".](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
@@ -192,7 +192,7 @@ Dále přidejte obor, abyste mohli seskupit konkrétní akce a vyhodnotit jejich
    
       `result('Scope')[0]['status']`
 
-      ![Snímek obrazovky zobrazující okno Přidat výraz se zvýrazněným výrazem výsledku](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
+      ![Snímek obrazovky, který zobrazuje pole výrazu se zvýrazněným výrazem výsledku](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
    1. Pro oba řádky vyberte **je rovno** jako operátor. 
    
@@ -386,7 +386,7 @@ Pokud pracujete v zobrazení kódu, můžete místo toho definovat strukturu obo
 },
 ```
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
 * Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Chcete-li odesílat nebo hlasovat o funkcích a návrzích, navštivte [web Azure Logic Apps pro zpětnou vazbu uživatelů](https://aka.ms/logicapps-wish).

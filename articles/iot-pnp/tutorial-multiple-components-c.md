@@ -1,28 +1,28 @@
 ---
-title: Připojte si ukázkový kód zařízení v IoT technologie Plug and Play Preview pro IoT Hub | Microsoft Docs
-description: Sestavujte a spusťte ukázkovou verzi technologie Plug and Play IoT Preview, která používá více komponent a připojuje se ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
+title: Připojte si ukázkový kód zařízení jazyka C pro IoT technologie Plug and Play k IoT Hub | Microsoft Docs
+description: Sestavte a spouštějte ukázkový kód zařízení jazyka C technologie Plug and Play IoT, který používá více komponent a připojuje se ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 29017ec11429b26018093980ca71c317b12085b5
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 1873d2acb96c0c94c7e0d678e450596c60ca51fb
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505885"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575397"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-applications-running-on-linux-or-windows-to-iot-hub-c"></a>Kurz: připojení IoT technologie Plug and Play více aplikací zařízení, které jsou spuštěné v systému Linux nebo Windows, do IoT Hub (C)
 
 [!INCLUDE [iot-pnp-tutorials-device-selector.md](../../includes/iot-pnp-tutorials-device-selector.md)]
 
-V tomto kurzu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play pro zařízení pomocí komponent a kořenového rozhraní, připojit ho ke službě IoT Hub a pomocí nástroje Azure IoT Explorer zobrazit informace, které posílá do centra. Ukázková aplikace je napsaná v jazyce C a je obsažená v sadě SDK pro zařízení Azure IoT pro jazyk C. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
+V tomto kurzu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení pomocí komponent, připojit ji k centru IoT a pomocí nástroje Azure IoT Explorer zobrazit informace, které posílá do centra. Ukázková aplikace je napsaná v jazyce C a je obsažená v sadě SDK pro zařízení Azure IoT pro jazyk C. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Předpoklady
 
-## <a name="prerequisites"></a>Požadavky
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 Tento kurz můžete dokončit v systému Linux nebo Windows. Příkazy prostředí v tomto kurzu se řídí konvencí pro oddělovače cest pro Linux `/` , pokud sledujete v systému Windows, nezapomeňte tyto oddělovače pro použít `\` .
 
@@ -52,34 +52,13 @@ gcc --version
 
 Pro dokončení tohoto kurzu ve Windows nainstalujte do svého místního prostředí Windows následující software:
 
-* [Visual Studio (komunita, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/) – nezapomeňte při [instalaci](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) sady Visual Studio zahrnout **desktopový vývoj s** využitím úlohy C++.
+* [Visual Studio (komunita, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/) – nezapomeňte při [instalaci](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) sady Visual Studio zahrnout **desktopový vývoj s** využitím úlohy C++.
 * [Git](https://git-scm.com/download/).
 * [Cmake](https://cmake.org/download/).
 
-### <a name="azure-iot-explorer"></a>Průzkumník Azure IoT
-
-Pokud chcete s ukázkovým zařízením pracovat v druhé části tohoto kurzu, použijte nástroj **Azure IoT Explorer** . [Stáhněte a nainstalujte si nejnovější verzi Azure IoT Exploreru](./howto-use-iot-explorer.md) pro váš operační systém.
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-Spuštěním následujícího příkazu Získejte _připojovací řetězec služby IoT Hub_ pro vaše centrum. Poznamenejte si tento připojovací řetězec, použijete ho později v tomto kurzu:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> Připojovací řetězec služby IoT Hub můžete najít také pomocí nástroje Azure IoT Explorer.
-
-Spuštěním následujícího příkazu Získejte _připojovací řetězec zařízení_ pro zařízení, které jste přidali do centra. Poznamenejte si tento připojovací řetězec, použijete ho později v tomto kurzu:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
-
 ## <a name="download-the-code"></a>Stáhněte si kód
+
+Pokud jste dokončili [rychlý Start: Připojte ukázkovou aplikaci IoT technologie Plug and Play zařízení běžící v systému Linux nebo Windows do IoT Hub (C)](quickstart-connect-device-c.md) již jste stáhli kód.
 
 V tomto kurzu připravíte vývojové prostředí, které můžete použít k klonování a sestavení sady Azure IoT Hub zařízení C SDK.
 
@@ -102,7 +81,7 @@ Kód můžete sestavit a spustit pomocí sady Visual Studio nebo `cmake` na př�
 1. Otevřete kořenovou složku klonovaného úložiště. Po několika sekundách podpora **cmake** v sadě Visual Studio vytvoří vše, co potřebujete ke spuštění a ladění projektu.
 1. Po přípravě sady Visual Studio přejděte v **Průzkumník řešení**k ukázce *iothub_client/Samples/PNP/pnp_temperature_controller/*.
 1. Klikněte pravým tlačítkem na soubor *pnp_temperature_controller. c* a vyberte **Přidat konfiguraci ladění**. Vyberte **výchozí**.
-1. Visual Studio otevře *launch.vs.jsv* souboru. Upravte tento soubor tak, jak je znázorněno v následujícím fragmentu kódu, abyste nastavili požadované proměnné prostředí:
+1. Visual Studio otevře *launch.vs.jsv* souboru. Upravte tento soubor, jak je znázorněno v následujícím fragmentu kódu, a nastavte požadované proměnné prostředí. Poznamenejte si ID oboru a primární klíč registrace, když jste dokončili [nastavení prostředí pro technologie Plug and Play rychlý Start a kurzy pro IoT](set-up-environment.md):
 
     ```json
     {
@@ -115,8 +94,10 @@ Kód můžete sestavit a spustit pomocí sady Visual Studio nebo `cmake` na př�
           "projectTarget": "",
           "name": "pnp_temperature_controller.c",
           "env": {
-            "IOTHUB_DEVICE_SECURITY_TYPE": "connectionString",
-            "IOTHUB_DEVICE_CONNECTION_STRING": "<Your device connection string>"
+            "IOTHUB_DEVICE_SECURITY_TYPE": "DPS",
+            "IOTHUB_DEVICE_DPS_ID_SCOPE": "<Your ID scope>",
+            "IOTHUB_DEVICE_DPS_DEVICE_ID": "my-pnp-device",
+            "IOTHUB_DEVICE_DPS_DEVICE_KEY": "<Your enrollment primary key>"
           }
         }
       ]
@@ -148,12 +129,11 @@ Postup sestavení ukázky:
     cmake --build .
     ```
 
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+Další informace o ukázkové konfiguraci najdete v [ukázkovém souboru Readme](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/pnp/readme.md).
+
 Spuštění ukázky:
-
-1. Vytvořte dvě proměnné prostředí pro konfiguraci ukázky pro připojení ke službě IoT Hub pomocí připojovacího řetězce:
-
-    * **IOTHUB_DEVICE_SECURITY_TYPE** s hodnotou `"connectionString"`
-    * **IOTHUB_DEVICE_CONNECTION_STRING** Uložit připojovací řetězec zařízení, který jste si poznamenali dříve.
 
 1. Ve složce _cmake_ přejděte do složky, která obsahuje spustitelný soubor, a spusťte ho:
 
@@ -165,7 +145,8 @@ Spuštění ukázky:
 
     ```cmd
     REM Windows
-    iothub_client\samples\pnp\pnp_temperature_controller\Debug\pnp_temperature_controller.exe
+    cd iothub_client\samples\pnp\pnp_temperature_controller\Debug
+    pnp_temperature_controller.exe
     ```
 
 Zařízení je teď připravené přijmout příkazy a aktualizace vlastností a zahájilo posílání dat telemetrie do centra. Ponechte ukázku spuštěnou při dokončení dalších kroků.
@@ -316,4 +297,4 @@ iothubResult = IoTHubDeviceClient_LL_SendEventAsync(deviceClientLL, messageHandl
 V tomto kurzu jste se naučili připojit zařízení IoT technologie Plug and Play k komponentám do služby IoT Hub. Další informace o modelech zařízení IoT technologie Plug and Play najdete v tématech:
 
 > [!div class="nextstepaction"]
-> [Příručka pro vývojáře pro modelování IoT technologie Plug and Play Preview](concepts-developer-guide.md)
+> [Příručka pro vývojáře IoT technologie Plug and Play Modeling](concepts-developer-guide-device-csharp.md)

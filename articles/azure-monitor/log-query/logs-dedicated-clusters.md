@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 4ad3aa7169fcf7eeda6e56a2eab6669b8783d77d
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461457"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575516"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor protokolovat vyhrazené clustery
 
@@ -19,7 +19,7 @@ Azure Monitor protokoly vyhrazených clusterů je možnost nasazení, která je 
 
 Kromě podpory pro velký objem, existují další výhody používání vyhrazených clusterů:
 
-- **Omezení četnosti** – zákazník může mít vyšší omezení přenosové rychlosti, jenom u vyhrazeného clusteru.
+- **Omezení četnosti** – zákazník může mít vyšší [omezení přenosové rychlosti](../service-limits.md#data-ingestion-volume-rate) , jenom u vyhrazeného clusteru.
 - **Funkce** – některé podnikové funkce jsou dostupné jenom na vyhrazených clusterech – konkrétně na základě zákaznických klíčů (CMK) a podpory bezpečnostního modulu. 
 - **Konzistence** – zákazníci mají své vlastní vyhrazené prostředky, takže neovlivňují jiné zákazníky, kteří používají stejnou sdílenou infrastrukturu.
 - **Cenová efektivita** – může být výhodnější použít vyhrazený cluster, protože přidělené úrovně rezervace kapacity berou v úvahu veškerou kombinaci clusterů a platí pro všechny své pracovní prostory, i když jsou některé z nich malé a nemají nárok na zlevněnou slevu kapacity.
@@ -38,14 +38,23 @@ Po vytvoření clusteru je možné ho nakonfigurovat a připojit k němu pracovn
 
 Všechny operace na úrovni clusteru vyžadují `Microsoft.OperationalInsights/clusters/write` oprávnění akce v clusteru. Toto oprávnění může být uděleno prostřednictvím vlastníka nebo přispěvatele, který obsahuje `*/write` akci nebo prostřednictvím role přispěvatele Log Analytics, která tuto `Microsoft.OperationalInsights/*` akci obsahuje. Další informace o oprávněních Log Analytics najdete [v tématu Správa přístupu k datům protokolů a pracovním prostorům v Azure monitor](../platform/manage-access.md). 
 
-## <a name="billing"></a>Fakturace
 
-Vyhrazené clustery se podporují jenom pro pracovní prostory, které používají plány na GB s úrovněmi rezervace kapacity nebo bez nich. Vyhrazeným clusterům nejsou žádné další poplatky za Zákazníky, kteří se zavazují pro ingestování více než 1 TB pro tento cluster. Možnost potvrdit do ingesta znamená, že jim byla přiřazena úroveň rezervace kapacity alespoň 1 TB/den na úrovni clusteru. I když je rezervace kapacity připojená na úrovni clusteru, existují dvě možnosti pro skutečný zpoplatnění dat:
+## <a name="cluster-pricing-model"></a>Cenový model clusteru
 
-- *Cluster* (výchozí) – náklady na rezervaci kapacity pro váš cluster se připočítají ke zdroji *clusteru* .
-- *Pracovní prostory* – náklady na rezervaci kapacity pro váš cluster jsou úměrně připsány k pracovním prostorům v clusteru. Pokud je celkový počet zpracovaných dat za den v rámci rezervace kapacity, účtuje se v prostředku *clusteru* některé z použití. Další informace o cenovém modelu clusteru najdete v tématu [Log Analytics vyhrazené clustery](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) .
+Log Analytics vyhrazené clustery používají cenový model rezervace kapacity, který je minimálně 1000 GB/měsíc. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb.  Informace o cenách rezervací kapacity najdete na [stránce s cenami Azure monitor]( https://azure.microsoft.com/pricing/details/monitor/).  
 
-Další informace o vyúčtování vyhrazených clusterů najdete v tématu [Log Analytics pro fakturaci vyhrazeného clusteru](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
+Úroveň rezervace kapacity clusteru je konfigurována prostřednictvím programu programově s Azure Resource Manager pomocí `Capacity` parametru v `Sku` . `Capacity`Hodnota je určena v jednotkách GB a může mít hodnoty 1000 GB/den nebo více v přírůstcích po 100 GB za den.
+
+Existují dva režimy fakturace pro použití v clusteru. Tyto parametry mohou být zadány `billingType` parametrem při konfiguraci clusteru. 
+
+1. **Cluster**: v tomto případě (což je výchozí nastavení) se fakturace pro ingestovaná data provádí na úrovni clusteru. Množství zpracovaných dat z každého pracovního prostoru přidruženého ke clusteru se agreguje za účelem výpočtu denního vyúčtování clusteru. 
+
+2. **Pracovní prostory**: náklady na rezervaci kapacity pro váš cluster se úměrně připočítají k pracovním prostorům v clusteru (po zaúčtování pro přidělení podle uzlu z [Azure Security Center](https://docs.microsoft.com/azure/security-center/) pro každý pracovní prostor.)
+
+Pamatujte na to, že pokud váš pracovní prostor používá starší verzi na cenové úrovni uzlů, bude při propojení s clusterem účtován na základě dat přijatých v rámci rezervace kapacity clusteru a již na jeden uzel. Pro přidělení dat jednotlivých uzlů z Azure Security Center bude nadále použito.
+
+Další podrobnosti najdete [tady]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters): Log Analytics vyhrazené clustery k dispozici.
+
 
 ## <a name="creating-a-cluster"></a>Vytvoření clusteru
 
@@ -155,8 +164,8 @@ Po vytvoření prostředku *clusteru* a jeho úplné zřízení můžete na úro
 
 - **keyVaultProperties**: slouží ke konfiguraci Azure Key Vault používaného ke zřízení [Azure monitor klíče spravovaného zákazníkem](../platform/customer-managed-keys.md#cmk-provisioning-procedure). Obsahuje následující parametry: *KeyVaultUri*, KeyName, *verze* *klíče*. 
 - **billingType** – vlastnost *billingType* Určuje přidělení fakturace pro prostředek *clusteru* a jeho data:
-- **Cluster** (výchozí) – náklady na rezervaci kapacity pro váš cluster se připočítají ke zdroji *clusteru* .
-- **Pracovní prostory** – náklady na rezervaci kapacity pro váš cluster jsou úměrně přičteny k pracovním prostorům v clusteru s prostředkem *clusteru* , který se fakturuje jako část využití, pokud je celkový počet zpracovaných dat v daném dni v rámci rezervace kapacity. Další informace o cenovém modelu clusteru najdete v tématu [Log Analytics vyhrazené clustery](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) . 
+  - **Cluster** (výchozí) – náklady na rezervaci kapacity pro váš cluster se připočítají ke zdroji *clusteru* .
+  - **Pracovní prostory** – náklady na rezervaci kapacity pro váš cluster jsou úměrně přičteny k pracovním prostorům v clusteru s prostředkem *clusteru* , který se fakturuje jako část využití, pokud je celkový počet zpracovaných dat v daném dni v rámci rezervace kapacity. Další informace o cenovém modelu clusteru najdete v tématu [Log Analytics vyhrazené clustery](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) . 
 
 > [!NOTE]
 > Vlastnost *billingType* není v prostředí PowerShell podporována.
@@ -173,7 +182,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -Cl
 > [!NOTE]
 > Pomocí opravy můžete aktualizovat *SKU*prostředků *clusteru* , *keyVaultProperties* nebo *billingType* .
 
-Příklad: 
+Například: 
 
 *Call*
 
@@ -185,7 +194,7 @@ Content-type: application/json
 {
    "sku": {
      "name": "capacityReservation",
-     "capacity": 1000
+     "capacity": <capacity-reservation-amount-in-GB>
      },
    "properties": {
     "billingType": "cluster",
@@ -265,8 +274,6 @@ Propojení pracovního prostoru se všemi operacemi clusteru se dá provést až
 > [!WARNING]
 > Propojení pracovního prostoru s clusterem vyžaduje synchronizaci více součástí back-end a zajištění vysazování mezipaměti. Dokončení této operace může trvat až dvě hodiny. Doporučujeme spustit ho asynchronně.
 
-
-### <a name="link-operations"></a>Operace propojení
 
 **PowerShell**
 
@@ -366,7 +373,36 @@ Pracovní prostor můžete odpojit od clusteru. Po odpojení pracovního prostor
 
 ## <a name="delete-a-dedicated-cluster"></a>Odstranění vyhrazeného clusteru
 
-Vyhrazený prostředek clusteru je možné odstranit. Aby bylo možné odstranit všechny pracovní prostory z clusteru, je nutné zrušit propojení všech pracovních prostorů. Po odstranění prostředku clusteru vstoupí fyzický cluster do procesu vyprázdnění a odstranění. Odstranění clusteru odstraní všechna data, která byla uložena v clusteru. Data mohou být z pracovních prostorů, které byly v minulosti propojeny s clusterem.
+Vyhrazený prostředek clusteru je možné odstranit. Aby bylo možné odstranit všechny pracovní prostory z clusteru, je nutné zrušit propojení všech pracovních prostorů. K provedení této operace potřebujete oprávnění Write pro prostředek *clusteru* . 
+
+Po odstranění prostředku clusteru vstoupí fyzický cluster do procesu vyprázdnění a odstranění. Odstranění clusteru odstraní všechna data, která byla uložena v clusteru. Data mohou být z pracovních prostorů, které byly v minulosti propojeny s clusterem.
+
+Prostředek *clusteru* , který se odstranil za posledních 14 dní, je ve stavu obnovitelného odstranění a dá se obnovit s jeho daty. Vzhledem k tomu, že se všechny pracovní prostory odřadí z prostředku *clusteru* s odstraněním prostředku *clusteru* , je potřeba po obnovení znovu přidružit své pracovní prostory. Tuto operaci obnovení nemůže uživatel kontaktovat, pokud se na váš kanál Microsoft Channel nebo podporu pro požadavky na obnovení nedají použít.
+
+Během 14 dní po odstranění se název prostředku clusteru rezervuje a nemůže ho používat jiné prostředky.
+
+**PowerShell**
+
+K odstranění clusteru použijte následující příkaz prostředí PowerShell:
+
+  ```powershell
+  Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
+  ```
+
+**REST**
+
+Pomocí následujícího volání REST odstraňte cluster:
+
+  ```rst
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  ```
+
+  **Response** (Odpověď)
+
+  200 OK
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

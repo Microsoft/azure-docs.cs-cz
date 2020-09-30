@@ -3,22 +3,22 @@ title: Architektura IoT technologie Plug and Play | Microsoft Docs
 description: Jako tvůrce řešení se rozumí klíčové prvky architektury IoT technologie Plug and Play.
 author: ridomin
 ms.author: rmpablos
-ms.date: 07/06/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f656de0bb2e5244e137ae21a6d7af88f3430b12c
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475681"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574313"
 ---
-# <a name="iot-plug-and-play-preview-architecture"></a>Architektura IoT Plug and Play Preview
+# <a name="iot-plug-and-play-architecture"></a>Architektura IoT technologie Plug and Play
 
-IoT technologie Plug and Play Preview umožňuje tvůrcům řešení integrovat inteligentní zařízení s jejich řešeními bez jakékoli ruční konfigurace. V jádru IoT technologie Plug and Play je _model_ zařízení, který popisuje možnosti zařízení pro aplikaci s podporou technologie Plug and Play IoT. Tento model je strukturovaný jako sada rozhraní definujících:
+IoT technologie Plug and Play umožňuje tvůrcům řešení integrovat inteligentní zařízení s jejich řešeními bez jakékoli ruční konfigurace. V jádru IoT technologie Plug and Play je _model_ zařízení, který popisuje možnosti zařízení pro aplikaci s podporou technologie Plug and Play IoT. Tento model je strukturovaný jako sada rozhraní definujících:
 
 - _Vlastnosti_ , které reprezentují stav jen pro čtení nebo zapisovatelného stavu zařízení nebo jiné entity. Například sériové číslo zařízení může být vlastnost jen pro čtení a cílová teplota na termostatovi může být vlastnost s možností zápisu.
 - _Telemetrii_ , která je daty vysílaná zařízením, ať už data jsou pravidelným proudem čtení senzorů, příležitostné chyby nebo informační zprávou.
@@ -43,9 +43,27 @@ Webové uživatelské rozhraní umožňuje správu modelů a rozhraní.
 Tvůrce zařízení implementuje kód, který se spustí na inteligentním zařízení IoT pomocí jedné ze [sad SDK pro zařízení Azure IoT](./libraries-sdks.md). Sady SDK pro zařízení pomůžou tvůrci zařízení:
 
 - Připojte se bezpečně ke službě IoT Hub.
-- Zaregistrujte zařízení ve službě IoT Hub a oznámíte ID modelu, které identifikuje kolekci rozhraní, které zařízení implementuje.
-- Aktualizuje vlastnosti definované v rozhraních DTDL, které zařízení implementuje. Tyto vlastnosti jsou implementované pomocí digitálních vláken, která spravují synchronizaci ve službě IoT Hub.
-- Přidejte obslužné rutiny příkazu pro příkazy definované v rozhraních DTDL, které zařízení implementuje.
+- Zaregistrujte zařízení ve službě IoT Hub a nahlásit ID modelu, které identifikuje kolekci rozhraní DTDL, které zařízení implementuje.
+- Synchronizuje vlastnosti definované v rozhraních DTDL mezi zařízením a centrem IoT Hub.
+- Přidejte obslužné rutiny příkazu pro příkazy definované v rozhraních DTDL.
+- Pošlete telemetrii do centra IoT.
+
+## <a name="iot-edge-gateway"></a>Brána IoT Edge
+
+Brána IoT Edge funguje jako prostředník pro připojení zařízení IoT technologie Plug and Play, která se nemůžou připojit přímo ke službě IoT Hub. Další informace najdete v tématu [jak se dá zařízení IoT Edge použít jako brána](../iot-edge/iot-edge-as-gateway.md).
+
+## <a name="iot-edge-modules"></a>Moduly IoT Edge
+
+_Modul IoT Edge_ umožňuje nasadit a spravovat obchodní logiku na hraničních zařízeních. Azure IoT Edge moduly jsou nejmenší jednotkou výpočtu spravovanou pomocí IoT Edge a můžou obsahovat služby Azure (například Azure Stream Analytics) nebo vlastní kód specifický pro řešení.
+
+_IoT Edge centrum_ je jedním z modulů, které tvoří modul runtime Azure IoT Edge. Funguje jako místní proxy server pro IoT Hub tím, že zveřejňuje stejné koncové body protokolu jako IoT Hub. Tato konzistence znamená, že se klienti (zařízení nebo moduly) mohou připojit k modulu IoT Edge runtime stejným způsobem jako IoT Hub.
+
+Sady SDK pro zařízení pomůžou tvůrci modulů:
+
+- K zabezpečenému připojení ke službě IoT Hub použijte centrum IoT Edge.
+- Zaregistrujte modul ve službě IoT Hub a nahlásit ID modelu, které identifikuje kolekci rozhraní DTDL, které zařízení implementuje.
+- Synchronizuje vlastnosti definované v rozhraních DTDL mezi zařízením a centrem IoT Hub.
+- Přidejte obslužné rutiny příkazu pro příkazy definované v rozhraních DTDL.
 - Pošlete telemetrii do centra IoT.
 
 ## <a name="iot-hub"></a>IoT Hub
@@ -80,4 +98,4 @@ Teď, když máte přehled o architektuře řešení IoT technologie Plug and Pl
 
 - [Úložiště modelu](./concepts-model-repository.md)
 - [Integrace digitálního zdvojeného modelu](./concepts-model-discovery.md)
-- [Vývoj pro IoT technologie Plug and Play](./concepts-developer-guide.md)
+- [Vývoj pro IoT technologie Plug and Play](./concepts-developer-guide-device-csharp.md)

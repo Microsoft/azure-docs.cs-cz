@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b8ee222b7d65fe9b6b9a605bf055e127aef58ff9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e375ce88b8e5bd96e19dc4f5da2143c3f9de53a9
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439299"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575856"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disků virtuálních počítačů Azure IaaS a spravovaných a nespravovaných disků Premium
 
@@ -396,13 +396,19 @@ Ne, podporuje se jenom na discích se systémem Premium SSD.
 
 Ne, standardní disky SSD na libovolné velikosti se nedají použít u nespravovaných disků nebo objektů blob stránky.
 
-**Jaká je největší velikost spravovaného disku podporovaná pro operační systém a datové disky?**
+**Jaká je největší velikost spravovaného disku podporovaná pro operační systém a datové disky na virtuálních počítačích s Gen1?**
 
-Typ oddílu, který Azure podporuje pro disk s operačním systémem, je hlavním spouštěcím záznamem (MBR) a tabulkou oddílů GUID (GPT) pro virtuální počítače s 1 a 2. generace. Formát MBR podporuje velikost disku až 2 TiB. U virtuálních počítačů 1.1 můžete v případě, že přidělíte až 4 TiB, použít pouze až 2 TiB tohoto místa na disku pro operační systém. V případě virtuálních počítačů 2. generace je největší velikost, kterou můžete přidělit a používat pro disk s operačním systémem, 4 TiB. Azure podporuje až 32 TiB pro spravované datové disky.
+Typ oddílu, který Azure podporuje pro disky s operačním systémem Gen1, je hlavním spouštěcím záznamem (MBR). I když disky s operačním systémem Gen1 podporují jenom MBR, datové disky podporují GPT. I když můžete přidělit až 4 disky s operačním systémem TiB, může typ oddílu MBR použít pro operační systém až 2 TiB tohoto místa na disku. Azure podporuje až 32 TiB pro spravované datové disky.
+
+**Jaká je největší velikost spravovaného disku podporovaná pro operační systém a datové disky na virtuálních počítačích s Gen2?**
+
+Typ oddílu, který Azure podporuje pro disky s operačním systémem Gen2, je tabulka oddílů GUID (GPT). Virtuální počítače s Gen2 podporují až 4 disky s operačním systémem TiB. Azure podporuje až 32 TiB pro spravované datové disky.
+
 
 **Jaká je největší velikost nespravovaného disku podporovaná pro operační systém a datové disky?**
 
-Typ oddílu, který Azure podporuje pro disk s operačním systémem, je hlavním spouštěcím záznamem (MBR). Formát MBR podporuje velikost disku až 2 TiB. Největší velikost, kterou Azure podporuje pro nespravovaný disk s operačním systémem, je 4 TiB. Azure podporuje až 4 TiB pro nespravované disky dat.
+Typ oddílu, který Azure podporuje pro disk s operačním systémem pomocí nespravovaných disků, je hlavní spouštěcí záznam (MBR).  I když můžete přidělit až 4 disky s operačním systémem TiB, může typ oddílu MBR použít pro operační systém až 2 TiB tohoto místa na disku. Azure podporuje až 4 TiB pro nespravované datové disky.
+
 
 **Jaká je největší velikost objektu blob stránky, která je podporovaná?**
 

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b069d1bf16e8cbf4dfc245fbb3c66863cd0b994
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c4b3479e5728c32e66bc40f950bc948bf61dce42
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055563"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575159"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Použití samoobslužného expedice pro Azure Data Box Disk v Azure Portal
 
@@ -37,13 +37,13 @@ Když umístíte Data Box Disk pořadí, můžete vybrat možnost samostatně sp
 
 1. V pořadí Azure Data Box Disk v části **kontaktní údaje**vyberte **+ Přidat dodací adresu**.
 
-   ![Expedice řízená svépomocí](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+   ![Snímek obrazovky s průvodcem objednávkou zobrazující krok kontaktní údaje s možností přidat dodací adresu s názvem.](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. Když zvolíte typ přenosu, vyberte možnost **expedice samostatně spravovaná** . Tato možnost je k dispozici pouze v případě, že jste v podporované oblasti, jak je popsáno v části požadavky.
 
 3. Po zadání dodací adresy ji budete muset ověřit a dokončit objednávku.
 
-   ![Expedice řízená svépomocí](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Snímek obrazovky dialogového okna Přidat doručovací adresu s použitím možností a možnosti Přidat adresu pro odeslání s názvem.](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Po přípravě zařízení a obdržení e-mailového oznámení můžete naplánovat vyzvednutí. V pořadí Azure Data Box Disk klikněte na **Přehled** a pak vyberte **Naplánovat vyzvednutí**.
 
@@ -55,7 +55,7 @@ Když umístíte Data Box Disk pořadí, můžete vybrat možnost samostatně sp
 
 6. Po naplánování vyzvednutí zařízení budete moct zobrazit autorizační kód v  **plánu vyzvednutí pro Azure**.
 
-   ![Zobrazení autorizačního kódu](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
+   ![Snímek obrazovky dialogového okna naplánovat výběr pro Azure s autorizačním kódem pro výstupní pole vyvolaným textem](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
 
    Poznamenejte si tento **autorizační kód**.
 
@@ -78,7 +78,7 @@ Když umístíte Data Box Disk pořadí, můžete vybrat možnost samostatně sp
 
 9. Pokud jste obdrželi schůzku pro odložení od chvíle, kdy by měla být objednávka **připravena k přijetí ve stavu datacentra Azure** v Azure Portal.
 
-   ![Zobrazení autorizačního kódu](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
+   ![Snímek obrazovky dialogového okna Přidat dodací adresu s expedicí s využitím možností a možnosti Přidat adresu pro odeslání s názvem.](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
 
 10. Po ověření ID a autorizačního kódu a **obdržení**zařízení v datovém centru by se mělo přijmout stav objednávky.
 

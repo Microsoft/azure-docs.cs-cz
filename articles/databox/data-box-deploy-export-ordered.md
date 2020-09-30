@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 5494c2dd57220888ad846aaf69fde2f7a59353e4
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 5c3f87620c8a2a2d2438d7a5630541c0f76f9f17
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053012"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575567"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Kurz: vytvoření objednávky exportu pro Azure Data Box (Preview)
 
@@ -159,34 +159,34 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
 Pokud vyberete možnost **použít soubor XML**, můžete zadat konkrétní kontejnery a objekty BLOB (stránky a blok), které chcete exportovat. Pro formátování XML bude nutné postupovat podle pokynů v dokumentaci k [ukázkové tabulce souborů XML](#sample-xml-file) . Následující postup ukazuje, jak použít soubor XML pro export dat:
 
 1. Jako **typ exportu**vyberte **použít soubor XML**. Jedná se o soubor XML, který určuje konkrétní objekty BLOB a soubory Azure, které chcete exportovat. Chcete-li přidat soubor XML, vyberte **kliknutím sem vyberte soubor XML**.
-     ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
+     ![Snímek obrazovky možnosti výběru exportu s kliknutím sem vyberte možnost souboru X M L s názvem.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
 
 2. Vyberte **+ kontejner** pro vytvoření kontejneru.
-    ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
+    ![Snímek obrazovky oddílu Containers](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
 
 3. Na kartě **Nový kontejner** , která se odhlásí od pravé strany Azure Portal přidejte název kontejneru. Název musí být malými písmeny a může obsahovat číslice a pomlčky (-). Pak v rozevíracím seznamu vyberte **úroveň veřejného přístupu** . Doporučujeme vybrat možnost **privátní (neanonymní přístup)** a zabránit tak ostatním uživatelům v přístupu k vašim datům. Další informace o úrovních přístupu kontejneru najdete v tématu [oprávnění k přístupu kontejnerů](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs).
 
-   ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
+   ![Snímek obrazovky s kartou nový kontejner zobrazující možnost privátní (bez anonymního přístupu) je vybraná.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 
 4. Vyberte **Vytvořit**.
 
-   ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
+   ![Snímek obrazovky s kartou New Container s možností vytvořit s názvem.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
 
    Pokud se kontejner úspěšně vytvoří, zobrazí se tato zpráva:
 
-   ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
+   ![Snímek obrazovky s informacemi o úspěšném vytvoření kontejneru úložiště](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
 
 5. Vyberte kontejner, který jste vytvořili, a dvakrát na něj klikněte.
 
-   ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
+   ![Snímek obrazovky s oddílem Containers s kontejnerem kontejneru mého privátního testu byl vyvolán.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
 
 6. Dvojím kliknutím na kontejner se zobrazí zobrazení vlastností kontejneru. Nyní chcete připojit (nebo vyhledat) soubor XML, který obsahuje seznam objektů BLOB nebo souborů Azure, které chcete exportovat. Vyberte **Nahrát**.
 
-   ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
+   ![Snímek obrazovky dialogového okna pro nahrání objektu BLOB s možností nahrání s názvem](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
 
 7. Úspěšně jste přidali soubor XML do kontejneru. Budou exportovány pouze objekty BLOB a soubory Azure zadané v tomto souboru XML.
 
-   ![Soubor XML](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
+   ![Snímek obrazovky s průvodcem objednávkou s názvem další: možnost zabezpečení.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
 
 ## <a name="track-the-order"></a>Sledování objednávky
 
@@ -256,15 +256,15 @@ Mezi důležité body v souvislosti se soubory XML:
 
 V následující tabulce jsou uvedeny příklady platných cest objektů BLOB:
 
-   | Volič | Cesta objektu BLOB | Popis |
+   | Volič | Cesta objektu BLOB | Description |
    | --- | --- | --- |
    | Začíná na |/ |Exportuje všechny objekty BLOB v účtu úložiště. |
    | Začíná na |/$root/ |Exportuje všechny objekty BLOB v kořenovém kontejneru. |
    | Začíná na |/containers |Exportuje všechny objekty BLOB v jakémkoli kontejneru, který začíná předponami **kontejnerů** . |
    | Začíná na |/container-name/ |Exportuje všechny objekty BLOB v kontejneru kontejneru **– název** |
    | Začíná na |/container-name/prefix |Exportuje všechny objekty BLOB v **kontejneru kontejneru – název** , který začíná **předponou** předpony. |
-   | Rovno |$root/logo.bmp |Export objektu BLOB **logo.bmp** do kořenového kontejneru |
-   | Rovno |8tbpageblob/mydata.txt |Export **mydata.txt** objektů BLOB v kontejneru **8tbpageblob** |
+   | Je rovno |$root/logo.bmp |Export objektu BLOB **logo.bmp** do kořenového kontejneru |
+   | Je rovno |8tbpageblob/mydata.txt |Export **mydata.txt** objektů BLOB v kontejneru **8tbpageblob** |
 
 ## <a name="sample-log-files"></a>Ukázkové soubory protokolů
 

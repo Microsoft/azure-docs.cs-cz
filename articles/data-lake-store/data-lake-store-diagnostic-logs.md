@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: e50091750e01435912a2a5163cc786e79dc09f5c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: cd1b03c8cecf84e75bac32be0570c2f4f3db9b2e
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985060"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575533"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Přístup k diagnostickým protokolům pro Azure Data Lake Storage Gen1
 Naučte se, jak povolit protokolování diagnostiky pro váš účet Azure Data Lake Storage Gen1 a jak zobrazit protokoly shromážděné pro váš účet.
@@ -26,18 +26,18 @@ Organizace můžou povolit protokolování diagnostiky pro svůj účet Azure Da
 
 ## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Azure Data Lake Storage Gen1**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure Portal](data-lake-store-get-started-portal.md).
+* **Účet Azure Data Lake Storage Gen1**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-get-started-portal.md).
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>Povolení protokolování diagnostiky pro váš účet Data Lake Storage Gen1
 1. Přihlaste se k novému webu [Azure Portal](https://portal.azure.com).
 2. Otevřete účet Data Lake Storage Gen1 a v okně Data Lake Storage Gen1 účtu klikněte na **nastavení diagnostiky**.
 3. V okně **nastavení diagnostiky** klikněte na **zapnout diagnostiku**.
 
-    ![Povolení protokolování diagnostiky](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Povolení diagnostických protokolů")
+    ![Snímek obrazovky s Data Lake Storage účet 1. generace s možností nastavení diagnostiky a možností zapnout diagnostiku s názvem.](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Povolení diagnostických protokolů")
 
 3. V okně **nastavení diagnostiky** proveďte následující změny pro konfiguraci protokolování diagnostiky.
    
-    ![Povolení protokolování diagnostiky](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Povolení diagnostických protokolů")
+    ![Snímek obrazovky s oddílem nastavení diagnostiky s textovým polem název a možností Uložit s názvem.](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Povolení diagnostických protokolů")
    
    * Do pole **název**zadejte hodnotu Konfigurace diagnostického protokolu.
    * Můžete si vybrat, že chcete data ukládat a zpracovávat různými způsoby.
@@ -73,17 +73,17 @@ Existují dva způsoby, jak zobrazit data protokolu pro váš Data Lake Storage 
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Z účtu Azure Storage, který obsahuje data protokolu
 1. Otevřete okno Azure Storage účtu přidruženého k Data Lake Storage Gen1 pro protokolování a potom klikněte na objekty blob. Okno **BLOB Service** uvádí dva kontejnery.
    
-    ![Zobrazit protokolování diagnostiky](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Zobrazit diagnostické protokoly")
+    ![Snímek obrazovky okna Data Lake Storage Gen 1 – vybraná možnost objekty BLOB a okno služby blogu s názvy dvou služby BLOB Service, které jsou vyvolány.](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Zobrazit diagnostické protokoly")
    
    * Kontejner **Insights-logs-audit** obsahuje protokoly auditu.
    * Kontejner **Insights-logs – požadavky** obsahují protokoly žádostí.
 2. V rámci těchto kontejnerů jsou protokoly uloženy v následující struktuře.
    
-    ![Zobrazit protokolování diagnostiky](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Zobrazit diagnostické protokoly")
+    ![Snímek obrazovky se strukturou protokolů, jak je uložen v kontejneru.](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Zobrazit diagnostické protokoly")
    
-    Příkladem může být úplná cesta k protokolu auditu.`https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
+    Příkladem může být úplná cesta k protokolu auditu. `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
-    Podobně platí, že úplná cesta k protokolu žádostí může být`https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
+    Podobně platí, že úplná cesta k protokolu žádostí může být `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
 ## <a name="understand-the-structure-of-the-log-data"></a>Pochopení struktury dat protokolu
 Protokoly auditu a požadavků jsou ve formátu JSON. V této části se podíváme na strukturu formátu JSON pro žádosti a protokoly auditu.
@@ -115,7 +115,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 ```
 
 #### <a name="request-log-schema"></a>Schéma protokolu žádostí
-| Name | Typ | Description |
+| Název | Typ | Description |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |ID prostředku, na kterém byla operace provedena |
@@ -128,7 +128,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 | properties |JSON |Podrobnosti najdete níže. |
 
 #### <a name="request-log-properties-schema"></a>Vlastnosti protokolu žádosti – schéma
-| Name | Typ | Description |
+| Název | Typ | Description |
 | --- | --- | --- |
 | HttpMethod |Řetězec |Metoda HTTP použitá pro operaci Například GET. |
 | Cesta |Řetězec |Cesta, na které byla operace provedena |
@@ -164,7 +164,7 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 ```
 
 #### <a name="audit-log-schema"></a>Schéma protokolu auditu
-| Name | Typ | Description |
+| Název | Typ | Description |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |ID prostředku, na kterém byla operace provedena |
@@ -177,7 +177,7 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 | properties |JSON |Podrobnosti najdete níže. |
 
 #### <a name="audit-log-properties-schema"></a>Schéma vlastností protokolu auditu
-| Name | Typ | Description |
+| Název | Typ | Description |
 | --- | --- | --- |
 | StreamName |Řetězec |Cesta, na které byla operace provedena |
 

@@ -1,6 +1,7 @@
 ---
-title: Začněte s Microsoft Identity platformou UWP | Azure
-description: Jak aplikace Univerzální platforma Windows (UWP) můžou volat rozhraní API, které vyžaduje přístupové tokeny koncovým bodem Microsoft Identity Platform.
+title: 'Kurz: Vytvoření aplikace Univerzální platforma Windows (UWP), která používá Microsoft Identity Platform pro ověřování | Azure'
+titleSuffix: Microsoft identity platform
+description: V tomto kurzu vytvoříte aplikaci UWP, která používá Microsoft Identity Platform k přihlašování uživatelů a získání přístupového tokenu pro volání rozhraní API Microsoft Graph jménem.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,26 +12,31 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: acdc23c664f84882916b91b8f8698ee36b1e6cd3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bee6f832476537a6d7dba3db98d9aada6c61a476
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165545"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574241"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní Microsoft Graph API z aplikace Univerzální platforma Windows (XAML)
-
-> [!div renderon="docs"]
+# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (UPW)
 
 V této příručce se dozvíte, jak může aplikace pro nativní Univerzální platforma Windows (UWP) požádat o přístupový token. Aplikace pak zavolá rozhraní Microsoft Graph API. Tato příručka platí i pro další rozhraní API, která vyžadují přístupové tokeny z koncového bodu Microsoft Identity Platform.
 
 Na konci tohoto průvodce vaše aplikace volá chráněné rozhraní API pomocí osobních účtů. Příklady jsou outlook.com, live.com a další. Vaše aplikace také volá pracovní a školní účty z libovolné společnosti nebo organizace, která má Azure Active Directory (Azure AD).
 
->[!NOTE]
-> Tato příručka vyžaduje Visual Studio s nainstalovanou Univerzální platforma Windows vývoj. Pokyny ke stažení a konfiguraci sady Visual Studio pro vývoj Univerzální platforma Windowsch aplikací najdete v tématu o [Nastavení](/windows/uwp/get-started/get-set-up).
+V tomto kurzu:
 
->[!NOTE]
-> Pokud začínáte s platformou Microsoft identity, začněte [voláním rozhraní Microsoft Graph API z rychlého startu aplikace Univerzální platforma Windows (UWP)](quickstart-v2-uwp.md).
+> [!div class="checklist"]
+> * Vytvoření projektu *Univerzální platforma Windows (UWP)* v aplikaci Visual Studio
+> * Registrace aplikace v Azure Portal
+> * Přidat kód pro podporu přihlášení a odhlášení uživatele
+> * Přidat kód pro volání rozhraní API Microsoft Graph
+> * Otestování aplikace
+
+## <a name="prerequisites"></a>Požadavky
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) s nainstalovanou úlohou [vývoj Univerzální platforma Windows](/windows/uwp/get-started/get-set-up)
 
 ## <a name="how-this-guide-works"></a>Jak funguje tento průvodce
 
@@ -115,7 +121,7 @@ V této části se dozvíte, jak pomocí knihovny Microsoft Authentication Libra
     ```csharp
     public sealed partial class MainPage : Page
     {
-       
+
         //Set the scope for API call to user.read
         private string[] scopes = new string[] { "user.read" };
 
@@ -316,7 +322,7 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 
 #### <a name="more-information"></a>Další informace<a name="more-information-1"></a>
 
-Tokeny ID získané pomocí **OpenID Connect** také obsahují malou podmnožinu informací, které se vztahují k uživateli. `DisplayBasicTokenInfo`Zobrazí základní informace obsažené v tokenu. Tyto informace zahrnují zobrazované jméno a ID uživatele. Zahrnuje také datum vypršení platnosti tokenu a řetězec, který představuje samotný přístupový token. Pokud si vyberete tlačítko **rozhraní API pro volání Microsoft Graph** několikrát, uvidíte, že se stejný token znovu použil pro pozdější požadavky. Můžete také zobrazit datum vypršení platnosti prodloužené, když Microsoft Authentication Library rozhodne, že je čas obnovit token.
+Tokeny ID získané pomocí **OpenID Connect** také obsahují malou podmnožinu informací, které se vztahují k uživateli. `DisplayBasicTokenInfo` Zobrazí základní informace obsažené v tokenu. Tyto informace zahrnují zobrazované jméno a ID uživatele. Zahrnuje také datum vypršení platnosti tokenu a řetězec, který představuje samotný přístupový token. Pokud si vyberete tlačítko **rozhraní API pro volání Microsoft Graph** několikrát, uvidíte, že se stejný token znovu použil pro pozdější požadavky. Můžete také zobrazit datum vypršení platnosti prodloužené, když Microsoft Authentication Library rozhodne, že je čas obnovit token.
 
 ### <a name="display-message"></a>Zobrazit zprávu
 
@@ -427,16 +433,15 @@ V aktuální ukázce `WithRedirectUri("https://login.microsoftonline.com/common/
             }
            ...
     }
-  
+
     ```
 
-    Spusťte aplikaci a potom zkopírujte hodnotu `redirectUri` při dosažení zarážky. Hodnota by měla vypadat nějak podobně jako následující hodnota:  
-    `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/`
+    Spusťte aplikaci a potom zkopírujte hodnotu `redirectUri` při dosažení zarážky. Hodnota by měla vypadat nějak podobně jako následující hodnota: `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/`
 
-    Řádek kódu pak můžete odebrat, protože je požadován pouze jednou pro načtení hodnoty. 
+    Řádek kódu pak můžete odebrat, protože je požadován pouze jednou pro načtení hodnoty.
 
 3. V portálu pro registraci aplikací přidejte vrácenou hodnotu do **RedirectUri** v podokně **ověřování** .
-   
+
 ## <a name="test-your-code"></a>Testování kódu
 
 Chcete-li otestovat aplikaci, vyberte klávesu **F5** ke spuštění projektu v aplikaci Visual Studio. Zobrazí se hlavní okno:
@@ -496,3 +501,10 @@ Povolíte [integrované ověřování pro federované domény](#enable-integrate
 **Alternativní řešení:** Vyberte **Přihlásit se s dalšími možnostmi**. Pak vyberte **Přihlásit se pomocí uživatelského jména a hesla**. Vyberte **zadat heslo**. Pak Projděte proces ověřování pro telefon.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace o použití knihovny Microsoft Authentication Library (MSAL) pro autorizaci a ověřování v aplikacích .NET:
+
+> [!div class="nextstepaction"]
+> [Přehled knihovny Microsoft Authentication Library (MSAL)](msal-overview.md)

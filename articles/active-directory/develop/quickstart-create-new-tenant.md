@@ -1,6 +1,7 @@
 ---
-title: Vytvoření tenanta Azure Active Directory
-description: Zjistěte, jak vytvořit tenanta Azure AD pro použití při registraci a vytváření aplikací.
+title: 'Rychlý Start: vytvoření tenanta Azure Active Directory'
+titleSuffix: Microsoft identity platform
+description: V tomto rychlém startu se dozvíte, jak vytvořit tenanta Azure Active Directory pro použití při vývoji aplikací, které používají platformu Microsoft identity pro ověřování a autorizaci.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,20 +13,24 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: df873e49e1bc581a32bcb4e4b40b2b24db98cee5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 60d789c4297c400b812cd6c5c19c8c6148cb347d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120809"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575975"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Rychlý start: Nastavení tenanta
 
 Microsoft Identity Platform umožňuje vývojářům vytvářet aplikace určené pro širokou škálu vlastních prostředí a identit Microsoft 365. Pokud chcete začít používat Microsoft Identity Platform, budete potřebovat přístup k prostředí, které se označuje taky jako tenant služby Azure AD, který může registrovat a spravovat aplikace, mít přístup k Microsoft 365 dat a nasazovat vlastní podmíněný přístup a omezení klientů.
 
-Tenant je reprezentace organizace. Jedná se o vyhrazenou instanci Azure AD, kterou organizace nebo vývojář aplikací obdrží při vytvoření partnerství s Microsoftem, například registrací do Azure, Microsoft Intune nebo Microsoft 365.
+Klient představuje organizaci. Jedná se o vyhrazenou instanci Azure AD, kterou organizace nebo vývojář aplikací obdrží při vytvoření partnerství s Microsoftem, například registrací do Azure, Microsoft Intune nebo Microsoft 365.
 
 Každý tenant Azure AD je odlišný a oddělený od ostatních tenantů Azure AD a používá vlastní reprezentaci pracovních a školních identit, identit zákazníků (pokud se jedná o tenanta Azure AD B2C) a registrací aplikací. Registrace aplikace uvnitř vašeho tenanta může umožňovat ověřování z účtů pouze v rámci vašeho tenanta nebo ve všech tenantech.
+
+## <a name="prerequisites"></a>Požadavky
+
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="determining-environment-type"></a>Určení typu prostředí
 
@@ -71,6 +76,5 @@ Pokud chcete začít vytvářet aplikace s přihlašováním účtů na sociáln
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zaregistrujte aplikaci](quickstart-register-app.md) a integrujte ji s platformou Microsoft identity. 
-* Seznamte se se [základy ověřování](./authentication-vs-authorization.md).
-* Podrobnosti o vztahu mezi předplatnými a klientem služby Azure AD najdete v tématu [přidružení nebo přidání předplatného Azure ke svému klientovi Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md) .
+> [!div class="nextstepaction"]
+> [Zaregistrujte aplikaci](quickstart-register-app.md) , která se má integrovat s platformou Microsoft identity.

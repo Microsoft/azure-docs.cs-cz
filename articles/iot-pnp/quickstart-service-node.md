@@ -1,6 +1,6 @@
 ---
-title: Interakce se zařízením IoT technologie Plug and Play Preview připojeným k řešení Azure IoT (Node.js) | Microsoft Docs
-description: Pomocí Node.js se můžete připojit k zařízení IoT technologie Plug and Play Preview, které je připojené k řešení Azure IoT, a pracovat s ním.
+title: Interakce se zařízením IoT technologie Plug and Play připojeným k řešení Azure IoT (Node.js) | Microsoft Docs
+description: Pomocí Node.js se můžete připojit k zařízení IoT technologie Plug and Play, které je připojené k řešení Azure IoT, a pracovat s ním.
 author: elhorton
 ms.author: elhorton
 ms.date: 08/11/2020
@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 24c12425b7c8598f46f9a0891337129bcbabec40
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6ad6e48642e7b7df4b93b37b5ef66381833d8bbc
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281231"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574989"
 ---
-# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play ve verzi Preview, které je připojené k vašemu řešení (Node.js)
+# <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play připojeným k vašemu řešení (Node.js)
 
 [!INCLUDE [iot-pnp-quickstarts-service-selector.md](../../includes/iot-pnp-quickstarts-service-selector.md)]
 
-IoT technologie Plug and Play Preview zjednodušuje IoT tím, že vám umožní pracovat s funkcemi zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí Node.js připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+IoT technologie Plug and Play zjednodušuje IoT tím, že vám umožní pracovat s funkcemi zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí Node.js připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
 
 ## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 K dokončení tohoto rychlého startu potřebujete Node.js na svém vývojovém počítači. Nejnovější doporučenou verzi si můžete stáhnout z [NodeJS.org](https://nodejs.org)na víc platforem.
 
@@ -33,29 +33,19 @@ Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověř
 node --version
 ```
 
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-Spuštěním následujícího příkazu Získejte _připojovací řetězec služby IoT Hub_ pro vaše centrum. Poznamenejte si tento připojovací řetězec, budete ho používat později v tomto rychlém startu:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-Spuštěním následujícího příkazu Získejte _připojovací řetězec zařízení_ pro zařízení, které jste přidali do centra. Poznamenejte si tento připojovací řetězec, budete ho používat později v tomto rychlém startu:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output
-```
-
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>Naklonujte úložiště sady SDK pomocí ukázkového kódu.
 
-Sada SDK služby je ve verzi Preview, takže je nutné klonovat ukázky z [větve Preview sady SDK Node](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh). Otevřete okno terminálu ve složce podle vašeho výběru. Spuštěním následujícího příkazu naklonujte větev **pnp-Preview-Refresh** sady [Microsoft Azure IoT SDK pro Node.js](https://github.com/Azure/azure-iot-sdk-node) úložiště GitHub:
+Naklonujte ukázky z [úložiště sady SDK pro uzly](https://github.com/Azure/azure-iot-sdk-node). Otevřete okno terminálu ve složce podle vašeho výběru. Spusťte následující příkaz, který naklonuje [sadu Microsoft Azure IoT SDK pro Node.js](https://github.com/Azure/azure-iot-sdk-node) úložiště GitHub:
 
 ```cmd/sh
-git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
+git clone https://github.com/Azure/azure-iot-sdk-node
 ```
 
 ## <a name="run-the-sample-device"></a>Spuštění ukázkového zařízení
+
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+Další informace o ukázkové konfiguraci najdete v [ukázkovém souboru Readme](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md).
 
 V tomto rychlém startu můžete použít ukázkový termostat zařízení, které je napsané v Node.js jako zařízení technologie Plug and Play IoT. Spuštění ukázkového zařízení:
 
@@ -65,12 +55,6 @@ V tomto rychlém startu můžete použít ukázkový termostat zařízení, kter
 
     ```cmd/sh
     npm install
-    ```
-
-1. Konfigurace _připojovacího řetězce zařízení_:
-
-    ```cmd/sh
-    set IOTHUB_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
     ```
 
 1. Spusťte vzorový termostat zařízení pomocí následujícího příkazu:
@@ -83,25 +67,19 @@ V tomto rychlém startu můžete použít ukázkový termostat zařízení, kter
 
 ## <a name="run-the-sample-solution"></a>Spuštění ukázkového řešení
 
+V [části nastavení prostředí pro iot technologie Plug and Play rychlé starty a kurzy](set-up-environment.md) , které jste vytvořili dvě proměnné prostředí pro konfiguraci ukázky pro připojení ke službě IoT Hub a zařízení:
+
+* **IOTHUB_CONNECTION_STRING**: připojovací řetězec ke službě IoT Hub jste si poznamenali dříve.
+* **IOTHUB_DEVICE_ID**: `"my-pnp-device"` .
+
 V tomto rychlém startu použijete ukázkové řešení IoT v Node.js k interakci s ukázkovým zařízením, které jste právě nastavili.
 
-1. Otevřete další okno terminálu pro použití jako terminálu **služby** . Sada SDK služby je ve verzi Preview, takže je nutné klonovat ukázky z [větve verze Preview sady SDK pro uzly](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh):
+1. Otevřete další okno terminálu pro použití jako terminálu **služby** .
 
-    ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
-    ```
-
-1. Přejděte do složky této větve klonovaného úložiště a přejděte do složky */Azure-IoT-SDK-Node/digitaltwins/Samples/Service/JavaScript* . Všechny závislosti Nainstalujte spuštěním následujícího příkazu:
+1. V úložišti naklonovaného uzlu sady SDK přejděte do složky */Azure-IoT-SDK-Node/Service/Samples/JavaScript* . Všechny závislosti Nainstalujte spuštěním následujícího příkazu:
 
     ```cmd/sh
     npm install
-    ```
-
-1. Nakonfigurujte proměnné prostředí pro ID zařízení a _připojovací řetězec IoT Hub_:
-
-    ```cmd/sh
-    set IOTHUB_CONNECTION_STRING=<YourIOTHubConnectionString>
-    set IOTHUB_DEVICE_ID=<Your device ID>
     ```
 
 ### <a name="read-a-property"></a>Číst vlastnost
@@ -163,7 +141,7 @@ V tomto scénáři výstup IT `Model Id: dtmi:com:example:Thermostat;1` .
 1. V terminálu **zařízení** vidíte, že zařízení obdrželo aktualizaci:
 
     ```cmd/sh
-    The following properties will be updated for root interface:
+    The following properties will be updated for the default component:
     {
       targetTemperature: {
         value: 42,
@@ -221,11 +199,9 @@ V tomto scénáři výstup IT `Model Id: dtmi:com:example:Thermostat;1` .
     Response to method 'getMaxMinReport' sent successfully.
     ```
 
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
-
 ## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste zjistili, jak připojit zařízení IoT technologie Plug and Play k řešení IoT. Další informace o modelech zařízení IoT technologie Plug and Play najdete v tématech:
 
 > [!div class="nextstepaction"]
-> [Příručka pro vývojáře pro modelování IoT technologie Plug and Play Preview](concepts-developer-guide.md)
+> [Příručka pro vývojáře IoT technologie Plug and Play Modeling](concepts-developer-guide-device-csharp.md)

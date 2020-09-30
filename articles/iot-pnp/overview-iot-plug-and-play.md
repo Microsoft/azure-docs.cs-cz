@@ -1,6 +1,6 @@
 ---
-title: Úvod do IoT technologie Plug and Play Preview | Microsoft Docs
-description: Přečtěte si o IoT technologie Plug and Play ve verzi Preview. IoT technologie Plug and Play vychází z otevřeného modelovacího jazyka, který umožňuje inteligentním zařízením IoT deklarovat své schopnosti. Zařízení IoT prezentují tuto deklaraci, která se označuje jako model zařízení, když se připojují ke cloudovým řešením. Cloudové řešení pak může automaticky pochopit zařízení a začít s ním pracovat, a to vše bez psaní kódu.
+title: Seznámení s IoT technologie Plug and Play | Microsoft Docs
+description: Přečtěte si o IoT technologie Plug and Play. IoT technologie Plug and Play vychází z otevřeného modelovacího jazyka, který umožňuje inteligentním zařízením IoT deklarovat své schopnosti. Zařízení IoT prezentují tuto deklaraci, která se označuje jako model zařízení, když se připojují ke cloudovým řešením. Cloudové řešení pak může automaticky pochopit zařízení a začít s ním pracovat, a to vše bez psaní kódu.
 author: rido-min
 ms.author: rmpablos
 ms.date: 07/06/2020
@@ -9,16 +9,16 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 32a873af3d287c3bd1e83de6db8e17ebc1d2958b
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 3f74c593cd44470efd231578fddcf53715a3979a
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855624"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575091"
 ---
-# <a name="what-is-iot-plug-and-play-preview"></a>Co je IoT Plug and Play Preview?
+# <a name="what-is-iot-plug-and-play"></a>Co je IoT Plug and Play?
 
-IoT technologie Plug and Play Preview umožňuje tvůrcům řešení integrovat inteligentní zařízení s jejich řešeními bez jakékoli ruční konfigurace. V jádru IoT technologie Plug and Play je _model_ zařízení, který zařízení používá k inzerování svých schopností k aplikaci s podporou technologie Plug and Play IoT. Tento model je strukturovaný jako sada elementů, které definují:
+IoT technologie Plug and Play umožňuje tvůrcům řešení integrovat inteligentní zařízení s jejich řešeními bez jakékoli ruční konfigurace. V jádru IoT technologie Plug and Play je _model_ zařízení, který zařízení používá k inzerování svých schopností k aplikaci s podporou technologie Plug and Play IoT. Tento model je strukturovaný jako sada elementů, které definují:
 
 - _Vlastnosti_ , které reprezentují stav jen pro čtení nebo zapisovatelného stavu zařízení nebo jiné entity. Například sériové číslo zařízení může být vlastnost jen pro čtení a cílová teplota na termostatovi může být vlastnost s možností zápisu.
 - _Telemetrii_ , která je daty vysílaná zařízením, ať už data jsou pravidelným proudem čtení senzorů, příležitostné chyby nebo informační zprávou.
@@ -49,13 +49,15 @@ Jako tvůrce řešení můžete vyvíjet řešení IoT hostované v cloudu, kter
 
 Když připojíte zařízení IoT technologie Plug and Play ke službě IoT Hub, můžete použít nástroj [Azure IoT Explorer](./howto-use-iot-explorer.md) k zobrazení telemetrie, vlastností a příkazů definovaných v rozhraních, která model tvoří.
 
+Pokud máte k dispozici stávající senzory připojené k bráně Windows nebo Linux, můžete k propojení těchto senzorů použít [iot technologie Plug and Play most](./concepts-iot-pnp-bridge.md)a vytvořit zařízení technologie Plug and Play IoT, aniž byste museli psát software nebo firmware zařízení (pro [podporované protokoly](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors) ).
+
 ## <a name="develop-an-iot-device-application"></a>Vývoj aplikace zařízení IoT
 
 Jako tvůrce zařízení můžete vyvíjet hardwarový produkt IoT, který podporuje technologie Plug and Play IoT. Tento proces zahrnuje tři klíčové kroky:
 
 1. Definujte model zařízení. Vytvoříte sadu souborů JSON, které definují možnosti zařízení pomocí nástroje [DTDL](https://github.com/Azure/opendigitaltwins-dtdl). Model popisuje kompletní entitu, jako je třeba fyzický produkt, a definuje sadu rozhraní implementovaných touto entitou. Rozhraní jsou sdílené kontrakty, které jednoznačně identifikují telemetrii, vlastnosti a příkazy, které zařízení podporuje. Rozhraní lze znovu použít napříč různými modely.
 
-1. Vytvářejte software nebo firmware zařízení tak, aby jejich telemetrie, vlastnosti a příkazy dodržovaly konvence technologie Plug and Play IoT.
+1. Vytvářejte software nebo firmware zařízení tak, aby jejich telemetrie, vlastnosti a příkazy dodržovaly konvence technologie Plug and Play IoT. Pokud připojujete stávající senzory připojené k bráně Windows nebo Linux, může tento krok zjednodušit [technologie Plug and Play most](./concepts-iot-pnp-bridge.md) .
 
 1. Zařízení oznamuje ID modelu v rámci připojení MQTT. Sada Azure IoT SDK obsahuje nové konstrukce, které v době připojení poskytují ID modelu.
 
@@ -68,7 +70,7 @@ Jako tvůrce zařízení můžete vyvíjet hardwarový produkt IoT, který podpo
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Tato aktualizace IoT technologie Plug and Play Preview je dostupná na rozbočovačích IoT vytvořených v oblastech Střed USA, Severní Evropa a Východní Japonsko.
+Tato aktualizace IoT technologie Plug and Play je dostupná na rozbočovačích IoT vytvořených v oblastech Střed USA, Severní Evropa a Východní Japonsko.
 
 ## <a name="next-steps"></a>Další kroky
 

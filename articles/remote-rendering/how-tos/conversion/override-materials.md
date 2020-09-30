@@ -5,25 +5,25 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
-ms.openlocfilehash: 2e9cb216c100f1732230a90572284bd3f8462584
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 11bd79a1bc88d2605a20744f5a6b6536d754c100
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433137"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576638"
 ---
 # <a name="override-materials-during-model-conversion"></a>Potlačení materiálů během převodu modelů
 
 Nastavení materiálu ve zdrojovém modelu slouží k definování [materiálů PBR](../../overview/features/pbr-materials.md) používaných nástrojem pro vykreslování.
 V některých případech [výchozí převod](../../reference/material-mapping.md) neposkytuje požadované výsledky a je třeba provést změny.
-Když je model převeden pro použití ve vzdáleném vykreslování Azure, můžete poskytnout soubor pro přepsání materiálu a přizpůsobit tak, jak se převod materiálu provádí na základě jednotlivých materiálů.
-Část týkající se [konfigurace převodu modelu](configure-model-conversion.md) obsahuje pokyny pro deklaraci názvu souboru přepisu materiálu.
+Když je model převeden pro použití ve vzdáleném vykreslování Azure, můžete poskytnout soubor přepsání materiálu k přizpůsobení toho, jak se převod materiálu provádí na základě jednotlivých materiálů.
+Pokud `<modelName>.MaterialOverrides.json` je v vstupním kontejneru vedle vstupního modelu nalezen soubor s názvem `<modelName>.<ext>` , bude použit jako soubor přepisu materiálu.
 
 ## <a name="the-override-file-used-during-conversion"></a>Soubor přepsání použitý při převodu
 
 Jednoduchým příkladem je řekněme, že krabicový model má jeden materiál s názvem default.
 Řekněme také, že je potřeba upravit albedo barvu pro použití v ARR.
-V takovém případě `box_materials_override.json` lze soubor vytvořit takto:
+V takovém případě `box.MaterialOverrides.json` lze soubor vytvořit takto:
 
 ```json
 [
@@ -39,15 +39,7 @@ V takovém případě `box_materials_override.json` lze soubor vytvořit takto:
 ]
 ```
 
-`box_materials_override.json`Soubor je umístěn ve vstupním kontejneru a `box.ConversionSettings.json` přidá se vedle `box.fbx` , který oznamuje převod, kde najít soubor přepsání (viz [konfigurace převodu modelu](configure-model-conversion.md)):
-
-```json
-{
-    "material-override" : "box_materials_override.json"
-}
-```
-
-Při převodu modelu se použijí nová nastavení.
+`box.MaterialOverrides.json`Soubor je umístěn ve vstupním kontejneru vedle příkazu `box.fbx` , který oznamuje službě převodu, aby se nové nastavení projevilo.
 
 ### <a name="color-materials"></a>Barevné materiály
 
@@ -84,6 +76,36 @@ Princip je jednoduchý. Stačí přidat vlastnost s názvem `ignoreTextureMaps` 
 ```
 
 Úplný seznam map textur, které můžete ignorovat, najdete níže v níže uvedeném schématu JSON.
+
+### <a name="applying-the-same-overrides-to-multiple-materials"></a>Použití stejných přepsání u více materiálů
+
+Ve výchozím nastavení se položka v souboru přepisu materiálu používá, pokud se název shoduje přesně s názvem materiálu.
+Vzhledem k tomu, že je poměrně běžné, že se stejné přepsání má vztahovat na více materiálů, můžete volitelně zadat regulární výraz jako název položky.
+Pole `nameMatching` má výchozí hodnotu `exact` , ale je možné ji nastavit na hodnotu, aby se `regex` položka mohla vztahovat na všechny odpovídající materiály.
+Použitá syntaxe je stejná jako ta, která se používá pro JavaScript. Následující příklad ukazuje přepsání, které se vztahuje na materiály s názvy, jako jsou "Material2", "Material01" a "Material999".
+
+```json
+[
+    {
+        "name": "Material[0-9]+",
+        "nameMatching": "regex",
+        "albedoColor": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 1.0,
+            "a": 1.0
+        }
+    }
+]
+```
+
+Pouze jeden záznam v souboru přepisu materiálu se vztahuje na jeden materiál.
+Pokud existuje přesná shoda (tj. není k dispozici `nameMatching` nebo se rovná `exact` ) pro název materiálu, pak se tato položka vybere.
+V opačném případě je zvolena první položka regulárního výrazu v souboru, který se shoduje s názvem materiálu.
+
+### <a name="getting-information-about-which-entries-applied"></a>Získání informací o tom, které položky byly aplikovány
+
+Informační [soubor](get-information.md#information-about-a-converted-model-the-info-file) zapsaný do výstupního kontejneru přenáší informace o počtu poskytnutých přepsání a počtu přepsaných materiálů.
 
 ## <a name="json-schema"></a>Schéma JSON
 
@@ -154,6 +176,7 @@ Princip je jednoduchý. Stačí přidat vlastnost s názvem `ignoreTextureMaps` 
         "properties":
         {
             "name": { "type" : "string"},
+            "nameMatching" : { "type" : "string", "enum" : ["exact", "regex"] },
             "unlit": { "type" : "boolean" },
             "albedoColor": { "$ref": "#/definitions/colorOrAlpha" },
             "roughness": { "type": "number" },

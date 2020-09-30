@@ -1,7 +1,7 @@
 ---
-title: Přidání přihlašování do webové aplikace Microsoft Identity Platform ASP.NET
+title: 'Kurz: Vytvoření webové aplikace v ASP.NET, která používá Microsoft Identity Platform pro ověřování | Azure'
 titleSuffix: Microsoft identity platform
-description: Implementace přihlášení Microsoftu v řešení ASP.NET pomocí tradiční aplikace založené na webovém prohlížeči a standardu OpenID Connect
+description: V tomto kurzu vytvoříte webovou aplikaci v ASP.NET, která pro povolení přihlášení uživatele používá Microsoft Identity Platform a middleware OWIN.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 740d62136393cf0c9cf31d367735bffed1c05276
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6a5fb517b3ea6626a929da10954bd58cc8e39ef0
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165579"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574224"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
 
@@ -25,10 +25,18 @@ Tato příručka ukazuje, jak implementovat přihlášení do Microsoftu prostř
 
 Po dokončení této příručky bude aplikace moci přijímat přihlášení osobních účtů z podobných outlook.com a live.com. Pracovní a školní účty z libovolné společnosti nebo organizace, která je integrovaná s platformou Microsoft Identity Platform, se budou moct přihlašovat do vaší aplikace.
 
-> Tato příručka vyžaduje Microsoft Visual Studio 2019.  Nemáte ji?  [Stáhněte si Visual Studio 2019 zdarma](https://www.visualstudio.com/downloads/).
+V tomto kurzu:
 
->[!NOTE]
-> Pokud s platformou Microsoft Identity začínáte, doporučujeme začít s [přihlašováním do webové aplikace ASP.NET přidat Microsoft Identity Platform](quickstart-v2-aspnet-webapp.md).
+> [!div class="checklist"]
+> * Vytvoření projektu *webové aplikace v ASP.NET* v aplikaci Visual Studio
+> * Přidejte součásti middlewaru pro Open Web Interface for .NET (OWIN).
+> * Přidat kód pro podporu přihlášení a odhlášení uživatele
+> * Registrace aplikace v Azure Portal
+> * Otestování aplikace
+
+## <a name="prerequisites"></a>Požadavky
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) s nainstalovanou úlohou **vývoj pro ASP.NET a web**
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak ukázková aplikace vygenerovaná touto příručkou funguje
 
@@ -264,7 +272,7 @@ V aplikaci Visual Studio vytvořte nové zobrazení, abyste přidali tlačítko 
     ```
 
 ### <a name="more-information"></a>Další informace
- Tato stránka přidá tlačítko pro přihlášení ve formátu SVG s černým pozadím:<br/>![Přihlásit se účtem Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Další tlačítka pro přihlášení najdete v [pokynech pro značky](./howto-add-branding-in-azure-ad-apps.md "Pokyny pro branding").
+ Tato stránka přidá tlačítko pro přihlášení ve formátu SVG s černým pozadím:<br/>![Přihlásit se účtem Microsoft – tlačítko](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Další tlačítka pro přihlášení najdete v [pokynech pro značky](./howto-add-branding-in-azure-ad-apps.md "Pokyny pro branding").
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Přidání kontroleru pro zobrazení deklarací identity uživatele
 Tento kontroler demonstruje použití atributu `[Authorize]` k ochraně kontroleru. Tento atribut omezuje přístup k řadiči tím, že povoluje pouze ověřené uživatele. Následující kód využívá atribut k zobrazení deklarací identity uživatele, které byly načteny jako součást přihlášení:
@@ -353,7 +361,7 @@ K registraci aplikace a přidání informací o registraci vaší aplikace do va
 
 K rychlé registraci aplikace použijte následující postup:
 
-1. Přejít na nové podokno [Azure Portal-registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) .
+1. Přejít na nové podokno  [Azure Portal-registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) .
 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jediným kliknutím.
 
@@ -392,7 +400,7 @@ Chcete-li otestovat aplikaci v aplikaci Visual Studio, stiskněte klávesu F5 ke
 
 Až budete připraveni spustit test, použijte účet Azure AD (pracovní nebo školní účet) nebo osobní účet Microsoft (<span>Live).</span> com nebo <span>Outlook.</span> com) pro přihlášení.
 
-![Přihlásit se účtem Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
+![Tlačítko Přihlásit se účtem Microsoft zobrazené na přihlašovací stránce prohlížeče v prohlížeči](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
 ![Přihlaste se ke svému účet Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
@@ -470,20 +478,11 @@ Přístup pro přihlášení můžete omezit jenom na uživatelské účty v org
 
 Můžete implementovat vlastní metodu pro ověření vystavitelů pomocí parametru **IssuerValidator** . Další informace o tom, jak použít tento parametr, naleznete v tématu Třída [TokenValidationParameters](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters) .
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak můžou webové aplikace volat webová rozhraní API.
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Naučte se, jak vytvořit aplikaci používanou v tomto rychlém startu.
-
-Další informace o webových aplikacích, které volají webová rozhraní API, s využitím platformy Microsoft Identity Platform:
+Seznamte se s voláním chráněných webových rozhraní API z webových aplikací s využitím platformy Microsoft Identity Platform:
 
 > [!div class="nextstepaction"]
 > [Webové aplikace, které volají webová rozhraní API](scenario-web-app-sign-user-overview.md)
-
-Naučte se vytvářet webové aplikace s voláním Microsoft Graph:
-
-> [!div class="nextstepaction"]
-> [Kurz Microsoft Graph ASP.NET](/graph/tutorials/aspnet)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

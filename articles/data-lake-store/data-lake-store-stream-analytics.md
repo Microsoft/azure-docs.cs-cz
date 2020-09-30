@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: 8ef3d7400b64617df8d81c7b84e680496776b5bd
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 4c289ecb1d8471a7b99f1d4c85a0163de4d0c593
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192152"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576213"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Streamování dat z Azure Storage Blob do Azure Data Lake Storage Gen1 pomocí Azure Stream Analytics
 V tomto článku se naučíte, jak používat Azure Data Lake Storage Gen1 jako výstup pro Azure Stream Analytics úlohu. Tento článek ukazuje jednoduchý scénář, který čte data z Azure Storage objektů BLOB (Input) a zapisuje data do Data Lake Storage Gen1 (výstup).
@@ -42,11 +42,11 @@ Začnete vytvořením úlohy Stream Analytics, která zahrnuje vstupní zdroj a 
 
 1. Otevřete stránku Stream Analytics úlohy, v levém podokně klikněte na kartu **vstupy** a pak klikněte na **Přidat**.
 
-    ![Přidání vstupu do úlohy](./media/data-lake-store-stream-analytics/create.input.1.png "Přidání vstupu do úlohy")
+    ![Snímek obrazovky okna úlohy Stream Analytics s možností vstupy a možností přidat vstup streamu s názvem.](./media/data-lake-store-stream-analytics/create.input.1.png "Přidání vstupu do úlohy")
 
 2. V okně **Nový vstup** zadejte následující hodnoty.
 
-    ![Přidání vstupu do úlohy](./media/data-lake-store-stream-analytics/create.input.2.png "Přidání vstupu do úlohy")
+    ![Snímek obrazovky úložiště objektů BLOB – nové vstupní okno](./media/data-lake-store-stream-analytics/create.input.2.png "Přidání vstupu do úlohy")
 
    * Pro **vstupní alias**zadejte jedinečný název pro vstup úlohy.
    * Jako **typ zdroje**vyberte **datový proud**.
@@ -58,25 +58,25 @@ Začnete vytvořením úlohy Stream Analytics, která zahrnuje vstupní zdroj a 
    * V případě **oddělovače**vyberte **kartu**.
    * V případě **kódování**vyberte **UTF-8**.
 
-     Klikněte na možnost **Vytvořit**. Portál teď přidá vstup a otestuje připojení k němu.
+     Klikněte na **Vytvořit**. Portál teď přidá vstup a otestuje připojení k němu.
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Vytvořit výstup Data Lake Storage Gen1 pro úlohu
 
 1. Otevřete stránku Stream Analytics úlohy, klikněte na kartu **výstupy** , klikněte na tlačítko **Přidat**a vyberte možnost **Data Lake Storage Gen1**.
 
-    ![Přidat výstup do úlohy](./media/data-lake-store-stream-analytics/create.output.1.png "Přidat výstup do úlohy")
+    ![Snímek obrazovky okna úlohy Stream Analytics s možností výstupy, přidat možnost a Data Lake Storage Gen 1 s názvem.](./media/data-lake-store-stream-analytics/create.output.1.png "Přidat výstup do úlohy")
 
 2. V okně **Nový výstup** zadejte následující hodnoty.
 
-    ![Přidat výstup do úlohy](./media/data-lake-store-stream-analytics/create.output.2.png "Přidat výstup do úlohy")
+    ![Snímek obrazovky s oknem Data Lake Storage Gen 1 – nové okno výstup s možností autorizace s názvem.](./media/data-lake-store-stream-analytics/create.output.2.png "Přidat výstup do úlohy")
 
     * Pro **alias Output**zadejte jedinečný název výstupu úlohy. Toto je popisný název, který se používá v dotazech k přesměrování výstupu dotazu na tento Data Lake Storage Gen1 účet.
     * Zobrazí se výzva k autorizaci přístupu k účtu Data Lake Storage Gen1. Klikněte na **autorizovat**.
 
 3. V okně **Nový výstup** Pokračujte zadáním následujících hodnot.
 
-    ![Přidat výstup do úlohy](./media/data-lake-store-stream-analytics/create.output.3.png "Přidat výstup do úlohy")
+    ![Snímek obrazovky s oknem Data Lake Storage 1 – nové okno výstup.](./media/data-lake-store-stream-analytics/create.output.3.png "Přidat výstup do úlohy")
 
    * Jako **název účtu**vyberte účet Data Lake Storage Gen1, který jste už vytvořili, do kterého chcete odeslat výstup úlohy.
    * V poli **vzor předpony cesty**zadejte cestu k souboru, která se používá k zápisu souborů v rámci zadaného data Lake Storage Gen1 účtu.
@@ -86,7 +86,7 @@ Začnete vytvořením úlohy Stream Analytics, která zahrnuje vstupní zdroj a 
    * V případě **oddělovače**vyberte **kartu**.
    * V případě **kódování**vyberte **UTF-8**.
     
-     Klikněte na možnost **Vytvořit**. Portál teď přidá výstup a otestuje připojení k němu.
+     Klikněte na **Vytvořit**. Portál teď přidá výstup a otestuje připojení k němu.
     
 ## <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 

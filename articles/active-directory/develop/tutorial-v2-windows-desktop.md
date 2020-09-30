@@ -1,6 +1,7 @@
 ---
-title: Začínáme s aplikací Microsoft Identity Platform Windows Desktop
-description: Jak aplikace Windows Desktop .NET (XAML) může získat přístupový token a volat rozhraní API chráněné platformou Microsoft identity.
+title: 'Kurz: Vytvoření aplikace Windows Presentation Foundation (WPF), která používá Microsoft Identity Platform pro ověřování | Azure'
+titleSuffix: Microsoft identity platform
+description: V tomto kurzu vytvoříte aplikaci WPF, která pomocí platformy Microsoft Identity přihlašuje uživatele a získá přístupový token pro volání rozhraní API Microsoft Graph jménem.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,24 +12,32 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a865bab690c79288bdffcd7cebe424d1bb1969c0
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7effb1592fb19f92958353a3333edf6fdf9a51af
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82181528"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574258"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Volání rozhraní API pro Microsoft Graph z desktopové aplikace pro Windows
 
-Tato příručka ukazuje, jak nativní aplikace Windows Desktop .NET (XAML) používá přístupový token pro volání rozhraní Microsoft Graph API. Aplikace může také přistupovat k dalším rozhraním API, která vyžadují přístupové tokeny z koncového bodu Microsoft Identity Platform pro vývojáře v 2.0. Tato platforma se dřív jmenovala jako Azure AD.
+Tato příručka ukazuje, jak nativní aplikace Windows Desktop .NET (XAML) používá přístupový token pro volání rozhraní Microsoft Graph API. Aplikace může také přistupovat k dalším rozhraním API, která vyžadují přístupové tokeny z platformy Microsoft identity.
 
 Po dokončení průvodce bude vaše aplikace moci volat chráněné rozhraní API, které používá osobní účty (včetně outlook.com, live.com a dalších). Aplikace bude také používat pracovní a školní účty z jakékoli společnosti nebo organizace, která používá Azure Active Directory.
 
-> [!NOTE]
-> Průvodce vyžaduje Visual Studio 2015 Update 3, Visual Studio 2017 nebo Visual Studio 2019. Nemáte žádné z těchto verzí? [Stáhněte si Visual Studio 2019 zdarma](https://www.visualstudio.com/downloads/).
+V tomto kurzu:
 
->[!NOTE]
-> Pokud s platformou Microsoft Identity začínáte, doporučujeme začít s [získáním tokenu a voláním Microsoft Graph API z desktopové aplikace pro Windows](quickstart-v2-windows-desktop.md).
+> [!div class="checklist"]
+> * Vytvoření projektu *Windows Presentation Foundation (WPF)* v aplikaci Visual Studio
+> * Instalace knihovny Microsoft Authentication Library (MSAL) pro .NET
+> * Registrace aplikace v Azure Portal
+> * Přidat kód pro podporu přihlášení a odhlášení uživatele
+> * Přidat kód pro volání rozhraní API Microsoft Graph
+> * Otestování aplikace
+
+## <a name="prerequisites"></a>Požadavky
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak ukázková aplikace vygenerovaná touto příručkou funguje
 
@@ -48,7 +57,7 @@ MSAL spravuje ukládání do mezipaměti a aktualizace přístupových tokenů z
 
 Tato příručka používá následující balíčky NuGet:
 
-|Knihovna|Popis|
+|Knihovna|Description|
 |---|---|
 |[Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Knihovna Microsoft Authentication Library (MSAL.NET)|
 
@@ -367,3 +376,10 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 Kromě přístupového tokenu, který se používá k volání rozhraní Microsoft Graph API po přihlášení uživatele, MSAL také získá token ID. Tento token obsahuje malou podmnožinu informací, které jsou relevantní pro uživatele. `DisplayBasicTokenInfo`Metoda zobrazí základní informace, které jsou obsaženy v tokenu. Například zobrazuje zobrazované jméno a ID uživatele a také datum vypršení platnosti tokenu a řetězec představující samotný přístupový token. Můžete vybrat tlačítko *rozhraní API pro volání Microsoft Graph* několikrát a zjistit, že se stejný token znovu použil pro následné požadavky. Můžete také zobrazit datum vypršení platnosti, kdy MSAL rozhodne, že je čas obnovit token.
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
+
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o vytváření desktopových aplikací, které volají chráněná webová rozhraní API v naší řadě scénářů s více částmi:
+
+> [!div class="nextstepaction"]
+> [Scénář: desktopová aplikace, která volá webová rozhraní API](scenario-desktop-overview.md)

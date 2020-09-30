@@ -2,13 +2,13 @@
 title: Azure Service Bus – pozastavení entit zasílání zpráv
 description: Tento článek vysvětluje, jak dočasně pozastavit a znovu aktivovat entity Azure Service Bus zpráv (fronty, témata a odběry).
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 2dad0b774f271ed719ca09b1e749559d5e1868bd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 09/29/2020
+ms.openlocfilehash: f89e17e494cc777691b7f7ca47538cd29114d2dc
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078852"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575222"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Pozastavení a opětovná aktivace entit zasílání zpráv (zakázat)
 
@@ -18,28 +18,29 @@ Pozastavení entity se obvykle provádí z naléhavých důvodů správy. Jední
 
 Přerušení nebo opětovnou aktivaci může provést buď uživatel, nebo systém. Systém pozastavuje jenom entity z důvodu neznačných administrativních důvodů, jako je například dosažení limitu útraty pro předplatné. Uživatelem zakázané entity nelze znovu aktivovat, ale budou obnoveny, pokud byla příčina pozastavení vyřešena.
 
-V části **Přehled** pro příslušnou entitu se na portálu povoluje Změna stavu. aktuální stav se zobrazí v části **stav** jako hypertextový odkaz.
-
-Následující snímek obrazovky znázorňuje dostupné stavy, na které se entita dá změnit, a to tak, že vyberete hypertextový odkaz: 
-
-![Snímek obrazovky funkce Service Bus v rámci přehledu, aby se změnila možnost stavu entity][1]
-
-Portál povoluje pouze úplné zakazování front. Operace odesílání a přijímání můžete také zakázat samostatně pomocí Service Bus rozhraní API [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) v sadě .NET Framework SDK nebo se šablonou Azure Resource Manager prostřednictvím Azure CLI nebo Azure PowerShell.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="suspension-states"></a>Stavy pozastavení
-
+## <a name="queue-status"></a>Stav fronty 
 Stavy, které lze nastavit pro frontu, jsou:
 
 -   **Aktivní**: fronta je aktivní.
--   **Zakázáno**: fronta je pozastavena.
+-   **Zakázáno**: fronta je pozastavena. Je ekvivalentní nastavení **SendDisabled** i **ReceiveDisabled**. 
 -   **SendDisabled**: fronta je částečně pozastavena s povoleným přijetím.
 -   **ReceiveDisabled**: fronta je částečně pozastavena s povoleným odesláním.
 
-Pro předplatná a témata je možné nastavit pouze **aktivní** a **zakázané** .
+### <a name="change-the-queue-status-in-the-azure-portal"></a>Změňte stav fronty v Azure Portal: 
 
-Výčet [EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) také definuje sadu přechodných stavů, které lze nastavit pouze systémem. V následujícím příkladu se zobrazí příkaz prostředí PowerShell pro zakázání fronty. Příkaz reaktivace je ekvivalentní nastavení `Status` na **aktivní**.
+1. V Azure Portal přejděte do svého oboru názvů Service Bus. 
+1. Vyberte frontu, pro kterou chcete změnit stav. Fronty se zobrazí v dolním podokně uprostřed. 
+1. Na stránce **fronta Service Bus** se zobrazí aktuální stav fronty jako hypertextový odkaz. Pokud v nabídce vlevo není vybraný **Přehled** , vyberte ho a zobrazí se stav fronty. Vyberte aktuální stav fronty pro změnu. 
+
+    :::image type="content" source="./media/entity-suspend/select-state.png" alt-text="Vyberte stav fronty.":::
+4. Vyberte nový stav fronty a vyberte **OK**. 
+
+    :::image type="content" source="./media/entity-suspend/entity-state-change.png" alt-text="Vyberte stav fronty.":::
+    
+Portál povoluje pouze úplné zakazování front. Operace odesílání a přijímání můžete také zakázat samostatně pomocí Service Bus rozhraní API [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) v sadě .NET Framework SDK nebo se šablonou Azure Resource Manager prostřednictvím Azure CLI nebo Azure PowerShell.
+
+### <a name="change-the-queue-status-using-azure-powershell"></a>Změna stavu fronty pomocí Azure PowerShell
+V následujícím příkladu se zobrazí příkaz prostředí PowerShell pro zakázání fronty. Příkaz reaktivace je ekvivalentní nastavení `Status` na **aktivní**.
 
 ```powershell
 $q = Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue
@@ -48,6 +49,30 @@ $q.Status = "Disabled"
 
 Set-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue -QueueObj $q
 ```
+
+## <a name="topic-status"></a>Stav tématu
+Změna stavu tématu v Azure Portal je podobná změně stavu fronty. Když vyberete aktuální stav tématu, zobrazí se následující stránka, která vám umožní změnit stav. 
+
+:::image type="content" source="./media/entity-suspend/topic-state-change.png" alt-text="Vyberte stav fronty.":::
+
+Stavy, které lze nastavit pro téma:
+- **Aktivní**: téma je aktivní.
+- **Zakázáno**: téma je pozastaveno.
+- **SendDisabled**: stejný efekt jako **zakázaný**.
+
+## <a name="subscription-status"></a>Stav předplatného
+Změna stavu předplatného v Azure Portal je podobná změně stavu tématu nebo fronty. Po výběru aktuálního stavu předplatného se zobrazí následující stránka, která vám umožní změnit stav. 
+
+:::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="Vyberte stav fronty.":::
+
+Stavy, které lze nastavit pro téma:
+- **Aktivní**: téma je aktivní.
+- **Zakázáno**: téma je pozastaveno.
+- **ReceiveDisabled**: stejný efekt jako **zakázaný**.
+
+## <a name="other-statuses"></a>Další stavy
+Výčet [EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) také definuje sadu přechodných stavů, které lze nastavit pouze systémem. 
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,12 +3,12 @@ title: Kurz – kontrolní seznam pro plánování sítě
 description: Seznamte se s požadavky na požadavky na síť a podrobnostmi o připojení k síti a síťových portech pro řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: c9a3c18d69cb81ed2810c0516820a9ef348402f1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5538f9c5d6543ca312835f4ef6437e413dea231b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254393"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576673"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Kontrolní seznam pro plánování sítě pro řešení Azure VMware 
 
@@ -21,8 +21,6 @@ V tomto kurzu získáte informace o těchto tématech:
 > * Požadavky na směrování a podsíť
 > * Požadované síťové porty pro komunikaci se službami
 > * Hlediska DHCP a DNS v řešení Azure VMware
-
-
 
 ## <a name="virtual-network-and-expressroute-circuit-considerations"></a>Požadavky na virtuální síť a okruh ExpressRoute
 Když ve svém předplatném vytvoříte připojení k virtuální síti, okruh ExpressRoute se naváže prostřednictvím partnerského vztahu, použije autorizační klíč a ID partnerského vztahu, které požadujete v Azure Portal. Partnerský vztah je privátní a jedno připojení mezi Vaším privátním cloudem a virtuální sítí.
@@ -53,7 +51,7 @@ Podsítě:
 
 ## <a name="required-network-ports"></a>Požadované síťové porty
 
-| Zdroj | Cíl | Protokol | Port | Popis  | 
+| Zdroj | Cíl | Protokol | Port | Description  | 
 | ------ | ----------- | :------: | :---:| ------------ | 
 | Server DNS privátního cloudu | Místní server DNS | UDP | 53 | Klient DNS – požadavky na přeposílání z PC vCenter pro všechny místní dotazy DNS (podívejte se na část DNS níže) |  
 | Místní server DNS   | Server DNS privátního cloudu | UDP | 53 | Klient DNS – požadavky na přeposílání z místních služeb na servery DNS privátního cloudu (podívejte se na část DNS níže) |  

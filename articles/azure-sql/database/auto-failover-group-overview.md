@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 469620456fecb7c0cb398988c4a4fc25da97f863
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 82a109dd5c2813861e21e11aa40774b6b868cfe3
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357705"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576179"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,9 +76,9 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
   
 - **Počáteční osazení**
 
-  Když přidáváte databáze, elastické fondy nebo spravované instance do skupiny převzetí služeb při selhání, před spuštěním replikace dat se vytvoří prvotní fáze osazení. Počáteční fáze osazení je nejdelší a nejnáročná operace. Po dokončení počátečního osazení se data synchronizují a pak se replikují jenom následné změny dat. Čas potřebný k dokončení počátečního dosazení závisí na velikosti dat, počtu replikovaných databází a rychlosti propojení mezi entitami ve skupině převzetí služeb při selhání. Za běžných okolností je obvyklá rychlost osazení 50-500 GB hodiny pro SQL Database a 18-35 GB za hodinu pro spravovanou instanci SQL. Osazení se provádí pro všechny databáze paralelně. Můžete použít uvedenou rychlost osazení spolu s počtem databází a celkovou velikostí dat pro odhad, jak dlouho bude prvotní fáze osazení trvat před spuštěním replikace dat.
+  Když přidáváte databáze, elastické fondy nebo spravované instance do skupiny převzetí služeb při selhání, před spuštěním replikace dat se vytvoří prvotní fáze osazení. Počáteční fáze osazení je nejdelší a nejnáročná operace. Po dokončení počátečního osazení se data synchronizují a pak se replikují jenom následné změny dat. Čas potřebný k dokončení počátečního dosazení závisí na velikosti dat, počtu replikovaných databází a rychlosti propojení mezi entitami ve skupině převzetí služeb při selhání. Za běžných okolností je možná rychlost osazení až 500 GB hodiny pro SQL Database a až 360 GB za hodinu pro spravovanou instanci SQL. Osazení se provádí pro všechny databáze paralelně.
 
-  V případě spravované instance SQL musí být při odhadu doby prvotní fáze osazení také zvážena rychlost propojení Express Route mezi těmito dvěma instancemi. V případě, že rychlost propojení mezi dvěma instancemi je pomalejší, než je potřeba, je pravděpodobné, že čas na počáteční hodnotu bude mít vliv. Můžete použít uvedenou rychlost osazení, počet databází, celkovou velikost dat a rychlost připojení k odhadu, jak dlouho bude prvotní fáze osazení trvat před spuštěním replikace dat. Například pro jednu 100 GB databáze by počáteční fáze osazení ponechala v rozmezí 2,8-5,5 hodin, pokud je odkaz schopný zabírat 35 GB za hodinu. Pokud odkaz může přenášet jenom 10 GB za hodinu, pak bude dosazení 100 GB databáze trvat přibližně 10 hodin. Pokud existuje více databází k replikaci, je osazení provedeno paralelně a při kombinaci s pomalým připojením může prvotní fáze osazení trvat mnohem déle, zejména v případě, že paralelní osazení dat ze všech databází přesahuje dostupnou šířku pásma propojení. Pokud je šířka pásma sítě mezi dvěma instancemi omezená a do skupiny převzetí služeb při selhání přidáváte víc spravovaných instancí, zvažte postupně přidání více spravovaných instancí do skupiny převzetí služeb při selhání, jednu po druhé.
+  V případě spravované instance SQL zvažte rychlost propojení Express Route mezi dvěma instancemi při odhadu doby prvotní fáze osazení. V případě, že rychlost propojení mezi dvěma instancemi je pomalejší, než je potřeba, je pravděpodobné, že čas na počáteční hodnotu bude mít vliv. Můžete použít uvedenou rychlost osazení, počet databází, celkovou velikost dat a rychlost připojení k odhadu, jak dlouho bude prvotní fáze osazení trvat před spuštěním replikace dat. Například pro jednu 100 GB databáze by počáteční fáze osazení trvat přibližně 1,2 hodin, pokud je odkaz 84 schopný přenášet GB za hodinu, a pokud nejsou osazené žádné jiné databáze. Pokud odkaz může přenášet jenom 10 GB za hodinu, pak bude dosazení 100 GB databáze trvat přibližně 10 hodin. Pokud existuje více databází k replikaci, je osazení provedeno paralelně a při kombinaci s pomalým připojením může prvotní fáze osazení trvat mnohem déle, zejména v případě, že paralelní osazení dat ze všech databází přesahuje dostupnou šířku pásma propojení. Pokud je šířka pásma sítě mezi dvěma instancemi omezená a do skupiny převzetí služeb při selhání přidáváte víc spravovaných instancí, zvažte postupně přidání více spravovaných instancí do skupiny převzetí služeb při selhání, jednu po druhé. Vzhledem k odpovídající velikosti skladové položky brány mezi dvěma spravovanými instancemi a v případě, že šířka pásma podnikové sítě umožňuje, je možné dosáhnout rychlostí až 360 GB hodiny.  
 
 - **Zóna DNS**
 
@@ -232,6 +232,10 @@ Pro zajištění nepřerušeného připojení k primární spravované instanci 
 > První spravovaná instance vytvořená v podsíti Určuje zónu DNS pro všechny následné instance ve stejné podsíti. To znamená, že dvě instance ze stejné podsítě nemohou patřit do různých zón DNS.
 
 Další informace o vytváření sekundární instance SQL spravované v rámci stejné zóny DNS jako primární instance najdete v tématu [vytvoření sekundární spravované instance](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance).
+
+### <a name="using-geo-paired-regions"></a>Použití geograficky spárovaných oblastí
+
+Nasaďte spravované instance do [spárovaných oblastí](../../best-practices-availability-paired-regions.md) z důvodů výkonu. Spravované instance nacházející se v geograficky spárované oblasti mají mnohem lepší výkon v porovnání s nespárovanými oblastmi. 
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>Povolení provozu replikace mezi dvěma instancemi
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: d264ead87e7fa638830bf25fdb07983b164334b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10f2b44d00361885778a523109a8fcb05dabe9dd
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83698664"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574343"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Přístup ke službě Azure Cosmos DB z virtuálních sítí
 
@@ -24,9 +24,9 @@ Ve výchozím nastavení je účet Azure Cosmos přístupný z libovolného zdro
 
 Tady jsou některé nejčastější dotazy týkající se konfigurace přístupu z virtuálních sítí:
 
-### <a name="are-notebooks-and-mongo-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>Jsou poznámkové bloky a prostředí Mongo aktuálně kompatibilní s účty s povoleným Virtual Network?
+### <a name="are-notebooks-and-mongocassandra-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>Jsou poznámkové bloky a prostředí Mongo/Cassandra aktuálně kompatibilní s účty s povoleným Virtual Network?
 
-V současné době není [Mongo integrace prostředí PowerShellu v Průzkumník dat Cosmos DB](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) a [Služba Jupyter poznámkových bloků](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks) podporována s přístupem VNET. Toto je aktuálně aktivní vývoj.
+V současné době se [Mongo prostředí PowerShellu](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) a [prostředí Cassandra](https://devblogs.microsoft.com/cosmosdb/announcing-native-cassandra-shell-preview/) ve službě Cosmos DB Průzkumník dat a [Služba Jupyter poznámkových bloků](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks)nepodporuje s přístupem VNET. Toto je aktuálně aktivní vývoj.
 
 ### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Můžu v účtu Azure Cosmos zadat jak koncový bod služby virtuální sítě, tak i zásady řízení přístupu IP? 
 

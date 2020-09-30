@@ -1,18 +1,18 @@
 ---
-title: Získat informace o převodech
-description: Získat informace o převodech
+title: Získání informací o převodech
+description: Získání informací o převodech
 author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 529bfb61b3af7040f3656c04071683841f5abe86
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 89ec0ad40822785457e988cf9e0f9bd6d00ed81f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870285"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576621"
 ---
-# <a name="get-information-about-conversions"></a>Získat informace o převodech
+# <a name="get-information-about-conversions"></a>Získání informací o převodech
 
 ## <a name="information-about-a-conversion-the-result-file"></a>Informace o převodu: soubor výsledků
 
@@ -65,6 +65,10 @@ Zde je příklad *informačního* souboru vytvořeného převodem souboru s náz
         "numMeshUsagesInScene": 236,
         "maxNodeDepth": 3
     },
+    "materialOverrides": {
+        "numOverrides": 4,
+        "numOverriddenMaterials": 4
+    },
     "outputInfo": {
         "conversionToolVersion": "3b28d840de9916f9d628342f474d38c3ab949590",
         "conversionHash": "CCDB1F7A4C09F565"
@@ -114,6 +118,13 @@ V této části jsou zaznamenány informace o formátu zdrojového souboru.
 * `sourceAssetFormat`: Popis formátu zdrojového souboru.
 * `sourceAssetFormatVersion`: Verze formátu zdrojového souboru.
 * `sourceAssetGenerator`: Název nástroje, který vygeneroval zdrojový soubor, pokud je k dispozici.
+
+### <a name="the-materialoverrides-section"></a>Část *materialOverrides*
+
+V této části jsou uvedeny informace o [přepsání materiálu](override-materials.md) při zadání souboru přepsání materiálu do služby převodu.
+Obsahuje tyto informace:
+* `numOverrides`: Počet položek přepsání načtených ze souboru přepisu materiálu.
+* `numOverriddenMaterials`: Počet přepsaných materiálů.
 
 ### <a name="the-inputstatistics-section"></a>Část *inputStatistics*
 

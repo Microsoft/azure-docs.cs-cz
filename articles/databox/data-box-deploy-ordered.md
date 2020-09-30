@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c2d971c2c9375f58fd5f41a46716fac4bff29f88
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 3181b88b0cf49516eb5230585460d0cc91bb4042
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604304"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575295"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednání Azure Data Boxu
 
@@ -215,11 +215,11 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 1. Pomocí svých přihlašovacích údajů Microsoft Azure se přihlaste na následující adrese URL: [https://portal.azure.com](https://portal.azure.com).
 2. Vyberte **+ Vytvořit prostředek** a vyhledejte *Azure Data Box*. Vyberte **Azure Data Box**.
 
-   ![Vyberte Azure Data Box](media/data-box-deploy-ordered/select-data-box-import-02.png)
+   ![Snímek obrazovky nové části s Azure Data Box v poli hledání](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
 3. Vyberte **Vytvořit**.
 
-   ![Vyberte Azure Data Box](media/data-box-deploy-ordered/select-data-box-import-03.png)
+   ![Snímek obrazovky s oddílem Azure Data Box pomocí možnosti vytvořit s názvem.](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
 4. Podívejte se, zda je služba Data Box dostupná ve vaší oblasti. Zadejte nebo vyberte následující informace a pak vyberte **Použít**.
 
@@ -235,7 +235,7 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
 5. Vyberte **Data Box**. Maximální použitelná kapacita pro jednu objednávku je 80 TB. V případě větších objemů dat můžete vytvořit více objednávek.
 
-    ![Výběr možnosti Data Boxu 1](media/data-box-deploy-ordered/select-data-box-import-05.png)
+    ![Snímek obrazovky s různými velikostmi dat, které jsou dostupné pro výběr: Data Box Disk 40 terabajty, Data Box 100 terabajty, Data Box Heavy, 1000 terabajty a poslat vlastní disky 1 terabajt.](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
 6. V **uvedeném pořadí**přejdete na kartu **základy** . Zadejte nebo vyberte následující informace a vyberte **Další: cílová Data>**.
 
@@ -245,7 +245,7 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
     |Skupina prostředků    | Skupina prostředků, kterou jste vybrali dříve. |
     |Název importovaného objednávky | Zadejte popisný název pro sledování objednávky. <br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí.    |
 
-    ![Výběr možnosti Data Boxu 1](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![Snímek obrazovky s průvodcem objednávkou znázorňující základní krok průvodce se správnými informacemi, které jsou vyplněny.](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
     Ve výchozím nastavení je heslo k odemknutí zařízení šifrované pomocí klíče spravovaného společností Microsoft. Po dokončení objednávky můžete přidat spravovaný klíč zákazníka. Spravovaný klíč zákazníka vám umožňuje použít vlastní klíč z klíče trezoru klíčů Azure k ochraně vašeho hesla pro odemknutí zařízení. Další informace najdete v tématu [použití klíčů spravovaných zákazníkem v Azure Key Vault pro Azure Data box](data-box-customer-managed-encryption-key-portal.md).
 
@@ -265,7 +265,7 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
     |---------|---------|
     |Skupiny prostředků     | Pokud chcete vytvořit spravované disky z místních virtuálních pevných disků, vytvořte nové skupiny prostředků. Stávající skupinu prostředků můžete použít jenom v případě, že se skupina prostředků vytvořila dříve při vytváření Data Boxho pořadí pro spravovaný disk pomocí služby Data Box. <br> Můžete zadat i více skupin prostředků oddělených středníkem. Podporuje se maximálně 10 skupin prostředků.|
 
-    ![Pořadí Data Box pro spravovaný disk](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![Snímek obrazovky s průvodcem pořadím zobrazujícím krok data a cíle průvodce se správnými informacemi, které jsou vyplněny](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     Účet úložiště zadaný pro spravované disky slouží jako přípravný účet úložiště. Služba Data Box nahraje virtuální pevné disky jako objekty blob stránky do přípravného účtu úložiště, a teprve pak je převede na spravované disky a přesune do skupin prostředků. Další informace najdete v tématu popisujícím [ověření nahrání dat do Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
    > [!NOTE]
@@ -286,11 +286,11 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
 8. V **podrobnostech kontaktu**vyberte **+ Přidat dodací adresu**.
 
-    ![Pořadí Data Box pro spravovaný disk](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![Snímek obrazovky s průvodcem objednávkou znázorňující krok průvodce s podrobnostmi o kontaktu s možností přidat dodací adresu s názvem.](media/data-box-deploy-ordered/select-data-box-import-08a.png)
 
 9. V části **Dodací adresa** zadejte jméno a příjmení, název a poštovní adresu společnosti a platné telefonní číslo. Vyberte **Ověřit adresu**. Služba ověří, zda je dodací adresa pro službu dostupná. Pokud je pro zadanou dodací adresu služba k dispozici, obdržíte o tom oznámení.
 
-   ![Pořadí Data Box pro spravovaný disk](media/data-box-deploy-ordered/select-data-box-import-10.png)
+   ![Snímek obrazovky dialogového okna Přidat doručovací adresu s použitím možností a možnosti Přidat adresu pro odeslání s názvem.](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
    Pokud jste vybrali samoobslužné expedici, obdržíte po úspěšném dokončení objednávky e-mailové oznámení. Další informace o samoobslužném expedici najdete v tématu [použití samostatně spravovaného expedice](data-box-portal-customer-managed-shipping.md).
 
@@ -300,13 +300,13 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
     Doporučujeme použít skupinový e-mail, abyste oznámení mohli dostávat i tehdy, když odejde správce skupiny.
 
-    ![Pořadí Data Box pro spravovaný disk](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![Snímek obrazovky s e-mailem v kroku průvodce objednávka podrobností kontaktu s textovým polem E-mail a další: možnost Revize a objednávka se zavolala.](media/data-box-deploy-ordered/select-data-box-import-08c.png)
 
 12. Projděte si informace v části **Revize + objednávka** týkající se podmínek objednávky, kontaktu, oznámení a ochrany osobních údajů. Zaškrtněte políčko, že souhlasíte s podmínkami ochrany osobních údajů.
 
 13. Vyberte **Objednat**. Vytvoření objednávky trvá několik minut.
 
-    ![Pořadí Data Box pro spravovaný disk](media/data-box-deploy-ordered/select-data-box-import-11.png)
+    ![Snímek obrazovky s průvodcem objednávkou znázorňující krok revize a objednávka a možnost objednávky s názvem.](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
