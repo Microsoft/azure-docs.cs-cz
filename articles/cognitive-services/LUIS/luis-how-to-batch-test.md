@@ -3,20 +3,18 @@ title: Postup provedení dávkového testu – LUIS
 titleSuffix: Azure Cognitive Services
 description: Pomocí Language Understanding (LUIS) Batch test Sets Najděte projevy s nesprávnými záměry a entitami.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: ee15d08c820492cfa2c0701dfe3b682d57e00187
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 8b34005f2796403e32b41a93e4163c7da16d40bb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344403"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540944"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Dávkové testování se sadou příkladů projevy
 
@@ -36,7 +34,7 @@ ms.locfileid: "84344403"
 
 3. Do pole **název datové sady** zadejte název souboru DataSet. Soubor DataSet obsahuje **pole projevy, které** zahrnuje *označení záměru* a *entit*. Projděte si [ukázkový dávkový soubor](luis-concept-batch-test.md#batch-file-format) pro syntaxi.
 
-4. Vyberte **Done** (Hotovo). Přidá se soubor DataSet.
+4. Vyberte **Hotovo**. Přidá se soubor DataSet.
 
 ## <a name="run-rename-export-or-delete-dataset"></a>Spustit, přejmenovat, exportovat nebo odstranit datovou sadu
 
@@ -51,7 +49,7 @@ Chcete-li spustit test, vyberte název datové sady a pak vyberte **Spustit** z 
 
 Datová sada ke stažení je stejný soubor, který byl nahrán pro dávkové testování.
 
-|State|Význam|
+|Stav|Význam|
 |--|--|
 |![Ikona úspěšného testu zeleného kruhu](./media/luis-how-to-batch-test/batch-test-result-green.png)|Všechny projevy jsou úspěšné.|
 |![Neúspěšná ikona testu červená x](./media/luis-how-to-batch-test/batch-test-result-red.png)|Nejméně jeden utterance záměr neodpovídal předpovědi.|

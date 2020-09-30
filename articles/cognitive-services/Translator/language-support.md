@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 9c745395026b8b7e8c58fcb4b7cc67971d971a7c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e8feb4f2012d323d954ba000323824bc157bcf87
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300217"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534056"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Podpora jazyků a oblastí pro převod textu a řeči
 
@@ -71,7 +71,6 @@ Překladatel podporuje pro převod textu na text následující jazyky.
 |Japonština|  `ja`    |
 |Kannadština|`kn`|
 |Kazaština|`kk`|
-|Svahilština| `sw`    |
 |Klingon|   `tlh-Latn`  |
 |Klingon (plqaD)|   `tlh-Piqd`  |
 |Korejština |`ko`   |
@@ -102,6 +101,7 @@ Překladatel podporuje pro převod textu na text následující jazyky.
 |Slovenština|    `sk`    |
 |Slovinština| `sl`    |
 |Španělština|   `es`    |
+|Svahilština|   `sw`    |
 |Švédština|   `sv`    |
 |Tahitian|  `ty`    |
 |Tamilština| `ta`    |
@@ -152,7 +152,6 @@ Překladatel detekuje následující jazyky pro překlad a převod.
 |Irština | `ga`|
 |Italština|   `it`    |
 |Japonština|  `ja`    |
-|Svahilština| `sw`    |
 |Klingon|   `tlh-Latn`  |
 |Korejština |`ko`   |
 |Kurdština (střed)  |`ku-Arab`  |
@@ -173,6 +172,7 @@ Překladatel detekuje následující jazyky pro překlad a převod.
 |Slovenština|    `sk`    |
 |Slovinština| `sl`    |
 |Španělština|   `es`    |
+|Svahilština|   `sw`    |
 |Švédština|   `sv`    |
 |Tahitian|  `ty`    |
 |Thajština|  `th`    |
@@ -246,7 +246,6 @@ Podívejte se na referenční dokumentaci pro [hledání slovníku](reference/v3
 | Indonéština      | `id`          |
 | Italština      | `it`          |
 | Japonština      | `ja`          |
-| Svahilština      | `sw`          |
 | Klingon      | `tlh`          |
 | Korejština      | `ko`          |
 | Lotyština      | `lv`          |
@@ -263,6 +262,7 @@ Podívejte se na referenční dokumentaci pro [hledání slovníku](reference/v3
 | Slovenština     | `sk`          |
 | Slovinština      | `sl`          |
 | Španělština      | `es`          |
+| Svahilština      | `sw`          |
 | Švédština      | `sv`          |
 | Tamilština      | `ta`          |
 | Thajština      | `th`          |
@@ -314,7 +314,6 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Italština      | `it`          |
 | Japonština      | `ja`          |
 |Kannadština|`kn`|
-| Svahilština|    `sw`    |
 | Korejština      | `ko`          |
 | Lotyština      | `lv`          |
 | Litevština      | `lt`          |
@@ -335,6 +334,7 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Slovenština     | `sk`          |
 | Slovinština      | `sl`          |
 | Španělština      | `es`          |
+| Svahilština|  `sw`    |
 | Švédština      | `sv`          |
 |Tahitian|  `ty`    |
 | Thajština      | `th`          |

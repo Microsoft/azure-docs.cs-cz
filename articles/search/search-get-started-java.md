@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6be511029221e1f7bd1e58ad111503a43ee157fb
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: ed44431af6d99daa5549d019f42efda4bbf9912b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400651"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540349"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v jazyce Java pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -27,17 +27,17 @@ ms.locfileid: "91400651"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Vytvořte konzolovou aplikaci Java, která vytvoří, načte a dotazuje index vyhledávání pomocí [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)a [REST API Azure kognitivní hledání](/rest/api/searchservice/). Tento článek poskytuje podrobné pokyny k vytvoření aplikace. Případně můžete [Stáhnout a spustit kompletní aplikaci](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
+Vytvořte konzolovou aplikaci Java, která vytvoří, načte a dotazuje index vyhledávání pomocí [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/)a [REST API Azure kognitivní hledání](/rest/api/searchservice/). Tento článek poskytuje podrobné pokyny k vytvoření aplikace. Případně můžete [Stáhnout a spustit kompletní aplikaci](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro sestavování a testování tohoto rychlého startu jsme použili následující software a služby:
 
 + [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-+ [Sada SDK pro Java 11](/java/azure/jdk/?view=azure-java-stable)
++ [Sada SDK pro Java 11](/java/azure/jdk/)
 
 + [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu.
 
@@ -67,7 +67,7 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 1. Vyberte **Maven**.
 1. V seznamu **SDK projektu** vyberte sadu SDK Java 11.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Vytvoření projektu Maven" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
 
 1. Pro ID **skupiny** a **ArtifactId**zadejte `AzureSearchQuickstart` .
 1. Přijměte zbývající výchozí hodnoty pro otevření projektu.
@@ -78,7 +78,7 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 1. V okně **Nastavení** vyberte **sestavení, spouštění,**  >  **Nástroje sestavení**nasazení  >  **Maven**  >  **Import**.
 1. Zaškrtněte políčko  **importovat projekty Maven automaticky** a kliknutím na tlačítko **OK** okno zavřete. Moduly plug-in Maven a další závislosti se teď automaticky synchronizují při aktualizaci souboru pom.xml v dalším kroku.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="Možnosti importu Maven v nastavení IntelliJ" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
 
 1. Otevřete soubor pom.xml a nahraďte jeho obsah následujícími podrobnostmi konfigurace Maven. Patří sem odkazy na [modul plug-in exec Maven](https://www.mojohaus.org/exec-maven-plugin/) a [rozhraní API rozhraní JSON](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2) .
 
@@ -140,7 +140,7 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
     Až skončíte, strom projektu by měl vypadat podobně jako na následujícím obrázku.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="Adresářová struktura projektu" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
 
 1. Kliknutím na tlačítko **OK** zavřete toto okno.
 
@@ -148,7 +148,7 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `app` složce a přidejte `config.properties` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
 
-1. Zkopírujte následující nastavení do nového souboru a nahraďte `<YOUR-SEARCH-SERVICE-NAME>` je, `<YOUR-ADMIN-KEY>` a `<YOUR-QUERY-KEY>` pomocí názvu služby a klíčů. Pokud je koncový bod služby `https://mydemo.search.windows.net` , název služby by byl "mydemo".
+1. Zkopírujte následující nastavení do nového souboru a nahraďte `<YOUR-SEARCH-SERVICE-NAME>` je, `<YOUR-ADMIN-KEY>` a `<YOUR-QUERY-KEY>` pomocí názvu služby a klíčů. Pokud je koncový bod služby `https://mydemo.search.windows.net` , název služby by byl `"mydemo"` .
 
     ```java
         SearchServiceName=<YOUR-SEARCH-SERVICE-NAME>
@@ -373,10 +373,10 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 1. Ověřte, zda má projekt následující strukturu.
 
-    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="Třídy adresářové struktury a třídy projektu" border="false":::
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
 
 1. Otevřete okno nástroje **Maven** a proveďte tento cíl Maven: `verify exec:java` 
- :::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Spusťte Maven cíl: ověřit exec: Java" border="false":::
+ :::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
 
 Po dokončení zpracování vyhledejte zprávu o úspěchu sestavení následovaný nulou (0) ukončovacím kódem.
 
@@ -820,7 +820,7 @@ Teď, když jste načetli dokumenty hotelů, můžete vytvořit vyhledávací do
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

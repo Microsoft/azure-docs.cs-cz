@@ -3,20 +3,18 @@ title: Migrace V1 na v2 API
 titleSuffix: Azure Cognitive Services
 description: Koncové body verze 1 a vytváření Language Understanding API jsou zastaralé. Tento průvodce vám pomůže pochopit, jak migrovat na koncový bod verze 2 a vytváření rozhraní API.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.author: diberry
-ms.openlocfilehash: c5880aac01e0611565afb825a61b682197baf5d6
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: e1e9ac4ceef843712cc2e39f26ff0aca5341e201
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344743"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541318"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Průvodce migrací rozhraní API V1 na v2 pro aplikace LUIS
 [Koncový bod](https://aka.ms/v1-endpoint-api-docs) verze 1 a rozhraní API pro [vytváření obsahu](https://aka.ms/v1-authoring-api-docs) jsou zastaralé. Tento průvodce vám pomůže pochopit, jak migrovat na [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) verze 2 a [vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) rozhraní API.
@@ -28,7 +26,7 @@ LUIS má nové [oblasti](https://aka.ms/LUIS-regions) , které jsou k dispozici 
 Trasa rozhraní API pro vytváření obsahu se změnila z použití **programové** trasy na používání trasy **rozhraní API** .
 
 
-| verze | trasa |
+| verze | route |
 |--|--|
 |1|/Luis/v1.0/**/Apps**|
 |2|**rozhraní/Luis/API**/v2.0/Apps|
@@ -107,7 +105,7 @@ odpověď na úspěšnost koncového bodu v2:
 ## <a name="key-management-no-longer-in-api"></a>Správa klíčů už v rozhraní API
 Rozhraní API klíčů koncového bodu předplatného jsou zastaralá a vrátila 410.
 
-| verze | trasa |
+| verze | route |
 |--|--|
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
@@ -117,7 +115,7 @@ Rozhraní API klíčů koncového bodu předplatného jsou zastaralá a vrátila
 ## <a name="new-versioning-route"></a>Nová trasa verze
 Model v2 je teď obsažený ve [verzi](luis-how-to-manage-versions.md). V trase je název verze 10 znaků. Výchozí verze je "0,1".
 
-| verze | trasa |
+| verze | route |
 |--|--|
 |1|/Luis/v1.0/**/Apps/{appId}/Entities**|
 |2|/Luis/**API**/v2.0/Apps/{appId}/**verze**/{versionId}/Entities|
@@ -136,7 +134,7 @@ Několik rozhraní API, které vrací metadata LUIS, mají nové názvy.
 ## <a name="sample-renamed-to-suggest"></a>"Ukázka" přejmenována na "navrhnout"
 LUIS navrhuje projevy z existujícího [koncového bodu projevy](luis-how-to-review-endpoint-utterances.md) , který může model vylepšit. V předchozí verzi se jednalo o název **Sample**. V nové verzi se název změní z ukázky na **navrhnout**. To se označuje jako **[Kontrola projevyového bodu](luis-how-to-review-endpoint-utterances.md)** na webu Luis.
 
-| verze | trasa |
+| verze | route |
 |--|--|
 |1|Ukázka **/Luis/v1.0/** auto/Apps/{appId}/Entities/{EntityId}/**sample**|
 |1|Ukázka **/Luis/v1.0/** auto/Apps/{appId}/intents/{intentId}/**sample**|

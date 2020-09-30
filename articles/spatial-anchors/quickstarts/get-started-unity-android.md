@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 07/31/2020
+ms.date: 09/29/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7e92da72e8125c22655a7eb9986f0554963aefeb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c84ebfe9752b8594e97c7c72d706ee25c4852f6e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280882"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538117"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace Unity pro Android pomocí prostorových kotev Azure
 
@@ -30,7 +30,7 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
@@ -58,9 +58,11 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 Vyberte zařízení v **běhu** a pak vyberte **Sestavit a spustit**. Zobrazí se výzva k uložení `.apk` souboru, ve kterém můžete vybrat libovolný název.
 
-Po spuštění aplikace by se měla zobrazit obrazovka, která vypadá takto:
+V aplikaci vyberte **BasicDemo** pomocí šipek a pak stiskněte tlačítko **Přejít.** tlačítko pro spuštění ukázky. Použijte pokyny k umístění a odvolání kotvy.
 
-![Obrazovka aplikace](./media/get-started-unity-android/demo-app-screen.png)
+![Snímek obrazovky 1 ](./media/get-started-unity-android/screenshot-1.jpg)
+ ![ snímek obrazovky 2 snímek ](./media/get-started-unity-android/screenshot-2.jpg)
+ ![ obrazovky 3](./media/get-started-unity-android/screenshot-3.jpg)
 
 Podle pokynů v aplikaci založte a odvoláte kotvu.
 

@@ -15,20 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 7ef1c09b12d3c7e365f090391aa3fa8afa03749b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ad1ad622b354215e9837b1154a13bac148d54164
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214003"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537340"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Pokročilé omezování požadavků pomocí služby Azure API Management
 Schopnost omezit příchozí požadavky je klíčovou rolí Azure API Management. Díky tomu, že se řídí rychlost požadavků nebo celkový počet přenesených požadavků nebo dat, API Management umožňuje poskytovatelům rozhraní API chránit svá rozhraní API před zneužitím a vytvářet hodnoty pro různé úrovně produktu API.
 
+## <a name="rate-limits-and-quotas"></a>Omezení přenosové rychlosti a kvóty
+Omezení přenosové rychlosti a kvóty se používají pro různé účely.
+
+### <a name="rate-limits"></a>Omezení přenosové rychlosti
+Omezení přenosové rychlosti se obvykle používají k ochraně před krátkými a intenzivními shluky. Pokud například víte, že vaše back-end služba má v databázi kritický problém s vysokým objemem volání, můžete nastavit `rate-limit-by-key` zásady tak, aby nepovolovaly svazek s vysokým voláním pomocí tohoto nastavení.
+
+### <a name="quotas"></a>Kvóty
+Kvóty se obvykle používají pro řízení sazeb volání během delšího časového období. Můžou například nastavit celkový počet volání, která může určitý odběratel provést během daného měsíce. Pro Monetizing vašeho rozhraní API je možné kvóty nastavit také odlišně pro odběry založené na úrovni. Například předplatné na úrovni Basic může být schopné provést maximálně 10 000 volání za měsíc, ale úroveň Premium může každý měsíc jít až o 100 000 000 volání.
+
+V rámci Azure API Management se limity přenosové rychlosti obvykle rozšiřují v rámci uzlů na ochranu před špičkami. Naproti tomu se informace o kvótě využití používají po delší dobu, takže její implementace je odlišná.
+
+> [!CAUTION]
+> Vzhledem k distribuované povaze architektury omezování není omezení rychlosti nikdy zcela přesné. Rozdíl mezi nakonfigurovaným a skutečným počtem povolených požadavků se liší v závislosti na objemu a míře požadavků, latenci back-endu a dalších faktorech.
+
 ## <a name="product-based-throttling"></a>Omezování na základě produktů
 Do data jsou možnosti omezování míry omezené, aby byly vymezeny na konkrétní předplatné produktu definované v Azure Portal. To je užitečné pro poskytovatele rozhraní API pro použití omezení u vývojářů, kteří se zaregistrovali, aby používali své rozhraní API, ale nemůžete například při omezování jednotlivých koncových uživatelů rozhraní API. Je možné, že jednotliví uživatelé aplikace vývojáře budou využívat celou kvótu a pak můžou ostatním zákazníkům vývojářům zabránit v používání aplikace. Několik zákazníků, kteří by mohli vygenerovat velký počet požadavků, může také omezit přístup k příležitostnému uživateli.
 
-## <a name="custom-key-based-throttling"></a>Omezení na základě vlastního klíče
+## <a name="custom-key-based-throttling"></a>Vlastní omezování na základě klíčů
 
 > [!NOTE]
 > `rate-limit-by-key`Zásady a `quota-by-key` nejsou k dispozici, když je ve vrstvě spotřeby API Management Azure. 

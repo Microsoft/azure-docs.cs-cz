@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 03/18/2020
+ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 1af5ab33497ad8694752db17e874b883e60c942c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 40ee7ad74d1a1daaf6df5e76b5e51db52feea304
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906666"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535065"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Kurz: analýza modelů klasifikace obrázků pomocí MNIST ručně zapsaných dat a scikit – učení 
 
@@ -34,12 +34,12 @@ Přečtěte si, jak provést následující akce:
 
 Naučíte se, jak vybrat model a nasadit ho v [části 2 tohoto kurzu](tutorial-deploy-models-with-aml.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 >[!NOTE]
-> Kód v tomto článku byl testován pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 1.0.83 verze.
+> Kód v tomto článku byl testován pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 1.13.0 verze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončete [kurz: Začínáme s vytvořením prvního experimentu Azure ml](tutorial-1st-experiment-sdk-setup.md) :
     * Vytvoření pracovního prostoru
@@ -117,7 +117,7 @@ from azureml.core.compute import ComputeTarget
 import os
 
 # choose a name for your cluster
-compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpucluster")
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpu-cluster")
 compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
 compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
 
@@ -223,7 +223,7 @@ Nyní máte představu o tom, jak tyto obrázky vypadají, a o očekávaném vý
 Pro tuto úlohu odešlete úlohu, která se má spustit v clusteru vzdáleného školení, který jste nastavili dříve.  K odeslání úlohy je potřeba provést:
 * Vytvoření adresáře
 * Vytvoření trénovacího skriptu
-* Vytvoření objektu Estimator
+* Vytvoření konfigurace spuštění skriptu
 * Odeslání úlohy
 
 ### <a name="create-a-directory"></a>Vytvoření adresáře
@@ -307,19 +307,19 @@ Všimněte si, jak skript získává data a ukládá modely:
   shutil.copy('utils.py', script_folder)
   ```
 
-### <a name="create-an-estimator"></a>Vytvoření estimátoru
+### <a name="configure-the-training-job"></a>Konfigurace školicí úlohy
 
-Objekt estimátoru se používá k odeslání spuštění. Azure Machine Learning má předem nakonfigurovanou odhady pro běžné architektury strojového učení a také pro obecné Estimator. Vytvoření Estimator zadáním
+Vytvořte objekt [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) a zadejte podrobnosti o konfiguraci školicí úlohy, včetně vašeho školicího skriptu, prostředí, které se má použít, a výpočetní cíl, který se má spustit. Nakonfigurujte ScriptRunConfig zadáním:
 
-
-* Název objektu estimátoru je `est`.
 * Adresář, který obsahuje vaše skripty. Všechny soubory v tomto adresáři se nahrají do uzlů clusteru ke spuštění.
 * Cílové výpočetní prostředí. V tomto případě používáte cluster pro výpočty služby Azure Machine Learning, který jste vytvořili.
 * Název školicího skriptu, **Train.py**.
 * Prostředí obsahující knihovny potřebné ke spuštění skriptu.
-* Parametry požadované z trénovacího skriptu.
+* Argumenty požadované ze školicího skriptu.
 
-V tomto kurzu je tento cíl AmlCompute. Všechny soubory ve složce skriptu se nahrají do uzlů clusteru pro spuštění. **Data_folder** je nastaveno na použití datové sady. "Nejprve vytvořte prostředí, které obsahuje: knihovna scikit-učení, AzureML-dataprep požadovaná pro přístup k datové sadě a AzureML – výchozí, který obsahuje závislosti pro metriky protokolování. Služba AzureML-výchozí také obsahuje závislosti potřebné pro nasazení modelu jako webové služby později v části 2 tohoto kurzu.
+V tomto kurzu je tento cíl AmlCompute. Všechny soubory ve složce skriptu se nahrají do uzlů clusteru pro spuštění. **Data_folder--** je nastaveno na použití datové sady.
+
+Nejprve vytvořte prostředí, které obsahuje: knihovna scikit-učení, AzureML-DataSet-runtime požadovaná pro přístup k datové sadě a AzureML – výchozí, které obsahují závislosti pro metriky protokolování. Služba AzureML-výchozí také obsahuje závislosti potřebné pro nasazení modelu jako webové služby později v části 2 tohoto kurzu.
 
 Jakmile je prostředí definované, zaregistrujte ho v pracovním prostoru a znovu ho použijte v části 2 tohoto kurzu.
 
@@ -329,38 +329,34 @@ from azureml.core.conda_dependencies import CondaDependencies
 
 # to install required packages
 env = Environment('tutorial-env')
-cd = CondaDependencies.create(pip_packages=['azureml-dataprep[pandas,fuse]>=1.1.14', 'azureml-defaults'], conda_packages = ['scikit-learn==0.22.1'])
+cd = CondaDependencies.create(pip_packages=['azureml-dataset-runtime[pandas,fuse]', 'azureml-defaults'], conda_packages=['scikit-learn==0.22.1'])
 
 env.python.conda_dependencies = cd
 
 # Register environment to re-use later
-env.register(workspace = ws)
+env.register(workspace=ws)
 ```
 
-Pak vytvořte Estimator pomocí následujícího kódu.
+Pak vytvořte ScriptRunConfig zadáním školicího skriptu, cíle výpočtů a prostředí.
 
 ```python
-from azureml.train.estimator import Estimator
+from azureml.core import ScriptRunConfig
 
-script_params = {
-    # to mount files referenced by mnist dataset
-    '--data-folder': mnist_file_dataset.as_named_input('mnist_opendataset').as_mount(),
-    '--regularization': 0.5
-}
+args = ['--data-folder', mnist_file_dataset.as_mount(), '--regularization', 0.5]
 
-est = Estimator(source_directory=script_folder,
-              script_params=script_params,
-              compute_target=compute_target,
-              environment_definition=env,
-              entry_script='train.py')
+src = ScriptRunConfig(source_directory=script_folder,
+                      script='train.py', 
+                      arguments=args,
+                      compute_target=compute_target,
+                      environment=env)
 ```
 
 ### <a name="submit-the-job-to-the-cluster"></a>Odeslání úlohy do clusteru
 
-Spusťte experiment odesláním objektu Estimator:
+Spusťte experiment odesláním objektu ScriptRunConfig:
 
 ```python
-run = exp.submit(config=est)
+run = exp.submit(config=src)
 run
 ```
 
@@ -372,7 +368,7 @@ V celkovém případě trvá první spuštění **přibližně 10 minut**. U ná
 
 Co se stane, když počkáte:
 
-- **Vytvoření bitové kopie**: vytvoří se image Docker, která odpovídá prostředí Pythonu určenému parametrem Estimator. Image se nahraje do pracovního prostoru. Vytvoření a nahrání obrázku trvá **přibližně pět minut**.
+- **Vytvoření bitové kopie**: vytvoří se image Docker, která odpovídá prostředí Pythonu určenému prostředím Azure ml. Image se nahraje do pracovního prostoru. Vytvoření a nahrání obrázku trvá **přibližně pět minut**.
 
   Tato fáze se u každého prostředí Pythonu provede jednou, protože kontejner je uložený v mezipaměti pro další spuštění. Při vytváření image se streamují protokoly do historie spuštění. Pomocí těchto protokolů můžete monitorovat průběh vytváření imagí.
 

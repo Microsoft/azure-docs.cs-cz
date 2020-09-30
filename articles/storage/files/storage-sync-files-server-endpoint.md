@@ -7,21 +7,21 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9273ca66c0304afc5df58ace5dd584c20c90abfd
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f75f0d1ae12db11590f8ce62f3c7b4c0f3e12817
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905053"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541488"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Přidat nebo odebrat koncový bod serveru Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to tak, že transformuje servery Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
 
-*Koncový bod serveru* představuje konkrétní umístění na *zaregistrovaném serveru*, jako je například složka na svazku serveru nebo kořen svazku. Pokud jejich obory názvů nejsou překryté (například F:\sync1 a F:\sync2), můžou existovat na stejném svazku víc koncových bodů serveru. Zásady cloudových vrstev můžete nakonfigurovat individuálně pro každý koncový bod serveru. Pokud přidáte umístění serveru s existující sadou souborů jako koncový bod serveru do skupiny synchronizace, budou tyto soubory sloučeny s dalšími soubory, které již jsou v jiných koncových bodech ve skupině synchronizace.
+*Koncový bod serveru* představuje konkrétní umístění na *zaregistrovaném serveru*, jako je například složka na svazku serveru nebo kořen svazku. Pokud jejich obory názvů nejsou překrývající se (například F:\sync1 a F:\sync2), můžou na stejném svazku existovat víc koncových bodů serveru, přičemž každý koncový bod se synchronizuje s jedinečnou skupinou synchronizace. Zásady cloudových vrstev můžete nakonfigurovat individuálně pro každý koncový bod serveru. Pokud přidáte umístění serveru s existující sadou souborů jako koncový bod serveru do skupiny synchronizace, budou tyto soubory sloučeny s dalšími soubory, které již jsou v jiných koncových bodech ve skupině synchronizace.
 
 Informace o tom, jak nasadit Azure File Sync kompletní, najdete v tématu [nasazení Azure File Sync](storage-sync-files-deployment-guide.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete vytvořit koncový bod serveru, musíte nejdřív zkontrolovat, jestli jsou splněné následující podmínky: 
 - Server má nainstalovaného agenta Azure File Sync a byl zaregistrován. Pokyny pro instalaci agenta Azure File Sync najdete v článku [registrace nebo zrušení registrace serveru s Azure File Syncm](storage-sync-files-server-registration.md) článkem. 
 - Ujistěte se, že je nasazená služba synchronizace úložiště. Podrobnosti o tom, jak nasadit službu synchronizace úložiště, najdete v tématu [postup nasazení Azure File Sync](storage-sync-files-deployment-guide.md) . 
@@ -56,7 +56,7 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order Clou
 ```
 `-Order CloudTieringPolicy`Při zadání se nejdřív odeberou poslední změněné soubory.
 Další volitelné, ale užitečné parametry, které je potřeba vzít v úvahu:
-* `-ThreadCount`Určuje počet souborů, které mohou být vyvolány paralelně.
+* `-ThreadCount` Určuje počet souborů, které mohou být vyvolány paralelně.
 * `-PerFileRetryCount`Určuje, jak často se bude opakovat pokus o odvolání souboru, který je aktuálně blokován.
 * `-PerFileRetryDelaySeconds`Určuje dobu v sekundách mezi opakovanými pokusy o odvolání a měla by být vždy použita v kombinaci s předchozím parametrem.
 

@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 210a4a352f5130bc67d70f47bdf6305c5a992282
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 2e73039418233c97fc20242ed7af7df14c5b47ee
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403771"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534773"
 ---
 # <a name="how-to-set-up-change-and-deletion-detection-for-blobs-in-azure-cognitive-search-indexing"></a>Jak nastavit detekci změn a odstraňování objektů BLOB v Azure Kognitivní hledání indexování
 
@@ -100,7 +100,11 @@ Jakmile indexer zpracuje odstraněný objekt BLOB a odstraní odpovídající hl
 
 Pokud chcete tento dokument znovu indexovat, změňte `"softDeleteMarkerValue" : "false"` pro tento objekt BLOB a znovu spusťte indexer.
 
-## <a name="see-also"></a>Viz také
+## <a name="help-us-make-azure-cognitive-search-better"></a>Pomozte nám zdokonalit Azure Kognitivní hledání
+
+Pokud máte na vylepšení žádosti o funkce nebo nápady, poskytněte svůj vstup na [UserVoice](https://feedback.azure.com/forums/263029-azure-search/). Pokud potřebujete pomoci s používáním stávající funkce, vystavte svůj dotaz na [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/18870).
+
+## <a name="next-steps"></a>Další kroky
 
 * [Indexery ve službě Azure Cognitive Search](search-indexer-overview.md)
 * [Jak nakonfigurovat indexer objektů BLOB](search-howto-indexing-azure-blob-storage.md)

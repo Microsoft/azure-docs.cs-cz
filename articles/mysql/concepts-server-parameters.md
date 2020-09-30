@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: bf87a61633706cb5db384e8a8ab957fa6a3f37f1
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258554"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533719"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Parametry serveru v Azure Database for MySQL
 
@@ -214,7 +214,7 @@ Pokud se zobrazí chybová zpráva podobná velikosti řádku je moc velká (> 8
 Tento parametr lze nastavit na úrovni relace pomocí `init_connect` . Pokud chcete nastavit **innodb_strict_mode** na úrovni relace, přečtěte si téma [Nastavení parametrů není uvedené](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed).
 
 > [!NOTE]
-> Pokud máte server repliky pro čtení, nastavení **innodb_strict_mode** pro vypnutí na úrovni relace na hlavním serveru způsobí přerušení replikace. Pokud máte repliky čtení, doporučujeme ponechat parametr nastavený na vypnuto.
+> Pokud máte server repliky pro čtení, nastavení **innodb_strict_mode** na úrovni relace na zdrojovém serveru zruší replikaci. Pokud máte repliky čtení, doporučujeme ponechat parametr nastavený na vypnuto.
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

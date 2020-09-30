@@ -3,21 +3,18 @@ title: Vytváření upozornění Resource Health pomocí webu Azure Portal
 description: Vytvořte výstrahu pomocí Azure Portal, která vás upozorní, když vaše prostředky Azure nebudou k dispozici.
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: 3a0f4704880d040106a2e4112d621b6d8ffbede6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 127aad1691f7bb6b6c64332eefde734a809ab75f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091568"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540672"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Konfigurace upozornění na stav prostředků s využitím webu Azure Portal
 
 V tomto článku se dozvíte, jak nastavit výstrahy protokolu aktivit pro oznámení o stavu prostředků pomocí Azure Portal.
 
 Azure Resource Health vás informují o aktuálním a historickém stavu vašich prostředků Azure. Výstrahy Azure Resource Health vás můžou zobrazit téměř v reálném čase, když tyto prostředky mají změnu stavu. Vytváření výstrah Resource Health programově umožňuje uživatelům vytvářet a přizpůsobovat hromadnou výstrahu.
-
-> [!NOTE]
-> Výstrahy Resource Health jsou v tuto chvíli ve verzi Preview.
 
 Oznámení o stavu prostředků se ukládají do [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md) , který vám poskytne potenciálně velký objem informací uložených v protokolu aktivit. k dispozici je samostatné uživatelské rozhraní, které usnadňuje zobrazení a nastavení výstrah pro oznámení o stavu prostředků.
 Můžete obdržet upozornění, když prostředek Azure pošle oznámení o stavu prostředků vašemu předplatnému Azure. Můžete nakonfigurovat výstrahu na základě:

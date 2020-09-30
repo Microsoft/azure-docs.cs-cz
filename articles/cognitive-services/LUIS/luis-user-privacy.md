@@ -3,26 +3,24 @@ title: Export & odstranění dat – LUIS
 titleSuffix: Azure Cognitive Services
 description: Máte plnou kontrolu nad zobrazením, exportem a odstraněním jejich dat. Odstraňte zákaznická data a zajistěte tak ochranu osobních údajů a dodržování předpisů.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/02/2019
-ms.author: diberry
-ms.openlocfilehash: 4e3e0d04b0086905b80e26fb4f838c36b5b5545e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 868443e52b7159e6ee9478f64b7b2f376a10f604
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273368"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541002"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportujte a odstraňte zákaznická data v Language Understanding (LUIS) v Cognitive Services
 
 Odstraňte zákaznická data a zajistěte tak ochranu osobních údajů a dodržování předpisů.
 
-## <a name="summary-of-customer-data-request-features"></a>Shrnutí funkcí žádosti o data zákazníků
+## <a name="summary-of-customer-data-request-features"></a>Souhrn funkcí pro žádosti o data zákazníků
 Language Understanding Intelligent Service (LUIS) zachovává obsah zákazníka při provozu služby, ale uživatel LUIS má plnou kontrolu nad zobrazením, exportem a odstraněním jejich dat. To se dá udělat prostřednictvím webového [portálu](luis-reference-regions.md) Luis nebo pomocí [rozhraní API pro vytváření Luis (označovaných také jako programové)](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
@@ -39,7 +37,7 @@ LUIS uživatelé mají plnou kontrolu nad tím, že budou odstraňovat obsahy u�
 
 | | **Uživatelský účet** | **Aplikace** | **Příklad utterance** | **Dotazy pro koncové uživatele** |
 | --- | --- | --- | --- | --- |
-| **Portál** | [Odkaz](luis-concept-data-storage.md#delete-an-account) | [Odkaz](luis-how-to-start-new-app.md#delete-app) | [Odkaz](luis-concept-data-storage.md#utterances-in-an-intent) | [Projevy Active Learning](luis-how-to-review-endpoint-utterances.md#disable-active-learning)<br>[Protokol projevy](luis-concept-data-storage.md#disable-logging-utterances) |
+| **Azure Portal** | [Odkaz](luis-concept-data-storage.md#delete-an-account) | [Odkaz](luis-how-to-start-new-app.md#delete-app) | [Odkaz](luis-concept-data-storage.md#utterances-in-an-intent) | [Projevy Active Learning](luis-how-to-review-endpoint-utterances.md#disable-active-learning)<br>[Protokol projevy](luis-concept-data-storage.md#disable-logging-utterances) |
 | **Rozhraní API** | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [Odkaz](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
 
 
@@ -78,7 +76,7 @@ Portál [au.Luis.AI](https://au.luis.ai) a vytváření Austrálie (označované
 
 Při nasazování do těchto geografických oblastí Azure bude projevy přijatý koncovým uživatelem vaší aplikace uložený v geografických oblastech Austrálie Azure pro aktivní učení. Aktivní učení můžete zakázat. Přečtěte si téma [zakázání aktivního učení](luis-how-to-review-endpoint-utterances.md#disable-active-learning). Pokud chcete spravovat uložené projevy, přečtěte si téma [Delete utterance](luis-how-to-review-endpoint-utterances.md#delete-utterance).
 
-### <a name="united-states"></a>Spojené státy
+### <a name="united-states"></a>USA
 
 Portál [Luis.AI](https://www.luis.ai) a vytváření USA (označované také jako programové rozhraní API) se hostují v USA geografie Azure. Portál luis.ai a vytváření USA (označované také jako programové rozhraní API) podporují nasazení koncových bodů do následujících geografických oblastí Azure:
 

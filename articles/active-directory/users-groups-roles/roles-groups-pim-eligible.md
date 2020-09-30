@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b297ee3d03d61b654e2b7fffa17141a1fd5268f3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 93c97055c6e31050dbc545445ec144ba37abc865
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971177"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539890"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Přiřazení role ke skupině pomocí Privileged Identity Management
 
@@ -35,7 +35,7 @@ Tento článek popisuje, jak můžete přiřadit roli Azure Active Directory (Az
 
 1. Vyberte roli a potom vyberte skupinu. Zobrazují se jenom skupiny, které mají nárok na přiřazení role (skupiny s přiřazením rolí), ne všechny skupiny.
 
-    ![Vyberte uživatele, kterému přiřadíte roli.](./media/roles-groups-pim-eligible/select-member.png)
+    ![Snímek obrazovky zobrazující stránku přidat přiřazení s zvýrazněnými oddíly vybrat roli a vybrat členy](./media/roles-groups-pim-eligible/select-member.png)
 
 1. Vyberte požadované nastavení členství. V případě rolí vyžadujících aktivaci vyberte možnost **způsobilý**. Ve výchozím nastavení by měl být uživatel trvale způsobilý, ale můžete také nastavit počáteční a koncový čas pro nárok uživatele. Po dokončení klikněte na Uložit a přidat a dokončete přiřazení role.
 

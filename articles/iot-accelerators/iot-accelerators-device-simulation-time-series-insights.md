@@ -8,20 +8,20 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88255e60593403951db5b984bb9c69b1060a93c2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73889349"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540570"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Použít Time Series Insights k vizualizaci telemetrie odeslané z akcelerátoru řešení pro simulaci zařízení
 
 Akcelerátor řešení pro simulaci zařízení umožňuje generovat telemetrii z simulovaných zařízení a testovat vaše řešení IoT. V této příručce se dozvíte, jak vizualizovat a analyzovat simulaci telemetrie pomocí Time Series Insightsho prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud chcete postupovat podle kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud chcete postupovat podle kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Postup v tomto průvodci předpokládá, že jste do svého předplatného Azure nasadili akcelerátor řešení pro simulaci zařízení. Pokud jste nenainstalovali akcelerátor řešení, postupujte podle kroků v části [nasazení a spuštění cloudového řešení simulace zařízení](quickstart-device-simulation-deploy.md) .
 
@@ -55,7 +55,7 @@ Následující kroky používají rozhraní příkazového řádku Azure CLI v A
 
 [Azure Time Series Insights](../../articles/time-series-insights/time-series-insights-overview.md) je plně spravovaná služba pro analýzy, ukládání a vizualizace, která slouží ke správě dat časových řad ve službě IoT-Scale v cloudu. Vytvoření nového prostředí Time Series Insights:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **Time Series Insights**:
 
@@ -72,7 +72,7 @@ Následující kroky používají rozhraní příkazového řádku Azure CLI v A
     | Skladová jednotka (SKU) |**S1** |
     | Kapacita | **1** |
 
-    ![Vytvořit Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights-create.png)
+    ![Vytvoření instance Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights-create.png)
 
     > [!NOTE]
     > Přidání prostředí Time Series Insights do stejné skupiny prostředků jako akcelerátor řešení znamená, že při odstranění akcelerátoru řešení dojde k jeho odstranění.
@@ -106,7 +106,7 @@ Vytvořte nový zdroj událostí pro připojení ke službě IoT Hub. Použijte 
     | Klíč zásad centra IoT Hub | Toto pole je vyplněno automaticky. |
     | Skupina uživatelů centra IoT Hub | **devicesimulationtsi** |
     | Formát serializace události | **JSON** |
-    | Název vlastnosti časového razítka | Ponechte prázdné |
+    | Název vlastnosti časového razítka | Ponechte prázdné. |
 
     ![Vytvořit zdroj události](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 
@@ -137,7 +137,7 @@ Time Series Insights Explorer je webová aplikace, kterou můžete použít k vi
 
 1. Na panelu podmínka na levé straně vyberte **teplotu** jako **míru** a **iothub-Connection-Device-ID** jako **rozdělení podle** hodnoty:
 
-    ![Dotaz aplikace Time Series Insights Explorer](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
+    ![Snímek obrazovky, který zobrazuje panel Time Series Insights podmínek se zvýrazněnými hodnotami "měření" a "rozdělit podle".](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
 
 1. Klikněte pravým tlačítkem na graf a vyberte **prozkoumat události**:
 

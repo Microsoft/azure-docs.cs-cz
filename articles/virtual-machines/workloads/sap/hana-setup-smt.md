@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c186b73cb00d03b731cd015b3ee06bf8f2233fa4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616993"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541148"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Nastavení serveru SMT pro SUSE Linux
 Velké instance SAP HANA nemají přímé připojení k Internetu. Nejedná se o přímočarý proces k registraci takové jednotky s poskytovatelem operačního systému a ke stažení a instalaci aktualizací. Řešením pro SUSE Linux je nastavení serveru SMT na virtuálním počítači Azure. Virtuální počítač hostte ve virtuální síti Azure, která je připojená k velké instanci HANA. U takového serveru SMT by mohla jednotka velké instance HANA registrovat a stahovat aktualizace. 
@@ -44,7 +44,7 @@ Nasazený virtuální počítač je menší a získal interní IP adresu ve virt
 
 Přidejte disk do virtuálního počítače. Tento disk použijete k uložení aktualizací a samotný spouštěcí disk může být příliš malý. V tomto případě se disk připojil k/SRV/www/htdocs, jak je znázorněno na následujícím snímku obrazovky. By měl stačit disk 100-GB.
 
-![Snímek obrazovky s nasazením virtuálního počítače pro server SMT](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
+![Snímek obrazovky s přidaným diskem se zobrazí v okně výstupu.](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
 
 Přihlaste se k jednotce nebo jednotkám velké instance HANA, udržujte/etc/hosts a ověřte, jestli se můžete dostat k virtuálnímu počítači Azure, který by měl spustit server SMT přes síť.
 

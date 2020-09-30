@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: ee788125a5710e5a8b9861c28c4af8e6d83d5d80
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 651e0635f0b556cd47adfccdbac59ef587570128
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924533"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535725"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Algoritmus hodnocení v Azure Kognitivní hledání
 
@@ -105,7 +105,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 ## <a name="see-also"></a>Viz také  
 
-+ [Odkaz na REST API](/rest/api/searchservice/)   
-+ [Přidání profilů vyhodnocování do indexu](index-add-scoring-profiles.md)    
-+ [Vytvoření rozhraní API pro index](/rest/api/searchservice/create-index)   
-+ [Sada Azure Kognitivní hledání .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)
++ [Odkaz na REST API](/rest/api/searchservice/)
++ [Přidání profilů vyhodnocování do indexu](index-add-scoring-profiles.md)
++ [Vytvoření rozhraní API pro index](/rest/api/searchservice/create-index)
++ [Sada Azure Kognitivní hledání .NET SDK](/dotnet/api/overview/azure/search)

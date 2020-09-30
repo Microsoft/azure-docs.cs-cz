@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 96da89fa8d7e4783afa11807534bbaeba52b79fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d41518b1fc0d8cdda3ded1e8036bd29e24e2b34a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334255"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541352"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Směrování událostí v rámci digitálních vláken Azure a mimo ně
 
@@ -55,7 +55,9 @@ Aby bylo možné definovat trasu události, vývojáři musí nejprve definovat 
 * Centrum událostí
 * Service Bus
 
-Koncové body se nastavují pomocí rozhraní API řídicí plochy (podporované pomocí rozhraní příkazového [řádku Azure pro digitální vlákna](how-to-use-cli.md)nebo prostřednictvím Azure Portal. Definice koncového bodu poskytuje:
+Pokud chcete vytvořit koncový bod, můžete použít [**rozhraní API plochy ovládacího prvku**](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)Azure Digital vlákna, [**příkazy CLI**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)nebo [**Azure Portal**](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins). 
+
+Při definování koncového bodu je potřeba zadat:
 * Název koncového bodu
 * Typ koncového bodu (Event Grid, centrum událostí nebo Service Bus)
 * Primární připojovací řetězec a sekundární připojovací řetězec, který se má ověřit 
@@ -69,7 +71,9 @@ Rozhraní API koncového bodu, která jsou k dispozici v řídicí rovině, jsou
 
 ## <a name="create-an-event-route"></a>Vytvoření trasy události
  
-V klientské aplikaci jsou vytvořeny trasy událostí. Jedním ze způsobů, jak to provést, je `CreateEventRoute` volání [sady SDK .NET (C#)](how-to-use-apis-sdks.md) : 
+Pokud chcete vytvořit trasu události, můžete použít [**rozhraní API roviny dat**](how-to-manage-routes-apis-cli.md#create-an-event-route)digitálních vláken Azure, [**příkazy CLI**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)nebo [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route). 
+
+Tady je příklad vytvoření trasy události v rámci klientské aplikace pomocí `CreateEventRoute` volání [rozhraní .NET (C#) SDK](how-to-use-apis-sdks.md) : 
 
 ```csharp
 EventRoute er = new EventRoute("endpointName");

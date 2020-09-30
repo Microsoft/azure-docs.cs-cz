@@ -4,12 +4,12 @@ description: Monitorování výkonu aplikací bez kódu pro aplikace Java běž�
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 93b0b89cff7e48ddc4eb9173c9423961f96ec4bb
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 9b90f8b9336111438b4b832d557d448470959255
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371299"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537653"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Možnosti konfigurace – samostatný agent Java pro Azure Monitor Application Insights
 
@@ -154,9 +154,9 @@ Pokud máte nějaké JMX metriky, které vás zajímají, zachytíte:
           "display": "JVM uptime (millis)"
         },
         {
-          "objectName": "java.lang:type=MemoryPool,name=Code Cache",
+          "objectName": "java.lang:type=MemoryPool,name=Metaspace",
           "attribute": "Usage.used",
-          "display": "Code Cache Used"
+          "display": "MetaSpace Used"
         }
       ]
     }
@@ -166,7 +166,7 @@ Pokud máte nějaké JMX metriky, které vás zajímají, zachytíte:
 
 Metriky JMX můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_JMX_METRICS` .
 
-Obsah této proměnné prostředí musí být data JSON shodná s výše uvedenou strukturou, např. `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Code Cache", "attribute": "Usage.used", "display": "Code Cache Used"}]`
+Obsah této proměnné prostředí musí být data JSON shodná s výše uvedenou strukturou, např. `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Metaspace", "attribute": "Usage.used", "display": "MetaSpace Used"}]`
 
 ## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Mikroměřič (včetně metrik ze pružinového spouštěcího válce)
 

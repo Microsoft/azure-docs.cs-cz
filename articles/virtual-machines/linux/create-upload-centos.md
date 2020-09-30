@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: guybo
-ms.openlocfilehash: 9097fb4aefe168ce36793d13f892fbbeab10ad56
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 90b29944315b8a72a4ef95adbfc681a0ab276b00
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372735"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533054"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na CentOS pro Azure
 
@@ -21,7 +21,7 @@ Naučte se vytvořit a nahrát virtuální pevný disk Azure (VHD), který obsah
 * [Příprava virtuálního počítače s CentOS 7.0 pro Azure](#centos-70)
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podobný odvozený) operační systém Linux na virtuální pevný disk. Pro vytváření souborů. VHD, například virtualizačního řešení, jako je například Hyper-V, existuje více nástrojů. Pokyny najdete v tématu [instalace role Hyper-V a konfigurace virtuálního počítače](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
@@ -163,7 +163,7 @@ V tomto článku se předpokládá, že jste už nainstalovali CentOS (nebo podo
     sudo yum install microsoft-hyper-v
     ```
 
-    Případně můžete postupovat podle pokynů k ruční instalaci na [stránce pro stažení aplikace LIS](https://www.microsoft.com/download/details.aspx?id=51612) a nainstalovat na virtuální počítač službu ot./min..
+    Případně můžete postupovat podle pokynů k ruční instalaci na [stránce pro stažení aplikace LIS](https://www.microsoft.com/download/details.aspx?id=55106) a nainstalovat na virtuální počítač službu ot./min..
 
 12. Nainstalujte agenta a závislosti pro Azure Linux. Spusťte a povolte službu waagent:
 

@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/18/2020
 ms.author: derekol
-ms.openlocfilehash: 57c38d3b6eeb26a38a36fb67da25bcf960cee2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22cb179925f95fd0762371cc904fcbd02675339a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710843"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540264"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Přidružení partnerského čísla ASN k předplatnému Azure s využitím portálu
 
@@ -70,12 +70,12 @@ Jako poskytovatel internetových služeb nebo poskytovatel internetového Exchan
 1. Pak klikněte na **zkontrolovat + vytvořit** a sledujte, že na portálu běží základní ověřování informací, které jste zadali. Zobrazuje se na pásu karet nahoře a *spouští se konečné ověření...*.
 
     > [!div class="mx-imgBorder"]
-    > ![PeerAsn – karta Revize](./media/peerasn-review-tab-validation.png)
+    > ![Snímek obrazovky s kartou S informacemi o přidružení partnerského vztahu A S N](./media/peerasn-review-tab-validation.png)
 
 1. Jakmile se zpráva na pásu karet změní na *prošlé*, ověřte informace a odešlete žádost kliknutím na **vytvořit**. Pokud ověření neprojde, klikněte na **Předchozí** a Zopakováním výše uvedených kroků upravte svůj požadavek a ujistěte se, že hodnoty, které zadáte, nemají žádné chyby.
 
     > [!div class="mx-imgBorder"]
-    > ![PeerAsn – karta Revize](./media/peerasn-review-tab.png)
+    > ![Snímek obrazovky, na které se přiřadí karta základy pro partnerský vztah A s N, se úspěšně dokončilo ověřování.](./media/peerasn-review-tab.png)
 
 1. Po odeslání žádosti počkejte, než se dokončí nasazení. Pokud nasazení neproběhne úspěšně, kontaktujte [partnerský vztah Microsoftu](mailto:peering@microsoft.com). Úspěšné nasazení se zobrazí jako níže.
 

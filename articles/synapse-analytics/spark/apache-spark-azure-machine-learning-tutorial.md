@@ -1,22 +1,22 @@
 ---
-title: Spouštění experimentů pomocí automatizovaného ML Azure
-description: Spouštění experimentů machine learningu pomocí Apache Spark a Azure Automated ML
+title: 'Kurz: spouštění experimentů pomocí automatizovaného ML Azure'
+description: Kurz spuštění experimentů machine learningu pomocí Apache Spark a Azure Automated ML
 services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
-ms.topic: conceptual
+ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick,
-ms.openlocfilehash: d4df4ea96f8dafa2f0eb26e27fcc08ab4ec89003
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: da4cef50610b219689e2271e9f70fd1adb1a235f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033570"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540502"
 ---
-# <a name="run-experiments-using-azure-automated-ml-and-apache-spark"></a>Spouštění experimentů pomocí automatizovaného ML a Apache Spark
+# <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Kurz: spouštění experimentů pomocí automatizovaného ML a Apache Spark
 
 Azure Machine Learning je cloudové prostředí, které umožňuje výukové, nasazování, automatizaci, správu a sledování modelů strojového učení. 
 

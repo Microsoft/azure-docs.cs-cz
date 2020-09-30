@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8a7bb300bb634b342b1141d175b0046c7d2d7e2b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: b7f9a83a3972ed0a5a635826b40e15c437da16b8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810305"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540366"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace pro Xamarin Android pomocí prostorových kotev Azure
 
@@ -73,7 +73,7 @@ Nastavte projekt po spuštění na **SampleXamarin. Android**, změňte **konfig
 
 # <a name="windows"></a>[Windows](#tab/deploy-windows)
 
-![Konfigurace sady Visual Studio](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
+![Snímek obrazovky, který zobrazuje nabídku pro výběr projektu a zařízení v systému Windows.](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
 Vyberte **ladit**  >  **Spustit ladění** a nasaďte a spusťte svoji aplikaci.
 

@@ -4,12 +4,12 @@ description: Odpovědi na některé z nejběžnějších otázek a scénářů p
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: 52e0a6f9261d89ecd7c660be118162a898988526
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: d07484943f8ba85cc8e46737f3ef85b6e25d5187
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385904"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538054"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Nejčastější dotazy týkající se sítě v Azure Functions
 
@@ -27,7 +27,7 @@ Přístup k Internetu můžete omezit několika způsoby:
     * V části omezení protokolu IP můžete také nakonfigurovat [koncové body služby](../virtual-network/virtual-network-service-endpoints-overview.md), které omezují, aby funkce přijímala příchozí provoz jenom z konkrétní virtuální sítě.
 * Odebrání všech triggerů HTTP. U některých aplikací je stačí jednoduše zabránit aktivačním událostem HTTP a použít k aktivaci funkce jiný zdroj událostí.
 
-Mějte na paměti, že editor Azure Portal vyžaduje přímý přístup ke spuštěným funkcím. Jakékoli změny kódu prostřednictvím Azure Portal budou vyžadovat, aby zařízení, které používáte k procházení portálu, mělo jeho IP adresu povolenou. Můžete ale pořád použít cokoli na kartě funkce platformy se zavedenými omezeními sítě.
+Mějte na paměti, že editor Azure Portal vyžaduje přímý přístup ke spuštěným funkcím. Jakékoli změny kódu prostřednictvím Azure Portal budou vyžadovat, aby zařízení, které používáte k procházení portálu, mělo své IP adresy přidané do seznamu schválených. Můžete ale pořád použít cokoli na kartě funkce platformy se zavedenými omezeními sítě.
 
 ## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>Návody omezit aplikaci Function App na virtuální síť?
 

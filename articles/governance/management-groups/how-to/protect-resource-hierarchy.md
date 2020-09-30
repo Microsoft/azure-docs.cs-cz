@@ -3,12 +3,12 @@ title: Jak chránit hierarchii prostředků – zásady správného řízení Az
 description: Naučte se chránit svoji hierarchii prostředků pomocí nastavení hierarchie, která zahrnují nastavení výchozí skupiny pro správu.
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 19d699b54a9979df1030c0f6e294d5a4492f2853
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 8630562786da922a36baa3bec4863acbb21b197d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469775"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533975"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Jak chránit hierarchii prostředků
 
@@ -16,9 +16,9 @@ Vaše prostředky, skupiny prostředků, předplatná, skupiny pro správu a ten
 
 Skupiny pro správu teď mají nastavení hierarchie, které umožňuje správcům tenanta řídit toto chování. Tento článek obsahuje všechna dostupná nastavení hierarchie a jejich nastavení.
 
-## <a name="rbac-permissions-for-hierarchy-settings"></a>Oprávnění RBAC pro nastavení hierarchie
+## <a name="azure-rbac-permissions-for-hierarchy-settings"></a>Oprávnění Azure RBAC pro nastavení hierarchie
 
-Konfigurace nastavení hierarchie vyžaduje následující dvě operace RBAC v kořenové skupině pro správu:
+Konfigurace nastavení hierarchie vyžaduje následující dvě operace poskytovatele prostředků v kořenové skupině pro správu:
 
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
@@ -27,7 +27,7 @@ Tyto operace umožňují uživateli číst a aktualizovat nastavení hierarchie.
 
 ## <a name="setting---default-management-group"></a>Nastavení – výchozí skupina pro správu
 
-Ve výchozím nastavení je nové předplatné přidané v rámci tenanta přidáno jako člen skupiny pro správu root. Pokud jsou přiřazování zásad, řízení přístupu na základě role (RBAC) a další konstruktory zásad správného řízení přiřazeny ke skupině root management, tyto nové odběry se okamžitě projeví. Z tohoto důvodu mnoho organizací tyto konstrukce nepoužije v kořenové skupině pro správu, a to i v případě, že je to požadované místo pro jejich přiřazení. V ostatních případech je pro nové odběry žádoucí přísnější sada ovládacích prvků, ale neměla by být přiřazena ke všem předplatným. Toto nastavení podporuje jak případy použití.
+Ve výchozím nastavení je nové předplatné přidané v rámci tenanta přidáno jako člen skupiny pro správu root. Pokud se přiřazení zásad, řízení přístupu na základě role Azure (Azure RBAC) a další konstrukce zásad správného řízení přiřadí do kořenové skupiny pro správu, tyto nové odběry se okamžitě projeví. Z tohoto důvodu mnoho organizací tyto konstrukce nepoužije v kořenové skupině pro správu, a to i v případě, že je to požadované místo pro jejich přiřazení. V ostatních případech je pro nové odběry žádoucí přísnější sada ovládacích prvků, ale neměla by být přiřazena ke všem předplatným. Toto nastavení podporuje jak případy použití.
 
 Díky tomu, že je možné definovat výchozí skupinu pro správu pro nové odběry, můžete použít konstrukty zásad správného řízení v rámci organizace v kořenové skupině pro správu a použít samostatnou skupinu pro správu s přiřazením zásad nebo přiřazení rolí Azure, které jsou víc vhodné k novému předplatnému.
 

@@ -3,12 +3,12 @@ title: Ukázkové ovládací prvky NHS podrobného plánu pro Spojené královst
 description: Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plánů pro Spojené království Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 360c6bc2e1f207ca2d4470ffe62a81f524ce2a73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dd16e6e62e5df3bae083cc4df05207f1f518d560
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078995"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540383"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plánů pro Spojené království
 
@@ -76,10 +76,10 @@ Tento podrobný plán vám pomůže chránit prostředky systémových prostřed
 
 ## <a name="9-secure-user-management"></a>9 zabezpečená Správa uživatelů 
 
-Azure implementuje řízení přístupu na základě role (RBAC), které vám pomůže se správou toho, kdo má přístup k prostředkům v Azure. Pomocí Azure Portal můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán vám pomůže omezit a řídit přístupová práva tím, že jim přiřadí definice [Azure Policy](../../../policy/overview.md) k auditování externích účtů s oprávněními vlastníka nebo čtení/zápisu a s účty s oprávněním vlastníka, čtení nebo zápisu, u kterých není povolené ověřování službou Multi-Factor Authentication.
+Řízení přístupu na základě role Azure (Azure RBAC) pomáhá spravovat, kdo má přístup k prostředkům v Azure. Pomocí Azure Portal můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán vám pomůže omezit a řídit přístupová práva tím, že jim přiřadí definice [Azure Policy](../../../policy/overview.md) k auditování externích účtů s oprávněními vlastníka nebo čtení/zápisu a s účty s oprávněním vlastníka, čtení nebo zápisu, u kterých není povolené ověřování službou Multi-Factor Authentication.
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
+- Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA.
 - Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.
@@ -90,7 +90,7 @@ Azure implementuje řízení přístupu na základě role (RBAC), které vám po
 Tento podrobný plán vám pomůže omezit a řídit přístupová práva tím, že jim přiřadí definice [Azure Policy](../../../policy/overview.md) k auditování externích účtů s oprávněními vlastníka nebo čtení/zápisu a s účty s oprávněním vlastníka, čtení nebo zápisu, u kterých není povolené ověřování službou Multi-Factor Authentication.
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
+- Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA.
 - Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.

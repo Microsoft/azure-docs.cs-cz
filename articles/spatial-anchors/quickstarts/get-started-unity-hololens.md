@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 07/31/2020
+ms.date: 09/29/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3d5a5d7ec07587b20a8a6285deafa6215db990a5
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 0557ef45f1a18d3e51be5df3f28d35f421c3981d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810373"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540429"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace pro HoloLens v Unity, která používá prostorové kotvy Azure
 
@@ -80,7 +80,12 @@ Zapněte zařízení HoloLens, přihlaste se a připojte zařízení k počíta�
 
 Vyberte **ladit**  >  **Spustit ladění** pro nasazení aplikace a spuštění ladění.
 
-Podle pokynů v aplikaci založte a odvoláte kotvu.
+V aplikaci vyberte **BasicDemo** pomocí šipek a pak stiskněte tlačítko **Přejít.** tlačítko pro spuštění ukázky. Použijte pokyny k umístění a odvolání kotvy.
+
+![Snímek obrazovky 1 snímek obrazovky 2 snímek obrazovky ](./media/get-started-unity-hololens/screenshot-1.jpg)
+ ![ ](./media/get-started-unity-hololens/screenshot-2.jpg)
+ ![ 3 ](./media/get-started-unity-hololens/screenshot-3.jpg)
+ ![ snímek obrazovky 4](./media/get-started-unity-hololens/screenshot-4.jpg)
 
 V aplikaci Visual Studio zastavte aplikaci tak, že vyberete buď **Zastavit ladění** , nebo Shift + F5.
 

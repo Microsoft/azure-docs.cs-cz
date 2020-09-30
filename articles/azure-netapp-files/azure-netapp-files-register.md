@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: b8707b6fb006a45d63f1b2b426530a7e25f5b497
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e2838b759a611cb55b9fd3fadf834c84eb74210d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512920"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533634"
 ---
 # <a name="register-for-azure-netapp-files"></a>Registrace pro Azure NetApp Files
 
@@ -50,13 +50,13 @@ Pokud chcete službu používat, musíte zaregistrovat poskytovatele prostředk�
 
       ![Ikona Azure Cloud Shell](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
 
-2. Pokud máte ve svém účtu Azure více předplatných, vyberte účet, který je povolený pro Azure NetApp Files:
+2. Pokud máte ve svém účtu Azure více předplatných, vyberte ji, která je schválená pro Azure NetApp Files:
     
     ```azurepowershell
     az account set --subscription <subscriptionId>
     ```
 
-3. V konzole Azure Cloud Shell zadejte následující příkaz, který ověří, jestli je vaše předplatné v seznamu povolených:
+3. V konzole Azure Cloud Shell zadejte následující příkaz, kterým ověříte, že vaše předplatné bylo schváleno:
     
     ```azurepowershell
     az feature list | grep NetApp
@@ -69,7 +69,7 @@ Pokud chcete službu používat, musíte zaregistrovat poskytovatele prostředk�
     "name": "Microsoft.NetApp/ANFGA" 
     ```
        
-   `<SubID>`je vaše ID vašeho předplatného.
+   `<SubID>` je vaše ID vašeho předplatného.
 
     Pokud nevidíte název funkce, nemáte `Microsoft.NetApp/ANFGA` k této službě přístup. V tomto kroku zastavte. Než budete pokračovat, postupujte podle pokynů v tématu [odeslání žádosti pořadníku](#waitlist) o přístup ke službě, aby požádala o přístup k službě. 
 
@@ -97,7 +97,7 @@ Pokud chcete službu používat, musíte zaregistrovat poskytovatele prostředk�
      "resourceTypes": […. 
     ```
 
-   `<SubID>`je vaše ID vašeho předplatného.  `state`Hodnota parametru označuje `Registered` .
+   `<SubID>` je vaše ID vašeho předplatného.  `state`Hodnota parametru označuje `Registered` .
 
 6. V Azure Portal klikněte na okno **předplatná** .
 7. V okně předplatná klikněte na své ID předplatného. 

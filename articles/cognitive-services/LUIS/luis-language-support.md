@@ -3,20 +3,18 @@ title: Jazyková podpora – LUIS
 titleSuffix: Azure Cognitive Services
 description: Služba LUIS obsahuje celou řadu funkcí. Ne všechny funkce jsou dostupné ve stejných jazycích. Ujistěte se, že funkce, o které máte zájem, jsou podporované v jazykové verzi, na kterou cílíte. Aplikace LUIS je specifická pro jazykovou verzi a po jejím nastavení ji nejde změnit.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.author: diberry
-ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e377f910e1c1ddda864ea312b40fe3608c166376
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588018"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541386"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyků a oblastí pro LUIS
 
@@ -90,7 +88,7 @@ K provedení strojového učení LUIS rozdělí utterance na [tokeny](luis-gloss
 |Čínština||✔||
 |Nizozemština|✔||✔|
 |Angličtina (en-us)|✔ |||
-|Francouzština (fr-FR)|✔|||
+|francouzština (fr-FR),|✔|||
 |Francouzština (fr-CA)|✔|||
 |Němčina|✔||✔|
 |Gudžarátština|✔|||
@@ -100,7 +98,7 @@ K provedení strojového učení LUIS rozdělí utterance na [tokeny](luis-gloss
 |Korejština||✔||
 |Maráthština|✔|||
 |Portugalština (Brazílie)|✔|||
-|Španělština (ES-ES)|✔|||
+|španělština (es-ES),|✔|||
 |Španělština (ES-MX)|✔|||
 |Tamilština|✔|||
 |Telugština|✔|||

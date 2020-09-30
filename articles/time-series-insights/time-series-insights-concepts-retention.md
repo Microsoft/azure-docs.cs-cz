@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 005725acf7270ff87ac9418f27941bdb205ae986
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4f236679d0662df852581a6a8408ed6bc0d4e3fe
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059418"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535685"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Pochopení uchovávání dat v Azure Time Series Insights Gen1
+
+> [!CAUTION]
+> Toto je Gen1 článek.
 
 Tento článek popisuje dvě primární nastavení, která mají vliv na uchovávání dat ve vašem Azure Time Series Insightsovém prostředí.
 
@@ -37,7 +40,8 @@ Kromě toho má Azure Time Series Insights prostředí nastavené **chování p�
 
 > [!NOTE]
 > Ve výchozím nastavení platí, že při vytváření nového prostředí se uchování nakonfiguruje tak, aby **vymazala stará data**. Toto nastavení se dá po vytvoření pomocí Azure Portal přepínat podle potřeby, a to na stránce **konfigurace** Azure Time Series Insights prostředí.
-> * Informace o tom, jak nakonfigurovat zásady uchovávání informací, najdete [v článku Konfigurace uchovávání v Azure Time Series Insights](time-series-insights-how-to-configure-retention.md).
+>
+> - Informace o tom, jak nakonfigurovat zásady uchovávání informací, najdete [v článku Konfigurace uchovávání v Azure Time Series Insights](time-series-insights-how-to-configure-retention.md).
 
 Obě zásady uchovávání dat jsou popsané podrobněji.
 
@@ -69,8 +73,8 @@ Když se denní rychlost příchozího přenosu v tomto prostředí překročí 
 - Pomáhá chránit před ztrátou dat, ale může vytvořit příležitost pro ztrátu vašich nejnovějších dat, pokud se příchozí přenos dat pozastaví mimo dobu uchování vašeho zdroje událostí.
 - Jakmile však dosáhnete maximální kapacity prostředí, prostředí pozastaví příchozí přenos dat, dokud neproběhne následující další akce:
 
-   - Maximální kapacitu prostředí můžete zvýšit tak, aby se přidaly další jednotky škálování, jak je popsáno v tématu [Jak škálovat Azure Time Series Insights prostředí](time-series-insights-how-to-scale-your-environment.md).
-   - Doba uchovávání dat je dosažená a data se vyprázdní a přinášejí prostředí pod jeho maximální kapacitu.
+  - Maximální kapacitu prostředí můžete zvýšit tak, aby se přidaly další jednotky škálování, jak je popsáno v tématu [Jak škálovat Azure Time Series Insights prostředí](time-series-insights-how-to-scale-your-environment.md).
+  - Doba uchovávání dat je dosažená a data se vyprázdní a přinášejí prostředí pod jeho maximální kapacitu.
 
 ### <a name="example-three"></a>Příklad tři
 

@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: f15686cf07bae4aee41095c970cd8a474724c2ed
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 6825627b77e3ea227cad88e347dbbabd5e6f5d0c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230972"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540332"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Vizualizace dat z Azure Time Series Insights v Power BI
 
@@ -110,13 +110,13 @@ Teď, když jste data importovali do Power BI, je čas sestavovat sestavu s vizu
 
 1. Na levé straně okna se ujistěte, že jste vybrali zobrazení **sestavy** .
 
-    [![Vybrat zobrazení sestavy](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
+    [![Snímek obrazovky zobrazuje ikonu zobrazení sestavy.](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
 1. Ve sloupci **vizualizace** vyberte svůj vizuál výběru. Vyberte například **Spojnicový graf**. Tím se na plátno přidá prázdný spojnicový graf.
 
 1. V seznamu **pole** vyberte **_Timestamp** a přetáhněte ji do pole **osa** pro zobrazení položek podél osy X. Nezapomeňte přepnout na **_Timestamp** jako hodnotu pro **osu** (výchozí je **hierarchie data**).
 
-    [![Vybrat zobrazení sestavy](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
+    [![Snímek obrazovky znázorňující nabídku časového razítka s vybraným _Timestamp.](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
 1. V seznamu **pole** vyberte **TimeSeriesId** a přetáhněte ji do pole **hodnoty** , abyste zobrazili položky podél osy Y.
 

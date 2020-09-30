@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Připojení clusteru Kubernetes s povoleným ARC Azure pomocí ARC Azure
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
 ms.custom: references_regions
-ms.openlocfilehash: eb3921d3ab2090b6bac54c9b68e9def3949ed4b5
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 8f1d95db9c30e78e1ca697d5d7e5638988bc9965
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723737"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540621"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
 
@@ -30,7 +30,7 @@ Ověřte, že máte připravené tyto požadavky:
 * Pro nasazení agentů Kubernetes s podporou ARC budete potřebovat soubor kubeconfig pro přístup ke clusteru a roli Správce clusteru v clusteru.
 * Uživatel nebo instanční objekt použitý s `az login` příkazy a `az connectedk8s connect` musí mít oprávnění číst a zapsat pro typ prostředku Microsoft. Kubernetes/connectedclusters. Role "cluster Kubernetes-Azure ARC" má tato oprávnění a lze ji použít k přiřazení rolí pro uživatele nebo instanční objekt.
 * K registraci clusteru pomocí rozšíření connectedk8s se vyžaduje Helm 3. Pro splnění tohoto požadavku [nainstalujte nejnovější verzi Helm 3](https://helm.sh/docs/intro/install) .
-* Pro instalaci rozšíření CLI s povoleným Kubernetes rozhraním Azure se vyžaduje Azure CLI verze 2.3 + +. Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo aktualizujte na nejnovější verzi, abyste měli jistotu, že máte Azure CLI verze 2.3 +.
+* Pro instalaci rozšíření CLI s povoleným Kubernetes rozhraním Azure se vyžaduje Azure CLI verze 2.3 + +. Nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) nebo aktualizujte na nejnovější verzi, abyste měli jistotu, že máte Azure CLI verze 2.3 +.
 * Instalace rozšíření Kubernetes CLI s povoleným ARC:
   
   Nainstalujte `connectedk8s` rozšíření, které vám pomůže připojit clustery Kubernetes do Azure:
@@ -57,7 +57,7 @@ Ověřte, že máte připravené tyto požadavky:
 * East US
 * West Europe
 
-## <a name="network-requirements"></a>Síťové požadavky
+## <a name="network-requirements"></a>Požadavky sítě
 
 Agenti Azure ARC vyžadují, aby následující protokoly/porty/odchozí adresy URL fungovaly.
 
@@ -179,27 +179,16 @@ Pokud je váš cluster za odchozím proxy server, Azure CLI a agenti Kubernetes 
 
 1. `connectedk8s`Spuštěním tohoto příkazu ověřte verzi rozšíření nainstalovanou na počítači:
 
-    ```bash
+    ```console
     az -v
     ```
 
     `connectedk8s`K nastavení agentů s odchozím proxy serverem potřebujete rozšíření >= 0.2.3. Pokud máte na svém počítači verzi < 0.2.3, postupujte podle [kroků aktualizace](#before-you-begin) a získejte na svém počítači nejnovější verzi rozšíření.
 
-2. Nastavte proměnné prostředí potřebné pro Azure CLI:
+2. Spusťte příkaz Connect se zadanými parametry proxy serveru:
 
-    ```bash
-    export HTTP_PROXY=<proxy-server-ip-address>:<port>
-    export HTTPS_PROXY=<proxy-server-ip-address>:<port>
-    export NO_PROXY=<cluster-apiserver-ip-address>:<port>
-    ```
-
-3. Spusťte příkaz Connect se zadanými parametry proxy serveru:
-
-    ```bash
-    az connectedk8s connect -n <cluster-name> -g <resource-group> \
-    --proxy-https https://<proxy-server-ip-address>:<port> \
-    --proxy-http http://<proxy-server-ip-address>:<port> \
-    --proxy-skip-range <excludedIP>,<excludedCIDR>
+    ```console
+    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR>
     ```
 
 > [!NOTE]

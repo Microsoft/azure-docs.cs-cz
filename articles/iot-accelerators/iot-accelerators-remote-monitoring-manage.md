@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: e4236952bd41c4955e337813ff6d706263b8ef47
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 432386809596fb2ef040a05d1fe0d12294a1abef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "73890905"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534518"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Kurz: konfigurace zařízení připojených k řešení monitorování
 
@@ -66,7 +66,7 @@ Chcete-li otestovat, zda lze aktualizovat vlastnosti konfigurace modulu, vyberte
 
 Pokud chcete aktualizovat umístění motoru, nastavte název úlohy na **UpdateEngineLocation**, zeměpisnou délku na **-122.15**, umístění na **Factory 2**, zeměpisnou šířku na **47.62** a klikněte na **Použít**:
 
-[![Aktualizace hodnoty vlastnosti zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
+[![Snímek obrazovky zobrazující stránku "Device Explorer" s zvýrazněným oknem "Jobs".](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
 
 Pokud chcete sledovat stav úlohy, klikněte na **Zobrazit stav úlohy**:
 
@@ -113,7 +113,7 @@ Vytvořte filtr textu, v jehož podmínce se používá značka s názvem **Fiel
 
 Vytvořte filtr textu, v jehož podmínce se používá značka s názvem **FieldService** a hodnotou **ConnectedVehicle**. Uložte filtr jako **Připojené vozidlo**.
 
-[![Vytvořit filtr připojených vozidel](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
+[![Snímek obrazovky zobrazující stránku "Device Explorer" s zvýrazněným oknem "Spravovat skupiny zařízení".](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
 
 Operátor společnosti Contoso teď může zadávat dotazy na zařízení na základě operačního týmu:
 

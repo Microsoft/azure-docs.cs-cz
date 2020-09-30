@@ -3,20 +3,18 @@ title: Předem vytvořená entita person – LUIS
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje předem připravené informace o entitách v Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/07/2019
-ms.author: diberry
-ms.openlocfilehash: 768c719211e8a8f2133d3798343d076e795a3da0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b0153d79aaf7b88fea958ab36183e57b41af204
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273421"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535419"
 ---
 # <a name="personname-prebuilt-entity-for-a-luis-app"></a>Předem sestavená entita person pro aplikaci LUIS
 Entita s předdefinovaným jménem detekuje osoby. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do záměrů aplikace přidat příklad projevy obsahující jméno osoby. entita person je podporovaná v anglické a čínské [jazykové verzi](luis-reference-prebuilt-entities.md).
@@ -31,7 +29,7 @@ Pro dotaz se vrátí následující objekty entity:
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
 
-Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `false` :
 
 ```json
 "entities": {
@@ -41,7 +39,7 @@ Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 }
 ```
 #### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
-Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
+Následující kód JSON je s `verbose` parametrem nastaveným na `true` :
 
 ```json
 "entities": {

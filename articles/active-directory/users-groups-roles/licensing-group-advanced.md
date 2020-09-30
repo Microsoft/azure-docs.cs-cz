@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937c5dbf3417e5914a0b4285c3bb114d7499e0fb
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c7cc4065297c35164f1e37b187c6280b3d3546ee
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799056"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538836"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory
 
@@ -112,7 +112,7 @@ Tady je příklad toho, co může tento proces vypadat takto:
 
 3. V okně [**Azure Active Directory > licence > všechny produkty**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) vyberte možnost *Office 365 Enterprise E5*a potom vyberte **licencované skupiny** , abyste zobrazili seznam všech skupin s tímto produktem.
 
-4. Klikněte na skupinu, kterou chcete zkontrolovat (v tomto případě *O365 E5-Exchange*). Otevře se karta **licence** . Kliknutím na licenci E5 otevřete okno se seznamem všech povolených služeb.
+4. Klikněte na skupinu, kterou chcete zkontrolovat (v tomto případě *O365 E5-Exchange*). Tím se otevře karta **licence** . Po kliknutí na licenci E5 se otevře okno se seznamem všech povolených služeb.
    > [!NOTE]
    > Služba *Microsoft Stream* byla v této skupině automaticky přidána a povolena, kromě služby *Exchange Online* :
 
@@ -157,7 +157,7 @@ Pomocí [protokolů auditu Azure AD](../reports-monitoring/concept-audit-logs.md
 
 Tady je příklad poslední změny licence skupiny s podrobnostmi:
 
-![Změny licencí pro skupinu snímků obrazovky](./media/licensing-group-advanced/audit-group-license-change.png)
+![Snímek obrazovky zobrazující stránku protokoly auditu se zvolenou položkou seznamu a otevřené podokno Podrobnosti o aktivitě protokolu auditu.](./media/licensing-group-advanced/audit-group-license-change.png)
 
 ### <a name="find-out-when-group-changes-started-and-finished-processing"></a>Zjištění zahájení a dokončení zpracování změn skupiny
 

@@ -3,12 +3,12 @@ title: Vysvětlení uzamykání prostředků
 description: Přečtěte si o možnostech uzamykání v plánech Azure k ochraně prostředků při přiřazování podrobného plánu.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d400abce5d428c01b43cdda38a5c6f0df2d4db8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 30d5528b4613dc04d1e825d10e11b7eeadc57698
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651938"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534858"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení uzamykání prostředků v semodrotiskych Azure
 
@@ -33,7 +33,7 @@ Prostředky vytvořené artefakty v přiřazení podrobného plánu mají čtyř
 
 ## <a name="overriding-locking-states"></a>Přepsání stavů uzamčení
 
-Pro někoho, kdo má v předplatném příslušné [role](../../../role-based-access-control/overview.md) (RBAC), je obvykle možné, jako je role vlastník, aby bylo možné upravovat nebo odstraňovat jakékoli prostředky. Tento přístup neplatí v případě, že Azure modrotisky v rámci nasazeného přiřazení aplikuje uzamykání. Pokud bylo přiřazení nastaveno s možností jen **pro čtení** nebo **neodstraňovat** , není ani vlastník předplatného, který může u chráněného prostředku provést akci zablokování.
+Pro uživatele s příslušným [řízením přístupu na základě role Azure (RBAC)](../../../role-based-access-control/overview.md) v předplatném, jako je třeba role Owner, je obvykle možné upravovat nebo odstraňovat jakékoli prostředky. Tento přístup neplatí v případě, že Azure modrotisky v rámci nasazeného přiřazení aplikuje uzamykání. Pokud bylo přiřazení nastaveno s možností jen **pro čtení** nebo **neodstraňovat** , není ani vlastník předplatného, který může u chráněného prostředku provést akci zablokování.
 
 Tato míra zabezpečení chrání konzistenci definovaného podrobného plánu a prostředí, které bylo navrženo pro vytvoření z náhodného nebo neprogramového odstranění nebo změny.
 
@@ -101,7 +101,7 @@ Po odebrání přiřazení se odeberou zámky vytvořené v rámci Azure modroti
 
 ## <a name="how-blueprint-locks-work"></a>Jak podrobný plán funguje zámky
 
-Pokud přiřazení vybere možnost **jen pro čtení** nebo **neodstraní** , je u prostředků artefaktů při přiřazení podrobného plánu použita akce odepřít odmítnutí [přiřazení](../../../role-based-access-control/deny-assignments.md) . Akce odepřít je přidána spravovanou identitou přiřazení podrobného plánu a lze ji odebrat pouze z prostředků artefaktu pomocí stejné spravované identity. Tato míra zabezpečení vynutila blokovací mechanizmus a zabraňuje odebrání zámku podrobného plánu mimo plány Azure.
+V případě, že přiřazení vybralo možnost **jen pro čtení** nebo **neodstraňovat** , je u prostředků artefaktů použita akce odepřít [přiřazení](../../../role-based-access-control/deny-assignments.md) , která je v systému Azure RBAC. Akce odepřít je přidána spravovanou identitou přiřazení podrobného plánu a lze ji odebrat pouze z prostředků artefaktu pomocí stejné spravované identity. Tato míra zabezpečení vynutila blokovací mechanizmus a zabraňuje odebrání zámku podrobného plánu mimo plány Azure.
 
 :::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Snímek obrazovky se stránkou řízení přístupu (I a M) a záložkou zamítnutí přiřazení pro skupinu prostředků." border="false":::
 
@@ -161,7 +161,7 @@ V některých scénářích návrhu nebo zabezpečení může být nutné vyřad
 
 ## <a name="exclude-an-action-from-a-deny-assignment"></a>Vyloučení akce z přiřazení zamítnutí
 
-Podobně jako při [vyloučení objektu zabezpečení](#exclude-a-principal-from-a-deny-assignment) u [přiřazení zamítnout](../../../role-based-access-control/deny-assignments.md) v přiřazení podrobného plánu můžete vyloučit konkrétní [operace RBAC](../../../role-based-access-control/resource-provider-operations.md). V bloku **Properties. zámků** , na stejném místě, kde **excludedPrincipals** je, lze přidat **excludedActions** :
+Podobně jako při [vyloučení objektu zabezpečení](#exclude-a-principal-from-a-deny-assignment) u [přiřazení zamítnout](../../../role-based-access-control/deny-assignments.md) v přiřazení podrobného plánu můžete vyloučit konkrétní [operace poskytovatele prostředků Azure](../../../role-based-access-control/resource-provider-operations.md). V bloku **Properties. zámků** , na stejném místě, kde **excludedPrincipals** je, lze přidat **excludedActions** :
 
 ```json
 "locks": {
@@ -177,7 +177,7 @@ Podobně jako při [vyloučení objektu zabezpečení](#exclude-a-principal-from
 },
 ```
 
-Zatímco **excludedPrincipals** musí být explicitní, položky **excludedActions** mohou využívat `*` zástupné znaky pro porovnání operací RBAC.
+Zatímco **excludedPrincipals** musí být explicitní, položky **excludedActions** mohou využívat `*` zástupné znaky pro porovnání s operacemi poskytovatele prostředků.
 
 ## <a name="next-steps"></a>Další kroky
 
