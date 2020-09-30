@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a91f3781b490ee6f724e7d28a6be9a96c853426f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0c93375abd57ff5e96906ef7befbbb546a3a1caf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684622"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270521"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Kurz: Kontrola jednotlivého vyúčtování Azure
 
@@ -22,7 +22,7 @@ Tento článek vám pomůže pochopit a zkontrolovat vyúčtování Azure. Pro k
 
 Tento kurz se týká pouze zákazníků Azure, kteří mají jednotlivé předplatné. Běžná jednotlivá předplatná jsou předplatná s tarify průběžných plateb zakoupená přímo na webu Azure.
 
-Pokud potřebujete pomoc s vysvětlením neočekávaných poplatků, přečtěte si téma [Analýza neočekávaných poplatků](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started#analyze-unexpected-charges). Pokud potřebujete zrušit předplatné Azure, přečtěte si téma [Zrušení předplatného Azure](../manage/cancel-azure-subscription.md).
+Pokud potřebujete pomoc s vysvětlením neočekávaných poplatků, přečtěte si téma [Analýza neočekávaných poplatků](analyze-unexpected-charges.md). Pokud potřebujete zrušit předplatné Azure, přečtěte si téma [Zrušení předplatného Azure](../manage/cancel-azure-subscription.md).
 
 V tomto kurzu se naučíte:
 

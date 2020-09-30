@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 09/24/2020
 ms.author: banders
-ms.openlocfilehash: b26958037cf7fd752c6cf07078b4a627fed64b2b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a579dd22aa814340b4b72d74907739c942570c23
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91003068"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270669"
 ---
 # <a name="delete-an-azure-billing-payment-method-preview"></a>Odstranění způsobu platby pro fakturaci v Azure (Preview)
 
@@ -39,10 +39,10 @@ Pokud chcete odstranit způsob platby smlouvy se zákazníkem Microsoftu, prove�
 1. V seznamu nabídek nalevo v části **Fakturace** vyberte **Fakturační profily**.  
     :::image type="content" source="./media/delete-azure-payment-method/billing-profiles.png" alt-text="Ukázkový snímek obrazovky s možností Fakturační profily na portálu Azure Portal" lightbox="./media/delete-azure-payment-method/billing-profiles.png" :::
 1. V seznamu fakturačních profilů vyberte ten, ve kterém se daný způsob platby používá.  
-    :::image type="content" source="./media/delete-azure-payment-method/select-billing-profile.png" alt-text="Ukázkový obrázek se seznamem fakturačních profilů" :::
+    :::image type="content" source="./media/delete-azure-payment-method/select-billing-profile.png" alt-text="Ukázkový snímek obrazovky s možností Fakturační profily na portálu Azure Portal" :::
 1. V seznamu nabídek nalevo v části **Nastavení** vyberte **Způsoby platby**.
 1. Na stránce způsobů platby vašeho fakturačního profilu je v části **Vaše platební karty** tabulka způsobů platby. Najděte platební kartu, kterou chcete odstranit, vyberte tři tečky ( **...** ) a pak vyberte **Odstranit**.  
-    :::image type="content" source="./media/delete-azure-payment-method/delete-credit-card.png" alt-text="Příklad zobrazující umístění, kde se má platební karta odstranit" :::
+    :::image type="content" source="./media/delete-azure-payment-method/delete-credit-card.png" alt-text="Ukázkový snímek obrazovky s možností Fakturační profily na portálu Azure Portal" :::
 1. Zobrazí se stránka Odstranit způsob platby. Azure zkontroluje, jestli se způsob platby používá.
     - Pokud se nepoužívá, je povolená možnost **Odstranit**. Jejím výběrem odstraníte informace o platební kartě.
     - Pokud se používá, musí být nahrazen nebo odpojen. Další informace si můžete přečíst v následujících částech. Vysvětlují, jak **odpojit** způsob platby používaný vaším předplatným.
@@ -51,7 +51,7 @@ Pokud chcete odstranit způsob platby smlouvy se zákazníkem Microsoftu, prove�
 
 Pokud se váš způsob platby používá ve fakturačním profilu MCA, zobrazí se zpráva podobná té v následujícím příkladu.
 
-:::image type="content" source="./media/delete-azure-payment-method/payment-method-in-use-microsoft-customer-agreement.png" alt-text="Obrázek s příkladem způsobu platby používaného pro smlouvu se zákazníkem Microsoftu" :::
+:::image type="content" source="./media/delete-azure-payment-method/payment-method-in-use-microsoft-customer-agreement.png" alt-text="Ukázkový snímek obrazovky s možností Fakturační profily na portálu Azure Portal" :::
 
 Aby bylo možné způsob platby odpojit, musí být splněny podmínky uvedené v seznamu. Pokud některé podmínky splněné nejsou, zobrazí se pokyny vysvětlující, jak je splnit. Zobrazí se také odkaz, který vás přesměruje na místo, kde můžete splnění podmínky vyřešit.
 
@@ -65,7 +65,7 @@ Pokud jsou všechny podmínky splněny, můžete způsob platby odpojit od faktu
 1. V oblasti Odstranit způsob platby vyberte odkaz **Odpojit aktuální způsob platby**.
 1. Pokud jsou splněny všechny podmínky, vyberte **Odpojit**. V opačném případě pokračujte k dalšímu kroku.
 1. Pokud není možnost Odpojit k dispozici, zobrazí se seznam podmínek. Proveďte uvedené akce. Vyberte odkaz, který je zobrazený v oblasti Odpojit výchozí způsob platby. Tady je příklad opravné akce vysvětlující, jaké akce je potřeba provést.  
-    :::image type="content" source="./media/delete-azure-payment-method/azure-subscriptions.png" alt-text="Příklad znázorňující opravnou akci, kterou je nutné provést, aby bylo možné odpojit způsob platby pro smlouvu se zákazníkem Microsoftu (MCA)" :::
+    :::image type="content" source="./media/delete-azure-payment-method/azure-subscriptions.png" alt-text="Ukázkový snímek obrazovky s možností Fakturační profily na portálu Azure Portal" :::
 1. Když vyberete odkaz na opravnou akci, budete přesměrováni na stránku Azure, na které danou akci provedete. Proveďte všechny potřebné opravné akce.
 1. V případě potřeby proveďte všechny ostatní opravné akce.
 1. Přejděte zpět na **Správa nákladů a fakturace** > **Fakturační profily** > **Způsoby platby**. Vyberte **Odpojit**. V dolní části stránky Odpojit výchozí způsob platby vyberte **Odpojit**.
@@ -86,10 +86,10 @@ Pokud se váš způsob platby používá v rámci předplatného MOSP, proveďte
 1. V seznamu nabídek nalevo v části **Fakturace** vyberte **Způsoby platby**.
 1. V oblasti Způsoby platby vyberte _řádek_, na kterém je váš způsob platby uvedený. Nevybírejte odkaz na způsob platby. To, že jste způsob platby vybrali, nemusí být nijak vizuálně označeno.
 1. Vyberte **Odstranit**.  
-    :::image type="content" source="./media/delete-azure-payment-method/delete-mosp-payment-method.png" alt-text="Příklad znázorňující opravnou akci, kterou je nutné provést, aby bylo možné odpojit způsob platby pro program odběru služeb online společnosti Microsoft (MOSP)" :::
+    :::image type="content" source="./media/delete-azure-payment-method/delete-mosp-payment-method.png" alt-text="Ukázkový snímek obrazovky s možností Fakturační profily na portálu Azure Portal" :::
 1. Pokud jsou splněné všechny podmínky, vyberte v oblasti Odstranit způsob platby možnost **Odstranit**. Pokud není možnost Odstranit dostupná, pokračujte k dalšímu kroku.
 1. Zobrazí se seznam podmínek. Proveďte uvedené akce. Vyberte odkaz, který je zobrazený v oblasti Odstranit způsob platby.  
-    :::image type="content" source="./media/delete-azure-payment-method/payment-method-in-use-mosp.png" alt-text="Obrázek s příkladem způsobu platby používaného předplatným MOSP" :::
+    :::image type="content" source="./media/delete-azure-payment-method/payment-method-in-use-mosp.png" alt-text="Ukázkový snímek obrazovky s možností Fakturační profily na portálu Azure Portal" :::
 1. Když vyberete odkaz na opravnou akci, budete přesměrováni na stránku Azure, na které danou akci provedete. Proveďte všechny potřebné opravné akce.
 1. V případě potřeby proveďte všechny ostatní opravné akce.
 1. Přejděte zpět na **Správa nákladů a fakturace** > **Fakturační profily** > **Způsoby platby** a odstraňte způsob platby.

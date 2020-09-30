@@ -9,18 +9,18 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 8c792ae1b6ac43ead15fd4f27d2468c517153354
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 3c42db58017dc3a692c227f6eb454cf7b597e77b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684809"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297580"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Řešení zůstatku po splatnosti u předplatného Azure
 
 Tento článek se týká zákazníků, kteří si zaregistrovali do Azure online s použitím platební karty a mají fakturační účet programu Microsoft Online Services. Zjistěte, jak [zkontrolovat typ vašeho fakturačního účtu](#check-the-type-of-your-account). Pokud máte fakturační účet pro Smlouvu se zákazníkem Microsoftu, přečtěte si místo toho článek [Placení vyúčtování služeb Microsoft Azure](../understand/pay-bill.md).
 
-Pokud vaše platba nedorazí nebo ji nemůžeme zpracovat, přijde vám e-mail a na webu Azure Portal se zobrazí upozornění, že je vaše předplatné po splatnosti. Pokud je váš výchozí způsob platby platební karta, [správce účtu](billing-subscription-transfer.md#whoisaa), může nezaplacené poplatky uhradit na webu Azure Portal. Pokud platíte pomocí faktury (šekem nebo převodem), zašlete svou platbu na adresu uvedenou ve spodní části faktury.
+Pokud vaše platba nedorazí nebo ji nemůžeme zpracovat, přijde vám e-mail a na webu Azure Portal se zobrazí upozornění, že je vaše předplatné po splatnosti. Pokud je váš výchozí způsob platby platební karta, [správce účtu](../understand/subscription-transfer.md#whoisaa), může nezaplacené poplatky uhradit na webu Azure Portal. Pokud platíte pomocí faktury (šekem nebo převodem), zašlete svou platbu na adresu uvedenou ve spodní části faktury.
 
 > [!IMPORTANT]
 > * Pokud používáte stejnou platební kartu u více předplatných a všechna jsou po splatnosti, musíte celý nevyrovnaný zůstatek uhradit najednou.

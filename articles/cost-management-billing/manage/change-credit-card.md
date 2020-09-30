@@ -9,18 +9,18 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: 0f1b4751ae2448b519387d57e4dbfa1eecf8a576
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8366c0681f1ac29d9e265225dfaeeab44aa4b8ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984285"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252965"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Přidání nebo aktualizace platební karty pro Azure
 
 Tento dokument je určený pro zákazníky, kteří si zaregistrovali Azure online pomocí platební karty.
 
-Na webu Azure Portal můžete změnit výchozí způsob platby na novou platební kartu a aktualizovat podrobnosti o platebních kartách. Pokud chcete provést tyto změny, musíte být [Správce účtu](billing-subscription-transfer.md#whoisaa).
+Na webu Azure Portal můžete změnit výchozí způsob platby na novou platební kartu a aktualizovat podrobnosti o platebních kartách. Pokud chcete provést tyto změny, musíte být [Správce účtu](../understand/subscription-transfer.md#whoisaa).
 
 Pokud chcete platební kartu odstranit, přečtěte si téma věnované [odstranění způsobu platby pro fakturaci v Azure](delete-azure-payment-method.md).
 
@@ -116,7 +116,7 @@ Pokud chcete upravit platební kartu, postupujte podle následujících kroků:
    ![Snímek obrazovky s možností Způsoby platby v nabídce](./media/change-credit-card/payment-methods-tab-mca.png)
 1. V části **Vaše platební karty** vyhledejte platební kartu, kterou chcete upravit.
 1. Vyberte tři tečky (`...`) na konci příslušného řádku.  
-    :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="Snímek obrazovky ukazující tři tečky" :::
+    :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="Snímek obrazovky s možností nahrazení" :::
 1. Pokud chcete upravovat podrobnosti platební karty, v místní nabídce vyberte **Upravit**.
 
 ## <a name="troubleshooting"></a>Řešení potíží
