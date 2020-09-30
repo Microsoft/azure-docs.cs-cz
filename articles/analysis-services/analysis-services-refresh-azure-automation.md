@@ -19,7 +19,7 @@ Pomocí Azure Automation a PowerShellových runbooků můžete provádět operac
 
 Příklad v tomto článku používá [modul SQL SQLServer](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps). Ukázková sada Runbook PowerShellu, která demonstruje aktualizaci modelu, je k dispozici dále v tomto článku.  
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2).  Příklad v tomto článku používá k ověření Azure Analysis Services instanční objekt (SPN). Další informace najdete v tématu [Vytvoření instančního objektu pomocí služby Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -225,5 +225,5 @@ else
 
 ## <a name="next-steps"></a>Další kroky
 
-[ukázky](analysis-services-samples.md)  
+[Ukázky](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

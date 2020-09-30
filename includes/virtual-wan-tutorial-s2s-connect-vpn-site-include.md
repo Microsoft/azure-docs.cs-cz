@@ -25,7 +25,7 @@ ms.locfileid: "90606153"
    * Vyberte nastavení protokolu a protokolu IPsec. Podívejte se na [výchozí/vlastní podrobnosti IPSec] (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec)
    * Vyberte vhodnou možnost pro **rozšířit výchozí trasu**. Možnost **Povolit** umožňuje virtuálnímu rozbočovači rozšířit naučenou výchozí trasu k tomuto připojení. Tento příznak umožňuje rozšíření výchozí trasy na připojení pouze v případě, že je výchozí trasa již vyučena virtuálním centrem sítě WAN v důsledku nasazení brány firewall v centru nebo v případě, že je povoleno vynucené tunelování na jiném připojeném serveru. Výchozí trasa nepochází do virtuálního centra WAN.
 
-2. Vyberte **Connect** (Připojit).
+2. Vyberte **Připojit**.
 3. Během několika minut se v lokalitě zobrazí stav připojení a připojení.
 
    ![Snímek obrazovky ukazuje připojení lokality V nasazení lokality a stav připojení.](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")

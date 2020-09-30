@@ -125,7 +125,7 @@ Konfiguraci můžete nastavit tak, aby soubor web.config měl v prvku zástupnou
    ```
 1. Spusťte aplikaci místně v rámci ladicího programu, přepněte na kartu **o** a ověřte, zda se zobrazí hodnota z Key Vault.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud vaše Key Vault běží na jiném účet Microsoft než na tom, co jste přihlásili k aplikaci Visual Studio (například Key Vault je spuštěná v pracovním účtu, ale Visual Studio používá váš privátní účet), zobrazí se v souboru Program.cs chyba, že Visual Studio nemůže získat přístup k Key Vault. Pokud chcete tento problém vyřešit:
 
@@ -148,7 +148,7 @@ Tato část identifikuje přesné změny provedené v projektu ASP.NET při při
 
 Má vliv na soubor projektu .NET References a odkazy na balíček NuGet.
 
-| Typ | Referenční informace |
+| Typ | Odkaz |
 | --- | --- |
 | NuGet | Microsoft. AspNetCore. AzureKeyVault. HostingStartup |
 
@@ -184,7 +184,7 @@ Tato část identifikuje přesné změny provedené v projektu ASP.NET při při
 
 Má vliv na soubor projektu .NET References a `packages.config` (odkazy NuGet).
 
-| Typ | Referenční informace |
+| Typ | Odkaz |
 | --- | --- |
 | Pohyby NuGet | Azure. identity |
 | Pohyby NuGet | Azure. Security. Keys – trezory. Keys |

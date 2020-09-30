@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: a4be498b25aee7c5a50b2f35fe06be3763eb4732
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5dedee5e9ef4d036305a545201afc03d90750189
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825850"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568314"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Kurz: Vytvoření a použití disků se škálovací sadou virtuálních počítačů pomocí Azure CLI
 Škálovací sady virtuálních počítačů využívají disky k ukládání operačních systémů, aplikací a dat instancí virtuálních počítačů. Při vytváření a správě škálovací sady je důležité, abyste zvolili vhodnou velikost disku a konfiguraci pro očekávané úlohy. Tento kurz se zabývá vytvořením a správou disků virtuálních počítačů. Co se v tomto kurzu naučíte:
@@ -75,6 +75,8 @@ V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekun
 
 ## <a name="create-and-attach-disks"></a>Vytvoření a připojení disků
 Disky můžete vytvořit a připojit při vytváření škálovací sady nebo u existující škálovací sady.
+
+Od verze rozhraní API `2019-07-01` můžete nastavit velikost disku s operačním systémem v sadě škálování virtuálního počítače pomocí vlastnosti [StorageProfile. OsDisk. diskSizeGb](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) . Po zřízení možná budete muset disk rozbalit nebo znovu rozdělit, aby bylo možné používat celý prostor. Další informace o [rozšiřování disku najdete tady](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk#expand-the-volume-within-the-os).
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Připojení disků při vytváření škálovací sady
 Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). V tomto příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus* .

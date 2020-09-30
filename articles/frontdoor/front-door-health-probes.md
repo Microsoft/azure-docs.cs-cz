@@ -41,7 +41,7 @@ Přední dvířka podporují následující metody protokolu HTTP pro odesílán
 
 ## <a name="health-probe-responses"></a>Odezvy sond stavu
 
-| Odpovědi  | Popis | 
+| Odpovědi  | Description | 
 | ------------- | ------------- |
 | Určování stavu  |  200 OK stavový kód označuje, že back-end je v pořádku. Všechno ostatní je považováno za selhání. Pokud z nějakého důvodu (včetně selhání sítě) neobdrží platná odpověď protokolu HTTP pro sondu, bude sonda započítána jako selhání.|
 | Latence měření  | Latence je čas na zeď měřený od okamžiku těsně před odesláním žádosti o test do okamžiku, kdy obdržíte poslední bajt odpovědi. Pro každý požadavek používáme nové připojení TCP, takže toto měření není posunuté směrem k back-endu se stávajícími teplými připojeními.  |
