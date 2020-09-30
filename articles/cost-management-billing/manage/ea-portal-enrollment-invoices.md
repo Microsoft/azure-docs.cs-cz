@@ -3,17 +3,17 @@ title: Faktury za smlouvu Azure Enterprise
 description: V tomto článku je vysvětlená správa faktury za Azure Enterprise a její další použití.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 09/18/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: ca7aaea1e0bac1c00a373c8847623606d629e800
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fec013395af9aeb3d83f86ab47cc52b3fedd7a1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316133"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za smlouvu Azure Enterprise
 
@@ -162,20 +162,6 @@ Informace o základních cenách pro veřejnost, měrných jednotkách, nejčast
 ### <a name="enterprise-agreement-units-of-measure"></a>Měrné jednotky smlouvy Enterprise
 
 Měrné jednotky pro smlouvy Enterprise se často liší od jednotek, které znáte z jiných programů, jako je například program Microsoft Online Services Agreement (MOSA). To znamená, že u řady služeb se měrná jednotka agreguje, aby bylo možné poskytovat normalizované ceny. Měrná jednotka, která se na portálu Azure Enterprise Portal zobrazuje v zobrazení Usage Summary (Souhrn využití), je vždy měrnou jednotkou smlouvy Enterprise. Úplný seznam aktuálních měrných jednotek a převodů pro jednotlivé služby najdete v excelovém souboru [Friendly Service Names](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) (Popisné názvy služeb).
-
-### <a name="rounding-rules"></a>Pravidla zaokrouhlování
-
-Portál Azure Enterprise Portal využívá logiku statistického zaokrouhlování neboli Gaussova zaokrouhlování podle standardu IEEE. Podle této logiky se čísla s polovinou zaokrouhlí na nejbližší sudé číslo. Obvyklejší logika zaokrouhlování polovin směrem nahoru vždy zaokrouhlí čísla s polovinou na další nejvyšší číslo. Tato metoda portálu Azure Enterprise Portal ve skutečnosti v porovnání se standardní logikou aplikace Excel poskytuje přesnější celkový součet skupiny.
-
-Pro ilustraci: Pokud je první vynechaná číslice 5 a nenásledují žádné další číslice nebo jsou následující číslice nuly, zaokrouhlí se na nejbližší sudé číslo. Příklad: 2,315 i 2,325 se zaokrouhlí na nejbližší setinu, tzn. 2,32.
-
-V následující tabulce najdete excelové vzorce, které můžete použít k modelování pravidel portálu Azure Enterprise Portal pro zaokrouhlování a převod:
-
-| Scénář | Logický vzorec statistického zaokrouhlování |
-| --- | --- |
-| Zaokrouhlování využití | =MROUND({_zdroj_}, 0.0002) |
-| Zaokrouhlování cen (na 2 desetinná místa) | =MROUND({_zdroj_}, 0.02) |
-| Zaokrouhlování cen (na 0 desetinných míst) | =MROUND({_zdroj_}, 2) |
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Převod mezi sestavou podrobností o využití a stránkou souhrnu využití
 
