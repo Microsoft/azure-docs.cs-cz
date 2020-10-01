@@ -1,7 +1,7 @@
 ---
-title: Přihlášení uživatelů v úhlových aplikacích s jednou stránkou – Azure
+title: 'Rychlý Start: přihlášení uživatelů v úhlových aplikacích s jednou stránkou – Azure'
 titleSuffix: Microsoft identity platform
-description: Zjistěte, jak může úhlová aplikace volat rozhraní API, které vyžaduje přístupové tokeny pomocí platformy Microsoft identity.
+description: V tomto rychlém startu se dozvíte, jak může úhlová aplikace volat rozhraní API, které vyžaduje přístupové tokeny vydané platformou Microsoft identity.
 services: active-directory
 author: jasonnutter
 manager: CelesteDG
@@ -12,18 +12,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 23b25340906ddb4501492b048740f590c13654c4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4179807b349504d1ac0932f8d0816603f83afae4
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258026"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613420"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v úhlové aplikaci s jednou stránkou
 
 V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplikaci (SPA) může přihlašovat uživatel, který má osobní účty Microsoft, pracovní účty nebo školní účty. K volání rozhraní API Microsoft Graph nebo jakéhokoli webového rozhraní API může získat přístupový token.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Node.js](https://nodejs.org/en/download/).
@@ -35,7 +35,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>Možnost 1 (Express): registrace a Automatická konfigurace aplikace a stažení ukázky kódu
 >
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 > 1. Pokud má váš účet přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a pak nastavte relaci portálu na tenanta Azure Active Directory (Azure AD), který chcete použít.
 > 1. Otevřete nové podokno [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) v Azure Portal.
 > 1. Zadejte název aplikace a pak vyberte **Registrovat**.
@@ -45,7 +45,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 >
 > #### <a name="step-1-register-the-application"></a>Krok 1: registrace aplikace
 >
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 > 1. Pokud má váš účet přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na klienta služby Azure AD, kterého chcete použít.
 > 1. Postupujte podle pokynů k [registraci jednostránkové aplikace](./scenario-spa-app-registration.md) v Azure Portal.
 > 1. Přidejte novou platformu do podokna **ověřování** registrace vaší aplikace a zaregistrujte identifikátor URI přesměrování: `http://localhost:4200/` .

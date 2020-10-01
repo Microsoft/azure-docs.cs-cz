@@ -1,6 +1,7 @@
 ---
-title: Použití režimu sdíleného zařízení s MSAL Androidem | Azure
-description: Naučte se, jak připravit zařízení s Androidem ke spuštění ve sdíleném režimu a spustit aplikaci Firstline Worker.
+title: 'Kurz: použití režimu sdíleného zařízení s knihovnou Microsoft Authentication Library (MSAL) pro Android | Azure'
+titleSuffix: Microsoft identity platform
+description: V tomto kurzu se dozvíte, jak připravit zařízení s Androidem ke spuštění ve sdíleném režimu a spustit první pracovní aplikaci pracovních procesů.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,23 +13,35 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4bbcf73654d7f588c63a9bf81ab6a689360ec978
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 2aa786f78d3e730bb351d1fa84b0c7fbb32d6786
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355053"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611227"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Kurz: použití režimu sdíleného zařízení v aplikaci pro Android
 
-> [!NOTE]
-> Tato funkce je ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+V tomto kurzu najdete pokyny pro vývojáře i správce klientů v nastavení a podpoře režimu sdíleného zařízení pro aplikaci pro Android.
+
+V tomto kurzu:
+
+> [!div class="checklist"]
+> * Stažení ukázky kódu
+> * Povolit a detekovat režim sdíleného zařízení
+> * Zjistit režim jednoho nebo více účtů
+> * Zjištění přepínače uživatele a povolení globálního přihlašování a odhlašování
+> * Nastavte tenanta a zaregistrujte aplikaci v Azure Portal
+> * Nastavení zařízení s Androidem v režimu sdíleného zařízení
+> * Spuštění ukázkové aplikace
+
+## <a name="prerequisites"></a>Předpoklady
+
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="developer-guide"></a>Příručka pro vývojáře
 
-Tato příručka poskytuje pokyny pro vývojáře k implementaci režimu sdíleného zařízení v aplikaci pro Android pomocí knihovny Microsoft Authentication Library (MSAL). Podívejte se na [kurz k MSAL Androidu](./tutorial-v2-android.md) , kde najdete informace o integraci MSAL s aplikací pro Android, přihlášení uživatele, volání Microsoft graphu a odhlášení uživatele.
+Tato část kurzu poskytuje pokyny pro vývojáře k implementaci režimu sdíleného zařízení v aplikaci pro Android pomocí knihovny Microsoft Authentication Library (MSAL). Podívejte se na [kurz k MSAL Androidu](./tutorial-v2-android.md) , kde najdete informace o integraci MSAL s aplikací pro Android, přihlášení uživatele, volání Microsoft graphu a odhlášení uživatele.
 
 ### <a name="download-the-sample"></a>Stažení ukázky
 
@@ -111,7 +124,7 @@ PublicClientApplication.create(this.getApplicationCOntext(),
 
 ### <a name="detect-single-vs-multiple-account-mode"></a>Zjišťování jednoduchého režimu a více účtů
 
-Pokud vytváříte aplikaci, která se bude používat jenom pro Firstline pracovní procesy na sdíleném zařízení, doporučujeme napsat aplikaci tak, aby podporovala pouze režim jednoho účtu. To zahrnuje většinu aplikací, které jsou zaměřeny na úlohy, jako jsou lékařské záznamy aplikací, fakturační aplikace a většina obchodních aplikací. Tím se zjednoduší váš vývoj, protože celá řada funkcí sady SDK nebude muset vyhovovat.
+Pokud píšete aplikaci, která se bude používat jenom pro první pracovní procesy na sdíleném zařízení, doporučujeme napsat aplikaci tak, aby podporovala pouze režim jednoho účtu. To zahrnuje většinu aplikací, které jsou zaměřeny na úlohy, jako jsou lékařské záznamy aplikací, fakturační aplikace a většina obchodních aplikací. Tím se zjednoduší váš vývoj, protože celá řada funkcí sady SDK nebude muset vyhovovat.
 
 Pokud vaše aplikace podporuje víc účtů a také režim sdíleného zařízení, musíte provést kontrolu typu a přetypovat na příslušné rozhraní, jak je znázorněno níže.
 
@@ -209,9 +222,11 @@ Informace o tom, jak to provést, najdete v tématu [Registrace aplikace](./tuto
 > [!NOTE]
 > Při registraci aplikace prosím použijte příručku pro rychlý Start na levé straně a pak vyberte **Android**. Tím přejdete na stránku, kde budete požádáni o zadání **názvu balíčku** a **hodnoty hash podpisu** pro vaši aplikaci. To je velmi důležité, abyste zajistili, že konfigurace vaší aplikace bude fungovat. Pak získáte objekt konfigurace, který můžete použít pro vaši aplikaci, kterou vyjmete a vložíte do svého auth_config.jsdo souboru.
 
-![Obrazovka pro registraci aplikace ](media/tutorial-v2-shared-device-mode/register-app.png) byste měli vybrat **provést tuto změnu pro mě** a pak zadat hodnoty, na které se rychlý start zeptá v Azure Portal. Až to bude hotové, vygenerujeme všechny konfigurační soubory, které potřebujete.
+:::image type="content" source="media/tutorial-v2-shared-device-mode/register-app.png" alt-text="Stránka pro rychlý Start Azure Portal konfigurace vaší aplikace pro Android":::
 
-![Obrazovka informace o konfiguraci aplikace](media/tutorial-v2-shared-device-mode/config-info.png)
+Měli byste vybrat možnost **provést tuto změnu pro mě** a pak zadat hodnoty, na které se rychlý Start zeptá v Azure Portal. Až to bude hotové, vygenerujeme všechny konfigurační soubory, které potřebujete.
+
+:::image type="content" source="media/tutorial-v2-shared-device-mode/config-info.png" alt-text="Stránka pro rychlý Start Azure Portal konfigurace vaší aplikace pro Android":::
 
 ## <a name="set-up-a-tenant"></a>Nastavení tenanta
 
@@ -227,25 +242,25 @@ Stáhněte si aplikaci Microsoft Authenticator z Google Play Storu. Pokud jste a
 
 Spusťte aplikaci ověřovatele a přejděte na stránku hlavní účet. Jakmile se zobrazí stránka **Přidat účet** , budete připraveni zařízení nastavit jako sdílenou.
 
-![Obrazovka Přidat účet ověřovatele](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-add-account.png" alt-text="Stránka pro rychlý Start Azure Portal konfigurace vaší aplikace pro Android":::
 
- Přejděte do podokna **Nastavení** pomocí panelu nabídek na pravé straně. V části **pracovní & školní účty**vyberte **registrace zařízení** .
+Přejděte do podokna **Nastavení** pomocí panelu nabídek na pravé straně. V části **pracovní & školní účty**vyberte **registrace zařízení** .
 
- ![Obrazovka Přidat účet ověřovatele](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-settings.png" alt-text="Stránka pro rychlý Start Azure Portal konfigurace vaší aplikace pro Android":::
 
- Po kliknutí na toto tlačítko budete požádáni o autorizaci přístupu k kontaktům zařízení. Důvodem je integrace účtu Androidu na zařízení. Vyberte možnost **udělit**.
+Po kliknutí na toto tlačítko budete požádáni o autorizaci přístupu k kontaktům zařízení. Důvodem je integrace účtu Androidu na zařízení. Vyberte možnost **udělit**.
 
- ![Obrazovka Přidat účet ověřovatele](media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png" alt-text="Stránka pro rychlý Start Azure Portal konfigurace vaší aplikace pro Android":::
 
 Správce cloudového zařízení by měl zadat svůj e-mailovou adresu organizace v rámci **nebo zaregistrovat jako sdílené zařízení**. Pak klikněte na tlačítko **registrovat jako sdílené zařízení** a zadejte své přihlašovací údaje.
 
-![obrazovka registrace – zařízení](media/tutorial-v2-shared-device-mode/register-device.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/register-device.png" alt-text="Stránka pro rychlý Start Azure Portal konfigurace vaší aplikace pro Android":::
 
-![Snímek obrazovky se zobrazí přihlašovací stránka.](media/tutorial-v2-shared-device-mode/sign-in.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/sign-in.png" alt-text="Stránka pro rychlý Start Azure Portal konfigurace vaší aplikace pro Android":::
 
 Zařízení je nyní ve sdíleném režimu.
 
-![obrazovka registrace – zařízení](media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png" alt-text="Stránka pro rychlý Start Azure Portal konfigurace vaší aplikace pro Android":::
 
  Všechna přihlášení a přihlášení v zařízení budou globální, což znamená, že se vztahují na všechny aplikace, které jsou integrované s MSAL a Microsoft Authenticator na zařízení. Aplikace teď můžete nasadit do zařízení, které používá funkce režimu sdíleného zařízení.
 
@@ -253,14 +268,17 @@ Zařízení je nyní ve sdíleném režimu.
 
 Jakmile zařízení umístíte do sdíleného režimu, bude známo vaší organizaci a bude sledováno v tenantovi vaší organizace. Sdílená zařízení si můžete zobrazit tak, že v okně Azure Active Directory svého Azure Portal prohlížíte **typ spojení** .
 
-![Okno všechna zařízení v Azure Portal](media/tutorial-v2-shared-device-mode/registered-device-screen.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/registered-device-screen.png" alt-text="Stránka pro rychlý Start Azure Portal konfigurace vaší aplikace pro Android":::
 
 ## <a name="running-the-sample-app"></a>Spuštění ukázkové aplikace
 
 Ukázková aplikace je jednoduchá aplikace, která bude volat Graph API vaší organizace. Při prvním spuštění se zobrazí výzva k vyjádření souhlasu s tím, že je aplikace pro váš účet zaměstnance nová.
 
-![Obrazovka informace o konfiguraci aplikace](media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png" alt-text="Stránka pro rychlý Start Azure Portal konfigurace vaší aplikace pro Android":::
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o sdíleném režimu v [režimu sdíleného zařízení pro zařízení s Androidem](msal-android-shared-devices.md)
+Další informace o práci s knihovnou ověřování Microsoft a režimem sdíleného zařízení na zařízeních s Androidem:
+
+> [!div class="nextstepaction"]
+> [Režim sdíleného zařízení pro zařízení s Androidem](msal-android-shared-devices.md)

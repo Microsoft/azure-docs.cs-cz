@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 2e3cfd27d36558587ca35cc1c573999a48092b0d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e4a13fb22fd826f82252383587bc4a273c43099f
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297658"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613505"
 ---
 # <a name="blob-versioning"></a>Správa verzí objektů BLOB
 
@@ -79,11 +79,11 @@ Volání operace [odstranění objektu BLOB](/rest/api/storageservices/delete-bl
 
 Následující diagram znázorňuje efekt operace odstranění u objektu BLOB s verzí:
 
-:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="Diagram znázorňující odstranění objektu BLOB se správou verzí":::
+:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="Diagram znázorňující, jak operace zápisu ovlivňují objekty blob ve verzi":::
 
 Zápis nových dat do objektu BLOB vytvoří novou verzi objektu BLOB. Jakékoli existující verze nejsou ovlivněny, jak je znázorněno v následujícím diagramu.
 
-:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="Diagram znázorňující opětovné vytvoření objektu BLOB s verzí po odstranění":::
+:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="Diagram znázorňující, jak operace zápisu ovlivňují objekty blob ve verzi":::
 
 ### <a name="blob-types"></a>Typy objektů blob
 
@@ -122,7 +122,7 @@ Po zakázání verze můžete číst nebo odstraňovat verze s použitím ID ver
 
 Následující diagram ukazuje, jak se mění objekt BLOB po zakázání správy verzí, vytváří objekt blob, který není ve verzi. Všechny existující verze přidružené k tomuto objektu BLOB jsou trvalé.
 
-:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="Diagram znázorňující, že se základní objekt BLOB změnil po zakázání správy verzí":::
+:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="Diagram znázorňující, jak operace zápisu ovlivňují objekty blob ve verzi":::
 
 ## <a name="blob-versioning-and-soft-delete"></a>Správa verzí a obnovitelné odstranění objektů BLOB
 
@@ -138,7 +138,7 @@ Pokud chcete odebrat předchozí verzi objektu blob, explicitně ji odstraňte z
 
 Následující diagram ukazuje, co se stane, když odstraníte objekt BLOB nebo verzi objektu BLOB.
 
-:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="Diagram znázorňující odstranění verze s povoleným obnovitelném odstraněním":::
+:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="Diagram znázorňující, jak operace zápisu ovlivňují objekty blob ve verzi":::
 
 Pokud je v účtu úložiště zapnutá jak Správa verzí, tak i obnovitelné odstranění, při úpravě nebo odstranění verze objektu BLOB nebo objektu BLOB se nevytvoří žádný snímek s odstraněným odstraněnou.
 
@@ -150,7 +150,7 @@ Obnovení softwarově odstraněných verzí pomocí operace **obnovení objektu 
 
 Následující diagram ukazuje, jak obnovit obnovitelné odstraněné verze objektů BLOB pomocí operace obnovení **objektu BLOB** a jak obnovit aktuální verzi objektu BLOB pomocí operace **kopírování objektu** BLOB.
 
-:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="Diagram znázorňující, jak obnovit obnovitelné odstraněné verze":::
+:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="Diagram znázorňující, jak operace zápisu ovlivňují objekty blob ve verzi":::
 
 Po uplynutí doby uchování obnovitelného odstranění budou všechny odstraněné verze objektů BLOB trvale odstraněny.
 
@@ -169,7 +169,7 @@ Při pořizování snímku objektu BLOB s verzí se vytvoří nová verze ve ste
 
 Následující diagram ukazuje, co se stane při pořizování snímku objektu BLOB s verzí. V diagramu verze a snímky objektů BLOB s ID verze 2 a 3 obsahují stejná data.
 
-:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Diagram znázorňující snímky objektu BLOB s verzí":::
+:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Diagram znázorňující, jak operace zápisu ovlivňují objekty blob ve verzi":::
 
 ## <a name="authorize-operations-on-blob-versions"></a>Autorizovat operace s verzemi objektů BLOB
 
@@ -188,7 +188,7 @@ Následující tabulka uvádí, které akce RBAC podporují odstranění objektu
 | Popis | Operace Blob service | Vyžaduje se akce s daty RBAC. | Integrovaná podpora rolí RBAC |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | Odstraňuje se aktuální verze objektu BLOB. | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE** | Přispěvatel dat v objektech blob služby Storage |
-| Odstraňuje se verze | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/deleteBlobVersion/Action** | Vlastník dat objektu BLOB služby Storage |
+| Odstraňuje se verze | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/deleteBlobVersion/Action** | Vlastník dat v objektech blob služby Storage |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Parametry sdíleného přístupového podpisu (SAS)
 
@@ -269,7 +269,7 @@ Následující tabulka popisuje chování fakturace objektu BLOB nebo verze při
 
 Následující diagram znázorňuje, jak se účtují objekty při přesunu objektu BLOB s verzí do jiné úrovně.
 
-:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="Diagram znázorňující, jakým způsobem se účtují objekty, když je explicitně vrstvená verze objektu BLOB":::
+:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="Diagram znázorňující, jak operace zápisu ovlivňují objekty blob ve verzi":::
 
 Explicitní nastavení vrstvy pro objekt blob, verzi nebo snímek nelze vrátit zpět. Pokud objekt BLOB přesunete do nové úrovně a pak ho přesunete zpátky do původní úrovně, bude se vám účtovat úplná délka obsahu objektu, i když sdílí bloky s jinými objekty v původní úrovni.
 
@@ -291,7 +291,7 @@ Následující tabulka popisuje chování fakturace u objektu blob, který je po
 | Pokud jsou povolené obnovitelné odstranění objektů BLOB a správa verzí | Všechny existující verze s plnou délkou obsahu bez ohledu na úroveň. |
 | Pokud je povolené obnovitelné odstraňování objektů blob, ale je zakázaná správa verzí | Všechny existující snímky obnovitelného odstranění s plnou délkou obsahu bez ohledu na úroveň. |
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Povolení a správa verzí objektů BLOB](versioning-enable.md)
 - [Vytvoření snímku objektu BLOB](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

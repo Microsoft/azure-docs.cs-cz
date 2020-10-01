@@ -4,15 +4,15 @@ description: Popisuje schéma událostí pro každou kategorii v protokolu aktiv
 author: bwren
 services: azure-monitor
 ms.topic: reference
-ms.date: 06/09/2020
+ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 656161849ce8d48fb15cfac4024ec5b77adb5fee
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 52f0db4086bac7c8131015114ea6ecfdc391a4af
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829505"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612757"
 ---
 # <a name="azure-activity-log-event-schema"></a>Schéma událostí protokolu aktivit Azure
 [Protokol aktivit Azure](platform-logs-overview.md) poskytuje přehled o všech událostech na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje kategorie protokolů aktivit a schéma pro každou z nich. 
@@ -23,6 +23,17 @@ Schéma se bude lišit v závislosti na tom, jak přistupujete k protokolu:
 - Když použijete [nastavení diagnostiky](diagnostic-settings.md) k odeslání protokolu aktivit do Azure Storage nebo Azure Event Hubs, přečtěte si téma poslední [schéma oddílu z účtu úložiště a centra událostí](#schema-from-storage-account-and-event-hubs) schématu.
 - Pokud použijete [nastavení diagnostiky](diagnostic-settings.md) k odeslání protokolu aktivit do pracovního prostoru Log Analytics, přečtěte si téma [Azure monitor data reference](/azure/azure-monitor/reference/) pro schéma.
 
+## <a name="severity-level"></a>Úroveň závažnosti
+Každá položka v protokolu aktivit má úroveň závažnosti. Úroveň závažnosti může mít jednu z následujících hodnot:  
+
+| Závažnost | Popis |
+|:---|:---|
+| Kritická | Události, které vyžadují okamžitou pozornost správce systému. Může znamenat, že aplikace nebo systém selhal nebo přestal reagovat.
+| Chyba | Události, které indikují problém, ale nevyžadují okamžitou pozornost.
+| Upozornění | Události, které poskytují forewarning potenciální problémy, i když není skutečná chyba. Označení, že prostředek není v ideálním stavu a může se později snížit a zobrazit chyby nebo kritické události.  
+| Informační | Události, které správce předají nekritické informace. Podobně jako u poznámky se říká: "pro vaše informace". 
+
+Devlopers každého poskytovatele prostředků volí úrovně závažnosti svých položek prostředků. V důsledku toho se skutečná závažnost může lišit v závislosti na tom, jak je vaše aplikace sestavená. Například položky, které jsou důležité pro konkrétní prostředek pořízené v isloation, nemusí být důležité jako "chyby" v typu prostředku, který je centrální pro vaši aplikaci Azure. Nezapomeňte tuto skutečnost vzít v úvahu při rozhodování o tom, k jakým událostem chcete upozornit.  
 
 ## <a name="categories"></a>Kategorie
 Každá událost v protokolu aktivit má konkrétní kategorii, která je popsána v následující tabulce. Další informace o jednotlivých kategoriích a jejich schématu najdete v následujících částech, když přistupujete k protokolu aktivit z portálu, PowerShellu, CLI a REST API. Schéma se liší při [streamování protokolu aktivit do úložiště nebo Event Hubs](./resource-logs.md#send-to-azure-event-hubs). V poslední části článku je uveden mapování vlastností [schématu protokolů prostředků](./resource-logs-schema.md) .
@@ -137,7 +148,7 @@ Tato kategorie obsahuje záznam všech operací vytvoření, aktualizace, odstra
 | barev |Jedna z následujících hodnot: "admin", "Operation" |
 | podpory |Token JWT používaný službou Active Directory k ověření uživatele nebo aplikace k provedení této operace v Správce prostředků. |
 | correlationId |Obvykle identifikátor GUID ve formátu řetězce. Události, které sdílejí ID korelace, patří ke stejné akci Uber. |
-| description |Statický text popis události |
+| Popis |Statický text popis události |
 | eventDataId |Jedinečný identifikátor události |
 | eventName | Popisný název události správy |
 | category | Vždy "administrativní" |
@@ -281,7 +292,7 @@ Tato kategorie obsahuje záznam o všech událostech stavu prostředku, ke kter�
 | --- | --- |
 | barev | Vždy "admin, operace" |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
-| description |Statický textový popis události výstrahy. |
+| Popis |Statický textový popis události výstrahy. |
 | eventDataId |Jedinečný identifikátor události výstrahy. |
 | category | Always "ResourceHealth" |
 | eventTimestamp |Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události |
@@ -376,7 +387,7 @@ Tato kategorie obsahuje záznam všech aktivací klasických výstrah Azure. Př
 | barev | Vždy "admin, operace" |
 | podpory | Objekt BLOB JSON s identifikátorem SPN (hlavní název služby) nebo typem prostředku modulu výstrah. |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
-| description |Statický textový popis události výstrahy. |
+| Popis |Statický textový popis události výstrahy. |
 | eventDataId |Jedinečný identifikátor události výstrahy. |
 | category | Vždy "Výstraha" |
 | úroveň |Úroveň události Jedna z následujících hodnot: "kritická", "Error", "Warning" a "informativní" |
@@ -486,7 +497,7 @@ Tato kategorie obsahuje záznam všech událostí souvisejících s provozem mod
 | barev | Vždy "admin, operace" |
 | podpory | Objekt BLOB JSON s identifikátorem SPN (hlavní název služby) nebo typem prostředku modulu automatického škálování. |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
-| description |Statický textový popis události automatického škálování. |
+| Popis |Statický textový popis události automatického škálování. |
 | eventDataId |Jedinečný identifikátor události automatického škálování |
 | úroveň |Úroveň události Jedna z následujících hodnot: "kritická", "Error", "Warning" a "informativní" |
 | resourceGroupName |Název skupiny prostředků pro nastavení automatického škálování. |
@@ -574,7 +585,7 @@ Tato kategorie obsahuje záznam výstrahy vygenerované Azure Security Center. P
 | --- | --- |
 | barev | Vždy "operace" |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
-| description |Statický textový popis události zabezpečení |
+| Popis |Statický textový popis události zabezpečení |
 | eventDataId |Jedinečný identifikátor události zabezpečení |
 | eventName |Popisný název události zabezpečení |
 | category | Vždy "zabezpečení" |
@@ -655,7 +666,7 @@ Tato kategorie obsahuje záznam všech nových doporučení, která jsou vygener
 | --- | --- |
 | barev | Vždy "operace" |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
-| description |Statický text popis události doporučení |
+| Popis |Statický text popis události doporučení |
 | eventDataId | Jedinečný identifikátor události doporučení |
 | category | Vždy "doporučení" |
 | ID |Jedinečný identifikátor prostředku události doporučení |
@@ -768,7 +779,7 @@ Tato kategorie obsahuje záznamy všech operací akcí prováděných pomocí [A
 | barev | Události zásad používají pouze kanál "operace". |
 | podpory | Token JWT používaný službou Active Directory k ověření uživatele nebo aplikace k provedení této operace v Správce prostředků. |
 | correlationId | Obvykle identifikátor GUID ve formátu řetězce. Události, které sdílejí ID korelace, patří ke stejné akci Uber. |
-| description | Toto pole je prázdné pro události zásad. |
+| Popis | Toto pole je prázdné pro události zásad. |
 | eventDataId | Jedinečný identifikátor události |
 | eventName | Buď "BeginRequest", nebo "EndRequest". "BeginRequest" se používá pro opožděné vyhodnocení auditIfNotExists a deployIfNotExists a když deployIfNotExists efekt spustí nasazení šablony. Všechny ostatní operace vrátí "EndRequest". |
 | category | Deklaruje událost protokolu aktivit jako patřící k zásadě. |
@@ -807,13 +818,13 @@ Při streamování protokolu aktivit Azure do účtu úložiště nebo centra ud
 | category | Součást názvu operace | Užitečných typu operace – "zapsat"/"odstranit"/"akci" |
 | resultType | stav. hodnota | |
 | resultSignature | dílčí stav. hodnota | |
-| resultDescription | description |  |
-| durationMs | – | Vždycky 0 |
+| resultDescription | Popis |  |
+| durationMs | Není k dispozici | Vždycky 0 |
 | callerIpAddress | httpRequest. clientIpAddress |  |
 | correlationId | correlationId |  |
 | identity | deklarace identity a vlastnosti autorizace |  |
 | Úroveň | Úroveň |  |
-| location | – | Umístění, kde byla událost zpracována. *Toto není umístění prostředku, ale místo, kde byla událost zpracována. Tato vlastnost bude v budoucí aktualizaci odebrána.* |
+| location | Není k dispozici | Umístění, kde byla událost zpracována. *Toto není umístění prostředku, ale místo, kde byla událost zpracována. Tato vlastnost bude v budoucí aktualizaci odebrána.* |
 | Vlastnosti | Properties. eventProperties |  |
 | Properties. eventCategory | category | Pokud nejsou k dispozici vlastnosti. eventCategory, kategorie je "administrativní". |
 | Properties. eventName | eventName |  |

@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8e73ed8ac4712e84a900dcd85dbc8d756ccbdd62
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3d42fd298a4bc6c6f0c0d27bdeae1999d6474f75
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905772"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611992"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Kurz: vizualizace anomálií pomocí zjišťování dávek a Power BI
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Integrace Power BI Desktop s rozhraním API detektoru anomálií pro detekci anomálií služby Batch
 > * Vizualizujte anomálie nalezené v rámci vašich dat, včetně očekávaných a zobrazených hodnot a hranic detekce anomálií.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * [Předplatné Azure](https://azure.microsoft.com/free/cognitive-services)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), k dispozici zdarma.
 * Excelový soubor (. xlsx), který obsahuje datové body časové řady. Ukázková data pro tento rychlý Start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090962) .
@@ -56,7 +56,7 @@ Power BI převede časová razítka v prvním sloupci na `Date/Time` datový typ
 
 V editoru Power Query klikněte na pás karet **transformace** . Ve skupině **libovolný sloupec** otevřete položku **datový typ:** rozevírací nabídka a vyberte **text**.
 
-![Obrázek obrazovky datového zdroje "navigátor" v Power BI](../media/tutorials/data-type-drop-down.png)
+![Obrázek rozevíracího seznamu datového typu](../media/tutorials/data-type-drop-down.png)
 
 Po zobrazení oznámení o změně typu sloupce klikněte na **Nahradit aktuální**. Pak klikněte na tlačítko **zavřít & použít** nebo **použít** na pásu karet **Domů** .
 
@@ -66,7 +66,7 @@ K naformátování a odeslání datového souboru do rozhraní API detektoru ano
 
 Ujistěte se, že je vybraný nový dotaz, a pak klikněte na **Rozšířený editor**.
 
-![Obrázek tlačítka Rozšířený editor v Power BI](../media/tutorials/advanced-editor-screen.png)
+![Obrázek obrazovky Rozšířený editor](../media/tutorials/advanced-editor-screen.png)
 
 V Rozšířený editor použijte následující fragment kódu Power Query M k extrakci sloupců z tabulky a jejich odeslání do rozhraní API. Následně dotaz vytvoří tabulku z odpovědi JSON a vrátí ji. Nahraďte `apiKey` proměnnou platným klíčem rozhraní API detektoru anomálií a `endpoint` vaším koncovým bodem. Po zadání dotazu do Rozšířený editor klikněte na **Hotovo**.
 
@@ -114,7 +114,7 @@ V Rozšířený editor použijte následující fragment kódu Power Query M k e
 
 Vyvolejte dotaz na datovou tabulku výběrem `Sheet1` níže uvedeného **parametru**a kliknutím na **vyvolat**.
 
-![Obrázek tlačítka "Rozšířený editor"](../media/tutorials/invoke-function-screenshot.png)
+![Obrázek funkce Invoke](../media/tutorials/invoke-function-screenshot.png)
 
 ## <a name="data-source-privacy-and-authentication"></a>Soukromí a ověřování zdroje dat
 
@@ -148,11 +148,11 @@ Do pole **hodnoty** v grafu přidejte následující pole z **vyvolané funkce**
 * LowerMargins
 * ExpectedValues
 
-![Obrázek nové obrazovky rychlé míry](../media/tutorials/chart-settings.png)
+![Obrázek nastavení grafu](../media/tutorials/chart-settings.png)
 
 Po přidání polí klikněte na graf a změňte jeho velikost tak, aby se zobrazily všechny datové body. Graf bude vypadat podobně jako na následujícím snímku obrazovky:
 
-![Obrázek nové obrazovky rychlé míry](../media/tutorials/chart-visualization.png)
+![Obrázek vizualizace grafu](../media/tutorials/chart-visualization.png)
 
 ### <a name="display-anomaly-data-points"></a>Zobrazit datové body anomálií
 
@@ -162,15 +162,15 @@ Na pravé straně okna Power BI pod podoknem **pole** klikněte pravým tlačít
 
 Na obrazovce, která se zobrazí, vyberte **filtrovaná hodnota** jako výpočet. Nastavte **základní hodnotu** na `Sum of Value` . Potom přetáhněte `IsAnomaly` z **vyvolaných polí funkce** na **Filtr**. `True`V rozevírací nabídce **Filtr** vyberte.
 
-![Obrázek nové obrazovky rychlé míry](../media/tutorials/new-quick-measure-2.png)
+![Druhý obrázek nové obrazovky rychlá míra](../media/tutorials/new-quick-measure-2.png)
 
 Po kliknutí na **OK**budete mít pole na konci `Value for True` seznamu polí. Klikněte na něj pravým tlačítkem a přejmenujte ho na **anomálii**. Přidejte ho do **hodnot**grafu. Pak vyberte nástroj pro **formátování** a nastavte typ osy X na **kategorií**.
 
-![Obrázek nové obrazovky rychlé míry](../media/tutorials/format-x-axis.png)
+![Obrázek formátu osy x](../media/tutorials/format-x-axis.png)
 
 Nastavte barvy na svůj graf kliknutím na možnost **Formátovat** nástroj a **barvy dat**. Váš graf by měl vypadat nějak takto:
 
-![Obrázek nové obrazovky rychlé míry](../media/tutorials/final-chart.png)
+![Obrázek finálního grafu](../media/tutorials/final-chart.png)
 
 ## <a name="next-steps"></a>Další kroky
 

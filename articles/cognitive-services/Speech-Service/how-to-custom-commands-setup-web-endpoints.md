@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
-ms.translationtype: HT
+ms.openlocfilehash: 1b7b5e209329bd5dc4c95f81f61fecf48fb74e40
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027677"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362106"
 ---
 # <a name="set-up-web-endpoints"></a>Nastavení webových koncových bodů
 
@@ -29,7 +29,7 @@ V tomto článku se naučíte, jak v aplikaci Vlastní příkazy nastavit webov�
 ## <a name="prerequisites"></a>Požadavky
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-> * Klíč předplatného Azure pro službu Speech: [Získejte ho zdarma](get-started.md) nebo si ho vytvořte na webu [Azure Portal](https://portal.azure.com)
+> * Klíč předplatného Azure pro službu Speech: [Získejte ho zdarma](overview.md#try-the-speech-service-for-free) nebo si ho vytvořte na webu [Azure Portal](https://portal.azure.com)
 > * Už [vytvořená aplikace Vlastní příkazy](quickstart-custom-commands-application.md)
 > * Klientská aplikace s podporou sady Speech SDK: [Postupy: Odeslání aktivity do klientské aplikace](./how-to-custom-commands-setup-speech-sdk.md)
 

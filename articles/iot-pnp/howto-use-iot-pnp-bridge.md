@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b952c2663750c055ec6838bf66df31fec5a0d730
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 4c84fbb131809c92d597b46d18c53e46b636f8ef
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579949"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613471"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Jak připojit ukázku služby IoT technologie Plug and Play Bridge běžící v systému Linux nebo Windows do IoT Hub
 
@@ -88,7 +88,7 @@ Při stahování kódu v následujícím kroku obsahuje ukázkové soubory model
 Otevřete příkazový řádek v adresáři dle vašeho výběru. Spuštěním následujícího příkazu naklonujte úložiště GitHub pro [IoT technologie Plug and Play most](https://aka.ms/iotplugandplaybridge) do tohoto umístění:
 
 ```cmd
-git clone https://github.com/Azure/AzurePnPBridgePreview.git
+git clone https://github.com/Azure/iot-plug-and-play-bridge.git
 ```
 
 Po klonování úložiště IoT technologie Plug and Play mostu na váš počítač otevřete příkazový řádek pro správu a přejděte do adresáře klonovaného úložiště:

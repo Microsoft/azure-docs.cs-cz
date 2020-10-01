@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 688541147a9a765ed94d8e6c18ce4ee63615f627
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1a8155c9c0466184a09bc4ff224c9bdf42c173b9
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91583555"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612553"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play, které je připojené k vašemu řešení (C#)
 
@@ -92,7 +92,7 @@ s_logger.LogDebug($"Model Id of this Twin is: {twin.ModelId}");
 ```
 
 > [!NOTE]
-> Tato ukázka používá obor názvů **Microsoft. Azure. Devices. Client;** z **klienta služby IoT Hub**. Další informace o tom, jak načíst ID modelu, najdete v [příručce pro vývojáře](concepts-developer-guide.md).
+> Tato ukázka používá obor názvů **Microsoft. Azure. Devices. Client;** z **klienta služby IoT Hub**. Další informace o tom, jak načíst ID modelu, najdete v [příručce pro vývojáře](concepts-developer-guide-service.md).
 
 Tento kód generuje následující výstup:
 

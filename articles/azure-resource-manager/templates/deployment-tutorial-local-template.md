@@ -4,13 +4,13 @@ description: Naučte se nasadit šablonu Azure Resource Manager z místního po�
 ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: ef52d20b20446e3b8f3b761949bf255b99d358cc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: ''
+ms.openlocfilehash: fe13376ced428713703f2bd5cf33941129dec1d9
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499581"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611618"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Kurz: nasazení místní šablony Azure Resource Manager
 
@@ -26,7 +26,7 @@ Pojďme začít tím, že si zajistěte, aby byly k dispozici nástroje, které 
 
 K nasazení šablony potřebujete buď Azure PowerShell, nebo rozhraní příkazového řádku Azure. Pokyny k instalaci najdete v těchto tématech:
 
-- [Nainstalovat Azure PowerShell](/powershell/azure/install-az-ps)
+- [Instalace prostředí Azure PowerShell](/powershell/azure/install-az-ps)
 - [Instalace Azure CLI ve Windows](/cli/azure/install-azure-cli-windows)
 - [Instalace rozhraní příkazového řádku Azure CLI v systému Linux](/cli/azure/install-azure-cli-linux)
 

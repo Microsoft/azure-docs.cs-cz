@@ -7,12 +7,12 @@ ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a5b826bd76eb7e56620bcb5b5eec9464ebacffc6
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579954"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91610071"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>Implementace IoT technologie Plug and Play na omezených zařízeních
 
@@ -39,7 +39,7 @@ Sada SDK pro vložené úložiště C obsahuje [několik ukázek](https://github
 
 ## <a name="using-azure-rtos"></a>Používání Azure RTO
 
-Azure RTO zahrnuje odlehčenou vrstvu, která přidává nativní připojení ke cloudovým službám Azure IoT. Tato vrstva poskytuje jednoduchý mechanismus pro připojení omezených zařízení ke službě Azure IoT při použití pokročilých funkcí služby Azure RTO.
+Azure RTO zahrnuje odlehčenou vrstvu, která přidává nativní připojení ke cloudovým službám Azure IoT. Tato vrstva poskytuje jednoduchý mechanismus pro připojení omezených zařízení ke službě Azure IoT při použití pokročilých funkcí služby Azure RTO. Další informace najdete v tématu [co je Microsoft Azure RTO](https://docs.microsoft.com/azure/rtos/overview-rtos).
 
 ### <a name="toolchains"></a>Sady nástrojů
 
@@ -51,11 +51,11 @@ Ukázky Azure RTO jsou k dispozici s různými druhy rozhraní IDE a kombinací 
 - STM32Cube: [rozhraní IDE pro STM32Cube](https://www.st.com/en/development-tools/stm32cubeide.html) STMicroelectronic
 - MPLAB: mikročip [IDE MPLAB X](https://www.microchip.com/mplab/mplab-x-ide)
 
-### <a name="samples"></a>Ukázky
+### <a name="samples"></a>ukázky
 
 Ukázky, které ukazují, jak začít pracovat na různých zařízeních s Azure RTO a IoT technologie Plug and Play, najdete v následující tabulce:
 
-Manufacturer | Zařízení | Ukázky |
+Manufacturer | Zařízení | ukázky |
 | --- | --- | --- |
 | Umístěný | [ATSAME54-XPRO](https://www.microchip.com/developmenttools/productdetails/atsame54-xpro) | [RSZ/cmake](https://github.com/azure-rtos/getting-started/tree/master/Microchip/ATSAME54-XPRO) • [IAR](https://aka.ms/azrtos-sample/e54-iar) • [MPLAB](https://aka.ms/azrtos-sample/e54-mplab)
 | MXCHIP | [AZ3166](https://aka.ms/iot-devkit) | [RSZ/CMake](https://github.com/azure-rtos/getting-started/tree/master/MXChip/AZ3166)

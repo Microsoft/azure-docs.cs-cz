@@ -3,17 +3,17 @@ title: IoT technologie Plug and Play aktuální verze | Microsoft Docs
 description: Podívejte se, co je součástí aktuální verze technologie Plug and Play IoT.
 author: dominicbetts
 ms.author: dobett
-ms.date: 09/19/2020
+ms.date: 10/01/2020
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4cfc9ca14a4b344423a27d9683114de5275fb20b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 0ba4d60b9e32a8658fa294de1b78ef4950436eb0
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91583551"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91609935"
 ---
 # <a name="whats-in-the-current-iot-plug-and-play-release"></a>Co je v aktuální verzi technologie Plug and Play IoT
 
@@ -46,27 +46,21 @@ Další informace o tom, jak zařízení IoT technologie Plug and Play pracují 
     > [!TIP]
     > Rozšíření Azure IoT obsahuje příkazy, které vám pomůžou zařízení certifikovat. Viz třída `az iot product -h`.
 
-
-
 ## <a name="libraries-and-sdks"></a>Knihovny a sady SDK
 
 Další informace o knihovnách a sadách SDK najdete v tématu [Microsoft SDK for IoT technologie Plug and Play](libraries-sdks.md).
 
-- Sada SDK pro zařízení C [VcPkg 2020-07-19](https://github.com/microsoft/vcpkg/tree/master/ports/azure-iot-sdk-c)
-- Sada SDK pro zařízení .NET [NuGet Microsoft. Azure. Devices. Client 1.30.0](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/)
-- Sada Java SDK [pro zařízení Maven IoT-Device-1.25.0 klienta](https://search.maven.org/artifact/com.microsoft.azure.sdk.iot/iot-device-client)
-- Python SDK pro zařízení – [PIP Azure – IoT-Device v 2.2.0](https://pypi.org/project/azure-iot-device/)
-- Sada SDK pro Node.js zařízení [npm Azure-IoT-Device 1.17.1](https://www.npmjs.com/package/azure-iot-device)
-- .NET – IoT Hub služby [NuGet Microsoft. Azure. Devices 1.22.0](https://www.nuget.org/packages/Microsoft.Azure.Devices/)
-- Java-IoT Hub Service [Maven IoT-Service-1.25.0 klienta](https://search.maven.org/artifact/com.microsoft.azure.sdk.iot/iot-service-client)
-- Služba Node.js-IoT Hub [npm Azure-iothub 1.12.5](https://www.npmjs.com/package/azure-iothub)
-- Python-IoT Hub/digitální vyzdvojení služby [PIP Azure-IoT-Hub 2.2.2](https://pypi.org/project/azure-iot-hub/)
+- Sada SDK pro zařízení C [vcpkg 1.3.9](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/setting_up_vcpkg.md)
+- [GitHub](https://github.com/Azure/azure-sdk-for-c/) SDK pro zařízení v sadě C Embedded
+- Sada [1.31.0 NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client) sady SDK pro zařízení .NET
+- Sada SDK pro zařízení Java [Maven 1.25.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client)
+- [2.3.0 PIP](https://pypi.org/project/azure-iot-device/) sady SDK pro zařízení Python
+- [Npm 1.17.2](https://www.npmjs.com/package/azure-iot-device) sady SDK pro zařízení Node.js
+- .NET – IoT Hub služby [NuGet 1.31.0](https://www.nuget.org/packages/Microsoft.Azure.Devices )
+- Java – IoT Hub [Maven Service 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-service-client/1.26.0)
+- Služba Node.js-IoT Hub [npm 1.13.0](https://www.npmjs.com/package/azure-iothub)
+- Python-IoT Hub/Digital s vyzdvojenými službami [PIP – 2.2.3](https://pypi.org/project/azure-iot-hub)
 - DTDL modelu [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser)pro analyzátor modelů.
-
-### <a name="preview"></a>Preview
-
-- Sada Azure SDK pro Embedded [1.0.0 – Preview. 5](https://github.com/Azure/azure-sdk-for-c/releases/tag/1.0.0-preview.5)
-- Middleware Azure RTO IoT [v6.0_beta3](https://github.com/azure-rtos/azure-iot-preview/releases/tag/v6.0_beta3)
 
 ## <a name="rest-apis"></a>Rozhraní REST API
 
@@ -86,4 +80,3 @@ Aktuální a předchozí oznámení o technologie Plug and Play IoT najdete v n�
 - [Příprava a certifikace zařízení pro IoT technologie Plug and Play (zveřejněné 26. srpna 2020)](https://azure.microsoft.com/blog/prepare-and-certify-your-devices-for-iot-plug-and-play/)
 - [Technologie Plug and Play IoT je teď k dispozici ve verzi Preview (zveřejněné dne 22. srpna 2019).](https://azure.microsoft.com/blog/iot-plug-and-play-is-now-available-in-preview/)
 - [Sestavování s využitím Azure IoT Central a IoT technologie Plug and Play (zveřejněné 7. května 2019)](https://azure.microsoft.com/blog/build-with-azure-iot-central-and-iot-plug-and-play/)
-

@@ -7,12 +7,12 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bfbfc6e5e4a0f5721d620c2936e5ea0aa685f8ad
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: a0fa8c1c3d897ce65c70b6097dd323139716b8c7
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577590"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613386"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>Správa IoT technologie Plug and Play digitálních vláken
 
@@ -179,11 +179,11 @@ Všechny klíče mapy by měly být platnými názvy DTDL v2.
 
 ## <a name="troubleshoot-update-digital-twin-api-errors"></a>Řešení potíží s aktualizací digitálního vlákna API – chyby
 
-Během veřejné verze Preview vygeneruje rozhraní API pro aktualizaci digitální dvojitou zprávu následující obecnou chybovou zprávu:
+Digitální dvojitá rozhraní API vyvolá následující obecnou chybovou zprávu:
 
 `ErrorCode:ArgumentInvalid;'{propertyName}' exists within the device twin and is not digital twin conformant property. Please refer to aka.ms/dtpatch to update this to be conformant.`
 
-Ujistěte se, že oprava aktualizace dodržuje [pravidla pro nastavení požadované hodnoty vlastnosti digitálního vlákna](#rules-for-setting-the-desired-value-of-a-digital-twin-property) .
+Pokud se zobrazí tato chyba, ujistěte se, že oprava aktualizace dodržuje [pravidla pro nastavení požadované hodnoty vlastnosti digitálního vlákna](#rules-for-setting-the-desired-value-of-a-digital-twin-property) .
 
 Když aktualizujete komponentu, ujistěte se, že je nastaven [prázdný objekt $metadata značka](#add-replace-or-remove-a-component) .
 

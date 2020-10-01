@@ -1,7 +1,7 @@
 ---
-title: Kurz pro jednostránkové aplikace v JavaScriptu – tok kódu ověřování | Azure
+title: 'Kurz: vytvoření jednostránkové aplikace v JavaScriptu, která používá tok kódu ověřování | Azure'
 titleSuffix: Microsoft identity platform
-description: Jak aplikace JavaScript SPA můžou pomocí toku kódu ověřování volat rozhraní API, které vyžaduje přístupové tokeny pomocí koncového bodu Azure Active Directory v 2.0
+description: V tomto kurzu vytvoříte kód JavaScript SPA, který se může přihlašovat uživatelům, a pomocí toku kódu ověřování získá přístupový token z platformy Microsoft identity a zavolá rozhraní Microsoft Graph API.
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 7a136c03db6e27763a22d92d2c335f23c616856e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 89bc974e4d95da183f23ef6643a03b3f20cfa6fa
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256802"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611159"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Kurz: přihlášení uživatelů a volání rozhraní API Microsoft Graph z jednostránkové aplikace v JavaScriptu (SPA) pomocí toku kódu ověřování
 
@@ -32,6 +32,11 @@ V tomto kurzu se dozvíte, jak vytvořit jednostránkovou aplikaci v JavaScriptu
 MSAL.js 2,0 vylepšuje MSAL.js 1,0 tím, že podporuje tok autorizačního kódu v prohlížeči místo implicitního toku udělení. MSAL.js **2,0 nepodporuje implicitní** tok.
 
 [!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
+
+## <a name="prerequisites"></a>Předpoklady
+
+* [Node.js](https://nodejs.org/en/download/) pro spuštění místního serveru
+* [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný Editor kódu
 
 ## <a name="how-the-tutorial-app-works"></a>Jak funguje aplikace tutorial
 
@@ -52,11 +57,6 @@ Chcete místo toho stáhnout ukázkový projekt tohoto kurzu? Chcete-li spustit 
 Pokud chcete před spuštěním nakonfigurovat ukázku kódu, přejděte k [kroku konfigurace](#register-your-application).
 
 Pokud chcete pokračovat v kurzu a sestavit aplikaci sami, přejděte k další části [požadavky](#prerequisites).
-
-## <a name="prerequisites"></a>Požadavky
-
-* [Node.js](https://nodejs.org/en/download/) pro spuštění místního serveru
-* [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný Editor kódu
 
 ## <a name="create-your-project"></a>Vytvoření projektu
 
@@ -557,7 +557,7 @@ SPA, které jste vytvořili v tomto kurzu, volá nebo `acquireTokenSilent` `acqu
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Po prvním přihlášení by vaše aplikace neměla požádat uživatele, aby se znovu ověřili pokaždé, když potřebují přístup k chráněnému prostředku (to znamená vyžádání tokenu). Chcete-li zabránit takové žádosti o opakované ověření, zavolejte `acquireTokenSilent` . Existují však situace, kdy může být nutné vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Příklad:
+Po prvním přihlášení by vaše aplikace neměla požádat uživatele, aby se znovu ověřili pokaždé, když potřebují přístup k chráněnému prostředku (to znamená vyžádání tokenu). Chcete-li zabránit takové žádosti o opakované ověření, zavolejte `acquireTokenSilent` . Existují však situace, kdy může být nutné vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Například:
 
 - Uživatelé musí znovu zadat své přihlašovací údaje, protože vypršela platnost hesla.
 - Vaše aplikace požaduje přístup k prostředku a potřebujete souhlas uživatele.
@@ -619,23 +619,23 @@ Dokončili jste vytváření aplikace a teď jste připraveni spustit Node.js we
 
 Poté, co prohlížeč načte soubor *index.html* , vyberte možnost **Přihlásit**se. Budete vyzváni k přihlášení pomocí koncového bodu Microsoft Identity Platform:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Webový prohlížeč, který zobrazuje přihlašovací dialog":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Diagram znázorňující tok autorizačního kódu v aplikaci s jednou stránkou":::
 
 ### <a name="provide-consent-for-application-access"></a>Poskytnutí souhlasu pro přístup k aplikaci
 
 Při prvním přihlášení k aplikaci se zobrazí výzva, abyste udělili přístup k vašemu profilu a přihlásili se k nim:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Dialog obsahu zobrazený ve webovém prohlížeči":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Diagram znázorňující tok autorizačního kódu v aplikaci s jednou stránkou":::
 
 Pokud souhlasíte s požadovanými oprávněními, webové aplikace zobrazí vaše uživatelské jméno a označuje úspěšné přihlášení:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Výsledky úspěšného přihlášení ve webovém prohlížeči":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Diagram znázorňující tok autorizačního kódu v aplikaci s jednou stránkou":::
 
 ### <a name="call-the-graph-api"></a>Volání Graph API
 
 Po přihlášení vyberte **Zobrazit profil** pro zobrazení informací o profilu uživatele vrácených v odpovědi z volání rozhraní Microsoft Graph API:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="Informace o profilu z Microsoft Graph zobrazené v prohlížeči":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="Diagram znázorňující tok autorizačního kódu v aplikaci s jednou stránkou":::
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a delegovaných oprávněních
 
@@ -649,14 +649,7 @@ Pokud rozhraní API pro back-end nevyžaduje obor, což se nedoporučuje, může
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili jednostránkovou aplikaci v JavaScriptu (SPA), která používá knihovnu Microsoft Authentication Library (MSAL) pro JavaScript v 2.0:
+Pokud byste chtěli podrobně hlubší vývoj aplikací v JavaScriptu na platformě Microsoft Identity Platform, přečtěte si naši řadu scénářů s více částmi:
 
-> [!div class="checklist"]
-> * Provedení toku autorizačního kódu OAuth 2,0 s PKCE
-> * Přihlaste se k osobním účtům Microsoft i pracovním a školním účtům.
-> * Získání přístupového tokenu
-> * Zavolejte Microsoft Graph nebo vlastní rozhraní API, které vyžaduje přístupové tokeny získané z koncového bodu Microsoft Identity Platform.
-
-Další informace o toku autorizačního kódu, včetně rozdílů mezi toky implicitního a ověřovacího kódu, najdete v části [Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0](v2-oauth2-auth-code-flow.md).
-
-Pokud byste chtěli podrobně hlubší vývoj aplikací v JavaScriptu na platformě Microsoft Identity Platform, scénář s více částmi: řada článků s [jednou stránkou](scenario-spa-overview.md) vám může pomáhat začít.
+> [!div class="nextstepaction"]
+> [Scénář: jednostránkové aplikace](scenario-spa-overview.md)

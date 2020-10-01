@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: cd618cf5f2f82b9c87981e961ed401f3409ec9d4
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 0ed5ebf316c80d7fc560b11e1f784dd1b91b170d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91583553"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612570"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play připojeným k vašemu řešení (Java)
 
@@ -76,7 +76,7 @@ V [části nastavení prostředí pro iot technologie Plug and Play rychlé star
 V tomto rychlém startu použijete ukázkové řešení IoT napsané v jazyce Java k interakci s ukázkovým zařízením, které jste právě nastavili.
 
 > [!NOTE]
-> Tato ukázka používá obor názvů **com. Microsoft. Azure. SDK. IoT. Service. *;** z **klienta služby IoT Hub**. Další informace o tom, jak načíst ID modelu, najdete v [příručce pro vývojáře](concepts-developer-guide-device-csharp.md).
+> Tato ukázka používá obor názvů **com. Microsoft. Azure. SDK. IoT. Service. *;** z **klienta služby IoT Hub**. Další informace o tom, jak načíst ID modelu, najdete v [příručce pro vývojáře](concepts-developer-guide-service.md).
 
 1. Otevřete další okno terminálu pro použití jako terminálu **služby** .
 

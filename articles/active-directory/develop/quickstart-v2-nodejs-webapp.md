@@ -1,6 +1,7 @@
 ---
-title: Přidání přihlašování OIDC do webové aplikace Node.js – Microsoft Identity Platform | Azure
-description: Naučte se implementovat ověřování ve webové aplikaci Node.js pomocí OpenID Connect.
+title: 'Rychlý Start: přidání přihlášení uživatele do webové aplikace Node.js | Azure'
+titleSuffix: Microsoft identity platform
+description: V tomto rychlém startu se dozvíte, jak implementovat ověřování ve webové aplikaci Node.js pomocí nástroje OpenID Connect.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,24 +12,21 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 8e42d906cce65cf51d6359343bc4f218b94a05fb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 34baa054104a6cf2c78864cc2827b16c1eedb084
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257686"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613301"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rychlý Start: přidání přihlášení pomocí OpenID připojení k webové aplikaci Node.js
 
 V tomto rychlém startu se dozvíte, jak nastavit ověřování OpenID Connect ve webové aplikaci vytvořené pomocí Node.js s využitím Express. Ukázka je navržená tak, aby běžela na jakékoli platformě.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K provedení této ukázky budete potřebovat:
-
-* Nainstalovat Node.js z http://nodejs.org/
-
-* Buď [účet Microsoft](https://www.outlook.com) , nebo [Microsoft 365 vývojářský program](/office/developer-program/office-365-developer-program)
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="register-your-application"></a>Registrace aplikace
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.

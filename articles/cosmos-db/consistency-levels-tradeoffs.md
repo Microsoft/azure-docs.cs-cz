@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 3c82edd73921e11cd2f43a0d609624267af81575
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: b96902603deca4b7a184659e6274d65f02ac712d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570062"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613522"
 ---
 # <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>Latence, dostupnost a výkon při kompromisech s různými Azure Cosmos DBmi úrovněmi konzistence
 
@@ -65,12 +65,12 @@ Následující tabulka definuje vztah mezi modelem konzistence a odolností dat 
 
 |**Oblast (y)**|**Režim replikace**|**Úroveň konzistence**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
-|1|Jedna nebo více hlavních serverů|Jakákoli úroveň konzistence|< 240 minut|<1 týden|
-|>1|Jedna hlavní|Relace, konzistentní předpona, případný|< 15 minut|< 15 minut|
-|>1|Jedna hlavní|Omezená neaktuálnost|*K*  &  *T*|< 15 minut|
-|>1|Jedna hlavní|Silná|0|< 15 minut|
-|>1|Vícenásobný hlavní|Relace, konzistentní předpona, případný|< 15 minut|0|
-|>1|Vícenásobný hlavní|Omezená neaktuálnost|*K*  &  *T*|0|
+|1|Jedna nebo více oblastí zápisu|Jakákoli úroveň konzistence|< 240 minut|<1 týden|
+|>1|Jedna oblast zápisu|Relace, konzistentní předpona, případný|< 15 minut|< 15 minut|
+|>1|Jedna oblast zápisu|Omezená neaktuálnost|*K*  &  *T*|< 15 minut|
+|>1|Jedna oblast zápisu|Silná|0|< 15 minut|
+|>1|Více oblastí zápisu|Relace, konzistentní předpona, případný|< 15 minut|0|
+|>1|Více oblastí zápisu|Omezená neaktuálnost|*K*  &  *T*|0|
 
 *K* = počet verzí *"K"* (tj. aktualizace) položky.
 

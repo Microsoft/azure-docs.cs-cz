@@ -3,12 +3,12 @@ title: Zachytávání událostí streamování – Azure Event Hubs | Microsoft 
 description: Tento článek poskytuje přehled funkce Capture, která umožňuje zachytit streamování událostí prostřednictvím Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2302f31130b6179b187c17e2f44c5fa7cc50648b
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.openlocfilehash: 1b79db7a7f8d0fe03b21e005ef696d5fe55ac0a1
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89667449"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613403"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Zachycení událostí prostřednictvím Azure Event Hubs v Azure Blob Storage nebo Azure Data Lake Storage
 Azure Event Hubs umožňuje automaticky zachytit streamovaná data v Event Hubs v [úložišti objektů BLOB v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo v účtu, který si využijete [Azure Data Lake Storage obecné 1 nebo Gen 2](https://azure.microsoft.com/services/data-lake-store/) s přidanou flexibilitou zadání času nebo velikosti intervalu. Nastavení zachytávání je rychlé, neexistují žádné náklady na správu, které by bylo možné spustit, a automaticky se škálují s Event Hubs [jednotkami propustnosti](event-hubs-scalability.md#throughput-units). Event Hubs Capture je nejjednodušší způsob, jak načíst streamovaná data do Azure, a umožňuje se zaměřit na zpracování dat, nikoli na shromažďování dat.
@@ -18,6 +18,8 @@ Azure Event Hubs umožňuje automaticky zachytit streamovaná data v Event Hubs 
 
 Event Hubs Capture umožňuje zpracovávat kanály založené na službě Batch v reálném čase a ve stejném datovém proudu. To znamená, že můžete vytvářet řešení, která se v průběhu času dorůstou podle vašich potřeb. Bez ohledu na to, jestli sestavíte do budoucna v reálném čase a chcete přidat efektivní studenou cestu k existujícímu řešení v reálném čase, Event Hubs Capture usnadňuje práci s datovými proudy.
 
+> [!IMPORTANT]
+> Cílový účet úložiště (Azure Storage nebo Azure Data Lake Storage) musí být ve stejném předplatném jako centrum událostí. 
 
 ## <a name="how-event-hubs-capture-works"></a>Jak funguje Event Hubs Capture
 

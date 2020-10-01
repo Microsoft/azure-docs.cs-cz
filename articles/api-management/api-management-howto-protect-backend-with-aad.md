@@ -1,27 +1,23 @@
 ---
-title: Ochrana rozhraní API pomocí OAuth 2,0 s AAD a API Management
+title: Ochrana back-endu rozhraní API v API Management pomocí OAuth 2,0 a Azure AD
 titleSuffix: Azure API Management
-description: Přečtěte si, jak chránit back-end webového rozhraní API pomocí Azure Active Directory a API Management.
+description: Naučte se zabezpečit přístup k back-endu webového rozhraní API v Azure API Management s autorizací uživatelů OAuth 2,0 a Azure Active Directory
 services: api-management
-documentationcenter: ''
 author: miaojiang
-manager: dcscontentpm
-editor: ''
 ms.service: api-management
-ms.workload: mobile
 ms.topic: article
-ms.date: 06/24/2020
+ms.date: 09/23/2020
 ms.author: apimpm
-ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 285a99bd47fa94940187aa0a4406e773a254dcb4
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243405"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612332"
 ---
-# <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrana rozhraní API pomocí OAuth 2.0 s využitím služeb Azure Active Directory a API Management
+# <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>Ochrana back-endu webového rozhraní API v Azure API Management pomocí autorizace OAuth 2,0 s Azure AD 
 
-V této příručce se dozvíte, jak nakonfigurovat instanci Azure API Management k ochraně rozhraní API pomocí protokolu OAuth 2,0 s Azure Active Directory (Azure AD). 
+V této příručce se dozvíte, jak nakonfigurovat instanci [Azure API Management](api-management-key-concepts.md) k ochraně rozhraní API pomocí [protokolu OAuth 2,0 s Azure Active Directory (Azure AD)](../active-directory/develop/active-directory-v2-protocols.md). 
 
 > [!NOTE]
 > Tato funkce je dostupná v API Management úrovně pro **vývojáře**, **Basic**, **Standard**a **Premium** .
@@ -46,7 +42,7 @@ Následuje rychlý přehled kroků:
 
 ## <a name="register-an-application-in-azure-ad-to-represent-the-api"></a>Registrace aplikace ve službě Azure AD, která představuje rozhraní API
 
-Chcete-li chránit rozhraní API pomocí služby Azure AD, nejprve Zaregistrujte aplikaci ve službě Azure AD, která představuje rozhraní API. 
+Chcete-li chránit rozhraní API pomocí služby Azure AD, nejprve Zaregistrujte aplikaci ve službě Azure AD, která představuje rozhraní API. Následující kroky používají Azure Portal k registraci aplikace. Podrobnosti o registraci aplikace najdete v tématu [rychlý Start: Konfigurace aplikace k vystavení webového rozhraní API](../active-directory/develop/quickstart-configure-app-expose-web-apis.md).
 
 1. Pro registraci aplikace použijte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **Registrace aplikací**.
 
@@ -79,7 +75,7 @@ Registrace jiné aplikace ve službě Azure AD, která bude reprezentovat konzol
 
 1. Pro registraci aplikace použijte [Azure Portal](https://portal.azure.com) .
 
-1.  Vyhledejte a vyberte **Registrace aplikací**.
+1. Vyhledejte a vyberte **Registrace aplikací**.
 
 1. Vyberte **Nová registrace**.
 
@@ -168,7 +164,7 @@ Dalším krokem je povolení autorizace uživatele OAuth 2,0 pro vaše rozhraní
 
 1. Přejděte k instanci API Management a přejděte na **rozhraní API**.
 
-1. Vyberte rozhraní API, které chcete chránit. Například `Echo API`.
+1. Vyberte rozhraní API, které chcete chránit. Například, `Echo API`.
 
 1. Přejít na **Nastavení**.
 

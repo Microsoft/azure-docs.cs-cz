@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 8912ef907641367bda89d7c0e98f9da811c6e577
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 43d7b3ae906909312a9e9ec4517061a788267a0c
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534596"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612774"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Podpora Azure IoT Hub Device Provisioning Service (DPS) pro virtuální sítě
 
@@ -43,7 +43,7 @@ Zařízení, která pracují v místních sítích, můžou pomocí [virtuální
 Privátní koncový bod je privátní IP adresa přidělená v rámci virtuální sítě vlastněné zákazníkem, pomocí které je k dispozici prostředek Azure. Když budete mít privátní koncový bod pro prostředek DPS, budete moct povolit zařízením, která pracují v rámci vaší virtuální sítě, vyžádat si zřizování pomocí prostředku DPS bez povolení provozu do veřejného koncového bodu.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat, ujistěte se, že jsou splněné následující předpoklady:
 
@@ -69,13 +69,13 @@ Při používání privátních koncových bodů Pamatujte na tato aktuální om
 
 K nastavení privátního koncového bodu použijte následující postup:
 
-1. V [Azure Portal](https://portal.azure.com/)otevřete prostředek DPS a klikněte na kartu **sítě** . klikněte na **připojení privátního koncového bodu** a **+ soukromý koncový bod**.
+1. V [Azure Portal](https://portal.azure.com/)otevřete prostředek DPS a klikněte na kartu **síť** . Klikněte na **připojení privátního koncového bodu** a **+ soukromý koncový bod**.
 
     ![Přidání nového privátního koncového bodu pro DPS](./media/virtual-network-support/networking-tab-add-private-endpoint.png)
 
 2. Na stránce _vytvořit základy privátního koncového bodu_ zadejte informace uvedené v následující tabulce.
 
-    ![Konfigurace prostředku, na který se mapuje nový privátní koncový bod](./media/virtual-network-support/create-private-endpoint-basics.png)
+    ![Vytváření základních informací o privátních koncových bodech](./media/virtual-network-support/create-private-endpoint-basics.png)
 
     | Pole | Hodnota |
     | :---- | :-----|
@@ -88,7 +88,7 @@ K nastavení privátního koncového bodu použijte následující postup:
 
 3. Na stránce _vytvořit prostředek privátního koncového bodu_ zadejte informace uvedené v následující tabulce.
 
-    ![Konfigurace prostředku, na který se mapuje nový privátní koncový bod](./media/virtual-network-support/create-private-endpoint-resource.png)
+    ![Vytvořit prostředek privátního koncového bodu](./media/virtual-network-support/create-private-endpoint-resource.png)
 
     | Pole | Hodnota |
     | :---- | :-----|
@@ -107,7 +107,7 @@ K nastavení privátního koncového bodu použijte následující postup:
  
     Klikněte na **Další: značky**a volitelně poskytněte pro svůj prostředek všechny značky.
 
-    ![Konfigurace prostředku, na který se mapuje nový privátní koncový bod](./media/virtual-network-support/create-private-endpoint-configuration.png)
+    ![Konfigurace privátního koncového bodu](./media/virtual-network-support/create-private-endpoint-configuration.png)
 
 6. Klikněte na tlačítko **zkontrolovat + vytvořit** a pak **vytvořit** a vytvořte prostředek privátního koncového bodu.
 
@@ -141,7 +141,7 @@ Pomocí ID prostředku můžete požádat o privátní koncový bod na prostřed
 
 5. Vlastník DPS uvidí požadavek na soukromý koncový bod na seznamu **připojení privátního koncového bodu** na kartě DPS sítě. Vlastník může na této stránce **schválit** nebo **odmítnout** požadavek na privátní koncový bod, jak je znázorněno níže.
 
-    ![Karta vlastnosti DPS](./media/virtual-network-support/approve-dps-private-endpoint.png)
+    ![Schválení DPS](./media/virtual-network-support/approve-dps-private-endpoint.png)
 
 
 ## <a name="pricing-private-endpoints"></a>Soukromé koncové body pro ceny

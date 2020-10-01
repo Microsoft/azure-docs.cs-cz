@@ -8,12 +8,12 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dd2b9bc462a9d4bc11f49a7e3294e52f88a926fb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7a9f4f165f457dfb902a4c0ecce3f4a9b13e2ec8
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511836"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611533"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Nasazování modulů a vytváření tras ve službě IoT Edge
 
@@ -38,7 +38,7 @@ Manifest nasazení je na vysoké úrovni seznamem vláken modulu, které jsou na
 
 V každém manifestu nasazení jsou vyžadovány dva moduly: `$edgeAgent` a `$edgeHub` . Tyto moduly jsou součástí modulu runtime IoT Edge, který spravuje zařízení IoT Edge a moduly, které jsou v něm spuštěné. Další informace o těchto modulech naleznete v tématu [pochopení IoT Edge runtime a jeho architektury](iot-edge-runtime.md).
 
-Kromě těchto dvou běhových modulů můžete přidat až 30 modulů, které mají být spuštěny na zařízení IoT Edge.
+Kromě těchto dvou běhových modulů můžete přidat až 50 moduly, které mají být spouštěny na IoT Edgem zařízení.
 
 Manifest nasazení, který obsahuje pouze modul runtime IoT Edge (edgeAgent a edgeHub), je platný.
 
@@ -151,7 +151,7 @@ Zdrojovou vlastností může být libovolná z následujících hodnot:
 | `/messages/modules/<moduleId>/outputs/*` | Jakákoli zpráva typu zařízení-Cloud odeslaná konkrétním modulem prostřednictvím nějakého výstupu |
 | `/messages/modules/<moduleId>/outputs/<output>` | Jakákoli zpráva typu zařízení-Cloud odeslaná konkrétním modulem prostřednictvím konkrétního výstupu |
 
-### <a name="condition"></a>Podmínka
+### <a name="condition"></a>Stav
 
 Podmínka je v deklaraci trasy volitelná. Pokud chcete předat všechny zprávy ze zdroje do jímky, stačí opustit klauzuli **WHERE** úplně. Nebo můžete použít [jazyk dotazů IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md) k filtrování určitých zpráv nebo typů zpráv, které podmínku splní. Trasy IoT Edge nepodporují filtrování zpráv na základě dvojitých značek nebo vlastností.
 
@@ -159,9 +159,9 @@ Zprávy, které jsou předávány mezi moduly v IoT Edge jsou formátovány stej
 
 Dotazy můžete vytvářet kolem libovolného ze tří parametrů s následující syntaxí:
 
-* Vlastnosti systému: `$<propertyName>` nebo`{$<propertyName>}`
-* Vlastnosti aplikace:`<propertyName>`
-* Vlastnosti textu:`$body.<propertyName>`
+* Vlastnosti systému: `$<propertyName>` nebo `{$<propertyName>}`
+* Vlastnosti aplikace: `<propertyName>`
+* Vlastnosti textu: `$body.<propertyName>`
 
 Příklady, jak vytvářet dotazy na vlastnosti zpráv, najdete v tématu [výrazy dotazů směrování zpráv ze zařízení do cloudu](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 

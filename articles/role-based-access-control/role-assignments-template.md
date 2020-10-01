@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 09/29/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 939d78fb75dc69af91cbc920fadce69945a24e39
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 400f0b1b55136f133c9ad01fd0ba4b5dbc5e6bcb
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447729"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612740"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Přidání přiřazení rolí Azure pomocí šablon Azure Resource Manager
 
@@ -52,6 +52,18 @@ $objectid = (Get-AzADGroup -DisplayName "{name}").id
 objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
 ```
 
+### <a name="managed-identities"></a>Spravované identity
+
+Pokud chcete získat ID spravované identity, můžete použít příkaz [Get-AzAdServiceprincipal](/powershell/module/az.resources/get-azadserviceprincipal) nebo [AZ AD SP](/cli/azure/ad/sp) .
+
+```azurepowershell
+$objectid = (Get-AzADServicePrincipal -DisplayName <Azure resource name>).id
+```
+
+```azurecli
+objectid=$(az ad sp list --display-name <Azure resource name> --query [].objectId --output tsv)
+```
+
 ### <a name="application"></a>Aplikace
 
 Pokud chcete získat ID instančního objektu (identity používaného aplikací), můžete použít příkazy [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) nebo [AZ AD SP list](/cli/azure/ad/sp#az-ad-sp-list) . U instančního objektu použijte ID objektu, **nikoli** ID aplikace.
@@ -77,7 +89,7 @@ Následující šablona ukazuje základní způsob, jak přidat přiřazení rol
 Chcete-li použít šablonu, je nutné provést následující akce:
 
 - Vytvořit nový soubor JSON a zkopírovat šablonu
-- Nahraďte `<your-principal-id>` ID uživatele, skupiny nebo aplikace, které chcete přiřadit roli.
+- Nahraďte `<your-principal-id>` ID uživatele, skupiny, spravované identity nebo aplikace, ke které se má přiřadit role.
 
 ```json
 {
@@ -120,7 +132,7 @@ Předchozí šablona není příliš flexibilní. Následující šablona použ�
 
 Chcete-li použít šablonu, je nutné zadat následující vstupy:
 
-- ID uživatele, skupiny nebo aplikace, které se má přiřadit role
+- ID uživatele, skupiny, spravované identity nebo aplikace, ke které se role přiřadí
 - Jedinečné ID, které se bude používat pro přiřazení role, nebo můžete použít výchozí ID.
 
 ```json
@@ -214,7 +226,7 @@ Následující šablona znázorňuje:
 
 Chcete-li použít šablonu, je nutné zadat následující vstupy:
 
-- ID uživatele, skupiny nebo aplikace, které se má přiřadit role
+- ID uživatele, skupiny, spravované identity nebo aplikace, ke které se role přiřadí
 
 ```json
 {

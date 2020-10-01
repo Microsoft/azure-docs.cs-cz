@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Knihovna Microsoft Authentication Library (MSAL) pro iOS & macOS | Azure'
+title: 'Kurz: Vytvoření aplikace pro iOS nebo macOS, která používá Microsoft Identity Platform pro ověřování | Azure'
 titleSuffix: Microsoft identity platform
-description: Přečtěte si, jak aplikace pro iOS a macOS (SWIFT) můžou volat rozhraní API, které vyžaduje přístupové tokeny pomocí platformy Microsoft identity.
+description: V tomto kurzu vytvoříte aplikaci pro iOS nebo macOS, která používá Microsoft Identity Platform k přihlašování uživatelů a získání přístupového tokenu pro volání rozhraní API Microsoft Graph jménem.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,20 +13,33 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 238f8426ae51bec64dfdb5edaa3107ca1f430914
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 70194c7adc55a00c5cb65928daac184499eb124d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256904"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611108"
 ---
-# <a name="sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Přihlášení uživatelů a volání Microsoft Graph z aplikace pro iOS nebo macOS
+# <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Kurz: přihlášení uživatelů a volání Microsoft Graph z aplikace pro iOS nebo macOS
 
 V tomto kurzu se naučíte integrovat aplikaci pro iOS nebo macOS s platformou Microsoft identity. Aplikace se přihlásí k uživateli, získá přístupový token pro volání rozhraní Microsoft Graph API a vytvoří požadavek na rozhraní Microsoft Graph API.
 
-Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních účtů Microsoft (včetně outlook.com, live.com a dalších) a pracovních nebo školních účtů z jakékoli společnosti nebo organizace, která používá Azure Active Directory.
+Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních účtů Microsoft (včetně outlook.com, live.com a dalších) a pracovních nebo školních účtů z jakékoli společnosti nebo organizace, která používá Azure Active Directory. Tento kurz se týká aplikací pro iOS i macOS. Některé kroky se mezi těmito dvěma platformami liší.
 
-## <a name="how-this-tutorial-works"></a>Jak tento kurz funguje
+V tomto kurzu:
+
+> [!div class="checklist"]
+> * Vytvoření projektu aplikace pro iOS nebo macOS v *Xcode*
+> * Registrace aplikace v Azure Portal
+> * Přidat kód pro podporu přihlášení a odhlášení uživatele
+> * Přidat kód pro volání rozhraní Microsoft Graph API
+> * Otestování aplikace
+
+## <a name="prerequisites"></a>Předpoklady
+
+- [Xcode 11. x +](https://developer.apple.com/xcode/)
+
+## <a name="how-tutorial-app-works"></a>Jak funguje aplikace kurz
 
 ![Ukazuje, jak ukázková aplikace vygenerovaná tímto kurzem funguje](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro.svg)
 
@@ -42,16 +55,10 @@ A konkrétně:
 
 Tato ukázka implementuje ověřování pomocí knihovny Microsoft Authentication Library (MSAL). MSAL bude automaticky obnovovat tokeny, poskytovat jednotné přihlašování (SSO) mezi ostatními aplikacemi na zařízení a spravovat účty.
 
-Tento kurz se týká aplikací pro iOS i macOS. Některé kroky se mezi těmito dvěma platformami liší.
+Pokud chcete stáhnout dokončenou verzi aplikace, kterou jste vytvořili v tomto kurzu, můžete najít obě verze na GitHubu:
 
-## <a name="prerequisites"></a>Požadavky
-
-- K sestavení aplikace v této příručce se vyžaduje XCode verze 11. x nebo vyšší. XCode si můžete stáhnout z [Mac App Storu](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "Adresa URL pro stažení XCode").
-- Knihovna Microsoft Authentication Library ([MSAL. Framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Můžete použít Správce závislostí nebo přidat knihovnu ručně. Níže uvedené pokyny vám ukážou, jak.
-
-V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kurz místo toho, Stáhněte si kód:
-- [Ukázkový kód iOS](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
-- [vzorový kód macOS](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
+- [Ukázka kódu pro iOS](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/) (GitHub)
+- [Ukázka kódu MacOS](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/) (GitHub)
 
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
@@ -64,7 +71,7 @@ V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kur
 
 ## <a name="register-your-application"></a>Registrace aplikace
 
-1. Přejít na [Azure Portal](https://aka.ms/MobileAppReg)
+1. Přejděte na web [Azure Portal](https://aka.ms/MobileAppReg).
 2. Otevřete okno Registrace aplikací a vyberte **+ Nová registrace**.
 3. Zadejte **název** aplikace a pak bez nastavení identifikátoru URI přesměrování.
 4. V části **podporované typy účtů** vyberte **účty v jakémkoli adresáři organizace (libovolný Azure AD Directory – víceklientské klienty) a osobní účty Microsoft (např. Skype, Xbox)** .
@@ -159,7 +166,7 @@ Přidejte novou skupinu řetězce klíčů k **funkcím podepisování projektu 
 
 V tomto kroku se zaregistrujete `CFBundleURLSchemes` tak, aby se uživatel mohl po přihlášení přesměrovat zpátky do aplikace. Díky `LSApplicationQueriesSchemes` tomu také umožňuje, aby vaše aplikace mohla využívat Microsoft Authenticator.
 
-V Xcode otevřete `Info.plist` jako soubor zdrojového kódu a do oddílu přidejte následující `<dict>` . Nahraďte `[BUNDLE_ID]` hodnotou, kterou jste použili v Azure Portal, který je v případě, že jste kód stáhli `com.microsoft.identitysample.MSALiOS` . Pokud vytváříte vlastní projekt, vyberte projekt v Xcode a otevřete kartu **Obecné** . Identifikátor sady prostředků se zobrazí v oddílu **Identita** .
+V Xcode otevřete `Info.plist` jako soubor zdrojového kódu a do oddílu přidejte následující `<dict>` . Nahraďte `[BUNDLE_ID]` hodnotou, kterou jste použili v Azure Portal. Pokud jste kód stáhli, je identifikátor sady prostředků `com.microsoft.identitysample.MSALiOS` . Pokud vytváříte vlastní projekt, vyberte projekt v Xcode a otevřete kartu **Obecné** . Identifikátor sady prostředků se zobrazí v oddílu **Identita** .
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -509,7 +516,7 @@ Do třídy přidejte následující kód `ViewController` :
 
 #### <a name="get-a-token-interactively"></a>Interaktivní získání tokenu
 
-Následující kód získá token poprvé, a to vytvořením `MSALInteractiveTokenParameters` objektu a voláním `acquireToken` . Dále přidáte kód, který:
+Následující fragment kódu získá token poprvé, a to vytvořením `MSALInteractiveTokenParameters` objektu a voláním `acquireToken` . Dále přidáte kód, který:
 
 1. Vytvoří `MSALInteractiveTokenParameters` s rozsahy.
 2. Volání `acquireToken()` s vytvořenými parametry.
@@ -628,7 +635,7 @@ Chcete-li získat aktualizovaný token tiše, přidejte do třídy následujíc�
 
 Jakmile máte token, může ji aplikace v hlavičce HTTP použít k provedení autorizované žádosti na Microsoft Graph:
 
-| klíč záhlaví    | hodnota                 |
+| klíč záhlaví    | value                 |
 | ------------- | --------------------- |
 | Autorizace | Nosný \<access-token> |
 
@@ -847,4 +854,7 @@ Po přihlášení aplikace zobrazí data vrácená z Microsoft Graphho `/me` kon
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud potřebujete podporovat Firstline pracovní procesy, které sdílejí zařízení mezi posuny, přečtěte si téma [režim sdíleného zařízení pro zařízení s iOS](msal-ios-shared-devices.md).
+Přečtěte si další informace o vytváření mobilních aplikací, které volají chráněná webová rozhraní API v naší řadě scénářů s více částmi.
+
+> [!div class="nextstepaction"]
+> [Scénář: mobilní aplikace, která volá webová rozhraní API](scenario-mobile-overview.md)

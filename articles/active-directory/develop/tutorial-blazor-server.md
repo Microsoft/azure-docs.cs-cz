@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: c696d8834c24a792432469bf7b1adffc87f718ba
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 42aa51fdd3b0da5a0d438ba46b39bada159aeba6
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91373662"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611467"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Kurz: Vytvoření aplikace serveru Blazor, která pro ověřování používá platformu Microsoft Identity Platform
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 > * Ověřování a autorizace pomocí Microsoft. identity. Web
 > * Načtěte data z chráněného webového rozhraní API Microsoft Graph
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Sada .NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - Tenant služby Azure AD, kde můžete zaregistrovat aplikaci. Pokud nemáte přístup k tenantovi služby Azure AD, můžete si ho zaregistrovat pomocí [vývojářského programu Microsoft 365](https://developer.microsoft.com/microsoft-365/dev-program) nebo vytvořením [bezplatného účtu Azure](https://azure.microsoft.com/free).
@@ -40,7 +40,7 @@ Každá aplikace, která používá Azure Active Directory (Azure AD) pro ověř
 
 V části **ověřování**  >  **implicitního udělení**zaškrtněte políčka pro **přístupové tokeny** a **tokeny ID**a pak vyberte tlačítko **Uložit** .
 
-Vzhledem k tomu, že aplikace volá chráněné rozhraní API (v tomto případě Microsoft Graph), potřebuje klientský klíč klienta, aby ověřil jeho identitu, když požádá o přístupový token pro volání rozhraní API. 
+Vzhledem k tomu, že aplikace volá chráněné rozhraní API (v tomto případě Microsoft Graph), potřebuje klientský klíč klienta, aby ověřil jeho identitu, když požádá o přístupový token pro volání rozhraní API.
 
 1. V rámci stejné registrace aplikace vyberte v části **Spravovat**možnost **certifikáty & tajných**kódů.
 2. Vytvořte **nový tajný klíč klienta** , který nikdy nevyprší.
@@ -48,7 +48,7 @@ Vzhledem k tomu, že aplikace volá chráněné rozhraní API (v tomto případ�
 
 ## <a name="create-the-app-using-the-net-cli"></a>Vytvoření aplikace pomocí rozhraní .NET CLI
 
-Spuštěním následujícího příkazu Stáhněte šablony pro Microsoft. identity. Web, které využijeme v tomto kurzu. 
+Spuštěním následujícího příkazu Stáhněte šablony pro Microsoft. identity. Web, které využijeme v tomto kurzu.
 
 ```dotnetcli
 dotnet new --install Microsoft.Identity.Web.ProjectTemplates::0.4.0-preview
@@ -74,19 +74,19 @@ Teď přejděte do svého editoru do nové aplikace Blazor a do souboru *appsett
 
 ## <a name="test-the-app"></a>Otestování aplikace
 
-Nyní můžete sestavit a spustit aplikaci. Při spuštění této šablony aplikace je nutné zadat rozhraní, které se má spustit pomocí--frameworku. V tomto kurzu se používá sada .NET Core 3,1 SDK. 
+Nyní můžete sestavit a spustit aplikaci. Při spuštění této šablony aplikace je nutné zadat rozhraní, které se má spustit pomocí--frameworku. V tomto kurzu se používá sada .NET Core 3,1 SDK.
 
 ```dotnetcli
 dotnet run --framework netcoreapp3.1
 ```
 
-V prohlížeči přejděte na `https://localhost:5001` adresu a přihlaste se pomocí uživatelského účtu Azure AD a podívejte se na spuštěnou aplikaci. 
+V prohlížeči přejděte na `https://localhost:5001` adresu a přihlaste se pomocí uživatelského účtu Azure AD a podívejte se na spuštěnou aplikaci.
 
 ## <a name="retrieving-data-from-microsoft-graph"></a>Načítání dat z Microsoft Graph
 
 [Microsoft Graph](/graph/overview) nabízí řadu rozhraní API, která poskytují přístup k datům Microsoft 365 vašich uživatelů. Pomocí platformy Microsoft Identity jako poskytovatele identity vaší aplikace máte jednodušší přístup k těmto informacím, protože Microsoft Graph přímo podporuje tokeny vydané platformou Microsoft identity. V této části můžete přidat kód, který zobrazí e-maily přihlášeného uživatele na stránce načíst data aplikace.
 
-Než začnete, odhlaste se od své aplikace, protože budete provádět změny požadovaných oprávnění a váš aktuální token nebude fungovat. Pokud jste to ještě neudělali, spusťte aplikaci znovu a před aktualizací kódu níže vyberte možnost **Odhlásit** se. 
+Než začnete, odhlaste se od své aplikace, protože budete provádět změny požadovaných oprávnění a váš aktuální token nebude fungovat. Pokud jste to ještě neudělali, spusťte aplikaci znovu a před aktualizací kódu níže vyberte možnost **Odhlásit** se.
 
 Teď aktualizujte registraci a kód vaší aplikace, abyste si vyžádají e-mail uživatele a zobrazili zprávy v aplikaci. Chcete-li to dosáhnout, nejprve zvětšete oprávnění registrace aplikace v Azure AD, aby bylo možné povolit přístup k e-mailovým datům. Potom do aplikace Blazor přidejte kód pro načtení a zobrazení těchto dat na jedné ze stránek.
 
@@ -201,5 +201,7 @@ Po udělení souhlasu přejděte na stránku načíst data a přečtěte si pár
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Osvědčené postupy a doporučení pro Microsoft Identity Platform](./identity-platform-integration-checklist.md)
-- [Základy Microsoft Identity Web](https://github.com/AzureAD/microsoft-identity-web/wiki/Microsoft-Identity-Web-basics)
+Přečtěte si o volání vytváření webových aplikací, které přihlásí uživatele v naší řadě scénářů s více částmi:
+
+> [!div class="nextstepaction"]
+> [Scénář: webová aplikace, která se přihlásí uživatelům](scenario-web-app-sign-user-overview.md)

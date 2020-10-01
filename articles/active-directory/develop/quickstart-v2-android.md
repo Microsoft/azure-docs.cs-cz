@@ -1,6 +1,7 @@
 ---
-title: Microsoft Identity Platform Android – rychlý Start | Azure
-description: Přečtěte si, jak můžou aplikace pro Android volat rozhraní API, které vyžaduje přístupové tokeny pomocí koncového bodu Microsoft Identity Platform.
+title: 'Rychlý Start: přidání přihlášení pomocí Microsoftu do aplikace pro Android | Azure'
+titleSuffix: Microsoft identity platform
+description: V tomto rychlém startu se dozvíte, jak můžou aplikace pro Android volat rozhraní API, které vyžaduje přístupové tokeny vydané platformou Microsoft identity.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: a46cd1b916edeae8a24fb997db46e5a0651567cb
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 37859a8571355dcd61175d7b1b4d9888e058bf3a
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115267"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612893"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
 
@@ -24,17 +25,14 @@ V tomto rychlém startu se používá ukázka kódu, která předvádí, jak se 
 
 Aplikace musí být reprezentovány objektem aplikace v Azure Active Directory tak, aby platforma identity Microsoftu mohla poskytovat tokeny vaší aplikaci.
 
-> [!div renderon="docs"]
-> V zájmu usnadnění je ukázka kódu dodávána s výchozí předem `redirect_uri` nakonfigurovanou v `AndroidManifest.xml` souboru, takže nemusíte nejdřív registrovat vlastní objekt aplikace. A `redirect_uri` je částečně založený na podpisovém klíči vaší aplikace. Vzorový projekt je předem nakonfigurovaný pomocí podpisového klíče, aby zadaný `redirect_uri` bude fungovat. Chcete-li získat další informace o registraci objektu aplikace a jeho integraci s vaší aplikací, přečtěte si téma [přihlášení uživatelů a zavolejte Microsoft Graph z kurzu aplikace pro Android](tutorial-v2-android.md) .
+## <a name="prerequisites"></a>Předpoklady
 
-
-> [!NOTE]
-> **Požadavky**
-> * Android Studio 
-> * Android 16 +
+* Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Android Studio
+* Android 16 +
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal 
+> ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
 >  Aby ukázka kódu pro tento rychlý Start fungovala, je nutné přidat identifikátor URI pro přesměrování, který je kompatibilní s zprostředkovatelem ověřování.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
@@ -42,15 +40,15 @@ Aplikace musí být reprezentovány objektem aplikace v Azure Active Directory t
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Už nakonfigurované](media/quickstart-v2-android/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 >
-> ### <a name="step-2-download-the-project"></a>Krok 2: Stažení projektu 
+> ### <a name="step-2-download-the-project"></a>Krok 2: Stažení projektu
 > [!div class="sxs-lookup" renderon="portal"]
 > Spusťte projekt pomocí Android Studio.
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: vaše aplikace je nakonfigurovaná a připravená ke spuštění.
-> Nakonfigurovali jsme projekt s hodnotami vlastností vaší aplikace a je připraven ke spuštění. 
+> Nakonfigurovali jsme projekt s hodnotami vlastností vaší aplikace a je připraven ke spuštění.
 > Ukázková aplikace se spustí na obrazovce **režimu jednoho účtu** . Ve výchozím nastavení je k dispozici výchozí obor ( **User. Read**), který se používá při čtení dat profilu během volání rozhraní API Microsoft Graph. Ve výchozím nastavení je k dispozici adresa URL pro volání rozhraní API Microsoft Graph. Oba tyto typy můžete změnit, pokud chcete.
 >
 > ![Ukázková aplikace MSAL ukazující použití jednoho a více účtů](./media/quickstart-v2-android/quickstart-sample-app.png)
@@ -112,7 +110,7 @@ Nyní se podrobněji podíváme na tyto soubory a v každém z nich budete volat
 
 MSAL ([com. Microsoft. identity. Client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) je knihovna používaná k přihlašování uživatelů a žádosti o tokeny používané pro přístup k rozhraní API chráněnému platformou Microsoft identity. Gradle 3.0 + nainstaluje knihovnu, když přidáte následující do **skriptu Gradle**  >  **Build. Gradle (Module: App)** v části **závislosti**:
 
-```gradle  
+```gradle
 implementation 'com.microsoft.identity.client:msal:1.+'
 ```
 
@@ -169,7 +167,7 @@ PublicClientApplication.createSingleAccountPublicClientApplication(getContext(),
 
 V `SingleAccountModeFragment.java` kódu, který se má přihlašovat uživateli, se nachází v `initializeUI()` `signInButton` obslužné rutině Click.
 
-`signIn()`Před pokusem o získání tokenů volejte volání. `signIn()`se chová stejně, jako by `acquireToken()` byl volán, což vede k interaktivní výzvě pro uživatele, aby se přihlásili.
+`signIn()`Před pokusem o získání tokenů volejte volání. `signIn()` se chová stejně, jako by `acquireToken()` byl volán, což vede k interaktivní výzvě pro uživatele, aby se přihlásili.
 
 Přihlášení uživatele je asynchronní operace. Zpětné volání, které volá rozhraní Microsoft Graph API a aktualizuje uživatelské rozhraní po přihlášení uživatele:
 
@@ -209,7 +207,7 @@ Některé situace, kdy se uživatel může zobrazit výzva k výběru účtu, za
 * Když vaše aplikace požaduje při prvním pokusu o přístup k prostředku
 * Pokud jsou vyžadovány MFA nebo jiné zásady podmíněného přístupu
 
-Kód pro interaktivní získání tokenu, který je s uživatelským ROZHRANÍm, které bude zahrnovat uživatele, je v, v `SingleAccountModeFragment.java` `initializeUI()` , v `callGraphApiInteractiveButton` obslužné rutině Click:
+Kód pro interaktivní získání tokenu, který je s uživatelským ROZHRANÍm, které bude zahrnovat uživatele, je v, v  `SingleAccountModeFragment.java` `initializeUI()` , v `callGraphApiInteractiveButton` obslužné rutině Click:
 
 ```java
 /**
@@ -294,11 +292,11 @@ private void callGraphAPI(final IAuthenticationResult authenticationResult) {
 
 Toto je konfigurační soubor pro aplikaci MSAL, která používá jediný účet.
 
-Vysvětlení těchto polí najdete v tématu Vysvětlení [konfiguračního souboru pro Android MSAL](msal-configuration.md) .
+Vysvětlení těchto polí najdete v tématu Vysvětlení [konfiguračního souboru pro Android MSAL ](msal-configuration.md) .
 
 Všimněte si přítomnosti `"account_mode" : "SINGLE"` , která nakonfiguruje tuto aplikaci tak, aby používala jediný účet.
 
-`"client_id"`je předem nakonfigurovaný tak, aby používal registraci objektu aplikace, kterou Microsoft udržuje.
+`"client_id"` je předem nakonfigurovaný tak, aby používal registraci objektu aplikace, kterou Microsoft udržuje.
 `"redirect_uri"`je předem nakonfigurovaný tak, aby používal podpisový klíč, který je k dispozici v ukázce kódu.
 
 ```json
@@ -352,7 +350,7 @@ Vytvořený `MultipleAccountPublicClientApplication` objekt je uložen v proměn
 
 #### <a name="load-an-account"></a>Načtení účtu
 
-Více aplikací účtu obvykle volá `getAccounts()` Výběr účtu, který se má použít pro operace MSAL. Kód pro načtení účtu je v `MultipleAccountModeFragment.java` souboru v `loadAccounts()` .  Načtení účtu uživatele je asynchronní operace. Proto zpětné volání zpracovává situace při načtení účtu, změny nebo dojde k chybě.
+Více aplikací účtu obvykle volá `getAccounts()` Výběr účtu, který se má použít pro operace MSAL. Kód pro načtení účtu je v `MultipleAccountModeFragment.java` souboru v  `loadAccounts()` .  Načtení účtu uživatele je asynchronní operace. Proto zpětné volání zpracovává situace při načtení účtu, změny nebo dojde k chybě.
 
 ```java
 /**
@@ -384,9 +382,9 @@ private void loadAccounts() {
 Některé situace, kdy se uživatel může zobrazit výzva k výběru účtu, zadání přihlašovacích údajů nebo vyjádření souhlasu s oprávněními, které vaše aplikace požaduje:
 
 * Při prvním přihlášení uživatele k aplikaci
-* Pokud uživatel resetuje heslo, bude muset zadat své přihlašovací údaje. 
-* Pokud je souhlas odvolán 
-* Pokud vaše aplikace explicitně vyžaduje souhlas 
+* Pokud uživatel resetuje heslo, bude muset zadat své přihlašovací údaje.
+* Pokud je souhlas odvolán
+* Pokud vaše aplikace explicitně vyžaduje souhlas
 * Když vaše aplikace požaduje při prvním pokusu o přístup k prostředku
 * Pokud jsou vyžadovány MFA nebo jiné zásady podmíněného přístupu
 
@@ -450,11 +448,11 @@ mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelected
 
 Toto je konfigurační soubor pro aplikaci MSAL, která používá více účtů.
 
-Vysvětlení různých polí najdete v tématu Vysvětlení [konfiguračního souboru pro Android MSAL](msal-configuration.md) .
+Vysvětlení různých polí najdete v tématu Vysvětlení [konfiguračního souboru pro Android MSAL ](msal-configuration.md) .
 
 Na rozdíl od [auth_config_single_account.js](#auth_config_single_accountjson) konfiguračního souboru má tento konfigurační soubor místo, `"account_mode" : "MULTIPLE"` `"account_mode" : "SINGLE"` protože se jedná o aplikaci s více účty.
 
-`"client_id"`je předem nakonfigurovaný tak, aby používal registraci objektu aplikace, kterou Microsoft udržuje.
+`"client_id"` je předem nakonfigurovaný tak, aby používal registraci objektu aplikace, kterou Microsoft udržuje.
 `"redirect_uri"`je předem nakonfigurovaný tak, aby používal podpisový klíč, který je k dispozici v ukázce kódu.
 
 ```json
@@ -476,20 +474,11 @@ Na rozdíl od [auth_config_single_account.js](#auth_config_single_accountjson) k
 }
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Zjistěte, jak vytvořit aplikaci použitou v tomto rychlém startu
-
-Vyzkoušejte si [uživatele přihlášení a zavolejte Microsoft Graph z kurzu aplikace pro Android](tutorial-v2-android.md) , kde najdete podrobný Průvodce vytvořením aplikace pro Android, která získá přístupový token a používá ho k volání rozhraní Microsoft Graph API.
+Přejděte k kurzu pro Android, ve kterém vytvoříte aplikaci pro Android, která získá přístupový token z platformy Microsoft identity a používá ho k volání rozhraní Microsoft Graph API.
 
 > [!div class="nextstepaction"]
-> [Kurz volání Graph API pro Android](./tutorial-v2-android.md)
-
-### <a name="msal-for-android-library-wiki"></a>Wiki knihovny MSAL pro Android
-
-Přečtěte si další informace o knihovně MSAL pro Android:
-
-> [!div class="nextstepaction"]
-> [Wiki knihovny MSAL pro Android](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [Kurz: přihlášení uživatelů a volání Microsoft Graph z aplikace pro Android](tutorial-v2-android.md)

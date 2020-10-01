@@ -4,14 +4,14 @@ description: Jak definovat cíle úložiště, aby mezipaměť prostředí Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 585ea3b5ddd16acb9af83c1c1e0e4aa6ca9e631a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ab9b7fa330964f7db8393334dd8f209efd75573d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826700"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611270"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -19,65 +19,21 @@ ms.locfileid: "87826700"
 
 Pro jednu mezipaměť můžete definovat až deset různých cílů úložiště. Mezipaměť prezentuje všechny cíle úložiště v jednom agregovaném oboru názvů.
 
+Cesty oboru názvů se konfigurují samostatně po přidání cílů úložiště. Obecně platí, že cíl úložiště systému souborů NFS může mít až deset cest oboru názvů nebo více pro některé velké konfigurace. Podrobnosti najdete v [názvech oborů názvů systému souborů NFS](add-namespace-paths.md#nfs-namespace-paths) .
+
 Mějte na paměti, že exporty úložiště musí být dostupné z virtuální sítě vaší mezipaměti. U místních hardwarových úložišť možná budete muset nastavit server DNS, který dokáže přeložit názvy hostitelů pro přístup k úložišti NFS. Další informace najdete v tématu věnovaném [přístupu DNS](hpc-cache-prerequisites.md#dns-access).
 
-Přidejte cíle úložiště po vytvoření mezipaměti. Postup se mírně liší v závislosti na tom, zda přidáváte službu Azure Blob Storage nebo export systému souborů NFS. Podrobnosti jsou uvedené níže.
+Přidejte cíle úložiště po vytvoření mezipaměti. Použijte tento postup:
+
+1. [Vytvoření mezipaměti](hpc-cache-create.md)
+1. Definování cíle úložiště (informace v tomto článku)
+1. [Vytvoření cest směřujících klientovi](add-namespace-paths.md) (pro [agregovaný obor názvů](hpc-cache-namespace.md))
+
+Postup přidání cíle úložiště se mírně liší v závislosti na tom, jestli přidáváte Azure Blob Storage nebo export systému souborů NFS. Podrobnosti jsou uvedené níže.
 
 Kliknutím na obrázek níže si můžete přehrát [ukázku](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) pro vytvoření mezipaměti a Přidání cíle úložiště z Azure Portal.
 
 [![Miniatura videa: mezipaměť prostředí Azure HPC: Instalační program (kliknutím můžete navštívit stránku video)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
-
-## <a name="view-storage-targets"></a>Zobrazit cíle úložiště
-
-### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
-
-Z Azure Portal otevřete instanci mezipaměti a na levém bočním panelu klikněte na možnost **cíle úložiště** . Stránka cíle úložiště obsahuje seznam všech stávajících cílů a obsahuje odkaz na přidání nového.
-
-![snímek obrazovky s odkazem na cíle úložiště na bočním panelu pod nadpisem konfigurovat, což je mezi záhlavími a nastaveními a monitorováním kategorie](media/hpc-cache-storage-targets-sidebar.png)
-
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
-
-Pro zobrazení stávajících cílů úložiště pro mezipaměť použijte možnost [AZ HPC-cache Storage-Target list](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) . Zadejte název mezipaměti a skupinu prostředků (pokud ji nenastavíte globálně).
-
-```azurecli
-az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
-```
-
-Pokud chcete zobrazit podrobnosti o konkrétním cíli úložiště, použijte [příkaz AZ HPC-cache Storage-Target show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) . (Zadejte cíl úložiště podle názvu.)
-
-Příklad:
-
-```azurecli
-$ az hpc-cache storage-target show --cache-name doc-cache0629 --name nfsd1
-
-{
-  "clfs": null,
-  "id": "/subscriptions/<subscription_ID>/resourceGroups/scgroup/providers/Microsoft.StorageCache/caches/doc-cache0629/storageTargets/nfsd1",
-  "junctions": [
-    {
-      "namespacePath": "/nfs1/data1",
-      "nfsExport": "/datadisk1",
-      "targetPath": ""
-    }
-  ],
-  "location": "eastus",
-  "name": "nfsd1",
-  "nfs3": {
-    "target": "10.0.0.4",
-    "usageModel": "WRITE_WORKLOAD_15"
-  },
-  "provisioningState": "Succeeded",
-  "resourceGroup": "scgroup",
-  "targetType": "nfs3",
-  "type": "Microsoft.StorageCache/caches/storageTargets",
-  "unknown": null
-}
-$
-```
-
----
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>Přidat nový cíl úložiště objektů BLOB v Azure
 
@@ -86,6 +42,14 @@ Nový cíl úložiště objektů BLOB potřebuje prázdný kontejner objektů BL
 Stránka Azure Portal **Přidat cíl úložiště** obsahuje možnost vytvořit nový kontejner objektů BLOB těsně před tím, než ho přidáte.
 
 ### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+Z Azure Portal otevřete instanci mezipaměti a na levém bočním panelu klikněte na možnost **cíle úložiště** .
+
+![snímek obrazovky s nastavením > cílovou stránkou úložiště se dvěma existujícími cíli úložiště v tabulce a zvýrazněním tlačítka + Přidat cíl úložiště nad tabulkou](media/add-storage-target-button.png)
+
+Stránka **cíle úložiště** obsahuje seznam všech stávajících cílů a obsahuje odkaz na přidání nového.
+
+Klikněte na tlačítko **Přidat cíl úložiště** .
 
 ![snímek obrazovky s cílovou stránkou pro přidání cílení úložiště s informacemi o novém cíli úložiště Azure Blob Storage](media/hpc-cache-add-blob.png)
 
@@ -102,8 +66,6 @@ Pro definování kontejneru objektů BLOB v Azure zadejte tyto informace.
 * **Kontejner úložiště** – vyberte kontejner objektů BLOB pro tento cíl nebo klikněte na **vytvořit nový**.
 
   ![snímek obrazovky dialogového okna pro zadání názvu a úrovně přístupu (privátní) pro nový kontejner](media/add-blob-new-container.png)
-
-* **Cesta virtuálního oboru názvů** – nastavte cestu k souboru pro klienta pro tento cíl úložiště. Další informace o funkci virtuálního oboru názvů najdete v tématu [Konfigurace agregovaného oboru názvů](hpc-cache-namespace.md) .
 
 Po dokončení klikněte na tlačítko **OK** a přidejte tak cíl úložiště.
 
@@ -163,17 +125,20 @@ Taky ověřte nastavení brány firewall účtu úložiště. Pokud je brána fi
 
 K definování cíle Azure Blob Storage použijte rozhraní [AZ HPC-cache BLOB-Storage-Target Add](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-add) .
 
+> [!NOTE]
+> Příkazy rozhraní příkazového řádku Azure v současné době vyžadují, abyste při přidávání cíle úložiště vytvořili cestu k oboru názvů. To se liší od procesu používaného s rozhraním Azure Portal.
+
 Kromě standardních parametrů skupiny prostředků a názvu mezipaměti musíte poskytnout tyto možnosti pro cíl úložiště:
 
-* ``--name``-Nastavte název, který identifikuje tento cíl úložiště v mezipaměti prostředí Azure HPC.
+* ``--name`` -Nastavte název, který identifikuje tento cíl úložiště v mezipaměti prostředí Azure HPC.
 
 * ``--storage-account``– Identifikátor účtu, v tomto formátu:/subscriptions/*<subscription_id>*/resourceGroups/*<storage_resource_group>*/Providers/Microsoft.Storage/storageAccounts/*<account_name*>
 
   Informace o druhu účtu úložiště, který můžete použít, najdete v článku [požadavky na úložiště objektů BLOB](hpc-cache-prerequisites.md#blob-storage-requirements).
 
-* ``--container-name``-Zadejte název kontejneru, který chcete použít pro tento cíl úložiště.
+* ``--container-name`` -Zadejte název kontejneru, který chcete použít pro tento cíl úložiště.
 
-* ``--virtual-namespace-path``– Nastavte cestu k souboru pro klienta pro tento cíl úložiště. Uzavřete cesty do uvozovek. Další informace o funkci virtuálního oboru názvů najdete [v tématu Naplánování agregovaného oboru názvů](hpc-cache-namespace.md) .
+* ``--virtual-namespace-path`` – Nastavte cestu k souboru pro klienta pro tento cíl úložiště. Uzavřete cesty do uvozovek. Další informace o funkci virtuálního oboru názvů najdete [v tématu Naplánování agregovaného oboru názvů](hpc-cache-namespace.md) .
 
 Příklad příkazu:
 
@@ -188,7 +153,7 @@ az hpc-cache blob-storage-target add --resource-group "hpc-cache-group" \
 
 ## <a name="add-a-new-nfs-storage-target"></a>Přidání nového cíle úložiště systému souborů NFS
 
-Cíl úložiště NFS obsahuje více polí, než je cílem úložiště objektů BLOB. Tato pole určují, jak se dostat k exportu úložiště a jak efektivně ukládat data do mezipaměti. Cíl úložiště NFS také umožňuje vytvořit více cest oboru názvů, pokud má hostitel systému souborů NFS více než jeden export.
+Cíl úložiště NFS má různá nastavení z cíle úložiště objektů BLOB. Nastavení modelu využití pomáhá mezipaměti efektivně ukládat data z tohoto systému úložiště.
 
 ![Snímek obrazovky s definovaným cílovou stránkou pro přidání úložiště s cílovým systémem souborů NFS](media/add-nfs-target.png)
 
@@ -228,6 +193,14 @@ Tato tabulka shrnuje rozdíly v modelu použití:
 
 ### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
+Z Azure Portal otevřete instanci mezipaměti a na levém bočním panelu klikněte na možnost **cíle úložiště** .
+
+![snímek obrazovky s nastavením > cílovou stránkou úložiště se dvěma existujícími cíli úložiště v tabulce a zvýrazněním tlačítka + Přidat cíl úložiště nad tabulkou](media/add-storage-target-button.png)
+
+Stránka **cíle úložiště** obsahuje seznam všech stávajících cílů a obsahuje odkaz na přidání nového.
+
+Klikněte na tlačítko **Přidat cíl úložiště** .
+
 ![Snímek obrazovky s definovaným cílovou stránkou pro přidání úložiště s cílovým systémem souborů NFS](media/add-nfs-target.png)
 
 Zadejte tyto informace pro cíl úložiště zálohovaného systémem souborů NFS:
@@ -240,47 +213,36 @@ Zadejte tyto informace pro cíl úložiště zálohovaného systémem souborů N
 
 * **Model využití** – vyberte jeden z profilů ukládání dat do mezipaměti na základě pracovního postupu, který je popsaný v části [Výběr modelu použití](#choose-a-usage-model) výše.
 
-### <a name="nfs-namespace-paths"></a>Cesty oboru názvů NFS
-
-Cíl úložiště NFS může mít několik virtuálních cest, pokud každá cesta představuje jiný export nebo podadresář ve stejném systému úložiště.
-
-Vytvoření všech cest z jednoho cíle úložiště.
-
-[Cesty oboru názvů můžete kdykoli přidat a upravit](hpc-cache-edit-storage.md) v cíli úložiště.
-
-Zadejte tyto hodnoty pro každou cestu oboru názvů:
-
-* **Cesta virtuálního oboru názvů** – nastavte cestu k souboru pro klienta pro tento cíl úložiště. Další informace o funkci virtuálního oboru názvů najdete v tématu [Konfigurace agregovaného oboru názvů](hpc-cache-namespace.md) .
-
-* **Cesta exportu NFS** – zadejte cestu k exportu NFS.
-
-* **Cesta k podadresáři** : Pokud chcete připojit určitý podadresář exportu, zadejte ho sem. Pokud ne, ponechte toto pole prázdné.
-
 Po dokončení klikněte na tlačítko **OK** a přidejte tak cíl úložiště.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 
-Použijte příkaz Azure CLI [AZ HPC-cache NFS-Storage-Target Add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) k vytvoření cíle úložiště. Zadejte kromě názvu mezipaměti a skupiny prostředků mezipaměti tyto hodnoty:
+Použijte příkaz Azure CLI [AZ HPC-cache NFS-Storage-Target Add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) k vytvoření cíle úložiště.
 
-* ``--name``-Nastavte název, který identifikuje tento cíl úložiště v mezipaměti prostředí Azure HPC.
-* ``--nfs3-target``– IP adresa systému úložiště NFS. (Plně kvalifikovaný název domény můžete použít tady, pokud má vaše mezipaměť přístup k serveru DNS, který dokáže tento název přeložit.)
-* ``--nfs3-usage-model``– Jeden z profilů ukládání dat do mezipaměti popsaný v části [Výběr modelu použití](#choose-a-usage-model)výše.
+> [!NOTE]
+> Příkazy rozhraní příkazového řádku Azure v současné době vyžadují, abyste při přidávání cíle úložiště vytvořili cestu k oboru názvů. To se liší od procesu používaného s rozhraním Azure Portal.
+
+Zadejte kromě názvu mezipaměti a skupiny prostředků mezipaměti tyto hodnoty:
+
+* ``--name`` -Nastavte název, který identifikuje tento cíl úložiště v mezipaměti prostředí Azure HPC.
+* ``--nfs3-target`` – IP adresa systému úložiště NFS. (Plně kvalifikovaný název domény můžete použít tady, pokud má vaše mezipaměť přístup k serveru DNS, který dokáže tento název přeložit.)
+* ``--nfs3-usage-model`` – Jeden z profilů ukládání dat do mezipaměti popsaný v části [Výběr modelu použití](#choose-a-usage-model)výše.
 
   Ověřte názvy modelů použití pomocí příkazu [AZ HPC-cache Usage-model list](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list).
 
-* ``--junction``– Parametr spojení propojuje cestu k virtuálnímu souboru pro klienta s cestou exportu v systému úložiště.
+* ``--junction`` – Parametr spojení propojuje cestu k virtuálnímu souboru pro klienta s cestou exportu v systému úložiště.
 
   Cíl úložiště NFS může mít několik virtuálních cest, pokud každá cesta představuje jiný export nebo podadresář ve stejném systému úložiště. Vytvořte všechny cesty pro jeden systém úložiště na jednom cíli úložiště.
 
-  [Cesty oboru názvů můžete kdykoli přidat a upravit](hpc-cache-edit-storage.md) v cíli úložiště.
+  [Cesty oboru názvů můžete kdykoli přidat a upravit](add-namespace-paths.md) v cíli úložiště.
 
   ``--junction``Parametr používá tyto hodnoty:
 
-  * ``namespace-path``– Cesta k virtuálnímu souboru s přístupem klienta
-  * ``nfs-export``– Export systému úložiště, který se má přidružit k cestě s přístupem klienta
-  * ``target-path``(volitelné) – podadresář exportu (v případě potřeby)
+  * ``namespace-path`` – Cesta k virtuálnímu souboru s přístupem klienta
+  * ``nfs-export`` – Export systému úložiště, který se má přidružit k cestě s přístupem klienta
+  * ``target-path`` (volitelné) – podadresář exportu (v případě potřeby)
 
   Příklad: ``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
 
@@ -325,10 +287,67 @@ Výstup:
 
 ---
 
+## <a name="view-storage-targets"></a>Zobrazit cíle úložiště
+
+Pomocí Azure Portal nebo rozhraní příkazového řádku Azure můžete zobrazit cíle úložiště, které jsou už definované pro vaši mezipaměť.
+
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+Z Azure Portal otevřete instanci mezipaměti a klikněte na možnost **cíle úložiště**, která je pod záhlavím nastavení na levém bočním panelu. Stránka cíle úložiště obsahuje seznam všech stávajících cílů a ovládacích prvků pro jejich přidání nebo odstranění.
+
+Kliknutím na název cíle úložiště otevřete jeho stránku s podrobnostmi.
+
+Další informace najdete v tématu [Úprava cílů úložiště](hpc-cache-edit-storage.md) .
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+Pro zobrazení stávajících cílů úložiště pro mezipaměť použijte možnost [AZ HPC-cache Storage-Target list](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) . Zadejte název mezipaměti a skupinu prostředků (pokud ji nenastavíte globálně).
+
+```azurecli
+az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
+```
+
+Pokud chcete zobrazit podrobnosti o konkrétním cíli úložiště, použijte [příkaz AZ HPC-cache Storage-Target show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) . (Zadejte cíl úložiště podle názvu.)
+
+Příklad:
+
+```azurecli
+$ az hpc-cache storage-target show --cache-name doc-cache0629 --name nfsd1
+
+{
+  "clfs": null,
+  "id": "/subscriptions/<subscription_ID>/resourceGroups/scgroup/providers/Microsoft.StorageCache/caches/doc-cache0629/storageTargets/nfsd1",
+  "junctions": [
+    {
+      "namespacePath": "/nfs1/data1",
+      "nfsExport": "/datadisk1",
+      "targetPath": ""
+    }
+  ],
+  "location": "eastus",
+  "name": "nfsd1",
+  "nfs3": {
+    "target": "10.0.0.4",
+    "usageModel": "WRITE_WORKLOAD_15"
+  },
+  "provisioningState": "Succeeded",
+  "resourceGroup": "scgroup",
+  "targetType": "nfs3",
+  "type": "Microsoft.StorageCache/caches/storageTargets",
+  "unknown": null
+}
+$
+```
+
+---
+
 ## <a name="next-steps"></a>Další kroky
 
-Po vytvoření cílů úložiště Vezměte v úvahu jednu z těchto úloh:
+Po vytvoření cílů úložiště pokračujte v těchto úlohách, abyste mohli vaši mezipaměť připravit na použití:
 
+* [Nastavení agregovaného oboru názvů](add-namespace-paths.md)
 * [Připojení služby Azure HPC Cache](hpc-cache-mount.md)
 * [Přesun dat do služby Azure Blob Storage](hpc-cache-ingest.md)
 
