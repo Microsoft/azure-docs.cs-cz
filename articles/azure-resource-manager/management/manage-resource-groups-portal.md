@@ -32,7 +32,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
 ## <a name="create-resource-groups"></a>Vytvoření skupin prostředků
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Výběr **skupin prostředků**
 
     ![Přidat skupinu prostředků](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
@@ -52,7 +52,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
 ## <a name="list-resource-groups"></a>Seznam skupin prostředků
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Pokud chcete zobrazit seznam skupin prostředků, vyberte **skupiny prostředků** .
 
     ![Procházet skupiny prostředků](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -61,7 +61,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
 ## <a name="open-resource-groups"></a>Otevření skupin prostředků
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Vyberte **skupiny prostředků**.
 3. Vyberte skupinu prostředků, kterou chcete otevřít.
 
