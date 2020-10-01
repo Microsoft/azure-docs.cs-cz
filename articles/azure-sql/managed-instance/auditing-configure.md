@@ -6,19 +6,19 @@ ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 213a4fdb0e064e1c36a04f7190f14fab80cb4daa
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: d8a6ead23e080b5e1e17403873e2dbaedc0ce177
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117356"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620354"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Začínáme s auditováním spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Auditování [spravované instance Azure SQL](sql-managed-instance-paas-overview
 
 V následující části je popsána konfigurace auditování na spravované instanci.
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 2. Vytvořte **kontejner** Azure Storage, ve kterém jsou uložené protokoly auditu.
 
    1. Přejděte do účtu služby Azure Storage, do kterého chcete ukládat protokoly auditu.
@@ -65,7 +65,7 @@ V následující části je popsána konfigurace auditování na spravované ins
 
         ![Tlačítko Vlastnosti kontejneru objektů BLOB](./media/auditing-configure/4_container_properties_button.png)
 
-     1. Zkopírujte adresu URL kontejneru kliknutím na ikonu kopírování a uložte adresu URL (například v poznámkovém bloku) pro budoucí použití. Formát adresy URL kontejneru by měl být`https://<StorageName>.blob.core.windows.net/<ContainerName>`
+     1. Zkopírujte adresu URL kontejneru kliknutím na ikonu kopírování a uložte adresu URL (například v poznámkovém bloku) pro budoucí použití. Formát adresy URL kontejneru by měl být `https://<StorageName>.blob.core.windows.net/<ContainerName>`
 
         ![Adresa URL pro kopírování kontejneru objektů BLOB](./media/auditing-configure/5_container_copy_name.png)
 
@@ -242,7 +242,7 @@ Hlavní rozdíly v `CREATE AUDIT` syntaxi pro auditování do úložiště objek
 - `TO EXTERNAL MONITOR`K dispozici je nová syntaxe umožňující Event Hubs a Azure monitor cíle protokolu.
 - Syntaxe `TO FILE` není **podporovaná** , protože spravovaná instance Azure SQL nemůže přistupovat ke sdíleným složkám souborů systému Windows.
 - Možnost vypnutí není **podporována**.
-- `queue_delay`hodnota 0 není **podporována**.
+- `queue_delay` hodnota 0 není **podporována**.
 
 ## <a name="next-steps"></a>Další kroky
 

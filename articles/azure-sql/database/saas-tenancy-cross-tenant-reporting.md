@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewers: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3542bb502bbb0d41ff6a35902bc38262c26876de
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 03e8719b256fc758874bd7375deed0637da9447e
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361717"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620303"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Generování sestav mezi klienty pomocí distribuovaných dotazů
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -188,7 +188,7 @@ V tomto kurzu jste se naučili:
 
 Teď Vyzkoušejte [kurz analýzy tenantů](saas-tenancy-tenant-analytics.md) , kde můžete prozkoumat extrakci dat do samostatné analytické databáze pro složitější zpracování analýz.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * Další [kurzy, které se sestavují na základě aplikace Wingtip Tickets SaaS Database na klienta](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastický dotaz](elastic-query-overview.md)

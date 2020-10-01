@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 09/14/2020
-ms.openlocfilehash: 08b7fe2b3e959536589cfd425541ad36e3bd1e78
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 385e910befb79daafa532fa816b96d50a46b7d8c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532184"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620082"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
 
@@ -68,16 +68,16 @@ Pro horizontální navýšení kapacity vydává automatické škálování pož
 > [!Important]
 > Funkce automatického škálování Azure HDInsight se 7. listopadu 2019 vydala ve fázi obecné dostupnosti pro clustery Spark a Hadoop a zahrnovala vylepšení, která nebyla k dispozici ve verzi Preview této funkce. Pokud jste vytvořili cluster Spark před 7. listopadem 2019 a chcete ve svém clusteru využívat funkci automatického škálování, doporučujeme vytvořit nový cluster a povolit v něm automatické škálování.
 >
-> Automatické škálování pro interaktivní dotaz (LLAP) bylo vydány pro obecnou dostupnost na 27. srpna 2020. Clustery jsou stále ve verzi Preview. Automatické škálování je k dispozici pouze v clusterech Spark, Hadoop, Interactive Query a HBase.
+> Automatické škálování pro interaktivní dotaz (LLAP) bylo vydáno pro obecnou dostupnost pro HDI 4,0 na 27 2020. srpna. Clustery jsou stále ve verzi Preview. Automatické škálování je k dispozici pouze v clusterech Spark, Hadoop, Interactive Query a HBase.
 
 Následující tabulka popisuje typy clusterů a verze, které jsou kompatibilní s funkcí automatického škálování.
 
-| Verze | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| Verze | Spark | Hive | Interaktivní dotaz | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 bez protokolu ESP | Yes | Yes | Yes | Ano* | No | No | No |
-| HDInsight 4,0 bez protokolu ESP | Yes | Yes | Yes | Ano* | No | No | No |
-| HDInsight 3,6 s ESP | Yes | Yes | Yes | Ano* | No | No | No |
-| HDInsight 4,0 s ESP | Yes | Yes | Yes | Ano* | No | No | No |
+| HDInsight 3,6 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 4,0 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 3,6 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 4,0 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
 
 \* Clustery clusterů se dají konfigurovat jenom pro škálování na základě plánu, nikoli na základě zatížení.
 
@@ -225,7 +225,7 @@ Stav clusteru uvedený v Azure Portal vám může pomáhat monitorovat aktivity 
 
 Všechny stavové zprávy clusteru, které se mohou zobrazit, jsou vysvětleny v následujícím seznamu.
 
-| Stav clusteru | Description |
+| Stav clusteru | Popis |
 |---|---|
 | Spuštěno | Cluster pracuje normálně. Všechny předchozí aktivity automatického škálování se úspěšně dokončily. |
 | Doplnění  | Aktualizuje se konfigurace automatického škálování clusteru.  |
@@ -251,7 +251,7 @@ Dokončení operace škálování může trvat 10 až 20 minut. Při nastavován
 
 ### <a name="prepare-for-scaling-down"></a>Příprava na horizontální navýšení kapacity
 
-Během procesu horizontálního navýšení kapacity clusteru vyřadí automatické škálování uzly, aby splňovaly cílovou velikost. Pokud úlohy běží na těchto uzlech, automatické škálování počká, až se úkoly dokončí. Vzhledem k tomu, že každý pracovní uzel také slouží jako role v HDFS, jsou dočasná data přesunuta do zbývajících uzlů. Ujistěte se, že na zbývajících uzlech je dostatek místa pro hostování všech dočasných dat.
+Během procesu horizontálního navýšení kapacity clusteru vyřadí automatické škálování uzly, aby splňovaly cílovou velikost. Pokud úlohy běží na těchto uzlech, automatické škálování počká, až se úlohy dokončí pro clustery Spark a Hadoop. Vzhledem k tomu, že každý pracovní uzel také slouží jako role v HDFS, jsou dočasná data přesunuta do zbývajících uzlů. Ujistěte se, že na zbývajících uzlech je dostatek místa pro hostování všech dočasných dat.
 
 Spuštěné úlohy budou pokračovat. Čekající úlohy budou čekat na plánování s menším počtem dostupných pracovních uzlů.
 
@@ -265,7 +265,7 @@ Automatické škálování pro clustery Hadoop také sleduje použití HDFS. Pok
 
 ### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>Nastavení maximálního počtu souběžných dotazů konfigurace podregistru pro scénář použití ve špičce
 
-Události automatického škálování nemění *maximální počet souběžných dotazů* konfigurace podregistru v Ambari. To znamená, že interaktivní služba pro podregistr Server 2 může v jakémkoli časovém okamžiku zpracovávat pouze daný počet souběžných dotazů, a to i v případě, že je počet procesů démona LLAP škálovat nahoru a dolů na základě zatížení a plánu. Obecným doporučením je nastavení této konfigurace pro scénář špičky využití, aby nedocházelo k ručnímu zásahu.
+Události automatického škálování nemění *maximální počet souběžných dotazů* konfigurace podregistru v Ambari. To znamená, že interaktivní služba pro podregistr Server 2 může v jakémkoli časovém okamžiku zpracovávat pouze daný počet souběžných dotazů, a to i v případě, že se počet procesů démona interaktivních dotazů škáluje nahoru a dolů na základě zatížení a plánu. Obecným doporučením je nastavení této konfigurace pro scénář špičky využití, aby nedocházelo k ručnímu zásahu.
 
 Pokud je ale jen malý počet pracovních uzlů a hodnota maximálního počtu souběžných dotazů je nakonfigurovaná příliš vysoká, může se stát, že dojde k selhání restartování serveru pro podregistr 2. Minimálně potřebujete minimální počet pracovních uzlů, které můžou vyhovovat danému počtu tez AMS (rovnají se maximálnímu počtu současných souběžných dotazů). 
 
@@ -275,11 +275,11 @@ Pokud je ale jen malý počet pracovních uzlů a hodnota maximálního počtu s
 
 Automatické škálování HDInsight používá soubor popisků uzlů k určení, jestli je uzel připravený k provádění úloh. Soubor popisku uzlu je uložený v HDFS se třemi replikami. Pokud je velikost clusteru výrazně zvětšená a existuje velké množství dočasných dat, je pravděpodobné, že všechny tři repliky by mohly být vyřazeny. Pokud k tomu dojde, cluster vstoupí do stavu chyby.
 
-### <a name="llap-daemons-count"></a>Počet LLAP démonů
+### <a name="interactive-query-daemons-count"></a>Počet procesů démon interaktivního dotazu
 
-V případě clusterů LLAP s podporou autoscae škáluje událost automatického horizontálního navýšení nebo snížení kapacity také množství procesů démonů LLAP na počet aktivních pracovních uzlů. Změna v počtu procesů démonů není v `num_llap_nodes` konfiguraci v Ambari trvalá. Pokud se služby pro podprocesy ručně restartují, počet LLAP démonů se resetuje podle konfigurace v Ambari.
+U clusterů interaktivních dotazů s povoleným autoškálou se navíc událost automatického navýšení kapacity (v/v) škáluje nahoru a dolů počet interaktivních démonů dotazů na počet aktivních pracovních uzlů. Změna v počtu procesů démonů není v `num_llap_nodes` konfiguraci v Ambari trvalá. Pokud se služby pro podregistr restartují ručně, počet interaktivních démonů dotazů se resetuje podle konfigurace v Ambari.
 
-Je-li služba LLAP ručně restartována, je třeba ručně změnit `num_llap_node` konfiguraci (počet uzlů potřebných ke spuštění procesu LLAP démona podregistru) v části *pokročilý podregistr-Interactive-ENV* tak, aby odpovídal aktuálnímu počtu aktivních pracovních uzlů.
+Je-li služba interaktivní dotaz ručně restartována, je třeba ručně změnit `num_llap_node` konfiguraci (počet uzlů potřebných ke spuštění procesu démon interaktivního dotazu na podregistr) v části *pokročilý podregistr-Interactive-ENV* tak, aby odpovídal aktuálnímu počtu aktivních pracovních uzlů.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b1a228e9d15a349f032291fb0678bdd0ad9d95b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 69cfe529f3d2b0f956bfbe9d002a5a220b37e19f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048858"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620000"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Použití Azure PowerShell k vytvoření clusteru HDInsight s Azure Data Lake Storage Gen1 (jako další úložiště)
 
@@ -44,7 +44,7 @@ Konfigurace HDInsight pro práci s Data Lake Storage Gen1 pomocí prostředí Po
 * Vytvoření clusteru HDInsight s ověřováním pro Data Lake Storage Gen1
 * Spuštění testovací úlohy na clusteru
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -77,7 +77,7 @@ Pomocí těchto kroků vytvořte účet Data Lake Storage Gen1.
     ```
 
    > [!NOTE]
-   > Pokud se zobrazí chybová zpráva podobná `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` při registraci Data Lake Storage Gen1 poskytovatele prostředků, je možné, že vaše předplatné není pro data Lake Storage Gen1 na seznamu povolených. Ujistěte se, že jste povolili předplatné Azure pro Data Lake Storage Gen1 pomocí následujících [pokynů](data-lake-store-get-started-portal.md).
+   > Pokud se zobrazí chybová zpráva podobná `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` při registraci Data Lake Storage Gen1 poskytovatele prostředků, je možné, že vaše předplatné není schválené pro data Lake Storage Gen1. Ujistěte se, že jste povolili předplatné Azure pro Data Lake Storage Gen1 pomocí následujících [pokynů](data-lake-store-get-started-portal.md).
    >
    >
 2. Účet Data Lake Storage Gen1 je přidružený ke skupině prostředků Azure. Začněte vytvořením skupiny prostředků Azure.

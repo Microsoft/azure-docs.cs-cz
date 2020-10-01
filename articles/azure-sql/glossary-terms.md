@@ -7,17 +7,17 @@ ms.service: sql-database
 ms.subservice: service
 ms.custom: sqldbrb=4
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/22/2020
-ms.openlocfilehash: f05871c41e2deec3f6a52446844c0b8fd2c9038d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18ff2c9690de1708cd8382d83a0c01662a8e6fb0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84221388"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619776"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database Glosář pojmů
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "84221388"
 |Kontext|Pojem|Další informace|
 |:---|:---|:---|
 |Služba Azure|Azure SQL Database nebo SQL Database|[Azure SQL Database](database/sql-database-paas-overview.md)|
-|Model nákupu|Nákupní model založený na DTU|[Nákupní model založený na DTU](database/service-tiers-dtu.md)|
+|Nákupní model|Nákupní model založený na DTU|[Nákupní model založený na DTU](database/service-tiers-dtu.md)|
 ||Nákupní model založený na virtuálních jádrech|[Nákupní model založený na virtuálních jádrech](database/service-tiers-vcore.md)|
 |Možnost nasazení |Izolovaná databáze|[Izolované databáze](database/single-database-overview.md)|
 ||Elastický fond|[Elastický fond](database/elastic-pool-overview.md)|
@@ -44,7 +44,7 @@ ms.locfileid: "84221388"
 |Kontext|Pojem|Další informace|
 |:---|:---|:---|
 |Služba Azure|Spravovaná instance Azure SQL|[Spravovaná instance SQL](managed-instance/sql-managed-instance-paas-overview.md)|
-|Model nákupu|Nákupní model založený na virtuálních jádrech|[Nákupní model založený na virtuálních jádrech](database/service-tiers-vcore.md)|
+|Nákupní model|Nákupní model založený na virtuálních jádrech|[Nákupní model založený na virtuálních jádrech](database/service-tiers-vcore.md)|
 |Možnost nasazení |Jedna instance|[Jediná instance](managed-instance/sql-managed-instance-paas-overview.md)|
 ||Fond instancí (Preview)|[Fondy instancí](managed-instance/instance-pools-overview.md)|
 |Úroveň služeb|Pro obecné účely Pro důležité obchodní informace|[Úrovně služeb spravované instance SQL](managed-instance/sql-managed-instance-paas-overview.md#service-tiers)|

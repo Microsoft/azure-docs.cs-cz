@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f7c41dc11e7321d6fb9e6f8c030eb74b586a1b3e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d96718176c3cd7486c51e57942c4d12bf0d57992
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075037"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620001"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>Vytváření clusterů HDInsight s Azure Data Lake Storage Gen1 jako výchozí úložiště pomocí prostředí PowerShell
 
@@ -31,7 +31,7 @@ Tady jsou některé důležité informace pro používání služby HDInsight s 
 
 Pokud chcete nakonfigurovat HDInsight pro práci s Data Lake Storage Gen1 pomocí prostředí PowerShell, postupujte podle pokynů v následujících pěti částech.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -67,7 +67,7 @@ Pokud chcete vytvořit účet Data Lake Storage Gen1, udělejte toto:
     ```
 
     > [!NOTE]
-    > Pokud zaregistrujete poskytovatele prostředků Data Lake Storage Gen1 a obdržíte chybu podobnou té `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` , nemusí být vaše předplatné na seznamu povolených Data Lake Storage Gen1. Pokud chcete povolit předplatné Azure pro Data Lake Storage Gen1, postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-get-started-portal.md).
+    > Pokud zaregistrujete poskytovatele prostředků Data Lake Storage Gen1 a obdržíte chybu podobnou této `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` : vaše předplatné nemusí být schválené pro data Lake Storage Gen1. Pokud chcete povolit předplatné Azure pro Data Lake Storage Gen1, postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-get-started-portal.md).
     >
 
 2. Účet Data Lake Storage Gen1 je přidružený ke skupině prostředků Azure. Začněte vytvořením skupiny prostředků.
@@ -281,7 +281,7 @@ hdfs dfs -ls adl:///
 
 Pomocí příkazu můžete také `hdfs dfs -put` Odeslat některé soubory do data Lake Storage Gen1 a potom použít `hdfs dfs -ls` k ověření, jestli se soubory úspěšně nahrály.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 * [Použití Data Lake Storage Gen1 s clustery Azure HDInsight](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
 * [Azure Portal: Vytvoření clusteru HDInsight pro použití Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 

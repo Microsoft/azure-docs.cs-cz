@@ -2,13 +2,13 @@
 title: Nakonfigurujte cluster Kubernetes s povoleným ARC Azure pomocí Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak nakonfigurovat monitorování pomocí Azure Monitor pro kontejnery v clusterech s podporou Kubernetes ARC Azure.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 44512acbd09df449dbba2177bb10f22f480b82d6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: 79a534e4f37fb0154115e43402f031752a603ccb
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977528"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620286"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Povolit monitorování clusteru Kubernetes s povoleným ARC Azure
 
@@ -21,8 +21,6 @@ Azure Monitor pro kontejnery lze povolit pro jedno nebo více existujících nas
 Azure Monitor for Containers podporuje monitorování Azure ARC s povoleným Kubernetes (Preview), jak je popsáno v článku [Přehled](container-insights-overview.md) , s výjimkou následujících funkcí:
 
 - Živá data (Preview)
-
-- [Shromážděte metriky](container-insights-update-metrics.md) z uzlů clusteru a lusky a ukládají je do databáze Azure Monitorch metrik.
 
 Následující je oficiálně podporovaná s Azure Monitor pro kontejnery:
 
@@ -106,7 +104,7 @@ Pokud chcete monitorovat svůj cluster pomocí skriptu prostředí PowerShell ne
 1. Stáhněte a uložte skript do místní složky, která konfiguruje cluster pomocí doplňku monitorování pomocí následujících příkazů:
 
     ```powershell
-    wget https://aka.ms/enable-monitoring-powershell-script -outfile enable-monitoring.ps1
+    Invoke-WebRequest https://aka.ms/enable-monitoring-powershell-script -OutFile enable-monitoring.ps1
     ```
 
 2. Nakonfigurujte `$azureArcClusterResourceId` proměnnou tak, že nastavíte odpovídající hodnoty `subscriptionId` pro `resourceGroupName` a `clusterName` zastupujete ID prostředku vašeho prostředku clusteru Kubernetes s podporou ARC Azure.
@@ -156,7 +154,7 @@ $servicePrincipalClientSecret = [System.Net.NetworkCredential]::new("", $service
 $tenantId = (Get-AzSubscription -SubscriptionId $subscriptionId).TenantId
 ```
 
-Příklad:
+Například:
 
 ```powershell
 .\enable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -servicePrincipalClientId $servicePrincipalClientId -servicePrincipalClientSecret $servicePrincipalClientSecret -tenantId $tenantId -kubeContext $kubeContext -workspaceResourceId $logAnalyticsWorkspaceResourceId -proxyEndpoint $proxyEndpoint
@@ -241,7 +239,7 @@ servicePrincipalClientSecret=$(echo $servicePrincipal | jq -r '.password')
 tenantId=$(echo $servicePrincipal | jq -r '.tenant')
 ```
 
-Příklad:
+Například:
 
 ```bash
 bash enable-monitoring.sh --resource-id $azureArcClusterResourceId --client-id $servicePrincipalClientId --client-secret $servicePrincipalClientSecret  --tenant-id $tenantId --kube-context $kubeContext  --workspace-id $logAnalyticsWorkspaceResourceId --proxy $proxyEndpoint
@@ -270,7 +268,7 @@ Pokud zadáte protokol jako **http**, požadavky HTTP se vytvoří pomocí zabez
 
 ### <a name="configure-using-powershell"></a>Konfigurace prostřednictvím prostředí PowerShell
 
-Zadejte uživatelské jméno a heslo, IP adresu nebo plně kvalifikovaný název domény a číslo portu pro proxy server. Příklad:
+Zadejte uživatelské jméno a heslo, IP adresu nebo plně kvalifikovaný název domény a číslo portu pro proxy server. Například:
 
 ```powershell
 $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
@@ -278,7 +276,7 @@ $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>
 
 ### <a name="configure-using-bash"></a>Konfigurace pomocí bash
 
-Zadejte uživatelské jméno a heslo, IP adresu nebo plně kvalifikovaný název domény a číslo portu pro proxy server. Příklad:
+Zadejte uživatelské jméno a heslo, IP adresu nebo plně kvalifikovaný název domény a číslo portu pro proxy server. Například:
 
 ```bash
 export proxyEndpoint=https://<user>:<password>@<proxyhost>:<port>

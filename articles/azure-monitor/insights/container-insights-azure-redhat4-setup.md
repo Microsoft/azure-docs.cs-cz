@@ -3,12 +3,12 @@ title: Konfigurace Azure Red Hat OpenShift v4. x s Azure Monitor for Containers 
 description: Tento článek popisuje, jak nakonfigurovat monitorování pro cluster Kubernetes s Azure Monitor hostovaným v Azure Red Hat OpenShift verze 4 nebo novější.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 91b5644c13ac560910703454c4052e223f958014
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 63db888419ee691e83ea456fcd7fc28a4d9909fe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499167"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620320"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Konfigurace Azure Red Hat OpenShift v4. x s Azure Monitor for Containers
 
@@ -20,7 +20,7 @@ Azure Monitor for Containers poskytuje bohatou monitorovací prostředí pro clu
 
 Pomocí podporovaných metod popsaných v tomto článku můžete povolit Azure Monitor pro kontejnery pro jedno nebo více existujících nasazení Azure Red Hat OpenShift v4. x.
 
-V případě existujícího clusteru spusťte tento [skript bash v rozhraní příkazového řádku Azure CLI](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create).
+V případě existujícího clusteru spusťte tento [skript bash v rozhraní příkazového řádku Azure CLI](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create&preserve-view=true).
 
 ## <a name="supported-and-unsupported-features"></a>Podporované a nepodporované funkce
 
@@ -29,7 +29,7 @@ Azure Monitor for Containers podporuje monitorování Azure Red Hat OpenShift v4
 - Živá data (Preview)
 - [Shromažďování metrik](container-insights-update-metrics.md) z uzlů clusteru a lusků a jejich ukládání do databáze Azure Monitorch metrik
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure CLI verze 2.0.72 nebo novější  
 
@@ -39,7 +39,7 @@ Azure Monitor for Containers podporuje monitorování Azure Red Hat OpenShift v4
 
 - Nástroj příkazového řádku [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-- [Log Analytics pracovní prostor](../platform/design-logs-deployment.md).
+- [Pracovní prostor služby Log Analytics](../platform/design-logs-deployment.md).
 
     Azure Monitor for Containers podporuje pracovní prostor Log Analytics v oblastech uvedených v [produktech Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Pokud chcete vytvořit vlastní pracovní prostor, můžete ho vytvořit prostřednictvím [Azure Resource Manager](../platform/template-workspace-configuration.md), prostřednictvím [PowerShellu](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)nebo v [Azure Portal](../learn/quick-create-workspace.md).
 
@@ -138,11 +138,11 @@ Výchozí vytvořený pracovní prostor má formát *DefaultWorkspace- \<GUID> -
 Nahraďte hodnoty `azureAroV4ClusterResourceId` `kubeContext` parametrů a.
 
 ```bash
-export azureAroV4ClusterResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>”
+export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
 export kubeContext="<kubeContext name of your ARO v4 cluster>"
 ```
 
-Příklad:
+Například:
 
 `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext`
 
@@ -152,7 +152,7 @@ Po povolení monitorování může trvat přibližně 15 minut, než budete moct
 
 Zobrazení více clusterů v Azure Monitor pro kontejnery zvýrazňuje clustery Azure Red Hat OpenShift, které nemají povolené monitorování na kartě **nemonitorované clustery** . Možnost **Povolit** u vašeho clusteru neinicializuje připojování monitorování z portálu. Budete přesměrováni na tento článek, abyste mohli monitorování povolit ručně podle kroků uvedených výše v tomto článku.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně nebo na domovské stránce vyberte **Azure monitor**.
 

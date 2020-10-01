@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 714ddf69bd8bca70019487576830b319bd25a7c0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d1349ccc5879cf461cd1c6a3c0122173a43e8123
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042811"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619708"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorování a Správa výkonu Azure SQL Database v SaaS aplikaci pro více tenantů
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -242,7 +242,7 @@ Co se v tomto kurzu naučíte:
 [Kurz Obnovení jednoho tenanta](saas-dbpertenant-restore-single-tenant.md)
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * Další [kurzy, které se sestavují na základě SaaS databáze Wingtip Tickets pro každé klientské nasazení aplikace](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastické fondy SQL](elastic-pool-overview.md)

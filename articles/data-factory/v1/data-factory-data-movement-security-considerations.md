@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 19b37472d7decb46825da4760511f1761493c246
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9ae4970383802adad755fff4a6ce382db6ce32fe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441931"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619912"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – požadavky na zabezpečení při přesunu dat
 
@@ -142,7 +142,7 @@ Následující obrázky ukazují použití Správa dat brány pro přesun dat me
 
 ![IPSec VPN s bránou](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>Konfigurace brány firewall a seznam povolených IP adres brány
+### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>Konfigurace brány firewall a filtrování IP adresy brány
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Požadavky na bránu firewall pro místní nebo privátní síť  
 V podniku je **podniková brána firewall** provozována v centrálním směrovači organizace. A **Brána Windows Firewall** běží jako démon na místním počítači, na kterém je brána nainstalovaná. 
@@ -158,7 +158,7 @@ Následující tabulka obsahuje požadavky na **Odchozí porty** a domény pro *
 | `*.azuredatalakestore.net` | 443 | (Volitelné) nutné, když je cíl Azure Data Lake Store | 
 
 > [!NOTE] 
-> Možná budete muset spravovat porty/seznam povolených domén na úrovni brány firewall společnosti podle požadavků příslušných zdrojů dat. Tato tabulka používá v příkladech jenom Azure SQL Database, Azure synapse Analytics Azure Data Lake Store.   
+> Možná budete muset spravovat porty a domény filtrování na úrovni brány firewall společnosti podle požadavků příslušných zdrojů dat. Tato tabulka používá v příkladech jenom Azure SQL Database, Azure synapse Analytics Azure Data Lake Store.   
 
 Následující tabulka uvádí požadavky na **porty** pro **bránu Windows Firewall**.
 
@@ -168,10 +168,10 @@ Následující tabulka uvádí požadavky na **porty** pro **bránu Windows Fire
 
 ![Požadavky na port brány](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
 
-#### <a name="ip-configurations-whitelisting-in-data-store"></a>Konfigurace protokolu IP/seznam povolených v úložišti dat
-Některá úložiště dat v cloudu vyžadují také seznam povolených IP adres počítače, který k nim přistupuje. Ujistěte se, že IP adresa počítače brány je na seznamu povolených nebo nakonfigurovaných v bráně firewall správně.
+#### <a name="ip-configurationsfiltering-in-data-store"></a>Konfigurace a filtrování protokolu IP v úložišti dat
+Některá úložiště dat v cloudu také vyžadují schválení IP adresy počítače, ke kterému přistupuje. Ujistěte se, že IP adresa počítače brány je schválená nebo nakonfigurovaná v bráně firewall správně.
 
-Následující cloudové úložiště dat vyžaduje seznam povolených IP adres počítače brány. Některá z těchto úložišť dat nemusí standardně vyžadovat povolenou IP adresu. 
+Následující cloudová úložiště dat vyžadují schválení IP adresy počítače brány. Některá z těchto úložišť dat ve výchozím nastavení nemusí vyžadovat schválení IP adresy. 
 
 - [Azure SQL Database](../../azure-sql/database/firewall-configure.md) 
 - [Azure Synapse Analytics](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -185,12 +185,10 @@ Následující cloudové úložiště dat vyžaduje seznam povolených IP adres 
 **Odpověď:** Tuto funkci zatím nepodporujeme. Aktivně na ní pracujeme.
 
 **Otázka:** Jaké jsou požadavky na porty, které brána funguje?
-**Odpověď:** Brána umožňuje připojení založená na protokolu HTTP k otevření Internetu. Aby brána mohla toto připojení vytvořit, musí se pro bránu otevřít **Odchozí porty 443 a 80** . Pro aplikaci Správce přihlašovacích údajů otevřete **příchozí Port 8050** jenom na úrovni počítače (ne na úrovni brány firewall pro firmy). Pokud se Azure SQL Database nebo Azure synapse Analytics používá jako zdroj nebo cíl, musíte taky otevřít port **1433** . Další informace najdete v části [Konfigurace brány firewall a seznam povolených IP adres](#firewall-configurations-and-whitelisting-ip-address-of gateway) . 
+**Odpověď:** Brána umožňuje připojení založená na protokolu HTTP k otevření Internetu. Aby brána mohla toto připojení vytvořit, musí se pro bránu otevřít **Odchozí porty 443 a 80** . Pro aplikaci Správce přihlašovacích údajů otevřete **příchozí Port 8050** jenom na úrovni počítače (ne na úrovni brány firewall pro firmy). Pokud se Azure SQL Database nebo Azure synapse Analytics používá jako zdroj nebo cíl, musíte taky otevřít port **1433** . Další informace najdete v části [Konfigurace brány firewall a filtrování IP adres](#firewall-configurations-and-filtering-ip-address-of gateway) . 
 
 **Otázka:** Jaké jsou požadavky na certifikáty pro bránu?
 **Odpověď:** Aktuální brána vyžaduje certifikát, který aplikace Správce přihlašovacích údajů používá pro bezpečné nastavení přihlašovacích údajů úložiště dat. Tento certifikát je certifikát podepsaný svým držitelem vytvořeného a nakonfigurovaného nastavením brány. Místo toho můžete použít vlastní certifikát TLS/SSL. Další informace najdete v části [aplikace Správce přihlašovacích údajů](#click-once-credentials-manager-app) . 
 
 ## <a name="next-steps"></a>Další kroky
 Informace o výkonu aktivity kopírování najdete v tématu [Průvodce laděním a výkonem aktivity kopírování](data-factory-copy-activity-performance.md).
-
- 

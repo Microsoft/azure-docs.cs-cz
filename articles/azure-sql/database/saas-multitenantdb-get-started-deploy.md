@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
-ms.openlocfilehash: 59a7fbbd6f948ec5207522814a1375b806536810
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5363a1b7321bfcbb53b4494b51ee2ea2e7217782
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310083"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619640"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Nasazení a zkoumání horizontálně dělené aplikace pro více tenantů
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -63,7 +63,7 @@ V krocích v této části zadáte hodnotu *uživatele* , která se používá k
 
 Vyberte si své názvy a napište je. 
 
-### <a name="steps"></a>Kroky
+### <a name="steps"></a>Postup
 
 1. Klikněte na následující modré tlačítko **nasadit do Azure** .
    - Otevře Azure Portal pomocí šablony nasazení SaaS lístky Wingtip Tickets.
@@ -244,7 +244,7 @@ V některých případech databáze s více klienty vyžaduje více prostředků
 
 Úlohy vygenerované skriptem generátoru zatížení slouží pouze k ilustraci pro účely.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - Další informace o víceklientské aplikacích SaaS najdete v tématu [vzory návrhu pro víceklientské aplikace SaaS](saas-tenancy-app-design-patterns.md).
 

@@ -8,23 +8,23 @@ manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.date: 08/27/2020
-ms.openlocfilehash: f5851174ba223bd0ab48512b9e75449dcc927a04
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: b7fd495c735116d3b895a55225c1ef55091db4cb
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91300101"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620065"
 ---
-# <a name="prerequisites"></a>Požadavky
-
-Tento krok tohoto kurzu dokončíte tak, že budete mít přístup ke skupině prostředků, ke které jste přiřadili roli **vlastníka** . V této skupině prostředků vytvořte pracovní prostor synapse.
-
-## <a name="create-a-synapse-workspace"></a>Vytvoření pracovního prostoru Synapse
+# <a name="creating-a-synapse-workspace"></a>Vytváření pracovního prostoru synapse
 
 V tomto kurzu se dozvíte, jak vytvořit synapse pracovní prostor, fond SQL a fond Apache Spark. 
 
-## <a name="create-a-synapse-workspace"></a>Vytvoření pracovního prostoru Synapse
+## <a name="prerequisites"></a>Požadavky
+
+Tento krok tohoto kurzu dokončíte tak, že budete mít přístup ke skupině prostředků, ke které jste přiřadili roli **vlastníka** . V této skupině prostředků vytvořte pracovní prostor synapse.
+
+## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>Vytvoření pracovního prostoru synapse na webu Azure Portal
 
 1. Otevřete [Azure Portal](https://portal.azure.com)a v horní části vyhledejte **synapse**.
 1. Ve výsledcích hledání v části **služby**vyberte **Azure synapse Analytics (pracovní prostory verze Preview)**.

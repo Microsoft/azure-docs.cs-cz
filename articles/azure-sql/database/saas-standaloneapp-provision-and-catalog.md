@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: b3d886186d26c398a83643c93b98192fca16df6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efee261478cdc8b9b5349ef4c69ab5fc250315c0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042166"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619453"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Zřízení a zařazení nových tenantů pomocí aplikace na SaaS vzor pro každého tenanta
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,7 +77,7 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 
 ## <a name="provision-the-catalog"></a>Zřízení katalogu
 
-V této úloze se dozvíte, jak zřídit katalog používaný k registraci všech databází tenanta. V tomto programu:
+V této úloze se dozvíte, jak zřídit katalog používaný k registraci všech databází tenanta. V této lekci:
 
 * **Zřízení databáze katalogu** pomocí šablony Azure Resource Management. Databáze je inicializovaná importem souboru BacPac.
 * **Zaregistrujte ukázkové klientské aplikace** , které jste nasadili dříve.  Každý tenant je zaregistrován pomocí klíče vytvořeného z hodnoty hash názvu tenanta.  Název tenanta je také uložen v tabulce rozšíření v katalogu.
@@ -116,7 +116,7 @@ Teď se podívejte na prostředky, které jste vytvořili.
 
 ## <a name="provision-a-new-tenant-application"></a>Zřízení nové klientské aplikace
 
-V této úloze se dozvíte, jak zřídit jednu klientskou aplikaci. V tomto programu:
+V této úloze se dozvíte, jak zřídit jednu klientskou aplikaci. V této lekci:
 
 * **Vytvořte pro tenanta novou skupinu prostředků** .
 * **Aplikaci a databázi zřiďte** do nové skupiny prostředků pomocí šablony Azure Resource Management.  Tato akce zahrnuje inicializaci databáze pomocí společného schématu a referenčních dat importováním souboru BacPac.
@@ -143,7 +143,7 @@ Pak můžete zkontrolovat nové prostředky vytvořené v Azure Portal.
 
 Po dokončení průzkumu ukázky odstraňte všechny skupiny prostředků, které jste vytvořili, abyste zastavili související fakturaci.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - Další informace o aplikacích pro více tenantů SaaS Database najdete v tématu [vzory návrhu pro víceklientské aplikace SaaS](saas-tenancy-app-design-patterns.md).
 

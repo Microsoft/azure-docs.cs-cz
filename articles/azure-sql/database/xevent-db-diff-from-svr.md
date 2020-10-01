@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 7f0f50de3f74f0e8040118035e28b3e905ed5616
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8f73c0789cd0211deeb66af5c7300a81d7b1be0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84046954"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619810"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Rozšířené události v Azure SQL Database 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -66,14 +66,14 @@ Související témata poskytují dva ukázky kódu:
 - Při spuštění příkazu [vytvořit relaci události](/sql/t-sql/statements/create-event-session-transact-sql) na SQL Server použijete klauzuli **on serveru** . Ale na Azure SQL Database místo toho použijete klauzuli **on Database** .
 - Klauzule **on Database** se vztahuje také na příkazy jazyka Transact-SQL v [relaci události ALTER](/sql/t-sql/statements/alter-event-session-transact-sql) a [drop](/sql/t-sql/statements/drop-event-session-transact-sql) .
 
-- Osvědčeným postupem je zahrnout možnost relace události **STARTUP_STATE = on** v **relaci vytvoření události** nebo příkazy pro **změnu relace události** .
+- Osvědčeným postupem je zahrnout možnost relace události **STARTUP_STATE = on** v **relaci vytvoření události**  nebo příkazy pro **změnu relace události** .
   - Hodnota **= on** podporuje automatické restartování po opětovné konfiguraci logické databáze z důvodu převzetí služeb při selhání.
 
 ## <a name="new-catalog-views"></a>Nové zobrazení katalogu
 
 Funkce Rozšířené události je podporována v několika [zobrazeních katalogu](https://msdn.microsoft.com/library/ms174365.aspx). Zobrazení katalogu informují o *metadatech a definicích* relací událostí vytvořených uživatelem v aktuální databázi. Zobrazení nevrací informace o instancích aktivních relací událostí.
 
-| Název<br/>zobrazení katalogu | Description |
+| Název<br/>zobrazení katalogu | Popis |
 |:--- |:--- |
 | **sys. database_event_session_actions** |Vrátí řádek pro každou akci každé události relace události. |
 | **sys. database_event_session_events** |Vrátí řádek pro každou událost v relaci události. |
@@ -87,7 +87,7 @@ V Microsoft SQL Server podobné pohledy v katalogu mají názvy, které obsahuj�
 
 Azure SQL Database má [zobrazení dynamické správy (zobrazení dynamické správy)](https://msdn.microsoft.com/library/bb677293.aspx) , které podporují rozšířené události. Zobrazení dynamické správy vás informuje o *aktivních* relacích událostí.
 
-| Název DMV | Description |
+| Název DMV | Popis |
 |:--- |:--- |
 | **sys. dm_xe_database_session_event_actions** |Vrátí informace o akcích relace události. |
 | **sys. dm_xe_database_session_events** |Vrátí informace o událostech relace. |
