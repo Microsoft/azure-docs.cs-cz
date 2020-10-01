@@ -137,7 +137,7 @@
         - name: Zpracování dat
           href: concept-optimize-data-processing.md
     - name: Trénování modelu
-      displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
+      displayName: 'run config, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
     - name: Distribuované trénování
       displayName: 'parallellization, deep learning, deep neural network, dnn'
@@ -319,16 +319,12 @@
               href: how-to-differential-privacy.md
     - name: Trénování modelů
       items:
-        - name: Odeslání trénovacího běhu
-          displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+        - name: Konfigurace a odeslání trénovacího běhu
+          displayName: 'run config, script run config, scriptrunconfig, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
-        - name: Použití nástrojů pro odhady pro ML
-          items:
-            - name: Vytváření odhadů při trénování
-              href: how-to-train-ml-models.md
-            - name: Ladění hyperparametrů
-              displayName: parameter
-              href: how-to-tune-hyperparameters.md
+        - name: Ladění hyperparametrů
+          displayName: 'parameter, hyperparameter, hyperdrive'
+          href: how-to-tune-hyperparameters.md
         - name: Práce s využitím MLflow
           items:
             - name: Sledování experimentů s využitím MLflow

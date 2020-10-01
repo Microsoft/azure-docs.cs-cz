@@ -69,6 +69,8 @@
           href: export-from-microsoft-flow-logic-app-template.md
         - name: Vytváření stavových a bezstavových pracovních postupů v nástroji Visual Studio Code
           href: create-stateful-stateless-workflows-visual-studio-code.md
+        - name: Volání aplikací logiky z Power Automate a Power Apps
+          href: call-logic-apps-from-power-automate-power-apps.md
         - name: Řízení spouštění pracovních postupů
           items:
             - name: Podmíněné příkazy

@@ -26,7 +26,7 @@
       href: delete-application-portal.md
 - name: Kurzy
   items:
-    - name: 'Integrované aplikace v galerii (např. ServiceNow, Salesforce, Dropbox)'
+    - name: Seznam předem nakonfigurovaných aplikací
       href: /azure/active-directory/saas-apps/
     - name: Přidání místní aplikace prostřednictvím proxy aplikací
       href: application-proxy-add-on-premises-application.md
@@ -142,7 +142,7 @@
       items:
         - name: Prostředky migrace
           href: migration-resources.md
-        - name: Migrace aplikace ADFS do Azure
+        - name: Migrace aplikace AD FS do Azure
           href: migrate-adfs-apps-to-azure.md
         - name: Použití sestavy aktivity aplikací AD FS (Preview)
           href: migrate-adfs-application-activity.md
@@ -260,7 +260,7 @@
               href: application-proxy-sign-in-bad-gateway-timeout-error.md
             - name: Potíže při instalaci konektoru agenta proxy aplikací
               href: application-proxy-connector-installation-problem.md
-            - name: Potíže s přihlašováním
+            - name: Potíže s přihlášením
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: Problémy s CORS v proxy aplikací
               href: application-proxy-understand-cors-issues.md

@@ -97,6 +97,8 @@
       href: ../../azure-functions/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure IoT Hub
       href: ../../iot-hub/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Load Balancer
+      href: ../../load-balancer/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Monitor
       href: ../../azure-monitor/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Machine Learning

@@ -78,6 +78,8 @@
                   href: security-baseline.md
                 - name: Revize zabezpečení
                   href: data-box-security.md
+            - name: Přenos seznamů ACL a metadat
+              href: data-box-file-acls-preservation.md
             - name: Nejčastější dotazy
               href: data-box-faq.md
         - name: Postup

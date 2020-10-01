@@ -4,6 +4,8 @@
   items:
     - name: Co je Azure DB for PostgreSQL?
       href: overview.md
+    - name: Jakou možnost nasazení PostgreSQL zvolit?
+      href: overview-postgres-choose-server-options.md
     - name: Aktualizace služeb
       items:
         - name: Platnost kořenového certifikátu SSL brzy vyprší

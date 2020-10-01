@@ -10,34 +10,24 @@
       items:
         - name: Úvod
           href: get-started.md
-          displayName: 'get, started'
-        - name: 1. Vytvoření pracovního prostoru
+        - name: 1. Vytvoření pracovního prostoru Synapse
           href: get-started-create-workspace.md
-          displayName: 'get, started'
-        - name: 2. Použití fondů SQL
+        - name: 2. Analýza s využitím fondu SQL
           href: get-started-analyze-sql-pool.md
-          displayName: 'get, started'
-        - name: 3. Použití Sparku
+        - name: 3. Analýza s využitím Sparku
           href: get-started-analyze-spark.md
-          displayName: 'get, started'
-        - name: 4. Použití SQL na vyžádání
+        - name: 4. Analýza s využitím SQL na vyžádání
           href: get-started-analyze-sql-on-demand.md
-          displayName: 'get, started'
         - name: 5. Analýza dat v účtu úložiště
           href: get-started-analyze-storage.md
-          displayName: 'get, started'
         - name: 6. Orchestrace s využitím kanálů
           href: get-started-pipelines.md
-          displayName: 'get, started'
         - name: 7. Vizualizace pomocí Power BI
           href: get-started-visualize-power-bi.md
-          displayName: 'get, started'
         - name: 8. Monitor
           href: get-started-monitor.md
-          displayName: 'get, started'
         - name: 9. Seznámení se znalostním centrem
           href: get-started-knowledge-center.md
-          displayName: 'get, started'
     - name: Tahák
       href: overview-cheat-sheet.md
     - name: Nejčastější dotazy
@@ -58,16 +48,16 @@
       href: quickstart-power-bi.md
     - name: Vytváření fondů
       items:
-        - name: Vytvoření fondu SQL s využitím sady Synapse Studio
-          href: quickstart-create-sql-pool-studio.md
+        - name: Vytvoření poznámkového bloku Apache Sparku pomocí webových nástrojů
+          href: quickstart-apache-spark-notebook.md
+        - name: Vytvoření fondu úloh Apache Sparku pomocí webu Azure Portal
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: Vytvoření fondu úloh Apache Sparku s využitím sady Synapse Studio
+          href: quickstart-create-apache-spark-pool-studio.md
         - name: Vytvoření fondu SQL s využitím webu Azure Portal
           href: quickstart-create-sql-pool-portal.md
-        - name: Vytvoření poznámkového bloku
-          href: quickstart-apache-spark-notebook.md
-        - name: Vytvoření fondu úloh Sparku s využitím webu Azure Portal
-          href: quickstart-create-apache-spark-pool-portal.md
-        - name: Vytvoření fondu úloh Sparku s využitím sady Synapse Studio
-          href: quickstart-create-apache-spark-pool-studio.md
+        - name: Vytvoření fondu SQL s využitím sady Synapse Studio
+          href: quickstart-create-sql-pool-studio.md
     - name: Načtení dat s využitím fondů SQL
       items:
         - name: Příkaz COPY
@@ -84,16 +74,12 @@
   items:
     - name: Spouštění aplikací Apache Sparku
       href: ./spark/intellij-tool-synapse.md
-    - name: Spouštění aplikací PySparku pro fondy úloh Sparku
-      href: ./spark/vscode-tool-synapse.md
     - name: Definice úloh Sparku
       href: ./spark/apache-spark-job-definitions.md
     - name: Power BI Desktop
       href: ./sql/tutorial-connect-power-bi-desktop.md
     - name: Odborník na datové vědy
       items:
-        - name: Spuštění regresního experimentu s využitím Azure AutoML
-          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
         - name: Vytvoření modelu klasifikace s využitím knihovny Apache Spark MLlib
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
     - name: Datový analytik
@@ -212,8 +198,8 @@
               href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Jazyk výrazů
               href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Rozdíly oproti Azure Data Factory
-              href: ./data-integration/concepts-data-factory-differences.md
+        - name: Rozdíly oproti Azure Data Factory
+          href: ./data-integration/concepts-data-factory-differences.md
     - name: Spark
       items:
         - name: Přehled
@@ -386,6 +372,22 @@
           href: ../cosmos-db/synapse-link-frequently-asked-questions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Případy použití Synapse Linku
           href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Machine Learning
+      items:
+        - name: Přehled
+          items:
+            - name: Co je strojové učení ve službě Synapse Analytics?
+              href: machine-learning/what-is-machine-learning.md
+        - name: Rychlé starty
+          items:
+            - name: Vytvoření nové služby propojené s Azure Machine Learningem
+              href: machine-learning/quickstart-integrate-azure-machine-learning.md
+        - name: Kurzy
+          items:
+            - name: Průvodce bodováním modelů pro fondy SQL
+              href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
+            - name: Spuštění regresního experimentu s využitím Azure AutoML (bodování v DW)
+              href: ./spark/apache-spark-azure-machine-learning-tutorial.md
     - name: 'Integrace nástrojů (AI, ETL, BI)'
       items:
         - name: Řešení potíží s funkcí Synapse Studio
@@ -478,31 +480,27 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Připojení k Azure Synapse Linku pro Cosmos DB
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: Dotazování analytického úložiště Azure Cosmos DB s využitím Apache Sparku
+            - name: Dotazování analytického úložiště Azure Cosmos DB s využitím Apache Sparku pro Azure Synapse Analytics
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: Kopírování dat ze Synapse Linku do fondu SQL s využitím Apache Sparku
               href: ./synapse-link/how-to-copy-to-sql-pool.md
-            - name: Dotazování analytického úložiště Azure Cosmos DB s využitím SQL na vyžádání
-              href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse SQL
           items:
-            - name: Dotazování externích dat
+            - name: Dotazování dat v úložišti
               items:
                 - name: Přehled
                   href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Dotazování souborů CSV
+                - name: Dotazování souboru CSV
                   href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Dotazování souborů Parquet
                   href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Dotazování vnořených typů Parquet
+                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Dotazování souborů JSON
                   href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Dotazování na Azure Cosmos DB
-                  href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Dotazování vnořených typů
-                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Dotazování složek a několika souborů
                   href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Dotazování dělených souborů pomocí metadat souboru
+                - name: Používání metadat souborů
                   href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Vytváření a používání zobrazení
                   href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

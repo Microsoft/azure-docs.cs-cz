@@ -418,6 +418,8 @@
               href: id-tokens.md
             - name: Přístupové tokeny
               href: access-tokens.md
+            - name: Konfigurace životnosti tokenů
+              href: active-directory-configurable-token-lifetimes.md
             - name: Koncový bod UserInfo
               href: userinfo.md
             - name: Přihlašovací údaje ve formě certifikátu
@@ -467,7 +469,7 @@
       items:
         - name: Přehled
           href: authentication-national-cloud.md
-        - name: Authentication
+        - name: Ověřování
           href: msal-national-cloud.md
     - name: Automatické zřizování uživatelů (SCIM)
       items:
@@ -522,7 +524,7 @@
         - name: Použití atributů rozšíření schématu adresáře v deklaracích identity
           href: active-directory-schema-extensions.md
         - name: Konfigurace životnosti tokenů
-          href: active-directory-configurable-token-lifetimes.md
+          href: configure-token-lifetimes.md
         - name: Zpracování změn souborů cookie SameSite v prohlížeči Chrome
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: Zpracování ITP v Safari
