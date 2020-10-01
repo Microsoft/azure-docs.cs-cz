@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 54c607ebac02a9d7e534d24656a8687e9ff39725
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b97d36a5773eeb82a60330d0398ea19232f72b1e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533175"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613709"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Nastavení vývojového prostředí pro Azure Machine Learning
 
@@ -228,7 +228,7 @@ Použijte tato nastavení:
 | Nastavení |Platí pro| Hodnota |
 |----|---|---|
 | Název clusteru |stál| yourclustername |
-| Modul runtime Databricks |stál|Běhový modul bez ML 6,5 (Scala 2,11, Spark 2.4.3) |
+| Modul runtime Databricks |stál|Běhový modul bez ML 7,1 (Scala 2,21, Spark 3.0.0) |
 | Verze Pythonu |stál| 3 |
 | Pracovníků |stál| 2 nebo vyšší |
 | Typy virtuálních počítačů uzlu pracovního procesu <br>(určuje maximální počet souběžných iterací) |Automatizované strojové učení<br>pouze| Preferovaný virtuální počítač pro optimalizaci paměti |
@@ -238,19 +238,18 @@ Než budete pokračovat, počkejte, dokud cluster neběží.
 
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>Nainstalujte správnou sadu SDK do knihovny datacihly.
 
-Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-guide/libraries.html#create-a-library) , která připojí příslušný balíček sady Azure Machine Learning SDK k vašemu clusteru.
+Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-guide/libraries.html#create-a-library) , která připojí příslušný balíček sady Azure Machine Learning SDK k vašemu clusteru. Pro automatizované ML přejděte na [sadu SDK pro datacihly s využitím automatizovaného oddílu strojového učení](#sdk-for-databricks-with-automated-machine-learning).
 
 1. Klikněte pravým tlačítkem na složku aktuální pracovní prostor, kam chcete uložit knihovnu. Vyberte **vytvořit**  >  **knihovnu**.
 
-1. Zvolit **jenom jednu** možnost (žádná jiná instalace sady SDK není podporovaná)
+1. Vyberte následující možnost (není podporována žádná jiná instalace sady SDK.)
 
    |&nbsp;Doplňky balíčku sady SDK &nbsp;|Zdroj|&nbsp;Název PyPI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Pro datacihly| Nahrát vejce Pythonu nebo PyPI | AzureML-SDK [datacihly]|
-   |Pro datacihly – with-<br> Automatické možnosti ML| Nahrát vejce Pythonu nebo PyPI | `azureml-sdk[automl]`|
 
    > [!Warning]
-   > Nelze nainstalovat žádné další doplňky sady SDK. Vyberte jenom jednu z předchozích možností [ `databricks` ] nebo [ `automl` ].
+   > Nelze nainstalovat žádné další doplňky sady SDK. Vyberte pouze možnost [ `databricks` ].
 
    * Nevybírejte možnost **Připojit automaticky ke všem clusterům**.
    * Vedle názvu clusteru vyberte  **připojit** .
@@ -270,9 +269,17 @@ Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-gu
 
 Pokud byla instalace úspěšná, importovaná knihovna by měla vypadat jako jedna z následujících:
 
-Sada SDK pro datacihly **_bez_** automatizovaného strojového učení ![ Azure Machine Learning SDK pro datacihly](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+#### <a name="sdk-for-databricks"></a>Sada SDK pro datacihly
+![Sada SDK Azure Machine Learning pro datacihly](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-Sada SDK pro datacihly **pomocí** automatizovaného strojového učení ![ sady SDK s nainstalovanou službou Automated Machine Learning pro datacihly](./media/how-to-configure-environment/automlonadb.png)
+#### <a name="sdk-for-databricks-with-automated-machine-learning"></a>Sada SDK pro datacihly pomocí automatizovaného strojového učení
+Pokud byl cluster vytvořen s datacihly, které nejsou ML Runtime 7,1 nebo vyšší, spusťte následující příkaz v první buňce poznámkového bloku a nainstalujte sadu AML SDK.
+
+```
+%pip install -r https://aka.ms/automl_linux_requirements.txt
+```
+Pro datacihly, které neobsahují modul runtime 7,0 a nižší, nainstalujte sadu SDK AML pomocí [skriptu init](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/automl/README.md).
+
 
 ### <a name="start-exploring"></a>Zahájení průzkumu
 

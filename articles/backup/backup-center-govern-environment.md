@@ -3,18 +3,20 @@ title: Správa záloh pomocí centra zálohování
 description: Naučte se řídit prostředí Azure a zajistit, aby všechny vaše prostředky vyhovovaly z perspektivy zálohování pomocí centra zálohování.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 009ee461b0372a3fb73ffb3b0ee5151b77bd8ef8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8a16769be827bf34e5be82409d5b8eb014cdcf1a
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995765"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614313"
 ---
 # <a name="govern-your-backup-estate-using-backup-center"></a>Správa záloh pomocí centra zálohování
 
 Centrum zálohování vám pomůže řídit vaše prostředí Azure a zajistit, aby všechny vaše prostředky vyhovovaly z perspektivy zálohování. Níže jsou uvedené některé možnosti zásad správného řízení služby Backup Center:
 
 * Zobrazení a přiřazení zásad Azure pro zálohování
+
+* Podívejte se na dodržování předpisů vašich prostředků ve všech předdefinovaných zásadách Azure pro zálohování.
 
 * Zobrazit všechny zdroje dat, které nebyly nakonfigurovány pro zálohování.
 
@@ -29,6 +31,12 @@ Chcete-li zobrazit všechny [zásady Azure](https://docs.microsoft.com/azure/gov
 Výběr libovolné definice vám umožní [přiřadit zásadu](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) k oboru.
 
 ![Vybrat definice Azure Policy](./media/backup-center-govern-environment/azure-policy-definitions.png)
+
+## <a name="backup-compliance"></a>Dodržování předpisů pro zálohování
+
+Kliknutím na položku nabídky Kompatibilita záloh můžete zobrazit [dodržování předpisů](https://docs.microsoft.com/azure/governance/policy/how-to/get-compliance-data) vašich prostředků podle různých předdefinovaných zásad, které jste přiřadili vašemu prostředí Azure. Můžete zobrazit procentní podíl prostředků, které jsou v souladu se všemi zásadami, a také zásady, které mají jeden nebo více nekompatibilních zdrojů.
+
+![Zobrazit dodržování předpisů pro zálohování](./media/backup-center-govern-environment/azure-policy-compliance.png)
 
 ## <a name="protectable-datasources"></a>Chránitelné zdroje dat
 

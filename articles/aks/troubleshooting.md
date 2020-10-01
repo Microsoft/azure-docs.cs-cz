@@ -4,12 +4,12 @@ description: Přečtěte si, jak řešit problémy a řešit běžné problémy 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 855e5e5e23371f600a7e73139f2e6da1eebc91d0
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 81adbfe7a5a04ffb8fcb3311ad3561135b77ab7b
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068825"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614015"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -184,6 +184,14 @@ Pro tento problém použijte následující alternativní řešení:
 
 Většinou je důvodem vypršení platnosti přihlašovacích údajů instančního objektu. [Aktualizujte přihlašovací údaje pro cluster AKS.](update-credentials.md)
 
+## <a name="i-cant-access-my-cluster-api-from-my-automationdev-machinetooling-when-using-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>Nemůžu získat přístup k rozhraní API clusteru z automatizace/vývojového počítače/nástrojů při použití rozsahů IP adres autorizovaných serverem API. Návody tento problém vyřešit?
+
+To vyžaduje, `--api-server-authorized-ip-ranges` aby zahrnovaly IP (y) nebo rozsahy IP adres pro automatizaci, vývoj a nástroje, které se používají. V části Jak najít IP [adresu použijte zabezpečený přístup k serveru API pomocí povolených rozsahů IP adres](api-server-authorized-ip-ranges.md).
+
+## <a name="im-unable-to-view-resources-in-kubernetes-resource-viewer-in-azure-portal-for-my-cluster-configured-with-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>Nedaří se mi zobrazit prostředky v prohlížeči prostředků Kubernetes v Azure Portal pro cluster nakonfigurovaný s rozsahy IP adres autorizovaných serverem API. Návody tento problém vyřešit?
+
+[Prohlížeč prostředků Kubernetes](kubernetes-portal.md) vyžaduje `--api-server-authorized-ip-ranges` , aby zahrnoval přístup k místnímu klientskému počítači nebo rozsahu IP adres (ze kterého je portál procházený). V části Jak najít IP [adresu použijte zabezpečený přístup k serveru API pomocí povolených rozsahů IP adres](api-server-authorized-ip-ranges.md).
+
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>Po omezení odchozího provozu mi dochází k chybám
 
 Při omezení odchozího provozu z clusteru AKS se [vyžadují a volitelné Doporučené](limit-egress-traffic.md) Odchozí porty/pravidla sítě a plně kvalifikovaný název domény nebo pravidla použití pro AKS. Pokud jsou nastavení v konfliktu s některým z těchto pravidel, nebudou některé `kubectl` příkazy správně fungovat. Při vytváření clusteru AKS můžete také zobrazit chyby.
@@ -205,14 +213,14 @@ Ověřte, že vaše nastavení nejsou v konfliktu s žádným z požadovaných n
 
 V Kubernetes verze 1,10 může MountVolume. WaitForAttach selhat s opětovným připojením k disku Azure.
 
-V systému Linux se může zobrazit nesprávná chyba formátu DevicePath. Příklad:
+V systému Linux se může zobrazit nesprávná chyba formátu DevicePath. Například:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-Ve Windows se může zobrazit nesprávná chyba na číslo DevicePath (LUN). Příklad:
+Ve Windows se může zobrazit nesprávná chyba na číslo DevicePath (LUN). Například:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -225,7 +233,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 |--|:--:|
 | 1.10 | 1.10.2 nebo novější |
 | 1,11 | 1.11.0 nebo novější |
-| 1,12 a novější | – |
+| 1,12 a novější | Není k dispozici |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Při nastavování UID a GID v mountOptions pro disk Azure došlo k chybě.
@@ -259,7 +267,7 @@ spec:
   >[!NOTE]
   > Vzhledem k tomu, že GID a UID jsou ve výchozím nastavení připojeny jako kořen nebo 0. Pokud jsou GID nebo UID nastaveny jako neroot, například 1000, použije Kubernetes `chown` ke změně všech adresářů a souborů v tomto disku. Tato operace může být časově náročná a může způsobit velmi pomalé připojení disku.
 
-* Použijte `chown` v initContainers k nastavení GID a UID. Příklad:
+* Použijte `chown` v initContainers k nastavení GID a UID. Například:
 
 ```yaml
 initContainers:
@@ -282,7 +290,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1.12 | 1.12.9 nebo novější |
 | 1.13 | 1.13.6 nebo novější |
 | 1,14 | 1.14.2 nebo novější |
-| 1,15 a novější | – |
+| 1,15 a novější | Není k dispozici |
 
 Pokud používáte verzi Kubernetes, která nemá opravu pro tento problém a váš uzel obsahuje zastaralý seznam disků, můžete zmírnit odpojením všech neexistujících disků z virtuálního počítače jako hromadnou operaci. **Samostatné odpojení neexistujících disků může selhat.**
 
@@ -301,7 +309,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1.12 | 1.12.10 nebo novější |
 | 1.13 | 1.13.8 nebo novější |
 | 1,14 | 1.14.4 nebo novější |
-| 1,15 a novější | – |
+| 1,15 a novější | Není k dispozici |
 
 Pokud používáte verzi Kubernetes, která nemá opravu pro tento problém, a váš uzel je ve stavu selhání, můžete zmírnit ruční aktualizací stavu virtuálního počítače pomocí jedné z následujících akcí:
 
@@ -410,7 +418,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 |--|:--:|
 | 1.12 | 1.12.6 nebo novější |
 | 1.13 | 1.13.4 nebo novější |
-| 1,14 a novější | – |
+| 1,14 a novější | Není k dispozici |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Připojení k souborům Azure selhalo kvůli změně klíče účtu úložiště.
 
@@ -418,13 +426,13 @@ Pokud se váš klíč účtu úložiště změnil, může se zobrazit chyba při
 
 Můžete zmírnit ruční aktualizací `azurestorageaccountkey` pole v tajných souborech Azure pomocí klíče účtu úložiště s kódováním base64.
 
-K zakódování klíče účtu úložiště ve formátu base64 můžete použít `base64` . Příklad:
+K zakódování klíče účtu úložiště ve formátu base64 můžete použít `base64` . Například:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Pokud chcete aktualizovat svůj tajný soubor Azure, použijte `kubectl edit secret` . Příklad:
+Pokud chcete aktualizovat svůj tajný soubor Azure, použijte `kubectl edit secret` . Například:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret

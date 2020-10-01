@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e5cfc1e27bae10a1c67e4506afe9db825664785f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5598726726ecca1467b2c82c8ea7f947af033bb4
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946853"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614032"
 ---
-# <a name="sms-concepts"></a>Koncepty SMS
+# <a name="sms-concepts"></a>Koncepce SMS
 
 [!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
@@ -29,10 +29,11 @@ Mezi klíčové funkce klientských knihoven SMS služby Azure Communications pa
 - **Obousměrné** konverzace k podpoře scénářů, jako jsou zákaznické podpory, výstrahy a připomenutí událostí.
 - **Spolehlivé doručování** se zprávami o doručení v reálném čase pro zprávy odesílané z vaší aplikace.
 - **Analýza** ke sledování vašich způsobů využití a zapojení zákazníků.
-- Podpora zpracování **výslovných** výjimek pro automatické zjišťování a respektování výslovných odsouhlasení s čísly bez poplatků. Komunikační služby rozpoznává zprávy o zastavení a spuštění a odesílají následující výchozí reakce koncovým uživatelům: 
-  - STOP- *"úspěšně jste odhlásili odběr zpráv od tohoto čísla. Odpověď začíná znovu přihlašovat.*
-  - SPUSTIT – *úspěšně jste se znovu přihlásili k odběru zpráv od tohoto čísla. Pro zrušení odběru odpovědi odpovězte. "*
-  - Zprávy o zastavení a spuštění budou předávány zpět na vás. Komunikační služby Azure vám pomohou monitorovat a implementovat tyto možnosti, aby bylo zajištěno, že příjemcům, kteří se odhlásili od vaší komunikace, nebudou odesílány žádné další zprávy.
+- Podpora zpracování **výslovných** výjimek pro automatické zjišťování a respektování výslovných odsouhlasení s čísly bez poplatků. Výslovný souhlas s telefonními čísly pro USA – bezplatné počty jsou pověřené a vyžádané provozovateli USA.
+  - ZASTAVIT – Pokud se příjemce textové zprávy chce odhlásit, může poslat "STOP" na bezplatné telefonní číslo. Přepravce pošle následující výchozí odpověď pro STOP: *"Síťová zpráva: odpověděli jste se slovem stop, který blokuje všechny texty odeslané z tohoto čísla. Vrátí text zpět, aby se zprávy znovu přijímaly.*
+  - SPUSTIT/zrušit – pokud si chce příjemce znovu přihlásit k odběru textových zpráv z bezplatného čísla, může poslat "START" nebo "zrušit zastavení na bezplatné číslo. Přepravce pošle následující výchozí odpověď pro spuštění/zrušení zastavení: *"Síťová zpráva: odpověděli jste na zastavit a začne znovu přijímat zprávy od tohoto čísla."*
+  - Služba Azure Communication Services zjistí zprávu o zastavení a zablokuje všem dalším zprávám příjemce. Zpráva o doručení indikuje neúspěšné doručení se stavovou zprávou "odesílatel zablokován pro daného příjemce".
+  - Zprávy o zastavení, zastavení a spuštění budou předávány zpět na vás. Komunikační služby Azure vám pomohou monitorovat a implementovat tyto odhlašování, aby se zajistilo, že se žádné další pokusy o odeslání zprávy neodešlou na příjemce, kteří si nevyjádřili oznámení.
 
 
 ## <a name="next-steps"></a>Další kroky

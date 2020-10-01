@@ -2,13 +2,13 @@
 title: Přehled centra zálohování
 description: Tento článek poskytuje přehled služby Backup Center pro Azure.
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: e7577f302b9a137f5f3c257dc35d0fdf339f69a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/30/2020
+ms.openlocfilehash: 2857433e00a678603e30c8e5fc276020c4658f2e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995440"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614274"
 ---
 # <a name="overview-of-backup-center"></a>Přehled centra zálohování
 
@@ -39,7 +39,11 @@ V dlaždici **úlohy** získáte souhrnné zobrazení všech úloh týkajících
 
 Na dlaždici **zálohování instancí** získáte souhrnné zobrazení všech instancí zálohování napříč vaší zálohou. Můžete například zobrazit počet instancí zálohy, které jsou ve stavu tichého odstranění v porovnání s počtem instancí, které jsou pro ochranu stále nakonfigurovány. Výběr kterékoli z čísel v této dlaždici vám umožní zobrazit další informace o instancích zálohy pro určitý typ zdroje dat a stav ochrany.
 
-Použijte následující postup, chcete-li pochopit různé možnosti, které poskytuje centrum zálohování, a způsob, jak můžete tyto možnosti využít ke efektivní správě své záložní nemovitosti.
+Podívejte se na následující video a pochopte možnosti centra zálohování:
+
+> [!VIDEO https://www.youtube.com/embed/pFRMBSXZcUk?t=497]
+
+Postupujte podle [dalších kroků](#next-steps) a pochopte různé možnosti, které poskytuje centrum zálohování, a způsob, jak můžete tyto možnosti využít ke efektivní správě služby Backup.
 
 ## <a name="next-steps"></a>Další kroky
 

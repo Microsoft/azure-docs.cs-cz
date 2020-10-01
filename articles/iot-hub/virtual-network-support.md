@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: eb25fc0d7831bc06b708431ce3d47c73b36fe5c6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6c562f7a5d9c7c02c737898821eef5ee5271eea4
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281246"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613896"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Podpora IoT Hub pro virtuální sítě s privátním odkazem a spravovanou identitou
 
@@ -38,7 +38,7 @@ Tento článek popisuje, jak dosáhnout těchto cílů pomocí [privátního pro
 
 Privátní koncový bod je privátní IP adresa přidělená v rámci virtuální sítě vlastněné zákazníkem, přes kterou je prostředek Azure dostupný. Prostřednictvím privátního odkazu Azure můžete nastavit privátní koncový bod pro službu IoT Hub, abyste umožnili službám ve vaší virtuální síti přístup k IoT Hub bez nutnosti odeslání provozu do veřejného koncového bodu IoT Hub. Obdobně můžou vaše místní zařízení používat připojení [VPN (Virtual Private Network)](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoute](https://azure.microsoft.com/services/expressroute/) peering k získání připojení k vaší virtuální síti a k vašemu IoT Hub (prostřednictvím svého privátního koncového bodu). V důsledku toho můžete omezit nebo zcela blokovat připojení k veřejným koncovým bodům služby IoT Hub pomocí [IoT Hub filtru IP](./iot-hub-ip-filtering.md) a [konfigurací směrování Neodesílat žádná data do předdefinovaného koncového bodu](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint). Tento přístup udržuje připojení k vašemu rozbočovači pomocí privátního koncového bodu pro zařízení. Hlavním soustředěním tohoto nastavení je zařízení v místní síti. Tato instalace se nedoporučuje pro zařízení nasazená v síti se sítí na stejné úrovni.
 
-![IoT Hub veřejný koncový bod](./media/virtual-network-support/virtual-network-ingress.png)
+![Engress virtuální sítě IoT Hub](./media/virtual-network-support/virtual-network-ingress.png)
 
 Než budete pokračovat, ujistěte se, že jsou splněné následující předpoklady:
 
@@ -92,7 +92,7 @@ Aby bylo možné ostatním službám najít službu IoT Hub jako důvěryhodnou 
 
 1. V části **stav**vyberte **zapnuto**a pak klikněte na **Uložit**.
 
-    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="Snímek obrazovky ukazující, jak zapnout spravovanou identitu pro IoT Hub":::
+    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="Snímek obrazovky s informacemi o tom, kam přidat privátní koncový bod pro IoT Hub":::
 
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>Přiřazení spravované identity k vašemu IoT Hub v době vytváření pomocí šablony ARM
 

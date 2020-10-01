@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/25/2019
+ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: b6b0fe7e9e096b252d33d25c4a70305e57d206b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93678735237c25b19d04b7d901583ba785d7f594
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894415"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613539"
 ---
-# <a name="manage-an-azure-stack-edge-pro-device-via-windows-powershell"></a>Správa zařízení Azure Stack Edge pro pomocí prostředí Windows PowerShell
+# <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>Správa zařízení Azure Stack Edge pro FPGA přes Windows PowerShell
 
 Řešení Azure Stack Edge pro umožňuje zpracovávat data a odesílat je přes síť do Azure. Tento článek popisuje některé úlohy konfigurace a správy pro zařízení Azure Stack Edge pro. Ke správě zařízení můžete použít rozhraní Azure Portal, místní webové uživatelské rozhraní nebo prostředí Windows PowerShell.
 
@@ -43,16 +43,16 @@ Tento článek obsahuje následující postupy:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-Můžete také nahrát certifikáty IoT Edge a tím umožnit zabezpečené připojení mezi vaším zařízením IoT Edge a podřízenými zařízeními, která se k němu můžou připojovat. Existují tři certifikáty IoT Edge (formát *. pem* ), které je třeba nainstalovat:
+Můžete také nahrát certifikáty IoT Edge a tím umožnit zabezpečené připojení mezi vaším zařízením IoT Edge a podřízenými zařízeními, která se k němu můžou připojovat. Existují tři soubory (formát *. pem* ), které je třeba nainstalovat:
 
 - Certifikát kořenové certifikační autority nebo certifikační autorita vlastníka
 - Certifikát certifikační autority zařízení
-- Certifikát klíče zařízení
+- Privátní klíč zařízení 
 
 Následující příklad ukazuje použití této rutiny k instalaci IoT Edgech certifikátů:
 
 ```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-private-key.pem" -Credential "username"
 ```
 Při spuštění této rutiny se zobrazí výzva, abyste zadali heslo pro sdílenou síťovou složku.
 

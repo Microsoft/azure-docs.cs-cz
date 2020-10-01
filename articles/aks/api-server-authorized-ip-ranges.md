@@ -4,12 +4,12 @@ description: Naučte se zabezpečit cluster pomocí rozsahu IP adres pro příst
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 5dbe5061253fb18222a476a88a1ec94a5ce4b0fa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 99c6b173d96bbd54f12a0edc501d49e8c65caf01
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299659"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613726"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Zabezpečený přístup k serveru rozhraní API pomocí rozsahů povolených IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -69,7 +69,7 @@ az aks create \
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Zadejte odchozí IP adresy pro nástroj pro vyrovnávání zatížení Standard SKU.
 
-Pokud při vytváření clusteru AKS zadáte odchozí IP adresy nebo předpony pro cluster, jsou povoleny také tyto adresy nebo předpony. Příklad:
+Pokud při vytváření clusteru AKS zadáte odchozí IP adresy nebo předpony pro cluster, jsou povoleny také tyto adresy nebo předpony. Například:
 
 ```azurecli-interactive
 az aks create \
@@ -121,7 +121,7 @@ Při zadání parametru můžete použít taky *0.0.0.0/32* , *`--api-server-aut
 
 ## <a name="disable-authorized-ip-ranges"></a>Zakázat autorizované rozsahy IP adres
 
-Pokud chcete zakázat rozsahy povolených IP adres, použijte příkaz [AZ AKS Update][az-aks-update] a zadáním prázdného rozsahu zakažte rozsahy IP adres autorizovaných serverem API. Příklad:
+Pokud chcete zakázat rozsahy povolených IP adres, použijte příkaz [AZ AKS Update][az-aks-update] a zadáním prázdného rozsahu zakažte rozsahy IP adres autorizovaných serverem API. Například:
 
 ```azurecli-interactive
 az aks update \
@@ -129,6 +129,32 @@ az aks update \
     --name myAKSCluster \
     --api-server-authorized-ip-ranges ""
 ```
+
+## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>Jak najít moji IP adresu, kterou chcete zahrnout do `--api-server-authorized-ip-ranges` ?
+
+Aby bylo možné získat přístup k serveru rozhraní API z této služby, musíte přidat své vývojové počítače, nástroje nebo IP adresy automatizace do seznamu clusterů AKS se schválenými rozsahy IP adres. 
+
+Další možností je nakonfigurovat JumpBox s potřebnými nástroji v samostatné podsíti ve virtuální síti brány firewall. Předpokládá se, že vaše prostředí má bránu firewall s příslušnou sítí a že jste do autorizovaných rozsahů přidali IP adresy brány firewall. Podobně platí, že pokud máte vynucené tunelování z podsítě AKS do podsítě brány firewall, nemusíte mít k dispozici také JumpBox v podsíti clusteru.
+
+Pomocí následujícího příkazu přidejte další IP adresu ke schváleným rozsahům.
+
+```bash
+# Retrieve your IP address
+CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+# Add to AKS approved list
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+```
+
+>> [!NOTE]
+> Výše uvedený příklad připojí rozsah IP adres autorizovaných serverů rozhraní API v clusteru. Pokud chcete zakázat rozsahy povolených IP adres, použijte příkaz AZ AKS Update a zadejte prázdný rozsah. 
+
+Další možností je použít následující příkaz v systémech Windows k získání veřejné adresy IPv4 nebo můžete použít postup v části [Vyhledání IP adresy](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address).
+
+```azurepowershell-interactive
+Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
+```
+
+Tuto adresu můžete najít také tak, že v internetovém prohlížeči vyhledáte "to je moje IP adresa".
 
 ## <a name="next-steps"></a>Další kroky
 

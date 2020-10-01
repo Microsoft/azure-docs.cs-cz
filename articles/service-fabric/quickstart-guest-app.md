@@ -4,18 +4,18 @@ description: Použijte cluster Azure Service Fabric k hostování existující a
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.custom: devx-track-js
-ms.openlocfilehash: 29278faa80340d17e9ed9093dd5f432fd24a3a2d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314279"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614100"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hostování aplikace Node.js na platformě Azure Service Fabric
 
 Tento rychlý start vám pomůže s nasazením existující aplikace (v tomto příkladu Node.js) do clusteru Service Fabric spuštěného v Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte [nastavené vývojové prostředí](service-fabric-get-started.md). Který zahrnuje instalaci Service Fabric SDK a sady Visual Studio 2019 nebo 2015.
 
@@ -31,7 +31,7 @@ Vytvořte projekt pomocí klávesové zkratky `CTRL`+`SHIFT`+`N`.
 
 V dialogovém okně **Nový projekt** zvolte **Cloud > Aplikace Service Fabric**.
 
-Pojmenujte aplikaci **MyGuestApp** a stiskněte **OK**.
+Pojmenujte aplikaci **MyGuestApp** a stiskněte **vytvořit**.
 
 >[!IMPORTANT]
 >Node.js může snadno překročit omezení 260 znaků pro cesty v systému Windows. Pro samotný projekt použijte krátkou cestu, například **c:\code\svc1**. Volitelně můžete postupovat podle **[těchto pokynů](https://stackoverflow.com/a/41687101/1664231)** a povolit dlouhé cesty k souborům ve Windows 10.
@@ -47,7 +47,7 @@ Pojmenujte službu **MyGuestService** a nastavte možnosti na pravé straně na 
 | Složka balíčku kódu       | _&lt;Složka s vaší aplikací Node.js&gt;_ |
 | Chování balíčku kódu     | Zkopírujte obsah složky do projektu |
 | Program                   | node.exe |
-| Arguments                 | server.js |
+| Argumenty                 | server.js |
 | Pracovní složka            | CodePackage |
 
 Stiskněte **OK**.

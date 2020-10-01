@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/6/2020
 ms.reviewer: sngun
-ms.openlocfilehash: af777efda769315019ecee41d4053f5ab82f3047
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: bb8a413f2e2a3aa4a8facd533d822312bb61fa0e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920428"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613556"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Úrovně konzistence a rozhraní API služby Cosmos DB
 
@@ -49,11 +49,11 @@ Při použití rozhraní API Azure Cosmos DB pro MongoDB:
 
 * Azure Cosmos DB bude k dis dynamicky mapovat obavy týkající se čtení určené ovladačem klienta MongoDB na jednu z Azure Cosmos DB úrovní konzistence nakonfigurovanou dynamicky pro žádost o čtení.  
 
-* Konkrétní oblast, která je přidružená k vašemu účtu Azure Cosmos, můžete označit jako "hlavní", a to tak, že ji nastavíte jako první zapisovatelnou oblast. 
+* Konkrétní oblast, která je přidružená k účtu Azure Cosmos, můžete označit jako "primární" tím, že tuto oblast nastavíte jako první zapisovatelnou oblast. 
 
 Následující tabulka ukazuje, jak se při použití rozhraní Azure Cosmos DB API pro MongoDB namapují nativní problémy zápisu a čtení nativního MongoDB na úrovně konzistence Azure Cosmos:
 
-:::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png" alt-text="Mapování modelu konzistence MongoDB" lightbox= "./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png":::
+:::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png" alt-text="Mapování modelu konzistence Cassandra" lightbox= "./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png":::
 
 ## <a name="next-steps"></a>Další kroky
 

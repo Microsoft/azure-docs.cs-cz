@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0f4552d6488ecd083b6ee5d4cae2ef2bd660efc7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c4af0e8eda818fcb57ea9e050b760c3754c46e2c
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906377"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613641"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Nejčastější dotazy pro zákazníky, kteří už používají protokoly Azure Monitor<a name="existingloganalyticscust"></a>
 
@@ -35,7 +35,6 @@ Pokud už má virtuální počítač Log Analytics agenta nainstalovaného jako 
 Když Security Center identifikuje, že je virtuální počítač už připojený k pracovnímu prostoru, který jste vytvořili, Security Center umožňuje řešení v tomto pracovním prostoru podle vaší cenové konfigurace. Řešení se aplikují jenom na relevantní virtuální počítače Azure, a to prostřednictvím [cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md), takže účtování zůstane stejné.
 
 - **Azure Defender off** – Security Center do pracovního prostoru nainstaluje řešení ' SecurityCenterFree '. Nebudeme se vám účtovat.
-- 
 - **Azure Defender on** – Security Center do pracovního prostoru nainstaluje řešení zabezpečení.
 
    ![Řešení ve výchozím pracovním prostoru](./media/security-center-platform-migration-faq/solutions.png)

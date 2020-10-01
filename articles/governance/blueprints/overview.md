@@ -1,14 +1,14 @@
 ---
 title: Přehled Azure Blueprints
 description: Pochopte, jak služba Azure Modrotiskys umožňuje vytvářet, definovat a nasazovat artefakty v prostředí Azure.
-ms.date: 08/27/2020
+ms.date: 09/30/2020
 ms.topic: overview
-ms.openlocfilehash: 499f2c4afa55913b6af714d20ec1d52e2ecbbc47
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: f2e3c23c9cb83d2cb58b1e8f69a2a470a6f36f6d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541760"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614253"
 ---
 # <a name="what-is-azure-blueprints"></a>Co je Azure Blueprints?
 
@@ -74,7 +74,10 @@ Při prvním vytvoření podrobného plánu se přepokládá, že je v režimu *
 
 ## <a name="blueprint-assignment"></a>Přiřazení podrobného plánu
 
-K existujícímu předplatnému se dá přiřadit každá **publikovaná** **verze** podrobného plánu (s maximální délkou 90 znaků). Na portálu bude jako výchozí **verze** podrobného plánu ta, která se **publikovala** jako poslední. Pokud existují parametry artefaktu (nebo parametry podrobného plánu), pak se parametry definují během přiřazení.
+Každá **publikovaná** **verze** podrobného plánu může být přiřazena (s maximální délkou 90 znaků) do existující skupiny pro správu nebo předplatného. Na portálu bude jako výchozí **verze** podrobného plánu ta, která se **publikovala** jako poslední. Pokud existují parametry artefaktů nebo parametry podrobného plánu, pak jsou parametry definovány během procesu přiřazení.
+
+> [!NOTE]
+> Přiřazení definice podrobného plánu ke skupině pro správu znamená, že objekt přiřazení existuje ve skupině pro správu. Nasazení artefaktů stále cílí na předplatné. Chcete-li provést přiřazení skupiny pro správu, je nutné použít [REST API vytvořit nebo aktualizovat](/rest/api/blueprints/assignments/createorupdate) a text žádosti musí obsahovat hodnotu pro `properties.scope` Definování cílového předplatného.
 
 ## <a name="permissions-in-azure-blueprints"></a>Oprávnění v Azure Blueprints
 

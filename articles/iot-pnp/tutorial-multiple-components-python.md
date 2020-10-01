@@ -7,12 +7,12 @@ ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 084ba93baa35790da58e7765750bb79de27ed69c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1b329206dcc41d8f7fcb3874da037f5b57142722
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578015"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613658"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-python"></a>Kurz: připojení ukázkové aplikace IoT technologie Plug and Play více aplikací zařízení k IoT Hub (Python)
 
@@ -20,7 +20,7 @@ ms.locfileid: "91578015"
 
 V tomto kurzu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení pomocí komponent, připojit ji k centru IoT a pomocí nástroje Azure IoT Explorer zobrazit informace, které posílá do centra. Ukázková aplikace je napsaná v Pythonu a je obsažená v sadě SDK pro zařízení Azure IoT pro Python. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -57,13 +57,13 @@ Tato ukázka implementuje zařízení adaptéru technologie Plug and Play pro ř
 Složka *Azure-IoT-SDK-python\azure-IoT-device\samples\pnp* obsahuje vzorový kód pro zařízení IoT technologie Plug and Play. Soubory pro příklad řadiče teploty jsou:
 
 - temp_controller_with_thermostats. py
-- pnp_helper_preview_refresh. py
+- pnp_helper. py
 
 Kontroler teploty má více komponent a výchozí komponentu na základě modelu DTDL řadiče teploty.
 
 Otevřete soubor *temp_controller_with_thermostats. py* v editoru dle vašeho výběru. Kód v tomto souboru:
 
-1. Importy `pnp_helper_preview_refresh.py` pro získání přístupu k podpůrným metodám.
+1. Importy `pnp_helper.py` pro získání přístupu k podpůrným metodám.
 
 1. Definuje dva identifikátory digitálního vlákna modelu (DTMIs), které jednoznačně reprezentují dvě různá rozhraní definovaná v modelu DTDL. Komponenty v reálném teplotním adaptéru by měly implementovat tato dvě rozhraní. Tato dvě rozhraní jsou již publikována v centrálním úložišti. Tyto DTMIs musí být pro uživatele známé a mohou se lišit v závislosti na scénáři implementace zařízení. Pro aktuální ukázku tyto dvě rozhraní reprezentují:
 

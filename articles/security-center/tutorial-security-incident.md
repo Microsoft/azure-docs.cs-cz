@@ -1,6 +1,6 @@
 ---
-title: Kurz reakce na incidenty – Azure Security Center
-description: V tomto kurzu se dozvíte, jak řadit výstrahy zabezpečení, jak určit hlavní příčinu & rozsahu incidentu, a data zabezpečení hledání.
+title: Kurz reakce na výstrahy – Azure Security Center
+description: V tomto kurzu se dozvíte, jak řadit výstrahy zabezpečení a určit & rozsah výstrahy hlavní příčinu.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -12,115 +12,115 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
+ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: 08e04749eae7158abb501f9a4d127cdd7a89a391
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a04f94f5ebc7c1fdaf7b95e71dc8549e19863b39
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336271"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614132"
 ---
-# <a name="tutorial-respond-to-security-incidents"></a>Kurz: Reakce na incidenty zabezpečení
-Security Center nepřetržitě analyzuje vaše hybridní cloudové úlohy pomocí pokročilých analytických algoritmů a inteligentního rozpoznávání hrozeb a upozorní vás na škodlivé aktivity. Kromě toho můžete do Security Center integrovat výstrahy z jiných bezpečnostních produktů a služeb a vytvořit vlastní výstrahy na základě definovaných indikátorů nebo zdroje informací. Jakmile je vygenerována výstraha, je pro prozkoumání a nápravu nutná rychlá akce. V tomto kurzu se naučíte, jak:
+# <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Kurz: třídění, zkoumání a reakce na výstrahy zabezpečení
+Security Center nepřetržitě analyzuje vaše hybridní cloudové úlohy pomocí pokročilých analytických algoritmů a inteligentního rozpoznávání hrozeb a upozorní vás na škodlivé aktivity. Můžete také integrovat výstrahy z dalších produktů a služeb zabezpečení do Security Center a vytvářet vlastní výstrahy na základě vlastních ukazatelů nebo zdrojů informací. Jakmile je vygenerována výstraha, je pro prozkoumání a nápravu nutná rychlá akce. 
+
+V tomto kurzu se naučíte, jak:
 
 > [!div class="checklist"]
 > * Analyzovat výstrahy zabezpečení
-> * Dalším šetřením určit hlavní příčinu a rozsah incidentu zabezpečení
-> * Prohledávat data o zabezpečení v rámci vyšetřování
+> * Prověření výstrahy zabezpečení a určení hlavní příčiny
+> * Reakce na výstrahu zabezpečení a zmírnění této hlavní příčiny
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pro krokování s funkcemi popsanými v tomto kurzu musíte mít povolený Azure Defender. Azure Defender si můžete vyzkoušet bez jakýchkoli nákladů. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). Rychlý Start [Začínáme s Security Center](security-center-get-started.md) vás provede upgradem.
 
-## <a name="scenario"></a>Scénář
-Společnost Contoso nedávno provedla migraci některých místních prostředků do Azure, včetně některých databází SQL a úloh obchodního systému založených na virtuálních počítačích. Nyní má Hlavní tým reakce na incidenty zabezpečení počítačů (CSIRT) společnosti Contoso problém s vyšetřováním problémů zabezpečení kvůli tomu, že analytické funkce zabezpečení nejsou integrované se současnými nástroji reakce na incidenty. Tato nedostatečná integrace představuje problém během fáze Zjištění (příliš mnoho falešných poplachů) a také během fází Posouzení a Diagnostika. Jako součást této migrace se rozhodli vyjádřit výslovný souhlas s tím, aby jim Security Center pomohl vyřešit tento problém.
-
-První fáze migrace byla dokončena po připojení všech prostředků a vyřešení všech doporučení zabezpečení od Security Center. CSIRT společnosti Contoso je ústředním bodem řešení incidentů zabezpečení počítačů. Tým se skládá ze skupiny lidí, kteří mají odpovědnost za řešení všech incidentů zabezpečení. Členové týmu mají jasně určené povinnosti, aby se zajistilo, že jsou pokryté všechny oblasti reakce.
-
-Pro účely tohoto scénáře se soustředíme na role následujících osob, které jsou součástí týmu CSIRT společnosti Contoso:
-
-![Životní cyklus reakce na incidenty](./media/tutorial-security-incident/security-center-incident-response.png)
-
-Judy pracuje v oddělení zabezpečení. Mezi jejich odpovědnosti patří:
-
-* Nepřetržité monitorování a reagování na ohrožení zabezpečení.
-* Předávání řešení ohrožení vlastníkovi cloudových úloh nebo analytikovi zabezpečení (podle potřeby).
-
-Sam je analytikem zabezpečení a jejich zodpovědnosti zahrnují:
-
-* Vyšetřování útoků.
-* Napravování výstrah.
-* Práce s vlastníky úloh na určování a aplikaci nápravných kroků.
-
-Jak vidíte, Judy a Sam mají rozdílné povinnosti a musí spolupracovat na sdílení informací ze Security Center.
 
 ## <a name="triage-security-alerts"></a>Analyzovat výstrahy zabezpečení
-Security Center poskytuje jednotné zobrazení všech výstrah zabezpečení. Výstrahy zabezpečení jsou hodnoceny podle závažnosti a je-li to možné, jsou související výstrahy sloučeny do jednoho incidentu zabezpečení. Při analýze výstrah a incidentů byste měli:
+Security Center poskytuje jednotné zobrazení všech výstrah zabezpečení. Výstrahy zabezpečení jsou seřazené podle závažnosti zjištěné aktivity. 
 
-- zrušit výstrahy, pro které není nutná žádná další akce, například pokud jde o falešně pozitivní výstrahu,
-- zabránit známým útokům, například blokovat síťový provoz ze škodlivé IP adresy,
-- určit, které výstrahy vyžadují další zkoumání.
+Třídění upozornění ze stránky **výstrahy zabezpečení** :
+
+:::image type="content" source="./media/tutorial-security-incident/alerts-list.png" alt-text="Stránka seznam výstrah zabezpečení" lightbox="./media/tutorial-security-incident/alerts-list.png":::
+
+Pomocí této stránky můžete zkontrolovat aktivní výstrahy zabezpečení ve vašem prostředí, abyste se rozhodli, která výstraha se má prozkoumat jako první.
+
+Při třídění výstrah zabezpečení Stanovujte výstrahy na základě závažnosti výstrahy tím, že nejprve vyřešíte výstrahy s vyšší závažností. Další informace o závažnosti výstrah v tématu [jak jsou výstrahy klasifikovány?](security-center-alerts-overview.md#how-are-alerts-classified).
+
+> [!TIP]
+> Azure Security Center můžete propojit s nejoblíbenějšími řešeními SIEM, včetně Azure Sentinel a využívat výstrahy z vašeho nástroje podle vlastního výběru. Další informace najdete v [exportu výstrah do Siem](continuous-export.md).
 
 
-1. V hlavní nabídce služby Security Center vyberte v části **DETEKCE** možnost **Výstrahy zabezpečení**:
+## <a name="investigate-a-security-alert"></a>Prozkoumat výstrahu zabezpečení
 
-   ![Výstrahy zabezpečení](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
+Až se rozhodnete, která výstraha se má prozkoumat jako první:
 
-2. V seznamu výstrah vyberte incident zabezpečení, což je kolekce výstrah, abyste se dozvěděli víc o tomto incidentu. Otevře se stránka **Byl zjištěn incident zabezpečení**.
+1. Vyberte požadovanou výstrahu.
+1. Na stránce Přehled výstrah vyberte prostředek, který chcete prozkoumat jako první.
+1. Zahajte šetření v levém podokně, ve kterém se zobrazí informace vysoké úrovně výstrahy zabezpečení.
 
-   ![Zjištěn incident zabezpečení](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="Stránka seznam výstrah zabezpečení":::
 
-3. Na této obrazovce uvidíte incident zabezpečení nahoře a pod ním seznam výstrah, které jsou jeho součástí. Klikněte na výstrahu, kterou chcete prošetřit – zobrazí se další informace.
+    V tomto podokně se zobrazí:
+    - Závažnost výstrahy, stav a čas aktivity
+    - Popis, který vysvětluje přesnost zjištěné aktivity
+    - Ovlivněné prostředky
+    - Záměr dezaktivačního řetězu aktivity v MITRE ATT&CK matice
 
-   ![Podrobnosti výstrahy od incidentu](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+1. Podrobnější informace, které vám pomůžou prozkoumat podezřelou aktivitu, najdete na kartě **Podrobnosti výstrahy** .
 
-   Výstrahy mohou být různých typů, další podrobnosti o typech výstrah a možnostech nápravy si přečtěte v článku [Význam výstrah zabezpečení ve službě Azure Security Center](security-center-alerts-type.md). U výstrah, které je možné bezpečně zrušit, klikněte pravým tlačítkem na výstrahu a vyberte možnost **Zavřít**:
+1. Po kontrole informací na této stránce je možné, že budete mít k dispozici dostatek, abyste mohli pokračovat v reakci. Pokud potřebujete další podrobnosti:
 
-   ![Výstrahy](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
+    - Obraťte se na vlastníka prostředku a ověřte, zda je zjištěná aktivita falešně pozitivní.
+    - Prozkoumat nezpracované protokoly generované prostředkem napadení
 
-4. Pokud neznáte hlavní příčinu a rozsah škodlivé aktivity, pokračujte dalším krokem ve vyšetřování.
+## <a name="respond-to-a-security-alert"></a>Reakce na výstrahu zabezpečení
+Po prozkoumání výstrahy a porozumění jejímu oboru můžete reagovat na výstrahu zabezpečení z Azure Security Center:
 
-## <a name="investigate-an-alert-or-incident"></a>Šetření výstrahy nebo incidentu
-1. Na stránce **Výstraha zabezpečení** klikněte na tlačítko **Zahájit šetření** (pokud jste už začali, tlačítko se změní na **Pokračovat v šetření**).
+1.  Otevřete kartu **provést akci** a zobrazte doporučené odpovědi.
 
-   ![Šetření](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="Stránka seznam výstrah zabezpečení" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
-   Mapa šetření je grafická reprezentace entit, které jsou spojené s touto výstrahou nebo incidentem zabezpečení. Kliknutím na entitu v mapě zobrazíte informace o dané a mapa se rozšíří. Typ entity vybrané v mapě má své vlastnosti zvýrazněné v podokně na pravé straně stránky. Informace dostupné na každé kartě se liší podle vybrané entity. Během procesu šetření zkontrolujte všechny relevantní informace, abyste lépe pochopili pohyb útočníka.
+1.  Přečtěte si část **zmírnění hrozby** pro kroky ručního šetření potřebné k vyřešení problému.
+1.  Pokud chcete posílit svoje prostředky a zabránit budoucím útokům tohoto druhu, opravte doporučení zabezpečení v části **prevence budoucích útoků** .
+1.  Chcete-li aktivovat aplikaci logiky pomocí automatizovaných kroků odezvy, použijte část **Automatická odpověď triggeru** .
+1.  Pokud zjištěná aktivita *není* škodlivá, můžete potlačit budoucí výstrahy tohoto druhu pomocí oddílu **potlačit podobné výstrahy** .
 
-2. Pokud potřebujete další fakta nebo podrobnější zkoumání entit, na které jste narazili během šetření, přejděte k dalšímu kroku.
+1.  Až se dokončí šetření výstrahy a odpovídajícím způsobem odpovíte, změňte stav na **neúspěšné**.
 
-## <a name="search-data-for-investigation"></a>Vyhledávání dat při šetření
+    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Stránka seznam výstrah zabezpečení":::
 
-Funkce vyhledávání ve službě Security Center vám pomůže najít další fakta o ohrožených systémech a další podrobnosti o entitách, které jsou součástí šetření.
+    Tím se výstraha z hlavního seznamu výstrah odstraní. Pomocí filtru ze stránky seznam výstrah můžete zobrazit všechny výstrahy se stavem **odeslané** .
 
-Vyhledávání se provádí na řídicím panelu **Security Center** – klikněte na **Vyhledávání** v levém navigačním podokně, vyberte pracovní prostor obsahující entity, které chcete hledat, zadejte vyhledávací dotaz a klikněte na tlačítko hledání.
+1.  Volitelně můžete poskytnout zpětnou vazbu k výstraze Microsoftu:
+    1. Označení výstrahy jako **užitečné** nebo **neužitečné** a poskytování
+    1. Vyberte důvod a přidejte komentář.
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků
+        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Stránka seznam výstrah zabezpečení":::
 
-Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud máte v úmyslu pokračovat v práci s dalšími rychlými starty a kurzy, nechte Automatické zřizování a povolený program Azure Defender. Pokud nechcete pokračovat nebo chcete zakázat Azure Defender:
+    > [!TIP]
+    > Prověříme váš názor, abychom vylepšili naše algoritmy a zajistili lepší výstrahy zabezpečení.
+
+## <a name="end-the-tutorial"></a>Ukončení kurzu
+
+Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud máte v úmyslu pokračovat v práci s dalšími rychlými starty a kurzy, nechte Automatické zřizování a povolený program Azure Defender. 
+
+Pokud pokračovat nechcete, nebo pokud chcete zakázat některou z těchto funkcí:
 
 1. Vraťte se do hlavní nabídky Security Center a vyberte **ceny a nastavení**.
-1. Vyberte předplatné, které chcete downgradovat.
-1. Nastavte v **Azure Defenderu** na vypnuto.
-1. Vyberte **Uložit**.
-
-Pokud chcete vypnout automatické zřizování:
-
-1. Vraťte se do hlavní nabídky Security Center a vyberte **zásady zabezpečení**.
-2. Vyberte předplatné, pro které chcete vypnout automatické zřizování.
-3. V části **Zásady zabezpečení – shromažďování dat** výběrem možnosti **Vypnuto** u volby **Onboarding** vypnete automatické zřizování.
+1. Vyberte příslušné předplatné.
+1. Pokud chcete downgradovat, vyberte **Azure Defender vypnuto**.
+1. Pokud chcete zakázat Automatické zřizování, otevřete stránku **shromažďování dat** a nastavte **Automatické zřizování** na **vypnuto**.
 4. Vyberte **Uložit**.
 
 >[!NOTE]
-> Při vypnutí automatického zřizování se agent Log Analytics neodebere z virtuálních počítačů Azure, ve kterých se agent zřídil. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.
+> Zakázání automatického zřizování neodebere agenta Log Analytics z virtuálních počítačů Azure, které už mají agenta. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.
 >
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste se dozvěděli o funkcích služby Security Center, které můžete použít při reakci na incident zabezpečení, například:
+V tomto kurzu jste se dozvěděli o Security Center funkcích, které se mají použít při reakci na výstrahu zabezpečení. Související materiál najdete v těchto tématech:
 
-> [!div class="checklist"]
-> * Incident zabezpečení, který je agregací souvisejících výstrah pro určitý prostředek
-> * Mapa šetření, což je grafická reprezentace entit spojených s danou výstrahou nebo incidentem zabezpečení
-> * Možnosti vyhledávání, které umožňují najít další fakta o ohrožených systémech
+- [Reakce na upozornění Azure Defenderu pro Key Vault](defender-for-key-vault-usage.md)
+- [Výstrahy zabezpečení – referenční příručka](alerts-reference.md)
+- [Seznámení s Azure Defenderem](azure-defender.md)

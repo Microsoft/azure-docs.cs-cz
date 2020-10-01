@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f241fd038d0d7309d8e1e5578dd77f950261b68
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: db68528a810ebc9cd61b205dd5167396d75db7f7
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165171"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613981"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Přidání konektoru API do toku uživatele
 
@@ -37,14 +37,14 @@ Pokud chcete použít [konektor API](api-connectors-overview.md), vytvořte nejd
 
    - V tuto chvíli se podporuje jenom základní ověřování. Pokud chcete použít rozhraní API bez základního ověřování pro vývojové účely, stačí zadat fiktivní **uživatelské jméno** a **heslo** , které může vaše rozhraní API ignorovat. Pro použití s funkcí Azure s klíčem rozhraní API můžete kód zahrnout jako parametr dotazu v **adrese URL koncového bodu** (například https []() ://contoso.azurewebsites.NET/API/Endpoint<b>? Code = 0123456789</b>).
 
-   ![Přidání nového konektoru API](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
+   ![Konfigurace nového konektoru API](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
 8. Vyberte **Uložit**.
 
 > [!IMPORTANT]
 > Dřív jste museli nakonfigurovat, které atributy uživatele se mají odeslat do rozhraní API (deklarace k odeslání), a které atributy uživatele se mají přijmout z rozhraní API (deklarace k přijetí). Nyní jsou všechny atributy uživatelů odesílány ve výchozím nastavení, pokud mají hodnotu a libovolný atribut uživatele může být vrácen rozhraním API v odpovědi "pokračování".
 
 ## <a name="the-request-sent-to-your-api"></a>Požadavek odeslaný do vašeho rozhraní API
-Konektor rozhraní API se materializuje jako požadavek **http post** a jako páry klíč-hodnota se posílají atributy uživatele (deklarace), které jsou v těle JSON. Atributy jsou serializovány podobně jako [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0#properties) vlastností uživatele. 
+Konektor rozhraní API se materializuje jako požadavek **http post** a jako páry klíč-hodnota se posílají atributy uživatele (deklarace), které jsou v těle JSON. Atributy jsou serializovány podobně jako [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties) vlastností uživatele. 
 
 **Příklad požadavku**
 ```http
@@ -77,7 +77,7 @@ Content-type: application/json
 
 V požadavku jsou k dispozici pouze uživatelské vlastnosti a vlastní atributy uvedené v **Azure Active Directory**  >  **External Identities**  >  **vlastní uživatelské atributy** identit.
 
-Vlastní atributy existují ve formátu **extension_ \<extensions-app-id> _AttributeName** v adresáři. Rozhraní API by mělo očekávat deklarace identity v tomto stejném serializovaném formátu. Další informace o vlastních atributech najdete v tématu [Definice vlastních atributů pro vlastní toky podepisování](user-flow-add-custom-attributes.md).
+Vlastní atributy existují ve formátu **extension_ \<extensions-app-id> _AttributeName**  v adresáři. Rozhraní API by mělo očekávat deklarace identity v tomto stejném serializovaném formátu. Další informace o vlastních atributech najdete v tématu [Definice vlastních atributů pro vlastní toky podepisování](user-flow-add-custom-attributes.md).
 
 Ve výchozím nastavení se ve všech požadavcích standardně odesílají deklarace identity **Locals (ui_locales) uživatelského rozhraní** . Poskytuje národní prostředí uživatele nastavené na zařízení, které může rozhraní API použít k vrácení mezinárodních odpovědí.
 
@@ -85,7 +85,7 @@ Ve výchozím nastavení se ve všech požadavcích standardně odesílají dekl
 > Pokud deklarace identity pro odeslání nemá hodnotu v okamžiku volání koncového bodu rozhraní API, deklarace identity nebude odeslána do rozhraní API. Rozhraní API by mělo být navržené tak, aby explicitně kontrolovalo hodnotu, kterou očekává.
 
 > [!TIP] 
-> [**identity (identity)**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) a deklarace **e-mailové adresy (' email ')** můžou vaše rozhraní API použít k identifikaci uživatele předtím, než budou mít účet ve vašem tenantovi. Deklarace identity identity se pošle, když se uživatel ověřuje pomocí zprostředkovatele identity, jako je Google nebo Facebook. ' e-mail ' je vždy odeslán.
+> [**identity (identity)**](https://docs.microsoft.com/graph/api/resources/objectidentity) a deklarace **e-mailové adresy (' email ')** můžou vaše rozhraní API použít k identifikaci uživatele předtím, než budou mít účet ve vašem tenantovi. Deklarace identity identity se pošle, když se uživatel ověřuje pomocí zprostředkovatele identity, jako je Google nebo Facebook. ' e-mail ' je vždy odeslán.
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>Povolení konektoru API v toku uživatele
 
@@ -244,10 +244,10 @@ Content-type: application/json
 }
 ```
 
-| Parametr                                          | Typ              | Vyžadováno | Popis                                                                                                                                                                                                                                                                            |
+| Parametr                                          | Typ              | Povinné | Popis                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| verze                                            | Řetězec            | Yes      | Verze rozhraní API.                                                                                                                                                                                                                                                                |
-| akce                                             | Řetězec            | Yes      | Hodnota musí být `Continue` .                                                                                                                                                                                                                                                              |
+| verze                                            | Řetězec            | Ano      | Verze rozhraní API.                                                                                                                                                                                                                                                                |
+| akce                                             | Řetězec            | Ano      | Hodnota musí být `Continue` .                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | Ne       | Hodnoty mohou být uloženy v adresáři, pokud jsou vybrány jako **deklarace pro příjem** v konfiguraci konektoru rozhraní API a **atributy uživatele** pro tok uživatele. Hodnoty mohou být vráceny v tokenu, pokud je vybrána jako **deklarace identity aplikace**.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Ne       | Vrácená deklarace identity nemusí obsahovat `_<extensions-app-id>_` . Hodnoty se ukládají v adresáři, pokud se vybírají jako **deklarace, aby se přijímaly** v konfiguraci konektoru rozhraní API a **atributu uživatele** pro tok uživatele. Vlastní atributy se v tokenu nedají poslat zpátky. |
 
@@ -266,11 +266,11 @@ Content-type: application/json
 
 ```
 
-| Parametr   | Typ   | Vyžadováno | Popis                                                                |
+| Parametr   | Typ   | Povinné | Popis                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| verze     | Řetězec | Yes      | Verze rozhraní API.                                                    |
-| akce      | Řetězec | Yes      | Hodnota musí být`ShowBlockPage`                                              |
-| userMessage | Řetězec | Yes      | Zpráva, která se zobrazí uživateli.                                            |
+| verze     | Řetězec | Ano      | Verze rozhraní API.                                                    |
+| akce      | Řetězec | Ano      | Hodnota musí být `ShowBlockPage`                                              |
+| userMessage | Řetězec | Ano      | Zpráva, která se zobrazí uživateli.                                            |
 | kód        | Řetězec | Ne       | Kód chyby Lze použít pro účely ladění. Nezobrazuje se uživateli. |
 
 **Činnost koncového uživatele s blokující odezvou**
@@ -292,23 +292,41 @@ Content-type: application/json
 }
 ```
 
-| Parametr   | Typ    | Vyžadováno | Popis                                                                |
+| Parametr   | Typ    | Povinné | Popis                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| verze     | Řetězec  | Yes      | Verze rozhraní API.                                                    |
-| akce      | Řetězec  | Yes      | Hodnota musí být `ValidationError` .                                           |
-| status      | Integer | Yes      | `400`Pro odpověď ValidationError musí být hodnota.                        |
-| userMessage | Řetězec  | Yes      | Zpráva, která se zobrazí uživateli.                                            |
+| verze     | Řetězec  | Ano      | Verze rozhraní API.                                                    |
+| akce      | Řetězec  | Ano      | Hodnota musí být `ValidationError` .                                           |
+| status      | Integer | Ano      | `400`Pro odpověď ValidationError musí být hodnota.                        |
+| userMessage | Řetězec  | Ano      | Zpráva, která se zobrazí uživateli.                                            |
 | kód        | Řetězec  | Ne       | Kód chyby Lze použít pro účely ladění. Nezobrazuje se uživateli. |
 
 **Činnost koncového uživatele při ověřování – chybová odezva**
 
 ![Stránka příklad ověření](./media/api-connectors-overview/validation-error-postal-code.png)
 
-## <a name="using-azure-functions"></a>Použití Azure Functions
-Trigger HTTP můžete v Azure Functions použít jako jednoduchý způsob, jak vytvořit koncový bod rozhraní API pro použití s konektorem rozhraní API. Službu Azure Functions můžete použít [například](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)k provedení logiky ověřování a omezení podpisů na konkrétní domény. V rozsáhlých scénářích můžete také volat a vyvolat další webová rozhraní API, uživatelská úložiště a další cloudové služby z funkce Azure Functions.
+
+## <a name="best-practices-and-how-to-troubleshoot"></a>Osvědčené postupy a řešení potíží
+
+### <a name="using-serverless-cloud-functions"></a>Používání cloudových funkcí bez serveru
+Funkce bez serveru, jako například triggery HTTP v Azure Functions, poskytují jednoduchý způsob vytváření koncových bodů rozhraní API pro použití s konektorem rozhraní API. Cloudovou funkci bez serveru můžete použít [například](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)k provedení logiky ověřování a omezení podpisů na konkrétní domény. Cloudová funkce bez serveru může také volat a volat další webová rozhraní API, uživatelská úložiště a další cloudové služby pro složitější scénáře.
+
+### <a name="best-practices"></a>Osvědčené postupy
+Zajistěte, aby:
+* Vaše rozhraní API je za kontraktem požadavků a odpovědí rozhraní API, jak je uvedeno výše. 
+* **Adresa URL koncového bodu** konektoru API odkazuje na správný koncový bod rozhraní API.
+* Rozhraní API explicitně kontroluje hodnoty null přijatých deklarací.
+* Vaše rozhraní API bude co nejrychleji reagovat, aby se zajistilo prostředí pro tekutiny uživatelů.
+    * Pokud používáte funkci bez serveru nebo škálovatelnou webovou službu, použijte plán hostování, který uchovává rozhraní API "Start" nebo "teplou". U Azure Functions doporučujeme použít [Plán Premium](../../azure-functions/functions-scale.md#premium-plan). 
+
+
+### <a name="use-logging"></a>Použití protokolování
+Obecně je užitečné použít protokolovací nástroje povolené vaší službou webového rozhraní API, jako je [Application Insights](../../azure-functions/functions-monitoring.md), pro monitorování rozhraní API pro neočekávané kódy chyb, výjimky a špatný výkon.
+* Monitorovat stavové kódy HTTP, které nejsou HTTP 200 nebo 400.
+* Stavový kód HTTP 401 nebo 403 obvykle indikuje, že došlo k potížím s vaším ověřováním. V konektoru rozhraní API dvakrát ověřte vrstvu ověřování rozhraní API a odpovídající konfiguraci.
+* V případě potřeby můžete v vývoji použít přísnější úrovně protokolování (např. "trace" nebo "debug").
+* Sledujte své rozhraní API dlouhou dobu odezvy.
 
 ## <a name="next-steps"></a>Další kroky
-
 <!-- - Learn [where you can enable an API connector](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow) -->
 - Přečtěte si, jak [Přidat vlastní pracovní postup schvalování do samoobslužné registrace](self-service-sign-up-add-approvals.md) .
 - Začněte s našimi [ukázkami Azure Functions pro rychlý Start](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts).

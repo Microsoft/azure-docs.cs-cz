@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 08/14/2020
-ms.openlocfilehash: ceb1c9711d67b32f9a31e6105df0e0e0eec42907
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321369"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614423"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Přehled modelu vCore – Azure SQL Database a Azure SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ Model nákupu Virtual Core (vCore), který používá Azure SQL Database a Azure
 
 Mezi možnosti vrstvy služeb v modelu vCore patří Pro obecné účely, Pro důležité obchodní informace a měřítko. Vrstva služeb obecně definuje architekturu úložiště, omezení místa a vstupně-výstupních operací a možnosti provozní kontinuity související s dostupností a zotavením po havárii.
 
-|-|**Pro obecné účely**|**Pro důležité obchodní informace**|**Hyperškálování**|
+|-|**Obecné použití**|**Pro důležité obchodní informace**|**Hyperškálování**|
 |---|---|---|---|
 |Nejvhodnější pro|Většina obchodních úloh. Nabízí uživatelsky orientované, vyvážené a škálovatelné možnosti výpočtů a úložiště. |Nabízí podnikovým aplikacím nejvyšší odolnost proti chybám pomocí několika izolovaných replik a poskytuje nejvyšší výkon vstupně-výstupních operací na jednu repliku databáze.|Většina obchodních úloh s vysokou škálovatelností úložiště a požadavky na škálování pro čtení.  Nabízí vyšší odolnost proti chybám tím, že umožňuje konfiguraci více než jedné repliky izolované databáze. |
 |Storage|Používá vzdálené úložiště.<br/>**SQL Database zřízené výpočetní**prostředky:<br/>5 GB – 4 TB<br/>**Výpočetní**prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance SQL**: 32 GB až 8 TB |Používá místní úložiště SSD.<br/>**SQL Database zřízené výpočetní**prostředky:<br/>5 GB – 4 TB<br/>**Spravovaná instance SQL**:<br/>32 GB AŽ 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
@@ -91,7 +91,11 @@ Fsv2-Series se podporuje jenom na úrovni Pro obecné účely. Oblasti, ve kter�
 - Řada M-Series je hardwarově optimalizovaná možnost hardwaru pro úlohy, které přidávají větší nároky na paměť a vyšší výpočetní limity než služba Gen5.
 - Řada M-Series poskytuje 29 GB na vCore a až 128 virtuální jádra, což zvyšuje limit paměti vzhledem k Gen5, 8rychlostní až skoro 4 TB.
 
-Řada M-Series je podporována pouze v Pro důležité obchodní informace vrstvě a nepodporuje redundanci zóny.  Předplatné musí být placeného typu nabídky, včetně průběžných plateb nebo smlouva Enterprise (EA). V oblastech, kde je dostupná řada M-Series, najdete informace v tématu [dostupnost řady m-Series](#m-series-1).
+Řada M-Series je podporována pouze v Pro důležité obchodní informace vrstvě a nepodporuje redundanci zóny.  V oblastech, kde je dostupná řada M-Series, najdete informace v tématu [dostupnost řady m-Series](#m-series-1).
+
+#### <a name="azure-offer-types-supported-by-m-series"></a>Typy nabídek Azure podporované v řadě M-Series
+
+Pro přístup k řadě M-Series musí být předplatné placená typ nabídky, včetně průběžných plateb nebo smlouva Enterprise (EA).  Úplný seznam typů nabídek Azure podporovaných v řadě M-Series najdete v tématu [aktuální nabídky bez omezení útraty](https://azure.microsoft.com/support/legal/offer-details).
 
 <!--
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).

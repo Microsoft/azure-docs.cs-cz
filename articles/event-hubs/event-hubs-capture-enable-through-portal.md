@@ -3,12 +3,12 @@ title: Event Hubs – zachycení událostí streamování pomocí Azure Portal
 description: Tento článek popisuje, jak povolit zachycování událostí streamování prostřednictvím Azure Event Hubs pomocí Azure Portal.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 103aa4e3da84e41275bec6310035c117fe780a18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2381bfa627d00a78ed91af0ba81579588ee016ce
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315735"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613573"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Povolení zachytávání událostí streamování prostřednictvím Azure Event Hubs
 
@@ -17,6 +17,9 @@ Služba Azure [Event Hubs Capture][capture-overview] vám umožní automaticky d
 Ke konfiguraci funkce Capture v době vytvoření centra událostí můžete použít [Azure Portal](https://portal.azure.com). Můžete buď zachytit data do kontejneru [úložiště objektů BLOB](https://azure.microsoft.com/services/storage/blobs/) v Azure, nebo na účet [Azure Data Lake Storage Gen 1 nebo Gen 2](https://azure.microsoft.com/services/data-lake-store/) .
 
 Další informace najdete v tématu [Přehled funkce Event Hubs Capture][capture-overview].
+
+> [!IMPORTANT]
+> Cílový účet úložiště (Azure Storage nebo Azure Data Lake Storage) musí být ve stejném předplatném jako centrum událostí.
 
 ## <a name="capture-data-to-azure-storage"></a>Zaznamenání dat do Azure Storage
 

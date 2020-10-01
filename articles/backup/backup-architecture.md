@@ -3,12 +3,12 @@ title: Přehled architektury
 description: Poskytuje přehled architektury, komponent a procesů, které používá služba Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: e70fe13e895315763ae305b48a72d688f09931f0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6f95e8f6edaef61a7c5971a46ed4bff1a34e3dbe
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986486"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613998"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -35,7 +35,7 @@ Přečtěte si další informace o [tom, co můžete zálohovat](backup-overview
 
 ## <a name="where-is-data-backed-up"></a>Kde se data zálohují?
 
-Azure Backup ukládá zálohovaná data v trezorech – trezory služeb a trezory služby Backup. Trezor je online entita v Azure, která se používá k ukládání dat, jako jsou záložní kopie, body obnovení a zásady zálohování.
+Azure Backup ukládá zálohovaná data v trezorech – Recovery Services trezory a trezory služby Backup. Trezor je online entita v Azure, která se používá k ukládání dat, jako jsou záložní kopie, body obnovení a zásady zálohování.
 
 Trezory mají následující funkce:
 
@@ -98,10 +98,10 @@ Následující tabulka shrnuje podporované funkce pro různé typy zálohován�
 
 **Funkce** | **Přímé zálohování souborů a složek (pomocí agenta MARS)** | **Zálohování virtuálních počítačů Azure** | **Počítače nebo aplikace s DPM/MABS**
 --- | --- | --- | ---
-Zálohování do trezoru | ![Yes][green] | ![Yes][green] | ![Yes][green]
-Zálohování na disk DPM/MABS, potom do Azure | | | ![Yes][green]
-Komprimovat data odesílaná k zálohování | ![Yes][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Yes][green]
-Spustit přírůstkové zálohování |![Yes][green] |![Yes][green] |![Yes][green]
+Zálohování do trezoru | ![Ano][green] | ![Ano][green] | ![Ano][green]
+Zálohování na disk DPM/MABS, potom do Azure | | | ![Ano][green]
+Komprimovat data odesílaná k zálohování | ![Ano][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Ano][green]
+Spustit přírůstkové zálohování |![Ano][green] |![Ano][green] |![Ano][green]
 Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][yellow]<br/><br/> Jenom pro servery DPM/MABS nasazené místně.
 
 ![Klíč tabulky](./media/backup-architecture/table-key.png)
