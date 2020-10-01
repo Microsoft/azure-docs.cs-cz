@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: v-myoung
-ms.openlocfilehash: 3607ecb7d1ef01b968b67c704e12136cc1888b69
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.author: inhenkel
+ms.openlocfilehash: 797ba00820e7ff9d96868acdfc1dddfff3d21623
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296225"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598275"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
@@ -56,6 +56,9 @@ Váš klient streamování může určit následující formáty HLS:
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
 |HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+
+> [!NOTE]
+> V předchozích pokynech od společnosti Apple se doporučuje, aby záloha pro sítě s malou šířkou pásma poskytovala datový proud, který je jen pro zvuk.  V současné době Media Services kodér automaticky vygeneruje zvuk, který se jenom sleduje.  Pokyny pro Apple nyní obsahují informace o tom, *že by nemělo být* zahrnuté zvukové stopy, zejména pro distribuci Apple TV.  Chcete-li zabránit přehrávači ve výchozím nastavení zvukového zvuku, doporučujeme použít značku "pouze zvuk = false" v adrese URL, která odebere pouze zvukovou verzi v HLS, nebo jednoduše použít HLS-v3. Například, `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`.
 
 ### <a name="mpeg-dash-protocol"></a>Protokol MPEG-SPOJOVNÍK
 

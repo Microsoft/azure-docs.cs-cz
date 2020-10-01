@@ -2,23 +2,19 @@
 title: Osvědčené postupy pro službu Azure RBAC
 description: Osvědčené postupy pro použití řízení přístupu na základě role v Azure (Azure RBAC).
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 09/30/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 053e86f3493c7a11a3cbbaad0871e45345697878
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cb3e1fe0275c676e2ce54ff9201502fc3595937
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735330"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595499"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Osvědčené postupy pro službu Azure RBAC
 
@@ -28,7 +24,9 @@ Tento článek popisuje některé osvědčené postupy pro použití řízení p
 
 Pomocí Azure RBAC můžete oddělit povinnosti v rámci týmu a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce. Místo toho, abyste všem uživatelům udělili neomezená oprávnění v předplatném nebo prostředcích Azure, můžete povolit pouze určité akce v určitém oboru.
 
-Osvědčeným postupem při plánování strategie řízení přístupu je udělit uživatelům nejnižší úroveň oprávnění, kterou k práci potřebují. Následující diagram znázorňuje navrhovaný vzor pro používání Azure RBAC.
+Osvědčeným postupem při plánování strategie řízení přístupu je udělit uživatelům nejnižší úroveň oprávnění, kterou k práci potřebují. Nepřiřazujte širší role v širších oborech, i když se zpočátku zdá být pohodlnější. Omezením rolí a oborů, které omezíte, jaké prostředky jsou ohroženy, pokud dojde k ohrožení zabezpečení objektu zabezpečení.
+
+Následující diagram znázorňuje navrhovaný vzor pro používání Azure RBAC.
 
 ![Azure RBAC a nejnižší oprávnění](./media/best-practices/rbac-least-privilege.png)
 

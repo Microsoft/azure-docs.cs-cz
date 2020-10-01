@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/25/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 7a546c06e990d7fdb0fa7865c176f39772136539
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e5a6dae98e786bf55dc17d8fabe42f84e9927442
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539980"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91605902"
 ---
 ![Dokumentace k Dsv3](media/vm-disk-performance/dsv3-documentation.jpg)
 
-Maximální propustnost disku, která není v **mezipaměti** , je výchozím limitem úložiště, který může virtuální počítač zpracovat. Maximální propustnost úložiště **v mezipaměti** je samostatný limit, pokud povolíte ukládání hostitele do mezipaměti. Ukládání do mezipaměti hostitele funguje tak, že se úložiště přiblíží k virtuálnímu počítači, který je možné zapsat nebo číst, a to rychle. Velikost úložiště, která je k dispozici pro virtuální počítač pro ukládání do mezipaměti hostitele, je v dokumentaci. Můžete například vidět, že Standard_D8s_v3 se dodává s 200 GiB úložiště mezipaměti. Pojďme 
+Maximální propustnost disku, která není v **mezipaměti** , je výchozím limitem úložiště, který může virtuální počítač zpracovat. Maximální propustnost úložiště **v mezipaměti** je samostatný limit, pokud povolíte ukládání hostitele do mezipaměti. Ukládání do mezipaměti hostitele funguje tak, že se úložiště přiblíží k virtuálnímu počítači, který je možné zapsat nebo číst, a to rychle. Velikost úložiště, která je k dispozici pro virtuální počítač pro ukládání do mezipaměti hostitele, je v dokumentaci. Můžete například vidět, že Standard_D8s_v3 se dodává s 200 GiB úložiště mezipaměti.
 
 Povolení ukládání do mezipaměti hostitele můžete provést při vytváření virtuálního počítače a připojení disků. Můžete také upravit a zapnout a vypnout ukládání disků do mezipaměti v existujícím virtuálním počítači.
 
@@ -94,7 +94,7 @@ Nastavení:
     - Mezipaměť hostitele: čtení i zápis
 - 2 datové disky P30 × 2
     - IOPS: 5 000
-    - Mezipaměť hostitele: čtení i zápis
+    - Ukládání hostitele do mezipaměti: zakázáno
 
 ![Příklad mezipaměti hostitele se vzdáleným úložištěm](media/vm-disk-performance/host-caching-example-with-remote.jpg)
 

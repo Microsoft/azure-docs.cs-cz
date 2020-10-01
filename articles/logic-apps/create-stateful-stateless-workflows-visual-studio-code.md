@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
 ms.date: 09/26/2020
-ms.openlocfilehash: 1595051c851d1c21242bcbb5368baa28a1da740d
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: cc52358af203bafc87c5f9ac3ae1f237c0c7ae6c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409846"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597791"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Vytváření stavových a bezstavových pracovních postupů v Visual Studio Code s rozšířením Azure Logic Apps (Preview)
 
@@ -112,7 +112,7 @@ Pro tuto veřejnou verzi Preview nejsou tyto možnosti k dispozici nebo nejsou p
 
 * V Azure Portal nemůžete vytvářet nové aplikace logiky s novým typem prostředku **Aplikace logiky (Preview)** . Tyto aplikace logiky můžete vytvořit pouze v Visual Studio Code. Po nasazení Logic Apps s tímto typem prostředku z Visual Studio Code do Azure ale můžete [do těchto aplikací logiky přidávat nové pracovní postupy](#add-workflows).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="access-and-connectivity"></a>Přístup a připojení
 
@@ -389,9 +389,11 @@ Pracovní postup aplikace logiky v tomto příkladu používá tuto aktivační 
 
 1. Pokud potřebujete položku v Návrháři odstranit, postupujte takto:
 
-   1. V návrháři vyberte položku.
+   1. V návrháři vyberte položku, která otevře podokno podrobností položky na pravé straně.
 
-   1. V podokně podrobností položky, které se otevře na pravé straně, vyberte tlačítko se třemi tečkami (**...**) **>** **Odstranit**. Odstranění potvrďte tak, že vyberete **OK**.
+   1. Zvětšete okno Visual Studio Code dostatečně široké, aby se zobrazilo tlačítko se třemi tečkami (**...**) v pravém horním rohu. 
+
+   1. Otevřete nabídku se třemi tečkami (**...**) a vyberte **Odstranit**. Odstranění potvrďte tak, že vyberete **OK**.
 
       ![Snímek obrazovky zobrazující vybranou položku v Návrháři s podoknem otevřít podokno podrobností a tlačítkem s vybranými třemi tečkami a možností odstranit](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
 
@@ -831,7 +833,7 @@ Pokud jste projekt již nasadili do Azure Portal, postupujte takto:
 
 1. Do pole **hodnota** zadejte následující hodnotu: `WithStatelessRunHistory`
 
-   Příklad:
+   Například:
 
    ![Snímek obrazovky, který zobrazuje prostředek Azure Portal a aplikace logiky (Preview) s názvem "konfigurace" > "nastavení nového aplikace" < otevře podokno přidat/upravit nastavení aplikace, a pracovní postupy. {yourWorkflowName}. Možnost OperationOptions je nastavena na hodnotu "WithStatelessRunHistory".](./media/create-stateful-stateless-workflows-visual-studio-code/stateless-operation-options-run-history.png)
 

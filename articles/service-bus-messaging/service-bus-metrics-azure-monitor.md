@@ -2,13 +2,13 @@
 title: Azure Service Bus metriky v Azure Monitor | Microsoft Docs
 description: Tento článek vysvětluje, jak pomocí Azure Monitor monitorovat Service Bus entit (fronty, témata a odběry).
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: 158662a5d0fc3489b2cac638b28a64aa218b888e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 169edb651a59302d0ea1245fd48787404dd3e555
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320434"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598131"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metriky v Azure Monitor
 
@@ -93,7 +93,7 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-|Aktivní připojení|Počet aktivních připojení v oboru názvů i u entity.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
+|Aktivní připojení|Počet aktivních připojení v oboru názvů i pro entitu v oboru názvů. Hodnota této metriky je hodnota k určitému bodu v čase. Připojení, která jsou aktivní ihned po tomto okamžiku, se neprojeví v metrikě.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
 |Otevřená připojení |Počet otevřených připojení.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
 |Uzavřená připojení |Počet uzavřených připojení<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: název entity|
 

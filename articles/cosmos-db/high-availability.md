@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak Azure Cosmos DB poskytuje vysokou dost
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 09/30/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 1f2e90f9391654d10332b9f1a21c56fd22e2307b
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 4e1a2fdd772c7b318ba36b1aee623c663689526f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570800"
+ms.locfileid: "91597273"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Jak Azure Cosmos DB poskytovat vysokou dostupnost? 
 
@@ -81,9 +81,6 @@ Když konfigurujete zápisy ve více oblastech pro účet Azure Cosmos, můžete
 
 Tato funkce je dostupná v těchto oblastech: *Velká Británie – jih, jihovýchodní Asie, východní USA, východní USA 2, střed USA, západní Evropa, západní USA 2, Japonsko – východ, Severní Evropa, Francie – střed, Austrálie – východ, východní USA 2 oblasti EUAP* .
 
-> [!NOTE]
-> Povolení Zóny dostupnosti pro jednu oblast účtu Azure Cosmos bude mít za následek poplatky, které se rovnají přidání další oblasti do svého účtu. Podrobnosti o cenách najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) a s [náklady na více oblastí v Azure Cosmos DB](optimize-cost-regions.md) článcích.
-
 Následující tabulka shrnuje schopnost vysoké dostupnosti u různých konfigurací účtu:
 
 |KPI  |Jedna oblast bez Zóny dostupnosti (ne AZ)  |Jedna oblast s Zóny dostupnostiem (AZ)  |Zápisy ve více oblastech pomocí Zóny dostupnosti (AZ, 2 Regions) – Doporučené nastavení |
@@ -97,7 +94,7 @@ Následující tabulka shrnuje schopnost vysoké dostupnosti u různých konfigu
 |Latence zápisu | Mezi oblastmi | Mezi oblastmi | Nízká |
 |Oblastní výpadek – ztráta dat | Ztráta dat |  Ztráta dat | Ztráta dat <br/><br/> Při použití ohraničené konzistence neaktuálnosti s více oblastmi zápisu a více než jednou oblastí je ztráta dat omezená na ohraničenou neomezenou funkčnost nakonfigurovanou na vašem účtu. <br /><br />Nemůžete zabránit ztrátě dat při regionálním výpadku tím, že nakonfigurujete silnou konzistenci s více oblastmi. Tato možnost je součástí kompromisů, které mají vliv na dostupnost a výkon. Dá se nakonfigurovat jenom pro účty, které jsou nakonfigurované pro zápisy v jedné oblasti. |
 |Oblastní výpadek – dostupnost | Ztráta dostupnosti | Ztráta dostupnosti | Žádná ztráta dostupnosti |
-|Propustnost | Zajištěná propustnost X RU/s | Zajištěná propustnost X RU/s | dostupná propustnost dvojnásobných RU/s <br/><br/> Tento režim konfigurace vyžaduje dvojnásobek objemu propustnosti v porovnání s jednou oblastí s Zóny dostupnosti, protože existují dvě oblasti. |
+|Propustnost | Zajištěná propustnost X RU/s | Zajištěná propustnost X RU/s × 1,25 | dostupná propustnost dvojnásobných RU/s <br/><br/> Tento režim konfigurace vyžaduje dvojnásobek objemu propustnosti v porovnání s jednou oblastí s Zóny dostupnosti, protože existují dvě oblasti. |
 
 > [!NOTE]
 > Pokud chcete povolit podporu zón dostupnosti pro účet Azure Cosmos ve více oblastech, musí mít tento účet povolený zápis zápisu ve více oblastech.

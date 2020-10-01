@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: e526b8e2e4f31187bb958ec37c2ffa4d30f0265b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 2a3e1e7279e915c0c5992190ef0c8d1d83880dbb
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461151"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596147"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Použití ověřování Multi-Factor Azure Active Directory
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -27,14 +27,12 @@ Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics podporu
 
 **Stáhněte si nejnovější SSMS** -v klientském počítači, Stáhněte si nejnovější verzi nástroje SSMS, od [Stažení SQL Server Management Studio (SSMS)](https://aka.ms/ssms). 
 
-> [!Note]
-> V prosinci 2021 nebudou verze SSMS starší než 18,6 ověřovány prostřednictvím Azure Active Directory s MFA. Pokud chcete i nadále využívat Azure Active Directory ověřování pomocí MFA, nainstalujte nebo aktualizujte SSMS 18,6 nebo novější.
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 
 Pro všechny funkce popsané v tomto článku použijte minimálně červenec 2017, verze 17,2. Dialogové okno nejaktuálnější připojení by mělo vypadat podobně jako na následujícím obrázku:
 
   ![Snímek obrazovky dialogového okna připojit k serveru v SQL Server Management Studio, v němž se zobrazí nastavení pro typ serveru, název serveru a ověřování.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)
-  
-    
 
 ## <a name="authentication-options"></a>Možnosti ověřování
 

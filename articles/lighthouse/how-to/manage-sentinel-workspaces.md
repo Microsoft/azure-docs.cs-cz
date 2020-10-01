@@ -1,14 +1,14 @@
 ---
 title: Správa pracovních prostorů Sentinel Azure ve velkém měřítku
 description: Zjistěte, jak efektivně spravovat Sentinel Azure na delegovaných zákaznických zdrojích.
-ms.date: 08/27/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 78896d6458f6b1c40655bc36d2bf63e05ddb0a59
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: d1ab392ee946e09a5f9e32ddf01ec2cd1e8bd41f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019729"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596942"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Správa pracovních prostorů Sentinel Azure ve velkém měřítku
 
@@ -35,6 +35,9 @@ Tento centralizovaný model nasazení má následující výhody:
 - Data ze všech zdrojů dat a datových konektorů, které jsou integrovány pomocí služby Azure Sentinel (například protokoly aktivit Azure AD, protokoly Office 365 nebo výstrahy ochrany Microsoft Threat Protection), zůstanou v rámci každého tenanta zákazníka.
 - Snižuje latenci sítě.
 - Snadné přidání nebo odebrání nových poboček nebo zákazníků
+
+> [!NOTE]
+> Můžete spravovat delegované prostředky, které se nacházejí v různých [oblastech](../../availability-zones/az-overview.md#regions). Nicméně delegování předplatných v rámci [národního cloudu](../../active-directory/develop/authentication-national-cloud.md) a veřejného cloudu Azure nebo ve dvou různých národních cloudech se nepodporuje.
 
 ## <a name="granular-role-based-access-control-rbac"></a>Podrobné řízení přístupu na základě role (RBAC)
 

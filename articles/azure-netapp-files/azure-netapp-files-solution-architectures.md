@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 9b44b27730fff888685ef7e0ad06d35e7bdc88c7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: f6e38585e86dd962bc5f94a7c2a8a67c55f2a8fd
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439733"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595906"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury řešení s využitím Azure NetApp Files
 Tento článek poskytuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití Azure NetApp Files.  
@@ -34,6 +34,7 @@ V této části najdete odkazy na řešení pro aplikace a databáze se systéme
 
 ### <a name="oracle"></a>Oracle
 
+* [Výkon databáze Oracle na Azure NetApp Filesch jednoduchých svazcích](performance-oracle-single-volumes.md)
 * [Průvodce nasazením Oracle v Azure v praxi pomocí Azure NetApp Files](https://www.netapp.com/us/media/tr-4780.pdf)
 * [Image virtuálních počítačů Oracle a jejich nasazení na Microsoft Azure: možnosti konfigurace sdíleného úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
 * [Výhody použití Azure NetApp Files s Oracle Database](solutions-benefits-azure-netapp-files-oracle-database.md)

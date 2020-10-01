@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: c7fbe46d378d45f49a8510f9fdd01a9cae665d0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bfd3b2351a280f423ba0ef0b15318449554b5e3b
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074378"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595941"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Oprava virtuálního počítače s Linuxem pomocí příkazů pro opravu virtuálních počítačů Azure
 
@@ -42,7 +42,7 @@ Pomocí těchto kroků můžete vyřešit potíže s virtuálním počítačem:
 1. Spuštění služby Azure Cloud Shell
 2. Spuštění AZ Extension Add/Update
 3. Spuštění AZ VM opravit Create
-4. Provést kroky pro zmírnění rizika
+4. Spusťte příkaz AZ VM Repair Run nebo proveďte kroky pro zmírnění rizik.
 5. Spuštění AZ VM opravit Restore
 
 Další dokumentaci a pokyny najdete v tématu [AZ VM Repair](/cli/azure/ext/vm-repair/vm/repair).
@@ -59,7 +59,7 @@ Další dokumentaci a pokyny najdete v tématu [AZ VM Repair](/cli/azure/ext/vm-
 
    Pokud dáváte přednost místní instalaci a používání rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu ``az --version``. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
    
-   Pokud se potřebujete přihlásit k Cloud Shell s jiným účtem, než jste aktuálně přihlášení k webu Azure Portal, můžete použít ``az login`` [AZ Login reference](/cli/azure/reference-index?view=azure-cli-latest#az-login).  K přepínání mezi předplatnými přidruženými k vašemu účtu můžete použít ``az account set --subscription`` [odkaz AZ Account set reference](/cli/azure/account?view=azure-cli-latest#az-account-set).
+   Pokud se potřebujete přihlásit k Cloud Shell s jiným účtem, než jste aktuálně přihlášení k webu Azure Portal, můžete použít ``az login`` [AZ Login reference](/cli/azure/reference-index?view=azure-cli-latest#az-login&preserve-view=true).  K přepínání mezi předplatnými přidruženými k vašemu účtu můžete použít ``az account set --subscription`` [odkaz AZ Account set reference](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true).
 
 2. Pokud příkazy použijete poprvé `az vm repair` , přidejte rozšíření rozhraní příkazového řádku pro opravu virtuálního počítače.
 
@@ -79,7 +79,13 @@ Další dokumentaci a pokyny najdete v tématu [AZ VM Repair](/cli/azure/ext/vm-
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
    ```
 
-4. Na vytvořeném virtuálním počítači opravy proveďte všechny nezbytné kroky zmírnění a pak pokračujte krokem 5.
+4. Spusťte `az vm repair run`. Tento příkaz spustí na připojeném disku určený skript opravy pomocí opravného virtuálního počítače. Pokud vám průvodce pro odstraňování potíží, který používáte, zadal ID běhu, použijte ho tady, jinak můžete použít příkaz AZ VM Repair list-Scripts a Zobrazit dostupné skripty opravy. Zde použitá skupina prostředků a název virtuálního počítače jsou pro virtuální počítač, který není v kroku 3 použit. Další informace o skriptech opravy najdete v [knihovně opravit skript](https://github.com/Azure/repair-script-library).
+
+   ```azurecli-interactive
+   az vm repair run -g MyResourceGroup -n MyVM --run-on-repair --run-id lin-hello-world --verbose
+   ```
+
+   Volitelně můžete provést potřebné ruční kroky pro zmírnění rizik pomocí opravy virtuálního počítače a pak pokračovat krokem 5.
 
 5. Spusťte `az vm repair restore`. Tento příkaz zahodí opravený disk s operačním systémem s původním diskem s operačním systémem virtuálního počítače. Zde použitá skupina prostředků a název virtuálního počítače jsou pro virtuální počítač, který není v kroku 3 použit.
 

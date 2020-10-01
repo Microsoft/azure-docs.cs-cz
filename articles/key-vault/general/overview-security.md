@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4c0430f96934c16a26ca3ab908da6aa017810ad0
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b6163ca0cb02670024fe95459f31ac81c4da756c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377569"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596368"
 ---
 # <a name="azure-key-vault-security"></a>Zabezpečení služby Azure Key Vault
 
@@ -75,6 +75,14 @@ Chcete-li snížit riziko vašich trezorů, určete, které IP adresy k nim maj�
 Po uplatnění pravidel brány firewall můžou uživatelé číst data z Key Vault jenom v případě, že jejich požadavky pocházejí z povolených virtuálních sítí nebo rozsahů IPv4 adres. To platí také pro přístup k Key Vault z Azure Portal. I když uživatelé můžou přejít k trezoru klíčů z Azure Portal, nemusí být schopni zobrazit seznam klíčů, tajných kódů ani certifikátů, pokud jejich klientský počítač není v seznamu povolených. To má vliv také na Key Vault pro výběr jinými službami Azure. Uživatelé můžou zobrazit seznam trezorů klíčů, ale ne seznam klíčů, pokud pravidla brány firewall brání jejich klientskému počítači.
 
 Další informace o Azure Key Vaultch [koncových bodech služby virtuální sítě pro Azure Key Vault](overview-vnet-service-endpoints.md)) najdete v ch síťových adresách.
+
+### <a name="tls-and-https"></a>TLS a HTTPS
+
+*   Key Vault front-endu (rovina dat) je server s více klienty. To znamená, že trezory klíčů od různých zákazníků můžou sdílet stejnou veřejnou IP adresu. Aby bylo možné dosáhnout izolace, jednotlivé požadavky HTTP jsou ověřeny a autorizovány nezávisle na ostatních požadavcích.
+*   Můžete identifikovat starší verze protokolu TLS, aby se nahlásily chyby zabezpečení, ale protože je sdílená veřejná IP adresa, není možné, aby tým služby trezoru klíčů zakázal starší verze TLS pro jednotlivé trezory klíčů na úrovni přenosu.
+*   Protokol HTTPS umožňuje klientovi účast v vyjednávání TLS. **Klienti můžou vyhovět nejnovější verzi TLS**a vždycky, když to klient provede, bude celé připojení používat odpovídající ochranu úrovně. Skutečnost, že Key Vault stále podporuje starší verze TLS, nezhoršuje zabezpečení připojení pomocí novější verze TLS.
+*   Navzdory známým chybám zabezpečení v protokolu TLS neexistuje žádný známý útok, který by mohl škodlivému agentovi extrahovat jakékoli informace z vašeho trezoru klíčů, když útočník iniciuje spojení s verzí TLS s chybami zabezpečení. Útočník by stále musel ověřovat a autorizovat sebe sama a pokud se legitimní klienti vždy připojují k nejnovějším verzím TLS, neexistuje žádný způsob, jak by přihlašovací údaje mohly být v původních verzích TLS neúniky z chyb zabezpečení.
+
 
 ## <a name="monitoring"></a>Monitorování
 

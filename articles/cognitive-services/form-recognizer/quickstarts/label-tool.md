@@ -1,28 +1,30 @@
 ---
-title: 'Rychlý Start: značení formulářů, výuka modelu a analýza formuláře pomocí nástroje pro výběr popisků – rozpoznávání formulářů'
+title: 'Rychlý Start: značení formulářů, výuka modelu a analýza formulářů pomocí nástroje pro výběr popisků – rozpoznávání formulářů'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete vzorový Nástroj pro rozpoznávání popisů formulářů k ručnímu označení dokumentů formuláře. Pak vytvoříte vlastní model s označenými dokumenty a použijete model k extrakci párů klíč/hodnota.
+description: V tomto rychlém startu použijete vzorový Nástroj pro rozpoznávání popisů formulářů k ručnímu označení dokumentů formuláře. Pak vytvoříte vlastní model zpracování dokumentů s označenými dokumenty a použijete model k extrakci párů klíč/hodnota.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/25/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.custom: cog-serv-seo-aug-2020
+keywords: zpracování dokumentů
+ms.openlocfilehash: 6b641df00d4b4981aa47f314f8e575a9cbcccbba
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89418955"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597737"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
-V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů REST API s ukázkovým nástrojem pro označování, pomocí kterého můžete vytvořit vlastní model s ručně označenými daty. Další informace o této funkci najdete v části [výuka s visačkami](../overview.md#train-with-labels) v přehledu.
+V tomto rychlém startu použijete REST API pro rozpoznávání formulářů s ukázkovým nástrojem pro označování, pomocí kterého můžete vytvořit vlastní model zpracování dokumentů s ručně označenými daty. Další informace o studiu pod dohledem pomocí nástroje pro rozpoznávání formulářů najdete v části [výuka s visačkami](../overview.md#train-with-labels) v přehledu.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto rychlého startu musíte mít:
 
@@ -93,7 +95,7 @@ Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. P
 
 ## <a name="set-up-input-data"></a>Nastavení vstupních dat
 
-Nejprve se ujistěte, že všechny školicí dokumenty mají stejný formát. Pokud máte formuláře v několika formátech, uspořádejte je do podsložek v závislosti na společném formátu. Při učení budete muset rozhraní API nasměrovat do podsložky.
+Nejprve se ujistěte, že všechny školicí dokumenty mají stejný formát. Pokud máte formuláře v několika formátech, uspořádejte je do podsložek na základě společného formátu. Při trénování budete muset přesměrovat rozhraní API do podsložky.
 
 ### <a name="configure-cross-domain-resource-sharing-cors"></a>Konfigurace sdílení prostředků mezi doménami (CORS)
 
@@ -120,7 +122,7 @@ Vyplňte pole následujícími hodnotami:
 
 * **Zobrazovaný název** – zobrazovaný název připojení.
 * **Popis** – Popis projektu.
-* **Adresa URL SAS** – adresa URL sdíleného přístupového podpisu (SAS) vašeho kontejneru Azure Blob Storage. Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Nastavte čas vypršení platnosti na nějakou dobu, kdy jste službu použili. Ujistěte se, že jsou zaškrtnutá oprávnění **číst**, **zapisovat**, **Odstranit**a **seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+* **Adresa URL SAS** – adresa URL sdíleného přístupového podpisu (SAS) vašeho kontejneru Azure Blob Storage. Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Nastavte čas vypršení platnosti na dobu, kdy už službu nebudete používat. Ujistěte se, že jsou zaškrtnutá oprávnění **číst**, **zapisovat**, **Odstranit**a **seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tento formát: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
 
@@ -137,7 +139,7 @@ V nástroji pro označování ukázkových popisků se v projektech ukládají v
 * **Klíč rozhraní API** – klíč předplatného pro rozpoznávání formulářů
 * **Popis** -volitelné – Popis projektu
 
-:::image type="content" source="../media/label-tool/new-project.png" alt-text="Nová stránka projektu s ukázkovým nástrojem pro označování":::
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
 
 ## <a name="label-your-forms"></a>Popisek formulářů
 
@@ -153,7 +155,7 @@ Kliknutím na možnost **spustit optické rozpoznávání znaků u všech soubor
 
 Zobrazí také, které tabulky byly automaticky extrahovány. Extrahovanou tabulku zobrazíte kliknutím na ikonu tabulky nebo mřížky na levé straně dokumentu. V tomto rychlém startu, protože obsah tabulky se automaticky extrahuje, nebudeme označovat obsah tabulky, ale místo toho se spoléháme na automatizovanou extrakci.
 
-:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Vizualizace tabulky v nástroji ukázka popisků":::
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
 
 ### <a name="apply-labels-to-text"></a>Použít popisky na text
 
@@ -199,7 +201,7 @@ V dalším kroku vytvoříte značky (popisky) a použijete je na textové prvky
 
 ---
 
-:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Okno hlavního editoru nástroje pro ukázkové označování":::
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
 
 
 Postupujte podle výše uvedených kroků a označte alespoň pět vašich forem.
@@ -227,7 +229,7 @@ V současné době jsou podporovány následující typy hodnot a variace:
 > 
 > Je nutné zadat formát ( `dmy` , `mdy` , `ymd` ) pro práci formátování data.
 >
-> Následující znaky lze použít jako oddělovače data: `, - / . \` . Prázdný znak nelze použít jako oddělovač. Příklad:
+> Následující znaky lze použít jako oddělovače data: `, - / . \` . Prázdný znak nelze použít jako oddělovač. Například:
 > * 01, 01, 2020
 > * 01-01-2020
 > * 01/01/2020
@@ -254,7 +256,7 @@ Kliknutím na ikonu výuka v levém podokně otevřete stránku školení. Potom
 * Seznam značek a předpokládaná přesnost na značku.
 
 
-:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Školicí zobrazení.":::
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
 
 Po dokončení školení si Projděte hodnotu **Průměrná přesnost** . Pokud je nízká, měli byste přidat další vstupní dokumenty a opakovat výše uvedené kroky. Již označené dokumenty zůstanou v indexu projektu.
 
@@ -269,11 +271,11 @@ Tato funkce je aktuálně dostupná v v 2.1. Tisk.
 
 # <a name="v21-preview"></a>[verze 2.1 Preview](#tab/v2-1) 
 
-Při vytváření modelu můžete sestavit až 100 modelů pro jediné ID modelu. Při volání funkce analyzovat pomocí tohoto složeného ID modelu, nástroj pro rozpoznávání formulářů nejprve klasifikuje formulář, který jste odeslali, přiřadí ho k nejlépe odpovídajícímu modelu a vrátí výsledky pro tento model. To je užitečné, když příchozí formuláře mohou patřit do jedné z několika šablon.
+S využitím funkce Model Compose můžete vytvořit až 100 modelů s jedním ID modelu. Když zavoláte analýzu s tímto složeným ID modelu, Rozpoznávání formulářů nejprve provede klasifikaci odeslaného formuláře, najde shodu s nejlépe odpovídajícím modelem a pak vrátí výsledky pro tento model. To je užitečné v případě, že příchozí formuláře můžou patřit k jedné z několika šablon.
 
 Chcete-li vytvořit modely v nástroji pro označování ukázkových popisků, klikněte na ikonu vytvořit model (šipka vlevo) na levé straně. Na levé straně vyberte modely, které chcete vytvořit dohromady. Modely s ikonou šipky jsou již vytvořeny jako modely. Klikněte na tlačítko "vytvořit". V překryvném okně pojmenujte nový složený model a klikněte na "vytvořit". Po dokončení operace by se nový sestavený model měl zobrazit v seznamu. 
 
-:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Zobrazení uživatelského rozhraní pro vytváření modelů.":::
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
 
 ---
 
@@ -306,7 +308,10 @@ Nakonec přejděte na hlavní stránku (ikonu domu) a klikněte na otevřít clo
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se naučili, jak pomocí nástroje pro rozpoznávání popisů formulářů vytvořit výuku modelu s ručně označenými daty. Pokud chcete nástroj pro označování integrovat do vlastní aplikace, použijte rozhraní REST API, která se týkají školení s popisky dat.
+V tomto rychlém startu jste se naučili, jak pomocí nástroje pro rozpoznávání popisů formulářů vytvořit výuku modelu s ručně označenými daty. Pokud chcete vytvořit vlastní nástroj pro popisek školicích dat, použijte rozhraní REST API, které se týká školení s popisky dat.
 
 > [!div class="nextstepaction"]
 > [Výuka s popisky pomocí Pythonu](./python-labeled-data.md)
+
+* [Co je služba Rozpoznávání formulářů?](../overview.md)
+* [Rychlé starty klientské knihovny pro rozpoznávání formulářů](client-library.md)

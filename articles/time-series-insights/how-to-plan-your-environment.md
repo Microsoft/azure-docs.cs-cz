@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1788eba0ef9be781fb7cf23f1eb86b48c9c360e1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb12777a6a4fa1e75cd65bc597c87442d592aad5
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287406"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598105"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Plánování prostředí Azure Time Series Insights Gen2
 
@@ -36,7 +36,6 @@ Azure Time Series Insights využívá obchodní model s průběžnými platbami.
 ## <a name="the-gen2-environment"></a>Prostředí Gen2
 
 Při zřizování prostředí Azure Time Series Insights Gen2 vytvoříte dva prostředky Azure:
-
 
 * Prostředí Azure Time Series Insights Gen2
 * Účet Azure Storage
@@ -94,8 +93,8 @@ Pokud potřebujete další informace a chcete pochopit, jak budou události shrn
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si [Azure Advisor](../advisor/advisor-overview.md) a naplánujte si možnosti konfigurace pro obnovení firmy.
-- Přečtěte si [Azure Advisor](../advisor/advisor-overview.md) a naplánujte si možnosti konfigurace pro obnovení firmy.
-- Přečtěte si další informace o [přijímání dat](./concepts-ingestion-overview.md) v Azure Time Series Insights Gen2.
-- Přečtěte si článek o [úložišti dat](./concepts-storage.md) v Azure Time Series Insights Gen2.
-- Přečtěte si o [modelování dat](./concepts-model-overview.md) v Azure Time Series Insights Gen2.
+* Přečtěte si [Azure Advisor](../advisor/advisor-overview.md) a naplánujte si možnosti konfigurace pro obnovení firmy.
+* Přečtěte si [Azure Advisor](../advisor/advisor-overview.md) a naplánujte si možnosti konfigurace pro obnovení firmy.
+* Přečtěte si další informace o [přijímání dat](./concepts-ingestion-overview.md) v Azure Time Series Insights Gen2.
+* Přečtěte si článek o [úložišti dat](./concepts-storage.md) v Azure Time Series Insights Gen2.
+* Přečtěte si o [modelování dat](./concepts-model-overview.md) v Azure Time Series Insights Gen2.

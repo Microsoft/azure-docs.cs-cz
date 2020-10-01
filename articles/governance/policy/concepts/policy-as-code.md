@@ -1,14 +1,14 @@
 ---
 title: Návrh pracovních postupů pro zásady jako kód
 description: Naučte se navrhovat pracovní postupy pro nasazení Azure Policy definic jako kódu a automatické ověřování prostředků.
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: bc7a6d72e344868a799638f724b5c225516b5a32
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7fa8eb36283821527e16c1d97e326aa9dcde9dba
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651882"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598218"
 ---
 # <a name="design-policy-as-code-workflows"></a>Návrh pracovních postupů pro zásady jako kód
 
@@ -38,6 +38,8 @@ Příklady těchto formátů souborů jsou k dispozici v [Azure Policy úložiš
 
 - Definice zásad: [Přidání značky k prostředkům](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
 - Definice iniciativy: [fakturační značky](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
+
+Přečtěte si také téma [Export Azure Policy prostředky](../how-to/export-resources.md) a získejte existující definice a přiřazení do [GitHubu](https://www.github.com)prostředí pro správu zdrojového kódu.
 
 ## <a name="workflow-overview"></a>Přehled pracovního postupu
 

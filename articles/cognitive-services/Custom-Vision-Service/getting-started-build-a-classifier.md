@@ -1,30 +1,31 @@
 ---
-title: Rychlý Start – vytvoření klasifikátoru – Custom Vision Service
+title: 'Rychlý Start: vytvoření klasifikátoru pomocí Custom Vision Web'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte, jak pomocí Custom Vision webu vytvořit model klasifikace imagí.
+description: V tomto rychlém startu se dozvíte, jak používat Custom Vision web k vytváření, školení a testování modelu klasifikace imagí.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/15/2020
+ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: c8b5d3f58f11e85c6e77ce0cbf0c6d435f570ade
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+keywords: rozpoznávání obrázků, aplikace pro rozpoznávání obrázků, vlastní vize
+ms.openlocfilehash: b57720b9d8fb05a605b9eace279b70b060c18450
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277338"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596876"
 ---
-# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Rychlý Start: vytvoření klasifikátoru pomocí Custom Vision
+# <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>Rychlý Start: vytvoření klasifikátoru pomocí Custom Vision Web
 
-V tomto rychlém startu se dozvíte, jak vytvořit klasifikátor imagí prostřednictvím webu Custom Vision. Po vytvoření modelu můžete testovat s využitím nových imagí a následně je integrovat do vlastního softwaru pro rozpoznávání imagí.
+V tomto rychlém startu se dozvíte, jak pomocí Custom Vision webu vytvořit model klasifikace imagí. Jakmile model sestavíte, můžete ho otestovat pomocí nových imagí a následně ho integrovat do vlastní aplikace pro rozpoznávání imagí.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Sada imagí, se kterými chcete své třídění proškolit. Tipy k výběru imagí najdete níže.
 

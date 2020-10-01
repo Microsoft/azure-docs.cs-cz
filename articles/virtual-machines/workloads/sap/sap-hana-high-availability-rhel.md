@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/21/2020
+ms.date: 09/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 2ce3a4116c12065bbaee8e11d5ada3b8c89b1a9d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2184a6e67b17f9fcaefc0a8e556ba81e839a2399
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088219"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598068"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux
 
@@ -95,7 +95,7 @@ SAP HANA instalace replikace systému používá vyhrazený virtuální hostitel
 
 Azure Marketplace obsahuje image pro Red Hat Enterprise Linux 7,4 pro SAP HANA, kterou můžete použít k nasazení nových virtuálních počítačů.
 
-### <a name="deploy-with-a-template"></a>Nasazení pomocí šablony
+### <a name="deploy-with-a-template"></a>Nasazení s využitím šablony
 
 K nasazení všech požadovaných prostředků můžete použít jednu z šablon pro rychlý Start, které jsou na GitHubu. Šablona nasadí virtuální počítače, nástroj pro vyrovnávání zatížení, skupinu dostupnosti a tak dále.
 K nasazení šablony použijte následující postup:
@@ -342,7 +342,12 @@ Kroky v této části používají následující předpony:
 
 1. **[A]** RHEL pro konfiguraci Hana
 
-   Nakonfigurujte RHEL podle popisu v tématu SAP Note [2292690] a [2455582] a <https://access.redhat.com/solutions/2447641> .
+   Nakonfigurujte RHEL podle popisu v tématu <https://access.redhat.com/solutions/2447641> a v následujících komentářích SAP:  
+   - [2292690-SAP HANA DB: Doporučená nastavení operačního systému pro RHEL 7](https://launchpad.support.sap.com/#/notes/2292690)
+   - [2777782-SAP HANA DB: Doporučená nastavení operačního systému pro RHEL 8](https://launchpad.support.sap.com/#/notes/2777782)
+   - [2455582 – Linux: spouštění aplikací SAP s použitím RSZ 6. x](https://launchpad.support.sap.com/#/notes/2455582)
+   - [2593824 – Linux: běžící aplikace SAP s aplikací RSZ 7. x](https://launchpad.support.sap.com/#/notes/2593824) 
+   - [2886607 – Linux: běžící aplikace SAP s aplikací RSZ 9. x](https://launchpad.support.sap.com/#/notes/2886607)
 
 1. **[A]** instalace SAP HANA
 
@@ -551,7 +556,7 @@ Postupujte podle kroků v části [Nastavení Pacemaker na Red Hat Enterprise Li
 
 ## <a name="create-sap-hana-cluster-resources"></a>Vytvoření prostředků clusteru SAP HANA
 
-Nainstalujte agenty SAP HANA prostředků na **všech uzlech**. Ujistěte se, že jste povolili úložiště, které obsahuje balíček.
+Nainstalujte agenty SAP HANA prostředků na **všech uzlech**. Ujistěte se, že jste povolili úložiště, které obsahuje balíček. Pokud používáte bitovou kopii s povoleným RHEL 8. x HA, nemusíte povolit další úložiště.  
 
 <pre><code># Enable repository that contains SAP HANA resource agents
 sudo subscription-manager repos --enable="rhel-sap-hana-for-rhel-7-server-rpms"
@@ -566,13 +571,18 @@ Pak vytvořte topologii HANA. Na jednom z uzlů clusteru Pacemaker spusťte nás
 # Replace the bold string with your instance number and HANA system ID
 sudo pcs resource create SAPHanaTopology_<b>HN1</b>_<b>03</b> SAPHanaTopology SID=<b>HN1</b> InstanceNumber=<b>03</b> \
 op start timeout=600 op stop timeout=300 op monitor interval=10 timeout=600 \
---clone clone-max=2 clone-node-max=1 interleave=true
+clone clone-max=2 clone-node-max=1 interleave=true
 </code></pre>
 
-Pak vytvořte prostředky HANA:
+Pak vytvořte prostředky HANA.
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na *podřízený*termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
+
+Pokud vytváříte cluster na **RHEL 7. x**, použijte následující příkazy:  
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
-
+#
 sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
 op start timeout=3600 op stop timeout=3600 \
 op monitor interval=61 role="Slave" timeout=700 \
@@ -581,14 +591,32 @@ op promote timeout=3600 op demote timeout=3600 \
 master notify=true clone-max=2 clone-node-max=1 interleave=true
 
 sudo pcs resource create vip_<b>HN1</b>_<b>03</b> IPaddr2 ip="<b>10.0.0.13</b>"
-
 sudo pcs resource create nc_<b>HN1</b>_<b>03</b> azure-lb port=625<b>03</b>
-
 sudo pcs resource group add g_ip_<b>HN1</b>_<b>03</b> nc_<b>HN1</b>_<b>03</b> vip_<b>HN1</b>_<b>03</b>
 
 sudo pcs constraint order SAPHanaTopology_<b>HN1</b>_<b>03</b>-clone then SAPHana_<b>HN1</b>_<b>03</b>-master symmetrical=false
-
 sudo pcs constraint colocation add g_ip_<b>HN1</b>_<b>03</b> with master SAPHana_<b>HN1</b>_<b>03</b>-master 4000
+
+sudo pcs property set maintenance-mode=false
+</code></pre>
+
+Pokud vytváříte cluster na **RHEL 8. x**, použijte následující příkazy:  
+
+<pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
+#
+sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
+op start timeout=3600 op stop timeout=3600 \
+op monitor interval=61 role="Slave" timeout=700 \
+op monitor interval=59 role="Master" timeout=700 \
+op promote timeout=3600 op demote timeout=3600 \
+promotable meta notify=true clone-max=2 clone-node-max=1 interleave=true
+
+sudo pcs resource create vip_<b>HN1</b>_<b>03</b> IPaddr2 ip="<b>10.0.0.13</b>"
+sudo pcs resource create nc_<b>HN1</b>_<b>03</b> azure-lb port=625<b>03</b>
+sudo pcs resource group add g_ip_<b>HN1</b>_<b>03</b> nc_<b>HN1</b>_<b>03</b> vip_<b>HN1</b>_<b>03</b>
+
+sudo pcs constraint order SAPHanaTopology_<b>HN1</b>_<b>03</b>-clone then SAPHana_<b>HN1</b>_<b>03</b>-clone symmetrical=false
+sudo pcs constraint colocation add g_ip_<b>HN1</b>_<b>03</b> with master SAPHana_<b>HN1</b>_<b>03</b>-clone 4000
 
 sudo pcs property set maintenance-mode=false
 </code></pre>
@@ -638,7 +666,10 @@ Resource Group: g_ip_HN1_03
 
 SAP HANA hlavní uzel můžete migrovat spuštěním následujícího příkazu:
 
-<pre><code>[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-master
+<pre><code># On RHEL <b>7.x</b> 
+[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-master
+# On RHEL <b>8.x</b>
+[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-clone --master
 </code></pre>
 
 Pokud nastavíte `AUTOMATED_REGISTER="false"` , tento příkaz by měl migrovat SAP HANA hlavní uzel a skupinu obsahující virtuální IP adresu na HN1-DB-1.
@@ -686,6 +717,9 @@ Resource Group: g_ip_HN1_03
 
 ### <a name="test-the-azure-fencing-agent"></a>Testování agenta pro oplocení Azure
 
+> [!NOTE]
+> Tento článek obsahuje odkazy na *podřízený*termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.  
+
 Stav prostředku před spuštěním testu:
 
 <pre><code>Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]
@@ -717,7 +751,10 @@ hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=<b>hn1-d
 
 # Switch back to root and clean up the failed state
 exit
+# On RHEL <b>7.x</b>
 [root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03-master
+# On RHEL <b>8.x</b>
+[root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03 node=&lt;hostname on which the resource needs to be cleaned&gt;
 </code></pre>
 
 Stav prostředku po testu:
@@ -762,7 +799,10 @@ hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=<b>hn1-d
 
 # Switch back to root and clean up the failed state
 hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> exit
+# On RHEL <b>7.x</b>
 [root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03-master
+# On RHEL <b>8.x</b>
+[root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03 node=&lt;hostname on which the resource needs to be cleaned&gt;
 </code></pre>
 
 Stav prostředku po testu:

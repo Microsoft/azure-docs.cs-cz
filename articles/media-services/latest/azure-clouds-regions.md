@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: e9da87f3b5f7cb513b4b5d51c93a59d1703d401d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9c54482dc188141c4fc697bd43628b81e0ddc29f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258652"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597121"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Cloudy a oblasti, ve kterých existuje Azure Media Services V3
 
@@ -27,7 +27,7 @@ Azure Media Services V3 je k dispozici prostřednictvím Azure Resource Manager 
 
 ## <a name="feature-availability-in-azure-clouds"></a>Dostupnost funkcí v cloudech Azure
 
-| Funkce|Globální oblasti Azure | Azure Government|Azure Germany|Azure (Čína) 21Vianet|
+| Příznak|Globální oblasti Azure | Azure Government|Azure Germany|Azure (Čína) 21Vianet|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | K dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
@@ -44,7 +44,7 @@ Azure Media Services V3 je k dispozici prostřednictvím Azure Resource Manager 
 - West Europe
 - Severní Evropa
 - East US
-- Střední USA
+- USA – střed
 - Středojižní USA
 - Západní USA 2
 - Brazil South
@@ -95,6 +95,8 @@ Následující koncové body jsou důležité pro informace o připojení k Medi
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
 | Ověřování | `https://login.microsoftonline.us/` |
 | Cílová skupina tokenů | `https://management.core.usgovcloudapi.net/` |
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 ### <a name="azure-germany"></a>Azure (Německo)
 

@@ -9,12 +9,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0f81ffb5279e10c71f7d7cccfb6b738bc12e5cf4
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6072c71fa675bd203e94f3f42814a1183b12ae8e
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086772"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597969"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>Vytvoření definice SAS a načtení tokenů sdíleného přístupového podpisu v kódu
 
@@ -42,6 +42,9 @@ Po vytvoření definice SAS můžete načíst tokeny SAS jako tajné klíče pom
 Pokud se brzo vyprší platnost tokenu sdíleného přístupového podpisu, můžete znovu načíst stejný tajný klíč, abyste vygenerovali nový.
 
 Návod, jak použít načtený z Key Vault token SAS pro přístup ke službám Azure Storage, najdete v tématu [použití SAS účtu pro přístup k BLOB Service](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client)
+
+> [!NOTE]
+> Vaše aplikace musí být připravená na aktualizaci SAS, pokud získá 403 z úložiště, abyste mohli zpracovat případ, kdy byl klíč napadený, a potřebujete ho otočit rychleji než normální období rotace. 
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si, jak [udělit omezený přístup k prostředkům Azure Storage pomocí SAS](../../storage/common/storage-sas-overview.md).

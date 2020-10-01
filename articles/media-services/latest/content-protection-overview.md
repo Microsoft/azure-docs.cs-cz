@@ -15,18 +15,20 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d0f040961bfb72082f8c5accb86999d489a93de5
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5d6530cf7b8d8611ff23a3517112cb0aa7442d6d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401380"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595997"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Ochrana obsahu pomocí Media Services dynamického šifrování
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Pomocí Azure Media Services můžete lépe zabezpečit vaše média v době, kdy počítač opustí, a to prostřednictvím úložiště, zpracování a doručování. Pomocí Media Services můžete doručovat živý obsah na vyžádání a dynamicky šifrovaný pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple FairPlay. Media Services taky poskytuje službu pro doručování klíčů AES a licencí DRM (PlayReady, Widevine a FairPlay) autorizovaným klientům. Pokud je obsah zašifrovaný pomocí nezašifrovaného klíče AES a pošle se přes HTTPS, není nejasný, dokud nedosáhne klienta. 
+Pomocí Azure Media Services můžete lépe zabezpečit vaše média v době, kdy počítač opustí, a to prostřednictvím úložiště, zpracování a doručování. Pomocí Media Services můžete doručovat živý obsah na vyžádání a dynamicky šifrovaný pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo kteréhokoli ze tří hlavních systémů DRM (Digital Rights Management): Microsoft PlayReady, Google Widevine a Apple FairPlay. Media Services taky poskytuje službu pro doručování klíčů AES a licencí DRM (PlayReady, Widevine a FairPlay) autorizovaným klientům. Pokud je obsah zašifrovaný pomocí nezašifrovaného klíče AES a pošle se přes HTTPS, není nejasný, dokud nedosáhne klienta.
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 V Media Services V3 je klíč obsahu přidružený k lokátoru streamování (viz [Tento příklad](protect-with-aes128.md)). Pokud používáte službu doručování klíčů Media Services, můžete nechat Azure Media Services vygenerovat klíč obsahu. Klíč obsahu by se měl vygenerovat sami, pokud používáte vlastní službu pro doručování klíčů, nebo pokud potřebujete, aby byl scénář s vysokou dostupností, kdy potřebujete stejný klíč obsahu ve dvou datových centrech.
 
@@ -136,7 +138,7 @@ HLS/CMAF + FairPlay (včetně HEVC/H. 265) se podporuje na následujících zař
 
 * iOS 11 nebo novější.
 * iPhone 8 nebo novější.
-* MacOS vysoký Sierra s PROCESORem Intel 7 pro generace.
+* macOS vysoký Sierra s PROCESORem Intel 7 pro generace.
 
 ### <a name="mpeg-dash"></a>MPEG-POMLČKA
 

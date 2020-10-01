@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: 36a1be4f802292e62c98098508927b06a5851afa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 6c8d048d43a16191cc7b1245ad2d686ba2ca22ab
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333082"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596971"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Monitorování a ladění výkonu ve službách Azure SQL Database a Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,13 +25,16 @@ Pokud chcete monitorovat výkon databáze v Azure SQL Database a spravované ins
 
 Azure SQL Database poskytuje řadu poradců databází, které poskytují doporučení inteligentního ladění výkonu a možnosti automatického ladění pro zlepšení výkonu. Kromě toho Query Performance Insight zobrazí podrobnosti o dotazech zodpovědných za největší využití procesoru a vstupně-výstupních operací pro databáze s jednou a ve fondu.
 
-Azure SQL Database a Azure SQL Managed instance poskytují pokročilé možnosti monitorování a ladění, které jsou zajištěné umělou logikou, což vám pomůže při řešení potíží a maximalizaci výkonu databází a řešení. Můžete zvolit konfiguraci [exportu](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) těchto [Intelligent Insights](intelligent-insights-overview.md) a dalších protokolů prostředků databáze a metriky do jednoho z několika míst pro účely využití a analýzy, zejména pomocí [SQL Analytics](../../azure-monitor/insights/azure-sql.md)). Azure SQL Analytics je pokročilé řešení monitorování cloudu pro monitorování výkonu všech databází ve velkém měřítku a napříč několika předplatnými v jednom zobrazení. Seznam protokolů a metrik, které můžete exportovat, najdete v tématu [diagnostická telemetrie pro export](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export) .
+Azure SQL Database a Azure SQL Managed instance poskytují pokročilé možnosti monitorování a ladění, které jsou zajištěné umělou logikou, což vám pomůže při řešení potíží a maximalizaci výkonu databází a řešení. Můžete zvolit konfiguraci [exportu](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) těchto [Intelligent Insights](intelligent-insights-overview.md) a dalších protokolů prostředků databáze a metriky do jednoho z několika míst pro účely využití a analýzy, zejména pomocí [SQL Analytics](../../azure-monitor/insights/azure-sql.md). Azure SQL Analytics je pokročilé řešení monitorování cloudu pro monitorování výkonu všech databází ve velkém měřítku a napříč několika předplatnými v jednom zobrazení. Seznam protokolů a metrik, které můžete exportovat, najdete v tématu [diagnostická telemetrie pro export](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export) .
 
-Nakonec SQL Server má své vlastní monitorování a diagnostické možnosti, které SQL Database a využití spravované instance SQL, jako je například [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) a [zobrazení dynamické správy (zobrazení dynamické správy)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views). Pokud chcete sledovat nejrůznější problémy s výkonem, podívejte se na téma [monitorování pomocí zobrazení dynamické správy](monitoring-with-dmvs.md) .
+SQL Server má své vlastní monitorovací a diagnostické možnosti, které SQL Database a využití spravované instance SQL, jako je například [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) a [zobrazení dynamické správy (zobrazení dynamické správy)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views). Pokud chcete sledovat nejrůznější problémy s výkonem, podívejte se na téma [monitorování pomocí zobrazení dynamické správy](monitoring-with-dmvs.md) .
 
 ## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>Monitorování a ladění schopností Azure Portal
 
-V Azure Portal Azure SQL Database a Azure SQL Managed instance poskytují monitorování metrik prostředků. Kromě toho Azure SQL Database poskytuje Poradce pro databáze a Query Performance Insight poskytuje doporučení pro ladění dotazů a analýzu výkonu dotazů. Nakonec můžete v Azure Portal povolit automatické pro [logické servery SQL](logical-servers.md) a jejich jednotlivé a sdružené databáze.
+V Azure Portal Azure SQL Database a Azure SQL Managed instance poskytují monitorování metrik prostředků. Azure SQL Database poskytuje Poradce pro databáze a Query Performance Insight poskytuje doporučení pro ladění dotazů a analýzu výkonu dotazů. V Azure Portal můžete povolit automatické ladění pro [logické servery SQL](logical-servers.md) a jejich jednotlivé a sdružené databáze.
+
+> [!NOTE]
+> Databáze s extrémně nízkým využitím se můžou zobrazovat na portálu s méně než skutečným využitím. Z důvodu způsobu, jakým se telemetrie vyvolá při převodu hodnoty Double na nejbližší celé 0,5 číslo, je zaokrouhleno na 0, což způsobí ztrátu v členitosti vyvolané telemetrie. Podrobnosti najdete v tématu [Zaokrouhlení metriky databáze a elastického fondu na hodnotu nula](#low-database-and-elastic-pool-metrics-rounding-to-zero).
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Azure SQL Database a monitorování prostředků spravované instance Azure SQL
 
@@ -46,6 +49,33 @@ Azure SQL Database zahrnuje služby pro [databáze](database-advisor-implement-p
 ### <a name="query-performance-insight-in-azure-sql-database"></a>Query Performance Insight v Azure SQL Database
 
 [Query Performance Insight](query-performance-insight-use.md) zobrazuje výkon v Azure Portal nejdůležitějších a nejdelších spuštěných dotazů pro databáze s jednou a ve fondu.
+
+### <a name="low-database-and-elastic-pool-metrics-rounding-to-zero"></a>Zaokrouhlení metriky databáze a elastického fondu na nulu
+
+Od září 2020 se databáze s extrémně nízkým využitím můžou na portálu zobrazit s méně než skutečným využitím. Z důvodu způsobu, jakým se vyvolá telemetrie při převodu hodnoty Double na nejbližší celé číslo, jsou hodnoty využití menší než 0,5 zaokrouhleny na 0, což způsobí ztrátu v členitosti emitované telemetrie.
+
+Například: Vezměte v úvahu jedno okno s těmito čtyřmi datovými body: 0,1, 0,1, 0,1, 0,1, tyto hodnoty jsou zaokrouhleny dolů na 0, 0, 0, 0 a v průměru 0. Pokud je některý z datových bodů větší než 0,5, například: 0,1, 0,1, 0,9, 0,1, zaokrouhlí se na 0, 0, 1, 0 a zobrazí se průměrně 0,25.
+
+Ovlivněné metriky databáze:
+- cpu_percent
+- log_write_percent
+- workers_percent
+- sessions_percent
+- physical_data_read_percent
+- dtu_consumption_percent2
+- xtp_storage_percent
+
+Ovlivněné metriky elastického fondu:
+- cpu_percent
+- physical_data_read_percent
+- log_write_percent
+- memory_usage_percent
+- data_storage_percent
+- peak_worker_percent
+- peak_session_percent
+- xtp_storage_percent
+- allocated_data_storage_percent
+
 
 ## <a name="generate-intelligent-assessments-of-performance-issues"></a>Generování inteligentního posouzení problémů s výkonem
 

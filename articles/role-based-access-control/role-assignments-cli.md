@@ -10,18 +10,18 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperfq1
-ms.openlocfilehash: 17a32b27fba4fcde2e148e44e9db768cc9270e01
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 16ead03af14da70b5aaedc21118488c6dd3012c6
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441987"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597660"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Tento článek popisuje, jak přiřadit role pomocí Azure CLI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 
@@ -95,7 +95,7 @@ Další informace najdete v tématu [seznam definic rolí Azure](role-definition
  
 ### <a name="step-3-identify-the-needed-scope"></a>Krok 3: určení potřebného oboru
 
-Azure poskytuje čtyři úrovně rozsahu: prostředek, [Skupina prostředků](../azure-resource-manager/management/overview.md#resource-groups), předplatné a [skupina pro správu](../governance/management-groups/overview.md). Osvědčeným postupem je udělit přístup s nejmenším možným oprávněním, takže se nepřiřazujte role v širším rozsahu.
+Azure poskytuje čtyři úrovně rozsahu: prostředek, [Skupina prostředků](../azure-resource-manager/management/overview.md#resource-groups), předplatné a [skupina pro správu](../governance/management-groups/overview.md). Osvědčeným postupem je udělit přístup s nejmenším možným oprávněním, takže se nepřiřazujte role v širším rozsahu. Další informace o rozsahu najdete v tématu [pochopení oboru](scope-overview.md).
 
 **Obor prostředku**
 

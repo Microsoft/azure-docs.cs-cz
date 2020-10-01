@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: 6836461e9f1d4f14bc39161a99ad9d151caafaa5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 9/29/2020
+ms.openlocfilehash: 2de6b6311a1a5d452907b8c4b6a2ffeb9c0e133e
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540791"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598206"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurace Replikace vstupních dat v Azure Database for MariaDB
 
@@ -54,9 +54,40 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
 
 1. Než budete pokračovat, zkontrolujte [požadavky hlavního serveru](concepts-data-in-replication.md#requirements) . 
 
-   Ujistěte se například, že zdrojový server umožňuje příchozí i odchozí provoz na portu 3306 a že má zdrojový server **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN). 
+2. Ujistěte se, že zdrojový server umožňuje příchozí i odchozí provoz na portu 3306 a že má zdrojový server **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN). 
    
    Otestujte připojení ke zdrojovému serveru tak, že se pokusíte připojit z nástroje, jako je například příkazový řádek MySQL hostovaný na jiném počítači nebo [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) k dispozici v Azure Portal.
+
+   Pokud má vaše organizace přísné zásady zabezpečení a neumožní všem IP adresám na zdrojovém serveru povolit komunikaci z Azure na zdrojový server, můžete k určení IP adresy serveru Azure Database for MariaDB použít následující příkaz.
+    
+   1. Přihlaste se ke svému Azure Database for MariaDB pomocí nástroje jako příkazového řádku MySQL.
+   2. Spusťte následující dotaz.
+      ```bash
+      mysql> SELECT @@global.redirect_server_host;
+      ```
+      Níže je uvedený ukázkový výstup:
+      ```bash 
+      +-----------------------------------------------------------+
+      | @@global.redirect_server_host                             |
+      +-----------------------------------------------------------+
+      | e299ae56f000.tr1830.westus1-a.worker.database.windows.net |
+       +-----------------------------------------------------------+
+      ```
+   3. Ukončete z příkazového řádku MySQL.
+   4. Pro získání IP adresy spusťte níže v nástroji příkazového testu.
+      ```bash
+      ping <output of step 2b>
+      ``` 
+      Například: 
+      ```bash      
+      C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
+      Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
+      ```
+
+   5. Nakonfigurujte pravidla brány firewall zdrojového serveru tak, aby zahrnovala IP adresu předchozího kroku na portu 3306.
+
+   > [!NOTE]
+   > Tato IP adresa se může změnit v důsledku operací údržby nebo nasazení. Tato metoda připojení je určena jenom pro zákazníky, kteří nemůžou dovolit všem IP adresám na portu 3306.
 
 2. Zapněte binární protokolování.
     

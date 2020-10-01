@@ -13,19 +13,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/28/2020
-ms.openlocfilehash: 35a637df85984bcfd20836bcd87aa5ecf1583170
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 60977b9388af3a93d0ebbbc6aad50628b79e0e44
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461134"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598260"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití SSMS pro připojení k a dotazování Azure SQL Database nebo spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 V tomto rychlém startu se dozvíte, jak pomocí SQL Server Management Studio (SSMS) se připojit k Azure SQL Database nebo spravované instanci SQL Azure a spustit některé dotazy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončení tohoto rychlého startu vyžaduje následující položky:
 
@@ -53,7 +53,7 @@ Pokud jednoduše chcete spustit některé dotazy ad-hoc bez instalace SSMS, pře
 
 Získejte informace o připojení, které potřebujete pro připojení k vaší databázi. K dokončení tohoto rychlého startu budete potřebovat plně kvalifikovaný název [serveru](logical-servers.md) nebo název hostitele, název databáze a přihlašovací informace.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte do **databáze** nebo **spravované instance** , pro kterou chcete zadat dotaz.
 
@@ -63,6 +63,8 @@ Získejte informace o připojení, které potřebujete pro připojení k vaší 
 > Informace o připojení pro SQL Server na virtuálním počítači Azure najdete v tématu [připojení k SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)
 
 ## <a name="connect-to-your-database"></a>Připojení k databázi
+
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
 
 V SSMS se připojte k vašemu serveru.
 
@@ -85,7 +87,7 @@ V SSMS se připojte k vašemu serveru.
    ![Připojení k serveru](./media/connect-query-ssms/connect.png)  
 
 > [!NOTE]
-> V tomto kurzu se používá SQL Server ověřování.  Pokud se ale chcete připojit prostřednictvím Azure Active Directory s MFA, ujistěte se, že využíváte [SSMS 18,6 nebo novější](https://aka.ms/ssms). 
+> V tomto kurzu se používá SQL Server ověřování.
 
 3. V dialogovém okně **připojit k serveru** vyberte **Možnosti** . V rozevírací nabídce **připojit k databázi** vyberte **mySampleDatabase**. Po dokončení rychlého startu v [oddílu předpoklady](#prerequisites) se vytvoří databáze AdventureWorksLT s názvem mySampleDatabase. Pokud vaše pracovní kopie databáze AdventureWorks má jiný název než mySampleDatabase, pak ji místo toho vyberte.
 

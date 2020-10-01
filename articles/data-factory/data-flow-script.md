@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
-ms.openlocfilehash: 6802e3f6c0892993f9ffe4373f43274362b8a003
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 8310c34e06d52dc12af42f8bc33f4a4d7e99d68d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569673"
+ms.locfileid: "91598098"
 ---
 # <a name="data-flow-script-dfs"></a>Skript toku dat (DFS)
 
@@ -176,13 +176,13 @@ aggregate(groupBy(movie),
 Použijte tento kód ve vašem skriptu toku dat k vytvoření nového odvozeného sloupce ```DWhash``` s názvem, který vytvoří ```sha1``` hodnotu hash se třemi sloupci.
 
 ```
-derive(DWhash = sha1(Name,ProductNumber,Color))
+derive(DWhash = sha1(Name,ProductNumber,Color)) ~> DWHash
 ```
 
 Pomocí tohoto skriptu níže můžete vygenerovat hodnotu hash řádku pomocí všech sloupců, které se nachází ve vašem datovém proudu, aniž byste museli pojmenovat jednotlivé sloupce:
 
 ```
-derive(DWhash = sha1(columns()))
+derive(DWhash = sha1(columns())) ~> DWHash
 ```
 
 ### <a name="string_agg-equivalent"></a>Ekvivalent String_agg
@@ -191,7 +191,7 @@ Tento kód bude fungovat jako funkce T-SQL ```string_agg()``` a bude agregovat �
 ```
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
-Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+Aggregate1 derive(string_agg = toString(string_agg)) ~> StringAgg
 ```
 
 ### <a name="count-number-of-updates-upserts-inserts-deletes"></a>Počet aktualizací, upsertuje, vložení, odstranění
@@ -216,7 +216,7 @@ aggregate(groupBy(mycols = sha2(256,columns())),
 Toto je fragment kódu, který můžete vložit do toku dat a obecně kontrolovat všechny sloupce pro hodnoty NULL. Tato technika využívá posun schématu k prohlédnutí všech sloupců ve všech řádcích a používá podmíněné rozdělení k oddělení řádků s hodnotami NULL z řádků bez hodnot NULL. 
 
 ```
-CreateColumnArray split(contains(array(columns()),isNull(#item)),
+split(contains(array(columns()),isNull(#item)),
     disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
 ```
 

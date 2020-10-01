@@ -7,23 +7,23 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/24/2020
+ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 76f4f39e7def192b8cb97c37aefc9f67d82ad4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e5c13c635091988f299d31c67795916e709d51a
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362218"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597622"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal
+# <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Tento článek popisuje, jak přiřadit role pomocí Azure Portal.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Tento článek popisuje, jak přiřadit role pomocí Azure Portal.
 
 Pokud potřebujete přiřadit role správce v Azure Active Directory, přečtěte si téma [zobrazení a přiřazení rolí správce v Azure Active Directory](../active-directory/users-groups-roles/directory-manage-roles-portal.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 
@@ -35,19 +35,15 @@ Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující
 
 ![Stránka řízení přístupu (IAM) pro předplatné](./media/role-assignments-portal/access-control-subscription.png)
 
-Aby byla na stránce řízení přístupu (IAM) nejúčinnější, pomůže vám při pokusu o přiřazení role odpovědět na následující tři otázky:
+Aby byla na stránce řízení přístupu (IAM) nejúčinnější, pomůže vám přiřadit roli pomocí těchto kroků.
 
-1. **Kdo potřebuje přístup?**
+1. Určete, kdo potřebuje přístup. Roli můžete přiřadit uživateli, skupině, objektu služby nebo spravované identitě.
 
-    Kdo odkazuje na uživatele, skupinu, instanční objekt nebo spravovanou identitu. Označuje se taky jako *objekt zabezpečení*.
+1. Najděte příslušnou roli. Oprávnění se seskupují do rolí. Můžete vybrat ze seznamu několika [předdefinovaných rolí Azure](built-in-roles.md) nebo můžete použít vlastní role.
 
-1. **Jakou roli potřebují?**
+1. Identifikujte potřebný rozsah. Azure poskytuje čtyři úrovně rozsahu: [skupina pro správu](../governance/management-groups/overview.md), předplatné, [Skupina prostředků](../azure-resource-manager/management/overview.md#resource-groups)a prostředek. Další informace o rozsahu najdete v tématu [pochopení oboru](scope-overview.md).
 
-    Oprávnění se seskupují do rolí. Můžete vybrat ze seznamu několika [předdefinovaných rolí](built-in-roles.md) nebo můžete použít vlastní role.
-
-1. **Kde potřebují přístup?**
-
-    Kde se odkazuje na sadu prostředků, na které se vztahuje přístup. Kde může být skupina pro správu, předplatné, skupina prostředků nebo jeden prostředek, jako je například účet úložiště. To se označuje jako *obor*.
+1. Provedením kroků v jednom z následujících částí přiřadíte roli.
 
 ## <a name="add-a-role-assignment"></a>Přidat přiřazení role
 
@@ -83,7 +79,7 @@ Když ve službě Azure RBAC udělíte přístup k prostředku Azure, přidáte 
 
     ![Přidání přiřazení role se uložilo.](./media/role-assignments-portal/add-role-assignment-save.png)
 
-## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Přiřazení uživatele jako správce předplatného
+## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Přiřazení role správce předplatného uživateli
 
 Pokud chcete, aby uživatel měl správce předplatného Azure, přiřaďte mu roli [vlastníka](built-in-roles.md#owner) v oboru předplatného. Role vlastníka přidělí uživateli úplný přístup ke všem prostředkům v rámci předplatného, včetně oprávnění pro udělení přístupu jiným uživatelům. Tento postup je stejný jako u jakéhokoli jiného přiřazení role.
 
@@ -101,11 +97,11 @@ Pokud chcete, aby uživatel měl správce předplatného Azure, přiřaďte mu r
 
    Pokud nemáte oprávnění k přiřazování rolí, bude možnost přidat přiřazení role zakázaná.
 
-   ![Přidat nabídku přiřazení role](./media/shared/add-role-assignment-menu.png)
+   ![Přidání nabídky přiřazení role pro předplatné](./media/shared/add-role-assignment-menu.png)
 
     Otevře se podokno Přidat přiřazení role.
 
-   ![Přidat podokno přiřazení role](./media/role-assignments-portal/add-role-assignment.png)
+   ![Přidat podokno přiřazení role pro předplatné](./media/role-assignments-portal/add-role-assignment.png)
 
 1. V rozevíracím seznamu **Role** vyberte roli **Vlastník**.
 
@@ -150,7 +146,7 @@ Pomocí těchto kroků přiřaďte roli spravované identitě přiřazené syst�
 
 1. V rozevíracím seznamu **Role** vyberte roli, například **Přispěvatel virtuálních počítačů**.
 
-   ![Přidat podokno přiřazení role](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+   ![Přidat podokno přiřazení role pro spravovanou identitu přiřazenou systémem](./media/role-assignments-portal/add-role-assignment-with-scope.png)
 
 1. Kliknutím na **Uložit** roli přiřaďte.
 
@@ -166,7 +162,7 @@ Pomocí těchto kroků přiřadíte roli spravované identitě přiřazené uži
 
     Pokud jsou už role přiřazené k vybrané spravované identitě přiřazené uživateli, zobrazí se seznam přiřazení rolí. Tento seznam obsahuje všechna přiřazení rolí, ke kterým máte oprávnění číst.
 
-    ![Přiřazení rolí pro spravovanou identitu přiřazenou systémem](./media/shared/role-assignments-user-assigned.png)
+    ![Přiřazení rolí pro spravovanou identitu přiřazenou uživatelem](./media/shared/role-assignments-user-assigned.png)
 
 1. Chcete-li změnit předplatné, klikněte na seznam **předplatných** .
 
@@ -178,7 +174,7 @@ Pomocí těchto kroků přiřadíte roli spravované identitě přiřazené uži
 
 1. V rozevíracím seznamu **Role** vyberte roli, například **Přispěvatel virtuálních počítačů**.
 
-   ![Přidat podokno přiřazení role](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+   ![Přidat podokno přiřazení role pro uživatelem přiřazenou spravovanou identitu](./media/role-assignments-portal/add-role-assignment-with-scope.png)
 
 1. Kliknutím na **Uložit** roli přiřaďte.
 
@@ -194,7 +190,7 @@ Pokud v Azure RBAC odeberete přístup z prostředku Azure, odeberete přiřazen
 
 1. V seznamu přiřazení rolí přidejte značku zaškrtnutí vedle objektu zabezpečení s přiřazením role, které chcete odebrat.
 
-   ![Zpráva Odebrání přiřazení role](./media/role-assignments-portal/remove-role-assignment-select.png)
+   ![Přiřazení role vybrané k odebrání](./media/role-assignments-portal/remove-role-assignment-select.png)
 
 1. Klikněte na **Odebrat**.
 
@@ -204,7 +200,7 @@ Pokud v Azure RBAC odeberete přístup z prostředku Azure, odeberete přiřazen
 
     Pokud se zobrazí zpráva, že se zděděná přiřazení rolí nedají odebrat, pokoušíte se odebrat přiřazení role v podřízeném oboru. Měli byste otevřít řízení přístupu (IAM) v oboru, kde byla role přiřazena, a akci opakovat. Rychlý způsob, jak otevřít řízení přístupu (IAM) ve správném oboru, je podívat se na sloupec **Rozsah** a kliknout na odkaz vedle **(Zděděno)**.
 
-   ![Zpráva Odebrání přiřazení role](./media/role-assignments-portal/remove-role-assignment-inherited.png)
+   ![Odebrat zprávu přiřazení role pro zděděná přiřazení rolí](./media/role-assignments-portal/remove-role-assignment-inherited.png)
 
 ## <a name="next-steps"></a>Další kroky
 

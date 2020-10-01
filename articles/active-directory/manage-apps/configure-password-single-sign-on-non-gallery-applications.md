@@ -1,25 +1,25 @@
 ---
-title: Jak nakonfigurovat jednotné přihlašování založené na heslech pro aplikace Azure AD
-description: Jak nakonfigurovat jednotné přihlašování založené na heslech (SSO) pro vaše aplikace Azure AD v platformě Microsoft Identity Platform (Azure AD)
+title: Pochopení jednotného přihlašování založeného na heslech (SSO) pro aplikace v Azure Active Directory
+description: Pochopení jednotného přihlašování založeného na heslech (SSO) pro aplikace v Azure Active Directory
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: e04a3aab128bb8f0bdee01361bc0d09aad6ed2fb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 9b48bc62fc0548c0c4f431e71598fdfa6850de13
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049056"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598334"
 ---
-# <a name="configure-password-based-single-sign-on"></a>Konfigurace jednotného přihlašování založeného na heslech
+# <a name="understand-password-based-single-sign-on"></a>Pochopení jednotného přihlašování založeného na heslech
 
-V [řadě rychlých startů](view-applications-portal.md) při správě aplikací jste zjistili, jak používat Azure AD jako zprostředkovatele identity (IDP) pro aplikaci. V průvodci rychlým startem můžete nastavit jednotné přihlašování založené na SAML. Další možností je jednotné přihlašování založené na heslech. Tento článek se podrobněji týká možnosti jednotného přihlašování založeného na heslech. 
+V [řadě rychlých startů](view-applications-portal.md) při správě aplikací jste zjistili, jak používat Azure AD jako zprostředkovatele identity (IDP) pro aplikaci. V průvodci rychlým startem můžete nakonfigurovat jednotné přihlašování založené na SAML nebo OIDC. Další možností je jednotné přihlašování založené na heslech. Tento článek se podrobněji týká možnosti jednotného přihlašování založeného na heslech. 
 
 Tato možnost je k dispozici pro všechny webové stránky s přihlašovací stránkou HTML. Jednotné přihlašování založené na heslech se taky označuje jako trezor hesel. Jednotné přihlašování pomocí hesla umožňuje spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je také užitečné, když několik uživatelů potřebuje sdílet jeden účet, například k účtům aplikací sociálních médií vaší organizace.
 
@@ -39,12 +39,12 @@ Jednotné přihlašování založené na heslech je skvělým způsobem, jak ryc
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Použití Azure AD jako zprostředkovatele identity (IdP) a nastavení jednotného přihlašování (SSO) může být jednoduché nebo složité v závislosti na používané aplikaci. Některé aplikace je možné nastavit jenom pomocí několika akcí. Jiné vyžadují hloubkovou konfiguraci. K rychlému navýšení si Projděte příručku [rychlý Start](view-applications-portal.md) při správě aplikací. Pokud je aplikace, kterou přidáváte, jednoduchá, pak pravděpodobně nebudete muset číst tento článek. Pokud aplikace, kterou přidáváte, vyžaduje vlastní konfiguraci a potřebujete použít jednotné přihlašování založené na heslech, bude tento článek pro vás.
+Použití Azure AD jako zprostředkovatele identity (IdP) a konfigurace jednotného přihlašování (SSO) může být v závislosti na používané aplikaci jednoduchá nebo složitá. Některé aplikace se dají konfigurovat jenom pomocí několika akcí. Jiné vyžadují hloubkovou konfiguraci. Pokud chcete rychle vymezit, Projděte si [řadu rychlých startů](view-applications-portal.md) při správě aplikací. Pokud je aplikace, kterou přidáváte, jednoduchá, pak pravděpodobně nebudete muset číst tento článek. Pokud aplikace, kterou přidáváte, vyžaduje vlastní konfiguraci a potřebujete použít jednotné přihlašování založené na heslech, bude tento článek pro vás.
 
 > [!IMPORTANT] 
 > Existují některé scénáře, kdy možnost **jednotného přihlašování** nebude v navigaci pro aplikaci v **podnikových aplikacích**. 
 >
-> Pokud byla aplikace zaregistrovaná pomocí **Registrace aplikací** , je ve výchozím nastavení funkce jednotného přihlašování nastavená tak, aby ve výchozím nastavení používala protokol OAuth OIDC. V takovém případě se možnost **jednotného přihlašování** nezobrazí v části **podnikové aplikace**v navigaci. Když použijete **Registrace aplikací** k přidání vlastní aplikace, nakonfigurujete možnosti v souboru manifestu. Další informace o souboru manifestu naleznete v tématu [Azure Active Directory manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest). Další informace o standardech jednotného přihlašování najdete v tématu [ověřování a autorizace pomocí platformy Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform). 
+> Pokud byla aplikace zaregistrovaná pomocí **Registrace aplikací** pak je funkce jednotného přihlašování nakonfigurovaná tak, aby ve výchozím nastavení používala protokol OAuth OIDC. V takovém případě se možnost **jednotného přihlašování** nezobrazí v části **podnikové aplikace**v navigaci. Když použijete **Registrace aplikací** k přidání vlastní aplikace, nakonfigurujete možnosti v souboru manifestu. Další informace o souboru manifestu naleznete v tématu [Azure Active Directory manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest). Další informace o standardech jednotného přihlašování najdete v tématu [ověřování a autorizace pomocí platformy Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform). 
 >
 > Další scénáře, kdy v navigaci chybí **jednotné přihlašování** , patří mezi ně, pokud je aplikace hostovaná v jiném tenantovi nebo pokud váš účet nemá požadovaná oprávnění (globální správce, správce cloudové aplikace, Správce aplikací nebo vlastník instančního objektu). Oprávnění mohou také způsobit situaci, kdy můžete otevřít **jednotné přihlašování** , ale nebudete je moci uložit. Další informace o rolích pro správu Azure AD najdete v tématu ( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
 

@@ -1,29 +1,31 @@
 ---
-title: Rychlý Start – vytvoření objektu detektoru – Custom Vision Service
+title: 'Rychlý Start: sestavení objektu detektoru pomocí Custom Vision webu'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte, jak pomocí Custom Vision webu vytvořit model objektu pro rozpoznávání.
+description: V tomto rychlém startu se dozvíte, jak používat Custom Vision web k vytváření, školení a testování modelu objektu pro rozpoznávání.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/15/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: 234c80e84e11579a66737c3e5efedfda34182ac5
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.custom: cog-serv-seo-aug-2020
+keywords: rozpoznávání obrázků, aplikace pro rozpoznávání obrázků, vlastní vize
+ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602859"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596893"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Rychlý Start: vytvoření objektu detektoru pomocí Custom Vision
+# <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Rychlý Start: sestavení objektu detektoru pomocí Custom Vision webu
 
-V tomto rychlém startu se dozvíte, jak vytvořit objektový detektor prostřednictvím webu Custom Vision. Po vytvoření modelu můžete testovat s využitím nových imagí a následně je integrovat do vlastního softwaru pro rozpoznávání imagí.
+V tomto rychlém startu se dozvíte, jak pomocí Custom Vision webu vytvořit model objektu pro rozpoznávání. Jakmile model sestavíte, můžete ho otestovat pomocí nových imagí a následně ho integrovat do vlastní aplikace pro rozpoznávání imagí.
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Sada imagí, se kterými se má model detektoru naučit. Můžete použít sadu [ukázkových imagí](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) na GitHubu. Případně můžete pomocí níže uvedených tipů zvolit vlastní image.
 

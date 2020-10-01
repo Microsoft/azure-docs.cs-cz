@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: místní, Docker, kontejner, Kubernetes
-ms.openlocfilehash: 48bfad4b101556dfcc4e57cf684341bda8063202
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: ccba46c1e83f92b1f27c64cb4d9ca32039862bd1
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461202"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597456"
 ---
 # <a name="azure-cognitive-services-containers"></a>Kontejnery Azure Cognitive Services
 
@@ -58,9 +58,9 @@ Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů D
 | Služba | Podporovaná cenová úroveň | Kontejner | Popis |
 |--|--|--|--|
 | [Detektor anomálií][ad-containers] | F0, S0 | **Anomálie-detektor** ([Obrázek](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Rozhraní API pro detekci anomálií umožňuje monitorovat a zjišťovat anomálie v datech časových řad pomocí strojového učení.<br>[Vyžádání přístup][request-access] |
-| [Počítačové zpracování obrazu][cv-containers] | F0, S1 | **Oprávnění** | Extrahuje vytištěný text z obrázků různých objektů s různými povrchy a pozadími, jako jsou například příjmy, plakáty a vizitky. Kontejner pro čtení také detekuje *ručně psaný text* v obrázcích a poskytuje podporu PDF/TIFF/vícestránkového textu.<br/><br/>**Důležité informace:** Kontejner pro čtení aktuálně funguje pouze v angličtině. |
-| [Rozpoznávání tváře][fa-containers] | F0, S0 | **Rozpoznávání tváře** | Detekuje lidské obličeje na obrázcích a identifikuje atributy, včetně orientačních bodů (jako jsou nos a oči), pohlaví, věk a další funkce obličeje v počítači. Kromě detekce může ploška kontrolovat, jestli se dvě plošky ve stejné imagi nebo různých obrázcích shodují s použitím skóre spolehlivosti, nebo porovnávat plošky s databází, abyste viděli, jestli už existuje podobný vzhled nebo identický obličej. Můžete také uspořádat podobné plošky do skupin pomocí sdílených vizuálních vlastností.<br>[Vyžádání přístup][request-access] |
-| [Nástroj pro rozpoznávání formulářů][fr-containers] | F0, S0 | **Rozpoznávání formulářů** | Porozumění formuláře používá technologii strojového učení k identifikaci a extrakci párů klíč-hodnota a tabulek z formulářů.<br>[Vyžádání přístup][request-access] |
+| [Počítačové zpracování obrazu][cv-containers] | F0, S1 | **Číst** Optické rozpoznávání znaků ([Obrázek](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Kontejner OCR pro čtení umožňuje extrahovat vytištěný a rukou psaný text z obrázků a dokumentů s podporou formátů souborů JPEG, PNG, BMP, PDF a TIFF. Další informace najdete v [dokumentaci k rozhraní API pro čtení](./computer-vision/concept-recognizing-text.md).<br>[Vyžádání přístup][request-access] |
+| [Rozpoznávání tváře][fa-containers] | F0, S0 | **Rozpoznávání tváře** | Detekuje lidské obličeje na obrázcích a identifikuje atributy, včetně orientačních bodů (jako jsou nos a oči), pohlaví, věk a další funkce obličeje v počítači. Kromě detekce může ploška kontrolovat, jestli se dvě plošky ve stejné imagi nebo různých obrázcích shodují s použitím skóre spolehlivosti, nebo porovnávat plošky s databází, abyste viděli, jestli už existuje podobný vzhled nebo identický obličej. Můžete také uspořádat podobné plošky do skupin pomocí sdílených vizuálních vlastností. |
+| [Nástroj pro rozpoznávání formulářů][fr-containers] | F0, S0 | **Rozpoznávání formulářů** | Porozumění formuláře používá technologii strojového učení k identifikaci a extrakci párů klíč-hodnota a tabulek z formulářů. |
 | [LUIS][lu-containers] | F0, S0 | **Luis** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Načte vyškolený nebo publikovaný Language Understanding model, označovaný také jako aplikace LUIS, do kontejneru Docker a poskytuje přístup k předpovědi dotazů z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrajte je zpátky na [portál Luis](https://www.luis.ai) , aby se zlepšila přesnost předpovědi aplikace. |
 | [Rozhraní API služby Speech][sp-containers-stt] | F0, S0 | **Převod řeči na text** ([Obrázek](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | Přepisuje plynulou řeč v reálném čase do textové podoby. |
 | [Rozhraní API služby Speech][sp-containers-cstt] | F0, S0 | **Custom Speech k textu** ([Obrázek](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | Transcribes průběžné rozpoznávání řeči v reálném čase na text pomocí vlastního modelu. |
@@ -79,8 +79,8 @@ Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů D
 
 Kromě toho jsou některé kontejnery podporovány v Cognitive Services klíče prostředků [**nabídky vše v jednom**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) . Můžete vytvořit jeden Cognitive Services prostředek All-in-One a použít stejný fakturační klíč v rámci podporovaných služeb pro následující služby:
 
-* Computer Vision
-* Tvář
+* Počítačové zpracování obrazu
+* Rozpoznávání tváře
 * LUIS
 * Analýza textu
 
@@ -90,7 +90,7 @@ Kontejnery Azure Cognitive Services jsou veřejně dostupné prostřednictvím v
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete používat kontejnery Cognitive Services Azure, musíte splnit následující předpoklady:
 

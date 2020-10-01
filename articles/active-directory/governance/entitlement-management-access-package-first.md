@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9df1226d4b61326f8e5aa6f9b71d36eb5a33e81e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 38edbd9e491d4bea469c6b83ad98df48fbce1d4f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306510"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597508"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Kurz: vytvoření prvního balíčku přístupu ve správě nároků Azure AD
 
 Správa přístupu ke všem zdrojům prostředků, jako jsou skupiny, aplikace a weby, je důležitou funkcí pro organizace. Chcete zaměstnancům udělit správnou úroveň přístupu, které potřebují k zajištění produktivity, a odebrat svůj přístup, když už ho nepotřebujete.
 
-V tomto kurzu pracujete s Woodgrove bankou jako s správcem IT. Byli jste požádáni o vytvoření balíčku prostředků pro marketingovou kampaň, na které interní uživatelé můžou samoobslužné požadavky. Žádosti nevyžadují schválení a přístup uživatele vyprší po 30 dnech. Pro účely tohoto kurzu jsou prostředky marketingové kampaně pouze členstvím v jedné skupině, ale může se jednat o kolekci skupin, aplikací nebo webů SharePointu Online.
+V tomto kurzu pracujete s Woodgrove bankou jako s správcem IT. Byli jste požádáni o vytvoření balíčku prostředků pro marketingovou kampaň, které interní uživatelé můžou použít k samoobslužnému požadavku. Žádosti nevyžadují schválení a přístup uživatele vyprší po 30 dnech. Pro účely tohoto kurzu jsou prostředky marketingové kampaně pouze členstvím v jedné skupině, ale může se jednat o kolekci skupin, aplikací nebo webů SharePointu Online.
 
 ![Diagram, který zobrazuje přehled scénáře.](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
@@ -44,7 +44,7 @@ Podrobný příklad procesu nasazení správy opravňujících Azure Active Dire
 
 Balíček pro přístup můžete také vytvořit programově pomocí Microsoft Graph. Kurz, ve kterém se dozvíte, jak vytvořit balíček pro přístup prostřednictvím kódu programu, najdete v tématu [rozhraní API pro správu oprávnění](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat správu nároků služby Azure AD, musíte mít jednu z těchto licencí:
 
@@ -67,7 +67,7 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 
 1. Vytvořte nebo nakonfigurujte následující dva uživatele. Můžete použít tyto názvy nebo jiné názvy. **Admin1** může být uživatel, ke kterému jste aktuálně přihlášení.
 
-    | Name | Role adresáře |
+    | Název | Role adresáře |
     | --- | --- |
     | **Uživateli** | Globální správce<br/>-nebo-<br/>Správce uživatelů |
     | **Requestor1** | Uživatel |
@@ -117,10 +117,14 @@ Adresář prostředků má jeden nebo více prostředků ke sdílení. V tomto k
 11. V rozevíracím seznamu **role** vyberte **člen**.
 
     ![Nový balíček přístupu – karta role prostředků](./media/entitlement-management-access-package-first/resource-roles.png)
+    >[!IMPORTANT]
+    >Skupiny role, které přiřadíte do balíčku přístupu, budou označeny pomocí podtypu, který **lze přiřadit k rolím**. Další podrobnosti o skupinách, které je možné přiřadit k rolím Azure AD, najdete v tématu [Vytvoření skupiny s přiřazením rolí](../users-groups-roles/roles-groups-create-eligible.md) v Azure Active Directory. Pokud nevidíte skupinu přiřazenou rolí, kterou chcete přidat, nebo ji nemůžete přidat, ujistěte se, že máte požadovanou roli Azure AD a správu oprávnění k provedení této operace. Možná budete muset požádat někoho s požadovanými rolemi přidat prostředek do katalogu. Další informace najdete v tématu [požadované role pro přidání prostředků do katalogu](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
     >[!NOTE]
     > Při použití [dynamických skupin](../users-groups-roles/groups-create-rule.md) se kromě vlastníka nezobrazí žádné další role. Toto chování je úmyslné.
     > ![Přehled scénáře](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+    
+
 
 12. Kliknutím na **Další** otevřete kartu **žádosti** .
 

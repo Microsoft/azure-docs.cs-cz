@@ -3,14 +3,14 @@ title: Odeslání událostí služby Blob Storage do webového koncového bodu �
 description: Pomocí Azure Event Grid a šablony Azure Resource Manager vytvořte účet úložiště objektů BLOB a přihlaste se k odběru událostí. Odeslat události do Webhooku
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 32fc17d1af552afa5a81fbc4a5973d69006742b9
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: fc6216142c6bec99cb12bf4e0bdae920f27f1bf2
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661261"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598352"
 ---
-# <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Směrování událostí služby Blob Storage do webového koncového bodu pomocí šablony ARM
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Rychlý Start: směrování událostí služby Blob Storage do webového koncového bodu pomocí šablony ARM
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku použijete šablonu Azure Resource Manager (šablonu ARM) k vytvoření účtu úložiště BLOB, přihlášení k odběru událostí pro dané úložiště objektů BLOB a aktivaci události pro zobrazení výsledku. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
@@ -88,5 +88,5 @@ Další informace o šablonách Azure Resource Manager najdete v následujícíc
 
 * [Dokumentace k Azure Resource Manager](../azure-resource-manager/index.yml)
 * [Definice prostředků v šabloně Azure Resource Manageru](/azure/templates/)
-* [Šablony Azure pro rychlé zprovoznění](https://azure.microsoft.com/resources/templates/)
+* [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/)
 * [Šablony Azure Event Grid](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

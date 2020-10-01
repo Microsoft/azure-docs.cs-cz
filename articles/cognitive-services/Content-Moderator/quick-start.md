@@ -1,31 +1,34 @@
 ---
-title: 'Rychlý Start: Vyzkoušejte Content Moderator na webu Content Moderator'
+title: 'Rychlý Start: Vyzkoušejte Content Moderator na webu'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete nástroj online Content Moderator recenze k otestování základních funkcí Content Moderator bez nutnosti psát jakýkoli kód.
+description: Pomocí nástroje online Content Moderator recenze můžete testovat základní funkce Content Moderator bez nutnosti psát jakýkoli kód.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 06/29/2020
+ms.date: 09/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 7be14c07a08d58f02890a48d39dd0a8010101374
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: cog-serv-seo-aug-2020
+keywords: moderátor obsahu, Moderování obsahu
+ms.openlocfilehash: 025c8fcf98a31d7b3380ee2530428d08428493fb
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332623"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596800"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Rychlý Start: Vyzkoušejte Content Moderator na webu
 
-V tomto rychlém startu použijete nástroj online Content Moderator recenze k otestování základních funkcí Content Moderator bez nutnosti psát jakýkoli kód. Pokud chcete tuto službu integrovat do vaší aplikace rychleji, přečtěte si další rychlé starty v části [Další kroky](#next-steps) .
+V tomto rychlém startu použijete nástroj online Content Moderator recenze k otestování základních funkcí Content Moderator bez nutnosti psát jakýkoli kód. Pokud chcete tuto službu integrovat do aplikace pro moderování obsahu rychleji, přečtěte si další rychlé starty v části [Další kroky](#next-steps) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Webový prohlížeč
 
 ## <a name="set-up-the-review-tool"></a>Nastavení nástroje pro kontrolu
+
 Nástroj pro kontrolu Content Moderator je webový nástroj, který umožňuje lidským kontrolorům pomoci při rozhodování. V této příručce si projdete krátký proces nastavení nástroje pro kontrolu, abyste viděli, jak služba Content Moderator funguje. Přejít na web [nástroje Content moderator recenze](https://contentmoderator.cognitive.microsoft.com/) a zaregistrovat se.
 
 ![Content Moderator domovskou stránku](images/homepage.PNG)
@@ -82,6 +85,6 @@ Nebo pokračujte dalšími kroky, abyste mohli začít používat rozhraní API 
 ## <a name="next-steps"></a>Další kroky
 
 Naučte se používat rozhraní API pro moderování ve vaší aplikaci.
-- Implementujte moderování imagí. Použijte [konzolu rozhraní API](try-image-api.md) nebo postupujte podle pokynů k [rychlému zprovoznění sady .NET SDK](dotnet-sdk-quickstart.md) a pomocí značek, hodnocení spolehlivosti a dalších extrahovaných informací vyhledejte potenciální obsah pro dospělé a pikantní.
-- Implementujte moderování textu. Použijte [konzolu rozhraní API](try-text-api.md) nebo spusťte průvodce [.NET SDK](dotnet-sdk-quickstart.md) pro kontrolu nad obsahem textu pro potenciální vulgární výrazy, nepotřebnou klasifikaci textu s asistencí počítače (Preview) a osobní údaje.
+- Implementujte moderování imagí. Použijte [konzolu rozhraní API](try-image-api.md) nebo postupujte podle pokynů k [rychlému zprovoznění klientské knihovny](client-libraries.md) a pomocí značek, hodnocení spolehlivosti a dalších extrahovaných informací vyhledejte potenciální obsah pro dospělé a pikantní.
+- Implementujte moderování textu. Použijte [konzolu rozhraní API](try-text-api.md) nebo pomocí nástroje pro [rychlý Start knihovny klienta](client-libraries.md) naskenujte textový obsah pro potenciální vulgární výrazy, nepotřebnou klasifikaci textu s asistencí pro počítače (Preview) a osobní údaje.
 - Implementujte moderování videa. Postupujte podle pokynů v tématu [postup pro jazyk C#](video-moderation-api.md) , který vám pomůže při skenování videí a detekci potenciálního dospělého a pikantní obsahu. 

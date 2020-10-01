@@ -13,12 +13,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a458e0c03687df9d1cd53df69b8cf275da04174a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: fcb6d4da3d9b044cf722c6333f61a0f8d38f1956
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073671"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598013"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>Rychlý Start: vytvoření SQL Server na virtuálním počítači s Windows pomocí Azure PowerShell
 
@@ -172,7 +172,7 @@ Během časového období údržby upgradujte na úplný režim:
 $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
       
 # Register with SQL VM resource provider in full mode
-New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
+Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
 ```
 
 

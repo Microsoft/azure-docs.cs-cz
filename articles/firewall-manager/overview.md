@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 09/23/2020
+ms.date: 09/30/2020
 ms.author: victorh
-ms.openlocfilehash: 74d83ecc240fa4b48421dbaa1c5cc9e62990655d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 00a84fbf694a58128712abf806ff12df96f0e5e9
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399444"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596681"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Co je Azure Firewall Manager?
 
@@ -76,7 +76,7 @@ Zásady Azure Firewall lze používat napříč oblastmi. Můžete například v
 
 Azure Firewall Manager má následující známé problémy:
 
-|Problém  |Description  |Omezení rizik  |
+|Problém  |Popis  |Omezení rizik  |
 |---------|---------|---------|
 |Rozdělení provozu|Rozdělení provozu Microsoft 365 a Azure Public PaaS se v tuto chvíli nepodporuje. V takovém případě je třeba vybrat poskytovatele třetí strany pro V2I nebo B2I, který prostřednictvím partnerské služby pošle veškerý veřejný PaaS a Microsoft 365 provoz Azure.|Zkoumání rozdělení provozu v centru.
 |Jeden zabezpečený virtuální rozbočovač na oblast|Pro každou oblast nemůžete mít více než jedno zabezpečené virtuální rozbočovače.|Vytvoření více virtuálních sítí WAN v určité oblasti.|
@@ -89,6 +89,7 @@ Azure Firewall Manager má následující známé problémy:
 |Pravidla aplikací selžou v zabezpečeném centru s nakonfigurovaným vlastním DNS (Preview).|Vlastní DNS (Preview) nefunguje v nasazeních zabezpečeného centra a v nasazeních virtuálních sítí rozbočovače, kde je povolené vynucené tunelování.|Opravte šetření.|
 |DDoS Protection Standard není podporován u zabezpečených virtuálních rozbočovačů.|DDoS Protection Standard není integrovaný do vWANs.|Prověřování|
 |Protokoly aktivit nejsou plně podporované.|Zásady brány firewall v současné době nepodporují protokoly aktivit.|Prověřování|
+|Konfigurace rozsahů privátních IP adres SNAT|[Nastavení rozsahu privátních IP adres](../firewall/snat-private-range.md) se ignoruje, pokud je nakonfigurovaná zásada Azure firewall. Použije se výchozí chování Azure Firewall, kde se nejedná o Síťová pravidla, pokud je cílová IP adresa v rozsahu privátních IP adres na [úřad IANA RFC 1918](https://tools.ietf.org/html/rfc1918).|Prověřování
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,12 +3,12 @@ title: Nasazení a konfigurace řešení Azure VMware
 description: Naučte se používat informace shromážděné ve fázi plánování k nasazení privátního cloudu řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 08d2d48820505dad9bba74fe3ac84f45525f4525
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: af2a9e4fcb4125683342ad739e3890671f64b0bf
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91583281"
+ms.locfileid: "91598181"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Nasazení a konfigurace řešení Azure VMware
 
@@ -40,7 +40,7 @@ Použijte informace, které jste shromáždili v článku [Plánování nasazen�
 Po nasazení řešení Azure VMware vytvoříte pole pro skok virtuální sítě, které se připojí k vCenter a NSX. Jakmile nakonfigurujete okruhy ExpressRoute a ExpressRoute Global Reach, není pole s odkazem nutné.  Je ale užitečné dosáhnout vCenter a NSX v řešení Azure VMware.  
 
 
-:::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Vytvoření pole pro přechod řešení Azure VMware":::
+:::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Vytvoření pole pro přechod řešení Azure VMware" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
 Při vytváření virtuálního počítače ve virtuální síti, kterou jste [identifikovali nebo vytvořili v rámci procesu nasazení](production-ready-deployment-steps.md#azure-virtual-network-to-attach-azure-vmware-solution), postupujte podle těchto pokynů: 
 
@@ -60,7 +60,7 @@ Pole s odkazem se nachází ve virtuální síti, ve které se řešení Azure V
 
 V seznamu efektivní trasy by se měly zobrazit sítě vytvořené jako součást nasazení řešení Azure VMware. Uvidíte několik sítí, které byly odvozeny od [ `/22` sítě, kterou jste definovali](production-ready-deployment-steps.md#ip-address-segment) během [postupu nasazení](#deploy-azure-vmware-solution) dříve v tomto článku.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Vytvoření pole pro přechod řešení Azure VMware":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Vytvoření pole pro přechod řešení Azure VMware" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
 V tomto příkladu byla během nasazení v síti 10.74.72.0/22 zadaná síť, která je odvozená od/24 sítí.  Pokud vidíte něco podobného, můžete se připojit k vCenter v řešení Azure VMware.
 

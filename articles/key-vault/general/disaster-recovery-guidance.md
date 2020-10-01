@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: 6ccd127a35ea0d6a135a4b345297988cfdd8015b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3cc4bdc0fabd9d1e209634a88bed1bf063db917c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315809"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597877"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Dostupnost a redundance služby Azure Key Vault
 
@@ -25,8 +25,7 @@ Azure Key Vault funkce více vrstev redundance, aby se zajistilo, že vaše klí
 
 Obsah trezoru klíčů se replikuje v rámci oblasti a do sekundární oblasti minimálně 150 kilometrů, ale v rámci stejné geografické úrovně zachovává vysokou odolnost klíčů a tajných kódů. Podrobnosti o dvojicích konkrétních oblastí najdete v dokumentu s [spárovanými](../../best-practices-availability-paired-regions.md) oblastmi Azure.
 
-
-Pokud jednotlivé komponenty v rámci služby trezoru klíčů selžou, alternativní komponenty v rámci této oblasti v rámci vaší žádosti budou sloužit k tomu, aby se zajistilo, že nedojde k žádnému zhoršení funkčnosti. Ke spuštění tohoto procesu není nutné provádět žádnou akci, probíhá automaticky a bude pro vás transparentní.
+Pokud jednotlivé komponenty v rámci služby trezoru klíčů selžou, alternativní komponenty v rámci této oblasti v rámci vaší žádosti budou sloužit k tomu, aby se zajistilo, že nedojde k žádnému zhoršení funkčnosti. Pro spuštění tohoto procesu nemusíte provádět žádnou akci, k tomu dochází automaticky a pro vás bude transparentní.
 
 V vzácných událostech, že celá oblast Azure není k dispozici, jsou požadavky, které provedete Azure Key Vault v této oblasti, automaticky směrovány (*převzetí*služeb při selhání) do sekundární oblasti. Pokud je primární oblast opět k dispozici, požadavky se přesměrují zpět (po*obnovení*) do primární oblasti. Znovu nemusíte provádět žádnou akci, protože k tomu dochází automaticky.
 
@@ -34,7 +33,8 @@ Tento návrh vysoké dostupnosti Azure Key Vault nevyžaduje pro aktivity údrž
 
 Je potřeba mít na paměti několik upozornění:
 
-* V případě převzetí služeb při selhání v oblasti může trvat několik minut, než služba převezme služby při selhání. Žádosti, které se provedou během této doby před převzetím služeb při selhání, můžou selhat.
+* V případě převzetí služeb při selhání v oblasti může trvat několik minut, než služba převezme služby při selhání. Žádosti, které se provedou během této doby před selháním, může selhat.
+* Pokud používáte privátní propojení pro připojení k trezoru klíčů, může trvat až 20 minut, než se připojení znovu naváže v případě převzetí služeb při selhání. 
 * V průběhu převzetí služeb při selhání je váš Trezor klíčů v režimu jen pro čtení. Požadavky, které jsou podporovány v tomto režimu:
   * Výpis certifikátů
   * Získat certifikáty

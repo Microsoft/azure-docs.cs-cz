@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a899927166d7e1294ad89d48e5c646e6abb5ed76
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9b0eeda443aefc105fb36d6075c717fafae4cb61
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707607"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598021"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Řešení potíží se soubory Azure v systému Windows (SMB)
 
-V tomto článku jsou uvedené běžné problémy související se soubory Microsoft Azure, když se připojujete z klientů Windows. Poskytuje taky možné příčiny a řešení těchto problémů. Kromě kroků pro řešení potíží v tomto článku můžete také použít [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   a zajistit, aby klientské prostředí systému Windows mělo správné požadavky. AzFileDiagnostics automatizuje detekci většiny příznaků uvedených v tomto článku a pomáhá nastavit vaše prostředí, aby dosáhlo optimálního výkonu. Tyto informace můžete najít také v [poradci při potížích se sdílenými složkami souborů Azure](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , který obsahuje postup, který vám pomůže s problémy při připojování/mapování/připojování sdílených složek Azure Files.
+V tomto článku jsou uvedené běžné problémy související se soubory Microsoft Azure, když se připojujete z klientů Windows. Poskytuje taky možné příčiny a řešení těchto problémů. Kromě kroků pro řešení potíží v tomto článku můžete také použít [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   a zajistit, aby klientské prostředí systému Windows mělo správné požadavky. AzFileDiagnostics automatizuje detekci většiny příznaků uvedených v tomto článku a pomáhá nastavit vaše prostředí, aby dosáhlo optimálního výkonu.
 
 > [!IMPORTANT]
 > Obsah tohoto článku platí pouze pro sdílené složky SMB. Podrobnosti o sdílených složkách NFS najdete v tématu [řešení potíží s sdílenými složkami souborů Azure NFS](storage-troubleshooting-files-nfs.md).
@@ -26,7 +26,7 @@ V tomto článku jsou uvedené běžné problémy související se soubory Micro
 
 Když se pokusíte připojit sdílenou složku, může se zobrazit následující chyba:
 
-- Došlo k systémové chybě 5. Přístup byl zamítnut.
+- Došlo k systémové chybě 5. Přístup je odepřen.
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>Příčina 1: nešifrovaný komunikační kanál
 
@@ -343,7 +343,7 @@ Tato rutina provádí následující kontroly v posloupnosti a poskytuje pokyny 
 1. CheckADObjectPasswordIsCorrect: Ujistěte se, že heslo nakonfigurované na identitě AD, které představuje účet úložiště, odpovídá účtu úložiště kerb1 nebo kerb2 Key. Pokud není heslo správné, můžete heslo resetovat spuštěním rutiny [Update-AzStorageAccountADObjectPassword](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-update-password) . 
 2. CheckADObject: potvrďte, že ve službě Active Directory existuje objekt, který představuje účet úložiště, a má správný název SPN (hlavní název služby). Pokud hlavní název služby není správně nastavený, spusťte rutinu Set-AD vrácenou v rutině ladění a nakonfigurujte hlavní název služby (SPN).
 3. CheckDomainJoined: Ověřte, zda je klientský počítač připojen k doméně služby AD. Pokud Váš počítač není připojený k doméně AD, přečtěte si tento [článek](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) , kde najdete pokyny k připojení k doméně.
-4. CheckPort445Connectivity: Ověřte, že je pro připojení SMB otevřený port 445. Pokud požadovaný port není otevřený, přečtěte si další informace o problémech s připojením se soubory Azure v tématu [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) nástroje pro řešení potíží.
+4. CheckPort445Connectivity: Ověřte, že je pro připojení SMB otevřený port 445. Pokud požadovaný port není otevřený, přečtěte si další informace o problémech s připojením se soubory Azure v tématu [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) nástroje pro řešení potíží.
 5. CheckSidHasAadUser: Ověřte, že se přihlášený uživatel služby AD synchronizuje do Azure AD. Pokud chcete vyhledat konkrétního uživatele služby AD, který je synchronizovaný s Azure AD, můžete ve vstupních parametrech zadat-UserName a-Domain. 
 6. CheckGetKerberosTicket: Pokuste se získat lístek protokolu Kerberos pro připojení k účtu úložiště. Pokud není k dispozici platný token protokolu Kerberos, spusťte rutinu příkaz Klist (získat CIFS/Storage-Account-Name. File. Core. Windows. NET a prověřte kód chyby pro hlavní-příčinu selhání načtení lístku.
 7. CheckStorageAccountDomainJoined: Ověřte, jestli je povolené ověřování AD a naplní se vlastnosti Active Directory účtu. Pokud ne, přečtěte si [tady](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable) pokyny, abyste povolili služba AD DS ověřování v souborech Azure. 

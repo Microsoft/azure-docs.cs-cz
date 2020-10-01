@@ -11,13 +11,13 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-keywords: moderátor obsahu, moderátor obsahu Azure, moderátor online, software pro filtrování obsahu a služba pro moderování obsahu
-ms.openlocfilehash: d502f41a79500b80e1891219b54bde30eb3cd8ca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+keywords: moderátor obsahu, moderátor obsahu Azure, moderátor online, software pro filtrování obsahu, služba pro moderování obsahu, Moderování obsahu
+ms.openlocfilehash: aa1f4c1fab9b3d8a1b5db0e965f1608e694646b2
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309650"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596850"
 ---
 # <a name="what-is-azure-content-moderator"></a>Co je Azure Content Moderator?
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: deffa5c75cbde4f9d95be549844478d4de87a685
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: c64c376e8f283336573500e69ac31989b5947961
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069624"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598252"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -524,13 +524,12 @@ Doporučený postup při zapínání na Azure File Sync pro první s nulovým pr
 Pokud nemáte dodatečné úložiště pro počáteční registraci a chcete se připojit k existujícím sdíleným složkám, můžete předem naplnit data ve sdílených složkách služby soubory Azure. Tento přístup je navržený, pokud a jenom v případě, že můžete přijmout výpadky a naprosto zaručit žádné změny dat ve sdílených složkách na serveru během prvotního procesu připojování. 
  
 1. Zajistěte, aby se data na žádném ze serverů během procesu připojování neměnila.
-2. Předprodejní sdílené složky Azure s daty serveru pomocí libovolného nástroje pro přenos dat prostřednictvím protokolu SMB (například Robocopy, Přímá kopie protokolu SMB). Vzhledem k tomu, že AzCopy neodesílá data přes protokol SMB, takže se nedá použít pro předběžné osazení.
+2. Předprodejní sdílené složky Azure s daty serveru pomocí libovolného nástroje pro přenos dat přes protokol SMB. Robocopy například. AzCopy můžete použít i přes REST. Nezapomeňte použít AzCopy s příslušnými přepínači pro zachování časových razítek a atributů seznamů ACL.
 3. Vytvořte Azure File Sync topologii s požadovanými koncovými body serveru ukazující na existující sdílené složky.
 4. Umožněte proces sladění dokončení synchronizace u všech koncových bodů. 
 5. Po dokončení odsouhlasení můžete otevřít sdílené složky pro změny.
  
 V současné době má přístup před osazením několik omezení – 
-- Plná přesnost souborů není zachovaná. Například soubory ztratí seznamy ACL a časová razítka.
 - Změny dat na serveru před tím, než je topologie synchronizace zcela v provozu, můžou způsobit konflikty na koncových bodech serveru.  
 - Po vytvoření koncového bodu cloudu Azure File Sync spustí proces zjišťování souborů v cloudu před zahájením počáteční synchronizace. Doba potřebná k dokončení tohoto procesu se liší v závislosti na různých faktorech, jako je rychlost sítě, dostupná šířka pásma a počet souborů a složek. V případě hrubého odhadu ve verzi Preview se proces zjišťování spouští přibližně v 10 souborech za sekundu.  A to i v případě, že předběžné osazení běží rychle, může být celková doba pro plně běžící systém výrazně delší, než se data v cloudu předem dosadí.
 

@@ -1,5 +1,5 @@
 ---
-title: Dotazování na data Azure Cosmos DB pomocí SQL na vyžádání v odkazu Azure synapse (Preview)
+title: Dotazování na data Azure Cosmos DB pomocí SQL bez serveru v propojení Azure synapse (Preview)
 description: V tomto článku se naučíte, jak zadat dotaz na Azure Cosmos DB pomocí SQL na vyžádání v tématu připojení Azure synapse (Preview).
 services: synapse analytics
 author: jovanpop-msft
@@ -9,27 +9,27 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8dd6ab5bcb42765c995e8cd767358be5e62aa0b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 028f47fcfb4a6a4d94d672e950b4c37d739e672b
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288389"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597319"
 ---
-# <a name="query-azure-cosmos-db-data-using-sql-on-demand-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB pomocí SQL na vyžádání v odkazu Azure synapse (Preview)
+# <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB pomocí SQL bez serveru v propojení Azure synapse (Preview)
 
-SQL bez serveru (dříve SQL na vyžádání) umožňuje analyzovat data ve vašich Azure Cosmos DBch kontejnerech, které jsou povolené pomocí [odkazu Azure synapse](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) v téměř reálném čase, aniž by to ovlivnilo výkon transakčních úloh. Nabízí známou syntaxi T-SQL pro dotazování dat z [analytického úložiště](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a integrovaného připojení k široké škále nástrojů pro dotazování BI a ad-hoc, a to prostřednictvím rozhraní T-SQL.
+SQL bez serveru (dřív bez serveru SQL) umožňuje analyzovat data ve vašich Azure Cosmos DBch kontejnerech, které jsou povolené pomocí [odkazu Azure synapse](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) v téměř reálném čase, aniž by to ovlivnilo výkon transakčních úloh. Nabízí známou syntaxi T-SQL pro dotazování dat z [analytického úložiště](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a integrovaného připojení k široké škále nástrojů pro dotazování BI a ad-hoc, a to prostřednictvím rozhraní T-SQL.
 
 > [!NOTE]
-> Podpora pro dotazování Azure Cosmos DB analytického úložiště s SQL na vyžádání je aktuálně ve verzi ověřované verze Preview. 
+> Podpora pro dotazování Azure Cosmos DB analytického úložiště bez SQL serveru je v současné době ve verzi ověřované verze Preview. 
 
-Pro dotazování Azure Cosmos DB je dostupná plocha kompletního [výběru](/sql/t-sql/queries/select-transact-sql.md?view=sql-server-ver15&preserve-view=true) plochy prostřednictvím funkce [OpenRowset](develop-openrowset.md) , včetně většiny [funkcí a operátorů SQL](overview-features.md). Můžete také uložit výsledky dotazu, který čte data z Azure Cosmos DB společně s daty v Azure Blob Storage nebo Azure Data Lake Storage pomocí příkazu [vytvořit externí tabulku jako SELECT](develop-tables-cetas.md#cetas-in-sql-on-demand). V současné době nemůžete uložit výsledky dotazů na vyžádání SQL pro Azure Cosmos DB pomocí [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand).
+Pro dotazování Azure Cosmos DB je dostupná plocha kompletního [výběru](/sql/t-sql/queries/select-transact-sql.md?view=sql-server-ver15&preserve-view=true) plochy prostřednictvím funkce [OpenRowset](develop-openrowset.md) , včetně většiny [funkcí a operátorů SQL](overview-features.md). Můžete také uložit výsledky dotazu, který čte data z Azure Cosmos DB společně s daty v Azure Blob Storage nebo Azure Data Lake Storage pomocí příkazu [vytvořit externí tabulku jako SELECT](develop-tables-cetas.md#cetas-in-sql-on-demand). V tuto chvíli nemůžete ukládat výsledky dotazů bez SQL serveru, abyste je Azure Cosmos DB pomocí [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand).
 
-V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání, který bude dotazovat data z Azure Cosmos DB kontejnerů s povoleným odkazem synapse. Pak si můžete přečíst další informace o vytváření zobrazení SQL na vyžádání nad kontejnery Azure Cosmos DB a jejich propojením s Power BI modely v [tomto](./tutorial-data-analyst.md) kurzu. 
+V tomto článku se dozvíte, jak napsat dotaz pomocí SQL bez serveru, který bude dotazovat data z Azure Cosmos DB kontejnerů s povoleným odkazem synapse. Pak si můžete přečíst další informace o vytváření zobrazení bez SQL serveru nad kontejnery Azure Cosmos DB a jejich propojením s Power BI modely v [tomto](./tutorial-data-analyst.md) kurzu. 
 
 ## <a name="overview"></a>Přehled
 
-K podpoře dotazování a analýze dat v Azure Cosmos DB analytickém úložišti vyžaduje SQL na vyžádání následující `OPENROWSET` syntaxi:
+K podpoře dotazování a analýze dat v Azure Cosmos DB analytickém úložišti bez serveru SQL Server se používá následující `OPENROWSET` syntaxe:
 
 ```sql
 OPENROWSET( 
@@ -47,7 +47,7 @@ Připojovací řetězec Azure Cosmos DB určuje Azure Cosmos DB název účtu, n
 Název kontejneru Azure Cosmos DB je zadán bez uvozovek v `OPENROWSET` syntaxi. Pokud má název kontejneru nějaké speciální znaky (například pomlčku '-'), název by měl být zabalen do `[]` (hranaté závorky) v `OPENROWSET` syntaxi.
 
 > [!NOTE]
-> SQL na vyžádání nepodporuje dotazování Azure Cosmos DB transakčním úložištěm.
+> SQL bez serveru nepodporuje dotazování Azure Cosmos DB transakčního úložiště.
 
 ## <a name="sample-data-set"></a>Ukázková datová sada
 
@@ -55,14 +55,14 @@ Příklady v tomto článku jsou založené na datech z [Evropského centra pro 
 
 Můžete si Zobrazit licenci a strukturu dat na těchto stránkách a stáhnout ukázková data pro sady dat [ECDC](https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.json) a [Cord19](https://azureopendatastorage.blob.core.windows.net/covid19temp/comm_use_subset/pdf_json/000b7d1517ceebb34e1e3e817695b6de03e2fa78.json) .
 
-Pokud chcete postupovat podle tohoto článku předvádí, jak zadávat dotazy na data Cosmos DB pomocí SQL na vyžádání, ujistěte se, že jste vytvořili tyto prostředky:
+Pokud chcete postupovat podle tohoto článku předvádí, jak zadávat dotazy na data Cosmos DB bez SQL serveru, je potřeba vytvořit tyto prostředky:
 * Účet databáze Azure Cosmos DB s [povoleným odkazem synapse](../../cosmos-db/configure-synapse-link.md)
 * Azure Cosmos DB databáze s názvem `covid`
 * Byly načteny dva kontejnery Azure Cosmos DB s názvem `EcdcCases` a `Cord19` nad sadou vzorových datových sad.
 
 ## <a name="explore-azure-cosmos-db-data-with-automatic-schema-inference"></a>Zkoumání Azure Cosmos DB dat pomocí automatického odvození schématu
 
-Nejjednodušší způsob, jak prozkoumat data v Azure Cosmos DB, je využití možnosti automatického odvození schématu. Vyvoláním `WITH` klauzule z `OPENROWSET` příkazu můžete pokyn SQL na vyžádání pro automatické zjištění (odvodit) schématu analytického úložiště kontejneru Azure Cosmos DB.
+Nejjednodušší způsob, jak prozkoumat data v Azure Cosmos DB, je využití možnosti automatického odvození schématu. Vyvoláním `WITH` klauzule z `OPENROWSET` příkazu můžete dát SQL serveru možnost automaticky detekovat (odvodit) schéma analytického úložiště kontejneru Azure Cosmos DB.
 
 ```sql
 SELECT TOP 10 *
@@ -71,7 +71,7 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
-V předchozím příkladu dáváme pokyn k tomu, aby se SQL na vyžádání připojoval k `covid` databázi v Azure Cosmos DB účet `MyCosmosDbAccount` ověřený pomocí Azure Cosmos DB Key (fiktivní v předchozím příkladu). Pak přistupujeme k `EcdcCases` analytickému úložišti kontejneru v `West US 2` oblasti. Vzhledem k tomu, že neexistuje žádná projekce specifických vlastností, `OPENROWSET` funkce vrátí všechny vlastnosti z Azure Cosmos DBch položek.
+V předchozím příkladu dáváme pokyn k tomu, aby SQL Server bez serveru se připojil k `covid` databázi v Azure Cosmos DB účet `MyCosmosDbAccount` ověřený pomocí Azure Cosmos DB Key (fiktivní v předchozím příkladu). Pak přistupujeme k `EcdcCases` analytickému úložišti kontejneru v `West US 2` oblasti. Vzhledem k tomu, že neexistuje žádná projekce specifických vlastností, `OPENROWSET` funkce vrátí všechny vlastnosti z Azure Cosmos DBch položek.
 
 Pokud potřebujete prozkoumat data z druhého kontejneru ve stejné Azure Cosmos DB databázi, můžete použít stejný připojovací řetězec a odkaz požadovaný kontejner jako třetí parametr:
 
@@ -118,7 +118,7 @@ Další informace o typech SQL, které by se měly použít pro Azure Cosmos DB 
 
 ## <a name="querying-nested-objects-and-arrays"></a>Dotazování na vnořené objekty a pole
 
-Azure Cosmos DB umožňuje znázornit složitější datové modely jejich sestavou jako vnořené objekty nebo pole. Funkce AutoSync pro synapse Link pro Azure Cosmos DB spravuje reprezentaci schématu v analytickém úložišti, která zahrnuje zpracování vnořených datových typů, což umožňuje získat bohatou dotazování z SQL na vyžádání.
+Azure Cosmos DB umožňuje znázornit složitější datové modely jejich sestavou jako vnořené objekty nebo pole. Schopnost AutoSync odkazu synapse pro Azure Cosmos DB spravuje reprezentaci schématu v analytickém úložišti, která zahrnuje zpracování vnořených datových typů, což umožňuje pracovat s bohatou dotazováním z SQL serveru.
 
 Například datová sada [šňůr-19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) obsahuje dokumenty JSON, které následují následující strukturu:
 
@@ -170,7 +170,7 @@ FROM
     ) AS docs;
 ```
 
-Přečtěte si další informace o analýze [složitých datových typů v odkazech na synapse](../how-to-analyze-complex-schema.md) a ve [vnořených strukturách SQL na vyžádání](query-parquet-nested-types.md).
+Přečtěte si další informace o analýze [složitých datových typů v odkazech na synapse](../how-to-analyze-complex-schema.md) a [ve vnořených strukturách bez SQL serveru](query-parquet-nested-types.md).
 
 > [!IMPORTANT]
 > Pokud se v textu zobrazí neočekávané znaky jako `MÃƒÂ©lade` místo, není `Mélade` kolace databáze nastavena na kolaci [UTF8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) . 
@@ -201,7 +201,7 @@ Data Azure Cosmos DB můžou mít vnořená dílčí pole, jako je pole autora z
 }
 ```
 
-V některých případech se může stát, že budete muset "spojit" vlastnosti z horní položky (metadata) se všemi prvky pole (autoři). SQL na vyžádání umožňuje sloučit vnořené struktury s použitím `OPENJSON` funkce ve vnořeném poli:
+V některých případech se může stát, že budete muset "spojit" vlastnosti z horní položky (metadata) se všemi prvky pole (autoři). Bez SQL serveru můžete sloučit vnořené struktury s použitím `OPENJSON` funkce ve vnořeném poli:
 
 ```sql
 SELECT
@@ -236,14 +236,14 @@ Doplňující informace epidemi... | `[{"first":"Nicolas","last":"4#","suffix":"
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Mapování typů Azure Cosmos DB na SQL
 
-Je důležité nejdřív si uvědomit, že zatímco Azure Cosmos DB transakčního úložiště je Schema-nezávislá, je analytické úložiště schematized na optimalizaci pro výkon analytických dotazů. Díky schopnosti autosync v synapse Azure Cosmos DB propojení se v analytickém úložišti nástroje spravují reprezentace schématu, která zahrnuje zpracování vnořených datových typů. Vzhledem k tomu, že SQL na vyžádání dotazuje analytické úložiště, je důležité pochopit, jak namapovat Azure Cosmos DB vstupních datových typů k datovým typům SQL.
+Je důležité nejdřív si uvědomit, že zatímco Azure Cosmos DB transakčního úložiště je Schema-nezávislá, je analytické úložiště schematized na optimalizaci pro výkon analytických dotazů. Díky schopnosti autosync v synapse Azure Cosmos DB propojení se v analytickém úložišti nástroje spravují reprezentace schématu, která zahrnuje zpracování vnořených datových typů. Vzhledem k tomu, že dotazy bez SQL serveru jsou analytické úložiště, je důležité pochopit, jak namapovat Azure Cosmos DB vstupní datové typy k datovým typům SQL.
 
 Azure Cosmos DB účty rozhraní API SQL (Core) API podporují typy vlastností JSON číslo, řetězec, logická hodnota, null, vnořený objekt nebo pole. Pokud používáte klauzuli v, musíte zvolit typy SQL, které odpovídají těmto typům JSON `WITH` `OPENROWSET` . Viz níže typy sloupců SQL, které by měly být použity pro různé typy vlastností v Azure Cosmos DB.
 
 | Typ vlastnosti Azure Cosmos DB | Typ sloupce SQL |
 | --- | --- |
 | Logická hodnota | bit |
-| Celé číslo | bigint |
+| Integer | bigint |
 | Decimal | float |
 | Řetězec | varchar (kolace databáze UTF8) |
 | Datum a čas (formátovaný řetězec ISO) | varchar (30) |

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: dbeb1305a64fcace0be527708bc9122a4ffb931d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 891cd651278906c6ff4b24d91342c612c67604de
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870829"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596568"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics výstup do Azure Cosmos DB  
 Azure Stream Analytics může cílit [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) na výstup JSON, povolit archivaci dat a dotazy s nízkou latencí na nestrukturovaná data JSON. Tento dokument popisuje některé osvědčené postupy pro implementaci této konfigurace.
@@ -72,7 +72,9 @@ V závislosti na zvoleném klíči oddílu se může zobrazit toto _Upozornění
 
 Je důležité zvolit vlastnost klíče oddílu, která má několik různých hodnot a která umožňuje rovnoměrně distribuovat úlohy napříč těmito hodnotami. V rámci přirozeného artefaktu dělení jsou požadavky, které zahrnují stejný klíč oddílu, omezené maximální propustností jednoho oddílu. 
 
-Velikost úložiště pro dokumenty, které patří do stejného klíče oddílu, je omezená na 20 GB. Ideální klíč oddílu je takový, který se často objevuje jako filtr ve vašich dotazech a má dostatečnou mohutnost pro zajištění škálovatelnosti vašeho řešení.
+Velikost úložiště pro dokumenty, které patří do stejné hodnoty klíče oddílu, je omezená na 20 GB ( [omezení velikosti fyzického oddílu](../cosmos-db/partition-data.md) je 50 GB). [Ideální klíč oddílu](../cosmos-db/partitioning-overview.md#choose-partitionkey) je takový, který se často objevuje jako filtr ve vašich dotazech a má dostatečnou mohutnost pro zajištění škálovatelnosti vašeho řešení.
+
+Klíče oddílů používané pro Stream Analytics dotazy a Cosmos DB nemusejí být identické. Plně paralelní topologie doporučuje použít *klíč vstupního oddílu*, `PartitionId` jako klíč oddílu Stream Analyticsho dotazu, ale nemusí být doporučená volba pro klíč oddílu Cosmos DB kontejneru.
 
 Klíč oddílu je také hranice pro transakce v uložených procedurách a triggerech pro Azure Cosmos DB. Měli byste zvolit klíč oddílu, aby dokumenty, ke kterým dojde společně v transakcích, sdílely stejnou hodnotu klíče oddílu. Článek [dělení Azure Cosmos DB](../cosmos-db/partitioning-overview.md) obsahuje další podrobnosti o výběru klíče oddílu.
 

@@ -3,12 +3,12 @@ title: Získat data dodržování zásad
 description: Azure Policy hodnocení a účinky určují dodržování předpisů. Přečtěte si, jak získat podrobnosti o dodržování předpisů pro vaše prostředky Azure.
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5a308a23e84587eba69951081674d3525f083441
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2b4db7daf75f153cadb03e5dd028084e311bb874
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537946"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596033"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -46,7 +46,37 @@ K vyhodnocení přiřazených zásad a iniciativ dojde v důsledku různých ud�
 
 ### <a name="on-demand-evaluation-scan"></a>Prohledávání hodnocení na vyžádání
 
-Kontrolu zkušebního předplatného nebo skupiny prostředků můžete spustit pomocí Azure CLI, Azure PowerShell nebo volání REST API. Tato kontrola je asynchronní proces.
+Kontrolu vyhodnocení předplatného nebo skupiny prostředků můžete spustit pomocí Azure CLI, Azure PowerShell, volání REST API nebo pomocí [Akce GitHubu pro kontrolu kompatibility Azure Policy](https://github.com/marketplace/actions/azure-policy-compliance-scan).
+Tato kontrola je asynchronní proces.
+
+#### <a name="on-demand-evaluation-scan---github-action"></a>Prověření vyhodnocení na vyžádání – akce GitHubu
+
+Pomocí [akce Azure Policy kontrola dodržování předpisů](https://github.com/marketplace/actions/azure-policy-compliance-scan) můžete aktivovat kontrolu vyhodnocení na vyžádání z [pracovního postupu GitHubu](https://docs.github.com/actions/configuring-and-managing-workflows/configuring-a-workflow#about-workflows) na jednom nebo několika prostředcích, skupinách prostředků nebo předplatných a bránu pracovní postup na základě stavu dodržování předpisů u prostředků. Pracovní postup můžete také nakonfigurovat tak, aby běžel v naplánovaném čase, abyste získali nejnovější stav dodržování předpisů v pohodlný čas. Tuto akci GitHubu můžete volitelně použít k vygenerování sestavy o stavu dodržování předpisů u prověřených prostředků pro další analýzu nebo pro archivaci.
+
+Následující příklad spustí kontrolu dodržování předpisů u předplatného. 
+
+```yaml
+on:
+  schedule:    
+    - cron:  '0 8 * * *'  # runs every morning 8am
+jobs:
+  assess-policy-compliance:    
+    runs-on: ubuntu-latest
+    steps:         
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}} 
+
+    
+    - name: Check for resource compliance
+      uses: azure/policy-compliance-scan@v0
+      with:
+        scopes: |
+          /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+Další informace a ukázky pracovních postupů najdete v článku [Akce GitHubu pro úložiště vyhledávání dodržování předpisů Azure Policy](https://github.com/Azure/policy-compliance-scan).
 
 #### <a name="on-demand-evaluation-scan---azure-cli"></a>Kontrola vyhodnocení na vyžádání – Azure CLI
 
@@ -134,9 +164,9 @@ V přiřazení není prostředek **nekompatibilní** , pokud nedodržuje pravidl
 | Stav prostředku | Účinek | Vyhodnocení zásad | Stav dodržování předpisů |
 | --- | --- | --- | --- |
 | Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Ano | Neodpovídající |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Nepravda | Odpovídající |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Ne | Odpovídající |
 | Nová | Audit, AuditIfNotExist\* | Ano | Neodpovídající |
-| Nová | Audit, AuditIfNotExist\* | Nepravda | Odpovídající |
+| Nová | Audit, AuditIfNotExist\* | Ne | Odpovídající |
 
 \* Efekty upravit, připojit, DeployIfNotExist a AuditIfNotExist vyžadují, aby příkaz IF byl pravdivý. Tyto účinky také vyžadují, aby existovala podmínka, která musí nabývat hodnoty FALSE, aby byla zásada vyhodnocena jako Nevyhovující předpisům. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
 

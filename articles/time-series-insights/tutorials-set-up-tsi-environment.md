@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 07/27/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 83cf8ca47774713ca8dbfd493d7aa16bf65fb6b7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 79a4fc048b8301d67206bf28b571f88f9e5ad024
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286457"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597667"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Kurz: nastavení prostředí Azure Time Series Insights Gen2
 
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 
 Zaregistrujte si [bezplatné předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Minimálně musíte mít roli **přispěvatele** pro předplatné Azure. Další informace najdete v článku [Správa přístupu pomocí řízení přístupu na základě role a Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
@@ -84,7 +84,7 @@ Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Gen2 
 
 1. V podokně **vytvořit Time Series Insights prostředí** na kartě **základy** nastavte následující parametry:
 
-    | Parametr | Akce |
+    | parametr | Akce |
     | --- | ---|
     | **Název prostředí** | Zadejte jedinečný název prostředí Azure Time Series Insights Gen2. |
     | **Předplatné** | Zadejte předplatné, ve kterém chcete vytvořit prostředí Azure Time Series Insights Gen2. Osvědčeným postupem je použít stejné předplatné jako zbytek prostředků IoT vytvořených simulátorem zařízení. |
@@ -107,7 +107,7 @@ Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Gen2 
 
 1. Na kartě **zdroj události** nastavte následující parametry:
 
-   | Parametr | Akce |
+   | parametr | Akce |
    | --- | --- |
    | **Vytvořit zdroj události?** | Vyberte **Ano**.|
    | **Název** | Zadejte jedinečnou hodnotu názvu zdroje události. |
@@ -161,7 +161,7 @@ Teď, když máte nasazené prostředí Azure Time Series Insights Gen2, začně
 
     1. Po načtení stránky **Nastavení simulace** zadejte požadované parametry.
 
-        | Parametr | Akce |
+        | parametr | Akce |
         | --- | --- |
         | **Název** | Zadejte jedinečný název simulátoru. |
         | **Popis** | Zadejte definici. |
@@ -217,7 +217,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
 
 1. Zadejte následující parametry:
 
-    | Parametr | Akce |
+    | parametr | Akce |
     | --- | ---|
     | **Název** | Zadat **výtah** |
     | **Popis** | Zadejte **Toto je definice typu pro výtah** . |
@@ -226,7 +226,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
 
     1. Vyberte **+ přidat proměnnou** a vyplňte následující hodnoty pro první proměnnou typu výtahu. Budete vytvářet tři proměnné celkem.
 
-        | Parametr | Akce |
+        | parametr | Akce |
         | --- | --- |
         | **Název** | Zadejte **průměrnou teplotu**. |
         | **Druh** | Vybrat **číselné** |
@@ -235,7 +235,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
 
     1. Vyberte **Použít**. Pak **+ přidat proměnnou** znovu a nastavte následující hodnoty:
 
-        | Parametr | Akce |
+        | parametr | Akce |
         | --- | --- |
         | **Název** | Zadejte **průměrné vibrace**. |
         | **Druh** | Vybrat **číselné** |
@@ -244,7 +244,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
 
     1. Vyberte **Použít**. Pak **+ přidat proměnnou** znovu a nastavte následující hodnoty pro třetí a poslední proměnnou:
 
-        | Parametr | Akce |
+        | parametr | Akce |
         | --- | --- |
         | **Název** | Zadejte **podlahovou základnu**. |
         | **Druh** | Vybrat **kategorií** |
@@ -263,7 +263,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
 
    1. V podokně **Upravit hierarchii** nastavte následující parametry:
 
-        | Parametr | Akce |
+        | parametr | Akce |
         | --- | ---|
         | **Název** | Zadejte **hierarchii umístění**. |
         |**Úrovně**| Jako název první úrovně zadejte **Country (země** ). <br /> Vybrat **+ Přidat úroveň** <br /> Zadejte **město** druhé úrovně a pak vyberte **+ Přidat úroveň** . <br /> Jako název třetí a poslední úrovně zadejte **sestavování** . |
@@ -276,7 +276,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
 
     1. V části **Akce** úplně vpravo vyberte ikonu tužky a upravte první instanci s následujícími hodnotami:
 
-        | Parametr | Akce |
+        | parametr | Akce |
         | --- | --- |
         | **Typ** | Vyberte **výtah**. |
         | **Název** | Zadejte **výtah 1** .|
@@ -284,12 +284,12 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
 
     1. Přejděte do **polí instance** a zadejte následující hodnoty:
 
-        | Parametr | Akce |
+        | parametr | Akce |
         | --- | --- |
         | **Hierarchie** | Vybrat **hierarchii umístění** |
         | **Země** | Zadejte **USA** . |
-        | **Město** | Zadejte **Seattle** |
-        | **Sestavování** | Zadat **ručičku místa** |
+        | **City (Město)** | Zadejte **Seattle** |
+        | **Kapacit** | Zadat **ručičku místa** |
 
     1. Vyberte **Uložit**.
 
@@ -297,27 +297,27 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
 
     **Pro výtah 2:**
 
-    | Parametr | Akce |
+    | parametr | Akce |
     | --- | --- |
     | **Typ** | Vyberte **výtah**. |
     | **Název** | Zadejte **výtah 2** .|
     | **Popis** | Zadejte **instanci pro výtah 2** . |
     | **Hierarchie** | Vybrat **hierarchii umístění** |
     | **Země** | Zadejte **USA** . |
-    | **Město** | Zadejte **Seattle** |
-    | **Sestavování** | Zadejte **střed pro Tichomoří – věda** |
+    | **City (Město)** | Zadejte **Seattle** |
+    | **Kapacit** | Zadejte **střed pro Tichomoří – věda** |
 
     **Pro výtah 3:**
 
-    | Parametr | Akce |
+    | parametr | Akce |
     | --- | --- |
     | **Typ** | Vyberte **výtah**. |
     | **Název** | Zadejte **výtah 3**|
     | **Popis** | Zadejte **instanci pro výtah 3** . |
     | **Hierarchie** | Vybrat **hierarchii umístění** |
     | **Země** | Zadejte **USA** . |
-    | **Město** | Zadejte **New York** |
-    | **Sestavování** | Zadejte **sestavení stavu Empire** |
+    | **City (Město)** | Zadejte **New York** |
+    | **Kapacit** | Zadejte **sestavení stavu Empire** |
 
     [![Zobrazit aktualizované instance.](media/v2-update-provision/iot-solution-accelerator-instances.png)](media/v2-update-provision/iot-solution-accelerator-instances.png#lightbox)
 

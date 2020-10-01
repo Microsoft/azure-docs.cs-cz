@@ -11,42 +11,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2020
+ms.date: 09/30/2020
 ms.author: allensu
-ms.openlocfilehash: 79399d0890f61d723f371528408d226f6a192ce4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d778b3ae0889ea0bf9cc38ca5813ac61fc5fcdbe
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336492"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595644"
 ---
 # <a name="outbound-connections"></a>Odchozí připojení
 
 Azure Load Balancer poskytuje odchozí připojení prostřednictvím různých mechanismů. Tento článek popisuje scénáře a jejich správu. 
 
-## <a name="outbound-connections-scenario-overview"></a><a name="scenarios"></a>Přehled scénáře odchozích připojení
 
-Výrazy používané v těchto scénářích. Další informace najdete v tématu [terminologie](#terms):
+## <a name="scenarios"></a>Scénáře
 
-* [Překlad zdrojové síťové adresy (SNAT)](#snat)
-* [Maskování portů (PAT)](#pat)
-* Protokol TCP (Transmission Control Protocol)
-* Protokol UDP (User Datagram Protocol)
-* Překlad síťových adres (NAT)
-* Protokol zprávy Internet Control
-* Zapouzdření protokolu zabezpečení
+* Virtuální počítač s veřejnou IP adresou
+* Virtuální počítač bez veřejné IP adresy
+* Virtuální počítač bez veřejné IP adresy a bez standardního nástroje pro vyrovnávání zatížení.
 
-### <a name="scenarios"></a>Scénáře
-
-* [Scénář 1](#scenario1) – virtuální počítač s veřejnou IP adresou
-* [Scénář 2](#scenario2) – virtuální počítač bez veřejné IP adresy
-* [Scénář 3](#scenario3) – virtuální počítač bez veřejné IP adresy a bez standardního nástroje pro vyrovnávání zatížení.
-
-### <a name="scenario-1---virtual-machine-with-public-ip"></a><a name="scenario1"></a>Scénář 1 – virtuální počítač s veřejnou IP adresou
+### <a name="virtual-machine-with-public-ip"></a><a name="scenario1"></a>Virtuální počítač s veřejnou IP adresou
 
 | Přidružení | Metoda | Protokoly IP |
 | ---------- | ------ | ------------ |
-| Veřejný Nástroj pro vyrovnávání zatížení nebo samostatný | [SNAT](#snat) </br> [Maskování portů](#pat) se nepoužívá. | TCP </br> UDP </br> ICMP </br> ŠIFROVANÉ |
+| Veřejný Nástroj pro vyrovnávání zatížení nebo samostatný | [SNAT (zdrojový překlad adresy zdrojové sítě)](#snat) </br> [Pat (maskování portů)](#pat) se nepoužívá. | TCP (protokol řízení přenosů) </br> UDP (protokol datadatagram uživatele) </br> ICMP (Internet Control Message Protocol) </br> ESP (zapouzdření datové části zabezpečení) |
 
 #### <a name="description"></a>Popis
 
@@ -54,11 +43,11 @@ Azure používá veřejnou IP adresu přiřazenou ke konfiguraci protokolu IP s�
 
 Veřejná IP adresa přiřazená k virtuálnímu počítači je vztah 1:1 (nikoli 1: mnoho) a implementovaný jako bezstavové 1:1 NAT.
 
-### <a name="scenario-2---virtual-machine-without-public-ip"></a><a name="scenario2"></a>Scénář 2 – virtuální počítač bez veřejné IP adresy
+### <a name="virtual-machine-without-public-ip"></a><a name="scenario2"></a>Virtuální počítač bez veřejné IP adresy
 
 | Přidružení | Metoda | Protokoly IP |
 | ------------ | ------ | ------------ |
-| Veřejný nástroj pro vyrovnávání zatížení | Použití front-endu nástroje pro vyrovnávání zatížení pro [SNAT](#snat) s [maskou portů (Pat)](#pat).| TCP </br> UDP |
+| Veřejný nástroj pro vyrovnávání zatížení | Použití front-endu služby Vyrovnávání zatížení pro [SNAT](#snat) s [Pat (maskování portů)](#pat).| TCP </br> UDP |
 
 #### <a name="description"></a>Popis
 
@@ -74,7 +63,7 @@ Dočasné porty pro veřejnou IP adresu front-endu pro vyrovnávání zatížen�
 
 V tomto kontextu se dočasné porty používané pro SNAT nazývají porty SNAT. Porty SNAT jsou předem přiděleny, jak je popsáno ve [výchozí tabulce alokace portů SNAT](#snatporttable).
 
-### <a name="scenario-3---virtual-machine-without-public-ip-and-without-standard-load-balancer"></a><a name="scenario3"></a> Scénář 3 – virtuální počítač bez veřejné IP adresy a bez standardního nástroje pro vyrovnávání zatížení
+### <a name="virtual-machine-without-public-ip-and-without-standard-load-balancer"></a><a name="scenario3"></a>Virtuální počítač bez veřejné IP adresy a bez standardního nástroje pro vyrovnávání zatížení
 
 | Přidružení | Metoda | Protokoly IP |
 | ------------ | ------ | ------------ |
@@ -82,7 +71,7 @@ V tomto kontextu se dočasné porty používané pro SNAT nazývají porty SNAT.
 
 #### <a name="description"></a>Popis
 
-Když virtuální počítač vytvoří odchozí tok, Azure převede zdrojovou IP adresu odchozího toku na veřejnou IP adresu zdroje. Tato veřejná IP adresa **není konfigurovatelná** a nedá se rezervovat. Tato adresa se nepočítá s omezením prostředků veřejné IP adresy předplatného. 
+Když virtuální počítač vytvoří odchozí tok, Azure převede zdrojovou IP adresu na veřejnou zdrojovou IP adresu. Tato veřejná IP adresa **není konfigurovatelná** a nedá se rezervovat. Tato adresa se nepočítá s omezením prostředků veřejné IP adresy předplatného. 
 
 Veřejná IP adresa se uvolní a nová veřejná IP adresa se požaduje, pokud znovu nasadíte: 
 
@@ -136,7 +125,7 @@ Změna velikosti back-end fondu může ovlivnit některé z vašich navázaných
 > [!NOTE]
 > **Azure Virtual Network NAT** může poskytovat odchozí připojení pro virtuální počítače ve virtuální síti.  Další informace najdete v tématu [co je Azure Virtual Network NAT](../virtual-network/nat-overview.md) .
 
-Máte plnou deklarativní kontrolu nad odchozím připojením, abyste mohli škálovat a ladit tuto možnost podle vašich potřeb. Tato část rozšiřuje scénář 2, jak je popsáno výše.
+Máte plnou deklarativní kontrolu nad odchozím připojením, abyste mohli škálovat a ladit tuto možnost podle vašich potřeb.
 
 ![Odchozí pravidla nástroje pro vyrovnávání zatížení](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
 
@@ -196,24 +185,20 @@ V některých případech je pro vytvoření odchozího toku na virtuálním po�
 
 Když použijete NSG k virtuálnímu počítači s vyrovnáváním zatížení, věnujte pozornost [značkám služby](../virtual-network/security-overview.md#service-tags) a [výchozím pravidlům zabezpečení](../virtual-network/security-overview.md#default-security-rules). Ujistěte se, že virtuální počítač může přijímat požadavky na sondu stavu z Azure Load Balancer.
 
-Pokud NSG blokuje požadavky na test stavu z AZURE_LOADBALANCER výchozí značky, test stavu virtuálního počítače se nepovede a virtuální počítač se označí jako neplatný. Load Balancer zastaví odesílání nových toků do tohoto virtuálního počítače.
+Pokud aplikace NSG blokuje požadavky na test stavu z AZURE_LOADBALANCER výchozí značky, test stavu virtuálního počítače se nepovede a virtuální počítač je označený jako nedostupný. Load Balancer zastaví odesílání nových toků do tohoto virtuálního počítače.
 
 ## <a name="scenarios-with-outbound-rules"></a>Scénáře s odchozími pravidly
 
 ### <a name="outbound-rules-scenarios"></a>Scénáře odchozích pravidel
 
-* [Scénář 1](#scenario1out) – konfigurace odchozích připojení na konkrétní sadu veřejných IP adres nebo předpony.
-* [Scénář 2](#scenario2out) – úprava přidělení portu [SNAT](#snat)
-* [Scénář 3](#scenario3out) – povolení pouze odchozího připojení.
-* [Scénář 4](#scenario4out) – odchozí překlad adres (NAT) pro virtuální počítače (bez příchozích)
-* [Scénář 5](#scenario5out) – odchozí překlad adres (NAT) pro interní službu Load Balancer úrovně Standard.
-* [Scénář 6](#scenario6out) – povolení protokolů TCP & UDP pro odchozí překlad adres (NAT) s veřejným nástrojem pro vyrovnávání zatížení
+* Nakonfigurujte odchozí připojení ke konkrétní sadě veřejných IP adres nebo předpony.
+* Upravte přidělování portů [SNAT](#snat) .
+* Povolit pouze odchozí.
+* Odchozí překlad adres (NAT) jenom pro virtuální počítače (bez příchozího připojení)
+* Odchozí překlad adres (NAT) pro interní nástroj pro vyrovnávání zatížení
+* Povolte protokoly TCP & UDP pro odchozí překlad adres (NAT) s veřejným nástrojem pro vyrovnávání zatížení.
 
-### <a name="scenario-1"></a><a name="scenario1out"></a>Scénář 1
-
-| Scénář |
-| -------- |
-| Konfigurace odchozích připojení ke konkrétní sadě veřejných IP adres nebo předpony|
+### <a name="configure-outbound-connections-to-a-specific-set-of-public-ips-or-prefix"></a><a name="scenario1out"></a>Konfigurace odchozích připojení ke konkrétní sadě veřejných IP adres nebo předpony
 
 #### <a name="details"></a>Podrobnosti
 
@@ -229,11 +214,7 @@ Použití jiné veřejné IP adresy nebo předpony, než kterou používá pravi
 4. Znovu použijte back-end fond nebo vytvořte fond back-end a umístěte virtuální počítače do back-endového fondu veřejného nástroje pro vyrovnávání zatížení.
 5. Nakonfigurujte odchozí pravidlo na veřejném nástroji pro vyrovnávání zatížení, abyste povolili odchozí překlad adres (NAT) pro virtuální počítače pomocí front-endu. Pokud nechcete, aby se pravidlo vyrovnávání zatížení používalo pro odchozí, zakažte odchozí SNAT na základě pravidla vyrovnávání zatížení.
 
-### <a name="scenario-2"></a><a name="scenario2out"></a>Scénář 2
-
-| Scénář |
-| -------- |
-| Úprava přidělení portu [SNAT](#snat) |
+### <a name="modify-snat-port-allocation"></a><a name="scenario2out"></a>Úprava přidělení portu [SNAT](#snat)
 
 #### <a name="details"></a>Podrobnosti
 
@@ -251,26 +232,18 @@ Pokud se pokusíte zadat více portů [SNAT](#snat) , než je k dispozici na zá
 
 Pokud udělíte porty 10 000 pro každý virtuální počítač a sedm virtuálních počítačů v back-endu fondu, který sdílí jednu veřejnou IP adresu, konfigurace se odmítne. 7 vynásobené 10 000 překračuje limit portu 64 000. Přidejte další veřejné IP adresy do front-endu odchozího pravidla, aby se tento scénář povolil. 
 
-Vraťte se k [výchozímu přidělení portu](load-balancer-outbound-connections.md#preallocatedports) zadáním 0 pro počet portů. První instance virtuálních počítačů 50 získají 1024 portů, 51-100 instancí virtuálních počítačů bude až do maximálního počtu instancí 512.  Další informace o výchozím přidělování portů SNAT najdete [výše](#snatporttable).
+Vraťte se k [výchozímu přidělení portu](load-balancer-outbound-connections.md#preallocatedports) zadáním 0 pro počet portů. První instance virtuálních počítačů 50 získají 1024 portů, 51-100 instancí virtuálních počítačů bude až do maximálního počtu instancí 512.  Další informace o výchozím přidělování portů SNAT najdete v tématu [tabulka přidělení portů SNAT](#snatporttable).
 
-### <a name="scenario-3"></a><a name="scenario3out"></a>Scénář 3
-
-| Scénář |
-| -------- |
-| Povolit pouze odchozí |
+### <a name="enable-outbound-only"></a><a name="scenario3out"></a>Povolit pouze odchozí
 
 #### <a name="details"></a>Podrobnosti
 
-Veřejný Nástroj pro vyrovnávání zatížení můžete použít k poskytování odchozího překladu adres (NAT) pro skupinu virtuálních počítačů. V tomto scénáři použijte samotné pravidlo odchozího připojení bez nutnosti dalších pravidel.
+Využijte veřejný Nástroj pro vyrovnávání zatížení k poskytování odchozího překladu adres (NAT) pro skupinu virtuálních počítačů. V tomto scénáři použijte samotné pravidlo odchozího připojení bez nutnosti dalších pravidel.
 
 > [!NOTE]
 > Služba **Azure Virtual Network NAT** může pro virtuální počítače poskytovat odchozí připojení bez nutnosti nástroje pro vyrovnávání zatížení.  Další informace najdete v tématu [co je Azure Virtual Network NAT](../virtual-network/nat-overview.md) .
 
-### <a name="scenario-4"></a><a name="scenario4out"></a>Scénář 4
-
-| Scénář |
-| -------- |
-| Odchozí překlad adres (NAT) pouze pro virtuální počítače (žádné příchozí) |
+### <a name="outbound-nat-for-vms-only-no-inbound"></a><a name="scenario4out"></a>Odchozí překlad adres (NAT) pouze pro virtuální počítače (žádné příchozí)
 
 > [!NOTE]
 > Služba **Azure Virtual Network NAT** může pro virtuální počítače poskytovat odchozí připojení bez nutnosti nástroje pro vyrovnávání zatížení.  Další informace najdete v tématu [co je Azure Virtual Network NAT](../virtual-network/nat-overview.md) .
@@ -288,11 +261,7 @@ Pro tento scénář:
 
 Pro škálování portů [SNAT](#snat) použijte předponu nebo veřejnou IP adresu. Přidejte zdroj odchozích připojení do seznamu povolených nebo odepřených připojení.
 
-### <a name="scenario-5"></a><a name="scenario5out"></a>Scénář 5
-
-| Scénář |
-| -------- |
-| Odchozí překlad adres (NAT) pro interní nástroj pro vyrovnávání zatížení |
+### <a name="outbound-nat-for-internal-standard-load-balancer"></a><a name="scenario5out"></a>Odchozí překlad adres (NAT) pro interní nástroj pro vyrovnávání zatížení
 
 > [!NOTE]
 > **Azure Virtual Network NAT** může poskytovat odchozí připojení pro virtuální počítače, které využívají interní nástroj pro vyrovnávání zatížení.  Další informace najdete v tématu [co je Azure Virtual Network NAT](../virtual-network/nat-overview.md) .
@@ -304,11 +273,7 @@ Odchozí připojení není k dispozici pro interní nástroj pro vyrovnávání 
 Další informace najdete v tématu [Konfigurace nástroje pro vyrovnávání zatížení jen pro odchozí](https://docs.microsoft.com/azure/load-balancer/egress-only)připojení.
 
 
-### <a name="scenario-6"></a><a name="scenario6out"></a>Scénář 6
-
-| Scénář |
-| -------- |
-| Povolte protokoly TCP & UDP pro odchozí překlad adres (NAT) s veřejným nástrojem pro vyrovnávání zatížení. |
+### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a><a name="scenario6out"></a>Povolte protokoly TCP & UDP pro odchozí překlad adres (NAT) s veřejným nástrojem pro vyrovnávání zatížení.
 
 #### <a name="details"></a>Podrobnosti
 
@@ -360,7 +325,7 @@ Když je veřejný Nástroj pro vyrovnávání zatížení přidružený k virtu
 
 Zdroj je přepsaný z privátní IP adresy virtuální sítě na veřejnou IP adresu front-endu pro vyrovnávání zatížení. 
 
-Ve veřejném adresním prostoru IP adres musí být pět záznamů toku níže:
+Ve veřejném adresním prostoru IP adres musí být pět záznamů toku jedinečné:
 
 * Zdrojová IP adresa
 * Zdrojový port

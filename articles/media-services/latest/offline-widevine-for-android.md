@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 609c06eedb5c28e31c19df1595c8e4b3b0a59956
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: b8c4bed81a73957cc80318064f2aa2a58b3cfe11
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532218"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597078"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Online streamování Widevine pro Android s Media Services V3
 
@@ -30,6 +30,8 @@ Kromě ochrany obsahu pro online streamování, předplatné mediálního obsahu
 
 - Někteří poskytovatelé obsahu můžou zakázat doručování licencí DRM mimo hranici země nebo oblasti. Pokud chce uživatel sledovat obsah během cestování v cizině, je nutné offline stahování.
 - V některých zemích nebo oblastech je dostupnost Internetu a/nebo šířka pásma omezená. Uživatelé si můžou stáhnout obsah, abyste si ho mohli prohlédnout dostatečně dostatečně jako v dostatečném rozlišení.
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 Tento článek popisuje, jak implementovat přehrávání offline režimu pro ČÁRKOVANý obsah chráněný Widevine na zařízeních s Androidem. Technologie DRM v režimu offline vám umožňuje poskytovat pro svůj obsah modely předplatného, pronájmu a nákupu a umožnit tak zákazníkům služeb, aby při odpojení od internetu mohli obsah snadno přebírat.
 
@@ -45,7 +47,7 @@ Pro sestavování aplikací pro Android Player se vytvoří osnova tří možnos
 > [!NOTE]
 > Offline DRM se účtuje jenom při vytváření jediné žádosti o licenci při stažení obsahu. Neúčtují se žádné chyby.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Před implementací offline DRM pro Widevine v zařízeních s Androidem byste měli nejdřív:
 
