@@ -1,6 +1,6 @@
 ---
 title: Vytváření vlastních pravidel analýzy pro detekci hrozeb pomocí služby Azure Sentinel | Microsoft Docs
-description: V tomto kurzu se naučíte vytvářet vlastní pravidla analýzy pro detekci hrozeb zabezpečení pomocí funkce Sentinel Azure.
+description: V tomto kurzu se naučíte vytvářet vlastní pravidla analýzy pro detekci hrozeb zabezpečení pomocí funkce Sentinel Azure. Využijte seskupování událostí a seskupování výstrah a Naučte se automaticky zakázat.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: 0e5989490603e22745a8bc972b16ed016c894893
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 55853cc6a3dc27df4c63e0a28ab079813040e45d
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605888"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617175"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Kurz: vytvoření vlastních pravidel analýzy pro detekci hrozeb
 
@@ -53,13 +53,15 @@ Můžete vytvořit vlastní analytická pravidla, která vám pomůžou vyhledat
 
       Tady je ukázkový dotaz, který vás upozorní, když se v aktivitě Azure vytvoří neobvykléý počet prostředků.
 
-      `AzureActivity
-     \| where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
-     \| where ActivityStatus == "Succeeded"
-     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
+      ```kusto
+      AzureActivity
+      | where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
+      | where ActivityStatus == "Succeeded"
+      | make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
+      ```
 
-      > [!NOTE]
-      > Délka dotazu by měla být mezi 1 a 10 000 znaky a nesmí obsahovat "Search \* " ani "Union" \* .
+        > [!NOTE]
+        > Délka dotazu by měla být mezi 1 a 10 000 znaky a nesmí obsahovat "Search \* " ani "Union" \* .
 
     1. Pomocí oddílu **mapové entity** můžete propojit parametry z výsledků dotazu do entit rozpoznaných pomocí služby Azure Sentinel. Tyto entity tvoří základ pro další analýzu, včetně seskupení výstrah na incidenty na kartě **Nastavení incidentu** .
   
@@ -69,8 +71,12 @@ Můžete vytvořit vlastní analytická pravidla, která vám pomůžou vyhledat
 
        1. Nastavte **hledaná data z poslední** pro určení časového období dat pokrytých dotazem – můžete například zadat dotaz na posledních 10 minut dat nebo posledních 6 hodin dat.
 
-       > [!NOTE]
-       > Tato dvě nastavení jsou nezávislá na sobě navzájem, až do bodu. Dotaz můžete spustit v krátkém intervalu pokrývající dobu delší, než je interval (v důsledku překrývajících se dotazů), ale nemůžete spustit dotaz v intervalu, který překračuje období pokrytí. v opačném případě budete mít v celkovém pokrytí dotazu mezery.
+          > [!NOTE]
+          > **Intervaly dotazů a lookback období**
+          > - Tato dvě nastavení jsou nezávislá na sobě navzájem, až do bodu. Dotaz můžete spustit v krátkém intervalu pokrývající dobu delší, než je interval (v důsledku překrývajících se dotazů), ale nemůžete spustit dotaz v intervalu, který překračuje období pokrytí. v opačném případě budete mít v celkovém pokrytí dotazu mezery.
+          >
+          > **Zpoždění přijímání**
+          > - Pro zajištění **latence** , ke které může dojít mezi generováním události ve zdroji a jejich ingestování do Azure Sentinel, a za účelem zajištění úplného pokrytí bez duplikace dat, služba Azure Sentinel spustí plánovaná analytická pravidla o **zpoždění po pěti minutách** od naplánovaného času.
 
     1. Pomocí oddílu **prahová hodnota pro výstrahu** definujte směrný plán. Například nastavte **vygenerovat výstrahu, pokud je počet výsledků dotazu** **větší než** a zadejte číslo 1000, pokud chcete, aby pravidlo vygenerovalo výstrahu pouze v případě, že dotaz vrátí více než 1000 výsledků při každém spuštění. Toto pole je povinné, takže pokud nechcete nastavovat směrný plán – to znamená, že pokud chcete, aby vaše výstraha zaregistrovala každou událost – zadejte 0 do pole číslo.
     
@@ -134,6 +140,43 @@ Můžete vytvořit vlastní analytická pravidla, která vám pomůžou vyhledat
 
 > [!NOTE]
 > Výstrahy vygenerované v Azure Sentinel jsou k dispozici prostřednictvím [Microsoft Graph zabezpečení](https://aka.ms/securitygraphdocs). Další informace najdete v dokumentaci k [výstrahám zabezpečení Microsoft Graph](https://aka.ms/graphsecurityreferencebetadocs).
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Naplánované pravidlo se nepovedlo spustit, nebo se zobrazuje s automaticky ZAKÁZANým přidaným názvem.
+
+Jedná se o vzácnou chybu, kterou se nepodařilo spustit naplánované pravidlo dotazu, ale může k tomu dojít. Azure Sentinel klasifikuje chyby vpřed jako přechodné nebo trvalé, a to na základě konkrétního typu selhání a okolností, které to vedlo.
+
+#### <a name="transient-failure"></a>Přechodná chyba
+
+K přechodnému selhání dojde z důvodu nedokončené situace a brzy se vrátí do normálního okamžiku, kdy se spuštění pravidla nezdaří. Zde jsou některé příklady selhání, které se v Azure Sentinel klasifikují jako přechodné:
+
+- Spuštění dotazu pravidla trvá příliš dlouho a vypršel časový limit.
+- Problémy s připojením mezi zdroji dat a Log Analytics nebo mezi Log Analytics a Sentinel Azure
+- Jakákoli jiná nová a neznámá chyba je považována za přechodný.
+
+V případě přechodného selhání se Azure Sentinel stále pokouší znovu spustit pravidlo po předdefinovaných a stále rostoucích intervalech až do bodu. Pak se pravidlo spustí znovu jenom v dalším naplánovaném čase. Pravidlo nebude nikdy automaticky zakázáno z důvodu přechodného selhání.
+
+#### <a name="permanent-failure---rule-auto-disabled"></a>Trvalá chyba – pravidlo je automaticky zakázané.
+
+K trvalému selhání dochází z důvodu změny podmínek, které umožňují spuštění pravidla, což bez lidského zásahu se nevrátí do původního stavu. Následuje několik příkladů selhání klasifikovaných jako trvalá:
+
+- Cílový pracovní prostor (na kterém je zpracováván dotaz pravidla) byl odstraněn.
+- Cílová tabulka (na které běží dotaz na pravidlo) byla odstraněna.
+- Z cílového pracovního prostoru se odebrala Azure Sentinel.
+- Funkce používaná dotazem pravidla již není platná. byl buď změněn, nebo odebrán.
+- Oprávnění k jednomu z datových zdrojů dotazu pravidla se změnila.
+- Jeden z datových zdrojů dotazu pravidla byl odstraněn nebo odpojen.
+
+**V případě předem vymezeného počtu po sobě jdoucích trvalých selhání stejného typu a stejného pravidla** Při pokusu o spuštění pravidla se Azure Sentinel ukončí a provede také následující kroky:
+
+- Zakáže pravidlo.
+- Přidá slova **"auto Disabled"** na začátek názvu pravidla.
+- Přidá důvod selhání (a zakáže) k popisu pravidla.
+
+Můžete snadno určit přítomnost všech automaticky zakázaných pravidel, protože seznam pravidel seřadíte podle názvu. Automaticky zakázaná pravidla budou v horní části seznamu nebo v ní.
+
+SOC manažeři si nezapomeňte pravidelně kontrolovat seznam pravidel pro přítomnost automaticky zakázaných pravidel.
 
 ## <a name="next-steps"></a>Další kroky
 

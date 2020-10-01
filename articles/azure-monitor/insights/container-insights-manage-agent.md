@@ -3,12 +3,12 @@ title: Jak spravovat agenta Azure Monitor for Containers | Microsoft Docs
 description: Tento článek popisuje, jak spravovat nejběžnější úlohy údržby pomocí kontejnerového Log Analyticsho agenta používaného Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 1a397dbc5ebc4952b09c504b70df6ad99c00b216
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b656b0cc89e40dd732def4ebf56dceae69a033b0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041270"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618433"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Správa Azure Monitor pro agenta kontejnerů
 
@@ -75,23 +75,25 @@ Proveďte následující kroky k upgradu agenta v clusteru Kubernetes běžící
 >
 
 ```console
-$ helm upgrade --name myrelease-1 \
---set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<azureAroV4ResourceId> incubator/azuremonitor-containers
+curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
+export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
+bash upgrade-monitoring.sh --resource-id $ azureAroV4ClusterResourceId
 ```
+
+Podrobné informace o použití instančního objektu s tímto příkazem najdete v tématu **použití instančního objektu** v tématu [povolení monitorování clusteru Kubernetes s povoleným](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script) vydaným Azure ARC.
 
 ### <a name="upgrade-agent-on-azure-arc-enabled-kubernetes"></a>Upgrade agenta na Kubernetes s povoleným rozšířením Azure ARC
 
-Provedením následujícího příkazu Upgradujte agenta v clusteru Kubernetes s povoleným ARC Azure bez koncového bodu proxy serveru.
+Provedením následujícího příkazu Upgradujte agenta v clusteru Kubernetes s povoleným ARC Azure.
 
 ```console
-$ helm upgrade --install azmon-containers-release-1  –set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
+curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
+export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
+bash upgrade-monitoring.sh --resource-id $azureArcClusterResourceId
 ```
 
-Provedením následujícího příkazu Upgradujte agenta, když je zadaný koncový bod proxy serveru. Další informace o koncovém bodu proxy serveru najdete v tématu [Konfigurace koncového bodu proxy serveru](container-insights-enable-arc-enabled-clusters.md#configure-proxy-endpoint).
+Podrobné informace o použití instančního objektu s tímto příkazem najdete v tématu **použití instančního objektu** v tématu [povolení monitorování clusteru Kubernetes s povoleným](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script) vydaným Azure ARC.
 
-```console
-$ helm upgrade –name azmon-containers-release-1 –set omsagent.proxy=<proxyEndpoint>,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
-```
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Postup zakázání shromažďování proměnných prostředí v kontejneru
 

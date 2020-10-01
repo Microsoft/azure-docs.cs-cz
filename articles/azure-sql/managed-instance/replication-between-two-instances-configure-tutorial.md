@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 114d4f41ad48af3d1e585fcb01eb0794a8e349b5
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: b0f2a6fcd888afd7eb99a810fad6e876fe6ff4ac
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920105"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617056"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Kurz: Konfigurace replikace mezi dvěma spravovanými instancemi
 
@@ -61,8 +61,8 @@ Pomocí [Azure Portal](https://portal.azure.com) vytvořte skupinu prostředků 
 
 Pomocí [Azure Portal](https://portal.azure.com) vytvořte dvě [spravované instance SQL](instance-create-quickstart.md) ve stejné virtuální síti a podsíti. Například pojmenujte dvě spravované instance:
 
-- `sql-mi-pub`(spolu s některými znaky pro náhodnost)
-- `sql-mi-sub`(spolu s některými znaky pro náhodnost)
+- `sql-mi-pub` (spolu s některými znaky pro náhodnost)
+- `sql-mi-sub` (spolu s některými znaky pro náhodnost)
 
 Pro připojení ke spravovaným instancím budete taky muset [nakonfigurovat virtuální počítač Azure](connect-vm-instance-configure.md) . 
 
@@ -70,11 +70,11 @@ Pro připojení ke spravovaným instancím budete taky muset [nakonfigurovat vir
 
 [Vytvořte účet úložiště Azure](/azure/storage/common/storage-create-storage-account#create-a-storage-account) pro pracovní adresář a pak vytvořte [sdílenou složku](../../storage/files/storage-how-to-create-file-share.md) v rámci účtu úložiště. 
 
-Zkopírujte cestu ke sdílené složce ve formátu:`\\storage-account-name.file.core.windows.net\file-share-name`
+Zkopírujte cestu ke sdílené složce ve formátu: `\\storage-account-name.file.core.windows.net\file-share-name`
 
 Příklad: `\\replstorage.file.core.windows.net\replshare`
 
-Zkopírujte přístupové klíče úložiště ve formátu:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Zkopírujte přístupové klíče úložiště ve formátu: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
 Příklad: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
 

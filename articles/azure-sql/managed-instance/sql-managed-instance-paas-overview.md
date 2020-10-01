@@ -6,17 +6,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: overview
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: ce86f4e6ed5f29be3e36959e0f9db76edaab4982
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c98e377ec216bea6c1d4a96b15b3741aa52672e0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273020"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618126"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Co je spravovaná instance Azure SQL?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,15 +56,15 @@ Klíčové funkce spravované instance SQL jsou uvedené v následující tabulc
 |Funkce | Popis|
 |---|---|
 | Verze SQL Server/Build | Databázový stroj SQL Server (nejnovější stabilní) |
-| Spravované automatizované zálohy | Yes |
-| Integrovaná instance a monitorování databáze a metriky | Yes |
-| Automatické opravy softwaru | Yes |
-| Nejnovější funkce databázového stroje | Yes |
+| Spravované automatizované zálohy | Ano |
+| Integrovaná instance a monitorování databáze a metriky | Ano |
+| Automatické opravy softwaru | Ano |
+| Nejnovější funkce databázového stroje | Ano |
 | Počet datových souborů (řádků) na databázi | Několik |
 | Počet souborů protokolu (protokol) na databázi | 1 |
-| Nasazení VNet-Azure Resource Manager | Yes |
-| Model nasazení sítě VNet – klasický | No |
-| Podpora portálu | Yes|
+| Nasazení VNet-Azure Resource Manager | Ano |
+| Model nasazení sítě VNet – klasický | Ne |
+| Podpora portálu | Ano|
 | Integrovaná integrační služba (SSIS) | No-SSIS je součástí [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Integrovaná služba Analysis Service (SSAS) | No-SSAS je samostatný [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Integrovaná služba vytváření sestav (SSRS) | Nepoužívejte místo toho [Power BI stránkované sestavy](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) nebo Hostujte službu SSRS na virtuálním počítači Azure. I když spravovaná instance SQL nemůže službu SSRS spustit jako službu, může hostovat [databáze katalogu SSRS](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) pro server sestav nainstalovaný na virtuálním počítači Azure pomocí SQL Server ověřování. |

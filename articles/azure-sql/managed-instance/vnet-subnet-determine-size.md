@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
-ms.openlocfilehash: 04f0fca06c2e50ef6d99d51c03e58b468a476e9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 156a4c74eea24b20c28df88be85cb32c0ebe2981
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323103"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617634"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>Určení požadované velikosti podsítě & rozsahu pro spravovanou instanci SQL Azure
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,7 +28,7 @@ Počet spravovaných instancí, které mohou být nasazeny v podsíti virtuáln�
 
 Při vytváření spravované instance Azure přiděluje počet virtuálních počítačů v závislosti na vrstvě, kterou jste vybrali během zřizování. Vzhledem k tomu, že tyto virtuální počítače jsou přidruženy k vaší podsíti, vyžadují IP adresy. Pro zajištění vysoké dostupnosti během pravidelných operací a údržby služeb může Azure přidělovat další virtuální počítače. V důsledku toho je počet požadovaných IP adres v podsíti větší než počet spravovaných instancí v této podsíti.
 
-V rámci návrhu vyžaduje spravovaná instance minimálně 32 IP adres v podsíti. V důsledku toho můžete při definování rozsahů IP adres podsítě použít minimální masku podsítě/27. Doporučuje se pečlivé plánování velikosti podsítě pro nasazení spravovaných instancí. Vstupy, které by se měly vzít v úvahu během plánování:
+Spravovaná instance v podsíti záměrně vyžaduje minimálně 32 IP adres. Proto při definování rozsahů IP adres podsítě můžete jako minimální masku podsítě použít /27. Doporučujeme pečlivě naplánovat velikost podsítě pro vaše nasazení spravované instance. Vstupy, které by se měly vzít v úvahu během plánování:
 
 - Počet spravovaných instancí včetně následujících parametrů instance:
   - úroveň služby

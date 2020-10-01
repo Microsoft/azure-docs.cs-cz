@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 34dc0717b13cb38c4477cc93f23d57d0a8023dae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ae95518bab5ed9bc100a5902acf1fd1db631dbe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320740"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617158"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Co je Azure Stack Edge Pro s GPU?
 
@@ -73,7 +73,7 @@ Fyzické zařízení Azure Stack Edge pro, prostředek Azure a cílový účet �
 
 - **Dostupnost prostředků** – pro tuto verzi Preview je prostředek k dispozici v oblastech východní USA, západní EU a Jižní východní Asie.
 
-- **Dostupnost zařízení** – seznam všech zemí, ve kterých je zařízení Azure Stack Edge pro dostupné, najdete v části **dostupnost** na kartě **Azure Stack Edge** pro [Azure Stack ceny pro Edge pro](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro).
+- **Dostupnost zařízení** – seznam všech zemí nebo oblastí, ve kterých je zařízení Azure Stack Edge pro dostupné, najdete v části **dostupnost** na kartě **Azure Stack Edge** pro [Azure Stack ceny pro Edge pro](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro).
     
 - **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure. Oblasti, ve kterých se ukládají účty úložiště Azure Stack hraniční data pro, jsou umístěny blízko místa, kde se zařízení nachází pro optimální výkon. Účet úložiště umístěný daleko od zařízení bude vykazovat dlouhé latence a nižší výkon.
 

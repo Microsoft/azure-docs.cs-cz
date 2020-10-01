@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 5de1ef97050f37bb44d87ebae1d95df365952ace
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 963a541835c5e45c5642f2d516da53fd165142b4
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984896"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616920"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Migrace dat ze služby Amazon S3 do Azure Storage pomocí Azure Data Factory 
 
@@ -74,7 +74,7 @@ Migrovat data prostřednictvím privátního propojení:
 
 - V této architektuře se migrace dat provádí přes propojení privátního partnerského vztahu mezi AWS přímým připojením a trasou Azure Express, což znamená, že data nikdy neprochází přes veřejný Internet.  Vyžaduje použití AWS VPC a Azure Virtual Network. 
 - Aby bylo možné dosáhnout této architektury, je nutné nainstalovat modul runtime integrace ADF (autohostd) na virtuální počítač s Windows v rámci služby Azure Virtual Network.  Ruční horizontální navýšení kapacity virtuálních počítačů IR nebo jejich horizontální navýšení kapacity na více virtuálních počítačů (až 4 uzly) můžete použít k plnému využití vaší sítě a IOPS/šířky pásma úložiště. 
-- Pokud je přijatelné přenášet data přes protokol HTTPS, ale chcete uzamknout síťový přístup ke zdrojové S3 do konkrétního rozsahu IP adres, můžete tuto architekturu přijmout odebráním AWS VPC a nahrazením privátního propojení s protokolem HTTPS.  Na virtuálním počítači Azure budete chtít udržovat Azure Virtual a v místním prostředí IR, abyste mohli pro účely přidávání do seznamu povolených statických IP adres používat statickou veřejnou IP adresu. 
+- Pokud je přijatelné přenášet data přes protokol HTTPS, ale chcete uzamknout síťový přístup ke zdrojové S3 do konkrétního rozsahu IP adres, můžete tuto architekturu přijmout odebráním AWS VPC a nahrazením privátního propojení s protokolem HTTPS.  Na virtuálním počítači Azure budete chtít zachovat virtuální a místní prostředí IR Azure, abyste mohli mít statickou veřejně směrovatelný IP adresu pro účely filtrování. 
 - Pomocí této architektury se dá dosáhnout jak migrace dat počátečního snímku, tak migrace rozdílových dat. 
 
 ## <a name="implementation-best-practices"></a>Osvědčené postupy implementace 

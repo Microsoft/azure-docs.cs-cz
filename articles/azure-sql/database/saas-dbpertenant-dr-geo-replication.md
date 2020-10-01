@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 53d12510c4960b16d56ee32f07ca96bc398f999a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e08150f5998b71523a986eac1f8a9be993125f5a
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84043153"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619147"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Zotavení po havárii pro víceklientské aplikace SaaS s využitím geografické replikace databáze
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -54,7 +54,7 @@ Všechny části musí být pečlivě zváženy, zejména pokud pracujete se šk
 
 * Nastavení
     * Vytvořte a udržujte prostředí zrcadlového obrazu v oblasti obnovení. Vytvoření elastických fondů a replikace všech databází v tomto prostředí pro obnovení rezervuje kapacitu v oblasti obnovení. Údržba tohoto prostředí zahrnuje replikaci nových databází tenanta, když jsou zřízené.  
-* Obnovení
+* Obnovovací
     * Pokud se pro minimalizaci každodenních nákladů používá prostředí pro obnovení s horizontálním škálováním na víc systémů, musí se fondy a databáze škálovat až po získání plné provozní kapacity v oblasti obnovení.
     * Povolit nové zřizování klientů v oblasti obnovení co nejdříve  
     * Optimalizace pro obnovení tenantů v pořadí podle priority
@@ -314,6 +314,6 @@ V tomto kurzu jste se naučili:
 
 Další informace o technologiích Azure SQL Database poskytuje, aby bylo možné zajistit kontinuitu podnikových aplikací v dokumentaci [Přehled provozní kontinuity](business-continuity-high-availability-disaster-recover-hadr-overview.md) .
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Další kurzy, které se vytvářejí na aplikaci Wingtip SaaS](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

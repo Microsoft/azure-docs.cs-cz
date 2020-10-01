@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: c5ee1f1fbd55bfa44f78f2d1f0129b60be8ea34c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5798220ad92a99f32f757ffa20f9233b8c79151b
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325177"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617430"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Nasazení spravované instance Azure SQL do fondu instancí
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,16 +30,16 @@ V následující tabulce jsou uvedeny dostupné operace týkající se fondů in
 
 |Příkaz|portál Azure|PowerShell|
 |:---|:---|:---|
-|Vytvoření fondu instancí|No|Yes|
-|Aktualizace fondu instancí (omezený počet vlastností)|No |Yes |
-|Ověření využití fondu instancí a vlastností|No|Yes |
-|Odstranění fondu instancí|No|Yes|
-|Vytvoření spravované instance v rámci fondu instancí|No|Yes|
-|Aktualizace využití prostředků pro spravovanou instanci|Yes |Yes|
-|Zkontroluje využití a vlastnosti spravované instance.|Yes|Yes|
-|Odstranění spravované instance z fondu|Yes|Yes|
-|Vytvoření databáze v instanci v rámci fondu|Yes|Yes|
-|Odstranění databáze z spravované instance SQL|Yes|Yes|
+|Vytvoření fondu instancí|Ne|Ano|
+|Aktualizace fondu instancí (omezený počet vlastností)|Ne |Ano |
+|Ověření využití fondu instancí a vlastností|Ne|Ano |
+|Odstranění fondu instancí|Ne|Ano|
+|Vytvoření spravované instance v rámci fondu instancí|Ne|Ano|
+|Aktualizace využití prostředků pro spravovanou instanci|Ano |Ano|
+|Zkontroluje využití a vlastnosti spravované instance.|Ano|Ano|
+|Odstranění spravované instance z fondu|Ano|Ano|
+|Vytvoření databáze v instanci v rámci fondu|Ano|Ano|
+|Odstranění databáze z spravované instance SQL|Ano|Ano|
 
 Dostupné [Příkazy prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.sql/):
 

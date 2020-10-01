@@ -7,28 +7,28 @@ ms.service: sql-database
 ms.subservice: service
 ms.custom: sqldbrb=3
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: overview
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 38f52178ec9c736f3ee51839678401753365d48d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0fd3778d50216e337b872f0a27cb30b04a0219f7
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907054"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617216"
 ---
 # <a name="what-is-azure-sql-database"></a>Co je Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL Database je plně spravovaný databázový stroj PaaS (Platform as a Service), který zpracovává většinu funkcí správy databáze, jako je upgrade, opravy, zálohování a monitorování bez zásahu uživatele. Azure SQL Database vždy běží na nejnovější stabilní verzi SQL Server databázového stroje a opravený operační systém s 99,99% dostupností. Funkce PaaS, které jsou integrované v Azure SQL Database, vám umožní soustředit se na aktivity správy a optimalizace databáze specifické pro doménu, které jsou pro vaši firmu klíčové.
+Azure SQL je plně spravovaný databázový stroj typu PaaS (platforma jako služba), který zpracovává většinu funkcí správy databází, jako je upgrade, opravy, zálohování a monitorování, a to bez zásahu uživatele. Azure SQL Database vždy běží na nejnovější stabilní verzi databázového stroje SQL Serveru a opraveného operačního systému s 99,99% dostupností. Funkce PaaS integrované v Azure SQL Database vám umožňují zaměřit se na činnosti správy a optimalizace databáze pro danou doménu, které jsou pro vaši firmu klíčové.
 
-Pomocí Azure SQL Database můžete vytvořit vysoce dostupnou a vysoce výkonnou vrstvu úložiště dat pro aplikace a řešení v Azure. SQL Database může být správnou volbou pro celou řadu moderních cloudových aplikací, protože umožňuje zpracovat jak relační, tak i [nerelační struktury](../multi-model-features.md), jako jsou grafy, JSON, prostorová data a XML.
+Pomocí Azure SQL Database můžete vytvořit vysoce dostupnou a výkonnou vrstvu datového úložiště pro aplikace a řešení v Azure. SQL Database může být správnou volbou pro celou řadu moderních cloudových aplikací, protože umožňuje zpracovat jak relační, tak i [nerelační struktury](../multi-model-features.md), jako jsou grafy, JSON, prostorová data a XML.
 
-Azure SQL Database vychází z nejnovější stabilní verze [databázového stroje Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json). Můžete používat funkce pokročilého zpracování dotazů, jako jsou [vysoce výkonné technologie v paměti](../in-memory-oltp-overview.md) a [Inteligentní zpracování dotazů](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json). Nejnovější funkce SQL Server jsou nejprve vydávány SQL Database a následně SQL Server sám sebe. Získáte nejnovější SQL Server možnosti bez režie pro opravy nebo upgrade, testováno v milionech databází. 
+Azure SQL Database vychází z nejnovější stabilní verze [databázového stroje Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json). Můžete používat funkce pokročilého zpracování dotazů, jako jsou [vysoce výkonné technologie v paměti](../in-memory-oltp-overview.md) a [Inteligentní zpracování dotazů](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json). Nejnovější funkce SQL Serveru se dokonce vydávají nejprve v SQL Database a až poté v samotném SQL Serveru. Tyto funkce otestované na milionech databází se k vám tak dostanou bez nutnosti vynaložení dalších nákladů na opravy a upgrade. 
 
-SQL Database umožňuje snadno definovat a škálovat výkon v rámci dvou různých nákupních modelů: [nákupní model založený na Vcore](service-tiers-vcore.md) a [nákupní model založený na DTU](service-tiers-dtu.md). SQL Database je plně spravovaná služba, která má vestavěnou vysokou dostupnost, zálohování a další běžné operace údržby. Společnost Microsoft zpracovává všechny opravy a aktualizace kódu SQL a operačního systému. Nemusíte spravovat základní infrastrukturu.
+SQL Database umožňuje snadno definovat a škálovat výkon v rámci dvou různých nákupních modelů: [nákupní model založený na Vcore](service-tiers-vcore.md) a [nákupní model založený na DTU](service-tiers-dtu.md). SQL Database je plně spravovaná služba s integrovanou vysokou dostupností, zálohováním a dalšími běžnými operacemi údržby. Společnost Microsoft zpracovává všechny opravy a aktualizace kódu SQL a operačního systému. Nemusíte spravovat základní infrastrukturu.
 
 Pokud s Azure SQL Database začínáte, přečtěte si video s *přehledem Azure SQL Database* z naší podrobných [grafických řad Azure SQL](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]

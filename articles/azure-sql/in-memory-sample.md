@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: aed1965b07a80efa3cd8dbc84e396b9ef4f99252
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2829b1c71aebcc97452fc658e6509e4fae42da8c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345270"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616801"
 ---
 # <a name="in-memory-sample"></a>Ukázka v paměti
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -53,7 +53,7 @@ Další zjednodušený, ale vizuální odvolání výkonu pro OLTP v paměti, na
 
 3. Zkopírujte [skript Transact-SQL OLTP v paměti](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) do schránky. Skript T-SQL vytvoří nezbytné objekty v paměti v ukázkové databázi AdventureWorksLT, kterou jste vytvořili v kroku 1.
 
-4. Vložte skript T-SQL do SSMS a potom spusťte skript. `MEMORY_OPTIMIZED = ON`Klauzule CREATE TABLE příkazy jsou klíčové. Příklad:
+4. Vložte skript T-SQL do SSMS a potom spusťte skript. `MEMORY_OPTIMIZED = ON`Klauzule CREATE TABLE příkazy jsou klíčové. Například:
 
 ```sql
 CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
@@ -152,7 +152,7 @@ end
 
 Chcete-li nastavit *_ondisk* verzi předchozího skriptu T-SQL pro ostress.exe, nahraďte oba výskyty *_inmem* dílčího řetězce *_ondisk*. Tyto náhrady mají vliv na názvy tabulek a uložených procedur.
 
-#### <a name="install-rml-utilities-and-ostress"></a>Instalace RML nástrojů a`ostress`
+#### <a name="install-rml-utilities-and-ostress"></a>Instalace RML nástrojů a `ostress`
 
 V ideálním případě byste měli naplánovat spuštění ostress.exe na virtuálním počítači Azure (VM). Vytvořili jste [virtuální počítač Azure](https://azure.microsoft.com/documentation/services/virtual-machines/) ve stejné geografické oblasti Azure, kde se nachází vaše databáze AdventureWorksLT. Ale můžete místo toho spustit ostress.exe na svém přenosném počítači.
 
@@ -341,7 +341,7 @@ V databázi s cenovou úrovní P2 můžete očekávat přibližně devět časů
 
 - [Monitorování úložiště OLTP v paměti](in-memory-oltp-monitor-space.md) pro OLTP v paměti
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 ### <a name="deeper-information"></a>Hlubší informace
 
@@ -363,7 +363,7 @@ V databázi s cenovou úrovní P2 můžete očekávat přibližně devět časů
 
 - [Použití OLTP v paměti v existující aplikaci Azure SQL](in-memory-oltp-configure.md)
 
-#### <a name="tools"></a>nástroje
+#### <a name="tools"></a>Nástroje
 
 - [Azure Portal](https://portal.azure.com/)
 

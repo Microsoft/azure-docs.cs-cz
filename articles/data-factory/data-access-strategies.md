@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 76181f089511a6645a51707f9a8537c1589d82bf
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: a4d8d7eaed40b876adecb82f339be4a4c434325f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484948"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616852"
 ---
 # <a name="data-access-strategies"></a>Strategie přístupu k datům
 
@@ -38,10 +38,10 @@ To by mělo fungovat v mnoha scénářích a máme na to, že je žádoucí jedi
 ## <a name="data-access-strategies-through-azure-data-factory"></a>Strategie přístupu k datům prostřednictvím Azure Data Factory
 
 * **[Soukromý odkaz](https://docs.microsoft.com/azure/private-link/private-link-overview)** – můžete vytvořit Azure Integration runtime v rámci Azure Data Factory spravované Virtual Network a použije se privátní koncové body pro zabezpečené připojení k podporovaným úložištím dat. Provoz mezi spravovanými Virtual Network a zdroji dat migruje páteřní síť společnosti Microsoft a nezveřejňuje veřejnou síť.
-* **[Trusted Service](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** -Azure Storage (Blob, adls Gen2) podporuje konfiguraci brány firewall, která umožňuje pro zabezpečený přístup k účtu úložiště vybrat důvěryhodné služby platformy Azure. Trusted Services vynutily ověřování spravované identity, které zajišťuje, aby se žádná jiná továrna dat nemohla připojit k tomuto úložišti, pokud to neumožňuje použití spravované identity. Další podrobnosti najdete v **[tomto blogu](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)**. To je proto extrémně zabezpečené a doporučuje se. 
+* **[Trusted Service](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** -Azure Storage (Blob, adls Gen2) podporuje konfiguraci brány firewall, která umožňuje pro zabezpečený přístup k účtu úložiště vybrat důvěryhodné služby platformy Azure. Trusted Services vynutily ověřování spravované identity, které zajišťuje, aby se žádná jiná továrna dat nemohla připojit k tomuto úložišti, pokud to nepovažuje za použití spravované identity. Další podrobnosti najdete v **[tomto blogu](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)**. To je proto extrémně zabezpečené a doporučuje se. 
 * **Jedinečná statická IP adresa** – budete muset nastavit prostředí Integration runtime v místním prostředí, abyste získali statickou IP adresu pro Data Factory konektory. Tento mechanismus zajišťuje, že můžete blokovat přístup ze všech ostatních IP adres. 
 * **[Rozsah statických IP](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)** adres – můžete použít IP adresy Azure Integration runtime, abyste je mohli zobrazit v úložišti (například S3, Salesforce atd.). V takovém případě omezuje IP adresy, které se můžou připojit k úložištím dat, ale také spoléhá na pravidla ověřování a autorizace.
-* **[Tag služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)** – značka služby představuje skupinu předpon IP adres z dané služby Azure (například Azure Data Factory). Společnost Microsoft spravuje předpony adres, které jsou zahrnuté ve značce služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě. To je užitečné v případě, že je povolený přístup k datům v úložištích IaaS hostovaných daty v Virtual Network.
+* **[Tag služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)** – značka služby představuje skupinu předpon IP adres z dané služby Azure (například Azure Data Factory). Společnost Microsoft spravuje předpony adres, které jsou zahrnuté ve značce služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě. To je užitečné, když filtrujete přístup k datům v úložištích hostovaných IaaS dat v Virtual Network.
 * **Povolení služeb Azure** – některé služby umožňují, aby se k němu připojovaly všechny služby Azure v případě, že zvolíte tuto možnost. 
 
 Další informace o podporovaných mechanismech zabezpečení sítě v úložištích dat v Azure Integration Runtime a v místním prostředí Integration Runtime najdete níže v části dvě tabulky.  
