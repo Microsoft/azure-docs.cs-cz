@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07b5b81dd7e23f25e7bfba90bbab7083090724d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce38fd1a9c49a1715562b59fb14667a88ce44181
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018854"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653158"
 ---
 # <a name="tutorial-manipulating-models"></a>Kurz: manipulace s modely
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 > * Raycast s prostorovými dotazy
 > * Přidat jednoduché animace pro vzdáleně vykreslené objekty
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 * Tento kurz sestaví v [kurzu: rozhraní a vlastní modely](../custom-models/custom-models.md).
 
@@ -161,7 +161,7 @@ Když teď dojde k přidání skriptu **RemoteBounds** ke stejnému hernímu obj
 
 1. Spusťte aplikaci znovu. Krátce po načtení modelu se zobrazí hranice pro vzdálený objekt. Uvidíte něco podobného jako u následujících hodnot:
 
-     ![Meze aktualizovány](./media/updated-bounds.png)
+     ![Snímek obrazovky, který zobrazuje příklad svázaných vzdálených objektů.](./media/updated-bounds.png)
 
 Teď máme místní **BoxCollider** nakonfigurovaný s přesnou hranicí objektu Unity. Meze umožňují vizualizaci a interakci pomocí stejných strategií, které bychom použili pro místně vykreslený objekt. Například skripty, které mění transformaci, fyzika a další.
 

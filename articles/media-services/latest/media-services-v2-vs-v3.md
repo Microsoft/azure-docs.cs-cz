@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 08/31/2020
+ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 061ae48de9a73270ed499282c9fc9a4f8f1dba90
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298942"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651748"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services V2 vs. v3
 
@@ -30,18 +30,17 @@ Tento článek popisuje změny, které byly představeny v Azure Media Services 
 
 ## <a name="general-changes-from-v2"></a>Obecné změny z v2
 
-* Pro prostředky vytvořené pomocí v3 Media Services podporuje pouze [šifrování úložiště Azure Storage na straně serveru](../../storage/common/storage-service-encryption.md).
-    * Rozhraní V3 API můžete použít s prostředky vytvořenými s rozhraními API v2, která měla [šifrování úložiště](../previous/media-services-rest-storage-encryption.md) (AES 256) poskytované Media Services.
-    * Nemůžete vytvářet nové Assety se starším [šifrováním úložiště](../previous/media-services-rest-storage-encryption.md) AES 256, které používá rozhraní V3 API.
-* Vlastnosti [assetu](assets-concept.md)v v3 se liší od v2, viz [jak mapování vlastností](#map-v3-asset-properties-to-v2).
+* Změny v souvislosti s assety najdete v části informace o [konkrétním prostředku](#asset-specific-changes) .
 * Sady SDK V3 jsou teď oddělené od sady SDK úložiště, což vám dává větší kontrolu nad verzí sady SDK pro úložiště, kterou chcete použít, a vyhněte se problémům se správou verzí. 
 * V rozhraních API V3 jsou všechny přenosové rychlosti kódování v bitech za sekundu. To se liší od přednastavených Media Encoder Standard v2. Například přenosová rychlost v v2 by se zadala jako 128 (KB/s), ale v v3 by byla 128000 (bity za sekundu). 
 * Entity AssetFiles, AccessPolicies a IngestManifests v v3 neexistují.
-* Vlastnost IAsset. ParentAssets v v3 neexistuje.
 * ContentKeys už není entita, teď je to vlastnost lokátoru streamování.
 * Event Grid podpora nahrazuje NotificationEndpoints.
-* Následující entity byly přejmenovány
-    * Výstup úlohy nahrazuje úlohu a je teď součástí úlohy.
+* Následující entity byly přejmenovány:
+
+   * V3 JobOutput nahrazuje úlohu v2 a je teď součástí úlohy. Vstupy a výstupy jsou teď na úrovni úlohy. Další informace najdete v tématu [Vytvoření vstupu úlohy z místního souboru](job-input-from-local-file-how-to.md). 
+
+       Chcete-li získat historii průběhu úlohy, naslouchat událostem EventGrid. Další informace najdete v tématu [zpracování událostí Event Grid](reacting-to-media-services-events.md).
     * Lokátor streamování nahrazuje lokátor.
     * Živá událost nahrazuje kanál.<br/>Účtování živých událostí je založeno na měřičích živých kanálů. Další informace najdete v tématu [fakturace](live-event-states-billing.md) a [ceny](https://azure.microsoft.com/pricing/details/media-services/).
     * Živý výstup nahrazuje program.
@@ -89,6 +88,12 @@ Rozhraní V3 API má následující mezery v souvislosti s rozhraním API v2. Uz
 
 ## <a name="asset-specific-changes"></a>Změny specifické pro prostředek
 
+* Pro prostředky vytvořené pomocí v3 Media Services podporuje pouze [šifrování úložiště Azure Storage na straně serveru](../../storage/common/storage-service-encryption.md).
+    * Rozhraní V3 API můžete použít s prostředky vytvořenými s rozhraními API v2, která měla [šifrování úložiště](../previous/media-services-rest-storage-encryption.md) (AES 256) poskytované Media Services.
+    * Nemůžete vytvářet nové Assety se starším [šifrováním úložiště](../previous/media-services-rest-storage-encryption.md) AES 256, které používá rozhraní V3 API.
+* Vlastnosti [assetu](assets-concept.md)v v3 se liší od v2, viz [jak mapování vlastností](#map-v3-asset-properties-to-v2).
+* Vlastnost IAsset. ParentAssets v v3 neexistuje.
+
 ### <a name="map-v3-asset-properties-to-v2"></a>Mapování vlastností assetu V3 na v2
 
 Následující tabulka ukazuje, jak vlastnosti [assetu](/rest/api/media/assets/createorupdate#asset)v v3 jsou mapovány na vlastnosti assetu ve verzi v2.
@@ -110,7 +115,7 @@ Následující tabulka ukazuje, jak vlastnosti [assetu](/rest/api/media/assets/c
 
 Aby bylo možné chránit vaše prostředky v klidovém stavu, prostředky by měly být šifrovány šifrováním na straně úložiště. Následující tabulka ukazuje, jak funguje šifrování na straně úložiště v Media Services:
 
-|Možnost šifrování|Popis|Media Services v2|Media Services v3|
+|Možnost šifrování|Description|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services šifrování úložiště|Šifrování AES-256, klíč spravovaný pomocí Media Services.|Podporováno<sup>(1)</sup>|Nepodporováno<sup>(2)</sup>|
 |[Šifrování služby Storage pro neaktivní neaktivní data](../../storage/common/storage-service-encryption.md)|Šifrování na straně serveru, které nabízí Azure Storage, klíč spravuje Azure nebo zákazník.|Podporováno|Podporováno|
@@ -124,7 +129,7 @@ Aby bylo možné chránit vaše prostředky v klidovém stavu, prostředky by m�
 
 V následující tabulce jsou uvedeny rozdíly v kódu mezi v2 a v3 pro běžné scénáře.
 
-|Scénář|V2 API|ROZHRANÍ V3 API|
+|Scénář|V2 API|rozhraní V3 API|
 |---|---|---|
 |Vytvoření assetu a nahrání souboru |[Příklad v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[Příklad v3 .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Odeslat úlohu|[Příklad v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[Příklad v3 .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Ukazuje, jak nejdřív vytvořit transformaci a pak odeslat úlohu.|

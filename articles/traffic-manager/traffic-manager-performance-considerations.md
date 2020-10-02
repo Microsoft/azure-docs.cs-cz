@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
-ms.openlocfilehash: b72126933c5454b8fabe19dda08ad5eb66edd1ba
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: f080f5011311101ed8f9faa2ee807c030a048409
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392666"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653039"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Důležité informace o výkonu nástroje Traffic Manager
 
@@ -50,7 +50,7 @@ Nástroje na těchto webech měří latence DNS a zobrazují přeložené IP adr
 
     Jedním z nejjednodušších nástrojů je WebSitePulse. Zadejte adresu URL pro zobrazení doby překladu DNS, prvního bajtu, posledního bajtu a dalších statistik výkonu. Můžete vybrat ze tří různých testovacích umístění. V tomto příkladu vidíte, že první spuštění ukazuje, že vyhledávání DNS trvá 0,204 s.
 
-    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
+    ![Snímek obrazovky, který zobrazuje nástroj "WebSitePulse" se zvýrazněným výsledkem hledání "DNS".](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
     Vzhledem k tomu, že se výsledky ukládají do mezipaměti, druhý test stejného Traffic Manager koncového bodu, který vyhledávání DNS trvá 0,002 s.
 

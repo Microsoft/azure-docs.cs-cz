@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: c91e9832e4b415a59c12b71964a0da580e9fda21
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5bf6a17c1a4aa1c7f212045af0d1b750ddb2a906
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651127"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653549"
 ---
 # <a name="mv2-series"></a>Řada Mv2
 
@@ -20,15 +20,13 @@ Mv2-Series funkce s vysokou propustností a nízkou latencí běžící na proce
 
 Funkce virtuálního počítače Mv2-Series Intel® technologie Hyper-Threading
 
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: nepodporováno
-
-Aktualizace pro zachování paměti: nepodporováno
-
-Akcelerátor zápisu: [podporováno](./how-to-enable-write-accelerator.md)
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+[Akcelerátor zápisu](./how-to-enable-write-accelerator.md): podporováno<br>
+<br>
 
 |Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet | Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|---|

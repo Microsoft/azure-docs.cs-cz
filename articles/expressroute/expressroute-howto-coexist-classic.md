@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: duau
-ms.openlocfilehash: 4291e0df9f3a99cb45d4f96d4a316f9bb29a9c79
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4cc96a8183e07a17ae880549cdc2b8bdca516322
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396144"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651492"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Konfigurace společně používaných připojení typu Site-to-Site a ExpressRoute (Classic)
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Můžete nakonfigurovat připojení VPN typu site-to-site jako záložní pro Ex
 > 
 > 
 
-![Současná existence](media/expressroute-howto-coexist-classic/scenario1.jpg)
+![Diagram, který zobrazuje připojení VPN typu Site-to-site jako zálohu pro ExpressRoute.](media/expressroute-howto-coexist-classic/scenario1.jpg)
 
 ### <a name="configure-a-site-to-site-vpn-to-connect-to-sites-not-connected-through-expressroute"></a>Konfigurace VPN typu site-to-site pro připojení webů, které nejsou připojené prostřednictvím ExpressRoute
 Svoji síť můžete nakonfigurovat tak, že některé weby jsou připojené přímo k Azure prostřednictvím VPN typu site-to-site a některé weby přes ExpressRoute. 

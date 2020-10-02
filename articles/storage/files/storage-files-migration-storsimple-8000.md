@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d6ad132513c2ec61dd5a290da1a88e50f0ad6eb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be61a6e75c4aa9b5714ffbf3b4f19656b347c493
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510358"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653243"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migrace StorSimple 8100 a 8600 do Azure File Sync
 
@@ -119,7 +119,7 @@ Teď, když jste dokončili fázi 1, provedete následující:
 
 :::row:::
     :::column:::
-        ![Obrázek ilustrující část dřívějšího přehledu, který vám pomůže zaměřit se na tento pododdíl článku.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-2.png)
+        ![Obrázek ukazuje, že teď je čas zřídit virtuální počítač a vystavit klon svazku (nebo několik) k tomuto virtuálnímu počítači přes iSCSI.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-2.png)
     :::column-end:::
     :::column:::
         Po dokončení počátečního klonu na virtuálním zařízení s StorSimple 8020 v Azure teď můžete zřídit virtuální počítač a vystavit klon svazku (nebo několik) k tomuto virtuálnímu počítači přes iSCSI.
@@ -175,7 +175,7 @@ Až dokončíte tyto kroky pro všechny svazky, které potřebují migraci, pře
 
 :::row:::
     :::column:::
-        ![Obrázek ilustrující část dřívějšího přehledu, který vám pomůže zaměřit se na tento pododdíl článku.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-3.png)
+        ![Obrázek, který ukazuje nutnost určit a zřídit počet sdílených složek Azure a vytvořit místní Windows Server jako náhradu zařízení StorSimple.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-3.png)
     :::column-end:::
     :::column:::
         V této fázi určíte a zřídíte několik sdílených složek Azure, vytvoříte místní Windows Server jako náhradu zařízení StorSimple a nakonfigurujete tento server pro Azure File Sync. 
@@ -225,7 +225,7 @@ Váš registrovaný místní Windows Server musí být pro tento proces připrav
 
 :::row:::
     :::column:::
-        ![Obrázek ilustrující část dřívějšího přehledu, který vám pomůže zaměřit se na tento pododdíl článku.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-4.png)
+        ![Obrázek, který ukazuje, jak získáte připojení k virtuálnímu počítači pomocí Azure File Sync a začátek prvního posunutí souborů z klonů svazků StorSimple.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-4.png)
     :::column-end:::
     :::column:::
         Tato fáze se týká vašeho virtuálního počítače Azure s připojeným iSCSI, první klony svazků. Během této fáze se virtuální počítač připojí přes Azure File Sync a spustí se první kolo přesunutí souborů z klonů svazků StorSimple.
@@ -253,9 +253,9 @@ Během tohoto procesu migrace připojíte k VIRTUÁLNÍmu počítači několik k
 > Aby to fungovalo, musí být na serveru před konfigurací Azure File Sync nastaven klíč registru.
 
 1. Na systémové jednotce virtuálního počítače vytvořte nový adresář. Informace o Azure File Sync bude nutné zachovat místo v případě klonování připojených svazků. Příklad: `"C:\syncmetadata"`
-2. Otevřete příkaz regedit a vyhledejte následující podregistr registru:`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
+2. Otevřete příkaz regedit a vyhledejte následující podregistr registru: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
 3. Vytvořte nový klíč typu String s názvem: ***MetadataRootPath***
-4. Nastavte úplnou cestu k adresáři, který jste vytvořili na systémovém svazku, například:`C:\syncmetadata"`
+4. Nastavte úplnou cestu k adresáři, který jste vytvořili na systémovém svazku, například: `C:\syncmetadata"`
 
 ### <a name="configure-azure-file-sync-on-the-azure-vm"></a>Konfigurace Azure File Sync na virtuálním počítači Azure
 
@@ -281,7 +281,7 @@ Na základě zkušeností můžeme předpokládat, že šířka pásma, tedy i s
 
 :::row:::
     :::column:::
-        ![Obrázek ilustrující část dřívějšího přehledu, který vám pomůže zaměřit se na tento pododdíl článku.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-5.png)
+        ![Obrázek, který ukazuje, jak minimalizovat prostoje s využitím více klonů svazků a informace o tom, kdy se synchronizace provádí.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-5.png)
     :::column-end:::
     :::column:::
         Jak je popsáno v předchozí fázi, počáteční synchronizace může trvat dlouhou dobu. Uživatelé a aplikace stále přistupují k místnímu zařízení StorSimple 8100 nebo 8600. To znamená, že se změny načítají a každý den je větší rozdíl mezi živými daty a počáteční klonou svazku, a to v současné době migrace formulářů. V této části se dozvíte, jak minimalizovat prostoje s využitím více klonů svazků a o tom, kdy se synchronizace provádí.
@@ -338,7 +338,7 @@ V tomto okamžiku existují dva rozdíly mezi místním Windows serverem a zař�
 1. Mohou existovat soubory, které nebyly synchronizovány (viz **PerItemErrors** z protokolu událostí výše)
 2. Zařízení StorSimple má naplněnou mezipaměť vs. systém Windows Server má v tuto chvíli uložený pouze obor názvů bez obsahu souboru uložený v místním prostředí.
 
-![Obrázek ilustrující část dřívějšího přehledu, který vám pomůže zaměřit se na tento pododdíl článku.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-6.png)
+![Obrázek, který ukazuje, jak byla mezipaměť systému Windows Server dokončena do stavu zařízení a zajišťují, že žádný soubor není v konečném souboru Robocopy.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-6.png)
 
 Mezipaměť systému Windows Server můžeme převést do stavu zařízení a zajistěte, aby žádný soubor nezůstal za poslední součástí nástroje Robocopy.
 

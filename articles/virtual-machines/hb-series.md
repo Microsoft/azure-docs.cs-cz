@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 14d5e5af6f485346b0e1f070e84843a9bf085126
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 3e79373da3de2750a47e68a6d8f10c3ffb9c38de
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595338"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652971"
 ---
 # <a name="hb-series"></a>Řada HB
 
@@ -21,17 +21,15 @@ Virtuální počítače s velmi řadou jsou optimalizované pro aplikace, které
 
 Virtuální počítače s funkcí "7000" 100 GB/s Mellanox EDR InfiniBand. Tyto virtuální počítače jsou připojené v neblokujícím stromu FAT pro optimalizaci a konzistentní výkon RDMA. Tyto virtuální počítače podporují adaptivní směrování a dynamický přenos (DCT), a to v dalších až ke standardním RC a UD transportech. Tyto funkce zvyšují výkon, škálovatelnost a konzistenci aplikací a jejich využití se důrazně doporučuje.
 
-ACU: 199-216
+[ACU](acu.md): 199-216<br>
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+<br>
 
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: nepodporováno
-
-Aktualizace pro zachování paměti: nepodporováno
-
-| Velikost | Virtuální procesory | Procesor | Paměť (GB) | Propustnost paměti GB/s | Základní frekvence procesoru (GHz) | Frekvence všech jader (GHz, špička) | Frekvence s jedním jádrem (GHz, špička) | Výkon RDMA (GB/s) | Podpora MPI | Dočasné úložiště (GB) | Max. datových disků | Maximální počet síťových karet sítě Ethernet |
+| Velikost | Virtuální procesory | Procesor | Paměť (GiB) | Propustnost paměti GB/s | Základní frekvence procesoru (GHz) | Frekvence všech jader (GHz, špička) | Frekvence s jedním jádrem (GHz, špička) | Výkon RDMA (GB/s) | Podpora MPI | Dočasné úložiště (GiB) | Max. datových disků | Maximální počet síťových karet sítě Ethernet |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HB60rs | 60 | AMD EPYC 7551 | 240 | 263 | 2,0 | 2.55 | 2.55 | 100 | Vše | 700 | 4 | 1 |
 

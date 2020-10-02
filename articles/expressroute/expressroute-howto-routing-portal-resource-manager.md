@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/13/2019
 ms.author: duau
-ms.openlocfilehash: 8ac38c25821a9f636ac98903599ee7d3acfa5e17
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ccbd9645ac7d331c06e528298b3a45a184c6cc49
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395719"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652223"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute
 
@@ -60,12 +60,12 @@ Tato část vám pomůže vytvořit, získat, aktualizovat a odstranit konfigura
 
    **Stav poskytovatele okruhu: není zřízené.**
 
-   [![Snímek obrazovky se stránkou s přehledem ukázkového okruhu ExpressRoute se červeným rámečkem, který je nastaven na hodnotu nezřízeno.](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
+   [![Snímek obrazovky, který zobrazuje stránku s přehledem pro ukázkový okruh ExpressRoute, se červeným rámečkem, jehož stav poskytovatele je nastaven na hodnotu není zajištěno.](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
 
 
    **Stav poskytovatele okruhu: zřízený**
 
-   [![Snímek obrazovky se stránkou s přehledem pro ukázkový okruh ExpressRoute se červeným rámečkem, který má na stav poskytovatele hodnotu zřízený.](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
+   [![Snímek obrazovky, který zobrazuje stránku s přehledem ukázkového okruhu ExpressRoute se červeným rámečkem, který zvýrazní stav poskytovatele nastaven na "zřízené".](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
 
 2. Nakonfigurujte partnerský vztah Microsoftu pro okruh. Před pokračováním se ujistěte, že máte k dispozici následující informace.
 

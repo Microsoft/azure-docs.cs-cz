@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 41dbb42637db98dcd97e3487f252e88f2ba5f9a3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fccdaaab121f315f1cb98b2b6ee3bffcb9ac2b3b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649886"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653005"
 ---
 # <a name="dcsv2-series"></a>DCsv2-Series
 
@@ -21,17 +21,13 @@ DCsv2-Series může přispět k ochraně důvěrnosti a integrity vašich dat a 
 
 Příklady případů použití: důvěrné sdílení dat s více částmi, odhalování podvodů, praní proti podvodným materiálům, blockchainí, analýzy důvěrných údajů, analýza informací a důvěrný strojové učení.
 
-Premium Storage: podporované *
-
-Ukládání Premium Storage do mezipaměti: podporováno *
-
-Migrace za provozu: nepodporováno
-
-Aktualizace pro zachování paměti: nepodporováno
+[Premium Storage](premium-storage-performance.md): podporované *<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 
 * S výjimkou Standard_DC8_v2
-
-
 
 | Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) | Paměť EPC (MiB) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|

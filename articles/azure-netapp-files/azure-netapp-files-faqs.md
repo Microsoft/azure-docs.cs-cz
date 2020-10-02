@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 4b8c879a89da47a081e4b95382d17b3d2baede9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2a64e595f0ea07510f416be56a54a3c74294b95d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325568"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653617"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -178,15 +178,11 @@ Yes, Azure NetApp Files supports LDAP signing by default. This functionality ena
 
 ### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>Byl proveden pokus o použití kořenového a místního uživatele pro přístup ke svazku se dvěma protokoly se stylem zabezpečení systému souborů NTFS v systému UNIX. Proč se mi stala chyba "oprávnění zamítnuto"?   
 
-Svazek s duálním protokolem podporuje protokoly NFS i SMB.  Když se pokusíte o přístup k připojenému svazku v systému UNIX, systém se pokusí mapovat uživatele systému UNIX, který použijete pro uživatele systému Windows. Pokud není nalezeno žádné mapování, dojde k chybě "oprávnění zamítnuto".  Tato situace platí také při použití kořenového uživatele pro přístup.    
-
-Abyste se vyhnuli problému "oprávnění zamítnuto", ujistěte se, že systém Windows Active Directory zahrnuje `pcuser` před přístupem k přípojnému bodu. Pokud přidáte `pcuser` po zjištění problému "oprávnění zamítnuto", počkejte 24 hodin, než se položka mezipaměti před dalším pokusem o přístup vymaže.
+Přečtěte si téma [řešení potíží se svazky s duálním protokolem](troubleshoot-dual-protocol-volumes.md) pro řešení.
 
 ### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>Když se pokouším vytvořit svazek se dvěma protokoly, proč proces vytváření selže a dojde k chybě při ověřování konfigurace LDAP, zkuste to znovu po opravě konfigurace LDAP.  
 
-Na serveru DNS může chybět záznam ukazatele (PTR) hostitelského počítače služby AD. Musíte vytvořit zónu zpětného vyhledávání na serveru DNS a pak přidat záznam PTR hostitelského počítače služby AD v této zóně zpětného vyhledávání.
-
-Předpokládejme například, že IP adresa počítače AD je `1.1.1.1` , název hostitele počítače služby Active Directory (jak je nalezen pomocí `hostname` příkazu) `AD1` a název domény `myDomain.com` .  Záznam PTR přidaný do zóny zpětného vyhledávání by měl být `1.1.1.1`  ->  `AD1.myDomain.com` .
+Přečtěte si téma [řešení potíží se svazky s duálním protokolem](troubleshoot-dual-protocol-volumes.md) pro řešení.
 
 ## <a name="capacity-management-faqs"></a>Nejčastější dotazy ke správě kapacity
 

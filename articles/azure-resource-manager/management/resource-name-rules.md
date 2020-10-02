@@ -2,13 +2,13 @@
 title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: a4c3bf58bf5e84051b1e21863d2d581af5fa9f23
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/01/2020
+ms.openlocfilehash: ff92eff9351e944f8baa11cf981e8511ad8e4ae1
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447523"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653362"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -107,7 +107,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | batchAccounts | Region (Oblast) | 3–24 | Malá písmena a číslice. |
+> | batchAccounts | Oblast | 3–24 | Malá písmena a číslice. |
 > | batchAccounts/aplikace | účet Batch | 1-64 | Alfanumerické znaky, podtržítka a spojovníky. |
 > | batchAccounts/certifikáty | účet Batch | 5-45 | Alfanumerické znaky, podtržítka a spojovníky. |
 > | batchAccounts/fondy | účet Batch | 1-64 | Alfanumerické znaky, podtržítka a spojovníky. |
@@ -174,7 +174,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Galerie/image/verze | image | 32-bitové celé číslo | Čísla a tečky. |
 > | images | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Konec s alfanumerickým nebo podtržítkem. |
 > | snímky | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Konec s alfanumerickým nebo podtržítkem. |
-> | virtualMachines | skupina prostředků | 1-15 (Windows)<br>1-64 (Linux)<br><br>Viz poznámka níže. | Nelze použít mezeru ani tyto znaky:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nelze začínat podtržítkem. Nemůže končit tečkou nebo spojovníkem. |
+> | virtualMachines | skupina prostředků | 1-15 (Windows)<br>1-64 (Linux)<br><br>Viz poznámka níže. | Nelze použít mezeru ani tyto znaky:<br> `\/"'[]:|<>+=;,?*@&_`<br><br>Virtuální počítače s Windows nemůžou zahrnovat tečku ani končit pomlčkou.<br><br>Virtuální počítače se systémem Linux nemůžou končit tečkou nebo spojovníkem. |
 > | virtualMachineScaleSets | skupina prostředků | 1-15 (Windows)<br>1-64 (Linux)<br><br>Viz poznámka níže. | Nelze použít mezeru ani tyto znaky:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Nelze začínat podtržítkem. Nemůže končit tečkou nebo spojovníkem. |
 
 > [!NOTE]
@@ -543,7 +543,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | Řešení | pracovní prostor | Není k dispozici | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
+> | Řešení | pracovní prostor | – | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 

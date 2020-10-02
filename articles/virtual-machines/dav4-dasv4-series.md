@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 2548f002b2006b5d241c323ae880704bbe95301e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6ab532e3d824aa857a35bf2898aea2efba28df71
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649920"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653022"
 ---
 # <a name="dav4-and-dasv4-series"></a>Řada Dav4 a Dasv4
 
@@ -20,15 +20,13 @@ ms.locfileid: "88649920"
 
 ## <a name="dav4-series"></a>Dav4-Series
 
-ACU: 230-260
-
-Premium Storage: nepodporováno
-
-Ukládání Premium Storage do mezipaměti: nepodporováno
-
-Migrace za provozu: podporováno
-
-Aktualizace pro zachování paměti: podporováno
+[ACU](acu.md): 230-260<br>
+[Premium Storage](premium-storage-performance.md): nepodporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): nepodporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): podporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
+<br>
 
 Velikosti řady Dav4-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452 v 2.35 GHz, který může dosáhnout zvýšení maximální frekvence 3.35 GHz. Velikosti řady Dav4-Series nabízejí kombinaci vCPU, paměti a dočasného úložiště pro většinu produkčních úloh. Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disk SSD úrovně Premium, použijte velikosti Dasv4. Měřiče cen a účtování pro velikosti Dasv4 jsou stejné jako pro Dav4-Series.
 
@@ -45,15 +43,13 @@ Velikosti řady Dav4-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7
 
 ## <a name="dasv4-series"></a>Dasv4-Series
 
-ACU: 230-260
-
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: podporováno
-
-Aktualizace pro zachování paměti: podporováno
+[ACU](acu.md): 230-260<br>
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): podporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+<br>
 
 Velikosti řady Dasv4-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452 v 2.35 GHz, který může dosáhnout zvýšení maximální frekvence 3.35 GHz a používání jednotky SSD úrovně Premium. Velikosti řady Dasv4-Series nabízejí kombinaci vCPU, paměti a dočasného úložiště pro většinu produkčních úloh.
 

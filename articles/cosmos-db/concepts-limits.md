@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: e4d2da56146a14b295e08a1093fe62a50f87ecfa
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 2d14207bada52c937875bc62bdbde63d788c1aca
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91567549"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653583"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -216,7 +216,7 @@ V následující tabulce jsou uvedeny limity, které jsou specifické pro podpor
 | Maximální doba provádění operací MongoDB| 30 s |
 | Časový limit nečinného připojení pro uzavření připojení na straně serveru * | 30 minut |
 
-\* Doporučujeme, aby klientské aplikace nastavily časový limit nečinného připojení v nastavení ovladače na 2-3 minut, protože [výchozí časový limit pro vyrovnávání zatížení Azure je 4 minuty](../load-balancer/load-balancer-tcp-idle-timeout.md#tcp-idle-timeout).  Tento časový limit zajistí, aby nečinné připojení neuzavřelo zprostředkující Nástroj pro vyrovnávání zatížení mezi klientským počítačem a Azure Cosmos DB.
+\* Doporučujeme, aby klientské aplikace nastavily časový limit nečinného připojení v nastavení ovladače na 2-3 minut, protože [výchozí časový limit pro vyrovnávání zatížení Azure je 4 minuty](../load-balancer/load-balancer-tcp-idle-timeout.md).  Tento časový limit zajistí, aby nečinné připojení neuzavřelo zprostředkující Nástroj pro vyrovnávání zatížení mezi klientským počítačem a Azure Cosmos DB.
 
 ## <a name="try-cosmos-db-free-limits"></a>Vyzkoušet Cosmos DB omezení Free
 

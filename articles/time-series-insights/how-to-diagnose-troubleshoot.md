@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 106600b608586175cbab1098cf0eb7ac6fad94fa
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b994e8ce34319da4827d389b49e23ed6e5bcde95
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540298"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653753"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Diagnostika a řešení potíží s prostředím Azure Time Series Insights Gen2
 
@@ -43,17 +43,17 @@ K dispozici je několik běžných důvodů, proč se vaše data nemusí zobrazi
 
 - V klíči zdroje událostí chybí požadovaná oprávnění.
 
-  * V případě služby IoT Hub musíte zadat klíč, který má oprávnění **připojit ke službě** .
+  - V případě služby IoT Hub musíte zadat klíč, který má oprávnění **připojit ke službě** .
 
     [![Ověřte oprávnění pro IoT Hub.](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-    * Zásady **iothubowner** **i fungují,** protože mají oprávnění **k připojení ke službě** .
+    - Zásady **iothubowner** **i fungují,** protože mají oprávnění **k připojení ke službě** .
 
-  * V centru událostí je nutné zadat klíč, který má oprávnění k **naslouchání** .
+  - V centru událostí je nutné zadat klíč, který má oprávnění k **naslouchání** .
   
     [![Zkontrolujte oprávnění centra událostí.](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-    * Zásady **číst** i **Spravovat** budou fungovat, protože mají oprávnění k **naslouchání** .
+    - Zásady **číst** i **Spravovat** budou fungovat, protože mají oprávnění k **naslouchání** .
 
 - Zadaná skupina uživatelů není výhradně Time Series Insights.
 
@@ -77,9 +77,9 @@ Můžete odesílat data bez ID časové řady.
 
 - Je možné, že se váš zdrojový klíč události znovu vygeneroval a vaše prostředí Gen2 potřebuje nový zdrojový klíč události.
 
-K tomuto problému dochází, pokud klíč poskytnutý při vytváření zdroje událostí již není platný. V Time Series Insights se zobrazila telemetrie, ale nepřišly žádné příchozí zprávy. Pokud si nejste jistí, jestli se klíč znovu vygeneroval, můžete vyhledat Event Hubs ' protokol aktivit pro autorizační pravidla oboru názvů nebo vyhledat "vytvořit nebo aktualizovat prostředek IotHub" pro Centrum IoT. 
+K tomuto problému dochází, pokud klíč poskytnutý při vytváření zdroje událostí již není platný. V Time Series Insights se zobrazila telemetrie, ale nepřišly žádné příchozí zprávy. Pokud si nejste jistí, jestli se klíč znovu vygeneroval, můžete v Event Hubs "protokolu aktivit" vytvořit nebo aktualizovat autorizační pravidla oboru názvů "nebo" vytvořit nebo aktualizovat prostředek IotHub "pro Centrum IoT.
 
-Pokud chcete v prostředí Time Series Insights Gen2 aktualizovat nový klíč, otevřete v Azure Portal svůj prostředek centra a zkopírujte nový klíč. Přejděte ke svému prostředku TSI a klikněte na zdroje událostí. 
+Pokud chcete v prostředí Time Series Insights Gen2 aktualizovat nový klíč, otevřete v Azure Portal svůj prostředek centra a zkopírujte nový klíč. Přejděte ke svému prostředku TSI a klikněte na zdroje událostí.
 
    [![Snímek obrazovky s položkou nabídky zdroje událostí, která se nazývá, se zobrazí jako prostředek.](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
 
@@ -91,14 +91,14 @@ Vyberte zdroje událostí, ze kterých se zastaví přijímání, a vložte je d
 
 Ujistěte se, že název a hodnota odpovídají následujícím pravidlům:
 
-* V názvu vlastnosti časového razítka se rozlišují malá a velká písmena.
-* Hodnota vlastnosti časového razítka, která pochází ze zdroje události jako řetězec JSON, má formát `yyyy-MM-ddTHH:mm:ss.FFFFFFFK` . Příklad takového řetězce je `"2008-04-12T12:53Z"` .
+- V názvu vlastnosti časového razítka se rozlišují malá a velká písmena.
+- Hodnota vlastnosti časového razítka, která pochází ze zdroje události jako řetězec JSON, má formát `yyyy-MM-ddTHH:mm:ss.FFFFFFFK` . Příklad takového řetězce je `"2008-04-12T12:53Z"` .
 
 Nejjednodušší způsob, jak zajistit, aby byl název vlastnosti časového razítka zachycen a správně fungoval, je použít Time Series Insights Průzkumníku Gen2. V Time Series Insights Průzkumníku Gen2 pomocí grafu vyberte časový úsek, po kterém jste zadali název vlastnosti časového razítka. Klikněte pravým tlačítkem na výběr a vyberte možnost **prozkoumat události** . Záhlaví prvního sloupce je název vlastnosti časového razítka. Místo toho by mělo být `($ts)` vedle slova `Timestamp` :
 
-* `(abc)`, což znamená, že Time Series Insights čte hodnoty dat jako řetězce.
-* Ikona **kalendáře** , která indikuje, že Time Series Insights čte hodnotu dat jako DateTime.
-* `#`, což označuje, že Time Series Insights čte hodnoty dat jako celé číslo.
+- `(abc)`, což znamená, že Time Series Insights čte hodnoty dat jako řetězce.
+- Ikona **kalendáře** , která indikuje, že Time Series Insights čte hodnotu dat jako DateTime.
+- `#`, což označuje, že Time Series Insights čte hodnoty dat jako celé číslo.
 
 Pokud není explicitně zadaná vlastnost timestamp, použije se jako výchozí časové razítko čas zařazování centra IoT nebo centra událostí.
 
@@ -131,7 +131,7 @@ K tomuto problému může dojít, pokud v Power BI Desktop nepoužíváte nejnov
 
 [![Snímek obrazovky se zobrazí dialogové okno nelze připojit.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
 
-* Zkontrolujte verzi Power BI Desktop a ujistěte se, že používáte verzi z července 2020. Pokud ne, aktualizujte Power BI Desktop a spusťte konektor znovu. 
+- Zkontrolujte verzi Power BI Desktop a ujistěte se, že používáte verzi z července 2020. Pokud ne, aktualizujte Power BI Desktop a spusťte konektor znovu.
 
 ## <a name="next-steps"></a>Další kroky
 

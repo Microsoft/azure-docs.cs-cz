@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 517b092f933bedae0f254461d9bfee4d4640db8b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 96a085e3183289d9f2add054128c0faa6b0cdb29
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375630"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91654426"
 ---
 Chcete-li vytvořit projekt sady Visual Studio pro vývoj desktopových aplikací C++, je nutné nastavit možnosti vývoje sady Visual Studio, vytvořit projekt, vybrat cílovou architekturu a nainstalovat sadu Speech SDK.
 
@@ -19,13 +19,13 @@ Pokud chcete začít, ujistěte se, že jste správně nastavili v sadě Visual 
 
 1. Otevřete Visual Studio 2019 pro zobrazení okna **Start** .
 
-   ![Spustit okno – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
+   ![Snímek obrazovky se zobrazeným oknem Visual Studio 2019 "Start".](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
 
 1. Pokud chcete přejít na integrované vývojové prostředí (IDE) sady Visual Studio, vyberte **pokračovat bez kódu** .
 
 1. V řádku nabídek sady Visual Studio vyberte **nástroje**  >  **získat nástroje a funkce** . otevře se instalační program pro Visual Studio a zobrazí se dialogové okno **změny** .
 
-   ![Karta úlohy, změny dialogového okna, Instalační program pro Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
+   ![Snímek obrazovky zobrazující kartu úlohy v dialogovém okně změny pro "Instalační program pro Visual Studio".](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
 1. Na kartě **úlohy** v části **Windows**Najděte **desktopový vývoj s** využitím úlohy C++. Pokud není zaškrtnuté políčko vedle této úlohy, vyberte ji.
 

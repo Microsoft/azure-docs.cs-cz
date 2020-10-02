@@ -4,12 +4,12 @@ description: Tento článek poskytuje přehled podpory registru schématu pomoc�
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6d478e264f38bb8a097c87e37479ca64b3d5e52d
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: a0cc54f6ada1a5900e817c8e22fc192cd73f6550
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568365"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653566"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Registr schémat Azure v Event Hubs (Preview)
 V mnoha scénářích pro streamování událostí a zasílání zpráv obsahuje datová část události nebo zprávy strukturovaná data, která jsou buď serializovaná, nebo deserializovaná pomocí formátu založeného na schématu, jako je Apache Avro. Odesílatelé i přijímače můžou chtít ověřit integritu dat pomocí schématu dokumentu jako ve schématu JSON. V případě formátů založených na schématu je k dispozici pro příjemce zprávy je předpokladem, že příjemce může data deserializovat. 
@@ -19,7 +19,6 @@ V mnoha scénářích pro streamování událostí a zasílání zpráv obsahuje
 > [!NOTE]
 > - Funkce **registru schématu** je momentálně ve **verzi Preview**a nedoporučuje se pro produkční úlohy.
 > - Tato funkce je k dispozici pouze ve **standardních** a **vyhrazených** vrstvách, nikoli na úrovni **Basic** .
-> - Tato verze Preview je aktuálně dostupná jenom v **středozápadní USA** oblasti. 
 
 Rozhraní serializace založená na schématu, jako je Apache Avro, přenesení metadata serializace do sdílených schémat, mohou také pomáhat s výrazným omezením režie za zprávy typu a názvy polí, které jsou zahrnuty v každé sadě dat, protože se jedná o případ s tagovanými formáty, jako je například JSON. Díky schématům uloženým společně s událostmi a uvnitř infrastruktury pro události je zajištěno, že metadata požadovaná pro serializaci/deserializaci jsou vždy ve dosahu a schémata nelze ukládat do nesprávného umístění. 
 

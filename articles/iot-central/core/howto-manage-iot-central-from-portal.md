@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: e7efda8efa27044168386e3ebbc557bf7fb74e8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0802169898cad51e9a5d208e546a004f7ea7b3c0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80157921"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653328"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Správa IoT Central z Azure Portal
 
@@ -56,13 +56,13 @@ Začněte tím, že vyberete **všechny prostředky** na portálu. Vyberte **Zob
 
 Pokud chcete přejít na aplikaci, vyberte **IoT Central adresa URL aplikace**:
 
-![Portál pro správu: Správa prostředků](media/howto-manage-iot-central-from-portal/image3.png)
+![Snímek obrazovky zobrazující stránku "Přehled" s zvýrazněnou adresou URL aplikace IoT Central.](media/howto-manage-iot-central-from-portal/image3.png)
 
 Pokud chcete aplikaci přesunout do jiné skupiny prostředků, vyberte u skupiny prostředků možnost **změnit** . Na stránce **přesunout prostředky** vyberte skupinu prostředků, do které chcete tuto aplikaci přesunout:
 
-![Portál pro správu: Správa prostředků](media/howto-manage-iot-central-from-portal/image4a.png)
+![Snímek obrazovky zobrazující stránku "Přehled" se zvýrazněnou skupinou prostředků (změnit).](media/howto-manage-iot-central-from-portal/image4a.png)
 
-Pokud chcete aplikaci přesunout do jiného předplatného, vyberte u předplatného možnost **změnit** . Na stránce **Přesunutí prostředků** vyberte předplatné, do kterého chcete tuto aplikaci přesunout:
+Pokud chcete aplikaci přesunout do jiného předplatného, vyberte u předplatného možnost  **změnit** . Na stránce **Přesunutí prostředků** vyberte předplatné, do kterého chcete tuto aplikaci přesunout:
 
 ![Portál pro správu: Správa prostředků](media/howto-manage-iot-central-from-portal/image5a.png)
 

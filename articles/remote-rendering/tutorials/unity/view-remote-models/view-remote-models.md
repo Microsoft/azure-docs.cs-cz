@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7509a17127f04220a8e8450a81627354b28bdacd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bcee951dc85d9c317bad481ebdb91ff6c761371c
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006461"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653668"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Kurz: zobrazení vzdáleného vykresleného modelu
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Připojení a odpojení od relací
 > * Načtení modelů do relace vykreslování
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 Pro tento kurz potřebujete:
 
@@ -76,10 +76,10 @@ Je potřeba upravit soubor `Packages/manifest.json` , který je umístěný ve s
 
 Po úpravě a uložení manifestu se Unity automaticky aktualizuje. Potvrďte, že jsou balíčky načteny v okně *projektu* :
 
-:::image type="content" source="./media/confirm-packages.png" alt-text="potvrdit importy balíčků":::
+:::image type="content" source="./media/confirm-packages.png" alt-text="Nový projekt Unity":::
 
 Pokud se vaše balíčky nenačítá, vyhledejte chyby v konzole Unity. Pokud nemáte žádné chyby a stále nevidíte žádné balíčky ve složce **Packages** , zkontrolujte přepínací tlačítko viditelnosti balíčku. \
-![Vlastnosti kamery Unity](./media/unity-package-visibility.png)
+![Snímek obrazovky se šipkou ukazující na přepínací tlačítko viditelnost balíčku](./media/unity-package-visibility.png)
 
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Ujistěte se, že máte nejnovější verzi balíčku.
 
@@ -120,7 +120,7 @@ Následující kroky zajišťují, aby projekt používal nejnovější verzi ba
 
 1. Výběr **grafiky** z nabídky vlevo v seznamu
 1. Změňte nastavení **kanálu vykreslování pomocí skriptů** na *HybridRenderingPipeline*. \
-    ![Změna nastavení grafiky projektu](./media/settings-graphics-render-pipeline.png)\
+    ![Snímek obrazovky, který ukazuje, kde změníte nastavení kanálu vykreslování pomocí skriptů na HybridRenderingPipeline.](./media/settings-graphics-render-pipeline.png)\
     V některých případech uživatelské rozhraní nenačítá seznam dostupných typů kanálů z balíčků. Pokud k tomu dojde, musí se prostředek *HybridRenderingPipeline* do pole přetáhnout ručně: \
     ![Změna nastavení grafiky projektu](./media/hybrid-rendering-pipeline.png)
 
@@ -597,7 +597,7 @@ Aby bylo možné postupovat od **NotAuthorized** po **relaci**, obvykle k uživa
 1. Přetáhněte komponentu na vlastní událost, aby odkazovala na sebe sama. \
 ![Obejít ověřování](./media/bypass-authorization-add-event.png)\
 1. V rozevíracím seznamu vyberte **RemoteRenderingCoordinator-> BypassAuthorization**. \
-![Obejít ověřování](./media/bypass-authorization-event.png)
+![Snímek obrazovky zobrazující vybranou možnost RemoteRenderingCoordinator. BypassAuthorization](./media/bypass-authorization-event.png)
 
 ## <a name="create-or-join-a-remote-session"></a>Vytvoření nebo připojení vzdálené relace
 
@@ -724,7 +724,7 @@ private void LateUpdate()
 
 V případě, že je na místě požadovaná základní, jste připraveni načíst model do vzdálené relace a začít přijímat rámce.
 
-![Šipka pro ARR 4](./media/remote-render-stack-4.png)
+![Diagram znázorňující tok procesu pro přípravu na načtení a zobrazení modelu.](./media/remote-render-stack-4.png)
 
 Metoda **LoadModel** je navržena tak, aby přijímala cestu modelu, obslužnou rutinu průběhu a nadřazenou transformaci. Tyto argumenty budou použity k načtení modelu do vzdálené relace, aktualizaci uživatele při načítání a orientaci vzdáleně vykresleného modelu na základě nadřazené transformace.
 
@@ -843,7 +843,7 @@ Teď máme veškerý kód potřebný k zobrazení vzdáleně vykresleného model
 
 ![Model načten](./media/test-model-rendered.png)
 
-Blahopřejeme! Vytvořili jste základní aplikaci, která umožňuje zobrazit vzdáleně vykreslené modely pomocí vzdáleného vykreslování Azure. V dalším kurzu budeme integrovat MRTK a importovat naše vlastní modely.
+Gratulujeme! Vytvořili jste základní aplikaci, která umožňuje zobrazit vzdáleně vykreslené modely pomocí vzdáleného vykreslování Azure. V dalším kurzu budeme integrovat MRTK a importovat naše vlastní modely.
 
 > [!div class="nextstepaction"]
 > [Další: rozhraní a vlastní modely](../custom-models/custom-models.md)

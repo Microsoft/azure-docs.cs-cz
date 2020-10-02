@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7764452d0e52a29204b276b4939c4a8a5c144ca4
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4d335affa5a06bdb8e5c733c871654cf58947581
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268651"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652954"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -35,7 +35,7 @@ Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy pro
 ## <a name="known-issues"></a><a name="issues"></a>Známé problémy
 ### <a name="media-services-general-issues"></a><a name="general_issues"></a>Media Services Obecné problémy
 
-| Problém | Popis |
+| Problém | Description |
 | --- | --- |
 | V REST API není k dispozici několik běžných hlaviček protokolu HTTP. |Pokud vyvíjíte Media Services aplikace pomocí REST API, zjistíte, že některá společná pole hlaviček protokolu HTTP (včetně klienta-požadavek-ID, požadavek-ID a RETURN-CLIENT-REQUEST-ID) se nepodporují. Hlavičky budou přidány v budoucí aktualizaci. |
 | Procento – kódování není povoleno. |Media Services používá hodnotu vlastnosti IAssetFile.Name při vytváření adres URL pro obsah streamování (například `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters` ). Z tohoto důvodu není povolena procentuální kódování. Hodnota vlastnosti Name nemůže obsahovat žádný z následujících [znaků rezervovaných v procentech](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! * ' ();: @ &= + $,/?% # [] ". Přípona názvu souboru může taky obsahovat jenom jeden znak ".". |
@@ -48,6 +48,18 @@ Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy pro
 
 ## <a name="rest-api-version-history"></a><a name="rest_version_history"></a>Historie verze REST API
 Informace o historii verze REST API Media Services najdete v části [Azure Media Services REST API referenci].
+
+## <a name="september-2020"></a>Září 2020
+
+Následující vlastnosti v2 již nebudou naplněny pomocí historických dat o průběhu úlohy:
+
+* [HistoricalEvents](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
+* [PerfMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
+
+Chcete-li získat historii úlohy, měli byste použít oznámení úlohy v2 prostřednictvím webhooků nebo zpráv fronty pomocí koncových bodů oznámení. Další informace naleznete v tématech:
+
+* [Monitorování oznámení úloh Media Services pomocí Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md)
+* [Monitorování oznámení úloh Media Services pomocí webhooků Azure](media-services-dotnet-check-job-progress-with-webhooks.md)
 
 ## <a name="february-2020"></a>Únor 2020
 
@@ -217,7 +229,7 @@ Jednotky rezervované pro kódování Basic, Standard a Premium se přejmenovaly
 ### <a name="azure-sdk-for-php"></a>Azure SDK pro PHP
 Tým Azure SDK publikoval novou verzi balíčku [Azure SDK pro php](https://github.com/Azure/azure-sdk-for-php) , který obsahuje aktualizace a nové funkce pro Media Services. Konkrétně sada Media Services SDK for PHP nyní podporuje nejnovější funkce [ochrany obsahu](media-services-content-protection-overview.md) . Tyto funkce jsou dynamické šifrování pomocí AES a DRM (PlayReady a Widevine) s omezeními tokenu a bez něj. Podporuje také škálování [jednotek kódování](media-services-dotnet-encoding-units.md).
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * Následující [ukázky kódu](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) vám pomůžou rychle začít:
   * **vodworkflow_aes. php**: Tento soubor php ukazuje, jak používat dynamické šifrování aes-128 a službu pro doručování klíčů. Je založený na ukázce .NET, která je vysvětlena v tématu [použití dynamického šifrování AES-128 a služby doručování klíčů](media-services-protect-with-aes128.md).
@@ -256,7 +268,7 @@ Konfiguraci zásady AssetDeliveryConfiguration na používání technologie Wide
 Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
 ## <a name="august-2015-release"></a><a id="august_changes_15"></a>Verze z srpna 2015
-* K dispozici je teď sada Media Services SDK pro 0.8.0 verze Java a nové ukázky. Další informace naleznete v tématu:
+* K dispozici je teď sada Media Services SDK pro 0.8.0 verze Java a nové ukázky. Další informace naleznete v tématech:
     
 * Azure Media Player byla aktualizována s podporou více audio streamu. Další informace najdete v [tomto blogovém příspěvku](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/).
 

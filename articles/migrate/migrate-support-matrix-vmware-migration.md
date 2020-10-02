@@ -3,12 +3,12 @@ title: Podpora pro migraci VMware v Azure Migrate
 description: Přečtěte si o podpoře migrace virtuálních počítačů VMware v Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: f41223e9dfa336fdbf64fcfdc56798511f3a5b21
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 87733cac23d0336e4b9319f2a325e8d844e6e5b2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91442266"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651951"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Matice podpory pro migraci VMware
 
@@ -154,7 +154,7 @@ Procesový Server | Procesový server přijímá data replikace, optimalizuje je
 
 ## <a name="azure-vm-requirements"></a>Požadavky na virtuální počítač Azure
 
-Všechny místní virtuální počítače replikované do Azure bez agentů nebo migrace založené na agentech musí splňovat požadavky na virtuální počítače Azure shrnuté v této tabulce. 
+Všechny místní virtuální počítače replikované do Azure (s migrací bez agentů nebo s migrací založenou na agentech) musí splňovat požadavky na virtuální počítače Azure shrnuté v této tabulce. 
 
 **Komponenta** | **Požadavky** 
 --- | --- | ---

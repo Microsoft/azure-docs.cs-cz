@@ -3,12 +3,12 @@ title: IP adresy v Azure Functions
 description: Přečtěte si, jak najít příchozí a odchozí IP adresy pro aplikace Function App a jaké způsobují jejich změnu.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 4b99855d8cc28a41d9eb91bdcf691747910ed4a1
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 1d2cf34ee4712705eaa1c0da5ad63712f9e649fe
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874074"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652461"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP adresy v Azure Functions
 
@@ -25,7 +25,7 @@ IP adresy jsou spojené s aplikacemi Function App, ne s jednotlivými funkcemi. 
 
 Každá aplikace Function App má jednu příchozí IP adresu. Zjištění této IP adresy:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Přejděte do aplikace Function App.
 3. Vyberte **Funkce platformy**.
 4. Vyberte **vlastnosti**a v části **virtuální IP adresa**se zobrazí příchozí IP adresa.
@@ -51,7 +51,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 ```
 
 > [!NOTE]
-> Když se škáluje aplikace Function App, která běží na [plánu spotřeby](functions-scale.md#consumption-plan) , může se přiřadit nový rozsah odchozích IP adres. Při spuštění v plánu spotřeby možná budete muset přidat celé datové centrum do seznamu povolených.
+> Když se škáluje aplikace Function App, která běží na [plánu spotřeby](functions-scale.md#consumption-plan) nebo [plánu Premium](functions-scale.md#premium-plan) , může se přiřadit nový rozsah odchozích IP adres. Při spuštění v některé z těchto plánů může být nutné přidat celé datové centrum do seznamu povolených.
 
 ## <a name="data-center-outbound-ip-addresses"></a>Odchozí IP adresy datového centra
 
@@ -89,7 +89,7 @@ Příchozí IP adresa se **může** změnit, když:
 - Odstraňte poslední aplikaci Function App v kombinaci skupiny prostředků a oblasti a vytvořte ji znovu.
 - Odstraňte vazbu TLS, například během [obnovování certifikátu](../app-service/configure-ssl-certificate.md#renew-certificate).
 
-Když aplikace Function App běží v [plánu spotřeby](functions-scale.md#consumption-plan), může se příchozí IP adresa změnit i v případě, že jste neudělali žádné akce, jako jsou ty, které jsou [uvedené výše](#inbound-ip-address-changes).
+Když vaše aplikace Function App běží v [plánu spotřeby](functions-scale.md#consumption-plan) nebo v [plánu Premium](functions-scale.md#premium-plan), může se příchozí IP adresa změnit i v případě, že jste neudělali žádné akce, jako jsou třeba [výše uvedené](#inbound-ip-address-changes).
 
 ## <a name="outbound-ip-address-changes"></a>Změny odchozích IP adres
 
@@ -98,7 +98,7 @@ Sada dostupných odchozích IP adres pro aplikaci Function App se může změnit
 * Proveďte jakoukoli akci, která může změnit příchozí IP adresu.
 * Změňte cenovou úroveň plánu App Service. Seznam všech možných odchozích IP adres, které vaše aplikace může používat, je pro všechny cenové úrovně ve `possibleOutboundIPAddresses` Vlastnosti. Viz [Najít odchozí IP adresy](#find-outbound-ip-addresses).
 
-Když aplikace Function App běží v [plánu spotřeby](functions-scale.md#consumption-plan), odchozí IP adresa se může změnit i v případě, že jste neudělali žádné akce, jako jsou ty, které jsou [uvedené výše](#inbound-ip-address-changes).
+Když vaše aplikace Function App běží v [plánu spotřeby](functions-scale.md#consumption-plan) nebo v [plánu Premium](functions-scale.md#premium-plan), může se odchozí IP adresa změnit i v případě, že jste neudělali žádné akce, jako jsou třeba [výše uvedené](#inbound-ip-address-changes).
 
 K úmyslnému vynucení změny odchozí IP adresy:
 
@@ -116,7 +116,7 @@ Pokud potřebujete statické a vyhrazené IP adresy, doporučujeme [App Service 
 
 Pokud chcete zjistit, jestli vaše aplikace Function App běží na App Service Environment:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Přejděte do aplikace Function App.
 3. Vyberte kartu **Přehled**.
 4. Úroveň plánu App Service se zobrazí v části **App Service plán/cenová úroveň**. Cenová úroveň App Service Environment je **izolovaná**.

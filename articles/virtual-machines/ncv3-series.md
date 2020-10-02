@@ -7,24 +7,22 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: de118f7a4a29d306fe351199795a5a8cacb38fcd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ab08d23fe7448e50db42ea126e8158ad284b3320
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289741"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653464"
 ---
 # <a name="ncv3-series"></a>Řada NCv3
 
 Virtuální počítače řady NCv3-Series využívají grafické procesory NVIDIA Tesla V100. Tyto GPU můžou poskytnout 1,5 x výpočetní výkon NCv2-Series. Zákazníci můžou využít těchto aktualizovaných GPU pro tradiční úlohy HPC, jako je modelování zásobníku, sekvence DNA, analýza bílkovin, simulace Monte Carlo a další. Konfigurace NC24rs V3 poskytuje síťové rozhraní s nízkou latencí a vysokou propustností optimalizované pro vysoce provázané úlohy paralelního zpracování. Kromě GPU využívají virtuální počítače řady NCv3-Series také procesory Intel Xeon E5-2690 v4 (Broadwell).
 
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: nepodporováno
-
-Aktualizace pro zachování paměti: nepodporováno
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 
 > [!IMPORTANT]
 > Pro tuto řadu virtuálních počítačů je kvóta vCPU (jádro) ve vašem předplatném zpočátku v každé oblasti nastavená na 0. [Požádejte o zvýšení kvóty vCPU](../azure-portal/supportability/resource-manager-core-quotas-request.md) pro tuto řadu v [dostupné oblasti](https://azure.microsoft.com/regions/services/).

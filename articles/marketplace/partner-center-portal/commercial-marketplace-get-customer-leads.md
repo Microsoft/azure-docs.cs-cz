@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 03/30/2020
-ms.openlocfilehash: 9ee433f226b37c8ffd6ad466cca7cbd844d53524
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 10/01/2020
+ms.openlocfilehash: 5627d6afab22defebeebd3f04695ef95390f1163
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535973"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653311"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Potenciální zákazníci z komerční nabídky na webu Marketplace
 
@@ -44,7 +44,7 @@ Tady jsou místa, kde se vygeneruje zájemce:
 
 ## <a name="connect-to-your-crm-system"></a>Připojení k systému CRM
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+[!INCLUDE [Links to lead configuration for different CRM systems](./includes/connect-lead-management.md)]
 
 ## <a name="understand-lead-data"></a>Pochopení údajů o potenciálních datech
 
@@ -94,78 +94,8 @@ Tady je několik doporučení pro řízení zájemců prostřednictvím prodejn�
 - **Následná**akce: Nezapomeňte během 24 hodin pokračovat. Přímo poté, co zákazník nasadí testovací verzi, dostanete zájemce v aplikaci CRM zvolené možnosti. odešlete je e-mailem v době, kdy jsou pořád zahřívání. Požádejte o plánování telefonního hovoru, abyste lépe pochopili, jestli je váš produkt dobrým řešením pro svůj problém. Očekává se, že typická transakce vyžaduje několik následných volání.
 - **Nurture**: nurture vašich zájemců, abyste vám pomohli dosáhnout vyššího ziskového rozpětí. Vrátit se změnami, ale bombard je. Doporučujeme, abyste před uzavřením e-mailu před zavřením přeposlali aspoň pár zákazníků. Nedávejte po prvním pokusu. Pamatujte na to, že tito zákazníci přímo využívají váš produkt a stráví čas v bezplatné zkušební verzi; jsou to skvělé potenciální zákazníky.
 
-## <a name="common-questions-about-lead-management"></a>Běžné otázky týkající se správy potenciálních zákazníků
-
-### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Kde můžu získat pomoc při nastavování cíle realizace?
-
-Postupujte podle kroků v části [připojení k systému CRM](#connect-to-your-crm-system)nebo odešlete lístek podpory prostřednictvím [podpory a podpory partnerského centra](https://aka.ms/marketplacepublishersupport). Pak vyberte **Nabídka vytvořit**  >  **váš typ**pro  >  **správu správy potenciálních zákazníků**.
-
-### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-in-the-commercial-marketplace"></a>Je nutné nakonfigurovat cíl zájemce, aby bylo možné publikovat nabídku na komerčním webu Marketplace?
-
-Odpověď závisí na typu nabídky, kterou publikujete. Software jako služba (SaaS) a Dynamics 365 Customer Engagement použijte **kontaktní mě** k vypsání všech Dynamics 365 pro nabídky finance a Operations, všech Dynamics 365 Business Central nabízí a všech nabídek služeb. V důsledku toho vyžadují připojení k cíli zájemce. Pokud váš typ nabídky není uveden, připojení k cíli zájemce není vyžadováno. Doporučujeme, abyste nakonfigurovali cíl zájemce, abyste nemuseli přijít o obchodní příležitosti.
-
-### <a name="how-can-i-find-the-test-lead"></a>Jak můžu najít vedoucí test?
-
-Vyhledejte `"MSFT_TEST"` v cíli zájemce. Níže je ukázkový vedoucí testu od Microsoftu. Všimněte si, že formát vedoucího testu se liší v závislosti na cíli zájemce.
-
-```
-{
-    "UserDetails": {
-      "FirstName": "MSFT_TEST_636573304831318844",
-      "LastName": "MSFT_TEST_636573304831318844",
-      "Email": "MSFT_TEST_636573304831318844@test.com",
-      "Phone": "1234567890",
-      "Country": "US",
-      "Company": "MSFT_TEST_636573304831318844",
-      "Title": "MSFT_TEST_636573304831318844"
-    },
-    "LeadSource": "AzureMarketplace",
-    "ActionCode": "INS",
-    "OfferTitle": "Contoso Test"
-    "Description": "MSFT_TEST_636573304831318844"
-}
-```
-
-### <a name="i-have-a-live-offer-but-why-am-i-not-seeing-any-leads"></a>Mám živou nabídku, ale proč mi nevidím nějaké potenciální zákazníky?
-
-Ujistěte se, že je připojení k cíli realizace platné. Po výběru **publikovat** na vaší nabídce v partnerském centru vám pošleme vedoucího testu. Pokud se zobrazí vedoucí testu, připojení je platné. Můžete také otestovat své zájemce tím, že se v kroku Preview pokusíte získat náhled nabídky. Vyberte **získat hned**, **kontaktujte mě**nebo **bezplatnou zkušební verzi** na výpisu na komerčním webu Marketplace.
-
-Ujistěte se také, že hledáte správná data. Obsah v části [pochopení údajů o potenciálních datech](#understand-lead-data) v tomto článku popisuje údaje o zájemcích, které jsme poslali do vašeho cíle potenciálního zákazníka.
-
-### <a name="i-configured-azure-blob-storage-as-my-lead-destination-but-why-dont-i-see-the-lead"></a>Nakonfiguroval (a) jsem úložiště objektů BLOB v Azure jako cíl pro zájem, ale proč nevidím potenciálního zákazníka?
-
-Azure Blob Storage už není podporovaný jako cíl pro realizace, takže nebudete mít žádné zájemce vygenerované vaší nabídkou. Přepněte na kteroukoli z dalších [možností cíle pro zájemce](./commercial-marketplace-get-customer-leads.md). 
-
-### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>Dostal jsem e-mail z komerčního tržiště, ale proč nemůžu v mém CRM najít potenciálního zákazníka?
-
-Je možné, že e-mailová doména koncového uživatele pochází z. edu. Z důvodů ochrany osobních údajů nemusíme předávat osobní údaje z domény. edu. Odešlete lístek podpory prostřednictvím [odborné pomoci a podpory pro partnerským centru](https://aka.ms/marketplacepublishersupport).
-
-### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Nakonfigurovali jsem tabulku Azure jako cíl pro realizace. Jak si můžu zobrazit potenciální zákazníky?
-
-K datům zájemce uloženým v tabulce Azure můžete přistupovat z Azure Portal. Můžete si také stáhnout a nainstalovat [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) zdarma a zobrazit tak data z tabulky vašeho účtu úložiště Azure.
-
-### <a name="i-configured-an-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-commercial-marketplace-lead-is-sent"></a>Nakonfigurovali jsem tabulku Azure jako cíl pro realizace. Můžu dostávat oznámení při každém odeslání nového potenciálního zákazníka z obchodu Marketplace?
-
-Yes. Postupujte podle pokynů v tématu [Konfigurace řízení zájemců pomocí tabulky Azure](./commercial-marketplace-lead-management-instructions-azure-table.md) k nastavení služby Microsoft flow, která odešle e-mail, když se do tabulky Azure přidá zájemce.
-
-### <a name="i-configured-salesforce-as-my-lead-destination-but-why-cant-i-find-the-leads"></a>Nakonfigurovali jste Salesforce jako cíl pro zájem, ale proč nemůžu najít potenciální zákazníky?
-
-Zkontroluje, jestli je formulář Web-to-zájemce povinným polem na základě seznamu vyskladnění. Pokud je, přepněte pole na nepovinné textové pole.
-
-### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Došlo k potížím s cílem mého zájemce a vynechali nějaké zájemce. Můžu se mi poslat do e-mailu?
-
-V důsledku zásad osobních informací nemůžeme sdílet informace o potenciálních osobách prostřednictvím nezabezpečeného e-mailu.
-
-### <a name="i-configured-an-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Nakonfigurovali jsem tabulku Azure jako cíl pro realizace. Do jaké míry budou náklady?
-
-Data generování zájemců jsou nízká. Téměř všem vydavatelům je méně než 1 GB. Náklady závisí na počtu přijatých zájemců. Například pokud 1 000 potenciální zákazníci obdrží za měsíc, náklady jsou přibližně 50 centů. Další informace o cenách služby Storage najdete v tématu [Azure Storage přehledu cen](https://azure.microsoft.com/pricing/details/storage/).
-
-Pokud na vaši otázku neodpovíte, kontaktujte podpora Microsoftu prostřednictvím [centra pro partnery a pomoc a podporu](https://aka.ms/marketplacepublishersupport). Pak vyberte **Nabídka vytvořit**  >  **váš typ**pro  >  **správu správy potenciálních zákazníků**.
-
-### <a name="im-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-someone-else-to-receive-these-emails"></a>Přijímám e-mailová oznámení, když se přijímají Noví zájemci zákazníků. Jak můžu nakonfigurovat někoho jiného, aby přijímal tyto e-maily?
-
-Přihlaste se k nabídce v partnerském centru a přejděte na stránku **nastavení nabídky** > **Správa zájemců**  >  **Upravit**. Aktualizujte e-mailové adresy v poli **kontaktní e-mail** .
+Po uvedení technického nastavení zahrňte tyto zájemce do své aktuální prodejní a marketingové strategie a provozní procesy. Uvažujete o tom, abychom lépe porozuměli celkovému procesu prodeje a chtěli byste úzce spolupracovat s vámi na zajištění vysoce kvalitních zájemců a dostatečného množství dat, aby bylo možné to úspěšně provést. Uvítáme vaše názory na to, jak můžeme optimalizovat a zdokonalovat zájemce, abychom vám poslali další data, abychom těmto zákazníkům pomohli zajistit úspěch. Dejte nám vědět, pokud máte zájem o [poskytování zpětné vazby](mailto:AzureMarketOnboard@microsoft.com) a návrhů, které umožní vašemu prodejnímu týmu lepší úspěšnost s komerčními zájemci na webu Marketplace.
 
 ## <a name="next-steps"></a>Další kroky
 
-Po uvedení technického nastavení zahrňte tyto zájemce do své aktuální prodejní a marketingové strategie a provozní procesy. Uvažujete o tom, abychom lépe porozuměli celkovému procesu prodeje a chtěli byste úzce spolupracovat s vámi na zajištění vysoce kvalitních zájemců a dostatečného množství dat, aby bylo možné to úspěšně provést. Uvítáme vaše názory na to, jak můžeme optimalizovat a zdokonalovat zájemce, abychom vám poslali další data, abychom těmto zákazníkům pomohli zajistit úspěch. Dejte nám vědět, pokud máte zájem o [poskytování zpětné vazby](mailto:AzureMarketOnboard@microsoft.com) a návrhů, které umožní vašemu prodejnímu týmu lepší úspěšnost s komerčními zájemci na webu Marketplace.
+- [Nejčastější dotazy ke správě zájemců a řešení potíží](../lead-management-faq.md)

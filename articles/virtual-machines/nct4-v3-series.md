@@ -8,30 +8,29 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.author: vikancha
-ms.openlocfilehash: 17ce5314f58a92158ff4fd187ad0ca46bb14a275
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c3423e8bd5cd3e38c05205842845bec2243ed83
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320162"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653498"
 ---
 # <a name="ncast4_v3-series-in-preview"></a>NCasT4_v3-Series (ve verzi Preview) 
 
 Virtuální počítače řady NCasT4_v3-Series využívají GPU a procesory AMD EPYC 7V12 (Řím) s technologií [NVIDIA Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) . Virtuální počítače mají až 4 GPU T4 T4 s 16 GB paměti, a to až 64 procesorových jader AMD EPYC 7V12 (Řím) a 440 GiB systémové paměti. Tyto virtuální počítače jsou ideální pro nasazení služeb AI – například Inferencing v reálném čase, vygenerované požadavky uživatelů, nebo pro interaktivní úlohy grafiky a vizualizace pomocí ovladače grafiky NVIDIA a technologie Virtual GPU. Standardní výpočetní úlohy GPU založené na CUDA, TensorRT, Caffe, ONNX a dalších rozhraních nebo OpenGL grafické aplikace založené na GPU a rozhraní DirectX se dají v řadě NCasT4_v3 nasazovat ekonomicky s blízkými uživateli.
 
-Žádost můžete [Odeslat](https://aka.ms/NCT4v3Preview) jako součást programu Preview.
+> [!NOTe]
+> [Odešlete žádost](https://aka.ms/NCT4v3Preview) , aby byla součástí programu Preview.
 
 <br>
 
-ACU: 230-260
-
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: nepodporováno
-
-Aktualizace pro zachování paměti: nepodporováno
+[ACU](acu.md): 230-260<br>
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
+<br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet |
 | --- | --- | --- | --- | --- | --- | --- | --- |

@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 711bcc06a65483921492aaad819b961fc09740d4
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 87314e38225d6e08f81ce6c3855f70a13db9c6bf
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067031"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653175"
 ---
-# <a name="gpu-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro GPU
+# <a name="gpu-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro grafické procesory
 
 Velikosti virtuálních počítačů optimalizované pro GPU jsou specializované virtuální počítače, které jsou k dispozici s jedním, více nebo zlomkem GPU. Tyto velikosti jsou navržené pro úlohy náročné na výpočetní výkon, náročné na grafiku a vizualizaci. Tento článek poskytuje informace o počtu a typu GPU, vCPU, datových disků a síťových karet. Propustnost úložiště a šířka pásma sítě jsou také zahrnuty pro každou velikost v tomto seskupení.
 
 - Velikosti [NC-Series](nc-series.md), [NCv2-](ncv2-series.md)Series, [NCv3-](ncv3-series.md) Series a [NCT4_v3-](nct4-v3-series.md) Series jsou optimalizované pro aplikace a algoritmy náročné na výpočetní výkon a na síť. Mezi příklady patří aplikace a simulace založené na CUDA a OpenCL, AI a obsáhlý Learning. NCT4v3-Series se zaměřuje na odvozené úlohy, které využívají GPU GPU Tesla T4 a procesor AMD EPYC2 Řím. NCv3-Series se zaměřuje na vysoce výkonné výpočetní úlohy s grafickým procesorem NVIDIA Tesla V100. Řada NC-Series používá procesor Intel Xeon E5-2690 V3 V3 (Haswell) a virtuální počítače řady NCv2-Series a NCv3-Series používají procesor Intel Xeon E5-2690 v4 (Broadwell).
 
-- Velikosti řady [ND-Series](nd-series.md)a [NDv2-Series](ndv2-series.md) se zaměřují na scénáře školení a odvozování pro hloubkové učení. Využívají GPU NVIDIA Tesla P40 a procesor Intel Xeon E5-2690 v4 (Broadwell). NDv2-Series používá procesor Intel Xeon Platinum 8168 (Skylake).
+- Velikosti řady [ND-Series](nd-series.md)a [NDv2-Series](ndv2-series.md) se zaměřují na scénáře školení a odvozování pro hloubkové učení. Řada ND-Series používá GPU NVIDIA Tesla P40 a procesor Intel Xeon E5-2690 v4 (Broadwell). NDv2-Series používá NVIDIA Volta V100 a procesor Intel Xeon Platinum 8168 (Skylake).
 
 - Velikosti [NV-Series](nv-series.md) a [NVv3-Series](nvv3-series.md) jsou optimalizované a navržené pro vzdálené vizualizace, streamování, hry, kódování a VDI, a to pomocí platforem, jako je OpenGL a DirectX. Tyto virtuální počítače jsou řízené grafickým procesorem NVIDIA Tesla M60.
 

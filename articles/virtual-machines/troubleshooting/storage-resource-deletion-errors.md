@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8209f5b7fc02f59c33ad0a7b58ec6305d6eecf0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8d727bc8bdc8f015504baa57f9596b3bacac9712
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320077"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651629"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Řešení potíží s chybami odstraňování prostředků úložiště
 
@@ -76,7 +76,7 @@ Po dokončení těchto kroků zkuste znovu odstranit účet úložiště, kontej
 ## <a name="step-2-delete-vm-to-detach-os-disk"></a>Krok 2: odstranění virtuálního počítače pro odpojení disku s operačním systémem
 Pokud se jedná o disk s operačním systémem, musíte virtuální počítač odstranit, aby se mohl odstranit připojený virtuální pevný disk (VHD). Po dokončení těchto kroků nebude potřeba žádná další akce pro datové disky připojené ke stejnému virtuálnímu počítači:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. V nabídce centra vyberte **Virtual Machines**.
 3. Vyberte virtuální počítač, ke kterému je připojený virtuální pevný disk.
 4. Ujistěte se, že virtuální počítač aktivně nepoužíváte a že ho už nepotřebujete.
@@ -86,7 +86,7 @@ Pokud se jedná o disk s operačním systémem, musíte virtuální počítač o
 ## <a name="step-3-detach-data-disk-from-the-vm"></a>Krok 3: odpojení datového disku od virtuálního počítače
 Pokud je virtuální pevný disk datového disku, odpojte virtuální pevný disk od virtuálního počítače a odeberte zapůjčení:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. V nabídce centra vyberte **Virtual Machines**.
 3. Vyberte virtuální počítač, ke kterému je připojený virtuální pevný disk.
 4. V podokně **podrobností virtuálního počítače** vyberte **disky** .
@@ -95,7 +95,7 @@ Pokud je virtuální pevný disk datového disku, odpojte virtuální pevný dis
 7. V podokně horní části **disku** vyberte **Upravit** .
 8. Klikněte na **Odpojit ikona** datového disku, který se má odstranit.
 
-     ![Snímek obrazovky portálu s otevřeným panelem metadata úložiště objektů BLOB](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
+     ![Snímek obrazovky portálu s otevřeným oknem úložiště BLOB metadata a zvýrazní ikonu odpojení datového disku, který se má odstranit.](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 
 9. Vyberte **Uložit**. Disk je teď odpojený od virtuálního počítače a virtuální pevný disk už není zapůjčení. Vydání zapůjčení může trvat několik minut. Chcete-li ověřit, zda byla zapůjčení uvolněna, přejděte do umístění objektu BLOB a v podokně **vlastností objektu BLOB** , hodnota **stavu zapůjčení** by měla být **odemčena** nebo **k dispozici**.
 

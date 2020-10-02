@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 78d707c0b5afd745ae805c9513243f3791d47c60
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: dd755e1bc220d61aa540a0e7da9e3f174bde9d76
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654748"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652920"
 ---
 # <a name="lsv2-series"></a>Řada Lsv2
 
@@ -25,17 +25,14 @@ Funkce Lsv2-Series s vysokou propustností, nízkou latencí a přímo namapovan
 >
 > Další informace najdete v tématu Optimalizace výkonu na virtuálních počítačích Lsv2-Series pro [Windows](../virtual-machines/windows/storage-performance.md) nebo [Linux](../virtual-machines/linux/storage-performance.md).  
 
-ACU: 150-175
-
-Shluking: podporováno
-
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: nepodporováno
-
-Migrace za provozu: nepodporováno
-
-Aktualizace pro zachování paměti: nepodporováno
+[ACU](acu.md): 150-175<br>
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): nepodporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+Shluking: podporováno<br>
+<br>
 
 | Velikost | Virtuální procesory | Paměť (GiB) | Dočasný disk<sup>1</sup> (GIB) | Disky NVMe<sup>2</sup> | Propustnost disku NVMe<sup>3</sup> (čtení za sekundu/s) | Propustnost datového disku neuloženého v mezipaměti (IOPs/MB/s)<sup>4</sup> | Maximální propustnost datového disku neuloženého shluku (IOPs/MB/s)<sup>5</sup>| Maximální počet datových disků | Maximální počet síťových karet | Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|---|---|---|

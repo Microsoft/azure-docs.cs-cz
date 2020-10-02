@@ -6,25 +6,25 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: f09b6d48e8a98b0995c882769d6c978996324dad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 706748018c9f32ab2300b290c6929d344b82e0b0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91342268"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653090"
 ---
 # <a name="stopstart-an-azure-database-for-mysql"></a>Zastavení/spuštění Azure Database for MySQL
 
 > [!IMPORTANT]
 > Funkce Stop/Start pro Azure Database for MySQL je aktuálně ve verzi Public Preview.
 
-Tento článek poskytuje podrobný postup, jak provést zastavení a spuštění flexibilního serveru.
+Tento článek poskytuje podrobný postup, jak provést zastavení a spuštění jednoho serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 K dokončení tohoto průvodce budete potřebovat:
 
--   Musíte mít Azure Database for MySQL flexibilní Server.
+-   Musíte mít Azure Database for MySQL jeden server.
 
 > [!NOTE]
 > Přečtěte si omezení používání [Stop/Start](concepts-servers.md#limitations-of-stopstart-operation) .
@@ -40,18 +40,18 @@ K dokončení tohoto průvodce budete potřebovat:
     :::image type="content" source="./media/howto-stop-start-server/mysql-stop-server.png" alt-text="Azure Database for MySQL zastavit server":::
 
     > [!NOTE]
-    > Po zastavení serveru nejsou pro flexibilní Server k dispozici jiné operace správy.
+    > Po zastavení serveru nejsou jiné operace správy pro jeden server k dispozici.
 
 ### <a name="start-a-stopped-server"></a>Spuštění zastaveného serveru
 
-1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server, který chcete spustit.
+1.  V [Azure Portal](https://portal.azure.com/)vyberte jeden server, který chcete spustit.
 
 2.  Na stránce **Přehled** klikněte na tlačítko **Start** na panelu nástrojů.
 
-    :::image type="content" source="./media/howto-stop-start-server/mysql-start-server.png" alt-text="Azure Database for MySQL spustit server":::
+    :::image type="content" source="./media/howto-stop-start-server/mysql-start-server.png" alt-text="Azure Database for MySQL zastavit server":::
 
     > [!NOTE]
-    > Po spuštění serveru jsou nyní všechny operace správy k dispozici pro flexibilní Server.
+    > Po spuštění serveru jsou nyní všechny operace správy k dispozici pro jeden server.
 
 ## <a name="how-to-stopstart-the-azure-database-for-mysql-using-cli"></a>Postup zastavení/spuštění Azure Database for MySQL pomocí rozhraní příkazového řádku
 
@@ -65,11 +65,11 @@ K dokončení tohoto průvodce budete potřebovat:
     az mysql server stop --name <server-name> -g <resource-group-name>
     ```
     > [!NOTE]
-    > Po zastavení serveru nejsou pro flexibilní Server k dispozici jiné operace správy.
+    > Po zastavení serveru nejsou jiné operace správy pro jeden server k dispozici.
 
 ### <a name="start-a-stopped-server"></a>Spuštění zastaveného serveru
 
-1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server, který chcete spustit.
+1.  V [Azure Portal](https://portal.azure.com/)vyberte jeden server, který chcete spustit.
 
 2.  Na stránce **Přehled** klikněte na tlačítko **Start** na panelu nástrojů.
 
@@ -77,7 +77,7 @@ K dokončení tohoto průvodce budete potřebovat:
     az mysql server start --name <server-name> -g <resource-group-name>
     ```
     > [!NOTE]
-    > Po spuštění serveru jsou nyní všechny operace správy k dispozici pro flexibilní Server.
+    > Po spuštění serveru jsou nyní všechny operace správy k dispozici pro jeden server.
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si informace o [tom, jak vytvářet výstrahy na metrikách](howto-alert-on-metric.md).

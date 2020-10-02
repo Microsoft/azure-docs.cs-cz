@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/30/2020
 ms.author: allensu
-ms.openlocfilehash: d778b3ae0889ea0bf9cc38ca5813ac61fc5fcdbe
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 6b9f454c75a10644e86931dc86ebd9514e5431d3
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91595644"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649792"
 ---
 # <a name="outbound-connections"></a>Odchozí připojení
 
@@ -37,7 +37,7 @@ Azure Load Balancer poskytuje odchozí připojení prostřednictvím různých m
 | ---------- | ------ | ------------ |
 | Veřejný Nástroj pro vyrovnávání zatížení nebo samostatný | [SNAT (zdrojový překlad adresy zdrojové sítě)](#snat) </br> [Pat (maskování portů)](#pat) se nepoužívá. | TCP (protokol řízení přenosů) </br> UDP (protokol datadatagram uživatele) </br> ICMP (Internet Control Message Protocol) </br> ESP (zapouzdření datové části zabezpečení) |
 
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 
 Azure používá veřejnou IP adresu přiřazenou ke konfiguraci protokolu IP síťové karty instance pro všechny odchozí toky. Instance má k dispozici všechny dočasné porty. Nezáleží na tom, jestli je virtuální počítač vyrovnaný k vyrovnávání zatížení. Tento scénář má přednost před ostatními. 
 
@@ -49,7 +49,7 @@ Veřejná IP adresa přiřazená k virtuálnímu počítači je vztah 1:1 (nikol
 | ------------ | ------ | ------------ |
 | Veřejný nástroj pro vyrovnávání zatížení | Použití front-endu služby Vyrovnávání zatížení pro [SNAT](#snat) s [Pat (maskování portů)](#pat).| TCP </br> UDP |
 
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 
 Prostředek nástroje pro vyrovnávání zatížení je nakonfigurovaný s pravidlem nástroje pro vyrovnávání zatížení. Toto pravidlo slouží k vytvoření propojení mezi veřejnou IP frontou front-endu a back-end fondem. 
 
@@ -69,7 +69,7 @@ V tomto kontextu se dočasné porty používané pro SNAT nazývají porty SNAT.
 | ------------ | ------ | ------------ |
 |Žádné </br> Základní nástroj pro vyrovnávání zatížení | [SNAT](#snat) s [maskou portů (Pat)](#pat)| TCP </br> UDP | 
 
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 
 Když virtuální počítač vytvoří odchozí tok, Azure převede zdrojovou IP adresu na veřejnou zdrojovou IP adresu. Tato veřejná IP adresa **není konfigurovatelná** a nedá se rezervovat. Tato adresa se nepočítá s omezením prostředků veřejné IP adresy předplatného. 
 
@@ -160,7 +160,7 @@ Každá IP adresa v rámci předpony veřejných IP adres poskytuje další 64 0
 
 ### <a name="outbound-flow-idle-timeout-and-tcp-reset"></a><a name="idletimeout"></a> Časový limit nečinnosti odchozího toku a resetování TCP
 
-Odchozí pravidla poskytují konfigurační parametr pro řízení časového limitu nečinnosti odchozího toku a jejich párování s požadavky vaší aplikace. Výchozí časový limit nečinnosti ve výchozím nastavení na 4 minuty. Další informace najdete v tématu [Konfigurace časových limitů nečinnosti](load-balancer-tcp-idle-timeout.md#tcp-idle-timeout). 
+Odchozí pravidla poskytují konfigurační parametr pro řízení časového limitu nečinnosti odchozího toku a jejich párování s požadavky vaší aplikace. Výchozí časový limit nečinnosti ve výchozím nastavení na 4 minuty. Další informace najdete v tématu [Konfigurace časových limitů nečinnosti](load-balancer-tcp-idle-timeout.md). 
 
 Výchozím chováním nástroje pro vyrovnávání zatížení je vyřazení toku v tichém režimu, pokud bylo dosaženo odchozího časového limitu nečinnosti. `enableTCPReset`Parametr umožňuje předvídatelné chování aplikace a řízení. Parametr určuje, zda má být odesláno obousměrné resetování TCP (TCP RST) v časovém limitu odchozího nečinnosti. 
 
@@ -375,7 +375,7 @@ Pro každou cílovou IP adresu a port každého toku se spotřebuje jeden port S
 
 | Příslušný protokol (y) |
 |------------------------|
-| Není k dispozici |
+| – |
 
 #### <a name="details"></a>Podrobnosti
 

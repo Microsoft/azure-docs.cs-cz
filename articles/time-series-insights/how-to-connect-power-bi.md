@@ -7,13 +7,13 @@ manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 6825627b77e3ea227cad88e347dbbabd5e6f5d0c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/01/2020
+ms.openlocfilehash: 105faf796583eb0f272eea7a316648993fdafd0d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540332"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653770"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Vizualizace dat z Azure Time Series Insights v Power BI
 
@@ -29,7 +29,7 @@ V tomto případě se naučíte vizualizovat data časových řad prostřednictv
 
 Nezapomeňte si zaregistrovat [bezplatné předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 * Stáhněte a nainstalujte si nejnovější verzi [Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 * Vytvoření nebo vytvoření [prostředí Azure Time Series Insights Gen2](time-series-insights-update-how-to-manage.md)

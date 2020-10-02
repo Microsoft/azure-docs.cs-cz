@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 50653b0da2bb488f2a0d4254df2e27ba7c6a5f1f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 039045b613e57ee396201ee93c3962c5970cf02b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648305"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651917"
 ---
 # <a name="fsv2-series"></a>Řada Fsv2
 
@@ -20,15 +20,13 @@ Fsv2-Series běží na procesorech Intel® Xeon® Platinum 8272CL (Cascade Lake)
 
 Virtuální počítače Fsv2-Series jsou součástí technologie Intel® technologie Hyper-Threading.
 
-ACU: 195-210
-
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: podporováno
-
-Aktualizace pro zachování paměti: podporováno
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): podporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+<br>
 
 | Velikost | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|---|

@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 3c51a00e5760a2dac1648cc938416625bd52ddb7
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5f09ed7aeb6e8b60093681abb16923ec23fd7f57
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649903"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652988"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Řada Ddv4 a Ddsv4
 
@@ -28,15 +28,13 @@ Velikosti řady Ddv4-Series běží na Intel &reg; Xeon &reg; Platinum 8272CL (C
 
 Nové velikosti virtuálních počítačů Ddv4 zahrnují rychlé, větší místní úložiště SSD (až 2 400 GiB) a jsou navržené pro aplikace, které využívají nízkou latenci, vysokorychlostní místní úložiště, jako jsou třeba aplikace, které vyžadují rychlé čtení a zápisy do dočasného úložiště nebo které vyžadují dočasné úložiště pro ukládání do mezipaměti nebo dočasné soubory. K virtuálním počítačům s Ddv4 můžete připojit standardní úložiště HDD a standardní SSD. Úložiště vzdálených datových disků se fakturuje odděleně od virtuálních počítačů.
 
-ACU: 195-210
-
-Premium Storage: nepodporováno
-
-Ukládání Premium Storage do mezipaměti: nepodporováno
-
-Migrace za provozu: podporováno
-
-Aktualizace pro zachování paměti: podporováno
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): nepodporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): nepodporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): podporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
+<br> 
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|
@@ -57,15 +55,13 @@ Nové velikosti virtuálních počítačů Ddsv4 zahrnují rychlé, větší mí
  > [!NOTE]
  >Měřiče cen a účtování pro velikosti Ddsv4 jsou stejné jako pro Ddv4-Series.
 
-ACU: 195-210
-
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: podporováno
-
-Aktualizace pro zachování paměti: podporováno
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): podporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+<br> 
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|---|

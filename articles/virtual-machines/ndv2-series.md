@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: e63cb73b726c495d4124447028b681a81b8fcca9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7ab9d270ae5da52cbf9b5ba0ed4730233225a7c1
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286202"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653436"
 ---
 # <a name="updated-ndv2-series"></a>Aktualizace řady NDv2-Series
 
@@ -24,6 +24,7 @@ Instance NDv2 poskytují vynikající výkon pro úlohy HPC a AI s využitím CU
 
 Kriticky je NDv2 sestavena jak pro výpočetně náročné škálování (což znamená 8 GPU na virtuální počítač), tak na škálování (více vzájemně pracujících více virtuálních počítačů) úloh. NDv2 Series teď podporuje 100 gigabitové sítě InfiniBand EDR, které jsou k dispozici na začátku série virtuálních počítačů HPC, a umožňují tak vysoce výkonné clustering pro paralelní scénáře, včetně distribuovaného školení pro AI a ML. Tato síť back-end podporuje všechny hlavní protokoly InfiniBand, včetně těch, které pracují s knihovnami NCCL2 společnosti NVIDIA, což umožňuje bezproblémové clusteringu GPU.
 
+> [!IMPORTANT]
 > Při [povolování InfiniBand](./workloads/hpc/enable-infiniband.md) na virtuálním počítači s ND40rs_v2 použijte prosím ovladač OFED 4.7-1.0.0.1 Mellanox.
 >
 > V důsledku zvýšené paměti GPU vyžaduje nový virtuální počítač ND40rs_v2 použití [virtuálních počítačů generace 2](./windows/generation-2.md) a imagí z Marketplace. 
@@ -32,15 +33,13 @@ Kriticky je NDv2 sestavena jak pro výpočetně náročné škálování (což z
 
 <br>
 
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: nepodporováno
-
-Aktualizace pro zachování paměti: nepodporováno
-
-InfiniBand: podporované
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
+InfiniBand: podporované<br>
+<br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální šířka pásma sítě | Maximální počet síťových karet |
 |---|---|---|---|---|---|---|---|---|---|

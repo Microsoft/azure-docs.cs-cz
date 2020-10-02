@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: duau
-ms.openlocfilehash: aef21ecbda26e47dc6ef8a915cbd4403c13430e4
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 731101b1a8236e20a9af07f1bbf5a7b70d53c0ac
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395226"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653379"
 ---
 # <a name="optimize-expressroute-routing"></a>Optimalizace směrování ExpressRoute
 Pokud máte víc okruhů ExpressRoute, máte více než jednu cestu, jak se připojit k Microsoftu. V důsledku toho může dojít k neoptimálnímu směrování, to znamená, že přenosy dat mezi vaší sítí a Microsoftem mohou použít delší cestu. Čím delší je síťová cesta, tím větší je latence. Latence má přímý vliv na výkon aplikací a činnost koncového uživatele. Tento článek popíše tento problém a vysvětlí možnosti optimalizace směrování pomocí standardních technologií směrování.
@@ -27,7 +27,7 @@ Je důležité zajistit, aby při použití partnerského vztahu Microsoftu nebo
 
 Vezměte v úvahu následující vzorový scénář:
 
-![Případ 1 ExpressRoute – Problém: Neoptimální směrování od zákazníka do Microsoftu](./media/expressroute-optimize-routing/expressroute-localPreference.png)
+![Diagram, který ukazuje problém s ExpressRoute případem 1 – neoptimální směrování od zákazníka do Microsoftu](./media/expressroute-optimize-routing/expressroute-localPreference.png)
 
 Ve výše uvedeném příkladu dáváte přednost ExpressRoute cestám konfigurace místní předvolby následujícím způsobem. 
 

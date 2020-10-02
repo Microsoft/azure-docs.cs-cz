@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8a70097cbae3bc5ebf48c0358faa32aea0a6be5
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370173"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653209"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postupy: plánování implementace služby Azure AD JOIN
 
@@ -24,7 +24,7 @@ Služba Azure AD JOIN umožňuje připojit zařízení přímo k Azure AD bez nu
 
 Tento článek poskytuje informace, které potřebujete k plánování vaší implementace služby Azure AD JOIN.
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 V tomto článku se předpokládá, že jste obeznámeni se [správou zařízení v Azure Active Directory](./overview.md).
 
@@ -187,6 +187,7 @@ Připojení ke vzdálené ploše k zařízením připojeným k Azure AD vyžaduj
 Když se spouští aktualizace Windows 10 2004, můžou uživatelé použít taky vzdálenou plochu ze zařízení s Windows 10 registrovaných v Azure AD na zařízení připojené k Azure AD. 
 
 ## <a name="understand-your-provisioning-options"></a>Informace o možnostech zřizování
+**Poznámka**: zařízení připojená k Azure AD nejde nasadit pomocí nástroje pro přípravu systému (Sysprep) nebo podobných nástrojů pro vytváření bitových kopií.
 
 Službu Azure AD JOIN můžete zřídit pomocí následujících přístupů:
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: a5a3887efe9b8f19608fac63216ca53576d9ec3f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8591b703382049346fe019b89a5f31517380757f
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654731"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653413"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady B-Series
 
@@ -21,13 +21,12 @@ Virtuální počítače řady B-Series jsou ideální pro úlohy, které nepotř
 
 Řada B-obsahuje následující velikosti virtuálních počítačů:
 
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: nepodporováno
-
-Migrace za provozu: podporováno
-
-Aktualizace pro zachování paměti: podporováno
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): nepodporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): podporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+<br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Základní výkon procesoru virtuálního počítače | Maximální výkon procesoru virtuálního počítače | Počáteční kredity | Kredity v bance za hodinu | Maximální počet bank kreditů | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|

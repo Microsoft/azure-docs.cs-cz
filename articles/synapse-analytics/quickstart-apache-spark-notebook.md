@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: aca58328ada4f01072cf3779735bcd5cb518ef0a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cf899962f6e62b0943f48494bf5c3fe27a6327a9
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260763"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651713"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Rychlý Start: Vytvoření fondu Apache Spark ve službě Azure synapse Analytics pomocí nástrojů pro web
 
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit fond Apache Spark (ve verzi P
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Pracovní prostor analýzy synapse](quickstart-create-workspace.md)
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
@@ -85,7 +85,7 @@ Poznámkový blok je interaktivní prostředí, které podporuje různé program
 
     ![Zobrazení výstupu v Průzkumníkovi služby Storage](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage.png "Zobrazení výstupu v Průzkumníkovi služby Storage")
 
-    ![Zobrazení výstupu v Průzkumníkovi služby Storage](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "Zobrazení výstupu v Průzkumníkovi služby Storage")
+    ![Snímek obrazovky, který zvýrazní výchozí > demodata > demo_df cestu.](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "Zobrazení výstupu v Průzkumníkovi služby Storage")
 
 ## <a name="run-spark-sql-statements"></a>Spouštění příkazů Spark SQL
 

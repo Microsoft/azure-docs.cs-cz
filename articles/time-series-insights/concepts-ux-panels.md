@@ -8,20 +8,20 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0933e34e5bdd8469b827ed03c0eff51a4ecba0d5
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 5810bea7920dbfe91a836814124cbe4c7f6f3bee
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488163"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653787"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Průzkumník Azure Time Series Insights
 
 Tento článek popisuje různé funkce a možnosti, které jsou k dispozici v rámci [ukázkového prostředí](https://insights.timeseries.azure.com/preview/demo)Azure Time Series Insights Gen2.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li začít s Azure Time Series Insights Explorer, musíte:
 

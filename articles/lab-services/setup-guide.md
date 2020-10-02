@@ -3,12 +3,12 @@ title: Průvodce nastavením akcelerovaného testovacího prostředí pro Azure 
 description: Tato příručka pomáhá tvůrcům testovacího prostředí rychle nastavit účet testovacího prostředí pro použití v rámci své školy.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ad1a679c556316c2d23a713ffa5ac5dfe86cce0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 510aa97a0a47e62f627203495c601bb2538e19ad
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445572"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652206"
 ---
 # <a name="classroom-lab-setup-guide"></a>Průvodce nastavením testovacího prostředí pro učebnu
 
@@ -60,9 +60,6 @@ Testovací služby používají cenový model s průběžnými platbami, což zn
 - **Plán**: plán vám umožní automaticky řídit, kdy se virtuální počítače Labs spustí a ukončí.
 - **Kvóta**: kvóta řídí počet hodin, po které studenti budou mít přístup k virtuálnímu počítači mimo plánované hodiny. Pokud se kvóta dosáhne, když ji student používá, virtuální počítač se automaticky vypne. Student nemůže virtuální počítač restartovat, pokud se kvóta nezvýší.
 - **Automatické vypnutí**: Pokud je povoleno, nastavení automatického vypínání způsobí, že se virtuální počítače s Windows po určité době automaticky vypnou, jakmile se student odpojí od relace protokol RDP (Remote Desktop Protocol) (RDP). Standardně je toto nastavení zakázáno.  
-
-    > [!NOTE]
-    > Toto nastavení aktuálně existuje pouze pro systém Windows.
 
 ### <a name="how-will-students-save-their-work"></a>Jak budou studenti ukládat svou práci?
 

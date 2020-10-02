@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/12/2018
 ms.author: erhopf
-ms.openlocfilehash: 777b2608cf5f326556dfaea307f4f3e9346213f8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d5b95c8d71cf3d4830a2fe5eb6442ef479c9fab6
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66482270"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91654413"
 ---
 1. Spusťte Visual Studio 2019.
 
-1. Ověřte, že je k dispozici sada funkcí **Vývoj multiplatformních aplikací pomocí rozhraní .NET Core**. Výběrem **Možnosti** > **získat nástroje a funkce** na řádku nabídek sady Visual Studio otevřete instalační program sady Visual Studio. Pokud je tato sada funkcí už povolená, zavřete dialogové okno.
+1. Ověřte, že je k dispozici sada funkcí **Vývoj multiplatformních aplikací pomocí rozhraní .NET Core**. Výběrem **Možnosti**  >  **získat nástroje a funkce** na řádku nabídek sady Visual Studio otevřete instalační program sady Visual Studio. Pokud je tato sada funkcí už povolená, zavřete dialogové okno.
 
    ![Snímek obrazovky instalačního programu sady Visual Studio se zvýrazněnou kartou Sady funkcí](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-net-core-workload.png)
 
@@ -29,7 +29,7 @@ ms.locfileid: "66482270"
 
 1. V pravém horním rohu v poli **zdroj balíčku** vyberte **NuGet.org**. Vyhledejte `Microsoft.CognitiveServices.Speech` balíček a nainstalujte ho do projektu **HelloWorld** .
 
-   ![Snímek obrazovky s dialogovým oknem Spravovat balíčky pro řešení](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-1.0.0.png "Nainstalovat balíček NuGet")
+   ![Snímek obrazovky, který zobrazuje dialogové okno Spravovat balíčky pro řešení](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-1.0.0.png "Nainstalovat balíček NuGet")
 
 1. Přijměte zobrazenou licenci, aby se zahájila instalace balíčku NuGet.
 

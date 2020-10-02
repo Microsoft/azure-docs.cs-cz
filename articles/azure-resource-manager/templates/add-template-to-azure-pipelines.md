@@ -1,38 +1,36 @@
 ---
 title: CI/CD s Azure Pipelines a šablonami
-description: Popisuje, jak nastavit průběžnou integraci v Azure Pipelines pomocí projektů nasazení skupiny prostředků Azure v sadě Visual Studio k nasazení Správce prostředků šablon.
+description: Popisuje, jak nakonfigurovat průběžnou integraci v Azure Pipelines pomocí šablon Azure Resource Manager. Ukazuje, jak použít skript prostředí PowerShell nebo zkopírovat soubory do pracovního umístění a nasadit z něj.
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/01/2020
+ms.openlocfilehash: 6784df30340e4c54b8b1d6e82b45046666824315
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82084647"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653396"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Integrace šablon ARM pomocí Azure Pipelines
 
-Visual Studio poskytuje projekt skupiny prostředků Azure pro vytváření šablon Azure Resource Manager (ARM) a jejich nasazování do předplatného Azure. Tento projekt můžete integrovat s Azure Pipelines pro průběžnou integraci a průběžné nasazování (CI/CD).
+Azure Resource Manager šablon (šablon ARM) můžete integrovat s Azure Pipelines pro kontinuální integraci a průběžné nasazování (CI/CD). Kurz [průběžné integrace šablon ARM pomocí Azure Pipelines](deployment-tutorial-pipeline.md) ukazuje, jak pomocí [úlohy nasazení šablony ARM](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) nasadit šablonu z úložiště GitHub. Tento přístup funguje, když chcete nasadit šablonu přímo z úložiště.
 
-Existují dva způsoby, jak nasadit šablony s Azure Pipelines:
+V tomto článku se seznámíte se dvěma způsoby nasazení šablon pomocí Azure Pipelines. V tomto článku se dozvíte, jak:
 
-* **Přidejte úlohu, která spouští skript Azure PowerShell**. Tato možnost je výhodou zajištění konzistence během životního cyklu vývoje, protože používáte stejný skript, který je součástí projektu aplikace Visual Studio (Deploy-AzureResourceGroup.ps1). Skript rozhlíží artefakty z vašeho projektu na účet úložiště, ke kterému Správce prostředků získat přístup. Artefakty jsou položky ve vašem projektu, například propojené šablony, skripty a binární soubory aplikace. Skript pak nasadí šablonu.
+* **Přidejte úlohu, která spouští skript Azure PowerShell**. Tato možnost je výhodou zajištění konzistence během životního cyklu vývoje, protože můžete použít stejný skript, který jste použili při spouštění místních testů. Skript nasadí šablonu, ale může také provádět jiné operace, jako je například získání hodnot, které se mají použít jako parametry.
 
-* **Přidejte úkoly pro kopírování a nasazování úloh**. Tato možnost nabízí pohodlný alternativu pro skript projektu. V kanálu můžete nakonfigurovat dva úkoly. Jedna fáze úlohy artefakty a druhá úloha nasadí šablonu.
+   Visual Studio poskytuje [projekt skupiny prostředků Azure](create-visual-studio-deployment-project.md) , který obsahuje skript prostředí PowerShell. Skript rozhlíží artefakty z vašeho projektu na účet úložiště, ke kterému Správce prostředků získat přístup. Artefakty jsou položky ve vašem projektu, například propojené šablony, skripty a binární soubory aplikace. Pokud chcete pokračovat v používání skriptu z projektu, použijte úlohu PowerShellového skriptu, která je uvedená v tomto článku.
 
-Tento článek ukazuje oba přístupy.
+* **Přidejte úkoly pro kopírování a nasazování úloh**. Tato možnost nabízí pohodlný alternativu pro skript projektu. V kanálu můžete nakonfigurovat dva úkoly. Jedna úloha postupně projedná artefakty do přístupného umístění. Druhá úloha nasadí šablonu z tohoto umístění.
 
 ## <a name="prepare-your-project"></a>Příprava projektu
 
-Tento článek předpokládá, že váš projekt sady Visual Studio a organizace Azure DevOps jsou připravené k vytvoření kanálu. Následující kroky ukazují, jak se ujistit, že jste připraveni:
+Tento článek předpokládá, že vaše šablona ARM a organizace Azure DevOps jsou připravené k vytvoření kanálu. Následující kroky ukazují, jak se ujistit, že jste připraveni:
 
-* Máte organizaci Azure DevOps. Pokud ho ještě nemáte, [Vytvořte si ho zdarma](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops). Pokud má váš tým již organizaci Azure DevOps, ujistěte se, že jste správcem projektu Azure DevOps, který chcete použít.
+* Máte organizaci Azure DevOps. Pokud ho ještě nemáte, [Vytvořte si ho zdarma](/azure/devops/pipelines/get-started/pipelines-sign-up). Pokud má váš tým již organizaci Azure DevOps, ujistěte se, že jste správcem projektu Azure DevOps, který chcete použít.
 
-* Nakonfigurovali jste [připojení služby](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) ke svému předplatnému Azure. Úlohy v kanálu se spouštějí pod identitou instančního objektu. Postup vytvoření připojení najdete v tématu [Vytvoření projektu DevOps](deployment-tutorial-pipeline.md#create-a-devops-project).
+* Nakonfigurovali jste [připojení služby](/azure/devops/pipelines/library/connect-to-azure) ke svému předplatnému Azure. Úlohy v kanálu se spouštějí pod identitou instančního objektu. Postup vytvoření připojení najdete v tématu [Vytvoření projektu DevOps](deployment-tutorial-pipeline.md#create-a-devops-project).
 
-* Máte projekt aplikace Visual Studio, který byl vytvořen ze šablony **skupiny prostředků Azure** Starter. Informace o vytváření tohoto typu projektu naleznete v tématu [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](create-visual-studio-deployment-project.md).
-
-* Projekt aplikace Visual Studio je [připojen k projektu Azure DevOps](/azure/devops/repos/git/share-your-code-in-git-vs-2017?view=azure-devops).
+* Máte [šablonu ARM](quickstart-create-templates-use-visual-studio-code.md) , která definuje infrastrukturu pro váš projekt.
 
 ## <a name="create-pipeline"></a>Vytvoření kanálu
 
@@ -56,27 +54,32 @@ Jste připraveni přidat úlohu Azure PowerShell nebo kopírovat soubor a nasazo
 
 ## <a name="azure-powershell-task"></a>Azure PowerShell úkol
 
-V této části se dozvíte, jak nakonfigurovat průběžné nasazování pomocí jedné úlohy, která spouští skript PowerShellu v projektu. Následující soubor YAML vytvoří [úlohu Azure PowerShell](/azure/devops/pipelines/tasks/deploy/azure-powershell?view=azure-devops):
+V této části se dozvíte, jak nakonfigurovat průběžné nasazování pomocí jedné úlohy, která spouští skript PowerShellu v projektu. Pokud potřebujete skript prostředí PowerShell, který nasadí šablonu, přečtěte si téma [Deploy-AzTemplate.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) nebo [Deploy-AzureResourceGroup.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzureResourceGroup.ps1).
 
-```yaml
+Následující soubor YAML vytvoří [úlohu Azure PowerShell](/azure/devops/pipelines/tasks/deploy/azure-powershell):
+
+```yml
+trigger:
+- master
+
 pool:
-  name: Hosted Windows 2019 with VS2019
-  demands: azureps
+  vmImage: 'ubuntu-latest'
 
 steps:
-- task: AzurePowerShell@3
+- task: AzurePowerShell@5
   inputs:
-    azureSubscription: 'demo-deploy-sp'
-    ScriptPath: 'AzureResourceGroupDemo/Deploy-AzureResourceGroup.ps1'
-    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus'
-    azurePowerShellVersion: LatestVersion
+    azureSubscription: 'script-connection'
+    ScriptType: 'FilePath'
+    ScriptPath: './Deploy-Template.ps1'
+    ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
+    azurePowerShellVersion: 'LatestVersion'
 ```
 
-Když nastavíte úlohu na `AzurePowerShell@3` , kanál použije k ověření připojení příkazy z modulu AzureRM. Ve výchozím nastavení používá skript prostředí PowerShell v projektu sady Visual Studio modul AzureRM. Pokud jste skript aktualizovali tak, aby používal [modul AZ Module](/powershell/azure/new-azureps-module-az), nastavte úlohu na `AzurePowerShell@4` .
+Když nastavíte úlohu na `AzurePowerShell@5` , kanál použije [modul AZ Module](/powershell/azure/new-azureps-module-az). Pokud ve svém skriptu používáte modul AzureRM, nastavte úlohu na `AzurePowerShell@3` .
 
 ```yaml
 steps:
-- task: AzurePowerShell@4
+- task: AzurePowerShell@3
 ```
 
 V `azureSubscription` poli zadejte název připojení služby, které jste vytvořili.
@@ -92,69 +95,45 @@ Pro `scriptPath` zadejte relativní cestu ze souboru kanálu ke skriptu. Můžet
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
 ```
 
-Pokud nepotřebujete připravit artefakty, stačí předat název a umístění skupiny prostředků, která se má použít pro nasazení. Skript sady Visual Studio vytvoří skupinu prostředků, pokud ještě neexistuje.
+V nástroji `ScriptArguments` Zadejte všechny parametry, které váš skript potřebuje. Následující příklad ukazuje některé parametry skriptu, ale budete muset přizpůsobit parametry pro váš skript.
 
 ```yaml
-ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>'
+ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
 ```
 
-Pokud potřebujete připravit artefakty na existující účet úložiště, použijte:
+Když vyberete **Save (Uložit**), kanál sestavení se automaticky spustí. Vraťte se ke shrnutí kanálu sestavení a sledujte stav.
 
-```yaml
-ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>' -UploadArtifacts -ArtifactStagingDirectory '$(Build.StagingDirectory)' -StorageAccountName '<your-storage-account>'
-```
-
-Teď, když jste se seznámili s vytvářením úlohy, provedeme kroky pro úpravu kanálu.
-
-1. Otevřete svůj kanál a nahraďte jeho obsah vaším YAML:
-
-   ```yaml
-   pool:
-     name: Hosted Windows 2019 with VS2019
-     demands: azureps
-
-   steps:
-   - task: AzurePowerShell@3
-     inputs:
-       azureSubscription: 'demo-deploy-sp'
-       ScriptPath: 'AzureResourceGroupDemo/Deploy-AzureResourceGroup.ps1'
-       ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus' -UploadArtifacts -ArtifactStagingDirectory '$(Build.StagingDirectory)' -StorageAccountName 'stage3a4176e058d34bb88cc'
-       azurePowerShellVersion: LatestVersion
-   ```
-
-1. Vyberte **Uložit**.
-
-   ![Uložení kanálu](./media/add-template-to-azure-pipelines/save-pipeline.png)
-
-1. Zadejte zprávu pro potvrzení a proveďte zápis přímo do **Hlavní**větve.
-
-1. Když vyberete **Save (Uložit**), kanál sestavení se automaticky spustí. Vraťte se ke shrnutí kanálu sestavení a sledujte stav.
-
-   ![Zobrazení výsledků](./media/add-template-to-azure-pipelines/view-results.png)
+![Zobrazení výsledků](./media/add-template-to-azure-pipelines/view-results.png)
 
 Můžete vybrat aktuálně běžící kanál a zobrazit podrobnosti o těchto úlohách. Až se dokončí, zobrazí se výsledky pro každý krok.
 
 ## <a name="copy-and-deploy-tasks"></a>Kopírování a nasazení úloh
 
-V této části se dozvíte, jak nakonfigurovat průběžné nasazování pomocí dvou úloh pro přípravu artefaktů a nasazení šablony.
+V této části se dozvíte, jak nakonfigurovat průběžné nasazování pomocí dvou úloh. První fáze úlohy artefakty do účtu úložiště a druhý úkol nasadí šablonu.
 
-Následující YAML ukazuje [úlohu kopírování souborů Azure](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops):
+K kopírování souborů do účtu úložiště musí instanční objekt pro připojení služby mít přiřazenou roli Přispěvatel dat objektů BLOB úložiště nebo vlastníka dat objektu BLOB úložiště. Další informace najdete v tématu [Začínáme s AzCopy](../../storage/common/storage-use-azcopy-v10.md).
 
-```yaml
-- task: AzureFileCopy@3
-  displayName: 'Stage files'
+Následující YAML ukazuje [úlohu kopírování souborů Azure](/azure/devops/pipelines/tasks/deploy/azure-file-copy).
+
+```yml
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: AzureFileCopy@4
   inputs:
-    SourcePath: 'AzureResourceGroup1'
-    azureSubscription: 'demo-deploy-sp'
+    SourcePath: 'templates'
+    azureSubscription: 'copy-connection'
     Destination: 'AzureBlob'
-    storage: 'stage3a4176e058d34bb88cc'
-    ContainerName: 'democontainer'
-    outputStorageUri: 'artifactsLocation'
-    outputStorageContainerSasToken: 'artifactsLocationSasToken'
-    sasTokenTimeOutInMinutes: '240'
+    storage: 'demostorage'
+    ContainerName: 'projecttemplates'
+  name: AzureFileCopy
 ```
 
-K revizi vašeho prostředí se používá několik částí této úlohy. `SourcePath`Určuje umístění artefaktů relativně k souboru kanálu. V tomto příkladu soubory existují ve složce s názvem `AzureResourceGroup1` , což byl název projektu.
+K revizi vašeho prostředí se používá několik částí této úlohy. `SourcePath`Určuje umístění artefaktů relativně k souboru kanálu.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
@@ -173,92 +152,82 @@ storage: '<your-storage-account-name>'
 ContainerName: '<container-name>'
 ```
 
+Po vytvoření úlohy kopírovat soubor jste připraveni přidat úlohu pro nasazení připravené šablony.
+
 Následující YAML ukazuje [úlohu nasazení šablony Azure Resource Manager](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md):
 
 ```yaml
-- task: AzureResourceGroupDeployment@2
-  displayName: 'Deploy template'
+- task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
-    ConnectedServiceName: 'demo-deploy-sp'
-    subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+    azureResourceManagerConnection: 'copy-connection'
+    subscriptionId: '00000000-0000-0000-0000-000000000000'
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'demogroup'
-    location: 'Central US'
+    location: 'West US'
     templateLocation: 'URL of the file'
-    csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
-    csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
-    overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    csmFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.json$(AzureFileCopy.StorageContainerSasToken)'
+    csmParametersFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.parameters.json$(AzureFileCopy.StorageContainerSasToken)'
     deploymentMode: 'Incremental'
+    deploymentName: 'deploy1'
 ```
 
-K revizi vašeho prostředí se používá několik částí této úlohy.
+K dispozici je několik částí této úlohy, které je potřeba zkontrolovat podrobněji.
 
-- `deploymentScope`: Vyberte rozsah nasazení z možností: `Management Group` `Subscription` a `Resource Group` . V tomto návodu použijte **skupinu prostředků** . Další informace o oborech najdete v tématu [obory nasazení](deploy-rest.md#deployment-scope).
+- `deploymentScope`: Vyberte rozsah nasazení z možností: `Management Group` , `Subscription` a `Resource Group` . Další informace o oborech najdete v tématu [obory nasazení](deploy-rest.md#deployment-scope).
 
-- `ConnectedServiceName`: Zadejte název připojení služby, které jste vytvořili.
+- `azureResourceManagerConnection`: Zadejte název připojení služby, které jste vytvořili.
 
-    ```yaml
-    ConnectedServiceName: '<your-connection-name>'
-    ```
+- `subscriptionId`: Zadejte ID cílového předplatného. Tato vlastnost se vztahuje pouze na rozsah nasazení skupiny prostředků a obor nasazení předplatného.
 
-- `subscriptionName`: Zadejte ID cílového předplatného. Tato vlastnost se vztahuje pouze na rozsah nasazení skupiny prostředků a obor nasazení předplatného.
+- `resourceGroupName` a `location` : zadejte název a umístění skupiny prostředků, do které chcete nasadit. Tato úloha vytvoří skupinu prostředků, pokud neexistuje.
 
-- `resourceGroupName`a `location` : zadejte název a umístění skupiny prostředků, do které chcete nasadit. Tato úloha vytvoří skupinu prostředků, pokud neexistuje.
-
-    ```yaml
-    resourceGroupName: '<resource-group-name>'
-    location: '<location>'
-    ```
-
-Úloha nasazení odkazuje na šablonu s názvem `WebSite.json` a soubor parametrů s názvem WebSite.parameters.jsv. Použijte názvy šablon a souborů parametrů.
-
-Teď, když jste se seznámili s vytvářením úloh, Projděte si postup pro úpravu kanálu.
-
-1. Otevřete svůj kanál a nahraďte jeho obsah vaším YAML:
-
-   ```yaml
-   pool:
-     name: Hosted Windows 2019 with VS2019
-
-   steps:
-   - task: AzureFileCopy@3
-     displayName: 'Stage files'
-     inputs:
-       SourcePath: 'AzureResourceGroup1'
-       azureSubscription: 'demo-deploy-sp'
-       Destination: 'AzureBlob'
-       storage: 'stage3a4176e058d34bb88cc'
-       ContainerName: 'democontainer'
-       outputStorageUri: 'artifactsLocation'
-       outputStorageContainerSasToken: 'artifactsLocationSasToken'
-       sasTokenTimeOutInMinutes: '240'
-    - task: AzureResourceGroupDeployment@2
-      displayName: 'Deploy template'
-      inputs:
-        deploymentScope: 'Resource Group'
-        ConnectedServiceName: 'demo-deploy-sp'
-        subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
-        action: 'Create Or Update Resource Group'
-        resourceGroupName: 'demogroup'
-        location: 'Central US'
-        templateLocation: 'URL of the file'
-        csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
-        csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
-        overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
-        deploymentMode: 'Incremental'
+   ```yml
+   resourceGroupName: '<resource-group-name>'
+   location: '<location>'
    ```
 
-1. Vyberte **Uložit**.
+- `csmFileLink`: Zadejte odkaz na dvoufázové šablonu. Při nastavování hodnoty použijte proměnné vracené z úlohy kopírování souborů. Následující příklad odkazuje na šablonu s názvem mainTemplate.jsv. Složka s názvem **Templates** je obsažena, protože do umístění, do kterého úloha kopírování souborů zkopírovala soubor. V kanálu zadejte cestu k šabloně a název šablony.
 
-1. Zadejte zprávu pro potvrzení a proveďte zápis přímo do **Hlavní**větve.
+   ```yml
+   csmFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.json$(AzureFileCopy.StorageContainerSasToken)'
+   ```
 
-1. Když vyberete **Save (Uložit**), kanál sestavení se automaticky spustí. Vraťte se ke shrnutí kanálu sestavení a sledujte stav.
+Váš kanál vypadá takto:
 
-   ![Zobrazení výsledků](./media/add-template-to-azure-pipelines/view-results.png)
+```yml
+trigger:
+- master
 
-Můžete vybrat aktuálně běžící kanál a zobrazit podrobnosti o těchto úlohách. Až se dokončí, zobrazí se výsledky pro každý krok.
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: AzureFileCopy@4
+  inputs:
+    SourcePath: 'templates'
+    azureSubscription: 'copy-connection'
+    Destination: 'AzureBlob'
+    storage: 'demostorage'
+    ContainerName: 'projecttemplates'
+  name: AzureFileCopy
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'copy-connection'
+    subscriptionId: '00000000-0000-0000-0000-000000000000'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'demogroup'
+    location: 'West US'
+    templateLocation: 'URL of the file'
+    csmFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.json$(AzureFileCopy.StorageContainerSasToken)'
+    csmParametersFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.parameters.json$(AzureFileCopy.StorageContainerSasToken)'
+    deploymentMode: 'Incremental'
+    deploymentName: 'deploy1'
+```
+
+Když vyberete **Save (Uložit**), kanál sestavení se automaticky spustí. Vraťte se ke shrnutí kanálu sestavení a sledujte stav.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobný postup použití Azure Pipelines se šablonami ARM najdete v tématu [kurz: průběžná integrace šablon Azure Resource Manager pomocí Azure Pipelines](deployment-tutorial-pipeline.md).
+Další informace o používání šablon ARM s akcemi na GitHubu najdete v tématu [nasazení Azure Resource Manager šablon pomocí akcí GitHubu](deploy-github-actions.md).

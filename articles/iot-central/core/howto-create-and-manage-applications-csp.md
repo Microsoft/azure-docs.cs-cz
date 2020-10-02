@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 02481d5dcbaba15c9b17a27348207d9af64f3355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e000e2979436605b9274792ad3dde8eb1fa80976
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80982034"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653345"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Vytvoření a Správa aplikace Azure IoT Central z portálu CSP
 
@@ -35,7 +35,7 @@ Na stránce Azure IoT Central Správce aplikací se zakoupíte. Azure IoT Centra
 
 Pokud chcete vytvořit aplikaci Azure IoT Central, v levé nabídce vyberte **sestavit** . Vyberte jednu z průmyslových šablon nebo vyberte **vlastní aplikace** a vytvořte zcela novou aplikaci. Tím se načte stránka pro vytvoření aplikace. Musíte vyplnit všechna pole na této stránce a pak zvolit **vytvořit**. Další informace o každém z těchto polí najdete v části.
 
-![Vytvořit stránku aplikace pro zprostředkovatele CSP](media/howto-create-and-manage-applications-csp/image4.png)
+![Snímek obrazovky, na které se zobrazuje stránka pro sestavení aplikace IoT s vybraným tlačítkem sestavit](media/howto-create-and-manage-applications-csp/image4.png)
 
 ![Vytvořit stránku aplikace pro zprostředkovatele CSP](media/howto-create-and-manage-applications-csp/image4-1.png)
 

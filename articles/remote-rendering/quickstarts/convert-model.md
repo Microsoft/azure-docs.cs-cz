@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: d457e911dec481e2b1a8bdae1ca05f80452bb883
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: f3fd214fa62d95430bd8ca62e78fd3df30c77d19
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557181"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652444"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Rychlý Start: převod modelu pro vykreslování
 
@@ -24,12 +24,12 @@ Dozvíte se, jak provést tyto akce:
 > * Nahrání a převod 3D model pro použití s Azure Remote rendering
 > * Zahrnout převedený 3D model v aplikaci pro vykreslování
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Kompletní [rychlé zprovoznění: vykreslení modelu pomocí Unity](render-model.md)
 * Nainstalovat Azure PowerShell [(dokumentace)](https://docs.microsoft.com/powershell/azure/)
   * Otevření PowerShellu s právy správce
-  * Spouštěl`Install-Module -Name Az -AllowClobber`
+  * Spouštěl `Install-Module -Name Az -AllowClobber`
 
 ## <a name="overview"></a>Přehled
 
@@ -188,8 +188,8 @@ Převodní skript generuje identifikátor URI *sdíleného přístupového podpi
 
 Identifikátor URI SAS vytvořený skriptem pro převod bude platný pouze 24 hodin. Po vypršení platnosti však nemusíte model znovu převádět. Místo toho můžete vytvořit nové SAS na portálu, jak je popsáno v následujících krocích:
 
-1. Přejít na [Azure Portal](https://www.portal.azure.com)
-1. Klikněte na prostředek **účtu úložiště** : ![ přístup k podpisu](./media/portal-storage-accounts.png)
+1. Přejděte na web [Azure Portal](https://www.portal.azure.com).
+1. Klikněte na prostředek **účtu úložiště** : ![ snímek obrazovky, který zvýrazní vybraný prostředek účtu úložiště.](./media/portal-storage-accounts.png)
 1. Na následující obrazovce klikněte na Průzkumník služby **Storage** na levém panelu a v kontejneru úložiště objektů BLOB *arroutput* Najděte svůj výstupní model (soubor *. arrAsset* ). Klikněte pravým tlačítkem na soubor a v místní nabídce vyberte **získat sdílený přístupový podpis** : ![ přístup k podpisu](./media/portal-storage-explorer.png)
 1. Otevře se nová obrazovka, kde můžete vybrat datum vypršení platnosti. Stiskněte **vytvořit**a zkopírujte identifikátor URI, který je zobrazen v následujícím dialogovém okně. Tento nový identifikátor URI nahrazuje dočasný identifikátor URI, který skript vytvořil.
 

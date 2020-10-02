@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: 4a64d1999f13ee09cf92633fd188bfc7ed0e4856
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6531b8a631c38339733aa5fdad60bb1917fe7d9b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011205"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653107"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Kurz: Vytvoření, ladění, nasazení a upgrade aplikace Service Fabric Mesh s více službami
 
@@ -41,7 +41,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 Než začnete s tímto kurzem:
 
@@ -59,7 +59,7 @@ Do pole **Název** zadejte `todolistapp` a v poli **Umístění** nastavte cestu
 
 Ujistěte se, že je zaškrtnuté políčko **Vytvořit adresář pro řešení**, a kliknutím na **OK** vytvořte projekt Service Fabric Mesh.
 
-![Dialogové okno nového projektu Service Fabric Mesh v sadě Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
+![Snímek obrazovky, který ukazuje, jak vytvořit Service Fabric mřížkový projekt.](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
 
 Potom se zobrazí dialogové okno **Nová služba Service Fabricu**.
 
@@ -73,7 +73,7 @@ V poli **Název služby** nastavte **WebFrontEnd**. Stisknutím **OK** vytvořte
 
 Dál se zobrazí dialogové okno ASP.NET Core webové aplikace. Vyberte **Webová aplikace** a potom klikněte na **OK**.
 
-![Nová aplikace ASP.NET Core v sadě Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
+![Snímek obrazovky, který zvýrazní šablonu webového Appliccation.](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
 
 Právě jste vytvořili aplikaci Service Fabric Mesh. Dál vytvoříte model pro informace o úkolech.
 

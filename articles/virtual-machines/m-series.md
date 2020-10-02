@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 2dea6ea292b4ed69d89a6e5e03c58f437446561d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fe63f9d5a9d215a31a56d7214170d86f46a4e4a2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654782"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653651"
 ---
 # <a name="m-series"></a>Řada M
 
@@ -20,17 +20,14 @@ ms.locfileid: "88654782"
 
 Funkce virtuálního počítače řady M-Series s &reg; technologií Intel Hyper-Threading.
 
-ACU: 160–180
-
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: nepodporováno
-
-Aktualizace pro zachování paměti: nepodporováno
-
-Akcelerátor zápisu:  [podporováno](./how-to-enable-write-accelerator.md)
+[ACU](acu.md): 160-180<br>
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
+[Akcelerátor zápisu](./how-to-enable-write-accelerator.md): podporováno<br>
+<br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|---|

@@ -1,5 +1,5 @@
 ---
-title: Přenos předplatného Azure do jiného adresáře Azure AD (Preview)
+title: Přenos předplatného Azure do jiného adresáře Azure AD
 description: Přečtěte si, jak přenést předplatné Azure a známé související prostředky do jiného adresáře Azure Active Directory (Azure AD).
 services: active-directory
 author: rolyon
@@ -10,19 +10,14 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6d0c0333186655d4f105337021164814453ab47a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400540"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652380"
 ---
-# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Přenos předplatného Azure do jiného adresáře Azure AD (Preview)
-
-> [!IMPORTANT]
-> Pomocí těchto kroků můžete přenést předplatné do jiného adresáře služby Azure AD v současnosti ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Přenos předplatného Azure do jiného adresáře Azure AD
 
 Organizace můžou mít několik předplatných Azure. Každé předplatné je přidruženo ke konkrétnímu adresáři Azure Active Directory (Azure AD). Chcete-li zjednodušit správu, můžete chtít převést předplatné na jiný adresář služby Azure AD. Když přenášíte předplatné do jiného adresáře služby Azure AD, některé prostředky se nepřenesou do cílového adresáře. Například všechna přiřazení rolí a vlastní role v řízení přístupu na základě role Azure (Azure RBAC) se **trvale** odstraní ze zdrojového adresáře a nepřesunou se do cílového adresáře.
 
@@ -87,11 +82,11 @@ Několik prostředků Azure má závislost na předplatném nebo adresáři. V z
 > [!WARNING]
 > Pokud používáte šifrování v klidovém umístění pro určitý prostředek, jako je například účet úložiště nebo databáze SQL, která má závislost na trezoru klíčů, který není **ve stejném** předplatném, které se přenáší, může vést k neodstranitelné situaci. Pokud máte tuto situaci, měli byste podniknout kroky k použití jiného trezoru klíčů nebo k dočasnému zakázání klíčů spravovaných zákazníkem, abyste se vyhnuli tomuto neopravitelnému scénáři.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 K provedení těchto kroků budete potřebovat:
 
-- [Bash v Azure Cloud Shell](/azure/cloud-shell/overview) nebo [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Bash v Azure Cloud Shell](/azure/cloud-shell/overview) nebo [Azure CLI](/cli/azure)
 - Správce účtu předplatného, které chcete přenést do zdrojového adresáře
 - Role [vlastníka](built-in-roles.md#owner) v cílovém adresáři
 
@@ -101,13 +96,13 @@ K provedení těchto kroků budete potřebovat:
 
 1. Přihlaste se k Azure jako správce.
 
-1. Seznam vašich předplatných získáte pomocí příkazu [AZ Account list](/cli/azure/account#az-account-list) .
+1. Seznam vašich předplatných získáte pomocí příkazu [AZ Account list](/cli/azure/account#az_account_list) .
 
     ```azurecli
     az account list --output table
     ```
 
-1. Pomocí [AZ Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) nastavte aktivní předplatné, které chcete přenést.
+1. Pomocí [AZ Account set](/cli/azure/account#az_account_set) nastavte aktivní předplatné, které chcete přenést.
 
     ```azurecli
     az account set --subscription "Marketing"
@@ -115,9 +110,9 @@ K provedení těchto kroků budete potřebovat:
 
 ### <a name="install-the-resource-graph-extension"></a>Instalace rozšíření Resource-Graph Extension
 
- Rozšíření Resource-Graph umožňuje použít příkaz [AZ Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) k dotazování prostředků spravovaných pomocí Azure Resource Manager. Tento příkaz použijete v pozdějších krocích.
+ Rozšíření Resource-Graph umožňuje použít příkaz [AZ Graph](/cli/azure/ext/resource-graph/graph) k dotazování prostředků spravovaných pomocí Azure Resource Manager. Tento příkaz použijete v pozdějších krocích.
 
-1. Chcete-li zjistit, zda je nainstalováno rozšíření *grafu prostředků* , použijte příkaz [AZ Extension List](https://docs.microsoft.com/cli/azure/extension#az-extension-list) .
+1. Chcete-li zjistit, zda je nainstalováno rozšíření *grafu prostředků* , použijte příkaz [AZ Extension List](/cli/azure/extension#az_extension_list) .
 
     ```azurecli
     az extension list
@@ -131,7 +126,7 @@ K provedení těchto kroků budete potřebovat:
 
 ### <a name="save-all-role-assignments"></a>Uložit všechna přiřazení rolí
 
-1. K vypsání všech přiřazení rolí (včetně zděděných přiřazení rolí) použijte [seznam AZ role Assignment](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list) .
+1. K vypsání všech přiřazení rolí (včetně zděděných přiřazení rolí) použijte [seznam AZ role Assignment](/cli/azure/role/assignment#az_role_assignment_list) .
 
     Chcete-li usnadnit kontrolu seznamu, můžete výstup exportovat jako JSON, TSV nebo tabulku. Další informace najdete v tématu [přiřazení rolí k seznamům pomocí Azure RBAC a Azure CLI](role-assignments-list-cli.md).
 
@@ -149,7 +144,7 @@ K provedení těchto kroků budete potřebovat:
 
 ### <a name="save-custom-roles"></a>Uložení vlastních rolí
 
-1. K vypsání vlastních rolí použijte [seznam AZ role definition](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list) . Další informace najdete v tématu [Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure CLI](custom-roles-cli.md).
+1. K vypsání vlastních rolí použijte [seznam AZ role definition](/cli/azure/role/definition#az_role_definition_list) . Další informace najdete v tématu [Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure CLI](custom-roles-cli.md).
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -193,7 +188,7 @@ Spravované identity se při přenosu předplatného do jiného adresáře neakt
 
 1. Projděte si [seznam služeb Azure, které podporují spravované identity,](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) abyste si poznamenali, kde možná používáte spravované identity.
 
-1. Pomocí příkaz [AZ AD SP list](/cli/azure/identity?view=azure-cli-latest#az-identity-list) můžete zobrazit seznam spravovaných identit přiřazených systémem a uživatelem.
+1. Pomocí příkaz [AZ AD SP list](/cli/azure/ad/sp#az_ad_sp_list) můžete zobrazit seznam spravovaných identit přiřazených systémem a uživatelem.
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
@@ -207,7 +202,7 @@ Spravované identity se při přenosu předplatného do jiného adresáře neakt
     | `alternativeNames` vlastnost nezahrnuje `isExplicit` | Přiřazeno systémem |
     | `alternativeNames` vlastnost obsahuje `isExplicit=True` | Přiřazeno uživatelem |
 
-    Můžete taky použít příkaz [AZ identity list](https://docs.microsoft.com/cli/azure/identity#az-identity-list) , který vypíše uživatelem přiřazené identity. Další informace najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md).
+    Můžete taky použít příkaz [AZ identity list](/cli/azure/identity#az_identity_list) , který vypíše uživatelem přiřazené identity. Další informace najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md).
 
     ```azurecli
     az identity list
@@ -224,7 +219,7 @@ Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klien
 > [!WARNING]
 > Pokud používáte šifrování v klidovém umístění pro určitý prostředek, jako je například účet úložiště nebo databáze SQL, která má závislost na trezoru klíčů, který není **ve stejném** předplatném, které se přenáší, může vést k neodstranitelné situaci. Pokud máte tuto situaci, měli byste podniknout kroky k použití jiného trezoru klíčů nebo k dočasnému zakázání klíčů spravovaných zákazníkem, abyste se vyhnuli tomuto neopravitelnému scénáři.
 
-- Pokud máte Trezor klíčů, použijte příkaz [AZ Key trezor show k zobrazení](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) seznamu zásad přístupu. Další informace najdete v tématu [přiřazení zásad Key Vaultho přístupu](../key-vault/general/assign-access-policy-cli.md).
+- Pokud máte Trezor klíčů, použijte příkaz [AZ Key trezor show k zobrazení](/cli/azure/keyvault#az_keyvault_show) seznamu zásad přístupu. Další informace najdete v tématu [přiřazení zásad Key Vaultho přístupu](../key-vault/general/assign-access-policy-cli.md).
 
     ```azurecli
     az keyvault show --name MyKeyVault
@@ -232,7 +227,7 @@ Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klien
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Vypsání databází Azure SQL pomocí ověřování Azure AD
 
-- Pomocí [AZ SQL Server AD – admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) a [AZ Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) Extension zjistíte, jestli používáte Azure SQL Database s povolenou integrací ověřování Azure AD. Další informace najdete v tématu [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL](../azure-sql/database/authentication-aad-configure.md).
+- Pomocí [AZ SQL Server AD – admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) a [AZ Graph](/cli/azure/ext/resource-graph/graph) Extension zjistíte, jestli používáte Azure SQL Database s povolenou integrací ověřování Azure AD. Další informace najdete v tématu [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL](../azure-sql/database/authentication-aad-configure.md).
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -248,13 +243,13 @@ Když vytvoříte Trezor klíčů, je automaticky svázán s výchozím ID klien
 
 ### <a name="list-other-known-resources"></a>Výpis dalších známých prostředků
 
-1. K získání ID předplatného použijte [AZ Account show](https://docs.microsoft.com/cli/azure/account#az-account-show) .
+1. K získání ID předplatného použijte [AZ Account show](/cli/azure/account#az_account_show) .
 
     ```azurecli
     subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
     ```
 
-1. K vypsání dalších prostředků Azure se známými závislostmi adresáře Azure AD použijte rozšíření [AZ Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) Extension.
+1. K vypsání dalších prostředků Azure se známými závislostmi adresáře Azure AD použijte rozšíření [AZ Graph](/cli/azure/ext/resource-graph/graph) Extension.
 
     ```azurecli
     az graph query -q \
@@ -286,13 +281,13 @@ V tomto kroku převedete předplatné ze zdrojového adresáře do cílového ad
 
     Přístup ke správě prostředků bude mít jenom uživatel v novém účtu, který žádost o přenos přijal.
 
-1. Seznam vašich předplatných získáte pomocí příkazu [AZ Account list](https://docs.microsoft.com/cli/azure/account#az-account-list) .
+1. Seznam vašich předplatných získáte pomocí příkazu [AZ Account list](/cli/azure/account#az_account_list) .
 
     ```azurecli
     az account list --output table
     ```
 
-1. Pomocí [AZ Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) nastavte aktivní předplatné, které chcete použít.
+1. Pomocí [AZ Account set](/cli/azure/account#az_account_set) nastavte aktivní předplatné, které chcete použít.
 
     ```azurecli
     az account set --subscription "Contoso"
@@ -300,7 +295,7 @@ V tomto kroku převedete předplatné ze zdrojového adresáře do cílového ad
 
 ### <a name="create-custom-roles"></a>Vytváření vlastních rolí
         
-- Pomocí [AZ role definition Create vytvořte](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) vytvořte jednotlivé vlastní role ze souborů, které jste vytvořili dříve. Další informace najdete v tématu [Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure CLI](custom-roles-cli.md).
+- Pomocí [AZ role definition Create vytvořte](/cli/azure/role/definition#az_role_definition_create) vytvořte jednotlivé vlastní role ze souborů, které jste vytvořili dříve. Další informace najdete v tématu [Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure CLI](custom-roles-cli.md).
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -308,7 +303,7 @@ V tomto kroku převedete předplatné ze zdrojového adresáře do cílového ad
 
 ### <a name="create-role-assignments"></a>Vytvoření přiřazení rolí
 
-- Pomocí [AZ role Assignment Create vytvořte](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) přiřazení rolí pro uživatele, skupiny a instanční objekty. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure CLI](role-assignments-cli.md).
+- Pomocí [AZ role Assignment Create vytvořte](/cli/azure/role/assignment#az_role_assignment_create) přiřazení rolí pro uživatele, skupiny a instanční objekty. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure CLI](role-assignments-cli.md).
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -324,7 +319,7 @@ V tomto kroku převedete předplatné ze zdrojového adresáře do cílového ad
     | Škálovací sady virtuálních počítačů | [Konfigurace spravovaných identit pro prostředky Azure v sadě škálování virtuálního počítače pomocí Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | Další služby | [Služby, které podporují spravované identity prostředků Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. Pomocí [AZ role Assignment Create vytvořte](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) přiřazení rolí pro spravované identity přiřazené systémem. Další informace najdete v tématu [přiřazení přístupu spravované identity k prostředku pomocí Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Pomocí [AZ role Assignment Create vytvořte](/cli/azure/role/assignment#az_role_assignment_create) přiřazení rolí pro spravované identity přiřazené systémem. Další informace najdete v tématu [přiřazení přístupu spravované identity k prostředku pomocí Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -340,7 +335,7 @@ V tomto kroku převedete předplatné ze zdrojového adresáře do cílového ad
     | Škálovací sady virtuálních počítačů | [Konfigurace spravovaných identit pro prostředky Azure v sadě škálování virtuálního počítače pomocí Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | Další služby | [Služby, které podporují spravované identity prostředků Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. Pomocí [AZ role Assignment Create vytvořte](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) přiřazení rolí pro spravované identity přiřazené uživatelem. Další informace najdete v tématu [přiřazení přístupu spravované identity k prostředku pomocí Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Pomocí [AZ role Assignment Create vytvořte](/cli/azure/role/assignment#az_role_assignment_create) přiřazení rolí pro spravované identity přiřazené uživatelem. Další informace najdete v tématu [přiřazení přístupu spravované identity k prostředku pomocí Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>

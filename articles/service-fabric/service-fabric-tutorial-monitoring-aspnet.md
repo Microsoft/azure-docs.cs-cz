@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 4c812ab4f6c8908e3cabcf2d3afcc63959073ed4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1940e65fc5a9fd4aecd0b0cbcf6631e0628bda91
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020104"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653124"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Kurz: Monitorování a diagnostika aplikace ASP.NET Core na platformě Service Fabric pomocí Application Insights
 
@@ -32,7 +32,7 @@ V této sérii kurzů se naučíte:
 > * [Nakonfigurovat CI/CD s využitím služby Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * Nastavit monitorování a diagnostiku aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 Než začnete s tímto kurzem:
 
@@ -75,7 +75,7 @@ Postupujte podle těchto kroků a nakonfigurujte Application Insights pro služb
 >[!NOTE]
 >V závislosti na typu projektu, když kliknete pravým tlačítkem na název služby, možná budete muset kliknout na Add-> Telemetrie Application Insights...
 
-2. Klikněte na **Začínáme**.
+2. Klikněte **na Začínáme.**
 3. Přihlaste se k účtu, který jste použili k nastavení předplatného Azure, a vyberte předplatné, ve kterém jste vytvořili prostředek Application Insights. Vyhledejte prostředek v rozevírací nabídce Prostředek v části *Stávající prostředek Application Insights*. Kliknutím na **Zaregistrovat** přidejte Application Insights do své služby.
 
     ![Registrace Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/register-ai.png)
@@ -191,7 +191,7 @@ Kliknutím na některé z trasování můžete zobrazit další podrobnosti. Zob
 
 Kromě toho můžete kliknutím na *Mapa aplikace* v levé nabídce na stránce Přehled nebo kliknutím na ikonu **Mapa aplikace** přejít do mapy aplikace, ve které se zobrazí dvě propojené služby.
 
-![Podrobnosti o trasování Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
+![Snímek obrazovky, který zvýrazní mapu aplikace v levé nabídce](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
 Mapa aplikace vám může pomoct lépe porozumět topologii vaší aplikace, zejména když začnete přidávat více různých služeb, které mezi sebou spoluprací. Poskytuje také základní data o úspěšnosti požadavků a může vám pomoct diagnostikovat požadavky, které selhaly, abyste zjistili, kde pravděpodobně dochází k problémům. Další informace o používání mapy aplikace najdete v tématu [Mapa aplikace v Application Insights](../azure-monitor/app/app-map.md).
 
