@@ -44,6 +44,10 @@
       items:
         - name: Hierarchie zemí/oblastí používaná Traffic Managerem
           href: traffic-manager-geographic-regions.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Vnořené profily Traffic Manageru
       href: traffic-manager-nested-profiles.md
     - name: Typy koncových bodů

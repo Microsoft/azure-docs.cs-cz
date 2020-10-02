@@ -50,6 +50,8 @@
       href: concepts-identity.md
     - name: Zabezpečení
       items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
         - name: Zabezpečení pro aplikace a clustery
           href: concepts-security.md
         - name: Mechanismy zabezpečení služby Azure Policy

@@ -95,6 +95,8 @@
           href: public-ip-security-baseline.md
     - name: Zabezpečení
       items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
         - name: Skupiny zabezpečení sítě
           items:
             - name: Přehled
