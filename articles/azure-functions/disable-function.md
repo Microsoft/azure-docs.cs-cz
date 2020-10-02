@@ -4,18 +4,18 @@ description: Naučte se, jak zakázat a povolit funkce v Azure Functions.
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 761a78f050aa25a62075dd7a53836afb48f89cd7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4d93f728103aabdd1bd5557033a8bd36ffac2d42
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213157"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661019"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Postup zakázání funkcí v Azure Functions
 
 Tento článek vysvětluje, jak zakázat funkci v Azure Functions. Pro *vypnutí* funkce znamená, že modul runtime bude ignorovat automatickou aktivační událost, která je pro funkci definována. To umožňuje zabránit spuštění konkrétní funkce bez zastavení celé aplikace Function App.
 
-Doporučený způsob, jak funkci zakázat, je použití nastavení aplikace ve formátu `AzureWebJobs.<FUNCTION_NAME>.Disabled` . Toto nastavení aplikace můžete vytvořit a upravit mnoha různými způsoby, včetně použití [Azure CLI](/cli/azure/) a karty **Správa** vaší funkce v [Azure Portal](https://portal.azure.com). 
+Doporučený způsob, jak funkci zakázat, je nastavení aplikace ve formátu `AzureWebJobs.<FUNCTION_NAME>.Disabled` nastaveném na `true` . Toto nastavení aplikace můžete vytvořit a upravit mnoha různými způsoby, včetně použití [Azure CLI](/cli/azure/) a karty **Správa** vaší funkce v [Azure Portal](https://portal.azure.com). 
 
 > [!NOTE]  
 > Když zakážete funkci aktivovanou protokolem HTTP pomocí metod popsaných v tomto článku, koncový bod může být dostupný i při spuštění na místním počítači.  
@@ -40,7 +40,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="use-the-portal"></a>Použití portálu
 
-Můžete také použít tlačítka **Povolit** a **Zakázat** na stránce **Přehled** funkce. Tato tlačítka fungují tak, že vytvoří a odstraní `AzureWebJobs.<FUNCTION_NAME>.Disabled` nastavení aplikace.
+Můžete také použít tlačítka **Povolit** a **Zakázat** na stránce **Přehled** funkce. Tato tlačítka fungují změnou hodnoty `AzureWebJobs.<FUNCTION_NAME>.Disabled` nastavení aplikace. Toto nastavení specifické pro tuto funkci je vytvořeno při prvním zakázání.
 
 ![Přepínač stavu funkce](media/disable-function/function-state-switch.png)
 

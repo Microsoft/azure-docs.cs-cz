@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 7583e35cad03927d003de7a836de03af091b55eb
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: d01164552b1f3f10f592cedf80eafe57566bf09c
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569692"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661070"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Práce s účtem Azure Cosmos
 
@@ -27,7 +27,7 @@ Pokud chcete bezpečně spravovat přístup ke všem datům v rámci vašeho ú�
 
 Azure Cosmos Container je základní jednotkou škálovatelnosti. V kontejneru můžete mít prakticky neomezenou zřízenou propustnost (RU/s) a úložiště. Azure Cosmos DB transparentně rozdělí váš kontejner pomocí klíče logického oddílu, který zadáte, aby bylo možné elasticky škálovat zřízenou propustnost a úložiště. Další informace najdete v tématu [práce s kontejnery a položkami Azure Cosmos](databases-containers-items.md).
 
-V současné době můžete v rámci předplatného Azure vytvořit maximálně 100 účtů Azure Cosmos. Jeden účet Azure Cosmos může prakticky spravovat neomezený objem dat a zřízenou propustnost. Pokud chcete spravovat vaše data a zřízenou propustnost, můžete vytvořit jednu nebo více databází Azure Cosmos pod vaším účtem a v rámci této databáze. můžete vytvořit jeden nebo více kontejnerů. Následující obrázek znázorňuje hierarchii prvků v účtu Azure Cosmos:
+V současné době můžete v rámci předplatného Azure vytvořit maximálně 50 účtů Azure Cosmos (Jedná se o částečný limit, který se dá zvýšit prostřednictvím žádosti o podporu). Jeden účet Azure Cosmos může prakticky spravovat neomezený objem dat a zřízenou propustnost. Pokud chcete spravovat vaše data a zřízenou propustnost, můžete vytvořit jednu nebo více databází Azure Cosmos pod vaším účtem a v rámci této databáze. můžete vytvořit jeden nebo více kontejnerů. Následující obrázek znázorňuje hierarchii prvků v účtu Azure Cosmos:
 
 :::image type="content" source="./media/account-overview/hierarchy.png" alt-text="Hierarchie účtu Azure Cosmos" border="false":::
 

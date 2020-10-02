@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22f35d88f3bb36d63d533941d27f72336714077c
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: f3e223dd46806551fbba05127b70a9119a5d9c75
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630274"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661138"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Přidat a spravovat uživatele v jednotce pro správu v Azure Active Directory
 
@@ -29,7 +29,7 @@ Postup přípravy na používání PowerShellu a Microsoft Graph pro správu jed
 
 ## <a name="add-users-to-an-au"></a>Přidat uživatele do AU
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 Uživatelům můžete přiřadit jednotky pro správu dvěma způsoby.
 
@@ -80,7 +80,7 @@ Příklad:
 
 ## <a name="list-administrative-units-for-a-user"></a>Seznam jednotek pro správu pro uživatele
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 V Azure Portal můžete otevřít profil uživatele:
 
@@ -97,7 +97,7 @@ V Azure Portal můžete otevřít profil uživatele:
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
-Poznámka: příkaz Get-AzureADAdministrativeUnitMember vrací pouze členy 100.
+Poznámka: ve výchozím nastavení Get-AzureADAdministrativeUnitMember vrací pouze členy 100, můžete přidat "-All $true" pro načtení dalších členů.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -107,7 +107,7 @@ https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.Administr
 
 ## <a name="remove-a-single-user-from-an-au"></a>Odebrání jednoho uživatele z AU
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 Existují dva způsoby, jak můžete odebrat uživatele z jednotky pro správu. V Azure Portal můžete otevřít profil uživatele tak, že kliknete na uživatelé **Azure AD**  >  **Users**. Výběrem uživatele otevřete profil uživatele. Vyberte jednotku pro správu, ze které chcete uživatele odebrat, a vyberte možnost **Odebrat z jednotky pro správu**.
 

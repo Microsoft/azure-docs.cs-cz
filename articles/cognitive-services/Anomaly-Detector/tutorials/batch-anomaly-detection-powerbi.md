@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 3d42fd298a4bc6c6f0c0d27bdeae1999d6474f75
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: a44655571099d936b34a4233bc12fa099e5bc338
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611992"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660951"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Kurz: vizualizace anomálií pomocí zjišťování dávek a Power BI
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Integrace Power BI Desktop s rozhraním API detektoru anomálií pro detekci anomálií služby Batch
 > * Vizualizujte anomálie nalezené v rámci vašich dat, včetně očekávaných a zobrazených hodnot a hranic detekce anomálií.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 * [Předplatné Azure](https://azure.microsoft.com/free/cognitive-services)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), k dispozici zdarma.
 * Excelový soubor (. xlsx), který obsahuje datové body časové řady. Ukázková data pro tento rychlý Start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090962) .
@@ -80,7 +80,7 @@ V Rozšířený editor použijte následující fragment kódu Power Query M k e
     jsonbody    = "{ ""Granularity"": ""daily"", ""Sensitivity"": 95, ""Series"": "& jsontext &" }",
     bytesbody   = Text.ToBinary(jsonbody),
     headers     = [#"Content-Type" = "application/json", #"Ocp-Apim-Subscription-Key" = apikey],
-    bytesresp   = bytesresp  = Web.Contents(endpoint, [Headers=headers, Content=bytesbody, ManualStatusHandling={400}]),
+    bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody, ManualStatusHandling={400}]),
     jsonresp    = Json.Document(bytesresp),
 
     respTable = Table.FromColumns({

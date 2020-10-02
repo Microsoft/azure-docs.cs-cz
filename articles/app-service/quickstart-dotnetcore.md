@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 09/24/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperfq1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 7cbfddd10fdc383b16ce2277e5e9a082297d1912
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: aa8eb945ba77e1a4ac5215acf3bdbc12cac0c4c9
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91628141"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661121"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rychlý Start: Vytvoření webové aplikace v ASP.NET Core v Azure
 
@@ -21,7 +21,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a nasadit první webovou apli
 
 Až budete hotovi, budete mít skupinu prostředků Azure, která se skládá z App Service plánu hostování a App Service s nasazenou webovou aplikací.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/dotnet/).
 - V tomto rychlém startu se nasadí aplikace, která se App Service ve Windows. Pokud chcete nasadit nástroj na App Service v systému _Linux_, přečtěte si téma [Vytvoření webové aplikace .net Core v App Service](./quickstart-dotnetcore.md).
@@ -80,7 +80,7 @@ Při vytváření App Service a publikování webové aplikace postupujte podle 
 
 1. V dialogovém okně **plán hostování: vytvořit nové** zadejte hodnoty uvedené v následující tabulce:
 
-   | Nastavení  | Navrhovaná hodnota | Popis |
+   | Nastavení  | Navrhovaná hodnota | Description |
    | -------- | --------------- | ----------- |
    | **Plán hostování**  | *myFirstAzureWebAppPlan* | Název plánu služby App Service. |
    | **Umístění**      | *Západní Evropa* | Datacentrum, které je hostitelem webové aplikace. |
@@ -168,12 +168,14 @@ Postup v tomto článku můžete použít v případě počítačů se systémem
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 * <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.
 * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">Instalace nejnovější sady .NET Core 3,1 SDK</a>
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 ## <a name="create-the-app-locally"></a>Místní vytvoření aplikace
 
@@ -214,13 +216,23 @@ git add .
 git commit -m "first commit"
 ```
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 [!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)]
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-linux.md)]
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-linux.md)]
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
@@ -265,6 +277,8 @@ To https://&lt;app-name&gt;.scm.azurewebsites.net:443/&lt;app-name&gt;.git
    d87e6ca..d6b5447  master -> master
 </pre>
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 ## <a name="browse-to-the-app"></a>Přechod do aplikace
 
 V prohlížeči zadejte adresu nasazené aplikace.
@@ -278,6 +292,8 @@ Vzorový kód .NET Core je spuštěný v App Service v systému Linux s předdef
 ![Ukázková aplikace spuštěná v Azure](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
 **Blahopřejeme!** Nasadili jste svoji první aplikaci .NET Core do služby App Service v Linuxu.
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 ## <a name="update-and-redeploy-the-code"></a>Aktualizace a opětovné nasazení kódu
 
@@ -298,6 +314,8 @@ Po dokončení nasazení přepněte zpátky do okna prohlížeče, které se ote
 
 ![Aktualizovaná ukázková aplikace spuštěná ve službě Azure](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 ## <a name="manage-your-new-azure-app"></a>Správa nové aplikace Azure
 
 Chcete-li spravovat aplikaci, kterou jste vytvořili, otevřete <a href="https://portal.azure.com" target="_blank">Azure Portal</a> .
@@ -313,6 +331,8 @@ Zobrazí se stránka s přehledem vaší aplikace. Tady můžete provádět zák
 Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplikace. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 ## <a name="next-steps"></a>Další kroky
 

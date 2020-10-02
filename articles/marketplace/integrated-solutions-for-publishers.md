@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: a1fcaced7783d09f1733fbee8744ba725b639a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2e976b895c6aa63b73c55b458668c00b64c6f960
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119527"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660900"
 ---
 # <a name="publish-an-integrated-solution"></a>Publikování integrovaného řešení
 
@@ -40,7 +40,7 @@ Přehled programu integrovaných řešení najdete v části [video s přehledem
     * Integrace aplikací
     * Správa životního cyklu aplikací
     * Cloudová platforma
-    * Datové analýzy
+    * Analýza dat
     * Datové centrum
     * Datová platforma
     * DevOps
@@ -56,12 +56,12 @@ Partneři, kteří chtějí účast v programu, by měli identifikovat jiné par
 
 ## <a name="develop-an-integrated-solution"></a>Vývoj integrovaného řešení
 
-Po schválení vašeho jmenování použijte prostředky propojeného programu k vývoji integrovaného řešení. Postupujte následovně:
+Po schválení vašeho jmenování použijte prostředky propojeného programu k vývoji integrovaného řešení. Postupujte takto:
 
 1. Dokončete klíčové obchodní a technické diskuze ve formátu dílny, abyste mohli definovat řešení a integrační přístup.
 
     Vaše diskuze o řešení by měla zahrnovat tyto body:
-    * Rozsah
+    * Obor
     * Cílové zákazníky
     * Pozice hodnoty
     * Ceny
@@ -114,4 +114,4 @@ Když je vaše řešení živé v Microsoft AppSource nebo Azure Marketplace, bu
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o nákupu integrovaného řešení na webu Marketplace najdete v tématu [integrovaná řešení](./integrated-solutions.md).
+- [Formulář pro pojmenování integrovaných řešení](https://aka.ms/AA5qicu)

@@ -3,16 +3,16 @@ title: Řešení potíží se službou Azure image Builder
 description: Řešení běžných problémů a chyb při použití služby Azure VM Image Builder Service
 author: cynthn
 ms.author: danis
-ms.date: 09/03/2020
+ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: ee65cd1605e23dfd5699f92a900bdb5e7952fe13
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: dd17057a56e8dfb269a22458b9aa20fefaab68bc
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459925"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661104"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Řešení potíží se službou Azure image Builder
 
@@ -591,6 +591,18 @@ Další informace o možnostech a omezeních Azure DevOps najdete v tématu [age
 #### <a name="solution"></a>Řešení
 
 Můžete hostovat vlastní agenty DevOps nebo se podívat, jak zkrátit čas svého sestavení. Pokud například distribuujete do galerie sdílených imagí, replikujte do jedné oblasti. Pokud chcete replikovat asynchronně. 
+
+### <a name="slow-windows-logon-please-wait-for-the-windows-modules-installer"></a>Pomalé přihlášení Windows: Počkejte prosím, než se instalační program pro moduly Windows nainstaluje.
+
+#### <a name="error"></a>Chyba
+Po vytvoření bitové kopie s Windows 10 pomocí nástroje image Builder vytvořte virtuální počítač z image, budete mít protokol RDP a budete muset počkat minuty při prvním přihlášení, na které vidíte modrou obrazovku s touto zprávou:
+```text
+Please wait for the Windows Modules Installer
+```
+
+#### <a name="solution"></a>Řešení
+Nejprve v sestavení bitové kopie ověřte, že neexistují žádná nevyřízená restartování, a to tak, že jako poslední přizpůsobení přidáte restart systému Windows a všechny instalace softwaru budou dokončeny. Nakonec přidejte možnost [/Mode: VM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-command-line-options) do výchozího nástroje Sysprep, který AIB používá. Další informace najdete v části virtuální počítače vytvořené z imagí AIB se úspěšně nevytvořily > přepsání příkazů.  
+
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>Virtuální počítače vytvořené z imagí AIB se nevytvoří úspěšně.
 

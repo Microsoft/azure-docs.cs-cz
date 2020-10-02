@@ -10,20 +10,24 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: a3aed23441df225316f52eb3acb1387cbba6d807
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: aac5fba68c43892216cbd16dd99b0c6a9bf70217
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935581"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660985"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>Profilace modelu a určení využití prostředků
 
 V tomto článku se dozvíte, jak profilovat strojové učení s modelem, abyste zjistili, kolik CPU a paměti budete potřebovat pro model při jeho nasazování jako webové služby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 V tomto článku se předpokládá, že jste provedli školení a zaregistrovali model pomocí Azure Machine Learning. Příklad školení a registrace modelu scikit-učení s Azure Machine Learning najdete v tomto [ukázkovém kurzu](how-to-train-scikit-learn.md) .
+
+## <a name="limitations"></a>Omezení
+
+* Profilace nebude fungovat, když Azure Container Registry (ACR) pro váš pracovní prostor je za virtuální sítí.
 
 ## <a name="run-the-profiler"></a>Spuštění profileru
 
