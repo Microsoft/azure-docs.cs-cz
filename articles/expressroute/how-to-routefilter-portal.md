@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 37f8903adbc676ae2e48e2ef5841d8f5b122842c
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 468c7a0113a4603f4f47bb529145261ff50d96d4
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566241"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650540"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Nakonfigurujte filtry tras pro partnerský vztah Microsoftu: Azure Portal
 > [!div class="op_single_selector"]
@@ -88,33 +88,33 @@ Filtr tras může mít pouze jedno pravidlo a pravidlo musí být typu Allow. To
 ### <a name="1-create-a-route-filter"></a>1. Vytvoření filtru tras
 Můžete vytvořit filtr tras výběrem možnosti vytvořit nový prostředek. Klikněte na **vytvořit prostředek**  >  **sítě**  >  **RouteFilter**, jak je znázorněno na následujícím obrázku:
 
-![Vytvoření filtru tras](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
+![Snímek obrazovky zobrazující stránku "filtr tras".](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 
 Filtr tras musíte umístit do skupiny prostředků. 
 
-![Vytvoření filtru tras](./media/how-to-routefilter-portal/CreateRouteFilter.png)
+![Snímek obrazovky zobrazující stránku vytvořit filtr tras s příklady zadaných hodnot](./media/how-to-routefilter-portal/CreateRouteFilter.png)
 
 ### <a name="2-create-a-filter-rule"></a>2. vytvoření pravidla filtru
 
 Pravidla můžete přidat a aktualizovat výběrem karty spravovat pravidlo pro svůj filtr tras.
 
-![Vytvoření filtru tras](./media/how-to-routefilter-portal/ManageRouteFilter.png)
+![Snímek obrazovky zobrazující stránku Přehled s zvýrazněnou akcí spravovat pravidlo](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
 
 V rozevíracím seznamu můžete vybrat služby, ke kterým se chcete připojit, a po dokončení toto pravidlo Uložit.
 
-![Vytvoření filtru tras](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
+![Snímek obrazovky zobrazující okno Spravovat pravidlo se službami vybranými v rozevíracím seznamu povolené komunity služeb](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
 ## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>Krok 3: připojení filtru tras k okruhu ExpressRoute
 
 Filtr směrování můžete připojit k okruhu tak, že vyberete tlačítko Přidat okruh a v rozevíracím seznamu vyberete okruh ExpressRoute.
 
-![Vytvoření filtru tras](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
+![Snímek obrazovky, který zobrazuje stránku Přehled se zvolenou akcí přidat okruh](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
 
 Pokud poskytovatel připojení konfiguruje partnerský vztah pro váš okruh ExpressRoute, aktualizujte okruh z okna okruhu ExpressRoute předtím, než vyberete tlačítko Přidat okruh.
 
-![Vytvoření filtru tras](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
+![Snímek obrazovky zobrazující stránku "Přehled" se zvolenou akcí aktualizovat](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
 
 ## <a name="common-tasks"></a><a name="tasks"></a>Běžné úkoly
 
@@ -122,7 +122,7 @@ Pokud poskytovatel připojení konfiguruje partnerský vztah pro váš okruh Exp
 
 Vlastnosti filtru tras můžete zobrazit při otevření prostředku na portálu.
 
-![Vytvoření filtru tras](./media/how-to-routefilter-portal/ViewRouteFilter.png)
+![Snímek obrazovky zobrazující stránku Přehled](./media/how-to-routefilter-portal/ViewRouteFilter.png)
 
 
 ### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>Aktualizace vlastností filtru tras
@@ -130,16 +130,16 @@ Vlastnosti filtru tras můžete zobrazit při otevření prostředku na portálu
 Seznam hodnot komunity protokolu BGP připojených k okruhu můžete aktualizovat tak, že vyberete tlačítko "spravovat pravidlo".
 
 
-![Vytvoření filtru tras](./media/how-to-routefilter-portal/ManageRouteFilter.png)
+![Snímek obrazovky zobrazující stránku Přehled s zvýrazněnou akcí spravovat pravidlo](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
-![Vytvoření filtru tras](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
+![Snímek obrazovky zobrazující okno Spravovat pravidlo s vybranými službami](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
 
 
 ### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>Odpojení filtru tras od okruhu ExpressRoute
 
 Pokud chcete odpojit okruh od filtru tras, klikněte pravým tlačítkem myši na okruh a klikněte na zrušit přidružení.
 
-![Vytvoření filtru tras](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
+![Snímek obrazovky zobrazující stránku Přehled se zvýrazněnou akcí zrušit přidružení](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
 
 ### <a name="to-delete-a-route-filter"></a><a name="delete"></a>Odstranění filtru tras

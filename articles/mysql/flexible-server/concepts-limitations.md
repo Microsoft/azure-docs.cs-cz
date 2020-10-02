@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 64f4b6e87f038b265fbd2c3e13f3779fb4c24f74
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: 6fff7f22e7d265eb9b15bcec8604eeab692ac1c0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936156"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650285"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Omezení Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -26,6 +26,8 @@ Tento článek popisuje omezení Azure Database for MySQL flexibilní serverovou
 > Pokud hledáte minimální/maximální hodnoty parametrů serveru `max_connections` , například a `innodb_buffer_pool_size` , tyto informace se přesunuly na koncepty parametrů serveru. <!-- **[server parameters](./concepts-server-parameters.md)** --> předmětu.
 
 Azure Database for MySQL podporuje optimalizaci hodnot parametrů serveru. Minimální a maximální hodnota některých parametrů (např. `max_connections`, `join_buffer_size` , `query_cache_size` ) závisí na výpočetní úrovni a výpočetní velikosti serveru. Další informace najdete v tématu Koncepty parametrů serveru. <!-- [server parameters](./concepts-server-parameters.md)--> pro další informace o těchto omezeních.
+
+Moduly plug-in pro heslo, jako je například "validate_password" a "caching_sha2_password", nejsou službou podporovány.
 
 ## <a name="storage-engines"></a>Moduly úložiště
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: duau
-ms.openlocfilehash: e79dde0178c74965bde14956203e31e82e80d93e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4f646cdb4a3f000df219f627cbd7e7c841ed68ab
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398405"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651237"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Kurz: vylepšení odpovědi webu pomocí Traffic Manager
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 Aby bylo možné zobrazit službu Traffic Manager v akci, vyžaduje tento kurz, abyste nasadili:
 
@@ -63,7 +63,7 @@ V této části vytvoříte dva virtuální počítače *myIISVMEastUS* a *myIIS
    - **Podrobnosti instance**  >  **Název virtuálního počítače**: zadejte *myIISVMEastUS*.
    - **Podrobnosti instance**  >  **Oblast**: vyberte **východní USA**.
    - **Účet správce**  >  **Uživatelské jméno**: zadejte uživatelské jméno, které chcete zvolit.
-   - **Účet správce**  >  **Heslo**: zadejte heslo, které jste si zvolili. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
+   - **Účet správce**  >  **Heslo**: zadejte heslo, které jste si zvolili. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
    - Pravidla portů pro **příchozí spojení**  >  **Veřejné příchozí porty**: vyberte **Povolit vybrané porty**.
    - Pravidla portů pro **příchozí spojení**  >  **Vyberte příchozí porty**: v poli pro stažení vyberte **RDP** a **http** .
 
@@ -122,7 +122,7 @@ V této části vytvoříte virtuální počítač (*myVMEastUS* a *myVMWestEuro
    - **Podrobnosti instance**  >  **Název virtuálního počítače**: zadejte *myVMEastUS*.
    - **Podrobnosti instance**  >  **Oblast**: vyberte **východní USA**.
    - **Účet správce**  >  **Uživatelské jméno**: zadejte uživatelské jméno, které chcete zvolit.
-   - **Účet správce**  >  **Heslo**: zadejte heslo, které jste si zvolili. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
+   - **Účet správce**  >  **Heslo**: zadejte heslo, které jste si zvolili. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
    - Pravidla portů pro **příchozí spojení**  >  **Veřejné příchozí porty**: vyberte **Povolit vybrané porty**.
    - Pravidla portů pro **příchozí spojení**  >  **Vyberte příchozí porty**: v rozevíracím seznamu stáhnout vyberte **RDP** .
 
@@ -161,7 +161,7 @@ Přidejte dva virtuální počítače se spuštěným serverem IIS – *myIISVME
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Typ                    | Koncový bod Azure                                   |
-    | Název           | myEastUSEndpoint                                        |
+    | Name           | myEastUSEndpoint                                        |
     | Typ cílového prostředku           | Veřejná IP adresa                          |
     | Cílový prostředek          | **Zvolte veřejnou IP adresu** a zobrazí se výpis prostředků s veřejnými IP adresami ve stejném předplatném. Jako **Prostředek** vyberte veřejnou IP adresu *myIISVMEastUS-ip*. Toto je veřejná IP adresa virtuálního počítače se serverem služby IIS v oblasti USA – východ.|
     |        |           |
@@ -203,7 +203,7 @@ V této části uvidíte službu Traffic Manager v akci.
 5. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se toto upozornění zobrazí, vyberte **Ano** nebo **Pokračovat** a pokračujte v připojování.
 1. Do webového prohlížeče na virtuálním počítači *myVMEastUS* zadejte název DNS vašeho profilu služby Traffic Manager a zobrazte váš web. Vzhledem k tomu, že virtuální počítač umístěný v **východní USA**, budete přesměrováni na nejbližší web hostovaný na nejbližším serveru služby IIS *myIISVMEastUS* , který se nachází v **východní USA**.
 
-   ![Test profilu služby Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
+   ![Snímek obrazovky, který zobrazuje profil "Traffic Manager" ve webovém prohlížeči.](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
 2. V dalším kroku se připojte k virtuálnímu počítači *myVMWestEurope* , který se nachází v **Západní Evropa** pomocí kroků 1-5 a přejděte k názvu domény profilu Traffic Manager z tohoto virtuálního počítače. Vzhledem k tomu, že se virtuální počítač nachází v **západní Evropa**, jste nyní přesměrováni na web hostovaný na nejbližším serveru služby IIS *myIISVMWestEurope* , který je umístěn v **západní Evropa**.
 

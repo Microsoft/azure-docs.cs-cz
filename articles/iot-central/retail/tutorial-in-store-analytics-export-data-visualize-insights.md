@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: 6062e8a74af4bb0a19d02ccf9a4c50da0cc4a7c5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81000102"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651441"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Kurz: Export dat z Azure IoT Central a vizualizace Insights v Power BI
 
@@ -30,12 +30,12 @@ V tomto kurzu se naučíte, jak:
 > * Pomocí Logic Apps můžete odesílat data z centra událostí do datové sady streamování Power BI.
 > * Vytvořte řídicí panel Power BI pro vizualizaci dat v datové sadě streamování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Pro absolvování tohoto kurzu potřebujete:
 
 * Pokud chcete dokončit předchozí dva kurzy, [vytvořte v Azure aplikaci pro analýzu v obchodě IoT Central](./tutorial-in-store-analytics-create-app.md) a [Přizpůsobte řídicí panel operátora a spravujte zařízení ve službě Azure IoT Central](./tutorial-in-store-analytics-customize-dashboard.md).
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Účet Power BI. Pokud nemáte účet Power BI, zaregistrujte si [bezplatnou zkušební verzi Power BI pro](https://app.powerbi.com/signupredirect?pbi_source=web) , než začnete.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
@@ -409,7 +409,7 @@ Chcete-li přidat logiku k návrhu aplikace logiky, vyberte **zobrazení kódu**
     * Vyberte pole **časové razítko** a pak ze seznamu **dynamického obsahu** vyberte **x-opt-enqueuedtime** .
     * Vyberte pole **Doba obydlí 1** a potom pro **analýzu telemetrie**vyberte **Zobrazit další** . Pak vyberte **DwellTime1**.
     * Vyberte pole **Doba obydlí 2** a potom pro **analýzu telemetrie**vyberte **Zobrazit další** . Pak vyberte **DwellTime2**.
-    * Vyberte **Uložit** a uložte tak provedené změny. Akce **rozhraní s časem bydlení** vypadá jako na následujícím snímku obrazovky: ![ obsazená akce](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+    * Vyberte **Uložit** a uložte tak provedené změny. Akce **rozhraní pro dobu bydlení** vypadá jako na následujícím snímku obrazovky: ![ snímek obrazovky, který zobrazuje akci "rozhraní pro dobu bydlení".](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
 1. Vyberte akci **rozhraní počtu osob** a pak vyberte **přidat akci**.
 1. Do **vyhledávacích konektorů a akcí**zadejte **Power BI**a potom stiskněte klávesu **ENTER**.
 1. Vyberte akci **Přidat řádky do datové sady (Preview)** .
@@ -484,7 +484,7 @@ Přidejte čtyři dlaždice karet, abyste zobrazili délku fronty a dobu trván�
 
 Změňte velikost dlaždic na řídicím panelu, aby vypadala jako na následujícím snímku obrazovky:
 
-![Řídicí panel Power BI](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
+![Snímek obrazovky zobrazující řídicí panel Power B se změněnou velikostí a znovu uspořádanými dlaždicemi](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
 
 Můžete přidat další grafické prostředky k dalšímu přizpůsobení řídicího panelu:
 

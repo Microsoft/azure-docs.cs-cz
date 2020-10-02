@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 403a5b68e3320700e275c744210f480be2c88e84
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021319"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650472"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Kurz: zabezpečení vzdáleného vykreslování a úložiště modelu Azure
 
@@ -23,7 +23,7 @@ V tomto kurzu se naučíte:
 > * Ověření ve službě Azure AD pro přístup k instanci vzdáleného vykreslování Azure
 > * Použití přihlašovacích údajů Azure pro ověřování vzdáleného vykreslování Azure
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 * Tento kurz sestaví [kurz: rafinace materiálů, osvětlení a efektů](..\materials-lighting-effects\materials-lighting-effects.md).
 
@@ -163,7 +163,7 @@ Pojďme upravit **RemoteRenderingCoordinator** , aby se načetl vlastní model z
     ```
 
     Tento kód přidá do komponenty **RemoteRenderingCoordinator** tři další řetězcové proměnné.
-    ![Propojený model](./media/storage-account-linked-model.png)
+    ![Snímek obrazovky, který zvýrazní název účtu úložiště, název kontejneru objektů BLOB a cestu k modelu komponenty RemoteRenderingCoordinator](./media/storage-account-linked-model.png)
 
 1. Přidejte hodnoty do komponenty **RemoteRenderingCoordinator** . Po převedení [modelu na převod](../../../quickstarts/convert-model.md), vaše hodnoty by měly být:
 
@@ -392,12 +392,13 @@ Pokud je v editoru Unity aktivní ověřování AAD, budete se muset ověřit p�
     * **ID tenanta Azure** je *ID adresáře (tenant)* , které najdete v registraci aplikace AAD (viz obrázek níže).
     * **ID účtu vzdáleného vykreslování Azure** je stejné **ID účtu** , které jste používali pro **RemoteRenderingCoordinator**.
 
-    ![Součást ověřování AAD](./media/app-overview-data.png)
+    ![Snímek obrazovky, který zvýrazňuje ID aplikace (klienta) a ID adresáře (tenanta).](./media/app-overview-data.png)
 
 1. Stiskněte Přehrát v editoru Unity a vyjádření souhlasu s spuštěním relace.
     Vzhledem k tomu, že komponenta **AADAuthentication** má kontroler zobrazení, automaticky se připojovat k zobrazení výzvy po modálním panelu autorizace relace.
 1. Postupujte podle pokynů uvedených na panelu napravo od **AppMenu**.
-    Měla by se zobrazit podobný text: ![ Komponenta ověření AAD ](./media/device-flow-instructions.png) po zadání poskytnutého kódu na sekundárním zařízení (nebo v prohlížeči na stejném zařízení) a přihlášení pomocí vašich přihlašovacích údajů se přístupový token vrátí do žádající aplikace, v tomto případě v editoru Unity.
+    Mělo by se zobrazit něco podobného jako v tomto ![ příkladu, který zobrazuje panel instrukcí, který se zobrazí napravo od AppMenu.](./media/device-flow-instructions.png)
+    Po zadání poskytnutého kódu na sekundární zařízení (nebo v prohlížeči na stejném zařízení) a přihlášení pomocí vašich přihlašovacích údajů se přístupový token vrátí do žádající aplikace, v tomto případě v editoru Unity.
 1. Po tomto okamžiku by všechno v aplikaci mělo normálně pokračovat. Pokud nebudete postupovat podle očekávaných fází, podívejte se na konzolu Unity s případnými chybami.
 
 ## <a name="build-to-device"></a>Sestavit do zařízení

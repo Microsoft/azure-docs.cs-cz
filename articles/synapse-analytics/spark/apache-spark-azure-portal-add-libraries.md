@@ -9,12 +9,12 @@ ms.date: 07/22/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: b815dd9218ac395786e7ab7ed3a02ba440fe2807
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ad3231652056244fdfc814251e6caad025db77e5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260168"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649894"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
 
@@ -85,7 +85,7 @@ Postup instalace knihovny do fondu Spark (ve verzi Preview) přímo z Azure Port
 
  4. Nahrajte konfigurační soubor prostředí pomocí voliče souborů.
 
-![Přidat knihovny Pythonu](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Přidat knihovny Pythonu")
+![Snímek obrazovky, který zvýrazní tlačítko pro konfiguraci souboru pro nahrání prostředí.](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Přidat knihovny Pythonu")
 
 ### <a name="verify-installed-libraries"></a>Ověřit nainstalované knihovny
 

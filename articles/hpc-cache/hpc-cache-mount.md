@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: e29d031bc3461c4adab87b1d784ef19c89c7c12d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 7f1d8d34d6351fc344fdb101ac8e9a96678df9d5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91612998"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651424"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Připojení služby Azure HPC Cache
 
@@ -79,7 +79,7 @@ Pomocí tohoto postupu vytvořte příkaz Mount.
 
 1. Vyberte **cestu k virtuálnímu oboru názvů** , která se má použít pro klienta. Tyto cesty odkazují na exporty v systému back-end úložiště.
 
-   ![snímek obrazovky s polem s cestami k oboru názvů s otevřeným selektorem](media/mount-select-target.png)
+   ![Snímek obrazovky, který zobrazuje pole "cesta virtuálního oboru názvů" s otevřeným selektorem.](media/mount-select-target.png)
 
    Cesty k virtuálnímu oboru názvů můžete zobrazit a změnit na stránce portálu **oboru názvů** . Přečtěte si [Nastavení agregovaného oboru názvů](add-namespace-paths.md) , abyste viděli, jak.
 
@@ -115,7 +115,7 @@ V případě robustního připojení klienta předejte tato nastavení a argumen
 
 > připojit-o pevný, proto = TCP, mountproto = TCP, opakovat = 30 $ {CACHE_IP_ADDRESS}:/$ {NAMESPACE_PATH} $ {LOCAL_FILESYSTEM_MOUNT_POINT}
 
-| Doporučené nastavení příkazu pro připojení | Popis |
+| Doporučené nastavení příkazu pro připojení | Description |
 --- | ---
 ``hard`` | Provizorní připojení k mezipaměti HPC Azure jsou spojená s chybami aplikací a možnou ztrátou dat.
 ``proto=tcp`` | Tato možnost podporuje odpovídající zpracování chyb sítě systému souborů NFS.

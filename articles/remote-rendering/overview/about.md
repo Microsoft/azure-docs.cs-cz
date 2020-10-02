@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: e40109a3c43fa30d70b7a13243723d717b4003c4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 14ebe9dfd11bed2dfaded9f18e23f73d33a708ae
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021431"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650455"
 ---
 # <a name="about-azure-remote-rendering"></a>Informace o službě Azure Remote Rendering
 
@@ -20,11 +20,11 @@ ms.locfileid: "84021431"
 
 *Vzdálená vykreslování Azure* (ARR) je služba, která umožňuje vykreslovat vysoce kvalitní interaktivní 3D obsah v cloudu a streamovat ho v reálném čase do zařízení, jako je například HoloLens 2.
 
-![Vzorový model](../media/arr-engine.png)
+![Diagram, který zobrazuje příklad vykresleného vysoce kvalitního a interaktivního modulu 3D automobilu.](../media/arr-engine.png)
 
 Nepřipojená zařízení mají omezený výpočetní výkon pro vykreslování složitých modelů. U mnoha aplikací by bylo možné nepřijmout, ale omezit vizuální věrnost v libovolném způsobu. Následující snímek obrazovky porovnává model s úplnými podrobnostmi s modelem, který byl Decimated pomocí společného nástroje pro vytváření obsahu:
 
-![Vzorový model](./media/engine-model-decimated.png)
+![Ukázkový model](./media/engine-model-decimated.png)
 
 Redukovaný model se skládá přibližně z 200 000 trojúhelníků (včetně podrobných vnitřních částí), v porovnání s více než 18 000 000 trojúhelníky v původním modelu.
 

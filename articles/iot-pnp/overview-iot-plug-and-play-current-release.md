@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 0ba4d60b9e32a8658fa294de1b78ef4950436eb0
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 723e63d4185adb03ddccadaa2148c665665725c2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91609935"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650013"
 ---
 # <a name="whats-in-the-current-iot-plug-and-play-release"></a>Co je v aktuální verzi technologie Plug and Play IoT
 
@@ -53,7 +53,7 @@ Další informace o knihovnách a sadách SDK najdete v tématu [Microsoft SDK f
 - Sada SDK pro zařízení C [vcpkg 1.3.9](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/setting_up_vcpkg.md)
 - [GitHub](https://github.com/Azure/azure-sdk-for-c/) SDK pro zařízení v sadě C Embedded
 - Sada [1.31.0 NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client) sady SDK pro zařízení .NET
-- Sada SDK pro zařízení Java [Maven 1.25.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client)
+- Sada SDK pro zařízení Java [Maven 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client)
 - [2.3.0 PIP](https://pypi.org/project/azure-iot-device/) sady SDK pro zařízení Python
 - [Npm 1.17.2](https://www.npmjs.com/package/azure-iot-device) sady SDK pro zařízení Node.js
 - .NET – IoT Hub služby [NuGet 1.31.0](https://www.nuget.org/packages/Microsoft.Azure.Devices )

@@ -1,5 +1,5 @@
 ---
-title: Load Balancer resetování protokolu TCP při nečinnosti v Azure
+title: Load Balancer resetování TCP a vypršení časového limitu nečinnosti v Azure
 titleSuffix: Azure Load Balancer
 description: V tomto článku se dozvíte, jak Azure Load Balancer s obousměrnými pakety TCP RST při nečinnosti.
 services: load-balancer
@@ -11,21 +11,23 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/03/2019
+ms.date: 11/09/2019
 ms.author: allensu
-ms.openlocfilehash: 68714053ac92faf8550a3e5f83a526afa1222971
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f77dd21a2c017ee41f955fdf5e0848df190dec2a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808480"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651271"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle"></a>Load Balancer s resetováním při nečinnosti TCP
+# <a name="load-balancer-tcp-reset-and-idle-timeout"></a>Load Balancer resetování TCP a časový limit nečinnosti
 
 Pomocí [Standard Load Balancer](load-balancer-standard-overview.md) můžete pro své scénáře vytvořit předvídatelné chování aplikace tím, že pro dané pravidlo povolíte resetování protokolu TCP pro nečinnost. Výchozím chováním Load Balancer je nejenom tiché vyřazení toků při dosažení časového limitu nečinnosti toku.  Povolení této funkce způsobí, že Load Balancer odesílat obousměrné resety TCP (TCP RST Packet) na časový limit nečinnosti.  Tím se informují koncové body vaší aplikace, ke kterým vypršel časový limit připojení a které už nejsou použitelné.  Koncové body můžou v případě potřeby okamžitě vytvořit nové připojení.
 
 ![Resetování protokolu TCP Load Balancer](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
  
+## <a name="tcp-reset"></a>Resetování protokolu TCP
+
 Toto výchozí chování můžete změnit a povolit odesílání resetů TCP na časový limit nečinnosti u příchozích pravidel NAT, pravidel vyrovnávání zatížení a [odchozích pravidel](https://aka.ms/lboutboundrules).  Pokud je povoleno podle pravidla, Load Balancer odešle obousměrné resetování TCP (pakety TCP RST) do koncových bodů klienta i serveru v době nečinnosti u všech vyhovujících toků.
 
 Koncové body, které obdrží pakety TCP RST, okamžitě zavřou příslušný soket. To poskytuje okamžité oznámení koncovým bodům, k nimž došlo k vydání připojení, a veškerá budoucí komunikace se stejným připojením TCP selže.  Aplikace mohou vyprázdnit připojení v případě, že soket zavře a znovu vytvoří připojení podle potřeby, aniž by čekali na vypršení časového limitu připojení TCP.
@@ -36,41 +38,24 @@ Pokud vaše doby nečinnosti překračují hodnoty povolené konfigurací nebo p
 
 Pečlivě Projděte celý scénář od konce až do konce, abyste se rozhodli, jestli vám doporučujeme povolit resetování protokolu TCP, upravit časový limit nečinnosti a případně provést další kroky, abyste zajistili, že se chování aplikace požaduje.
 
-## <a name="enabling-tcp-reset-on-idle-timeout"></a>Povolení resetování protokolu TCP při nečinnosti
+## <a name="configurable-tcp-idle-timeout"></a>Konfigurovatelný časový limit nečinnosti protokolu TCP
 
-Pomocí rozhraní API verze 2018-07-01 můžete povolit odesílání obousměrných resetů TCP na časový limit nečinnosti u jednotlivých pravidel:
+Azure Load Balancer má nastavení časového limitu nečinnosti na 4 minuty až 120 minut. Ve výchozím nastavení je nastaveno na 4 minuty. Pokud je období neaktivity delší než hodnota časového limitu, není nijak zaručeno, že relace TCP nebo HTTP mezi klientem a vaší cloudovou službou bude zachovaná.
 
-```json
-      "loadBalancingRules": [
-        {
-          "enableTcpReset": true | false,
-        }
-      ]
-```
+Po zavření připojení může klientská aplikace zobrazit následující chybovou zprávu: "základní připojení bylo zavřeno: připojení, které bylo očekáváno jako aktivní, bylo zavřeno serverem."
 
-```json
-      "inboundNatRules": [
-        {
-          "enableTcpReset": true | false,
-        }
-      ]
-```
+Běžným postupem je používání udržování připojení TCP. Tento postup zachovává aktivní připojení po delší dobu. Další informace najdete v těchto [příkladech rozhraní .NET](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Když je povolená možnost Keep-Alive, pakety se odešlou během období nečinnosti na připojení. Pakety Keep-Alive zajišťují, že hodnota časového limitu nečinnosti není dosažena a připojení je udržováno po dlouhou dobu.
 
-```json
-      "outboundRules": [
-        {
-          "enableTcpReset": true | false,
-        }
-      ]
-```
+Nastavení funguje jenom pro příchozí připojení. Aby nedošlo ke ztrátě připojení, nakonfigurujte udržování připojení TCP pomocí intervalu kratšího, než je nastavení časového limitu nečinnosti, nebo zvyšte hodnotu časového limitu nečinnosti. Pro podporu těchto scénářů byla přidána podpora konfigurovatelného časového limitu nečinnosti.
 
-## <a name="region-availability"></a><a name="regions"></a>Dostupnost oblasti
+Udržování připojení TCP funguje ve scénářích, kdy životnost baterie není omezením. Nedoporučuje se pro mobilní aplikace. Při použití udržování připojení TCP v mobilní aplikaci můžete baterii zařízení rychleji vyprázdnit.
 
-K dispozici ve všech oblastech.
 
 ## <a name="limitations"></a>Omezení
 
-- TCP RST se posílá pouze během připojení TCP v navázaném stavu.
+- Resetování TCP se odesílá jenom během navázání připojení TCP.
+- Pro interní nástroje pro vyrovnávání zatížení s nakonfigurovanými porty HA se neposílá TCP resetování.
+- Časový limit nečinnosti protokolu TCP nemá vliv na pravidla vyrovnávání zatížení na protokolu UDP.
 
 ## <a name="next-steps"></a>Další kroky
 

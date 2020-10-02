@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 268293fc1391346090c1423a4290e25a57fbe666
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 54109d5889ae2c08f444a3a089386d413bf4262b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91637267"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650183"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Nasazení modelu Machine Learning pro Azure Functions s využitím Azure cache pro Redis 
 
@@ -23,7 +23,7 @@ Mezipaměť Azure pro Redis je mimořádně výkonná a škálovatelná – při
 > I když jsou všeobecně k dispozici Azure Machine Learning i Azure Functions, možnost zabalit model ze služby Machine Learning for Functions je ve verzi Preview.  
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) .
 * Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
@@ -318,5 +318,5 @@ Po chvíli se skupina prostředků včetně všech prostředků, které obsahuje
 * Další informace o [službě Azure cache pro Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview)
 * Naučte se konfigurovat aplikaci Functions v dokumentaci k [funkcím](/azure/azure-functions/functions-create-function-linux-custom-image) .
 * [Referenční informace k rozhraním API](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) 
-* [Vytvoření aplikace v Pythonu, která používá Azure cache pro Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-python-get-started)
+* Vytvoření [aplikace v Pythonu, která používá Azure cache pro Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-python-get-started)
 

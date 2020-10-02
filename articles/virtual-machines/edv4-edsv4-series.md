@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 15a53ddaa669f0720632901edfd58eb273518867
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 5b0301a57c4223666ac612b997c87c87271fe49b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049617"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649520"
 ---
 # <a name="edv4-and-edsv4-series"></a>Řada Edv4 a Edsv4
 
@@ -24,15 +24,13 @@ Edv4 a Edsv4-Series běží na &reg; procesorech Intel Xeon &reg; Platinum 8272C
 
 Velikosti řady Edv4-Series běží na &reg; &reg; procesorech Intel Xeon Platinum 8272CL (Cascade Lake). Velikost virtuálních počítačů s Edv4 je součástí až 504 GiB paměti RAM, navíc k rychlému a velkému místnímu úložišti SSD (až 2 400 GiB). Tyto virtuální počítače jsou ideální pro podnikové aplikace náročné na paměť a aplikace, které využívají nízkou latenci a vysoce rychlé místní úložiště. K virtuálním počítačům s Edv4 můžete připojit standardní SSD a standardní disková úložiště HDD. 
 
-ACU: 195-210
-
-Premium Storage: nepodporováno
-
-Ukládání Premium Storage do mezipaměti: nepodporováno
-
-Migrace za provozu: podporováno
-
-Aktualizace pro zachování paměti: podporováno
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): nepodporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): nepodporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): podporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
+<br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|
@@ -50,15 +48,13 @@ Aktualizace pro zachování paměti: podporováno
 
 Velikosti řady Edsv4-Series běží na &reg; &reg; procesorech Intel Xeon Platinum 8272CL (Cascade Lake). Velikost virtuálních počítačů s Edsv4 je součástí až 504 GiB paměti RAM, navíc k rychlému a velkému místnímu úložišti SSD (až 2 400 GiB). Tyto virtuální počítače jsou ideální pro podnikové aplikace náročné na paměť a aplikace, které využívají nízkou latenci a vysoce rychlé místní úložiště.
 
-ACU: 195-210
-
-Premium Storage: podporováno
-
-Ukládání Premium Storage do mezipaměti: podporováno
-
-Migrace za provozu: podporováno
-
-Aktualizace pro zachování paměti: podporováno
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): podporováno<br>
+[Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
+[Migrace za provozu](maintenance-and-updates.md): podporováno<br>
+[Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
+<br>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|---|

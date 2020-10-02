@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 88b1eb70814c349d488933179a16c084a0af803c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: efdfc1c12191977c0422cda6c52eb9b73c95c55f
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619963"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651186"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -37,7 +37,6 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 > [Azure Portal](https://portal.azure.com/) můžete použít ke správě [událostí V3 Live](live-events-outputs-concept.md), zobrazení [zdrojů](assets-concept.md) a úloh v3, získání informací o přístupu k rozhraním API a k šifrování obsahu. Pro všechny ostatní úlohy správy (například Správa transformací a úloh) použijte [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 >
 > Podrobnosti najdete v tématu [omezení Azure Portal pro Media Services V3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
-
 
 ## <a name="august-2020"></a>Srpen 2020
 
@@ -264,21 +263,21 @@ Mezi verze V3 rozhraní API pro aktualizace od verze GA patří:
 
 ## <a name="november-2018"></a>Listopad 2018
 
-Modul CLI 2,0 je teď dostupný pro [Azure Media Services V3 GA](/cli/azure/ams?view=azure-cli-latest) – v 2.0.50.
+Modul CLI 2,0 je teď dostupný pro [Azure Media Services V3 GA](/cli/azure/ams?view=azure-cli-latest&preserve-view=true) – v 2.0.50.
 
 ### <a name="new-commands"></a>Nové příkazy
 
-- [AZ AMS Account](/cli/azure/ams/account?view=azure-cli-latest)
-- [AZ AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [AZ AMS Asset](/cli/azure/ams/asset?view=azure-cli-latest)
-- [AZ AMS Asset-Filter](/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [AZ AMS Content-Key-Policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [AZ AMS Job](/cli/azure/ams/job?view=azure-cli-latest)
-- [AZ AMS Live-Event](/cli/azure/ams/live-event?view=azure-cli-latest)
-- [AZ AMS Live-Output](/cli/azure/ams/live-output?view=azure-cli-latest)
-- [AZ AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [AZ AMS streaming – Lokátor](/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [AZ AMS Account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest) -umožňuje správu rezervovaných jednotek médií. Další informace najdete v tématu [škálování rezervovaných jednotek médií](media-reserved-units-cli-how-to.md).
+- [AZ AMS Account](/cli/azure/ams/account?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS Asset](/cli/azure/ams/asset?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS Asset-Filter](/cli/azure/ams/asset-filter?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS Content-Key-Policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS Job](/cli/azure/ams/job?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS Live-Event](/cli/azure/ams/live-event?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS Live-Output](/cli/azure/ams/live-output?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS streaming – Lokátor](/cli/azure/ams/streaming-locator?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS Account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest&preserve-view=true) -umožňuje správu rezervovaných jednotek médií. Další informace najdete v tématu [škálování rezervovaných jednotek médií](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Nové funkce a zásadní změny
 
@@ -404,7 +403,7 @@ V sadě .NET SDK jsou k dispozici následující funkce:
 
 Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 [Pokyny k migraci pro přesun z Media Services V2 na V3](migrate-from-v2-to-v3.md#known-issues).
 

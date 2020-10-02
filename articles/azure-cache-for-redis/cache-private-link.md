@@ -6,25 +6,25 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 1bf204cb1eddb86daee604f791601bbf44884d50
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 4ab754cacc85bc9e7c7b850270df37290ad399b6
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460063"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650157"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure cache pro Redis s privátním propojením Azure (Public Preview)
 V tomto článku se dozvíte, jak vytvořit virtuální síť a mezipaměť Azure pro instanci Redis s privátním koncovým bodem pomocí Azure Portal. Naučíte se také, jak přidat privátní koncový bod do existující služby Azure cache pro instanci Redis.
 
 Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě Azure cache pro Redis využívající privátní propojení Azure. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
 > [!NOTE]
 > Tato funkce je aktuálně ve verzi Public Preview pro omezené oblasti. Pokud nemáte možnost vytvořit privátní koncový bod, [kontaktujte nás](mailto:azurecache@microsoft.com). Chcete-li použít soukromé koncové body, je nutné, aby byla instance Azure cache for Redis vytvořena po 28. července 2020.
 >
-> Oblasti s přístupem Public Preview: Středozápadní USA, Střed USA – sever, Západní USA, Západní USA 2, Východní USA, Východní USA 2, Norsko – východ, Norsko – západ, Evropa – západ, Evropa – západ, Asie – východ, Japonsko – východ, USA – střed, Severní Korea, Kanada – střed, USA – střed, Švýcarsko – sever, Austrálie – střed, Indie – západ, Austrálie – východ a Brazílie – jih.
+> Oblasti s přístupem Public Preview: Středozápadní USA, Střed USA – sever, Západní USA, Západní USA 2, Východní USA, Východní USA 2, Střed USA, Střed USA – jih, Norsko – východ, USA – sever, Severní, Evropa – západ, Asie – východ, Asie – západ, Japonsko – západ, USA – západ, USA – západ, USA – střed, Korea – jih, Švýcarsko – sever Švýcarsko – západ , Jižní Afrika sever, Francie – jih, Francie – střed, Kanada – východ, Kanada – střed Německo – středozápad Německo – sever, USA – střed, USA – střed, Indie – západ, Indie – jih, Brazílie – jihovýchod, Brazílie – jih a Brazílie – jih.
 >
 
 ## <a name="create-a-private-endpoint-with-a-new-azure-cache-for-redis-instance"></a>Vytvoření privátního koncového bodu s novou mezipamětí Azure pro instanci Redis 
