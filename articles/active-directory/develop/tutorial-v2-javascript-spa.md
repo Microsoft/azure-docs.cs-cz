@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: fca1ab61c4c07d8c619719d79872470626137249
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 2cfc0324a06b4d950fc289b9c8ef033e77ffa53f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611176"
+ms.locfileid: "91627903"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA).
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA)
 
 V tomto kurzu vytvoříte jednostránkovou aplikaci (SPA) v JavaScriptu, která se může přihlašovat uživatelům pomocí osobních účtů Microsoft nebo pracovních a školních účtů, a pak získat přístupový token pro volání rozhraní Microsoft Graph API.
 
@@ -35,7 +35,7 @@ V tomto kurzu:
 >[!TIP]
 > V tomto kurzu se používá MSAL.js V1. x, která je omezená na použití implicitního toku udělení pro jednostránkové aplikace. Místo toho doporučujeme, aby všechny nové aplikace používaly [MSAL.js 2. x a tok autorizačního kódu s podporou PKCE a CORS](tutorial-v2-javascript-auth-code.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Node.js](https://nodejs.org/en/download/) pro spuštění místního webového serveru.
 * [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný editor pro úpravu souborů projektu.

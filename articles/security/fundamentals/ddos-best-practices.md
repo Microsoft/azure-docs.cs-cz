@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 3b1a0d646c05be0de83837b33e77e34969c9254c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c817608a9e015c69b252f69000d78437e918b8f8
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287797"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631507"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection – navrhování odolných řešení
 
@@ -54,7 +54,7 @@ V případě [Azure App Service](/azure/app-service/app-service-value-prop-what-
 
 Cílem důkladné obrany je spravovat rizika pomocí různých obrannou linií strategií. Vrstvení zabezpečení v aplikaci omezuje možnost úspěšného útoku. Doporučujeme, abyste pro své aplikace implementovali zabezpečené návrhy pomocí integrovaných možností platformy Azure.
 
-Například riziko útoku se zvyšuje s velikostí (*oblastí Surface*) aplikace. Oblast Surface můžete snížit pomocí seznamu povolených adres, abyste zavřeli vystavený adresní prostor IP adres a naslouchající porty, které nejsou potřeba na nástrojích pro vyrovnávání zatížení ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) a [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)). [Skupiny zabezpečení sítě (skupin zabezpečení sítě)](/azure/virtual-network/security-overview) představují jiný způsob, jak omezit plochu pro útok.
+Například riziko útoku se zvyšuje s velikostí (*oblastí Surface*) aplikace. Oblast povrchu můžete zmenšit pomocí seznamu schválení a uzavřít tak vystavený adresní prostor IP adres a naslouchající porty, které nejsou potřebné v nástrojích pro vyrovnávání zatížení ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) a [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)). [Skupiny zabezpečení sítě (skupin zabezpečení sítě)](/azure/virtual-network/security-overview) představují jiný způsob, jak omezit plochu pro útok.
 [Značky služeb](/azure/virtual-network/security-overview#service-tags) a [skupiny zabezpečení aplikací](/azure/virtual-network/security-overview#application-security-groups) můžete použít k minimalizaci složitosti při vytváření pravidel zabezpečení a konfiguraci zabezpečení sítě, jako přirozené rozšíření struktury aplikace.
 
 Služby Azure ve [virtuální síti](/azure/virtual-network/virtual-networks-overview) byste měli nasazovat, kdykoli to bude možné. Tento postup umožňuje prostředkům služby komunikovat prostřednictvím privátních IP adres. Provoz služeb Azure z virtuální sítě ve výchozím nastavení používá veřejné IP adresy jako zdrojové IP adresy. Použití [koncových bodů služby](/azure/virtual-network/virtual-network-service-endpoints-overview) přepne provoz služby na používání privátních adres virtuální sítě jako zdrojových IP adres při přístupu ke službě Azure z virtuální sítě.

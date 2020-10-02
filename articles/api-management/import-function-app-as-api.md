@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: c6ec2be6daee931a4066ff5ce4f64fc949d497ac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be8a8f35ece946d1be907b2ca13a640bebbb4ee5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243422"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627019"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Naimportujete aplikaci Azure Functions jako rozhraní API ve službě Azure API Management
 
@@ -71,7 +71,7 @@ Podle následujícího postupu vytvoříte z aplikace Azure Function App nové r
     > [!NOTE]
     > Můžete importovat pouze funkce, které jsou založené na triggeru HTTP a mají úroveň autorizace nastavenou na *Anonymní* nebo *Funkce*.
 
-7. Přepněte do **úplného** zobrazení a přiřaďte **Produkt** k novému rozhraní API. V případě potřeby zadejte další pole během vytváření nebo je nakonfigurujte později tak, že na kartu **Nastavení** nakonfigurujete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#-import-and-publish-a-backend-api) .
+7. Přepněte do **úplného** zobrazení a přiřaďte **Produkt** k novému rozhraní API. V případě potřeby zadejte další pole během vytváření nebo je nakonfigurujte později tak, že na kartu **Nastavení** nakonfigurujete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#import-and-publish-a-backend-api) .
 8. Klikněte na **Create** (Vytvořit).
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a>Připojení aplikace Azure Function App k existujícímu rozhraní API
@@ -108,7 +108,7 @@ Podle následujícího postupu připojíte aplikaci Azure Function App k existuj
 
     ![Připojení z aplikace Function App](./media/import-function-app-as-api/append-04.png)
 
-## <a name="authorization"></a><a name="authorization"></a>Udělován
+## <a name="authorization"></a><a name="authorization"></a> Udělován
 
 Při importu aplikace Azure Function App se automaticky vygeneruje:
 
@@ -140,7 +140,7 @@ Přejděte k vaší instanci služby Azure API Management a v nabídce na levé 
 
 ![Přidání z aplikace Function App](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a>Otestujte nové rozhraní API v Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a> Otestujte nové rozhraní API v Azure Portal
 
 Operace můžete volat přímo z webu Azure Portal. Web Azure Portal nabízí pohodlný způsob zobrazení a testování operací v rozhraní API.  
 

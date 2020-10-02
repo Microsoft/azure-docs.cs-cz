@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 74c603576016b72edddb4c0fe7aa970bd8626a4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fedbcf00512e2eb671656ca1c585df83560a8c02
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325211"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627614"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -277,7 +277,7 @@ Podsíť musí mít dostatečný počet dostupných [IP adres](connectivity-arch
 
 **Co dělat, pokud pro provádění operace aktualizace instance není k dispozici dostatek IP adres?**
 
-V případě, že v podsíti, ve které je zřízena vaše spravovaná instance, není dostatek [IP adres](connectivity-architecture-overview.md#network-requirements) , budete muset v rámci ní vytvořit novou podsíť a novou spravovanou instanci. Také doporučujeme, aby se nová podsíť vytvořila s více přidělenými IP adresami, takže budoucí operace aktualizace se vyhnete podobným situacím. Po zřízení nové instance můžete ručně zálohovat a obnovovat data mezi starými a novými instancemi nebo provést obnovení mezi instancemi [v rámci časového okamžiku](point-in-time-restore.md?tabs=azure-powershell).
+V případě, že v podsíti, ve které je zřízena vaše spravovaná instance, není dostatek [IP adres](connectivity-architecture-overview.md#network-requirements) , budete muset v rámci ní vytvořit novou podsíť a novou spravovanou instanci. Také doporučujeme vytvořit novou podsíť s více přidělenými IP adresami, aby při budoucích operacích aktualizace nedocházelo k podobným situacím. Po zřízení nové instance můžete ručně zálohovat a obnovovat data mezi starými a novými instancemi nebo provést obnovení mezi instancemi [v rámci časového okamžiku](point-in-time-restore.md?tabs=azure-powershell).
 
 **Potřebuji prázdnou podsíť pro vytvoření spravované instance?**
 
@@ -334,9 +334,12 @@ Ne, tato možnost není k dispozici.  Pro koncový bod privátních dat použív
 
 **Jaký je doporučený způsob, jak propojit spravované instance umístěné v různých oblastech?**
 
-Způsob, jak to provést, je partnerský vztah okruhu Express Route. Nemusíte ho kombinovat s partnerským vztahem virtuální sítě mezi oblastmi, který není podporovaný z důvodu [omezení](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)souvisejícího s interním vyrovnáváním zatížení.
+Způsob, jak to provést, je partnerský vztah okruhu Express Route. Podpora globálního partnerského vztahu virtuálních sítí se podporuje s omezením popsaným v níže uvedené poznámce.  
 
-Pokud není možné vytvořit partnerský vztah okruhu Express Route, je jedinou jinou možností vytvoření připojení VPN typu Site-to-Site ([Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [POWERSHELL](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)a [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)).
+> [!IMPORTANT]
+> [V 9/22/2020 jsme oznámili globální partnerské vztahy virtuálních sítí pro nově vytvořené virtuální clustery](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). To znamená, že globální partnerský vztah virtuálních sítí je podporován pro spravované instance SQL vytvořené v prázdných podsítích po datu oznámení a také pro všechny následné spravované instance vytvořené v těchto podsítích. Pro všechny ostatní podpory partnerského vztahu spravované instance SQL je omezená na sítě ve stejné oblasti v důsledku [omezení globálního partnerského vztahu virtuálních sítí](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Další podrobnosti najdete v článku o nejčastějších dotazech v příslušné části [Azure Virtual Networks](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . 
+
+Pokud není možné partnerské vztahy okruhu Express Route a globální partnerské vztahy virtuálních sítí, stačí, když vytvoříte připojení VPN typu Site-to-Site ([Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [POWERSHELL](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)a [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)).
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Zmírnění rizik exfiltrace dat  
 

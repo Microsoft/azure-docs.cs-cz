@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 8df50096cc123003299b86da88f9230c95854775
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 954962d4f0f16cb35035527d4cb81d0e13495a86
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450078"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631830"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -49,7 +49,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + AzureML-interpretovat aktualizovaný balíček, který závisí na interpretu 0.15.0 komunity
     + Oprava popisů balíčků PyPI pro AzureML-interpretaci, AzureML-vysvětlující-model, AzureML-contrib-interpretace a AzureML-tensorboard
   + **azureml-pipeline-core**
-    +  `OutputFileDatasetConfig`Při `register_on_complete` volání s `name` parametrem nastaveným na již existující název datové sady se jedná o problém s pevným zavěšením kanálu.
+    +  Pevný problém s potrubím, `OutputFileDatasetConfig` kde systém může přestat reagovat, když `register_on_complete` je volána s `name` parametrem nastaveným na dříve existující název datové sady.
   + **AzureML-Pipeline – kroky**
     + Odstranily se zastaralé poznámkové bloky datacihly.
   + **azureml-tensorboard**
@@ -198,7 +198,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Vylepšená chybová zpráva při pokusu o stažení nebo připojení nesprávného typu datové sady.
   + **azureml-pipeline-core**
     + Opravila se chyba při deserializaci grafu kanálu, který obsahuje registrované datové sady.
-  + **azureml-pipeline-steps**
+  + **AzureML-Pipeline – kroky**
     + RScriptStep podporuje RSection z AzureML. Core. Environment.
     + Z veřejného rozhraní API se odebral parametr passthru_automl_config `AutoMLStep` a převedl ho na jenom interní parametr.
   + **azureml-train-automl-client**
@@ -350,7 +350,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + V případě, že uživatel zakáže featurization, již nebude povoleno vyrovnávání protiúčtu třídy.  
   + **AzureML-contrib-ITP**
     + Typ výpočtu CmAke se podporuje. Vlastní cluster AKS můžete připojit k pracovnímu prostoru pro školicí úlohu.
-  + **azureml-contrib-notebook**
+  + **AzureML-contrib – Poznámkový blok**
     + Vylepšení dokumentů balíčku AzureML-contrib-notebook.
   + **azureml-contrib-pipeline-steps**
     + Vylepšení dokumentu balíčku AzureML-contrib--Pipeline-Steps.
@@ -486,7 +486,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
       + ParallelRunStep nevloží žádné balíčky. uživatel musí do definice prostředí zahrnout balíčky **AzureML-Core** a **AzureML-dataprep [PANDAS, zapékací]** . Pokud se vlastní image Docker používá s user_managed_dependencies pak uživatel musí na Image nainstalovat conda.
       
 + **Změny způsobující chyby**
-  + **AzureML-Pipeline – kroky**
+  + **azureml-pipeline-steps**
     + Jako platný typ vstupu pro AutoMLConfig se zastaralo použití AzureML. dprep. Dataflow.
   + **azureml-train-automl-client**
     + Jako platný typ vstupu pro AutoMLConfig se zastaralo použití AzureML. dprep. Dataflow.
@@ -941,7 +941,7 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
     + pevná serializace DeepScoringExplainer pro modely keras
   + **azureml-pipeline-core**
     + Poznámkový blok kanálu dávky vyhodnocování teď používá ParallelRunStep.
-  + **AzureML-Pipeline – kroky**
+  + **azureml-pipeline-steps**
     + Přesunuto `AutoMLStep` v `azureml-pipeline-steps` balíčku. Zastaralé v `AutoMLStep` rámci `azureml-train-automl-runtime` .
   + **azureml-contrib-pipeline-steps**
     + Nepovinný parametr side_inputs přidaný do ParallelRunStep. Tento parametr lze použít k připojení složky v kontejneru. Aktuálně podporované typy jsou DataReference a PipelineData.
@@ -1399,7 +1399,7 @@ Azure Machine Learning je teď poskytovatel prostředků pro Event Grid, můžet
         all_first_experiments = Experiment.list(workspace, name="First Experiment", view_type="ALL")
         ```
     + Podpora použití prostředí pro nasazení modelů a aktualizace služby.
-  + **[AzureML-dataunášená](https://docs.microsoft.com/python/api/azureml-datadrift)**
+  + **[azureml-datadrift](https://docs.microsoft.com/python/api/azureml-datadrift)**
     + Atribut show třídy [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector) už nepodporuje nepovinný argument with_details. Atribut show bude prezentovat pouze koeficient posunu dat a příspěvek na posun dat pro sloupce funkcí.
     + DataDriftDetector funkce [get_output] Python/API/AzureML-datadrift/AzureML.. DataDriftDetector. DataDriftDetector # Get-Output-start-time-None--End-time-None--Run-ID-None-) změny chování:
       + Vstupní parametr start_time, end_time jsou volitelné místo povinné;
@@ -1761,7 +1761,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Přidání příznaku model_task pro vysvětlení, aby uživatel mohl přepsat výchozí automatickou logiku odvození pro typ modelu.
   + **azureml-mlflow**
     + Opravená chyba v mlflow. AzureML. build_image, kde jsou vnořené adresáře ignorovány.
-  + **AzureML-Pipeline – kroky**
+  + **azureml-pipeline-steps**
     + Přidání možnosti spouštět úlohy JAR v existujícím clusteru Azure Databricks.
     + Přidání podpory instance_pool_id a parametrů cluster_log_dbfs_path pro krok DatabricksStep
     + Přidání podpory pro parametry kanálu v kroku DatabricksStep

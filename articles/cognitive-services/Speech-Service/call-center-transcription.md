@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a11573da29cead49bfb17c2c5df3951229182959
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: c592055be1987786b94623bde5352e2a3cc0e092
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360646"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630147"
 ---
 # <a name="speech-service-for-telephony-data"></a>Služba řeči pro data telefonního subsystému
 
@@ -142,7 +142,7 @@ Vzorový kód je k dispozici na GitHubu pro každou funkci služby Speech. Tyto 
 - [Speech Devices SDK](speech-devices-sdk.md)
 - [REST API: Převod řeči na text](rest-speech-to-text.md)
 - [REST API: převod textu na řeč](rest-text-to-speech.md)
-- [REST API: přepis a přizpůsobení Batch](https://westus.cris.ai/swagger/ui/index)
+- [REST API: přepis a přizpůsobení Batch](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
 ## <a name="next-steps"></a>Další kroky
 

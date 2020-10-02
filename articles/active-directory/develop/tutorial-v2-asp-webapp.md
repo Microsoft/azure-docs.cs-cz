@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 6a5fb517b3ea6626a929da10954bd58cc8e39ef0
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 9ff43202bdace577024413c9cc177de2997a0ad5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574224"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627937"
 ---
-# <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
+# <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Kurz: přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
 
 Tato příručka ukazuje, jak implementovat přihlášení do Microsoftu prostřednictvím řešení ASP.NET MVC pomocí tradiční aplikace založené na webovém prohlížeči a připojení OpenID.
 
@@ -48,7 +48,7 @@ Ukázková aplikace, kterou vytvoříte, je založená na scénáři, ve kterém
 
 Tato příručka používá následující knihovny:
 
-|Knihovna|Description|
+|Knihovna|Popis|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Middleware, který aplikaci umožňuje použít OpenIdConnect pro ověřování|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Middleware, který umožňuje aplikaci udržovat relaci uživatelů pomocí souborů cookie|
@@ -295,7 +295,7 @@ Tento kontroler demonstruje použití atributu `[Authorize]` k ochraně kontrole
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
 
-            //You get the user’s first and last name below:
+            //You get the user's first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
 
             // The 'preferred_username' claim can be used for showing the username
@@ -313,7 +313,7 @@ Tento kontroler demonstruje použití atributu `[Authorize]` k ochraně kontrole
     ```
 
 ### <a name="more-information"></a>Další informace
-Z důvodu použití `[Authorize]` atributu lze všechny metody tohoto kontroleru spustit pouze v případě, že je uživatel ověřený. Pokud uživatel není ověřený a pokusí se získat přístup k řadiči, OWIN spustí výzvu ověřování a vynutí uživatele k ověření. Předchozí kód vyhledá seznam deklarací pro konkrétní atributy uživatele zahrnuté v tokenu ID uživatele. Tyto atributy zahrnují celé jméno uživatele a jeho uživatelské jméno, ale také subjekt globálního identifikátoru uživatele. Obsahuje také *ID tenanta*, které představuje ID organizace uživatele.
+Z důvodu použití `[Authorize]` atributu lze všechny metody tohoto kontroleru spustit pouze v případě, že je uživatel ověřený. Pokud uživatel není ověřený a pokusí se získat přístup k řadiči, OWIN spustí výzvu ověřování a vynutí uživatele k ověření. Předchozí kód vyhledá seznam deklarací pro konkrétní atributy uživatele zahrnuté v tokenu ID uživatele. Mezi tyto atributy patří celé jméno a uživatelské jméno uživatele a také subjekt globálního identifikátoru uživatele. Obsahuje také *ID tenanta*, které představuje ID pro organizaci uživatele.
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>Vytvoření zobrazení pro zobrazení deklarací identity uživatele
 
@@ -427,7 +427,7 @@ Po procházení zobrazení řadiče by se měla zobrazit tabulka, která obsahuj
 
 |Vlastnost |Hodnota |Popis |
 |---|---|---|
-|**Název** |Celé jméno uživatele | Jméno a příjmení uživatele
+|**Název** |Celé jméno uživatele | Křestní jméno a příjmení uživatele
 |**Uživatelské jméno** |uživatelský<span>@domain.com</span> | Uživatelské jméno, které se používá k identifikaci uživatele|
 |**Předmět** |Předmět |Řetězec, který jedinečně identifikuje uživatele napříč webem|
 |**ID tenanta** |Identifikátor GUID | **Identifikátor GUID** , který jednoznačně představuje organizaci Azure AD pro uživatele|

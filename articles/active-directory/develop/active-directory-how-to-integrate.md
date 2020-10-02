@@ -1,5 +1,6 @@
 ---
-title: Jak integrovat s platformou Microsoft identity
+title: Jak integrovat s Microsoft Identity platformou | Azure
+titleSuffix: Microsoft identity platform
 description: Seznamte se s výhodami integrace vaší aplikace s platformou Microsoft identity a získejte prostředky pro funkce, jako je zjednodušené přihlašování, Správa identit, ověřování Multi-Factor Authentication a řízení přístupu.
 services: active-directory
 author: rwike77
@@ -8,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/08/2019
+ms.date: 10/01/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: bdeb27f9e761fefc52c9c97b28d15770e22221f4
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e9724bb2e5377f84904dc77c33375c39f3077dd4
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706162"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631405"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>Integrace s platformou Microsoft identity
 
@@ -45,9 +46,9 @@ Existuje několik způsobů, jak integrovat aplikaci s platformou Microsoft iden
 
 **Použijte platformu Microsoft Identity Platform pro role založené Access Control.**  Správci a vlastníci aplikací můžou přiřadit role uživatelů a skupin k rolím, které definujete při registraci aplikace na platformě Microsoft identity. Informace o roli se odesílají do vaší aplikace v tokenech přihlášení a dají se také číst pomocí rozhraní Microsoft Graph API. Přečtěte si další informace o [použití platformy Microsoft identity pro autorizaci](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
 
-### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Získání přístupu k profilu uživatele, kalendáři, e-mailu, kontaktům, souborům a dalším datům
+### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Získání přístupu k profilu, kalendáři, e-mailu, kontaktům, souborům a dalším uživatelům
 
-**Microsoft Identity Platform je autorizační Server pro Microsoft 365 a další obchodní služby Microsoftu.**  Pokud podporujete platformu Microsoft identity pro přihlášení k vaší aplikaci nebo chcete-li podpořit propojení vašich uživatelských účtů s uživatelskými účty Azure AD pomocí OAuth 2,0, můžete požádat o přístup pro čtení a zápis k profilu uživatele, kalendáři, e-mailu, kontaktům, souborům a dalším informacím. Můžete hladce zapisovat události do kalendáře uživatelů a číst soubory nebo zapisovat na jejich OneDrive. Přečtěte si další informace o [přístupu k rozhraním api Microsoft 365](/previous-versions/office/office-365-api/).
+**Microsoft Identity Platform je autorizační Server pro Microsoft 365 a další obchodní služby Microsoftu.**  Pokud podporujete platformu Microsoft identity pro přihlášení k vaší aplikaci nebo chcete-li podpořit propojení vašich uživatelských účtů s uživatelskými účty Azure AD pomocí OAuth 2,0, můžete požádat o přístup pro čtení a zápis k profilu uživatele, kalendáři, e-mailu, kontaktům, souborům a dalším informacím. Můžete hladce zapisovat události do kalendáře uživatelů a číst soubory nebo zapisovat na jejich OneDrive. Přečtěte si další informace o [rozhraních api Microsoft 365](/graph/overview).
 
 ### <a name="promote-your-application-in-the-azure-and-microsoft-365-marketplaces"></a>Propagace vaší aplikace v tržištích Azure a Microsoft 365
 

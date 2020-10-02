@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: 9a36e0903945a974f73187e4799e978c32f2d961
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: c41f6dbd3b85125ef290539040819ffa1833ef6f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576264"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629638"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Kurz: Upgrade Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -143,10 +143,7 @@ V tomto kurzu jste upgradovali Kubernetes v clusteru AKS. Naučili jste se:
 > * Upgrade uzlů Kubernetes
 > * Ověření úspěšného upgradu
 
-Další informace o službě AKS najdete na následujícím odkazu.
-
-> [!div class="nextstepaction"]
-> [Přehled služby AKS][aks-intro]
+Další informace o AKS najdete v tématu [Přehled AKS][aks-intro]. Pokyny k vytváření úplných řešení s AKS najdete v tématu [doprovodné materiály k řešení AKS][aks-solution-guidance].
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
@@ -160,3 +157,4 @@ Další informace o službě AKS najdete na následujícím odkazu.
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-group-delete]: /cli/azure/group#az-group-delete
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
+[aks-solution-guidance]: /azure/architecture/reference-architectures/containers/aks-start-here

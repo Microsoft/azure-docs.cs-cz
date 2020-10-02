@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c6e3316afc09992d16e17d9d2e2afe6b92dcd22
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a09c4513206bea3462577ecba49b5d77b655b0e0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049039"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628260"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>Podmíněný přístup: podmíněný přístup na základě rizik přihlašování
 
@@ -37,7 +37,7 @@ Existují dvě místa, kde je možné tuto zásadu přiřadit. Organizace by si 
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
    1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **všechny cloudové aplikace**.
-1. V části **podmínky**  >  **rizika uživatele**nastavte **Konfigurovat** na **Ano**. V části **Vyberte úroveň rizika přihlašování, na kterou se budou tyto zásady vztahovat** . 
+1. V části **podmínky**  >  **přihlášení**nastavte nastavit na **Ano**. **Configure** V části **Vyberte úroveň rizika přihlašování, na kterou se budou tyto zásady vztahovat** . 
    1. Vyberte **vysoké** a **střední**.
    1. Vyberte **Hotovo**.
 1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování**a vyberte **Vybrat**.
@@ -46,7 +46,7 @@ Existují dvě místa, kde je možné tuto zásadu přiřadit. Organizace by si 
 
 ## <a name="enable-through-identity-protection"></a>Povolit prostřednictvím Identity Protection
 
-1. Přihlaste se k webu **Azure Portal**.
+1. Přihlaste se na web **Azure Portal**.
 1. Vyberte **všechny služby**a pak vyhledejte **Azure AD Identity Protection**.
 1. Vyberte **zásady rizik přihlašování**.
 1. V části **přiřazení**vyberte **Uživatelé**.

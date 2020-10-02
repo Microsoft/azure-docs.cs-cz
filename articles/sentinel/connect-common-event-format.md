@@ -12,17 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2019
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: cd84a4b50ba32ee3f562ace9b2583cf5e561be84
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d63893ab219854a270652da38c474e3ccad83abc
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320383"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630504"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Připojení externího řešení pomocí běžných formátů událostí
-
 
 Když připojujete externí řešení, které odesílá zprávy CEF, je třeba se připojit ke službě Azure Sentinel pomocí tří kroků:
 
@@ -43,29 +42,28 @@ Případně bude tato instalace existovat, pokud používáte virtuální počí
 
  ![Místní CEF](./media/connect-cef/cef-syslog-onprem.png)
 
-
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
 Nezapomeňte nakonfigurovat zabezpečení počítače podle zásad zabezpečení vaší organizace. Můžete třeba nakonfigurovat síť tak, aby byla v souladu se zásadami zabezpečení podnikové sítě, a změnit porty a protokoly v procesu démona tak, aby odpovídaly vašim požadavkům. Pomocí následujících pokynů můžete zlepšit konfiguraci zabezpečení počítače:  [zabezpečený virtuální počítač v Azure](../virtual-machines/security-policy.md), [osvědčené postupy pro zabezpečení sítě](../security/fundamentals/network-best-practices.md).
 
 Pokud chcete používat komunikaci TLS mezi zdrojem syslog a službou pro předávání syslog, budete muset nakonfigurovat démona syslog (rsyslog nebo syslog-ng) pro komunikaci v TLS: [šifrování provozu syslog pomocí TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [šifrování zpráv protokolu pomocí TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
-
  
 ## <a name="prerequisites"></a>Požadavky
+
 Ujistěte se, že počítač se systémem Linux, který používáte jako proxy, používá jeden z následujících operačních systémů:
 
 - 64bitová
-  - CentOS 6 a 7
+  - CentOS 7 a dílčí verze a vyšší (ne 6)
   - Amazon Linux 2017,09
   - Oracle Linux 6 a 7
-  - Red Hat Enterprise Linux Server 6 a 7
+  - Red Hat Enterprise Linux (RHEL) Server 7 a dílčí verze a vyšší (ne 6)
   - Debian GNU/Linux 8 a 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
   - SUSE Linux Enterprise Server 12
 - 32bitová
-   - CentOS 6
+   - CentOS 7
    - Oracle Linux 6
-   - Red Hat Enterprise Linux Server 6
+   - Red Hat Enterprise Linux Server 7
    - Debian GNU/Linux 8 a 9
    - Ubuntu Linux 14,04 LTS a 16,04 LTS
  
@@ -81,11 +79,10 @@ Ujistěte se, že váš počítač splňuje i následující požadavky:
 - Oprávnění
     - Na počítači musíte mít zvýšená oprávnění (sudo). 
 - Požadavky na software
-    - Ujistěte se, že je v počítači spuštěný Python.
-
-
+    - Ujistěte se, že máte v počítači spuštěný Python (2,7 nebo vyšší).
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto dokumentu jste zjistili, jak připojit zařízení CEF ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).

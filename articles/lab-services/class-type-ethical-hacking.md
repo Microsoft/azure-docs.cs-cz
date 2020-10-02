@@ -3,12 +3,12 @@ title: Nastavení etických laboratoří pro hackery s Azure Lab Services | Micr
 description: Naučte se, jak nastavit testovací prostředí pomocí Azure Lab Services pro učení etických útoků.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5134a7db824bad69f42a4051319479f712051446
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ae0d57223edb68d1bed4ad64a005dd33da019dd0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297582"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631677"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Nastavení testovacího prostředí pro výuku etických tříd hackerů 
 V tomto článku se dozvíte, jak nastavit třídu, která se zaměřuje na forenzníou stranu etických útoků. Testování průniku, praxe používané etickým komunitou pro hackery, nastává, když se někdo pokusí získat přístup k systému nebo síti a Ukázat tak ohrožení zabezpečení, která by škodlivý útočník mohl zneužít. 
@@ -18,7 +18,7 @@ V etických třídách útoku Students se můžou seznámit s moderními technik
 Tento článek obsahuje dvě hlavní části. První část obsahuje informace o tom, jak vytvořit prostředí učebny. Druhá část obsahuje informace o tom, jak vytvořit počítač šablony s povolenou vnořenou virtualizací a s potřebnými nástroji a bitovými kopiemi. V tomto případě bitová kopie Metasploitable a image Kali Linux na počítači, který má povolenou technologii Hyper-V pro hostování imagí.
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
-K nastavení tohoto testovacího prostředí potřebujete předplatné Azure, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Jakmile získáte předplatné Azure, můžete buď vytvořit nový účet testovacího prostředí v Azure Lab Services nebo použít existující účet. V následujícím kurzu najdete postup vytvoření nového účtu testovacího prostředí: [kurz nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure, abyste mohli začít. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Jakmile získáte předplatné Azure, můžete buď vytvořit nový účet testovacího prostředí v Azure Lab Services nebo použít existující účet. V následujícím kurzu najdete postup vytvoření nového účtu testovacího prostředí: [kurz nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).
 
 Podle [tohoto kurzu](tutorial-setup-classroom-lab.md) vytvořte nové testovací prostředí a pak použijte následující nastavení:
 
@@ -70,26 +70,23 @@ Kali je distribuce systému Linux, která obsahuje nástroje pro testování pr�
 ## <a name="set-up-a-nested-vm-with-metasploitable-image"></a>Nastavení vnořeného virtuálního počítače s imagí Metasploitable  
 Obrázek Metasploitable Rapid7 je záměrně nakonfigurovaný jako obrázek s chybami zabezpečení. Tento obrázek použijete k otestování a hledání problémů. Následující pokyny ukazují, jak používat předem vytvořenou image Metasploitable. Pokud je však potřeba novější verze image Metasploitable, přečtěte si téma [https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3) .
 
-1. Přejděte na [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html) . Vyplňte formulář pro stažení obrázku a vyberte tlačítko **Odeslat** .
-1. Klikněte na tlačítko **Stáhnout Metasploitable nyní** .
-1. Po stažení souboru ZIP rozbalte soubor zip a zapamatujte si umístění.
-1. Převeďte extrahovaný soubor VMDK na soubor VHDX, abyste mohli používat technologii Hyper-V. Provedete to tak, že otevřete PowerShell s oprávněními správce a přejdete do složky, kde se nachází soubor VMDK, a pak postupujte podle těchto pokynů:
-    1. Stáhněte si [Microsoft VM Converter](https://download.microsoft.com/download/9/1/E/91E9F42C-3F1F-4AD9-92B7-8DD65DA3B0C2/mvmc_setup.msi)a po zobrazení výzvy spusťte mvmc_setup.msi soubor.
-    1. Naimportujte modul PowerShellu.  Výchozí umístění, ve kterém je modul nainstalovaný, je C:\Program Files\Microsoft Virtual Machine Converter.
-
-        ```powershell
-        Import-Module 'C:\Program Files\Microsoft Virtual Machine Converter\MvmcCmdlet.psd1'
-        ```
-    1. Převeďte VMDK na soubor VHD, který může používat technologie Hyper-V. Tato operace může trvat několik minut.
-    
-        ```powershell
-        ConvertTo-MvmcVirtualHardDisk -SourceLiteralPath .\Metasploitable.vmdk -DestinationLiteralPath .\Metasploitable.vhdx -VhdType DynamicHardDisk -VhdFormat vhdx
-        ```
-    1. Zkopírujte nově vytvořený soubor metasploitable. vhdx do C:\Users\Public\Documents\Hyper-V\Virtual pevného Disks\. 
+1. Stáhněte si bitovou kopii Metasploitable.
+    1. Přejděte na [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html) . Vyplňte formulář pro stažení obrázku a vyberte tlačítko **Odeslat** .
+    2. Klikněte na tlačítko **Stáhnout Metasploitable nyní** .
+    3. Po stažení souboru ZIP rozbalte soubor zip a zapamatujte si umístění souboru Metasploitable. vmdk.
+1. Převeďte extrahovaný soubor VMDK na soubor VHDX, abyste mohli použít soubor VHDX s technologií Hyper-V. K dispozici je několik nástrojů pro převod imagí VMware na image technologie Hyper-V a naopak.  Budeme používat [převaděč STARWIND V2V](https://www.starwindsoftware.com/starwind-v2v-converter).  Pokud ho chcete stáhnout, přejděte na [stránku pro stažení převaděče V2V StarWind](https://www.starwindsoftware.com/starwind-v2v-converter#download).
+    1. Spusťte **převaděč STARWIND V2V**.
+    1. Na stránce **Výběr umístění obrázku, který se má převést** zvolte **místní soubor**.  Vyberte **Další**.
+    1. Na stránce **zdrojový obrázek** přejděte na a vyberte Metasploitable. vmdk extrahovaný v předchozím kroku pro nastavení **název souboru** .  Vyberte **Další**.
+    1. V části **Vybrat umístění cílové image**zvolte **místní soubor**.  Vyberte **Další**.
+    1. Na stránce **Vybrat formát cílového obrázku** zvolte **VHD/VHDX**.  Vyberte **Další**.
+    1. Na stránce **Výběr možnosti pro formát obrázku VHD/VHDX** zvolte **bitovou kopii VHDX**, kterou lze zvětšit.  Vyberte **Další**.
+    1. Na stránce **Vybrat název cílového souboru** přijměte výchozí název souboru.  Vyberte **převést**.
+    1. Na stránce **převádění** počkejte na převedení obrázku.  To může trvat několik minut.  Po dokončení převodu vyberte **Dokončit** .
 1. Vytvořte nový virtuální počítač s technologií Hyper-V.
     1. Otevřete **Správce technologie Hyper-V**.
     1. Vyberte **Akce**  ->  **Nový**  ->  **virtuální počítač**.
-    1. Na stránce **než začnete** v **Průvodci novým virtuálním počítačem**klikněte na **Další**.
+    1. Na stránce **než začnete** v **Průvodci novým virtuálním počítačem**vyberte **Další**.
     1. Na stránce **zadat název a umístění** zadejte **Metasploitable** pro **název**a vyberte **Další**.
 
         ![Průvodce vytvořením bitové kopie virtuálního počítače](./media/class-type-ethical-hacking/new-vm-wizard-1.png)

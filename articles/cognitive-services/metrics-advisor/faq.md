@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 0fde9a0f46073a2f3a24962ea58431581455f474
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e4a75bdd6147ee2189660c37062c5bec9d55d512
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936003"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631731"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Nejčastější dotazy k metrickým nástrojům
 
@@ -74,9 +74,26 @@ Na základě členitosti dat jsou délky historických dat, která budou mít v�
 
 ### <a name="more-concepts-and-technical-terms"></a>Další koncepty a technické výrazy
 
-Další informace najdete v [glosáři](glossary.md) .
+Další informace najdete také v [glosáři](glossary.md) .
 
-## <a name="how-do-i-detect-such-kinds-of-anomalies"></a>Návody detekovat takové typy anomálií? 
+###  <a name="how-do-i-write-a-valid-query-for-ingesting-my-data"></a>Návody napsat platný dotaz pro ingestování mých dat?  
+
+Aby mohl Poradce pro metriky přijímat data, budete muset vytvořit dotaz, který vrací dimenze vašich dat v jednom časovém razítku. Poradce metriky spustí tento dotaz několikrát, aby získal data z jednotlivých časových razítek. 
+
+Všimněte si, že dotaz by měl vracet maximálně jeden záznam pro každou kombinaci dimenzí v daném časovém razítku. Všechny vrácené záznamy musí mít stejné časové razítko. Dotaz nevrátil žádné duplicitní záznamy.
+
+Předpokládejme například, že vytvoříte následující dotaz pro denní metriku: 
+ 
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(DAY, 1, @StartTime)`
+
+Nezapomeňte pro vaši časovou řadu použít správnou členitost. Pro hodinovou metriku byste použili: 
+
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(hour, 1, @StartTime)`
+
+Všimněte si, že tyto dotazy vrací data pouze v jednom časovém razítku a obsahují všechny kombinace dimenzí, které budou ingestovat pomocí Poradce pro metriky. 
+
+:::image type="content" source="media/query-result.png" alt-text="Zpráva, když už existuje prostředek F0" lightbox="media/query-result.png":::
+
 
 ### <a name="how-do-i-detect-spikes--dips-as-anomalies"></a>Návody detekovat špičky & jako anomálie?
 

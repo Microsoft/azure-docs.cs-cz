@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Mi
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: 6137201f8accb901ffe1892d9876b172411cfe6b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee45d2f489b23289e4f92a544590a510e77ece13
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329587"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627946"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrateová matice podpory
 
@@ -34,7 +34,7 @@ Tabulka shrnuje podporované scénáře zjišťování, hodnocení a migrace.
 
 Konkrétní podpora nástrojů je shrnuta v tabulce.
 
-**Nástroj** | **Posouzení** | **Migrate** 
+**Nástroj** | **Posouzení** | **Migrace** 
 --- | --- | ---
 Vyhodnocování serveru Azure Migrate | Posouzení [virtuálních počítačů VMware](tutorial-prepare-vmware.md), [virtuálních počítačů Hyper-V](tutorial-prepare-hyper-v.md)a [fyzických serverů](tutorial-prepare-physical.md). |  Není k dispozici (NA)
 Migrace serverů Azure Migrate | Není k dispozici | Migrujte [virtuální počítače VMware](tutorial-migrate-vmware.md), [virtuální počítače Hyper-V](tutorial-migrate-hyper-v.md)a [fyzické servery](tutorial-migrate-physical-virtual-machines.md).
@@ -97,7 +97,7 @@ Spojené království | Velká Británie – jih nebo Velká Británie – zápa
 USA | Střed USA nebo Západní USA 2
 
 > [!NOTE]
-> Pro oblast Švýcarsko je Švýcarsko – západ k dispozici jenom pro REST API uživatele a potřebujete povolené předplatné.
+> Pro oblast Švýcarsko je Švýcarsko – západ k dispozici jenom pro REST API uživatele a potřebujete schválené předplatné.
 
 ## <a name="supported-geographies-azure-government"></a>Podporovaná geografická oblast (Azure Government)
 

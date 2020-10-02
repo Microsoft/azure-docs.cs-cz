@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: b-juche
-ms.openlocfilehash: 24b3710861f0ee158619ae9103584dcdb181f3d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b01ab9787f86e6905f8d25ad4609385e3f6b6a5a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460445"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628477"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Nejčastější dotazy týkající se výkonu protokolu SMB pro Azure NetApp Files
 
@@ -46,7 +46,7 @@ Windows podporuje vícekanálový protokol SMB, protože systém Windows 2012 pr
 
 Pokud chcete zjistit, jestli vaše síťové adaptéry virtuálních počítačů Azure podporují RSS, spusťte příkaz takto `Get-SmbClientNetworkInterface` a zkontrolujte pole `RSS Capable` : 
 
-![Podpora RSS pro virtuální počítač Azure](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
+![Snímek obrazovky, který zobrazuje výstup RSS pro virtuální počítač Azure.](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
 
 ## <a name="does-azure-netapp-files-support-smb-direct"></a>Podporuje Azure NetApp Files funkci SMB Direct?
 
@@ -58,11 +58,11 @@ Vícekanálový funkce protokolu SMB umožňuje klientovi SMB3 vytvořit fond p�
 
 ## <a name="should-i-configure-multiple-nics-on-my-client-for-smb"></a>Mám v mém klientovi nakonfigurovat více síťových adaptérů pro protokol SMB?
 
-Ne. Klient SMB bude odpovídat počtu síťových adaptérů vráceného serverem SMB.  Každý svazek úložiště je přístupný z jednoho a pouze jednoho koncového bodu úložiště.  To znamená, že pro všechny relace SMB se bude používat jenom jedna síťová karta.  
+No. Klient SMB bude odpovídat počtu síťových adaptérů vráceného serverem SMB.  Každý svazek úložiště je přístupný z jednoho a pouze jednoho koncového bodu úložiště.  To znamená, že pro všechny relace SMB se bude používat jenom jedna síťová karta.  
 
-Jak `Get-SmbClientNetworkInterace` ukazuje výstup níže, má virtuální počítač dvě síťová rozhraní – 15 a 12.  Jak je uvedeno níže v příkazu `Get-SmbMultichannelConnection` , i když jsou k dispozici dvě síťová rozhraní podporující kanály RSS, používá se ve spojení se sdílenou složkou SMB pouze rozhraní 12. rozhraní 15 se nepoužívá.
+Jak `Get-SmbClientNetworkInterace` ukazuje výstup níže, má virtuální počítač 2 síťová rozhraní--15 a 12.  Jak je znázorněno v následujícím příkazu `Get-SmbMultichannelConnection` , i když jsou k dispozici dva síťové adaptéry podporující kanály RSS, používá se v připojení ke sdílené složce SMB jenom rozhraní 12. rozhraní 15 se nepoužívá.
 
-![Síťové karty podporující RSS](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
+![Uvedeném, která zobrazuje výstup pro síťové adaptéry podporující RSS.](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
 
 ## <a name="is-nic-teaming-supported-in-azure"></a>Podporuje se seskupování síťových adaptérů v Azure?
 
@@ -74,25 +74,61 @@ Následující testy a grafy ukazují sílu rozhraní SMB vícekanálový na úl
 
 ### <a name="random-io"></a>Náhodné vstupně-výstupní operace  
 
-Díky funkci SMB vícekanálový zakázanou na klientovi byly čistě 8-KiB testy čtení a zápisu provedeny pomocí FIO a pracovní sady 40-GiB.  Sdílená složka SMB byla mezi jednotlivými testy odpojena s přírůstekem počtu připojení klientů SMB podle nastavení síťového rozhraní RSS `1` ,,, `4` `8` `16` , `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>` . Testy ukazují, že výchozí nastavení `4` je dostatečné pro úlohy náročné na vstupně-výstupní operace; zvýšení na `8` a `16` neměla by mít žádný vliv. 
+V případě, že je v klientovi zakázaná funkce SMB, byla provedena čistě 4 testy čtení a zápisu KiB pomocí FIO a pracovní sady GiB 40.  Sdílená složka SMB byla mezi jednotlivými testy odpojena s přírůstekem počtu připojení klientů SMB podle nastavení síťového rozhraní RSS `1` ,,, `4` `8` `16` , `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>` . Testy ukazují, že výchozí nastavení `4` je dostatečné pro úlohy náročné na vstupně-výstupní operace; zvýšení na `8` a `16` mělo zanedbatelný účinek. 
 
 Příkaz `netstat -na | findstr 445` ukázal, že další připojení byla vytvořena s přírůstky od `1` do `4` až do `8` `16` .  Čtyři jádra procesoru se během každého testu plně využila pro protokol SMB, jak potvrzují statistiky Perfmon `Per Processor Network Activity Cycles` (nezahrnuje se v tomto článku).
 
-![Náhodné vstupně-výstupní testy](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
+![Graf, který znázorňuje náhodné porovnání vstupně-výstupních operací s protokolem SMB vícekanálový.](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
 
-Virtuální počítač Azure nemá vliv na limity vstupně-výstupních operací úložiště SMB (ani NFS).  Jak vidíte níže, typ instance D16 má omezení 32 000 pro úložiště s mezipamětí a 25 600 pro neuložené IOPS úložiště.  Graf výše ale ukazuje mnohem více vstupně-výstupních operací přes protokol SMB.
+Virtuální počítač Azure nemá vliv na limity vstupně-výstupních operací úložiště SMB (ani NFS).  Jak je znázorněno v následujícím grafu, typ instance D32ds má omezení 308 000 pro úložiště s mezipamětí a 51 200 pro neuložené IOPS úložiště.  Graf výše ale ukazuje mnohem více vstupně-výstupních operací přes protokol SMB.
 
-![Porovnání náhodných vstupně-výstupních operací](../media/azure-netapp-files/azure-netapp-files-random-io-tests-list.png)
+![Graf, který znázorňuje náhodný srovnávací vstupně-výstupní operace testu.](../media/azure-netapp-files/azure-netapp-files-random-io-tests-list.png)
 
 ### <a name="sequential-io"></a>Sekvenční v/v 
 
-Testy podobné testům náhodných vstupně-výstupních operací byly provedeny pomocí 64-KiB sekvenčního vstupu/výstupu. I když se zvýšení počtu připojení klientů na síťové rozhraní RSS nad rámec 4 neprojeví v náhodných vstupně-výstupních operacích, neplatí to pro sekvenční vstupně-výstupní operace. Jak ukazuje následující graf, každé zvýšení je přidruženo k odpovídajícímu nárůstu propustnosti čtení. Propustnost zápisu trvalá v důsledku omezení šířky pásma sítě, které Azure používá pro jednotlivé typy a velikosti instancí. 
+Testy podobné testům náhodných vstupně-výstupních operací byly provedeny pomocí 64-KiB sekvenčních vstupně-výstupních operací. I když se zvýšení počtu připojení klientů na síťové rozhraní RSS nad rámec 4 neprojeví v náhodných vstupně-výstupních operacích, neplatí to pro sekvenční vstupně-výstupní operace. Jak ukazuje následující graf, každé zvýšení je přidruženo k odpovídajícímu nárůstu propustnosti čtení. Propustnost zápisu trvalá v důsledku omezení šířky pásma sítě, které Azure používá pro jednotlivé typy a velikosti instancí. 
 
-![Sekvenční vstupně-výstupní testy](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests.png)
+![Graf, který zobrazuje porovnání testů propustnosti.](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests.png)
 
-Azure umisťuje omezení přenosové rychlosti sítě na jednotlivé typy a velikosti virtuálních počítačů. Limit přenosové rychlosti se ukládá jenom na odchozí provoz. Počet síťových adaptérů přítomných na virtuálním počítači nemá žádný vliv na celkovou šířku pásma dostupnou pro daný počítač.  Například typ instance D16 má zavedený limit sítě 8000 MB/s (1 000 MiB/s).  Jak vidíte sekvenční graf výše, má tento limit vliv na odchozí přenos (zápisy), ale ne vícekanálový čtení.
+Azure umisťuje omezení přenosové rychlosti sítě na jednotlivé typy a velikosti virtuálních počítačů. Limit přenosové rychlosti se ukládá jenom na odchozí provoz. Počet síťových adaptérů přítomných na virtuálním počítači nemá žádný vliv na celkovou šířku pásma dostupnou pro daný počítač.  Například typ instance D32ds má zavedený limit sítě 16 000 MB/s (2 000 MiB/s).  Jak vidíte sekvenční graf výše, má tento limit vliv na odchozí přenos (zápisy), ale ne vícekanálový čtení.
 
-![Porovnání sekvenčního vstupu a výstupu](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests-list.png)
+![Graf, který ukazuje přírůstkový vstupně-výstupní porovnání testů.](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests-list.png)
+
+## <a name="what-performance-is-expected-with-a-single-instance-with-a-1-tb-dataset"></a>Jaký výkon se očekává s jedinou instancí s datovou sadou 1 TB?
+
+Pro zajištění podrobnějšího přehledu o úlohách pomocí směsí pro čtení a zápis se v následujících dvou grafech zobrazuje výkon jediného cloudu úrovně Ultra na úrovni služby 50 TB s datovou sadou 1 TB a s protokolem SMB vícekanálový 4. Použil se optimální IODeptha 16 a v/v byly použity parametry flexibilní v/v (FIO), které zajistí plné využití šířky pásma sítě ( `numjobs=16` ).
+
+Následující graf znázorňuje výsledky 4k náhodných vstupně-výstupních operací s jednou instancí virtuálních počítačů a kombinací čtení/zápisu v 10% intervalech:
+
+![Graf, který zobrazuje Windows 2019 Standard _D32ds_v4 4K test Random v/v.](../media/azure-netapp-files/smb-performance-standard-4k-random-io.png)
+
+Následující graf znázorňuje výsledky sekvenčního vstupu a výstupu:
+
+![Graf, který zobrazuje Sekvenční propustnost Windows 2019 Standard _D32ds_v4 64.](../media/azure-netapp-files/smb-performance-standard-64k-throughput.png)
+
+## <a name="what-performance-is-expected-when-scaling-out-using-5-vms-with-a-1-tb-dataset"></a>Jaký výkon se očekává při horizontálním navýšení kapacity pomocí 5 virtuálních počítačů s datovou sadou o velikosti 1 TB?
+
+Tyto testy s 5 virtuálními počítači používají stejné testovací prostředí jako jeden virtuální počítač, přičemž každý proces zapisuje do vlastního souboru.
+
+Následující graf znázorňuje výsledky náhodných vstupně-výstupních operací:
+
+![Graf, který zobrazuje Windows 2019 Standard _D32ds_v4 4K 5-instance randio IO test.](../media/azure-netapp-files/smb-performance-standard-4k-random-io-5-instances.png)
+
+Následující graf znázorňuje výsledky sekvenčního vstupu a výstupu:
+
+![Graf, který zobrazuje Windows 2019 Standard _D32ds_v4 64 KB-instance Sekvenční propustnost.](../media/azure-netapp-files/smb-performance-standard-64k-throughput-5-instances.png)
+
+## <a name="how-do-you-monitor-hyper-v-ethernet-adapters-and-ensure-that-you-maximize-network-capacity"></a>Jak monitorovat adaptéry pro ethernetové technologie Hyper-V a zajistit maximální kapacitu sítě?  
+
+Jedna strategie používaná při testování pomocí FIO je nastavena `numjobs=16` . Rozvětvení každé úlohy do 16 specifických instancí maximalizuje Microsoft Hyper-V síťový adaptér.
+
+Aktivitu můžete u každého z adaptérů v nástroji Sledování výkonu systému Windows ověřit tak, že vyberete **sledování výkonu > přidat čítače > síťové rozhraní > Microsoft Hyper-V síťový adaptér**.
+
+![Snímek obrazovky, který ukazuje sledování výkonu přidat rozhraní čítače.](../media/azure-netapp-files/smb-performance-performance-monitor-add-counter.png)
+
+Po spuštění datového provozu na svazcích můžete monitorovat adaptéry v nástroji Sledování výkonu systému Windows. Pokud nepoužíváte všechny tyto 16 virtuální adaptéry, možná nemaximalizujete kapacitu šířky pásma sítě.
+
+![Snímek obrazovky, který zobrazuje výstup sledování výkonu.](../media/azure-netapp-files/smb-performance-performance-monitor-output.png)
 
 ## <a name="is-accelerated-networking-recommended"></a>Doporučuje se akcelerované síťové služby?
 
@@ -115,7 +151,7 @@ Podepisování SMB se podporuje pro všechny verze protokolu SMB, které podporu
 
 Podepisování SMB má škodlivý účinek na výkon protokolu SMB. Kromě jiných potenciálních příčin snížení výkonu digitální podepisování každého paketu spotřebovává další procesor na straně klienta, jak ukazuje následující výstup Perfmon. V tomto případě se zobrazí základní hodnota 0 zodpovědná za SMB, včetně podepisování SMB.  Porovnání s čísly propustnosti nevícekanálových sekvenčních čtení v předchozí části ukazuje, že podepisování SMB snižuje celkovou propustnost z 875MiB/s na přibližně 250MiB/s. 
 
-![Dopad na výkon podepisování SMB](../media/azure-netapp-files/azure-netapp-files-smb-signing-performance.png)
+![Graf, který zobrazuje dopad na výkon podepisování protokolu SMB.](../media/azure-netapp-files/azure-netapp-files-smb-signing-performance.png)
 
 
 ## <a name="next-steps"></a>Další kroky  

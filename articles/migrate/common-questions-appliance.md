@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure Migrate zařízením
 description: Získejte odpovědi na běžné otázky týkající se zařízení Azure Migrate.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 6c1e5099f208788919d27ba3d2b1de296f0d91a6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7839c2678152837cc9217e6afe13f7cca36ab4b0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526557"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630487"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Zařízení Azure Migrate: běžné otázky
 
@@ -42,7 +42,7 @@ Zařízení se dá nasadit takto:
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Jak se zařízení připojuje k Azure?
 
-Zařízení se může připojit přes Internet nebo pomocí Azure ExpressRoute. Ujistěte se, že tyto [adresy URL](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) jsou na seznamu povolených, aby se zařízení mohlo připojit k Azure.
+Zařízení se může připojit přes Internet nebo pomocí Azure ExpressRoute. Ujistěte se, že jsou tyto [adresy URL](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) schválené pro připojení zařízení k Azure.
 
 - Pokud chcete používat Azure ExpressRoute pro Azure Migrate provozu replikace, vyžaduje se partnerský vztah Microsoftu nebo existující veřejný partnerský vztah (veřejný partnerský vztah je zastaralý pro nové vytváření ER).
 - Replikace přes Azure ExpressRoute jenom s povoleným privátním partnerským vztahem není podporovaná.

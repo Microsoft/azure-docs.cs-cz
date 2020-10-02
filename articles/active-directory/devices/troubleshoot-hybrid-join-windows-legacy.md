@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 361b27ce84417b30fe58ac7651f70f8c72f8a16a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74379116"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627368"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Řešení potíží s modulem hybridní Azure Active Directory připojená zařízení nižší úrovně 
 
 Tento článek se týká pouze následujících zařízení: 
 
-- Windows 7 
+- Windows 7 
 - Windows 8.1 
 - Windows Server 2008 R2 
 - Windows Server 2012 
@@ -40,7 +40,6 @@ Tento článek poskytuje pokyny k odstraňování potíží, jak řešit potenci
 
 - Hybridní připojení ke službě Azure AD pro zařízení se systémem Windows nižší úrovně funguje mírně jinak než ve Windows 10. Mnoho zákazníků si neuvědomuje, že potřebují AD FS (pro federované domény) nebo bezproblémové nakonfigurované jednotné přihlašování (pro spravované domény).
 - Pro zákazníky s federované doménami, pokud je spojovací bod služby (SCP) nakonfigurovaný tak, aby odkazoval na název spravované domény (například contoso.onmicrosoft.com namísto contoso.com), nebude připojení hybridní služby Azure AD pro zařízení s Windows nižší úrovně fungovat.
-- Maximální počet zařízení na uživatele aktuálně platí i pro zařízení připojená k hybridní službě Azure AD. 
 - Stejné fyzické zařízení se ve službě Azure AD objevuje vícekrát, když se na zařízení připojená k hybridní službě Azure AD přihlašuje více uživatelů domény.  Například pokud se k zařízení přihlásí *pnovak* a *jharnett* , vytvoří se pro každou z nich samostatná registrace na kartě informace o **uživateli** . 
 - V případě přeinstalace operačního systému nebo ruční opětovné registrace můžete na kartě informace o uživateli získat také více položek zařízení.
 - Počáteční registrace/připojení zařízení je nakonfigurované tak, aby se pokusila provést pokus buď při přihlášení, nebo při zamčení nebo odemčení. V rámci úlohy plánovače úloh může být prodleva 5 minut spuštěna. 

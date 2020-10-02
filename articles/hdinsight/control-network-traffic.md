@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: a33bc5816ded7cdca75737b02add0a6ca8821700
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 929956d6f439df2a2e7cb8d1b950f5e68cdeab68
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400190"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631711"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Řízení síťového provozu ve službě Azure HDInsight
 
@@ -58,7 +58,7 @@ Příklad nastavení UDR pomocí Azure Firewall najdete v tématu [Konfigurace o
 
 ## <a name="required-ports"></a>Požadované porty
 
-Pokud máte v úmyslu používat **bránu firewall** a přistupovat ke clusteru mimo jiné na určitých portech, budete možná muset na těchto portech, které jsou potřeba pro váš scénář, zapnout provoz. Ve výchozím nastavení se nevyžaduje žádný zvláštní seznam povolených portů, pokud provoz správy Azure, který je vysvětlen v předchozí části, má povolený přístup ke clusteru na portu 443.
+Pokud máte v úmyslu používat **bránu firewall** a přistupovat ke clusteru mimo jiné na určitých portech, budete možná muset na těchto portech, které jsou potřeba pro váš scénář, zapnout provoz. Ve výchozím nastavení se nevyžaduje žádné speciální filtrování portů, dokud provoz správy Azure, který je vysvětlen v předchozí části, může oslovit cluster na portu 443.
 
 Seznam portů pro konkrétní služby najdete v tématu [porty používané službou Apache Hadoop Services na dokumentu HDInsight](hdinsight-hadoop-port-settings-for-services.md) .
 

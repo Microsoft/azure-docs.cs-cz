@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 09/10/2020
-ms.openlocfilehash: 7383d9f95435775448f7322d9eb7707f676e9952
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 774b605859df41e0b71ee82c38a6b08bdf5b9c49
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007039"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629807"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Přesuňte službu Azure Kognitivní hledání do jiné oblasti Azure.
 
@@ -27,7 +27,7 @@ Zákazníci si občas vyžádají o přesunutí vyhledávací služby do jiné o
 
 + Ujistěte se, že cílová oblast podporuje služby a funkce, které váš účet využívá.
 
-+ V případě funkcí Preview se ujistěte, že je vaše předplatné v cílové oblasti uvedené na seznamu povolených.
++ V případě funkcí verze Preview se ujistěte, že je vaše předplatné schválené pro cílovou oblast.
 
 ## <a name="prepare-and-move"></a>Příprava a přesun
 

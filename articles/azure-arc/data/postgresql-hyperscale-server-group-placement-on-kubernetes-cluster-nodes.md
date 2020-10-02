@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5da00916a3f7a6a3685b1de1c56dd032355e28fa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2b69eb076c727a4383b7459ef914ac79dca31c84
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935823"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628413"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Umístění skupiny serverů PostgreSQL s podporou rozšíření Azure ARC
 
@@ -46,7 +46,7 @@ aks-agentpool-42715708-vmss000003   Ready    agent   11h   v1.17.9
 
 Architekturu lze znázornit jako:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/2_logical_cluster.png" alt-text="Logická reprezentace 4 uzlů seskupených v clusteru Kubernetes":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/2_logical_cluster.png" alt-text="cluster AKS se čtyřmi uzly v Azure Portal":::
 
 Cluster Kubernetes hostuje jeden řadič dat ARC Azure a jednu skupinu serverů s podporou rozšíření Azure ARC PostgreSQL. Tato skupina serverů se skládá ze tří instancí PostgreSQL: jednoho koordinátora a dva pracovní procesy.
 
@@ -121,7 +121,7 @@ Containers:
 
 Každý z nich, který je součástí PostgreSQL skupiny serverů s podporou ARC Azure, je hostitelem následujících tří kontejnerů:
 
-|Kontejnery|Description
+|Containers|Popis
 |----|----|
 |`Fluentbit` |Data * kolektor protokolů: https://fluentbit.io/
 |`Postgres`|Část instance PostgreSQL skupiny serverů s povoleným PosgreSQLm rozšířením Azure ARC
@@ -129,7 +129,7 @@ Každý z nich, který je součástí PostgreSQL skupiny serverů s podporou ARC
 
 Architektura vypadá takto:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="3 lusky umístěné na samostatných uzlech":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="cluster AKS se čtyřmi uzly v Azure Portal":::
 
 To znamená, že v tomto okamžiku je každá instance PostgreSQL tvořící PostgreSQLou skupinu serverů s podporou Azure ARC hostovaná na konkrétním fyzickém hostiteli v kontejneru Kubernetes. Toto je nejlepší konfigurace, která vám umožní dosáhnout co nejvyššího výkonu ze skupiny serverů PostgreSQL s povoleným rozšířením Azure ARC jako každá role (koordinátor a pracovní procesy) pomocí prostředků každého fyzického uzlu. Tyto prostředky nejsou sdíleny mezi několika PostgreSQL rolemi.
 
@@ -207,7 +207,7 @@ A Všimněte si, že pod novým pracovníkem (postgres01-3) byl umístěn na ste
 
 Architektura vypadá takto:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="Čtvrtý pod na stejném uzlu jako koordinátor":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="cluster AKS se čtyřmi uzly v Azure Portal":::
 
 Proč není nový pracovní proces/uzel umístěn na zbývajícím fyzickém uzlu clusteru Kubernetes AKS-neznámá-42715708-vmss000003?
 
@@ -217,25 +217,25 @@ Pomocí stejných příkazů jako v předchozích krocích. Vidíte, co každý 
 
 |Jiné názvy lusků\* |Využití|Kubernetes fyzický uzel hostující lusky
 |----|----|----
-|zaváděcí nástroj – jh48b||AKS-neznámá-42715708-vmss000003
+|zaváděcí nástroj – jh48b|Toto je služba, která zpracovává příchozí požadavky na vytváření, úpravu a odstraňování vlastních prostředků, jako jsou například spravované instance SQL, PostgreSQL skupiny serverů a řadiče dat.|AKS-neznámá-42715708-vmss000003
 |Control – gwmbs||AKS-neznámá-42715708-vmss000002
-|controldb-0||AKS-neznámá-42715708-vmss000001
-|controlwd-zzjp7||AKS-neznámá-42715708-vmss000000
-|logsdb-0|Elasticsearch, přijímá data z `Fluentbit` kontejneru každého pod|AKS-neznámá-42715708-vmss000003
-|logsui-5fzv5||AKS-neznámá-42715708-vmss000003
-|metricsdb-0|InfluxDB přijímá data z `Telegraf` kontejneru každého pod.|AKS-neznámá-42715708-vmss000000
-|metricsdc-47d47||AKS-neznámá-42715708-vmss000002
-|metricsdc-864kj||AKS-neznámá-42715708-vmss000001
-|metricsdc-l8jkf||AKS-neznámá-42715708-vmss000003
-|metricsdc-nxm4l||AKS-neznámá-42715708-vmss000000
-|metricsui-4fb7l||AKS-neznámá-42715708-vmss000003
-|mgmtproxy-4qppp||AKS-neznámá-42715708-vmss000002
+|controldb-0|Toto je úložiště dat kontroléru, které se používá k uložení konfigurace a stavu pro řadič dat.|AKS-neznámá-42715708-vmss000001
+|controlwd-zzjp7|Toto je služba "sledovací pes", která zajišťuje oči v dostupnosti řadiče pro data Controller.|AKS-neznámá-42715708-vmss000000
+|logsdb-0|Toto je elastická instance hledání, která se používá k ukládání všech protokolů shromážděných napříč všemi lusky ARC. Elasticsearch, přijímá data z `Fluentbit` kontejneru každého pod|AKS-neznámá-42715708-vmss000003
+|logsui-5fzv5|Jedná se o instanci Kibana, která se nachází na začátku elastické vyhledávací databáze a prezentuje grafické rozhraní Log Analytics.|AKS-neznámá-42715708-vmss000003
+|metricsdb-0|Jedná se o instanci InfluxDB, která se používá k uložení všech metrik shromážděných napříč všemi lusky ARC (Data Services). InfluxDB přijímá data z `Telegraf` kontejneru každého pod.|AKS-neznámá-42715708-vmss000000
+|metricsdc-47d47|Jedná se o daemonset nasazený na všech uzlech Kubernetes v clusteru za účelem shromažďování metrik na úrovni uzlu o uzlech.|AKS-neznámá-42715708-vmss000002
+|metricsdc-864kj|Jedná se o daemonset nasazený na všech uzlech Kubernetes v clusteru za účelem shromažďování metrik na úrovni uzlu o uzlech.|AKS-neznámá-42715708-vmss000001
+|metricsdc-l8jkf|Jedná se o daemonset nasazený na všech uzlech Kubernetes v clusteru za účelem shromažďování metrik na úrovni uzlu o uzlech.|AKS-neznámá-42715708-vmss000003
+|metricsdc-nxm4l|Jedná se o daemonset nasazený na všech uzlech Kubernetes v clusteru za účelem shromažďování metrik na úrovni uzlu o uzlech.|AKS-neznámá-42715708-vmss000000
+|metricsui-4fb7l|Jedná se o instanci Grafana, která je umístěná na databázi InfluxDB a prezentuje grafické rozhraní řídicího panelu monitorování.|AKS-neznámá-42715708-vmss000003
+|mgmtproxy-4qppp|Toto je vrstva proxy webových aplikací, která je umístěná před instancemi Grafana a Kibana.|AKS-neznámá-42715708-vmss000002
 
 > \* Přípona názvu pod se bude lišit v ostatních nasazeních. Tady uvádíme jenom lusky hostované v oboru názvů Kubernetes v řadiči dat ARC Azure.
 
 Architektura vypadá takto:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="Všechny lusky v oboru názvů na různých uzlech":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="cluster AKS se čtyřmi uzly v Azure Portal":::
 
 To znamená, že uzly koordinátora (pod 1) skupiny serverů s povoleným Postgresým rozšířením Azure budou sdílet stejné fyzické prostředky jako třetí pracovní uzel (pod 4) skupiny serverů. To je přijatelné, protože uzel koordinátora obvykle používá velmi málo prostředků v porovnání s tím, co může pracovní uzel používat. Od toho můžete odvodit, že byste měli pečlivě vybrat:
 - velikost clusteru Kubernetes a vlastností každého z jeho fyzických uzlů (Memory, vCore)
@@ -259,16 +259,16 @@ Pojďme do clusteru AKS přidat pátý uzel:
 :::row-end:::
 :::row:::
     :::column:::
-        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/6_layout_before.png" alt-text="Azure Portal rozložení před":::
+        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/6_layout_before.png" alt-text="cluster AKS se čtyřmi uzly v Azure Portal":::
     :::column-end:::
     :::column:::
-        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/7_layout_after.png" alt-text="Azure Portal rozložení po":::
+        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/7_layout_after.png" alt-text="cluster AKS se čtyřmi uzly v Azure Portal":::
     :::column-end:::
 :::row-end:::
 
 Architektura vypadá takto:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/8_logical_layout_after.png" alt-text="Logické rozložení v clusteru Kubernetes po aktualizaci":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/8_logical_layout_after.png" alt-text="cluster AKS se čtyřmi uzly v Azure Portal":::
 
 Pojďme se podívat na to, které části oboru názvů řadiče dat ARC jsou hostované na novém fyzickém uzlu AKS spuštěním příkazu:
 
@@ -278,7 +278,7 @@ kubectl describe node aks-agentpool-42715708-vmss000004
 
 A pojďme aktualizovat reprezentace architektury našeho systému:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/9_updated_list_of_pods.png" alt-text="Všechny lusky v logickém diagramu clusteru":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/9_updated_list_of_pods.png" alt-text="cluster AKS se čtyřmi uzly v Azure Portal":::
 
 Můžeme si všimnout, že nový fyzický uzel clusteru Kubernetes je hostitelem jenom metrik pod, který je nezbytný pro datové služby Azure ARC. Všimněte si, že v tomto příkladu se zaměřujeme jenom na obor názvů řadiče dat ARC, Nepředstavujeme jiné lusky.
 
@@ -353,7 +353,7 @@ A sledujte, na čem se běhy spouští:
 
 A architektura vypadá takto:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/10_kubernetes_schedules_newest_pod.png" alt-text="Kubernetes plány na nejnovější pod v uzlu s nejnižším využitím":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/10_kubernetes_schedules_newest_pod.png" alt-text="cluster AKS se čtyřmi uzly v Azure Portal":::
 
 Kubernetes naplánovala nový PostgreSQL pod v nejméně načteném fyzickém uzlu clusteru Kubernetes.
 

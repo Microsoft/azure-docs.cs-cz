@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 4450b0bcc06b048fd9ad42d2a7bf1c588816eae7
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8861e641f5ee6a10576425a7702ba02da297a0bf
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115607"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631269"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>Použití atributů rozšíření schématu adresáře v deklaracích identity
 
@@ -35,7 +35,7 @@ Identifikátor atributu rozšíření schématu adresáře má *Extension_xxxxxx
 Atributy rozšíření schématu adresáře lze registrovat a naplnit jedním ze dvou způsobů:
 
 - Konfigurací služby AD Connect tak, aby se vytvořila a synchronizoval data do nich z místní služby AD. Viz [Azure AD Connect synchronizace adresářů](../hybrid/how-to-connect-sync-feature-directory-extensions.md).
-- Použití Microsoft Graph k registraci, nastavení hodnot a čtení z atributů rozšíření schématu adresáře [rozšíření schématu adresáře | Graph API konceptů](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions) a/nebo prostředí PowerShell a [Správa atributů rozšíření pomocí rutin prostředí PowerShell pro AzureAD](/powershell/azure/active-directory/using-extension-attributes-sample?view=azureadps-2.0).
+- Použitím Microsoft Graph k registraci, nastavení hodnot a čtení z [rozšíření schématu](/graph/extensibility-overview). K dispozici jsou také [rutiny prostředí PowerShell](/powershell/azure/active-directory/using-extension-attributes-sample) .
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>Generování deklarací identity s daty z atributů rozšíření schématu adresáře vytvořených pomocí služby AD Connect
 Atributy rozšíření schématu adresáře vytvořené a synchronizované pomocí služby AD Connect jsou vždycky přidružené k ID aplikace používané službou AD Connect. Je možné je použít jako zdroj pro deklarace identity tím, že je nakonfigurujete jako deklarace identity v konfiguraci **podnikových aplikací** v uživatelském rozhraní portálu pro aplikace SAML zaregistrované v rámci **podnikových aplikací**pomocí Galerie nebo pomocí zásad mapování deklarací pro aplikace zaregistrované prostřednictvím prostředí pro registraci aplikací.  Jakmile se atribut rozšíření adresáře, který se vytvoří prostřednictvím služby AD Connect, nachází v adresáři, zobrazí se v uživatelském rozhraní konfigurace deklarací pro jednotné přihlašování SAML.
@@ -58,7 +58,7 @@ Tady je například zásada pro mapování deklarací identity k vygenerování 
                 "Source": "User",
                 "ExtensionID": "extension_xxxxxxx_test",
                 "JWTClaimType": "http://schemas.contoso.com/identity/claims/exampleclaim"
-            }, 
+            },
         ]
     }
 }
@@ -72,5 +72,5 @@ Kde *xxxxxxx* je ID aplikace, se kterou bylo rozšíření registrováno.
 > Parametr ID ve schématu deklarací identity použitý pro předdefinované atributy adresáře je "ExtensionID" pro atributy rozšíření adresáře.
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si, jak [Přidat vlastní nebo další deklarace k tokenům SAML 2,0 a JSON Webtokens (Jwt)](active-directory-optional-claims.md). 
+- Přečtěte si, jak [Přidat vlastní nebo další deklarace k tokenům SAML 2,0 a JSON Webtokens (Jwt)](active-directory-optional-claims.md).
 - Přečtěte si, jak [přizpůsobit deklarace identity vydávané v tokenech pro konkrétní aplikaci](active-directory-claims-mapping.md).

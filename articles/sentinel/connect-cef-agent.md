@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2020
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: a7d7c7b7236841835866ccb7786e7e4eab767c1f
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: a54dfa0f2b072d30cac605937a1b623ef9d4051d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565583"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631490"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Krok 1: nasazení serveru pro překládání protokolů
 
@@ -39,7 +39,7 @@ V tomto kroku určíte a nakonfigurujete počítač se systémem Linux, který p
 - Je nutné, aby byl v počítači se systémem Linux nainstalován Python.<br>Použijte `python -version` příkaz pro kontrolu.
 - Před instalací agenta Log Analytics nesmí být počítač se systémem Linux připojen k žádnému pracovnímu prostoru Azure.
 
-## <a name="run-the-deployment-script"></a>Spuštění skriptu nasazení
+## <a name="run-the-deployment-script"></a>Spuštění zaváděcího skriptu
  
 1. V navigační nabídce Azure Sentinel klikněte na **datové konektory**. V seznamu konektorů klikněte na dlaždici **CEF (Common Event Format)** a pak na tlačítko **otevřít konektor** na pravé straně. 
 
@@ -71,74 +71,131 @@ Zvolením démona syslog zobrazíte příslušný popis.
 
 1. **Stažení a instalace agenta Log Analytics:**
 
-    - Stáhne instalační skript pro agenta Log Analytics (OMS) Linux.<br>
-        `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
+    - Stáhne instalační skript pro agenta Log Analytics (OMS) Linux.
 
-    - Nainstaluje agenta Log Analytics.<br>
-        `sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
+        ```bash
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+            onboard_agent.sh
+        ```
+
+    - Nainstaluje agenta Log Analytics.
+    
+        ```bash
+        sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com
+        ```
+
+1. **Nastavení konfigurace agenta Log Analytics k naslouchání na portu 25226 a přeposílání zpráv CEF do služby Azure Sentinel:**
+
+    - Stáhne konfiguraci z úložiště GitHub agenta Log Analytics.
+
+        ```bash
+        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+            https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
+            omsagent.d/security_events.conf
+        ```
 
 1. **Konfiguruje se démon procesu Syslog:**
 
-    1. Otevře port 514 pro komunikaci TCP pomocí konfiguračního souboru syslog `/etc/rsyslog.conf` .
+    - Otevře port 514 pro komunikaci TCP pomocí konfiguračního souboru syslog `/etc/rsyslog.conf` .
 
-    1. Nakonfiguruje démona k přeposílání zpráv CEF na agenta Log Analytics na portu TCP 25226 vložením speciálního konfiguračního souboru `security-config-omsagent.conf` do adresáře démona syslog `/etc/rsyslog.d/` .
+    - Nakonfiguruje démona k přeposílání zpráv CEF na agenta Log Analytics na portu TCP 25226 vložením speciálního konfiguračního souboru `security-config-omsagent.conf` do adresáře démona syslog `/etc/rsyslog.d/` .
 
         Obsah `security-config-omsagent.conf` souboru:
 
-        ```console
-        :rawmsg, regex, "CEF"|"ASA"
-        *.* @@127.0.0.1:25226
+        ```bash
+        if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226 
         ```
 
-1. **Restartování procesu démona syslogu**
+1. **Restartování procesu démona syslog a agenta Log Analytics:**
 
-    `service rsyslog restart`
+    - Restartuje démon rsyslog.
+    
+        ```bash
+        service rsyslog restart
+        ```
 
-1. **Nastavení konfigurace agenta Log Analytics k naslouchání na portu 25226 a přeposílání zpráv CEF do služby Azure Sentinel**
+    - Restartuje agenta Log Analytics.
 
-    1. Stáhne konfiguraci z úložiště GitHub agenta Log Analytics.<br>
-        `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
+        ```bash
+        /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
+1. **Ověřování mapování pole *počítače* podle očekávání:**
 
-    1. Restartuje agenta Log Analytics.<br>
-        `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
+    - Zajišťuje, aby pole *počítač* ve zdroji syslog bylo správně namapováno v agentovi Log Analytics spuštěním tohoto příkazu a restartováním agenta.
+
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 # <a name="syslog-ng-daemon"></a>[démon procesu syslog-ng](#tab/syslogng)
 
 1. **Stažení a instalace agenta Log Analytics:**
 
-    - Stáhne instalační skript pro agenta Log Analytics (OMS) Linux.<br>`wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
+    - Stáhne instalační skript pro agenta Log Analytics (OMS) Linux.
 
-    - Nainstaluje agenta Log Analytics.<br>`sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
+        ```bash
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+            onboard_agent.sh
+        ```
+
+    - Nainstaluje agenta Log Analytics.
+    
+        ```bash
+        sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com
+        ```
+
+1. **Nastavení konfigurace agenta Log Analytics k naslouchání na portu 25226 a přeposílání zpráv CEF do služby Azure Sentinel:**
+
+    - Stáhne konfiguraci z úložiště GitHub agenta Log Analytics.
+
+        ```bash
+        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+            https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
+            omsagent.d/security_events.conf
+        ```
 
 1. **Konfiguruje se démon procesu Syslog:**
 
-    1. Otevře port 514 pro komunikaci TCP pomocí konfiguračního souboru syslog `/etc/syslog-ng/syslog-ng.conf` .
+    - Otevře port 514 pro komunikaci TCP pomocí konfiguračního souboru syslog `/etc/syslog-ng/syslog-ng.conf` .
 
-    1. Nakonfiguruje démona k přeposílání zpráv CEF na agenta Log Analytics na portu TCP 25226 vložením speciálního konfiguračního souboru `security-config-omsagent.conf` do adresáře démona syslog `/etc/syslog-ng/conf.d/` .
+    - Nakonfiguruje démona k přeposílání zpráv CEF na agenta Log Analytics na portu TCP 25226 vložením speciálního konfiguračního souboru `security-config-omsagent.conf` do adresáře démona syslog `/etc/syslog-ng/conf.d/` .
 
         Obsah `security-config-omsagent.conf` souboru:
 
-        ```console
+        ```bash
         filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
         destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 
-1. **Restartování procesu démona syslogu**
+1. **Restartování procesu démona syslog a agenta Log Analytics:**
 
-    `service syslog-ng restart`
+    - Restartuje démon syslog-ng.
+    
+        ```bash
+        service syslog-ng restart
+        ```
 
-1. **Nastavení konfigurace agenta Log Analytics k naslouchání na portu 25226 a přeposílání zpráv CEF do služby Azure Sentinel**
+    - Restartuje agenta Log Analytics.
 
-    1. Stáhne konfiguraci z úložiště GitHub agenta Log Analytics.<br>
-        `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
+        ```bash
+        /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. **Ověřování mapování pole *počítače* podle očekávání:**
+
+    - Zajišťuje, aby pole *počítač* ve zdroji syslog bylo správně namapováno v agentovi Log Analytics spuštěním tohoto příkazu a restartováním agenta.
+
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 
-    1. Restartuje agenta Log Analytics.<br>
-        `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
-
----
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak nasadit agenta Log Analytics pro připojení zařízení CEF ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:

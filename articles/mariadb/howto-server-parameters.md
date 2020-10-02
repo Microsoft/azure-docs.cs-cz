@@ -5,17 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: 53ba3c71679ebda1e8e2bf0a59a6ef69d051df4f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 10/1/2020
+ms.openlocfilehash: 9d0b6865c7fb5b59f379568d15bd9b96883202e9
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120411"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626424"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>Konfigurace parametrů serveru v Azure Database for MariaDB pomocí Azure Portal
 
 Azure Database for MariaDB podporuje konfiguraci některých parametrů serveru. Tento článek popisuje, jak nakonfigurovat tyto parametry pomocí Azure Portal. Ne všechny parametry serveru lze upravit.
+
+>[!Note]
+> Parametry serveru se dají aktualizovat globálně na úrovni serveru, a to pomocí [Azure CLI](./howto-configure-server-parameters-cli.md), [powershellu](./howto-configure-server-parameters-using-powershell.md)nebo [Azure Portal](./howto-server-parameters.md).
 
 ## <a name="configure-server-parameters"></a>Konfigurace parametrů serveru
 
@@ -24,7 +27,7 @@ Azure Database for MariaDB podporuje konfiguraci některých parametrů serveru.
 ![Stránka parametrů serveru Azure Portal](./media/howto-server-parameters/azure-portal-server-parameters.png)
 3. Vyhledejte všechna nastavení, která potřebujete upravit. Přečtěte si sloupec **Description (popis** ), abyste pochopili účel a povolené hodnoty.
 ![Výčet rozevíracích seznamu](./media/howto-server-parameters/3-toggle_parameter.png)
-4. Kliknutím na **Uložit** uložte změny.
+4. Kliknutím na  **Uložit** uložte změny.
 ![Uložit nebo zahodit změny](./media/howto-server-parameters/4-save_parameters.png)
 5. Pokud jste uložili nové hodnoty pro parametry, můžete kdykoli vrátit zpět všechny výchozí hodnoty výběrem možnosti **Obnovit vše na výchozí**.
 ![Obnovit výchozí](./media/howto-server-parameters/5-reset_parameters.png)
@@ -34,10 +37,10 @@ Azure Database for MariaDB podporuje konfiguraci některých parametrů serveru.
 Pokud parametr serveru, který chcete aktualizovat, není uveden v Azure Portal, můžete volitelně nastavit parametr na úrovni připojení pomocí `init_connect` . Tím se nastaví parametry serveru pro každého klienta, který se připojuje k serveru. 
 
 1. V části **Nastavení** klikněte na **parametry serveru** a otevřete stránku parametry serveru pro Azure Database for MariaDB Server.
-2. Hledat`init_connect`
+2. Hledat `init_connect`
 3. Přidejte parametry serveru ve formátu: `SET parameter_name=YOUR_DESIRED_VALUE` hodnota ve sloupci hodnota.
 
-    Například můžete změnit znakovou sadu serveru nastavením `init_connect` na`SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
+    Například můžete změnit znakovou sadu serveru nastavením `init_connect` na `SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
 4. Kliknutím na **Uložit** uložte změny.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Práce s parametrem časového pásma

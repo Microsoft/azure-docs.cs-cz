@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: 0f25627c852befb03c2c32d741b8fe9b64cd4dc2
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948959"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630698"
 ---
 # <a name="networking"></a>Sítě
 
@@ -59,7 +59,7 @@ Aby bylo možné zrychlit síťové služby v existujícím clusteru, je potřeb
 
 ## <a name="network-security-rules"></a>Pravidla zabezpečení sítě
 
-Základní pravidla jsou minimální pro uzamčení zabezpečení clusteru spravovaného Service Fabric Azure. Nepodaří-li se otevřít následující porty nebo seznam povolených IP adres nebo adresy URL, zabráníte správnému fungování clusteru a nemusí být podporován. Pomocí této sady pravidel je naprosto potřeba použít [automatické upgrady imagí operačního systému](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md), jinak bude potřeba otevřít další porty.
+Základní pravidla jsou minimální pro uzamčení zabezpečení clusteru spravovaného Service Fabric Azure. Nepodaří-li se otevřít následující porty nebo schválit IP adresu nebo adresu URL, zabráníte správnému fungování clusteru a nemusí být podporované. Pomocí této sady pravidel je naprosto potřeba použít [automatické upgrady imagí operačního systému](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md), jinak bude potřeba otevřít další porty.
 
 ### <a name="inbound"></a>Příchozí 
 |Priorita   |Název               |Port        |Protokol  |Zdroj             |Cíl       |Akce   

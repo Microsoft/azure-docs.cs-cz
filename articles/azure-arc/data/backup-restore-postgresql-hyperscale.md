@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: dde4db7f3eb476b7645e910504e48fea8bb6df0c
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 4fb64a2ea55744d66b203ef4d901f22ae4695e1a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569705"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630419"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Zálohování a obnovení pro skupiny serverů PostgreSQL s podporou rozšíření Azure ARC
 
@@ -93,8 +93,6 @@ Kde:
 - __název__ označuje název zálohy.
 - __název serveru__ označuje skupinu serverů.
 - __No-Wait__ indikuje, že příkazový řádek nebude čekat na dokončení zálohování, aby bylo možné pokračovat v používání tohoto okna příkazového řádku.
-
->**Poznámka**: příkaz, který umožňuje zobrazit seznam záloh, které jsou k obnovení k dispozici, zatím nezobrazuje datum a čas, kdy byla záloha provedena. Proto je doporučeno zadat název zálohy (pomocí parametru--name), který obsahuje informace o datu a čase.
 
 Tento příkaz koordinuje distribuovanou úplnou zálohu napříč všemi uzly, které tvoří PostgreSQL serverovou skupinu s povoleným rozšířením Azure ARC. Jinými slovy, budou zálohovat všechna data ve vašem koordinátorovi a uzlech pracovních procesů.
 

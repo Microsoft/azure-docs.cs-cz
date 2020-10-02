@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: c8d4696f2e7d181783d62df2e414329eaa246dce
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 21e2ba2e93e0c237e8dab531ee955899e679d547
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91529851"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629909"
 ---
 # <a name="what-is-azure-private-link"></a>Co je privátní propojení Azure? 
 Privátní odkaz Azure vám umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám, které hostuje zákaznická/Partnerská služba Azure, prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti.
@@ -63,7 +63,7 @@ Privátní propojení Azure přináší následující výhody:
 |Azure Relay | Všechny veřejné oblasti      |  | Preview <br/> [Další informace](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
 |Azure Event Grid| Všechny veřejné oblasti<br/> Všechny oblasti státní správy       |  | GA   <br/> [Další informace](https://docs.microsoft.com/azure/event-grid/network-security) |
 |Azure Web Apps | Všechny veřejné oblasti      | Podporováno pro PremiumV2 Windows a Linux a elastické funkce Premium  | Preview   <br/> [Další informace](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
-|Azure Machine Learning | VÝCHODNÍ USA, STŘED USA – JIH,<br/>USA – ZÁPAD, ZÁPADNÍ USA 2,<br/>STŘEDNÍ KANADA, JIHOVÝCHODNÍ ASIE,<br/>JAPONSKO – VÝCHOD, SEVERNÍ EVROPA,<br/>VELKÁ BRITÁNIE – JIH, VÝCHODNÍ AUSTRÁLIE     |  | Preview   <br/> [Další informace](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
+|Azure Machine Learning | Všechny veřejné oblasti    |  | GA   <br/> [Další informace](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure Automation  | Všechny veřejné oblasti |  | Preview | |
 | Azure IoT Hub | Všechny veřejné oblasti    |  | GA   <br/> [Další informace](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | VÝCHODNÍ USA, STŘED USA – JIH,<br/>ZÁPADNÍ USA 2, všechny čínské oblasti      |  | Preview   <br/> [Další informace](https://aka.ms/asrs/privatelink)   |

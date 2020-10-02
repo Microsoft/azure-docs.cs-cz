@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: b6cb0fa3611da44726dabd879c37fec357fc3031
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: b107b4a54b7d013da160119b16bd646a79cce696
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82202770"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626832"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Import aplikace logiky jako rozhraní API
 
@@ -57,7 +57,7 @@ V tomto článku získáte informace o těchto tématech:
     - **Starter**
     - **Unlimited**
 
-7. Zadejte další nastavení rozhraní API. Hodnoty můžete nastavit během vytváření nebo je nakonfigurovat později tak, že na kartu **Nastavení** kliknete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#-import-and-publish-a-backend-api) .
+7. Zadejte další nastavení rozhraní API. Hodnoty můžete nastavit během vytváření nebo je nakonfigurovat později tak, že na kartu **Nastavení** kliknete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#import-and-publish-a-backend-api) .
 8. Vyberte **Vytvořit**.
 
 ## <a name="test-the-api-in-the-azure-portal"></a>Testovat rozhraní API na portálu Azure Portal

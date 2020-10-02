@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8901f54c4802766eb3f12830d98d29fb47337ae5
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 866640d90c66dd82e8be61d221bc903907575454
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705210"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91643683"
 ---
 Ve verzi Preview má systém souborů NFS tato omezení:
 
@@ -22,7 +22,7 @@ Ve verzi Preview má systém souborů NFS tato omezení:
 - Aby bylo možné vytvořit sdílenou složku NFS, je nutné vytvořit nový účet úložiště.
 - Podporují se jenom rozhraní REST API roviny správy. Rozhraní REST API pro rovinu dat nejsou k dispozici, což znamená, že nástroje, jako je Průzkumník služby Storage, nebudou pracovat se sdílenými složkami systému souborů NFS, ani nebude možné procházet sdílená data NFS v Azure Portal.
 - Dostupné jenom pro úroveň Premium.
-- Aktuálně dostupné jenom pro místně redundantní úložiště.
+- Aktuálně dostupné jenom pro místně redundantní úložiště (LRS).
 
 ### <a name="azure-storage-features-not-yet-supported"></a>Azure Storage funkce ještě nejsou podporované.
 

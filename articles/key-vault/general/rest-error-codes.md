@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: b6e4845ca626dc8805b9bec6ca50076371d35b55
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 30b7e34f2a791cfd8dec1a6d8e81d706fa07939f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419125"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631218"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Kódy chyb Azure Key Vault REST API
  
@@ -128,7 +128,7 @@ Pokud máte přístup jenom k tokenu odpovědi, můžete ho dekódovat (jak vid�
 HTTP 403 znamená, že žádost byla ověřena (zná požadavek identity), ale identita nemá oprávnění pro přístup k požadovanému prostředku. Existují dva příčiny:
 
 - Pro tuto identitu nejsou k dispozici žádné zásady přístupu.
-- V nastavení brány firewall trezoru klíčů není povolená IP adresa prostředku žádajícího prostředku.
+- IP adresa žádajícího prostředku není schválená v nastavení brány firewall trezoru klíčů.
 
 K protokolu HTTP 403 dochází často tehdy, když aplikace zákazníka nepoužívá ID klienta, které mu zákazník považuje. To obvykle znamená, že zásady přístupu nejsou správně nastaveny pro skutečnou volající identitu.
 
@@ -166,5 +166,3 @@ Omezování se řeší pomocí těchto technik:
 - Pokud se počet požadavků nedá snížit ukládáním do mezipaměti a časovým limitem omezení rychlosti nefunguje, zvažte rozdělení klíčů do několika trezorů klíčů. Limit služby pro jedno předplatné je pětinásobné omezením jednotlivých Key Vault. Pokud používáte více než 5 trezorů klíčů, měli byste zvážit použití více předplatných. 
 
 Podrobné pokyny, včetně požadavků na zvýšení limitů, najdete tady: [Key Vault pokyny k omezování](overview-throttling.md) .
-
-

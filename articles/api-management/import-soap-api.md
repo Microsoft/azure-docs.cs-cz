@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 3ceaa357150fe0c4d26eeedc6821761d2eb00106
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 58f2a102349baff0b70e2a0c9f72c8a4e0e44046
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357960"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626815"
 ---
 # <a name="import-soap-api"></a>Importování rozhraní API SOAP
 
@@ -58,7 +58,7 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 
     * **Starter**
     * **Unlimited**   
-8. Zadejte další nastavení rozhraní API. Hodnoty můžete nastavit během vytváření nebo je nakonfigurovat později tak, že na kartu **Nastavení** kliknete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#-import-and-publish-a-backend-api) .
+8. Zadejte další nastavení rozhraní API. Hodnoty můžete nastavit během vytváření nebo je nakonfigurovat později tak, že na kartu **Nastavení** kliknete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#import-and-publish-a-backend-api) .
 9. Vyberte **Vytvořit**.
 
 ### <a name="test-the-new-api-in-the-administrative-portal"></a>Testování nového rozhraní API na portálu pro správu

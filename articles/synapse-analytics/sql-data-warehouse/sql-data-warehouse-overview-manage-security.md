@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 9428ad0756fac59f54e7036d26a1b7d6408cab31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06f62fd656357e16396a0458a9afee12dcfa507f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200966"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629365"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Zabezpečení databáze v Azure synapse
 
@@ -33,7 +33,7 @@ Tento článek vás provede základy zabezpečení synapse fondu SQL. Tento čl�
 
 Zabezpečení připojení spočívá v použití pravidel brány firewall a šifrovaného připojení k omezení a zabezpečení připojení k databázi.
 
-Pravidla firewallu používá [logický server SQL](../../azure-sql/database/logical-servers.md) i jeho databáze k zamítnutí pokusů o připojení z IP adres, které nejsou explicitně na seznamu povolených. Aby bylo možné připojení z vaší aplikace nebo veřejné IP adresy klientského počítače, je třeba nejprve vytvořit pravidlo brány firewall na úrovni serveru pomocí Azure Portal, REST API nebo PowerShellu.
+Pravidla brány firewall jsou používána [logickým serverem SQL](../../azure-sql/database/logical-servers.md) i jeho databázemi k zamítnutí pokusů o připojení z IP adres, které nebyly explicitně schváleny. Aby bylo možné připojení z vaší aplikace nebo veřejné IP adresy klientského počítače, je třeba nejprve vytvořit pravidlo brány firewall na úrovni serveru pomocí Azure Portal, REST API nebo PowerShellu.
 
 V souladu s osvědčeným postupem byste měli omezit rozsahy IP adres povolené přes bránu firewall na úrovni serveru co nejvíce.  Pokud chcete získat přístup k fondu SQL z místního počítače, zajistěte, aby brána firewall v síti a místní počítač umožňovala odchozí komunikaci na portu TCP 1433.  
 

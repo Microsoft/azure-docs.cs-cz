@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 28fb9da04c9c9d3e98b5226e1aee4cf5dde7183b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658378"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628668"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Nejčastější dotazy k zřizování cloudu Azure Active Directory Connect
 
@@ -42,7 +42,7 @@ Při Azure AD Connect synchronizaci se zřizování spouští na místním serve
 
 **Otázka: můžu použít zřizování cloudu pro synchronizaci z více doménových struktur služby Active Directory?**
 
-Yes. Zřizování cloudu se dá použít k synchronizaci z několika doménových struktur služby Active Directory. V prostředí s více doménovými strukturami musí být všechny odkazy (například správce) v doméně.  
+Ano. Zřizování cloudu se dá použít k synchronizaci z několika doménových struktur služby Active Directory. V prostředí s více doménovými strukturami musí být všechny odkazy (například správce) v doméně.  
 
 **Otázka: jak se Agent aktualizuje?**
 
@@ -83,6 +83,18 @@ Ne, instalace agenta na Server Core není podporovaná.
 **Otázka: mohu použít pracovní server s agentem zřizování cloudu?**
 
 Ne, pracovní servery se nepodporují.
+
+**Otázka: mohu synchronizovat uživatelské účty typu Host?**
+
+Ne, synchronizace uživatelských účtů typu Host není podporována.
+
+**Otázka: když přesunete uživatele z organizační jednotky s vymezeným zřizováním cloudu na organizační jednotku, která je vymezená pro Azure AD Connect, co se stane?**
+
+Uživatel se odstraní a znovu vytvoří.  Přesunutí uživatele z organizační jednotky, která je vymezená pro zřizování cloudu, se zobrazí jako operace odstranění.  Pokud se uživatel přesune do organizační jednotky, která je spravovaná pomocí Azure AD Connect, bude se znovu zřídit do Azure AD a vytvoří se nový vytvořený uživatel.
+
+**Otázka: Pokud přejmenujete nebo přesunete organizační jednotku, která je v oboru pro filtr zřizování cloudu, co se stane s uživatelem vytvořeným ve službě Azure AD?**
+
+Ničeho.  Pokud je organizační jednotka přejmenována nebo přesunuta, uživatelé nebudou smazáni.
 
 ## <a name="next-steps"></a>Další kroky 
 

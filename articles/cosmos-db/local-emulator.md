@@ -7,16 +7,22 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 2ee20035fbb7b417897290caba4500f2c3862fee
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 64da8084ec8d40e17a0005f2e70486c7d51bf640
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611805"
+ms.locfileid: "91627584"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Instalace a použití emulátoru Azure Cosmos pro místní vývoj a testování
 
-Emulátor Azure Cosmos poskytuje místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Pomocí emulátoru Azure Cosmos můžete svou aplikaci vyvíjet a testovat místně, aniž byste museli vytvářet předplatné Azure nebo náklady. Až budete spokojeni s tím, jak vaše aplikace funguje v emulátoru Azure Cosmos, můžete přejít na používání účtu Azure Cosmos v cloudu. Pokud chcete začít, Stáhněte a nainstalujte si nejnovější verzi [emulátoru Azure Cosmos](https://aka.ms/cosmosdb-emulator) na místním počítači. Tento článek popisuje, jak nainstalovat a používat emulátor v prostředích Windows, Linux, macOS a Windows Docker.
+Emulátor Azure Cosmos poskytuje místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Pomocí emulátoru Azure Cosmos můžete svou aplikaci vyvíjet a testovat místně, aniž byste museli vytvářet předplatné Azure nebo náklady. Až budete spokojeni s tím, jak vaše aplikace funguje v emulátoru Azure Cosmos, můžete přejít na používání účtu Azure Cosmos v cloudu. Tento článek popisuje, jak nainstalovat a používat emulátor v prostředích Windows, Linux, macOS a Windows Docker.
+
+## <a name="download-the-emulator"></a>Stažení emulátoru
+
+Pokud chcete začít, Stáhněte a nainstalujte si nejnovější verzi emulátoru Azure Cosmos na místním počítači. V článku [poznámky k verzi emulátoru](local-emulator-release-notes.md) najdete seznam všech dostupných verzí a aktualizací funkcí, které byly provedeny v jednotlivých verzích.
+
+:::image type="icon" source="media/local-emulator/download-icon.png" border="false":::**[Stáhnout emulátor Azure Cosmos](https://aka.ms/cosmosdb-emulator)**
 
 Pomocí emulátoru Azure Cosmos můžete vyvíjet aplikace s využitím účtů [SQL](local-emulator.md#sql-api), [Cassandra](local-emulator.md#cassandra-api), [MongoDB](local-emulator.md#azure-cosmos-dbs-api-for-mongodb), [Gremlin](local-emulator.md#gremlin-api)a [Table](local-emulator.md#table-api) API. Průzkumník dat v emulátoru je aktuálně podporuje jenom prohlížení dat SQL. data vytvořená pomocí klientských aplikací MongoDB, Gremlin/Graph a Cassandra v tuto chvíli zobrazit nelze. Další informace najdete v tématu [jak se připojit ke koncovému bodu emulátoru](#connect-with-emulator-apis) z různých rozhraní API.
 
@@ -38,7 +44,7 @@ Vzhledem k tomu, že emulátor Azure Cosmos poskytuje emulované prostředí, kt
 
 * Pomocí emulátoru můžete vytvořit účet Azure Cosmos jenom v režimu [zřízené propustnosti](set-throughput.md) . v současné době nepodporuje režim bez [serveru](serverless.md) .
 
-* Emulátor není škálovatelná služba a nepodporuje velký počet kontejnerů. Při použití emulátoru Azure Cosmos ve výchozím nastavení můžete vytvořit až 25 kontejnerů pevné velikosti v 400 RU/s (podporuje se jenom pomocí sad Azure Cosmos DB SDK) nebo 5 neomezených kontejnerů. Další informace o tom, jak tuto hodnotu změnit, najdete v článku [nastavení hodnoty PartitionCount] emulátor-Command-line-Parameters. MD # set-PartitionCount).
+* Emulátor není škálovatelná služba a nepodporuje velký počet kontejnerů. Při použití emulátoru Azure Cosmos ve výchozím nastavení můžete vytvořit až 25 kontejnerů pevné velikosti v 400 RU/s (podporuje se jenom pomocí sad Azure Cosmos DB SDK) nebo 5 neomezených kontejnerů. Další informace o tom, jak tuto hodnotu změnit, najdete v článku [Nastavení hodnoty PartitionCount](emulator-command-line-parameters.md#set-partitioncount) .
 
 * Emulátor nenabízí různé [Azure Cosmos dB úrovně konzistence](consistency-levels.md) , jako je cloudová služba.
 
@@ -64,7 +70,7 @@ Před instalací emulátoru se ujistěte, že máte následující požadavky na
 
 Pokud chcete začít, Stáhněte a nainstalujte si nejnovější verzi [emulátoru Azure Cosmos](https://aka.ms/cosmosdb-emulator) na místním počítači. Pokud narazíte na problémy při instalaci emulátoru, přečtěte si článek [řešení potíží s emulátorem](troubleshoot-local-emulator.md) pro ladění.
 
-V závislosti na požadavcích na systém můžete spustit emulátor ve [Windows](#run-on-windows), [Docker for Windows](#run-on-windows-docker), [Linux nebo [MacOS](#run-on-linux-macos) , jak je popsáno v dalších částech tohoto článku.
+V závislosti na požadavcích na systém můžete spustit emulátor v [systému Windows](#run-on-windows), [Docker for Windows](#run-on-windows-docker), [Linux nebo MacOS](#run-on-linux-macos) , jak je popsáno v dalších částech tohoto článku.
 
 ## <a name="check-for-emulator-updates"></a>Vyhledat aktualizace emulátoru
 

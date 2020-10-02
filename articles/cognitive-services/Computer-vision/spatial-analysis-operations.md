@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: f9df17afe8b6d25df3d9dcc5f4eec0b9a028404f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 80f0d29de6b3013ad02ed1a5d34bebdf81a8766b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254002"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628209"
 ---
 # <a name="spatial-analysis-operations"></a>Operace prostorových analýz
 
@@ -39,7 +39,7 @@ Všechny výše uvedené operace jsou také k dispozici ve `.debug` verzi, kter�
 | cognitiveservices Account. Vision. spatialanalysis-personcrossingpolygon. Debug | Sleduje, když osoba v poli zobrazení kamery přeškrtne určený řádek. <br> Vygeneruje událost _personLineEvent_ , když osoba přeškrtne zónu a poskytne směrové informace. |
 | cognitiveservices Account. Vision. spatialanalysis-persondistance. Debug | Sleduje, když lidé narušují pravidlo vzdálenosti. <br> Pravidelně generuje _personDistanceEvent_ s umístěním každého porušení vzdálenosti. |
 
-Prostorová analýza se dá také spustit s [živým video analýzou](https://azure.microsoft.com/services/media-services/live-video-analytics/) jako jejich modul video AI. 
+Prostorová analýza se dá také spustit s [živým video analýzou](https://aka.ms/lva-spatial-analysis) jako jejich modul video AI. 
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
@@ -328,7 +328,7 @@ Ukázkový formát JSON pro výstup události v této operaci.
 | Název pole SourceInfo | Typ| Description|
 |---------|---------|---------|
 | `id` | řetězec| ID kamery|
-| `timestamp` | datum| Datum UTC při vygenerování datové části JSON|
+| `timestamp` | date| Datum UTC při vygenerování datové části JSON|
 | `width` | int | Šířka rámečku videa|
 | `height` | int | Výška snímku videa|
 | `frameId` | int | Identifikátor snímku|
@@ -341,7 +341,7 @@ Ukázkový formát JSON pro výstup události v této operaci.
 | Název pole SourceInfo | Typ| Description|
 |---------|---------|---------|
 | `id` | řetězec| ID kamery|
-| `timestamp` | datum| Datum UTC při vygenerování datové části JSON|
+| `timestamp` | date| Datum UTC při vygenerování datové části JSON|
 | `width` | int | Šířka rámečku videa|
 | `height` | int | Výška snímku videa|
 | `frameId` | int | Identifikátor snímku|
@@ -421,7 +421,7 @@ Ukázka JSON pro detekci výstupu pomocí této operace.
 | Název pole SourceInfo | Typ| Description|
 |---------|---------|---------|
 | `id` | řetězec| ID kamery|
-| `timestamp` | datum| Datum UTC při vygenerování datové části JSON|
+| `timestamp` | date| Datum UTC při vygenerování datové části JSON|
 | `width` | int | Šířka rámečku videa|
 | `height` | int | Výška snímku videa|
 | `frameId` | int | Identifikátor snímku|
@@ -623,7 +623,7 @@ Ukázka JSON pro detekci výstupu pomocí této operace.
 | Název pole SourceInfo | Typ| Description|
 |---------|---------|---------|
 | `id` | řetězec| ID kamery|
-| `timestamp` | datum| Datum UTC při vygenerování datové části JSON|
+| `timestamp` | date| Datum UTC při vygenerování datové části JSON|
 | `width` | int | Šířka rámečku videa|
 | `height` | int | Výška snímku videa|
 | `frameId` | int | Identifikátor snímku|
