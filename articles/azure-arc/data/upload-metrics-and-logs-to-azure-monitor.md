@@ -9,16 +9,37 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7c8e92604cc6188d17411a266f8b27db55c8fbad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3e3b804e2a3c43eb9579d1c6a1195511df528de2
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317272"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629994"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Nahrajte data o využití, metriky a protokoly do Azure Monitor
 
-Monitorování je jednou z mnoha integrovaných možností, které s ním přináší datové služby s podporou ARC Azure. 
+Pravidelně můžete exportovat informace o využití pro účely fakturace, monitorovat metriky a protokoly a pak je nahrát do Azure.  Export a nahrávání kteréhokoli z těchto tří typů dat taky vytvoří a aktualizuje řadič dat, spravovanou instanci SQL a PostgreSQL prostředky skupiny serverů v Azure.
+
+> [!NOTE] 
+Během období Preview se neúčtují žádné náklady na používání datových služeb s podporou ARC Azure.
+
+## <a name="prerequisites"></a>Požadavky
+
+Budete potřebovat rozhraní příkazového řádku Azure CLI (AZ) a rozhraní Azure Data CLI (azdata).  [Nainstalovat nástroje](./install-client-tools.md).
+
+Před nahráním dat do Azure je potřeba zajistit, aby předplatné Azure mělo zaregistrovaný poskytovatel prostředků Microsoft. AzureData.
+
+To můžete ověřit spuštěním následujícího příkazu:
+
+```console
+az provider show -n Microsoft.AzureData -o table
+```
+
+Pokud poskytovatel prostředků není v současné době registrovaný v předplatném, můžete ho zaregistrovat spuštěním následujícího příkazu.  Dokončení tohoto příkazu může trvat minutu nebo dvě.
+
+```console
+az provider register -n Microsoft.AzureData --wait
+```
 
 ## <a name="upload-usage-data"></a>Odeslat data o využití
 

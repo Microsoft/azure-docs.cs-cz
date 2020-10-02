@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 92a9370ec866b6d2c14988871e3c742a40679885
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e071a20051f047efbd040dfc01a30e3c1381367
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077796"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631320"
 ---
 # <a name="use-azuer-active-directory-ad-authentication-for-your-storsimple"></a>Použití ověřování modul Active Directory (AD) pro StorSimple
 
@@ -54,7 +54,7 @@ Pokud používáte zařízení řady StorSimple 8000, pomocí následující tab
 
 | Pokud je vaše zařízení spuštěné| Proveďte následující akci                                    |
 |--------------------------|------------------------|
-| Aktualizace 5 nebo novější a zařízení je offline. <br> Zobrazí se upozornění, že adresa URL není na seznamu povolených.|1. Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování. Viz [adresy URL pro ověřování](#url-changes-for-aad-authentication).<br>2. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys).<br>3. [Připojte se k rozhraní Windows PowerShell zařízení řady StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. pomocí `Redo-DeviceRegistration` rutiny zaregistrujete zařízení přes Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
+| Aktualizace 5 nebo novější a zařízení je offline. <br> Zobrazí se upozornění, že adresa URL není schválená.|1. Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování. Viz [adresy URL pro ověřování](#url-changes-for-aad-authentication).<br>2. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys).<br>3. [Připojte se k rozhraní Windows PowerShell zařízení řady StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. pomocí `Redo-DeviceRegistration` rutiny zaregistrujete zařízení přes Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
 | Aktualizujte 5 nebo novější a zařízení online.| Nevyžaduje se žádná akce.                                       |
 | Aktualizace 4 nebo starší a zařízení je offline. |1. Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování.<br>2. [Stáhněte si Update 5 přes katalogový server](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [použijte aktualizaci Update 5 prostřednictvím metody hotfix](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [Získejte registrační klíč AAD ze služby](#aad-based-registration-keys).<br>5. [Připojte se k rozhraní Windows PowerShell zařízení řady StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. pomocí `Redo-DeviceRegistration` rutiny zaregistrujete zařízení přes Windows PowerShell. Zadejte klíč, který jste získali v předchozím kroku.|
 | Aktualizace 4 nebo starší a zařízení je online. |Upravte pravidla brány firewall tak, aby zahrnovala adresu URL ověřování.<br> Nainstalujte aktualizaci 5 prostřednictvím Azure Portal.              |
@@ -91,4 +91,3 @@ K vygenerování registračního klíče služby AAD proveďte následující kr
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o tom, jak nasadit [zařízení řady StorSimple 8000](storsimple-8000-deployment-walkthrough-u2.md).
-

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: e42d9713d1d61bb681c0ee51e46cc52eb0bcc807
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 30e8224b6cb757f044a5eac598d834cee838391e
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91363184"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629977"
 ---
 # <a name="swagger-documentation"></a>Dokumentace ke Swaggeru
 
@@ -26,21 +26,20 @@ Služba rozpoznávání řeči nabízí specifikace Swagger pro interakci s něk
 
 ## <a name="generating-code-from-the-swagger-specification"></a>Generování kódu ze specifikace Swagger
 
-[Specifikace Swagger](https://cris.ai/swagger/ui/index) obsahuje možnosti, které umožňují rychlé testování různých cest. Někdy je však žádoucí vygenerovat kód pro všechny cesty a vytvořit jedinou knihovnu volání, na kterých můžete založit budoucí řešení. Pojďme se podívat na proces generování knihovny Pythonu.
+[Specifikace Swagger](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) obsahuje možnosti, které umožňují rychlé testování různých cest. Někdy je však žádoucí vygenerovat kód pro všechny cesty a vytvořit jedinou knihovnu volání, na kterých můžete založit budoucí řešení. Pojďme se podívat na proces generování knihovny Pythonu.
 
 Musíte nastavit Swagger na stejnou oblast jako vaše předplatné služby Speech. Oblast můžete v Azure Portal ověřit pod prostředkem služby Speech Service. Úplný seznam podporovaných oblastí najdete v tématu [oblasti](regions.md).
 
-1. Přejděte na https://editor.swagger.io.
-2. Klikněte na **soubor**a pak na **importovat** .
-3. Zadejte adresu URL Swagger, včetně oblasti pro předplatné služby Speech. `https://<your-region>.cris.ai/docs/v2.0/swagger`
-4. Klikněte na **vygenerovat klienta** a vyberte Python.
-5. Uložení klientské knihovny
+1. V prohlížeči přejdete na specifikaci Swagger pro vaši oblast `https://<your-region>.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0` . Na této stránce klikněte na možnost **definice rozhraní API**a klikněte na **Swagger**. Zkopírujte adresu URL stránky, která se zobrazí.
+1. V novém prohlížeči, přejít na https://editor.swagger.io
+1. Klikněte na možnost **soubor**, klikněte na položku **importovat adresu URL**, vložte adresu URL a klikněte na tlačítko **OK**.
+1. Klikněte na **vygenerovat klienta** a vyberte **Python**. Klientská knihovna se stáhne do vašeho počítače.
 
 Můžete použít knihovnu Python, kterou jste vygenerovali pomocí [ukázek služby pro rozpoznávání řeči na GitHubu](https://aka.ms/csspeech/samples).
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-* [REST (Swagger): dávkový přepis a přizpůsobení](https://westus.cris.ai/swagger/ui/index)
+* [REST (Swagger): dávkový přepis a přizpůsobení](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 * [REST API: Převod řeči na text](rest-speech-to-text.md)
 * [REST API: převod textu na řeč](rest-text-to-speech.md)
 

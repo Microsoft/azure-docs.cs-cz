@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/23/2020
+ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 52819fc37cf0d10cb36009feb82dec234184752c
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235532"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629008"
 ---
 # <a name="on-demand-provisioning"></a>Zřizování na vyžádání
 Pomocí zřizování na vyžádání můžete zřídit uživatele v aplikaci během několika sekund. Mimo jiné můžete tuto možnost využít k těmto účelům:
@@ -28,12 +28,15 @@ Pomocí zřizování na vyžádání můžete zřídit uživatele v aplikaci bě
 ## <a name="how-to-use-on-demand-provisioning"></a>Jak používat zřizování na vyžádání
 
 1. Přihlaste se na web **Azure Portal**.
-2. Přejít na **všechny služby**v  >  **podnikových aplikacích**.
-3. Vyberte svou aplikaci a pak klikněte na stránku konfigurace zřizování.
-4. Nakonfigurujte zřizování poskytnutím přihlašovacích údajů správce.
-5. Vyberte **zřídit na vyžádání**.
-6. Vyhledat uživatele podle křestního jména, příjmení, zobrazovaného jména, hlavního názvu uživatele nebo e-mailové adresy.
-7. V dolní části stránky vyberte **zřídit** .
+1. Přejít na **všechny služby**v  >  **podnikových aplikacích**.
+1. Vyberte svou aplikaci a pak klikněte na stránku konfigurace zřizování.
+1. Nakonfigurujte zřizování poskytnutím přihlašovacích údajů správce.
+1. Vyberte **zřídit na vyžádání**.
+1. Vyhledat uživatele podle křestního jména, příjmení, zobrazovaného jména, hlavního názvu uživatele nebo e-mailové adresy.
+   > [!NOTE]
+   > V případě aplikace pro zřizování cloudového HR (Workday/SuccessFactors k AD/Azure AD) je vstupní hodnota odlišná. V případě scénáře Workday zadejte v Workday uživatele do pole "WID". V případě scénáře SuccessFactors zadejte do SuccessFactors "personIdExternal" uživatele. 
+ 
+1. V dolní části stránky vyberte **zřídit** .
 
 :::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="Snímek obrazovky, který zobrazuje uživatelské rozhraní Azure Portal pro zřizování uživatele na vyžádání.":::
 
@@ -121,7 +124,7 @@ Služba zřizování pak provede akci, jako je například vytvoření, aktualiz
 
 Tady je příklad toho, co se může zobrazit po úspěšném zřízení uživatele na vyžádání:
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Snímek obrazovky, který ukazuje úspěšné zřízení uživatele na vyžádání.":::
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Snímek obrazovky, který zobrazuje uživatelské rozhraní Azure Portal pro zřizování uživatele na vyžádání.":::
 
 #### <a name="view-details"></a>Zobrazit podrobnosti
 
@@ -144,7 +147,7 @@ Pro zřizování na vyžádání je aktuálně k dispozici několik známých om
 > [!NOTE]
 > Následující omezení jsou specifická pro možnost zřizování na vyžádání. Informace o tom, jestli aplikace podporuje zřizování skupin, odstranění nebo dalších možností, najdete v kurzu této aplikace.
 
-* Aplikace v Workday, Amazon Web Services (AWS) a SuccessFactors nepodporují zřizování na vyžádání. 
+* Aplikace Amazon Web Services (AWS) nepodporuje zřizování na vyžádání. 
 * Zřizování skupin a rolí na vyžádání se nepodporuje.
 * Zřizování na vyžádání podporuje zakázání uživatelů, kteří byli z aplikace nepřiřazeni. Nepodporuje ale zakázání nebo odstranění uživatelů, kteří jsou zakázané nebo odstraněné ze služby Azure AD. Uživatelé se nebudou při hledání uživatele zobrazovat.
 

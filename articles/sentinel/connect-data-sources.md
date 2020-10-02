@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/08/2020
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 63acffd16fa4374d4f8541a9d3327b29a3641f71
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c1df52f027c23b2e3618ad17494b06c2ccecfaf6
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895799"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627138"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -45,17 +45,22 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
 
 - **Integrace služeb s**službami:<br> Některé služby jsou propojené nativně, jako jsou AWS a služby Microsoftu, využívají tyto služby Azure Foundation k předem připravené integraci. následující řešení je možné připojit několika kliknutími:
     - [Amazon Web Services – CloudTrail](connect-aws.md)
-    - [Aktivita Azure](connect-azure-activity.md)
     - [Azure Active Directory](connect-azure-active-directory.md) – protokoly auditu a protokoly přihlášení
+    - [Aktivita Azure](connect-azure-activity.md)
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Microsoft Defender pro identitu](connect-azure-atp.md) (dříve Rozšířená ochrana před internetovými útoky Azure)
+    - [Azure DDoS Protection](connect-azure-ddos-protection.md)
+    - [Azure Defender pro IoT](connect-asc-iot.md) (dřív Azure Security Center pro IoT)
     - [Azure Information Protection](connect-azure-information-protection.md)
+    - [Azure Firewall](connect-azure-firewall.md)
     - [Azure Security Center](connect-azure-security-center.md) – výstrahy z řešení Azure Defenderu
+    - [Firewall webových aplikací Azure (WAF)](connect-azure-waf.md) (dříve Microsoft WAF)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Server DNS](connect-dns.md)
-    - [Office 365](connect-office-365.md)
+    - [Microsoft 365 Defender](connect-microsoft-365-defender.md) – zahrnuje nezpracovaná data MDATP.
     - [Microsoft Defender pro koncový bod](connect-microsoft-defender-advanced-threat-protection.md) (dříve Rozšířená ochrana před internetovými útoky v programu Microsoft Defender)
-    - [Firewall webových aplikací Microsoft](connect-microsoft-waf.md)
+    - [Microsoft Defender pro identitu](connect-azure-atp.md) (dříve Rozšířená ochrana před internetovými útoky Azure)
+    - [Microsoft Defender pro Office 365](connect-office-365-advanced-threat-protection.md) (dříve Office 365 Advanced Threat Protection)
+    - [Office 365](connect-office-365.md) (teď s týmy!)
     - [Brána Windows Firewall](connect-windows-firewall.md)
     - [Události zabezpečení systému Windows](connect-windows-security-events.md)
 
@@ -67,9 +72,14 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
     - [Citrix Analytics (Security)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
+    - [Okta SSO](connect-okta-single-sign-on.md)
+    - [Orca Security](connect-orca-security-alerts.md)
     - [Protokoly Perimeteru 81](connect-perimeter-81-logs.md)
+    - [Proofpoint TAP](connect-proofpoint-tap.md)
+    - [Qualys VM](connect-qualys-vm.md)
     - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
     - [Symantec ICDX](connect-symantec.md)
+    - [VMware Carbon Black Cloud Endpoint Standard](connect-vmware-carbon-black.md)
     - [Zimperium](connect-zimperium-mtd.md)
 
 
@@ -79,7 +89,7 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
 
     Agent Azure Sentinel, který je ve skutečnosti agentem Log Analytics, převede protokoly ve formátu CEF do formátu, který je možné pomocí Log Analytics ingestovat. V závislosti na typu zařízení se agent nainstaluje buď přímo na zařízení, nebo na vyhrazeném serveru pro přeposílání protokolů se systémem Linux. Agent pro Linux přijímá události z procesu démona syslog přes protokol UDP, ale pokud se očekává, že počítač se systémem Linux shromáždí velký objem událostí syslog, pošle se přes protokol TCP z procesu démona syslog do agenta a tam, kde Log Analytics.
 
-    - **Brány firewall, proxy servery a koncové body:**
+    - **Brány firewall, proxy servery a koncové body – CEF:**
         - [AI Vectra Detect](connect-ai-vectra-detect.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
@@ -87,21 +97,29 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
         - [F5 ASM](connect-f5.md)
         - [Produkty Forcepoint](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto Networks](connect-paloalto.md)
+        - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
         - [One Identity Safeguard](connect-one-identity.md)
-        - [Jiná zařízení CEF](connect-common-event-format.md)
-        - [Jiná zařízení syslog](connect-syslog.md)
+        - [Palo Alto Networks](connect-paloalto.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
         - [Zscaler](connect-zscaler.md)
+        - [Jiná zařízení na bázi CEF](connect-common-event-format.md)
+    - **Brány firewall, proxy servery a koncové body – syslog:**
+        - [Infoblox NIOS](connect-infoblox.md)
+        - [Pulse Connect Secure](connect-pulse-connect-secure.md)
+        - [Sophos XG](connect-sophos-xg-firewall.md)
+        - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
+        - [Symantec VIP](connect-symantec-vip.md)
+        - [Jiná zařízení založená na protokolu syslog](connect-syslog.md)
     - Řešení ochrany před únikem informací
     - [Poskytovatelé analýzy hrozeb](connect-threat-intelligence.md)
     - [Počítače DNS](connect-dns.md) – agent nainstalovaný přímo na počítači DNS
+    - [Azure Stack virtuálních počítačů](connect-azure-stack.md)
     - Servery s Linuxem
     - Další cloudy
     
 ## <a name="agent-connection-options"></a>Možnosti připojení agenta<a name="agent-options"></a>
 
-Aby bylo možné připojit externí zařízení ke službě Azure Sentinel, musí být agent nasazen na vyhrazeném počítači (VM nebo místně), aby podporoval komunikaci mezi zařízením a službou Azure Sentinel. Agenta můžete nasadit automaticky nebo ručně. Automatické nasazení je dostupné jenom v případě, že váš vyhrazený počítač je nový virtuální počítač, který vytváříte v Azure. 
+Aby bylo možné připojit externí zařízení ke službě Azure Sentinel, musí být agent nasazen na vyhrazeném počítači (VM nebo místně), aby podporoval komunikaci mezi zařízením a službou Azure Sentinel. Agent může být nasazen automaticky nebo ručně. Automatické nasazení je dostupné jenom v případě, že váš vyhrazený počítač je nový virtuální počítač, který vytváříte v Azure. 
 
 
 ![CEF v Azure](./media/connect-cef/cef-syslog-azure.png)

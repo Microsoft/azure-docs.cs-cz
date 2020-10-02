@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1177551b698bb2e295a71f6cd4a132411d1c5bea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f97b7cb836009683a689fc49882e61ce66abac58
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210690"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627070"
 ---
 # <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Optimalizace výkonu pomocí upgradu fondu SQL Azure synapse Analytics
 
@@ -65,7 +65,7 @@ Nyní můžete bez problémů upgradovat na úroveň Gen2 optimalizované pro v�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-- Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+- Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 - Ujistěte se, že je fond SQL spuštěný – musí se migrovat na Gen2
 
 ### <a name="powershell-upgrade-commands"></a>Příkazy upgradu PowerShellu
@@ -114,7 +114,7 @@ Nyní můžete bez problémů upgradovat na úroveň Gen2 optimalizované pro v�
 
    > [!NOTE]
    > Pokud na kartě úkoly nevidíte kartu **upgrade na Gen2** , je váš typ předplatného omezený v aktuální oblasti.
-   > [Odešlete lístek podpory](sql-data-warehouse-get-started-create-support-ticket.md) , abyste získali své předplatné na seznamu povolených.
+   > [Odešlete lístek podpory](sql-data-warehouse-get-started-create-support-ticket.md) , abyste získali schválení předplatného.
 
 3. Před upgradem zajistěte, aby byla vaše úloha spuštěná a byla nečinná. Během několika minut se dostanou prostoje, než bude váš fond SQL znovu online jako výpočetní Gen2 fond SQL úrovně optimalizované pro výpočet. **Vyberte upgrade**:
 
@@ -182,7 +182,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Vytvoření bodu obnovení definovaného uživatelem pomocí Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte do fondu SQL, pro který chcete vytvořit bod obnovení pro.
 
@@ -196,7 +196,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Obnovení aktivní nebo pozastavené databáze pomocí Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Přejděte do fondu SQL, ze kterého chcete obnovit.
 3. V horní části přehledu vyberte **obnovit**.
 

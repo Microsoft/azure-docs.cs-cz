@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 0be60208146681135c7502746a271e4e007dc0ea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 40fb5a1623175445065f0546403661a1f6eb399f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249582"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629433"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Řešení potíží se soubory Azure v systému Linux (SMB)
 
@@ -298,6 +298,32 @@ Tato chyba se zaznamená do protokolu, protože soubory Azure v [současné dob�
 
 ### <a name="solution"></a>Řešení
 Tuto chybu lze ignorovat.
+
+
+### <a name="unable-to-access-folders-or-files-which-name-has-a-space-or-a-dot-at-the-end"></a>Nelze získat přístup ke složkám nebo souborům, jejichž název má mezeru nebo tečku na konci.
+
+Nemůžete získat přístup ke složkám nebo souborům ze sdílené složky Azure během připojení k systému Linux, příkazy jako du a LS nebo aplikace třetích stran se mohou při přístupu ke sdílené složce podařit s chybou "žádný takový soubor nebo adresář", ale můžete do těchto složek nahrávat soubory prostřednictvím portálu.
+
+### <a name="cause"></a>Příčina
+
+Složky nebo soubory byly nahrány ze systému, který kóduje znaky na konci názvu na jiný znak, soubory odeslané z počítače se systémem Macintosh mohou mít místo 0x20 (Space) nebo 0X2E (tečka) znak "0xF028" nebo "0xF029".
+
+### <a name="solution"></a>Řešení
+
+Při připojování sdílené složky v systému Linux použijte možnost mapchars na sdílené složce: 
+
+Namísto:
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
+```
+
+použije
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino,mapchars
+```
+
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
 

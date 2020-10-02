@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 9de26246756f831ace57e7ed03a3a598ef020c91
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e6b64b5a1a60ba3bbf93e607536eeb0379669c73
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91451505"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91639395"
 ---
 **Objem shromažďování dat a jejich uchovávání** 
 
@@ -70,7 +70,7 @@ Azure Monitor je služba data ve velkém měřítku, která slouží tisícům z
 
 Když do pracovního prostoru odešlete data rychlostí vyšší než 80% prahové hodnoty nakonfigurované ve vašem pracovním prostoru, do tabulky *operace* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Když je rychlost příjmu dat vyšší než prahová hodnota, některá data se zahozena a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud vaše rychlost ingestování stále překročí prahovou hodnotu nebo jste se k nim neočekávali, můžete požádat o jejich zvýšení otevřením žádosti o podporu. 
 
-Pokud chcete být ve svém pracovním prostoru upozorněni na přístup nebo dosažení limitu přenosové rychlosti pro přijímání, vytvořte [pravidlo upozornění protokolu](../articles/azure-monitor/platform/alerts-log.md) pomocí následujícího dotazu se základní logikou výstrahy na základě počtu výsledků od nuly, zkušebního období 5 minut a frekvence 5 minut.
+Pokud chcete být ve svém pracovním prostoru upozorněni na přístup nebo dosažení limitu přenosové rychlosti pro přijímání, vytvořte [pravidlo upozornění protokolu](../articles/azure-monitor/platform/alerts-log.md) pomocí následujícího dotazu se základní logikou výstrahy na základě počtu výsledků, který je větší než nula, zkušební období 5 minut a frekvence 5 minut.
 
 Míra zpracování příjmu překročila prahovou hodnotu.
 ```Kusto

@@ -1,5 +1,5 @@
 ---
-title: Konfigurace DNS privátního koncového bodu Azure
+title: Konfigurace DNS privátního koncového bodu v Azure
 description: Informace o konfiguraci DNS privátního koncového bodu Azure
 services: private-link
 author: mblanco77
@@ -7,14 +7,14 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 5657741a1496084b55d2f76aef12c5e84c274feb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6e3d87d613db63e05ddee47d43aead779eca75c3
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918124"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628005"
 ---
-# <a name="azure-private-endpoint-dns-configuration"></a>Konfigurace DNS privátního koncového bodu Azure
+# <a name="azure-private-endpoint-dns-configuration"></a>Konfigurace DNS privátního koncového bodu v Azure
 
 
 Pokud se připojujete k prostředku privátního propojení pomocí plně kvalifikovaného názvu domény (FQDN) jako součást připojovacího řetězce, je důležité správně nakonfigurovat nastavení DNS tak, aby se přeložilo na přidělenou privátní IP adresu. Existující služby Microsoft Azure Services už můžou mít konfiguraci DNS, která se má použít při připojování přes Veřejný koncový bod. Tato konfigurace se musí přepsat, aby se mohla připojit pomocí privátního koncového bodu. 
@@ -74,7 +74,7 @@ Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následu
 | Azure Machine Learning (Microsoft. MachineLearningServices/pracovní prostory)/pracovní prostor | privatelink.api.azureml.ms | api.azureml.ms |
 | IoT Hub (Microsoft. Devices/IotHubs)/IotHub | privatelink.azure-devices.net | azure-devices.net |
 | Signál (Microsoft. SignalRService/Signaler)/Signal | privatelink.service.signalr.net | service.signalr.net |
-| Azure Monitor (Microsoft. Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.com | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.com |
+| Azure Monitor (Microsoft. Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.net | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.net |
 | Cognitive Services (Microsoft. Cognitiveservices Account/Accounts)/Account | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |
 | Azure File Sync (Microsoft. StorageSync/storageSyncServices)/AFS |  privatelink.afs.azure.net  |  afs.azure.net  |
 
@@ -121,7 +121,7 @@ Tento model se dá rozšířit na několik partnerských virtuálních sítí, k
 
 V tomto scénáři je k dispozici topologie sítě [rozbočovače a paprsku](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) se sítěmi paprsků, které sdílejí společný privátní koncový bod, a všechny virtuální sítě paprsků jsou propojeny se stejnou privátní zónou DNS. 
 
-:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Centrum a Paprskový s DNS poskytovanou službou Azure":::
+:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Jedna virtuální síť a DNS poskytovaná službou Azure":::
 
 ## <a name="on-premises-workloads-using-a-dns-forwarder"></a>Místní úlohy využívající službu DNS pro přeposílání
 
@@ -142,7 +142,7 @@ Ke správné konfiguraci potřebujete tyto prostředky:
 
 Následující diagram znázorňuje sekvenci překladu DNS z místní sítě, která používá službu DNS pro přeposílání v Azure, kde se řešení provádí v privátní zóně DNS [propojené s virtuální sítí](../dns/private-dns-virtual-network-links.md):
 
-:::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="Místně pomocí Azure DNS":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="Jedna virtuální síť a DNS poskytovaná službou Azure":::
 
 Tato konfigurace se dá prodloužit na místní síť, která už má řešení DNS. 
 Místní řešení DNS je potřeba nakonfigurovat tak, aby přesměrovalo provoz DNS na Azure DNS prostřednictvím [podmíněného dodávaného](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) serveru, který odkazuje na službu pro překládání DNS nasazenou v Azure.
@@ -163,7 +163,7 @@ Následující diagram znázorňuje sekvenci překladu názvů DNS z místní s�
 > [!IMPORTANT]
 > Podmíněné přesměrování je nutné provést v doporučené [službě pro předávání veřejné zóny DNS](#azure-services-dns-zone-configuration).Například:  `database.windows.net`   místo **privatelink**. Database.Windows.NET.
 
-:::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Místní přesměrování na Azure DNS":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Jedna virtuální síť a DNS poskytovaná službou Azure":::
 
 ## <a name="virtual-network-and-on-premises-workloads-using-a-dns-forwarder"></a>Virtuální síť a místní úlohy pomocí služby DNS pro přeposílání
 
@@ -190,7 +190,7 @@ Ke správné konfiguraci potřebujete tyto prostředky:
 
 Následující obrázek znázorňuje sekvenci překladu názvů DNS z místní a virtuální sítě, která používá službu DNS resolutioner nasazenou v Azure, kde je řešení prováděné privátní zónou DNS [propojenou s virtuální sítí](../dns/private-dns-virtual-network-links.md):
 
-:::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="Hybridní scénář":::
+:::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="Jedna virtuální síť a DNS poskytovaná službou Azure":::
 
 ## <a name="next-steps"></a>Další kroky
 - [Informace o privátních koncových bodech](private-endpoint-overview.md)

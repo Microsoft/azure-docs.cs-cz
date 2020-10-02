@@ -5,20 +5,20 @@ services: azure-monitor
 author: rboucher
 tags: azure-service-management
 ms.topic: include
-ms.date: 02/07/2019
+ms.date: 10/01/2020
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 2922a1fb92f3df07429d3463b8bf639f336776af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 610713286e3cb7a084b2e81260797d4cac0ddad7
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67305265"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91640356"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | Nabízená oznámení aplikací Azure | 10 akcí aplikace Azure na skupinu akcí. | Zavolejte podporu. |
-| E-mail | 1 000 akcí e-mailu ve skupině akcí<br>Za hodinu nepřekračuje 100 e-mailů.<br>Přečtěte si také [informace o omezení rychlosti](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Zavolejte podporu. |
+| E-mail | 1 000 akcí e-mailu ve skupině akcí<br>Za hodinu nepřekračuje 100 e-mailů.<br>Přečtěte si také [informace o omezení rychlosti](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Stejné jako výchozí |
 | ITSM | 10 akcí ITSM ve skupině akcí. | Zavolejte podporu. | 
 | Aplikace logiky | 10 akcí aplikace logiky ve skupině akcí. | Zavolejte podporu. |
 | Runbook | 10 akcí sady Runbook ve skupině akcí. | Zavolejte podporu. |

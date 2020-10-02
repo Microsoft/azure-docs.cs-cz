@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 7/7/2020
-ms.openlocfilehash: 4550f1da0ac87a55bab64566a0035451dee8d225
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/1/2020
+ms.openlocfilehash: b32ef80ad670e369315ec3ddb6972aef30bec27a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538258"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627563"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -36,6 +36,9 @@ Běžným scénářem je, aby úlohy BI a analýzy používaly jako zdroj dat pr
 Vzhledem k tomu, že repliky jsou jen pro čtení, nesnižují přímo na hlavní úrovni zátěže s kapacitou pro zápis. Tato funkce není určená pro úlohy, které jsou náročné na zápis.
 
 Funkce replika čtení používá asynchronní replikaci MySQL. Tato funkce není určena pro scénáře synchronní replikace. Mezi zdrojem a replikou bude měřitelná prodleva. Data v replice nakonec budou konzistentní s daty v hlavní databázi. Tato funkce se používá pro úlohy, které můžou toto zpoždění obsloužit.
+
+> [!IMPORTANT]
+> Azure Database for MySQL používá protokolování binárního souboru založeného na **řádcích** . V případě, že v tabulce chybí primární klíč, budou prohledány všechny řádky v tabulce pro operace DML. Tím dojde ke zvýšení prodlevy při replikaci. Aby bylo zajištěno, že replika bude schopna uchovat změny ve zdroji, doporučujeme přidat primární klíč na tabulky na zdrojovém serveru před vytvořením serveru repliky nebo opětovným vytvořením serveru repliky, pokud jej již máte.
 
 ## <a name="cross-region-replication"></a>Replikace mezi oblastmi
 Repliku pro čtení můžete vytvořit v jiné oblasti ze zdrojového serveru. Replikace mezi oblastmi může být užitečná pro scénáře, jako je plánování zotavení po havárii, nebo pro uživatele přiblížit data.

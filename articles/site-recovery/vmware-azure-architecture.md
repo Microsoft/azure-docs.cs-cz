@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 217e3b9de7c9a46174c6ce6d1a3b151c904a7bf2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45baee286fede0ab16da62b7c2e84008d58690b1
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314109"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626492"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii VMware do Azure
 
@@ -50,7 +50,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 | Replikace               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. |
 
-Úplný seznam adres URL, které mají být na seznamu povolených pro komunikaci mezi místní infrastrukturou Azure Site Recovery a službami Azure, najdete [v části požadavky na síť v článku](vmware-azure-deploy-configuration-server.md#prerequisites)požadavky.
+Úplný seznam adres URL, které se mají filtrovat pro komunikaci mezi místní infrastrukturou Azure Site Recovery a službami Azure, najdete [v části požadavky na síť v článku](vmware-azure-deploy-configuration-server.md#prerequisites)požadavky.
 
 ## <a name="replication-process"></a>Proces replikace
 

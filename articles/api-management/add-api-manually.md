@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 6b8b7c0dbdce160a19b5bb5ecb67bf2fb0a204ee
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 39a3b9d7dd9efbda93de0b5d7c5f9938922d0012
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89295257"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631286"
 ---
 # <a name="add-an-api-manually"></a>Ruční přidání rozhraní API
 
@@ -27,7 +27,7 @@ Pokud chcete importovat existující rozhraní API, přečtěte si články v č
 
 V tomto článku vytvoříme prázdné rozhraní API a jako rozhraní API back-endu určíme [httpbin.org](https://httpbin.org) (veřejnou testovací službu).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 
@@ -39,8 +39,8 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 2. V levé nabídce vyberte **+ Přidat rozhraní API**.
 3. Vyberte ze seznamu **Prázdné rozhraní API**.  
     ![Prázdné rozhraní API](media/add-api-manually/blank-api.png)  
-4. Zadejte nastavení pro rozhraní API. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#-import-and-publish-a-backend-api) .
-5. Vyberte **Create** (Vytvořit).
+4. Zadejte nastavení pro rozhraní API. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#import-and-publish-a-backend-api) .
+5. Vyberte **Vytvořit**.
 
 V tomto okamžiku nemáte v API Management žádné operace, které se mapují na operace v rozhraní API back-endu. Pokud voláte operaci, která je vystavena prostřednictvím back-endu, ale ne prostřednictvím API Management, dostanete **404**.
 

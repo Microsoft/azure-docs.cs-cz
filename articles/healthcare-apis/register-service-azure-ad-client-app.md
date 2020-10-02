@@ -1,6 +1,6 @@
 ---
 title: Registrace aplikace služby ve službě Azure AD – Azure API pro FHIR
-description: Naučte se, jak zaregistrovat aplikaci klienta služby v Azure Active Directory, kterou je možné použít k ověřování a získání tokenů.
+description: Zjistěte, jak zaregistrovat aplikaci klienta služby v Azure Active Directory.
 services: healthcare-apis
 author: matjazl
 ms.service: healthcare-apis
@@ -8,68 +8,72 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 34eec3ad0d2fc193744898b6f08cbe50c261c945
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 19d6b0ebfa2570b04c3a9dda3fe69428aa0eed75
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853020"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629278"
 ---
 # <a name="register-a-service-client-application-in-azure-active-directory"></a>Registrace klientské aplikace služby v Azure Active Directory
 
 V tomto článku se dozvíte, jak zaregistrovat aplikaci klienta služby v Azure Active Directory. Registrace klientských aplikací Azure Active Directory reprezentace aplikací, které lze použít k ověřování a získání tokenů. Klient služby má být používán aplikací k získání přístupového tokenu bez interaktivního ověřování uživatele. Bude mít určitá oprávnění aplikace a při získání přístupových tokenů používat tajný klíč aplikace (heslo).
 
-Pokud chcete vytvořit nového klienta služby, postupujte podle následujících pokynů.
+Pomocí těchto kroků vytvořte nového klienta služby.
 
 ## <a name="app-registrations-in-azure-portal"></a>Registrace aplikací v Azure Portal
 
-1. Na webu [Azure Portal](https://portal.azure.com) klikněte na levém navigačním panelu na **Azure Active Directory**.
+1. V [Azure Portal](https://portal.azure.com)přejděte na **Azure Active Directory**.
 
-2. V okně **Azure Active Directory** klikněte na **Registrace aplikací**:
+2. Vyberte **Registrace aplikací**.
 
     ![Azure Portal. Registrace nové aplikace](media/how-to-aad/portal-aad-new-app-registration.png)
 
-3. Klikněte na **Nová registrace**.
+3. Vyberte **Nová registrace**.
 
-## <a name="service-client-application-details"></a>Podrobnosti klientské aplikace služby
+4. Poskytněte klientovi služby zobrazované jméno. Klientské aplikace služby obvykle nepoužívají adresu URL odpovědi.
 
-* Klient služby potřebuje zobrazovaný název a můžete taky zadat adresu URL odpovědi, ale obvykle se nepoužije.
+    :::image type="content" source="media/service-client-app/service-client-registration.png" alt-text="Azure Portal. Nová registrace klientské aplikace služby.":::
 
-    ![Azure Portal. Nová registrace klientské aplikace služby.](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-NAME.png)
+5. Vyberte **Zaregistrovat**.
 
 ## <a name="api-permissions"></a>Oprávnění rozhraní API
 
-Bude nutné poskytnout aplikační role klienta služby. 
+Teď, když jste zaregistrovali aplikaci, musíte vybrat, která oprávnění API by tato aplikace měla být schopná považovat za uživatele:
 
-1. Otevřete **oprávnění rozhraní API** a vyberte svou [registraci aplikace prostředků rozhraní FHIR API](register-resource-azure-ad-client-app.md). Pokud používáte rozhraní API Azure pro FHIR, přidáte oprávnění k rozhraním API pro zdravotní péče Azure pomocí hledání rozhraní API pro zdravotní péče Azure v části **rozhraní API, které používá moje organizace**.
+1. Vyberte **oprávnění rozhraní API**.
+1. Vyberte **Přidat oprávnění**.
 
-    ![Azure Portal. Oprávnění rozhraní API klienta služby](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-API-PERMISSIONS.png)
+    Pokud používáte rozhraní API Azure pro FHIR, přidáte oprávnění k rozhraním API pro zdravotní péče Azure pomocí hledání **rozhraní API pro zdravotní péče Azure** v části **rozhraní API, které používá moje organizace**. 
 
-2. Vyberte aplikační role z těch, které jsou definovány v aplikaci prostředků:
+    Pokud odkazujete na jinou aplikaci prostředků, vyberte svou [registraci aplikace prostředků rozhraní API FHIR](register-resource-azure-ad-client-app.md) , kterou jste vytvořili dříve v části **Moje rozhraní API**.
 
-    ![Azure Portal. Oprávnění klientské aplikace služby](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-APPLICATION-PERMISSIONS.png)
+    :::image type="content" source="media/service-client-app/service-client-org-api.png" alt-text="Azure Portal. Nová registrace klientské aplikace služby." lightbox="media/service-client-app/service-client-org-api-expanded.png":::
 
-3. Udělte aplikaci souhlas. Pokud nemáte požadovaná oprávnění, obraťte se na správce Azure Active Directory:
+1. Vyberte obory (oprávnění), na které by tajná aplikace měla být schopná požádat jménem uživatele:
 
-    ![Azure Portal. Souhlas správce klienta služby](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-ADMIN-CONSENT.png)
+    :::image type="content" source="media/service-client-app/service-client-add-permission.png" alt-text="Azure Portal. Nová registrace klientské aplikace služby.":::
+
+1. Udělte aplikaci souhlas. Pokud nemáte požadovaná oprávnění, obraťte se na správce Azure Active Directory:
+
+    :::image type="content" source="media/service-client-app/service-client-grant-permission.png" alt-text="Azure Portal. Nová registrace klientské aplikace služby.":::
 
 ## <a name="application-secret"></a>Tajný kód aplikace
 
-Klient služby potřebuje tajný klíč (heslo), který použijete při získávání tokenů.
+Pro získání tokenu potřebuje klient služby tajný klíč (heslo).
 
-1. Klikněte na **certifikáty &amp; tajné klíče** .
-
-2. Klikněte na **Nový tajný kód klienta**.
+1. Vyberte **certifikáty & tajných**kódů.
+2. Vyberte **Nový tajný klíč klienta**.
 
     ![Azure Portal. Tajný kód klienta služby](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-SECRET.png)
 
-3. Zadejte dobu trvání tajného kódu.
+3. Zadejte popis a dobu trvání tajného kódu (buď 1 rok, 2 roky nebo nikdy).
 
-4. Jakmile je vygenerována, zobrazí se pouze jednou na portálu. Poznamenejte si ho a bezpečně ho uložte.
+4. Po vygenerování tajného klíče se na portálu zobrazí jenom jednou. Poznamenejte si ho a bezpečně ho uložte.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se seznámili s postupem registrace klientské aplikace služby v Azure Active Directory. V dalším kroku nasaďte rozhraní FHIR API v Azure.
+V tomto článku jste se seznámili s postupem registrace klientské aplikace služby v Azure Active Directory. Dále si můžete přečíst další informace o dalších nastaveních pro Azure API pro FHIR.
  
 >[!div class="nextstepaction"]
->[Nasazení Open Source serveru FHIR](fhir-oss-powershell-quickstart.md)
+>[Další nastavení](azure-api-for-fhir-additional-settings.md)

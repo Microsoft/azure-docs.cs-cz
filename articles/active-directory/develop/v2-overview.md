@@ -1,5 +1,6 @@
 ---
 title: Přehled platformy Microsoft Identity – Azure
+titleSuffix: Microsoft identity platform
 description: Přečtěte si o komponentách platformy Microsoft identity a o tom, jak vám můžou pomoci při sestavování podpory IAM (Identity and Access Management) pro vaše aplikace.
 services: active-directory
 author: rwike77
@@ -12,14 +13,14 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 831af87159b909ca744839d2997aa2b70cbc72e3
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119551"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627121"
 ---
-# <a name="microsoft-identity-platform-overview"></a>Přehled platformy Microsoft identity
+# <a name="what-is-the-microsoft-identity-platform"></a>Co je Microsoft Identity Platform?
 
 Platforma Microsoft Identity vám pomůže sestavovat aplikace, které můžou uživatelé a zákazníci přihlašovat k používání svých identit Microsoftu nebo účtů sociálních sítí, a poskytovat autorizovaný přístup k vašim vlastním rozhraním API nebo rozhraním API Microsoftu, jako je Microsoft Graph.
 

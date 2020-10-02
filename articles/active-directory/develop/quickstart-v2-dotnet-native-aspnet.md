@@ -1,5 +1,6 @@
 ---
-title: Volání webového rozhraní API ASP.NET, které je chráněné technologií Microsoft Identity Platform
+title: 'Rychlý Start: volání webového rozhraní API ASP.NET, které je chráněné technologií Microsoft Identity Platform | Azure'
+titleSuffix: Microsoft identity platform
 description: V tomto rychlém startu se dozvíte, jak volat webové rozhraní API ASP.NET, které je chráněno platformou Microsoft identity z aplikace klasické pracovní plochy (WPF).
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: e1b76c9b6a442e3be23ddd54c926b13601287d7f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: bf9c92d631d1d48527cd3a2734879d400d3e0bf0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91354934"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631609"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Rychlý Start: volání webového rozhraní API ASP.NET, které je chráněné technologií Microsoft Identity Platform
 
@@ -26,31 +27,28 @@ V tomto rychlém startu vystavíte webové rozhraní API a ochráníte ho, aby k
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li spustit vzorový kód v tomto článku, budete potřebovat:
-
-* Visual Studio 2017 nebo 2019.  Stáhněte si [Visual Studio zdarma](https://www.visualstudio.com/downloads/).
-* Buď [účet Microsoft](https://www.outlook.com) , nebo [program Microsoft 365 Developer](/office/developer-program/office-365-developer-program).
+* Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Visual Studio 2017 nebo 2019. Stáhněte si [Visual Studio zdarma](https://www.visualstudio.com/downloads/).
 
 ## <a name="clone-or-download-the-sample"></a>Klonovat nebo Stáhnout ukázku
 
-Ukázku můžete získat jedním ze dvou způsobů:  
+Ukázku můžete získat jedním ze dvou způsobů:
 
 * Naklonujte ho z prostředí nebo příkazového řádku:
    ```console
    git clone https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git
-   ```  
+   ```
 * [Stáhněte si ho jako soubor zip](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip).
 
 ## <a name="register-your-web-api"></a>Registrace webového rozhraní API
 
-V této části zaregistrujete webové rozhraní API na portálu **Registrace aplikací** .
+V této části zaregistrujete webové rozhraní API v **Registrace aplikací** Azure Portal.
 
 ### <a name="choose-your-azure-ad-tenant"></a>Výběr tenanta Azure AD
 
 Pokud chcete své aplikace zaregistrovat ručně, vyberte tenanta Azure Active Directory (Azure AD), ve kterém chcete své aplikace vytvořit.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-
 1. Pokud je váš účet přítomen ve více než jednom tenantovi služby Azure AD, vyberte profil v pravém horním rohu a pak vyberte **Přepnout adresář**.
 1. Změňte relaci portálu na klienta služby Azure AD, kterého chcete použít.
 
@@ -60,21 +58,22 @@ Pokud chcete své aplikace zaregistrovat ručně, vyberte tenanta Azure Active D
 1. Vyberte **Nová registrace**.
 1. Po otevření **stránky Registrovat aplikaci** zadejte informace o registraci vaší aplikace:
 
-   a. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace. Zadejte například **AppModelv2-NativeClient-dotnet-TodoListService**.  
-   b. U **podporovaných typů účtů**vyberte **účty v libovolném organizačním adresáři**.  
-   c. Výběrem možnosti **Registrovat** aplikaci vytvořte.
+    1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace. Zadejte například **AppModelv2-NativeClient-dotnet-TodoListService**.
+    1. U **podporovaných typů účtů**vyberte **účty v libovolném organizačním adresáři**.
+    1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 
 1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a potom ji zaznamenejte pro pozdější použití. Budete ho potřebovat ke konfiguraci konfiguračního souboru sady Visual Studio pro tento projekt (to znamená `ClientId` v souboru *TodoListService\Web.config* ).
-1. V části **vystavení rozhraní API** vyberte **Přidat obor**, přijměte navrhovaný identifikátor URI (API://{ClientID}) navrhované aplikace, a to tak, že vyberete **Uložit a pokračovat**a pak zadáte následující informace:
- 
-   a. Jako **název oboru**zadejte **access_as_user**.  
-   b. Pro **uživatele, kteří můžou vyjádřit souhlas**, se ujistěte, že je vybraná možnost **Správci a uživatelé** .  
-   c. V poli **Zobrazovaný název souhlasu správce** zadejte **přístup TodoListService jako uživatel**.  
-   d. V poli **Popis souhlasu správce** zadejte přístup k **webovému rozhraní API TodoListService jako uživatel**.  
-   e. Do pole **Zobrazovaný název souhlasu uživatele** zadejte **přístup TodoListService jako uživatel**.  
-   f. Do pole **Popis souhlasu uživatele** zadejte přístup k **webovému rozhraní API TodoListService jako uživatel**.  
-   například V případě **stavu**nechte **Povolit**.  
-   h. Vyberte **Přidat obor**.
+
+1. V části **vystavení rozhraní API** vyberte **Přidat obor**, přijměte navrhovaný identifikátor URI () navrhované aplikace `api://{clientId}` , a to tak, že vyberete **Uložit a pokračovat**a pak zadáte následující informace:
+
+    1. Jako **název oboru**zadejte **access_as_user**.
+    1. Pro **uživatele, kteří můžou vyjádřit souhlas**, se ujistěte, že je vybraná možnost **Správci a uživatelé** .
+    1. V poli **Zobrazovaný název souhlasu správce** zadejte **přístup TodoListService jako uživatel**.
+    1. V poli **Popis souhlasu správce** zadejte přístup k **webovému rozhraní API TodoListService jako uživatel**.
+    1. Do pole **Zobrazovaný název souhlasu uživatele** zadejte **přístup TodoListService jako uživatel**.
+    1. Do pole **Popis souhlasu uživatele** zadejte přístup k **webovému rozhraní API TodoListService jako uživatel**.
+    1. V případě **stavu**nechte **Povolit**.
+    1. Vyberte **Přidat obor**.
 
 ### <a name="configure-the-service-project"></a>Konfigurace projektu služby
 
@@ -107,30 +106,30 @@ K registraci aplikace TodoListClient postupujte takto:
 1. Vyberte **Nová registrace**.
 1. Po otevření **stránky Registrovat aplikaci** zadejte informace o registraci vaší aplikace:
 
-   a. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace (například **NativeClient-dotnet-TodoListClient**).  
-   b. U **podporovaných typů účtů**vyberte **účty v libovolném organizačním adresáři**.  
-   c. Výběrem možnosti **Registrovat** aplikaci vytvořte.
-   
+    1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace (například **NativeClient-dotnet-TodoListClient**).
+    1. U **podporovaných typů účtů**vyberte **účty v libovolném organizačním adresáři**.
+    1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
+
    > [!NOTE]
    > V souboru *app.config* projektu TodoListClient je výchozí hodnota `ida:Tenant` nastavená na `common` . Možné hodnoty jsou:
    > - `common`: Přihlaste se pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft (protože jste vybrali **účty v libovolné organizační složce** v kroku 3b).
    > - `organizations`: Můžete se přihlásit pomocí pracovního nebo školního účtu.
    > - `consumers`: Můžete se přihlásit pouze pomocí osobního účtu společnosti Microsoft.
-   >
-   
+
 1. Na stránce **Přehled** aplikace vyberte **ověřování**a pak postupujte takto:
 
-   a. V části **konfigurace platformy**vyberte tlačítko **Přidat platformu** .  
-   b. Pro **mobilní a desktopové aplikace**vyberte **mobilní a desktopové aplikace**.  
-   c. V případě **identifikátorů URI přesměrování**zaškrtněte **https://login.microsoftonline.com/common/oauth2/nativeclient** políčko.  
-   d. Vyberte **Konfigurovat**.   
+    1. V části **konfigurace platformy**vyberte tlačítko **Přidat platformu** .
+    1. Pro **mobilní a desktopové aplikace**vyberte **mobilní a desktopové aplikace**.
+    1. V případě **identifikátorů URI přesměrování**zaškrtněte **https://login.microsoftonline.com/common/oauth2/nativeclient** políčko.
+    1. Vyberte **Konfigurovat**.
+
 1. Vyberte **oprávnění rozhraní API**a pak postupujte takto:
 
-   a. Vyberte tlačítko **Přidat oprávnění**.  
-   b. Vyberte kartu **Moje rozhraní API** .  
-   c. V seznamu rozhraní API vyberte **AppModelv2-NativeClient-dotnet-TODOLISTSERVICE API** nebo název, který jste zadali pro webové rozhraní API.  
-   d. Zaškrtněte políčko **access_as_user** oprávnění, pokud již není vybráno. V případě potřeby použijte vyhledávací pole.  
-   e. Klikněte na tlačítko **Přidat oprávnění** .
+    1. Vyberte tlačítko **Přidat oprávnění**.
+    1. Vyberte kartu **Moje rozhraní API** .
+    1. V seznamu rozhraní API vyberte **AppModelv2-NativeClient-dotnet-TODOLISTSERVICE API** nebo název, který jste zadali pro webové rozhraní API.
+    1. Zaškrtněte políčko **access_as_user** oprávnění, pokud již není vybráno. V případě potřeby použijte vyhledávací pole.
+    1. Klikněte na tlačítko **Přidat oprávnění** .
 
 ### <a name="configure-your-project"></a>Konfigurace projektu
 

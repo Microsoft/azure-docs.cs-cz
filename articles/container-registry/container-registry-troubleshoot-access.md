@@ -2,13 +2,13 @@
 title: Řešení potíží se sítí pomocí registru
 description: Příznaky, příčiny a řešení běžných potíží při přístupu ke službě Azure Container Registry ve virtuální síti nebo za bránou firewall
 ms.topic: article
-ms.date: 08/11/2020
-ms.openlocfilehash: 06c5b65537fd7d256010260bb3a93888721f643b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/01/2020
+ms.openlocfilehash: c2ae8609dbd28a1a39a634e3c065030552aefb06
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532444"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630946"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Řešení potíží se sítí pomocí registru
 
@@ -22,6 +22,7 @@ Může zahrnovat jednu nebo více z následujících možností:
 * Nepovedlo se odeslat nebo načíst image a zobrazí se chyba rozhraní příkazového řádku Azure CLI. `Could not connect to the registry login server`
 * Nepovedlo se načíst image z registru do služby Azure Kubernetes nebo jiné služby Azure.
 * Nejde získat přístup k registru za proxy HTTPS a zobrazí se chyba. `Error response from daemon: login attempt failed with status: 403 Forbidden`
+* Nepovedlo se nakonfigurovat nastavení virtuální sítě a zobrazí se chyba. `Failed to save firewall and virtual network settings for container registry`
 * Nejde získat přístup k nastavení registru v Azure Portal nebo spravovat registr pomocí rozhraní příkazového řádku Azure CLI.
 * Nelze přidat nebo změnit nastavení virtuální sítě ani pravidla veřejného přístupu.
 * Úlohy ACR nemůžou vyžádat nebo načíst image.
@@ -47,7 +48,7 @@ Příklady příkazů najdete v tématu o [kontrole stavu služby Azure Containe
 
 ### <a name="configure-client-firewall-access"></a>Konfigurace přístupu klienta k bráně firewall
 
-Pokud chcete získat přístup k registru z za bránou firewall nebo proxy server klienta, nakonfigurujte pravidla brány firewall pro přístup k koncovým bodům REST a dat registru. Pokud jsou [vyhrazené koncové body dat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) povolené, budete potřebovat pravidla pro přístup:
+Pokud chcete získat přístup k registru z za bránou firewall nebo proxy server klienta, nakonfigurujte pravidla brány firewall pro přístup k veřejným koncovým bodům REST a dat registru. Pokud jsou [vyhrazené koncové body dat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) povolené, budete potřebovat pravidla pro přístup:
 
 * Koncový bod REST: `<registryname>.azurecr.io`
 * Datový koncový bod (y): `<registry-name>.<region>.data.azurecr.io`
@@ -85,6 +86,8 @@ Potvrďte, že je virtuální síť nakonfigurovaná s privátním koncovým bod
 Zkontrolujte pravidla NSG a značky služeb, které se používají k omezení provozu z jiných prostředků v síti do registru. 
 
 Pokud je nakonfigurován koncový bod služby registru, zkontrolujte, že je do registru přidáno síťové pravidlo, které umožňuje přístup z této podsítě sítě. Koncový bod služby podporuje přístup jenom z virtuálních počítačů a clusterů AKS v síti.
+
+Pokud chcete omezit přístup k registru pomocí virtuální sítě v jiném předplatném Azure, ujistěte se, že `Microsoft.ContainerRegistry` v tomto předplatném zaregistrujete poskytovatele prostředků. [Zaregistrujte poskytovatele prostředků](../azure-resource-manager/management/resource-providers-and-types.md) pro Azure Container Registry pomocí Azure Portal, rozhraní příkazového řádku Azure nebo dalších nástrojů Azure.
 
 Pokud je v síti nakonfigurované Azure Firewall nebo podobné řešení, ověřte, že se pro přístup k koncovým bodům registru má povolit odchozí přenos dat z jiných prostředků, jako je cluster AKS.
 

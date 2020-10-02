@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/01/2020
 ms.custom: dpalled
-ms.openlocfilehash: 4d4e7f4433171e593f5e61ab6f48afc640857d9b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2cf86ed4fd4305a37d27bf7a88e8493821ef085c
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91536575"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629093"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Přidání podpory pro typ Long data v Azure Time Series Insights Gen2
 

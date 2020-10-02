@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/25/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: c1d351cf7a3d66f6051bf5c9d17672b054c2d862
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: d4690062dead8186022cc53ca47dbc7e17a9376f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538378"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631184"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Přehled izolace a ochrany osobních údajů virtuální sítě
 
@@ -28,7 +28,7 @@ Tady jsou další články v této sérii:
 
 **1. virtuální síť – přehled**  >  [2 Zabezpečte pracovní prostor](how-to-secure-workspace-vnet.md)  >  [3. Zabezpečte školicí prostředí](how-to-secure-training-vnet.md)  >  [4. Zabezpečte prostředí Inferencing](how-to-secure-inferencing-vnet.md)  >  [5. Povolit funkci studia](how-to-enable-studio-virtual-network.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte zkušenosti s následujícími tématy:
 + [Virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
@@ -80,19 +80,7 @@ Podrobné pokyny k provedení tohoto postupu najdete v tématu [zabezpečení Az
 ### <a name="limitations"></a>Omezení
 
 Zabezpečení pracovního prostoru a přidružených prostředků v rámci virtuální sítě má následující omezení:
-- Privátní odkaz v pracovním prostoru je k dispozici pouze v následujících oblastech:
-    - **East US**
-    - **Středojižní USA**
-    - **USA – západ**
-    - **Západní USA 2**
-    - **Střední Kanada**
-    - **Southeast Asia**
-    - **Japan East**
-    - **Severní Evropa**
-    - **Východní Austrálie**
-    - **Spojené království – jih**
-    
-    Toto omezení se nevztahuje na přidružené prostředky. Můžete například povolit síť VNet pro úložiště v libovolné Azure Machine Learning oblasti.
+- Použití Azure Machine Learningho pracovního prostoru s privátním odkazem není v oblastech Azure Government nebo Azure Čína 21Vianet k dispozici.
 - Všechny prostředky musí být za stejnou virtuální sítí. Nicméně podsítě v rámci stejné virtuální sítě jsou povoleny.
 
 ## <a name="secure-the-training-environment"></a>Zabezpečení školicího prostředí

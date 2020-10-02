@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: bee6f832476537a6d7dba3db98d9aada6c61a476
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: cbfb5c598a2a56b0b14a3a90cf29ce23366b9b6c
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574241"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627665"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (UPW)
+# <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Kurz: volání rozhraní API Microsoft Graph z aplikace Univerzální platforma Windows (UWP)
 
 V této příručce se dozvíte, jak může aplikace pro nativní Univerzální platforma Windows (UWP) požádat o přístupový token. Aplikace pak zavolá rozhraní Microsoft Graph API. Tato příručka platí i pro další rozhraní API, která vyžadují přístupové tokeny z koncového bodu Microsoft Identity Platform.
 
@@ -48,7 +48,7 @@ Tato příručka vytvoří ukázkovou aplikaci UWP, která se dotazuje na rozhra
 
 Tato příručka používá následující balíček NuGet:
 
-|Knihovna|Description|
+|Knihovna|Popis|
 |---|---|
 |[Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Identity a ověřování Microsoftu|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Klientská knihovna Microsoft Graph|
@@ -464,7 +464,7 @@ Na obrazovce **výsledky volání rozhraní API** se zobrazí informace o profil
 
 Zobrazí se také základní informace o tokenu získaném prostřednictvím `AcquireTokenInteractive` nebo `AcquireTokenSilent` v poli **informace o tokenu** :
 
-|Vlastnost  |Formát  |Description |
+|Vlastnost  |Formát  |Popis |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |Uživatelské jméno, které uživatele identifikuje.|
 |`Token Expires` |`DateTime` |Čas vypršení platnosti tokenu Knihovna Microsoft Authentication Library rozšiřuje datum vypršení platnosti tím, že podle potřeby token obnovuje.|

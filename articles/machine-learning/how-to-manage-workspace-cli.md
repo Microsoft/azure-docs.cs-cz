@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/28/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0919e2b0703d56c61bd9ee37cb70021de4deff45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb6c49ce779fe8b1e764471c31b392e31d6572ce
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322270"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631201"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
 
@@ -142,21 +142,7 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 ### <a name="virtual-network-and-private-endpoint"></a>Virtuální síť a soukromý koncový bod
 
 > [!IMPORTANT]
-> Používání privátního odkazu Azure s Azure Machine Learning pracovním prostorem je v současnosti ve verzi Public Preview. Tato funkce je k dispozici pouze v následujících oblastech:
->
-> * **East US**
-> * **Středojižní USA**
-> * **USA – západ**
-> * **Západní USA 2**
-> * **Střední Kanada**
-> * **Southeast Asia**
-> * **Japan East**
-> * **Severní Evropa**
-> * **Východní Austrálie**
-> * **Spojené království – jih**
->
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Použití Azure Machine Learningho pracovního prostoru s privátním odkazem není k dispozici ve Azure Government oblastech nebo v oblastech Azure Čína 21Vianet.
 
 Pokud chcete omezit přístup k pracovnímu prostoru na virtuální síť, můžete použít následující parametry:
 

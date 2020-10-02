@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 13b3d483e271ac220ae254891fe362e932746e87
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 7c429ad04a4c1e881c84c3af9dfa9ee553963917
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279495"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629790"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy pro provozní zabezpečení Azure
 Tento článek poskytuje sadu provozních osvědčených postupů pro ochranu vašich dat, aplikací a dalších prostředků v Azure.
@@ -185,7 +185,7 @@ Pro Azure Cloud Services nakonfigurujte jednotlivé role tak, aby používaly [v
 V případě [Azure Virtual Machines](../../virtual-machines/windows/overview.md)zajistěte, aby vaše architektura virtuálních počítačů zahrnovala více než jeden virtuální počítač a aby byl každý virtuální počítač součástí [skupiny dostupnosti](../../virtual-machines/windows/tutorial-availability-sets.md). Pro možnosti automatického škálování doporučujeme používat Virtual Machine Scale Sets.
 
 **Osvědčený postup**: vrstvení zabezpečení v aplikaci omezuje možnost úspěšného útoku. Implementujte zabezpečené návrhy pro vaše aplikace pomocí integrovaných možností platformy Azure.  
-**Podrobnosti**: riziko útoku se zvyšuje s velikostí (oblastí Surface) aplikace. Oblast Surface můžete snížit pomocí seznamu povolených adres, abyste zavřeli vystavený adresní prostor IP adres a naslouchající porty, které nejsou potřeba na nástrojích pro vyrovnávání zatížení ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) a [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)).
+**Podrobnosti**: riziko útoku se zvyšuje s velikostí (oblastí Surface) aplikace. Oblast povrchu můžete zmenšit pomocí seznamu schválení a uzavřít tak vystavený adresní prostor IP adres a naslouchající porty, které nejsou potřebné v nástrojích pro vyrovnávání zatížení ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) a [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)).
 
 [Skupiny zabezpečení sítě](../../virtual-network/security-overview.md) představují jiný způsob, jak omezit plochu pro útok. [Značky služeb](../../virtual-network/security-overview.md#service-tags) a [skupiny zabezpečení aplikací](../../virtual-network/security-overview.md#application-security-groups) můžete použít k minimalizaci složitosti při vytváření pravidel zabezpečení a konfiguraci zabezpečení sítě, jako přirozené rozšíření struktury aplikace.
 

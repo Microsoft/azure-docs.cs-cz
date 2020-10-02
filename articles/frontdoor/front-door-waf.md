@@ -1,5 +1,5 @@
 ---
-title: Škálování a ochrana webové aplikace s využitím front-WAF a služby Azure
+title: 'Kurz: škálování a ochrana webové aplikace pomocí front-dveří Azure a firewallu webových aplikací Azure (WAF)'
 description: V tomto kurzu se dozvíte, jak používat bránu firewall webových aplikací Azure se službou Azure front-dveří.
 services: frontdoor
 documentationcenter: ''
@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2020
+ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: 2d531289a1d6e8c484b0334e570d943acdb82268
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c5e938f985296e0534ca6e2438cf3acedb0fb65
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276250"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626475"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Kurz: rychlé škálování a ochrana webové aplikace s využitím front-bran Azure a firewallu webových aplikací Azure (WAF)
 
-Mnoho webových aplikací má v nedávné době rychlý nárůst provozu z důvodu COVID-19. U těchto webových aplikací dochází také ke zvýšení škodlivého provozu, včetně útoků DOS (Denial-of-Service). K dispozici je efektivní způsob, jak škálovat přenos z provozu a chránit před útoky: Nastavte si přední dveře Azure pomocí Azure WAF jako akceleraci, mezipaměť a vrstvu zabezpečení před vaší webovou aplikací. Tento článek poskytuje pokyny, jak rychle získat přední dveře Azure pomocí Azure WAF set pro všechny webové aplikace, které běží v nebo mimo Azure. 
+Mnoho webových aplikací má v nedávné době rychlý nárůst provozu z důvodu COVID-19. U těchto webových aplikací dochází také ke zvýšení škodlivého provozu, včetně útoků DOS (Denial-of-Service). Existuje efektivní způsob, jak škálovat aplikaci pro přepětí provozu a chránit před útoky: nakonfigurujeme přední dveře Azure pomocí Azure WAF jako akceleraci, ukládání do mezipaměti a vrstvu zabezpečení před webovou aplikací. Tento článek poskytuje informace o tom, jak získat přední dvířka Azure s Azure WAF nakonfigurovanou pro libovolnou webovou aplikaci, která běží v nebo mimo Azure. 
 
-K nastavení WAF v tomto kurzu budeme používat rozhraní příkazového řádku Azure CLI. Stejnou věc můžete dosáhnout pomocí Azure Portal, Azure PowerShell, Azure Resource Manager nebo rozhraní Azure REST API. 
+K nakonfigurování WAF v tomto kurzu budeme používat rozhraní příkazového řádku Azure CLI. Stejnou věc můžete dosáhnout pomocí Azure Portal, Azure PowerShell, Azure Resource Manager nebo rozhraní Azure REST API. 
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokyny v tomto kurzu používají rozhraní příkazového řádku Azure CLI. [Podívejte se na tento průvodce](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) , abyste mohli začít s Azure CLI.
+- Pokyny v tomto kurzu používají rozhraní příkazového řádku Azure CLI. [Podívejte se na tento průvodce](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest&preserve-view=true) , abyste mohli začít s Azure CLI.
 
   > [!TIP] 
   > Snadný a rychlý způsob, jak začít pracovat s Azure CLI, je [bash v Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart).
@@ -48,7 +48,7 @@ V tomto kurzu se naučíte:
    ```
 
 > [!NOTE] 
-> Další informace o příkazech použitých v tomto kurzu najdete v tématu [Reference k rozhraní příkazového řádku Azure CLI pro přední dveře](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest).
+> Další informace o příkazech použitých v tomto kurzu najdete v tématu [Reference k rozhraní příkazového řádku Azure CLI pro přední dveře](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest&preserve-view=true).
 
 ## <a name="create-an-azure-front-door-resource"></a>Vytvoření prostředku front-dveří Azure
 
@@ -121,7 +121,7 @@ az network front-door update --name <> --resource-group <> --set frontendEndpoin
 
 `--resource-group`: Skupina prostředků, do které jste umístili prostředek front-dveří Azure.
 
-`--set`: Tady aktualizujete `WebApplicationFirewallPolicyLink` atribut `frontendEndpoint` přidruženého k prostředku front-dveří Azure pomocí nové zásady WAF. Měli byste mít ID zásady WAF z odpovědi, kterou jste dostali při vytváření profilu WAF dříve v tomto kurzu.
+`--set`: Je místo, kde aktualizujete `WebApplicationFirewallPolicyLink` atribut `frontendEndpoint` přidruženého k prostředku front-dveří Azure pomocí nové zásady WAF. Měli byste mít ID zásady WAF z odpovědi, kterou jste dostali při vytváření profilu WAF dříve v tomto kurzu.
 
  > [!NOTE] 
 > Předchozí příklad je použitelný, pokud nepoužíváte vlastní doménu. Pokud pro přístup k webovým aplikacím nepoužíváte žádné vlastní domény, můžete přejít k další části. V takovém případě poskytnete zákazníkům `hostName` získanou získanou, když jste vytvořili prostředek front-dveří Azure. Použijí tyto možnosti `hostName` k přechodu do vaší webové aplikace.
@@ -136,7 +136,7 @@ Je důležité si uvědomit, že pokud potřebujete, aby se vaši zákazníci do
 
 Také je potřeba aktualizovat konfiguraci front-dveří pro Azure, aby se do ní [přidala vlastní doména](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain) , aby bylo možné toto mapování znát.
 
-Nakonec, pokud používáte vlastní doménu k dosažení vaší webové aplikace a chcete povolit protokol HTTPS, musíte [nastavit certifikáty pro vlastní doménu v frontách Azure](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https). 
+Nakonec, pokud používáte vlastní doménu k dosažení vaší webové aplikace a chcete povolit protokol HTTPS. Musíte [nastavit certifikáty pro vlastní doménu v Azure front-dveří](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https). 
 
 ## <a name="lock-down-your-web-application"></a>Uzamčení webové aplikace
 
@@ -144,7 +144,7 @@ Doporučujeme, abyste měli jistotu, že s vaší webovou aplikací můžou komu
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete prostředky používané v tomto kurzu, odeberte skupinu prostředků, přední dveře a zásady WAF pomocí příkazu [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) :
+Pokud už nepotřebujete prostředky používané v tomto kurzu, odeberte skupinu prostředků, přední dveře a zásady WAF pomocí příkazu [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) :
 
 ```azurecli-interactive
   az group delete \
@@ -158,6 +158,3 @@ Pokud se chcete dozvědět, jak řešit potíže s předními dveřmi, přečtě
 
 > [!div class="nextstepaction"]
 > [Řešení běžných potíží se směrováním](front-door-troubleshoot-routing.md)
-
-> [!div class="nextstepaction"]
-> [Povolené certifikační autority](https://docs.microsoft.com/azure/frontdoor/front-door-troubleshoot-allowed-ca)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 0453ec9eac2b73b5372c143b23d6db98f65e38aa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 004685a50e2413c29528ad3aca08a0150843a8aa
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947309"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631358"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Rychlý Start: monitorování první metriky pomocí webového portálu
 
@@ -38,6 +38,13 @@ Při zřizování instance služby Advisor metriky můžete použít rozhraní A
 > * Pokud chcete použít REST API ke komunikaci se službou, budete potřebovat klíč a koncový bod z vytvořeného prostředku. Můžete je najít na kartě  **klíče a koncové body** ve vytvořeném prostředku.
 
 Tento dokument používá SQL Database jako příklad pro vytvoření prvního monitoru.
+
+## <a name="sign-in-to-your-workspace"></a>Přihlaste se ke svému pracovnímu prostoru.
+
+Po vytvoření prostředku se přihlaste k [portálu Poradce pro metriky](https://go.microsoft.com/fwlink/?linkid=2143774). Vyberte svůj pracovní prostor, abyste mohli začít monitorovat vaše metriky. 
+ 
+V současné době můžete v každé dostupné oblasti vytvořit jeden prostředek Advisoru metriky. Pracovní prostory můžete kdykoli přepnout na portálu pro poradce pro metriky.
+
 
 ## <a name="onboard-time-series-data"></a>Připojování dat časových řad
 
@@ -85,12 +92,12 @@ Po načtení schématu dat a zobrazení jako níže vyberte příslušná pole.
 |Výběr  |Popis  |Poznámky  |
 |---------|---------|---------|
 |**Timestamp**     | Časové razítko datového bodu. Pokud tento parametr vynecháte, poradce metriky použije časové razítko, když se místo toho bude přijímat datový bod. U každého datového kanálu můžete zadat maximálně jeden sloupec jako časové razítko.        | Nepovinný parametr. By měl být zadaný s maximálně jedním sloupcem.       |
-|**Míra**     |  Číselné hodnoty v datovém kanálu. U každého datového kanálu můžete zadat více měr, ale jako míru by měl být vybrán alespoň jeden sloupec.        | By měla být zadána alespoň v jednom sloupci.        |
+|**Measure**     |  Číselné hodnoty v datovém kanálu. U každého datového kanálu můžete zadat více měr, ale jako míru by měl být vybrán alespoň jeden sloupec.        | By měla být zadána alespoň v jednom sloupci.        |
 |**Rozměr**     | Kategorií hodnoty. Kombinace různých hodnot identifikuje konkrétní časovou řadu s jednou dimenzí, například: Country (země), Language (tenant). Jako rozměry můžete vybrat žádný nebo libovolný počet sloupců. Poznámka: Pokud jako dimenzi vybíráte sloupec, který není typu řetězec, buďte opatrní při rozbalení dimenze. | Nepovinný parametr.        |
-|**Ohled**     | Ignoruje vybraný sloupec.        |         |
+|**Ignorovat**     | Ignoruje vybraný sloupec.        |         |
 
 
-:::image type="content" source="../media/schema-configuration.png" alt-text="Konfigurace schématu" lightbox="../media/schema-configuration.png":::
+:::image type="content" source="../media/schema-configuration.png" alt-text="Nastavení připojení" lightbox="../media/schema-configuration.png":::
 
 ### <a name="automatic-roll-up-settings"></a>Nastavení automatického shrnutí
 
@@ -110,7 +117,7 @@ Po použití detekce klikněte na jednu z metrik uvedených v datovém kanálu, 
 - Aktualizace zjišťování konfigurace, aby splňovala očekávané výsledky
 - Nastavení oznámení pro zjištěné anomálie
 
-:::image type="content" source="../media/metric-details.png" alt-text="Podrobnosti metriky" lightbox="../media/metric-details.png":::
+:::image type="content" source="../media/metric-details.png" alt-text="Nastavení připojení" lightbox="../media/metric-details.png":::
 
 ## <a name="view-the-diagnostic-insights"></a>Zobrazit diagnostické přehledy
 
@@ -118,13 +125,13 @@ Po optimalizaci konfigurace zjišťování by nalezené anomálie měly odráže
 
 Pokud chcete zobrazit diagnostické poznatky, klikněte na červené tečky v vizualizacích časových řad, které reprezentují zjištěné anomálie. Zobrazí se okno s odkazem na stránku analýzy incidentů. 
 
-:::image type="content" source="../media/incident-link.png" alt-text="Odkaz na incident" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="Nastavení připojení" lightbox="../media/incident-link.png":::
 
 Po kliknutí na tento odkaz bude na stránce analýzy incidentů převedená analýza incidentu, která analyzuje odpovídající anomálii a spoustu diagnostických poznatků. V horní části se zobrazí statistické údaje o incidentu, jako je **závažnost**, ovlivnění **anomálií**a **čas spuštění** a **čas ukončení**. 
 
 V dalším kroku se zobrazí anomálie nadřazeného incidentu a automatizovaná Rada pro hlavní příčiny. Tato automatizovaná pomocná událost je vygenerována analýzou stromové struktury všech souvisejících anomálií, včetně odchylek, distribuce a příspěvků nadřazených anomálií. 
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="Diagnostika incidentů" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="Nastavení připojení" lightbox="../media/incident-diagnostic.png":::
 
 Na základě těchto informací už můžete získat přehled o tom, co se děje, a ovlivnit dopad incidentu a také největší možnou hlavní příčinu. Proto by mohla být provedena okamžitá akce pro vyřešení incidentu co nejdříve. 
 

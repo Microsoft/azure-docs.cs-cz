@@ -3,17 +3,17 @@ title: Co je nového ve virtuálním počítači s Windows? – Azure
 description: Nové funkce a aktualizace produktů pro virtuální počítač s Windows
 author: Heidilohr
 ms.topic: overview
-ms.date: 09/02/2020
+ms.date: 10/01/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: d698470f450f6fe903ab68334764e0918d659d7f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 0191d6ad74a9b6349f5d1724f9483607dce2d926
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319810"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630010"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -25,6 +25,29 @@ Virtuální počítače s Windows se pravidelně aktualizují. V tomto článku 
 - Opravy chyb
 
 Tento článek se aktualizuje měsíčně. Nezapomeňte se podívat, jak často se budou zobrazovat nové aktualizace.
+
+## <a name="september-2020"></a>Září 2020
+
+Tady je postup, který se změnil v září 2020:
+
+- Vyoptimalizovali jsme výkon snížením latence připojení v následujících geografických oblastech Azure:
+    - Německo
+    - Jihoafrická Afrika (jenom pro prostředí ověřování)
+
+Teď můžete využít [prostředí Estimator Experience](https://azure.microsoft.com/services/virtual-desktop/assessment/) k odhadu kvality uživatelského prostředí v těchto oblastech.
+
+- Vydali jsme verzi 1.2.1364 klienta pro stolní počítače Windows pro virtuální počítače s Windows. V této aktualizaci jsme udělali tyto změny:
+    - Opravili jsme problém, kdy jednotné přihlašování (SSO) nefungovalo ve Windows 7.
+    - Opravili jsme problém, který způsobil odpojení klienta v případě, že se uživatel, který povolil optimalizaci médií pro týmy, pokusil zavolat nebo připojit týmy ke schůzce v případě, že je zvukový datový proud otevřený ve výhradním režimu.
+    - Opravili jsme problém, kdy týmy nevytvořily výčet zvukových nebo video zařízení, když byla povolená optimalizace médií pro týmy.
+    - Přidali jsme "potřebu pomáhat s nastaveními?" odkaz na stránku nastavení plochy.
+    - Opravili jsme problém s tlačítkem přihlášení k odběru, ke kterému došlo při použití tmavých tmavých motivů s vysokým kontrastem.
+    
+- Díky špičkové podpoře od našich uživatelů jsme opravili dva kritické problémy pro klienta Microsoft Store vzdálené plochy. Budeme dál kontrolovat názory a opravovat problémy, protože rozšiřujeme naši dvoufázové vydání klienta na více uživatelů po celém světě.
+    
+- Přidali jsme novou funkci, která umožňuje změnit umístění virtuálního počítače, image, skupinu prostředků, název předpony, konfiguraci sítě jako součást pracovního postupu pro přidání virtuálního počítače do nasazení v Azure Portal.
+
+- IT specialisté teď můžou spravovat virtuální počítače s Windows 10 připojené k hybridnímu Azure Active Directory pomocí Microsoft Endpoint Manageru. Další informace najdete v [našem blogovém příspěvku](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/microsoft-endpoint-manager-announces-support-for-windows-virtual/ba-p/1681048).
 
 ## <a name="august-2020"></a>Srpen 2020
 
@@ -144,4 +167,3 @@ V těchto článcích najdete informace o aktualizacích pro naše klienty pro v
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si o budoucích plánech v [Microsoft 365 plán virtuálních klientů pro Windows](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop).
-

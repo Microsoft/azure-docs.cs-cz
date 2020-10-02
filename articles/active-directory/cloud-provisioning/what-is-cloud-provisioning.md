@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a86d34fca9a88b0df601533a0f3de1cc97ad1a2f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 311aa8974003e28692999ddb9409b4be20dc8e21
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80050602"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628328"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Co je zřízení cloudu Azure AD Connect?
 Zřizování cloudu Azure AD Connect je nový agent Microsoftu navržený tak, aby splnil a splnil vaše hybridní cíle identity pro synchronizaci uživatelů, skupin a kontaktů do Azure AD.  Dá se použít společně Azure AD Connect synchronizaci a nabízí následující výhody:
@@ -31,9 +31,17 @@ Zřizování cloudu Azure AD Connect je nový agent Microsoftu navržený tak, a
 ## <a name="how-is-azure-ad-connect-cloud-provisioning-different-from-azure-ad-connect-sync"></a>Jak se Azure AD Connect cloudové zřizování liší od Azure AD Connect synchronizace?
 Při zřizování cloudu Azure AD Connect se zřizování ze služby AD do služby Azure AD orchestruje v online službách Microsoftu. Organizace potřebuje nasadit, ve svém místním a IaaS prostředí, což je jednoduchý agent, který funguje jako most mezi Azure AD a AD. Konfigurace zřizování je uložená v Azure AD a spravovaná jako součást služby.
 
+## <a name="azure-ad-connect-cloud-provisioning-video"></a>Video zřizování cloudu Azure AD Connect
+Následující krátké video poskytuje vynikající overveiw Azure AD Connectho zřizování cloudu:
+
+> [!VIDEO https://youtu.be/embed/mOT3ID02_YQ]
+
+
+## <a name="comparison-between-azure-ad-connect-and-cloud-provisioning"></a>Srovnání mezi zřizováním Azure AD Connect a cloudem
+
 Následující tabulka poskytuje srovnání mezi Azure AD Connect a Azure AD Connectm zřizováním cloudu:
 
-| Funkce | Azure Active Directory Connect synchronizace| Zřizování cloudu Azure Active Directory Connect |
+| Příznak | Azure Active Directory Connect synchronizace| Zřizování cloudu Azure Active Directory Connect |
 |:--- |:---:|:---:|
 |Připojení k jedné místní doménové struktuře AD|● |● |
 | Připojení k několika místním doménovým strukturám AD |● |● |

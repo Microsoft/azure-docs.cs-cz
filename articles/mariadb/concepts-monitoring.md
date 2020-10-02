@@ -5,13 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
+ms.custom: references_regions
 ms.date: 8/13/2020
-ms.openlocfilehash: 35a097f7b6d73a14ac4840839a31d9aa256aa8de
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 9868403f69f3dc0b56aae06be1afda2134472805
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532687"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631031"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorování v Azure Database for MariaDB
 Sledování dat o vašich serverech vám pomůže při řešení potíží a optimalizaci pro vaše úlohy. Azure Database for MariaDB poskytuje různé metriky, které poskytují přehled o chování serveru.
@@ -62,8 +63,10 @@ Funkce [doporučení k výkonu](concepts-performance-recommendations.md) identif
 
 **Plánovaná oznámení údržby** vám umožní dostávat oznámení o nadcházející plánované údržbě Azure Database for MariaDB. Tato oznámení jsou integrovaná s plánovanou údržbou [Service Health](../service-health/overview.md) a umožňují zobrazit veškerou plánovanou údržbu vašich předplatných na jednom místě. Pomáhá také škálovat oznámení do správných cílových skupin pro různé skupiny prostředků, protože u různých zdrojů můžete mít zodpovědné různé kontakty. Zobrazí se oznámení o nadcházející údržbě 72 hodin před událostí.
 
-> [!Note]
-> Povedeme všechny pokusy o poskytnutí **oznámení o plánované údržbě** 72 hodin pro všechny události. V případech kritických nebo bezpečnostních oprav ale můžou být oznámení odeslána blíže k události nebo by se měla vynechat.
+Během plánované údržby můžete očekávat, že se server restartuje, a může dojít k [přechodným chybám](concepts-connectivity.md#transient-errors) . Většina těchto událostí je systémem automaticky snížena za méně než 60 sekund. 
+
+> [!IMPORTANT]
+> Plánovaná oznámení o údržbě jsou aktuálně k dispozici ve verzi Preview ve všech oblastech **kromě** středozápadní USA.
 
 ### <a name="to-receive-planned-maintenance-notification"></a>Příjem plánovaného oznámení o údržbě
 
@@ -78,8 +81,8 @@ Funkce [doporučení k výkonu](concepts-performance-recommendations.md) identif
 
 Podrobné informace o tom, jak vytvořit **výstrahy týkající se stavu služby**, najdete [v tématu vytváření výstrah protokolu aktivit u oznámení služby](../service-health/alerts-activity-log-service-notifications.md).
 
-> [!IMPORTANT]
-> Plánovaná oznámení o údržbě jsou v tuto chvíli k dispozici ve verzi Preview ve všech oblastech **kromě** středozápadní USA
+> [!Note]
+> Povedeme všechny pokusy o poskytnutí **oznámení o plánované údržbě** 72 hodin pro všechny události. V případech kritických nebo bezpečnostních oprav ale můžou být oznámení odeslána blíže k události nebo by se měla vynechat.
 
 ## <a name="next-steps"></a>Další kroky
 

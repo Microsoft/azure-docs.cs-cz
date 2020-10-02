@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: aahi
-ms.openlocfilehash: 5ffa5398143bff4e24d81a28a541e16c44700c99
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8032c3607dd74cddbaa5fd6690a95ebdf218809a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254019"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628190"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Postupy: nasazení webové aplikace pro počítání lidí
 
@@ -127,14 +127,13 @@ Teď, když je [manifest nasazení](https://go.microsoft.com/fwlink/?linkid=2142
 ```azurecli
 az login
 az extension add --name azure-iot
-az iot edge deployment create --deployment-id "<deployment name>" --hub-name "<IoT Hub name>" --content DeploymentManifest.json --target-condition "deviceId='<IoT Edge device name>'"--subscription "<subscriptionId>"
+az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
 ```
 
 Vyplňte požadované parametry:
 
-* Název nasazení: vyberte název pro toto nasazení.
 * IoT Hub název: název Azure IoT Hub
-* Deployment.js: název souboru nasazení
+* DeploymentManifest.js: název souboru nasazení
 * IoT Edge název zařízení: název IoT Edge zařízení hostitelského počítače.
 * Předplatné: ID nebo název předplatného
 

@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 19b2ec283619df0cc8d3c880cb2df6f53f6fb332
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 58386786266c48c6e721094f9f2837709bb684e5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936036"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631762"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Použijte rozšíření PostgreSQL ve skupině serverů PostgreSQL s podporou škálování na úrovni Azure ARC
 
@@ -30,6 +30,7 @@ Kromě rozšíření v systému [`contrib`](https://www.postgresql.org/docs/12/c
 - `pg_cron`, v: 1,2
 - `plpgsql`, v: 1,0
 - `postgis`, v: 3.0.2
+- `plv8`, v: 2.3.14
 
 Tento seznam se rozvíjejí přesčasy a aktualizace se budou publikovat v tomto dokumentu. Ještě není možné přidat rozšíření nad rámec uvedených výše.
 
@@ -60,7 +61,7 @@ Spusťte některý z následujících příkazů.
 ```console
 azdata arc postgres server show -n <server group name>
 ```
-Posuňte se ve výstupu a Všimněte si částí engine\extensions ve specifikacích vaší skupiny serverů. Příklad:
+Posuňte se ve výstupu a Všimněte si částí engine\extensions ve specifikacích vaší skupiny serverů. Například:
 ```console
 "engine": {
       "extensions": [
@@ -77,7 +78,7 @@ Posuňte se ve výstupu a Všimněte si částí engine\extensions ve specifikac
 ```console
 kubectl describe postgresql-12s/postgres02
 ```
-Posuňte se ve výstupu a Všimněte si částí engine\extensions ve specifikacích vaší skupiny serverů. Příklad:
+Posuňte se ve výstupu a Všimněte si částí engine\extensions ve specifikacích vaší skupiny serverů. Například:
 ```console
 Engine:
     Extensions:
@@ -240,3 +241,7 @@ SELECT * FROM the_best_coffee_shop;
 >[!NOTE]
 >Rozšíření není podporované `citus` . `citus`Rozšíření se vyžaduje pro zajištění prostředí s škálovatelným škálováním.
 
+## <a name="next-steps"></a>Další kroky:
+- Přečíst dokumentaci k [plv8](https://plv8.github.io/)
+- Přečíst dokumentaci k [PostGIS](https://postgis.net/)
+- Přečíst dokumentaci [`pg_cron`](https://github.com/citusdata/pg_cron)

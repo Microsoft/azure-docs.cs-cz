@@ -4,35 +4,35 @@ description: Základní VPN Gateway zabezpečení poskytuje postupy a prostředk
 author: msmbaldwin
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2ad40f83ece1a68fe49be39551aaa1a3b93ea064
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 7604e8519e7ae8db255a0e033ca3df0bb941a845
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614558"
+ms.locfileid: "91626254"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>Základní hodnoty zabezpečení Azure pro VPN Gateway
 
-Tato základní hodnota zabezpečení platí pro VPN Gateway pokynů od [zabezpečení Azure Security test 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview) . Srovnávací test zabezpečení Azure poskytuje doporučení, jak můžete zabezpečit cloudová řešení v Azure. Obsah je seskupen podle **řízení zabezpečení** definovaného srovnávacím testem zabezpečení Azure a souvisejících pokynů, které se vztahují na VPN Gateway. **Ovládací prvky** , které se nevztahují k VPN Gateway byly vyloučeny.
+Tato základní hodnota zabezpečení platí pro VPN Gateway pokynů od [zabezpečení Azure Security test 1,0](../security/benchmarks/overview-v1.md) . Srovnávací test zabezpečení Azure poskytuje doporučení, jak můžete zabezpečit cloudová řešení v Azure. Obsah je seskupen podle **řízení zabezpečení** definovaného srovnávacím testem zabezpečení Azure a souvisejících pokynů, které se vztahují na VPN Gateway. **Ovládací prvky** , které se nevztahují k VPN Gateway byly vyloučeny.
 
 Pokud chcete zjistit, jak VPN Gateway kompletně mapuje srovnávací test zabezpečení Azure, přečtěte si [celý soubor mapování standardních hodnot VPN Gateway Security](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace najdete v článku [srovnávací testy zabezpečení Azure: zabezpečení sítě](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: zabezpečení sítě](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Ochrana prostředků Azure v rámci virtuálních sítí
 
 **Doprovodné**materiály: při práci s podsítěmi brány VPN se vyhněte přidružení skupiny zabezpečení sítě (NSG) k podsíti brány. Pokud byste k této podsíti přidružili skupinu zabezpečení sítě, brána sítě VPN by mohla přestat fungovat podle očekávání.  V Virtual Network ale povolte skupiny zabezpečení sítě pro jiné podsítě mimo bránu VPN.
 
-- [Vytvoření Virtual Network](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) 
+- [Vytvoření Virtual Network](../virtual-network/quick-create-portal.md) 
 
-- [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic) 
+- [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md) 
 
-- [Vytvoření brány sítě VPN založené na trasách pomocí Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
+- [Vytvoření brány sítě VPN založené na trasách pomocí Azure Portal](create-routebased-vpn-gateway-portal.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -42,7 +42,7 @@ Pokud chcete zjistit, jak VPN Gateway kompletně mapuje srovnávací test zabezp
 
 **Doprovodné**materiály: použijte Azure Security Center a sledujte doporučení k ochraně síťových prostředků v Azure pomocí doporučení pro ochranu sítě. 
 
-- [Pochopení zabezpečení sítě, které poskytuje Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [Pochopení zabezpečení sítě, které poskytuje Azure Security Center](../security-center/security-center-network-recommendations.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -52,7 +52,7 @@ Pokud chcete zjistit, jak VPN Gateway kompletně mapuje srovnávací test zabezp
 
 **Pokyny**: Povolte zachytávání paketů brány VPN v bráně nebo konkrétním připojení v závislosti na vašich požadavcích.
 
-- [Konfigurace zachycení paketů pro brány VPN](https://docs.microsoft.com/azure/vpn-gateway/packet-capture)
+- [Konfigurace zachycení paketů pro brány VPN](packet-capture.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -64,11 +64,11 @@ Pokud chcete zjistit, jak VPN Gateway kompletně mapuje srovnávací test zabezp
 
 Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, přiřazení Azure RBAC a přiřazení Azure Policy v rámci jedné definice podrobného plánu. Můžete použít podrobný plán na nové nebo existující odběry a jemně vyladit řízení a správu prostřednictvím správy verzí.
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage) 
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Ukázky Azure Policy pro sítě](https://docs.microsoft.com/azure/governance/policy/samples/#network) 
+- [Ukázky Azure Policy pro sítě](/azure/governance/policy/samples/#network) 
 
-- [Vytvoření Azure Blueprint](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+- [Vytvoření Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -78,9 +78,9 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace prostředků a zjišťovat změny prostředků virtuální sítě. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny důležitých prostředků souvisejících s vaší bránou VPN.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log-view)
 
-- [Vytváření výstrah v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -88,7 +88,7 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace najdete v článku [srovnávací testy zabezpečení Azure: protokolování a monitorování](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: protokolování a monitorování](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurace centrální správy protokolů zabezpečení
 
@@ -96,11 +96,11 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
-- [Nastavení výstrah pro události diagnostického protokolu z VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log)
+- [Nastavení výstrah pro události diagnostického protokolu z VPN Gateway](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)
 
-- [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
 
 - [Jak začít s Azure Monitor a integrací SIEM třetích stran](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -112,9 +112,9 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 **Pokyny**: povolení nastavení diagnostiky na vašich VPN Gatewaych prostředcích pro přístup k protokolům auditu, zabezpečení a diagnostiky. Protokoly aktivit, které jsou automaticky k dispozici, zahrnují zdroj událostí, datum, uživatele, časové razítko, zdrojové adresy, cílové adresy a další užitečné prvky. 
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) 
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
 
-- [Principy protokolování a různých typů protokolů v Azure](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview)
+- [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/platform/platform-logs-overview.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -124,9 +124,9 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 **Doprovodné**materiály: v Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště. 
 
-- [Změnit dobu uchovávání dat v Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period) 
+- [Změnit dobu uchovávání dat v Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 
 
-- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -138,11 +138,11 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 Případně můžete povolit a začlenit data do Azure Sentinel nebo třetí strany SIEM. 
 
-- [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard) 
+- [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md) 
 
-- [Začínáme s Log Analytics dotazy](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) 
+- [Začínáme s Log Analytics dotazy](../azure-monitor/log-query/get-started-portal.md) 
 
-- [Jak provádět vlastní dotazy v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+- [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -154,11 +154,11 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo třetí str
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
-- [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Správa výstrah v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+- [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Upozornění na data protokolu Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [Upozornění na data protokolu Log Analytics](../azure-monitor/learn/tutorial-response.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -174,7 +174,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v článku [srovnávací testy zabezpečení Azure: identita a řízení přístupu](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: identita a řízení přístupu](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
@@ -194,7 +194,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity Management a Azure Resource Manager. 
 
-- [Další informace o Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+- [Další informace o Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -204,7 +204,7 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 **Doprovodné**materiály: kdykoli je to možné, použijte Azure Active Directory jednotného přihlašování (SSO) místo konfigurace jednotlivých samostatných přihlašovacích údajů pro každou službu. Použijte Azure Security Center doporučení pro identitu a přístup. 
 
-- [Vysvětlení jednotného přihlašování pomocí Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Vysvětlení jednotného přihlašování pomocí Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -214,9 +214,9 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 **Doprovodné**materiály: Povolte službu Azure AD MFA a sledujte doporučení pro přístup k identitě Azure Security Center. 
 
-- [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted) 
+- [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md) 
 
-- [Jak monitorovat identitu a přístup v rámci Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -226,9 +226,9 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 **Pokyny**: Použijte zabezpečenou pracovní stanici spravovanou v Azure (také známou jako pracovní stanice s privilegovaným přístupem nebo privilegovaným přístupem) pro úlohy správy, které vyžadují zvýšená oprávnění.
 
-- [Pochopení zabezpečení pracovních stanic spravovaných Azure](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-managed-workstation)
+- [Pochopení zabezpečení pracovních stanic spravovaných Azure](../active-directory/devices/concept-azure-managed-workstation.md)
 
-- [Jak povolit Azure AD MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Jak povolit Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -238,9 +238,9 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 **Doprovodné**materiály: použití sestav a monitorování zabezpečení Azure Active Directory k detekci, kdy dojde k podezřelé nebo nebezpečné aktivitě v prostředí. Pomocí Azure Security Center můžete monitorovat aktivitu identity a přístupu.
 
-- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
-- [Jak monitorovat identitu uživatelů a aktivity přístupu v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Jak monitorovat identitu uživatelů a aktivity přístupu v Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -250,7 +250,7 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 **Pokyny**: pomocí pojmenovaných umístění Azure AD povolte přístup jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí. 
 
-- [Jak nakonfigurovat pojmenovaná umístění služby Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [Jak nakonfigurovat pojmenovaná umístění služby Azure AD](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -260,7 +260,7 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 **Pokyny**: jako centrální ověřování a systém autorizací použijte Azure Active Directory (Azure AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele. 
 
-- [Jak vytvořit a nakonfigurovat instanci Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -270,9 +270,9 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 **Doprovodné**materiály: Azure Active Directory (Azure AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. K efektivní správě členství ve skupinách, přístupu k podnikovým aplikacím a přiřazování rolí můžete navíc použít kontroly identity a přístupu v Azure AD. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. 
 
-- [Pochopení sestav Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/) 
+- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/) 
 
-- [Jak používat kontroly identity a přístupu v Azure AD](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [Jak používat kontroly identity a přístupu v Azure AD](../active-directory/governance/access-reviews-overview.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -284,7 +284,7 @@ Můžete také povolit přístup za běhu pomocí Azure AD Privileged Identity M
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics. 
 
-- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -294,11 +294,11 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny**: pomocí Azure AD identity Protectionch funkcí můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce týkající se identit uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření. 
 
-- [Jak zobrazit rizikové přihlašování Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Jak zobrazit rizikové přihlašování Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
-- [Jak nakonfigurovat a povolit zásady rizik ochrany identity](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies) 
+- [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
-- [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -306,17 +306,17 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [srovnávací testy zabezpečení Azure: Ochrana dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [srovnávací testy zabezpečení Azure: Ochrana dat](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
 **Pokyny**: brány VPN mají vyhrazené instance virtuálních počítačů pro každou zákaznickou virtuální síť. Implementujte izolaci pomocí samostatných virtuálních sítí, předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit pomocí Azure Active Directory řízení přístupu na základě role.
 
-- [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
 
-- [Postup vytvoření Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Postup vytvoření Skupiny pro správu](/azure/governance/management-groups/create)
 
-- [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -328,7 +328,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a chrání před ztrátou a expozicí zákaznických dat. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat. 
 
-- [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -340,15 +340,15 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 Pro příslušné prostředky ve vaší virtuální síti postupujte podle Azure Security Center doporučení pro šifrování v klidovém provozu a šifrování při přenosu.
 
-- [O typech sítě VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#vpntype)
+- [O typech sítě VPN](vpn-gateway-about-vpn-gateway-settings.md#vpntype)
 
-- [Informace o zařízeních VPN a parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices#ipsec)
+- [Informace o zařízeních VPN a parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway](vpn-gateway-about-vpn-devices.md#ipsec)
 
-- [O kryptografických požadavcích a branách Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-compliance-crypto)
+- [O kryptografických požadavcích a branách Azure VPN Gateway](vpn-gateway-about-compliance-crypto.md)
 
-- [Konfigurace zásad IPsec/IKE pro připojení S2S VPN nebo připojení typu VNet-to-VNet](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell)
+- [Konfigurace zásad IPsec/IKE pro připojení S2S VPN nebo připojení typu VNet-to-VNet](vpn-gateway-ipsecikepolicy-rm-powershell.md)
 
-- [Pochopení šifrování při přenosu pomocí Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Pochopení šifrování při přenosu pomocí Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -366,9 +366,9 @@ Pro příslušné prostředky ve vaší virtuální síti postupujte podle Azure
 
 **Doprovodné**materiály: použití služby Azure AD RBAC k řízení přístupu k datům a prostředkům, v opačném případě použití metod řízení přístupu specifických pro službu. Použijte předdefinované role řízení přístupu založené na rolích, jako je vlastník, přispěvatel nebo přispěvatel sítě, a pak přiřaďte roli příslušnému oboru. Přiřaďte specifická oprávnění pro podmnožinu možností virtuální sítě vytvořením vlastní role a přiřazením konkrétních oprávnění vyžadovaných pro virtuální sítě, podsítě, brány sítě VPN, síťových rozhraní, skupin zabezpečení sítě a směrovacích tabulek k této roli.
 
-- [Jak nakonfigurovat RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/role-assignments-portal.md)
 
-- [Plánování virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm#permissions)
+- [Plánování virtuálních sítí](../virtual-network/virtual-network-vnet-plan-design-arm.md#permissions)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -378,11 +378,11 @@ Pro příslušné prostředky ve vaší virtuální síti postupujte podle Azure
 
 **Pokyny**: nakonfigurujte výstrahy Azure monitor, které aktivují protokoly aktivit Azure, aby se změny projevily u důležitých prostředků Azure, jako jsou vaše brány VPN. 
 
-- [Nastavení výstrah pro VPN Gateway metriky](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric)
+- [Nastavení výstrah pro VPN Gateway metriky](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)
 
-- [Nastavení výstrah pro události diagnostického protokolu z VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log)
+- [Nastavení výstrah pro události diagnostického protokolu z VPN Gateway](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -390,7 +390,7 @@ Pro příslušné prostředky ve vaší virtuální síti postupujte podle Azure
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace najdete v článku [Srovnávací test zabezpečení Azure: Správa ohrožení zabezpečení](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*Další informace najdete v článku [Srovnávací test zabezpečení Azure: Správa ohrožení zabezpečení](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: použijte proces hodnocení rizik k určení priorit nápravy zjištěných ohrožení zabezpečení
 
@@ -404,19 +404,19 @@ Pro příslušné prostředky ve vaší virtuální síti postupujte podle Azure
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [testování výkonnosti Azure Security: inventář a Správa prostředků](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace najdete v tématu [testování výkonnosti Azure Security: inventář a Správa prostředků](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: použití řešení automatizovaného zjišťování prostředků
 
 **Pokyny**: pomocí Azure Resource graphu se můžete dotazovat a zjišťovat všechny prostředky, které se vztahují k BRÁNÁM sítě VPN v rámci vašich předplatných. Ujistěte se, že máte ve svém tenantovi příslušná oprávnění (pro čtení) a že máte v předplatných všechny prostředky. Kromě toho můžete k vytvoření výčtu prostředků VPN Gateway použít také rozhraní příkazového řádku Azure CLI.
 
-- [Jak vytvářet dotazy pomocí Azure graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Jak vytvářet dotazy pomocí Azure graphu](../governance/resource-graph/first-query-portal.md)
 
 - [Rozhraní příkazového řádku Azure pro bránu VPN](https://docs.microsoft.com/cli/azure/network/vnet-gateway?view=azure-cli-latest)
 
 - [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-- [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -426,7 +426,7 @@ Pro příslušné prostředky ve vaší virtuální síti postupujte podle Azure
 
 **Doprovodné**materiály: použití značek k VPN Gateway prostředkům k logickému uspořádání v závislosti na definované taxonomii.
 
-- [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -436,11 +436,11 @@ Pro příslušné prostředky ve vaší virtuální síti postupujte podle Azure
 
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry tam, kde je to vhodné, k organizování a sledování VPN Gatewaych prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného. 
 
-- [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription) 
+- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription) 
 
-- [Vytvoření skupin pro správu](https://docs.microsoft.com/azure/governance/management-groups/create) 
+- [Vytvoření skupin pro správu](/azure/governance/management-groups/create) 
 
-- [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -464,11 +464,11 @@ Pro příslušné prostředky ve vaší virtuální síti postupujte podle Azure
 
 Navíc můžete pomocí grafu prostředků Azure zadávat dotazy a zjišťovat prostředky v rámci předplatných. 
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak vytvářet dotazy pomocí Azure graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Jak vytvářet dotazy pomocí Azure graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Příklady předdefinovaných modulů Azure Policy pro virtuální síť](https://docs.microsoft.com/azure/virtual-network/policy-samples)
+- [Příklady předdefinovaných modulů Azure Policy pro virtuální síť](/azure/virtual-network/policy-samples)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -478,7 +478,7 @@ Navíc můžete pomocí grafu prostředků Azure zadávat dotazy a zjišťovat p
 
 **Pokyny**: zákazníci můžou zabránit vytváření prostředků nebo jejich použití přiřazením Azure Policy definic podle požadavků na zabezpečení organizace. Pro odebrání neschválených nebo neautorizovaných prostředků ale musíte implementovat vlastní proces.
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -492,11 +492,11 @@ Navíc můžete pomocí grafu prostředků Azure zadávat dotazy a zjišťovat p
 
 - Povolené typy prostředků
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
 
-- [Příklady předdefinovaných modulů Azure Policy pro virtuální síť](https://docs.microsoft.com/azure/virtual-network/policy-samples)
+- [Příklady předdefinovaných modulů Azure Policy pro virtuální síť](/azure/virtual-network/policy-samples)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -506,7 +506,7 @@ Navíc můžete pomocí grafu prostředků Azure zadávat dotazy a zjišťovat p
 
 **Pokyny**: pomocí podmíněného přístupu Azure AD omezte schopnost uživatelů pracovat se správcem prostředků Azure tak, že nakonfigurujete "blokování přístupu" pro aplikaci Microsoft Azure Management. 
 
-- [Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manageru](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manageru](../role-based-access-control/conditional-access-azure-management.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -514,7 +514,7 @@ Navíc můžete pomocí grafu prostředků Azure zadávat dotazy a zjišťovat p
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace najdete v tématu [Konfigurace zabezpečení Azure Security test: zabezpečení](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace najdete v tématu [Konfigurace zabezpečení Azure Security test: zabezpečení](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
@@ -526,13 +526,13 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 
 - [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-- [Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md)
 
-- [Příklady předdefinovaných modulů Azure Policy pro virtuální síť](https://docs.microsoft.com/azure/virtual-network/policy-samples)
+- [Příklady předdefinovaných modulů Azure Policy pro virtuální síť](/azure/virtual-network/policy-samples)
 
-- [Export jednoho a více prostředků do šablony v Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+- [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Doporučení zabezpečení – referenční příručka](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [Doporučení zabezpečení – referenční příručka](../security-center/recommendations-reference.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -542,15 +542,15 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 
 **Pokyny**: pomocí Azure Resource Manager šablon a přiřazení Azure Policy můžete bezpečně nakonfigurovat prostředky Azure přidružené k VPN Gateway a souvisejícím prostředkům. Šablony Azure Resource Manager jsou soubory založené na formátu JSON, které se používají k nasazení virtuálního počítače společně s prostředky Azure a vlastní šablona bude potřeba zachovat. Společnost Microsoft provádí údržbu základních šablon.  Pokud chcete vymáhat zabezpečená nastavení napříč prostředky Azure, použijte Azure Policy v [Deny] a [nasadit, pokud neexistují].
 
-- [Informace o vytváření šablon Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
+- [Informace o vytváření šablon Azure Resource Manager](../virtual-machines/windows/ps-template.md)
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Porozumění efektům Azure Policy](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Porozumění efektům Azure Policy](../governance/policy/concepts/effects.md)
 
-- [Ukázkové šablony Azure Resource Manageru pro virtuální síť](https://docs.microsoft.com/azure/virtual-network/template-samples)
+- [Ukázkové šablony Azure Resource Manageru pro virtuální síť](../virtual-network/template-samples.md)
 
-- [Příklady předdefinovaných modulů Azure Policy pro virtuální síť](https://docs.microsoft.com/azure/virtual-network/policy-samples)
+- [Příklady předdefinovaných modulů Azure Policy pro virtuální síť](/azure/virtual-network/policy-samples)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -562,7 +562,7 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 
 - [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops) 
 
-- [O oprávněních a skupinách v Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+- [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -572,9 +572,9 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 
 **Pokyny**: definování a implementace standardních konfigurací zabezpečení pro prostředky Azure pomocí Azure Policy. Pomocí aliasů Azure Policy můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurací vašich prostředků Azure. Můžete také využít integrované definice zásad, které souvisejí s vašimi konkrétními prostředky. Kromě toho můžete použít Azure Automation k nasazení změn konfigurace. 
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage) 
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Jak používat aliasy](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Jak používat aliasy](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -584,9 +584,9 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 
 **Pokyny**: přiřaďte definice Azure Policy k měření konfigurací prostředků, které se týkají VPN Gateway prostředků. Pomocí Azure Policy Insights můžete auditovat konfigurace prostředků a upozorňovat na kritické změny konfigurace.
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Příklady předdefinovaných modulů Azure Policy pro virtuální síť](https://docs.microsoft.com/azure/virtual-network/policy-samples)
+- [Příklady předdefinovaných modulů Azure Policy pro virtuální síť](/azure/virtual-network/policy-samples)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -610,15 +610,15 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 
 Azure AD se doporučuje, protože umožňuje využívat spravované identity.
 
-- [Konfigurace tenanta](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant)
+- [Konfigurace tenanta](openvpn-azure-ad-tenant.md)
 
-- [Konfigurace tenanta s několika klientskými aplikacemi](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant-multi-app)
+- [Konfigurace tenanta s několika klientskými aplikacemi](openvpn-azure-ad-tenant-multi-app.md)
 
-- [Konfigurace Multi-Factor Authentication](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-mfa)
+- [Konfigurace Multi-Factor Authentication](openvpn-azure-ad-mfa.md)
 
-- [Konfigurace klienta VPN](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-client)
+- [Konfigurace klienta VPN](openvpn-azure-ad-client.md)
 
-- [Postup konfigurace spravovaných identit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+- [Postup konfigurace spravovaných identit](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -636,19 +636,19 @@ Azure AD se doporučuje, protože umožňuje využívat spravované identity.
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace najdete v článku [srovnávací testy zabezpečení Azure: obnovení dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: obnovení dat](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
 **Pokyny**: k nasazení prostředků VPN Gateway použijte Azure Resource Manager. Azure Resource Manager poskytuje možnost exportovat šablony, které se dají použít jako zálohy k obnovení prostředků VPN Gateway. Použijte Azure Automation k pravidelnému volání rozhraní API pro export Azure Resource Manager šablony.
 
-- [Přehled Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)
+- [Přehled Azure Resource Manageru](../azure-resource-manager/management/overview.md)
 
-- [Ukázkové šablony Azure Resource Manageru pro virtuální síť](https://docs.microsoft.com/azure/virtual-network/template-samples)
+- [Ukázkové šablony Azure Resource Manageru pro virtuální síť](../virtual-network/template-samples.md)
 
-- [Skupiny prostředků – Exportovat šablonu](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate)
+- [Skupiny prostředků – Exportovat šablonu](/rest/api/resources/resourcegroups/exporttemplate)
 
-- [Úvod do Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)
+- [Úvod do Azure Automation](../automation/automation-intro.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -658,11 +658,11 @@ Azure AD se doporučuje, protože umožňuje využívat spravované identity.
 
 **Pokyny**: k nasazení prostředků VPN Gateway použijte Azure Resource Manager. Azure Resource Manager poskytuje možnost exportovat šablony, které se dají použít jako zálohy k obnovení služby VPN Gateway a souvisejících prostředků. Použijte Azure Automation k pravidelnému volání rozhraní API pro export Azure Resource Manager šablony.
 
-- [Export jednoho a více prostředků do šablony v Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+- [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Skupiny prostředků – Exportovat šablonu](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate)
+- [Skupiny prostředků – Exportovat šablonu](/rest/api/resources/resourcegroups/exporttemplate)
 
-- [Úvod do Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)
+- [Úvod do Azure Automation](../automation/automation-intro.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -672,7 +672,7 @@ Azure AD se doporučuje, protože umožňuje využívat spravované identity.
 
 **Doprovodné**materiály: Zajistěte, aby v případě potřeby pravidelně prováděly nasazení Azure Resource Manager šablon pro izolované předplatné do izolovaného předplatného.
 
-- [Nasazení prostředků pomocí šablon ARM a Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal)
+- [Nasazení prostředků pomocí šablon ARM a Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 
 - [Postup obnovení klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
@@ -686,7 +686,7 @@ Azure AD se doporučuje, protože umožňuje využívat spravované identity.
 
 - [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [O oprávněních a skupinách v Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+- [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
 - [Obnovitelné odstranění objektů blob služby Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
@@ -696,7 +696,7 @@ Azure AD se doporučuje, protože umožňuje využívat spravované identity.
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v odpovědi na [incidenty Azure Security test:](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Další informace najdete v odpovědi na [incidenty Azure Security test:](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
@@ -718,9 +718,9 @@ Azure AD se doporučuje, protože umožňuje využívat spravované identity.
 
 Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenování k identifikaci a kategorizaci prostředků Azure, zejména těch, které zpracovávají citlivá data.  Je vaše zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu. 
 
-- [Výstrahy zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview) 
+- [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [Používání značek k uspořádání prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Používání značek k uspořádání prostředků Azure](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -740,7 +740,7 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 **Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy. 
 
-- [Jak nastavit kontakt zabezpečení Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -750,9 +750,9 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 **Pokyny**: vyexportujte výstrahy a doporučení pro Azure Security Center pomocí funkce průběžného exportu, které vám pomůžou identifikovat rizika pro prostředky Azure. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy do Azure Sentinel. 
 
-- [Postup konfigurace průběžného exportu](https://docs.microsoft.com/azure/security-center/continuous-export) 
+- [Postup konfigurace průběžného exportu](../security-center/continuous-export.md) 
 
-- [Jak streamovat výstrahy do Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [Jak streamovat výstrahy do Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -762,7 +762,7 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 **Doprovodné**materiály: použití funkce automatizace pracovních postupů Azure Security Center k automatickému spouštění odpovědí na výstrahy zabezpečení a doporučení k ochraně vašich prostředků Azure. 
 
-- [Jak nakonfigurovat automatizaci pracovního postupu v Security Center](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [Jak nakonfigurovat automatizaci pracovního postupu v Security Center](../security-center/workflow-automation.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -770,7 +770,7 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace najdete v tématu [testy zabezpečení Azure – testování průniku a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace najdete v tématu [testy zabezpečení Azure – testování průniku a cvičení červeného týmu](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 

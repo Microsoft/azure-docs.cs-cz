@@ -3,12 +3,12 @@ title: Funkce Azure Functions jako obslužná rutina události pro Azure Event G
 description: Popisuje, jak můžete používat Azure Functions jako obslužné rutiny událostí pro Event Grid události.
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 87aeb78729dcc7bec9f193fab389e5c0952e63d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: db06962c020eb954bf0c595e5a4019b1df774898
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270306"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629684"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Funkce Azure Functions jako obslužná rutina události pro Event Grid události
 
@@ -60,7 +60,7 @@ Při vytváření odběru v uživatelském rozhraní na stránce **vytvořit odb
 
 Tyto hodnoty pro existující předplatné můžete aktualizovat na kartě **funkce** na stránce **Event Grid tématu** . 
 
-:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Povolit dávkování po vytvoření":::
+:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Povolit dávkování v době vytváření předplatného":::
 
 ### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 V šabloně Azure Resource Manager můžete nastavit **maxEventsPerBatch** a **preferredBatchSizeInKilobytes** . Další informace najdete v referenčních informacích k [šabloně Microsoft. EventGrid eventSubscriptions](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/eventsubscriptions).
@@ -70,9 +70,6 @@ Pomocí příkazu [AZ eventgrid Event-Subscription Create](https://docs.microsof
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Pomocí rutiny [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) nebo [Update-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/update-azeventgridsubscription) můžete nakonfigurovat nastavení související s Batch pomocí následujících parametrů: `-MaxEventsPerBatch` nebo `-PreferredBatchSizeInKiloBytes` .
-
-> [!NOTE]
-> Doručování událostí do funkce Azure Functions v **jiném tenantovi** se nepodporuje. 
 
 ## <a name="next-steps"></a>Další kroky
 Seznam podporovaných obslužných rutin událostí naleznete v článku [obslužné rutiny událostí](event-handlers.md) . 
