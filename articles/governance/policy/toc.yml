@@ -17,6 +17,9 @@
     - name: Přiřazení zásad – Azure PowerShell
       displayName: 'assign, compliance'
       href: ./assign-policy-powershell.md
+    - name: Přiřazení zásad – .NET
+      displayName: 'assign, compliance'
+      href: ./assign-policy-dotnet.md
     - name: Přiřazení zásad – JavaScript
       displayName: 'assign, compliance'
       href: ./assign-policy-javascript.md
@@ -139,6 +142,9 @@
     - name: Vytváření zásad pro vlastnosti pole
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
+    - name: Export prostředků Azure Policy
+      displayName: 'github, json, definition'
+      href: ./how-to/export-resources.md
     - name: Konfigurace hosta
       items:
         - name: Vytvoření zásad konfigurace hosta ve Windows

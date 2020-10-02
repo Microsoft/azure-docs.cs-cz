@@ -407,7 +407,7 @@
           href: ps-template.md
         - name: Připojení k virtuálnímu počítači
           href: connect-logon.md
-        - name: Připojení k virtuálním počítačům s Linuxem
+        - name: SSH pro virtuální počítače s Linuxem
           displayName: ssh keygen ssk-key putty
           items:
             - name: Na portálu
@@ -595,7 +595,7 @@
               href: disk-encryption-troubleshooting.md
             - name: Šifrování disků – nejčastější dotazy
               href: disk-encryption-faq.md
-            - name: Šifrování disků – předchozí verze (Azure AD)
+            - name: Šifrování disků – předchozí verze
               items:
                 - name: Přehled
                   href: disk-encryption-overview-aad.md

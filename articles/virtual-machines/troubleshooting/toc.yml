@@ -224,6 +224,8 @@
           href: troubleshoot-performance-virtual-machine-linux-windows.md
         - name: Diagnostika výkonu
           href: performance-diagnostics.md
+        - name: Řešení potíží s vysokým využitím CPU pro virtuální počítače Azure s Windows
+          href: troubleshoot-high-cpu-issues-azure-windows-vm.md
     - name: PerfInsights
       items:
         - name: Windows

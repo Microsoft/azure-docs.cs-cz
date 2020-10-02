@@ -172,7 +172,7 @@
           href: connect-azure-stack.md
     - name: Povolení analýzy chování uživatelů a entit
       href: enable-entity-behavior-analytics.md
-    - name: Práce s několika tenanty (MSSP)
+    - name: Správa několika tenantů (MSSP)
       href: multiple-tenants-service-providers.md
     - name: Práce s incidenty ve více pracovních prostorech
       href: multiple-workspace-view.md

@@ -43,6 +43,8 @@
       href: basic-concepts.md
     - name: Zabezpečení
       items:
+        - name: Základy ověřování služby Key Vault
+          href: authentication-fundamentals.md
         - name: Zabezpečení služby Azure Key Vault
           href: overview-security.md
         - name: Osvědčené postupy při používání služby Key Vault –⁠ Azure Key Vault
@@ -130,6 +132,8 @@
           href: access-behind-firewall.md
     - name: Obnovitelné odstranění
       items:
+        - name: Obnovení služby Key Vault (obnovitelné odstranění a ochrana před vymazáním)
+          href: key-vault-recovery.md
         - name: Použití obnovitelného odstranění v rozhraní příkazového řádku
           href: soft-delete-cli.md
         - name: Použití obnovitelného odstranění v PowerShellu

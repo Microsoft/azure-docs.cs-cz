@@ -11,7 +11,7 @@
       href: publish-service-catalog-app.md
     - name: Nasazení aplikace katalogu služeb
       href: deploy-service-catalog-quickstart.md
-- name: Kurzy
+- name: Výukové kurzy
   items:
     - name: Vytvoření spravované aplikace s využitím vlastního zprostředkovatele
       href: tutorial-create-managed-app-with-custom-provider.md
@@ -116,6 +116,8 @@
               href: microsoft-common-passwordbox.md
             - name: Sekce
               href: microsoft-common-section.md
+            - name: ServicePrincipalSelector
+              href: microsoft-common-serviceprincipalselector.md
             - name: Posuvník
               href: microsoft-common-slider.md
             - name: TagsByResource
@@ -168,4 +170,4 @@
     - name: Osvědčené postupy pro šablony Azure Resource Manageru
       href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
     - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-managedapps'
+      href: 'https://stackoverflow.com/questions/tagged/azure-managedapps'

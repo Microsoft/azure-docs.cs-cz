@@ -10,6 +10,10 @@
       href: language-support.md
     - name: Podpora oblastí
       href: regions.md
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: Kvóty a omezení
+      href: speech-services-quotas-and-limits.md
     - name: Novinky v dokumentaci
       href: whats-new.md
 - name: Převod řeči na text
@@ -347,6 +351,8 @@
       items:
         - name: Co je hlasový asistent?
           href: voice-assistants.md
+        - name: Ukázky hlasového asistenta (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
     - name: Vlastní příkazy
       items:
         - name: Co jsou vlastní příkazy?
@@ -459,11 +465,58 @@
       items:
         - name: Rozhraní REST API pro rozpoznávání mluvčího
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
-- name: Hosting
+- name: Nástroje
   items:
-    - name: Dokumentace k hostování
-      href: index-hosting.yml
-    - name: Návody
+    - name: Speech SDK
+      items:
+        - name: Přehled sady Speech SDK
+          href: speech-sdk.md
+        - name: Nastavení sady Speech SDK
+          href: quickstarts/setup-platform.md
+        - name: Poznámky k verzi sady Speech SDK
+          href: releasenotes.md
+        - name: Referenční informace
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: C#
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+    - name: CLI služby Speech
+      displayName: SPX
+      items:
+        - name: Přehled CLI služby Speech
+          displayName: What is SPX?
+          href: spx-overview.md
+        - name: Základy CLI služby Speech
+          displayName: SPX basics
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: Přehled portálu Speech Studio
+          href: 'https://speech.microsoft.com'
+        - name: Vytvoření aplikace Vlastní příkazy s využitím sady Speech Studio
+          href: quickstart-custom-speech-commands-create-new.md
+- name: Nasazení
+  items:
+    - name: Povolit protokolování
+      href: how-to-use-logging.md
+    - name: Sledování využití paměti
+      href: how-to-track-speech-sdk-memory-usage.md
+    - name: Konfigurace OpenSSL pro Linux
+      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+      href: how-to-configure-openssl-linux.md
+    - name: Konfigurace RHEL/CentOS 7
+      href: how-to-configure-rhel-centos-7.md
+      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
+    - name: Containers
       items:
         - name: Instalace a spuštění kontejnerů služby Speech
           displayName: 'containers,install container,run container'
@@ -479,53 +532,8 @@
         - name: Kontejnery služby Speech ve službě Azure Container Instances
           displayName: 'ACI,azure container instances,container instances,containers'
           href: deploy-speech-on-container-instances.md
-    - name: Zdroje a prostředky
-      items:
         - name: Nejčastější dotazy ke kontejnerům
           href: speech-container-faq.md
-- name: Speech SDK
-  items:
-    - name: Přehled sady Speech SDK
-      href: speech-sdk.md
-    - name: Nastavení sady Speech SDK
-      displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
-      href: quickstarts/setup-platform.md
-    - name: Návody
-      items:
-        - name: Povolit protokolování
-          href: how-to-use-logging.md
-        - name: Sledování využití paměti
-          href: how-to-track-speech-sdk-memory-usage.md
-        - name: Konfigurace OpenSSL pro Linux
-          displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
-          href: how-to-configure-openssl-linux.md
-        - name: Konfigurace RHEL/CentOS 7
-          href: how-to-configure-rhel-centos-7.md
-          displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentOS'
-    - name: ukázky
-      items:
-        - name: Ukázky sady Speech SDK (GitHub)
-          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
-        - name: Ukázky sady Speech Devices SDK (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-        - name: Ukázky hlasového asistenta (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
-    - name: Referenční informace
-      items:
-        - name: C++
-          href: 'https://aka.ms/csspeech/cppref'
-        - name: C#
-          href: 'https://aka.ms/csspeech/csharpref'
-        - name: Java
-          href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
-          href: 'https://aka.ms/csspeech/javascriptref'
-        - name: Objective-C
-          href: 'https://aka.ms/csspeech/objectivecref'
-        - name: Python
-          href: 'https://aka.ms/csspeech/pythonref'
-        - name: Poznámky k verzi sady Speech SDK
-          href: releasenotes.md
 - name: Zařízení
   items:
     - name: Dokumentace ke Speech Devices
@@ -536,6 +544,8 @@
           href: speech-devices-sdk.md
         - name: Získání sady Speech Devices SDK
           href: get-speech-devices-sdk.md
+        - name: Ukázky sady Speech Devices SDK (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
     - name: Hardware
       items:
         - name: Doporučení pro mikrofonní pole
@@ -560,23 +570,6 @@
       items:
         - name: Poznámky k verzi sady Speech Devices SDK
           href: devices-sdk-release-notes.md
-- name: nástroje
-  items:
-    - name: CLI služby Speech
-      displayName: SPX
-      items:
-        - name: Co je CLI služby Speech?
-          displayName: What is SPX?
-          href: spx-overview.md
-        - name: Základy CLI služby Speech
-          displayName: SPX basics
-          href: spx-basics.md
-    - name: Speech Studio
-      items:
-        - name: Co je Speech Studio?
-          href: 'https://speech.microsoft.com'
-        - name: Vytvoření aplikace Vlastní příkazy s využitím sady Speech Studio
-          href: quickstart-custom-speech-commands-create-new.md
 - name: Migrace
   items:
     - name: Z rozhraní API pro zpracování řeči Bingu
@@ -588,19 +581,13 @@
     - name: Podpora
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
       href: support.md
-    - name: Oblasti
-      href: regions.md
     - name: Dokumentace ke Swaggeru
       href: swagger-documentation.md
     - name: Suverénní cloudy
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
       href: sovereign-clouds.md
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Kvóty a omezení
-      href: speech-services-quotas-and-limits.md
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Šifrování

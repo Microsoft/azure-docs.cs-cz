@@ -4,6 +4,8 @@
   items:
     - name: Co je služba Azure NetApp Files
       href: azure-netapp-files-introduction.md
+    - name: Co je nového
+      href: whats-new.md
     - name: Hierarchie úložiště služby Azure NetApp Files
       href: azure-netapp-files-understand-storage-hierarchy.md
 - name: Rychlé starty
@@ -27,6 +29,8 @@
           href: azure-netapp-files-performance-metrics-volumes.md
         - name: Srovnávací testy výkonu pro Linux
           href: performance-benchmarks-linux.md
+        - name: Výkon databází Oracle na jednoduchých svazcích Azure NetApp Files
+          href: performance-oracle-single-volumes.md
         - name: Nejčastější dotazy k výkonu SMB
           href: azure-netapp-files-smb-performance.md
     - name: Model nákladů pro Azure NetApp Files

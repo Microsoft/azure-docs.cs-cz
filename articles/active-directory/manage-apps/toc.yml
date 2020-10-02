@@ -57,10 +57,16 @@
           href: developer-guidance-for-integrating-applications.md
     - name: Jednotné přihlašování
       items:
-        - name: Možnosti jednotného přihlašování
-          href: sso-options.md
         - name: Plánování nasazení jednotného přihlašování
           href: plan-sso-deployment.md
+        - name: Možnosti jednotného přihlašování
+          href: sso-options.md
+        - name: Jednotné přihlašování založené na SAML
+          href: configure-saml-single-sign-on.md
+        - name: Jednotné přihlašování založené na heslech
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: Jednotné přihlašování založené na odkazech
+          href: configure-linked-sign-on.md
         - name: Jednotné přihlašování jedním kliknutím
           href: one-click-sso-tutorial.md
     - name: Zabezpečení aplikací
@@ -102,14 +108,6 @@
 - name: Návody
   expanded: false
   items:
-    - name: Konfigurace jednotného přihlašování
-      items:
-        - name: Konfigurace jednotného přihlašování pomocí SAML
-          href: configure-saml-single-sign-on.md
-        - name: Konfigurace přihlašování pomocí hesel
-          href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: Konfigurace propojeného přihlašování
-          href: configure-linked-sign-on.md
     - name: Přiřazení uživatelů a správa přístupu k aplikacím
       items:
         - name: Konfigurace souhlasu uživatele

@@ -28,6 +28,10 @@
       href: tutorial-custom-role-cli.md
 - name: Koncepty
   items:
+    - name: Definice rolí
+      href: role-definitions.md
+    - name: Obor
+      href: scope-overview.md
     - name: Osvědčené postupy
       href: best-practices.md
     - name: Podmíněný přístup pro správu Azure
@@ -40,11 +44,7 @@
 - name: Návody
   items:
     - name: Zobrazení seznamu definic rolí
-      items:
-        - name: Přehled
-          href: role-definitions.md
-        - name: Zobrazení seznamu definic rolí
-          href: role-definitions-list.md
+      href: role-definitions-list.md
     - name: Zobrazení seznamu přiřazení rolí
       items:
         - name: Portál
@@ -57,6 +57,8 @@
           href: role-assignments-list-rest.md
     - name: Přidání nebo odebrání přiřazení rolí
       items:
+        - name: Kroky pro přidání přiřazení role
+          href: role-assignments-steps.md
         - name: Portál
           href: role-assignments-portal.md
         - name: Portál – uživatelé typu host

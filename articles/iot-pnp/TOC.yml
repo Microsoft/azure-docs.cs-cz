@@ -4,11 +4,13 @@
   items:
     - name: Co je IoT Plug and Play?
       href: overview-iot-plug-and-play.md
-    - name: Aktualizace Preview Refresh
-      href: overview-iot-plug-and-play-preview-updates.md
+    - name: Co je v aktuální verzi
+      href: overview-iot-plug-and-play-current-release.md
 - name: Rychlé starty
   expanded: true
   items:
+    - name: Nastavení prostředí
+      href: set-up-environment.md
     - name: Připojení zařízení ke službě IoT Hub
       items:
         - name: C
@@ -27,6 +29,10 @@
           href: quickstart-service-node.md
         - name: Python
           href: quickstart-service-python.md
+        - name: C#
+          href: quickstart-service-csharp.md
+        - name: Java
+          href: quickstart-service-java.md
 - name: Kurzy
   items:
     - name: Připojení zařízení s více komponentami (C)
@@ -41,18 +47,38 @@
       href: tutorial-multiple-components-python.md
     - name: Použití MQTT pro připojení zařízení
       href: tutorial-use-mqtt.md
+    - name: Interakce se zařízením MXChip (ukázka)
+      href: 'https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/'
+    - name: Migrace zařízení do modulu
+      href: tutorial-migrate-device-to-module.md
 - name: Koncepty
   items:
     - name: Architektura
       href: concepts-architecture.md
-    - name: Příručka pro vývojáře
-      href: concepts-developer-guide.md
+    - name: Příručka pro vývojáře zařízení
+      items:
+        - name: C#
+          href: concepts-developer-guide-device-csharp.md
+        - name: Node.js
+          href: concepts-developer-guide-device-node.md
+        - name: Java
+          href: concepts-developer-guide-device-java.md
+        - name: Python
+          href: concepts-developer-guide-device-python.md
+        - name: C
+          href: concepts-developer-guide-device-c.md
+    - name: Příručka pro vývojáře služeb
+      href: concepts-developer-guide-service.md
     - name: Komponenty
       href: concepts-components.md
     - name: Konvence IoT Plug and Play
       href: concepts-convention.md
+    - name: Přemostění IoT Plug and Play
+      href: concepts-iot-pnp-bridge.md
     - name: Digitální dvojčata
       href: concepts-digital-twin.md
+    - name: Certifikace zařízení
+      href: concepts-certification-program.md
     - name: Úložiště modelů
       href: concepts-model-repository.md
     - name: Použití modelů v řešení
@@ -67,8 +93,14 @@
   items:
     - name: Instalace a použití průzkumníka IoT
       href: howto-use-iot-explorer.md
+    - name: Instalace a použití přemostění IoT Plug and Play
+      href: howto-use-iot-pnp-bridge.md
     - name: Instalace a použití rozšíření rozhraní příkazového řádku Azure IoT
       href: howto-use-iot-pnp-cli.md
+    - name: Instalace a použití nástrojů pro vytváření DTDL
+      href: howto-use-dtdl-authoring-tools.md
+    - name: Použití vloženého kódu C
+      href: howto-use-embedded-c.md
     - name: Správa digitálních dvojčat
       href: howto-manage-digital-twin.md
     - name: Certifikace zařízení
@@ -78,7 +110,7 @@
     - name: Knihovny a sady SDK
       href: libraries-sdks.md
     - name: Rozhraní REST API služby Digital Twins
-      href: 'https://aka.ms/iot-pnp-preview-rest'
+      href: 'https://docs.microsoft.com/rest/api/iothub/service/digitaltwin'
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Zdroje a prostředky

@@ -76,6 +76,8 @@
       href: upgrade-virtual-wan.md
     - name: Vytvoření NVA ve virtuálním centru
       href: How-to-nva-hub.md
+    - name: Vytvoření připojení virtuální sítě napříč tenanty
+      href: cross-tenant-vnet.md
     - name: ExpressRoute
       items:
         - name: Vytvoření připojení ExpressRoute

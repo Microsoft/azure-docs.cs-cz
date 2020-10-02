@@ -29,7 +29,7 @@ Azure Monitor for Containers podporuje monitorování Azure Red Hat OpenShift v4
 - Živá data (Preview)
 - [Shromažďování metrik](container-insights-update-metrics.md) z uzlů clusteru a lusků a jejich ukládání do databáze Azure Monitorch metrik
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure CLI verze 2.0.72 nebo novější  
 

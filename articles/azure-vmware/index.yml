@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: dikamath
   ms.author: dikamath
-  ms.date: 05/04/2020
-  ms.openlocfilehash: aad6bc60066d76c96dd38fa3ba1e94069bb9e25a
-  ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+  ms.date: 09/21/2020
+  ms.openlocfilehash: 76a879f1c2c228fd509f0b0725b7ff3ddac4fa41
+  ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/22/2020
-  ms.locfileid: "88752114"
+  ms.lasthandoff: 09/30/2020
+  ms.locfileid: "91574904"
 landingContent:
 - title: Informace o službě Azure VMware Solution
   linkLists:
@@ -22,15 +22,61 @@ landingContent:
     links:
     - text: Co je Azure VMware Solution?
       url: introduction.md
+  - linkListType: concept
+    links:
+    - text: Privátní cloud a clustery
+      url: concepts-private-clouds-clusters.md
+    - text: Sítě a vzájemné propojení privátních cloudů
+      url: concepts-networking.md
+    - text: Úložiště v privátních cloudech
+      url: concepts-storage.md
+    - text: Přístup a identita pro privátní cloud
+      url: concepts-identity.md
+    - text: Řízení přístupu na základě role
+      url: concepts-role-based-access-control.md
+    - text: Upgrady privátních cloudů
+      url: concepts-upgrades.md
+- title: Nasazení služby Azure VMware Solution
+  linkLists:
   - linkListType: get-started
     links:
-    - text: Kontrolní seznam sítě
-      url: tutorial-network-checklist.md
+    - text: Proces před nasazením
+      url: production-ready-deployment-steps.md
+    - text: Kontrolní seznam před nasazením
+      url: pre-deployment-checklist.md
+    - text: 1. Nasazení služby Azure VMware Solution
+      url: deploy-azure-vmware-solution.md
+    - text: 2. Připojení k místnímu prostředí
+      url: azure-vmware-solution-on-premises.md
+    - text: 3. Nasazení a konfigurace HCX
+      url: tutorial-deploy-vmware-hcx.md
   - linkListType: tutorial
     links:
-    - text: Vytvoření privátního cloudu AVS
+    - text: Kontrolní seznam pro plánování sítí
+      url: tutorial-network-checklist.md
+    - text: Vytvoření privátního cloudu
       url: tutorial-create-private-cloud.md
-    - text: Konfigurace sítí
-      url: tutorial-configure-networking.md
     - text: Přístup k privátnímu cloudu
       url: tutorial-access-private-cloud.md
+    - text: Konfigurace sítí
+      url: tutorial-configure-networking.md
+    - text: Vytvoření segmentu sítě NSX-T
+      url: tutorial-nsx-t-network-segment.md
+    - text: Peering místního prostředí k privátnímu cloudu
+      url: tutorial-expressroute-global-reach-private-cloud.md
+    - text: Nasazení a konfigurace VMware HCX
+      url: tutorial-deploy-vmware-hcx.md
+    - text: Škálování privátního cloudu
+      url: tutorial-scale-private-cloud.md
+- title: Rozšiřování služby Azure VMware Solution
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Posouzení migrace
+      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
+    - text: Správa DHCP
+      url: manage-dhcp.md
+    - text: Nasazení zotavení po havárii pro virtuální počítače
+      url: disaster-recovery-for-virtual-machines.md
+    - text: Nasazení virtuálního počítače přes knihovnu obsahu
+      url: tutorial-deploy-vm-content-library.md

@@ -68,6 +68,8 @@
       items:
         - name: Volba úrovně mezipaměti
           href: cache-overview.md#choosing-the-right-tier
+        - name: Nastavení verze Redis
+          href: cache-how-to-version.md
         - name: Distribuovaná mezipaměť pomocí clusterování
           href: cache-how-to-premium-clustering.md
         - name: Zachování mezipaměti pomocí trvalosti dat Redis

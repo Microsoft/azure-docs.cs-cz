@@ -112,7 +112,7 @@
           displayName: 'request units, RUs, RU'
           href: scaling-throughput.md
         - name: Zásady řešení a typy konfliktů
-          displayName: 'last write wins, custom, multi master, multi-master'
+          displayName: 'last write wins, custom, multi-region writes, multi-master'
           href: conflict-resolution-policies.md
         - name: Globální distribuce – pod pokličkou
           href: global-dist-under-the-hood.md
@@ -584,7 +584,7 @@
         - name: Šifrování dat
           href: database-encryption-at-rest.md
         - name: Zabezpečený přístup k datům
-          displayName: 'master key, resource token, users, roles'
+          displayName: 'primary key, resource token, users, roles'
           href: secure-access-to-data.md
         - name: Brána firewall protokolu IP
           href: firewall-support.md
@@ -977,7 +977,7 @@
           href: how-to-move-regions.md
     - name: Globální distribuce
       items:
-        - name: Konfigurace multi-masteru
+        - name: Konfigurace zápisů do více oblastí
           href: how-to-multi-master.md
         - name: Správa úrovní konzistence
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'

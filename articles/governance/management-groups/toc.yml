@@ -19,6 +19,12 @@
     - name: Vytvoření skupiny pro správu – Azure PowerShell
       displayName: hierarchy
       href: ./create-management-group-powershell.md
+    - name: Vytvoření skupiny pro správu – .NET
+      displayName: hierarchy
+      href: ./create-management-group-dotnet.md
+    - name: Vytvoření skupiny pro správu – JavaScript
+      displayName: hierarchy
+      href: ./create-management-group-javascript.md
     - name: Vytvoření skupiny pro správu – REST
       displayName: hierarchy
       href: ./create-management-group-rest-api.md

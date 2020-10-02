@@ -595,10 +595,6 @@
                   href: ../../bastion/create-host-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Použití Bastionu pro připojení
               href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-              items:
-                - name: Připojení SSH v Bastionu
-            - name: Připojení RDP v Bastionu
-              href: ../../bastion/bastion-connect-vm-rdp.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Šifrování
           items:
             - name: Scénáře šifrování disků pro Linux
@@ -625,7 +621,7 @@
               href: disk-encryption-troubleshooting.md
             - name: Šifrování disků – nejčastější dotazy
               href: disk-encryption-faq.md
-            - name: Šifrování disků – předchozí verze (Azure AD)
+            - name: Šifrování disků – předchozí verze
               items:
                 - name: Přehled
                   href: disk-encryption-overview-aad.md
@@ -640,6 +636,7 @@
         - name: Vytvoření trezoru klíčů
           href: key-vault-setup.md
         - name: Vytvoření a použití klíčů SSH
+          displayName: ssh keys ssh openssh
           items:
             - name: V systému Linux nebo macOS
               href: mac-create-ssh-keys.md

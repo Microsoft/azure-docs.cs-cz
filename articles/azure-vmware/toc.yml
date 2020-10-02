@@ -4,22 +4,36 @@
   items:
     - name: Informace o službě Azure VMware Solution
       href: introduction.md
-- name: Kurzy
+- name: Rychlý start
   items:
-    - name: 1. Plánování sítě
+    - name: Proces před nasazením
+      href: production-ready-deployment-steps.md
+    - name: Kontrolní seznam před nasazením
+      href: pre-deployment-checklist.md
+    - name: 1. Nasazení služby Azure VMware Solution
+      href: deploy-azure-vmware-solution.md
+    - name: 2. Připojení k místnímu prostředí
+      href: azure-vmware-solution-on-premises.md
+    - name: 3. Nasazení a konfigurace VMware HCX
+      href: tutorial-deploy-vmware-hcx.md
+- name: Výukové kurzy
+  items:
+    - name: 1. Kontrolní seznam pro plánování sítí
       href: tutorial-network-checklist.md
     - name: 2. Vytvoření privátního cloudu
       href: tutorial-create-private-cloud.md
-    - name: 3. Konfigurace sítí
-      href: tutorial-configure-networking.md
-    - name: 4. Přístup k privátnímu cloudu
+    - name: 3. Přístup k privátnímu cloudu
       href: tutorial-access-private-cloud.md
-    - name: 5. Škálování privátního cloudu
-      href: tutorial-scale-private-cloud.md
-    - name: 6. Vytvoření segmentu sítě NSX-T
+    - name: 4. Konfigurace sítí
+      href: tutorial-configure-networking.md
+    - name: 5. Vytvoření segmentu sítě NSX-T
       href: tutorial-nsx-t-network-segment.md
-    - name: 7. Peering místního prostředí k privátnímu cloudu
+    - name: 6. Peering místního prostředí k privátnímu cloudu
       href: tutorial-expressroute-global-reach-private-cloud.md
+    - name: 7. Nasazení a konfigurace VMware HCX
+      href: tutorial-deploy-vmware-hcx.md
+    - name: 8. Škálování privátního cloudu
+      href: tutorial-scale-private-cloud.md
 - name: Koncepty
   items:
     - name: Privátní cloudy a clustery
@@ -31,11 +45,9 @@
     - name: Přístup a identita pro privátní cloud
       href: concepts-identity.md
     - name: Řízení přístupu na základě role
-      href: concepts-rbac.md
+      href: concepts-role-based-access-control.md
     - name: Upgrady privátních cloudů
       href: concepts-upgrades.md
-    - name: Monitorování a oprava privátních cloudů
-      href: concepts-monitor-repair-private-cloud.md
 - name: Návody
   items:
     - name: Povolení služby Azure VMware Solution
@@ -44,46 +56,34 @@
       href: reserved-instance.md
     - name: Posouzení migrace
       href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
-    - name: Nastavení HCX
-      href: hybrid-cloud-extension-installation.md
     - name: Správa DHCP
       href: manage-dhcp.md
-    - name: Zotavení po havárii
-      href: disaster-recovery.md
+    - name: Nasazení zotavení po havárii pro virtuální počítače
+      href: disaster-recovery-for-virtual-machines.md
     - name: Nasazení virtuálního počítače přes knihovnu obsahu
-      href: deploy-vm-content-library.md
+      href: tutorial-deploy-vm-content-library.md
     - name: Nativní integrace Azure
       items:
         - name: API Management
           href: concepts-api-management.md
         - name: Hvězdicová architektura
-          href: concepts-avs-hub-and-spoke-integration.md
+          href: concepts-hub-and-spoke.md
         - name: Server Azure Backup
           items:
             - name: Nastavení Backup Serveru
-              href: set-up-mabs-for-avs.md
+              href: set-up-backup-server-for-azure-vmware-solution.md
             - name: Zálohování virtuálních počítačů privátního cloudu s využitím Backup Serveru
-              href: backup-avs-vms-with-mabs.md
+              href: backup-azure-vmware-solution-virtual-machines.md
         - name: Správa životního cyklu virtuálních počítačů
           href: lifecycle-management-of-azure-vmware-solution-vms.md
         - name: Application Gateway
-          href: protect-avs-web-apps-with-app-gateway.md
+          href: protect-azure-vmware-solution-with-application-gateway.md
         - name: Traffic Manager
-          href: deploy-traffic-manager-to-balance-avs-workloads.md
-        - name: NetApp Files
-          href: net-app-files.md
-    - name: Server GitHub Enterprise
-      href: github-enterprise-server.md
+          href: deploy-traffic-manager-balance-workloads.md
     - name: Řešení VMware
       items:
         - name: Nastavení vRealize Operations
-          href: vrealize-operations-for-avs.md
-    - name: Ekosystém VMware
-      items:
-        - name: Řešení zálohování pro virtuální počítače
-          href: ecosystem-back-up-vms.md
-- name: Referenční informace
-  items: null
+          href: vrealize-operations-for-azure-vmware-solution.md
 - name: Zdroje a prostředky
   items:
     - name: Řešení potíží
