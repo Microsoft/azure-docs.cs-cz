@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: ed836e3df28c5e39aa7f9d21f020c0d37292dcfc
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: aff26d3b491896aa9a1b1fee93d39a5ec93d730c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631796"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665137"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Terminologie a běžné otázky ke komerčním analýzám na webu Marketplace
 
@@ -45,7 +45,7 @@ Pokud obdržíte tuto zprávu, znamená to, že máte analytická data, ale pro 
 | Typ licence Azure: Enterprise | Zákazník, objednávka | Koncový zákazník získává Azure a nabídku na webu Marketplace prostřednictvím smlouva Enterprise podepsaného přímo s Microsoftem.|
 | Typ licence Azure: Enterprise přes prodejce  | Zákazník, objednávka | Koncový zákazník si nabídne Azure a vaši nabídku na webu Marketplace prostřednictvím prodejce, který usnadní jejich smlouva Enterprise s Microsoftem.|
 | Typ licence Azure: průběžné platby| Zákazník, objednávka | Koncový zákazník získává Azure a nabídku na webu Marketplace prostřednictvím smlouvy s průběžnými platbami, která se podepisuje přímo s Microsoftem.|
-| ID fakturačního účtu| Zákazník, objednávka, použití| Identifikátor účtu, ve kterém se vygenerovala faktura Tento atribut slouží k propojení analytických sestav se sestavou transakce výběr.|
+| ID fakturačního účtu| Zákazník, objednávka, použití| Identifikátor účtu, ve kterém se vygenerovala faktura Mapování **ID fakturačního účtu** na **CustomerID** pro připojení sestavy transakcí výběr se sestavami zákazník, objednávka a využití.|
 | Název cloudové instance| Objednání| Microsoft Cloud, ve kterém došlo k nasazení virtuálního počítače.|
 | Název instance cloudu: globální Azure| Objednání| Veřejný globální Cloud Microsoftu.|
 | Název instance cloudu: Azure Government | Objednání| Cloudy Microsoftu pro konkrétní státní správu pro jednu z následujících vlád: Čína, Německo nebo USA v Americe.| |

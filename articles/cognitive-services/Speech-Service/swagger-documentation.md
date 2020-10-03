@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 30e8224b6cb757f044a5eac598d834cee838391e
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 6bb50e427fa85a170c5ad23a63d67c01e898a17d
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629977"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665680"
 ---
 # <a name="swagger-documentation"></a>Dokumentace ke Swaggeru
 
@@ -30,10 +30,17 @@ Služba rozpoznávání řeči nabízí specifikace Swagger pro interakci s něk
 
 Musíte nastavit Swagger na stejnou oblast jako vaše předplatné služby Speech. Oblast můžete v Azure Portal ověřit pod prostředkem služby Speech Service. Úplný seznam podporovaných oblastí najdete v tématu [oblasti](regions.md).
 
-1. V prohlížeči přejdete na specifikaci Swagger pro vaši oblast `https://<your-region>.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0` . Na této stránce klikněte na možnost **definice rozhraní API**a klikněte na **Swagger**. Zkopírujte adresu URL stránky, která se zobrazí.
+1. V prohlížeči přejdete na specifikaci Swagger pro vaši oblast:  
+       `https://<your-region>.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0`
+1. Na této stránce klikněte na možnost **definice rozhraní API**a klikněte na **Swagger**. Zkopírujte adresu URL stránky, která se zobrazí.
 1. V novém prohlížeči, přejít na https://editor.swagger.io
 1. Klikněte na možnost **soubor**, klikněte na položku **importovat adresu URL**, vložte adresu URL a klikněte na tlačítko **OK**.
-1. Klikněte na **vygenerovat klienta** a vyberte **Python**. Klientská knihovna se stáhne do vašeho počítače.
+1. Klikněte na **vygenerovat klienta** a vyberte **Python**. Klientská knihovna se stáhne do vašeho počítače v `.zip` souboru.
+1. Extrahujte vše ze staženého souboru. Můžete použít `tar -xf` k extrakci všeho.
+1. Do prostředí Pythonu nainstalujte extrahovaný modul:  
+       `pip install path/to/package/python-client`
+1. Instalovaný balíček je pojmenován `swagger_client` . Ověřte, že instalace byla úspěšná:  
+       `python -c "import swagger_client"`
 
 Můžete použít knihovnu Python, kterou jste vygenerovali pomocí [ukázek služby pro rozpoznávání řeči na GitHubu](https://aka.ms/csspeech/samples).
 

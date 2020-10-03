@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 - contperfq1
-ms.openlocfilehash: 2e1c8975c0f37fff2e177c9aa0dcf8f3b92a9d3f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 0a5cf5ad4a7cbf7d732d1fafdcafd434cba20d13
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421403"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664932"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -53,9 +53,9 @@ Následující tabulka obsahuje odkazy na ukázky kódu pro každý podporovaný
 | Jazyk | Parametr protokolu MQTT | MQTT přes parametr protokolu webové sokety
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | Azure-IoT-Device-MQTT. MQTT | Azure-IoT-Device-MQTT. MqttWs |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | IotHubClientProtocol. MQTT_WS |
-| [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). MQTT | TransportType. MQTT se vrátí do MQTT přes webové sokety, pokud MQTT selhání. Pokud chcete zadat jenom MQTT přes webové sokety, použijte TransportType. Mqtt_WebSocket_Only |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | IotHubClientProtocol.MQTT_WS |
+| [R](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). MQTT | TransportType. MQTT se vrátí do MQTT přes webové sokety, pokud MQTT selhání. K určení MQTT jenom přes webové sokety použijte TransportType.Mqtt_WebSocket_Only |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Podporuje MQTT ve výchozím nastavení | Přidat `websockets=True` do volání pro vytvoření klienta |
 
 Následující fragment ukazuje, jak zadat protokol MQTT over Web Sockets při použití sady Azure IoT Node.js SDK:
@@ -103,6 +103,38 @@ V takovém případě nezapomeňte zkontrolovat následující položky:
 
 * AMQP není v sadě Python SDK podporován.
 
+## <a name="example-in-c-using-mqtt-without-an-azure-iot-sdk"></a>Příklad v jazyce C s použitím MQTT bez sady Azure IoT SDK
+
+V [ukázkovém úložišti IoT MQTT](https://github.com/Azure-Samples/IoTMQTTSample)najdete několik ukázkových projektů C/C++, které ukazují, jak odesílat zprávy telemetrie a přijímat události pomocí služby IoT Hub bez použití sady Azure IoT C SDK. 
+
+Tyto ukázky používají knihovnu Mosquitto zatmění k posílání zpráv do zprostředkovatele MQTT implementovaného ve službě IoT Hub.
+
+Toto úložiště obsahuje:
+
+**Ve Windows:**
+
+* TelemetryMQTTWin32: obsahuje kód pro odeslání zprávy telemetrie do služby Azure IoT Hub, která je sestavená a spuštěná na počítači s Windows.
+
+* SubscribeMQTTWin32: obsahuje kód pro přihlášení k odběru událostí daného centra IoT v počítači s Windows.
+
+* DeviceTwinMQTTWin32: obsahuje kód pro dotazování a přihlášení k odběru událostí zařízení ve službě Azure IoT Hub na počítači s Windows.
+
+* PnPMQTTWin32: obsahuje kód pro odeslání zprávy telemetrie pomocí funkce IoT plug & Play Preview možností zařízení ve službě Azure IoT Hub, která je založená na počítači s Windows a běží na něm. Můžete si přečíst další informace o [technologii IoT Plug & Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
+
+**Pro Linux:**
+
+* MQTTLinux: obsahuje kód a skript sestavení pro spuštění na platformě Linux (WSL, Ubuntu a Raspbian byly testovány tak daleko).
+
+* LinuxConsoleVS2019: obsahuje stejný kód, ale v projektu VS2019 cílící na WSL (Windows Linux sub System). Tento projekt vám umožní ladit kód běžící v systému Linux krok za krokem ze sady Visual Studio.
+
+**Pro mosquitto_pub:**
+
+Tato složka obsahuje dva příkazy vzorů, které se používají s nástrojem mosquitto_pub Utility poskytovaném nástrojem Mosquitto.org.
+
+* Mosquitto_sendmessage: pro odeslání jednoduché textové zprávy do služby Azure IoT Hub fungující jako zařízení.
+
+* Mosquitto_subscribe: zobrazení událostí, ke kterým dochází ve službě Azure IoT Hub.
+
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>Přímé použití protokolu MQTT (jako zařízení)
 
 Pokud zařízení nemůže používat sady SDK pro zařízení, může se stále připojit k koncovým bodům veřejných zařízení pomocí protokolu MQTT na portu 8883. V paketu **připojení** by mělo zařízení používat následující hodnoty:
@@ -147,38 +179,6 @@ Pokud zařízení nemůže používat sady SDK pro zařízení, může se stále
 V případě MQTT připojení a odpojení paketů IoT Hub vydá událost na kanálu **monitorování operací** . Tato událost obsahuje další informace, které vám můžou pomoct vyřešit problémy s připojením.
 
 Aplikace zařízení může v paketu **Connect** **zadat zprávu.** Aplikace zařízení by se měla použít, `devices/{device_id}/messages/events/` nebo `devices/{device_id}/messages/events/{property_bag}` jako název tématu **,** který se má definovat, **bude** zprávy předávané jako zpráva telemetrie. V takovém případě, pokud je síťové připojení ukončeno, ale ze zařízení nebyl dříve přijat paket pro **odpojení** , IoT Hub **odešle zprávu** dodanou v paketu **připojit** k kanálu telemetrie. Kanál telemetrie může být buď koncovým bodem výchozí **události** , nebo vlastním koncovým bodem definovaným IoT Hub směrováním. Zpráva obsahuje vlastnost **iothub-MessageType** s hodnotou, která **se mu přiřadí.**
-
-### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>Příklad kódu C s použitím MQTT bez sady Azure IoT C SDK
-
-V [ukázkovém úložišti IoT MQTT](https://github.com/Azure-Samples/IoTMQTTSample)najdete několik ukázkových projektů C/C++, které ukazují, jak odesílat zprávy telemetrie a přijímat události pomocí služby IoT Hub bez použití sady Azure IoT C SDK. 
-
-Tyto ukázky používají knihovnu Mosquitto zatmění k posílání zpráv do zprostředkovatele MQTT implementovaného ve službě IoT Hub.
-
-Toto úložiště obsahuje:
-
-**Ve Windows:**
-
-* TelemetryMQTTWin32: obsahuje kód pro odeslání zprávy telemetrie do služby Azure IoT Hub, která je sestavená a spuštěná na počítači s Windows.
-
-* SubscribeMQTTWin32: obsahuje kód pro přihlášení k odběru událostí daného centra IoT v počítači s Windows.
-
-* DeviceTwinMQTTWin32: obsahuje kód pro dotazování a přihlášení k odběru událostí zařízení ve službě Azure IoT Hub na počítači s Windows.
-
-* PnPMQTTWin32: obsahuje kód pro odeslání zprávy telemetrie pomocí funkce IoT plug & Play Preview možností zařízení ve službě Azure IoT Hub, která je založená na počítači s Windows a běží na něm. Můžete si přečíst další informace o [technologii IoT Plug & Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
-
-**Pro Linux:**
-
-* MQTTLinux: obsahuje kód a skript sestavení pro spuštění na platformě Linux (WSL, Ubuntu a Raspbian byly testovány tak daleko).
-
-* LinuxConsoleVS2019: obsahuje stejný kód, ale v projektu VS2019 cílící na WSL (Windows Linux sub System). Tento projekt vám umožní ladit kód běžící v systému Linux krok za krokem ze sady Visual Studio.
-
-**Pro mosquitto_pub:**
-
-Tato složka obsahuje dva příkazy vzorů, které se používají s nástrojem mosquitto_pub Utility poskytovaném nástrojem Mosquitto.org.
-
-* Mosquitto_sendmessage: pro odeslání jednoduché textové zprávy do služby Azure IoT Hub fungující jako zařízení.
-
-* Mosquitto_subscribe: zobrazení událostí, ke kterým dochází ve službě Azure IoT Hub.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Přímé použití protokolu MQTT (jako modul)
 
@@ -312,7 +312,7 @@ IoT Hub doručuje zprávy s **názvem tématu** `devices/{device_id}/messages/de
 
 V případě zpráv z cloudu na zařízení se hodnoty v kontejneru objektů a dat reprezentují jako v následující tabulce:
 
-| Hodnota vlastnosti | Obrázek | Popis |
+| Hodnota vlastnosti | Obrázek | Description |
 |----|----|----|
 | `null` | `key` | V kontejneru objektů a dat se zobrazí jenom klíč. |
 | prázdný řetězec | `key=` | Klíč následovaný rovnítkem bez hodnoty |

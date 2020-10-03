@@ -8,14 +8,14 @@ ms.author: lyhughes
 manager: dpalled
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 10/02/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 9a345661a50b18d53411d073ccf12375fe17cdb9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 320d92ef0ad6d02dbe7c31b883eb7f73472378ce
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088591"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667805"
 ---
 # <a name="upcoming-changes-to-json-flattening-and-escaping-rules-for-new-environments"></a>Nadcházející změny v pravidlech sloučení a uvozovacích znaků JSON pro nová prostředí
 
@@ -47,8 +47,9 @@ Všechna nová nasazení musí odpovídat novým pravidlům pro přijímání. P
 ### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>Pokud vaše datová část obsahuje vnořené JSON nebo speciální znaky a automatizujte vytváření výrazů s proměnnými [modelu časové řady](.\time-series-insights-update-tsm.md)
 
 Aktualizujte kód klienta, který spustí [TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) , aby odpovídal novým pravidlům pro přijímání. Například byste měli aktualizovat [výraz předchozí časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) `"value": {"tsx": "$event.series_value.Double"}` na jednu z následujících možností:
-  * `"value": {"tsx": "$event.series.value.Double"}`
-  * `"value": {"tsx": "$event['series']['value'].Double"}`
+
+* `"value": {"tsx": "$event.series.value.Double"}`
+* `"value": {"tsx": "$event['series']['value'].Double"}`
 
 ## <a name="next-steps"></a>Další kroky
 

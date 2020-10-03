@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 10/02/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 9e032b8bb2dd8c82e8b076517f4309baae41c6f9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7408e3fb279536f61dd2e5cf1858476da57219d4
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320313"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665802"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní API služby Azure Time Series Insights
 
@@ -110,7 +110,7 @@ Aby bylo možné provádět ověřené dotazy proti [Azure Time Series Insights 
 
 Požadované hlavičky požadavku jsou popsány níže.
 
-| Požadovaná hlavička žádosti | Popis |
+| Požadovaná hlavička žádosti | Description |
 | --- | --- |
 | Autorizace | Chcete-li provést ověření pomocí Azure Time Series Insights, musí být do **autorizační** hlavičky předána platný nosný token OAuth 2,0. |
 
@@ -122,7 +122,7 @@ Požadované hlavičky požadavku jsou popsány níže.
 
 Volitelné hlavičky požadavku jsou popsány níže.
 
-| Nepovinná hlavička požadavku | Popis |
+| Nepovinná hlavička požadavku | Description |
 | --- | --- |
 | Typ obsahu | `application/json`podporuje se jenom. |
 | x-MS-Client-Request-ID | ID žádosti klienta. Služba zaznamená tuto hodnotu. Umožňuje službě sledovat operace napříč službami. |
@@ -131,7 +131,7 @@ Volitelné hlavičky požadavku jsou popsány níže.
 
 Volitelné, ale Doporučené hlavičky odpovědí jsou popsány níže.
 
-| Hlavička odpovědi | Popis |
+| Hlavička odpovědi | Description |
 | --- | --- |
 | Typ obsahu | `application/json`Podporuje se jenom. |
 | x-MS-Request-ID | ID žádosti generované serverem Dá se použít ke kontaktování žádosti Microsoftu o vyšetření žádosti. |

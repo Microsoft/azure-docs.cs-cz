@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5be2ff48ea5510c54c79e76e8bae082bd5085794
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: abc2367c309f46ee1b29a51145c67e8d71919774
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946864"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665391"
 ---
 # <a name="communication-services-notifications"></a>Oznámení služby Communication Services
 
@@ -36,7 +36,7 @@ Přečtěte si další informace o [zpracování událostí v komunikačních sl
 
 Centrum oznámení Azure můžete připojit ke zdroji komunikačních služeb, aby bylo možné automaticky odesílat nabízená oznámení do mobilního zařízení uživatele, když obdrží příchozí volání. Tato nabízená oznámení byste měli použít k probuzení aplikace z uživatelského rozhraní na pozadí a zobrazovaného uživatelského rozhraní, které umožňuje uživateli přijmout nebo odmítnout volání. 
 
-:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Diagram znázorňující, jak se komunikační služby integrují do centra oznámení Azure.":::
+:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Diagram znázorňující, jak se komunikační služby integrují s Event Grid.":::
 
 Komunikační služby využívají Azure Notification hub jako předávací službu ke komunikaci s různými službami nabízených oznámení specifických pro konkrétní platformu pomocí rozhraní API pro [přímé odesílání](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) . Díky tomu můžete znovu použít stávající prostředky a konfigurace centra oznámení Azure pro zajištění nízké latence a spolehlivého volání oznámení vašim aplikacím.
 
@@ -66,7 +66,7 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 Na portálu přejděte do svého prostředku služby Azure Communication Services. V rámci prostředku služby Communications Services vyberte nabízená oznámení v levé nabídce stránky komunikační služby a připojte centrum oznámení, které jste zřídili dříve. Sem budete muset zadat připojovací řetězec a ID prostředku:
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Snímek obrazovky s nastavením nabízených oznámení na webu Azure Portal":::
+:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Diagram znázorňující, jak se komunikační služby integrují s Event Grid.":::
 
 #### <a name="device-registration"></a>Registrace zařízení 
 

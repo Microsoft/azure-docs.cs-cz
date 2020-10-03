@@ -7,18 +7,15 @@ ms.topic: conceptual
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 15b9495b95ec4efb4f8e9f315595ea6bfca6cd5a
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 30587fac7d7be37d7595a78502b7999adee9a30f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191148"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665306"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Velikosti virtuálních počítačů Azure bez místního dočasného disku 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se velikostí virtuálních počítačů Azure, které nemají místní dočasný disk (tj. žádný místní dočasný disk). Další informace o těchto velikostech virtuálních počítačů najdete v tématu [specifikace pro dv4 a Dsv4-Series (pro obecné účely úlohy)](dv4-dsv4-series.md) nebo [specifikace pro Ev4 a Esv4-Series (paměťově optimalizované úlohy)](ev4-esv4-series.md).
-
-> [!IMPORTANT]
-> Velikosti virtuálních počítačů dv4, Dsv4, Ev4 a Esv4-Series jsou teď v Public Preview. Pokud se chcete zaregistrovat do Public Preview, vyplňte tento [formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u). 
 
 ## <a name="what-does-no-local-temp-disk-mean"></a>Co neznamená žádný místní dočasný disk? 
 Tradičně jsme měli velikost virtuálních počítačů (např. Standard_D2s_v3, Standard_E48_v3), které zahrnují malý místní disk (tj. a D: Drive). Teď s těmito novými velikostmi virtuálních počítačů už neexistuje tento malý místní disk. Můžete však stále připojit HDD úrovně Standard, SSD úrovně Premium nebo SSD úrovně Ultra.
@@ -38,7 +35,7 @@ Pokud vaše úloha vyžaduje místní dočasný disk, máme také k dispozici no
 | Esv3 | Edsv4 |    Esv4 | 
 
 ## <a name="can-i-resize-a-vm-size-that-has-a-local-temp-disk-to-a-vm-size-with-no-local-temp-disk"></a>Můžu změnit velikost virtuálního počítače, která má místní dočasný disk na velikost virtuálního počítače bez místního dočasného disku?  
-Ne. Pro změnu velikosti jsou povolené jenom tyto kombinace: 
+No. Pro změnu velikosti jsou povolené jenom tyto kombinace: 
 
 1. Virtuální počítač (s místním dočasným diskem) – > virtuální počítač (s místním dočasným diskem); ani 
 2. Virtuální počítač (bez místního dočasného disku) – > virtuální počítač (bez místního dočasného disku). 

@@ -1,6 +1,6 @@
 ---
-title: Spravované disky – šablony Azure Resource Manager
-description: Podrobnosti o použití spravovaných disků v šablonách Azure Resource Manager pro virtuální počítače Azure.
+title: Nasazení disků pomocí šablon Azure Resource Manager
+description: Podrobnosti o použití spravovaných a nespravovaných disků v šablonách Azure Resource Manager pro virtuální počítače Azure.
 documentationcenter: ''
 author: jboeshart
 manager: ''
@@ -10,14 +10,14 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 708df0a8ed1085c6e7d435c6f3c3b811ef2ed64e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 298c6e4f33fff99fff01b6b911ec77c78f1fbd26
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854335"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666547"
 ---
-# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Použití Managed Disks v šablonách Azure Resource Manager
+# <a name="using-disks-in-azure-resource-manager-templates"></a>Použití disků v šablonách Azure Resource Manager
 
 Tento dokument vás provede rozdíly mezi spravovanými a nespravovanými disky při použití šablon Azure Resource Manager k zřizování virtuálních počítačů. Příklady vám pomůžou aktualizovat existující šablony, které používají nespravované disky na spravované disky. Pro referenci používáme jako vodítko šablonu [101-VM-Simple-Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) . Můžete zobrazit šablonu pomocí [spravovaných disků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) i předchozí verze s použitím [nespravovaných disků](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) , pokud byste je chtěli přímo porovnat.
 

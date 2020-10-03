@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: mimart
-ms.date: 01/29/2020
+ms.date: 10/02/2020
 ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: da84fee4e974f02f29dc9006fe740c415632ae53
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 76cacbea3f98f65e290cb2722062127d2264e171
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029014"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664830"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Ukázky kódu pro Azure Active Directory B2C
 
@@ -37,7 +37,8 @@ Následující tabulka obsahuje odkazy na ukázky pro aplikace, včetně ukázek
 | Ukázka | Popis |
 |--------| ----------- |
 | [dotnet-webapp-and-webapi](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi) | Souhrnná ukázka pro webovou aplikaci .NET, která volá webové rozhraní API .NET, obojí se zabezpečením pomocí Azure AD B2C. |
-| [dotnetcore-webapp](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp) | Webová aplikace ASP.NET Core, která dokáže přihlásit uživatele pomocí Azure AD B2C, získat přístupový token pomocí MSAL.NET a volat rozhraní API. |
+| [dotnetcore-WebApp-openidconnect](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-5-B2C) | ASP.NET Core webová aplikace, která používá OpenID Connect k přihlašování uživatelů v Azure AD B2C. |
+| [dotnetcore-WebApp-msal-API](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/4-WebApp-your-API/4-2-B2C) | Webová aplikace ASP.NET Core, která dokáže přihlásit uživatele pomocí Azure AD B2C, získat přístupový token pomocí MSAL.NET a volat rozhraní API. |
 | [openidconnect-nodejs](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS) | Aplikace Node.js, která poskytuje rychlý a snadný způsob nastavení webové aplikace pomocí Express s použitím OpenID Connect. |
 | [javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) | Malé webové rozhraní API Node.js pro Azure AD B2C, které ukazuje způsob ochrany webového rozhraní API a příjmu přístupových tokenů B2C pomocí passport.js. |
 | [MS-identity – Python – WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/README_B2C.md) | Ukazují, jak integrovat B2C platformy Microsoft Identity Platform pomocí webové aplikace v Pythonu.  |

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5b3ea0a2037ae80116e9578999414677db1089ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 199e19116e0d8ba6bcc4954e767265e6fb4cd238
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319023"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666343"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -220,7 +220,7 @@ U čínských hlasových XiaoxiaoNeural se intenzita mluveného stylu dá dál z
 
 Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý neuronové hlas podporovány.
 
-| Hlas                   | Styl                     | Popis                                                 |
+| Hlas                   | Styl                     | Description                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Vyjadřuje formální, jistý a autoritativní tón pro doručování zpráv. |
 |                         | `style="newscast-casual"` | Vyjadřuje všestranný a příležitostný tón pro obecné doručování zpráv.        |
@@ -292,7 +292,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 | `strength` | Určuje relativní dobu trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>žádné</li><li>x – slabý</li><li>slabé</li><li>střední (výchozí)</li><li>silnější</li><li>x – silné</li></ul> | Volitelné |
 | `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách. Příklady platných hodnot jsou `2s` a. `500` | Volitelné |
 
-| Obsahem                      | Popis |
+| Obsahem                      | Description |
 |-------------------------------|-------------|
 | Žádná, nebo pokud není zadána žádná hodnota | 0 MS        |
 | x – slabý                        | 250 ms      |
@@ -432,7 +432,7 @@ Chcete-li definovat způsob čtení více entit, můžete vytvořit vlastní lex
 
 `lexicon`Element obsahuje alespoň jeden `lexeme` element. Každý `lexeme` prvek obsahuje nejméně jeden `grapheme` element a jeden nebo více elementů `grapheme` , `alias` a `phoneme` . `grapheme`Element obsahuje text popisující <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. `alias`Prvky slouží k označení výslovnosti zkratky nebo zkrácení podmínky. `phoneme`Element poskytuje text popisující způsob, jakým `lexeme` je vyslovení.
 
-Je důležité si uvědomit, že nemůžete přímo nastavit výslovnost slova pomocí vlastního slovníku. Pokud potřebujete nastavit výslovnost zkratky nebo zkrácení podmínky, nejprve zadejte `alias` a přidružte k `phoneme` ní `alias` . Příklad:
+Je důležité si uvědomit, že nemůžete přímo nastavit výslovnost fráze pomocí vlastního slovníku. Pokud potřebujete nastavit výslovnost zkratky nebo zkrácení podmínky, nejprve zadejte `alias` a přidružte k `phoneme` ní `alias` . Například:
 
 ```xml
   <lexeme>
@@ -442,6 +442,14 @@ Je důležité si uvědomit, že nemůžete přímo nastavit výslovnost slova p
   <lexeme>
     <grapheme>ScotlandMV</grapheme> 
     <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
+  </lexeme>
+```
+
+Můžete také přímo poskytnout očekávanou `alias` zkratku nebo zkrácený termín. Například:
+```xml
+  <lexeme>
+    <grapheme>Scotland MV</grapheme> 
+    <alias>Scotland Media Wave</alias> 
   </lexeme>
 ```
 
@@ -521,7 +529,7 @@ Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `pitch` | Určuje rozteč účaří pro text. Rozteč můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaný "Hz" (Hz). Například 600 Hz.</li><li>Relativní hodnota vyjádřená jako číslo před "+" nebo "-" a následována "Hz" nebo "St", která určuje velikost pro změnu rozteči. Například: + 80 Hz nebo-2st. "St" značí, že se jednotka změny semitone, což je polovina tónu (poloviční krok) na standardním diatonic škále.</li><li>Konstantní hodnota:<ul><li>x – nízká</li><li>slab</li><li>střední</li><li>high</li><li>x-vysoká</li><li>default</li></ul></li></ul>. | Volitelné |
-| `contour` |Obrys teď podporuje hlasy neuronové i Standard. Obrys znázorňuje změny v rozteči. Tyto změny jsou reprezentovány jako pole cílů v určených časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Příklad: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny sklonu v procentech doby trvání textu. Druhá hodnota určuje velikost, která má zvýšit nebo snížit rozteč, pomocí relativní hodnoty nebo hodnoty výčtu pro rozteč (viz `pitch` ). | Volitelné |
+| `contour` |Obrys teď podporuje hlasy neuronové i Standard. Obrys znázorňuje změny v rozteči. Tyto změny jsou reprezentovány jako pole cílů v určených časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Například: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny sklonu v procentech doby trvání textu. Druhá hodnota určuje velikost, která má zvýšit nebo snížit rozteč, pomocí relativní hodnoty nebo hodnoty výčtu pro rozteč (viz `pitch` ). | Volitelné |
 | `range` | Hodnota, která představuje rozsah roztečí textu. Můžete vyjádřit `range` použití stejných absolutních hodnot, relativních hodnot nebo hodnot výčtu používaných k popisu `pitch` . | Volitelné |
 | `rate` | Určuje míru projevení textu. Můžete vyjádřit `rate` jako:<ul><li>Relativní hodnota vyjádřená jako číslo, které funguje jako násobitel výchozí hodnoty. Například hodnota *1* má za následek nezměněnou sazbu. Výsledkem hodnoty *0,5* je poloviční sazba. Hodnota *3* má za následek cestu k této sazbě.</li><li>Konstantní hodnota:<ul><li>x – pomalé</li><li>pomalé</li><li>střední</li><li>světl</li><li>x – Fast</li><li>default</li></ul></li></ul> | Volitelné |
 | `duration` | Časový interval, který by měl uplynout, zatímco služba rozpoznávání řeči (TTS) čte text v sekundách nebo milisekundách. Například *2S* nebo *1800ms*. | Volitelné |

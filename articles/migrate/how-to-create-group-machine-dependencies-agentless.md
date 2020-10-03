@@ -3,12 +3,12 @@ title: Nastavení analýzy závislostí bez agentů v serveru Azure Migrate Asse
 description: Nastavte analýzu závislostí bez agentů v Azure Migrate Server Assessment.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 164cc20632faa1d444d06da6688000e9b40d7e76
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57e5add810cf4fac232bce08fc7ca96df0a7c3a0
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275587"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667465"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Analýza závislostí počítačů (bez agentů)
 
@@ -137,12 +137,12 @@ Vyberte počítače, u kterých chcete zastavit zjišťování závislostí.
 Pokud chcete zastavit závislost na několika počítačích, můžete k tomu použít [PowerShell](#start-or-stop-dependency-discovery-using-powershell) .
 
 
-### <a name="start-or-stop-dependency-discovery-using-powershell"></a>Spuštění nebo zastavení zjišťování závislosti pomocí prostředí PowerShell
+## <a name="start-or-stop-dependency-discovery-using-powershell"></a>Spuštění nebo zastavení zjišťování závislosti pomocí prostředí PowerShell
 
 Stáhněte modul PowerShell z [Azure PowerShellho úložiště ukázek](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) na GitHubu.
 
 
-#### <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+### <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 1. Přihlaste se k předplatnému Azure pomocí rutiny Connect-AzAccount.
 
@@ -166,7 +166,7 @@ Stáhněte modul PowerShell z [Azure PowerShellho úložiště ukázek](https://
     Import-Module .\AzMig_Dependencies.psm1
     ```
 
-#### <a name="enable-or-disable-dependency-data-collection"></a>Povolit nebo zakázat shromažďování dat závislostí
+### <a name="enable-or-disable-dependency-data-collection"></a>Povolit nebo zakázat shromažďování dat závislostí
 
 1. Pomocí následujících příkazů Získejte seznam zjištěných virtuálních počítačů VMware v projektu Azure Migrate. V následujícím příkladu je název projektu FabrikamDemoProject a skupina prostředků, do které patří, je FabrikamDemoRG. Seznam počítačů bude uložený v FabrikamDemo_VMs.csv
 

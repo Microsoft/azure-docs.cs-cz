@@ -3,15 +3,15 @@ title: Vytvoření PowerShellového fondu virtuálních počítačů s Windows �
 description: Postup vytvoření fondu hostitelů na virtuálním počítači s Windows pomocí rutin prostředí PowerShell.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/11/2020
+ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ce3b2b30b1ed421937c11e58bc014cc740b45480
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287283"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667159"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Vytvoření fondu hostitelů virtuálních počítačů s Windows pomocí PowerShellu
 
@@ -20,7 +20,7 @@ ms.locfileid: "91287283"
 
 Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta virtuálních počítačů s Windows. Každý fond hostitelů je možné přidružit k několika skupinám RemoteApp, jedné skupině aplikací klasické pracovní plochy a několika hostitelům relací.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 V tomto článku se předpokládá, že už jste postupovali podle pokynů v tématu [nastavení modulu PowerShellu](powershell-module.md).
 
@@ -99,6 +99,9 @@ K úspěšnému připojení k doméně udělejte na každém virtuálním počí
 
     >[!NOTE]
     > Pokud se připojujete k virtuálním počítačům do prostředí Azure Active Directory Domain Services (Azure služba AD DS), ujistěte se, že je uživatel připojení k doméně také členem [skupiny správců AAD řadiče domény](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group).
+
+>[!IMPORTANT]
+>Doporučujeme Nepovolit žádné zásady ani konfigurace zakazující Instalační služba systému Windows. Pokud Instalační služba systému Windows zakážete, služba nebude moci instalovat aktualizace agenta na hostitele vaší relace a hostitelé relace nebudou správně fungovat.
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>Zaregistrujte virtuální počítače do fondu hostitelů virtuálních počítačů s Windows.
 

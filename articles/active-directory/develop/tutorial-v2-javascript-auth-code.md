@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 89bc974e4d95da183f23ef6643a03b3f20cfa6fa
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 3caf12e13b5999c40843f1203ac8ce7f2f21ef6b
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611159"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665867"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Kurz: přihlášení uživatelů a volání rozhraní API Microsoft Graph z jednostránkové aplikace v JavaScriptu (SPA) pomocí toku kódu ověřování
 
@@ -33,7 +33,7 @@ MSAL.js 2,0 vylepšuje MSAL.js 1,0 tím, že podporuje tok autorizačního kódu
 
 [!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 * [Node.js](https://nodejs.org/en/download/) pro spuštění místního serveru
 * [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný Editor kódu
@@ -551,7 +551,9 @@ Když uživatel poprvé vybere tlačítko pro **přihlášení** , `signIn` meto
 
 V tomto okamžiku se do koncového bodu tokenu Protected CORS pošle autorizační kód chráněný PKCE a vyměňují se pro tokeny. Vaše *msal.js*aplikace obdrží token ID, přístupový token a aktualizační token a informace obsažené v tokenech jsou uložené v mezipaměti.
 
-Token ID obsahuje základní informace o uživateli, jako je jeho zobrazované jméno. Pokud máte v úmyslu použít jakákoli data poskytnutá tokenem ID, váš back-end server *musí* ověřit, zda byl token vydán platnému uživateli vaší aplikace. Obnovovací token má omezené trvání a vyprší za 24 hodin. Obnovovací token lze použít k tichému získání nových přístupových tokenů.
+Token ID obsahuje základní informace o uživateli, jako je jeho zobrazované jméno. Pokud máte v úmyslu použít jakákoli data poskytnutá tokenem ID, váš back-end server *musí* ověřit, zda byl token vydán platnému uživateli vaší aplikace.
+
+Přístupový token má omezené trvání a vyprší za 24 hodin. Obnovovací token lze použít k tichému získání nových přístupových tokenů.
 
 SPA, které jste vytvořili v tomto kurzu, volá nebo `acquireTokenSilent` `acquireTokenPopup` získá *přístupový token* , který se používá k dotazování rozhraní API Microsoft Graph pro informace o profilu uživatele. Pokud potřebujete ukázku, která ověří token ID, přečtěte si ukázkovou aplikaci [Active-Directory-JavaScript-singlepageapp-dotnet-WebApi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) na GitHubu. Ukázka používá webové rozhraní API ASP.NET pro ověření tokenu.
 

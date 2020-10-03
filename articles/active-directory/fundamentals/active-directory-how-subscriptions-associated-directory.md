@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ddca4bc684646854ae8d308043b3de56ec65924
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 747edfdb2a2709a842f767d2ace09662d139c827
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426091"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666428"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Přiřazení nebo přidání předplatného Azure do tenanta Azure Active Directory
 
@@ -50,7 +50,7 @@ Než budete moct přidružit nebo přidat svoje předplatné, proveďte následu
   - Pokud máte nějaké trezory klíčů, nebudou k dispozici a budete je muset po přidružení opravit.
   - Pokud máte nějaké spravované identity pro prostředky, jako je Virtual Machines nebo Logic Apps, musíte je po přidružení znovu povolit nebo vytvořit znovu.
   - Pokud máte registrovanou Azure Stack, budete ji muset po přidružení znovu zaregistrovat.
-  - Další informace najdete v tématu věnovaném [převodu předplatných Azure do jiného adresáře Azure AD (Preview)](../../role-based-access-control/transfer-subscription.md).
+  - Další informace najdete v tématu [přenos předplatného Azure do jiného adresáře služby Azure AD](../../role-based-access-control/transfer-subscription.md).
 
 - Přihlaste se pomocí účtu, který:
 
@@ -93,7 +93,7 @@ Až přiřadíte předplatné k jinému adresáři, možná budete muset provés
 
 - Pokud jste zaregistrovali Azure Stack pomocí tohoto předplatného, musíte se znovu zaregistrovat. Další informace najdete v tématu [registrace Azure Stack s Azure](/azure-stack/operator/azure-stack-registration).
 
-- Další informace najdete v tématu věnovaném [převodu předplatných Azure do jiného adresáře Azure AD (Preview)](../../role-based-access-control/transfer-subscription.md).
+- Další informace najdete v tématu [přenos předplatného Azure do jiného adresáře služby Azure AD](../../role-based-access-control/transfer-subscription.md).
 
 ## <a name="next-steps"></a>Další kroky
 

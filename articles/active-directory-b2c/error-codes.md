@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/10/2020
+ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d205998ad5710ecad346db4d7be18a68747c087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0122fa43c9d99c01797e3523748e4f31b4b7469a
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388523"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664847"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Kódy chyb: Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Služba Azure Active Directory B2C může vrátit následující chyby.
 | `AADB2C90013` | Požadovaný typ odpovědi {0} zadaný v požadavku není podporován. |
 | `AADB2C90014` | Požadovaný režim odpovědi {0} zadaný v požadavku není podporován. |
 | `AADB2C90016` | Požadovaný typ kontrolního výrazu klienta se {0} neshoduje s očekávaným typem {1} . |
-| `AADB2C90017` | Kontrolní výraz klienta zadaný v požadavku je neplatný:{0} |
+| `AADB2C90017` | Kontrolní výraz klienta zadaný v požadavku je neplatný: {0} |
 | `AADB2C90018` | ID klienta {0} zadané v žádosti není zaregistrované v tenantovi {1} . |
 | `AADB2C90019` | Kontejner klíčů s ID {0} v tenantovi nemá {1} platný klíč. Důvod: {2} . |
 | `AADB2C90021` | Technický profil ' {0} ' neexistuje v zásadách ' ' {1} klienta ' ' {2} . |
@@ -73,7 +73,8 @@ Služba Azure Active Directory B2C může vrátit následující chyby.
 | `AADB2C90085` | V této službě došlo k vnitřní chybě. Proveďte prosím znovu ověření a zkuste to znovu. |
 | `AADB2C90086` | Zadaný grant_type [ {0} ] není podporován. |
 | `AADB2C90087` | Poskytnutý grant nebyl vydán pro tuto verzi koncového bodu protokolu. |
-| `AADB2C90088` | Poskytnutý grant nebyl vystaven pro tento koncový bod. Skutečná hodnota: {0} a očekávaná hodnota:{1} |
+| `AADB2C90088` | Poskytnutý grant nebyl vystaven pro tento koncový bod. Skutečná hodnota: {0} a očekávaná hodnota: {1} |
+| `AADB2C90091` | Zrušení uživatele |
 | `AADB2C90092` | Poskytnutá aplikace s ID {0} je pro tenanta zakázaná {1} . Povolte prosím aplikaci a zkuste to znovu. |
 | `AADB2C90107` | Aplikace s ID {0} nemůže získat token ID, protože v požadavku nebyl zadán obor OpenID, nebo aplikace není pro ni autorizována. |
 | `AADB2C90108` | Krok orchestrace {0} ' ' neurčuje CpimIssuerTechnicalProfileReferenceId, pokud byla očekávána jedna. |

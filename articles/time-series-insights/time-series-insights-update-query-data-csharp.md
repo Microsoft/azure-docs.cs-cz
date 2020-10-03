@@ -9,14 +9,14 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: fcb38f761a72bf2c6e5dee8bb993cec9143e7241
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 99cde78f0944544941224927e84e117bd0e660d8
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998947"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667839"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>Dotazování dat z prostředí Azure Time Series Insights Gen2 pomocí jazyka C Sharp
 
@@ -25,7 +25,7 @@ Tento příklad v jazyce C# ukazuje, jak zadávat dotazy na data z [rozhraní AP
 > [!TIP]
 > Prohlédněte si ukázky kódu C# Gen2 na adrese [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) .
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Vzorový kód níže znázorňuje následující funkce:
 
@@ -65,13 +65,13 @@ Vzorový kód má několik požadovaných závislostí, které lze zobrazit v so
 
 Stáhněte si balíčky v aplikaci Visual Studio 2019 tak, **Build**že vyberete  >  možnost**řešení** sestavení sestavení.
 
-Případně přidejte jednotlivé balíčky pomocí [NuGet 2.12 +](https://www.nuget.org/). Příklad:
+Případně přidejte jednotlivé balíčky pomocí [NuGet 2.12 +](https://www.nuget.org/). Například:
 
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 4.5.1`
 
 ## <a name="c-sample-code"></a>Ukázkový kód C#
 
-Chcete-li získat přístup k ukázkovému kódu jazyka C#, přečtěte si prosím úložiště [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) . 
+Chcete-li získat přístup k ukázkovému kódu jazyka C#, přečtěte si prosím úložiště [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) .
 
 > [!NOTE]
 >

@@ -1,5 +1,5 @@
 ---
-title: Vytvořit vlastní klíčová slova – služba Speech
+title: Vytvoření klíčového slova pro rychlý Start – služba Speech
 titleSuffix: Azure Cognitive Services
 description: Zařízení vždycky naslouchá klíčovému slovu (nebo frázi). Když uživatel uvede klíčové slovo, zařízení pošle veškeré následné zvukové nahrávky do cloudu, dokud uživatel nepřestane mluvit. Přizpůsobení klíčového slova je efektivní způsob, jak odlišit vaše zařízení a posílit vaše branding.
 services: cognitive-services
@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/20/2019
+ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 188824b9c43387cf106a3cdd53a09fd6bcb198b8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360663"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667689"
 ---
-# <a name="custom-keyword-basics"></a>Základy vlastních klíčových slov
+# <a name="get-started-with-custom-keyword"></a>Začínáme s vlastním klíčovým slovem
 
-V tomto článku se seznámíte se základy práce s vlastními klíčovými slovy pomocí řeči Studio a sady Speech SDK. Klíčové slovo je slovo nebo krátká fráze, která umožňuje, aby byl váš produkt hlasově aktivovaný. Modely klíčových slov vytvoříte v nástroji Speech Studio a potom exportujete soubor modelu, který používáte se sadou Speech SDK ve vašich aplikacích.
+V tomto rychlém startu se naučíte základy práce s vlastními klíčovými slovy pomocí rozpoznávání řeči Studio a sady Speech SDK. Klíčové slovo je slovo nebo krátká fráze, která umožňuje, aby byl váš produkt hlasově aktivovaný. Modely klíčových slov vytvoříte v nástroji Speech Studio a potom exportujete soubor modelu, který používáte se sadou Speech SDK ve vašich aplikacích.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Postup v tomto článku vyžaduje předplatné řeči a sadu Speech SDK. Pokud ještě nemáte předplatné, [Vyzkoušejte službu Speech Service zdarma](overview.md#try-the-speech-service-for-free). Chcete-li získat sadu SDK, přečtěte si [příručku Instalace](quickstarts/setup-platform.md) pro vaši platformu.
 

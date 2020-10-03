@@ -15,12 +15,12 @@ ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 2f96e48d0c7b14178185f751b8c708e75ab3f322
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 415af4d71365a88a5998f6a9356d5240bc5e2518
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441833"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665986"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Řešení potíží s Azure RBAC
 
@@ -86,7 +86,7 @@ $ras.Count
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>Převod předplatného do jiného adresáře
 
-- Pokud potřebujete postup, jak přenést předplatné do jiného adresáře služby Azure AD, přečtěte si téma [přenos předplatného Azure do jiného adresáře Azure AD (Preview)](transfer-subscription.md).
+- Pokud potřebujete postup, jak přenést předplatné do jiného adresáře služby Azure AD, přečtěte si téma [přenos předplatného Azure do jiného adresáře Azure AD](transfer-subscription.md).
 - Pokud přenesete předplatné do jiného adresáře služby Azure AD, všechna přiřazení rolí se **trvale** odstraní ze zdrojového adresáře služby Azure AD a nemigrují se do cílového adresáře služby Azure AD. V cílovém adresáři musíte znovu vytvořit přiřazení rolí. Je také nutné ručně znovu vytvořit spravované identity pro prostředky Azure. Další informace najdete v tématu [Nejčastější dotazy a známé problémy se spravovanými identitami](../active-directory/managed-identities-azure-resources/known-issues.md).
 - Pokud jste globálním správcem služby Azure AD a nemáte přístup k předplatnému po jeho přenosu mezi adresáři, použijte přepínač **Správa přístupu pro prostředky Azure** a dočasně [zvyšte přístup](elevate-access-global-admin.md) k předplatnému, abyste získali přístup k předplatnému.
 

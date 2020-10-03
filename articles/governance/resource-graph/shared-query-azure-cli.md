@@ -3,12 +3,12 @@ title: 'Rychlý Start: vytvoření sdíleného dotazu pomocí Azure CLI'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení rozšíření grafu prostředků pro Azure CLI a vytvoření sdíleného dotazu.
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: c5f7e6fbe1b462c1f9b6e8ad46c598398e1aca02
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: c888cee5899c45747db1775ffdfbc0d0c78e00c7
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050943"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667516"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Rychlý Start: vytvoření sdíleného dotazu v diagramu prostředků pomocí Azure CLI
 
@@ -16,7 +16,7 @@ Prvním krokem při použití Azure Resource graphu pomocí [Azure CLI](/cli/azu
 
 Na konci tohoto procesu se přidá rozšíření k instalaci Azure CLI a vytvoří se sdílený dotaz pro diagram prostředků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -24,7 +24,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="add-the-resource-graph-extension"></a>Přidat rozšíření Resource Graph
 
-Pokud chcete povolit Azure CLI pro práci s Azure Resource graphem, musí se rozšíření přidat. Toto rozšíření funguje bez ohledu na to rozhraní příkazového řádku Azure je možné, včetně [bash ve Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (samostatné a uvnitř portálu), [image Dockeru rozhraní příkazového řádku Azure](https://hub.docker.com/r/microsoft/azure-cli/), nebo lokálně nainstalované.
+Pokud chcete povolit Azure CLI pro práci s Azure Resource graphem, musí se rozšíření přidat. Toto rozšíření funguje bez ohledu na to rozhraní příkazového řádku Azure je možné, včetně [bash ve Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (samostatné a uvnitř portálu), [image Dockeru rozhraní příkazového řádku Azure](https://hub.docker.com/_/microsoft-azure-cli), nebo lokálně nainstalované.
 
 1. Ověřte, že je nainstalované nejnovější rozhraní příkazového řádku Azure (aspoň **2.8.0**). Pokud ještě není nainstalovaný, postupujte podle [těchto pokynů](/cli/azure/install-azure-cli-windows).
 

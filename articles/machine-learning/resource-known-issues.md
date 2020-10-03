@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 08/13/2020
-ms.openlocfilehash: 3a1d5c70913f7e2a56eaf04be333a931c1adbc3d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/02/2020
+ms.openlocfilehash: c4250be15b1c4fdc5df81c0f0ba3623dedf6488f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450060"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667261"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží ve službě Azure Machine Learning
 
@@ -387,9 +387,9 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   
 * **Import AutoMLConfig se nezdařil**: byly zjištěny změny balíčku v automatizované verzi Machine Learning 1.0.76, která vyžaduje odinstalaci předchozí verze před aktualizací na novou verzi. Pokud `ImportError: cannot import name AutoMLConfig` dojde k chybě po upgradu z verze sady SDK před 1.0.76 na verzi v 1.0.76 nebo novější, vyřešte tuto chybu spuštěním: `pip uninstall azureml-train automl` a potom `pip install azureml-train-auotml` . Skript automl_setup. cmd to provede automaticky. 
 
-* **pracovní prostor. from_config se nezdařila**: Pokud volání WS = workspace. from_config () selhává –
+* **Workspace.from_config**Chyba: Pokud volání ws = Workspace.from_config () selhává –
   1. Ujistěte se, že Poznámkový blok Configuration. ipynb byl úspěšně spuštěn.
-  2. Pokud se Poznámkový blok spouští ze složky, která není ve složce, ve které `configuration.ipynb` bylo spuštěno, zkopírujte aml_config složky a config.jssouboru, který obsahuje do nové složky. Pracovní prostor. from_config čte config.jspro složku poznámkového bloku nebo její nadřazenou složku.
+  2. Pokud se Poznámkový blok spouští ze složky, která není ve složce, ve které `configuration.ipynb` bylo spuštěno, zkopírujte aml_config složky a config.jssouboru, který obsahuje do nové složky. Workspace.from_config přečte config.jspro složku poznámkového bloku nebo její nadřazenou složku.
   3. Pokud se používá nové předplatné, skupina prostředků, pracovní prostor nebo oblast, ujistěte se, že jste `configuration.ipynb` Poznámkový blok znovu spustili. Přímá změna config.jsna přímo bude fungovat jenom v případě, že pracovní prostor už existuje v zadané skupině prostředků v rámci zadaného předplatného.
   4. Pokud chcete změnit oblast, změňte prosím pracovní prostor, skupinu prostředků nebo předplatné. `Workspace.create` pracovní prostor nebude vytvořen ani aktualizován, pokud již existuje, i když je zadaná oblast odlišná.
   
@@ -449,6 +449,10 @@ kubectl get secret/azuremlfessl -o yaml
 
 >[!Note]
 >Kubernetes ukládá tajné klíče ve formátu kódování Base-64. `cert.pem` `key.pem` Před poskytnutím těchto tajných kódů bude nutné základní-64 dekódovat `attach_config.enable_ssl` . 
+
+### <a name="detaching-azure-kubernetes-service"></a>Odpojuje se služba Azure Kubernetes.
+
+Pomocí sady Azure Machine Learning Studio, sady SDK nebo rozšíření Azure CLI pro Machine Learning k odpojení clusteru AKS neodstraňujte cluster AKS. Pokud chcete cluster odstranit, přečtěte si téma [použití Azure CLI se službou AKS](/azure/aks/kubernetes-walkthrough#delete-the-cluster).
 
 ### <a name="webservices-in-azure-kubernetes-service-failures"></a>Služby WebServices ve službě Azure Kubernetes – chyby
 

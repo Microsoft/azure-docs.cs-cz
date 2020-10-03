@@ -3,17 +3,17 @@ title: Shluky B-Series – Azure Virtual Machines
 description: Popisuje B-série velikostí virtuálních počítačů Azure
 services: virtual-machines
 ms.subservice: sizes
-author: ayshakeen
+author: styli365
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.author: ayshak
-ms.openlocfilehash: 8591b703382049346fe019b89a5f31517380757f
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.author: sttsinar
+ms.openlocfilehash: 43e19df24de2f2c4e8e5334010ee788129cee68b
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653413"
+ms.locfileid: "91666632"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady B-Series
 
@@ -21,12 +21,14 @@ Virtuální počítače řady B-Series jsou ideální pro úlohy, které nepotř
 
 Řada B-obsahuje následující velikosti virtuálních počítačů:
 
+[Výpočetní jednotka Azure (ACU)](https://docs.microsoft.com/azure/virtual-machines/acu?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json): liší se *<br>
 [Premium Storage](premium-storage-performance.md): podporováno<br>
 [Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): nepodporováno<br>
 [Migrace za provozu](maintenance-and-updates.md): podporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 <br>
+* Virtuální počítače řady B-Series jsou nenáročné, takže ACU čísla se budou lišit v závislosti na úlohách a základním využití.
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Základní výkon procesoru virtuálního počítače | Maximální výkon procesoru virtuálního počítače | Počáteční kredity | Kredity v bance za hodinu | Maximální počet bank kreditů | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|

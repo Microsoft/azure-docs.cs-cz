@@ -3,12 +3,12 @@ title: Podpora pro vyhodnocení VMware v Azure Migrate
 description: Přečtěte si o podpoře vyhodnocení virtuálních počítačů VMware pomocí posouzení serveru Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 6716bea08347783d8c5728a4e346ffab8ea60a07
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: f672c90f6056cd735d5ddc8dd96de9e7007999ce
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660270"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667788"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
@@ -45,7 +45,7 @@ Pokud chcete migrovat virtuální počítače VMware do Azure, přečtěte si [m
 
 ## <a name="azure-migrate-appliance-requirements"></a>Požadavky zařízení Azure Migrate
 
-Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) ke zjišťování a hodnocení. Zařízení můžete nasadit jako virtuální počítač VMWare pomocí šablony vajíček, naimportovat do vCenter Server nebo pomocí [skriptu PowerShellu](deploy-appliance-script.md).
+Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) ke zjišťování a hodnocení. Zařízení můžete nasadit jako virtuální počítač VMware pomocí šablony vajíček, naimportovat do vCenter Server nebo pomocí [skriptu PowerShellu](deploy-appliance-script.md).
 
 - Přečtěte si informace o [požadavcích na zařízení](migrate-appliance.md#appliance---vmware) pro VMware.
 - V Azure Government musíte zařízení nasadit [pomocí skriptu](deploy-appliance-script-government.md).
@@ -85,14 +85,13 @@ Kromě zjišťování počítačů může posouzení serveru zjišťovat aplikac
 --- | --- 
 **Před nasazením** | Měli byste mít Azure Migrate projekt, pomocí nástroje pro vyhodnocení serveru přidaný do projektu.<br/><br/>  Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjišťování místních počítačů VMware.<br/><br/> [Naučte](create-manage-projects.md) se, jak poprvé vytvořit projekt.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro vyhodnocení do existujícího projektu.<br/> [Přečtěte si, jak](how-to-set-up-appliance-vmware.md) nastavit zařízení Azure Migrate pro posouzení virtuálních počítačů VMware.
 **Podporované počítače** | Aktuálně se podporuje jenom pro virtuální počítače VMware.
-**Virtuální počítače s Windows** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bitů).
+**Virtuální počítače s Windows** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bitů).<br/>Microsoft Windows Server 2008 (32). Ujistěte se, že je prostředí PowerShell nainstalované.
 **vCenter Server přihlašovací údaje** | Vizualizace závislosti vyžaduje účet vCenter Server s přístupem jen pro čtení a oprávnění povolená pro operace hosta Virtual Machines >.
 **Oprávnění virtuálních počítačů s Windows** |  Pro analýzu závislostí potřebuje zařízení Azure Migrate účet správce domény nebo účet místního správce pro přístup k virtuálním počítačům s Windows.
-**Virtuální počítače s Linuxem** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
-**Účet Linux** | Pro analýzu závislostí se v počítačích se systémem Linux Azure Migrate zařízení vyžaduje uživatelský účet s oprávněním root.<br/><br/> V alternativním případě uživatelský účet potřebuje tato oprávnění pro soubory/bin/netstat a/bin/ls: CAP_DAC_READ_SEARCH a CAP_SYS_PTRACE. Tyto možnosti nastavte pomocí následujících příkazů: <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/LS <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/netstat
+**Virtuální počítače s Linuxem** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.<br/> SUSE Linux Enterprise Server 11 a novější
+**Účet Linux** | Pro analýzu závislostí na počítačích se systémem Linux Azure Migrate zařízení vyžaduje kořenový uživatelský účet.<br/><br/> V alternativním případě uživatelský účet potřebuje tato oprávnění pro soubory/bin/netstat a/bin/ls: CAP_DAC_READ_SEARCH a CAP_SYS_PTRACE. Tyto možnosti nastavte pomocí následujících příkazů: <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/LS <br/> sudo setcap CAP_DAC_READ_SEARCH, CAP_SYS_PTRACE = EP/bin/netstat
 **Vyžadovaná agenti** | Na počítačích, které chcete analyzovat, není vyžadován žádný agent.
 **Nástroje VMware** | Na každém virtuálním počítači, který chcete analyzovat, se musí nainstalovat a spustit nástroje VMware (novější než 10,2).
-
 **PowerShell** | Virtuální počítače s Windows musí mít nainstalované prostředí PowerShell verze 2,0 nebo vyšší.
 **Přístup k portu** | Na hostitelích ESXi, na kterých běží virtuální počítače, které chcete analyzovat, musí být zařízení Azure Migrate schopné připojit se k portu TCP 443.
 

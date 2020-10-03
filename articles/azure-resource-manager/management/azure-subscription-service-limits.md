@@ -3,12 +3,12 @@ title: Omezení a kvóty předplatného Azure
 description: Poskytuje seznam běžných limitů, kvót a omezení předplatného a služeb Azure. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximálními hodnotami.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 004c3f35dae4a4966e9ac3d4756aecfba7df2075
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 3b4185fb90aec68eda600b67c95529e6b80b09e4
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371716"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665590"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -212,7 +212,7 @@ Následující tabulka obsahuje informace o funkcích a omezeních [úrovní slu
 
 [!INCLUDE [azure-data-lake-analytics-limits](../../../includes/azure-data-lake-analytics-limits.md)]
 
-## <a name="data-lake-store-limits"></a>Omezení Data Lake Store
+## <a name="data-lake-storage-limits"></a>Omezení Data Lake Storage
 
 [!INCLUDE [azure-data-lake-store-limits](../../../includes/azure-data-lake-store-limits.md)]
 

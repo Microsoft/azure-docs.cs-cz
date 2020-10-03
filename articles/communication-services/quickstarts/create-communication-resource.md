@@ -6,16 +6,16 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: 3ba3d8d4b345c9db2e41c647147021eb9616288e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8b606108d0e33ba1dd49e37c0f407b0caa350f6b
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90947011"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667499"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Rychlý Start: vytvoření a Správa prostředků komunikačních služeb
 
@@ -77,7 +77,7 @@ Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~
 
 #### <a name="linux"></a>[Linux](#tab/linux)
 
-Upravte **. bash_profile**a přidejte proměnnou prostředí:
+Upravte **.bash_profile**a přidejte proměnnou prostředí:
 
 ```bash
 export COMMUNICATION_SERVICES_CONNECTION_STRING="<yourconnectionstring>"
@@ -98,7 +98,7 @@ Pokud máte při odstraňování prostředků přiřazená nějaká telefonní �
 V tomto rychlém startu jste se dozvěděli, jak:
 
 > [!div class="checklist"]
-> * Vytvořit prostředek komunikačních služeb
+> * Vytvoření prostředku Communication Services
 > * Konfigurace geografických a značek prostředků
 > * Přístup ke klíčům pro daný prostředek
 > * Odstranit prostředek

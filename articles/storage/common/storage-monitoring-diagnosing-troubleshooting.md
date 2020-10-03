@@ -4,17 +4,17 @@ description: K identifikaci, diagnostice a řešení potíží souvisejících s
 author: normesta
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 09/23/2019
+ms.date: 10/02/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 79e108303575d5a9969e04f01bdeb126bf078762
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: a63af55161c2e60724fd35987f9dcbf05b12df2e
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031479"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667907"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -256,6 +256,14 @@ Služba úložiště automaticky generuje ID žádosti serveru.
 >
 >
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Následující ukázka kódu ukazuje, jak použít vlastní ID žádosti klienta. 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_UseCustomRequestID":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 Pokud klientská knihovna pro úložiště vyvolá v klientovi **StorageException** , vlastnost **RequestInformation** obsahuje objekt **RequestResult** , který obsahuje vlastnost **ServiceRequestID** . K objektu **RequestResult** můžete získat přístup také z instance **OperationContext** .
 
 Následující ukázka kódu ukazuje, jak nastavit vlastní hodnotu **ID žádosti klienta** připojením objektu **OperationContext** k žádosti službě úložiště. Také ukazuje, jak načíst hodnotu **ServerRequestId** ze zprávy s odpovědí.
@@ -291,6 +299,8 @@ catch (StorageException storageException)
     }
 }
 ```
+
+---
 
 ### <a name="timestamps"></a><a name="timestamps"></a>Časová razítka
 Můžete také použít časová razítka k vyhledání souvisejících položek protokolu, ale buďte opatrní při jakémkoli časovém intervalu mezi klientem a serverem, který může existovat. Pro porovnání položek na straně serveru na základě časového razítka v klientovi hledejte plus nebo mínus 15 minut. Mějte na paměti, že metadata objektů BLOB pro objekty BLOB obsahující metriky označují časový rozsah pro metriky uložené v objektu BLOB. Tento časový rozsah je užitečný, když máte spoustu objektů BLOB metrik za stejnou minutu nebo hodinu.
@@ -358,13 +368,19 @@ Možné příčiny, proč klient reaguje pomalu, zahrnuje omezený počet dostup
 
 Pro služby Table a Queue může Nagle algoritmus také způsobit vysoké **hodnotu averagee2elatency** ve srovnání s **hodnotu averageserverlatency**: Další informace najdete v tématu o [algoritmu post Nagle není uživatelsky přívětivý vůči malým požadavkům](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests). Nagle algoritmus můžete v kódu zakázat pomocí třídy **Třída ServicePointManager** v oboru názvů **System.NET** . Tento postup byste měli provést předtím, než v aplikaci provedete jakékoli volání služby Table nebo Queue, protože to nemá vliv na připojení, která jsou již otevřena. Následující příklad pochází z metody **Application_Start** v roli pracovního procesu.
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_DisableNagle":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
-ServicePoint tableServicePoint = ServicePointManager.FindServicePoint(storageAccount.TableEndpoint);
-tableServicePoint.UseNagleAlgorithm = false;
 ServicePoint queueServicePoint = ServicePointManager.FindServicePoint(storageAccount.QueueEndpoint);
 queueServicePoint.UseNagleAlgorithm = false;
 ```
+
+---
 
 Měli byste kontrolovat protokoly na straně klienta, abyste viděli, kolik požadavků vaše klientská aplikace odesílá, a měli byste vyhledat obecná slabá místa výkonu související s .NET v klientovi, jako je například CPU, uvolňování paměti .NET, využití sítě nebo paměť. Jako výchozí bod pro řešení potíží s klientskými aplikacemi .NET si přečtěte téma [ladění, trasování a profilace](https://msdn.microsoft.com/library/7fe0dd2y).
 
@@ -594,6 +610,12 @@ Pokud chcete vyřešit problém s JavaScriptem, můžete nakonfigurovat sdílen�
 
 Následující ukázka kódu ukazuje, jak nakonfigurovat službu BLOB Service tak, aby povolovala spuštění JavaScriptu v doméně contoso, aby měl přístup k objektu BLOB ve službě BLOB Storage:
 
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_ConfigureCORS":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 CloudBlobClient client = new CloudBlobClient(blobEndpoint, new StorageCredentials(accountName, accountKey));
 // Set the service properties.
@@ -609,6 +631,8 @@ sp.Cors.CorsRules.Clear();
 sp.Cors.CorsRules.Add(cr);
 client.SetServiceProperties(sp);
 ```
+
+---
 
 #### <a name="network-failure"></a><a name="network-failure"></a>Selhání sítě
 V některých případech mohou ztracené síťové pakety vést ke službě úložiště, která vrací zprávy HTTP 404 klientovi. Například Pokud klientská aplikace odstraňuje entitu ze služby Table Service, zobrazí se u klienta zpráva o stavu protokolu HTTP 404 (Nenalezeno) ze služby Table Service. Když prozkoumáte tabulku ve službě Table Storage, zjistíte, že služba odstranila entitu podle požadavku.

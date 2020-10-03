@@ -6,17 +6,17 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fd62a7fed0c6dec818bf4e2558945fb24c9d5261
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3b66c962758afc28da3c6be938c13d768c4f2572
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946896"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666139"
 ---
-# <a name="chat-client-library-overview"></a>Přehled klientské knihovny pro chat
+# <a name="chat-client-library-overview"></a>Přehled klientských knihoven pro chat
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 

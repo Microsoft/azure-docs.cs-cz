@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 40a4fbd956b12d469247cb178007d0259cbeac75
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7b0db0f97531c60b3e809dd0dafa042dbcc2b542
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902915"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667431"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 
@@ -61,7 +61,7 @@ Spravujte své prostředky strojového učení přímo v prohlížeči. Prostře
 - Notebooks
 - Experimenty
 - Spustit protokoly
-- Pipelines 
+- Kanály 
 - Koncové body kanálu
 
 I v případě, že jste zkušený vývojář, může Studio zjednodušit správu prostředků pracovního prostoru.
@@ -88,7 +88,7 @@ Následující tabulka shrnuje hlavní rozdíly mezi ML Studio (Classic) a Azure
 | Školení výpočetních cílů | Proprietární výpočetní cíl, jenom podpora procesoru | Široké spektrum přizpůsobitelných [výpočetních cílů](concept-compute-target.md#train). Zahrnuje podporu GPU a procesoru. | 
 | Cíle výpočtů nasazení | Speciální formát webové služby, není přizpůsobitelný | Široké škály přizpůsobitelných [výpočetních cílů nasazení](concept-compute-target.md#deploy). Zahrnuje podporu GPU a procesoru. |
 | Kanál ML | Nepodporováno | Vytváření flexibilních modulárních [kanálů](concept-ml-pipelines.md) pro automatizaci pracovních postupů |
-| MLOps | Základní Správa modelů a nasazení | Správa verzí entit (model, data, pracovní postupy), automatizace pracovních postupů, integrace s nástroji CICD [a další](concept-model-management-and-deployment.md) |
+| MLOps | Základní Správa modelů a nasazení; Nasazení pouze procesoru | Správa verzí entit (model, data, pracovní postupy), automatizace pracovních postupů, integrace s nástroji pro CICD, nasazení procesoru a GPU [a další](concept-model-management-and-deployment.md) |
 | Formát modelu | Speciální formát, jenom Studio (Classic) | Více podporovaných formátů v závislosti na typu úlohy školení |
 | Automatizované školení modelů a ladění parametrů |  Nepodporováno | [Podporuje](concept-automated-ml.md)se. Možnosti Code-First a No-Code. | 
 | Detekce posunu dat | Nepodporováno | [Podporováno](how-to-monitor-datasets.md) |

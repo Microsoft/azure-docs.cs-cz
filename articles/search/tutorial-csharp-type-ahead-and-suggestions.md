@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 07/15/2020
+ms.date: 10/01/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 27437ae1db0ff3a205108638670b058eaaea04bd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7d610f7ad8f9c211f99f01cd866e26956c7242a1
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280721"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667210"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Kurz: přidání automatického dokončování a návrhů pomocí sady .NET SDK
 
-Naučte se implementovat automatické dokončování (dotazy typeahead a navrhované dokumenty), když uživatel začne psát do vyhledávacího pole. V tomto kurzu zobrazíme samostatně dokončené dotazy a výsledky návrhů a pak dohromady. Uživatel může zadat jenom dva nebo tři znaky, aby bylo možné najít všechny dostupné výsledky.
+Naučte se implementovat automatické dokončování (dotazy typeahead a navrhované výsledky), když uživatel začne psát do vyhledávacího pole. V tomto kurzu zobrazíme samostatně dokončené dotazy a navrhované výsledky zvlášť a pak dohromady. Uživatel může zadat jenom dva nebo tři znaky, aby bylo možné najít všechny dostupné výsledky.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -27,15 +27,23 @@ V tomto kurzu se naučíte:
 > * Přidat automatické dokončování
 > * Kombinování automatického dokončování a návrhů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="overview"></a>Přehled
 
-Tento kurz je součástí série a sestavuje se na stránkování projektu vytvořeném v [kurzu C#: stránkování výsledků hledání – Azure kognitivní hledání](tutorial-csharp-paging.md).
+V tomto kurzu se do předchozího kurzu [Přidání stránkování do výsledků hledání](tutorial-csharp-paging.md) přidá k tomuto kurzu automatického dokončování a navrhovaných výsledků.
 
-Případně si můžete stáhnout a spustit řešení pro tento konkrétní kurz: [3-Add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead).
+Hotovou verzi kódu v tomto kurzu najdete v následujícím projektu:
+
+* [3. Přidání-typeahead (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/3-add-typeahead)
+
+## <a name="prerequisites"></a>Požadované součásti
+
+* [2a – řešení pro přidání stránkování (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2a-add-paging) . Tento projekt může být vlastní verze sestavená z předchozího kurzu nebo kopie z GitHubu.
+
+Tento kurz byl aktualizován tak, aby používal balíček [Azure.Search.Documents (verze 11)](https://www.nuget.org/packages/Azure.Search.Documents/) . Starší verzi sady .NET SDK najdete v tématu [Ukázka kódu Microsoft. Azure. Search (verze 10)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10).
 
 ## <a name="add-suggestions"></a>Přidat návrhy
 
-Pojďme začít s nejjednodušším případem, který uživateli nabízí alternativy: rozevírací seznam návrhů.
+Pojďme začít s nejjednodušším případem, který uživateli nabízí alternativy: rozevírací seznam navrhovaných výsledků.
 
 1. V souboru index. cshtml změňte `@id` příkaz **TextBoxFor** na **azureautosuggest**.
 
@@ -43,12 +51,12 @@ Pojďme začít s nejjednodušším případem, který uživateli nabízí alter
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-2. Po zavření tohoto příkazu po ukončení ** &lt; /div &gt; **zadejte tento skript. Tento skript využívá [widget automatického dokončování](https://api.jqueryui.com/autocomplete/) z open source knihovny uživatelského rozhraní jQuery a prezentuje rozevírací seznam navrhovaných výsledků. 
+1. Po zavření tohoto příkazu po ukončení ** &lt; /div &gt; **zadejte tento skript. Tento skript využívá [widget automatického dokončování](https://api.jqueryui.com/autocomplete/) z open source knihovny uživatelského rozhraní jQuery a prezentuje rozevírací seznam navrhovaných výsledků.
 
     ```javascript
     <script>
         $("#azureautosuggest").autocomplete({
-            source: "/Home/Suggest?highlights=false&fuzzy=false",
+            source: "/Home/SuggestAsync?highlights=false&fuzzy=false",
             minLength: 2,
             position: {
                 my: "left top",
@@ -58,13 +66,13 @@ Pojďme začít s nejjednodušším případem, který uživateli nabízí alter
     </script>
     ```
 
-    ID "azureautosuggest" připojí výše uvedený skript k vyhledávacímu poli. Možnost source widgetu je nastavena na metodu navrhnout, která volá rozhraní API pro návrh se dvěma parametry dotazu: **Hlavní** a **Přibližná**, v této instanci je nastavena na hodnotu false. K aktivaci hledání je navíc potřeba aspoň dva znaky.
+    ID `"azureautosuggest"` připojí výše uvedený skript k vyhledávacímu poli. Možnost source widgetu je nastavena na metodu navrhnout, která volá rozhraní API pro návrh se dvěma parametry dotazu: **Hlavní** a **Přibližná**, v této instanci je nastavena na hodnotu false. K aktivaci hledání je navíc potřeba aspoň dva znaky.
 
 ### <a name="add-references-to-jquery-scripts-to-the-view"></a>Přidat do zobrazení odkazy na skripty jQuery
 
 1. Chcete-li získat přístup k knihovně jQuery, změňte &lt; &gt; část Head souboru zobrazení na následující kód:
 
-    ```cs
+    ```html
     <head>
         <meta charset="utf-8">
         <title>Typeahead</title>
@@ -91,42 +99,42 @@ Pojďme začít s nejjednodušším případem, který uživateli nabízí alter
 
 ### <a name="add-the-suggest-action-to-the-controller"></a>Přidejte do kontroleru akci navrhnout.
 
-1. V domovském řadiči přidejte akci **navrhnout** (říká se za akci **stránky** ).
+1. V domovském řadiči přidejte akci **SuggestAsync** (za akci **PageAsync** ).
 
     ```cs
-        public async Task<ActionResult> Suggest(bool highlights, bool fuzzy, string term)
+    public async Task<ActionResult> SuggestAsync(bool highlights, bool fuzzy, string term)
+    {
+        InitSearch();
+
+        // Setup the suggest parameters.
+        var options = new SuggestOptions()
         {
-            InitSearch();
+            UseFuzzyMatching = fuzzy,
+            Size = 8,
+        };
 
-            // Setup the suggest parameters.
-            var parameters = new SuggestParameters()
-            {
-                UseFuzzyMatching = fuzzy,
-                Top = 8,
-            };
-
-            if (highlights)
-            {
-                parameters.HighlightPreTag = "<b>";
-                parameters.HighlightPostTag = "</b>";
-            }
-
-            // Only one suggester can be specified per index. It is defined in the index schema.
-            // The name of the suggester is set when the suggester is specified by other API calls.
-            // The suggester for the hotel database is called "sg", and simply searches the hotel name.
-            DocumentSuggestResult<Hotel> suggestResult = await _indexClient.Documents.SuggestAsync<Hotel>(term, "sg", parameters);
-
-            // Convert the suggest query results to a list that can be displayed in the client.
-            List<string> suggestions = suggestResult.Results.Select(x => x.Text).ToList();
-
-            // Return the list of suggestions.
-            return new JsonResult(suggestions);
+        if (highlights)
+        {
+            options.HighlightPreTag = "<b>";
+            options.HighlightPostTag = "</b>";
         }
+
+        // Only one suggester can be specified per index. It is defined in the index schema.
+        // The name of the suggester is set when the suggester is specified by other API calls.
+        // The suggester for the hotel database is called "sg", and simply searches the hotel name.
+        var suggestResult = await _searchClient.SuggestAsync<Hotel>(term, "sg", options).ConfigureAwait(false);
+
+        // Convert the suggested query results to a list that can be displayed in the client.
+        List<string> suggestions = suggestResult.Value.Results.Select(x => x.Text).ToList();
+
+        // Return the list of suggestions.
+        return new JsonResult(suggestions);
+    }
     ```
 
-    Parametr **Top** určuje, kolik výsledků se má vrátit (Pokud není zadaný, výchozí hodnota je 5). V indexu Azure se zadá modul pro _návrhy_ , který se provede, když se nastavují data, a ne klientská aplikace, jako je třeba tento kurz. V takovém případě má modul pro návrhy název "SG" a hledá pole **hotelu** – nic jiného. 
+    Parametr **Size** určuje, kolik výsledků se má vrátit (Pokud není zadaný, výchozí hodnota je 5). V indexu vyhledávání se při vytvoření indexu zadá modul pro _návrhy_ . V ukázkovém indexu hotelů hostovaném Microsoftem je název modulu pro návrhy "SG" a hledá navrhované shody výhradně v poli **hotely** .
 
-    Přibližná shoda umožňuje zahrnutí "blízko neúspěšných" do výstupu, až po jednu vzdálenost úprav. Pokud je parametr **zvýrazňujes** nastaven na hodnotu true, jsou do výstupu přidány tučné značky HTML. V další části nastavíme tyto dva parametry na true (pravda).
+    Přibližná shoda umožňuje zahrnutí "blízko neúspěšných" do výstupu, až po jednu vzdálenost úprav. Pokud je parametr **zvýrazňujes** nastaven na hodnotu true, jsou do výstupu přidány tučné značky HTML. Oba parametry nastavíme v další části na hodnotu true (pravda).
 
 2. Může se zobrazit několik syntaktických chyb. Pokud ano, přidejte následující dva příkazy **using** do horní části souboru.
 
@@ -141,7 +149,7 @@ Pojďme začít s nejjednodušším případem, který uživateli nabízí alter
 
     Všimněte si, že písmena, která zadáte, _musí_ začínat slovem a nemusí být ve slově obsažena.
 
-4. Ve skriptu zobrazení nastavte **&fuzzy** na true a spusťte aplikaci znovu. Nyní zadejte "No". Všimněte si, že hledání se předpokládá, že máte jedno písmeno špatné.
+4. Ve skriptu zobrazení nastavte **&fuzzy** na true a spusťte aplikaci znovu. Nyní zadejte "No". Všimněte si, že vyhledávání předpokládá, že máte jedno písmeno špatné.
  
     ![Zadání "PA" s fuzzy nastavenou na hodnotu true](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
 
@@ -151,7 +159,7 @@ Pojďme začít s nejjednodušším případem, který uživateli nabízí alter
 
 Vzhled návrhů pro uživatele můžeme vylepšit nastavením parametru **zvýrazní** na hodnotu true. Nejdřív ale potřebujeme přidat nějaký kód pro zobrazení tučného textu.
 
-1. Do zobrazení (index. cshtml) přidejte následující skript za skript **azureautosuggest** , který jste zadali výše.
+1. V zobrazení (index. cshtml) přidejte následující skript za `"azureautosuggest"` dříve popsaný skript.
 
     ```javascript
     <script>
@@ -180,23 +188,23 @@ Vzhled návrhů pro uživatele můžeme vylepšit nastavením parametru **zvýra
     </script>
     ```
 
-2. Nyní Změňte ID textového pole tak, aby vypadalo následovně.
+1. Nyní Změňte ID textového pole tak, aby vypadalo následovně.
 
     ```cs
     @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azuresuggesthighlights" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-3. Znovu spusťte aplikaci a v návrzích byste měli vidět zadaný text zvýrazněný tučně. Řekněme, zkuste zadat "PA".
+1. Znovu spusťte aplikaci a v návrzích byste měli vidět zadaný text zvýrazněný tučně. Zkuste zadat "PA".
  
     ![Zadání "PA" se zvýrazněním](./media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png)
 
-4. Logika použitá ve výše uvedeném skriptu pro zvýraznění není foolproof. Pokud zadáte termín, který se zobrazí dvakrát ve stejném názvu, tučné výsledky nemusejí být naprosto, co byste chtěli. Zkuste zadat "mo".
+   Logika použitá ve výše uvedeném skriptu pro zvýraznění není foolproof. Pokud zadáte termín, který se zobrazí dvakrát ve stejném názvu, tučné výsledky nemusejí být naprosto, co byste chtěli. Zkuste zadat "mo".
 
-    Jednou z otázek, které vývojář potřebuje k zodpovězení, je, kdy skript pracuje dostatečně dobře a kdy by měl adaptivní být řešen. V tomto kurzu už nebudeme brát v úvahu žádné další, ale při hledání přesných algoritmů je něco zvážit, pokud pro vaše data neplatí zvýraznění. Další informace najdete v tématu [zvýrazňování přístupů](search-pagination-page-layout.md#hit-highlighting).
+   Jednou z otázek, které vývojář potřebuje k zodpovězení, je, kdy skript pracuje dostatečně dobře a kdy by měl adaptivní být řešen. V tomto kurzu už nebudeme brát v úvahu žádné další, ale při hledání přesných algoritmů je něco zvážit, pokud pro vaše data neplatí zvýraznění. Další informace najdete v tématu [zvýrazňování přístupů](search-pagination-page-layout.md#hit-highlighting).
 
 ## <a name="add-autocomplete"></a>Přidat automatické dokončování
 
-Další variace, která se mírně liší od návrhů, je automatického dokončování (někdy nazývané "Type-dopředu"), které dokončuje termín dotazu. Znovu začneme s nejjednodušší implementací, než zlepšíte uživatelské prostředí.
+Další variace, mírně odlišnější od návrhů, je automatického dokončování (někdy nazývané "Type-dopředu"), které dokončuje termín dotazu. Znovu začneme s nejjednodušší implementací, než zlepšíte uživatelské prostředí.
 
 1. Do zobrazení zadejte následující skript, a to podle předchozích skriptů.
 
@@ -213,103 +221,103 @@ Další variace, která se mírně liší od návrhů, je automatického dokonč
     </script>
     ```
 
-2. Nyní Změňte ID textového pole, aby vypadalo takto.
+1. Nyní Změňte ID textového pole, aby vypadalo takto.
 
     ```cs
     @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautocompletebasic" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-3. V případě domovského kontroleru musíme do akce **navrhnout** zadat akci **automatického dokončování** .
+1. V rámci domovského kontroleru zadejte akci **AutocompleteAsync** po akci **SuggestAsync** .
 
     ```cs
-        public async Task<ActionResult> AutoComplete(string term)
+    public async Task<ActionResult> AutoCompleteAsync(string term)
+    {
+        InitSearch();
+
+        // Setup the autocomplete parameters.
+        var ap = new AutocompleteOptions()
         {
-            InitSearch();
+            Mode = AutocompleteMode.OneTermWithContext,
+            Size = 6
+        };
+        var autocompleteResult = await _searchClient.AutocompleteAsync(term, "sg", ap).ConfigureAwait(false);
 
-            // Setup the autocomplete parameters.
-            var ap = new AutocompleteParameters()
-            {
-                AutocompleteMode = AutocompleteMode.OneTermWithContext,
-                Top = 6
-            };
-            AutocompleteResult autocompleteResult = await _indexClient.Documents.AutocompleteAsync(term, "sg", ap);
+        // Convert the autocompleteResult results to a list that can be displayed in the client.
+        List<string> autocomplete = autocompleteResult.Value.Results.Select(x => x.Text).ToList();
 
-            // Convert the results to a list that can be displayed in the client.
-            List<string> autocomplete = autocompleteResult.Results.Select(x => x.Text).ToList();
-
-            // Return the list.
-            return new JsonResult(autocomplete);
-        }
+        return new JsonResult(autocomplete);
+    }
     ```
 
     Všimněte si, že používáme stejnou funkci *návrhy* , která se nazývá "SG", a to při automatickém dokončování hledání jako u návrhů (takže se snažíme jenom provést automatické dokončování názvů hotelů).
 
     K dispozici je řada nastavení **AutocompleteMode** a používáme **OneTermWithContext**. Popis dalších možností najdete v tématu [rozhraní API pro automatické dokončování](/rest/api/searchservice/autocomplete) .
 
-4. Spusťte aplikaci. Všimněte si, jak je rozsah možností zobrazených v rozevíracím seznamu jedinou slovem. Zkuste zadat slova začínající řetězcem "znovu". Všimněte si, jak se počet možností zkracuje při psaní dalších písmen.
+1. Spusťte aplikaci. Všimněte si, jak je rozsah možností zobrazených v rozevíracím seznamu jedinou slovem. Zkuste zadat slova začínající řetězcem "znovu". Všimněte si, jak se počet možností zkracuje při psaní dalších písmen.
 
     ![Psaní pomocí základního automatického dokončování](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png)
 
-    Vzhledem k tomu, že skript návrhů, který jste spustili dříve, je pravděpodobně užitečnější než tento skript automatického dokončování. Aby bylo možné provést další uživatelsky přívětivější, je nejlepší přidat do vyhledávání návrhů.
+    Vzhledem k tomu, že skript návrhů, který jste spustili dříve, je pravděpodobně užitečnější než tento skript automatického dokončování. Chcete-li provést další uživatelsky přívětivější, zvažte použití s navrhovanými výsledky.
 
 ## <a name="combine-autocompletion-and-suggestions"></a>Kombinování automatického dokončování a návrhů
 
 Kombinace automatického dokončování a návrhů je nejsložitější z našich možností a pravděpodobně poskytuje nejlepší uživatelské prostředí. To, co chceme zobrazit, je první volbou Azure Kognitivní hledání pro autotexting text, který je právě psaný. Také chceme, aby byl jako rozevírací seznam k disřadě návrhů.
 
-K dispozici jsou knihovny, které nabízejí tuto funkci – často se označuje jako "vložené autodokončování" nebo podobný název. Tuto funkci však nativně implementujeme, abyste viděli, co se chystá. V tomto příkladu budeme začít pracovat na řadiči jako první.
+K dispozici jsou knihovny, které nabízejí tuto funkci – často se označuje jako "vložené autodokončování" nebo podobný název. Tuto funkci však nativně implementujeme, abyste mohli prozkoumat rozhraní API. V tomto příkladu budeme začít pracovat na řadiči jako první.
 
-1. Musíme do kontroleru přidat akci, která vrátí jenom jeden výsledek automatického dokončování, spolu se zadaným počtem návrhů. Budeme volat tuto akci **AutocompleteAndSuggest**. V domovském řadiči přidejte následující akci, a to za dalšími novými akcemi.
+1. Přidejte akci do kontroleru, který vrátí pouze jeden výsledek automatického dokončování, spolu se zadaným počtem návrhů. Budeme volat tuto akci **AutoCompleteAndSuggestAsync**. V domovském řadiči přidejte následující akci, a to za dalšími novými akcemi.
 
     ```cs
-        public async Task<ActionResult> AutocompleteAndSuggest(string term)
+    public async Task<ActionResult> AutoCompleteAndSuggestAsync(string term)
+    {
+        InitSearch();
+
+        // Setup the type-ahead search parameters.
+        var ap = new AutocompleteOptions()
         {
-            InitSearch();
+            Mode = AutocompleteMode.OneTermWithContext,
+            Size = 1,
+        };
+        var autocompleteResult = await _searchClient.AutocompleteAsync(term, "sg", ap);
 
-            // Setup the type-ahead search parameters.
-            var ap = new AutocompleteParameters()
-            {
-                AutocompleteMode = AutocompleteMode.OneTermWithContext,
-                Top = 1,
-            };
-            AutocompleteResult autocompleteResult = await _indexClient.Documents.AutocompleteAsync(term, "sg", ap);
+        // Setup the suggest search parameters.
+        var sp = new SuggestOptions()
+        {
+            Size = 8,
+        };
 
-            // Setup the suggest search parameters.
-            var sp = new SuggestParameters()
-            {
-                Top = 8,
-            };
+        // Only one suggester can be specified per index. The name of the suggester is set when the suggester is specified by other API calls.
+        // The suggester for the hotel database is called "sg" and simply searches the hotel name.
+        var suggestResult = await _searchClient.SuggestAsync<Hotel>(term, "sg", sp).ConfigureAwait(false);
 
-            // Only one suggester can be specified per index. The name of the suggester is set when the suggester is specified by other API calls.
-            // The suggester for the hotel database is called "sg", and it searches only the hotel name.
-            DocumentSuggestResult<Hotel> suggestResult = await _indexClient.Documents.SuggestAsync<Hotel>(term, "sg", sp);
+        // Create an empty list.
+        var results = new List<string>();
 
-            // Create an empty list.
-            var results = new List<string>();
-
-            if (autocompleteResult.Results.Count > 0)
-            {
-                // Add the top result for type-ahead.
-                results.Add(autocompleteResult.Results[0].Text);
-            }
-            else
-            {
-                // There were no type-ahead suggestions, so add an empty string.
-                results.Add("");
-            }
-            for (int n = 0; n < suggestResult.Results.Count; n++)
-            {
-                // Now add the suggestions.
-                results.Add(suggestResult.Results[n].Text);
-            }
-
-            // Return the list.
-            return new JsonResult(results);
+        if (autocompleteResult.Value.Results.Count > 0)
+        {
+            // Add the top result for type-ahead.
+            results.Add(autocompleteResult.Value.Results[0].Text);
         }
+        else
+        {
+            // There were no type-ahead suggestions, so add an empty string.
+            results.Add("");
+        }
+
+        for (int n = 0; n < suggestResult.Value.Results.Count; n++)
+        {
+            // Now add the suggestions.
+            results.Add(suggestResult.Value.Results[n].Text);
+        }
+
+        // Return the list.
+        return new JsonResult(results);
+    }
     ```
 
     Jedna možnost automatického dokončování se vrátí v horní části seznamu **výsledků** , po kterém následují všechny návrhy.
 
-2. V zobrazení nejprve implementujeme štych, aby se v oblasti tučného textu, který uživatel zadal, vykresluje slovo světle šedého automatického dokončování. HTML obsahuje relativní umístění pro tento účel. Změňte příkaz **TextBoxFor** (a jeho okolní &lt; příkazy div &gt; ) na následující, což znamená, že druhé vyhledávací pole identifikované jako v **underneath** rámci našeho normálního vyhledávacího pole je napravo pomocí tohoto vyhledávacího pole 39 pixelů z výchozího umístění!
+1. V zobrazení nejprve implementujeme štych, aby se v oblasti tučného textu, který uživatel zadal, vykresluje slovo světle šedého automatického dokončování. HTML obsahuje relativní umístění pro tento účel. Změňte příkaz **TextBoxFor** (a jeho okolní &lt; příkazy div &gt; ) na následující, což znamená, že druhé vyhledávací pole identifikované jako v **underneath** rámci našeho normálního vyhledávacího pole je napravo pomocí tohoto vyhledávacího pole 39 pixelů z výchozího umístění!
 
     ```cs
     <div id="underneath" class="searchBox" style="position: relative; left: 0; top: 0">
@@ -322,7 +330,7 @@ K dispozici jsou knihovny, které nabízejí tuto funkci – často se označuje
 
     Všimněte si, že znovu měníme ID, aby se v tomto případě **azureautocomplete** .
 
-3. V zobrazení také zadejte následující skript, a to po všech skriptech, které jste doposud zadali. Existuje hodně dalších.
+1. V zobrazení také zadejte následující skript, a to po všech skriptech, které jste doposud zadali. Skript je zdlouhavý a složitý vzhledem k nejrůznějším chováním vstupu, které zpracovává.
 
     ```javascript
     <script>
@@ -336,7 +344,7 @@ K dispozici jsou knihovny, které nabízejí tuto funkci – často se označuje
 
             // Use Ajax to set up a "success" function.
             source: function (request, response) {
-                var controllerUrl = "/Home/AutoCompleteAndSuggest?term=" + $("#azureautocomplete").val();
+                var controllerUrl = "/Home/AutoCompleteAndSuggestAsync?term=" + $("#azureautocomplete").val();
                 $.ajax({
                     url: controllerUrl,
                     dataType: "json",
@@ -431,23 +439,23 @@ K dispozici jsou knihovny, které nabízejí tuto funkci – často se označuje
     </script>
     ```
 
-    Všimněte si, že chytřejší použití funkce **interval** pro vymazání základního textu, když se už neshoduje s tím, co uživatel zapisuje, a také nastavování stejného případu (horní nebo dolní), jak zapisuje uživatel (jako "PA" odpovídá "PA", "PA", "PA" při hledání "), aby byl text v překrytí úhledný.
+    Všimněte si, jak se funkce **intervalu** používá pro vymazání základního textu, když se už neshoduje s tím, co uživatel zadá, a také pro nastavení stejného případu (horní nebo dolní), jak uživatel zapisuje (jako "PA" odpovídá "PA", "PA", "PA" při hledání "), takže text v překrytí bude úhledný.
 
     Přečtěte si komentáře ve skriptu, abyste získali úplný princip.
 
-4. Nakonec musíme provést drobné úpravy dvou tříd HTML, aby byly transparentní. Přidejte následující řádek do tříd **searchBoxForm** a **searchBox** v souboru hotely. CSS.
+1. Nakonec musíme provést drobné úpravy dvou tříd HTML, aby byly transparentní. Přidejte následující řádek do tříd **searchBoxForm** a **searchBox** v souboru hotely. CSS.
 
     ```html
-        background: rgba(0,0,0,0);
+    background: rgba(0,0,0,0);
     ```
 
-5. Teď aplikaci spusťte. Do vyhledávacího pole zadejte "PA". Získáte "Palace" jako návrh automatického dokončování spolu se dvěma hotely, které obsahují "PA"?
+1. Teď aplikaci spusťte. Do vyhledávacího pole zadejte "PA". Získáte "Palace" jako návrh automatického dokončování spolu se dvěma hotely, které obsahují "PA"?
 
     ![Zadání s vloženým dokončováním a návrhy](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png)
 
-6. Vyzkoušejte si tabulátory, které přijímají návrh automatického dokončování, a zkuste vybrat návrhy pomocí kláves se šipkami a klávesy TAB a zkuste to znovu pomocí myši a jediného kliknutí. Ověřte, že skript pracuje s těmito situacemi úhledně.
+1. Vyzkoušejte si tabulátory, které přijímají návrh automatického dokončování, a zkuste vybrat návrhy pomocí kláves se šipkami a klávesy TAB a zkuste to znovu pomocí myši a jediného kliknutí. Ověřte, že skript pracuje s těmito situacemi úhledně.
 
-    Můžete se rozhodnout, že se načtou do knihovny, která pro vás tuto funkci nabízí, ale teď víte aspoň jeden způsob, jak získat automatické dokončení vloženého textu!
+    Můžete se rozhodnout, že se načtou do knihovny, která pro vás tuto funkci nabízí, ale teď potřebujete alespoň jeden způsob, jak zajistit, aby se automatické dokončování vložené do práce dokončilo.
 
 ## <a name="takeaways"></a>Shrnutí
 

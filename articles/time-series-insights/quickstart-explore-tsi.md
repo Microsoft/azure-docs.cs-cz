@@ -9,13 +9,13 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 07/07/2020
-ms.openlocfilehash: 135fbe914a1bf99f1cc32bd9291658f60282aa0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/02/2020
+ms.openlocfilehash: 9cd1a6059360c948229a1da00780cd6cb40b7f35
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102013"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666530"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Rychlý Start: Prozkoumejte ukázkové prostředí Azure Time Series Insights Gen2
 
@@ -100,7 +100,7 @@ Když použijete Azure Time Series Insights Gen2 a telemetrie senzorů, zjistili
 
       [![Prodloužení časového intervalu na 60 dní](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
-1. K zajištění většího kontextu je možné přidat další datové body snímačů. Další senzory, které jsme si vyrozuměli, je úplným porozuměním problému. Pojďme vyřadit značku, aby se zobrazily skutečné hodnoty. 
+1. K zajištění většího kontextu je možné přidat další datové body snímačů. Další senzory, které jsme si vyrozuměli, je úplným porozuměním problému. Pojďme vyřadit značku, aby se zobrazily skutečné hodnoty.
 
     1. Vyberte **systém generátoru**a potom vyberte tři senzory: **GridVoltagePhase1**, **GridVoltagePhase2**a **GridVoltagePhase3**.
     1. Přetáhněte značku k poslednímu datovému bodu v viditelné oblasti.

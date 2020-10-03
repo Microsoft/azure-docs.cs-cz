@@ -8,13 +8,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 02/03/2020
-ms.openlocfilehash: b2e86a92c253bc1926386269e289cdb7ae578746
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/02/2020
+ms.openlocfilehash: 7de4dc21391f7dbd817c56ce51606a808cf9e3c4
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080752"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665803"
 ---
 1. V [Azure Portal](https://ms.portal.azure.com/)vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **nové registrace**.
 
@@ -22,7 +22,7 @@ ms.locfileid: "87080752"
 
     Vaše aplikace se tady zobrazí po registraci.
 
-1. Dejte aplikaci název a vyberte **účty v tomto organizačním adresáři jenom** k určení **podporovaných typů účtů** , které můžou mít přístup k rozhraní API. Zvolte platný identifikátor URI pro přesměrování uživatelů na ověření a pak **Zaregistrujte**.
+1. Dejte aplikaci název a vyberte **účty v tomto organizačním adresáři jenom** k určení **podporovaných typů účtů** , které můžou mít přístup k rozhraní API. Pokud vytváříte [veřejnou klientskou aplikaci](https://docs.microsoft.com/azure/active-directory/develop/msal-client-application-configuration#redirect-uri), přidejte platný identifikátor URI přesměrování a pak ho **Zaregistrujte**.
 
    [![Vytvoření aplikace v Azure Active Directory](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
 
@@ -32,7 +32,7 @@ ms.locfileid: "87080752"
 
    Zkopírujte **ID aplikace (klienta)** pro použití v klientské aplikaci.
 
-1. Okno **ověřování** určuje nastavení konfigurace pro ověřování. 
+1. Okno **ověřování** určuje nastavení konfigurace pro ověřování.
 
     1. Přidejte **identifikátory URI pro přesměrování** a nakonfigurujte **přístupové tokeny** tak, že vyberete **+ Přidat platformu**.
 
@@ -66,7 +66,7 @@ ms.locfileid: "87080752"
    > [!NOTE]
    > Místo toho máte možnost importovat certifikát. Pro rozšířené zabezpečení se doporučuje certifikát. Chcete-li použít certifikát, vyberte **Odeslat certifikát**.
 
-1. Přidružte Azure Time Series Insights aplikace Azure Active Directory. Vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**  >  **API moje organizace používá**. 
+1. Přidružte Azure Time Series Insights aplikace Azure Active Directory. Vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**  >  **API moje organizace používá**.
 
     [![Přidružení rozhraní API k aplikaci Azure Active Directory](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 

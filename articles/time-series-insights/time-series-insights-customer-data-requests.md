@@ -4,17 +4,17 @@ description: Přečtěte si o funkcích zákaznických údajů o zákaznících 
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 04/17/2020
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 30b3832dfe3e1c4564d1d89b5c318421e48f554f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5565dd43689d0420fbb9b73f088f24a38a2d54db
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501691"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665901"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Souhrn funkcí pro žádosti o data zákazníků
 
@@ -54,13 +54,13 @@ Je také možné provádět operace exportu pro zásady přístupu pomocí opera
 
 Osobní údaje se můžou přizpůsobovat do Time Series Insights úložiště, což je jiný scénář než z dat uživatelů a správců. Pokud považujete data uložená v Time Series Insights jako osobní údaje, můžete tato data exportovat a odstranit pomocí následujících kroků:
 
-**Zobrazení a export dat**
+### <a name="view-and-export-data"></a>Zobrazení a export dat
 
 Chcete-li zobrazit a exportovat data uložená v Time Series Insights, je nutné vyhledat tato data. K zobrazení a exportu dat můžete použít rozhraní API pro Time Series Insights nebo Time Series Insights dotazů. Chcete-li zobrazit a exportovat data pomocí Průzkumníka Time Series Insights, nejprve vyhledejte konkrétní uživatelská data. Po hledání klikněte pravým tlačítkem na graf a vyberte **prozkoumat události**. Zobrazí se mřížka události a prezentuje možnosti exportu dat ve formátu CSV a formátu JSON.
 
 Další informace najdete v [Azure Time Series Insights Exploreru](time-series-insights-explorer.md).
 
-**Odstranění dat**
+### <a name="delete-data"></a>Odstranění dat
 
 V současné době Time Series Insights nepodporuje přesnější mazání dat. Time Series Insights ale umožní odebrat zákaznická data uložená v Time Series Insights konfigurací zásad uchovávání informací. Dobu uchovávání celého Time Series Insights prostředí můžete upravit na libovolný počet dní, aby se podporovaly vaše požadavky na odstranění.
 

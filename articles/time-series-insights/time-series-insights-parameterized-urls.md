@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 07/07/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2673bb70582640cda97160eb31f16f7c7f1d60e6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9bf857a66643b1e95ea2559601761a7217babad4
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421177"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665323"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Sdílení vlastního zobrazení pomocí parametrizovaných adres URL
 
@@ -24,6 +24,7 @@ Chcete-li sdílet vlastní zobrazení v Průzkumníkovi Azure Time Series Insigh
 Azure Time Series Insights Explorer podporuje parametry dotazů URL pro určení zobrazení v prostředí přímo z adresy URL. Pouze pomocí adresy URL můžete například určit cílové prostředí, predikát vyhledávání a požadované časové období. Když uživatel vybere přizpůsobenou adresu URL, rozhraní poskytne odkaz přímo na tento prostředek na portálu Azure Time Series Insights. Platí zde zásady přístupu k datům.
 
 > [!TIP]
+>
 > * Podívejte se na [ukázku bezplatné Azure Time Series Insights](https://insights.timeseries.azure.com/samples).
 > * Přečtěte si doprovodnou dokumentaci k [Azure Time Series Insights Exploreru](./time-series-insights-explorer.md) .
 
@@ -55,20 +56,20 @@ Například `&relativeMillis=3600000` zobrazí data za posledních 60 minut.
 
 Přijaté hodnoty odpovídají nabídce **rychlý čas** v Průzkumníkovi Azure Time Series Insights a zahrnují:
 
-* `1800000`(Posledních 30 minut)
-* `3600000`(Posledních 60 minut)
-* `10800000`(Poslední 3 hodiny)
-* `21600000`(Posledních 6 hodin)
-* `43200000`(Posledních 12 hodin)
-* `86400000`(Posledních 24 hodin)
-* `604800000`(Posledních 7 dnů)
-* `2592000000`(Posledních 30 hodin)
+* `1800000` (Posledních 30 minut)
+* `3600000` (Posledních 60 minut)
+* `10800000` (Poslední 3 hodiny)
+* `21600000` (Posledních 6 hodin)
+* `43200000` (Posledních 12 hodin)
+* `86400000` (Posledních 24 hodin)
+* `604800000` (Posledních 7 dnů)
+* `2592000000` (Posledních 30 hodin)
 
 ### <a name="optional-parameters"></a>Volitelné parametry
 
 `timeSeriesDefinitions=<collection of term objects>`Parametr určuje výrazy predikátu, které se zobrazí v zobrazení Azure Time Series Insights:
 
-| Parametr | Položka URL | Popis |
+| parametr | Položka URL | Description |
 | --- | --- | --- |
 | **Jméno** | `\<string>` | Název *podmínky*. |
 | **splitBy** | `\<string>` | Název sloupce, podle kterého se bude *rozdělovat*. |
@@ -85,9 +86,9 @@ Přijaté hodnoty odpovídají nabídce **rychlý čas** v Průzkumníkovi Azure
 * `timeBucketUnit=<Unit>&timeBucketSize=<integer>`Umožňuje upravit posuvník intervalu, aby bylo možné podrobnější nebo hladší a agregované zobrazení grafu.  
 * Tento `timezoneOffset=<integer>` parametr umožňuje nastavit časové pásmo, které se má u grafu zobrazit jako posun na čas UTC.
 
-| Páry | Popis |
+| Páry | Description |
 | --- | --- |
-| `multiChartStack=false` | `true`je ve výchozím nastavení povoleno, aby předával `false` zásobníku. |
+| `multiChartStack=false` | `true` je ve výchozím nastavení povoleno, aby předával `false` zásobníku. |
 | `multiChartStack=false&multiChartSameScale=true` | Pokud chcete ve všech podmínkách použít stejné měřítko osy Y, musíte povolit umísťování do zásobníku.  To je `false` ve výchozím nastavení, takže předávání `true` tuto funkci umožňuje. |
 | `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Jednotky = `days` , `hours` , `minutes` , `seconds` , `milliseconds` .  Pro jednotku použijte vždy velká písmena. </br> Určete počet jednotek předáním požadovaného celého čísla pro **timeBucketSize**.  |
 | `timezoneOffset=-<integer>` | Celočíselná hodnota je vždy v milisekundách. |
@@ -123,7 +124,7 @@ https://insights.timeseries.azure.com/classic/samples?environmentId=10000000-000
 > Podívejte se na téma Průzkumník Live pomocí výše uvedeného příkladu [adresy URL](https://insights.timeseries.azure.com/classic/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[%7B%22name%22:%22F1PressureId%22,%22splitBy%22:%22Id%22,%22measureName%22:%22Pressure%22,%22predicate%22:%22%27Factory1%27%22%7D,%7B%22name%22:%22F2TempStation%22,%22splitBy%22:%22Station%22,%22measureName%22:%22Temperature%22,%22predicate%22:%22%27Factory2%27%22%7D,%7B%22name%22:%22F3VibrationPL%22,%22splitBy%22:%22ProductionLine%22,%22measureName%22:%22Vibration%22,%22predicate%22:%22%27Factory3%27%22%7D]
 ) .
 
-Výše uvedená adresa URL popisuje a zobrazí Azure Time Series Insights zobrazení Průzkumníka s parametry. 
+Výše uvedená adresa URL popisuje a zobrazí Azure Time Series Insights zobrazení Průzkumníka s parametry.
 
 * Parametrizované predikáty.
 

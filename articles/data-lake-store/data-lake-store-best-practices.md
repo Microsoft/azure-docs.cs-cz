@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 103315b61592cc711f61ec5e95468e50314b9fa6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 291a5850540ea7d7d24a4a544c1eb65183df8ffb
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440826"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667737"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Osvědčené postupy pro používání Azure Data Lake Storage Gen1
 
@@ -23,7 +23,7 @@ ms.locfileid: "89440826"
 
 V tomto článku se seznámíte s osvědčenými postupy a pokyny pro práci s Azure Data Lake Storage Gen1. Tento článek poskytuje informace o zabezpečení, výkonu, odolnosti a monitorování pro Data Lake Storage Gen1. Před Data Lake Storage Gen1 práce s skutečně velkými objemy dat ve službách, jako je Azure HDInsight, byla složitá. Museli jste horizontálních oddílů data napříč několika účty BLOB Storage, aby bylo možné dosáhnout úložiště řádu petabajtů a optimálního výkonu v tomto rozsahu. Při Data Lake Storage Gen1 se většina pevných omezení velikosti a výkonu odebere. Existují však i některé okolnosti, které tento článek popisuje, abyste dosáhli nejlepšího výkonu s použitím Data Lake Storage Gen1.
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
 Azure Data Lake Storage Gen1 nabízí řízení přístupu POSIX a podrobné auditování pro uživatele, skupiny a instanční objekty služby Azure Active Directory (Azure AD). Tyto ovládací prvky přístupu můžou být nastavené na existující soubory a složky. Ovládací prvky přístupu lze také použít k vytvoření výchozích hodnot, které lze použít pro nové soubory nebo složky. Pokud jsou oprávnění nastavena na existující složky a podřízené objekty, musí být oprávnění šířena rekurzivně u každého objektu. Pokud existuje velký počet souborů, může rozšíření oprávnění trvat dlouhou dobu. Doba trvání může být v rozsahu od 30-50 objektů zpracovaných za sekundu. Proto Naplánujte strukturu složek a skupiny uživatelů odpovídajícím způsobem. V opačném případě může dojít k neočekávaným zpožděním a problémům při práci s daty.
 
@@ -33,7 +33,7 @@ Předpokládejme, že máte složku s 100 000 podřízenými objekty. Pokud pře
 
 Při práci s velkými objemy dat v Data Lake Storage Gen1 se pravděpodobně používá instanční objekt, který umožňuje službám, jako je Azure HDInsight, pracovat s daty. Mohou však nastat případy, kdy potřebují k datům přístup i jednotliví uživatelé. V takových případech je nutné použít Azure Active Directory [skupiny zabezpečení](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory) místo přiřazování jednotlivých uživatelů ke složkám a souborům.
 
-Když je skupině zabezpečení přiřazena oprávnění, přidání nebo odebrání uživatelů ze skupiny nevyžaduje žádné aktualizace Data Lake Storage Gen1. To taky pomáhá zajistit, abyste nepřekročili limit [32 přístupu a výchozí seznamy ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits) (to zahrnuje čtyři seznamy ACL ve stylu POSIX, které jsou vždycky přidružené ke všem souborům a složkám: [vlastnící uživatel](data-lake-store-access-control.md#the-owning-user), [vlastnící skupina](data-lake-store-access-control.md#the-owning-group), [Maska](data-lake-store-access-control.md#the-mask)a další).
+Když je skupině zabezpečení přiřazena oprávnění, přidání nebo odebrání uživatelů ze skupiny nevyžaduje žádné aktualizace Data Lake Storage Gen1. To taky pomáhá zajistit, abyste nepřekročili limit [32 přístupu a výchozí seznamy ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-storage-limits) (to zahrnuje čtyři seznamy ACL ve stylu POSIX, které jsou vždycky přidružené ke všem souborům a složkám: [vlastnící uživatel](data-lake-store-access-control.md#the-owning-user), [vlastnící skupina](data-lake-store-access-control.md#the-owning-group), [Maska](data-lake-store-access-control.md#the-mask)a další).
 
 ### <a name="security-for-groups"></a>Zabezpečení pro skupiny
 

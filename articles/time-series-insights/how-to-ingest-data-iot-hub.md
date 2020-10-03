@@ -9,14 +9,14 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: e963c092b968476d20e25482cbe165234f7e86f0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28a1990155e1406bf9b79572b3e5307cadfb8076
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531171"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665918"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>Přidání zdroje událostí služby IoT Hub do prostředí Azure Time Series Insight
 
@@ -25,7 +25,7 @@ Tento článek popisuje, jak pomocí Azure Portal přidat zdroj událostí, kter
 > [!NOTE]
 > Pokyny v tomto článku se vztahují jak na Azure Time Series Insights Gen 1, tak na prostředí Azure Time Series Insight Gen 2.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 * Vytvořte [Azure Time Series Insights prostředí](time-series-insights-update-create-environment.md).
 * Vytvořte [Centrum IoT pomocí Azure Portal](../iot-hub/iot-hub-create-through-portal.md).
@@ -50,7 +50,7 @@ Přidání nové skupiny uživatelů do služby IoT Hub:
 
 ## <a name="add-a-new-event-source"></a>Přidat nový zdroj události
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo vyberte **Všechny prostředky**. Vyberte své prostředí Azure Time Series Insight.
 
@@ -65,10 +65,10 @@ Přidání nové skupiny uživatelů do služby IoT Hub:
 1. Vyberte hodnotu pro **možnost importu**:
 
    * Pokud už máte centrum IoT v jednom z vašich předplatných, vyberte **použít IoT Hub z dostupných předplatných**. Tato možnost představuje nejjednodušší přístup.
-   
+
      [![Vyberte možnosti v podokně nový zdroj událostí.](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-select-an-import-option.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-select-an-import-option.png#lightbox)
 
-    * Následující tabulka popisuje vlastnosti, které jsou požadovány pro možnost **použít IoT Hub z dostupných předplatných** :
+   * Následující tabulka popisuje vlastnosti, které jsou požadovány pro možnost **použít IoT Hub z dostupných předplatných** :
 
        [![Nové podokno zdroje událostí – vlastnosti, které se mají nastavit v možnosti použít IoT Hub z dostupných předplatných](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png#lightbox)
 
@@ -79,7 +79,7 @@ Přidání nové skupiny uživatelů do služby IoT Hub:
        | Název zásad centra IoT Hub | Vyberte zásadu sdíleného přístupu. Zásadu sdíleného přístupu najdete na kartě Nastavení centra IoT. Každá zásada sdíleného přístupu má název, oprávnění, která jste nastavili, a přístupové klíče. Zásady sdíleného přístupu pro váš zdroj události *musí* mít oprávnění **služby Connect** . |
        | Klíč zásad centra IoT Hub | Klíč je předem vyplněný. |
 
-    * Pokud je centrum IoT externí pro vaše předplatná, nebo pokud chcete zvolit rozšířené možnosti, vyberte **zadat IoT Hub nastavení ručně**.
+   * Pokud je centrum IoT externí pro vaše předplatná, nebo pokud chcete zvolit rozšířené možnosti, vyberte **zadat IoT Hub nastavení ručně**.
 
       V následující tabulce jsou popsány požadované vlastnosti pro **nastavení zadat IoT Hub ručně**:
 
@@ -91,14 +91,13 @@ Přidání nové skupiny uživatelů do služby IoT Hub:
        | Název zásad centra IoT Hub | Zásady sdíleného přístupu. Zásadu sdíleného přístupu můžete vytvořit na kartě Nastavení centra IoT. Každá zásada sdíleného přístupu má název, oprávnění, která jste nastavili, a přístupové klíče. Zásady sdíleného přístupu pro váš zdroj události *musí* mít oprávnění **služby Connect** . |
        | Klíč zásad centra IoT Hub | Sdílený přístupový klíč, který se používá k ověření přístupu k oboru názvů Azure Service Bus. Sem zadejte primární nebo sekundární klíč. |
 
-    * Obě možnosti sdílejí následující možnosti konfigurace:
+   * Obě možnosti sdílejí následující možnosti konfigurace:
 
        | Vlastnost | Popis |
        | --- | --- |
        | Skupina uživatelů centra IoT Hub | Skupina příjemců, která čte události ze služby IoT Hub. Důrazně doporučujeme, abyste pro zdroj událostí používali vyhrazenou skupinu uživatelů. |
        | Formát serializace události | V současné době je JSON jediným dostupným formátem serializace. Zprávy událostí musí být v tomto formátu nebo žádná data číst nelze. |
        | Název vlastnosti časového razítka | Chcete-li zjistit tuto hodnotu, je třeba porozumět formátu zprávy pro data zprávy, která jsou odeslána do centra IoT. Tato hodnota je **název** konkrétní vlastnosti události v datech zprávy, kterou chcete použít jako časové razítko události. V hodnotě se rozlišují malá a velká písmena. Pokud je ponecháno prázdné, použije se čas zařazení do **fronty události** ve zdroji události jako časové razítko události. |
-
 
 1. Přidejte název vyhrazené skupiny uživatelů služby Azure Time Series Insight, který jste přidali do centra IoT.
 

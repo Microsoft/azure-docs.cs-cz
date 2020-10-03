@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: d53097c7884b9908cd3a2c7f21dc059ed9d00c39
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9abca58aa79e0924281ab69314271f2aeca6bfa6
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540158"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667550"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Použití analýzy změn aplikace (Preview) v Azure Monitor
 
@@ -101,7 +101,7 @@ Analýza změn aplikace je samostatný detektor ve webové aplikaci diagnostikuj
 
    ![Snímek obrazovky s tlačítkem pro zhroucení aplikace](./media/change-analysis/application-changes.png)
 
-3. Pokud chcete povolit analýzu změn, vyberte **Povolit nyní**.
+3. Odkaz vede k Aalysis uživatelského rozhraní změny aplikace na rozsah webové aplikace. Pokud není zapnuté sledování změn ve webové aplikaci, použijte k získání změn nastavení souborů a aplikací informační zprávu.
 
    ![Snímek obrazovky s možnostmi zhroucení aplikací](./media/change-analysis/enable-changeanalysis.png)
 
@@ -109,11 +109,33 @@ Analýza změn aplikace je samostatný detektor ve webové aplikaci diagnostikuj
 
     ![Snímek obrazovky s uživatelským rozhraním povolit analýzu změn](./media/change-analysis/change-analysis-on.png)
 
-5. Chcete-li získat přístup k analýze změn, vyberte možnost **Diagnostika a řešení problémů s**  >  **dostupností a výkonem**  >  **aplikace**výkonu. Zobrazí se graf, který shrnuje typ změn v průběhu času spolu s podrobnostmi o těchto změnách. Ve výchozím nastavení se zobrazí změny za posledních 24 hodin, které vám pomůžou s okamžitými problémy.
+5. Možnost změnit data je také k dispozici v rozevíracích selektorech pro výběr **webové aplikace** a při **selhání aplikace** . Zobrazí se graf, který shrnuje typ změn v průběhu času spolu s podrobnostmi o těchto změnách. Ve výchozím nastavení se zobrazí změny za posledních 24 hodin, které vám pomůžou s okamžitými problémy.
 
      ![Snímek obrazovky se zobrazením rozdílů změn](./media/change-analysis/change-view.png)
 
-### <a name="enable-change-analysis-at-scale"></a>Povolit škálovatelnou analýzu změn
+
+
+### <a name="virtual-machine-diagnose-and-solve-problems"></a>Diagnostika a řešení problémů s virtuálním počítačem
+
+Přejít na nástroj Diagnostika a řešení problémů pro virtuální počítač.  Přejděte na **Nástroje pro řešení potíží**, přejděte na stránku a vyberte **analyzovat poslední změny** a zobrazte změny na virtuálním počítači.
+
+![Snímek obrazovky s diagnostikou a řešením problémů s virtuálním počítačem](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
+
+![Analyzátor změn v nástrojích pro řešení potíží](./media/change-analysis/analyze-recent-changes.png)
+
+### <a name="activity-log-change-history"></a>Historie změn protokolu aktivit
+Funkce [Zobrazit historii změn](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log#view-change-history) v protokolu aktivit volá back-end služby Analysis Service v aplikaci, aby se získaly změny přidružené k operaci. **Historii změn** , která se používá k přímému volání [Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/overview) , ale přeměnila back-end na volání analýzy změn aplikace, takže vrácené změny budou zahrnovat změny úrovně prostředků z [Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/overview), vlastnosti prostředku z [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)a změny v hostu z PaaS Services, jako je App Services webová aplikace. Aby mohla služba Analysis Services pro změny aplikace kontrolovat změny v předplatných uživatelů, musí být zaregistrovaný poskytovatel prostředků. Při prvním zadání karty **historie změn** se nástroj automaticky spustí, aby zaregistroval poskytovatele prostředků **Microsoft. ChangeAnalysis** . Po registraci budou změny z **Azure Resource Graph** k dispozici okamžitě a budou zahrnovat posledních 14 dní. Změny z jiných zdrojů budou k dispozici po přibližně 4 hodinách po zprovoznění předplatného.
+
+![Integrace historie změn protokolu aktivit](./media/change-analysis/activity-log-change-history.png)
+
+### <a name="vm-insights-integration"></a>Integrace se službou VM Insights
+Uživatelé s povoleným [virtuálním počítačem Insights](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) můžou zobrazit, co se změnilo ve svých virtuálních počítačích, které by mohly způsobit jakékoli špičky v grafu metrik, jako je například procesor nebo paměť, a taky to, jestli to způsobilo. Data změny jsou integrovaná v navigačním panelu na straně virtuálních počítačů Insights. Uživatel může zobrazit, jestli na virtuálním počítači došlo ke změnám, a kliknout na **prozkoumat změny** a zobrazit podrobnosti o změně v uživatelském rozhraní pro analýzu změn aplikace.
+
+[![Integrace se službou VM Insights](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
+
+
+
+## <a name="enable-change-analysis-at-scale"></a>Povolit škálovatelnou analýzu změn
 
 Pokud vaše předplatné obsahuje mnoho webových aplikací, povolení služby na úrovni webové aplikace bude neefektivní. Spuštěním následujícího skriptu povolte všechny webové aplikace v rámci vašeho předplatného.
 
@@ -147,13 +169,25 @@ foreach ($webapp in $webapp_list)
 
 ```
 
-### <a name="virtual-machine-diagnose-and-solve-problems"></a>Diagnostika a řešení problémů s virtuálním počítačem
+## <a name="troubleshoot"></a>Odstraňování potíží
 
-Přejít na nástroj Diagnostika a řešení problémů pro virtuální počítač.  Přejděte na **Nástroje pro řešení potíží**, přejděte na stránku a vyberte **analyzovat poslední změny** a zobrazte změny na virtuálním počítači.
+### <a name="having-trouble-registering-microsoftchange-analysis-resource-provider-from-change-history-tab"></a>Nedaří se zaregistrovat poskytovatele prostředků Microsoft. Change Analysis Provider z karty historie změn
+Pokud při prvním zobrazení historie změn po integraci s analýzou změn aplikace vidíte historii změn, uvidíte, že se automaticky zaregistruje poskytovatel prostředků **Microsoft. ChangeAnalysis**. Ve výjimečných případech může selhání selhat z následujících důvodů:
 
-![Snímek obrazovky s diagnostikou a řešením problémů s virtuálním počítačem](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
+- Nemáte **dostatečná oprávnění k registraci poskytovatele prostředků Microsoft. ChangeAnalysis**. Tato chybová zpráva znamená, že vaše role v aktuálním předplatném nemá přiřazený obor **Microsoft. support/registr/Action** . K tomu může dojít v případě, že nejste vlastníkem předplatného a máte oprávnění ke sdíleným přístupům prostřednictvím spolupracovníka. To znamená, že se zobrazí přístup ke skupině prostředků. Chcete-li tento problém vyřešit, obraťte se na vlastníka předplatného, abyste mohli zaregistrovat poskytovatele prostředků **Microsoft. ChangeAnalysis** . To se dá udělat v Azure Portal prostřednictvím **předplatných | Poskytovatelé prostředků** a vyhledejte ```Microsoft.ChangeAnalysis``` a zaregistrujte se v uživatelském rozhraní nebo prostřednictvím Azure PowerShell nebo rozhraní příkazového řádku Azure.
 
-![Snímek obrazovky s diagnostikou a řešením problémů s virtuálním počítačem](./media/change-analysis/analyze-recent-changes.png)
+    Registrovat poskytovatele prostředků prostřednictvím PowerShellu: 
+    ```PowerShell
+    # Register resource provider
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
+    ```
+
+- **Nepovedlo se zaregistrovat poskytovatele prostředků Microsoft. ChangeAnalysis**. Tato zpráva znamená, že se něco nezdařilo hned po odeslání žádosti o registraci poskytovatele prostředků do uživatelského rozhraní a není v souvislosti s problémem s oprávněním. Pravděpodobně se může jednat o dočasný problém s připojením k Internetu. Zkuste aktualizovat stránku a zkontrolovat připojení k Internetu. Pokud chyba přetrvává, obraťte se na changeanalysishelp@microsoft.com
+
+- **Trvá to déle, než se čekalo**. Tato zpráva znamená, že registrace trvá déle než 2 minuty. To je neobvyklé, ale nemusí nutně znamenat, že se něco pokazilo. Můžete přejít k **předplatným | Poskytovatel prostředků** pro kontrolu stavu registrace poskytovatele prostředků **Microsoft. ChangeAnalysis** . Můžete zkusit použít uživatelské rozhraní pro zrušení registrace, opětovného registraci nebo obnovení, abyste viděli, jestli vám to pomůže. Pokud se problém opakuje, obraťte se changeanalysishelp@microsoft.com na podporu.
+    ![Řešení potíží s registrací RP trvá příliš dlouho](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

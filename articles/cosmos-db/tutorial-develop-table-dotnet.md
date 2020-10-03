@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 760a3a194e181576acb3601aabc07c6900cb664e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 47b3706d1fb46ab7e115d79c2f06f6264c8b423e
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276760"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666508"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Začínáme s rozhraním Azure Cosmos DB API pro tabulky a Azure Table Storage s využitím .NET SDK
 
@@ -26,7 +26,7 @@ Pomocí Azure Cosmos DB rozhraní API pro tabulky nebo úložiště tabulek Azur
 
 Tento kurz popisuje ukázku, která vám ukáže, jak používat [Microsoft Azure Cosmos DB knihovny tabulek pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) s Azure Cosmos DB rozhraní API pro tabulky a scénáři úložiště tabulek Azure. Je nutné použít připojení specifické pro službu Azure. Tyto scénáře jsou prozkoumání pomocí příkladů jazyka C#, které ilustrují vytváření tabulek, vkládání a aktualizaci dat, dotazování dat a odstraňování tabulek.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Pro úspěšné dokončení této ukázky potřebujete následující položky:
 
@@ -136,7 +136,7 @@ Entitu můžete získat z oddílu pomocí metody načíst pod třídou [TableOpe
 
 Entitu můžete po jejím načtení snadno odstranit, a to pomocí stejného vzoru zobrazovaného pro aktualizaci entity. Následující kód načte a odstraní entitu zákazníka. Pokud chcete entitu odstranit, přidejte do souboru **SamplesUtils.cs** následující kód: 
 
-:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="DeleteItem":::
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>Provádění operací CRUD pro ukázková data
 
@@ -158,7 +158,7 @@ Z projektu **CosmosTableSamples**. Otevřete třídu s názvem **program.cs** a 
 
 Nyní Sestavte řešení a stisknutím klávesy F5 spusťte projekt. Při spuštění projektu se zobrazí následující výstup na příkazovém řádku:
 
-:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="Výstup z příkazového řádku":::
+:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="Zobrazení a zkopírování PRIMÁRNÍHO PŘIPOJOVACÍHO ŘETĚZCE v podokně Připojovací řetězec":::
 
 Pokud se zobrazí chybová zpráva oznamující, že při spuštění projektu nelze najít Settings.jspro soubor, můžete ho vyřešit přidáním následující položky XML do nastavení projektu. Klikněte pravým tlačítkem na CosmosTableSamples, vyberte Upravit CosmosTableSamples. csproj a přidejte následující položku: 
 
@@ -171,7 +171,7 @@ Pokud se zobrazí chybová zpráva oznamující, že při spuštění projektu n
 ```
 Nyní se můžete přihlásit k Azure Portal a ověřit, zda data v tabulce existují. 
 
-:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="Výsledky na portálu":::
+:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="Zobrazení a zkopírování PRIMÁRNÍHO PŘIPOJOVACÍHO ŘETĚZCE v podokně Připojovací řetězec":::
 
 ## <a name="next-steps"></a>Další kroky
 

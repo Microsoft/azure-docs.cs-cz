@@ -8,26 +8,27 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: ac5322b93fc5f804292cfbff2c2e7eeb79b5989f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cac4234d5bd93de8b059ea53a4697dae1bf5c64c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097065"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667875"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-gen2"></a>Modelování dat v Azure Time Series Insights Gen2
 
 Tento článek popisuje, jak pracovat s modelem časových řad v Azure Time Series Insights Gen2. Podrobně popisuje několik běžných scénářů dat.
 
 > [!TIP]
+>
 > * Přečtěte si další informace o [modelu časové řady](concepts-model-overview.md).
 > * Přečtěte si další informace o navigaci [Azure Time Series Insights Gen2 Exploreru](./time-series-insights-update-explorer.md).
 
 ## <a name="instances"></a>Instance
 
-Průzkumník Azure Time Series Insights podporuje operace **Vytvoření**, **čtení**, **aktualizace**a **odstranění** instancí v prohlížeči. 
+Průzkumník Azure Time Series Insights podporuje operace **Vytvoření**, **čtení**, **aktualizace**a **odstranění** instancí v prohlížeči.
 
 Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v Průzkumníkovi Azure Time Series Insights.
 
@@ -57,7 +58,7 @@ Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v
 
 ### <a name="edit-a-single-instance"></a>Úprava jedné instance
 
-1. Vyberte instanci a vyberte ikonu **Upravit** nebo **Tužka**. 
+1. Vyberte instanci a vyberte ikonu **Upravit** nebo **Tužka**.
 1. Proveďte požadované změny a vyberte **Uložit**.
 
     [![Upravte jednu instanci.](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png#lightbox)
@@ -75,7 +76,7 @@ Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v
 
 ## <a name="hierarchies"></a>Hierarchie
 
-Průzkumník Azure Time Series Insights podporuje operace **Vytvoření**, **čtení**, **aktualizace**a **odstranění** hierarchie v prohlížeči. 
+Průzkumník Azure Time Series Insights podporuje operace **Vytvoření**, **čtení**, **aktualizace**a **odstranění** hierarchie v prohlížeči.
 
 Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v Průzkumníkovi Azure Time Series Insights.
 
@@ -117,7 +118,7 @@ Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v
 
 ### <a name="delete-a-hierarchy"></a>Odstranění hierarchie
 
-1. Vyberte hierarchii a vyberte ikonu **Odstranit** nebo **Odpadkový koš**. 
+1. Vyberte hierarchii a vyberte ikonu **Odstranit** nebo **Odpadkový koš**.
 
     [![Odstraňte hierarchii výběrem tlačítka odstranit.](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png#lightbox)
 
@@ -125,7 +126,7 @@ Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v
 
 ## <a name="types"></a>Typy
 
-Průzkumník Azure Time Series Insights podporuje operace **Vytvoření**, **čtení**, **aktualizace**a **odstranění** v prohlížeči. 
+Průzkumník Azure Time Series Insights podporuje operace **Vytvoření**, **čtení**, **aktualizace**a **odstranění** v prohlížeči.
 
 Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v Průzkumníkovi Azure Time Series Insights.
 
@@ -136,7 +137,7 @@ Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v
     [![Podokno typu modelu časové řady.](media/v2-update-how-to-tsm/how-to-tsm-type-panel.png)](media/v2-update-how-to-tsm/how-to-tsm-type-panel.png#lightbox)
 
 1. Vyberte **+ Přidat** a zobrazte tak automaticky otevírané okno **Přidat nový typ** .
-1. Zadejte vlastnosti a proměnné pro svůj typ. Po zadání vyberte **Uložit**. 
+1. Zadejte vlastnosti a proměnné pro svůj typ. Po zadání vyberte **Uložit**.
 
     [![Nastavení konfigurace pro přidání typu](media/v2-update-how-to-tsm/how-to-tsm-add-new-type.png)](media/v2-update-how-to-tsm/how-to-tsm-add-new-type.png#lightbox)
 
@@ -168,8 +169,8 @@ Začněte tím, že vyberete zobrazení **modelu** v zobrazení **analyzovat** v
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o modelu časové řady získáte v tématu věnovaném [modelování dat](./concepts-model-overview.md).
+* Další informace o modelu časové řady získáte v tématu věnovaném [modelování dat](./concepts-model-overview.md).
 
-- Pokud chcete získat další informace o Gen2, přečtěte si článek [Vizualizujte data v Azure Time Series Insights Gen2 Explorer](./time-series-insights-update-explorer.md).
+* Pokud chcete získat další informace o Gen2, přečtěte si článek [Vizualizujte data v Azure Time Series Insights Gen2 Explorer](./time-series-insights-update-explorer.md).
 
-- Další informace o podporovaných tvarech JSON najdete v článku [podporované tvary JSON](./time-series-insights-send-events.md#supported-json-shapes).
+* Další informace o podporovaných tvarech JSON najdete v článku [podporované tvary JSON](./time-series-insights-send-events.md#supported-json-shapes).

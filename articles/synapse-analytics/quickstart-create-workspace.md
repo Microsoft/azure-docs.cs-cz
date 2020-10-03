@@ -2,19 +2,19 @@
 title: 'Rychlý Start: vytvoření pracovního prostoru synapse'
 description: Pomocí kroků v této příručce vytvořte pracovní prostor synapse.
 services: synapse-analytics
-author: pimorano
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
 ms.date: 09/03/2020
-ms.author: pimorano
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: cbf7fb8deba86dd966ccb8087823c76b20413db8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 04bbab477f20ec25ccb0e975dad2b30a511346d2
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260355"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667754"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rychlý Start: vytvoření pracovního prostoru synapse
 Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure synapse pomocí Azure Portal.

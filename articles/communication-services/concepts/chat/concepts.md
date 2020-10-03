@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1dd3781b18f82a96f388b0e619ce62b45752a870
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c3b4970b70a9bd5399199771a081481e17e2efb1
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292468"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666989"
 ---
 # <a name="chat-concepts"></a>Koncepce chatu
 
@@ -47,7 +47,7 @@ K dispozici jsou dvě základní součásti pro konverzaci: 1) klientská aplika
 Služba Communications Services chat sdílí uživatelem generované zprávy i zprávy generované systémem, které se nazývají **aktivity vláken**. Aktivity vlákna jsou generovány při aktualizaci vlákna chatu. Při volání `List Messages` nebo `Get Messages` v konverzačním vlákně bude výsledek obsahovat textové zprávy generované uživatelem a také systémové zprávy v chronologickém pořadí. To vám pomůže určit, kdy se člen přidal nebo odebral nebo když se aktualizovalo téma konverzačního vlákna. Podporované typy zpráv:  
 
  - `Text`: Skutečná zpráva vytvořená a odeslaná uživatelem jako součást konverzace chatu. 
- - `ThreadActivity/AddMember`: Systémová zpráva, která indikuje, že jeden nebo více členů bylo přidáno do konverzačního vlákna. Příklad:
+ - `ThreadActivity/AddMember`: Systémová zpráva, která indikuje, že jeden nebo více členů bylo přidáno do konverzačního vlákna. Například:
 
 ```xml
 
@@ -72,7 +72,7 @@ Služba Communications Services chat sdílí uživatelem generované zprávy i z
 
 ```  
 
-- `ThreadActivity/DeleteMember`: Systémová zpráva, která indikuje, že člen byl odebrán z konverzačního vlákna. Příklad:
+- `ThreadActivity/DeleteMember`: Systémová zpráva, která indikuje, že člen byl odebrán z konverzačního vlákna. Například:
 
 ```xml
 
@@ -92,7 +92,7 @@ Služba Communications Services chat sdílí uživatelem generované zprávy i z
 
 ```
 
-- `ThreadActivity/TopicUpdate`: Systémová zpráva, která indikuje, že téma bylo aktualizováno. Příklad:
+- `ThreadActivity/TopicUpdate`: Systémová zpráva, která indikuje, že téma bylo aktualizováno. Například:
 
 ```xml
 
@@ -130,7 +130,7 @@ Jedním ze způsobů, jak toho dosáhnout, je jednat o členství vaší důvěr
 
 Historie zpráv tak bude obsahovat původní i přeložené zprávy. V klientské aplikaci můžete přidat logiku pro zobrazení původní nebo přeložené zprávy. V [tomto rychlém](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translate) startu se naučíte, jak používat rozpoznávání rozhraní API k překladu textu do různých jazyků. 
 
-:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Diagram znázorňující Cognitive Services interakci s komunikačními službami.":::
+:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Diagram znázorňující architekturu chatu komunikačních služeb":::
 
 ## <a name="next-steps"></a>Další kroky
 

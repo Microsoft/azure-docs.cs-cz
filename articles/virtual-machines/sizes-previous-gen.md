@@ -6,14 +6,14 @@ ms.subservice: sizes
 author: mimckitt
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/20/2020
+ms.date: 10/02/2020
 ms.author: jushiman
-ms.openlocfilehash: 18389f3058bcc60c22f8598040f4fea4b036f1ee
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: afad68be53637cf258223eafab0a13f525a92f4c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298908"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666615"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních počítačů
 
@@ -163,7 +163,7 @@ Velikosti A8-A11 a H-series se také označují jako *náročné na výpočetní
 <sup>1</sup> V případě aplikací MPI je v síti FDR InfiniBand povolena vyhrazená síť s back-end službou RDMA, která zajišťuje extrémně nízkou latenci a vysokou šířku pásma.  
 
 > [!NOTE]
-> Virtuální počítače A8 – A11 jsou plánovány k vyřazení na 3/2021. Další informace najdete v tématu [Průvodce migrací HPC](https://azure.microsoft.com/resources/hpc-migration-guide/).
+> Virtuální počítače A8 – A11 jsou plánovány k vyřazení na 3/2021. Důrazně doporučujeme nevytvářet žádné nové virtuální počítače A8 – A11. Migrujte všechny stávající virtuální počítače A8-A11 do novějších a výkonných vysoce výkonných výpočetních počítačů, jako je například H, zaplnění, HC, HBv2, a také obecné účely výpočetních virtuálních počítačů, jako jsou například D, E a F, pro lepší cenový výkon. Další informace najdete v tématu [Průvodce migrací HPC](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 <br>
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: d92dc562136ef20dac19e7ddfa4339c565793308
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e42111de7d05f184e1153ddc351c3f1fa10cc86f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531815"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665234"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Vytvoření nabídky Dynamics 365 Business Central
 
@@ -129,10 +129,10 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 6. Zásady ochrany osobních údajů
 7. Název nabídky
 8. Shrnutí
-9. Popis
+9. Description
 10. Snímky obrazovky a videa
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 
 Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole je předem vyplněno textem, který jste zadali pro možnost **alias nabídky** při vytváření nabídky, ale můžete tuto hodnotu změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
@@ -140,7 +140,7 @@ Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabíd
 
 Zadejte krátký popis vaší nabídky, maximálně 100 znaků. Tento popis se dá použít ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -256,9 +256,8 @@ Nahrajte soubor balíčku rozšíření (. app) pro vaši nabídku.
 
 Vyžaduje se, pokud se vaše nabídka musí nainstalovat spolu s jinou příponou, která se na Marketplace nepublikuje. Pokud ano, nahrajte sem soubor. app.
 
-#### <a name="dependency-package-file"></a>Soubor balíčku závislosti
-
-Vyžaduje se, pokud se vaše nabídka musí nainstalovat spolu s jinou příponou, která už je publikovaná na webu Marketplace. Pokud ano, nahrajte `.app` `.zip` soubor nebo sem.
+>[!NOTE]
+>Soubor balíčku závislostí se už nepoužívá. Místo toho nahrajte soubor balíčku knihovny.
 
 ### <a name="url-to-app-installation"></a>Adresa URL pro instalaci aplikace
 

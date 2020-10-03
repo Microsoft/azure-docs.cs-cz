@@ -1,14 +1,14 @@
 ---
 author: paulbouwer
 ms.topic: include
-ms.date: 11/15/2019
+ms.date: 10/02/2020
 ms.author: pabouwer
-ms.openlocfilehash: 34a393e06d91e5f60e622667a47e833e910e7228
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 164844a9da09563f8fbefe7ec60aff7eb05ace2d
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244156"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666696"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Stažení a instalace binárního souboru klienta Istio istioctl
 
@@ -16,16 +16,15 @@ V prostředí založeném na bash v systému Linux nebo v subsystému [Windows p
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
-ISTIO_VERSION=1.4.0
+ISTIO_VERSION=1.7.3
 
-curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-linux.tar.gz" | tar xz
+curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istioctl-$ISTIO_VERSION-linux-amd64.tar.gz" | tar xz
 ```
 
-`istioctl`Binární soubor klienta běží na klientském počítači a umožňuje interakci s sítí služby Istio. Pomocí následujících příkazů nainstalujte `istioctl` binární soubor klienta Istio do prostředí založeného na bash na Linux nebo v subsystému [Windows pro Linux][install-wsl]. Tyto příkazy kopírují `istioctl` binární soubor klienta do umístění standardního uživatelského programu v `PATH` .
+`istioctl`Binární soubor klienta se spouští na klientském počítači a umožňuje v clusteru AKS instalovat a spravovat Istio. Pomocí následujících příkazů nainstalujte `istioctl` binární soubor klienta Istio do prostředí založeného na bash na Linux nebo v subsystému [Windows pro Linux][install-wsl]. Tyto příkazy kopírují `istioctl` binární soubor klienta do umístění standardního uživatelského programu v `PATH` .
 
 ```bash
-cd istio-$ISTIO_VERSION
-sudo cp ./bin/istioctl /usr/local/bin/istioctl
+sudo mv ./istioctl /usr/local/bin/istioctl
 sudo chmod +x /usr/local/bin/istioctl
 ```
 

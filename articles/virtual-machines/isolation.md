@@ -1,18 +1,18 @@
 ---
 title: Izolace pro virtuální počítače v Azure
 description: Další informace o izolaci virtuálních počítačů funguje v Azure.
-author: ayshakeen
+author: styli365
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/18/2019
-ms.author: ayshak
-ms.openlocfilehash: 58b3f9c3655a2e15842f7fa28ad3e6921395beba
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.author: sttsinar
+ms.openlocfilehash: d6a77cac049ef32949eeba4cbd6fe9217100a360
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831443"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666836"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Izolace virtuálních počítačů v Azure
 
@@ -42,10 +42,10 @@ Vzhledem k tomu, že velikosti izolovaného virtuálního počítače jsou velik
 | Standard_DS15_v2<sup>1</sup> | 15. května 2020 |
 | Standard_D15_v2<sup>1</sup>  | 15. května 2020 |
 
-<sup>1</sup> podrobnosti o Standard_DS15_v2 a Standard_D15_v2 programu pro vyřazení z izolaci najdete v tématu Nejčastější dotazy.
+<sup>1</sup>  podrobnosti o Standard_DS15_v2 a Standard_D15_v2 programu pro vyřazení z izolaci najdete v tématu Nejčastější dotazy.
 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 ### <a name="q-is-the-size-going-to-get-retired-or-only-isolation-feature-is"></a>Otázka: má být vyřazení z provozu nebo pouze funkce izolace?
 Odpověď **: Pokud**velikost virtuálního počítače nemá dolní index "i", bude vyřazena pouze funkce izolace. Pokud není potřeba izolaci, nebude provedena žádná akce a virtuální počítač bude i nadále fungovat podle očekávání. Mezi příklady patří Standard_DS15_v2, Standard_D15_v2, Standard_M128ms atd. Pokud velikost virtuálního počítače zahrnuje i "i" dolní index, je tato velikost vyřazení.
 

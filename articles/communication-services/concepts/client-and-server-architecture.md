@@ -1,20 +1,20 @@
 ---
-title: Architektura klienta a serveru
+title: Klientská a serverová architektura
 titleSuffix: An Azure Communication Services concept document
 description: Seznamte se s architekturou komunikačních služeb.
 author: mikben
 manager: mikben
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 38d6b131c972b4fd890af53624fdd6a36b3ecb6c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b844f61963081bf355837fd26254915112cbce11
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935478"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666938"
 ---
 # <a name="client-and-server-architecture"></a>Architektura klienta a serveru
 
@@ -43,13 +43,13 @@ Další informace najdete v článku [osvědčené postupy pro správu identit](
 
 Klientské knihovny JavaScriptu pro komunikaci Azure umožňují webové aplikace s bohatou interakcí textu, hlasu a videa. Aplikace přímo spolupracuje s komunikačními službami Azure prostřednictvím klientské knihovny pro přístup k rovině dat a k doručování textu, hlasu a videa v reálném čase. Ukázkový tok architektury najdete níže:
 
-:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="Diagram znázorňující architekturu prohlížeče pro komunikační služby.":::
+:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="Diagram znázorňující architekturu tokenu uživatelského přístupu":::
 
 ## <a name="native-app-communication"></a>Komunikace nativní aplikace
 
 Mnoho scénářů se nejlépe obsluhuje pomocí nativních aplikací. Komunikační služby Azure podporují komunikaci mezi aplikacemi a aplikacemi proti aplikacím.  Při sestavování nativního prostředí aplikace budou mít nabízená oznámení uživatelům přijímat volání i v případě, že aplikace není spuštěná. Služba Azure Communication Services usnadňuje integraci nabízených oznámení do Google Firebase, Apple Push Notification Service a nabízených oznámení Windows. Ukázkový tok architektury najdete níže:
 
-:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="Diagram znázorňující architekturu komunikačních služeb pro komunikaci nativní aplikace":::
+:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="Diagram znázorňující architekturu tokenu uživatelského přístupu":::
 
 ## <a name="voice-and-sms-over-the-public-switched-telephony-network-pstn"></a>Hlasové a SMS přes síť PSTN (Public Switched Telephony Network)
 
@@ -58,7 +58,7 @@ Komunikace přes telefonní systém může výrazně zvýšit dosah vaší aplik
 > [!Note]
 > Během veřejné verze Preview jsou zřizování telefonních čísel USA dostupná zákazníkům s fakturačními adresami umístěnými v USA a Kanadě. 
 
-:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="Diagram znázorňující architekturu PSTN služby Communications Services":::
+:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="Diagram znázorňující architekturu tokenu uživatelského přístupu":::
 
 Další informace o řešeních PSTN a SMS najdete v tématu [Plánování sítě PSTN a řešení SMS](../concepts/telephony-sms/plan-solution.md) .
 
@@ -66,7 +66,7 @@ Další informace o řešeních PSTN a SMS najdete v tématu [Plánování sít�
 
 Komunikační služby Azure podporují komunikaci člověkem se systémem i přes textové a hlasové kanály se službami, které přímo přistupují k rovině dat služby Azure Communications. Například můžete mít odpověď na robota příchozí telefonní hovory nebo se zúčastnit webové konverzace. Komunikační služby Azure poskytují klientské knihovny, které umožňují tyto scénáře volání a chatování. Ukázkový tok architektury najdete níže:
 
-:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="Diagram znázorňující architekturu služby Communications Services bot":::
+:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="Diagram znázorňující architekturu tokenu uživatelského přístupu":::
 
 ## <a name="networking"></a>Sítě
 
@@ -86,4 +86,4 @@ Další informace najdete v následujících článcích:
 - Další informace o [řešeních PSTN a SMS](../concepts/telephony-sms/plan-solution.md)
 
 - [Přidání chatu do aplikace](../quickstarts/chat/get-started.md)
-- [Přidání hlasového volání do aplikace](../quickstarts/voice-video-calling/getting-started-with-calling.md)
+- [Přidání hlasových hovorů do aplikace](../quickstarts/voice-video-calling/getting-started-with-calling.md)

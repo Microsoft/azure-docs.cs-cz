@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5115190d944e78d476f369442dccdbda394e46ba
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: b0b19eaa86269feff28c73275e4db4a3d332b3df
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564045"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664869"
 ---
 # <a name="high-availability-ports-overview"></a>Přehled portů vysoké dostupnosti
 
-Azure Standard Load Balancer pomáhá vyrovnávat zatížení protokolů TCP a UDP na všech portech současně při použití interního nástroje pro vyrovnávání zatížení. 
+Azure Standard Load Balancer vám pomůže vyrovnávat zatížení **všech** toků protokolů na **všech** portech současně v případě, že používáte interní Load Balancer přes porty ha.
 
-Pravidlo vyrovnávání zatížení portů vysoké dostupnosti (HA) je variantou pravidla vyrovnávání zatížení, které je nakonfigurováno na interní Standard Load Balancer. Můžete zjednodušit použití nástroje pro vyrovnávání zatížení tím, že poskytnete jediné pravidlo pro vyrovnávání zatížení všech toků TCP a UDP, které přicházejí na všechny porty interního Standard Load Balancer. Rozhodnutí o vyrovnávání zatížení se provádí na jeden tok. Tato akce je založena na následujících pěti připojeních řazené kolekce členů: zdrojová IP adresa, zdrojový port, cílová IP adresa, cílový port a protokol.
+Porty vysoké dostupnosti (HA) je typ pravidla vyrovnávání zatížení, které poskytuje snadný způsob vyrovnávání zatížení **všech** toků, které přicházejí na **všechny** porty interního Standard Load Balancer. Rozhodnutí o vyrovnávání zatížení se provádí na jeden tok. Tato akce je založena na následujících pěti připojeních řazené kolekce členů: zdrojová IP adresa, zdrojový port, cílová IP adresa, cílový port a protokol.
 
 Pravidla vyrovnávání zatížení portů HA vám pomůžou s kritickými scénáři, jako je vysoká dostupnost a škálování síťových virtuálních zařízení (síťová virtuální zařízení) uvnitř virtuálních sítí. Tato funkce může také pomáhat při vyrovnávání zatížení velkého počtu portů. 
 

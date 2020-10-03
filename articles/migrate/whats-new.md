@@ -4,19 +4,24 @@ description: Seznamte se s novinkami a nejnovějšími aktualizacemi ve službě
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: a46519d434061ebfdedbabe70a3e044cb69ca552
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0552402661397a2a8aa09f989189cc08b46e638e
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322219"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667074"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) pomáhá zjišťovat, vyhodnocovat a migrovat místní servery, aplikace a data do cloudu Microsoft Azure. Tento článek shrnuje nové verze a funkce v Azure Migrate.
+
 ## <a name="update-september-2020"></a>Aktualizace (září 2020)
-- Azure Migrate nyní umožňuje migrovat servery do Zóny dostupnosti.
-- Azure Migrate teď umožňuje migrovat virtuální počítače a fyzické servery založené na rozhraní UEFI do virtuálních počítačů Azure generace 2. 
+- Migrace serverů do Zóny dostupnosti se teď podporuje.
+- Migrace virtuálních počítačů a fyzických serverů založených na rozhraní UEFI do virtuálních počítačů Azure generace 2 je teď podporovaná.
+- K dispozici je nový řídicí panel posouzení Power BI Azure Migrate, který vám umožní porovnat náklady napříč různými nastaveními posouzení. Řídicí panel obsahuje nástroj PowerShell, který automaticky vytvoří posouzení, která se připojí k řídicímu panelu Power BI. [Další informace](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
+- Analýza závislostí (bez agenta) se teď dá na virtuálních počítačích 1000 současně spustit současně.
+- Analýza závislostí (bez agentů) se teď dá ve velkém měřítku povolit nebo zakázat pomocí skriptů PowerShellu. [Další informace](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
+- Vizualizujte síťová připojení v Power BI pomocí dat shromážděných pomocí analýzy závislostí (bez agentů) [. Další informace najdete](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) v části.
 
 ## <a name="update-august-2020"></a>Aktualizace (srpen 2020)
 
@@ -24,9 +29,10 @@ ms.locfileid: "91322219"
 - Možnost stažení souborů vajíček/VHD nebo skriptů instalačního programu z portálu a nastavení zařízení VMware a Hyper-V v uvedeném pořadí.
 - Aktualizovaný Správce konfigurace zařízení s pokročilým uživatelským prostředím
 - Podpora více přihlašovacích údajů pro zjišťování virtuálních počítačů Hyper-V.
-- Vylepšené možnosti vyhledávání, řazení a filtrování pro přidané přihlašovací údaje a zdroje zjišťování.
-- Vstup jedné položky, vícenásobné zadání a import možností sdíleného svazku clusteru pro uživatele přidání zdrojů zjišťování pro hostitele nebo clustery Hyper-V & fyzických serverech.
-- Vylepšené chybové prostředí s aktualizacemi stavu pro operace ověřování a zjišťování u jednotlivých přidaných zdrojů v tabulce. 
+
+## <a name="update-july-2020"></a>Aktualizace (červenec 2020)
+
+- Migrace VMware bez agentů teď podporuje souběžnou replikaci 300 virtuálních počítačů na vCenter.
 
 ## <a name="update-june-2020"></a>Aktualizace (červen 2020)
 

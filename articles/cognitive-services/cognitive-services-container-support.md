@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: místní, Docker, kontejner, Kubernetes
-ms.openlocfilehash: ccba46c1e83f92b1f27c64cb4d9ca32039862bd1
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: ed61760312ad8bada0241b0338c36ab3557e2caa
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597456"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665408"
 ---
 # <a name="azure-cognitive-services-containers"></a>Kontejnery Azure Cognitive Services
 
@@ -29,7 +29,8 @@ Podpora kontejnerů je aktuálně k dispozici pro podmnožinu Azure Cognitive Se
 
 > [!div class="checklist"]
 > * [Detektor anomálií][ad-containers]
-> * [Počítačové zpracování obrazu][cv-containers]
+> * [Čtení OCR (optické rozpoznávání znaků) ][cv-containers]
+> * [Prostorová analýza][spa-containers]
 > * [Rozpoznávání tváře][fa-containers]
 > * [Rozpoznávání formulářů][fr-containers]
 > * [Language Understanding (LUIS)][lu-containers]
@@ -55,7 +56,7 @@ Cognitive Services prostředky jsou k dispozici v [Microsoft Azure](https://azur
 
 Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů Docker, z nichž každá obsahuje podmnožinu funkcí ze služeb v Azure Cognitive Services:
 
-| Služba | Podporovaná cenová úroveň | Kontejner | Popis |
+| Služba | Podporovaná cenová úroveň | Kontejner | Description |
 |--|--|--|--|
 | [Detektor anomálií][ad-containers] | F0, S0 | **Anomálie-detektor** ([Obrázek](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Rozhraní API pro detekci anomálií umožňuje monitorovat a zjišťovat anomálie v datech časových řad pomocí strojového učení.<br>[Vyžádání přístup][request-access] |
 | [Počítačové zpracování obrazu][cv-containers] | F0, S1 | **Číst** Optické rozpoznávání znaků ([Obrázek](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Kontejner OCR pro čtení umožňuje extrahovat vytištěný a rukou psaný text z obrázků a dokumentů s podporou formátů souborů JPEG, PNG, BMP, PDF a TIFF. Další informace najdete v [dokumentaci k rozhraní API pro čtení](./computer-vision/concept-recognizing-text.md).<br>[Vyžádání přístup][request-access] |
@@ -90,7 +91,7 @@ Kontejnery Azure Cognitive Services jsou veřejně dostupné prostřednictvím v
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadované součásti
 
 Než začnete používat kontejnery Cognitive Services Azure, musíte splnit následující předpoklady:
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: d4b44deda1bd17e65c3e2c2a9c46dddccd411996
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c331334df64ea1bea45949152a34241a73fa5bb9
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602029"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666156"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Jaké metody ověřování jsou k dispozici v Azure Active Directory?
 
@@ -60,11 +60,11 @@ Následující tabulka popisuje, kdy lze použít metodu ověřování během ud
 
 | Metoda                         | Primární ověření | Sekundární ověřování  |
 |--------------------------------|:----------------------:|:-------------------------:|
-| Windows Hello pro firmy     | Yes                    | VÍCEFAKTOROVÉHO                       |
+| Windows Hello pro firmy     | Yes                    | MFA                       |
 | Aplikace Microsoft Authenticator    | Ano (Preview)          | MFA a SSPR              |
-| Klíč zabezpečení FIDO2 (Preview)   | Yes                    | VÍCEFAKTOROVÉHO                       |
-| Hardwarové tokeny OATH (Preview) | No                     | VÍCEFAKTOROVÉHO                       |
-| Tokeny softwaru OATH           | No                     | VÍCEFAKTOROVÉHO                       |
+| Klíč zabezpečení FIDO2 (Preview)   | Yes                    | MFA                       |
+| Hardwarové tokeny OATH (Preview) | No                     | MFA                       |
+| Tokeny softwaru OATH           | No                     | MFA                       |
 | SMS                            | Ano (Preview)          | MFA a SSPR              |
 | Hlasový hovor                     | No                     | MFA a SSPR              |
 | Heslo                       | Yes                    |                           |
@@ -100,6 +100,8 @@ Další informace o konceptech SSPR najdete v tématu [Jak funguje Samoobslužn�
 Další informace o principech vícefaktorového ověřování najdete v tématu [Jak funguje Azure Multi-Factor Authentication][concept-mfa].
 
 Přečtěte si další informace o konfiguraci metod ověřování pomocí [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
+
+Pokud chcete zjistit, jaké metody ověřování se používají, přečtěte si téma [Analýza metody ověřování Azure Multi-Factor Authentication pomocí PowerShellu](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/).
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md
