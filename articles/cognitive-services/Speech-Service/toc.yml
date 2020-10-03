@@ -449,12 +449,6 @@
               href: windows-voice-assistants-best-practices.md
             - name: Ukázky a nejčastější dotazy
               href: windows-voice-assistants-faq.md
-    - name: Vlastní klíčové slovo
-      items:
-        - name: Přehled vlastních klíčových slov
-          href: custom-keyword-overview.md
-        - name: Základy vlastních klíčových slov
-          href: custom-keyword-basics.md
 - name: Rozpoznávání mluvčího
   items:
     - name: Přehled rozpoznávání mluvčího
@@ -465,6 +459,12 @@
       items:
         - name: Rozhraní REST API pro rozpoznávání mluvčího
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+- name: Vlastní klíčové slovo
+  items:
+    - name: Přehled vlastních klíčových slov
+      href: custom-keyword-overview.md
+    - name: Základy vlastních klíčových slov
+      href: custom-keyword-basics.md
 - name: Nástroje
   items:
     - name: Speech SDK
