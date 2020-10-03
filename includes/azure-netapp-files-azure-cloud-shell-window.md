@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/10/2019
 ms.author: b-juche
 ms.custom: include file
-ms.openlocfilehash: 3a63fd96b09910b0cd7ee8c3ab9947b034173c8f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e78be737ef8d191cddc2da0f738250ca04cae9a1
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71836295"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91672103"
 ---
-1. Zadejte odběr, který je povolený pro Azure NetApp Files:
+1. Zadejte předplatné, které bylo schváleno pro Azure NetApp Files:
     
     ```azurecli-interactive
     az account set --subscription <subscriptionId>
