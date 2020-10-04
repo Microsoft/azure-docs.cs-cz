@@ -1,17 +1,17 @@
 ---
 title: Osvědčené postupy pro úložiště dotazů Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje osvědčené postupy pro úložiště dotazů na Azure Database for PostgreSQL jednom serveru.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 51239f4cf49784dd47470e1272b90508eaf25e6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd39b7ecd51902f5035b4cd17d59dea964d0c962
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70764223"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708828"
 ---
 # <a name="best-practices-for-query-store"></a>Osvědčené postupy pro úložiště dotazů
 
@@ -22,11 +22,11 @@ Tento článek popisuje osvědčené postupy pro používání úložiště dota
 ## <a name="set-the-optimal-query-capture-mode"></a>Nastavení optimálního režimu zachycení dotazů
 Umožněte, aby úložiště dotazů zachytává data, která vás zajímá. 
 
-|**pg_qs. query_capture_mode** | **Scénář**|
+|**pg_qs pg_qs.query_capture_mode** | **Scénář**|
 |---|---|
 |_Vše_  |Důkladně Analyzujte své úlohy z pohledu všech dotazů a jejich frekvencí spuštění a dalších statistik. Identifikujte nové dotazy v úlohách. Zjišťuje, jestli se k identifikaci příležitostí pro uživatele nebo automatické Parametrizace používají ad hoc dotazy. _Vše_ přináší zvýšené náklady na spotřebu prostředků. |
 |_Nahoře_  |Zaměřte pozornost na nejčastější dotazy, které vystavili klienti.
-|_Žádné_ |Již jste zaznamenali sadu dotazů a časové okno, které chcete prozkoumat, a chcete eliminovat, že by mohly zavádět další dotazy. _Žádná_ je vhodná pro testování a označování prostředí. _Žádné_ by se měly používat opatrně, protože byste mohli přijít o příležitost sledovat a optimalizovat důležité nové dotazy. Nemůžete obnovit data v předchozích časových oknech. |
+|_Žádný_ |Již jste zaznamenali sadu dotazů a časové okno, které chcete prozkoumat, a chcete eliminovat, že by mohly zavádět další dotazy. _Žádná_ je vhodná pro testování a označování prostředí. _Žádné_ by se měly používat opatrně, protože byste mohli přijít o příležitost sledovat a optimalizovat důležité nové dotazy. Nemůžete obnovit data v předchozích časových oknech. |
 
 Úložiště dotazů zahrnuje i úložiště pro statistiku čekání. K dispozici je další dotaz na režim sběru dat, který řídí statistiku čekání: **pgms_wait_sampling. query_capture_mode** lze nastavit na _hodnotu None_ nebo _All_. 
 

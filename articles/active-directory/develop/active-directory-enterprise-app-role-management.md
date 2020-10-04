@@ -12,18 +12,18 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 85c406fc561424d7b02d39dfd58dc3c8fe34aab2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8ec87a8d78f73af48b662c5971dfe1803717f88a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116083"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704544"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace
 
 Pomocí Azure Active Directory (Azure AD) můžete přizpůsobit typ deklarace identity role v tokenu odpovědi, který obdržíte po autorizaci aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - Předplatné Azure AD s instalačním programem adresáře.
 - Předplatné s povoleným jednotným přihlašováním (SSO). Jednotné přihlašování je nutné nakonfigurovat u vaší aplikace.
@@ -75,7 +75,7 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
 
      `https://graph.microsoft.com/beta/servicePrincipals`
 
-      Pokud používáte více adresářů, postupujte podle tohoto vzoru:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+      Pokud používáte více adresářů, postupujte podle tohoto vzoru: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
       ![Průzkumník grafů s dotazem na načtení instančních objektů](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -159,7 +159,7 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
 
     a. Kliknutím na ikonu **Upravit** otevřete **atributy uživatele &** dialogovém okně deklarace.
 
-      ![Tlačítko Přidat atribut](./media/active-directory-enterprise-app-role-management/editattribute.png)
+      ![Snímek obrazovky, který zvýrazní ikonu pro úpravy použitou k otevření atributů uživatele & dialogovém okně deklarace identity.](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
     b. V dialogu **Spravovat deklarace identity uživatelů** přidejte atribut tokenu SAML kliknutím na **Přidat novou deklaraci identity**.
 
@@ -189,7 +189,7 @@ Chcete-li aktualizovat existující roli, proveďte následující kroky:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Pokud používáte více adresářů, postupujte podle tohoto vzoru:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Pokud používáte více adresářů, postupujte podle tohoto vzoru: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Průzkumník grafů s dotazem na načtení instančních objektů](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -227,7 +227,7 @@ Chcete-li odstranit existující roli, proveďte následující kroky:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Pokud používáte více adresářů, postupujte podle tohoto vzoru:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Pokud používáte více adresářů, postupujte podle tohoto vzoru: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Průzkumník grafů s dotazem na načtení seznamu instančních objektů](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 

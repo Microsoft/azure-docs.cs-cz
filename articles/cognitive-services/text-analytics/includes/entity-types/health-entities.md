@@ -6,72 +6,304 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/28/2020
+ms.date: 10/02/2020
 ms.author: aahi
-ms.openlocfilehash: 6880391fb54791fe5f597de2305d24f8c0e47ec6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 563daca1e5179639b8dd3aaf710d92e54faf6aa1
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88122498"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709304"
 ---
-## <a name="health-entity-categories"></a>Kategorie entit stavu:
+## <a name="text-analytics-for-health-categories-entities-and-attributes"></a>Analýza textu pro kategorie, entity a atributy stavu
 
-[Analýza textu pro stav](../../how-tos/text-analytics-for-health.md)vrátí následující kategorie entit.  Upozorňujeme, že v tomto kontejneru Preview je podporovaný jenom anglický text a v každé imagi kontejneru je k dispozici jenom jedna modelová verze.
+[Analýza textu pro stav](../../how-tos/text-analytics-for-health.md) detekuje lékařské koncepty v následujících kategoriích.  (Všimněte si, že tento kontejner ve verzi Preview podporuje jenom anglický text a v každé imagi kontejneru je k dispozici jenom jedna modelová verze.)
 
-### <a name="named-entity-recognition"></a>Rozpoznávání pojmenovaných entit
 
-|Kategorie  |Popis   |
-|----------|--------------|
-| Stáří | Ve věku. Například *staré 30 let*. |
-| AdministrativeEvent | Událost správy. |
-| BodyStructure | Části lidského těla, včetně orgánů a dalších struktur. Například *ARM*nebo *srdce*. | 
-| CareEnvironment | Prostředí, kde je spravována péče nebo zpracování. Například *záchranná místnost* | 
-| ConditionQualifier | Úrovně podmínek. Například *mírné*, *Rozšířené*nebo *rozptýlené*. | 
-| Stanovení | Lékařské podmínky. Například " *mikronapětí*. | 
-| Směr | Značení. Například *Left* nebo *anterior*. | 
-| Dávkovač | Velikost nebo množství léků. Například *25mg*.  | 
-| Prověřování | Metoda nebo procedura kontroly. Například *X-ray*. | 
-| RelationalOperator | Operátor, který definuje vztah mezi dvěma entitami. Například *menší než*nebo `>=` .  | 
-| MeasurementUnit | Měrná jednotka (jako procento). | 
-| MeasurementValue | Číselná hodnota měrné jednotky. | 
-| FamilyRelation | Familial vztah. Například: *sesterské*.  | 
-| Frequency | Opakování.   | 
-| Pohlaví | Pohlaví. | 
-| Genů | Entita genu, jako je *TP53*.   | 
-| HealthcareProfession | Způsob správy léků Například *orální Správa*. | 
-| MedicationClass | Třídy léků Například *antibiotika*.  | 
-| MedicationForm | Forma léků Například *kapsle*. | 
-| MedicationName  | Obecná a značka s názvem medications. Například *ibuprofen*. | 
-| MedicationRoute | Způsob správy léků Například *orální Správa*. | 
-| SymptomOrSign  | Příznaky nemoci. Například *sore Throat*. | 
-| Čas | Časový. Například *8 let* nebo *2:10:30 tuto ráno* |
-| Prokládání  | Názvy ošetření. Například pro *léčbu*. | 
-| Variantní | Genetická varianta entity genu | 
+| Kategorie  | Popis  |
+|---------|---------|
+| ROZBOR | koncepty, které zaznamenávají informace o tělních a anatomii, lokalitách, umístěních nebo oblastech. |
+ | DEMOGRAFICKÝCH údajů | koncepty, které zaznamenávají informace o pohlaví a stáří. |
+ | PROVĚŘEN | koncepty, které zaznamenávají informace o diagnostických procedurách a testech. |
+ | GENOMICS | koncepty, které zaznamenávají informace o genůch a variantách. |
+ | ZDRAVOTNÍ | koncepty, které zaznamenávají informace o událostech správy, prostředích péče a zdravotních profesích. |
+ | LÉKAŘSKÝ STAV | koncepty, které zaznamenávají informace o Diagnostics, symptomech nebo symbolech. |
+ | LÉKŮ | koncepty, které zaznamenávají informace o léků, včetně léků názvů, tříd, dávkování a směrování správy. |
+ | RODN | koncepty, které zaznamenávají informace o lékařsky relevantních sociálních aspektech, jako je například rodinný vztah. |
+ | NÍ | koncepty, které zaznamenávají informace o léčebných postupech. |
+  
+Každá kategorie může zahrnovat dvě skupiny konceptů:
 
-### <a name="relation-extraction"></a>Extrakce vztahu
+* **Entity** – pojem, který zachycuje lékařské koncepty, jako je například diagnostika, název léků nebo název zpracování.  Například *bronchitis* je diagnóza a *aspirin* je název léků.  Zmínky v této skupině mohou být propojeny s ID konceptu UMLS.
+* **Atributy** – fráze, které poskytují další informace o zjištěné entitě, například *vážný* je kvalifikátor podmínky pro *bronchitis* nebo *81 mg* , je dávkou pro *aspirin*.  Zmínky v této kategorii nebudou propojeny s ID konceptu UMLS.
 
-Extrakce relace identifikuje smysluplná připojení mezi koncepty uvedenými v textu. Například relace "čas podmínky" je nalezena přidružením názvu podmínky k času. Analýza textu pro stav mohou identifikovat následující vztahy:
+Kromě toho služba rozpoznává vztahy mezi různými koncepty, včetně vztahů mezi atributy a entitami, například *směr* pro *strukturu těla* nebo *dávkování* do *léků názvů* a vztahů mezi entitami, například při detekci zkratky.
 
-|Kategorie  |Popis   |
-|----------|--------------|
-| DirectionOfBodyStructure | Směr struktury těla. |
-| DirectionOfCondition | Směr podmínky. |
-| DirectionOfExamination | Směr kontroly. |
-| DirectionOfTreatment | Směr ošetření. |
-| TimeOfCondition | Čas přidružený k začátku podmínky. |
-| QualifierOfCondition | Přidružený kvalifikátor pro podmínku. |
-| DosageOfMedication | Dávkou léků. |
-| FormOfMedication | Forma léků |
-| RouteOfMedication | Trasa nebo režim využívání lékařství. Například *orální*. |
-| FrequencyOfMedication | Frekvence, s jakou se léků spotřebované. | 
-| ValueOfCondition | Číselná hodnota přidružená k podmínce. |
-| UnitOfCondition | Jednotka (například čas) spojená s podmínkou. |
-| TimeOfMedication | Čas, kdy se léků spotřeboval |
-| TimeOfTreatment | Čas, kdy byla úprava spravována. | 
-| FrequencyOfTreatment | Frekvence, s jakou je spravováno ošetření. |
-| ValueOfExamination | Číselná hodnota přidružená k prozkoumání. | 
-| UnitOfExamination | Jednotka (například procento) přidružená k prozkoumání. |
-| RelationOfExamination | Vztah mezi entitou a prohlídkou. | 
-| TimeOfExamination | Čas přidružený k vyšetření. |
-| Zkratka | Zkratka.  | 
+## <a name="anatomy"></a>Rozbor
+
+### <a name="entities"></a>Entity
+
+**BODY_STRUCTURE** – základní systémy, umístění a oblasti anatomie a weby. Například ARM, kolenum, břicho, nos, játra, hlava, dýchací systém, lymphocytes.
+
+:::image type="content" source="../../media/ta-for-health/anatomy-entities-body-structure.png" alt-text="Příklad entity struktury těla.":::
+
+
+:::image type="content" source="../../media/ta-for-health/anatomy-entities-body-structure-2.png" alt-text="Příklad entity struktury těla.":::
+
+### <a name="attributes"></a>Atributy
+
+**Směrové** směry, například: Left, příčný, horní, druhý, který charakterizuje strukturu těla.
+
+:::image type="content" source="../../media/ta-for-health/anatomy-attributes.png" alt-text="Příklad entity struktury těla.":::
+
+### <a name="supported-relations"></a>Podporované relace
+
+* **DIRECTION_OF_BODY_STRUCTURE**
+
+## <a name="demographics"></a>Demografie
+
+### <a name="entities"></a>Entity
+
+**Stáří** – všechny věkové smlouvy a fráze, včetně členů pacienta, rodinných příslušníků a dalších. Příklad: 40-year-old, 51 Yo, 3 měsíce Old, dospělý, kojence, seniory, mladý, nezletilý, střední-stáří.
+
+:::image type="content" source="../../media/ta-for-health/age-entity.png" alt-text="Příklad entity struktury těla.":::
+
+:::image type="content" source="../../media/ta-for-health/age-entity-2.png" alt-text="Příklad entity struktury těla.":::
+
+
+**Pohlaví** – pojem, který zveřejňuje pohlaví subjektu. Například muž, Žena, Žena, gentleman, Lady.
+
+:::image type="content" source="../../media/ta-for-health/gender-entity.png" alt-text="Příklad entity struktury těla.":::
+
+### <a name="attributes"></a>Atributy
+
+**RELATIONAL_OPERATOR** – fráze, které vyjadřují vztah mezi demografickou entitou a dalšími informacemi.
+
+:::image type="content" source="../../media/ta-for-health/relational-operator.png" alt-text="Příklad entity struktury těla.":::
+
+## <a name="examinations"></a>Zkoušky
+
+### <a name="entities"></a>Entity
+
+**EXAMINATION_NAME** – diagnostické postupy a testy. Například MRI, ECG, HIV test, hemoglobin, Count na úrovni systému, jako je například *Bristol Stool Scale*.
+
+:::image type="content" source="../../media/ta-for-health/exam-name-entities.png" alt-text="Příklad entity struktury těla.":::
+
+:::image type="content" source="../../media/ta-for-health/exam-name-entities-2.png" alt-text="Příklad entity struktury těla.":::
+
+### <a name="attributes"></a>Atributy
+
+**Směr** – směrové výrazy, které charakterizují zkoušku.
+
+:::image type="content" source="../../media/ta-for-health/exam-direction-attribute.png" alt-text="Příklad entity struktury těla.":::
+
+**MEASUREMENT_UNIT** – jednotka kontroly. Například v *hemoglobin > 9,5 g/dl*je termín *g/dl* jednotka pro test *hemoglobin* .
+
+:::image type="content" source="../../media/ta-for-health/exam-unit-attribute.png" alt-text="Příklad entity struktury těla.":::
+
+**MEASUREMENT_VALUE** – hodnota kontroly. Například v *hemoglobin > 9,5 g/dl*, je výraz *9,5* hodnota pro test *hemoglobin* .
+
+:::image type="content" source="../../media/ta-for-health/exam-value-attribute.png" alt-text="Příklad entity struktury těla.":::
+
+**RELATIONAL_OPERATOR** – fráze, které vyjadřují vztah mezi kontrolou a dalšími informacemi. Například požadovaná hodnota měření pro cílovou zkoušku.
+
+:::image type="content" source="../../media/ta-for-health/exam-relational-operator-attribute.png" alt-text="Příklad entity struktury těla.":::
+
+**Čas** – dočasné podmínky vztahující se na začátek a/nebo délku (trvání) kontroly. Například při pokusu o test.
+
+:::image type="content" source="../../media/ta-for-health/exam-time-attribute.png" alt-text="Příklad entity struktury těla.":::
+
+### <a name="supported-relations"></a>Podporované relace
+
++ **DIRECTION_OF_EXAMINATION**
++   **RELATION_OF_EXAMINATION**
++   **TIME_OF_EXAMINATION**
++   **UNIT_OF_EXAMINATION**
++   **VALUE_OF_EXAMINATION**
+
+## <a name="genomics"></a>Genomics
+
+### <a name="entities"></a>Entity
+
+**Genů** – všechny zmínky o genů. Například MTRR, F2.
+
+:::image type="content" source="../../media/ta-for-health/genomics-entities.png" alt-text="Příklad entity struktury těla.":::
+
+**Variant** – všechny zmínky o variacích genů Například c. 524C>T, (MTRR): r.1462_1557del96
+  
+## <a name="healthcare"></a>Zdravotnictví
+
+### <a name="entities"></a>Entity
+  
+**ADMINISTRATIVE_EVENT** – události, které se týkají systému zdravotní péče, ale administrativní/částečně administrativní povahy. Například registrace, použití, zkušební verze, vstup studie, přenos, vypouštění, hospitalizaci a nemocnice. 
+
+:::image type="content" source="../../media/ta-for-health/healthcare-event-entity.png" alt-text="Příklad entity struktury těla.":::
+
+**CARE_ENVIRONMENT** – prostředí nebo umístění, kde se pacientům dostanou starosti. Například záchranná místnost, kancelář, cardio jednotka, hospice a nemocnice.
+
+:::image type="content" source="../../media/ta-for-health/healthcare-environment-entity.png" alt-text="Příklad entity struktury těla.":::
+
+**HEALTHCARE_PROFESSION** – licencování specialisty na zdravotní péči nebo nelicencované. Například Dentist, pathologist, neurologist, radiologie, pharmacist, výživa, fyzický therapist, chiropractor.
+
+:::image type="content" source="../../media/ta-for-health/healthcare-profession-entity.png" alt-text="Příklad entity struktury těla.":::
+
+:::image type="content" source="../../media/ta-for-health/healthcare-profession-entity-2.png" alt-text="Příklad entity struktury těla.":::
+
+## <a name="medical-condition"></a>Lékařský stav
+
+### <a name="entities"></a>Entity
+
+**Diagnóza** – nemoc, Syndrome a otrava. Například prsní rakovinu, Alzheimerova, HTN, CHF, zranění kabelů.
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-entity.png" alt-text="Příklad entity struktury těla.":::
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-entity-2.png" alt-text="Příklad entity struktury těla.":::
+
+**SYMPTOM_OR_SIGN** – subjektivní nebo objektivní důkaz choroby nebo jiné diagnostiky. Například: bedna, starostí, dizziness, rash, SOB, břich byl měkký, dobrý bowel zvuků, dobře.
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-symptom-entity.png" alt-text="Příklad entity struktury těla.":::
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-symptom-entity-2.png" alt-text="Příklad entity struktury těla.":::
+
+### <a name="attributes"></a>Atributy
+
+**CONDITION_QUALIFIER** podmínky kvality, které se používají k popisu lékařské podmínky. Všechny následující podkategorie se považují za kvalifikátory:
+
+1.  Výrazy související s časem: Jedná se o termín, který popisuje kvantitativní časovou dimenzi, jako je například náhlé, akutní, chronická, dlouhodobě zavazuje chránit. 
+2.  Výrazy kvality: Jedná se o podmínky, které popisují "charakter" lékařské podmínky, jako je například vypalování, Sharp.
+3.  Výrazy závažnosti: závažná, mírná, bitová, neřízená.
+4.  Výrazy Extensivity: místní, kontaktní, rozptýlené.
+5.  Radiační výrazy: vyradiování, záření.
+6.  Měřítko podmínky: v některých případech je podmínka charakterizována škálováním, což je konečný seřazený seznam hodnot. Například pacienty s fáze III pancreatic rakovinu.
+7.  Podmínka kurzu: termín, který souvisí s kurzem nebo průběhem podmínky, jako je například zlepšování, zhoršení, vyřešení, opakování. 
+
+:::image type="content" source="../../media/ta-for-health/condition-qualifier-diagnosis.png" alt-text="Příklad entity struktury těla.":::
+
+:::image type="content" source="../../media/ta-for-health/condition-qualifier-diagnosis-2.png" alt-text="Příklad entity struktury těla.":::
+
+:::image type="content" source="../../media/ta-for-health/conditional-qualifier-symptom-medication.png" alt-text="Příklad entity struktury těla.":::
+
+:::image type="content" source="../../media/ta-for-health/condition-qualifier-diagnosis-3.png" alt-text="Příklad entity struktury těla.":::
+
+:::image type="content" source="../../media/ta-for-health/condition-qualifier-symptom.png" alt-text="Příklad entity struktury těla.":::
+
+**Směrové** podmínky, které charakterizují lékařský stav těla.
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-direction-attribute.png" alt-text="Příklad entity struktury těla.":::
+
+**Frekvence** – jak často došlo k lékařské situaci, nastane nebo by se měla objevit.
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-frequency-attribute.png" alt-text="Příklad entity struktury těla.":::
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-frequency-attribute-2.png" alt-text="Příklad entity struktury těla.":::
+
+**MEASUREMENT_UNIT** -jednotka charakterizující lékařský stav. Například v *1,5 x2x1 cm tumor*je pojem *cm* jednotka měření pro *tumor*. 
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-measure-unit-attribute.png" alt-text="Příklad entity struktury těla.":::
+
+**MEASUREMENT_VALUE** – hodnota charakterizující lékařský stav. Například v hodnotě *1,5 x2x1 cm tumor*pojem *1,5 x2x1* je hodnota měření pro *tumor*. 
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-measure-value-attribute.png" alt-text="Příklad entity struktury těla.":::
+
+**RELATIONAL_OPERATOR** – fráze, které vyjadřují vztah mezi lékařskými podmínkami Další informace. Například hodnota času nebo měření. 
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-relational-operator.png" alt-text="Příklad entity struktury těla.":::
+
+**Časově** dočasná období související s počátkem a/nebo délkou (trvání) lékařské podmínky. Například při spuštění příznaku nebo při výskytu choroby.
+
+:::image type="content" source="../../media/ta-for-health/medical-condition-time-attribute.png" alt-text="Příklad entity struktury těla.":::
+
+### <a name="supported-relations"></a>Podporované relace
+
++ **DIRECTION_OF_CONDITION**
++   **QUALIFIER_OF_CONDITION**
++   **TIME_OF_CONDITION**
++   **UNIT_OF_CONDITION**
++   **VALUE_OF_CONDITION**
+
+## <a name="medication"></a>Léků
+
+### <a name="entities"></a>Entity
+
+**MEDICATION_CLASS** – sada medications, která má podobný mechanismus působení, související režim akce, podobná chemická struktura a/nebo se používá ke zpracování stejné choroby. Například pro inhibičníi ACE, opioid, antibiotika a bolesti.
+
+:::image type="content" source="../../media/ta-for-health/medication-entities-class.png" alt-text="Příklad entity struktury těla.":::
+
+**MEDICATION_NAME** – zmínky o lékůech, včetně chráněných názvů značek a názvů, které nejsou značkou. Například Advil, ibuprofen.
+
+:::image type="content" source="../../media/ta-for-health/medication-entities-name.png" alt-text="Příklad entity struktury těla.":::
+
+### <a name="attributes"></a>Atributy
+
+**Dávka** -množství léků seřazeno. Například řešení chloridu sodného v inzapékací *1000 ml*.
+
+:::image type="content" source="../../media/ta-for-health/medication-dosage.png" alt-text="Příklad entity struktury těla.":::
+
+**Frekvence** – jak často by měl být léků.
+
+:::image type="content" source="../../media/ta-for-health/medication-frequency.png" alt-text="Příklad entity struktury těla.":::
+
+:::image type="content" source="../../media/ta-for-health/medication-frequency-2.png" alt-text="Příklad entity struktury těla.":::
+
+**MEDICATION_FORM** – forma léků Například řešení, tablety, kapsle, tablet, patch, gelu, vložení, pěna, sprej, kapek, krém, sirup.
+
+:::image type="content" source="../../media/ta-for-health/medication-form.png" alt-text="Příklad entity struktury těla.":::
+
+**MEDICATION_ROUTE** – metoda správy pro léků. Například orální, vaginal, IV, epidural, může být užitečná, vdechováno.
+
+:::image type="content" source="../../media/ta-for-health/medication-route.png" alt-text="Příklad entity struktury těla.":::
+
+**RELATIONAL_OPERATOR** – fráze, které vyjadřují vztah mezi léků a dalšími informacemi. Například požadovaná hodnota měření.
+
+:::image type="content" source="../../media/ta-for-health/medication-relational-operator.png" alt-text="Příklad entity struktury těla.":::
+
+:::image type="content" source="../../media/ta-for-health/medication-time.png" alt-text="Příklad entity struktury těla.":::
+
+### <a name="supported-relations"></a>Podporované relace
+
++ **DOSAGE_OF_MEDICATION**
++   **FORM_OF_MEDICATION**
++   **FREQUENCY_OF_MEDICATION**
++   **ROUTE_OF_MEDICATION**
++   **TIME_OF_MEDICATION**
+  
+## <a name="treatment"></a>Ní
+
+### <a name="entities"></a>Entity
+
+**TREATMENT_NAME** – léčebné postupy. Například výměna za kolena, kostní dřeně transplant, TAVI, dietní.
+
+:::image type="content" source="../../media/ta-for-health/treatment-entities-name.png" alt-text="Příklad entity struktury těla.":::
+
+### <a name="attributes"></a>Atributy
+
+**Směrové** podmínky, které charakterizují ošetření.
+
+:::image type="content" source="../../media/ta-for-health/treatment-direction.png" alt-text="Příklad entity struktury těla.":::
+
+**Frekvence** – jak často dochází k ošetření, nebo by se mělo objevit.
+
+:::image type="content" source="../../media/ta-for-health/treatment-frequency.png" alt-text="Příklad entity struktury těla.":::
+ 
+**RELATIONAL_OPERATOR** – fráze, které vyjadřují vztah mezi zpracováním a dalšími informacemi.  Například kolik času bylo předáno z předchozího postupu.
+
+:::image type="content" source="../../media/ta-for-health/treatment-relational-operator.png" alt-text="Příklad entity struktury těla.":::
+
+**Časově** dočasné podmínky vztahující se na začátek a/nebo délku (trvání) ošetření. Například datum, kdy bylo zpracování uděleno.
+
+:::image type="content" source="../../media/ta-for-health/treatment-time.png" alt-text="Příklad entity struktury těla.":::
+
+
+### <a name="supported-relations"></a>Podporované relace
+
++ **DIRECTION_OF_TREATMENT**
++   **TIME_OF_TREATMENT**
++   **FREQUENCY_OF_TREATMENT**
+
+## <a name="social"></a>Sociální sítě
+
+### <a name="entities"></a>Entity
+
+**FAMILY_RELATION** – zmínky o rodinných příbuzních daného subjektu. Například otců, dceřiné, na stejné úrovni, rodiče.
+
+:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="Příklad entity struktury těla.":::

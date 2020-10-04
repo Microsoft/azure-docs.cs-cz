@@ -1,17 +1,17 @@
 ---
 title: Čtení replik – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje funkci pro čtení repliky na serveru Azure Database for PostgreSQL-Single.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: d1fa99d0954177e2804039fc71c2ba010b94bd50
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2d0ee0e4c5cf3f7c2f4b623f0270ecf5eb01fc36
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530936"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710511"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Čtení replik v Azure Database for PostgreSQL – jeden server
 
@@ -83,7 +83,7 @@ Na příkazovém řádku zadejte heslo pro uživatelský účet.
 ## <a name="monitor-replication"></a>Monitorování replikace
 Azure Database for PostgreSQL poskytuje dvě metriky pro monitorování replikace. Tyto dvě metriky jsou **maximální prodlevou mezi replikami** a **prodlevou repliky**. Informace o tom, jak zobrazit tyto metriky, najdete v článku **monitorování repliky** v [článku věnovaném postupu čtení repliky](howto-read-replicas-portal.md).
 
-Metrika **maximální prodlevy napříč replikami** zobrazuje prodlevu v bajtech mezi primárním a největším zpožděním repliky. Tato metrika je k dispozici pouze na primárním serveru.
+Metrika **maximální prodlevy napříč replikami** zobrazuje prodlevu v bajtech mezi primárním a největším zpožděním repliky. Tato metrika je k dispozici pouze na primárním serveru a bude k dispozici pouze v případě, že je alespoň jedna z replik pro čtení připojena k primárnímu serveru.
 
 Metrika **prodlevy repliky** zobrazuje čas od poslední opakované transakce. Pokud na primárním serveru nedochází k žádným transakcím, metrika tuto časovou prodlevu odráží. Tato metrika je k dispozici pouze pro servery repliky. Prodleva repliky je vypočítána ze `pg_stat_wal_receiver` zobrazení:
 
@@ -141,12 +141,15 @@ Jakmile se rozhodnete, že chcete převzít služeb při selhání do repliky,
     
 Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili převzetí služeb při selhání. Množství prostojů, na kterých bude prostředí aplikace záviset při zjištění problému a dokončení kroků 1 a 2 výše.
 
+### <a name="disaster-recovery"></a>Zotavení po havárii
+
+Když dojde k závažné události havárie, jako je třeba zóna dostupnosti nebo regionální selhání, můžete provést operaci zotavení po havárii tím, že povýšíte svoji repliku pro čtení. Z portálu uživatelského rozhraní můžete přejít na server repliky pro čtení. Pak klikněte na kartu replikace a můžete ji zastavit, aby byla povýšení replikována na nezávislý server. Alternativně můžete pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/postgres/server/replica?view=azure-cli-latest#az_postgres_server_replica_stop) zastavit a zvýšit úroveň serveru repliky.
 
 ## <a name="considerations"></a>Požadavky
 
 V této části najdete přehled informací o funkci Replika čtení.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadované součásti
 Repliky čtení a [logické dekódování](concepts-logical.md) závisí na protokolu Postgres Write předem log (WAL). Tyto dvě funkce vyžadují různé úrovně protokolování z Postgres. Logické dekódování potřebuje vyšší úroveň protokolování než repliky čtení.
 
 Ke konfiguraci správné úrovně protokolování použijte parametr podpory replikace Azure. Podpora replikace Azure má tři možnosti nastavení:
