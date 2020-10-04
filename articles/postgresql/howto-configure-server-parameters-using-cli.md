@@ -1,24 +1,24 @@
 ---
 title: Konfigurace parametrů-Azure Database for PostgreSQL-Single server
 description: Tento článek popisuje, jak nakonfigurovat parametry Postgres v Azure Database for PostgreSQL-Single server pomocí Azure CLI.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 06/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e0d19720df6f3bea8d65c24076709e84c585c638
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4231f348f99073406fcb6a5bef9bf0f84cacf2eb
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87493495"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707672"
 ---
 # <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Přizpůsobení parametrů konfigurace serveru pro Azure Database for PostgreSQL pro jeden server pomocí Azure CLI
 Můžete vypsat, zobrazit a aktualizovat parametry konfigurace pro server Azure PostgreSQL pomocí rozhraní příkazového řádku (Azure CLI). Podmnožina konfigurací modulu se zveřejňuje na úrovni serveru a dá se upravit. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 Pokud chcete projít tento průvodce, budete potřebovat:
 - Vytvoření serveru a databáze Azure Database for PostgreSQL pomocí následujících kroků vytvořte [Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md)
 - Nainstalujte na svém počítači rozhraní příkazového řádku [Azure CLI](/cli/azure/install-azure-cli) nebo použijte [Azure Cloud Shell](../cloud-shell/overview.md) v Azure Portal pomocí prohlížeče.
@@ -31,7 +31,7 @@ Můžete uvést parametry konfigurace serveru pro server **mydemoserver.Postgres
 az postgres server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="show-server-configuration-parameter-details"></a>Zobrazit podrobnosti parametru konfigurace serveru
-Chcete-li zobrazit podrobnosti o konkrétním parametru konfigurace pro server, spusťte příkaz [AZ Postgres Server Configuration show](/cli/azure/postgres/server/configuration) .
+Chcete-li zobrazit podrobnosti o konkrétním parametru konfigurace pro server, spusťte příkaz [AZ Postgres Server Configuration show](/cli/azure/postgres/server/configuration)  .
 
 Tento příklad ukazuje podrobnosti parametru konfigurace **serveru \_ zprávy o minimálních \_ zprávách** pro server **mydemoserver.Postgres.Database.Azure.com** v části Skupina prostředků **myresourcegroup.**
 ```azurecli-interactive

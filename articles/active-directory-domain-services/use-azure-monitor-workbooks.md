@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 926f4dd94ba5b1f864a002c282004b3a9f438dca
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 280b7e051c4c9d87c504c1abf6aca0b04bfa1b29
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722734"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704595"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Kontrola událostí auditu zabezpečení v Azure Active Directory Domain Services používání sešitů Azure Monitor
 
@@ -58,7 +58,7 @@ Pro přístup k šabloně sešitu pro sestavu přehledu zabezpečení proveďte 
 1. Vyberte spravovanou doménu, například *aaddscontoso.com* .
 1. V nabídce na levé straně vyberte **monitorování > sešity** .
 
-    ![V Azure Portal vyberte možnost nabídky sešity.](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
+    ![Snímek obrazovky, který hightlights, kde se má vybrat Sestava Přehled zabezpečení a sestava aktivity účtu](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. Vyberte **sestavu Přehled zabezpečení**.
 1. V rozevíracích nabídkách v horní části sešitu vyberte své předplatné Azure a pak Azure Monitor pracovní prostor.

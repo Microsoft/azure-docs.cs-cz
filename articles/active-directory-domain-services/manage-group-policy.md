@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: d9738d3abfdf30e133ae241c497823be349d25da
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c5ee162a78ac5e8c3080cd33c89fcee507ecfe92
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040074"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704850"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>Správa Zásady skupiny ve spravované doméně Azure Active Directory Domain Services
 
@@ -29,7 +29,7 @@ V tomto článku se dozvíte, jak nainstalovat nástroje pro správu Zásady sku
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
@@ -90,7 +90,7 @@ Existují dva předdefinované Zásady skupiny objekty (GPO) ve spravované dom�
 
 1. Otevře se nástroj Editor pro správu zásad skupiny, který umožňuje přizpůsobení objektu zásad skupiny (GPO), jako jsou například *Zásady účtů*:
 
-    ![Přizpůsobením objektu zásad skupiny nakonfigurujte nastavení podle potřeby.](./media/active-directory-domain-services-admin-guide/gp-editor.png)
+    ![Snímek obrazovky Editor pro správu zásad skupiny.](./media/active-directory-domain-services-admin-guide/gp-editor.png)
 
     Až budete hotovi, vyberte **soubor > Uložit** a zásadu uložte. Počítače se ve výchozím nastavení aktualizují Zásady skupiny každých 90 minut a použijí změny, které jste provedli.
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 09/24/2020
 ms.author: aahi
-ms.openlocfilehash: 5f5122b5fa7c20bc0717ef1605e41bb5f2700be2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d6820e890607ff16230ecf48e8318e6d1119a3a2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309094"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707502"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -39,7 +39,7 @@ Rozpoznávání pojmenovaných entit (NER) je schopnost identifikovat různé en
 | Metody pro jednotlivé a dávkové požadavky                          | X      | X        |
 | Rozšířené rozpoznávání entit napříč několika kategoriemi           | X      | X        |
 | Samostatné koncové body pro posílání NER entit a žádostí o připojení. | X      | X        |
-| Rozpoznávání osobních entit ( `PII` ) a `PHI` informací o stavu ()        |        | X        |
+| Rozpoznávání osobních entit ( `PII` ) a `PHI` informací o stavu ()        |        | ×        |
 
 Informace najdete v tématu [Podpora jazyků](../language-support.md) .
 
@@ -141,10 +141,11 @@ Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která
 
 ### <a name="example-responses"></a>Příklady odpovědí
 
-Verze 3 poskytuje samostatné koncové body pro NER a propojení entit. Odpovědi pro obě operace jsou uvedené níže. 
+Verze 3 poskytuje samostatné koncové body pro obecné NER, PII a propojení entit. Odpovědi pro obě operace jsou uvedené níže. 
 
 #### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
+Příklad obecné odpovědi NER:
 ```json
 {
   "documents": [
@@ -198,6 +199,44 @@ Verze 3 poskytuje samostatné koncové body pro NER a propojení entit. Odpověd
 ```
 #### <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-preview)
 
+Příklad odpovědi PII:
+```json
+{
+  "documents": [
+    {
+    "redactedText": "You can even pre-order from their online menu at *************************, call ************ or send email to ***************************!",
+    "id": "0",
+    "entities": [
+        {
+        "text": "www.contososteakhouse.com",
+        "category": "URL",
+        "offset": 49,
+        "length": 25,
+        "confidenceScore": 0.8
+        }, 
+        {
+        "text": "312-555-0176",
+        "category": "Phone Number",
+        "offset": 81,
+        "length": 12,
+        "confidenceScore": 0.8
+        }, 
+        {
+        "text": "order@contososteakhouse.com",
+        "category": "Email",
+        "offset": 111,
+        "length": 27,
+        "confidenceScore": 0.8
+        }
+      ],
+    "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-07-01"
+}
+```
+Příklad odpovědi na propojení entity:
 ```json
 {
   "documents": [
@@ -244,11 +283,10 @@ Verze 3 poskytuje samostatné koncové body pro NER a propojení entit. Odpověd
   "modelVersion": "2020-02-01"
 }
 ```
-
 ---
 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro propojení entit pomocí Analýza textu v Cognitive Services. Souhrn:
 

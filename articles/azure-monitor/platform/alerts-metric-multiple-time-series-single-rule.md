@@ -4,14 +4,14 @@ description: Výstraha ve velkém měřítku s použitím jednoho pravidla výst
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 10/04/2020
 ms.subservice: alerts
-ms.openlocfilehash: f7ca91ca49d9357285e1307c5051ef5685ad24c9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 81e09e6d9c6a57339f1d6f1eb5ce4f494555fa19
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186926"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704476"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>Monitorování více časových řad v jednom pravidle výstrahy metriky
 
@@ -174,6 +174,11 @@ Ceny pravidel upozornění metrik jsou k dispozici na [stránce Azure monitor ce
 Při vytváření pravidla upozornění na metriky je zadaný odhad ceny založený na vybraných funkcích a počtu monitorovaných časových řad, které se určují z konfigurace pravidla a hodnot aktuální metriky. Měsíční poplatek je však založen na skutečných hodnoceních časové řady a může se proto lišit od původního odhadu, pokud některé časové řady neobsahují data k vyhodnocení, nebo pokud pravidlo výstrahy používá funkce, které mohou být dynamicky škálovatelny.
 
 Pravidlo výstrahy může například ukazovat vysoký odhad ceny, pokud využívá funkci více dimenzí a je vybrán velký počet kombinací hodnot dimenzí, což vede k monitorování řady časových řad. Ale skutečné poplatky za toto pravidlo výstrahy můžou být nižší, pokud ne všechny řady časových řad, které vyplývají z kombinací hodnot dimenzí, mají ve skutečnosti data k vyhodnocení.
+
+## <a name="number-of-time-series-monitored-by-a-single-alert-rule"></a>Počet časových řad monitorovaných jedním pravidlem výstrahy
+
+Aby nedocházelo k nadměrným nákladům, každé pravidlo výstrahy může ve výchozím nastavení monitorovat až 5000 časových řad. Pokud chcete toto omezení z vašeho předplatného vynechat, otevřete lístek podpory.
+
 
 ## <a name="next-steps"></a>Další kroky
 

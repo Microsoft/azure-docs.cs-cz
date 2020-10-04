@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/30/2020
+ms.date: 10/01/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 450bd87c6dd1f55c58f4c8a620dbddcfdf42ec7f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 15581178dc1c00b6905763e8552062869f8378ce
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596550"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704952"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -83,6 +83,7 @@ V této části najdete informace v tématu Postup konfigurace jednotného přih
 ## <a name="change-log"></a>Protokol změn
 
 - 09/30/2020: Změna [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v RHEL](./sap-hana-high-availability-rhel.md), [ha pro SAP HANA horizontálního navýšení kapacity pomocí ANF na RHEL](./sap-hana-high-availability-netapp-files-red-hat.md) a [Nastavení Pacemaker na RHEL v Azure](./high-availability-guide-rhel-pacemaker.md) pro přizpůsobení pokynů pro RHEL 8,1
+- 09/29/2020: v článku [skupiny umístění blízkosti Azure pro zajištění optimální latence sítě s aplikacemi SAP se](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) PPGy omezení a doporučení týkající se používání. 
 - 09/28/2020: Přidání nové Příručky k operaci úložiště pro SAP HANA pomocí Azure NetApp Files se [svazky systému souborů NFS v 4.1 na Azure NetApp Files pro SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 - 09/23/2020: přidejte nové certifikované SKU pro HLI v [dostupných SKU pro HLI](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) . 
 - 09/20/2020: změny v dokumentech [týkající se nasazení azure Virtual Machines DBMS pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general), [SQL Server nasazení Azure Virtual Machines DBMS pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver), [Azure Virtual Machines Oracle DBMS pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle), nasazení Azure [Db2 Azure Virtual Machines DBMS pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm) k přizpůsobení nového návrhu konfigurace, který doporučuje oddělení binárních souborů a binárních souborů SAP do různých disků Azure. Přidejte také doporučení pro ultra disk do různých průvodců.

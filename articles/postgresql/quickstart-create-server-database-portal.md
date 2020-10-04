@@ -1,18 +1,18 @@
 ---
 title: 'Rychlý Start: vytvoření serveru-Azure Portal-Azure Database for PostgreSQL-Single server'
 description: V této příručce pro rychlý Start vytvoříte a spravujete Azure Database for PostgreSQL Server pomocí Azure Portal.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/27/2020
-ms.openlocfilehash: 0c390c64db8c5833f5bc5bf2be3367cb63127a0f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6e43d00722dd86934c8f95e06a3b8b590b263d61
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902659"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91705156"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>Rychlý Start: vytvoření serveru Azure Database for PostgreSQL pomocí Azure Portal
 
@@ -39,12 +39,12 @@ Vytvoření serveru Azure Database for PostgreSQL:
 3. Vyberte možnost nasazení na **jeden server** .
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/quickstart-create-database-portal/select-deployment-option.png" alt-text="Snímek obrazovky s výběrem možnosti nasazení na jednom serveru pro Azure Database for PostgreSQL.":::
+   > :::image type="content" source="./media/quickstart-create-database-portal/select-deployment-option.png" alt-text="Snímek obrazovky, který zobrazuje Azure Database for PostgreSQL v nabídce":::
 
 4. Ve formuláři **základy** vyplňte následující informace.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="Snímek obrazovky, který zobrazuje kartu základy pro vytvoření jednoho serveru.":::
+   > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="Snímek obrazovky, který zobrazuje Azure Database for PostgreSQL v nabídce":::
 
    Nastavení|Navrhovaná hodnota|Popis
    ---|---|---
@@ -71,7 +71,7 @@ Vytvoří se prázdná databáze **Postgres**. Najdete v ní také databázi **a
 Ve výchozím nastavení není server, který vytvoříte, veřejně přístupný. Musíte udělit oprávnění k vaší IP adrese. Přejděte na prostředek serveru v Azure Portal a vyberte **zabezpečení připojení** z nabídky na levé straně pro prostředek serveru. Pokud si nejste jistí, jak najít prostředek, přečtěte si téma [otevření prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources).
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="Snímek obrazovky, který zobrazuje pravidla brány firewall pro zabezpečení připojení.":::
+> :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="Snímek obrazovky, který zobrazuje Azure Database for PostgreSQL v nabídce":::
   
 Vyberte **Přidat aktuální IP adresu klienta**a pak vyberte **Uložit**. Můžete přidat další IP adresy nebo zadat rozsah IP adres pro připojení k serveru z těchto IP adres. Další informace najdete v tématu [pravidla brány firewall v Azure Database for PostgreSQL](./concepts-firewall-rules.md).
    
@@ -90,7 +90,7 @@ Můžete použít [psql](http://postgresguide.com/utilities/psql.html) nebo [pgA
    > Pokud Cloud Shell poprvé otevíráte, zobrazí se výzva k vytvoření skupiny prostředků a účtu úložiště. Jedná se o jednorázový krok, který se automaticky připojí pro všechny relace. 
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="media/quickstart-create-database-portal/use-in-cloud-shell.png" alt-text="Snímek obrazovky, který zobrazuje informace o serveru a ikonu pro otevření Azure Cloud Shell.":::
+   > :::image type="content" source="media/quickstart-create-database-portal/use-in-cloud-shell.png" alt-text="Snímek obrazovky, který zobrazuje Azure Database for PostgreSQL v nabídce":::
 
 3. Spusťte následující příkaz v terminálu Azure Cloud Shell. Nahraďte hodnoty skutečným názvem serveru a přihlašovacím jménem uživatele správce. Použijte prázdnou databázi **Postgres** s uživatelem s oprávněními správce v tomto formátu: `<admin-username>@<servername>` .
 
@@ -143,7 +143,7 @@ Odstranění skupiny prostředků:
 Pokud chcete server odstranit, vyberte na stránce **Přehled** na vašem serveru tlačítko **Odstranit** :
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="media/quickstart-create-database-portal/12-delete.png" alt-text="Snímek obrazovky zobrazující tlačítko pro odstranění serveru":::
+> :::image type="content" source="media/quickstart-create-database-portal/12-delete.png" alt-text="Snímek obrazovky, který zobrazuje Azure Database for PostgreSQL v nabídce":::
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]

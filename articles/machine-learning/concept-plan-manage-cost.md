@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 872775df82d609a640346ddef2f77381c2160fcf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276063"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704724"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Plánování a Správa nákladů na Azure Machine Learning
 
@@ -69,7 +69,7 @@ S neustále se měnícími se daty potřebujete rychlé a zjednodušené školen
 
 Azure Machine Learning uživatelé můžou použít cluster Managed Azure Machine Learning COMPUTE, označovaný také jako AmlCompute. AmlCompute podporuje celou řadu možností GPU a CPU. AmlCompute je interně hostovaný jménem vašeho předplatného, a to Azure Machine Learning. Přináší stejné zabezpečení na podnikové úrovni, dodržování předpisů a zásady správného řízení ve službě Azure IaaS Cloud Scale.
 
-Vzhledem k tomu, že se tyto výpočetní fondy nacházejí v infrastruktuře Azure IaaS, můžete nasazovat, škálovat a spravovat školení se stejnými požadavky na zabezpečení a dodržování předpisů jako v ostatních částech vaší infrastruktury.  Tato nasazení se objeví ve vašem předplatném a řídí se pravidly zásad správného řízení. Přečtěte si další informace o [Azure Machine Learning COMPUTE](how-to-create-attach-compute-sdk.md#amlcompute).
+Vzhledem k tomu, že se tyto výpočetní fondy nacházejí v infrastruktuře Azure IaaS, můžete nasazovat, škálovat a spravovat školení se stejnými požadavky na zabezpečení a dodržování předpisů jako v ostatních částech vaší infrastruktury.  Tato nasazení se objeví ve vašem předplatném a řídí se pravidly zásad správného řízení. Přečtěte si další informace o [Azure Machine Learning COMPUTE](how-to-create-attach-compute-cluster.md).
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>Konfigurace školicích clusterů pro automatické škálování
 
@@ -127,4 +127,4 @@ Azure Machine Learning COMPUTE podporuje rezervované instance, které jsou v po
 Přečtěte si další informace:
 * [Správa a zvýšení kvót prostředků](how-to-manage-quotas.md)
 * [Správa nákladů pomocí analýzy nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md).
-* Vytvořte Azure Machine Learning COMPUTE pomocí [sady SDK](how-to-create-attach-compute-sdk.md#amlcompute) nebo v [studiu](how-to-create-attach-compute-studio.md#amlcompute).
+* Vytvořte Azure Machine Learning COMPUTE pomocí [sady SDK](how-to-create-attach-compute-cluster.md) nebo v [studiu](how-to-create-attach-compute-studio.md#amlcompute).
