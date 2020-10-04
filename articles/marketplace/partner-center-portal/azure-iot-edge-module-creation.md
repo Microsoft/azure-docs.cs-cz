@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: dc1e8bfa9b747b9933762af1b6a5b59cf8cd98de
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 5b823b0429feffa87a05faadc78574287bc9b4a4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815772"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708335"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Vytvoření nabídky modulu IoT Edge
 
@@ -48,7 +48,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a o tom, jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Příklad:
+Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Například:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](update-existing-offer.md#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](update-existing-offer.md#stop-selling-an-offer-or-plan) .
@@ -78,9 +78,9 @@ Když publikujete nabídku na Marketplace s partnerským centrem, můžete ji vo
 
 Tady jsou některé další zdroje informací o vedoucím řízení:
 
-- [Přehled řízení vedoucích](commercial-marketplace-get-customer-leads.md)
-- [Nejčastější dotazy ke správě potenciálních zákazníků](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
-- [Běžné chyby konfigurace zájemce](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
+- [Potenciální zákazníci z komerční nabídky na webu Marketplace](commercial-marketplace-get-customer-leads.md)
+- [Běžné otázky týkající se správy potenciálních zákazníků](../lead-management-faq.md#common-questions-about-lead-management)
+- [Řešení chyb konfigurace potenciálních zákazníků](../lead-management-faq.md#publishing-config-errors)
 - [Přehled řízení vedoucích](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Ujistěte se, že je vypnutý blokování automaticky otevíraných oken).
 
 Než budete pokračovat, vyberte **Uložit koncept** .
@@ -149,7 +149,7 @@ Zadejte krátký popis vaší nabídky. Může to být až 100 znaků dlouhé a 
 
 Poskytněte podrobnější popis vaší nabídky. Může to být až 256 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -194,7 +194,7 @@ Další informace o vytváření seznamů nabídek najdete v tématu [nabídky D
 
 Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všechny obrázky musí být ve formátu PNG. Rozmazaný obraz se odmítne.
 
-[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu používanou partnerským centrem.
@@ -235,14 +235,14 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 4. podmínky a ujednání
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Name
-7. Shrnutí
-8. Popis
+7. Souhrn
+8. Description
 9. Užitečné odkazy
 10. Snímky obrazovky a videa
 
 <br>Tady je příklad toho, jak se zobrazují informace nabídky ve výsledcích hledání Azure Marketplace:
 
-:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje ve výsledcích hledání Azure Marketplace.":::
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 
@@ -252,7 +252,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 
 <br>Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Portal:
 
-:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Portal.":::
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 
@@ -263,7 +263,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 
 <br>Tady je příklad toho, jak se ve výsledcích hledání Azure Portal zobrazí informace o nabídce:
 
-:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje ve výsledcích hledání Azure Portal.":::
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 
@@ -362,7 +362,7 @@ Po dokončení těchto polí vyberte **Uložit koncept** .
 
 Tady je příklad podrobností Azure Marketplace plánu (všechny uvedené ceny jsou například jenom pro účely a neodpovídají skutečným nákladům):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Ukazuje podrobnosti o Azure Marketplace plánu.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 
@@ -372,7 +372,7 @@ Tady je příklad podrobností Azure Marketplace plánu (všechny uvedené ceny 
 
 <br>Tady je příklad podrobností o Azure Portal plánu (všechny uvedené ceny jsou například jenom pro účely a nejsou určené k projevení skutečných nákladů):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Ukazuje podrobnosti o Azure Portal plánu.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 
@@ -393,7 +393,7 @@ Toto pole se běžně používá v těchto případech:
 
 ## <a name="technical-configuration"></a>Technická konfigurace
 
-Typ nabídky **IoT Edge modul** je konkrétní typ kontejneru, který běží na IoT Edgem zařízení. Na kartě **Technická konfigurace** poskytnete referenční informace pro úložiště imagí kontejneru v rámci [Azure Container Registry](https://azure.microsoft.com/services/container-registry/), spolu s nastavením konfigurace, které umožní zákazníkům používat modul snadno.
+Typ nabídky **IoT Edge modul** je konkrétní typ kontejneru, který běží na IoT Edgem zařízení. Na kartě **Technická konfigurace** poskytnete referenční informace pro úložiště imagí kontejneru v rámci [Azure Container Registry](https://azure.microsoft.com/services/container-registry/), spolu s nastaveními konfigurace, která zákazníkům umožňují snadno používat modul.
 
 Po publikování nabídky se IoT Edge image kontejneru zkopíruje do Azure Marketplace v konkrétním veřejném registru kontejneru. Všechny požadavky uživatelů Azure na použití vašeho modulu se obsluhují z Azure Marketplaceho veřejného kontejneru kontejnerů, nikoli z vašeho privátního registru kontejneru.
 
@@ -413,7 +413,7 @@ Na kartě **Podrobnosti o úložišti imagí** zadáte následující informace.
 
 **Uživatelské jméno správce pro Azure Container Registry**: zadejte [uživatelské jméno správce](../../container-registry/container-registry-authentication.md#admin-account), které je přidružené k Azure Container Registry s vaší imagí kontejneru. Aby vaše společnost měla přístup k registru, je nutné zadat uživatelské jméno a heslo. Pokud chcete získat uživatelské jméno a heslo správce, nastavte vlastnost s **povoleným správcem** na **hodnotu true** pomocí rozhraní příkazového řádku (CLI) Azure. Volitelně můžete nastavit **uživatele správce** na **Povolení** v Azure Portal.
 
-:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Ukazuje dialogové okno aktualizace registru kontejneru.":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
 
 #### <a name="call-out-description"></a>Popis volání
 
@@ -421,7 +421,7 @@ Na kartě **Podrobnosti o úložišti imagí** zadáte následující informace.
 
 <br>**Heslo pro Azure Container Registry**: zadejte heslo pro uživatelské jméno správce, které je přidružené k Azure Container registry a má vaši image kontejneru. Aby vaše společnost měla přístup k registru, je nutné zadat uživatelské jméno a heslo. Heslo z Azure Portal můžete získat tak, že v **Container Registry**  >  **přístupové klávesy** nebo pomocí Azure CLI použijete [příkaz show.](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)
 
-:::image type="content" source="media/example-iot-access-keys.png" alt-text="Ukazuje obrazovku přístupového klíče v Azure Portal.":::
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 
@@ -429,7 +429,7 @@ Na kartě **Podrobnosti o úložišti imagí** zadáte následující informace.
 2. Uživatelské jméno
 3. Heslo
 
-**Název úložiště v rámci Azure Container Registry**. Zadejte název úložiště Azure Container Registry, které obsahuje váš obrázek. Při odesílání obrázku do registru zadáte název úložiště. Název úložiště můžete najít tak, že kliknete na stránku [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **úložišť**. Další informace najdete v tématu [zobrazení úložišť registru kontejnerů v Azure Portal](../../container-registry/container-registry-repositories.md). Všimněte si, že po nastavení je název nelze změnit. Pro každou nabídku ve vašem účtu použijte jedinečný název.
+**Název úložiště v rámci Azure Container Registry**. Zadejte název úložiště Azure Container Registry, které obsahuje váš obrázek. Při odesílání obrázku do registru zadáte název úložiště. Název úložiště můžete najít tak, že kliknete na stránku [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **úložišť**. Další informace najdete v tématu [zobrazení úložišť registru kontejnerů v Azure Portal](../../container-registry/container-registry-repositories.md). Po nastavení je název nelze změnit. Pro každou nabídku ve vašem účtu použijte jedinečný název.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Značky obrázků pro nové verze vaší nabídky
 

@@ -1,17 +1,17 @@
 ---
 title: Backup and Restore-Azure Portal-Azure Database for PostgreSQL-Single server
 description: Tento článek popisuje, jak obnovit server v Azure Database for PostgreSQL-Single server pomocí Azure Portal.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 9ff62a568af4f60318ba0e5bdf2144bb43c9d2b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: debdbf6e08af7b9005336231abd6c998a871c525
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884312"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708080"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Postup zálohování a obnovení serveru v Azure Database for PostgreSQL-Single server pomocí Azure Portal
 
@@ -37,7 +37,7 @@ Dobu uchovávání záloh serveru lze změnit pomocí následujících kroků:
 2. Vyberte svůj server Azure Database for PostgreSQL. Tato akce otevře stránku s **přehledem** .
 3. V nabídce v části **Nastavení**vyberte **cenová úroveň** . Pomocí posuvníku můžete změnit **dobu uchovávání záloh** na svou předvolbu mezi 7 a 35 dny.
 Na snímku obrazovky níže byl zvýšen na 34 dní.
-:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Období uchování zálohy se zvýšilo.":::
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
 
 4. Potvrďte změnu kliknutím na tlačítko **OK** .
 
@@ -53,11 +53,11 @@ Následující kroky obnovují ukázkový Server k určitému bodu v čase:
 
 2. Na panelu nástrojů na stránce **Přehled** serveru vyberte **obnovit**.
 
-   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for PostgreSQL – přehled – tlačítko obnovit":::
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
 
 3. Do formuláře Restore zadejte požadované údaje:
 
-   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Informace o obnovení Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
    - **Bod obnovení**: Vyberte bod v čase, který chcete obnovit.
    - **Cílový server**: zadejte název nového serveru.
    - **Umístění**: oblast nelze vybrat. Ve výchozím nastavení je stejný jako zdrojový server.
@@ -77,17 +77,17 @@ Pokud jste server nakonfigurovali pro geograficky redundantní zálohy, můžete
 
 1. V levém horním rohu portálu vyberte tlačítko **vytvořit prostředek** (+). Vyberte **databáze**  >  **Azure Database for PostgreSQL**.
 
-   :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="Přejděte na Azure Database for PostgreSQL.":::
+   :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
 
 2. Vyberte možnost nasazení na **jeden server** .
 
-   :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="Vyberte možnost nasazení na jeden server Azure Database for PostgreSQL.":::
+   :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
  
 3. Zadejte předplatné, skupinu prostředků a název nového serveru. 
 
 4. Jako **zdroj dat**vyberte **Backup** . Tato akce načte rozevírací seznam, který obsahuje seznam serverů s povolenými geografickými redundantními zálohami.
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="Vyberte zdroj dat.":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
     
    > [!NOTE]
    > Při prvním vytvoření serveru nemusí být pro geografickou obnovu k dispozici okamžitě. Naplnění potřebných metadat může trvat několik hodin.
@@ -95,21 +95,21 @@ Pokud jste server nakonfigurovali pro geograficky redundantní zálohy, můžete
 
 5. Vyberte rozevírací seznam **zálohování** .
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-geo-restore-backup.png" alt-text="Vyberte rozevírací seznam zálohování.":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-geo-restore-backup.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
 
 6. Vyberte zdrojový server, ze kterého chcete obnovit.
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="Vyberte zálohování.":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
 
-7. Na serveru se nastaví výchozí hodnoty pro počet **virtuální jádra**, **Doba uchování záloh**, **možnost redundance zálohy**, **verze modulu**a **přihlašovací údaje správce**. Vyberte **pokračovat**. 
+7. Na serveru se nastaví výchozí hodnoty pro počet **virtuální jádra**, **Doba uchování záloh**, **možnost redundance zálohy**, **verze modulu**a **přihlašovací údaje správce**. Vyberte **Pokračovat**. 
    
-   :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="Pokračujte v zálohování.":::
+   :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="Cenová úroveň – výběr redundance zálohy":::
 
 8. Vyplňte zbytek formuláře vlastními preferencemi. Můžete vybrat libovolné **umístění**.
 
     Po výběru umístění můžete vybrat **Konfigurovat Server** a aktualizovat **výpočetní generaci** (Pokud je dostupné v oblasti, kterou jste zvolili), počet **virtuální jádra**, **dobu uchování zálohy**a **možnost redundance zálohy**. Změna **cenové úrovně** (Basic, pro obecné účely nebo paměťově optimalizovaná) nebo velikosti **úložiště** během obnovení není podporovaná.
 
-   :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="Vyplnit formulář"::: 
+   :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="Cenová úroveň – výběr redundance zálohy"::: 
 
 9. Vyberte možnost **zkontrolovat + vytvořit** a zkontrolujte výběr. 
 

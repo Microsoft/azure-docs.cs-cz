@@ -1,17 +1,17 @@
 ---
 title: Provozní kontinuita – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje provozní kontinuitu (obnovení včas v čase, výpadky datového centra, geografické obnovení a repliky) při použití Azure Database for PostgreSQL.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 75cd86bd1587a9294caef00efdf973fe8a26c150
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 6bcb1ea6c16fd387dfb7f15f909d1908c20a44d7
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612011"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710902"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Přehled provozní kontinuity pomocí Azure Database for PostgreSQL-Single server
 
@@ -19,16 +19,20 @@ Tento přehled popisuje možnosti, které Azure Database for PostgreSQL poskytuj
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>Funkce, které můžete použít k zajištění kontinuity podnikových aplikací
 
-Azure Database for PostgreSQL poskytuje funkce pro provozní kontinuitu, které zahrnují automatizované zálohování a schopnost uživatelů zahájit geografické obnovení. Každý má různé charakteristiky pro odhadovanou dobu obnovení (ERT) a potenciální ztrátu dat. Odhadovaná doba obnovení (ERT) je předpokládaná doba, po kterou bude databáze plně funkční po žádosti o obnovení nebo převzetí služeb při selhání. Jakmile tyto možnosti pochopíte, můžete si je vybrat mezi nimi a použít je společně pro různé scénáře. Při vývoji plánu provozní kontinuity je potřeba pochopit maximální přijatelnou dobu, než aplikace plně obnoví po přerušení události – to je vaše plánovaná doba obnovení (RTO). Také je potřeba pochopit maximální množství nedávných aktualizací dat (časový interval), které může aplikace tolerovat při obnovování po přerušení události – to je váš cíl bodu obnovení (RPO).
+Při vývoji plánu provozní kontinuity je potřeba pochopit maximální přijatelnou dobu, než aplikace plně obnoví po přerušení události – to je vaše plánovaná doba obnovení (RTO). Také je potřeba pochopit maximální množství nedávných aktualizací dat (časový interval), které může aplikace tolerovat při obnovování po přerušení události – to je váš cíl bodu obnovení (RPO).
 
-Následující tabulka porovnává ERT a RPO pro dostupné funkce:
+Azure Database for PostgreSQL poskytuje funkce pro provozní kontinuitu, které zahrnují geograficky redundantní zálohy s možností iniciovat geografické obnovení a nasazovat repliky pro čtení v jiné oblasti. Každý má různé charakteristiky pro čas obnovení a možnou ztrátu dat. Díky funkci [geografického obnovení](concepts-backup.md) se vytvoří nový server pomocí zálohovaných dat, která se replikují z jiné oblasti. Celková doba potřebná k obnovení a obnovení závisí na velikosti databáze a množství protokolů, které se mají obnovit. Celková doba vytvoření serveru se liší od několika minut až po několik hodin. V případě [replik čtení](concepts-read-replicas.md)jsou protokoly transakcí z primární služby asynchronně přenášeny do repliky. Prodleva mezi primární a replikou závisí na latenci mezi lokalitami a také na množství dat, která se mají přenést. V případě selhání primární lokality, jako je například Chyba zóny dostupnosti, poskytuje povýšení repliky kratší RTO a omezenou ztrátu dat. 
 
-| **Funkce** | **Basic** | **Pro obecné účely** | **Optimalizované pro paměť** |
+Následující tabulka porovnává RTO a RPO v typickém scénáři:
+
+| **Funkce** | **Basic** | **Obecné použití** | **Optimalizované pro paměť** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Obnovení k určitému bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování |
-| Geografické obnovení ze geograficky replikovaných záloh | Nepodporováno | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
+| Geografické obnovení ze geograficky replikovaných záloh | Nepodporováno | RTO – různé <br/>RPO < 1 h | RTO – různé <br/>RPO < 1 h |
+| Čtení replik | RTO – minuty <br/>RPO < 5 min | RTO – minuty <br/>RPO < 5 min| RTO – minuty <br/>RPO < 5 min|
 
-Můžete také zvážit použití [replik pro čtení](concepts-read-replicas.md).
+> [!IMPORTANT]
+> Očekávaný RTO a RPO zde uvedené jsou pouze pro referenční účely. Pro tyto metriky nejsou nabízeny žádné SLA.
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Obnovení serveru po chybě uživatele nebo aplikace
 
@@ -55,7 +59,7 @@ Funkce geografického obnovení obnoví Server pomocí geograficky redundantníc
 ## <a name="cross-region-read-replicas"></a>Repliky čtení mezi oblastmi
 Repliky čtení pro různé oblasti můžete použít ke zvýšení provozní kontinuity a plánování zotavení po havárii. Repliky čtení jsou asynchronně aktualizované pomocí technologie fyzické replikace PostgreSQL. Přečtěte si další informace o replikách pro čtení, dostupných oblastech a o tom, jak převzít služby při selhání v článku věnovaném [konceptům čtení replik](concepts-read-replicas.md). 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 ### <a name="where-does-azure-database-for-postgresql-store-customer-data"></a>Kam se Azure Database for PostgreSQL ukládají zákaznická data?
 Ve výchozím nastavení Azure Database for PostgreSQL nepřesouvá nebo neukládají zákaznická data mimo oblast, ve které je nasazená. Zákazníci si ale můžou volitelně zvolit možnost povolit [geograficky redundantní zálohy](concepts-backup.md#backup-redundancy-options) nebo vytvořit [repliku pro čtení v různých oblastech](concepts-read-replicas.md#cross-region-replication) pro ukládání dat v jiné oblasti.
 

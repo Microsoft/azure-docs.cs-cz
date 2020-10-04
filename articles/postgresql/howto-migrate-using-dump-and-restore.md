@@ -1,24 +1,24 @@
 ---
 title: Výpis a obnovení Azure Database for PostgreSQL – jeden server
 description: Popisuje postup extrakce databáze PostgreSQL do souboru s výpisem paměti a obnovení ze souboru vytvořeného pg_dump v Azure Database for PostgreSQLm jednom serveru.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 529573bd18dbdbd16a795619d488beedfb532b11
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4fe15d1bd23f36b7289c54bedf575ae4760600e0
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902672"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710800"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrace databáze PostgreSQL pomocí výpisu a obnovení
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
 
 Můžete použít [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) k extrakci databáze PostgreSQL do souboru s výpisem paměti a [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) k obnovení databáze PostgreSQL z archivního souboru vytvořeného pg_dump.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 Pokud chcete projít tento průvodce, budete potřebovat:
 - [Azure Database for PostgreSQL Server](quickstart-create-server-database-portal.md) s pravidly brány firewall pro povolení přístupu a databáze pod ní.
 - nainstalované nástroje příkazového řádku [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) a [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html)
@@ -73,7 +73,7 @@ Jedním ze způsobů, jak migrovat stávající databázi PostgreSQL do služby 
 >
 
 ### <a name="for-the-backup"></a>Pro zálohu
-- Proveďte zálohu pomocí přepínače-FC, aby bylo možné provést obnovení paralelně, abyste ho urychlili. Příklad:
+- Proveďte zálohu pomocí přepínače-FC, aby bylo možné provést obnovení paralelně, abyste ho urychlili. Například:
 
     ```bash
     pg_dump -h my-source-server-name -U source-server-username -Fc -d source-databasename -f Z:\Data\Backups\my-database-backup.dump
@@ -84,7 +84,7 @@ Jedním ze způsobů, jak migrovat stávající databázi PostgreSQL do služby 
 
 - Mělo by být již provedeno ve výchozím nastavení, ale otevřete soubor s výpisem paměti, abyste ověřili, že příkazy CREATE index jsou po vložení dat. Pokud tomu tak není, přesuňte příkazy CREATE index po vložení dat.
 
-- Obnovte s přepínači – FC a-j *#* pro paralelizovat obnovení. *#* je počet jader na cílovém serveru. Můžete také zkusit *#* nastavit na dvojnásobek počtu jader cílového serveru, abyste viděli dopad. Příklad:
+- Obnovte s přepínači – FC a-j *#* pro paralelizovat obnovení. *#* je počet jader na cílovém serveru. Můžete také zkusit *#* nastavit na dvojnásobek počtu jader cílového serveru, abyste viděli dopad. Například:
 
 Tady je příklad použití tohoto **pg_restore** pro **jeden server**:
 ```bash

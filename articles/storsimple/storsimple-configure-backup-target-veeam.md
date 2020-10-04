@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
-ms.openlocfilehash: 71a5434d985aad4033e4392dd31e6b7d112692de
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 052859e99ffd0082994d313508ebb6f0496d980b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183973"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710341"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple jako cíl zálohování s Veeam
 
@@ -94,10 +94,10 @@ V následujících tabulkách jsou uvedeny úvodní pokyny k modelům zařízen�
 
 | Kapacita úložiště | 8100 | 8600 |
 |---|---|---|
-| Kapacita místního úložiště | &lt;10 TiB\*  | &lt;20 TiB\*  |
-| Kapacita cloudového úložiště | &gt;200 TiB\* | &gt;500 TiB\* |
+| Kapacita místního úložiště | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
+| Kapacita cloudového úložiště | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\*Velikost úložiště nepředpokládá žádné odstranění duplicit ani kompresi.
+\* Velikost úložiště nepředpokládá žádné odstranění duplicit ani kompresi.
 
 **StorSimple kapacity pro primární a sekundární zálohy**
 
@@ -266,7 +266,7 @@ Na základě předchozích předpokladů vytvořte TiB StorSimple vrstvený svaz
 | Požadavek GFS |   | 38 |   |
 | Dodatečná kvóta  | 4  |   | 42 celková GFS požadavek  |
 
-\*Multiplikátor GFS je počet kopií, které je třeba chránit a které je potřeba zachovat, aby splňovaly požadavky zásad zálohování.
+\* Multiplikátor GFS je počet kopií, které je třeba chránit a které je potřeba zachovat, aby splňovaly požadavky zásad zálohování.
 
 ## <a name="set-up-veeam-storage"></a>Nastavení úložiště Veeam
 
@@ -274,7 +274,7 @@ Na základě předchozích předpokladů vytvořte TiB StorSimple vrstvený svaz
 
 1.  V konzole Veeam Backup a replikace v části **nástroje úložiště**přejít na **infrastruktura zálohování**. Klikněte pravým tlačítkem na **zálohovat**úložiště a pak vyberte **Přidat úložiště záloh**.
 
-    ![Konzola pro správu Veeam, stránka úložiště zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
+    ![Snímek obrazovky, který zobrazuje konzolu pro správu Veeam, a zvýrazní možnost přidat úložiště záloh.](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
 2.  V dialogovém okně **nové úložiště záloh** zadejte název a popis úložiště. Vyberte **Další**.
 
@@ -295,7 +295,7 @@ Na základě předchozích předpokladů vytvořte TiB StorSimple vrstvený svaz
 
 6.  V dialogovém okně **nové úložiště záloh** vyberte zaškrtávací políčko **Povolit službu vPower NFS na serveru pro připojení (doporučeno)** . Vyberte **Další**.
 
-    ![Konzola pro správu Veeam, stránka úložiště zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
+    ![Snímek obrazovky, který zobrazuje konzolu pro správu Veeam, do které můžete přidat nové úložiště zálohování.](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
 7.  Zkontrolujte nastavení a pak vyberte **Další**.
 
@@ -335,11 +335,11 @@ U primárního cílového scénáře zálohování vytvořte každodenní úlohu
 
 2.  V dialogovém okně **Nová úloha zálohování** zadejte název a popis úlohy denního zálohování.
 
-    ![Konzola pro správu Veeam, stránka nové úlohy zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
+    ![Snímek obrazovky s konzolou pro správu Veeam, do které přidáte název a popis.](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
 
 3.  Vyberte virtuální počítač pro zálohování.
 
-    ![Konzola pro správu Veeam, stránka nové úlohy zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
+    ![Snímek obrazovky, který zobrazuje konzolu pro správu Veeam, kde vyberete virtuální počítač.](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
 
 4.  Vyberte hodnoty, které chcete pro **záložní proxy** a **úložiště zálohování**. Vyberte hodnotu pro **body obnovení, které se budou uchovávat na disku** na základě definic RPO a RTO pro vaše prostředí místně připojeného úložiště. Vyberte **Upřesnit**.
 
@@ -347,7 +347,7 @@ U primárního cílového scénáře zálohování vytvořte každodenní úlohu
 
 5. V dialogovém okně **Upřesnit nastavení** na kartě **zálohování** vyberte **přírůstkové**. Ujistěte se, že je políčko **vytvořit syntetické úplné zálohování pravidelně** zaškrtnuté. Zaškrtněte políčko **vytvořit aktivní úplné zálohy pravidelně** . V části **aktivní úplná záloha**zaškrtněte políčko **týdně pro vybrané dny** pro sobotu.
 
-    ![Veeam konzoly pro správu, nové nastavení úlohy zálohování – stránka Upřesnit nastavení](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
+    ![Snímek obrazovky zobrazující konzolu pro správu Veeam, specifickou stránku pro pokročilá nastavení úlohy zálohování](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
 6. Na kartě **úložiště** ověřte, že není zaškrtnuto políčko **Povolit vloženou datovou odstranění duplicitních dat** . Zaškrtněte políčko **vyloučit zaměnitelné bloky souborů** a zaškrtněte políčko **vyloučit odstraněné bloky souborů** . Nastavte **úroveň komprese** na **žádná**. Pro vyvážený výkon a odstranění duplicit nastavte **optimalizaci úložiště** na **cíl sítě LAN**. Vyberte **OK**.
 
@@ -386,7 +386,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na m
 | Celý rok na celé |StorSimple disk (dlouhodobě) | 1 | 1 | 1 |
 |Požadavek na velikost svazků GFS |  |  |  | let|
 
-\*Celková kapacita zahrnuje 17 TiB disků StorSimple a 1 TiB místního svazku RAID.
+\* Celková kapacita zahrnuje 17 TiB disků StorSimple a 1 TiB místního svazku RAID.
 
 
 ### <a name="gfs-example-schedule"></a>GFS příklad plánu
@@ -408,11 +408,11 @@ GFS rotace týdně, měsíčně a ročního plánu
 
 1.  V konzole Veeam Backup a replikace vyberte **backup & replikace**. Klikněte pravým tlačítkem na **zálohovat**a pak v závislosti na vašem prostředí vyberte **VMware** nebo **Hyper-V**.
 
-    ![Konzola pro správu Veeam, stránka úloh vytvoření nové záložní kopie](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
+    ![Snímek obrazovky, který zobrazuje konzolu pro správu Veeam s možnostmi VMware a Hyper-V, které můžete vybrat.](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
 
 2.  V dialogovém okně **Nová úloha zálohovacího kopírování** zadejte název a popis úlohy.
 
-    ![Konzola pro správu Veeam, stránka úloh vytvoření nové záložní kopie](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
+    ![Snímek obrazovky, který zobrazuje konzolu pro správu Veeam, kde zadáváte název a popis úlohy.](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
 
 3.  Vyberte virtuální počítače, které chcete zpracovat. Vyberte možnost ze zálohy a potom vyberte denní zálohu, kterou jste vytvořili dříve.
 
@@ -422,13 +422,13 @@ GFS rotace týdně, měsíčně a ročního plánu
 
 5.  Vyberte úložiště záloh a nastavte hodnotu pro **body obnovení, které mají být zachovány**. Nezapomeňte zaškrtnout políčko **ponechat následující body obnovení pro účely archivace** . Definujte četnost zálohování a pak vyberte **Upřesnit**.
 
-    ![Konzola pro správu Veeam, stránka úloh vytvoření nové záložní kopie](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
+    ![Snímek obrazovky, který ukazuje, kde můžete definovat četnost zálohování.](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
 
 6.  Zadejte následující upřesňující nastavení:
 
     * Na kartě **Údržba** vypněte ochranu proti poškození úrovně úložiště.
 
-    ![Veeam – Konzola pro správu, stránka Rozšířená nastavení úlohy záložní kopie](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
+    ![Snímek obrazovky zobrazující kartu Údržba v konzole pro správu Veeam](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
 
     * Na kartě **úložiště** se ujistěte, že je odstranění duplicitních dat a komprese vypnuté.
 

@@ -8,21 +8,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: c50beef5c9c5dcae7edd487e8bf3d192ba557865
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 74586222bbd92b2d6182b34b4667cda0bc599b93
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662855"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709305"
 ---
 > [!NOTE]
 > K detekci chráněných informací o stavu (FÍ) použijte `domain=phi` parametr a verzi modelu `2020-04-01` nebo novější.
 >
-> Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi&model-version=2020-04-01`
+> Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii?domain=phi&model-version=2020-07-01`
  
-Při odesílání požadavků na koncový bod se vrátí následující kategorie entit `/v3.1-preview.1/entities/recognition/pii` .
+Při odesílání požadavků na koncový bod se vrátí následující kategorie entit `/v3.1-preview.2/entities/recognition/pii` .
 
-| Kategorie   | Subcategory | Popis                          | Spouští se verze modelu. | Poznámky |
+| Kategorie   | Subcategory | Description                          | Spouští se verze modelu. | Poznámky |
 |------------|-------------|--------------------------------------|------------------------|---|
 | Osoba     | –         | Jména lidí.  | `2019-10-01`  | Také vrácen s `domain=phi` . |
 | PersonType | –         | Typy úloh nebo role držené osobou. | `2020-02-01` | |
@@ -36,7 +36,7 @@ Při odesílání požadavků na koncový bod se vrátí následující kategori
 | E-mail | – | E-mailové adresy. | `2019-10-01` | Také vrácen s `domain=phi` .   |
 | URL | – | Adresy URL webů. | `2019-10-01` | Také vrácen s `domain=phi` . |
 | IP adresa | – | Síťové IP adresy. | `2019-10-01` | Také vrácen s `domain=phi` . |
-| Datum a čas | – | Data a denní doba. | `2019-10-01` |  | 
+| DateTime | – | Data a denní doba. | `2019-10-01` |  | 
 | Datum a čas | Datum | Kalendářní data kalendáře | `2019-10-01` | Také vrácen s `domain=phi` . |
 | Množství | – | Čísla a číselná množství. | `2019-10-01` |  |
 | Množství | Věk | Ve věku. | `2019-10-01` | | |
@@ -45,7 +45,7 @@ Při odesílání požadavků na koncový bod se vrátí následující kategori
 
 Tato kategorie entit zahrnuje identifikovatelné informace Azure, včetně ověřovacích informací a připojovacích řetězců. K dispozici počínaje verzí modelu `2019-10-01` . Nevráceno s `domain=phi` parametrem.
 
-| Subcategory                           | Popis                                                                 |
+| Subcategory                           | Description                                                                 |
 |---------------------------------------|-----------------------------------------------------------------------------|
 | Klíč ověření Azure DocumentDB             | Autorizační klíč pro server Azure Cosmos DB.                           |
 | Připojovací řetězec databáze Azure IAAS a připojovací řetězec SQL Azure | Připojovací řetězec pro databázi Azure Infrastructure as a Service (IaaS) a připojovací řetězec SQL. |

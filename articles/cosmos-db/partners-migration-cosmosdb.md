@@ -6,18 +6,18 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 4507b3f3338dccbf51f7342081997549e62f13fe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bd0ec4cf085fb19c89c6be48d4f4534383560fd5
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290087"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707774"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL migrace a partneři pro vývoj aplikací
 
-Z NoSQL migrace do vývoje aplikací si můžete vybrat z nejrůznějších partnerů a nástrojů integrátoru s nástroji, které podporují vaše Azure Cosmos DB řešení. 
+Z NoSQL migrace do vývoje aplikací si můžete vybrat z nejrůznějších partnerů a nástrojů integrátoru s nástroji, které podporují vaše Azure Cosmos DB řešení. V tomto článku jsou uvedeni partneři, kteří mají řešení nebo služby, které používají Azure Cosmos DB. V tomto seznamu se mění v čase, společnost Microsoft není zodpovědná za žádné změny nebo aktualizace provedené v řešení těchto partnerů.
 
-## <a name="systems-integrator-partners"></a>Systems integrátor – partneři
+## <a name="systems-integrator-and-tooling-partners"></a>Integrátory systémů a partneři nástrojů
 
 |**Partner**  |**Možnosti & zkušeností**  |**Podporované země/oblasti**  |
 |---------|---------|---------|

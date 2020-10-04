@@ -11,23 +11,26 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 5345fd81e41bbb354e11e1be23329c3130d4d0c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898075"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708391"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Vytváření výpočetních cílů pro školení a nasazení modelů v Azure Machine Learning Studiu
 
 V tomto článku se dozvíte, jak vytvářet a spravovat výpočetní cíle v Azure Machine studia.  Můžete také vytvořit a spravovat výpočetní cíle pomocí:
 
-* [Sada Azure Machine Learning Learning SDK](how-to-create-attach-compute-sdk.md) 
-* [Rozšíření CLI](reference-azure-machine-learning-cli.md#resource-management) pro Azure Machine Learning
+* Azure Machine Learning Learning SDK nebo rozšíření CLI pro Azure Machine Learning
+  * [Instance služby Compute](how-to-create-manage-compute-instance.md)
+  * [Výpočetní cluster](how-to-create-attach-compute-cluster.md)
+  * [Cluster služby Azure Kubernetes](how-to-create-attach-kubernetes.md)
+  * [Další výpočetní prostředky](how-to-attach-compute-targets.md)
 * [Vs Code rozšíření](how-to-manage-resources-vscode.md#compute-clusters) pro Azure Machine Learning.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
@@ -56,11 +59,11 @@ Podle předchozích kroků zobrazte seznam cílů výpočtů. Pak pomocí těcht
 
 1. Pokud nemáte žádné výpočetní cíle, vyberte  **vytvořit** uprostřed stránky.
   
-    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="Vytvořit cíl výpočtů":::
+    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="Zobrazit seznam cílů výpočetních prostředků":::
 
 1. Pokud se zobrazí seznam výpočetních prostředků, vyberte **+ Nový** nad seznamem.
 
-    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="Vybrat nový":::
+    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="Zobrazit seznam cílů výpočetních prostředků":::
 
 
 1. Vyplňte formulář pro výpočetní typ:
@@ -74,14 +77,14 @@ Podle předchozích kroků zobrazte seznam cílů výpočtů. Pak pomocí těcht
 
 1. Stav operace vytvoření si zobrazíte tak, že v seznamu vyberete cíl služby Compute:
 
-    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Zobrazení stavu služby COMPUTE ze seznamu":::
+    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Zobrazit seznam cílů výpočetních prostředků":::
 
 
 ### <a name="compute-instance"></a>Instance služby Compute
 
 Pomocí [výše uvedených kroků](#portal-create) vytvořte výpočetní instanci.  Pak vyplňte formulář následujícím způsobem:
 
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Vytvořit novou výpočetní instanci":::
+:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Zobrazit seznam cílů výpočetních prostředků":::
 
 
 |Pole  |Description  |
@@ -107,7 +110,7 @@ Vytvořte jeden nebo více uzlů Compute Cluster pro školení, dávkové Infere
 |Maximální počet uzlů | Maximální počet uzlů, které chcete zřídit. Výpočet bude při odeslání úlohy automatické škálování na maximum tohoto počtu uzlů. |
 |Pokročilá nastavení     |  Nepovinný parametr. Nakonfigurujte virtuální síť. Zadejte **skupinu prostředků**, **virtuální síť**a **podsíť** pro vytvoření výpočetní instance v rámci Azure Virtual Network (VNET). Další informace najdete v tématu tyto [požadavky na síť](how-to-enable-virtual-network.md#compute-instance) pro virtuální síť.   Připojte taky [spravované identity](#managed-identity) pro udělení přístupu k prostředkům.     |
 
-#### <a name="set-up-managed-identity"></a><a id="managed-identity"></a> Nastavení spravované identity
+#### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Nastavení spravované identity
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-intro.md)]
 

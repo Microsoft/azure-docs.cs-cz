@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 9745dce03d87b447dfd606f021891794cb343593
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 25f110f27ec9ac55420f624b5eea4555e482e7f4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419750"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708352"
 ---
 # <a name="consulting-service-offers"></a>Konzultační nabídky služeb
 
@@ -22,7 +22,7 @@ Konzultační nabídky služeb jsou zapojení specifické pro zákazníky. Vydav
 
 ## <a name="compare-consulting-services"></a>Porovnání konzultačních služeb
 
-Online obchody z komerčního tržiště, Microsoft AppSource a Azure Marketplace, jsou zarovnané na typy řešení a cloudové produkty, které zákazníkům pomůžou najít, co potřebují. Každý online obchod má specializované možnosti publikování, které vám pomůžou maximalizovat investice do publikování. Další informace o rozdílu mezi dvěma online obchody najdete v tématu [porovnání Microsoft AppSource a Azure Marketplace](comparing-appsource-azure-marketplace.md).
+Online obchody z komerčního tržiště, Microsoft AppSource a Azure Marketplace, jsou zarovnané na typy řešení a cloudové produkty, které zákazníkům pomůžou najít, co potřebují. Každý online obchod má specializované možnosti publikování, které vám pomůžou maximalizovat investice do publikování. Další informace o rozdílech mezi AppSource a Azure Marketplace najdete v článku [online obchody pro obchod na webu Marketplace](overview.md#commercial-marketplace-online-stores).
 
 Nabídky konzultačních služeb, které jsou založené na Dynamics 365, Power Apps a Power BI, mají nárok na uvedení v AppSource. Další informace najdete v souboru PDF s [pokyny pro Microsoft AppSource konzultační služby](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) .
 

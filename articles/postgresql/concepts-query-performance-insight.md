@@ -1,17 +1,17 @@
 ---
 title: Query Performance Insight – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje funkci Query Performance Insight v rámci Azure Database for PostgreSQL na jednom serveru.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: a7573e99de96e3d13509056c49bc24be7fe166bf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: babf2c8208732a194184549dfa5ed3228b376d0f
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906530"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710256"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
 
@@ -22,7 +22,7 @@ Query Performance Insight vám pomůže rychle zjistit, co nejdéle běží dota
 ## <a name="permissions"></a>Oprávnění
 K zobrazení textu dotazů v Query Performance Insight jsou nutná oprávnění **vlastníka** nebo **přispěvatele**. **Čtenář** může zobrazit grafy a tabulky, ale ne text dotazu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 Aby Query Performance Insight fungoval, musí existovat data v [úložišti dotazů](concepts-query-store.md).
 
 ## <a name="viewing-performance-insights"></a>Zobrazení přehledů výkonu
@@ -40,7 +40,7 @@ Tabulka pod grafem obsahuje další podrobnosti o dlouhotrvajících dotazech v 
 
 Vyberte kartu **Statistiky čekání** k zobrazení odpovídající vizualizace týkající se čekání na serveru.
 
-:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight čeká na statistiku":::
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight dlouho běžící dotazy":::
 
 ## <a name="considerations"></a>Požadavky
 * Query Performance Insight není pro [repliky čtení](concepts-read-replicas.md)k dispozici.

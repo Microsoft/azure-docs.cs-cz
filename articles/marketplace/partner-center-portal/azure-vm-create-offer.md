@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 9f48c06f075ccdc3c3c212e1ba7912707565cd87
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 46749015d5141053eaea3f2f251bbba7d9455481
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405050"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709012"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Vytvoření nabídky virtuálních počítačů Azure na Azure Marketplace
 
@@ -41,7 +41,7 @@ Pokud jste to ještě neudělali, Projděte si [příručku pro publikování na
 - Kurzy
   - [Virtuální počítače s Linuxem](../../virtual-machines/linux/tutorial-manage-vm.md)
   - [Virtuální počítače s Windows](../../virtual-machines/windows/tutorial-manage-vm.md)
-- Ukázky
+- ukázky
   - [Ukázky v Azure CLI pro virtuální počítače se systémem Linux](../../virtual-machines/linux/cli-samples.md)
   - [Azure PowerShell pro virtuální počítače se systémem Linux](../../virtual-machines/linux/powershell-samples.md)
   - [Ukázky v Azure CLI pro virtuální počítače s Windows](../../virtual-machines/windows/cli-samples.md)
@@ -180,7 +180,7 @@ Na stránce **seznam nabídek** můžete definovat podrobnosti nabídky, jako je
 
 ### <a name="marketplace-details"></a>Podrobnosti Marketplace
 
-#### <a name="name"></a>Název
+#### <a name="name"></a>Name
 
 Název, který zde zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole se vyplní názvem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit. Název:
 
@@ -196,7 +196,7 @@ Zadejte krátký popis vaší nabídky, který se zobrazí ve výsledcích hled�
 
 Zadejte delší popis nabídky, která se zobrazí ve výsledcích hledání Azure Marketplace. Může obsahovat až 256 znaků.
 
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -226,7 +226,7 @@ Poskytněte web podpory, kde se zákazníci můžou připojit k vašemu týmu po
 
 Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, když vaši zákazníci otevřou lístek podpory. Tyto informace nejsou uvedené na Azure Marketplace.
 
-- Název
+- Name
 - E-mail
 - Rozložení
 
@@ -234,7 +234,7 @@ Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, kd
 
 Poskytněte kontaktní informace Microsoftu pro použití v případě problémů s vaší nabídkou, včetně problémů s certifikací. Tyto informace nejsou uvedené na Azure Marketplace.
 
-- Název
+- Name
 - E-mail
 - Rozložení
 
@@ -242,7 +242,7 @@ Poskytněte kontaktní informace Microsoftu pro použití v případě problém�
 
 Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všechny obrázky musí být ve formátu PNG. Rozmazaný obraz způsobí odmítnutí odeslání.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu, kterou používá Partnerské centrum.
@@ -541,13 +541,13 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 4. podmínky a ujednání
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Název nabídky
-7. Popis
+7. Description
 8. Užitečné odkazy
 9. Snímky obrazovky a videa
 
 <br>Tady je příklad toho, jak se zobrazují informace nabídky ve výsledcích hledání Azure Marketplace:
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje ve výsledcích hledání Azure Marketplace.":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 
@@ -558,7 +558,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 
 <br>Tady je příklad Azure Marketplace podrobnosti o plánu:
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Ukazuje podrobnosti o Azure Marketplace plánu.":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 
@@ -568,7 +568,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 
 <br>Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Portal:
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Portal.":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 
@@ -579,7 +579,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 
 <br>Tady je příklad toho, jak se ve výsledcích hledání Azure Portal zobrazí informace o nabídce:
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje ve výsledcích hledání Azure Portal.":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 
@@ -589,7 +589,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 
 <br>Tady je příklad podrobností plánu Azure Portal:
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="Ukazuje podrobnosti o Azure Portal plánu.":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 

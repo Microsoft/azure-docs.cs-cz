@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: c3ffcea27fa16fd4f5449b42407a7e4779ca27f9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 33198f95ef0309cada6f5f11c809811f23d7f826
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420927"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708641"
 ---
 # <a name="offer-listing-best-practices"></a>Osvědčené postupy nabídky
 
@@ -35,16 +35,16 @@ Kategorie a odvětví pro jiný online obchod budou platit pro různé typy nab�
 | Online obchod | Kategorie <br>podle online obchodu | Kategorie <br>podle online obchodu | Obory <br> pro AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **Typ nabídky**   |  **Azure Marketplace**  | **AppSource**  |
-| Aplikace Azure | X | |
-| Kontejner | X | |
-| Konzultační služby | | | X |
+| Aplikace Azure | × | |
+| Kontejner | × | |
+| Konzultační služby | | | × |
 | Dynamics 365 Customer Engagement & Power Platform | | X | X |
 | Správa dodavatelských řetězců & finance Dynamics 365 | | X | X | 
 | Dynamics 365 Business Central | | X | X |
-| Moduly IoT Edge | X | |
+| Moduly IoT Edge | × | |
 | Power BI | | X | X |
 | SaaS | X | X | X |
-| Virtuální počítač Azure |  X |    |
+| Virtuální počítač Azure |  × |    |
 
 ### <a name="categories"></a>Kategorie
 
@@ -61,7 +61,8 @@ Vyberte kategorie a podkategorie, které nejlépe odpovídají vašemu typu ře�
 
 #### <a name="important-saas-offers-and-microsoft-365-add-ins"></a>Důležité: SaaS nabídky a doplňky pro Microsoft 365
 
-Konkrétní podrobnosti o tom, jak mohou možnosti jazyka Transact ovlivnit zobrazení a nákup zákazníků z webu Marketplace, najdete v [příručce podle typu nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) . V případě nabídek SaaS se funkce transakce nabídky a výběr kategorie určí online obchod, ve kterém se vaše nabídka publikuje:
+Konkrétní informace o tom, jak možnosti Transact můžou ovlivnit, jak můžou zákazníci na webu Marketplace zobrazit a koupit, najdete v tématu věnovaném [transakcím na komerčním webu Marketplace](marketplace-commercial-transaction-capabilities-and-considerations.md) . V případě nabídek SaaS se funkce transakce nabídky a výběr kategorie určí online obchod, kde bude vaše nabídka publikovaná.
+
 
 | Nabídka SaaS    | Nabídka SaaS   | Nabídka SaaS  | Nabídka SaaS   | Nabídka SaaS   | Nabídka SaaS   | Nabídka SaaS    | Příslušný online obchod| Příslušný online obchod |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
@@ -73,7 +74,7 @@ Konkrétní podrobnosti o tom, jak mohou možnosti jazyka Transact ovlivnit zobr
 |  |  |  | X | X |  |  |  | X |
 |  |  |  | X |  | X |  | ×<sup>1</sup> | ×<sup>1</sup> |
 |  |  |  | X |  |  | X | ×<sup>1</sup> | ×<sup>1, 2</sup> |
-|  |  | X |  |  |  |  | ×<sup>1</sup> | ×<sup>1</sup> | 
+|  |  | × |  |  |  |  | ×<sup>1</sup> | ×<sup>1</sup> | 
 
 1. V závislosti na kategoriích/podkategoriích a průmyslových výběrech
 2. Nabídky s privátními plány budou publikovány na Azure Portal

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 12987ae687e9af59fdd71b3aa846612c947b9a90
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cbaca0b9d608d7703beec559e5434f52308629ab
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649261"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709100"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Vytvoření nabídky kontejnerů Azure na Azure Marketplace
 
@@ -80,10 +80,10 @@ Při publikování vaší nabídky na komerční tržišti s partnerským centre
 
 Tady jsou některé další zdroje informací o vedoucím řízení:
 
-- [Přehled řízení vedoucích](commercial-marketplace-get-customer-leads.md)
-- [Nejčastější dotazy ke správě potenciálních zákazníků](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
-- [Běžné chyby konfigurace potenciálních zákazníků](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
-- [Přehled řízení vedoucích](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Ujistěte se, že je vypnutý blokování automaticky otevíraných oken)
+- [Potenciální zákazníci z komerční nabídky na webu Marketplace](commercial-marketplace-get-customer-leads.md)
+- [Běžné otázky týkající se správy potenciálních zákazníků](../lead-management-faq.md#common-questions-about-lead-management)
+- [Řešení chyb konfigurace potenciálních zákazníků](../lead-management-faq.md#publishing-config-errors)
+- [Přehled řízení vedoucích](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Ujistěte se, že je vypnutý blokování automaticky otevíraných oken).
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
@@ -122,7 +122,7 @@ Pokud chcete použít standardní smlouvu, vyberte * * použít standardní smlo
 
 ##### <a name="your-own-terms-and-conditions"></a>Vaše vlastní podmínky a ujednání
 
-Pokud chcete zadat vlastní podmínky a ujednání, zadejte je do pole **podmínky a ujednání** . V tomto poli můžete zadat neomezené množství znaků textu. Zákazníci musí tyto podmínky přijmout, aby mohli svoji nabídku vyzkoušet.
+Pokud chcete zadat vlastní podmínky a ujednání, zadejte je do pole **podmínky a ujednání** . V tomto poli můžete zadat neomezený počet znaků textu. Zákazníci musí tyto podmínky přijmout, aby mohli svoji nabídku vyzkoušet.
 
 Než budete pokračovat k další části seznamu nabídek, vyberte **Uložit koncept** .
 
@@ -151,7 +151,7 @@ Krátký popis vaší nabídky Může to být až 100 znaků dlouhé a použív�
 
 Podrobnější popis vaší nabídky. Může to být až 256 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -180,7 +180,7 @@ Musíte zadat jméno, e-mail a telefonní číslo pro **kontakt podpory** a **te
 
 V části **kontakt podpory** zadejte **web podpory** , kde partneři můžou najít podporu pro vaši nabídku na základě toho, jestli je nabídka dostupná v globálním Azure, Azure Government nebo obojí.
 
-V části **kontakt programu CSP** zadejte odkaz ( **marketingové materiály programu CSP** ), kde mohou partneři CSP najít marketingové materiály pro vaši nabídku.
+V části **kontakt programu CSP** zadejte odkaz (**marketingové materiály programu CSP**), kde mohou partneři CSP najít marketingové materiály pro vaši nabídku.
 
 #### <a name="additional-marketplace-listing-resources"></a>Další prostředky pro výpis Marketplace
 
@@ -190,7 +190,7 @@ Další informace o vytváření seznamů nabídek najdete v tématu věnovaném
 
 Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všechny obrázky musí být ve formátu PNG. Rozmazaný obraz se odmítne.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu používanou partnerským centrem.
@@ -223,19 +223,19 @@ Následující příklady ukazují, jak se pole seznamu nabídky zobrazují na r
 
 Tím se zobrazí stránka se **seznamem nabídek** v Azure Marketplace:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Znázorňuje stránku se seznamem nabídek v Azure Marketplace." :::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Znázorňuje použití zaškrtávacího políčka standardní smlouva pro komerčního tržiště Microsoftu." :::
 
 Zobrazí se výsledky hledání v Azure Marketplace:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Znázorňuje výsledky hledání v Azure Marketplace.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Znázorňuje použití zaškrtávacího políčka standardní smlouva pro komerčního tržiště Microsoftu.":::
 
 Tím se zobrazí stránka se **seznamem nabídek** v Azure Portal:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Znázorňuje stránku se seznamem nabídek v Azure Portal.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Znázorňuje použití zaškrtávacího políčka standardní smlouva pro komerčního tržiště Microsoftu.":::
 
 Zobrazí se výsledky hledání v Azure Portal:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Znázorňuje výsledky hledání v Azure Portal.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Znázorňuje použití zaškrtávacího políčka standardní smlouva pro komerčního tržiště Microsoftu.":::
 
 ## <a name="preview"></a>Preview
 
@@ -328,11 +328,11 @@ Následující příklady ukazují, jak se pole seznamu plánu zobrazují v růz
 
 Jedná se o pole v Azure Marketplace při prohlížení podrobností plánu:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="Zobrazuje pole, která se zobrazí při zobrazení podrobností plánu v Azure Marketplace.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="Znázorňuje použití zaškrtávacího políčka standardní smlouva pro komerčního tržiště Microsoftu.":::
 
 Podrobnosti o plánu Azure Portal:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Ukazuje informace o plánu Azure Portal.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Znázorňuje použití zaškrtávacího políčka standardní smlouva pro komerčního tržiště Microsoftu.":::
 
 ### <a name="plan-availability"></a>Dostupnost plánu
 
@@ -363,11 +363,11 @@ Na kartě **Podrobnosti o úložišti imagí** zadejte následující informace.
 
 **Uživatelské jméno správce pro Azure Container Registry** – zadejte [uživatelské jméno správce](../../container-registry/container-registry-authentication.md#admin-account)) propojené s Azure Container Registry, které má vaši image kontejneru. Aby vaše společnost měla přístup k registru, je nutné zadat uživatelské jméno a heslo. Pokud chcete získat uživatelské jméno a heslo správce, nastavte vlastnost s **povoleným správcem** na **hodnotu true** pomocí rozhraní příkazového řádku (CLI) Azure. Volitelně můžete nastavit **uživatele správce** tak, aby **povoloval** v Azure Portal.
 
- :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Ukazuje dialogové okno aktualizace registru kontejneru.":::
+ :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Znázorňuje použití zaškrtávacího políčka standardní smlouva pro komerčního tržiště Microsoftu.":::
 
 **Heslo pro Azure Container Registry** – zadejte heslo pro uživatelské jméno správce, které je přidružené k Azure Container registry a má vaši image kontejneru. Aby vaše společnost měla přístup k registru, je nutné zadat uživatelské jméno a heslo. Heslo z Azure Portal můžete získat tak, že v **Container Registry**  >  **přístupové klávesy** nebo pomocí Azure CLI použijete [příkaz show](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show).
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Ukazuje nabídku přístupová klávesa.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Znázorňuje použití zaškrtávacího políčka standardní smlouva pro komerčního tržiště Microsoftu.":::
 
 **Název úložiště v rámci Azure Container Registry**. Zadejte název úložiště Azure Container Registry, které obsahuje váš obrázek. Při odesílání image do registru zahrňte název úložiště. Název úložiště můžete najít tak, že kliknete na stránku [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **úložišť** . Další informace najdete v tématu [zobrazení úložišť registru kontejnerů v Azure Portal](../../container-registry/container-registry-repositories.md).
 

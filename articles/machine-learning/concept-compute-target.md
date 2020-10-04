@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/27/2020
-ms.openlocfilehash: 6b166e46c8ebb640e15c005e2ddae3161e141f10
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 09/29/2020
+ms.openlocfilehash: ca23bb49a3592dcc139bcc04875f3867018e158d
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446782"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707726"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Jaké jsou výpočetní cíle v Azure Machine Learning? 
 
@@ -28,18 +28,31 @@ Typický životní cyklus vývoje modelu vám může:
 Výpočetní prostředky, které používáte pro cíle výpočtů, jsou připojené k [pracovnímu prostoru](concept-workspace.md). Výpočetní prostředky jiné než místní počítač sdílí uživatelé pracovního prostoru.
 
 ## <a name="training-compute-targets"></a><a name="train"></a> Školení výpočetních cílů
-
-Azure Machine Learning má různou podporu v různých výpočetních prostředcích.  Můžete také připojit vlastní výpočetní prostředek, i když se podpora různých scénářů může lišit.
+Azure Machine Learning má různou podporu napříč různými výpočetními cíli. Typický životní cyklus vývoje modelu začíná vývojem a experimentováním s malým množstvím dat. V této fázi doporučujeme použít místní prostředí. Například váš místní počítač nebo cloudový virtuální počítač. Při horizontálním navýšení kapacity nebo provádění distribuovaných školení doporučujeme pomocí Azure Machine Learning COMPUTE vytvořit cluster s jedním nebo několika uzly, který při každém odeslání běhu provede automatické škálování. Můžete také připojit vlastní výpočetní prostředek, i když se podpora různých scénářů může lišit, jak je popsáno níže:
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
-Přečtěte si další informace o [použití výpočetní cíle pro školení modelů](how-to-set-up-training-targets.md).
+Přečtěte si další informace o tom, jak [Odeslat školicí běh do cílového výpočetního](how-to-set-up-training-targets.md)prostředí.
 
-## <a name="deployment-targets"></a><a name="deploy"></a>Cíle nasazení
+## <a name="compute-targets-for-inference"></a><a name="deploy"></a> Výpočetní cíle pro odvození
 
 K hostování nasazení modelu lze použít následující výpočetní prostředky.
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+Při vykonávání odvození Azure Machine Learning vytvoří kontejner Docker, který je hostitelem modelu a přidružených prostředků potřebných k jeho použití. Tento kontejner se pak použije v jednom z následujících scénářů nasazení:
+
+* Jako __webovou službu__ , která se používá pro odvození v reálném čase. Nasazení webové služby používají jeden z následujících výpočetních cílů:
+
+    * [Místní počítač](how-to-attach-compute-targets.md#local)
+    * [Výpočetní instance Azure Machine Learningu](how-to-create-manage-compute-instance.md)
+    * [Azure Container Instances](how-to-attach-compute-targets.md#aci)
+    * [Azure Kubernetes Service](how-to-create-attach-kubernetes.md)
+    * Azure Functions (Preview). Nasazení na Azure Functions spoléhá jenom na Azure Machine Learning k sestavení kontejneru Docker. Odtud je nasazena pomocí Azure Functions. Další informace najdete v tématu [nasazení modelu Machine Learning do Azure Functions (Preview)](how-to-deploy-functions.md).
+
+* Jako koncový bod __odvození dávky__ , který slouží k pravidelnému zpracování dávek dat. Odvození dávky využívají [Azure Machine Learning výpočetní cluster](how-to-create-attach-compute-cluster.md).
+
+* Do __zařízení IoT__ (Preview). Nasazení do zařízení IoT spoléhá jenom na Azure Machine Learning k sestavení kontejneru Docker. Odtud je nasazena pomocí Azure IoT Edge. Další informace najdete v tématu [nasazení jako modulu IoT Edge (Preview)](/azure/iot-edge/tutorial-deploy-machine-learning).
 
 Naučte se [, jak a jak model nasadit do cílového výpočetního prostředí](how-to-deploy-and-where.md).
 
@@ -50,8 +63,9 @@ Spravovaný výpočetní prostředek je vytvořený a spravovaný pomocí Azure 
 
 Můžete vytvořit Azure Machine Learning výpočetní instance nebo výpočetní clustery z:
 * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
-* portál Azure
-* Třídy Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance%28class%29?view=azure-ml-py&preserve-view=true) a [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py&preserve-view=true)
+* Sada SDK Pythonu a rozhraní příkazového řádku:
+    * [Instance služby Compute](how-to-create-manage-compute-instance.md)
+    * [Výpočetní cluster](how-to-create-attach-compute-cluster.md)
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Preview)
 * Šablona Správce prostředků. Příklad šablony naleznete v tématu [create Azure Machine Learning COMPUTE Template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute).
 * Rozšíření Machine Learning [pro rozhraní příkazového řádku Azure](reference-azure-machine-learning-cli.md#resource-management)  
@@ -68,7 +82,7 @@ Když se tyto výpočetní prostředky vytvoří automaticky, na rozdíl od jin�
 
 
 > [!NOTE]
-> Pokud je výpočetní cluster nečinný, přiřadí se automatické škálování na 0 uzlů, takže nebudete platit, když se nepoužívá.  *Instance*COMPUTE je ale vždycky zapnutá a neprovádí automatické škálování.  [Výpočetní instanci](concept-compute-instance.md#managing-a-compute-instance) byste měli zastavit, pokud ji nepoužíváte, abyste se vyhnuli dodatečným nákladům. 
+> Pokud je výpočetní cluster nečinný, přiřadí se automatické škálování na 0 uzlů, takže nebudete platit, když se nepoužívá.  *Instance*COMPUTE je ale vždycky zapnutá a neprovádí automatické škálování.  [Výpočetní instanci](how-to-create-manage-compute-instance.md#manage) byste měli zastavit, pokud ji nepoužíváte, abyste se vyhnuli dodatečným nákladům. 
 
 ### <a name="supported-vm-series-and-sizes"></a>Podporované řady a velikosti virtuálních počítačů
 
@@ -90,7 +104,7 @@ Další informace o podporovaných řadách a omezeních najdete v následujíc�
 | FSv2 | Žádné | 
 | HBv2 | Vyžaduje schválení |  
 | KLIENTOVI HCS | Vyžaduje schválení |  
-| Ú | Vyžaduje schválení |
+| M | Vyžaduje schválení |
 | NC | Žádné |    
 | NCsv2 | Vyžaduje schválení |
 | NCsv3 | Vyžaduje schválení |  

@@ -1,17 +1,17 @@
 ---
 title: Protokolování auditu – Azure Database for PostgreSQL – jeden server
 description: Koncepty pro protokolování auditu pgAudit v Azure Database for PostgreSQL-Single server.
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: 165e7984c21b74fa7730fc02756b9e75b4b33aa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efd4cb7c0c5db50729539373938ebccd689dee42
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131247"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708981"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Protokolování auditu Azure Database for PostgreSQL – jeden server
 
@@ -66,7 +66,7 @@ Jakmile [nainstalujete pgAudit](#installing-pgaudit), můžete nakonfigurovat je
 
 > [!NOTE]
 > Nastavení na `pgaudit.log_client` zapnuto bude přesměrovat protokoly do klientského procesu (například psql) místo zápisu do souboru. Toto nastavení by se obecně mělo nechávat zakázané. <br> <br>
-> `pgaudit.log_level`je povoleno pouze `pgaudit.log_client` v případě, že je zapnuto.
+> `pgaudit.log_level` je povoleno pouze `pgaudit.log_client` v případě, že je zapnuto.
 
 > [!NOTE]
 > V Azure Database for PostgreSQL `pgaudit.log` nelze nastavit pomocí `-` zástupce znaménka (minus), jak je popsáno v dokumentaci k pgAudit. Všechny požadované třídy příkazů (ČTENÍ, ZÁPIS atd.) je potřeba zadat zvlášť.
@@ -74,7 +74,7 @@ Jakmile [nainstalujete pgAudit](#installing-pgaudit), můžete nakonfigurovat je
 ### <a name="audit-log-format"></a>Formát protokolu auditu
 Každá položka auditu je uvedena `AUDIT:` poblíž začátku řádku protokolu. Formát zbytku položky je podrobně popsán v [dokumentaci k pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#format).
 
-Pokud k splnění požadavků na audit potřebujete další pole, použijte parametr Postgres `log_line_prefix` . `log_line_prefix`je řetězec, který je výstupem na začátku každého řádku protokolu Postgres. Například následující `log_line_prefix` nastavení poskytuje časové razítko, uživatelské jméno, název databáze a ID procesu:
+Pokud k splnění požadavků na audit potřebujete další pole, použijte parametr Postgres `log_line_prefix` . `log_line_prefix` je řetězec, který je výstupem na začátku každého řádku protokolu Postgres. Například následující `log_line_prefix` nastavení poskytuje časové razítko, uživatelské jméno, název databáze a ID procesu:
 
 ```
 t=%m u=%u db=%d pid=[%p]:

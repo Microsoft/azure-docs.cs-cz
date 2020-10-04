@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 29930a835297b0ddd3a91534dab9ccb6d74896e3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8ac5b0976e677cc48fb3fe47c50797b07acdbc44
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967555"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708862"
 ---
 # <a name="about-keys"></a>Informace o klíčích
 
@@ -47,7 +47,7 @@ Klíče chráněné HSM (označované také jako klíče HSM) se zpracovávají 
 - Trezory používají ověřený **Standard FIPS 140-2 úrovně 2** HSM k ochraně klíčů HSM ve sdílené back-ENDOVÉ infrastruktuře HSM. 
 - Spravované fondy HSM používají ověřované moduly HSM **140-2 úrovně 3** k ochraně vašich klíčů. Každý fond HSM je izolovaná instance jednoho tenanta s vlastní [doménou zabezpečení](../managed-hsm/security-domain.md) , která poskytuje úplnou izolaci šifrování ze všech ostatních fondů HSM, které sdílejí stejnou hardwarovou infrastrukturu.
 
-Tyto klíče jsou chráněné ve fondech HSM pro jeden tenant. Můžete importovat RSA, EC a symetrický klíč, v měkkém tvaru nebo vyexportovat z podporovaného zařízení HSM. Můžete také vygenerovat klíče ve fondech HSM. Když naimportujete klíče HSM pomocí klíčů pomocí metody popsané ve [specifikaci BYOK (Přineste si vlastní klíč)](../keys/byok-specification.md), povolíte zabezpečený materiál pro přenos klíčů do spravovaných fondů HSM. 
+Tyto klíče jsou chráněné ve fondech HSM pro jeden tenant. Můžete importovat RSA, EC a symetrický klíč, v měkkém tvaru nebo vyexportovat z podporovaného zařízení HSM. Můžete také vygenerovat klíče ve fondech HSM. Když naimportujete klíče HSM pomocí metody popsané ve [specifikaci BYOK (Přineste si vlastní klíč)](../keys/byok-specification.md), umožníte klíčům zabezpečeného přenosu klíčů do spravovaných fondů HSM. 
 
 Další informace o geografických hranicích najdete v tématu [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/) .
 
@@ -217,7 +217,7 @@ Další informace o práci s klíči naleznete v tématu [klíčové operace v o
 
 ## <a name="next-steps"></a>Další kroky
 - [Informace o službě Key Vault](../general/overview.md)
-- [O spravovaném modulu HSM](../managed-hsm/overview.md)
+- [Informace o službě Managed HSM](../managed-hsm/overview.md)
 - [Informace o tajných kódech](../secrets/about-secrets.md)
 - [Informace o certifikátech](../certificates/about-certificates.md)
 - [Přehled Key Vault REST API](../general/about-keys-secrets-certificates.md)

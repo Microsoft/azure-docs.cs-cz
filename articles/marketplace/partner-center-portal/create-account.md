@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/01/2020
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: 64788544971eaa7738013ab1a0475771c13bab88
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 96a11caa93a925731ad2f24ac860b21301a29cdf
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647648"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708182"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření účtu obchodního tržiště v partnerském centru
 
@@ -80,7 +80,7 @@ Váš profil vydavatele obsahuje název vaší společnosti a ID MPN. Pokud jste
     
 1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení**nastavení  >  **partnerských**  >  **programů programy**.
 
-V partnerském centru jste nyní vytvořili účet komerčního tržiště. Další informace najdete v tématu [Přehled komerčního tržiště](./commercial-marketplace-overview.md). Nápovědu k přidávání vydavatelů najdete v tématu [Přidání nových vydavatelů do komerčního tržiště](#add-new-publishers-to-the-commercial-marketplace-program).
+V partnerském centru jste nyní vytvořili účet komerčního tržiště. Nápovědu k přidávání vydavatelů najdete v tématu [Přidání nových vydavatelů do komerčního tržiště](#add-new-publishers-to-the-commercial-marketplace-program).
 
 ## <a name="create-an-account-by-using-existing-microsoft-partner-center-enrollments"></a>Vytvoření účtu pomocí stávajících zápisů z partnerského centra Microsoftu
 
@@ -129,7 +129,7 @@ Až se přihlásíte, dokončete nastavení účtu následujícím způsobem:
     
 1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení**nastavení  >  **partnerských**  >  **programů programy**.
 
-V partnerském centru jste nyní vytvořili účet komerčního tržiště. Další informace najdete v tématu [Přehled komerčního tržiště](./commercial-marketplace-overview.md). Nápovědu k přidávání vydavatelů najdete v tématu [Přidání nových vydavatelů do komerčního tržiště](#add-new-publishers-to-the-commercial-marketplace-program).
+V partnerském centru jste nyní vytvořili účet komerčního tržiště. Nápovědu k přidávání vydavatelů najdete v tématu [Přidání nových vydavatelů do komerčního tržiště](#add-new-publishers-to-the-commercial-marketplace-program).
 
 ### <a name="what-if-im-already-enrolled-in-a-developer-program"></a>Co když už je zaregistrované v programu pro vývojáře?
 
@@ -157,7 +157,7 @@ Až se přihlásíte k partnerskému centru, dokončete nastavování účtu pom
     
 1. Pokud chcete ověřit, že účet komerčního tržiště je uvedený jako registrovaný, vyberte **Nastavení**nastavení  >  **partnerských**  >  **programů programy**.
 
-V partnerském centru jste nyní vytvořili účet komerčního tržiště. Další informace najdete v tématu [Přehled komerčního tržiště](./commercial-marketplace-overview.md). Nápovědu k přidávání vydavatelů najdete v tématu [Přidání nových vydavatelů do komerčního tržiště](#add-new-publishers-to-the-commercial-marketplace-program).
+V partnerském centru jste nyní vytvořili účet komerčního tržiště. Nápovědu k přidávání vydavatelů najdete v tématu [Přidání nových vydavatelů do komerčního tržiště](#add-new-publishers-to-the-commercial-marketplace-program).
 
 ## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>Pro vydavatele, kteří se přesunuli z portál partnerů cloudu
 
@@ -190,4 +190,5 @@ Po dokončení tohoto procesu můžete nově vytvořený Vydavatel spravovat tak
 
 ## <a name="next-steps"></a>Další kroky
 
+- [Co je komerční tržiště Microsoftu?](../overview.md)
 - [Správa účtu komerčního tržiště v partnerském centru](./manage-account.md)

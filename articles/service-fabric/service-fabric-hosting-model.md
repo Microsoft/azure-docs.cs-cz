@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e14995b92e99e1a9695f81fb71bcab6dd62303a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5f3f6238bb72704d13fef4a7171aeaebee5f9141
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011663"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708692"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Model hostování Azure Service Fabric
 Tento článek obsahuje přehled modelů hostování aplikací poskytovaných službou Azure Service Fabric a popisuje rozdíly mezi **sdíleným procesem** a modely **exkluzivních procesů** . Popisuje, jak nasazená aplikace vypadá na Service Fabric uzlu, a vztahu mezi replikami (nebo instancemi) služby a procesem služby-Host.
@@ -30,19 +30,19 @@ Abychom porozuměli hostujícímu modelu, Podívejme se na příklad. Řekněme,
 Řekněme, že máme cluster se třemi uzly a vytvoříme *aplikační* **Fabric:/app1** typu MyAppType. V rámci této aplikace **Fabric:/app1**vytvoříme Service **Fabric:/app1/služba** typu MyServiceType. Tato služba má dva oddíly (například **P1** a **P2**) a tři repliky na oddíl. Následující diagram znázorňuje zobrazení této aplikace v případě, že skončí její nasazení na uzlu.
 
 
-![Diagram zobrazení uzlů nasazené aplikace][node-view-one]
+![Diagram, který zobrazuje zobrazení této aplikace v případě, že končí nasazení na uzlu.][node-view-one]
 
 
 Service Fabric aktivoval ' MyServicePackage ', který spustil ' MyCodePackage ', který hostuje repliky z obou oddílů. Všechny uzly v clusteru mají stejné zobrazení, protože jsme zvolili počet replik na oddíl, který se rovná počtu uzlů v clusteru. Pojďme vytvořit další službu, **Fabric:/app1/ServiceB**v Application **Fabric:/app1**. Tato služba má jeden oddíl (například **P3**) a tři repliky na oddíl. Následující diagram znázorňuje nové zobrazení na uzlu:
 
 
-![Diagram zobrazení uzlů nasazené aplikace][node-view-two]
+![Diagram, který zobrazuje nové zobrazení na uzlu.][node-view-two]
 
 
 Service Fabric umístit novou repliku pro oddíl **P3** Service **Fabric:/app1/ServiceB** v existující aktivaci ' MyServicePackage '. Současné. Pojďme vytvořit další aplikační **Fabric:/app2** typu MyAppType. V **prostředcích infrastruktury:/app2**vytvořte Service **Fabric:/app2/Service**. Tato služba má dva oddíly (**P4** a **P5**) a tři repliky na oddíl. Následující diagram znázorňuje zobrazení nového uzlu:
 
 
-![Diagram zobrazení uzlů nasazené aplikace][node-view-three]
+![Diagram, který zobrazuje nové zobrazení uzlu.][node-view-three]
 
 
 Service Fabric aktivuje novou kopii ' MyServicePackage ', která spustí novou kopii ' MyCodePackage '. V této nové kopii MyCodePackage jsou umístěné repliky z obou oddílů Service **Fabric:/app2/Service-** (**P4** a **P5**).
@@ -157,7 +157,7 @@ Teď řekněme, že vytvoříme aplikaci, **Fabric:/SpecialApp**. V **prostředc
 V daném uzlu mají obě služby dvě repliky každý. Vzhledem k tomu, že jsme k vytváření služeb použili model exkluzivních procesů, Service Fabric pro každou repliku aktivovat novou kopii ' MyServicePackage '. Každá aktivace ' MultiTypeServicePackage ' spustí kopii ' MyCodePackageA ' a ' MyCodePackageB '. Pouze jedna z ' MyCodePackageA ' nebo ' MyCodePackageB ' hostuje repliku, pro kterou byla aktivována ' MultiTypeServicePackage '. Následující diagram znázorňuje zobrazení uzlu:
 
 
-![Diagram zobrazení uzlu nasazené aplikace][node-view-five]
+![Diagram znázorňující zobrazení uzlu][node-view-five]
 
 
 Při aktivaci ' MultiTypeServicePackage ' pro repliku oddílu **P1** služby Service **Fabric:/SpecialApp/Service**', ' MyCodePackageA ' hostuje repliku. ' MyCodePackageB ' je spuštěn. Podobně v aktivaci MultiTypeServicePackage pro repliku oddílu **P3** služby Service **Fabric:/SpecialApp/ServiceB**, ' MyCodePackageB ' hostuje repliku. ' MyCodePackageA ' je spuštěn. Čím větší je počet *CodePackages* (registrování různých *servicetypeí*) na každou *ServicePack*, tím vyšší je využívání redundantních prostředků. 

@@ -7,16 +7,16 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 247a5c89b52c6b58f2e1d04723f4f73b85aeb153
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: bdd2dacbba4ef8b7c439a345ea70771354b7fb5a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400736"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708590"
 ---
 # <a name="cloud-solution-provider-program"></a>Program Cloud Solution Provider
 
-Tento článek vysvětluje, jak nakonfigurovat nabídku, která bude k dispozici pro program poskytovatele Cloud Solution Provider (CSP). Kromě publikování vašich nabídek prostřednictvím služby [komerčního obchodu na webu Marketplace](comparing-appsource-azure-marketplace.md)můžete také provést prodej prostřednictvím programu CSP, abyste mohli oslovit miliony kvalifikovaných zákazníků Microsoftu, které tento program obsluhuje.
+Tento článek vysvětluje, jak nakonfigurovat nabídku, která bude k dispozici pro program poskytovatele Cloud Solution Provider (CSP). Kromě publikování vašich nabídek prostřednictvím služby [komerčního obchodu na webu Marketplace](overview.md#commercial-marketplace-online-stores)můžete také provést prodej prostřednictvím programu CSP, abyste mohli oslovit miliony kvalifikovaných zákazníků Microsoftu, které tento program obsluhuje.
 
 Můžete nakonfigurovat nové nebo existující nabídky pro dostupnost v programu CSP na základě výslovného souhlasu, který partnerům CSP umožní prodávat vaše produkty a vytvářet řešení pro zákazníky.
 
@@ -60,7 +60,7 @@ Vyberte si ze tří možností:
 
 Výběrem této možnosti autorizujete, kteří partneři v programu CSP mají nárok na prodej vaší nabídky.
 
-Pokud chcete partnerům autorizovat, klikněte na **Vybrat partneři CSP** a zobrazí se nabídka, která vám umožní Hledat podle názvu partnera nebo ID tenanta Azure Active Directory (CSP).
+K autorizaci partnerů vyberte **Vybrat partneři CSP** a otevřenou nabídku, která vám umožní Hledat podle názvu partnera nebo CSP Azure Active Directory (Azure AD) ID tenanta.
 
 ![Výběr nabídky CSP](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
@@ -81,7 +81,7 @@ Pokud chcete zaregistrovat změny, vyberte **Uložit koncept** .
 Pokud je tato nabídka Nepublikovaná, budete ji muset publikovat, abyste ji mohli zpřístupnit vybraným partnerům.
 
 >[!NOTE]
->Pokud v dané oblasti autorizujete partnera v programu CSP, může prodávat nabídku zákazníkovi, který patří do příslušné oblasti. Další informace o tom, jak jsou v oblastech klasifikovány nabídky CSP, najdete v tématu [Cloud Solution Provider program – místní trhy a měnu](https://docs.microsoft.com/partner-center/regional-authorization-overview) .
+>Pokud v dané oblasti autorizujete partnera v programu CSP, může prodávat nabídku zákazníkovi, který patří do příslušné oblasti. Další informace o tom, jak jsou v oblastech klasifikovány nabídky CSP, najdete v tématu věnovaném [cloudovým řešením pro regionální trhy a měnu](https://docs.microsoft.com/partner-center/regional-authorization-overview).
 
 Pokud aktualizujete seznam CSP již publikované nabídky, přidejte další partnery a vyberte **synchronizovat cílovou skupinu CSP**.
 
@@ -147,7 +147,7 @@ Pokud je vaše nabídka v současné době **možnost 2: konkrétní partneři v
 5. Vyberte možnost **Další** , aby se přesměrovala na **stránku podrobnosti o problému** , kde můžete zadat další podrobnosti o vašem problému.
 6. Jako název problému použijte **deautorizovat CSP** a vyplňte zbývající části požadovaných oddílů.
 
- Pokud je vaše nabídka v současné době **možnost 2: konkrétní partneři v programu CSP** , který je vybrán a chcete přejít k **Možnosti 3: žádní partneři v programu CSP**, budete moci přejít na tuto možnost pouze v případě, že partneři v programu CSP, který jste předtím povolili, neprodali vaši nabídku koncovým zákazníkům. K vytvoření žádosti prosím použijte následující pokyny:
+ Pokud je vaše nabídka v současné době **možnost 2: konkrétní partneři v programu CSP** , který je vybrán a chcete přejít k **Možnosti 3: žádní partneři v programu CSP**, budete moci přejít na tuto možnost pouze v případě, že partneři v programu CSP, který jste předtím povolili, neprodali vaši nabídku koncovým zákazníkům. K vytvoření žádosti použijte následující pokyny:
 
 1. Přejít na [stránku support Request](https://aka.ms/marketplacepublishersupport). Pro vás se automaticky vyplní prvních několik rozevíracích nabídek.
 
@@ -170,14 +170,11 @@ Aby mohli partneři v programu Cloud Solution Provider efektivně představovat 
 
 ### <a name="partner-center-csp-channel"></a>Kanál CSP pro partnerské Centrum
 
-Pokud jste se přihlásili do kanálu CSP v partnerském centru, musí vydavatelé zadat adresu URL, která hostuje relevantní marketingové materiály a kontaktní informace kanálu, do kanálu CSP v modulu seznam nabídek:
+Pokud jste se přihlásili do kanálu CSP v partnerském centru, musí vydavatelé zadat adresu URL, která hostuje relevantní marketingové materiály a kontaktní údaje kanálu v modulu seznamu nabídek.
 
 ![Informace o prostředcích CSP partnerského centra](media/marketplace-publishers-guide/pc-csp-channel.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Navštivte [příručku pro vydavatele Azure Marketplace a AppSource](marketplace-publishers-guide.md).
-
-Další informace o službách GTM na webu Marketplace najdete v tématu [služby pro uvedení na trh](https://partner.microsoft.com/reach-customers/gtm).
-
-Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) , abyste mohli vytvořit a nakonfigurovat vaši nabídku.
+- Přečtěte si další informace o [službách pro uvedení na trh](https://partner.microsoft.com/reach-customers/gtm).
+- Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) , abyste mohli vytvořit a nakonfigurovat vaši nabídku.

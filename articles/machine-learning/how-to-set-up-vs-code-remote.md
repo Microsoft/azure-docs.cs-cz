@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 09/03/2020
-ms.openlocfilehash: 2c7ff633705d3db327c563b41ce199a5342dda82
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6ac116b315d4a11b51b37c5b51edf35aa0676713
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461557"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708369"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Připojení k Azure Machine Learning výpočetní instance v Visual Studio Code (Preview)
 
@@ -68,7 +68,7 @@ V tuto chvíli můžete dál spouštět buňky v Jupyter poznámkovém bloku.
 Pro plně funkční vzdálené vývojové prostředí budete potřebovat několik požadavků:
 
 * [Visual Studio Code vzdálené rozšíření SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
-* Výpočetní instance s povoleným SSH Další informace najdete v [Průvodci vytvořením výpočetní instance](concept-compute-instance.md#create).
+* Výpočetní instance s povoleným SSH Další informace najdete v [Průvodci vytvořením výpočetní instance](how-to-create-manage-compute-instance.md).
 
 > [!NOTE]
 > Na platformách systému Windows je nutné [nainstalovat klienta ssh kompatibilního s OpenSSH](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) , pokud ještě není přítomen. Výstup do systému Windows není podporován, protože příkaz SSH musí být v cestě.
@@ -130,7 +130,7 @@ Host azmlci1
 
 Zde jsou některé podrobnosti o polích:
 
-|Pole|Popis|
+|Pole|Description|
 |----|---------|
 |Hostitel|Použijte libovolné zkratky, které chcete použít pro instanci služby Compute. |
 |Název hostitele|Toto je IP adresa instance Compute. |

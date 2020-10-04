@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 93b47d2147a7438ebd38a5ae36363950639ba414
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 2679d24a9e8c821dae73114f32adbeb3d22a1458
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380769"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708896"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>Jak vytvořit nabídku SaaS na komerčním webu Marketplace
 
@@ -69,7 +69,7 @@ Testovací jednotka představuje skvělý způsob, jak předprezentovat vaši na
 Připojte svůj systém pro řízení vztahů se zákazníky (CRM) pomocí komerční nabídky na webu Marketplace, abyste mohli dostávat kontaktní údaje zákazníka, když zákazník vyjádří zájem nebo nasadí váš produkt. Toto připojení můžete kdykoli změnit během nebo po vytvoření nabídky.
 
 > [!NOTE]
-> Pokud chcete nabídku prodávat přes společnost Microsoft nebo jste vybrali možnost **kontakt mi** , musíte nakonfigurovat správu potenciálních zákazníků. Podrobné pokyny najdete v tématu [Správa vedoucích komerčního tržiště](lead-management-for-cloud-marketplace.md).
+> Pokud chcete nabídku prodávat přes společnost Microsoft nebo jste vybrali možnost **kontakt mi** , musíte nakonfigurovat správu potenciálních zákazníků. Podrobné pokyny najdete v [zákaznických zákaznících z nabídky komerčních webů na webu Marketplace](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
 #### <a name="to-configure-the-connection-details-in-partner-center"></a>Konfigurace podrobností o připojení v partnerském centru
 

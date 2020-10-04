@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 7b42c12499977b5f7bc1704c57904e90be2e8466
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 464e75e55bc67ce619134be01ba00f2606a271a4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398010"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709066"
 ---
 # <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultačních služeb
 
@@ -76,10 +76,10 @@ Když publikujete nabídku na webu Marketplace s partnerským centrem, _musíte_
 
 Tady jsou některé další zdroje informací o vedoucím řízení:
 
-- [Přehled řízení vedoucích](commercial-marketplace-get-customer-leads.md)
-- [Nejčastější dotazy ke správě potenciálních zákazníků](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
-- [Běžné chyby konfigurace zájemce](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
-- [Přehled řízení vedoucích](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Ujistěte se, že je vypnutý blokování automaticky otevíraných oken)
+- [Potenciální zákazníci z komerční nabídky na webu Marketplace](commercial-marketplace-get-customer-leads.md)
+- [Běžné otázky týkající se správy potenciálních zákazníků](../lead-management-faq.md#common-questions-about-lead-management)
+- [Řešení chyb konfigurace potenciálních zákazníků](../lead-management-faq.md#publishing-config-errors)
+- [Přehled řízení vedoucích](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Ujistěte se, že je vypnutý blokování automaticky otevíraných oken).
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
@@ -100,8 +100,8 @@ Tato stránka umožňuje nastavit primární produkt, který vaše konzultační
 
     - Analýzy
     - Modernizace aplikací
-    - Archiv
-    - AI a Machine Learning
+    - Archivovat
+    - AI a strojové učení
     - Backup
     - Velký objem dat
     - Datová platforma
@@ -140,13 +140,13 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 3. Oblasti řešení
 4. Obory
 5. Název nabídky
-6. Shrnutí
+6. Souhrn
 7. Description
 8. Snímky obrazovky a videa
 
 <br>Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSource (uvedené ceny jsou například jenom pro účely a nejsou určené k tomu, aby odrážely skutečné náklady):
 
-:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Microsoft AppSource.":::
+:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Ukazuje, jak se tato nabídka zobrazuje v Azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 
@@ -155,7 +155,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 3. Produkty
 4. Obory
 5. Název nabídky
-6. Shrnutí
+6. Souhrn
 7. Description
 8. Snímky obrazovky a videa
 9. Dokumenty
@@ -202,7 +202,7 @@ Přidejte až tři (ale alespoň jednu) podporu dokumentů PDF pro vaši nabídk
 
 Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všechny obrázky musí být ve formátu. png. Rozmazaný obraz se odmítne.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu používanou partnerským centrem.
@@ -247,7 +247,7 @@ Tady můžete definovat prvky, jako jsou ceny, trhy a privátní klíč.
 
 Po dokončení všech požadovaných částí nabídky můžete odeslat nabídku pro kontrolu a publikování.
 
-1. Až budete připraveni publikovat nabídku konzultačních služeb, klikněte na tlačítko **zkontrolovat a publikovat**.
+1. Až budete připraveni publikovat nabídku konzultačních služeb, vyberte **zkontrolovat a publikovat**.
 2. Přečtěte si podrobnosti o finální stránce pro odeslání.
 3. V případě potřeby zapište si do certifikačního týmu poznámku, pokud se domníváte, že některé z podrobností vaší nabídky vyžadují vysvětlení.
 4. Až budete připraveni, vyberte **Odeslat**.

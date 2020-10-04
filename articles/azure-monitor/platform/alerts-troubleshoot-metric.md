@@ -4,14 +4,14 @@ description: Běžné problémy se Azure Monitor výstrahami metrik a možnými 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/04/2020
 ms.subservice: alerts
-ms.openlocfilehash: f9003aa7b9b2c28e443485484ccd4eb50fa6e0dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1280529aa758194dbd02196d71a715310431a73b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294221"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710290"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s výstrahami Azure Monitor metriky 
 
@@ -75,6 +75,9 @@ Další informace o shromažďování dat z hostovaného operačního systému v
     
 > [!NOTE] 
 > Pokud jste nakonfigurovali metriky hosta k odeslání do Log Analytics pracovního prostoru, zobrazí se metriky pod prostředkem Log Analytics pracovního prostoru a začnou se **zobrazovat data až** po vytvoření pravidla výstrahy, které je monitoruje. Postupujte podle pokynů ke [konfiguraci upozornění na metriku pro protokoly](./alerts-metric-logs.md#configuring-metric-alert-for-logs).
+
+> [!NOTE] 
+> Monitorování metriky hosta pro více virtuálních počítačů s jedním pravidlem výstrahy není aktuálně podporováno v upozorněních metriky. Můžete to dosáhnout pomocí [pravidla upozornění protokolu](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log). Chcete-li to provést, zajistěte, aby byly metriky hostů shromažďovány do Log Analyticsho pracovního prostoru, a vytvořte pravidlo upozornění protokolu v pracovním prostoru.
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>Nejde najít metriku, na které se má upozornit.
 
@@ -245,13 +248,19 @@ Při použití dimenzí v pravidle výstrahy, které obsahuje více podmínek, v
 - V rámci každé podmínky můžete vybrat jenom jednu hodnotu na dimenzi.
 - Nemůžete použít možnost vybrat všechny aktuální a budoucí hodnoty (vybrat \* ).
 - Pokud metriky, které jsou konfigurovány v různých podmínkách, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných podmínkách).
-Příklad:
+Například:
     - Vezměte v úvahu pravidlo upozornění metriky, které je definováno v účtu úložiště, a monitorujte dvě podmínky:
         * Celkový počet **transakcí** > 5
         * Průměrná **SuccessE2ELatency** > 250 ms
     - Chci aktualizovat první podmínku a jenom monitorovat transakce, kde se dimenze **ApiName** rovná *getblob*
     - Vzhledem k tomu, že obě **transakce** i metriky **SuccessE2ELatency** podporují dimenzi **ApiName** , budu muset aktualizovat obě podmínky a obě z nich musí určovat dimenzi **ApiName** s hodnotou *getblob* .
 
+## <a name="setting-the-alert-rules-period-and-frequency"></a>Nastavení intervalu a četnosti pravidla výstrahy
+
+Doporučujeme vybrat *členitost agregace (period)* , která je větší než *frekvence vyhodnocení*, aby se snížila pravděpodobnost chybějícího prvního vyhodnocení přidané časové řady v následujících případech:
+-   Pravidlo upozornění metriky, které monitoruje více dimenzí – když se přidá nová kombinace hodnot dimenze
+-   Pravidlo upozornění metriky, které monitoruje více prostředků – při přidání nového prostředku do oboru
+-   Pravidlo upozornění na metriku, které monitoruje metriku, která se nevysílá průběžně (zhuštěná metrika) – když se metrika vygeneruje po dobu delší než 24 hodin, kdy se neemitoval
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 5b3893dce2d20b1de0a78f11263d880e262098d2
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b5936d68ba98054eb6d98860c6edfaf12d6736d8
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84142380"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710121"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Příklad: zjištění jazyka pomocí Analýza textu
 
@@ -31,6 +31,8 @@ Pokud máte obsah vyjádřený v méně často používaném jazyce, můžete vy
 > Analýza textu také poskytuje image kontejneru Docker pro systém Linux pro detekci jazyka, takže můžete [nainstalovat a spustit kontejner analýza textu](text-analytics-how-to-install-containers.md) zavřít do vašich dat.
 
 ## <a name="preparation"></a>Příprava
+
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 Je nutné mít dokumenty JSON v tomto formátu: ID a text.
 
@@ -259,7 +261,7 @@ Výsledný výstup se skládá z předpřevládajícího jazyka s skóre menší
     }
 ```
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postup pro detekci jazyka pomocí Analýza textu ve službě Azure Cognitive Services. Následující body byly vysvětleny a ukázaly:
 

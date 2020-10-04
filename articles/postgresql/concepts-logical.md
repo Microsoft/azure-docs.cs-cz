@@ -1,17 +1,17 @@
 ---
 title: Logické dekódování – Azure Database for PostgreSQL – jeden server
 description: Popisuje logické dekódování a wal2json pro Change Data Capture v Azure Database for PostgreSQLm jednom serveru.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: bd886bea90c1092e38fac191a60a118aab0bef1f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903897"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708607"
 ---
 # <a name="logical-decoding"></a>Logické dekódování
  
@@ -38,7 +38,7 @@ Po změně tohoto parametru je nutné restartovat server. Interně tento paramet
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
 
-1. Nastavte Azure. replication_support na `logical` .
+1. Nastavte azure.replication_support na `logical` .
    ```
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
    ``` 
@@ -56,7 +56,7 @@ Po změně tohoto parametru je nutné restartovat server. Interně tento paramet
 
 2. Restartujte server, aby se změna projevila, a to tak, že vyberete **Ano**.
 
-   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL-replikace – potvrzení restartování":::
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL – replikace – podpora replikace Azure":::
 
 
 ## <a name="start-logical-decoding"></a>Spustit logické dekódování
@@ -79,7 +79,7 @@ V následujícím příkladu používáme rozhraní SQL s modulem plug-in wal2js
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. Vydejte příkazy SQL. Příklad:
+2. Vydejte příkazy SQL. Například:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,
@@ -159,7 +159,7 @@ SELECT pg_drop_replication_slot('test_slot');
 ```
 
 > [!IMPORTANT]
-> Pokud přestanete používat logické dekódování, změňte Azure. replication_support zpět na `replica` nebo `off` . Podrobnosti WAL uchované `logical` jsou podrobněji podrobnější a měly by být zakázány, pokud se logické dekódování nepoužívá. 
+> Pokud přerušíte použití logického dekódování, změňte azure.replication_support zpět na `replica` nebo `off` . Podrobnosti WAL uchované `logical` jsou podrobněji podrobnější a měly by být zakázány, pokud se logické dekódování nepoužívá. 
 
  
 ## <a name="next-steps"></a>Další kroky

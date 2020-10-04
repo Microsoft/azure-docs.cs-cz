@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: 5bf94faff86edf954c687ca3024c63229829ca04
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: a706ced5c65b9de3cb3bfdb623d810bb1ea43623
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369718"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707978"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
@@ -305,15 +305,14 @@ Další informace najdete v tématu [Nastavení účtu výběr a daňového form
 
 Zákazníci můžou v rámci určeného časového období zrušit odběry, aby mohli získat refundaci. U měsíčních předplatných je to 24 hodin a pro roční předplatné je 14 dní. Nabídky, které se účtují podle spotřeby po použití řešení, nejsou způsobilé k refundaci.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 ### <a name="where-can-i-find-more-information-about-the-commercial-marketplace"></a>Kde můžu najít další informace o komerčním tržišti?
 
 Tady je několik zdrojů, které vám pomohou začít:
 
-- [Úvod do komerčního marketplace Microsoftu](/azure/marketplace/marketplace-publishers-guide)
+- [Co je komerční tržiště Microsoftu?](overview.md)
 - [Centrum partnerů Microsoftu pro komerční web Marketplace](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
-- [Vítá vás komerční marketplace](index.yml)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Jak se můžu zapojit do Microsoftu a dalších partnerů?
 
@@ -324,7 +323,7 @@ Doporučujeme tyto prostředky:
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Kde se mohu dozvědět více o partnerském centru?
 
-- [Dokumentace k partnerskému centru](https://docs.microsoft.com/partner-center/)
+- [Dokumentace k partnerskému centru](/partner-center/)
 - [Vítá vás komerční marketplace](index.yml)
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Kde se mohu dozvědět více o centru pro správu Microsoftu?

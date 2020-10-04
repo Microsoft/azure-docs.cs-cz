@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b5888000028ba87d503bb0bc690aad6628a51a37
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 61f82cf907ef861307a907f6cd2b9b13f043b9a0
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072736"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709039"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Virtuální počítače Azure na místě pro Virtual Machine Scale Sets 
 
@@ -119,7 +119,7 @@ Přidejte `priority` vlastnosti a `evictionPolicy` `billingProfile` do `"virtual
 
 Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy` parametr na `Delete` .
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Otázka:** Po vytvoření je stejná jako instance stejné jako standardní instance?
 
@@ -163,8 +163,7 @@ Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy`
 
 **Otázka:**  Funguje automatické škálování podle zásad vyřazení (navrácení a odstranění)?
 
-**A:** Doporučuje se nastavit zásadu vyřazení, která se má odstranit při použití automatického škálování. Důvodem je to, že nepřidělené instance se počítají na základě počtu kapacit v sadě škálování. Při použití automatického škálování se pravděpodobně vám v důsledku navrácených instancí dokončí počet cílových instancí rychleji. 
-
+**A:** Doporučuje se nastavit zásadu vyřazení, která se má odstranit při použití automatického škálování. Důvodem je to, že nepřidělené instance se počítají na základě počtu kapacit v sadě škálování. Při použití automatického škálování se pravděpodobně vám v důsledku navrácených instancí dokončí počet cílových instancí rychleji. I vaše operace škálování můžou být ovlivněné vyřazením na místě. Například instance VMSS mohou klesnout pod nastavený minimální počet z důvodu několika přímých vyřazení během operace škálování. 
 
 **Otázka:** Jaké kanály podporují přímé virtuální počítače?
 
@@ -174,11 +173,11 @@ Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy`
 
 | Kanály Azure               | Dostupnost virtuálních počítačů Azure       |
 |------------------------------|-----------------------------------|
-| Smlouva Enterprise         | Ano                               |
-| Pay As You Go                | Ano                               |
+| Smlouva Enterprise         | Yes                               |
+| Pay As You Go                | Yes                               |
 | Poskytovatel cloudových služeb (CSP) | [Obraťte se na svého partnera.](/partner-center/azure-plan-get-started) |
 | Výhody                     | Není k dispozici                     |
-| Financovan                    | Ano                               |
+| Financovan                    | Yes                               |
 | Bezplatná zkušební verze                   | Není k dispozici                     |
 
 

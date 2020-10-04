@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 397dac67ea94db22829080a65dfae857bb3706dd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a35b4e398757cb3d4b17e4fd6a5e342fe3c82918
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036926"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710375"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple jako cíl zálohování pomocí Backup Exec
 
@@ -92,10 +92,10 @@ V následujících tabulkách jsou uvedeny úvodní pokyny k modelům zařízen�
 
 | Kapacita úložiště       | 8100          | 8600            |
 |------------------------|---------------|-----------------|
-| Kapacita místního úložiště | &lt;10 TiB\*  | &lt;20 TiB\*  |
-| Kapacita cloudového úložiště | &gt;200 TiB\* | &gt;500 TiB\* |
+| Kapacita místního úložiště | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
+| Kapacita cloudového úložiště | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\*Velikost úložiště nepředpokládá žádné odstranění duplicit ani kompresi.
+\* Velikost úložiště nepředpokládá žádné odstranění duplicit ani kompresi.
 
 **StorSimple kapacity pro primární a sekundární zálohy**
 
@@ -255,13 +255,13 @@ Na základě předchozích předpokladů vytvořte TiB StorSimple vrstvený svaz
 | Uchování typu zálohování | Velikost (TiB) | Multiplikátor GFS\* | Celková kapacita (TiB)  |
 |---|---|---|---|
 | Týdně úplné | 1 | 4  | 4 |
-| Denní přírůstkový | 0.5 | 20 (počet cyklů s rovným počtem týdnů za měsíc) | 12 (2 pro další kvótu) |
+| Denní přírůstkový | 0,5 | 20 (počet cyklů s rovným počtem týdnů za měsíc) | 12 (2 pro další kvótu) |
 | Úplně měsíčně | 1 | 12 | 12 |
 | Celý rok na celé | 1  | 10 | 10 |
 | Požadavek GFS |   | 38 |   |
 | Dodatečná kvóta  | 4  |   | 42 celková GFS požadavek  |
 
-\*Multiplikátor GFS je počet kopií, které je třeba chránit a které je potřeba zachovat, aby splňovaly požadavky zásad zálohování.
+\* Multiplikátor GFS je počet kopií, které je třeba chránit a které je potřeba zachovat, aby splňovaly požadavky zásad zálohování.
 
 ## <a name="set-up-backup-exec-storage"></a>Nastavení úložiště služby Backup Exec
 
@@ -376,7 +376,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na m
 | Celý rok na celé |StorSimple disk (dlouhodobě) | 1 | 1 | 1 |
 |Požadavek na velikost svazků GFS |  |  |  | let|
 
-\*Celková kapacita zahrnuje 17 TiB disků StorSimple a 1 TiB místního svazku RAID.
+\* Celková kapacita zahrnuje 17 TiB disků StorSimple a 1 TiB místního svazku RAID.
 
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS příklad plánu: GFS rotace týdně, měsíčně a ročního plánu
@@ -409,15 +409,15 @@ Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na m
 
 4.  V rozevíracím seznamu **úložiště** vyberte svazek StorSimple, ve kterém má úloha archivace ukládat data.
 
-    ![Backup Exec – Konzola pro správu, vlastnosti definice zálohování a duplicitní možnosti](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
+    ![Snímek obrazovky, který zobrazuje seznam, ve kterém je nutné vybrat úložiště.](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
 
 5.  Vyberte **ověřit**a potom zaškrtněte políčko **Neověřovat data pro tuto úlohu** .
 
-    ![Backup Exec – Konzola pro správu, vlastnosti definice zálohování a duplicitní možnosti](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
+    ![Snímek obrazovky, který ukazuje, kde jste vybrali možnost Neověřovat data pro tuto úlohu.](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
 6.  Vyberte **OK**.
 
-    ![Backup Exec – Konzola pro správu, vlastnosti definice zálohování a duplicitní možnosti](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
+    ![Snímek obrazovky zobrazující vlastnosti definice zálohování](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
 7.  Do sloupce **záloha** přidejte novou fázi. Pro zdroj použijte **přírůstkové**. Jako cíl vyberte svazek StorSimple, na kterém je Archivovaná úloha přírůstkového zálohování. Opakujte kroky 1-6.
 
@@ -478,7 +478,7 @@ Havárie může být způsobeno nejrůznějšími faktory. V následující tabu
 | Selhání serveru Backup Exec | Operace zálohování a obnovení jsou přerušeny. | Znovu sestavte záložní server a proveďte obnovení databáze podle podrobných postupů v tématu [Postup ručního zálohování a obnovení databáze Backup Exec (BEDB)](http://www.veritas.com/docs/000041083). | Na serveru pro zotavení po havárii je nutné znovu sestavit nebo obnovit Server Backup Exec. Obnovte databázi do nejnovějšího bodu. Pokud obnovená databáze Backup Exec není synchronizovaná s vašimi nejnovějšími úlohami zálohování, je nutné indexování a vytváření katalogu. Tento index a proces opětovného prohledání katalogu může způsobit, že se všechny zálohovací sklady prohledají a nastavují z vrstvy cloudu na úroveň místního zařízení. Díky tomu je tato operace časově náročná. |
 | Selhání lokality, které vede ke ztrátě záložního serveru i StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nejprve obnovte StorSimple a pak obnovte zálohovací Exec. | Nejprve obnovte StorSimple a pak obnovte zálohovací Exec. Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se z cloudu načtou do nového zařízení. Všechny operace jsou v cloudových rychlostech. |
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 
 Následující dokumenty byly odkazovány na tento článek:
 

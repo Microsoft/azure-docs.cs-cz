@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 382a6056076179be0d25e0fee0d55b978a3b7169
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 1d75e0d9f57aee495524e2d35231dd3c78cedea1
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420434"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708114"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Postup plánování nabídky SaaS pro komerční tržiště
 
@@ -57,7 +57,7 @@ Možnosti _získat nyní (zdarma)_, _bezplatná zkušební verze_a _Prodej prost
 
 Tyto další technické požadavky se vztahují jenom na možnost _Prodej prostřednictvím seznamu Microsoft_ (s podporou transakcí):
 
-- Služba Azure AD s jednotným přihlašováním (SSO) Správa identit a ověřování je povinná. Podrobné pokyny najdete v tématu [Azure AD a SaaS nabídky na komerčním webu Marketplace](azure-ad-saas.md).
+- Služba Azure AD s jednotným přihlašováním (SSO) a ověřováním identity se vyžaduje pro nákup uživatele, který přistupuje k cílové stránce. Podrobné pokyny najdete v tématu [Azure AD a SaaS nabídky na komerčním webu Marketplace](azure-ad-saas.md).
 - K integraci s Azure Marketplace a Microsoft AppSource je nutné použít [rozhraní API pro splnění SaaS](./partner-center-portal/pc-saas-fulfillment-api-v2.md) . Je potřeba vystavit službu, která může komunikovat s předplatným SaaS k vytváření, aktualizaci a odstraňování uživatelských účtů a plánu služeb. Kritické změny rozhraní API musí být podporované do 24 hodin. Pravidelně se vydávají nekritické změny rozhraní API. Diagramy a podrobná vysvětlení popisující použití shromážděných polí jsou k dispozici v dokumentaci pro [rozhraní API](./partner-center-portal/pc-saas-fulfillment-api-v2.md).
 - Musíte vytvořit aspoň jeden plán pro vaši nabídku. Ceny vašeho plánu se účtují na základě cenového modelu, který jste vybrali před publikováním: _paušální sazba_ nebo _podle uživatele_. Další podrobnosti o [plánech](#plans) najdete dále v tomto článku.
 - Zákazník může vaši nabídku kdykoli zrušit.
@@ -68,7 +68,7 @@ Pokud vytváříte nabídku s podporou transakcí, bude nutné shromáždit nás
 
 - **Adresa URL cílové stránky**: adresa URL webu SaaS (například: `https://contoso.com/signup` ), na kterou budou uživatelé přesměrováni po získání nabídky z komerčního tržiště, který aktivuje proces konfigurace z nově vytvořeného předplatného SaaS. Tato adresa URL obdrží token, který se dá použít k volání rozhraní API pro splnění, aby se získaly podrobné informace o zřízení vaší interaktivní registrační stránky.
 
-  Tato adresa URL bude volána parametrem identifikačního tokenu nákupu na webu Marketplace, který jednoznačně identifikuje SaaS nákup konkrétního zákazníka. Tento token musíte vyměňovat pro příslušné podrobnosti o předplatném SaaS pomocí [rozhraní Resolve API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription). Tyto podrobnosti a všechny ostatní, které chcete shromažďovat, by se měly používat jako součást interaktivní webové stránky zákazníka, která je založená na vašich zkušenostech k dokončení registrace zákazníků a aktivaci jejich nákupu. Na této stránce by se měl uživatel zaregistrovat přes ověřování jedním kliknutím pomocí Azure Active Directory (Azure AD).
+  Tato adresa URL bude volána parametrem identifikačního tokenu nákupu na webu Marketplace, který jedinečně identifikuje SaaS nákup konkrétního zákazníka. Tento token musíte vyměňovat pro příslušné podrobnosti o předplatném SaaS pomocí [rozhraní Resolve API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription). Tyto podrobnosti a všechny ostatní, které chcete shromažďovat, by se měly používat jako součást interaktivní webové stránky zákazníka, která je založená na vašich zkušenostech k dokončení registrace zákazníků a aktivaci jejich nákupu. Na této stránce by se měl uživatel zaregistrovat přes ověřování jedním kliknutím pomocí Azure Active Directory (Azure AD).
 
   Tato adresa URL s parametrem identifikačního tokenu nákupu na webu Marketplace se taky zavolá, když zákazník spustí spravované prostředí SaaS z centra pro správu v Azure Portal nebo M365. Oba toky byste měli zpracovat: když se token poprvé zadá po nákupu nového zákazníka, a když se znovu zadá pro existujícího zákazníka, který spravuje své řešení SaaS.
 
@@ -90,7 +90,7 @@ Pokud vytváříte nabídku s podporou transakcí, bude nutné shromáždit nás
   > [!NOTE]
   > Pokud má Vydavatel v partnerském centru dva nebo více různých účtů, měla by se použít nejméně jedno jiné ID aplikace Azure AD, každé pro jeden z účtů. Každý partnerský účet v partnerském centru by měl používat jedinečné ID aplikace Azure AD pro všechny nabídky SaaS, které jsou publikovány prostřednictvím tohoto účtu.
 
-## <a name="test-drives"></a>Testovací jednotky
+## <a name="test-drives"></a>Testovací verze
 Pro aplikaci SaaS se můžete rozhodnout pro povolení testovacích jednotek. Testovací jednotky poskytují zákazníkům přístup k předkonfigurovanému prostředí po dobu určitého počtu hodin. Můžete povolit testovací jednotky pro libovolnou možnost publikování, ale tato funkce má další požadavky. Další informace o testovacích jednotkách najdete v tématu [co je testovací jednotka?](what-is-test-drive.md). Informace o konfiguraci různých druhů testovacích jednotek najdete v tématu [Technická konfigurace testovacích](test-drive-technical-configuration.md)jednotek.
 
 > [!TIP]
@@ -100,7 +100,7 @@ Pro aplikaci SaaS se můžete rozhodnout pro povolení testovacích jednotek. Te
 
 Abyste mohli shromažďovat informace o zákaznících, musíte vaši nabídku připojit k systému správy vztahů se zákazníky (CRM). Zákazník bude požádán o oprávnění ke sdílení svých informací. Tyto podrobnosti o zákaznících spolu s názvem nabídky, ID a online obchodem, kde si vaši nabídku našli, budou odeslány do systému CRM, který jste nakonfigurovali. Komerční tržiště podporuje nejrůznější systémy CRM, společně s možností použití tabulky Azure nebo konfigurace koncového bodu HTTPS pomocí Power automatizuje.
 
-Připojení k CRM můžete kdykoli přidat nebo změnit během vytváření nabídky nebo po ní. Podrobné pokyny najdete v tématu [Správa vedoucích komerčního tržiště](lead-management-for-cloud-marketplace.md).
+Připojení k CRM můžete kdykoli přidat nebo změnit během vytváření nabídky nebo po ní. Podrobné pokyny najdete v [zákaznických zákaznících z nabídky komerčních webů na webu Marketplace](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
 ## <a name="selecting-an-online-store"></a>Výběr online obchodu
 
@@ -130,8 +130,8 @@ Když [vytvoříte novou nabídku SaaS](create-new-saas-offer.md) v partnerském
 5. Podmínky použití
 6. Zásady ochrany osobních údajů
 7. Název nabídky
-8. Shrnutí
-9. Popis
+8. Souhrn
+9. Description
 10. Snímky obrazovky a videa
 11. Dokumenty
 
@@ -194,7 +194,7 @@ Abyste mohli snadněji vytvořit nabídku, připravte si některé z těchto pol
 Cílová skupina Preview má přístup k vaší nabídce před publikováním živě v online obchodech, aby bylo možné otestovat kompletní funkce před publikováním v reálném čase. Na stránce **Preview cílovou skupinu** můžete definovat skupinu omezené verze Preview. Toto nastavení není k dispozici, pokud se rozhodnete zpracovávat transakce nezávisle na prodeji vaší nabídky prostřednictvím společnosti Microsoft. Pokud ano, můžete tuto část přeskočit a přejít na [Další prodejní příležitosti](#additional-sales-opportunities).
 
 > [!NOTE]
-> Cílová skupina verze Preview se liší od privátního plánu. Soukromý plán je ten, který zpřístupníte jenom pro konkrétní cílovou skupinu, kterou zvolíte. To vám umožní vyjednat vlastní plán s konkrétními zákazníky. Další podrobnosti najdete v další části: plány.
+> Cílová skupina verze Preview se liší od privátního plánu. Soukromý plán je ten, který zpřístupníte jenom pro konkrétní cílovou skupinu, kterou zvolíte. To vám umožní vyjednat vlastní plán s konkrétními zákazníky. Další informace najdete v další části: plány.
 
 Pozvánky můžete odesílat do e-mailových adres účtu Microsoft (MSA) nebo Azure Active Directory (Azure AD). Přidejte až 10 e-mailových adres ručně nebo importujte až 20 souborů. csv. Pokud je vaše nabídka už živá, můžete i nadále definovat cílovou skupinu verze Preview pro testování změn nebo aktualizací vaší nabídky.
 

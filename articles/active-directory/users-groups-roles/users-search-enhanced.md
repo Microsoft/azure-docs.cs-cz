@@ -10,27 +10,29 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 10/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e0c8e6fb3bab179483d03320e6d90ab712ec528
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: be0d428120f53a4edb9763199a78b0e50409b19a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89493324"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708729"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Vylepšení správy uživatelů (Preview) v Azure Active Directory
 
-Tento článek popisuje, jak používat vylepšenou správu uživatelů ve verzi Preview na portálu Azure Active Directory (Azure AD). Stránky **Všichni uživatelé** a **odstraně uživatelé** byly aktualizovány, aby poskytovaly Další informace a usnadnily hledání uživatelů. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+Tento článek popisuje, jak používat vylepšení správy uživatelů ve verzi Preview na portálu Azure Active Directory (Azure AD). Stránky **Všichni uživatelé** a **odstraně uživatelé** byly aktualizovány, aby poskytovaly Další informace a usnadnily hledání uživatelů. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 Změny ve verzi Preview zahrnují:
 
 - Více viditelných uživatelských vlastností včetně ID objektu, stavu synchronizace adresáře, typu vytvoření a vystavitele identity
 - Hledání teď umožňuje kombinované hledání názvů, e-mailů a ID objektů.
-- Rozšířené filtrování podle typu uživatele (člen a Host), stav synchronizace adresářů a typ vytvoření
+- Rozšířené filtrování podle typu uživatele (člen, Host, žádný), stav synchronizace adresářů, typ vytvoření, název společnosti a název domény
+- Nové možnosti řazení u vlastností, jako je název a hlavní název uživatele
+- Nový celkový počet uživatelů, kteří se aktualizují pomocí hledání nebo filtrů
 
 > [!NOTE]
 > Tato verze Preview není v současnosti dostupná pro Azure AD B2C klienty.
@@ -66,7 +68,7 @@ Na stránce **Všichni uživatelé** jsou zobrazeni následující vlastnosti u�
 - Stav pozvánky: stav pozvánky pro uživatele typu Host.
 - E-mail: e-mail uživatele.
 
-   ![nové vlastnosti uživatele zobrazené na stránkách všichni uživatelé a odstranění uživatelé](./media/users-search-enhanced/user-properties.png)
+![nové vlastnosti uživatele zobrazené na stránkách všichni uživatelé a odstranění uživatelé](./media/users-search-enhanced/user-properties.png)
 
 ### <a name="deleted-users-page"></a>Stránka Odstraněná uživatelé
 
@@ -96,22 +98,36 @@ Byly vylepšeny možnosti filtrování, které poskytují více možností filtr
 
 Níže jsou uvedené vlastnosti, které lze filtrovat na stránce **Všichni uživatelé** :
 
-- Typ uživatele – člen nebo Host
-- Stav synchronizace adresářů – Ano
-- Typ vytvoření – pozvánka, E-mail ověřeno, místní účet
+- Typ uživatele: člen, Host, žádný
+- Stav synchronizace adresářů: Ano, ne
+- Typ vytvoření: Pozvánka, E-mail ověřeno, místní účet
 - Stav pozvánky – čeká se na přijetí, přijato
-- Jednotka pro správu – tuto možnost vyberte, pokud chcete omezit rozsah zobrazených uživatelů na jednu jednotku správy. Další informace najdete v tématu [Správa jednotek správy ve verzi Preview](directory-administrative-units.md).
+- Název domény: zadejte název domény.
+- Název společnosti: zadejte název společnosti.
+- Jednotka pro správu: tuto možnost vyberte, pokud chcete omezit rozsah zobrazených uživatelů na jednu jednotku správy. Další informace najdete v tématu [Správa jednotek správy ve verzi Preview](directory-administrative-units.md).
 
-## <a name="filtering-deleted-users-list"></a>Filtrování seznamu odstraněných uživatelů
+### <a name="filtering-deleted-users-list"></a>Filtrování seznamu odstraněných uživatelů
 
 Stránka **odstraněné uživatelé** obsahuje další filtry, které nejsou na stránce **Všichni uživatelé** . Níže jsou uvedené vlastnosti, které lze filtrovat na stránce **odstraněné uživatele** :
 
-- Typ uživatele – člen nebo Host
-- Stav synchronizace adresářů – Ano
-- Typ vytvoření – pozvánka, E-mail ověřeno, místní účet
-- Stav pozvánky – čeká se na přijetí, přijato
-- Datum odstranění – posledních 7, 14 nebo 30 dní
-- Datum trvalého odstranění – posledních 7, 14 nebo 30 dní
+- Typ uživatele: člen, Host, žádný
+- Stav synchronizace adresářů: Ano, ne
+- Typ vytvoření: Pozvánka, E-mail ověřeno, místní účet
+- Stav pozvánky: čeká na přijetí, přijato
+- Datum odstranění: posledních 7, 14 nebo 30 dní
+- Název domény: zadejte název domény.
+- Název společnosti: zadejte název společnosti.
+- Datum trvalého odstranění: posledních 7, 14 nebo 30 dní
+
+## <a name="user-list-sorting"></a>Řazení seznamu uživatelů
+
+Nyní můžete řadit podle názvu a hlavního názvu uživatele na stránce **Všichni uživatelé** a **odstraně uživatelé** . V seznamu **odstraněné uživatele** můžete také řadit podle data odstranění.
+
+## <a name="user-list-counts"></a>Počty seznamů uživatelů
+
+Celkový počet uživatelů můžete zobrazit na stránkách **Všichni uživatelé** a **odstraně uživatelé** . Při hledání nebo filtrování seznamů se počet aktualizuje tak, aby odrážel celkový počet nalezených uživatelů.
+
+![Obrázek počtů seznamů uživatelů na stránce všichni uživatelé](./media/users-search-enhanced/user-list-sorting.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Časté otázky
 
@@ -121,8 +137,6 @@ Co se stane s hromadnou schopností pro uživatele a hosty? | Hromadné operace 
 Co se stalo se zdrojovým sloupcem? | **Zdrojový** sloupec byl nahrazen dalšími sloupci, které obsahují podobné informace, a umožňuje vám tyto hodnoty nezávisle filtrovat. Mezi příklady patří **typ vytvoření**, **Synchronizovaný adresář** a **Vystavitel identity**.
 Co se stalo se sloupcem s uživatelským jménem? | Sloupec **uživatelské jméno** je stále v seznamu, ale je přejmenován na **hlavní název uživatele**. Tím lépe odráží informace obsažené v tomto sloupci. Také si všimnete, že pro hosty B2B se teď zobrazí celý hlavní název uživatele (UPN). To odpovídá tomu, co byste získali v MS graphu.  
 Proč mohu provést hledání "začíná na", a ne "obsahuje" hledání? | Existují určitá omezení, která nám brání v tom, aby vám umožnila provádět hledání "obsahuje". Dostali jsme zpětnou vazbu, takže můžete zůstat vyladěné.
-Proč nelze řadit sloupce? | Existují určitá omezení, která nám zabraňují v tom, aby vám umožnila seřadit sloupce. Dostali jsme zpětnou vazbu, takže můžete zůstat vyladěné.
-Proč mohu filtrovat **adresář synchronizovaného** sloupce jenom na Ano? | Některá omezení zabraňují tomu, aby bylo možné tuto vlastnost filtrovat bez hodnoty. Dostali jsme zpětnou vazbu, takže můžete zůstat vyladěné.
 
 ## <a name="next-steps"></a>Další kroky
 

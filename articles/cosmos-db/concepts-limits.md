@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 2d14207bada52c937875bc62bdbde63d788c1aca
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: e67346eb1a0fccc7a788e8698df734536e1e395b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653583"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708947"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -137,6 +137,7 @@ V závislosti na tom, jaké rozhraní API používáte, může položka Azure Co
 | Maximální délka hodnoty vlastnosti | Žádné praktické omezení |
 | Maximální délka hodnoty řetězcové vlastnosti | Žádné praktické omezení |
 | Maximální délka číselné hodnoty vlastnosti | IEEE754 s dvojitou přesností 64-bit |
+| Maximální úroveň vnoření pro vložené objekty/pole | 128 |
 | Maximální hodnota TTL |2147483647|
 
 Neexistují žádná omezení na datové části položky, jako je počet vlastností a hloubka vnořování, s výjimkou omezení délky pro klíče oddílu a hodnoty ID a omezení celkové velikosti 2 MB. Možná budete muset nakonfigurovat zásady indexování pro kontejnery s velkými nebo složitými strukturami položek a snížit tak spotřebu RU. V tématu [modelování položek v Cosmos DB](how-to-model-partition-example.md) najdete příklad reálného světa a vzory pro správu velkých položek.

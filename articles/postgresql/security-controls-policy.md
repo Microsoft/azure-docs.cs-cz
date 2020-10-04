@@ -3,16 +3,16 @@ title: Azure Policy kontroly dodržování předpisů pro Azure Database for Pos
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou k dispozici pro Azure Database for PostgreSQL. Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
 ms.date: 09/16/2020
 ms.topic: sample
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 7e72699eefce362a11a66f2547fd8c81ff1215a3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b86d0e193d6bf250afadcec99c9839442ffb8114
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986677"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708879"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-postgresql"></a>Azure Policy kontroly dodržování předpisů pro Azure Database for PostgreSQL
 

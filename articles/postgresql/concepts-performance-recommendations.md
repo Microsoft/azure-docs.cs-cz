@@ -1,17 +1,17 @@
 ---
 title: Doporučení pro výkon – Azure Database for PostgreSQL – jeden server
 description: Tento článek popisuje funkci doporučení výkonu na serveru Azure Database for PostgreSQL-Single.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: f0ce3843752ebd6ed56281f6699783181b52fdc6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d547844671e6485e71be7dd8c355de08f3dec5e6
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903876"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710562"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Doporučení týkající se výkonu v Azure Database for PostgreSQL – jeden server
 
@@ -33,7 +33,7 @@ Vyberte možnost **analyzovat** a zvolte databázi, která bude začínat analý
 
 V okně **doporučení** se zobrazí seznam doporučení, pokud byla nalezena kterákoli z nich.
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Nová stránka s doporučeními pro výkon":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Úvodní stránka Doporučení k výkonu":::
 
 Doporučení se nepoužívají automaticky. Pokud chcete doporučení použít, zkopírujte text dotazu a spusťte ho z vašeho klienta podle vlastního výběru. Nezapomeňte otestovat a monitorovat, abyste vyhodnotili doporučení. 
 

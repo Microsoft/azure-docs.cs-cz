@@ -1,18 +1,18 @@
 ---
 title: Restart serveru – Azure PowerShell-Azure Database for PostgreSQL
 description: Tento článek popisuje, jak můžete restartovat server Azure Database for PostgreSQL pomocí prostředí PowerShell.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3fd4bcdd2f80bfd5f79488e7e4c93219be97927c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5037975bcfbf9b19de5cc203d26e1caf0f85893f
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503544"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710137"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-powershell"></a>Restartování serveru Azure Database for PostgreSQL pomocí prostředí PowerShell
 
@@ -22,7 +22,7 @@ Pokud je služba zaneprázdněná, je restartování serveru blokované. Napří
 
 Množství času potřebného k dokončení restartování závisí na procesu obnovení PostgreSQL. Chcete-li zkrátit dobu restartování, doporučujeme, abyste minimalizovali množství aktivity, ke kterým došlo na serveru před restartováním.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 K dokončení tohoto průvodce budete potřebovat:
 

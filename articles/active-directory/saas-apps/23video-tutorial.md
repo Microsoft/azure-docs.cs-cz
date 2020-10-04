@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d4271c2d298744f339ac577a0db585dd8c309b16
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1dc2aba6241ef498cd6802c7490e46552e7737ab
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538820"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708806"
 ---
 # <a name="tutorial-integrate-23-video-with-azure-active-directory"></a>Kurz: integrace 23 videa s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat 23 videa s Azure Active Directory (Azu
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -106,7 +106,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -138,11 +138,11 @@ Cílem této části je vytvořit uživatele s názvem B. Simon ve 23 videu.
 
 3. V části **Uživatelé** klikněte na **Konfigurovat**.
 
-    ![Přiřadit uživatele](./media/23video-tutorial/tutorial-23video-10.png)
+    ![Snímek obrazovky, který zvýrazní oddíl uživatelů](./media/23video-tutorial/tutorial-23video-10.png)
 
 4. Klikněte na **Přidat nového uživatele**.
 
-    ![Přiřadit uživatele](./media/23video-tutorial/tutorial-23video-11.png)
+    ![Snímek obrazovky, který zvýrazní tlačítko Přidat nového uživatele.](./media/23video-tutorial/tutorial-23video-11.png)
 
 5. V části **pozvat někoho, abyste se připojili k tomuto webu** , proveďte následující kroky:
 
@@ -158,7 +158,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici s videem, budete se muset automaticky přihlášeni k obrazci 23, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

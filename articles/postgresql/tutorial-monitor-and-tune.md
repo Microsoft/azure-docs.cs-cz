@@ -1,17 +1,17 @@
 ---
 title: 'Kurz: monitorování a ladění – Azure Database for PostgreSQL – jeden server'
 description: Tento kurz vás provede monitorováním a optimalizací na Azure Database for PostgreSQL jednom serveru.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
-ms.openlocfilehash: 05435aae727c84a5f3eb886274f9d286627e399e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f211ce7e52ccaa6793435159d0ce1c64fe8b63ed
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895081"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91705277"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Kurz: monitorování a ladění Azure Database for PostgreSQL – jeden server
 
@@ -52,7 +52,7 @@ Zobrazení [Query Performance Insight](concepts-query-performance-insight.md) na
 
 2. Karta **Dlouho běžících dotazů** zobrazuje 5 nejčastějších dotazů podle průměrné doby trvání na spuštění, agregované do 15minutových intervalů. 
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="Úvodní stránka Query Performance Insight":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="Parametry serveru Query Store":::
 
    Další dotazy můžete zobrazit tak, že v rozevíracím seznamu vyberete **Počet dotazů**. Barvy grafu se mohou při této akci změnit pro konkrétní ID dotazu.
 
@@ -64,7 +64,7 @@ Zobrazení [Query Performance Insight](concepts-query-performance-insight.md) na
 
 6. Vyberte kartu **Statistiky čekání** k zobrazení odpovídající vizualizace týkající se čekání na serveru.
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="Statistiky čekání Query Performance Insight":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="Parametry serveru Query Store":::
 
 ### <a name="permissions"></a>Oprávnění
 K zobrazení textu dotazů v Query Performance Insight jsou nutná oprávnění **vlastníka** nebo **přispěvatele**. **Čtenář** může zobrazit grafy a tabulky, ale ne text dotazu.
@@ -75,7 +75,7 @@ Funkce [Doporučení k výkonu](concepts-performance-recommendations.md) analyzu
 
 1. Otevřete **Doporučení k výkonu** z části nabídky **Podpora a řešení potíží** na stránce portálu Azure pro váš server PostgreSQL.
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="Úvodní stránka Doporučení k výkonu":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="Parametry serveru Query Store":::
 
 2. Vyberte **Analyzovat** a zvolte databázi. Tím se spustí analýza.
 
@@ -85,7 +85,7 @@ Funkce [Doporučení k výkonu](concepts-performance-recommendations.md) analyzu
 
 5. Doporučení zobrazí informace o příslušné **databázi**, **tabulce**, **sloupci** a **velikosti indexu**.
 
-   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="Výsledky Doporučení k výkonu":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="Parametry serveru Query Store":::
 
 6. Chcete-li implementovat doporučení, zkopírujte text dotazu a spusťte z klienta svého výběru.
 
