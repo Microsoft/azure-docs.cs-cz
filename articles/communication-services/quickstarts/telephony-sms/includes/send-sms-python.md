@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: dadoolab
 ms.openlocfilehash: 3fe27bf31385e0310211b5e1b0b7bbfa636eb19b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947031"
 ---
 Začněte s komunikačními službami Azure pomocí klientské knihovny služby Communications Pythonu SMS k posílání zpráv SMS.
@@ -25,7 +25,7 @@ Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům 
 
 [API reference documentation](../../../references/overview.md) | [Library source code](#todo-sdk-repo) | [Package (PiPy)](#todo-nuget) | [Samples](#todo-samples)--> 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - [Python](https://www.python.org/downloads/) 2,7, 3,5 nebo novější.

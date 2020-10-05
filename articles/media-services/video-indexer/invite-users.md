@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: juliako
 ms.openlocfilehash: e9a4575ce2f353d61654263aea8d968c650a689e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79499747"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>Rychlý Start: pozvání uživatelů k Video Indexer
@@ -39,7 +39,7 @@ Pokud chcete spolupracovat s kolegy, můžete je pozvat na účet Video Indexer.
     > Všichni uživatelé, kteří pozvali, budou mít oprávnění ke čtení a zápisu pro všechna videa ve vašem účtu.
 1. Uživatelé, které jste pozvali, obdrží e-mail s odkazem a budou mít přístup k účtu, Jakmile kliknete na odkaz **video indexer spojení** :
 
-    ![Potvrzení](./media/invite-users/invite-msg.png)
+    ![Confirmation (Potvrzení)](./media/invite-users/invite-msg.png)
 
     Aby uživatel mohl získat přístup k účtu, musí kliknout na odkaz pro připojení. 
 

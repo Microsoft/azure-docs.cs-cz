@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
 ms.openlocfilehash: 4bae9e28a22a99d092db2bf887f0cd790e04c52a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91318551"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Co je Azure Stack hraniční Mini R?
@@ -26,7 +26,7 @@ Tento článek vám poskytne přehled o Azure Stackovém minimu řešení R, kl�
 
 Azure Stack hraniční Mini R má následující možnosti:
 
-|Schopnost |Popis  |
+|Schopnost |Description  |
 |---------|---------|
 |Robustní hardware| Robustní hardware určený pro Harsh prostředí.|
 |Ultra Portable| Ultra Portable, formulář založený na baterii.|

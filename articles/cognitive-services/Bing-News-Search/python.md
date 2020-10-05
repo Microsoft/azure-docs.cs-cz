@@ -12,10 +12,10 @@ ms.date: 06/16/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-python
 ms.openlocfilehash: 115d0204b4e1a05e5d4c655efb52b3fc3123bebe
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87851830"
 ---
 # <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Rychlý Start: provedení hledání zpráv pomocí Pythonu a Vyhledávání zpráv Bingu REST API

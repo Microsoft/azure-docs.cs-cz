@@ -11,13 +11,13 @@ ms.topic: include
 ms.custom: include file
 ms.author: roy-har
 ms.openlocfilehash: 8e67a6d0c98a3839922a79e9b452465087da1b69
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84418004"
 ---
-1. Vyberte [Pizza-App-for-Luis-v6. JSON](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) a zobrazte stránku GitHub pro daný `pizza-app-for-luis.json` soubor.
+1. Vyberte možnost [pizza-app-for-luis-v6.jszapnuto](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) a zobrazte stránku GitHub pro daný `pizza-app-for-luis.json` soubor.
 1. Klikněte pravým tlačítkem nebo dlouho klepněte na tlačítko **nezpracované** a vyberte **Uložit odkaz jako** a uložte `pizza-app-for-luis.json` ho do svého počítače.
 1. Přihlaste se k [portálu Luis](https://www.luis.ai).
 1. Vyberte [Moje aplikace](https://www.luis.ai/applications).
@@ -49,6 +49,6 @@ Vyhledání těchto hodnot:
 
 1. Na stránce **záměry** vyberte **Spravovat**.
 1. Na stránce **nastavení aplikace** si poznamenejte **ID aplikace**.
-1. Vyberte **prostředky Azure**.
+1. Vyberte **Azure Resources** (Prostředky Azure).
 1. Na stránce **prostředky Azure** zaznamenejte **primární klíč**. Tato hodnota je váš klíč předpovědi.
 1. Zaznamenejte **adresu URL koncového bodu**. Tato hodnota je vaším koncovým bodem předpovědi.

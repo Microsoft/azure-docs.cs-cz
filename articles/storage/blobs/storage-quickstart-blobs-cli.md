@@ -11,10 +11,10 @@ ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 55cbf0a304bbf13d47fefad0981c0143c101bbb0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88520766"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Rychlý Start: vytvoření, stažení a výpis objektů BLOB pomocí Azure CLI
@@ -23,7 +23,7 @@ Azure CLI je prostředí příkazového řádku Azure pro správu prostředků A
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -61,7 +61,7 @@ az group create \
     --location <location>
 ```
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 Účet úložiště pro obecné účely vytvoříte příkazem [az storage account create](/cli/azure/storage/account). Účet úložiště pro obecné účely můžete použít pro všechny čtyři služby: objekty blob, soubory, tabulky a fronty.
 
@@ -128,7 +128,7 @@ Tato operace vytvoří objekt blob, pokud ještě neexistuje, a přepíše ho, p
 
 Pokud chcete nahrát více souborů najednou, můžete použít příkaz [az storage blob upload-batch](/cli/azure/storage/blob).
 
-## <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
+## <a name="list-the-blobs-in-a-container"></a>Seznam objektů blob v kontejneru
 
 Pomocí příkazu [az storage blob list](/cli/azure/storage/blob) zobrazte seznam objektů blob v kontejneru. Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
 

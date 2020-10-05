@@ -8,17 +8,17 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.openlocfilehash: 90247f093096728ac250f36fa7cb0d5d88a597d9
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88121880"
 ---
 # <a name="quickstart-azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Rychlý Start: Azure Database for MariaDB: použití aplikace MySQL Workbench pro připojení a dotazování dat
 
 Tento rychlý start ukazuje, jak se připojit k instanci Azure Database for MariaDB pomocí aplikace MySQL Workbench. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z následujících průvodců:
 
@@ -54,7 +54,7 @@ Připojení k serveru Azure Database for MariaDB pomocí aplikace MySQL Workbenc
    | Nastavení | Navrhovaná hodnota | Popis pole |
    |---|---|---|
    |   Název připojení | **Ukázkové připojení** | Zadejte popisek pro toto připojení. |
-   | Způsob připojení | **Standard (TCP/IP)** | Standard (TCP/IP) je dostačující. |
+   | Způsob připojení | **Standardní (TCP/IP)** | Standard (TCP/IP) je dostačující. |
    | Název hostitele | *název serveru* | Zadejte hodnotu názvu serveru, kterou jste použili při vytváření instance Azure Database for MariaDB. Server v našem příkladu je **mydemoserver.mariadb.database.azure.com**. Použijte plně kvalifikovaný název domény (\*.mariadb.database.azure.com), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části.  |
    | Port | **3306** | Při připojování ke službě Azure Database for MariaDB vždy používejte port 3306. |
    | Uživatelské jméno |  *přihlašovací jméno správce serveru* | Zadejte přihlašovací uživatelské jméno správce serveru, které jste použili při vytváření instance Azure Database for MariaDB. Naše ukázkové uživatelské jméno je **myadmin \@ mydemoserver**. Pokud si přihlašovací jméno správce serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *UserName \@ servername*.

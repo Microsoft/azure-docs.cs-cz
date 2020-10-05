@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
 ms.openlocfilehash: a6ae9d8975c36e7ffa8e3eadf880b4685390c5fc
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88246323"
 ---
 Začněte s klientskou knihovnou Automatické návrhy Bingu pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.
@@ -21,7 +21,7 @@ Pomocí klientské knihovny Automatické návrhy Bingu pro .NET můžete získat
 
 [Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/)  |  [Vzorový kód](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services).
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).

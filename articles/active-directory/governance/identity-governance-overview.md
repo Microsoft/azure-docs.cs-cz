@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91306459"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co je Azure AD Identity Governance?
@@ -74,7 +74,7 @@ V minulosti byl privilegovaný přístup popsán jinými dodavateli jako samosta
 
 Kromě výše uvedených funkcí další funkce služby Azure AD, které se často používají k poskytování scénářů zásad správného řízení identit, patří:
 
-| Schopnost | Scénář |Příznak
+| Schopnost | Scénář |Funkce
 | ------- | --------------------- |-----|
 |Životní cyklus identity (zaměstnanci)|Správci můžou povolit zřizování uživatelských účtů z Workday nebo SuccessFactors cloudového HR nebo místního HR.|[cloudové zajištění pro zřizování uživatelů Azure AD](../app-provisioning/plan-cloud-hr-provision.md)|
 |Životní cyklus identity (hosty)|Správci můžou povolit registraci samoobslužného uživatele hosta z jiného tenanta Azure AD, přímé federace, jednorázového hesla nebo účtů Google.  Uživatelé typu Host se automaticky zřídí a odúčtují v souladu se zásadami životního cyklu.|[Správa nároků](entitlement-management-overview.md) pomocí [B2B](../external-identities/what-is-b2b.md)|
@@ -106,7 +106,7 @@ I když pro každého zákazníka není k dispozici žádné dokonalé řešení
 
 Osvědčeným postupem je použití minimální privilegované role k provádění úloh správy v řízení identit. K provedení těchto úloh doporučujeme použít Azure AD PIM k aktivaci role podle potřeby. Níže jsou uvedené nejnižší privilegované role adresáře ke konfiguraci funkcí zásad správného řízení identit:
 
-| Příznak | Nejnižší privilegovaná role |
+| Funkce | Nejnižší privilegovaná role |
 | ------- | --------------------- |
 | Správa nároků | Správce uživatelů (s výjimkou přidávání webů SharePointu Online do katalogů, které vyžadují globálního správce) |
 | Kontroly přístupu | Správce uživatelů (s výjimkou kontrol přístupu pro role Azure nebo Azure AD, které vyžadují správce privilegovaných rolí) |

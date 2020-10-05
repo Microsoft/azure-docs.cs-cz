@@ -14,17 +14,17 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, devx-track-python
 ms.openlocfilehash: 891b8a5a844691d46c121c254e04b73f2b8c2d62
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87872731"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro Python pomocí Azure DevOps Starter
 
 V tomto rychlém startu použijete zjednodušené prostředí Azure DevOps Starter k nastavení kanálu průběžné integrace (CI) a průběžného doručování (CD) pro vaši aplikaci v Pythonu v Azure Pipelines. K nastavení všeho, co potřebujete pro vývoj, nasazení a monitorování vaší aplikace, můžete použít Azure DevOps Starter. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - Účet [Azure DevOps](https://azure.microsoft.com/services/devops/) a organizace.
@@ -33,7 +33,7 @@ V tomto rychlém startu použijete zjednodušené prostředí Azure DevOps Start
 
 DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Starter také vytvoří prostředky Azure v předplatném Azure podle vašeho výběru.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 
 1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 

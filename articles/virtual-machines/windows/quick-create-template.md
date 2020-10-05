@@ -9,10 +9,10 @@ ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
 ms.openlocfilehash: ded59b2f517c5b109dfd00bde2fb73f8351bf821
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88649665"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>Rychlý Start: Vytvoření virtuálního počítače s Windows pomocí šablony ARM
@@ -60,7 +60,7 @@ V šabloně je definováno několik prostředků:
     - **Skupina prostředků**: z rozevíracího seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**, pro skupinu prostředků zadejte jedinečný název a pak klikněte na **OK**.
     - **Umístění:** Vyberte prosím umístění.  Například **USA – střed**.
     - **Uživatelské jméno správce**: zadejte uživatelské jméno, například *azureuser*.
-    - **Heslo správce**: zadejte heslo, které se má použít pro účet správce. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](faq.md#what-are-the-password-requirements-when-creating-a-vm).
+    - **Heslo správce**: zadejte heslo, které se má použít pro účet správce. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](faq.md#what-are-the-password-requirements-when-creating-a-vm).
     - **Předpona popisku DNS**: Zadejte jedinečný identifikátor, který se použije jako součást popisku DNS.
     - **Verze operačního systému Windows**: vyberte verzi Windows, kterou chcete na virtuálním počítači spustit.
     - **Velikost virtuálního počítače**: vyberte [Velikost](../sizes.md) , která se má použít pro virtuální počítač.

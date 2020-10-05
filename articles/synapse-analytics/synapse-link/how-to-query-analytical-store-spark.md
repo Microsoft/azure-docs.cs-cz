@@ -10,10 +10,10 @@ ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91287725"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>Interakce s Azure Cosmos DB pomocí Apache Spark v propojení Azure synapse (Preview)
@@ -35,11 +35,11 @@ Než se dozvíte o dvou možných možnostech pro dotazování Azure Cosmos DB a
 
 Rozdíl v prostředí je okolo toho, zda se změny podkladových dat v kontejneru Azure Cosmos DB musí automaticky projevit v analýze provedené ve Sparku. Když je zaregistrován datový rámec Spark nebo je vytvořena tabulka Sparku proti analytickému úložišti kontejneru, metadata kolem aktuálního snímku dat v analytickém úložišti se načítají do Sparku pro efektivní přenos po následné analýze. Je důležité si uvědomit, že od Sparku následuje zásada opožděného vyhodnocení, pokud se v datovém rámci Sparku nevyvolá akce, nebo se SparkSQL dotaz na tabulku Spark, skutečná data se nenačte z analytického úložiště podkladového kontejneru.
 
-V případě **načítání do Spark Dataframe**se načtená metadata ukládají do mezipaměti po celou dobu životnosti relace Spark, takže následné akce vyvolané v rámci datového rámce se vyhodnocují proti snímku analytického úložiště v době vytváření datového rámce.
+Při **načítání do datového rámce Sparku** jsou načtená metadata uložená v mezipaměti po celou dobu relace Sparku. To znamená, že k vyhodnocení následných akcí prováděných s datovým rámcem se použije snímek analytického úložiště v okamžiku vytvoření datového rámce.
 
-Na druhé straně v případě **Vytvoření tabulky Spark**se metadata stavu analytického úložiště v Sparku neukládají do mezipaměti a při každém spuštění dotazu SparkSQL proti tabulce Spark se znovu načte.
+V případě **vytvoření tabulky Sparku** se metadata o stavu analytického úložiště neukládají do mezipaměti Sparku, ale znovu se načtou při každém spuštění dotazu SparkSQL do tabulky Sparku.
 
-Proto si můžete vybrat mezi nahráváním do Spark dataframe a vytvořením tabulky Spark na základě toho, jestli chcete, aby se analýza Sparku vyhodnotila s pevným snímkem analytického úložiště nebo s nejnovějším snímkem analytického obchodu.
+Můžete si tedy vybrat, jestli načtete datový rámec Sparku nebo vytvoříte tabulku Sparku podle toho, jestli chcete k vyhodnocení analýzy Sparku použít pevně daný snímek analytického úložiště nebo jeho nejnovější snímek.
 
 > [!NOTE]
 > Pokud chcete zadat dotaz na rozhraní Azure Cosmos DB API účtů Mongo DB, přečtěte si další informace o [úplném vyjádření schématu přesnosti](../../cosmos-db/analytical-store-introduction.md#analytical-schema) v analytickém úložišti a o rozšířených názvech vlastností, které se mají použít.
@@ -86,7 +86,7 @@ create table call_center using cosmos.olap options (
 ```
 
 > [!NOTE]
-> Pokud máte scénáře, kde se v průběhu času mění schéma podkladového kontejneru Azure Cosmos DB; a pokud chcete, aby aktualizované schéma automaticky odráželo dotazy na tabulku Spark, můžete to dosáhnout nastavením `spark.cosmos.autoSchemaMerge`  možnosti `true` v tabulce Spark.
+> Pokud máte scénáře, ve kterých se postupně mění schéma základního kontejneru s Azure Cosmos DB, a chcete, aby se aktualizované schéma automaticky promítlo v dotazech do tabulky Sparku, dosáhnete toho tak, že v možnostech tabulky Sparku nastavíte možnost `spark.cosmos.autoSchemaMerge` na `true`.
 
 
 ## <a name="write-spark-dataframe-to-azure-cosmos-db-container"></a>Zápis Spark dataframe do kontejneru Azure Cosmos DB

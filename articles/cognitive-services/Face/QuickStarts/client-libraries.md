@@ -14,10 +14,10 @@ ms.author: pafarley
 ms.custom: devx-track-python, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: vyhledávání na tváři podle obrázku, vyhledávání v rozpoznávání obličeje, rozpoznávání obličeje a aplikace pro rozpoznávání obličeje
 ms.openlocfilehash: de9467719c3e88d257edb64d2a9ac2a54412d6ca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91322942"
 ---
 # <a name="quickstart-use-the-face-client-library"></a>Rychlý Start: použití klientské knihovny pro tvář

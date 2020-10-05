@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 9904fb8c2142816196a1939a16445318bdb245d0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91262310"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-docker-cli"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí Docker CLI
@@ -19,7 +19,7 @@ V tomto rychlém startu použijete nativní příkazy rozhraní příkazového �
 
 :::image type="content" source="media/quickstart-docker-cli/view-application-running-in-an-azure-container-instance.png" alt-text="Aplikace nasazená pomocí služby Azure Container Instances zobrazená v prohlížeči":::
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet][azure-account].
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet][azure-account].
 
 V tomto rychlém startu potřebujete Docker Desktop verze 2.3.0.5 nebo novější, který je k dispozici pro [Windows](https://desktop.docker.com/win/edge/Docker%20Desktop%20Installer.exe) nebo [MacOS](https://desktop.docker.com/mac/edge/Docker.dmg). Nebo nainstalujte rozhraní příkazového [řádku Docker ACI Integration CLI pro Linux](https://docs.docker.com/engine/context/aci-integration/#install-the-docker-aci-integration-cli-on-linux). 
 

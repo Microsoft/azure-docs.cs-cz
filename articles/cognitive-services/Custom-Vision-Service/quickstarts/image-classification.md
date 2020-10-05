@@ -12,10 +12,10 @@ ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug
 keywords: vlastní vize, rozpoznávání obrázků, aplikace pro rozpoznávání obrázků, analýza obrázků, software pro rozpoznávání obrázků
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 6583086c4b64c50f0cbef1fc12b7f4dc9e36be1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91321050"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-client-library"></a>Rychlý Start: vytvoření projektu klasifikace obrázků pomocí klientské knihovny Custom Vision

@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: a8d164dd50ac190d2bc14fea70cde20bfdb89361
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85849911"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Co je služba ML Services ve službě Azure HDInsight
@@ -63,7 +63,7 @@ Následující funkce jsou součástí ML Services v HDInsight.
 | R – povoleno | [Balíčky r](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) pro řešení napsané v jazyce r s využitím open source distribuce R a běhové infrastruktury pro provádění skriptu. |
 | Python – povolený | [Moduly Pythonu](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) pro řešení napsané v Pythonu, s využitím open source distribuce Pythonu a běhové infrastruktury pro provádění skriptu.
 | [Předem připravené modely](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Pro vizuální analýzu a analýzu textu mínění připravené k určení skóre dat, která zadáte. |
-| [Nasazení a využití](r-server-operationalize.md) | `Operationalize`Server a nasaďte řešení jako webovou službu. |
+| [Nasazení a využití](r-server-operationalize.md) | `Operationalize` Server a nasaďte řešení jako webovou službu. |
 | [Vzdálené spuštění](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | Z pracovní stanice klienta spusťte vzdálené relace v clusteru služby ML Services ve vaší síti. |
 
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>Možnosti úložiště dat pro služby ML v HDInsight
@@ -82,7 +82,7 @@ K Microsoft ML Server na hraničním uzlu se můžete připojit pomocí prohlí�
 
 Vaše skripty R můžou používat libovolný z balíčků sady R 8000 + open-source. Můžete také použít paralelní a distribuované rutiny z knihovny škálování. Skripty spouštěné na hraničním uzlu běží v překladači R v tomto uzlu. S výjimkou kroků, které volají funkci Scaleer, s výpočetním kontextem RxHadoopMR (map zmenšení) nebo Spark (výpočetního rxspark). Funkce jsou spouštěny distribuovaně napříč datovými uzly, které jsou přidruženy k datům. Další informace o možnostech kontextu najdete v tématu [Možnosti výpočetního kontextu pro služby ml v HDInsight](r-server-compute-contexts.md).
 
-## <a name="operationalize-a-model"></a>`Operationalize`model
+## <a name="operationalize-a-model"></a>`Operationalize` model
 
 Po dokončení modelování dat `operationalize` model předpovědi pro nová data z Azure nebo místního prostředí. Tento proces se označuje jako bodování. Bodování se dá udělat v HDInsight, Azure Machine Learning nebo v místním prostředí.
 

@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
 ms.openlocfilehash: 201ea38c6feabbda2576d8480a9983f00d62d175
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88191257"
 ---
 # <a name="use-the-azure-cli-to-create-a-service-bus-namespace-and-a-queue"></a>Vytvoření oboru názvů Service Bus a fronty pomocí rozhraní příkazového řádku Azure
@@ -17,7 +17,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit obor názvů Service Bus a fr
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][free account] před tím, než začnete.
 
 V tomto rychlém startu použijete Azure Cloud Shell, které můžete spustit po přihlášení k Azure Portal. Podrobnosti o Azure Cloud Shell najdete v tématu [přehled Azure Cloud Shell](../cloud-shell/overview.md). Na svém počítači můžete také [nainstalovat](/cli/azure/install-azure-cli) a používat Azure PowerShell. 

@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 08/19/2020
 ms.custom: include file
 ms.openlocfilehash: 4bad128e6f76b2d7dd87634a10b35ebbedd269ce
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88639175"
 ---
 1. V nabídce Azure Portal nebo na **domovské stránce**vyberte **vytvořit prostředek**.
@@ -49,8 +49,8 @@ ms.locfileid: "88639175"
 
 1. Zkontrolujte nastavení účtu a pak vyberte **vytvořit**. Vytvoření účtu trvá několik minut. Počkejte, než se na stránce portálu zobrazí **dokončené vaše nasazení**. 
 
-    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created.png" alt-text="Podokno Oznámení portálu Azure Portal":::
+    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created.png" alt-text="Stránka nového účtu pro službu Azure Cosmos DB":::
 
 1. Vyberte **Přejít k prostředku** a přejdete na stránku Azure Cosmos DB účet. 
 
-    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-2.png" alt-text="Stránka Azure Cosmos DB účtu":::
+    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-2.png" alt-text="Stránka nového účtu pro službu Azure Cosmos DB":::

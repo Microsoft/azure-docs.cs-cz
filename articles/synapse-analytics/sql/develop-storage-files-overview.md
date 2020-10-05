@@ -10,10 +10,10 @@ ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91288983"
 ---
 # <a name="access-external-storage-in-synapse-sql-on-demand"></a>Přístup k externímu úložišti v synapse SQL (na vyžádání)
@@ -178,7 +178,7 @@ Volající musí mít následující oprávnění pro čtení dat:
 
 V následující tabulce jsou uvedena požadovaná oprávnění pro výše uvedené operace.
 
-| Dotazy | Požadovaná oprávnění|
+| Dotaz | Požadovaná oprávnění|
 | --- | --- |
 | OPENROWSET (BULK) bez DataSource | `ADMINISTER BULK OPERATIONS``ADMINISTER DATABASE BULK OPERATIONS`přihlašovací údaje, nebo přihlášení SQL musí mít přihlašovací údaje:: \<URL> pro úložiště chráněné přes SAS. |
 | OPENROWSET (hromadné) se zdrojem dat bez přihlašovacích údajů | `ADMINISTER BULK OPERATIONS` nebo `ADMINISTER DATABASE BULK OPERATIONS` , |

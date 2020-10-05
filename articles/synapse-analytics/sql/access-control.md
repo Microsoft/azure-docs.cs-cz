@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: a2e6111f2df5a8d7334a85ec5b6a9e514368ad6c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91289476"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Správa přístupu k pracovním prostorům, datům a kanálům
@@ -68,7 +68,7 @@ Když jste zřídili pracovní prostor, museli jste vybrat účet [Azure Data La
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>Krok 4: Konfigurace přístupu správce SQL pro pracovní prostor
 
-1. Přejít na [Azure Portal](https://portal.azure.com)
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 2. Přejděte do pracovního prostoru.
 3. Přejít na **Nastavení**  >  **Správce služby Active Directory**
 4. Vyberte **nastavit správce** .

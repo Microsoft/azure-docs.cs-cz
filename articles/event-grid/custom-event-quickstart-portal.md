@@ -4,10 +4,10 @@ description: 'Rychlý Start: použijte Azure Event Grid a Azure Portal k publiko
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: 592e2d6b7393da8cb55a457b022d6c2358048cfe
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87421038"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Rychlý Start: směrování vlastních událostí na webový koncový bod pomocí Azure Portal a Event Grid
@@ -29,7 +29,7 @@ Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého o
     :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 3. Na stránce **Event Grid témata** vyberte **+ Přidat** na panelu nástrojů. 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/add-event-grid-topic-button.png" alt-text="Přidat Event Grid – tlačítko tématu":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/add-event-grid-topic-button.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 4. Na stránce **vytvořit téma** postupujte podle následujících kroků:
     1. Vyberte své **předplatné**Azure.
     2. Vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**a zadejte **název** **skupiny prostředků**.
@@ -37,18 +37,18 @@ Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého o
     4. Vyberte **umístění** tématu Event Grid.
     5. V dolní části stránky vyberte **zkontrolovat + vytvořit** . 
 
-        :::image type="content" source="./media/custom-event-quickstart-portal/create-custom-topic.png" alt-text="Vytvořit stránku tématu":::
+        :::image type="content" source="./media/custom-event-quickstart-portal/create-custom-topic.png" alt-text="Vyhledat a vybrat Event Grid témata":::
     6. Na stránce **Revize + vytvořit** tématu na stránce **vytvořit téma** vyberte **vytvořit**. 
     
-        :::image type="content" source="./media/custom-event-quickstart-portal/review-create-page.png" alt-text="Kontrola nastavení a vytvoření":::
+        :::image type="content" source="./media/custom-event-quickstart-portal/review-create-page.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 5. Po úspěšném nasazení zadejte **Event Grid témata** na panelu hledání a v rozevíracím seznamu vyberte **Event Grid témata** , jako jste to předtím. 
 6. Ze seznamu vyberte téma, které jste vytvořili. 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="Vyberte své téma ze seznamu.":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 
 7. Zobrazí se stránka **Event Grid téma** pro vaše téma. Tuto stránku nechte otevřenou. Použijete ji později v rychlém startu. 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="Domovská stránka Event Gridho tématu":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 
 ## <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 Před vytvořením předplatného pro vlastní téma vytvořte koncový bod pro zprávu události. Koncový bod obvykle provede akce na základě dat události. Pro zjednodušení tohoto rychlého startu nasadíte [předem připravenou webovou aplikaci](https://github.com/Azure-Samples/azure-event-grid-viewer), která zobrazuje zprávy události. Nasazené řešení zahrnuje plán služby App Service, webovou aplikaci App Service a zdrojový kód z GitHubu.
@@ -69,16 +69,16 @@ K odběru tématu Event Gridu se přihlašujete, aby služba Event Grid věděla
 
 1. Nyní na stránce **Event Grid téma** pro vlastní téma vyberte **+ odběr události** na panelu nástrojů.
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/new-event-subscription.png" alt-text="Tlačítko Přidat odběr události":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/new-event-subscription.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 2. Na stránce **vytvořit odběr události** použijte následující postup:
     1. Zadejte **název** odběru události.
     3. Vyberte **webový Hook** pro **Typ koncového bodu**. 
     4. Zvolte **Vybrat koncový bod**. 
 
-        :::image type="content" source="./media/custom-event-quickstart-portal/provide-subscription-values.png" alt-text="Zadání hodnot pro odběr události":::
+        :::image type="content" source="./media/custom-event-quickstart-portal/provide-subscription-values.png" alt-text="Vyhledat a vybrat Event Grid témata":::
     5. Jako koncový bod webhooku zadejte adresu URL vaší webové aplikace a do adresy URL domovské stránky přidejte `api/updates`. Zvolte **Potvrdit výběr**.
 
-        :::image type="content" source="./media/custom-event-quickstart-portal/provide-endpoint.png" alt-text="Zadání adresy URL koncového bodu":::
+        :::image type="content" source="./media/custom-event-quickstart-portal/provide-endpoint.png" alt-text="Vyhledat a vybrat Event Grid témata":::
     6. Zpátky na stránce **vytvořit odběr události** vyberte **vytvořit**.
 
 3. Podívejte se na webovou aplikaci znovu a všimněte si, že do ní byla odeslána událost ověření odběru. Vyberte ikonu oka a rozbalte data události. Služba Event Grid odešle událost ověření, aby koncový bod mohl ověřit, že data události chce přijímat. Webová aplikace obsahuje kód pro ověření odběru.
@@ -95,7 +95,7 @@ V prvním příkladu se používá Azure CLI. Načte adresu URL a klíč vlastn�
 ### <a name="azure-cli"></a>Azure CLI
 1. V Azure Portal vyberte **Cloud Shell**. Cloud Shell se otevře v dolním podokně webového prohlížeče. 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-cloud-shell.png" alt-text="Vybrat ikonu Cloud Shell":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-cloud-shell.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 1. V levém horním rohu okna Cloud Shell vyberte **bash** . 
 
     ![Cloud Shell – bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
@@ -125,7 +125,7 @@ V druhém příkladu se k provedení podobných kroků používá PowerShell.
 
 1. V Azure Portal vyberte možnost **Cloud Shell** (nebo přejít na `https://shell.azure.com/` ). Cloud Shell se otevře v dolním podokně webového prohlížeče. 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-cloud-shell.png" alt-text="Vybrat ikonu Cloud Shell":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-cloud-shell.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 1. V **Cloud Shell**v levém horním rohu okna Cloud Shell vyberte **PowerShell** . Podívejte se na ukázku obrázku okna **Cloud Shell** v části Azure CLI.
 2. Nastavte následující proměnné. Po zkopírování a vložení každého příkazu aktualizujte **název tématu** a **název skupiny prostředků** před spuštěním příkazu:
 
@@ -178,7 +178,7 @@ V druhém příkladu se k provedení podobných kroků používá PowerShell.
 ### <a name="verify-in-the-event-grid-viewer"></a>Ověření v prohlížeči Event Grid
 Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Podívejte se na webovou aplikaci, abyste si zobrazili událost, kterou jste právě odeslali.
 
-:::image type="content" source="./media/custom-event-quickstart-portal/event-grid-viewer-end.png" alt-text="Event Grid Viewer":::
+:::image type="content" source="./media/custom-event-quickstart-portal/event-grid-viewer-end.png" alt-text="Vyhledat a vybrat Event Grid témata":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud chcete pokračovat v práci s touto událostí, nevyčišťujte prostředky vytvořené v rámci tohoto článku. V opačném případě odstraňte prostředky, které jste v rámci tohoto článku vytvořili.

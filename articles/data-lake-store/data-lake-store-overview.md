@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 04/17/2019
 ms.author: twooley
 ms.openlocfilehash: 2ca6ceb326a1fd6f7aaf5a9871d043377e60de83
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85508550"
 ---
 # <a name="what-is-azure-data-lake-storage-gen1"></a>Co je Azure Data Lake Storage Gen1?
@@ -60,7 +60,7 @@ Data Lake Storage Gen1 používá k ověřování Azure Active Directory (Azure 
 
 | Funkce | Popis |
 | --- | --- |
-| Ověřování |Data Lake Storage Gen1 se integruje s Azure AD pro správu identit a přístupu pro všechna data uložená v Data Lake Storage Gen1. Kvůli integraci Data Lake Storage Gen1 výhody ze všech funkcí služby Azure AD, jako je Multi-Factor Authentication, podmíněný přístup, řízení přístupu na základě role, monitorování využití aplikací, monitorování zabezpečení a upozorňování atd. Data Lake Storage Gen1 podporuje protokol OAuth 2,0 pro ověřování v rámci rozhraní REST. Viz [Data Lake Storage Gen1 ověřování](data-lakes-store-authentication-using-azure-active-directory.md).|
+| Authentication |Data Lake Storage Gen1 se integruje s Azure AD pro správu identit a přístupu pro všechna data uložená v Data Lake Storage Gen1. Kvůli integraci Data Lake Storage Gen1 výhody ze všech funkcí služby Azure AD, jako je Multi-Factor Authentication, podmíněný přístup, řízení přístupu na základě role, monitorování využití aplikací, monitorování zabezpečení a upozorňování atd. Data Lake Storage Gen1 podporuje protokol OAuth 2,0 pro ověřování v rámci rozhraní REST. Viz [Data Lake Storage Gen1 ověřování](data-lakes-store-authentication-using-azure-active-directory.md).|
 | Řízení přístupu |Data Lake Storage Gen1 poskytuje řízení přístupu tím, že podporuje oprávnění ve stylu POSIX vystavené protokolem WebHDFS. Můžete povolit seznamy řízení přístupu (ACL) pro kořenovou složku, podsložky a jednotlivé soubory. Další informace o fungování seznamů ACL v kontextu Data Lake Storage Gen1 najdete v tématu [řízení přístupu v Data Lake Storage Gen1](data-lake-store-access-control.md). |
 | Šifrování |Data Lake Storage Gen1 taky poskytuje šifrování pro data, která jsou uložená v účtu. Nastavení šifrování určíte při vytváření účtu Data Lake Storage Gen1. Můžete se rozhodnout, že vaše data budou zašifrovaná nebo se můžou rozhodnout bez šifrování. Další informace najdete v tématu [šifrování v Data Lake Storage Gen1](data-lake-store-encryption.md). Pokyny, jak poskytnout konfiguraci související s šifrováním, najdete v tématu Začínáme [s Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-get-started-portal.md). |
 

@@ -12,10 +12,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 981e23a2b021cc0eb8085aa943830f87352aee69
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87828519"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>Rychlý Start: vytvoření centra oznámení Azure v Azure Portal
@@ -34,7 +34,7 @@ V této části vytvoříte obor názvů a centrum v oboru názvů.
 
 V této části vytvoříte centrum oznámení v existujícím oboru názvů.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny služby** , vyhledejte **Centrum oznámení**, vyberte **hvězdičku** ( `*` ) vedle položky **obory názvů centra oznámení** a přidejte je do části **Oblíbené** v nabídce vlevo. Vyberte **obory názvů centra oznámení**.
 
       ![Azure Portal – výběr oborů názvů centra oznámení](./media/create-notification-hub-portal/select-notification-hub-namespaces-all-services.png)

@@ -11,10 +11,10 @@ ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87921669"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technický přehled funkcí Azure Active Directory B2C
@@ -115,7 +115,7 @@ Přečtěte si další informace o toku uživatelů v [toku uživatelů v Azure 
 
 Vlastní zásady odemkněte přístup k celému výkonu modulu pro orchestraci identit v architektuře IEF (identity Experience Framework). Díky vlastním zásadám můžete využít IEF k sestavení téměř všech ověřování, registrace uživatelů nebo možností úprav profilů, které si můžete představit.
 
-Rozhraní identity Experience Framework poskytuje možnost vytvářet cesty uživatelů pomocí libovolné kombinace kroků. Například:
+Rozhraní identity Experience Framework poskytuje možnost vytvářet cesty uživatelů pomocí libovolné kombinace kroků. Příklad:
 
 * Federovat s jinými zprostředkovateli identity
 * První a další výzvy k Multi-Factor Authentication (MFA) třetích stran

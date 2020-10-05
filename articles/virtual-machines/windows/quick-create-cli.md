@@ -9,17 +9,17 @@ ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: bcfbcc4f78e14edc40abccf4a697b00bc7a3f014
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87496181"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Rychlý start: Vytvoření virtuálního počítače s Windows pomocí Azure CLI
 
 Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí Azure CLI nasadit do Azure virtuální počítač s Windows Serverem 2016. Pak se k virtuálnímu počítači připojíte přes protokol RDP a nainstalujete na něj webový server služby IIS, abyste virtuální počítač viděli v akci.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 

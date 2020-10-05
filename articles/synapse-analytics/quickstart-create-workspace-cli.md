@@ -10,10 +10,10 @@ ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.openlocfilehash: 065e24c12e0750cd7a1f3ce2d4cad5c7ad4b95df
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91260678"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Rychlý Start: vytvoření pracovního prostoru Azure synapse pomocí Azure CLI
@@ -24,7 +24,7 @@ V tomto rychlém startu se naučíte vytvořit pracovní prostor synapse pomocí
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Stažení a instalace [JQ](https://stedolan.github.io/jq/download/)a jednoduchého a flexibilního procesoru JSON příkazového řádku
 - [Účet úložiště Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
@@ -65,7 +65,7 @@ az extension add --name synapse
     |StorageAccountResourceGroup| Název existující skupiny prostředků účtu úložiště ADLS Gen2 |
     |FileShareName| Název existujícího systému souborů úložiště.|
     |SynapseResourceGroup| Vyberte nový název skupiny prostředků Azure synapse. |
-    |Region| Vyberte jednu z [oblastí Azure](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
+    |Oblast| Vyberte jednu z [oblastí Azure](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
     |SynapseWorkspaceName| Vyberte jedinečný název pro nový pracovní prostor Azure synapse. |
     |SqlUser| Vyberte hodnotu pro nové uživatelské jméno.|
     |SqlPassword| Vyberte zabezpečené heslo.|

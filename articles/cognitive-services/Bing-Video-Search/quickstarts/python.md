@@ -12,10 +12,10 @@ ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: devx-track-python
 ms.openlocfilehash: e6f132db9b4c0f0310496b2e22579e18359e1573
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87847223"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a Pythonu
@@ -29,7 +29,7 @@ Tento příklad můžete spustit jako Poznámkový blok Jupyter v [MyBinder](htt
 [![Vazba](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Python [2. x nebo 3. x](https://python.org)
 

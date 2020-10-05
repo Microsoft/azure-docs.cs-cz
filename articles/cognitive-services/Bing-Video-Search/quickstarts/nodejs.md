@@ -12,10 +12,10 @@ ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: devx-track-js
 ms.openlocfilehash: ae049ede4ebfd6761665be9c9ea6b49e87111a20
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91309783"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a Node.js
@@ -24,7 +24,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API Bingu pr
 
 Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingVideoSearchv7.js) s dalším ošetřením chyb a poznámkami ke kódu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Node.js](https://nodejs.org/en/download/).
 

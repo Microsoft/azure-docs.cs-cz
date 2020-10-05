@@ -16,10 +16,10 @@ ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
 ms.openlocfilehash: 17817a5730678ae708c92c99093e7b859e05f8fe
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90983860"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace .NET Framework
@@ -28,7 +28,7 @@ V tomto rychlém startu zařadíte do aplikace .NET Framework aplikaci Azure App
 
 Knihovny pro správu funkcí .NET rozšíří rozhraní s podporou příznaků funkcí. Tyto knihovny jsou postaveny na systému konfigurace .NET. Integrují s konfigurací aplikace prostřednictvím poskytovatele konfigurace .NET.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -51,7 +51,7 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s podporou příznaků f
 
 1. V části **vytvořit nový projekt**, vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework)**. Klikněte na **Next** (Další).
 
-1. V **konfiguraci nového projektu**zadejte název projektu. V části **rozhraní**vyberte **.NET Framework 4,8** nebo vyšší. Klikněte na **Vytvořit**.
+1. V **konfiguraci nového projektu**zadejte název projektu. V části **rozhraní**vyberte **.NET Framework 4,8** nebo vyšší. Klikněte na **Create** (Vytvořit).
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 

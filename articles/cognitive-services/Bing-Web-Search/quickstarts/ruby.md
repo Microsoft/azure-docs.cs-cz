@@ -12,17 +12,17 @@ ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 9400558f8ea26199a2f7ac406fd6d94647243e11
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83873802"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Rychlý start: Použití Ruby k volání rozhraní API Bingu pro vyhledávání na webu  
 
 V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání na webu. Tato aplikace Ruby pošle do rozhraní API požadavek hledání a zobrazí odpověď ve formátu JSON. I když je tato aplikace napsaná v Ruby, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 

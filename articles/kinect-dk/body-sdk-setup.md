@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: Kinect, Azure, snímač, Access, Depth, SDK, tělo, sledování, společné, nastavení, CUDA, NVIDIA
 ms.openlocfilehash: 2cf4c1097730f88fc4bd66c28e1bdddd7fea8640
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85277945"
 ---
 # <a name="quickstart-set-up-azure-kinect-body-tracking"></a>Rychlý Start: nastavení sledování těla Kinect Azure
@@ -34,11 +34,11 @@ Stáhněte a nainstalujte Distribuovatelné součásti Visual C++ pro Visual Stu
 
 ## <a name="set-up-hardware"></a>Nastavení hardwaru
 
-### <a name="set-up-azure-kinect-dk"></a>[Nastavení Azure Kinect DK](set-up-azure-kinect-dk.md)
+### <a name="set-up-azure-kinect-dk"></a>[Nastavení sady Azure Kinect DK](set-up-azure-kinect-dk.md)
 
 Spusťte [prohlížeč Azure Kinect](azure-kinect-viewer.md) a ověřte, jestli je správně nastavená vaše Azure Kinect DK.
 
-## <a name="download-the-body-tracking-sdk"></a>Stáhnout sadu SDK pro sledování textu
+## <a name="download-the-body-tracking-sdk"></a>Stažení sady Body Tracking SDK
  
 1. Vyberte odkaz pro [Stažení sady SDK pro sledování textu](body-sdk-download.md)
 2. Nainstalujte do svého počítače sadu SDK pro sledování textu.
@@ -47,7 +47,7 @@ Spusťte [prohlížeč Azure Kinect](azure-kinect-viewer.md) a ověřte, jestli 
 
 Spusťte **prohlížeč pro sledování textu v Azure Kinect** a ověřte, jestli je správně nastavená sada SDK pro sledování textu. Prohlížeč se instaluje s instalačním programem sady SDK MSI. Můžete ji najít v nabídce Start nebo v `<SDK Installation Path>\tools\k4abt_simple_3d_viewer.exe` .
 
-Pokud nemáte dostatečně výkonný grafický procesor a přesto chcete výsledek otestovat, můžete spustit **prohlížeč sledování textu v Azure Kinect** na příkazovém řádku pomocí následujícího příkazu:`<SDK Installation Path>\tools\k4abt_simple_3d_viewer.exe CPU`
+Pokud nemáte dostatečně výkonný grafický procesor a přesto chcete výsledek otestovat, můžete spustit **prohlížeč sledování textu v Azure Kinect** na příkazovém řádku pomocí následujícího příkazu: `<SDK Installation Path>\tools\k4abt_simple_3d_viewer.exe CPU`
 
 Pokud je všechno správně nastavené, mělo by se zobrazit okno s cloudem a sledovanými subjekty v 3D bodě.
 
@@ -61,5 +61,5 @@ Příklady, jak používat sadu SDK pro sledování textu, najdete [tady](https:
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
->[Vytvoření první aplikace pro sledování textu](build-first-body-app.md)
+>[Vytvoření první aplikace pro sledování pohybu těla](build-first-body-app.md)
 

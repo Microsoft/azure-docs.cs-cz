@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: af5683bf253e26ab928e46059f9af9d2ab8af3bd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90987349"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>Rychlý Start: použití IoT Central Azure ke sledování vašich zařízení
@@ -22,7 +22,7 @@ ms.locfileid: "90987349"
 
 V tomto rychlém startu se dozvíte, jak pomocí Microsoft Azure IoT Central aplikace monitorovat vaše zařízení a měnit nastavení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, měli byste provést tři předchozí rychlé starty a [vytvořit aplikaci Azure IoT Central](./quick-deploy-iot-central.md), [Přidat simulované zařízení do aplikace IoT Central](./quick-create-simulated-device.md) a [nakonfigurovat pravidla a akce pro vaše zařízení](quick-configure-rules.md).
 

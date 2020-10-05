@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.openlocfilehash: c1bd0d86a3fd9d19d67d84b9b05955421373e01e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79503878"
 ---
 V tomto rychlém startu můžete začít hledat zprávy pomocí klientské knihovny Vyhledávání zpráv Bingu pro Python. I když Vyhledávání zpráv Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py).

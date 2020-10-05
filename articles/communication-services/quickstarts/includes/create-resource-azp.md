@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
 ms.openlocfilehash: 11b9c553573d9e6188ba634b4cb966d6a9b850b4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947010"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/dotnet/).
 
@@ -23,11 +23,11 @@ Pokud chcete vytvořit prostředek služby Azure Communication Services, přihla
 
 Zadejte **komunikaci** buď na vstupu **na webu Marketplace** , nebo na panelu hledání v horní části portálu.
 
-:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="Snímek obrazovky znázorňující hledání komunikačních služeb na panelu hledání.":::
+:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="Snímek obrazovky se zvýrazněním tlačítka vytvořit prostředek v Azure Portal.":::
 
 Ve výsledcích vyberte **komunikační služby** a pak vyberte **Přidat**.
 
-:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="Snímek obrazovky, na kterém se nachází panel Azure, zvýraznění tlačítka Přidat":::
+:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="Snímek obrazovky se zvýrazněním tlačítka vytvořit prostředek v Azure Portal.":::
 
 Nyní můžete nakonfigurovat prostředek komunikačních služeb. Na první stránce procesu vytváření budete požádáni o zadání:
 

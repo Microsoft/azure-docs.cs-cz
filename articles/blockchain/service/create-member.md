@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.reviewer: ravastra
 ms.custom: references_regions
 ms.openlocfilehash: 8a7f5aaea56f34e8107664ab786a14b59cd1cb7d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91292723"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Rychlý Start: Vytvoření člena blockchain služby Azure blockchain pomocí Azure Portal
@@ -18,7 +18,7 @@ V tomto rychlém startu nasadíte nového člena blockchain a konsorcia ve služ
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Žádné
 
@@ -26,7 +26,7 @@ V tomto rychlém startu nasadíte nového člena blockchain a konsorcia ve služ
 
 Člen služby Azure Blockchain je blockchain uzel v privátní síti konsorcia blockchain. Při zřizování člena můžete vytvořit nebo připojit se k síti konsorcia. Pro síť konsorcia potřebujete alespoň jednoho člena. Počet členů blockchain, které účastníci potřebují, závisí na vašem scénáři. Účastníci konsorcia mohou mít jednoho nebo více členů blockchain nebo mohou sdílet členy s ostatními účastníky. Další informace o konsorciích najdete v článku [konsorcium služby Azure blockchain](consortium.md).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.
 1. Vyberte **blockchain**  >  **Azure blockchain Service (Preview)**.
 
@@ -36,7 +36,7 @@ V tomto rychlém startu nasadíte nového člena blockchain a konsorcia ve služ
     --------|------------
     Předplatné | Vyberte předplatné Azure, které chcete použít pro vaši službu. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
     Skupina prostředků | Vytvořte nový název skupiny prostředků nebo vyberte existující v rámci svého předplatného.
-    Region | Vyberte oblast, ve které se má člen vytvořit. Všichni členové konsorcia musí být ve stejném umístění. Funkce nemusí být k dispozici v některých oblastech. Azure blockchain Data Manager je k dispozici v následujících oblastech Azure: Východní USA a Západní Evropa.
+    Oblast | Vyberte oblast, ve které se má člen vytvořit. Všichni členové konsorcia musí být ve stejném umístění. Funkce nemusí být k dispozici v některých oblastech. Azure blockchain Data Manager je k dispozici v následujících oblastech Azure: Východní USA a Západní Evropa.
     Protokol | V současné době verze Preview služby Azure blockchain podporuje protokol kvora.
     Konsorcium | Pro nového konsorcia zadejte jedinečný název. Pokud se připojujete k konsorciu prostřednictvím pozvánky, vyberte konsorcium, ke které se připojujete. Další informace o konsorciích najdete v článku [konsorcium služby Azure blockchain](consortium.md).
     Name | Vyberte jedinečný název členu služby Azure blockchain. Název členu blockchain může obsahovat jenom malá písmena a číslice. Prvním znakem musí být písmeno. Hodnota musí být dlouhá 2 až 20 znaků.

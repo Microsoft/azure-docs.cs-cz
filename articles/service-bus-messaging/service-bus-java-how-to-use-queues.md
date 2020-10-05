@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 5447bea686db48157c721978f5510cd80e0924c6
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88065790"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Rychlý Start: použití Azure Service Bus front s jazykem Java k posílání a přijímání zpráv
@@ -20,7 +20,7 @@ V tomto kurzu se naučíte vytvářet aplikace v jazyce Java pro posílání zpr
 > [!NOTE]
 > Ukázky Java můžete najít na GitHubu v [úložišti Azure-Service-Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/Java).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Pokud nemáte frontu, ve které byste mohli pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření fronty Service Bus](service-bus-quickstart-portal.md) .
     1. Přečtěte si rychlý **přehled** Service Busch **front**. 

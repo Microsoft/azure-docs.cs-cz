@@ -10,19 +10,19 @@ ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
 ms.openlocfilehash: 572262cbece26171f9a67bf073906fa2dfd4d8e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79371065"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Rychlý Start: dotazování Apache HBA ve službě Azure HDInsight pomocí prostředí HBA
 
 V tomto rychlém startu se dozvíte, jak pomocí prostředí Apache HBA vytvořit tabulku HBA, vkládat data a pak dotazovat tabulku.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache HBA. V tématu [Vytvoření clusteru](../hadoop/apache-hadoop-linux-tutorial-get-started.md) vytvořte cluster HDInsight.  Ujistěte se, že jste vybrali typ clusteru **HBA** .
 
@@ -58,7 +58,7 @@ Pomocí SSH se můžete připojit k clusterům HBA a pak pomocí prostředí Apa
     create 'Contacts', 'Personal', 'Office'
     ```
 
-4. K `list` vypsání všech tabulek v adaptérech HBA použijte příkaz. Zadejte následující příkaz:
+4. `list`K vypsání všech tabulek v adaptérech HBA použijte příkaz. Zadejte následující příkaz:
 
     ```hbase
     list
@@ -73,13 +73,13 @@ Pomocí SSH se můžete připojit k clusterům HBA a pak pomocí prostředí Apa
     put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
     ```
 
-6. Pomocí `scan` příkazu naskenujte a vraťte data `Contacts` tabulky. Zadejte následující příkaz:
+6. Pomocí `scan` příkazu naskenujte a vraťte `Contacts` data tabulky. Zadejte následující příkaz:
 
     ```hbase
     scan 'Contacts'
     ```
 
-7. K `get` načtení obsahu řádku použijte příkaz. Zadejte následující příkaz:
+7. `get`K načtení obsahu řádku použijte příkaz. Zadejte následující příkaz:
 
     ```hbase
     get 'Contacts', '1000'
@@ -99,7 +99,7 @@ Pomocí SSH se můžete připojit k clusterům HBA a pak pomocí prostředí Apa
     disable 'Contacts'
     ```
 
-10. K `drop` vyřazení tabulky z HBA použijte příkaz. Zadejte následující příkaz:
+10. `drop`K vyřazení tabulky z HBA použijte příkaz. Zadejte následující příkaz:
 
     ```hbase
     drop 'Contacts'

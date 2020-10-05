@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 09/22/2020
 ms.author: aahi
 ms.openlocfilehash: ec13ee65595ccb0bdca1656522a7cd5f21b49a10
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91319238"
 ---
 Začněte s klientskou knihovnou anomálií pro Python. Pomocí těchto kroků nainstalujete balíček Start s použitím algoritmů poskytovaných službou. Služba detektoru anomálií umožňuje v datech časových řad najít neobvyklé typy, a to díky tomu, že automaticky používá nejvhodnější modely, bez ohledu na obor, scénář nebo objem dat.
@@ -25,7 +25,7 @@ Použijte klientskou knihovnu detektoru anomálií pro Python:
 
 [Referenční dokumentace ke knihovně](https://go.microsoft.com/fwlink/?linkid=2090370)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector)  |  [Balíček (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/)  |  [Vyhledání ukázkového kódu na GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Python 3.x](https://www.python.org/)
 * [Knihovna analýzy dat PANDAS](https://pandas.pydata.org/)

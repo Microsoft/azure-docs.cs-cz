@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 09/17/2020
 ms.author: pafarley
 ms.openlocfilehash: f746a61850567014ce216c47df472d035f1ae123
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91322944"
 ---
 Začněte s rozpoznáváním obličeje pomocí klientské knihovny pro tvář pro Python. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
@@ -29,7 +29,7 @@ Pomocí klientské knihovny obličeje pro Python:
 
 [Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face)  |  [Balíček (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)  |  [Ukázky](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Python 3.x](https://www.python.org/)
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .

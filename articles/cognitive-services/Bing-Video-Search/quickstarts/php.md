@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.openlocfilehash: c43abc6c87b88e9fc4a15d4ca5d5506389a8a81a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83849616"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a PHP
@@ -23,7 +23,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API Bingu pr
 
 I když je tato aplikace napsaná v PHP, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * PHP 5,6 nebo novější
 
@@ -37,7 +37,7 @@ I když je tato aplikace napsaná v PHP, rozhraní API je webová služba RESTfu
 2. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP.
 3. Přidejte níže uvedený kód.
 4. Hodnotu `$accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné. Pro tuto `$endpoint` hodnotu můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
-5. Spusťte program.
+5. Spustíte program.
 
 ```php
 <?php

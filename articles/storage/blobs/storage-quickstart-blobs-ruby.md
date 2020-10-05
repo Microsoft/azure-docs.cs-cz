@@ -8,17 +8,17 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 8c24c5f043d17b5f0e54ca1c2c6cf41a0d3fe9bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "68726357"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Ruby
 
 V tomto rychlém startu zjistíte, jak pomocí Ruby nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -113,7 +113,7 @@ blob_client.set_container_acl(container_name, "container")
 
 Úložiště objektů blob podporuje objekty blob bloku, doplňovací objekty blob a objekty blob stránky. Nejčastěji používané jsou objekty blob bloku, které se používají také v tomto rychlém startu.  
 
-Pokud chcete nahrát soubor do objektu blob, získejte úplnou cestu k souboru spojením názvu adresáře a názvu souboru na místním disku. Pak můžete soubor nahrát do zadané cesty pomocí metody **Create\_Block\_BLOB ()** . 
+Pokud chcete nahrát soubor do objektu blob, získejte úplnou cestu k souboru spojením názvu adresáře a názvu souboru na místním disku. Pak můžete soubor nahrát do zadané cesty pomocí metody **Create \_ Block \_ BLOB ()** . 
 
 Vzorový kód vytvoří místní soubor, který se použije k nahrání a stažení. Soubor k nahrání uloží do proměnné **full\_path\_to\_file** a název objektu blob do proměnné **local\_file\_name**. Následující příklad nahraje soubor do kontejneru **quickstartblobs**.
 
@@ -135,11 +135,11 @@ puts "\nUploading to Blob storage as blob" + local_file_name
 blob_client.create_block_blob(container.name, local_file_name, full_path_to_file)
 ```
 
-K provedení částečné aktualizace obsahu objektu blob bloku použijte metodu **vytvořit\_seznam\_blokovaných objektů ()** . Objekty blob bloku můžou mít velikost až 4,7 TB a můžou být čímkoli od tabulky aplikace Excel po velké videosoubory. Objekty blob stránky se používají hlavně pro soubory VHD využívané virtuálními počítači IaaS. Doplňovací objekty blob se používají k protokolování, například když chcete zapisovat do souboru a pak přidávat další informace. Doplňovací objekt blob by se měl používat v modelu s jedním zapisujícím procesem. Většina objektů uložených v úložišti objektů blob je objekty blob bloku.
+K provedení částečné aktualizace obsahu objektu blob bloku použijte metodu **vytvořit \_ seznam blokovaných objektů \_ ()** . Objekty blob bloku můžou mít velikost až 4,7 TB a můžou být čímkoli od tabulky aplikace Excel po velké videosoubory. Objekty blob stránky se používají hlavně pro soubory VHD využívané virtuálními počítači IaaS. Doplňovací objekty blob se používají k protokolování, například když chcete zapisovat do souboru a pak přidávat další informace. Doplňovací objekt blob by se měl používat v modelu s jedním zapisujícím procesem. Většina objektů uložených v úložišti objektů blob je objekty blob bloku.
 
-### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
+### <a name="list-the-blobs-in-a-container"></a>Seznam objektů blob v kontejneru
 
-Seznam souborů v kontejneru můžete získat pomocí metody **List\_BLOBs ()** . Následující kód načte seznam objektů blob, pak je ve smyčce projde a zobrazí názvy nalezených objektů blob v kontejneru.  
+Seznam souborů v kontejneru můžete získat pomocí metody **List \_ BLOBS ()** . Následující kód načte seznam objektů blob, pak je ve smyčce projde a zobrazí názvy nalezených objektů blob v kontejneru.  
 
 ```ruby
 # List the blobs in the container
@@ -169,7 +169,7 @@ File.open(full_path_to_file2,"wb") {|f| f.write(content)}
 ```
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už nepotřebujete objekty blob nahrané v rámci tohoto rychlého startu, můžete celý kontejner odstranit pomocí metody **Delete\_Container ()** . Pokud již vytvořené soubory nejsou potřeba, použijte k odstranění souborů metodu **Delete\_BLOB ()** .
+Pokud už nepotřebujete objekty blob nahrané v rámci tohoto rychlého startu, můžete celý kontejner odstranit pomocí metody **Delete \_ Container ()** . Pokud již vytvořené soubory nejsou potřeba, použijte k odstranění souborů metodu **Delete \_ BLOB ()** .
 
 ```ruby
 # Clean up resources. This includes the container and the temp files

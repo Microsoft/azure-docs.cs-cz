@@ -15,13 +15,13 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 435d74e771a9d887c87c9d10e6b525ac77cf97e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91278324"
 ---
-# <a name="storage-hierarchy-of-azure-netapp-files"></a>Hierarchie úložiště Azure NetApp Files
+# <a name="storage-hierarchy-of-azure-netapp-files"></a>Hierarchie úložiště služby Azure NetApp Files
 
 Před vytvořením svazku ve službě Azure NetApp Files musíte zakoupit a nastavit fond pro zřízenou kapacitu.  Pokud chcete nastavit fond kapacity, musíte mít účet NetApp. Pochopení hierarchie úložiště pomáhá nastavit a spravovat prostředky Azure NetApp Files.
 
@@ -93,4 +93,4 @@ Následující příklad znázorňuje vztahy předplatného Azure, účtů NetAp
 - [Úrovně služeb pro Azure NetApp Files](azure-netapp-files-service-levels.md)
 - [Aspekty výkonu pro Azure NetApp Files](azure-netapp-files-performance-considerations.md)
 - [Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)
-- [Správa ručního fondu kapacity QoS](manage-manual-qos-capacity-pool.md)
+- [Správa fondu ručně zřizovaného kapacity QoS](manage-manual-qos-capacity-pool.md)

@@ -9,17 +9,17 @@ ms.date: 07/31/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: e3d400726bfb65b2548bc773ffb460fe1ad426a0
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87513447"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem v Azure pomocí PowerShellu
 
 Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí modulu Azure PowerShell nasadit do Azure virtuální počítač s Linuxem. V tomto rychlém startu se používá Image Ubuntu 18,04 LTS z webu z kanonického tvaru. Také se k virtuálnímu počítači připojíte přes SSH a nainstalujete na něj webový server NGINX, abyste virtuální počítač viděli v akci.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 

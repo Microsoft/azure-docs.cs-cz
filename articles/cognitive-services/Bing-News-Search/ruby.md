@@ -12,10 +12,10 @@ ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: ad52116e11f9d89bf55a23692ae4e27f53b51319
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83873422"
 ---
 # <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Rychlý Start: provedení vyhledávání zpráv pomocí Ruby a Vyhledávání zpráv Bingu REST API
@@ -26,7 +26,7 @@ I když je tato aplikace napsaná v Ruby, je rozhraní API webová služba RESTf
 
 Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Ruby [2,4 nebo novější](https://www.ruby-lang.org/en/downloads/)
 

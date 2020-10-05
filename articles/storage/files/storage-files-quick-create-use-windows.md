@@ -8,10 +8,10 @@ ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0cbbcc822765097f83fcd1a52ce775c69faba9fa
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87836424"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Rychlý Start: vytvoření a Správa sdílené složky Azure Files s virtuálními počítači s Windows
@@ -22,7 +22,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 

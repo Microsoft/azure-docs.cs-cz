@@ -9,10 +9,10 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
 ms.openlocfilehash: 73044f35b90fd3e5996899fd7c3b0a925056f8ed
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87836867"
 ---
 # <a name="whats-new-in-qna-maker"></a>Co je nového v QnA Maker
@@ -35,7 +35,7 @@ Přečtěte si, co je nového v QnA Maker.
 
 ### <a name="may-2020"></a>Květen 2020
 
-* [Řízení přístupu na základě role v Azure (Azure RBAC)](concepts/role-based-access-control.md)
+* [Řízení přístupu na základě role Azure (Azure RBAC)](concepts/role-based-access-control.md)
 * [Rozšířené úpravy textu](how-to/edit-knowledge-base.md#rich-text-editing-for-answer) pro odpovědi
 
 ### <a name="march-2020"></a>Březen 2020

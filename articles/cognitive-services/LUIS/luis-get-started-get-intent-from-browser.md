@@ -6,17 +6,17 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 04/21/2020
 ms.openlocfilehash: ce7544bee32586aa4cdeeb7f47a84744194db5da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91316269"
 ---
 # <a name="quickstart-query-prediction-runtime-with-user-text"></a>Rychlý Start: modul runtime předpovědi dotazu s uživatelským textem
 
 Abyste porozuměli výsledkům koncového bodu předpovědí služby LUIS, zobrazte si výsledek předpovědi ve webovém prohlížeči.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dotazování veřejné aplikace potřebujete:
 

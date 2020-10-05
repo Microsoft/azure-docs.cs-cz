@@ -6,10 +6,10 @@ ms.date: 06/29/2020
 ms.topic: quickstart
 ms.author: jgao
 ms.openlocfilehash: ff6c459f2f4178bee6b6b564e177c097d72592a3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85557341"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Rychlý Start: vytvoření a nasazení šablon ARM pomocí Azure Portal
@@ -20,7 +20,7 @@ Naučte se generovat šablonu Azure Resource Manager (ARM) pomocí Azure Portal 
 
 Po dokončení kurzu nasadíte účet Azure Storage. Stejný postup je možné použít k nasazení dalších prostředků Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="generate-a-template-using-the-portal"></a>Vygenerování šablony na portálu
 
@@ -33,7 +33,7 @@ Mnohé zkušení vývojáři šablon používají tuto metodu k vygenerování �
 
     ![V nabídce Azure Portal vyberte vytvořit prostředek.](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
 
-1. Vyberte **úložiště**  >  **účet**úložiště.
+1. Vyberte **Úložiště** > **Účet úložiště**.
 
     ![Vytvoření účtu úložiště Azure](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 1. Zadejte následující informace:
@@ -158,12 +158,12 @@ Azure vyžaduje, aby každá služba Azure měla jedinečný název. Nasazení m
      ```
 
 1. Vyberte **Uložit**.
-1. Zadejte následující hodnoty:
+1. Zadejte tyto hodnoty:
 
     |Name|Hodnota|
     |----|----|
     |**Skupina prostředků**|Vyberte název skupiny prostředků, který jste vytvořili v poslední části. |
-    |**Věřitel**|Vyberte umístění skupiny prostředků. Například **USA – střed**. |
+    |**Oblast**|Vyberte umístění skupiny prostředků. Například **USA – střed**. |
     |**Umístění**|Vyberte umístění pro účet úložiště. Například **USA – střed**. |
     |**Typ účtu**|Zadejte **Standard_LRS** pro tento rychlý Start. |
     |**Druh**|Pro tento rychlý Start zadejte **StorageV2** . |

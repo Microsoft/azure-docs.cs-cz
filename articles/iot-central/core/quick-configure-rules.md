@@ -10,19 +10,19 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 66c3bd8650d1194d5d753c1dc967ec8e870c8748
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80998969"
 ---
-# <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Rychlý Start: Konfigurace pravidel a akcí pro vaše zařízení v Azure IoT Central
+# <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Rychlé zprovoznění: Konfigurace pravidel a akcí pro zařízení v Azure IoT Central
 
 *Tento článek je pro operátory, tvůrce a správce.*
 
-V tomto rychlém startu vytvoříte pravidlo, které pošle e-mail, když teplota hlášená snímačem zařízení překročí&deg; 90 F.
+V tomto rychlém startu vytvoříte pravidlo, které pošle e-mail, když teplota hlášená snímačem zařízení překročí 90 &deg; F.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, měli byste provést dvě předchozí rychlé starty a [vytvořit aplikaci Azure IoT Central](./quick-deploy-iot-central.md) a [Přidat simulované zařízení do aplikace IoT Central](./quick-create-simulated-device.md) a vytvořit tak šablonu zařízení **MXChip IoT DevKit** , se kterou chcete pracovat.
 
@@ -30,7 +30,7 @@ Než začnete, měli byste provést dvě předchozí rychlé starty a [vytvořit
 
 1. Pokud chcete do aplikace přidat nové pravidlo založené na telemetrie, v levém podokně vyberte **pravidla**.
 
-1. Chcete-li vytvořit nové pravidlo, **+** vyberte.
+1. Chcete-li vytvořit nové pravidlo, vyberte **+** .
 
 1. Jako název pravidla zadejte **teplotu okolního prostředí** .
 
@@ -55,7 +55,7 @@ Než začnete, měli byste provést dvě předchozí rychlé starty a [vytvořit
     | Nastavení   | Hodnota                                             |
     | --------- | ------------------------------------------------- |
     | Zobrazované jméno | Akce e-mailu operátoru                          |
-    | Akce        | Vaše e-mailová adresa                                |
+    | Záměr        | Vaše e-mailová adresa                                |
     | Poznámky     | Teplota okolního prostředí přesáhla prahovou hodnotu. |
 
     > [!NOTE]
@@ -63,7 +63,7 @@ Než začnete, měli byste provést dvě předchozí rychlé starty a [vytvořit
 
     ![Vytvořit akci pravidla](./media/quick-configure-rules/action.png)
 
-1. Vyberte **Uložit**. Vaše pravidlo je uvedené na stránce **pravidla** .
+1. Vyberte **Uložit**. Vaše pravidlo je uvedené na stránce **Pravidla**.
 
 ## <a name="test-the-rule"></a>Testování pravidla
 

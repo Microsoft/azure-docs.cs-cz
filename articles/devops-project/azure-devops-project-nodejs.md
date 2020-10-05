@@ -14,17 +14,17 @@ ms.date: 03/24/2020
 ms.author: angrobe
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: fa6d0f78f984c5e71ccdbcada45ea1bc50be9e95
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91318615"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD v Azure Pipelines pro Node.js pomocí Azure DevOps Starter
 
 V tomto rychlém startu vytvoříte NodeJS progresivní webovou aplikaci (PWA) pomocí [GatsbyJS](https://www.gatsbyjs.org/) a zjednodušeným prostředím pro vytváření Azure DevOps Starter. Po dokončení budete mít pro aplikaci PWA v Azure Pipelines kanál průběžné integrace (CI) a průběžného doručování (CD). Azure DevOps Starter nastavuje, co potřebujete pro vývoj, nasazování a monitorování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - Organizace [Azure DevOps](https://azure.microsoft.com/services/devops/) .

@@ -12,17 +12,17 @@ ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: bbb6acd4e976d345daa99cde7635febc3755963f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83873822"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Rychlý start: Použití PHP k volání rozhraní API Bingu pro vyhledávání na webu  
 
-V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání na webu. Tato aplikace Node. js odešle požadavek na hledání do rozhraní API a zobrazí odpověď ve formátu JSON. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání na webu. Tato Node.js aplikace odešle požadavek na hledání do rozhraní API a zobrazí odpověď JSON. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 
@@ -33,7 +33,7 @@ Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého sta
 
 ## <a name="enable-secure-http-support"></a>Povolení podpory zabezpečeného protokolu HTTP
 
-Než začneme, vyhledejte php. ini a odkomentujte tento řádek:
+Než začneme, najděte php.ini a odkomentujte tento řádek:
 
 ```php
 ; extension=php_openssl.dll

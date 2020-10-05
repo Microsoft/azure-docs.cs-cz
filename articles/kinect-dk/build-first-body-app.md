@@ -9,20 +9,20 @@ ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: Kinect, Azure, snímač, SDK, tělo, sledování, společné, aplikace, nejdřív
 ms.openlocfilehash: bdf8ee7a14bf59a151dfa316b11159830b4f63b8
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85277944"
 ---
 # <a name="quickstart-build-an-azure-kinect-body-tracking-application"></a>Rychlý Start: Vytvoření aplikace pro sledování textu v Azure Kinect
 
 Začínáme se sadou SDK pro sledování textu? Tento rychlý Start vám pomůže začít pracovat se sledováním textu! V tomto [úložišti Azure-Kinect-Sample](https://github.com/microsoft/Azure-Kinect-Samples/tree/master/body-tracking-samples)najdete další příklady.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- [Nastavení Azure Kinect DK](set-up-azure-kinect-dk.md)
-- [Nastavení sady SDK pro sledování těla](body-sdk-setup.md)
+- [Nastavení sady Azure Kinect DK](set-up-azure-kinect-dk.md)
+- [Nastavení sady Body Tracking SDK](body-sdk-setup.md)
 - Projděte si návod, jak [vytvořit první Azure Kinect Application](build-first-app.md) rychlý Start.
 - Seznamte se s následujícími funkcemi sady senzor SDK:
   - [k4a_device_open ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113)
@@ -49,7 +49,7 @@ Sledování textu používá jednu hlavičku `k4abt.h` . Zahrnout tuto hlavičku
 
 Vaše první aplikace pro sledování textu předpokládá jedno zařízení Azure Kinect připojené k počítači.
 
-Sestavení sledování textu v sadě senzor SDK. Pokud chcete použít sledování textu, musíte nejdřív otevřít a nakonfigurovat zařízení. Pomocí funkce [k4a_device_open ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113) otevřete zařízení a nakonfigurujte ho pomocí objektu [k4a_device_configuration_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t.html) . Pro dosažení nejlepších výsledků nastavte režim hloubky na `K4A_DEPTH_MODE_NFOV_UNBINNED` nebo `K4A_DEPTH_MODE_WFOV_2X2BINNED` . Sledování textu se nespustí, pokud je režim hloubky nastavený na `K4A_DEPTH_MODE_OFF` nebo `K4A_DEPTH_MODE_PASSIVE_IR` .
+Sestavení sledování textu v sadě senzor SDK. Pokud chcete použít sledování textu, musíte nejdřív otevřít a nakonfigurovat zařízení. Pomocí funkce [k4a_device_open ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113) otevřete zařízení a nakonfigurujte ho pomocí objektu [k4a_device_configuration_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t.html) . Pro dosažení nejlepších výsledků nastavte režim hloubky na `K4A_DEPTH_MODE_NFOV_UNBINNED` nebo `K4A_DEPTH_MODE_WFOV_2X2BINNED` . Sledování textu se nespustí, pokud je režim hloubky nastavený na  `K4A_DEPTH_MODE_OFF` nebo `K4A_DEPTH_MODE_PASSIVE_IR` .
 
 Další informace o hledání a otevírání zařízení najdete na [této stránce](find-then-open-device.md).
 
@@ -244,4 +244,4 @@ int main()
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
->[Získat výsledky sledování textu](get-body-tracking-results.md)
+>[Získání výsledků sledování pohybu těla](get-body-tracking-results.md)

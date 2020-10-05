@@ -9,17 +9,17 @@ ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 16a912b2530d567a11a81fc10e9e09eee572e7e6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87528820"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Rychlý Start: použití mezipaměti Azure pro Redis s Java
 
 V tomto rychlém startu zabezpečíte mezipaměť Azure pro Redis do aplikace Java pomocí klienta [Jedis](https://github.com/xetorthio/jedis) Redis, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Apache Maven](https://maven.apache.org/download.cgi)

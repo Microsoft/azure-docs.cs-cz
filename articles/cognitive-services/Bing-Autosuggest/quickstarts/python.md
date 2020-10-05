@@ -12,17 +12,17 @@ ms.date: 05/06/2020
 ms.author: aahi
 ms.custom: devx-track-python
 ms.openlocfilehash: d080e9e2449eca45b3c929e2f566dd8e8e53bfaa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91262905"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Pythonu
 
 V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické návrhy Bingu a číst odpověď JSON. Tato jednoduchá aplikace v Pythonu pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Python 3.x](https://www.python.org/downloads/) 
 

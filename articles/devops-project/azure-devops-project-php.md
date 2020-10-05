@@ -14,10 +14,10 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 3e4913c4be0d59bc37e3da2358c4f8ec302a26e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82233784"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro PHP pomocí Azure DevOps Starter
@@ -30,7 +30,7 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím [
 
  DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit bezplatnou novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Projects taky vytvoří prostředky Azure v předplatném Azure podle vašeho výběru.
 
-1. Přihlaste se na web [Microsoft Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Microsoft Azure Portal](https://portal.azure.com).
 
 1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
@@ -110,7 +110,7 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím [
 
 1. Na pravé straně vyberte **Zobrazit vydané verze** , aby se zobrazila Historie verzí.
 
-1. Vyberte tři tečky (...) vedle jedné z vašich vydání a pak vyberte **otevřít**. Toto zobrazení obsahuje několik nabídek, které můžete prozkoumat, například souhrn verze, související pracovní položky a testy.
+1. Vyberte tři tečky (...) vedle jedné z vašich vydání a pak vyberte  **otevřít**. Toto zobrazení obsahuje několik nabídek, které můžete prozkoumat, například souhrn verze, související pracovní položky a testy.
 
 1. Vyberte **Potvrzení**. Toto zobrazení ukazuje potvrzení kódu, která jsou přidružená ke konkrétnímu nasazení. 
 

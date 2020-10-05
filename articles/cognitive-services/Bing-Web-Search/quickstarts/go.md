@@ -13,10 +13,10 @@ ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
 ms.openlocfilehash: 3ea8375d1ed999d4b617a9d2a78ec53ad22543ac
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85602176"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Rychlý Start: vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API a přejít
@@ -25,7 +25,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API Bingu pr
 
  Příklady kódu v tomto rychlém startu vyžadují jenom základní knihovny. neexistují žádné externí závislosti.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 
 * [Binární soubory Go](https://golang.org/dl/)

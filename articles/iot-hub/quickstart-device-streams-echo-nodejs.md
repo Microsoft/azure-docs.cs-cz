@@ -10,10 +10,10 @@ ms.custom: mvc, devx-track-js
 ms.date: 03/14/2019
 ms.author: robinsh
 ms.openlocfilehash: 7401bc0661459e1322c9b2f2226d45794f814732
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91302923"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v Node.js prostřednictvím datových proudů zařízení IoT Hub (Preview)
@@ -22,7 +22,7 @@ ms.locfileid: "91302923"
 
 V tomto rychlém startu spustíte aplikaci na straně služby a nastavíte komunikaci mezi zařízením a službou pomocí datových proudů zařízení. Datové proudy zařízení v Azure IoT Hub umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. Během veřejné verze Preview podporuje Node.js SDK na straně služby pouze datové proudy zařízení. V důsledku toho se v tomto rychlém startu vztahují jenom na pokyny ke spuštění aplikace na straně služby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončíní [komunikace s aplikacemi zařízení v C prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-c.md) nebo [komunikace s aplikacemi zařízení v jazyce C# prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-csharp.md).
 

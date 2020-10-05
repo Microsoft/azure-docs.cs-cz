@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 09/04/2020
 ms.author: v-jawe
 ms.openlocfilehash: ef0db373dc6faaa470470b8169fdb6ae61aa8dde
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90982763"
 ---
 Použijte QnA Maker klientskou knihovnu pro Ruby do:
@@ -30,7 +30,7 @@ Použijte QnA Maker klientskou knihovnu pro Ruby do:
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Ruby 2. x](https://www.ruby-lang.org/)
@@ -78,15 +78,15 @@ QnA Maker klient pro vytváření obsahu je objekt [QnAMakerClient](https://gith
 
 Po vytvoření klienta použijte metody vlastnosti [znalostní](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/knowledgebase.rb) báze klienta k vytvoření, správě a publikování znalostní báze.
 
-Pro okamžité operace metoda obvykle vrací výsledek, pokud existuje. V případě dlouhotrvajících operací je odezva objektem [operace](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation.rb) . Zavolejte [operaci. get_details](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/operations.rb#L33) metodu s `operation.operation_id` hodnotou pro určení [stavu požadavku](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation_state_type.rb).
+Pro okamžité operace metoda obvykle vrací výsledek, pokud existuje. V případě dlouhotrvajících operací je odezva objektem [operace](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation.rb) . Voláním metody [Operations.get_details](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/operations.rb#L33) s `operation.operation_id` hodnotou určíte [stav žádosti](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/operation_state_type.rb).
 
 ### <a name="qnamakerruntimeclient-object-model"></a>Objektový model QnAMakerRuntimeClient
 
 Běhový QnA Maker klient je objekt [QnAMakerRuntimeClient](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamakerruntime/lib/4.0/generated/azure_cognitiveservices_qnamakerruntime/qnamaker_runtime_client.rb) .
 
-Po publikování znalostní báze pomocí klienta pro vytváření obsahu použijte k získání odpovědi ze znalostní báze běhový klient [. generate_answer](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamakerruntime/lib/4.0/generated/azure_cognitiveservices_qnamakerruntime/runtime.rb#L34) metodu.
+Po publikování znalostní báze pomocí klienta pro vytváření obsahu použijte metodu [runtime.generate_answer](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamakerruntime/lib/4.0/generated/azure_cognitiveservices_qnamakerruntime/runtime.rb#L34) klienta modulu runtime k získání odpovědi ze znalostní báze Knowledge Base.
 
-Když zavoláte `generate_answer` , předejte hodnotu hash pro `custom_headers` volitelný parametr. Tato hodnota hash by měla obsahovat klíč `Authorization` a hodnotu `EndpointKey YOUR_ENDPOINT_KEY` . Pro hodnotu YOUR_ENDPOINT_KEY použijte k volání [endpoint_keys. get_keys](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/endpoint_keys.rb#L32)klienta pro vytváření.
+Když zavoláte `generate_answer` , předejte hodnotu hash pro `custom_headers` volitelný parametr. Tato hodnota hash by měla obsahovat klíč `Authorization` a hodnotu `EndpointKey YOUR_ENDPOINT_KEY` . Pro hodnotu YOUR_ENDPOINT_KEY použijte klienta pro tvorbu volání [endpoint_keys. Get _keys](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/endpoint_keys.rb#L32).
 
 ## <a name="authenticate-the-client-for-authoring-the-knowledge-base"></a>Ověřování klienta pro vytváření znalostní báze
 
@@ -103,7 +103,7 @@ Znalostní báze ukládá páry dotazů a odpovědí pro objekt [CreateKbDTO](ht
 * Pro **soubory**použijte objekt [FileDTO](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/file_dto.rb) . FileDTO zahrnuje název souboru i veřejnou adresu URL pro přístup k souboru.
 * V případě **adres URL**použijte seznam řetězců, které reprezentují veřejně dostupné adresy URL.
 
-Zavolejte metodu [Create](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/knowledgebase.rb#L554) a potom předejte `operation_id` vlastnost vrácené operace do [operací. get_details](#get-status-of-an-operation) metoda pro dotazování na stav.
+Zavolejte metodu [Create](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/knowledgebase.rb#L554) a potom předejte `operation_id` vlastnost vrácené operace do metody [Operations.get_details](#get-status-of-an-operation) k dotazování na stav.
 
 Poslední řádek následujícího kódu vrátí ID znalostní báze.
 
@@ -116,7 +116,7 @@ Znalostní bázi můžete aktualizovat voláním znalostní báze [. aktualizujt
 - [update](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/update_kb_operation_dtoupdate.rb)
 - [delete](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/update_kb_operation_dtodelete.rb)
 
-Předejte `operation_id` vlastnost vracené operace do [operací Operations. get_details](#get-status-of-an-operation) pro cyklické dotazování na stav.
+Předejte `operation_id` vlastnost vrácené operace do metody [Operations.get_details](#get-status-of-an-operation) k dotazování na stav.
 
 :::code language="ruby" source="~/cognitive-services-quickstart-code/ruby/qnamaker/sdk/quickstart.rb" id="UpdateKBMethod":::
 
@@ -136,7 +136,7 @@ Publikujte znalostní bázi pomocí metody [znalostní báze. Publish](https://g
 
 Po publikování znalostní báze budete potřebovat klíč koncového bodu modulu runtime pro dotazování znalostní báze. To není stejné jako klíč předplatného, který se používá k vytvoření klienta pro vytváření obsahu.
 
-K získání objektu [EndpointKeysDTO](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/endpoint_keys_dto.rb) použijte metodu [endpoint_keys. get_keys](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/endpoint_keys.rb#L32) .
+K získání objektu [EndpointKeysDTO](https://github.com/Azure/azure-sdk-for-ruby/blob/master/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/models/endpoint_keys_dto.rb) použijte metodu [endpoint_keys. Get _keys](https://github.com/Azure/azure-sdk-for-ruby/blob/20b8b81287d272587ace808434c14b039d014e12/data/azure_cognitiveservices_qnamaker/lib/4.0/generated/azure_cognitiveservices_qnamaker/endpoint_keys.rb#L32) .
 
 Použijte jednu z klíčových vlastností vrácených v objektu k dotazování znalostní báze.
 

@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 06/12/2020
 ms.custom: seodec18, H1Hack27Feb2017, mvc, devx-track-azurecli
 ms.openlocfilehash: f4e69616d30c6a7b853c5cc854adee147ebde206
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87486540"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI

@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 3a2ba65fcef2b6481835cb45243449870361c062
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87498918"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics"></a>Apache Spark ve službě Azure synapse Analytics
@@ -26,7 +26,7 @@ Apache Spark je paralelní procesor pro zpracování, který podporuje zpracová
 
 ## <a name="what-is-apache-spark"></a>Co je Apache Spark
 
-Apache Spark poskytuje primitivní prvky pro výpočetní clustery v paměti. Úloha Spark může načítat data, ukládat je do paměti a opakovaně je dotazovat. Výpočet paměti je mnohem rychlejší než aplikace založené na disku. Spark se taky integruje s několika programovacími jazyky, které vám umožní manipulovat s distribuovanými datovými sadami, jako jsou místní kolekce. Není nutné strukturovat všechno jako mapovací a redukční operace.
+Apache Spark poskytuje primitivní prvky pro výpočetní clustery v paměti. Úloha Sparku dokáže data načíst a uložit je do mezipaměti a opakovaně se na ně dotazovat. Výpočty v paměti jsou mnohem rychlejší než aplikace založené na disku. Spark se taky integruje s několika programovacími jazyky, které vám umožní manipulovat s distribuovanými datovými sadami, jako jsou místní kolekce. Není nutné strukturovat všechno jako mapovací a redukční operace.
 
 ![Tradiční MapReduce vs. Spark](./media/apache-spark-overview/map-reduce-vs-spark.png)
 
@@ -41,7 +41,7 @@ Fondy Spark v Azure synapse nabízejí plně spravovanou službu Spark. Tady jso
 | Podpora pro Azure Data Lake Storage generace 2| Fondy Spark ve službě Azure synapse můžou používat Azure Data Lake Storage generace 2 i úložiště objektů BLOB. Další informace o Data Lake Storage najdete v tématu [přehled Azure Data Lake Storage](../../data-lake-store/data-lake-store-overview.md). |
 | Integrace v prostředí IDE třetích stran | Azure synapse poskytuje modul plug-in IDE pro [INTELLIJ nápad JetBrains](https://www.jetbrains.com/idea/) , který je užitečný pro vytváření a odesílání aplikací do fondu Spark. |
 | Předem zavedené knihovny Anaconda |Fondy Spark ve službě Azure synapse se dodávají s předinstalovanými knihovnami Anaconda. [Anaconda](https://docs.continuum.io/anaconda/) poskytuje téměř 200 knihoven pro machine learning, analýzy dat, vizualizace atd. |
-| Škálovatelnost | Apache Spark ve fondech Azure synapse můžou mít povolené automatické škálování, takže fondy se podle potřeby přidávají nebo odstraňují podle potřeby uzlů. Fondy Spark se taky dají vypnout bez ztráty dat, protože všechna data jsou uložená v Azure Storage nebo Data Lake Storage. |
+| Škálovatelnost | Apache Spark ve fondech Azure synapse můžou mít povolené automatické škálování, takže fondy se podle potřeby přidávají nebo odstraňují podle potřeby uzlů. Fondy Sparku se také dají vypnout bez ztráty dat, protože všechna data jsou uložená v Azure Storage nebo Data Lake Storage. |
 
 Fondy Spark v Azure synapse obsahují následující komponenty, které jsou ve výchozím nastavení k dispozici ve fondech.
 
@@ -68,11 +68,11 @@ Fondy Spark v synapse Analytics umožňují následující klíčové scénáře
 
 ### <a name="data-engineeringdata-preparation"></a>Data a Příprava dat
 
-Apache Spark obsahuje mnoho jazykových funkcí pro podporu přípravy a zpracování velkých objemů dat, aby je bylo možné lépe využít a následně využívat jiné služby v rámci synapse Analytics. Tato možnost je povolená přes více jazyků (C#, Scala, PySpark, Spark SQL) a poskytnuté knihovny pro zpracování a připojení.
+Apache Spark obsahuje mnoho jazykových funkcí pro podporu přípravy a zpracování velkých objemů dat, aby bylo možné zvýšit jejich hodnotu a následně je mohly využívat jiné služby v rámci Synapse Analytics. Tato možnost je povolená přes více jazyků (C#, Scala, PySpark, Spark SQL) a poskytnuté knihovny pro zpracování a připojení.
 
 ### <a name="machine-learning"></a>Machine Learning
 
-Apache Spark se dodává s [MLlib](https://spark.apache.org/mllib/), knihovny strojového učení postavené na Sparku, kterou můžete použít z fondu Spark v synapse Analytics. Fondy Spark v synapse analýze také zahrnují Anaconda, distribuci Pythonu s nejrůznějšími balíčky pro datové vědy, včetně strojového učení. V kombinaci s integrovanou podporou pro poznámkové bloky máte prostředí pro vytváření aplikací strojového učení.
+Apache Spark se dodává s [MLlib](https://spark.apache.org/mllib/), knihovny strojového učení postavené na Sparku, kterou můžete použít z fondu Spark v synapse Analytics. Fondy Sparku ve službě Synapse Analytics také zahrnují distribuci Pythonu s názvem Anaconda, která obsahuje nejrůznější balíčky pro datové vědy včetně strojového učení. V kombinaci s integrovanou podporou poznámkových bloků máte prostředí pro vytváření aplikací strojového učení.
 
 ## <a name="where-do-i-start"></a>Kde mám začít
 

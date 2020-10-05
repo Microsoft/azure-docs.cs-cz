@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 2eee46f99af247ffd0e11b262ace0a96453270d4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91323670"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
@@ -67,7 +67,7 @@ Je to základní zabezpečení, které se dozvíte a zajistěte, aby byly vaše 
 
 Security Center vám pomůže **identifikovat Stínová předplatná**. Zobrazením předplatných, která **nejsou pokrytá** na řídicím panelu, můžete okamžitě zjistit, jestli existují nově vytvořená předplatná, a že jsou pokryté vašimi zásadami a chráněny pomocí Azure Security Center.
 
-:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Řídicí panel zásad Security Center":::
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Stránka správy zásad":::
 
 ### <a name="continuous-assessments"></a>Nepřetržité hodnocení
 
@@ -75,13 +75,13 @@ Security Center nepřetržitě zjišťuje nové prostředky, které jsou nasazen
 
 Abychom vám pomohli pochopit, jak důležité je, aby každé doporučení bylo stav zabezpečení, Security Center seskupení doporučení do řízení zabezpečení a přidá do každého ovládacího prvku **zabezpečenou hodnotu skóre** . To je zásadní postup, který vám umožní **určit prioritu fungování zabezpečení**.
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Security Center zabezpečeného skóre":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Stránka správy zásad":::
 
 ### <a name="network-map"></a>Mapa sítě
 
 Jedním z nejúčinnějších nástrojů, které Security Center nabízí nepřetržité monitorování stavu zabezpečení vaší sítě, je **Mapa sítě**. Mapa vám umožní zobrazit topologii vašich úloh, abyste viděli, jestli je každý uzel správně nakonfigurovaný. Vidíte, jak jsou uzly připojené, což vám pomůže zablokovat nechtěné připojení, která by mohla útočníkovi usnadnit nárůst vaší sítě.
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Mapa Security Center sítě":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Stránka správy zásad":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>Optimalizace a vylepšení zabezpečení konfigurací doporučených ovládacích prvků
@@ -92,7 +92,7 @@ Tímto způsobem Security Center umožňuje nejen nastavovat zásady zabezpečen
 
 Doporučení vám pomůžou snížit plochu pro útok na jednotlivé prostředky. To zahrnuje virtuální počítače Azure, servery mimo Azure a služby Azure PaaS, jako jsou SQL a účty úložiště, a další informace o tom, kde se každý typ prostředku vyhodnocuje odlišně a má vlastní standardy.
 
-:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Příklad doporučení Security Center":::
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Stránka správy zásad":::
 
 ## <a name="protect-against-threats"></a>Ochrana před hrozbami
 
@@ -100,7 +100,7 @@ Ochrana před hrozbami Security Center vám umožní detekovat a bránit hrozbá
 
 Ochrana před hrozbami Security Center zahrnuje analýzu dezaktivačního řetězu fúze, která automaticky koreluje výstrahy ve vašem prostředí založené na počítačové analýze dezaktivačního řetězu, které vám pomůžou lépe pochopit úplný příběh k útokům na útoky, kde začaly a jaký má dopad na vaše prostředky.
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Výstrahy zabezpečení":::
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Stránka správy zásad":::
 
 ### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Integrace pomocí rozšířené ochrany před internetovými útoky v programu Microsoft Defender
 

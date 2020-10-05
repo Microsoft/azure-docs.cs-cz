@@ -9,17 +9,17 @@ ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
 ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "78244990"
 ---
 ## <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
 
 V této části vytvoříte virtuální síť a podsíť.
 
-1. V levém horním rohu obrazovky vyberte **vytvořit prostředek > síť > virtuální síť** nebo ve vyhledávacím poli vyhledejte **virtuální síť** .
+1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek > Sítě > Virtuální síť** nebo do vyhledávacího pole zadejte **Virtuální síť**.
 
 2. V části **vytvořit virtuální síť**zadejte nebo vyberte tyto informace na kartě **základy** :
 
@@ -28,9 +28,9 @@ V této části vytvoříte virtuální síť a podsíť.
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Vyberte své předplatné Azure.                                  |
     | Skupina prostředků   | Vyberte **vytvořit nové**, zadejte **\<resource-group-name>** a pak vyberte OK nebo vyberte existující na **\<resource-group-name>** základě parametrů. |
-    | **Podrobnosti instance** |                                                                 |
-    | Název             | Napište **\<virtual-network-name>**                                    |
-    | Region           | Vybrali **\<region-name>** |
+    | **Podrobnosti o instancích** |                                                                 |
+    | Name             | Napište **\<virtual-network-name>**                                    |
+    | Oblast           | Vybrali **\<region-name>** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -38,7 +38,7 @@ V této části vytvoříte virtuální síť a podsíť.
 
     | Nastavení            | Hodnota                      |
     |--------------------|----------------------------|
-    | Adresní prostor IPv4 | Napište **\<IPv4-address-space>** |
+    | Adresní prostor protokolu IPv4 | Napište **\<IPv4-address-space>** |
 
 5. V části **název podsítě**vyberte slovo **výchozí**.
 

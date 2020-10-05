@@ -13,10 +13,10 @@ ms.author: aahi
 keywords: detekce anomálií, strojové učení, algoritmy
 ms.custom: cog-serv-seo-aug-2020
 ms.openlocfilehash: 2e48c189df23ed94cd54e1bc9097b7d9709c9ed3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91319312"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co je rozhraní API Detektoru anomálií?

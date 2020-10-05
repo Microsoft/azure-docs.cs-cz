@@ -12,10 +12,10 @@ ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: d44fe58eb17e7f11dc64ee1426df7f356cb91aef
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85602750"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Co je rozhraní API Bingu pro vyhledávání zpráv?
@@ -32,7 +32,7 @@ I když rozhraní API Bingu pro vyhledávání zpráv primárně najde a vrátí
 |---------|---------|
 |[Navrhování a používání hledaných výrazů](concepts/search-for-news.md#suggest-and-use-search-terms)     | Vylepšete možnosti hledání pomocí [rozhraní API pro automatické návrhy Bingu](../bing-autosuggest/get-suggested-search-terms.md) k zobrazení navrhovaných hledaných výrazů při jejich psaní.         |
 |[Získat obecné novinky](concepts/search-for-news.md#get-general-news)     | Vyhledá novinky odesláním vyhledávacího dotazu na rozhraní API Bingu pro vyhledávání zpráv a vrátí seznam relevantních novinek.           |
-|[Dnešní hlavní novinky](concepts/search-for-news.md#get-todays-top-news)      | Získejte nejdůležitější novinky ve všech kategoriích.       |
+|[Dnešní hlavní zprávy](concepts/search-for-news.md#get-todays-top-news)      | Získejte nejdůležitější novinky ve všech kategoriích.       |
 |[Zprávy podle kategorie](concepts/search-for-news.md)     | Hledání zpráv v konkrétních kategoriích.        | 
 |[Nadpis zprávy](concepts/search-for-news.md)     | Vyhledejte horních nadpisů ve všech kategoriích.         |
 

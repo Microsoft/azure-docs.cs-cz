@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.openlocfilehash: 2946590cbb4c5e8f495a1f6ee4aac65929cd4d0e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91305723"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: Přidání aplikace do tenanta Azure Active Directory (Azure AD)
@@ -27,7 +27,7 @@ Po přidání aplikace do tenanta Azure AD můžete:
 - Umožňuje spravovat přístup uživatelů k aplikaci pomocí zásad podmíněného přístupu.
 - Nakonfigurujte jednotné přihlašování, aby se uživatelé mohli přihlašovat do aplikace pomocí svých přihlašovacích údajů Azure AD.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete přidat aplikaci do tenanta Azure AD, budete potřebovat:
 
@@ -55,10 +55,10 @@ Přidání aplikace do tenanta služby Azure AD:
     :::image type="content" source="media/add-application-portal/sso-types.png" alt-text="Snímek obrazovky se zobrazí jako selektor typů jednotného přihlašování." lightbox="media/add-application-portal/sso-types.png":::
 
     - Pokud vývojář aplikace použil **Standard OIDC** pro jednotné přihlašování, vyberte **zaregistrovat**. Zobrazí se stránka instalace. V dalším kroku přejdete k rychlému startu při nastavování jednotného přihlašování založeného na OIDC.
-    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="Snímek obrazovky ukazuje přidání aplikace jednotného přihlašování založeného na OIDC.":::
+    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="Snímek obrazovky se zobrazí jako selektor typů jednotného přihlašování.":::
 
     - Pokud vývojář aplikace použil **Standard SAML** pro jednotné přihlašování, vyberte **vytvořit**. Zobrazí se stránka Začínáme s možnostmi konfigurace aplikace pro vaši organizaci. Ve formuláři můžete upravit název aplikace tak, aby odpovídala potřebám vaší organizace. V dalším kroku přejdete k rychlému startu při nastavování jednotného přihlašování založeného na SAML.
-    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="Snímek obrazovky ukazuje přidání aplikace jednotného přihlašování založeného na SAML.":::
+    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="Snímek obrazovky se zobrazí jako selektor typů jednotného přihlašování.":::
 
 
 > [!IMPORTANT]

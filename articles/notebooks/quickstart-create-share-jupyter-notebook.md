@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: 77575b5b9e006ac9881d03dc95509d55c53c26d7
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88589329"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Rychlý Start: vytvoření a sdílení poznámkového bloku v Azure Notebooks Preview
@@ -17,7 +17,7 @@ ms.locfileid: "88589329"
 
 V tomto rychlém startu vytvoříte a spustíte Jupyter Notebook v Azure Notebooks a pak tento poznámkový blok nasdílíte s ostatními. Jupyter umožňuje snadno zkombinovat Markdownu text, spustitelný kód, trvalá data, grafiku a vizualizace na jednom plátně, poznámkovém bloku. Azure Notebooks je bezplatná hostované služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu bez instalace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Žádné
 
 ## <a name="create-a-new-project-and-notebook"></a>Vytvořit nový projekt a Poznámkový blok

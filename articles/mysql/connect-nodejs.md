@@ -9,10 +9,10 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: 48e6a2a6bcf20e22edbf0d2f98607b8310d2f22d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91307853"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití Node.js k připojení a dotazování dat v Azure Database for MySQL
@@ -21,7 +21,7 @@ V tomto rychlém startu se připojíte k Azure Database for MySQL pomocí Node.j
 
 V tomto tématu se předpokládá, že máte zkušenosti s vývojem pomocí Node.js, ale začínáte pracovat s Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Server Azure Database for MySQL. [Vytvořte Azure Database for MySQL server pomocí Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [Vytvořte Azure Database for MySQL server pomocí Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).

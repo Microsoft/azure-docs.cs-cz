@@ -4,10 +4,10 @@ description: Tento článek poskytuje přehled Azure Service Bus, plně spravova
 ms.topic: overview
 ms.date: 06/23/2020
 ms.openlocfilehash: 478dd0debb5117e76cf8d0ab6599dcf363c12ab3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87501470"
 ---
 # <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
@@ -23,7 +23,7 @@ Mezi běžné scénáře zasílání zpráv patří:
 * *Témata a odběry*. Povolit vztah 1:*n* mezi vydavateli a předplatiteli.
 * *Relace zpráv*. Implementujte pracovní postupy, které vyžadují řazení zpráv nebo odložení zpráv.
 
-## <a name="namespaces"></a>Obory názvů
+## <a name="namespaces"></a>Jmenné prostory
 
 Obor názvů je kontejner pro všechny součásti zasílání zpráv. V jednom oboru názvů může být několik front a témat a obory názvů často slouží jako kontejnery aplikací.
 

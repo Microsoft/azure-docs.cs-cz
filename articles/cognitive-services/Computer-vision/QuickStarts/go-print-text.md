@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 3d9fea6ce72bd9bf550d9356dc0fa62095109681
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87835251"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-with-go"></a>Rychlý Start: extrakce vytištěného textu (OCR) pomocí REST API Počítačové zpracování obrazu s příkazem přejít
@@ -25,7 +25,7 @@ ms.locfileid: "87835251"
 
 V tomto rychlém startu budete z obrázku extrahovat vytištěný text pomocí optického rozpoznávání znaků (OCR) pomocí REST API Počítačové zpracování obrazu. Pomocí metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) můžete detekovat tištěný text v obrázku a extrahovat rozpoznané znaky do znakového proudu, který je strojově využitelný.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Přejít](https://golang.org/dl/)

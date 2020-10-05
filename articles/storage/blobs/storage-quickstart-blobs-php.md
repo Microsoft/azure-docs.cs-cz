@@ -8,16 +8,16 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: a19ff153ea0625a14401770de690dcfddeb74d88
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87835744"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Přenos objektů do a z úložiště objektů blob v Azure pomocí PHP
 V tomto rychlém startu zjistíte, jak pomocí PHP nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -143,7 +143,7 @@ Ukázkový kód vezme místní soubor a nahraje ho do Azure. Soubor se uloží j
 
 Pokud chcete upravit část obsahu objektu blob bloku, použijte metodu **createblocklist()**. Objekty blob bloku můžou mít velikost až 4,7 TB a můžou být čímkoli od tabulky aplikace Excel po velké videosoubory. Objekty blob stránky se používají hlavně pro soubory VHD využívané virtuálními počítači IaaS. Doplňovací objekty blob se používají k protokolování, například když chcete zapisovat do souboru a pak přidávat další informace. Doplňovací objekt blob by se měl používat v modelu s jedním zapisujícím procesem. Většina objektů uložených v úložišti objektů blob je objekty blob bloku.
 
-### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
+### <a name="list-the-blobs-in-a-container"></a>Seznam objektů blob v kontejneru
 
 Seznam souborů v kontejneru můžete získat pomocí metody **listBlobs()**. Následující kód načte seznam objektů blob, pak je ve smyčce projde a zobrazí názvy nalezených objektů blob v kontejneru.  
 

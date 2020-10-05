@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
 ms.openlocfilehash: f5cf8f8ef004dacc9fe2bbdd1b815f2ae5275311
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91298112"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Rychlý Start: získání telefonního čísla pomocí Azure Portal
@@ -22,7 +22,7 @@ ms.locfileid: "91298112"
 
 Začněte s komunikačními službami Azure pomocí Azure Portal k nákupu telefonního čísla.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Aktivní prostředek služby Communication Services.](../create-communication-resource.md)
@@ -37,13 +37,13 @@ Začněte s komunikačními službami Azure pomocí Azure Portal k nákupu telef
 
 V nabídce prostředek přejděte na okno telefonní čísla.
 
-:::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="Snímek obrazovky s telefonickou stránkou zdroje komunikačních služeb.":::
+:::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
 Kliknutím na `Get` tlačítko spusťte průvodce. Průvodce v okně vás provede `Phone numbers` řadou otázek, které vám pomůžou vybrat telefonní číslo, které nejlépe vyhovuje vašemu scénáři. 
 
 Nejdřív budete muset zvolit, kde se má `Country/region` telefonní číslo zřídit. Po výběru země nebo oblasti budete muset vybrat, `phone plan` co nejlépe vyhovuje vašim potřebám. 
 
-:::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Snímek obrazovky s zobrazením získat čísla telefonů":::
+:::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
 ### <a name="select-a-phone-plan"></a>Vybrat plán pro telefon
 
@@ -60,13 +60,13 @@ Nabízíme nyní dva číselné typy: `Geographic` a `Toll-free` . Když vyberet
 
 V našem příkladu jsme vybrali `Toll-free` Typ čísla s `Outbound calling` plánem.
 
-:::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="Snímek obrazovky znázorňující zobrazení vybrat plány":::
+:::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
 ### <a name="declare-purpose"></a>Deklarovat účel
 
 V dalším kroku vás průvodce vyzve k zadání účelu použití tohoto čísla. Tyto informace shromažďujeme, aby se projevily správné daňové předpisy a předpisy pro tísňové volání.
 
-:::image type="content" source="../media/quickstart-search-and-acquire-bot-or-human.png" alt-text="Snímek obrazovky znázorňující výběr robota nebo člověka v rámci procesu získání telefonního čísla.":::
+:::image type="content" source="../media/quickstart-search-and-acquire-bot-or-human.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
 Tady můžete kliknutím na `Next: Numbers` tlačítko v dolní části stránky přizpůsobit telefonní čísla, která chcete zřídit.
 
@@ -74,14 +74,14 @@ Tady můžete kliknutím na `Next: Numbers` tlačítko v dolní části stránky
 
 Na `Numbers` stránce budete přizpůsobovat telefonní čísla, která byste chtěli zřídit.
 
-:::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="Snímek obrazovky zobrazující stránku výběr čísel":::
+:::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
 > [!NOTE]
 > V tomto rychlém startu se zobrazuje `Toll-free` tok přizpůsobení typu čísla. Prostředí může být mírně odlišné, pokud jste zvolili `Geographic` Typ čísla, ale konečný výsledek bude stejný.
 
 Vyberte `Area code` ze seznamu dostupných kódů oblastí a zadejte množství, které chcete zřídit, a potom kliknutím `Search` vyhledejte čísla, která splňují vaše vybrané požadavky. Telefonní čísla, která vyhovují vašim potřebám, se zobrazí spolu s jejich měsíčními náklady.
 
-:::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="Snímek obrazovky zobrazující stránku pro výběr čísel se rezervovanými čísly":::
+:::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
 > [!NOTE]
 > Dostupnost závisí na typu čísla, umístění a plánu, který jste vybrali.
@@ -98,7 +98,7 @@ Stránka Souhrn zkontroluje typ čísla, funkce, telefonní čísla a celkové m
 
 Nakonec klikněte na tlačítko `Place order` v dolní části stránky a potvrďte je.
 
-:::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="Snímek obrazovky zobrazující stránku souhrnu s typem čísla, funkcemi, telefonními čísly a celkovými měsíčně zobrazenými náklady":::
+:::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
 ## <a name="find-your-phone-numbers-on-the-azure-portal"></a>Vyhledejte telefonní čísla na Azure Portal
 
@@ -108,7 +108,7 @@ Přejděte ke zdroji komunikace Azure na [Azure Portal](https://portal.azure.com
 
 V nabídce vyberte kartu telefonní čísla, abyste mohli spravovat telefonní čísla.
 
-:::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="Snímek obrazovky se stránkou s telefonním číslem prostředku komunikační služby":::
+:::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
 > [!NOTE]
 > Na této stránce může trvat několik minut, než se zřízené počty zobrazí.

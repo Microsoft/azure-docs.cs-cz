@@ -6,10 +6,10 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 16dda6fc4637f052514a0e78a0804bf4702ed20b
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85336654"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>Rychlý Start: jak používat Service Bus fronty s Ruby
@@ -18,7 +18,7 @@ ms.locfileid: "85336654"
 
 V tomto kurzu se naučíte vytvářet aplikace v Ruby pro posílání zpráv a příjem zpráv z Service Bus fronty. Ukázky jsou napsané v Ruby a využívají Azure gem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Postupujte podle kroků v části [použití Azure Portal k vytvoření článku Service Bus Queue](service-bus-quickstart-portal.md) .
     1. Přečtěte si rychlý **přehled** Service Busch **front**. 

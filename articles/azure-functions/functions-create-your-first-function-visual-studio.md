@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
 ms.openlocfilehash: d7cfcd02c5e6c9ff57241288bd79efb45d4ac7ab
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88213975"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rychlý Start: Vytvoření první funkce v Azure pomocí sady Visual Studio
@@ -74,7 +74,7 @@ Než budete moct projekt publikovat, musíte mít ve svém předplatném Azure a
 
 2. Přejděte na tuto adresu URL a v prohlížeči se zobrazí odpověď na požadavek na vzdálenou kopii vrácenou funkcí, který vypadá podobně jako v následujícím příkladu:
 
-    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="Odezva funkce v prohlížeči":::
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="Spuštěná aplikace Function App":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -88,7 +88,7 @@ Vytvořili jste prostředky k dokončení těchto rychlých startů. Tyto prost�
 
 1. Na stránce Function App vyberte kartu **Přehled** a potom vyberte odkaz v části **Skupina prostředků**.
 
-   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="Vyberte skupinu prostředků, kterou chcete odstranit ze stránky Function App.":::
+   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="Spuštěná aplikace Function App":::
 
 2. Na stránce **Skupina prostředků** zkontrolujte seznam zahrnutých prostředků a ověřte, že se jedná o ty, které chcete odstranit.
  

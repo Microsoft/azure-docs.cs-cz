@@ -12,17 +12,17 @@ ms.custom:
 - devx-track-python
 ms.date: 11/05/2019
 ms.openlocfilehash: aed9be394076b4ef10b8354552d69771ae659eea
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87845320"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Rychlý Start: Vytvoření aplikace v Pythonu, která používá Azure cache pro Redis
 
 V tomto článku zahrňte Azure cache pro Redis do aplikace v Pythonu, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Python 2 nebo 3](https://www.python.org/downloads/)

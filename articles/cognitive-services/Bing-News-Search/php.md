@@ -12,10 +12,10 @@ ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: ecdcfc7d90f61443cc6947680df9bbf9d9b9514e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83873236"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Rychlý Start: provedení hledání zpráv pomocí PHP a Vyhledávání zpráv Bingu REST API
@@ -24,7 +24,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API Bingu pr
 
 I když je tato aplikace napsaná v PHP, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * PHP 5,6 nebo novější
 
@@ -41,7 +41,7 @@ Pokud chcete tuto aplikaci spustit, postupujte následovně:
 3. Přidejte níže uvedený kód.
 4. Hodnotu `accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
 5. Můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
-6. Spusťte program.
+6. Spustíte program.
 
 ```php
 <?php

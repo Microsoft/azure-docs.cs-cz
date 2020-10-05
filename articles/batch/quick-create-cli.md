@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 8824d4485167955dd1b928bc57381b2e6b672c5d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88213094"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní příkazového řádku Azure
@@ -37,7 +37,7 @@ az group create \
     --location eastus2
 ```
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 Účet Batch můžete propojit s účtem Azure Storage. I když to k tomuto rychlému startu není nutné, účet úložiště je užitečný při nasazování aplikací a ukládání vstupních a výstupních dat ve většině reálných způsobů využití. Ve vaší skupině prostředků vytvořte účet úložiště pomocí příkazu [az storage account create](/cli/azure/storage/account#az-storage-account-create).
 
@@ -168,7 +168,7 @@ az batch task file download \
     --destination ./stdout.txt
 ```
 
-Obsah souboru `stdout.txt` můžete zobrazit v textovém editoru. Obsah zahrnuje proměnné prostředí služby Azure Batch nastavené v uzlu. Při vytváření vlastních úloh služby Batch můžete na tyto proměnné prostředí odkazovat na příkazových řádcích úkolů a v aplikacích a skriptech spouštěných těmito příkazovými řádky. Například:
+Obsah souboru `stdout.txt` můžete zobrazit v textovém editoru. Obsah zahrnuje proměnné prostředí služby Azure Batch nastavené v uzlu. Při vytváření vlastních úloh služby Batch můžete na tyto proměnné prostředí odkazovat na příkazových řádcích úkolů a v aplikacích a skriptech spouštěných těmito příkazovými řádky. Příklad:
 
 ```
 AZ_BATCH_TASK_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask1

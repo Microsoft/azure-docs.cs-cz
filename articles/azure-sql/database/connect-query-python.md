@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 5257e8730830c6b51808d5d014bc3bdec6036bfe
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87843959"
 ---
 # <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití Pythonu k dotazování databáze ve Azure SQL Database nebo spravované instanci SQL Azure
@@ -24,9 +24,9 @@ ms.locfileid: "87843959"
 
 V tomto rychlém startu pomocí Pythonu se připojíte k Azure SQL Database nebo spravované instanci SQL Azure a pro dotazování dat použijete příkazy T-SQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto rychlého startu je potřeba:
+Co budete potřebovat k dokončení tohoto rychlého startu:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -81,9 +81,9 @@ Další prozkoumání Pythonu a databáze v Azure SQL Database najdete v tématu
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-2. Přejít na stránku **databáze SQL** nebo **spravované instance SQL** .
+2. Přejít na stránku **databáze SQL**  nebo **spravované instance SQL** .
 
 3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro databázi v Azure SQL Database nebo plně kvalifikovaného názvu serveru (nebo IP adresy) vedle **hostitele** spravované instance Azure SQL nebo SQL Server na virtuálním počítači Azure. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
 

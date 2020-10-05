@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: 1ed15182e700f125072c69ba9bcf60caf4da5c88
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87873037"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: Vytvoření aplikace v Pythonu pomocí rozhraní API Azure Cosmos DB pro MongoDB
@@ -29,7 +29,7 @@ ms.locfileid: "87873037"
 
 V tomto rychlém startu použijete Azure Cosmos DB pro účet rozhraní API služby Mongo DB nebo emulátor Azure Cosmos DB ke spuštění webové aplikace, která je naklonována z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. Případně můžete použít [emulátor Azure Cosmos DB](local-emulator.md). 
 - [Python 3.6 +](https://www.python.org/downloads/)
@@ -61,7 +61,7 @@ Teď naklonujte aplikaci MongoDB z GitHubu, nastavíme připojovací řetězec a
     ```bash 
     pip install -r .\requirements.txt
     ```
-4. Otevřete složku otevřete v editoru Visual Studio Code.
+4. Otevřete složku v nástroji Visual Studio Code.
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
