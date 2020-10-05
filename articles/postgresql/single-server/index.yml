@@ -3,17 +3,17 @@ title: Dokumentace k jednomu serveru Azure Database for PostgreSQL
 summary: Azure Database for PostgreSQL je služba relačních databází založená na open source databázovém stroji Postgres.  Jeden server je jednou z mnoha možností nasazení k vytvoření serveru Postgres. Naučte se používat Jeden server prostřednictvím našich rychlých zprovoznění, výukových kurzů a ukázek.
 metadata:
   description: Azure Database for PostgreSQL je služba relačních databází v cloudu Microsoftu vytvořená pro vývojáře na základě opensourcového databázového stroje PostgreSQL.
-  author: rachel-msft
-  ms.author: raagyema
+  author: sunilagarwal
+  ms.author: sunila
   ms.date: 09/20/2020
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 833b35b7a2f597186c69d95fc4ab8f2704b59c91
-  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.openlocfilehash: 34ecc6339f1ade7fd9f0bc427982b1b322d79f56
+  ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90928742"
+  ms.lasthandoff: 10/04/2020
+  ms.locfileid: "91710151"
 landingContent:
 - title: Jeden server
   linkLists:
