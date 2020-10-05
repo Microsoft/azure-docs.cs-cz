@@ -13,16 +13,16 @@ ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperfq1
 ms.openlocfilehash: e621d50280adcccb8dbd82f4ceb0de7956e98e4b
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91576961"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Rychlý Start: přidání přihlášení k platformě Microsoft Identity Platform do webové aplikace v ASP.NET
 V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se webová aplikace ASP.NET přihlašuje k osobním účtům (hotmail.com, outlook.com, ostatním) a pracovním a školním účtům z jakékoli instance Azure Active Directory (Azure AD).  (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Požadavky
+> ## <a name="prerequisites"></a>Předpoklady
 >
 > * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
@@ -163,7 +163,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Kde  | Description |
+> |Kde  | Popis |
 > |---------|---------|
 > | `ClientId`     | ID aplikace, kterou jste zaregistrovali na portálu Azure Portal |
 > | `Authority`    | Koncový bod služby tokenů zabezpečení pro uživatele k ověření, obvykle `https://login.microsoftonline.com/{tenant}/v2.0` pro veřejný cloud, kde hodnota {tenant} představuje název tenanta, ID tenanta nebo hodnotu *common* odkazující na společný koncový bod (používaný u multitenantních aplikací) |

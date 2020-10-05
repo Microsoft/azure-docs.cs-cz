@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 09/14/2020
 ms.openlocfilehash: 393678342ad1e8e6e2ff5d3c38dab68ce29ee7e7
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91711715"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>Rychlý Start: použití šablony ARM k nasazení rozhraní Azure API pro FHIR
@@ -25,7 +25,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Nasaďte do Azure rozhraní Azure API pro službu FHIR pomocí šablony ARM v Azure Portal.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-api-for-fhir%2fazuredeploy.json)
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 

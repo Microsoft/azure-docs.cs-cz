@@ -9,13 +9,13 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
 ms.openlocfilehash: d4ef8baa123f805d380b14fa24abff65903cb41d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90946840"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Visual Studio Code](https://code.visualstudio.com/) na některé z [podporovaných platforem](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
@@ -132,7 +132,7 @@ Spusťte funkci Azure místně pomocí `F5` . Tím se funkce Azure inicializuje 
 
 Otevřete adresu URL v prohlížeči a měli byste vidět text odpovědi s ID uživatele komunikace, tokenem a vypršením platnosti tokenu.
 
-:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="Snímek obrazovky znázorňující příklad odpovědi pro vytvořenou funkci Azure Functions.":::
+:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="Diagram pro architekturu důvěryhodné služby":::
 
 ## <a name="deploy-the-function-to-azure"></a>Nasazení funkce do Azure
 

@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 076cb892740b99971400fbc34f60dc1083554555
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90532201"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v4-driver"></a>Rychlý Start: Vytvoření aplikace Java pro správu dat rozhraní API Cassandra Azure Cosmos DB (v4 Driver)
@@ -29,7 +29,7 @@ ms.locfileid: "90532201"
 
 V tomto rychlém startu vytvoříte účet Azure Cosmos DB rozhraní API Cassandra a použijete Cassandra aplikaci Java naklonovaná z GitHubu k vytvoření databáze Cassandra a kontejneru pomocí [ovladačů v4. x Apache Cassandra](https://github.com/datastax/java-driver/tree/4.x) pro Java. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure.
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Najeďte `JAVA_HOME` proměnnou prostředí na složku, ve které je nainstalovaná JDK.
@@ -215,7 +215,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 4. Na portálu Azure Portal otevřete **Data Explorer**, abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi. 
 
-    :::image type="content" source="./media/create-cassandra-java/view-data-explorer-java-app.png" alt-text="Zobrazení dat v Průzkumník dat-Azure Cosmos DB":::
+    :::image type="content" source="./media/create-cassandra-java/view-data-explorer-java-app.png" alt-text="Zobrazení a zkopírování uživatelského jména z webu Azure Portal, stránka Připojovací řetězec":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 

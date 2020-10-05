@@ -9,10 +9,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-python
 ms.openlocfilehash: f6d1b25cb502b8cb208ba5b59c91667e03c77778
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88064379"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Rychlý Start: použití témat Service Bus a předplatných v Pythonu
@@ -27,7 +27,7 @@ Tento článek popisuje, jak používat Python s Azure Service Bus tématem a od
 - Přijímání zpráv z předplatných
 - Odstranění témat a odběrů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Předplatné Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Service Bus obor názvů vytvořený podle kroků v [části rychlý Start: pomocí Azure Portal vytvořte Service Bus téma a odběry](service-bus-quickstart-topics-subscriptions-portal.md). Zkopírujte název oboru názvů, název sdíleného přístupového klíče a hodnotu primárního klíče z obrazovky **zásady sdíleného přístupu** , které se použijí později v tomto rychlém startu. 
 - Python 3.4 x nebo vyšší s nainstalovaným balíčkem [sady Azure Python SDK][Azure Python package] . Další informace najdete v příručce pro [instalaci Pythonu](/azure/developer/python/azure-sdk-install).

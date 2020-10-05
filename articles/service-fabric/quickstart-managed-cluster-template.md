@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.custom: references_regions
 ms.openlocfilehash: 079e8e3e39bd306332abb43fa2ae1f8cc04e305b
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91410486"
 ---
 # <a name="quickstart-deploy-a-service-fabric-managed-cluster-preview-with-an-azure-resource-manager-template"></a>Rychlý Start: nasazení spravovaného clusteru Service Fabric (Preview) pomocí šablony Azure Resource Manager
@@ -17,7 +17,7 @@ Service Fabric spravované clustery představují vývoj modelu prostředků clu
 
 Cluster základních SKU se třemi uzly nasazeným v tomto kurzu se dá použít jenom pro instruktážní účely (místo produkčních úloh). Další informace najdete v tématu  [Service Fabric spravovaných SKU clusteru](overview-managed-cluster.md#service-fabric-managed-cluster-skus).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto rychlým startem:
 

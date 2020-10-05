@@ -5,10 +5,10 @@ ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
 ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90530433"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Rychlý Start: použití MetaMask k připojení a nasazení inteligentního kontraktu
@@ -17,7 +17,7 @@ V tomto rychlém startu použijete MetaMask k připojení k síti služby Azure 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
 * Nainstalovat [rozšíření prohlížeče MetaMask](https://metamask.io)
@@ -27,7 +27,7 @@ V tomto rychlém startu použijete MetaMask k připojení k síti služby Azure 
 
 Pro připojení k síti blockchain potřebujete adresu koncového bodu služby Azure blockchain. Adresa koncového bodu a přístupové klávesy jsou v Azure Portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Přejděte ke členu služby Azure blockchain.
 1. Vyberte **uzly transakce** a výchozí odkaz na uzel transakce.
 

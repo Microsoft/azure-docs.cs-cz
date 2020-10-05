@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
 ms.openlocfilehash: 6c8a3d6c291435a379a637707a42f9ad7fe8dc00
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90906349"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-azure-resource-manager-template-arm-template"></a>Rychlý Start: Vytvoření automatické odpovědi na konkrétní výstrahu zabezpečení pomocí šablony Azure Resource Manager (šablona ARM)
@@ -84,7 +84,7 @@ Pokud už je nepotřebujete, odstraňte automatizaci pracovního postupu pomocí
 1. Z [Azure Portal](https://portal.azure.com)otevřete **Security Center**.
 1. V horním řádku nabídek vyberte ikonu filtru a vyberte konkrétní předplatné, na které jste nasadili novou automatizaci pracovního postupu.
 1. Z bočního panelu Security Center otevřete **automatizaci pracovních postupů** a najděte automatizaci, která se má odstranit.
-    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Postup odebrání automatizace pracovního postupu" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
+    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Seznam nakonfigurovaných Automation" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. Zaškrtněte políčko pro položku, která se má odstranit.
 1. Na panelu nástrojů vyberte možnost **Odstranit**.
 

@@ -5,10 +5,10 @@ ms.date: 06/23/2020
 ms.topic: quickstart
 ms.custom: devx-track-js
 ms.openlocfilehash: cdc0589829f250851212ad990dde99eb6dcc958f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91251962"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí JavaScriptu
@@ -17,7 +17,7 @@ Tento rychlý Start vás provede procesem přidávání knihoven do instalace Ja
 
 Na konci tohoto procesu jste přidali knihovny do instalace JavaScriptu a spustíte svůj první dotaz na graf prostředku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 

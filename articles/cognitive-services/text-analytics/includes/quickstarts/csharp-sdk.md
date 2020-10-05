@@ -10,10 +10,10 @@ ms.date: 07/27/2020
 ms.author: aahi
 ms.reviewer: assafi
 ms.openlocfilehash: 7e074bf898667bb0019d4147ec9abaea2c674d74
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91401054"
 ---
 <a name="HOLTop"></a>
@@ -32,7 +32,7 @@ ms.locfileid: "91401054"
 
 ---
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Integrované vývojové prostředí (IDE) sady Visual Studio](https://visualstudio.microsoft.com/vs/)

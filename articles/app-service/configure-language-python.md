@@ -6,10 +6,10 @@ ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python
 ms.openlocfilehash: 88a3876757c3f51d1fc70692976987560ee1b991
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88961631"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
@@ -38,7 +38,7 @@ Pokud chcete zobrazit všechny podporované verze Pythonu, spusťte v [Cloud She
 az webapp list-runtimes --linux | grep PYTHON
 ```
 
-Nepodporovanou verzi Pythonu můžete spustit místo toho vytvořením vlastní image kontejneru. Další informace najdete v tématu [použití vlastní image Docker](tutorial-custom-container.md?pivots=container-linux).
+Nepodporovanou verzi Pythonu můžete spustit místo toho vytvořením vlastní image kontejneru. Další informace najdete v tématu věnovaném [použití vlastní image Dockeru](tutorial-custom-container.md?pivots=container-linux).
 
 ## <a name="set-python-version"></a>Nastavit verzi Pythonu
 
@@ -156,7 +156,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a>Přístup k proměnným prostředí
 
-V App Service můžete [nastavit nastavení aplikace](configure-common.md#configure-app-settings) mimo kód vaší aplikace. Pak k nim můžete přistupovat pomocí standardního vzoru [OS. Environ –](https://docs.python.org/3/library/os.html#os.environ) . Chcete-li například získat přístup k nastavení aplikace s názvem `WEBSITE_SITE_NAME` , použijte následující kód:
+V App Service můžete [nastavit nastavení aplikace](configure-common.md#configure-app-settings) mimo kód vaší aplikace. Pak k nim můžete přistupovat pomocí standardního vzoru [OS. Environ –](https://docs.python.org/3/library/os.html#os.environ) . Například pro přístup k aplikačnímu nastavení s názvem `WEBSITE_SITE_NAME` použijete následující kód:
 
 ```python
 os.environ['WEBSITE_SITE_NAME']
@@ -177,7 +177,7 @@ Oblíbená webová rozhraní umožňují přístup k `X-Forwarded-*` informacím
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-linux-no-h.md)]
 
-## <a name="open-ssh-session-in-browser"></a>Otevřít relaci SSH v prohlížeči
+## <a name="open-ssh-session-in-browser"></a>Otevření relace SSH v prohlížeči
 
 [!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
@@ -202,4 +202,4 @@ Oblíbená webová rozhraní umožňují přístup k `X-Forwarded-*` informacím
 > [Kurz: nasazení z privátního úložiště kontejnerů](tutorial-custom-container.md?pivots=container-linux)
 
 > [!div class="nextstepaction"]
-> [Nejčastější dotazy k App Service Linux](faq-app-service-linux.md)
+> [Nejčastější dotazy k App Service v Linuxu](faq-app-service-linux.md)

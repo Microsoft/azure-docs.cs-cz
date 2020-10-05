@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 09/08/2020
 ms.author: apimpm
 ms.openlocfilehash: 66d0874536b358b720b43780d6ecce879ac866ee
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90708202"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-portal"></a>Rychlý Start: vytvoření nové instance služby Azure API Management Service pomocí Azure Portal
@@ -26,22 +26,22 @@ Tento rychlý start popisuje kroky pro vytvoření nové instance API Management
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-new-service"></a>Vytvoření nové služby
 
 1. V nabídce webu Azure Portal vyberte **Vytvořit prostředek**. Na **domovské** stránce Azure můžete také vybrat **vytvořit prostředek** . 
    
-   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-01.png" alt-text="Vyberte vytvořit prostředek.":::
+   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-01.png" alt-text="Instance API Management":::
 
    
 1. Na stránce **Nový** vyberte možnost **integrace**  >  **API Management**.
 
-   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-02.png" alt-text="Nová instance Azure API Managementu":::
+   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-02.png" alt-text="Instance API Management":::
    
 1. Na stránce **API Management služba** zadejte nastavení.
 
-   :::image type="content" source="media/get-started-create-service-instance/get-started-create-service-instance-create-new.png" alt-text="Nová instance":::
+   :::image type="content" source="media/get-started-create-service-instance/get-started-create-service-instance-create-new.png" alt-text="Instance API Management":::
    
    | Nastavení                 | Popis   |                                                                     
    |-------------------------|-----------------------------------------------|
@@ -72,17 +72,17 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech
 
 1. V Azure Portal vyhledejte a vyberte **skupiny prostředků**. **Skupiny prostředků** můžete také vybrat na **domovské** stránce. 
 
-   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-01.png" alt-text="Navigace skupiny prostředků":::
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-01.png" alt-text="Instance API Management":::
 
 1. Na stránce **skupiny prostředků** vyberte skupinu prostředků.
 
-   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-02.png" alt-text="Výběr skupiny prostředků":::
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-02.png" alt-text="Instance API Management":::
 
 1. Na stránce skupina prostředků vyberte **Odstranit skupinu prostředků**. 
    
 1. Zadejte název vaší skupiny prostředků a pak vyberte **Odstranit**.
 
-   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-03.png" alt-text="Odstranění skupiny prostředků":::
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-03.png" alt-text="Instance API Management":::
 
 ## <a name="next-steps"></a>Další kroky
 

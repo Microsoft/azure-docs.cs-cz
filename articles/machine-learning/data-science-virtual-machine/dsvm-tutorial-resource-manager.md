@@ -11,10 +11,10 @@ ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
 ms.openlocfilehash: 8f83cdb09b94fb7eda1f8f700390be8b2c2147e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90883159"
 ---
 # <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>Rychlý Start: vytvoření Data Science Virtual Machine Ubuntu pomocí šablony ARM
@@ -77,7 +77,7 @@ Když spustíte výše uvedený příkaz, zadejte:
 
 Postup zobrazení Data Science Virtual Machine:
 
-1. Přejít na [Azure Portal](https://portal.azure.com)
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 1. Přihlaste se.
 1. Vyberte skupinu prostředků, kterou jste právě vytvořili.
 

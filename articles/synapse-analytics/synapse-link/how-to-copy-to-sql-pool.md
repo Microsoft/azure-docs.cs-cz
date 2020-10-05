@@ -10,17 +10,17 @@ ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 409f1ecee5ccf42a0168d500b40337366e07bfc0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91287846"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-sql-pool-using-apache-spark"></a>Kopírování dat z Azure Cosmos DB do fondu SQL pomocí Apache Spark
 
 Odkaz na Azure synapse pro Azure Cosmos DB umožňuje uživatelům spouštět analýzy v reálném čase nad provozními daty v Azure Cosmos DB. Existují však situace, kdy je potřeba agregovat a rozšířit některá data pro poskytování uživatelů datového skladu. Data odkazů synapse se dají dělat v poznámkovém bloku a exportovat je jenom v několika buňkách.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * [Zřídit pracovní prostor synapse](../quickstart-create-workspace.md) s:
     * [Fond Spark](../quickstart-create-apache-spark-pool-studio.md)
     * [Fond SQL](../quickstart-create-sql-pool-studio.md)

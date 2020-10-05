@@ -12,10 +12,10 @@ ms.author: sachinp
 ms.reviewer: vanto, sstein
 ms.date: 02/11/2019
 ms.openlocfilehash: d62d568b4924a2bfa67740b3e5f0cc1377519d47
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91335037"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-using-the-azure-portal"></a>Rychlý Start: vytvoření pravidla brány firewall na úrovni serveru pomocí Azure Portal
@@ -23,13 +23,13 @@ ms.locfileid: "91335037"
 
 V tomto rychlém startu se dozvíte, jak vytvořit [pravidlo brány firewall na úrovni serveru](firewall-configure.md) v Azure SQL Database pomocí Azure Portal k tomu, abyste se mohli připojit k [logickým serverům SQL](logical-servers.md), izolovaným databázím a elastickým fondům a jejich databázím. Pro připojení z jiných prostředků Azure a z místních prostředků se vyžaduje pravidlo brány firewall. Pravidla brány firewall na úrovni serveru se nevztahují na spravovanou instanci Azure SQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento rychlý Start používá prostředky vytvořené v rámci [Vytvoření izolované databáze pomocí Azure Portal](single-database-create-quickstart.md) jako jejího počátečního bodu.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Vytvoření pravidla brány firewall protokolu IP na úrovni serveru
 

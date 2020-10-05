@@ -4,10 +4,10 @@ description: Seznamte se s funkcemi a výhodami řešení Azure VMware pro nasaz
 ms.topic: overview
 ms.date: 05/04/2020
 ms.openlocfilehash: b71427402e08167e5868128ed1e553c69bef425d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91574449"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Co je Azure VMware Solution?

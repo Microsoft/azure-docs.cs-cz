@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
 ms.openlocfilehash: b15a034a73882287e70afcbcaa9c72ee931c9f78
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91630198"
 ---
 # <a name="what-is-the-speech-service"></a>Co je služba Speech?

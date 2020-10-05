@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
 ms.openlocfilehash: 8ae95518bab5ed9bc100a5902acf1fd1db631dbe
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91617158"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Co je Azure Stack Edge Pro s GPU?
@@ -40,7 +40,7 @@ Tady jsou různé scénáře, kdy Azure Stack Edge pro je možné použít pro r
 
 Azure Stack Edge pro nabízí následující možnosti:
 
-|Schopnost |Popis  |
+|Schopnost |Description  |
 |---------|---------|
 |Akcelerované AI Inferencing| Povoleno integrovaným grafickým procesorem (jeden nebo dva v závislosti na modelu).|
 |Hraniční Computing      |Podporuje úlohy virtuálních počítačů a kontejnerů, aby bylo možné analyzovat, zpracovávat a filtrovat data. |

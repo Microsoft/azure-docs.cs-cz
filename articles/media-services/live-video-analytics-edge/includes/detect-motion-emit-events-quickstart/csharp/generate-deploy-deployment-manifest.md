@@ -1,16 +1,16 @@
 ---
 ms.openlocfilehash: 055448eacf1cc12c6d021c6571a0478cb35442ba
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89566893"
 ---
 Manifest nasazení definuje, které moduly jsou nasazeny do hraničního zařízení. Definuje také nastavení konfigurace pro tyto moduly. 
 
 Pomocí těchto kroků vygenerujte manifest ze souboru šablony a potom ho nasaďte do hraničního zařízení.
 
-1. Otevřete nástroj Visual Studio Code.
+1. Otevřete Visual Studio Code.
 1. Vedle podokna **Azure IoT Hub** vyberte ikonu **Další akce** a nastavte připojovací řetězec IoT Hub. Můžete zkopírovat řetězec z *Src/Cloud-to-Device-Console-App/appsettings.jsv* souboru. 
 
     ![Nastavení připojovacího řetězce IOT](../../../media/quickstarts/set-iotconnection-string.png)

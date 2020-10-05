@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: fa1354c471cf23d85b3c2b0b563ed0463f5e19b2
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90528410"
 ---
 # <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>Rychlý Start: zřízení simulovaného zařízení pro IoT Hub s symetrickými klíči
@@ -32,7 +32,7 @@ Tento článek je orientovaný na pracovní stanici s Windows. Stejným postupem
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Ujistěte se, že na svém počítači máte nainstalovanou [Java se Development Kit 8](https://aka.ms/azure-jdks) nebo novější.
 

@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 04/28/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 4444f86f094d46419d7ff4b2f80609da007c4594
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90906142"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-powershell"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí prostředí PowerShell
 
 V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Database for MySQL server ve skupině prostředků Azure. PowerShell můžete použít k interaktivnímu vytváření a správě prostředků Azure nebo ve skriptech.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

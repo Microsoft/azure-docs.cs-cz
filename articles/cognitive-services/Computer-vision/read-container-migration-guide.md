@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 09/21/2020
 ms.author: aahi
 ms.openlocfilehash: 714a4709eceea875798940de962716d34437f2a9
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91530455"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migrace na přečtené kontejnery OCR v3. x
@@ -77,8 +77,8 @@ V systému V3. x kontejneru RabbitMQ není aktuálně podporován. Podporované 
 | Implementace | Běhové argument (y) | Zamýšlené použití |
 |---------|---------|-------|
 | V paměti (výchozí) | Nejsou vyžadovány žádné argumenty modulu runtime. | Vývoj a testování |
-| Fronty Azure | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | Produkce |
-| RabbitMQ  | Neaktivní | Produkce |
+| Fronty Azure | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | Výroba |
+| RabbitMQ  | Neaktivní | Výroba |
 
 Pro přidání redundance načte kontejner Read v3. x časovač viditelnosti k zajištění úspěšného zpracování požadavků v případě selhání při spuštění v rámci sady více kontejnerů. 
 

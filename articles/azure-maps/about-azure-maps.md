@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
 ms.openlocfilehash: 11a0ddc5c7b297d0700e6fd07d60f8efe0e55a8f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91285328"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
@@ -52,7 +52,7 @@ Sada Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy pomocí vlas
 
 K vytváření aplikací pro mobilní mapování použijte Azure Maps Android SDK.
 
-:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="Příklady map na mobilním zařízení":::
+:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="Ukázková mapa změny populace vytvořené pomocí Azure Maps Web SDK":::
 
 ## <a name="services-in-azure-maps"></a>Služby v rámci Azure Maps
 
@@ -78,7 +78,7 @@ Další informace o této službě najdete v dokumentaci ke [službě mobility](
 
 [Služba vykreslování verze V2](https://docs.microsoft.com/rest/api/maps/renderv2) , která je teď ve verzi Preview, zavádí novou verzi [rozhraní získat dlaždici mapy v2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). Rozhraní API pro dlaždici získat mapu verze 2 teď umožňuje zákazníkům požádat o Azure Mapsovou dlaždici, počasí a dlaždice map vytvořené pomocí Tvůrce Azure Maps. Doporučuje se použít novou dlaždici získat rozhraní API pro získání mapy.  
 
-:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Příklad mapy ze služby vykreslení v2":::
+:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Ukázková mapa změny populace vytvořené pomocí Azure Maps Web SDK":::
 
 Další podrobnosti najdete v dokumentaci ke [službě vykreslovat v2](https://docs.microsoft.com/rest/api/maps/renderv2).
 
@@ -88,7 +88,7 @@ Další informace o službě vykreslování, která je v GA (Obecná dostupnost)
 
 Služby směrování se dají použít k výpočtu předpokládaných časů doručení (ETAs) pro každou požadovanou trasu. Rozhraní API tras uvažují o faktorech, jako jsou informace o přenosech v reálném čase a historické údaje o provozu, jako je obvyklá rychlost provozu v požadovaném dni v týdnu a denní doba. Rozhraní API vrací nejkratší nebo nejrychlejší trasy, které jsou k dispozici více cílům v čase v pořadí nebo v optimalizovaném pořadí, na základě času nebo vzdálenosti. Služba umožňuje vývojářům vypočítat směry v různých režimech cestovních cest, jako je auto, nákladní kolo, kolo nebo procestování a elektrická vozidlo. Tato služba také zohledňuje vstupy, jako je čas odchodu, omezení váhy nebo přenos nebezpečných látek.
 
-:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="Příklad mapy ze služby směrování":::
+:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="Ukázková mapa změny populace vytvořené pomocí Azure Maps Web SDK":::
 
 Služba směrování nabízí rozšířené funkce sady, jako například:
 
@@ -102,7 +102,7 @@ Podrobnosti o možnostech směrování najdete v [dokumentaci ke službě Směro
 
 Vyhledávací služba pomáhá vývojářům vyhledávat adresy, místa, obchodní výpisy podle názvu nebo kategorie a dalších geografických informací. Služby také mohou v závislosti na Latitudes a zeměpisných délkách [přesměrovat](https://en.wikipedia.org/wiki/Reverse_geocoding) adresy zeměpisného kódu a meziulic.
 
-:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="Příklad hledání na mapě":::
+:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="Ukázková mapa změny populace vytvořené pomocí Azure Maps Web SDK":::
 
 Vyhledávací služba také poskytuje pokročilé funkce, jako například:
 
@@ -204,7 +204,7 @@ Azure Maps také nabízí pohodlný [mapový ovládací prvek JavaScriptu](https
 
 Azure Maps vizuál pro Power BI poskytuje bohatou sadu vizualizací dat pro prostorová data nad mapou. Odhaduje se, že více než 80% obchodních dat má kontext umístění. Azure Maps vizuál nabízí řešení bez kódu, které umožňuje získat přehled o tom, jak se tento kontext umístění týká a ovlivňuje vaše obchodní data.
 
-:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="Power BI plochu s Azure Maps vizuálním zobrazením obchodních dat":::
+:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="Ukázková mapa změny populace vytvořené pomocí Azure Maps Web SDK":::
 
 Další informace najdete v tématu Začínáme s dokumentací k [aplikaci Azure Maps Power BI](power-bi-visual-getting-started.md) .
 

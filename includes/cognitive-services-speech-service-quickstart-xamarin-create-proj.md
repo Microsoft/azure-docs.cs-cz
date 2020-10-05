@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/13/2019
 ms.author: erhopf
 ms.openlocfilehash: 35133b64e43ca3814410d7bbf2ac1be9f760b369
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91654391"
 ---
 Chcete-li vytvořit projekt sady Visual Studio pro vývoj mobilních aplikací pro různé platformy pomocí Xamarin, budete potřebovat:
@@ -83,7 +83,7 @@ Nainstalujte [balíček NuGet sady Speech SDK](https://aka.ms/csspeech/nuget)a o
 
 1. V podokně stav balíčku vedle výsledků hledání vyberte všechny projekty: **HelloWorld**, **HelloWorld. Android**, **HelloWorld. iOS**a **HelloWorld. UWP**.
 
-1. Vyberte **Install** (Nainstalovat).
+1. Vyberte **Nainstalovat**.
 
 1. V dialogovém okně **Náhled změn** vyberte **OK**.
 

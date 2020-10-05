@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: 9fe149fb026aabcb50a595061d3ba57df7812563
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90602808"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkce Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB 
@@ -44,33 +44,33 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje následující datové typ
 
 |Příkaz  |Podporováno |
 |---------|---------|
-| ascii  | Yes |
-| bigint  | Yes |
-| blob  | Yes |
-| boolean  | Yes |
-| counter  | Yes |
-| datum  | Yes |
-| decimal  | Yes |
-| double  | Yes |
-| float  | Yes |
-| frozen  | Yes |
-| inet  | Yes |
-| int  | Yes |
-| list  | Yes |
-| set  | Yes |
-| smallint  | Yes |
-| text  | Yes |
-| time  | Yes |
-| časové razítko  | Yes |
-| timeuuid  | Yes |
-| tinyint  | Yes |
-| tuple  | Yes |
-| uuid  | Yes |
-| varchar  | Yes |
-| varint  | Yes |
-| tuples | Yes | 
-| udts  | Yes |
-| mapa | Yes |
+| ascii  | Ano |
+| bigint  | Ano |
+| blob  | Ano |
+| boolean  | Ano |
+| counter  | Ano |
+| date  | Ano |
+| decimal  | Ano |
+| double  | Ano |
+| float  | Ano |
+| frozen  | Ano |
+| inet  | Ano |
+| int  | Ano |
+| list  | Ano |
+| set  | Ano |
+| smallint  | Ano |
+| text  | Ano |
+| time  | Ano |
+| časové razítko  | Ano |
+| timeuuid  | Ano |
+| tinyint  | Ano |
+| tuple  | Ano |
+| uuid  | Ano |
+| varchar  | Ano |
+| varint  | Ano |
+| tuples | Ano | 
+| udts  | Ano |
+| mapa | Ano |
 
 ## <a name="cql-functions"></a>Funkce CQL
 
@@ -78,10 +78,10 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje tyto funkce CQL:
 
 |Příkaz  |Podporováno |
 |---------|---------|
-| Klíčové | Yes |
-| TTL | Yes |
-| writetime | Yes |
-| přetypování | No |
+| Klíčové | Ano |
+| TTL | Ano |
+| writetime | Ano |
+| přetypování | Ne |
 
 \* Rozhraní API Cassandra podporuje token jako projekci nebo selektor a povoluje token (PK) na levé straně klauzule WHERE. Například `WHERE token(pk) > 1024` je podporován, ale není `WHERE token(pk) > token(100)` podporován.
 
@@ -90,34 +90,34 @@ Agregační funkce:
 
 |Příkaz  |Podporováno |
 |---------|---------|
-| min | Yes |
-| max | Yes |
-| volání | Yes |
-| count | Yes |
+| min | Ano |
+| max | Ano |
+| volání | Ano |
+| count | Ano |
 
 Funkce pro převod objektů BLOB:
  
 |Příkaz  |Podporováno |
 |---------|---------|
-| typeAsBlob(value)   | Yes |
-| blobAsType(value) | Yes |
+| typeAsBlob(value)   | Ano |
+| blobAsType(value) | Ano |
 
 
 Funkce UUID a timeuuid:
  
 |Příkaz  |Podporováno |
 |---------|---------|
-| dateOf()  | Yes |
-| now()  | Yes |
-| minTimeuuid()  | Yes |
-| unixTimestampOf()  | Yes |
-| toDate(timeuuid)  | Yes |
-| toTimestamp(timeuuid)  | Yes |
-| toTimestamp(timeuuid)  | Yes |
-| toDate(timeuuid)  | Yes |
-| toTimestamp(timeuuid)  | Yes |
-| toTimestamp(date)  | Yes |
-| toTimestamp(date) | Yes |
+| dateOf()  | Ano |
+| now()  | Ano |
+| minTimeuuid()  | Ano |
+| unixTimestampOf()  | Ano |
+| toDate(timeuuid)  | Ano |
+| toTimestamp(timeuuid)  | Ano |
+| toTimestamp(timeuuid)  | Ano |
+| toDate(timeuuid)  | Ano |
+| toTimestamp(timeuuid)  | Ano |
+| toTimestamp(date)  | Ano |
+| toTimestamp(date) | Ano |
 
 
   
@@ -127,59 +127,59 @@ Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující datab
 
 |Příkaz  |Podporováno |
 |---------|---------|
-| POVOLENÍ FILTROVÁNÍ | Yes |
+| POVOLENÍ FILTROVÁNÍ | Ano |
 | ZMĚNIT MÍSTO NA DISKU | Není k dispozici (služba PaaS, interně spravovaná replikace)|
-| ZMĚNIT MATERIALIZOVANÉ ZOBRAZENÍ | No |
-| ZMĚNIT ROLI | No |
-| ALTER TABLE | Yes |
-| ZMĚNIT TYP | No |
-| ZMĚNIT UŽIVATELE | No |
+| ZMĚNIT MATERIALIZOVANÉ ZOBRAZENÍ | Ne |
+| ZMĚNIT ROLI | Ne |
+| ALTER TABLE | Ano |
+| ZMĚNIT TYP | Ne |
+| ZMĚNIT UŽIVATELE | Ne |
 | PARTIE | Ano (pouze nezaznamenaná dávka)|
 | KOMPAKTNÍ ÚLOŽIŠTĚ | Není k dispozici (služba PaaS) |
-| VYTVOŘIT AGREGOVANOU | No | 
-| VYTVOŘIT VLASTNÍ INDEX (SASI) | No |
+| VYTVOŘIT AGREGOVANOU | Ne | 
+| VYTVOŘIT VLASTNÍ INDEX (SASI) | Ne |
 | CREATE INDEX | Ano (bez [zadání názvu indexu](cassandra-secondary-index.md)a indexů na klíčích clusteringu nebo celá zmrazená kolekce není podporovaná) |
-| VYTVOŘIT FUNKCI | No |
-| VYTVOŘIT prostor (nastavení replikace se ignorují) | Yes |
-| VYTVOŘIT MATERIALIZOVANÉ ZOBRAZENÍ | No |
-| CREATE TABLE | Yes |
-| VYTVOŘIT AKTIVAČNÍ UDÁLOST | No |
-| VYTVOŘIT TYP | Yes |
-| VYTVOŘIT ROLI | No |
-| VYTVOŘIT uživatele (zastaralé v nativní Apache Cassandra) | No |
-| DELETE | Yes |
-| Odstranit (odlehčené transakce s PODMÍNKou IF)| Yes |
-| ZRUŠIT AGREGAČNÍ | No |
-| DROP – FUNKCE | No |
-| DROP INDEX | Yes |
-| ODKLÁDACÍ MÍSTO | Yes |
-| VYŘADIT MATERIALIZOVANÉ ZOBRAZENÍ | No |
-| ROLE ZRUŠENÍ | No |
-| ODKLÁDACÍ TABULKA | Yes |
-| VYŘADIT AKTIVAČNÍ UDÁLOST | No | 
-| TYP PŘETAŽENÍ | Yes |
-| Přetažení uživatele (zastaralé v nativní Apache Cassandra) | No |
-| UDĚLIT | No |
-| INSERT | Yes |
-| Vložit (odlehčené transakce s PODMÍNKou IF)| Yes |
-| OPRÁVNĚNÍ K VYPSÁNÍ | No |
-| SEZNAM ROLÍ | No |
-| SEZNAM uživatelů (zastaralých v nativních Apache Cassandra) | No |
-| ODVOLAT | No |
-| SELECT | Yes |
-| VYBRAT (odlehčené transakce s PODMÍNKou IF)| No |
-| UPDATE | Yes |
-| AKTUALIZACE (lehké transakce s PODMÍNKou IF)| No |
-| ZKRÁTIT | No |
-| USE | Yes |
+| VYTVOŘIT FUNKCI | Ne |
+| VYTVOŘIT prostor (nastavení replikace se ignorují) | Ano |
+| VYTVOŘIT MATERIALIZOVANÉ ZOBRAZENÍ | Ne |
+| CREATE TABLE | Ano |
+| VYTVOŘIT AKTIVAČNÍ UDÁLOST | Ne |
+| VYTVOŘIT TYP | Ano |
+| VYTVOŘIT ROLI | Ne |
+| VYTVOŘIT uživatele (zastaralé v nativní Apache Cassandra) | Ne |
+| DELETE | Ano |
+| Odstranit (odlehčené transakce s PODMÍNKou IF)| Ano |
+| ZRUŠIT AGREGAČNÍ | Ne |
+| DROP – FUNKCE | Ne |
+| DROP INDEX | Ano |
+| ODKLÁDACÍ MÍSTO | Ano |
+| VYŘADIT MATERIALIZOVANÉ ZOBRAZENÍ | Ne |
+| ROLE ZRUŠENÍ | Ne |
+| ODKLÁDACÍ TABULKA | Ano |
+| VYŘADIT AKTIVAČNÍ UDÁLOST | Ne | 
+| TYP PŘETAŽENÍ | Ano |
+| Přetažení uživatele (zastaralé v nativní Apache Cassandra) | Ne |
+| UDĚLIT | Ne |
+| INSERT | Ano |
+| Vložit (odlehčené transakce s PODMÍNKou IF)| Ano |
+| OPRÁVNĚNÍ K VYPSÁNÍ | Ne |
+| SEZNAM ROLÍ | Ne |
+| SEZNAM uživatelů (zastaralých v nativních Apache Cassandra) | Ne |
+| ODVOLAT | Ne |
+| SELECT | Ano |
+| VYBRAT (odlehčené transakce s PODMÍNKou IF)| Ne |
+| UPDATE | Ano |
+| AKTUALIZACE (lehké transakce s PODMÍNKou IF)| Ne |
+| ZKRÁTIT | Ne |
+| USE | Ano |
 
 ## <a name="json-support"></a>Podpora JSON
 |Příkaz  |Podporováno |
 |---------|---------|
-| VYBRAT JSON | Yes |
-| VLOŽIT JSON | Yes |
-| fromJson() | No |
-| toJson () | No |
+| VYBRAT JSON | Ano |
+| VLOŽIT JSON | Ano |
+| fromJson() | Ne |
+| toJson () | Ne |
 
 
 ## <a name="cassandra-api-limits"></a>Omezení rozhraní API Cassandra
@@ -196,7 +196,7 @@ Rozhraní API Cassandra pro Azure Cosmos DB je platforma pro spravované služby
 
 Hosted Native Cassandra Shell (CQLSH v 5.0.1) můžete otevřít přímo z Průzkumník dat v [Azure Portal](data-explorer.md) nebo v [Průzkumníku Azure Cosmos](https://cosmos.azure.com/). Než povolíte prostředí CQL, musíte ve svém účtu [Povolit funkci poznámkových blocích](enable-notebooks.md) (Pokud ještě není povolená, zobrazí se vám výzva při kliknutí `Open Cassandra Shell` ). Podívejte se na zvýrazněnou poznámku v části [Povolení poznámkových bloků pro účty Azure Cosmos DB](enable-notebooks.md) pro podporované oblasti Azure.
 
-:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="Otevřít CQLSH":::
+:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="Otevřít CQLSH&quot;:::
 
 Můžete se také připojit k rozhraní API Cassandra v Azure Cosmos DB pomocí CQLSH nainstalovaného na místním počítači. Dodává se s Apache Cassandra 3.1.1 a funguje v poli nastavením proměnných prostředí. Následující části obsahují pokyny k instalaci, konfiguraci a připojení k rozhraní API Cassandra v Azure Cosmos DB, v systému Windows nebo Linux pomocí CQLSH.
 
@@ -220,7 +220,7 @@ curl https://cacert.omniroot.com/bc2025.crt > bc2025.crt
 keytool -importcert -alias bc2025ca -file bc2025.crt
 
 # Install the Cassandra libraries in order to get CQLSH:
-echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+echo &quot;deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install cassandra

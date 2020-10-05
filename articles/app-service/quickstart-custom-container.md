@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
 ms.openlocfilehash: 4c95e345255b28ba43e474087cdb80fcab493394
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91356413"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Spuštění vlastního kontejneru v Azure
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak nasadit aplikaci ASP.NET v imagi Window
 > App Service v kontejnerech Windows je ve verzi Preview.
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -87,7 +87,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
 ## <a name="create-a-windows-container-app"></a>Vytvoření aplikace typu kontejner pro Windows
 
-1. Přihlaste se k webu [Azure Portal]( https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal]( https://portal.azure.com).
 
 1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
 
@@ -184,7 +184,7 @@ Nebo si prohlédněte další zdroje informací:
 ::: zone pivot="container-linux"
 App Service v systému Linux poskytuje předdefinované zásobníky aplikací v systému Linux s podporou pro jazyky, jako je například .NET, PHP, Node.js a další. Můžete také použít vlastní image Dockeru a spouštět webovou aplikaci v zásobníku aplikací, který ještě není v Azure definovaný. V tomto rychlém startu se dozvíte, jak nasadit image z [Azure Container Registry](../container-registry/index.yml) (ACR) do App Service.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Účet Azure](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
 * [Docker](https://www.docker.com/community-edition)

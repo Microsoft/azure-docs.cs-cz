@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: sarbar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f9a51c10a4f390e5627bccf35ab5dc74689e9c6
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91566818"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Co jsou sestavy Azure Active Directory?
@@ -37,7 +37,7 @@ Architektura generování sestav se spoléhá na dva hlavní pilíře:
 - [Sestavy zabezpečení](#security-reports)
 - [Sestavy aktivit](#activity-reports)
 
-![Přehledy](./media/overview-reports/01.png)
+![Generování sestav](./media/overview-reports/01.png)
 
 
 ## <a name="security-reports"></a>Sestavy zabezpečení

@@ -10,10 +10,10 @@ ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 5aa168c8f280859112f3ab317ef83d32260cead4
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91460590"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Začínáme se skupinou volajícím Hero Sample
@@ -56,7 +56,7 @@ Součásti hlavní volající obrazovky:
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v tématu [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 - [Node.js (12.18.4 a vyšší)](https://nodejs.org/en/download/)

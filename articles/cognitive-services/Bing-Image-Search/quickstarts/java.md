@@ -13,10 +13,10 @@ ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 79e5b5e0562c86668c276a94ab28835c13433eb8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87327238"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-api-and-java"></a>Rychlý Start: hledání imagí pomocí rozhraní API Bingu pro vyhledávání obrázků a Java 
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak odesílat žádosti o vyhledávání do
 
 Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) s dalšími zpracováním chyb a poznámkami.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Sada Java Development Kit (JDK)](https://aka.ms/azure-jdks)
 
@@ -159,7 +159,7 @@ Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JS
 > [!div class="nextstepaction"]
 > [Vyhledávání obrázků Bingu – kurz jednostránkové aplikace](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Co je rozhraní API Bingu pro vyhledávání obrázků?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)

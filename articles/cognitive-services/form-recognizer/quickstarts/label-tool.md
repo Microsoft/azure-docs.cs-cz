@@ -12,10 +12,10 @@ ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: zpracování dokumentů
 ms.openlocfilehash: 6b641df00d4b4981aa47f314f8e575a9cbcccbba
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91597737"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
@@ -229,7 +229,7 @@ V současné době jsou podporovány následující typy hodnot a variace:
 > 
 > Je nutné zadat formát ( `dmy` , `mdy` , `ymd` ) pro práci formátování data.
 >
-> Následující znaky lze použít jako oddělovače data: `, - / . \` . Prázdný znak nelze použít jako oddělovač. Například:
+> Následující znaky lze použít jako oddělovače data: `, - / . \` . Prázdný znak nelze použít jako oddělovač. Příklad:
 > * 01, 01, 2020
 > * 01-01-2020
 > * 01/01/2020

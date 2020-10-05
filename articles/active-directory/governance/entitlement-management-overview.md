@@ -18,10 +18,10 @@ ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
 ms.openlocfilehash: f8bf2a1bb4892637ac504d5920754fc412691a4a
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91597386"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co je správa nároků Azure AD?
@@ -39,7 +39,7 @@ Podnikové organizace často čelí problémům při správě přístupu zaměst
 - Uživatelé nemusí znát, jaký má mít přístup, a i když mají, můžou mít potíže při hledání příslušných jednotlivců ke schválení přístupu.
 - Jakmile uživatelé naleznou a získají přístup k prostředku, můžou mít přístup k delšímu, než je nutné pro obchodní účely.
 
-Tyto problémy jsou složené pro uživatele, kteří potřebují přístup z jiné organizace, jako jsou externí uživatelé, kteří pocházejí z organizací dodavatelských řetězců nebo jiných obchodních partnerů. Například:
+Tyto problémy jsou složené pro uživatele, kteří potřebují přístup z jiné organizace, jako jsou externí uživatelé, kteří pocházejí z organizací dodavatelských řetězců nebo jiných obchodních partnerů. Příklad:
 
 - Nikdo ze všech konkrétních jednotlivců v adresářích jiných organizací nemůže znát jejich pozvání.
 - I když byli schopni pozvat tyto uživatele, nikdo z těchto organizací nemusí pamatovat na správu všech přístupů uživatelů konzistentně.
@@ -75,7 +75,7 @@ Správa nároků zavádí do Azure AD koncept *balíčku pro přístup*. Balíč
 - Přiřazení k podnikovým aplikacím Azure AD, včetně aplikací SaaS a aplikací integrovaných s vlastními, které podporují federaci, jednotné přihlašování a/nebo zřizování
 - Členství na webech SharePointu Online
 
-Můžete také řídit přístup k dalším prostředkům, které spoléhají na skupiny zabezpečení Azure AD nebo Microsoft 365 skupiny.  Například:
+Můžete také řídit přístup k dalším prostředkům, které spoléhají na skupiny zabezpečení Azure AD nebo Microsoft 365 skupiny.  Příklad:
 
 - Uživatelům můžete udělit licence pro Microsoft 365 pomocí skupiny zabezpečení Azure AD v balíčku přístupu a konfigurací [licencování na základě skupin](../users-groups-roles/licensing-groups-assign.md) pro tuto skupinu.
 - Uživatelům můžete udělit přístup ke správě prostředků Azure pomocí skupiny zabezpečení Azure AD v balíčku pro přístup a vytvoření [přiřazení role Azure](../../role-based-access-control/role-assignments-portal.md) pro tuto skupinu.

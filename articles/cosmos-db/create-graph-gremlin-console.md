@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: jasonh
 ms.openlocfilehash: ca1ca258296f5ac8f1fb7120d2965ccacf74b5d5
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409387"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Rychlý start: Vytváření, zadávání dotazů a procházení grafové databáze Azure Cosmos DB v konzole Gremlin
@@ -33,7 +33,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit Azure Cosmos DB účet [rozhr
 
 Konzola Gremlin je založena na technologii Groovy nebo Java a běží v systémech Linux, Mac a Windows. Můžete si ji stáhnout z [webu Apache TinkerPop](https://tinkerpop.apache.org/downloads.html).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste si mohli vytvořit účet služby Azure Cosmos DB pro tento rychlý start, musíte mít předplatné Azure.
 
@@ -65,11 +65,11 @@ Musíte si také nainstalovat [konzolu Gremlin](https://tinkerpop.apache.org/dow
 
    Pro hodnotu hostitelé Zkopírujte hodnotu **GREMLIN URI** ze stránky **Přehled** :
 
-   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Zobrazení a zkopírování hodnoty Gremlin URI na stránce Přehled na webu Azure Portal":::
+   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Služba Azure Cosmos DB z konzoly Apache Gremlin":::
 
    Pro hodnotu heslo zkopírujte **primární klíč** ze stránky **klíče** :
 
-   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Zobrazení a zkopírování primárního klíče na stránce Azure Portal, klíče":::
+   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Služba Azure Cosmos DB z konzoly Apache Gremlin":::
 
    Váš soubor remote-secure.yaml by měl vypadat nějak takto:
 

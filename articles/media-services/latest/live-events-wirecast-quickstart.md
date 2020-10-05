@@ -8,10 +8,10 @@ ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 08/31/2020
 ms.openlocfilehash: 76bbb980b6430f7cffc23ec078e2c932128dc637
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89265265"
 ---
 # <a name="create-an-azure-media-services-live-stream"></a>Vytvoření živého streamu Azure Media Services
@@ -123,7 +123,7 @@ Tato část nastaví vaše výstupy a umožní vám uložit záznam živého str
    
    ![Pole název lokátoru](media/live-events-wirecast-quickstart/live-event-locator.png)
 1. Všechno ostatní na této obrazovce teď ponechte samostatně.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 ## <a name="start-the-broadcast"></a>Spustit všesměrové vysílání
 

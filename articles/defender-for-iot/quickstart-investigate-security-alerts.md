@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 172ae82288c2cb948839b69955b9491715eb4690
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90946819"
 ---
 # <a name="quickstart-investigate-security-alerts"></a>Rychlý Start: Prozkoumejte výstrahy zabezpečení
@@ -44,12 +44,12 @@ Při otevření každé agregované výstrahy se zobrazí podrobný popis výstr
 
 1. Vyberte a otevřete libovolnou výstrahu zabezpečení ze **IoT Hub**  >  **Security**  >  seznamu**výstrahy** zabezpečení IoT Hub. 
 1. Zkontrolujte **Popis**výstrahy, **závažnost**, **zdroj detekce**, **Podrobnosti o zařízení** , která tato výstraha vystavila v agregačním období.
-:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="Přechod k podrobnostem a kontrola podrobností jednotlivých zařízení v agregované výstraze "::: 
+:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="Prozkoumat nové výstrahy zabezpečení IoT pomocí nového příznaku výstrahy"::: 
 1. Po kontrole specifických výstrah použijte pokyny k **Ruční nápravě** , které vám pomůžou opravit a vyřešit problém, který výstrahu způsobil. 
-:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="Postupujte podle kroků ruční nápravy, které vám pomůžou vyřešit nebo opravit výstrahy zabezpečení zařízení.":::
+:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="Prozkoumat nové výstrahy zabezpečení IoT pomocí nového příznaku výstrahy":::
 
 1. Pokud se vyžaduje další šetření, **Prozkoumejte výstrahy v Log Analytics** pomocí odkazu. 
-:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="K dalšímu prověření výstrahy použijte odkaz prozkoumat pomocí Log Analytics, který je k dispozici na obrazovce.":::
+:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="Prozkoumat nové výstrahy zabezpečení IoT pomocí nového příznaku výstrahy":::
 
 ## <a name="next-steps"></a>Další kroky
 

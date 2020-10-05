@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: ab3142426b12f86b9f8afa84ce0ea05fc1939eec
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91400600"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Node.js pomocí rozhraní REST API
@@ -28,9 +28,9 @@ ms.locfileid: "91400600"
 
 Vytvořte aplikaci Node.js, která vytvoří, načte a zadá dotaz na index Azure Kognitivní hledání. Tento článek ukazuje, jak vytvořit aplikaci krok za krokem. Alternativně můžete [stáhnout zdrojový kód a data](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) a spustit aplikaci z příkazového řádku.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro sestavování a testování tohoto rychlého startu jsme použili následující software a služby:
 
@@ -473,7 +473,7 @@ Měli byste vidět řadu zpráv popisujících akce prováděné programem. Poku
 
 Otevřete **Přehled** služby vyhledávání v Azure Portal. Vyberte kartu **indexy** . Měl by se zobrazit něco podobného následujícímu:
 
-:::image type="content" source="media/search-get-started-nodejs/create-index-no-data.png" alt-text="Snímek obrazovky Azure Portal, přehled služby Search, karta indexy" border="false":::
+:::image type="content" source="media/search-get-started-nodejs/create-index-no-data.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
 
 V dalším kroku přidáte data do indexu. 
 
@@ -693,7 +693,7 @@ Celkové chování `run` funkce je odstranit index služby Azure kognitivní hle
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

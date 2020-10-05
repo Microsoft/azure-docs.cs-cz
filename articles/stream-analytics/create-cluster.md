@@ -9,17 +9,17 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
 ms.openlocfilehash: a7be204c30d242be991fb9a57d239b69342ace97
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90946886"
 ---
 # <a name="quickstart-create-a-dedicated-azure-stream-analytics-cluster-using-azure-portal"></a>Rychlý Start: vytvoření vyhrazeného clusteru Azure Stream Analytics pomocí Azure Portal
 
 Pomocí Azure Portal vytvořte cluster Azure Stream Analytics. [Cluster Stream Analytics](cluster-overview.md) je nasazení v jednom tenantovi, které se dá použít pro komplexní a náročné případy použití streamování. V clusteru Stream Analytics můžete spustit více Stream Analytics úloh.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Dokončení [rychlého startu: vytvoření Stream Analytics úlohy pomocí Azure Portal](stream-analytics-quick-create-portal.md).
@@ -28,7 +28,7 @@ Pomocí Azure Portal vytvořte cluster Azure Stream Analytics. [Cluster Stream A
 
 V této části vytvoříte prostředek clusteru Stream Analytics.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Vyberte **Vytvořit prostředek**. Do *vyhledávacího pole Hledat na Marketplace* zadejte a vyberte **Stream Analytics cluster**. Pak vyberte **Přidat**.
 

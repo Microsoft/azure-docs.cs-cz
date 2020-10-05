@@ -5,33 +5,33 @@ ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperfq1
 ms.openlocfilehash: f78b6015846253d79020752522c10af96839a854
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91372268"
 ---
 # <a name="what-is-azure-resource-manager"></a>Co je Azure Resource Manager?
 
-Azure Resource Manager je služba nasazování a správy pro Azure. Poskytuje vrstvu pro správu, která umožňuje vytvářet, aktualizovat a odstraňovat prostředky v účtu Azure. Pomocí funkcí správy, jako jsou řízení přístupu, zámky a značky, můžete zabezpečit a organizovat prostředky po nasazení.
+Azure Resource Manager je služba nasazování a správy pro Azure. Poskytuje úroveň správy, která vám umožňuje vytvářet, aktualizovat a odstraňovat prostředky v účtu Azure. Pomocí funkcí správy, jako jsou řízení přístupu, zámky a značky, můžete zabezpečit a organizovat prostředky po nasazení.
 
 Další informace o šablonách Azure Resource Manager najdete v tématu [template Deployment Overview](../templates/overview.md).
 
 ## <a name="consistent-management-layer"></a>Konzistentní vrstva správy
 
-Když uživatel odešle žádost ze všech nástrojů, rozhraní API nebo sad Azure, Správce prostředků obdrží požadavek. Ověřuje a autorizuje požadavek. Správce prostředků odešle požadavek službě Azure, která provede požadovanou akci. Vzhledem k tomu, že všechny požadavky jsou zpracovávány přes stejné rozhraní API, zobrazí se konzistentní výsledky a možnosti ve všech různých nástrojích.
+Když uživatel odešle z jakéhokoli nástroje Azure, rozhraní API nebo sady SDK požadavek, obdrží ho služba Resource Manager. Požadavek ověří a autorizuje. Resource Manager odešle požadavek do služby Azure, která provede požadovanou akci. Vzhledem k tomu, že se všechny požadavky zpracovávají přes stejné rozhraní API, zobrazí se konzistentní výsledky a možnosti ve všech různých nástrojích.
 
-Následující obrázek ukazuje, Azure Resource Manager role hraje při zpracování požadavků Azure.
+Následující obrázek ukazuje, jakou roli hraje Azure Resource Manager při zpracování požadavků Azure.
 
 ![Model požadavku Resource Manageru](./media/overview/consistent-management-layer.png)
 
-Všechny funkce, které jsou k dispozici na portálu, jsou také dostupné prostřednictvím PowerShellu, rozhraní příkazového řádku Azure CLI, rozhraní REST API a klientských sad SDK. Funkce původně vydané prostřednictvím rozhraní API budou na portálu k dispozici do 180 dnů od počátečního vydání.
+Všechny funkce, které jsou k dispozici na portálu, jsou také dostupné prostřednictvím PowerShellu, rozhraní Azure CLI, rozhraní REST API a klientských sad SDK. Funkce původně vydané prostřednictvím rozhraní API budou na portálu k dispozici do 180 dnů od počátečního vydání.
 
 ## <a name="terminology"></a>Terminologie
 
 Pokud s Azure Resource Managerem začínáte, existuje několik termínů, které možná neznáte.
 
-* **prostředek** - Spravovatelná položka, která je k dispozici prostřednictvím služby Azure. Příklady prostředků jsou virtuální počítače, účty úložiště, webové aplikace, databáze a virtuální sítě. Příklady prostředků jsou také skupiny prostředků, předplatná, skupiny pro správu a značky.
+* **prostředek** – spravovatelná položka, která je dostupná prostřednictvím Azure. Mezi příklady prostředků patří virtuální počítače, účty úložiště, webové aplikace, databáze a virtuální sítě. Příklady prostředků jsou také skupiny prostředků, předplatná, skupiny pro správu a značky.
 * **Skupina prostředků** – kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků zahrnuje ty prostředky, které chcete spravovat jako skupinu. O tom, které prostředky do skupiny prostředků patří, rozhodujete vy na základě toho, co je pro vaši organizaci nejvhodnější. Viz [Skupiny prostředků](#resource-groups).
 * **poskytovatel prostředků** – služba poskytující prostředky Azure. Například běžný poskytovatel prostředků je Microsoft. COMPUTE, který poskytuje prostředek virtuálního počítače. Microsoft. Storage je další společný poskytovatel prostředků. Viz téma [poskytovatelé a typy prostředků](resource-providers-and-types.md).
 * **Správce prostředků šablonu** – soubor JavaScript Object Notation (JSON), který definuje jeden nebo více prostředků pro nasazení do skupiny prostředků, předplatného, skupiny pro správu nebo tenanta. Šablony lze použít k nasazení prostředků konzistentně a opakovaně. Další informace najdete v tématu [přehled Template Deployment](../templates/overview.md).
@@ -41,19 +41,19 @@ Pokud s Azure Resource Managerem začínáte, existuje několik termínů, kter�
 
 Pomocí Správce prostředků můžete:
 
-* Spravujte svoji infrastrukturu prostřednictvím deklarativních šablon místo skriptů.
+* Spravovat infrastrukturu prostřednictvím deklarativních šablon místo skriptů.
 
-* Nasaďte, spravujte a monitorujte všechny prostředky pro vaše řešení jako skupinu, místo toho, aby se tyto prostředky nemusely zpracovávat jednotlivě.
+* Nasadit, spravovat a sledovat veškeré prostředky pro vaše řešení jako skupinu, nemusíte s nimi pracovat samostatně.
 
-* Znovu nasaďte řešení v průběhu životního cyklu vývoje a měli byste mít jistotu, že se prostředky nasazují v konzistentním stavu.
+* Opětovně nasadit řešení v celém průběhu vývojového životního cyklu a mít jistotu, že se vaše prostředky nasazují konzistentně.
 
-* Definujte závislosti mezi prostředky tak, aby byly nasazeny ve správném pořadí.
+* Definovat závislosti mezi prostředky, aby se nasazovaly ve správném pořadí.
 
 * Použijte řízení přístupu pro všechny služby, protože řízení přístupu na základě role Azure (Azure RBAC) je nativně integrované do platformy pro správu.
 
-* Použijte značky pro prostředky k logickému uspořádání všech prostředků v rámci vašeho předplatného.
+* Používat značky pro prostředky, abyste logicky uspořádali všechny prostředky ve vašem předplatném.
 
-* Vyjasnění fakturace vaší organizace zobrazením nákladů na skupinu prostředků, které sdílejí stejnou značku.
+* Objasnit si fakturaci organizace zobrazením nákladů za skupinu prostředků sdílejících stejnou značku.
 
 ## <a name="understand-scope"></a>Orientace v oborech
 

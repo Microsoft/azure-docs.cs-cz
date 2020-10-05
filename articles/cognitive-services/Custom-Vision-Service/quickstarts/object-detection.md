@@ -12,10 +12,10 @@ ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug
 keywords: vlastní vize
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 75ed10046dfbc9e0a0c35614237bc2422d84da13
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91327442"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-client-library"></a>Rychlý Start: vytvoření projektu pro detekci objektů pomocí klientské knihovny Custom Vision

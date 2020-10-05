@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: b583e3d86ba193a92080f2da9cc0b16d07c5a993
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91447163"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>Rychlý Start: nastavení Azure Security Center
@@ -27,7 +27,7 @@ Azure Security Center zajišťuje jednotnou správu zabezpečení a ochranu pře
 
 V tomto článku provedete upgrade na Azure Defender za účelem zvýšení zabezpečení a nainstalujete na vaše počítače agenta Log Analytics, abyste mohli monitorovat ohrožení zabezpečení a hrozby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 Pokud chcete povolit Azure Defender v rámci předplatného, musíte mít přiřazenou roli Vlastník předplatného, přispěvatele předplatného nebo správce zabezpečení.

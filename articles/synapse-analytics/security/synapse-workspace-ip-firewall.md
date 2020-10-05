@@ -9,10 +9,10 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: a7e159c94bf1b9f3e8049fd657abb562f1c85671
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87503918"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Pravidla brány firewall protokolu IP pro Azure synapse Analytics (Preview)
@@ -35,7 +35,7 @@ Po vytvoření pracovního prostoru můžete také přidat pravidla firewallu pr
 
 ![Konfigurace IP adres pracovních prostorů Azure synapse v Azure Portal.](./media/synpase-workspace-ip-firewall/ip-firewall-3.png)
 
-## <a name="connect-to-synapse-from-your-own-network"></a>Připojení k synapse z vlastní sítě
+## <a name="connect-to-synapse-from-your-own-network"></a>Připojení ke službě Synapse z vlastní sítě
 
 K pracovnímu prostoru synapse se můžete připojit pomocí synapse studia. Můžete také použít SQL Server Management Studio (SSMS) pro připojení k prostředkům SQL (fondy SQL a SQL na vyžádání) ve vašem pracovním prostoru.
 

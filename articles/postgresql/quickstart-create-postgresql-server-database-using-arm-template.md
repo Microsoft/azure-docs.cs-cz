@@ -8,10 +8,10 @@ ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
 ms.openlocfilehash: b73bf82b7fba4c7c618dbae81873efabec61051d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90906440"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití šablony ARM k vytvoření serveru Azure Database for PostgreSQL-Single
@@ -24,7 +24,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení do Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -76,7 +76,7 @@ Na stránce **nasadit Azure Database for PostgreSQL se sítí VNET** :
 
 3. Zadejte **název serveru**, **přihlašovací jméno správce**a **přihlašovací heslo správce**.
 
-    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="Nasazení Azure Database for PostgreSQL s oknem VNet, šablonou Azure pro rychlý Start, Azure Portal":::
+    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="Nasazení do Azure":::
 
 4. Pokud chcete, změňte další výchozí nastavení:
 

@@ -10,13 +10,13 @@ ms.date: 06/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 39f88ab8b735438f60d8e20513ea5cbda43d41ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90946854"
 ---
-# <a name="plan-your-telephony-and-sms-solution"></a>Plánování telefonního subsystému a řešení SMS
+# <a name="plan-your-telephony-and-sms-solution"></a>Plánování telefonie a řešení pro SMS
 
 [!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
@@ -42,7 +42,7 @@ Komunikační služby Azure poskytují vývojářům vynikající flexibilitu. N
 
 Dostupné plány závisí na typu země a telefonní číslo, ve kterém pracujete. Následující diagram představuje postup rozhodování: dostupné plány závisí na typu země a telefonní číslo, na kterém pracujete.
 
-<!-- Tami/team have rejected this multiple times despite updates, says it needs to be higher res - need to work with her to get approval for this image. Commenting out to move our staging forward. :::image type="content" source="../../media/example-decision-flow.png" alt-text="Example for the decision flow"::: -->
+<!-- Tami/team have rejected this multiple times despite updates, says it needs to be higher res - need to work with her to get approval for this image. Commenting out to move our staging forward. :::image type="content" source="../../media/example-decision-flow.png" alt-text="Diagram znázorňující, jak učinit rozhodnutí týkající se vašich telefonních čísel."::: -->
 
 Než budete moct vybrat typ telefonní číslo, Podívejme se na plán mezinárodního telefonního číslování.
 
@@ -67,19 +67,19 @@ Tady je několik příkladů, které vám pomůžou lépe pochopit plán číslo
 
 Místní telefonní číslo v USA:
 
-:::image type="content" source="../media/plan-solution/regional-us.png" alt-text="Příklad místního telefonního čísla v USA":::
+:::image type="content" source="../media/plan-solution/regional-us.png" alt-text="Diagram znázorňující, jak učinit rozhodnutí týkající se vašich telefonních čísel.":::
 
 Místní telefonní číslo v Kanadě:
 
-:::image type="content" source="../media/plan-solution/regional-canada.png" alt-text="Příklad místního telefonního čísla v Kanadě":::
+:::image type="content" source="../media/plan-solution/regional-canada.png" alt-text="Diagram znázorňující, jak učinit rozhodnutí týkající se vašich telefonních čísel.":::
 
 Bezplatné číslo v Severní Amerika oblasti:
 
-:::image type="content" source="../media/plan-solution/tollfree-us.png" alt-text="Příklad bezplatného čísla v Severní Amerika":::
+:::image type="content" source="../media/plan-solution/tollfree-us.png" alt-text="Diagram znázorňující, jak učinit rozhodnutí týkající se vašich telefonních čísel.":::
 
 Číslo mobilního telefonu v ČR:
 
-:::image type="content" source="../media/plan-solution/mobile-uk.png" alt-text="Příklad mobilního čísla v ČR":::
+:::image type="content" source="../media/plan-solution/mobile-uk.png" alt-text="Diagram znázorňující, jak učinit rozhodnutí týkající se vašich telefonních čísel.":::
 
 Teď si probereme konkrétní typy telefonních čísel dostupných v komunikačních službách Azure.
 
@@ -112,6 +112,6 @@ Pojďme se podívat na možnosti, které můžete pro svoje telefonní čísla p
 
 ### <a name="conceptual-documentation"></a>Koncepční dokumentace
 
-- [Koncepce hlasu a videa](../voice-video-calling/about-call-types.md)
+- [Koncepce hlasových hovorů a videohovorů](../voice-video-calling/about-call-types.md)
 - [Toky volání a toky SMS](../call-flows.md)
 - [Ceny](../pricing.md)

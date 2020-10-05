@@ -8,10 +8,10 @@ ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
 ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89567805"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Nejčastější dotazy týkající se Centrum Education
@@ -54,7 +54,7 @@ Azure for Students poskytuje přístup ke všem produktům Azure, které jsou v�
 
 ### <a name="can-i-apply-any-of-my-100-credit-toward-azure-marketplace-offers"></a>Můžu pro Azure Marketplace nabídky použít jakýkoliv kredit z $100?
 
-No. Váš kredit nemůžete použít pro Azure Marketplace nabídky. Mnoho Azure Marketplaceových partnerů však nabízí bezplatné zkušební verze nebo plány úrovně Free pro svá řešení.
+Ne. Váš kredit nemůžete použít pro Azure Marketplace nabídky. Mnoho Azure Marketplaceových partnerů však nabízí bezplatné zkušební verze nebo plány úrovně Free pro svá řešení.
 
 ## <a name="azure-for-students-starter"></a>Azure for Students Starter
 
@@ -214,7 +214,7 @@ Centrum Education Store je k dispozici v následujících jazycích: Arabština,
 
 ### <a name="if-our-students-download-software-through-the-azure-dev-tools-for-teaching-program-do-they-get-unlimited-use-of-the-software"></a>Pokud naši studenti stáhnou software prostřednictvím služby Azure dev Tools for výuce, získá neomezený používání softwaru?
 
-Yes. Studenti získají neomezené softwarové využití, aby bylo možné další studijní a výzkumné úsilí.
+Ano. Studenti získají neomezené softwarové využití, aby bylo možné další studijní a výzkumné úsilí.
 
 ### <a name="if-our-students-create-viable-apps-and-products-using-azure-dev-tools-for-teaching-software-can-they-sell-them-commercially"></a>Pokud naši studenti vytvářejí životaschopné aplikace a produkty pomocí vývojových nástrojů Azure pro vyučovací software, můžou je prodávat komerčně?
 
@@ -222,7 +222,7 @@ Obecně to možné není. Studenti nemohou prodávat aplikace a produkty vytvoř
 
 ### <a name="do-i-have-unlimited-use-of-the-software-through-the-azure-dev-tools-for-teaching-program"></a>Mám neomezeně využívat software prostřednictvím nástrojů Azure dev Tools for vyučovací?
 
-Yes. Pokud je člen vyučujícího zaregistrovaný ve schváleném kurzu, mají nárok na instalaci vývojářských nástrojů Azure pro vývoj softwaru na svém osobním počítači pro nekomerční použití.
+Ano. Pokud je člen vyučujícího zaregistrovaný ve schváleném kurzu, mají nárok na instalaci vývojářských nástrojů Azure pro vývoj softwaru na svém osobním počítači pro nekomerční použití.
 
 ### <a name="how-do-i-access-my-visual-studio-enterprise-benefit"></a>Návody získat přístup k Visual Studio Enterprise výhodám?
 
@@ -232,7 +232,7 @@ Po schválení se budete moct přihlásit k [portálu sady Visual Studio](https:
 
 ### <a name="does-microsoft-azure-dev-tools-for-teaching-include-microsoft-office"></a>Zahrnuje Microsoft Azure vývojářské nástroje pro vzdělávání systém Microsoft Office?
 
-No. Cílem Microsoft Azurech vývojářských nástrojů pro vzdělávání je poskytnout oddělením, vyučujícím a studentům nástroje potřebné k tomu, aby se konkrétně rozšířila studie vývoje a testování softwaru. Proto poskytujeme technologie, jako je Windows Server, Visual Studio .NET, SQL Server a sada SDK platformy.
+Ne. Cílem Microsoft Azurech vývojářských nástrojů pro vzdělávání je poskytnout oddělením, vyučujícím a studentům nástroje potřebné k tomu, aby se konkrétně rozšířila studie vývoje a testování softwaru. Proto poskytujeme technologie, jako je Windows Server, Visual Studio .NET, SQL Server a sada SDK platformy.
 
 ### <a name="does-azure-dev-tools-for-teaching-include-azure-credit"></a>Zahrnuje Azure dev Tools pro vzdělávání kredit Azure?
 
@@ -240,7 +240,7 @@ Ne, Microsoft Azure vývojářské nástroje pro výukové předplatné nezahrnu
 
 ### <a name="do-students-need-an-office-365-or-active-directory-account-to-access-azure-dev-tools-for-teaching"></a>Potřebují studenti pro přístup k vývojářským nástrojům Azure pro pedagogy účet Office 365 nebo Active Directory?
 
-No. Studenti nepotřebují účet Office 365. Pokud mají studenti přístup k vašemu účtu služby Active Directory, používají stejné přihlašovací údaje pro přihlášení k softwaru.
+Ne. Studenti nepotřebují účet Office 365. Pokud mají studenti přístup k vašemu účtu služby Active Directory, používají stejné přihlašovací údaje pro přihlášení k softwaru.
 
 Pokud studenti nepoužívají službu Active Directory, musí vytvořit [účet Microsoft](https://account.microsoft.com/account) (pokud ho ještě nemají) pomocí stejné e-mailové adresy, kterou jim poskytnete.
 

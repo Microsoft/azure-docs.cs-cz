@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82930467"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Informace o Azure Key Vault tajných klíčích
@@ -46,7 +46,7 @@ Existují další atributy jen pro čtení, které jsou zahrnuty v jakékoli odp
 
 ### <a name="date-time-controlled-operations"></a>Operace kontrolovaného data a času
 
-Operace **Get** tajného klíče bude fungovat pro tajné klíče, které ještě nejsou platné a jejichž platnost vypršela, a to mimo okno*exp* pro *NBF* / . Volání operace **Get** tajného klíče, pro neplatný tajný klíč, lze použít pro testovací účely. Načtení (**získání**nocení) tajného kódu, jehož platnost vypršela, lze použít pro operace obnovení.
+Operace **Get** tajného klíče bude fungovat pro tajné klíče, které ještě nejsou platné a jejichž platnost vypršela, a to mimo okno exp pro *NBF*  /  *exp* . Volání operace **Get** tajného klíče, pro neplatný tajný klíč, lze použít pro testovací účely. Načtení (**získání**nocení) tajného kódu, jehož platnost vypršela, lze použít pro operace obnovení.
 
 ## <a name="secret-access-control"></a>Řízení přístupu k tajným klíčům
 
@@ -116,4 +116,4 @@ Další informace najdete v referenčních informacích o [operacích účtu úl
 - [Informace o klíčích](../keys/about-keys.md)
 - [Informace o certifikátech](../certificates/about-certificates.md)
 - [Ověřování, žádosti a odpovědi](../general/authentication-requests-and-responses.md)
-- [Průvodce vývojáře pro Key Vault](../general/developers-guide.md)
+- [Průvodce vývojáře pro službu Key Vault](../general/developers-guide.md)

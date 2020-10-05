@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
 ms.openlocfilehash: 61620a8497765c4d8f90a3d616bd2f4b932f8dcc
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91629025"
 ---
 # <a name="azure-load-balancer-algorithm"></a>Azure Load Balancer algoritmus
@@ -55,7 +55,7 @@ Nástroj pro vyrovnávání zatížení přímo nekomunikuje s protokolem TCP ne
 - Datové části aplikace jsou pro nástroj pro vyrovnávání zatížení transparentní. Je možné, že bude podporována jakákoli aplikace UDP nebo TCP.
 - Vzhledem k tomu, že nástroj pro vyrovnávání zatížení nekomunikuje s datovou částí TCP a poskytuje přesměrování zpracování TLS, můžete vytvořit komplexní šifrované scénáře. Použití nástroje pro vyrovnávání zatížení získává velký rozsah pro aplikace TLS tím, že ukončuje připojení TLS na samotném virtuálním počítači. Například kapacita klíče relace TLS je omezená jenom typem a počtem virtuálních počítačů, které přidáte do fondu back-end.
 
-## <a name="limitations"></a><a name = "limitations"></a>Určitá
+## <a name="limitations"></a><a name = "limitations"></a>Omezení
 
 - Pravidlo nástroje pro vyrovnávání zatížení nemůže zahrnovat dvě virtuální sítě.  Front-endové a jejich instance back-endu se musí nacházet ve stejné virtuální síti.  
 

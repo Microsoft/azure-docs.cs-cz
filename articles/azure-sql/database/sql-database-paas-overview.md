@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.openlocfilehash: 0fd3778d50216e337b872f0a27cb30b04a0219f7
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91617216"
 ---
 # <a name="what-is-azure-sql-database"></a>Co je Azure SQL Database?
@@ -114,7 +114,7 @@ Zóny dostupnosti Azure se snaží chránit před výpadkem jednoho datového ce
 
 Smlouva o úrovni služeb [(SLA)](https://azure.microsoft.com/support/legal/sla/) Azure, která využívá globální síť datacenter spravovaných Microsoftem, pomáhá zajistit, aby vaše aplikace běžela 24/7. Platforma Azure plně spravuje každou databázi a zaručuje žádnou ztrátu dat a vysoké procento dostupnosti dat. Azure automaticky zpracovává opravy, zálohy, replikaci, detekci selhání, základní potenciální hardware, software nebo síť, nasazování oprav chyb, převzetí služeb při selhání, upgrady databáze a další úlohy údržby. Dostupnosti úrovně Standard se dosahuje oddělením výpočetní a úložné vrstvy. Dostupnost Premium se dosahuje integrací výpočetních prostředků a úložiště v jednom uzlu pro výkon a následnou implementací technologie podobně jako u skupin dostupnosti Always On. Úplnou diskuzi o funkcích Azure SQL Database vysoké dostupnosti najdete v článku [dostupnost SQL Database](high-availability-sla.md). 
 
-Kromě toho SQL Database poskytuje integrovanou funkci pro [provozní kontinuitu a globální škálovatelnost](business-continuity-high-availability-disaster-recover-hadr-overview.md) . Mezi ně patří:
+Kromě toho SQL Database poskytuje integrovanou funkci pro [provozní kontinuitu a globální škálovatelnost](business-continuity-high-availability-disaster-recover-hadr-overview.md) . Tady jsou některé z nich:
 
 - [Automatické zálohování](automated-backups-overview.md):
 
@@ -210,7 +210,7 @@ SQL Database podporuje vytváření aplikací pomocí jazyků Python, Java, Node
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>Můžu řídit, kdy dochází k výpadkům při opravování?
 
-No. Pokud ve své aplikaci použijete [logiku opakování](develop-overview.md#resiliency) , nemusíte mít dopad na opravy. Další informace najdete v tématu [plánování událostí údržby Azure v Azure SQL Database](planned-maintenance.md).
+Ne. Pokud ve své aplikaci použijete [logiku opakování](develop-overview.md#resiliency) , nemusíte mít dopad na opravy. Další informace najdete v tématu [plánování událostí údržby Azure v Azure SQL Database](planned-maintenance.md).
 
 
 

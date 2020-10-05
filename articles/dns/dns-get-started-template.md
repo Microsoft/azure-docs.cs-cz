@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 09/8/2020
 ms.author: duau
 ms.openlocfilehash: 8e53e8ad26ddac1006a28fea2ddee9990533e8c9
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89647884"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>Rychlý Start: vytvoření zóny Azure DNS a záznamu pomocí šablony ARM
@@ -79,7 +79,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **skupiny prostředků** .
 
@@ -87,11 +87,11 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 1. Skupina prostředků by měla obsahovat následující zdroje informací:
 
-    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Skupina prostředků nasazení zóny DNS":::
+    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Výstup nasazení prostředí PowerShell pro Správce prostředků Azure DNS zóny":::
 
 1. Vyberte zónu DNS s příponou ** <span>azurequickstart.</span> organizace** , která ověří, jestli je zóna správně vytvořená záznamem **a** , který odkazuje na hodnotu **1.2.3.4** a **1.2.3.5**.
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Nasazení zóny DNS":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Výstup nasazení prostředí PowerShell pro Správce prostředků Azure DNS zóny":::
 
 1. Zkopírujte jeden z názvů názvového serveru z předchozího kroku.
 
@@ -101,7 +101,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
    nslookup www.<dns zone name> <name server name>
    ```
 
-   Například:
+   Příklad:
 
    ```
    nslookup www.2lwynbseszpam.azurequickstart.org ns1-09.azure-dns.com.
@@ -109,7 +109,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
    Měl by se zobrazit něco podobného jako na následujícím snímku obrazovky:
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="Nástroj nslookup pro zónu DNS":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="Výstup nasazení prostředí PowerShell pro Správce prostředků Azure DNS zóny":::
 
 Název hostitele **www<span>. 2lwynbseszpam. azurequickstart.</span> organizace** se přeloží na **1.2.3.4** a **1.2.3.5**, stejně jako jste ji nakonfigurovali. Tento výsledek ověří, že překlad názvů funguje správně.
 

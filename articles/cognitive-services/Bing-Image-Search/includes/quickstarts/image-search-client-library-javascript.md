@@ -10,17 +10,17 @@ ms.date: 03/04/2020
 ms.author: aahi
 ms.custom: devx-track-js
 ms.openlocfilehash: 72c520b0ff135e9f48cd74f0024197ae8606f206
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91376712"
 ---
 Pomocí tohoto rychlého startu můžete udělat své první hledání obrázků pomocí klientské knihovny Vyhledávání obrázků Bingu, což je obálka pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace JavaScript posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
 
 Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) s dalším zpracováním chyb a poznámkami.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nejnovější verze [Node.js](https://nodejs.org/en/download/)
 * [Sada vyhledávání obrázků Bingu SDK pro JavaScript](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)

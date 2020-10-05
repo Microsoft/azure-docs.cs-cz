@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: fbc73e20b8cc2baa1cc5c5a5b2f674fb1b2dde84
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90946972"
 ---
 # <a name="quickstart-explore-the-metrics-advisor-demo-with-example-data"></a>Rychlý Start: Prozkoumejte ukázku poradce metriky s příklady dat
@@ -44,14 +44,14 @@ Klikněte na datový kanál *Ukázka-náklady/výnosy – město/kategorie* . V 
 * Protokoly, kdy se datový kanál aktualizoval   
 * Informace a nastavení datového kanálu.
 
-:::image type="content" source="../media/data-feed-view.png" alt-text="Zobrazení datového kanálu" lightbox="../media/data-feed-view.png":::
+:::image type="content" source="../media/data-feed-view.png" alt-text="Seznam ukázkových dat" lightbox="../media/data-feed-view.png":::
 
 
 ## <a name="view-time-series-visualizations-and-configurations"></a>Zobrazení vizualizací a konfigurací časových řad
 
 Klikněte na metriku *nákladů* v kanálu dat *Ukázka-náklady/výnosy – město/kategorie* . Zobrazí se související časová řada, která je rozdělená podle dimenzí, s vizualizacemi podle historických dat metriky. Modrý pruh kolem dat metriky představuje rozsah očekávané hodnoty z modelů strojového učení služby Advisor metriky. Body, které spadají mimo tento proužek, budou označeny jako červené tečky, které jsou zjištěny anomálie. 
 
-:::image type="content" source="../media/series-visualization.png" alt-text="Vizualizace řad" lightbox="../media/series-visualization.png":::
+:::image type="content" source="../media/series-visualization.png" alt-text="Seznam ukázkových dat" lightbox="../media/series-visualization.png":::
 
 Detekce anomálií se dá nakonfigurovat optimalizací **konfigurací zjišťování** na levé straně stránky s podrobnostmi metriky. K dispozici je několik metod detekce anomálií, které je možné kombinovat. Můžete také vyzkoušet různé Sensitivities, zjistit směry a další konfigurace. Odkaz **Upřesnit konfiguraci** v dolní části **detekce konfigurací** umožňuje vytvořit složitější a přizpůsobená nastavení detekce, která se dají použít pro skupiny nebo jednotlivé řady. 
 
@@ -59,7 +59,7 @@ Detekci anomálií můžete také ladit tím, že poskytnete zpětnou vazbu k al
 
 V dolní části panelu **Přidat zpětná vazba** je odkaz **na centrum incidentů**, který vás přesměruje na stránku analýzy incidentů a analyzuje hlavní příčinu incidentu.  
 
-:::image type="content" source="../media/incident-link.png" alt-text="Odkaz na incident" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="Seznam ukázkových dat" lightbox="../media/incident-link.png":::
 
 ## <a name="explore-anomaly-detection-results-and-perform-root-cause-analysis"></a>Prozkoumat výsledky detekce anomálií a provést analýzu původní příčiny
 
@@ -67,7 +67,7 @@ Když kliknete na odkaz **na centrum incidentů** z anomálie, zobrazí se strá
 
 V části **Diagnostika** se zobrazuje strom incidentu spolu s několika kartami pro diagnostiku incidentu.
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="Diagnostika incidentu" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="Seznam ukázkových dat" lightbox="../media/incident-diagnostic.png":::
 
 Určením hlavní příčiny incidentu můžete provést akci a zmírnit problém, dokud se situace nestane horší. Další přehledy můžete prozkoumat také tak, že kliknete na další poskytnuté diagnostické funkce. 
 

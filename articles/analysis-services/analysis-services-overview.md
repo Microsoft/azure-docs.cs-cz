@@ -9,13 +9,13 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: c6913fee6872d8875e068b2502727c9f42f80401
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89594199"
 ---
-# <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
+# <a name="what-is-azure-analysis-services"></a>Co je Azure Analysis Services?
 
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
@@ -55,7 +55,7 @@ Tato úroveň se doporučuje pro produkční řešení s menšími tabelárními
 |B1    |    40     |    10     |
 |B2    |    80     |    16     |
 
-### <a name="standard-tier"></a>Úroveň Standard
+### <a name="standard-tier"></a>Standardní úroveň
 
 Tato úroveň je pro důležité produkční aplikace, které vyžadují elastickou uživatelskou souběžnost a využívají datové modely s rychlým růstem. Podporuje pokročilou aktualizaci dat pro aktualizace datových modelů téměř v reálném čase a podporuje veškeré funkce tabulkového modelování.
 
@@ -79,7 +79,7 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 
 ### <a name="americas"></a>Amerika
 
-|Region  | Podporované plány | Repliky dotazů (pouze plány Standard) |
+|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Brazil South     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Střední Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
@@ -88,8 +88,8 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |USA – východ 2     |     S8, S9, S8v2, S9v2   |    1    |
 |USA – středosever     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA – středosever     |     S8v2, S9v2    |    1     |
-|Střední USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Střední USA     |    S8v2, S9v2     |    1     |
+|USA – střed     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|USA – střed     |    S8v2, S9v2     |    1     |
 |Středojižní USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA – středozápad   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA – západ     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
@@ -99,7 +99,7 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 
 ### <a name="europe"></a>Evropa
 
-|Region  | Podporované plány | Repliky dotazů (pouze plány Standard) |
+|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Severní Evropa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Severní Evropa     |    S8v2, S9v2      |    3     |
@@ -109,7 +109,7 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 
 ### <a name="asia-pacific"></a>Asie a Tichomoří 
 
-|Region  | Podporované plány | Repliky dotazů (pouze plány Standard) |
+|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Austrálie – východ     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Austrálie – východ     |    S8, S9, S8v2, S9v2    |    1     |
@@ -163,7 +163,7 @@ Služba Azure Analysis Services poskytuje zabezpečení citlivých dat na více 
 
 Na úrovni serveru Analysis Services poskytuje bránu firewall, ověřování Azure, role správce serveru a šifrování na straně serveru. Na úrovni datového modelu, rolích uživatelů, zabezpečení na úrovni řádků a objektů zajišťuje bezpečnost vašich dat a jejich zobrazení pouze uživatelé, kteří jsou určeni k jejich zobrazení.
 
-### <a name="firewall"></a>Brána firewall
+### <a name="firewall"></a>Firewall
 
 Brána firewall služby Azure Analysis Services blokuje všechna připojení klientů kromě IP adres zadaných v pravidlech. Ve výchozím nastavení není ochrana brány firewall pro nové servery povolena. Doporučuje se povolit ochranu brány firewall a pravidla se konfigurují jako součást skriptu zřizování serveru nebo na portálu hned po vytvoření serveru. Pravidla můžete konfigurovat zadáním povolených IP adres jednotlivých klientů nebo jejich rozsahu. Povolit nebo blokovat je možné také připojení (služby) Power BI. Pravidla a bránu firewall můžete konfigurovat na portálu nebo pomocí PowerShellu. Další informace najdete v článku o [konfiguraci brány firewall serveru](analysis-services-qs-firewall.md).
 
@@ -183,7 +183,7 @@ Služba Analysis Services používá [autorizaci na základě rolí](https://doc
   
 Koncovým uživatelům (jiným než správcům), kteří se dotazují na data, se udělí přístup prostřednictvím databázových rolí. Databázová role se vytvoří jako samostatný objekt v databázi a použije se pouze na databázi, ve které byla vytvořena. Databázové role jsou definované oprávněními správce, ke čtení a ke čtení a zpracování (v databázi). Uživatelské a skupinové účty se přidají pomocí SSMS nebo PowerShellu.
 
-### <a name="row-level-security"></a>Zabezpečení na úrovni řádku
+### <a name="row-level-security"></a>Zabezpečení na úrovni řádků
 
 Tabulkové modely na všech úrovních kompatibility podporují zabezpečení na úrovni řádků. Zabezpečení na úrovni řádků se konfiguruje v modelu pomocí výrazů DAX, které definují řádky v tabulce a jakékoli řádky v mnoha směrech související tabulky, na které se uživatel může dotazovat. Pro oprávnění pro čtení a pro čtení a zpracování jsou pomocí výrazů DAX definovány filtry řádků. 
 

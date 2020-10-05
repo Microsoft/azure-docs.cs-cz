@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
 ms.openlocfilehash: 44dc3f16128913f76369ad645a32e91f38272546
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83869856"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a PHP
@@ -23,7 +23,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
 
 I když je tato aplikace napsaná v PHP, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [PHP 5.6. x](https://php.net/downloads.php)
 
@@ -36,7 +36,7 @@ I když je tato aplikace napsaná v PHP, rozhraní API je webová služba RESTfu
 2. Přidejte níže uvedený kód.
 3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
-5. Spusťte program.
+5. Spustíte program.
     
     ```php
     <?php

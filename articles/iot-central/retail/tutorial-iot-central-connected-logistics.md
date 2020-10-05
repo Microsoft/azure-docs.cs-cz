@@ -8,10 +8,10 @@ ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
 ms.openlocfilehash: 0206c111be7cd6441d9de32af498e961833d214f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90980694"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Kurz: nasazení a procházení prostřednictvím připojené šablony logistické aplikace
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Sledovat pravidla
 > * Použití úloh
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * K nasazení této aplikace nejsou nutné žádné konkrétní požadavky.
 * Můžete použít bezplatný cenový plán nebo použít předplatné Azure.
@@ -51,9 +51,9 @@ Vytvořte aplikaci pomocí následujících kroků:
     * **Informace o fakturaci**: ke zřízení prostředků se vyžaduje adresář, předplatné Azure a podrobnosti o oblasti.
     * **Vytvořit**: v dolní části stránky vyberte vytvořit a nasaďte svoji aplikaci.
 
-    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png" alt-text="Šablona připojené logistické aplikace":::
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png" alt-text="Šablona spojené logistiky":::
 
-    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png" alt-text="Informace o fakturaci pro Spojené logistiky":::
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png" alt-text="Šablona spojené logistiky":::
 
 ## <a name="walk-through-the-application"></a>Procházení aplikací
 
@@ -81,13 +81,13 @@ Tento řídicí panel je předem nakonfigurovaný tak, aby zobrazoval aktivitu k
 * Zobrazit logistické postupy pro dodávky nákladní přepravy a podrobnosti o poloze dodávek v oceánu.
 * Zobrazení stavu brány a dalších relevantních informací.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="Řídicí panel připojené logistiky":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="Šablona spojené logistiky":::
 
 * Můžete sledovat celkový počet bran, aktivních a neznámých značek.
 * Můžete provádět operace správy zařízení, jako je například firmware aktualizace, zakázat a povolit senzory, aktualizovat prahovou hodnotu snímače, aktualizovat intervaly telemetrie a aktualizovat kontrakty služby zařízení.
 * Zobrazit spotřebu baterie zařízení.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="Stav připojeného řídicího panelu logistiky":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="Šablona spojené logistiky":::
 
 #### <a name="device-template"></a>Šablona zařízení
 
@@ -95,11 +95,11 @@ Vyberte **šablony zařízení** a podívejte se na model schopností brány. Mo
 
 **Vlastnost telemetrie brány &** – toto rozhraní definuje veškerou telemetrii související s senzory, umístěním a informacemi o zařízení. Rozhraní také definuje funkce pro dopředné vlastnosti zařízení, jako jsou mezní hodnoty senzoru a intervaly aktualizací.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="Rozhraní telemetrie a vlastnost":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="Šablona spojené logistiky":::
 
 **Příkazy brány** – toto rozhraní uspořádá všechny možnosti příkazu brány:
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="Rozhraní příkazů brány":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="Šablona spojené logistiky":::
 
 ### <a name="rules"></a>Pravidla
 
@@ -109,13 +109,13 @@ Vyberte kartu **pravidla** pro pravidla v této šabloně aplikace. Tato pravidl
 
 **Nereagující bránu**: Toto pravidlo se aktivuje, pokud brána nehlásí do cloudu po dlouhou dobu. Brána může přestat reagovat z důvodu nízkého nabití baterie, ztráty připojení nebo poškození zařízení.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="Definice pravidel":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="Šablona spojené logistiky":::
 
 ### <a name="jobs"></a>Úlohy
 
 Kliknutím na kartu **úlohy** zobrazíte úlohy v této aplikaci:
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="Úlohy, které se mají spustit":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="Šablona spojené logistiky":::
 
 Úlohy můžete použít k provádění operací v nejrůznějších aplikacích. Úlohy v této aplikaci používají příkazy zařízení a možnosti, které umožňují provádět úlohy, jako je například zakázání specifických senzorů napříč všemi branami nebo změna prahové hodnoty snímače v závislosti na způsobu dodávek a trase:
 
@@ -127,7 +127,7 @@ Kliknutím na kartu **úlohy** zobrazíte úlohy v této aplikaci:
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na stránce **Administration**  >  **nastavení aplikace** pro správu a vyberte možnost **Odstranit**.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="Vyčištění šablony":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="Šablona spojené logistiky":::
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace: 

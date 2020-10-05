@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
 ms.openlocfilehash: 6f438bd7dd0b3e45fd292947a3b08db80401b825
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90946910"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>Rychlý Start: modul zabezpečení pro Azure RTO (Preview)
@@ -27,7 +27,7 @@ Tento článek obsahuje vysvětlení požadavků před začátkem a vysvětluje,
 > [!NOTE]
 > Modul zabezpečení pro Azure RTO se podporuje jenom na rozbočovačích IoT úrovně Standard.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 ### <a name="supported-devices"></a>Podporovaná zařízení
 
@@ -63,10 +63,10 @@ Ingestování Log Analytics v IoT Hub je ve výchozím nastavení v programu Def
 1. Vyberte **shromažďování dat**. 
 1. V možnosti **Konfigurace pracovního prostoru** přepněte přepínač na **zapnuto**. 
 1. Vytvořte nový pracovní prostor Log Analytics nebo připojte existující. Ujistěte se, že je vybraná možnost **přístup k nezpracovaným datům zabezpečení** . 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Možnost konfigurace Azure RTO ukazující možnosti shromažďování dat a nezpracovaná nastavení dat zabezpečení jsou vybraná":::
+ :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Přístup k možnosti shromažďování dat pro Azure RTO":::
 1. Vyberte **Uložit**.
 1. Vraťte se do seznamu prostředků Azure a potvrďte, že je pro IoT Hub povolený pracovní prostor Log Analytics, který jste vytvořili nebo připojeni.
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Zkontrolujte seznam prostředků Azure a potvrďte přidání správného Log Analytics pracovního prostoru přidaného pro IoT Hub"::: 
+    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Přístup k možnosti shromažďování dat pro Azure RTO"::: 
 
 ## <a name="next-steps"></a>Další kroky
 

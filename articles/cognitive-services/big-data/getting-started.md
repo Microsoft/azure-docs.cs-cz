@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.openlocfilehash: 7f4849c75b36b1663416ad1a97e3264fabcdaa67
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86201734"
 ---
 # <a name="getting-started"></a>Začínáme
@@ -60,7 +60,7 @@ Azure Databricks je analytická platforma založená na Apache Spark s nastaven�
 1. Instalace velkých objemů dat Cognitive Services
     * Vytvoření nové knihovny v pracovním prostoru datacihly  
        <img src="media/create-library.png" alt="Create library" width="50%"/>
-    * Zadejte následující souřadnice Maven souřadnic: `com.microsoft.ml.spark:mmlspark_2.11:1.0.0-rc1` úložiště:`https://mmlspark.azureedge.net/maven`  
+    * Zadejte následující souřadnice Maven souřadnic:  `com.microsoft.ml.spark:mmlspark_2.11:1.0.0-rc1` úložiště: `https://mmlspark.azureedge.net/maven`  
       <img src="media/library-coordinates.png" alt="Library Coordinates" width="50%"/>
     * Instalace knihovny do clusteru  
       <img src="media/install-library.png" alt="Install Library on Cluster" width="50%"/>

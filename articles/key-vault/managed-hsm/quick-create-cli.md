@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 705e389c83fbab6075c25a3f56e5392fb8cafcd9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91000940"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>Rychlý Start: zřízení a aktivace spravovaného modulu HSM pomocí Azure CLI
@@ -22,7 +22,7 @@ Azure Key Vault spravovaný modul hardwarového zabezpečení (HSM) je plně spr
 
 V tomto rychlém startu vytvoříte a aktivujete spravovaný modul HSM pomocí Azure CLI. Po jeho vytvoření uložíte tajný klíč.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku musíte mít následující položky:
 

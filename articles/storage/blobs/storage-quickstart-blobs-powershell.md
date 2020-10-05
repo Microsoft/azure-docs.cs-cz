@@ -11,10 +11,10 @@ ms.date: 03/31/2020
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: b051a4ffe4d24e1ef0e69ab7c18a8ed3388b57e5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89078278"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Rychlý Start: nahrání, stažení a výpis objektů BLOB pomocí PowerShellu
@@ -23,7 +23,7 @@ Pomocí modulu Azure PowerShell můžete vytvářet a spravovat prostředky Azur
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete získat přístup k Azure Storage, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -83,7 +83,7 @@ Set-AzStorageBlobContent -File "D:\_TestImages\foldername\Image003.jpg" `
 
 Než budete pokračovat, můžete nahrát libovolné množství souborů.
 
-## <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
+## <a name="list-the-blobs-in-a-container"></a>Seznam objektů blob v kontejneru
 
 Získat seznam objektů BLOB v kontejneru pomocí [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob). Tento příklad zobrazí pouze názvy nahraných objektů blob.
 

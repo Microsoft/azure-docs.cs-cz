@@ -8,10 +8,10 @@ ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
 ms.openlocfilehash: 76cc09ab5283e10e8f25af3aba4278ec6cca4838
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91333269"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Rychlý Start: zahájení monitorování webové aplikace v Node.js s využitím Azure Application Insights
@@ -20,7 +20,7 @@ V tomto rychlém startu přidáte sadu Application Insights SDK verze 0,22 pro N
 
 Služba Azure Application Insights umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. Pomocí sady SDK verze 0.20 a novější můžete monitorovat běžné balíčky třetích stran, včetně MongoDB, MySQL a Redis.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Funkční aplikace Node.js.
@@ -29,7 +29,7 @@ Služba Azure Application Insights umožňuje monitorovat webové aplikace z hle
 
 Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace připojené k Internetu, ať už běží místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **vytvořit prostředek pro**  >  **vývojáře**  >  **Application Insights**.
 

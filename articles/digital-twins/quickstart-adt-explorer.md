@@ -8,10 +8,10 @@ ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
 ms.openlocfilehash: dbe37e8a5cba18254cff1dc5d0fff4d5b9bc783d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91372608"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
@@ -31,7 +31,7 @@ Vzorový graf, se kterým budete pracovat, představuje sestavení se dvěma pod
 
 :::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto rychlého startu budete potřebovat předplatné Azure. Pokud ho ještě nemáte, vytvořte si **[ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** hned teď.
 
@@ -62,7 +62,7 @@ Dále Připravte instanci digitálních vláken Azure, kterou jste vytvořili pr
 
 V nabídce registrace vyberte *ověřování* a stiskněte *+ Přidat platformu*.
 
-:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Azure Portal stránce podrobností o ověřování pro registraci aplikace. K dispozici je zvýraznění kolem tlačítka Přidat platformu." lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
+:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
 
 Na následující stránce *Konfigurace platforem* vyberte *Web*.
 Podrobnosti konfigurace vyplňte následujícím způsobem:
@@ -73,7 +73,7 @@ Pro dokončení *Konfigurace* stiskněte klávesu.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/authentication-configure-web.png" alt-text="Na stránce konfigurace platforem se zvýrazní informace popsané výše na obrazovce.":::
+        :::image type="content" source="media/quickstart-adt-explorer/authentication-configure-web.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -81,7 +81,7 @@ Pro dokončení *Konfigurace* stiskněte klávesu.
 
 Nyní máte nakonfigurovanou konfiguraci webu, kterou použije Průzkumník aplikace ADT. Na kartě ověřování v Azure Portal by se měla odrážet. Po ověření níže uvedených částí stiskněte *Uložit*.
 
-:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="Azure Portal stránce podrobností o ověřování pro registraci aplikace. Existuje zvýraznění kolem oddílu webové platformy s identifikátorem URI přesměrování http://localhost:3000 a implicitní udělené povolení pro přístupové tokeny. Tlačítko Uložit je také zvýrazněno.":::
+:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
 
 ### <a name="run-and-configure-adt-explorer"></a>Spuštění a konfigurace Průzkumníka aplikace ADT
 
@@ -95,11 +95,11 @@ Pak spusťte aplikaci spuštěním `npm run start` .
 
 Po několika sekundách se otevře okno prohlížeče a aplikace se zobrazí v prohlížeči.
 
-:::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
+:::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
 
 V horní části okna klikněte na tlačítko *Přihlásit* (zobrazené na obrázku níže) a nakonfigurujte Průzkumníka aplikace ADT, aby fungoval s instancí, kterou jste nastavili. 
 
-:::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Průzkumník ADT – zvýrazní ikonu přihlášení v horní části okna. Ikona zobrazuje jednoduché Silhouette osoby překrývající Silhouette klíče." lightbox="media/quickstart-adt-explorer/sign-in.png":::
+:::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
 Zadejte důležité informace, které jste shromáždili dříve v části [požadavky](#prerequisites) :
 * ID aplikace (klienta)
@@ -139,21 +139,21 @@ Pro tento rychlý Start již byly soubory modelů zapsány a ověřeny pro vás 
 
 V poli *zobrazení modelu* stiskněte tlačítko nahrát ikonu *modelu* .
 
-:::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="V poli zobrazení modelu je zvýrazněna střední ikona. Zobrazuje šipku ukazující na Cloud." lightbox="media/quickstart-adt-explorer/upload-model.png":::
+:::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/upload-model.png":::
  
 1. V zobrazeném poli pro výběr souboru přejděte do složky *Azure_Digital_Twins_samples/adtsampleapp/sampleclientapp/Models* ve staženém úložišti.
 2. Vyberte *Room.jszapnuto* a *Floor.js*a stiskněte OK. (Další modely můžete nahrát, pokud chcete, ale nepoužijí se v tomto rychlém startu.)
 3. Použijte místní dialogové okno s výzvou, abyste se přihlásili ke svému účtu Azure.
 
 >[!NOTE]
->Pokud se zobrazí následující chybová zpráva: došlo :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="k chybě při načítání modelů: ClientAuthError: Chyba při otevírání překryvného okna. K tomu může dojít, pokud používáte aplikaci Internet Explorer nebo pokud jsou automaticky otevíraná okna blokována v prohlížeči. tlačítko s tlačítkem Zavřít v dolní části" border="false"::: 
+>Pokud se zobrazí následující chybová zpráva: došlo :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." border="false"::: 
 > Zkuste zakázat blokování automaticky otevíraných oken nebo použít jiný prohlížeč.
 
 Průzkumník aplikace ADT nyní nahraje tyto soubory modelu do instance digitálního vlákna Azure. Měly by se zobrazit v poli *zobrazení modelu* , kde se zobrazují jejich popisné názvy a úplná ID modelu. Můžete kliknout na bubliny s informacemi o *modelu zobrazení* a zobrazit kód DTDL za nimi.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="Zobrazení pole modelu zobrazení se dvěma definicemi modelů, které jsou uvedeny uvnitř, Floor (dtmi: priklad: Floor; 1) a místnost (dtmi: Příklad: místnost; 1). Ikona zobrazení modelu ukazující, že v kruhu je pro každý model zvýrazněno písmeno i." lightbox="media/quickstart-adt-explorer/model-info.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/model-info.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -177,7 +177,7 @@ V této části budete nahrávat předem vytvořené vlákna, která jsou připo
 
 V poli *zobrazení grafu* stiskněte ikonu *Import grafu* .
 
-:::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="V poli zobrazení grafu je zvýrazněna ikona. Zobrazuje šipku ukazující na Cloud." lightbox="media/quickstart-adt-explorer/import-graph.png":::
+:::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
 V poli pro výběr souboru přejděte do složky *Azure_Digital_Twins_samples/adtsampleapp/sampleclientapp* a vyberte soubor tabulky _**buildingScenario.xlsx**_ . Tento soubor obsahuje popis ukázkového grafu. Stiskněte OK.
 
@@ -187,7 +187,7 @@ Pokud chcete potvrdit nahrávání grafu, stiskněte ikonu *Uložit* v pravém h
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/graph-preview-save.png" alt-text="Zvýraznění ikony uložit v podokně náhledu grafu" lightbox="media/quickstart-adt-explorer/graph-preview-save.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/graph-preview-save.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -197,7 +197,7 @@ Průzkumník aplikace ADT nyní pomocí nahraného souboru vytvoří požadovan�
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="Dialogové okno s oznámením o úspěchu importu grafu Čte import úspěšně. bylo importováno 49 zdvojených vláken. 50 importovaných vztahů." lightbox="media/quickstart-adt-explorer/import-success.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -207,7 +207,7 @@ Průzkumník aplikace ADT nyní pomocí nahraného souboru vytvoří požadovan�
 
 Graf byl nyní nahrán do Průzkumníka aplikace ADT. Chcete-li zobrazit graf, stiskněte tlačítko *Spustit dotaz* v poli *Průzkumník grafů* v horní části okna Průzkumníka aplikace ADT. 
 
-:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Tlačítko spustit dotaz poblíž horního okraje okna je zvýrazněno." lightbox="media/quickstart-adt-explorer/run-query.png":::
+:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/run-query.png":::
 
 Tím se spustí výchozí dotaz pro výběr a zobrazení všech digitálních vláken. Průzkumník aplikace ADT načte všechny vlákna a relace ze služby a nakreslí graf definovaný v poli *zobrazení grafu* .
 
@@ -215,7 +215,7 @@ Tím se spustí výchozí dotaz pro výběr a zobrazení všech digitálních vl
 
 Teď si můžete prohlédnout nahraný graf ukázkového scénáře:
 
-:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Zobrazení pole ' zobrazení grafu ' s dvojitým grafem v rámci. Kruh označený jako ' floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' room0 '.":::
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
 
 Kruhy (grafy "uzly") reprezentují digitální vlákna a řádky prezentují relace. Uvidíte, že *Floor0* se nachází v *Room0*a vlákna *Floor1* obsahuje *Room1*.
 
@@ -229,7 +229,7 @@ Tady jsou vlastnosti *Room0*:
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="Zvýrazněte v poli Průzkumník vlastností zobrazení vlastností Room0, včetně (mimo jiné) $dtId pole Room0, pole teploty 70 a pole vlhkosti 30." lightbox="media/quickstart-adt-explorer/properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -241,7 +241,7 @@ Tady jsou vlastnosti *Room1*:
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="Zvýrazněte v poli Průzkumník vlastností zobrazení vlastností Room1, včetně (mimo jiné) $dtId pole Room1, pole teploty 80 a pole vlhkosti 60." lightbox="media/quickstart-adt-explorer/properties-room1.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/properties-room1.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -265,7 +265,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 Odvolání ze zobrazení vlastností s dvojitou platností dříve, než *Room0* má teplotu **70** a *Room1* má teplotu **80**. Výsledkem je, že se tady zobrazí jenom _**Room1é**_ výsledky.
     
-:::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="Výsledky dotazu na vlastnost zobrazující pouze Room1" lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
+:::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
 
 >[!TIP]
 > Jiné operátory porovnání ( *<* , *>* , *=* , nebo *! =*) jsou podporovány také v rámci dotazu výše. Můžete se pokusit o připojení těchto, různých hodnot nebo různých vlastností do dotazu, abyste si vyzkoušeli odpovědi na vlastní otázky.
@@ -280,7 +280,7 @@ Vlastnosti v tomto seznamu lze upravovat. Vyberte hodnotu teploty **70** a povol
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="Pole Průzkumník vlastností zobrazující vlastnosti pro Room0. Hodnota teploty je upravitelné pole zobrazující 76 a zvýraznění kolem ikony uložit je zvýrazněno." lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -298,7 +298,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 Teď, když se teplota *Room0* změnila z **70** na **76**, ve výsledku by se měla zobrazit obě vlákna.
 
-:::image type="content" source="media/quickstart-adt-explorer/result-query-property-after.png" alt-text="Výsledky dotazu vlastnosti zobrazující Room0 i Room1" lightbox="media/quickstart-adt-explorer/result-query-property-after.png":::
+:::image type="content" source="media/quickstart-adt-explorer/result-query-property-after.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/result-query-property-after.png":::
 
 ## <a name="review-and-contextualize-learnings"></a>Recenze a dát učení
 

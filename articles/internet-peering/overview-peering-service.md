@@ -1,7 +1,7 @@
 ---
-title: Internet peering vs. peering Service
+title: Internetový peering vs. Peering Service
 titleSuffix: Azure
-description: Internet peering vs. peering Service
+description: Internetový peering vs. Peering Service
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
@@ -9,13 +9,13 @@ ms.topic: overview
 ms.date: 5/22/2020
 ms.author: derekol
 ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83849378"
 ---
-# <a name="internet-peering-vs-peering-service"></a>Internet peering vs. peering Service
+# <a name="internet-peering-vs-peering-service"></a>Internetový peering vs. Peering Service
 
 Partnerský vztah mezi Internetem odkazuje na jakékoli propojení mezi globální sítí (AS8075) a dopravci nebo poskytovateli služeb společnosti Microsoft. Poskytovatel služeb se může stát partnerem služby peering Service tím, že implementuje požadavky na partnerství partnerských služeb popsané níže, aby poskytoval spolehlivé a vysoce výkonné veřejné připojení s optimálním směrováním od zákazníka k síti Microsoftu.
 

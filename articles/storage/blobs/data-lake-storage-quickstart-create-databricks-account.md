@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
 ms.openlocfilehash: 482d703689ca6cfc34dd5d78574ae52e4def2b1f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86109769"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Rychlý Start: Analýza dat pomocí datacihlů
 
 V tomto rychlém startu spustíte úlohu Apache Spark pomocí Azure Databricks k provádění analýz dat uložených v účtu úložiště. V rámci úlohy Spark budete analyzovat data předplatného rádiového kanálu, abyste získali přehled o bezplatném nebo placeném využití na základě demografických údajů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -74,7 +74,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
      
     - Nezapomeňte zaškrtnout políčko **Terminate after 120 minutes of inactivity** (Ukončit po 120 minutách nečinnosti). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
 
-4. Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
+4. Vyberte **vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
 Další informace o vytváření clusterů najdete v tématu [Vytvoření clusteru Spark v Azure Databricks](https://docs.azuredatabricks.net/user-guide/clusters/create.html).
 

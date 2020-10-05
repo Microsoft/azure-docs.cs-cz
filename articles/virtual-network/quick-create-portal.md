@@ -12,23 +12,23 @@ ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
 ms.openlocfilehash: dfeb9c6bc3dbe33881fc51ccb08a776b827dfe9c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86082433"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Rychlý start: Vytvoření virtuální sítě pomocí webu Azure Portal
 
 V tomto rychlém startu se dozvíte, jak vytvořit virtuální síť pomocí Azure Portal. Nasadíte dva virtuální počítače (VM). Dále zabezpečeně komunikujete mezi virtuálními počítači a připojením k virtuálním počítačům z Internetu. Virtuální síť je základním stavebním blokem pro vaši privátní síť v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače, bezpečně komunikovat mezi sebou a s internetem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
@@ -38,7 +38,7 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Předplatné | Vyberte své předplatné.|
+    | Předplatné | Vyberte předplatné.|
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
     | Name | Zadejte *myVirtualNetwork*. |
     | Umístění | Vyberte **USA – východ**.|
@@ -66,9 +66,9 @@ Vytvořte ve virtuální síti dva virtuální počítače:
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
-    | Předplatné | Vyberte své předplatné. |
+    | Předplatné | Vyberte předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Tuto skupinu prostředků jste vytvořili v předchozí části. |
-    | **Podrobnosti instance** |  |
+    | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte *myVm1*. |
     | Oblast | Vyberte **USA – východ**. |
     | Možnosti dostupnosti | Ve výchozím nastavení **není nutná žádná redundance infrastruktury**. |
@@ -76,11 +76,11 @@ Vytvořte ve virtuální síti dva virtuální počítače:
     | Velikost | Výchozí hodnota je **Standard DS1 v2**. |
     | **Účet správce** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno, které si zvolíte. |
-    | Heslo | Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    | Heslo | Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Potvrdit heslo | Zadejte znovu heslo. |
-    | **Pravidla portů pro příchozí provoz** |  |
+    | **Pravidla portů pro příchozí spojení** |  |
     | Veřejné příchozí porty | Vyberte možnost **Povolení vybraných portů**. |
-    | Vybrat příchozí porty | Zadejte *http (80)* a *RDP (3389)*. |
+    | Vyberte příchozí porty | Zadejte *http (80)* a *RDP (3389)*. |
     | **Úspora peněz** |  |
     | Máte už licenci na Windows? | Výchozí hodnota je **ne**. |
 
@@ -97,7 +97,7 @@ Vytvořte ve virtuální síti dva virtuální počítače:
     | Veřejná IP adresa | Výchozí hodnota je **(New) myVm-IP**. |
     | Skupina zabezpečení sítě NIC | Výchozí hodnota je **Basic**. |
     | Veřejné příchozí porty | Výchozí **povolí vybrané porty**. |
-    | Vybrat příchozí porty | Výchozí hodnota je **http** a **RDP**.
+    | Vyberte příchozí porty | Výchozí hodnota je **http** a **RDP**.
 
 1. Vyberte **Další: Správa**.
 
@@ -108,13 +108,13 @@ Vytvořte ve virtuální síti dva virtuální počítače:
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Název | Zadejte *myvmstorageaccount*. Pokud se tento název povede, vytvořte jedinečný název.|
-    | Account kind (Druh účtu) | Výchozí hodnota pro **Storage (pro obecné účely V1)**. |
+    | Druh účtu | Výchozí hodnota pro **Storage (pro obecné účely V1)**. |
     | Výkon | Výchozí hodnota je **Standard**. |
     | Replikace | Výchozí pro **místně redundantní úložiště (LRS)**. |
 
-1. Vyberte **OK**a pak vyberte **zkontrolovat + vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
+1. Vyberte **OK**a pak vyberte **zkontrolovat + vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci.
 
-1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
+1. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 ### <a name="create-the-second-vm"></a>Vytvoření druhého virtuálního počítače
 
@@ -148,7 +148,7 @@ Po vytvoření *myVm1*se připojte k Internetu.
 
 1. Vyberte **OK**.
 
-1. Při přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
+1. Při přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění na certifikát, vyberte **Ano** nebo **Pokračovat**.
 
 1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.
 

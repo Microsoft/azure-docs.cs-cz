@@ -10,10 +10,10 @@ ms.custom:
 - devx-track-js
 - devx-track-azurecli
 ms.openlocfilehash: 41e064d34f9fdb004feb72d7becdb08fe377aec5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91271201"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí rozhraní příkazového řádku Azure
@@ -24,7 +24,7 @@ V tomto rychlém startu použijete Azure CLI k nasazení izolovaného kontejneru
 
 ![Zobrazení aplikace nasazené do Azure Container Instances v prohlížeči][aci-app-browser]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet][azure-account].
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet][azure-account].
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

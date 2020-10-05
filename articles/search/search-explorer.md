@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.openlocfilehash: adcd07ad370ad9f1301caa41c494a33958743dd8
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91398404"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Rychlý Start: použití Průzkumníka pro hledání ke spouštění dotazů na portálu
@@ -21,7 +21,7 @@ ms.locfileid: "91398404"
 
 V tomto rychlém startu se k předvedení Průzkumníka služby Search použije existující index. Žádosti se formulují pomocí [REST API vyhledávání](/rest/api/searchservice/)s odpověďmi vrácenými jako dokumenty JSON.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte mít následující:
 
@@ -41,7 +41,7 @@ Než začnete, musíte mít následující:
 
     Nebo na otevřeném indexu použijte kartu vloženého **Průzkumníka služby Search** :
 
-   :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="Karta Hledat v Průzkumníkovi" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="Příkaz Průzkumníka vyhledávání na portálu" border="false":::
 
 ## <a name="unspecified-query"></a>Neurčený dotaz
 
@@ -55,7 +55,7 @@ Ekvivalentní syntaxe pro prázdné hledání je `*` nebo `search=*` .
 
    **Výsledky**
    
-   :::image type="content" source="media/search-explorer/search-explorer-example-empty.png" alt-text="Příklad nekvalifikovaného nebo prázdného dotazu" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-example-empty.png" alt-text="Příkaz Průzkumníka vyhledávání na portálu" border="false":::
 
 ## <a name="free-text-search"></a>Bezplatné vyhledávání textu
 
@@ -71,7 +71,7 @@ Všimněte si, že když zadáte kritéria hledání, jako jsou například podm
 
    Pomocí kombinace kláves CTRL-F můžete vyhledat konkrétní důležité výrazy v rámci výsledků.
 
-   :::image type="content" source="media/search-explorer/search-explorer-example-freetext.png" alt-text="Příklad dotazů na volný text" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-example-freetext.png" alt-text="Příkaz Průzkumníka vyhledávání na portálu" border="false":::
 
 ## <a name="count-of-matching-documents"></a>Počet vyhovujících dokumentů 
 
@@ -83,7 +83,7 @@ Přidejte **$Count = true** pro získání počtu shod nalezených v indexu. Př
 
    **Výsledky**
 
-   :::image type="content" source="media/search-explorer/search-explorer-example-count.png" alt-text="Počet vyhovujících dokumentů v indexu" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-example-count.png" alt-text="Příkaz Průzkumníka vyhledávání na portálu" border="false":::
 
 ## <a name="limit-fields-in-search-results"></a>Omezit pole ve výsledcích hledání
 
@@ -95,7 +95,7 @@ Přidejte [**$Select**](search-query-odata-select.md) pro omezení výsledků do
 
    **Výsledky**
 
-   :::image type="content" source="media/search-explorer/search-explorer-example-selectfield.png" alt-text="Omezit pole ve výsledcích hledání" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-example-selectfield.png" alt-text="Příkaz Průzkumníka vyhledávání na portálu" border="false":::
 
 ## <a name="return-next-batch-of-results"></a>Vrátit další dávku výsledků
 
@@ -107,7 +107,7 @@ Azure Kognitivní hledání vrátí nejvyšší 50 shody na základě pořadí h
 
    **Výsledky**
 
-   :::image type="content" source="media/search-explorer/search-explorer-example-topskip.png" alt-text="Vrátit další dávku výsledků hledání" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-example-topskip.png" alt-text="Příkaz Průzkumníka vyhledávání na portálu" border="false":::
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>Výrazy filtru (větší než, menší než, rovno)
 
@@ -119,7 +119,7 @@ Použijte parametr [**$Filter**](search-query-odata-filter.md) , pokud chcete za
    
    **Výsledky**
 
-   :::image type="content" source="media/search-explorer/search-explorer-example-filter.png" alt-text="Filtrovat podle kritérií" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-example-filter.png" alt-text="Příkaz Průzkumníka vyhledávání na portálu" border="false":::
 
 ## <a name="order-by-expressions"></a>Výrazy ORDER by
 
@@ -131,7 +131,7 @@ Přidejte [**$OrderBy**](search-query-odata-orderby.md) pro řazení výsledků 
    
    **Výsledky**
 
-   :::image type="content" source="media/search-explorer/search-explorer-example-ordery.png" alt-text="Změna pořadí řazení" border="false":::
+   :::image type="content" source="media/search-explorer/search-explorer-example-ordery.png" alt-text="Příkaz Průzkumníka vyhledávání na portálu" border="false":::
 
 **$Filter** i **$OrderBy** výrazy jsou konstrukce OData. Další informace najdete v tématu věnovaném [syntaxi jazyka OData pro filtry](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
@@ -151,7 +151,7 @@ V tomto rychlém startu jste použili **Průzkumníka služby Search** k dotazov
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

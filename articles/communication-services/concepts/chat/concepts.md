@@ -10,10 +10,10 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: c3b4970b70a9bd5399199771a081481e17e2efb1
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91666989"
 ---
 # <a name="chat-concepts"></a>Koncepce chatu
@@ -47,7 +47,7 @@ K dispozici jsou dvě základní součásti pro konverzaci: 1) klientská aplika
 Služba Communications Services chat sdílí uživatelem generované zprávy i zprávy generované systémem, které se nazývají **aktivity vláken**. Aktivity vlákna jsou generovány při aktualizaci vlákna chatu. Při volání `List Messages` nebo `Get Messages` v konverzačním vlákně bude výsledek obsahovat textové zprávy generované uživatelem a také systémové zprávy v chronologickém pořadí. To vám pomůže určit, kdy se člen přidal nebo odebral nebo když se aktualizovalo téma konverzačního vlákna. Podporované typy zpráv:  
 
  - `Text`: Skutečná zpráva vytvořená a odeslaná uživatelem jako součást konverzace chatu. 
- - `ThreadActivity/AddMember`: Systémová zpráva, která indikuje, že jeden nebo více členů bylo přidáno do konverzačního vlákna. Například:
+ - `ThreadActivity/AddMember`: Systémová zpráva, která indikuje, že jeden nebo více členů bylo přidáno do konverzačního vlákna. Příklad:
 
 ```xml
 
@@ -72,7 +72,7 @@ Služba Communications Services chat sdílí uživatelem generované zprávy i z
 
 ```  
 
-- `ThreadActivity/DeleteMember`: Systémová zpráva, která indikuje, že člen byl odebrán z konverzačního vlákna. Například:
+- `ThreadActivity/DeleteMember`: Systémová zpráva, která indikuje, že člen byl odebrán z konverzačního vlákna. Příklad:
 
 ```xml
 
@@ -92,7 +92,7 @@ Služba Communications Services chat sdílí uživatelem generované zprávy i z
 
 ```
 
-- `ThreadActivity/TopicUpdate`: Systémová zpráva, která indikuje, že téma bylo aktualizováno. Například:
+- `ThreadActivity/TopicUpdate`: Systémová zpráva, která indikuje, že téma bylo aktualizováno. Příklad:
 
 ```xml
 

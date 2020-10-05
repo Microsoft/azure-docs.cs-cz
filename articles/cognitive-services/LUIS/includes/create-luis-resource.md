@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 04/07/2020
 ms.author: aahi
 ms.openlocfilehash: ebfe7e80577b163218a7bc501fa4e3e9b206fd62
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80879192"
 ---
 <a name="create-luis-resources"></a>
@@ -23,11 +23,11 @@ ms.locfileid: "80879192"
 
 1. Zadejte všechna požadovaná nastavení:
 
-    |Název|Účel|
+    |Name|Účel|
     |--|--|
     |Název předplatného| předplatné, které se bude fakturovat za prostředek.|
     |Skupina prostředků| Vlastní název skupiny prostředků, který zvolíte nebo vytvoříte. Skupiny prostředků umožňují seskupit prostředky Azure pro přístup a správu.|
-    |Název| Vlastní název, který zvolíte, se používá jako vlastní subdoména pro dotazy na koncový bod vytváření a předpovědi.|
+    |Name| Vlastní název, který zvolíte, se používá jako vlastní subdoména pro dotazy na koncový bod vytváření a předpovědi.|
     |Umístění pro vytváření obsahu|Oblast přidružená k vašemu modelu|
     |Vytváření cenové úrovně|Cenová úroveň určuje maximální transakci za sekundu a měsíc.|
     |Umístění modulu runtime|Oblast přidružená k publikovanému běhovému koncovému bodu předpovědi|

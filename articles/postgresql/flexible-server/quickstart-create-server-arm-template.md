@@ -8,10 +8,10 @@ ms.custom: subject-armqs
 ms.author: sumuth
 ms.date: 09/22/2020
 ms.openlocfilehash: a52f88f5ca325027cbac53d2c7e927bcf30da994
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90946983"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---flexible-server"></a>Rychlý Start: použití šablony ARM k vytvoření Azure Database for PostgreSQLho flexibilního serveru
@@ -21,11 +21,11 @@ ms.locfileid: "90946983"
 
 Flexibilní Server je spravovaná služba, pomocí které můžete spouštět, spravovat a škálovat vysoce dostupné databáze PostgreSQL v cloudu. Pomocí šablon ARM můžete zřídit PostgreSQL flexibilní Server pro nasazení více serverů nebo více databází na serveru.
 
-Azure Resource Manager je služba nasazování a správy pro Azure. Poskytuje vrstvu pro správu, která umožňuje vytvářet, aktualizovat a odstraňovat prostředky v účtu Azure. Pomocí funkcí správy, jako jsou řízení přístupu, zámky a značky, můžete zabezpečit a organizovat prostředky po nasazení.
+Azure Resource Manager je služba nasazování a správy pro Azure. Poskytuje úroveň správy, která vám umožňuje vytvářet, aktualizovat a odstraňovat prostředky v účtu Azure. Pomocí funkcí správy, jako jsou řízení přístupu, zámky a značky, můžete zabezpečit a organizovat prostředky po nasazení.
 
 Další informace o šablonách Azure Resource Manager najdete v tématu [template Deployment Overview](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 

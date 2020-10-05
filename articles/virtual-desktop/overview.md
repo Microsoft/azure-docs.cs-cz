@@ -7,10 +7,10 @@ ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 03566dccbb453aa06a2b5f86bd02b86d85d61b28
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91322049"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop?
@@ -136,14 +136,14 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 
 |Operační systém|Galerie imagí Azure|Ruční nasazení virtuálního počítače|Integrace šablon Azure Resource Manager|Zřizování fondů hostitelů na Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 Enterprise (více relací), verze 2004|Yes|Yes|Yes|Yes|
-|Windows 10 Enterprise (více relací), verze 1909|Yes|Yes|Yes|Yes|
-|Windows 10 Enterprise (více relací), verze 1903|Yes|Yes|No|No|
-|Windows 10 Enterprise (více relací), verze 1809|Yes|Yes|No|No|
-|Windows 7 Enterprise|Yes|Yes|No|No|
-|Windows Server 2019|Yes|Yes|No|No|
-|Windows Server 2016|Ano|Yes|Yes|Yes|
-|Windows Server 2012 R2|Ano|Yes|No|No|
+|Windows 10 Enterprise (více relací), verze 2004|Ano|Ano|Ano|Ano|
+|Windows 10 Enterprise (více relací), verze 1909|Ano|Ano|Ano|Ano|
+|Windows 10 Enterprise (více relací), verze 1903|Ano|Ano|Ne|Ne|
+|Windows 10 Enterprise (více relací), verze 1809|Ano|Ano|Ne|Ne|
+|Windows 7 Enterprise|Ano|Ano|Ne|Ne|
+|Windows Server 2019|Ano|Ano|Ne|Ne|
+|Windows Server 2016|Ano|Ano|Ano|Ano|
+|Windows Server 2012 R2|Ano|Ano|Ne|No|
 
 ## <a name="next-steps"></a>Další kroky
 

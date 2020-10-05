@@ -13,10 +13,10 @@ ms.date: 08/28/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
 ms.openlocfilehash: bcb3fdbe12a2704e585a9b13484c2528c9cdc559
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90894445"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co je Azure Cognitive Services?
@@ -48,7 +48,7 @@ Aktuální seznam nové dokumentace je k dispozici v části [novinky v Cognitiv
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Služba Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Služba Speech")|Služba Speech přidává do aplikací funkce podporující rozpoznávání řeči.|
+|[Služba řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Služba Speech")|Služba Speech přidává do aplikací funkce podporující rozpoznávání řeči.|
 |[Rozhraní API pro rozpoznávání mluvčího](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Rozhraní API pro rozpoznání mluvčího") (Preview)|Rozhraní API pro rozpoznávání mluvčího poskytuje algoritmy pro identifikaci a ověřování mluvčího.|
 |[Zpracování řeči Bingu](https://docs.microsoft.com/azure/cognitive-services/speech/home "Zpracování řeči Bingu") (vyřazení z provozu)|Rozhraní API pro zpracování řeči Bingu poskytuje snadný způsob, jak ve svých aplikacích vytvářet funkce podporující rozpoznávání řeči.|
 |[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech") (vyřazení z provozu)|Translator Speech je služba strojového překladu.|

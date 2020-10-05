@@ -12,10 +12,10 @@ ms.author: jgao
 ms.reviewer: sstein
 ms.date: 06/24/2020
 ms.openlocfilehash: d53f854bc3513a97398a92ee16c34a0a74650687
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91614049"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>Rychlý Start: vytvoření jedné databáze v Azure SQL Database pomocí šablony ARM

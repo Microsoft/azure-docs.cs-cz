@@ -9,17 +9,17 @@ ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
 ms.openlocfilehash: 375149047d51574e14df15b6385b8c296d49a8ec
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85254697"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Rychlý Start: nastavení Data Science Virtual Machine pro Linux (Ubuntu)
 
 Načtěte si Ubuntu 18,04 Data Science Virtual Machine a spusťte ho.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete vytvořit Data Science Virtual Machine 18,04 Ubuntu, musíte mít předplatné Azure. [Vyzkoušejte si Azure zdarma](https://azure.com/free).
 
@@ -30,7 +30,7 @@ Pokud chcete vytvořit Data Science Virtual Machine 18,04 Ubuntu, musíte mít p
 
 Tady je postup vytvoření instance Data Science Virtual Machine Ubuntu 18,04:
 
-1. Přejít na [Azure Portal](https://portal.azure.com). Může se zobrazit výzva, abyste se přihlásili ke svému účtu Azure, pokud ještě nejste přihlášení.
+1. Přejděte na web [Azure Portal](https://portal.azure.com). Může se zobrazit výzva, abyste se přihlásili ke svému účtu Azure, pokud ještě nejste přihlášení.
 1. Vyhledejte výpis virtuálního počítače zadáním příkazu "virtuální počítač pro datové vědy" a výběrem Data Science Virtual Machine-Ubuntu 18,04.
 
 1. V dalším okně vyberte **vytvořit**.
@@ -85,30 +85,30 @@ Pokud jste virtuální počítač nakonfigurovali pomocí ověřování SSH, mů
 
 ### <a name="x2go"></a>X2Go
 
-Virtuální počítač se systémem Linux je již zřízený serverem X2Go a připraven k přijetí připojení klienta. Pokud se chcete připojit k grafickému počítači se systémem Linux, proveďte na svém klientovi následující postup:
+Virtuální počítač se systémem Linux je již zřízený serverem X2Go a připraven k přijetí připojení klienta. Pokud se chcete připojit k virtuální grafické ploše se systémem Linux, proveďte na svém klientovi následující postup:
 
-1. Stáhněte a nainstalujte klienta X2Go pro vaši klientskou platformu z [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).
+1. Stáhněte a nainstalujte klienta X2Go pro klientskou platformu z [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).
 1. Poznamenejte si veřejnou IP adresu virtuálního počítače, kterou můžete najít v Azure Portal otevřením virtuálního počítače, který jste vytvořili.
 
    ![IP adresa počítače Ubuntu](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
 
 1. Spusťte klienta X2Go. Pokud se okno Nová relace automaticky neotevře, přečtěte si relaci-> novou relaci.
 
-1. V okně výsledná konfigurace zadejte následující parametry konfigurace:
-   * **Karta relace**:
-     * **Hostitel**: zadejte IP adresu vašeho virtuálního počítače, který jste si poznamenali dříve.
-     * **Přihlášení**: zadejte uživatelské jméno na virtuálním počítači se systémem Linux.
-     * **Port SSH**: ponechte ho v 22, výchozí hodnota.
-     * **Typ relace**: Změňte hodnotu na **desktop Xfce**. Virtuální počítač se systémem Linux v současné době podporuje pouze desktop Xfce plochu.
-   * **Karta média**: Pokud je nepotřebujete používat, můžete vypnout zvukovou podporu a tisk klienta.
+1. Ve výsledném okně konfigurace zadejte následující konfigurační parametry:
+   * **Karta Relace**:
+     * **Hostitel**: Zadejte IP adresu vašeho virtuálního počítače, kterou jste si poznamenali dříve.
+     * **Přihlášení**: Zadejte uživatelské jméno na virtuálním počítači se systémem Linux.
+     * **Port SSH**: Ponechte ho na výchozí hodnotě 22.
+     * **Typ relace**: Změňte hodnotu na **XFCE**. Virtuální počítač se systémem Linux v současné době podporuje pouze desktop XFCE.
+   * **Karta Media (Média)**: Pokud nepotřebujete používat zvukovou podporu a tisk klienta, můžete je vypnout.
    * **Sdílené složky**: pomocí této karty Přidejte adresář klientských počítačů, který chcete připojit k virtuálnímu počítači. 
 
    ![Konfigurace X2go](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. Vyberte **OK**.
 1. Kliknutím na pole v pravém podokně okna X2Go otevřete obrazovku pro přihlášení k vašemu VIRTUÁLNÍmu počítači.
-1. Zadejte heslo pro svůj virtuální počítač.
+1. Zadejte heslo k virtuálnímu počítači.
 1. Vyberte **OK**.
-1. Možná budete muset udělit oprávnění X2Go pro obejít připojení brány firewall, aby bylo možné dokončit připojení.
+1. Je možné, že budete muset udělit oprávnění nástroji X2Go, aby se vynechala brána firewall a bylo možné dokončit připojení.
 1. Nyní byste měli vidět grafické rozhraní pro Ubuntu DSVM. 
 
 

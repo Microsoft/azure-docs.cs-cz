@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.date: 06/19/2020
 ms.author: nitinme
 ms.openlocfilehash: e5cf3160e6592a48e3a81480480ad8f01cc6af3a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86206260"
 ---
 # <a name="quickstart-use-curl-and-rest-to-change-model"></a>Rychlý Start: použití kudrlinkou a REST ke změně modelu
@@ -30,7 +30,7 @@ Podle tohoto rychlého startu budete provádět tři volání REST v pořadí.
 
 [Referenční dokumentace](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Bezplatný účet [Luis](https://www.luis.ai) .
 * Textový editor, jako je například [Visual Studio Code](https://code.visualstudio.com/).

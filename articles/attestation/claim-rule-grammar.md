@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 3ed5c3f8232047787c6f05628f1eef35a7533999
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91285414"
 ---
 # <a name="claim-and-claim-rules"></a>Deklarace identity a pravidla deklarace identity
@@ -78,7 +78,7 @@ Níže jsou uvedené operátory, které lze použít ke kontrole podmínek:
 
 | Typy | Podporované operace |
 |--|--|
-| Celé číslo | = = (Equals), \! = (není rovno), <= (menší než nebo rovno), < (menší než), >= (větší než nebo rovno), > (je větší než). |
+| Integer | = = (Equals), \! = (není rovno), <= (menší než nebo rovno), < (menší než), >= (větší než nebo rovno), > (je větší než). |
 | Řetězec | = = (je rovno), \! = (není rovno) |
 | Logická hodnota | = = (je rovno), \! = (není rovno) |
 

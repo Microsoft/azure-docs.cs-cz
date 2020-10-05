@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
 ms.openlocfilehash: 66a3b4919903f739ed5afef0a02b501f00ff248f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88545433"
 ---
 # <a name="use-java-and-jdbc-with-azure-database-for-postgresql"></a>Použití jazyků Java a JDBC s Azure Database for PostgreSQL
@@ -21,7 +21,7 @@ Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a 
 
 JDBC je standardní rozhraní Java API pro připojení k tradičním relačním databázím.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure: Pokud ho nemáte, [Získejte bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 - [Azure Cloud Shell](/azure/cloud-shell/quickstart) nebo [Azure CLI](/cli/azure/install-azure-cli). Doporučujeme, abyste Azure Cloud Shell, že budete automaticky přihlášeni a budete mít přístup ke všem nástrojům, které budete potřebovat.
@@ -487,7 +487,7 @@ Spuštění hlavní třídy by nyní mělo mít následující výstup:
 
 ## <a name="conclusion-and-resources-clean-up"></a>Vyčištění závěrů a prostředků
 
-Gratulujeme! Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat z Azure Database for PostgreSQL.
+Blahopřejeme! Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat z Azure Database for PostgreSQL.
 
 Pokud chcete vyčistit všechny prostředky používané v rámci tohoto rychlého startu, odstraňte skupinu prostředků pomocí následujícího příkazu:
 

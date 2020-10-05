@@ -13,10 +13,10 @@ ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
 ms.openlocfilehash: 5b954c5eae9c203efa65dc9dc1883d8e00f3937a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91630521"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro Univerzální platformu Windows (UPW)
@@ -24,7 +24,7 @@ ms.locfileid: "91630521"
 Tento rychlý Start obsahuje ukázku kódu, která předvádí, jak se aplikace Univerzální platforma Windows (UWP) může přihlašovat uživatelům pomocí osobních účtů nebo pracovních a školních účtů, získat přístupový token a volat rozhraní Microsoft Graph API. (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Požadavky
+> ## <a name="prerequisites"></a>Předpoklady
 >
 > * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
