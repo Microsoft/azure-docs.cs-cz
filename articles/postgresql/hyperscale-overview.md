@@ -9,22 +9,22 @@ ms.subservice: hyperscale-citus
 ms.topic: overview
 ms.date: 09/01/2020
 ms.openlocfilehash: 90d3cb106fa93649f7d6dda5ab5755061d118f66
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91268379"
 ---
 # <a name="what-is-azure-database-for-postgresql---hyperscale-citus"></a>Co je Azure Database for PostgreSQL – Citus (škálování)?
 
 Azure Database for PostgreSQL je služba relačních databází v cloudu Microsoftu vytvořená pro vývojáře. Vychází z komunitní verze open source databázového stroje [PostgreSQL](https://www.postgresql.org/) .
 
-Citus) je možnost nasazení, která vodorovně škáluje dotazy napříč více počítači pomocí horizontálního dělení. Jeho dotazovací modul parallelizes příchozí dotazy SQL napříč těmito servery, aby bylo rychlejší odezvy na velké datové sady. Obsluhuje aplikace, které vyžadují větší rozsah a výkon než jiné možnosti nasazení: všeobecně používané úlohy, které se blíží--100 GB dat.
+Citus) je možnost nasazení, která vodorovně škáluje dotazy napříč více počítači pomocí horizontálního dělení. Její dotazovací modul paralelizuje příchozí dotazy SQL na více serverech, aby byla u velkých datových sad zajištěná rychlejší odezva. Obsluhuje aplikace, které vyžadují větší rozsah a výkon než jiné možnosti nasazení: všeobecně používané úlohy, které se blíží--100 GB dat.
 
 Citus (škálování na úrovni) nabízí:
 
-- Horizontální škálování napříč několika počítači pomocí horizontálního dělení
-- Dotazování paralelního zpracování na těchto serverech pro rychlejší odezvy na velké datové sady
+- Horizontální škálování do více počítačů pomocí shardování
+- Paralelizaci dotazů na více serverech za účelem rychlejší odezvy u velkých datových sad
 - Vynikající podpora pro víceklientské aplikace, provozní analýzy v reálném čase a transakční úlohy s vysokou propustností
 
 Aplikace vytvořené pro PostgreSQL můžou spouštět distribuované dotazy na úrovni Citus (s standardními [knihovnami připojení](./concepts-connection-libraries.md) a minimálními změnami).

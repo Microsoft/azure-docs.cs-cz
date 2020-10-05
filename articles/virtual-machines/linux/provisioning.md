@@ -10,10 +10,10 @@ ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87080144"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Zřizování virtuálních počítačů Azure Linux
@@ -44,7 +44,7 @@ Pokud máte jádro systému Linux, které nemůže podporovat spuštění agenta
 - Vytváření sestav otisků klíčů hostitele SSH pro platformu
 - Správa disků prostředků
 - Formátování a připojení disku prostředků
-- Využívání a zpracování`customData`
+- Využívání a zpracování `customData`
  
 **Sítě**
   
@@ -54,7 +54,7 @@ Pokud máte jádro systému Linux, které nemůže podporovat spuštění agenta
 **jádro**
   
 - Nakonfiguruje virtuální technologii NUMA (zakázat pro jádro <`2.6.37` ).
-- Spotřebovává entropii technologie Hyper-V pro`/dev/random`
+- Spotřebovává entropii technologie Hyper-V pro `/dev/random`
 - Konfiguruje časové limity SCSI pro kořenové zařízení (které by mohlo být vzdálené).
 
 **Diagnostika**
@@ -73,7 +73,7 @@ Agent pro Linux a Cloud-init závisí na některých systémových balíčcích,
 - Python 2.6 +
 - OpenSSL 1.0 +
 - OpenSSH 5.3 +
-- Nástroje systému souborů: `sfdisk` , `fdisk` , `mkfs` ,`parted`
+- Nástroje systému souborů: `sfdisk` , `fdisk` , `mkfs` , `parted`
 - Nástroje pro heslo: chpasswd, sudo
 - Nástroje pro zpracování textu: sed, grep
 - Síťové nástroje: IP-Route

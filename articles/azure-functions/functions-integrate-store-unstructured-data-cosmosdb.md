@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 5bc3895cb219338acde492b871dce806db70622b
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91661155"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Ukládání nestrukturovaných dat pomocí služeb Azure Functions a Azure Cosmos DB
@@ -20,7 +20,7 @@ ms.locfileid: "91661155"
 
 Ve službě Azure Functions poskytují vstupní a výstupní vazby deklarativní způsob připojení k datům externí služby z funkce. V tomto článku se dozvíte, jak aktualizovat stávající funkci a přidat výstupní vazbu, která ukládá nestrukturovaná data v dokumentu Azure Cosmos DB.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -54,7 +54,7 @@ Před vytvořením výstupní vazby potřebujete účet služby Azure Cosmos DB,
     | **Název parametru dokumentu** | taskDocument | Název, který odkazuje na objekt Cosmos DB v kódu. |
     | **Název databáze** | taskDatabase | Název databáze pro uložení dokumentů. |
     | **Název kolekce** | Kolekci taskcollection | Název kolekce databáze. |
-    | **Je-li nastavená hodnota true, vytvoří se databáze a kolekce Cosmos DB** | Yes | Kolekce ještě neexistuje, takže ji vytvořte. |
+    | **Je-li nastavená hodnota true, vytvoří se databáze a kolekce Cosmos DB** | Ano | Kolekce ještě neexistuje, takže ji vytvořte. |
     | **Připojení účtu databáze Cosmos DB** | Nové nastavení | Vyberte **Nový**, pak vyberte **Azure Cosmos DB účet** a **databázový účet** , který jste vytvořili dříve, a pak vyberte **OK**. Vytvoří nastavení aplikace pro připojení k vašemu účtu. Toto nastavení vazba použije k připojení k databázi. |
 
 1. Vyberte **OK** a vytvořte vazbu.

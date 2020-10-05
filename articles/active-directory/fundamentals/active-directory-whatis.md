@@ -12,10 +12,10 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d66e8b15b7af73517a7f838186821248bffeccc
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89566105"
 ---
 # <a name="what-is-azure-active-directory"></a>Co je Azure Active Directory?
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) je cloudová služba pro správu identit a př
 
 Pokud se chcete dozvědět rozdíl mezi Azure AD a Active Directory Domain Services, přečtěte si téma [porovnání služby Active Directory s Azure Active Directory](active-directory-compare-azure-ad-to-ad.md). K lepšímu pochopení základních služeb identit v Azure, Azure AD a Microsoft 365 můžete použít i různé [Microsoft Cloud pro plakáty řady Enterprise Architects](/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide) .
 
-## <a name="who-uses-azure-ad"></a>Kdo používá službu Azure AD?
+## <a name="who-uses-azure-ad"></a>Kdo používá Azure AD?
 
 Služba Azure AD je určena pro:
 
@@ -36,7 +36,7 @@ Služba Azure AD je určena pro:
 
 - **Vývojáři aplikací** Jako vývojář aplikace můžete použít Azure AD jako přístup založený na standardech pro přidání jednotného přihlašování (SSO) do vaší aplikace a tím umožníte, aby fungoval s předem existujícími přihlašovacími údaji uživatele. Azure AD taky poskytuje rozhraní API, která vám pomůžou sestavovat přizpůsobená prostředí aplikací pomocí stávajících dat organizace. Pokud chcete začít, zaregistrujte si [bezplatnou 30denní zkušební verzi Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/). Další informace najdete také v tématu [Azure Active Directory pro vývojáře](../develop/index.yml).
 
-- **Microsoft 365, předplatitelé Office 365, Azure nebo Dynamics CRM Online.** Jako předplatitel už službu Azure AD používáte. Každý Microsoft 365, tenant Office 365, Azure a Dynamics CRM Online, je automaticky tenant služby Azure AD. Můžete hned začít spravovat přístup k vašim integrovaným cloudovým aplikacím.
+- **Microsoft 365, předplatitelé Office 365, Azure nebo Dynamics CRM Online.** Jako předplatitel už službu Azure AD používáte. Každý klient Microsoft 365, Office 365, Azure nebo Dynamics CRM Online je automaticky klientem Azure AD. Můžete hned začít spravovat přístup k vašim integrovaným cloudovým aplikacím.
 
 ## <a name="what-are-the-azure-ad-licenses"></a>Jaké jsou licence Azure AD?
 

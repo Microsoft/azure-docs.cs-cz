@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
-ms.openlocfilehash: ebc0ee2e029e1f349972e3cd7fada46495534d54
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a161bc14e8f7628e04673700ca6d90ebc3e8f648
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252387"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729164"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Kurz: Přidání vlastní domény do služby Front Door
 V tomto kurzu se dozvíte, jak do služby Front Door přidat vlastní doménu. Pokud používáte přední dveře Azure pro doručování aplikací, je potřeba vlastní doména, pokud chcete, aby se váš vlastní název domény zobrazoval v žádosti koncového uživatele. Srozumitelný název domény může být praktický pro vaše zákazníky a užitečný při budování značky.
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Přední dvířka **nepodporují vlastní** domény s [Punycode](https://en.wikipedia.org/wiki/Punycode) znaky. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Před dokončením kroků v tomto kurzu musíte nejprve vytvořit službu Front Door. Další informace najdete v tématu [Rychlý start: Vytvoření služby Front Door](quickstart-create-front-door.md).
 
@@ -209,4 +209,4 @@ V tomto kurzu jste se naučili:
 Pokud chcete zjistit, jak povolit protokol HTTPS pro vlastní doménu, přejděte k dalšímu kurzu.
 
 > [!div class="nextstepaction"]
-> [Povolení HTTPS pro vlastní doménu](front-door-custom-domain.md)
+> [Povolení HTTPS pro vlastní doménu](front-door-custom-domain-https.md)

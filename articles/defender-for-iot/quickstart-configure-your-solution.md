@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
 ms.openlocfilehash: 3ecb2e2022cab80abf6a8692ac8cc3ba54eff1e4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947304"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>Rychlý Start: konfigurace řešení Azure Defender pro IoT
@@ -47,7 +47,7 @@ Pokud chcete přidat nový prostředek do řešení IoT, udělejte toto:
 1. Vyberte **Upravit** a vyberte monitorované prostředky, které patří do vašeho řešení IoT.
 1. Klikněte na **Přidat**.
 
-Gratulujeme! Přidali jste do řešení IoT novou skupinu prostředků.
+Blahopřejeme! Přidali jste do řešení IoT novou skupinu prostředků.
 
 Defender pro IoT teď monitoruje nově přidávané skupiny prostředků a v rámci vašeho řešení IoT surfuje relevantní doporučení a výstrahy zabezpečení.
 

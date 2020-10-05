@@ -8,10 +8,10 @@ ms.date: 03/04/2019
 ms.author: antchu
 ms.custom: include file
 ms.openlocfilehash: 2af9c1dfd13d3aeafa7cf1ac76537117ecc15aff
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84317642"
 ---
 ## <a name="run-the-web-application"></a>Spuštění webové aplikace
@@ -19,7 +19,7 @@ ms.locfileid: "84317642"
 1. Chcete-li zjednodušit testování klientů, otevřete prohlížeč v naší ukázkové webové aplikaci s jednou stránkou [https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/](https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/) . 
 
     > [!NOTE]
-    > Zdroj souboru HTML je umístěný na [/docs/demo/chat-v2/index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/master/docs/demo/chat-v2/index.html). A pokud chcete kód HTML hostovat sami, spusťte prosím v adresáři */docs/demo/chat-v2* místní server http, například [http-Server](https://www.npmjs.com/package/http-server) . Zajistěte, aby byl počátek přidán do `CORS` nastavení v souboru *Local. Settings. JSON* , který je podobný ukázce.
+    > Zdroj souboru HTML je umístěný na adrese [/docs/demo/chat-v2/index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/master/docs/demo/chat-v2/index.html). A pokud chcete kód HTML hostovat sami, spusťte prosím v adresáři */docs/demo/chat-v2* místní server http, například [http-Server](https://www.npmjs.com/package/http-server) . Zajistěte, aby byl počátek přidán do `CORS` nastavení v *local.settings.js* podobný ukázce.
     > 
     > ```javascript
     > "Host": {

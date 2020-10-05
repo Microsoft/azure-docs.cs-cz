@@ -16,17 +16,17 @@ ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: af90166b688dee104e7bda18a88a2fe7c98f657b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82996261"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Rychlý start: Vytvoření profilu a koncového bodu Azure CDN
 
 V tomto rychlém startu povolíte službu Azure Content Delivery Network (CDN) vytvořením nového profilu CDN, který je kolekcí jednoho nebo více koncových bodů CDN. Po vytvoření profilu a koncového bodu můžete začít doručovat obsah svým zákazníkům.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Účet Azure Storage s názvem *cdnstorageacct123*, který použijete pro zdroj hostitele. Pokud chcete tento požadavek dokončit, přečtěte si téma [integrace účtu Azure Storage s Azure CDN](cdn-create-a-storage-account-with-cdn.md).
@@ -53,7 +53,7 @@ Po vytvoření profilu CDN ho použijete k vytvoření koncového bodu.
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | **Název** | Jako název hostitele koncového bodu zadejte *CDN-Endpoint-123* . Tento název musí být globálně jedinečný v rámci Azure. Pokud se už používá, zadejte jiný název. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně _ &lt;koncového bodu&gt;-Name_. azureedge.NET.|
+    | **Název** | Jako název hostitele koncového bodu zadejte *CDN-Endpoint-123* . Tento název musí být globálně jedinečný v rámci Azure. Pokud se už používá, zadejte jiný název. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně _ &lt; koncového bodu &gt; -Name_. azureedge.NET.|
     | **Typ zdroje** | Vyberte **úložiště**. | 
     | **Název počátečního hostitele** | V rozevíracím seznamu vyberte název hostitele účtu Azure Storage, který používáte, například *cdnstorageacct123.blob.Core.Windows.NET*. |
     | **Cesta ke zdroji** | Ponechte prázdné. |

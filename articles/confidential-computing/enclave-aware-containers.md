@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
 ms.openlocfilehash: b388b8efb7d993baa243975dbf499576246f3185
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91000945"
 ---
 # <a name="enclave-aware-containers"></a>Kontejnery s podporou enklávy
@@ -43,7 +43,7 @@ Důvěrné konsorcium (CCF) je open-source platforma pro vytváření nové kate
 
 Začněte s důvěrnými výpočetními výpočty Azure a CCF [tady](https://github.com/Microsoft/CCF)
 
-### <a name="confidential-inferencing-onnx-runtime"></a>ONNX runtime důvěrného Inferencing
+### <a name="confidential-inferencing-onnx-runtime"></a>Důvěrný odvozovací modul runtime ONNX
 
 Open source modul ONNX runtime založený na enklávy vytvoří zabezpečený kanál mezi klientem a odvozenou službou – zajišťuje, že ani požadavek ani odpověď nemohou opustit zabezpečený enklávy. 
 

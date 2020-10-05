@@ -9,10 +9,10 @@ ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86276106"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Které oblasti jsou k dispozici?
@@ -43,7 +43,7 @@ Protokol RDP i SSH jsou protokolem založeným na využití. Vysoké využití r
 
 ### <a name="what-features-are-supported-in-an-rdp-session"></a><a name="rdpfeaturesupport"></a>Jaké funkce jsou podporovány v relaci RDP?
 
-V tuto chvíli se podporuje jenom textové kopírování a vkládání. Funkce, jako je kopírování souborů, se nepodporují. Můžete si prosím zdarma sdílet svůj názor na nové funkce na [stránce s názory na Azure bastionu](https://feedback.azure.com/forums/217313-networking?category_id=367303).
+V současné době se podporuje pouze kopírování a vkládání textu. Funkce, jako je kopírování souborů, se nepodporují. O své názory na nové funkce se můžete podělit na [stránce pro názory na službu Azure Bastion](https://feedback.azure.com/forums/217313-networking?category_id=367303).
 
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Které prohlížeče se podporují?
 

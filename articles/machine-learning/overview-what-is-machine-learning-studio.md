@@ -9,10 +9,10 @@ author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
 ms.openlocfilehash: 7b0db0f97531c60b3e809dd0dafa042dbcc2b542
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91667431"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
@@ -80,7 +80,7 @@ Pro nejnovější škálu nástrojů pro datové vědy doporučujeme, aby si pro
 
 Následující tabulka shrnuje hlavní rozdíly mezi ML Studio (Classic) a Azure Machine Learning.
 
-| Příznak | ML Studio (klasický) | Azure Machine Learning |
+| Funkce | ML Studio (klasický) | Azure Machine Learning |
 |---| --- | --- |
 | Rozhraní přetažení | Klasické prostředí | Aktualizované prostředí – [návrhář Azure Machine Learning](concept-designer.md)| 
 | Sady SDK kódu | Nepodporované | Plně integrovaná s [Azure Machine Learning Python](https://docs.microsoft.com/python/api/overview/azure/ml/) a [R](tutorial-1st-r-experiment.md) SDK |

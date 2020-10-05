@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
 ms.openlocfilehash: f3fd214fa62d95430bd8ca62e78fd3df30c77d19
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91652444"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Rychlý Start: převod modelu pro vykreslování
@@ -24,7 +24,7 @@ Dozvíte se, jak provést tyto akce:
 > * Nahrání a převod 3D model pro použití s Azure Remote rendering
 > * Zahrnout převedený 3D model v aplikaci pro vykreslování
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 * Kompletní [rychlé zprovoznění: vykreslení modelu pomocí Unity](render-model.md)
 * Nainstalovat Azure PowerShell [(dokumentace)](https://docs.microsoft.com/powershell/azure/)

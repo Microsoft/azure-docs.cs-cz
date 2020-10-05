@@ -14,19 +14,19 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b8a40449d7a2b17adddd55120ab232a5cd3f459
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 5a4d50bcf2493c67880fd5a27b326705b1923feb
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600941"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728977"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Přesunutí ověřování aplikace z Active Directory Federation Services (AD FS) na Azure Active Directory
 
 [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) nabízí univerzální platformu pro identitu, která poskytuje vašim lidem, partnerům a zákazníkům jedinou identitu pro přístup k aplikacím a spolupráci z libovolné platformy a zařízení. Azure AD má [plnou sadu funkcí pro správu identit](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis). Standardizace ověřování aplikací (App) a autorizace do Azure AD umožní výhodám, které tyto funkce poskytují. 
 
-> [!NOTE]
-> Tento článek se zaměřuje na přesun ověřování aplikace z místní služby Active Directory a Active Directory Federation Services (AD FS) do Azure AD. Přehled plánování tohoto přesunu najdete v dokumentu White Paper [migrace ověřování aplikace do služby Azure AD](https://aka.ms/migrateapps/whitepaper) . Dokument white paper popisuje, jak naplánovat migraci, testování a přehledy.
+> [!TIP]
+> Tento článek je napsán pro vývojáře vývojářů. Vedoucí projektu a správci, kteří plánují přesun aplikace do služby Azure AD, by si měli zvážit, jak si přečtěte naše [migrace aplikace ověřování do Azure AD](https://aka.ms/migrateapps/whitepaper) White Paper (PDF).
 
 ## <a name="introduction"></a>Úvod
 

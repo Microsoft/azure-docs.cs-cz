@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/19/2020
 ms.openlocfilehash: e5801f46745b3fda28af19c11e323b9497ebe98a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88185243"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Rychlý Start: vytvoření serveru Azure Database for MariaDB pomocí Azure Portal
@@ -196,7 +196,7 @@ Připojení k serveru pomocí aplikace MySQL Workbench:
     |Nastavení |Navrhovaná hodnota|Popis pole|
     |---|---|---|
      Název připojení | **Ukázkové připojení** | Popisek pro toto připojení. |
-    Způsob připojení | **Standard (TCP/IP)** | Standard (TCP/IP) je dostačující. |
+    Způsob připojení | **Standardní (TCP/IP)** | Standard (TCP/IP) je dostačující. |
     Název hostitele | *název serveru* | Hodnota názvu serveru, kterou jste použili při vytváření serveru Azure Database for MariaDB. Server v našem příkladu je **mydemoserver.mariadb.database.azure.com**. Použijte plně kvalifikovaný název domény (** \* . MariaDB.Database.Azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení tím, že dokončíte dřívější kroky v tomto článku.|
      Port | 3306 | Port, který se má použít při připojování k serveru Azure Database for MariaDB. |
     Uživatelské jméno |  *přihlašovací jméno správce serveru* | Přihlašovací údaje správce serveru, které jste použili při vytváření serveru Azure Database for MariaDB. Naše ukázkové uživatelské jméno je **myadmin \@ mydemoserver**. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení tím, že dokončíte dřívější kroky v tomto článku. Formát je *UserName \@ servername*.

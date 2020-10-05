@@ -14,10 +14,10 @@ keywords: dolování textu, analýza míněníí, analýza textu
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
 ms.openlocfilehash: 0fbd8b92846f6436128f64680a1fa9b77763a2c8
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91710776"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Rychlý Start: použití klientské knihovny Analýza textu
@@ -86,7 +86,7 @@ Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovac�
 | Jazyk | Dostupná verze | 
 |----------|------------------------|
 | Ruby     | [Verze 2,1](ruby-sdk.md) | 
-| Go       | [Verze 2,1](go-sdk.md) | 
+| Přejít       | [Verze 2,1](go-sdk.md) | 
 
 ::: zone-end
 

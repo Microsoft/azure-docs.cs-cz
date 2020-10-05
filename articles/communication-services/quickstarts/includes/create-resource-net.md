@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
 ms.openlocfilehash: 258908ed1118b0463e8c824cd8c699fb460dfff2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947009"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/dotnet/).
 - Nejnovější verze [klientské knihovny .NET Core](https://dotnet.microsoft.com/download/dotnet-core) pro váš operační systém.
@@ -127,7 +127,7 @@ Pokud potřebujete vytvořit skupinu prostředků, můžete to udělat pomocí [
 
 Naši instanci klienta klientské knihovny pro správu komunikačních služeb ( ``Azure.ResourceManager.Communication.CommunicationManagementClient`` ) je možné použít k provádění operací s prostředky komunikačních služeb.
 
-#### <a name="create-a-communication-services-resource"></a>Vytvořit prostředek komunikačních služeb
+#### <a name="create-a-communication-services-resource"></a>Vytvoření prostředku Communication Services
 
 Při vytváření prostředku komunikačních služeb zadáte název skupiny prostředků a název prostředku. Všimněte si, že `Location` vlastnost bude vždycky `global` a během veřejné verze Preview `DataLocation` musí být hodnota `UnitedStates` .
 

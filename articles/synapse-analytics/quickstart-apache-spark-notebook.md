@@ -10,10 +10,10 @@ ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
 ms.openlocfilehash: cf899962f6e62b0943f48494bf5c3fe27a6327a9
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91651713"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Rychlý Start: Vytvoření fondu Apache Spark ve službě Azure synapse Analytics pomocí nástrojů pro web
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit fond Apache Spark (ve verzi P
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Pracovní prostor analýzy synapse](quickstart-create-workspace.md)
@@ -119,7 +119,7 @@ Jazyk SQL (Structured Query Language) (SQL) je nejběžnějším a široce použ
 6. V poli sloupce osy X vyberte "State" (stav).
 7. V poli sloupce osy Y vyberte "mzda".
 8. V poli **agregace** vyberte "AVG".
-9. Vyberte **Použít**.
+9. Vyberte **Apply** (Použít).
 
    ![Výstup grafu ve službě Azure synapse Spark](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Výstup grafu ve službě Azure synapse Spark")
 

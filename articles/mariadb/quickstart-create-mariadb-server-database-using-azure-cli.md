@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 7fe68e7b1a56c22e8c0d9638408982518105888e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88185141"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Rychlý Start: vytvoření serveru Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure
@@ -60,7 +60,7 @@ admin-user | **myadmin** | Uživatelské jméno pro přihlášení správce. Par
 admin-password | *Vaše heslo* | Heslo uživatele, který je správcem. Vaše heslo musí mít 8 až 128 znaků. Musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.
 
 Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
-+ `--sku-name B_Gen5_1`mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
++ `--sku-name B_Gen5_1` mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
 + `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 + `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se dvěma virtuálními jádry.
 
@@ -213,7 +213,7 @@ Připojení k serveru pomocí nástroje pro příkazový řádek mysql:
    | Nastavení | Navrhovaná hodnota | Popis |
    |---|---|---|
    | Název připojení | **Ukázkové připojení** | Zadejte popisek tohoto připojení (název připojení může být libovolný). |
-   | Způsob připojení | **Standard (TCP/IP)** | Pro připojení k Azure Database for MariaDB použijte protokol TCP/IP. |
+   | Způsob připojení | **Standardní (TCP/IP)** | Pro připojení k Azure Database for MariaDB použijte protokol TCP/IP. |
    | Název hostitele | **mydemoserver.mariadb.database.azure.com** | Název serveru, který jste si poznamenali dříve. |
    | Port | **3306** | Výchozí port pro Azure Database for MariaDB. |
    | Uživatelské jméno | **myadmin \@ mydemoserver** | Přihlašovací jméno správce serveru, které jste si poznamenali dříve. |

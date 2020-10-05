@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 691cdcb525f8e9e3d1fb914372b9f62366f4bfba
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85213019"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-workload-classifier-using-the-azure-portal"></a>Rychlý Start: vytvoření klasifikátoru úloh synapse fondu SQL pomocí Azure Portal
@@ -23,17 +23,17 @@ ms.locfileid: "85213019"
 V tomto rychlém startu vytvoříte [klasifikátor úloh](sql-data-warehouse-workload-classification.md) pro přiřazení dotazů ke skupině úloh.  Klasifikátor přiřadí požadavky od `ELTLogin` uživatele SQL do `DataLoads` skupiny úloh.   Postupujte podle kurzu [rychlý Start: Konfigurace izolace úloh](quickstart-configure-workload-isolation-portal.md) a vytvořte `DataLoads` skupinu úloh.  V tomto kurzu se vytvoří klasifikátor úloh s možností WLM_LABEL, aby bylo možné lépe klasifikovat požadavky správně.  Třídění bude také přiřazovat `HIGH` [význam úloh](sql-data-warehouse-workload-importance.md) i pro tyto požadavky.
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 > [!NOTE]
 > Vytvoření instance fondu SQL ve službě Azure synapse Analytics může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto rychlém startu se předpokládá, že již máte instanci fondu SQL v synapse SQL a máte kontrolu nad oprávněními databáze. Pokud ho potřebujete vytvořit, postupujte podle pokynů v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) a vytvořte datový sklad s názvem **mySampleDataWarehouse**.
 <br><br>
@@ -91,19 +91,19 @@ Klasifikace umožňuje směrovat požadavky na základě sady pravidel na skupin
 8.  Zadejte `ELTLogin` pro **člena**.
 9.  Vyberte možnost `High` pro **důležitost požadavku**.  *Volitelné*, Normální důležitost je výchozí.
 10. Zadejte `fact_loads` pro **popisek**.
-11. Klikněte na tlačítko **Add** (Přidat).
+11. Klikněte na **Přidat**.
 12. Klikněte na **Uložit**.
 
     ![Klikněte na konfigurace.](./media/quickstart-create-a-workload-classifier-portal/config-wc.png)
 
 ## <a name="verify-and-test-classification"></a>Ověřit a otestovat klasifikaci
-Zkontrolujte zobrazení katalogu [Sys. workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?view=azure-sqldw-latest) a ověřte existenci `ELTLoginDataLoads` třídění.
+Zkontrolujte zobrazení katalogu [Sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?view=azure-sqldw-latest) a ověřte existenci `ELTLoginDataLoads` třídění.
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers WHERE name = 'ELTLoginDataLoads'
 ```
 
-Zkontrolujte zobrazení katalogu [Sys. workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest) a ověřte podrobnosti třídění.
+Zkontrolujte zobrazení katalogu [Sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest) a ověřte podrobnosti třídění.
 
 ```sql
 SELECT c.[name], c.group_name, c.importance, cd.classifier_type, cd.classifier_value

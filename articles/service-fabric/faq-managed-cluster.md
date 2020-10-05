@@ -6,12 +6,12 @@ ms.author: pepogors
 author: peterpogorski
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 73815e793357dd38244dd429f9056c4c6a0bfff1
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 77d7b3fba62fb9f059df97c4f7fae99db783f3f0
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91410307"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728994"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Nejčastější dotazy k Service Fabric spravovaných clusterů
 
@@ -41,7 +41,7 @@ Smlouva SLA se nezměnila z modelu prostředků aktuální Service Fabric.
 
 ### <a name="what-is-the-difference-between-a-basic-and-standard-sku-cluster"></a>Jaký je rozdíl mezi základním a standardním clusterem SKU?
 
-Základní cluster SKU znamená, že většina konfigurací poskytuje Service Fabric poskytovatel prostředků. Clustery základních SKU jsou určeny k použití pro testování a předprodukční prostředí. Standardní cluster SKU umožňuje uživatelům nakonfigurovat cluster tak, aby splňoval požadavky přímo. Další informace najdete v tématu [Service Fabric spravovaných SKU clusteru](overview-managed-cluster.md#service-fabric-managed-cluster skus.md) pro další podrobnosti.
+Základní cluster SKU znamená, že většina konfigurací poskytuje Service Fabric poskytovatel prostředků. Clustery základních SKU jsou určeny k použití pro testování a předprodukční prostředí. Standardní cluster SKU umožňuje uživatelům nakonfigurovat cluster tak, aby splňoval požadavky přímo. Další informace najdete v tématu [Service Fabric spravovaných SKU clusteru](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) pro další podrobnosti.
 
 ## <a name="cluster-deployment-and-management"></a>Nasazení a Správa clusteru
 

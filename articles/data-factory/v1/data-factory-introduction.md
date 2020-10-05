@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
 ms.openlocfilehash: 06f308b4e0b2df0487a351ae38f16f3872961cfb
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89436252"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Úvod do služby Azure Data Factory 
@@ -71,14 +71,14 @@ Například můžete shromažďovat data v Azure Data Lake Store a později je t
 ### <a name="transform-and-enrich"></a>Transformace a rozšíření
 Jakmile budou data v centralizovaném úložišti dat v cloudu, můžete je zpracovat nebo transformovat pomocí výpočetních služeb, jako je HDInsight Hadoop, Spark, Data Lake Analytics nebo Machine Learning. Budete chtít spolehlivě produkovat transformovaná data podle udržitelného a řízeného plánu, abyste mohli do produkčních prostředí dodávat důvěryhodná data. 
 
-### <a name="publish"></a>Publikování 
+### <a name="publish"></a>Publikovat 
 Přenášejte transformovaná data z cloudu do místních zdrojů, jako je SQL Server. Případně je můžete uchovávat ve zdrojích cloudového úložiště, aby je mohly využívat nástroje BI, analytické nástroje a další aplikace.
 
 ## <a name="key-components"></a>Klíčové komponenty
 Předplatné Azure může obsahovat jednu nebo více instancí služby Azure Data Factory (neboli datových továren). Azure Data Factory se skládá ze čtyř klíčových součástí. Tyto součásti společně poskytují platformu, na které můžete vytvářet pracovní postupy řízené daty s kroky pro přesun a transformaci dat. 
 
 ### <a name="pipeline"></a>Kanál
-Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je skupina aktivit. Aktivity v kanálu společně provádí úlohy. 
+Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je skupina aktivit. Aktivity v kanálu společně provádějí úlohu. 
 
 Kanál může například obsahovat skupinu aktivit, které ingestují data z objektu blob Azure a pak na clusteru HDInsight spustí dotaz Hivu pro rozdělení dat. Výhodou tohoto přístupu je, že vám kanál umožňuje spravovat aktivity jako sadu, a ne každou jednotlivě. Například můžete nasadit a naplánovat kanál namísto plánování jednotlivých aktivit. 
 

@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 8757399329f3a9bd9f4d7b914b12b2a0f7e85603
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91448292"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Seznámení s Azure Defenderem pro servery
@@ -29,32 +29,32 @@ Mezi možnosti detekce a ochrany před hrozbami, které poskytuje Azure Defender
 
 - **Posouzení ohrožení zabezpečení pro virtuální počítače** – skener ohrožení zabezpečení, který je součástí Azure Security Center, používá Qualys. 
 
-    Qualys je jedním z špičkových nástrojů pro identifikaci ohrožení zabezpečení v reálném čase v Azure Virtual Machines. Nepotřebujete licenci Qualys ani účet Qualys – všechno se bez problémů zpracovává v Security Center. [Přečtěte si další informace](deploy-vulnerability-assessment-vm.md).
+    Qualys je jedním z špičkových nástrojů pro identifikaci ohrožení zabezpečení v reálném čase v Azure Virtual Machines. Nepotřebujete licenci Qualys ani účet Qualys – všechno se bez problémů zpracovává v Security Center. [Další informace](deploy-vulnerability-assessment-vm.md).
 
 - **Přístup k virtuálnímu počítači JIT (just-in-time)**  – aktéri hrozeb aktivně prostupují přístupné počítače s otevřenými porty pro správu, jako je RDP nebo SSH. Všechny vaše virtuální počítače jsou potenciálními cíli pro útok. Když je virtuální počítač úspěšně napadený, používá se jako vstupní bod k útoku dalších prostředků ve vašem prostředí.
 
-    Když povolíte Azure Defender pro servery, můžete použít přístup k virtuálnímu počítači za běhu k uzamknutí příchozího provozu do virtuálních počítačů. tím se sníží riziko útoků na útoky a v případě potřeby získáte snadný přístup k virtuálním počítačům. [Přečtěte si další informace](just-in-time-explained.md).
+    Když povolíte Azure Defender pro servery, můžete použít přístup k virtuálnímu počítači za běhu k uzamknutí příchozího provozu do virtuálních počítačů. tím se sníží riziko útoků na útoky a v případě potřeby získáte snadný přístup k virtuálním počítačům. [Další informace](just-in-time-explained.md).
 
 - **Monitorování integrity souborů (FIM)** – monitoring integrity souborů (FIM), označovaný také jako sledování změn, prověřuje soubory a Registry operačního systému, aplikačního softwaru a dalších pro změny, které by mohly naznačovat útok. Metoda porovnání se používá k určení, zda je aktuální stav souboru odlišný od poslední kontroly souboru. Toto porovnání můžete využít k určení, zda byly provedeny platné nebo podezřelé úpravy souborů.
 
-    Když povolíte Azure Defender pro servery, můžete k ověření integrity souborů Windows, registrů Windows a souborů Linux použít službu FIM. [Přečtěte si další informace](security-center-file-integrity-monitoring.md).
+    Když povolíte Azure Defender pro servery, můžete k ověření integrity souborů Windows, registrů Windows a souborů Linux použít službu FIM. [Další informace](security-center-file-integrity-monitoring.md).
 
 - **Adaptivní řízení aplikací (AAC)** – Adaptivní řízení aplikací představují inteligentní a automatizované řešení pro definování seznamů povolených aplikací, které jsou pro vaše počítače bezpečné.
 
-    Pokud jste povolili a nakonfigurovali Adaptivní řízení aplikací, obdržíte výstrahy zabezpečení, pokud nějaká aplikace běží jinak než ty, které jste definovali jako bezpečné. [Přečtěte si další informace](security-center-adaptive-application.md).
+    Pokud jste povolili a nakonfigurovali Adaptivní řízení aplikací, obdržíte výstrahy zabezpečení, pokud nějaká aplikace běží jinak než ty, které jste definovali jako bezpečné. [Další informace](security-center-adaptive-application.md).
 
 - **Adaptivní posílení zabezpečení sítě (Anh)** – použití skupin zabezpečení sítě (NSG) k filtrování provozu do a z prostředků, vylepšuje zabezpečení vaší sítě stav. Přesto však může být v některých případech, kdy je skutečný přenos toků přes NSG podmnožinou definovaných pravidel NSG. V těchto případech je možné zvýšit stav zabezpečení tím, že posílíte pravidla NSG, a to na základě skutečných schémat přenosů.
 
-    Adaptivní posílení zabezpečení sítě poskytuje doporučení k dalšímu posílení pravidel NSG. Používá algoritmus strojového učení, který má vliv na skutečný provoz, známou důvěryhodnou konfiguraci, analýzu hrozeb a další indikátory ohrožení a pak poskytuje doporučení k tomu, aby se provozoval jenom z konkrétních řazených kolekcí IP/portů. [Přečtěte si další informace](security-center-adaptive-network-hardening.md).
+    Adaptivní posílení zabezpečení sítě poskytuje doporučení k dalšímu posílení pravidel NSG. Používá algoritmus strojového učení, který má vliv na skutečný provoz, známou důvěryhodnou konfiguraci, analýzu hrozeb a další indikátory ohrožení a pak poskytuje doporučení k tomu, aby se provozoval jenom z konkrétních řazených kolekcí IP/portů. [Další informace](security-center-adaptive-network-hardening.md).
 
-- **Integrace s pokročilou ochranou před internetovými útoky v programu Microsoft Defender (jenom Windows)** – Azure Defender se integruje s pokročilou ochranou před internetovými útoky v programu Microsoft Defender. Společně poskytují komplexní možnosti detekce a odezvy koncových bodů (EDR). [Přečtěte si další informace](security-center-wdatp.md).
+- **Integrace s pokročilou ochranou před internetovými útoky v programu Microsoft Defender (jenom Windows)** – Azure Defender se integruje s pokročilou ochranou před internetovými útoky v programu Microsoft Defender. Společně poskytují komplexní možnosti detekce a odezvy koncových bodů (EDR). [Další informace](security-center-wdatp.md).
 
     > [!IMPORTANT]
     > Senzor ATP v programu Microsoft Defender je automaticky povolen na serverech se systémem Windows, které používají Security Center.
 
     Když ATP v programu Microsoft Defender zjistí hrozbu, aktivuje výstrahu. Výstraha je zobrazena v Security Center. Z Security Center můžete také překlopit konzolu ATP v programu Microsoft Defender a provést podrobné šetření, které odhalí rozsah útoku. Další informace o ochraně ATP v programu Microsoft Defender najdete v tématu připojení [serverů ke službě Microsoft Defender ATP](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
-- **Posílení zabezpečení hostitele Docker** – Azure Security Center identifikuje nespravované kontejnery hostované na virtuálních počítačích s IaaS Linux nebo jiné počítače se systémem Linux s kontejnery Docker. Security Center nepřetržitě vyhodnocuje konfiguraci těchto kontejnerů. Pak je porovná s centrem testování v Docker pro Internet Security (CIS). Security Center zahrnuje celou RuleSet srovnávacího testu služby CI Docker a upozorní vás, pokud vaše kontejnery nevyhovují žádnému z ovládacích prvků. [Přečtěte si další informace](harden-docker-hosts.md).
+- **Posílení zabezpečení hostitele Docker** – Azure Security Center identifikuje nespravované kontejnery hostované na virtuálních počítačích s IaaS Linux nebo jiné počítače se systémem Linux s kontejnery Docker. Security Center nepřetržitě vyhodnocuje konfiguraci těchto kontejnerů. Pak je porovná s centrem testování v Docker pro Internet Security (CIS). Security Center zahrnuje celou RuleSet srovnávacího testu služby CI Docker a upozorní vás, pokud vaše kontejnery nevyhovují žádnému z ovládacích prvků. [Další informace](harden-docker-hosts.md).
 
 - **Detekce útoků typu soubor (jenom Windows)** – útoky pomocí souborů nemůžou do paměti vložit škodlivá data, aby se zabránilo detekci pomocí technik skenování na disku. Datová část útočníka pak přetrvává v paměti napadených procesů a provádí široké spektrum škodlivých aktivit.
 

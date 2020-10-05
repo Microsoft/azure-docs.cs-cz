@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
 ms.openlocfilehash: 2b8268a47a141bb7254571a762bb9603e1a31b04
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86135224"
 ---
 # <a name="about-site-recovery"></a>O službě Azure Site Recovery
@@ -47,7 +47,7 @@ Site Recovery může spravovat replikaci pro:
 
 ## <a name="what-can-i-replicate"></a>Co mohu replikovat?
 
-**Doložen** | **Podrobnosti**
+**Podporováno** | **Podrobnosti**
 --- | ---
 **Scénáře replikace** | Replikace virtuálních počítačů Azure z jedné oblasti Azure do jiné<br/><br/>  Replikace místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V, fyzických serverů (Windows a Linux) Azure Stack virtuálních počítačů do Azure.<br/><br/> Replikace instancí Windows AWS do Azure<br/><br/> Replikace místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V, které spravuje System Center VMM, a fyzických serverů do sekundární lokality
 **Oblasti** | Prohlédněte si [podporované oblasti](https://azure.microsoft.com/regions/services/) pro Site Recovery. |

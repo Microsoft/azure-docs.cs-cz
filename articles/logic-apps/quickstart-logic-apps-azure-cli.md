@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/30/2020
 ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87499547"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Rychlý Start: vytváření a Správa aplikací logiky pomocí Azure CLI
@@ -21,11 +21,11 @@ V tomto rychlém startu se dozvíte, jak vytvářet a spravovat Logic Apps pomoc
 > [!WARNING]
 > Rozšíření Azure CLI Logic Apps v současné době *experimentální* a nezabývá se *zákaznickou podporou*. Toto rozšíření CLI používejte opatrně, zejména pokud se rozhodnete použít rozšíření v produkčním prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) nainstalované na místním počítači.
-* V počítači je nainstalovaná [Logic Apps rozšíření Azure CLI](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) . Chcete-li nainstalovat toto rozšíření, použijte tento příkaz:`az extension add --name logic`
+* V počítači je nainstalovaná [Logic Apps rozšíření Azure CLI](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) . Chcete-li nainstalovat toto rozšíření, použijte tento příkaz: `az extension add --name logic`
 * [Skupina prostředků Azure](#example---create-resource-group) , ve které se má vytvořit aplikace logiky
 
 ### <a name="prerequisite-check"></a>Kontrola požadovaných součástí
@@ -221,7 +221,7 @@ Výsledky můžete filtrovat podle následujících [volitelných parametrů](/c
 | --------- | ----- | ----------- |
 | Název skupiny prostředků | `--resource-group -g` | Název skupiny prostředků, podle které chcete filtrovat výsledky. |
 | Počet položek | `--top` | Počet položek, které jsou součástí vašich výsledků. |
-| Filtrovat | `--filter` | Typ filtru, který používáte v seznamu. Můžete filtrovat podle stavu ( `State` ), triggeru ( `Trigger` ) a identifikátoru odkazovaného prostředku ( `ReferencedResourceId` ). |
+| Filtr | `--filter` | Typ filtru, který používáte v seznamu. Můžete filtrovat podle stavu ( `State` ), triggeru ( `Trigger` ) a identifikátoru odkazovaného prostředku ( `ReferencedResourceId` ). |
 
 ```azurecli
 
@@ -241,7 +241,7 @@ az logic workflow list --resource-group "testResourceGroup" --filter "(State eq 
 
 ```
 
-## <a name="errors"></a>Chyby
+## <a name="errors"></a>chyby
 
 Následující chyba znamená, že rozšíření rozhraní příkazového řádku Azure Logic Apps není nainstalováno. Podle pokynů v části požadavky [nainstalujte Logic Apps rozšíření](#prerequisites) na svém počítači.
 
@@ -268,7 +268,7 @@ K vašim příkazům můžete použít následující volitelné parametry glob�
 | Výstupní formát | `--output -o` | Změňte [výstupní formát](/cli/azure/format-output-azure-cli?view=azure-cli-latest) z výchozího formátu JSON. |
 | Zobrazit pouze chyby | `--only-show-errors` | Potlačí upozornění a zobrazí pouze chyby. |
 | Verbose | `--verbose` | Zobrazit podrobné protokoly. |
-| Ladění | `--debug` | Zobrazí všechny protokoly ladění. |
+| Ladit | `--debug` | Zobrazí všechny protokoly ladění. |
 | Zpráva o nápovědě | `--help -h` | Zobrazit dialogové okno help. |
 | Dotaz | `--query` | Nastavte řetězec dotazu JMESPath pro výstup JSON. |
 

@@ -5,10 +5,10 @@ ms.date: 09/22/2020
 ms.topic: overview
 ms.custom: contperfq1
 ms.openlocfilehash: e3bc3ee34227fd23ea9f56070f8ea7776a10a134
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91533801"
 ---
 # <a name="what-are-azure-management-groups"></a>Co jsou skupiny pro správu Azure?
@@ -95,9 +95,9 @@ Následující diagram ukazuje role a podporované akce pro skupiny pro správu.
 |Vlastník                       | X      | X      | X        | X      | X             | X             | X     |
 |Přispěvatel                 | X      | X      | X        | X      |               |               | X     |
 |G Přispěvatel\*            | X      | X      | X        | X      |               |               | X     |
-|Čtenář                      |        |        |          |        |               |               | X     |
-|Čtečka MG\*                 |        |        |          |        |               |               | X     |
-|Přispěvatel zásad prostředků |        |        |          |        |               | X             |       |
+|Čtenář                      |        |        |          |        |               |               | ×     |
+|Čtečka MG\*                 |        |        |          |        |               |               | ×     |
+|Přispěvatel zásad prostředků |        |        |          |        |               | ×             |       |
 |Správce uživatelských přístupů   |        |        |          |        | X             | X             |       |
 
 \*: MG čtenář a g Reader umožňují uživatelům provádět tyto akce pouze v oboru skupiny pro správu.  

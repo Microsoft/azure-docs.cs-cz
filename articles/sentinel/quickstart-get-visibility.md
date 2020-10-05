@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: Začínáme s Sentinel Azure'
+title: 'Rychlý start: Začínáme se službou Azure Sentinel'
 description: V tomto rychlém startu se dozvíte, jak rychle zobrazit a monitorovat, co se děje ve vašem prostředí pomocí funkce Azure Sentinel. 
 services: sentinel
 author: yelevin
@@ -11,13 +11,13 @@ ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
 ms.openlocfilehash: fe2a632901b32993d46e723ab73fce045bfa9f84
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90889129"
 ---
-# <a name="quickstart-get-started-with-azure-sentinel"></a>Rychlý Start: Začínáme s Sentinel Azure
+# <a name="quickstart-get-started-with-azure-sentinel"></a>Rychlý start: Začínáme se službou Azure Sentinel
 
 
 

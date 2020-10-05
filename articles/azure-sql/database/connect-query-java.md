@@ -8,13 +8,13 @@ ms.service: sql-database
 ms.subservice: development
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 08/05/2020
+ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 4269ac63b7c1af219d8158953abbc0919a2256b7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 829a106a643c10626a65855152375c349cd76f9a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87833585"
 ---
 # <a name="use-java-and-jdbc-with--azure-sql-database"></a>Použití jazyků Java a JDBC s Azure SQL Database
@@ -23,7 +23,7 @@ Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a 
 
 JDBC je standardní rozhraní Java API pro připojení k tradičním relačním databázím.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure: Pokud ho nemáte, [Získejte bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 - [Azure Cloud Shell](/azure/cloud-shell/quickstart) nebo [Azure CLI](/cli/azure/install-azure-cli). Doporučujeme, abyste Azure Cloud Shell, že budete automaticky přihlášeni a budete mít přístup ke všem nástrojům, které budete potřebovat.
@@ -137,7 +137,7 @@ Pomocí svého oblíbeného integrovaného vývojového prostředí (IDE) vytvo�
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>8.2.2.jre8</version>
+            <version>7.4.1.jre8</version>
         </dependency>
     </dependencies>
 </project>
@@ -484,7 +484,7 @@ Spuštění hlavní třídy by nyní mělo mít následující výstup:
 
 ## <a name="conclusion-and-resources-clean-up"></a>Vyčištění závěrů a prostředků
 
-Blahopřejeme vám. Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat ze služby Azure SQL Database.
+Blahopřejeme! Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat ze služby Azure SQL Database.
 
 Pokud chcete vyčistit všechny prostředky používané v rámci tohoto rychlého startu, odstraňte skupinu prostředků pomocí následujícího příkazu:
 

@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
 ms.openlocfilehash: 97551ac63066f7064c16a001d9ce1f6bc31465ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80586593"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud zařízení IoT Hub pomocí aplikace proxy v jazyce C# (Preview)
@@ -45,15 +45,15 @@ Následující obrázek ukazuje, jak jsou v této ukázce místní aplikace prox
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
 
   * USA – střed
   * Střed USA EUAP
-  * Jihovýchodní Asie
+  * Southeast Asia
   * Severní Evropa
 
 * Dvě ukázkové aplikace, které spouštíte v rámci tohoto rychlého startu, jsou napsány v jazyce C#. Ve vývojovém počítači potřebujete .NET Core SDK 2.1.0 nebo novější.
@@ -81,11 +81,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Platný uživatelský účet a přihlašovací údaje v zařízení (Windows nebo Linux) používané k ověření uživatele.
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-device"></a>Registrování zařízení
+## <a name="register-a-device"></a>Registrace zařízení
 
 Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu použijete Azure Cloud Shell k registraci simulovaného zařízení.
 
@@ -136,7 +136,7 @@ V místním okně terminálu přejděte do `device-streams-proxy/device` adresá
 | Název argumentu | Hodnota argumentu |
 |----------------|-----------------|
 | `DeviceConnectionString` | Připojovací řetězec zařízení pro zařízení, které jste vytvořili dříve. |
-| `targetServiceHostName` | IP adresa, kde naslouchá Server SSH. Tato adresa by `localhost` byla stejná jako IP, kde je spuštěná místní proxy aplikace zařízení. |
+| `targetServiceHostName` | IP adresa, kde naslouchá Server SSH. Tato adresa by byla `localhost` stejná jako IP, kde je spuštěná místní proxy aplikace zařízení. |
 | `targetServicePort` | Port, který používá váš aplikační protokol (pro SSH, ve výchozím nastavení je to port 22).  |
 
 Zkompilujte a spusťte kód pomocí následujících příkazů:
@@ -214,7 +214,7 @@ V místním okně terminálu přejděte do `device-streams-proxy/device` adresá
 | Název argumentu | Hodnota argumentu |
 |----------------|-----------------|
 | `DeviceConnectionString` | Připojovací řetězec zařízení pro zařízení, které jste vytvořili dříve. |
-| `targetServiceHostName` | Název hostitele nebo IP adresa, kde je spuštěn server RDP. Tato adresa by `localhost` byla stejná jako IP, kde je spuštěná místní proxy aplikace zařízení. |
+| `targetServiceHostName` | Název hostitele nebo IP adresa, kde je spuštěn server RDP. Tato adresa by byla `localhost` stejná jako IP, kde je spuštěná místní proxy aplikace zařízení. |
 | `targetServicePort` | Port, který používá váš aplikační protokol (pro protokol RDP, ve výchozím nastavení je to port 3389).  |
 
 Zkompilujte a spusťte kód pomocí následujících příkazů:
