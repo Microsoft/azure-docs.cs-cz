@@ -79,6 +79,8 @@
       href: table-storage-design-modeling.md
     - name: Způsoby návrhu tabulek
       href: table-storage-design-patterns.md
+    - name: Monitorování úložiště tabulek
+      href: monitor-table-storage.md
 - name: Postupy
   items:
     - name: vytvořit účet úložiště
@@ -172,6 +174,8 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
 - name: Referenční informace
   items:
+    - name: Referenční informace k monitorování služby Azure Table Storage
+      href: monitor-table-storage-reference.md
     - name: Škálovatelnost a cíle výkonnosti
       items:
         - name: Úložiště Table

@@ -88,6 +88,8 @@
           href: specify-marketplace-images.md
         - name: Zadání informací o podpoře (vlastník účtu testovacího prostředí).
           href: lab-account-owner-support-information.md
+        - name: Nahrání vlastní image do Shared Image Gallery
+          href: upload-custom-image-shared-image-gallery.md
     - name: Vytvoření a konfigurace testovacích prostředí v učebnách (vyučující)
       items:
         - name: Vytváření a správa testovacích prostředí v učebnách

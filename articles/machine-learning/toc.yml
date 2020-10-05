@@ -235,17 +235,23 @@
         - name: Použití šablony Resource Manageru
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: Vytváření výpočetních prostředků
+    - name: Vytváření a správa výpočetních prostředků
       items:
-        - name: Použití sady Studio
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
-          href: how-to-create-attach-compute-studio.md
-        - name: Použití sady Python SDK
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
-          href: how-to-create-attach-compute-sdk.md
+        - name: Instance služby Compute
+          displayName: compute target
+          href: how-to-create-manage-compute-instance.md
+        - name: Výpočtový cluster
+          displayName: 'compute target, low priority, managed identity'
+          href: how-to-create-attach-compute-cluster.md
         - name: Azure Kubernetes Service
           displayName: 'AKS, inference'
           href: how-to-create-attach-kubernetes.md
+        - name: Připojení vlastních
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-attach-compute-targets.md
+        - name: Použití sady Studio
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority, managed identity'
+          href: how-to-create-attach-compute-studio.md
     - name: Nastavení prostředí
       items:
         - name: Nastavení vývojových prostředí

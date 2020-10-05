@@ -65,7 +65,7 @@
       href: load-balancer-multivip-overview.md
     - name: Odchozí připojení
       href: load-balancer-outbound-connections.md
-    - name: Časový limit resetování při nečinnosti TCP
+    - name: Resetování TCP a časový limit při nečinnosti TCP
       href: load-balancer-tcp-reset.md
     - name: Load Balancer úrovně Standard a zóny dostupnosti
       href: load-balancer-standard-availability-zones.md

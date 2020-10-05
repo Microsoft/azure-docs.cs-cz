@@ -51,6 +51,8 @@
       href: cli-samples.md
 - name: Koncepty
   items:
+    - name: Vysoká dostupnost
+      href: cache-high-availability.md
     - name: Převzetí služeb při selhání a opravy
       href: cache-failover.md
     - name: Osvědčené postupy
@@ -90,8 +92,6 @@
           href: cache-reserved-pricing.md
         - name: Migrace na Azure Cache for Redis
           href: cache-migration-guide.md
-        - name: Migrace ze služby Managed Cache Service (zastaralá)
-          href: cache-migrate-to-redis.md
         - name: Nejčastější dotazy k plánování
           href: cache-planning-faq.md
     - name: Sestavení
