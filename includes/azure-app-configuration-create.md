@@ -5,10 +5,10 @@ ms.service: azure-app-configuration
 ms.topic: include
 ms.date: 1/31/2020
 ms.openlocfilehash: c8044ca5a52bb3acf1e154a7b835471d09072083
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91372322"
 ---
 1. Pokud chcete vytvořit nové úložiště konfigurace aplikace, přihlaste se k [Azure Portal](https://portal.azure.com). V levém horním rohu domovské stránky vyberte **vytvořit prostředek**. Do pole **Hledat na Marketplace** zadejte *Konfigurace aplikace* a vyberte <kbd>ENTER</kbd>.
@@ -27,7 +27,7 @@ ms.locfileid: "91372322"
     | **Skupina prostředků** | *AppConfigTestResources* | Vyberte nebo vytvořte skupinu prostředků pro prostředek úložiště konfigurace aplikace. Tato skupina je užitečná k organizování více prostředků, které můžete chtít odstranit současně odstraněním skupiny prostředků. Další informace najdete v tématu [použití skupin prostředků ke správě prostředků Azure](/azure/azure-resource-manager/resource-group-overview). |
     | **Název prostředku** | Globálně jedinečný název | Zadejte jedinečný název prostředku, který se má použít pro prostředek úložiště konfigurace aplikace. Název musí být řetězec o 5 až 50 znaků a obsahovat pouze čísla, písmena a `-` znak. Název nesmí začínat ani končit `-` znakem. |
     | **Umístění** | *USA – střed* | **Umístění** použijte k určení geografického umístění, ve kterém je úložiště konfigurace aplikace hostované. Nejlepšího výkonu dosáhnete vytvořením prostředku ve stejné oblasti jako jiné součásti aplikace. |
-    | **Cenová úroveň** | *Free* | Vyberte požadovanou cenovou úroveň. Další informace najdete na stránce s [cenami konfigurace aplikací](https://azure.microsoft.com/pricing/details/app-configuration). |
+    | **Cenová úroveň** | Zadejte možnost pro *bezplatnou* SKU. | Vyberte požadovanou cenovou úroveň. Další informace najdete na stránce s [cenami konfigurace aplikací](https://azure.microsoft.com/pricing/details/app-configuration). |
 
 1. Vyberte **zkontrolovat + vytvořit** a ověřte nastavení.
 

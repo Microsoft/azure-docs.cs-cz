@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
 ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89292975"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Přehled podnikového zabezpečení ve službě Azure HDInsight
@@ -33,7 +33,7 @@ Hraniční zabezpečení v HDInsight se dosahuje pomocí [virtuálních sítí](
 
 Všechny clustery nasazené ve virtuální síti budou mít také privátní koncový bod. Koncový bod se přeloží na soukromou IP adresu v rámci virtuální sítě pro privátní přístup HTTP ke branám clusteru.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 [Balíček zabezpečení podniku](apache-domain-joined-architecture.md) ze služby HDInsight poskytuje ověřování založené na službě Active Directory, podporu více uživatelů a řízení přístupu na základě rolí. Integrace služby Active Directory se dosahuje pomocí [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). S těmito možnostmi můžete vytvořit cluster HDInsight připojený k doméně služby Active Directory. Pak nakonfigurujte seznam zaměstnanců z podnikového, který se může ověřit v clusteru.
 

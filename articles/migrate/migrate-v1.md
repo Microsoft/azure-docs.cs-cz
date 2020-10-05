@@ -8,10 +8,10 @@ ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 71fbd56c2566f008a096482755abbcdb174a987e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89001633"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Práce s předchozí verzí Azure Migrate
@@ -81,7 +81,7 @@ Posouzení má tři fáze:
 Počítač se přesune pouze do pozdější fáze, pokud předá předchozí. Například pokud počítač nepovede kontrolu vhodnosti, je označený jako nevhodný pro Azure a změna velikosti a oceňování se neprovádí.
 
 
-### <a name="review-azure-readiness"></a>Kontrola připravenosti na Azure
+### <a name="review-azure-readiness"></a>Kontrola připravenosti pro Azure
 
 Zobrazení Připravenost pro Azure v posouzení zobrazuje stav připravenosti jednotlivých virtuálních počítačů.
 
@@ -101,7 +101,7 @@ Připravenost přihlíží k několika vlastnostem virtuálních počítačů, a
 --- | --- | ---
 **Typ spouštění** | Systém BIOS je podporován. Rozhraní UEFI se nepodporuje. | Podmíněně připravený, pokud je typ spouštění UEFI.
 **Cores** | Počítače Core <= maximální počet jader (128) podporovaných virtuálním počítačem Azure.<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využité jádra.<br/>Pokud je v nastavení hodnocení určen faktor komfortu, je počet využitých jader vynásoben faktorem pohodlí.<br/><br/> Pokud není k dispozici žádná historie výkonu, Azure Migrate používá přidělená jádra bez použití faktoru pohodlí. | Připraveno, pokud je omezení menší nebo rovno.
-**Paměť** | Velikost paměti počítače <= maximální paměť (3892 GB v Azure M Series Standard_M128m &nbsp; <sup>2</sup>) pro virtuální počítač Azure. [Přečtěte si další informace](../virtual-machines/sizes.md).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využitou paměť.<br/><br/>Pokud je určen faktor komfortu, vyhodnotí se využitá paměť podle faktoru pohodlí.<br/><br/> Pokud není k dispozici žádná historie, je přidělená paměť použita bez použití faktoru pohodlí.<br/><br/> | V rámci omezení je připravený.
+**Memory (Paměť)** | Velikost paměti počítače <= maximální paměť (3892 GB v Azure M Series Standard_M128m &nbsp; <sup>2</sup>) pro virtuální počítač Azure. [Další informace](../virtual-machines/sizes.md).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využitou paměť.<br/><br/>Pokud je určen faktor komfortu, vyhodnotí se využitá paměť podle faktoru pohodlí.<br/><br/> Pokud není k dispozici žádná historie, je přidělená paměť použita bez použití faktoru pohodlí.<br/><br/> | V rámci omezení je připravený.
 **Disk úložiště** | Přidělená velikost disku musí být 4 TB (4096 GB) nebo méně.<br/><br/> Počet disků připojených k počítači musí být 65 nebo méně, včetně disku s operačním systémem. | V rámci omezení je připravený.
 **Sítě** | K počítači musí být připojen 32 nebo méně síťových adaptérů. | V rámci omezení je připravený.
 
@@ -253,7 +253,7 @@ Instalace agenta na počítač se systémem Linux:
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Instalace agenta MMA na počítači monitorovaném nástrojem Operations Manager
 
-Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není potřeba instalovat agenta MMA. Service Map se integruje s Operations Manager MMA ke shromáždění potřebných dat závislostí. [Přečtěte si další informace](../azure-monitor/insights/service-map-scom.md#prerequisites). Je potřeba nainstalovat agenta závislostí.
+Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není potřeba instalovat agenta MMA. Service Map se integruje s Operations Manager MMA ke shromáždění potřebných dat závislostí. [Další informace](../azure-monitor/insights/service-map-scom.md#prerequisites). Je potřeba nainstalovat agenta závislostí.
 
 ### <a name="install-the-dependency-agent"></a>Instalace agenta závislostí
 

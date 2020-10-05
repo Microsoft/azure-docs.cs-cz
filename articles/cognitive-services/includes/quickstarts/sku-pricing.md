@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 09/01/2020
 ms.author: pafarley
 ms.openlocfilehash: cb066ecc1dc11985c0ccb0fa687a15d6b038b9fa
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89321551"
 ---
 Podívejte se na seznam SKU a informace o cenách níže. 
@@ -27,7 +27,7 @@ Podívejte se na seznam SKU a informace o cenách níže.
 
 | Služba                    | Druh                      |
 |----------------------------|---------------------------|
-| Computer Vision            | `ComputerVision`          |
+| Počítačové zpracování obrazu            | `ComputerVision`          |
 | Custom Vision – předpověď | `CustomVision.Prediction` |
 | Custom Vision – školení   | `CustomVision.Training`   |
 | Tvář                       | `Face`                    |
@@ -41,7 +41,7 @@ Podívejte se na seznam SKU a informace o cenách níže.
 | Automatické návrhy Bingu   | `Bing.Autosuggest.v7` |
 | Vlastní vyhledávání Bingu | `Bing.CustomSearch`   |
 | Vyhledávání entit Bingu | `Bing.EntitySearch`   |
-| Vyhledávání pomocí služby Bing        | `Bing.Search.v7`      |
+| Vyhledávání Bingu        | `Bing.Search.v7`      |
 | Kontrola pravopisu Bingu   | `Bing.SpellCheck.v7`  |
 
 #### <a name="speech"></a>Řeč

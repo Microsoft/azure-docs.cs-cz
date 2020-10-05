@@ -4,10 +4,10 @@ description: Naučte se připojit a zaregistrovat svůj hybridní počítač se 
 ms.topic: quickstart
 ms.date: 09/23/2020
 ms.openlocfilehash: b57f30821a105a99041d8187716b75096116ea8e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91327880"
 ---
 # <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Rychlý Start: připojení hybridního počítače se servery s podporou ARC Azure
@@ -99,7 +99,7 @@ Skript pro automatizaci stahování, instalace a navázání připojení ke slu�
 
 Po instalaci agenta a jeho konfiguraci pro připojení k serverům s podporou ARC Azure klikněte na Azure Portal a ověřte, že se server úspěšně připojil. Zobrazte počítač v [Azure Portal](https://aka.ms/hybridmachineportal).
 
-:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="Úspěšné připojení k počítači" border="false":::
+:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="Hledat servery s podporou ARC ve všech službách" border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 

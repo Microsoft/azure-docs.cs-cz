@@ -4,10 +4,10 @@ description: Znalostní bázi služby QnA Maker můžete vytvořit s použitím 
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.openlocfilehash: 3cc38ca49820b1a97ec11c890bfd0ef1670f6eef
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89535845"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý Start: vytvoření, výuka a publikování znalostní báze QnA Maker Knowledge Base
@@ -64,7 +64,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Přidejte otázku jako text a odpověď formátovanou pomocí Markdownu.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Snímek obrazovky s výběrem znalostní báze služby QnA Maker":::
 
     Symbol Markdownu se `*` používá pro body odrážek. `\n`Používá se pro nový řádek.
 
@@ -81,7 +81,7 @@ V pravém horním rohu vyberte **Uložit a výuka** a uložte úpravy a výukov�
 
     `How many Azure services are used by a knowledge base?`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Do textového pole zadejte ukázkový dotaz uživatele.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Snímek obrazovky s výběrem znalostní báze služby QnA Maker":::
 
 1. Pokud chcete odpověď prozkoumat podrobněji, vyberte **Inspect** (Prozkoumat). Testovací okno slouží k otestování změn ve znalostní bázi před publikováním znalostní báze.
 
@@ -131,7 +131,7 @@ Když provedete změny ve znalostní bázi a znovu publikujete, nemusíte s robo
 
     Robotka chatu odpoví odpověď z vaší znalostní báze.
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Zadejte uživatelský dotaz do testovacího webového chatu.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Snímek obrazovky s výběrem znalostní báze služby QnA Maker":::
 
 ## <a name="what-did-you-accomplish"></a>Co jste provedli?
 

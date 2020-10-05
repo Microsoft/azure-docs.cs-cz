@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9fa15a9134fdc49d87baea48490854c1289a662a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90054394"
 ---
 # <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Rychlý Start: nastavení Microsoft 365ch skupin, jejichž platnost vyprší v Azure Active Directory
@@ -67,7 +67,7 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 5. Jakmile budete hotovi, výběrem možnosti **Uložit** uložte nastavení vypršení platnosti.
 
-A to je vše! V tomto rychlém startu jste úspěšně nastavili zásady vypršení platnosti pro vybrané skupiny Microsoft 365.
+A je to! V tomto rychlém startu jste úspěšně nastavili zásady vypršení platnosti pro vybrané skupiny Microsoft 365.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

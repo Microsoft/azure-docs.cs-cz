@@ -4,10 +4,10 @@ description: V tomto rychlém startu budete postupovat podle pokynů pro povolen
 ms.date: 07/12/2020
 ms.topic: quickstart
 ms.openlocfilehash: 9763e2e9ec49d6fb4ea37fac12578ab23b7b5363
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87101976"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-ruby"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Ruby
@@ -18,7 +18,7 @@ Na konci tohoto procesu přidáte Gems do instalace Ruby a spustíte váš prvn�
 
 ## <a name="prerequisites"></a>Předpoklady
 
-- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Objekt služby Azure, včetně _ClientID_ a _clientSecret_.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -89,9 +89,9 @@ Když je skript Ruby uložený a připravený k použití, je čas vyzkoušení 
 
 V každém volání metody `argQuery` jsou použity proměnné, které je třeba nahradit vlastními hodnotami:
 
-- `{tenantId}`– Nahraďte ID tenanta.
-- `{clientId}`– Nahraďte ID klienta objektu služby.
-- `{clientSecret}`– Nahraďte tajným kódem klienta vašeho instančního objektu.
+- `{tenantId}` – Nahraďte ID tenanta.
+- `{clientId}` – Nahraďte ID klienta objektu služby.
+- `{clientSecret}` – Nahraďte tajným kódem klienta vašeho instančního objektu.
 - Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
 1. Změňte adresář na složku projektu, kde jste vytvořili `Gemfile` soubory a `argClient.rb` .

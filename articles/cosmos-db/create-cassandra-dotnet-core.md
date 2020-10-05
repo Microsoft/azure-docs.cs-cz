@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: d24116701347c7d4b60494219b56877e0b121ea3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89017461"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>Rychlý Start: sestavení aplikace Cassandra pomocí .NET Core a Azure Cosmos DB
@@ -169,13 +169,13 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
     ```
 3. Spusťte aplikaci stisknutím CTRL + F5. Aplikace se zobrazí v okně konzoly. 
 
-    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Zobrazení a ověření výstupu":::
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal, stránka Připojovací řetězec":::
 
     Stisknutím kláves CTRL + C zastavte provádění programu a zavřete okno konzoly. 
     
 4. Na portálu Azure Portal otevřete **Data Explorer**, abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi.
 
-    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Zobrazení dat v Průzkumníku dat":::
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal, stránka Připojovací řetězec":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 

@@ -7,20 +7,20 @@ ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.openlocfilehash: 42200fe61b0ac73a63b9f8a3317687fac60c5c02
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88078576"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Rychlý Start: sestavení a vložení imagí kontejnerů Java do Azure Container Registry
 
 V tomto rychlém startu se dozvíte, jak vytvořit kontejnerovou aplikaci Java a vložit ji do Azure Container Registry pomocí modulu plug-in Maven. Jedním z příkladů použití nástrojů pro vývojáře k interakci se službou Azure Container Registry je použití Maven a výložníku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud zatím předplatné Azure nemáte, můžete si aktivovat [výhody předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si zaregistrovat [bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial).
-* [Rozhraní příkazového řádku Azure (CLI)](/cli/azure/overview)
+* [Rozhraní příkazového řádku Azure (CLI)](/cli/azure/overview).
 * Podporovaná sada Java Development Kit (JDK). Další informace o sadách JDK, které můžete využít při vývoji v Azure, najdete tady: <https://aka.ms/azure-jdks>.
 * Nástroj [Maven](http://maven.apache.org) Build pro Apache (verze 3 nebo vyšší).
 * Klient [Git](https://git-scm.com).

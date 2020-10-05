@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/10/2020
 ms.openlocfilehash: 756c62aa070f05c4b66de0cde6c7df59d9b1d09a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84735183"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Rychlý Start: použití nástroje Kopírování dat ke kopírování dat
@@ -36,7 +36,7 @@ V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. Přejít na [Azure Portal](https://portal.azure.com). 
+1. Přejděte na web [Azure Portal](https://portal.azure.com). 
 1. V nabídce Azure Portal vyberte vytvořit data Factory **Resource**  >  **Analytics**  >  **Data Factory**:
 
     ![Vytvoření nové datové továrny](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -111,7 +111,7 @@ V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. 
 
     ![Stránka Deployment complete (Nasazení dokončeno)](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
 
-1. Aplikace se přepne na kartu **monitorování** . Na této kartě se zobrazí stav kanálu. Pokud chcete seznam aktualizovat, vyberte **aktualizovat** . Kliknutím na odkaz **název kanálu** zobrazíte podrobnosti o spuštění aktivit nebo znovu spustíte kanál. 
+1. Aplikace se přepne na kartu **monitorování** . Na této kartě se zobrazí stav kanálu. Vyberte **aktualizovat** , aby se seznam aktualizoval. Kliknutím na odkaz **název kanálu** zobrazíte podrobnosti o spuštění aktivit nebo znovu spustíte kanál. 
    
     ![Aktualizovat kanál](./media/quickstart-create-data-factory-copy-data-tool/refresh-pipeline.png)
 

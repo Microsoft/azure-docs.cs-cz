@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/19/2020
 ms.openlocfilehash: 821b2a36a40f828edf37ff1c2f3eab58b10b4162
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88607576"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Rychlý Start: vytvoření účtu, databáze, kontejneru a položek Azure Cosmos z Azure Portal
@@ -70,17 +70,17 @@ Azure Cosmos DB účet vytvoříte tak, že přejdete na [Azure Portal](https://
 > - Geografická redundance
 > - Zápisy do více oblastí
    
-   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Stránka nového účtu pro službu Azure Cosmos DB":::
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Podokno Databáze na webu Azure Portal":::
 
 1. Vyberte **Zkontrolovat a vytvořit**. Můžete přeskočit oddíly **síť** a **značky** .
 
 1. Zkontrolujte nastavení účtu a pak vyberte **vytvořit**. Vytvoření účtu trvá několik minut. Počkejte, než se na stránce portálu zobrazí **dokončené vaše nasazení**. 
 
-    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Podokno Oznámení portálu Azure Portal":::
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Podokno Databáze na webu Azure Portal":::
 
 1. Vyberte **Přejít k prostředku** a přejdete na stránku Azure Cosmos DB účet. 
 
-    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png" alt-text="Stránka Azure Cosmos DB účtu":::
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png" alt-text="Podokno Databáze na webu Azure Portal":::
 
 <a id="create-container-database"></a>
 ## <a name="add-a-database-and-a-container"></a>Přidání databáze a kontejneru 
@@ -91,7 +91,7 @@ K vytvoření databáze a kontejneru můžete použít Průzkumník dat v Azure 
     
     Možná se budete muset posunout doprava, aby se zobrazilo okno **Přidat kontejner** .
     
-    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png" alt-text="Průzkumník dat na webu Azure Portal s podoknem Přidat kontejner":::
+    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png" alt-text="Podokno Databáze na webu Azure Portal":::
     
 1.  V podokně **Přidat kontejner** zadejte nastavení pro nový kontejner.
     
@@ -113,7 +113,7 @@ Přidejte data do nové databáze pomocí Průzkumník dat.
 
 1. V **Průzkumník dat**rozbalte databázi **ToDoList** a rozbalte kontejner **položky** . V dalším kroku vyberte **položky**a pak vyberte **Nová položka**. 
    
-   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png" alt-text="Vytváření nových dokumentů v Průzkumníku dat na webu Azure Portal":::
+   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png" alt-text="Podokno Databáze na webu Azure Portal":::
    
 1. Přidejte následující strukturu do dokumentu na pravé straně podokna **dokumenty** :
 
@@ -129,7 +129,7 @@ Přidejte data do nové databáze pomocí Průzkumník dat.
 
 1. Vyberte **Uložit**.
    
-   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png" alt-text="Zkopírujte data JSON a vyberte Uložit v Průzkumník dat Azure Portal":::
+   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png" alt-text="Podokno Databáze na webu Azure Portal":::
    
 1. Znovu vyberte **Nový dokument** a vytvořte a uložte jiný dokument s jedinečnými `id` a dalšími vlastnostmi a hodnotami, které chcete. Vaše dokumenty můžou mít jakoukoli strukturu, protože Azure Cosmos DB do vašich dat neukládají žádné schéma.
 

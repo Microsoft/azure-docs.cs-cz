@@ -9,10 +9,10 @@ ms.date: 05/25/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: e577616e0976ca050a55c8524e68129545ed1912
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89653568"
 ---
 # <a name="create-app-service-app-using-an-azure-resource-manager-template"></a>Vytvoření aplikace App Service pomocí šablony Azure Resource Manager
@@ -21,7 +21,7 @@ Začněte s [Azure App Service](overview.md) nasazením aplikace do cloudu pomoc
 
  [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

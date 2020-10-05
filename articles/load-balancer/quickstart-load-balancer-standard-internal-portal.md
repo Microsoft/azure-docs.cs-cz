@@ -16,17 +16,17 @@ ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: beafff2276d0b6dc525b586fa2d5943675012981
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91446107"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
 Začněte s Azure Load Balancer pomocí Azure Portal k vytvoření interního nástroje pro vyrovnávání zatížení a dvou virtuálních počítačů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -64,7 +64,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | Skupina prostředků   | Vybrat **myResourceGroupLB** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Region (Oblast)           | Vyberte **západní Evropa** |
+    | Oblast           | Vyberte **západní Evropa** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -110,8 +110,8 @@ V této části vytvoříte virtuální síť a podsíť.
     | ---                     | ---                                                |
     | Předplatné               | Vyberte předplatné.    |    
     | Skupina prostředků         | Vyberte **myResourceGroupLB** vytvořené v předchozím kroku.|
-    | Název                   | Zadejte **myLoadBalancer**                                   |
-    | Region (Oblast)         | Vyberte **Západní Evropa**.                                        |
+    | Name                   | Zadejte **myLoadBalancer**                                   |
+    | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
     | SKU           | Vybrat **Standard** |
     | Virtuální síť | Vyberte **myVNet** vytvořené v předchozím kroku. |
@@ -226,7 +226,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Skupina prostředků | Vybrat **myResourceGroupLB** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM1** |
-    | Region (Oblast) | Vyberte **západní Evropa** |
+    | Oblast | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vybrat **zóny dostupnosti** |
     | Zóna dostupnosti | Vyberte **1** |
     | Image | Vyberte **Windows Server 2019 Datacenter** |
@@ -264,7 +264,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2|
     | ------- | ----- |
-    | Název |  **myVM2** |
+    | Name |  **myVM2** |
     | Zóna dostupnosti | **2** |
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**|
 
@@ -297,7 +297,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | Skupina prostředků   | Vybrat **myResourceGroupLB** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Region (Oblast)           | Vyberte **západní Evropa** |
+    | Oblast           | Vyberte **západní Evropa** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -343,8 +343,8 @@ V této části vytvoříte virtuální síť a podsíť.
     | ---                     | ---                                                |
     | Předplatné               | Vyberte předplatné.    |    
     | Skupina prostředků         | Vyberte **myResourceGroupLB** vytvořené v předchozím kroku.|
-    | Název                   | Zadejte **myLoadBalancer**                                   |
-    | Region (Oblast)         | Vyberte **Západní Evropa**.                                        |
+    | Name                   | Zadejte **myLoadBalancer**                                   |
+    | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
     | SKU           | Vybrat **základní** |
     | Virtuální síť | Vyberte **myVNet** vytvořené v předchozím kroku. |
@@ -465,7 +465,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Skupina prostředků | Vybrat **myResourceGroupLB** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM1** |
-    | Region (Oblast) | Vyberte **západní Evropa** |
+    | Oblast | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vyberte **Skupina dostupnosti**. |
     | Skupina dostupnosti | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název**zadejte **myAvailabilitySet** . </br> Vybrat **OK** |
     | Image | **Windows Server 2019 Datacenter** |
@@ -499,7 +499,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2 |
     | ------- | ----- |
-    | Název |  **myVM2** |
+    | Name |  **myVM2** |
     | Skupina dostupnosti| Vybrat **myAvailabilitySet** |
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**|
 
@@ -537,7 +537,7 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
     | Skupina prostředků | Vybrat **myResourceGroupLB** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myTestVM** |
-    | Region (Oblast) | Vyberte **západní Evropa** |
+    | Oblast | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury** . |
     | Image | Vyberte **Windows Server 2019 Datacenter** |
     | Instance Azure Spot | Vybrat **ne** |

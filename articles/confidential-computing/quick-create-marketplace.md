@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
 ms.openlocfilehash: 82d9c143f84dfced639c928bf12693024079c2ba
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409489"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Rychlý Start: nasazení virtuálního počítače s důvěrnými výpočetními prostředími Azure na webu Marketplace
@@ -23,7 +23,7 @@ Tento kurz se doporučuje, pokud chcete rychle začít nasazovat důvěrný výp
 
 Pokud vás zajímá nasazení důvěrného výpočetního virtuálního počítače s více vlastními konfiguracemi, postupujte podle [kroků pro nasazení virtuálního počítače Azure Portal důvěrného COMPUTE](quick-create-portal.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) před tím, než začnete.
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. V horní části zadejte do panelu hledání **důvěrné výpočetní prostředí Azure** .
 
@@ -77,7 +77,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 1. V části **změnit velikost**vyberte virtuální počítač s důvěrnými výpočetními funkcemi v selektoru velikosti. 
 
     > [!TIP]
-    > Měli byste vidět velikosti **DC1s_v2**, **DC2s_v2**, **DC4s_V2**a **DC8_v2**. Toto jsou jediné velikosti virtuálních počítačů, které aktuálně podporují důvěrný výpočetní výkon. [Přečtěte si další informace](virtual-machine-solutions.md).
+    > Měli byste vidět velikosti **DC1s_v2**, **DC2s_v2**, **DC4s_V2**a **DC8_v2**. Toto jsou jediné velikosti virtuálních počítačů, které aktuálně podporují důvěrný výpočetní výkon. [Další informace](virtual-machine-solutions.md).
 
 1. Jako **typ disku s operačním systémem**vyberte typ disku.
 

@@ -14,10 +14,10 @@ ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug
 zone_pivot_groups: speech-full-stack-go
 keywords: Převod řeči na text, převod řeči na textový software
 ms.openlocfilehash: 2e738222897b60e3a7578ca10bd7596be4fc4da6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91327023"
 ---
 # <a name="get-started-with-speech-to-text"></a>Začínáme s převodem řeči na text

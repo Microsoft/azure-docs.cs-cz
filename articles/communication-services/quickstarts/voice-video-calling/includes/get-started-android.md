@@ -7,15 +7,15 @@ ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 93037d1e1c56e280458a91ae5723502bff27995b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91376667"
 ---
 V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure, které volají klientskou knihovnu pro Android.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Android Studio](https://developer.android.com/studio)pro vytváření aplikací pro Android.
@@ -32,11 +32,9 @@ V Android Studio vyberte spustit nový projekt Android Studio.
 
 V části telefon a tablet vyberte šablonu projektu "prázdná aktivita".
 
-:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Snímek obrazovky s vybranou možností prázdná aktivita na obrazovce šablony projektu":::
+:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Snímek obrazovky s tlačítkem ' spustit nový Android Studio projekt ' vybraný v Android Studio." nebo vyšší.
 
-Vyberte minimální klientskou knihovnu "rozhraní API 26: Android 8,0 (Oreo)" nebo vyšší.
-
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Snímek obrazovky s vybranou možností prázdná aktivita na obrazovce šablony projektu 2":::
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Snímek obrazovky s tlačítkem ' spustit nový Android Studio projekt ' vybraný v Android Studio.":::
 
 
 ### <a name="install-the-package"></a>Instalace balíčku
@@ -313,7 +311,7 @@ private void startCall() {
 
 Aplikaci teď můžete spustit pomocí tlačítka Spustit aplikaci na panelu nástrojů (Shift + F10). Ověřte, že je možné volat voláním `8:echo123` . Předem zaznamenaná zpráva se spustí a znovu se vrátí zpět na vaši zprávu.
 
-:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Snímek obrazovky znázorňující dokončenou aplikaci":::
+:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Snímek obrazovky s tlačítkem ' spustit nový Android Studio projekt ' vybraný v Android Studio.":::
 
 ## <a name="sample-code"></a>Příklad kódu
 

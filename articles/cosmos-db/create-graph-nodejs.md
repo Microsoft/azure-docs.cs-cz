@@ -10,10 +10,10 @@ ms.date: 06/05/2019
 ms.author: jasonh
 ms.custom: devx-track-js
 ms.openlocfilehash: c44f7218734af4bc3144137356b85e8845208f6f
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409370"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Rychlý Start: sestavení aplikace Node.js pomocí účtu rozhraní API Azure Cosmos DB Gremlin
@@ -29,7 +29,7 @@ ms.locfileid: "91409370"
 
 V tomto rychlém startu vytvoříte a spravujete účet rozhraní API pro Azure Cosmos DB Gremlin (Graph) z Azure Portal a přidáte data pomocí aplikace Node.js naklonované z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Node.js 0.10.29 +](https://nodejs.org/).
 - [Git](https://git-scm.com/downloads).
@@ -161,7 +161,7 @@ Tato aplikace konzoly používá open source ovladač [Node.jsGremlin ](https://
 
     `config.primaryKey = "PRIMARYKEY";`
 
-   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Okno klíčů Azure Portal":::
+   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Zobrazení a zkopírování přístupového klíče na stránce Azure Portal, přehled":::
 
 4. Zadejte název databáze a název grafu (kontejneru) pro hodnoty config.database a config.collection. 
 

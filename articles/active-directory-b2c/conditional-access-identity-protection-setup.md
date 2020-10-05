@@ -11,10 +11,10 @@ author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5554cfcde9aba1b0e5c9c8b60e2e6a7e9a8ba378
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89271528"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Nastavení Identity Protection a podmíněného přístupu v Azure AD B2C
@@ -23,7 +23,7 @@ ms.locfileid: "89271528"
 
 Identity Protection poskytuje průběžné zjišťování rizik pro vašeho tenanta Azure AD B2C. Pokud je cenová úroveň tenanta Azure AD B2C Premium P2, můžete v Azure Portal zobrazit podrobné rizikové události ochrany identity. Pomocí zásad [podmíněného přístupu](../active-directory/conditional-access/overview.md) na základě těchto detekcí rizik můžete také určit akce a vynutilit zásady organizace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Váš tenant Azure AD B2C musí být [propojený s předplatným služby Azure AD](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
 - K použití podmíněného přístupu na základě rizik a rizika uživatele se vyžaduje Azure AD B2C Premium P2. V případě potřeby [změňte cenovou úroveň Azure AD B2C na Premium P2](https://aka.ms/exid-pricing-tier). 
@@ -48,7 +48,7 @@ Pro Azure AD B2C se aktuálně podporují následující detekce rizik:
 
 ## <a name="view-risk-events-for-your-azure-ad-b2c-tenant"></a>Zobrazení rizikových událostí pro vašeho tenanta Azure AD B2C
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
@@ -68,7 +68,7 @@ Pokud chcete přidat zásady podmíněného přístupu na základě detekce rizi
 
 ### <a name="to-disable-security-defaults"></a>Zakázání výchozích hodnot zabezpečení
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
@@ -84,7 +84,7 @@ Pokud chcete přidat zásady podmíněného přístupu na základě detekce rizi
 
 ### <a name="to-create-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
@@ -122,7 +122,7 @@ Pokud chcete přidat zásady podmíněného přístupu na základě detekce rizi
 
 Kontrola výsledku události podmíněného přístupu:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 

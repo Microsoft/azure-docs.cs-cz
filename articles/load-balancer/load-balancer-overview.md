@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
 ms.openlocfilehash: 602a36964d4a6d5f3660499570327db3479c980e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89299197"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
@@ -75,7 +75,7 @@ Informace o cenách Standard Load Balancer najdete v tématu [Load Balancer ceny
 Load Balancer úrovně Basic se nabízí zdarma.
 Load Balancer najdete v tématu [SLA](https://aka.ms/lbsla). Základní Load Balancer nemá žádnou smlouvu SLA.
 
-## <a name="whats-new"></a>Co je nového
+## <a name="whats-new"></a>Co je nového?
 
 Přihlaste se k odběru informačního kanálu RSS a zobrazte nejnovější Azure Load Balancer aktualizace funkcí na stránce s [aktualizacemi Azure](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer) .
 

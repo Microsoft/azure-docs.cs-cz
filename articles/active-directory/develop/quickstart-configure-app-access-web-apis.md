@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperfq1
 ms.reviewer: lenalepa, aragra, sureshja
 ms.openlocfilehash: fc2f3202ac88e3ee6c24db21dd9072a13a8deef9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89442255"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Rychlý Start: Konfigurace klientské aplikace pro přístup k webovému rozhraní API
@@ -26,7 +26,7 @@ V tomto rychlém startu poskytnete klientskou aplikaci registrovanou s platformo
 
 Když v registraci klientské aplikace zadáte obory webového rozhraní API, klientská aplikace může získat přístupový token obsahující tyto obory z platformy Microsoft identity. Ve svém kódu může webové rozhraní API poskytovat přístup k prostředkům na základě oprávnění, které je založené na oborech nalezených v přístupovém tokenu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným – [vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * Dokončení [rychlého startu: registrace aplikace](quickstart-register-app.md)
@@ -42,7 +42,7 @@ Tento diagram znázorňuje, jak se obě registrace dvou aplikací vztahují k so
 
 Po registraci klientské aplikace i webového rozhraní API a zpřístupnění rozhraní API vytvořením oborů můžete nakonfigurovat oprávnění klienta k rozhraní API pomocí následujících kroků:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Pokud máte přístup k více klientům, vyberte v horní nabídce možnost **adresář a filtr předplatného** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: a vyberte klienta, který obsahuje registraci klientské aplikace.
 1. Vyberte **Azure Active Directory**  >  **Registrace aplikací**a pak vyberte klientskou aplikaci (*nikoli* vaše webové rozhraní API).
 1. Vyberte **oprávnění API**  >  **Přidat oprávnění**  >  **Moje rozhraní API**.
@@ -59,7 +59,7 @@ Po registraci klientské aplikace i webového rozhraní API a zpřístupnění r
 
 Po přidání oprávnění do rozhraní API by se měla zobrazit vybraná oprávnění v části **konfigurovaná oprávnění**. Následující obrázek ukazuje příklad *zaměstnanci. Read. všechna* delegovaná oprávnění přidaná do registrace klientské aplikace.
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="Podokno konfigurovaná oprávnění v Azure Portal zobrazující nově přidané oprávnění":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="Spojnicový diagram znázorňující webové rozhraní API s vystavenými obory na pravé straně a klientskou aplikací na levé straně s těmito obory vybranými jako oprávnění":::
 
 Můžete si také všimnout, že *uživatel. oprávnění ke čtení* pro rozhraní Microsoft Graph API. Toto oprávnění se přidá automaticky při registraci aplikace v Azure Portal.
 
@@ -71,7 +71,7 @@ Kromě přístupu k vlastnímu webovému rozhraní API jménem přihlášeného 
 
 Nakonfigurujte delegované oprávnění na Microsoft Graph, aby klientská aplikace mohla provádět operace jménem přihlášeného uživatele, například číst e-maily nebo upravovat svůj profil. Ve výchozím nastavení se uživatelům klientské aplikace zobrazí dotaz, že se přihlásí k souhlasu delegovaných oprávnění, která jste pro něj nakonfigurovali.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Pokud máte přístup k více klientům, vyberte v horní nabídce možnost **adresář a filtr předplatného** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: a vyberte klienta, který obsahuje registraci klientské aplikace.
 1. Vyberte možnost **Azure Active Directory**  >  **Registrace aplikací**a pak vyberte klientskou aplikaci.
 1. Vyberte **oprávnění API**  >  **Přidat**  >  **Microsoft Graph** oprávnění.
@@ -96,7 +96,7 @@ Nakonfigurujte oprávnění aplikace pro aplikaci, která musí být ověřován
 
 V následujících krocích udělíte oprávnění k *souborům Microsoft Graph. číst. všechna* oprávnění jako příklad.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Pokud máte přístup k více klientům, vyberte v horní nabídce možnost **adresář a filtr předplatného** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: a vyberte klienta, který obsahuje registraci klientské aplikace.
 1. Vyberte možnost **Azure Active Directory**  >  **Registrace aplikací**a pak vyberte klientskou aplikaci.
 1. Vyberte **oprávnění API**  >  **Přidat**oprávnění  >  **Microsoft Graph**  >  **oprávnění aplikace**.
@@ -136,11 +136,11 @@ Můžete přidat úplnou sadu oprávnění rozhraní API nebo jednotlivá opráv
 
 Tlačítko **udělení souhlasu správce pro {vašeho tenanta}** umožňuje správci udělit souhlas správce k oprávněním nakonfigurovaným pro aplikaci. Když vyberete tlačítko, zobrazí se dialogové okno s požadavkem, abyste potvrdili akci souhlasu.
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="V podokně konfigurovaná oprávnění v Azure Portal se zvýrazní tlačítko pro udělení souhlasu správce.":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="Spojnicový diagram znázorňující webové rozhraní API s vystavenými obory na pravé straně a klientskou aplikací na levé straně s těmito obory vybranými jako oprávnění":::
 
 Po udělení souhlasu se budou zobrazovat oprávnění, která vyžadovala souhlas správce, jako by jim byla udělena souhlas:
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="Konfigurace tabulky oprávnění v Azure Portal zobrazení souhlasu správce uděleného pro soubory. číst. všechna oprávnění":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="Spojnicový diagram znázorňující webové rozhraní API s vystavenými obory na pravé straně a klientskou aplikací na levé straně s těmito obory vybranými jako oprávnění":::
 
 Tlačítko **udělení souhlasu správce** není k *dispozici* , pokud nejste správcem nebo pokud pro aplikaci nejsou nakonfigurovaná žádná oprávnění. Pokud máte oprávnění udělená, ale ještě nakonfigurovaná, klikněte na tlačítko souhlasu správce, abyste tato oprávnění zpracovali. Můžete je přidat do konfigurovaných oprávnění nebo je odebrat.
 

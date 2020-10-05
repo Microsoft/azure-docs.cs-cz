@@ -9,10 +9,10 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 837231ca07abcfdbd6ce932bb24bd890d91506a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "69541453"
 ---
 Teď můžete pomocí nástroje Průzkumník dat na webu Azure Portal vytvořit databázi grafu. 
@@ -29,7 +29,7 @@ Teď můžete pomocí nástroje Průzkumník dat na webu Azure Portal vytvořit 
     ---|---|---
     ID databáze|sample-database|Jako název nové databáze zadejte *sample-database*. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat znaky `/ \ # ?` ani koncové mezery.
     Propustnost|400 RU/s|Změňte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.
-    ID grafu|sample-graph|Jako název nové kolekce zadejte *sample-graph*. Názvy grafů mají stejné požadavky na znaky jako ID databází.
-    Klíč oddílu| /pk |Všechny účty Cosmos DB potřebují ke horizontálnímu škálování klíč oddílu. Naučte se, jak vybrat vhodný klíč oddílu v [článku vytváření oddílů dat grafu](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning).
+    ID grafu|sample-graph|Jako název nové kolekce zadejte *sample-graph*. U názvů grafů platí stejné požadavky na znaky jako u ID databází.
+    Partition Key (Klíč oddílu)| /pk |Všechny účty Cosmos DB potřebují ke horizontálnímu škálování klíč oddílu. Naučte se, jak vybrat vhodný klíč oddílu v [článku vytváření oddílů dat grafu](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning).
 
 3. Po vyplnění formuláře vyberte **OK**.

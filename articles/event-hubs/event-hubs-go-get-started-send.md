@@ -4,10 +4,10 @@ description: 'Rychlý Start: Tento článek poskytuje návod pro vytvoření apl
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87002450"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Rychlý Start: odeslání událostí do nebo příjem událostí z Event Hubs pomocí jazyka přejít
@@ -23,7 +23,7 @@ V tomto kurzu se dozvíte, jak psát aplikace v cestách pro odesílání událo
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 - Místně se nainstaluje. V případě potřeby postupujte podle [těchto pokynů](https://golang.org/doc/install) .
-- Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet][], ještě než začnete.
+- Aktivní účet Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet][].
 - **Vytvoří obor názvů Event Hubs a centrum událostí**. Použijte [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md).
 
 ## <a name="send-events"></a>Odesílání událostí

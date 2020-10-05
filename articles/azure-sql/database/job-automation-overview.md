@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/10/2020
 ms.openlocfilehash: 6b4b31ab4bc0cb1fe5bd9140870df86db6841ff3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91450343"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí databázových úloh
@@ -210,7 +210,7 @@ Pro aktuální verzi Preview se k vytvoření agenta elastické úlohy vyžaduje
 
 *Databáze úloh* nemusí být v některých případech nová, ale měla by to být čistý, prázdný, S0 nebo vyšší cíl služby. Doporučený cíl služby *databáze úloh* je S1 nebo vyšší, ale optimální volba závisí na potřebách výkonu vaší úlohy: počet kroků úlohy, počet cílů úlohy a četnost spouštění úloh. Například databáze S0 může být dostatečná pro agenta úloh, který spouští několik úloh, které cílí na méně než deset databází, ale spuštění úlohy každou minutu nemusí být dostatečně rychlé s databází S0 a vyšší úroveň služby může být lepší.
 
-Pokud jsou operace s databází úloh pomalejší, než se čekalo, [monitorujte](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring) výkon databáze a využití prostředků v databázi úloh během období pomalé míry pomocí Azure Portal nebo [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV. Pokud se využití prostředku, jako je například CPU, datový vstup/výstup nebo zápis do protokolu, blíží 100% a koreluje s periodami zpomalení, zvažte možnost přírůstkového škálování databáze na vyšší cíle služby (buď v [modelu DTU](service-tiers-dtu.md) , nebo v [modelu Vcore](service-tiers-vcore.md)), dokud nebude dostatečně vylepšen výkon databáze úloh.
+Pokud jsou operace s databází úloh pomalejší, než se čekalo, [Sledujte](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring) výkon databáze a využití prostředků v databázi úloh během období pomalé míry pomocí Azure Portal nebo [Sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV. Pokud se využití prostředku, jako je například CPU, datový vstup/výstup nebo zápis do protokolu, blíží 100% a koreluje s periodami zpomalení, zvažte možnost přírůstkového škálování databáze na vyšší cíle služby (buď v [modelu DTU](service-tiers-dtu.md) , nebo v [modelu Vcore](service-tiers-vcore.md)), dokud nebude dostatečně vylepšen výkon databáze úloh.
 
 ##### <a name="job-database-permissions"></a>Oprávnění k databázi úloh
 

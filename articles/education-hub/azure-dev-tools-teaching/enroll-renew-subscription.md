@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: edb0de9f235565d09c81ce4466de59698a321f56
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87101987"
 ---
 # <a name="enroll-or-renew-an-azure-dev-tools-for-teaching-subscription"></a>Registrace nebo obnovení předplatného Azure dev Tools pro vzdělávání
@@ -33,19 +33,19 @@ Tento článek popisuje proces registrace ve vývojových nástrojích Azure pro
 
 1. Pokud se zaregistrujete poprvé, dokončete **informace o vaší instituci**. Při obnovení budou tyto informace automatické vyplňování.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Zadejte informace o instituci." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Chybová zpráva přihlášení" border="false":::
     
 1. Vyplňte **informace o fakturaci**. Pokud je vaše instituce součástí multilicenční smlouvy, můžete zadat číslo multilicenční smlouvy. Pokud se přihlásíte k novému předplatnému a platíte cokoli jinak než kreditní karta, může při platebních procesech dojít ke zpoždění při získávání přístupu k vašemu předplatnému. Obdržíte e-maily, které aktualizují průběh platby.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-billing-information.png" alt-text="Zadejte informace o fakturaci." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-billing-information.png" alt-text="Chybová zpráva přihlášení" border="false":::
     
 1. Vyberte **plán předplatného** a potvrďte předplatné **správce** předplatného. E-mailová doména Správce předplatného umožní studentům ve stejné doméně získat snadný přístup ke stažení výhod softwaru.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Vyberte plán předplatného." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Chybová zpráva přihlášení" border="false":::
     
 1. Potvrďte všechny informace o nákupu a klikněte na **umístit objednávku**. Potvrzovací e-maily budou odeslány do vaší doručené pošty s aktualizacemi stavu platby a všech možných dalších kroků.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="Potvrďte objednávku." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="Chybová zpráva přihlášení" border="false":::
 
 ## <a name="renew-an-existing-subscription"></a>Obnovit existující předplatné
 

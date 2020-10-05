@@ -7,10 +7,10 @@ ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
 ms.openlocfilehash: b88dfedd5454d708386afa6912a26dac41c6d6b4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86258559"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace spolehlivých služeb v .NET do Service Fabric
@@ -78,7 +78,7 @@ V příkazovém okně naklonujte spuštěním následujícího příkazu úloži
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ```
 
-## <a name="run-the-application-locally"></a>Místní spuštění aplikace
+## <a name="run-the-application-locally"></a>Aplikaci spustíte místně.
 
 Klikněte pravým tlačítkem na ikonu sady Visual Studio v nabídce Start a zvolte **Spustit jako správce**. Chcete-li připojit ladicí program k vašim službám, je nutné spustit aplikaci Visual Studio jako správce.
 
@@ -170,7 +170,7 @@ Pokud chcete upgradovat aplikaci, postupujte následovně:
 
     V průběhu upgradu můžete aplikaci dál používat. Vzhledem k tomu, že v clusteru máte spuštěné dvě instance služby, můžou některé požadavky přicházet do upgradované verze aplikace, zatímco jiné můžou stále přicházet do staré verze.
 
-11. Otevřete prohlížeč a přejděte na adresu clusteru na portu 19080. Například `http://localhost:19080/`.
+11. Otevřete prohlížeč a přejděte na adresu clusteru na portu 19080. Například, `http://localhost:19080/`.
 12. Ve stromovém zobrazení klikněte na uzel **Aplikace** a pak na **Probíhající upgrady** v pravém podokně. Zobrazí se postupné zavádění upgradu napříč upgradovacími doménami ve vašem clusteru. U každé domény se nejprve ověří, jestli je v pořádku, a pak se přejde k další. Po ověření stavu domény se upgradovací doména v indikátoru průběhu zobrazí zeleně.
     ![Zobrazení upgradu v Service Fabric Exploreru](./media/service-fabric-quickstart-dotnet/upgrading.png)
 

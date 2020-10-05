@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
 ms.openlocfilehash: 2c17b311811fd2cba46db379fcc766c04dd9d56d
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91403071"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Volba správných služeb integrace a automatizace v Azure
@@ -76,7 +76,7 @@ Služba WebJobs a sada WebJobs SDK fungují nejlépe společně, ale můžete po
 
 Služba Azure Functions je postavená na sadě WebJobs SDK, takže sdílí řadu stejných aktivačních událostí a připojení k dalším službám Azure. Tady je několik faktorů, které je potřeba vzít v úvahu při výběru mezi Azure Functions a WebJobs se sadou WebJobs SDK:
 
-|  | Functions | Služba WebJobs se sadou WebJobs SDK |
+|  | Funkce | Služba WebJobs se sadou WebJobs SDK |
 | --- | --- | --- |
 |**[Model aplikace bez serveru](https://azure.microsoft.com/solutions/serverless/) s [automatickým škálováním](functions-scale.md#how-the-consumption-and-premium-plans-work)**|✔||
 |**[Vývoj a testování v prohlížeči](functions-create-first-azure-function.md)** |✔||

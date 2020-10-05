@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: bdbd183ba161c96e0ed8e160ce602da2ec30dfb7
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85940418"
 ---
 Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledávání na webu Bingu do vaší aplikace Python. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
@@ -20,7 +20,7 @@ Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledáv�
 Chcete se rovnou podívat na kód? Ukázky pro [klientské knihovny vyhledávání Bingu pro Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search) jsou k dispozici na GitHubu.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Sada SDK Bingu pro vyhledávání na webu je kompatibilní s Pythonem 2.7, 3.3, 3.4, 3.5 a 3.6. Pro tento článek Rychlý start doporučujeme použít virtuální prostředí.
 
 * Python 2.7, 3.3, 3.4, 3.5 nebo 3.6
@@ -83,7 +83,7 @@ Pokud odpověď obsahuje webové stránky, obrázky, zprávy nebo videa, vytiskn
 
 1. Vytvořte nový projekt v jazyce Python v oblíbeném integrovaném vývojovém prostředí nebo editoru.
 
-1. Zkopírujte ukázkový kód do svého projektu. `endpoint`může to být globální koncový bod nebo vlastní koncový bod [subdomény](~/articles/cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.:  
+1. Zkopírujte ukázkový kód do svého projektu. `endpoint` může to být globální koncový bod nebo vlastní koncový bod [subdomény](~/articles/cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.:  
 
     ```python
     # Import required modules.
@@ -169,7 +169,7 @@ Pokud odpověď obsahuje webové stránky, obrázky, zprávy nebo videa, vytiskn
 
 1. Nahraďte `YOUR_ENDPOINT` adresou URL koncového bodu na portálu a odeberte část "Bing/v 7.0" z koncového bodu.
 
-1. Spusťte program. Například: `python your_program.py`.
+1. Spustíte program. Například: `python your_program.py`.
 
 ## <a name="define-functions-and-filter-results"></a>Definice funkcí a filtrování výsledků
 
@@ -212,7 +212,7 @@ Tato ukázka používá `count` parametry a `offset` k omezení počtu vrácený
             print("Encountered exception. {}".format(err))
     ```
 
-1. Spusťte program.
+1. Spustíte program.
 
 ### <a name="filter-for-news-and-freshness"></a>Filtrování zpráv podle stáří
 
@@ -262,7 +262,7 @@ Tato ukázka používá `response_filter` parametry a `freshness` k filtrování
     web_search_with_response_filter(subscription_key)
     ```
 
-1. Spusťte program.
+1. Spustíte program.
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Použití bezpečného hledání, počtu odpovědí a propagačního filtru
 
@@ -307,7 +307,7 @@ Tato ukázka používá `answer_count` parametry, `promote` a `safe_search` k fi
             print("Encountered exception. {}".format(err))
     ```
 
-1. Spusťte program.
+1. Spustíte program.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -318,6 +318,6 @@ Až projekt dokončíte, nezapomeňte z kódu programu odebrat klíč předplatn
 > [!div class="nextstepaction"]
 > [Ukázky kognitivních služeb sady Python SDK](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Referenční informace k sadě Azure Python SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch)

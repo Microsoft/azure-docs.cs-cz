@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
 ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89003843"
 ---
 # <a name="what-is-azure-digital-twins"></a>Co je služba Azure Digital Twins?
@@ -88,7 +88,7 @@ Kompletní řešení využívající digitální vlákna Azure může obsahovat 
 
 Následující diagram znázorňuje, kde se digitální vlákna Azure nachází v kontextu většího řešení Azure IoT.
 
-:::image type="content" source="media/overview/solution-context.png" alt-text="Diagram znázorňující vstupní zdroje, výstupní služby a obousměrnou komunikaci s klientskými aplikacemi i s externími výpočetními prostředky." border="false" lightbox="media/overview/solution-context.png":::
+:::image type="content" source="media/overview/solution-context.png" alt-text="Snímek obrazovky s ukázkovou aplikací Průzkumníka digitálních vláken Azure a zobrazením grafu uzlů reprezentujících digitální vlákna" border="false" lightbox="media/overview/solution-context.png":::
 
 ## <a name="service-limits-in-public-preview"></a>Omezení služby ve verzi Public Preview
 

@@ -10,10 +10,10 @@ ms.custom: subject-armsq
 ms.date: 08/31/2020
 ms.author: duau
 ms.openlocfilehash: f1dbb9623ddc87f9940fd97b05abbee113fd71c4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90016550"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Rychlý Start: vytvoření okruhu ExpressRoute s privátním partnerským vztahem pomocí šablony ARM
@@ -84,7 +84,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **skupiny prostředků** .
 
@@ -92,11 +92,11 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 1. Skupina prostředků by měla obsahovat následující zdroje informací:
 
-     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="Skupina prostředků nasazení ExpressRoute":::
+     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="Výstup nasazení ExpressRoute Správce prostředků PowerShellu":::
 
 1. Vyberte ExpressRoute okruh **ER-ck01** , abyste ověřili, že je **povolený**stav okruhu, stav poskytovatele není **zřízený** , a soukromý partnerský vztah má stav **zřízený**.
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="Okruh nasazení ExpressRoute":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="Výstup nasazení ExpressRoute Správce prostředků PowerShellu":::
 
 > [!NOTE]
 > Před propojením virtuální sítě s okruhem bude nutné volat poskytovatele, aby bylo možné proces zřizování dokončit.

@@ -8,10 +8,10 @@ ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 5d6b46e288007bc0bbac53a97b1bdd5e727b8ac8
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91405118"
 ---
 # <a name="azure-signalr-service-faq"></a>Nejčastější dotazy ke službě Azure Signal
@@ -44,7 +44,7 @@ Můžete [kontrolovat zdrojový kód](https://github.com/Azure/azure-signalr/blo
 
 ## <a name="can-i-configure-the-transports-available-in-azure-signalr-service-on-the-server-side-with-aspnet-core-signalr-for-example-can-i-disable-websocket-transport"></a>Můžu ve službě Azure Signal Service nakonfigurovat transporty, které jsou k dispozici na straně serveru pomocí služby ASP.NET Core Signal? Například je možné zakázat přenos protokolu WebSocket?
 
-No.
+Ne.
 
 Služba signalizace Azure poskytuje všechny tři přenosy, které ASP.NET Core signál podporuje ve výchozím nastavení. Nedá se nakonfigurovat. Služba signalizace Azure zpracuje připojení a přenosy pro všechna připojení klientů.
 

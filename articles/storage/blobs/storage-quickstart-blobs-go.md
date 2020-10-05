@@ -8,17 +8,17 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "68726463"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Go
 
 V tomto rychlém startu zjistíte, jak pomocí programovacího jazyka Go nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -32,7 +32,7 @@ Ujistěte se, že máte nainstalované následující další požadavky:
     ``` 
 
     > [!NOTE]
-    > Ujistěte se, že je `Azure` v adrese URL velká písmena, aby nedocházelo k problémům s importem případu při práci se sadou SDK. Také velká `Azure` písmena v příkazech importu.
+    > Ujistěte se, že je `Azure` v adrese URL velká písmena, aby nedocházelo k problémům s importem případu při práci se sadou SDK. Také velká písmena `Azure` v příkazech importu.
     
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 [Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) použitá v tomto rychlém startu je základní aplikace v jazyce Go.  
@@ -182,7 +182,7 @@ _, err = azblob.UploadFileToBlockBlob(ctx, file, blobURL, azblob.UploadToBlockBl
 handleErrors(err)
 ```
 
-### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
+### <a name="list-the-blobs-in-a-container"></a>Seznam objektů blob v kontejneru
 
 Seznam souborů v kontejneru získáte pomocí metody **ListBlobs** s použitím objektu **ContainerURL**. Metoda ListBlobs vrací jeden segment objektů blob (až 5 000) počínaje zadanou **značkou**. Pokud chcete začít výčet od začátku, použijte prázdnou značku. Názvy objektů blob se vrací ve slovníkovém pořadí. Po získání segmentu ho zpracujte a pak znovu zavolejte metodu ListBlobs a předejte jí dříve vrácenou značku.  
 

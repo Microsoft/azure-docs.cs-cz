@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88815857"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Použití Azure Portal k omezení přístupu pro import/export u spravovaných disků s privátními odkazy
@@ -52,7 +52,7 @@ Budete si muset poznamenat virtuální síť virtuálního počítače, ke kter�
 
 Po vytvoření prostředku přejděte přímo na něj.
 
-:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="Snímek obrazovky s tlačítkem přejít na prostředek na portálu":::
+:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="Snímek obrazovky s oknem pro vytvoření přístupu k disku Zadejte požadovaný název, vyberte oblast, vyberte skupinu prostředků a pokračujte.":::
 
 ## <a name="create-a-private-endpoint"></a>Vytvoření privátního koncového bodu
 
@@ -61,13 +61,13 @@ Teď, když máte prostředek pro přístup k disku, můžete ho použít k tomu
 1. V prostředku pro přístup k disku vyberte **připojení privátního koncového bodu**.
 1. Vyberte **+ soukromý koncový bod**.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="Snímek obrazovky okna s přehledem pro prostředek přístupu k disku Připojení privátního koncového bodu je zvýrazněné.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="Snímek obrazovky s oknem pro vytvoření přístupu k disku Zadejte požadovaný název, vyberte oblast, vyberte skupinu prostředků a pokračujte.":::
 
 1. Výběr skupiny prostředků
 1. Zadejte název a vyberte stejnou oblast, ve které byl prostředek pro přístup k disku vytvořen.
 1. Vyberte **Další: prostředek >**
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="Snímek pracovního postupu pro vytvoření privátního koncového bodu, první okno Pokud nevyberete příslušnou oblast, může dojít k problémům později.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="Snímek obrazovky s oknem pro vytvoření přístupu k disku Zadejte požadovaný název, vyberte oblast, vyberte skupinu prostředků a pokračujte.":::
 
 1. V okně **prostředek** vyberte **připojit k prostředku Azure ve složce Můj adresář**.
 1. Jako **typ prostředku** vyberte **Microsoft. COMPUTE/diskAccesses** .
@@ -75,7 +75,7 @@ Teď, když máte prostředek pro přístup k disku, můžete ho použít k tomu
 1. Ponechte **cílový dílčí prostředek** jako **disky** .
 1. Vyberte **Další: >konfigurace **.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="Snímek pracovního postupu pro vytvoření privátního koncového bodu, druhé okno Se všemi zvýrazněnými hodnotami (typ prostředku, prostředek, cílový dílčí prostředek)":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="Snímek obrazovky s oknem pro vytvoření přístupu k disku Zadejte požadovaný název, vyberte oblast, vyberte skupinu prostředků a pokračujte.":::
 
 1. Vyberte virtuální síť, na kterou chcete omezit export disku, ostatní virtuální sítě nebudou moct disk exportovat.
 
@@ -85,7 +85,7 @@ Teď, když máte prostředek pro přístup k disku, můžete ho použít k tomu
 1. Vyberte příslušnou podsíť.
 1. Vyberte **Zkontrolovat a vytvořit**.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Snímek pracovního postupu vytvoření privátního koncového bodu, třetí okno Virtuální síť a podsíť jsou zvýrazněné.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Snímek obrazovky s oknem pro vytvoření přístupu k disku Zadejte požadovaný název, vyberte oblast, vyberte skupinu prostředků a pokračujte.":::
 
 ## <a name="enable-private-endpoint-on-your-disk"></a>Povolení privátního koncového bodu na disku
 
@@ -94,7 +94,7 @@ Teď, když máte prostředek pro přístup k disku, můžete ho použít k tomu
 1. Vyberte **privátní koncový bod (přes přístup k disku)** a vyberte přístup k disku, který jste vytvořili dříve.
 1. Vyberte **Uložit**.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Snímek obrazovky okna sítě spravovaného disku. Zvýrazní se výběr privátního koncového bodu i přístup k vybranému disku. Při uložení se nakonfiguruje disk pro tento přístup.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Snímek obrazovky s oknem pro vytvoření přístupu k disku Zadejte požadovaný název, vyberte oblast, vyberte skupinu prostředků a pokračujte.":::
 
 Právě jste dokončili konfiguraci privátních odkazů, které můžete použít při importu/exportu spravovaného disku.
 
