@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: c81d9774dccf8c02d2eab7b1ebbb69e6671869e8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a4985784a17f2e0350a7b2c7a4f62f574862d50c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423792"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714350"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Použití privátního odkazu Azure k bezpečnému připojení sítí k Azure Automation (Preview)
 
@@ -41,7 +41,7 @@ Pomocí privátního odkazu můžete:
 - Bezpečně připojte soukromou místní síť k Azure Automation pomocí ExpressRoute a privátního odkazu.
 - Veškerý provoz se zachová v Microsoft Azure páteřní síti.
 
-Další informace najdete v tématu [klíčové výhody privátního propojení](../../private-link/private-link-overview.md#key-benefits).
+Další informace najdete v tématu  [klíčové výhody privátního propojení](../../private-link/private-link-overview.md#key-benefits).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -53,7 +53,7 @@ V rámci verze Preview nemá účet Automation přístup k prostředkům Azure, 
 
 ### <a name="webhook-scenario"></a>Scénář Webhooku
 
-Sady Runbook můžete spustit pomocí příspěvku na adrese URL Webhooku. Adresa URL vypadá například takto:`https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
+Sady Runbook můžete spustit pomocí příspěvku na adrese URL Webhooku. Adresa URL vypadá například takto: `https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
 
 ### <a name="state-configuration-agentsvc-scenario"></a>Scénář konfigurace stavu (agentsvc)
 
@@ -85,7 +85,7 @@ V této části vytvoříte privátní koncový bod pro svůj účet Automation.
     | Předplatné | Vyberte předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
-    | Název | Zadejte své *PrivateEndpoint*. |
+    | Name | Zadejte své *PrivateEndpoint*. |
     | Oblast | Vyberte **YourRegion**. |
     |||
 
@@ -111,14 +111,14 @@ V této části vytvoříte privátní koncový bod pro svůj účet Automation.
     |**SÍTĚ**| |
     | Virtuální síť| Vyberte *MyVirtualNetwork*. |
     | Podsíť | Vyberte *mySubnet*. |
-    |**INTEGRACE PRIVÁTNÍ DNS**||
-    |Integrace s privátní zónou DNS |Vyberte **Ano**. |
-    |Zóna Privátní DNS |Select *(New) privatelink. Azure-Automation.NET* |
+    |**INTEGRACE S PRIVÁTNÍM DNS**||
+    |Integrovat s privátní zónou DNS |Vyberte **Ano**. |
+    |Zóna Privátního DNS |Select *(New) privatelink. Azure-Automation.NET* |
     |||
 
-8. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
+8. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci.
 
-9. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
+9. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 V **centru privátních odkazů (Preview)** vyberte **soukromé koncové body** pro zobrazení prostředku privátního propojení.
 
@@ -128,7 +128,7 @@ Vyberte prostředek pro zobrazení všech podrobností. Tím se vytvoří nový 
 
 Podobně platí, že jedinečný plně kvalifikovaný název domény (FQDN) se vytvoří pro konfiguraci stavu (agentsvc) a pro modul runtime úloh Hybrid Runbook Worker (jrds). Každé z nich je přiřazená samostatná IP adresa z vaší virtuální sítě a **stav připojení** se zobrazí jako **schváleno**.
 
-Pokud má příjemce služby oprávnění RBAC pro prostředek automatizace, může zvolit metodu automatického schvalování. V takovém případě, když požadavek dosáhne prostředku zprostředkovatele automatizace, není od poskytovatele služeb vyžadována žádná akce a připojení je automaticky schváleno.
+Pokud má příjemce služby oprávnění Azure RBAC na prostředku Automation, může zvolit metodu automatického schvalování. V takovém případě, když požadavek dosáhne prostředku zprostředkovatele automatizace, není od poskytovatele služeb vyžadována žádná akce a připojení je automaticky schváleno.
 
 ## <a name="set-public-network-access-flags"></a>Nastavit příznaky přístupu k veřejné síti
 

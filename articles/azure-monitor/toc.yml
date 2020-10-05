@@ -222,7 +222,7 @@
               href: log-query/query-audit.md
             - name: Optimalizace dotazů
               href: log-query/query-optimization.md
-            - name: Functions
+            - name: Funkce
               href: log-query/functions.md
             - name: Analýza textových dat
               href: log-query/parse-text.md
@@ -976,6 +976,8 @@
           href: insights/vminsights-maps.md
         - name: Monitorování výkonu
           href: insights/vminsights-performance.md
+        - name: Monitorování změn
+          href: insights/vminsights-change-analysis.md
         - name: Analýza dat s využitím dotazů na protokoly
           href: insights/vminsights-log-search.md
         - name: Vizualizace dat s využitím sešitů

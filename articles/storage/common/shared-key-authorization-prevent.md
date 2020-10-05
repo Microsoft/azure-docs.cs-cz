@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 9bf656989dc331fdd4ce044126ea9d0be9414930
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 16080440a9458753992c62309ce75ed241fb64d5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088795"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715115"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Zabránit autorizaci sdíleného klíče pro účet Azure Storage (Preview)
 
@@ -67,7 +67,7 @@ Pomocí těchto kroků můžete vytvořit metriku, která bude sledovat požadav
 
 Po nakonfigurování metriky se v grafu začnou zobrazovat požadavky na váš účet úložiště. Následující obrázek znázorňuje žádosti, které byly autorizovány se sdíleným klíčem nebo vytvořené pomocí tokenu SAS. Žádosti se agregují za den za posledních třicet dnů.
 
-:::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="Snímek obrazovky znázorňující agregované požadavky s povoleným sdíleným klíčem":::
+:::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="Snímek obrazovky ukazující, jak nakonfigurovat metriku pro Shrnutí transakcí provedených se sdíleným klíčem nebo SAS":::
 
 Můžete také nakonfigurovat pravidlo výstrahy, které vás upozorní, když se v účtu úložiště vytvoří určitý počet požadavků, které jsou autorizované se sdíleným klíčem. Další informace najdete v tématu [Vytvoření, zobrazení a správa výstrah metrik pomocí Azure monitor](../../azure-monitor/platform/alerts-metric.md).
 
@@ -93,7 +93,7 @@ Pokud chcete protokolovat data Azure Storage pomocí Azure Monitor a analyzovat 
 1. V části **Podrobnosti o kategorii**v **části protokol** vyberte **StorageRead**, **StorageWrite**a **StorageDelete** a Zaprotokolujte všechny požadavky na data vybrané služby.
 1. V části **Podrobnosti o cíli**vyberte **Odeslat do Log Analytics**. Vyberte své předplatné a Log Analytics pracovní prostor, který jste vytvořili dříve, jak je znázorněno na následujícím obrázku.
 
-    :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="Snímek obrazovky ukazující, jak vytvořit nastavení diagnostiky pro požadavky protokolování":::
+    :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="Snímek obrazovky ukazující, jak nakonfigurovat metriku pro Shrnutí transakcí provedených se sdíleným klíčem nebo SAS":::
 
 Pro každý typ Azure Storage prostředku v účtu úložiště můžete vytvořit nastavení diagnostiky.
 
@@ -133,7 +133,7 @@ Pokud chcete zakázat autorizaci sdíleného klíče pro účet úložiště v A
 1. V části **Nastavení**vyhledejte nastavení **Konfigurace** .
 1. Nastavte možnost **Povolení přístupu ke sdíleným klíčům** na **zakázáno**.
 
-    :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="Snímek obrazovky ukazující, jak zakázat přístup ke sdíleným klíčům pro účet":::
+    :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="Snímek obrazovky ukazující, jak nakonfigurovat metriku pro Shrnutí transakcí provedených se sdíleným klíčem nebo SAS":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -219,7 +219,7 @@ Některé nástroje Azure nabízejí možnost použít pro přístup k Azure Sto
 | Azure PowerShell | Podporuje se. Informace o tom, jak autorizovat příkazy PowerShellu pro operace objektů BLOB a front s Azure AD, najdete v tématu [spuštění příkazů PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům objektů BLOB](../blobs/authorize-active-directory-powershell.md) nebo [spuštěním příkazů PowerShellu s přihlašovacími údaji služby Azure AD pro přístup k datům](../queues/authorize-active-directory-powershell.md) |
 | Azure CLI | Podporuje se. Informace o tom, jak autorizovat příkazy rozhraní příkazového řádku Azure pomocí Azure AD pro přístup k datům BLOB a Queue, najdete v tématu [spuštění příkazů rozhraní příkazového řádku Azure s přihlašovacími údaji Azure AD pro přístup k datům BLOB nebo Queue](authorize-data-operations-cli.md). |
 | Azure IoT Hub | Podporuje se. Další informace najdete v tématu [podpora IoT Hub pro virtuální sítě](../../iot-hub/virtual-network-support.md). |
-| Azure Cloud Shell | Azure Cloud Shell je integrované prostředí v Azure Portal. Azure Cloud Shell hostuje soubory pro trvalost ve sdílené složce Azure v účtu úložiště. Tyto soubory budou nepřístupné, pokud pro tento účet úložiště není povolená autorizace sdíleného klíče. Další informace najdete v tématu [připojení úložiště Microsoft Azurech souborů](/azure/cloud-shell/overview#connect-your-microsoft-azure-files-storage). <br /><br /> Pokud chcete spouštět příkazy v Azure Cloud Shell ke správě účtů úložiště, pro které je přístup ke sdíleným klíčům zakázaný, nejdřív se ujistěte, že jste k těmto účtům udělili potřebná oprávnění prostřednictvím řízení přístupu na základě role (RBAC). Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md). |
+| Azure Cloud Shell | Azure Cloud Shell je integrované prostředí v Azure Portal. Azure Cloud Shell hostuje soubory pro trvalost ve sdílené složce Azure v účtu úložiště. Tyto soubory budou nepřístupné, pokud pro tento účet úložiště není povolená autorizace sdíleného klíče. Další informace najdete v tématu [připojení úložiště Microsoft Azurech souborů](/azure/cloud-shell/overview#connect-your-microsoft-azure-files-storage). <br /><br /> Pokud chcete spouštět příkazy v Azure Cloud Shell ke správě účtů úložiště, pro které je přístup ke sdíleným klíčům zakázaný, nejdřív se ujistěte, že jste k těmto účtům udělili potřebná oprávnění prostřednictvím řízení přístupu na základě role Azure (RBAC). Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md). |
 
 ## <a name="about-the-preview"></a>O verzi Preview
 

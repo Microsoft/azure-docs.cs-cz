@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a089ffb7631ded7bd36a4eee5fb862ced3fd2ad0
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 66815dac145c8c30b770e831a002f6a0ee093675
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589058"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714576"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Volba způsobu autorizace přístupu k datům objektů BLOB nebo front pomocí Azure CLI
 
@@ -43,11 +43,11 @@ Pokud chcete použít `--auth-mode` parametr, ujistěte se, že máte nainstalov
 
 Když se přihlásíte k rozhraní příkazového řádku Azure CLI pomocí přihlašovacích údajů Azure AD, vrátí se přístupový token OAuth 2,0. Tento token se automaticky používá v Azure CLI k autorizaci následných operací s daty v úložišti objektů BLOB nebo Queue. U podporovaných operací už nemusíte předávat klíč účtu nebo token SAS pomocí příkazu.
 
-Pomocí řízení přístupu na základě role (RBAC) můžete přiřadit k objektu zabezpečení služby Azure AD oprávnění k objektům blob a frontám. Další informace o rolích Azure v Azure Storage najdete v tématu [Správa přístupových práv k datům Azure Storage pomocí RBAC](storage-auth-aad-rbac.md).
+Pomocí řízení přístupu na základě role Azure (Azure RBAC) můžete přiřadit k objektu zabezpečení služby Azure AD oprávnění k objektům blob a frontám. Další informace o rolích Azure v Azure Storage najdete v tématu [Správa přístupových práv k datům Azure Storage pomocí Azure RBAC](storage-auth-aad-rbac.md).
 
 ### <a name="permissions-for-calling-data-operations"></a>Oprávnění pro volání operací s daty
 
-Rozšíření Azure Storage jsou podporovaná pro operace s daty objektů BLOB a front. Operace, které můžete volat, závisí na oprávněních udělených objektu zabezpečení služby Azure AD, se kterým se přihlašujete ke službě Azure CLI. Oprávnění pro Azure Storage kontejnery nebo fronty jsou přiřazena prostřednictvím RBAC. Pokud jste například přiřadili roli **čtečky dat objektů BLOB** , můžete spustit skriptovací příkazy, které čtou data z kontejneru nebo fronty. Pokud jste přiřadili roli **Přispěvatel dat objektu BLOB** , můžete spustit skriptovací příkazy, které čtou, zapisují nebo odstraňují kontejner nebo frontu nebo data, která obsahují.
+Rozšíření Azure Storage jsou podporovaná pro operace s daty objektů BLOB a front. Operace, které můžete volat, závisí na oprávněních udělených objektu zabezpečení služby Azure AD, se kterým se přihlašujete ke službě Azure CLI. Oprávnění pro Azure Storage kontejnery nebo fronty jsou přiřazena prostřednictvím Azure RBAC. Pokud jste například přiřadili roli **čtečky dat objektů BLOB** , můžete spustit skriptovací příkazy, které čtou data z kontejneru nebo fronty. Pokud jste přiřadili roli **Přispěvatel dat objektu BLOB** , můžete spustit skriptovací příkazy, které čtou, zapisují nebo odstraňují kontejner nebo frontu nebo data, která obsahují.
 
 Podrobnosti o oprávněních potřebných pro jednotlivé operace Azure Storage v kontejneru nebo frontě najdete v tématu [volání operací úložiště s tokeny OAuth](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
 
@@ -55,7 +55,7 @@ Podrobnosti o oprávněních potřebných pro jednotlivé operace Azure Storage 
 
 Následující příklad ukazuje, jak vytvořit kontejner z Azure CLI pomocí vašich přihlašovacích údajů Azure AD. Pokud chcete vytvořit kontejner, budete se muset přihlásit do Azure CLI a budete potřebovat skupinu prostředků a účet úložiště. Informace o tom, jak vytvořit tyto prostředky, najdete v tématu [rychlý Start: vytvoření, stažení a výpis objektů BLOB pomocí Azure CLI](../blobs/storage-quickstart-blobs-cli.md).
 
-1. Než vytvoříte kontejner, přiřaďte roli [Přispěvatel dat objektů BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) sami sobě. I když jste vlastníkem účtu, potřebujete explicitní oprávnění k provádění operací s daty v účtu úložiště. Další informace o přiřazování rolí Azure najdete [v tématu udělení přístupu k datům objektů blob Azure a frontě pomocí RBAC v Azure Portal](storage-auth-aad-rbac.md).
+1. Než vytvoříte kontejner, přiřaďte roli [Přispěvatel dat objektů BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) sami sobě. I když jste vlastníkem účtu, potřebujete explicitní oprávnění k provádění operací s daty v účtu úložiště. Další informace o přiřazování rolí Azure najdete v tématu [použití Azure Portal k přiřazení role Azure pro přístup k datům BLOB a front](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > Rozšiřování přiřazení rolí Azure může trvat několik minut.
@@ -98,7 +98,7 @@ az storage container create \
 
 Můžete zadat parametry autorizace v proměnných prostředí, aby se zabránilo jejich zahrnutí při každém volání operace Azure Storage data. Následující tabulka popisuje dostupné proměnné prostředí.
 
-| Proměnná prostředí                  | Popis                                                                                                                                                                                                                                                                                                                                                                     |
+| Proměnná prostředí                  | Description                                                                                                                                                                                                                                                                                                                                                                     |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    AZURE_STORAGE_ACCOUNT              |    Název účtu úložiště. Tato proměnná by se měla používat ve spojení s klíčem účtu úložiště nebo tokenem SAS. Pokud žádná není, Azure CLI se pokusí získat přístupový klíč účtu úložiště pomocí ověřeného účtu Azure AD. Pokud se spustí velký počet příkazů najednou, může být dosaženo limitu omezování Azure Storage poskytovatele prostředků. Další informace o omezeních poskytovatele prostředků najdete v tématu [škálovatelnost a výkonnostní cíle pro poskytovatele prostředků Azure Storage](scalability-targets-resource-provider.md).             |
 |    AZURE_STORAGE_KEY                  |    Klíč účtu úložiště. Tato proměnná se musí používat ve spojení s názvem účtu úložiště.                                                                                                                                                                                                                                                                          |

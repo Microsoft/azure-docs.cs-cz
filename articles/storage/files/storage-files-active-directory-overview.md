@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 3f2fd9f2b75faeeb2d40bd71d074a929e86eebdf
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: be308a91b5b583f96406f10675344ab263150a81
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358368"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716076"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Přehled možností ověřování na základě identity souborů Azure pro přístup přes protokol SMB
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -21,7 +21,7 @@ Informace o tom, jak povolit místní ověřování Active Directory Domain Serv
 
 Informace o tom, jak povolit ověřování Azure služba AD DS pro sdílené složky Azure, najdete v tématu [povolení Azure Active Directory Domain Servicesho ověřování u souborů Azure](storage-files-identity-auth-active-directory-domain-service-enable.md).
 
-## <a name="glossary"></a>Slovníček 
+## <a name="glossary"></a>Glosář 
 Je užitečné pochopit některé klíčové podmínky týkající se ověřování služby Azure AD Domain Services přes SMB pro sdílené složky Azure:
 
 -   **Ověřování protokolu Kerberos**
@@ -44,9 +44,9 @@ Je užitečné pochopit některé klíčové podmínky týkající se ověřová
 
     Integrace s místními Active Directory Domain Services (služba AD DS) se službou Azure Files poskytuje metody pro ukládání dat adresáře a jejich zpřístupnění uživatelům a správcům sítě. Zabezpečení je integrováno do služba AD DS prostřednictvím ověřování přihlášení a řízení přístupu k objektům v adresáři. Pomocí jediného přihlášení k síti můžou správci spravovat data adresáře a organizaci v celé své síti a autorizovaní uživatelé sítě mají přístup k prostředkům kdekoli v síti. Služba AD DS obvykle přijímá podniky v místních prostředích a služba AD DS přihlašovací údaje se používají jako identita pro řízení přístupu. Další informace najdete v tématu [přehled Active Directory Domain Services](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
--   **Řízení přístupu na základě role v Azure (Azure RBAC)**
+-   **Řízení přístupu na základě role Azure (Azure RBAC)**
 
-    Řízení přístupu na základě role Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí RBAC můžete spravovat přístup k prostředkům tím, že uživatelům udělíte nejnižší oprávnění potřebná k provádění svých úloh. Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC) v Azure?](../../role-based-access-control/overview.md).
+    Řízení přístupu na základě role Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí Azure RBAC můžete spravovat přístup k prostředkům tím, že uživatelům udělíte nejnižší oprávnění potřebná k provádění svých úloh. Další informace o službě Azure RBAC najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
 
 ## <a name="common-use-cases"></a>Běžné případy použití
 

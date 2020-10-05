@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
-ms.openlocfilehash: 70d0e31809227d5e27f8f2b22a7703d5a8ccca3c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3b6162552e43c9f475bef2ca3097da22ae198011
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275060"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713685"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>Správa a hledání dat objektů BLOB v Azure pomocí indexu objektů BLOB (Preview)
 
@@ -100,11 +100,11 @@ Následující tabulka uvádí všechny platné operátory pro FindBlobsByTags:
 |  Operátor  |  Popis  | Příklad |
 |------------|---------------|---------|
 |     =      |     Je rovno     | "Stav" = probíhá " |
-|     >      |  Větší než | "Date" > ' 2018-06-18 ' |
+|     >      |  Je větší než | "Date" > ' 2018-06-18 ' |
 |     >=     |  Větší než nebo rovno | "Priorita" >= "5" |
-|     <      |  Menší než   | "Stáří" < "32" |
+|     <      |  Je menší než   | "Stáří" < "32" |
 |     <=     |  Menší než nebo rovno  | "Společnost" <= "contoso" |
-|    AND     |  Logický operátor and  | "Rank" >= "010" a "Rank" < "100" |
+|    A     |  Logický operátor and  | "Rank" >= "010" a "Rank" < "100" |
 | @container | Nastavit obor na konkrétní kontejner | @container = "VideoFiles" a "status" = "Hotovo" |
 
 > [!NOTE]
@@ -124,11 +124,11 @@ Následující tabulka uvádí všechny platné operátory pro podmíněné oper
 |------------|---------------|---------|
 |     =      |     Je rovno     | "Stav" = probíhá " |
 |     <>     |   Není rovno   | "Status"  <>  "Hotovo"  |
-|     >      |  Větší než | "Date" > ' 2018-06-18 ' |
+|     >      |  Je větší než | "Date" > ' 2018-06-18 ' |
 |     >=     |  Větší než nebo rovno | "Priorita" >= "5" |
-|     <      |  Menší než   | "Stáří" < "32" |
+|     <      |  Je menší než   | "Stáří" < "32" |
 |     <=     |  Menší než nebo rovno  | "Společnost" <= "contoso" |
-|    AND     |  Logický operátor and  | "Rank" >= "010" a "Rank" < "100" |
+|    A     |  Logický operátor and  | "Rank" >= "010" a "Rank" < "100" |
 |     NEBO     | Logický operátor OR   | "Stav" = "dokončeno" nebo "Priorita" >= "05" |
 
 > [!NOTE]
@@ -196,7 +196,7 @@ Následující pravidlo správy životního cyklu se vztahuje na objekty blob bl
 
 Přístup k indexu objektů blob můžete autorizovat pomocí jednoho z následujících přístupů:
 
-- Pomocí řízení přístupu na základě role (RBAC) udělíte oprávnění objektu zabezpečení služby Azure Active Directory (Azure AD). Microsoft doporučuje používat Azure AD pro zajištění vysokého zabezpečení a snadného použití. Další informace o používání služby Azure AD s operacemi objektů BLOB najdete v tématu [autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory](../common/storage-auth-aad.md).
+- Pomocí řízení přístupu na základě role Azure (Azure RBAC) udělíte oprávnění objektu zabezpečení služby Azure Active Directory (Azure AD). Microsoft doporučuje používat Azure AD pro zajištění vysokého zabezpečení a snadného použití. Další informace o používání služby Azure AD s operacemi objektů BLOB najdete v tématu [autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory](../common/storage-auth-aad.md).
 - Pomocí sdíleného přístupového podpisu (SAS) můžete delegovat přístup k indexu objektů BLOB. Další informace o sdílených přístupových podpisech najdete v článku [udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md).
 - Použitím přístupových klíčů účtu k autorizaci operací se sdíleným klíčem. Další informace najdete v tématu [autorizace pomocí sdíleného klíče](/rest/api/storageservices/authorize-with-shared-key).
 
@@ -205,7 +205,7 @@ Značky indexu objektu BLOB jsou dílčím prostředkem pro data objektů BLOB. 
 ### <a name="role-based-access-control"></a>Řízení přístupu na základě role
 Volajícím, kteří používají [identitu Azure AD](../common/storage-auth-aad.md) , můžou mít k dispozici následující oprávnění pro práci se značkami indexu objektů BLOB.
 
-|   Operace objektu BLOB  |  Akce RBAC   |
+|   Operace objektu BLOB  |  Akce Azure RBAC   |
 |--------------------|----------------|
 | Hledání objektů BLOB podle značek | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Filter/Action |
 | Nastavení značek objektů BLOB      | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Tags/Write |
@@ -297,7 +297,7 @@ Tato část popisuje známé problémy a podmínky v aktuální verzi Public Pre
 - CopyBlob (asynchronní kopírování) z jiného účtu úložiště s použitými značkami v cílovém objektu BLOB v současné době způsobí, že modul indexu objektů BLOB nevrátí objekt BLOB a jeho značky v sadě filtrů. Doporučuje se v provizorním použití CopyBlob z adresy URL (Synchronization Copy).
 - Značky jsou při vytváření snímku trvalé; zvýšení úrovně snímku se ale v tuto chvíli nepodporuje a výsledkem může být prázdná sada značek.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 ### <a name="can-blob-index-help-me-filter-and-query-content-inside-my-blobs"></a>Může vám index objektu BLOB pomáhat při filtrování a dotazování obsahu uvnitř objektů BLOB?
 Ne, značky indexu objektů BLOB vám pomůžou najít objekty blob, které hledáte. Pokud potřebujete hledat v rámci objektů blob, použijte akceleraci dotazů nebo Azure Search.

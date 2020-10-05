@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: df04cc41f2b5947bb0cf23715a857a3449627f23
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d8050b87d122ef676b52f1cab5e06175a55602b1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550241"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713866"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Kurz: Azure Active Directory integrace se službami pro správu docházky
 
@@ -30,7 +30,7 @@ Integrace služeb pro správu docházky se službou Azure AD poskytuje následuj
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD se službami pro správu docházky potřebujete následující položky:
 
@@ -128,11 +128,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služeb 
 
 1. V **části Správa zabezpečení**klikněte na **ověřování SAML** .
 
-    ![Konfigurace služby pro správu docházky](./media/attendancemanagementservices-tutorial/user1.png)
+    ![Snímek obrazovky ukazuje ověřování SAML vybrané na stránce, která používá jiné znaky než latinku.](./media/attendancemanagementservices-tutorial/user1.png)
 
 1. Proveďte tyto kroky:
 
-    ![Konfigurace služby pro správu docházky](./media/attendancemanagementservices-tutorial/user2.png)
+    ![Snímek obrazovky se zobrazí okno, kde můžete provádět úkoly popsané v tomto kroku.](./media/attendancemanagementservices-tutorial/user2.png)
 
     a. Vyberte možnost **použít ověřování SAML**.
 
@@ -168,7 +168,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -176,7 +176,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **služby pro správu docházky**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost **služby pro správu docházky**.
 
@@ -206,15 +206,15 @@ Aby se uživatelé Azure AD mohli přihlašovat ke službám pro správu docház
 
 1. V **části Správa zabezpečení**klikněte na **Správa uživatelů** .
 
-    ![Přidat zaměstnance](./media/attendancemanagementservices-tutorial/user5.png)
+    ![Snímek obrazovky se zobrazí Správa uživatelů vybraná na stránce, která používá jiné znaky než latinku.](./media/attendancemanagementservices-tutorial/user5.png)
 
 1. Klikněte na **Nová pravidla přihlášení**.
 
-    ![Přidat zaměstnance](./media/attendancemanagementservices-tutorial/user3.png)
+    ![Snímek obrazovky znázorňující výběr možnosti plus](./media/attendancemanagementservices-tutorial/user3.png)
 
 1. V části **informace o OBCiD** proveďte následující kroky:
 
-    ![Přidat zaměstnance](./media/attendancemanagementservices-tutorial/user4.png)
+    ![Snímek obrazovky se zobrazí okno, kde můžete provádět popsané úkoly.](./media/attendancemanagementservices-tutorial/user4.png)
 
     a. Do textového pole **OBCiD** zadejte e-maily uživatele, jako je například `BrittaSimon\@contoso.com` .
 

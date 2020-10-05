@@ -9,12 +9,12 @@ ms.date: 09/21/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 88349e90102bf3b0e4dc2868d5f65d476aac51f7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 794e89e75505d3c1c34bf2a15209c3218dfa3582
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280364"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714102"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Nastavení seznamů řízení přístupu (ACL) pro Azure Data Lake Storage Gen2 rekurzivně
 
@@ -25,7 +25,7 @@ Dědičnost seznamů ACL je již k dispozici pro nové podřízené položky, kt
 
 [Knihovny](#libraries)  |  [Ukázky](#code-samples)  |  [Osvědčené postupy](#best-practice-guidelines)  |  [Sdělte nám svůj názor](#provide-feedback)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -138,7 +138,7 @@ Dále vyberte způsob, jakým mají příkazy získat autorizaci k účtu úlož
 
 ### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>Možnost 1: získání autorizace pomocí Azure Active Directory (AD)
 
-V rámci tohoto přístupu systém zajistí, že váš uživatelský účet má odpovídající přiřazení řízení přístupu na základě role (RBAC) a oprávnění ACL. 
+V rámci tohoto přístupu systém zajistí, že váš uživatelský účet má odpovídající přiřazení Azure na základě role (Azure RBAC) a oprávnění ACL. 
 
 ```powershell
 $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseConnectedAccount
@@ -153,7 +153,7 @@ V následující tabulce jsou uvedeny všechny podporované role a jejich nastav
 
 ### <a name="option-2-obtain-authorization-by-using-the-storage-account-key"></a>Možnost 2: získání autorizace pomocí klíče účtu úložiště
 
-V rámci tohoto přístupu systém nekontroluje oprávnění RBAC nebo ACL.
+V rámci tohoto přístupu systém nekontroluje oprávnění Azure RBAC nebo ACL.
 
 ```powershell
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
@@ -174,7 +174,7 @@ Po instalaci balíčku přidejte tento příkaz using do horní části souboru 
 using Azure.Identity;
 ```
 
-Získejte ID klienta, tajný klíč klienta a ID tenanta. Pokud to chcete provést, přečtěte si téma [získání tokenu z Azure AD pro autorizaci žádostí z klientské aplikace](../common/storage-auth-aad-app.md). V rámci tohoto procesu bude nutné přiřadit k objektu zabezpečení jednu z následujících rolí [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md) . 
+Získejte ID klienta, tajný klíč klienta a ID tenanta. Pokud to chcete provést, přečtěte si téma [získání tokenu z Azure AD pro autorizaci žádostí z klientské aplikace](../common/storage-auth-aad-app.md). V rámci tohoto procesu budete muset k objektu zabezpečení přiřadit jednu z následujících rolí [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md) . 
 
 |Role|Funkce nastavení seznamu ACL|
 |--|--|
@@ -229,7 +229,7 @@ Pokud chcete používat fragmenty kódu v tomto článku, budete muset vytvořit
 
 K ověření vaší aplikace v Azure AD můžete použít [klientskou knihovnu Azure identity pro Python](https://pypi.org/project/azure-identity/) .
 
-Tento příklad vytvoří instanci **DataLakeServiceClient** pomocí ID klienta, tajného klíče klienta a ID tenanta.  Pokud chcete získat tyto hodnoty, přečtěte si téma [získání tokenu z Azure AD pro autorizaci žádostí z klientské aplikace](../common/storage-auth-aad-app.md). V rámci tohoto procesu bude nutné přiřadit k objektu zabezpečení jednu z následujících rolí [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md) . 
+Tento příklad vytvoří instanci **DataLakeServiceClient** pomocí ID klienta, tajného klíče klienta a ID tenanta.  Pokud chcete získat tyto hodnoty, přečtěte si téma [získání tokenu z Azure AD pro autorizaci žádostí z klientské aplikace](../common/storage-auth-aad-app.md). V rámci tohoto procesu budete muset k objektu zabezpečení přiřadit jednu z následujících rolí [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md) . 
 
 |Role|Funkce nastavení seznamu ACL|
 |--|--|
@@ -345,7 +345,7 @@ public async void SetACLRecursively(DataLakeServiceClient serviceClient)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-Nastavte seznam ACL rekurzivně voláním metody **DataLakeDirectoryClient. set_access_control_recursive** .
+Nastavte seznam ACL rekurzivně voláním metody **DataLakeDirectoryClient.set_access_control_recursive** .
 
 Tento příklad nastaví seznam řízení přístupu k adresáři s názvem `my-parent-directory` . Tyto záznamy poskytují oprávnění ke čtení, zápisu a spouštění vlastnícího uživatele, přidělí skupině pouze oprávnění ke čtení a spouštění a všem ostatním uživatelům nezíská přístup. Poslední položka seznamu ACL v tomto příkladu poskytuje konkrétního uživatele s ID objektu "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" oprávnění číst a spustit.
 
@@ -423,7 +423,7 @@ public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-Rekurzivní aktualizace seznamu ACL voláním metody **DataLakeDirectoryClient. update_access_control_recursive** . 
+Aktualizujte seznam ACL rekurzivně voláním metody **DataLakeDirectoryClient.update_access_control_recursive** . 
 
 Tento příklad aktualizuje položku seznamu řízení přístupu (ACL) s oprávněním k zápisu. 
 
@@ -498,7 +498,7 @@ public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-Odeberte položky seznamu ACL voláním metody **DataLakeDirectoryClient. remove_access_control_recursive** . 
+Odeberte položky seznamu ACL voláním metody **DataLakeDirectoryClient.remove_access_control_recursive** . 
 
 Tento příklad odebere položku seznamu řízení přístupu z seznamu řízení přístupu (ACL) adresáře s názvem `my-parent-directory` . 
 

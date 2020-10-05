@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 0e21009341857cc6de3cb7aa411445bc10e6827e
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 62768dcc8df9f7dbd6cbb15c434ec9886e2d1d44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223478"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713018"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-active-directory-domain-services-managed-domains"></a>Řešení chyb neodpovídajících adresářů pro existující Azure Active Directory Domain Services spravované domény
 
@@ -28,11 +28,11 @@ Tento článek vysvětluje, proč k chybě dochází a jak ho vyřešit.
 
 Neshodná Chyba adresáře se stane, když spravovaná doména a virtuální síť Azure služba AD DS patří do dvou různých tenantů Azure AD. Můžete mít například spravovanou doménu s názvem *aaddscontoso.com* , která běží v TENANTOVI Azure AD společnosti Contoso. Virtuální síť Azure pro spravovanou doménu je ale součástí tenanta Azure AD společnosti Fabrikam.
 
-Azure používá řízení přístupu na základě role (RBAC) k omezení přístupu k prostředkům. Pokud povolíte Azure služba AD DS v tenantovi Azure AD, hodnoty hash přihlašovacích údajů se synchronizují do spravované domény. Tato operace vyžaduje, abyste byli správcem tenanta pro adresář služby Azure AD a aby bylo možné řídit přístup k přihlašovacím údajům.
+Řízení přístupu na základě role Azure (Azure RBAC) slouží k omezení přístupu k prostředkům. Pokud povolíte Azure služba AD DS v tenantovi Azure AD, hodnoty hash přihlašovacích údajů se synchronizují do spravované domény. Tato operace vyžaduje, abyste byli správcem tenanta pro adresář služby Azure AD a aby bylo možné řídit přístup k přihlašovacím údajům.
 
 Chcete-li nasadit prostředky do virtuální sítě Azure a řídit provoz, musíte mít oprávnění správce ve virtuální síti, ve které nasadíte spravovanou doménu.
 
-Aby RBAC fungovalo konzistentně a zabezpečenému přístupu ke všem prostředkům, které Azure služba AD DS používá, musí Tato spravovaná doména a virtuální síť patřit do stejného tenanta služby Azure AD.
+Aby mohla služba Azure RBAC pracovat konzistentně a zabezpečeným přístupem ke všem prostředkům, které Azure služba AD DS používá, musí Tato spravovaná doména a virtuální síť patřit do stejného tenanta Azure AD.
 
 Pro nasazení platí následující pravidla:
 

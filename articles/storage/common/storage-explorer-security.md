@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: d9dea7cd0cc22cc8a1e0aa5c93ece76d689de0e0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e3bbe39077cf6d7781f7e11fde044cf272aa83e8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835438"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714384"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Průzkumník služby Azure Storage Průvodce zabezpečením
 
@@ -42,11 +42,11 @@ Pokud je to možné, doporučujeme používat ověřování Azure AD.
 
 Tato část popisuje dvě technologie založené na službě Azure AD, které se dají použít k zabezpečení prostředků úložiště.
 
-#### <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
+#### <a name="azure-role-based-access-control-azure-rbac"></a>Řízení přístupu na základě role Azure (Azure RBAC)
 
-[Řízení přístupu na základě role Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) poskytuje podrobné řízení přístupu k prostředkům Azure. Role a oprávnění RBAC se dají spravovat z Azure Portal.
+[Řízení přístupu na základě role Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) poskytuje podrobné řízení přístupu k prostředkům Azure. Role a oprávnění Azure je možné spravovat z Azure Portal.
 
-Průzkumník služby Storage podporuje přístup RBAC k účtům úložiště, objektům blob a frontám. Pokud potřebujete přístup ke sdíleným složkám nebo tabulkám, budete muset přiřadit role RBAC, které udělují oprávnění k vypsání klíčů účtu úložiště.
+Průzkumník služby Storage podporuje přístup Azure RBAC k účtům úložiště, objektům blob a frontám. Pokud potřebujete přístup ke sdíleným složkám nebo tabulkám, budete muset přiřadit role Azure, které udělí oprávnění k vypsání klíčů účtu úložiště.
 
 #### <a name="access-control-lists-acls"></a>Seznamy ACL
 
@@ -77,11 +77,11 @@ Při použití SAS v Průzkumník služby Storage doporučujeme následující p
 
 ### <a name="storage-account-keys"></a>Klíče účtu úložiště
 
-Klíče účtu úložiště udělují neomezený přístup ke službám a prostředkům v rámci účtu úložiště. Z tohoto důvodu doporučujeme omezit použití klíčů pro přístup k prostředkům v Průzkumník služby Storage. K poskytnutí přístupu použijte funkce RBAC nebo SAS.
+Klíče účtu úložiště udělují neomezený přístup ke službám a prostředkům v rámci účtu úložiště. Z tohoto důvodu doporučujeme omezit použití klíčů pro přístup k prostředkům v Průzkumník služby Storage. Místo toho použijte funkce služby Azure RBAC nebo SAS k poskytnutí přístupu.
 
-Některé role RBAC udělují oprávnění k načtení klíčů účtu úložiště. Uživatelé s těmito rolemi můžou efektivně obejít oprávnění udělená nebo zakázaná pomocí RBAC. Toto oprávnění nedoporučujeme udělit, pokud není nutné.
+Některé role Azure udělují oprávnění k načtení klíčů účtu úložiště. Uživatelé s těmito rolemi můžou efektivně obejít oprávnění udělená nebo zakázaná službou Azure RBAC. Toto oprávnění nedoporučujeme udělit, pokud není nutné.
 
-Průzkumník služby Storage se pokusí použít klíče účtu úložiště, pokud jsou k dispozici, k ověření požadavků. Tuto funkci můžete zakázat v nastavení (**služby > účty úložiště > zakázání použití klíčů**). Některé funkce nepodporují RBAC, jako je práce s klasickými účty úložiště. Tyto funkce stále vyžadují klíče a nejsou tímto nastavením ovlivněny.
+Průzkumník služby Storage se pokusí použít klíče účtu úložiště, pokud jsou k dispozici, k ověření požadavků. Tuto funkci můžete zakázat v nastavení (**služby > účty úložiště > zakázání použití klíčů**). Některé funkce nepodporují službu Azure RBAC, jako je práce s klasickými účty úložiště. Tyto funkce stále vyžadují klíče a nejsou tímto nastavením ovlivněny.
 
 Pokud pro přístup k prostředkům úložiště potřebujete použít klíče, doporučujeme následující pokyny:
 

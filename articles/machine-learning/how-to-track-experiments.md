@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 44fe71f575a32ccc1a687bc87793cb6a8b6508a9
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
-ms.translationtype: HT
+ms.openlocfilehash: 7eaa2fbe6033f801a252f6f2c7afa5eb726bce2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650619"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318241"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Povolení protokolování v trénovacích spuštěních Azure ML
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Sada SDK Azure Machine Learning Pythonu umožňuje protokolovat informace v reálném čase s využitím výchozího balíčku protokolování Pythonu a funkcí specifických pro tuto sadu. Můžete protokolovat místně a odesílat protokoly do svého pracovního prostoru na portálu.
 
@@ -37,17 +37,17 @@ Protokoly vám pomohou při diagnostice chyb a upozornění a také při sledov�
 
 ## <a name="data-types"></a>Typy dat
 
-Můžete protokolovat různé datové typy, včetně skalárních hodnot, seznamů, tabulek, obrázků, adresářů a dalších prvků. Další informace a ukázky kódu v Pythonu pro různé datové typy najdete na [referenční stránce k třídě Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true).
+Můžete protokolovat různé datové typy, včetně skalárních hodnot, seznamů, tabulek, obrázků, adresářů a dalších prvků. Další informace a ukázky kódu v Pythonu pro různé datové typy najdete na [referenční stránce k třídě Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true).
 
 ## <a name="interactive-logging-session"></a>Interaktivní relace protokolování
 
-Interaktivní relace protokolování se obvykle používají v prostředích poznámkových bloků. Interaktivní relace protokolování se pouštějí pomocí metody [Experiment.start_logging()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-). Všechny metriky zaznamenávané během relace se přidají do záznamu spuštění v experimentu. Metoda [run.complete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) ukončí relace a označí běh jako dokončený.
+Interaktivní relace protokolování se obvykle používají v prostředích poznámkových bloků. Interaktivní relace protokolování se pouštějí pomocí metody [Experiment.start_logging()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truestart-logging--args----kwargs-). Všechny metriky zaznamenávané během relace se přidají do záznamu spuštění v experimentu. Metoda [run.complete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecomplete--set-status-true-) ukončí relace a označí běh jako dokončený.
 
-## <a name="scriptrunconfig-logs"></a>Protokoly ScriptRunConfig
+## <a name="scriptrun-logs"></a>Protokoly ScriptRun
 
-V této části se naučíte přidat kód protokolování v rámci spuštění ScriptConfig. K zapouzdření skriptů a prostředí pro opakovatelná spouštění můžete využít třídu [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true). Tuto možnost můžete také využít pro zobrazení vizuálního widgetu pro Jupyter Notebook pro monitorování.
+V této části se dozvíte, jak přidat kód protokolování do běhů vytvořených při využití konfigurace pomocí třídy ScriptRunConfig. K zapouzdření skriptů a prostředí pro opakovatelná spouštění můžete využít třídu [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true). Tuto možnost můžete také využít pro zobrazení vizuálního widgetu pro Jupyter Notebook pro monitorování.
 
-V tomto příkladu se provede uklizení parametrů přes hodnoty alfa a k zaznamenání výsledků se použije metoda [run. log ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truelog-name--value--description----).
+V tomto příkladu se provede uklizení parametrů přes hodnoty alfa a k zaznamenání výsledků se použije metoda [run. log ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truelog-name--value--description----).
 
 1. Vytvořte trénovací skript, který obsahuje logiku protokolování: `train.py`.
 
@@ -83,7 +83,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 Azure Machine Learning může během trénování protokolovat také informace z jiných zdrojů, jako jsou například spuštění automatizovaného strojové učení nebo kontejnery Docker, které spouští úlohy. Tyto protokoly nejsou zdokumentované, ale pokud narazíte na problémy a kontaktujete podporu Microsoftu, dají se tyto protokoly využít při řešení potíží.
 
-Informace o protokolování metrik v designeru služby Azure Machine Learning (Preview) najdete v tématu věnovaném [postupu při protokolování metrik v designeru (Preview)](how-to-track-designer-experiments.md).
+Informace o protokolování metrik v designeru služby Azure Machine Learning najdete v tématu věnovaném [postupu při protokolování metrik v designeru](how-to-track-designer-experiments.md).
 
 ## <a name="example-notebooks"></a>Příklady poznámkových bloků
 
@@ -97,6 +97,6 @@ Následující poznámkové bloky ukazují koncepty popsané v tomto článku:
 
 Další informace o tom, jak používat Azure Machine Learning, najdete v těchto článcích:
 
-* Přečtěte si, jak [protokolovat metriky v designeru služby Azure Machine Learning (Preview)](how-to-track-designer-experiments.md).
+* Přečtěte si, jak [protokolovat metriky v designeru služby Azure Machine Learning](how-to-track-designer-experiments.md).
 
 * Příklad postupu při registraci nejvhodnějšího modelu a jeho nasazení najdete v kurzu [Trénování modelu klasifikace obrázků s Azure Machine Learning](tutorial-train-models-with-aml.md).

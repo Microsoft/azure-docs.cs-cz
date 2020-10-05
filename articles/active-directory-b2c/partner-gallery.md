@@ -1,7 +1,7 @@
 ---
 title: Galerie partnerů ISV pro Azure AD B2C
 titleSuffix: Azure AD B2C
-description: Naučte se integrovat s našimi partnery ISV a přizpůsobit tak prostředí koncových uživatelů vašim potřebám. Naše partnerská síť rozšiřuje naše možnosti řešení; povolení MFA, zabezpečení zákaznického ověřování, Access Control na základě rolí; boj proti podvodům prostřednictvím kontroly ověření identity.
+description: Naučte se integrovat s našimi partnery ISV a přizpůsobit tak prostředí koncových uživatelů vašim potřebám. Naše partnerská síť rozšiřuje naše možnosti řešení; povolení MFA, zabezpečení zákaznického ověřování, řízení přístupu na základě role; boj proti podvodům prostřednictvím kontroly ověření identity.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 21498f9117ac25356c9381d632644bbaa4d5a74b
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9e83fcd6a8e6a7b0c81f47cc3ad97b7f55da1b3b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706695"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713183"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C partneři ISV
 
-Naše síť partnera ISV rozšiřuje naše možnosti řešení, které vám pomůžou vytvořit bezproblémové prostředí koncových uživatelů. Pomocí Azure AD B2C můžete integrovat s partnery ISV a povolit tak metody Multi-Factor Authentication, povolit zabezpečené ověřování zákazníků (SCA), provádět Access Control založenou na rolích a bojovat proti podvodům prostřednictvím ověření identity a kontroly pravopisu. Pomocí našich podrobných ukázkových postupů se dozvíte, jak integrovat aplikace s partnery ISV uvedenými níže.
+Naše síť partnera ISV rozšiřuje naše možnosti řešení, které vám pomůžou vytvořit bezproblémové prostředí koncových uživatelů. Pomocí Azure AD B2C můžete integrovat s partnery ISV a povolit tak metody Multi-Factor Authentication, povolit zabezpečené ověřování zákazníků (SCA), provádět řízení přístupu na základě rolí a bojovat proti podvodům prostřednictvím ověření identity a kontroly pravopisu. Pomocí našich podrobných ukázkových postupů se dozvíte, jak integrovat aplikace s partnery ISV uvedenými níže.
 
 >[!NOTE]
 >[Web Azure Active Directory B2C Community na GitHubu](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/) nabízí také ukázkové vlastní zásady z komunity.

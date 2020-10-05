@@ -10,12 +10,12 @@ ms.date: 09/21/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 78c25afe69565840ca1af013d29dd512550241b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: df0bc6a07444070a0f14e632e81ad0bb787569c8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280220"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714755"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Získání tokenu z Azure AD pro autorizaci žádostí z klientské aplikace
 
@@ -31,7 +31,7 @@ Ukázková aplikace nabízí ucelené prostředí, které ukazuje, jak nakonfigu
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Přiřazení role k objektu zabezpečení služby Azure AD
 
-Pokud chcete ověřit objekt zabezpečení z vaší aplikace Azure Storage, nejdřív nakonfigurujte nastavení řízení přístupu na základě role (RBAC) pro daný objekt zabezpečení. Azure Storage definuje předdefinované role, které zahrnují oprávnění pro kontejnery a fronty. Když je role RBAC přiřazená k objektu zabezpečení, je tomuto objektu zabezpečení udělen přístup k tomuto prostředku. Další informace najdete v tématu [Správa přístupových práv k objektům blob Azure a zařazování dat do fronty pomocí RBAC](storage-auth-aad-rbac.md).
+Pokud chcete ověřit objekt zabezpečení z vaší aplikace Azure Storage, nejdřív nakonfigurujte nastavení řízení přístupu na základě role Azure (Azure RBAC) pro daný objekt zabezpečení. Azure Storage definuje předdefinované role, které zahrnují oprávnění pro kontejnery a fronty. Když je role Azure přiřazená k objektu zabezpečení, je tomuto objektu zabezpečení udělen přístup k tomuto prostředku. Další informace najdete v tématu [Správa přístupových práv k objektům blob Azure a zařazování dat do front pomocí Azure RBAC](storage-auth-aad-rbac.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Registrace aplikace pomocí tenanta Azure AD
 
@@ -46,7 +46,7 @@ Následující obrázek ukazuje společná nastavení pro registraci webové apl
 
 Po zaregistrování aplikace se v části **Nastavení**zobrazí ID aplikace (nebo ID klienta):
 
-:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="Snímek obrazovky zobrazující ID klienta":::
+:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="Snímek obrazovky, který ukazuje, jak zaregistrovat aplikaci úložiště ve službě Azure AD":::
 
 Další informace o registraci aplikace v Azure AD najdete v tématu [integrování aplikací pomocí Azure Active Directory](../../active-directory/develop/quickstart-v2-register-an-app.md).
 
@@ -59,13 +59,13 @@ Potom udělte aplikaci oprávnění k volání rozhraní API Azure Storage. Tent
 1. V podokně **oprávnění API pro žádosti** v části **jaký typ oprávnění vaše aplikace požaduje? zkontrolujte**, jestli je dostupný typ oprávnění **delegovaná oprávnění**. Tato možnost je ve výchozím nastavení vybrána.
 1. V části **oprávnění**zaškrtněte políčko vedle **user_impersonation**a pak vyberte tlačítko **Přidat oprávnění** .
 
-    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="Snímek obrazovky zobrazující oprávnění pro rozhraní API úložiště":::
+    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="Snímek obrazovky, který ukazuje, jak zaregistrovat aplikaci úložiště ve službě Azure AD":::
 
 1. Potom pro tato oprávnění udělte souhlas správce kliknutím na **udělit souhlas správce pro výchozí adresář**.
 
 V podokně **oprávnění rozhraní API** se teď zobrazí, že vaše registrovaná aplikace Azure AD má přístup k rozhraním API Microsoft Graph i Azure Storage a že je pro výchozí adresář udělený souhlas. Oprávnění se udělují Microsoft Graph automaticky při první registraci vaší aplikace ve službě Azure AD.
 
-:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="Snímek obrazovky zobrazující oprávnění rozhraní API pro registrovanou aplikaci":::
+:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="Snímek obrazovky, který ukazuje, jak zaregistrovat aplikaci úložiště ve službě Azure AD":::
 
 ### <a name="create-a-client-secret"></a>Vytvoření tajného klíče klienta
 
@@ -87,7 +87,7 @@ Dále nakonfigurujte pro aplikaci implicitní tok udělení. Postupujte takto:
 1. V části **Spravovat** vyberte nastavení **ověřování** .
 1. V části **implicitní grant** zaškrtněte políčko, pokud chcete povolit tokeny ID, jak je znázorněno na následujícím obrázku:
 
-    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="Snímek obrazovky ukazující, jak povolit nastavení pro implicitní tok udělení":::
+    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="Snímek obrazovky, který ukazuje, jak zaregistrovat aplikaci úložiště ve službě Azure AD":::
 
 ## <a name="client-libraries-for-token-acquisition"></a>Klientské knihovny pro získání tokenu
 
@@ -127,7 +127,7 @@ K vyžádání tokenu budete potřebovat následující hodnoty z registrace va�
 
 Chcete-li spustit ukázku kódu, vytvořte účet úložiště v rámci stejného předplatného jako váš Azure Active Directory. Pak vytvořte kontejner v rámci tohoto účtu úložiště. Vzorový kód vytvoří objekt blob bloku v tomto kontejneru.
 
-Dále explicitně přiřaďte roli **Přispěvatel dat objektů BLOB úložiště** k uživatelskému účtu, pod kterým budete spouštět vzorový kód. Pokyny k přiřazení této role v Azure Portal najdete v tématu [udělení přístupu k datům objektů blob Azure a frontě pomocí RBAC v Azure Portal](storage-auth-aad-rbac-portal.md).
+Dále explicitně přiřaďte roli **Přispěvatel dat objektů BLOB úložiště** k uživatelskému účtu, pod kterým budete spouštět vzorový kód. Pokyny k přiřazení této role v Azure Portal najdete v tématu [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](storage-auth-aad-rbac-portal.md).
 
 > [!NOTE]
 > Když vytvoříte účet Azure Storage, nebudete automaticky přiřazovat oprávnění pro přístup k datům prostřednictvím služby Azure AD. Musíte explicitně přiřadit roli Azure pro Azure Storage. Můžete ji přiřadit na úrovni předplatného, skupiny prostředků, účtu úložiště nebo kontejneru nebo fronty.
@@ -291,5 +291,5 @@ https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 ## <a name="next-steps"></a>Další kroky
 
 - [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/)
-- [Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md)
+- [Správa přístupových práv k datům úložiště pomocí Azure RBAC](storage-auth-aad-rbac.md)
 - [Ověřování přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](storage-auth-aad-msi.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d820a3fc9b12a36a76e2eb887b32d27acc156c76
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a278204da556b41bd663b8b5c9ff5152e16017cc
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522332"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715871"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>Kurz: integrace AlertOps s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat AlertOps s Azure Active Directory (Azu
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -108,11 +108,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. V levém navigačním panelu klikněte na **Nastavení účtu** .
 
-    ![Konfigurace AlertOps](./media/alertops-tutorial/configure1.png)
+    ![Snímek obrazovky se zobrazí v nabídce AlertOps s nastavením účtu s názvem.](./media/alertops-tutorial/configure1.png)
 
 5. Na stránce **nastavení odběru** vyberte **jednotné přihlašování** a proveďte následující kroky:
 
-    ![Konfigurace AlertOps](./media/alertops-tutorial/configure2.png)
+    ![Snímek obrazovky se zobrazí okno nastavení předplatného pro s s s hodnotami, které jsou zadány, jak je popsáno v tomto kroku.](./media/alertops-tutorial/configure2.png)
 
     a. Zaškrtněte políčko **použít jednotné přihlašování (SSO)** .
 
@@ -138,7 +138,7 @@ V této části vytvoříte testovacího uživatele v Azure Portal s názvem Bri
    1. Do pole **Název** zadejte `Britta Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -164,15 +164,15 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 2. V levém navigačním panelu klikněte na **uživatele** .
 
-    ![Konfigurace AlertOps](./media/alertops-tutorial/user1.png)
+    ![Snímek obrazovky se zobrazí v nabídce AlertOps s uživateli s názvem.](./media/alertops-tutorial/user1.png)
 
 3. Vyberte **Přidat uživatele**.
 
-    ![Konfigurace AlertOps](./media/alertops-tutorial/user2.png)
+    ![Snímek obrazovky s tlačítkem Přidat uživatele zobrazí okno uživatelé.](./media/alertops-tutorial/user2.png)
 
 4. V dialogovém okně **Přidat uživatele** proveďte následující kroky:
 
-    ![Konfigurace AlertOps](./media/alertops-tutorial/user3.png)
+    ![Snímek obrazovky se zobrazí v podokně Přidat uživatele s hodnotami uvedenými v tomto kroku.](./media/alertops-tutorial/user3.png)
 
     a. Do textového pole **přihlašovací uživatelské jméno** zadejte uživatelské jméno uživatele, jako je **Brittasimon**.
 

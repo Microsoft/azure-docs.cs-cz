@@ -4,14 +4,14 @@ description: Běžné problémy se Azure Monitor výstrahami metrik a možnými 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 10/04/2020
+ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 1280529aa758194dbd02196d71a715310431a73b
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710290"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715316"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s výstrahami Azure Monitor metriky 
 
@@ -81,8 +81,10 @@ Další informace o shromažďování dat z hostovaného operačního systému v
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>Nejde najít metriku, na které se má upozornit.
 
-Pokud chcete upozornit na konkrétní metriku, ale nevidíte žádné metriky pro daný prostředek, [Zkontrolujte, jestli je typ prostředku podporovaný pro výstrahy metriky](./alerts-metric-near-real-time.md).
-Pokud vidíte některé metriky pro prostředek, ale nemůžete najít konkrétní metriky, [Zkontrolujte, jestli je tato metrika k dispozici](./metrics-supported.md), a pokud ano, podívejte se na popis metriky a zjistěte, jestli je k dispozici jenom pro konkrétní verze nebo edice prostředku.
+Pokud chcete upozornit na konkrétní metriku, ale nevidíte ji při vytváření pravidla výstrahy, zkontrolujte následující:
+- Pokud u prostředku nevidíte žádné metriky, [Zkontrolujte, jestli je typ prostředku podporovaný pro výstrahy metriky](./alerts-metric-near-real-time.md).
+- Pokud vidíte některé metriky pro daný prostředek, ale nejdou najít konkrétní metriky, zkontrolujte, jestli [je tato metrika k dispozici](./metrics-supported.md), a pokud ano, podívejte se na popis metriky a zkontrolujte, jestli je k dispozici jenom pro konkrétní verze nebo edice prostředku.
+- Pokud metrika není pro prostředek k dispozici, může být k dispozici v protokolech prostředků a lze ji monitorovat pomocí výstrah protokolu. Další informace o tom, jak [shromažďovat a analyzovat protokoly prostředků z prostředku Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs), najdete tady.
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Nejde najít dimenzi metriky, na které se má upozornit.
 

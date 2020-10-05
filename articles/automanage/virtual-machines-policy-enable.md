@@ -8,19 +8,19 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: 47f4085ff01526853fab29da2c1bc1a3e8998d23
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8f679626b69bd855e86b94cdde51955edd068e8f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935232"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714893"
 ---
 # <a name="enable-automanage-for-virtual-machines-through-azure-policy"></a>Povolit pro virtuální počítače možnost automanage prostřednictvím Azure Policy
 
 Pokud chcete povolit autosprávu pro spoustu virtuálních počítačů, můžete to udělat pomocí integrované [Azure Policy](..\governance\azure-management.md). Tento článek vás provede hledáním správné zásady a jejím přiřazením, aby se povolila funkce automanage v Azure Portal.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) před tím, než začnete.
 
@@ -28,12 +28,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 > Bezplatné zkušební účty nemají přístup k virtuálním počítačům použitým v tomto kurzu. Upgradujte prosím na předplatné s průběžnými platbami.
 
 > [!IMPORTANT]
-> Následující oprávnění RBAC je potřeba k povolení funkce automanage: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatelů** .
+> K povolení funkce automanage můžete použít následující oprávnění Azure RBAC: roli **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatelů** .
 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 
 ## <a name="locate-and-assign-the-policy"></a>Vyhledání a přiřazení zásad

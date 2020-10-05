@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 0c5f91f1423bc20b2202589c488c9b225ed3fbaa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 58395463c494a95a8842cddbe4d51544ce03d212
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333847"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713371"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Použití Azure Machine Learning studia ve službě Azure Virtual Network
 
@@ -38,7 +38,7 @@ Podívejte se na další články v této sérii:
 > I když většina sady Studio funguje s daty uloženými ve virtuální síti, integrované poznámkové bloky __ne__. Integrované poznámkové bloky nepodporují používání úložiště, které je ve virtuální síti. Místo toho můžete použít poznámkové bloky Jupyter z výpočetní instance. Další informace najdete v části [přístup k datům v poznámkovém bloku COMPUTE instance]() .
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Přečtěte si [Přehled zabezpečení sítě](how-to-network-security-overview.md) , abyste porozuměli běžným scénářům virtuální sítě a celkové architektuře virtuální sítě.
 
@@ -102,7 +102,7 @@ V případě __úložiště objektů BLOB v Azure__je identita spravovaná praco
 
 K řízení přístupu k datům v rámci virtuální sítě můžete použít seznamy RBAC a seznam řízení přístupu (ACL) ve stylu POSIX.
 
-Chcete-li použít RBAC, přidejte identitu spravovanou pracovním prostorem do role [čtečky dat objektů BLOB](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) . Další informace najdete v tématu [řízení přístupu na základě role](../storage/blobs/data-lake-storage-access-control.md#role-based-access-control).
+Chcete-li použít RBAC, přidejte identitu spravovanou pracovním prostorem do role [čtečky dat objektů BLOB](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) . Další informace najdete v tématu [řízení přístupu na základě role v Azure](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control).
 
 Aby bylo možné používat seznamy řízení přístupu (ACL), je možné přiřadit přístup stejným způsobem jako jakýkoli jiný princip zabezpečení. Další informace najdete v tématu [seznam řízení přístupu k souborům a adresářům](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 

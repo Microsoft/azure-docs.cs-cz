@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 834d3bd3e41be0487a3d05f00846bcb58bfe00a8
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f39efcbfe7f0094e9481049a1678dba8a045888f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018178"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714252"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojení ke službě Azure IoT Central
 
@@ -99,13 +99,13 @@ Postup přidání a ověření kořenového nebo zprostředkujícího certifiká
 
 1. Na **stránce primární certifikát**Nahrajte svůj primární certifikát X. 509. Toto je váš kořenový nebo zprostředkující certifikát:
 
-    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="Snímek primárního certifikátu":::
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="Přidat snímek skupiny registrace X. 509":::
 
-1. Pomocí **ověřovacího kódu** vygenerujte ověřovací kód v nástroji, který používáte. Pak vyberte **ověřit** a odešlete ověřovací certifikát.
+1. Kliknutím na možnost **Generovat ověřovací kód** vygenerujte kód pro nástroj, který používáte k vygenerování ověřovacího certifikátu. Pak vyberte **ověřit** a odešlete ověřovací certifikát.
 
 1. Po úspěšném ověření se zobrazí následující potvrzení:
 
-    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="Snímek ověřeného primárního certifikátu":::
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="Přidat snímek skupiny registrace X. 509":::
 
 Ověření vlastnictví certifikátu zajišťuje, že uživatel, který certifikát nahrává, má privátní klíč certifikátu.
 
@@ -147,7 +147,7 @@ Tok se mírně liší v závislosti na tom, jestli zařízení používají toke
 
 1. Zkopírujte primární klíč skupiny ze skupiny pro zápis **SAS-IoT-Device** :
 
-    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Skupinový primární klíč ze skupiny SAS-IoT-Devices skupina pro registraci":::
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Přidat snímek skupiny registrace X. 509":::
 
 1. Pomocí `az iot central device compute-device-key` příkazu vygenerujte klíče SAS zařízení. Použijte primární klíč skupiny z předchozího kroku. ID zařízení musí být malá písmena:
 

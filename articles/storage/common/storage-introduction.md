@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b603776ce19bca8d6fefa7c3c85366ebe3b7b01f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1f335640eb37f51857fa295298d0a3ca91f2a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653796"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714980"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Seznámení se základními Azure Storage službami
 
@@ -91,7 +91,7 @@ Služba front Azure se využívá k ukládání a načítání zpráv. Fronty zp
 
 Další informace o službě Fronty Azure najdete v tématu o [seznámení s Frontami](../queues/storage-queues-introduction.md).
 
-## <a name="table-storage"></a>Table Storage
+## <a name="table-storage"></a>Úložiště Table
 
 Azure Table Storage je teď součástí služby Azure Cosmos DB. Dokumentaci ke službě Azure Table Storage najdete v tématu [Přehled služby Azure Table Storage](../tables/table-storage-overview.md). Kromě existující služby Azure Table Storage je k dispozici také nabídka nového rozhraní API tabulky Azure Cosmos DB, které poskytuje tabulky s optimalizovanou propustností, globální distribuci a automatické sekundární indexy. Pokud se chcete dozvědět víc a vyzkoušet nové prostředí Premium, přečtěte si téma [Azure Cosmos DB rozhraní API pro tabulky](https://aka.ms/premiumtables).
 
@@ -111,7 +111,7 @@ Azure Storage nabízí několik typů účtů úložiště. Každý typ podporuj
 
 Každý požadavek na Azure Storage musí být autorizován. Azure Storage podporuje následující autorizační metody:
 
-- **Integrace služby Azure Active Directory (Azure AD) pro data objektů BLOB a front** Azure Storage podporuje ověřování a autorizaci ve službě Azure AD pro objekty BLOB a frontu prostřednictvím řízení přístupu na základě role (RBAC). Pro zajištění vysokého zabezpečení a snadného použití se doporučuje autorizovat žádosti pomocí Azure AD. Další informace najdete v tématu [autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](storage-auth-aad.md).
+- **Integrace služby Azure Active Directory (Azure AD) pro data objektů BLOB a front** Azure Storage podporuje ověřování a autorizaci ve službě Azure AD pro objekty BLOB a Queue prostřednictvím řízení přístupu na základě role Azure (Azure RBAC). Pro zajištění vysokého zabezpečení a snadného použití se doporučuje autorizovat žádosti pomocí Azure AD. Další informace najdete v tématu [autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](storage-auth-aad.md).
 - **Ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure.** Soubory Azure podporují autorizaci založenou na identitě přes protokol SMB (Server Message Block) prostřednictvím Azure Active Directory Domain Services (Azure služba AD DS) nebo místní Active Directory Domain Services (Preview). Vaše virtuální počítače s Windows připojené k doméně mají přístup ke sdíleným složkám Azure pomocí přihlašovacích údajů Azure AD. Další informace najdete v tématu [Přehled podpory ověřování na základě identity souborů Azure pro přístup SMB](../files/storage-files-active-directory-overview.md) a [plánování pro nasazení souborů Azure](../files/storage-files-planning.md#identity).
 - **Autorizace se sdíleným klíčem.** Azure Storage Blob, soubory, fronty a služby Table Services podporují autorizaci pomocí sdíleného klíče. Klient používající autorizaci pomocí sdíleného klíče předává hlavičku s každým požadavkem, který je podepsaný pomocí přístupového klíče účtu úložiště. Další informace najdete v tématu [autorizace pomocí sdíleného klíče](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key).
 - **Autorizaci pomocí sdílených přístupových podpisů (SAS).** Sdílený přístupový podpis (SAS) je řetězec, který obsahuje token zabezpečení, který se dá připojit k identifikátoru URI pro prostředek úložiště. Token zabezpečení zapouzdřuje omezení jako oprávnění a interval přístupu. Další informace najdete v tématu [použití sdílených přístupových podpisů (SAS)](storage-sas-overview.md).

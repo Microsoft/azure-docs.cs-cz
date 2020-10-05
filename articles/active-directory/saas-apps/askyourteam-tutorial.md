@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ad68208f8993ce84c71c97d97de7e2b090f1e7da
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6ab6a355b986daeca41ffd18a51689cd9d880dcd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549411"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713814"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askyourteam"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s AskYourTeam
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat AskYourTeam s Azure Active Directory (
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -105,7 +105,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -131,19 +131,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **Moje organizace**.
 
-    ![Konfigurace AskYourTeam](./media/askyourteam-tutorial/user1.png)
+    ![Snímek obrazovky se zobrazí odkaz Moje organizace.](./media/askyourteam-tutorial/user1.png)
 
 1. Klikněte na **integrace**.
 
-    ![Konfigurace AskYourTeam](./media/askyourteam-tutorial/configure1.png)
+    ![Snímek obrazovky ukazuje odkaz integrace.](./media/askyourteam-tutorial/configure1.png)
 
 1. Klikněte na **Upravit nastavení**.
 
-    ![Konfigurace AskYourTeam](./media/askyourteam-tutorial/configure2.png)
+    ![Snímek obrazovky s tlačítkem upravit nastavení zobrazí zprávu jednotného přihlašování.](./media/askyourteam-tutorial/configure2.png)
 
 1. Na stránce **Upravit integraci jednotného přihlašování** proveďte následující kroky: 
 
-    ![Konfigurace AskYourTeam](./media/askyourteam-tutorial/configure3.png)
+    ![Snímek obrazovky ukazuje integraci s jednotným přihlašováním, kde můžete zadat hodnoty pro tento krok.](./media/askyourteam-tutorial/configure3.png)
 
     a. Do textového pole **Adresa URL služby jednotného přihlašování SAML** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
@@ -168,15 +168,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **Moje organizace**.
 
-    ![Konfigurace AskYourTeam](./media/askyourteam-tutorial/user1.png)
+    ![Snímek obrazovky se zobrazí odkaz Moje organizace, kde zahájíte tuto úlohu.](./media/askyourteam-tutorial/user1.png)
 
 1. Klikněte na **Uživatelé** a vyberte **Nový uživatel**.
 
-    ![Konfigurace AskYourTeam](./media/askyourteam-tutorial/user2.png)
+    ![Snímek obrazovky s novým uživatelem zobrazuje odkaz uživatelé.](./media/askyourteam-tutorial/user2.png)
 
 1. V části **Nový uživatel** proveďte následující kroky:
 
-    ![Konfigurace AskYourTeam](./media/askyourteam-tutorial/user3.png)
+    ![Snímek obrazovky ukazuje novou část uživatele, do které zadáte informace o uživateli.](./media/askyourteam-tutorial/user3.png)
 
     1. Do textového pole **jméno** a příjmení zadejte jméno uživatele.
 
@@ -194,7 +194,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici AskYourTeam, měli byste se automaticky přihlásit k AskYourTeam, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

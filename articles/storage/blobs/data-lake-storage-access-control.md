@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fa6a226926439e30b9ca51c75743ce35915ffd85
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 31d67daebf2e15fb11b5ebe30c4f7741a09eed2d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017230"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716109"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu ve službě Azure Data Lake Storage Gen2
 
@@ -21,22 +21,22 @@ Azure Data Lake Storage Gen2 implementuje model řízení přístupu, který pod
 
 <a id="azure-role-based-access-control-rbac"></a>
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+## <a name="azure-role-based-access-control"></a>Řízení přístupu na základě role v Azure
 
-RBAC používá přiřazení rolí k efektivnímu použití sad oprávnění pro *objekty zabezpečení*. Objekt *zabezpečení* je objekt, který představuje uživatele, skupinu, instanční objekt nebo spravovanou identitu, která je definovaná v Azure Active Directory (AD), která žádá o přístup k prostředkům Azure.
+Azure RBAC používá přiřazení rolí, aby efektivně používala sady oprávnění pro *objekty zabezpečení*. Objekt *zabezpečení* je objekt, který představuje uživatele, skupinu, instanční objekt nebo spravovanou identitu, která je definovaná v Azure Active Directory (AD), která žádá o přístup k prostředkům Azure.
 
 Tyto prostředky Azure jsou obvykle omezené na prostředky nejvyšší úrovně (například: Azure Storage účty). V případě Azure Storage a následně Azure Data Lake Storage Gen2 tento mechanismus byl rozšířen na prostředek kontejneru (systém souborů).
 
-Informace o tom, jak přiřadit role k objektům zabezpečení v rozsahu svého účtu úložiště, najdete [v tématu udělení přístupu k datům služby Azure Blob a frontě pomocí RBAC v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Informace o tom, jak přiřadit role k objektům zabezpečení v oboru účtu úložiště, najdete v tématu [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
 > Uživatel typu Host nemůže vytvořit přiřazení role.
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Dopad přiřazení rolí na seznam řízení přístupu na úrovni souborů a adresářů
 
-Zatímco použití přiřazení rolí Azure je účinným mechanismem pro řízení přístupových oprávnění, jedná se o velmi hrubý mechanismus vzhledem k seznamům ACL. Nejmenší členitost pro RBAC je na úrovni kontejneru a ta se vyhodnotí s vyšší prioritou než seznamy ACL. Proto pokud přiřadíte roli objektu zabezpečení v oboru kontejneru, má tento objekt zabezpečení úroveň autorizace přidruženou k této roli pro všechny adresáře a soubory v tomto kontejneru bez ohledu na přiřazení seznamu ACL.
+Zatímco použití přiřazení rolí Azure je účinným mechanismem pro řízení přístupových oprávnění, jedná se o velmi hrubý mechanismus vzhledem k seznamům ACL. Nejmenší členitost pro Azure RBAC je na úrovni kontejneru a ta se vyhodnotí s vyšší prioritou než seznamy ACL. Proto pokud přiřadíte roli objektu zabezpečení v oboru kontejneru, má tento objekt zabezpečení úroveň autorizace přidruženou k této roli pro všechny adresáře a soubory v tomto kontejneru bez ohledu na přiřazení seznamu ACL.
 
-Když je objektu zabezpečení uděleno oprávnění k datům RBAC prostřednictvím [předdefinované role](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)nebo prostřednictvím vlastní role, tato oprávnění se vyhodnotí jako první při autorizaci žádosti. Pokud je požadovaná operace autorizována přiřazeními role Azure objektu zabezpečení, pak se autorizace okamžitě vyřeší a neprovádí se žádné další kontroly seznamu řízení přístupu (ACL). Případně platí, že pokud objekt zabezpečení nemá přiřazení role Azure, nebo se operace požadavku neshoduje s přiřazeným oprávněním, provedou se kontroly seznamů ACL, abyste zjistili, jestli je objekt zabezpečení autorizovaný k provedení požadované operace.
+Když je objektu zabezpečení uděleno oprávnění k datům RBAC Azure pomocí [předdefinované role](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)nebo prostřednictvím vlastní role, budou tato oprávnění vyhodnocena jako první při autorizaci žádosti. Pokud je požadovaná operace autorizována přiřazeními role Azure objektu zabezpečení, pak se autorizace okamžitě vyřeší a neprovádí se žádné další kontroly seznamu řízení přístupu (ACL). Případně platí, že pokud objekt zabezpečení nemá přiřazení role Azure, nebo se operace požadavku neshoduje s přiřazeným oprávněním, provedou se kontroly seznamů ACL, abyste zjistili, jestli je objekt zabezpečení autorizovaný k provedení požadované operace.
 
 > [!NOTE]
 > Pokud byl objektu zabezpečení přiřazeno přiřazení role úložiště dat objektu BLOB úložiště, pak je objekt zabezpečení považován za *superuživatele* a má plný přístup ke všem následným operacím, včetně nastavení vlastníka adresáře nebo souboru a seznamů ACL pro adresáře a soubory, pro které nejsou vlastníkem. Přístup super uživatele je jediný autorizovaný způsob, jak změnit vlastníka prostředku.
@@ -102,7 +102,7 @@ Oprávnění pro objekt kontejneru jsou **čtení**, **zápis**a **spouštění*
 | **Provést (X)** | Neznamená cokoli v kontextu Data Lake Storage Gen2 | Vyžaduje se pro procházení podřízených položek adresáře. |
 
 > [!NOTE]
-> Pokud udělujete oprávnění jenom pomocí seznamů ACL (bez RBAC), pak udělíte objektu zabezpečení nebo přístupu pro zápis k souboru, musíte objektu zabezpečení udělit oprávnění ke **spuštění** kontejneru a ke každé složce v hierarchii složek, které soubor zavedl.
+> Pokud udělujete oprávnění jenom pomocí seznamů ACL (žádná služba Azure RBAC) a potom udělíte objektu zabezpečení přístup pro čtení nebo zápis do souboru, musíte objektu zabezpečení udělit oprávnění ke **spuštění** kontejneru a ke každé složce v hierarchii složek, které soubor zavede.
 
 #### <a name="short-forms-for-permissions"></a>Zkrácené verze oprávnění
 
@@ -252,8 +252,8 @@ Umask pro Azure Data Lake Storage Gen2 konstantní hodnotu, která je nastavena 
 
 | komponenta umask     | Číselný tvar | Krátký tvar | Význam |
 |---------------------|--------------|------------|---------|
-| umask. owning_user   |    0         |   `---`      | Pro vlastnícího uživatele zkopírujte výchozí seznam řízení přístupu nadřazeného objektu do seznamu ACL podřízeného objektu. | 
-| umask. owning_group  |    0         |   `---`      | Pro vlastnící skupinu zkopírujte výchozí seznam řízení přístupu nadřazeného objektu do seznamu ACL podřízeného objektu. | 
+| umask.owning_user   |    0         |   `---`      | Pro vlastnícího uživatele zkopírujte výchozí seznam řízení přístupu nadřazeného objektu do seznamu ACL podřízeného objektu. | 
+| umask.owning_group  |    0         |   `---`      | Pro vlastnící skupinu zkopírujte výchozí seznam řízení přístupu nadřazeného objektu do seznamu ACL podřízeného objektu. | 
 | umask. other         |    7         |   `RWX`      | Pro jiné odeberte všechna oprávnění pro přístupový seznam ACL podřízeného objektu. |
 
 Hodnota umask používaná Azure Data Lake Storage Gen2 efektivně znamená, že hodnota pro **jinou** se nikdy nepřenáší ve výchozím nastavení u nových podřízených objektů, pokud není výchozí seznam ACL definovaný v nadřazeném adresáři. V takovém případě je umask ve skutečnosti ignorováno a oprávnění definovaná výchozím seznamem ACL jsou použita pro podřízenou položku. 
@@ -280,7 +280,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>Je třeba povolit podporu pro seznamy ACL?
 
-No. Řízení přístupu prostřednictvím seznamů ACL je povolené pro účet úložiště, pokud je zapnutá funkce hierarchického oboru názvů (HNS).
+Ne. Řízení přístupu prostřednictvím seznamů ACL je povolené pro účet úložiště, pokud je zapnutá funkce hierarchického oboru názvů (HNS).
 
 Pokud je funkce HNS vypnutá, autorizační pravidla Azure RBAC se pořád použijí.
 

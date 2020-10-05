@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/03/2020
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f9dd63df6d743f12fa7addb3c814e763d37dc61f
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 88163c07d570df5e0ff343776c17c463010ce368
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708760"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713286"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Vlastní nastavení konfigurace pro App Service prostředí
 ## <a name="overview"></a>Přehled
@@ -71,8 +71,8 @@ App Service Environment funguje jako černý rámeček, kde nelze zobrazit inter
     }
 ],
 ```
+Tím se zašifruje interní síťový provoz ve vašem přihlašování mezi front-endy a pracovními procesy, zašifruje se stránkovací soubor a také zašifruje pracovní disky. Jakmile je InternalEncryption clusterSetting povolený, může to mít dopad na výkon systému. Když provedete změnu a povolíte InternalEncryption, váš pomocný stav bude v nestabilním stavu, dokud se změna zcela nerozšíří. Dokončení šíření změny může trvat několik hodin, a to v závislosti na tom, kolik instancí jste v pomocném mechanismu. Důrazně doporučujeme, abyste tuto možnost nepovolili u pomocného mechanismu, když se používá. Pokud potřebujete tuto možnost povolit u aktivně využívaného mechanismu přihlašování, důrazně doporučujeme, abyste přepnuli provoz do prostředí zálohování, dokud se operace nedokončí. 
 
-Jakmile je InternalEncryption clusterSetting povolený, může to mít dopad na výkon systému. Když provedete změnu a povolíte InternalEncryption, váš pomocný stav bude v nestabilním stavu, dokud se změna zcela nerozšíří. Dokončení šíření změny může trvat několik hodin, a to v závislosti na tom, kolik instancí jste v pomocném mechanismu. Důrazně doporučujeme, abyste tuto možnost nepovolili u pomocného mechanismu, když se používá. Pokud potřebujete tuto možnost povolit u aktivně využívaného mechanismu přihlašování, důrazně doporučujeme, abyste přepnuli provoz do prostředí zálohování, dokud se operace nedokončí. 
 
 ## <a name="disable-tls-10-and-tls-11"></a>Zakázat TLS 1,0 a TLS 1,1
 

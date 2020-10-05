@@ -7,12 +7,12 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6de711567e87bcdd1e58185f90264d0c9aecdfde
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 22d86b96b7d9493ecc2f734be3f677a270a2739a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91342300"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714304"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>Postup připojení zařízení pomocí certifikátů X. 509 pomocí sady SDK pro Node.js zařízení pro IoT Central aplikace
 
@@ -20,7 +20,7 @@ IoT Central podporuje certifikáty sdíleného přístupu (SAS) i X. 509 k zabez
 
 Tento článek ukazuje dva způsoby použití registrů X. 509- [Group](how-to-connect-devices-x509.md#use-a-group-enrollment) , které se obvykle používají v produkčním prostředí, a [jednotlivé registrace](how-to-connect-devices-x509.md#use-an-individual-enrollment) užitečné pro testování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Dokončení [Vytvoření a připojení klientské aplikace do kurzu Azure IoT Central aplikace (Node.js)](./tutorial-connect-device-nodejs.md) .
 - [Git](https://git-scm.com/download/).
@@ -30,35 +30,34 @@ Tento článek ukazuje dva způsoby použití registrů X. 509- [Group](how-to-c
 
 V produkčním prostředí můžete použít certifikáty X. 509 se zápisem skupiny. V případě registrace skupiny přidáte do aplikace IoT Central kořenový nebo zprostředkující certifikát X. 509. Zařízení s listovým certifikátem odvozeným z kořenového nebo zprostředkujícího certifikátu se můžou připojit k vaší aplikaci.
 
-
 ## <a name="generate-root-and-device-cert"></a>Generovat kořenový certifikát a certifikát zařízení
 
-V této části použijete certifikát X. 509 k připojení zařízení k certifikátu odvozenému z certifikátu skupiny registrací, který se může připojit k vaší aplikaci IoT Central.
+V této části pomocí certifikátu X. 509 připojíte zařízení s certifikátem odvozeným z certifikátu skupiny registrací, který se může připojit k vaší aplikaci IoT Central.
 
 > [!WARNING]
-> Tento způsob generování certifikátů X. 509 je pouze pro testování. V produkčním prostředí byste měli použít svůj oficiální a zabezpečený mechanismus pro generování certifikátů.
+> Tento způsob generování certifikátů X. 509 slouží pouze k testování. V produkčním prostředí byste měli použít svůj oficiální a zabezpečený mechanismus pro generování certifikátů.
 
 1. Otevřete příkazový řádek. Naklonujte úložiště GitHub pro skripty generování certifikátů:
-    
+
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-node.git
     ```
 
-2. Přejděte do skriptu generátoru certifikátů a nainstalujte požadované balíčky:
+1. Přejděte do skriptu generátoru certifikátů a nainstalujte požadované balíčky:
 
     ```cmd/sh
     cd azure-iot-sdk-node/provisioning/tools
     npm install
     ```
 
-3. Vytvořte kořenový certifikát a potom odvodit certifikát zařízení spuštěním skriptu. Nezapomeňte pro název certifikátu použít jenom malé alfanumerické znaky a spojovníky.
+1. Vytvořte kořenový certifikát a potom odvodit certifikát zařízení spuštěním skriptu. Nezapomeňte použít pouze malé alfanumerické znaky a spojovníky pro název certifikátu:
 
     ```cmd/sh
     node create_test_cert.js root mytestrootcert
     node create_test_cert.js device mytestdevice mytestrootcert
     ```
 
-Tím se vytvoří tři soubory pro kořenový adresář a certifikát zařízení.
+Tyto příkazy vytváří tři soubory pro kořenový adresář a certifikát zařízení.
 
 filename | obsah
 -------- | --------
@@ -66,57 +65,47 @@ filename | obsah
 \<name\>_key. pem | Privátní klíč pro certifikát x509
 \<name\>_fullchain. pem | Celý řetězec klíčů pro certifikát x509.
 
-
 ## <a name="create-a-group-enrollment"></a>Vytvoření registrace skupiny
 
+1. Otevřete aplikaci IoT Central a v levém podokně přejděte do části **Správa**  a vyberte **připojení zařízení**.
 
-1. Nyní otevřete aplikaci IoT Central a v levém podokně přejděte do části **Správa**  a klikněte na **připojení zařízení**. 
+1. Vyberte **+ vytvořit skupinu**registrací a vytvořte novou skupinu registrací s názvem _MyX509Group_ s typem ověření identity **certifikáty (X. 509)**.
 
-2. Vyberte + **vytvořit skupinu**registrací a vytvořte novou skupinu registrací s názvem _MyX509Group_ s typem ověření identity **certifikáty (X. 509)**:
+1. Otevřete skupinu pro registraci, kterou jste vytvořili, a vyberte **Spravovat primární**.
 
-
-3. Otevřete skupinu pro registraci, kterou jste vytvořili, a klikněte na **Spravovat primární**. 
-
-4. Vyberte možnost soubor a nahrajte soubor kořenového certifikátu s názvem _mytestrootcert_cert. pem_ , který jste předtím vygenerovali:
-
+1. Vyberte možnost soubor a nahrajte soubor kořenového certifikátu s názvem _mytestrootcert_cert. pem_ , který jste předtím vygenerovali:
 
     ![Nahrávání certifikátu](./media/how-to-connect-devices-x509/certificate-upload.png)
 
-
-
-5. Ověření dokončíte tak, že zkopírujete ověřovací kód a vytvoříte ověřovací certifikát X. 509 s tímto kódem v příkazovém řádku.
+1. Ověření dokončíte tak, že vygenerujete ověřovací kód, zkopírujete ho a pak ho použijete k vytvoření ověřovacího certifikátu X. 509 na příkazovém řádku:
 
     ```cmd/sh
     node create_test_cert.js verification --ca mytestrootcert_cert.pem --key mytestrootcert_key.pem --nonce  {verification-code}
     ```
 
-6. Nahrajte podepsaný ověřovací certifikát _verification_cert. pem_ , aby se dokončilo ověřování.
+1. Nahrajte podepsaný certifikát pro ověření _verification_cert. pem_ k dokončení ověření:
 
     ![Ověřený certifikát](./media/how-to-connect-devices-x509/verified.png)
 
-
 Teď můžete připojit zařízení, která mají certifikát X. 509 odvozený od tohoto primárního kořenového certifikátu. Po uložení skupiny registrace si poznamenejte rozsah ID.
-
 
 ## <a name="run-sample-device-code"></a>Spustit ukázkový kód zařízení
 
+1. V aplikaci Azure IoT Central vyberte **zařízení**a v šabloně zařízení **snímače prostředí** vytvořte nové zařízení s _mytestdevice_ jako **ID zařízení** .
 
-1. V aplikaci Azure IoT Central klikněte na **zařízení**a vytvořte nové zařízení s _Mytestdevice_ jako **ID zařízení** ze šablony zařízení snímače prostředí.
+1. Zkopírujte soubory _mytestdevice_key. pem_ a _mytestdevice_cert. pem_ do složky, která obsahuje aplikaci _environmentalSensor.js_ . Tuto aplikaci jste vytvořili, když jste dokončili [kurz připojení zařízení (Node.js)](./tutorial-connect-device-nodejs.md).
 
-
-2. Pokud jste dokončili [kurz připojení zařízení (Node.js)](./tutorial-connect-device-nodejs.md), zkopírujte _mytestdevice_key. pem_ a _mytestdevice_cert. pem_ do složky, která obsahuje _environmentalSensor.js_ aplikaci.
-
-3. Přejděte do složky, která obsahuje aplikaci environmentalSensor.js a spusťte následující příkaz pro instalaci balíčku X. 509:
+1. Přejděte do složky, která obsahuje aplikaci environmentalSensor.js a spusťte následující příkaz pro instalaci balíčku X. 509:
 
     ```cmd/sh
     npm install azure-iot-security-x509 --save
     ```
 
-4. Upravte soubor **environmentalSensor.js** .
-    - Nahraďte `idScope` hodnotu **rozsahem ID** , na který jste si poznamenali dříve. 
+1. Upravte soubor **environmentalSensor.js** .
+    - Nahraďte `idScope` hodnotu **rozsahem ID** , na které jste si poznamenali dříve.
     - Nahraďte `registrationId` hodnotu hodnotou `mytestdevice` .
 
-5. Příkazy upravte takto `require` :
+1. Příkazy upravte takto `require` :
 
     ```javascript
     var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
@@ -128,7 +117,7 @@ Teď můžete připojit zařízení, která mají certifikát X. 509 odvozený o
     var X509Security = require('azure-iot-security-x509').X509Security;
     ```
 
-6. Upravte oddíl, který vytváří klienta, následovně:
+1. Upravte oddíl, který vytváří klienta, následovně:
 
     ```javascript
     var provisioningHost = 'global.azure-devices-provisioning.net';
@@ -141,7 +130,7 @@ Teď můžete připojit zařízení, která mají certifikát X. 509 odvozený o
     var hubClient;
     ```
 
-7. Upravte část, která otevře připojení, následujícím způsobem:
+1. Upravte část, která otevře připojení, následujícím způsobem:
 
    ```javascript
     var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';x509=true';
@@ -149,11 +138,11 @@ Teď můžete připojit zařízení, která mají certifikát X. 509 odvozený o
     hubClient.setOptions(deviceCert);
     ```
 
-8. Spusťte skript a ověřte úspěšné zřízení zařízení.
+1. Spusťte skript a ověřte, jestli se zařízení úspěšně zřídilo:
 
     ```cmd/sh
     node environmentalSensor.js
-    ```   
+    ```
 
     Můžete také ověřit, že se telemetrie zobrazí na řídicím panelu.
 
@@ -165,10 +154,9 @@ Pomocí certifikátů X. 509 s jednotlivými registracemi otestujete své zaří
 
 ## <a name="generate-self-signed-device-cert"></a>Generovat certifikát zařízení podepsaného svým držitelem
 
-
 V této části použijete certifikát X. 509 podepsaný svým držitelem k připojení zařízení k jednotlivým zápisům, které se používají k registraci jednoho zařízení. Certifikáty podepsané svým držitelem jsou pouze pro testování.
 
-Spuštěním skriptu vytvořte certifikát zařízení X. 509 podepsaný svým držitelem. Nezapomeňte pro název certifikátu použít jenom malé alfanumerické znaky a spojovníky.
+Spuštěním skriptu vytvořte certifikát zařízení X. 509 podepsaný svým držitelem. Nezapomeňte použít pouze malé alfanumerické znaky a spojovníky pro název certifikátu:
 
   ```cmd/sh
     cd azure-iot-sdk-node/provisioning/tools
@@ -178,46 +166,43 @@ Spuštěním skriptu vytvořte certifikát zařízení X. 509 podepsaný svým d
 
 ## <a name="create-individual-enrollment"></a>Vytvořit jednotlivou registraci
 
-1. V aplikaci Azure IoT Central vyberte **zařízení**a vytvořte nové zařízení s **ID zařízení** jako _mytestselfcertprimary_ ze šablony zařízení snímače prostředí. Poznamenejte si **Rozsah ID** .
+1. V aplikaci Azure IoT Central vyberte **zařízení**a vytvořte nové zařízení s **ID zařízení** jako _mytestselfcertprimary_ ze šablony zařízení snímače prostředí. Poznamenejte si **Rozsah ID**a použijte ho později.
 
-2. Otevřete zařízení, které jste vytvořili, a vyberte **připojit** .
+1. Otevřete zařízení, které jste vytvořili, a vyberte **připojit**.
 
-3. Jako mechanismus vyberte **jednotlivé registrace** jako metodu připojení a **certifikáty (X. 509)** .
+1. Jako mechanismus vyberte **jednotlivé registrace** jako **metodu připojení** a **certifikáty (X. 509)** :
 
     ![Jednotlivé registrace](./media/how-to-connect-devices-x509/individual-device-connect.png)
 
+1. V části primární vyberte možnost soubor a nahrajte soubor certifikátu s názvem _mytestselfcertprimary_cert. pem_ , který jste předtím vygenerovali.
 
-4. V části primární vyberte možnost soubor a nahrajte soubor certifikátu s názvem _mytestselfcertprimary_cert. pem_ , který jste předtím vygenerovali. 
-
-5. Vyberte možnost soubor pro sekundární certifikát a nahrajte soubor certifikátu s názvem _mytestselfcertsecondary_cert. pem._ Pak vyberte **Save (Uložit** ).
+1. Vyberte možnost soubor pro sekundární certifikát a nahrajte soubor certifikátu s názvem _mytestselfcertsecondary_cert. pem._ Pak vyberte **Uložit**:
 
     ![Nahrání individuálního certifikátu zápisu](./media/how-to-connect-devices-x509/individual-enrollment.png)
 
 Zařízení je teď zřízené pomocí certifikátu X. 509.
 
-
-
 ## <a name="run-a-sample-individual-enrollment-device"></a>Spuštění ukázkového samostatného registračního zařízení
 
-1. Pokud jste dokončili [kurz připojení zařízení (Node.js)](./tutorial-connect-device-nodejs.md), zkopírujte _mytestselfcertprimary_key. pem_ a _mytestselfcertprimary_cert. pem_do složky, která obsahuje environmentalSensor.js aplikaci.
+1. Zkopírujte soubory _mytestselfcertprimary_key. pem_ a _mytestselfcertprimary_cert. pem_ do složky, která obsahuje aplikaci environmentalSensor.js. Tuto aplikaci jste vytvořili, když jste dokončili [kurz připojení zařízení (Node.js)](./tutorial-connect-device-nodejs.md).
 
-
-2. Upravte soubor **environmentalSensor.js** následujícím způsobem a uložte ho.
+1. Upravte soubor **environmentalSensor.js** následujícím způsobem a uložte ho.
     - Nahraďte `idScope` hodnotu **rozsahem ID** , na které jste si poznamenali dříve.
     - Nahraďte `registrationId` hodnotu hodnotou `mytestselfcertprimary` .
     - Nahraďte **var deviceCert** jako:
-    ```cmd\sh
-    var deviceCert = {
-    cert: fs.readFileSync('mytestselfcertprimary_cert.pem').toString(),
-    key: fs.readFileSync('mytestselfcertprimary_key.pem').toString()
-    };
-    ```
 
-3. Spusťte skript a ověřte úspěšné zřízení zařízení.
+        ```javascript
+        var deviceCert = {
+        cert: fs.readFileSync('mytestselfcertprimary_cert.pem').toString(),
+        key: fs.readFileSync('mytestselfcertprimary_key.pem').toString()
+        };
+        ```
+
+1. Spusťte skript a ověřte, jestli se zařízení úspěšně zřídilo:
 
     ```cmd/sh
     node environmentalSensor.js
-    ```   
+    ```
 
     Můžete také ověřit, že se telemetrie zobrazí na řídicím panelu.
 
@@ -228,4 +213,3 @@ Výše uvedený postup můžete opakovat i pro _mytestselfcertsecondary_ certifi
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se naučili připojit zařízení pomocí certifikátů X. 509, je navržený další krok, kde se dozvíte, jak [monitorovat připojení zařízení pomocí Azure CLI](howto-monitor-devices-azure-cli.md) .
-
