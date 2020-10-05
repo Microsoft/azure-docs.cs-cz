@@ -16,10 +16,10 @@ ms.date: 05/09/2018
 ms.author: duau
 ms.custom: mvc
 ms.openlocfilehash: 44ab6822039ef2a26ffafc2824bed249825e2daa
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88783804"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Co je síť pro doručování obsahu v Azure?
@@ -68,7 +68,7 @@ Azure CDN nabízí následující klíčové funkce:
 - [Pravidla ukládání do mezipaměti CDN](cdn-caching-rules.md)
 - [Podpora vlastní domény HTTPS](cdn-custom-ssl.md)
 - [Diagnostické protokoly Azure](cdn-azure-diagnostic-logs.md)
-- [Komprese souborů](cdn-improve-performance.md)
+- [Komprese souboru](cdn-improve-performance.md)
 - [Geografické filtrování](cdn-restrict-access-by-country.md)
 
 Úplný seznam funkcí, které jednotlivé produkty Azure CDN podporují, najdete v [porovnání funkcí produktů Azure CDN](cdn-features.md).

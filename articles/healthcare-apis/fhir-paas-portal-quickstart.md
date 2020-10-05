@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.openlocfilehash: 8c0448d31cd89e2ca969b81361b30bac3f9610e9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87851932"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>Rychlý Start: nasazení rozhraní Azure API pro FHIR pomocí Azure Portal
@@ -37,13 +37,13 @@ Rozhraní Azure API pro FHIR můžete najít zadáním "FHIR" do vyhledávacího
 
 Vyberte **vytvořit** a vytvořte nový Azure API pro účet FHIR:
 
-:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Vytvoření Azure API pro účet FHIR":::
+:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Hledání rozhraní API pro zdravotní péči":::
 
 ## <a name="enter-account-details"></a>Zadejte podrobnosti účtu.
 
 Vyberte existující skupinu prostředků nebo vytvořte novou, zvolte název účtu a nakonec klikněte na **zkontrolovat + vytvořit**:
 
-:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Nové podrobnosti o rozhraní API pro zdravotnictví":::
+:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Hledání rozhraní API pro zdravotní péči":::
 
 Potvrďte vytváření a očekává se nasazení rozhraní API FHIR.
 
@@ -51,7 +51,7 @@ Potvrďte vytváření a očekává se nasazení rozhraní API FHIR.
 
 Můžete také kliknout na **Další: Další nastavení** a zobrazit nastavení ověřování. Výchozí konfigurací rozhraní API Azure pro FHIR je [použití služby Azure RBAC pro přiřazení rolí roviny dat](configure-azure-rbac.md). Při konfiguraci v tomto režimu bude "autorita" pro službu FHIR nastavena na tenanta Azure Active Directory předplatného:
 
-:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Výchozí nastavení ověřování":::
+:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Hledání rozhraní API pro zdravotní péči":::
 
 Všimněte si, že pole pro zadání povolených ID objektů je šedé, protože používáme Azure RBAC pro konfiguraci přiřazení rolí v tomto případě.
 

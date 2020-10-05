@@ -13,10 +13,10 @@ ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 9cd59d6bf5b9bf6e17cba0786bfac27ed12d7638
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91258128"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý Start: registrace aplikace s platformou Microsoft identity
@@ -25,7 +25,7 @@ V tomto rychlém startu zaregistrujete aplikaci do Azure Portal, aby platforma M
 
 Každá aplikace, pro kterou má platforma Microsoft Identity provádět správu identit a přístupu (IAM), musí být zaregistrovaná. Bez ohledu na to, jestli se jedná o klientskou aplikaci, jako je webová nebo mobilní aplikace, nebo se jedná o webové rozhraní API, které zálohuje klientskou aplikaci, registrace vytvoří vztah důvěryhodnosti mezi vaší aplikací a poskytovatelem identity a platformou Microsoft identity.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným – [vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * Dokončení [rychlého startu: nastavení tenanta](quickstart-create-new-tenant.md)
@@ -36,7 +36,7 @@ Při registraci aplikace se vytvoří vztah důvěryhodnosti mezi vaší aplikac
 
 Při vytváření registrace aplikace postupujte podle těchto kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/quickstart-register-app/portal-01-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat**vyberte **Registrace aplikací**a pak **Nová registrace**.
@@ -59,7 +59,7 @@ Po dokončení registrace Azure Portal zobrazí podokno **Přehled** registrace 
 
 Kód vaší aplikace, nebo častěji knihovny ověřování používané v aplikaci, používá také ID klienta jako jeden aspekt při ověřování tokenů zabezpečení, které obdrží od platformy identity.
 
-:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Snímek obrazovky Azure Portal ve webovém prohlížeči, který zobrazuje podokno s přehledem registrace aplikace.":::
+:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Snímek obrazovky Azure Portal ve webovém prohlížeči, který zobrazuje podokno Registrovat aplikaci":::
 
 ## <a name="add-a-redirect-uri"></a>Přidat identifikátor URI pro přesměrování
 
@@ -80,7 +80,7 @@ Konfigurace nastavení aplikace na základě platformy nebo zařízení, na kter
 1. V části **konfigurace platformy**vyberte **Přidat platformu**.
 1. V části **Konfigurovat platformy**vyberte dlaždici pro typ aplikace (platforma) a nakonfigurujte její nastavení.
 
-    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Snímek obrazovky s podoknem konfigurace platformy v Azure Portal" border="false":::
+    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Snímek obrazovky Azure Portal ve webovém prohlížeči, který zobrazuje podokno Registrovat aplikaci" border="false":::
 
     | Platforma | Nastavení konfigurace |
     | -------- | ---------------------- |
@@ -101,7 +101,7 @@ Přihlašovací údaje jsou používány důvěrnými klientskými aplikacemi, k
 
 K registraci důvěrných klientských aplikací můžete přidat jak certifikáty, tak i klientské tajné klíče (řetězce) jako přihlašovací údaje.
 
-:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Snímek obrazovky Azure Portal, který zobrazuje podokno certifikátů a tajných klíčů v registraci aplikace":::
+:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Snímek obrazovky Azure Portal ve webovém prohlížeči, který zobrazuje podokno Registrovat aplikaci":::
 
 ### <a name="add-a-certificate"></a>Přidat certifikát
 

@@ -4,13 +4,13 @@ description: V tomto článku se dozvíte o schématu odvozených metadat.
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: 6239713fc92b75b8ed026a8f04953e92a24c4596
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88691802"
 ---
-# <a name="inference-metadata-schema"></a>Odvození schématu metadat 
+# <a name="inference-metadata-schema"></a>Schéma odvozování metadat 
 
 Každý objekt odvození bez ohledu na použití kontraktu HTTP nebo kontraktu založeného na gRPC se řídí objektovým modelem popsaným v tomto tématu.
 
@@ -123,5 +123,5 @@ Následující příklad obsahuje jednu událost s některými podporovanými ty
 
 ## <a name="next-steps"></a>Další kroky
 
-- [kontrakt dat gRPC](grpc-data-contract.md)
+- [Kontrakt dat gRPC](grpc-data-contract.md)
 - [Kontrakt dat HTTP](http-data-contract.md)

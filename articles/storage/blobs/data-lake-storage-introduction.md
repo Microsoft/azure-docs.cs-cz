@@ -9,10 +9,10 @@ ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: d85b0cd2f9fa7eb81f5c39bd5d163188e3cd7106
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87835761"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Úvod do Azure Data Lake Storage Gen2
@@ -64,7 +64,7 @@ Níže jsou uvedené ekvivalentní entity, jak je popsáno v různých konceptec
 | Koncepce                                | Organizace nejvyšší úrovně | Organizace nižší úrovně                                            | Datový kontejner |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
 | Objekty blob – úložiště objektů pro obecné účely | Kontejner              | Virtuální adresář (pouze sada SDK) – neposkytuje atomickou manipulaci | Blob           |
-| Azure Data Lake Storage Gen2 – analytické úložiště          | Kontejner            | Adresář                                                           | File           |
+| Azure Data Lake Storage Gen2 – analytické úložiště          | Kontejner            | Adresář                                                           | Soubor           |
 
 ## <a name="supported-blob-storage-features"></a>Podporované funkce Blob Storage
 

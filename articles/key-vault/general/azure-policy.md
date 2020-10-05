@@ -8,10 +8,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.openlocfilehash: 62ea64f6f0ccf3a9f4ceabc64a97e1e5570b92b4
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88586062"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Integrace služby Azure Key Vault se službou Azure Policy
@@ -124,7 +124,7 @@ Můžete spravovat Trezor klíčů používaný více týmy, které obsahují ce
 
 ### <a name="view-compliance-results"></a>Zobrazit výsledky dodržování předpisů
 
-1. Vraťte se do okna zásady a vyberte kartu dodržování předpisů. klikněte na přiřazení zásad, pro které chcete zobrazit výsledky dodržování předpisů.
+1. Vraťte se do okna zásady a vyberte kartu dodržování předpisů. Klikněte na přiřazení zásad, pro které chcete zobrazit výsledky dodržování předpisů.
 
     ![Přehled toho, jak Azure Key Vault funguje](../media/policy-img8.png)
 

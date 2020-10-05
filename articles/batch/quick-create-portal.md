@@ -5,17 +5,17 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
 ms.openlocfilehash: cf65a681764a848f8132ec44b8ba313ef1a83235
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88511367"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rychlý start: Spuštění první úlohy služby Batch na webu Azure Portal
 
 Začněte s Azure Batch pomocí Azure Portal k vytvoření účtu Batch, fondu výpočetních uzlů (virtuálních počítačů) a úlohy, která spouští úlohy ve fondu. Po dokončení tohoto rychlého startu budete porozumět klíčovým konceptům služby Batch a budete připraveni vyzkoušet dávku s více realistickými úlohami ve větším měřítku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -97,7 +97,7 @@ Pokud chcete vytvořit druhou úlohu, opakujte výše uvedené kroky. Zadejte ji
 
 Ukázkové úlohy, které jste vytvořili, budou dokončeny během několika minut. Chcete-li zobrazit výstup dokončené úlohy, vyberte úlohu a pak vyberte **soubory v uzlu**. Vyberte soubor `stdout.txt` pro zobrazení standardního výstupu úkolu. Obsah by měl vypadat zhruba takto:
 
-:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Snímek obrazovky s výstupem z dokončené úlohy":::
+:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Snímek obrazovky služby Batch v Azure Marketplace.":::
 
 Obsah zahrnuje proměnné prostředí služby Azure Batch nastavené v uzlu. Při vytváření vlastních úloh a úkolů služby Batch můžete na tyto proměnné prostředí odkazovat na příkazových řádcích úkolů a v aplikacích a skriptech spouštěných těmito příkazovými řádky.
 

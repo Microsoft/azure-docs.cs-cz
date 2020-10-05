@@ -16,17 +16,17 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ce3819ff1f9b0c61f7738f90ff17c2798fe888b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88642108"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Centralizovaná správa aplikací pomocí Azure AD
 
 Hesla, jak Nightmare, tak i bolesti zaměstnanců po celém světě. To je důvod, proč čím více společností Azure Active Directory, tak řešení pro správu identit a přístupu od Microsoftu pro Cloud a všechny další prostředky. Přejít z aplikace do aplikace bez nutnosti zadávat heslo pro každý z nich. Přeskočte z Outlooku na Workday, abyste mohli co nejrychleji otevřít, a to rychle a bezpečně. Pak můžete spolupracovat s partnery a dokonce i ostatními mimo vaši organizaci, aniž byste je museli volat. Díky tomu Azure AD pomáhá spravovat rizika tím, že zajišťuje zabezpečení aplikací, které používáte, jako je Multi-Factor Authentication, a umožňuje tak pomocí nepřetržitě adaptivního strojového učení a zabezpečení zjišťovat podezřelá přihlášení, která vám umožní zabezpečený přístup k aplikacím, které potřebujete, bez ohledu na to, kde jste. Pro uživatele je to nejen Skvělé, ale také pro ně. Díky kontrolám přístupu za běhu a kompletní sadě zásad správného škálování vám Azure AD pomůže zůstat v dodržování předpisů a vymáhat zásady. Díky tomu můžete dokonce automatizovat zřizování uživatelských účtů a spravovat přístup k Breeze. Podívejte se na některé z běžných scénářů, které zákazník používá Azure Active Directory možností správy aplikací.
 
-**Obvyklé scénáře**
+**Typické scénáře**
 
 
 > [!div class="checklist"]
@@ -89,6 +89,6 @@ Identita může být pouze vaší řídicí rovinou, pokud může propojit vše 
 - [Správa aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/index)
 - [Zřizování aplikací](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)
 - [Hybridní zabezpečený přístup](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
-- [Zásady správného řízení identit](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
+- [Zásady správného řízení identity](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
 - [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
 - [Zabezpečení identity](https://docs.microsoft.com/azure/active-directory/conditional-access/index)

@@ -12,10 +12,10 @@ ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
 ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88258272"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Omezení dat a přenosové rychlosti rozhraní API pro analýzu textu
@@ -41,7 +41,7 @@ Maximální počet dokumentů, které můžete poslat v rámci jedné žádosti,
 V v3 rozhraní API se změnila následující omezení. Překročení následujících omezení vygeneruje kód chyby HTTP 400.
 
 
-| Příznak | Maximální počet dokumentů na požadavek | 
+| Funkce | Maximální počet dokumentů na požadavek | 
 |----------|-----------|
 | Rozpoznávání jazyka | 1000 |
 | Analýza mínění | 10 |
@@ -51,7 +51,7 @@ V v3 rozhraní API se změnila následující omezení. Překročení následuj�
 | Analýza textu pro kontejner stavu | 1000 |
 #### <a name="version-2"></a>[Verze 2](#tab/version-2)
 
-| Příznak | Maximální počet dokumentů na požadavek | 
+| Funkce | Maximální počet dokumentů na požadavek | 
 |----------|-----------|
 | Rozpoznávání jazyka | 1000 |
 | Analýza mínění | 1000 |

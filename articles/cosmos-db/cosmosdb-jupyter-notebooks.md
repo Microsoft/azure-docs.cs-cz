@@ -7,10 +7,10 @@ ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
 ms.openlocfilehash: 0299ab1e76e742adb8d2653b8b5d6923aff2f11f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88588151"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Integrovaná podpora Jupyter poznámkových bloků v Azure Cosmos DB (Preview)
@@ -23,7 +23,7 @@ Azure Cosmos DB integrovaných notebooků Jupyter se přímo integrují do Azure
 
 Azure Cosmos DB podporuje poznámkové bloky C# i Python pro všechna rozhraní API, včetně Core (SQL), Cassandra, Gremlin, Table a API pro MongoDB. V poznámkovém bloku můžete využít integrované příkazy a funkce, které usnadňují vytváření Azure Cosmos DBch prostředků, nahrávání dat a dotazování a vizualizaci dat v Azure Cosmos DB. 
 
-:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Podpora notebooků Jupyter v Azure Cosmos DB":::
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Vizualizace poznámkových bloků Jupyter v Azure Cosmos DB":::
 
 ## <a name="benefits-of-jupyter-notebooks"></a>Výhody Jupyter poznámkových bloků
 

@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
 ms.openlocfilehash: 11f73d2becb40b800c49afe0cd58f56953f8d42d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91259913"
 ---
 # <a name="introduction"></a>Úvod
@@ -38,7 +38,7 @@ Z tohoto důvodu není nutné vytvářet přihlašovací údaje ani je zadat v r
 
 - Tento konektor funguje pouze v Scala.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musí být členem role **db_exporter** v databázi nebo ve fondu SQL, do které chcete přenést data.
 - Musí být členem role Přispěvatel dat objektů BLOB úložiště ve výchozím účtu úložiště.

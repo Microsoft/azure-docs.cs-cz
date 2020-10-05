@@ -15,10 +15,10 @@ ms.date: 01/13/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
 ms.openlocfilehash: 34d76d7c85a478b5e31a692e653752aa1653884c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91293658"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Představení skupin dostupnosti Always On SQL Server v Azure Virtual Machines
@@ -41,10 +41,10 @@ Aby bylo možné zvýšit redundanci a vysokou dostupnost, musí být virtuáln�
 
 |  | Verze Windows serveru | Verze SQL Server | Edice SQL Server | Konfigurace kvora služby WSFC | DR s více oblastmi | Podpora více podsítí | Podpora pro existující službu AD | DR se stejnou oblastí ve více zónách | Podpora balíčku DIST-AG bez domény AD | Podpora balíčku DIST-AG bez clusteru |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| **[portál Azure](availability-group-azure-portal-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | Rozlehlé | Disk s kopií cloudu | No | Yes | Yes | Yes | No | No |
-| **[Azure CLI/PowerShell](availability-group-az-cli-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | Rozlehlé | Disk s kopií cloudu | No | Yes | Yes | Yes | No | No |
-| **[Šablony pro rychlý Start](availability-group-quickstart-template-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016  | Rozlehlé | Disk s kopií cloudu | No | Yes | Yes | Yes | No | No |
-| **[Ruční](availability-group-manually-configure-prerequisites-tutorial.md)** | Vše | Vše | Vše | Vše | Yes | Yes | Yes | Yes | Yes | Yes |
+| **[portál Azure](availability-group-azure-portal-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | Rozlehlé | Disk s kopií cloudu | Ne | Ano | Ano | Ano | Ne | Ne |
+| **[Azure CLI/PowerShell](availability-group-az-cli-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | Rozlehlé | Disk s kopií cloudu | Ne | Ano | Ano | Ano | Ne | Ne |
+| **[Šablony pro rychlý Start](availability-group-quickstart-template-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016  | Rozlehlé | Disk s kopií cloudu | Ne | Ano | Ano | Ano | Ne | Ne |
+| **[Ruční](availability-group-manually-configure-prerequisites-tutorial.md)** | Vše | Vše | Vše | Vše | Ano | Ano | Ano | Ano | Ano | Ano |
 
 Šablona **SQL Serverho clusteru AlwaysOn (Preview)** byla odebrána z Azure Marketplace a již není k dispozici. 
 

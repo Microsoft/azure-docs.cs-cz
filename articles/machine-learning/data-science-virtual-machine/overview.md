@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
 ms.openlocfilehash: 2bfcdfcb01e7908c199054e793d82cdfa1b726c7
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88816333"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Co je Azure Data Science Virtual Machine pro Linux a Windows?
@@ -49,7 +49,7 @@ DSVM je přizpůsobená image virtuálního počítače pro datové vědy, ale [
 Klíčové rozdíly mezi těmito dvěma nabídkami produktů jsou popsané níže:
 
 
-|Funkce |Vědecké zpracování dat<br>Virtuální počítač |AzureML<br>Instance COMPUTE  | 
+|Funkce |Datové vědy<br>Virtuální počítač |AzureML<br>Výpočetní instance  | 
 |---------|---------|---------|
 | Plně spravovaná | Ne        | Ano        |
 |Podpora jazyků     |  Python, R, Helena, SQL, C#,<br> Java, Node.js, F #       | Python a R        |
@@ -63,7 +63,7 @@ Klíčové rozdíly mezi těmito dvěma nabídkami produktů jsou popsané níž
 |Integrovaná spolupráce     | Ne         | Ano        |
 |Předem nainstalované nástroje     |  Jupyter (Lab), RStudio Server, VSCode,<br> Visual Studio, PyCharm, Juno,<br>Power BI Desktop, SSMS, <br>Systém Microsoft Office 365, přechod na Apache       |     Jupyter (testovací prostředí)<br> RStudio Server   |
 
-## <a name="sample-use-cases"></a>Příklady případů použití
+## <a name="sample-use-cases"></a>Ukázkové případy použití
 
 Níže uvádíme některé běžné případy použití pro DSVM zákazníky.
 
@@ -71,9 +71,9 @@ Níže uvádíme některé běžné případy použití pro DSVM zákazníky.
 
 DSVM můžete použít k vyhodnocení nebo získání nových [nástrojů](./tools-included.md)pro datové vědy, zejména Projděte si některé z našich publikovaných [ukázek a návodů](./dsvm-samples-and-walkthroughs.md).
 
-### <a name="deep-learning-with-gpus"></a>Obsáhlý Learning s grafickými procesory
+### <a name="deep-learning-with-gpus"></a>Hluboké učení s grafickými procesory
 
-Ve DSVM můžou vaše školicí modely používat algoritmy hloubkového učení na hardwaru, který je založený na procesorech GPU (Graphics Processing units). Díky možnostem škálování virtuálního počítače na platformě Azure vám DSVM pomůže používat v cloudu hardware využívající GPU podle vašich potřeb. Při výuce velkých modelů můžete přepnout na virtuální počítač s grafickým procesorem nebo když budete potřebovat vysokorychlostní výpočty a zároveň zachováte stejný disk s operačním systémem. Můžete vybrat libovolnou z řad SKU virtuálních počítačů s podporou řady N Series s DSVM. Poznámka: skladové jednotky virtuálních počítačů s podporou GPU nejsou v bezplatných účtech Azure podporované.
+Ve DSVM můžou vaše školicí modely používat algoritmy hloubkového učení na hardwaru, který je založený na procesorech GPU (Graphics Processing units). Díky možnostem škálování virtuálního počítače na platformě Azure vám DSVM pomůže používat v cloudu hardware využívající GPU podle vašich potřeb. Pokud trénujete velké modely nebo potřebujete vysokorychlostní výpočty, můžete přepnout na virtuální počítač založený na GPU a stále zůstat na stejném disku s operačním systémem. Můžete vybrat libovolnou z řad SKU virtuálních počítačů s podporou řady N Series s DSVM. Poznámka: skladové jednotky virtuálních počítačů s podporou GPU nejsou v bezplatných účtech Azure podporované.
 
 Edice Windows DSVM jsou předinstalované s ovladači GPU, architekturami a verzemi prostředí pro hloubkové učení. V edicích pro Linux je na Ubuntu DSVMs povolený obsáhlý Learning na GPU. 
 
@@ -83,7 +83,7 @@ Můžete také nasadit edice Ubuntu nebo Windows DSVM na virtuální počítač 
 
 ### <a name="data-science-training-and-education"></a>Školení a vzdělávání v oblasti datové vědy
 
-Firemní učitelé a pedagogy, kteří učí třídy pro datové vědy, obvykle poskytují image virtuálního počítače. Tato image zajišťuje, že studenti mají konzistentní nastavení a že ukázky fungují podle předpovědi.
+Firemní školitelé a učitelé, kteří vyučují kurzy datových věd, obvykle dodají image virtuálního počítače. Tato image zajišťuje, že studenti mají konzistentní nastavení a že ukázky fungují podle předpovědi.
 
 DSVM vytvoří prostředí na vyžádání s konzistentním nastavením, které usnadňuje problémy s podporou a nekompatibilitou. Užitečný je zejména v případech, kdy je potřeba taková prostředí vytvářet často, například pro kratší školení.
 

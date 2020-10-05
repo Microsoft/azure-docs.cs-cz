@@ -4,10 +4,10 @@ description: Tento článek popisuje návod pro vytvoření aplikace v Pythonu, 
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.openlocfilehash: b6a30ba0cef8c460a2a3035b3ab40fd8173d7b2e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88933898"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Posílání událostí a přijímání událostí z Center událostí pomocí Pythonu (Azure – eventhub verze 5)

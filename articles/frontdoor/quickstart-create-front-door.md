@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2020
 ms.author: duau
 ms.openlocfilehash: 4846438f8479fe622570aa515a4d8b40cccc57b8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91252260"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rychlý start: Vytvoření Front Dooru pro vysoce dostupnou globální webovou aplikaci
@@ -26,7 +26,7 @@ Začněte s předními dvířky Azure pomocí Azure Portal k nastavení vysoké 
 
 V tomto rychlém startu fond front Azure vytvoří fondy dvou instancí webové aplikace, které běží v různých oblastech Azure. Vytvoříte konfiguraci front-dveří na základě stejné a stejné priority jako u back-endu. Tato konfigurace směruje provoz na nejbližší lokalitu, která spouští aplikaci. Přední dveře Azure neustále monitorují webovou aplikaci. Služba zajišťuje automatické převzetí služeb při selhání pro další dostupnou lokalitu, když nejbližší web není dostupný.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -58,7 +58,7 @@ Pokud ještě nemáte webovou aplikaci, použijte následující postup k nastav
 
 1. Vyberte **zkontrolovat + vytvořit**, zkontrolujte **Souhrn**a pak vyberte **vytvořit**. Dokončení nasazení může trvat několik minut.
 
-    :::image type="content" source="media/quickstart-create-front-door/create-web-app.png" alt-text="Kontrola souhrnu pro webovou aplikaci":::
+    :::image type="content" source="media/quickstart-create-front-door/create-web-app.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
 
 Po dokončení nasazení vytvořte druhou webovou aplikaci. Použijte stejný postup se stejnými hodnotami, s výjimkou následujících hodnot:
 
@@ -87,7 +87,7 @@ Nakonfigurujte přední dveře Azure tak, aby směrovaly uživatelský provoz na
 
 1. Jako **název hostitele**zadejte globálně jedinečný název hostitele. V tomto příkladu se používá *Contoso-Endu*. Vyberte **Přidat**.
 
-    :::image type="content" source="media/quickstart-create-front-door/add-frontend-host-azure-front-door.png" alt-text="Přidání hostitele front-endu pro frontu Azure":::
+    :::image type="content" source="media/quickstart-create-front-door/add-frontend-host-azure-front-door.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
 
 Dále vytvořte back-end fond, který obsahuje vaše dvě webové aplikace.
 
@@ -95,7 +95,7 @@ Dále vytvořte back-end fond, který obsahuje vaše dvě webové aplikace.
 
 1. Jako **název**zadejte *myBackendPool*a pak vyberte **Přidat back-end**.
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool.png" alt-text="Přidat back-end fond":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
 
 1. V okně **Přidat back-end** vyberte následující informace a pak vyberte **Přidat**.
 
@@ -107,7 +107,7 @@ Dále vytvořte back-end fond, který obsahuje vaše dvě webové aplikace.
 
     **Ponechte všechna ostatní pole výchozí.*
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-backend.png" alt-text="Přidání hostitele back-endu do předních dveří":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-backend.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
 
 1. Vyberte znovu **Přidat back-end** . Vyberte následující informace a vyberte **Přidat**.
 
@@ -121,7 +121,7 @@ Dále vytvořte back-end fond, který obsahuje vaše dvě webové aplikace.
 
 1. V okně **Přidat fond back-endu** vyberte **Přidat** a dokončete konfiguraci fondu back-end.
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool-complete.png" alt-text="Přidat back-end fond pro Azure na přední dveře":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool-complete.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
 
 Nakonec přidejte pravidlo směrování. Pravidlo směrování namapuje hostitele front-endu do back-endového fondu. Pravidlo přepošle požadavek `contoso-frontend.azurefd.net` na do **myBackendPool**.
 
@@ -129,14 +129,14 @@ Nakonec přidejte pravidlo směrování. Pravidlo směrování namapuje hostitel
 
 1. Do **Přidat pravidlo**pro **název**zadejte *LocationRule*. Přijměte všechny výchozí hodnoty a pak vyberte **Přidat** a přidejte pravidlo směrování.
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="Přidat pravidlo na přední dveře":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
 
    >[!WARNING]
    > **Musíte** zajistit, aby každé z hostitelů front-endu v předních dveřích mělo pravidlo směrování s přidruženou výchozí cestou ( `\*` ). To znamená, že všechna vaše pravidla směrování musí mít aspoň jedno pravidlo směrování pro každého hostitele ve front-endu definovaného na výchozí cestě ( `\*` ). Pokud to neuděláte, může to vést k nesprávnému směrování provozu koncového uživatele.
 
 1. Vyberte **zkontrolovat + vytvořit**a pak **vytvořit**.
 
-    :::image type="content" source="media/quickstart-create-front-door/configuration-azure-front-door.png" alt-text="Nakonfigurované přední dveře Azure":::
+    :::image type="content" source="media/quickstart-create-front-door/configuration-azure-front-door.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
 
 ## <a name="view-azure-front-door-in-action"></a>Zobrazit přední dveře Azure v akci
 
@@ -161,7 +161,7 @@ Pokud chcete otestovat rychlé globální převzetí služeb při selhání v ak
 
 1. Aktualizujte si stránku v prohlížeči. Tentokrát by se měla zobrazit chybová zpráva.
 
-   :::image type="content" source="media/quickstart-create-front-door/web-app-stopped-message.png" alt-text="Obě instance webové aplikace se zastavily.":::
+   :::image type="content" source="media/quickstart-create-front-door/web-app-stopped-message.png" alt-text="Vytvoření webové aplikace na webu Azure Portal":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

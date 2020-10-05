@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
 ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88684112"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Rychlý Start: vytvoření trezoru Recovery Services pomocí šablony ARM
@@ -63,7 +63,7 @@ Aby bylo možné šablonu nasadit, je nutné zadat **předplatné**, **skupinu p
 
 1. Nasazení trezoru spustíte tak, že vyberete tlačítko **koupit** . Po úspěšném nasazení se zobrazí oznámení.
 
-   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="Nasazení trezoru bylo úspěšné.":::
+   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="Šablona pro vytvoření trezoru Recovery Services.":::
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 

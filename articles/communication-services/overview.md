@@ -9,10 +9,10 @@ ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 1c79ffb02df4a64b2c506ef0863d9bb2da06db53
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91303365"
 ---
 # <a name="what-is-azure-communication-services"></a>Co je služba Azure Communication Services?
@@ -51,7 +51,7 @@ Následující zdroje jsou skvělým místem, kde se můžete začít, pokud za�
 |**[Začínáme s chatem](./quickstarts/chat/get-started.md)**|Klientská knihovna pro konverzaci Azure Communications Services se dá použít k integraci konverzací v reálném čase do vašich aplikací.|
 
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>ukázky
 
 Následující ukázky ukazují ucelené využití klientských knihoven služby Azure Communications. Využijte tyto ukázky k zavedení vlastních řešení komunikačních služeb.
 <br>

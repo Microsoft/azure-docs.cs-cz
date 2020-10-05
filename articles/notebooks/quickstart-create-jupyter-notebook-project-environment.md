@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: 655c016b55abdcf4b6f546a1fe16348ec4c83724
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87853360"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Rychlý Start: vytvoření projektu s vlastním prostředím ve službě Azure Notebooks Preview
@@ -54,7 +54,7 @@ Projekt v Azure Notebooks je kolekce souborů, například poznámkových bloků
 
    | Operace | Popis |
    | --- | --- |
-   | Requirements.txt | Projekty Pythonu definují své závislosti v souboru requirements.txt. Pomocí této možnosti vyberte příslušný soubor ze seznamu souborů projektu a také v rozevíracím seznamu, který se zobrazí, vyberte verzi Pythonu. V případě potřeby vyberte **Zrušit** a vraťte se do projektu, nahrajte nebo vytvořte soubor a pak se vraťte na kartu prostředí **nastavení projektu**  >  **Environment** a vytvořte nový krok. V tomto kroku je spuštěný Poznámkový blok v projektu se automaticky spustí.`pip install -r <file>` |
+   | Requirements.txt | Projekty Pythonu definují své závislosti v souboru requirements.txt. Pomocí této možnosti vyberte příslušný soubor ze seznamu souborů projektu a také v rozevíracím seznamu, který se zobrazí, vyberte verzi Pythonu. V případě potřeby vyberte **Zrušit** a vraťte se do projektu, nahrajte nebo vytvořte soubor a pak se vraťte na kartu prostředí **nastavení projektu**  >  **Environment** a vytvořte nový krok. V tomto kroku je spuštěný Poznámkový blok v projektu se automaticky spustí. `pip install -r <file>` |
    | Skript prostředí | Použijte k označení skriptu prostředí bash (obvykle souboru s příponou *. sh* ), který obsahuje příkazy, které chcete spustit k inicializaci prostředí. |
    | Environment. yml | Projekt Pythonu, který používá conda ke správě prostředí, používá k popisu závislostí soubor *Environment. yml* . Pomocí této možnosti vyberte příslušný soubor ze seznamu souborů projektu. |
 

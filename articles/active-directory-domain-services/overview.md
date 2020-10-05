@@ -12,13 +12,13 @@ ms.date: 08/14/2020
 ms.author: iainfou
 ms.custom: contperfq1
 ms.openlocfilehash: 2255f2193378d0cc3611680c6aa5f8e0837e99aa
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88245173"
 ---
-# <a name="what-is-azure-active-directory-domain-services"></a>Co je Azure Active Directory Domain Services?
+# <a name="what-is-azure-active-directory-domain-services"></a>Co je služba Azure Active Directory Domain Services?
 
 Azure Active Directory Domain Services (služba AD DS) poskytuje spravované doménové služby, jako je připojení k doméně, zásady skupiny, protokol LDAP (Lightweight Directory Access Protocol) a ověřování pomocí protokolu Kerberos/NTLM. Tyto doménové služby budete používat bez nutnosti nasazovat, spravovat a opravovat řadiče domény (DCs) v cloudu.
 

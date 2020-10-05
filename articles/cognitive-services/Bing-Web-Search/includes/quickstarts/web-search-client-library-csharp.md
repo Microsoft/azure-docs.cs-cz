@@ -10,10 +10,10 @@ ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3f8f7c41e4d18909ec4f483a0e37d83b4d05e79d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88931079"
 ---
 Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledávání na webu Bingu do aplikace v jazyce C#. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
@@ -286,7 +286,7 @@ V této ukázce jsou parametry `count` a `offset` použité k omezení počtu v�
     }
     ```
 
-3. Aplikaci spusťte.
+3. Spusťte aplikaci.
 
 ### <a name="filter-for-news"></a>Filtrování zpráv
 
@@ -349,7 +349,7 @@ V této ukázce použijeme parametr `response_filter` k filtrování výsledků 
     }
     ```
 
-3. Aplikaci spusťte.
+3. Spusťte aplikaci.
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Použití bezpečného hledání, počtu odpovědí a propagačního filtru
 
@@ -413,7 +413,7 @@ V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k
     }
     ```
 
-3. Aplikaci spusťte.
+3. Spusťte aplikaci.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

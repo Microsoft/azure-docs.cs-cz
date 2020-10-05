@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
 ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91280554"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Rychlý Start: Vytvoření první statické webové aplikace v Azure Portal
@@ -20,7 +20,7 @@ Služba Azure static Web Apps publikuje web do produkčního prostředí tím, �
 
 Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet [GitHub](https://github.com)
 - Účet [Azure](https://portal.azure.com)
@@ -51,7 +51,7 @@ V části _základy_ začněte konfigurací nové aplikace a propojením s úlo�
 
 Až se přihlásíte pomocí GitHubu, zadejte informace o úložišti.
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Podrobnosti úložiště":::
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Oddíl základy":::
 
 1. Vybrat upřednostňovanou _organizaci_
 1. Z rozevíracího seznamu _úložiště_ vyberte **My-First-web-static-App** .
@@ -94,18 +94,18 @@ Až se přihlásíte pomocí GitHubu, zadejte informace o úložišti.
 
 1. Vyberte **Zkontrolovat a vytvořit**.
 
-    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Tlačítko pro vytvoření Revize":::
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Oddíl základy":::
 
     > [!NOTE]
     > Úpravou [souboru pracovního postupu](github-actions-workflow.md) můžete po vytvoření aplikace tyto hodnoty změnit.
 
 1. Vyberte **Vytvořit**.
 
-    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Tlačítko Create (Vytvořit)":::
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Oddíl základy":::
 
 1. Vyberte **Přejít k prostředku**.
 
-    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Tlačítko Go to resource (Přejít k prostředku)":::
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Oddíl základy":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 

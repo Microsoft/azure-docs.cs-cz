@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 99257b7bef83d0acef484118c7d53aea8eda168c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91264282"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>Rychlý Start: vytvoření interaktivní vyhledávací mapy pomocí Azure Maps
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak pomocí Azure Maps vytvořit mapu, která uži
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+* Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 <a id="createaccount"></a>
 
@@ -62,7 +62,7 @@ Po úspěšném vytvoření účtu Maps načtěte primární klíč, který vám
 >[!NOTE]
 > Pokud místo primárního klíče použijete klíč předplatného, nebude se vaše mapa správně vykreslovat. Z bezpečnostních důvodů se navíc doporučuje střídat mezi primárním a sekundárním klíčem. Pokud chcete otočit klíče, aktualizujte aplikaci tak, aby používala sekundární klíč, nasaďte a pak stisknutím tlačítka cyklus/obnovení vedle primárního klíče Vygenerujte nový primární klíč. Starý primární klíč bude zakázán. Další informace o rotaci klíčů najdete v tématu [nastavení Azure Key Vault s použitím rotace a auditování klíčů](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring) .
 
-:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Získání klíče primárního klíče Azure Maps v Azure Portal":::
+:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Vytvoření účtu Maps na portálu":::
 
 ## <a name="download-the-demo-application"></a>Stažení ukázkové aplikace
 
@@ -78,7 +78,7 @@ Po úspěšném vytvoření účtu Maps načtěte primární klíč, který vám
 4. Vyzkoušejte interaktivní hledání. Do vyhledávacího pole v levém horním rohu ukázkové webové aplikace vyhledejte **restaurace**.
 5. Přesuňte ukazatel myši na seznam adres a umístění, která se zobrazí pod vyhledávacím polem. Všimněte si, jak odpovídající kód PIN na mapě vychází z informací o tomto umístění. Z důvodu zajištění ochrany soukromých podniků jsou zobrazené fiktivní názvy a adresy.
 
-    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="Webová aplikace interaktivního vyhledávání map":::
+    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="Vytvoření účtu Maps na portálu":::
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

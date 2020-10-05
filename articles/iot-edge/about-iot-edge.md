@@ -11,10 +11,10 @@ ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
 ms.openlocfilehash: 1ba133acda414d9779e2fb10150bbdd57285e9a5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "76511208"
 ---
 # <a name="what-is-azure-iot-edge"></a>Co je Azure IoT Edge
@@ -42,7 +42,7 @@ Azure IoT Edge umožňuje nasazení komplexního zpracování událostí, strojo
 
 ### <a name="bring-your-own-code"></a>Používání vlastního kódu
 
-Azure IoT Edge podporuje také případy, kdy do svých zařízení chcete nasadit vlastní kód. Azure IoT Edge se drží stejného programovacího modelu jako ostatní služby Azure IoT. Stejný kód můžete spustit na zařízení nebo v cloudu. Azure IoT Edge podporuje Linux i Windows, takže můžete psát kód pro platformu podle svého výběru. Podporuje jazyky Java, .NET Core 2,0, Node. js, C a Python, takže vývojáři můžou kódovat kód v jazyce, který už znají, a používat stávající obchodní logiku.
+Azure IoT Edge podporuje také případy, kdy do svých zařízení chcete nasadit vlastní kód. Azure IoT Edge se drží stejného programovacího modelu jako ostatní služby Azure IoT. Stejný kód můžete spustit na zařízení nebo v cloudu. Azure IoT Edge podporuje Linux i Windows, takže můžete psát kód pro platformu podle svého výběru. Podporuje jazyk Java, .NET Core 2,0, Node.js, C a Python, takže vývojáři můžou kódovat kód v jazyce, který už znají, a používat stávající obchodní logiku.
 
 ## <a name="iot-edge-runtime"></a>Modul runtime IoT Edge
 
@@ -62,7 +62,7 @@ Modul runtime Azure IoT Edge běží na velké sadě zařízení IoT, která umo
 
 ## <a name="iot-edge-cloud-interface"></a>Cloudové rozhraní IoT Edge
 
-Je obtížné spravovat životní cyklus softwaru pro miliony zařízení IoT, která jsou často odlišná pro modely a modely nebo geograficky rozptýlené. Musí se vytvořit a nakonfigurovat úlohy pro konkrétní typy zařízení a pak úlohy nasadit na všechna zařízení a monitorovat je, aby se zachytila zařízení, která se případně nechovají podle očekávání. Tyto aktivity není možné provádět pro každé zařízení zvlášť a musí se provádět ve velkém měřítku.
+Je obtížné spravovat životní cyklus softwaru pro miliony zařízení IoT, která jsou často odlišná pro modely a modely nebo geograficky rozptýlené. Musí se vytvořit a nakonfigurovat úlohy pro konkrétní typy zařízení a pak úlohy nasadit na všechna zařízení a monitorovat je, aby se zachytila zařízení, která se případně nechovají podle očekávání. Tyto aktivity není možné provádět pro každé zařízení zvlášť a musí probíhat ve velkém měřítku.
 
 Azure IoT Edge se bezproblémově integruje s akcelerátory řešení Azure IoT a poskytuje tak jedinou rovinu řízení pro všechny požadavky vašeho řešení. Cloudové služby umožňují:
 

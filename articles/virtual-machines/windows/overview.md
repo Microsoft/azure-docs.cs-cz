@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 4e955a51906f160264fc4e81f263fe7677be91de
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88589618"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuální počítače s Windows v Azure
@@ -98,12 +98,12 @@ Prostředky v této tabulce používá virtuální počítač a je nutné, aby e
 
 | Prostředek | Povinné | Popis |
 | --- | --- | --- |
-| [Skupina prostředků](../../azure-resource-manager/management/overview.md) |Yes |Virtuální počítač musí být součástí skupiny prostředků. |
-| [Účet úložiště](../../storage/common/storage-account-create.md) |Yes |Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků. |
-| [Virtuální síť](../../virtual-network/virtual-networks-overview.md) |Yes |Virtuální počítač musí být členem virtuální sítě. |
-| [Veřejná IP adresa](../../virtual-network/public-ip-addresses.md) |No |Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu. |
-| [Síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) |Yes |Virtuální počítač potřebuje síťové rozhraní ke komunikaci v síti. |
-| [Datové disky](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |No |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
+| [Skupina prostředků](../../azure-resource-manager/management/overview.md) |Ano |Virtuální počítač musí být součástí skupiny prostředků. |
+| [Účet úložiště](../../storage/common/storage-account-create.md) |Ano |Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků. |
+| [Virtuální síť](../../virtual-network/virtual-networks-overview.md) |Ano |Virtuální počítač musí být členem virtuální sítě. |
+| [Veřejná IP adresa](../../virtual-network/public-ip-addresses.md) |Ne |Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu. |
+| [Síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) |Ano |Virtuální počítač potřebuje síťové rozhraní ke komunikaci v síti. |
+| [Datové disky](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Ne |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
 
 ## <a name="next-steps"></a>Další kroky
 
