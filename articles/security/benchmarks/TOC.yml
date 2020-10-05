@@ -97,6 +97,8 @@
       href: ../../azure-functions/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure IoT Hub
       href: ../../iot-hub/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Kubernetes Service
+      href: ../../aks/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Load Balancer
       href: ../../load-balancer/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Monitor
@@ -117,6 +119,8 @@
       href: ../../sql-database/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Storage
       href: ../../storage/common/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Traffic Manager
+      href: ../../traffic-manager/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Batch
       href: ../../batch/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Cognitive Services
@@ -163,3 +167,7 @@
       href: ../../virtual-machines/linux/security-baseline.md
     - name: Standardní hodnoty zabezpečení Windows pro Virtual Machines
       href: ../../virtual-machines/windows/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro virtuální síť
+      href: ../../virtual-network/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro VPN Gateway
+      href: ../../vpn-gateway/security-baseline.md

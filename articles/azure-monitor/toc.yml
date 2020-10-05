@@ -117,15 +117,10 @@
       items:
         - name: Přehled
           href: platform/data-platform.md
-        - name: Umístění dat
-          href: platform/data-locations.md
-        - name: Metriky
-          href: platform/data-platform-metrics.md
         - name: Protokoly
           href: platform/data-platform-logs.md
-        - name: Protokolování času pro příjem dat
-          displayname: latency
-          href: platform/data-ingestion-time.md
+        - name: Metriky
+          href: platform/data-platform-metrics.md
         - name: Streamování dat do Event Hubs
           href: platform/stream-monitoring-data-event-hubs.md
     - name: Insights
@@ -209,39 +204,42 @@
           href: platform/diagnostic-settings.md
     - name: Log Analytics
       items:
-        - name: Přehled dotazů na protokoly
-          displayname: 'log query, log queries, query, queries'
+        - name: Přehled
+          displayname: 'Log Analytics, log query, log queries, query, queries'
           href: log-query/log-query-overview.md
+        - name: Kurz
+          displayname: 'Log Analytics workspace, log query, log queries, query, queries'
+          href: log-query/get-started-portal.md
+        - name: Rozsah dotazu
+          href: log-query/scope.md
         - name: Jednoduché prostředí protokolů
           href: log-query/simple-logs.md
-        - name: Dotazy na protokoly auditu
-          href: log-query/query-audit.md
-        - name: Kurzy
+        - name: Dotazy na protokoly
           items:
-            - name: Kurz Log Analytics
-              href: log-query/get-started-portal.md
-            - name: Kurz dotazů k protokolům
-              href: log-query/get-started-queries.md
-        - name: Protokolování dat
-          items:
-            - name: Rozsah dotazu
-              href: log-query/scope.md
             - name: Standardní sloupce
               href: platform/log-standard-columns.md
+            - name: Auditování dotazů
+              href: log-query/query-audit.md
+            - name: Optimalizace dotazů
+              href: log-query/query-optimization.md
+            - name: Functions
+              href: log-query/functions.md
+            - name: Analýza textových dat
+              href: log-query/parse-text.md
+            - name: Ukázky dotazů
+              href: log-query/saved-queries.md
             - name: Skupiny počítačů
               href: platform/computer-groups.md
         - name: Dotazovací jazyk
           items:
-            - name: Dokumentace k dotazovacímu jazyku
-              href: log-query/query-language.md
-            - name: Rozdíly v jazycích
+            - name: Reference ke KQL
+              href: /azure/data-explorer/kusto/query/
+            - name: Rozdíl oproti Azure Data Exploreru
               href: log-query/data-explorer-difference.md
-            - name: Užitečné operátory
-              href: log-query/useful-operators.md
-            - name: Functions
-              href: log-query/functions.md
-            - name: Přechod z prohledávání protokolu
-              href: log-query/log-search-transition.md
+            - name: Příklady
+              href: log-query/examples.md
+            - name: Příklady inteligentních analýz
+              href: log-query/smart-analytics.md
             - name: Lekce
               items:
                 - name: Operace s řetězci
@@ -268,9 +266,9 @@
                   href: log-query/sql-cheatsheet.md
                 - name: Splunk
                   href: log-query/splunk-cheatsheet.md
-        - name: Napříč prostředky
+        - name: Dotazy napříč prostředky
           items:
-            - name: Dotazy napříč prostředky
+            - name: Přehled
               href: log-query/cross-workspace-query.md
             - name: výraz rozhraní API
               href: log-query/app-expression.md
@@ -280,32 +278,25 @@
               href: log-query/resource-expression.md
             - name: Sjednocení prostředků dat aplikací
               href: log-query/unify-app-resource-data.md
-        - name: Příklady a pokyny
-          items:
-            - name: Ukázky dotazů
-              href: log-query/saved-queries.md
-            - name: Příklady dotazů na protokol
-              href: log-query/examples.md
-            - name: Příklady inteligentních analýz
-              href: log-query/smart-analytics.md
-            - name: Optimalizace dotazů
-              href: log-query/query-optimization.md
-            - name: Analýza textových dat
-              href: log-query/parse-text.md
         - name: Pracovní prostory a clustery
           items:
             - name: Návrh nasazení pracovního prostoru
               href: platform/design-logs-deployment.md
             - name: Vytvoření pracovního prostoru
               items:
-                - name: Použití webu Azure Portal
+                - name: portál Azure
                   href: learn/quick-create-workspace.md
-                - name: Použití Azure CLI
+                - name: Azure CLI
                   href: learn/quick-create-workspace-cli.md
-                - name: Použití prostředí PowerShell
+                - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
+                - name: Šablona Resource Manageru
+                  href: platform/template-workspace-configuration.md
             - name: Odstranění a obnovení pracovního prostoru
               href: platform/delete-workspace.md
+            - name: Správa přístupu
+              displayName: Log Analytics workspace
+              href: platform/manage-access.md
             - name: Přesunutí pracovního prostoru
               href: platform/move-workspace.md
             - name: Návrh pro poskytovatele služeb
@@ -328,6 +319,9 @@
       items:
         - name: Pravidla shromažďování dat
           href: platform/data-collection-rule-overview.md
+        - name: Protokolování času pro příjem dat
+          displayname: latency
+          href: platform/data-ingestion-time.md
         - name: Zdroje dat agenta
           items:
             - name: Přehled
@@ -1167,12 +1161,18 @@
               href: platform/workbooks-time.md
             - name: Parametry textu
               href: platform/workbooks-text.md
+            - name: Parametry prostředků
+              href: platform/workbooks-resources.md
         - name: Konfigurace
           items:
             - name: Řízení přístupu
               href: platform/workbooks-access-control.md
             - name: Nasazení s využitím Azure Resource Manageru
               href: platform/workbooks-automate.md
+            - name: Skupiny
+              href: platform/workbooks-groups.md
+            - name: Transformace dat JSON s využitím JSONPath
+              href: platform/workbooks-jsonpath.md
             - name: Přesun sešitů do jiné oblasti
               href: platform/workbooks-move-region.md
             - name: Přesun šablon sešitů do jiné oblasti

@@ -148,7 +148,7 @@ Nejnovější hodnoty pro Azure Machine Learning výpočetních kvót najdete na
 
 ## <a name="azure-monitor-limits"></a>Omezení Azure Monitor
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 
 [!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-alerts.md)]
 

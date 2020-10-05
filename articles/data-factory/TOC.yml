@@ -700,6 +700,8 @@
               href: how-to-data-flow-error-rows.md
             - name: Azure SQL DB do Azure Cosmos DB
               href: how-to-sqldb-to-cosmosdb.md
+            - name: Odstranění duplicit a kontrola hodnot NULL s využitím fragmentů kódu
+              href: how-to-data-flow-dedupe-nulls-snippets.md
         - name: Migrace SSIS z místního prostředí
           items:
             - name: Přehled migrace SSIS

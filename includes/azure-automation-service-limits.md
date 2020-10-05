@@ -26,9 +26,9 @@ ms.locfileid: "85570134"
 | Maximální počet modulů, které se dají importovat každých 30 sekund na účet Automation |5 ||
 | Maximální velikost modulu |100 MB ||
 | Doba běhu úlohy, úroveň Free |500 minut na předplatné za kalendářní měsíc ||
-| Maximální povolené množství místa na disku na izolovaný prostor<sup>1</sup> |1 GB |Platí jenom pro sandboxy Azure.|
+| Maximální povolené množství místa na disku na izolovaný prostor<sup>1</sup> |1 GB |Platí jenom pro sandboxy Azure.|
 | Maximální velikost paměti přidělené izolovanému prostoru<sup>1</sup> |400 MB |Platí jenom pro sandboxy Azure.|
-| Maximální povolený počet síťových soketů na izolovaný prostor<sup>1</sup> |1 000 |Platí jenom pro sandboxy Azure.|
+| Maximální povolený počet síťových soketů na izolovaný prostor<sup>1</sup> |1 000 |Platí jenom pro sandboxy Azure.|
 | Maximální povolený běh na Runbook<sup>1</sup> |3 hodiny |Platí jenom pro sandboxy Azure.|
 | Maximální počet účtů Automation v předplatném |Bez omezení ||
 | Maximální počet Hybrid Worker skupin na účet Automation|4 000||
@@ -48,7 +48,7 @@ V následující tabulce jsou uvedené limity sledovaných položek na počíta�
 | **Prostředek** | **Počtu**| **Poznámky** |
 |---|---|---|
 |Soubor|500||
-|Registr|250||
+|Registry|250||
 |Software systému Windows|250|Neobsahuje aktualizace softwaru.|
 |Balíčky Linux|1 250||
 |Služby|250||

@@ -25,16 +25,16 @@ ms.locfileid: "86512605"
 | Šířka pásma pro stažení<sup>2</sup> MB/s | 30 | 60 | 100 |
 | Šířka pásma při nahrávání<sup>2</sup> MB/s | 10 | 20 | 50 |
 | Webhooky | 2 | 10 | 500 |
-| Geografická replikace | – | – | [Podporováno][geo-replication] |
-| Důvěryhodnost obsahu | – | – | [Podporováno][content-trust] |
-| Privátní odkaz s privátními koncovými body | – | – | [Podporováno][plink] |
-| &bull;Soukromé koncové body | – | – | 10 |
-| Přístup k virtuální síti koncového bodu služby | – | – | [Preview][vnet] |
-| Klíče spravované zákazníkem | – | – | [Podporováno][cmk] |
-| Oprávnění rozsahu úložiště | – | – | [Preview][token]|
-| &bull;Klíčov | – | – | 20 000 |
-| &bull;Mapy oboru | – | – | 20 000 |
-| &bull;Mapování úložišť na obor | – | – | 500 |
+| Geografickou replikací | N/A | N/A | [Podporováno][geo-replication] |
+| Důvěryhodnost obsahu | N/A | N/A | [Podporováno][content-trust] |
+| Privátní odkaz s privátními koncovými body | N/A | N/A | [Podporováno][plink] |
+| &bull; Soukromé koncové body | N/A | N/A | 10 |
+| Přístup k virtuální síti koncového bodu služby | N/A | N/A | [Preview][vnet] |
+| Klíče spravované zákazníkem | N/A | N/A | [Podporováno][cmk] |
+| Oprávnění rozsahu úložiště | N/A | N/A | [Preview][token]|
+| &bull; Klíčov | N/A | N/A | 20 000 |
+| &bull; Mapy oboru | N/A | N/A | 20 000 |
+| &bull; Mapování úložišť na obor | N/A | N/A | 500 |
 
 
 <sup>1</sup> úložiště zahrnuté do denní sazby pro každou úroveň. V případě dalšího úložiště se vám bude účtovat další denní sazba za GiB, a to až do limitu úložiště. Informace o sazbách najdete v tématu [Azure Container Registry ceny][pricing].

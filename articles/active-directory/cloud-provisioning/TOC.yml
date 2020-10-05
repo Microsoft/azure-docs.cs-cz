@@ -34,6 +34,10 @@
           href: how-to-install.md
         - name: Konfigurace zřizování cloudu
           href: how-to-configure.md
+        - name: Zřizování na vyžádání
+          href: how-to-on-demand-provision.md
+        - name: Mapování atributů
+          href: how-to-attribute-mapping.md
         - name: Použití jednotného přihlašování
           href: how-to-sso.md
     - name: Plánování a návrh
@@ -56,7 +60,7 @@
           href: how-to-troubleshoot.md
         - name: Duplicitní atributy
           href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
-- name: Referenční informace
+- name: Odkaz
   items:
     - name: Historie verzí agenta zřizování cloudů Azure AD Connect
       href: ../app-provisioning/provisioning-agent-release-version-history.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context

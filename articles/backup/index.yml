@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: eeca42ea748c10970f312a84ea32c53fb904344a
-  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.openlocfilehash: 4716d537a6a3e402a4f399be8d64c9fd51edc292
+  ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90974431"
+  ms.lasthandoff: 10/01/2020
+  ms.locfileid: "91620116"
 landingContent:
 - title: Přečtěte si o službě Azure Backup
   linkLists:
@@ -60,6 +60,12 @@ landingContent:
       url: backup-center-overview.md
     - text: Zálohování Azure Database for PostgreSQL
       url: backup-azure-database-postgresql.md
+    - text: Selektivní zálohování a obnovování disků pro virtuální počítače Azure
+      url: selective-disk-backup-restore.md
+    - text: Obnovení databází SQL Serveru napříč oblastmi na virtuálních počítačích Azure
+      url: restore-sql-database-azure-vm.md#cross-region-restore
+    - text: Podpora pro zálohování virtuálního počítače s až 32 disky
+      url: backup-support-matrix-iaas.md#vm-storage-support
     - text: Obnovitelné odstranění pro Azure Backup
       url: backup-azure-security-feature-cloud.md
     - text: SQL Server na virtuálních počítačích Azure – obnovit jako soubory

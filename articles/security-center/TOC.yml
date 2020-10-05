@@ -39,6 +39,7 @@
         - name: Azure Defender pro App Service
           href: defender-for-app-service-introduction.md
         - name: Azure Defender pro úložiště
+          displayName: 'blob, adls, files'
           href: defender-for-storage-introduction.md
         - name: Azure Defender pro SQL
           displayName: database
@@ -46,7 +47,7 @@
         - name: Azure Defender for IoT
           href: defender-for-iot-introduction.md
         - name: Azure Defender pro trezor klíčů
-          displayName: KV
+          displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
         - name: Azure Defender pro Kubernetes
           displayName: 'clusters, k8s'
@@ -65,13 +66,13 @@
   items:
     - name: Začínáme
       href: security-center-get-started.md
-    - name: Připojení počítačů mimo Azure do Azure
-      displayName: 'azure stack, windows, linux'
-      href: quickstart-onboard-machines.md
-    - name: Připojení účtů AWS a GCP
+    - name: Nastavení hybridního prostředí
       items:
+        - name: Připojení počítačů mimo Azure do Azure
+          displayName: 'azure stack, ash, windows, linux, hybrid, arc'
+          href: quickstart-onboard-machines.md
         - name: Připojení účtů AWS
-          displayName: 'hybrid, multicloud, amazon'
+          displayName: 'hybrid, multicloud, amazon, arc'
           href: quickstart-onboard-aws.md
         - name: Připojení účtů GCP
           displayName: 'hybrid, multicloud, google'
@@ -90,7 +91,7 @@
       href: security-center-planning-and-operations-guide.md
     - name: Ochrana vašich prostředků
       href: tutorial-protect-resources.md
-    - name: Reakce na incidenty
+    - name: Prošetřování a reakce na výstrahy zabezpečení
       href: tutorial-security-incident.md
     - name: Vylepšené dodržování legislativních předpisů
       href: security-center-compliance-dashboard.md
@@ -206,6 +207,7 @@
       items:
         - name: Konfigurace Azure Defenderu pro SQL na virtuálních počítačích Azure
           href: defender-for-sql-usage.md
+          displayName: 'hybrid, arc'
         - name: Přizpůsobení zásad Information Protection
           href: security-center-info-protection-policy.md
     - name: Použití Azure Defenderu pro registry kontejnerů
@@ -218,6 +220,7 @@
         - name: Vytváření a správa pravidel pro potlačení výstrah
           href: alerts-suppression-rules.md
         - name: Reakce na upozornění Azure Defenderu pro Key Vault
+          displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
         - name: Správa incidentů zabezpečení
           href: security-center-incident.md

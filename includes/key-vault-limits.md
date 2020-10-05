@@ -15,13 +15,13 @@ ms.locfileid: "85838769"
 
 |Typ klíče|Klíč HSM<br>VYTVOŘIT klíč|Klíč HSM<br>Všechny ostatní transakce|Softwarový klíč<br>VYTVOŘIT klíč|Softwarový klíč<br>Všechny ostatní transakce|
 |:---|---:|---:|---:|---:|
-|RSA 2 048-bit|5|1 000|10|2 000|
+|RSA 2 048-bit|5|1 000|10|2 000|
 |RSA 3 072-bit|5|250|10|500|
 |RSA 4 096-bit|5|125|10|250|
-|ECC P-256|5|1 000|10|2 000|
-|ECC P-384|5|1 000|10|2 000|
-|ECC P-521|5|1 000|10|2 000|
-|ECC SECP256K1|5|1 000|10|2 000|
+|ECC P-256|5|1 000|10|2 000|
+|ECC P-384|5|1 000|10|2 000|
+|ECC P-521|5|1 000|10|2 000|
+|ECC SECP256K1|5|1 000|10|2 000|
 
 > [!NOTE]
 > V předchozí tabulce uvidíme, že pro klíče RSA 2 048 jsou povolené transakce 2 000 GET transakcí za 10 sekund. V případě šifrování RSA 2 048 jsou povoleny klíče HSM, 1 000 GET transakcí za 10 sekund.

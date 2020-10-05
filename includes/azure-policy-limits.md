@@ -28,4 +28,4 @@ V případě přiřazení a výjimek znamená zadání _rozsahu_ [skupinu pro sp
 | Definice iniciativy | Parametry | 100 |
 | Přiřazení zásad nebo iniciativ | Vyloučení (notScopes) | 400 |
 | Pravidlo zásad | Vnořené podmíněné výrazy | 512 |
-| Úloha nápravy | Zdroje informací | 500 |
+| Úloha nápravy | Zdroje a prostředky | 500 |

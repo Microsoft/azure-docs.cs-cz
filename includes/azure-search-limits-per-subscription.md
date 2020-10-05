@@ -21,7 +21,7 @@ Maximální omezení služby lze vyvolat na vyžádání. Pokud v rámci jednoho
 | Prostředek            | Zdarma<sup>1</sup> | Základní | S1  | S2 | S3 | S3 &nbsp; HD | L1 | Paměť |
 | ------------------- | ---- | ----- | --- | -- | -- | ----- | -- | -- |
 | Maximální počet služeb    |1     | 16    | 16  | 8  | 6  | 6     | 6  | 6  |
-| Maximální škálování v jednotkách hledání (SU)<sup>2</sup> |Není k dispozici |3. SU |36 SU |36 SU |36 SU |36 SU |36 SU |36 SU |
+| Maximální škálování v jednotkách hledání (SU)<sup>2</sup> |– |3. SU |36 SU |36 SU |36 SU |36 SU |36 SU |36 SU |
 
 <sup>1</sup> zdarma je založen na sdílených, nevyhrazených a prostředků. U sdílených prostředků se škálování nepodporuje.
 

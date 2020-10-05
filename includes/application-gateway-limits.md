@@ -17,7 +17,7 @@ ms.locfileid: "80334919"
 | Konfigurace front-endové IP adresy |2 |1 veřejný a 1 privátní |
 | Porty front-endu |100<sup>1</sup> | |
 | Fondy back-endové adresy |100<sup>1</sup> | |
-| Back-endové servery na fond |1 200 | |
+| Back-endové servery na fond |1 200 | |
 | Naslouchací procesy HTTP |200<sup>1</sup> |Omezeno na 100 aktivních naslouchací procesy, které směrují provoz. Aktivní naslouchací procesy = celkový počet naslouchacího procesu – naslouchací procesy nejsou aktivní.<br>Pokud je výchozí konfigurace v pravidle směrování nastavená na směrování provozu (například má naslouchací proces, fond back-end a nastavení HTTP), pak se také počítá jako naslouchací proces.|
 | Pravidla vyrovnávání zatížení HTTP |100<sup>1</sup> | |
 | Nastavení HTTP back-endu |100<sup>1</sup> | |

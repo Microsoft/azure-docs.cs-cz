@@ -15,7 +15,7 @@ ms.locfileid: "85838920"
 | --- | --- | --- | --- |
 | Volání rozhraní API |500 000 |1 500 000 na jednotku |15 000 000 na jednotku |
 | Aktivní zařízení |500 |Unlimited |Unlimited |
-| Měřítko |Není k dispozici |Až 6 jednotek |Neomezený počet jednotek |
+| Měřítko |– |Až 6 jednotek |Neomezený počet jednotek |
 | Nabízená oznámení |Zahrnuje Azure Notification Hubs úrovně Free, až 1 000 000 nabízených oznámení |Zahrnuté úrovně Basic Notification Hubs, až 10 000 000 nabízených oznámení |Zahrnutá úroveň Standard Notification Hubs, až 10 000 000 nabízených oznámení |
 | Zasílání zpráv v reálném čase/<br/>Webové sokety |Omezeně |350 na mobilní službu |Unlimited |
 | Offline synchronizace |Omezeně |Zahrnuje |Zahrnuje |

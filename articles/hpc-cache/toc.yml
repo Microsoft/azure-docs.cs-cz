@@ -18,6 +18,8 @@
       items:
         - name: Přidání cílů úložiště
           href: hpc-cache-add-storage.md
+        - name: Přidání cest k oborům názvů
+          href: add-namespace-paths.md
         - name: Přesun data do cílů úložiště (v případě potřeby)
           items:
             - name: Předběžné načtení nového úložiště objektů blob
@@ -42,8 +44,6 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/hpc-cache/hpc-cache
-    - name: Azure PowerShell
-      href: /powershell/module/Az.HPCCache
 - name: Zdroje a prostředky
   items:
     - name: Otevření lístku podpory

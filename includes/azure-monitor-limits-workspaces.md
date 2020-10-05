@@ -47,7 +47,7 @@ ms.locfileid: "91639395"
 | Maximální velikost pro jeden příspěvek | 30 MB | Rozdělte větší svazky na více příspěvků. |
 | Maximální velikost pro hodnoty polí  | 32 KB | Pole delší než 32 kB se oříznou. |
 
-**Search API**
+**Rozhraní API pro vyhledávání**
 
 | Kategorie | Omezení | Komentáře |
 |:---|:---|:---|

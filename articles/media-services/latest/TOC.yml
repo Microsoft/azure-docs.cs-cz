@@ -118,6 +118,8 @@
           href: autogen-bitrate-ladder.md
         - name: Kódování zohledňující obsah
           href: content-aware-encoding.md
+        - name: Rezervované jednotky médií
+          href: concept-media-reserved-units.md
     - name: Analýza obsahu (Video Indexer)
       items:
         - name: Přehled
@@ -383,7 +385,7 @@
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Přejít
+        - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.media/allversions

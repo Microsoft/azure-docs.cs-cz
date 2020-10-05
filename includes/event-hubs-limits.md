@@ -50,7 +50,7 @@ V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s m
 | Příznak | Omezení |
 | --- | ---|
 | Šířka pásma |  20 kapacitní jednotky |
-| Obory názvů | 50 za CU |
+| Jmenné prostory | 50 za CU |
 | Event Hubs |  1000 na obor názvů |
 | Velikost zpráv | 1 MB |
 | Oddíly | 2000 za CU |

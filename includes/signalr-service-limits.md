@@ -27,7 +27,7 @@ ms.locfileid: "83673539"
 | Jednotky služby signálu Azure na předplatné na oblast pro úroveň Free|5 |5 |
 | Celkový počet jednotek služby signálů Azure na předplatné na oblast |150 |Unlimited |
 | Počet připojení za jednotku a den pro úroveň Free |20 |20 |
-| Počet připojení za jednotku a den pro úroveň Standard |1 000 |1 000|
+| Počet připojení za jednotku a den pro úroveň Standard |1 000 |1 000|
 | Zahrnuté zprávy na jednotku za den pro úroveň Free|20 000 |20 000 |
 | Další zprávy za jednotku za den pro úroveň Free|0 |0 |
 | Zahrnuté zprávy na jednotku za den pro úroveň Standard|1 000 000 |1 000 000 |

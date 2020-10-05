@@ -13,7 +13,7 @@ ms.locfileid: "82616103"
 ---
 | Prostředek | Omezení |
 | --- | --- |
-| Maximální počet virtuálních počítačů ve škálovací sadě |1 000 |
+| Maximální počet virtuálních počítačů ve škálovací sadě |1 000 |
 | Maximální počet virtuálních počítačů založených na vlastní imagi virtuálního počítače v sadě škálování|600 |
 | Maximální počet škálovacích sad v oblasti |2,500 |
 

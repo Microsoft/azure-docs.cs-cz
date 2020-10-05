@@ -27,8 +27,8 @@ Následující tabulka uvádí funkční omezení digitálních vláken Azure v 
 | Modely | Počet modelů v rámci jedné instance digitálního vlákna Azure | 10 000 | Yes |
 | Modely | Počet modelů, které se dají nahrát v jednom volání rozhraní API | 250 | No |
 | Modely | Počet položek vrácených na jednu stránku | 100 | No |
-| Dotazy | Počet položek vrácených na jednu stránku | 100 | No |
-| Dotazy | Počet `AND`  /  `OR` výrazů v dotazu | 50 | Ano |
+| Dotaz | Počet položek vrácených na jednu stránku | 100 | No |
+| Dotaz | Počet `AND`  /  `OR` výrazů v dotazu | 50 | Ano |
 | Dotaz | Počet položek pole v `IN`  /  `NOT IN` klauzuli | 50 | Ano |
 | Dotaz | Počet znaků v dotazu | 8 000 | Ano |
 | Dotaz | Počet `JOINS` v dotazu | 5 | Yes |

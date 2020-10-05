@@ -19,11 +19,11 @@ Vyhledávací služba je omezená na místo na disku nebo pevně nastavená na m
 
 | Prostředek | Free | Základní<sup>1</sup> | S1 | S2 | S3 | S3 &nbsp; HD | L1 | Paměť |
 | -------- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Smlouva o úrovni služeb (SLA)<sup>2</sup>  |No |Ano |Ano |Ano |Ano |Ano |Ano |Ano |
+| Smlouva o úrovni služeb (SLA)<sup>2</sup>  |No |Yes |Yes |Yes |Yes |Yes |Yes |Yes |
 | Úložiště na oddíl |50 MB |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |
-| Oddíly na službu |Není k dispozici |1 |12 |12 |12 |3 |12 |12 |
-| Velikost oddílu |Není k dispozici |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |
-| Repliky |Není k dispozici |3 |12 |12 |12 |12 |12 |12 |
+| Oddíly na službu |Nelze použít |1 |12 |12 |12 |3 |12 |12 |
+| Velikost oddílu |– |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |
+| Repliky |– |3 |12 |12 |12 |12 |12 |12 |
 
 <sup>1</sup> základní má jeden pevný oddíl. Další jednotky vyhledávání se dají použít k přidání replik pro větší svazky dotazů.
 

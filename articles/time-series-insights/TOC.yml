@@ -73,7 +73,7 @@
           href: time-series-insights-update-query-data-csharp.md
         - name: Dotazování dat pomocí jazyka C# – Gen1
           href: time-series-insights-query-data-csharp.md
-        - name: Správa referenčních dat v jazyce C#
+        - name: Správa referenčních dat v jazyce C# – Gen1
           href: time-series-insights-manage-reference-data-csharp.md
         - name: Sdílení vlastního zobrazení
           href: time-series-insights-parameterized-urls.md

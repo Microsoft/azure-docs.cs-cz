@@ -25,7 +25,7 @@ Následující tabulka ukazuje omezení velikosti kumulativních dat pro účty 
 
 | Prostředek                               | Omezení  |
 |----------------------------------------|:---------------------:|
-| Maximální velikost úložiště na jedno předplatné Azure |   1 GB |
+| Maximální velikost úložiště na jedno předplatné Azure |   1 GB |
 | Maximální velikost pro nahrání souboru           | 100 MB |
 
 

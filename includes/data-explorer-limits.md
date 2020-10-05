@@ -22,7 +22,7 @@ Následující tabulka popisuje maximální limity pro clustery Azure Průzkumn�
 
 Následující tabulka popisuje omezení operací správy prováděných v clusterech Azure Průzkumník dat.
 
-| Rozsah | Operace | Omezení |
+| Obor | Operace | Omezení |
 | --- | --- | --- |
 | Cluster | čtení (například získání clusteru) | 500 za 5 minut |
 | Cluster | zápis (například vytvoření databáze) | 1000 za hodinu |
