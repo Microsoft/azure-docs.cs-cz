@@ -18,17 +18,17 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: b88a855f1f486a94bb591e3d2a72b49a9a8500db
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84709211"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Rychlý start: Diagnostika problému s filtrováním síťového provozu virtuálního počítače pomocí webu Azure Portal
 
 V tomto rychlém startu nasadíte virtuální počítač a potom zkontrolujete obousměrnou komunikaci mezi IP adresou a adresou URL. Určíte příčinu selhání komunikace a najdete jeho řešení.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
@@ -44,8 +44,8 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |---|---|
     |Název|myVm|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
-    |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat zadané požadavky na složitost.|
-    |Předplatné| Vyberte své předplatné.|
+    |Heslo| Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat definované požadavky na složitost.|
+    |Předplatné| Vyberte předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte **myResourceGroup**.|
     |Umístění| Vyberte **východní USA**|
 
@@ -61,7 +61,7 @@ Pokud chcete otestovat síťovou komunikaci pomocí sledovacího procesu sítě,
 
 Pokud už máte sledovací proces sítě povolený aspoň v jedné oblasti, přejděte k části [použití ověření toku IP](#use-ip-flow-verify).
 
-1. Na webu Azure Portal vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
+1. Na webu Azure Portal vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Pokud se ve výsledcích zobrazí **Network Watcher** , vyberte ji.
 2. Povolte sledovací proces sítě v oblasti USA – východ, protože tam jste v předchozím kroku nasadili virtuální počítač. Rozbalte **Oblasti** a potom vedle **USA – východ** vyberte **...** (stejně jako v následujícím obrázku):
 
     ![Povolení Network Watcheru](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
@@ -72,7 +72,7 @@ Pokud už máte sledovací proces sítě povolený aspoň v jedné oblasti, pře
 
 Když vytvoříte virtuální počítač, Azure u něj ve výchozím nastavení blokuje příchozí i odchozí síťový provoz. Později můžete výchozí nastavení Azure přepsat a povolit nebo odepřít další typy provozu.
 
-1. Na webu Azure Portal vyberte **Všechny služby**. Do **pole filtru** *všech služeb* zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
+1. Na webu Azure Portal vyberte **Všechny služby**. Do **pole filtru** *všech služeb* zadejte *Network Watcher*. Pokud se ve výsledcích zobrazí **Network Watcher** , vyberte ji.
 2. V části **NÁSTROJE PRO DIAGNOSTIKU SÍTĚ** vyberte **Ověření toku protokolu IP**.
 3. Stejně jako na obrázku vyberte své předplatné, zadejte následující hodnoty, a potom vyberte **Zkontrolovat**:
 
@@ -81,7 +81,7 @@ Když vytvoříte virtuální počítač, Azure u něj ve výchozím nastavení 
     | Skupina prostředků    | Vyberte myResourceGroup.                                                                            |
     | Virtuální počítač   | Vyberte myVm.                                                                                       |
     | Síťové rozhraní | myVm – název síťového rozhraní, které web Azure Portal vytvořil, když jste vytvořili virtuální počítač, je jiný. |
-    | Protocol (Protokol)          | TCP                                                                                               |
+    | Protokol          | TCP                                                                                               |
     | Směr         | Odchozí                                                                                          |
     | Místní IP adresa  | 10.0.0.4                                                                                          |
     | Místní port      | 60000                                                                                                |

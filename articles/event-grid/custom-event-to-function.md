@@ -4,10 +4,10 @@ description: 'Rychlý Start: pomocí Azure Event Grid a Azure CLI nebo portálu 
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91324384"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Rychlý Start: směrování vlastních událostí do funkce Azure pomocí Event Grid
@@ -26,7 +26,7 @@ Před přihlášením k odběru vlastního tématu vytvořte funkci pro zpracov�
         :::image type="content" source="./media/custom-event-to-function/function-event-grid-trigger.png" alt-text="Vybrat aktivační událost Event Grid":::
 3. Na stránce **Nová funkce** zadejte název funkce a vyberte **vytvořit funkci**.
 
-    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="Nová stránka funkce":::
+    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="Vybrat aktivační událost Event Grid":::
 4. Pomocí stránky **Code + test** zobrazte existující kód funkce a aktualizujte ji. 
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
@@ -88,7 +88,7 @@ K odběru tématu Event Gridu se přihlašujete, aby služba Event Grid věděla
     
         Dávkování vám může poskytnout vysokou propustnost. Pro **Maximum událostí na jednu dávku**nastavte maximální počet událostí, které bude předplatné zahrnovat do dávky. Upřednostňovaná velikost dávky nastaví upřednostňovanou horní mez velikosti dávky v kilobajtech, ale může být překročena, pokud je jediná událost větší než tato prahová hodnota.
     
-        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Povolit dávkování":::
+        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Vybrat aktivační událost Event Grid":::
     6. Na stránce **vytvořit odběr události** vyberte **vytvořit**.
 
 ## <a name="send-an-event-to-your-topic"></a>Odeslání události do tématu

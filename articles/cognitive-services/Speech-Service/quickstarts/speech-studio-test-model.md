@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 09/04/2020
 ms.author: v-demjoh
 ms.openlocfilehash: 9101944a567df5000d3584ed48eff24e4c5e0057
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89565799"
 ---
 # <a name="test-a-model-using-an-audio-file-in-speech-studio"></a>Testování modelu pomocí zvukového souboru v studiu řeči
 
 V tomto postupu použijete Speech Studio k převodu řeči ze zvukového souboru na text. Speech Studio umožňuje testovat, porovnávat, zlepšovat a nasazovat modely rozpoznávání řeči pomocí souvisejícího textu, zvukového přepisu a pokynů k výslovnosti, které zadáte.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než použijete portál Speech, [postupujte podle těchto pokynů a vytvořte účet Azure a přihlaste se k odběru služby Speech](../how-to-custom-speech.md#set-up-your-azure-account). Toto jednotné předplatné vám umožní přístup k převodu řeči na text, převod textu na řeč, rozpoznávání řeči a Custom Speech Portal.
 

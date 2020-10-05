@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.openlocfilehash: a7e47ebd9695b57163aacdfa5faf3ad82fc7e12d
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85805761"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro Python. Pokud chcete, aby název balíčku začínal vlastním, spusťte příkaz `pip install azure-cognitiveservices-speech` .
@@ -22,7 +22,7 @@ V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/c
   - Mac: macOS X verze 10,12 nebo novější
   - Linux: Ubuntu 16.04/18.04, Debian 9, RHEL 7/8, CentOS 7/8 na platformě x64
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Podporované platformy Linux budou vyžadovat nainstalovaná konkrétní knihovny ( `libssl` pro podporu SSL (Secure Sockets Layer `libasound2` ) a pro podporu zvuku. Pro příkazy potřebné k instalaci správných verzí těchto knihoven použijte níže uvedenou distribuci.
 
@@ -78,14 +78,14 @@ import azure.cognitiveservices.speech as speechsdk
 
 1. Stáhněte a nainstalujte nejnovější podporovanou verzi [Pythonu](https://www.python.org/downloads/) pro vaši platformu, 3,5 až 3,8.
    - Uživatelé systému Windows při instalaci nezapomeňte v procesu instalace vybrat přidat Python do vaší cesty.
-1. Stáhněte a nainstalujte [Visual Studio Code](https://code.visualstudio.com/Download).
+1. Stáhněte a nainstalujte si [Visual Studio Code](https://code.visualstudio.com/Download).
 1. Otevřete Visual Studio Code a nainstalujte rozšíření Python. **File**  >  **Preferences**  >  V nabídce vyberte**rozšíření** předvoleb souborů. Vyhledejte **Python** a klikněte na **nainstalovat**.
 
    ![Instalace rozšíření Python](~/articles/cognitive-services/speech-service/media/sdk/qs-python-vscode-python-extension.png)
 
 1. V rámci Visual Studio Code také nainstalujte sadu Speech SDK Python Package z integrovaného příkazového řádku:
    1. Otevření terminálu (z rozevíracích nabídek, **terminálového**  >  **nového terminálu**)
-   1. V terminálu, který se otevře, zadejte příkaz.`python -m pip install azure-cognitiveservices-speech`
+   1. V terminálu, který se otevře, zadejte příkaz. `python -m pip install azure-cognitiveservices-speech`
 
 Pokud s Visual Studio Code začínáte, přečtěte si rozsáhlejší [Visual Studio Code dokumentaci](https://code.visualstudio.com/docs). Další informace o Visual Studio Code a Pythonu najdete v [kurzu Visual Studio Code Pythonu](https://code.visualstudio.com/docs/python/python-tutorial).
 

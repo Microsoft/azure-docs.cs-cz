@@ -11,17 +11,17 @@ ms.workload: identity
 ms.date: 09/01/2020
 ms.author: kenwith
 ms.openlocfilehash: 889ad3b74a2f7c0baa006a0c45e3f14664d6cd0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91325874"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>Rychlý Start: přiřazení uživatelů k aplikaci, která používá službu Azure AD jako zprostředkovatele identity
 
 V předchozím rychlém startu jste nakonfigurovali vlastnosti pro aplikaci. Při nastavování vlastností jste nakonfigurovali prostředí pro přiřazené i nepřiřazené uživatele. Tento rychlý Start vás provede procesem přiřazování uživatelů k aplikaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete přiřadit uživatele k aplikaci, kterou jste přidali do svého tenanta Azure AD, budete potřebovat:
 
@@ -65,9 +65,9 @@ Až budete s rychlým startem hotovi, zvažte odstranění aplikace. Tímto způ
 
 V dalším článku se dozvíte, jak nastavit jednotné přihlašování pro aplikaci.
 > [!div class="nextstepaction"]
-> [Nastavení jednotného přihlašování založeného na SAML](add-application-portal-setup-sso.md)
+> [Nastavení jednotného přihlašování pomocí SAML](add-application-portal-setup-sso.md)
 
 NEBO
 
 > [!div class="nextstepaction"]
-> [Nastavení jednotného přihlašování založeného na OIDC](add-application-portal-setup-oidc-sso.md)
+> [Nastavení jednotného přihlašování pomocí OIDC](add-application-portal-setup-oidc-sso.md)

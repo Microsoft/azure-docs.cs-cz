@@ -10,10 +10,10 @@ ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: d700c2f2b4df01da577b67dafab989b655bdb58d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91331076"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure Portal
@@ -26,7 +26,7 @@ Tento rychlý Start můžete také dokončit pomocí [Azure PowerShell](quick-cr
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -38,7 +38,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
 
 Aplikační bránu vytvoříte pomocí karet na stránce **vytvořit Aplikační bránu** .
 
-1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Create a resource** (Vytvořit prostředek). Zobrazí se **nové** okno.
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**. Zobrazí se **nové** okno.
 
 2. Vyberte **sítě** a v seznamu **Doporučené** vyberte **Application Gateway** .
 
@@ -146,7 +146,7 @@ Uděláte to takto:
 
 ### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Create a resource** (Vytvořit prostředek). Zobrazí se **nové** okno.
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**. Zobrazí se **nové** okno.
 2. V seznamu **oblíbených** vyberte **Windows Server 2016 Datacenter** . Zobrazí se stránka **vytvořit virtuální počítač** .<br>Application Gateway může směrovat provoz na libovolný typ virtuálního počítače, který se používá v jeho fondu back-endu. V tomto příkladu použijete Windows Server 2016 Datacenter.
 3. Zadejte tyto hodnoty na kartě **základy** pro následující nastavení virtuálního počítače:
 

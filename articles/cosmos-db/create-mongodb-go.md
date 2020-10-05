@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
 ms.openlocfilehash: 0c03c4f163ef36335dacdc3c28340164dcd23fba
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85299190"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: připojení aplikace typu přejít k rozhraní Azure Cosmos DB API pro MongoDB
@@ -30,7 +30,7 @@ Azure Cosmos DB je databázová služba pro více modelů, která umožňuje ryc
 
 Ukázková aplikace je nástroj pro správu založený na příkazovém řádku `todo` napsaný v části přejít. Rozhraní API pro MongoDB je [kompatibilní s MongoDBm přenosovým protokolem](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction#wire-protocol-compatibility), takže je možné, že se k němu připojí kterýkoli klientský ovladač MongoDB. Azure Cosmos DB Tato aplikace používá [ovladač cestách pro MongoDB](https://github.com/mongodb/mongo-go-driver) způsobem, který je transparentní pro aplikaci, že jsou data uložena v databázi Azure Cosmos DB.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. Můžete také použít [emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) spolu s připojovacím řetězcem `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` .
 - V počítači [se nainstaluje a získáte praktické](https://golang.org/) znalosti o cestách.
 - [Git](https://git-scm.com/downloads).
@@ -75,7 +75,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru `todo.go`.
 
 ### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>Připojení aplikace v jazyce Go ke službě Azure Cosmos DB
 
-[`clientOptions`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions)Zapouzdřuje připojovací řetězec pro Azure Cosmos DB, který se předává pomocí proměnné prostředí (podrobnosti najdete v nadcházející části). Připojení je inicializováno pomocí, [`mongo.NewClient`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#NewClient) ke kterému `clientOptions` je instance předána. vyvolaná [ `Ping` funkce](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Client.Ping) pro potvrzení úspěšného připojení (Jedná se o strategii s chybou pro rychlé obnovení)
+[`clientOptions`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions) Zapouzdřuje připojovací řetězec pro Azure Cosmos DB, který se předává pomocí proměnné prostředí (podrobnosti najdete v nadcházející části). Připojení je inicializováno pomocí, [`mongo.NewClient`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#NewClient) ke kterému `clientOptions` je instance předána. vyvolaná [ `Ping` funkce](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Client.Ping) pro potvrzení úspěšného připojení (Jedná se o strategii s chybou pro rychlé obnovení)
 
 ```go
     ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
@@ -96,7 +96,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru `todo.go`.
 ```
 
 > [!NOTE] 
-> Použití [`SetDirect(true)`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions.SetDirect) Konfigurace je důležité, bez toho, aby se zobrazila následující chyba připojení:`unable to connect connection(cdb-ms-prod-<azure-region>-cm1.documents.azure.com:10255[-4]) connection is closed`
+> Použití [`SetDirect(true)`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions.SetDirect) Konfigurace je důležité, bez toho, aby se zobrazila následující chyba připojení: `unable to connect connection(cdb-ms-prod-<azure-region>-cm1.documents.azure.com:10255[-4]) connection is closed`
 >
 
 ### <a name="create-a-todo-item"></a>Vytvořit `todo` položku
@@ -145,7 +145,7 @@ func list(status string) {
     }
 ```
 
-[`Find`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.Find)slouží k hledání dokumentů na základě filtru a výsledek je převeden na řez`Todo`
+[`Find`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.Find) slouží k hledání dokumentů na základě filtru a výsledek je převeden na řez `Todo`
 
 ```go
     todoCollection := c.Database(database).Collection(collection)
@@ -199,9 +199,9 @@ func update(todoid, newStatus string) {
     }
 ```
 
-### <a name="delete-a-todo"></a>Odstraní`todo`
+### <a name="delete-a-todo"></a>Odstraní `todo`
 
-A `todo` je odstraněn v závislosti na jeho `_id` a zapouzdřený ve formě [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) instance. [`DeleteOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.DeleteOne)je vyvolána pro odstranění dokumentu.
+A `todo` je odstraněn v závislosti na jeho `_id` a zapouzdřený ve formě [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) instance. [`DeleteOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.DeleteOne) je vyvolána pro odstranění dokumentu.
 
 ```go
 func delete(todoid string) {
@@ -340,7 +340,7 @@ export MONGODB_CONNECTION_STRING="mongodb://<COSMOSDB_ACCOUNT_NAME>:<COSMOSDB_PA
 > `ssl=true`Možnost je důležitá z důvodu Cosmos DB požadavků. Další informace najdete v tématu [požadavky na připojovací řetězec](connect-mongodb-account.md#connection-string-requirements).
 >
 
-Pro `MONGODB_CONNECTION_STRING` proměnnou prostředí Nahraďte zástupné symboly pro `<COSMOSDB_ACCOUNT_NAME>` a.`<COSMOSDB_PASSWORD>`
+Pro `MONGODB_CONNECTION_STRING` proměnnou prostředí Nahraďte zástupné symboly pro `<COSMOSDB_ACCOUNT_NAME>` a. `<COSMOSDB_PASSWORD>`
 
 1. `<COSMOSDB_ACCOUNT_NAME>`: Název účtu Azure Cosmos DB, který jste vytvořili.
 2. `<COSMOSDB_PASSWORD>`: Klíč databáze extrahovaný v předchozím kroku
@@ -354,7 +354,7 @@ Můžete zvolit preferované hodnoty pro `MONGODB_DATABASE` a `MONGODB_COLLECTIO
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Vytvoření`todo`
+Vytvoření `todo`
 
 ```bash
 ./todo --create "Create an Azure Cosmos DB database account"
@@ -366,7 +366,7 @@ V případě úspěchu by se měl zobrazit výstup s MongoDB `_id` nově vytvoř
 added todo ObjectID("5e9fd6befd2f076d1f03bd8a")
 ```
 
-Vytvořit další`todo`
+Vytvořit další `todo`
 
 ```bash
 ./todo --create "Get the MongoDB connection string using the Azure CLI"
@@ -422,7 +422,7 @@ Pokud chcete zobrazovat uživatelská data vytvořená v předchozím kroku, za
 
 Do vyhledávacího pole nahoře zadejte **Azure Cosmos DB**. Když se otevře okno účtu Cosmos, vyberte svůj účet Cosmos. V levém navigačním panelu vyberte **Průzkumník dat**. Rozbalte kolekci v podokně Kolekce. Pak můžete zobrazovat dokumenty v kolekci, dotazovat se na data a dokonce vytvářet a spouštět uložené procedury, triggery a funkce UDF. 
 
-:::image type="content" source="./media/create-mongodb-go/go-cosmos-db-data-explorer.png" alt-text="Průzkumník dat zobrazující nově vytvořený dokument":::
+:::image type="content" source="./media/create-mongodb-go/go-cosmos-db-data-explorer.png" alt-text="Průzkumník dat zobrazující nově vytvořený dokument&quot;:::
 
 
 Odstranit `todo` pomocí ID IT
@@ -443,7 +443,7 @@ Výpis `todo` s potvrzením
 +----------------------------+--------------------------------+-----------+
 |             ID             |          DESCRIPTION           |  STATUS   |
 +----------------------------+--------------------------------+-----------+
-| "5e9fd6befd2f076d1f03bd8a" | Get the MongoDB connection     | pending   |
+| &quot;5e9fd6befd2f076d1f03bd8a" | Get the MongoDB connection     | pending   |
 |                            | string using the Azure CLI     |           |
 +----------------------------+--------------------------------+-----------+
 ```

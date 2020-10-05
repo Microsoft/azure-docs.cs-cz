@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: aahi
 ms.custom: devx-track-js
 ms.openlocfilehash: 0aecf99c248d745288716c8638066ddec92e1a39
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91319237"
 ---
 Začínáme s klientskou knihovnou anomálie detektoru pro JavaScript Pomocí těchto kroků nainstalujete balíček Start s použitím algoritmů poskytovaných službou. Služba detektoru anomálií umožňuje v datech časových řad najít neobvyklé typy, a to díky tomu, že automaticky používá nejvhodnější modely, bez ohledu na obor, scénář nebo objem dat.
@@ -26,7 +26,7 @@ Použijte klientskou knihovnu pro detekci anomálií pro JavaScript:
 
 [Referenční dokumentace ke knihovně](https://go.microsoft.com/fwlink/?linkid=2090788)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector)  |  [Balíček (npm)](https://www.npmjs.com/package/%40azure/ai-anomaly-detector)  |  [Vyhledání kódu na GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Aktuální verze [Node.js](https://nodejs.org/)

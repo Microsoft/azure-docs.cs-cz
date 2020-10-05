@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 6d592064729bbdd64e485e0bd0373b2d471597e0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87282479"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Galerie modulů plug-in Azure Media Player #
@@ -38,7 +38,7 @@ ms.locfileid: "87282479"
 | Živé titulky                       | Příspěvek na [blogu Azure](https://azure.microsoft.com/blog/live-real-time-captions-with-azure-media-services-and-player/),[SubPly](http://www.subply.com/en/Products/AzureLiveCaptions.htm) | – | *Další informace najdete v příspěvku.* Konečný pracovní postup, který je určený pro živý modul plug-in pro Azure Media Player, klikněte na odkaz vlevo a přejděte k webu SubPly a zjistěte další informace o řešení. |
 | Klávesové zkratky                            | <strike>[Ukázka](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html)</strike>                        | <strike>[GitHubu](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-hot-keys-plugin)</strike>                     | Modul plug-in klávesové zkratky umožňuje čtenářům řídit různé aspekty přehrávače s obecnými kombinacemi modulů plug-in, jako je F pro celou obrazovku, pro funkci ztlumení a šipky pro řízení indikátoru průběhu. *Poznámka: Tento modul plug-in už je integrovaný do AMP, ale můžete ho použít jako prostředek.* |
 | Sociální sítě                              | | | |
-| Sdílet                               | [Demo](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/share/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-social-share-plugin)                     | Tento modul plug-in přidá na řídicí panel přehrávače tlačítko sdílet, aby mohli vaši uživatelé sdílet video, které sleduje s přáteli přes Facebook, Twitter nebo LinkedIn. |
+| Sdílení                               | [Demo](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/share/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-social-share-plugin)                     | Tento modul plug-in přidá na řídicí panel přehrávače tlačítko sdílet, aby mohli vaši uživatelé sdílet video, které sleduje s přáteli přes Facebook, Twitter nebo LinkedIn. |
 
 ## <a name="next-steps"></a>Další kroky ##
 

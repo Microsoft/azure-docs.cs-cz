@@ -9,10 +9,10 @@ ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: f44ebc3885fe57d68756d908c4b392cd43b0366f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91326197"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>Rychlý Start: zřízení služby pro jarní cloudovou službu Azure
@@ -20,7 +20,7 @@ ms.locfileid: "91326197"
 ::: zone pivot="programming-language-csharp"
 V tomto rychlém startu pomocí Azure CLI zřídíte instanci služby pružinového cloudu Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Sada .NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Služba pružinového cloudu Azure podporuje .NET Core 3,1 a novější verze.
@@ -88,7 +88,7 @@ az extension add --name spring-cloud
 
 ::: zone pivot="programming-language-java"
 Pomocí Azure Portal nebo rozhraní příkazového řádku Azure můžete vytvořit instanci Azure pružinového cloudu.  Obě metody jsou vysvětleny v následujících postupech.
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Nainstalovat JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)

@@ -4,10 +4,10 @@ description: Spusťte poznámkové bloky Jupyter v cloudu pomocí bezplatné slu
 ms.topic: overview
 ms.date: 04/05/2019
 ms.openlocfilehash: d229e48e5c49a9a672c533fb24231e9329e524c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85831399"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Přehled Azure Notebooks Preview
@@ -94,8 +94,8 @@ Pokud chcete diskutovat o Azure Notebooks, zapište problém do [úložiště Gi
 - Rychlá zprovoznění:
 
   - [Vytvoření a sdílení poznámkového bloku](quickstart-create-share-jupyter-notebook.md)
-  - [Klonování poznámkového bloku](quickstart-clone-jupyter-notebook.md)
-  - [Migrace místních poznámkových bloků Jupyter](quickstart-migrate-local-jupyter-notebook.md)
+  - [Klonovat Poznámkový blok](quickstart-clone-jupyter-notebook.md)
+  - [Migrace místního poznámkového bloku Jupyter](quickstart-migrate-local-jupyter-notebook.md)
   - [Použití vlastního prostředí](quickstart-create-jupyter-notebook-project-environment.md)
   - [Přihlášení a nastavení ID uživatele](quickstart-sign-in-azure-notebooks.md)
 

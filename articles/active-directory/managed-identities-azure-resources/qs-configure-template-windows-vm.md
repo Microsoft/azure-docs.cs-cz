@@ -16,10 +16,10 @@ ms.date: 09/26/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 18d38d3ab8cbbfb1f409b368cddc1df854baa8e0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89266880"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-templates"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablon
@@ -30,7 +30,7 @@ Spravované identity pro prostředky Azure poskytují služby Azure s automatick
 
 V tomto článku se pomocí šablony nasazení Azure Resource Manager dozvíte, jak provádět následující spravované identity pro operace prostředků Azure na virtuálním počítači Azure:
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud nejste obeznámeni s používáním šablony nasazení Azure Resource Manager, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.

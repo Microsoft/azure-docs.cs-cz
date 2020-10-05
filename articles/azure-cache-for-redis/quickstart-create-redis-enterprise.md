@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.openlocfilehash: 3df6cb1afe8a6249eadbbd3f61619e66be2d2478
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83402495"
 ---
 # <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>Rychlý Start: vytvoření mezipaměti podnikové vrstvy (Preview)
@@ -22,7 +22,7 @@ Azure cache pro podnikové úrovně Redis poskytuje plně integrovaný a spravov
 
 Pro připojení ke verzi Preview se neúčtují žádné náklady. Pokud vás zajímá, zaregistrujte se [Azure Marketplace](https://aka.ms/redispreviewsignup/) **kontaktujte mě** . Máme moc velký počet bodů účastníků a nemůžeme zaručit, že se do verze Preview přijímají.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, budete potřebovat předplatné Azure. Pokud ho ještě nemáte, vytvořte nejdřív [bezplatný účet](https://azure.microsoft.com/free/) .
 
@@ -44,7 +44,7 @@ Než začnete, budete potřebovat předplatné Azure. Pokud ho ještě nemáte, 
    | ------------ |  ------- | -------------------------------------------------- |
    | **Předplatné** | Rozevírací seznam a vyberte své předplatné. | Předplatné, ve kterém se má vytvořit Tato nová mezipaměť Azure pro instanci Redis | 
    | **Skupina prostředků** | Rozevírací seznam a vyberte skupinu prostředků nebo vyberte **vytvořit novou** a zadejte nový název skupiny prostředků. | Název skupiny prostředků, ve které se má vytvořit mezipaměť a další prostředky Po uložení všech prostředků vaší aplikace do jedné skupiny prostředků je můžete snadno spravovat nebo odstraňovat společně. | 
-   | **Název DNS** | Zadejte globálně jedinečný název. | Název mezipaměti musí být řetězec v rozmezí 1 až 63 znaků, který obsahuje jenom čísla, písmena nebo spojovníky. Název musí začínat a končit číslicí nebo písmenem a nesmí obsahovat po sobě jdoucí spojovníky. *Název hostitele* vaší instance mezipaměti bude * \< název DNS>. <Azure region> . redisenterprise.cache.azure.net*. | 
+   | **Název DNS** | Zadejte globálně jedinečný název. | Název mezipaměti musí být řetězec v rozmezí 1 až 63 znaků, který obsahuje jenom čísla, písmena nebo spojovníky. Název musí začínat a končit číslicí nebo písmenem a nesmí obsahovat po sobě jdoucí spojovníky. *Název hostitele* vaší instance mezipaměti bude * \<DNS name> . <Azure region> . redisenterprise.cache.azure.net*. | 
    | **Umístění** | Rozevírací seznam a vyberte umístění. | Úrovně Enterprise jsou k dispozici v Západní USA, Východní USA 2 a Západní Evropa. |
    | **Vrstva mezipaměti** | Vyberte rozevírací nabídku a vyberte možnost *Enterprise DRAM* nebo *Enterprise SSD* a velikost. |  Úroveň určuje velikost, výkon a funkce, které jsou k dispozici pro mezipaměť. |
    

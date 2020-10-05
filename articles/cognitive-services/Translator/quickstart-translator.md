@@ -13,10 +13,10 @@ ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Překladatel, služba Translator, překlad textu, přepis textu, rozpoznávání jazyka
 ms.openlocfilehash: e5b0bc17e8df1d82fb23a098f857be4fea13b982
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91318836"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Rychlý Start: Začínáme s překladatelem
@@ -29,7 +29,7 @@ V tomto rychlém startu se naučíte používat službu Translator přes REST. Z
 * [Vypočítat délku věty](#get-sentence-length)
 * [Získat alternativní překlady](#dictionary-lookup-alternate-translations) a [Příklady použití slov ve větě](#dictionary-examples-translations-in-context)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Jakmile budete mít předplatné Azure, vytvořte v Azure Portal [prostředek překladatele](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) a Získejte svůj klíč a koncový bod. Po nasazení vyberte **Přejít k prostředku**.

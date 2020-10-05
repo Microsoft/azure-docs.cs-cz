@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.openlocfilehash: 659d136695943d846fe57986d4b64a37f0d8f30e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89300115"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: odstranění aplikace z klienta služby Azure Active Directory (Azure AD)

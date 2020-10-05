@@ -12,10 +12,10 @@ ms.date: 07/20/2020
 ms.author: aahi
 ms.custom: devx-track-python
 ms.openlocfilehash: 0ef870b6b2d3b88b13c16c8c2acbfcee7ed551c1
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90527237"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Rychlý Start: použití REST API Pythonu k volání služby Analýza textu rozpoznávání 
@@ -25,7 +25,7 @@ V tomto rychlém startu můžete začít s analýzou jazyka pomocí Analýza tex
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Python 3.x](https://python.org)
 

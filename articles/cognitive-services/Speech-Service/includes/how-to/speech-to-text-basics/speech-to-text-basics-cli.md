@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/08/2020
 ms.author: trbye
 ms.openlocfilehash: 905eacc3751b3d5d6c66a2fdb0e1391a747ab895
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91327027"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se dozvíte, jak používat rozhraní příkazového řádku pro rozpoznávání řeči v aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.

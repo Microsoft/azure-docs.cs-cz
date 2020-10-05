@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: 0fe9d59e97ebbc9aba17fea14aed43756300d56e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90528583"
 ---
 # <a name="quickstart-provision-a-python-device-with-symmetric-keys"></a>Rychlý Start: zřízení zařízení v Pythonu pomocí symetrických klíčů
@@ -32,7 +32,7 @@ Tento článek je orientovaný na pracovní stanici s Windows. Stejným postupem
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Ujistěte se, že na počítači se systémem Windows máte nainstalovaný [Python 3,7](https://www.python.org/downloads/) nebo novější. Verzi Pythonu můžete kontrolovat spuštěním `python --version` .
 

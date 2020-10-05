@@ -8,10 +8,10 @@ ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 08/31/2020
 ms.openlocfilehash: 04b0ef0d6a480270b1f0a3546319b2608d638677
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89265503"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>Vytvoření živého datového proudu Azure Media Services pomocí OBS
@@ -176,7 +176,7 @@ Tato část nastaví vaše výstupy a umožní vám uložit záznam živého str
 
    ![Pole název lokátoru](media/live-events-wirecast-quickstart/live-event-locator.png)
 1. Všechno ostatní na této obrazovce teď ponechte samostatně.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 ## <a name="play-the-output-broadcast-by-using-azure-media-player"></a>Přehrát výstupní všesměrové vysílání pomocí Azure Media Player
 

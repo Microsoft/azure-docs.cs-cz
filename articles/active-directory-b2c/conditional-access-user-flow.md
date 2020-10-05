@@ -11,10 +11,10 @@ author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60bfac3b80e772e7b359b1e926d5fb84e447a8fb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89271535"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Přidání podmíněného přístupu do toků uživatelů v Azure Active Directory B2C
@@ -37,7 +37,7 @@ Přečtěte si další informace o [identitě a podmíněném přístupu](condit
 
 ## <a name="add-conditional-access-to-a-new-user-flow"></a>Přidání podmíněného přístupu do nového toku uživatele
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. V části **zásady**vyberte **toky uživatelů**a pak vyberte **Nový tok uživatele**.
@@ -67,7 +67,7 @@ Přečtěte si další informace o [identitě a podmíněném přístupu](condit
 > [!NOTE]
 > Stávající tok uživatele musí být verze, která podporuje podmíněný přístup. Tyto verze uživatelských toků jsou označeny jako **Doporučené**.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
@@ -89,7 +89,7 @@ Přečtěte si další informace o [identitě a podmíněném přístupu](condit
 
 Pokud chcete v toku uživatele otestovat podmíněný přístup, [Vytvořte zásady podmíněného přístupu](conditional-access-identity-protection-setup.md) a v toku uživatele povolte podmíněný přístup, jak je popsáno výše. 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Pro vytváření zásad rizikového přihlašování se vyžaduje Azure AD B2C Premium 2. Klienti Premium P1 můžou vytvářet umístění, aplikace nebo zásady na základě skupin.
 - Pro účely testování můžete [zaregistrovat testovací webovou aplikaci](tutorial-register-applications.md) `https://jwt.ms` , což je webová aplikace vlastněná společností Microsoft, která zobrazuje dekódování obsahu tokenu (obsah tokenu nikdy nezůstane v prohlížeči). 

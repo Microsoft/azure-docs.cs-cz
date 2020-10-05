@@ -4,10 +4,10 @@ description: V tomto rychlém startu se dozvíte, jak nakonfigurovat šifrován�
 ms.topic: quickstart
 ms.date: 08/31/2020
 ms.openlocfilehash: e42b2d4487f2f51c082f22068160a02b3dcbb0a5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89263633"
 ---
 # <a name="quickstart-use-portal-to-encrypt-content"></a>Rychlý Start: použití portálu k šifrování obsahu
@@ -32,7 +32,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit zásadu klíče obsahu, kde m
 * [Zásady streamování](streaming-policy-concept.md)
 * [Zásady symetrických klíčů](content-key-policy-concept.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Nahrajte a zpracujte svůj obsah, jak je popsáno v tématu [Správa prostředků v Azure Portal](manage-assets-quickstart.md)
 

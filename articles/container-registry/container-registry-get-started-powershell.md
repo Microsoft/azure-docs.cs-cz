@@ -5,17 +5,17 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc, devx-track-azurepowershell
 ms.openlocfilehash: 91d4209ccf558bf7c8038d8a753ec038428bc484
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89076459"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure PowerShell
 
 Azure Container Registry je spravovaná privátní služba registru kontejneru Dockeru, která se používá k vytváření, ukládání a obsluze imagí kontejnerů Dockeru. V tomto rychlém startu se naučíte vytvořit registr kontejneru Azure pomocí PowerShellu. Pak pomocí příkazů Docker nahrajte image kontejneru do registru a nakonec si vydejte a spusťte image z registru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

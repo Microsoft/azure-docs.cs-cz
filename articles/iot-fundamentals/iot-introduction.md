@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 73eb0b3164a386bb270e42ceba56d5dc7045af1c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81729003"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Co je Azure Internet věcí (IoT)?
@@ -34,7 +34,7 @@ Existuje široká škála zařízení, která jsou k dispozici od různých výr
 
 Microsoft poskytuje sady [SDK](../iot-hub/iot-hub-devguide-sdks.md) open source, které můžete použít k sestavení aplikací, které běží na vašich zařízeních. Tyto sady [SDK zjednodušují a urychlují](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/) vývoj vašich řešení IoT.
 
-## <a name="communication"></a>Communication
+## <a name="communication"></a>Komunikace
 
 Zařízení IoT obvykle odesílají telemetrii ze senzorů do back-endové služby v cloudu. Je ale možné použít i jiné typy komunikace, jako je například back-end služba odesílající příkazy do vašich zařízení. Následuje několik příkladů komunikace typu zařízení-Cloud a Cloud-zařízení:
 

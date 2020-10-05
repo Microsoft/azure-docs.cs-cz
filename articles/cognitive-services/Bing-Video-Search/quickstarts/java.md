@@ -12,10 +12,10 @@ ms.date: 05/22/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.openlocfilehash: b03dd9140ef49d34ba0303742aa4961a9f313cc9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87323362"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a Java
@@ -24,7 +24,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API Bingu pr
 
 Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingVideoSearchv7.java) s dalšími zpracováním chyb, funkcemi a poznámkami ke kódu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Sada Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
 
@@ -251,6 +251,6 @@ V metodě Main vaší aplikace zavolejte `SearchVideos` pomocí hledaného výra
 > [!div class="nextstepaction"]
 > [Sestavení jednostránkové webové aplikace](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>Viz také: 
+## <a name="see-also"></a>Viz také 
 
  [Co je rozhraní API Bingu pro vyhledávání videí?](../overview.md)

@@ -9,10 +9,10 @@ ms.date: 08/04/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: a5b4d0591f58d2ce4d3d2e9055c70fdc7118e123
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91326248"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Rychlý Start: monitorování jarních cloudových aplikací Azure díky protokolům, metrikám a trasování
@@ -22,7 +22,7 @@ Díky integrované možnosti monitorování v Azure jaře cloudu můžete ladit 
 
 Následující postupy vysvětlují, jak používat streamování protokolů, Log Analytics, metriky a distribuované trasování s ukázkovou aplikací, kterou jste nasadili v předchozích rychlých startech.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončete předchozí rychlé starty v této sérii:
 
@@ -109,7 +109,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 ::: zone pivot="programming-language-java"
 Díky integrované možnosti monitorování v Azure jaře cloudu můžete ladit a monitorovat složité problémy. Jarní cloud Azure integruje [jarní Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) s využitím Azure [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Tato integrace poskytuje výkonné protokoly, metriky a možnosti distribuované vektorizace z Azure Portal. Následující postupy vysvětlují, jak používat streamování protokolů, Log Analytics, metriky a distribuované trasování s nasazenými aplikacemi PiggyMetrics.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončete předchozí kroky: 
 

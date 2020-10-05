@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: efec40e4236c00fd4792e9d6aa51943cf43838ca
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89001412"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V11 pro .NET
@@ -36,7 +36,7 @@ Další prostředky:
 * [Referenční dokumentace k rozhraní API](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
 * [Zdrojový kód knihovny](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 * [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
-* [Ukázky](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
+* [ukázky](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -199,7 +199,7 @@ Tyto ukázkové fragmenty kódu ukazují, jak provést následující akce s kli
    * [Vytvoření kontejneru](#create-a-container)
    * [Nastavení oprávnění pro kontejner](#set-permissions-on-a-container)
    * [Nahrání objektů blob do kontejneru](#upload-blobs-to-a-container)
-   * [Zobrazí seznam objektů blob v kontejneru](#list-the-blobs-in-a-container)
+   * [Seznam objektů blob v kontejneru](#list-the-blobs-in-a-container)
    * [Stáhnout objekty blob](#download-blobs)
    * [Odstranění kontejneru](#delete-a-container)
 
@@ -297,7 +297,7 @@ CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(localFi
 await cloudBlockBlob.UploadFromFileAsync(sourceFile);
 ```
 
-### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
+### <a name="list-the-blobs-in-a-container"></a>Seznam objektů blob v kontejneru
 
 Vypíše objekty BLOB v kontejneru pomocí metody [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync) . V tomto případě byl do kontejneru přidán pouze jeden objekt blob, takže operace výpisu vrátí pouze jeden objekt BLOB.
 

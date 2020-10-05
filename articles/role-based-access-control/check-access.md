@@ -15,10 +15,10 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 9be53aa964e75bab0b90495640537fe927a5af0e
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82734157"
 ---
 # <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Rychlý Start: zobrazení přístupu uživatele k prostředkům Azure
@@ -33,7 +33,7 @@ V okně řízení přístupu **(IAM)** můžete v [řízení přístupu na zákl
 
 1. Klikněte na své předplatné.
 
-1. Klikněte na **Řízení přístupu (IAM)**.
+1. Klikněte na **Řízení přístupu (IAM)** .
 
 1. Klikněte na kartu **kontrolovat přístup** .
 

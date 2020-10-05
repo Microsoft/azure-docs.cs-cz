@@ -8,17 +8,17 @@ ms.topic: overview
 ms.date: 06/26/2019
 keywords: Azure, Kinect, přehled, dev Kit, DK, zařízení, Hloubka, sledování textu, rozpoznávání řeči, rozpoznávání služeb, sady SDK, sada SDK, firmware
 ms.openlocfilehash: 6b3215ba6761521214ebffa2a100c5a1a030ab4c
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85277948"
 ---
 # <a name="about-azure-kinect-dk"></a>Informace o Azure Kinect DK
 
  ![Azure Kinect DK](./media/index/device-image.jpg)
 
-Azure Kinect DK je Vývojářská sada s pokročilými senzory AI, které poskytují sofistikované modely pro počítačové zpracování obrazu a řeči.  Kinect obsahuje senzor hloubky, pole prostorového mikrofonu s videokamerou a snímač orientace jako všechna malá zařízení s více režimy, možnosti a sady SDK (Software Development Kit). Je k dispozici pro nákup v [Microsoft Online Storu](https://www.microsoft.com/p/azure-kinect-dk/8pp5vxmd9nhq).
+Azure Kinect DK je vývojářská sada s pokročilými senzory AI, které poskytují sofistikované modely pro počítačové zpracování obrazu a řeči.  Kinect obsahuje senzor hloubky, prostorové mikrofonní pole s videokamerou a senzor orientace ve formě malého komplexního zařízení s několika režimy, možnostmi a sadami SDK (Software Development Kit). Je k dispozici pro nákup v [Microsoft Online Storu](https://www.microsoft.com/p/azure-kinect-dk/8pp5vxmd9nhq).
 
 Vývojové prostředí Azure Kinect DK se skládá z následujících sad SDK:
 
@@ -30,7 +30,7 @@ Kromě toho je možné použít službu rozpoznávání zraku s fotoaparátem RG
 
    ![Diagram sady Azure Kinect SDK](./media/quickstarts/sdk-diagram.jpg)
 
-## <a name="azure-kinect-sensor-sdk"></a>Sada SDK pro sadu Azure Kinect snímač
+## <a name="azure-kinect-sensor-sdk"></a>Sada Azure Kinect Sensor SDK
 
 SADA Kinect senzorů Azure poskytuje přístup snímače nízké úrovně pro hardwarové senzory Azure Kinect DK a konfiguraci zařízení.
 
@@ -56,7 +56,7 @@ V sadě snímač SDK jsou k dispozici následující nástroje:
 - Nástroj pro záznam snímačů a rozhraní API pro čtečku přehrávání, který používá formát kontejneru Matroska.
 - Nástroj pro aktualizaci firmwaru Azure Kinect DK.
 
-## <a name="azure-kinect-body-tracking-sdk"></a>Sada SDK pro sledování textu v Azure Kinect
+## <a name="azure-kinect-body-tracking-sdk"></a>Sada Azure Kinect Body Tracking SDK
 
 Sada SDK pro sledování těla zahrnuje knihovnu Windows a modul runtime pro sledování institucí v 3D při použití s hardwarem Azure Kinect DK.
 
@@ -93,7 +93,7 @@ Další podrobnosti a informace najdete v [dokumentaci ke službě Speech](https
 Níže uvedené [služby Azure vnímání Vision](https://azure.microsoft.com/services/cognitive-services/directory/vision/) poskytují služby Azure, které mohou identifikovat a analyzovat obsah v rámci obrázků a videí.
 
 - [Počítačové zpracování obrazu](https://azure.microsoft.com/services/cognitive-services/computer-vision/)
-- [Tvář](https://azure.microsoft.com/services/cognitive-services/face/)
+- [Rozpoznávání tváře](https://azure.microsoft.com/services/cognitive-services/face/)
 - [Video indexer](https://azure.microsoft.com/services/media-services/video-indexer/)
 - [Moderátor obsahu](https://azure.microsoft.com/services/cognitive-services/content-moderator/)
 - [Vlastní vize](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)

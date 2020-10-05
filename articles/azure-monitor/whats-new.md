@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
 ms.openlocfilehash: d82e9244152f1ecb78b062b4b1dbf02c45c505a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91325653"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Co je nového v dokumentaci k Azure Monitor?
@@ -87,7 +87,7 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 - [Nasazení Azure monitor](deploy-scale.md) -restrukturování obsahu Azure monitor pro virtuální počítače registraci.
 - [Použití privátního odkazu Azure k bezpečnému propojení sítí s Azure Monitormi](platform/private-link-security.md) přidanými částmi na omezeních.
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 - [Pravidla akcí pro Azure monitor výstrahy](platform/alerts-action-rules.md) – přidání procesů CLI.
 - [Vytvoření a Správa skupin akcí v Azure Portal](platform/action-groups.md) – aktualizuje se, aby odrážely změny v uživatelském rozhraní.
 - [Uložené dotazy v Azure Monitor Log Analytics](log-query/saved-queries.md) – nový článek.
@@ -148,7 +148,7 @@ Nové a aktualizované články z změny struktury Azure Monitor pro virtuální
 ### <a name="agents"></a>Agenti
 - [Přehled agenta Log Analytics](platform/log-analytics-agent.md) – přidání požadavku Pythonu 2
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 - [Jak aktualizovat pravidla upozornění nebo pravidla akcí, když se jejich cílový prostředek přesune do jiné oblasti Azure](platform/alerts-resource-move.md) – nový článek.
 - [Řešení potíží s upozorněními Azure Metrics](platform/alerts-troubleshoot-metric.md) – nový článek
 - [Řešení potíží s výstrahami protokolu v Azure monitor](platform/alerts-troubleshoot-metric.md) – nový článek.
@@ -200,7 +200,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 - [Protokoly prostředků Azure](platform/resource-logs.md)
 - [Shromažďování a analýza protokolu aktivit Azure v Azure Monitor](./platform/activity-log.md)
 - [Shromažďování protokolů prostředků Azure v pracovním prostoru Log Analytics](./platform/resource-logs.md#send-to-log-analytics-workspace)
-- [Vytvoření nastavení diagnostiky pro odesílání protokolů a metrik platforem do různých umístění](platform/diagnostic-settings.md)
+- [Vytvoření nastavení diagnostiky pro odesílání metrik a protokolů platformy do různých cílů](platform/diagnostic-settings.md)
 - [Exportovat protokol aktivit Azure](./platform/activity-log.md#legacy-collection-methods)
 - [Přehled protokolů platformy Azure](platform/platform-logs-overview.md)
 - [Streamování protokolů platformy Azure do centra událostí](./platform/resource-logs.md#send-to-azure-event-hubs)
@@ -316,7 +316,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 - Azure Monitor oddílem přidaných uživatelem [spravovaný klíč](platform/customer-managed-keys.md) na asynchronních operacích
 - [Správa pracovních prostorů Log Analytics v](platform/manage-access.md) oddílech s aktualizovanými vlastními protokoly Azure monitor.
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 
 - [Pravidla akcí pro výstrahy Azure monitor](platform/alerts-action-rules.md) – přidané video
 - [Přehled upozorňování a monitorování oznámení v Azure](platform/alerts-overview.md) – přidané video
@@ -366,7 +366,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 - [Azure monitor konfiguraci klíče spravovaného zákazníkem](platform/customer-managed-keys.md) – obecné aktualizace.
 - [Referenční informace o Azure monitor dat](/azure/azure-monitor/reference/) – nový web
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 
 - [Umožňuje vytvářet, zobrazovat a spravovat výstrahy protokolu aktivit v Azure monitor](platform/alerts-activity-log.md) – další vysvětlení správce prostředků šablony.
 - [Pochopte, jak budou výstrahy metriky fungovat v Azure Monitor.](platform/alerts-metric-overview.md) – Aktualizováno pro státní podporu.
@@ -490,7 +490,7 @@ Několik nových článků pro Průvodce převodem návrháře zobrazení na se�
 
 - [Shromažďovat data protokolu v](platform/log-analytics-agent.md) tabulce požadavků brány firewall pro službu Azure Log Analytics agent – aktualizované
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 
 - [Vytváření a Správa skupin akcí ve Azure Portal](platform/action-groups.md) – nastavení odebrané pro funkce v2, které už nejsou potřeba.
 - [Vytvořte upozornění na metriku správce prostředků s](platform/alerts-metric-create-templates.md) příkladem přidaným šablonou pro parametr *ignoreDataBefore* .  Přidali jsme omezení pro pravidla s více kritérii.
@@ -544,7 +544,7 @@ Několik nových článků pro Průvodce převodem návrháře zobrazení na se�
 
 - [Připojte počítače se systémem Linux k Azure monitor](platform/agent-linux.md) – nový článek.
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 
 - [Vytvoření upozornění na metriku s](platform/alerts-metric-create-templates.md) příkladem pro vlastní metriku správce prostředků přidány šablony
 - [Vytváření výstrah s dynamickými mezními hodnotami v sekci Azure monitor](platform/alerts-dynamic-thresholds.md) -added při interpretaci dynamických mezních grafů.

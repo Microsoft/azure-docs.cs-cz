@@ -12,17 +12,17 @@ ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 41f3d60d91b7418d6e9733b8351d4830b31dbace
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81424192"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-the-azure-portal"></a>Rychlý Start: nastavení a načtení klíče z Azure Key Vault pomocí Azure Portal
 
 Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných kódů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Trezory klíčů Azure můžete vytvářet a spravovat přes web Azure Portal. V tomto rychlém startu vytvoříte Trezor klíčů a pak ho použijete k uložení klíče. Další informace o službě Key Vault najdete v tématu [Přehled](../general/overview.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -60,7 +60,7 @@ Pokud chcete do trezoru přidat klíč, stačí provést několik dalších krok
 3. Na obrazovce **vytvořit klíč** vyberte následující hodnoty:
     - **Možnosti**: Generated.
     - **Název**: ExampleKey.
-    - U ostatních hodnot ponechte jejich výchozí nastavení. Klikněte na **Vytvořit**.
+    - U ostatních hodnot ponechte jejich výchozí nastavení. Klikněte na **Create** (Vytvořit).
 
 Jakmile obdržíte zprávu, že byl klíč úspěšně vytvořen, můžete na něj kliknout na seznamu. Zobrazí se několik jeho vlastností. Pokud kliknete na aktuální verzi, zobrazí se hodnota, kterou jste zadali v předchozím kroku.
 

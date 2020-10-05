@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: sstein
 ms.date: 09/26/2019
 ms.openlocfilehash: 2f2e8c6be128e5004769dca2f42a6c8013510cde
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91325228"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>Rychlý Start: vytvoření spravované instance spravované instance SQL
@@ -34,7 +34,7 @@ Chcete-li vytvořit spravovanou instanci, postupujte podle těchto kroků:
 
 Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 1. V levé nabídce Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a pak do vyhledávacího pole zadejte **Azure SQL** .
 1. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o spravované instanci Azure SQL získáte tak, že na dlaždici **spravované instance SQL** vyberete **Zobrazit podrobnosti** .
 1. Vyberte **Vytvořit**.

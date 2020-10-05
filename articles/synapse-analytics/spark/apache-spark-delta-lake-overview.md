@@ -12,10 +12,10 @@ ms.author: euang
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.openlocfilehash: 655daeb0149228d78d5288b0e5d0d705a5743d28
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89008637"
 ---
 # <a name="linux-foundation-delta-lake-overview"></a>Přehled rozdílových Lake pro Linux Foundation
@@ -286,14 +286,14 @@ Výsledky:
 |id                          |bigint                                                                                                       |null   |
 |                            |                                                                                                             |       |
 |Podrobné informace o tabulce  |                                                                                                             |       |
-|Databáze                    |default                                                                                                      |       |
+|databáze                    |default                                                                                                      |       |
 |Tabulka                       |manageddeltatable                                                                                            |       |
 |Vlastník                       |Trusted-Service-User                                                                                         |       |
 |Čas vytvoření                |So Apr 25 00:35:34 UTC 2020                                                                                 |       |
 |Poslední přístup                 |Čtvrtek LED 01 00:00:00 UTC 1970                                                                                 |       |
 |Created By                  |Spark 2.4.4.2.6.99.201 – 11401300                                                                              |       |
 |Typ                        |STAROSTI                                                                                                      |       |
-|Poskytovatel                    |rozdíl                                                                                                        |       |
+|Poskytovatel                    |Delta                                                                                                        |       |
 |Vlastnosti tabulky            |[transient_lastDdlTime = 1587774934]                                                                           |       |
 |Statistika                  |2407 bajtů                                                                                                   |       |
 |Umístění                    |abfss://data @ <data lake> . DFS.Core.Windows.NET/synapse/Workspaces/ <workspace name> /Warehouse/manageddeltatable|       |
@@ -333,7 +333,7 @@ Výsledky:
 |id                          |bigint                                                                |null   |
 |                            |                                                                      |       |
 |Podrobné informace o tabulce  |                                                                      |       |
-|Databáze                    |default                                                               |       |
+|databáze                    |default                                                               |       |
 |Tabulka                       |externaldeltatable                                                    |       |
 |Vlastník                       |Trusted-Service-User                                                  |       |
 |Čas vytvoření                |So Apr 25 00:35:38 UTC 2020                                          |       |
@@ -564,7 +564,7 @@ deltaTable.history.show(false)
 
 Výsledky:
 
-|verze|          časové razítko|userId|userName|operation|                                                operationParameters| funkcí|poznámkového bloku|clusterId|readVersion|isolationLevel|isBlindAppend|
+|verze|          časové razítko|userId|userName|operation|                                                operationParameters| úloha|poznámkový blok|clusterId|readVersion|isolationLevel|isBlindAppend|
 |-------|-------------------|------|--------|---------|-------------------------------------------------------------------|----|--------|---------|-----------|--------------|-------------|
 |      4|2020-04-25 00:36:27|  null|    null|    SLOUČENÍ|                       [predikát-> (oldData.`ID` = newData. `ID` )]|null|    null|     null|          3|          null|        false (nepravda)|
 |      3|2020-04-25 00:36:08|  null|    null|   DELETE|[predikát-> ["(( `ID` % cast (2 jako bigint)) = přetypování (0 jako bigint))]|null|    null|     null|          2|          null|        false (nepravda)|
@@ -834,7 +834,7 @@ DeltaTable.isDeltaTable(parquetPath)
 
 Výsledky:
 
-Ne
+Nepravda
 
 Nyní převedete data na formát Delta a ověříte, že pracovala.
 
@@ -903,7 +903,7 @@ spark.sql(s"DESCRIBE HISTORY delta.`$deltaTablePath`").show()
 
 Výsledky:
 
-|verze|          časové razítko|userId|userName|       operation| operationParameters| funkcí|poznámkového bloku|clusterId|readVersion|isolationLevel|isBlindAppend|
+|verze|          časové razítko|userId|userName|       operation| operationParameters| úloha|poznámkový blok|clusterId|readVersion|isolationLevel|isBlindAppend|
 |-------|-------------------|------|--------|----------------|--------------------|----|--------|---------|-----------|--------------|-------------|
 |      5|2020-04-25 00:37:09|  null|    null|AKTUALIZACE STREAMOVÁNÍ|[outputMode-> přístupový bod...|null|    null|     null|          4|          null|         true|
 |      4|2020-04-25 00:36:27|  null|    null|           SLOUČENÍ|[predikát-> (OL...|null|    null|     null|          3|          null|        false (nepravda)|

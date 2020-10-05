@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e65149b2524d2785039be78caad4ce84924e7e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87035107"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Co je Azure Active Directory ověřování?
@@ -23,7 +23,7 @@ ms.locfileid: "87035107"
 Jednou z hlavních funkcí platformy identity je ověření, nebo *ověření*přihlašovacích údajů, když se uživatel přihlásí k zařízení, aplikaci nebo službě. V Azure Active Directory (Azure AD) ověřování zahrnuje víc než jenom ověření uživatelského jména a hesla. K vylepšení zabezpečení a omezení nutnosti pomoci helpdesku zahrnuje ověřování Azure AD následující komponenty:
 
 * Samoobslužné resetování hesla
-* Vícefaktorové ověřování Azure
+* Azure Multi-Factor Authentication
 * Hybridní integrace pro zápis změn hesel zpátky do místního prostředí
 * Hybridní integrace, která vynutila zásady ochrany hesel pro místní prostředí
 * Ověřování bez hesla
@@ -50,9 +50,9 @@ Samoobslužné resetování hesla funguje v následujících scénářích:
 
 Když uživatel aktualizuje nebo obnoví heslo pomocí samoobslužného resetování hesla, může se toto heslo také zapsat zpátky do místního prostředí Active Directory. Zpětný zápis hesla zajistí, že uživatel může ihned použít aktualizované přihlašovací údaje s místními zařízeními a aplikacemi.
 
-## <a name="azure-multi-factor-authentication"></a>Vícefaktorové ověřování Azure
+## <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
-Multi-Factor Authentication je proces, při kterém se uživateli zobrazí výzva během procesu přihlašování pro další forma identifikace, jako je například zadání kódu na jejich cellphone nebo poskytnutí kontroly otiskem prstu.
+Vícefaktorové ověřování je postup, ve kterém se uživateli při přihlašování zobrazí výzva k další formě prokázání totožnosti, třeba k zadání kódu na svém mobilním telefonu nebo k naskenování otisku prstu.
 
 Pokud k ověření uživatele použijete jenom heslo, opustí pro útok nezabezpečený vektor. Pokud je heslo slabé nebo je jinde vystavené, je to skutečně uživatel, který se přihlašuje pomocí uživatelského jména a hesla, nebo se jedná o útočníka? Pokud požadujete druhou formu ověřování, zabezpečení se zvyšuje, protože tento přídavný faktor není něco, co by mohlo útočník snadno získat nebo duplikovat.
 

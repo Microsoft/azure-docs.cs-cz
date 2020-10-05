@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 65a77dfaab0bf99207fd27a35d67a12532056476
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89442935"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Rychlý Start: vytvoření klasifikátoru úloh pomocí T-SQL
@@ -29,13 +29,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 >
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto rychlém startu se předpokládá, že jste už zřídili synapse fond SQL ve službě Azure synapse Analytics a že máte oprávnění k řízení databáze. Pokud ho potřebujete vytvořit, postupujte podle pokynů v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) a vytvořte datový sklad s názvem **mySampleDataWarehouse**.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-login-for-theceo"></a>Vytvoření přihlašovacích údajů pro TheCEO
 
@@ -108,6 +108,6 @@ Pomocí těchto kroků vyčistěte prostředky.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Nyní jste vytvořili klasifikátor úloh. Spusťte několik dotazů jako TheCEO, abyste viděli, jak fungují. V tématu [Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) můžete zobrazit dotazy a přiřazené důležitost.
+- Nyní jste vytvořili klasifikátor úloh. Spusťte několik dotazů jako TheCEO, abyste viděli, jak fungují. V tématu [Sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) můžete zobrazit dotazy a přiřazená důležitost.
 - Další informace o správě úloh synapse SQL najdete v tématu [důležitost úloh](sql-data-warehouse-workload-importance.md) a [klasifikace úloh](sql-data-warehouse-workload-classification.md).
 - V článcích s postupy můžete [nakonfigurovat důležitost úloh](sql-data-warehouse-how-to-configure-workload-importance.md) a [Spravovat a monitorovat správu úloh](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

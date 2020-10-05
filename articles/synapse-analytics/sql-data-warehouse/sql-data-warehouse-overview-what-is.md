@@ -11,10 +11,10 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 27311270c1383a54192d072d0e152c7cf1a58225
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85200949"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Co je Azure synapse Analytics (dřív SQL DW)?
@@ -23,7 +23,7 @@ ms.locfileid: "85200949"
 >Prozkoumejte [dokumentaci ke službě Azure synapse (pracovní prostory Preview)](../overview-what-is.md).
 >
 
-Azure synapse je analytická služba, která přináší dohromady podnikové datové sklady a analýzu velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku. Azure synapse přináší tyto dvě světů společně s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro potřeby okamžitého BI a strojového učení.
+Azure synapse je analytická služba, která přináší dohromady podnikové datové sklady a analýzu velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku. Azure Synapse spojuje tyto dva světy do sjednoceného prostředí, které nabízí příjem, přípravu, správu a obsluhu dat pro aktuální potřeby BI a strojového učení.
 
 Azure synapse má čtyři součásti:
 
@@ -48,9 +48,9 @@ Datové sklady jsou klíčovou součástí cloudového a komplexního řešení 
 
 ![Řešení datového skladu](./media/sql-data-warehouse-overview-what-is/data-warehouse-solution.png)
 
-V cloudovém datovém řešení se data ingestují do úložišť velkých objemů dat z celé řady zdrojů. Jakmile jsou data v úložišti velkých objemů dat, Hadoop, Spark a algoritmy machine learningu data připraví a natrénují. Když jsou data připravená na složitou analýzu, synapse fond SQL používá základnu k dotazování na úložiště s velkými objemy dat. Základ používá standardní dotazy T-SQL k převedení dat do tabulek synapse fondu SQL.
+V cloudovém datovém řešení se data ingestují do velkoobjemových úložišť dat z nejrůznějších zdrojů. Jakmile jsou data ve velkoobjemovém úložišti dat, můžou se připravit a vytrénovat pomocí Hadoopu, Sparku a algoritmů strojového učení. Když jsou data připravená na složitou analýzu, synapse fond SQL používá základnu k dotazování na úložiště s velkými objemy dat. Základ používá standardní dotazy T-SQL k převedení dat do tabulek synapse fondu SQL.
 
-Synapse fond SQL ukládá data v relačních tabulkách s sloupcovým úložištěm. Tento formát výrazně snižuje náklady na úložiště dat a zvyšuje výkon dotazů. Po uložení dat můžete provádět analýzy v masivním měřítku. V porovnání s tradičními databázovými systémy se dotazy analýz dokončí během několika sekund namísto minut nebo hodin namísto dnů.
+Synapse fond SQL ukládá data v relačních tabulkách s sloupcovým úložištěm. Tento formát výrazně snižuje náklady na úložiště dat a zvyšuje výkon dotazů. Po uložení dat můžete provádět analýzy v masivním měřítku. V porovnání s tradičními databázovými systémy se analytické dotazy dokončí v řádu sekund namísto minut nebo v řádu hodin namísto dnů.
 
 Výsledky analýz můžou jít do aplikací nebo databází pro generování sestav po celém světě. Obchodní analytici pak můžou získávat přehledy, které jim umožní provádět informovaná obchodní rozhodnutí.
 

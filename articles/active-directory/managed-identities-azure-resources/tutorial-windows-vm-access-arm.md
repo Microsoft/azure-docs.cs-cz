@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 646be410cceb214efad19757378c74f086e58578
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89263060"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Použití spravované identity přiřazené systémem ve virtuálním počítači s Windows pro přístup k Resource Manageru
@@ -32,7 +32,7 @@ V tomto rychlém startu se dozvíte, jak získat přístup k rozhraní API Azure
 > * Udělení přístupu virtuálnímu počítači ke skupině prostředků v Azure Resource Manageru 
 > * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k volání Azure Resource Manageru
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 

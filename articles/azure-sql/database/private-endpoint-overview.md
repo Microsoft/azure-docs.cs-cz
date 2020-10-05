@@ -10,10 +10,10 @@ ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
 ms.openlocfilehash: b0908aee6253a3be486f71c245ea1eee2ff8b9bb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91319465"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Privátní odkaz Azure pro Azure SQL Database a Azure synapse Analytics

@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 30862a0c16995e143df72f2a243419819941f54e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85213036"
 ---
 # <a name="quickstart-configure-synapse-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Rychlý Start: Konfigurace izolace úloh synapse fondu SQL pomocí skupiny úloh v Azure Portal
@@ -23,17 +23,17 @@ ms.locfileid: "85213036"
 V tomto rychlém startu nakonfigurujete [izolaci úloh](sql-data-warehouse-workload-isolation.md) vytvořením skupiny úloh pro rezervaci prostředků.  Pro účely tohoto kurzu vytvoříme skupinu úloh pro volání načítání dat `DataLoads` . Skupina úloh bude rezervovat 20% systémových prostředků.  Díky 20% izolaci pro zatížení dat jsou zaručené prostředky, které jim umožňují vysáhnout SLA.  Po vytvoření skupiny úloh [vytvořte klasifikátor úloh](quickstart-create-a-workload-classifier-portal.md) pro přiřazení dotazů do této skupiny úloh.
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 > [!NOTE]
 > Vytvoření instance fondu SQL ve službě Azure synapse Analytics může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto rychlém startu se předpokládá, že již máte instanci fondu SQL v synapse SQL a máte kontrolu nad oprávněními databáze. Pokud ho potřebujete vytvořit, postupujte podle pokynů v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) a vytvořte datový sklad s názvem **mySampleDataWarehouse**.
 

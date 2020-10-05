@@ -9,10 +9,10 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.openlocfilehash: fabd79829425147667c46f686a1ec1ceb6a29b00
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87132877"
 ---
 Tento rychlý Start založený na držiteli vás provede tím, že získáte odpověď ze znalostní báze.
@@ -35,7 +35,7 @@ Pomocí tohoto postupu nakonfigurujete příkaz post a potom si přečtěte jedn
 
 1. Na stránce **Nastavení** znalostní báze vyberte kartu **publikovat** a zobrazte tak konfiguraci používanou k vygenerování odpovědi ze znalostní báze. Zkopírujte následující informace, které se použijí v poli post.
 
-    |Název|Nastavení|Účel a hodnota|
+    |Name|Nastavení|Účel a hodnota|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Toto je metoda HTTP a trasa pro adresu URL.|
     |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Toto je hostitel adresy URL. Po zřetězení hodnoty host a post získáte úplnou adresu URL generateAnswer.|

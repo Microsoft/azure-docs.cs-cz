@@ -10,21 +10,21 @@ ms.topic: overview
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 4aa1ccbd9b605850052e190949542eb014fe90a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84763920"
 ---
 # <a name="azure-portal-overview"></a>Přehled webu Azure Portal
 
 Tento článek zavádí Azure Portal, identifikuje prvky stránky portálu a pomůže vám seznámit se s prostředím pro Azure Portal správu.
 
-## <a name="what-is-the-azure-portal"></a>Co je Azure Portal?
+## <a name="what-is-the-azure-portal"></a>Co je web Azure Portal?
 
-Azure Portal je unifikovaná webová konzola, která poskytuje alternativu k nástrojům příkazového řádku. Pomocí Azure Portal můžete spravovat své předplatné Azure pomocí grafického uživatelského rozhraní. Můžete vytvářet, spravovat a monitorovat všechno z jednoduchých webových aplikací až po složitá cloudová nasazení. Vytvořte si vlastní řídicí panely pro organizované zobrazení prostředků. Nakonfigurujte možnosti usnadnění pro optimální prostředí.
+Azure Portal je unifikovaná webová konzola, která poskytuje alternativu k nástrojům příkazového řádku. Pomocí webu Azure Portal můžete spravovat předplatné Azure prostřednictvím grafického uživatelského rozhraní. Můžete vytvářet, spravovat a monitorovat všechno – od jednoduchých webových aplikací až po složitá cloudová nasazení. Vytvořte si vlastní řídicí panely pro organizované zobrazení prostředků. Nakonfigurujte možnosti usnadnění pro optimální prostředí.
 
-Azure Portal je navržená tak, aby byla odolná a nepřetržitá dostupnost. Má přítomnost v každém datovém centru Azure. Díky této konfiguraci se Azure Portal odolný proti selháním jednotlivých datových center a zabrání se zpomalení sítě tím, že se blíží uživatelům. Azure Portal průběžně aktualizuje a nevyžaduje pro aktivity údržby žádné výpadky.
+Azure Portal je navržená tak, aby byla odolná a nepřetržitá dostupnost. Má přítomnost v každém datovém centru Azure. Díky této konfiguraci se Azure Portal odolný proti selháním jednotlivých datových center a zabrání se zpomalení sítě tím, že se blíží uživatelům. Azure Portal se průběžně aktualizuje a nevyžaduje žádné výpadky pro aktivity údržby.
 
 ## <a name="azure-portal-menu"></a>Nabídka Azure Portal
 

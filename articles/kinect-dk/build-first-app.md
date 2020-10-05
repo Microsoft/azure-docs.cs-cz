@@ -8,17 +8,17 @@ ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: Kinect, Azure, snímač, SDK, mikrofon, Access MICS, Mic data
 ms.openlocfilehash: 3632145b3f3b63023e0c66e3cf99903231802edf
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85277938"
 ---
 # <a name="quickstart-build-your-first-azure-kinect-application"></a>Rychlý Start: Vytvoření první aplikace Azure Kinect
 
 Začínáme s Azure Kinect DK? Tento rychlý Start vám pomůže začít pracovat se zařízením.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Jsou pokryté následující funkce:
 
@@ -29,7 +29,7 @@ Jsou pokryté následující funkce:
 - [`k4a_device_stop_cameras()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga4fa0e0a011a7105309ad97f081a5d6b8.html#ga4fa0e0a011a7105309ad97f081a5d6b8)
 - [`k4a_device_close()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7a3931d9a690b3971caaac83b43f9423.html#ga7a3931d9a690b3971caaac83b43f9423)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. [Nastavte zařízení Azure Kinect DK](set-up-azure-kinect-dk.md).
 2. [Stáhněte](sensor-sdk-download.md) a nainstalujte sadu Azure Kinect senzor SDK.

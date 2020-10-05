@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 07/27/2020
 ms.author: aahi
 ms.openlocfilehash: 6849046211ae4216f181dd8ef0ca391c2876363c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87291777"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Rychlý Start: použití klientské knihovny Analýza textu pro přejít
@@ -27,7 +27,7 @@ ms.locfileid: "87291777"
 > [!NOTE]
 > Tento rychlý Start platí pouze pro Analýza textu verze 2,1. V současné době není k dispozici Klientská knihovna v3 pro příkaz Přejít.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Nejnovější verze nástroje [Přejít](https://golang.org/dl/)
@@ -140,7 +140,7 @@ Document ID: 3 , Sentiment Score: 0.44
 Document ID: 4 , Sentiment Score: 1.00
 ```
 
-## <a name="language-detection"></a>rozpoznávání jazyka,
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
 Vytvořte novou funkci nazvanou `LanguageDetection()` a vytvořte klienta pomocí `GetTextAnalyticsClient()` metody vytvořené dříve. Vytvořte seznam objektů [LanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#LanguageInput) s dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` `text` atribut a. `text`Atribut ukládá text, který má být analyzován, a `id` může být libovolná hodnota. 
 
@@ -158,7 +158,7 @@ Document ID: 1 , Language: Spanish
 Document ID: 2 , Language: Chinese_Simplified
 ```
 
-## <a name="entity-recognition"></a>rozpoznávání entit,
+## <a name="entity-recognition"></a>Rozpoznávání entit
 
 Vytvořte novou funkci nazvanou `ExtractEntities()` a vytvořte klienta pomocí `GetTextAnalyticsClient()` metody vytvořené dříve. Vytvořte seznam objektů [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) s dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` atribut, `language` a `text` . `text`Atribut ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota. 
 
@@ -198,7 +198,7 @@ Document ID: 2
     Offset: 88, Length: 7,  Score: 0.9998779296875
 ```
 
-## <a name="key-phrase-extraction"></a>extrakce klíčových frází,
+## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
 Vytvořte novou funkci nazvanou `ExtractKeyPhrases()` a vytvořte klienta pomocí `GetTextAnalyticsClient()` metody vytvořené dříve. Vytvořte seznam objektů [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) s dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` atribut, `language` a `text` . `text`Atribut ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota.
 

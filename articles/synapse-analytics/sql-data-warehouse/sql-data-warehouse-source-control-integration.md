@@ -11,10 +11,10 @@ ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 84abfea39cb7311e7cd60346d936c08c28c334d4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89441289"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>Integrace správy zdrojového kódu pro fond SQL
@@ -63,7 +63,7 @@ Další informace o propojení projektů pomocí sady Visual Studio naleznete v 
 
 3. V Team Explorer v aplikaci Visual Studio potvrďte změny v místním úložišti Git.
 
-   ![Potvrzuj](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Potvrzení")  
+   ![Potvrzení](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Potvrzení")  
 
 4. Teď, když jste provedli změny místně v naklonovaném úložišti, synchronizujte a nahrajte změny do úložiště Azure úložiště v projektu Azure DevOps.
 

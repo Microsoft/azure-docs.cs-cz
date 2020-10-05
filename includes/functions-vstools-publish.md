@@ -9,10 +9,10 @@ ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: db6f5927e1cbdb3527014ccbb277c7ec20b02600
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84231596"
 ---
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**.
@@ -37,7 +37,7 @@ ms.locfileid: "84231596"
     | **Název** | Globálně jedinečný název | Název jednoznačně identifikující novou aplikaci funkcí. Přijměte tento název nebo zadejte nový název. Platné znaky jsou: `a-z` , `0-9` a `-` . |
     | **Předplatné** | Vaše předplatné | Předplatné Azure, které se má použít. Přijměte toto předplatné nebo v rozevíracím seznamu vyberte nový. |
     | **[Skupina prostředků](../articles/azure-resource-manager/management/overview.md)** | Název vaší skupiny prostředků |  Skupina prostředků, ve které se má vytvořit aplikace Function App V rozevíracím seznamu vyberte existující skupinu prostředků nebo vytvořte novou skupinu prostředků výběrem možnosti **nové** .|
-    | **[Plán hostování](../articles/azure-functions/functions-scale.md)** | Název vašeho plánu hostování | Vyberte **Nový** a nakonfigurujte plán bez serveru. Ujistěte se, že vybíráte **spotřebu** v rámci **velikosti**. Když publikujete projekt do aplikace Function App, která běží v [plánu spotřeby](../articles/azure-functions/functions-scale.md#consumption-plan), platíte jenom za spuštění vaší aplikace Functions. Jiné plány hostování účtují vyšší náklady. Pokud spustíte jiný plán než **spotřebu**, musíte spravovat [škálování aplikace Function App](../articles/azure-functions/functions-scale.md).  |
+    | **[Plán Hosting](../articles/azure-functions/functions-scale.md)** | Název vašeho plánu hostování | Vyberte **Nový** a nakonfigurujte plán bez serveru. Ujistěte se, že vybíráte **spotřebu** v rámci **velikosti**. Když publikujete projekt do aplikace Function App, která běží v [plánu spotřeby](../articles/azure-functions/functions-scale.md#consumption-plan), platíte jenom za spuštění vaší aplikace Functions. Jiné plány hostování účtují vyšší náklady. Pokud spustíte jiný plán než **spotřebu**, musíte spravovat [škálování aplikace Function App](../articles/azure-functions/functions-scale.md).  |
     | **Umístění** | Umístění služby App Service | Vyberte **umístění** v [oblasti](https://azure.microsoft.com/regions/) poblíž vaší nebo jiné služby, ke které vaše funkce přistupuje. |
     | **[Azure Storage](../articles/storage/common/storage-account-create.md)** | Účet úložiště pro obecné účely | Modul runtime Functions vyžaduje účet Azure Storage. Vyberte **Nový** a nakonfigurujte účet úložiště pro obecné účely. Můžete také zvolit existující účet, který splňuje požadavky na [účet úložiště](../articles/azure-functions/functions-scale.md#storage-account-requirements).  |
 
@@ -51,6 +51,6 @@ ms.locfileid: "84231596"
     
 1.  Na kartě publikovat vyberte **v Průzkumníku cloudu možnost spravovat**. Tím se otevře nový prostředek Azure aplikace Function App v Průzkumníkovi cloudu. 
     
-    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="Zpráva o úspěšném publikování":::
+    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="Vytvořit profil publikování":::
     
     Průzkumník cloudu umožňuje použít Visual Studio k zobrazení obsahu webu, spuštění a zastavení aplikace Function App a procházení přímo na prostředky aplikace Function App v Azure a v Azure Portal. 

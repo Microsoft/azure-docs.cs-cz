@@ -4,10 +4,10 @@ description: Jupyter Poznámkový blok můžete rychle přenést do Azure Notebo
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: 9c961ad67260cee2809e0bba1e79f2c709183dea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85832113"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>Rychlý Start: migrace místního poznámkového bloku Jupyter v Azure Notebooks Preview
@@ -20,7 +20,7 @@ Jupyter poznámkové bloky na vašem počítači jsou přístupné jenom pro vá
 
 Migrací místních poznámkových bloků nebo notebooků založených na úložišti na Azure Notebooks je můžete okamžitě sdílet se spolupracovníky, kteří potřebují jenom prohlížeč k zobrazení a spuštění vašich poznámkových bloků. Pokud se přihlásí k Azure Notebooks, můžou dělat změny i vy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Jupyter Poznámkový blok](https://jupyter-notebook.readthedocs.io) na místním počítači nebo v jiné adrese URL souboru k dispozici. 
 
@@ -48,7 +48,7 @@ V tomto rychlém startu se dozvíte, jak migrovat Poznámkový blok z místního
 
    Pokud je váš Poznámkový blok v úložišti GitHubu, postupujte podle kroků v [rychlém startu: naklonujte Poznámkový blok](quickstart-clone-jupyter-notebook.md) .
 
-   - Pokud používáte **z počítače**, přetáhněte soubory *. ipynb* do automaticky otevíraného okna nebo vyberte **zvolit soubory**, vyhledejte a vyberte soubory, které chcete importovat. Potom vyberte **Nahrát**. Nahrané soubory mají stejný název jako místní soubory. Nemusíte nahrávat obsah žádné složky *. ipynb_checkpoints* .
+   - Pokud používáte **z počítače**, přetáhněte soubory *. ipynb* do automaticky otevíraného okna nebo vyberte **zvolit soubory**, vyhledejte a vyberte soubory, které chcete importovat. Potom vyberte **Nahrát**. Nahrané soubory mají stejný název jako místní soubory. Nemusíte nahrávat obsah žádné *.ipynb_checkpoints* složky.
 
      ![Místní nabídka nahrát z počítače](media/quickstarts/upload-from-computer-popup.png)
 

@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: aa68b746ef5c22c97fcfdcca889bf71577c19479
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85100760"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Co je Azure Data Box Gateway?
@@ -53,7 +53,7 @@ Data Box Gateway nabízí následující funkce:
 |---------|---------|
 |Rychlost     | Plně automatizovaný a vysoce optimalizovaný přenos dat a šířka pásma.|
 |Podporované protokoly     | Podpora standardních protokolů SMB a NFS pro příjem dat. <br> Další informace o podporovaných verzích najdete v [systémových požadavcích pro Data Box Gateway](data-box-gateway-system-requirements.md).|
-|Přístup k datům     | Jakmile se data odesílaná zařízením nacházejí v cloudu, můžete je dál upravovat přímým přístupem k rozhraním API cloudu.|
+|Přístup k datům     | Jakmile se data odesílaná zařízením nacházejí v cloudu, můžete je dál upravovat přímým přístupem k rozhraním API cloudu.|
 |Rychlý přístup     | Místní mezipaměť na zařízení pro rychlý přístup k naposledy použitým souborům.|
 |Nahrání offline     | Odpojený režim podporuje scénáře nahrání v režimu offline.|
 |Aktualizace dat     | Možnost aktualizovat místní soubory pomocí nejnovějších souborů z cloudu.|
@@ -64,10 +64,10 @@ Data Box Gateway nabízí následující funkce:
 
 Virtuální zařízení Data Box Gateway má následující specifikace:
 
-| Specifikace                                          | Description              |
+| Specifikace                                          | Popis              |
 |---------------------------------------------------------|--------------------------|
 | Virtuální procesory (jádra)   | Minimálně 4 |
-| Memory (Paměť)  |Minimálně 8 GB|
+| Paměť  |Minimálně 8 GB|
 | Dostupnost|Jeden uzel|
 | Disky|Disk operačního systému: 250 GB <br> Datový disk: minimálně 2 TB, dynamicky zřizovaný, musí být zálohován pomocí disků SSD|
 | Síťová rozhraní |1 nebo více rozhraní virtuální sítě|

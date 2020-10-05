@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.date: 06/19/2020
 ms.author: nitinme
 ms.openlocfilehash: 7a8cbfa307f14a6660dcace3315384bc523ad888
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91316252"
 ---
 # <a name="quickstart-use-curl-and-rest-to-get-intent"></a>Rychlý Start: použití oblé a REST k získání záměru
@@ -24,7 +24,7 @@ V tomto rychlém startu se dozvíte, jak pomocí aplikace v LUIS určit záměr 
 
 [Referenční dokumentace](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Bezplatný účet [Luis](https://www.luis.ai) .
 * Textový editor, jako je například [Visual Studio Code](https://code.visualstudio.com/).

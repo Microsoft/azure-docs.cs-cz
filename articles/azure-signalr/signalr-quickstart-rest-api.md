@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 13e11bb6064888ac36a2d2801fee3db1e9e9fcba
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89050501"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rychlý start: Vysílání zpráv v reálném čase z konzoly aplikace
@@ -19,7 +19,7 @@ Ve službě Azure SignalR je k dispozici [rozhraní REST API](https://github.com
 
 V tomto rychlém startu se dozvíte, jak odesílat zprávy z aplikace příkazového řádku do aplikací připojených klientů v jazyce C#.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Toto Rychlé zprovoznění je možné spustit v systémech macOS, Windows nebo Linux.
 
@@ -134,12 +134,12 @@ Následující tabulka uvádí všechny podporované verze rozhraní REST API k 
 
 Verze | Stav rozhraní API | Dveře | Specifikace
 --- | --- | --- | ---
-`1.0-preview` | K dispozici. | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
-`1.0` | K dispozici. | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
+`1.0-preview` | K dispozici | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
+`1.0` | K dispozici | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
 
 Dostupná rozhraní API pro jednotlivé verze najdete v následujícím seznamu.
 
-rozhraní API | 1,0 – Preview | 1,0
+Rozhraní API | 1,0 – Preview | 1,0
 --- | --- | ---
 [Všesměrové vysílání pro všechny](#broadcast) | **&#x2713;** | **&#x2713;**
 [Všesměrové vysílání do skupiny](#broadcast-group) | **&#x2713;** | **&#x2713;**

@@ -12,10 +12,10 @@ ms.date: 09/15/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
 ms.openlocfilehash: 1e32cd924c8e0f713ebe7cedfca0466a1e07c3bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91332548"
 ---
 Začněte s klientskou knihovnou Azure Content Moderator pro Java. Pomocí těchto kroků nainstalujete balíček Maven a vyzkoušíte ukázkový kód pro základní úlohy. 
@@ -28,7 +28,7 @@ Pomocí klientské knihovny Content Moderator pro jazyk Java:
 
 [Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable)  |  [Artefakt (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator)  |  [Ukázky](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)

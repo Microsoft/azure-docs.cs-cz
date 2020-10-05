@@ -8,10 +8,10 @@ ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 7164c3dd5c98544f3cb2944cb33cfd0e9703e36d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90563331"
 ---
 # <a name="azure-files-networking-considerations"></a>Požadavky na síť pro Azure Files 

@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 78807db19b413bb642e8dcf61e480d6d954b6178
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87059566"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Připojení k synapse SQL pomocí Azure Data Studio (Preview)
@@ -54,7 +54,7 @@ Jako **typ ověřování**vyberte možnost **ověřování systému Windows**, *
 
 Pokud chcete jako typ ověřování použít **přihlášení SQL** , přidejte parametry uživatelského jména a hesla:
 
-* **Uživatel:** Uživatel serveru ve formuláři`<User>`
+* **Uživatel:** Uživatel serveru ve formuláři `<User>`
 * **Heslo:** Heslo přidružené k uživateli
 
 Chcete-li použít Azure Active Directory, je nutné vybrat požadovaný typ ověřování.
@@ -67,7 +67,7 @@ Následující snímek obrazovky ukazuje **Podrobnosti o připojení** pro **ov�
 
 Následující snímek obrazovky ukazuje **Podrobnosti připojení** pomocí **přihlášení SQL**:
 
-![Přihlášení k SQL serveru](./media/get-started-azure-data-studio/2-database-details.png)
+![Přihlášení k SQL](./media/get-started-azure-data-studio/2-database-details.png)
 
 Po úspěšném přihlášení byste měli vidět řídicí panel podobný tomuto: ![ řídicí panel](./media/get-started-azure-data-studio/4-dashboard.png)
 

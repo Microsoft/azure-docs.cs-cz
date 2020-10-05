@@ -7,10 +7,10 @@ ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
 ms.custom: devx-track-js
 ms.openlocfilehash: f8ffa90ba0f1ac32d4691165fabf3d8eb9fb7605
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91335445"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Vytvoření první odolné funkce v JavaScriptu
@@ -21,7 +21,7 @@ V tomto článku se naučíte, jak používat rozšíření Visual Studio Code A
 
 ![Spuštění trvalé funkce v Azure](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -145,7 +145,7 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
     | Vyberte účet úložiště. | Vytvoření nového účtu úložiště |  |
     | Zadejte název nového účtu úložiště. | *jedinečný název* | Název účtu úložiště, který se má vytvořit |
     | Výběr skupiny prostředků | *jedinečný název* | Název skupiny prostředků, která se má vytvořit |
-    | Výběr umístění | *věřitel* | Vyberte oblast, kterou chcete zavřít. |
+    | Výběr umístění | *oblast* | Vyberte oblast, kterou chcete zavřít. |
 
 1. Na panelu **Terminál** zkopírujte adresu URL koncového bodu vaší funkce aktivované protokolem HTTP.
 

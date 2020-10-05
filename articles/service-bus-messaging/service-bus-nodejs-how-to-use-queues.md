@@ -8,10 +8,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-js
 ms.openlocfilehash: 0e94d21bd6550a7d62ef3e7dec302c53f9851a4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91326316"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Rychlý Start: použití Service Busch front v Azure s využitím Node.js a balíčku Azure-Sb
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte vytvářet Node.js aplikace pro posílání zpráv a 
 > 
 > Další informace o novém balíčku najdete v tématu [použití Service Bus front s Node.js a @azure/service-bus balíčkem](./service-bus-nodejs-how-to-use-queues-new-package.md). Další informace o použití balíčku [Azure](https://www.npmjs.com/package/azure) najdete v tématu o tom, jak pokračovat v čtení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Pokud nemáte frontu, ve které byste mohli pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření fronty Service Bus](service-bus-quickstart-portal.md) .
     1. Přečtěte si rychlý **přehled** Service Busch **front**. 

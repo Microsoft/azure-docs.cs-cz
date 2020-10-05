@@ -14,17 +14,17 @@ ms.author: marsma
 ms.custom: aaddev, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 72d66bd4c738ed60bbaefc123daae90ecc0db163
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89442127"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Rychlý Start: Konfigurace aplikace k vystavení webového rozhraní API
 
 V tomto rychlém startu zaregistrujete webové rozhraní API s platformou Microsoft identity a zpřístupníte ho klientským aplikacím přidáním ukázkového oboru. Díky registraci webového rozhraní API a jeho zpřístupnění prostřednictvím oborů můžete poskytnout přístup k prostředkům na základě oprávnění autorizovaným uživatelům a klientským aplikacím, které mají přístup k vašemu rozhraní API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným – [vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * Dokončení [rychlého startu: nastavení tenanta](quickstart-create-new-tenant.md)
@@ -45,7 +45,7 @@ Kód v klientské aplikaci požaduje oprávnění k provádění operací defino
 
 Nejprve pomocí těchto kroků vytvořte příklad oboru s názvem `Employees.Read.All` :
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Pokud máte přístup k více klientům, vyberte v horní nabídce možnost **adresář a filtr předplatného** :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false"::: a vyberte klienta, který obsahuje registraci klientské aplikace.
 1. Vyberte **Azure Active Directory**  >  **Registrace aplikací**a pak vyberte registraci aplikace vašeho rozhraní API.
 1. Vyberte **zveřejnit rozhraní API**  >  **Přidat obor**.
@@ -95,7 +95,7 @@ Pokud chcete přidat `Employees.Write.All` vzorový obor, postupujte podle krok�
 
 Pokud jste úspěšně přidali oba příklady oborů popsané v předchozích částech, zobrazí se v podokně **Zobrazit rozhraní API** registrace aplikace webového rozhraní API podobně jako na tomto obrázku:
 
-:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Snímek obrazovky s podoknem vystavení rozhraní API, ve kterém jsou dva vystavené obory":::
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="V Azure Portal se vystavuje podokno API pro registraci aplikace":::
 
 Jak je znázorněno na obrázku, úplný řetězec oboru je zřetězení **identifikátoru URI ID aplikace** webového rozhraní API a **názvu**oboru oboru.
 

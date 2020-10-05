@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: ba6f79fffe5287be7574d422f026489d4da2795e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87287495"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure synapse Analytics (pracovní prostory ve verzi Preview)
@@ -102,7 +102,7 @@ Odpověď: Ano, můžete použít obchodní aplikace třetích stran, jako je Ta
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
-- [Použití synapse studia](quickstart-synapse-studio.md)
+- [Použití sady Synapse Studio](quickstart-synapse-studio.md)
 - [Vytvoření fondu SQL](quickstart-create-sql-pool-portal.md)
 - [Používání SQL na vyžádání](quickstart-sql-on-demand.md)
 - [Vytvoření fondu Apache Spark](quickstart-create-apache-spark-pool-portal.md) 

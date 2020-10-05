@@ -4,10 +4,10 @@ description: V tomto rychlém startu se dozvíte, jak přidat páry dotazů a od
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.openlocfilehash: a832d9f421d3a1851401c286f129e29d0196ec99
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84331385"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Rychlý Start: Přidání otázek a odpovědí pomocí portálu QnA Maker
@@ -27,7 +27,7 @@ Po přidání metadat do páru QnA může klientská aplikace:
 * Příjem všech odpovědí, ale následné zpracování odpovědí v závislosti na metadatech pro každou odpověď.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončení [předchozího rychlého](./create-publish-knowledge-base.md) startu
 
@@ -43,7 +43,7 @@ Aktuální znalostní báze má QnA Maker řešení potíží s páry QnA. Tyto 
 
 Při importu této adresy URL byla vytvořena pouze jedna otázka s jednou odpovědí. V tomto postupu přidejte další otázky.
 
-1. Na stránce **Upravit** použijte vyhledávací pole nad páry otázka a odpověď, abyste zjistili otázku.`How large a knowledge base can I create?`
+1. Na stránce **Upravit** použijte vyhledávací pole nad páry otázka a odpověď, abyste zjistili otázku. `How large a knowledge base can I create?`
 
 1. Ve sloupci **otázka** vyberte **+ Přidat alternativní formulování** a potom přidejte každou novou formulaci, která je uvedená v následující tabulce.
 

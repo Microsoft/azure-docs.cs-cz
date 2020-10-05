@@ -10,17 +10,17 @@ ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 33f7f407c1df45131b0ebb5b14e8fcad2626bffd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87077545"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů na webu Azure Portal
 
 Sada škálování virtuálního počítače umožňuje nasadit a spravovat sadu automatických škálování virtuálních počítačů. Počet virtuálních počítačů ve škálovací sadě můžete škálovat ručně nebo můžete definovat pravidla pro automatické škálování podle využití prostředků, například podle požadavků na CPU a paměť nebo podle provozu. Nástroj pro vyrovnávání zatížení Azure pak bude distribuovat provoz do instancí virtuálních počítačů ve škálovací sadě. V tomto rychlém startu vytvoříte škálovací sadu virtuálních počítačů na webu Azure Portal.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
@@ -39,13 +39,13 @@ Nejdřív vytvořte pomocí portálu veřejné Standard Load Balancer. Název a 
     | ---| ---|
     | Předplatné  | Vyberte předplatné.    |    
     | Skupina prostředků | Vyberte **vytvořit nový** a do textového pole zadejte *myVMSSResourceGroup* .|
-    | Název           | *myLoadBalancer*         |
+    | Name           | *myLoadBalancer*         |
     | Oblast         | Vyberte **USA – východ**.       |
     | Typ          | Vyberte **Veřejný**.       |
-    | Skladová položka           | Vyberte **Standard**.       |
+    | SKU           | Vyberte **Standard**.       |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
     | Název veřejné IP adresy  | *myPip*   |
-    | Přiřazení| Statická |
+    | Přiřazení| Static |
     | Zóna dostupnosti | Vyberte **zóna – redundantní**. |
 
 1. Až budete hotovi, vyberte **zkontrolovat + vytvořit** . 

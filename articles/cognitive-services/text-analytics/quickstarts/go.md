@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.openlocfilehash: 3b922dca46b575abc428aa6e76fb920ffc13d6b0
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86028006"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Volání rozhraní API pro analýzu textu ve službách Cognitive Services s využitím Go 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat míně
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -33,7 +33,7 @@ V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat míně
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Rozpoznání jazyka
+## <a name="detect-language"></a>Zjištění jazyka
 
 Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu pomocí [metody Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
@@ -564,5 +564,5 @@ func main() {
 
 ## <a name="see-also"></a>Viz také
 
- [Přehled Analýza textu](../overview.md)  
+ [Přehled analýzy textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

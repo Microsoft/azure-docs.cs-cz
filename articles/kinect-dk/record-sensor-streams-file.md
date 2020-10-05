@@ -8,19 +8,19 @@ ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: Azure, Kinect, Recording, Play back, Reader, Matroska, MKV, Streams, Depth, RGB, fotoaparát, Color, imu, audio, snímač
 ms.openlocfilehash: 3dab147b593bf012bd6cd9c95d0195e84a2cbcf1
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85277940"
 ---
 # <a name="quickstart-record-azure-kinect-sensor-streams-to-a-file"></a>Rychlý Start: nahrání datových proudů senzorů Azure Kinect do souboru
 
 V tomto rychlém startu najdete informace o tom, jak můžete pomocí nástroje pro [nahrávání v Azure Kinect](azure-kinect-recorder.md) zaznamenávat datové proudy ze sady senzorů do souboru.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento rychlý Start předpokládá:
 
@@ -29,7 +29,7 @@ Tento rychlý Start předpokládá:
 
 ## <a name="create-recording"></a>Vytvořit záznam
 
-1. Otevřete příkazový řádek a zadejte cestu k [záznamu Azure Kinect](azure-kinect-recorder.md), který se nachází v adresáři nainstalovaných nástrojů jako `k4arecorder.exe` . Příklad: `C:\Program Files\Azure Kinect SDK\tools\k4arecorder.exe`.
+1. Otevřete příkazový řádek a zadejte cestu k [záznamu Azure Kinect](azure-kinect-recorder.md), který se nachází v adresáři nainstalovaných nástrojů jako `k4arecorder.exe` . Například: `C:\Program Files\Azure Kinect SDK\tools\k4arecorder.exe`.
 2. Záznam 5 sekund.
 
     `k4arecorder.exe -l 5 %TEMP%\output.mkv`
@@ -40,7 +40,7 @@ Tento rychlý Start předpokládá:
 
 K přehrání záznamu můžete použít [prohlížeč Azure Kinect Viewer](azure-kinect-viewer.md) .
 
-1. Předběžné[`k4aviewer.exe`](azure-kinect-viewer.md)
+1. Předběžné [`k4aviewer.exe`](azure-kinect-viewer.md)
 2. Odložte kartu **otevřené nahrávání** a otevřete záznam.
 
 ## <a name="next-steps"></a>Další kroky
@@ -48,4 +48,4 @@ K přehrání záznamu můžete použít [prohlížeč Azure Kinect Viewer](azur
 Teď, když jste se naučili, jak nahrávat streamy senzorů do souboru, je čas
 
 > [!div class="nextstepaction"]
-> [Vytvoření první aplikace Azure Kinect](build-first-app.md)
+> [Vytvoření první aplikace pro Azure Kinect](build-first-app.md)

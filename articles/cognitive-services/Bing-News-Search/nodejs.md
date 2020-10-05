@@ -12,10 +12,10 @@ ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-js
 ms.openlocfilehash: 884cc0a88e502b7fe56c6b7eb0f4761fe2f042bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91316660"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Rychlý Start: provedení hledání zpráv pomocí Node.js a Vyhledávání zpráv Bingu REST API
@@ -26,7 +26,7 @@ I když je tato aplikace napsaná v jazyce JavaScript a běží v Node.js, rozhr
 
 Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nejnovější verze [Node.js](https://nodejs.org/en/download/)
 * [Knihovna požadavků JavaScriptu](https://github.com/request/request)

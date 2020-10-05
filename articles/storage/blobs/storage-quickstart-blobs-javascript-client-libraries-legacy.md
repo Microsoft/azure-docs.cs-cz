@@ -10,10 +10,10 @@ ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
 ms.openlocfilehash: 134408704d54479fbbe0dfb5094f2920fa2e74be
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91336186"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
@@ -25,7 +25,7 @@ V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí kódu JavaSc
 > [!NOTE]
 > V tomto rychlém startu se používá starší verze klientské knihovny pro úložiště objektů BLOB v Azure. Pokud chcete začít používat nejnovější verzi, přečtěte si téma [rychlý Start: Správa objektů BLOB pomocí JavaScriptu V12 SDK v prohlížeči](quickstart-blobs-javascript-browser.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Účet služby Azure Storage. [Vytvořte účet úložiště](../common/storage-account-create.md).

@@ -7,10 +7,10 @@ ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.openlocfilehash: aff9bf83795043e0176d7a3f155844c8dbe0281a
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87337465"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio
@@ -24,7 +24,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analy
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se na [Azure Portal](https://portal.azure.com/).
+* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 * Nainstalujte Visual Studio 2019, Visual Studio 2015 nebo Visual Studio 2013 Update 4. Podporují se edice Enterprise (Ultimate nebo Premium), Professional a Community. Edice Express se nepodporuje.
 
@@ -34,7 +34,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analy
 
 Před definováním Stream Analytics úlohy byste měli připravit data, která jsou později nakonfigurovaná jako vstup úlohy. Chcete-li připravit vstupní data požadovaná úlohou, proveďte následující kroky:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **IoT Hub**.
 

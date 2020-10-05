@@ -12,17 +12,17 @@ ms.date: 05/06/2020
 ms.author: aahi
 ms.custom: devx-track-js
 ms.openlocfilehash: b61427f39f508413e33ce67f90bfecb8ac202e1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91332640"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Rychlý Start: Navrhněte vyhledávací dotazy pomocí Automatické návrhy Bingu REST API a Node.js
 
 V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické návrhy Bingu a číst odpověď JSON. Tato jednoduchá Node.js aplikace pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Node.js 6](https://nodejs.org/en/download/) nebo novější
 

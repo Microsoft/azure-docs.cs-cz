@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7304ecd73ed73e3ec6ae3c060fef264e016fe38
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89067803"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Rychlý Start: udělení oprávnění k vytvoření neomezených registrací aplikací
@@ -55,7 +55,7 @@ Hotovo! V tomto rychlém startu jste úspěšně vytvořili vlastní roli s opr�
 > [!TIP]
 > Pokud chcete přiřadit roli k aplikaci pomocí portálu Azure AD, zadejte název aplikace do vyhledávacího pole na stránce přiřazení. Ve výchozím nastavení se aplikace nezobrazuje v seznamu, ale ve výsledcích hledání se vrátí.
 
-### <a name="app-registration-permissions"></a>Oprávnění k registraci aplikace
+### <a name="app-registration-permissions"></a>Oprávnění registrace aplikací
 
 Existují dvě oprávnění, která jsou k dispozici pro udělení možnosti vytvářet registrace aplikací, z nichž každá má jiné chování.
 

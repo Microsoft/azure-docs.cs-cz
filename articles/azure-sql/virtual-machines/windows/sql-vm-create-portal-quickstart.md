@@ -13,10 +13,10 @@ ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fb10e85b07037805d59dcba91ff20a4bc2a6574e
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84667637"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>Rychlý Start: vytvoření SQL Server 2017 na virtuálním počítači s Windows v Azure Portal
@@ -37,7 +37,7 @@ Tento rychlý Start prochází kroky vytvoření virtuálního počítače s SQL
 
 ## <a name="get-an-azure-subscription"></a><a id="subscription"></a>Získání předplatného Azure
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="select-a-sql-server-vm-image"></a><a id="select"></a> Výběr image virtuálního počítače s SQL Serverem
 
@@ -68,9 +68,9 @@ Na kartě **základy** zadejte následující informace:
     1. V seznamu **Obrázek** vyberte _bezplatný SQL Server licence: SQL Server 2017 Developer v systému Windows Server 2016_. 
     1. Zvolte, chcete-li **změnit velikost** pro **Velikost** virtuálního počítače, a vyberte položku **základní nabídka a2** . Abyste zabránili neočekávaným poplatkům, nezapomeňte prostředky vyčistit. 
 
-   ![Podrobnosti instance](./media/sql-vm-create-portal-quickstart/basics-instance-details.png)
+   ![Podrobnosti o instancích](./media/sql-vm-create-portal-quickstart/basics-instance-details.png)
 
-1. V části **účet správce**zadejte uživatelské jméno, například _azureuser_ a heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+1. V části **účet správce**zadejte uživatelské jméno, například _azureuser_ a heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
    ![Účet správce](./media/sql-vm-create-portal-quickstart/basics-administrator-account.png)
 
@@ -90,12 +90,12 @@ Na kartě **nastavení SQL Server** nakonfigurujte následující možnosti:
 
 1. V případě potřeby změňte všechna další nastavení a potom vyberte **zkontrolovat + vytvořit**. 
 
-   ![Zkontrolovat a vytvořit](./media/sql-vm-create-portal-quickstart/review-create.png)
+   ![Kontrola a vytvoření](./media/sql-vm-create-portal-quickstart/review-create.png)
 
 
 ## <a name="create-the-sql-server-vm"></a>Vytvoření virtuálního počítače s SQL Serverem
 
-Na kartě **Revize + vytvořit** zkontrolujte souhrn a vyberte **vytvořit** a vytvořte SQL Server, skupinu prostředků a prostředky zadané pro tento virtuální počítač.
+Na kartě **Revize + vytvořit** zkontrolujte souhrn a vyberte  **vytvořit** a vytvořte SQL Server, skupinu prostředků a prostředky zadané pro tento virtuální počítač.
 
 Nasazení můžete monitorovat z webu Azure Portal. Tlačítko **Oznámení** v horní části obrazovky zobrazuje základní stav nasazení. Nasazení může trvat několik minut. 
 

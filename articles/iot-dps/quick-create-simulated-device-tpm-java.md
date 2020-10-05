@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 31832c13ddee848864dcfe0d796deb7fcdcd8359
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90526540"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení TPM pomocí sady Java SDK pro zařízení pro Azure IoT Hub Device Provisioning Service
@@ -22,7 +22,7 @@ ms.locfileid: "90526540"
 
 V tomto rychlém startu vytvoříte simulované zařízení IoT na počítači s Windows. Simulované zařízení zahrnuje simulátor čipu TPM jako modul hardwarového zabezpečení (HSM). Pomocí ukázkového kódu pro zařízení v jazyce Java můžete propojit toto simulované zařízení se službou IoT Hub s využitím individuální registrace ve službě Device Provisioning (DPS).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Seznamte se s koncepty [zřizování](about-iot-dps.md#provisioning-process) .
 - Dokončení [nastavení IoT Hub Device Provisioning Service s Azure Portal](./quick-setup-auto-provision.md).
@@ -79,7 +79,7 @@ V tomto rychlém startu vytvoříte simulované zařízení IoT na počítači s
     private static final String globalEndpoint = "[Your Provisioning Service Global Endpoint here]";
     private static final ProvisioningDeviceClientTransportProtocol PROVISIONING_DEVICE_CLIENT_TRANSPORT_PROTOCOL = ProvisioningDeviceClientTransportProtocol.HTTPS;
     ```
-    Soubor uložte.
+    Uložte soubor.
 
 1. Pomocí následujících příkazů Sestavte projekt, přejděte do cílové složky a spusťte vytvořený soubor. jar. `version`Zástupný symbol nahraďte vaší verzí Java.
 

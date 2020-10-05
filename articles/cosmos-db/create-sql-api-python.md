@@ -14,10 +14,10 @@ ms.custom:
 - seo-python-october2019
 - devx-track-python
 ms.openlocfilehash: 128e80572275924655e1da534553265407353fff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91319006"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Rychlý Start: sestavení aplikace v Pythonu pomocí Azure Cosmos DB účtu rozhraní SQL API
@@ -33,7 +33,7 @@ ms.locfileid: "91319006"
 
 V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB účet rozhraní SQL API z Azure Portal a z Visual Studio Code v aplikaci Python naklonované z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Cosmos DB. Máte tyto možnosti:
     * V rámci předplatného Azure Active:
@@ -67,7 +67,7 @@ Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření d
 
     |Nastavení|Navrhovaná hodnota|Popis
     |---|---|---|
-    |**ID databáze**|Úlohy|Jako název nové databáze zadejte *Tasks*. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat ani mezeru `/, \\, #, ?` . Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
+    |**ID databáze**|Úkoly|Jako název nové databáze zadejte *Tasks*. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat ani mezeru `/, \\, #, ?` . Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
     |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.| 
     |**ID kontejneru**|Položky|Jako název nového kontejneru zadejte *položky* . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.|
     |**Klíč oddílu**| /kategorie| Ukázka popsaná v tomto článku používá jako klíč oddílu */Category* .|
@@ -117,7 +117,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)v levém navigačním panelu vyberte **klíče** . Pomocí tlačítek pro kopírování na pravé straně obrazovky zkopírujte **identifikátor URI** a **primární klíč** do souboru *cosmos_get_started. py* v dalším kroku.
 
-    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Získání přístupového klíče a identifikátoru URI v nastavení klíčů v Azure Portal":::
+    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Průzkumník dat na webu Azure Portal s podoknem Přidat kontejner":::
 
 2. V Visual Studio Code otevřete soubor *cosmos_get_started. py* v *\git-samples\azure-Cosmos-DB-Python-Getting-Started*.
 

@@ -13,10 +13,10 @@ ms.reviewer: v-masebo
 ms.date: 05/29/2020
 ms.custom: sqldbrb=2 
 ms.openlocfilehash: e8b9f12c57b2e4bf943e5fc9a9ebc2bbadef9ee9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86504968"
 ---
 # <a name="quickstart-use-php-to-query-a-database-in-azure-sql-database"></a>Rychlý Start: použití PHP k dotazování databáze v Azure SQL Database
@@ -26,7 +26,7 @@ Tento článek ukazuje, jak použít [php](https://php.net/manual/en/intro-whati
 
 ## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto rychlého startu je potřeba:
+Co budete potřebovat k dokončení tohoto rychlého startu:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Databáze v Azure SQL Database nebo spravované instanci Azure SQL. K vytvoření a konfiguraci databáze můžete použít jeden z těchto rychlých startů:
@@ -60,9 +60,9 @@ K dokončení tohoto rychlého startu je potřeba:
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
+2. Přejděte na stránku **databáze SQL**  nebo **spravované instance SQL** .
 
 3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro databázi v Azure SQL Database nebo plně kvalifikovaného názvu serveru (nebo IP adresy) vedle **hostitele** spravované instance Azure SQL nebo SQL Server ve virtuálním počítači Azure. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
 

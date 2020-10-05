@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.openlocfilehash: a4ab8372e23e3621f7d73f8dbc38957c809acc9c
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89237224"
 ---
 # <a name="basic-concepts"></a>Základní koncepty
@@ -52,7 +52,7 @@ Požadavek na ověření identity je serializovaný objekt JSON odeslaný klient
 
 Azure Attestation ověří zadanou uvozovku z TEE a pak zajistí, že se hodnota hash SHA256 poskytnutého enklávy dat vyjadřuje v prvních 32 bajtech pole reportData v uvozovkách. 
 
-## <a name="attestation-policy"></a>Zásada ověření identity
+## <a name="attestation-policy"></a>Zásady ověřování identity
 
 Zásady ověření identity se používají ke zpracování legitimace ověřování a dají se konfigurovat pro zákazníky. V jádru služby Azure Attestation je modul zásad, který zpracovává deklarace identity tvořící legitimaci. Zásady se používají k určení, jestli ověření identity Azure vystavuje token ověření na základě legitimace (nebo ne). tím se schválí i ověření identity (nebo ne). Proto by selhání při předání všech zásad způsobilo vydání tokenu JWT.
 

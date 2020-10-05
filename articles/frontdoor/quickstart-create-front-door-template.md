@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.openlocfilehash: 41ad240b7232895a83839777f9942011edfaf5f4
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90529379"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>Rychlý Start: Vytvoření front-dveří pomocí šablony ARM
@@ -87,7 +87,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **skupiny prostředků** .
 
@@ -95,7 +95,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 1. Vyberte přední dvířka, která jste vytvořili dříve, a klikněte na odkaz **hostitel s front-endu** . Odkaz otevře webový prohlížeč, který vás přesměruje na váš plně kvalifikovaný název domény, který jste definovali během vytváření.
 
-    :::image type="content" source="./media/quickstart-create-front-door-template/front-door-overview.png" alt-text="Přehled portálu front-dveří":::
+    :::image type="content" source="./media/quickstart-create-front-door-template/front-door-overview.png" alt-text="Výstup nasazení na front-Správce prostředků šablon PowerShellu":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

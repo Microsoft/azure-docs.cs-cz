@@ -8,10 +8,10 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
 ms.openlocfilehash: a12fe837bfd9606d07c7be71851880d2cebb9d61
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89055477"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Zahájení monitorování webové aplikace ASP.NET Core
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
@@ -51,11 +51,11 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    | Nastavení        |  Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
-   | **Name**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
+   | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
    | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování dat App Insights Můžete vytvořit novou skupinu prostředků nebo použít existující. |
    | **Umístění** | East US | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
-2. Klikněte na možnost **Vytvořit**.
+2. Klikněte na **Create** (Vytvořit).
 
 
 

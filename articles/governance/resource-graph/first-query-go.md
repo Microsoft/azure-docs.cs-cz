@@ -4,10 +4,10 @@ description: V tomto rychlém startu budete postupovat podle pokynů pro povolen
 ms.date: 06/16/2020
 ms.topic: quickstart
 ms.openlocfilehash: cc15b9fe75913ca47a14001a27e1e3c37d9ea71a
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84899682"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí příkazu Přejít
@@ -16,9 +16,9 @@ Prvním krokem k použití Azure Resource graphu je ověření, že jsou nainsta
 
 Na konci tohoto procesu se balíčky přidají do vaší instalace a spustí se první dotaz na diagram prostředku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="add-the-resource-graph-package"></a>Přidat balíček grafu prostředků
 

@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.author: punagpal
 ms.openlocfilehash: 3b6db74d637ac17ef5d09e1d9c5d3dac30ba8ba9
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89594369"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>Rychlý Start: nasazení konektoru Azure IoT Connector pro FHIR (Preview) pomocí Azure Portal
@@ -22,7 +22,7 @@ Azure IoT Connector pro FHIR * je volitelná funkce Azure API pro FHIR, která p
 - Použití simulovaného zařízení k posílání dat do služby Azure IoT Connector pro FHIR
 - Zobrazení prostředků vytvořených službou Azure IoT Connector pro FHIR v rozhraní API Azure pro FHIR
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Aktivní předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 - Rozhraní Azure API pro FHIR Resource – [nasazení rozhraní Azure API pro FHIR pomocí Azure Portal](fhir-paas-portal-quickstart.md)
@@ -139,7 +139,7 @@ Na stránce **mapování FHIR** přidejte následující skript do editoru JSON 
 
 [![Mapování FHIR pro IoT Connector](media/quickstart-iot-fhir-portal/portal-iot-fhir-mapping.jpg)](media/quickstart-iot-fhir-portal/portal-iot-fhir-mapping.jpg#lightbox)
 
-## <a name="generate-a-connection-string"></a>Generování připojovacího řetězce
+## <a name="generate-a-connection-string"></a>Vygenerování připojovacího řetězce
 
 Zařízení IoMT potřebuje připojovací řetězec pro připojení a posílání zpráv do služby Azure IoT Connector pro FHIR. Na stránce **konektor IoT** pro nově nasazený konektor Azure IoT Connector pro FHIR vyberte tlačítko **Spravovat připojení klienta** . 
 

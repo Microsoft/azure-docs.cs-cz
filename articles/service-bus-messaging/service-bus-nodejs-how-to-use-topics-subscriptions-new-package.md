@@ -8,16 +8,16 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-js
 ms.openlocfilehash: 4a1bb3346d50825dcab799477794cb138ac2de91
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91326282"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Rychlý Start: jak používat Service Bus témata a předplatná s Node.js a balíčkem Azure/Service-Bus
 V tomto kurzu se naučíte psát Node.js program pro posílání zpráv do Service Bus tématu a příjem zpráv z Service Bus předplatného pomocí nového [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) balíčku. Tento balíček používá rychlejší [Protokol AMQP 1,0](service-bus-amqp-overview.md) , zatímco starší balíček [Azure-SB](https://www.npmjs.com/package/azure-sb) používaný [Service Bus rozhraní API pro běh REST](/rest/api/servicebus/service-bus-runtime-rest). Ukázky jsou napsány v jazyce JavaScript.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Pokud nemáte téma a předplatné, se kterým chcete pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření Service Bus témata a předplatných](service-bus-quickstart-topics-subscriptions-portal.md) , abyste je mohli vytvořit. Poznamenejte si připojovací řetězec pro vaši instanci Service Bus a názvy tématu a předplatného, které jste vytvořili. Tyto hodnoty použijeme v ukázkách.
 

@@ -14,10 +14,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86515049"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Rychlý Start: použití Visual Studio Code k připojení a dotazování 
@@ -47,7 +47,7 @@ ms.locfileid: "86515049"
 
 Ujistěte se, že máte nainstalovanou nejnovější [Visual Studio Code](https://code.visualstudio.com/Download) a načetli jste [rozšíření MSSQL](https://aka.ms/mssql-marketplace). Pokyny k instalaci rozšíření MSSQL najdete v tématu [instalace Visual Studio Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) a [MSSQL pro Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql).
 
-## <a name="configure-visual-studio-code"></a>Konfigurace Visual Studio Code
+## <a name="configure-visual-studio-code"></a>Konfigurace editoru Visual Studio Code
 
 ### <a name="macos"></a>**macOS**
 
@@ -74,15 +74,15 @@ Není potřeba žádná zvláštní konfigurace.
 
 Získejte informace o připojení, které potřebujete pro připojení k Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
-2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
+2. Přejděte na stránku **databáze SQL**  nebo **spravované instance SQL** .
 
 3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **název serveru** pro SQL Database nebo plně kvalifikovaný název serveru vedle **hostitele** spravované instance SQL. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
 
 ## <a name="set-language-mode-to-sql"></a>Nastavení jazykového režimu na SQL
 
-V Visual Studio Code nastavte jazykový režim na **SQL** , aby se povolily příkazy MSSQL a T-SQL IntelliSense.
+V Visual Studio Code nastavte jazykový režim na **SQL**  , aby se povolily příkazy MSSQL a T-SQL IntelliSense.
 
 1. Otevřete nové okno nástroje Visual Studio Code.
 
@@ -111,7 +111,7 @@ K navázání připojení k serveru použijte Visual Studio Code.
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Název serveru** | Plně kvalifikovaný název serveru | Něco jako: **mynewserver20170313.Database.Windows.NET**. |
    | **Název databáze** | mySampleDatabase | Databáze, ke které se chcete připojit |
-   | **Ověřování** | Přihlášení k SQL serveru| V tomto kurzu se používá ověřování SQL. |
+   | **Authentication** | Přihlášení k SQL| V tomto kurzu se používá ověřování SQL. |
    | **Uživatelské jméno** | Uživatelské jméno | Uživatelské jméno účtu správce serveru použitého k vytvoření serveru. |
    | **Heslo (Přihlášení SQL)** | Heslo | Heslo účtu správce serveru použitého k vytvoření serveru. |
    | **Uložit heslo?** | Ano nebo Ne | Pokud nechcete heslo zadávat pokaždé, vyberte **Ano** . |

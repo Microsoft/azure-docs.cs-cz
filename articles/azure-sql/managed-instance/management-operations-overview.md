@@ -13,13 +13,13 @@ ms.author: urmilano
 ms.reviewer: sstein, MashaMSFT
 ms.date: 07/10/2020
 ms.openlocfilehash: 2da7311e61aa39be69a6a0a29eff686baaad7ebf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91323188"
 ---
-# <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Přehled operací správy spravované instance Azure SQL
+# <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Přehled operací správy služby Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Spravovaná instance Azure SQL poskytuje operace správy, které můžete použít k automatickému nasazení nových spravovaných instancí, aktualizaci vlastností instance a odstranění instancí, pokud už nepotřebujete.
@@ -69,7 +69,7 @@ V následujících tabulkách najdete souhrn operací a typických celkových do
 
 |Operace  |Dlouho běžící segment  |Odhadovaná doba trvání  |
 |---------|---------|---------|
-|Změna vlastnosti instance (heslo správce, přihlášení Azure AD, příznak Zvýhodněné hybridní využití Azure)|Není k dispozici|Až 1 minuta.|
+|Změna vlastnosti instance (heslo správce, přihlášení Azure AD, příznak Zvýhodněné hybridní využití Azure)|–|Až 1 minuta.|
 |Horizontální navýšení kapacity úložiště instance (Pro obecné účely úroveň služeb)|Připojení souborů databáze|90% dokončených operací za 5 minut.|
 |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace úroveň služeb)|– Změna velikosti virtuálního clusteru<br>– Vysazení skupiny dostupnosti Always On|90% dokončených operací během 2,5 hodin + času k osazení všech databází (220 GB za hodinu).|
 |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely)|– Změna velikosti virtuálního clusteru<br>-Připojení souborů databáze|90% dokončených operací za 2,5 hodin.|

@@ -1,5 +1,5 @@
 ---
-title: Cognitive Services pro velké objemy dat
+title: Cognitive Services pro velký objem dat
 description: Naučte se využívat Azure Cognitive Services u velkých datových sad pomocí Pythonu, Java a Scala. Díky Cognitive Services pro velké objemy dat můžete průběžně zlepšovat inteligentní modely přímo do &trade; výpočtů Apache Spark a SQL.
 services: cognitive-services
 author: mhamilton723
@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
 ms.openlocfilehash: 0001002636362a74915f9dae21a6beff52baea63
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86201777"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>Cognitive Services Azure pro velké objemy dat
@@ -35,14 +35,14 @@ Cognitive Services pro velké objemy dat může využívat služby z libovolné 
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")| Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům pro zpracování imagí a vracení informací. |
-|[Tvář](https://docs.microsoft.com/azure/cognitive-services/face/ "Tvář")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje. |
+|[Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Počítačové zpracování obrazu")| Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům pro zpracování imagí a vracení informací. |
+|[Rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/ "Rozpoznávání tváře")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje. |
 
 ### <a name="speech"></a>Řeč
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Služba Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Služba Speech")|Služba rozpoznávání řeči poskytuje přístup k funkcím, jako je rozpoznávání řeči, syntéza řeči, překlad řeči a ověřování a identifikace mluvčího.|
+|[Služba řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Služba Speech")|Služba rozpoznávání řeči poskytuje přístup k funkcím, jako je rozpoznávání řeči, syntéza řeči, překlad řeči a ověřování a identifikace mluvčího.|
 
 ### <a name="decision"></a>Rozhodnutí
 
@@ -56,7 +56,7 @@ Cognitive Services pro velké objemy dat může využívat služby z libovolné 
 |:-----------|:------------------|
 |[Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Analýza textu")| Služba Analýza textu zajišťuje zpracování v přirozeném jazyce přes nezpracovaný text pro analýzu míněníí, extrakci klíčových frází a rozpoznávání jazyka.|
 
-### <a name="search"></a>Hledat
+### <a name="search"></a>Search
 
 |Název služby|Popis služby|
 |:-----------|:------------------|

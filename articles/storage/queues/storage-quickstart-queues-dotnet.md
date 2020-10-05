@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fd60adf94e57be3892a264c2a8457b839e1c8778
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89011289"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro .NET
@@ -34,7 +34,7 @@ Další prostředky:
 * [Referenční dokumentace k rozhraní API](/dotnet/api/azure.storage.queues)
 * [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
 * [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-* [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Předpoklady
 

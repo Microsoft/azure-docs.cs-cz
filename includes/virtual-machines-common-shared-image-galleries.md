@@ -8,10 +8,10 @@ ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
 ms.openlocfilehash: 662afb902c97e164cc24bc664b854db118904210
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89494328"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem imagí. Galerie sdílených imagí poskytují:
@@ -129,8 +129,8 @@ Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze im
 
 | Sdíleno s uživatelem     | Sdílená galerie obrázků | Definice image | Verze image |
 |----------------------|----------------------|--------------|----------------------|
-| Sdílená galerie obrázků | Yes                  | Yes          | Yes                  |
-| Definice image     | Ne                   | Yes          | Yes                  |
+| Sdílená galerie obrázků | Ano                  | Ano          | Ano                  |
+| Definice image     | Ne                   | Ano          | Ano                  |
 
 Pro nejlepší prostředí doporučujeme sdílení na úrovni galerie. Nedoporučujeme sdílet jednotlivé verze imagí. Další informace o RBAC najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
@@ -217,7 +217,7 @@ Další informace najdete v tématu **Správa prostředků Galerie** pomocí [Az
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Můžu existující image přesunout do galerie sdílených imagí?
  
-Yes. Existují tři scénáře založené na typech imagí, které máte pravděpodobně k dispozici.
+Ano. Existují tři scénáře založené na typech imagí, které máte pravděpodobně k dispozici.
 
  Scénář 1: Pokud máte spravovanou bitovou kopii, můžete z ní vytvořit definici image a její verzi. Další informace najdete v tématu **migrace ze spravované image na verzi image** pomocí [Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md) nebo [PowerShellu](../articles/virtual-machines/image-version-managed-image-powershell.md).
 

@@ -14,10 +14,10 @@ ms.author: pafarley
 ms.custom: devx-track-python, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: moderátor obsahu, moderátor obsahu Azure, moderátor online, software pro filtrování obsahu
 ms.openlocfilehash: b16363c351493d07231d4606ad6c614485c5298e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91332547"
 ---
 # <a name="quickstart-use-the-content-moderator-client-library"></a>Rychlý Start: použití klientské knihovny Content Moderator
