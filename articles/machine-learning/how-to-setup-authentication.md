@@ -3,20 +3,20 @@ title: Nastavení ověřování
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak nastavit a nakonfigurovat ověřování pro různé prostředky a pracovní postupy v Azure Machine Learning. Existuje několik způsobů, jak nakonfigurovat a používat ověřování v rámci služby, od jednoduchých ověřování založeného na uživatelském rozhraní pro účely vývoje nebo testování, až po úplné Azure Active Directory ověřování instančního objektu.
 services: machine-learning
-author: larryfr
-ms.author: larryfr
+author: cjgronlund
+ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js
-ms.openlocfilehash: 0650b1c6364a187447ea3a378675df9d76eef4d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 486f026f0d9b325f8e17a040c69f9d3e1da9b359
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275723"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729028"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy
 
@@ -30,7 +30,7 @@ Obecně existují dva typy ověřování, které můžete používat s Azure Mac
 
 Bez ohledu na použitý typ ověřování se používá řízení přístupu na základě role (RBAC) k určení rozsahu úrovně přístupu k prostředkům. Například účet, který se používá k získání přístupového tokenu pro nasazený model, potřebuje jenom přístup pro čtení k pracovnímu prostoru. Další informace o RBAC najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vytvořte [pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 * [Nakonfigurujte vývojové prostředí](how-to-configure-environment.md) pro instalaci Azure Machine Learning sady SDK nebo použijte [virtuální počítač s Azure Machine Learningm poznámkovým blokem](concept-azure-machine-learning-architecture.md#compute-instance) , který už je nainstalovaný s SDK.

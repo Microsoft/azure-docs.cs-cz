@@ -10,13 +10,13 @@ description: Tento článek poskytuje přehled služby Azure ARC s povoleným Ku
 keywords: Kubernetes, oblouk, Azure, kontejnery
 ms.custom: references_regions
 ms.openlocfilehash: 61317f7f5f2bf17c88fc019294574993c1854e59
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91540638"
 ---
-# <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Co je Kubernetes ve verzi Preview s podporou Azure ARC?
+# <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Co je Kubernetes s podporou Azure Arc (Preview)?
 
 Clustery Kubernetes můžete připojit a nakonfigurovat v rámci Azure nebo mimo něj pomocí Kubernetes ve verzi Preview s podporou Azure ARC. Když je cluster Kubernetes připojený ke službě Azure ARC, zobrazí se v Azure Portal. Bude mít ID Azure Resource Manager a spravovanou identitu. Clustery jsou připojené ke standardním předplatným Azure, jsou umístěné ve skupině prostředků a můžou přijímat značky stejně jako všechny ostatní prostředky Azure. 
 
@@ -70,7 +70,7 @@ Kubernetes se zapnutým Azure ARC v tuto chvíli podporuje tyto oblasti:
 
 * Potřebuji připojit clustery služby Azure Kubernetes spuštěné v Azure do Azure ARC?
 
-    No. Všechny funkce služby Azure ARC s povoleným Kubernetes, jako je Azure Monitor, Azure Policy (gatekeeper), jsou nativně dostupné v AKS, které už mají v Azure reprezentaci prostředků. Konfigurace clusteru (GitOps) je také k dispozici nativně v AKS a aktuálně ve verzi Private Preview. K získání přístupu k této funkci použijte tento [registrační formulář](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5acO18Lmx5Bk_qao2CrOcFUQ0UyRllDR1BEV1BPNENYRERYN1pFWTQ4WC4u) .
+    Ne. Všechny funkce služby Azure ARC s povoleným Kubernetes, jako je Azure Monitor, Azure Policy (gatekeeper), jsou nativně dostupné v AKS, které už mají v Azure reprezentaci prostředků. Konfigurace clusteru (GitOps) je také k dispozici nativně v AKS a aktuálně ve verzi Private Preview. K získání přístupu k této funkci použijte tento [registrační formulář](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5acO18Lmx5Bk_qao2CrOcFUQ0UyRllDR1BEV1BPNENYRERYN1pFWTQ4WC4u) .
     
 * Mám svůj cluster AKS připojit k Azure Stack HCL do Azure ARC? Jaké clustery Kubernetes běží na rozbočovači Azure Stack nebo Azure Stackm stroji?
 

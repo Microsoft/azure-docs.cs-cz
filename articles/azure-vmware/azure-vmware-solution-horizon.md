@@ -3,12 +3,12 @@ title: Nasazení horizontu v řešení VMware Azure
 description: Přečtěte si, jak nasadit VMware Horizon do řešení Azure VMware.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 60207b0ed9e1df805ac667752b55f14a693ec25c
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: bda4be049e360670cb7038bfbb3070c2a5f262c4
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91492469"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729045"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Nasazení horizontu v řešení VMware Azure 
 
@@ -84,7 +84,7 @@ Každý privátní cloud nebo SDDC Azure je schopný zpracovávat 4 000 klientsk
 
 Vzhledem k maximálnímu limitu privátního cloudu Azure nebo SDDC doporučujeme architekturu nasazení, kde jsou servery připojení a brány VMware Unified Access (UAGs) spuštěné v rámci Azure Virtual Network. To efektivně zapíná každý privátní cloud Azure nebo SDDC do bloku. To zase maximalizuje škálovatelnost horizontu běžícího na řešení Azure VMware.
 
-Připojení z Azure Virtual Network k privátním cloudům Azure/SDDCs by se mělo konfigurovat s rychlou cestou ExpressPath. Následující diagram znázorňuje základní nasazení horizontu pod.
+Připojení z Azure Virtual Network k privátním cloudům Azure nebo SDDCs by se mělo konfigurovat s ExpressRoute FastPath. Následující diagram znázorňuje základní nasazení horizontu pod.
 
 :::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Rozdíly mezi horizontem v cloudu řešení Azure VMware a Horizontal v Azure" border="false":::
 
@@ -92,7 +92,7 @@ Připojení z Azure Virtual Network k privátním cloudům Azure/SDDCs by se mě
 
 V této části se dozvíte, jak vytvořit architekturu sítě na vysoké úrovni pro horizontální škálování v řešení Azure VMware s některými běžnými příklady nasazení. Tady je zaměření na důležité prvky sítě.
 
-### <a name="single-horizon-pd-on-azure-vmware-solution"></a>Řešení Single Horizon PD v Azure VMware
+### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Jeden horizont pod v řešení Azure VMware
 
 :::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Rozdíly mezi horizontem v cloudu řešení Azure VMware a Horizontal v Azure" border="false":::
 

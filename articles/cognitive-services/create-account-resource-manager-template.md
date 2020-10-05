@@ -11,10 +11,10 @@ ms.date: 09/14/2020
 ms.author: aahi
 ms.custom: subject-armqs
 ms.openlocfilehash: d88d613b6edfc6b08d08410cdc7cf481d973512d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91348948"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Rychlý Start: vytvoření prostředku Cognitive Services pomocí šablony ARM
@@ -34,7 +34,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 [![Nasazení služby rozpoznávání do Azure](../media/template-deployments/deploy-to-azure.svg "Nasazení služby rozpoznávání do Azure")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cognitive-services-universalkey%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud nemáte předplatné Azure, [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services).
 

@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
 ms.openlocfilehash: 518ce47f1c30dde965dd96b1a356745d0a5ec499
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947023"
 ---
 # <a name="quickstart-add-voice-calling-to-your-app"></a>Rychlý Start: Přidání hlasového volání do aplikace

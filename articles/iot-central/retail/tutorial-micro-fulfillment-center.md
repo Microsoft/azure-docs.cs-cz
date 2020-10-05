@@ -8,17 +8,17 @@ ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
 ms.openlocfilehash: 28afa98313ef1c9577e90ed161a1d20cbf5faf75
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91440199"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Kurz: nasazení a procházení šablonou aplikace centra pro pořizování
 
 V tomto kurzu použijete šablonu aplikace Azure IoT Central Micro-splní centrum k sestavení maloobchodního řešení. Naučíte se, jak nasadit šablonu, co je součástí IT a co byste chtěli udělat dál.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K dokončení této série kurzů potřebujete předplatné Azure. Volitelně můžete použít bezplatnou 7 dní zkušební verzi. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace do Azure](https://aka.ms/createazuresubscription).
 
 ## <a name="create-an-application"></a>Vytvoření aplikace 

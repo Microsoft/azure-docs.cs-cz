@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 7266f110069155e2a9f7804d53c6e1088768ec8d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91541845"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rychlý start: Vyzkoušení cloudového řešení za účelem spuštění analýzy prediktivní údržby na připojených zařízeních
@@ -26,7 +26,7 @@ Motory letadel společnosti Fabrikam jsou vybaveny snímači, které monitorují
 
 K dokončení tohoto rychlého startu potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 

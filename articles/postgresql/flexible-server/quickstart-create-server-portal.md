@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.openlocfilehash: 25c3f875717c9c064af0ce27bdab735db67d2f5d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90946810"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---flexible-server-in-the-azure-portal"></a>Rychlý Start: vytvoření Azure Database for PostgreSQL-flexibilního serveru v Azure Portal
@@ -41,11 +41,11 @@ Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
 
 3. Vyberte možnost **flexibilního nasazení serveru** .
 
-   :::image type="content" source="./media/quickstart-create-database-portal/2-select-deployment-option.png" alt-text="Výběr možnosti Azure Database for PostgreSQL – flexibilní nasazení serveru":::
+   :::image type="content" source="./media/quickstart-create-database-portal/2-select-deployment-option.png" alt-text="Azure Database for PostgreSQL v nabídce":::
 
 4. Ve formuláři **základy** vyplňte následující informace:
 
-    :::image type="content" source="./media/quickstart-create-database-portal/3-create-basics.png" alt-text="Vytvoření serveru":::
+    :::image type="content" source="./media/quickstart-create-database-portal/3-create-basics.png" alt-text="Azure Database for PostgreSQL v nabídce":::
 
     Nastavení|Navrhovaná hodnota|Popis
     ---|---|---
@@ -58,23 +58,23 @@ Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
     Verze|Nejnovější hlavní verze| Nejnovější hlavní verze PostgreSQL, pokud nemáte jiné specifické požadavky.
     Výpočty + úložiště | **Pro obecné účely**, **4 virtuální jádra**, **512 GB**, **7 dní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Konfigurovat Server**. Výchozími hodnotami pro **výpočetní vrstvu**, **Vcore**, **úložiště**a **dobu uchování zálohy**jsou *pro obecné účely*, *4 virtuální jádra*, *512 GB*a *7 dní* . Tyto posuvníky můžete ponechat beze změny nebo je upravit. Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
 
-    :::image type="content" source="./media/quickstart-create-database-portal/4-pricing-tier.png" alt-text="Podokno cenová úroveň":::
+    :::image type="content" source="./media/quickstart-create-database-portal/4-pricing-tier.png" alt-text="Azure Database for PostgreSQL v nabídce":::
     
 5. Konfigurace možností sítě
 
     Na kartě síť můžete zvolit, jak je server dostupný. Azure Database for PostgreSQL vytváří bránu firewall na úrovni serveru. Ta brání externím aplikacím a nástrojům v připojení k serveru a kterékoli databázi na serveru, pokud nevytvoříte pravidlo k otevření brány firewall pro konkrétní IP adresy. Doporučujeme, aby byl server veřejně přístupný:
 
-    :::image type="content" source="./media/quickstart-create-database-portal/5-networking.png" alt-text="Podokno síť":::
+    :::image type="content" source="./media/quickstart-create-database-portal/5-networking.png" alt-text="Azure Database for PostgreSQL v nabídce":::
 
     A pak ho omezte na vlastní IP adresu klienta:
 
-    :::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="Vyberte Přidat aktuální IP adresu klienta.":::
+    :::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="Azure Database for PostgreSQL v nabídce":::
 
 6. Vyberte možnost **zkontrolovat + vytvořit** a zkontrolujte výběr. Vyberte **Vytvořit**, aby se server zřídil. Tato operace může trvat několik minut.
 
 7. Pokud chcete monitorovat proces nasazení, na panelu nástrojů vyberte ikonu **Oznámení** (zvonek). Po dokončení nasazení můžete vybrat **Připnout na řídicí panel** a vytvořit dlaždici pro tento server na řídicím panelu webu Azure Portal, která slouží jako zástupce stránky **Přehled** serveru. Výběr **Přejít k prostředku** otevře stránku **Přehled** serveru.
 
-    :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="Podokno oznámení":::
+    :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="Azure Database for PostgreSQL v nabídce":::
 
    Ve výchozím nastavení se v rámci vašeho serveru vytvoří databáze **postgres**. Databáze [postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) je výchozí databáze určená pro uživatele, nástroje a aplikace třetích stran. (Další výchozí databází je **azure_maintenance**. Její funkcí je oddělit procesy spravovaných služeb od akcí uživatelů. K této databázi nemáte přístup.)
 
@@ -88,7 +88,7 @@ Při vytváření vašeho serveru Azure Database for PostgreSQL se vytvoří i v
 
 Otevřete stránku **Přehled** vašeho serveru. Poznamenejte si **Název serveru** a **Přihlašovací jméno správce serveru**. Přejeďte kurzorem přes jednotlivá pole a vpravo od textu se zobrazí symbol kopírování. Podle potřeby hodnoty zkopírujte výběrem symbolu kopírování.
 
- :::image type="content" source="./media/quickstart-create-database-portal/8-server-name.png" alt-text="Stránka Přehled serveru":::
+ :::image type="content" source="./media/quickstart-create-database-portal/8-server-name.png" alt-text="Azure Database for PostgreSQL v nabídce":::
 
 ## <a name="connect-to-the-postgresql-database-using-psql"></a>Připojení k databázi PostgreSQL pomocí nástroje psql
 
@@ -162,7 +162,7 @@ Odstranění pouze nově vytvořeného serveru:
 
 2. Na stránce **Přehled** vyberte **Odstranit**.
 
-    :::image type="content" source="./media/quickstart-create-database-portal/9-delete.png" alt-text="Tlačítko Odstranit":::
+    :::image type="content" source="./media/quickstart-create-database-portal/9-delete.png" alt-text="Azure Database for PostgreSQL v nabídce":::
 
 3. Potvrďte název serveru, který chcete odstranit, a zobrazte jeho databáze, které tím ovlivníte. Do textového pole zadejte název vašeho serveru, jako je například **mydemoserver**. Vyberte **Odstranit**.
 

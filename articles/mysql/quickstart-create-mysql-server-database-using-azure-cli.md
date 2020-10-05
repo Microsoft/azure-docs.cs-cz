@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: a7d69ae15e72133e08b3e66de607aa06fefdbd32
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87495382"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí Azure CLI
@@ -20,14 +20,14 @@ ms.locfileid: "87495382"
 > [!TIP]
 > Zvažte použití jednoduššího příkazu [AZ MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI (aktuálně ve verzi Preview). Vyzkoušejte si [rychlý Start](./quickstart-create-server-up-azure-cli.md).
 
-V tomto rychlém startu se dozvíte, jak pomocí příkazů rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) v [Azure Cloud Shell](https://shell.azure.com) vytvořit Azure Database for MySQL server během pěti minut. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+V tomto rychlém startu se dozvíte, jak pomocí příkazů rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) v [Azure Cloud Shell](https://shell.azure.com) vytvořit Azure Database for MySQL server během pěti minut. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
 > [!NOTE]
 > Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tento článek vyžaduje, abyste v místním prostředí používali Azure CLI verze 2,0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 K účtu se budete muset přihlásit pomocí příkazu [AZ Login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure. 
@@ -57,7 +57,7 @@ az mysql server create --resource-group myresourcegroup --name mydemoserver --lo
 
 Zde jsou uvedeny podrobnosti o argumentech výše: 
 
-**Nastavení** | **Ukázková hodnota** | **Description**
+**Nastavení** | **Ukázková hodnota** | **Popis**
 ---|---|---
 name | mydemoserver | Zadejte jedinečný název serveru Azure Database for MySQL. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat ze 3 až 63 znaků.
 resource-group | myresourcegroup | Zadejte název skupiny prostředků Azure.

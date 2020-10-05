@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: b639bc19620a07d9730066f98977080827f07ec0
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91570462"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Rychlý Start: Vytvoření konzolové aplikace pomocí sady .NET V4 SDK pro správu Azure Cosmos DB prostředků účtů rozhraní SQL API.
@@ -38,7 +38,7 @@ Databáze Azure Cosmos je databázová služba Microsoftu s více modely použit
 
 [Zdrojový kód knihovny](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/v4)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Cosmos)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) nebo si můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků. 
 * [Sada SDK .NET Core 3](https://dotnet.microsoft.com/download/dotnet-core). Spuštěním sady můžete ověřit, která verze je ve vašem prostředí k dispozici `dotnet --version` .
@@ -136,7 +136,7 @@ Než začnete sestavovat aplikaci, Podívejme se na hierarchii prostředků v Az
 
 * Účet Azure Cosmos 
 * Databáze 
-* Kontejnery 
+* Containers 
 * Položky
 
 Další informace o hierarchii různých entit najdete v tématu [práce s databázemi, kontejnery a položkami v Azure Cosmos DB](databases-containers-items.md) článku. K interakci s těmito prostředky použijete následující třídy .NET:

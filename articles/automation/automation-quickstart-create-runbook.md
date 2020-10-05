@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
 ms.openlocfilehash: 948ca820347c7cdcd560ade46e850f66b25bc88e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90987286"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Vytvoření runbooku Azure Automation
@@ -37,7 +37,7 @@ Nejprve vytvořte runbook. Ukázkový runbook vytvářený v tomto rychlém star
 
    ![Zadání informací o runbooku Automation na stránce](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
-1. Klikněte na **Vytvořit**. Runbook se vytvoří a otevře se stránka Upravit powershellový runbook.
+1. Klikněte na **Create** (Vytvořit). Runbook se vytvoří a otevře se stránka Upravit powershellový runbook.
 
     :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png" alt-text="Snímek obrazovky se stránkou PowerShellu pro úpravu Runbooku":::
 
@@ -55,7 +55,7 @@ Nejprve vytvořte runbook. Ukázkový runbook vytvářený v tomto rychlém star
 
 1. Kliknutím na **Uložit** uložte pracovní kopii Runbooku.
 
-    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook.png" alt-text="Snímek obrazovky se stránkou PowerShellu pro úpravu Runbooku s příkladem kódu v pravém okně":::
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook.png" alt-text="Snímek obrazovky se stránkou PowerShellu pro úpravu Runbooku":::
 
 ## <a name="test-the-runbook"></a>Otestování runbooku
 
@@ -65,13 +65,13 @@ Po vytvoření sady Runbook je nutné sadu Runbook otestovat, aby bylo možné o
 
 1. Zadejte nějakou hodnotu parametru **Name** (Název) a klikněte na **Spustit**. Spustí se testovací úloha a zobrazí se stav úlohy a výstup.
 
-    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-test-runbook.png" alt-text="Snímek obrazovky podokna testu s ukázkovou hodnotou v poli název":::
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-test-runbook.png" alt-text="Snímek obrazovky se stránkou PowerShellu pro úpravu Runbooku":::
 
 1. Kliknutím na **X** v pravém horním rohu zavřete testovací podokno. V automaticky otevřeném okně vyberte **OK**.
 
 1. Na stránce Upravit powershellový runbook klikněte na **Publikovat** a publikujte runbook jako oficiální verzi runbooku v tomto účtu.
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png" alt-text="Snímek obrazovky se stránkou PowerShellu pro úpravu PowerShellu, na které se zobrazuje tlačítko publikovat":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png" alt-text="Snímek obrazovky se stránkou PowerShellu pro úpravu Runbooku":::
 
 ## <a name="run-the-runbook"></a>Spuštění runbooku
 
@@ -79,15 +79,15 @@ Po publikování runbooku se zobrazí stránka s přehledem.
 
 1. Na stránce s přehledem runbooku kliknutím na **Spustit** otevřete stránku konfigurace Spustit runbook pro tento runbook.
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png" alt-text="Snímek obrazovky spouštěcí stránky konfigurace sady Runbook.":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png" alt-text="Snímek obrazovky se stránkou PowerShellu pro úpravu Runbooku":::
 
 1. Parametr **Name** (Název) nechte prázdný, aby se použila výchozí hodnota, a klikněte na **OK**. Odešle se úloha Runbooku a zobrazí se stránka úloha.
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-job-page.png" alt-text="Obrazovka stránky úlohy zobrazující vybrané tlačítko pro výstup":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-job-page.png" alt-text="Snímek obrazovky se stránkou PowerShellu pro úpravu Runbooku":::
 
 1. Když je stav úlohy `Running` nebo `Completed` , kliknutím na **výstup** otevřete podokno výstup a zobrazí se výstup Runbooku.
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png" alt-text="Snímek obrazovky podokna výstup znázorňující výstup Runbooku":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png" alt-text="Snímek obrazovky se stránkou PowerShellu pro úpravu Runbooku":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -9,17 +9,17 @@ ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: lcozzens
 ms.openlocfilehash: 83da47ce27d452fd77fab3905c9ce48944c42ffb
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91575057"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Rychlý Start: Vytvoření aplikace .NET Core s konfigurací aplikace
 
 V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové aplikace .NET Core, která umožňuje centralizaci úložiště a správy nastavení aplikace odděleně od vašeho kódu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/dotnet) .
 - [.NET Core SDK](https://dotnet.microsoft.com/download) – k dispozici také [Azure Cloud Shell](https://shell.azure.com).
@@ -36,7 +36,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
 
     V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné.
 
-7. Vyberte **Použít**.
+7. Vyberte **Apply** (Použít).
 
 ## <a name="create-a-net-core-console-app"></a>Vytvoření konzolové aplikace .NET Core
 

@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
 ms.openlocfilehash: 18f717ca05e93c9a8f06ac8868e9a6e5ff80eadb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91355529"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Rychlý Start: obnovení databáze do spravované instance Azure SQL pomocí SSMS
@@ -30,7 +30,7 @@ V tomto rychlém startu použijete SQL Server Management Studio (SSMS) k obnoven
 > Další informace o migraci pomocí Azure Database Migration Service najdete v tématu [migrace spravované instance SQL pomocí Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md).
 > Další informace o různých metodách migrace najdete v tématu [SQL Server migrace do spravované instance Azure SQL](migrate-to-instance-from-sql-server.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento rychlý start:
 
@@ -88,10 +88,10 @@ V SQL Server Management Studio postupujte podle těchto kroků a obnovte databá
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-7. Až se obnovení dokončí, zobrazte databázi v Průzkumník objektů. Dokončení obnovení databáze můžete ověřit pomocí zobrazení [Sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) .
+7. Až se obnovení dokončí, zobrazte databázi v Průzkumník objektů. Dokončení obnovení databáze můžete ověřit pomocí zobrazení [Sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) .
 
 > [!NOTE]
-> Operace obnovení databáze je asynchronní a je opakovaná. Při přerušení připojení nebo vypršení časového limitu může dojít k chybě v SQL Server Management Studio. Azure SQL Database se nadále snaží obnovit databázi na pozadí a průběh obnovy můžete sledovat pomocí zobrazení [Sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a [Sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) .
+> Operace obnovení databáze je asynchronní a je opakovaná. Při přerušení připojení nebo vypršení časového limitu může dojít k chybě v SQL Server Management Studio. Azure SQL Database se nadále snaží obnovit databázi na pozadí a průběh obnovy můžete sledovat pomocí zobrazení [Sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a [Sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) .
 > V některých fázích procesu obnovení se místo skutečného názvu databáze v systémových zobrazeních zobrazí jedinečný identifikátor. Další informace o `RESTORE` rozdílech v chování příkazů [najdete tady](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement).
 
 ## <a name="next-steps"></a>Další kroky

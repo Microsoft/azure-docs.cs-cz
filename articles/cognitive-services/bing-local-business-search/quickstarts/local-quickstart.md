@@ -12,10 +12,10 @@ ms.date: 05/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3102742d19e7e0dffa6135c9267f51b1231dafc8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90970461"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních hledání v jazyce C #
@@ -24,7 +24,7 @@ V tomto rychlém startu se dozvíte, jak odesílat požadavky do rozhraní API B
 
 Tato ukázková aplikace získá data místních odpovědí z rozhraní API pro vyhledávací dotaz.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Všechny edice sady [Visual Studio 2019](https://www.visualstudio.com/downloads/).

@@ -10,10 +10,10 @@ ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: b97b80927739d9a8658213a00b415c0bf321528b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91460556"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Začínáme s příkladem skupiny Hero chat
@@ -56,7 +56,7 @@ Součásti hlavní obrazovky chatu:
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js (8.11.2 a vyšší)](https://nodejs.org/en/download/)

@@ -12,10 +12,10 @@ ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: d11474a3f3b5d8c314f67260fddbbe0a98fe5196
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91569907"
 ---
 # <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Rychlý Start: škálování výpočetních prostředků ve službě Azure synapse Analytics pomocí T-SQL
@@ -136,7 +136,7 @@ Když je datový sklad pozastavený, nemůžete se k němu připojit pomocí T-S
 
 ## <a name="check-operation-status"></a>Kontrola stavu operace
 
-Pokud chcete vracet informace o různých operacích správy ve službě Azure synapse, spusťte následující dotaz na [Sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV. Vrátí se například operace a její stav, který bude IN_PROGRESS nebo COMPLETED.
+Pokud chcete vracet informace o různých operacích správy ve službě Azure synapse, spusťte na [Sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV následující dotaz. Vrátí se například operace a její stav, který bude IN_PROGRESS nebo COMPLETED.
 
 ```sql
 SELECT *

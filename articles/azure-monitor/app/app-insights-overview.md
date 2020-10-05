@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
 ms.openlocfilehash: f00eea37c43fba10e0a89498dd81366630852db7
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91371373"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
@@ -51,7 +51,7 @@ Data se dají prozkoumávat mnoha způsoby. Podívejte se na tyto články:
 | --- | --- |
 | [**Inteligentní zjišťování a ruční výstrahy**](./proactive-diagnostics.md)<br/>Nastavte automatické výstrahy, které se přizpůsobí normálním vzorům telemetrie a triggeru vaší aplikace, když je něco mimo obvyklý vzor. Můžete také [nastavit výstrahy](../platform/alerts-log.md) na konkrétní úrovně vlastních nebo standardních metrik. |![Ukázka výstrah](./media/app-insights-overview/alerts-tn.png) |
 | [**Mapa aplikace**](./app-map.md)<br/>Prozkoumejte komponenty vaší aplikace s klíčovými metrikami a výstrahami. |![Mapa aplikace](./media/app-insights-overview/appmap-tn.png)  |
-| [**profiler**](./profiler.md)<br/>Zkontrolujte profily spouštění u vzorků požadavků. |![Snímek obrazovky ukazuje profily spuštění vzorků požadavků.](./media/app-insights-overview/profiler.png) |
+| [**Profiler**](./profiler.md)<br/>Zkontrolujte profily spouštění u vzorků požadavků. |![Snímek obrazovky ukazuje profily spuštění vzorků požadavků.](./media/app-insights-overview/profiler.png) |
 | [**Analýza využití**](./usage-overview.md)<br/>Analyzujte segmentaci a udržení uživatelů.|![Nástroj Udržení](./media/app-insights-overview/retention.png) |
 | [**Diagnostické vyhledávání dat instancí**](./diagnostic-search.md)<br/>Události vyhledávání a filtrování, jako jsou třeba požadavky, výjimky, volání závislosti, trasování protokolů a zobrazení stránek.  |![Telemetrie vyhledávání](./media/app-insights-overview/search-tn.png) |
 | [**Průzkumník metrik pro agregovaná data**](../platform/metrics-charts.md)<br/>Prozkoumání, filtrování a segmentace agregovaných dat, jako jsou třeba frekvence požadavků, selhání a výjimek, doby odezvy a časy načtení stránek. |![Metriky](./media/app-insights-overview/metrics-tn.png) |

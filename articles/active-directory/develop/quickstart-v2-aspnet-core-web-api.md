@@ -13,10 +13,10 @@ ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
 ms.openlocfilehash: dc0cdca2355403bc8f5409d9a6ca7f4ae89caf25
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90946924"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Rychlý Start: ochrana ASP.NET Core webového rozhraní API s platformou Microsoft identity
@@ -24,7 +24,7 @@ ms.locfileid: "90946924"
 V tomto rychlém startu se dozvíte, jak chránit ASP.NET Core webového rozhraní API, aby k němu bylo možné získat pouze autorizované účty. Účty můžou být osobní účty (hotmail.com, outlook.com a další) a pracovní a školní účty v libovolné instanci Azure Active Directory (Azure AD).
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Požadavky
+> ## <a name="prerequisites"></a>Předpoklady
 >
 > - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > - [Tenant Azure Active Directory](quickstart-create-new-tenant.md)
@@ -35,7 +35,7 @@ V tomto rychlém startu se dozvíte, jak chránit ASP.NET Core webového rozhran
 >
 > Nejdřív Zaregistrujte webové rozhraní API ve vašem tenantovi Azure AD a přidejte obor pomocí následujících kroků:
 >
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 > 1. Máte-li přístup k více klientům, použijte filtr **adresář + odběr** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: v horní nabídce a vyberte klienta, ve kterém chcete aplikaci zaregistrovat.
 > 1. Vyhledejte a vyberte **Azure Active Directory**.
 > 1. V části **Spravovat**vyberte **Registrace aplikací**a pak **Nová registrace**.
@@ -100,7 +100,7 @@ Middleware *Microsoft. AspNetCore. Authentication* používá `Startup` třídu,
 
 Řádek obsahující `.AddMicrosoftIdentityWebApi` do vašeho webového rozhraní API přidá autorizaci platformy Microsoft Identity Platform. Pak je nakonfigurovaná tak, aby ověřovala přístupové tokeny vydané koncovým bodem platformy Microsoft identity, na základě informací v `AzureAD` části *appsettings.jsv* konfiguračním souboru:
 
-| *appsettings.jsna* klíč | Description                                                                                                                                                          |
+| *appsettings.jsna* klíč | Popis                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | **ID aplikace (klienta)** aplikace zaregistrované v Azure Portal.                                                                                       |
 | `Instance`             | Koncový bod služby tokenu zabezpečení (STS) pro ověření uživatele. Tato hodnota se obvykle `https://login.microsoftonline.com/` označuje jako veřejný cloud Azure. |

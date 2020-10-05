@@ -3,15 +3,16 @@ title: Vlastní CI kontejnerů/CD z akcí GitHubu
 description: Naučte se používat akce GitHubu k nasazení vlastního kontejneru Linux do App Service z kanálu CI/CD.
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2019
+ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 59bfdbf2d78497bc253f466e94fd69367a85070d
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.custom: github-actions-azure
+ms.openlocfilehash: dc8b5e75b4feed886f843e7a516cc18429afec11
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631779"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728484"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Nasazení vlastního kontejneru pro App Service pomocí akcí GitHubu
 
@@ -21,13 +22,13 @@ Pracovní postup je definovaný souborem YAML (. yml) v `/.github/workflows/` ce
 
 Pro pracovní postup kontejneru Azure App Service má soubor tři části:
 
-|Sekce  |Úlohy  |
+|Sekce  |Úkoly  |
 |---------|---------|
 |**Authentication** | 1. načtěte instanční objekt nebo publikační profil. <br /> 2. Vytvořte tajný klíč GitHubu. |
 |**Sestavení** | 1. Vytvořte prostředí. <br /> 2. Sestavte image kontejneru. |
 |**Nasazení** | 1. Nasaďte image kontejneru. |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  
@@ -83,7 +84,7 @@ V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení
 
 Vložte obsah výstupu JSON jako hodnotu tajné proměnné. Zadejte tajný kód jako název `AZURE_CREDENTIALS` .
 
-Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
+Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Příklad:
 
 ```yaml
 - uses: azure/login@v1
@@ -99,7 +100,7 @@ V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení
 
 Pokud chcete použít [přihlašovací údaje na úrovni aplikace](#generate-deployment-credentials), vložte obsah staženého souboru publikačního profilu do pole hodnota tajného klíče. Pojmenujte tajný klíč `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-Když nakonfigurujete pracovní postup GitHubu, použijte `AZURE_WEBAPP_PUBLISH_PROFILE` v akci nasazení webové aplikace Azure. Například:
+Když nakonfigurujete pracovní postup GitHubu, použijte `AZURE_WEBAPP_PUBLISH_PROFILE` v akci nasazení webové aplikace Azure. Příklad:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -113,7 +114,7 @@ V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení
 
 Pokud chcete použít [přihlašovací údaje na úrovni uživatele](#generate-deployment-credentials), vložte celý výstup JSON z příkazu Azure CLI do pole hodnota tajného klíče. Zadejte tajný kód jako název `AZURE_CREDENTIALS` .
 
-Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
+Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Příklad:
 
 ```yaml
 - uses: azure/login@v1

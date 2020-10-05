@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91399818"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Rychlý Start: vytvoření ukázkové aplikace na portálu (Azure Kognitivní hledání)
@@ -21,7 +21,7 @@ Pomocí průvodce **vytvořením ukázkové aplikace** Azure Portal vygenerujte 
 
 Ukázková aplikace vám pomůže vizualizovat, jak bude index fungovat v klientské aplikaci, ale není určený pro produkční scénáře. Klientské aplikace by měly zahrnovat zabezpečení, zpracování chyb a logiku hostování, kterou neposkytuje vygenerovaná stránka HTML. Až budete připraveni vytvořit klientskou aplikaci, přečtěte si téma [Vytvoření první aplikace pro vyhledávání pomocí sady .NET SDK](tutorial-csharp-create-first-app.md) pro další kroky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte mít následující:
 
@@ -61,7 +61,7 @@ Průvodce poskytuje základní rozložení pro vykreslené výsledky hledání, 
 
 1. V poli Popis zvolte pole, které poskytuje podrobné informace, které mohou někomu pomáhat při rozhodování, zda kliknout do konkrétního dokumentu.
 
-   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="Konfigurace výsledků pro ukázková data" border="false":::
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="Stránka zdroje dat pro ukázková data" border="false":::
 
 ## <a name="add-a-sidebar"></a>Přidat postranní panel
 
@@ -83,7 +83,7 @@ Návrhy jsou povolené pro konkrétní definice polí. Průvodce vám nabídne m
 
 Následující snímek obrazovky ukazuje možnosti v průvodci, juxtaposed s vykreslenou stránkou v aplikaci. Můžete vidět, jak se používají výběry polí, a jak se má v návrhu zahrnout nebo vyloučit označení "Zobrazit název pole".
 
-:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="Konfigurace návrhů dotazů":::
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="Stránka zdroje dat pro ukázková data":::
 
 ## <a name="create-download-and-execute"></a>Vytvoření, stažení a spuštění
 
@@ -95,12 +95,12 @@ Následující snímek obrazovky ukazuje možnosti v průvodci, juxtaposed s vyk
 
 Základní index se skládá z fiktivních generovaných dat, která byla duplikována v rámci dokumentů, a popisy se někdy neshodují s obrázkem. Pokud vytváříte aplikaci na základě vlastních indexů, můžete očekávat ucelenější prostředí.
 
-:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="Spuštění aplikace":::
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="Stránka zdroje dat pro ukázková data":::
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

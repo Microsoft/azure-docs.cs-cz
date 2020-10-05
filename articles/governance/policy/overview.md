@@ -4,10 +4,10 @@ description: Azure Policy je služba v Azure, pomocí které vytváříte, při�
 ms.date: 09/22/2020
 ms.topic: overview
 ms.openlocfilehash: 596e52cca2be2a347c26502434048053a8b4684c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91538952"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
@@ -144,7 +144,7 @@ Podobně jako parametry zásad pomáhají parametry iniciativ zjednodušit sprá
 
 Jako příklad může posloužit scénář, ve kterém máte definici iniciativy **initiativeC** s definicemi zásad **policyA** a **policyB**, z nichž každá očekává jiný typ parametru:
 
-| Zásada | Název parametru |Typ parametru  |Poznámka |
+| Zásady | Název parametru |Typ parametru  |Poznámka |
 |---|---|---|---|
 | policyA | allowedLocations | array  |Tento parametr jako hodnotu očekává seznam řetězců, protože typ parametru byl definovaný jako pole. |
 | policyB | allowedSingleLocation |řetězec |Tento parametr jako hodnotu očekává jedno slovo, protože typ parametru byl definovaný jako řetězec. |

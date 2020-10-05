@@ -10,10 +10,10 @@ ms.date: 01/22/2019
 ms.author: jasonh
 ms.custom: devx-track-python
 ms.openlocfilehash: 624aa946df5e637c98a11ada3b455c50dec896f5
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409336"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Rychlý Start: vytvoření databáze grafů v Azure Cosmos DB pomocí Pythonu a Azure Portal
@@ -29,7 +29,7 @@ ms.locfileid: "91409336"
 
 V tomto rychlém startu vytvoříte a spravujete účet rozhraní API pro Azure Cosmos DB Gremlin (Graph) z Azure Portal a přidáte data pomocí aplikace Python naklonované z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure.
 - [Python 3.5 +](https://www.python.org/downloads/) včetně instalačního balíčku balíčku [PIP](https://pip.pypa.io/en/stable/installing/)
 - [Ovladač Pythonu pro Gremlin](https://github.com/apache/tinkerpop/tree/master/gremlin-python)
@@ -172,21 +172,21 @@ Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobr
 
 1. V Azure Cosmos DB účtu v Azure Portal vyberte možnost **Průzkumník dat**, rozbalte položku **Ukázka-graf**, vyberte možnost **graf**a pak vyberte možnost **použít filtr**. 
 
-   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="Vytváření nových dokumentů v Průzkumníku dat na webu Azure Portal":::
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 2. V seznamu **výsledků** si všimněte, že se do grafu přidávají tři noví uživatelé. Vrcholy můžete přesouvat přetahováním, přibližovat a oddalovat můžete pomocí kolečka myši a zvětšit plochu grafu můžete pomocí obousměrné šipky. 
 
-   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png" alt-text="Nové vrcholy v grafu v Průzkumníku dat na webu Azure Portal":::
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 3. Teď přidáme několik nových uživatelů. Vyberte tlačítko **nový vrchol** a přidejte do grafu data.
 
-   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Vytváření nových dokumentů v Průzkumníku dat na webu Azure Portal":::
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 4. Zadejte popisek *person* (osoba).
 
 5. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností. Všimněte si, že pro každou osobu v grafu můžete vytvořit jedinečné vlastnosti. Vyžaduje se pouze klíč id.
 
-    key|hodnota|Poznámky
+    key|value|Poznámky
     ----|----|----
     PK|/pk| 
     id|ashley|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
@@ -204,7 +204,7 @@ Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobr
 
 9. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností:
 
-    key|hodnota|Poznámky
+    key|value|Poznámky
     ----|----|----
     PK|/pk| 
     id|rakesh|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
@@ -219,15 +219,15 @@ Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobr
 
 12. Teď můžeme propojit uživatele rakesh a ashley. V seznamu **výsledků** ověřte, že je vybraná možnost **Ashley** , a pak vyberte tlačítko Upravit vedle **cílů** na pravé dolní straně. Možná budete muset rozšířit okno, aby se zobrazila oblast **Vlastnosti**.
 
-    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Změna cíle vrcholu v grafu":::
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 13. Do pole **cíl** zadejte *Rakesh*a do pole **popisek hrany** zadejte text *zná*a zaškrtněte políčko.
 
-    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="Přidání propojení mezi uživateli ashley a rakesh v Průzkumníku dat":::
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 14. Teď vyberte ze seznamu výsledků uživatele **rakesh** a zobrazí se propojení mezi uživateli ashley a rakesh. 
 
-    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer.png" alt-text="Dva propojené vrcholy v Průzkumníku dat":::
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 Tím je dokončená část tohoto kurzu věnovaná vytváření prostředků. Můžete pokračovat přidáním vrcholů do grafu, úpravou existujících vrcholů nebo změnou dotazů. Teď si projdeme metriky, které služba Azure Cosmos DB nabízí, a potom vyčistíme prostředky. 
 

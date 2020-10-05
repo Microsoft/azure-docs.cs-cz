@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.openlocfilehash: 77e4e2e1548beaa840f46953ef5bb4e94345416f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90946825"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Rychlý Start: použití PHP k připojení a dotazování dat v Azure Database for MySQL-flexibilním serveru
@@ -21,7 +21,7 @@ ms.locfileid: "90946825"
 
 Tento rychlý Start ukazuje, jak se připojit k Azure Database for MySQL flexibilnímu serveru pomocí aplikace [php](https://secure.php.net/manual/intro-whatis.php) . Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. V tomto článku se předpokládá, že máte zkušenosti s vývojem pomocí PHP a začínáte pracovat s Azure Database for MySQL flexibilním serverem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 
 - [Vytvoření Azure Database for MySQL flexibilního serveru pomocí Azure Portal](./quickstart-create-server-portal.md)
@@ -55,7 +55,7 @@ Nainstalujte PHP na vlastní server nebo vytvořte [webovou aplikaci](https://do
 
 Získejte informace o připojení potřebné pro připojení k Azure Database for MySQL flexibilnímu serveru. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje pro přihlášení.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo v Azure Portal vyberte **všechny prostředky**a potom vyhledejte server, který jste vytvořili (například **mydemoserver**).
 3. Vyberte název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.

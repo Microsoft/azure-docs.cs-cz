@@ -10,10 +10,10 @@ ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.openlocfilehash: 142309f75d3b7c93204bb9eaa8e5e0254f879c43
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91568915"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Rychlý Start: hromadné načítání pomocí synapse SQL
@@ -26,7 +26,7 @@ Teď můžete snadno hromadně načíst data pomocí fondů SQL, a to jednoduše
 
 - Soubor nebo složka z účtu služby Azure Storage připojeného k vašemu pracovnímu prostoru ![ kliknutím pravým tlačítkem myši na soubor nebo složku z účtu úložiště](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Tento průvodce vygeneruje příkaz COPY, který používá předávací službu Azure AD pro ověřování. Váš [uživatel Azure AD musí mít přístup](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad) k pracovnímu prostoru, který má aspoň roli Azure data BLOB úložiště pro účet adls Gen2.
 

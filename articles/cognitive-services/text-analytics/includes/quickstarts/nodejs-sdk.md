@@ -11,10 +11,10 @@ ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
 ms.openlocfilehash: 5d9c3c8e795b6651595a17d540aafa849ce81471
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91401040"
 ---
 <a name="HOLTop"></a>
@@ -35,7 +35,7 @@ ms.locfileid: "91401040"
 
 ---
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Aktuální verze [Node.js](https://nodejs.org/).

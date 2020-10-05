@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 09/04/2020
 ms.author: v-jawe
 ms.openlocfilehash: 621a0bbc6449c6deec9497d9f908edece8dba7f1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90982746"
 ---
 Pomocí klientské knihovny QnA Maker můžete přejít na:
@@ -30,7 +30,7 @@ Pomocí klientské knihovny QnA Maker můžete přejít na:
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Přejít](https://golang.org/)

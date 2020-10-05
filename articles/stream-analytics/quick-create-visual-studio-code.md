@@ -8,10 +8,10 @@ ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 5ba47522f483b6c9b2a03e99f3608c58e916e010
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947050"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code (Preview)
@@ -25,13 +25,13 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Azure Stream
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 * Nainstalujte [Visual Studio Code](https://code.visualstudio.com/).
 
 ## <a name="install-the-azure-stream-analytics-tools-extension"></a>Instalace rozšíření Azure Stream Analytics Tools
 
-1. Otevřete nástroj Visual Studio Code.
+1. Otevřete Visual Studio Code.
 
 2. V nabídce **rozšíření** v levém podokně vyhledejte **Stream Analytics** a v rozšíření **Azure Stream Analytics nástroje** vyberte **instalovat** .
 
@@ -55,7 +55,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Azure Stream
 
 Před definováním Stream Analytics úlohy byste měli připravit data, která jsou později nakonfigurovaná jako vstup úlohy. Pokud chcete připravit vstupní data, která úloha potřebuje, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **IoT Hub**.
 
@@ -68,7 +68,7 @@ Před definováním Stream Analytics úlohy byste měli připravit data, která 
    |Oblast  |  \<Select the region that is closest to your users\> | Vyberte zeměpisnou polohu, kde můžete hostovat centrum IoT. Použijte umístění, které je nejblíže vašim uživatelům. |
    |Název IoT Hub  | MyASAIoTHub  |   Vyberte název centra IoT.   |
 
-   ![Vytvoření centra IoT Hub](./media/quick-create-visual-studio-code/create-iot-hub.png)
+   ![Vytvoření centra IoT (neboli IoT Hubu)](./media/quick-create-visual-studio-code/create-iot-hub.png)
 
 4. Vyberte **Další: nastavit velikost a měřítko**.
 

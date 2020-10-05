@@ -9,10 +9,10 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: 6ad6e48642e7b7df4b93b37b5ef66381833d8bbc
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91574989"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play připojeným k vašemu řešení (Node.js)
@@ -21,7 +21,7 @@ ms.locfileid: "91574989"
 
 IoT technologie Plug and Play zjednodušuje IoT tím, že vám umožní pracovat s funkcemi zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí Node.js připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 

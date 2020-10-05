@@ -9,10 +9,10 @@ ms.date: 09/01/2020
 ms.topic: include
 ms.custom: include file, devx-track-js, cog-serv-seo-aug-2020
 ms.openlocfilehash: ca089ab973ceef876691a487bcb43c8582360d6a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91545156"
 ---
 K Node.js můžete použít klientské knihovny Language Understanding (LUIS):
@@ -170,7 +170,7 @@ Vytvořte metodu [Add](https://docs.microsoft.com/javascript/api/@azure/cognitiv
 ## <a name="create-intent-for-the-app"></a>Vytvořit záměr pro aplikaci
 Primárním objektem v modelu aplikace LUIS je záměr. Záměr se zarovnává se seskupením _záměrů_uživatelů utterance. Uživatel může požádat o dotaz nebo vytvořit příkaz, který hledá konkrétní _zamýšlenou_ odpověď z robota (nebo jiné klientské aplikace). Příklady záměrů je vyúčtování letu, dotazování na počasí v cílovém městě a dotazování na kontaktní informace pro zákaznické služby.
 
-Použijte metodu [model. add_intent](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/model?view=azure-node-latest#addintent-string--string--modelcreateobject--msrest-requestoptionsbase-) s názvem jedinečného záměru a potom předejte ID aplikace, ID verze a název nového záměru.
+Použijte metodu [model.add_intent](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/model?view=azure-node-latest#addintent-string--string--modelcreateobject--msrest-requestoptionsbase-) s názvem jedinečného záměru a potom předejte ID aplikace, ID verze a název nového záměru.
 
 `intentName`Hodnota je pevně zakódována `OrderPizzaIntent` jako součást proměnných v oddílu [Vytvoření proměnných pro aplikaci](#create-variables-for-the-app) .
 

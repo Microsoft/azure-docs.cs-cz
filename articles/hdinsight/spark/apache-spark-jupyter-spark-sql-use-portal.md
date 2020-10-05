@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2020
 ms.openlocfilehash: a04657463808a3df3634102c0295f4b79a7b4579
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91537850"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>Rychlý Start: Vytvoření clusteru Apache Spark ve službě Azure HDInsight pomocí Azure Portal
@@ -34,7 +34,7 @@ Pokud používáte více clusterů společně, budete chtít vytvořit virtuáln
 
 Pomocí Azure Portal vytvoříte cluster HDInsight, který jako úložiště clusteru používá objekty blob Azure Storage. Další informace o použití Data Lake Storage Gen2 najdete v tématu [Rychlý start: Nastavení clusterů ve službě HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. V horní nabídce vyberte **+ vytvořit prostředek**.
 
@@ -49,7 +49,7 @@ Pomocí Azure Portal vytvoříte cluster HDInsight, který jako úložiště clu
     |Předplatné  | V rozevíracím seznamu vyberte předplatné Azure, které se používá pro cluster. |
     |Skupina prostředků | V rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**.|
     |Název clusteru | Zadejte globálně jedinečný název.|
-    |Region (Oblast)   | V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří. |
+    |Oblast   | V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří. |
     |Typ clusteru| Vyberte vybrat typ clusteru a otevřete seznam. V seznamu vyberte možnost **Spark**.|
     |Verze clusteru|Po výběru typu clusteru bude toto pole automaticky vyplněno výchozí verzí.|
     |Uživatelské jméno přihlášení clusteru| Zadejte uživatelské jméno přihlášení clusteru.  Výchozí název je **admin**. Tento účet použijete k přihlášení do poznámkového bloku Jupyter později v rychlém startu. |

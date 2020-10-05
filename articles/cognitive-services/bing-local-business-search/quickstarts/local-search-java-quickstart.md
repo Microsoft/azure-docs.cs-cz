@@ -12,10 +12,10 @@ ms.date: 05/12/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.openlocfilehash: b35e8e11c93ad7f48dc24d8bd13fcd7dc706acb9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90970371"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání místních obchodních aplikací pomocí jazyka Java
@@ -24,7 +24,7 @@ V tomto rychlém startu se dozvíte, jak odesílat požadavky do rozhraní API B
 
 Tato ukázková aplikace získá data místních odpovědí z rozhraní API pro vyhledávací dotaz.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html).

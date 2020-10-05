@@ -10,17 +10,17 @@ ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
 ms.openlocfilehash: 20eaf6e6a9f0eee15e6ad6a5bd8f23bf8531545c
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91377063"
 ---
 Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledávání na webu Bingu do aplikace Node.js. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 
 Chcete se rovnou podívat na kód? Ukázky pro [klientské knihovny vyhledávání Bingu pro JavaScript](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples) jsou k dispozici na GitHubu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 
 * [Node.js 6](https://nodejs.org/en/download/) nebo novější

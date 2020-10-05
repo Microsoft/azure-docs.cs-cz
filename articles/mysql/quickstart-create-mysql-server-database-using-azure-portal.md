@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 7/15/2020
 ms.openlocfilehash: cdddd9a90911499421351adf0f41ef90f0e2f9a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90906564"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-in-the-azure-portal"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL v Azure Portal
@@ -39,7 +39,7 @@ Server Azure Database for MySQL vytvoříte pomocí tohoto postupu:
 3. Do formuláře podrobností o novém serveru zadejte následující informace:
     
 >[!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png" alt-text="Formulář vytvoření serveru":::
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png" alt-text="Možnost Azure Database for MySQL":::
 
 **Nastavení** | **Navrhovaná hodnota** | **Popis pole** 
 ---|---|---
@@ -67,7 +67,7 @@ Ve výchozím nastavení se v rámci vašeho serveru vytvoří následující da
 Ve výchozím nastavení je server, který jste vytvořili, chráněný pomocí brány firewall a není veřejně přístupný. Pokud chcete umožnit přístup k vaší IP adrese, přejděte k prostředku serveru v Azure Portal a vyberte **zabezpečení připojení** z nabídky na levé straně pro prostředek serveru. Nevíte, jak najít prostředek, najdete v tématu [Postup otevření prostředku](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources).
 
 >[!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="Zabezpečení připojení – Pravidla brány firewall":::
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="Možnost Azure Database for MySQL":::
    
 Teď vyberte **Přidat aktuální IP adresu klienta** a pak vyberte **Uložit**. Můžete přidat další IP adresy nebo zadat rozsah IP adres pro připojení k serveru z těchto IP adres. Další informace najdete v tématu [Správa pravidel brány firewall na serveru Azure Database for MySQL](./concepts-firewall-rules.md) .
 
@@ -83,7 +83,7 @@ Můžete zvolit [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) 
     >Pokud spouštíte Cloud Shell poprvé, zobrazí se výzva k vytvoření skupiny prostředků a účtu úložiště. Jedná se o jednorázový krok, který se automaticky připojí pro všechny relace. 
 
    >[!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png" alt-text="Zobrazení úplného zobrazení portálu Cloud Shell":::
+   > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png" alt-text="Možnost Azure Database for MySQL":::
 2. Spusťte tento příkaz na Azure Cloud Shell terminálu. Nahraďte hodnoty skutečným názvem serveru a přihlašovacím jménem uživatele správce. Uživatelské jméno správce vyžaduje ' @ \<servername> ', jak je znázorněno níže pro Azure Database for MySQL  
 
   ```azurecli-interactive
@@ -136,7 +136,7 @@ Můžete zvolit [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) 
 
 Pokud chcete odstranit server, můžete kliknout na tlačítko **Odstranit** na stránce **Přehled** vašeho serveru, jak je znázorněno níže:
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png" alt-text="Odstranění prostředků":::
+> :::image type="content" source="media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png" alt-text="Možnost Azure Database for MySQL":::
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]

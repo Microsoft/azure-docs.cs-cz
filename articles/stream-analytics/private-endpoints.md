@@ -9,17 +9,17 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
 ms.openlocfilehash: baf80e3d543bee455dd8dfa5bc09bc5bf43c3453
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90946832"
 ---
 # <a name="create-and-delete-private-endpoints-in-an-azure-stream-analytics-cluster"></a>Vytváření a odstraňování privátních koncových bodů v clusteru Azure Stream Analytics
 
-Úlohy Azure Stream Analytics běžící na clusteru můžete propojit s vstupními a výstupními prostředky, které jsou za bránou firewall nebo Azure Virtual Network (VNet). Nejdřív vytvoříte privátní koncový bod pro prostředek, jako je Azure Event hub nebo Azure SQL Database, ve vašem clusteru Stream Analytics. Pak schvalte připojení privátního koncového bodu ze svého vstupu nebo výstupu.
+Úlohy Azure Stream Analytics spuštěné v clusteru můžete propojit se vstupními a výstupními prostředky, které se nacházejí za bránou firewall nebo virtuální sítí Azure. Nejprve v clusteru Stream Analytics vytvoříte privátní koncový bod pro prostředek, jako je centrum událostí Azure nebo služba Azure SQL Database. Pak ve vstupním nebo výstupním prostředku schválíte připojení privátního koncového bodu.
 
-Jakmile připojení schválíte, všechny úlohy spuštěné v clusteru Stream Analytics mají přístup k prostředku prostřednictvím privátního koncového bodu. V tomto článku se dozvíte, jak vytvořit a odstranit soukromé koncové body v clusteru Stream Analytics.
+Po schválení připojení budou mít přes privátní koncový bod přístup k prostředku všechny úlohy spuštěné v clusteru Stream Analytics. V tomto článku se dozvíte, jak vytvořit a odstranit privátní koncové body v clusteru Stream Analytics.
 
 ## <a name="create-private-endpoint-in-stream-analytics-cluster"></a>Vytvoření privátního koncového bodu v clusteru Stream Analytics
 

@@ -10,15 +10,15 @@ ms.date: 03/19/2020
 ms.author: aahi
 ms.custom: devx-track-js
 ms.openlocfilehash: fa1ecb24649d9355e6104bff8add5430fdd64c3c
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91377449"
 ---
 V tomto rychlém startu můžete začít hledat zprávy pomocí klientské knihovny Vvyhledávání videí Bingu pro JavaScript. I když Vvyhledávání videí Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js). Obsahuje další poznámky a funkce.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nejnovější verze [Node.js](https://nodejs.org/en/download/)
 * [Sada Vvyhledávání videí Bingu SDK pro JavaScript](https://www.npmjs.com/package/@azure/cognitiveservices-videosearch)

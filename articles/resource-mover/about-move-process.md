@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 09/09/2020
 ms.author: raynew
 ms.openlocfilehash: 4d520f51717aa11dba55697d63852b17e0ba9cf0
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90604491"
 ---
 # <a name="about-the-move-process"></a>O procesu přesunutí
@@ -66,7 +66,7 @@ V průběhu procesu přesunu se může zobrazit výzva k ověření závislostí
 
 ### <a name="remove-resources"></a>Odebrat prostředky
 
-Pokud prostředek přesunout nechcete, můžete ho odebrat z kolekce přesunutí. Obecně platí, že prostředek je pak odstraněn z kolekce spolu s případnými přidruženými akcemi nebo objekty, jako jsou například replikace nebo uložené šablony. Přesně co se stane, když odeberete prostředek, závisí na typu prostředku a stavu prostředku při jeho odstranění. [Přečtěte si další informace](remove-move-resources.md).
+Pokud prostředek přesunout nechcete, můžete ho odebrat z kolekce přesunutí. Obecně platí, že prostředek je pak odstraněn z kolekce spolu s případnými přidruženými akcemi nebo objekty, jako jsou například replikace nebo uložené šablony. Přesně co se stane, když odeberete prostředek, závisí na typu prostředku a stavu prostředku při jeho odstranění. [Další informace](remove-move-resources.md).
 
 ## <a name="move-impact"></a>Přesunout dopad
 

@@ -12,17 +12,17 @@ ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: e55968f94df820f4d1e2708c0b52283aed3cc903
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87835183"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-with-go"></a>Rychlý Start: vygenerování miniatury pomocí Počítačové zpracování obrazu REST API s příkazem přejít
 
 V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí REST API Počítačové zpracování obrazu. Určíte výšku a šířku, což se může lišit v poměru stran od vstupní bitové kopie. Počítačové zpracování obrazu používá inteligentní ořezávání k inteligentně identifikaci oblasti zájmu a generování souřadnic oříznutí na základě této oblasti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Přejít](https://golang.org/dl/)

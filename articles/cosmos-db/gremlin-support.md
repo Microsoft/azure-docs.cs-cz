@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 04/23/2020
 ms.author: jasonh
 ms.openlocfilehash: 2629cfc40a9f3c0745df78d9a22883be8476beb9
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409740"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Podpora grafu Gremlin ve službě Azure Cosmos DB
@@ -23,7 +23,7 @@ V tomto článku poskytujeme rychlý názor na Gremlin a výčet funkcí Gremlin
 
 Následující tabulka ukazuje oblíbené ovladače Gremlin, které můžete použít vůči Azure Cosmos DB:
 
-| Stáhnout | Zdroj | Začínáme | Podporovaná verze konektoru |
+| Stáhnout | Zdroj | začínáme | Podporovaná verze konektoru |
 | --- | --- | --- | --- |
 | [.NET](https://tinkerpop.apache.org/docs/3.4.6/reference/#gremlin-DotNet) | [Gremlin.NET na GitHubu](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Vytvoření grafu pomocí jazyka .NET](create-graph-dotnet.md) | 3.4.6 |
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Vytvoření grafu pomocí jazyka Java](create-graph-java.md) | 3.2.0 nebo novější |

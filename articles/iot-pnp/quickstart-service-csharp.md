@@ -9,10 +9,10 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 1a8155c9c0466184a09bc4ff224c9bdf42c173b9
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91612553"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play, které je připojené k vašemu řešení (C#)
@@ -48,7 +48,7 @@ V tomto rychlém startu použijete ukázkové termostatické zařízení, které
 
 1. V aplikaci Visual Studio přejděte na **Vlastnosti projektu > termostatu > ladit**. Pak do projektu přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
@@ -74,7 +74,7 @@ V tomto rychlém startu použijete ukázkové řešení IoT v jazyce C# k intera
 
 1. V aplikaci Visual Studio přejděte na **Vlastnosti projektu > termostatu > ladit**. Pak do projektu přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | ---- | ----- |
     | DEVICE_ID | Moje zařízení – PnP-Device |
     | IOTHUB_CONNECTION_STRING | Hodnota, na kterou jste si poznamenali, když jste [nastavili prostředí](set-up-environment.md) |

@@ -8,17 +8,17 @@ ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
 ms.openlocfilehash: 5945f50ada9af6a8d117d3d773ebeae48d5f4085
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90903778"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Co je Azure Database for PostgreSQL?
 
 Azure Database for PostgreSQL je služba relačních databází v cloudu Microsoftu založená na [PostgreSQL Community Edition](https://www.postgresql.org/) (k dispozici v rámci licenčního stroje GPLv2). Azure Database for PostgreSQL nabízí:
 
-- Integrovaná vysoká dostupnost.
+- Integrovaná vysoká dostupnost
 - Ochrana dat pomocí automatických záloh a obnovení k bodu v čase po dobu až 35 dnů.
 - Automatizovaná údržba základního hardwaru, operačního systému a databázového stroje, aby byla služba zabezpečená a aktuálnost.
 - Předvídatelný výkon s využitím celkových průběžných plateb.
@@ -43,7 +43,7 @@ Azure Database for PostgreSQL, kterou používá PostgreSQL Community Edition, j
 
 Azure Database for PostgreSQL jeden server je plně spravovaná databázová služba s minimálními požadavky pro přizpůsobení databáze. Platforma s jednou serverem je navržená tak, aby zpracovávala většinu funkcí správy databáze, jako jsou třeba opravy, zálohování, vysoká dostupnost, zabezpečení s minimální konfigurací a řízením uživatele. Architektura je optimalizovaná pro integrovanou vysokou dostupnost s 99,99% dostupností v jedné zóně dostupnosti. Podporuje komunitní verze PostgreSQL 9,5, 9, 6, 10 a 11. Tato služba je všeobecně dostupná pro celou řadu [oblastí Azure](https://azure.microsoft.com/global-infrastructure/services/).
 
-Možnost nasazení na jeden server nabízí tři cenové úrovně: základní, Pro obecné účely a paměťově optimalizované. Každá úroveň nabízí různé schopnosti prostředků pro podporu vašich úloh databáze. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [Cenové úrovně](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers).
+Nasazení typu Jeden server má tři cenové úrovně: Basic, Pro obecné účely a Optimalizováno pro paměť. Každá úroveň nabízí různé schopnosti prostředků pro podporu vašich úloh databáze. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [Cenové úrovně](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers).
 
 Pro cloudové nativní aplikace navržené pro zpracování automatizovaných oprav bez nutnosti podrobného řízení plánu oprav a vlastních nastavení konfigurace PostgreSQL jsou samostatné servery vhodné.
 
@@ -64,12 +64,12 @@ Podrobný přehled režimu nasazení flexibilního serveru najdete v tématu [fl
 
 ### <a name="azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL – Citus (škálování)
 
-Možnost Citus () horizontálně škáluje dotazy napříč více počítači pomocí horizontálního dělení. Jeho dotazovací modul parallelizes příchozí dotazy SQL napříč těmito servery, aby bylo rychlejší odezvy na velké datové sady. Obsluhuje aplikace, které vyžadují větší rozsah a výkon, obvykle úlohy, které se blíží--100 GB dat.
+Možnost Hyperscale (Citus) horizontálně škáluje dotazy napříč více počítači pomocí shardování. Její dotazovací modul paralelizuje příchozí dotazy SQL na více serverech, aby byla u velkých datových sad zajištěná rychlejší odezva. Slouží aplikacím, které vyžadují větší rozsah a výkon, tedy obecně úlohám s přibližně 100 GB dat.
 
-Možnost nasazení Citus () nabízí:
+Možnost nasazení Hyperscale (Citus) podporuje:
 
-- Horizontální škálování napříč několika počítači pomocí horizontálního dělení
-- Dotazování paralelního zpracování na těchto serverech pro rychlejší odezvy na velké datové sady
+- Horizontální škálování do více počítačů pomocí shardování
+- Paralelizaci dotazů na více serverech za účelem rychlejší odezvy u velkých datových sad
 - Vynikající podpora aplikací s více klienty, provozní analýzy v reálném čase a úlohy s vysokou transakční propustností
   
 Aplikace vytvořené pro PostgreSQL můžou spouštět distribuované dotazy na úrovni Citus (s standardními [knihovnami připojení](https://docs.microsoft.com/azure/postgresql/concepts-connection-libraries) a minimálními změnami).

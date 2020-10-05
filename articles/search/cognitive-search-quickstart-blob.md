@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.openlocfilehash: be45292552a7ac62c7131c637b044edc477328e2
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91396786"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání rozpoznávání dovednosti v Azure Portal
@@ -21,7 +21,7 @@ Dovednosti je funkce založená na AI, která extrahuje informace a strukturu z 
 
 V tomto rychlém startu spojíte služby a data v cloudu Azure, abyste mohli vytvořit dovednosti. Jakmile bude vše na svém místě, spustíte průvodce **importem dat** v Azure Portal, aby se všechno načetlo dohromady. Konečným výsledkem je index s možností vyhledávání naplněný daty vytvořeným zpracováním AI, na kterých se můžete dotazovat na portálu ([Průzkumník hledání](search-explorer.md)).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte mít následující:
 
@@ -60,13 +60,13 @@ Nyní jste připraveni na přesun Průvodce importem dat.
 
 1. [Vyhledejte vyhledávací službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) a na stránce Přehled klikněte na tlačítko **importovat data** na panelu příkazů a nastavte obohacení vnímání ve čtyřech krocích.
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="Příkaz pro import dat" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="Zdrojové soubory ve službě Azure Blob Storage" border="false":::
 
 ### <a name="step-1---create-a-data-source"></a>Krok 1 – Vytvoření zdroje dat
 
 1. V části **připojit k vašim datům**vyberte **úložiště objektů BLOB v Azure**, vyberte účet úložiště a kontejner, který jste vytvořili. Zadejte název pro zdroj dat a u ostatních položek nechejte výchozí hodnoty. 
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/blob-datasource.png" alt-text="Konfigurace služby Azure Blob" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/blob-datasource.png" alt-text="Zdrojové soubory ve službě Azure Blob Storage" border="false":::
 
     Pokračujte na další stránku.
 
@@ -76,7 +76,7 @@ Dále nakonfigurujte rozšíření AI tak, aby se vyvolalo rozpoznávání OCR, 
 
 1. V tomto rychlém startu používáme **bezplatný** Cognitive Services prostředek. Ukázková data se skládají ze 14 souborů, takže bezplatné plnění 20 transakcí v Cognitive Services je pro tento rychlý Start dostatečné. 
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/cog-search-attach.png" alt-text="Připojit Cognitive Services připojit základní službu" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/cog-search-attach.png" alt-text="Zdrojové soubory ve službě Azure Blob Storage" border="false":::
 
 1. Rozbalte položku **Přidat rozšíření** a proveďte čtyři výběry. 
 
@@ -86,7 +86,7 @@ Dále nakonfigurujte rozšíření AI tak, aby se vyvolalo rozpoznávání OCR, 
 
    Vyberte možnost rozpoznávání entit (osoby, organizace, umístění) a dovednosti při analýze obrázků.
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/skillset.png" alt-text="Připojit Cognitive Services vybrat služby pro dovednosti" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/skillset.png" alt-text="Zdrojové soubory ve službě Azure Blob Storage" border="false":::
 
    Pokračujte na další stránku.
 
@@ -102,7 +102,7 @@ Pro tento rychlý start průvodce odvedl dobrou práci při nastavování rozumn
 
 + Výchozí atributy lze **získat a** **prohledávatelné**. **Prohledávatelné** umožňuje fulltextové hledání pole. Možnost získatelné **znamená,** že hodnoty polí lze vracet ve výsledcích. Průvodce předpokládá, že chcete tato pole získat a prohledávat, protože jste je vytvořili přes dovednosti.
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/index-fields.png" alt-text="Pole indexu" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/index-fields.png" alt-text="Zdrojové soubory ve službě Azure Blob Storage" border="false":::
 
 Všimněte si lomítka a otazníku **u atributu k** disnáročnému v `content` poli. Pro dokumenty objektů BLOB s velkým textem `content` obsahuje pole hromadně soubor, který je potenciálně spuštěný v tisících řádků. Toto pole je nepraktický ve výsledcích hledání a mělo by se pro tuto ukázku vyloučit. 
 
@@ -118,7 +118,7 @@ Indexer je prostředek vysoké úrovně, který řídí proces indexování. Ur�
 
 1. Na stránce **indexer** můžete přijmout výchozí název a kliknout na možnost **jednou** naplánovat, aby se spustila hned. 
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-def.png" alt-text="Definice indexeru" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-def.png" alt-text="Zdrojové soubory ve službě Azure Blob Storage" border="false":::
 
 1. Kliknutím na **Odeslat** vytvořte a souběžně spusťte indexer.
 
@@ -126,7 +126,7 @@ Indexer je prostředek vysoké úrovně, který řídí proces indexování. Ur�
 
 Pro rozpoznávání dovedností se indexování trvá déle než typické indexování založené na textu, zejména optické rozpoznávání OCR a obrazové analýzy. Pokud chcete sledovat průběh, přejděte na stránku Přehled a klikněte na **indexery** uprostřed stránky.
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-notification.png" alt-text="Oznámení služby Azure Kognitivní hledání" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-notification.png" alt-text="Zdrojové soubory ve službě Azure Blob Storage" border="false":::
 
 Upozornění jsou normální vzhledem k široké škále typů obsahu. Některé typy obsahu nejsou platné pro určité dovednosti a na nižších úrovních je běžné, že mají [omezení indexerů](search-limits-quotas-capacity.md#indexer-limits). Například oznámení o zkracování 32 000 znaků jsou omezením indexeru na úrovni Free. Pokud jste tuto ukázku spustili na vyšší úrovni, mnoho upozornění na zkracování by se nezobrazovalo.
 
@@ -134,11 +134,11 @@ Chcete-li kontrolovat upozornění nebo chyby, otevřete stránku historie spou�
 
 Na této stránce klikněte znovu na stav upozornění, abyste zobrazili seznam upozornění, která jsou podobná uvedenému. 
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-warnings.png" alt-text="Seznam upozornění indexeru" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-warnings.png" alt-text="Zdrojové soubory ve službě Azure Blob Storage" border="false":::
 
 Podrobnosti se zobrazí po kliknutí na konkrétní stavový řádek. Toto upozornění znamená, že sloučení bylo zastaveno po dosažení maximální prahové hodnoty (Tento konkrétní PDF je velký).
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/warning-detail.png" alt-text="Podrobnosti upozornění" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/warning-detail.png" alt-text="Zdrojové soubory ve službě Azure Blob Storage" border="false":::
 
 ## <a name="query-in-search-explorer"></a>Dotaz v Průzkumníku služby Hledání
 
@@ -157,7 +157,7 @@ Výsledky jsou vraceny jako JSON, které mohou být podrobné a těžko čiteln�
 
 V řetězcích dotazů se rozlišují malá a velká písmena, takže pokud obdržíte zprávu "neznámé pole", zkontrolujte **pole** nebo **definici indexu (JSON)** a ověřte název a velikost písmen. 
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer.png" alt-text="Příkaz Průzkumníka služby Hledání" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer.png" alt-text="Zdrojové soubory ve službě Azure Blob Storage" border="false":::
 
 ## <a name="takeaways"></a>Shrnutí
 
@@ -173,7 +173,7 @@ Nakonec jste se dozvěděli, že by bylo možné ověřit obsah pomocí dotazu n
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

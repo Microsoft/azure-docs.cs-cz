@@ -3,18 +3,18 @@ title: Vytvoření specifikace šablony s propojenými šablonami
 description: Naučte se vytvořit specifikaci šablony s propojenými šablonami.
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: df3403fea47f31481f4b3c6d1292749d69f2f584
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: adcce8194f380b90eb9a29f4da25763e112b9f12
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369174"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728535"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Kurz: Vytvoření specifikace šablony s propojenými šablonami (Preview)
 
-Naučte se vytvořit [specifikaci šablony](template-specs.md) s [propojenou šablonou](linked-templates.md#linked-template). Pomocí specifikací šablon můžete sdílet šablony ARM s ostatními uživateli ve vaší organizaci. V tomto článku se dozvíte, jak vytvořit šablonu specifikace pro zabalení hlavní šablony a jejích propojených šablon pomocí nové `relativePath` vlastnosti [prostředku nasazení](/azure/templates/microsoft.resources/deployments).
+Naučte se vytvořit [specifikaci šablony](template-specs.md) s [propojenou šablonou](linked-templates.md#linked-template). Pomocí specifikací šablon můžete sdílet šablony ARM s ostatními uživateli ve vaší organizaci. V tomto článku se dozvíte, jak vytvořit specifikaci šablony pro zabalení hlavní šablony a jejích propojených šablon pomocí `relativePath` vlastnosti [prostředku nasazení](/azure/templates/microsoft.resources/deployments).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

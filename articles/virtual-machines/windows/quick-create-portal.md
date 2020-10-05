@@ -9,17 +9,17 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 46119b9f7cdac47920d4bba8e00c3fc56b0edc78
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87494515"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows na webu Azure Portal
 
 Virtuální počítače Azure je možné vytvářet na webu Azure Portal. Tato metoda poskytuje uživatelské rozhraní v prohlížeči, pomocí kterého můžete vytvářet virtuální počítače a jejich související prostředky. V tomto rychlém startu se dozvíte, jak použít Azure Portal k nasazení virtuálního počítače v Azure se systémem Windows Server 2019. Pak se k virtuálnímu počítači připojíte přes protokol RDP a nainstalujete na něj webový server služby IIS, abyste virtuální počítač viděli v akci.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -38,7 +38,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
     ![Snímek obrazovky s oddílem podrobností instance, kde můžete zadat název virtuálního počítače a vybrat jeho oblast, obrázek a velikost](./media/quick-create-portal/instance-details.png)
 
-1. V **Účtu správce** zadejte uživatelské jméno, například *azureuser*, a heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](faq.md#what-are-the-password-requirements-when-creating-a-vm).
+1. V **Účtu správce** zadejte uživatelské jméno, například *azureuser*, a heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
     ![Snímek obrazovky s oddílem účtu správce, kde můžete zadat uživatelské jméno a heslo správce](./media/quick-create-portal/administrator-account.png)
 

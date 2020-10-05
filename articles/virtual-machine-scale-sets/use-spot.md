@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 61f82cf907ef861307a907f6cd2b9b13f043b9a0
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 4c5386e2fad0ebdd30ca8f9a8f4933e8adaf5d6b
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91709039"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729011"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Virtuální počítače Azure na místě pro Virtual Machine Scale Sets 
 
@@ -119,7 +119,7 @@ Přidejte `priority` vlastnosti a `evictionPolicy` `billingProfile` do `"virtual
 
 Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy` parametr na `Delete` .
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Otázka:** Po vytvoření je stejná jako instance stejné jako standardní instance?
 
@@ -163,7 +163,7 @@ Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy`
 
 **Otázka:**  Funguje automatické škálování podle zásad vyřazení (navrácení a odstranění)?
 
-**A:** Doporučuje se nastavit zásadu vyřazení, která se má odstranit při použití automatického škálování. Důvodem je to, že nepřidělené instance se počítají na základě počtu kapacit v sadě škálování. Při použití automatického škálování se pravděpodobně vám v důsledku navrácených instancí dokončí počet cílových instancí rychleji. I vaše operace škálování můžou být ovlivněné vyřazením na místě. Například instance VMSS mohou klesnout pod nastavený minimální počet z důvodu několika přímých vyřazení během operace škálování. 
+**A:** Ano, ale doporučujeme, abyste při použití automatického škálování nastavili zásadu vyřazení, která se má odstranit. Důvodem je to, že nepřidělené instance se počítají na základě počtu kapacit v sadě škálování. Při použití automatického škálování se pravděpodobně vám v důsledku navrácených instancí dokončí počet cílových instancí rychleji. I vaše operace škálování můžou být ovlivněné vyřazením na místě. Například instance VMSS mohou klesnout pod nastavený minimální počet z důvodu několika přímých vyřazení během operace škálování. 
 
 **Otázka:** Jaké kanály podporují přímé virtuální počítače?
 
@@ -173,11 +173,11 @@ Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy`
 
 | Kanály Azure               | Dostupnost virtuálních počítačů Azure       |
 |------------------------------|-----------------------------------|
-| Smlouva Enterprise         | Yes                               |
-| Pay As You Go                | Yes                               |
+| Smlouva Enterprise         | Ano                               |
+| Pay As You Go                | Ano                               |
 | Poskytovatel cloudových služeb (CSP) | [Obraťte se na svého partnera.](/partner-center/azure-plan-get-started) |
 | Výhody                     | Není k dispozici                     |
-| Financovan                    | Yes                               |
+| Financovan                    | Ano                               |
 | Bezplatná zkušební verze                   | Není k dispozici                     |
 
 

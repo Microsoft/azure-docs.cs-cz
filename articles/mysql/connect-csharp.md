@@ -9,17 +9,17 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 9/29/2020
 ms.openlocfilehash: 470555fd258fbeb8f429aebe0ca8dedb58aeff00
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91568127"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití rozhraní .NET (C#) k připojení a dotazování dat v Azure Database for MySQL
 
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL s použitím aplikace v jazyce C#. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí jazyka C# a teprve začínáte pracovat se službou Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)

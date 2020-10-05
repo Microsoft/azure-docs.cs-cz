@@ -8,18 +8,18 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7228368645023ffc7debbc84adb8e3b7c27b1bbb
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905468"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728433"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Výstrahy zabezpečení ve službě Azure Security Center
 
-V Azure Security Center existuje celá řada výstrah pro mnoho různých typů prostředků. Security Center generuje výstrahy pro prostředky nasazené v Azure a také pro prostředky nasazené v místních i hybridních cloudových prostředích.
+V Security Center existuje celá řada výstrah pro mnoho různých typů prostředků. Security Center generuje výstrahy pro prostředky nasazené v Azure a také pro prostředky nasazené v místních i hybridních cloudových prostředích.
 
 Výstrahy zabezpečení se spouštějí pomocí pokročilých detekcí a jsou dostupné jenom v Azure Defenderu. K dispozici je bezplatná zkušební verze. Můžete upgradovat ze stránky **Nastavení cenové &** . Přečtěte si další informace o [cenách Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -85,10 +85,18 @@ Azure Security Center výhody z oblasti výzkumu zabezpečení a týmů pro dato
 
 Toto kombinované úsilí je ukončené novými a vylepšenými detekcemi, které vám umožní využít okamžitě – neexistuje žádná akce, kterou je potřeba provést.
 
+## <a name="export-alerts"></a>Export výstrah
+
+Máte řadu možností, jak zobrazit výstrahy mimo Security Center, včetně těchto:
+
+- **Stažení sestavy CSV** na řídicím panelu výstrahy poskytuje jednorázový export do sdíleného svazku clusteru.
+- **Průběžný export** z cenové & nastavení umožňuje nakonfigurovat streamy výstrah zabezpečení a doporučení pro Log Analytics pracovních prostorů a Event Hubs. [Další informace o průběžném exportu](continuous-export.md)
+- **Azure Sentinel Connector** streamuje výstrahy Azure Defenderu z Azure Security Center do Azure Sentinel. [Další informace o připojení Azure Security Center s Sentinel](../sentinel/connect-azure-security-center.md)
+
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o různých typech výstrah, které jsou k dispozici v Security Center. Další informace naleznete v tématu:
+V tomto článku jste se dozvěděli o různých typech výstrah, které jsou k dispozici v Security Center. Další informace naleznete v tématech:
 
 - **Výstrahy zabezpečení v protokolu aktivit Azure** – navíc k dispozici v Azure Portal nebo programově se výstrahy a incidenty zabezpečení auditují jako události v [protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view). Další informace o schématu událostí najdete v tématu [výstrahy zabezpečení v protokolu aktivit Azure](https://go.microsoft.com/fwlink/?linkid=2114113) .
 

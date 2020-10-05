@@ -14,10 +14,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/28/2020
 ms.openlocfilehash: 60977b9388af3a93d0ebbbc6aad50628b79e0e44
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91598260"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití SSMS pro připojení k a dotazování Azure SQL Database nebo spravované instance Azure SQL
@@ -79,7 +79,7 @@ V SSMS se připojte k vašemu serveru.
    | ------------ | ------------------ | ----------- |
    | **Typ serveru** | Databázový stroj | Požadovaná hodnota. |
    | **Název serveru** | Plně kvalifikovaný název serveru | Něco jako: **servername.Database.Windows.NET**. |
-   | **Ověřování** | Ověřování SQL Serveru | V tomto kurzu se používá ověřování SQL. |
+   | **Authentication** | Ověřování SQL Serveru | V tomto kurzu se používá ověřování SQL. |
    | **Přihlásit** | ID uživatele účtu správce serveru | ID uživatele z účtu správce serveru, který se použil k vytvoření serveru. |
    | **Heslo** | Heslo účtu správce serveru | Heslo z účtu správce serveru, který se použil k vytvoření serveru. |
    ||||

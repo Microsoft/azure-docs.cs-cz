@@ -9,10 +9,10 @@ ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 12fb644430d4bfd6444c6bbf09d37b4662ca6fd1
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87810101"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace Xamarin iOS pomocí prostorových kotev Azure
@@ -28,7 +28,7 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 - Mac s macOS vysokým Sierra (10,13) nebo novějším:

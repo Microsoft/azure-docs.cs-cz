@@ -16,10 +16,10 @@ ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1b9d7ad93c287aa9313658ec6b8d5df9f2219f27
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90968857"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí volání REST API
@@ -33,7 +33,7 @@ V tomto článku se pomocí objektu KUDRLINKOU pro volání Azure Resource Manag
 - Povolení a zakázání spravované identity přiřazené systémem na virtuálním počítači Azure
 - Přidání a odebrání spravované identity přiřazené uživatelem na virtuálním počítači Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.

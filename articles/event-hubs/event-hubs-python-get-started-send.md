@@ -3,12 +3,12 @@ title: Posílání a přijímání událostí z Azure Event Hubs pomocí Pythonu
 description: Tento článek popisuje návod pro vytvoření aplikace v Pythonu, která odesílá a přijímá události z Azure Event Hubs pomocí nejnovějšího balíčku Azure-eventhub verze 5.
 ms.topic: quickstart
 ms.date: 02/11/2020
-ms.openlocfilehash: b6a30ba0cef8c460a2a3035b3ab40fd8173d7b2e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bdcd85786afdf307fdc7043db7ed7651d41820a4
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "88933898"
+ms.locfileid: "91729079"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Posílání událostí a přijímání událostí z Center událostí pomocí Pythonu (Azure – eventhub verze 5)
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku **Azure-eventhub verze 5** Python.
@@ -76,8 +76,11 @@ V této části vytvoříte skript v jazyce Python, který bude odesílat událo
 ## <a name="receive-events"></a>Příjem událostí
 V tomto rychlém startu se jako úložiště kontrolního bodu používá úložiště objektů blob Azure. Úložiště kontrolního bodu se používá k trvalému kontrolnímu bodu (to znamená poslední pozice pro čtení).  
 
-> [!NOTE]
-> Pokud používáte centrum Azure Stack, může tato platforma podporovat jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure. Pokud například používáte [v Azure Stack centra verze 2002](/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě, kromě kroků v této části, budete také muset přidat kód pro cílení na rozhraní API služby úložiště verze 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v článku [synchronní](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py) a [asynchronní](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py) ukázky na GitHubu. Další informace o verzích služby Azure Storage podporovaných v centru Azure Stack najdete v tématu [úložiště centra pro Azure Stack: rozdíly a požadavky](/azure-stack/user/azure-stack-acs-differences).
+
+> [!WARNING]
+> Pokud spustíte tento kód v Azure Stackovém centru, dojde k chybám za běhu, pokud necílíte na konkrétní verzi rozhraní API úložiště. Důvodem je, že sada Event Hubs SDK používá nejnovější dostupné rozhraní API Azure Storage dostupné v Azure, které nemusí být k dispozici na vaší platformě služby Azure Stack hub. Centrum Azure Stack může podporovat jinou verzi sady SDK pro úložiště objektů blob, než jsou ta, která jsou běžně dostupná v Azure. Pokud jako úložiště kontrolního bodu používáte Azure blogu Storage, podívejte se na [podporovanou verzi rozhraní API Azure Storage pro sestavení centra Azure Stack](/azure-stack/user/azure-stack-acs-differences?#api-version) a cílení na verzi v kódu. 
+>
+> Pokud například používáte v Azure Stack centra verze 2005, nejvyšší dostupná verze služby úložiště je verze 2019-02-02. Ve výchozím nastavení používá Klientská knihovna Event Hubs SDK nejvyšší dostupnou verzi v Azure (2019-07-07 v době vydání sady SDK). V takovém případě, kromě kroků v této části, budete také muset přidat kód pro cílení na rozhraní API služby úložiště verze 2019-02-02. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v článku [synchronní](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py) a [asynchronní](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py) ukázky na GitHubu. 
 
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Vytvoření účtu služby Azure Storage a kontejneru objektů BLOB

@@ -4,10 +4,10 @@ description: Pochopte, jak služba Azure Modrotiskys umožňuje vytvářet, defi
 ms.date: 09/30/2020
 ms.topic: overview
 ms.openlocfilehash: f2e3c23c9cb83d2cb58b1e8f69a2a470a6f36f6d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91614253"
 ---
 # <a name="what-is-azure-blueprints"></a>Co je Azure Blueprints?
@@ -126,10 +126,10 @@ Pro určitá pole existují následující omezení:
 
 |Objekt|Pole|Povolené znaky|Max. Délka|
 |-|-|-|-|
-|Podrobného plánu|Název|písmena, číslice, spojovníky a tečky|48|
+|Podrobného plánu|Name|písmena, číslice, spojovníky a tečky|48|
 |Podrobného plánu|Verze|písmena, číslice, spojovníky a tečky|20|
-|Přiřazení podrobného plánu|Název|písmena, číslice, spojovníky a tečky|90|
-|Artefakt podrobného plánu|Název|písmena, číslice, spojovníky a tečky|48|
+|Přiřazení podrobného plánu|Name|písmena, číslice, spojovníky a tečky|90|
+|Artefakt podrobného plánu|Name|písmena, číslice, spojovníky a tečky|48|
 
 ## <a name="video-overview"></a>Přehled videí
 

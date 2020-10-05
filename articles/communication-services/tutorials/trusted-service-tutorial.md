@@ -10,13 +10,13 @@ ms.date: 07/28/2020
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: cffe2ef77f2b832c55ef17823163cd6580f31504
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90946848"
 ---
-# <a name="build-a-trusted-authentication-service-using-azure-functions"></a>Vytvoření důvěryhodné služby ověřování pomocí Azure Functions
+# <a name="build-a-trusted-authentication-service-using-azure-functions"></a>Vytvoření důvěryhodné ověřovací služby s využitím Azure Functions
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
@@ -29,7 +29,7 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přidání hlasového volání do aplikace](../quickstarts/voice-video-calling/getting-started-with-calling.md)
+> [Přidání hlasových hovorů do aplikace](../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 Můžete také chtít:
 

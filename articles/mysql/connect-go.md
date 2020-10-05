@@ -9,17 +9,17 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: a9fc43c2b9b95022f9036fc5410c314c1546d1ea
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90882532"
 ---
 # <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití jazyka přejít k připojení a dotazování dat v Azure Database for MySQL
 
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL z platforem Windows, Ubuntu Linux a Apple macOS pomocí kódu napsaného v jazyce [Go](https://golang.org/). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí jazyka Go a teprve začínáte pracovat se službou Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)

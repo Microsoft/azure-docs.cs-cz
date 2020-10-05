@@ -16,10 +16,10 @@ ms.date: 09/26/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d193637122cb388ea2c5012638526719d245f524
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90968979"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Konfigurace spravovaných identit pro prostředky Azure ve službě Virtual Machine Scale Sets pomocí PowerShellu
@@ -34,7 +34,7 @@ V tomto článku se naučíte, jak provádět spravované identity prostředků 
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi přiřazenou identitou systému a uživatelem spravované identity](overview.md#managed-identity-types)**.
 

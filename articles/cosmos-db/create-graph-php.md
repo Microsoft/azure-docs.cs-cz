@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: jasonh
 ms.openlocfilehash: e8848ee0a1fe5755316b59432c465b3836a0bab1
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409353"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Rychlý Start: vytvoření databáze grafů v Azure Cosmos DB pomocí PHP a Azure Portal
@@ -30,7 +30,7 @@ Tento rychlý start ukazuje, jak pomocí jazyka PHP a rozhraní [Gremlin API](gr
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a dotazovat databáze dokumentů, párů klíč-hodnota a grafů, které tak můžou využívat výhody možnosti globální distribuce a horizontálního škálování v jádru služby Azure Cosmos DB.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternativně můžete [vyzkoušet službu Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků.
 
@@ -193,15 +193,15 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
 1. Klikněte na **Průzkumník dat**, rozbalte **sample-graph**, klikněte na **Graf** a potom klikněte na **Použít filtr**. 
 
-   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png" alt-text="Vytváření nových dokumentů v Průzkumníku dat na webu Azure Portal":::
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 2. V seznamu **Výsledky** si všimněte nových uživatelů přidaných do grafu. Vyberte možnost **Robert** a Všimněte si, že jsou připojeni k dotazování. Vrcholy můžete přesouvat přetahováním, přibližovat a oddalovat můžete pomocí kolečka myši a zvětšit plochu grafu můžete pomocí obousměrné šipky. 
 
-   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png" alt-text="Nové vrcholy v grafu v Průzkumníku dat na webu Azure Portal":::
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 3. Teď přidáme několik nových uživatelů. Klikněte na tlačítko **Nový vrchol** a přidejte do grafu data.
 
-   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Vytváření nových dokumentů v Průzkumníku dat na webu Azure Portal":::
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 4. Zadejte popisek *person* (osoba).
 
@@ -238,15 +238,15 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
 12. Teď můžete propojit uživatele rakesh a ashley. Ujistěte se, že v seznamu **Výsledky** je vybraný uživatel **ashley**, a potom klikněte na tlačítko Upravit vedle položky **Cíle** vpravo dole. Možná budete muset rozšířit okno, aby se zobrazila oblast **Vlastnosti**.
 
-    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Změna cíle vrcholu v grafu":::
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 13. Do pole **Cíl** zadejte *rakesh*, do pole **Popisek hrany** zadejte *knows* (zná) a potom klikněte na symbol zaškrtnutí.
 
-    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png" alt-text="Přidání propojení mezi uživateli ashley a rakesh v Průzkumníku dat":::
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 14. Teď vyberte ze seznamu výsledků uživatele **rakesh** a zobrazí se propojení mezi uživateli ashley a rakesh. 
 
-    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer.png" alt-text="Dva propojené vrcholy v Průzkumníku dat":::
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
     Tím je dokončená část tohoto rychlého startu, která se věnuje vytváření prostředků. Můžete pokračovat přidáním vrcholů do grafu, úpravou existujících vrcholů nebo změnou dotazů. Teď si projdeme metriky, které služba Azure Cosmos DB nabízí, a potom vyčistíme prostředky. 
 

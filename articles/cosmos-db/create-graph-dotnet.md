@@ -10,10 +10,10 @@ ms.date: 02/21/2020
 ms.author: jasonh
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 72b3f8a4e4a6da434ef20c8e505718ccd3e2deff
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91578376"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Rychlý Start: vytvoření .NET Framework nebo základní aplikace pomocí účtu rozhraní API Azure Cosmos DB Gremlin
@@ -31,7 +31,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 
 Tento rychlý Start ukazuje, jak vytvořit Azure Cosmos DB účet [rozhraní API Gremlin](graph-introduction.md) , databázi a graf (kontejner) pomocí Azure Portal. Potom sestavíte a spustíte konzolovou aplikaci pomocí open source ovladače [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet).  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
 

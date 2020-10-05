@@ -4,10 +4,10 @@ description: 'Rychlý Start: pomocí Azure Event Grid a Azure Portal vytvořte �
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87421599"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Rychlý Start: směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal

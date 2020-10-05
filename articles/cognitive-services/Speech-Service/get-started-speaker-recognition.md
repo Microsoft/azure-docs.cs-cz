@@ -13,10 +13,10 @@ ms.author: trbye
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: rozpoznávání mluvčího, Voice biometry
 ms.openlocfilehash: cfb16d95c0de7fabb7e939e53903f0a611f749e9
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91362550"
 ---
 # <a name="get-started-with-speaker-recognition"></a>Začínáme s rozpoznávání mluvčího
@@ -29,7 +29,7 @@ V tomto rychlém startu se naučíte základní vzory návrhu pro rozpoznáván�
 
 Základní informace o konceptech rozpoznávání řeči najdete v článku [Přehled](speaker-recognition-overview.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](overview.md#try-the-speech-service-for-free).
 

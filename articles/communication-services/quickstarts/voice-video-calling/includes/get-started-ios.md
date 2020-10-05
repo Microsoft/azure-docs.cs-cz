@@ -7,15 +7,15 @@ ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91377005"
 ---
 V tomto rychlém startu se dozvíte, jak spustit volání pomocí komunikačních služeb Azure s voláním klientské knihovny pro iOS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu budete potřebovat následující požadavky:
 
@@ -47,7 +47,7 @@ Přidejte do svého projektu komunikační služby Azure s voláním klientské 
 5. Otevřete kartu **nastavení sestavení** v editoru nastavení projektu a přejděte k části **cesty hledání** . Přidá novou položku **cest hledání architektury** pro adresář obsahující rozhraní **AzureCommunicationCalling. Framework**.
     1. Přidejte jinou položku cest hledání architektury ukazující na složku, která obsahuje závislosti.
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Snímek obrazovky s aktualizací cest hledání architektury v rámci XCode":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Snímek obrazovky znázorňující okno nového projektu v rámci Xcode.":::
 
 ### <a name="request-access-to-the-microphone"></a>Požádat o přístup k mikrofonu
 
@@ -192,7 +192,7 @@ func endCall()
 
 Můžete sestavit a spustit aplikaci v simulátoru iOS tak, že **Product**vyberete možnost  >  **spuštění** produktu nebo pomocí klávesové zkratky (&#8984;-R).
 
-:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Konečný vzhled a chování aplikace rychlý Start":::
+:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Snímek obrazovky znázorňující okno nového projektu v rámci Xcode.":::
 
 Odchozí volání VOIP můžete vytvořit zadáním ID uživatele v textovém poli a klepnutím na tlačítko **Spustit volání** . Volání se `8:echo123` připojí ke robotu s odezvou. to je skvělé pro začátek a ověření, jestli vaše zvuková zařízení fungují. 
 

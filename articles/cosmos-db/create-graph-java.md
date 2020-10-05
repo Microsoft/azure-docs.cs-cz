@@ -10,10 +10,10 @@ ms.date: 03/26/2019
 ms.author: jasonh
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: ad00fcc0c7b871210b29400821808b6729d953f6
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409404"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>Rychlý Start: vytvoření databáze grafu pomocí sady Java SDK a rozhraní Azure Cosmos DB Gremlin API
@@ -29,7 +29,7 @@ ms.locfileid: "91409404"
 
 V tomto rychlém startu vytvoříte a spravujete účet rozhraní API pro Azure Cosmos DB Gremlin (Graph) z Azure Portal a přidáte data pomocí aplikace Java naklonované z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Najeďte `JAVA_HOME` proměnnou prostředí na složku, ve které je nainstalovaná JDK.
 - [Binární archiv Maven](https://maven.apache.org/download.cgi) 
@@ -169,21 +169,21 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
 1. V Azure Cosmos DB účtu v Azure Portal vyberte možnost **Průzkumník dat**, rozbalte položku **Ukázka-graf**, vyberte možnost **graf**a pak vyberte možnost **použít filtr**. 
 
-   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png" alt-text="Vytváření nových dokumentů v Průzkumníku dat na webu Azure Portal":::
+   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 2. V seznamu **Výsledky** si všimněte nových uživatelů přidaných do grafu. Vyberte **ben** a všimněte si, že tento uživatel je propojený s uživatelem robin. Vrcholy můžete přesouvat přetahováním, přibližovat a oddalovat můžete pomocí kolečka myši a zvětšit plochu grafu můžete pomocí obousměrné šipky. 
 
-   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png" alt-text="Nové vrcholy v grafu v Průzkumníku dat na webu Azure Portal":::
+   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 3. Teď přidáme několik nových uživatelů. Vyberte **nový vrchol** a přidejte do grafu data.
 
-   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Vytváření nových dokumentů v Průzkumníku dat na webu Azure Portal":::
+   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 4. Do pole popisku zadejte *person* (osoba).
 
 5. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností. Všimněte si, že pro každou osobu v grafu můžete vytvořit jedinečné vlastnosti. Vyžaduje se pouze klíč id.
 
-    key|hodnota|Poznámky
+    key|value|Poznámky
     ----|----|----
     id|ashley|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
     gender (pohlaví)|female (žena)| 
@@ -200,7 +200,7 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
 9. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností:
 
-    key|hodnota|Poznámky
+    key|value|Poznámky
     ----|----|----
     id|rakesh|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
     gender (pohlaví)|male (muž)| 
@@ -212,17 +212,17 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
     S přidáváním dalších dat můžete pomocí filtrů omezit výsledky. Průzkumník dat ve výchozím nastavení pomocí filtru `g.V()` načte všechny vrcholy v grafu. Můžete ho změnit na jiný [dotaz grafu](tutorial-query-graph.md), třeba `g.V().count()`, který vrátí počet všech vrcholů v grafu ve formátu JSON. Pokud jste filtr změnili, změňte filtr zpět na `g.V()` a vyberte **použít filtr** pro zobrazení všech výsledků znovu.
 
-12. Teď můžete propojit uživatele rakesh a ashley. V seznamu **výsledků** ověřte, že je vybraná možnost **Ashley** , a potom v grafu klikněte na tlačítko :::image type="content" source="./media/create-graph-java/edit-pencil-button.png" alt-text="změnit cíl vrcholu v grafu"::: vedle **cílů** na pravé straně. Možná budete muset rozšířit okno, aby se tlačítko zobrazilo.
+12. Teď můžete propojit uživatele rakesh a ashley. V seznamu **výsledků** ověřte, že je vybraná možnost **Ashley** , a potom v grafu klikněte na tlačítko :::image type="content" source="./media/create-graph-java/edit-pencil-button.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče"::: vedle **cílů** na pravé straně. Možná budete muset rozšířit okno, aby se tlačítko zobrazilo.
 
-    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Změna cíle vrcholu v grafu – Azure CosmosDB":::
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 13. Do pole **cíl** zadejte *Rakesh*, do pole **popisek hrany** zadejte *ví*a potom zaškrtněte políčko.
 
-    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png" alt-text="Přidání připojení v Průzkumník dat – Azure CosmosDB":::
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 14. Teď vyberte ze seznamu výsledků uživatele **rakesh** a zobrazí se propojení mezi uživateli ashley a rakesh. 
 
-    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer.png" alt-text="Dva vrcholy připojené v Průzkumník dat – Azure CosmosDB":::
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal na stránce Klíče":::
 
 Tím je dokončená část tohoto kurzu věnovaná vytváření prostředků. Můžete pokračovat přidáním vrcholů do grafu, úpravou existujících vrcholů nebo změnou dotazů. Teď si projdeme metriky, které služba Azure Cosmos DB nabízí, a potom vyčistíme prostředky. 
 

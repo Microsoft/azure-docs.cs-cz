@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
 ms.openlocfilehash: 77ab19296d1e310e48cdf3609c9f109dc42f6ec1
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91408291"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rychlý Start: vytvoření chatovací místnosti pomocí služby Signal
@@ -27,7 +27,7 @@ Kód pro tento kurz je k dispozici ke stažení v [úložišti GitHub AzureSigna
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte [.NET Core SDK](https://www.microsoft.com/net/download/windows).
 * Stáhněte nebo naklonujte úložiště GitHub [AzureSignalR-Sample](https://github.com/aspnet/AzureSignalR-samples) . 

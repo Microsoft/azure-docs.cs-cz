@@ -8,10 +8,10 @@ ms.custom: devx-track-azurepowershell
 ms.author: mblythe
 ms.date: 07/24/2020
 ms.openlocfilehash: 6b7a4f6d4ad7f5e94d19b9d531992f54ff13fec0
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87440768"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>Rychlý Start: Vytvoření řídicího panelu Azure Portal pomocí prostředí PowerShell
@@ -21,7 +21,7 @@ ms.locfileid: "87440768"
 
 ## <a name="requirements"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 

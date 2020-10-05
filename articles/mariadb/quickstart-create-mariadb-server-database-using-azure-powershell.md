@@ -9,19 +9,19 @@ ms.topic: quickstart
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 3715b3eb00a1ccb549bf77d14ce33969f9a7eda1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87502252"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>Rychlý Start: vytvoření serveru Azure Database for MariaDB pomocí prostředí PowerShell
 
 V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Database for MariaDB Server ve skupině prostředků Azure. PowerShell můžete použít k interaktivnímu vytváření a správě prostředků Azure nebo ve skriptech.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
@@ -75,7 +75,7 @@ Následující tabulka obsahuje seznam běžně používaných parametrů a uká
 
 Hodnota parametru **SKU** dodržuje cenové úrovně ** \_ \_ virtuální jádra COMPUTE-Generation** , jak je znázorněno v následujících příkladech.
 
-- `-Sku B_Gen5_1`mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
+- `-Sku B_Gen5_1` mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
 - `-Sku GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 - `-Sku MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se dvěma virtuálními jádry.
 
@@ -208,7 +208,7 @@ Další příkazy najdete v [Referenční příručce k MySQL 5.7 – v kapitole
     |    **Nastavení**    |            **Navrhovaná hodnota**            |                      **Popis**                       |
     | ----------------- | ----------------------------------------- | ---------------------------------------------------------- |
     | Název připojení   | My Connection                             | Zadejte popisek pro toto připojení.                        |
-    | Způsob připojení | Standard (TCP/IP)                         | Pro připojení k Azure Database for MariaDB použijte protokol TCP/IP. |
+    | Způsob připojení | Standardní (TCP/IP)                         | Pro připojení k Azure Database for MariaDB použijte protokol TCP/IP. |
     | Název hostitele          | `mydemoserver.mariadb.database.azure.com` | Název serveru, který jste si dříve poznamenali                           |
     | Port              | 3306                                      | Výchozí port pro MariaDB                                 |
     | Uživatelské jméno          | myadmin@mydemoserver                      | Přihlašovací jméno správce serveru, které jste si poznamenali dříve                |

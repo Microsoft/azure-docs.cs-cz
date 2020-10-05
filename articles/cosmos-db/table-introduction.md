@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
 ms.openlocfilehash: f56c3bd2d302fc7163fa8c05c595891f191c6a11
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91568433"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Úvod do Azure Cosmos DB: API tabulka
@@ -32,7 +32,7 @@ Pomocí rozhraní API tabulky je možné migrovat aplikace napsané pro Azure Ta
 ## <a name="table-offerings"></a>Nabídky Table
 Pokud aktuálně používáte službu Azure Table Storage, získáte přechodem na rozhraní API tabulky Azure Cosmos DB následující výhody:
 
-| Příznak | Azure Table Storage | Rozhraní API tabulky Azure Cosmos DB |
+| Funkce | Azure Table Storage | Rozhraní API tabulky Azure Cosmos DB |
 | --- | --- | --- |
 | Latence | Rychlá, bez horních omezení latence. | Latence pro čtení a zápis v řádu milisekund, která se zálohuje <10 MS, pro čtení a zápisy na 99 percentilu v jakémkoli měřítku, kdekoli na světě. |
 | Propustnost | Model variabilní propustnosti. Tabulky mají omezení škálovatelnosti 20 000 operací za sekundu. | Vysoká škálovatelnost s [vyhrazenou rezervovanou propustností na tabulku](request-units.md), podložená smlouvami SLA. Účty nemají žádné horní omezení propustnosti a podporují více než 10 milionů operací za sekundu na tabulku. |

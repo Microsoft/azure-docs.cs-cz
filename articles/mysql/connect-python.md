@@ -12,10 +12,10 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: aad160f8a4ec96a1e0e627684c598062079b57e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90896303"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití Pythonu k připojení a dotazování dat v Azure Database for MySQL
@@ -24,7 +24,7 @@ V tomto rychlém startu se připojíte k Azure Database for MySQL pomocí Python
 
 V tomto tématu se předpokládá, že máte zkušenosti s vývojem pomocí Pythonu, ale začínáte pracovat s Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Server Azure Database for MySQL. [Vytvořte Azure Database for MySQL server pomocí Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [Vytvořte Azure Database for MySQL server pomocí Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
@@ -59,7 +59,7 @@ Nainstalujte Python a konektor MySQL pro Python do počítače pomocí následuj
 
 Získejte informace o připojení, které potřebujete k připojení k Azure Database for MySQL z Azure Portal. Potřebujete název serveru, název databáze a přihlašovací údaje pro přihlášení.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
    
 1. Na panelu hledání na portálu vyhledejte a vyberte server Azure Database for MySQL, který jste vytvořili, například **mydemoserver**.
    

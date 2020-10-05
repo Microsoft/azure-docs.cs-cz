@@ -13,15 +13,15 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abe222ff783032c5d6d19a42bfb3d8aeffc284a1
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90604117"
 ---
 # <a name="what-is-application-management"></a>Co je správa aplikací?
 
-Azure AD je systém správy identit a přístupu (IAM). Poskytuje jediné místo pro ukládání informací o digitálních identitách. Softwarové aplikace můžete nakonfigurovat tak, aby používaly Azure AD jako místo, kde jsou uložené informace o uživateli. 
+Azure AD je systém pro správu identit a přístupu (IAM, Identity and Access Management). Poskytuje centrální místo pro ukládání informací o digitálních identitách. Softwarové aplikace můžete nakonfigurovat tak, aby jako místo, kam se ukládají informace o uživatelích, používaly Azure AD. 
 
 Služba Azure AD musí být nakonfigurovaná tak, aby se mohla integrovat s aplikací. Jinými slovy, musí znát, co aplikace používají jako systém identit. Proces uchovávání těchto aplikací na základě služby Azure AD a způsobu jejich zpracování se označuje jako Správa aplikací.
 

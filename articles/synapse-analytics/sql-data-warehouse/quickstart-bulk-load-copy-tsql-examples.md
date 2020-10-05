@@ -10,10 +10,10 @@ ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.openlocfilehash: e3b22b831deca47eece70d337a99346ae472c7ee
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91569478"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Bezpečné načtení dat pomocí synapse SQL
@@ -69,7 +69,7 @@ WITH (
 
 Pokud je váš účet úložiště připojený k virtuální síti, vyžaduje se spravované ověřování identity. 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 1. Pomocí tohoto [průvodce](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) nainstalujte Azure PowerShell.
 2. Pokud máte účet úložiště pro obecné účely verze 1 nebo účet úložiště objektů blob, musíte nejprve pomocí tohoto [průvodce](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) upgradovat na účet úložiště pro obecné účely verze 2.

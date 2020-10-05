@@ -4,12 +4,12 @@ description: Tento článek poskytuje návod pro vytvoření aplikace JavaScript
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0acceffca79a36ceabf709aa6d7faf1bf79b0c83
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 01516f29e727b5be2a81d3d8dd473808b6ea60f7
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91282166"
+ms.locfileid: "91728943"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Odesílání událostí do a příjem událostí z Center událostí pomocí JavaScriptu (Azure/Event-hub verze 5)
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku **Azure/Event-hub verze 5** JavaScriptu. 
@@ -104,8 +104,10 @@ Blahopřejeme! Nyní jste odeslali události do centra událostí.
 ## <a name="receive-events"></a>Příjem událostí
 V této části obdržíte události z centra událostí pomocí úložiště kontrolních bodů služby Azure Blob Storage v aplikaci JavaScript. Pro přijaté zprávy v pravidelných intervalech v objektu blob Azure Storage provádí kontrolní body metadat. Tento přístup usnadňuje příjem zpráv později od místa, kde jste skončili.
 
-> [!NOTE]
-> Pokud používáte centrum Azure Stack, může tato platforma podporovat jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure. Pokud například používáte [v Azure Stack centra verze 2002](/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě, kromě kroků v této části, budete také muset přidat kód pro cílení na rozhraní API služby úložiště verze 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v tématu ukázky pro [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) a  [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) na GitHubu. Další informace o verzích služby Azure Storage podporovaných v centru Azure Stack najdete v tématu [úložiště centra pro Azure Stack: rozdíly a požadavky](/azure-stack/user/azure-stack-acs-differences).
+> [!WARNING]
+> Pokud spustíte tento kód v Azure Stackovém centru, dojde k chybám za běhu, pokud necílíte na konkrétní verzi rozhraní API úložiště. Důvodem je, že sada Event Hubs SDK používá nejnovější dostupné rozhraní API Azure Storage dostupné v Azure, které nemusí být k dispozici na vaší platformě služby Azure Stack hub. Centrum Azure Stack může podporovat jinou verzi sady SDK pro úložiště objektů blob, než jsou ta, která jsou běžně dostupná v Azure. Pokud jako úložiště kontrolního bodu používáte Azure blogu Storage, podívejte se na [podporovanou verzi rozhraní API Azure Storage pro sestavení centra Azure Stack](/azure-stack/user/azure-stack-acs-differences?#api-version) a cílení na verzi v kódu. 
+>
+> Pokud například používáte v Azure Stack centra verze 2005, nejvyšší dostupná verze služby úložiště je verze 2019-02-02. Ve výchozím nastavení používá Klientská knihovna Event Hubs SDK nejvyšší dostupnou verzi v Azure (2019-07-07 v době vydání sady SDK). V takovém případě, kromě kroků v této části, budete také muset přidat kód pro cílení na rozhraní API služby úložiště verze 2019-02-02. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v tématu ukázky pro [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) a  [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) na GitHubu. 
 
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Vytvoření účtu služby Azure Storage a kontejneru objektů BLOB

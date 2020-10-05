@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: 1d7196f85f64ed466e99986996832952ffe1d59c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91336254"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře
@@ -33,7 +33,7 @@ V tomto rychlém startu se dozvíte, jak:
 
 Kód aplikace použitý v tomto rychlém startu je jednoduchá aplikace vytvořená pomocí šablony projektu webového rozhraní API .NET Core. Po dokončení tohoto příkladu bude aplikace dostupná online a bude ji možné spravovat prostřednictvím Azure Portal a Azure CLI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Sada .NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Služba pružinového cloudu Azure podporuje .NET Core 3,1 a novější verze.
@@ -334,7 +334,7 @@ V tomto rychlém startu se dozvíte, jak:
 > * Sestavení a nasazení aplikace s veřejným koncovým bodem
 > * Streamování protokolů v reálném čase
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 

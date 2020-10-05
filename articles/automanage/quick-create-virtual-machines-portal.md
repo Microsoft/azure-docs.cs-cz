@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 09/04/2020
 ms.author: jushiman
 ms.openlocfilehash: d66c19ce3a9786a5ca0f1390acb398c2a9cf502f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91445792"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Rychlý Start: povolení služby Azure automanage pro virtuální počítače v Azure Portal
@@ -20,7 +20,7 @@ ms.locfileid: "91445792"
 Začínáme s Azure automanage pro virtuální počítače pomocí Azure Portal pro povolení automatizované správy na novém nebo existujícím virtuálním počítači.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) před tím, než začnete.
 
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 
 ## <a name="enable-automanage-for-vms-on-an-existing-vm"></a>Povolení automanage pro virtuální počítače na existujícím virtuálním počítači

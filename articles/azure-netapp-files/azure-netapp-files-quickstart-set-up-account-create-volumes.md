@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
 ms.openlocfilehash: d118bef4a7ccc263010fe176432a5301c4104118
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91533889"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS 
@@ -26,7 +26,7 @@ V tomto rychlém startu vytvoříte následující položky:
 - Fond kapacit
 - Svazek NFS pro Azure NetApp Files
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Než začnete 
 
@@ -194,7 +194,7 @@ Následující fragment kódu ukazuje, jak vytvořit účet NetApp v šabloně A
     * Jako velikost fondu zadejte **4 (TIB)** . 
     * Použijte typ **auto** QoS.
 
-5. Klikněte na **Vytvořit**.
+5. Klikněte na **Create** (Vytvořit).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

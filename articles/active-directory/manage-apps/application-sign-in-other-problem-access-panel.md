@@ -11,16 +11,16 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfb4d265a42fe1e4473af0f9bde4ebb76f0734a0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 3b9acc3f91a91527e96f450d825d06f6b909e15d
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707964"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729147"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Řešení potíží s přihlášením k aplikaci z Azure AD moje aplikace
 
-Moje aplikace je webový portál, který umožňuje uživateli s pracovním nebo školním účtem ve službě Azure Active Directory (Azure AD) zobrazovat a spouštět cloudové aplikace, ke kterým správce Azure AD udělil přístup. 
+Moje aplikace je webový portál, který umožňuje uživateli s pracovním nebo školním účtem ve službě Azure Active Directory (Azure AD) zobrazovat a spouštět cloudové aplikace, ke kterým správce Azure AD udělil přístup. K mým aplikacím se dostanete pomocí webového prohlížeče na adrese [https://myapps.microsoft.com](https://myapps.microsoft.com) .
 
 Další informace o používání služby Azure AD jako zprostředkovatele identity pro aplikaci najdete v tématu [co je Správa aplikací ve službě Azure AD](what-is-application-management.md). Pokud chcete rychle začít, podívejte se na [řadu rychlý Start při správě aplikací](view-applications-portal.md).
 

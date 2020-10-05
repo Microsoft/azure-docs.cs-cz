@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
 ms.openlocfilehash: 613cf7d9b68fe42c26f2c01cb1fb5dd1da1e1fb5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90946888"
 ---
 # <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Přehled clusteru Azure Stream Analytics (Preview)
@@ -23,9 +23,9 @@ Clustery Stream Analytics se účtují podle jednotek streamování (SUs), kter�
 
 ## <a name="what-are-stream-analytics-clusters"></a>Co jsou clustery Stream Analytics
 
-Clustery Stream Analytics používají stejný modul, který využívá úlohy Stream Analytics spuštěné ve více tenantů prostředí. Jeden tenant, vyhrazený cluster, má následující funkce:
+Clustery Stream Analytics využívají stejný modul jako úlohy Stream Analytics spuštěné v prostředí s více tenanty. Vyhrazený cluster s jedním tenantem nabízí následující funkce:
 
-* Jeden tenant hostující bez šumu od ostatních tenantů. Vaše prostředky jsou skutečně "izolované" a jsou lepší, když dojde k nárůstu provozu.
+* Hostování jednoho tenanta bez šumu z ostatních tenantů Skutečná izolace vašich prostředků a lepší fungování v případě prudkého zvýšení provozu
 
 * Škálujte svůj cluster mezi 36 až 216 SUs, protože využití streamování se v průběhu času zvyšuje.
 

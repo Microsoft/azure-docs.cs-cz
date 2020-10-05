@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/29/2020
 ms.openlocfilehash: 70f2cf183a9bd93b6066516cb68e99ee21cdc1ac
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91569620"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Rychlý Start: použití Azure Portal k vytvoření Azure Database for MySQL flexibilního serveru
@@ -53,7 +53,7 @@ Při vytváření flexibilního serveru postupujte podle těchto kroků:
     Název serveru |*mydemoserver*|Jedinečný název, který identifikuje flexibilní Server. Název domény *MySQL.Database.Azure.com* se připojí k názvu serveru, který zadáte. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat z 3 až 63 znaků.|
     Uživatelské jméno správce |*mydemouser*| Váš vlastní přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **admin**, **Administrator**, **root**, **Guest**ani **Public**.|
     Heslo |Vaše heslo| Nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).|
-    Region (Oblast)|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.|
+    Oblast|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.|
     Verze|5.7| Hlavní verze MySQL.|
     Výpočty + úložiště | **Shluky**, **Standard_B1ms**, **10 GIB**, **7 dní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Konfigurovat Server**. *Burstable*Mezi výchozími hodnotami pro **výpočetní vrstvu**, **výpočetní velikost**, **úložiště**a **dobu uchovávání záloh**jsou výchozí hodnoty pro *Standard_B1ms*, *10 GIB*a *7 dní* . Tyto posuvníky můžete ponechat beze změny nebo je upravit. Pokud chcete uložit tento výběr výpočtů a úložišť, vyberte **Uložit** a pokračujte v konfiguracích. Následující snímek obrazovky ukazuje možnosti výpočtů a úložiště.|
     

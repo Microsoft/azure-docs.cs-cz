@@ -9,10 +9,10 @@ ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.openlocfilehash: 0f67939358a4395416ea28c1c459d4890ab0351d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91397806"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme s operátory IT Azure
@@ -471,7 +471,7 @@ Existuje několik možností, jak nasadit virtuální síť.
 
 - [Rozhraní příkazového řádku (CLI)](../../virtual-network/quick-create-cli.md)
 
-- Šablony Azure Resource Manager
+- Šablony Azure Resource Manageru
 
 > **Kdy použít**: kdykoli pracujete s virtuálními počítači v Azure, budete pracovat s virtuálními sítěmi. To umožňuje segmentovat vaše virtuální počítače do veřejných nebo privátních podsítí podobných v místních datových centrech.
 >

@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 12bb0b0098b5108bf780b88fc42b86861ea6fcdc
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87439563"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Přehled služby Azure FarmBeats (Preview)
@@ -55,7 +55,7 @@ Správce může definovat pravidla přístupu pro Azure FarmBeats pomocí jedné
 
 Správce může do Azure FarmBeats přidat několik partnerů jako zprostředkovatel dat. Následující přehled dostupných partnerských rolí v FarmBeats a jejich oprávněních:
 
-| Typ partnera    |   Akce  | Rozsah |
+| Typ partnera    |   Akce  | Obor |
 | ---- | -------- | -------- |
 | Partner snímače  |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat | DeviceModel, zařízení, SensorModel, senzor <br/> <br/> ExtendedType |
 | Partner pro satelitní servery  |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Číst | Scéna, SceneFile <br/> <br/> ExtendedType <br/> <br/> Sdílených |

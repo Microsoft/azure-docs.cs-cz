@@ -9,10 +9,10 @@ ms.date: 09/01/2020
 ms.topic: include
 ms.custom: include file, cog-serv-seo-aug-2020
 ms.openlocfilehash: 4e7144c424fd2187436a05d135732532e95063a1
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91544944"
 ---
 Použijte klientské knihovny Language Understanding (LUIS) pro Python k těmto akcím:
@@ -136,7 +136,7 @@ Vytvořte metodu [Add](https://docs.microsoft.com/python/api/azure-cognitiveserv
 ## <a name="create-intent-for-the-app"></a>Vytvořit záměr pro aplikaci
 Primárním objektem v modelu aplikace LUIS je záměr. Záměr se zarovnává se seskupením _záměrů_uživatelů utterance. Uživatel může požádat o dotaz nebo vytvořit příkaz, který hledá konkrétní _zamýšlenou_ odpověď z robota (nebo jiné klientské aplikace). Příklady záměrů je vyúčtování letu, dotazování na počasí v cílovém městě a dotazování na kontaktní informace pro zákaznické služby.
 
-Použijte metodu [model. add_intent](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-intent-app-id--version-id--name-none--custom-headers-none--raw-false----operation-config-) s názvem jedinečného záměru a potom předejte ID aplikace, ID verze a název nového záměru.
+Použijte metodu [model.add_intent](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-intent-app-id--version-id--name-none--custom-headers-none--raw-false----operation-config-) s názvem jedinečného záměru a potom předejte ID aplikace, ID verze a název nového záměru.
 
 `intentName`Hodnota je pevně zakódována `OrderPizzaIntent` jako součást proměnných v oddílu [Vytvoření proměnných pro aplikaci](#create-variables-for-the-app) .
 
@@ -176,7 +176,7 @@ Přidejte příklad projevy vytvořením seznamu objektů [ExampleLabelObject](h
 
 Po vytvoření modelu musí být aplikace LUIS vyškolená pro tuto verzi modelu. Vyškolený model se dá použít v [kontejneru](../luis-container-howto.md)nebo ho můžete [publikovat](../luis-how-to-publish-app.md) na pracovní nebo výrobní sloty.
 
-Metoda [vlak. train_version](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#train-version-app-id--version-id--custom-headers-none--raw-false----operation-config-) potřebuje ID aplikace a ID verze.
+Metoda [Train.train_version](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#train-version-app-id--version-id--custom-headers-none--raw-false----operation-config-) potřebuje ID aplikace a ID verze.
 
 Velmi malý model, jako je například tento rychlý Start, bude vlak velmi rychlý. Pro aplikace na úrovni produkčního prostředí by mělo školení aplikace zahrnovat volání metody [get_Status](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#get-status-app-id--version-id--custom-headers-none--raw-false----operation-config-) k určení, kdy nebo jestli se školení podařilo. Odpověď je seznam objektů [ModelTrainingInfo](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.models.modeltraininginfo?view=azure-python) s odděleným stavem pro každý objekt. Aby bylo školení považovat za dokončené, musí být všechny objekty úspěšné.
 

@@ -8,10 +8,10 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 2b5fa5211ad8d4de01f2b63e8267e297e13c4485
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91570016"
 ---
 # <a name="what-is-azure-files"></a>Co je služba Soubory Azure?
@@ -36,7 +36,7 @@ Sdílené složky Azure lze použít k těmto činnostem:
     Služba Soubory Azure usnadňuje migraci aplikací, které očekávají uchovávání souborové aplikace nebo uživatelských dat ve sdílené složce, do cloudu metodou „lift and shift“. Služba Soubory Azure podporuje klasický scénář migrace metodou „lift and shift“, při které se do Azure přesouvá aplikace i její data, i hybridní scénář migrace metodou „lift and shift“, při které se data aplikace přesouvají do služby Soubory Azure a aplikace se nadále spouští místně. 
 
 * **Zjednodušení vývoje pro Cloud**:  
-    S použitím služby Soubory Azure je také možné nejrůznějšími způsoby zjednodušit nové projekty vývoje pro cloud. Například:
+    S použitím služby Soubory Azure je také možné nejrůznějšími způsoby zjednodušit nové projekty vývoje pro cloud. Příklad:
     * **Nastavení sdílené aplikace**:  
         Běžným vzorem pro distribuované aplikace je mít konfigurační soubory v centralizovaném umístění, kde k nim může přistupovat mnoho instancí aplikací. Instance aplikací můžou načítat vlastní konfiguraci prostřednictvím souborového rozhraní REST API a uživatelé k nim můžou podle potřeby přistupovat připojením sdílené složky SMB v místním prostředí.
 

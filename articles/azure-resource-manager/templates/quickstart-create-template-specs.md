@@ -2,15 +2,15 @@
 title: Vytvoření a nasazení specifikace šablony
 description: Naučte se vytvořit specifikaci šablony ze šablony ARM. Pak nasaďte specifikaci šablony do skupiny prostředků v rámci vašeho předplatného.
 author: tfitzmac
-ms.date: 09/25/2020
+ms.date: 10/02/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: a4f24e69f29614de27947573d968d817dce4a57b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e1bd2f3da8204cf5947d0cf423cd57b023674608
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91369211"
+ms.locfileid: "91728773"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Rychlý Start: vytvoření a nasazení specifikace šablony (Preview)
 
@@ -27,7 +27,7 @@ V tomto rychlém startu se dozvíte, jak zabalit šablonu Azure Resource Manager
 
 ## <a name="create-template-spec"></a>Vytvořit specifikaci šablony
 
-Specifikace šablony je nový typ prostředku s názvem **Microsoft. Resources/templateSpecs**. K vytvoření specifikace šablony můžete použít Azure PowerShell, Azure CLI nebo šablonu ARM. Ve všech možnostech potřebujete šablonu ARM, která je zabalena do specifikace šablony.
+Specifikace šablony je typ prostředku s názvem **Microsoft. Resources/templateSpecs**. K vytvoření specifikace šablony můžete použít Azure PowerShell, Azure CLI nebo šablonu ARM. Ve všech možnostech potřebujete šablonu ARM, která je zabalena do specifikace šablony.
 
 Pomocí PowerShellu a rozhraní příkazového řádku je šablona ARM předána jako parametr příkazu. Šablona ARM, která se zabalí v rámci specifikace šablony, je vložená do definice specifikace šablony.
 

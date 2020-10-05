@@ -8,17 +8,17 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: 5ec6aab8aaa63b848131d44f78867100f154d251
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90896326"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití aplikace MySQL Workbench k připojení a dotazování dat v Azure Database for MySQL
 
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace MySQL Workbench.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
@@ -49,7 +49,7 @@ Připojení k serveru Azure MySQL pomocí nástroje s grafickým uživatelským 
 
 2.    V dialogovém okně pro **nastavení nového připojení** zadejte na kartě **Parametry** následující informace:
 
-:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="nastavení nového připojení":::
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="Název serveru Azure Database for MySQL":::
 
 | **Nastavení** | **Navrhovaná hodnota** | **Popis pole** |
 |---|---|---|
@@ -103,7 +103,7 @@ Připojení k serveru Azure MySQL pomocí nástroje s grafickým uživatelským 
 
     Snímek obrazovky ukazuje příklad kódu SQL v aplikaci MySQL Workbench a výstup po jeho spuštění.
     
-    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="Karta SQL aplikace MySQL Workbench pro spuštění vzorového kódu SQL":::
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="Název serveru Azure Database for MySQL":::
 
 2. Pokud chcete spustit ukázkový kód SQL, klikněte na ikonu blesku na panelu nástrojů karty **Soubor SQL**.
 3. Všimněte si výsledků na třech kartách v části **Mřížka výsledků** uprostřed stránky. 

@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: bfff96666981a522cd6d91828604696a12ecad56
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91576846"
 ---
 # <a name="introduction-to-azure-defender"></a>Seznámení s Azure Defenderem
@@ -35,7 +35,7 @@ Pokud povolíte Azure Defender z oblasti **ceny a nastavení** Azure Security Ce
 - [Azure Defender pro servery](defender-for-servers-introduction.md)
 - [Azure Defender pro App Service](defender-for-app-service-introduction.md)
 - [Azure Defender pro úložiště](defender-for-storage-introduction.md)
-- [Azure Defender for SQL](defender-for-sql-introduction.md)
+- [Azure Defender pro SQL](defender-for-sql-introduction.md)
 - [Azure Defender for IoT](defender-for-iot-introduction.md)
 - [Azure Defender pro Kubernetes](defender-for-kubernetes-introduction.md)
 - [Azure Defender pro registry kontejnerů](defender-for-container-registries-introduction.md)

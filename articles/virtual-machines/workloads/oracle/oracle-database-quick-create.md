@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/28/2020
+ms.date: 10/05/2020
 ms.author: kegorman
-ms.openlocfilehash: 5a94fa917625a32c0ae8b47a4d1a380e3f18d053
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 31743fd292bb45ee7107bc17f7d5dc43db8ed3f0
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91274686"
+ms.locfileid: "91728280"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Vytvoření Oracle Database na virtuálním počítači Azure
 
@@ -141,7 +141,7 @@ V imagi na webu Marketplace už je nainstalovaný software Oracle. Vytvořte uk�
            -databaseType MULTIPURPOSE \
            -automaticMemoryManagement false \
            -storageType FS \
-           -datafileDestination "/u01/app/oracle/oradata/"
+           -datafileDestination "/u01/app/oracle/oradata/" \
            -ignorePreReqs
     ```
 

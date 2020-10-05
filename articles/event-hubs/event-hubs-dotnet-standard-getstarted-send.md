@@ -2,14 +2,14 @@
 title: Posílání nebo přijímání událostí z Azure Event Hubs pomocí rozhraní .NET (nejnovější)
 description: Tento článek popisuje postup vytvoření aplikace .NET Core, která odesílá a přijímá události z Azure Event Hubs pomocí nejnovějšího balíčku Azure. Messaging. EventHubs.
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1bf41eb5ef5b43a59330d1735086ca595d7604b5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 170484b5a24367eb19e69f0a72918d99b6595fca
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334221"
+ms.locfileid: "91728501"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Odesílání událostí do a příjem událostí z Azure Event Hubs – .NET (Azure. Messaging. EventHubs) 
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí knihovny .NET **Azure. Messaging. EventHubs** . 
@@ -109,8 +109,11 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core pro ode
 V této části se dozvíte, jak napsat konzolovou aplikaci .NET Core, která přijímá zprávy z centra událostí pomocí procesoru událostí. Procesor událostí zjednodušuje přijímání událostí z Center událostí tím, že spravuje trvalé kontrolní body a paralelní příjemy z těchto Center událostí. Procesor událostí je přidružený ke konkrétnímu centru událostí a skupině uživatelů. Přijímá události z více oddílů v centru událostí a předá je delegátovi obslužné rutiny pro zpracování pomocí kódu, který poskytnete. 
 
 
-> [!NOTE]
-> Pokud používáte centrum Azure Stack, může tato platforma podporovat jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure. Pokud například používáte [v Azure Stack centra verze 2002](/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě, kromě kroků v této části, budete také muset přidat kód pro cílení na rozhraní API služby úložiště verze 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v [této ukázce na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). Další informace o verzích služby Azure Storage podporovaných v centru Azure Stack najdete v tématu [úložiště centra pro Azure Stack: rozdíly a požadavky](/azure-stack/user/azure-stack-acs-differences).
+> [!WARNING]
+> Pokud spustíte tento kód v Azure Stackovém centru, dojde k chybám za běhu, pokud necílíte na konkrétní verzi rozhraní API úložiště. Důvodem je, že sada Event Hubs SDK používá nejnovější dostupné rozhraní API Azure Storage dostupné v Azure, které nemusí být k dispozici na vaší platformě služby Azure Stack hub. Centrum Azure Stack může podporovat jinou verzi sady SDK pro úložiště objektů blob, než jsou ta, která jsou běžně dostupná v Azure. Pokud jako úložiště kontrolního bodu používáte Azure blogu Storage, podívejte se na [podporovanou verzi rozhraní API Azure Storage pro sestavení centra Azure Stack](/azure-stack/user/azure-stack-acs-differences?#api-version) a cílení na verzi v kódu. 
+>
+> Pokud například používáte v Azure Stack centra verze 2005, nejvyšší dostupná verze služby úložiště je verze 2019-02-02. Ve výchozím nastavení používá Klientská knihovna Event Hubs SDK nejvyšší dostupnou verzi v Azure (2019-07-07 v době vydání sady SDK). V takovém případě, kromě kroků v této části, budete také muset přidat kód pro cílení na rozhraní API služby úložiště verze 2019-02-02. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v [této ukázce na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+ 
 
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Vytvoření Azure Storage a kontejneru objektů BLOB
 V tomto rychlém startu použijete Azure Storage jako úložiště kontrolního bodu. Pomocí těchto kroků vytvořte účet Azure Storage. 

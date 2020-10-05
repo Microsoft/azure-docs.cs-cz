@@ -2,21 +2,21 @@
 title: Přehled specifikací šablon
 description: Popisuje, jak vytvořit specifikace šablony a sdílet je s ostatními uživateli ve vaší organizaci.
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 30e7f26a53e81ebdeebe2acaef44dccab1cf4b27
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b0dfc41bddccc6b5c5c924168044cffc0aa5e2b5
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448810"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728467"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager specifikace šablon (Preview)
 
-Specifikace šablony je nový typ prostředku pro uložení šablony Azure Resource Manager (šablona ARM) v Azure pro pozdější nasazení. Tento typ prostředku umožňuje sdílet šablony ARM s ostatními uživateli ve vaší organizaci. Stejně jako u jakéhokoli jiného prostředku Azure můžete ke sdílení specifikace šablony použít řízení přístupu na základě role Azure (Azure RBAC).
+Specifikace šablony je typ prostředku pro uložení šablony Azure Resource Manager (šablona ARM) v Azure pro pozdější nasazení. Tento typ prostředku umožňuje sdílet šablony ARM s ostatními uživateli ve vaší organizaci. Stejně jako u jakéhokoli jiného prostředku Azure můžete ke sdílení specifikace šablony použít řízení přístupu na základě role Azure (Azure RBAC).
 
-**Microsoft. Resources/templateSpecs** je nový typ prostředku pro specifikace šablon. Skládá se z hlavní šablony a libovolného počtu propojených šablon. Azure bezpečně ukládá specifikace šablon do skupin prostředků. Specifikace šablon podporují [správu verzí](#versioning).
+**Microsoft. Resources/templateSpecs** je typ prostředku pro specifikace šablon. Skládá se z hlavní šablony a libovolného počtu propojených šablon. Azure bezpečně ukládá specifikace šablon do skupin prostředků. Specifikace šablon podporují [správu verzí](#versioning).
 
 K nasazení specifikace šablony použijte standardní nástroje Azure, jako je PowerShell, Azure CLI, Azure Portal, REST a další podporované sady SDK a klienti. Použijete stejné příkazy jako pro šablonu.
 

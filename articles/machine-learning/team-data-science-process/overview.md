@@ -12,10 +12,10 @@ ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: fc9a5e604e6ac52eb0e853725123272ca924fa36
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91362227"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Co je vědecké zpracování týmových dat?

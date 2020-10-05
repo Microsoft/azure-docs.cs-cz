@@ -10,17 +10,17 @@ ms.topic: quickstart
 ms.date: 09/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: 5fd042b91ede91491590a53abf4dec552fbf6487
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91440428"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace ASP.NET Core s využitím konfigurace aplikace Azure
 
 V tomto rychlém startu použijete Azure App Configuration k centralizaci úložiště a správy nastavení aplikace pro ASP.NET Core aplikaci. ASP.NET Core vytvoří jeden objekt konfigurace založený na hodnotě klíč-hodnota pomocí nastavení z jednoho nebo více zdrojů dat určených aplikací. Tyto zdroje dat jsou známé jako *poskytovatelé konfigurace*. Vzhledem k tomu, že klient .NET Core konfigurace aplikace je implementovaný jako poskytovatel konfigurace, služba se zobrazí jako jiný zdroj dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/dotnet) .
 * [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
@@ -41,7 +41,7 @@ V tomto rychlém startu použijete Azure App Configuration k centralizaci úlož
     | `TestApp:Settings:FontSize`        | *24*                                |
     | `TestApp:Settings:Message`         | *Data z konfigurace aplikace Azure* |
 
-    V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné. Vyberte **Použít**.
+    V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné. Vyberte **Apply** (Použít).
 
 ## <a name="create-an-aspnet-core-web-app"></a>Vytvoření webové aplikace ASP.NET Core
 
