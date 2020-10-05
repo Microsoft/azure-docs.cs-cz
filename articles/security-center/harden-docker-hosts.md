@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3f59bae9864e533270b0bfea829f64ccf541a8a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 500fa45db7e0e6bffb587d9d352ee1ab49f14703
+ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301427"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712268"
 ---
 # <a name="harden-your-docker-hosts"></a>Posílení zabezpečení hostitelů Dockeru
 
@@ -32,7 +32,7 @@ V případě, že jsou chyby zabezpečení zjištěny, jsou seskupeny do jednoho
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Požadované role a oprávnění:|**Čtenář** v pracovním prostoru, ke kterému se hostitel připojuje|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="identify-and-remediate-security-vulnerabilities-in-your-docker-configuration"></a>Identifikace a náprava ohrožení zabezpečení v konfiguraci Docker
@@ -50,11 +50,11 @@ V případě, že jsou chyby zabezpečení zjištěny, jsou seskupeny do jednoho
     > [!TIP]
     > Pokud jste spustili na stránce inventarizace assetů a dosáhli jsme tohoto doporučení, ybrat na stránce doporučení tlačítko **provést akci** .
     >
-    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="Spusťte tlačítko akce, které se spustí Log Analytics":::
+    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="Doporučení k nápravě ohrožení zabezpečení v konfiguraci zabezpečení kontejnerů ":::
 
     Log Analytics se otevře s vlastní operací připravenou ke spuštění. Výchozí vlastní dotaz obsahuje seznam všech neúspěšných pravidel, která byla vyhodnocena, spolu s pokyny, které vám pomohou tyto problémy vyřešit.
 
-    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="Log Analytics Stránka s dotazem zobrazujícím všechny neúspěšné ovládací prvky SNS":::
+    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="Doporučení k nápravě ohrožení zabezpečení v konfiguraci zabezpečení kontejnerů ":::
 
 1. V případě potřeby selepšit parametry dotazu.
 
