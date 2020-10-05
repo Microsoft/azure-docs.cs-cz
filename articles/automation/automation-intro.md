@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, konfigurace stavu, Správa aktualiz
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d10570efe49203f879cdceae776af5c3bc6991c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 0e4be48157650ace3d7bebcc3a5689caef1ba779
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448058"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715962"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Seznámení s Azure Automation
 
@@ -64,7 +64,7 @@ Azure Automation se skládá ze sady sdílených prostředků, které usnadňuj�
 
 ### <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
-Azure Automation podporuje řízení přístupu na základě role (RBAC) k regulaci přístupu k účtu Automation a jeho prostředkům. Další informace o konfiguraci RBAC pro váš účet Automation, Runbooky a úlohy najdete v tématu [řízení přístupu na základě rolí pro Azure Automation](automation-role-based-access-control.md).
+Azure Automation podporuje řízení přístupu na základě role Azure (Azure RBAC) a řídí přístup k účtu Automation a jeho prostředkům. Další informace o konfiguraci služby Azure RBAC na vašem účtu Automation, sadách Runbook a úlohách najdete v tématu [řízení přístupu na základě rolí pro Azure Automation](automation-role-based-access-control.md).
 
 ### <a name="source-control-integration"></a>Integrace správy zdrojového kódu
 
@@ -86,7 +86,7 @@ Azure Automation podporuje správu v celém životním cyklu vaší infrastruktu
 * **Najít změny** – Identifikujte změny, které můžou způsobit neshodnou konfiguraci a vylepšit provozní dodržování předpisů.
 * **Monitorování** – izolujte změny počítačů, které způsobují problémy a napravují je, nebo je předají do systémů pro správu.
 * **Chránit** – počítače v karanténě, pokud jsou vyvolány výstrahy zabezpečení. Nastavte požadavky na hostovi.
-* **Řízení –** nastavení RBAC pro týmy. Obnovte nevyužité prostředky.
+* **Řízení –** nastavení služby Azure RBAC pro týmy. Obnovte nevyužité prostředky.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 

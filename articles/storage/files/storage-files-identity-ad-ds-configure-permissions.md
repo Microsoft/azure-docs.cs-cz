@@ -7,22 +7,22 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: de0f58b54f0cb5ad450949bb1a7b8744f081227d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50753950556531ed3915292f44668073b88be45b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320332"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716028"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Třetí část: Konfigurace oprávnění adresářů a souborů přes SMB 
 
 Než začnete s tímto článkem, ujistěte se, že jste dokončili předchozí článek, [přiřaďte identitě oprávnění na úrovni sdílené složky](storage-files-identity-ad-ds-assign-permissions.md) a ujistěte se, že jsou nastavená vaše oprávnění na úrovni sdílené složky.
 
-Po přiřazení oprávnění na úrovni sdílení s funkcí RBAC musíte nakonfigurovat správné seznamy ACL pro systém Windows na úrovni kořenového adresáře, adresáře nebo souboru, aby bylo možné využít podrobné řízení přístupu. Oprávnění na úrovni sdílené složky RBAC si můžete představit jako gatekeeper na vysoké úrovni, který určuje, jestli uživatel může ke sdílené složce přistupovat. I když seznamy ACL systému Windows fungují na podrobnější úrovni, aby bylo možné určit, které operace může uživatel provádět na úrovni adresáře nebo souboru. Oprávnění na úrovni sdílené složky a souboru nebo adresáře se vynutily, když se uživatel pokusí o přístup k souboru nebo adresáři, takže pokud mezi nimi existuje rozdíl, použije se jenom ta, která je jenom nejpřísnější. Například pokud má uživatel přístup pro čtení a zápis na úrovni souboru, ale přečte se jenom na úrovni sdílení, pak ho můžou číst jenom. Totéž by platilo, pokud bylo obrácené a uživatel měl přístup pro čtení a zápis na úrovni sdílené složky, ale jenom číst na úrovni souboru, ale může ho jenom číst.
+Po přiřazení oprávnění na úrovni sdílení k Azure RBAC je nutné nakonfigurovat správné seznamy ACL pro Windows na úrovni kořenového adresáře, adresáře nebo souboru, aby bylo možné využít přesnější řízení přístupu. Oprávnění na úrovni sdílené složky Azure RBAC si můžete představit jako gatekeeper na vysoké úrovni, který určuje, jestli uživatel může ke sdílené složce přistupovat. I když seznamy ACL systému Windows fungují na podrobnější úrovni, aby bylo možné určit, které operace může uživatel provádět na úrovni adresáře nebo souboru. Oprávnění na úrovni sdílené složky a souboru nebo adresáře se vynutily, když se uživatel pokusí o přístup k souboru nebo adresáři, takže pokud mezi nimi existuje rozdíl, použije se jenom ta, která je jenom nejpřísnější. Například pokud má uživatel přístup pro čtení a zápis na úrovni souboru, ale přečte se jenom na úrovni sdílení, pak ho můžou číst jenom. Totéž by platilo, pokud bylo obrácené a uživatel měl přístup pro čtení a zápis na úrovni sdílené složky, ale jenom číst na úrovni souboru, ale může ho jenom číst.
 
-## <a name="rbac-permissions"></a>Oprávnění RBAC
+## <a name="azure-rbac-permissions"></a>Oprávnění Azure RBAC
 
-Následující tabulka obsahuje oprávnění RBAC související s touto konfigurací:
+Následující tabulka obsahuje oprávnění Azure RBAC související s touto konfigurací:
 
 
 | Předdefinovaná role  | Oprávnění NTFS  | Výsledný přístup  |
@@ -104,7 +104,7 @@ Pomocí Průzkumníka souborů Windows udělte úplným oprávněním všem adre
 1. V okně příkazového řádku pro přidání nových uživatelů zadejte cílové uživatelské jméno, kterému chcete udělit oprávnění, do pole **Zadejte názvy objektů k výběru** a vyberte možnost **kontrolovat názvy** a vyhledejte úplný název UPN cílového uživatele.
 1.    Vyberte **OK**.
 1.    Na kartě **zabezpečení** vyberte všechna oprávnění, která chcete novému uživateli udělit.
-1.    Vyberte **Použít**.
+1.    Vyberte **Apply** (Použít).
 
 ### <a name="configure-windows-acls-with-icacls"></a>Konfigurace seznamů ACL pro Windows pomocí icacls
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6358f9d233b3c09dc4ae4f3ecac7c91dea8bba6e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f4687add8fdd55c8084a7180a6e0a3bffd9751b1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228269"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715158"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Základní hodnoty zabezpečení Azure pro Azure Storage
 
@@ -46,7 +46,7 @@ Poznámka: klasické účty úložiště nepodporují brány firewall a virtuál
 
 Všimněte si, že pokud máte k účtu úložiště připojené privátní koncové body, nemůžete pro podsítě nakonfigurovat pravidla skupiny zabezpečení sítě (NSG). 
 
-- [Konfigurace Azure Storage bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security)
+- [Konfigurace bran firewall Azure Storage a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security)
 
 - [Jak povolit protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
@@ -380,13 +380,13 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 ### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 
-**Pokyny**: jako centrální ověřování a systém autorizací použijte Azure Active Directory (Azure AD). Azure AD poskytuje řízení přístupu na základě role (RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům v účtu úložiště.  Použijte přihlašovací údaje Azure AD, pokud je to možné, místo použití klíče účtu, který může být snáze ohrožen. Když návrh aplikace vyžaduje pro přístup k úložišti objektů BLOB sdílené přístupové podpisy, pomocí přihlašovacích údajů Azure AD vytvořte delegovaný přístup uživatelů (SAS), pokud je to možné, pro zajištění vysokého zabezpečení.
+**Pokyny**: jako centrální ověřování a systém autorizací použijte Azure Active Directory (Azure AD). Azure poskytuje řízení přístupu na základě role Azure (Azure RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům v účtu úložiště.  Použijte přihlašovací údaje Azure AD, pokud je to možné, místo použití klíče účtu, který může být snáze ohrožen. Když návrh aplikace vyžaduje pro přístup k úložišti objektů BLOB sdílené přístupové podpisy, pomocí přihlašovacích údajů Azure AD vytvořte delegovaný přístup uživatelů (SAS), pokud je to možné, pro zajištění vysokého zabezpečení.
 
 - [Jak vytvořit a nakonfigurovat instanci Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
 - [Použití poskytovatele prostředků Azure Storage k přístupu k prostředkům správy](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
-- [Jak nakonfigurovat přístup k objektům blob Azure a zařadit data do fronty pomocí RBAC v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Jak nakonfigurovat přístup k objektům blob Azure a zařadit data do fronty pomocí Azure RBAC v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
 - [Autorizace přístupu k datům v Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth)
 
@@ -478,7 +478,7 @@ Vytvořte nastavení diagnostiky pro Azure Active Directory uživatelských úč
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
-**Pokyny**: implementace izolace pomocí samostatného předplatného, skupin pro správu a účtů úložiště pro jednotlivé domény zabezpečení, jako je prostředí, citlivost na data.  Můžete omezit účet úložiště pro řízení úrovně přístupu k účtům úložiště, které vaše aplikace a podniková prostředí vyžadují, na základě typu a podmnožiny používaných sítí. Při konfiguraci síťových pravidel mají přístup k účtu úložiště jenom aplikace požadující data přes zadanou sadu sítí. Přístup k Azure Storage můžete řídit prostřednictvím služby Azure AD RBAC. Můžete také nakonfigurovat privátní koncové body, aby se zlepšily zabezpečení jako provoz mezi vaší virtuální sítí a službou průchod přes páteřní síť Microsoftu, což eliminuje expozici veřejného Internetu. 
+**Pokyny**: implementace izolace pomocí samostatného předplatného, skupin pro správu a účtů úložiště pro jednotlivé domény zabezpečení, jako je prostředí, citlivost na data.  Můžete omezit účet úložiště pro řízení úrovně přístupu k účtům úložiště, které vaše aplikace a podniková prostředí vyžadují, na základě typu a podmnožiny používaných sítí. Při konfiguraci síťových pravidel mají přístup k účtu úložiště jenom aplikace požadující data přes zadanou sadu sítí. Přístup k Azure Storage můžete řídit přes Azure RBAC. Můžete také nakonfigurovat privátní koncové body, aby se zlepšily zabezpečení jako provoz mezi vaší virtuální sítí a službou průchod přes páteřní síť Microsoftu, což eliminuje expozici veřejného Internetu. 
 
 - [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -486,7 +486,7 @@ Vytvořte nastavení diagnostiky pro Azure Active Directory uživatelských úč
 
 - [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-- [Konfigurace Azure Storage bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security)
+- [Konfigurace bran firewall Azure Storage a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security)
 
 - [Koncové body služby Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
 
@@ -500,9 +500,9 @@ Vytvořte nastavení diagnostiky pro Azure Active Directory uživatelských úč
 
 Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě vyfiltrovat odchozí přenosy virtuální sítě na účty Azure Storage prostřednictvím koncového bodu služby a exfiltraceit data pouze na konkrétní Azure Storage účty.
 
-- [Konfigurace Azure Storage bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+- [Konfigurace bran firewall Azure Storage a virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
-- [Zásady koncového bodu služby virtuální sítě pro Azure Storage](https://docs.microsoft.com/azure/private-link/create-private-endpoint-storage-portal)
+- [Zásady koncového bodu služby pro virtuální síť pro službu Azure Storage](https://docs.microsoft.com/azure/private-link/create-private-endpoint-storage-portal)
 
 - [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -534,13 +534,13 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Doprovodné**materiály: Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím řízení přístupu na základě role (RBAC). Azure Storage definuje sadu předdefinovaných rolí Azure, které zahrnují společné sady oprávnění používané pro přístup k datům objektů BLOB nebo front. 
+**Pokyny**: Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím řízení přístupu na základě role Azure (Azure RBAC). Azure Storage definuje sadu předdefinovaných rolí Azure, které zahrnují společné sady oprávnění používané pro přístup k datům objektů BLOB nebo front. 
 
 - [Přiřazení rolí Azure pro účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
 
 - [Použití poskytovatele prostředků Azure Storage k přístupu k prostředkům správy](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
-- [Jak nakonfigurovat přístup k objektům blob Azure a zařadit data do fronty pomocí RBAC v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Jak nakonfigurovat přístup k objektům blob Azure a zařadit data do fronty pomocí Azure RBAC v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
 - [Postup vytvoření a konfigurace instance AAD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 

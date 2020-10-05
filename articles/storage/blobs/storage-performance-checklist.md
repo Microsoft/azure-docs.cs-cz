@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 85701f3d073b8f743ddf48910822f152420c4fc0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a3395873d7655118e3fcc9c36cdfc3855f8f000
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001378"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714813"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště objektů BLOB
 
@@ -43,7 +43,7 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 | &nbsp; |Konfigurace .NET |[Nakonfigurovali jste klienta tak, aby používal dostatečný počet souběžných připojení?](#increase-default-connection-limit) |
 | &nbsp; |Konfigurace .NET |[Pro aplikace .NET jste nakonfigurovali .NET pro použití dostatečného počtu vláken?](#increase-minimum-number-of-threads) |
 | &nbsp; |Paralelismu |[Měli byste zajistit, aby byl paralelismu správně ohraničený, takže nebudete přetěžovat možnosti svého klienta nebo se přiblížíte cílům škálovatelnosti?](#unbounded-parallelism) |
-| &nbsp; |nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
+| &nbsp; |Nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
 | &nbsp; |Opakování |[Používáte zásady opakování s exponenciálním omezení rychlosti pro omezení chyb a časových limitů?](#timeout-and-server-busy-errors) |
 | &nbsp; |Opakování |[Vyloučí vaše aplikace opakované pokusy o neopakující se chyby?](#non-retryable-errors) |
 | &nbsp; |Kopírování objektů BLOB |[Kopírujete objekty blob nejúčinnějším způsobem?](#blob-copy-apis) |
@@ -66,7 +66,7 @@ Další informace o cílech škálovatelnosti pro Služba front najdete v témat
 Pokud se přiblížíte k maximálnímu počtu účtů úložiště povolených pro určitou kombinaci předplatného nebo oblasti, vyhodnoťte svůj scénář a určete, jestli platí některá z následujících podmínek:
 
 - Používáte účty úložiště k ukládání nespravovaných disků a přidávání těchto disků do virtuálních počítačů (VM)? V tomto scénáři Microsoft doporučuje používat spravované disky. Spravované disky se škálují automaticky a bez nutnosti vytvářet a spravovat jednotlivé účty úložiště. Další informace najdete v tématu [Úvod do služby Azure Managed disks](../../virtual-machines/managed-disks-overview.md) .
-- Používáte pro účely izolace dat jeden účet úložiště pro každého zákazníka? V tomto scénáři Microsoft doporučuje použít pro každého zákazníka kontejner objektů BLOB namísto celého účtu úložiště. Azure Storage teď umožňuje přiřadit role Azure na základě jednotlivých kontejnerů. Další informace najdete v tématu [udělení přístupu k datům Azure Blob a Queue do fronty pomocí RBAC v Azure Portal](../common/storage-auth-aad-rbac-portal.md).
+- Používáte pro účely izolace dat jeden účet úložiště pro každého zákazníka? V tomto scénáři Microsoft doporučuje použít pro každého zákazníka kontejner objektů BLOB namísto celého účtu úložiště. Azure Storage teď umožňuje přiřadit role Azure na základě jednotlivých kontejnerů. Další informace najdete v tématu [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](../common/storage-auth-aad-rbac-portal.md).
 - Používáte k horizontálních oddílů více účtů úložiště k navýšení příchozích, odchozích a vstupně-výstupních operací za sekundu (IOPS) nebo kapacity? V tomto scénáři Microsoft doporučuje, abyste využili vyšší omezení pro účty úložiště, abyste snížili počet účtů úložiště potřebných pro vaše zatížení, pokud je to možné. Kontaktujte [podporu Azure](https://azure.microsoft.com/support/options/) a požádejte o zvýšená omezení pro váš účet úložiště. Další informace najdete v tématu [oznamujeme větší, vyšší škálování účtů úložiště](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Cíle kapacity a transakce

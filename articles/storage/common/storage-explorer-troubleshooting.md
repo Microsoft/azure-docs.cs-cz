@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: b57a57f05853b9f8c291dc2ac352db7b1e679260
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534851"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714446"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumníkem služby Azure Storage
 
@@ -21,13 +21,13 @@ Průzkumník služby Azure Storage je samostatná aplikace, která usnadňuje pr
 
 Tato příručka shrnuje řešení problémů, které se běžně zobrazují v Průzkumník služby Storage.
 
-## <a name="rbac-permissions-issues"></a>Problémy s oprávněními RBAC
+## <a name="azure-rbac-permissions-issues"></a>Problémy s oprávněními Azure RBAC
 
-[RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) řízení přístupu na základě rolí umožňuje vysoce detailní správu přístupu prostředků Azure tím, že kombinuje sady oprávnění s _rolemi_. Tady jsou některé strategie pro optimální práci RBAC v Průzkumník služby Storage.
+Řízení přístupu na základě role Azure [RBAC Azure](https://docs.microsoft.com/azure/role-based-access-control/overview) umožňuje vysoce detailní správu přístupu prostředků Azure tím, že kombinuje sady oprávnění s _rolemi_. Tady jsou některé strategie pro optimální fungování Azure RBAC v Průzkumník služby Storage.
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Návody přistupovat k prostředkům v Průzkumník služby Storage?
 
-Pokud máte problémy s přístupem k prostředkům úložiště prostřednictvím RBAC, možná nebudete mít přiřazeny příslušné role. Následující části popisují oprávnění Průzkumník služby Storage aktuálně vyžadují přístup k prostředkům úložiště. Pokud si nejste jistí, že máte příslušné role nebo oprávnění, obraťte se na správce účtu Azure.
+Pokud máte problémy s přístupem k prostředkům úložiště prostřednictvím Azure RBAC, možná nebudete mít přiřazeny příslušné role. Následující části popisují oprávnění Průzkumník služby Storage aktuálně vyžadují přístup k prostředkům úložiště. Pokud si nejste jistí, že máte příslušné role nebo oprávnění, obraťte se na správce účtu Azure.
 
 #### <a name="read-listget-storage-accounts-permissions-issue"></a>Problém s oprávněním pro čtení: vypsat/získat účty úložiště
 
@@ -65,7 +65,7 @@ Pokud chcete získat přístup k kontejnerům nebo frontám objektů blob, můž
 3. Vyberte uživatelský účet a tenanta přidružený k prostředku, ke kterému se připojujete. Klikněte na Další.
 4. Vyberte typ prostředku, zadejte adresu URL prostředku a zadejte jedinečný zobrazovaný název pro připojení. Klikněte na Další. Klikněte na Připojit.
 
-U jiných typů prostředků momentálně nepoužíváme řešení související s RBAC. Jako alternativní řešení si můžete vyžádat identifikátor URI SAS, který se [připojí k vašemu prostředku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
+U jiných typů prostředků momentálně nepoužíváme řešení související se službou Azure RBAC. Jako alternativní řešení si můžete vyžádat identifikátor URI SAS, který se [připojí k vašemu prostředku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
 ### <a name="recommended-azure-built-in-roles"></a>Doporučené předdefinované role Azure
 
@@ -175,9 +175,9 @@ Pokud po úspěšném přihlášení nemůžete načíst vaše předplatné, zku
 
 Pokud nemůžete odebrat připojený účet nebo prostředek úložiště prostřednictvím uživatelského rozhraní, můžete ručně odstranit všechny připojené prostředky odstraněním následujících složek:
 
-* Systému`%AppData%/StorageExplorer`
-* MacOS`/Users/<your_name>/Library/Application Support/StorageExplorer`
-* Linux`~/.config/StorageExplorer`
+* Systému `%AppData%/StorageExplorer`
+* MacOS `/Users/<your_name>/Library/Application Support/StorageExplorer`
+* Linux `~/.config/StorageExplorer`
 
 > [!NOTE]
 > Před odstraněním těchto složek zavřete Průzkumník služby Storage.

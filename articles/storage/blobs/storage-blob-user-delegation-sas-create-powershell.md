@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 781d76cb80dd375c54d1283ecf27f543765f5ddb
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 875b2a9f35562dd8f0d5df3c631e5ade1e3fbf75
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077020"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714526"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Vytvoření SAS delegování uživatele pro kontejner nebo objekt BLOB pomocí PowerShellu
 
@@ -75,9 +75,9 @@ Connect-AzAccount
 
 Další informace o přihlašování pomocí PowerShellu najdete v tématu věnovaném [přihlášení pomocí Azure PowerShell](/powershell/azure/authenticate-azureps).
 
-## <a name="assign-permissions-with-rbac"></a>Přiřazení oprávnění s RBAC
+## <a name="assign-permissions-with-azure-rbac"></a>Přiřazení oprávnění k Azure RBAC
 
-K vytvoření SAS delegování uživatele z Azure PowerShell musí být účet služby Azure AD, který se používá pro přihlášení do prostředí PowerShell, přiřazen roli, která zahrnuje akci **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** . Toto oprávnění umožňuje účtu Azure AD požádat o *klíč delegování uživatele*. Klíč pro delegování uživatelů se používá k podepsání SAS delegování uživatele. Role, která poskytuje akci **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** , musí být přiřazená na úrovni účtu úložiště, skupiny prostředků nebo předplatného. Další informace o oprávněních RBAC pro vytvoření SAS pro delegování uživatelů najdete v části **přiřazení oprávnění s RBAC** v tématu [Vytvoření SAS uživatele pro delegování](/rest/api/storageservices/create-user-delegation-sas).
+K vytvoření SAS delegování uživatele z Azure PowerShell musí být účet služby Azure AD, který se používá pro přihlášení do prostředí PowerShell, přiřazen roli, která zahrnuje akci **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** . Toto oprávnění umožňuje účtu Azure AD požádat o *klíč delegování uživatele*. Klíč pro delegování uživatelů se používá k podepsání SAS delegování uživatele. Role, která poskytuje akci **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** , musí být přiřazená na úrovni účtu úložiště, skupiny prostředků nebo předplatného. Další informace o oprávněních služby Azure RBAC pro vytvoření SAS delegování uživatelů najdete v části **přiřazení oprávnění k Azure RBAC** v tématu [Vytvoření SAS uživatele pro delegování](/rest/api/storageservices/create-user-delegation-sas).
 
 Pokud nemáte dostatečná oprávnění k přiřazení rolí Azure k objektu zabezpečení služby Azure AD, může být nutné požádat vlastníka nebo správce účtu, aby přiřadil potřebná oprávnění.
 

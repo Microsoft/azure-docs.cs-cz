@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 3d0ef8a8641c3814fa7c9964786a7f24f5e54a01
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 162aa0c382ec22f946d20299fbb990b92481518f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534936"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714687"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Použití poskytovatele prostředků Azure Storage k přístupu k prostředkům správy
 
@@ -26,13 +26,13 @@ Poskytovatele prostředků Azure Storage můžete použít k provádění akcí,
 
 Microsoft poskytuje dvě rozhraní REST API pro práci s Azure Storagemi prostředky. Tato rozhraní API tvoří základ všech akcí, které můžete provádět proti Azure Storage. REST API Azure Storage vám umožní pracovat s daty v účtu úložiště, včetně objektů blob, front, souborů a dat tabulek. Azure Storage poskytovatel prostředků REST API vám umožní pracovat s účtem úložiště a souvisejícími prostředky.
 
-Požadavek, který čte nebo zapisuje data objektů blob, vyžaduje různá oprávnění, než je požadavek, který provádí operaci správy. RBAC poskytuje jemně odstupňovanou kontrolu nad oprávněními obou typů prostředků. Když k objektu zabezpečení přiřadíte roli Azure, ujistěte se, že rozumíte tomu, jaká oprávnění budou udělena. Podrobné informace, které popisují, které akce jsou spojené s jednotlivými integrovanými rolemi Azure, najdete v tématu [předdefinované role Azure](../../role-based-access-control/built-in-roles.md).
+Požadavek, který čte nebo zapisuje data objektů blob, vyžaduje různá oprávnění, než je požadavek, který provádí operaci správy. Azure RBAC poskytuje jemně odstupňovanou kontrolu nad oprávněními pro oba typy prostředků. Když k objektu zabezpečení přiřadíte roli Azure, ujistěte se, že rozumíte tomu, jaká oprávnění budou udělena. Podrobné informace, které popisují, které akce jsou spojené s jednotlivými integrovanými rolemi Azure, najdete v tématu [předdefinované role Azure](../../role-based-access-control/built-in-roles.md).
 
 Azure Storage podporuje použití Azure AD k autorizaci požadavků na úložiště objektů BLOB a front. Informace o rolích Azure pro operace s daty objektů BLOB a front najdete v tématu [autorizace přístupu k objektům blob a frontám pomocí služby Active Directory](storage-auth-aad.md).
 
-## <a name="assign-management-permissions-with-role-based-access-control-rbac"></a>Přiřazení oprávnění pro správu k řízení přístupu na základě role (RBAC)
+## <a name="assign-management-permissions-with-azure-role-based-access-control-azure-rbac"></a>Přiřazení oprávnění pro správu k řízení přístupu na základě role v Azure (Azure RBAC)
 
-Každé předplatné Azure má přidruženou Azure Active Directory, která spravuje uživatele, skupiny a aplikace. Uživatel, skupina nebo aplikace se také označuje jako instanční objekt zabezpečení v kontextu [platformy Microsoft Identity](/azure/active-directory/develop/). Přístup k prostředkům v předplatném můžete udělit objektu zabezpečení, který je definovaný ve službě Active Directory pomocí řízení přístupu na základě role (RBAC).
+Každé předplatné Azure má přidruženou Azure Active Directory, která spravuje uživatele, skupiny a aplikace. Uživatel, skupina nebo aplikace se také označuje jako instanční objekt zabezpečení v kontextu [platformy Microsoft Identity](/azure/active-directory/develop/). Přístup k prostředkům v předplatném můžete udělit objektu zabezpečení, který je definovaný ve službě Active Directory pomocí řízení přístupu založeného na rolích Azure (Azure RBAC).
 
 Když přiřadíte roli Azure k objektu zabezpečení, také určíte rozsah, ve kterém budou oprávnění udělená rolí platná. Pro operace správy můžete přiřadit roli na úrovni předplatného, skupiny prostředků nebo účtu úložiště. Roli Azure můžete přiřadit k objektu zabezpečení pomocí [Azure Portal](https://portal.azure.com/), [nástrojů Azure CLI](../../cli-install-nodejs.md), [powershellu](/powershell/azure/)nebo [poskytovatele prostředků Azure Storage REST API](/rest/api/storagerp).
 

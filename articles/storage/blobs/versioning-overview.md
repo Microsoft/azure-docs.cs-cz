@@ -10,12 +10,12 @@ ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e4a13fb22fd826f82252383587bc4a273c43099f
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 191213511a6b41e3a8419660a40b8d79a5c747f2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613505"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714936"
 ---
 # <a name="blob-versioning"></a>Správa verzí objektů BLOB
 
@@ -175,17 +175,17 @@ Následující diagram ukazuje, co se stane při pořizování snímku objektu B
 
 Přístup k verzím objektů blob můžete autorizovat pomocí jednoho z následujících přístupů:
 
-- Pomocí řízení přístupu na základě role (RBAC) udělíte oprávnění objektu zabezpečení služby Azure Active Directory (Azure AD). Microsoft doporučuje používat Azure AD pro zajištění vysokého zabezpečení a snadného použití. Další informace o používání služby Azure AD s operacemi objektů BLOB najdete v tématu [autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory](../common/storage-auth-aad.md).
+- Pomocí řízení přístupu na základě role Azure (Azure RBAC) udělíte oprávnění objektu zabezpečení služby Azure Active Directory (Azure AD). Microsoft doporučuje používat Azure AD pro zajištění vysokého zabezpečení a snadného použití. Další informace o používání služby Azure AD s operacemi objektů BLOB najdete v tématu [autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory](../common/storage-auth-aad.md).
 - Pomocí sdíleného přístupového podpisu (SAS) můžete delegovat přístup k verzím objektů BLOB. Zadejte ID verze pro typ podepsaného prostředku `bv` , který představuje verzi objektu BLOB pro vytvoření tokenu SAS pro operace v konkrétní verzi. Další informace o sdílených přístupových podpisech najdete v článku [udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md).
 - Použitím přístupových klíčů účtu k autorizaci operací s verzemi objektů BLOB se sdíleným klíčem. Další informace najdete v tématu [autorizace pomocí sdíleného klíče](/rest/api/storageservices/authorize-with-shared-key).
 
 Správa verzí objektů BLOB je navržená tak, aby chránila vaše data před náhodným nebo škodlivým odstraněním. Kvůli vylepšení ochrany vyžaduje odstranění verze objektu BLOB zvláštní oprávnění. Následující části popisují oprávnění potřebná k odstranění verze objektu BLOB.
 
-### <a name="rbac-action-to-delete-a-blob-version"></a>Akce RBAC pro odstranění verze objektu BLOB
+### <a name="azure-rbac-action-to-delete-a-blob-version"></a>Akce Azure RBAC pro odstranění verze objektu BLOB
 
-Následující tabulka uvádí, které akce RBAC podporují odstranění objektu BLOB nebo verze objektu BLOB.
+Následující tabulka uvádí, které akce Azure RBAC podporují odstranění objektu BLOB nebo verze objektu BLOB.
 
-| Popis | Operace Blob service | Vyžaduje se akce s daty RBAC. | Integrovaná podpora rolí RBAC |
+| Description | Operace Blob service | Vyžaduje se akce s daty služby Azure RBAC. | Podpora integrované role Azure |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | Odstraňuje se aktuální verze objektu BLOB. | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE** | Přispěvatel dat v objektech blob služby Storage |
 | Odstraňuje se verze | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/deleteBlobVersion/Action** | Vlastník dat v objektech blob služby Storage |
@@ -291,7 +291,7 @@ Následující tabulka popisuje chování fakturace u objektu blob, který je po
 | Pokud jsou povolené obnovitelné odstranění objektů BLOB a správa verzí | Všechny existující verze s plnou délkou obsahu bez ohledu na úroveň. |
 | Pokud je povolené obnovitelné odstraňování objektů blob, ale je zakázaná správa verzí | Všechny existující snímky obnovitelného odstranění s plnou délkou obsahu bez ohledu na úroveň. |
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Povolení a správa verzí objektů BLOB](versioning-enable.md)
 - [Vytvoření snímku objektu BLOB](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

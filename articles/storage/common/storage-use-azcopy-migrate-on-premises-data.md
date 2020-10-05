@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f2b46e37241cf142f751f2f65a1ef9f092166ec8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5b37417efdb99f6b90983b86954da70fa6f7c6a9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86120632"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716082"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Kurz: migrace místních dat do cloudového úložiště pomocí AzCopy
 
@@ -62,7 +62,7 @@ Uložte soubor AzCopy kamkoli do počítače. Přidejte umístění souboru do p
 
 ## <a name="authenticate-with-azure-ad"></a>Ověřování pomocí Azure AD
 
-Nejdřív k vaší identitě přiřaďte roli [Přispěvatel dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) . Podívejte [se na téma Udělení přístupu k datům objektů blob Azure a frontě pomocí RBAC v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal).
+Nejdřív k vaší identitě přiřaďte roli [Přispěvatel dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) . Viz [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal).
 
 Pak otevřete příkazový řádek, zadejte následující příkaz a stiskněte klávesu ENTER.
 

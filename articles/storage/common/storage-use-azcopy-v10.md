@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a30ab4136b1d54e852ddb8fe3d0ed9a4e2bc9149
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 03f996f1105601dc46c81fa1a874816913e80633
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485936"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716049"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s nástrojem AzCopy
 
@@ -85,7 +85,7 @@ Pokud chcete jenom stahovat soubory, ověřte, že je [čtečka dat objektů BLO
 Chcete-li odeslat soubory, ověřte, zda byla k objektu zabezpečení přiřazena jedna z těchto rolí:
 
 - [Přispěvatel dat v objektech blob služby Storage](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
-- [Vlastník dat objektu BLOB služby Storage](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
+- [Vlastník dat v objektech blob služby Storage](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
 Tyto role se dají přiřadit k objektu zabezpečení v libovolném z těchto oborů:
 
@@ -94,7 +94,7 @@ Tyto role se dají přiřadit k objektu zabezpečení v libovolném z těchto ob
 - Skupina prostředků
 - Předplatné
 
-Informace o tom, jak ověřit a přiřadit role, najdete [v tématu udělení přístupu k datům Azure Blob a Queue do fronty pomocí RBAC v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Informace o tom, jak ověřit a přiřadit role, najdete v tématu [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
 > Mějte na paměti, že rozšíření přiřazení rolí Azure může trvat až pět minut.

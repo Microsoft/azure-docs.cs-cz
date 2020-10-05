@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperfq1
-ms.openlocfilehash: 4a9f243ce32dee9948cd2f2410b5c7f1382bf7c8
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a4c32877ddb260e90fb4121b16a9b318616c2a4d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088846"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715836"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Vyberte, jak autorizovat přístup k datům objektu BLOB v Azure Portal
 
@@ -26,11 +26,11 @@ Můžete také určit, jak autorizovat jednotlivé operace nahrávání objektů
 
 ## <a name="permissions-needed-to-access-blob-data"></a>Oprávnění potřebná pro přístup k datům objektu BLOB
 
-V závislosti na tom, jak chcete autorizovat přístup k datům objektu BLOB v Azure Portal, budete potřebovat specifická oprávnění. Ve většině případů jsou tato oprávnění k dispozici prostřednictvím řízení přístupu na základě role (RBAC). Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
+V závislosti na tom, jak chcete autorizovat přístup k datům objektu BLOB v Azure Portal, budete potřebovat specifická oprávnění. Ve většině případů jsou tato oprávnění poskytována prostřednictvím řízení přístupu na základě role Azure (RBAC). Další informace o službě Azure RBAC najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
 
 ### <a name="use-the-account-access-key"></a>Použití přístupového klíče účtu
 
-Pro přístup k datům objektů BLOB pomocí přístupového klíče účtu musíte mít přiřazenou roli Azure, která zahrnuje akci RBAC **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Tato role Azure může být integrovaná nebo vlastní role. Předdefinované role, které podporují **Microsoft. Storage/storageAccounts/klíče listkey/Action** , zahrnují:
+Pro přístup k datům objektů BLOB pomocí přístupového klíče účtu musíte mít přiřazenou roli Azure, která zahrnuje akci Azure RBAC **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Tato role Azure může být integrovaná nebo vlastní role. Předdefinované role, které podporují **Microsoft. Storage/storageAccounts/klíče listkey/Action** , zahrnují:
 
 - Role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) Azure Resource Manager
 - Role [přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) Azure Resource Manager
@@ -75,11 +75,11 @@ Když přejdete do kontejneru, Azure Portal určuje, jestli aktuálně použív�
 
 Pokud ověřujete pomocí přístupového klíče účtu, zobrazí se na portálu **přístupová klávesa** , která se zadala jako metoda ověřování:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-method-access-key.png" alt-text="Snímek obrazovky zobrazující uživatele, který aktuálně přistupuje k kontejnerům pomocí klíče účtu":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-method-access-key.png" alt-text="Snímek obrazovky ukazující, jak přejít na data objektu BLOB v Azure Portal":::
 
 Pokud chcete přepnout na používání účtu Azure AD, klikněte na odkaz zvýrazněný v imagi. Pokud máte příslušná oprávnění prostřednictvím rolí Azure, které jsou vám přiřazeny, budete moct pokračovat. Pokud ale nemáte správná oprávnění, zobrazí se chybová zpráva podobná následující:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-error-azure-ad.png" alt-text="Pokud účet Azure AD nepodporuje přístup, zobrazí se chyba.":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-error-azure-ad.png" alt-text="Snímek obrazovky ukazující, jak přejít na data objektu BLOB v Azure Portal":::
 
 Všimněte si, že v seznamu se nezobrazí žádné objekty blob, pokud váš účet Azure AD nemá oprávnění k jejich zobrazení. Klikněte na odkaz **Přepnout na přístup k klávesám** a znovu použijte přístupovou klávesu pro ověřování.
 
@@ -87,11 +87,11 @@ Všimněte si, že v seznamu se nezobrazí žádné objekty blob, pokud váš ú
 
 Pokud ověřujete pomocí účtu Azure AD, zobrazí se na portálu **uživatelský účet Azure AD** , který jste zadali jako metodu ověřování:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-method-azure-ad.png" alt-text="Snímek obrazovky uživatele, který aktuálně přistupuje k kontejnerům pomocí účtu Azure AD":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-method-azure-ad.png" alt-text="Snímek obrazovky ukazující, jak přejít na data objektu BLOB v Azure Portal":::
 
 Chcete-li přepnout na používání přístupového klíče účtu, klikněte na odkaz zvýrazněný v obrázku. Pokud máte přístup k klíči účtu, budete moct pokračovat. Pokud ale nemáte přístup k klíči účtu, zobrazí se chybová zpráva podobná následující:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-error-access-key.png" alt-text="Pokud nemáte přístup k klíči účtu, zobrazí se chyba.":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-error-access-key.png" alt-text="Snímek obrazovky ukazující, jak přejít na data objektu BLOB v Azure Portal":::
 
 Všimněte si, že v seznamu se nezobrazí žádné objekty blob, pokud nemáte přístup k klíčům účtu. Klikněte na odkaz **Přepnout na uživatelský účet Azure AD** , abyste mohli znovu použít účet Azure AD pro ověřování.
 
@@ -106,11 +106,11 @@ Chcete-li určit, jak autorizovat operaci nahrání objektu blob, postupujte pod
 1. Rozbalením části **Upřesnit** zobrazíte upřesňující vlastnosti objektu BLOB.
 1. V poli **typ ověřování** určete, jestli chcete autorizovat operaci nahrávání pomocí účtu Azure AD, nebo pomocí přístupového klíče účtu, jak je znázorněno na následujícím obrázku:
 
-    :::image type="content" source="media/authorize-blob-access-portal/auth-blob-upload.png" alt-text="Snímek obrazovky ukazující, jak změnit metodu autorizace při nahrávání objektu BLOB":::
+    :::image type="content" source="media/authorize-blob-access-portal/auth-blob-upload.png" alt-text="Snímek obrazovky ukazující, jak přejít na data objektu BLOB v Azure Portal":::
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Ověřování přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](../common/storage-auth-aad.md)
-- [V Azure Portal udělte přístup k kontejnerům a frontám Azure pomocí RBAC.](../common/storage-auth-aad-rbac-portal.md)
-- [Udělení přístupu k datům front a objektů blob Azure s využitím RBAC pomocí Azure CLI](../common/storage-auth-aad-rbac-cli.md)
-- [Udělení přístupu k datům front a objektů blob Azure s využitím RBAC pomocí PowerShellu](../common/storage-auth-aad-rbac-powershell.md)
+- [Přiřazení role Azure pro přístup k datům BLOB a Queue pomocí Azure Portal](../common/storage-auth-aad-rbac-portal.md)
+- [Přiřazení role Azure pro přístup k datům objektů BLOB a front pomocí Azure CLI](../common/storage-auth-aad-rbac-cli.md)
+- [Použití modulu Azure PowerShell k přiřazení role Azure pro přístup k datům objektů BLOB a front](../common/storage-auth-aad-rbac-powershell.md)

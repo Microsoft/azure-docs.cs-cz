@@ -1,21 +1,21 @@
 ---
 title: Správa oprávnění a zabezpečení rolí v Azure Automation
-description: Tento článek popisuje, jak používat řízení přístupu na základě role (RBAC), které umožňuje správu přístupu pro prostředky Azure.
+description: Tento článek popisuje, jak používat řízení přístupu na základě role Azure (Azure RBAC), které umožňuje správu přístupu pro prostředky Azure.
 keywords: rbac v automation, řízení přístupu na základě rolí, rbac v azure
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 21742d2db6a7fde69568e5fd1e5eda98542faa47
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528664"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716149"
 ---
 # <a name="manage-role-permissions-and-security"></a>Správa oprávnění rolí a zabezpečení
 
-Řízení přístupu na základě role (RBAC) umožňuje správu přístupu k prostředkům Azure. Pomocí [RBAC](../role-based-access-control/overview.md)můžete oddělit povinnosti v rámci svého týmu a udělit jenom přístup k uživatelům, skupinám a aplikacím, které potřebují k provádění svých úloh. Přístup na základě role můžete uživatelům udělit pomocí Azure Portal, nástrojů příkazového řádku Azure nebo rozhraní API pro správu Azure.
+Řízení přístupu na základě role Azure (Azure RBAC) umožňuje správu přístupu pro prostředky Azure. Pomocí [Azure RBAC](../role-based-access-control/overview.md)můžete oddělit povinnosti v rámci svého týmu a udělit jenom přístup k uživatelům, skupinám a aplikacím, které potřebují k provádění svých úloh. Přístup na základě role můžete uživatelům udělit pomocí Azure Portal, nástrojů příkazového řádku Azure nebo rozhraní API pro správu Azure.
 
 ## <a name="roles-in-automation-accounts"></a>Role v účtech Automation
 
@@ -270,11 +270,11 @@ Služba Update Management dosáhne v rámci více služeb, aby poskytovala služ
 |Řešení     |Přispěvatel Log Analytics         | Řešení|
 |Virtuální počítač     | Přispěvatel virtuálních počítačů        | Virtuální počítač        |
 
-## <a name="configure-rbac-for-your-automation-account"></a>Konfigurace RBAC pro váš účet Automation
+## <a name="configure-azure-rbac-for-your-automation-account"></a>Konfigurace služby Azure RBAC pro váš účet Automation
 
-V následující části se dozvíte, jak nakonfigurovat RBAC na svém účtu Automation pomocí [Azure Portal](#configure-rbac-using-the-azure-portal) a [PowerShellu](#configure-rbac-using-powershell).
+V následující části se dozvíte, jak nakonfigurovat službu Azure RBAC na svém účtu Automation prostřednictvím [Azure Portal](#configure-azure-rbac-using-the-azure-portal) a [PowerShellu](#configure-azure-rbac-using-powershell).
 
-### <a name="configure-rbac-using-the-azure-portal"></a>Konfigurace RBAC pomocí Azure Portal
+### <a name="configure-azure-rbac-using-the-azure-portal"></a>Konfigurace služby Azure RBAC pomocí Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) a na stránce Účty Automation otevřete svůj účet Automation.
 2. Kliknutím na **řízení přístupu (IAM)** otevřete stránku řízení přístupu (IAM). Pomocí této stránky můžete přidat nové uživatele, skupiny a aplikace pro správu účtu Automation a zobrazovat existující role, které se dají konfigurovat pro účet Automation.
@@ -290,7 +290,7 @@ V následující části se dozvíte, jak nakonfigurovat RBAC na svém účtu Au
 
 3. Do pole pro **Výběr** zadejte jméno uživatele, kterému chcete udělit oprávnění. Vyberte uživatele ze seznamu a klikněte na **Uložit**.
 
-   ![Přidání uživatelů](media/automation-role-based-access-control/automation-04-add-users.png)
+   ![Přidávání uživatelů](media/automation-role-based-access-control/automation-04-add-users.png)
 
    Nyní byste měli vidět, že uživatel byl přidán na stránku Uživatelé s přiřazenou vybranou rolí.
 
@@ -315,7 +315,7 @@ Můžete odebrat přístupová oprávnění pro uživatele, který účet Automa
 
    ![Odebrání uživatelů](media/automation-role-based-access-control/automation-08-remove-users.png)
 
-### <a name="configure-rbac-using-powershell"></a>Konfigurace RBAC pomocí prostředí PowerShell
+### <a name="configure-azure-rbac-using-powershell"></a>Konfigurace služby Azure RBAC pomocí prostředí PowerShell
 
 Můžete také nakonfigurovat přístup na základě rolí k účtu Automation pomocí následujících [rutin Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
@@ -398,9 +398,9 @@ Když se uživatel přiřazený k roli operátor Automation v oboru účtu Autom
 
 ![Žádný přístup k prostředkům](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 
-## <a name="configure-rbac-for-runbooks"></a>Konfigurace RBAC pro Runbooky
+## <a name="configure-azure-rbac-for-runbooks"></a>Konfigurace služby Azure RBAC pro Runbooky
 
-Azure Automation umožňuje přiřadit RBAC ke konkrétním sadám Runbook. Pokud to chcete provést, spusťte následující skript, který přidá uživatele do konkrétní sady Runbook. Tento skript může spustit Správce účtu služby Automation nebo Správce klienta.
+Azure Automation umožňuje přiřadit role Azure konkrétním sadám Runbook. Pokud to chcete provést, spusťte následující skript, který přidá uživatele do konkrétní sady Runbook. Tento skript může spustit Správce účtu služby Automation nebo Správce klienta.
 
 ```azurepowershell-interactive
 $rgName = "<Resource Group Name>" # Resource Group name for the Automation account
@@ -423,7 +423,7 @@ New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook O
 
 Po spuštění skriptu se uživatel přihlásí k Azure Portal a vybere **všechny prostředky**. V seznamu může uživatel zobrazit sadu Runbook, pro kterou byl přidán jako operátor Runbooku služby Automation.
 
-![Sada Runbook RBAC na portálu](./media/automation-role-based-access-control/runbook-rbac.png)
+![Sada Runbook Azure RBAC na portálu](./media/automation-role-based-access-control/runbook-rbac.png)
 
 ### <a name="user-experience-for-automation-operator-role---runbook"></a>Činnost koncového uživatele pro roli operátora automatizace – Runbook
 
@@ -433,6 +433,6 @@ Když uživatel přiřazený k roli operátor Automation v oboru Runbooku zobraz
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o RBAC prostředí PowerShell najdete v tématu [Správa RBAC pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
+* Další informace o službě Azure RBAC pomocí prostředí PowerShell najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
 * Podrobnosti o typech sad Runbook naleznete v tématu [Azure Automation typy](automation-runbook-types.md)runbooků.
 * Chcete-li spustit sadu Runbook, přečtěte si téma [Spuštění Runbooku v Azure Automation](start-runbooks.md).

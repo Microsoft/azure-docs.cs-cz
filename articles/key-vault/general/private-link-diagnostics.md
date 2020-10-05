@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: ea818cd14e6052da2bbcf2a4473e95c68cd5e4a9
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: faf7a6e0331e3891c2ece7461685b14e751c0894
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91671302"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713038"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Diagnostika problémů s konfigurací privátních propojení na Azure Key Vault
 
@@ -24,7 +24,7 @@ Pokud s touto funkcí začínáte, přečtěte si téma [integrace Key Vault s p
 
 ### <a name="symptoms-covered-by-this-article"></a>Příznaky, na které se vztahuje tento článek
 
-- Vaše dotazy DNS pořád vrátí veřejnou IP adresu pro Trezor klíčů místo na privátní IP adresu, kterou byste očekávali od použití funkce privátního odkazu.
+- Vaše dotazy DNS pořád vrátí veřejnou IP adresu pro Trezor klíčů místo na privátní IP adresu, kterou byste očekávali od použití funkce privátních odkazů.
 - Všechny požadavky prováděné daným klientem, který používá privátní propojení, selžou s časovými prodlevami nebo chybami sítě a problém není přerušovaný.
 - Trezor klíčů má soukromou IP adresu, ale požadavky pořád obdrží `403` odpověď s `ForbiddenByFirewall` kódem vnitřní chyby.
 - Používáte privátní odkazy, ale váš Trezor klíčů stále přijímá žádosti z veřejného Internetu.
@@ -34,7 +34,7 @@ Pokud s touto funkcí začínáte, přečtěte si téma [integrace Key Vault s p
 ### <a name="symptoms-not-covered-by-this-article"></a>Příznaky, na které se nevztahuje tento článek
 
 - Dochází k přerušovanému problému s připojením. V daném klientovi vidíte, že některé žádosti fungují a některé nefungují. *Občasné problémy většinou nejsou způsobené problémem v konfiguraci privátních odkazů. Jedná se o znaménko přetížení sítě nebo klienta.*
-- Používáte produkt a produkt Azure, který podporuje BYOK (Bring Your Own Key) nebo CMK (klíče spravované zákazníkem) a tento produkt nemá přístup k vašemu trezoru klíčů. *Podívejte se na dokumentaci k produktu. Ujistěte se, že explicitně nastavují podporu pro trezory klíčů s povolenou bránou firewall. V případě potřeby kontaktujte produktovou podporu pro daný produkt.*
+- Používáte produkt Azure, který podporuje BYOK (Bring Your Own Key) nebo CMK (klíče spravované zákazníkem) a tento produkt nemá přístup k vašemu trezoru klíčů. *Podívejte se na dokumentaci k produktu. Ujistěte se, že explicitně nastavují podporu pro trezory klíčů s povolenou bránou firewall. V případě potřeby kontaktujte produktovou podporu pro daný produkt.*
 
 ### <a name="how-to-read-this-article"></a>Postup čtení tohoto článku
 
@@ -46,7 +46,7 @@ Pusťme se do toho.
 
 ### <a name="confirm-that-your-client-runs-at-the-virtual-network"></a>Potvrďte, že váš klient běží ve virtuální síti.
 
-Tato příručka pro řešení potíží se vztahuje na připojení k trezoru klíčů, který pochází z kódu aplikace. Příklady jsou aplikace a skripty spouštěné ve virtuálních počítačích, clusterech Azure Service Fabric, Azure App Service, Azure Kubernetes Service (AKS) a podobných dalších.
+Tato příručka je určená k tomu, aby vám pomohla při určování připojení k trezoru klíčů, který pochází z kódu aplikace. Příklady jsou aplikace a skripty spouštěné v Azure Virtual Machines, clusterech Azure Service Fabric, Azure App Service, služba Azure Kubernetes (AKS) a podobné jiné.
 
 V rámci definice privátních odkazů musí být aplikace nebo skript spuštěné v počítači, clusteru nebo prostředí připojeném k Virtual Network, kde byl nasazen [prostředek privátního koncového bodu](../../private-link/private-endpoint-overview.md) . Pokud je aplikace spuštěná v libovolné síti připojené k Internetu, tato příručka se nedá použít a pravděpodobně se nedají použít privátní odkazy.
 
@@ -128,7 +128,7 @@ Budete muset diagnostikovat překlad názvů hostitelů a pro to, aby bylo nutn�
 IP adresa je ta, kterou virtuální počítače a další zařízení *běžící ve stejné Virtual Network* použijí pro připojení k trezoru klíčů. Poznamenejte si IP adresu, nebo ponechte kartu prohlížeče otevřenou a při dalším vyšetřování si ji nedělejte kontaktovat.
 
 >[!NOTE]
-> Pokud má Trezor klíčů více privátních koncových bodů, bude mít několik privátních IP adres. To je užitečné pouze v případě, že máte více virtuálních sítí, které přistupují ke stejnému trezoru klíčů, z nichž každý má vlastní soukromý koncový bod (soukromý koncový bod patří do jednoho Virtual Network). Ujistěte se, že jste diagnostikovat problém pro správnou Virtual Network, a v postupu výše vyberte správné připojení privátního koncového bodu. Kromě toho **nevytvářejte více** privátních koncových bodů pro stejné Key Vault ve stejném Virtual Network. To není nutné a je zdrojem nejasností.
+> Pokud má váš Trezor klíčů více privátních koncových bodů, má několik privátních IP adres. To je užitečné pouze v případě, že máte více virtuálních sítí, které přistupují ke stejnému trezoru klíčů, z nichž každý má vlastní soukromý koncový bod (soukromý koncový bod patří do jednoho Virtual Network). Ujistěte se, že jste diagnostikovat problém pro správnou Virtual Network, a v postupu výše vyberte správné připojení privátního koncového bodu. Kromě toho **nevytvářejte více** privátních koncových bodů pro stejné Key Vault ve stejném Virtual Network. To není nutné a je zdrojem nejasností.
 
 ## <a name="5-validate-the-dns-resolution"></a>5. Ověřte překlad DNS.
 
@@ -158,11 +158,11 @@ Linux:
 
 Můžete vidět, že se název přeloží na veřejnou IP adresu a že neexistuje žádný `privatelink` alias. Alias se vysvětluje později, nemusíte si ho dělat hned teď.
 
-Očekávaný výsledek je očekáván bez ohledu na to, že je počítač připojen k Virtual Network nebo se jedná o libovolný počítač s připojením k Internetu. K tomu dochází, protože Trezor klíčů nemá v schváleném stavu žádné privátní propojení, a proto není nutné, aby Trezor klíčů podporoval připojení přes privátní propojení.
+Očekávaný výsledek je očekáván bez ohledu na to, že je počítač připojen k Virtual Network nebo se jedná o libovolný počítač s připojením k Internetu. K tomu dochází, protože Trezor klíčů nemá žádné připojení privátního koncového bodu ve schváleném stavu, a proto není nutné, aby Trezor klíčů podporoval privátní odkazy.
 
 ### <a name="key-vault-with-private-link-resolving-from-arbitrary-internet-machine"></a>Trezor klíčů s řešením privátního propojení z libovolného internetového počítače
 
-Pokud má Trezor klíčů jedno nebo více připojení privátních koncových bodů ve schváleném stavu a překládáte název hostitele z libovolného počítače připojeného k Internetu ( **počítač, který není připojen** k Virtual Network, kde se nachází soukromý koncový bod), najdete toto:
+Pokud má Trezor klíčů jedno nebo více připojení privátních koncových bodů ve schváleném stavu a překládáte název hostitele z libovolného počítače připojeného k Internetu ( *počítač, který není připojen* k Virtual Network, kde se nachází soukromý koncový bod), najdete toto:
 
 Windows:
 
@@ -229,7 +229,7 @@ Vaše předplatné Azure musí mít prostředek [zóny privátní DNS](../../dns
 
 Přítomnost tohoto prostředku můžete zjistit tak, že na portálu kliknete na stránku předplatné a v nabídce vlevo vyberete "prostředky". Název prostředku musí být `privatelink.vaultcore.azure.net` a typ prostředku musí být **privátní DNS zóna**.
 
-Obvykle se tento prostředek vytvoří automaticky při vytvoření privátního koncového bodu pomocí typické metody. Existují však případy, kdy tento prostředek není vytvořen automaticky a budete ho muset provést ručně. Tento prostředek se mohl také omylem odstranit.
+Obvykle se tento prostředek vytvoří automaticky při vytvoření privátního koncového bodu pomocí typické metody. Existují však případy, kdy tento prostředek není vytvořen automaticky a je třeba jej provést ručně. Tento prostředek se mohl také omylem odstranit.
 
 Pokud tento prostředek nemáte, vytvořte nový prostředek zóny Privátní DNS v rámci svého předplatného. Pamatujte, že název musí být přesně `privatelink.vaultcore.azure.net` , bez mezer nebo dalších teček. Pokud zadáte nesprávný název, řešení překladu názvů popsané v tomto článku nebude fungovat. Další informace o tom, jak vytvořit tento prostředek, najdete v tématu [Vytvoření privátní zóny DNS Azure pomocí Azure Portal](../../dns/private-dns-getstarted-portal.md). Pokud budete postupovat podle této stránky, můžete přeskočit vytváření Virtual Network, protože v tomto okamžiku byste už měli mít nějaký. Můžete také přeskočit ověřovací procedury pomocí Virtual Machines.
 
@@ -253,7 +253,7 @@ Aby překlad názvů trezoru klíčů fungoval, musí existovat `A` záznam s je
 Také hodnota `A` záznamu (IP adresa) musí být [privátní IP adresa trezoru klíčů](#find-the-key-vault-private-ip-address-in-the-virtual-network). Pokud `A` záznam najdete, ale obsahuje je na nesprávnou IP adresu, je nutné odebrat chybnou IP adresu a přidat novou. Doporučuje se odebrat celý `A` záznam a přidat nový.
 
 >[!NOTE]
-> Pokaždé, když odeberete nebo upravíte `A` záznam, může se počítač stále překládat na starou IP adresu, protože hodnota TTL (Time to Live) ještě nemusí být vypršet. Doporučuje se vždycky zadat hodnotu TTL, která není menší než 60 sekund (jedna minuta) a nesmí přesáhnout 600 sekund (10 minut). Pokud zadáte hodnotu, která je příliš velká, budou mít klienti problémy s obnovou z výpadků.
+> Pokaždé, když odeberete nebo upravíte `A` záznam, může se počítač stále překládat na starou IP adresu, protože hodnota TTL (Time to Live) ještě nemusí být vypršet. Doporučuje se vždycky zadat hodnotu TTL, která není menší než 60 sekund (jedna minuta) a nesmí přesáhnout 600 sekund (10 minut). Pokud zadáte příliš velkou hodnotu, vaše obnovení z výpadků může trvat příliš dlouho.
 
 ### <a name="dns-resolution-for-more-than-one-virtual-network"></a>Překlad názvů DNS pro více než jeden Virtual Network
 
@@ -261,15 +261,13 @@ Pokud existuje více virtuálních sítí a každá z nich má svůj vlastní pr
 
 V pokročilejších scénářích je více virtuálních sítí s povoleným partnerským vztahem. V takovém případě bude potřebovat pouze jeden Virtual Network prostředek privátního koncového bodu, i když oba mohou být propojeny s prostředkem zóny Privátní DNS. Tento scénář není přímo pokryt tímto dokumentem.
 
-### <a name="fact-the-user-controls-dns-resolution"></a>Fakt: uživatel řídí překlad DNS.
+### <a name="fact-you-have-control-over-dns-resolution"></a>Fakt: máte kontrolu nad překladem názvů DNS.
 
-Pokud jste osoba v síti Scholar nebo zajímá, pravděpodobně jste si vyhodnotili, jak funguje překlad DNS. Jak je vysvětleno v [předchozí části](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine), Trezor klíčů s privátními odkazy bude mít `{vaultname}.privatelink.vaultcore.azure.net` ve své *veřejné* registraci alias. Server DNS používaný Virtual Network zkontroluje všechny aliasy pro registraci *privátního* názvu, a pokud se najde, zastaví se podle aliasů veřejné registrace.
+Jak je vysvětleno v [předchozí části](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine), Trezor klíčů s privátními odkazy má alias `{vaultname}.privatelink.vaultcore.azure.net` ve své *veřejné* registraci. Server DNS používaný Virtual Network používá veřejnou registraci, ale kontroluje všechny aliasy pro *soukromou* registraci, a pokud je nalezen, zastaví se následující aliasy definované při veřejné registraci.
 
-Například je třeba vzít v úvahu, že Virtual Network je propojena se zónou Privátní DNS s názvem `privatelink.vaultcore.azure.net` a že registrace veřejné služby DNS pro Trezor klíčů má alias `fabrikam.privatelink.vaultcore.azure.net` . Všimněte si, že přípona odpovídá přesně názvu Privátní DNS zóny. To znamená, že řešení bude nejprve vypadat jako `A` záznam s názvem `fabrikam` v zóně privátní DNS. Pokud se `A` záznam najde, jeho IP adresa se vrátí v dotazu DNS. A tato IP adresa se právě stane privátní IP adresou trezoru klíčů.
+Tato logika znamená, že pokud je Virtual Network propojena s Privátní DNSou zónou s názvem `privatelink.vaultcore.azure.net` a veřejná registrace DNS pro Trezor klíčů má alias `fabrikam.privatelink.vaultcore.azure.net` (Všimněte si, že přípona názvu hostitele trezoru klíčů odpovídá přesně názvu zóny privátní DNS), pak bude dotaz DNS hledat `A` záznam s názvem `fabrikam` *v privátní DNS zóně*. Pokud se `A` záznam najde, jeho IP adresa se vrátí v dotazu DNS a při veřejné registraci DNS se neprovádí žádné další vyhledávání.
 
-Jak vidíte, celé rozlišení názvu je v rámci uživatelského ovládacího prvku.
-
-Existují dva důvody pro tento návrh:
+Jak vidíte, překlad názvů je pod vaším ovládacím prvkem. Pro tento návrh jsou k disdobu tyto důvody:
 
 - Můžete mít složitý scénář, který zahrnuje vlastní servery DNS a integraci s místními sítěmi. V takovém případě je potřeba určit, jak se mají překládat názvy na IP adresy.
 - Je možné, že budete potřebovat přístup k trezoru klíčů bez privátních odkazů. V takovém případě musí název hostitele z Virtual Network vracet veřejnou IP adresu a k tomu dojde proto, že trezory klíčů bez privátních odkazů nemají `privatelink` v registraci názvu alias.

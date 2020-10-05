@@ -3,12 +3,12 @@ title: Oprávnění v Azure Advisor
 description: Oprávnění služby Advisor a jejich způsob, jak můžou zablokovat možnost konfigurovat předplatná nebo odložit nebo zrušit doporučení.
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 3c7b42372ae6de5c2f519b69aec8a154a2f35a82
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 402a21c47c4cba8f747d5d4601f9c95034c99262
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927381"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712921"
 ---
 # <a name="permissions-in-azure-advisor"></a>Oprávnění v Azure Advisor
 
@@ -47,7 +47,7 @@ Pokud při pokusu o odložení nebo zrušení doporučení dojde k chybě, možn
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek obsahuje přehled o tom, jak Advisor používá RBAC k řízení uživatelských oprávnění a k řešení běžných problémů. Další informace o službě Advisor najdete v těchto tématech:
+Tento článek obsahuje přehled o tom, jak Advisor používá službu Azure RBAC k řízení uživatelských oprávnění a řešení běžných problémů. Další informace o službě Advisor najdete v těchto tématech:
 
 - [Co je Azure Advisor?](./advisor-overview.md)
 - [Začínáme se službou Azure Advisor](./advisor-get-started.md)

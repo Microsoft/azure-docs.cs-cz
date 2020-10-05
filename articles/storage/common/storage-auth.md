@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a56fdf8bc3bfa93c12cce66664e68b223fa97ff2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 806222fc522c548fd58935812d705e12c9b3cee1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029531"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714423"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Autorizace přístupu k datům v Azure Storage
 
@@ -33,11 +33,11 @@ Následující tabulka popisuje možnosti, které Azure Storage nabídky pro aut
 
 Každá možnost autorizace je stručně popsána níže:
 
-- **Integrace služby Azure Active Directory (Azure AD)** pro objekty BLOB a fronty. Azure AD poskytuje řízení přístupu na základě role (RBAC) pro kontrolu nad přístupem klienta k prostředkům v účtu úložiště. Další informace o integraci Azure AD pro objekty BLOB a fronty najdete v tématu [autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](storage-auth-aad.md).
+- **Integrace služby Azure Active Directory (Azure AD)** pro objekty BLOB a fronty. Azure poskytuje řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu klienta k prostředkům v účtu úložiště. Další informace o integraci Azure AD pro objekty BLOB a fronty najdete v tématu [autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](storage-auth-aad.md).
 
-- **Azure Active Directory Domain Services (azure služba AD DS) ověřování** pro soubory Azure. Soubory Azure podporují autorizaci založenou na identitě přes protokol SMB (Server Message Block) prostřednictvím Azure služba AD DS. Pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům služby soubory Azure v účtu úložiště můžete použít RBAC. Další informace týkající se ověřování souborů Azure pomocí služby Domain Services najdete v [přehledu](../files/storage-files-active-directory-overview.md).
+- **Azure Active Directory Domain Services (azure služba AD DS) ověřování** pro soubory Azure. Soubory Azure podporují autorizaci založenou na identitě přes protokol SMB (Server Message Block) prostřednictvím Azure služba AD DS. Můžete použít Azure RBAC pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům souborů Azure v účtu úložiště. Další informace týkající se ověřování souborů Azure pomocí služby Domain Services najdete v [přehledu](../files/storage-files-active-directory-overview.md).
 
-- **Místní Active Directory Domain Services (služba AD DS nebo místní služba AD DS) ověřování (Preview)** pro soubory Azure. Soubory Azure podporují autorizaci na základě identity přes protokol SMB prostřednictvím služba AD DS. Vaše prostředí služba AD DS se může hostovat na místních nebo virtuálních počítačích Azure. Přístup SMB k souborům se podporuje pomocí služba AD DS přihlašovacích údajů z počítačů připojených k doméně, a to v místním prostředí nebo v Azure. Můžete použít kombinaci RBAC pro řízení přístupu na úrovni sdílené složky a DACL pro NTFS pro vynucení oprávnění na úrovni adresářů a souborů. Další informace týkající se ověřování souborů Azure pomocí služby Domain Services najdete v [přehledu](../files/storage-files-active-directory-overview.md).
+- **Místní Active Directory Domain Services (služba AD DS nebo místní služba AD DS) ověřování (Preview)** pro soubory Azure. Soubory Azure podporují autorizaci na základě identity přes protokol SMB prostřednictvím služba AD DS. Vaše prostředí služba AD DS se může hostovat na místních nebo virtuálních počítačích Azure. Přístup SMB k souborům se podporuje pomocí služba AD DS přihlašovacích údajů z počítačů připojených k doméně, a to v místním prostředí nebo v Azure. Můžete použít kombinaci služby Azure RBAC pro řízení přístupu na úrovni sdílené složky a DACL pro NTFS pro vynucení oprávnění na úrovni adresářů a souborů. Další informace týkající se ověřování souborů Azure pomocí služby Domain Services najdete v [přehledu](../files/storage-files-active-directory-overview.md).
 
 - **Autorizace sdíleného klíče** pro objekty blob, soubory, fronty a tabulky. Klient používající sdílený klíč projde hlavičkou každý požadavek, který je podepsaný pomocí přístupového klíče účtu úložiště. Další informace najdete v tématu [autorizace pomocí sdíleného klíče](/rest/api/storageservices/authorize-with-shared-key/).
 - **Sdílené přístupové podpisy** pro objekty blob, soubory, fronty a tabulky. Sdílené přístupové podpisy (SAS) poskytují omezený delegovaný přístup k prostředkům v účtu úložiště. Přidání omezení v časovém intervalu, pro který je podpis platný, nebo na oprávnění, která uděluje, poskytují flexibilitu při správě přístupu. Další informace najdete v tématu [použití sdílených přístupových podpisů (SAS)](storage-sas-overview.md).

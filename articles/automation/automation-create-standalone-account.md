@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 40654926b2998b3ba1c4ce1a5607a768f2c32340
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c78a65c3cc2d913ba0b836947d2184b3a061a648
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987278"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714651"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
@@ -22,7 +22,7 @@ Když v Azure Portal vytvoříte účet Automation, automaticky se vytvoří ú�
 
 * Vytvoří instanční objekt ve službě Azure Active Directory (Azure AD).
 * Vytvoří certifikát.
-* Přiřadí Access Control na základě rolí přispěvatele (RBAC), která spravuje prostředky Azure Resource Manager pomocí runbooků.
+* Přiřadí roli přispěvatele, která spravuje Azure Resource Manager prostředky pomocí runbooků.
 
 S tímto účtem vytvořeným pro vás můžete rychle začít sestavovat a nasazovat Runbooky pro podporu vašich potřeb automatizace.
 
@@ -74,7 +74,7 @@ Chcete-li vytvořit účet Azure Automation v Azure Portal, proveďte následuj�
    > [!NOTE]
    > Pokud se rozhodnete nevytvořit účet Spustit jako, vyberte pro **Vytvoření účtu spustit v Azure jako**možnost **ne** a v podokně Přidat účet Automation se zobrazí zpráva. I když je účet vytvořen v Azure Portal, nemá účet odpovídající identitu ověřování v rámci předplatného modelu nasazení Classic nebo v adresářové službě Azure Resource Manager předplatného. Proto účet Automation nemá přístup k prostředkům ve vašem předplatném. To brání tomu, aby Runbooky, které odkazují na tento účet, mohly ověřovat a provádět úlohy s prostředky v těchto modelech nasazení.
    >
-   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="Snímek obrazovky s výzvou zpráva ' zvolili jste, že nechcete vytvořit účet Spustit jako. '":::
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="Snímek obrazovky s výzvou nemáte oprávnění k vytvoření účtu Spustit jako v Azure Active Directory.":::
    >
    > Pokud objekt služby není vytvořen, role přispěvatele není přiřazena.
    >

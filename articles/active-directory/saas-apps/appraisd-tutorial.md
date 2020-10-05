@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 2b8e8a6df2fc355ad6a8ef50d801dc7457e97c63
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e355241191a4bdcab12c7c0b6527706b044a70c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547779"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714479"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Kurz: integrace vyhodnocení pomocí Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte, jak integrovat vyhodnocení pomocí Azure Active Dir
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -86,7 +86,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Vyhodnocená aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**. Vyhodnocená aplikace očekává, že **NameIdentifier** budou namapovány pomocí **User. mail**, takže je nutné upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky se zobrazí v podokně atributů uživatele se zvýrazněnou ikonou pro úpravy.](common/edit-attribute.png)
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -110,15 +110,15 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. V pravém horním rohu stránky klikněte na ikonu **Nastavení** a potom přejděte ke **konfiguraci**.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
+    ![Snímek obrazovky se zobrazeným odkazem konfigurace.](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
 5. V levé části nabídky klikněte na **jednotné přihlašování SAML**.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_single.png)
+    ![Snímek obrazovky zobrazuje možnosti konfigurace s zvýrazněnou možností jednotného přihlašování SAML.](./media/appraisd-tutorial/tutorial_appraisd_single.png)
 
 6. Na stránce **Konfigurace jednotného přihlašování SAML 2,0** proveďte následující kroky:
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
+    ![Snímek obrazovky se zobrazí na stránce konfigurace jednotného přihlašování SAML 2,0, kde můžete upravit výchozí stav přenosu a přihlášení iniciované službou U R L.](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
     a. Zkopírujte **výchozí hodnotu stavu přenosu** a vložte ji do textového pole **stav přenosu** v **základní konfiguraci SAML** na Azure Portal.
 
@@ -126,7 +126,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 7. Posuňte se dolů na stejnou stránku pod položkou **identifikovat uživatele**, proveďte následující kroky:
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
+    ![Snímek obrazovky ukazuje identifikaci uživatelů, kde můžete zadat hodnoty z tohoto kroku.](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
 
     a. V poli **Adresa URL jednotného přihlašování zprostředkovatele identity** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal, a klikněte na **Uložit**.
 
@@ -144,7 +144,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B. Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B. Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -174,15 +174,15 @@ Aby se uživatelé Azure AD mohli přihlásit k posouzení, musí se zřídit pr
 
 2. V pravém horním rohu stránky klikněte na ikonu **Nastavení** a potom přejděte do **centra pro správu**.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
+    ![Snímek obrazovky se zobrazí možnosti nastavení, kde můžete vybrat centrum pro správu.](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
 3. Na panelu nástrojů v horní části stránky klikněte na tlačítko **lidé**a pak přejděte k části **Přidání nového uživatele**.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
+    ![Snímek obrazovky s lidmi zobrazuje vyhodnocenou stránku a přidá nového uživatele.](./media/appraisd-tutorial/tutorial_appraisd_user.png)
 
 4. Na stránce **Přidat nového uživatele** proveďte následující kroky:
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
+    ![Snímek obrazovky se zobrazí stránka Přidat nového uživatele.](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
 
     a. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako například **Britta**.
 

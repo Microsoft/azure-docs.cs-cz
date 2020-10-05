@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4b629ddeb1db8dd94c1c96ecb62fafb9ca7bfc60
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 6af3d9b99625dbecf6aec656d4aa7a65e4d1b4cd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569663"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715209"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -54,7 +54,9 @@ Další podrobnosti najdete v tématu [Koncepty vysoké dostupnosti](concepts-hi
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>Automatizované opravy pomocí spravovaného časového období údržby
 
-Služba provádí automatizované opravy základního hardwaru, operačního systému a databázového stroje. Opravy zahrnují zabezpečení a aktualizace softwaru. Pro modul MySQL jsou jako součást plánované verze údržby zahrnuté i upgrady podverze. Uživatelé můžou nakonfigurovat plán oprav tak, aby byl spravovaný systémem, nebo definovat vlastní plán. Během plánu údržby se oprava použije a server může po dokončení aktualizace vyžadovat restart jako součást procesu oprav. Díky vlastnímu plánu můžou uživatelé provádět předvídatelné cykly oprav a zvolit časové období údržby s minimálním dopadem na firmu. Obecně platí, že služba dodržuje plán měsíčního vydání jako součást průběžné integrace a vydání. 
+Služba provádí automatizované opravy základního hardwaru, operačního systému a databázového stroje. Opravy zahrnují zabezpečení a aktualizace softwaru. Pro modul MySQL jsou jako součást plánované verze údržby zahrnuté i upgrady podverze. Uživatelé můžou nakonfigurovat plán oprav tak, aby byl spravovaný systémem, nebo definovat vlastní plán. Během plánu údržby se oprava použije a server může po dokončení aktualizace vyžadovat restart jako součást procesu oprav. Díky vlastnímu plánu můžou uživatelé provádět předvídatelné cykly oprav a zvolit časové období údržby s minimálním dopadem na firmu. Obecně platí, že služba dodržuje plán měsíčního vydání jako součást průběžné integrace a vydání.
+
+Další podrobnosti najdete v tématu [naplánovaná údržba](concepts-maintenance.md) . 
 
 ## <a name="automatic-backups"></a>Automatické zálohování
 
@@ -86,6 +88,8 @@ Další informace najdete v tématu [Koncepty služby COMPUTE and Storage](conce
 ## <a name="stopstart-server-to-optimize-cost"></a>Zastavení/spuštění serveru za účelem optimalizace nákladů
 
 Flexibilní serverová služba umožňuje zastavit a spustit server na vyžádání, aby se optimalizoval náklady. Fakturace na výpočetní úrovni se okamžitě zastaví, když se Server zastaví. To vám může způsobit výrazné úspory nákladů během vývoje, testování a předvídatelných produkčních úloh, které jsou časově závislé. Server zůstane v zastaveném stavu po dobu sedmi dnů, pokud se znovu nespustí dříve. 
+
+Další informace najdete v tématu [Koncepty serveru](concept-servers.md) . 
 
 ## <a name="enterprise-grade-security-and-privacy"></a>Zabezpečení a ochrana osobních údajů na podnikové úrovni
 

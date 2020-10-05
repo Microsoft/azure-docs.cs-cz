@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 20674f5a793267c3a9e2fa078f95cbf96624df13
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 24814ede954980e3a9fc3c3ba60546cedad4e8fd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550157"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713429"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Kurz: Azure Active Directory Integration with Amazon Web Services (AWS) (kurz starší verze)
 
@@ -30,7 +30,7 @@ Integrace Amazon Web Services (AWS) se službou Azure AD poskytuje následujíc�
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-![Amazon Web Services (AWS) v seznamu výsledků](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
+![Diagram znázorňuje Azure A D s aplikací W připojenou ke třem účtům A W S až do D P iniciované s S S.](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
 > [!NOTE]
 > Poznamenejte si prosím, že se jedna aplikace AWS připojuje ke všem účtům AWS a nejedná se o náš doporučený přístup. Místo toho doporučujeme pomocí [tohoto](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) přístupu nakonfigurovat více instancí AWS účtu na více instancí AWS aplikací v Azure AD. Tento postup byste měli použít jenom v případě, že v něm máte několik účtů AWS a rolí, takže tento model není škálovatelný, protože AWS účty a role uvnitř těchto účtů roste. Tento přístup nepoužívá funkce importu rolí AWS pomocí zřizování uživatelů Azure AD, takže musíte ručně přidat/aktualizovat nebo odstranit role. Další omezení tohoto přístupu najdete níže v podrobnostech.
@@ -45,7 +45,7 @@ Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, p
 
 * Všechny účty AWS budou používat stejný soubor XML s federačními metadaty a v době, kdy dojde ke změně certifikátu, je nutné tento obrovské cvičení využít k aktualizaci certifikátu na všech účtech AWS ve stejnou dobu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Amazon Web Services (AWS) potřebujete následující položky:
 
@@ -118,7 +118,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 5. Amazon Web Services (AWS) aplikace očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele & deklarace** na stránce integrace aplikací. Na stránce **nastavit jednotné přihlašování pomocí SAML** kliknutím na tlačítko **Upravit** otevřete **atributy uživatele &** dialogovém okně deklarace.
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky ukazuje atributy uživatele s ovládacím prvkem pro úpravy, který se vyvolal.](common/edit-attribute.png)
 
 6. V části **deklarace identity uživatelů** v dialogu **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
@@ -130,9 +130,9 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    ![image](common/new-save-attribute.png)
+    ![Snímek obrazovky zobrazuje deklarace identity uživatelů pomocí Přidat novou deklaraci identity a uložit, která se vyvolala.](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![Snímek obrazovky ukazuje spravovat deklarace identity uživatelů, kde můžete zadat hodnoty popsané v tomto kroku.](common/new-attribute-details.png)
 
     b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
@@ -200,11 +200,11 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 1. Na panelu hledání vyhledejte **přístup správce** a zaškrtněte políčko **AdministratorAccess** a potom klikněte na **Další: značky**.
 
-    ![Vybrat přístup správce](./media/aws-multi-accounts-tutorial/administrator-access.png)
+    ![Snímek obrazovky zobrazuje AdministratorAccess vybrané jako název zásady.](./media/aws-multi-accounts-tutorial/administrator-access.png)
 
 1. V části **Přidat značky (volitelné)** proveďte následující kroky:
 
-    ![Vybrat přístup správce](./media/aws-multi-accounts-tutorial/config2.png)
+    ![Snímek obrazovky se zobrazí v podokně Přidat značky, kde můžete přidat páry klíč-hodnota.](./media/aws-multi-accounts-tutorial/config2.png)
 
     a. Do textového pole **klíč** zadejte název klíče pro: Azureadtest.
 
@@ -229,25 +229,25 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 1. Poznamenejte si ID účtu pro tento účet AWS buď z vlastností EC2, nebo z řídicího panelu IAM, jak je zvýrazněno níže:
 
-    ![Vybrat přístup správce](./media/aws-multi-accounts-tutorial/aws-accountid.png)
+    ![Snímek obrazovky ukazuje, kde se účet I D zobrazuje v okně A W S.](./media/aws-multi-accounts-tutorial/aws-accountid.png)
 
 1. Teď se přihlaste [Azure Portal](https://portal.azure.com/) a přejděte do **skupin**.
 
 1. Vytvořte nové skupiny se stejným názvem, jako má dříve vytvořené role IAM, a poznamenejte si **ID objektů** těchto nových skupin.
 
-    ![Vybrat přístup správce](./media/aws-multi-accounts-tutorial/copy-objectids.png)
+    ![Snímek obrazovky ukazuje, kde zadat účet I v podokně Přehled. ](./media/aws-multi-accounts-tutorial/copy-objectids.png)
 
 1. Odhlaste se z aktuálního účtu AWS a přihlaste se pomocí jiného účtu, kde chcete nakonfigurovat jednotné přihlašování pomocí Azure AD.
 
 1. Jakmile se všechny role v účtech vytvoří, zobrazí se v seznamu **rolí** pro tyto účty.
 
-    ![Nastavení rolí](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-listofroles.png)
+    ![Snímek obrazovky zobrazuje seznam rolí s názvem role, popisem a důvěryhodnými entitami.](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-listofroles.png)
 
 1. Musíme zachytit všechny ARN role a důvěryhodné entity pro všechny role napříč všemi účty, které potřebujeme namapovat ručně pomocí aplikace Azure AD.
 
 1. Kliknutím na role zkopírujte hodnoty **role ARN** a **důvěryhodné entity** . Tyto hodnoty budete potřebovat pro všechny role, které je třeba vytvořit ve službě Azure AD.
 
-    ![Nastavení rolí](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-role-summary.png)
+    ![Snímek obrazovky se zobrazí v podokně Souhrn s vybranou kartou vztahy důvěryhodnosti.](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-role-summary.png)
 
 1. Proveďte výše uvedený krok pro všechny role ve všech účtech a uložte je do formátu **role ARN, důvěryhodné entity** v poznámkovém bloku.
 
@@ -257,11 +257,11 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     b. Musíte mít dostatečná oprávnění k vytvoření rolí. Kliknutím na **Upravit oprávnění** získáte požadovaná oprávnění.
 
-    ![Dialogové okno Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
+    ![Snímek obrazovky s odkazem pro změnu oprávnění zobrazuje okno pro ověřování Graph Exploreru.](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
     c. V seznamu vyberte následující oprávnění (Pokud je ještě nemáte) a klikněte na změnit oprávnění. 
 
-    ![Dialogové okno Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
+    ![Snímek obrazovky zobrazuje tři vybraná oprávnění: Directory. AccessAsUser. All, Directory. Read. All a Directory. četl. All.](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
 
     d. To vás vyzve k opětovnému přihlášení a přijetí souhlasu. Po přijetí souhlasu se znovu přihlaste k Průzkumníku Microsoft Graph.
 
@@ -271,17 +271,17 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     Pokud používáte více adresářů, můžete použít následující vzor, který má vaši primární doménu v něm.  `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
-    ![Dialogové okno Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
+    ![Snímek obrazovky ukazuje vybraný příkaz získat, beta a spustit dotaz.](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
     f. V seznamu načtených instančních objektů Získejte ten, který potřebujete upravit. K vyhledání aplikace ze všech uvedených ServicePrincipals můžete použít také kombinaci kláves CTRL + F. Můžete použít následující dotaz pomocí **ID objektu instančního objektu** , který jste zkopírovali ze stránky vlastností Azure AD, abyste se dostali k příslušnému instančnímu objektu.
 
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-    ![Dialogové okno Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
+    ![Snímek obrazovky ukazuje použití dotazu k získání instančního objektu služby.](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
     například Rozbalte vlastnost appRoles z instančního objektu služby.
 
-    ![Dialogové okno Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
+    ![Snímek obrazovky s podrobnostmi o instančním objektu služby.](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
     h. Nyní musíte pro svou aplikaci vygenerovat nové role. 
 
@@ -331,7 +331,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     j. Vraťte se do aplikace Microsoft Graph Explorer a změňte metodu z možnosti **získat** na **opravu**. Opravte objekt instančního objektu tak, aby měl požadované role, a to tak, že aktualizuje vlastnost appRoles podobnou té, kterou vidíte výše v příkladu. Kliknutím na **Spustit dotaz** spusťte operaci patch. Zpráva o úspěchu potvrzuje vytvoření role pro vaši aplikaci Amazon Web Services.
 
-    ![Dialogové okno Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+    ![Snímek obrazovky s vybranou metodou patch zobrazuje Průzkumník grafů.](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
 1. Po opravě instančního objektu s více rolemi můžete přiřadit uživatele nebo skupiny k příslušným rolím. To se dá udělat tak, že přejdete na portál a přejdete na Amazon Web Services aplikaci. Klikněte na kartu **Uživatelé a skupiny** v horní části.
 
@@ -339,14 +339,14 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 1. Po vytvoření skupin vyberte skupinu a přiřaďte ji do aplikace.
 
-    ![Nakonfigurovat přidání jednotného přihlašování](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
+    ![Snímek obrazovky se zobrazením přidat přiřazení s uživateli a skupinami vyberte a otevřete podokno uživatelé a skupiny.](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
 
     > [!Note]
     > Při přiřazování skupin se nepodporují vnořené skupiny.
 
 1. Chcete-li přiřadit roli ke skupině, vyberte roli a klikněte na tlačítko **přiřadit** v dolní části stránky.
 
-    ![Nakonfigurovat přidání jednotného přihlašování](./media/aws-multi-accounts-tutorial/graph-explorer-new6.png)
+    ![Snímek obrazovky ukazuje přidání přiřazení s jednou skupinou.](./media/aws-multi-accounts-tutorial/graph-explorer-new6.png)
 
     > [!Note]
     > Upozorňujeme, že pokud chcete zobrazit nové role, musíte aktualizovat svou relaci v Azure Portal.
@@ -357,15 +357,15 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici Amazon Web Services (AWS) na přístupovém panelu, měli byste získat stránku aplikace Amazon Web Services (AWS) s možností výběru role.
 
-![Nakonfigurovat přidání jednotného přihlašování](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-screen.png)
+![Snímek obrazovky se stránkou aplikace A W, kde můžete vybrat roli.](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-screen.png)
 
 Můžete také ověřit odpověď SAML a zobrazit role předávané jako deklarace identity.
 
-![Nakonfigurovat přidání jednotného přihlašování](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-saml.png)
+![Snímek obrazovky ukazuje část odpovědi SAML s hodnotami atributu.](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-saml.png)
 
 Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Jak nakonfigurovat zřizování pomocí rozhraní MS Graph API](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
 * [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](tutorial-list.md)

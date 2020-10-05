@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 7377c6ea92ea53ca14525938e7522448afac541c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d2a3eda97fec03e767425b7f7a126073b2f13ca5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548348"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713641"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Amazon Web Services (AWS)
 
@@ -30,7 +30,7 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 
 ![Diagram vztahu Azure AD a AWS](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
-Pro více instancí můžete nakonfigurovat více identifikátorů. Příklad:
+Pro více instancí můžete nakonfigurovat více identifikátorů. Například:
 
 * `https://signin.aws.amazon.com/saml#1`
 
@@ -49,7 +49,7 @@ Tento postup doporučujeme z následujících důvodů:
 > [!Note]
 > Ujistěte se, že používáte jenom aplikaci Galerie.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -146,7 +146,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -304,7 +304,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 18. Vytvoří novou zásadu pro tohoto uživatele.
 
-    ![Snímek obrazovky s přidáním uživatele](./media/amazon-web-service-tutorial/adduser2.png)
+    ![Snímek obrazovky se zobrazí stránka Přidat uživatele, kde můžete vytvořit zásadu pro uživatele.](./media/amazon-web-service-tutorial/adduser2.png)
 
     a. Vyberte možnost **připojit existující zásady přímo**.
 
@@ -322,7 +322,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 20. Stáhněte si přihlašovací údaje uživatele.
 
-    ![Snímek obrazovky s přidáním uživatele](./media/amazon-web-service-tutorial/adduser4.png)
+    ![Snímek obrazovky se stránkou přidat uživatele, která má tlačítko Stáhnout c s v pro získání přihlašovacích údajů uživatele.](./media/amazon-web-service-tutorial/adduser4.png)
 
     a. Zkopírujte **ID přístupového klíče** uživatele a **tajný přístupový klíč**.
 
@@ -348,7 +348,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     d. Uložte nastavení výběrem možnosti **Uložit**.
 
-3. V části **Nastavení** pro **stav zřizování**vyberte **zapnuto**. Pak vyberte **Uložit**.
+3. V části **Nastavení** pro **stav zřizování**vyberte **zapnuto**. Potom vyberte **Uložit**.
 
     ![Snímek obrazovky s oddílem nastavení se zvýrazněnou možností](./media/amazon-web-service-tutorial/provisioning2.png)
 
@@ -382,7 +382,7 @@ Po kliknutí na dlaždici Amazon Web Services (AWS) na přístupovém panelu bys
 
   * Role musí mít přesně jednoho poskytovatele SAML definovaného v AWS.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

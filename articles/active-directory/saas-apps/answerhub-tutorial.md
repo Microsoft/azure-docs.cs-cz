@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: d453cc5300dc658e4b33bb0591100deae5f34aef
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 69ebc238d36223a4287ae1de668f60f9c2db014a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544736"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713598"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Kurz: Azure Active Directory integrace s AnswerHub
 
@@ -30,7 +30,7 @@ Integrace AnswerHub s Azure AD přináší tyto výhody:
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s AnswerHub potřebujete následující:
 
@@ -140,7 +140,7 @@ V této části nastavíte jednotné přihlašování pro AnswerHub.
 
 4. Na kartě **Konfigurace IDP** proveďte tyto kroky:
 
-    ![Karta uživatelé & skupiny](./media/answerhub-tutorial/ic785172.png "Nastavení SAML")  
+    ![Snímek obrazovky se zobrazí stránka AnswerHub s vybranou kartou uživatelé & skupiny.](./media/answerhub-tutorial/ic785172.png "Nastavení SAML")  
   
     a. Do pole **Adresa URL přihlášení IDP** vložte **adresu URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
   
@@ -195,7 +195,7 @@ V této části nastavíte uživatele Britta Simon, aby používali jednotné p�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **AnswerHub**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikací vyberte možnost **AnswerHub**.
 
@@ -231,7 +231,7 @@ Pokud chcete uživatelům Azure AD povolit, aby se přihlásili k AnswerHub, mus
 
 4. V levém podokně v části **Správa uživatelů** vyberte **vytvořit nebo importovat uživatele**a pak vyberte **Uživatelé & skupiny**.
 
-   ![Karta uživatelé & skupiny](./media/answerhub-tutorial/ic785175.png "Uživatelé & skupiny")
+   ![Snímek obrazovky zobrazuje stránku AnswerHub s vybranými kartami uživatelé & skupiny a odkaz vytvořit nebo importovat uživatele se nazývá.](./media/answerhub-tutorial/ic785175.png "Uživatelé & skupiny")
 
 5. Do příslušných polí zadejte **e-mailovou adresu**, **uživatelské jméno**a **heslo** platného účtu Azure AD, který chcete přidat, a pak vyberte **Uložit**.
 
@@ -244,7 +244,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici AnswerHub, měli byste se automaticky přihlásit k AnswerHub, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Kurzy pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

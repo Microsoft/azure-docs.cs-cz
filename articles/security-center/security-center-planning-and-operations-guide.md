@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 9ed46f37c0906fa244d70cd2dea997f19c8bd462
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0de41941fa5907b7d33e24de331571015510e7bf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447404"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713797"
 ---
 # <a name="planning-and-operations-guide"></a>Průvodce plánováním a provozem
 Tato příručka je určena odborníkům v oblasti informačních technologií (IT), architektům v oblasti IT, analytikům zabezpečení informací a správcům cloudu plánuje používat Azure Security Center.
@@ -40,7 +40,7 @@ V závislosti na velikosti a struktuře vaší organizace můžou službu Securi
 
 ![Role](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Security Center umožňuje těmto osobám tyto různé povinnosti plnit. Příklad:
+Security Center umožňuje těmto osobám tyto různé povinnosti plnit. Například:
 
 **Jeff (vlastník úloh)**
 
@@ -120,7 +120,7 @@ Zásady Security Center obsahují následující součásti:
 - [Shromažďování dat:](security-center-enable-data-collection.md) Zřizování agentů a nastavení shromažďování dat.
 - [Zásady zabezpečení](tutorial-security-policy.md): [Azure Policy](../governance/policy/overview.md) , které určují, které ovládací prvky se monitorují a doporučují Security Center, nebo pomocí Azure Policy vytvořit nové definice, definovat další zásady a přiřazovat zásady napříč skupinami pro správu.
 - [E-mailová oznámení:](security-center-provide-security-contact-details.md) Kontakty zabezpečení a nastavení oznámení.
-- [Cenová úroveň](security-center-pricing.md): s Azure Defenderem nebo bez něj určíte, které Security Center funkce jsou dostupné pro prostředky v oboru (dá se zadat pro předplatná, skupiny prostředků a pracovní prostory).
+- [Cenová úroveň](security-center-pricing.md): s Azure Defenderem nebo bez něj určíte, které Security Center funkce jsou dostupné pro prostředky v oboru (dá se zadat pro předplatná a pracovní prostory nebo skupiny prostředků pomocí rozhraní API).
 
 > [!NOTE]
 > Zadáním smlouvy o zabezpečení zajistíte, že Azure v případě incidentu zabezpečení bude moci kontaktovat správného člověka ve vaší organizaci. Další informace o povolení tohoto doporučení najdete v článku [Zadání podrobností o kontaktu zabezpečení do Azure Security Center](security-center-provide-security-contact-details.md).
@@ -161,7 +161,7 @@ U pracovních prostorů vytvořených službou Azure Security Center se data uch
 > Společnost Microsoft poskytuje silné závazky na ochranu soukromí a zabezpečení těchto dat. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb. Další informace o zpracování dat a ochraně osobních údajů najdete v článku [Zabezpečení dat ve službě Azure Security Center](security-center-data-security.md).
 >
 
-## <a name="onboarding-non-azure-resources"></a>Připojení prostředků mimo Azure
+## <a name="onboard-non-azure-resources"></a>Připojování prostředků mimo Azure
 
 Security Center může monitorovat stav zabezpečení počítačů mimo Azure, tyto prostředky je však nejprve potřeba připojit. Další informace o připojování prostředků mimo Azure najdete v tématu připojení [počítačů mimo Azure](quickstart-onboard-machines.md) .
 
@@ -219,11 +219,9 @@ Následující příklad ukazuje probíhající podezřelé aktivity protokolu R
 
 Tato stránka obsahuje podrobné informace o čase útoku, zdrojovém názvu hostitele a cílovém virtuálním počítači a nabízí také doporučené kroky. V některých případech mohou být zdrojové informace o útoku prázdné. Další informace o tomto typu chování najdete v článku [Chybějící informace o zdroji ve výstrahách služby Azure Security Center](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/).
 
-Na této stránce také můžete zahájit šetření pro lepší pochopení časové osy a způsobu provedení útoku, identifikaci potenciálně ohrožených systémů a použitých přihlašovacích údajů a zobrazení grafické reprezentace řetězení útoku.
-
 Po identifikaci ohroženého systému můžete spustit [automatizaci pracovního postupu](workflow-automation.md) , která byla dříve vytvořena. Jedná se o kolekci procedur, které mohou být provedeny z Security Center po spuštění výstrahy.
 
-V části [jak využít Azure Security Center & Microsoft Operations Management Suite pro video s odpovědí na incidenty](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) si můžete prohlédnout některé ukázky, které vám pomůžou pochopit, jak se Security Center dá v každé z těchto fází použít.
+V části [jak využít Azure Security Center & Microsoft Operations Management Suite pro video s odpovědí na incidenty](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) můžete zobrazit některá předvádění, která ukazují, jak se Security Center dá v každé z těchto fází použít.
 
 > [!NOTE]
 > Přečtěte si téma [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) , kde najdete další informace o použití možností Security Center, které vám pomůžou během procesu reakce na incidenty.

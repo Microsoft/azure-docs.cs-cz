@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Použití GitOps pro konfiguraci clusteru s podporou ARC Azure (Preview)
 keywords: GitOps, Kubernetes, K8s, Azure, ARC, Azure Kubernetes Service, Containers
-ms.openlocfilehash: 142c131f0382eb887d51185db920511ccf4eb735
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: c00ed30c9a7424d083bf076c64cf008e0480bb2b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541624"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714189"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s povoleným ARC (Preview)
 
@@ -23,7 +23,7 @@ Připojení mezi clusterem a jedním nebo více úložišť Git je sledováno v 
 
 `config-agent`Spuštění ve vašem clusteru zodpovídá za sledování nových nebo aktualizovaných `sourceControlConfiguration` prostředků rozšíření na prostředku Kubernetes ARC Azure s povoleným nasazením operátoru toku, který sleduje úložiště Git a šíří jakékoli aktualizace provedené v `sourceControlConfiguration` . Pro dosažení víceklientské architektury je dokonce možné vytvořit více `sourceControlConfiguration` prostředků s `namespace` rozsahem na stejném clusteru Kubernetes s povoleným ARC Azure. V takovém případě každý operátor může nasadit konfigurace pouze do příslušného oboru názvů.
 
-Úložiště Git může obsahovat všechny platné prostředky Kubernetes, včetně oborů názvů, ConfigMaps, nasazení, DaemonSets atd.  Může obsahovat také Helm grafy pro nasazení aplikací. Mezi běžné sady scénářů patří definování základní konfigurace pro vaši organizaci, která může zahrnovat běžné role RBAC a vazby, agenty monitorování nebo protokolování nebo služby pro clustery v rámci clusteru.
+Úložiště Git může obsahovat všechny platné prostředky Kubernetes, včetně oborů názvů, ConfigMaps, nasazení, DaemonSets atd.  Může obsahovat také Helm grafy pro nasazení aplikací. Mezi běžné sady scénářů patří definování základní konfigurace pro vaši organizaci, která může zahrnovat běžné role a vazby Azure, agenty monitorování nebo protokolování nebo služby pro clustery v rámci clusteru.
 
 Stejný vzor lze použít ke správě větší kolekce clusterů, které mohou být nasazeny v heterogenních prostředích. Například můžete mít jedno úložiště, které definuje konfiguraci standardních hodnot vaší organizace, a použít ho na desítky Kubernetes clusterů najednou. [Azure Policy může automatizovat](use-azure-policy.md) vytváření a `sourceControlConfiguration` s konkrétní sadou parametrů ve všech prostředcích Azure ARC s povoleným Kubernetes prostředky v oboru (předplatné nebo skupina prostředků).
 
@@ -96,14 +96,14 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 Tady jsou podporované scénáře pro parametr hodnota--úložiště-adresa URL.
 
-| Scénář | Formát | Popis |
+| Scénář | Formát | Description |
 | ------------- | ------------- | ------------- |
 | Soukromé úložiště GitHub – SSH | git@github.com:username/repo | Souboru KeyPair SSH vygenerovaný tokem.  Uživatel musí do účtu GitHubu přidat veřejný klíč jako klíč pro nasazení. |
 | Veřejné úložiště GitHub | `http://github.com/username/repo` nebo git://github.com/username/repo   | Veřejné úložiště Git  |
 
 Tyto scénáře jsou podporovány tokem, ale nikoli sourceControlConfiguration. 
 
-| Scénář | Formát | Popis |
+| Scénář | Formát | Description |
 | ------------- | ------------- | ------------- |
 | Úložiště privátního GitHubu – HTTPS | `https://github.com/username/repo` | Tok negeneruje souboru KeyPair SSH.  [Pokyny](https://docs.fluxcd.io/en/1.17.0/guides/use-git-https.html) |
 | Privátní hostitel Git | user@githost:path/to/repo | [Pokyny](https://docs.fluxcd.io/en/1.18.0/guides/use-private-git-host.html) |

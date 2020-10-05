@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 068f15cc06a76412836176dc13237741ea14d135
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 3642b95f5bd6d0207508ca85f1d22ce20b44eae3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614052"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715465"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Přehled portálu pro vývojáře Azure API Management
 
@@ -115,11 +115,11 @@ Můžete mít jeden spravovaný portál a několik samoobslužných portálů. O
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Podporuje portál Azure Resource Manager šablony nebo je kompatibilní se sadou API Management DevOps Resource Kit?
 
-No.
+Ne.
 
 ### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>Je obsah portálu uložený s funkcí zálohování a obnovení v API Management?
 
-No.
+Ne.
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>Musím pro závislosti spravovaného portálu povolit další připojení VNet?
 
@@ -172,7 +172,7 @@ Můžete také povolit CORS ručně.
 
 ### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>Jaká oprávnění potřebuji k úpravám portálu pro vývojáře?
 
-Pokud se vám při `Oops. Something went wrong. Please try again later.` otevření portálu v režimu správy zobrazuje chyba, možná nemáte požadovaná oprávnění (RBAC).
+Pokud se vám při `Oops. Something went wrong. Please try again later.` otevření portálu v režimu správy zobrazuje chyba, možná nemáte požadovaná oprávnění (Azure RBAC).
 
 Starší portály vyžadovaly oprávnění `Microsoft.ApiManagement/service/getssotoken/action` v oboru služby ( `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>` ), aby správce uživatelů mohl mít přístup k portálům. Nový portál vyžaduje oprávnění `Microsoft.ApiManagement/service/users/token/action` v oboru `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1` .
 
@@ -217,7 +217,7 @@ Selhání volání může být způsobeno také certifikátem TLS/SSL, který je
 | Apple Safari                | Ano<sup>1</sup> |
 | Google Chrome               | Ano<sup>1</sup> |
 | Microsoft Edge              | Ano<sup>1</sup> |
-| Microsoft Internet Explorer | No              |
+| Microsoft Internet Explorer | Ne              |
 | Mozilla Firefox             | Ano<sup>1</sup> |
 
  <small><sup>1</sup> podporuje se v obou nejnovějších produkčních verzích.</small>

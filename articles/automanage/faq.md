@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 348106c405e6e096f7bfd9a225fc783c4454b1ad
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 003f97c99de7dd4be79e820e822b6071f45ed146
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449762"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714961"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Nejčastější dotazy k Azure automanage pro virtuální počítače
 
@@ -35,7 +35,7 @@ Níže jsou uvedené předpoklady pro povolení služby Azure automanage:
 - Virtuální počítače nesmí odkazovat na pracovní prostor Log Analytics v jiném předplatném.
 - Automanage v tuto chvíli nepodporuje odběry izolovaného prostoru (sandbox).
 
-**Jaká oprávnění RBAC je potřeba k povolení automanage?**
+**Jaká oprávnění Azure RBAC je potřeba k povolení automanage?**
 
 Pokud povolíte možnost automanage na virtuálním počítači s existujícím účtem pro správu, budete potřebovat roli přispěvatele pro skupinu prostředků, ve které se virtuální počítač nachází.
 

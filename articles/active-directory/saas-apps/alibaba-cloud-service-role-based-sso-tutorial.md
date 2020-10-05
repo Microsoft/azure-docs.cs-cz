@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 0e9ccb3f4308a1a75a715a16ab4c1a2887b0a915
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4ffaad77a34be66d06f8f0033731d0496e444e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521973"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715879"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s cloudovou službou Alibaba (jednotné přihlašování založené na rolích)
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat cloudovou službu Alibaba (SSO založe
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -114,7 +114,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -132,11 +132,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Na kartě **Uživatelé a skupiny** vyberte v seznamu uživatelů možnost U2 a klikněte na **Vybrat**. Pak klikněte na **přiřadit**.
 
-    ![Konfigurace testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
+    ![Snímek obrazovky se zobrazí podokno přidat přiřazení pro Alibaba bez vybraných uživatelů a skupin.](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
 1. Zobrazit přiřazenou roli a testovat cloudovou službu Alibaba (jednotné přihlašování založené na rolích)
 
-    ![Konfigurace testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
+    ![Snímek obrazovky s přiřazenou ochranou pro uživatele je popsán.](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
 
     >[!NOTE]
     >Po přiřazení uživatele (U2) je vytvořená role automaticky připojena k uživateli. Pokud jste vytvořili více rolí, musíte k uživateli podle potřeby připojit příslušnou roli. Pokud chcete implementovat jednotné přihlašování založené na rolích z Azure AD do několika cloudových účtů Alibaba, opakujte předchozí kroky.
@@ -164,25 +164,25 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     b. Kliknutím na **Upravit oprávnění** získáte požadovaná oprávnění pro vytvoření role.
 
-    ![Konfigurace grafu](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
+    ![Snímek obrazovky s odkazem na změnu oprávnění zobrazuje Průzkumník grafů.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
 
     c. V seznamu vyberte následující oprávnění a klikněte na **Upravit oprávnění**, jak je znázorněno na následujícím obrázku.
 
-    ![Konfigurace grafu](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
+    ![Snímek obrazovky zobrazuje oprávnění pro výběr: Directory. AccessAsUser. All, Directory. Read. All a Directory. četl. All.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
 
     >[!NOTE]
     >Po udělení oprávnění se znovu přihlaste do Průzkumníka graphu.
 
     d. Na stránce Průzkumník grafů vyberte v prvním rozevíracím seznamu **získat** a **beta** z druhého rozevíracího seznamu. Potom zadejte `https://graph.microsoft.com/beta/servicePrincipals` do pole vedle rozevíracího seznamu a klikněte na **Spustit dotaz**.
 
-    ![Konfigurace grafu](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
+    ![Snímek obrazovky s vybraným možnostmi získat a beta zobrazuje Průzkumníka graphu a tlačítko spustit dotaz se vyvolalo.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
 
     >[!NOTE]
     >Pokud používáte více adresářů, můžete zadat `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` do pole dotazu.
 
     e. V části **Náhled odpovědi** rozbalte vlastnost AppRoles z instančního objektu pro následné použití.
 
-    ![Konfigurace grafu](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
+    ![Snímek obrazovky se v části Náhled odpovědi zobrazí jako prostý text, kde můžete získat vlastnost appRoles.](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
 
     >[!NOTE]
     >Vlastnost appRoles můžete vyhledat zadáním `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` do pole dotazu. Všimněte si, že `objectID` je ID objektu, které jste zkopírovali ze stránky **vlastností** Azure AD.
@@ -234,21 +234,21 @@ Po dokončení předchozích konfigurací otestujte cloudovou službu Alibaba (S
 
 1. V Azure Portal přejděte na stránku **cloudová služba Alibaba (SSO založená na rolích)** , vyberte **jednotné přihlašování**a klikněte na **test**.
 
-    ![Konfigurace testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
+    ![Snímek obrazovky s tlačítkem testu zobrazuje testovací jednotné přihlašování pomocí cloudové služby Alibaba.](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
 
 2. Klikněte na **Přihlásit se jako aktuální uživatel**.
 
-    ![Konfigurace testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
+    ![Snímek obrazovky ukazuje odkaz Přihlásit se jako aktuální uživatel.](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
 
 3. Na stránce Výběr účtu vyberte možnost U2.
 
-    ![Konfigurace testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
+    ![Snímek obrazovky se zobrazí možnost S možností přihlášení s vybraným příznakem uživatele.](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
 
 4. Zobrazí se následující stránka s oznámením, že jednotné přihlašování na základě rolí je úspěšné.
 
-    ![Konfigurace testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
+    ![Snímek obrazovky se zobrazí stránka Produkty & služby, která indikuje, že test proběhl úspěšně. ](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

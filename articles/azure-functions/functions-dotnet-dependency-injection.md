@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 7e45537d0a9fbdd738d6a2142b9259a15498e9c9
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: f535a27e3afadaf8eefc41c5f1a8ab6c02d24c04
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89503801"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715936"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislostí ve službě Azure Functions pro .NET
 
@@ -22,7 +22,7 @@ Azure Functions podporuje vzor návrhu pro vkládání závislostí (DI), což j
 
 - Podpora vkládání závislostí začíná Azure Functions 2. x.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moci použít vkládání závislostí, je nutné nainstalovat následující balíčky NuGet:
 
@@ -92,7 +92,7 @@ namespace MyNamespace
         private readonly HttpClient _client;
         private readonly IMyService _service;
 
-        public MyHttpTrigger(HttpClient httpClient, MyService service)
+        public MyHttpTrigger(HttpClient httpClient, IMyService service)
         {
             this._client = httpClient;
             this._service = service;
@@ -124,7 +124,7 @@ Azure Functions aplikace poskytují stejné životnosti služeb jako [vkládán�
 
 Zobrazit nebo stáhnout [ukázku různých životností služby](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes) na GitHubu.
 
-## <a name="logging-services"></a>Protokolovací služby
+## <a name="logging-services"></a>Služby protokolování
 
 Pokud potřebujete vlastního poskytovatele protokolování, zaregistrujte vlastní typ jako instanci nástroje [`ILoggerProvider`](/dotnet/api/microsoft.extensions.logging.iloggerfactory) , která je k dispozici prostřednictvím balíčku NuGet [Microsoft. Extensions. Logging. Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) .
 
@@ -186,7 +186,7 @@ Následující příklad `host.json` souboru Přidá filtr protokolu.
 
 Hostitel funkce registruje mnoho služeb. V rámci vaší aplikace je možné v aplikaci provést zabezpečení těchto služeb:
 
-|Typ služby|Doba platnosti|Popis|
+|Typ služby|Doba platnosti|Description|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Konfigurace modulu runtime|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Zodpovídá za poskytnutí ID instance hostitele.|

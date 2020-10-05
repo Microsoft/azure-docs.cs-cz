@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 287bd02a11c71fbdd29b28b5ec9fc8424a477fea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: af88f0b3403fb80acbb7dacebe293ac583e35799
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320349"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716043"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>Druhá část: přiřazení oprávnění na úrovni sdílení k identitě
 
@@ -52,7 +52,7 @@ Pokud chcete přiřadit roli Azure k identitě Azure AD, použijte [Azure Portal
 
 ### <a name="powershell"></a>PowerShell
 
-Následující ukázka prostředí PowerShell ukazuje, jak přiřadit k identitě Azure AD roli Azure na základě přihlašovacího jména. Další informace o přiřazování rolí Azure pomocí PowerShellu najdete v tématu [Správa přístupu pomocí RBAC a Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+Následující ukázka prostředí PowerShell ukazuje, jak přiřadit k identitě Azure AD roli Azure na základě přihlašovacího jména. Další informace o přiřazování rolí Azure pomocí PowerShellu najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí modulu Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 Před spuštěním následujícího ukázkového skriptu nahraďte hodnoty zástupných symbolů, včetně závorek.
 
@@ -67,7 +67,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 ### <a name="cli"></a>Rozhraní příkazového řádku
   
-Následující příkaz CLI 2,0 přiřadí roli Azure AD identitě na základě přihlašovacího jména. Další informace o přiřazování rolí Azure pomocí rozhraní příkazového řádku Azure najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../../role-based-access-control/role-assignments-cli.md). 
+Následující příkaz CLI 2,0 přiřadí roli Azure AD identitě na základě přihlašovacího jména. Další informace o přiřazování rolí Azure pomocí rozhraní příkazového řádku Azure najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](../../role-based-access-control/role-assignments-cli.md). 
 
 Před spuštěním následujícího ukázkového skriptu Nezapomeňte nahradit hodnoty zástupných symbolů, včetně závorek, vlastními hodnotami.
 

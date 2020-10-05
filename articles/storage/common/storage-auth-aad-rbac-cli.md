@@ -1,7 +1,7 @@
 ---
 title: Přiřazení role Azure pro přístup k datům pomocí Azure CLI
 titleSuffix: Azure Storage
-description: Naučte se používat rozhraní příkazového řádku Azure k přiřazení oprávnění k objektu zabezpečení Azure Active Directory s řízením přístupu na základě role (RBAC). Azure Storage podporuje integrované a vlastní role Azure pro ověřování prostřednictvím služby Azure AD.
+description: Naučte se používat rozhraní příkazového řádku Azure k přiřazení oprávnění k objektu zabezpečení Azure Active Directory s řízením přístupu na základě role Azure (RBAC). Azure Storage podporuje integrované a vlastní role Azure pro ověřování prostřednictvím služby Azure AD.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5714ab17f82f9c4d9c1d00f297c0950e41f54cdc
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 31d98e0d37da1b957d86e425e01fe04de842f532
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827975"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715139"
 ---
 # <a name="use-azure-cli-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Přiřazení role Azure pro přístup k datům objektů BLOB a front pomocí Azure CLI
 
@@ -139,6 +139,6 @@ az role assignment create \
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Správa přístupu k prostředkům Azure pomocí RBAC a Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-- [Udělení přístupu k datům služby Azure Blob a frontě pomocí RBAC pomocí Azure PowerShell](storage-auth-aad-rbac-powershell.md)
-- [Udělení přístupu k datům front a objektů blob Azure s využitím RBAC na webu Azure Portal](storage-auth-aad-rbac-portal.md)
+- [Přidání nebo odebrání přiřazení rolí Azure pomocí modulu Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
+- [Použití modulu Azure PowerShell k přiřazení role Azure pro přístup k datům objektů BLOB a front](storage-auth-aad-rbac-powershell.md)
+- [Přiřazení role Azure pro přístup k datům BLOB a Queue pomocí Azure Portal](storage-auth-aad-rbac-portal.md)

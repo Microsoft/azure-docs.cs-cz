@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: 7a716ed9bca6d34ad4dbcd2566837a839f71153b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 377677c9e5e81487059241db68baff639a3de033
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450307"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715032"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>Vytvoření vlastní preference v Azure automanage pro virtuální počítače
 
@@ -26,7 +26,7 @@ V současné době podporujeme přizpůsobení [Azure Backup](..\backup\backup-a
 > V případě, že je povolená možnost automanage, nemůžete změnit konfigurační profil nebo Předvolby na VIRTUÁLNÍm počítači. Pro tento virtuální počítač budete muset zakázat možnost automatického spravování a pak znovu povolit automanage s požadovaným konfiguračním profilem a preferencemi.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) před tím, než začnete.
 
@@ -34,12 +34,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 > Bezplatné zkušební účty nemají přístup k virtuálním počítačům použitým v tomto kurzu. Upgradujte prosím na předplatné s průběžnými platbami.
 
 > [!IMPORTANT]
-> K povolení funkce automanage můžete použít následující oprávnění RBAC: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatelů** .
+> K povolení funkce automanage můžete použít následující oprávnění Azure RBAC: roli **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatelů** .
 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 
 ## <a name="enable-automanage-for-vms-on-an-existing-vm"></a>Povolení automanage pro virtuální počítače na existujícím virtuálním počítači
@@ -69,7 +69,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
         1. Předplatné
         1. Skupina prostředků
         1. Název předvolby
-        1. Region (Oblast)
+        1. Oblast
 
     :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Vyberte existující virtuální počítač ze seznamu dostupných virtuálních počítačů.":::
 

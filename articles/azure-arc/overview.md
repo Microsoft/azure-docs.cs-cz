@@ -3,12 +3,12 @@ title: Přehled služby Azure Arc
 description: Přečtěte si, co je Azure ARC a jak pomáhá zákazníkům povolit správu a řízení hybridních prostředků pomocí dalších služeb a funkcí Azure.
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: e6dc052655bffae949399f77a26d7b76c5b0d13c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8e48378e5032768b3f56a5d99c1189e282ff37f8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335394"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714153"
 ---
 # <a name="azure-arc-overview"></a>Přehled služby Azure Arc
 
@@ -56,7 +56,7 @@ Funkce plochy ovládacího prvku ARC Azure se nabízí bez dalších poplatků.S
 
 * Vyhledávání a indexování pomocí Azure Resource graphu
 
-* Přístup a zabezpečení prostřednictvím RBAC a předplatných.
+* Přístup a zabezpečení prostřednictvím Azure RBAC a předplatných.
 
 * Prostředí a automatizace prostřednictvím šablon a rozšíření.
 
