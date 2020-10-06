@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: fd82d3d2d2a76e0c0671c57d9254ff8c9030d3a3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7c1bd1b3f9931eff2f19eac7b78881d4f7ad8ae0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548256"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744314"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Kurz: Integrace Azure Active Directory s využitím bonusu
 
@@ -30,7 +30,7 @@ Služba Azure AD integruje bonus s následujícími výhodami:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s využitím bonusu potřebujete následující položky:
 
@@ -169,7 +169,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -177,7 +177,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **bonus**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **bonusně**.
 
@@ -222,11 +222,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k bonusu, musí se zřídit Bonu
 
 1. Klikněte na **Add User** (Přidat uživatele).
 
-    ![Přidat uživatele](./media/bonus-tutorial/ic781044.png "Přidání uživatele")
+    ![Snímek obrazovky zobrazuje možnosti spravovat uživatele, kde můžete vybrat přidat uživatele.](./media/bonus-tutorial/ic781044.png "Přidání uživatele")
 
 1. V dialogovém okně **Přidat uživatele** proveďte následující kroky:
 
-    ![Přidat uživatele](./media/bonus-tutorial/ic781045.png "Přidání uživatele")  
+    ![Snímek obrazovky se zobrazí dialogové okno Přidat uživatele, kde můžete zadat tyto informace.](./media/bonus-tutorial/ic781045.png "Přidání uživatele")  
 
     a. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako například **Britta**.
 

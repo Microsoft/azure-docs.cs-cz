@@ -1,288 +1,287 @@
 ---
-title: Postup změny velikosti šifrovaných disků správy logických svazků pomocí Azure Disk Encryption
+title: Změna velikosti šifrovaných disků správy logických svazků pomocí Azure Disk Encryption
 description: Tento článek poskytuje pokyny pro změnu velikosti šifrovaných disků ADE pomocí správy logických svazků.
 author: jofrance
 ms.service: security
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: ba652b9424b8d5ce1b6a2c5b7d70b8fd9e999323
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3a3e9b7406e11261aff12d77d9fbeed5debbe938
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91342348"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744266"
 ---
-# <a name="how-to-resize-logical-volume-management-devices-encrypted-with-azure-disk-encryption"></a>Postup změny velikosti zařízení pro správu logických svazků zašifrovaných pomocí Azure Disk Encryption
+# <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>Postup změny velikosti zařízení pro správu logických svazků, která používají Azure Disk Encryption
 
-Tento článek popisuje podrobný postup, jak změnit velikost disků s šifrovanými daty ADE pomocí správy logických svazků (LVM) v systému Linux, která se vztahuje na více scénářů.
+V tomto článku se dozvíte, jak změnit velikost datových disků, které používají Azure Disk Encryption. Pokud chcete změnit velikost disků, budete v systému Linux používat správu logických svazků (LVM). Tento postup se týká více scénářů.
 
-Tento postup platí pro následující prostředí:
+Tento proces změny velikosti můžete použít v následujících prostředích:
 
-- Distribuce systému Linux
-    - RHEL 7 nebo novější
-    - Ubuntu 16 +
-    - SUSE 12 +
-- Rozšíření pro jedno průchod Azure Disk Encryption
-- Azure Disk Encryption rozšíření pro duální průchod
+- Distribuce systému Linux:
+    - Red Hat Enterprise Linux (RHEL) 7 nebo novější
+    - Ubuntu 16 nebo novější
+    - SUSE 12 nebo novější
+- Verze Azure Disk Encryption: 
+    - Rozšíření s jedním průchodem
+    - Rozšíření pro duální průchod
 
-## <a name="considerations"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Tento dokument předpokládá, že:
+V tomto článku se předpokládá, že máte následující:
 
-1. Existuje existující konfigurace LVM.
-   
-   Další informace o konfiguraci LVM na VIRTUÁLNÍm počítači Linux najdete [v LVM konfigurace virtuálního počítače Linux](configure-lvm.md) .
+- Existující konfigurace LVM Další informace najdete v tématu [Konfigurace LVM na virtuálním počítači se systémem Linux](configure-lvm.md).
 
-2. Disky jsou už zašifrované pomocí Azure Disk Encryption pro informace o tom, jak nakonfigurovat LVM, můžete nakonfigurovat [LVM na](how-to-configure-lvm-raid-on-crypt.md) nešifrovaných discích.
+- Disky, které jsou již zašifrované pomocí Azure Disk Encryption. Další informace najdete v tématu [Konfigurace LVM a RAID na šifrovaných zařízeních](how-to-configure-lvm-raid-on-crypt.md).
 
-3. Pro následující příklady máte požadované odborné znalosti pro Linux a LVM.
+- Zkušenosti s používáním systému Linux a LVM.
 
-4. Rozumíte tomu, že doporučení k používání datových disků v Azure, jak je popsáno v tématu řešení potíží s [názvy zařízení](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-device-names-problems), je použití cest/dev/disk/scsi1/.
+- Zkušenosti s používáním */dev/disk/scsi1/* cest k datovým diskům v Azure. Další informace najdete v tématu [řešení potíží s názvem zařízení virtuálních počítačů se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-device-names-problems). 
 
 ## <a name="scenarios"></a>Scénáře
 
 Postupy v tomto článku se týkají následujících scénářů:
 
-### <a name="for-traditional-lvm-and-lvm-on-crypt-configurations"></a>Pro tradiční konfigurace LVM a LVM
+- Tradiční konfigurace LVM a LVM
+- Tradiční šifrování LVM 
+- LVM – on-crypt 
 
-- Rozšíření logického svazku, když je dostupné místo v VG
+### <a name="traditional-lvm-and-lvm-on-crypt-configurations"></a>Tradiční konfigurace LVM a LVM
 
-### <a name="for-traditional-lvm-encryption-the-logical-volumes-are-encrypted-not-the-whole-disk"></a>Pro tradiční LVM šifrování (logické svazky se šifrují, ne celý disk)
+Tradiční konfigurace LVM a LVM-on-crypt rozšíří logický svazek (LV), pokud má skupina svazků (VG) dostupný prostor.
 
-- Rozšíření tradičního svazku LVM přidáním nové PV
-- Rozšíření tradičního svazku LVM změnou velikosti stávající PV
+### <a name="traditional-lvm-encryption"></a>Tradiční šifrování LVM 
 
-### <a name="for-lvm-on-crypt-recommended-method-the-entire-disk-is-encrypted-not-only-the-logical-volume"></a>Pro LVM (doporučenou metodu je celý disk zašifrovaný, nikoli jenom logický svazek)
+V tradičním šifrování LVM jsou LVs šifrované. Celý disk není zašifrovaný.
 
-- Rozšíření LVM na svazek s nešifrovaným přidáním nové PV
-- Rozšíření LVM na svazek nešifrované změny velikosti stávající PV
+Pomocí tradičního šifrování LVM můžete:
+
+- Po přidání nového fyzického svazku (PV) rozšíříte LV.
+- Když změníte velikost stávající PV, rozšíříte v části LV.
+
+### <a name="lvm-on-crypt"></a>LVM – on-crypt 
+
+Doporučeným způsobem šifrování disku je LVM šifrování. Tato metoda šifruje celý disk, nikoli pouze LV.
+
+Pomocí LVM-on-crypt můžete: 
+
+- Když přidáte novou PV, rozšíříte LV.
+- Když změníte velikost stávající PV, rozšíříte v části LV.
 
 > [!NOTE]
-> Nedoporučuje se míchat tradiční šifrování LVM a LVM-on-crypt na stejném virtuálním počítači.
+> Nedoporučujeme míchat tradiční šifrování LVM a LVM-on-crypt na stejném virtuálním počítači.
 
-> [!NOTE]
-> V těchto příkladech se používají předem existující názvy disků, fyzických svazků, skupin svazků, logických svazků, systému souborů, identifikátorů UUID a mountpoints, a proto je potřeba nahradit hodnoty uvedené v těchto příkladech tak, aby vyhovovaly vašemu prostředí.
+Následující části obsahují příklady použití LVM a LVM-on-crypt. V příkladech se používají předem existující hodnoty pro disky, PVs, VGs, LVs, souborové systémy, univerzální jedinečné identifikátory (UUID) a přípojné body. Nahraďte tyto hodnoty vlastními hodnotami, které odpovídají vašemu prostředí.
 
-#### <a name="extending-a-logical-volume-when-theres-available-space-in-the-vg"></a>Rozšíření logického svazku, když je dostupné místo v VG
+#### <a name="extend-an-lv-when-the-vg-has-available-space"></a>Pokud má VG volné místo, rozšíříte LV.
 
-Tradiční metoda používaná při změně velikosti logických svazků, kterou je možné použít pro nešifrované disky, tradiční šifrované svazky LVM a konfigurace LVM.
+Tradiční způsob, jak změnit velikost LVs, je rozmístit LV, pokud má VG k dispozici místo. Tuto metodu můžete použít pro nešifrované disky, tradiční svazky zašifrované LVM a konfigurace LVM-on-crypt.
 
-1. Ověřte aktuální velikost systému souborů, kterou chceme zvětšit:
+1. Ověřte aktuální velikost systému souborů, který chcete zvětšit:
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![scénář-check-FS1](./media/disk-encryption/resize-lvm/001-resize-lvm-scenarioa-check-fs.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikost systému souborů. Příkaz a výsledek jsou zvýrazněny.](./media/disk-encryption/resize-lvm/001-resize-lvm-scenarioa-check-fs.png)
 
-2. Ověřte, že VG má dostatek místa pro rozšíření LV
+2. Ověřte, zda má VG dostatek místa pro zvýšení oblasti LV:
 
     ``` bash
     vgs
     ```
 
-    ![scénář-check-VG](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgs.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje místo na VG Příkaz a výsledek jsou zvýrazněny.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgs.png)
 
-    Můžete také použít "vgdisplay"
+    Můžete také použít `vgdisplay` :
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scénář-check-vgdisplay](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgdisplay.png)
+    ![Snímek obrazovky zobrazující kód zobrazení V G, který kontroluje místo na VG Příkaz a výsledek jsou zvýrazněny.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgdisplay.png)
 
-3. Určete, který logický svazek se musí změnit.
+3. Určete, která pro Lotyšsko musí být změněna.
 
     ``` bash
     lsblk
     ```
 
-    ![scénář-check-lsblk1](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk1.png)
+    ![Snímek obrazovky zobrazující výsledek příkazu l s b l k Příkaz a výsledek jsou zvýrazněny.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk1.png)
 
-    Pro LVM-on-crypt je rozdíl v tomto výstupu, který ukazuje, že šifrovaná vrstva je na šifrované vrstvě pokrývající celý disk.
+    V případě LVM-on-crypt je rozdíl v tom, že se šifrovaná vrstva zobrazuje na úrovni disku.
 
-    ![scénář-check-lsblk2](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk2.png)
+    ![Snímek obrazovky zobrazující výsledek příkazu l s b l k Výstup je zvýrazněný. Zobrazuje šifrovanou vrstvu.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk2.png)
 
-4. Ověřit velikost logického svazku
+4. Podívejte se na velikost LV:
 
     ``` bash
     lvdisplay lvname
     ```
 
-    ![scénář-check-lvdisplay01](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lvdisplay01.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikost logického svazku. Příkaz a výsledek jsou zvýrazněny.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lvdisplay01.png)
 
-5. Zvětšete velikost LV pomocí příkazu-r pro online změnu velikosti systému souborů.
+5. Velikost v systému souborů zvětšete změnou velikosti v `-r` režimu online:
 
     ``` bash
     lvextend -r -L +2G /dev/vgname/lvname
     ```
 
-    ![scénář – Změna velikosti – LV](./media/disk-encryption/resize-lvm/003-resize-lvm-scenarioa-resize-lv.png)
+    ![Snímek obrazovky zobrazující kód, který zvětší velikost logického svazku. Příkaz a výsledky jsou zvýrazněné.](./media/disk-encryption/resize-lvm/003-resize-lvm-scenarioa-resize-lv.png)
 
-6. Ověřte nové velikosti pro Lotyšsko a systém souborů.
-
-    ``` bash
-    df -h /mountpoint
-    ```
-
-    ![scénář-check-FS](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-fs.png)
-
-    Nová velikost se projeví, indikuje se úspěšná Změna velikosti LV a systému souborů.
-
-7. Pro potvrzení změn na úrovni LV můžete znovu zkontrolovat informace pro Lotyšsko.
-
-    ``` bash
-    lvdisplay lvname
-    ```
-
-    ![scénář-check-lvdisplay2](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-lvdisplay2.png)
-
-#### <a name="extending-a-traditional-lvm-volume-adding-a-new-pv"></a>Rozšíření tradičního svazku LVM přidáním nové PV
-
-Platí v případě, že potřebujete přidat nový disk pro zvýšení velikosti skupiny svazků.
-
-1. Ověřte aktuální velikost systému souborů, kterou chceme zvětšit:
+6. Ověřte nové velikosti pro Lotyšsko a systém souborů:
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![scenariob-check-FS](./media/disk-encryption/resize-lvm/005-resize-lvm-scenariob-check-fs.png)
+    ![Snímek obrazovky zobrazující kód, který ověřuje velikost souboru LV a systému souborů. Příkaz a výsledek jsou zvýrazněny.](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-fs.png)
 
-2. Ověřit aktuální konfiguraci fyzického svazku
+    Výstupem velikosti je indikuje, že se změnila velikost LV a systému souborů.
+
+Můžete znovu zkontrolovat informace LV a potvrdit změny na úrovni LV:
+
+``` bash
+lvdisplay lvname
+```
+
+![Snímek obrazovky zobrazující kód, který potvrdí nové velikosti. Velikosti se zvýrazní.](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-lvdisplay2.png)
+
+#### <a name="extend-a-traditional-lvm-volume-by-adding-a-new-pv"></a>Rozšíření tradičního svazku LVM přidáním nové PV
+
+Pokud potřebujete přidat nový disk, abyste zvětšili velikost VG, Rozšiřte svůj tradiční svazek LVM přidáním nové PV.
+
+1. Ověřte aktuální velikost systému souborů, který chcete zvětšit:
+
+    ``` bash
+    df -h /mountpoint
+    ```
+
+    ![Snímek obrazovky zobrazující kód, který kontroluje aktuální velikost systému souborů. Příkaz a výsledek jsou zvýrazněny.](./media/disk-encryption/resize-lvm/005-resize-lvm-scenariob-check-fs.png)
+
+2. Ověřte aktuální konfiguraci PV:
 
     ``` bash
     pvs
     ```
 
-    ![scenariob-check-PVS](./media/disk-encryption/resize-lvm/006-resize-lvm-scenariob-check-pvs.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje aktuální konfiguraci PV. Příkaz a výsledek jsou zvýrazněny.](./media/disk-encryption/resize-lvm/006-resize-lvm-scenariob-check-pvs.png)
 
-3. Zkontroluje aktuální VG informace.
+3. Podívejte se na aktuální informace o VG:
 
     ``` bash
     vgs
     ```
 
-    ![scenariob-check-VGS](./media/disk-encryption/resize-lvm/007-resize-lvm-scenariob-check-vgs.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje aktuální informace o skupině svazků Příkaz a výsledek jsou zvýrazněny.](./media/disk-encryption/resize-lvm/007-resize-lvm-scenariob-check-vgs.png)
 
-4. Zkontroluje aktuální seznam disků.
-
-    Datové disky by se měly identifikovat kontrolou zařízení pod/dev/disk/Azure/scsi1/
+4. Projděte si aktuální seznam disků. Identifikujte datové disky tak, že zkontrolujete zařízení v */dev/disk/Azure/scsi1/*.
 
     ``` bash
     ls -l /dev/disk/azure/scsi1/
     ```
 
-    ![scenariob-check-scs1](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-scs1.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje aktuální seznam disků. Příkaz a výsledky jsou zvýrazněné.](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-scs1.png)
 
-5. Kontrolovat výstup lsblk 
+5. Podívejte se na výstup `lsblk` : 
 
     ``` bash
     lsbk
     ```
 
-    ![scenariob-check-lsblk](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-lsblk.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje výstup l s b l k. Příkaz a výsledky jsou zvýrazněné.](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-lsblk.png)
 
-6. Připojit nový disk k virtuálnímu počítači
+6. Připojte nový disk k virtuálnímu počítači podle pokynů v části [připojení datového disku k virtuálnímu počítači se systémem Linux](attach-disk-portal.md).
 
-    Pokračujte až na krok 4 v následujícím dokumentu.
-
-   - [Připojení disku k virtuálnímu počítači](attach-disk-portal.md)
-
-7. Po připojení disku se podívejte na seznam disků, Všimněte si nového disku.
+7. Podívejte se na seznam disků a Všimněte si nového disku.
 
     ``` bash
     ls -l /dev/disk/azure/scsi1/
     ```
 
-    ![scenariob-check-scsi12](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-scsi12.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje seznam disků. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-scsi12.png)
 
     ``` bash
     lsbk
     ```
 
-    ![scenariob-check-lsblk12](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-lsblk1.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje seznam disků pomocí l s b l k. Příkaz a výsledek jsou zvýrazněny.](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-lsblk1.png)
 
-8. Vytvoření nové PV nad novým datovým diskem
+8. Vytvořte novou souč_hod nad novým datovým diskem:
 
     ``` bash
     pvcreate /dev/newdisk
     ```
 
-    ![scenariob-pvcreate](./media/disk-encryption/resize-lvm/010-resize-lvm-scenariob-pvcreate.png)
+    ![Snímek obrazovky zobrazující kód, který vytváří novou PV. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/010-resize-lvm-scenariob-pvcreate.png)
 
-    Tato metoda používá celý disk jako souč_hod bez oddílu, volitelně můžete pomocí příkazu "Fdisk" vytvořit oddíl a potom použít tento oddíl pro "pvcreate".
+    Tato metoda používá celý disk jako souč_hod bez oddílu. Případně můžete použít `fdisk` k vytvoření oddílu a pak použít tento oddíl pro `pvcreate` .
 
-9. Ověřte, že byla souč_hod přidána do seznamu PV.
+9. Ověřte, že se v seznamu PV přidala souč_hod:
 
     ``` bash
     pvs
     ```
 
-    ![scenariob-check-pvs1](./media/disk-encryption/resize-lvm/011-resize-lvm-scenariob-check-pvs1.png)
+    ![Snímek obrazovky zobrazující kód, který zobrazuje seznam fyzických svazků. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/011-resize-lvm-scenariob-check-pvs1.png)
 
-10. Rozšíření VG přidáním nové PV do IT
+10. Rozšíření VG přidáním nové PV do IT:
 
     ``` bash
     vgextend vgname /dev/newdisk
     ```
 
-    ![scenariob-VG – rozšiřování](./media/disk-encryption/resize-lvm/012-resize-lvm-scenariob-vgextend.png)
+    ![Snímek obrazovky zobrazující kód, který rozšiřuje skupinu svazků Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/012-resize-lvm-scenariob-vgextend.png)
 
-11. Podívejte se na novou velikost VG
+11. Podívejte se na novou velikost VG:
 
     ``` bash
     vgs
     ```
 
-    ![scenariob-check-vgs1](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-vgs1.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikost skupiny svazků Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-vgs1.png)
 
-12. Pomocí lsblk určete, která z nich se má změnit.
+12. Použijte `lsblk` k identifikaci LV, pro který je potřeba změnit velikost:
 
     ``` bash
     lsblk
     ```
 
-    ![scenariob-check-lsblk1](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-lsblk1.png)
+    ![Snímek obrazovky zobrazující kód, který identifikuje místní svazek, u kterého je třeba změnit velikost. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-lsblk1.png)
 
-13. Zvětšete velikost LV pomocí "-r" a proveďte online zvýšení systému souborů.
+13. Rozšiřte systém souborů o v režimu online tak, že použijete velikost LV `-r` :
 
     ``` bash
     lvextend -r -L +2G /dev/vgname/lvname
     ```
 
-    ![scenariob-lvextend](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-lvextend.png) 
+    ![Snímek obrazovky zobrazující kód, který zvětšuje velikost systému souborů v režimu online. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-lvextend.png) 
 
-14. Ověřte nové velikosti LV a systému souborů.
+14. Ověřte nové velikosti aplikace LV a systému souborů:
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![scenariob-check-FS1](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-fs1.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikost místního svazku a systému souborů. Příkaz a výsledek jsou zvýrazněny.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-fs1.png)
 
-    Je důležité znát, že když se ADE používá pro tradiční konfigurace LVM, vytvoří se šifrovaná vrstva na úrovni LV, ne na úrovni disku.
-
-    V tomto okamžiku je šifrovaná vrstva rozšířena na nový disk.
-    Skutečný datový disk nemá žádná nastavení šifrování na úrovni platformy, takže jeho stav šifrování není aktualizovaný.
-
-    >[!NOTE]
+    >[!IMPORTANT]
+    >Když se šifrování dat Azure používá v tradičních konfiguracích LVM, zašifrovaná vrstva se vytvoří na úrovni LV, ne na úrovni disku.
+    >
+    >V tomto okamžiku je šifrovaná vrstva rozšířena na nový disk. Skutečný datový disk nemá na úrovni platformy žádná nastavení šifrování, takže jeho stav šifrování není aktualizovaný.
+    >
     >Jedná se o některé z důvodů, proč je LVM doporučený přístup. 
 
 15. Podívejte se na informace o šifrování z portálu:
 
-    ![scenariob-check-portal1](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal1.png)
+    ![Snímek obrazovky zobrazující informace o šifrování na portálu Název disku a šifrování jsou zvýrazněné.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal1.png)
 
-    Aby bylo možné aktualizovat nastavení šifrování na disku, je nutné přidat novou aplikaci LV a povolit rozšíření na VIRTUÁLNÍm počítači.
+    Pokud chcete aktualizovat nastavení šifrování na disku, přidejte novou hodnotu LV a povolte rozšíření na virtuálním počítači.
     
-16. Přidejte nový LV, vytvořte v něm systém souborů a přidejte ho do/etc/fstab.
+16. Přidejte nový LV, vytvořte v něm systém souborů a přidejte ho do nástroje `/etc/fstab` .
 
-17. Nastavte znovu příponu šifrování, aby se nastavení šifrování na novém datovém disku na úrovni platformy nastavilo jako razítko.
-
-    Příklad:
-
-    Rozhraní příkazového řádku
+17. Nastavte znovu příponu šifrování. Tentokrát budete razítkem nastavení šifrování na novém datovém disku na úrovni platformy. Tady je příklad rozhraní příkazového řádku:
 
     ``` bash
     az vm encryption enable -g ${RGNAME} --name ${VMNAME} --disk-encryption-keyvault "<your-unique-keyvault-name>"
@@ -290,68 +289,70 @@ Platí v případě, že potřebujete přidat nový disk pro zvýšení velikost
 
 18. Podívejte se na informace o šifrování z portálu:
 
-    ![scenariob-check-portal2](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal2.png)
+    ![Snímek obrazovky zobrazující informace o šifrování na portálu Název disku a informace o šifrování jsou zvýrazněné.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal2.png)
 
-19. Po aktualizaci nastavení šifrování můžete nový příkaz LV odstranit, ale budete muset odstranit položku z/etc/fstab a/etc/crypttab, které se pro ni vytvořily.
+Po aktualizaci nastavení šifrování můžete odstranit nové LV. Odstraňte také položku z `/etc/fstab` a `/etc/crypttab` , kterou jste vytvořili.
 
-    ![scenariob-Delete-fstab-crypttab](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-delete-fstab-crypttab.png)
+![Snímek obrazovky zobrazující kód, který odstraní nový logický svazek. Odstraněná karta F S a karta kryptografie jsou zvýrazněné.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-delete-fstab-crypttab.png)
 
-20. Odpojte logický svazek.
+K dokončení čištění použijte následující postup:
+
+1. Odpojte LV:
 
     ``` bash
     umount /mountpoint
     ```
 
-21. Zavřít šifrovanou vrstvu svazku
+1. Zavřete šifrovanou vrstvu svazku:
 
     ``` bash
     cryptsetup luksClose /dev/vgname/lvname
     ```
 
-22. Odstranit LV
+1. Odstraňte LV:
 
     ``` bash
     lvremove /dev/vgname/lvname
     ```
 
-#### <a name="extending-a-traditional-lvm-volume-resizing-an-existing-pv"></a>Rozšíření tradičního svazku LVM změnou velikosti stávající PV
+#### <a name="extend-a-traditional-lvm-volume-by-resizing-an-existing-pv"></a>Rozšiřování tradičního LVM svazku změnou velikosti stávající PV
 
-Některé scénáře nebo omezení vyžadují změnu velikosti existujícího disku.
+V některých případech im můžou vaše omezení vyžadovat změnu velikosti existujícího disku. Jak na to:
 
-1. Identifikace šifrovaných disků
+1. Identifikujte šifrované disky:
 
     ``` bash
     ls -l /dev/disk/azure/scsi1/
     ```
 
-    ![scenarioc-check-scsi1](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-scsi1.png)
+    ![Snímek obrazovky zobrazující kód, který identifikuje šifrované disky. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-scsi1.png)
 
     ``` bash
     lsblk -fs
     ```
 
-    ![scenarioc-check-lsblk](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-lsblk.png)
+    ![Snímek obrazovky se zobrazeným alternativním kódem, který identifikuje šifrované disky. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-lsblk.png)
 
-2. Podívejte se na informace o PV.
+2. Podívejte se na informace o PV:
 
     ``` bash
     pvs
     ```
 
-    ![scenarioc-check-PVS](./media/disk-encryption/resize-lvm/016-resize-lvm-scenarioc-check-pvs.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje informace o fyzickém svazku. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/016-resize-lvm-scenarioc-check-pvs.png)
 
-    Veškeré místo na všech PVs se aktuálně používá.
+    Výsledky na obrázku ukazují, že se v současnosti používá veškeré místo ve všech PVs.
 
-3. Podívejte se na informace o VGs
+3. Podívejte se na informace o VG:
 
     ``` bash
     vgs
     vgdisplay -v vgname
     ```
 
-    ![scenarioc-check-VGS](./media/disk-encryption/resize-lvm/017-resize-lvm-scenarioc-check-vgs.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje informace o skupině svazků Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/017-resize-lvm-scenarioc-check-vgs.png)
 
-4. Ověřte velikosti disků, můžete použít nástroje Fdisk nebo lsblk k vypsání velikosti jednotek.
+4. Ověřte velikosti disků. `fdisk` `lsblk` K vypsání velikosti jednotek můžete použít nebo.
 
     ``` bash
     for disk in `ls -l /dev/disk/azure/scsi1/* | awk -F/ '{print $NF}'` ; do echo "fdisk -l /dev/${disk} | grep ^Disk "; done | bash
@@ -359,35 +360,33 @@ Některé scénáře nebo omezení vyžadují změnu velikosti existujícího di
     lsblk -o "NAME,SIZE"
     ```
 
-    ![scenarioc-check-Fdisk](./media/disk-encryption/resize-lvm/018-resize-lvm-scenarioc-check-fdisk.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikosti disků. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/018-resize-lvm-scenarioc-check-fdisk.png)
 
-    Zjistili jsme, které PVs jsou přidružené k tomu, které LVs pomocí lsblk-FS. můžete je taky identifikovat spuštěním lvdisplay.
+    Tady jsme zjistili, které PVs jsou přidružené k tomu, které LVs pomocí `lsblk -fs` . Přidružení můžete identifikovat spuštěním `lvdisplay` .
 
     ``` bash
     lvdisplay --maps VG/LV
     lvdisplay --maps datavg/datalv1
     ```
 
-    ![check-lvdisplay](./media/disk-encryption/resize-lvm/019-resize-lvm-scenarioc-check-lvdisplay.png)
+    ![Snímek obrazovky znázorňující alternativní způsob identifikace přidružení fyzických svazků k místním svazkům. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/019-resize-lvm-scenarioc-check-lvdisplay.png)
 
-    V tomto konkrétním případě všechny 4 datové jednotky jsou součástí stejného VG a jedné LV, konfigurace se může od tohoto příkladu lišit.
+    V takovém případě jsou všechny čtyři datové jednotky součástí stejného VG a jedné LV. Vaše konfigurace se může lišit.
 
-5. Zkontroluje aktuální využití systému souborů:
+5. Ověřit aktuální využití systému souborů:
 
     ``` bash
     df -h /datalvm*
     ```
 
-    ![scenarioc-check-DF](./media/disk-encryption/resize-lvm/020-resize-lvm-scenarioc-check-df.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje využití systému souborů. Příkaz a výsledky jsou zvýrazněné.](./media/disk-encryption/resize-lvm/020-resize-lvm-scenarioc-check-df.png)
 
-6. Změnit velikost datových disků:
+6. Změňte velikost datových disků podle pokynů v části [rozšíření spravovaného disku Azure](expand-disks.md#expand-an-azure-managed-disk). Můžete použít portál, rozhraní příkazového řádku nebo PowerShell.
 
-    Můžete odkazovat na [disky se systémem Linux](expand-disks.md) (jenom na změnu velikosti disku). Tento krok můžete provést pomocí portálu, rozhraní příkazového řádku nebo PowerShellu.
+    >[!IMPORTANT]
+    >Když je virtuální počítač spuštěný, nemůžete změnit velikost virtuálních disků. Zrušte přidělení virtuálního počítače pro tento krok.
 
-    >[!NOTE]
-    >Zvažte prosím, že operace změny velikosti u virtuálních disků nejde provádět s virtuálním počítačem, na kterém běží. Pro tento krok budete muset zrušit přidělení virtuálního počítače.
-
-7. Když se změní velikost disků na potřebnou hodnotu, spusťte virtuální počítač a ověřte nové velikosti pomocí nástroje Fdisk.
+7. Spusťte virtuální počítač a ověřte nové velikosti pomocí `fdisk` .
 
     ``` bash
     for disk in `ls -l /dev/disk/azure/scsi1/* | awk -F/ '{print $NF}'` ; do echo "fdisk -l /dev/${disk} | grep ^Disk "; done | bash
@@ -395,186 +394,185 @@ Některé scénáře nebo omezení vyžadují změnu velikosti existujícího di
     lsblk -o "NAME,SIZE"
     ```
 
-    ![scenarioc-check-fdisk1](./media/disk-encryption/resize-lvm/021-resize-lvm-scenarioc-check-fdisk1.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikost disku. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/021-resize-lvm-scenarioc-check-fdisk1.png)
 
-    V tomto konkrétním případě se velikost/dev/SDD změnila z 5G na 20G
+    V tomto případě se `/dev/sdd` změnila velikost z 5 g na 20 g.
 
-8. Zkontroluje aktuální velikost PV.
+8. Ověřte aktuální velikost PV:
 
     ``` bash
     pvdisplay /dev/resizeddisk
     ```
 
-    ![scenarioc-check-pvdisplay](./media/disk-encryption/resize-lvm/022-resize-lvm-scenarioc-check-pvdisplay.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikost P V. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/022-resize-lvm-scenarioc-check-pvdisplay.png)
     
-    I v případě, že došlo ke změně velikosti disku, má souč_hod ještě předchozí velikost.
+    I když se změnila velikost disku, má souč_hod ještě předchozí velikost.
 
-9. Změna velikosti PV
+9. Změna velikosti PV:
 
     ``` bash
     pvresize /dev/resizeddisk
     ```
 
-    ![scenarioc-check-pvresize](./media/disk-encryption/resize-lvm/023-resize-lvm-scenarioc-check-pvresize.png)
+    ![Snímek obrazovky zobrazující kód, který mění velikost fyzického svazku. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/023-resize-lvm-scenarioc-check-pvresize.png)
 
 
-10. Ověřit velikost PV
+10. Ověřte velikost PV:
 
     ``` bash
     pvdisplay /dev/resizeddisk
     ```
 
-    ![scenarioc-check-pvdisplay1](./media/disk-encryption/resize-lvm/024-resize-lvm-scenarioc-check-pvdisplay1.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikost fyzického svazku. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/024-resize-lvm-scenarioc-check-pvdisplay1.png)
 
     Použijte stejný postup pro všechny disky, u kterých chcete změnit velikost.
 
-11. Podívejte se na informace o VG
+11. Podívejte se na informace o VG.
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scenarioc-check-vgdisplay1](./media/disk-encryption/resize-lvm/025-resize-lvm-scenarioc-check-vgdisplay1.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje informace pro skupinu svazků Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/025-resize-lvm-scenarioc-check-vgdisplay1.png)
 
-    VG má teď prostor, který se má přidělit LVs.
+    VG nyní má dostatek místa pro přidělení LVs.
 
-12. Změnit velikost pro LV
+12. Změňte velikost pole LV:
 
     ``` bash
     lvresize -r -L +5G vgname/lvname
     lvresize -r -l +100%FREE /dev/datavg/datalv01
     ```
 
-    ![scenarioc-check-lvresize1](./media/disk-encryption/resize-lvm/031-resize-lvm-scenarioc-check-lvresize1.png)
+    ![Snímek obrazovky zobrazující kód, který mění velikost L V. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/031-resize-lvm-scenarioc-check-lvresize1.png)
 
-13. Ověřit velikost FS
+13. Ověřte velikost systému souborů:
 
     ``` bash
     df -h /datalvm2
     ```
 
-    ![scenarioc-check-df3](./media/disk-encryption/resize-lvm/032-resize-lvm-scenarioc-check-df3.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikost systému souborů. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/032-resize-lvm-scenarioc-check-df3.png)
 
-#### <a name="extending-an-lvm-on-crypt-volume-adding-a-new-pv"></a>Rozšíření svazku LVM on-crypt přidáním nové PV
+#### <a name="extend-an-lvm-on-crypt-volume-by-adding-a-new-pv"></a>Rozšíření svazku LVM-on-crypt přidáním nové PV
 
-Tato metoda pečlivě postupuje podle kroků v části [Konfigurace LVM na nešifrovaný](how-to-configure-lvm-raid-on-crypt.md) objekt pro přidání nového disku a jeho konfigurace v rámci konfigurace LVM-on-crypt.
+Přidáním nové PV můžete také roztáhnout svazek LVM na nešifrovaný svazek. Tato metoda úzce postupuje podle kroků v části [Konfigurace LVM a RAID na šifrovaných zařízeních](how-to-configure-lvm-raid-on-crypt.md#general-steps). Podívejte se na oddíly, které vysvětlují, jak přidat nový disk a nastavit ho v konfiguraci LVM-on-crypt.
 
-Tuto metodu můžete použít k přidání prostoru k již existujícímu objektu LV nebo místo toho, abyste mohli vytvořit nové VGs nebo LVs.
+Tuto metodu lze použít k přidání prostoru do existující aplikace LV. Nebo můžete vytvořit nové VGs nebo LVs.
 
-1. Ověřit aktuální velikost vašeho VGu
+1. Ověřte aktuální velikost svého VG:
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scénář-check-vg01](./media/disk-encryption/resize-lvm/033-resize-lvm-scenarioe-check-vg01.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikost skupiny svazků Jsou zvýrazněny výsledky.](./media/disk-encryption/resize-lvm/033-resize-lvm-scenarioe-check-vg01.png)
 
-2. Ověřte velikost FS a LV, které chcete zvýšit.
+2. Ověřte velikost systému souborů a LV, které chcete rozšířit:
 
     ``` bash
     lvdisplay /dev/vgname/lvname
     ```
 
-    ![scénář-check-lv01](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-lv01.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikost místního svazku. Jsou zvýrazněny výsledky.](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-lv01.png)
 
     ``` bash
     df -h mountpoint
     ```
 
-    ![scénář-check-FS01](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-fs01.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikost systému souborů. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-fs01.png)
 
 3. Přidejte do virtuálního počítače nový datový disk a Identifikujte ho.
 
-    Než disk přidáte, Projděte si disky.
+    Před přidáním nového disku ověřte disky:
 
     ``` bash
     fdisk -l | egrep ^"Disk /"
     ```
 
-    ![scénář-check-newdisk01](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk01.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikost disků. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk01.png)
 
-    Před přidáním nového disku ověřte disky.
+    Před přidáním nového disku je třeba ještě jednou ověřit disky:
 
     ``` bash
     lsblk
     ```
 
-    ![scénář-check-newdisk002](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk02.png)
+    ![Snímek obrazovky se zobrazeným alternativním kódem, který kontroluje velikost disků. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk02.png)
 
-    Přidejte nový disk buď pomocí PowerShellu, rozhraní příkazového řádku Azure nebo Azure Portal. Podívejte se, jak [připojit disk](attach-disk-portal.md) pro referenci na přidávání disků do virtuálního počítače.
+    Pokud chcete přidat nový disk, můžete použít PowerShell, rozhraní příkazového řádku Azure nebo Azure Portal. Další informace najdete v tématu [připojení datového disku k virtuálnímu počítači se systémem Linux](attach-disk-portal.md).
 
-    Po schématu názvu jádra pro zařízení se nové jednotce normálně přiřadí další dostupné písmeno, v tomto konkrétním případě je nový přidaný disk SDD.
+    Schéma názvů jádra se vztahuje na nově přidané zařízení. Nové jednotce se normálně přiřadí další dostupný znak. V tomto případě je přidaný disk `sdd` .
 
-4. Po přidání nového disku ověřte disky.
+4. Zkontrolujte disky a ujistěte se, že byl přidán nový disk:
 
     ``` bash
     fdisk -l | egrep ^"Disk /"
     ```
 
-    ![scénář-check-newdisk02](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk02.png)-
+    ![Snímek obrazovky zobrazující kód, který obsahuje seznam disků. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk02.png)
 
     ``` bash
     lsblk
     ```
 
-    ![scénář-check-newdisk003](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk03.png)
+    ![Snímek obrazovky zobrazující nově přidaný disk ve výstupu](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk03.png)
 
-5. Vytvoření systému souborů nad nedávno přidaným diskem
-
-    Porovnat nedávno přidaný disk s propojenými zařízeními v/dev/disk/Azure/scsi1/
+5. Na naposledy přidaném disku vytvořte systém souborů. Porovnejte disk s připojenými zařízeními `/dev/disk/azure/scsi1/` .
 
     ``` bash
     ls -la /dev/disk/azure/scsi1/
     ```
 
-    ![scénář-check-newdisk03](./media/disk-encryption/resize-lvm/037-resize-lvm-scenarioe-check-newdisk03.png)
+    ![Snímek obrazovky zobrazující kód, který vytváří systém souborů. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/037-resize-lvm-scenarioe-check-newdisk03.png)
 
     ``` bash
     mkfs.ext4 /dev/disk/azure/scsi1/${disk}
     ```
 
-    ![scénář – mkfs01](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-mkfs01.png)
+    ![Snímek obrazovky zobrazující další kód, který vytvoří systém souborů a odpovídá disku na propojená zařízení. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-mkfs01.png)
 
-6. Vytvoření nového dočasného přípojný bodu pro nový přidaný disk
+6. Vytvořte dočasný přípojný bod pro nově přidaný disk:
 
     ``` bash
     newmount=/data4
     mkdir ${newmount}
     ```
 
-7. Přidat nedávno vytvořený systém souborů do/etc/fstab
+7. Přidejte do nástroje naposledy vytvořený systém souborů `/etc/fstab` .
 
     ``` bash
     blkid /dev/disk/azure/scsi1/lun4| awk -F\" '{print "UUID="$2" '${newmount}' "$4" defaults,nofail 0 0"}' >> /etc/fstab
     ```
 
-8. Připojit novou vytvořenou FS pomocí Mount-a
+8. Připojte nově vytvořený systém souborů:
 
     ``` bash
     mount -a
     ```
 
-9. Ověřte, že je připojená nová přidaná FS.
+9. Ověřte, zda je nový systém souborů připojen:
 
     ``` bash
     df -h
     ```
 
-    ![Změna velikosti – LVM – scénář – DF](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df.png)
+    ![Snímek obrazovky zobrazující kód, který ověřuje, zda je systém souborů připojen. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df.png)
 
     ``` bash
     lsblk
     ```
 
-    ![Změna velikosti – LVM – scénář – lsblk](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk.png)
+    ![Snímek obrazovky zobrazující další kód, který ověřuje, zda je systém souborů připojen. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk.png)
 
-10. Znovu spustit šifrování dříve spuštěno pro datové jednotky
+10. Restartujte šifrování, které jste předtím spustili pro datové jednotky.
 
-    V případě LVM-on-crypt doporučujeme použít EncryptFormatAll, jinak může při nastavování dalších disků dojít k dvojitému šifrování.
+    >[!TIP]
+    >Pro LVM-on-crypt doporučujeme, abyste používali `EncryptFormatAll` . V opačném případě se při nastavování dalších disků může zobrazit dvojité šifrování.
+    >
+    >Další informace najdete v tématu [Konfigurace LVM a RAID na šifrovaných zařízeních](how-to-configure-lvm-raid-on-crypt.md).
 
-    Informace o využití najdete v tématu [Konfigurace LVM na nešifrovaných počítačích](how-to-configure-lvm-raid-on-crypt.md).
-
-    Příklad:
+    Tady je příklad:
 
     ``` bash
     az vm encryption enable \
@@ -588,47 +586,45 @@ Tuto metodu můžete použít k přidání prostoru k již existujícímu objekt
     -o table
     ```
 
-    Po dokončení šifrování se na nově přidaném disku zobrazí vrstva kryptografie.
+    Po dokončení šifrování se na nově přidaném disku zobrazí vrstva kryptografie:
 
     ``` bash
     lsblk
     ```
 
-    ![scénář – lsblk2](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk2.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje vrstvu crypt. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk2.png)
 
-11. Odpojte zašifrovanou vrstvu nového disku.
+11. Odpojte zašifrovanou vrstvu nového disku:
 
     ``` bash
     umount ${newmount}
     ```
 
-12. Zkontroluje aktuální PVS informace.
+12. Podívejte se na informace o aktuálním PV:
 
     ``` bash
     pvs
     ```
 
-    ![scénář – currentpvs](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-currentpvs.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje informace o fyzickém svazku. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-currentpvs.png)
 
-13. Vytvoření PV na zašifrované vrstvě disku
-
-    Chcete-li vytvořit PV, přitáhněte název zařízení z předchozího příkazu lsblk a přidejte/dev/Mapper před název zařízení.
+13. Vytvořte souč_hod na zašifrované vrstvě disku. Z předchozího příkazu Vezměte název zařízení `lsblk` . `/dev/`Chcete-li vytvořit PV, přidejte na začátek názvu zařízení Mapovač a vytvořte souč_hod:
 
     ``` bash
     pvcreate /dev/mapper/mapperdevicename
     ```
 
-    ![scénář – pvcreate](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-pvcreate.png)
+    ![Snímek obrazovky zobrazující kód, který vytváří fyzický svazek na šifrované vrstvě. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-pvcreate.png)
 
-    Zobrazí se upozornění týkající se Vymazání aktuálního podpisu ext4 FS, očekává se, odpověď y na tuto otázku.
+    Zobrazí se upozornění týkající se Vymazání aktuálního `ext4 fs` podpisu. Toto upozornění je očekávané. Odpovězte na tuto otázku pomocí `y` .
 
-14. Ověřte, že se nová souč_hod přidala do konfigurace LVM.
+14. Ověřte, že se nová souč_hod přidala do konfigurace LVM:
 
     ``` bash
     pvs
     ```
 
-    ![scénář – newpv](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-newpv.png)
+    ![Snímek obrazovky zobrazující kód, který ověřuje, že byl do konfigurace LVM přidaný fyzický svazek. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-newpv.png)
 
 15. Přidejte novou souč_hod do VG, kterou potřebujete zvýšit.
 
@@ -636,124 +632,111 @@ Tuto metodu můžete použít k přidání prostoru k již existujícímu objekt
     vgextend vgname /dev/mapper/nameofhenewpv
     ```
 
-    ![scénář – vgextent](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgextent.png)
+    ![Snímek obrazovky zobrazující kód, který přidá fyzický svazek do skupiny svazků. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgextent.png)
 
-16. Ověřte novou velikost a volné místo pro VG.
+16. Ověřte novou velikost a volné místo VG:
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scénář – vgdisplay](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgdisplay.png)
+    ![Snímek obrazovky zobrazující kód, který ověřuje velikost a volné místo skupiny svazků. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgdisplay.png)
 
-    Všimněte si zvýšení celkového počtu PE a volného PE/velikosti.
+    Všimněte si zvýšení `Total PE` počtu a `Free PE / Size` .
 
-17. Zvětšete velikost LV a FileSystem systému pomocí možnosti-r na lvextend (v tomto příkladu převezmeme celkový dostupný prostor v VG a přidáme ho do daného logického svazku).
+17. Zvětšete velikost souboru LV a systému souborů. Použijte `-r` možnost Zapnuto `lvextend` . V tomto příkladu přidáváme celkové dostupné místo v VG k danému LV.
 
     ``` bash
     lvextend -r -l +100%FREE /dev/vgname/lvname
     ```
 
-    ![scénář – lvextend](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvextend.png)
+    ![Snímek obrazovky zobrazující kód, který zvětšuje velikost místního svazku a systému souborů. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvextend.png)
 
-18. Ověřit velikost pro Lotyšsko
+Postupujte podle dalších kroků a ověřte provedené změny.
+
+1. Ověřte velikost části LV:
 
     ``` bash
     lvdisplay /dev/vgname/lvname
     ```
 
-    ![scénář – lvdisplay](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvdisplay.png)
+    ![Snímek obrazovky zobrazující kód, který ověřuje novou velikost místního svazku. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvdisplay.png)
 
-19. Ověřte velikost systému souborů, u kterého se změnila velikost.
+1. Ověřte novou velikost systému souborů:
 
     ``` bash
     df -h mountpoint
     ```
 
-    ![scénář – DF1](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df1.png)
+    ![Snímek obrazovky zobrazující kód, který ověřuje novou velikost systému souborů. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df1.png)
 
-20. Ověřte, že je na zašifrované vrstvě vytvořená vrstva LVM.
+1. Ověřte, že je vrstva LVM na zašifrované vrstvě:
 
     ``` bash
     lsblk
     ```
 
-    ![scénář – lsblk3](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk3.png)
+    ![Snímek obrazovky zobrazující kód, který ověřuje, zda je vrstva LVM na zašifrované vrstvě Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk3.png)
 
-    Když použijete lsblk bez možností, odeberou se přípojné body víckrát, protože se seřadí podle zařízení a logických svazků, možná budete chtít použít lsblk-FS,-s, aby se mountpoints zobrazovaly jenom jednou, a disky se zobrazí víckrát.
+    Pokud použijete `lsblk` možnost bez možností, pak se přípojné body zobrazí několikrát. Příkaz seřadí podle zařízení a LVs. 
+
+    Možná budete chtít použít `lsblk -fs` . V tomto příkazu `-fs` obrátí pořadí řazení tak, aby se přípojné body zobrazovaly jednou. Disky se zobrazují víckrát.
 
     ``` bash
     lsblk -fs
     ```
 
-    ![scénář – lsblk4](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk4.png)
+    ![Snímek obrazovky se zobrazeným alternativním kódem, který ověřuje, zda je vrstva LVM na zašifrované vrstvě. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk4.png)
 
-#### <a name="extending-an-lvm-on-crypt-volume-resizing-an-existing-pv"></a>Rozšíření LVM na svazek nešifrované změny velikosti stávající PV
+#### <a name="extend-an-lvm-on-a-crypt-volume-by-resizing-an-existing-pv"></a>Rozšíří LVM na svazek s nešifrovaným použitím změny velikosti stávající PV.
 
-1. Identifikace šifrovaných disků
+1. Identifikujte šifrované disky:
 
     ``` bash
     lsblk
     ```
 
-    ![scenariof-lsblk01](./media/disk-encryption/resize-lvm/039-resize-lvm-scenariof-lsblk01.png)
+    ![Snímek obrazovky zobrazující kód, který identifikuje šifrované disky. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/039-resize-lvm-scenariof-lsblk01.png)
 
     ``` bash
     lsblk -s
     ```
 
-    ![scenariof-lsblk012](./media/disk-encryption/resize-lvm/040-resize-lvm-scenariof-lsblk012.png)
+    ![Snímek obrazovky se zobrazeným alternativním kódem, který identifikuje šifrované disky. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/040-resize-lvm-scenariof-lsblk012.png)
 
-2. Podívejte se na informace o vaší PV.
+2. Podívejte se na informace o vaší PV:
 
     ``` bash
     pvs
     ```
 
-    ![scenariof-pvs1](./media/disk-encryption/resize-lvm/041-resize-lvm-scenariof-pvs.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje informace pro fyzické svazky. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/041-resize-lvm-scenariof-pvs.png)
 
-3. Podívejte se na informace o VG
+3. Podívejte se na informace o VG:
 
     ``` bash
     vgs
     ```
 
-    ![scenariof-vgs](./media/disk-encryption/resize-lvm/042-resize-lvm-scenariof-vgs.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje informace pro skupiny svazků Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/042-resize-lvm-scenariof-vgs.png)
 
-4. Projděte si informace o aplikaci Lotyšsko
+4. Podívejte se na informace v aplikaci Lotyšsko:
 
     ``` bash
     lvs
     ```
 
-    ![scenariof-lvs](./media/disk-encryption/resize-lvm/043-resize-lvm-scenariof-lvs.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje informace pro místní svazek. Výsledek je zvýrazněný.](./media/disk-encryption/resize-lvm/043-resize-lvm-scenariof-lvs.png)
 
-5. Ověřit využití systému souborů
+5. Podívejte se na využití systému souborů:
 
     ``` bash
     df -h /mountpoint(s)
     ```
 
-    ![LVM-scenariof – FS](./media/disk-encryption/resize-lvm/044-resize-lvm-scenariof-fs.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje, jak velká část systému souborů je používána. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/044-resize-lvm-scenariof-fs.png)
 
-6. Kontrolovat velikosti disků
-
-    ``` bash
-    fdisk
-    fdisk -l | egrep ^"Disk /"
-    lsblk
-    ```
-
-    ![scenariof-fdisk01](./media/disk-encryption/resize-lvm/045-resize-lvm-scenariof-fdisk01.png)
-
-7. Změna velikosti datového disku
-
-    Můžete odkazovat na [disky s rozbalenými Linuxy](expand-disks.md) (jenom na změnu velikosti disku). k provedení tohoto kroku můžete použít portál, CLI nebo PowerShell.
-
-    >[!NOTE]
-    >Zvažte prosím, že operace změny velikosti u virtuálních disků nejde provádět s virtuálním počítačem, na kterém běží. Pro tento krok budete muset zrušit přidělení virtuálního počítače.
-
-8. Kontrolovat velikosti disků
+6. Ověřte velikosti svých disků:
 
     ``` bash
     fdisk
@@ -761,37 +744,50 @@ Tuto metodu můžete použít k přidání prostoru k již existujícímu objekt
     lsblk
     ```
 
-    ![scenariof-fdisk02](./media/disk-encryption/resize-lvm/046-resize-lvm-scenariof-fdisk02.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikost disků. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/045-resize-lvm-scenariof-fdisk01.png)
 
-    Všimněte si, že (v tomto případě) se velikost obou disků změnila z 2 GB na 4 GB, ale velikost FS, LV a souč_hod zůstane stejná.
+7. Změňte velikost datového disku. Můžete použít portál, CLI nebo PowerShell. Další informace najdete v části Změna velikosti disku v tématu [rozšíření virtuálních pevných disků na virtuálním počítači se systémem Linux](expand-disks.md#expand-an-azure-managed-disk). 
 
-9. Zkontroluje aktuální velikost PV.
+    >[!IMPORTANT]
+    >Když je virtuální počítač spuštěný, nemůžete změnit velikost virtuálních disků. Zrušte přidělení virtuálního počítače pro tento krok.
 
-    Pamatujte na to, že v LVM je to, že Souč_hod je zařízení/dev/Mapper/, ne zařízení/dev/SD *.
+8. Ověřte velikosti disků:
+
+    ``` bash
+    fdisk
+    fdisk -l | egrep ^"Disk /"
+    lsblk
+    ```
+
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikosti disků. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/046-resize-lvm-scenariof-fdisk02.png)
+
+    V takovém případě se velikost obou disků změnila z 2 GB na 4 GB. Velikost systému souborů, LV a PV ale zůstanou stejná.
+
+9. Zkontroluje aktuální velikost PV. Mějte na paměti, že v LVM-on-crypt je to `/dev/mapper/` zařízení, ne `/dev/sd*` zařízení.
 
     ``` bash
     pvdisplay /dev/mapper/devicemappername
     ```
 
-    ![scenariof-pvs](./media/disk-encryption/resize-lvm/047-resize-lvm-scenariof-pvs.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikost aktuálního fyzického svazku. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/047-resize-lvm-scenariof-pvs.png)
 
-10. Změna velikosti PV
+10. Změna velikosti PV:
 
     ``` bash
     pvresize /dev/mapper/devicemappername
     ```
 
-    ![scenariof – Změna velikosti – PV](./media/disk-encryption/resize-lvm/048-resize-lvm-scenariof-resize-pv.png)
+    ![Snímek obrazovky zobrazující kód, který mění velikost fyzického svazku. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/048-resize-lvm-scenariof-resize-pv.png)
 
-11. Po změně velikosti se podívejte na velikost PV.
+11. Podívejte se na novou velikost PV:
 
     ``` bash
     pvdisplay /dev/mapper/devicemappername
     ```
 
-    ![scenariof – PV](./media/disk-encryption/resize-lvm/049-resize-lvm-scenariof-pv.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje velikost fyzického svazku. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/049-resize-lvm-scenariof-pv.png)
 
-12. Změnit velikost šifrované vrstvy na SOUČHODNOTA
+12. Změnit velikost šifrované vrstvy na SOUČHODNOTA:
 
     ``` bash
     cryptsetup resize /dev/mapper/devicemappername
@@ -799,60 +795,60 @@ Tuto metodu můžete použít k přidání prostoru k již existujícímu objekt
 
     Použijte stejný postup pro všechny disky, u kterých chcete změnit velikost.
 
-13. Podívejte se na informace o VG
+13. Podívejte se na informace o VG:
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scenariof-vg](./media/disk-encryption/resize-lvm/050-resize-lvm-scenariof-vg.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje informace pro skupinu svazků Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/050-resize-lvm-scenariof-vg.png)
 
-    VG má teď prostor, který se má přidělit LVs.
+    VG nyní má dostatek místa pro přidělení LVs.
 
-14. Podívejte se na informace v části LV
+14. Podívejte se na informace v části LV:
 
     ``` bash
     lvdisplay vgname/lvname
     ```
 
-    ![scenariof – LV](./media/disk-encryption/resize-lvm/051-resize-lvm-scenariof-lv.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje informace pro místní svazek. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/051-resize-lvm-scenariof-lv.png)
 
-15. Ověření využití FS
+15. Podívejte se na využití systému souborů:
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![scenariof – FS](./media/disk-encryption/resize-lvm/052-resize-lvm-scenariof-fs.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje využití systému souborů. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/052-resize-lvm-scenariof-fs.png)
 
-16. Změnit velikost pro LV
+16. Změňte velikost pole LV:
 
     ``` bash
     lvresize -r -L +2G /dev/vgname/lvname
     ```
 
-    ![scenariof-lvresize](./media/disk-encryption/resize-lvm/053-resize-lvm-scenariof-lvresize.png)
+    ![Snímek obrazovky zobrazující kód, který mění velikost místního svazku. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/053-resize-lvm-scenariof-lvresize.png)
 
-    K provedení změny velikosti FS používáme možnost-r.
+    V tomto případě používáme `-r` k změně velikosti systému souborů taky možnost.
 
-17. Podívejte se na informace v části LV
+17. Podívejte se na informace v části LV:
 
     ``` bash
     lvdisplay vgname/lvname
     ```
 
-    ![scenariof-lvsize](./media/disk-encryption/resize-lvm/054-resize-lvm-scenariof-lvsize.png)
+    ![Snímek obrazovky zobrazující kód, který získává informace o místním svazku. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/054-resize-lvm-scenariof-lvsize.png)
 
-18. Ověřit využití systému souborů
+18. Podívejte se na využití systému souborů:
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![vytvořit systém souborů](./media/disk-encryption/resize-lvm/055-resize-lvm-scenariof-fs.png)
+    ![Snímek obrazovky zobrazující kód, který kontroluje využití systému souborů. Výsledky jsou zvýrazněny.](./media/disk-encryption/resize-lvm/055-resize-lvm-scenariof-fs.png)
 
-    Použijte stejný postup změny velikosti u všech dalších LV, které to vyžadují.
+Použijte stejný postup změny velikosti na jakékoli jiné LV, který to vyžaduje.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Řešení potíží se službou Azure Disk Encryption](disk-encryption-troubleshooting.md)
+[Řešení potíží s Azure Disk Encryption](disk-encryption-troubleshooting.md)

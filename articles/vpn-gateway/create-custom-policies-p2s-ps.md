@@ -8,20 +8,20 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 852ff5e6ad847ff33f8e32b4c3d9f8b325b80716
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a77a870304e20c179e22b4a4ffe404315894d8a0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664055"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743688"
 ---
-# <a name="create-and-set-custom-ipsec-policies-for-point-to-site"></a>Vytvoření a nastavení vlastních zásad IPsec pro Point-to-site
+# <a name="create-and-set-custom-ipsec-policies-for-point-to-site-preview"></a>Vytvoření a nastavení vlastních zásad IPsec pro Point-to-Site (Preview)
 
 Pokud vaše prostředí vyžaduje vlastní zásadu IPsec pro šifrování, můžete snadno nakonfigurovat objekt zásad s požadovaným nastavením. Tento článek vám pomůže vytvořit vlastní objekt zásad a pak ho nastavit pomocí PowerShellu.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Ověřte, že vaše prostředí splňuje následující předpoklady:
 

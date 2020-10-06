@@ -1,6 +1,6 @@
 ---
 title: Změna výkonu služby Azure Managed disks
-description: Přečtěte si o úrovních výkonu pro spravované disky a také o tom, jak změnit úrovně výkonu pro existující spravované disky.
+description: Přečtěte si o úrovních výkonu pro spravované disky a Naučte se měnit úrovně výkonu pro existující spravované disky.
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
@@ -8,35 +8,40 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 7da500c3f18b7bf7057b0c5875bc9b39136a6483
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: efbe8bc24b430716da46601ed073300e4c79cca7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396582"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743722"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Úrovně výkonu pro Managed Disks (Preview)
 
-Azure Disk Storage v současné době nabízí integrované možnosti shlukování pro zajištění vyššího výkonu pro zpracování krátkodobého neočekávaného provozu. SSD úrovně Premium mají flexibilitu při zvyšování výkonu disku, aniž by bylo potřeba zvyšovat skutečnou velikost disku, což vám umožní odpovídat potřebám svého zatížení a snižovat náklady, tato funkce je aktuálně ve verzi Preview. To je ideální pro události, které dočasně vyžadují trvale vyšší úroveň výkonu, jako je třeba prázdninové nákupy, testování výkonu nebo spouštění školicích prostředí. Pokud chcete tyto události zpracovat, můžete podle potřeby vybrat vyšší úroveň výkonu a vrátit se do původní úrovně, pokud už další výkon není potřeba.
+Azure Disk Storage v současné době nabízí integrované možnosti shlukování, které poskytují vyšší výkon pro zpracování krátkodobého neočekávaného provozu. SSD úrovně Premium mají flexibilitu na zvýšení výkonu disku bez zvýšení skutečné velikosti disku. Tato funkce vám umožní odpovídat potřebám výkonu vašich úloh a snižovat náklady. 
+
+> [!NOTE]
+> Tato funkce je aktuálně ve verzi Preview. 
+
+Tato funkce je ideální pro události, které dočasně vyžadují trvale vyšší úroveň výkonu, jako je prázdninové nákupy, testování výkonu nebo spouštění školicích prostředí. Pro zpracování těchto událostí můžete použít vyšší úroveň výkonu, pokud ji potřebujete. Pak se můžete vrátit do původní úrovně, pokud už nebudete potřebovat další výkon.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Při prvním nasazení nebo zřízení disku je základní úroveň výkonu pro tento disk nastavena na základě zřízené velikosti disku. Je možné vybrat vyšší úroveň výkonu pro splnění vyšších požadavků a v případě, že tento výkon již nepotřebujete, můžete se vrátit do počáteční základní úrovně výkonu.
+Při prvním nasazení nebo zřízení disku je základní úroveň výkonu pro tento disk nastavena na základě zřízené velikosti disku. Vyšší úroveň výkonu můžete použít k uspokojení vyšší poptávky. Když už tuto úroveň výkonu nepotřebujete, můžete se vrátit na počáteční základní úroveň výkonu.
 
-Vaše fakturace se mění v průběhu změny vaší úrovně. Pokud například zřídíte disk P10 (128 GiB), vaše základní úroveň výkonu se nastaví jako P10 (500 IOPS a 100 MB/s) a bude se vám účtovat sazba P10. Vrstvu můžete aktualizovat tak, aby odpovídala výkonu P50 (7500 IOPS a 250 MB/s) bez zvýšení velikosti disku. během této doby se vám bude účtovat sazba za P50. Pokud už vyšší výkon nepotřebujete, můžete se vrátit na úroveň P10 a disk se znovu bude účtovat za P10 sazbu.
+Vaše fakturace se mění v průběhu změny vaší úrovně. Pokud například zřídíte disk P10 (128 GiB), úroveň výkonu základní úrovně se nastaví jako P10 (500 IOPS a 100 MB/s). Bude se vám účtovat sazba za P10. Vrstvu můžete upgradovat tak, aby odpovídala výkonu P50 (7 500 IOPS a 250 MB/s), aniž by se zvýšila velikost disku. Během upgradu se vám bude účtovat sazba za P50. Pokud už vyšší výkon nepotřebujete, můžete se vrátit na úroveň P10. Na disk se bude znovu účtovat P10 sazba.
 
 | Velikost disku | Základní úroveň výkonu | Dá se upgradovat na |
 |----------------|-----|-------------------------------------|
 | 4 GiB | P1 | P2, P3, P4, P6, P10, P15, P20, P30, P40, P50 |
 | 8 GiB | P2 | P3, P4, P6, P10, P15, P20, P30, P40, P50 |
 | 16 GiB | P3 | P4, P6, P10, P15, P20, P30, P40, P50 | 
-| 32 GB | P4 | P6, P10, P15, P20, P30, P40, P50 |
+| 32 GiB | P4 | P6, P10, P15, P20, P30, P40, P50 |
 | 64 GiB | P6 | P10, P15, P20, P30, P40, P50 |
 | 128 GiB | P10 | P15, P20, P30, P40, P50 |
 | 256 GB | P15 | P20, P30, P40, P50 |
 | 512 GiB | P20 | P30, P40, P50 |
 | 1 TiB | P30 | P40, P50 |
-| 2 TB | P40 | P50 |
+| 2 TiB | P40 | P50 |
 | 4 TiB | P50 | Žádné |
 | 8 TiB | P60 |  P70, P80 |
 | 16 TiB | P70 | P80 |
@@ -46,16 +51,14 @@ Informace o fakturaci najdete v tématu [ceny za spravované disky](https://azur
 
 ## <a name="restrictions"></a>Omezení
 
-- V současné době se podporuje jenom pro prémiové SSD.
-- Před změnou úrovní je potřeba disky odpojit od spuštěného virtuálního počítače.
-- Použití úrovní výkonu P60, P70 a P80 je omezené na disky 4096 GiB nebo vyšší.
-- Úroveň výkonu disků se dá změnit jenom jednou za 24 hodin.
+- Tato funkce se v současné době podporuje jenom pro Premium SSD.
+- Než budete moct změnit vrstvu disku, musíte disk odpojit od spuštěného virtuálního počítače.
+- Použití úrovní výkonu P60, P70 a P80 je omezené na disky 4 096 GiB nebo vyšší.
+- Úroveň výkonu disku se dá změnit jenom jednou za 24 hodin.
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Úprava úrovně výkonu spravovaného disku je aktuálně dostupná jenom pro Premium SSD v následujících oblastech:
-
-- USA – středozápad 
+Možnost upravit úroveň výkonu spravovaného disku je v tuto chvíli dostupná jenom na úrovni Premium SSD v oblasti Středozápadní USA. 
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Vytvoření prázdného datového disku s úrovní vyšší než základní úroveň
 
@@ -102,7 +105,7 @@ az disk show -n $diskName -g $resourceGroupName --query [tier] -o tsv
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud je nutné změnit velikost disku, aby bylo možné využít větší úrovně výkonu, přečtěte si naše články na předmětu:
+Pokud potřebujete změnit velikost disku, abyste mohli využít vyšší úrovně výkonu, přečtěte si tyto články:
 
 - [Rozbalení virtuálních pevných disků na virtuálním počítači se systémem Linux pomocí Azure CLI](linux/expand-disks.md)
 - [Rozšíření spravovaného disku připojeného k virtuálnímu počítači s Windows](windows/expand-os-disk.md)

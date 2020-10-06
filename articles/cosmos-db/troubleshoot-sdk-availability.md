@@ -3,17 +3,17 @@ title: Diagnostika a řešení potíží s dostupností sad Azure Cosmos SDK v p
 description: Seznamte se s chováním dostupnosti sady SDK Azure Cosmos při provozu ve více regionálních prostředích.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 09/24/2020
+ms.date: 10/05/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 8dd7ced2dfcfd3c555555d6f0a197623bd8726f2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 400795d20b6e7ad919f5cbbfa6078987bb65297e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330430"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743960"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Diagnostika a řešení potíží s dostupností sad Azure Cosmos SDK v prostředí s více oblastmi
 
@@ -24,7 +24,7 @@ Všechny sady SDK pro Azure Cosmos poskytují možnost přizpůsobit místní pr
 * Vlastnost [ConnectionPolicy. PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) v sadě .NET v2 SDK.
 * Vlastnosti [CosmosClientOptions. ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) nebo [CosmosClientOptions. ApplicationPreferredRegions](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationpreferredregions) v sadě .NET V3 SDK.
 * Metoda [CosmosClientBuilder. preferredRegions](/java/api/com.azure.cosmos.cosmosclientbuilder.preferredregions) v sadě Java v4 SDK.
-* Parametr [CosmosClient. preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) v sadě SDK pro Node.
+* Parametr [CosmosClient.preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) v sadě Python SDK.
 * Parametr [CosmosClientOptions. ConnectionPolicy. preferredLocations](/javascript/api/@azure/cosmos/connectionpolicy#preferredlocations) v sadě js SDK.
 
 Když nastavíte místní předvolbu, klient se připojí k oblasti, jak je uvedeno v následující tabulce:
@@ -49,6 +49,8 @@ Když nastane kterýkoli z následujících scénářů, klient nástroje, kter�
 * Vlastnost *RequestDiagnosticsString* na odpovědích v sadě .NET v2 SDK.
 * Vlastnost *Diagnostic* na odpovědích a výjimkách v sadě .NET V3 SDK.
 * Metoda *Getdiagnostics ()* na odpovědích a výjimkách v sadě Java v4 SDK.
+
+Při určování další oblasti v upřednostňovaném pořadí bude klient sady SDK používat seznam oblastí účtu a stanovit prioritu upřednostňovaných oblastí (pokud existují).
 
 Podrobné informace o zárukách SLA v těchto událostech najdete v [SLA dostupnosti](high-availability.md#slas-for-availability).
 

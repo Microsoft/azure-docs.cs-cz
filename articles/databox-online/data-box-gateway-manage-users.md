@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 38b4b701329cf35088d797b095fa3caca46f55b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e941007ddc27f809de7d43cd33e44c5b521a6bd
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338970"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743824"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Použití webu Azure Portal ke správě uživatelů ve službě Azure Data Box Gateway
 
@@ -45,7 +45,7 @@ Pokud chcete přidat uživatele, proveďte na webu Azure Portal následující k
 
 2. Zadejte uživatelské jméno a heslo pro uživatele, kterého chcete přidat. Potvrďte heslo a klikněte na **Přidat**.
 
-    ![Přidání uživatele kliknutím](media/data-box-gateway-manage-users/add-user-2.png)
+    ![Klikněte na Přidat uživatele 2.](media/data-box-gateway-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
     > Tito uživatelé jsou rezervováni systémem a není možné je používat: Administrator, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Guest.  
@@ -70,11 +70,11 @@ Pokud chcete uživatele odstranit, proveďte na webu Azure Portal následující
 
 2. Po zobrazení výzvy potvrďte odstranění. 
 
-   ![Odstranění uživatele](media/data-box-gateway-manage-users/delete-user-2.png)
+   ![Odstranění uživatele 2](media/data-box-gateway-manage-users/delete-user-2.png)
 
 Seznam uživatelů se aktualizuje a odstraněný uživatel z něj zmizí.
 
-![Odstranění uživatele](media/data-box-gateway-manage-users/delete-user-3.png)
+![Odstranění uživatele 3](media/data-box-gateway-manage-users/delete-user-3.png)
 
 
 ## <a name="next-steps"></a>Další kroky

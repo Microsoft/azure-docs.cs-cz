@@ -3,12 +3,12 @@ title: Nasazení aplikace .NET v kontejneru do Azure Service Fabric
 description: Podívejte se, jak kontejnerizovat existující aplikaci .NET pomocí sady Visual Studio a jak místně ladit kontejnery v Service Fabricu. Kontejnerizovaná aplikace se odešle do registru kontejneru Azure a nasadí se do clusteru Service Fabricu. Po nasazení do Azure používá aplikace k uchovávání dat databázi SQL Azure.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 4ef696156b6386c7aa1a027dcc61c988ba4692a2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c77b2e5b60aef246b513cb852f6231ba7531056
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314296"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743790"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Kurz: Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabricu
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 2. Nainstalujte [Docker CE pro Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description), abyste mohli spouštět kontejnery ve Windows 10.
@@ -45,7 +45,7 @@ V tomto kurzu se naučíte:
 
 1. Klikněte pravým tlačítkem na projekt **FabrikamFiber.Web** > **Přidat** > **Podpora orchestrátoru kontejnerů**.  Vyberte **Service Fabric** jako orchestrátor kontejnerů a klikněte na **OK**.
 
-2. Kliknutím na **Ano** přepnete Docker na kontejnery Windows.
+2. Pokud se zobrazí výzva, klikněte na **Ano** a teď přepnete Docker na kontejnery Windows.
 
    V řešení se vytvoří nový projekt aplikace Service Fabric **FabrikamFiber.CallCenterApplication**.  Do existujícího projektu **FabrikamFiber.Web** se přidá soubor Docker.  Do projektu **FabrikamFiber.Web** se také přidá adresář **PackageRoot**, který obsahuje manifest služby a nastavení pro novou službu FabrikamFiber.Web.
 
@@ -144,7 +144,7 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 
 Aplikace Service Fabric se spouští v clusteru, což je síťově propojená sada virtuálních nebo fyzických počítačů.  Než budete moct nasadit aplikaci do Azure, vytvořte v Azure Cluster Service Fabric.
 
-Další možnosti:
+Máte následující možnosti:
 
 * Vytvořit testovací cluster v sadě Visual Studio. Tato možnost umožňuje vytvořit zabezpečený cluster přímo ze sady Visual Studio s použitím upřednostňované konfigurace.
 * [Vytvořit zabezpečený cluster ze šablony](service-fabric-tutorial-create-vnet-and-windows-cluster.md)

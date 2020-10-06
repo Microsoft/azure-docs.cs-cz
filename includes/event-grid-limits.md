@@ -5,28 +5,37 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: include
-ms.date: 05/18/2020
+ms.date: 10/18/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7e7a0424e4454639211c6494aab0700e75269361
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e084256d9c2043d4382ca180ef3178175b301367
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83721582"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91745709"
 ---
-Následující omezení platí pro Azure Event Grid systémová témata a vlastní témata, *nikoli* domény událostí.
+Následující omezení se vztahují na Azure Event Grid **témata** (systémová, vlastní a partnerská témata). 
 
 | Prostředek | Omezení |
 | --- | --- |
 | Vlastní témata pro každé předplatné Azure | 100 |
 | Odběry událostí na téma | 500 |
-| Míra publikování pro vlastní téma (příchozí) | 5 000 událostí za sekundu na téma |
-| Velikost události | 1 MB. Operace se účtují v 64 KB, ale i když se to bude zvyšovat. Události, které překročí 64 KB, budou účtovat poplatky za operace, jako by se jednalo o více událostí. Například událost, která je 130 KB, by mohla způsobit operace, jako by se jednalo o 3 samostatné události.  |
+| Míra publikování vlastního nebo partnerského tématu (příchozí) | 5 000 událostí za sekundu nebo 1 MB/s (podle toho, co je splněno jako první)<br/>Neplatí pro systémová témata. |
+| Velikost události | 1 MB  |
+| Připojení privátního koncového bodu na téma  | 64 | 
+| Pravidla brány firewall protokolu IP pro každé téma | 16 | 
+
+Následující omezení platí pro Azure Event Grid **domény**. 
+
+| Prostředek | Omezení |
+| --- | --- |
 | Témata na doménu události | 100 000 |
 | Odběry událostí na téma v rámci domény | 500 |
 | Odběry událostí oboru domény | 50 |
-| Frekvence publikování pro doménu události (příchozí) | 5 000 událostí za sekundu |
+| Frekvence publikování pro doménu události (příchozí) | 5 000 událostí za sekundu nebo 1 MB/s (podle toho, co je splněno jako první) |
 | Domény událostí na předplatné Azure | 100 |
-| Připojení privátního koncového bodu na téma nebo doménu | 64 | 
-| Pravidla brány firewall protokolu IP na téma nebo doménu | 16 | 
+| Připojení privátního koncového bodu na doménu | 64 | 
+| Pravidla brány firewall protokolu IP pro každou doménu | 16 | 
+
+

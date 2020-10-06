@@ -1,14 +1,14 @@
 ---
 title: Vysvětlení uzamykání prostředků
 description: Přečtěte si o možnostech uzamykání v plánech Azure k ochraně prostředků při přiřazování podrobného plánu.
-ms.date: 08/27/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 30d5528b4613dc04d1e825d10e11b7eeadc57698
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 8ac5c918a3c370b9d8e88800e05f83e585550e3c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91534858"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744011"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení uzamykání prostředků v semodrotiskych Azure
 
@@ -109,8 +109,8 @@ V případě, že přiřazení vybralo možnost **jen pro čtení** nebo **neods
 
 |Mode |Oprávnění. akce |Oprávnění. NotActions |Objekty zabezpečení [i]. Textový |ExcludePrincipals [i]. Účet | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Jen pro čtení |**\*** |**\*/read** |SystemDefined (všichni) |přiřazení podrobného plánu a uživatelsky definované v **excludedPrincipals** |Skupina prostředků – _pravda_; Prostředek – _NEPRAVDA_ |
-|Neodstraňovat |**\*/Delete** | |SystemDefined (všichni) |přiřazení podrobného plánu a uživatelsky definované v **excludedPrincipals** |Skupina prostředků – _pravda_; Prostředek – _NEPRAVDA_ |
+|Jen pro čtení |**\*** |**\*/read**<br />**Microsoft. Authorization/zámky/DELETE**<br />**Microsoft. Network/virtualNetwork/subnets/JOIN/Action** |SystemDefined (všichni) |přiřazení podrobného plánu a uživatelsky definované v **excludedPrincipals** |Skupina prostředků – _pravda_; Prostředek – _NEPRAVDA_ |
+|Neodstraňovat |**\*/Delete** | **Microsoft. Authorization/zámky/DELETE**<br />**Microsoft. Network/virtualNetwork/subnets/JOIN/Action** |SystemDefined (všichni) |přiřazení podrobného plánu a uživatelsky definované v **excludedPrincipals** |Skupina prostředků – _pravda_; Prostředek – _NEPRAVDA_ |
 
 > [!IMPORTANT]
 > Azure Resource Manager ukládá do mezipaměti Podrobnosti přiřazení role po dobu až 30 minut. V důsledku toho nemusí být přiřazení zamítnutí akcí Odepřít u prostředků podrobného plánu okamžitě platit. Během této doby může být možné odstranit prostředek určený k ochraně pomocí zámků podrobného plánu.

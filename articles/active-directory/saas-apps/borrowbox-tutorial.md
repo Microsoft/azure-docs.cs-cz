@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: d7cab94520464662589ca952e9d50102f450ab8d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c0ffa67725c3178155c495754ca67270c946778b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548288"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744300"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>Kurz: Azure Active Directory integrace s BorrowBox
 
@@ -30,7 +30,7 @@ Integrace BorrowBox s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s BorrowBox potřebujete následující položky:
 
@@ -100,11 +100,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí BorrowBo
 
 4. V **základní části Konfigurace SAML** nemusí uživatel provádět žádný krok, protože aplikace už je předem integrovaná s Azure.
 
-    ![[Název aplikace] Informace o jednotném přihlašování domény a adresy URL](common/preintegrated.png)
+    ![[Snímek obrazovky se zobrazí základní konfigurace SAML.] Informace o jednotném přihlašování domény a adresy URL](common/preintegrated.png)
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![[Název aplikace] Informace o jednotném přihlašování domény a adresy URL](common/metadata-upload-additional-signon.png)
+    ![[Snímek obrazovky se zobrazí jako nastavit další U R ls, kde můžete zadat přihlášení U R L.] Informace o jednotném přihlašování domény a adresy URL](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://fe.bolindadigital.com/wldcs_bol_fo/b2i/mainPage.html?b2bSite=<ID>`
 
@@ -156,7 +156,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -164,7 +164,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **BorrowBox**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **BorrowBox**.
 

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 4818755e48a4d497d70920a62a9505346176ed73
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 026caf101f58ff9d93e3306d0bd224f24e8af864
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371282"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743943"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Kurz: zřízení Azure Data Box Gateway ve VMware
 
@@ -30,10 +30,10 @@ V tomto kurzu se naučíte:
 > * Zřízení virtuálního zařízení ve VMware
 > * Spuštění virtuálního zařízení a získání IP adresy
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Níže jsou uvedené požadavky na zřízení virtuálního zařízení v hostitelském systému, na kterém běží VMware ESXi 6,0, 6,5 nebo 6,7.
 
@@ -145,11 +145,11 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 
     Na stejné stránce klikněte na **Přidat pevný disk** a vyberte **Existující pevný disk**. V úložišti dat vyberte soubor VMDK. Tím přidáte disk s operačním systémem. 
 
-     ![Stránka pro přizpůsobení nastavení](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![Přizpůsobení stránky nastavení 2](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     Posuňte se dolů, dokud se nezobrazí **Nový pevný disk**, a rozbalte ho, aby se zobrazilo nastavení. Nastavte **Uzel virtuálního zařízení** na **Kontroler IDE 0**.
 
-     ![Stránka pro přizpůsobení nastavení](./media/data-box-gateway-deploy-provision-vmware/image15.png)
+     ![Přizpůsobení stránky nastavení 3](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
 17. Volitelné *Tento krok proveďte jenom v případě, že používáte VMware ESXi Server 6,7*. Na stránce **přizpůsobit nastavení** klikněte na **Možnosti virtuálního počítače**. Přejděte na **Možnosti spuštění > firmware** a změňte ho na **BIOS**. Ve výchozím nastavení je hodnota nastavena na EFI. Klikněte na **Next** (Další).
 
@@ -157,8 +157,8 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 
 18. Na stránce **Připraveno k dokončení** zkontrolujte všechna nastavení přidružená k novému virtuálnímu počítači. Ověřte, že počet CPU je 4, paměť má velikost 8 192 MB, počet síťových rozhraní je 1 a Pevný disk 2 má kontroler IDE 0. Klikněte na **Finish** (Dokončit).
    
-    ![Stránka připravena k dokončení ](./media/data-box-gateway-deploy-provision-vmware/image16.png)
-     ![ stránky](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+    ![Dokončena stránka ](./media/data-box-gateway-deploy-provision-vmware/image16.png)
+     ![ připravená na dokončení stránky 2](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 Váš virtuální počítač je teď zřízený. Zobrazí se o tom oznámení a nový virtuální počítač se přidá do seznamu virtuálních počítačů.
 

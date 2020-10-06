@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 1035b0afee9821020673acbc813b31cba3e2fd90
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 27b6d8ca61ed10b5c7362e089fe94d8d64164878
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893941"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743858"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Správa režimu přístupu, napájení a připojení pro Azure Data Box Gateway
 
@@ -53,7 +53,7 @@ Pracovní postup Resetování nevyžaduje, aby uživatel nahrál staré heslo a 
  
 2. Zadejte nové heslo a potvrďte ho. Zadané heslo musí mít 8 až 16 znaků. Heslo musí obsahovat 3 z následujících znaků: velká písmena, malá písmena, číslice a speciální znaky. Klikněte na **resetovat**.
 
-    ![Resetování hesla](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![Resetování hesla 2](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Správa přístup k prostředků
 
@@ -119,7 +119,7 @@ Chcete-li změnit režim zařízení, postupujte podle následujících kroků:
  
 4. Pokud chcete zařízení spustit v odpojeném režimu, zakažte **správu Azure Portal**. Zařízení se teď dá spravovat jenom přes místní webové uživatelské rozhraní.
 
-    ![Režim připojení](media/data-box-gateway-manage-access-power-connectivity-mode/connectivity-mode-2.png)
+    ![Režim připojení 2](media/data-box-gateway-manage-access-power-connectivity-mode/connectivity-mode-2.png)
 
 ## <a name="manage-power"></a>Správa napájení
 

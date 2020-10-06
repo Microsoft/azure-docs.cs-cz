@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 379ae013e9343b14b854386a0a9f486dd2917e94
-ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
+ms.openlocfilehash: b8593873774575635b31176b162086795e8a1320
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91712319"
+ms.locfileid: "91744283"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Boomi
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Boomi s Azure Active Directory (Azure 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -89,7 +89,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     c. Po úspěšném nahrání souboru metadat se hodnoty **adresy URL** pro **identifikátor** a odpověď získají automaticky v základní části Konfigurace SAML.
 
-    ![image](common/idp-intiated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde se zobrazují identifikátory a odpovědi U R L.](common/idp-intiated.png)
 
     d. Zadejte **přihlašovací adresu URL**, třeba `https://platform.boomi.com/AtomSphere.html#build;accountId={your-accountId}` .
 
@@ -98,7 +98,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Boomi aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
-    ![image](common/default-attributes.png)
+    ![Snímek obrazovky ukazuje atributy uživatele & deklarací s výchozími hodnotami, jako je například daný uživatel. jméno a EmailAddress User. mail.](common/default-attributes.png)
 
 1. Kromě toho očekává aplikace Boomi několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
@@ -176,13 +176,13 @@ Aby se uživatelé Azure AD mohli přihlašovat k Boomi, musí se zřídit v Boo
 
 1. Po přihlášení přejděte na **Správa uživatelů** a přejděte na **Uživatelé**.
 
-    ![Uživatelé](./media/boomi-tutorial/tutorial_boomi_001.png "Uživatelé")
+    ![Snímek obrazovky znázorňující stránku správy uživatelů s vybranými uživateli.](./media/boomi-tutorial/tutorial_boomi_001.png "Uživatelé")
 
 1. Klikněte na **+**  ikonu a otevře se dialogové okno **Přidat/udržovat role uživatele** .
 
-    ![Uživatelé](./media/boomi-tutorial/tutorial_boomi_002.png "Uživatelé")
+    ![Snímek obrazovky se zobrazí zaškrtnuté políčko + ikona.](./media/boomi-tutorial/tutorial_boomi_002.png "Uživatelé")
 
-    ![Uživatelé](./media/boomi-tutorial/tutorial_boomi_003.png "Uživatelé")
+    ![Snímek obrazovky ukazuje, jak přidat/udržovat role uživatelů, kde konfigurujete uživatele.](./media/boomi-tutorial/tutorial_boomi_003.png "Uživatelé")
 
     a. Do textového pole **e-mailová adresa uživatele** zadejte e-maily jako uživatel B.Simon@contoso.com .
 

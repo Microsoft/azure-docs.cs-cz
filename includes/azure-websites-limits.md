@@ -4,14 +4,14 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 1811590dcf9077a503f89a900f661c52aa442c96
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 557e20dcafabb2db0bc66c9dfda4977aca50de50
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87425173"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91745522"
 ---
-| Prostředek | Free | Shared | Basic | Standard | Premium (v2) | Isolated </th> |
+| Prostředek | Free | Shared | Basic | Standard | Premium (V3) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Webové, mobilní nebo API aplikace](https://azure.microsoft.com/services/app-service/) na [plán](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> pro Azure App Service |10 |100 |Neomezeno<sup>2</sup> |Neomezeno<sup>2</sup> |Neomezeno<sup>2</sup> |Neomezeno<sup>2</sup>|
 | [Plán App Service](../articles/app-service/overview-hosting-plans.md) |10 na oblast |10 na skupinu prostředků |100 na skupinu prostředků |100 na skupinu prostředků |100 na skupinu prostředků |100 na skupinu prostředků|
@@ -52,7 +52,7 @@ ms.locfileid: "87425173"
 <sup>5</sup> . Limit úložiště je celková velikost obsahu napříč všemi aplikacemi ve stejném plánu služby App Service. Celková velikost obsahu všech aplikací napříč všemi plány služby App Service v jedné skupině prostředků a oblastí nemůže překročit 500 GB.  
 <sup>6</sup> Tyto prostředky jsou omezené na fyzických prostředcích na vyhrazených instancích (velikost instance a počet instancí).  
 <sup>7</sup> Při škálování aplikace na úrovni Basic na dvě instance máte 350 souběžných připojení pro každou z těchto dvou instancí. Pro úroveň Standard a vyšší nejsou k dispozici žádná teoretická omezení pro webové sokety, ale jiné faktory můžou omezit počet webových soketů. Například maximální počet souběžných požadavků, které jsou povoleny (definované `maxConcurrentRequestsPerCpu` ), jsou: 7 500 na malý virtuální počítač, 15 000 na střední virtuální počítač (7 500 × 2 jádra) a 75 000 na velký virtuální počítač (18 750 × 4 jádra).  
-<sup>8</sup> Maximální počet připojení IP je na jednu instanci a závisí na velikosti instance: 1 920 na instanci B1/S1/P1V2, 3 968 na instanci B2/S2/P2V2, 8 064 na instanci B3/S3/P3V2.  
+<sup>8</sup> Maximální počet připojení IP je na jednu instanci a závisí na velikosti instance: 1 920 na instanci B1/S1/P1V3, 3 968 na instanci B2/S2/P2V3, 8 064 na instanci B3/S3/P3V3.  
 <sup>9</sup> Limit kvóty App Service Certificate pro každé předplatné se dá zvýšit prostřednictvím žádosti o podporu na maximální limit 200.  
 <sup>10</sup> Služba App Service v izolovaném prostředí SKU se dá pomocí Azure Load Balancer interně vyrovnávat zatížení (interního nástroje), takže není k dispozici žádné veřejné připojení z Internetu. V důsledku toho musí být některé funkce interního nástroje izolované App Service používány z počítačů, které mají přímý přístup ke koncovému bodu sítě interního nástroje.  
 <sup>11</sup> Spouštějte vlastní spustitelné soubory nebo skripty na vyžádání, podle plánu nebo nepřetržitě jako úlohu na pozadí v rámci instance App Service. U nepřetržitého provádění úloh WebJobs se vyžaduje Always On. Není k dispozici žádný předdefinovaný limit počtu webových úloh, které mohou být spuštěny v instanci App Service. Existují praktická omezení, která závisí na tom, co se snaží kód aplikace provést.

@@ -2,13 +2,13 @@
 title: Nastavit privátní odkaz
 description: Nastavte privátní koncový bod v registru kontejneru a povolte přístup přes privátní odkaz v místní virtuální síti. Přístup k privátním linkám je funkce úrovně Premium Service.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: da07d35ad944db8e9b8a7bac0602fff23cd222d8
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 10/01/2020
+ms.openlocfilehash: 793003edea853922f78b36f0dc1a6e35205cdadb
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488741"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743637"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Připojení soukromě ke službě Azure Container Registry pomocí privátního odkazu Azure
 
@@ -21,11 +21,11 @@ Tato funkce je k dispozici na úrovni služby Registry kontejneru **Premium** . 
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud chcete použít kroky Azure CLI v tomto článku, doporučujeme Azure CLI verze 2.6.0 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli]. Nebo spusťte v [Azure Cloud Shell](../cloud-shell/quickstart.md).
 * Pokud ještě nemáte registr kontejnerů, vytvořte ho (je potřeba Premium úrovně) a [naimportujte](container-registry-import-images.md) ukázkovou image, jako je například `hello-world` z dokovacího centra. K vytvoření registru použijte například [Azure Portal][quickstart-portal] nebo rozhraní příkazového [řádku Azure][quickstart-cli] .
-* Pokud chcete nakonfigurovat přístup k registru pomocí privátního odkazu v jiném předplatném Azure, musíte zaregistrovat poskytovatele prostředků pro Azure Container Registry v tomto předplatném. Například:
+* Pokud chcete nakonfigurovat přístup k registru pomocí privátního odkazu v jiném předplatném Azure, musíte zaregistrovat poskytovatele prostředků pro Azure Container Registry v tomto předplatném. Příklad:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of private link>
@@ -79,7 +79,7 @@ az network vnet subnet update \
 
 ### <a name="configure-the-private-dns-zone"></a>Konfigurace privátní zóny DNS
 
-Vytvořte privátní zónu DNS pro privátní doménu služby Azure Container Registry. V pozdějších krocích vytvoříte záznamy DNS pro doménu registru v této zóně DNS.
+Vytvořte [privátní zónu DNS](../dns/private-dns-privatednszone.md) pro privátní doménu služby Azure Container Registry. V pozdějších krocích vytvoříte záznamy DNS pro doménu registru v této zóně DNS.
 
 Pokud chcete použít privátní zónu k přepsání výchozího překladu DNS pro službu Azure Container Registry, musí mít zóna název **privatelink.azurecr.IO**. Pro vytvoření privátní zóny spusťte následující příkaz [AZ Network Private-DNS Zone Create][az-network-private-dns-zone-create] :
 
@@ -219,8 +219,8 @@ Nastavte privátní odkaz při vytváření registru nebo přidejte privátní o
     | Virtuální síť| Vyberte virtuální síť, ve které je nasazený virtuální počítač, například *myDockerVMVNET*. |
     | Podsíť | Vyberte podsíť, například *myDockerVMSubnet* , kde se virtuální počítač nasadí. |
     |**Integrace Privátní DNS**||
-    |Integrace s privátní zónou DNS |Vyberte **Ano**. |
-    |Zóna Privátní DNS |Vybrat *(nové) privatelink.azurecr.IO* |
+    |Integrovat s privátní zónou DNS |Vyberte **Ano**. |
+    |Zóna Privátního DNS |Vybrat *(nové) privatelink.azurecr.IO* |
     |||
 1. Nakonfigurujte zbývající nastavení registru a potom vyberte **zkontrolovat + vytvořit**.
 
@@ -238,9 +238,9 @@ Nastavte privátní odkaz při vytváření registru nebo přidejte privátní o
     | **Podrobnosti o projektu** | |
     | Předplatné | Vyberte předplatné. |
     | Skupina prostředků | Zadejte název existující skupiny nebo vytvořte novou.|
-    | **Podrobnosti instance** |  |
+    | **Podrobnosti o instancích** |  |
     | Name | Zadejte název. |
-    |Region (Oblast)|Vyberte oblast.|
+    |Oblast|Vyberte oblast.|
     |||
 5. Vyberte **Další: prostředek**.
 6. Zadejte nebo vyberte následující informace:
@@ -262,12 +262,12 @@ Nastavte privátní odkaz při vytváření registru nebo přidejte privátní o
     | Virtuální síť| Vyberte virtuální síť, ve které je nasazený virtuální počítač, například *myDockerVMVNET*. |
     | Podsíť | Vyberte podsíť, například *myDockerVMSubnet* , kde se virtuální počítač nasadí. |
     |**Integrace Privátní DNS**||
-    |Integrace s privátní zónou DNS |Vyberte **Ano**. |
-    |Zóna Privátní DNS |Vybrat *(nové) privatelink.azurecr.IO* |
+    |Integrovat s privátní zónou DNS |Vyberte **Ano**. |
+    |Zóna Privátního DNS |Vybrat *(nové) privatelink.azurecr.IO* |
     |||
 
-1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci. 
-2. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
+1. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci. 
+2. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 Po vytvoření privátního koncového bodu se nastavení DNS v privátní zóně zobrazí na stránce **privátní koncové body** na portálu:
 
@@ -306,28 +306,46 @@ Měli byste ověřit, že se prostředky v podsíti privátního koncového bodu
 
 Pokud chcete ověřit připojení privátního propojení s protokolem SSH k virtuálnímu počítači, který jste nastavili ve virtuální síti.
 
-Spusťte `nslookup` příkaz pro překlad IP adresy vašeho registru prostřednictvím privátního odkazu:
+Spusťte nástroj, například `nslookup` nebo `dig` , abyste mohli vyhledat IP adresu vašeho registru prostřednictvím privátního propojení. Příklad:
 
 ```bash
-nslookup $REGISTRY_NAME.azurecr.io
+dig $REGISTRY_NAME.azurecr.io
 ```
 
 Příklad výstupu ukazuje IP adresu registru v adresním prostoru podsítě:
 
 ```console
 [...]
-myregistry.azurecr.io       canonical name = myregistry.privatelink.azurecr.io.
-Name:   myregistry.privatelink.azurecr.io
-Address: 10.0.0.6
+; <<>> DiG 9.11.3-1ubuntu1.13-Ubuntu <<>> myregistry.azurecr.io
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 52155
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;myregistry.azurecr.io.         IN      A
+
+;; ANSWER SECTION:
+myregistry.azurecr.io.  1783    IN      CNAME   myregistry.privatelink.azurecr.io.
+myregistry.privatelink.azurecr.io. 10 IN A      10.0.0.7
+
+[...]
 ```
 
-Porovnejte tento výsledek s veřejnou IP adresou ve `nslookup` výstupu pro stejný registr prostřednictvím veřejného koncového bodu:
+Porovnejte tento výsledek s veřejnou IP adresou ve `dig` výstupu pro stejný registr prostřednictvím veřejného koncového bodu:
 
 ```console
 [...]
-Non-authoritative answer:
-Name:   myregistry.westeurope.cloudapp.azure.com
-Address: 40.78.103.41
+;; ANSWER SECTION:
+myregistry.azurecr.io.  2881    IN  CNAME   myregistry.privatelink.azurecr.io.
+myregistry.privatelink.azurecr.io. 2881 IN CNAME xxxx.xx.azcr.io.
+xxxx.xx.azcr.io.    300 IN  CNAME   xxxx-xxx-reg.trafficmanager.net.
+xxxx-xxx-reg.trafficmanager.net. 300 IN CNAME   xxxx.westeurope.cloudapp.azure.com.
+xxxx.westeurope.cloudapp.azure.com. 10  IN A 20.45.122.144
+
+[...]
 ```
 
 ### <a name="registry-operations-over-private-link"></a>Operace s registrem přes privátní propojení
@@ -350,7 +368,7 @@ Docker úspěšně načte image do virtuálního počítače.
 
 Pomocí Azure Portal spravujte připojení privátního koncového bodu registru nebo pomocí příkazů ve skupině příkazů [AZ ACR Private-Endpoint-Connection][az-acr-private-endpoint-connection] . Operace zahrnují schválení, odstranění, výpis, odmítnutí nebo zobrazení podrobností o připojeních privátních koncových bodů registru.
 
-Pokud například chcete zobrazit seznam připojení privátního koncového bodu k registru, spusťte příkaz [AZ ACR Private-Endpoint-Connection list][az-acr-private-endpoint-connection-list] . Například:
+Pokud například chcete zobrazit seznam připojení privátního koncového bodu k registru, spusťte příkaz [AZ ACR Private-Endpoint-Connection list][az-acr-private-endpoint-connection-list] . Příklad:
 
 ```azurecli
 az acr private-endpoint-connection list \
@@ -361,9 +379,15 @@ Když nastavíte připojení privátního koncového bodu pomocí kroků v tomto
 
 ## <a name="add-zone-records-for-replicas"></a>Přidání záznamů zóny pro repliky
 
-Jak je uvedeno v tomto článku, když přidáte připojení privátního koncového bodu k registru, vytvoří se záznamy DNS v `privatelink.azurecr.io` zóně pro registr a koncové body dat v oblastech, kde se registr [replikuje](container-registry-geo-replication.md). 
+Jak je uvedeno v tomto článku, když přidáte připojení privátního koncového bodu k registru, vytvoříte záznamy DNS v `privatelink.azurecr.io` zóně registru a jeho koncových bodů v oblastech, kde je registr [replikován](container-registry-geo-replication.md). 
 
 Pokud později přidáte novou repliku, budete muset ručně přidat záznam nové zóny pro koncový bod dat v této oblasti. Například pokud vytvoříte repliku *myregistry* v umístění *northeurope* , přidejte záznam zóny pro `myregistry.northeurope.data.azurecr.io` . Postup najdete v tématu [Vytvoření záznamů DNS v privátní zóně](#create-dns-records-in-the-private-zone) v tomto článku.
+
+## <a name="dns-configuration-options"></a>Možnosti konfigurace DNS
+
+Privátní koncový bod v tomto příkladu se integruje s privátní zónou DNS přidruženou k základní virtuální síti. Tento instalační program používá přímo Azure poskytovanou službu DNS k překladu veřejného plně kvalifikovaného názvu domény registru na jeho privátní IP adresu ve virtuální síti. 
+
+Privátní propojení podporuje další scénáře konfigurace služby DNS, které používají privátní zónu, včetně vlastních řešení DNS. Můžete mít například vlastní řešení DNS nasazené ve virtuální síti nebo v místním prostředí v síti, ke které se připojujete přes bránu VPN. Pokud chcete v těchto scénářích přeložit veřejný plně kvalifikovaný název domény registru na privátní IP adresu, musíte nakonfigurovat server pro přeposílání na úrovni serveru na službu Azure DNS (168.63.129.16). Přesné možnosti konfigurace a postup závisí na vašich stávajících sítích a DNS. Příklady najdete v tématu [Konfigurace DNS privátního koncového bodu Azure](../private-link/private-endpoint-dns.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

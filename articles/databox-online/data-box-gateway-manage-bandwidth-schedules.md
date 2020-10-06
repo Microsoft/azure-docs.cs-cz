@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 25f74fb78979313acc068320d842d09a982d8d16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ccc9725ffe5304942b740d460a67129f9c1c5d8
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339140"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743841"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Web Azure Portal můžete použít ke správě plánů služby Bandwidth ve službě Azure Data Box Gateway  
 
@@ -40,13 +40,13 @@ Pokud chcete přidat uživatele, proveďte na webu Azure Portal následující k
 
 3. V části **Přidání plánu**: 
 
-   1. Zadejte **den spuštění**, **den ukončení**, **čas spuštění** a **čas ukončení** plánu. 
+   1. Zadejte **počáteční den**, **Koncový den**, **čas spuštění**a **čas ukončení** plánu. 
    2. Pokud tento plán běží celý den, můžete zaškrtnout možnost **Celý den**. 
-   3. **Rychlost šířky pásma** je šířka pásma v megabitech za sekundu (Mb/s), používaná vašim zařízením při operacích zahrnujících cloud (nahrávání i stahování). Do tohoto pole zadejte číslo od 1 do 1 000. 
+   3. **Rychlost šířky pásma** je šířka pásma v megabajtech za sekundu (MB/s), kterou vaše zařízení používá v operacích, které se týkají cloudu (odesílání a stahování). Do tohoto pole zadejte číslo od 1 do 1 000. 
    4. Pokud nechcete omezit nahrávání a stahování dat, zaškrtněte možnost **Neomezená šířka pásma**. 
-   5. Klikněte na tlačítko **Add** (Přidat).
+   5. Klikněte na **Přidat**.
 
-      ![Přidání uživatele kliknutím](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
+      ![Klikněte na Přidat uživatele 2.](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 
 3. Vytvoří se plán se zadanými parametry. Tento plán se následně zobrazí v seznamu plánů služby Bandwidth na portálu.
 
@@ -61,11 +61,11 @@ Chcete-li upravit plán služby Bandwidth, postupujte následovně.
 
 3. Proveďte požadované změny a uložte je.
 
-    ![Úprava uživatele](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
+    ![Upravit uživatele 2](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
 
 4. Po úpravě plánu se seznam plánů aktualizuje tak, aby odrážel změněný plán.
 
-    ![Úprava uživatele](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
+    ![Upravit uživatele 3](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
 
 
 ## <a name="delete-a-schedule"></a>Odstranění plánu

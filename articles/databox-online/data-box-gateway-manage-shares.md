@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 785fcbbcde0c4efe3c2d1cd84bf19bd03371ab06
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 847c8a07bfa245d0c9859bb3cf6f6ed233934250
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883546"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743875"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Použití webu Azure Portal ke správě sdílených složek ve službě Azure Data Box Gateway 
 
@@ -94,7 +94,7 @@ Pokud chcete sdílenou složku aktualizovat, proveďte na webu Azure Portal nás
 
 1. Na webu Azure Portal přejděte na **Sdílené složky**. Vyberte a klikněte na sdílenou složku, kterou chcete aktualizovat.
 
-   ![Vyberte sdílenou složku](media/data-box-gateway-manage-shares/refresh-1.png)
+   ![Vybrat sdílenou složku 2](media/data-box-gateway-manage-shares/refresh-1.png)
 
 2. Klikněte na **Aktualizovat**. 
 
@@ -124,11 +124,11 @@ Pokud chcete synchronizovat přístupový klíč úložiště, proveďte na webu
 1. Ve svém prostředku přejděte na **Přehled**. 
 2. V seznamu sdílených složek vyberte a klikněte na sdílenou složku přidruženou k účtu úložiště, kterou potřebujete synchronizovat. Klikněte na **synchronizace klíč úložiště**. 
 
-     ![Synchronizace klíče úložiště 1](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
+     ![Synchronizace klíče úložiště](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 
 3. Po zobrazení výzvy k potvrzení klikněte na **Ano**. Po dokončení synchronizace zavřete dialogové okno.
 
-     ![Synchronizace klíče úložiště 1](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
+     ![Synchronizace klíče úložiště 2](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
 
 >[!NOTE]
 > U každého účtu úložiště to stačí provést jednou. Není nutné tento postup opakovat u každé sdílené složky, která je přidružená ke stejnému účtu úložiště.

@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: af31d909c0fbab7d873b2b583bb731f9d2e8e19e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: d7cd452b6d1107f440d952c7db930281f3d86c11
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532869"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743794"
 ---
 # <a name="train-keras-models-at-scale-with-azure-machine-learning"></a>Keras se škálováním modelů pomocí Azure Machine Learning
 
@@ -144,7 +144,7 @@ dependencies:
 
 Vytvořte prostředí Azure ML z této specifikace prostředí conda. Prostředí se zabalí do kontejneru Docker za běhu.
 
-Ve výchozím nastavení, pokud není zadaná žádná základní image, Azure ML použije image procesoru `azureml.core.runconfig.DEFAULT_CPU_IMAGE` jako základní image. Vzhledem k tomu, že tento příklad spustí školení v clusteru GPU, budete muset zadat základní image GPU, která má potřebné ovladače a závislosti GPU. Azure ML udržuje sadu základních imagí publikovaných v Microsoft Container Registry (MCR), které můžete použít, další informace najdete v úložišti GitHub [Azure/AzureML-Containers](https://github.com/Azure/AzureML-Containers) .
+Ve výchozím nastavení, pokud není zadaná žádná základní image, Azure ML použije image procesoru `azureml.core.environment.DEFAULT_CPU_IMAGE` jako základní image. Vzhledem k tomu, že tento příklad spustí školení v clusteru GPU, budete muset zadat základní image GPU, která má potřebné ovladače a závislosti GPU. Azure ML udržuje sadu základních imagí publikovaných v Microsoft Container Registry (MCR), které můžete použít, další informace najdete v úložišti GitHub [Azure/AzureML-Containers](https://github.com/Azure/AzureML-Containers) .
 
 ```python
 from azureml.core import Environment

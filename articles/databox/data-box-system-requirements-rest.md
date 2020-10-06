@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 10/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 71e0ebf7d7851ae65a6fba67a1695d755fd98bb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac5f2de383066d6ee399dac3b0ad8c365b2e72bc
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61436490"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744086"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Azure Data Box požadavky na úložiště objektů BLOB
 
@@ -26,44 +26,31 @@ Doporučujeme, abyste pečlivě prostudovali informace, než se připojíte k ú
 
 |     Funkce                                             |     Azure Storage                                     |     Úložiště objektů blob Data Boxu |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
-|    Azure File Storage                                   |    Podporované cloudové sdílené složky SMB              |    Nepodporuje se      |
+|    Azure File Storage                                   |    Podporované cloudové sdílené složky SMB              |    Nepodporováno      |
 |    Šifrování služby pro neaktivní neaktivní data                  |    256 šifrování AES                             |    256 šifrování AES |
 |    Typ účtu úložiště                                 |    Účty úložiště pro obecné účely a Azure Blob Storage    |    Jenom pro obecné účely v1|
 |    Název objektu blob                                            |    1 024 znaků (2 048 bajtů)                     |    880 znaků (1 760 bajtů)|
-|    Maximální velikost objektu blob bloku                              |    4,75 TB (100 MB X 50 000 bloků)                   |    4,75 TB (100 MB x 50 000 bloků) pro Azure Data Box v 1,8 a vyšší.|
+|    Maximální velikost objektu blob bloku                              |    4,75 TB (100 MB X 50 000 bloků)                   |    4,75 TB (100 MB x 50 000 bloků) pro Azure Data Box v 3,0 a vyšší.|
 |    Maximální velikost objektu blob stránky                               |    8 TB                                               |    1 TB                   |
 |    Velikost stránky objektu blob stránky                                  |    512 bajtů                                          |    4 kB                   |
 
 ## <a name="supported-api-versions"></a>Podporované verze rozhraní API
 
-Pro úložiště objektů BLOB v Data Box jsou podporovány následující verze rozhraní Azure Storage Service API:
+Pro úložiště objektů BLOB v Data Box jsou podporovány následující verze rozhraní API služby Azure Storage.
 
-Azure Data Box 1,8 a vyšší
+### <a name="azure-data-box-30-onwards"></a>Azure Data Box 3,0 a vyšší
 
-- [2017-11-09](/rest/api/storageservices/version-2017-11-09)
-- [2017-07-29](/rest/api/storageservices/version-2017-07-29)
-- [2017-04-17](/rest/api/storageservices/version-2017-04-17)
-- [2016-05-31](/rest/api/storageservices/version-2016-05-31)
-- [2015-12-11](/rest/api/storageservices/version-2015-12-11)
-- [2015-07-08](/rest/api/storageservices/version-2015-07-08)
-- [2015-04-05](/rest/api/storageservices/version-2015-04-05)|
+[!INCLUDE [data-box-rest-supported-api-versions](../../includes/data-box-rest-supported-api-versions.md)]
+
 ## <a name="supported-azure-client-libraries"></a>Podporované klientské knihovny Azure
 
-Pro Data Box BLOB Storage existují konkrétní klientské knihovny a specifické požadavky na příponu koncových bodů. Koncové body služby Data Box BLOB Storage nemají úplnou paritu s nejnovější verzí REST API Azure Blob Storage, přečtěte si [podporované verze pro Azure Data Box 1,8 a vyšší](#supported-api-versions). Pro klientské knihovny pro úložiště je potřeba znát verzi, která je kompatibilní s REST API.
+Pro Data Box BLOB Storage existují konkrétní klientské knihovny a specifické požadavky na příponu koncových bodů. Koncové body služby Data Box BLOB Storage nemají úplnou paritu s nejnovější verzí služby Azure Blob Storage REST API; Podívejte se na [podporované verze pro Azure Data Box 3,0 a vyšší](#supported-api-versions). Pro klientské knihovny pro úložiště je potřeba znát verzi, která je kompatibilní s REST API.
 
-### <a name="azure-data-box-18-onwards"></a>Azure Data Box 1,8 a vyšší
+### <a name="azure-data-box-30-onwards"></a>Azure Data Box 3,0 a vyšší
 
-| Klientská knihovna     |Verze podporované úložištěm objektů BLOB Data Box     | Odkaz   |     Specifikace koncového bodu      |
-|--------------------|--------------------------------------------|--------|---------------------------------|
-|    .NET                |    9.2.0                                           |    Balíček NuGet:https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>Verze GitHubu:https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    Soubor app.config                 |
-|    Java                |    7.0.0                                           |    Balíček Maven:https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>Verze GitHubu:https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0                                                                                                                                                                              |    Nastavení připojovacího řetězce         |
-|    Node.js             |    2.8.3                                           |    Odkaz na NPM: https://www.npmjs.com/package/azure-storage (Run: `npm install azure-storage@2.7.0` )   <br>Verze GitHubu:https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Deklarace instance služby    |
-|    C++                 |    5.2.0                                           |    Balíček NuGet:https://www.nuget.org/packages/wastorage.v140/5.2.0   <br>Verze GitHubu:https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0                                                                                                                                                                                                     |    Nastavení připojovacího řetězce         |
-|    PHP                 |    1.2.0                                           |    Verze GitHubu:<br>Obecnýhttps://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common   <br>Příznakyhttps://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob      <br>Instalovat přes skladatele (Další informace najdete v podrobnostech níže)                                                                                                             |    Nastavení připojovacího řetězce         |
-|    Python              |    1.1.0                                           |    Verze GitHubu:<br>Obecnýhttps://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>Příznakyhttps://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob                                                                                                                                                                          |    Deklarace instance služby    |
-|    Ruby                |    1.0.1                                           |    Balíček RubyGems:<br>Obecnýhttps://rubygems.org/gems/azure-storage-common/versions/1.0.1   <br>Příznakyhttps://rubygems.org/gems/azure-storage-blob/versions/1.0.1         <br>Verze GitHubu:<br>Obecnýhttps://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common   <br>Příznakyhttps://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob          |    Nastavení připojovacího řetězce         |
+Pro Data Box BLOB Storage se podporují následující verze klientských knihoven Azure.
 
-
+[!INCLUDE [data-box-rest-supported-azure-client-libraries](../../includes/data-box-rest-supported-azure-client-libraries.md)]
 
 ### <a name="install-php-client-via-composer---current"></a>Instalovat klienta PHP prostřednictvím skladatele – aktuální
 
@@ -83,7 +70,7 @@ Instalace prostřednictvím skladatele: (jako příklad Vezměte objekt BLOB jak
 
 ### <a name="endpoint-declaration"></a>Deklarace koncového bodu
 
-Koncový bod služby Azure Data Box BLOB Storage zahrnuje dvě části: název oblasti a doménu Data Box. V sadě Data Box BLOB Storage je výchozím koncovým bodem `\<serial no. of the device>.microsoftdatabox.com` .  Další informace o koncovém bodu služby BLOB Service najdete v pro [připojení prostřednictvím data box BLOB Storage](data-box-deploy-copy-data-via-rest.md).
+V sadě Data Box BLOB Storage SDK přípona koncového bodu `<device serial number>.microsoftdatabox.com` identifikuje doménu data box. Další informace o koncovém bodu služby BLOB Service najdete v části [připojení prostřednictvím data box BLOB Storage](data-box-deploy-copy-data-via-rest.md).
  
 ## <a name="examples"></a>Příklady
 

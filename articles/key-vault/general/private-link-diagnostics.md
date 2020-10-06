@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: faf7a6e0331e3891c2ece7461685b14e751c0894
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52ac5b89a0c7173b9b2585f84b5f34361b4b136c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713038"
+ms.locfileid: "91744215"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Diagnostika problémů s konfigurací privátních propojení na Azure Key Vault
 
@@ -22,7 +22,7 @@ Tento článek pomáhá uživatelům diagnostikovat a opravit problémy týkají
 
 Pokud s touto funkcí začínáte, přečtěte si téma [integrace Key Vault s privátním odkazem Azure](private-link-service.md).
 
-### <a name="symptoms-covered-by-this-article"></a>Příznaky, na které se vztahuje tento článek
+### <a name="problems-covered-by-this-article"></a>Problémy, na které se vztahuje tento článek
 
 - Vaše dotazy DNS pořád vrátí veřejnou IP adresu pro Trezor klíčů místo na privátní IP adresu, kterou byste očekávali od použití funkce privátních odkazů.
 - Všechny požadavky prováděné daným klientem, který používá privátní propojení, selžou s časovými prodlevami nebo chybami sítě a problém není přerušovaný.
@@ -31,7 +31,7 @@ Pokud s touto funkcí začínáte, přečtěte si téma [integrace Key Vault s p
 - Váš Trezor klíčů má dva privátní koncové body. Žádosti používající jednu z nich fungují správně, ale požadavky na jiné selžou.
 - Máte jiné předplatné, Trezor klíčů nebo virtuální síť, které používají privátní odkazy. Chcete vytvořit nové podobné nasazení, ale nemůžete získat privátní odkazy na práci.
 
-### <a name="symptoms-not-covered-by-this-article"></a>Příznaky, na které se nevztahuje tento článek
+### <a name="problems-not-covered-by-this-article"></a>Problémy, na které se nevztahuje tento článek
 
 - Dochází k přerušovanému problému s připojením. V daném klientovi vidíte, že některé žádosti fungují a některé nefungují. *Občasné problémy většinou nejsou způsobené problémem v konfiguraci privátních odkazů. Jedná se o znaménko přetížení sítě nebo klienta.*
 - Používáte produkt Azure, který podporuje BYOK (Bring Your Own Key) nebo CMK (klíče spravované zákazníkem) a tento produkt nemá přístup k vašemu trezoru klíčů. *Podívejte se na dokumentaci k produktu. Ujistěte se, že explicitně nastavují podporu pro trezory klíčů s povolenou bránou firewall. V případě potřeby kontaktujte produktovou podporu pro daný produkt.*
@@ -188,7 +188,7 @@ Významný rozdíl oproti předchozímu scénáři spočívá v tom, že je k di
 
 Neznamená to, že požadavky prováděné z počítačů *mimo* Virtual Network (jako je ta, kterou jste právě použili), budou používat privátní odkazy – nebudou. Můžete vidět, že se název hostitele pořád překládá na veřejnou IP adresu. Privátní odkazy můžou používat jenom počítače *připojené k Virtual Network* . V takovém případě se bude postupovat.
 
-Pokud alias nevidíte `privatelink` , znamená to, že Trezor klíčů má ve stavu nenulové připojení privátního koncového bodu `Approved` . Další informace najdete v tomto článku.
+Pokud alias nevidíte `privatelink` , znamená to, že Trezor klíčů má ve stavu nenulové připojení privátního koncového bodu `Approved` . Před opakováním akce se vraťte do [této části](#2-confirm-that-the-connection-is-approved-and-succeeded) .
 
 ### <a name="key-vault-with-private-link-resolving-from-virtual-network"></a>Trezor klíčů s řešením privátního propojení z Virtual Network
 
@@ -210,7 +210,7 @@ Linux:
     fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
     fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
 
-Existují dva významné rozdíly. Nejprve se název přeloží na soukromou IP adresu. Musí to být IP adresa, kterou jsme našli v [odpovídající části](#find-the-key-vault-private-ip-address-in-the-virtual-network) tohoto článku. Za druhé, po jednom neexistují žádné další aliasy `privatelink` . Důvodem je, že Virtual Network servery DNS *zachycují* řetězec aliasů a vrátí privátní IP adresu přímo z názvu `fabrikam.privatelink.vaultcore.azure.net` . Tato položka je vlastně `A` záznamem v zóně privátní DNS. V takovém případě se bude postupovat.
+Existují dva významné rozdíly. Nejprve se název přeloží na soukromou IP adresu. Musí to být IP adresa, kterou jsme našli v [odpovídající části](#find-the-key-vault-private-ip-address-in-the-virtual-network) tohoto článku. Za druhé, po jednom neexistují žádné další aliasy `privatelink` . K tomu dochází, protože servery DNS Virtual Network *zachycují* řetězec aliasů a VRACEJÍ privátní IP adresu přímo z názvu `fabrikam.privatelink.vaultcore.azure.net` . Tato položka je vlastně `A` záznamem v zóně privátní DNS. V takovém případě se bude postupovat.
 
 >[!NOTE]
 > K výše uvedenému výsledku dojde pouze ve virtuálním počítači připojeném k Virtual Network, kde byl vytvořen privátní koncový bod. Pokud nemáte nasazený virtuální počítač v Virtual Network, který obsahuje privátní koncový bod, nasaďte ho a připojte se k němu vzdáleně a pak spusťte `nslookup` příkaz (Windows) nebo `host` příkaz (Linux) výše.

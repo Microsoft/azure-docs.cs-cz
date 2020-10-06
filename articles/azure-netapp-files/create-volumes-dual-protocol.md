@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 10/05/2020
 ms.author: b-juche
-ms.openlocfilehash: ce65d6f1806965a55a91117725d2232d4d6460bd
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 9266a5efb7156367dfa0d6036f5876337098c143
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449640"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743926"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
 
@@ -40,6 +40,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 * Zajistěte, aby byl klient systému souborů NFS aktuální a běžel nejnovější aktualizace operačního systému.
 * Ujistěte se, že je server služby Active Directory (AD) LDAP v provozu a funguje ve službě AD. To se provádí instalací a konfigurací role [Služba AD LDS (Active Directory Lightweight Directory Services) (AD LDS)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) na počítači AD.
 * Ujistěte se, že certifikační autorita (CA) je ve službě AD vytvořená pomocí role [služby AD CS (Active Directory Certificate Services)](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) , která generuje a exportuje certifikát kořenové certifikační autority podepsané svým držitelem.   
+* Svazky s duálním protokolem momentálně nepodporují Azure Active Directory Domain Services (AADDS).  
 
 ## <a name="create-a-dual-protocol-volume"></a>Vytvoření svazku se dvěma protokoly
 

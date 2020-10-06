@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8085cbd3d19bd60c50de38950625de2fcd1e5c27
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 617a2717a1d1265d067cb3e1f26531d135d47941
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962481"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743909"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Horizontální navýšení kapacity aplikace v Azure App Service
 
@@ -36,7 +36,7 @@ Informace o cenách a funkcích jednotlivých plánů App Service najdete v čl�
 ## <a name="scale-up-your-pricing-tier"></a>Horizontální škálování cenové úrovně
 
 > [!NOTE]
-> Postup při horizontálním navýšení kapacity na **PremiumV2** úrovně najdete v tématu [Konfigurace vrstvy PremiumV2 pro App Service](app-service-configure-premium-tier.md).
+> Postup při horizontálním navýšení kapacity na **PremiumV3** úrovně najdete v tématu [Konfigurace vrstvy PremiumV3 pro App Service](app-service-configure-premium-tier.md).
 >
 
 1. Otevřete v prohlížeči portál [Azure Portal][portal].
@@ -78,7 +78,7 @@ Tabulka omezení, kvót a omezení služby a podporovaných funkcí v jednotliv�
 ## <a name="more-resources"></a>Další zdroje informací
 
 [Ruční nebo automatické škálování počtu instancí](../azure-monitor/platform/autoscale-get-started.md)  
-[Konfigurace PremiumV2 úrovně pro App Service](app-service-configure-premium-tier.md)
+[Konfigurace PremiumV3 úrovně pro App Service](app-service-configure-premium-tier.md)
 
 <!-- LINKS -->
 [vmsizes]:https://azure.microsoft.com/pricing/details/app-service/

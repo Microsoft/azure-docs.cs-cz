@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: albecker1
 ms.author: albecker
 ms.date: 03/12/2020
-ms.openlocfilehash: f2b960c2198800e04da77ad6b5be78d7b4762354
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 623d9385b9ae6b13c8964f655fb973fe67a0918a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79299800"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743705"
 ---
 # <a name="disk-metrics-deprecation-in-the-azure-portal"></a>Nepoužívané metriky disku v Azure Portal
 
@@ -44,38 +44,38 @@ Aktualizujte výstrahy metriky, aby používaly nové metriky.
 1. V Azure Portal vyhledejte **výstrahy**. Pak v části **služby** zvolte **výstrahy**.
 
    > [!div class="mx-imgBorder"]
-   > ![Popis obrázku](./media/portal-disk-metrics-deprecation/alert-service-azure-portal.png)
+   > ![Služba Výstrahy](./media/portal-disk-metrics-deprecation/alert-service-azure-portal.png)
 
 2. Na stránce **výstrahy** klikněte na tlačítko **Spravovat pravidla výstrah** . 
 
    > [!div class="mx-imgBorder"]
-   > ![Popis obrázku](./media/portal-disk-metrics-deprecation/manage-alert-rules-button.png)
+   > ![Správa pravidel výstrah](./media/portal-disk-metrics-deprecation/manage-alert-rules-button.png)
 
 3. V rozevíracím seznamu **Skupina prostředků** vyberte zaškrtávací políčko **Virtual Machines** a v rozevíracím seznamu **typ signálu** vyberte zaškrtávací políčko **metriky** . 
 
    > [!div class="mx-imgBorder"]
-   > ![Popis obrázku](./media/portal-disk-metrics-deprecation/filter-alerts.png)
+   > ![Filtrovat výstrahy](./media/portal-disk-metrics-deprecation/filter-alerts.png)
 
 4. V seznamu metrik určete podmínky, které se vztahují k diskům. Klikněte na název pravidla. 
 
    Název se zobrazí jako hypertextový odkaz ve sloupci **název** v tabulce.
 
    > [!div class="mx-imgBorder"]
-   > ![Popis obrázku](./media/portal-disk-metrics-deprecation/find-disk-conditions.png)
+   > ![Najít podmínky disku](./media/portal-disk-metrics-deprecation/find-disk-conditions.png)
 
 5. V části **podmínky** na stránce **Správa pravidel** klikněte na podmínku výstrahy. 
 
    Podmínka se zobrazí jako hypertextový odkaz.  
 
    > [!div class="mx-imgBorder"]
-   > ![Popis obrázku](./media/portal-disk-metrics-deprecation/adjust-condition.png)
+   > ![Upravit podmínky](./media/portal-disk-metrics-deprecation/adjust-condition.png)
 
    Zobrazí se stránka **Konfigurovat logiku signálu** a v části **logika výstrahy** této stránky se zobrazí nastavení podmínky.
 
 6. Když odeberete vystaralou metriku, vytvoří se záznam těchto nastavení, protože zmizí.
 
    > [!div class="mx-imgBorder"]
-   > ![Popis obrázku](./media/portal-disk-metrics-deprecation/condition-rules.png)
+   > ![Pravidla podmínky](./media/portal-disk-metrics-deprecation/condition-rules.png)
 
    > [!TIP] 
    > Zvažte zachytávání těchto nastavení na snímku obrazovky nebo v textovém souboru. 
@@ -83,7 +83,7 @@ Aktualizujte výstrahy metriky, aby používaly nové metriky.
 7. Klikněte na odkaz **zpět k výběru signálu** .
 
    > [!div class="mx-imgBorder"]
-   > ![Popis obrázku](./media/portal-disk-metrics-deprecation/back-to-signal-selection.png)
+   > ![Zpět na výběr signálu](./media/portal-disk-metrics-deprecation/back-to-signal-selection.png)
 
 8. Na stránce **Konfigurovat logiku signálu** vyberte vhodnou metriku pro nahrazení (nová metrika). Použijte [tabulku](#update-metrics) , která se zobrazí dříve v tomto článku, aby se identifikoval název nové metriky.
 
@@ -91,17 +91,17 @@ Aktualizujte výstrahy metriky, aby používaly nové metriky.
    > Začněte psát na panelu hledání a upřesněte seznam názvů metrik. 
 
    > [!div class="mx-imgBorder"]
-   > ![Popis obrázku](./media/portal-disk-metrics-deprecation/choose-new-metric.png)
+   > ![Výběr nové metriky](./media/portal-disk-metrics-deprecation/choose-new-metric.png)
 
 9. Klikněte na tlačítko **Hotovo** . 
 
    > [!div class="mx-imgBorder"]
-   > ![Popis obrázku](./media/portal-disk-metrics-deprecation/set-new-metric.png)
+   > ![Nastavení nové metriky](./media/portal-disk-metrics-deprecation/set-new-metric.png)
 
 10. Potvrďte provedené změny kliknutím na tlačítko **Uložit** . 
 
     > [!div class="mx-imgBorder"]
-    > ![Popis obrázku](./media/portal-disk-metrics-deprecation/save-new-metric.png)
+    > ![Uložit novou metriku](./media/portal-disk-metrics-deprecation/save-new-metric.png)
 
 
 

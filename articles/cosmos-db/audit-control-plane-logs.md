@@ -4,14 +4,14 @@ description: Naučte se auditovat operace roviny ovládacího prvku, jako je nap
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 691c6ec0559eceb60d57bf04819701edebbffd83
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 08cc3b08611947ac32973b2dfb01060140dc0798
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462441"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743892"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Postup při auditování operací roviny ovládacího prvku Azure Cosmos DB
 
@@ -69,17 +69,17 @@ Po zapnutí protokolování použijte následující postup ke sledování opera
 
 Když se u účtu Azure Cosmos změní úroveň konzistence, zachytí následující snímky obrazovky.
 
-:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Řízení protokolů roviny při přidání virtuální sítě":::
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Povolit protokolování požadavků na řídicí rovinu":::
 
 Následující snímky obrazovky zaznamenávají protokoly, když se vytvoří místo na disku nebo tabulka Cassandra účtu a když se aktualizuje propustnost. Protokoly roviny ovládacího prvku pro operace vytvoření a aktualizace v databázi a kontejner jsou protokolovány samostatně, jak je znázorněno na následujícím snímku obrazovky:
 
-:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Řízení protokolů roviny při aktualizaci propustnosti":::
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Povolit protokolování požadavků na řídicí rovinu":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Identifikace identity přidružené k určité operaci
 
 Pokud chcete ladit další, můžete určit konkrétní operace v **protokolu aktivit** pomocí ID aktivity nebo časového razítka operace. Časové razítko se používá pro některé klienty Správce prostředků, kde ID aktivity není explicitně předáno. Protokol aktivit obsahuje podrobné informace o identitě, se kterou byla operace iniciována. Následující snímek obrazovky ukazuje, jak použít ID aktivity a najít k němu přidružené operace v protokolu aktivit:
 
-:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Použijte ID aktivity a najděte operace.":::
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Povolit protokolování požadavků na řídicí rovinu":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Řízení operací roviny pro účet Azure Cosmos
 
@@ -209,6 +209,21 @@ AzureActivity
 | summarize by Caller, HTTPRequest, activityId_g)
 on activityId_g
 | project Caller, activityId_g
+```
+
+Dotaz pro získání aktualizace indexu nebo TTL. Pak můžete porovnat výstup tohoto dotazu s předchozí aktualizací, abyste viděli změnu v indexu nebo TTL.
+
+```Kusto
+AzureDiagnostics
+| where Category =="ControlPlaneRequests"
+| where  OperationName == "SqlContainersUpdate"
+| project resourceDetails_s
+```
+
+**výkonem**
+
+```json
+{id:skewed,indexingPolicy:{automatic:true,indexingMode:consistent,includedPaths:[{path:/*,indexes:[]}],excludedPaths:[{path:/_etag/?}],compositeIndexes:[],spatialIndexes:[]},partitionKey:{paths:[/pk],kind:Hash},defaultTtl:1000000,uniqueKeyPolicy:{uniqueKeys:[]},conflictResolutionPolicy:{mode:LastWriterWins,conflictResolutionPath:/_ts,conflictResolutionProcedure:}
 ```
 
 ## <a name="next-steps"></a>Další kroky

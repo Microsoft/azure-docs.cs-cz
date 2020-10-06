@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 28401b5900640ed7228d7c7caad0cebbabf00a65
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: f0c923bcb7df930ed4b1380d487ededc6c160844
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532716"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743739"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Naučte se scikit modely s možností škálování pomocí Azure Machine Learning
 
@@ -66,9 +66,17 @@ Poznámky:
 
 Pokud chcete definovat [prostředí](concept-environments.md) Azure ml, které zapouzdřuje závislosti školicího skriptu, můžete buď definovat vlastní prostředí, použití a prostředí Azure ml.
 
+#### <a name="use-a-curated-environment"></a>Použití spravovaného prostředí
+V případě potřeby poskytuje Azure ML předem vytvořená a poduspořádaná prostředí, pokud nechcete definovat vlastní prostředí. Další informace najdete [tady](resource-curated-environments.md).
+Pokud chcete použít konkrétní prostředí, můžete místo toho spustit následující příkaz:
+
+```python
+sklearn_env = Environment.get(workspace=ws, name='AzureML-Tutorial')
+```
+
 #### <a name="create-a-custom-environment"></a>Vytvoření vlastního prostředí
 
-Pokud chcete vytvořit vlastní prostředí, definujte závislosti conda v souboru YAML; v tomto příkladu je soubor pojmenován `conda_dependencies.yml` .
+Můžete také vytvořit vlastní vlastní prostředí. V souboru YAML definujte závislosti conda; v tomto příkladu je soubor pojmenován `conda_dependencies.yml` .
 
 ```yaml
 dependencies:
@@ -87,14 +95,6 @@ sklearn_env = Environment.from_conda_specification(name='sklearn-env', file_path
 ```
 
 Další informace o vytváření a používání prostředí najdete v tématu [vytváření a používání softwarových prostředí v Azure Machine Learning](how-to-use-environments.md).
-
-#### <a name="use-a-curated-environment"></a>Použití spravovaného prostředí
-V případě potřeby poskytuje Azure ML předem vytvořená a poduspořádaná prostředí, pokud nechcete vytvořit vlastní image. Další informace najdete [tady](resource-curated-environments.md).
-Pokud chcete použít konkrétní prostředí, můžete místo toho spustit následující příkaz:
-
-```python
-sklearn_env = Environment.get(workspace=ws, name='AzureML-Tutorial')
-```
 
 ## <a name="configure-and-submit-your-training-run"></a>Konfigurace a odeslání školicích běhů
 
