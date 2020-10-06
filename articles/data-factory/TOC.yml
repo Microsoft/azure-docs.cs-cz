@@ -544,6 +544,8 @@
           href: data-flow-new-branch.md
         - name: Převést na sloupce
           href: data-flow-pivot.md
+        - name: Rank
+          href: data-flow-rank.md
         - name: Vyberte
           href: data-flow-select.md
         - name: Jímka

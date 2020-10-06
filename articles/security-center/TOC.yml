@@ -263,8 +263,6 @@
       href: release-notes-archive.md
     - name: Blog s plány nasazení produktů Azure
       href: 'https://azure.microsoft.com/updates/?product=security-center'
-    - name: Vyřazení funkcí a rozhraní API (červenec 2019)
-      href: security-center-features-retirement-july2019.md
     - name: Vyhodnocení ochrany koncových bodů a doporučení
       href: security-center-endpoint-protection.md
 - name: Zdroje a prostředky
