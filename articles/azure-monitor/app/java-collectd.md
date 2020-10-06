@@ -3,12 +3,12 @@ title: Monitorování výkonu webové aplikace Java v systému Linux – Azure |
 description: Rozšířené monitorování výkonu aplikace vašeho webu Java pomocí shromážděného modulu plug-in pro Application Insights.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 648d0e5adc289dfeb83a54c3dcb9ab7d25fc1cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fd061d6dd1f87456b92a61c9a62caaf3ef3189b2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322597"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761018"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>shromažďováno: metriky výkonu Linux v Application Insights
 
@@ -28,7 +28,7 @@ Poznamenejte si kopii klíče instrumentace, který identifikuje prostředek.
 Na počítačích se systémem Linux Server:
 
 1. Nainstalujte [shromážděnou](https://collectd.org/) verzi 5.4.0 nebo novější.
-2. Stáhněte si [modul plug-in Application Insights Collected Writer](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal). Poznamenejte si číslo verze.
+2. Stáhněte si [modul plug-in Application Insights Collected Writer](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal). Poznamenejte si číslo verze.
 3. Zkopírujte SKLENICi modulu plug-in do `/usr/share/collectd/java` .
 4. Upravit `/etc/collectd/collectd.conf` :
    * Ujistěte se, že je povolený [modul plug-in Java](https://collectd.org/wiki/index.php/Plugin:Java) .

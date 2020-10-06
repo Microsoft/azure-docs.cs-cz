@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d06ec62f2ef1438657a4406b0f9a5b2c85feee16
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 30444523bfc26fc0f4eb410957bcc9ee46aff725
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611635"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760865"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Zabezpečený přístup k datům ve službě Azure Cosmos DB
 
@@ -104,11 +104,11 @@ Tady je typický vzor návrhu, který umožňuje vyžádat, vygenerovat a doruč
 
     :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Řízení přístupu (IAM) ve Azure Portal – demonstrace zabezpečení databáze NoSQL" border="false":::
 
-Generování a Správa tokenů prostředků jsou zpracovávány nativními klientskými knihovnami Cosmos DB; Pokud však použijete REST, je nutné vytvořit hlavičky žádosti nebo ověřování. Další informace o vytváření ověřovacích hlaviček pro REST najdete v tématu [Access Control v Cosmos DBch prostředcích](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) nebo ve zdrojovém kódu pro naši sadu [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) nebo [ sadu SDKNode.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts).
+Generování a Správa tokenů prostředků jsou zpracovávány nativními klientskými knihovnami Cosmos DB; Pokud však použijete REST, je nutné vytvořit hlavičky žádosti nebo ověřování. Další informace o vytváření ověřovacích hlaviček pro REST najdete v tématu [Access Control v Cosmos DBch prostředcích](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) nebo ve zdrojovém kódu pro naši sadu [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) nebo [ sadu SDKNode.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts).
 
 Příklad služby střední vrstvy, která se používá ke generování tokenů prostředků nebo jejich zprostředkovateli, najdete v [aplikaci ResourceTokenBroker](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
-## <a name="users"></a>Mohou<a id="users"></a>
+## <a name="users"></a>Uživatelé<a id="users"></a>
 
 Azure Cosmos DB uživatelé jsou přidruženi k databázi Cosmos.  Každá databáze může obsahovat nula nebo více Cosmos DB uživatelů. Následující ukázka kódu ukazuje, jak vytvořit uživatele Cosmos DB pomocí sady [Azure Cosmos DB .NET SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement).
 

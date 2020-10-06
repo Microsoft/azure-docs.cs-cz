@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 50753950556531ed3915292f44668073b88be45b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 03b569422b6ce9e74f77637a514c1c0b28011bed
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716028"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761137"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Třetí část: Konfigurace oprávnění adresářů a souborů přes SMB 
 
@@ -85,7 +85,7 @@ else
 
 ```
 
-Pokud dochází k potížím s připojením k souborům Azure, přečtěte si [Nástroj pro řešení potíží, který jsme publikovali pro chyby připojení k souborům Azure ve Windows](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5). Poskytujeme také [pokyny](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) pro řešení scénářů při zablokování portu 445. 
+Pokud dochází k potížím s připojením k souborům Azure, přečtěte si [Nástroj pro řešení potíží, který jsme publikovali pro chyby připojení k souborům Azure ve Windows](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/). Poskytujeme také [pokyny](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) pro řešení scénářů při zablokování portu 445. 
 
 ## <a name="configure-windows-acls"></a>Konfigurace seznamů řízení přístupu systému Windows
 
@@ -104,7 +104,7 @@ Pomocí Průzkumníka souborů Windows udělte úplným oprávněním všem adre
 1. V okně příkazového řádku pro přidání nových uživatelů zadejte cílové uživatelské jméno, kterému chcete udělit oprávnění, do pole **Zadejte názvy objektů k výběru** a vyberte možnost **kontrolovat názvy** a vyhledejte úplný název UPN cílového uživatele.
 1.    Vyberte **OK**.
 1.    Na kartě **zabezpečení** vyberte všechna oprávnění, která chcete novému uživateli udělit.
-1.    Vyberte **Apply** (Použít).
+1.    Vyberte **Použít**.
 
 ### <a name="configure-windows-acls-with-icacls"></a>Konfigurace seznamů ACL pro Windows pomocí icacls
 

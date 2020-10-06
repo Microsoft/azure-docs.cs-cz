@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/20/2019
-ms.openlocfilehash: f26b02755c68b4ece4edca8cbbd90ec3330c5d1d
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 97381a58cdb759dec30e75860505b3a260223d76
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032499"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761188"
 ---
 # <a name="productivity-tools-on-the-data-science-virtual-machine"></a>Nástroje pro zvýšení produktivity na Data Science Virtual Machine
 
@@ -24,6 +24,6 @@ Kromě nástrojů pro datové vědy a programování obsahuje DSVM nástroje pro
 
 | Nástroj | DSVM s Windows | Linux DSVM | DSVM serveru Windows 2019 | Ubuntu 18,04 DSVM | Poznámky k použití |
 |---|:-:|:-:|:-:|:-:|:--|
-| [Microsoft 365 aplikací pro podnik](/microsoft-365/business/microsoft-365-apps-for-enterprise-product) se sdílenou aktivací: Excel, Word a PowerPoint | <span class='green-check'>&#9989;</span> | <span class='red-x'>&#10060;</span> | <span class='green-check'>&#9989;</span> | <span class='red-x'>&#10060;</span> | Můžete aktivovat Microsoft 365 aplikace pro podniky:<br/><ul><li>Viz [Aktivace sdíleného počítače](/deployoffice/overview-shared-computer-activation)</ul> |
+| [Microsoft 365 aplikací pro podnik](https://www.microsoft.com/microsoft-365/business/microsoft-365-apps-for-enterprise) se sdílenou aktivací: Excel, Word a PowerPoint | <span class='green-check'>&#9989;</span> | <span class='red-x'>&#10060;</span> | <span class='green-check'>&#9989;</span> | <span class='red-x'>&#10060;</span> | Můžete aktivovat Microsoft 365 aplikace pro podniky:<br/><ul><li>Viz [Aktivace sdíleného počítače](/deployoffice/overview-shared-computer-activation)</ul> |
 | [Power BI Desktop](https://powerbi.microsoft.com/) | <span class='green-check'>&#9989;</span></br> (2.73.55 xx) | <span class='red-x'>&#10060;</span> | <span class='green-check'>&#9989;</span></br> (2.73.55 xx) | <span class='red-x'>&#10060;</span> | |
 | Prohlížeč Microsoft Edge | <span class='red-x'>&#10060;</span> | <span class='red-x'>&#10060;</span> | <span class='green-check'>&#9989;</span> | <span class='red-x'>&#10060;</span> | |

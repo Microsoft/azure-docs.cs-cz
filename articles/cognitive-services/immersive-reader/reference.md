@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: aa85f1323795098d161e6bfb1b9cf9237b2a5501
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330600"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761545"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Referenční dokumentace sady pro moderní čtečku JavaScript SDK (v 1.1)
 
@@ -135,7 +135,7 @@ Možnosti pro vykreslování tlačítek pro moderní čtečku
 | ------- | ---- | ----------- |
 | elementy | HTMLDivElement[] | Prvky pro vykreslení tlačítek pro moderní čtečku v. |
 
-##### `-elements`
+##### `elements`
 ```Parameters
 Type: HTMLDivElement[]
 Required: false
@@ -210,14 +210,14 @@ Obsahuje obsah, který se zobrazí v moderní čtečce.
 | title | Řetězec | Text nadpisu zobrazený v horní části moderního čtecího zařízení (volitelné) |
 | bloky dat | [Blok dat []](#chunk) | Pole bloků |
 
-##### `-title`
+##### `title`
 ```Parameters
 Type: String
 Required: false
 Default value: "Immersive Reader" 
 ```
 
-##### `-chunks`
+##### `chunks`
 ```Parameters
 Type: Chunk[]
 Required: true
@@ -246,21 +246,21 @@ Jeden blok dat, který se předává do obsahu moderního čtecího zařízení.
 | jazyk | Řetězec | Jazyk textu, hodnota je ve formátu značek IETF BCP 47, například en, ES-ES. Jazyk bude detekován automaticky, pokud není zadán. Viz [Podporované jazyky](#supported-languages). |
 | mimeType | řetězec | Jsou podporovány formáty prostého textu, MathML, HTML & formáty DOCX Microsoft Wordu. Další podrobnosti najdete v tématu [podporované typy MIME](#supported-mime-types) . |
 
-##### `-content`
+##### `content`
 ```Parameters
 Type: String
 Required: true
 Default value: null 
 ```
 
-##### `-lang`
+##### `lang`
 ```Parameters
 Type: String
 Required: false
 Default value: Automatically detected 
 ```
 
-##### `-mimeType`
+##### `mimeType`
 ```Parameters
 Type: String
 Required: false
@@ -273,7 +273,7 @@ Default value: "text/plain"
 | --------- | ----------- |
 | Text/prostý | Prostý text. |
 | text/html | Obsah HTML. [Další informace](#html-support)|
-| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Přečtěte si další informace](./how-to/display-math.md).
+| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Další informace](./how-to/display-math.md).
 | aplikace/vnd.openxmlformats-officedocument.wordprocessingml.document | Dokument formátu Microsoft Word. docx.
 
 
@@ -323,38 +323,38 @@ Obsahuje vlastnosti, které konfigurují určité chování moderního čtecího
 | onPreferencesChanged | Funkce | Provede se, když se změní předvolby uživatele. Další informace najdete v tématu [jak ukládat předvolby uživatele](./how-to-store-user-preferences.md) . |
 | customDomain | Řetězec | Vyhrazeno pro interní použití. Vlastní doména, ve které je WebApp moderního čtecího zařízení (výchozí hodnota je null). |
 
-##### `-uiLang`
+##### `uiLang`
 ```Parameters
 Type: String
 Required: false
 Default value: User's browser language 
 ```
 
-##### `-timeout`
+##### `timeout`
 ```Parameters
 Type: Number
 Required: false
 Default value: 15000
 ```
 
-##### `-uiZIndex`
+##### `uiZIndex`
 ```Parameters
 Type: Number
 Required: false
 Default value: 1000
 ```
 
-##### `-onExit`
+##### `onExit`
 ```Parameters
 Type: Function
 Required: false
 Default value: null
 ```
 
-##### `-preferences`
+##### `preferences`
 
 > [!CAUTION]
-> **Důležité** informace Nepokoušejte se programově změnit hodnoty `-preferences` řetězce odesílaného do a z aplikace moderního čtecího zařízení, protože to může způsobit neočekávané chování, které by vašemu zákazníkům vedlo ke zhoršení uživatelského prostředí.
+> **Důležité** informace Nepokoušejte se programově změnit hodnoty `-preferences` řetězce odesílaného do a z aplikace moderního čtecího zařízení, protože to může způsobit neočekávané chování, které by vašemu zákazníkům vedlo ke zhoršení uživatelského prostředí. Hostitelské aplikace by nikdy neměly přiřazovat vlastní hodnotu nebo manipulovat s `-preferences` řetězcem. Při použití `-preferences` Možnosti řetězec použijte pouze přesnou hodnotu, která byla vrácena z `-onPreferencesChanged` možnosti zpětného volání.
 
 ```Parameters
 Type: String
@@ -362,14 +362,14 @@ Required: false
 Default value: null
 ```
 
-##### `-onPreferencesChanged`
+##### `onPreferencesChanged`
 ```Parameters
 Type: Function
 Required: false
 Default value: null
 ```
 
-##### `-customDomain`
+##### `customDomain`
 ```Parameters
 Type: String
 Required: false
@@ -396,7 +396,7 @@ type ReadAloudOptions = {
 | rychlost | Číslo | Rychlost přehrávání musí být v rozmezí od 0,5 do 2,5 (včetně). |
 | autoPlay | Logická hodnota | Při načtení moderního čtecího zařízení se automaticky spustí čtení. |
 
-##### `-voice`
+##### `voice`
 ```Parameters
 Type: String
 Required: false
@@ -404,7 +404,7 @@ Default value: "Female" or "Male" (determined by language)
 Values available: "Female", "Male"
 ```
 
-##### `-speed`
+##### `speed`
 ```Parameters
 Type: Number
 Required: false
@@ -435,7 +435,7 @@ type TranslationOptions = {
 | autoEnableDocumentTranslation | Logická hodnota | Automaticky převede celý dokument. |
 | autoEnableWordTranslation | Logická hodnota | Automaticky povolit převod slov |
 
-##### `-language`
+##### `language`
 ```Parameters
 Type: String
 Required: true
@@ -463,7 +463,7 @@ type DisplayOptions = {
 | increaseSpacing | Logická hodnota | Nastaví, zda se má zapnout nebo vypnout řádkování textu. |
 | fontFamily | Řetězec | Nastaví zvolené písmo ("Calibri", "ComicSans" nebo "Sitka"). |
 
-##### `-textSize`
+##### `textSize`
 ```Parameters
 Type: Number
 Required: false
@@ -471,7 +471,7 @@ Default value: 20, 36 or 42 (Determined by screen size)
 Values available: 14, 20, 28, 36, 42, 48, 56, 64, 72, 84, 96
 ```
 
-##### `-fontFamily`
+##### `fontFamily`
 ```Parameters
 Type: String
 Required: false

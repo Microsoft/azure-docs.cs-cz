@@ -1,38 +1,35 @@
 ---
-title: Rychlý Start – přidání hlasového volání do aplikace
+title: Rychlý Start – volání na telefon
 titleSuffix: An Azure Communication Services quickstart
-description: V tomto rychlém startu se dozvíte, jak do své aplikace přidat možnosti volání pomocí komunikačních služeb Azure.
-author: matthewrobertson
-ms.author: marobert
-ms.date: 07/24/2020
+description: V tomto rychlém startu se dozvíte, jak do aplikace přidat funkce volání veřejné telefonní sítě pomocí komunikačních služeb Azure.
+author: nikuklic
+ms.author: nikuklic
+ms.date: 09/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: e9f552d6be897b5d9fd462e9168b61fc0b934987
+ms.openlocfilehash: 692e3a2e64c42702d46c38175a814819c8f539cf
 ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761960"
+ms.locfileid: "91762605"
 ---
-# <a name="quickstart-add-voice-calling-to-your-app"></a>Rychlý Start: Přidání hlasového volání do aplikace
-
+# <a name="quickstart-call-to-phone"></a>Rychlý Start: volání na telefon
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Začněte s komunikačními službami Azure pomocí komunikačních služeb volání klientské knihovny pro přidání hlasu a videa do vaší aplikace. 
-
-[!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
+Začněte s komunikačními službami Azure pomocí komunikačních služeb volání klientské knihovny pro přidání volání do veřejné telefonní sítě do vaší aplikace. 
 
 ::: zone pivot="platform-web"
-[!INCLUDE [Calling with JavaScript](./includes/get-started-javascript.md)]
+[!INCLUDE [Calling with JavaScript](./includes/pstn-call-js.md)]
 ::: zone-end
 
 ::: zone pivot="platform-android"
-[!INCLUDE [Calling with Android](./includes/get-started-android.md)]
+[!INCLUDE [Calling with Android](./includes/pstn-call-android.md)]
 ::: zone-end
 
 ::: zone pivot="platform-ios"
-[!INCLUDE [Calling with iOS](./includes/get-started-ios.md)]
+[!INCLUDE [Calling with iOS](./includes/pstn-call-ios.md)]
 ::: zone-end
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -43,6 +40,5 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 
 Další informace najdete v následujících článcích:
 
-- Podívejte se na naši [ukázku volání Hero](../../samples/calling-hero-sample.md)
 - Další informace o [volání funkcí klientské knihovny](./calling-client-samples.md)
 - Další informace o [volání funkce](../../concepts/voice-video-calling/about-call-types.md)

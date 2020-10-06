@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4a5203a91ba528328dce7036d4690c6dea137c33
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: b524b0d8f24f011065772495bc2bb283a3c90d4a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90054258"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760249"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -37,7 +37,7 @@ Azure Monitor je povolený okamžik, kdy vytvoříte nové předplatné Azure, a
 Přístup ke všem funkcím Azure Monitor a datům z nabídky **monitor** v Azure Portal. Část **monitorování** v nabídce různých služeb Azure poskytuje přístup ke stejným nástrojům, které obsahují data filtrovaná pro konkrétní prostředek. Data Azure Monitor jsou také přístupná pro celou řadu scénářů pomocí rozhraní příkazového řádku, PowerShellu a REST API.
 
 ### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>Existuje místní verze Azure Monitor?
-No. Azure Monitor je škálovatelná cloudová služba, která zpracovává a ukládá velké objemy dat, i když Azure Monitor může monitorovat místní a jiné cloudové prostředky.
+Ne. Azure Monitor je škálovatelná cloudová služba, která zpracovává a ukládá velké objemy dat, i když Azure Monitor může monitorovat místní a jiné cloudové prostředky.
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Může Azure Monitor monitorovat místní prostředky?
 Ano, kromě shromažďování dat monitorování z prostředků Azure Azure Monitor můžou shromažďovat data z virtuálních počítačů a aplikací v jiných cloudech i v místním prostředí. Další informace najdete v tématu [zdroje dat monitorování pro Azure monitor](platform/data-sources.md).
@@ -277,7 +277,7 @@ Tuto metodu nedoporučujeme používat pro naplnění verze rozhraní API. Nejno
 
 Desktopová aplikace, kterou můžete použít na webovém serveru služby IIS a které vám pomůžou nakonfigurovat Application Insights ve webových aplikacích. Neshromažďuje telemetrii: když aplikaci nekonfigurujete, můžete ji zastavit. 
 
-[Přečtěte si další informace](app/monitor-performance-live-website-now.md#questions).
+[Další informace](app/monitor-performance-live-website-now.md#questions).
 
 ### <a name="what-telemetry-is-collected-by-application-insights"></a>Jaká telemetrie se shromažďuje pomocí Application Insights?
 
@@ -323,7 +323,7 @@ IP adresu (IPv4 nebo IPv6) webového klienta vyhledáme pomocí [GeoLite2](https
 * Další informace o tom, jak se shromažďují údaje o IP adrese a geografickém umístění v Application Insights najdete v tomto [článku](./app/ip-collection.md).
 
 
-Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP` . [Přečtěte si další informace](https://apmtips.com/posts/2016-07-05-client-ip-address/).
+Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP` . [Další informace](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 [Pomocí Power BI](app/export-power-bi.md ) můžete zobrazit telemetrii žádostí na mapě.
 
@@ -430,7 +430,7 @@ Nezáleží na tom, kde je váš prostředek Application Insights hostovaný. Z�
 
 ### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Můžu na portálu Application Insights odeslat telemetrii?
 
-Doporučujeme používat naše sady SDK a používat [rozhraní API SDK](app/api-custom-events-metrics.md). Existují varianty sady SDK pro různé [platformy](app/platforms.md). Tyto sady SDK zpracovávají ukládání do vyrovnávací paměti, kompresi, omezování, opakování a tak dále. [Schéma](https://github.com/microsoft/ApplicationInsights-dotnet/tree/master/BASE/Schema/PublicSchema) příjmu a [protokol koncového bodu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) jsou ale veřejné.
+Doporučujeme používat naše sady SDK a používat [rozhraní API SDK](app/api-custom-events-metrics.md). Existují varianty sady SDK pro různé [platformy](app/platforms.md). Tyto sady SDK zpracovávají ukládání do vyrovnávací paměti, kompresi, omezování, opakování a tak dále. [Schéma](https://github.com/microsoft/ApplicationInsights-dotnet/tree/master/BASE/Schema/PublicSchema) příjmu a [protokol koncového bodu](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) jsou ale veřejné.
 
 ### <a name="can-i-monitor-an-intranet-web-server"></a>Můžu monitorovat intranetový webový server?
 

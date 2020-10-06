@@ -8,18 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 9d8801037be55a262268afcd6e8f5751d158c76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 478f7b7671a71d0d1f1f56c5d1d9889db81f7d37
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548510"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760190"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Kurz: střední příspěvky a příkazy Facebooku pomocí Azure Content Moderator
 
 V tomto kurzu se naučíte, jak používat Azure Content Moderator k tomu, abyste se seznámili s příspěvky a komentáři na stránce Facebook. Facebook pošle obsah publikovaný návštěvníkům do služby Content Moderator. V závislosti na hodnocení obsahu a prahových hodnotch pak vaše Content Moderator pracovní postupy publikují obsah nebo vytvoří recenze v rámci nástroje pro kontrolu. Pracovní příklad tohoto scénáře najdete v [ukázkovém videu Build 2017](https://channel9.msdn.com/Events/Build/2017/T6033) .
+
+> [!IMPORTANT]
+> V 2018 byla Facebook implementovala přísnější zásady dozvíte ČSFD pro aplikace Facebook. Kroky tohoto kurzu nebudete moci dokončit, pokud vaše aplikace nebyla přezkoumána a schválena v rámci týmu pro kontrolu Facebooku.
 
 V tomto kurzu získáte informace o následujících postupech:
 
@@ -28,16 +31,13 @@ V tomto kurzu získáte informace o následujících postupech:
 > * Vytvoření funkcí Azure Functions, které naslouchají událostem protokolu HTTP od Content Moderatoru a Facebooku.
 > * Propojte stránku Facebooku s Content Moderator pomocí aplikace Facebook.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 Tento diagram znázorňuje jednotlivé komponenty tohoto scénáře:
 
 ![Diagram Content Moderator přijímání informací z Facebooku prostřednictvím "FBListener" a odesílání informací prostřednictvím "CMListener"](images/tutorial-facebook-moderation.png)
 
-> [!IMPORTANT]
-> V 2018 byla Facebook implementovala přísnější zásady dozvíte ČSFD pro aplikace Facebook. Kroky tohoto kurzu nebudete moci dokončit, pokud vaše aplikace nebyla přezkoumána a schválena v rámci týmu pro kontrolu Facebooku.
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Klíč předplatného Content Moderatoru. Podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se přihlaste k odběru služby Content moderator a Získejte svůj klíč.
 - [Účet Facebook](https://www.facebook.com/).
@@ -81,7 +81,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/) a proveďte následuj�
 
     Klikněte na tlačítko **Uložit** v horní části stránky.
 
-1. Vraťte se na kartu **funkce platformy** . pomocí **+** tlačítka v levém podokně zobrazte **nové podokno funkce** . Funkce, kterou se chystáte vytvořit, bude přijímat události z Facebooku.
+1. Vraťte se na kartu **funkce platformy** . Pomocí **+** tlačítka v levém podokně zobrazte **nové podokno funkce** . Funkce, kterou se chystáte vytvořit, bude přijímat události z Facebooku.
 
     ![Podokno Azure Functions s zvýrazněným tlačítkem přidat funkci](images/new-function.png)
 

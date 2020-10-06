@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: ca4dccb82ae6a907a2f7e944174b8ecc05a443b6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 71862bedc009d560adc8131eacc37c0afba25d81
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986904"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761715"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Verze rozhraní API v Azure Kognitivní hledání
 
@@ -79,7 +79,7 @@ Umožňuje vytvořit a nakonfigurovat vyhledávací službu a spravovat klíče 
 | Management 2020-03-13  | Stable | Přidá [privátní koncový bod](service-create-private-endpoint.md) prostřednictvím privátního odkazu a [pravidla pro IP síť](service-configure-firewall.md) pro nové služby. Další informace najdete v této [specifikaci Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01). |
 | Management 2019-10-01-Preview | Preview  | V tomto seznamu nebyly zavedeny žádné funkce verze Preview. Tato verze Preview je funkčně ekvivalentní 2020-03-13. Další informace najdete v této [specifikaci Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview). |
 | Správa 2015-08-19  | Stable | První obecně dostupná verze rozhraní REST API pro správu. Poskytuje zřizování služeb, horizontální navýšení kapacity a správu klíčů rozhraní API. Další informace najdete v této [specifikaci Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19). |
-| Správa 2015-08-19 – Preview  | Preview | První verze Preview rozhraní REST API pro správu. Další informace najdete v této [specifikaci Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19-preview). |
+| Správa 2015-08-19 – Preview  | Preview | První verze Preview rozhraní REST API pro správu. Další informace najdete v této [specifikaci Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19). |
 
 ## <a name="azure-sdk-for-net"></a>Sada Azure SDK pro .NET
 
@@ -96,7 +96,7 @@ Následující tabulka obsahuje odkazy na novější verze sady SDK.
 
 | SDK version (Verze sady SDK) | Status | Popis  |
 |-------------|--------|------------------------------|
-| [Java Azure – hledání dokumentů 11](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-search-documents) | Stable | Nová knihovna klienta ze sady Azure .NET SDK vydaná v červenci 2020. července. Cílí na rozhraní REST API pro hledání verze = 2019-05-06. |
+| [Java Azure – hledání dokumentů 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | Nová knihovna klienta ze sady Azure .NET SDK vydaná v červenci 2020. července. Cílí na rozhraní REST API pro hledání verze = 2019-05-06. |
 | [1.35.0 klienta pro správu Java](/java/api/overview/azure/search/management) | Stable | Cílí na rozhraní REST API pro správu verze = 2015 – 08-19. |
 
 ## <a name="azure-sdk-for-javascript"></a>Azure SDK for JavaScript
@@ -110,5 +110,5 @@ Následující tabulka obsahuje odkazy na novější verze sady SDK.
 
 | SDK version (Verze sady SDK) | Status | Popis  |
 |-------------|--------|------------------------------|
-| [Python Azure – Search-Documents 11,0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents) | Stable | Nová knihovna klienta ze sady Azure .NET SDK vydaná v červenci 2020. července. Cílí na rozhraní REST API pro hledání verze = 2019-05-06. |
+| [Python Azure – Search-Documents 11,0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Stable | Nová knihovna klienta ze sady Azure .NET SDK vydaná v červenci 2020. července. Cílí na rozhraní REST API pro hledání verze = 2019-05-06. |
 | [Python Azure – Správa – hledání 1,0](/python/api/overview/azure/search) | Stable | Cílí na rozhraní REST API pro správu verze = 2015 – 08-19. |

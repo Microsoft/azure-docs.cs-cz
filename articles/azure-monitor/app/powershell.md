@@ -3,12 +3,12 @@ title: Automatizace Azure Application Insights s využitím PowerShellu | Micros
 description: Automatizujte vytváření a správu prostředků, upozornění a testů dostupnosti v PowerShellu pomocí šablony Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: 53cdf338db5cc4ea359f729297fe57e63853aa5c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b5f3ba12fe8a730ce45e64b896ccc9c32b17b30c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322478"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760899"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Správa prostředků Application Insights pomocí prostředí PowerShell
 
@@ -188,8 +188,8 @@ Vytvoření nového souboru. JSON – Pojďme ho zavolat `template1.json` v tomt
 
 ### <a name="use-the-resource-manager-template-to-create-a-new-application-insights-resource"></a>Vytvoření nového prostředku Application Insights pomocí šablony Správce prostředků
 
-1. Přihlášení do Azure pomocí prostředí PowerShell`$Connect-AzAccount`
-2. Nastavte svůj kontext na předplatné s`Set-AzContext "<subscription ID>"`
+1. Přihlášení do Azure pomocí prostředí PowerShell `$Connect-AzAccount`
+2. Nastavte svůj kontext na předplatné s `Set-AzContext "<subscription ID>"`
 2. Pokud chcete vytvořit nový prostředek Application Insights, spusťte nové nasazení:
    
     ```PS
@@ -199,9 +199,9 @@ Vytvoření nového souboru. JSON – Pojďme ho zavolat `template1.json` v tomt
 
     ``` 
    
-   * `-ResourceGroupName`je skupina, ve které chcete vytvořit nové prostředky.
-   * `-TemplateFile`musí se nacházet před vlastními parametry.
-   * `-appName`Název prostředku, který se má vytvořit
+   * `-ResourceGroupName` je skupina, ve které chcete vytvořit nové prostředky.
+   * `-TemplateFile` musí se nacházet před vlastními parametry.
+   * `-appName` Název prostředku, který se má vytvořit
 
 Můžete přidat další parametry – jejich popisy najdete v části Parameters (parametry) v šabloně.
 
@@ -451,7 +451,7 @@ Tady jsou příklady náhrad, které chcete udělat. Existuje několik výskytů
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
-| `"myappname"`(malá písmena) |`"[toLower(parameters('appName'))]"` |
+| `"myappname"` (malá písmena) |`"[toLower(parameters('appName'))]"` |
 | `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`|
 
 ### <a name="set-dependencies-between-the-resources"></a>Nastavení závislostí mezi prostředky
@@ -473,5 +473,5 @@ Další články o automatizaci:
 * [Nastavení výstrah](powershell-alerts.md)
 * [Vytvářejte webové testy](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Odesílání Azure Diagnostics do Application Insights](powershell-azure-diagnostics.md)
-* [Vytvořit poznámky k verzi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+* [Vytvořit poznámky k verzi](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 

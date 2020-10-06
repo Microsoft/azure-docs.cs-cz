@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c9e0b6a81742ea4022bb8db2dd8d933f917331b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b5739ea49bb9f5823538e9a41660a572a3cede04
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530065"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760716"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Kurz: Azure Active Directory integraci se softwarem Cezanne HR
 
@@ -30,7 +30,7 @@ Integrace softwaru Cezanne HR s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD se softwarem Cezanne HR budete potřebovat následující položky:
 
@@ -130,19 +130,19 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí softwaru
 
 2. V levém navigačním podokně klikněte na **nastavení systému**. Přejít na **nastavení zabezpečení** Pak přejděte do **Konfigurace jednotného přihlašování**.
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
+    ![Snímek obrazovky se zobrazí u klienta softwaru Cezanne H R s nastavením zabezpečení a vybranou konfigurací jednotného přihlašování.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
 3. V okně **Povolte uživatelům přihlášení pomocí následujícího panelu služby jednotného přihlašování (SSO)** zaškrtněte políčko **SAML 2,0** a vyberte možnost **Pokročilá konfigurace** .
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
+    ![Snímek obrazovky zobrazuje podokno pro povolení uživatelů s vybraným rozhraním SAML 2,0 a pokročilou konfigurací.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
 4. Klikněte na tlačítko **Přidat nové** .
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
+    ![Snímek obrazovky se zobrazeným tlačítkem Přidat nový.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
 5. V části **Zprostředkovatelé identit SAML 2,0** proveďte následující kroky.
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
+    ![Snímek obrazovky se zobrazí podokno, kde můžete zadat hodnoty popsané v tomto kroku.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
 
     a. Jako **Zobrazovaný název**zadejte název poskytovatele identity.
 
@@ -160,7 +160,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí softwaru
 
 6. Klikněte na tlačítko **Uložit** .
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
+    ![Snímek obrazovky se zobrazením tlačítka Uložit pro konfiguraci jednotného přihlašování.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -193,7 +193,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **software Cezanne HR**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Cezanne software HR**.
 
@@ -223,11 +223,11 @@ Aby se uživatelé Azure AD mohli přihlásit k Cezanne softwaru pro personál, 
 
 2. V levém navigačním podokně klikněte na **nastavení systému**. Přejít na **Správa uživatelů** Pak přejděte k **Přidat nového uživatele**.
 
-    ![Nový uživatel](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "Nový uživatel")
+    ![Snímek obrazovky se zobrazí jako tenant softwaru Cezanne H R s možností spravovat uživatele a přidat nového uživatele.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "Nový uživatel")
 
 3. V části **Podrobnosti o osobě** proveďte následující kroky:
 
-    ![Nový uživatel](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "Nový uživatel")
+    ![Snímek obrazovky se zobrazí v části Podrobnosti o osobě, kde můžete zadat hodnoty popsané v tomto kroku.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "Nový uživatel")
 
     a. Nastavte **interního uživatele** jako vypnutý.
 
@@ -239,7 +239,7 @@ Aby se uživatelé Azure AD mohli přihlásit k Cezanne softwaru pro personál, 
 
 4. V části **informace o účtu** proveďte následující kroky:
 
-    ![Nový uživatel](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "Nový uživatel")
+    ![Snímek obrazovky zobrazuje informace o účtu, kde můžete zadat hodnoty popsané v tomto kroku.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "Nový uživatel")
 
     a. Do textového pole **uživatelské jméno** zadejte e-maily jako uživatel Brittasimon@contoso.com .
 
@@ -251,15 +251,15 @@ Aby se uživatelé Azure AD mohli přihlásit k Cezanne softwaru pro personál, 
 
 5. Přejděte na kartu **jednotné přihlašování** a v oblasti **identifikátory SAML 2,0** vyberte **Přidat nový** .
 
-    ![Uživatel](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "Uživatel")
+    ![Snímek obrazovky se zobrazí na kartě jednotného přihlašování, kde můžete vybrat možnost Přidat nový.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "Uživatel")
 
 6. Vyberte poskytovatele identity pro **poskytovatele identity** a v textovém poli **identifikátoru uživatele**zadejte e-mailovou adresu účtu Britta Simon.
 
-    ![Uživatel](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "Uživatel")
+    ![Snímek obrazovky zobrazuje identifikátory SAML 2,0, kde můžete vybrat poskytovatele identity a identifikátor uživatele.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "Uživatel")
 
 7. Klikněte na tlačítko **Uložit** .
 
-    ![Uživatel](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "Uživatel")
+    ![Snímek obrazovky zobrazující tlačítko Uložit pro uživatelská nastavení](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "Uživatel")
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 

@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 87cd87be254a8d373f46e64537c8c745469b3ec2
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: bdf7a46dec6f4ea766d5d5a039109022755bc3fb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91583276"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761273"
 ---
 # <a name="tutorial-how-to-convert-an-iot-plug-and-play-device-to-a-module-c"></a>Kurz: jak převést zařízení technologie Plug and Play IoT na modul (C#)
 
@@ -175,7 +175,7 @@ Sady SDK služby umožňují načíst ID modelu propojených technologie Plug an
 
     | Název | Hodnota |
     | ---- | ----- |
-    | DEVICE_ID | můj modul – zařízení |
+    | IOTHUB_DEVICE_ID | můj modul – zařízení |
     | IOTHUB_CONNECTION_STRING | Hodnota, na kterou jste si poznamenali, když jste [nastavili prostředí](set-up-environment.md) |
 
     > [!TIP]

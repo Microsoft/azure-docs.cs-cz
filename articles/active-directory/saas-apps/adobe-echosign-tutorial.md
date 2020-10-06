@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: b7d1ea6c1ee21970a598855471284130160e1d65
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 18a034c6af9659e113a821e072098aee873c2ee2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537856"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Kurz: Azure Active Directory integrací pomocí Adobe Sign
 
@@ -30,7 +30,7 @@ Integrace společnosti Adobe Sign with Azure AD poskytuje následující výhody
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD pomocí podepisování Adobe budete potřebovat následující položky:
 
@@ -151,7 +151,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí přihlá
 
 1. V části **Nastavení SAML** proveďte následující kroky:
   
-   ![Snímek obrazovky s nastavením SAML](./media/adobe-echosign-tutorial/ic789521.png "Nastavení SAML")
+   ![Snímek obrazovky, který zvýrazní nastavení SAML, včetně povinného SAML.](./media/adobe-echosign-tutorial/ic789521.png "Nastavení SAML")
    
    ![Snímek obrazovky s nastavením SAML](./media/adobe-echosign-tutorial/ic789522.png "Nastavení SAML")
 
@@ -202,7 +202,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Adobe Sign (podepsat**).
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace zadejte a vyberte **symbol Adobe**.
 

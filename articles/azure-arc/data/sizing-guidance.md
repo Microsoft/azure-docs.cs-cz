@@ -1,5 +1,5 @@
 ---
-title: Pokyny pro změnu velikosti
+title: Pokyny pro stanovení velikosti
 description: Naplánujte velikost nasazení datových služeb s podporou ARC Azure.
 services: azure-arc
 ms.service: azure-arc
@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7afe00746b133e8376cf32ba874831c7962e85b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3bd54d8a23aca7e493cd3c0ddb7f057a6e1f5362
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936787"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761477"
 ---
 # <a name="sizing-guidance"></a>Pokyny pro změnu velikosti
 
@@ -27,7 +27,7 @@ Při plánování nasazení datových služeb Azure ARC byste měli naplánovat 
 ## <a name="general-sizing-requirements"></a>Požadavky na obecné velikosti
 
 > [!NOTE]
-> Pokud nejste obeznámeni s koncepty v tomto článku, můžete si přečíst další informace o [správě prostředků Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) a [zápisu Kubernetes velikosti](https://kubernetes.io/docs/concepts/configuration/.manage-resources-containers/#resource-units-in-kubernetes).
+> Pokud nejste obeznámeni s koncepty v tomto článku, můžete si přečíst další informace o [správě prostředků Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) a [zápisu Kubernetes velikosti](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 Počty jader musí být celočíselná hodnota větší nebo rovna hodnotě jedna.
 

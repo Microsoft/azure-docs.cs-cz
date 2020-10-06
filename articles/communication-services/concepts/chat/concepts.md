@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c3b4970b70a9bd5399199771a081481e17e2efb1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f33d7efd1c136619767c3eadd93740442ae7239a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91666989"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762038"
 ---
 # <a name="chat-concepts"></a>Koncepce chatu
 
@@ -128,7 +128,7 @@ Signalizace v reálném čase umožňuje uživatelům chatovat v reálném čase
 
 Jedním ze způsobů, jak toho dosáhnout, je jednat o členství vaší důvěryhodné služby jako člena konverzačního vlákna. Řekněme, že chcete povolit převod jazyka. Tato služba bude zodpovědná za naslouchání zpráv vyměňovaných jinými členy [1], volání rozhraní API pro rozpoznávání obsahu pro překlad obsahu na požadovaný jazyk [2, 3] a odeslání přeloženého výsledku jako zprávy ve vlákně chatu [4]. 
 
-Historie zpráv tak bude obsahovat původní i přeložené zprávy. V klientské aplikaci můžete přidat logiku pro zobrazení původní nebo přeložené zprávy. V [tomto rychlém](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translate) startu se naučíte, jak používat rozpoznávání rozhraní API k překladu textu do různých jazyků. 
+Historie zpráv tak bude obsahovat původní i přeložené zprávy. V klientské aplikaci můžete přidat logiku pro zobrazení původní nebo přeložené zprávy. V [tomto rychlém](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translator) startu se naučíte, jak používat rozpoznávání rozhraní API k překladu textu do různých jazyků. 
 
 :::image type="content" source="../media/chat/cognitive-services.png" alt-text="Diagram znázorňující architekturu chatu komunikačních služeb":::
 

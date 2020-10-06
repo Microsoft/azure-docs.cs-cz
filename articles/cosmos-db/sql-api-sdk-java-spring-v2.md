@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 11278f558f94fe358be94c914ecfeae6cfd5461e
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: d5a906e12df14c6c3ffec704310bbede742ad841
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570749"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760821"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>Jarní data Azure Cosmos DB v2 pro Core (SQL) API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -60,17 +60,17 @@ Ve [jarních cloudových aplikacích Azure](https://azure.microsoft.com/services
 > Pomocí [jarních Initializr](https://start.spring.io/)můžete rychle aktivovat aplikace na jaře Boot Starter.
 >
 
-## <a name="resources"></a>Zdroje informací
+## <a name="resources"></a>Zdroje a prostředky
 
 | Prostředek | Odkaz |
 |---|---|
 | **Stažení sady SDK** | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/spring-data-cosmosdb) |
 |**Dokumentace k rozhraní API** | [Data pružiny Azure Cosmos DB Referenční dokumentace]() |
 |**Přispívání do sady SDK** | [Jarní data Azure Cosmos DB úložiště na GitHubu](https://github.com/microsoft/spring-data-cosmosdb) | 
-|**Jaře Boot Starter**| [Azure Cosmos DB klientskou knihovnu Starter Boot Boot Library pro Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-cosmosdb) |
+|**Jaře Boot Starter**| [Azure Cosmos DB klientskou knihovnu Starter Boot Boot Library pro Java](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
 |**Ukázka aplikace pružiny TODO pomocí Azure Cosmos DB**| [Komplexní prostředí Java v systému App Service Linux (část 2)](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2) |
 |**Příručka pro vývojáře** | [Příručka pro vývojáře Spring Data Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) | 
-|**Pomocí Starter** | [Jak používat jaře Boot Starter s Azure Cosmos DB SQL API](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [Úložiště GitHub pro Azure Cosmos DB jaře Boot Starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-cosmosdb) |
+|**Pomocí Starter** | [Jak používat jaře Boot Starter s Azure Cosmos DB SQL API](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [Úložiště GitHub pro Azure Cosmos DB jaře Boot Starter](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
 |**Ukázka pomocí Azure App Service** | [Jak používat Spring a Cosmos DB s App Service v Linuxu](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-app-with-cosmos-db-on-app-service-linux) <br> [Ukázka aplikace TODO](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git) |
 
 ## <a name="release-history"></a>Historie verzí
@@ -199,7 +199,7 @@ Ve [jarních cloudových aplikacích Azure](https://azure.microsoft.com/services
 #### <a name="key-bug-fixes"></a>Opravy chyb klíčů
 * Oprava chyby a zmírnění závad.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Další kroky

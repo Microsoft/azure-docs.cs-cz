@@ -6,12 +6,12 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: b4042e65fb9f7dbff6566bd497f782c3e6d591cb
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e6d464b415c956a0a8486f7c0d41c6e6a32b7c03
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707845"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761596"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Použití mikroměřiče s Azure Application Insights Java SDK
 
@@ -24,7 +24,7 @@ Měření míry monitorování aplikací pro mikroměřiče pro kód aplikace za
 
 ## <a name="using-spring-boot-15x"></a>Použití pružinového spuštění 1.5 x
 Do pom.xml nebo sestavení souboru. Gradle přidejte následující závislosti: 
-* [Application Insights jaře-Boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 nebo novější
+* [Application Insights jaře-Boot-Starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter) 2.5.0 nebo novější
 * 1.1.0 nebo novější v registru mikroměřiče Azure
 * [Pružina mikroměřiče starší verze](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 nebo vyšší (Tato znovu nasměruje kód pro automatické nastavování v rozhraní pružiny).
 * [Prostředek ApplicationInsights](./create-new-resource.md)
@@ -57,7 +57,7 @@ Postup
 
      `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
 1. Sestavení aplikace a spuštění
-2. Výše uvedená zpráva by vám měla začít pracovat s předem agregovanými metrikami automaticky shromážděnými do Azure Monitor. Podrobné informace o tom, jak vyladit Application Insights jaře Boot Starter, najdete v [souboru Readme na GitHubu](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/azure-application-insights-spring-boot-starter/README.md).
+2. Výše uvedená zpráva by vám měla začít pracovat s předem agregovanými metrikami automaticky shromážděnými do Azure Monitor. Podrobné informace o tom, jak vyladit Application Insights jaře Boot Starter, najdete v [souboru Readme na GitHubu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter/README.md).
 
 ## <a name="using-spring-2x"></a>Použití pružiny 2. x
 

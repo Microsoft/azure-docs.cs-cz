@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 375191bbe6f45189fba50ea927454c0ec4f64678
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 55269b45159210eec2ec7a6dd8eaea661ff13ebd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936027"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760302"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Nahrání fakturačních dat do Azure a jejich zobrazení v Azure Portal
 
@@ -30,7 +30,7 @@ V budoucnu budou existovat dva režimy, ve kterých můžete spustit datové slu
 - **Nepřímo připojeno** – neexistuje žádné přímé připojení k Azure. Data se odesílají do Azure jenom prostřednictvím procesu exportu nebo nahrání. Všechna nasazení datových služeb Azure ARC v tomto režimu fungují ještě dnes ve verzi Preview.
 - **Přímo připojeno** – v tomto režimu bude existovat závislost na službě Kubernetes s povoleným ARC Azure, která poskytuje přímé propojení mezi Azure a clusterem Kubernetes, na kterém běží datové služby s podporou ARC Azure. Tím se povolí více možností a také vám umožní používat Azure Portal a Azure CLI ke správě datových služeb s podporou ARC Azure, stejně jako při správě datových služeb v Azure PaaS.  Tento režim připojení ještě není dostupný ve verzi Preview, ale brzo se připravuje.
 
-Můžete si přečíst další informace o rozdílech mezi [režimy připojení](/docs/connectivity.md).
+Můžete si přečíst další informace o rozdílech mezi [režimy připojení](https://docs.microsoft.com/azure/azure-arc/data/connectivity).
 
 V nepřímém připojeném režimu se fakturovaná data pravidelně exportují z řadiče dat ARC Azure na zabezpečený soubor a pak se nahrály do Azure a zpracovaly.  V nadcházejícím připojeném režimu se fakturační data automaticky odešlou do Azure přibližně 1 hodina, aby se vám v reálném čase zobrazila cena za vaše služby. Proces exportu a nahrávání dat v nepřímém připojeném režimu je také možné automatizovat pomocí skriptů nebo můžeme vytvořit službu, která to provede za vás.
 
@@ -40,7 +40,7 @@ Chcete-li odeslat fakturační data do Azure, je třeba nejprve provést násled
 
 1. Vytvořte datovou službu s povoleným ARC Azure, pokud ji ještě nemáte. Můžete například vytvořit jednu z následujících možností:
    - [Vytvoření spravované instance Azure SQL v Arc Azure](create-sql-managed-instance.md)
-   - [Vytvoření skupiny serverů s povoleným PostgreSQLm rozšířením Azure ARC](create-postgresql-hyperscale-server-group.md)
+   - [Vytvoření skupiny serverů PostgreSQL Hyperscale s podporou služby Azure Arc](create-postgresql-hyperscale-server-group.md)
 1. Pokud jste to ještě neudělali [, nahrajte inventář prostředků, data o využití, metriky a protokoly Azure monitor](upload-metrics-and-logs-to-azure-monitor.md) .
 1. Počkejte alespoň 2 hodiny od vytvoření datové služby, aby proces kolekce telemetrie fakturace mohl shromažďovat některá fakturační data.
 

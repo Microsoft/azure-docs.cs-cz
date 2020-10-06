@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 3471d79875fb34ea0285c086e7d908aa254957dc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 35414820228b615816f2389b7a609f5d63f5830d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537733"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760773"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Kurz: integrace adaptivních přehledů s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat adaptivní přehledy s Azure Active Di
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -99,7 +99,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 2. Přejít na **Správa**.
 
-    ![Správce](./media/adaptivesuite-tutorial/ic805644.png "správce")
+    ![Snímek obrazovky, který zvýrazní správu na navigačním panelu.](./media/adaptivesuite-tutorial/ic805644.png "Správce")
 
 3. V části **Uživatelé a role** klikněte na **Nastavení SAML SSO**.
 
@@ -173,7 +173,7 @@ Aby se uživatelé Azure AD mohli přihlašovat do adaptivních přehledů, mus�
 
 2. Přejít na **Správa**.
 
-   ![Správce](./media/adaptivesuite-tutorial/IC805644.png "správce")
+   ![Správce](./media/adaptivesuite-tutorial/IC805644.png "Správce")
 
 3. V části **Uživatelé a role** klikněte na **Uživatelé**.
 

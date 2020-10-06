@@ -1,6 +1,6 @@
 ---
-title: Načíst uživatelské jméno a heslo pro připojení k řadiči dat ARC
-description: Načíst uživatelské jméno a heslo pro připojení k řadiči dat ARC
+title: Načtení uživatelského jména a hesla pro připojení ke kontroleru dat ARC
+description: Načtení uživatelského jména a hesla pro připojení ke kontroleru dat ARC
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,14 +9,14 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 1c33cf21be0b4b1ea39a568d6df9fd90507dd454
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8cabb48e3620f1a17d1bb9b87e1646ce2793143b
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935949"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761698"
 ---
-# <a name="retrieve-the-user-name-and-password-to-connect-to-the-arc-data-controller"></a>Načíst uživatelské jméno a heslo pro připojení k řadiči dat ARC
+# <a name="retrieve-the-user-name-and-password-to-connect-to-the-arc-data-controller"></a>Načtení uživatelského jména a hesla pro připojení ke kontroleru dat ARC
 
 Může se jednat o situaci, kdy potřebujete načíst uživatelské jméno a heslo pro řadič dat. Toto jsou příkazy, které potřebujete při spuštění. 
 
@@ -61,4 +61,4 @@ Spusťte následující příkaz pro načtení hesla:
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte jiné [scénáře](https://github.com/microsoft/Azure-data-services-on-Azure-Arc/tree/master/scenarios)
+Vyzkoušejte jiné [scénáře](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory-domain-services/scenarios.md)

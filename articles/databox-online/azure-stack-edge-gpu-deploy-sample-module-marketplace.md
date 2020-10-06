@@ -1,6 +1,6 @@
 ---
 title: Nasadit modul GPU na zařízení Microsoft Azure Stack Edge pro ze Azure Marketplace | Microsoft Docs
-description: V této části najdete popis postupu povolení výpočetní služby a zajištění, aby vaše zařízení Azure Stack Edge pro bylo připravené pomocí místního uživatelského rozhraní.
+description: Popisuje, jak nasadit modul IoT s povoleným grafickým procesorem na zařízení s grafickým procesorem Azure Stack Edge pro.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: a15e74dd2a1a2737675ef66284f348f33cd753dd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 64d028892298a70e7588863bf9a3f4fc6f4ca609
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899947"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760055"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-pro-gpu-device"></a>Nasazení modulu IoT s povoleným grafickým procesorem z Azure Marketplace na zařízení GPU pro Azure Stack Edge pro
 
@@ -28,7 +28,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Vzorový modul GPU v tomto článku zahrnuje vzorový kód PyTorch a TensorFlow srovnávacího testu pro procesor s grafickým procesorem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -55,7 +55,7 @@ Než začnete, ujistěte se, že máte následující:
 
 4. Vyberte **pokračovat** a potvrďte podmínkami použití a zásady ochrany osobních údajů poskytovatele. 
 
-    ![Získat vzorový modul](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
+    ![Získat vzorový modul 2](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
 
 5. Vyberte předplatné, které jste použili k nasazení Azure Stack hraničního zařízení pro.
 
@@ -89,7 +89,7 @@ Než začnete, ujistěte se, že máte následující:
 
 13. Ověřte, že je modul nasazený ve vašem IoT Hub v Azure Portal. Vyberte zařízení, vyberte **nastavit moduly**   a modul by měl být uveden v části **IoT Edge moduly**   .
 
-    ![Výběr možnosti vytvoření](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/running-module-iotres-1.png)
+    ![Vyberte vytvořit 2.](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/running-module-iotres-1.png)
 
 ## <a name="monitor-the-module"></a>Monitorovat modul  
 

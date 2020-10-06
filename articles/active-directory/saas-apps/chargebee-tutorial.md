@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 6358c41ab6d63baa8ed1fa6960d7d887825a1d78
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c620393903ee08199632d457ece3b4c06db8ed68
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529473"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760644"
 ---
 # <a name="tutorial-integrate-chargebee-with-azure-active-directory"></a>Kurz: integrace Chargebee s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Chargebee s Azure Active Directory (Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -132,11 +132,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. V levé části nabídky klikněte na **Nastavení**  >  **Security**  >  **Spravovat**zabezpečení.
 
-    ![Konfigurace Chargebee](./media/chargebee-tutorial/config01.png)
+    ![Snímek obrazovky zobrazuje web společnosti Chargebee s vybraným nastavením, zabezpečením a správou.](./media/chargebee-tutorial/config01.png)
 
 5. V automaticky otevíraném okně **jednotného přihlašování** proveďte následující kroky:
 
-    ![Konfigurace Chargebee](./media/chargebee-tutorial/config02.png)
+    ![Snímek obrazovky se zobrazí dialogové okno jednotného přihlašování s vybraným SAML a možností pro potvrzení.](./media/chargebee-tutorial/config02.png)
 
     a. Vyberte **SAML**.
 
@@ -156,11 +156,11 @@ Pokud chcete povolit uživatele Azure AD, přihlaste se k Chargebee, musí být 
 
 2. Na levé straně nabídky klikněte na **zákazníci** a pak přejděte k **Vytvoření nového zákazníka**.
 
-    ![Konfigurace Freedcamp](./media/chargebee-tutorial/config03.png)
+    ![Snímek obrazovky s zákazníky zobrazuje web Chargebee a vytvoří nového zákazníka.](./media/chargebee-tutorial/config03.png)
 
 3. Na stránce **Nový zákazník** vyplňte příslušná pole, která jsou zobrazena níže, a klikněte na **vytvořit zákazníka** pro vytvoření uživatele.
 
-    ![Konfigurace Freedcamp](./media/chargebee-tutorial/config04.png)
+    ![Snímek obrazovky se zobrazí na stránce nového zákazníka, kde můžete zadat informace o zákaznících.](./media/chargebee-tutorial/config04.png)
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -168,7 +168,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Chargebee, měli byste se automaticky přihlásit k Chargebee, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

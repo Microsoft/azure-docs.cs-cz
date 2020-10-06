@@ -7,12 +7,12 @@ ms.date: 08/11/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a78dce748a70c99581e047280aa9ed1ca6598558
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 3b7c9b51bad45bb348f70c8b0e433404b49b5aac
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579777"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761358"
 ---
 # <a name="set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Nastavení prostředí pro technologie Plug and Play rychlý Start a kurzy pro IoT
 
@@ -85,7 +85,6 @@ Ukázky služeb potřebují k identifikaci centra a zařízení, ke kterému se 
 
 * **IOTHUB_CONNECTION_STRING**: připojovací řetězec ke službě IoT Hub jste si poznamenali dříve.
 * **IOTHUB_DEVICE_ID**: `my-pnp-device` .
-* **DEVICE_ID**: `my-pnp-device` .
 
 Například v prostředí Linux bash shell:
 
@@ -97,7 +96,6 @@ export IOTHUB_DEVICE_DPS_DEVICE_KEY="<Your enrolment primary key>"
 export IOTHUB_DEVICE_DPS_ENDPOINT="global.azure-devices-provisioning.net"
 export IOTHUB_CONNECTION_STRING="<Your IoT hub connection string>"
 export IOTHUB_DEVICE_ID="my-pnp-device"
-export DEVICE_ID="my-pnp-device"
 ```
 
 Například na příkazovém řádku systému Windows:
@@ -110,7 +108,6 @@ set IOTHUB_DEVICE_DPS_DEVICE_KEY=<Your enrolment primary key>
 set IOTHUB_DEVICE_DPS_ENDPOINT=global.azure-devices-provisioning.net
 set IOTHUB_CONNECTION_STRING=<Your IoT hub connection string>
 set IOTHUB_DEVICE_ID=my-pnp-device
-set DEVICE_ID=my-pnp-device
 ```
 
 ## <a name="download-the-model-files"></a>Stažení souborů modelu

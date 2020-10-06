@@ -3,12 +3,12 @@ title: Zabezpečení Azure Functions
 description: Přečtěte si, jak zajistit, aby byl kód vaší funkce běžící v Azure lépe zabezpečený před běžnými útoky.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: e48991788307a47d0e01a7921e0c94d77ddcd5ad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 470ee517b929b7327df76963e21c88db21d363da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294746"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761409"
 ---
 # <a name="securing-azure-functions"></a>Zabezpečení Azure Functions
 
@@ -24,7 +24,7 @@ V této části se můžete co nejdříve nakonfigurovat a spustit aplikaci Func
 
 ### <a name="security-center"></a>Security Center
 
-Security Center se integruje s aplikací Function App na portálu. Poskytuje zdarma rychlé posouzení potenciálních chyb zabezpečení souvisejících s konfigurací. Aplikace Function App spuštěné ve vyhrazeném plánu můžou k dalším nákladům použít také funkce zabezpečení Security Center v reálném čase. Další informace najdete v tématu [ochrana Azure App Service webových aplikací a rozhraní API](../security-center/security-center-app-services.md). 
+Security Center se integruje s aplikací Function App na portálu. Poskytuje zdarma rychlé posouzení potenciálních chyb zabezpečení souvisejících s konfigurací. Aplikace Function App spuštěné ve vyhrazeném plánu můžou k dalším nákladům použít také funkce zabezpečení Security Center v reálném čase. Další informace najdete v tématu [ochrana Azure App Service webových aplikací a rozhraní API](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction). 
 
 ### <a name="log-and-monitor"></a>Protokolování a monitorování
 
@@ -58,7 +58,7 @@ Rozsah systémových klíčů závisí na rozšíření, ale obecně platí pro 
 
 Následující tabulka porovnává použití různých druhů přístupových klíčů:
 
-| Akce                                        | Obor                    | Platné klíče         |
+| Akce                                        | Rozsah                    | Platné klíče         |
 |-----------------------------------------------|--------------------------|--------------------|
 | Spustit funkci                            | Konkrétní funkce        | Funkce           |
 | Spustit funkci                            | Libovolná funkce             | Funkce nebo hostitel   |

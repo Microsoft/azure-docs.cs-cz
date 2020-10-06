@@ -13,12 +13,12 @@ ms.date: 09/17/2020
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.openlocfilehash: 2bb48971e86c2b61742735020469865fa969bee3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5042bfad2cfe06c7c368c6b476aa1b02d67bcc9c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258402"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760750"
 ---
 # <a name="brokered-authentication-in-android"></a>Zprostředkované ověřování v Androidu
 
@@ -95,7 +95,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 Jakmile vygenerujete hodnotu hash podpisu pomocí *nástroje*, použijte Azure Portal k VYgenerování identifikátoru URI přesměrování:
 
-1. Přihlaste se k [Azure Portal](https://protal.azure.com) a v **Registrace aplikací**vyberte svou aplikaci pro Android.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a v **Registrace aplikací**vyberte svou aplikaci pro Android.
 1. Vyberte **ověřování**  >  **Přidat platformu**  >  **Android**.
 1. V podokně **Konfigurovat aplikaci pro Android** , které se otevře, zadejte **hodnotu hash podpisu** , kterou jste dříve vytvořili, a **název balíčku**.
 1. Klikněte na tlačítko **Konfigurovat** .

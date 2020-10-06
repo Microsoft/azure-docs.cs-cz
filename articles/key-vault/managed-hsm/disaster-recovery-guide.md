@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 13f62631e4913434699f4c5dd5eb1956ca3e3a36
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7dbb7b3fdc15c0a9d502fbe9a0d12d084f9ddf29
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91000714"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760389"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Spravované zotavení po havárii modulu HSM
 
@@ -30,7 +30,7 @@ Instanci HSM můžete znovu vytvořit ve stejné nebo jiné oblasti, pokud máte
 Postup zotavení po havárii najdete tady:
 
 1. Vytvořte novou instanci HSM.
-1. Aktivujte možnost obnovení domény zabezpečení. Nový pár klíčů RSA (klíč domény zabezpečení) bude vygenerován pro přenos domény zabezpečení a odeslán v odpovědi, který bude stažen SecurityDomainExchangeKey (veřejný klíč).
+1. Aktivujte možnost obnovení domény zabezpečení. Nový pár klíčů RSA (klíč domény zabezpečení) bude vygenerován pro přenos domény zabezpečení a odeslán v odpovědi, který bude stažen jako SecurityDomainExchangeKey (veřejný klíč).
 1. Vytvořte a pak nahrajte soubor "Security Domain Transfer File". Budete potřebovat privátní klíče, které zašifrují doménu zabezpečení. Privátní klíče se používají místně a nikdy se přenáší kdekoli v tomto procesu.
 1. Proveďte zálohu nového modulu HSM. Před obnovením se vyžaduje záloha, a to i v případě, že modul HARDWAROVÉho zabezpečení je prázdný. Zálohování umožňuje snadnou vrácení se změnami.
 1. Obnovit poslední zálohu HSM ze zdrojového modulu HSM
@@ -61,7 +61,7 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 Výstup tohoto příkazu zobrazuje vlastnosti spravovaného modulu HSM, který jste vytvořili. Dvě nejdůležitější vlastnosti jsou:
 
 * **název**: v tomto příkladu je název ContosoMHSM. Tento název použijete pro jiné Key Vault příkazy.
-* **hsmUri**: v tomto příkladu je identifikátor URI https://contosohsm.managedhsm.azure.net . Aplikace, které používají váš modul HARDWAROVÉho zabezpečení prostřednictvím REST API, musí používat tento identifikátor URI.
+* **hsmUri**: v tomto příkladu je identifikátor URI ' https://contosohsm.managedhsm.azure.net . ' Aplikace, které používají váš modul HARDWAROVÉho zabezpečení prostřednictvím REST API, musí používat tento identifikátor URI.
 
 Váš účet Azure je teď autorizovaný k provádění operací s tímto spravovaným modulem HSM. Od tohoto konce je nikdo jiný autorizovaný.
 
@@ -102,7 +102,7 @@ Pokud chcete vytvořit zálohu HSM, budete potřebovat následující:
 - Účet úložiště, do kterého se bude ukládat záloha
 - Kontejner úložiště objektů BLOB v tomto účtu úložiště, kde proces zálohování vytvoří novou složku pro uložení šifrované zálohy
 
-V následujícím příkladu používáme `az keyvault backup` příkaz pro zálohování HSM v kontejneru úložiště **mhsmbackupcontainer** účet úložiště **ContosoBackup**. Vytvoříme token SAS, který vyprší za 30 minut a poskytne spravovanému modulu HSM, který zapíše zálohu.
+Příkaz se používá `az keyvault backup` pro zálohování HSM v kontejneru úložiště **mhsmbackupcontainer**, který je v **ContosoBackup** účtu úložiště pro níže uvedený příklad. Vytvoříme token SAS, který vyprší za 30 minut a poskytne spravovanému modulu HSM, který zapíše zálohu.
 
 ```azurecli-interactive
 end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0b82d7dc8f6aaaa28a5293966440f058fbf42dc1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4eec258cf642688c87b363ff467f1f368727a013
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91460930"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761222"
 ---
 # <a name="pricing-scenarios"></a>Cenové scénáře
 
@@ -59,7 +59,7 @@ Pomocí komunikačních služeb můžete rozšířit aplikaci o možnost odesíl
 
 ### <a name="price"></a>Cena
 
-- Za každou odeslanou zprávu chatu se vám bude účtovat $0,0008.
+Za každou odeslanou zprávu chatu se vám bude účtovat $0,0008.
 
 ### <a name="pricing-example-chat-between-two-users"></a>Příklad ceny: chat mezi dvěma uživateli 
 
@@ -77,3 +77,46 @@ Tato zpráva se zobrazí a spustí se konverzace. V mezitím Casey získá hovor
 **Výpočty nákladů** 
 
 - Počet odeslaných zpráv (20 + 30 + 18 + 30 + 25 + 35) x $0,0008 = $0,1264
+
+
+## <a name="telephony-and-sms"></a>Telefonie a SMS
+
+## <a name="price"></a>Cena 
+
+Poplatky za telefonní služby se účtují po minutách, zatímco SMS se účtuje na základě jednotlivých zpráv. Ceny se určují podle typu a umístění čísla, které používáte, i cíle volání a SMS zpráv.
+
+### <a name="telephone-calling"></a>Telefonní volání
+
+Tradiční telefonní volání (volání, ke kterému dochází přes telefonickou síť v rámci veřejné sítě) je dostupné s cenami průběžných plateb pro telefonní čísla založená na USA. Cena je sazba za minutu na základě typu použitého čísla a cíle volání. V následující tabulce jsou uvedeny podrobnosti o cenách nejoblíbenějších volajících cílů. Úplný seznam cílů najdete v [seznamu s podrobnými cenami](https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv) .
+
+
+#### <a name="united-states-calling-prices"></a>USA ceny za volání
+
+Následující ceny zahrnují požadavky na komunikaci a poplatky až do 30. června 2021:
+
+|Typ čísla   |Chcete-li provést volání   |Pro příjem volání|
+|--------------|-----------|------------|
+|Místní     |Začíná na $0.013/min.       |$0.0085/min        |
+|Bezplatná linka |$0.013/min   |$0.0220/min |
+
+#### <a name="other-calling-destinations"></a>Jiné cíle volání
+
+Následující ceny zahrnují požadavky na komunikaci a poplatky až do 30. června 2021:
+
+|Volat na   |Cena za minutu|
+|-----------|------------|
+|Kanada     |Začíná na $0.013/min.   |
+|Spojené království     |Začíná na $0,015/min.   |
+|Německo     |Začíná na $0,015/min.   |
+|Francie     |Začíná na $0,016/min.   |
+
+
+### <a name="sms"></a>SMS
+
+SMS nabízí ceny průběžných plateb. Cena je poplatek za zprávu na základě cíle zprávy. Zprávy mohou být zasílány pomocí telefonních čísel bez poplatků na telefonní čísla umístěná v rámci USA. Všimněte si, že místní (geografické) telefonní čísla nelze použít k zasílání zpráv SMS.
+
+Následující ceny zahrnují požadavky na komunikaci a poplatky až do 30. června 2021:
+
+|Země   |Odesílání zpráv|Příjem zpráv|
+|-----------|------------|------------|
+|USA (bez poplatků)    |$0.0075/MSG   | $0.0075/MSG |

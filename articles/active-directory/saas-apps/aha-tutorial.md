@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2019
 ms.author: jeedes
-ms.openlocfilehash: b11955c040225f66bc3eda9fe762cb1cbfc2d308
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9836c4e8f644a4e1b39e5aef7208262d6701f5bb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542849"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760676"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>Kurz: integrace programu Aha! s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat program Aha! s Azure Active Directory 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -148,7 +148,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 6. Klikněte na **zabezpečení a jednotné přihlašování**.
 
-    ![Zabezpečení a jednotné přihlašování](./media/aha-tutorial/IC798952.png "Zabezpečení a jednotné přihlašování")
+    ![Snímek obrazovky, který zvýrazní možnost nabídky zabezpečení a jednotného přihlašování](./media/aha-tutorial/IC798952.png "Zabezpečení a jednotné přihlašování")
 
 7. V části **jednotné přihlašování** jako **zprostředkovatel identity**vyberte **SAML 2.0**.
 

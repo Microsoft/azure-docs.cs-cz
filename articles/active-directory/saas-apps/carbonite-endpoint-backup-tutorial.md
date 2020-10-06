@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 9888ae6f7d28f6fef5901ea246d71d7b9ae9f78f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4fcc9ab0811c447cebff825a0c45c9dac877219c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530586"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761732"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Kurz: integrace zálohování koncového bodu Carbonite s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat zálohování koncového bodu Carbonit
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -129,19 +129,19 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. V levém podokně klikněte na **Společnost** .
 
-    ![Konfigurace zálohování koncového bodu Carbonite ](media/carbonite-endpoint-backup-tutorial/configure1.png)
+    ![Snímek obrazovky zobrazuje koncový bod Carbonite s vybraným podnikem.](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
 5. Klikněte na **jednotné přihlašování**.
 
-    ![Konfigurace zálohování koncového bodu Carbonite ](media/carbonite-endpoint-backup-tutorial/configure2.png)
+    ![Snímek obrazovky zobrazuje společnost s vybraným jednotným přihlašováním.](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
 6. Klikněte na **Povolit** a pak pro konfiguraci klikněte na **Upravit nastavení** .
 
-    ![Konfigurace zálohování koncového bodu Carbonite ](media/carbonite-endpoint-backup-tutorial/configure3.png)
+    ![Snímek obrazovky znázorňující kartu jednotného přihlašování s nastaveními povolit a upravit, které se vyvolalo.](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
 7. Na stránce nastavení **jednotného přihlašování** proveďte následující kroky:
 
-    ![Konfigurace zálohování koncového bodu Carbonite ](media/carbonite-endpoint-backup-tutorial/configure4.png)
+    ![Snímek obrazovky zobrazující kartu jednotného přihlašování s informacemi popsanými v tomto kroku.](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
     1. Do textového pole **název zprostředkovatele identity** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
 
@@ -187,11 +187,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V levém podokně klikněte na **uživatele** a pak klikněte na **Přidat uživatele**.
 
-    ![Přidat uživatele v zálohování koncového bodu Carbonite](media/carbonite-endpoint-backup-tutorial/adduser1.png)
+    ![Snímek obrazovky ukazuje stránku koncového bodu Carbonite s uživateli a vybraným uživatelem přidat uživatele.](media/carbonite-endpoint-backup-tutorial/adduser1.png)
 
 1. Na stránce **Přidat uživatele** proveďte následující kroky:
 
-    ![Přidat uživatele v zálohování koncového bodu Carbonite](media/carbonite-endpoint-backup-tutorial/adduser2.png)
+    ![Snímek obrazovky se zobrazí stránka Přidat uživatele, kde můžete provést postup, který je zde popsán.](media/carbonite-endpoint-backup-tutorial/adduser2.png)
 
     1. Zadejte **e-mail**, **jméno**, příjmení a **jméno** uživatele a poskytněte uživateli požadovaná oprávnění podle požadavků organizace.
 
@@ -203,7 +203,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici zálohování koncového bodu Carbonite na přístupovém panelu, měli byste se automaticky přihlásit k zálohování koncového bodu Carbonite, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

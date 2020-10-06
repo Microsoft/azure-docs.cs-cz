@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: bbf41cf48f4891814fa0c2baa750783f98d8574b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f447c6028b1750aa96e531a97e7b0861f66a5749
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91344622"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761664"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Vytvoření PostgreSQL skupiny serverů s škálovatelným škálováním pomocí nástrojů Kubernetes
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Měli byste už mít vytvořený [řadič dat ARC Azure](./create-data-controller.md).
 
@@ -34,7 +34,7 @@ Pokud chcete vytvořit PostgreSQL skupinu serverů s škálovatelným škálová
 
 ## <a name="create-a-yaml-file"></a>Vytvoření souboru YAML
 
-Soubor [šablony YAML](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postgresql.yaml) můžete použít jako výchozí bod pro vytvoření vlastního PostgreSQL souboru YAML skupiny serverů s vlastním škálováním.  Stáhněte si tento soubor do místního počítače a otevřete ho v textovém editoru.  Je užitečné použít textový editor, například [vs Code](https://code.visualstudio.com/download) , který podporuje zvýrazňování syntaxe a linting pro soubory YAML.
+Soubor [šablony YAML](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postsgresql.yaml) můžete použít jako výchozí bod pro vytvoření vlastního PostgreSQL souboru YAML skupiny serverů s vlastním škálováním.  Stáhněte si tento soubor do místního počítače a otevřete ho v textovém editoru.  Je užitečné použít textový editor, například [vs Code](https://code.visualstudio.com/download) , který podporuje zvýrazňování syntaxe a linting pro soubory YAML.
 
 Toto je příklad souboru YAML:
 

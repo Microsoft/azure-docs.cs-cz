@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ed39064d4aee07554ce795be73732024e1b47f84
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 98b5c3bd1f41bd3b6a4100fdaebd1d44fb45bf9f
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549326"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Kurz: Azure Active Directory integrace s ClickTime
 
@@ -30,7 +30,7 @@ Integrace ClickTime s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s ClickTime potřebujete následující položky:
 
@@ -173,7 +173,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **ClickTime**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **ClickTime**.
 
@@ -207,7 +207,7 @@ V případě ClickTime je zřizování ručním úkolem.
 
 1. Na panelu nástrojů v horní části klikněte na **Společnost**a pak klikněte na **lidé**.
    
-    ![People](./media/clicktime-tutorial/tic777282.png "People")
+    ![Snímek obrazovky s vybraným podnikem a lidmi zobrazuje klienta ClickTime.](./media/clicktime-tutorial/tic777282.png "People")
 
 1. Klikněte na **Přidat osobu**.
    
@@ -215,7 +215,7 @@ V případě ClickTime je zřizování ručním úkolem.
 
 1. V části nová osoba proveďte následující kroky:
    
-    ![People](./media/clicktime-tutorial/tic777284.png "People")
+    ![Snímek obrazovky se zobrazí část přidat osobu, kde můžete přidat informace v tomto kroku.](./media/clicktime-tutorial/tic777284.png "People")
    
     a.  Do textového pole **celé jméno** zadejte jméno a příjmení uživatele, jako je **Britta Simon**. 
   
@@ -232,7 +232,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici ClickTime, měli byste se automaticky přihlásit k ClickTime, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: 84d1ba6ff343b5f3d1f88d7ae5c618601f416e2c
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 10/02/2020
+ms.openlocfilehash: d63cec0e0697a15efe7f15be5f6f0daaa6d6a372
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513760"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761511"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Role a požadavky pro Azure Data Share 
 
@@ -32,14 +32,13 @@ Níže je uveden souhrn rolí přiřazených k spravované identitě prostředku
 
 |**Typ úložiště dat**|**Zdrojové úložiště dat Zprostředkovatel dat**|**Datové úložiště cílových uživatelů dat**|
 |---|---|---|
-|Azure Blob Storage| Čtečka dat objektů BLOB úložiště | Přispěvatel dat objektu BLOB služby Storage
+|Azure Blob Storage| Čtenář dat v objektech blob služby Storage | Přispěvatel dat v objektech blob služby Storage
 |Azure Data Lake Gen1 | Vlastník | Nepodporuje se
-|Azure Data Lake Gen2 | Čtečka dat objektů BLOB úložiště | Přispěvatel dat objektu BLOB služby Storage
-|Azure SQL Server | Přispěvatel databáze SQL | Přispěvatel databáze SQL
+|Azure Data Lake Gen2 | Čtenář dat v objektech blob služby Storage | Přispěvatel dat v objektech blob služby Storage
 |Cluster Azure Data Exploreru | Přispěvatel | Přispěvatel
 |
 
-Pro sdílení založené na SQL je potřeba vytvořit uživatele SQL z externího poskytovatele v Azure SQL Database se stejným názvem jako prostředek sdílené složky Azure. Níže je uveden souhrn oprávnění vyžadovaných uživatelem SQL.
+Pro sdílení založené na SQL je potřeba vytvořit uživatele SQL z externího poskytovatele v Azure SQL Database se stejným názvem jako prostředek sdílené složky Azure. K vytvoření tohoto uživatele se vyžaduje oprávnění správce Azure Active Directory. Níže je uveden souhrn oprávnění vyžadovaných uživatelem SQL.
 
 |**Typ SQL Database**|**Oprávnění uživatele Zprostředkovatel dat SQL**|**Oprávnění uživatele SQL pro příjemce dat**|
 |---|---|---|

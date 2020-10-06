@@ -10,21 +10,27 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/13/2019
+ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a197f8a11186d799f320c03a5bbe980b1f38e126
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b48f0429525822d09f08965128df0ceb1e32898a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91272064"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761307"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>Registrace virtuálního počítače s SQL Server v Azure pomocí poskytovatele prostředků virtuálního počítače SQL (RP)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Tento článek popisuje, jak zaregistrovat SQL Server virtuální počítač v Azure pomocí poskytovatele prostředků virtuálního počítače SQL (RP). Při registraci u poskytovatele prostředků se vytvoří _prostředek_ **virtuálního počítače SQL** v rámci vašeho předplatného, což je samostatný prostředek z prostředku virtuálního počítače. Zrušení registrace SQL Server virtuálního počítače od poskytovatele prostředků odebere _prostředek_ **virtuálního počítače SQL** , ale neodstraní skutečný virtuální počítač. 
+Tento článek popisuje, jak zaregistrovat SQL Server virtuální počítač v Azure pomocí poskytovatele prostředků virtuálního počítače SQL (RP). 
+
+V tomto článku se dozvíte, jak zaregistrovat jeden virtuální počítač s SQL Server pomocí poskytovatele prostředků virtuálního počítače SQL. Případně můžete registrovat všechny SQL Server virtuální počítače [automaticky](sql-vm-resource-provider-automatic-registration.md) nebo [hromadně](sql-vm-resource-provider-bulk-register.md).
+
+## <a name="overview"></a>Přehled
+
+Při registraci u poskytovatele prostředků se vytvoří _prostředek_ **virtuálního počítače SQL** v rámci vašeho předplatného, což je samostatný prostředek z prostředku virtuálního počítače. Zrušení registrace SQL Server virtuálního počítače od poskytovatele prostředků odebere _prostředek_ **virtuálního počítače SQL** , ale neodstraní skutečný virtuální počítač.
 
 Nasazení Azure Marketplace image SQL Server virtuálního počítače pomocí Azure Portal automaticky registruje SQL Server virtuální počítač s poskytovatelem prostředků. Pokud se ale rozhodnete k samoobslužné instalaci SQL Server na virtuálním počítači Azure nebo zřídit virtuální počítač Azure z vlastního virtuálního pevného disku, měli byste zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků pro:
 
@@ -53,12 +59,12 @@ Nasazení Azure Marketplace image SQL Server virtuálního počítače pomocí A
 
 Abyste mohli využít poskytovatele prostředků virtuálního počítače SQL, musíte nejdřív [zaregistrovat předplatné u poskytovatele prostředků](#register-subscription-with-rp), který poskytovateli prostředků umožní vytvářet prostředky v rámci tohoto konkrétního předplatného.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, budete potřebovat: 
 
 - [Předplatné Azure](https://azure.microsoft.com/free/)
-- Model prostředků Azure [SQL Server virtuální počítač](create-sql-vm-portal.md) nasazený do veřejného nebo Azure Governmentho cloudu. 
+- [Virtuální počítač s Windows](../../../virtual-machines/windows/quick-create-portal.md) Resource modelem Azure s [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) nasazený do veřejného nebo Azure Governmentho cloudu. 
 - Nejnovější verzi rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) nebo [PowerShellu](/powershell/azure/new-azureps-module-az). 
 
 ## <a name="management-modes"></a>Režimy správy
@@ -328,11 +334,11 @@ Chcete-li zrušit registraci SQL Serverho virtuálního počítače poskytovatel
 
 1. Vyberte **Odstranit**. 
 
-   ![Odstranit poskytovatele prostředků virtuálního počítače SQL](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
+   ![Výběr odstranit v horním navigačním panelu](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
 
 1. Zadejte název virtuálního počítače SQL a **zrušte zaškrtnutí políčka u virtuálního počítače**.
 
-   ![Odstranit poskytovatele prostředků virtuálního počítače SQL](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
+   ![Zrušte zaškrtnutí políčka virtuální počítač, aby nedošlo k odstranění skutečného virtuálního počítače, a pak vyberte odstranit, abyste mohli pokračovat v odstraňování prostředku virtuálního počítače SQL.](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
 
    >[!WARNING]
    > Nepovedlo se zrušit zaškrtnutí políčka u názvu virtuálního počítače, aby se virtuální počítač zcela *odstranil* . Zrušením zaškrtnutí políčka zrušíte registraci SQL Server virtuálního počítače od poskytovatele prostředků, ale *neodstraníte skutečný virtuální počítač*. 
@@ -342,7 +348,7 @@ Chcete-li zrušit registraci SQL Serverho virtuálního počítače poskytovatel
 ### <a name="command-line"></a>Příkazový řádek
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Pokud chcete zrušit registraci SQL Server virtuálního počítače od poskytovatele prostředků pomocí Azure CLI, použijte příkaz [AZ SQL VM Delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) . Tím se odebere *prostředek* virtuálního počítače SQL Server, ale virtuální počítač se neodstraní. 
+Pokud chcete zrušit registraci SQL Server virtuálního počítače od poskytovatele prostředků pomocí Azure CLI, použijte příkaz [AZ SQL VM Delete](/cli/azure/sql/vm?view=azure-cli-latest&preserve-view=true#az-sql-vm-delete) . Tím se odebere *prostředek* virtuálního počítače SQL Server, ale virtuální počítač se neodstraní. 
 
 
 ```azurecli-interactive
@@ -372,7 +378,7 @@ Poskytovatel prostředků virtuálního počítače SQL podporuje jenom:
 
 **Mám zaregistrovat SQL Server virtuální počítač zřízený z SQL Server Image v Azure Marketplace?**
 
-No. Microsoft automaticky registruje virtuální počítače zřízené z SQL Server imagí v Azure Marketplace. Registrace u poskytovatele prostředků virtuálního počítače SQL se vyžaduje jenom v případě, že se virtuální počítač *nezřídil z* SQL Server imagí v Azure Marketplace a SQL Server byl samoobslužně nainstalován.
+Ne. Microsoft automaticky registruje virtuální počítače zřízené z SQL Server imagí v Azure Marketplace. Registrace u poskytovatele prostředků virtuálního počítače SQL se vyžaduje jenom v případě, že se virtuální počítač *nezřídil z* SQL Server imagí v Azure Marketplace a SQL Server byl samoobslužně nainstalován.
 
 **Je poskytovatel prostředků virtuálního počítače SQL dostupný pro všechny zákazníky?** 
 
@@ -400,7 +406,7 @@ Výchozí režim správy SQL při registraci u poskytovatele prostředků virtu�
 
 Ano, registrace do poskytovatele prostředků virtuálního počítače SQL nainstaluje agenta na virtuální počítač.
 
-Rozšíření SQL Server IaaS spoléhá na to, že agent má dotaz na metadata pro SQL Server. Pokud je poskytovatel prostředků virtuálního počítače SQL regsitered v režimu neagentů, jediný čas, kdy není nainstalován agent.
+Rozšíření SQL Server IaaS spoléhá na to, že agent má dotaz na metadata pro SQL Server. Pokud je poskytovatel prostředků virtuálního počítače SQL zaregistrovaný v režimu neagentů, jediný čas, kdy není nainstalován agent
 
 **Provede se registrace na mém virtuálním počítači pomocí poskytovatele prostředků virtuálního počítače SQL SQL Server restartování?**
 
@@ -414,11 +420,11 @@ Režim No-agent vyžaduje, SQL Server vlastnosti verze a edice, které zákazní
 
 **Můžu se zaregistrovat u poskytovatele prostředků SQL VM bez zadání typu licence SQL Server?**
 
-No. Typ licence SQL Server není volitelnou vlastností při registraci u poskytovatele prostředků virtuálního počítače SQL. Je nutné nastavit typ licence SQL Server jako průběžné platby nebo Zvýhodněné hybridní využití Azure při registraci u poskytovatele prostředků virtuálního počítače SQL ve všech režimech spravovatelnosti (No-agent, Lightweight a Full).
+Ne. Typ licence SQL Server není volitelnou vlastností při registraci u poskytovatele prostředků virtuálního počítače SQL. Je nutné nastavit typ licence SQL Server jako průběžné platby nebo Zvýhodněné hybridní využití Azure při registraci u poskytovatele prostředků virtuálního počítače SQL ve všech režimech spravovatelnosti (No-agent, Lightweight a Full).
 
 **Můžu upgradovat rozšíření SQL Server IaaS z režimu No-Agent na režim Full?**
 
-No. Upgrade režimu spravovatelnosti na úplný nebo lehký není pro režim bez agenta k dispozici. Toto je technické omezení Windows serveru 2008. Nejprve budete muset upgradovat operační systém na Windows Server 2008 R2 nebo novější a pak budete moct upgradovat na režim úplné správy. 
+Ne. Upgrade režimu spravovatelnosti na úplný nebo lehký není pro režim bez agenta k dispozici. Toto je technické omezení Windows serveru 2008. Nejprve budete muset upgradovat operační systém na Windows Server 2008 R2 nebo novější a pak budete moct upgradovat na režim úplné správy. 
 
 **Můžu upgradovat rozšíření SQL Server IaaS z režimu prostého režimu na režim Full?**
 
@@ -426,17 +432,17 @@ Ano. Upgrade režimu spravovatelnosti z jednoduchého na plný se podporuje pře
 
 **Můžu SQL Server rozšíření IaaS z úplného režimu snížit na režim No-agent nebo pro zjednodušenou správu?**
 
-No. Přechod do režimu spravovatelnosti rozšíření SQL Server IaaS se nepodporuje. Režim spravovatelnosti nejde downgradovat z režimu úplného režimu na odlehčený nebo bez agenta a nedá se downgradovat z prostého režimu na režim bez agenta. 
+Ne. Přechod do režimu spravovatelnosti rozšíření SQL Server IaaS se nepodporuje. Režim spravovatelnosti nejde downgradovat z režimu úplného režimu na odlehčený nebo bez agenta a nedá se downgradovat z prostého režimu na režim bez agenta. 
 
 Chcete-li změnit režim spravovatelnosti z možnosti úplné správy, [zrušte registraci](#unregister-from-rp) SQL Server virtuálního počítače od poskytovatele prostředků SQL VM tím, že vyřadíte *prostředek* SQL Server a znovu zaregistrujete SQL Server virtuálního počítače pomocí poskytovatele prostředků SQL VM v jiném režimu správy.
 
 **Můžu se zaregistrovat k poskytovateli prostředků SQL VM z Azure Portal?**
 
-No. Registrace u poskytovatele prostředků virtuálního počítače SQL není k dispozici v Azure Portal. Registrace u poskytovatele prostředků virtuálního počítače SQL je podporovaná jenom pomocí Azure CLI nebo PowerShellu. 
+Ne. Registrace u poskytovatele prostředků virtuálního počítače SQL není k dispozici v Azure Portal. Registrace u poskytovatele prostředků virtuálního počítače SQL je podporovaná jenom pomocí Azure CLI nebo PowerShellu. 
 
 **Je možné zaregistrovat virtuální počítač s poskytovatelem prostředků SQL VM před tím, než se SQL Server nainstaluje?**
 
-No. Aby se virtuální počítač mohl úspěšně zaregistrovat u poskytovatele prostředků virtuálního počítače SQL, musí mít aspoň jednu instanci SQL Server (databázový stroj). Pokud na virtuálním počítači není žádná SQL Server instance, nový prostředek Microsoft. SqlVirtualMachine bude ve stavu selhání.
+Ne. Aby se virtuální počítač mohl úspěšně zaregistrovat u poskytovatele prostředků virtuálního počítače SQL, musí mít aspoň jednu instanci SQL Server (databázový stroj). Pokud na virtuálním počítači není žádná SQL Server instance, nový prostředek Microsoft. SqlVirtualMachine bude ve stavu selhání.
 
 **Je možné zaregistrovat virtuální počítač s poskytovatelem prostředků SQL VM, pokud existuje více instancí SQL Server?**
 

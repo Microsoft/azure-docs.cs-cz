@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ca2e37c3524dc75328b0b6615e15c58652d20d1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a7ab3d32253b354f759c4d348526e22521a5fde4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542951"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760715"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Kurz: Azure Active Directory integrace s Agiloft
 
@@ -30,7 +30,7 @@ Integrace Agiloft s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Agiloft potřebujete následující položky:
 
@@ -100,7 +100,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Agiloft,
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně Agiloft a adresách URL](common/idp-intiated.png)
+    ![Snímek obrazovky, který zvýrazní textové pole identifikátoru a adresy URL odpovědi](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
@@ -150,11 +150,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Agiloft,
 
 2. Klikněte na **Nastavení** (v levém podokně) a pak vyberte **přístup**.
 
-    ![Konfigurace Agiloft](./media/agiloft-tutorial/setup1.png)
+    ![Snímek obrazovky, který zvýrazní oddíl přístupu](./media/agiloft-tutorial/setup1.png)
 
 3. Klikněte na tlačítko **Konfigurace jednotného přihlašování SAML 2,0**.
 
-    ![Konfigurace Agiloft](./media/agiloft-tutorial/setup2.png)
+    ![Snímek obrazovky, který zvýrazní tlačítko pro jednotné přihlašování SAML 2,0.](./media/agiloft-tutorial/setup2.png)
 
 4. Zobrazí se dialogové okno průvodce. V dialogovém okně klikněte na **Podrobnosti zprostředkovatele identity** a vyplňte následující pole:  
 
@@ -201,7 +201,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Agiloft**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Agiloft**.
 

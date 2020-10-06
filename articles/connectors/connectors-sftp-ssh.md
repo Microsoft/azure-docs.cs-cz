@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 10/02/2020
 tags: connectors
-ms.openlocfilehash: f3de582ff69dbd57aa4692fd5c3901602569cf9e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b832edca79cbbff39b7d526a21b1fbe95bd7a2ad
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286610"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761120"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytváření a správa souborů SFTP pomocí SSH a Azure Logic Apps
 
@@ -86,7 +86,7 @@ Tady jsou další klíčové rozdíly mezi konektorem SFTP-SSH a konektorem SFTP
 
 * Uloží připojení do serveru SFTP *po dobu až 1 hodiny*, což zvyšuje výkon a snižuje počet pokusů o připojení k serveru. Pokud chcete nastavit dobu trvání tohoto chování při ukládání do mezipaměti, upravte vlastnost [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) v konfiguraci SSH na vašem serveru SFTP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -137,7 +137,7 @@ Pokud je váš privátní klíč ve formátu výstupního souboru, který použ�
 
    `puttygen <path-to-private-key-file-in-PuTTY-format> -O private-openssh -o <path-to-private-key-file-in-OpenSSH-format>`
 
-   Například:
+   Příklad:
 
    `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
 
@@ -252,6 +252,22 @@ Pokud se soubor nemůžete vyhnout nebo chcete-li ho odložit, můžete přesko�
 1. V akci **vytvořit soubor** otevřete seznam **Přidat nový parametr** , vyberte vlastnost **získat všechny souborové metadata** a nastavte hodnotu na **ne**.
 
 1. Pokud tato metadata souboru budete potřebovat později, můžete použít akci **získat metadata souboru** .
+
+### <a name="504-error-a-connection-attempt-failed-because-the-connected-party-did-not-properly-respond-after-a-period-of-time-or-established-connection-failed-because-connected-host-has-failed-to-respond-or-request-to-the-sftp-server-has-taken-more-than-000030-seconds"></a>504 chyba: pokus o připojení se nezdařil, protože připojená strana nereagovala správně po uplynutí určité doby nebo navázáno připojení selhalo, protože připojení hostitele nedokázalo reagovat nebo požadavek na server SFTP trval více než 00:00:30 sekund.
+
+K této chybě může dojít, když aplikace logiky nemůže úspěšně navázat spojení se serverem SFTP. Může existovat řada různých důvodů a doporučujeme problém vyřešit z následujících aspektů. 
+
+1. Časový limit připojení je 20 sekund. Ujistěte se prosím, že server SFTP má dobrý výkon a že zařízení intermidiate, jako je brána firewall, nezvyšuje spoustu režie. 
+
+2. Pokud je brána firewall zapojená, ujistěte se, že jsou na seznamu povolených **IP adres spravovaného konektoru** . Tyto IP adresy můžete najít v oblasti aplikace logiky [**zde**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+
+3. Pokud se jedná o občasný problém, otestujte prosím nastavení opakování, abyste viděli, jestli vám může pomáhat vyšší počet opakování, než je výchozí 4.
+
+4. Zkontrolujte prosím, jestli server SFTP omezuje počet připojení z každé IP adresy. Pokud ano, možná budete muset omezit počet souběžných instancí aplikace logiky. 
+
+5. Zvýšením vlastnosti [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) na serveru SFTP na 1 hodinu v konfiguraci SSH snížíte náklady na připojení.
+
+6. Můžete ověřit protokol serveru SFTP a zjistit, zda požadavek z aplikace logiky byl někdy dosažen se serverem SFTP. V bráně firewall a vašem serveru SFTP můžete také sledovat trasování sítě, abyste se mohli dig k problémům s připojením.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 

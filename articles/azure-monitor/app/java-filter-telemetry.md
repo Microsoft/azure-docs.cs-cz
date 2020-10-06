@@ -4,12 +4,12 @@ description: Zmenšení provozu telemetrie filtrováním událostí, které nepo
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 825c807d9af542e8776e3b6361b8f6b6dd08f164
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e450cf0de7dce4f626fd41252bfeed5fba294c70
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372174"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761001"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrování telemetrie ve webové aplikaci Java
 
@@ -78,10 +78,7 @@ V ApplicationInsights.xml přidejte `TelemetryProcessors` oddíl podobný tomuto
 
 ```
 
-
-
-
-[Zkontrolujte kompletní sadu integrovaných procesorů](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Zkontrolujte kompletní sadu integrovaných procesorů](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal).
 
 ## <a name="built-in-filters"></a>Předdefinované filtry
 
@@ -94,7 +91,7 @@ V ApplicationInsights.xml přidejte `TelemetryProcessors` oddíl podobný tomuto
            </Processor>
 ```
 
-* `NotNeeded`-Čárkami oddělený seznam názvů vlastních metrik.
+* `NotNeeded` -Čárkami oddělený seznam názvů vlastních metrik.
 
 
 ### <a name="page-view-telemetry-filter"></a>Filtr telemetrie zobrazení stránky
@@ -108,9 +105,9 @@ V ApplicationInsights.xml přidejte `TelemetryProcessors` oddíl podobný tomuto
            </Processor>
 ```
 
-* `DurationThresholdInMS`-Doba trvání odkazuje na čas potřebný k načtení stránky. Pokud je tato nastavení nastavena, nejsou hlášeny stránky, které jsou načteny rychleji než tento čas.
-* `NotNeededNames`-Čárkami oddělený seznam názvů stránek.
-* `NotNeededUrls`-Čárkami oddělený seznam fragmentů adresy URL. `"home"`Filtruje například všechny stránky, které mají v adrese URL "Home".
+* `DurationThresholdInMS` -Doba trvání odkazuje na čas potřebný k načtení stránky. Pokud je tato nastavení nastavena, nejsou hlášeny stránky, které jsou načteny rychleji než tento čas.
+* `NotNeededNames` -Čárkami oddělený seznam názvů stránek.
+* `NotNeededUrls` -Čárkami oddělený seznam fragmentů adresy URL. `"home"`Filtruje například všechny stránky, které mají v adrese URL "Home".
 
 
 ### <a name="request-telemetry-filter"></a>Vyžádat filtr telemetrie
@@ -149,7 +146,7 @@ Odfiltrovat telemetrii pro konkrétní syntetické zdroje:
            </Processor>
 ```
 
-* `NotNeeded`-Čárkami oddělený seznam syntetických názvů zdrojů.
+* `NotNeeded` -Čárkami oddělený seznam syntetických názvů zdrojů.
 
 ### <a name="telemetry-event-filter"></a>Filtr událostí telemetrie
 
@@ -164,7 +161,7 @@ Filtruje vlastní události (protokolované pomocí [TrackEvent ()](./api-custom
 ```
 
 
-* `NotNeededNames`-Čárkami oddělený seznam názvů událostí.
+* `NotNeededNames` -Čárkami oddělený seznam názvů událostí.
 
 
 ### <a name="trace-telemetry-filter"></a>Trasovat filtr telemetrie
@@ -178,7 +175,7 @@ Filtruje trasování protokolů (protokolované pomocí [TrackTrace ()](./api-cu
            </Processor>
 ```
 
-* `FromSeverityLevel`platné hodnoty jsou:
+* `FromSeverityLevel` platné hodnoty jsou:
   *  Odfiltrovat všechna trasování
   *  TRACE – bez filtrování. je rovno úrovni trasování
   *  INFO – filtrování úrovně trasování
@@ -261,7 +258,7 @@ public TelemetryProcessor successFilter() {
 Budete muset vytvořit vlastní parametry filtru v nástroji `application.properties` a využít k předání těchto parametrů do vlastního filtru nahlasovou architekturu jarních konfigurací. 
 
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 *Můj filtr nefunguje.*
 

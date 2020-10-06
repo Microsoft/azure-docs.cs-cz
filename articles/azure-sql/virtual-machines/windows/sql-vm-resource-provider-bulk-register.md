@@ -10,20 +10,24 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/21/2019
+ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: cf1fdd3feff76454f0e801d7bd53c63702000014
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b83a44db98907f505c7bf0d8302470cf3031a967
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271983"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761256"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Registrace několika virtuálních počítačů SQL v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Tento článek popisuje, jak pomocí rutiny PowerShellu hromadně zaregistrovat vaše SQL Server virtuální počítače v Azure pomocí poskytovatele prostředků virtuálního počítače SQL `Register-SqlVMs` .
+
+V tomto článku se naučíte hromadně registrovat SQL Server virtuálních počítačů. Případně můžete zaregistrovat [všechny SQL Server virtuální počítače automaticky](sql-vm-resource-provider-automatic-registration.md) nebo [jednotlivé virtuální počítače SQL Server](sql-vm-resource-provider-register.md). 
+
+## <a name="overview"></a>Přehled
 
 `Register-SqlVMs`Rutinu je možné použít k registraci všech virtuálních počítačů v daném seznamu předplatných, skupin prostředků nebo seznamu konkrétních virtuálních počítačů. Rutina zaregistruje virtuální počítače v režimu _prosté_ správy a pak vygeneruje [sestavu i soubor protokolu](#output-description). 
 
@@ -31,7 +35,7 @@ Proces registrace nevede k žádnému riziku bez výpadků a nerestartuje SQL Se
 
 Další informace o poskytovateli prostředků najdete v tématu [poskytovatel prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, budete potřebovat následující: 
 

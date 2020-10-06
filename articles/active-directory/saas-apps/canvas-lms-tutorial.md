@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 24350c63df04e55107ed32c2d61d1026aa27bdb9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6c75103f74ee648c46b805df9495bc668ef4f5bd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547626"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761562"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Kurz: Azure Active Directory integrace s plátnem
 
@@ -30,7 +30,7 @@ Integrace plátna se službou Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s plátnem potřebujete následující položky:
 
@@ -189,7 +189,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **plátno**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **plátno**.
 
@@ -223,11 +223,11 @@ Aby se uživatelé Azure AD mohli přihlásit k plátnu, musí se zřídit do pl
 
 3. Klikněte na **Uživatelé**.
 
-   ![Uživatelé](./media/canvas-lms-tutorial/ic775995.png "Uživatelé")
+   ![Snímek obrazovky s vybranými uživateli zobrazí nabídku plátna.](./media/canvas-lms-tutorial/ic775995.png "Uživatelé")
 
 4. Klikněte na tlačítko **Přidat nového uživatele**.
 
-   ![Uživatelé](./media/canvas-lms-tutorial/ic775996.png "Uživatelé")
+   ![Snímek obrazovky se zobrazí tlačítko Přidat nového uživatele.](./media/canvas-lms-tutorial/ic775996.png "Uživatelé")
 
 5. Na stránce Přidat nový uživatelský dialog proveďte následující kroky:
 

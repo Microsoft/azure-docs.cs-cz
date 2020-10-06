@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8651921dafd5727f79e4ab3919e188d4b8612465
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a405a7a32b1f54732589fb14e34ff52db4992028
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936434"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761681"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Vytvoření řadiče dat ARC Azure pomocí Azure Data CLI (azdata)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Přehled informací najdete v tématu [vytvoření řadiče dat ARC Azure](create-data-controller.md) .
 
@@ -155,7 +155,7 @@ Pokud chcete na Azure Red Hat OpenShift vytvořit řadič dat, budete muset pro 
 > [!NOTE]
 >   Použijte stejný obor názvů a v `azdata arc dc create` níže uvedeném příkazu. Příklad je `arc` .
 
-Nejdřív Stáhněte omezení vlastního kontextu zabezpečení (SCC) z [GitHubu](https://raw.githubusercontent.com/microsoft/azure_arc/master/data_services/deployment/yaml/arc-data-scc.yaml) a použijte ho pro svůj cluster.
+Nejdřív Stáhněte omezení vlastního kontextu zabezpečení (SCC) z [GitHubu](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml) a použijte ho pro svůj cluster.
 
 Chcete-li vytvořit řadič dat, můžete spustit následující příkaz:
 > [!NOTE]

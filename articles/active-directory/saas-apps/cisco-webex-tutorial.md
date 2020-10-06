@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 52481eb40a46457a0374c776ee4897c81ebddf7c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 466e69ece993ca34f8f6770c0465471d01b9c3ed
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551281"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760933"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s WebEx schůzkami Cisco
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat schůzky Cisco Webex s Azure Active Di
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -101,7 +101,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 6. Kromě výše očekává aplikace WebEx schůzky Cisco několik atributů, které se vrátí zpátky v odpovědi SAML. V části deklarace identity uživatelů v dialogovém okně atributy uživatele proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce: 
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------|  --------- |
     |   FirstName    | User. křestní jméno |
     |   polím    | User. příjmení |
@@ -164,11 +164,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Přejděte na **běžné nastavení webu** a přejděte na **Konfigurace jednotného přihlašování**.
  
-    ![Konfigurace jednotného přihlašování](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
+    ![Snímek obrazovky se správou Cisco Webex s vybranými běžnými nastaveními lokality a konfigurací S. O.](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
 3. Na stránce **Správa WebEx** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
+    ![Snímek obrazovky se stránkou pro správu WebEx, která obsahuje informace popsané v tomto kroku.](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
     a. jako **federační protokol**vyberte **SAML 2,0** .
 

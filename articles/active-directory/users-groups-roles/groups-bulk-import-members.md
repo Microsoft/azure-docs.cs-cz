@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89b8097aa288be710e95e835bb66904ef2c6ab56
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: add8a533f2b4fba9a9e881442e43030adb7e2b53
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421667"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762004"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>Hromadné přidání členů skupiny v Azure Active Directory
 
@@ -75,7 +75,7 @@ Chcete-li zobrazit podrobnosti o jednotlivých položkách řádku v rámci hrom
 
 ## <a name="bulk-import-service-limits"></a>Omezení služby hromadného importu
 
-Každá Hromadná aktivita pro import seznamu členů skupiny může běžet až po dobu jedné hodiny. To umožňuje import seznamu minimálně 40 000 členů.
+Každá Hromadná aktivita pro import seznamu členů skupiny může běžet až po dobu jedné hodiny. To umožňuje import seznamu nejvýše 40 000 členů.
 
 ## <a name="next-steps"></a>Další kroky
 

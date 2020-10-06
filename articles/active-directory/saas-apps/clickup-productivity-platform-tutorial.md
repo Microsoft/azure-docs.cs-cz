@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 794a952ba719faa16e3584afaf8f2f292deb6c03
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8a8a9587fd50b63dc862f8b74bc99548699fa6e2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551808"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760661"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Kurz: Azure Active Directory integrace s platformou produktivity ClickUp
 
@@ -30,7 +30,7 @@ Integrace ClickUp produktivity se službou Azure AD poskytuje následující vý
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s platformou produktivity ClickUp potřebujete následující položky:
 
@@ -118,17 +118,17 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s platformou pro
 
 2. Klikněte na **Profil uživatele**a pak vyberte **Nastavení**.
 
-    ![Konfigurace produktivity ClickUp](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![Snímek obrazovky s vybraným ikonou nastavení zobrazuje tenant ClickUp produktivity.](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![Konfigurace produktivity ClickUp](./media/clickup-productivity-platform-tutorial/configure1.png)
+    ![Snímek obrazovky se zobrazí nastavení.](./media/clickup-productivity-platform-tutorial/configure1.png)
 
 3. V části poskytovatel jednotného přihlašování (SSO) vyberte **Microsoft**.
 
-    ![Konfigurace produktivity ClickUp](./media/clickup-productivity-platform-tutorial/configure2.png)
+    ![Snímek obrazovky zobrazuje podokno ověřování s vybraným Microsoftem.](./media/clickup-productivity-platform-tutorial/configure2.png)
 
 4. Na stránce **Konfigurovat jednotné přihlašování Microsoftu** proveďte následující kroky:
 
-    ![Konfigurace produktivity ClickUp](./media/clickup-productivity-platform-tutorial/configure3.png)
+    ![Snímek obrazovky se zobrazí na stránce Konfigurovat jednotné přihlašování Microsoftu, kde můžete zkopírovat entitu I D a uložit federační metadata Azure U R L.](./media/clickup-productivity-platform-tutorial/configure3.png)
 
     a. Kliknutím na **Kopírovat** ZKOPÍRUJTE hodnotu ID entity a vložte ji do textového pole **identifikátor (ID entity)** v části **základní konfigurace SAML** v Azure Portal.
     
@@ -136,7 +136,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s platformou pro
 
 5. Instalaci dokončíte kliknutím na **ověřit u Microsoftu a dokončíte instalaci** a ověříte ho pomocí účtu Microsoft.
 
-    ![Konfigurace produktivity ClickUp](./media/clickup-productivity-platform-tutorial/configure4.png)
+    ![Snímek obrazovky s tlačítkem ověřit s Microsoftem dokončit instalaci](./media/clickup-productivity-platform-tutorial/configure4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -169,7 +169,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **ClickUp produktivní platforma**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **ClickUp produktivní platforma**.
 
@@ -195,13 +195,13 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 2. Klikněte na **Profil uživatele**a pak vyberte **lidé**.
    
-    ![Konfigurace produktivity ClickUp](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![Snímek obrazovky se zobrazí jako tenant ClickUp produktivity.](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![Konfigurace produktivity ClickUp](./media/clickup-productivity-platform-tutorial/user1.png)
+    ![Snímek obrazovky se zobrazuje vybraný odkaz lidé.](./media/clickup-productivity-platform-tutorial/user1.png)
 
 3. Do textového pole zadejte e-mailovou adresu uživatele a klikněte na **pozvat**.
 
-    ![Konfigurace produktivity ClickUp](./media/clickup-productivity-platform-tutorial/user2.png)
+    ![Snímek obrazovky se zobrazí v nastavení týmových uživatelů, kde můžete pozvat lidi e-mailem.](./media/clickup-productivity-platform-tutorial/user2.png)
 
     > [!NOTE]
     > Uživateli se zobrazí oznámení a musí přijmout pozvánku k aktivaci účtu.

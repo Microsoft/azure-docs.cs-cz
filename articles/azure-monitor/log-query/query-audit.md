@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: df937ba7f23f2789d929a043c7239ababb24374f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1c0247c5adfe60dc2436c832cf3d561882ae3a5d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91285056"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760157"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Auditovat dotazy v protokolech Azure Monitor (Preview)
 Protokoly auditu dotazů na protokol poskytují telemetrii o dotazech protokolů spouštěných v Azure Monitor. Obsahuje například informace o tom, kdy se dotaz spustil, kdo ho spustil, jaký nástroj se použil, text dotazu a Statistika výkonu popisující spuštění dotazu.
@@ -68,6 +68,9 @@ Záznam auditu se vytvoří pokaždé, když se spustí dotaz. Pokud data odešl
 - Statistiky výkonu nejsou k dispozici pro dotazy přicházející z proxy serveru Azure Průzkumník dat. Všechna ostatní data pro tyto dotazy budou i nadále naplněna.
 - Pomocný parametr *h* v řetězcích, který zapisuje [řetězcové literály](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) , nebude mít vliv na protokoly auditu dotazů. Dotazy budou zachyceny přesně tak, jak byly odeslány bez řetězce, který je zakódován. Měli byste zajistit, aby tato data mohli používat jenom uživatelé, kteří mají oprávnění k dodržování předpisů, a to v různých režimech RBAC, které jsou dostupné v Log Analytics pracovních prostorech.
 - Dotazy, které obsahují data z několika pracovních prostorů, budou zachyceny pouze v těch pracovních prostorech, ke kterým má uživatel přístup.
+
+## <a name="costs"></a>Náklady  
+Pro diagnostické rozšíření Azure se neúčtují žádné náklady, ale pro ingestování dat vám můžou být účtovány poplatky. Podívejte se na [Azure monitor ceny](https://azure.microsoft.com/pricing/details/monitor/) pro cíl, kde shromažďujete data.
 
 ## <a name="next-steps"></a>Další kroky
 
