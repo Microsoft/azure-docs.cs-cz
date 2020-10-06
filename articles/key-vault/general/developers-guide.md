@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 23c64f956821dd2a204a15c37bf0fcdde4d09ba8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 662c23a29e383800a4591c900e02133c16fa2090
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716122"
+ms.locfileid: "91743314"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -51,11 +51,10 @@ Další informace o Key Vault rovině správy najdete v tématu [Key Vault rovin
 
 Key Vault používá ověřování Azure AD, které pro udělení přístupu vyžaduje objekt zabezpečení služby Azure AD. Objekt zabezpečení služby Azure AD může být uživatel, instanční objekt aplikace, [spravovaná identita pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md)nebo skupina libovolného typu objektů zabezpečení.
 
-U zabezpečených aplikací se doporučuje používat spravovanou identitu pro aplikace nasazené do Azure. Pokud služby Azure, které nepodporují spravovanou identitu nebo aplikace nasazené místně, je možné alternativou použít [instanční objekt s certifikátem](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) . Certifikát by měl být uložený v Key Vault a často otočený. 
+### <a name="authentication-best-practices"></a>Osvědčené postupy ověřování
+Pro aplikace nasazené do Azure se doporučuje používat spravovanou identitu. Pokud používáte služby Azure, které nepodporují spravovanou identitu, nebo pokud jsou aplikace nasazené místně, [instanční objekt s certifikátem](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) je možné alternativou. V takovém případě by certifikát měl být uložený v Key Vault a často otočený. Instanční objekt s tajným klíčem se dá použít pro vývojová a testovací prostředí a lokálně nebo v Cloud Shell se doporučuje použít objekt zabezpečení uživatele.
 
-Instanční objekt s tajným klíčem se dá použít pro vývojová a testovací prostředí a doporučuje se lokálně nebo v Cloud Shell zabezpečení uživatele.
-
-Pro vývoj aplikací můžete použít sadu Azure identity SDK v různých prostředích a platformách beze změny kódu. Identita Azure je integrovaná do Azure CLI, sady Visual Studio, Visual Studio Code a dalších. 
+Scénáře ověřování jsou podporované klientskou knihovnou identity Azure a jsou integrované s Key Vault SDK. Knihovna identit Azure se dá používat v různých prostředích a platformách beze změny kódu. Identita Azure taky automaticky načte ověřovací token z přihlášeného k uživateli Azure pomocí Azure CLI, sady Visual Studio, Visual Studio Code a dalších. 
 
 Další informace naleznete v tématech: 
 

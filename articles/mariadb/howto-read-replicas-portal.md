@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 41e99d11199ae0f2a411b6e2c0b93ea8efcebca2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 5faed87995d1c49ab635f39264354a791f729b57
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542525"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742855"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Jak vytvořit a spravovat repliky pro čtení v Azure Database for MariaDB pomocí Azure Portal
 
@@ -116,7 +116,7 @@ Pokud chcete odstranit zdrojový server z Azure Portal, použijte následující
 
 3. Zadejte název zdrojového serveru a kliknutím na **Odstranit** potvrďte odstranění zdrojového serveru.  
 
-   ![Azure Database for MariaDB – odstranění hlavní větve](./media/howto-read-replica-portal/delete-master-confirm.png)
+   ![Azure Database for MariaDB-odstranit hlavní potvrzení](./media/howto-read-replica-portal/delete-master-confirm.png)
 
 ## <a name="monitor-replication"></a>Monitorování replikace
 
@@ -134,7 +134,7 @@ Pokud chcete odstranit zdrojový server z Azure Portal, použijte následující
 
 5. Zobrazí prodlevu replikace pro vybraný časový rozsah. Následující obrázek zobrazuje posledních 30 minut pro velkou úlohu.
 
-   ![Vybrat časový rozsah](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
+   ![Vyberte časový rozsah 30 minut.](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
 ## <a name="next-steps"></a>Další kroky
 

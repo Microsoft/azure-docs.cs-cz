@@ -4,14 +4,14 @@ description: Přečtěte si, jak App Service plány pracují v Azure App Service
 keywords: App Service, Azure App Service, škálování, škálovatelná, škálovatelnost, plán služby App Service, náklady na službu App Service
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: f30221de81b6bef199c0a25e770558c4db8c4006
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4c3003a5cbb55464f3a089c3045ac28f3786cb6b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958508"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742969"
 ---
 # <a name="azure-app-service-plan-overview"></a>Přehled plánu služby App Service
 
@@ -22,32 +22,32 @@ Při vytváření plánu App Service v určité oblasti (například Západní E
 - Oblast (USA – západ, USA – východ atd.)
 - Počet instancí virtuálních počítačů
 - Velikost instancí virtuálních počítačů (malá, střední, velká)
-- Cenová úroveň (Free, Shared, Basic, Standard, Premium, PremiumV2, izolovaný režim)
+- Cenová úroveň (Free, Shared, Basic, Standard, Premium, PremiumV2, PremiumV3, izolovaný režim)
 
 _Cenová úroveň_ plánu App Service určuje, jaké App Service funkce získáte a kolik platíte za plán. Kategorií cenových úrovní existuje několik:
 
 - **Shared COMPUTE**: **Free** and **Shared**, dvě základní úrovně, spustí aplikaci na stejném virtuálním počítači Azure jako jiné aplikace App Service, včetně aplikací jiných zákazníků. Tyto úrovně přidělují kvóty procesoru každé aplikaci, která na sdílených prostředcích běží, a u těchto prostředků není možné škálovat na více instancí.
-- **Vyhrazené výpočetní**prostředky: úrovně **Basic**, **Standard**, **Premium**a **PremiumV2** spouštějí aplikace na vyhrazených virtuálních počítačích Azure. Stejné výpočetní prostředky sdílejí jen aplikace ve stejném plánu služby App Service. Čím vyšší cenová úroveň, tím více instancí virtuálních počítačů můžete škálovat.
+- **Vyhrazené výpočetní**prostředky: úrovně **Basic**, **Standard**, **Premium**, **PremiumV2**a **PremiumV3** spouštějí aplikace na vyhrazených virtuálních počítačích Azure. Stejné výpočetní prostředky sdílejí jen aplikace ve stejném plánu služby App Service. Čím vyšší cenová úroveň, tím více instancí virtuálních počítačů můžete škálovat.
 - **Izolované**: Tato úroveň spouští vyhrazené virtuální počítače Azure ve vyhrazených virtuálních sítích Azure. Poskytuje izolaci sítě nad výpočetní izolací pro vaše aplikace. Tato úroveň nabízí maximální škálování na více instancí.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 Každá úroveň také poskytuje určitou podmnožinu funkcí App Service. Mezi tyto funkce patří vlastní domény a certifikáty TLS/SSL, automatické škálování, sloty nasazení, zálohování, Traffic Manager integrace a další. Čím vyšší je úroveň, tím více funkcí je k dispozici. Chcete-li zjistit, které funkce jsou podporovány v každé cenové úrovni, přečtěte si téma [informace o App Service plánu](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
-<a name="new-pricing-tier-premiumv2"></a>
+<a name="new-pricing-tier-premiumv3"></a>
 
 > [!NOTE]
-> Nová cenová úroveň **PremiumV2** poskytuje [virtuální počítače řady Dv2-Series](../virtual-machines/dv2-dsv2-series.md) s rychlejšími procesory, SSD úložištěm a dvojitým poměrem paměti k jádrům ve srovnání s úrovní **Standard** . **PremiumV2** také podporuje vyšší škálování prostřednictvím zvýšeného počtu instancí a zároveň nabízí všechny pokročilé možnosti, které se nacházejí v plánu Standard. Všechny funkce, které jsou k dispozici v existující úrovni **Premium** , jsou součástí **PremiumV2**.
+> Nová cenová úroveň **PremiumV3** garantuje [virtuální počítače řady Dv3-Series](../virtual-machines/dv3-dsv3-series.md) s rychlejšími procesory, SSD úložištěm a čtyřnásobným poměrem paměti k jádrům ve srovnání s úrovní **Standard** . **PremiumV3** také podporuje vyšší škálování prostřednictvím zvýšeného počtu instancí a zároveň zajišťuje všechny rozšířené možnosti, které se nacházejí na úrovni **Standard** . Všechny funkce, které jsou k dispozici ve stávající úrovni **PremiumV2** , jsou součástí **PremiumV3**.
 >
 > Podobně jako jiné vyhrazené úrovně jsou pro tuto vrstvu k dispozici tři velikosti virtuálních počítačů:
 >
-> - Malé (1 jádro procesoru, 3,5 GiB paměti) 
-> - Střední (2 jádra procesoru, 7 GiB paměti) 
-> - Velký (čtyři jádra procesoru, 14 GiB paměti)  
+> - Malé (2 jádra procesoru, 8 GiB paměti) 
+> - Střední (4 jádra procesoru, 16 GiB paměti) 
+> - Velký (8 jader procesoru, 32 GiB paměti)  
 >
-> Informace o cenách **PremiumV2** najdete v tématu [App Service ceny](https://azure.microsoft.com/pricing/details/app-service/).
+> Informace o cenách **PremiumV3** najdete v tématu [App Service ceny](https://azure.microsoft.com/pricing/details/app-service/).
 >
-> Pokud chcete začít používat novou cenovou úroveň **PremiumV2** , přečtěte si téma [Konfigurace úrovně PremiumV2 pro App Service](app-service-configure-premium-tier.md).
+> Pokud chcete začít používat novou cenovou úroveň **PremiumV3** , přečtěte si téma [Konfigurace úrovně PremiumV3 pro App Service](app-service-configure-premium-tier.md).
 
 ## <a name="how-does-my-app-run-and-scale"></a>Jak aplikace běží a mění?
 
@@ -68,7 +68,7 @@ Tato část popisuje, jak se účtují App Serviceé aplikace. Podrobné informa
 S výjimkou **bezplatné** úrovně přináší plán App Service poplatky za výpočetní prostředky, které používá.
 
 - Na **sdílené** úrovni každá aplikace obdrží kvótu pro procesorové minuty, takže se pro _každou aplikaci_ účtuje kvóta procesoru.
-- Ve vyhrazených výpočetních úrovních (**Basic**, **Standard**, **Premium**, **PremiumV2**) plán App Service definuje počet instancí virtuálních počítačů, na které se aplikace škálují, aby se _všechny instance virtuálních počítačů_ v plánu App Service vyrovnaly. Tyto instance virtuálních počítačů se účtují stejně bez ohledu na to, kolik aplikací je v nich spuštěné. Pokud se chcete vyhnout neočekávaným poplatkům, přečtěte si téma [vyčištění App Serviceho plánu](app-service-plan-manage.md#delete).
+- V rámci vyhrazených výpočetních úrovní (**Basic**, **Standard**, **Premium**, **PremiumV2**, **PremiumV3**) plán App Service definuje počet instancí virtuálních počítačů, na které se aplikace škálují, aby se _všechny instance virtuálních počítačů_ v plánu App Service vyrovnaly. Tyto instance virtuálních počítačů se účtují stejně bez ohledu na to, kolik aplikací je v nich spuštěné. Pokud se chcete vyhnout neočekávaným poplatkům, přečtěte si téma [vyčištění App Serviceho plánu](app-service-plan-manage.md#delete).
 - V **izolované** úrovni App Service Environment definuje počet izolovaných pracovníků, na kterých běží vaše aplikace, a _každý pracovní proces_ se účtuje. Kromě toho existuje poplatek za paušální razítko pro spuštění samotného App Service Environment.
 
 Neúčtují se vám žádné poplatky za použití funkcí App Service, které jsou k dispozici (Konfigurace vlastních domén, certifikátů TLS/SSL, slotů nasazení, zálohování atd.). Výjimky jsou:

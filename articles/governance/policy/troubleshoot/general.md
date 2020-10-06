@@ -1,14 +1,14 @@
 ---
 title: Odstraňování běžných chyb
 description: Naučte se řešit problémy s vytvářením definic zásad, různých SDK a doplňku pro Kubernetes.
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d4ede1703df922196c89a4c1ca4f37cbc95a6297
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6026dc75187c8a70203a2484380eed70d519599d
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545535"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743433"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Řešení chyb pomocí Azure Policy
 
@@ -52,7 +52,7 @@ Použití nového přiřazení zásady nebo iniciativy trvá přibližně 30 min
 
 Nejdřív počkejte odpovídající dobu, než se vyhodnocení dokončí, a výsledky dodržování předpisů budou k dispozici v Azure Portal nebo SDK. Chcete-li zahájit novou zkušební kontrolu pomocí Azure PowerShell nebo REST API, přečtěte si téma [Kontrola vyhodnocení na vyžádání](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
 
-### <a name="scenario-evaluation-not-as-expected"></a>Scénář: vyhodnocení není podle očekávání
+### <a name="scenario-compliance-not-as-expected"></a>Scénář: dodržování předpisů podle očekávání
 
 #### <a name="issue"></a>Problém
 
@@ -64,10 +64,21 @@ Prostředek není ve správném oboru pro přiřazení zásady nebo definice zá
 
 #### <a name="resolution"></a>Řešení
 
-- U nekompatibilního prostředku, který se očekával jako kompatibilní, začněte tím, že [určíte důvody nedodržení předpisů](../how-to/determine-non-compliance.md). Porovnání definice s hodnotou vyhodnocené vlastnosti indikuje, proč prostředek nebyl kompatibilní.
-- U kompatibilního prostředku, který očekával, že nedodržují předpisy, přečtěte si podmínku definice zásad podle podmínky a vyhodnoťte proti vlastnostem prostředků. Ověřte, zda logické operátory seskupují správné podmínky spolu s tím, že vaše podmínky nejsou obráceny.
+Pomocí těchto kroků můžete vyřešit potíže s definicí zásad:
 
-Pokud dodržování předpisů pro přiřazení zásady zobrazuje `0/0` prostředky, neurčily se v rámci oboru přiřazení žádné prostředky, které by bylo možné použít. Ověřte definici zásad i obor přiřazení.
+1. Nejdřív počkejte odpovídající dobu, než se vyhodnocení dokončí, a výsledky dodržování předpisů budou k dispozici v Azure Portal nebo SDK. Chcete-li zahájit novou zkušební kontrolu pomocí Azure PowerShell nebo REST API, přečtěte si téma [Kontrola vyhodnocení na vyžádání](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
+1. Ověřte, zda jsou parametry přiřazení a rozsah přiřazení nastaveny správně.
+1. Podívejte se na [režim definice zásad](../concepts/definition-structure.md#mode):
+   - Režim All pro všechny typy prostředků.
+   - Režim "indexovaný", pokud definice zásad kontroluje značky nebo umístění.
+1. Ověřte, že obor prostředku není [vyloučený](../concepts/assignment-structure.md#excluded-scopes) nebo má [výjimku](../concepts/exemption-structure.md).
+1. Pokud dodržování předpisů pro přiřazení zásady zobrazuje `0/0` prostředky, neurčily se v rámci oboru přiřazení žádné prostředky, které by bylo možné použít. Ověřte definici zásad i obor přiřazení.
+1. U nekompatibilního prostředku, u kterého se očekává, že bude kompatibilní, ověřte, že [nedodržujete důvody pro nedodržení předpisů](../how-to/determine-non-compliance.md). Porovnání definice s hodnotou vyhodnocené vlastnosti indikuje, proč prostředek nebyl kompatibilní.
+   - Pokud je **cílová hodnota** špatná, upravte definici zásady.
+   - Pokud je **aktuální hodnota** chybná, ověřte datovou část prostředku prostřednictvím `resources.azure.com` .
+1. Podívejte se na [řešení potíží: vynucování není podle očekávání](#scenario-enforcement-not-as-expected) pro jiné běžné problémy a řešení.
+
+Pokud stále máte problém s vámi vytvořenou duplicitou a přizpůsobenou definicí předdefinované zásady nebo vlastní definice, vytvořte lístek podpory v části **vytváření zásad** pro správné směrování problému.
 
 ### <a name="scenario-enforcement-not-as-expected"></a>Scénář: vynucování není podle očekávání
 
@@ -81,7 +92,18 @@ Přiřazení zásad bylo nakonfigurováno pro [EnforcementMode](../concepts/assi
 
 #### <a name="resolution"></a>Řešení
 
-Aktualizujte **enforcementMode** na _povoleno_. Tato změna umožňuje Azure Policy působit na prostředky v přiřazení zásad a odesílat položky do protokolu aktivit. Pokud je už **enforcementMode** povolený, přečtěte si téma věnované akci [vyhodnocení neočekávaných](#scenario-evaluation-not-as-expected) kurzů.
+Pomocí těchto kroků můžete vyřešit vynucení přiřazení zásad:
+
+1. Nejdřív počkejte odpovídající dobu, než se vyhodnocení dokončí, a výsledky dodržování předpisů budou k dispozici v Azure Portal nebo SDK. Chcete-li zahájit novou zkušební kontrolu pomocí Azure PowerShell nebo REST API, přečtěte si téma [Kontrola vyhodnocení na vyžádání](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
+1. Ověřte, zda jsou parametry přiřazení a rozsah přiřazení správně nastaveny a zda je _povolená_možnost **enforcementMode** . 
+1. Podívejte se na [režim definice zásad](../concepts/definition-structure.md#mode):
+   - Režim All pro všechny typy prostředků.
+   - Režim "indexovaný", pokud definice zásad kontroluje značky nebo umístění.
+1. Ověřte, že obor prostředku není [vyloučený](../concepts/assignment-structure.md#excluded-scopes) nebo má [výjimku](../concepts/exemption-structure.md).
+1. Ověřte, zda datová část prostředku odpovídá logice zásad. To se dá udělat [zachycením trasování Har](../../../azure-portal/capture-browser-trace.md) nebo kontrolou vlastností šablony ARM.
+1. Podívejte [se na řešení potíží: dodržování předpisů](#scenario-compliance-not-as-expected) pro další běžné problémy a řešení podle očekávání.
+
+Pokud stále máte problém s vámi vytvořenou duplicitou a přizpůsobenou definicí předdefinované zásady nebo vlastní definice, vytvořte lístek podpory v části **vytváření zásad** pro správné směrování problému.
 
 ### <a name="scenario-denied-by-azure-policy"></a>Scénář: zamítnutý Azure Policy
 

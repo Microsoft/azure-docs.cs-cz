@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 618889f40816ec8ccc64487778bf1f6fbdd3b886
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 21a0672db5a7038fbcdeb01e4cf07bcd760cf7ef
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91536541"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742991"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>TensorFlow se škálováním modelů pomocí Azure Machine Learning
 
@@ -127,45 +127,10 @@ Další informace o výpočetních cílech najdete v článku [co je cílový v�
 
 ### <a name="define-your-environment"></a>Definice prostředí
 
-Pokud chcete definovat [prostředí](concept-environments.md) Azure ml, které zapouzdřuje závislosti školicího skriptu, můžete buď definovat vlastní prostředí, použití a prostředí Azure ml.
-
-#### <a name="create-a-custom-environment"></a>Vytvoření vlastního prostředí
-
-Definujte prostředí Azure ML, které zapouzdřuje závislosti školicího skriptu.
-
-Nejprve v souboru YAML definujte závislosti conda; v tomto příkladu je soubor pojmenován `conda_dependencies.yml` .
-
-```yaml
-channels:
-- conda-forge
-dependencies:
-- python=3.6.2
-- pip:
-  - azureml-defaults
-  - tensorflow-gpu==2.2.0
-```
-
-Vytvořte prostředí Azure ML z této specifikace prostředí conda. Prostředí se zabalí do kontejneru Docker za běhu.
-
-Ve výchozím nastavení, pokud není zadaná žádná základní image, Azure ML použije image procesoru `azureml.core.runconfig.DEFAULT_CPU_IMAGE` jako základní image. Vzhledem k tomu, že tento příklad spustí školení v clusteru GPU, budete muset zadat základní image GPU, která má potřebné ovladače a závislosti GPU. Azure ML udržuje sadu základních imagí publikovaných v Microsoft Container Registry (MCR), které můžete použít, další informace najdete v úložišti GitHub [Azure/AzureML-Containers](https://github.com/Azure/AzureML-Containers) .
-
-```python
-from azureml.core import Environment
-
-tf_env = Environment.from_conda_specification(name='tensorflow-2.2-gpu', file_path='./conda_dependencies.yml')
-
-# Specify a GPU base image
-tf_env.docker.enabled = True
-tf_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudnn7-ubuntu18.04'
-```
-
-> [!TIP]
-> Volitelně můžete zachytit všechny závislosti přímo ve vlastní imagi Docker nebo v souboru Dockerfile a vytvořit prostředí z něj. Další informace najdete v tématu [výuka s vlastní imagí](how-to-train-with-custom-image.md).
-
-Další informace o vytváření a používání prostředí najdete v tématu [vytváření a používání softwarových prostředí v Azure Machine Learning](how-to-use-environments.md).
+Pokud chcete definovat [prostředí](concept-environments.md) Azure ml, které zapouzdřuje závislosti školicího skriptu, můžete buď definovat vlastní prostředí, nebo použít prostředí Azure ml s využitím.
 
 #### <a name="use-a-curated-environment"></a>Použití spravovaného prostředí
-V případě potřeby poskytuje Azure ML předem vytvořená a poduspořádaná prostředí, pokud nechcete vytvořit vlastní image. Azure ML obsahuje několik PROCESORových a procesorových prostředí GPU pro TensorFlow, která odpovídají různým verzím TensorFlow. Další informace najdete [tady](resource-curated-environments.md).
+Azure ML poskytuje předem vytvořená a poduspořádaná prostředí, pokud nechcete definovat vlastní prostředí. Azure ML obsahuje několik PROCESORových a procesorových prostředí GPU pro TensorFlow, která odpovídají různým verzím TensorFlow. Další informace najdete [tady](resource-curated-environments.md).
 
 Pokud chcete použít konkrétní prostředí, můžete místo toho spustit následující příkaz:
 
@@ -188,6 +153,41 @@ Pokud jste místo toho změnili objekt s podmnožinou prostředí přímo, můž
 ```python
 tf_env = tf_env.clone(new_name='tensorflow-2.2-gpu')
 ```
+
+#### <a name="create-a-custom-environment"></a>Vytvoření vlastního prostředí
+
+Můžete také vytvořit vlastní prostředí Azure ML, které zapouzdřuje závislosti školicího skriptu.
+
+Nejprve v souboru YAML definujte závislosti conda; v tomto příkladu je soubor pojmenován `conda_dependencies.yml` .
+
+```yaml
+channels:
+- conda-forge
+dependencies:
+- python=3.6.2
+- pip:
+  - azureml-defaults
+  - tensorflow-gpu==2.2.0
+```
+
+Vytvořte prostředí Azure ML z této specifikace prostředí conda. Prostředí se zabalí do kontejneru Docker za běhu.
+
+Ve výchozím nastavení, pokud není zadaná žádná základní image, Azure ML použije image procesoru `azureml.core.environment.DEFAULT_CPU_IMAGE` jako základní image. Vzhledem k tomu, že tento příklad spustí školení v clusteru GPU, budete muset zadat základní image GPU, která má potřebné ovladače a závislosti GPU. Azure ML udržuje sadu základních imagí publikovaných v Microsoft Container Registry (MCR), které můžete použít, další informace najdete v úložišti GitHub [Azure/AzureML-Containers](https://github.com/Azure/AzureML-Containers) .
+
+```python
+from azureml.core import Environment
+
+tf_env = Environment.from_conda_specification(name='tensorflow-2.2-gpu', file_path='./conda_dependencies.yml')
+
+# Specify a GPU base image
+tf_env.docker.enabled = True
+tf_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudnn7-ubuntu18.04'
+```
+
+> [!TIP]
+> Volitelně můžete zachytit všechny závislosti přímo ve vlastní imagi Docker nebo v souboru Dockerfile a vytvořit prostředí z něj. Další informace najdete v tématu [výuka s vlastní imagí](how-to-train-with-custom-image.md).
+
+Další informace o vytváření a používání prostředí najdete v tématu [vytváření a používání softwarových prostředí v Azure Machine Learning](how-to-use-environments.md).
 
 ## <a name="configure-and-submit-your-training-run"></a>Konfigurace a odeslání školicích běhů
 

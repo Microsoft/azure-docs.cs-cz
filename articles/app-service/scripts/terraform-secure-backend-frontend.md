@@ -8,12 +8,12 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 76591b9f397bd84e5afac19a56dd2c6467f4650f
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c1de8ebbd9ad381628cfeb19413baa295b42b3db
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962226"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739829"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>Bezpečné vytvoření dvou webových aplikací s privátním koncovým bodem a integrací virtuální sítě
 
@@ -21,7 +21,7 @@ Tento článek ukazuje příklad použití [privátního koncového bodu](../net
 - Nasazení virtuální sítě
 - Vytvoření první podsítě pro integraci
 - Vytvořte druhou podsíť pro soukromý koncový bod, musíte nastavit konkrétní parametr pro zakázání zásad sítě.
-- Nasazení jednoho App Service plánu typu PremiumV2, minimální SKU požadovaná pro funkci privátního koncového bodu
+- Nasazení jednoho App Service plánu typu PremiumV2 nebo PremiumV3, který je vyžadován pro funkci privátního koncového bodu
 - Vytvoření webové aplikace front-end se specifickým nastavením aplikace pro využívání privátní zóny DNS, [Další podrobnosti](../web-sites-integrate-with-vnet.md#azure-dns-private-zones)
 - Připojení webové aplikace front-end k podsíti integrace
 - Vytvoření back-end webové aplikace

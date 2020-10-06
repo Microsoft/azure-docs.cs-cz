@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 5687255057fdd5e73478626721c789c98b2ea366
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6ed890fca9dddcbc7f04914a6f920d530d18ed0f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120071"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742838"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Pomocí Azure Portal můžete nastavit výstrahy pro metriky pro Azure Database for MariaDB
 
@@ -29,7 +29,7 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Rozhraní REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric"></a>Vytvoření pravidla výstrahy na metrikě
+## <a name="create-an-alert-rule-on-a-metric"></a>Vytvoření pravidla upozornění na metriku
 1. V [Azure Portal](https://portal.azure.com/)vyberte server Azure Database for MariaDB, který chcete monitorovat.
 
 2. V části **monitorování** na bočním panelu vyberte **výstrahy** , jak je znázorněno níže:
@@ -52,7 +52,7 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
    
    Po dokončení vyberte **Hotovo** .
 
-   ![Vybrat metriku](./media/howto-alert-metric/7-set-threshold-time.png)
+   ![Vybrat metriku 2](./media/howto-alert-metric/7-set-threshold-time.png)
 
 8. V části **skupiny akcí** vyberte **vytvořit novou** a vytvořte novou skupinu pro příjem oznámení o výstraze.
 
@@ -70,7 +70,7 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
 
 11. Zadejte název, popis a závažnost pravidla výstrahy.
 
-    ![Skupina akcí](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![Skupina akcí 2](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. Vyberte **vytvořit pravidlo výstrahy** a vytvořte výstrahu.
 

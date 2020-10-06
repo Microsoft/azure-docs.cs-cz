@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 6281ab00f20663a54fd8c397df307581d3967ef9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f00a935815b64f7c2c06dd33130c1a950582e5c3
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631592"
+ms.locfileid: "91743484"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu
 
@@ -258,4 +258,4 @@ import com.microsoft.aad.msal4j.*;
 Podrobnější diskuzi o sestavování webových aplikací, které se přihlásily uživatelům na platformě Microsoft identity, můžete přejít na naši řadu scénářů s více částmi:
 
 > [!div class="nextstepaction"]
-[Scénář: webová aplikace, která se přihlásí uživatelům](scenario-web-app-sign-user-overview.md?tabs=java)
+> [Scénář: webová aplikace, která se přihlásí uživatelům](scenario-web-app-sign-user-overview.md?tabs=java)

@@ -1,19 +1,19 @@
 ---
-title: Připojení a Správa zařízení Microsoft Azure Stack Edge pro prostřednictvím rozhraní Windows PowerShellu | Microsoft Docs
-description: Popisuje, jak se připojit ke službě Azure Stack Edge pro a jak ji spravovat přes rozhraní Windows PowerShell.
+title: Připojení a Správa zařízení GPU Microsoft Azure Stack Edge pro prostřednictvím rozhraní Windows PowerShellu | Microsoft Docs
+description: Popisuje, jak se připojit ke službě Azure Stack Edge pro a následně spravovat přes rozhraní Windows PowerShell.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/05/2020
 ms.author: alkohli
-ms.openlocfilehash: b0c2b547391efd37fc667b84548d99f1e7385cfb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3a61bd16d127afadc2dc4d968b3492f3c8491d29
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903518"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743211"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Správa zařízení GPU Azure Stack Edge pro pomocí prostředí Windows PowerShell
 
@@ -127,7 +127,7 @@ Ve výchozím nastavení Kubernetes Azure Stack na zařízení Edge používá p
 
 Tuto konfiguraci chcete provést před konfigurací výpočtů z Azure Portal, protože se v tomto kroku vytvoří cluster Kubernetes.
 
-1. Připojte se k rozhraní PowerShell zařízení.
+1. [Připojte se k rozhraní PowerShell zařízení](#connect-to-the-powershell-interface).
 1. Z rozhraní PowerShellu zařízení spusťte:
 
     `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
@@ -212,7 +212,7 @@ Commands:
 
 Následující tabulka obsahuje stručný popis příkazů, které jsou k dispozici pro `iotedge` :
 
-|command  |Description |
+|command  |Popis |
 |---------|---------|
 |`list`     | Seznam modulů         |
 |`logs`     | Načtení protokolů modulu        |
@@ -425,7 +425,56 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 [10.100.10.10]: PS>
 ```
 
+## <a name="connect-to-bmc"></a>Připojení k řadiči pro správu základní desky
 
+Řadič pro správu základní desky (BMC) se používá ke vzdálenému monitorování a správě zařízení. Tato část popisuje rutiny, které se dají použít ke správě konfigurace řadiče pro správu základní desky. Před spuštěním kterékoli z těchto rutin se [připojte k rozhraní PowerShell zařízení](#connect-to-the-powershell-interface).
+
+- `Get-HcsNetBmcInterface`: Pomocí této rutiny můžete získat vlastnosti konfigurace sítě řadiče pro správu základní desky (BMC), například,, `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` , `DhcpEnabled` : 
+
+- `Set-HcsNetBmcInterface`: Tuto rutinu můžete použít následujícími dvěma způsoby.
+
+    - Pomocí rutiny povolte nebo zakažte konfiguraci DHCP pro řadič pro správu základní desky pomocí příslušné hodnoty `UseDhcp` parametru. 
+
+        ```powershell
+        Set-HcsNetBmcInterface -UseDhcp $true
+        ```
+
+        Zde je ukázkový výstup: 
+
+        ```powershell
+        [10.100.10.10]: PS>Set-HcsNetBmcInterface -UseDhcp $true
+        [10.100.10.10]: PS>Get-HcsNetBmcInterface
+        IPv4Address IPv4Gateway IPv4SubnetMask DhcpEnabled
+        ----------- ----------- -------------- -----------
+        10.128.54.8 10.128.52.1 255.255.252.0         True
+        [10.100.10.10]: PS>
+        ```
+
+    - Pomocí této rutiny můžete nakonfigurovat statickou konfiguraci pro řadič pro správu základní desky. Můžete zadat hodnoty pro `IPv4Address` , `IPv4Gateway` a `IPv4SubnetMask` . 
+    
+        ```powershell
+        Set-HcsNetBmcInterface -IPv4Address "<IPv4 address of the device>" -IPv4Gateway "<IPv4 address of the gateway>" -IPv4SubnetMask "<IPv4 address for the subnet mask>"
+        ```        
+        
+        Zde je ukázkový výstup: 
+
+        ```powershell
+        [10.100.10.10]: PS>Set-HcsNetBmcInterface -IPv4Address 10.128.53.186 -IPv4Gateway 10.128.52.1 -IPv4SubnetMask 255.255.252.0
+        [10.100.10.10]: PS>Get-HcsNetBmcInterface
+        IPv4Address   IPv4Gateway IPv4SubnetMask DhcpEnabled
+        -----------   ----------- -------------- -----------
+        10.128.53.186 10.128.52.1 255.255.252.0        False
+        [10.100.10.10]: PS>
+        ```    
+
+- `Set-HcsBmcPassword`: Pomocí této rutiny můžete změnit heslo řadiče pro správu základní desky pro `EdgeUser` . 
+
+    Zde je ukázkový výstup: 
+
+    ```powershell
+    [10.100.10.10]: PS> Set-HcsBmcPassword -NewPassword "Password1"
+    [10.100.10.10]: PS>
+    ```
 
 ## <a name="exit-the-remote-session"></a>Ukončit vzdálenou relaci
 

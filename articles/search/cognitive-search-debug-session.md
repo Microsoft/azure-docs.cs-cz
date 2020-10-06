@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: b428ff4a9a4f4b9110e88dba57cfad20f2221cf1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 10/05/2020
+ms.openlocfilehash: 941d7f54bcb44653280abe264ff1cffbeae33679
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936159"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743178"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Ladění relací v Azure Kognitivní hledání
 
@@ -35,8 +35,7 @@ Pokud kanál pro obohacení neobsahuje žádné chyby, ladicí relaci lze použ�
 
 Chcete-li spustit ladicí relaci, je nutné mít existující kanál rozšíření AI, včetně; zdroj dat, dovednosti, indexer a index. Chcete-li nakonfigurovat relaci ladění, je nutné pojmenovat relaci a zadat účet úložiště pro obecné účely, který bude použit k ukládání dovedností do mezipaměti během spuštění indexeru. Bude také nutné vybrat indexer, který bude spuštěn. Indexer má odkazy uložené ve zdroji dat, dovednosti a indexu. Relace ladění bude ve výchozím nastavení použita na první dokument ve zdroji dat, nebo můžete do tohoto zdroje zadat dokument, který chcete procházet.
 
-> [!div class="mx-imgBorder"]
-> ![Vytvoření relace ladění](media/cognitive-search-debug/debug-session-new.png)
+> :::image type="content" source="media/cognitive-search-debug/debug-session-new.png" alt-text="Vytvoření relace ladění":::
 
 ## <a name="debug-session-features"></a>Ladění funkcí relace
 
@@ -52,8 +51,7 @@ Zobrazení **grafu dovedností** poskytuje hierarchickou a vizuální reprezenta
 
 Výběr dovednosti v grafu zvýrazní dovednosti, které jsou k ní připojené, uzly, které vytvářejí jeho vstupy, a uzly, které přijímají jeho výstupy. Každý uzel dovedností zobrazuje jeho typ, chyby, varování a počty spuštění. **Graf dovedností** je místo, kde vyberete, která dovednost se má ladit nebo vylepšit. Když vyberete dovednost, zobrazí se v podokně Podrobnosti dovednosti napravo od grafu.
 
-> [!div class="mx-imgBorder"]
-> ![Graf dovedností](media/cognitive-search-debug/skills-graph.png)
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Vytvoření relace ladění":::
 
 ## <a name="skill-details"></a>Podrobnosti dovednosti
 
@@ -75,8 +73,7 @@ Při sestavování vlastní dovednosti nebo ladění chyby s vlastní dovednost�
 
 Podokno **obohacení struktury dat** zobrazuje obohacení dokumentu prostřednictvím dovednosti, podrobně popisuje kontext pro každé rozšíření a původní dovednost. **Vyhodnocovací filtr výrazů** lze také použít k zobrazení obsahu pro každé obohacení.
 
-> [!div class="mx-imgBorder"]
-> ![Obohacená datová struktura](media/cognitive-search-debug/enriched-data-structure-display.png)
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Vytvoření relace ladění":::
 
 ## <a name="expression-evaluator"></a>Vyhodnocení výrazu
 

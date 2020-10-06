@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d2b74af723e3ba8b1d71e9f481bf96d009540a52
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: af4c333fb539ad533756c538cb3ecde1d9a91413
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962090"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743042"
 ---
 # <a name="app-service-networking-features"></a>Funkce App Service sítě
 
 Aplikace v Azure App Service lze nasadit různými způsoby. Ve výchozím nastavení jsou App Service hostované aplikace přímo přístupné z Internetu a můžou mít přístup jenom k hostovaným koncovým bodům Internetu. Mnoho zákaznických aplikací ale potřebuje k řízení příchozího a odchozího síťového provozu. V App Service je k dispozici několik funkcí k uspokojení těchto potřeb. Tato výzva má na vědomí, jakou funkci byste měli použít k vyřešení daného problému. Účelem tohoto dokumentu je pomáhat zákazníkům určit, jakou funkci byste měli použít na základě některých příkladů případů použití.
 
-Existují dva typy primárních nasazení pro Azure App Service. Je k dispozici veřejná služba s více klienty, která hostuje App Service plány v cenových jednotkách Free, Shared, Basic, Standard, Premium a Premiumv2. Pak je k dispozici jeden tenant App Service Environment (pomocný), který hostuje izolované SKU App Service plány přímo ve službě Azure Virtual Network (VNet). Funkce, které použijete, se budou lišit, pokud jste ve službě pro více tenantů nebo v pomocném modulu pro čtení. 
+Existují dva typy primárních nasazení pro Azure App Service. Je k dispozici veřejná služba s více klienty, která hostuje App Service plány v cenových jednotkách Free, Shared, Basic, Standard, Premium, PremiumV2 a PremiumV3. Pak je k dispozici jeden tenant App Service Environment (pomocný), který hostuje izolované SKU App Service plány přímo ve službě Azure Virtual Network (VNet). Funkce, které použijete, se budou lišit, pokud jste ve službě pro více tenantů nebo v pomocném modulu pro čtení. 
 
 ## <a name="multi-tenant-app-service-networking-features"></a>Funkce pro více tenantů App Service sítě 
 
@@ -62,7 +62,7 @@ Následující případy odchozího použití ukazují, jak používat funkce Ap
 
 ### <a name="default-networking-behavior"></a>Výchozí chování sítě
 
-Jednotky škálování Azure App Service podporují mnoho zákazníků v každém nasazení. Bezplatné a sdílené SKU naplánují hostování úloh zákazníků na víceklientské pracovní procesy. Základní a vyšší plánuje úlohy hostitele, které jsou vyhrazeny jenom jednomu App Service plánu (ASP). Pokud máte plán Standard App Service, všechny aplikace v tomto plánu se spustí na stejném pracovním procesu. Při horizontálním navýšení kapacity pracovního procesu se všechny aplikace v tomto prostředí ASP replikují na nového pracovního procesu pro každou instanci ASP. Pracovní procesy používané pro Premiumv2 se liší od pracovníků používaných pro jiné plány. Každé nasazení App Service má jednu IP adresu, která se používá pro veškerý příchozí provoz do aplikací v rámci nasazení App Service. K odchozím voláním je ale možné použít libovolné místo od 4 do 11 adres. Tyto adresy sdílí všechny aplikace v rámci tohoto App Service nasazení. Odchozí adresy se liší v závislosti na různých typech pracovních procesů. To znamená, že adresy používané na úrovni Free, Shared, Basic, Standard a Premium ASP se liší od adres používaných pro odchozí hovory z Premiumv2 ASP. Pokud ve vlastnostech své aplikace hledáte, můžete zobrazit příchozí a odchozí adresy, které vaše aplikace používá. Pokud potřebujete uzamknout závislost se seznamem ACL protokolu IP, použijte possibleOutboundAddresses. 
+Jednotky škálování Azure App Service podporují mnoho zákazníků v každém nasazení. Bezplatné a sdílené SKU naplánují hostování úloh zákazníků na víceklientské pracovní procesy. Základní a vyšší plánuje úlohy hostitele, které jsou vyhrazeny jenom jednomu App Service plánu (ASP). Pokud máte plán Standard App Service, všechny aplikace v tomto plánu se spustí na stejném pracovním procesu. Při horizontálním navýšení kapacity pracovního procesu se všechny aplikace v tomto prostředí ASP replikují na nového pracovního procesu pro každou instanci ASP. Pracovní procesy používané pro PremiumV2 a PremiumV3 se liší od pracovníků používaných pro jiné plány. Každé nasazení App Service má jednu IP adresu, která se používá pro veškerý příchozí provoz do aplikací v rámci nasazení App Service. K odchozím voláním je ale možné použít libovolné místo od 4 do 11 adres. Tyto adresy sdílí všechny aplikace v rámci tohoto App Service nasazení. Odchozí adresy se liší v závislosti na různých typech pracovních procesů. To znamená, že adresy používané na úrovni Free, Shared, Basic, Standard a Premium ASP se liší od adres používaných pro odchozí hovory z PremiumV2 a PremiumV3 ASP. Pokud ve vlastnostech své aplikace hledáte, můžete zobrazit příchozí a odchozí adresy, které vaše aplikace používá. Pokud potřebujete uzamknout závislost se seznamem ACL protokolu IP, použijte possibleOutboundAddresses. 
 
 ![Vlastnosti aplikace](media/networking-features/app-properties.png)
 

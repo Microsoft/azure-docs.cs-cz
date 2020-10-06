@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 990d8ef275982b6d70c51819e47b33f543345023
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: bc6e72a5e5ab9f95ec88b1e8ed711f00b8051208
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531271"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741713"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení účtů v Azure Active Directory
 
@@ -41,11 +41,13 @@ Následující tabulka popisuje zásady uživatelského jména, které se vztahu
 
 ## <a name="azure-ad-password-policies"></a><a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Zásady hesel Azure AD
 
-Zásady hesel se aplikují na všechny uživatelské účty, které se vytváří a spravují přímo ve službě Azure AD. Tato zásada hesla se nedá upravit, i když můžete [nakonfigurovat vlastní zakázaná hesla pro ochranu heslem Azure AD](tutorial-configure-custom-password-protection.md).
+Zásady hesel se aplikují na všechny uživatelské účty, které se vytváří a spravují přímo ve službě Azure AD. Některá z těchto nastavení zásad hesla není možné upravovat. můžete ale [nakonfigurovat vlastní zakázaná hesla pro parametry ochrany hesel Azure AD](tutorial-configure-custom-password-protection.md) nebo uzamčení účtu.
 
-Zásady hesla se nevztahují na uživatelské účty synchronizované z místního služba AD DS prostředí pomocí Azure AD Connect, pokud EnforceCloudPasswordPolicyForPasswordSyncedUsers nepovolíte.
+Ve výchozím nastavení je účet uzamčen po 10 neúspěšných pokusech o přihlášení s nesprávným heslem. Uživatel je zablokován na jednu minutu. Další nesprávné pokusy o přihlášení zablokují uživateli zvýšení doby trvání. [Inteligentní uzamykání](howto-password-smart-lockout.md) sleduje poslední tři chybné hodnoty hash hesla, aby nedošlo k vyššímu zvýšení čítače uzamčení pro stejné heslo. Pokud někdo několikrát zadá stejné chybné heslo, toto chování nezpůsobí, že účet nebude uzamčen. Můžete definovat mezní hodnotu inteligentního uzamčení a dobu trvání.
 
-Jsou definovány následující možnosti zásad hesla:
+Zásady hesel Azure AD se nevztahují na uživatelské účty synchronizované z místního prostředí služba AD DS pomocí Azure AD Connect, pokud *EnforceCloudPasswordPolicyForPasswordSyncedUsers*nepovolíte.
+
+Jsou definované následující možnosti zásad hesel služby Azure AD. Pokud není uvedeno jinak, nemůžete tato nastavení změnit:
 
 | Vlastnost | Požadavky |
 | --- | --- |
@@ -57,7 +59,6 @@ Jsou definovány následující možnosti zásad hesla:
 | Vypršení platnosti hesla (nechat hesla nikdy nevyprší) |<ul><li>Výchozí hodnota: **false** (označuje, že heslo má datum vypršení platnosti).</li><li>Hodnotu lze nakonfigurovat pro jednotlivé uživatelské účty pomocí `Set-MsolUser` rutiny.</li></ul> |
 | Historie změn hesel | Poslední heslo *nelze* znovu použít, když uživatel změní heslo. |
 | Historie resetování hesla | Poslední heslo *lze* znovu použít, když uživatel resetuje zapomenuté heslo. |
-| Uzamčení účtu | Po 10 neúspěšných pokusech o přihlášení k nesprávnému heslu je uživatel zablokován na jednu minutu. Další nesprávné pokusy o přihlášení zablokují uživateli zvýšení doby trvání. [Inteligentní uzamykání](howto-password-smart-lockout.md) sleduje poslední tři chybné hodnoty hash hesla, aby nedošlo k vyššímu zvýšení čítače uzamčení pro stejné heslo. Pokud někdo několikrát zadá stejné chybné heslo, toto chování nezpůsobí, že účet nebude uzamčen. |
 
 ## <a name="administrator-reset-policy-differences"></a>Rozdílné zásady resetování hesel pro správce
 

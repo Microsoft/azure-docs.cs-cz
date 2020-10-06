@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f7e8c09a09084b28278667cdeaf94f7e38908cd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 66967c1fa8f6ca42459559caf46bffb0e5afe925
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904512"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743586"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>Použití Azure Portal ke správě uživatelů v Azure Stack Edge pro
 
@@ -74,7 +74,7 @@ Pokud chcete uživatele odstranit, proveďte na webu Azure Portal následující
 
 2. Vyberte uživatele ze seznamu uživatelů a pak vyberte **Odstranit**. Po zobrazení výzvy potvrďte odstranění.
 
-    ![Vyberte uživatele, kterého chcete odstranit.](media/azure-stack-edge-j-series-manage-users/delete-user-2.png)
+    ![Vyberte uživatele, který chcete odstranit 2.](media/azure-stack-edge-j-series-manage-users/delete-user-2.png)
 
 Seznam uživatelů se aktualizuje a odstraněný uživatel z něj zmizí.
 

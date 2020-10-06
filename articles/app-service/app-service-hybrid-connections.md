@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 8c8b71e4be11a886da3e0889add0a3cdc19a56c3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1cb86f77a6ffcbb0fb45b3a57b57de531822f2b0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962413"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742600"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Hybridní připojení Azure App Service
 
@@ -42,7 +42,7 @@ K dispozici je několik výhod Hybrid Connections možností, včetně:
 - Obvykle nevyžaduje otvory brány firewall. Připojení jsou všechna odchozí přes standardní webové porty.
 - Vzhledem k tomu, že je tato funkce na úrovni sítě, je nezávislá k jazyku, který používá vaše aplikace, a technologii, kterou koncový bod používá.
 - Dá se použít k poskytnutí přístupu v několika sítích z jedné aplikace. 
-- Podporuje se v GA pro aplikace pro Windows a je ve verzi Preview pro aplikace pro Linux.
+- Podporuje se v GA pro nativní aplikace pro Windows a je ve verzi Preview pro aplikace pro Linux. Pro aplikace pro kontejner Windows se nepodporuje.
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>Věci, které nemůžete dělat s Hybrid Connections ###
 

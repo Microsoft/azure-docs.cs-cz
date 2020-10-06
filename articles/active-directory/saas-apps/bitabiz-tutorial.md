@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 397197c2ab3ba4f135912eab800f1abd7ab73a0f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 729427dac174037c8750af7ab0f6cb17fa4d4c1e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531051"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741445"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>Kurz: Azure Active Directory integrace s BitaBIZ
 
@@ -30,7 +30,7 @@ Integrace BitaBIZ s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s BitaBIZ potřebujete následující položky:
 
@@ -132,15 +132,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí BitaBIZ,
 
 2. Klikněte na **Správce instalace**.
 
-    ![Konfigurace BitaBIZ](./media/bitabiz-tutorial/settings1.png)
+    ![Snímek obrazovky zobrazuje část okna prohlížeče se zvoleným správcem instalace.](./media/bitabiz-tutorial/settings1.png)
 
 3. V části **Přidat hodnotu** klikněte na **integrace Microsoftu** .
 
-    ![Konfigurace BitaBIZ](./media/bitabiz-tutorial/settings2.png)
+    ![Snímek obrazovky ukazuje možnost Přidat hodnotu s vybranými integrací Microsoftu.](./media/bitabiz-tutorial/settings2.png)
 
 4. Přejděte dolů k části **Microsoft Azure AD (Povolit jednotné přihlašování)** a proveďte následující kroky:
 
-    ![Konfigurace BitaBIZ](./media/bitabiz-tutorial/settings3.png)
+    ![Snímek obrazovky ukazuje Microsoft Azure oddíl D, kde zadáte informace popsané v tomto kroku.](./media/bitabiz-tutorial/settings3.png)
 
     a. Zkopírujte hodnotu z pole **ID entity ("identifikátor" v Azure AD)** TextBox a vložte ji do textového pole **identifikátoru** v **základní části Konfigurace SAML** v Azure Portal. 
 
@@ -179,7 +179,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -187,7 +187,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **BitaBIZ**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **BitaBIZ**.
 
@@ -218,19 +218,19 @@ V případě BitaBIZ je zřizování ručním úkolem.
 
 2. Klikněte na **Správce instalace**.
 
-    ![Přidat uživatele BitaBIZ](./media/bitabiz-tutorial/settings1.png)
+    ![Snímek obrazovky zobrazí část okna prohlížeče se zvoleným správcem instalace.](./media/bitabiz-tutorial/settings1.png)
 
 3. Klikněte na **Přidat uživatele** v části **organizace** .
 
-    ![Přidat uživatele BitaBIZ](./media/bitabiz-tutorial/user1.png)
+    ![Snímek obrazovky s vybranými možnostmi Přidat uživatele zobrazí oddíl organizace.](./media/bitabiz-tutorial/user1.png)
 
 4. Klikněte na **Přidat nového zaměstnance**.
 
-    ![Přidat uživatele BitaBIZ](./media/bitabiz-tutorial/user2.png)
+    ![Snímek obrazovky ukazuje přidat uživatele s vybraným přidat nového zaměstnance.](./media/bitabiz-tutorial/user2.png)
 
 5. Na stránce **Přidat nového zaměstnance** proveďte následující kroky:
 
-    ![Přidat uživatele BitaBIZ](./media/bitabiz-tutorial/user3.png)
+    ![Snímek obrazovky se zobrazí stránka, kde zadáte informace popsané v tomto kroku.](./media/bitabiz-tutorial/user3.png)
 
     a. Do textového pole **jméno v prvním** poli zadejte jméno uživatele jako Britta.
 

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: e49cc400fd8af3d284a223363f3384063d862981
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e5280805090a83245e287c0b15a1735ee41e934e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927177"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741801"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Vyřešte potíže s Azure Data Box Gateway
 
@@ -30,13 +30,13 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud chcete diagnostikovat a vyřešit potíže s libovolnými chybami zařízení, můžete spustit diagnostické testy. Diagnostické testy spustíte pomocí následujících kroků v místním webovém uživatelském rozhraní vašeho zařízení.
 
-1. V místním webovém uživatelském rozhraní přejděte na **Řešení potíží > Diagnostické testy**. Vyberte test, který chcete spustit a klikněte na tlačítko **Spustit test**. Tím se spustí testy, které provedou diagnostiku všech možných problémů se sítí, zařízením, webovým proxy serverem, časem nebo nastavením cloudu. Na spuštěné testy v zařízení budete upozorněni.
+1. V místním webovém uživatelském rozhraní přejděte na **Řešení potíží > Diagnostické testy**. Vyberte test, který chcete spustit, a klikněte na **Spustit test**. Tím se spustí testy, které provedou diagnostiku všech možných problémů se sítí, zařízením, webovým proxy serverem, časem nebo nastavením cloudu. Na spuštěné testy v zařízení budete upozorněni.
 
     ![Přidání uživatele kliknutím](media/data-box-gateway-troubleshoot/run-diag-1.png)
  
 2. Po dokončení testů se zobrazí výsledky. Pokud bude test neúspěšný, zobrazí se adresa URL s doporučenou akcí. Můžete na adresu URL kliknout a doporučenou akci zobrazit. 
  
-    ![Přidání uživatele kliknutím](media/data-box-gateway-troubleshoot/run-diag-2.png)
+    ![Klikněte na Přidat uživatele 2.](media/data-box-gateway-troubleshoot/run-diag-2.png)
 
 
 ## <a name="collect-support-package"></a>Shromáždění balíčku pro podporu
@@ -47,11 +47,11 @@ Pokud chcete balíček pro podporu vyzvednout, proveďte následující kroky.
 
 1. V místním webovém uživatelském rozhraní přejděte na **Řešení potíží > Podpora**. Klikněte na **Vytvořit balíček pro podporu**. Systém začne shromažďovat balíček pro podporu. Shromažďování balíčků může několik minut trvat.
 
-    ![Přidání uživatele kliknutím](media/data-box-gateway-troubleshoot/collect-logs-1.png)
+    ![Klikněte na Přidat uživatele 3.](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
 2. Po vytvoření balíčku pro podporu klikněte na **Stáhnout balíček pro podporu**. Komprimovaný balíček se stáhne do vámi vybrané cesty. Balíček můžete rozbalit.
 
-    ![Přidání uživatele kliknutím](media/data-box-gateway-troubleshoot/collect-logs-2.png)
+    ![Klikněte na Přidat uživatele 4.](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
 ## <a name="use-logs-to-troubleshoot"></a>Použití protokolů k řešení potíží
 
@@ -59,7 +59,7 @@ Veškeré chyby, ke kterým během procesu nahrávání a aktualizace došlo, bu
 
 1. Pokud chcete chybové soubory zobrazit, přejděte do sdílené složky a kliknutím na ni obsah zobrazte. 
 
-      ![Přidání uživatele kliknutím](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
+      ![Klikněte na Přidat uživatele 5.](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
 
 2. Klikněte na _Složka Microsoft Data Box Gateway_. Tato složka obsahuje dvě podsložky:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 94b8a26a398ad8604a469486185d805fcbb6a8b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 43189d40c57ce6c300904207edc35011b0581ecc
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545399"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740442"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s BlueJeans pro Azure AD
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat BlueJeans pro Azure AD s Azure Active 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -124,7 +124,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -150,7 +150,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 2. Přejít na ** \> Nastavení skupiny správců \> zabezpečení**.
 
-    ![Správce](./media/bluejeans-tutorial/ic785868.png "správce")
+    ![Snímek obrazovky zobrazuje část okna prohlížeče s vybranou kartou správce s nastavením skupiny a vybraným zabezpečením.](./media/bluejeans-tutorial/ic785868.png "Správce")
 
 3. V části **zabezpečení** proveďte následující kroky:
 
@@ -192,14 +192,14 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v BlueJeans pro 
 
 2. Přejít na **správce \> Správa uživatelů \> Přidat uživatele**
 
-    ![Správce](./media/bluejeans-tutorial/ic785877.png "správce")
+    ![Snímek obrazovky zobrazuje část okna prohlížeče se zvolenou kartou správce s možností spravovat uživatele a přidat vybrané uživatele.](./media/bluejeans-tutorial/ic785877.png "Správce")
 
     > [!IMPORTANT]
     > Karta **Přidat uživatele** je k dispozici pouze v případě, že na **kartě SECUTIRY**není zaškrtnuto zaškrtávací políčka **Povolit automatické zřizování** .
 
 3. V části **Přidat uživatele** proveďte následující kroky:
 
-    ![Přidat uživatele](./media/bluejeans-tutorial/ic785886.png "Přidání uživatele")
+    ![Snímek obrazovky se zobrazí část přidat uživatele, do které zadáte informace popsané v tomto kroku.](./media/bluejeans-tutorial/ic785886.png "Přidání uživatele")
 
     a. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako **B**.
 
@@ -219,7 +219,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v BlueJeans pro 
 
     i. Klikněte na **pokračovat**.
 
-    ![Přidat uživatele](./media/bluejeans-tutorial/ic785887.png "Přidání uživatele")
+    ![Snímek obrazovky se zobrazí část přidat uživatele, kde můžete zobrazit nastavení a funkce pomocí vybraného tlačítka Přidat uživatele.](./media/bluejeans-tutorial/ic785887.png "Přidání uživatele")
 
     J. Klikněte na **Přidat uživatele**.
 
@@ -232,7 +232,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici BlueJeans for Azure AD na přístupovém panelu, měli byste se automaticky přihlásit ke službě BlueJeans pro Azure AD, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

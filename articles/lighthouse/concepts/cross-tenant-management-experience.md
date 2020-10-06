@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 70356fd3856e517ca8fb3414a4ae2a8ccf28326e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 60eab197e38c7b6ef3b7f2d9442a0b7583f66d09
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336628"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739727"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -120,6 +120,7 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
   - Posílení konfigurace skupiny zabezpečení sítě pomocí adaptivního posílení sítě
   - Zajistěte, aby na serverech běžely jenom aplikace a procesy, které by měly být s adaptivními řízeními aplikací.
   - Sledování změn důležitých souborů a položek registru pomocí monitorování integrity souborů (FIM)
+- Všimněte si, že celé předplatné musí být delegováno na tenanta pro správu; Azure Security Center scénáře se u delegovaných skupin prostředků nepodporují.
 
 [Sentinel Azure](../../sentinel/multiple-tenants-service-providers.md):
 

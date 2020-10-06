@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81799e6ec366c7429fdb29b85b4ff65d353a8fba
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704586"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742413"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Nasazení virtuálního pole StorSimple – nastavení jako serveru iSCSI prostřednictvím Azure Portal
 
@@ -125,7 +125,7 @@ Pomocí následujících podrobných pokynů nastavte a nakonfigurujte vaše vir
 11. Přejděte do okna **zařízení** vaší služby. Pokud máte velké množství prostředků, klikněte na **všechny prostředky**, klikněte na název služby (v případě potřeby ho vyhledejte) a pak klikněte na **zařízení**.
 12. V okně **zařízení** ověřte stav tím, že se zařízení úspěšně připojilo ke službě. Stav zařízení musí být **Připraveno k nastavení**.
     
-    ![Registrovat zařízení](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
+    ![Nasazení zařízení](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
 ## <a name="step-2-configure-the-device-as-iscsi-server"></a>Krok 2: konfigurace zařízení jako serveru iSCSI
 
@@ -138,7 +138,7 @@ Provedením následujících kroků v Azure Portal dokončete požadované nasta
     ![Konfigurace zařízení jako serveru iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png) 
 2. Klikněte na zařízení a zobrazí se informační zpráva oznamující, že zařízení je připravené k instalaci.
    
-    ![Konfigurace zařízení jako serveru iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
+    ![Konfigurace zařízení jako serveru iSCSI 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
 3. Na panelu příkazů zařízení klikněte na **Konfigurovat** . Otevře se okno **Konfigurace** . V okně **Konfigurace** postupujte takto:
    
    * Název serveru iSCSI se vyplní automaticky.
@@ -146,13 +146,13 @@ Provedením následujících kroků v Azure Portal dokončete požadované nasta
    * Zadejte šifrovací klíč 32 znaků a zaznamenejte ho v aplikaci pro správu klíčů pro pozdější použití.
    * Vyberte účet úložiště, který se má používat s vaším zařízením. V tomto předplatném můžete vybrat existující účet úložiště, nebo můžete kliknout na **Přidat** a vybrat účet z jiného předplatného.
      
-     ![Konfigurace zařízení jako serveru iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
+     ![Konfigurace zařízení jako serveru iSCSI 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
 4. Kliknutím na **Konfigurovat** dokončete nastavení serveru iSCSI.
    
-    ![Konfigurace zařízení jako serveru iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
+    ![Konfigurace zařízení jako serveru iSCSI 4](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
 5. Budete upozorněni, že probíhá vytváření serveru iSCSI. Po úspěšném vytvoření serveru iSCSI se okno **zařízení** aktualizuje a odpovídající stav zařízení je **online**.
    
-    ![Konfigurace zařízení jako serveru iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
+    ![Konfigurace zařízení jako serveru iSCSI 5](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
 
 ## <a name="step-3-add-a-volume"></a>Krok 3: Přidání svazku
 
@@ -169,17 +169,17 @@ Provedením následujících kroků v Azure Portal dokončete požadované nasta
      
      Vrstvený svazek na druhé straně je dynamicky zřízený. Když vytvoříte vrstvený svazek, přibližně 10% místa se zřídí na místní úrovni a 90% místa se zřídí v cloudu. Pokud jste například zřídili svazek o velikosti 1 TB, 100 GB by se nacházelo v místním prostoru a v cloudu se v případě datových vrstev používalo 900 GB. To naopak znamená, že pokud vyčerpáte z místního prostoru na zařízení, nemůžete zřídit vrstvenou sdílenou složku (protože 10% nebude k dispozici).
      
-     ![Přidat svazek](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
+     ![Přidat svazek 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
    * Klikněte na **připojené hostitele**, vyberte záznam řízení přístupu (ACR) odpovídající iniciátoru iSCSI, ke kterému se chcete připojit, a potom klikněte na **Vybrat**. <br><br> 
 3. Chcete-li přidat nového připojeného hostitele, klikněte na tlačítko **Přidat nový**, zadejte název hostitele a jeho kvalifikovaný název iSCSI (IQN) a pak klikněte na tlačítko **Přidat**. Pokud nemáte identifikátor IQN, Projděte si [Dodatek A: Získejte identifikátor IQN hostitele Windows serveru](#appendix-a-get-the-iqn-of-a-windows-server-host).
    
-      ![Přidat svazek](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
+      ![Přidat svazek 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
 4. Po dokončení konfigurace svazku klikněte na tlačítko **OK**. Vytvoří se svazek se zadaným nastavením a zobrazí se oznámení. Ve výchozím nastavení se pro svazek povolí monitorování a zálohování.
    
-     ![Přidat svazek](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
+     ![Přidat svazek 4](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
 5. Pokud chcete ověřit, že se svazek úspěšně vytvořil, otevřete okno **svazky** . Měl by se zobrazit uvedený svazek.
    
-   ![Přidat svazek](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
+   ![Přidat svazek 5](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
 
 ## <a name="step-4-mount-initialize-and-format-a-volume"></a>Krok 4: připojení, inicializace a formátování svazku
 
@@ -217,7 +217,7 @@ K připojení, inicializaci a formátování svazků StorSimple na hostiteli s W
 12. Přiřaďte ke svazku písmeno jednotky a potom klikněte na tlačítko **Další**.
     
     ![Průvodce vytvořením svazku 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/image30.png)
-13. Zadejte parametry pro formátování svazku. **V systému Windows Server je podporován pouze systém souborů NTFS.** Nastavte velikost alokační jednotky na 64 KB. Zadejte jmenovku pro svazek. Doporučuje se, aby tento název byl stejný jako název svazku, který jste zadali ve virtuálním poli StorSimple. Klikněte na **Další**.
+13. Zadejte parametry pro formátování svazku. **V systému Windows Server je podporován pouze systém souborů NTFS.** Nastavte velikost alokační jednotky na 64 KB. Zadejte jmenovku pro svazek. Doporučuje se, aby tento název byl stejný jako název svazku, který jste zadali ve virtuálním poli StorSimple. Klikněte na **Next** (Další).
     
     ![Průvodce vytvořením svazku 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/image31.png)
 14. Zkontrolujte hodnoty pro svazek a pak klikněte na **Dokončit**.

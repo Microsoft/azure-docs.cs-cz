@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 78c06cc7f08fe94a25ea63d9bf76cc1352d9f2b7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: cb6ef6ac25c4afa72160ba437e0ea3b5492cfd93
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82561683"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741954"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Kurz: připojení, nastavení, aktivace Azure Data Box Gateway
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Připojení k virtuálnímu zařízení
 > * Nastavení a aktivace virtuálního zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než nakonfigurujete a nastavíte Data Box Gateway, ujistěte se, že:
 
@@ -43,9 +43,9 @@ Než nakonfigurujete a nastavíte Data Box Gateway, ujistěte se, že:
    
    https: \/ /IP-address-of-Network-Interface
    
-   Použijte adresu URL připojení, kterou jste si poznamenali v předchozím kurzu. Zobrazí se chyba nebo upozornění označující, že došlo k potížím s certifikátem zabezpečení webu.
+   Použijte adresu URL připojení, kterou jste si poznamenali v předchozím kurzu. Zobrazí se vám chyba nebo upozornění indikující problém s certifikátem zabezpečení webu.
 
-2. Vyberte možnost **pokračovat na tuto webovou stránku**. Tyto kroky se můžou lišit v závislosti na prohlížeči, který používáte.
+2. Vyberte možnost **pokračovat na tuto webovou stránku**. Tyto kroky se můžou lišit v závislosti na použitém prohlížeči.
    
     ![Chybová zpráva certifikátu zabezpečení webu](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
 
@@ -75,12 +75,12 @@ Nyní jste na **řídicím panelu** zařízení.
    
     Při konfiguraci nastavení sítě Pamatujte na toto:
 
-    - Pokud je ve vašem prostředí povolený protokol DHCP, síťová rozhraní se nakonfigurují automaticky. Automaticky se přiřadí IP adresa, podsíť, brána a DNS.
+    - Pokud je ve vašem prostředí povolený protokol DHCP, síťová rozhraní se nakonfigurují automaticky. IP adresa, podsíť, brána a DNS se přiřadí automaticky.
     - Pokud není protokol DHCP povolený, můžete v případě potřeby přiřadit statické IP adresy.
     - Síťové rozhraní můžete nakonfigurovat jako IPv4.
 
      >[!NOTE] 
-     > Doporučujeme, abyste místní IP adresu síťového rozhraní nepnuli z hodnoty static na DHCP, pokud nemáte jinou IP adresu pro připojení k zařízení. Pokud používáte jedno síťové rozhraní a přepnete na protokol DHCP, tak nemusíte určit adresu DHCP. Pokud chcete přejít na adresu DHCP, počkejte na to, až se zařízení zaregistruje u služby, a pak změňte. Potom můžete zobrazit IP adresy všech adaptérů ve **vlastnostech zařízení** v Azure Portal pro vaši službu.
+     > Doporučujeme, abyste místní IP adresu síťového rozhraní nepnuli z hodnoty static na DHCP, pokud nemáte jinou IP adresu pro připojení k zařízení. Pokud používáte jedno síťové rozhraní a přepnete na adresu DHCP, adresu DHCP nebude možné určit. Pokud chcete změnit adresu na adresu DHCP, počkejte na dokončení registrace zařízení ve službě a pak proveďte změnu. Potom můžete zobrazit IP adresy všech adaptérů ve **vlastnostech zařízení** v Azure Portal pro vaši službu.
 
 3. Volitelně konfigurujte proxy server. I když je konfigurace webového proxy serveru volitelná, pokud používáte webový proxy server, můžete ho nakonfigurovat jenom na této stránce.
    
@@ -88,14 +88,14 @@ Nyní jste na **řídicím panelu** zařízení.
    
    Na stránce **webový proxy server** proveďte následující kroky:
    
-   1. Do pole **Adresa URL webového proxy serveru** zadejte adresu URL v tomto formátu: `http://&lt;host-IP address or FQDN&gt;:Port number` . Adresy URL protokolu HTTPS nejsou podporovány.
+   1. Do pole **Adresa URL webového proxy serveru** zadejte adresu URL v tomto formátu: `http://&lt;host-IP address or FQDN&gt;:Port number` . Adresy URL protokolu HTTPS se nepodporují.
    2. V části **ověřování**vyberte **žádné** nebo **NTLM**.
    3. Pokud používáte ověřování, zadejte **uživatelské jméno** a **heslo**.
    4. Pokud chcete ověřit a použít nakonfigurovaná nastavení webového proxy serveru, vyberte **použít**.
 
    > [!NOTE]
    > Soubory automatické konfigurace proxy serveru (PAC) nejsou podporovány. Soubor PAC definuje způsob, jakým můžou webové prohlížeče a další uživatelské agenti automaticky zvolit odpovídající proxy server (přístupovou metodu) pro načtení dané adresy URL.
-   > Proxy servery, které se pokoušejí zachytit a načíst veškerý provoz (pak se znovu podepisuje vše s vlastní certifikací) nejsou kompatibilní, protože certifikát proxy serveru není důvěryhodný.
+   > Proxy servery, které se pokoušejí zachytit a číst veškerý provoz (a následně vše znovu podepsat vlastním certifikátem), nejsou kompatibilní, protože certifikáty takových proxy serverů nejsou důvěryhodné.
    > Obvykle transparentní proxy servery dobře fungují s Azure Data Box Gateway.
 
 4. Volitelné V levém podokně vyberte **Nastavení času**a pak nakonfigurujte časové pásmo a primární a sekundární servery NTP pro vaše zařízení. 
@@ -126,7 +126,7 @@ Nyní jste na **řídicím panelu** zařízení.
     
     3. Zařízení je aktivované a důležité aktualizace, pokud jsou k dispozici, se automaticky aplikují. K tomuto účelu se zobrazí oznámení. Sledujte průběh aktualizace prostřednictvím Azure Portal.
 
-        ![Stránka nastavení cloudu místního webového uživatelského rozhraní](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
+        ![Místní webové uživatelské rozhraní "nastavení cloudu" Stránka 2](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
         
         **Dialog má také obnovovací klíč, který byste měli zkopírovat a uložit v bezpečném umístění. Tento klíč se používá k obnovení dat v případě, že se zařízení nedá spustit.**
 

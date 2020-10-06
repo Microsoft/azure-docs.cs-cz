@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9d508afac64e448ca220a36b2be983da85d96b0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9360fc000e01e1c52561cbaa3e2f2968e67e2fa2
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002619"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740866"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Postup sestavení filtru omezujících vlastností v Azure Kognitivní hledání 
 
@@ -29,7 +29,8 @@ Napravovaná navigace se používá pro filtrování na základě výsledků dot
 
 Omezující vlastnosti jsou dynamické a vracejí se v dotazu. Hledání odpovědí vede s těmito kategoriemi omezujícími vlastnostmi, které slouží k procházení výsledků. Pokud nejste obeznámeni s omezujícími vlastnostmi, následující příklad je ilustrace navigační struktury omezující vlastnosti.
 
-  ![Obrázek znázorňující dialogové okno hledání s filtrovanými výsledky hledání seskupenými podle obchodních titulů Šipka značí, že výsledky jsou omezující vlastnosti, které se zobrazí v navigační struktuře omezující vlastnosti.](./media/search-filters-facets/facet-nav.png)
+:::image type="complex" source="media/search-filters-facets/facet-nav.png" alt-text="filtrované výsledky hledání":::
+Obrázek znázorňující dialogové okno hledání s filtrovanými výsledky hledání seskupenými podle obchodních titulů Šipka indikuje, že výsledky jsou omezující vlastnosti, které se zobrazují ve struktuře navigace omezující vlastnosti. :::image-end:::
 
 Novinka s omezujícími podrobnostmi a chcete podrobnější informace? Přečtěte si téma [implementace omezující navigace v Azure kognitivní hledání](search-faceted-navigation.md).
 

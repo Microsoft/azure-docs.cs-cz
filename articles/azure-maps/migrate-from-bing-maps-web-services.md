@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4520332fbc5040aff682ce52e819fa4a940999cc
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 14e0998b75e0e5bd3ae996f5f5010ecc50180f14
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108685"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741665"
 ---
 # <a name="migrate-web-service-from-bing-maps"></a>Migrace webové služby z map Bing
 
@@ -249,7 +249,7 @@ Rozhraní API pro směrování Azure Maps má mnoho dalších funkcí, které ne
 
 K dispozici je několik způsobů, jak přitahovat souřadnice na silnice v Azure Maps.
 
--   K přichycení souřadnic a z logické trasy podél síťové sítě použijte rozhraní API pro směrování tras.
+-   K roztahování souřadnic do logické trasy podél síťové sítě použijte rozhraní API pro směrování tras.
 -   Pomocí Azure Maps webové sady SDK můžete přitahovat jednotlivé souřadnice k nejbližší cestě na vektorové dlaždice.
 -   Použijte vektorové dlaždice Azure Maps přímo k přichycení jednotlivých souřadnic.
 

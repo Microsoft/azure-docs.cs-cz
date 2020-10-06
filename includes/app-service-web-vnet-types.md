@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 10/01/2020
 ms.author: ccompy
-ms.openlocfilehash: c31a5aaa9866a4ce97cd3cd59a8e363834f70587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 481bd4f50eb527bcad2ba79b5ba4b9df4b872bfc
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81312846"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739900"
 ---
 * Víceklientské systémy, které podporují celou škálu cenových plánů s výjimkou izolovaného.
 * App Service Environment, který se nasadí do vaší virtuální sítě a podporuje aplikace izolovaného cenového plánu.
@@ -23,7 +23,7 @@ Integrace virtuální sítě poskytuje vaší aplikaci přístup k prostředkům
 
 Funkce integrace virtuální sítě:
 
-* Vyžadovat Cenový tarif Standard, Premium, PremiumV2 nebo elastické úrovně Premium.
+* Vyžadovat cenové tarify Standard, Premium, PremiumV2, PremiumV3 nebo elastické Premium
 * Podporují protokoly TCP a UDP.
 * Pracujte s Azure App Service aplikacemi a aplikacemi Function App.
 

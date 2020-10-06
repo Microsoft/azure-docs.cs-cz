@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 433d519cc71b8bb218569679c94142658f3c9416
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 141649f7620063b58134caaa878162f3a7e767e7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255232"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739901"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s virtuální sítí Azure
 
@@ -144,7 +144,7 @@ Funkce regionální integrace virtuální sítě nemá žádné další poplatky
 
 Tři poplatky souvisejí s používáním funkce integrace virtuální sítě vyžadované bránou:
 
-* **Poplatky za cenové úrovně v App Service plánu**: vaše aplikace musí být v plánu Standard, Premium nebo PremiumV2 App Service. Další informace o těchto nákladech najdete v tématu [App Service ceny][ASPricing].
+* **Poplatky za cenové úrovně v App Service plánu**: vaše aplikace musí být v plánu Standard, Premium, PremiumV2 nebo App Service PremiumV3. Další informace o těchto nákladech najdete v tématu [App Service ceny][ASPricing].
 * **Náklady na přenos dat**: za výstup dat se účtuje i v případě, že virtuální síť je ve stejném datacentru. Tyto poplatky jsou popsané v [podrobnostech o cenách přenos dat][DataPricing].
 * **Náklady na bránu VPN**: pro bránu virtuální sítě, která je potřeba pro síť VPN typu Point-to-site, se účtuje náklady. Další informace najdete v tématu [ceny služby VPN Gateway][VNETPricing].
 

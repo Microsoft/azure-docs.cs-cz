@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 0a7dab1129eb88d7e58bab8a827d745596bc218d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 6af095c7abdb9aa61e57d543ff2ab2f9192dadc8
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183713"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743569"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Změna výchozí cesty k objektu blob
 
@@ -25,13 +25,13 @@ Ujistěte se, že máte ve službě StorSimple Data Manager správnou nakonfigur
 
 Pokud chcete vytvořit funkci Azure Functions, proveďte následující kroky:
 
-1. Přejděte na [Azure Portal](https://portal.azure.com/).
+1. Přejděte na web [Azure Portal](https://portal.azure.com/).
 
 2. Klikněte na **+ Vytvořit prostředek**. Do **vyhledávacího** pole zadejte **Function App** a stiskněte klávesu **ENTER**. V zobrazeném seznamu aplikací vyberte a klikněte na **aplikace Function App** .
 
     ![Do vyhledávacího pole zadejte "Function App"](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
-3. Klikněte na možnost **Vytvořit**.
+3. Klikněte na **Create** (Vytvořit).
 
     ![Tlačítko pro Function App okno pro vytvoření](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
 
@@ -46,7 +46,7 @@ Pokud chcete vytvořit funkci Azure Functions, proveďte následující kroky:
 
         ![Zadejte nová konfigurační data Function App](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
 
-    7. Klikněte na možnost **Vytvořit**. Aplikace Function App se vytvoří.
+    7. Klikněte na **Create** (Vytvořit). Aplikace Function App se vytvoří.
      
         ![Function App vytvořena](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
@@ -64,12 +64,12 @@ Pokud chcete vytvořit funkci Azure Functions, proveďte následující kroky:
 
         ![Vytvoření nové funkce jazyka C#](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
 
-    4. Klikněte na možnost **Vytvořit**. **Funkce** je vytvořena.
+    4. Klikněte na **Create** (Vytvořit). **Funkce** je vytvořena.
 
      
 10. V okně funkce spusťte soubor _. csx_ .
 
-    ![Vytvoření nové funkce jazyka C#](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
+    ![Vytvoření nové funkce jazyka C# 2](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
     
     Proveďte následující kroky.
 
@@ -191,7 +191,7 @@ Pokud chcete vytvořit funkci Azure Functions, proveďte následující kroky:
 
     2. Klikněte na **+ Přidat**.
         
-        ![Odkaz "Zobrazit soubory"](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
+        ![Přidat novou funkci přidat soubor](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
     3. Zadejte **project.js**a potom stiskněte klávesu **ENTER**. Do **project.jsv** souboru vložte následující kód:
 
@@ -211,7 +211,7 @@ Pokud chcete vytvořit funkci Azure Functions, proveďte následující kroky:
     
     4. Klikněte na **Uložit**.
 
-        ![Odkaz "Zobrazit soubory"](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
+        ![Nový projekt funkce – JSON](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 
 Vytvořili jste funkci Azure Function. Tato funkce se aktivuje pokaždé, když úloha transformace dat vygeneruje nový objekt BLOB.
 

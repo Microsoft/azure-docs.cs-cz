@@ -3,19 +3,18 @@ title: Zabezpečení služby Azure Key Vault
 description: Spravujte přístupová oprávnění pro Azure Key Vault, klíče a tajné kódy. Popisuje model ověřování a autorizace Key Vault a způsob zabezpečení trezoru klíčů.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b6163ca0cb02670024fe95459f31ac81c4da756c
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: c3dd4e5138741a3c035507358830f3572cf92751
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596368"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739686"
 ---
 # <a name="azure-key-vault-security"></a>Zabezpečení služby Azure Key Vault
 
@@ -76,29 +75,16 @@ Po uplatnění pravidel brány firewall můžou uživatelé číst data z Key Va
 
 Další informace o Azure Key Vaultch [koncových bodech služby virtuální sítě pro Azure Key Vault](overview-vnet-service-endpoints.md)) najdete v ch síťových adresách.
 
-### <a name="tls-and-https"></a>TLS a HTTPS
+## <a name="tls-and-https"></a>TLS a HTTPS
 
 *   Key Vault front-endu (rovina dat) je server s více klienty. To znamená, že trezory klíčů od různých zákazníků můžou sdílet stejnou veřejnou IP adresu. Aby bylo možné dosáhnout izolace, jednotlivé požadavky HTTP jsou ověřeny a autorizovány nezávisle na ostatních požadavcích.
 *   Můžete identifikovat starší verze protokolu TLS, aby se nahlásily chyby zabezpečení, ale protože je sdílená veřejná IP adresa, není možné, aby tým služby trezoru klíčů zakázal starší verze TLS pro jednotlivé trezory klíčů na úrovni přenosu.
 *   Protokol HTTPS umožňuje klientovi účast v vyjednávání TLS. **Klienti můžou vyhovět nejnovější verzi TLS**a vždycky, když to klient provede, bude celé připojení používat odpovídající ochranu úrovně. Skutečnost, že Key Vault stále podporuje starší verze TLS, nezhoršuje zabezpečení připojení pomocí novější verze TLS.
 *   Navzdory známým chybám zabezpečení v protokolu TLS neexistuje žádný známý útok, který by mohl škodlivému agentovi extrahovat jakékoli informace z vašeho trezoru klíčů, když útočník iniciuje spojení s verzí TLS s chybami zabezpečení. Útočník by stále musel ověřovat a autorizovat sebe sama a pokud se legitimní klienti vždy připojují k nejnovějším verzím TLS, neexistuje žádný způsob, jak by přihlašovací údaje mohly být v původních verzích TLS neúniky z chyb zabezpečení.
 
+## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-## <a name="monitoring"></a>Monitorování
-
-Protokolování Key Vault ukládá informace o aktivitách provedených ve vašem trezoru. Protokoly Key Vault:
-
-- Všechny ověřené žádosti o REST API, včetně neúspěšných žádostí
-  - Operace na samotném trezoru klíčů. Mezi tyto operace patří vytvoření, odstranění, nastavení zásad přístupu a aktualizace atributů trezoru klíčů, jako jsou například značky.
-  - Operace s klíči a tajnými klíči v trezoru klíčů, včetně:
-    - Vytváření, úpravy nebo odstraňování těchto klíčů nebo tajných kódů.
-    - Podepisování, ověřování, šifrování, dešifrování, zabalení a rozbalení klíčů, získávání tajných klíčů a zobrazování klíčů a tajných kódů (a jejich verzí).
-- Neověřené požadavky, které skončí odpovědí 401 – Neoprávněno. Příklady jsou požadavky, které nemají nosný token, které jsou poškozené nebo jejichž platnost vypršela, nebo které mají neplatný token.
-
-K informacím o protokolování se dá získat pøístup během 10 minut od operace trezoru klíčů. Vaše protokoly můžete spravovat v účtu úložiště.
-
-- Zabezpečte protokoly pomocí standardních metod řízení přístupu Azure a určete, kdo k nim má přístup.
-- Odstraňte protokoly, které už nechcete uchovávat v účtu úložiště.
+Protokolování Key Vault ukládá informace o aktivitách provedených ve vašem trezoru. Úplné podrobnosti najdete v tématu [protokolování Key Vault](logging.md).
 
 Doporučení pro zabezpečenou správu účtů úložiště najdete v [Průvodci zabezpečením Azure Storage](../../storage/blobs/security-recommendations.md) .
 
@@ -106,4 +92,3 @@ Doporučení pro zabezpečenou správu účtů úložiště najdete v [Průvodci
 
 - [Koncové body služby virtuální sítě pro Azure Key Vault](overview-vnet-service-endpoints.md)
 - [RBAC: předdefinované role](../../role-based-access-control/built-in-roles.md)
-

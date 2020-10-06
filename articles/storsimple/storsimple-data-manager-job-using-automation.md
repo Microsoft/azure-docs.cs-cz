@@ -6,14 +6,14 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 2562e7463ba0a79cf77d21f3bb619f13283c989d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f13e402344111dea28514ed7b0d381b46ff73064
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514927"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743603"
 ---
-# <a name="use-azure-automation-to-trigger-a-job"></a>Aktivace úlohy pomocí Azure Automation
+# <a name="use-azure-automation-to-trigger-a-job"></a>Aktivace úlohy s využitím služby Azure Automation
 
 Tento článek vysvětluje, jak můžete pomocí funkce transformace dat v rámci služby StorSimple Data Manager transformovat data zařízení StorSimple. Úlohu transformace dat můžete spustit dvěma způsoby: 
 
@@ -22,13 +22,13 @@ Tento článek vysvětluje, jak můžete pomocí funkce transformace dat v rámc
  
 Tento článek podrobně popisuje, jak vytvořit sadu Azure Automation Runbook a pak ji použít k zahájení úlohy transformace dat. Další informace o tom, jak iniciovat transformaci dat pomocí sady .NET SDK, najdete v tématu [použití sady .NET SDK pro aktivaci úloh transformace dat](storsimple-data-manager-dotnet-jobs.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující:
 
 *   Azure PowerShell nainstalované v klientském počítači. [Stáhněte si Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
 *   Správně nakonfigurovaná definice úlohy ve StorSimple Data Manager službě v rámci skupiny prostředků.
-*   Stáhněte si [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) soubor z úložiště GitHub. 
+*   Stáhněte si  [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) soubor z úložiště GitHub. 
 *   Stáhněte si [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1) skript z úložiště GitHub.
 
 ## <a name="step-by-step-procedure"></a>Podrobný postup
@@ -41,7 +41,7 @@ Než začnete, ujistěte se, že máte následující:
 
 2. Pokud chcete přidat nový účet Automation, klikněte na **+ Přidat**.
 
-    ![Vytvořit účet Spustit jako Automation](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
+    ![Vytvořit účet Spustit jako Automation 2](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
 
 3. V okně **Přidat automatizaci**:
 
@@ -50,9 +50,9 @@ Než začnete, ujistěte se, že máte následující:
    3. Vytvořte novou skupinu prostředků nebo vyberte některou z existujících skupin prostředků.
    4. Vyberte **umístění**.
    5. Ponechte vybranou možnost výchozí **účet Spustit jako** .
-   6. Odkaz pro rychlý přístup na řídicím panelu získáte tak, že zkontrolujete **Připnout na řídicí panel**. Klikněte na **Vytvořit**.
+   6. Odkaz pro rychlý přístup na řídicím panelu získáte tak, že zkontrolujete **Připnout na řídicí panel**. Klikněte na **Create** (Vytvořit).
 
-      ![Vytvořit účet Spustit jako Automation](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
+      ![Vytvoření účtu Spustit jako služby Automation 3](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
       Po úspěšném vytvoření účtu Automation budete upozorněni.
     
@@ -86,7 +86,7 @@ Proveďte následující kroky pro import, publikování a spuštění sady Runb
 
 2. V nabídce **Přidat Runbook**klikněte na **importovat existující Runbook**.
 
-3. Přejděte na soubor skriptu Azure PowerShell `Trigger-DataTransformation-Job.ps1` pro **soubor sady Runbook**. Typ Runbooku se vybere automaticky. Zadejte název a nepovinný popis Runbooku. Klikněte na **Vytvořit**.
+3. Přejděte na soubor skriptu Azure PowerShell `Trigger-DataTransformation-Job.ps1` pro **soubor sady Runbook**. Typ Runbooku se vybere automaticky. Zadejte název a nepovinný popis Runbooku. Klikněte na **Create** (Vytvořit).
 
     ![Přidat Runbook 2](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 

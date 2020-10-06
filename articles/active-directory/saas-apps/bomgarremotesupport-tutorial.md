@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: jeedes
-ms.openlocfilehash: ecaeea625bc4891c95614292a44d31b616d39eb2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a70216286e6f19f565d189c1c16f8862494e3aef
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549284"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743076"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím vzdálené podpory BeyondTrust
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat vzdálenou podporu BeyondTrust s Azure
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -129,7 +129,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -155,7 +155,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na nabídku **stav** a zkopírujte **identifikátor**, **adresu URL odpovědi** a **adresu URL pro přihlášení** a použijte tyto hodnoty v části **základní konfigurace SAML** v Azure Portal.
 
-    ![Konfigurace vzdálené podpory BeyondTrust](./media/bomgarremotesupport-tutorial/config-url-values.png)
+    ![Snímek obrazovky se zobrazí v nabídce stav ve vzdálené podpoře BeyondTrust, kde můžete shromáždit tyto informace.](./media/bomgarremotesupport-tutorial/config-url-values.png)
 
 1. Přejděte na rozhraní BeyondTrust Remote support/login na místě `https://support.example.com/login` , kde **support.example.com** je primárním názvem hostitele vašeho zařízení a ověřte ho pomocí přihlašovacích údajů pro správu.
 
@@ -165,20 +165,20 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V části nastavení zprostředkovatele identity je k dispozici možnost nahrát metadata zprostředkovatele identity. Vyhledejte soubor XML s metadaty, který jste stáhli z Azure Portal, a klikněte na tlačítko **nahrát** . **ID entity**, **Adresa URL a certifikát služby jednotného přihlašování** se automaticky nahrají a **vazba protokolu** bude muset být změněna na **http post**. Viz snímek obrazovky níže:
 
-    ![Konfigurace vzdálené podpory BeyondTrust](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
+    ![Snímek obrazovky s oddílem nastavení zprostředkovatele identity, kde tyto akce provedete, najdete v části.](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
 
 ### <a name="create-beyondtrust-remote-support-test-user"></a>Vytvořit testovacího uživatele pro vzdálenou podporu BeyondTrust
 
 Tady budeme konfigurovat nastavení zřizování uživatelů. Hodnoty použité v tomto oddílu budou odkazovány z **atributů uživatele & deklarace identity** v Azure Portal. Nakonfigurovali jsme toto, aby byly výchozí hodnoty, které už jsou naimportované v době vytváření, ale v případě potřeby můžete tuto hodnotu přizpůsobit.
 
-![Vytváření uživatele](./media/bomgarremotesupport-tutorial/config-user1.png)
+![Snímek obrazovky se zobrazí nastavení pro zřizování uživatelů, kde můžete nakonfigurovat hodnoty uživatelů.](./media/bomgarremotesupport-tutorial/config-user1.png)
 
 > [!NOTE]
 > Atribut Groups and e-mail není pro tuto implementaci nezbytný. Pokud používáte skupiny Azure AD a přiřadíte je k BeyondTrust vzdálených zásad skupiny pro oprávnění, bude nutné, aby ID objektu skupiny bylo odkazováno prostřednictvím svých vlastností Azure Portal a umístěných v části "available Groups". Po dokončení této akce bude nyní k dispozici ID objektu/skupina AD pro přiřazení k zásadám skupiny pro oprávnění.
 
-![Vytváření uživatele](./media/bomgarremotesupport-tutorial/config-user2.png)
+![Snímek obrazovky zobrazuje oddíl I T s typem členství, zdroj, typ a objekt I D.](./media/bomgarremotesupport-tutorial/config-user2.png)
 
-![Vytváření uživatele](./media/bomgarremotesupport-tutorial/config-user3.png)
+![Snímek obrazovky se stránkou základní nastavení pro zásady skupiny.](./media/bomgarremotesupport-tutorial/config-user3.png)
 
 > [!NOTE]
 > Případně můžete nastavit výchozí zásady skupiny u poskytovatele zabezpečení typu Saml2. Definováním této možnosti přiřadíte všem uživatelům, kteří se ověřují prostřednictvím SAML, oprávnění zadaná v rámci zásad skupiny. Obecné zásady členů jsou součástí BeyondTrust Remote support/Privileged Remote Access s omezenými oprávněními, která se dají použít k otestování ověřování a přiřazení uživatelů ke správným zásadám. Uživatelé neplní seznam typu Saml2 Users prostřednictvím/Login > uživatelé & zabezpečení až do prvního úspěšného pokusu o ověření. Další informace o zásadách skupiny najdete na následujícím odkazu: `https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`
@@ -189,7 +189,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici vzdálená podpora BeyondTrust na přístupovém panelu, měli byste se automaticky přihlásit ke vzdálené podpoře BeyondTrust, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

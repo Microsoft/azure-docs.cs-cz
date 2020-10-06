@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 60e621b34250b036888b233b084ba1ddff939048
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31147d534109e0d74d33d102075c69eeb703496e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087794"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739931"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Použití klíčů spravovaných zákazníkem v Azure Key Vault pro Azure Data Box
 
@@ -61,7 +61,7 @@ Konfigurace klíče spravovaného zákazníkem pro vaši Azure Data Box je volit
 
     Můžete také vybrat **vytvořit nové** a vytvořit nový trezor klíčů. V okně **vytvořit Trezor klíčů**zadejte skupinu prostředků a název trezoru klíčů. Ujistěte se, že je povolená ochrana proti **odstranění** a **vyprázdnění** . Přijměte všechny ostatní výchozí hodnoty. Vyberte **zkontrolovat + vytvořit**.
 
-    ![Vytvořit nový Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
+    ![Vytvořit nový Azure Key Vault 2](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
 
 7. Zkontrolujte informace spojené s vaším trezorem klíčů a vyberte **vytvořit**. Počkejte pár minut, než se vytváření trezoru klíčů dokončí.
 
@@ -69,11 +69,11 @@ Konfigurace klíče spravovaného zákazníkem pro vaši Azure Data Box je volit
 
 8. V poli **Vybrat klíč z Azure Key Vault**můžete vybrat klíč v existující trezoru klíčů.
 
-    ![Vytvořit nový klíč v Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
+    ![Vytvořit nový klíč v Azure Key Vault 3](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
 
 9. Pokud chcete vytvořit nový klíč, vyberte **vytvořit nový** a vytvořte klíč. Velikost klíče RSA může být 2048 nebo vyšší.
 
-    ![Vytvořit nový klíč v Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-61.png)
+    ![Vytvořit nový klíč v Azure Key Vault 4](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-61.png)
 
 10. Zadejte název pro svůj klíč, Přijměte ostatní výchozí hodnoty a vyberte **vytvořit**. 
 

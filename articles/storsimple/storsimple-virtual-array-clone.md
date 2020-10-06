@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: dd82f7dd821991bbcf57cc7d8105575e0baa4d12
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6cc89cb082cd0ed32abd88e3a6683c60a27ba90
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070703"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742175"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klonování ze zálohy vašeho virtuálního pole StorSimple
 
@@ -44,7 +44,7 @@ Tento článek popisuje podrobný postup klonování zálohovací sady sdílený
    
    c.    Klikněte na **OK**.
    
-   ![Klonování zálohy](./media/storsimple-virtual-array-clone/cloneshare3.png)
+   ![Klonování zálohy 2](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. V okně **klonovat** klikněte na **Nastavení cíle** a pak postupujte takto:
    
    a.    Zadejte název sdílené složky. Název sdílené složky musí obsahovat 3-127 znaků.
@@ -59,13 +59,13 @@ Tento článek popisuje podrobný postup klonování zálohovací sady sdílený
    
    f.    Klikněte na **OK**.
    
-   ![Klonování zálohy](./media/storsimple-virtual-array-clone/cloneshare6.png)
+   ![Klonování zálohy 3](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
 4. Kliknutím na **klonování** spusťte úlohu klonování. Po dokončení úlohy se spustí operace klonování a vy budete upozorněni. Pokud chcete monitorovat průběh klonování, přejděte do okna **úlohy** a kliknutím na úlohu zobrazte podrobnosti o úloze.
 5. Po úspěšném vytvoření klonu přejděte zpátky do okna **sdílené složky** na vašem zařízení.
 6. Nově naklonovaná sdílená složka se teď dá zobrazit v seznamu sdílených složek na vašem zařízení. Vrstvená sdílená složka je klonována jako vrstvená a místně připnuté sdílená složka jako místně připnuté sdílení.
    
-   ![Klonování zálohy](./media/storsimple-virtual-array-clone/cloneshare10.png)
+   ![Klonování zálohy 4](./media/storsimple-virtual-array-clone/cloneshare10.png)
 
 ## <a name="clone-volumes-from-a-backup-set"></a>Klonování svazků ze zálohovacího skladu
 
@@ -84,7 +84,7 @@ Pokud chcete klonovat ze zálohy, musíte v Azure Portal při klonování sdíle
    
    c.    Klikněte na **OK**.
    
-   ![Klonování zálohy](./media/storsimple-virtual-array-clone/clonevolume3.png)
+   ![Klonovat svazek 2](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. V okně **klonovat** klikněte na **nastavení cílového svazku** a pak proveďte následující kroky:
    
    a. Název zařízení se vyplní automaticky.
@@ -95,16 +95,16 @@ Pokud chcete klonovat ze zálohy, musíte v Azure Portal při klonování sdíle
    
    d. Pro **připojené hostitele**klikněte na **Vybrat**.
    
-   ![Klonování zálohy](./media/storsimple-virtual-array-clone/clonevolume4.png)
+   ![Klonovat svazek 3](./media/storsimple-virtual-array-clone/clonevolume4.png)
 4. V okně **připojení hostitelé** vyberte z existujícího ACR nebo přidejte nový ACR. Pokud chcete přidat nový ACR, budete muset zadat ACR název a hostitele IQN. Klikněte na **Vybrat**.
    
-   ![Klonování zálohy](./media/storsimple-virtual-array-clone/clonevolume5.png)
+   ![Klonování svazku 4](./media/storsimple-virtual-array-clone/clonevolume5.png)
 5. Kliknutím na **klonování** spusťte úlohu klonování.
    
-   ![Klonování zálohy](./media/storsimple-virtual-array-clone/clonevolume6.png)  
+   ![Klonovat svazek 5](./media/storsimple-virtual-array-clone/clonevolume6.png)  
 6. Po vytvoření úlohy klonování se spustí klonování. Jakmile se klon vytvoří, zobrazí se v okně svazky na vašem zařízení. Počítejte s tím, že vrstvený svazek je klonován jako vrstvený a místně připojený svazek je klonován jako místně připojený svazek.
    
-   ![Klonování zálohy](./media/storsimple-virtual-array-clone/clonevolume8.png)
+   ![Klonovat svazek 6](./media/storsimple-virtual-array-clone/clonevolume8.png)
 7. Po zobrazení svazku v seznamu svazků online se svazek dá použít k dispozici. V hostiteli iniciátoru iSCSI aktualizujte seznam cílů v okně Vlastnosti iniciátoru iSCSI. Nový cíl, který obsahuje název klonovaného svazku, by měl být ve sloupci Stav zobrazen jako neaktivní.
 8. Vyberte cíl a klikněte na **připojit**. Po připojení iniciátoru k cíli by měl být stav změněn na **připojeno**.
 9. V okně **Správa disků** se připojené svazky zobrazí, jak je znázorněno na následujícím obrázku. Klikněte pravým tlačítkem myši na zjištěný svazek (klikněte na název disku) a potom klikněte na **Online**.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 7909f793407956247a8378a86e20bbe7b1bcddb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 75e4937966c549c4d815a8776c70aa6366abe3e0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542798"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740785"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Kurz: Azure Active Directory integrace s Brightidea
 
@@ -30,7 +30,7 @@ Integrace Brightidea s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Brightidea potřebujete následující položky:
 
@@ -112,14 +112,14 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Brightid
 
     c. Po úspěšném nahrání souboru metadat se hodnoty **adresy URL** **identifikátoru** a odpovědi automaticky naplní v poli Brightidea oddílu:
 
-    ![image](common/idp-intiated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
 
     > [!Note]
     > Pokud hodnoty **adresy URL** pro **identifikátor** a odpověď nezískají auto polulated, pak hodnoty ručně vyplníte podle vašich požadavků.
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<SUBDOMAIN>.brightidea.com`
 
@@ -143,21 +143,21 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Brightid
 
 2. Pokud se chcete dostat do funkce jednotného přihlašování v systému Brightidea, přejděte na kartu ověřování **podnikového nastavení**  ->  **Authentication Tab**. Zobrazí se dvě dílčí karty: výběr ověření & profily SAML.
 
-    ![Konfigurace Brightidea](./media/brightidea-tutorial/configure1.png)
+    ![Snímek obrazovky se zobrazí na webu Brightidea s vybraným tabulátorem ověřování.](./media/brightidea-tutorial/configure1.png)
 
 3. Vyberte **Výběr ověřování**. Ve výchozím nastavení se zobrazí jenom dvě standardní metody: Brightidea přihlášení & registrace. Po přidání metody jednotného přihlašování se v seznamu zobrazí.
 
-    ![Konfigurace Brightidea](./media/brightidea-tutorial/configure2.png)
+    ![Snímek obrazovky zobrazuje kartu ověřování Brightidea s vybraným výběrem ověřování.](./media/brightidea-tutorial/configure2.png)
 
 4. Vyberte **profily SAML** a proveďte následující kroky:
 
-    ![Konfigurace Brightidea](./media/brightidea-tutorial/configure3.png)
+    ![Snímek obrazovky s vybranými profily SAML zobrazuje kartu ověřování Brightidea, která poskytuje možnosti pro stažení metadat a přidání nových.](./media/brightidea-tutorial/configure3.png)
 
     a. Klikněte na **Stáhnout metadata** a nahrajte je do části **základní konfigurace SAML** v Azure Portal.
 
     b. V **nastavení zprostředkovatele identity** klikněte na tlačítko **Přidat nové** a proveďte následující kroky:
     
-    ![Konfigurace Brightidea](./media/brightidea-tutorial/configure4.png)
+    ![Snímek obrazovky s nastavením poskytovatele identity Brightidea, kde zadáte informace](./media/brightidea-tutorial/configure4.png)
     
    * Zadejte **název profilu SAML** , například `Azure Ad SSO`
     
@@ -195,7 +195,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -203,7 +203,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Brightidea**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Brightidea**.
 

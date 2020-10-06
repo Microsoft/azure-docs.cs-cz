@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 41cb02e77fa77c5a7452c5e3e0d2080ee3d472d5
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5c49a46dfcd97f5feb43b0b910476ef3ad6f402a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183220"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742243"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Zálohování sdílených složek nebo svazků ve virtuálním poli StorSimple
 
@@ -76,13 +76,13 @@ Kromě naplánovaných záloh můžete kdykoli ručně (na vyžádání) vytvoř
    
     Spustí se zálohování na vyžádání a uvidíte, že se spustila úloha zálohování.
    
-    ![spouští se zálohování](./media/storsimple-virtual-array-backup/takebackup3m.png) 
+    ![zálohování počínaje 2](./media/storsimple-virtual-array-backup/takebackup3m.png) 
    
     Po úspěšném dokončení úlohy budete znovu upozorněni. Pak se spustí proces zálohování.
    
     ![Úloha zálohování se vytvořila.](./media/storsimple-virtual-array-backup/takebackup4m.png)
 
-3. Pokud chcete sledovat průběh zálohování a podívat se na Podrobnosti úlohy, klikněte na oznámení. Tím přejdete k **podrobnostem úlohy**.
+3. Pokud chcete sledovat průběh zálohování a podívat se na Podrobnosti úlohy, klikněte na oznámení. Tím přejdete k  **podrobnostem úlohy**.
    
      ![Podrobnosti úlohy zálohování](./media/storsimple-virtual-array-backup/takebackup5m.png)
 

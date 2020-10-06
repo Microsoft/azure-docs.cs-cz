@@ -1,15 +1,15 @@
 ---
 title: Podporované typy prostředků Azure Resource Manager
 description: Poskytněte seznam Azure Resource Manager typů prostředků, které podporuje Azure Resource Graph, a historii změn.
-ms.date: 09/15/2020
+ms.date: 09/30/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: a52378422c6ee740f30f155cdfb0839a3f281abe
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 385ee96fa821b8d90ff529fecb52dbec9803dea2
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600598"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739999"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Odkaz na typ tabulky a prostředku Azure Resource graphu
 
@@ -119,6 +119,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. CDN/profily
 - Microsoft. CDN/Profiles/koncových bodů
 - Microsoft. certificateregistration/certificateorders
+- Microsoft. chaos/chaosexperiments
 - Microsoft. classiccompute/DomainNames
 - Microsoft. classiccompute/VirtualMachines
 - Microsoft. classicnetwork/networksecuritygroups
@@ -400,6 +401,8 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. operationalinsights/pracovní prostory
 - Microsoft. operationsmanagement/Solutions
 - Microsoft. operationsmanagement/zobrazení
+- Microsoft. Orbital/contactprofiles
+- Microsoft. Orbital/kosmické lodi
 - Microsoft. peering/peering
 - Microsoft. peering/peeringservices
 - Microsoft. Portal/řídicí panely
@@ -420,6 +423,10 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. Resources/templatespecs/verze
 - Microsoft. SaaS/aplikace
 - Microsoft. Scheduler/jobcollections
+- Microsoft. SCVMM/cloudy
+- Microsoft. SCVMM/VirtualMachines
+- Microsoft. SCVMM/virtualmachinetemplates
+- Microsoft. SCVMM/virtualnetworks
 - Microsoft. SCVMM/vmmservers
 - Microsoft. Search/searchservices
 - Microsoft. Security/automations
@@ -436,6 +443,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. servicefabricmesh/– svazky
 - Microsoft. serviceshub/konektory
 - Microsoft. signalrservice/signaler
+- Microsoft. jednotné a finanční účty
 - Microsoft. Solutions/appliancedefinitions
 - Microsoft. Solutions/zařízení
 - Microsoft. Solutions/applicationdefinitions
@@ -531,6 +539,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - wandisco. Fusion/fusiongroups/onpremzones
 - wandisco. Fusion/fusiongroups/replicationrules
 - wandisco. Fusion/migrace
+- wandisco. Fusion/migračnís/livedatamigrations
 - wandisco. Fusion/migračnís/cíle
 
 ## <a name="securityresources"></a>securityresources

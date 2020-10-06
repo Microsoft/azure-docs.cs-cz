@@ -4,12 +4,12 @@ description: Naučte se škálovat webovou aplikaci prostředků, cloudovou slu�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: f784ce9eb4c465c83bea28e05e7f423e0b55c947
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b8d16b4e112c9aebe86c60dc01d380d591fc7624
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294245"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743518"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatické škálování v Azure
 Tento článek popisuje, jak nastavit nastavení automatického škálování pro váš prostředek v portál Microsoft Azure.
@@ -116,6 +116,8 @@ K automatickému škálování se můžete kdykoli vrátit kliknutím na **Povol
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>Směrování provozu do instancí v pořádku (App Service)
 
 Při horizontálním navýšení kapacity na více instancí může App Service provádět kontroly stavu instancí, aby bylo možné směrovat provoz pouze do zdravých instancí. Provedete to tak, že otevřete portál pro App Service a v části **monitorování**vyberete **kontrolu stavu** . Vyberte **Povolit** a zadejte platnou cestu adresy URL v aplikaci, například `/health` nebo `/api/health` . Klikněte na **Uložit**.
+
+Chcete-li tuto funkci povolit u šablon ARM, nastavte `healthcheckpath` vlastnost `Microsoft.Web/sites` prostředku na cestu k kontrole stavu na webu, například: `"/api/health/"` . Chcete-li funkci zakázat, nastavte vlastnost zpět na prázdný řetězec `""` .
 
 ### <a name="health-check-path"></a>Cesta kontroly stavu
 

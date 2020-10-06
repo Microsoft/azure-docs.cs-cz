@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 2eee46f99af247ffd0e11b262ace0a96453270d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a6f0af188bb999acecad7fee0a90256eff05f902
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91323670"
+ms.locfileid: "91742073"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -43,7 +43,8 @@ Kvůli ochraně před těmito hrozbami poskytuje Security Center nástroje, kter
 
 -   **Rychleji se zabezpečit:** Ve službě Security Center probíhá vše rychlostí cloudu. Vzhledem k nativní integraci je nasazení služby Security Center jednoduché a poskytuje pro služby Azure automatické zřizování a ochranu.
 
-[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
+> [!NOTE]
+> Tato služba podporuje [Azure Lighthouse](../lighthouse/overview.md), která umožňuje poskytovatelům služeb přihlásit se ke svému vlastnímu tenantovi ke správě předplatných a skupin prostředků, které zákazníci delegovani. U Azure Security Centerch scénářů musí být předplatné delegované a ne jednotlivé skupiny prostředků.
 
 ## <a name="architecture"></a>Architektura
 

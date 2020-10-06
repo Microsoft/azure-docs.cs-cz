@@ -3,12 +3,12 @@ title: Řešení potíží se sítí pomocí registru
 description: Příznaky, příčiny a řešení běžných potíží při přístupu ke službě Azure Container Registry ve virtuální síti nebo za bránou firewall
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: c2ae8609dbd28a1a39a634e3c065030552aefb06
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: f84b11418344bfeaf790377c1d8644fbc7d7d636
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630946"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743365"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Řešení potíží se sítí pomocí registru
 
@@ -90,6 +90,8 @@ Pokud je nakonfigurován koncový bod služby registru, zkontrolujte, že je do 
 Pokud chcete omezit přístup k registru pomocí virtuální sítě v jiném předplatném Azure, ujistěte se, že `Microsoft.ContainerRegistry` v tomto předplatném zaregistrujete poskytovatele prostředků. [Zaregistrujte poskytovatele prostředků](../azure-resource-manager/management/resource-providers-and-types.md) pro Azure Container Registry pomocí Azure Portal, rozhraní příkazového řádku Azure nebo dalších nástrojů Azure.
 
 Pokud je v síti nakonfigurované Azure Firewall nebo podobné řešení, ověřte, že se pro přístup k koncovým bodům registru má povolit odchozí přenos dat z jiných prostředků, jako je cluster AKS.
+
+Pokud je nakonfigurovaný privátní koncový bod, zkontrolujte, jestli DNS překládá veřejný plně kvalifikovaný název domény (FQDN) registru, například *myregistry.azurecr.IO* , na privátní IP adresu registru. Použijte síťový nástroj, například `dig` nebo `nslookup` pro vyhledávání DNS.
 
 Související odkazy:
 

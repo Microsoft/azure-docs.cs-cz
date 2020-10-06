@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/16/2020
-ms.openlocfilehash: 0a28bd0d4101fc9d49413adaaccc0a6d38ec64ed
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 460c37107ac2dbd8bc3377d3716e708331db9904
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91307717"
+ms.locfileid: "91740919"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Azure Portal
 
@@ -35,7 +35,7 @@ Mnoho zákazníků začíná s bezplatnou službou. Tato verze je omezená na t�
 
 Oddíly na řídicím panelu služby ukazují, kolik indexů, indexerů a datových zdrojů už máte. 
 
-![Seznam indexů, indexerů a zdrojů dat](media/search-get-started-portal/tiles-indexers-datasources.png)
+:::image type="content" source="media/search-get-started-portal/tiles-indexers-datasources.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
 
 ## <a name="create-an-index-and-load-data"></a><a name="create-index"></a>Vytvoření indexu a načtení dat
 
@@ -49,11 +49,11 @@ Pro tento kurz používáme vestavěnou ukázkovou datovou sadu, kterou lze proc
 
 1. [Vyhledejte vyhledávací službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) a na stránce Přehled klikněte na tlačítko **importovat data** na panelu příkazů a vytvořte a naplňte index vyhledávání.
 
-   ![Příkaz pro import dat](media/search-get-started-portal/import-data-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
 
 1. V průvodci klikněte na **připojit k datům**  >  **Ukázka**  >  **hotelů – ukázka**. Tento zdroj dat je integrovaný. Pokud jste vytvořili vlastní zdroj dat, budete muset zadat název, typ a informace o připojení. Po vytvoření se z něj stane „existující zdroj dat“, který je možné využít v dalších operacích importu.
 
-   ![Výběr ukázkové datové sady](media/search-get-started-portal/import-datasource-sample.png)
+   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
 
 1. Pokračujte na další stránku.
 
@@ -63,7 +63,7 @@ Průvodce podporuje vytvoření [kanálu rozšíření AI](cognitive-search-conc
 
 Tento krok prozatím přeskočíme a přejdete přímo na, abyste mohli **přizpůsobit cílový index**.
 
-   ![Vynechání kroku kognitivních dovedností](media/search-get-started-portal/skip-cog-skill-step.png)
+   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
 
 > [!TIP]
 > Můžete si projít příkladem indexování AI v [rychlém](cognitive-search-quickstart-blob.md) startu nebo [kurzu](cognitive-search-tutorial-blob.md).
@@ -87,7 +87,7 @@ Ve výchozím nastavení průvodce vyhledá ve zdroji dat jedinečné identifik�
 
    Pokud průvodce znovu spustíte podruhé pomocí stávajícího zdroje dat hotelů, index nebude nakonfigurovaný s výchozími atributy. V budoucích importech bude nutné vybrat atributy ručně. 
 
-   ![Index vygenerovaných hotelů](media/search-get-started-portal/hotelsindex.png)
+   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
 
 2. Pokračujte na další stránku.
 
@@ -100,7 +100,7 @@ Tento objekt definuje spustitelný proces. Můžete ji umístit do opakujícího
 
 Kliknutím na **Odeslat** vytvořte a souběžně spusťte indexer.
 
-  ![Indexer hotelů](media/search-get-started-portal/hotels-indexer.png)
+  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
 
 ## <a name="monitor-progress"></a>Průběh monitorování
 
@@ -108,7 +108,7 @@ Průvodce by vás měl přenést do seznamu indexerů, kde můžete monitorovat 
 
 Aby portál mohl aktualizovat stránku, může trvat několik minut, ale v seznamu byste měli vidět nově vytvořený indexer se stavem "probíhá" nebo "úspěch" spolu s počtem indexovaných dokumentů.
 
-   ![Zpráva indexeru o průběhu](media/search-get-started-portal/indexers-inprogress.png)
+   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
 
 ## <a name="view-the-index"></a>Zobrazení indexu
 
@@ -116,13 +116,13 @@ Hlavní stránka služby poskytuje odkazy na prostředky vytvořené ve službě
 
 Počkejte, až se stránka portálu aktualizuje. Po několika minutách by se měl zobrazit index s počtem dokumentů a velikostí úložiště.
 
-   ![Seznam indexů na řídicím panelu služby](media/search-get-started-portal/indexes-list.png)
+   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
 
 V tomto seznamu můžete kliknout na index s *ukázkami hotelů* , který jste právě vytvořili, a zobrazit schéma indexu. a volitelně můžete přidat nová pole. 
 
 Karta **pole** zobrazuje schéma indexu. Posuňte se do dolní části seznamu a zadejte nové pole. Ve většině případů nelze změnit existující pole. Existující pole mají v Azure Kognitivní hledání fyzickou reprezentaci, takže nejsou ani v kódu. Chcete-li v podstatě změnit existující pole, vytvořte nový index, který vyřadí původní.
 
-   ![Ukázková definice indexu](media/search-get-started-portal/sample-index-def.png)
+   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
 
 Kdykoli lze přidat další konstrukce, jako jsou bodovací profily a možnosti CORS.
 
@@ -140,15 +140,15 @@ Teď už byste měli mít vyhledávací index, který je připravený na dotazov
 
 1. Klikněte na **Průzkumník služby Search** na panelu příkazů.
 
-   ![Příkaz průzkumníka služby Search](media/search-get-started-portal/search-explorer-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
 
 2. V rozevíracím seznamu **index** vyberte  *hotely-Sample-index*. Klikněte na rozevírací seznam **verze rozhraní API** , abyste viděli, která rozhraní REST API jsou k dispozici. Pro následující dotazy použijte všeobecně dostupnou verzi (2020-06-30).
 
-   ![Příkazy rozhraní API a index](media/search-get-started-portal/search-explorer-changeindex.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
 
 3. Do panelu hledání vložte následující řetězce dotazu a klikněte na tlačítko **Hledat**.
 
-   ![Řetězec dotazu a tlačítko Hledat](media/search-get-started-portal/search-explorer-query-string-example.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Seznam indexů, indexerů a zdrojů dat":::
 
 ## <a name="example-queries"></a>Ukázky dotazů
 

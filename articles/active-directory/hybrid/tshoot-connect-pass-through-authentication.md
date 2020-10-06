@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 1a602405065a41cb26b2ae5303d12c45ed21616f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89275919"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741189"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Řešení potíží s předávacím ověřováním služby Azure Active Directory
 
@@ -96,6 +96,7 @@ Přejděte na **Azure Active Directory**  ->  **přihlášení** v [centru pro s
 | 80007 | Ověřovací agent se nemohl připojit k Active Directory. | Ověřte, zda je služba Active Directory dosažitelná z ověřovacího agenta.
 | 80010 | Ověřovací agent nebyl schopen dešifrovat heslo. | Pokud je problém stále reprodukovatelný, nainstalujte a zaregistrujte nového ověřovacího agenta. A odinstalujte stávající. 
 | 80011 | Ověřovací agent nebyl schopen získat dešifrovací klíč. | Pokud je problém stále reprodukovatelný, nainstalujte a zaregistrujte nového ověřovacího agenta. A odinstalujte stávající.
+| 80014 | Požadavek na ověření odpověděl po překročení maximálního uplynulého času. | Vypršel časový limit ověřovacího agenta. Otevřete lístek podpory s kódem chyby, ID korelace a časovým razítkem, abyste získali další podrobnosti o této chybě.
 
 >[!IMPORTANT]
 >Agenti předávacího ověřování ověřují uživatele služby Azure AD tím, že ověřují jejich uživatelská jména a hesla proti službě Active Directory voláním [rozhraní Win32 LogonUser API](/windows/win32/api/winbase/nf-winbase-logonusera). Výsledkem je, že pokud jste v Active Directory nastavili nastavení přihlásit se ke službě Active Directory tak, aby se omezil přístup k přihlašování do pracovních stanic, budete muset přidat servery, které hostují agenty předávacího ověřování, do seznamu "přihlašování do" serverů. Nedaří se to provést, zablokuje uživatelům přihlášení k Azure AD.

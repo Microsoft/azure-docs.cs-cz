@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 02358dcffa6f757e3c61b3c1ae0e7c5298f7d9ca
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 63d3a874c3d3d55ec1e3af3765ae63119dca287b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542679"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740356"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-britive"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Britive
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Britive s Azure Active Directory (Azur
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -103,7 +103,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -129,11 +129,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **ikonu Nastavení správce** a vyberte **zabezpečení**.
 
-    ![Konfigurace Britive](./media/britive-tutorial/configure1.png)
+    ![Snímek obrazovky se zobrazí web Britive s vybraným nastavením a zabezpečením.](./media/britive-tutorial/configure1.png)
 
 1. Vyberte **Konfigurace jednotného přihlašování** a proveďte následující kroky:
 
-    ![Konfigurace Britive](./media/britive-tutorial/configure2.png)
+    ![Snímek obrazovky se zobrazí v konfiguraci S. O, kde zadáte informace v tomto kroku.](./media/britive-tutorial/configure2.png)
 
     a. Zkopírujte hodnotu **ID cílové skupiny/entity** a vložte ji do textového pole **identifikátor (ID entity)** v části **základní konfigurace SAML** v Azure Portal.
 
@@ -147,15 +147,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **ikonu Nastavení správce** a vyberte **Správa uživatelů**.
 
-    ![Konfigurace Britive](./media/britive-tutorial/user1.png)
+    ![Snímek obrazovky s vybraným nastavením a správou uživatelů zobrazuje web Britive.](./media/britive-tutorial/user1.png)
 
 1. Klikněte na **Přidat uživatele**.
 
-    ![Konfigurace Britive](./media/britive-tutorial/user2.png)
+    ![Snímek obrazovky se zobrazeným tlačítkem Přidat uživatele](./media/britive-tutorial/user2.png)
 
 1. Vyplňte všechny nezbytné údaje o uživateli podle požadavků vaší organizace a klikněte na **Přidat uživatele**.
 
-    ![Konfigurace Britive](./media/britive-tutorial/user3.png)
+    ![Snímek obrazovky se stránkou uživatele služby Active Directory, kde zadáte informace o uživateli.](./media/britive-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Test SSO
 
@@ -163,7 +163,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Britive, měli byste se automaticky přihlásit k Britive, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

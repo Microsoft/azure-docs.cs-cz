@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: b9f3b564e36939197acd532a37f9a6098fbc870f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ba903793844e44b26931a70183860c983adaf18a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900013"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743399"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Kurz: instalace Azure Stack Edge pro s grafickým procesorem
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Stojan připojit zařízení
 > * Zapojení kabeláže zařízení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Požadavky pro instalaci fyzického zařízení jsou následující:
 
@@ -86,7 +86,7 @@ Zařízení musí být nainstalované na standardním racku na 19 palců. Pomoc�
 > Zařízení Azure Stack Edge pro musí být připojená do racku pro správnou operaci.
 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - Než začnete, přečtěte si pokyny pro bezpečnost v brožuře o zabezpečení, ochraně životního prostředí a regulativní informace. Tato brožura byla dodávána se zařízením.
 - Zahajte instalaci kolejnic do vyhrazeného místa, které je nejblíže k dolnímu okraji skříňky racku.
@@ -124,7 +124,7 @@ Vyhledejte komponenty pro instalaci sestavení se sadou pro železnici:
 3. Připojte levé a pravé montážní kolejnice k přednímu vertikálnímu přírubě na racku pomocí dvou párů šroubů.
 4. Posunutí vlevo a vpravo od zadních závorek směrem k zadním svislým přírubám a jejich připojení pomocí dvou párů šroubů.
 
-    ![Instalace a odebrání nástrojů na železnici](./media/azure-stack-edge-deploy-install/installing-removing-tooled-rails.png)
+    ![Instalace a odebrání nástrojů na železnici 2](./media/azure-stack-edge-deploy-install/installing-removing-tooled-rails.png)
 
 ### <a name="install-the-system-in-a-rack"></a>Instalace systému do racku
 
@@ -166,7 +166,7 @@ Než začnete kabelovat vaše zařízení, budete potřebovat následující:
 - Alespoň jeden síťový kabel 1 GbE RJ-45 pro připojení k rozhraní pro správu. Na zařízení jsou dvě síťová rozhraní 1 GbE – jedno pro správu a druhé pro data.
 - Jeden měděný kabel 25 GbE SFP+ pro každé datové síťové rozhraní, které chcete konfigurovat. Aspoň jedno rozhraní datové sítě z portu 2, PORT 3, port 4, PORT 5 nebo PORT 6 musí být připojené k Internetu (s připojením k Azure).  
 - Přístup ke dvěma jednotkám distribuce napájení (doporučeno).
-- Aspoň jeden síťový přepínač s rychlostí 1 GbE pro připojení síťového rozhraní s 1 GbE k Internetu pro data. Místní webové uživatelské rozhraní nebude dostupné, pokud připojený přepínač nemá aspoň 1 GbE. Pokud pro data používáte rozhraní 25/10 GbE, budete potřebovat přepínač s 25 gbemi nebo 10 přepínači. 
+- Aspoň 1 1 síťový přepínač pro připojení síťového rozhraní s 1 GbE k Internetu pro data. Místní webové uživatelské rozhraní nebude dostupné, pokud připojený přepínač nemá aspoň 1 GbE. Pokud pro data používáte rozhraní 25/10 GbE, budete potřebovat přepínač s 25 gbemi nebo 10 přepínači. 
 
 > [!NOTE]
 > - Pokud se připojujete pouze k jednomu síťovému rozhraní, doporučujeme, abyste pro posílání dat do Azure používali síťové rozhraní 25 nebo 10 GbE, jako je PORT 3, PORT 4, PORT 5 nebo PORT 6. 
@@ -182,7 +182,7 @@ Na zařízení Azure Stack Edge pro:
 - Zadní rovina zahrnuje nadbytečné jednotky napájení (PSUs).
 - Zadní rovina má šest síťových rozhraní:
 
-    - Dvě rozhraní 1 GB/s.
+    - Rozhraní 2 1 až GB/s.
     - Rozhraní 4 25-GB, která můžou sloužit taky jako rozhraní s rychlostí 10 GB/s.
     - Řadič pro správu základní desky (BMC).
 
@@ -207,11 +207,11 @@ Proveďte následující kroky, které zařízení zapojte do sítě pro napáje
 
     - Zařízení se 3 PCI sloty a jedním grafickým procesorem
 
-        ![Zadní rovina kabelového zařízení](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
+        ![Zadní rovina kabelového zařízení 2](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
 
     - Zařízení se 3 PCI sloty a dvěma GPU
 
-        ![Zadní rovina kabelového zařízení](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
+        ![Zadní rovina kabelového zařízení 3](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
 
 2. Vyhledejte diskové sloty a tlačítko napájení na přední straně zařízení.
 
