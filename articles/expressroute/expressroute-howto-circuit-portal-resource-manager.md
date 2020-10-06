@@ -1,18 +1,18 @@
 ---
-title: 'Rychlý Start: vytvoření a úprava okruhu pomocí ExpressRoute'
-description: V tomto rychlém startu se dozvíte, jak vytvořit, zřídit, ověřit, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute.
+title: 'Rychlý Start: vytvoření a úprava okruhu pomocí ExpressRoute-Azure Portal'
+description: V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit, zřídit, ověřit, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: c944feb6cc77d8337fccb64915baa576e590ef40
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: dbb28726d1c2eaf887ced818284d4b1e0298f8db
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761744"
+ms.locfileid: "91767811"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>Rychlý Start: vytvoření a úprava okruhu ExpressRoute
 

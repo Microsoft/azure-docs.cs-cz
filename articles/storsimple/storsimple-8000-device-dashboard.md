@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ed624fd5fb86b95e0b79c1c7ed4de50749ec7046
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93d230656fd7ef34e76a143fb3186d23f8d3afed
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512045"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766240"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Použití souhrnu zařízení ve službě StorSimple Device Manager
 
@@ -86,7 +86,7 @@ Oblast základy zachycuje některé důležité vlastnosti, jako je například 
 
 * Na dlaždici **kapacita** se zobrazuje primární úložiště, které je zřízené a zbývající v rámci zařízení vzhledem k celkovému počtu dostupných úložišť. **Zřízené** v tomto případě odkazuje na velikost úložiště, které je připraveno a přiděleno k použití, **zbývající** znamená zbývající kapacitu, kterou lze zřídit v rámci tohoto zařízení. 
 
-    ![Dlaždice využití](./media/storsimple-8000-device-dashboard/device-summary8.png)
+    ![Dlaždice využití 2](./media/storsimple-8000-device-dashboard/device-summary8.png)
 
     Kliknutím na tuto dlaždici zobrazíte informace o tom, jak je kapacita zajištěna napříč vrstvenými a místně připnuté svazky. **Zbývající vrstvená** kapacita je dostupná kapacita, kterou je možné zřídit včetně cloudu, zatímco **zbývající místní** kapacita je zbývající na discích připojených k tomuto zařízení.
 

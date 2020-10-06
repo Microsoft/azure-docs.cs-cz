@@ -3,12 +3,12 @@ title: Zabezpečení sítě pro Azure Service Bus
 description: Tento článek popisuje funkce zabezpečení sítě, jako jsou značky služby, pravidla brány firewall protokolu IP, koncové body služby a soukromé koncové body.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 731300179ce9a0ff72169cdad5c7c039749b20f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb21c8beb6d48ecab04917525011cc4762c46ff3
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341133"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766390"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Zabezpečení sítě pro Azure Service Bus 
 Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Service Bus: 
@@ -16,7 +16,7 @@ Tento článek popisuje, jak používat následující funkce zabezpečení pro 
 - Značky služeb
 - Pravidla brány firewall protokolu IP
 - Koncové body síťové služby
-- Soukromé koncové body (Preview)
+- Soukromé koncové body
 
 
 ## <a name="service-tags"></a>Značky služeb
@@ -81,8 +81,6 @@ Další informace najdete v tématu [co je privátní propojení Azure?](../priv
 
 > [!NOTE]
 > Tato funkce je podporovaná s úrovní **premium** Azure Service Bus. Další informace o úrovni Premium najdete v článku [Service Bus úrovně pro zasílání zpráv na úrovni Premium a Standard](service-bus-premium-messaging.md) .
->
-> Tato funkce je aktuálně ve **verzi Preview**. 
 
 
 Další informace najdete v tématu [Postup konfigurace privátních koncových bodů pro obor názvů Service Bus](private-link-service.md) .

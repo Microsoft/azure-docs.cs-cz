@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 5542dca6d9b1ab18cf1b9b93e20fa64da0eb1dd4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f57163b3d17877f7f8c66fa57fc8a0736c6affb7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91000932"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767709"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace Azure Functions
 
@@ -31,14 +31,14 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s podporou příznaků f
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **správce funkcí**  >  **+ Přidat** a přidejte příznak funkce s názvem `Beta` .
+7. Vyberte **správce funkcí**  >  **+ Přidat** a přidejte příznak funkce s názvem `Beta` .
 
     > [!div class="mx-imgBorder"]
     > ![Povolit příznak funkce s názvem beta](media/add-beta-feature-flag.png)
 
     `label` `Description` Pro nyní nechejte a nedefinované.
 
-7. Výběrem **použít** uložte příznak nové funkce.
+8. Výběrem **použít** uložte příznak nové funkce.
 
 ## <a name="create-a-functions-app"></a>Vytvoření aplikace Functions
 
@@ -133,7 +133,7 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s podporou příznaků f
 
     ![Příznak funkce funkce rychlého startu zakázán](./media/quickstarts/functions-launch-ff-disabled.png)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili.
 
 1. Vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**.
 

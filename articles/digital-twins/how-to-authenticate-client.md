@@ -8,30 +8,32 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: dd0d3e462f0b2d8b525e63d65d657a8f056d01a9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0438632a36fe14d35210cb5acb8d3a50d0f038b7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331858"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767820"
 ---
 # <a name="write-client-app-authentication-code"></a>Zápis ověřovacího kódu klientské aplikace
 
 Po [Nastavení instance a ověřování digitálních vláken Azure](how-to-set-up-instance-portal.md)můžete vytvořit klientskou aplikaci, kterou použijete k interakci s instancí. Po nastavení projektu počátečního klienta v tomto článku se dozvíte, **jak v této klientské aplikaci psát kód pro ověření v** instanci digitálních vláken Azure.
 
 Existují dva přístupy k ukázkovému kódu v tomto článku. Můžete použít tu, která je pro vás nejvhodnější, v závislosti na zvoleném jazyce:
-* První část ukázkového kódu používá sadu SDK Azure Digital .NET (C#). Sada SDK je součástí sady Azure SDK pro .NET a je umístěná v tomto umístění: [*Klientská knihovna Azure IoT s Nevlákenou pro .NET*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core).
-* Druhá část ukázkového kódu je určena pro uživatele, kteří nepoužívají sadu .NET SDK, a místo toho používají sady SDK generované pomocí automatického REST v jiných jazycích. Další informace o této strategii najdete v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure pomocí automatického REST*](how-to-create-custom-sdks.md).
+* První část ukázkového kódu používá sadu SDK Azure Digital .NET (C#). Sada SDK je součástí sady Azure SDK pro .NET a je umístěná v tomto umístění: [*Klientská knihovna Azure IoT s Nevlákenou pro .NET*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). K dispozici jsou také podporované sady SDK pro [jazyky Java](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar ) a [JavaScript](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1), které lze použít podobným způsobem.
+* Druhá část ukázkového kódu je určena pro uživatele, kteří nepoužívají poskytnutou sadu SDK, a místo toho používá sady SDK generované pomocí automatického REST v jiných jazycích. Další informace o této strategii najdete v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure pomocí automatického REST*](how-to-create-custom-sdks.md).
 
 Další informace o rozhraních API a sadách SDK pro digitální vlákna Azure najdete v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Nejdřív dokončete kroky nastavení v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). Tím se zajistí, že máte instanci digitálního vlákna Azure, ke které má váš uživatel oprávnění pro přístup, a Vy jste nastavili oprávnění pro klientské aplikace. Po dokončení všech těchto nastavení jste připraveni k psaní kódu klientské aplikace.
 
 Chcete-li pokračovat, budete potřebovat projekt klientské aplikace, ve kterém budete psát kód. Pokud ještě nemáte nastavený projekt klientské aplikace, vytvořte si základní projekt v jazyce zvoleném pro použití v tomto kurzu.
 
 ## <a name="authentication-and-client-creation-net-c-sdk"></a>Ověřování a vytváření klientů: sada SDK .NET (C#)
+
+Tato část ukazuje příklad v jazyce C# pro používání sady .NET SDK.
 
 Nejprve zahrňte do projektu následující balíčky, aby bylo možné použít sadu .NET SDK a nástroje ověřování pro tento postup:
 * `Azure.DigitalTwins.Core`
@@ -100,11 +102,11 @@ Chcete-li použít ověřování ve funkci, nezapomeňte na:
 
 ## <a name="authentication-with-an-autorest-generated-sdk"></a>Ověřování pomocí sady SDK generované AutoRest
 
-Pokud nepoužíváte rozhraní .NET, můžete se rozhodnout vytvořit knihovnu SDK v jazyce podle vašeho výběru, jak je popsáno v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure pomocí automatického REST*](how-to-create-custom-sdks.md).
+Pokud nepoužíváte některou ze zadaných sad SDK (.NET, Java, JavaScript), můžete se rozhodnout vytvořit knihovnu SDK v jazyce podle vašeho výběru, jak je popsáno v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure pomocí automatického REST*](how-to-create-custom-sdks.md).
 
 V této části se dozvíte, jak ověřit v takovém případě.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Nejdřív byste měli provést kroky pro vytvoření vlastní sady SDK s AutoRest pomocí kroků v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure*](how-to-create-custom-sdks.md)pomocí automatického REST.
 

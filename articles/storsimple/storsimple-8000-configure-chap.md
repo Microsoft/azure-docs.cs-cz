@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5f0c022de69823aedbbb34eb369de350b4999c69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 694d63dacedd8ffcd075e73bb91b5ab0a089b58c
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514349"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766493"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>Konfigurace protokolu CHAP pro zařízení StorSimple
 
@@ -58,8 +58,8 @@ V případě jednosměrného ověřování cíl ověřuje iniciátor. Toto ově�
    
    3. Potvrďte heslo.
 
-       ![Iniciátor protokolu CHAP](./media/storsimple-8000-configure-chap/configure-chap6.png)
-3. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Klikněte na tlačítko **OK** a uložte změny.
+       ![Iniciátor protokolu CHAP 2](./media/storsimple-8000-configure-chap/configure-chap6.png)
+3. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Kliknutím na tlačítko **OK** uložte změny.
 
 #### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>Konfigurace jednosměrového ověřování na hostitelském serveru Windows
 1. Na hostitelském serveru Windows spusťte iniciátor iSCSI.
@@ -112,8 +112,8 @@ V obousměrném ověřování cíl ověřuje iniciátor a potom iniciátor ově�
    2. Zadejte **heslo** pro vaše zařízení.
    3. Potvrďte heslo.
 
-       ![Iniciátor protokolu CHAP](./media/storsimple-8000-configure-chap/configure-chap11.png)
-4. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Klikněte na tlačítko **OK** a uložte změny.
+       ![Iniciátor protokolu CHAP 3](./media/storsimple-8000-configure-chap/configure-chap11.png)
+4. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Kliknutím na tlačítko **OK** uložte změny.
 
 #### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>Konfigurace obousměrného ověřování na hostitelském serveru Windows
 

@@ -1,54 +1,57 @@
 ---
 title: Vytváření databází a uživatelů – Azure Database for MySQL
-description: Tento článek popisuje, jak můžete vytvořit nové uživatelské účty pro interakci se serverem Azure Database for MySQL.
+description: Tento článek popisuje, jak vytvořit nové uživatelské účty pro interakci se serverem Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: ed653ffb6fc24a75170d51d345c0c64724ff90f1
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 3e1f24b3ae6133241660751293f52fec63dfbe73
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651017"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766870"
 ---
-# <a name="create-databases-and-users-in-azure-database-for-mysql-server"></a>Vytvoření databází a uživatelů na serveru Azure Database for MySQL
+# <a name="create-databases-and-users-in-azure-database-for-mysql"></a>Vytváření databází a uživatelů v Azure Database for MySQL
 
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 
-Tento článek popisuje, jak můžete vytvářet uživatele na serveru Azure Database for MySQL.
+Tento článek popisuje, jak vytvořit uživatele v Azure Database for MySQL.
 
 > [!NOTE]
-> Komunikace bez posunu
+> **Komunikace bez posunu**
 >
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
+> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na *podřízený*text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Slovo se v tomto článku používá kvůli konzistenci, protože se jedná o slovo, které se v současnosti zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
 >
 
-Při prvním vytvoření Azure Database for MySQL jste zadali přihlašovací uživatelské jméno a heslo správce serveru. Další informace najdete v [rychlém](quickstart-create-mysql-server-database-using-azure-portal.md)startu. Přihlašovací uživatelské jméno správce serveru můžete najít z Azure Portal.
+Při prvním vytvoření serveru Azure Database for MySQL jste zadali uživatelské jméno a heslo správce serveru. Další informace najdete v tomto [rychlém](quickstart-create-mysql-server-database-using-azure-portal.md)startu. Uživatelské jméno správce serveru můžete určit v Azure Portal.
 
-Uživatel správce serveru získá určitá oprávnění pro váš server, jak je uvedeno níže: 
+Uživatel s oprávněními správce serveru má tato oprávnění: 
 
    VYBRAT, VLOŽIT, AKTUALIZOVAT, ODSTRANIT, VYTVOŘIT, VYŘADIT, ZNOVU NAČÍST, ZPRACOVAT, ODKAZY, INDEXOVAT, ZMĚNIT, ZOBRAZIT DATABÁZE, VYTVOŘIT DOČASNÉ TABULKY, UZAMKNOUT TABULKY, SPUSTIT, REPLIKACE PODŘÍZENÁ, KLIENT REPLIKACE, VYTVOŘIT ZOBRAZENÍ, ZOBRAZIT ZOBRAZENÍ, VYTVOŘIT RUTINU, ZMĚNIT RUTINU, VYTVOŘIT UŽIVATELE, UDÁLOST, AKTIVAČNÍ UDÁLOST
 
 
-Po vytvoření serveru Azure Database for MySQL můžete pomocí prvního uživatelského účtu správce serveru vytvořit další uživatele a udělit jim přístup správce. Účet správce serveru se taky dá použít k vytvoření méně privilegovaných uživatelů, kteří mají přístup k jednotlivým schématům databáze.
+Po vytvoření serveru Azure Database for MySQL můžete použít první účet správce serveru k vytvoření dalších uživatelů a udělení přístupu správcům. Účet správce serveru můžete použít také k vytvoření méně privilegovaných uživatelů, kteří mají přístup k jednotlivým schématům databáze.
 
 > [!NOTE]
-> Role SUPER Privilege a DBA nejsou podporované. Pokud chcete zjistit, co služba nepodporuje, přečtěte si [oprávnění](concepts-limits.md#privileges--data-manipulation-support) v článku omezení.<br><br>
-> Moduly plug-in pro heslo, jako je například "validate_password" a "caching_sha2_password", nejsou službou podporovány.
+> Role SUPER Privilege a DBA není podporovaná. Pokud chcete zjistit, co služba nepodporuje, přečtěte si [oprávnění](concepts-limits.md#privileges--data-manipulation-support) v článku omezení.
+>
+> Moduly plug-in `validate_password` pro hesla, jako `caching_sha2_password` jsou a nejsou podporovány službou.
 
-## <a name="how-to-create-database-with-non-admin-user-in-azure-database-for-mysql"></a>Vytvoření databáze s uživatelem bez správce v Azure Database for MySQL
+
+## <a name="to-create-a-database-with-a-non-admin-user-in-azure-database-for-mysql"></a>Vytvoření databáze s uživatelem bez role správce v Azure Database for MySQL
 
 1. Získejte informace o připojení a uživatelské jméno správce.
    Pokud se chcete připojit ke svému databázovému serveru, potřebujete úplný název serveru a přihlašovací údaje správce. Název serveru a přihlašovací informace můžete snadno vyhledat na stránce **Přehled** serveru nebo na stránce **vlastnosti** v Azure Portal.
 
-2. K připojení k databázovému serveru použijte účet správce a heslo. Použijte preferovaný klientský nástroj, jako je například MySQL Workbench, mysql.exe, HeidiSQL nebo jiné.
-   Pokud si nejste jistí, jak se připojit, přečtěte si téma jak použít MySQL Workbench k [připojení a dotazování dat pro jeden server](./connect-workbench.md) nebo [připojení a dotazování dat pro flexibilní Server](./flexible-server/connect-workbench.md) .
+2. K připojení k databázovému serveru použijte účet správce a heslo. Použijte preferovaný klientský nástroj, jako je například MySQL Workbench, mysql.exe nebo HeidiSQL.
+   
+   Pokud si nejste jistí, jak se připojit, přečtěte si téma [připojení a dotazování dat pro jeden server](./connect-workbench.md) nebo [připojení a dotazování dat pro flexibilní Server](./flexible-server/connect-workbench.md).
 
-3. Upravte a spusťte následující kód SQL. Nahraďte hodnotu zástupného symbolu `db_user` vaším zamýšleným novým uživatelským jménem a zástupnou hodnotou `testdb` s vlastním názvem databáze.
+3. Upravte a spusťte následující kód SQL. Nahraďte hodnotu zástupného symbolu `db_user` vaším zamýšleným novým uživatelským jménem. Nahraďte hodnotu zástupného symbolu `testdb` názvem vaší databáze.
 
-   Tato syntaxe kódu SQL vytvoří pro ukázkové účely novou databázi s názvem TestDB. Potom vytvoří nového uživatele ve službě MySQL a udělí všem oprávněním novému schématu databáze (TestDB. \* ) pro tohoto uživatele.
+   Tento kód SQL vytvoří novou databázi s názvem TestDB. Potom vytvoří nového uživatele ve službě MySQL a udělí tomuto uživateli všechna oprávnění pro nové schéma databáze (TestDB \* ).
 
    ```sql
    CREATE DATABASE testdb;
@@ -60,7 +63,7 @@ Po vytvoření serveru Azure Database for MySQL můžete pomocí prvního uživa
    FLUSH PRIVILEGES;
    ```
 
-4. Ověřte granty v rámci databáze.
+4. Ověřte granty v databázi:
 
    ```sql
    USE testdb;
@@ -68,29 +71,30 @@ Po vytvoření serveru Azure Database for MySQL můžete pomocí prvního uživa
    SHOW GRANTS FOR 'db_user'@'%';
    ```
 
-5. Přihlaste se k serveru a určete určenou databázi pomocí nového uživatelského jména a hesla. Tento příklad ukazuje příkazový řádek MySQL. Pomocí tohoto příkazu se zobrazí výzva k zadání hesla pro uživatelské jméno. Nahraďte vlastní název serveru, název databáze a uživatelské jméno.
+5. Přihlaste se k serveru, určete určenou databázi a použijte nové uživatelské jméno a heslo. Tento příklad ukazuje příkazový řádek MySQL. Když použijete tento příkaz, zobrazí se výzva k zadání hesla uživatele. Použijte vlastní název serveru, název databáze a uživatelské jméno.
 
-# <a name="single-server"></a>[Jeden server](#tab/single-server)
+   # <a name="single-server"></a>[Jeden server](#tab/single-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-# <a name="flexible-server"></a>[Flexibilní server](#tab/flexible-server)
+   # <a name="flexible-server"></a>[Flexibilní Server](#tab/flexible-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user -p
    ```
  ---
 
-## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>Vytvoření dalších uživatelů s oprávněními správce v Azure Database for MySQL
+## <a name="to-create-additional-admin-users-in-azure-database-for-mysql"></a>Vytvoření dalších uživatelů správce v Azure Database for MySQL
 
 1. Získejte informace o připojení a uživatelské jméno správce.
    Pokud se chcete připojit ke svému databázovému serveru, potřebujete úplný název serveru a přihlašovací údaje správce. Název serveru a přihlašovací informace můžete snadno vyhledat na stránce **Přehled** serveru nebo na stránce **vlastnosti** v Azure Portal.
 
-2. K připojení k databázovému serveru použijte účet správce a heslo. Použijte preferovaný klientský nástroj, jako je například MySQL Workbench, mysql.exe, HeidiSQL nebo jiné.
-   Pokud si nejste jistí, jak se připojit, přečtěte si téma [použití aplikace MySQL Workbench pro připojení a dotazování dat](./connect-workbench.md) .
+2. K připojení k databázovému serveru použijte účet správce a heslo. Použijte preferovaný klientský nástroj, jako je například MySQL Workbench, mysql.exe nebo HeidiSQL.
+   
+   Pokud si nejste jistí, jak se připojit, přečtěte si téma [použití aplikace MySQL Workbench pro připojení a dotazování dat](./connect-workbench.md).
 
-3. Upravte a spusťte následující kód SQL. Nahraďte nové uživatelské jméno pro hodnotu zástupného textu `new_master_user` . Tato syntaxe uděluje uvedená oprávnění na všech schématech databáze (*.*) k uživatelskému jménu (new_master_user v tomto příkladu).
+3. Upravte a spusťte následující kód SQL. Nahraďte hodnotu zástupného symbolu `new_master_user` novým uživatelským jménem. Tato syntaxe uděluje uvedená oprávnění na všech schématech databáze (*.*) uživateli ( `new_master_user` v tomto příkladu).
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -100,7 +104,7 @@ Po vytvoření serveru Azure Database for MySQL můžete pomocí prvního uživa
    FLUSH PRIVILEGES;
    ```
 
-4. Ověřit granty
+4. Ověřte granty:
 
    ```sql
    USE sys;

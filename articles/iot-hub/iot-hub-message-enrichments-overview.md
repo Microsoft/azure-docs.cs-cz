@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 08eb5fd4d28421105988d64b99afb441a0b824f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 792486a78dfed606ce8317d9bc037221ae33d508
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290300"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767189"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Rozšíření zpráv pro zprávy ze zařízení na Cloud IoT Hub
 
@@ -86,7 +86,7 @@ Informace o tom, jak vyzkoušet rozšíření zpráv, najdete v [kurzu rozšíř
 
 * Celková velikost zprávy, včetně rozšíření, nesmí překročit 256 KB. V případě, že velikost zprávy překračuje 256 KB, bude zpráva vynechá IoT Hub. Můžete použít [IoT Hub metriky](iot-hub-metrics.md) k identifikaci a ladění chyb při vyřazení zpráv. Například můžete monitorovat D2C. telemetrie. odchozí. neplatné.
 
-* Rozšiřování zpráv se nevztahuje na události s digitálními událostmi změny (součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md)).
+* Rozšíření zpráv se nevztahují na události digitální události změny.
 
 ## <a name="pricing"></a>Ceny
 

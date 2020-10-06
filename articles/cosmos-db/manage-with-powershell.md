@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 0792a885006cf3050002c0e275eff2850afb81c7
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 77c91d96beb2722b7fce54be8a1db32d66be6196
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91566801"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767543"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Správa prostředků rozhraní SQL API Azure Cosmos DB pomocí PowerShellu
 
@@ -25,9 +25,12 @@ Pro správu Azure Cosmos DB pro různé platformy můžete použít `Az` `Az.Cos
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="getting-started"></a>Začínáme
+## <a name="getting-started"></a>začínáme
 
 Postupujte podle pokynů v tématu [instalace a konfigurace Azure PowerShell][powershell-install-configure] pro instalaci a přihlášení ke svému účtu Azure v prostředí PowerShell.
+
+> [!IMPORTANT]
+> Prostředky Azure Cosmos DB nelze přejmenovat, protože jsou v rozporu s tím, jak Azure Resource Manager pracuje s identifikátory URI prostředků.
 
 ## <a name="azure-cosmos-accounts"></a>Účty Azure Cosmos
 

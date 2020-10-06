@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: e546963a7ca90c7494164af7afefbb4e78b2259b
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651934"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766674"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurace vlastních upozornění pro monitorování inzerovaných tras
 
@@ -52,7 +52,7 @@ Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
 ## <a name="create-and-configure-accounts"></a><a name="accounts"></a>Vytvoření a konfigurace účtů
 
-Když v Azure Portal vytvoříte účet Automation, automaticky se vytvoří účet [Spustit jako](../automation/manage-runas-account.md#types-of-run-as-accounts) . Tento účet provede následující akce:
+Když v Azure Portal vytvoříte účet Automation, automaticky se vytvoří účet [Spustit jako](../automation/automation-security-overview.md#run-as-accounts) . Tento účet provede následující akce:
 
 * Vytvoří aplikaci Azure Active Directory (Azure AD) s certifikátem podepsaným svým držitelem. Samotný účet Spustit jako má certifikát, který je potřeba obnovit ve výchozím nastavení každý rok.
 

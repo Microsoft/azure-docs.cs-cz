@@ -3,12 +3,12 @@ title: Zabezpečení sítě pro Azure Event Hubs
 description: Tento článek popisuje, jak nakonfigurovat přístup z privátních koncových bodů.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ddb816e872625da06e370a7e130b4dd444de8de7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ae6cbdc8258cde9bb2da961cb452f996f0797cfe
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521849"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767784"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Zabezpečení sítě pro Azure Event Hubs 
 Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Event Hubs: 
@@ -16,7 +16,7 @@ Tento článek popisuje, jak používat následující funkce zabezpečení pro 
 - Značky služeb
 - Pravidla brány firewall protokolu IP
 - Koncové body síťové služby
-- Soukromé koncové body (Preview)
+- Soukromé koncové body
 
 
 ## <a name="service-tags"></a>Značky služeb
@@ -74,9 +74,6 @@ Privátní koncový bod je síťové rozhraní, které se připojuje soukromě a
 
 > [!NOTE]
 > Tato funkce je podporována pouze u **vyhrazené** úrovně. Další informace o vyhrazené úrovni najdete v tématu [přehled Event Hubs úrovně Dedicated](event-hubs-dedicated-overview.md). 
->
-> Tato funkce je aktuálně ve **verzi Preview**. 
-
 
 Další informace najdete v tématu [Konfigurace privátních koncových bodů pro centrum událostí](private-link-service.md) .
 

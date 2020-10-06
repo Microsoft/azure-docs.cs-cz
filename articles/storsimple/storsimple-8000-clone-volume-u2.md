@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 86a3e2ab15e83f5393315f75f37ad8b41d3489b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ebb7f1d9440bc7a8b75afe64403762532213c1d
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496141"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767567"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Použití služby Správce zařízení StorSimple na webu Azure Portal ke klonování svazku
 
@@ -64,11 +64,11 @@ Provedením následujících kroků vytvoříte klon svazku ze zálohy katalogu.
 
       Zálohy přidružené k vybranému svazku nebo zásadám zálohování by se měly zobrazit v seznamu zálohovacích skladů.
    
-      ![Seznam zálohovacích skladů](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
+      ![Seznam zálohovacích skladů 2](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
 3. Rozbalte zálohovací sklad a zobrazte přidružený svazek a vyberte svazek v zálohovacím skladu. Klikněte pravým tlačítkem a potom v místní nabídce vyberte **klonovat**.
 
-   ![Seznam zálohovacích skladů](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
+   ![Seznam zálohovacích skladů 3](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 
 3. V okně **klonovat** proveďte následující kroky:
    
@@ -84,17 +84,17 @@ Provedením následujících kroků vytvoříte klon svazku ze zálohy katalogu.
           
    3. V části **připojení hostitelé**zadejte záznam řízení přístupu (ACR) pro klon. Můžete přidat novou ACR nebo vybrat z existujícího seznamu. ACR určí, kteří hostitelé budou mít přístup k tomuto klonu.
       
-       ![Seznam zálohovacích skladů](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
+       ![Seznam zálohovacích skladů 4](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 
    4. Operaci dokončete kliknutím na tlačítko **klonovat** .
 
 4. Úloha klonování se iniciuje a po úspěšném vytvoření klonu se zobrazí oznámení. Kliknutím na okno oznámení úlohy nebo přejít do okna **úlohy** můžete monitorovat úlohu klonování.
 
-    ![Seznam zálohovacích skladů](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
+    ![Seznam zálohovacích skladů 5](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
 
 7. Po dokončení úlohy klonování přejděte na zařízení a pak klikněte na **svazky**. V seznamu svazků by se měl zobrazit klon, který byl právě vytvořen ve stejném kontejneru svazků, který má zdrojový svazek.
 
-    ![Seznam zálohovacích skladů](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
+    ![Seznam zálohovacích skladů 6](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
 
 Klon, který je vytvořen tímto způsobem, je přechodným klonem. Další informace o typech klonování naleznete v tématu [přechodné a trvalé klony](#transient-vs-permanent-clones).
 

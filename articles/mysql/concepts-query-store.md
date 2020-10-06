@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: b47ab44c5a5f8faad85b60032a6781475235a170
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12623dccdc298aaad23ad6779caf33d895c5634a
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83402250"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766130"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Monitorování výkonu Azure Database for MySQL s využitím úložiště dotazů
 
@@ -87,7 +87,7 @@ Když je povoleno úložiště dotazů, ukládá data v oknech agregace 15 minut
 
 Pro konfiguraci parametrů úložiště dotazů jsou k dispozici následující možnosti.
 
-| **Parametr** | **Popis** | **Výchozí** | **Oblasti** |
+| **Parametr** | **Popis** | **Výchozí** | **Rozsah** |
 |---|---|---|---|
 | query_store_capture_mode | Zapněte nebo vypněte funkci úložiště dotazů na základě hodnoty. Poznámka: Pokud je performance_schema VYPNUTá, zapnutí query_store_capture_mode zapnete performance_schema a podmnožinu nástrojů schématu výkonu, které jsou pro tuto funkci nutné. | ALL | ŽÁDNÉ, VŠE |
 | query_store_capture_interval | Interval zachycení úložiště dotazů je v řádu minut. Umožňuje zadat interval, ve kterém jsou metriky dotazu agregovány. | 15 | 5 - 60 |
@@ -96,7 +96,7 @@ Pro konfiguraci parametrů úložiště dotazů jsou k dispozici následující 
 
 Následující možnosti platí konkrétně pro čekání na statistiku.
 
-| **Parametr** | **Popis** | **Výchozí** | **Oblasti** |
+| **Parametr** | **Popis** | **Výchozí** | **Rozsah** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Umožňuje zapnout nebo vypnout statistiku čekání. | NTATO | ŽÁDNÉ, VŠE |
 | query_store_wait_sampling_frequency | Mění frekvenci příkazu Wait-vzorkování v sekundách. 5 až 300 sekund. | 30 | 5-300 |
@@ -108,15 +108,15 @@ Následující možnosti platí konkrétně pro čekání na statistiku.
 
 ## <a name="views-and-functions"></a>Zobrazení a funkce
 
-Umožňuje zobrazit a spravovat úložiště dotazů pomocí následujících zobrazení a funkcí. Kdokoli z [veřejné role vybrat oprávnění](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) může tato zobrazení použít k zobrazení dat v úložišti dotazů. Tato zobrazení jsou k dispozici pouze v databázi **MySQL** .
+Umožňuje zobrazit a spravovat úložiště dotazů pomocí následujících zobrazení a funkcí. Kdokoli z [veřejné role vybrat oprávnění](howto-create-users.md#to-create-additional-admin-users-in-azure-database-for-mysql) může tato zobrazení použít k zobrazení dat v úložišti dotazů. Tato zobrazení jsou k dispozici pouze v databázi **MySQL** .
 
 Dotazy jsou normalizovány tím, že si po odebrání literálů a konstant vyhledají jejich strukturu. Pokud jsou dva dotazy stejné s výjimkou hodnot literálů, budou mít stejnou hodnotu hash.
 
-### <a name="mysqlquery_store"></a>MySQL. query_store
+### <a name="mysqlquery_store"></a>mysql.query_store
 
 Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele a ID dotazu je k dispozici jeden řádek.
 
-| **Název** | **Typ dat** | **IS_NULLABLE** | **Popis** |
+| **Název** | **Datový typ** | **IS_NULLABLE** | **Popis** |
 |---|---|---|---|
 | `schema_name`| varchar (64) | NO | Název schématu |
 | `query_id`| bigint (20) | NO| Jedinečné ID generované pro konkrétní dotaz, pokud se stejný dotaz spustí v jiném schématu, vygeneruje se nové ID. |
@@ -145,11 +145,11 @@ Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedine�
 | `first_seen` | časové razítko| NO| První výskyt dotazu (UTC) během okna agregace|
 | `last_seen` | časové razítko| NO| Poslední výskyt dotazu (UTC) během tohoto okna agregace|
 
-### <a name="mysqlquery_store_wait_stats"></a>MySQL. query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
 Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele, ID dotazu a událost je jeden řádek.
 
-| **Název**| **Typ dat** | **IS_NULLABLE** | **Popis** |
+| **Název**| **Datový typ** | **IS_NULLABLE** | **Popis** |
 |---|---|---|---|
 | `interval_start` | časové razítko | NO| Začátek intervalu (přírůstek 15 minut)|
 | `interval_end` | časové razítko | NO| Konec intervalu (přírůstek 15 minut)|

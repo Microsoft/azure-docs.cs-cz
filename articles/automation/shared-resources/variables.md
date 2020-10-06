@@ -3,14 +3,14 @@ title: Správa proměnných v Azure Automation
 description: Tento článek popisuje, jak pracovat s proměnnými v sadách Runbook a konfiguracích DSC.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 300bfa2ed801b810bcaaeb5bc4d04775d590015b
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4749fcb6698ff1716f2cae257cc0efad458bf9a9
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004558"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766195"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Správa proměnných v Azure Automation
 
@@ -37,13 +37,13 @@ Když vytvoříte proměnnou pomocí Azure Portal, je nutné zadat datový typ z
 
 * Řetězec
 * Integer
-* Datum a čas
+* DateTime
 * Logická hodnota
 * Null
 
 Proměnná není omezena na zadaný datový typ. Pokud chcete zadat hodnotu jiného typu, je nutné nastavit proměnnou pomocí prostředí Windows PowerShell. Pokud označíte `Not defined` , hodnota proměnné je nastavená na null. Hodnotu je nutné nastavit pomocí rutiny [set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable) nebo interní `Set-AutomationVariable` rutiny.
 
-Nemůžete použít Azure Portal k vytvoření nebo změně hodnoty pro komplexní typ proměnné. Pomocí Windows PowerShellu ale můžete zadat hodnotu libovolného typu. Komplexní typy jsou načteny jako [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject).
+Nemůžete použít Azure Portal k vytvoření nebo změně hodnoty pro komplexní typ proměnné. Pomocí Windows PowerShellu ale můžete zadat hodnotu libovolného typu. Komplexní typy jsou načteny jako [Newtonsoft.Jsna. LINQ. JProperty](https://www.newtonsoft.com/json/help/html/N_Newtonsoft_Json_Linq.htm) pro komplexní typ objektu místo PSObject typu [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject).
 
 Můžete uložit více hodnot do jedné proměnné tak, že vytvoříte pole nebo zatřiďovací tabulku a uložíte ji do proměnné.
 
@@ -56,7 +56,7 @@ Rutiny v následující tabulce vytvářejí a spravují proměnné automatizace
 
 | Rutina | Popis |
 |:---|:---|
-|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable) | Načte hodnotu existující proměnné. Pokud je hodnota jednoduchý typ, je načten stejný typ. Pokud se jedná o komplexní typ, `PSCustomObject` načte se typ. <br>**Poznámka:**  Tuto rutinu nemůžete použít k načtení hodnoty šifrované proměnné. Jediným způsobem, jak to provést, je použít interní `Get-AutomationVariable` rutinu v konfiguraci sady Runbook nebo DSC. Viz [interní rutiny pro přístup k proměnným](#internal-cmdlets-to-access-variables). |
+|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable) | Načte hodnotu existující proměnné. Pokud je hodnota jednoduchý typ, je načten stejný typ. Pokud se jedná o komplexní typ, `PSCustomObject` načte se typ. <br>**Poznámka:** Tuto rutinu nemůžete použít k načtení hodnoty šifrované proměnné. Jediným způsobem, jak to provést, je použít interní `Get-AutomationVariable` rutinu v konfiguraci sady Runbook nebo DSC. Viz [interní rutiny pro přístup k proměnným](#internal-cmdlets-to-access-variables). |
 |[New-AzAutomationVariable](/powershell/module/az.automation/new-azautomationvariable) | Vytvoří novou proměnnou a nastaví její hodnotu.|
 |[Remove-AzAutomationVariable](/powershell/module/az.automation/remove-azautomationvariable)| Odstraní existující proměnnou.|
 |[Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable)| Nastaví hodnotu pro existující proměnnou. |
@@ -74,7 +74,7 @@ Interní rutiny v následující tabulce se používají pro přístup k proměn
 > Vyhněte se použití proměnných v `Name` parametru `Get-AutomationVariable` v sadě Runbook nebo konfiguraci DSC. Použití proměnných může zkomplikovat zjišťování závislostí mezi sadami Runbook a proměnnými automatizace v době návrhu.
 
 `Get-AutomationVariable` nefunguje v prostředí PowerShell, ale pouze v sadě Runbook nebo konfiguraci DSC. Chcete-li například zobrazit hodnotu zašifrované proměnné, můžete vytvořit sadu Runbook, která získá proměnnou a následně ji zapsat do výstupního datového proudu:
- 
+
 ```powershell
 $mytestencryptvar = Get-AutomationVariable -Name TestVariable
 Write-output "The encrypted value of the variable is: $mytestencryptvar"
@@ -123,18 +123,18 @@ $string = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 ```
 
-Následující příklad ukazuje, jak vytvořit proměnnou se složitým typem a pak načíst jeho vlastnosti. V takovém případě se použije objekt virtuálního počítače z [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) .
+Následující příklad ukazuje, jak vytvořit proměnnou se složitým typem a pak načíst jeho vlastnosti. V tomto případě se používá objekt virtuálního počítače z [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) , který určuje podmnožinu svých vlastností.
 
 ```powershell
-$vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01"
-New-AzAutomationVariable –AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable" –Encrypted $false –Value $vm
+$vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01" | Select Name, Location, Extensions
+New-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable" –Encrypted $false –Value $vm
 
-$vmValue = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
-–AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable").Value
+$vmValue = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
+–AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable"
+
 $vmName = $vmValue.Name
-$vmIpAddress = $vmValue.IpAddress
+$vmExtensions = $vmValue.Extensions
 ```
-
 ## <a name="textual-runbook-examples"></a>Příklady textových runbooků
 
 ### <a name="retrieve-and-set-a-simple-value-from-a-variable"></a>Načtení a nastavení jednoduché hodnoty z proměnné

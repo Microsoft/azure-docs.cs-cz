@@ -4,12 +4,12 @@ description: Model dat kontextu telemetrie Application Insights
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: cbd717243ed35fc90772cb2b727f7670bb77ee70
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 76f3be510494a1f005b0080ee8f2390a3fbc3622
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757295"
+ms.locfileid: "91767849"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Kontext telemetrie: Application Insights datový model
 
@@ -85,7 +85,7 @@ Maximální délka: 128
 
 ## <a name="authenticated-user-id"></a>ID ověřeného uživatele
 
-ID ověřeného uživatele Opakem ID anonymního uživatele Toto pole představuje uživatele s popisným názvem. Vzhledem k tomu, že informace o PII nejsou shromažďovány ve výchozím nastavení většinou v sadě SDK.
+ID ověřeného uživatele Opakem ID anonymního uživatele Toto pole představuje uživatele s popisným názvem. Toto je shromažďováno pouze ve výchozím nastavení pomocí sady SDK ASP.NET Framework [`AuthenticatedUserIdTelemetryInitializer`](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/WEB/Src/Web/Web/AuthenticatedUserIdTelemetryInitializer.cs) .  
 
 Maximální délka: 1024
 

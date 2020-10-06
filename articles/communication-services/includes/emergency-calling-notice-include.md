@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/29/2020
 ms.author: bobazile
-ms.openlocfilehash: 8f9c18a37c56a1275408672b5374ed2a743e0e7e
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 97a6fd3b84b48d09024745c5a43b9d2a2bd9b8ec
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761959"
+ms.locfileid: "91767131"
 ---
->[!IMPORTANT]
->**Žádné tísňové volání s komunikačními službami Azure**
+> [!IMPORTANT]
+> **Komunikační služby Azure nepodporují nouzové volání.**
 >
->Služby odchozího hlasového volání služby Azure Communication Services se nedají použít ke kontaktování tísňových služeb. Měli byste udržovat tradiční telefonní službu pro zajištění tísňového volání.
+> Služby odchozího hlasového volání služby Azure Communication Services se nedají použít ke kontaktování tísňových služeb. Měli byste udržovat tradiční telefonní službu pro zajištění tísňového volání.

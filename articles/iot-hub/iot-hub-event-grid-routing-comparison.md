@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 05b582e24afddf25b7f50d4c8cd1a029684a2d4f
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: fa5c4bc1aae91e9e40b6d14ad5c12b8d1aee68f6
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023801"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767602"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Porovnat směrování zpráv a Event Grid IoT Hub
 
@@ -30,9 +30,9 @@ Azure IoT Hub poskytuje možnost streamovat data z připojených zařízení a i
 
 Jak směrování zpráv, tak Event Grid povolit konfiguraci výstrah, existují některé klíčové rozdíly mezi těmito dvěma typy. Podrobnosti najdete v následující tabulce:
 
-| Příznak | Směrování zpráv IoT Hub | IoT Hub integrace s Event Grid |
+| Funkce | Směrování zpráv IoT Hub | IoT Hub integrace s Event Grid |
 | ------- | --------------- | ---------- |
-| **Zprávy a události zařízení** | Ano, směrování zpráv lze použít pro data telemetrie, sestavu nedokončených změn zařízení a události životního cyklu zařízení (např. Když jsou zařízení vytvořená, Odstraněná, připojená a odpojená od IoT Hub) a události s digitálními událostmi změn (součást služby [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md)). | Ano, Event Grid lze použít pro události dat telemetrie a životního cyklu zařízení. Ale Event Grid se nedá použít pro události změny zařízení, které jsou v něm události, a události změny digitálního vlákna. |
+| **Zprávy a události zařízení** | Ano, směrování zpráv lze použít pro data telemetrie, sestavu nedokončených změn zařízení a události životního cyklu zařízení (např. Když jsou zařízení vytvořená, Odstraněná, připojená a odpojená od IoT Hub), a události změny digitálního vlákna. | Ano, Event Grid lze použít pro události dat telemetrie a životního cyklu zařízení. Ale Event Grid se nedá použít pro události změny zařízení, které jsou v něm události, a události změny digitálního vlákna. |
 | **Řazení** | Ano, řazení událostí je zachováno.  | Ne, pořadí událostí není zaručeno. | 
 | **Filtrování** | Bohatá filtrování vlastností aplikace zprávy, vlastností systému zpráv, textu zprávy, dvojitých značek zařízení a vlastností, které jsou v zařízení. Filtrování není aplikováno na události změny digitálního vlákna. Příklady najdete v tématu [syntaxe dotazu směrování zpráv](iot-hub-devguide-routing-query-syntax.md). | Filtrování na základě typu události, typu subjektu a atributů v každé události. Příklady najdete v tématu [porozumění událostem filtrování v Předplatných Event Grid](../event-grid/event-filtering.md). Při přihlášení k odběru událostí telemetrie můžete pro data použít další filtry pro filtrování vlastností zpráv, textu zprávy a vlákna zařízení v IoT Hub před publikováním do Event Grid. Viz [jak filtrovat události](../iot-hub/iot-hub-event-grid.md#filter-events). |
 | **Koncové body** | <ul><li>Event Hubs</li> <li>Azure Blob Storage</li> <li>Fronta služby Service Bus</li> <li>Témata služby Service Bus</li></ul><br>Placené IoT Hub SKU (S1, S2 a S3) jsou omezené na 10 vlastních koncových bodů. na IoT Hub lze vytvořit trasy 100. | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Storage Blob</li> <li>Vlastní témata</li> <li>Queue Storage</li> <li>Microsoft Flow</li> <li>Služby třetích stran prostřednictvím webhooků</li></ul><br>jsou podporovány koncové body 500 na IoT Hub. Nejaktuálnější seznam koncových bodů naleznete v tématu [Event Grid obslužných rutin událostí](../event-grid/overview.md#event-handlers). |
@@ -42,7 +42,7 @@ Jak směrování zpráv, tak Event Grid povolit konfiguraci výstrah, existují 
 
 IoT Hub směrování zpráv a Event Grid mají podobné podobnosti, některé z nich jsou podrobně popsané v následující tabulce:
 
-| Příznak | Směrování zpráv IoT Hub | IoT Hub integrace s Event Grid |
+| Funkce | Směrování zpráv IoT Hub | IoT Hub integrace s Event Grid |
 | ------- | --------------- | ---------- |
 | **Maximální velikost zprávy** | 256 KB, ze zařízení do cloudu | 256 KB, ze zařízení do cloudu |
 | **Spolehlivost** | Vysoká: každý pro každou trasu dodá každé zprávě na koncový bod aspoň jednou. Vyprší platnost všech zpráv, které nejsou doručeny do jedné hodiny. | Vysoká: každý odběr zajišťuje každou zprávu pro Webhook alespoň jednou. Vyprší platnost všech událostí, které nejsou dodány do 24 hodin. | 

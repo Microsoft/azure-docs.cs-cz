@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9812724b62717440160b9db8604a65ab787f3a9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2af4f2e2148c96a6059836f861cf56d4a4ac005b
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252659"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766169"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -61,8 +61,9 @@ Použití rozhraní API roviny dat:
 * Můžete použít sadu **JavaScript** SDK. Použití sady JavaScript SDK...
    - Balíček můžete zobrazit a nainstalovat z npm: Služba [Azure Azure Digital nepracuje s klientem knihovny pro JavaScript](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1).
    - Můžete si prohlédnout [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/javascript/api/@azure/digital-twins/?view=azure-node-latest&preserve-view=true).
-* Můžete použít sadu **JavaScript** SDK. Použití sady JavaScript SDK...
+* Můžete použít sadu **Java** SDK. Použití sady Java SDK...
    - Balíček můžete zobrazit a nainstalovat z Maven: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
+   - můžete zobrazit [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/client?view=azure-java-preview&preserve-view=true) .
 * Můžete vygenerovat sadu SDK pro jiný jazyk pomocí programu AutoRest. Postupujte podle pokynů v tématu [*Postupy: vytváření vlastních sad SDK pro digitální vlákna Azure pomocí automatického REST*](how-to-create-custom-sdks.md).
 
 Rozhraní API roviny dat můžete také využít k interakci s digitálními podčinnostmi Azure prostřednictvím rozhraní příkazového [řádku](how-to-use-cli.md).

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 10/06/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 191213511a6b41e3a8419660a40b8d79a5c747f2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 20e48640d52fba7b3262014c2e84cfc56c7110cc
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714936"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767242"
 ---
 # <a name="blob-versioning"></a>Správa verzí objektů BLOB
 
@@ -36,13 +36,13 @@ Informace o tom, jak povolit správu verzí objektů blob, najdete v tématu [po
 
 Verze zachytí stav objektu BLOB v daném časovém okamžiku. Když je pro účet úložiště povolená Správa verzí objektů blob, Azure Storage automaticky vytvoří novou verzi objektu BLOB pokaždé, když se objekt BLOB upraví nebo odstraní.
 
-Při vytváření objektu BLOB s povoleným správou verzí je nový objekt blob aktuální verzí objektu BLOB (nebo základního objektu BLOB). Pokud následně tento objekt BLOB upravíte, Azure Storage vytvoří verzi, která před úpravou zachytí stav objektu BLOB. Upravený objekt BLOB se změní na novou aktuální verzi. Při každé změně objektu BLOB se vytvoří nová verze.
+Při vytváření objektu BLOB s povoleným správou verzí je nový objekt blob aktuální verzí objektu BLOB (nebo základního objektu BLOB). Pokud následně tento objekt BLOB upravíte, Azure Storage vytvoří verzi, která před úpravou zachytí stav objektu BLOB. Upravený objekt BLOB se změní na novou aktuální verzi. Při každé změně objektu BLOB se vytvoří nová verze. Objekt BLOB může mít až 1000 přidružených verzí.
 
 Když odstraníte objekt BLOB s povoleným správou verzí, Azure Storage vytvoří verzi, která před odstraněním zachytí stav objektu BLOB. Aktuální verze objektu BLOB se pak odstraní, ale verze objektu BLOB jsou trvalé, takže je v případě potřeby možné znovu vytvořit. 
 
 Verze objektů BLOB jsou neměnné. Nemůžete změnit obsah nebo metadata existující verze objektu BLOB.
 
-Správa verzí objektů BLOB je k dispozici pro obecné účely v2, objekty blob bloku a účty BLOB Storage. Účty úložiště s hierarchickým oborem názvů povoleným pro použití s Azure Data Lake Storage Gen2 nejsou aktuálně podporovány.
+Správa verzí objektů BLOB je k dispozici pro obecné účely v2, objekty blob bloku a účty BLOB Storage. Účty úložiště s hierarchickým oborem názvů povoleným pro použití s Azure Data Lake Storage Gen2 nejsou aktuálně podporovány. 
 
 Verze 2019-10-10 a vyšší z Azure Storage REST API podporuje správu verzí objektů BLOB.
 
@@ -185,7 +185,7 @@ Správa verzí objektů BLOB je navržená tak, aby chránila vaše data před n
 
 Následující tabulka uvádí, které akce Azure RBAC podporují odstranění objektu BLOB nebo verze objektu BLOB.
 
-| Description | Operace Blob service | Vyžaduje se akce s daty služby Azure RBAC. | Podpora integrované role Azure |
+| Popis | Operace Blob service | Vyžaduje se akce s daty služby Azure RBAC. | Podpora integrované role Azure |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | Odstraňuje se aktuální verze objektu BLOB. | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE** | Přispěvatel dat v objektech blob služby Storage |
 | Odstraňuje se verze | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/deleteBlobVersion/Action** | Vlastník dat v objektech blob služby Storage |
