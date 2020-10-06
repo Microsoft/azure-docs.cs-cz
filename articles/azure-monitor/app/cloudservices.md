@@ -4,19 +4,19 @@ description: Efektivní sledování webových rolí a rolí pracovních procesů
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 1662b45d8243217357d1e69124832c499d587812
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 676d3543cbcbf86feb67cad4bd2b9709c2b81437
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437322"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759369"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
 [Application Insights][start] můžou monitorovat [aplikace cloudových služeb Azure](https://azure.microsoft.com/services/cloud-services/) kvůli dostupnosti, výkonu, selhání a využití díky kombinování dat ze Application Insights sad SDK s [Azure Diagnosticsmi](../platform/diagnostics-extension-overview.md) daty z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
 
 ![Řídicí panel přehled](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete, budete potřebovat:
 
 * Předplatné [Azure](https://azure.com) . Přihlaste se pomocí účet Microsoft pro Windows, Xbox Live nebo jiné cloudové služby Microsoftu. 
@@ -42,7 +42,7 @@ Další části obsahují následující další možnosti:
 * Přidání vlastní telemetrie ze své aplikace.
 
 ## <a name="sample-app-instrumented-with-application-insights"></a>Ukázková aplikace instrumentovaná pomocí Application Insights
-V této [ukázkové aplikaci](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)se Application Insights přidá do cloudové služby se dvěma rolemi pracovního procesu hostovanými v Azure. 
+V této [ukázkové aplikaci](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)se Application Insights přidá do cloudové služby se dvěma rolemi pracovního procesu hostovanými v Azure. 
 
 V další části se dozvíte, jak přizpůsobit vlastní projekt cloudové služby stejným způsobem.
 
@@ -93,7 +93,7 @@ Pokud jste se rozhodli použít samostatný prostředek Application Insights pro
 
 ![Konfigurace Application Insights](./media/cloudservices/configure-azure-diagnostics.png)
 
-To má vliv na vložení klíčů instrumentace Application Insights do souborů s názvem *ServiceConfiguration. \* . cscfg*. Zde je [ukázkový kód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
+To má vliv na vložení klíčů instrumentace Application Insights do souborů s názvem *ServiceConfiguration. \* . cscfg*. Zde je [ukázkový kód](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
 Pokud chcete změnit úroveň diagnostických informací, které se odesílají do Application Insights, můžete to provést tak, že [přímo upravíte soubory *. cscfg* ](../platform/diagnostics-extension-to-application-insights.md).
 
@@ -123,9 +123,9 @@ V sadě Visual Studio nakonfigurujte sadu SDK Application Insights pro každý p
    
     b. Opakujte krok "Step a" pro každou roli ve vaší aplikaci. Podívejte se na příklady:
    
-    * [Webová role](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
-    * [Role pracovního procesu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
-    * [Pro webové stránky](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
+    * [Webová role](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
+    * [Role pracovního procesu](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
+    * [Pro webové stránky](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
 1. Nastavte soubor *ApplicationInsights.config* , který se má zkopírovat vždy do výstupního adresáře.
 
@@ -150,7 +150,7 @@ Tento krok je nutný pouze v případě, že chcete zachytit úplné dotazy SQL 
     </Startup>
     ```
     
-2. Stáhněte [InstallAgent.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) a [InstallAgent.ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)je vložte do `AppInsightsAgent` složky v každém projektu role. Nezapomeňte je zkopírovat do výstupního adresáře prostřednictvím vlastností souboru sady Visual Studio nebo skriptů sestavení.
+2. Stáhněte [InstallAgent.bat](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) a [InstallAgent.ps1](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)je vložte do `AppInsightsAgent` složky v každém projektu role. Nezapomeňte je zkopírovat do výstupního adresáře prostřednictvím vlastností souboru sady Visual Studio nebo skriptů sestavení.
 
 3. Na všech rolích pracovního procesu přidejte proměnné prostředí: 
 
@@ -199,26 +199,26 @@ Pokud chcete hledat v různých protokolech trasování odesílaných pomocí Az
 V dalších částech najdete informace o tom, jak získat další telemetrii z různých aspektů aplikace.
 
 ## <a name="track-requests-from-worker-roles"></a>Sledování žádostí z rolí pracovního procesu
-Ve webových rolí modul požadavků automaticky shromažďuje data týkající se požadavků HTTP. Příklady, jak můžete přepsat výchozí chování kolekce, najdete v [ukázce MVCWebRole](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole). 
+Ve webových rolí modul požadavků automaticky shromažďuje data týkající se požadavků HTTP. Příklady, jak můžete přepsat výchozí chování kolekce, najdete v [ukázce MVCWebRole](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole). 
 
 Můžete zaznamenávat výkon volání rolí pracovních procesů, pokud je budete sledovat stejným způsobem jako požadavky HTTP. V Application Insights typ telemetrických dat Požadavek měří uvedenou jednotku práce serveru, kterou lze časovat a která může nezávisle být úspěšná nebo neúspěšná. I když jsou požadavky HTTP zachyceny automaticky sadou SDK, můžete vložit vlastní kód pro sledování požadavků na role pracovního procesu.
 
 Podívejte se na dvě ukázkové role pracovních procesů, které jsou instrumentované na požadavky na sestavy: 
-* [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA)
-* [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
+* [WorkerRoleA](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA)
+* [WorkerRoleB](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
 ## <a name="exceptions"></a>Výjimky
 Informace o tom, jak shromažďovat neošetřené výjimky z různých typů webových aplikací, naleznete [v tématu výjimky monitorování v Application Insights](./asp-net-exceptions.md).
 
 Ukázková webová role obsahuje kontrolery rozhraní MVC5 a Web API 2. Nezpracované výjimky z nich jsou zachyceny pomocí následujících obslužných rutin:
 
-* [AiHandleErrorAttribute](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs) nastavení pro řadiče MVC5 [, jak je znázorněno v tomto příkladu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12) 
-* [AiWebApiExceptionLogger](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs) nastavte pro řadiče webového rozhraní API 2 [, jak je znázorněno v tomto příkladu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25) . 
+* [AiHandleErrorAttribute](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs) nastavení pro řadiče MVC5 [, jak je znázorněno v tomto příkladu](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12) 
+* [AiWebApiExceptionLogger](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs) nastavte pro řadiče webového rozhraní API 2 [, jak je znázorněno v tomto příkladu](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25) . 
 
 Pro role pracovního procesu můžete výjimky sledovat dvěma způsoby:
 
 * Použijte TrackException (ex).
-* Pokud jste přidali balíček NuGet naslouchacího procesu trasování Application Insights, můžete použít System. Diagnostics. Trace k protokolování výjimek, [jak je znázorněno v tomto příkladu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107).
+* Pokud jste přidali balíček NuGet naslouchacího procesu trasování Application Insights, můžete použít System. Diagnostics. Trace k protokolování výjimek, [jak je znázorněno v tomto příkladu](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107).
 
 ## <a name="performance-counters"></a>Čítače výkonu
 Ve výchozím nastavení se shromažďují následující čítače:
@@ -236,7 +236,7 @@ Pro webové role se shromažďují i tyto čítače:
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
-Můžete určit další vlastní nebo jiné čítače výkonu systému Windows úpravou *ApplicationInsights.config* [, jak je znázorněno v tomto příkladu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
+Můžete určit další vlastní nebo jiné čítače výkonu systému Windows úpravou *ApplicationInsights.config* [, jak je znázorněno v tomto příkladu](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
 
   ![Čítače výkonu](./media/cloudservices/002-servers.png)
 
@@ -247,9 +247,9 @@ Chcete-li dosáhnout tohoto zobrazení pro role pracovního procesu, můžete po
 
 Jak na to:
 
-* Nastavte ID korelace na CallContext [, jak je znázorněno v tomto příkladu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). V tomto případě používáme ID žádosti jako ID korelace.
-* Přidejte vlastní implementaci TelemetryInitializer, abyste mohli nastavit Operation.Id na ID korelace, které bylo dříve nastaveno. Příklad naleznete v tématu [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).
-* Přidejte inicializátor vlastní telemetrie. Můžete to udělat v souboru *ApplicationInsights.config* nebo v kódu [, jak je znázorněno v tomto příkladu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
+* Nastavte ID korelace na CallContext [, jak je znázorněno v tomto příkladu](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). V tomto případě používáme ID žádosti jako ID korelace.
+* Přidejte vlastní implementaci TelemetryInitializer, abyste mohli nastavit Operation.Id na ID korelace, které bylo dříve nastaveno. Příklad naleznete v tématu [ItemCorrelationTelemetryInitializer](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).
+* Přidejte inicializátor vlastní telemetrie. Můžete to udělat v souboru *ApplicationInsights.config* nebo v kódu [, jak je znázorněno v tomto příkladu](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
 
 ## <a name="client-telemetry"></a>Telemetrická data klienta
 Chcete-li získat telemetrii založenou na prohlížeči, jako je počet zobrazení stránky, doba načítání stránky nebo výjimky skriptu a psaní vlastní telemetrie ve skriptech stránky, přečtěte si téma [Přidání sady JavaScript SDK na webové stránky][client].
@@ -265,7 +265,7 @@ Pokud váš systém používá jiné služby Azure, například Stream Analytics
 Pokud máte mobilní klientskou aplikaci, použijte [App Center](../learn/mobile-center-quickstart.md). V [Analytics](../log-query/log-query-overview.md) můžete vytvářet dotazy pro zobrazení počtu událostí a můžete je připnout na řídicí panel.
 
 ## <a name="example"></a>Příklad
-V [příkladu](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) se monitoruje služba s webovou rolí a dvěma rolemi pracovních procesů.
+V [příkladu](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) se monitoruje služba s webovou rolí a dvěma rolemi pracovních procesů.
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Výjimka "metoda nebyla nalezena" při spuštění v Azure Cloud Services
 Vytvořili jste sestavení pro .NET 4.6? Rozhraní .NET 4,6 se v rolích Azure Cloud Services nepodporuje automaticky. Před spuštěním vaší aplikace [nainstalujte do každé role .net 4,6](../../cloud-services/cloud-services-dotnet-install-dotnet.md) .

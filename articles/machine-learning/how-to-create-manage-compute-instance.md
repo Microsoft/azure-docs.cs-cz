@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 1ba3f49c9016d71acf162efb07cd6120b1dcc1ec
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 3b5698c782b691dd8ae91913115db184fc83a2eb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743552"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756615"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Vytvoření a Správa výpočetní instance Azure Machine Learning
 
@@ -46,7 +46,7 @@ Výpočetní instance můžou úlohy spouštět bezpečně ve [virtuálním sí�
 
 Vytvoření výpočetní instance je jednorázový proces pro váš pracovní prostor. Tuto výpočetní kapacitu můžete znovu použít jako pracovní stanici pro vývoj nebo jako cíl pro školení. K vašemu pracovnímu prostoru můžete připojit více výpočetních instancí.
 
-Vyhrazená jádra na jednu oblast a kvótu pro rodinu virtuálních počítačů, která platí pro vytváření výpočetních instancí, jsou sjednocená a sdílená s Azure Machine Learning školením kvóty výpočetních clusterů. Zastavení výpočetní instance neuvolní kvótu, aby bylo zajištěno, že budete moci restartovat výpočetní instanci.
+Vyhrazená jádra na jednu oblast a kvótu pro rodinu virtuálních počítačů, která platí pro vytváření výpočetních instancí, jsou sjednocená a sdílená s Azure Machine Learning školením kvóty výpočetních clusterů. Zastavení výpočetní instance neuvolní kvótu, aby bylo zajištěno, že budete moci restartovat výpočetní instanci. Upozorňujeme, že po vytvoření není možné změnit velikost virtuálního počítače výpočetní instance.
 
 Následující příklad ukazuje, jak vytvořit výpočetní instanci:
 

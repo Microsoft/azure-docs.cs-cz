@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bfb2598fb3a207bbdfaade9086efd07827b077dd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cb012fcc701e9dd18dbe1db5304807b4d96c2a86
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998420"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757788"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Kurz: optimalizace indexování pomocí rozhraní API push
 
@@ -31,7 +31,7 @@ Tento kurz používá jazyk C# a [sadu .NET SDK](/dotnet/api/overview/azure/sear
 > * Použití více vláken ke zvýšení rychlosti indexování
 > * Použití exponenciální strategie omezení rychlosti opakování k opakovanému pokusu o neúspěšné položky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -325,7 +325,7 @@ do
 
 Odtud rozbalíme exponenciální kód omezení rychlosti do funkce, aby ho bylo možné snadno volat.
 
-Pro správu aktivních vláken se pak vytvoří další funkce. Pro zjednodušení Tato funkce není zde obsažena, ale je možné ji najít v [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/OptimizeDataIndexing/ExponentialBackoff.cs). Funkci lze volat pomocí následujícího příkazu `hotels` , kde jsou data, která chceme nahrát, `1000` je velikost dávky a `8` je počet souběžných vláken:
+Pro správu aktivních vláken se pak vytvoří další funkce. Pro zjednodušení Tato funkce není zde obsažena, ale je možné ji najít v [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v10/OptimizeDataIndexing/ExponentialBackoff.cs). Funkci lze volat pomocí následujícího příkazu `hotels` , kde jsou data, která chceme nahrát, `1000` je velikost dávky a `8` je počet souběžných vláken:
 
 ```csharp
 ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();

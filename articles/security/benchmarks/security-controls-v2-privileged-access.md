@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b5315b4d2ec8b757f7fa1075a438419679f5e798
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 68fdff9444286a7f304c3a3361ad33a02e87a282
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317969"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758366"
 ---
 # <a name="security-control-v2-privileged-access"></a>Řízení zabezpečení v2: privilegovaný přístup
 
@@ -126,7 +126,7 @@ Měli byste zajistit, aby pověření (například heslo, certifikát nebo čipo
 
 - [Správa dodržování předpisů zabezpečení](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [Operace zabezpečení (SecOps)](//azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Operace zabezpečení (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 ## <a name="pa-5-automate-entitlement-management"></a>PA-5: automatizace správy nároků
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: f622042c9a2e8cc5bc11c8dc909d02afe38e5c78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b03bedd9abbe59ed3bc1b0ec1439aa27af57e6da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90908361"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758893"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Co je Azure Spring Cloud?
 
@@ -32,7 +32,7 @@ Tento Úvod popisuje následující možnosti Azure jarního cloudu:
 
 ## <a name="spring-cloud-config-server"></a>Jarní cloudový konfigurační server
 
-Azure jarní cloudový konfigurační server poskytuje v distribuovaném systému externou konfiguraci s podporou serveru i na straně klienta.  Azure jarní cloudový konfigurační server je centrální umístění pro správu vlastností aplikace napříč všemi prostředími. Další informace najdete v tématu [odkazování na server pro konfiguraci jarního cloudu](https://spring.io/projects/spring-cloud-config.md). 
+Azure jarní cloudový konfigurační server poskytuje v distribuovaném systému externou konfiguraci s podporou serveru i na straně klienta.  Azure jarní cloudový konfigurační server je centrální umístění pro správu vlastností aplikace napříč všemi prostředími. Další informace najdete v tématu [odkazování na server pro konfiguraci jarního cloudu](https://spring.io/projects/spring-cloud-config). 
 
 ## <a name="bluegreen-deployments"></a>Modrá/zelená nasazení
 

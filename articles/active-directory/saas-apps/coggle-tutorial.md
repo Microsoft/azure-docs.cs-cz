@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
-ms.openlocfilehash: ffa4f0ab40e413da78257bde81a00fd3910131b1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08a9cbadb86f59cca1f361dc66ee03a300f91968
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555963"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759488"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coggle"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Coggle
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Coggle s Azure Active Directory (Azure
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -96,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Coggle několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| --------- |
     | firstName | User. křestní jméno |
     | lastName | User. příjmení |
@@ -146,19 +146,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Klikněte na účet **Coggle** a vyberte **Moje nastavení**.
 
-    ![Konfigurace Coggle](./media/Coggle-tutorial/configure1.png)
+    ![Snímek obrazovky s vybraným vlastním nastavením zobrazuje web Coggle společnosti.](./media/Coggle-tutorial/configure1.png)
 
 3. Klikněte na následující **logo** a vyberte **ověřování**.
 
-    ![Konfigurace Coggle](./media/Coggle-tutorial/configure2.png)
+    ![Snímek obrazovky zobrazuje ikonu Whale a vybrané ověřování.](./media/Coggle-tutorial/configure2.png)
 
 4. Klikněte na **Upravit konfiguraci SAML**.
 
-    ![Konfigurace Coggle](./media/Coggle-tutorial/configure3.png)
+    ![Snímek obrazovky ukazuje stránku integrace SAML s možností upravit konfiguraci SAML.](./media/Coggle-tutorial/configure3.png)
 
 5. Na stránce **integrace SAML** proveďte následující kroky:
 
-    ![Konfigurace Coggle](./media/Coggle-tutorial/configure4.png)
+    ![Snímek obrazovky se zobrazí stránka integrace SAML, kde můžete zadat informace v tomto kroku.](./media/Coggle-tutorial/configure4.png)
 
     a. Do textového pole **EntryPoint (ID poskytovatele jednotného přihlašování)** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
@@ -176,7 +176,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici Coggle na přístupovém panelu, měli byste se automaticky přihlásit k Coggle, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

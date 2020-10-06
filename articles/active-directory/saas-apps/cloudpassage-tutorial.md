@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 34e36be8ee9444b5612901439aa5dca4771f2dda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8fdb59db7e11e3c8b946be940a2f98bd42810b88
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551655"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758315"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudpassage"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s CloudPassage
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat CloudPassage s Azure Active Directory 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -85,7 +85,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://portal.cloudpassage.com/saml/consume/accountid` . Hodnotu pro tento atribut můžete získat kliknutím na **dokumentaci k nastavení** jednotného **přihlašování** v portálu CloudPassage.
 
-    ![Konfigurace jednotného přihlašování](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
+    ![Snímek obrazovky se zobrazí na portálu CloudPassage s odkazem na dokumentaci k instalaci S S O instalačnímu programu s názvem.](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta CloudPassage](https://www.cloudpassage.com/company/contact/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -96,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace CloudPassage několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| --------------- |
     | FirstName |User. křestní jméno |
     | polím |User. příjmení |
@@ -146,15 +146,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V nabídce v horní části klikněte na **Nastavení**a pak klikněte na **Správa webu**. 
    
-    ![Konfigurace jednotného přihlašování][12]
+    ![Snímek obrazovky s vybraným webem pro CloudPassage.][12]
 
 1. Klikněte na kartu **nastavení ověřování** . 
    
-    ![Konfigurace jednotného přihlašování][13]
+    ![Snímek obrazovky se zobrazí na webu CloudPassage s vybranou kartou nastavení ověřování.][13]
 
 1. V části **nastavení jednotného přihlašování** proveďte následující kroky: 
    
-    ![Konfigurace jednotného přihlašování][14]
+    ![Snímek obrazovky se zobrazí část nastavení jednotného přihlašování, kde můžete zadat informace v tomto kroku.][14]
 
     a. Zaškrtněte políčko **Povolit jednotné přihlašování (SSO) (v dokumentaci k nastavení jednotného přihlašování** ).
     
@@ -178,15 +178,15 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v CloudPassage.
 
 1. Na panelu nástrojů v horní části klikněte na **Nastavení**a pak klikněte na **Správa webu**. 
    
-    ![Vytváření CloudPassage testovacího uživatele][22] 
+    ![Snímek obrazovky zobrazuje CloudPassage s vybraným webem správy.][22] 
 
 1. Klikněte na kartu **Uživatelé** a potom klikněte na tlačítko **Přidat nového uživatele**. 
    
-    ![Vytváření CloudPassage testovacího uživatele][23]
+    ![Snímek obrazovky zobrazuje CloudPassage správu lokality pomocí vybrané karty uživatelé a možnost Přidat nového uživatele.][23]
 
 1. V části **Přidat nového uživatele** proveďte následující kroky: 
    
-    ![Vytváření CloudPassage testovacího uživatele][24]
+    ![Snímek obrazovky se zobrazí část přidat nového uživatele, kde můžete zadat informace o uživateli.][24]
     
     a. Do textového pole **jméno v prvním** poli zadejte Britta. 
   
@@ -204,7 +204,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici CloudPassage, měli byste se automaticky přihlásit k CloudPassage, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

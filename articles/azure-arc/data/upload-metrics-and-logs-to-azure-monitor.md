@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3e3b804e2a3c43eb9579d1c6a1195511df528de2
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: d508e2e24ac35171d87cdba9cb79981dfb8764e3
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629994"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757465"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Nahrajte data o využití, metriky a protokoly do Azure Monitor
 
@@ -23,7 +23,7 @@ Pravidelně můžete exportovat informace o využití pro účely fakturace, mon
 > [!NOTE] 
 Během období Preview se neúčtují žádné náklady na používání datových služeb s podporou ARC Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat rozhraní příkazového řádku Azure CLI (AZ) a rozhraní Azure Data CLI (azdata).  [Nainstalovat nástroje](./install-client-tools.md).
 
@@ -95,7 +95,7 @@ Pomocí těchto příkazů vytvořte metriky pro nahrání instančního objektu
 Chcete-li vytvořit instanční objekt, spusťte tento příkaz:
 
 > [!NOTE]
-> Vytvoření instančního objektu vyžaduje [určitá oprávnění v Azure](/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+> Vytvoření instančního objektu vyžaduje [určitá oprávnění v Azure](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app).
 
 ```console
 az ad sp create-for-rbac --name <a name you choose>

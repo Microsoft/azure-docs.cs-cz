@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: 559c596ed9b7412b277fbfc1cf30cad15e852cef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a634743441866c4f1a9f6d634efe0ff9e368b5e9
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253152"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757839"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Konfigurace a použití odkazu na Azure synapse pro Azure Cosmos DB (Preview)
 
-Synapse odkaz pro Azure Cosmos DB je cloudová funkce hybridního transakčního a analytického zpracování (HTAP), která umožňuje spouštět analýzy prakticky v reálném čase nad provozními daty v Azure Cosmos DB. Synapse Link vytvoří úzkou plynulou integraci mezi Azure Cosmos DB a Azure synapse Analytics.
+[Odkaz na Azure synapse pro Azure Cosmos DB](synapse-link.md) je cloudová funkce hybridního transakčního a analytického zpracování (HTAP), která umožňuje spouštět analýzy téměř v reálném čase nad provozními daty v Azure Cosmos DB. Synapse Link vytvoří úzkou plynulou integraci mezi Azure Cosmos DB a Azure synapse Analytics.
 
 > [!IMPORTANT]
 > Pokud chcete použít Azure synapse Link, nezapomeňte zřídit účet Azure Cosmos DB & pracovní prostor Azure synapse Analytics v některé z podporovaných oblastí. Odkaz na Azure synapse je v současnosti dostupný v následujících oblastech Azure: USA – středozápad, Východní USA, západ USA 2, Severní Evropa, Západní Evropa, Střed USA – jih, jihovýchodní Asie, Austrálie – východ, východní U2, Velká Británie – jih.
@@ -46,7 +46,7 @@ Odkaz Azure synapse je k dispozici pro Azure Cosmos DB kontejnery rozhraní API 
 
 1. V dalším kroku se zobrazí výzva, abyste na svém účtu povolili odkaz na synapse. Vyberte **Povolit**. Dokončení tohoto procesu může trvat 1 až 5 minut.
 
-   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="Povolit funkci synapse Link":::
+   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="Najít funkci synapse Link Preview":::
 
 1. Váš účet teď povolil použití odkazu synapse. Další informace najdete v tématu Vytvoření kontejnerů s povoleným analytickým úložištěm pro automatické zahájení replikace provozních dat z transakčního úložiště do analytického úložiště.
 
@@ -68,7 +68,7 @@ Analytické úložiště můžete zapnout v kontejneru Azure Cosmos při vytvá�
 
 1. Vyberte **Nový kontejner** a zadejte název své databáze, kontejneru, klíče oddílu a propustnosti. Zapněte možnost **analytické úložiště** . Po povolení analytického úložiště se vytvoří kontejner s `AnalyicalTTL` vlastností nastavenou na výchozí hodnotu-1 (nekonečné uchovávání). Toto analytické úložiště uchovává všechny historické verze záznamů.
 
-   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Zapnout službu analytické úložiště pro Azure Cosmos Container":::
+   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Najít funkci synapse Link Preview":::
 
 1. Pokud jste na tomto účtu dříve nepovolili odkaz na synapse, zobrazí se výzva k tomu, abyste to učinili, protože je to předpoklad pro vytvoření kontejneru s povoleným analytickým úložištěm. Po zobrazení výzvy vyberte **Povolit odkaz na synapse**. Dokončení tohoto procesu může trvat 1 až 5 minut.
 

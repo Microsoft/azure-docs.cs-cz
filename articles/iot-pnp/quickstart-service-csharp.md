@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 1a8155c9c0466184a09bc4ff224c9bdf42c173b9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b35268cd8d36901f750225713407c5392e5c429e
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91612553"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759165"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play, které je připojené k vašemu řešení (C#)
 
@@ -48,7 +48,7 @@ V tomto rychlém startu použijete ukázkové termostatické zařízení, které
 
 1. V aplikaci Visual Studio přejděte na **Vlastnosti projektu > termostatu > ladit**. Pak do projektu přidejte následující proměnné prostředí:
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
@@ -66,7 +66,7 @@ V tomto rychlém startu použijete ukázkové termostatické zařízení, které
 V [části nastavení prostředí pro iot technologie Plug and Play rychlé starty a kurzy](set-up-environment.md) , které jste vytvořili dvě proměnné prostředí pro konfiguraci ukázky pro připojení ke službě IoT Hub a zařízení:
 
 * **IOTHUB_CONNECTION_STRING**: připojovací řetězec ke službě IoT Hub jste si poznamenali dříve.
-* **DEVICE_ID**: `"my-pnp-device"` .
+* **IOTHUB_DEVICE_ID**: `"my-pnp-device"` .
 
 V tomto rychlém startu použijete ukázkové řešení IoT v jazyce C# k interakci s ukázkovým zařízením, které jste právě nastavili.
 
@@ -74,9 +74,9 @@ V tomto rychlém startu použijete ukázkové řešení IoT v jazyce C# k intera
 
 1. V aplikaci Visual Studio přejděte na **Vlastnosti projektu > termostatu > ladit**. Pak do projektu přidejte následující proměnné prostředí:
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     | ---- | ----- |
-    | DEVICE_ID | Moje zařízení – PnP-Device |
+    | IOTHUB_DEVICE_ID | Moje zařízení – PnP-Device |
     | IOTHUB_CONNECTION_STRING | Hodnota, na kterou jste si poznamenali, když jste [nastavili prostředí](set-up-environment.md) |
 
 1. Nyní můžete vytvořit ukázku v aplikaci Visual Studio a spustit ji v režimu ladění.

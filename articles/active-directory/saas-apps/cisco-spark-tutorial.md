@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 4fd6b46353cdeb4493c1a767c92e75d602e52843
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b6da84c1be38dde72b663de1db3756e77f4db915
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528867"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759771"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s Cisco Webex
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Cisco Webex s Azure Active Directory (
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -96,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho aplikace Cisco Webex očekává, že se v odpovědi SAML vrátí zpátky několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
   
-    | Name |  Zdrojový atribut|
+    | Název |  Zdrojový atribut|
     | ---------------|--------- |
     | UID | User. userPrincipalName |
 
@@ -151,13 +151,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. Vyberte **Nastavení** a v části **ověřování** klikněte na **Upravit**.
 
-    ![Konfigurace jednotného přihlašování](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
+    ![Snímek obrazovky zobrazuje nastavení ověřování, kde můžete vybrat možnost Upravit.](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
   
 5. Vyberte možnost **integrace poskytovatele identity od jiného výrobce. (Rozšířené)** a přejít na další obrazovku.
 
 6. Na stránce **importovat metadata IDP** přetáhněte soubor METADAT Azure AD na stránku nebo použijte možnost prohlížeč souborů a vyhledejte a nahrajte soubor metadat služby Azure AD. Pak vyberte **vyžadovat certifikát podepsaný certifikační autoritou v metadatech (bezpečnější)** a klikněte na **Další**.
 
-    ![Konfigurace jednotného přihlašování](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
+    ![Snímek obrazovky ukazuje stránku metadat import I d P.](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
 
 7. Vyberte **Test připojení SSO**a když se otevře nová karta prohlížeče, proveďte přihlášení pomocí služby Azure AD.
 
@@ -171,13 +171,13 @@ V této části vytvoříte uživatele s názvem B. Simon v Cisco Webex. V této
 
 2. Klikněte na **Uživatelé** a pak na **Spravovat uživatele**.
    
-    ![Konfigurace jednotného přihlašování](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
+    ![Snímek obrazovky se zobrazí stránka uživatelé, kde můžete spravovat uživatele.](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
 
 3. V okně **Spravovat uživatele** vyberte **ručně přidat nebo upravit uživatele** a klikněte na **Další**.
 
 4. Vyberte **jména a e-mailovou adresu**. Pak vyplňte textové pole následujícím způsobem:
 
-    ![Konfigurace jednotného přihlašování](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
+    ![Snímek obrazovky se zobrazí v dialogovém okně Spravovat weby Users, kde můžete ručně přidávat nebo upravovat uživatele.](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
 
     a. Do textového pole **název** zadejte jméno uživatele jako **B**.
 

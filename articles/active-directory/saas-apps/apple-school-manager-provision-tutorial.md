@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 221039ad1dc30e645d98ba6dd7e79c7b81ba3430
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5ce2c866954f46e3a01cabb23033ea2dae77ead6
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91313055"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757448"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>Kurz: Konfigurace Apple School Manageru pro Automatické zřizování uživatelů
 
@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v Apple School Manageru a A
 > * Odebrat uživatele v Apple School Manageru, když už nevyžadují přístup
 > * Udržování specifických uživatelských atributů synchronizovaných mezi Azure AD a Apple School Managerem
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -55,7 +55,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 1. V Apple School Manageru se přihlaste pomocí účtu, který má roli správce, Site Manager nebo Správce uživatelů.
 2. Klikněte na nastavení v dolní části bočního panelu, klikněte na zdroj dat pod nastavením organizace a pak klikněte na připojit ke zdroji dat.
 3. Klikněte na připojit vedle SCIM, pečlivě si přečtěte upozornění, klikněte na tlačítko Kopírovat a pak klikněte na tlačítko Zavřít.
-[Okno připojit k SCIM, které poskytuje token a tlačítko pro kopírování pod ním.] Nechejte toto okno otevřené a zkopírujte adresu URL klienta z Apple Business Manageru do Azure AD, což je: https://federation.apple.com/feeds/school/scim
+[Okno připojit k SCIM, které poskytuje token a tlačítko pro kopírování pod ním.] Nechte toto okno otevřené a zkopírujte adresu URL tenanta z Apple Business Manageru do Azure AD, což je: https://federation.apple.com/feeds/school/scim
 
     ![Apple School Manager](media/appleschoolmanager-provisioning-tutorial/scim-token.png)
 
@@ -148,20 +148,20 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user).
 3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-* [Kontrola požadavků na SCIM pro Apple School Manager](URL=https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
-* [Jak se v Apple School Manageru používá ID osoby](URL=https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
-* [Použití SCIM k importu uživatelů do Apple School Manageru](URL=https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
-* [Řešení konfliktů uživatelských účtů SCIM v Apple School Manageru](URL=https://support.apple.com/guide/apple-school-manager/apd313013d12)
-* [Odstranění účtů Azure AD, které se zobrazují v Apple School Manageru](URL=https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
-* [Zobrazit aktivitu SCIM v Apple School Manageru](URL=https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
-* [Správa stávajícího tokenu SCIM a připojení v Apple School Manageru](URL=https://support.apple.com/guide/apple-school-manager/apdc9a823611)
-* [Odpojení připojení SCIM v Apple School Manageru](URL=https://support.apple.com/guide/apple-school-manager/apd609be3a61)
-* [Správa stávajícího tokenu SCIM a připojení v Apple School Manageru](URL=https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
-* [Řešení potíží s připojením SCIM v Apple School Manageru](URL=https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
+* [Kontrola požadavků na SCIM pro Apple School Manager](https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
+* [Jak se v Apple School Manageru používá ID osoby](https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
+* [Použití SCIM k importu uživatelů do Apple School Manageru](https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
+* [Řešení konfliktů uživatelských účtů SCIM v Apple School Manageru](https://support.apple.com/guide/apple-school-manager/apd313013d12)
+* [Odstranění účtů Azure AD, které se zobrazují v Apple School Manageru](https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
+* [Zobrazit aktivitu SCIM v Apple School Manageru](https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
+* [Správa stávajícího tokenu SCIM a připojení v Apple School Manageru](https://support.apple.com/guide/apple-school-manager/apdc9a823611)
+* [Odpojení připojení SCIM v Apple School Manageru](https://support.apple.com/guide/apple-school-manager/apd609be3a61)
+* [Správa stávajícího tokenu SCIM a připojení v Apple School Manageru](https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
+* [Řešení potíží s připojením SCIM v Apple School Manageru](https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>Další kroky
 

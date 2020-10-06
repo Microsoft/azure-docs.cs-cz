@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 66160f17a15ce81dbc21ddf65dba17c0a4ad7a99
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 072e885ec1c618229141dea477cd598d8db34ce7
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665366"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756740"
 ---
 # <a name="quickstart-handle-sms-events"></a>Rychlý Start: zpracování událostí serveru SMS
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Začínáme s komunikačními službami Azure pomocí Azure Event Grid k obsluze událostí služby SMS pro komunikaci. 
 
@@ -96,7 +96,7 @@ Jakmile dokončíte jednu akci výše, všimnete si, že  `SMS Received` se `SMS
 
 :::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Snímek obrazovky s výběrem tlačítka pro odběr události v rámci stránky události prostředku":::
 
-:::image type="content" source="./media/handle-sms-events/SMS-Delivery-Report-Received.png" alt-text="Snímek obrazovky s výběrem tlačítka pro odběr události v rámci stránky události prostředku":::
+:::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Snímek obrazovky s výběrem tlačítka pro odběr události v rámci stránky události prostředku":::
 
 Další informace o [schématech událostí a dalších konceptech událostí](../../concepts/event-handling.md)
 

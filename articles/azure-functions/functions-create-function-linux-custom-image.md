@@ -5,16 +5,18 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 1a29b8cfbc07e1232ffee788da8d195d39b9ca93
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7940e0f90e29e5c69ccde79dfbec889dbe31fe63
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531640"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758978"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce v Linuxu s využitím vlastního kontejneru
 
 V tomto kurzu vytvoříte a nasadíte kód, který se Azure Functions jako vlastní kontejner Docker pomocí základní image Linux. Vlastní image se obvykle používá, když vaše funkce vyžadují specifickou jazykovou verzi nebo mají konkrétní závislost nebo konfiguraci, která není poskytovaná integrovanou imagí.
+
+Nasazení kódu funkce ve vlastním kontejneru Linux vyžaduje [Plán Premium](functions-premium-plan.md#features) , nebo vyhrazený hostující [plán (App Service)](functions-scale.md#app-service-plan) . Výsledkem tohoto kurzu jsou náklady na několik amerických dolarů v účtu Azure, které můžete minimalizovat [vyčištěním prostředků](#clean-up-resources) , až budete hotovi.
 
 Můžete také použít výchozí kontejner Azure App Service, jak je popsáno v tématu [Vytvoření první funkce hostované v systému Linux](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python). Podporované základní image pro Azure Functions najdete v [úložišti Azure Functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base).
 
@@ -31,7 +33,7 @@ V tomto kurzu se naučíte:
 > * Povolte připojení SSH ke kontejneru.
 > * Přidejte výstupní vazbu úložiště fronty. 
 
-Můžete postupovat podle tohoto kurzu na jakémkoli počítači se systémem Windows, macOS nebo Linux. Dokončení kurzu vám bude účtovat v účtu Azure náklady na několik amerických dolarů.
+Můžete postupovat podle tohoto kurzu na jakémkoli počítači se systémem Windows, macOS nebo Linux. 
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 
@@ -243,7 +245,7 @@ K vytvoření těchto položek použijete příkazy rozhraní příkazového ř�
     az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
     ```   
 
-    Hostování Linux pro kontejnery vlastních funkcí se podporuje na [vyhrazených plánech (App Service)](functions-scale.md#app-service-plan) a [plánech Premium](functions-premium-plan.md#features). Plán Premium používáme tady, který se může škálovat podle potřeby. Další informace o hostování najdete v [porovnání plánů hostování služby Azure Functions](functions-scale.md). Pokud chcete vypočítat náklady, přečtěte si [stránku s cenami funkcí](https://azure.microsoft.com/pricing/details/functions/).
+    Plán Premium používáme tady, který se může škálovat podle potřeby. Další informace o hostování najdete v [porovnání plánů hostování služby Azure Functions](functions-scale.md). Pokud chcete vypočítat náklady, přečtěte si [stránku s cenami funkcí](https://azure.microsoft.com/pricing/details/functions/).
 
     Příkaz taky zřídí přidruženou instanci služby Azure Application Insights ve stejné skupině prostředků, pomocí které můžete monitorovat aplikaci Function App a zobrazovat protokoly. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md). Instance nenese žádné náklady, dokud ji neaktivujete.
 

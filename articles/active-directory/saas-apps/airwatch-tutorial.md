@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 049066ffc5ce0aea2af956343dfa7ba97b6b5bb4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2baff2ac2af10caf857fd08b0d7e7df5030220e4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542815"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758128"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Kurz: integrace programu pro sledování ve službě Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat sledování pomocí Azure Active Direc
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -88,7 +88,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** upravte deklarace pomocí **ikony upravit** nebo přidejte deklarace pomocí **Přidat novou deklaraci identity** , jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Name |  Zdrojový atribut|
+    | Název |  Zdrojový atribut|
     |---------------|----------------|
     | UID | User. userPrincipalName |
     | | |
@@ -125,7 +125,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Klikněte na kartu **uživatel** , do textového pole **Základní rozlišující** název zadejte název domény a pak klikněte na **Uložit**.
 
-   ![Uživatel](./media/airwatch-tutorial/ic791922.png "Uživatel")
+   ![Snímek obrazovky, který zvýrazní základní textové pole s rozlišujícím názvem.](./media/airwatch-tutorial/ic791922.png "Uživatel")
 
 1. Klikněte na kartu **Server** .
 
@@ -133,7 +133,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **LDAP** proveďte následující kroky:
 
-    ![Nahrát](./media/airwatch-tutorial/ic791924.png "LDAP")   
+    ![Snímek obrazovky zobrazující změny, které je třeba provést v části LDAP](./media/airwatch-tutorial/ic791924.png "LDAP")   
 
     a. Jako **Typ adresáře**vyberte **None (žádné**).
 
@@ -223,7 +223,7 @@ Aby se uživatelé Azure AD mohli přihlašovat ke službě vzdálení, musí se
 
 3. V nabídce **Uživatelé** klikněte na **zobrazení seznamu**a potom klikněte na **Přidat > přidat uživatele**.
   
-   ![Přidat uživatele](./media/airwatch-tutorial/ic791930.png "Přidání uživatele")
+   ![Snímek obrazovky, který zvýrazní tlačítka Přidat a přidat uživatele](./media/airwatch-tutorial/ic791930.png "Přidání uživatele")
 
 4. V dialogu **Přidat/upravit uživatele** proveďte následující kroky:
 
@@ -240,7 +240,7 @@ Aby se uživatelé Azure AD mohli přihlašovat ke službě vzdálení, musí se
 
 Když na přístupovém panelu kliknete na dlaždici kolektoru, měli byste být automaticky přihlášení ke sledování, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

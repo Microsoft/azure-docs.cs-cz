@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: 116ee7c8db3070a667c21a052bec739fd397a2dd
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fbab2bbaa47090ff4bd7fb99495912bd1f645b61
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825558"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758134"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Kurz: Integrace jednotného přihlašování Azure AD s Maverics identity Orchestrator konektorem SAML
 
@@ -36,7 +36,7 @@ V tomto kurzu se dozvíte, jak migrovat místní webovou aplikaci, která je akt
 4. Nastavte Trezor klíčů Azure a nakonfigurujte Maverics tak, aby ho používal jako poskytovatele správy tajných kódů.
 5. Předvedení migrace uživatelů a abstrakce relace pomocí Maverics k poskytnutí přístupu k místní webové aplikaci Java.
 
-Další pokyny k instalaci a konfiguraci najdete na [webu vrstvy](https://strata.io/docs).
+Další pokyny k instalaci a konfiguraci najdete na [webu vrstvy](https://www.strata.io).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -45,7 +45,7 @@ Další pokyny k instalaci a konfiguraci najdete na [webu vrstvy](https://strata
 
 ## <a name="install-maverics-identity-orchestrator"></a>Nainstalovat Maverics identity Orchestrator
 
-Pokud chcete začít s instalací Maverics identity Orchestrator, přečtěte si [pokyny k instalaci](https://strata.io/docs).
+Pokud chcete začít s instalací Maverics identity Orchestrator, přečtěte si [pokyny k instalaci](https://www.strata.io).
 
 ### <a name="system-requirements"></a>Požadavky na systém
 * Podporované operační systémy
@@ -157,7 +157,7 @@ secrets:
 Trezor klíčů Azure můžete nastavit buď pomocí Azure Portal, nebo pomocí Azure CLI.
 
 **Použití webu Azure Portal**
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. [Vytvořte nový trezor klíčů](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault).
 1. [Přidejte tajné klíče do trezoru klíčů](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault).
 1. [Registrace aplikace ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)

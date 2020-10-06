@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a5f11a6054358584a8511cb967860c89f6491beb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a72552d8654a45d1ff4c1890c8086d43d7bd801d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936159"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756530"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>Zálohování a obnovení v Azure Database for MySQL flexibilním serveru (Preview)
 
@@ -24,7 +24,7 @@ Azure Database for MySQL flexibilní server automaticky vytvoří zálohy server
 
 Flexibilní Server využívá zálohy snímků datových souborů a ukládá je v místním redundantním úložišti. Server také provádí zálohování protokolů transakcí a ukládá je také v místním redundantním úložišti. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně můžete nakonfigurovat zálohu databáze od 1 do 35 dnů. Všechny zálohy jsou šifrovány pomocí šifrování AES 256-bit pro data uložená v klidovém stavu.
 
-Tyto záložní soubory nelze exportovat. Zálohy se dají použít jenom pro operace obnovení v flexibilním serveru. K zkopírování databáze můžete použít také [mysqldump](https://docs.microsoft.com/azure/MySQL/howto-migrate-using-dump-and-restore)   z klienta MySQL.
+Tyto záložní soubory nelze exportovat. Zálohy se dají použít jenom pro operace obnovení v flexibilním serveru. K zkopírování databáze můžete použít také [mysqldump](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)   z klienta MySQL.
 
 ## <a name="backup-frequency"></a>Frekvence zálohování
 

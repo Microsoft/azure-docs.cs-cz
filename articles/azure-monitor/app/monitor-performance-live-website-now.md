@@ -4,12 +4,12 @@ description: Monitorování výkonu webu bez opětovného nasazení. Funguje s A
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 603cbde20ae6e8d19e4ad3ae290bbfc925483595
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6c27c78bf8e3f3b8af342a14a38c9be3821d781a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923819"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758659"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentace webových aplikací za běhu s Application Insights připojením bez kódu
 
@@ -44,10 +44,10 @@ Tady je rekapitulace toho, co každý způsob přináší:
 | **[Podrobnější výjimky](./asp-net-exceptions.md)** | |Ano |
 | **[Diagnostika závislostí](./asp-net-dependencies.md)** |Na platformě .NET 4.6+, ale méně podrobná |Ano, úplné podrobnosti: kódy výsledků, text příkazu SQL, příkaz HTTP|
 | **[Čítače výkonu systému](./performance-counters.md)** |Ano |Ano |
-| **[Rozhraní API pro vlastní telemetrii][api]** |Ano |Ne |
-| **[Integrace protokolu trasování](./asp-net-trace-logs.md)** |Ano |Ne |
-| **[Zobrazení stránky & uživatelských dat](./javascript.md)** |Ano |Ne |
-| **Nutnost znovu sestavit kód** |Ano | Ne |
+| **[Rozhraní API pro vlastní telemetrii][api]** |Ano |No |
+| **[Integrace protokolu trasování](./asp-net-trace-logs.md)** |Ano |No |
+| **[Zobrazení stránky & uživatelských dat](./javascript.md)** |Ano |No |
+| **Nutnost znovu sestavit kód** |Ano | No |
 
 
 
@@ -130,7 +130,7 @@ Oprava web.config aktualizace:
 </dependentAssembly>
 ```
 
-Tento problém sledujeme [tady](https://github.com/Microsoft/ApplicationInsights-Home/issues/301).
+Tento problém sledujeme [tady](https://github.com/MohanGsk/ApplicationInsights-Home).
 
 
 ### <a name="application-diagnostic-messages"></a>Diagnostické zprávy aplikace
@@ -266,7 +266,7 @@ Desktopová aplikace, kterou instalujete s webovým serverem IIS. Pomáhá prov�
 
 ### <a name="can-i-close-it-after-it-runs"></a>Můžu ji po spuštění zavřít?
 
-Yes. Poté, co se provedla instrumentaci vybraných webových stránek, můžete ji zavřít.
+Ano. Poté, co se provedla instrumentaci vybraných webových stránek, můžete ji zavřít.
 
 Sama o sobě telemetrii neshromažďuje. Pouze nakonfiguruje webové aplikace a nastaví některá oprávnění.
 

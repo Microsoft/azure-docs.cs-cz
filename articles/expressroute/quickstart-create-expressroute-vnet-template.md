@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armsq
 ms.date: 08/31/2020
 ms.author: duau
-ms.openlocfilehash: f1dbb9623ddc87f9940fd97b05abbee113fd71c4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f45fc32e99fff7403c40048b8c7ad117b0395cc9
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90016550"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759233"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Rychlý Start: vytvoření okruhu ExpressRoute s privátním partnerským vztahem pomocí šablony ARM
 
@@ -84,7 +84,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **skupiny prostředků** .
 
@@ -120,11 +120,7 @@ V tomto rychlém startu jste vytvořili:
 * Veřejná IP adresa
 * skupiny zabezpečení sítě
 
-Další informace o propojení virtuální sítě s okruhem najdete v kurzech k ExpressRoute.
+Pokud se chcete dozvědět, jak propojit virtuální síť k okruhu, přejděte k ExpressRoute kurzům.
 
 > [!div class="nextstepaction"]
 > [Kurzy ExpressRoute](expressroute-howto-linkvnet-portal-resource-manager.md)
-
-* Další informace o pracovních postupech ExpressRoute najdete v tématu [Pracovní postupy ExpressRoute](expressroute-workflows.md).
-* Další informace o partnerském vztahu okruhu najdete v tématu [Okruhy ExpressRoute a domény směrování](expressroute-circuit-peerings.md).
-* Další informace o práci s virtuálními sítěmi najdete v článku [Přehled virtuálních sítí](../virtual-network/virtual-networks-overview.md).

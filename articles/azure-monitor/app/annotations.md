@@ -3,12 +3,12 @@ title: Poznámky k verzi pro Application Insights | Microsoft Docs
 description: Přidejte značky nasazení nebo sestavení do grafů Průzkumníka metrik v Application Insights.
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: e21981f134f6a78109d70b1edf6d61e204b64e12
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258408"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758179"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafech metrik v Application Insights
 
@@ -96,9 +96,9 @@ Pokud chcete povolit poznámky v sešitu, přejít na **Upřesnit nastavení** a
 Vyberte libovolnou značku poznámky a otevřete tak podrobnosti o vydané verzi, včetně žadatele, větve správy zdrojového kódu, kanálu vydání a prostředí.
 
 ## <a name="create-custom-annotations-from-powershell"></a>Vytváření vlastních poznámek z PowerShellu
-Pomocí skriptu prostředí PowerShell pro [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) z GitHubu můžete vytvářet poznámky z libovolného procesu, který chcete, bez použití Azure DevOps. 
+Pomocí skriptu prostředí PowerShell pro [CreateReleaseAnnotation](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) z GitHubu můžete vytvářet poznámky z libovolného procesu, který chcete, bez použití Azure DevOps. 
 
-1. Vytvořte místní kopii [CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
+1. Vytvořte místní kopii [CreateReleaseAnnotation.ps1](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
    
 1. Pomocí kroků v předchozím postupu můžete získat ID Application Insights a na kartě **přístup k rozhraní api** Application Insights vytvořit klíč rozhraní API.
    

@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 6af3d9b99625dbecf6aec656d4aa7a65e4d1b4cd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d3d58cab6e3b9ed0bf3b8ed409aa736357687f09
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715209"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759641"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -97,7 +97,7 @@ Flexibilní serverová služba používá šifrovací modul ověřený standarde
 
 Služba šifruje přenášená data pomocí Transport Layer Security, který je ve výchozím nastavení vynutil. Flexibilní servery podporují jenom šifrovaná připojení pomocí TLS 1,2) a všechna příchozí připojení s TLS 1,0 a TLS 1,1 budou odepřená. 
 
-Další informace najdete v tématu [použití šifrovaných připojení k flexibilním serverům](/articles/mysql/flexible-server/how-to-connect-tls-ssl.md) .
+Další informace najdete v tématu [použití šifrovaných připojení k flexibilním serverům](https://docs.mongodb.com/manual/tutorial/configure-ssl) .
 
 Flexibilní servery umožňují úplný privátní přístup k serverům pomocí integrace [virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) . Servery ve službě Azure Virtual Network je možné oslovit a propojit jenom pomocí privátních IP adres. S integrací virtuální sítě se zamítl veřejný přístup a servery se nedají kontaktovat pomocí veřejných koncových bodů. 
 

@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 95a7ae951edab8e75894b0e9aa85029a54a50acb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d40637b05a5d398124ee52dbca49d55b3112ec95
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91664915"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758400"
 ---
 # <a name="sms-client-library-overview"></a>Přehled klientských knihoven pro SMS
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Klientské knihovny služby Azure Communication Services můžete použít k přidání zasílání zpráv SMS do aplikací.
 
@@ -37,7 +37,7 @@ Následující seznam uvádí sadu funkcí, které jsou aktuálně k dispozici v
 | Telefonní číslo      | Bezplatné telefonní číslo                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
 | Řídící        | Zpracování výslovných výjimek                                                                      | ✔️   | ✔️    | ✔️    | ✔️      |
 | Monitorování        | Monitorování využití odesílaných a přijatých zpráv                                          | ✔️   | ✔️    | ✔️    | ✔️      |
-| Volání do veřejné telefonní sítě      | Přidání schopností volání přes telefonní číslo do bezplatného čísla s povoleným serverem SMS (privátní verze Preview)                    | ✔️   | ✔️    | ✔️    | ✔️      |
+| Volání do veřejné telefonní sítě      | Přidání schopností volání přes telefonní číslo do bezplatného čísla s povoleným serverem SMS                    | ✔️   | ✔️    | ✔️    | ✔️      |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/01/2020
+ms.date: 10/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15581178dc1c00b6905763e8552062869f8378ce
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: eb7d7d6296432146e6e4390b0df62964ffe6f8da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91704952"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758094"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -82,6 +82,7 @@ V této části najdete informace v tématu Postup konfigurace jednotného přih
 
 ## <a name="change-log"></a>Protokol změn
 
+- 10/05/2020: vydání služby [SAP HANA Scale-out HSR s Pacemaker na virtuálních počítačích Azure v](./sap-hana-high-availability-scale-out-hsr-rhel.md) průvodci konfigurací RHEL
 - 09/30/2020: Změna [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v RHEL](./sap-hana-high-availability-rhel.md), [ha pro SAP HANA horizontálního navýšení kapacity pomocí ANF na RHEL](./sap-hana-high-availability-netapp-files-red-hat.md) a [Nastavení Pacemaker na RHEL v Azure](./high-availability-guide-rhel-pacemaker.md) pro přizpůsobení pokynů pro RHEL 8,1
 - 09/29/2020: v článku [skupiny umístění blízkosti Azure pro zajištění optimální latence sítě s aplikacemi SAP se](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) PPGy omezení a doporučení týkající se používání. 
 - 09/28/2020: Přidání nové Příručky k operaci úložiště pro SAP HANA pomocí Azure NetApp Files se [svazky systému souborů NFS v 4.1 na Azure NetApp Files pro SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)

@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: quickstart
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 705e389c83fbab6075c25a3f56e5392fb8cafcd9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 86d0a336a7d3f5d12ed8e53de802616f839f9eba
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91000940"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756809"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>Rychlý Start: zřízení a aktivace spravovaného modulu HSM pomocí Azure CLI
 
@@ -76,7 +76,7 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 Výstup tohoto příkazu zobrazuje vlastnosti spravovaného modulu HSM, který jste vytvořili. Dvě nejdůležitější vlastnosti jsou:
 
 * **název**: v tomto příkladu je název ContosoMHSM. Tento název použijete pro jiné Key Vault příkazy.
-* **hsmUri**: v tomto příkladu je identifikátor URI https://contosohsm.managedhsm.azure.net . Aplikace, které používají váš modul HARDWAROVÉho zabezpečení prostřednictvím REST API, musí používat tento identifikátor URI.
+* **hsmUri**: v tomto příkladu je identifikátor URI ' https://contosohsm.managedhsm.azure.net . ' Aplikace, které používají váš modul HARDWAROVÉho zabezpečení prostřednictvím REST API, musí používat tento identifikátor URI.
 
 Váš účet Azure je teď autorizovaný k provádění operací s tímto spravovaným modulem HSM. Od tohoto konce je nikdo jiný autorizovaný.
 

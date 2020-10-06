@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: cc697cd78e929b62f951014f760d644552fa082c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 59c5473e88e0c4a8108f651e9543ec90c08290ab
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651000"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759074"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografická dostupnost a podpora měny pro komerční tržiště
 
@@ -166,7 +166,7 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\* Pro zákazníky v Brazílii používá commcercial Marketplace prostřednictvím poskytovatelů cloudových řešení (CSP) USD.
+\* Pro zákazníky v Brazílii používá komerční tržiště prostřednictvím poskytovatelů cloudových řešení (CSP) USD.
 
 \** Jenom image virtuálních počítačů s bezplatným a BYOL.
 
@@ -181,7 +181,7 @@ Pokud chcete upravit jakoukoli cenu před publikováním, stačí exportovat tab
 
 Cena nabídky se vždycky zobrazuje zákazníkům v jejich místní měně. Cena, kterou vyberete v partnerském centru, se převede na místní měnu zákazníků podle směnného kurzu v době, kdy jste ceny v partnerském centru uložili. Cena zobrazená zákazníkům v online obchodech se nemění, pokud vaši nabídku znovu nepublikujete.
 
-Společnost Microsoft přijímá platby od zákazníků v jejich místní měně a zaplatí vám v místní měně. Microsoft převede zákaznickou zákaznickou měnu na svou místní měnu pomocí směnného kurzu pro daný den nákupu.
+Společnost Microsoft přijímá platby od zákazníků v jejich místní měně a zaplatí vám v měně vybrané v partnerském centru. Společnost Microsoft převádí zákaznickou místní měnu pomocí směnného kurzu pro daný den nákupu.
 
 > [!NOTE]
 > Microsoft převede ceny nabídek za použití multilicenčních kurzů Microsoftu.

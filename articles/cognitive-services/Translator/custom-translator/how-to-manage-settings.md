@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 488ca52abdd5f8d6cfd1f92a5f91861a17a77d19
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 184073ef3ee1b6a67c844754f7da81f88bbbdf62
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510462"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757023"
 ---
 # <a name="how-to-manage-settings"></a>Správa nastavení
 
@@ -51,6 +51,8 @@ Pokud předplatné nemáte, postupujte podle následujících kroků:
 
     ![Dialog vytvořit nový pracovní prostor](media/how-to/create-new-workspace-dialog.png)
 
+>[!Note]
+>Vlastní Překladatel nepodporuje vytváření pracovních prostorů pro prostředek Translator Text API (označuje se také jako Klíč předplatného Azure), který byl vytvořen v rámci [povolené virtuální](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)sítě.
 
 ### <a name="modify-existing-key"></a>Upravit existující klíč
 
@@ -61,7 +63,7 @@ Pokud předplatné nemáte, postupujte podle následujících kroků:
 
 3. V dialogovém okně zadejte klíč pro vaše předplatné překladatele a potom klikněte na tlačítko Uložit.
 
-    ![Jak přidat klíč předplatného](media/how-to/how-to-add-subscription-key-dialog.png)
+    ![Dialog Přidat klíč předplatného](media/how-to/how-to-add-subscription-key-dialog.png)
 
 ## <a name="manage-your-workspace"></a>Správa pracovního prostoru
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: d8779a25b7c6036f3b09badab67733fa55acfee7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0138715e4c9df8ae05c9a3eade64d539eb7cdeda
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907576"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756547"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurization v automatizovaném strojovém učení
 
@@ -29,7 +29,7 @@ V této příručce se naučíte:
 
 *Inženýrské funkce* je proces využití dat v doméně k vytváření funkcí, které usnadňují používání algoritmů strojového učení (ml) k lepšímu učení. V Azure Machine Learning se pro usnadnění vývoje funkcí používají techniky pro škálování dat a normalizaci. Souhrnně tyto techniky a technické funkce se nazývají *featurization* v automatizovaném strojovém učení nebo v *AutoML*experimenty.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že už víte, jak nakonfigurovat AutoML experiment. Informace o konfiguraci najdete v následujících článcích:
 
@@ -47,7 +47,7 @@ U experimentů, které nakonfigurujete pomocí sady Python SDK, můžete povolit
 
 V následující tabulce jsou uvedena přijímaná nastavení pro `featurization` ve [třídě AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig):
 
-|Konfigurace Featurization | Description|
+|Konfigurace Featurization | Popis|
 ------------- | ------------- |
 |`"featurization": 'auto'`| Určuje, že v rámci předběžného zpracování jsou [kroky guardrails dat a featurization](#featurization) provedeny automaticky. Toto nastavení je výchozí.|
 |`"featurization": 'off'`| Určuje, že kroky featurization se nemají automaticky provádět.|
@@ -62,7 +62,7 @@ Následující tabulka shrnuje techniky, které jsou automaticky aplikovány na 
 > [!NOTE]
 > Pokud plánujete exportovat AutoML vytvořené modely do [modelu ONNX](concept-onnx.md), ve formátu ONNX se podporují jenom možnosti featurization označené hvězdičkou (*). Přečtěte si další informace o [převodu modelů na ONNX](concept-automated-ml.md#use-with-onnx).
 
-|Featurization &nbsp; kroky| Description |
+|Featurization &nbsp; kroky| Popis |
 | ------------- | ------------- |
 |**Přetáhnout vysokou mohutnost nebo žádné funkce odchylky*** |Tyto funkce přetáhněte ze sady školení a ověření. Platí pro funkce se všemi chybějícími hodnotami, se stejnou hodnotou ve všech řádcích nebo s vysokou mohutnou (například hodnoty hash, ID nebo identifikátory GUID).|
 |**Imputace – chybějící hodnoty*** |Pro číselné funkce imputace s průměrem hodnot ve sloupci.<br/><br/>V případě funkcí kategorií se imputac s nejčastější hodnotou.|
@@ -316,7 +316,7 @@ Aby bylo možné vyvolat BERT, je třeba nastavit  `enable_dnn: True` ve svém a
 
 AutoML provede následující kroky pro BERT. 
 
-1. **Předzpracování a tokenizace všech textových sloupců**. Například "transformátor" StringCast "můžete najít v souhrnu featurization finálního modelu. Příklad, jak vystavit souhrn featurization modelu, najdete v [tomto poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb).
+1. **Předzpracování a tokenizace všech textových sloupců**. Například "transformátor" StringCast "můžete najít v souhrnu featurization finálního modelu. Příklad, jak vystavit souhrn featurization modelu, najdete v [tomto poznámkovém bloku](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b).
 
 2. **Zřetězí všechny textové sloupce do jednoho textového sloupce**, takže `StringConcatTransformer` v konečném modelu. 
 

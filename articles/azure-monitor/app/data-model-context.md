@@ -4,12 +4,12 @@ description: Model dat kontextu telemetrie Application Insights
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 25ff7d92da5ea0a6aba84aad1cfc98e5295e151e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cbd717243ed35fc90772cb2b727f7670bb77ee70
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322665"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757295"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Kontext telemetrie: Application Insights datový model
 
@@ -113,7 +113,7 @@ Maximální délka: 256
 
 ## <a name="internal-sdk-version"></a>Interní: verze sady SDK
 
-Verze sady SDK. Informace najdete v [tomto článku](https://github.com/microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md) .
+Verze sady SDK. Informace najdete v [tomto článku](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md) .
 
 Maximální délka: 64
 

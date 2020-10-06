@@ -1,24 +1,24 @@
 ---
 title: Rychlý Start – získání telefonního čísla z komunikačních služeb Azure
 description: Naučte se koupit telefonní číslo komunikačních služeb pomocí Azure Portal.
-author: ddematheu2
-manager: nimag
+author: prakulka
+manager: nmurav
 services: azure-communication-services
-ms.author: dademath
-ms.date: 07/09/2020
+ms.author: prakulka
+ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: f5cf8f8ef004dacc9fe2bbdd1b815f2ae5275311
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e06c3720e180c1dc4fa2f227fd86d15cbbb0ff33
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91298112"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756863"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Rychlý Start: získání telefonního čísla pomocí Azure Portal
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Začněte s komunikačními službami Azure pomocí Azure Portal k nákupu telefonního čísla.
 
@@ -41,7 +41,7 @@ V nabídce prostředek přejděte na okno telefonní čísla.
 
 Kliknutím na `Get` tlačítko spusťte průvodce. Průvodce v okně vás provede `Phone numbers` řadou otázek, které vám pomůžou vybrat telefonní číslo, které nejlépe vyhovuje vašemu scénáři. 
 
-Nejdřív budete muset zvolit, kde se má `Country/region` telefonní číslo zřídit. Po výběru země nebo oblasti budete muset vybrat, `phone plan` co nejlépe vyhovuje vašim potřebám. 
+Nejdřív budete muset zvolit, kde se má `Country/region` telefonní číslo zřídit. Po výběru země nebo oblasti budete muset vybrat, `use case` co nejlépe vyhovuje vašim potřebám. 
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
@@ -50,23 +50,13 @@ Nejdřív budete muset zvolit, kde se má `Country/region` telefonní číslo z�
 Výběr telefonního plánu je rozdělen do dvou kroků: 
 
 1. Výběr [typu čísla](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services)
-2. Výběr [plánu](../../concepts/telephony-sms/plan-solution.md#plans)
+2. Výběr [plánu](../../concepts/telephony-sms/plan-solution.md#phone-number-plans-in-azure-communication-services)
 
 Nabízíme nyní dva číselné typy: `Geographic` a `Toll-free` . Když vyberete typ čísla, budete mít k dispozici několik plánů, ze kterých si můžete vybrat.
 
-> [!NOTE]
-> V současné době podporujeme pouze výběr telefonních čísel s příchozím nebo odchozím voláním. Můžete ale koupit telefonní číslo s povoleným příchozím voláním a potom nakonfigurovat odchozí ID volajícího tak, aby odpovídalo číslu telefonního čísla s povoleným příchozím voláním (co se uživatelům zobrazuje při volání z vaší aplikace služby Communication Services).
-> Tato možnost se vztahuje pouze na obousměrný volání. Obousměrný server SMS je nativně podporován.
-
-V našem příkladu jsme vybrali `Toll-free` Typ čísla s `Outbound calling` plánem.
+V našem příkladu jsme vybrali `Toll-free` Typ čísla s `Outbound calling` `Inbound and Outbound SMS` plány a.
 
 :::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
-
-### <a name="declare-purpose"></a>Deklarovat účel
-
-V dalším kroku vás průvodce vyzve k zadání účelu použití tohoto čísla. Tyto informace shromažďujeme, aby se projevily správné daňové předpisy a předpisy pro tísňové volání.
-
-:::image type="content" source="../media/quickstart-search-and-acquire-bot-or-human.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
 Tady můžete kliknutím na `Next: Numbers` tlačítko v dolní části stránky přizpůsobit telefonní čísla, která chcete zřídit.
 
@@ -106,20 +96,27 @@ Přejděte ke zdroji komunikace Azure na [Azure Portal](https://portal.azure.com
 
 :::image type="content" source="../media/manage-phone-azure-portal-start.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
-V nabídce vyberte kartu telefonní čísla, abyste mohli spravovat telefonní čísla.
+Pokud chcete spravovat telefonní čísla, vyberte v nabídce okno telefonní čísla.
 
 :::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
 > [!NOTE]
 > Na této stránce může trvat několik minut, než se zřízené počty zobrazí.
 
-## <a name="troubleshooting"></a>Řešení potíží
+### <a name="customizing-phone-number-plans"></a>Přizpůsobení plánů telefonního čísla
+Na `Numbers` stránce můžete vybrat telefonní číslo kliknutím na číslo, pro které chcete plán přizpůsobit.
+
+:::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
+
+Vyberte možnosti ze seznamu dostupných volání a možností SMS a potom kliknutím `Confirm` použijte výběr.
+
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Běžné otázky a problémy:
 
 - V tuto chvíli se k nákupu telefonních čísel podporuje jenom námi. To je založené na fakturační adrese předplatného, ke kterému je prostředek přidružený. V tuto chvíli nemůžete přesunout prostředek do jiného předplatného.
 
-- Po odstranění telefonního čísla se telefonní číslo uvolní nebo nebude možné ho znovu koupit až do konce fakturačního cyklu.
+- Po uvolnění telefonního čísla se telefonní číslo uvolní nebo nebude možné ho znovu koupit až do konce fakturačního cyklu.
 
 - Po odstranění prostředku služby komunikace se budou automaticky vydávat telefonní čísla přidružená k tomuto prostředku.
 

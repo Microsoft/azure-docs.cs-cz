@@ -9,24 +9,24 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 5285dfb23476662a13162788b2ec497b4fe49228
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 78ae0fc94e74755b481f80724ca26b34da99122c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532603"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758570"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Kopírování a přesun Custom Visionch projektů
 
 Po vytvoření a školení projektu Custom Vision můžete chtít zkopírovat projekt do jiného prostředku. Například můžete chtít přesunout projekt z vývoje do produkčního prostředí nebo zálohovat projekt na účet v jiné oblasti Azure pro zvýšení zabezpečení dat.
 
-Rozhraní API **[ExportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3])** a **[ImportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** tento scénář umožňují, protože byste mohli kopírovat projekty z jednoho Custom Vision účtu do ostatních. V této příručce se dozvíte, jak používat rozhraní REST API s kudrlinkou. K vystavování požadavků můžete použít také službu požadavku HTTP, jako je například post.
+Rozhraní API **[ExportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)** a **[ImportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** tento scénář umožňují, protože byste mohli kopírovat projekty z jednoho Custom Vision účtu do ostatních. V této příručce se dozvíte, jak používat rozhraní REST API s kudrlinkou. K vystavování požadavků můžete použít také službu požadavku HTTP, jako je například post.
 
 ## <a name="business-scenarios"></a>Obchodní scénáře
 
 Pokud vaše aplikace nebo firma závisí na použití Custom Vision projektu, doporučujeme zkopírovat model do jiného účtu Custom Vision v jiné oblasti. Pokud dojde k oblastnímu výpadku, máte přístup k projektu v oblasti, kam byl zkopírován.
 
-##  <a name="prerequisites"></a>Požadavky
+##  <a name="prerequisites"></a>Předpoklady
 
 - Dva prostředky Azure Custom Vision. Pokud je nemáte, můžete přejít na Azure Portal a [vytvořit nový prostředek Custom Vision](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true).
 - Školicí klíče a adresy URL koncových bodů vašich Custom Visionch prostředků. Tyto hodnoty najdete na kartě **Přehled** prostředku na Azure Portal.

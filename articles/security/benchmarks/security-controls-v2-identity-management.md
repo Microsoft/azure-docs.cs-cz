@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8a29dbbf365304240283fe4fd5899b58e3bc227c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: e7447d03fc231d8d96b71c7d944a380c10add0d0
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741403"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757932"
 ---
 # <a name="security-control-v2-identity-management"></a>Řízení zabezpečení v2: Správa identit
 
@@ -169,7 +169,7 @@ Rozšířená ochrana před internetovými útoky (ATP) je řešení zabezpečen
 
 - [Jak monitorovat identitu uživatelů a aktivity přístupu v Azure Security Center](../../security-center/security-center-identity-access.md)
 
-- [Výstrahy v modulu Azure Security Center ochrany před hrozbami](//azure/security-center/alerts-reference)
+- [Výstrahy v modulu Azure Security Center ochrany před hrozbami](/azure/security-center/alerts-reference)
 
 - [Jak integrovat protokoly aktivit Azure do Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
