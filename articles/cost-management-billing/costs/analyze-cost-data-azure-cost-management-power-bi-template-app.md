@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 2a66ef2f91715180ae84036fc7eead759e7ee00f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0174c8a0c96d884f42aea9b6fb1cb0d9c06ce400
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685047"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447668"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Analýza nákladů pomocí aplikace Power BI Azure Cost Management pro smlouvy Enterprise (EA)
 
@@ -47,7 +47,7 @@ Postup instalace aplikace:
 9. V zobrazeném dialogovém okně zadejte do pole **BillingProfileIdOrEnrollmentNumber** číslo registrace EA. Zadejte počet měsíců, pro které se mají data získat. Ponechte výchozí hodnotu pro **Obor** na **Číslo registrace** a pak vyberte **Další**.  
   ![Zadání informací o registraci EA](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 10. Další dialogové okno se připojí k Azure a získá data požadovaná pro doporučení rezervovaných instancí. *Ponechte nakonfigurované výchozí hodnoty* a vyberte **Přihlásit se**.  
-  ![Připojení k Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
+  ![Snímek obrazovky s dialogovým oknem Připojit k aplikaci Azure Cost Management a výchozími hodnotami](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. Poslední krok instalace se připojí k registraci EA a vyžaduje účet [podnikového správce](../manage/understand-ea-roles.md). Vyberte **Přihlásit** a ověřte se pomocí své registrace EA. Tento krok také v Power BI spustí akci aktualizace dat.  
   ![Připojení k registraci EA](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
     > [!NOTE]
@@ -189,7 +189,7 @@ K této chybě dojde, pokud změníte metodu ověřování pro připojení objek
 
 1. Připojte se k datům.
 1. Po zadání registrace EA a počtu měsíců zkontrolujte, že jste jako metodu ověřování ponechali výchozí hodnotu **Anonymní** a pro úroveň soukromí je nastavena hodnota **Žádné**.  
-  ![Připojení k Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+  ![Snímek obrazovky s dialogovým oknem Připojit k aplikaci Azure Cost Management a zadanými hodnotami Anonymní a Žádné](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
 1. Na další stránce jako metodu ověřování nastavte **OAuth2** a pro úroveň soukromí nastavte hodnotu **Žádné**. Potom se přihlaste a ověřte pomocí své registrace. Tento krok také v Power BI spustí aktualizace dat.
 
 

@@ -170,7 +170,7 @@
               href: vpn-gateway-howto-openvpn-clients.md
             - name: Přechod na protokol OpenVPN nebo IKEv2 od SSTP
               href: ikev2-openvpn-from-sstp.md
-        - name: Konfigurace správy relací P2S
+        - name: Správa relací P2S
           href: p2s-session-management.md
         - name: Přechod na certifikát veřejné brány CA pro P2S
           href: vpn-gateway-point-to-site-gateway-public-ca.md

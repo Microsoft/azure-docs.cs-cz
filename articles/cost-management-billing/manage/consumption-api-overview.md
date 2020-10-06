@@ -8,12 +8,12 @@ ms.subservice: cost-management
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: e2252d13dd39587e7730b141a6096afc0a34dbc1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 07595eed70850ce5270a261d588a33b68ff964fe
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690013"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371928"
 ---
 # <a name="azure-consumption-api-overview"></a>Přehled rozhraní API služby Azure Consumption
 
@@ -38,7 +38,7 @@ Rozhraní API Podrobnosti využití slouží k získání informací o poplatcí
 Rozhraní API nabízí tyto funkce:
 
 -   **Data spotřeby na úrovni měřiče** – můžete zobrazit data včetně nákladů na využití, měřiče, který poplatek vystavil, a prostředků Azure, kterých se poplatek týká. Všechny záznamy údajů o využití se mapují na denní interval.
--   **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
+-   **Řízení přístupu na základě role v Azure (Azure RBAC)** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
 -   **Filtrování** – sadu výsledků v rozhraní API můžete pomocí následujících filtrů omezit a získat menší sadu záznamů s údaji o využití:
     - Konec využívání / začátek využívání
     - Skupina prostředků
@@ -55,7 +55,7 @@ Rozhraní API Poplatky za Marketplace slouží k získání informací o poplatc
 Rozhraní API nabízí tyto funkce:
 
 -   **Data spotřeby na úrovni měřiče** – můžete zobrazit data včetně nákladů na využití Marketplace, měřiče, který poplatek vystavil, a prostředků, kterých se poplatek týká. Všechny záznamy údajů o využití se mapují na denní interval.
--   **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
+-   **Řízení přístupu na základě role v Azure (Azure RBAC)** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
 -   **Filtrování** – sadu výsledků v rozhraní API můžete pomocí následujících filtrů omezit a získat menší sadu záznamů týkajících se Marketplace:
     - Začátek využívání / konec využívání
     - Skupina prostředků
@@ -70,7 +70,7 @@ Zákazníci se smlouvou Enterprise můžou pomocí rozhraní API Zůstatky získ
 
 Rozhraní API nabízí tyto funkce:
 
--   **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
+-   **Řízení přístupu na základě role v Azure (Azure RBAC)** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
 -   **Jenom zákazníci se smlouvou Enterprise** – toto rozhraní API je dostupné jenom zákazníkům se smlouvou Enterprise.
     - K volání tohoto rozhraní API potřebují zákazníci oprávnění správce smlouvy Enterprise.
 
@@ -82,7 +82,7 @@ Zákazníci se smlouvou Enterprise můžou pomocí tohoto rozhraní API vytvář
 
 Rozhraní API nabízí tyto funkce:
 
--   **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
+-   **Řízení přístupu na základě role v Azure (Azure RBAC)** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
 -   **Jenom zákazníci se smlouvou Enterprise** – toto rozhraní API je dostupné jenom zákazníkům se smlouvou Enterprise.
 -   **Konfigurovatelná oznámení** – je možné určit uživatele, který dostane oznámení o překročení rozpočtu.
 -   **Rozpočty na základě využití nebo nákladů** – rozpočet je možné vytvořit buď na základě spotřeby, nebo na základě nákladů, podle toho, co je v daném scénáři vhodnější.
@@ -100,7 +100,7 @@ Pomocí tohoto rozhraní API můžete získat doporučení pro nákup rezervovan
 
 Rozhraní API nabízí tyto funkce:
 
--   **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
+-   **Řízení přístupu na základě role v Azure (Azure RBAC)** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
 -   **Filtrování** – výsledky doporučení můžete přizpůsobit pomocí následujících filtrů:
     - Rozsah
     - Období pro zpětné hodnocení
@@ -114,7 +114,7 @@ Pomocí rozhraní API Podrobnosti rezervace můžete zobrazit informace o dřív
 
 Rozhraní API nabízí tyto funkce:
 
--   **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
+-   **Řízení přístupu na základě role v Azure (Azure RBAC)** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
 -   **Filtrování** – sadu výsledků v rozhraní API můžete pomocí následujících filtrů omezit a získat menší sadu rezervací:
     - Rozsah dat
 -   **Informace o rezervacích pro různé typy nabídek** – informace o rezervacích jsou aktuálně dostupné zákazníkům programů Enterprise a Web Direct.
@@ -127,7 +127,7 @@ Pomocí tohoto rozhraní API můžete zobrazit souhrnné informace o dříve zak
 
 Rozhraní API nabízí tyto funkce:
 
--   **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
+-   **Řízení přístupu na základě role v Azure (Azure RBAC)** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
 -   **Filtrování** – výsledky na úrovni denních podrobností můžete přizpůsobit pomocí následujícího filtru:
     - Datum využití
 -   **Informace o rezervacích pro různé typy nabídek** – informace o rezervacích jsou aktuálně dostupné zákazníkům programů Enterprise a Web Direct.
@@ -140,7 +140,7 @@ Zákazníci se smlouvou Enterprise můžou pomocí tohoto rozhraní API načíst
 
 Rozhraní API nabízí tyto funkce:
 
--   **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
+-   **Řízení přístupu na základě role v Azure (Azure RBAC)** – na webu [Azure Portal](https://portal.azure.com), v rozhraní [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo v [rutinách Azure PowerShell](https://docs.microsoft.com/powershell/azure/) se dají nakonfigurovat zásady přístupu určující, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Přidejte volajícího do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel, aby získal přístup k datům využití pro určité předplatné Azure.
 -   **Jenom zákazníci se smlouvou Enterprise** – toto rozhraní API je dostupné jenom zákazníkům se smlouvou Enterprise. Zákazníkům Web Direct doporučujeme ke zjištění cen používat rozhraní API RateCard.
 
 Další informace najdete v technické specifikaci [rozhraní API Ceník](https://docs.microsoft.com/rest/api/consumption/pricesheet).

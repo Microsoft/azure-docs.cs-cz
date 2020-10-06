@@ -29,7 +29,7 @@
           href: create-sql-api-python.md
         - name: Aplikace v Xamarinu
           href: create-sql-api-xamarin-dotnet.md
-- name: Kurzy
+- name: Výukové kurzy
   items:
     - name: 1. Vytváření a správa dat
       items:
@@ -1064,6 +1064,8 @@
       items:
         - name: Migrace na Java V4 SDK
           href: migrate-java-v4-sdk.md
+        - name: Migrace na .NET V3 SDK
+          href: migrate-dotnet-v3.md
     - name: Řešení potíží
       items:
         - name: Běžné chyby

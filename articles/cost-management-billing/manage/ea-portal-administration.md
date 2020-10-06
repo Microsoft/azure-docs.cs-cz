@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 27073cb7cbd78183e519290c676c2499700b0cca
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cc44f05491cc17adb9ca51963d09667400fa1ff6
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442543"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371911"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 
@@ -175,7 +175,7 @@ V tomto dokumentu najdete odpovědi na nejčastější dotazy související s vl
 
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>Kolik vlastníků účtů Azure je možné mít pro jedno předplatné?
 
-V jednom předplatném je povolený pouze jeden vlastník účtu.  Další role je možné přidat pomocí řízení přístupu na základě role nebo řízení přístupu (IAM) na kartě předplatného v levém horním rohu stránky na webu[Azure Portal](https://portal.azure.com).
+V jednom předplatném je povolený pouze jeden vlastník účtu.  Další role je možné přidat pomocí řízení přístupu na základě role v Azure (Azure RBAC) na kartě předplatného v levém horním rohu stránky na webu[Azure Portal](https://portal.azure.com).
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Může být vlastník účtu Azure uvedený u více než jednoho oddělení?
 
@@ -191,7 +191,7 @@ Vlastník účtu Azure může vytvářet a spravovat neomezené množství před
 
 ### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>Jak můžu zobrazit všechna předplatná organizace nebo k nim získat přístup?
 
-V současné době je potřeba k tomu použít zásady. To znamená, že byste museli vyžadovat, aby se pro každé vytvořené předplatné váš účet pomocí řízení přístupu na základě role přidal do role předplatného.
+V současné době je potřeba k tomu použít zásady. To znamená, že byste museli vyžadovat, aby se pro každé vytvořené předplatné váš účet pomocí řízení přístupu na základě role v Azure (Azure RBAC) přidal do role předplatného.
 
 ### <a name="where-do-i-go-to-create-a-subscription"></a>Kde můžu vytvořit předplatné?
 

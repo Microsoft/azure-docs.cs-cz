@@ -214,6 +214,8 @@
               href: functions-create-scheduled-function.md
         - name: Přidání vazeb
           items:
+            - name: Postup při přidávání vazby
+              href: add-bindings-existing-function.md
             - name: Azure Cosmos DB – portál
               href: functions-integrate-store-unstructured-data-cosmosdb.md
             - name: Storage – Python

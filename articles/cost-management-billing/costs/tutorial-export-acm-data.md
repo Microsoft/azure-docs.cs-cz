@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: c0fcc9d5753ce90365829fba658031e633819513
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6ef5a457bac7b384dc1b4349b1782a752c41ea26
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683262"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447617"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaných dat
 
@@ -91,9 +91,9 @@ Export pro skupiny pro správu jiných typů předplatného se nepodporuje.
 
 1. Pokud jste si ještě nevytvořili skupinu pro správu, vytvořte si ji a přiřaďte do ní předplatná.
 1. V analýze nákladů jako rozsah nastavte skupinu pro správu a vyberte možnost **Vybrat tuto skupinu pro správu**.  
-    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="Příklad ukazující možnost Vybrat tuto skupinu pro správu" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
+    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="Příklad nového exportu" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
 1. Vytvořením exportu v daném rozsahu získáte data služby Cost Management pro předplatná ve skupině pro správu.  
-    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Příklad ukazující možnost vytvoření nového exportu s rozsahem skupiny pro správu":::
+    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Příklad nového exportu":::
 
 ## <a name="verify-that-data-is-collected"></a>Ověřte, že jsou data shromážděná
 
@@ -128,11 +128,11 @@ Vyexportovaný soubor CSV si také můžete stáhnout na webu Azure Portal. Nás
 
 Historii spuštění naplánovaného exportu můžete zobrazit výběrem příslušného exportu na stránce se seznam exportů. Stránka se seznamem exportů také poskytuje rychlý přístup k zobrazení doby běhu předchozích exportů a času příštího spuštění exportu. Tady je příklad ukazující historii spuštění.
 
-:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="Příklad ukazující historii spuštění exportu":::
+:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="Příklad nového exportu":::
 
 Výběrem exportu zobrazíte jeho historii spuštění.
 
-:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="Příklad ukazující historii spuštění exportu":::
+:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="Příklad nového exportu":::
 
 ## <a name="access-exported-data-from-other-systems"></a>Přístup k exportovaným datům z jiných systémů
 

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 64e7f0eae10f590ffd268b43b63a5d8cb0987c57
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 16ddb9cfc2f0731381b1c92d8fdb5f4cffa1ca63
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683143"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372353"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
@@ -26,7 +26,7 @@ _Rozsah_ je uzel v hierarchii prostředků Azure, ve kterém mají uživatelé A
 - Fakturační údaje, například platby a faktury
 - Cloudové služby, například náklady a řízení zásad
 
-V rozsazích můžete spravovat fakturační údaje, mít zvláštní role pro platby, zobrazovat faktury a provádět všeobecnou správu účtu. Role pro fakturaci a účet se spravují nezávisle na rolích určených ke správě prostředků, které používají [Azure RBAC](../../role-based-access-control/overview.md). Abychom mohli jasně rozlišit účel těchto oddělených rozsahů, včetně rozdílů v řízení přístupu, označují se jako _rozsahy fakturace_ a _rozsahy RBAC_.
+V rozsazích můžete spravovat fakturační údaje, mít zvláštní role pro platby, zobrazovat faktury a provádět všeobecnou správu účtu. Role pro fakturaci a účet se spravují nezávisle na rolích určených ke správě prostředků, které používají [Azure RBAC](../../role-based-access-control/overview.md). Abychom mohli jasně rozlišit účel těchto oddělených rozsahů, včetně rozdílů v řízení přístupu, označují se jako _rozsahy fakturace_ a _rozsahy Azure RBAC_.
 
 Další informace o rozsazích najdete ve videu věnovaném [nastavení hierarchií ve službě Cost Management](https://www.youtube.com/watch?v=n3TLRaYJ1NY). Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
 
@@ -34,7 +34,7 @@ Další informace o rozsazích najdete ve videu věnovaném [nastavení hierarch
 
 ## <a name="how-cost-management-uses-scopes"></a>Jak Cost Management používá rozsahy
 
-Cost Management funguje ve všech rozsazích nad úrovní prostředků, aby organizace mohly spravovat náklady na úrovni, pro kterou mají přístup, a to bez ohledu na to, jestli jde o celý fakturační účet nebo jednu skupinu prostředků. Rozsahy fakturace se liší v závislosti na vaší smlouvě s Microsoftem (typu předplatné), ale rozsahy RBAC nikoli.
+Cost Management funguje ve všech rozsazích nad úrovní prostředků, aby organizace mohly spravovat náklady na úrovni, pro kterou mají přístup, a to bez ohledu na to, jestli jde o celý fakturační účet nebo jednu skupinu prostředků. Rozsahy fakturace se liší v závislosti na vaší smlouvě s Microsoftem (typu předplatné), ale rozsahy Azure RBAC nikoli.
 
 ## <a name="azure-rbac-scopes"></a>Rozsahy Azure RBAC
 
@@ -98,7 +98,7 @@ Rozsahy fakturace EA podporují následující role:
 - **Podnikový uživatel s přístupem jen pro čtení** – může zobrazit nastavení fakturačního účtu, data nákladů a konfiguraci nákladů. Jde například o rozpočty a exporty. Z hlediska funkce je rozsah fakturace EA stejný jako [role Čtenář služby Cost Management v Azure](../../role-based-access-control/built-in-roles.md#cost-management-reader).
 - **Správce oddělení** – může spravovat nastavení oddělení, například nákladové středisko, může mít přístup ke všem nákladům a zobrazovat je a spravovat konfiguraci nákladů. Jde například o rozpočty a exporty.  Aby viděli správci oddělení a uživatelé s přístupem jen pro čtení náklady, musí pro ně být povolené nastavení fakturačního účtu **Správce oddělení může zobrazit náklady**. Pokud je nastavení **Správce oddělení může zobrazit náklady** zakázané, nevidí uživatelé oddělení žádné náklady na žádné úrovni, i když jsou vlastníky účtu nebo předplatného.
 - **Uživatel oddělení s přístupem jen pro čtení** – může zobrazit nastavení oddělení, data nákladů a konfiguraci nákladů. Jde například o rozpočty a exporty. Pokud je nastavení **Správce oddělení může zobrazit náklady** zakázané, nevidí uživatelé oddělení žádné náklady na žádné úrovni, i když jsou vlastníky účtu nebo předplatného.
-- **Vlastník účtu** – může spravovat nastavení účtu pro registraci (například nákladové středisko), zobrazit všechny náklady a spravovat konfiguraci nákladů (jako jsou rozpočty a exporty) pro účet registrace. Aby viděli vlastníci účtů a uživatelé RBAC náklady, musí pro ně být povolené nastavení fakturačního účtu **Vlastník účtu může zobrazit náklady**.
+- **Vlastník účtu** – může spravovat nastavení účtu pro registraci (například nákladové středisko), zobrazit všechny náklady a spravovat konfiguraci nákladů (jako jsou rozpočty a exporty) pro účet registrace. Aby si vlastníci účtů a uživatelé Azure RBAC mohli zobrazit náklady, musí pro ně být povolené nastavení fakturačního účtu **Vlastník účtu může zobrazit náklady**.
 
 Uživatelé fakturačního účtu EA nemají přímý přístup k fakturám. Faktury jsou dostupné z externího multilicenčního systému.
 

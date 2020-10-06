@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 8997cf5e86eb79b527c0b37ef0b85556469aea98
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0404e3b268f5797e34b3818df8eebeefbe68a1f3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687633"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371945"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Začínáme s portálem Azure Enterprise
 
@@ -242,10 +242,10 @@ Při přenášení účtů mějte na paměti toto:
 
 - Po dokončení přenosu předplatných aktualizuje Microsoft vlastníka účtu.
 
-Seznamte se s těmito zásadami řízení přístupu na základě role (RBAC):
+Seznamte se s těmito zásadami řízení přístupu na základě role v Azure (Azure RBAC):
 
-- Když provádíte přenosy předplatných mezi dvěma ID organizace ve stejném tenantovi, zachovají se zásady RBAC a přiřazené role správců služeb a spolusprávců.
-- Jiné přenosy předplatných povedou ke ztrátě nastavených zásad RBAC a přiřazení rolí.
+- Když provádíte přenosy předplatných mezi dvěma ID organizace ve stejném tenantovi, zachovají se zásady Azure RBAC a přiřazené role správců služeb a spolusprávců.
+- Jiné přenosy předplatných povedou ke ztrátě nastavených zásad Azure RBAC a přiřazení rolí.
 - Zásady a role správců se nepřenášejí mezi různými adresáři. U správců služeb proběhne aktualizace na vlastníka cílového účtu.
 
 Před změnou vlastníka účtu:
@@ -569,7 +569,7 @@ Můžete nastavit kvótu útraty na úrovni oddělení a systém vás automatick
 
 Pokud chcete definovat kvótu útraty, vyberte oddělení a potom ikonu úprav. Po úpravě podrobností limitu útraty vyberte **Save** (Uložit).
 
-### <a name="i-used-resource-groups-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>K implementaci řízení přístupu na základě role a sledování využití jsem použil(a) skupiny prostředků. Jak mohu zobrazit související podrobnosti o využití?
+### <a name="i-used-resource-groups-to-implement-azure-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>K implementaci řízení přístupu Azure RBAC a sledování využití jsem použil(a) skupiny prostředků. Jak mohu zobrazit související podrobnosti o využití?
 
 Informace o používání _skupin prostředků_ a _značek_ se sledují na úrovni služby a jsou k dispozici v souboru s podrobnými informacemi o využití (CSV), který si můžete stáhnout. Na portálu Azure Enterprise přejděte na [stažení sestavy využití](https://ea.azure.com/report/downloadusage).
 

@@ -80,6 +80,8 @@
       href: encryption-overview.md
     - name: Dvojité šifrování
       href: double-encryption.md
+    - name: Změny certifikátů TLS
+      href: tls-certificate-changes.md
     - name: Šifrování disku
       items:
         - name: Osvědčené postupy

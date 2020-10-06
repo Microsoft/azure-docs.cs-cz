@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2bf28384ae672440a18331cad8ac95f6ea051b85
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526642"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372183"
 ---
 # <a name="manage-costs-with-automation"></a>Správa nákladů s využitím automatizace
 
@@ -234,7 +234,7 @@ Existuje mnoho způsobů, jak nakonfigurovat rozpočet v prostředí Azure. Nejd
 - **Časové obdob:í** Představuje dobu, po kterou je rozpočet platný. Rozpočet aktivně monitoruje a upozorňuje jenom po dobu, po kterou zůstává platný.
 - **Oznámení**
   - Kontaktní e-mailové adresy: Tyto e-mailové adresy dostávají upozornění, když rozpočet nakumuluje náklady a překročí se definované prahové hodnoty.
-  - Kontaktní role: Při použití této možnosti dostanou e-mailová upozornění všichni uživatelé s odpovídající rolí Azure RBAC pro příslušný obor. Například vlastníci předplatného by dostali upozornění na rozpočet vytvořený v oboru předplatného.
+  - Kontaktní role: Při použití této možnosti dostanou e-mailová upozornění všichni uživatelé s odpovídající rolí Azure pro příslušný obor. Například vlastníci předplatného by dostali upozornění na rozpočet vytvořený v oboru předplatného.
   - Kontaktní skupiny: Při překročení prahové hodnoty pro upozornění rozpočet volá nakonfigurované skupiny akcí.
 - **Filtry dimenze nákladů:** Stejné filtrování jako při analýze nákladů nebo v rozhraní API pro dotazy můžete také využít ve vašem rozpočtu. Pomocí tohoto filtru můžete omezit rozsah nákladů, které v rámci rozpočtu monitorujete.
 

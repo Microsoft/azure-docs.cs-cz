@@ -1,6 +1,6 @@
 ---
 title: Získání vlastnictví fakturace předplatných Azure pro smlouvu s partnerem Microsoftu (MPA)
-description: Přečtěte si, jak požádat ostatní uživatele o udělení vlastnictví fakturace předplatných Azure.
+description: Přečtěte si, jak požádat ostatní uživatele o udělení vlastnictví fakturace předplatných Azure pro Smlouvu s partnerem Microsoftu (MPA).
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: eef36726db735cfdd42f5a103073303cf3b3a632
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bb2a58b76445f2cfd14a905de1fb66dbff3eee7e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684945"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371010"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Získání vlastnictví fakturace předplatných Azure pro vlastní účet se smlouvou MPA
 
@@ -35,7 +35,7 @@ Tento článek se týká fakturačních účtů pro smlouvu s partnerem Microsof
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů agenta správy CSP v tenantovi CSP.
 1. Vyhledejte **Cost Management a fakturace**.  
-    ![Screenshot znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mpa-request-ownership/search-cmb.png)
+    ![Snímek obrazovky znázorňující hledání položky Cost Management + Billing na webu Azure Portal za účelem odeslání žádosti o vlastnictví fakturace](./media/mpa-request-ownership/search-cmb.png)
 1. Na levé straně vyberte **Zákazníci** a pak v seznamu vyberte zákazníka.  
     [![Screenshot znázorňující výběr zákazníků](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. Vlevo dole vyberte **Žádosti o převod** a pak vyberte **Přidat novou žádost**.  
@@ -56,7 +56,7 @@ Tento článek se týká fakturačních účtů pro smlouvu s partnerem Microsof
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Cost Management a fakturace**.  
-    ![Screenshot znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
+    ![Snímek obrazovky znázorňující hledání položky Cost Management + Billing na webu Azure Portal za účelem získání stavu převodu](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
 1. Na levé straně vyberte **Zákazníci**.  
     [![Screenshot znázorňující výběr zákazníků](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. V seznamu vyberte zákazníka, za kterého jste odeslali žádost o převod.
@@ -127,7 +127,7 @@ Rezervace Azure se s předplatným automaticky nepřevádí. Buď si můžete re
 
 ### <a name="access-to-azure-services"></a>Přístup ke službám Azure
 
-Převod nebude mít vliv na přístup stávajících uživatelů, skupin nebo instančních objektů přidělených pomocí [Azure RBAC (řízení přístupu na základě role)](../../role-based-access-control/overview.md). Partner k předplatným nezíská nový přístup RBAC.
+Převod nebude mít vliv na přístup stávajících uživatelů, skupin nebo instančních objektů přidělených pomocí [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md). Partner k předplatným nezíská nový přístup Azure RBAC.
 
 Pokud partneři chtějí získat přístup k předplatným, měli by se spojit se zákazníkem. Aby partneři mohli vytvářet lístky podpory, musí získat přístup k funkci [AOBO (Admin on Behalf Of)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) nebo ke službě [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider).
 
@@ -174,4 +174,4 @@ Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#bl
 ## <a name="next-steps"></a>Další kroky
 
 * Vlastnictví fakturace předplatných Azure se převede na vás. Poplatky za tato předplatná můžete sledovat na webu [Azure Portal](https://portal.azure.com).
-* Pokud chcete získat přístup k převedeným předplatným Azure, spojte se se zákazníkem. [Správa přístupu k prostředkům Azure pomocí řízení přístupu na základě role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* Pokud chcete získat přístup k převedeným předplatným Azure, spojte se se zákazníkem. [Přidání nebo odebrání přiřazení rolí Azure pomocí webu Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)

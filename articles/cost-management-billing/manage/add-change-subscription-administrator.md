@@ -1,6 +1,6 @@
 ---
 title: Přidání nebo změna správců předplatného Azure
-description: Popisuje, jak přidat nebo změnit správce předplatného Azure s využitím řízení přístupu na základě role (RBAC).
+description: Popisuje, jak přidat nebo změnit správce předplatného Azure s využitím řízení přístupu na základě role v Azure (Azure RBAC).
 author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
@@ -9,21 +9,21 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 2ccdb16af788f6f8d106628742b2a83e25b26263
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 273f12765f60eb1a0d65037e30e33e58b16463bf
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683092"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372302"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Přidání nebo změna správců předplatného Azure
 
 
 Pokud chcete spravovat přístup k prostředkům Azure, potřebujete mít odpovídající roli správce. Azure má systém autorizace označovaný jako [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) s několika předdefinovanými rolemi, které můžete použít. Tyto role můžete přiřadit v různých oborech, například v oboru skupiny pro správu, předplatného nebo skupiny prostředků. Ve výchozím nastavení může osoba, která vytváří nové předplatné Azure, přiřazovat ostatním uživatelům přístup pro správu k předplatnému.
 
-Tento článek popisuje, jak pro uživatele přidat nebo změnit roli správce s využitím řízení přístupu na základě role (RBAC) v oboru předplatného.
+Tento článek popisuje, jak pro uživatele přidat nebo změnit roli správce s využitím Azure RBAC v rozsahu předplatného.
 
-Microsoft doporučuje spravovat přístup k prostředkům pomocí řízení přístupu na základě role (RBAC). Pokud však stále používáte model nasazení Classic a ke správě klasických prostředků využíváte [modul PowerShellu pro správu služeb Azure](/powershell/module/servicemanagement/azure.service), budete muset použít klasického správce.
+Microsoft doporučuje spravovat přístup k prostředkům pomocí Azure RBAC. Pokud však stále používáte model nasazení Classic a ke správě klasických prostředků využíváte [modul PowerShellu pro správu služeb Azure](/powershell/module/servicemanagement/azure.service), budete muset použít klasického správce.
 
 > [!TIP]
 > Pokud ke správě klasických prostředků využíváte pouze Azure Portal, nebudete muset použít klasického správce.

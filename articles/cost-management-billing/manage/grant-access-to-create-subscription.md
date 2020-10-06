@@ -8,12 +8,12 @@ ms.reviewer: amberb
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: banders
-ms.openlocfilehash: b154d723e82d02ea864459ef65eb5c05c14ae336
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 661b088d024a6da631fa06fbd97131091b9f650b
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88943161"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371877"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Udělení přístupu pro vytváření předplatných Azure Enterprise (Preview)
 
@@ -23,11 +23,11 @@ Jako zákazník Azure se [smlouvou Enterprise (EA)](https://azure.microsoft.com/
 
 ## <a name="grant-access"></a>Udělení přístupu
 
-Pokud uživatelé chtějí [vytvářet předplatná v rámci registračního účtu](programmatically-create-subscription.md), musí pro tento účet mít [roli vlastníka RBAC](../../role-based-access-control/built-in-roles.md#owner). Uživateli nebo skupině uživatelů můžete udělit roli vlastníka RBAC pro registrační účet pomocí následujících kroků:
+Pokud uživatelé chtějí [vytvářet předplatná v rámci registračního účtu](programmatically-create-subscription.md), musí pro tento účet mít [roli vlastníka Azure RBAC](../../role-based-access-control/built-in-roles.md#owner). Uživateli nebo skupině uživatelů můžete udělit roli vlastníka Azure RBAC pro registrační účet pomocí následujících kroků:
 
 1. Získejte ID objektu registračního účtu, pro který chcete udělit přístup:
 
-    Abyste mohli ostatním udělovat roli vlastníka RBAC v rámci registračního účtu, musíte mít pro tento účet roli vlastníka účtu nebo vlastníka RBAC.
+    Abyste mohli ostatním udělit roli vlastníka Azure RBAC v rámci registračního účtu, musíte mít pro tento účet roli vlastníka účtu nebo vlastníka Azure RBAC.
 
     # <a name="rest"></a>[REST](#tab/rest)
 
@@ -62,7 +62,7 @@ Pokud uživatelé chtějí [vytvářet předplatná v rámci registračního ú�
     }
     ```
 
-    K určení účtu, ke kterému chcete přidělit roli Vlastník RBAC, použijte vlastnost `principalName`. Zkopírujte `name` tohoto účtu. Pokud například chcete udělit přístup vlastníka RBAC registračnímu účtu SignUpEngineering@contoso.com, zkopírujete ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Je to ID objektu registračního účtu. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku jako `enrollmentAccountObjectId`.
+    K určení účtu, ke kterému chcete přidělit roli vlastníka Azure RBAC, použijte vlastnost `principalName`. Zkopírujte `name` tohoto účtu. Pokud například chcete přístup vlastníka Azure RBAC udělit registračnímu účtu SignUpEngineering@contoso.com, zkopírujete ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Je to ID objektu registračního účtu. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku jako `enrollmentAccountObjectId`.
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -80,7 +80,7 @@ Pokud uživatelé chtějí [vytvářet předplatná v rámci registračního ú�
     4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
     ```
 
-    K určení účtu, ke kterému chcete přidělit roli Vlastník RBAC, použijte vlastnost `principalName`. Zkopírujte `ObjectId` tohoto účtu. Pokud například chcete udělit přístup vlastníka RBAC registračnímu účtu SignUpEngineering@contoso.com, zkopírujete ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Toto ID objektu někam vložte, abyste ho mohli použít v dalším kroku jako `enrollmentAccountObjectId`.
+    K určení účtu, ke kterému chcete přidělit roli vlastníka Azure RBAC, použijte vlastnost `principalName`. Zkopírujte `ObjectId` tohoto účtu. Pokud například chcete přístup vlastníka Azure RBAC udělit registračnímu účtu SignUpEngineering@contoso.com, zkopírujete ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Toto ID objektu někam vložte, abyste ho mohli použít v dalším kroku jako `enrollmentAccountObjectId`.
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -111,18 +111,18 @@ Pokud uživatelé chtějí [vytvářet předplatná v rámci registračního ú�
 
     ---
 
-    K určení účtu, ke kterému chcete přidělit roli Vlastník RBAC, použijte vlastnost `principalName`. Zkopírujte `name` tohoto účtu. Pokud například chcete udělit přístup vlastníka RBAC registračnímu účtu SignUpEngineering@contoso.com, zkopírujete ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Je to ID objektu registračního účtu. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku jako `enrollmentAccountObjectId`.
+    K určení účtu, ke kterému chcete přidělit roli vlastníka Azure RBAC, použijte vlastnost `principalName`. Zkopírujte `name` tohoto účtu. Pokud například chcete přístup vlastníka Azure RBAC udělit registračnímu účtu SignUpEngineering@contoso.com, zkopírujete ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Je to ID objektu registračního účtu. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku jako `enrollmentAccountObjectId`.
 
-1. <a id="userObjectId"></a>Získejte ID objektu uživatele nebo skupiny, kterým chcete poskytnout roli vlastníka RBAC:
+1. <a id="userObjectId"></a>Získejte ID objektu uživatele nebo skupiny, kterým chcete poskytnout roli vlastníka Azure RBAC:
 
     1. Na webu Azure Portal hledejte v **Azure Active Directory**.
     1. Pokud chcete udělit přístup pro uživatele, v nabídce na levé straně vyberte **Uživatelé**. Pokud chcete udělit přístup ke skupině, vyberte **Skupiny**.
-    1. Vyberte uživatele nebo skupinu, kterým chcete poskytnout roli vlastníka RBAC.
+    1. Vyberte uživatele nebo skupinu, kterým chcete poskytnout roli vlastníka Azure RBAC.
     1. Pokud jste vybrali uživatele, najdete ID objektu na stránce profilu. Pokud jste vybrali skupinu, ID objektu bude uvedené na stránce přehledu. Výběrem ikony napravo od textového pole zkopírujte **ObjectID**. Někam ho vložte, abyste ho mohli použít v dalším kroku jako `userObjectId`.
 
-1. Uživateli nebo skupině udělte roli vlastníka RBAC pro registrační účet:
+1. Uživateli nebo skupině udělte roli vlastníka Azure RBAC pro registrační účet:
 
-    Pomocí hodnot, které jste shromáždili v prvních dvou krocích, udělte uživateli nebo skupině roli vlastníka RBAC pro registrační účet.
+    Pomocí hodnot, které jste shromáždili v prvních dvou krocích, udělte uživateli nebo skupině roli vlastníka Azure RBAC pro registrační účet.
 
     # <a name="rest"></a>[REST](#tab/rest-2)
 
@@ -174,7 +174,7 @@ Pokud uživatelé chtějí [vytvářet předplatná v rámci registračního ú�
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    Jakmile se uživatel stane vlastníkem RBAC pro váš registrační účet, může v něm [programově vytvářet předplatná](programmatically-create-subscription.md). Předplatné vytvořené delegovaným uživatelem má jako správce služeb nadále původního vlastníka účtu, ale ve výchozím nastavení má také delegovaného uživatele jako vlastníka RBAC.
+    Jakmile se uživatel stane vlastníkem Azure RBAC pro váš registrační účet, může v něm [programově vytvářet předplatná](programmatically-create-subscription.md). Předplatné vytvořené delegovaným uživatelem má jako správce služeb nadále původního vlastníka účtu, ale ve výchozím nastavení má také delegovaného uživatele jako vlastníka Azure RBAC.
 
     ---
 

@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: afa95609e0bcb879b6ad4b3b50b5dff5feb9a9f7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5498fd83efa0fa52f5f0861588eaa8cdeb0953ac
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682786"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371792"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Nastavení fakturačního účtu pro smlouvu se zákazníkem Microsoftu
 
@@ -132,7 +132,7 @@ Služby Azure ve vašem předplatném poběží i nadále bez přerušení. Pře
 
 ### <a name="user-access-to-azure-resources"></a>Přístup uživatelů k prostředkům Azure
 
-Přístup k prostředkům Azure, který byl nastaven pomocí Azure RBAC (řízení přístupu na základě role), nebude při přechodu nijak ovlivněn.
+Přístup k prostředkům Azure, který byl nastaven pomocí řízení přístupu na základě role v Azure (Azure RBAC), nebude při přechodu nijak ovlivněn.
 
 ### <a name="azure-reservations"></a>Rezervace Azure
 
@@ -225,7 +225,7 @@ Rezervace Azure ve vaší registraci smlouvy Enterprise se převedou na nový fa
 
 4. Na levé straně vyberte **Řízení přístupu (IAM)** .
 
-   ![Snímek obrazovky znázorňující přístup podnikových správců po přechodu](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
+   ![Snímek obrazovky znázorňující přístup podnikových správců uvedených jako vlastníci fakturačního účtu po dokončení přechodu](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
 
 Podnikoví správci jsou uvedeni jako vlastníci fakturačního účtu, zatímco podnikoví správci s oprávněními jen pro čtení jsou uvedeni jako čtenáři fakturačního účtu. Pokud se domníváte, že přístup některých podnikových správců chybí, můžete jim přístup udělit na webu Azure Portal. Další informace najdete v článku o [správě fakturačních rolí na webu Azure Portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
@@ -241,7 +241,7 @@ Podnikoví správci jsou uvedeni jako vlastníci fakturačního účtu, zatímco
 
 4. Na levé straně vyberte **Řízení přístupu (IAM)** .
 
-   ![Snímek obrazovky znázorňující přístup podnikových správců po přechodu](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
+   ![Snímek obrazovky znázorňující přístup podnikových správců uvedených jako vlastníci fakturačního profilu po dokončení přechodu](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
 
 Podnikoví správci jsou uvedeni jako vlastníci fakturačního profilu, zatímco podnikoví správci s oprávněními jen pro čtení jsou uvedeni jako čtenáři fakturačního profilu. Pokud se domníváte, že přístup některých podnikových správců chybí, můžete jim přístup udělit na webu Azure Portal. Další informace najdete v článku o [správě fakturačních rolí na webu Azure Portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 

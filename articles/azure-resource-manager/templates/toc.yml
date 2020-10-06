@@ -379,7 +379,7 @@
           href: key-vault-parameter.md
     - name: CI/CD
       items:
-        - name: Projekt VS s kanály
+        - name: Šablony ARM s kanály
           href: add-template-to-azure-pipelines.md
         - name: Nasazení – GitHub Actions
           href: deploy-github-actions.md

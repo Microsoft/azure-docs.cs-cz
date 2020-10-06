@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 7b64ef2739b8e6531f7531f9a135b7fb5ffe3467
-  ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+  ms.openlocfilehash: 2d1d1057d522d082b3a5a3c757d1fe988bc24ba1
+  ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/09/2020
-  ms.locfileid: "89568014"
+  ms.lasthandoff: 10/02/2020
+  ms.locfileid: "91667448"
 highlightedContent:
   items:
   - title: Co je služba Speech?
@@ -118,15 +118,23 @@ conceptualContent:
       url: index-voice-assistants.yml
   - title: Rozpoznávání mluvčího
     links:
-    - itemType: how-to-guide
+    - itemType: overview
       text: Informace o rozpoznávání mluvčího
       url: speaker-recognition-overview.md
-    - itemType: how-to-guide
-      text: Základy rozpoznávání mluvčího
+    - itemType: quickstart
+      text: Začínáme s rozpoznáváním mluvčího
       url: speaker-recognition-basics.md
     - itemType: how-to-guide
       text: Referenční informace rozhraní API pro rozpoznávání mluvčího
       url: https://docs.microsoft.com/rest/api/speakerrecognition/
+  - title: Vlastní klíčové slovo
+    links:
+    - itemType: overview
+      text: Informace o službě Vlastní klíčové slovo
+      url: custom-keyword-overview.md
+    - itemType: quickstart
+      text: Začínáme se službou Vlastní klíčové slovo
+      url: custom-keyword-basics.md
   - title: nástroje
     links:
     - itemType: overview

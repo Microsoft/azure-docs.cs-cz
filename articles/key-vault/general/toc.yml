@@ -100,6 +100,8 @@
           href: rbac-migration.md
         - name: Řešení potíží s přístupem
           href: troubleshooting-access-issues.md
+    - name: Jak povolit protokolování
+      href: howto-logging.md
     - name: Vývoj
       items:
         - name: Průvodce vývojáře pro službu Azure Key Vault
@@ -146,6 +148,10 @@
           href: move-subscription.md
         - name: Přesun Key Vaultu do jiné oblasti
           href: move-region.md
+    - name: Sítě
+      items:
+        - name: Diagnostika potíží s konfigurací služeb Private Link
+          href: private-link-diagnostics.md
 - name: Referenční informace
   items:
     - name: Co je nového

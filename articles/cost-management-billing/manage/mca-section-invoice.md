@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 9f5e69a609931f4f8ead62f4d5c5ba2a1064a6ea
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6424fc0ff49566fad949b3fba4718acb2bad4cd3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683007"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362763"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Uspořádání nákladů přizpůsobením fakturačního účtu
 
@@ -53,19 +53,19 @@ Tato část popisuje běžné scénáře uspořádání nákladů a odpovídají
 |---------|---------|
 |Honza si zaregistruje služby Azure a potřebuje jednu měsíční fakturu. | Fakturační profil a oddíl faktury. Tato struktura se pro Honzu automaticky nastaví, když se zaregistruje do Azure a nevyžaduje žádné další kroky. |
 
-![Informační grafika pro jednoduchý scénář fakturace](./media/mca-section-invoice/organize-billing-scenario1.png)
+![Infografika pro scénář jedné fakturace](./media/mca-section-invoice/organize-billing-scenario1.png)
 
 |Scénář  |Struktura  |
 |---------|---------|
 |Contoso je malá organizace, která potřebuje jednu měsíční fakturu, ale seskupuje náklady podle oddělení – marketingového a technického oddělení.  | Fakturační profil pro Contoso a oddíly faktury pro marketingové a technické oddělení. |
 
-![Informační grafika pro jednoduchý scénář fakturace](./media/mca-section-invoice/organize-billing-scenario2.png)
+![Infografika pro scénář více fakturací](./media/mca-section-invoice/organize-billing-scenario2.png)
 
 |Scénář  |Struktura  |
 |---------|---------|
 |Společnost Fabrikam je organizací střední velikosti, která potřebuje samostatné faktury pro technické a marketingové oddělení. Pro technické oddělení chtějí seskupit náklady podle prostředí – produkčního a vývojového.  | Fakturační profil pro marketingové a technické oddělení. Technické oddělení má oddíly faktury pro produkční a vývojové prostředí. |
 
-![Informační grafika pro jednoduchý scénář fakturace](./media/mca-section-invoice/organize-billing-scenario3.png)
+![Infografika pro scénář více fakturací s oddělenou fakturací za produkční a vývojové prostředí](./media/mca-section-invoice/organize-billing-scenario3.png)
 
 ## <a name="create-a-new-invoice-section"></a>Vytvoření nového oddílu faktury
 
@@ -107,7 +107,7 @@ Pokud chcete vytvořit fakturační profil, musíte být **vlastníkem fakturač
 
 3. V levém podokně vyberte **Fakturační profily** a pak v horní části stránky vyberte **Přidat**.
 
-   [![Snímek obrazovky se seznamem fakturačních profilů](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
+   [![Snímek obrazovky se seznamem fakturačních profilů a vybranou možností Přidat](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
 
     > [!Note]
     >
@@ -136,15 +136,15 @@ Jakmile přizpůsobíte fakturační účet svým potřebám, můžete propojit 
 
 2. Vyhledejte **Předplatná**.
 
-   [![Snímek obrazovky, který zobrazuje hledání předplatného na portálu](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
+   [![Snímek obrazovky znázorňující hledání předplatného na webu Azure Portal](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
 
 3. V horní části stránky vyberte **Přidat**.
 
-   ![Snímek obrazovky, který zobrazuje tlačítko Přidat v zobrazení Předplatná](./media/mca-section-invoice/subscription-add.png)
+   ![Snímek obrazovky s tlačítkem Přidat v zobrazení Předplatná pro přidání nového předplatného](./media/mca-section-invoice/subscription-add.png)
 
 4. Pokud máte přístup k více fakturačním účtům, vyberte fakturační účet pro vaši smlouvu se zákazníkem Microsoftu.
 
-   ![Snímek obrazovky, který zobrazuje tlačítko Přidat v zobrazení Předplatná](./media/mca-section-invoice/mca-create-azure-subscription.png)
+   ![Snímek obrazovky s podoknem Vytvořit předplatné](./media/mca-section-invoice/mca-create-azure-subscription.png)
 
 5. Vyberte fakturační profil, kterému se bude účtovat za využití předplatného. Poplatky za využití Azure a další nákupy pro toto předplatné se budou účtovat na fakturu vybraného fakturačního profilu.
 
@@ -166,7 +166,7 @@ Pokud máte existující předplatná Azure nebo jiné produkty, například Azu
 
 2. Vyhledejte **Cost Management a fakturace**.
 
-   ![Snímek obrazovky, který zobrazuje hledání předplatného na portálu](./media/mca-section-invoice/search-cmb.png)
+   ![Snímek obrazovky znázorňující hledání položky Cost Management + Billing na webu Azure Portal](./media/mca-section-invoice/search-cmb.png)
 
 3. Pokud chcete propojit předplatné s novým oddílem faktury, vyberte v levé části obrazovky **Předplatná Azure**. Pro jiné produkty, jako jsou Azure Marketplace a zdrojové prostředky aplikací, vyberte **Pravidelné poplatky**.
 

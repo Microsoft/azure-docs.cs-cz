@@ -9,12 +9,12 @@ ms.date: 08/26/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8d8d8caec81dc71992fe330c2fde24f89ccfc961
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 62989c21333e53fcb58b4b637802c8b697ae970e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88943143"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371435"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Programové vytváření předplatných Azure (Preview)
 
@@ -130,7 +130,7 @@ K určení účtu, pod kterým se mají předplatná fakturovat, použijte vlast
 
 ### <a name="create-subscriptions-under-a-specific-enrollment-account"></a>Vytváření předplatných v rámci konkrétního registračního účtu
 
-Následující příklad vytvoří předplatné s názvem *Dev Team Subscription* v registračním účtu, který jste vybrali v předchozím kroku. Nabídka předplatného je *MS-AZR-0017P* (běžná smlouva Microsoft Enterprise). Volitelně také přidá dva uživatele jako vlastníky RBAC pro toto předplatné.
+Následující příklad vytvoří předplatné s názvem *Dev Team Subscription* v registračním účtu, který jste vybrali v předchozím kroku. Nabídka předplatného je *MS-AZR-0017P* (běžná smlouva Microsoft Enterprise). Volitelně také pro toto předplatné přidá dva uživatele jako vlastníky Azure RBAC.
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -157,7 +157,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | No      | Řetězec | Zobrazovaný název předplatného. Pokud není zadaný, nastaví se na název nabídky, například Microsoft Azure Enterprise.                                 |
 | `offerType`   | Ano      | Řetězec | Nabídka předplatného. Pro EA jsou k dispozici dvě možnosti: [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (produkční využití) a [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (vývoj/testování, musí se [aktivovat prostřednictvím portálu EA](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
-| `owners`      | No       | Řetězec | ID objektu libovolného uživatele, kterého chcete přidat jako vlastníka RBAC v předplatném při jeho vytvoření.  |
+| `owners`      | No       | Řetězec | ID objektu libovolného uživatele, kterého chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření.  |
 
 V odpovědi se jako součást hlavičky `Location`vrátí adresa URL, na které se můžete dotazovat na stav operace vytváření předplatného. Jakmile se vytvoření předplatného dokončí, příkaz GET pro adresu URL `Location` vrátí objekt `subscriptionLink`, který obsahuje ID předplatného. Další podrobnosti najdete v [dokumentaci k rozhraní API pro předplatné](/rest/api/subscription/).
 
@@ -176,9 +176,9 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `Name` | No      | Řetězec | Zobrazovaný název předplatného. Pokud není zadaný, nastaví se na název nabídky, například Microsoft Azure Enterprise.                                 |
 | `OfferType`   | Ano      | Řetězec | Nabídka předplatného. Pro EA jsou k dispozici dvě možnosti: [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (produkční využití) a [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (vývoj/testování, musí se [aktivovat prostřednictvím portálu EA](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
 | `EnrollmentAccountObjectId`      | Ano       | Řetězec | ID objektu registračního účtu, pod kterým je předplatné vytvořené a pod kterým se fakturuje. Tato hodnota je identifikátor GUID získaný z rutiny `Get-AzEnrollmentAccount`. |
-| `OwnerObjectId`      | No       | Řetězec | ID objektu libovolného uživatele, kterého chcete přidat jako vlastníka RBAC v předplatném při jeho vytvoření.  |
-| `OwnerSignInName`    | No       | Řetězec | E-mailová adresa libovolného uživatele, kterého chcete přidat jako vlastníka RBAC v předplatném při jeho vytvoření. Tento parametr můžete využít místo `OwnerObjectId`.|
-| `OwnerApplicationId` | No       | Řetězec | ID aplikace libovolného instančního objektu, který chcete přidat jako vlastníka RBAC v předplatném při jeho vytvoření. Tento parametr můžete využít místo `OwnerObjectId`. Při použití tohoto parametru musí mít instanční objekt [oprávnění ke čtení pro příslušný adresář](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
+| `OwnerObjectId`      | No       | Řetězec | ID objektu libovolného uživatele, kterého chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření.  |
+| `OwnerSignInName`    | No       | Řetězec | E-mailová adresa libovolného uživatele, kterého chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření. Tento parametr můžete využít místo `OwnerObjectId`.|
+| `OwnerApplicationId` | No       | Řetězec | ID aplikace libovolného instančního objektu, který chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření. Tento parametr můžete využít místo `OwnerObjectId`. Při použití tohoto parametru musí mít instanční objekt [oprávnění ke čtení pro příslušný adresář](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
 Úplný seznam všech parametrů najdete v tématu [New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription).
 
@@ -198,9 +198,9 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `display-name` | No      | Řetězec | Zobrazovaný název předplatného. Pokud není zadaný, nastaví se na název nabídky, například Microsoft Azure Enterprise.                                 |
 | `offer-type`   | Ano      | Řetězec | Nabídka předplatného. Pro EA jsou k dispozici dvě možnosti: [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (produkční využití) a [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (vývoj/testování, musí se [aktivovat prostřednictvím portálu EA](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
 | `enrollment-account-object-id`      | Ano       | Řetězec | ID objektu registračního účtu, pod kterým je předplatné vytvořené a pod kterým se fakturuje. Tato hodnota je identifikátor GUID získaný z rutiny `az billing enrollment-account list`. |
-| `owner-object-id`      | No       | Řetězec | ID objektu libovolného uživatele, kterého chcete přidat jako vlastníka RBAC v předplatném při jeho vytvoření.  |
-| `owner-upn`    | No       | Řetězec | E-mailová adresa libovolného uživatele, kterého chcete přidat jako vlastníka RBAC v předplatném při jeho vytvoření. Tento parametr můžete využít místo `owner-object-id`.|
-| `owner-spn` | No       | Řetězec | ID aplikace libovolného instančního objektu, který chcete přidat jako vlastníka RBAC v předplatném při jeho vytvoření. Tento parametr můžete využít místo `owner-object-id`. Při použití tohoto parametru musí mít instanční objekt [oprávnění ke čtení pro příslušný adresář](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
+| `owner-object-id`      | No       | Řetězec | ID objektu libovolného uživatele, kterého chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření.  |
+| `owner-upn`    | No       | Řetězec | E-mailová adresa libovolného uživatele, kterého chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření. Tento parametr můžete využít místo `owner-object-id`.|
+| `owner-spn` | No       | Řetězec | ID aplikace libovolného instančního objektu, který chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření. Tento parametr můžete využít místo `owner-object-id`. Při použití tohoto parametru musí mít instanční objekt [oprávnění ke čtení pro příslušný adresář](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
 Úplný seznam všech parametrů najdete u příkazu [az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create).
 
@@ -210,7 +210,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 
 - Pomocí tohoto rozhraní API se dají vytvářet jenom předplatná Azure Enterprise.
 - Platí limit 2 000 předplatných na jeden registrační účet. Další předplatná pro tento účet se potom dají vytvářet jenom na webu Azure Portal. Pokud chcete prostřednictvím tohoto rozhraní API vytvořit více předplatných, vytvořte si další registrační účet.
-- Uživatelé, kteří nejsou vlastníkem účtu, ale byli do registračního účtu přidáni přes RBAC, nemohou vytvářet předplatná na webu Azure Portal.
+- Uživatelé, kteří nejsou vlastníky účtu, ale byli do registračního účtu přidáni přes Azure RBAC, nemůžou vytvářet předplatná na webu Azure Portal.
 - Tenanta, ve kterém se má předplatné vytvořit, nejde vybrat. Předplatné se vždycky vytvoří v domovském tenantovi vlastníka účtu. Pokud chcete předplatné přesunout do jiného tenanta, projděte si téma věnované [změně tenanta předplatného](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 
@@ -349,7 +349,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 | `displayName` | Ano      | Řetězec | Zobrazovaný název předplatného.|
 | `billingProfileId`   | Ano      | Řetězec | ID fakturačního profilu, na který se budou účtovat poplatky za využití předplatného.  |
 | `skuId` | Ano      | Řetězec | Identifikátor SKU, který určuje typ plánu Azure. |
-| `owners`      | No       | Řetězec | ID objektu libovolného instančního objektu služby nebo uživatele, který chcete přidat jako vlastníka RBAC v předplatném při jeho vytvoření.  |
+| `owners`      | No       | Řetězec | ID objektu libovolného instančního objektu služby nebo uživatele, který chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření.  |
 | `costCenter` | No      | Řetězec | Nákladové centrum přidružené k předplatnému. Zobrazuje se v souboru CSV s údaji o využití. |
 | `managementGroupId` | No      | Řetězec | ID skupiny pro správu, do které bude toto předplatné přidáno. Pokud chcete získat seznam skupin pro správu, projděte si téma zaměřené na [skupiny pro správu – rozhraní API pro zobrazení seznamu](/rest/api/resources/managementgroups/list). Použijte ID skupiny pro správu z tohoto rozhraní API. |
 

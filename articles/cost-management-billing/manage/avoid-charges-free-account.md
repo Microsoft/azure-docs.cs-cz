@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: f81c33f3b49352933801c8b89a2c3a1787c2356a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 203a3b93f200a54ec40c96ee79c7fc822fac140b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682905"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270606"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Jak se vyhnout poplatkům na bezplatném účtu Azure
 
@@ -31,7 +31,7 @@ K bezplatnému účtu Azure dostanete každý měsíc omezené množství bezpla
 
 ## <a name="you-used-some-services-that-arent-free"></a>Využili jste některé služby, které nejsou bezplatné
 
-Po upgradu vašeho účtu se vám za využití služeb, které nejsou bezplatně zahrnuté v bezplatném účtu Azure, budou účtovat poplatky podle tarifů průběžných plateb. Informace o tom, které služby jsou zahrnuté v bezplatném účtu, najdete v tématu [Nejčastější dotazy k bezplatnému účtu Azure](https://azure.microsoft.com/free/free-account-faq/). Na využití služeb se můžete podívat na webu Azure Portal. Další informace najdete v tématu [Pravidelná kontrola rozpisu nákladů a tempa spotřeby na portálu](getting-started.md#costs).
+Po upgradu vašeho účtu se vám za využití služeb, které nejsou bezplatně zahrnuté v bezplatném účtu Azure, budou účtovat poplatky podle tarifů průběžných plateb. Informace o tom, které služby jsou zahrnuté v bezplatném účtu, najdete v tématu [Nejčastější dotazy k bezplatnému účtu Azure](https://azure.microsoft.com/free/free-account-faq/). Na využití služeb se můžete podívat na webu Azure Portal. Další informace najdete v tématu [Analýza neočekávaných poplatků](../understand/analyze-unexpected-charges.md).
 
 ## <a name="you-reached-the-end-of-your-free-12-months"></a>Uplynulo bezplatných 12 měsíců
 

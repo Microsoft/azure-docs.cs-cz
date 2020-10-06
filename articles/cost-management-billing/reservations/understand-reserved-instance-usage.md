@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: b1b5a344da20bff31f85a2d3cb20a0a35e4c4bde
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2b00c90abce915ae6fd645cbcce3536870609558
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681919"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447885"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Vysvětlení využití rezervací Azure u jednoho předplatného s průběžnými platbami
 
@@ -74,7 +74,7 @@ Předpokládejme, že používáte SQL Database Gen 4 v oblasti USA – východ 
 
 Nastavte filtr podle názvu měřiče **Reserved Instance Usage** (Využití rezervovaných instancí) a vyberte požadovanou hodnotu ve sloupci **Kategorie měřiče** – Azure SQL Database nebo Azure Cosmos DB. Měla by se zobrazit obrazovka podobná následujícímu snímku:
 
-![Soubor CSV pro rezervovanou kapacitu služby SQL Database](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
+![Snímek obrazovky s položkou Kategorie měřiče](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
 Řádek **Reserved Instance Usage** (Využití rezervovaných instancí) obsahuje celkový počet hodin jádra, na který se vztahuje rezervace. Částka pro tento řádek činí 0 USD, protože náklady pokrývá rezervace.
 
@@ -82,7 +82,7 @@ Nastavte filtr podle názvu měřiče **Reserved Instance Usage** (Využití rez
 
 Filtrujte sloupec **Další informace** a zadejte své **ID rezervace**. Následující snímek obrazovky ukazuje pole související s rezervací rezervované kapacity služby SQL Database.
 
-![Soubor CSV pro rezervovanou kapacitu služby SQL Database](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
+![Snímek obrazovky s podrobnými informacemi o souboru CSV pro rezervovanou kapacitu](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
 1. Položka **ReservationId** v poli **Další informace** odpovídá rezervaci rezervované kapacity služby SQL Database, která se uplatňuje na tento prostředek služby SQL Database.
 2. **ConsumptionMeter** je ID měřiče pro daný prostředek SQL Database.

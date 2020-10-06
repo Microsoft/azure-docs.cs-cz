@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 32a6284c7766f3b5d9413a76056dc915a8ac93dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 550be6c10402398b62af307281660b93981a0df3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686798"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308958"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Opětovná aktivace zakázaného předplatného Azure
 
@@ -32,7 +32,7 @@ Předplatná Azure s kreditem, jako je bezplatná zkušební verze a Visual Stud
 > [!NOTE]
 > Pokud máte bezplatnou zkušební verzi a odeberete limit útraty, převede se vaše předplatné na konci bezplatné zkušební verze na individuální předplatné se sazbami platnými pro průběžné platby. Zbývající kredit vám zůstane po celých 30 dnů od vytvoření předplatného. Také budete mít 12měsíční přístup k bezplatným službám.
 
-Pokud chcete sledovat a spravovat fakturační aktivity pro Azure, přečtěte si téma [Jak zabránit neočekávaným nákladům v rámci fakturace Azure a správy nákladů](getting-started.md).
+Pokud chcete monitorovat a spravovat fakturační aktivity pro Azure, projděte si téma [Plánování správy nákladů na Azure](../understand/plan-manage-costs.md).
 
 
 ## <a name="your-bill-is-past-due"></a>Váš účet je po splatnosti
@@ -60,4 +60,4 @@ Pokud chcete znovu aktivovat předplatné jiného typu, [kontaktujte podporu](ht
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Další kroky
-- Naučte se [sledovat a spravovat fakturační aktivity pro Azure](getting-started.md).
+- Zjistěte, jak [naplánovat správu nákladů na Azure](../understand/plan-manage-costs.md).

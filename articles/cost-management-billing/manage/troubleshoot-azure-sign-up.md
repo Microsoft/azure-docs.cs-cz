@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 86f9f92810cff241f816dadfc6e1e8ca120f1f4a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 3e611e25288d52b0be93c76e8a3a28ce6d7d5088
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686645"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326602"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Řešení potíží při registraci nového účtu na webu Azure Portal nebo Centru účtů Azure
 
@@ -131,7 +131,7 @@ Aktualizujte nastavení souborů cookie v prohlížeči následujícím postupem
 
 ### <a name="i-saw-a-charge-on-my-free-trial-account"></a>Na účtu bezplatné zkušební verze vidím naúčtovaný poplatek
 
-Po registraci se na účtu platební karty může objevit dočasné ověřovací zadržení malé částky. Bude odebráno do tří až pěti dnů. Pokud máte obavy o správu nákladů, přečtěte si další informace o [prevenci neočekávaných nákladů](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started).
+Po registraci se na účtu platební karty může objevit dočasné ověřovací zadržení malé částky. Bude odebráno do tří až pěti dnů. Pokud máte obavy o správu nákladů, přečtěte si další informace o [analýze neočekávaných poplatků](../understand/analyze-unexpected-charges.md).
 
 ## <a name="agreement"></a>Smlouva
 

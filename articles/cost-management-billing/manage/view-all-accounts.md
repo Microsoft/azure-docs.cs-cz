@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: b18e08f93df143f9844fe774eee59452978d7437
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 42d9c2b4b1edac62449fa4120463a384400d6d27
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686390"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360684"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Rozsahy a fakturační účty na webu Azure Portal
 
@@ -80,7 +80,7 @@ Rozsah je uzel v rámci fakturačního účtu, pomocí kterého zobrazujete a sp
 
 2. Vyhledejte **Cost Management a fakturace**.
 
-   ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/view-all-accounts/billing-search-cost-management-billing.png)
+   ![Snímek obrazovky znázorňující hledání položky Cost Management + Billing](./media/view-all-accounts/billing-search-cost-management-billing.png)
 
 3. Na stránce s přehledem vyberte **Přepnout rozsah**.
 
@@ -92,7 +92,7 @@ Rozsah je uzel v rámci fakturačního účtu, pomocí kterého zobrazujete a sp
 
 4. Výběrem určitého oboru zobrazíte podrobnosti.
 
-   ![Snímek obrazovky s rozsahy fakturace](./media/view-all-accounts/list-of-scopes.png)
+   ![Snímek obrazovky s rozsahy fakturace, které můžete vybrat a zobrazit podrobnosti](./media/view-all-accounts/list-of-scopes.png)
 
 ## <a name="check-the-type-of-your-account"></a>Ověření typu účtu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]

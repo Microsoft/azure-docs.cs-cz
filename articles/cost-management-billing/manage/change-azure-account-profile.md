@@ -1,25 +1,27 @@
 ---
-title: Změna kontaktních informací pro účet Azure
-description: Článek vysvětluje, jak změnit kontaktní informace pro účet správce Azure.
+title: Změna kontaktních informací pro fakturační účet Azure
+description: Popisuje, jak změnit kontaktní informace pro fakturační účet Azure.
 author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 09/23/2020
 ms.author: banders
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6045afba230fa204dd5f93adc11b67ff0e3e209f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: contperfq1
+ms.openlocfilehash: be3de838e340400da09ad261d82328f6793aed2e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684894"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297721"
 ---
-# <a name="change-the-contact-information-for-your-azure-account"></a>Změna kontaktních informací pro účet Azure
+# <a name="change-contact-information-for-an-azure-billing-account"></a>Změna kontaktních informací pro fakturační účet Azure
 
-Tento článek vám pomůže aktualizovat kontaktní informace pro váš účet na webu Azure Portal. Pokyny pro aktualizaci kontaktních údajů se liší podle typu fakturačního účtu. Další informace o fakturačních účtech a určení typu fakturačního účtu najdete v tématu [Zobrazení fakturačních účtů na webu Azure Portal](view-all-accounts.md).
+Tento článek vám pomůže aktualizovat kontaktní informace pro *fakturační účet* na webu Azure Portal. Pokyny pro aktualizaci kontaktních údajů se liší podle typu fakturačního účtu. Další informace o fakturačních účtech a určení typu fakturačního účtu najdete v tématu [Zobrazení fakturačních účtů na webu Azure Portal](view-all-accounts.md). Fakturační účet Azure je oddělený od vašeho uživatelského účtu Azure a [účtu Microsoft](https://account.microsoft.com/).
+
+Pokud chcete aktualizovat informace o svém profilu uživatele Azure Active Directory, mějte na paměti, že tyto změny může provést pouze správce uživatelů. Pokud nemáte přiřazenou roli správce uživatelů, obraťte se na svého správce uživatelů. Další informace o změně profilu uživatele najdete v tématu [Přidání nebo aktualizace informací o profilu uživatele pomocí Azure Active Directory](../../active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
 
 *Adresa kupujícího:* Adresa kupujícího jsou adresa a kontaktní informace organizace nebo jednotlivce, který zodpovídá za fakturační účet. Je uvedená na všech fakturách vygenerovaných pro konkrétní fakturační účet.
 
@@ -31,21 +33,21 @@ Tento článek vám pomůže aktualizovat kontaktní informace pro váš účet 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí e-mailové adresy, která má k danému účtu oprávnění správce účtu.
 1. Vyhledejte **Cost Management a fakturace**.  
-    ![Snímek obrazovky zachycující hledání položky Cost Management a fakturace na portálu](./media/change-azure-account-profile/search-cmb.png)
+    ![Snímek obrazovky znázorňující hledání položky Cost Management + Billing na webu Azure Portal](./media/change-azure-account-profile/search-cmb.png)
 1. Na levé straně vyberte **Vlastnosti**.  
-    ![Screenshot zobrazující stránku pro aktualizaci adresy](./media/change-azure-account-profile/update-contact-information-select-properties.png)
+    ![Snímek obrazovky s vlastnostmi fakturačního účtu MOSP](./media/change-azure-account-profile/update-contact-information-select-properties.png)
 1. Pokud chcete aktualizovat adresu kupujícího a fakturační adresu, vyberte **Aktualizovat fakturační adresu**. Zadejte novou adresu a potom vyberte **Uložit**.  
-    ![Screenshot zobrazující stránku pro aktualizaci adresy](./media/change-azure-account-profile/update-contact-information-mosp.png)
+    ![Snímek obrazovky znázorňující aktualizaci adresy pro fakturační účet MOSP](./media/change-azure-account-profile/update-contact-information-mosp.png)
 
 ## <a name="update-an-mca-billing-account-sold-to-address"></a>Aktualizace adresy kupujícího pro fakturační účet MCA
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí e-mailové adresy, která má ve fakturačním účtu pro Smlouvu se zákazníkem Microsoftu roli vlastníka nebo přispěvatele.
 1. Vyhledejte **Cost Management a fakturace**.  
-    ![Snímek obrazovky zachycující hledání položky Cost Management a fakturace na portálu](./media/change-azure-account-profile/search-cmb.png)
+    ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/change-azure-account-profile/search-cmb.png)
 1. Na levé straně vyberte **Vlastnosti** a potom vyberte **Aktualizovat kupujícího**.  
-    ![Screenshot znázorňující výběr položky Aktualizovat kupujícího](./media/change-azure-account-profile/update-sold-to-list-properties-mca.png)
+    ![Snímek obrazovky a vlastnostmi fakturačního účtu MCA, kde můžete upravit adresu kupujícího](./media/change-azure-account-profile/update-sold-to-list-properties-mca.png)
 1. Zadejte novou adresu a potom vyberte **Uložit**.  
-    ![Screenshot zobrazující aktualizaci adresy](./media/change-azure-account-profile/update-sold-to-save-mca.png)
+    ![Snímek obrazovky znázorňující aktualizaci adresy kupujícího pro účet MCA](./media/change-azure-account-profile/update-sold-to-save-mca.png)
 
     > [!IMPORTANT]
     > Některé účty při aktualizaci kupujícího vyžadují dodatečné ověření. Pokud váš účet vyžaduje manuální schválení, budete požádáni, abyste kontaktovali podporu Azure.
@@ -54,15 +56,14 @@ Tento článek vám pomůže aktualizovat kontaktní informace pro váš účet 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí e-mailové adresy, která má ve fakturačním účtu nebo profilu pro Smlouvu se zákazníkem Microsoftu roli vlastníka nebo přispěvatele.
 1. Vyhledejte **Cost Management a fakturace**.  
-    ![Snímek obrazovky zachycující hledání položky Cost Management a fakturace na portálu](./media/change-azure-account-profile/search-cmb.png)
 1. Na levé straně vyberte **Fakturační profily**.
 1. Vyberte fakturační profil pro aktualizaci fakturační adresy.  
-    ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/change-azure-account-profile/update-bill-to-list-profiles-mca.png)
+    ![Snímek obrazovky se stránkou Fakturační profily a výběrem fakturačního profilu](./media/change-azure-account-profile/update-bill-to-list-profiles-mca.png)
 1. Na levé straně vyberte **Vlastnosti**.
 1. Vyberte **Aktualizovat adresu**.  
-    ![Snímek obrazovky zachycující hledání položky Cost Management a fakturace na portálu](./media/change-azure-account-profile/update-bill-to-list-properties-mca.png)
+    ![Snímek obrazovky znázorňující, kde aktualizovat adresu](./media/change-azure-account-profile/update-bill-to-list-properties-mca.png)
 1. Zadejte novou adresu a potom vyberte **Uložit**.  
-    ![Screenshot zobrazující aktualizaci adresy](./media/change-azure-account-profile/update-bill-to-save-mca.png)
+    ![Snímek obrazovky znázorňující aktualizaci adresy](./media/change-azure-account-profile/update-bill-to-save-mca.png)
 
 ## <a name="service-and-marketing-emails"></a>Oznámení služeb a marketingové e-maily
 
@@ -83,11 +84,9 @@ Zadejte e-mailovou adresu, na kterou chcete dostávat zprávy o vašem účtu. Z
 
 Kontaktní e-mailovou adresu můžete změnit jednou z následujících metod. Aktualizace kontaktní e-mailové adresy neznamená aktualizaci e-mailové adresy, pomocí které se přihlašujete.
 
-* Pokud jste správce účtu MOSP, postupujte podle pokynů v tématu [Aktualizace adresy fakturačního účtu MOSP](#update-an-mosp-billing-account-address) a v posledním kroku vyberte **Aktualizovat kontaktní údaje**. Potom zadejte novou e-mailovou adresu.
-
-* Na webu Azure Portal přejděte do části [Kontaktní údaje](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) a zadejte novou e-mailovou adresu. 
-
-* Na webu [Azure Portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) vyberte ikonu s vašimi iniciálami nebo obrázkem. Pak vyberte místní nabídku ( **…** ). Potom v nabídce vyberte **Moje kontaktní údaje** a zadejte novou e-mailovou adresu.
+1. Pokud jste správce účtu MOSP, postupujte podle pokynů v tématu [Aktualizace adresy fakturačního účtu MOSP](#update-an-mosp-billing-account-address) a v posledním kroku vyberte **Aktualizovat kontaktní údaje**. Potom zadejte novou e-mailovou adresu.
+1. Na webu Azure Portal přejděte do části [Kontaktní údaje](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) a zadejte novou e-mailovou adresu. 
+1. Na webu [Azure Portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) vyberte ikonu s vašimi iniciálami nebo obrázkem. Pak vyberte místní nabídku ( **…** ). Potom v nabídce vyberte **Moje kontaktní údaje** a zadejte novou e-mailovou adresu.
 
 ![Příklad aktualizace e-mailové adresy v Azure](./media/change-azure-account-profile/azure-contact-information.png)
 

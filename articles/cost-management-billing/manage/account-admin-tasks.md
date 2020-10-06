@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ad39b9980562c345aff87f4e0771f265011886b3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 469ccad773693047391f56c1f1109a9c444ee90b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683296"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447695"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Úlohy správce účtu na webu Azure Portal
 
@@ -35,14 +35,14 @@ Abyste mohli provádět tyto úlohy, musíte být správcem účtu.
 
 1. V seznamu **Moje předplatná** vyberte předplatné, ke kterému chcete přidat platební kartu.
 
-   ![Snímek obrazovky s mřížkou Moje předplatná v části Přehled](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+   ![Snímek obrazovky se stránkou Cost Management + Billing, kde můžete vybrat předplatné](./media/account-admin-tasks/cost-management-billing-overview-x.png)
 
    > [!NOTE]
    > Pokud tady nevidíte některá svá předplatná, je možné, že jste v nějakém okamžiku změnili adresář předplatného. U těchto předplatných musíte přepnout na původní adresář (adresář, ve které jste se původně zaregistrovali). Potom opakujte krok 2.
 
 1. Vyberte **Způsoby platby**.
 
-    ![Snímek obrazovky s vybraným oknem Způsoby platby](./media/account-admin-tasks/subscription-payment-methods-blade.png)
+    ![Snímek obrazovky se stránkou Způsoby platby, kde můžete přidat způsob platby](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
 Tady můžete přidat novou platební kartu, změnit aktivní způsob platby, upravit údaje platebních karet a odstranit platební karty.
 
@@ -100,7 +100,7 @@ Pokud máte nárok na platby pomocí faktur (šekem nebo převodem), můžete p�
 
 1. Na panelu příkazů vyberte **Platba pomocí faktury**.
 
-    ![Snímek obrazovky s vybraným oknem Způsoby platby](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
+    ![Snímek obrazovky se stránkou Způsoby platby a vybranou možností Platba pomocí faktury](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
 
 1. Zadejte pro způsob platby pomocí faktur adresu.
 1. Klikněte na **Další**.
@@ -124,7 +124,7 @@ Limit útraty není dostupný u předplatných s plány závazků nebo s průbě
 
 1. V seznamu **Moje předplatná** vyberte vaše předplatné sady Visual Studio Enterprise.
 
-   ![Snímek obrazovky s mřížkou Moje předplatná v části Přehled](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+   ![Snímek obrazovky s oblastí Moje předplatná, kde můžete vybrat své předplatné sady Visual Studio Enterprise](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Pokud tady nevidíte některá svá předplatná sady Visual Studio, je možné, že jste v nějakém okamžiku změnili adresář předplatného. U těchto předplatných musíte přepnout na původní adresář (adresář, ve které jste se původně zaregistrovali). Potom opakujte krok 2.
@@ -152,7 +152,7 @@ Pokud máte předplatné Azure v rámci licenčního programu Open License, mů�
 
 1. V seznamu **Moje předplatná** vyberte vaše předplatné Azure v rámci licenčního programu Open License.
 
-    ![Snímek obrazovky s mřížkou Moje předplatná v části Přehled](./media/account-admin-tasks/cost-management-overview-aio-x.png)
+    ![Snímek obrazovky s oblastí Moje předplatná, kde můžete vybrat své předplatné Azure v rámci licenčního programu Open License](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
    > [!NOTE]
    > Pokud tady nevidíte své předplatné, je možné, že jste v nějakém okamžiku změnili jeho adresář. Musíte přepnout adresář předplatného na původní adresář (adresář, ve kterém jste se původně zaregistrovali). Potom opakujte krok 2.
@@ -183,4 +183,4 @@ Pokud máte předplatné Azure v rámci licenčního programu Open License, mů�
 Virtuální ani předplacené karty nepodporujeme. Pokud při přidávání nebo aktualizaci platné platební karty dochází k chybám, zkuste otevřít prohlížeč v privátním režimu.
 
 ## <a name="next-steps"></a>Další kroky
-- Další informace o [analýze a prevenci neočekávaných nákladů na webu Azure Portal](getting-started.md)
+- Přečtěte si další informace o [analýze neočekávaných poplatků](../understand/analyze-unexpected-charges.md).

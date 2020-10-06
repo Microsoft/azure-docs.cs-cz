@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 233cc5330096b9b6419c8024205a41646ddd9519
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2aae71836a4eaba845e4752edf708607977763fa
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682956"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371860"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Získání vlastnictví fakturace předplatných Azure od ostatních účtů
 
@@ -152,7 +152,7 @@ Pokud převádíte předplatná smlouvy Enterprise (EA) nebo Smlouvy se zákazn�
 
 ### <a name="access-to-azure-services"></a>Přístup ke službám Azure
 
-Na přístup stávajících uživatelů, skupin nebo instančních objektů přidělených pomocí Azure RBAC (řízení přístupu na základě role)[../role-based-access-control/overview.md] nemá převod vliv.
+Převod nebude mít vliv na přístup stávajících uživatelů, skupin nebo instančních objektů přidělených pomocí [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="azure-support-plan"></a>plán podpory Azure
 

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 30fa6e0489c1f2c33e02286280e7508239c1c1d2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0667e253d50ecc34acef822a928a95e49f13282e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567907"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439775"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Úhrada předplatných Azure pomocí faktury
 
@@ -85,7 +85,7 @@ Pokud chcete přepnout předplatné Azure na platby pomocí faktur (šekem nebo 
 
 1. Přejděte na web [Azure Portal](https://portal.azure.com) a přihlaste se jako správce účtu. Vyhledejte a vyberte možnost **Správa nákladů a fakturace**.
 
-    ![Hledání možnosti Správa nákladů a fakturace, portál Microsoft Azure](./media/pay-by-invoice/search.png)
+    ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace na webu Azure Portal](./media/pay-by-invoice/search.png)
 
 1. Vyberte předplatné, které chcete přepnout na platby pomocí faktur.
 1. Vyberte **Způsoby platby**.

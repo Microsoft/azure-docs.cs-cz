@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: banders
-ms.openlocfilehash: 334193f64c49b546bab5f44840df5b3f59e32c4f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ebe750440528e40feaf0b4700c018a612b482e34
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690574"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447630"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Sledování zůstatku kreditu Azure u smlouvy se zákazníkem Microsoftu
 
@@ -35,11 +35,11 @@ Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu
 
 2. Vyhledejte **Cost Management a fakturace**.
 
-    ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
+    ![Snímek obrazovky znázorňující hledání položky Cost Management + Billing na portálu](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
 3. Na stránce s fakturačními rozsahy vyberte fakturační účet, pro který chcete sledovat zůstatek kreditů. Tento fakturační účet by měl být typu **Smlouva se zákazníkem Microsoftu**.
 
-    ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/mca-check-azure-credits-balance/list-of-scopes.png)
+    ![Snímek obrazovky s rozsahy fakturace](./media/mca-check-azure-credits-balance/list-of-scopes.png)
 
     > [!NOTE]
     >
@@ -47,7 +47,7 @@ Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu
 
 3. Na levé straně vyberte **Způsoby platby** a potom vyberte **Kredity Azure**.
 
-   ![Snímek obrazovky se zůstatkem kreditů pro fakturační profil](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
+   ![Snímek obrazovky s odhadovaným a aktuálním zůstatkem](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
 
 4. Stránka s kredity Azure má následující oddíly:
 

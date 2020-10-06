@@ -9,20 +9,20 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: c69dc63af6bacb4aaf1beda1a0846a98b06ec209
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689248"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371962"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Přiřazení přístupu k datům služby Cost Management
 
-Pro uživatele se smlouvou Azure Enterprise je úroveň jejich přístupu k datům Azure Cost Management definována kombinací oprávnění udělených na portálu Azure Portal a na portálu Enterprise (EA). Pro uživatele s jinými typy účtů Azure je snazší definovat úroveň přístupu k datům služby Cost Management pomocí řízení přístupu na základě role v Azure. Tento článek vás provede postupem přiřazení přístupu k datům služby Cost Management. Po přiřazení kombinace oprávnění se uživateli zobrazí data ve službě Cost Management na základě rozsahu jeho přístupu a v rozsahu, který si vybere na webu Azure Portal.
+Pro uživatele se smlouvou Azure Enterprise je úroveň jejich přístupu k datům Azure Cost Management definována kombinací oprávnění udělených na portálu Azure Portal a na portálu Enterprise (EA). Pro uživatele s jinými typy účtů Azure je snazší definovat úroveň přístupu k datům služby Cost Management pomocí řízení přístupu na základě role v Azure (Azure RBAC). Tento článek vás provede postupem přiřazení přístupu k datům služby Cost Management. Po přiřazení kombinace oprávnění se uživateli zobrazí data ve službě Cost Management na základě rozsahu jeho přístupu a v rozsahu, který si vybere na webu Azure Portal.
 
 Rozsah, který uživatel vybere, se používá v celé službě Cost Management k poskytování konsolidace dat a k řízení přístupu k informacím o nákladech. Uživatelé při použití nevybírají rozsahy vícenásobně. Místo toho si vyberou větší rozsah, který již zahrnuje podřízené rozsahy, a potom vyfiltrují, co chtějí zobrazit. Konsolidace dat je důležitá, protože někteří uživatelé by neměli mít přístup k nadřazenému rozsahu, který zahrnuje data z podřízených rozsahů.
 
-Informace o přiřazení přístupu k zobrazení nákladů a poplatků pomocí řízení přístupu na základě role Azure najdete ve videu věnovaném [řízení přístupu ve službě Cost Management](https://www.youtube.com/watch?v=_uQzQ9puPyM). Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
+Informace o přiřazení přístupu k zobrazení nákladů a poplatků pomocí řízení přístupu na základě role v Azure (Azure RBAC) najdete ve videu věnovaném [řízení přístupu ve službě Cost Management](https://www.youtube.com/watch?v=_uQzQ9puPyM). Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/_uQzQ9puPyM]
 
@@ -71,7 +71,7 @@ Pokud chcete aktivovat možnost na webu Azure Portal, postupujte takto:
 1. V části **Nastavení**vyberte položku nabídky **Zásady** a potom nakonfigurujte požadované nastavení.  
     ![Zásady rozsahu fakturace s možnostmi pro zobrazení poplatků](./media/assign-access-acm-data/azure-portal-policies-view-charges.png)
 
-Po povolení možností zobrazení nákladů bude většina rozsahů na portálu Azure Portal vyžadovat konfiguraci oprávnění řízení přístupu na základě role (RBAC).
+Po povolení možností zobrazení nákladů bude většina rozsahů na portálu Azure Portal vyžadovat konfiguraci oprávnění řízení přístupu na základě role v Azure (Azure RBAC).
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Povolení přístupu k nákladům na portálu EA Portal
 
@@ -84,7 +84,7 @@ Pokud chcete aktivovat možnost na webu EA Portal, postupujte takto:
 3. Pro rozsahy řízení nákladů, ke kterým chcete poskytnout přístup, povolte možnost **DA view charges** (Správce oddělení může zobrazit náklady) nebo **AO view charges** (Vlastník účtu může zobrazit náklady).  
     ![Karta registrace s možnostmi zobrazení nákladů správce oddělení a vlastníka účtu](./media/assign-access-acm-data/ea-portal-enrollment-tab.png)
 
-Po povolení možností zobrazení nákladů bude většina rozsahů na portálu Azure Portal vyžadovat konfiguraci oprávnění řízení přístupu na základě role (RBAC).
+Po povolení možností zobrazení nákladů bude většina rozsahů na portálu Azure Portal vyžadovat konfiguraci oprávnění řízení přístupu na základě role v Azure (Azure RBAC).
 
 ## <a name="enterprise-administrator-role"></a>Role podnikového správce
 
@@ -182,9 +182,9 @@ Přístup ke skupině prostředků vyžaduje alespoň oprávnění Čtenář Cos
 
 ## <a name="cross-tenant-authentication-issues"></a>Problémy s ověřováním napříč tenanty
 
-V současné době má Azure Cost Management omezenou podporu pro ověřování napříč tenanty. V některých případech se může stát, že při pokusu o ověření napříč tenanty dojde v analýze nákladů k chybě **odepření přístupu**. K tomuto problému může dojít, pokud nakonfigurujete řízení přístupu na základě role (RBAC) u předplatného jiného tenanta a pak se pokusíte zobrazit data nákladů.
+V současné době má Azure Cost Management omezenou podporu pro ověřování napříč tenanty. V některých případech se může stát, že při pokusu o ověření napříč tenanty dojde v analýze nákladů k chybě **odepření přístupu**. K tomuto problému může dojít, pokud nakonfigurujete řízení přístupu na základě role v Azure (Azure RBAC) u předplatného jiného tenanta a pak se pokusíte zobrazit data nákladů.
 
-*Řešení problému*: Až nakonfigurujete RBAC napříč tenanty, počkejte hodinu. Pak se pokuste zobrazit náklady v analýze nákladů nebo udělte uživatelům přístup ke službě Cost Management v obou tenantech.  
+*Řešení problému*: Až nakonfigurujete Azure RBAC napříč tenanty, počkejte hodinu. Pak se pokuste zobrazit náklady v analýze nákladů nebo udělte uživatelům přístup ke službě Cost Management v obou tenantech.  
 
 
 ## <a name="next-steps"></a>Další kroky

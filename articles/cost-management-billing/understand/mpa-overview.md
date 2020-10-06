@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 98941530ba0483e82f43af222e12df7439b6625e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4d6208360bd876a2a1ae0a9ff154604a33584db9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688744"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447926"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Začínáme s fakturačním účtem pro smlouvu s partnerem Microsoftu
 
@@ -55,7 +55,7 @@ Postup zapnutí zásad:
 
 1. Vyhledejte **Cost Management a fakturace**.
 
-   ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/mpa-overview/search-cmb.png)
+   ![Snímek obrazovky znázorňující hledání položky Cost Management + Billing na webu Azure Portal](./media/mpa-overview/search-cmb.png)
 
 1. Na levé straně vyberte **Zákazníci** a pak v seznamu vyberte zákazníka.
 

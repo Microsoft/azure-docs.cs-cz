@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 08/20/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: bd7f1ff20189b971ba32e5c4b40b380fc22611b2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bd0abadb624bced7f603fcbd112f7c422e88fc0c
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686849"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371843"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Řešení potíží s podnikovými zobrazeními nákladů
 
@@ -41,7 +41,7 @@ Pokud se během pokusu o přístup k předplatnému nebo skupině pro správu zo
 
 ![Snímek obrazovky zobrazující zprávu Prostředek není k dispozici](./media/enterprise-mgmt-grp-troubleshoot-cost-view/asset-not-found.png)
 
-Požádejte o přístup svého správce předplatného Azure nebo správce skupiny pro správu. Další informace najdete v tématu [Správa přístupu pomocí RBAC a webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Požádejte o přístup svého správce předplatného Azure nebo správce skupiny pro správu. Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí v Azure pomocí webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Další kroky
 - Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

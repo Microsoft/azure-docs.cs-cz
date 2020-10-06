@@ -9,12 +9,12 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 7bed8cc55e0880d88df22ca32bc5886e22022cbc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 50451acdbd1c88b6ae703ed25de9cee1f3e48216
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690183"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446454"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Správa nákladů s využitím služby Azure Budgets
 
@@ -152,7 +152,7 @@ Pomocí podmíněného příkazu zkontrolujte, zda prahová částka dosáhla 80
 1. Výběrem **OK** výraz nastavte.
 1. V rozevíracím seznamu v části **Podmínka** vyberte **je větší než nebo rovno**.
 1. Do pole **Zvolit hodnotu** podmínky zadejte `.8`.  
-    ![Azure – Aplikace logiky – Výraz Float s hodnotou](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
+    ![Snímek obrazovky s dialogovým oknem Podmínka a vybranými hodnotami](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
 1. V poli Podmínka vyberte **Přidat** > **Přidat řádek** a přidejte další část podmínky.
 1. V poli **Podmínka** vyberte textové pole obsahující text `Choose a value`.
 1. V horní části seznamu vyberte **Výraz** a do editoru výrazů zadejte následující výraz: `float()`.
@@ -160,7 +160,7 @@ Pomocí podmíněného příkazu zkontrolujte, zda prahová částka dosáhla 80
 1. Výběrem **OK** výraz nastavte.
 1. V rozevíracím seznamu v části **Podmínka** vyberte **je menší než**.
 1. Do pole **Zvolit hodnotu** podmínky zadejte `1`.  
-    ![Azure – Aplikace logiky – Výraz Float s hodnotou](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
+    ![Snímek obrazovky s dialogovým oknem Podmínka a dvěma podmínkami](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
 1. V poli **Pokud je true** vyberte **Přidat akci**. Přidáte akci HTTP POST, která vypne volitelné virtuální počítače.  
     ![Azure – Aplikace logiky – Přidání akce](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
 1. Zadejte **HTTP** a vyhledejte akci HTTP. Vyberte akci **HTTP – HTTP**.  
@@ -183,7 +183,7 @@ Pomocí podmíněného příkazu zkontrolujte, zda prahová částka dosáhla 80
 Pomocí podmíněného příkazu zkontrolujte, zda prahová částka dosáhla nebo překročila 100 % hodnoty rozpočtu. Pokud bylo dosaženo prahové částky, pošle HTTP POST pomocí webhooku s názvem **Dokončené**. Tato akce vypne všechny zbývající virtuální počítače.
 
 1. Vyberte **Nový krok** > **Přidat podmínku**.  
-    ![Azure – Aplikace logiky – Přidání akce](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
+    ![Snímek obrazovky s dialogovým oknem Pokud je true a vybranou možností Přidat akci](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
 1. V poli **Podmínka** vyberte textové pole obsahující text `Choose a value`, aby se zobrazil seznam dostupných hodnot.
 1. V horní části seznamu vyberte **Výraz** a do editoru výrazů zadejte následující výraz: `float()`.
 1. Vyberte **Dynamický obsah**, umístěte kurzor do závorek () a ze seznamu vyberte **NotificationThresholdAmount**, aby se naplnil výraz dokončení.
@@ -194,11 +194,11 @@ Pomocí podmíněného příkazu zkontrolujte, zda prahová částka dosáhla ne
 1. Do pole **Zvolit hodnotu** podmínky zadejte `1`.  
     ![Azure – Aplikace logiky – Nastavení hodnoty podmínky](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
 1. V poli **Pokud je true** vyberte **Přidat akci**. Přidáte akci HTTP POST, která vypne všechny zbývající virtuální počítače.  
-    ![Azure – Aplikace logiky – Přidání akce](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
+    ![Snímek obrazovky s dialogovým oknem Pokud je true, kde můžete přidat akci HTTP POST](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
 1. Zadejte **HTTP** a vyhledejte akci HTTP. Vyberte akci **HTTP – HTTP**.
 1. Jako hodnotu v poli **Metoda** vyberte **Post**.
 1. Jako hodnotu **URI** zadejte adresu URL webhooku s názvem **Dokončené**, který jste vytvořili dříve v tomto kurzu.  
-    ![Azure – Aplikace logiky – Přidání akce](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
+    ![Snímek obrazovky s dialogovým oknem HTTP, kde můžete zadat hodnotu adresy URL](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
 1. V poli **Pokud je true** vyberte **Přidat akci**. Přidáte e-mailovou akci, která pošle příjemci e-mail s upozorněním na vypnutí zbývajících virtuálních počítačů.
 1. Vyhledejte řetězec „poslat e-mail“ a vyberte akci *poslání e-mailu* na základě služby, kterou používáte.
 1. Přidejte text **Komu**, **Předmět** a **Text zprávy** e-mailu, který příjemce upozorní na vypnutí volitelných virtuálních počítačů. Pro naplnění polí předmětu a textu zprávy použijte dynamický obsah **BudgetName** a **NotificationThresholdAmount**.  
