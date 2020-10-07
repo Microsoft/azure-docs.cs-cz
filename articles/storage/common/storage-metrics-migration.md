@@ -4,17 +4,17 @@ description: Naučte se, jak přejít z Analýza úložiště metriky (klasické
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 10/20/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 076f5573b599fbb83486087380174fc2da53986c
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: c6a5f69a5a32ed1279b367c93b5246eb77ef0208
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708573"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802833"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Přechod na metriky v Azure Monitor
 
@@ -46,6 +46,8 @@ Pro přechod na metriky v Azure Monitor doporučujeme následující postup.
 Tato část popisuje několik klíčových rozdílů mezi těmito dvěma platformami metrik.
 
 Hlavní rozdíl spočívá v tom, jak jsou metriky spravovány. Klasické metriky se spravují pomocí Azure Storage, že metriky v Azure Monitor jsou spravované pomocí Azure Monitor. U klasických metrik Azure Storage shromažďuje hodnoty metrik, agreguje je a pak je ukládá v tabulkách, které jsou umístěné v účtu úložiště. S metrikami v Azure Monitor odesílá Azure Storage data metriky do back-endu Azure Monitor. Azure Monitor poskytuje jednotné prostředí pro monitorování, které zahrnuje data z Azure Portal a také data, která se ingestují. 
+
+Klasické metriky se odesílají a ukládají v účtu služby Azure Storage. Azure Monitor metriky je možné odesílat do více umístění. Účet úložiště může být jedno z těchto umístění, ale není to nutné.  
 
 V případě podpory metrik nabízí klasická metrika metriky **kapacity** pouze pro úložiště objektů BLOB v Azure. Metriky v Azure Monitor poskytují metriky kapacity pro úložiště objektů blob, tabulek, souborů, front a Premium. Klasické metriky poskytují **transakční** metriky pro úložiště objektů blob, tabulek, souborů Azure a front. Metriky v Azure Monitor do tohoto seznamu přidat úložiště úrovně Premium.
 

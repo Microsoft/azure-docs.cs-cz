@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 10/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79870bcfc3b2cacb856141841a1f018eb1c50641
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 1520f3ef77353e653dca10779228e70488bcbd75
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532674"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801745"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Metody ověřování v aplikaci Azure Active Directory-Microsoft Authenticator
 
-Microsoft Authenticator aplikace poskytuje další úroveň zabezpečení pro pracovní nebo školní účet služby Azure AD nebo účet Microsoft a je dostupná pro [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594)a [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6). S aplikací Microsoft Authenticator se uživatelé můžou během přihlašování ověřovat heslem bez hesla nebo jako další možnost ověření během samoobslužného resetování hesla (SSPR) nebo událostí Azure Multi-Factor Authentication.
+Microsoft Authenticator aplikace poskytuje další úroveň zabezpečení pro pracovní nebo školní účet služby Azure AD nebo vaši účet Microsoft a je dostupná pro [Android](https://go.microsoft.com/fwlink/?linkid=866594) a [iOS](https://go.microsoft.com/fwlink/?linkid=866594). S aplikací Microsoft Authenticator se uživatelé můžou během přihlašování ověřovat heslem bez hesla nebo jako další možnost ověření během samoobslužného resetování hesla (SSPR) nebo událostí Azure Multi-Factor Authentication.
 
 Uživatelé mohou obdržet oznámení prostřednictvím mobilní aplikace, aby je schválili nebo zakázali, nebo pomocí aplikace ověřovatele vygenerovat ověřovací kód OATH, který lze zadat v přihlašovacím rozhraní. Pokud povolíte jak oznámení, tak ověřovací kód, můžou uživatelé, kteří si zaregistrují ověřovací aplikaci, použít kteroukoli z metod k ověření jejich identity.
 

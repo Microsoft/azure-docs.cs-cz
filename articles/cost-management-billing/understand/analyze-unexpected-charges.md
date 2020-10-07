@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: ae15fc59137e9bf6fb7bfd9fedfb410aa4e0931c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e0b9f10a321fce0b8ccc31bf914fe4f2995c49a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336938"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651900"
 ---
 # <a name="analyze-unexpected-charges"></a>Analýza neočekávaných poplatků
 
@@ -26,7 +26,7 @@ Způsob, jakým nakupujete služby Azure, vám pomůže určit, jakou metodologi
 
 Následující články obsahují podrobný postup s vysvětlením, jak zkontrolovat fakturu na základě typu zákazníka. Jednotlivé články obsahují pokyny ke stažení souboru CSV s podrobnostmi o využití a nákladech za dané fakturační období.
 
-- [Proces kontroly faktury za průběžné platby](review-individual-bill.md#compare-invoiced-charges-with-usage-file)
+- [Proces kontroly faktury za průběžné platby](review-individual-bill.md#charges)
 - [Proces kontroly faktury za smlouvu Enterprise](review-enterprise-agreement-bill.md)
 - [Proces kontroly faktury za smlouvu se zákazníkem Microsoftu](review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
 - [Proces kontroly faktury za smlouvu s partnerem Microsoftu](review-partner-agreement-bill.md#analyze-your-azure-usage-charges)

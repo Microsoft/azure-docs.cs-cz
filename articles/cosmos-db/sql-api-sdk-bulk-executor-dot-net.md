@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 5944cbeea2e26d7209cde7c926f862683c7cab7e
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 5203223f8468a4dfa0faf2df92e826a62f7bbfcf
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590196"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802748"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Knihovna hromadného prováděcího modulu .NET: informace o stažení 
 
@@ -41,7 +41,7 @@ ms.locfileid: "88590196"
 | **Popis**| Knihovna hromadného prováděcího modulu .NET umožňuje klientským aplikacím provádět hromadné operace s účty Azure Cosmos DB. Tato knihovna poskytuje obory názvů BulkImport, BulkUpdate a BulkDelete. Modul BulkImport dokáže hromadně ingestovat dokumenty optimalizovaným způsobem tak, že propustnost zřízená pro kolekci se spotřebovává do svého maximálního rozsahu. Modul BulkUpdate může hromadně aktualizovat existující data v kontejnerech Azure Cosmos jako opravy. Modul BulkDelete může rychle odstranit dokumenty optimalizovaným způsobem tak, aby propustnost zřízená pro kolekci byla spotřebována do maximálního rozsahu.|
 |**Stažení sady SDK**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
 | **Knihovna hromadných prováděcích modulů na GitHubu**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
-|**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet&preserve-view=true)|
 |**Začínáme**|[Začínáme s knihovnou .NET SDK pro hromadnou vykonavatelskou práci](bulk-executor-dot-net.md)|
 | **Aktuální podporovaná architektura**| Microsoft .NET Framework 4.5.2, 4.6.1 a .NET Standard 2,0 |
 

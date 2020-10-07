@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 694cb2ddde4f923445119c24fa98f532ab6c3471
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 454e5fdd6fae8fc7bf8e37833124bb3d188cb028
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998352"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802544"
 ---
 # <a name="azure-cosmos-db-net-sdk-v2-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK v2 pro SQL API: stažení a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -39,13 +39,13 @@ ms.locfileid: "88998352"
 | |  |
 |---|---|
 |**Stažení sady SDK**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
-|**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní .NET API](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
-|**Ukázky**|[Ukázky kódu .NET](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní .NET API](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet&preserve-view=true)|
+|**ukázky**|[Ukázky kódu .NET](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
 |**Začínáme**|[Začínáme s Azure Cosmos DB .NET SDK](sql-api-get-started.md)|
 |**Kurz webové aplikace**|[Vývoj webových aplikací pomocí Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Aktuální podporovaná architektura**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
-## <a name="release-notes"></a>Zpráva k vydání verze
+## <a name="release-notes"></a>Poznámky k verzi
 
 > [!NOTE]
 > Pokud používáte .NET Framework, přečtěte si nejnovější verzi 3. x sady [.NET SDK](sql-api-sdk-dotnet-standard.md), která cílí na .NET Standard.

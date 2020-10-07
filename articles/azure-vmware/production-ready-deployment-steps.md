@@ -3,12 +3,12 @@ title: Plánování nasazení řešení Azure VMware
 description: Tento článek popisuje pracovní postup nasazení řešení Azure VMware.  Konečný výsledek je prostředí připravené pro vytváření a migraci virtuálních počítačů.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 1a9ff313243650cc3f9c44be2eb1c62da5557955
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: e279f14406d464171f0879d85cc33f9844d22ec3
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91583269"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802204"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Plánování nasazení řešení Azure VMware
 
@@ -19,6 +19,40 @@ Procesy tohoto rychlého startu mají za následek vytváření virtuálních po
 >[!IMPORTANT]
 >Před vytvořením prostředku řešení Azure VMware budete muset odeslat lístek podpory, abyste měli své uzly přidělené. Jakmile tým podpory obdrží vaši žádost, trvá vám až pět pracovních dní, aby vaši žádost zkontroloval a rozdělil vaše uzly. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více uzlů, Projděte si stejný postup. Další informace najdete v tématu [Povolení prostředku řešení Azure VMware](enable-azure-vmware-solution.md). 
 
+## <a name="subscription"></a>Předplatné
+
+Identifikujte předplatné, které plánujete použít k nasazení řešení Azure VMware.  Můžete buď vytvořit nové předplatné, nebo znovu použít stávající.
+
+>[!NOTE]
+>Předplatné musí být přidružené k smlouva Enterprise Microsoft.
+
+## <a name="resource-group"></a>Skupina prostředků
+
+Identifikujte skupinu prostředků, kterou chcete použít pro vaše řešení Azure VMware.  Obecně platí, že skupina prostředků je vytvořená speciálně pro řešení Azure VMware, ale můžete použít existující skupinu prostředků.
+
+## <a name="region"></a>Oblast
+
+Identifikujte oblast, kterou chcete nasadit řešení Azure VMware.  Další informace najdete v tématu [Příručka k produktům Azure, které jsou k dispozici v jednotlivých oblastech](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware).
+
+## <a name="resource-name"></a>Název prostředku
+
+Zadejte název prostředku, který budete používat během nasazování.  Název prostředku je popisný a popisný název, ve kterém můžete název privátního cloudu řešení Azure VMware.
+
+## <a name="size-nodes"></a>Uzly velikosti
+
+Identifikujte uzly velikosti, které chcete použít při nasazení řešení Azure VMware.  Úplný seznam najdete v dokumentaci k [privátním cloudům a clusterům řešení Azure VMware](concepts-private-clouds-clusters.md#hosts) .
+
+## <a name="number-of-hosts"></a>Počet hostitelů
+
+Zadejte počet hostitelů, které chcete nasadit do privátního cloudu řešení Azure VMware.  Minimální počet uzlů je tři a maximum je 16 na cluster.  Další informace najdete v dokumentaci k [privátnímu cloudu řešení Azure VMware a clusterům](concepts-private-clouds-clusters.md#clusters) .
+
+Cluster můžete kdykoli později roztáhnout, pokud potřebujete přejít nad rámec počátečního čísla nasazení.
+
+## <a name="vcenter-admin-password"></a>heslo správce vCenter
+Zadejte heslo správce vCenter.  Během nasazení vytvoříte heslo správce vCenter. Heslo je cloudadmin@vsphere.local účtu správce během sestavení vCenter. Použijete ho k přihlášení do vCenter.
+
+## <a name="nsx-t-admin-password"></a>Heslo správce NSX-T
+Zadejte heslo správce NSX-T.  Během nasazení vytvoříte heslo správce NSX-T. Heslo je přiřazeno k uživateli s oprávněními správce v účtu NSX během sestavení NSX. Použijete ho k přihlášení ke Správci NSX-T.
 
 ## <a name="ip-address-segment"></a>Segment IP adres
 
@@ -63,41 +97,6 @@ Identifikujte `/29` blok síťových adres CIDR, který je vyžadován pro partn
 
 :::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="Identifikace – segment IP adres" border="false":::
 
-## <a name="subscription"></a>Předplatné
-
-Identifikujte předplatné, které plánujete použít k nasazení řešení Azure VMware.  Můžete buď vytvořit nové předplatné, nebo znovu použít stávající.
-
->[!NOTE]
->Předplatné musí být přidružené k smlouva Enterprise Microsoft.
-
-## <a name="resource-group"></a>Skupina prostředků
-
-Identifikujte skupinu prostředků, kterou chcete použít pro vaše řešení Azure VMware.  Obecně platí, že skupina prostředků je vytvořená speciálně pro řešení Azure VMware, ale můžete použít existující skupinu prostředků.
-
-## <a name="region"></a>Region (Oblast)
-
-Identifikujte oblast, kterou chcete nasadit řešení Azure VMware.  Další informace najdete v tématu [Příručka k produktům Azure, které jsou k dispozici v jednotlivých oblastech](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware).
-
-## <a name="resource-name"></a>Název prostředku
-
-Zadejte název prostředku, který budete používat během nasazování.  Název prostředku je popisný a popisný název, ve kterém můžete název privátního cloudu řešení Azure VMware.
-
-## <a name="size-nodes"></a>Uzly velikosti
-
-Identifikujte uzly velikosti, které chcete použít při nasazení řešení Azure VMware.  Úplný seznam najdete v dokumentaci k [privátním cloudům a clusterům řešení Azure VMware](concepts-private-clouds-clusters.md#hosts) .
-
-## <a name="number-of-hosts"></a>Počet hostitelů
-
-Zadejte počet hostitelů, které chcete nasadit do privátního cloudu řešení Azure VMware.  Minimální počet uzlů je tři a maximum je 16 na cluster.  Další informace najdete v dokumentaci k [privátnímu cloudu řešení Azure VMware a clusterům](concepts-private-clouds-clusters.md#clusters) .
-
-Cluster můžete kdykoli později roztáhnout, pokud potřebujete přejít nad rámec počátečního čísla nasazení.
-
-## <a name="vcenter-admin-password"></a>heslo správce vCenter
-Zadejte heslo správce vCenter.  Během nasazení vytvoříte heslo správce vCenter. Heslo je cloudadmin@vsphere.local účtu správce během sestavení vCenter. Použijete ho k přihlášení do vCenter.
-
-## <a name="nsx-t-admin-password"></a>Heslo správce NSX-T
-Zadejte heslo správce NSX-T.  Během nasazení vytvoříte heslo správce NSX-T. Heslo je přiřazeno k uživateli s oprávněními správce v účtu NSX během sestavení NSX. Použijete ho k přihlášení ke Správci NSX-T.
-
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure Virtual Network k připojení řešení Azure VMware
 
 Aby bylo možné získat přístup k privátnímu cloudu řešení Azure VMware, musí se okruh ExpressRoute, který je součástí řešení Azure VMware, připojit k Azure Virtual Network.  Během nasazování můžete definovat novou virtuální síť nebo zvolit existující.
@@ -121,8 +120,6 @@ Libovolný způsob, jak dokumentovat, co chcete udělat v tomto kroku.
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Identifikace – segment IP adres" border="false":::
 
-
-
 ## <a name="vmware-hcx-network-segments"></a>Segmenty sítě VMware HCX
 
 VMware HCX je technologie, která je součástí řešení Azure VMware. Primárními případy použití pro VMware HCX jsou migrace úloh a zotavení po havárii. Pokud plánujete jednu z těchto prací, je nejlepší naplánovat sítě nyní.   V opačném případě můžete přeskočit a pokračovat k dalšímu kroku.
@@ -133,4 +130,4 @@ VMware HCX je technologie, která je součástí řešení Azure VMware. Primár
 Teď, když jste shromáždili a popsali potřebné informace, pokračujte k další části a vytvořte si privátní cloud řešení Azure VMware.
 
 > [!div class="nextstepaction"]
-> [Nasazení řešení Azure VMware](deploy-azure-vmware-solution.md)
+> [Nasazení služby Azure VMware Solution](deploy-azure-vmware-solution.md)

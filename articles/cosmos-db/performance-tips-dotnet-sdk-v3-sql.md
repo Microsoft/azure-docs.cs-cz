@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 9d50ed62343a7fd0aafb1fed97c0f33f2caaec12
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f8e610531eaf3e7e5dbee9c40c88683a05029303
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019925"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802986"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a .NET
 
@@ -39,7 +39,7 @@ Pro Linux a jiné nepodporované platformy, kde ServiceInterop.dll není k dispo
 
 Čtyři uvedené typy aplikací používají ve výchozím nastavení 32 hostitelského zpracování. Chcete-li změnit zpracování hostitele na 64 zpracování pro typ aplikace, postupujte následovně:
 
-- **Pro spustitelné aplikace**: v okně **Vlastnosti projektu** v podokně **sestavení** nastavte [cíl platformy](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) na hodnotu **x64**.
+- **Pro spustitelné aplikace**: v okně **Vlastnosti projektu** v podokně **sestavení** nastavte [cíl platformy](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) na hodnotu **x64**.
 
 - **Pro projekty testů založené na VSTest**: v nabídce **test** sady Visual Studio vyberte nastavení **test**  >  **testu**a pak nastavte **výchozí architekturu procesoru** na hodnotu **x64**.
 
@@ -126,7 +126,7 @@ Pokud je to možné, umístěte všechny aplikace, které volají Azure Cosmos D
 
 Nejnižší možnou latenci získáte tak, že zajistíte, aby se volající aplikace nacházela ve stejné oblasti Azure jako koncový bod zřízené Azure Cosmos DB. Seznam oblastí, které jsou k dispozici, najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/#services).
 
-:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Společné umístění klienty ve stejné oblasti." border="false":::
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Navažte připojení k Azure Cosmos DB pomocí různých režimů připojení a protokolů." border="false":::
 
    <a id="increase-threads"></a>
 
@@ -199,7 +199,7 @@ Paralelní dotazy poskytují dva parametry, které můžete ladit podle svých p
 
 Během testování výkonu byste měli zvýšit zatížení, dokud se neomezí malá míra požadavků. Pokud jsou požadavky omezené, klientská aplikace by měla pro interval opakování zadaného serveru obnovit omezení. Respektování omezení rychlosti vám pomůže zajistit, že budete věnovat minimální dobu čekání mezi opakovanými pokusy. 
 
-Další informace najdete v tématu [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
+Další informace najdete v tématu [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
     
 Existuje mechanismus pro protokolování dalších diagnostických informací a problémů s latencí při odstraňování potíží, jak je znázorněno v následující ukázce. Můžete protokolovat řetězec diagnostiky pro požadavky, které mají vyšší latenci čtení. Zachycený řetězec diagnostiky vám pomůže pochopit, kolikrát se vám pro daný požadavek zobrazila chyba *429* .
 

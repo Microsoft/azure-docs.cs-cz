@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 66a53840d6002731910baf63a331a79a6f654078
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5832214b5b0a98249f951915e867db8542c28a71
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84167957"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803955"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB rozhraní API pro tabulky SDK pro Python: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -27,9 +27,9 @@ ms.locfileid: "84167957"
 |   |   |
 |---|---|
 |**Stažení sady SDK**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
-|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python&preserve-view=true)|
 |**Pokyny k instalaci sady SDK**|[Pokyny k instalaci sady Python SDK](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
-|**Přispívání do sady SDK**|[GitHubu](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
+|**Přispívání do sady SDK**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Aktuální podporovaná platforma**|[Python 2,7](https://www.python.org/downloads/) nebo [python 3,3, 3,4, 3,5 nebo 3,6](https://www.python.org/downloads/)|
 
 > [!IMPORTANT]

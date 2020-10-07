@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e172a023cc9156f435b4f40b2262ee44128c138e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4210ad382301851a41d3fbd7ee3dc20a748fb544
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732000"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802187"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Vytvoření a přiřazení vlastní role v Azure Active Directory
 
@@ -58,14 +58,14 @@ Nejdřív je nutné [Stáhnout modul Azure AD Preview PowerShell](https://www.po
 K instalaci modulu Azure AD PowerShell použijte následující příkazy:
 
 ``` PowerShell
-install-module azureadpreview
-import-module azureadpreview
+Install-Module AzureADPreview
+Import-Module AzureADPreview
 ```
 
 Chcete-li ověřit, zda je modul připravený k použití, použijte následující příkaz:
 
 ``` PowerShell
-get-module azureadpreview
+Get-Module AzureADPreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
   Binary     2.0.2.31     azuread                      {Add-AzureADAdministrati...}
@@ -125,7 +125,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
     Text
 
     ``` HTTP
-   {
+    {
        "description": "Can manage basic aspects of application registrations.",
        "displayName": "Application Support Administrator",
        "isEnabled": true,
@@ -138,11 +138,11 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
                ]
            }
        ]
-   }
+    }
     ```
 
-  > [!Note]
-  > "TemplateId": "GUID" je volitelný parametr, který je odesílán v těle v závislosti na požadavku. Pokud máte požadavek na vytvoření více různých vlastních rolí se společnými parametry, je nejlepší vytvořit šablonu a definovat templateId. Pomocí rutiny PowerShellu (New-GUID) můžete vygenerovat templateId předem. Hlavních. 
+    > [!Note]
+    > `"templateId": "GUID"`Je volitelný parametr, který je odeslán v těle v závislosti na požadavku. Pokud máte požadavek na vytvoření více různých vlastních rolí se společnými parametry, je nejlepší vytvořit šablonu a definovat `templateId` hodnotu. Hodnotu můžete vygenerovat `templateId` předem pomocí rutiny prostředí PowerShell `(New-Guid).Guid` . 
 
 1. Vytvořte přiřazení role.
 
@@ -163,7 +163,6 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
        "resourceScope":"/<GUID OF APPLICATION REGISTRATION>"
    }
     ```
-
 
 ## <a name="assign-a-custom-role-scoped-to-a-resource"></a>Přiřazení vlastní role v oboru k prostředku
 

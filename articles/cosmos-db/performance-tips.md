@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: bdf512c66958338992c5959f8e00b4589850ff33
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: efedfb9701d12548b80eccda9cd2aa29bc644ac2
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008365"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802136"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB a .NET SDK v2
+# <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Tipy pro zvýšení výkonu pro službu Azure Cosmos DB a sadu .NET SDK v2
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
@@ -42,7 +42,7 @@ Pokud se tedy snažíte zvýšit výkon databáze, zvažte tyto možnosti:
 
 Pro zlepšení výkonu doporučujeme zpracování bitového hostitelského systému Windows 64. Sada SQL SDK obsahuje nativní ServiceInterop.dll k analýze a optimalizaci dotazů v místním prostředí. ServiceInterop.dll se podporuje jenom na platformě Windows x64. Pro Linux a jiné nepodporované platformy, kde ServiceInterop.dll není k dispozici, je bráně k získání optimalizovaného dotazu učiněno další síťové volání. Následující typy aplikací používají ve výchozím nastavení 32 hostitelského zpracování. Chcete-li změnit zpracování hostitele na 64, postupujte podle těchto kroků na základě typu vaší aplikace:
 
-- U spustitelných aplikací lze změnit zpracování hostitele nastavením možnosti [cíl platformy](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) na hodnotu **x64**  v okně **Vlastnosti projektu** na kartě **sestavení** .
+- U spustitelných aplikací lze změnit zpracování hostitele nastavením možnosti [cíl platformy](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) na hodnotu **x64**  v okně **Vlastnosti projektu** na kartě **sestavení** .
 
 - U testovacích projektů založených na VSTest můžete změnit zpracování hostitele tak, **Test**že  >  v nabídce Test sady Visual Studio vyberete**možnost nastavení test testu**  >  **výchozí architektura procesoru jako x64** . **Test**
 
@@ -203,7 +203,7 @@ Chcete-li snížit počet síťových přenosů potřebných k načtení všech 
 > [!NOTE] 
 > `maxItemCount`Vlastnost by se neměla používat jenom pro stránkování. Jeho hlavním použitím je zvýšit výkon dotazů omezením maximálního počtu položek vrácených na jednu stránku.  
 
-Velikost stránky můžete nastavit také pomocí dostupných Azure Cosmos DB sad SDK. Vlastnost [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) v `FeedOptions` umožňuje nastavit maximální počet položek, které mají být vráceny v rámci operace výčtu. Když `maxItemCount` je nastavená hodnota-1, sada SDK automaticky vyhledá optimální hodnotu v závislosti na velikosti dokumentu. Příklad:
+Velikost stránky můžete nastavit také pomocí dostupných Azure Cosmos DB sad SDK. Vlastnost [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet&preserve-view=true) v `FeedOptions` umožňuje nastavit maximální počet položek, které mají být vráceny v rámci operace výčtu. Když `maxItemCount` je nastavená hodnota-1, sada SDK automaticky vyhledá optimální hodnotu v závislosti na velikosti dokumentu. Příklad:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });

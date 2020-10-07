@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e1359fd2a59b49f10bb3b2daa4bcbadae921e188
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 22fcee69c32388c764434bedac04465bbc3e28cb
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012445"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801320"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na zřízenou propustnost ve službě Azure Cosmos DB
 
@@ -54,9 +54,9 @@ Níže jsou uvedeny některé pokyny k rozhodování o strategii zřízené prop
 
 Jak je znázorněno v následující tabulce v závislosti na volbě rozhraní API, můžete zajistit propustnost v různých členitcích.
 
-|rozhraní API|Pro **sdílenou** propustnost nakonfigurujte |U **vyhrazené** propustnosti nakonfigurujte |
+|Rozhraní API|Pro **sdílenou** propustnost nakonfigurujte |U **vyhrazené** propustnosti nakonfigurujte |
 |----|----|----|
-|SQL API|Databáze|Kontejner|
+|SQL API|databáze|Kontejner|
 |Rozhraní API služby Azure Cosmos DB pro MongoDB|Databáze|Kolekce|
 |Rozhraní Cassandra API|Prostor klíčů|Tabulka|
 |Rozhraní Gremlin API|Databázový účet|Graph|
@@ -80,7 +80,7 @@ Nativní sady SDK (.NET/.NET Core, Java, Node.js a Python) implicitně zachytí 
 
 Pokud máte více než jednoho klienta, který se v současné době průběžně pracuje konzistentně nad rámec požadavků, výchozí počet opakování, který je aktuálně nastavený na 9, nemusí být dostatečný. V takových případech klient vyvolá `RequestRateTooLargeException` aplikaci se stavovým kódem 429. Výchozí počet opakování lze změnit nastavením v `RetryOptions` instanci ConnectionPolicy. Ve výchozím nastavení se `RequestRateTooLargeException` stavový kód 429 vrátí po kumulativní čekací době 30 sekund, pokud požadavek nadále funguje nad sazbou požadavku. K tomu dojde i v případě, že aktuální počet opakování je menší než maximální počet opakování, výchozí hodnota je 9 nebo uživatelem definovaná hodnota. 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) je nastavené na hodnotu 3, takže v tomto případě platí, že pokud je operace požadavku omezená na překročení rezervované propustnosti kontejneru, operace požadavku se třikrát pokusí vyvoláním výjimky do aplikace. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) je nastavená na 60, takže v tomto případě je výjimka kumulativního opakování pokusu v sekundách od prvního požadavku delší než 60 sekund.
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet&preserve-view=true) je nastavené na hodnotu 3, takže v tomto případě platí, že pokud je operace požadavku omezená na překročení rezervované propustnosti kontejneru, operace požadavku se třikrát pokusí vyvoláním výjimky do aplikace. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) je nastavená na 60, takže v tomto případě je výjimka kumulativního opakování pokusu v sekundách od prvního požadavku delší než 60 sekund.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 

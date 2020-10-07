@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 10/06/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 9ecb4d6c5c6701633606bf952c09063a8d96f8d1
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: ed9af178c10d033806b05f73372a0642bb28cab4
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91778935"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801635"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>Rychlý Start: odesílání zpráv SMS v Azure Logic Apps s využitím komunikačních služeb Azure
 
@@ -56,6 +56,8 @@ Pokud chcete přidat akci **Odeslat SMS** jako nový krok pracovního postupu po
    1. Vyberte prostředek služby Azure Communication Services.
 
    1. Vyberte **Vytvořit**.
+
+   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="Snímek obrazovky zobrazující Azure Portal, který je otevřený v návrháři aplikace logiky, a ukazuje ukázkovou aplikaci logiky, která používá akci odeslat SMS pro konektor Azure Communication Services.":::
 
 1. V akci **Odeslat zprávu SMS** zadejte následující informace: 
 

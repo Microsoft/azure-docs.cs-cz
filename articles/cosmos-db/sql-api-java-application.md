@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9daa09209818b9e01738630911a1bb926e3c257d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 913bc4373785d9341064e505ddce84fe43f727b1
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079939"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801592"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Kurz: Vytvoření webové aplikace v jazyce Java pomocí Azure Cosmos DB a rozhraní SQL API
 
@@ -43,11 +43,11 @@ Tento kurz o aplikaci Java vám ukáže, jak vytvořit webovou aplikaci pro spr�
 
 Než zahájíte tento kurz vývoje aplikace, musíte mít následující:
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+* Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)
+* [Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
 * [Integrované vývojové prostředí Eclipse pro vývojáře v jazyce Java EE](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Web Azure se zapnutou platformou Java Runtime Environment (např. Tomcat nebo Jetty)](../app-service/quickstart-java.md)
 
@@ -67,7 +67,7 @@ Vytvoření aplikace JSP:
 
 1. Nejdříve začneme vytvořením projektu Java. Spusťte Eclipse, klikněte na **File** (Soubor), pak na **New** (Nový) a nakonec na **Dynamic Web Project** (Dynamický webový projekt). Pokud nevidíte **dynamický webový projekt** uvedený jako dostupný projekt, udělejte toto: klikněte na **soubor**, klikněte na **Nový**, klikněte na **projekt**..., rozbalte **Web**, klikněte na **dynamický webový projekt**a klikněte na **Další**.
    
-    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="Vývoj aplikace Java JSP":::
+    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="Aplikace pro seznam úkolů v jazyce Java":::
 
 1. Zadejte název projektu do pole **Project name** (Název projektu), volitelně v rozevírací nabídce **Target Runtime** (Cílový modul runtime) vyberte hodnotu (např. Apache Tomcat v7.0) a klikněte na **Finish** (Dokončit). Pokud vyberete cílový modul runtime, budete moci spouštět projekt místně přes Eclipse.
 
@@ -75,7 +75,7 @@ Vytvoření aplikace JSP:
 
 1. V dialogovém okně **New JSP File** (Nový soubor JSP) pojmenujte soubor **index.jsp**. Nadřazený adresář ponechte na **WebContent**, jak ukazuje následující ilustrace, a klikněte na **Next** (Další).
    
-    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Vytvoření nového souboru JSP – kurz vývoje aplikace Java":::
+    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Aplikace pro seznam úkolů v jazyce Java":::
 
 1. V dialogovém okně **Select JSP Template** (Výběr šablony JSP) vyberte pro účely tohoto kurzu možnost **New JSP File (html)** (Nový soubor JSP (HTML)) a klikněte na **Finish** (Dokončit).
 
@@ -91,7 +91,7 @@ Vytvoření aplikace JSP:
 
 1. Pokud v kroku 2 nastavíte cílový modul runtime, můžete kliknout na **Project** a pomocí příkazu **Run** (Spustit) aplikaci JSP místně spustit:
 
-   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Hello World – kurz aplikace Java":::
+   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Aplikace pro seznam úkolů v jazyce Java":::
 
 ## <a name="install-the-sql-java-sdk"></a><a id="InstallSDK"></a>Instalace sady SQL Java SDK
 

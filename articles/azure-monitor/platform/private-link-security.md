@@ -4,20 +4,16 @@ description: Použití Azure Private Linku k bezpečnému propojení sítí k Az
 author: nkiest
 ms.author: nikiest
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 2b94c782b5d7139fae7a01233bffd3b17cf43c7c
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 0c7838b291ca5ba1747b08d7e8fcc6d17cc35f7d
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570427"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802221"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
-
-> [!IMPORTANT]
-> V tuto chvíli musíte **požádat o přístup** k používání této možnosti. Můžete požádat o přístup pomocí [formuláře registrace](https://aka.ms/AzMonPrivateLinkSignup).
-
 
 [Privátní odkaz Azure](../../private-link/private-link-overview.md) umožňuje bezpečně propojit služby Azure PaaS s vaší virtuální sítí pomocí privátních koncových bodů. U mnoha služeb stačí nastavit koncový bod na prostředek. Azure Monitor je ale Constellation různých vzájemně propojených služeb, které vzájemně spolupracují za účelem monitorování vašich úloh. V důsledku toho jsme vytvořili prostředek nazvaný Azure Monitor obor privátních odkazů (AMPLS), který umožňuje definovat hranice vaší sítě pro monitorování a připojit se k virtuální síti. Tento článek popisuje, kdy použít a jak nastavit obor privátního odkazu Azure Monitor.
 
@@ -146,7 +142,7 @@ Teď, když máte prostředky připojené k AMPLS, vytvořte privátní koncový
  
    d.    Nechte ověření Pass. 
  
-   e.    Klikněte na **Vytvořit**. 
+   e.    Klikněte na možnost **Vytvořit**. 
 
     ![Snímek obrazovky s výběrem vytvořit privátní pro endpoint2 u](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 

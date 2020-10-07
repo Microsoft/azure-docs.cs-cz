@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2512602b0c8c00c696253a708af13278bc513a1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6f65a43cf5730f56b43d79388a0e73ea93e3225b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258740"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801983"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Podmíněný přístup: cloudové aplikace nebo akce
 
@@ -102,6 +102,7 @@ Aplikace pro správu Microsoft Azure zahrnuje několik základních služeb.
    - Poskytovatel Azure Resource Manager
    - Rozhraní API modelu nasazení Classic
    - Azure PowerShell
+   - Azure CLI
    - Portál pro správu předplatných sady Visual Studio
    - Azure DevOps
    - Portál Azure Data Factory

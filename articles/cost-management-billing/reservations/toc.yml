@@ -130,3 +130,7 @@
       href: /rest/api/consumption/usagedetails
     - name: Cost Management – rozhraní REST API pro podrobnosti rezervací spotřeby
       href: /rest/api/consumption/reservationsdetails
+- name: Zdroje a prostředky
+  items:
+    - name: Výukový modul Úspory s využitím rezervovaných instancí
+      href: /learn/modules/save-money-with-azure-reserved-instances

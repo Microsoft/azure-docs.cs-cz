@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 3093996156a31d4a06f0d91dbca1bd00d58eacdb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 581c8fcad62c40555a90b7455a260259f3a09212
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330447"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802409"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
 
@@ -82,7 +82,7 @@ Pokud je vaše aplikace nasazená v [Azure Virtual Machines bez veřejné IP adr
 * Přiřaďte [k virtuálnímu počítači Azure veřejnou IP adresu](../load-balancer/troubleshoot-outbound-connection.md#assignilpip).
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Vysoká latence sítě
-Vysoká latence sítě se dá identifikovat pomocí [diagnostického řetězce](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet) v sadě v2 SDK nebo v [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v sadě V3 SDK.
+Vysoká latence sítě se dá identifikovat pomocí [diagnostického řetězce](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet&preserve-view=true) v sadě v2 SDK nebo v [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v sadě V3 SDK.
 
 Pokud nejsou k dispozici žádné [časové limity](troubleshoot-dot-net-sdk-request-timeout.md) a diagnostika zobrazí jednotlivé požadavky, u kterých je vysoká latence zřejmá na rozdíl mezi `ResponseTime` a `RequestStartTime` , například (>300 milisekund v tomto příkladu):
 

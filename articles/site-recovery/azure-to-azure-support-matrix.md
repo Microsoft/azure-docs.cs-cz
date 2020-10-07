@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: fb2c048580022f44af30178070a6c2b84ce54df1
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 786947a03440cc837f9d104d43e8061c80a0844c
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728739"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803088"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -273,7 +273,7 @@ Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |20 M
 **Nastavení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
 NIC | Maximální podporovaný počet pro konkrétní velikost virtuálního počítače Azure | Síťové karty se vytvoří, když se virtuální počítač vytvoří během převzetí služeb při selhání.<br/><br/> Počet síťových adaptérů na VIRTUÁLNÍm počítači s podporou převzetí služeb při selhání závisí na počtu síťových adaptérů ve zdrojovém virtuálním počítači, když je replikace povolená. Pokud po povolení replikace přidáte nebo odeberete síťovou kartu, nebude to mít vliv na počet síťových adaptérů v replikovaném virtuálním počítači po převzetí služeb při selhání. <br/><br/> Pořadí síťových adaptérů po převzetí služeb při selhání není zaručené jako původní pořadí. <br/><br/> Síťové karty můžete přejmenovat v cílové oblasti na základě zásad vytváření názvů vaší organizace. Přejmenování síťových adaptérů se podporuje pomocí prostředí PowerShell.
-Internetový nástroj pro vyrovnávání zatížení | Podporováno | Přidružte předem nakonfigurovaný Nástroj pro vyrovnávání zatížení pomocí skriptu Azure Automation v plánu obnovení.
+Internetový nástroj pro vyrovnávání zatížení | Nepodporováno | Služba Azure Site Recovery nepodporuje veřejný nebo internetový nástroj pro vyrovnávání zatížení.
 Interní nástroj pro vyrovnávání zatížení | Podporováno | Přidružte předem nakonfigurovaný Nástroj pro vyrovnávání zatížení pomocí skriptu Azure Automation v plánu obnovení.
 Veřejná IP adresa | Podporováno | Přidružte existující veřejnou IP adresu k síťovému rozhraní. Případně vytvořte veřejnou IP adresu a přidružte ji k síťovému rozhraní pomocí skriptu Azure Automation v plánu obnovení.
 NSG na síťové kartě | Podporováno | Přidružte NSG k síťovému rozhraní pomocí skriptu Azure Automation v plánu obnovení.

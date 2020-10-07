@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: c844b25394d865453e653bfc3ac6bff396d97a47
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 90fc35249daea51a08cb83143c6be024e78964a7
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035055"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804006"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Vytvoření, změna nebo odstranění předpony veřejné IP adresy
 
@@ -58,7 +58,7 @@ Předpony veřejných IP adres mají poplatek. Podrobnosti najdete v tématu [ce
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[AZ Network Public-IP prefix Create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
+|Rozhraní příkazového řádku|[AZ Network Public-IP prefix Create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
 |PowerShell|[New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix)|
 
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>Vytvoření statické veřejné IP adresy z předpony
@@ -72,14 +72,14 @@ Po vytvoření předpony musíte z předpony vytvořit statické IP adresy. Chce
    |Nastavení|Povinné?|Podrobnosti|
    |---|---|---|
    |Název|Ano|Název veřejné IP adresy musí být v rámci vybrané skupiny prostředků jedinečný.|
-   |Časový limit nečinnosti (minuty)|Ne|Kolik minut má být otevřené připojení TCP nebo HTTP, aniž by se museli spoléhat na to, že klienti odesílají zprávy Keep-Alive. |
-   |Popisek názvu DNS|Ne|Musí být jedinečný v rámci oblasti Azure, ve které jste vytvořili název (mezi všemi předplatnými a všemi zákazníky). Azure automaticky registruje název a IP adresu ve svém DNS, abyste se mohli připojit k prostředku s názvem. Azure připojí k názvu, který zadáte, výchozí podsíť, jako je například *Location.cloudapp.Azure.com* (umístění, kde je vybrané umístění), a vytvoří plně kvalifikovaný název DNS. Další informace najdete v tématu [použití Azure DNS s veřejnou IP adresou Azure](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
+   |Časový limit nečinnosti (minuty)|No|Kolik minut má být otevřené připojení TCP nebo HTTP, aniž by se museli spoléhat na to, že klienti odesílají zprávy Keep-Alive. |
+   |Popisek názvu DNS|No|Musí být jedinečný v rámci oblasti Azure, ve které jste vytvořili název (mezi všemi předplatnými a všemi zákazníky). Azure automaticky registruje název a IP adresu ve svém DNS, abyste se mohli připojit k prostředku s názvem. Azure připojí k názvu, který zadáte, výchozí podsíť, jako je například *Location.cloudapp.Azure.com* (umístění, kde je vybrané umístění), a vytvoří plně kvalifikovaný název DNS. Další informace najdete v tématu [použití Azure DNS s veřejnou IP adresou Azure](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
 
 Alternativně můžete použít příkazy CLI a PS níže s parametry--Public-IP-prefix (CLI) a-PublicIpPrefix (PS) k vytvoření prostředku veřejné IP adresy. 
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
+|Rozhraní příkazového řádku|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
 
 ## <a name="view-or-delete-a-prefix"></a>Zobrazení nebo odstranění předpony
@@ -88,13 +88,13 @@ Alternativně můžete použít příkazy CLI a PS níže s parametry--Public-IP
 2. Vyberte název předpony veřejné IP adresy, kterou chcete zobrazit, změňte nastavení pro nebo odstranit ze seznamu.
 3. Proveďte jednu z následujících možností v závislosti na tom, zda chcete zobrazit, odstranit nebo změnit předponu veřejné IP adresy.
    - **Zobrazení**: v části **Přehled** se zobrazují klíčová nastavení předpony veřejných IP adres, jako je například prefix.
-   - **Odstranit**: Pokud chcete odstranit předponu veřejné IP adresy, vyberte v části **Přehled** možnost **Odstranit** . Pokud jsou adresy v rámci předpony přidružené k prostředkům veřejné IP adresy, musíte nejdřív odstranit prostředky veřejné IP adresy. Viz [odstranění veřejné IP adresy](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
+   - **Odstranit**: Pokud chcete odstranit předponu veřejné IP adresy, vyberte v části **Přehled** možnost **Odstranit** . Pokud jsou adresy v rámci předpony přidružené k prostředkům veřejné IP adresy, musíte nejdřív odstranit prostředky veřejné IP adresy. Viz [odstranění veřejné IP adresy](virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address).
 
 **Příkazy**
 
 |Nástroj|Příkaz|
 |---|---|
-|CLI|[AZ Network Public-IP prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) k vypsání veřejných IP adres, [AZ Network Public-IP prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) k zobrazení nastavení; [AZ Network Public-IP prefix Update](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) to Update; [AZ Network Public-IP prefix Delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) to Delete|
+|Rozhraní příkazového řádku|[AZ Network Public-IP prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) k vypsání veřejných IP adres, [AZ Network Public-IP prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) k zobrazení nastavení; [AZ Network Public-IP prefix Update](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) to Update; [AZ Network Public-IP prefix Delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) to Delete|
 |PowerShell|[Get-AzPublicIpPrefix](/powershell/module/az.network/get-azpublicipprefix) pro načtení objektu veřejné IP adresy a zobrazení jeho nastavení [nastavte-AzPublicIpPrefix](/powershell/module/az.network/set-azpublicipprefix) na aktualizovat nastavení; [Remove-AzPublicIpPrefix](/powershell/module/az.network/remove-azpublicipprefix) k odstranění|
 
 ## <a name="permissions"></a>Oprávnění

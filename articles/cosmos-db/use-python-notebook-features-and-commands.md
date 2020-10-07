@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: f4236b099915e737f9d489d89e5bf18b84736d75
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5599a64e812c3006cf4379f98c5a0f0b0cd067e7
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761191"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801847"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Použití integrovaných příkazů a funkcí poznámkového bloku v Azure Cosmos DB poznámkových blocích Pythonu (Preview)
 
@@ -164,10 +164,10 @@ Viz [ukázky sady Python SDK](https://github.com/Azure/azure-sdk-for-python/tree
 > [!IMPORTANT]
 > Integrovaná sada Python SDK je podporována pouze pro účty rozhraní SQL (Core) API. U jiných rozhraní API budete muset [nainstalovat příslušný ovladač Pythonu](#install-a-new-package) , který odpovídá rozhraní API. 
 
-## <a name="create-a-custom-instance-of-cosmos_client"></a>Vytvoření vlastní instance``cosmos_client``
+## <a name="create-a-custom-instance-of-cosmos_client"></a>Vytvoření vlastní instance ``cosmos_client``
 Pro větší flexibilitu můžete vytvořit vlastní instanci nástroje s ``cosmos_client`` cílem:
 
-- Přizpůsobení [zásad připojení](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview)
+- Přizpůsobení [zásad připojení](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview&preserve-view=true)
 - Spuštění operací s jiným účtem Azure Cosmos, než v jakém jste
 
 K připojovacímu řetězci a primárnímu klíči aktuálního účtu můžete přistupovat pomocí [proměnných prostředí](#access-the-account-endpoint-and-primary-key-env-variables). 
@@ -200,7 +200,7 @@ primary_key = COSMOS.KEY
 ## <a name="reset-notebooks-workspace"></a>Resetovat pracovní prostor poznámkových bloků
 Pokud chcete resetovat pracovní prostor poznámkových bloků na výchozí nastavení, na panelu příkazů vyberte **resetovat pracovní prostor** . Tím se odeberou všechny vlastní nainstalované balíčky a restartuje se server Jupyter. Vaše poznámkové bloky, soubory a prostředky Azure Cosmos nebudou ovlivněny.  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Resetovat pracovní prostor poznámkových bloků":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Průzkumník dat nteract":::
 
 ## <a name="next-steps"></a>Další kroky
 

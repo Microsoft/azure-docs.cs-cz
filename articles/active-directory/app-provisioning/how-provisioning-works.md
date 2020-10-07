@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 5fdce791ba8848b93a8457f3738392b1f5f15508
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235719"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801796"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
@@ -169,22 +169,42 @@ Výkon závisí na tom, jestli vaše úloha zřizování spouští počáteční
 Všechny operace spouštěné službou zřizování uživatelů se zaznamenávají v [protokolech zřizování Azure AD (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Protokoly zahrnují všechny operace čtení a zápisu provedené ve zdrojovém a cílovém systému a uživatelská data, která byla během každé operace načtena nebo zapsána. Informace o tom, jak číst protokoly zřizování v Azure Portal, najdete v [průvodci zřizováním sestav](./check-status-user-account-provisioning.md).
 
 ## <a name="de-provisioning"></a>Zrušení zřizování
+Služba zřizování Azure AD udržuje zdrojový a cílový systém v synchronizaci s účty zrušení zřizování při odebrání přístupu uživatele.
 
-Služba zřizování Azure AD udržuje zdrojový a cílový systém v synchronizaci s účty zrušení zřízení, pokud k nim uživatelé neměli mít přístup. 
+Služba zřizování podporuje odstranění i zakázání (někdy označované jako obnovitelné odstraňování) uživatelů. Přesná definice zakázaného a odstranění se liší v závislosti na implementaci cílové aplikace, ale obecně se tím znamená, že se uživatel nemůže přihlásit. Odstranění indikuje, že uživatel byl z aplikace zcela odebrán. V případě aplikací SCIM je zakázán požadavek na nastavení *aktivní* vlastnosti na hodnotu false pro uživatele. 
 
-Služba zřizování Azure AD odstraní uživatele v aplikaci, když aplikace podporuje obnovitelné odstranění (žádost o aktualizaci s aktivní = false) a nastane kterákoli z následujících událostí:
+**Konfigurace aplikace pro zakázání uživatele**
 
-* Uživatelský účet se odstranil ve službě Azure AD.
-*   Uživatel není přiřazený z aplikace.
-*   Uživatel už nesplňuje filtr oborů a nepřekračuje rozsah.
-    * Ve výchozím nastavení služba zřizování Azure AD dočasná odstraní nebo zakáže uživatele, kteří se přestanou přidělovat mimo rozsah. Pokud chcete přepsat toto výchozí chování, můžete nastavit příznak pro [přeskočení odstranění mimo rozsah](../app-provisioning/skip-out-of-scope-deletions.md).
-*   Vlastnost AccountEnabled je nastavena na hodnotu false.
+Ujistěte se, že jste zaškrtli políčko pro aktualizace.
 
-Pokud dojde k jedné z výše uvedených čtyř událostí a cílová aplikace nepodporuje obnovitelné odstranění, služba zřizování odešle požadavek na odstranění, který uživatele trvale odstraní z aplikace. 
+Ujistěte se, že máte mapování pro *aktivní* pro vaši aplikaci. Pokud používáte aplikaci z Galerie aplikací, mapování může být mírně odlišné. Ujistěte se prosím, že pro aplikace Galerie použijete výchozí/vycházející mapování polí.
 
-30 dní po odstranění uživatele ve službě Azure AD se trvale odstraní z tenanta. V tuto chvíli služba zřizování pošle žádost o odstranění, aby uživatele v aplikaci trvale odstranil. Kdykoli během 30denního okna můžete [trvale odstranit uživatele](../fundamentals/active-directory-users-restore.md), který odešle žádost o odstranění do aplikace.
 
-Pokud se ve svých mapováních atributů zobrazí atribut IsSoftDeleted, použije se k určení stavu uživatele a zda má být odeslán požadavek na aktualizaci s hodnotou aktivní = false pro obnovitelné odstranění uživatele. 
+**Konfigurace aplikace pro odstranění uživatele**
+
+Pomocí následujících scénářů se aktivuje operace zakázat nebo odstranit: 
+* Ve službě Azure AD se neodstranil uživatel (odesílá se do vlastnosti koš/AccountEnabled nastaven na hodnotu false).
+    30 dní po odstranění uživatele ve službě Azure AD se trvale odstraní z tenanta. V tuto chvíli služba zřizování pošle žádost o odstranění, aby uživatele v aplikaci trvale odstranil. Kdykoli během 30denního okna můžete [trvale odstranit uživatele](../fundamentals/active-directory-users-restore.md), který odešle žádost o odstranění do aplikace.
+* Uživatel je trvale odstraněn nebo odebrán z koše ve službě Azure AD.
+* Uživatel není přiřazený k aplikaci.
+* Uživatel přejde z oboru do rozsahu mimo rozsah (již neprojde filtr oboru).
+    
+Ve výchozím nastavení služba zřizování Azure AD dočasná odstraní nebo zakáže uživatele, kteří se přestanou přidělovat mimo rozsah. Pokud chcete přepsat toto výchozí chování, můžete nastavit příznak pro [přeskočení odstranění mimo rozsah.](skip-out-of-scope-deletions.md)
+
+Pokud dojde k jedné z výše uvedených čtyř událostí a cílová aplikace nepodporuje obnovitelné odstranění, služba zřizování odešle požadavek na odstranění, který uživatele trvale odstraní z aplikace.
+
+Pokud se ve svých mapováních atributů zobrazí atribut IsSoftDeleted, použije se k určení stavu uživatele a zda má být odeslán požadavek na aktualizaci s hodnotou aktivní = false pro obnovitelné odstranění uživatele.
+
+**Známá omezení**
+
+* Pokud uživatel, který byl dřív spravovaný službou zřizování, není přiřazený z aplikace nebo ze skupiny přiřazené k aplikaci, pošleme žádost o zákaz. Od tohoto okamžiku uživatel není spravován službou a nepošle se žádost o odstranění, když se odstraní z adresáře.
+* Zřizování uživatele, který je zakázaný ve službě Azure AD, se nepodporuje. Musí být ve službě Azure AD aktivní předtím, než se zřídí.
+* Když uživatel přejde z tichého odstranění na aktivní, služba zřizování Azure AD aktivuje uživatele v cílové aplikaci, ale neobnoví automaticky členství ve skupině. Cílová aplikace by měla udržovat členství ve skupině pro uživatele v neaktivním stavu. Pokud cílová aplikace tuto možnost nepodporuje, můžete restartovat zřizování a aktualizovat členství ve skupině. 
+
+**Doporučení**
+
+Při vývoji aplikace vždy podporují obnovitelné odstranění i pevné odstranění. Umožňuje zákazníkům obnovení, když je uživatel omylem zakázán.
+
 
 ## <a name="next-steps"></a>Další kroky
 

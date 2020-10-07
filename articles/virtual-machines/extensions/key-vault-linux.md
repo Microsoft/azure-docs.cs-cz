@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 49c3c7aed94b14f4b75b507184cb0c637b202861
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 720c5190bfc1b4b6a6c3e86052cfc329233c5ed2
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710086"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802476"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault rozšíření virtuálního počítače pro Linux
 
@@ -80,7 +80,7 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name | Hodnota/příklad | Typ dat |
+| Název | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | vydavatel | Microsoft.Azure.KeyVault | řetězec |
@@ -189,7 +189,7 @@ Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření Ke
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
          --vm-name "<vmName>" `
-         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\"<observedCerts>\"] }}'
+         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
     ```
 
 * Nasazení rozšíření do sady škálování virtuálních počítačů:
@@ -200,7 +200,7 @@ Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření Ke
         --publisher Microsoft.Azure.KeyVault `
         -g "<resourcegroup>" `
         --vm-name "<vmName>" `
-        --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\"<observedCerts>\"] }}'
+        --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
     ```
 
 Mějte na paměti následující omezení/požadavky:
@@ -211,7 +211,7 @@ Mějte na paměti následující omezení/požadavky:
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstraňování potíží
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure PowerShell.
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sngun
-ms.openlocfilehash: 881ddfec587df61201f2c251fd0dd0a8164496c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9284fca6a96441ad5e6c23f9c6920ba184e03086
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549979"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801414"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Monitorování Azure Cosmos DB dat pomocí nastavení diagnostiky v Azure
 
@@ -20,7 +20,7 @@ Nastavení diagnostiky v Azure slouží ke shromažďování protokolů prostře
 
 Metriky platforem a protokoly aktivit jsou shromažďovány automaticky, zatímco je nutné vytvořit nastavení diagnostiky pro shromáždění protokolů prostředků nebo jejich přeposílání mimo Azure Monitor. Nastavení diagnostiky pro účty Azure Cosmos můžete zapnout pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Přejděte k účtu Azure Cosmos. Otevřete podokno **nastavení diagnostiky** a pak vyberte **Přidat možnost nastavení diagnostiky** .
 
@@ -71,7 +71,7 @@ Metriky platforem a protokoly aktivit jsou shromažďovány automaticky, zatímc
 Podrobné informace o tom, jak vytvořit nastavení diagnostiky pomocí Azure Portal, CLI nebo PowerShellu, najdete v tématu [Vytvoření nastavení diagnostiky pro shromáždění protokolů platforem a metrik v článku Azure](../azure-monitor/platform/diagnostic-settings.md) .
 
 
-## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a>Řešení potíží s diagnostickými dotazy
+## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a> Řešení potíží s diagnostickými dotazy
 
 1. Postup dotazování na operace, které trvá déle než 3 MS pro spuštění:
 
@@ -99,12 +99,12 @@ Podrobné informace o tom, jak vytvořit nastavení diagnostiky pomocí Azure Po
    | render timechart
    ```
     
-1. Jak získat statistiku klíče oddílu k vyhodnocení zešikmení v horních 3 oddílech pro databázový účet:
+1. Jak získat statistiku klíče oddílu pro vyhodnocení zešikmení v horních 3 oddílech pro databázový účet:
 
    ```Kusto
    AzureDiagnostics 
    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
+   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId 
    ```
 
 1. Jak získat poplatky za žádosti pro nákladné dotazy?
@@ -214,14 +214,6 @@ Podrobné informace o tom, jak vytvořit nastavení diagnostiky pomocí Azure Po
    | where todouble(sizeKb_d) > 800000
    ```
 
-1. Jak získat statistiku klíče oddílu k vyhodnocení zkosení v rámci tří hlavních oddílů pro databázový účet?
-
-   ```Kusto
-   AzureDiagnostics 
-   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId
-   ```
-
 1. Jak získat latenci při replikaci p99 nebo P50 pro operace, poplatek za požadavek nebo délku odpovědi?
 
    ```Kusto
@@ -238,7 +230,7 @@ Podrobné informace o tom, jak vytvořit nastavení diagnostiky pomocí Azure Po
  
 1. Jak získat protokoly Controlplane?
  
-   nezapomeňte zapnout příznak, jak je popsáno v části [Zakázání přístupu k zápisu metadat založených na klíčích](audit-control-plane-logs.md#disable-key-based-metadata-write-access) articleand provádění operací prostřednictvím Azure POWERSHELL, CLI nebo ARM.
+   Nezapomeňte zapnout příznak, jak je popsáno v článku [Zakázání přístupu k zápisu metadat na základě klíčů](audit-control-plane-logs.md#disable-key-based-metadata-write-access) , a provedení operací pomocí Azure PowerShell, rozhraní příkazového řádku Azure nebo Azure Resource Manager.
  
    ```Kusto  
    AzureDiagnostics 

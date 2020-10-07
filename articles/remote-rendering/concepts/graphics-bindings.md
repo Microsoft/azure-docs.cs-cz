@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d0628777fbd6250fff4bb8347461d206d13782d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 332213adf64e17c0935ddf612acac5bbca413a87
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561869"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802289"
 ---
 # <a name="graphics-binding"></a>Grafika – vazba
 
@@ -87,7 +87,7 @@ if (ApiHandle<GraphicsBinding> binding = currentSession->GetGraphicsBinding())
 
 V současné době existují dvě grafická rozhraní API, která lze vybrat `WmrD3D11` a `SimD3D11` . Třetí existuje, `Headless` ale na straně klienta se ještě nepodporuje.
 
-### <a name="windows-mixed-reality"></a>Windows Mixed reality
+### <a name="windows-mixed-reality"></a>Windows Mixed Reality
 
 `GraphicsApiType.WmrD3D11` je výchozí vazba spouštěná na HoloLens 2. Vytvoří `GraphicsBindingWmrD3d11` vazbu. V tomto režimu se vzdálené vykreslování Azure zavěsí přímo do holografických rozhraní API.
 
@@ -120,7 +120,10 @@ Tam, kde výše `ptr` musí být ukazatel na nativní `ABI::Windows::Perception:
 
 #### <a name="render-remote-image"></a>Vykreslit vzdálenou bitovou kopii
 
-Na začátku každého snímku musí být vzdálený rámec vykreslen do vyrovnávací paměti pro zpětnou kopii. To se provádí voláním metody `BlitRemoteFrame` , která do aktuálně vázaného cíle vykreslování vyplní informace o barvě a hloubce. Proto je důležité, aby se to dokončilo po vytvoření vazby back-bufferu jako cíle vykreslování.
+Na začátku každého snímku musí být vzdálený rámec vykreslen do back-bufferu. To se provádí voláním metody `BlitRemoteFrame` , která do aktuálně vázaného cíle vykreslování vyplní informace o barvě a hloubce obou očí. Proto je důležité to udělat po vytvoření vazby plné vyrovnávací paměti jako cíle vykreslování.
+
+> [!WARNING]
+> Po blit – vzdálené image do vyrovnávací paměti by se měl místní obsah vykreslovat pomocí jednoduché techniky vykreslování stereo, například pomocí **SV_RenderTargetArrayIndex**. Použití jiných technik pro vykreslování stereo, jako je například vykreslení každého oka v samostatném průchodu, může vést k výraznému snížení výkonu nebo grafickým artefaktům a je třeba se jim vyhnout.
 
 ```cs
 AzureSession currentSession = ...;
