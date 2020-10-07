@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 07/07/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: be476af3696e0753c8e36cfc34a024f8b585c605
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 5d34fe403e0af4bc871ba176d0fa755650c26292
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708312"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776034"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho pracovního prostoru pomocí virtuálních sítí
 
@@ -37,7 +37,7 @@ V tomto článku se dozvíte, jak povolit následující prostředky v pracovní
 > - Azure Key Vault
 > - Azure Container Registry
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 + Přečtěte si článek [Přehled zabezpečení sítě](how-to-network-security-overview.md) , který vám pomůže pochopit běžné scénáře virtuální sítě a celkovou architekturu virtuální sítě.
 
@@ -57,10 +57,9 @@ Privátní odkaz Azure vám umožňuje připojit se k vašemu pracovnímu prosto
 
 Další informace o nastavení pracovního prostoru privátního propojení najdete v tématu [Postup konfigurace privátního propojení](how-to-configure-private-link.md).
 
+## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>Zabezpečení účtů úložiště Azure pomocí koncových bodů služby
 
-## <a name="secure-azure-storage-accounts"></a>Zabezpečení účtů úložiště Azure
-
-V této části se dozvíte, jak zabezpečit účet úložiště Azure pomocí koncových bodů služby. K zabezpečení služby Azure Storage ale můžete použít také soukromé koncové body. Další informace najdete v tématu [použití privátních koncových bodů pro Azure Storage](../storage/common/storage-private-endpoints.md).
+Azure Machine Learning podporuje účty úložiště nakonfigurované pro použití koncových bodů služby nebo privátních koncových bodů. V této části se dozvíte, jak zabezpečit účet úložiště Azure pomocí koncových bodů služby. Informace o privátních koncových bodech najdete v další části.
 
 > [!IMPORTANT]
 > Do virtuální sítě můžete umístit _výchozí účet úložiště_ pro Azure Machine Learning nebo _jiné než výchozí účty úložiště_ .
@@ -95,9 +94,21 @@ Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuá
 
    [![Podokno brány firewall a virtuální sítě v Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
+## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>Zabezpečení účtů úložiště Azure pomocí privátních koncových bodů
+
+Azure Machine Learning podporuje účty úložiště nakonfigurované pro použití koncových bodů služby nebo privátních koncových bodů. Pokud účet úložiště používá privátní koncové body, musíte nakonfigurovat dva privátní koncové body pro výchozí účet úložiště:
+1. Privátní koncový bod s cílovým dílčím prostředkem **objektu BLOB** .
+1. Soukromý koncový bod s cílovým dílčím prostředkem **souboru** (sdílená složka).
+
+![Snímek obrazovky se stránkou konfigurace privátního koncového bodu s možnostmi objektů BLOB a souborů](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
+
+Pokud chcete nakonfigurovat privátní koncový bod pro účet úložiště, který **není výchozím** úložištěm, vyberte typ **cílového dílčího prostředku** , který odpovídá účtu úložiště, který chcete přidat.
+
+Další informace najdete v tématu [použití privátních koncových bodů pro Azure Storage](../storage/common/storage-private-endpoints.md)
+
 ## <a name="secure-datastores-and-datasets"></a>Zabezpečení úložišť a datových sad
 
-V této části se dozvíte, jak používat úložiště dat a využití datových sad pro prostředí SDK ve virtuální síti. Další informace o prostředí studia najdete v tématu [použití Azure Machine Learning studia ve virtuální síti](how-to-enable-studio-virtual-network.md).
+V této části se dozvíte, jak používat úložiště dat a datové sady v prostředí SDK s virtuální sítí. Další informace o prostředí studia najdete v tématu [použití Azure Machine Learning studia ve virtuální síti](how-to-enable-studio-virtual-network.md).
 
 Chcete-li získat přístup k datům pomocí sady SDK, je nutné použít metodu ověřování požadovanou individuální službou, v níž jsou uložena data. Pokud například zaregistrujete úložiště dat pro přístup k Azure Data Lake Store Gen2, musíte i nadále používat instanční objekt, jak je popsáno v [připojení ke službám Azure Storage](how-to-access-data.md#azure-data-lake-storage-generation-2).
 

@@ -1,28 +1,28 @@
 ---
-title: Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure (Preview)
-description: Tento článek vysvětluje, jak soukromě připojit k webové aplikaci pomocí privátního koncového bodu Azure (Preview).
+title: Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure
+description: Tento článek vysvětluje, jak soukromě připojit k webové aplikaci pomocí privátního koncového bodu Azure.
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 10/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: ccbcdbe9204120e1cf181136f566556ec30be871
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3e0f05240aba9b5c92689315e409aaabe793b3f4
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90054530"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772834"
 ---
-# <a name="connect-privately-to-a-web-app-by-using-azure-private-endpoint-preview"></a>Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure (Preview)
+# <a name="connect-privately-to-a-web-app-by-using-azure-private-endpoint"></a>Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure
 
-Privátní koncový bod Azure (Preview) je základní stavební blok pro privátní propojení Azure. Pomocí privátního koncového bodu se můžete soukromě připojit k webové aplikaci. V tomto článku se dozvíte, jak nasadit webovou aplikaci pomocí privátního koncového bodu a jak se připojit k webové aplikaci z virtuálního počítače.
+Soukromý koncový bod Azure je základní stavební blok pro privátní propojení Azure. Pomocí privátního koncového bodu se můžete soukromě připojit k webové aplikaci. V tomto článku se dozvíte, jak nasadit webovou aplikaci pomocí privátního koncového bodu a jak se připojit k webové aplikaci z virtuálního počítače.
 
 Další informace najdete v tématu [použití privátních koncových bodů pro webovou aplikaci Azure][privateendpointwebapp].
 
 > [!Note]
-> Privátní koncový bod (Preview) je k dispozici ve veřejných oblastech pro webové aplikace PremiumV2 pro Windows, Linux Web Apps a plán služby Azure Functions Premium (někdy označovaný jako plán elastické Premium). 
+> Privátní koncový bod je k dispozici ve veřejných oblastech pro PremiumV2 webové aplikace PremiumV3 Windows, Linux Web Apps a plán služby Azure Functions Premium (někdy se mu říká plán elastické Premium). 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -86,7 +86,7 @@ Pokud chcete vytvořit virtuální počítač, udělejte toto:
 V této části vytvoříte soukromou webovou aplikaci, která používá privátní koncový bod.
 
 > [!Note]
-> Funkce privátního koncového bodu je k dispozici pouze pro úroveň PremiumV2.
+> Funkce privátního koncového bodu je k dispozici pouze pro vrstvu PremiumV2 a PremiumV3.
 
 ### <a name="create-the-web-app"></a>Vytvoření webové aplikace
 
@@ -103,20 +103,20 @@ V této části vytvoříte soukromou webovou aplikaci, která používá privá
 
 ### <a name="create-the-private-endpoint"></a>Vytvoření privátního koncového bodu
 
-1. Ve vlastnostech webové aplikace v části **Nastavení**vyberte **sítě**a potom v části **připojení privátního koncového bodu (Preview)** vyberte **Konfigurovat připojení privátních koncových bodů**.
+1. Ve vlastnostech webové aplikace v části **Nastavení**vyberte **sítě**a potom v části * * připojení privátních koncových bodů * * vyberte **Konfigurovat připojení privátních koncových bodů**.
 
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky s odkazem konfigurace připojení privátního koncového bodu v podokně sítě webové aplikace][7]
 
-1. V průvodci **připojením privátního koncového bodu (Preview)** vyberte **Přidat**.
+1. V průvodci **připojením privátního koncového bodu** vyberte **Přidat**.
 
    > [!div class="mx-imgBorder"]
-   > ![Snímek obrazovky s tlačítkem Přidat v Průvodci připojením privátního koncového bodu (Preview)][8]
+   > ![Snímek obrazovky s tlačítkem Přidat v průvodci připojení privátních koncových bodů][8]
 
 1. V rozevíracím seznamu **odběr**, **virtuální síť**a **podsíť** vyberte správné informace a pak vyberte **OK**.
 
    > [!div class="mx-imgBorder"]
-   > ![Snímek obrazovky s podoknem přidat privátní koncový bod (Preview)][9]
+   > ![Snímek obrazovky s podoknem přidat privátní koncový bod][9]
 
 1. Monitorujte průběh vytváření privátního koncového bodu.
 
@@ -180,9 +180,6 @@ V této části se soukromě připojíte k webové aplikaci pomocí privátního
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky s chybovou stránkou Error 403-Forbidden][17]
 
-   > [!Important]
-   > Vzhledem k tomu, že je tato funkce ve verzi Preview, musíte ručně spravovat položku DNS (Domain Name Service).
-
    V případě DNS proveďte jednu z následujících akcí:
  
    - Použijte službu Azure DNS privátní zóny.  
@@ -200,7 +197,7 @@ V této části se soukromě připojíte k webové aplikaci pomocí privátního
      b. Úpravou souboru *hosts* v textovém editoru přidejte položku, která obsahuje soukromou IP adresu a veřejný název vaší webové aplikace.  
      > [!div class="mx-imgBorder"]
      > ![Snímek obrazovky s textem souboru hostitelů][19]  
-     c. Soubor uložte.
+     c. Uložte soubor.
 
 1. V prohlížeči zadejte adresu URL vaší webové aplikace.
 
@@ -223,7 +220,7 @@ Až budete hotovi s použitím privátního koncového bodu, webové aplikace a 
 
 V tomto článku jste vytvořili virtuální počítač ve virtuální síti, webové aplikaci a privátním koncovém bodu. Připojili jste se k virtuálnímu počítači z Internetu a zabezpečeně komunikovali webové aplikaci pomocí privátního odkazu. 
 
-Další informace o privátním koncovém bodu (Preview) najdete v tématu [co je privátní koncový bod Azure][privateendpoint].
+Další informace o privátním koncovém bodu najdete v tématu [co je privátní koncový bod Azure][privateendpoint].
 
 <!--Image references-->
 [1]: ./media/create-private-endpoint-webapp-portal/createnetwork.png

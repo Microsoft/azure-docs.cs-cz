@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06335798addadcd8591625e25ed2eafe8469ae48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c297e1a4f6443e584f04914712314d33df23b119
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463956"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776098"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>Oprava rizik a odblokování uživatelů
 
 Po dokončení [šetření](howto-identity-protection-investigate-risk.md)budete chtít provést akci k nápravě rizik nebo odblokování uživatelů. Organizace mají taky možnost Povolit automatizovanou nápravu pomocí zásad jejich [rizik](howto-identity-protection-configure-risk-policies.md). Organizace by se měli pokusit zavřít všechna zjišťování rizik, která se jim zobrazí, v časovém období, ve kterém je vaše organizace pohodlné. Společnost Microsoft doporučuje zavřít události co nejdříve, protože při práci s rizikem hrozí čas.
 
-## <a name="remediation"></a>Odstranění rizika
+## <a name="remediation"></a>Náprava
 
 Všechna aktivní zjišťování rizik přispívají k výpočtu hodnoty s názvem úroveň rizika uživatele. Úroveň rizika uživatele je indikátorem (nízká, střední, vysoká) pro pravděpodobnost, že došlo k ohrožení bezpečnosti účtu. Jako správce chcete získat uzavřená všechna zjištění rizik, aby postižení uživatelé už nehrozí.
 
@@ -88,6 +88,10 @@ Aby správci odblokoval účet na základě rizika přihlašování, mají násl
 1. **Přihlaste se ze známého umístění nebo zařízení** – běžným důvodem pro blokované podezřelé přihlášení jsou pokusy o přihlášení z neznámých umístění nebo zařízení. Uživatelé mohou rychle zjistit, zda se jedná o důvod blokování, pokusit se o přihlášení ze známého umístění nebo zařízení.
 1. **Vyloučení uživatele ze zásad** – Pokud se domníváte, že aktuální konfigurace zásady přihlašování způsobuje problémy pro konkrétní uživatele, můžete z něj vyloučit uživatele. Další informace najdete v části vyloučení v článku [Postupy: konfigurace a povolení zásad rizik](howto-identity-protection-configure-risk-policies.md#exclusions).
 1. **Zakázat zásady** – Pokud se domníváte, že konfigurace zásad způsobuje problémy pro všechny uživatele, můžete zásady zakázat. Další informace najdete v článku [How to: Configure and Enable rizikové zásady](howto-identity-protection-configure-risk-policies.md).
+
+## <a name="powershell-preview"></a>PowerShell Preview
+
+Pomocí modulu Microsoft Graph PowerShell SDK Preview můžou organizace spravovat rizika pomocí PowerShellu. Moduly a ukázkový kód verze Preview najdete v [úložišti GitHub Azure AD](https://github.com/AzureAD/IdentityProtectionTools).
 
 ## <a name="next-steps"></a>Další kroky
 

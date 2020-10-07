@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: a9004577fa8d946281df88284139e2e507e485b7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 071b311466869321a12626190e894287c28e707b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536423"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774118"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-deskradar"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Deskradar
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Deskradar s Azure Active Directory (Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -99,7 +99,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Deskradar několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| --------- |
     | FirstName | User. křestní jméno |
     | LastName | User. příjmení |
@@ -162,7 +162,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Na kartě **SAML 2,0** proveďte následující kroky:
 
-    ![Konfigurace Deskradar](./media/deskradar-tutorial/14-paste-urls.jpg)
+    ![Snímek obrazovky zobrazující kartu S A M L 2,0 se šipkami ukazujícími na pole S A M L S S D U R L a Vystavitel zprostředkovatele identifikátorů.](./media/deskradar-tutorial/14-paste-urls.jpg)
 
     a. Povolte metodu ověřování **SAML** .
 
@@ -184,7 +184,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Deskradar, měli byste se automaticky přihlásit k Deskradar, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

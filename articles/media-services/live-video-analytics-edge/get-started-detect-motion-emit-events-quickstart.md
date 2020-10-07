@@ -3,12 +3,12 @@ title: Začínáme se službou Live video Analytics v IoT Edge – Azure
 description: V tomto rychlém startu se dozvíte, jak začít pracovat se službou Live video Analytics na IoT Edge. Naučte se detekovat pohyb v živém streamu videa.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 0d1aaf34ad38b50403a3cbefbc953f9140f2fe82
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9cf574cba023c9eb5a44999b3aa04f6c1e626ed1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90884938"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773384"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Rychlý Start: Začínáme – Live video Analytics na IoT Edge
 
@@ -43,12 +43,8 @@ Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostř
 1. Pokud používáte Cloud Shell poprvé, budete vyzváni k výběru předplatného pro vytvoření účtu úložiště a sdílené složky Microsoft Azure souborů. Vyberte **vytvořit úložiště** a vytvořte účet úložiště pro informace o cloud Shell relaci. Tento účet úložiště je oddělený od účtu, který vytvoří skript pro použití s vaším účtem Azure Media Services.
 1. V rozevírací nabídce na levé straně okna Cloud Shell vyberte **bash** jako své prostředí.
 
-    ![Výběr prostředí](./media/quickstarts/env-selector.png)
-
-1. Spusťte následující příkaz.
-
-    ```
-    bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="Analýza živých videí na základě detekce pohybu"
     ```
     
 Pokud se skript úspěšně dokončí, měli byste vidět všechny požadované prostředky v rámci vašeho předplatného. Ve výstupu skriptu obsahuje tabulka prostředků název centra IoT. Vyhledejte typ prostředku `Microsoft.Devices/IotHubs` a poznamenejte si jeho název. Tento název budete potřebovat v dalším kroku. 
@@ -76,7 +72,16 @@ Moduly jsou nyní nasazeny, ale nejsou aktivní žádné mediální grafy.
 
 Podle těchto pokynů se připojte ke službě IoT Hub pomocí rozšíření Azure IoT Tools.
 
-1. V Visual Studio Code vyberte možnost **Zobrazit**  >  **Průzkumníka**. Nebo vyberte CTRL + SHIFT + E.
+1. V Visual Studio Code otevřete kartu **rozšíření** (nebo stiskněte klávesy CTRL + SHIFT + X) a vyhledejte IoT Hub Azure.
+1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Analýza živých videí na základě detekce pohybu":::
+1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Analýza živých videí na základě detekce pohybu":::
+1. <!--In Visual Studio Code-->Vyberte **Zobrazit**  >  **Průzkumníka**. Případně vyberte CTRL + SHIFT + E.
 1. V levém dolním rohu karty **Průzkumník** vyberte **Azure IoT Hub**.
 1. Kliknutím na ikonu **Další možnosti** zobrazíte kontextovou nabídku. Pak vyberte **nastavit IoT Hub připojovací řetězec**.
 1. Po zobrazení vstupního pole zadejte připojovací řetězec IoT Hub. V Cloud Shell můžete získat připojovací řetězec z *~/clouddrive/lva-sample/appsettings.jsna*.

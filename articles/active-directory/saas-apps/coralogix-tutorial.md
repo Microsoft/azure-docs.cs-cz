@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 20a6702a37a4432504d85c787218eb10a10931b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 17e2d04a39a2ef5a935ea6e56ef16958419eddb1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555897"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775616"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coralogix"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Coralogix
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Coralogix s Azure Active Directory (Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -95,13 +95,14 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
  1. Aplikace Coralogix očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat v části **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte tlačítko **Upravit** a otevřete tak dialogové okno **atributy uživatele** .
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno atributy uživatele se zvýrazněným tlačítkem Upravit.](common/edit-attribute.png)
 
 1. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** upravte deklarace identity pomocí ikony **Upravit** . Deklarace identity můžete také přidat pomocí **Přidat novou deklaraci identity** a nakonfigurovat atribut tokenu SAML, jak je znázorněno na předchozím obrázku. Pak proveďte následující kroky:
     
     a. Výběrem **ikony upravit** otevřete dialogové okno **Spravovat deklarace identity uživatele** .
 
-    ![](./media/coralogix-tutorial/tutorial_usermail.png) ![ Obrázek obrázku](./media/coralogix-tutorial/tutorial_usermailedit.png)
+    ![Snímek obrazovky zobrazující dialog atributy uživatele & deklarace se zvýrazněným tlačítkem Upravit.](./media/coralogix-tutorial/tutorial_usermail.png)
+    ![image](./media/coralogix-tutorial/tutorial_usermailedit.png)
 
     b. V seznamu **zvolit formát identifikátoru názvu** vyberte možnost **e-mailová adresa**.
 
@@ -161,7 +162,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Coralogix, měli byste se automaticky přihlásit k Coralogix, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

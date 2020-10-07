@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 6773805fac9a23ca918a1bf6e4889d3e1a3bb336
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a2c1ba8feb933be7c4970f061dd5acdc1ef68a16
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550099"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775435"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Darwinbox
 
@@ -27,7 +27,7 @@ V tomto kurzu se dozvíte, jak integrovat Darwinbox s Azure Active Directory (Az
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -143,25 +143,25 @@ Když na přístupovém panelu kliknete na dlaždici Darwinbox, měli byste se a
 
 1. Otevřete mobilní aplikaci Darwinbox. Klikněte na **zadat adresu URL organizace** , do textového pole zadejte adresu URL vaší organizace a klikněte na tlačítko se šipkou.
 
-    ![Mobilní aplikace Darwinbox](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
+    ![Snímek obrazovky, na které se zobrazuje mobilní aplikace "Darwinbox" s vybranou možností "zadat organizaci U R L", a zvýrazní se vzorové tlačítko "šipka".](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
 
 1. Pokud máte více domén, klikněte na doménu.
 
-    ![Mobilní aplikace Darwinbox](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
+    ![Snímek obrazovky zobrazující obrazovku zvolit vaši doménu s ukázkovou doménou, která je vybrána.](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
 
 1. Do aplikace Darwinbox zadejte svůj e-mail Azure AD a klikněte na **Další**.
 
-    ![Mobilní aplikace Darwinbox](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
+    ![Snímek obrazovky zobrazující obrazovku Přihlásit se zvýrazněným tlačítkem Další](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
 
 1. Do aplikace Darwinbox zadejte heslo Azure AD a klikněte na **Přihlásit**se.
 
-    ![Mobilní aplikace Darwinbox](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
+    ![Snímek obrazovky zobrazující obrazovku "zadání hesla" se zvýrazněným tlačítkem Další.](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
 
 1. Nakonec po úspěšném přihlášení se zobrazí domovská stránka aplikace.
 
     ![Mobilní aplikace Darwinbox](media/darwinbox-tutorial/DarwinboxMobile05.jpg)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

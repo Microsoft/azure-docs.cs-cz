@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 3c1ff9de1057a5ef551ad941965f64907e4243e5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 93d13023dfda8164bf0d327bee6106f9803e1bf7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555731"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775132"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Kurz: integrace firemního Dropboxu pomocí Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat obchodní Dropbox pomocí Azure Active
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -145,27 +145,27 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 3. Pokud chcete firemní Dropbox nastavit ručně, otevřete nové okno webového prohlížeče a Projděte si firemního tenanta Dropboxu a přihlaste se k firemnímu tenantovi Dropbox. a proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/ic769509.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky zobrazující stránku přihlášení k Dropboxu](./media/dropboxforbusiness-tutorial/ic769509.png "Konfigurace jednotného přihlašování")
 
 4. Klikněte na **ikonu uživatele** a vyberte kartu **Nastavení** .
 
-    ![Konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/configure1.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky zobrazující, že je vybraná akce ikona uživatele a nastavení.](./media/dropboxforbusiness-tutorial/configure1.png "Konfigurace jednotného přihlašování")
 
 5. V navigačním podokně na levé straně klikněte na Konzola pro **správu**.
 
-    ![Konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/configure2.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky zobrazující, že je vybraná Konzola pro správu](./media/dropboxforbusiness-tutorial/configure2.png "Konfigurace jednotného přihlašování")
 
 6. V **konzole pro správu**klikněte v levém navigačním podokně na **Nastavení** .
 
-    ![Konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/configure3.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky, který zobrazuje vybrané nastavení.](./media/dropboxforbusiness-tutorial/configure3.png "Konfigurace jednotného přihlašování")
 
 7. V části **ověřování** vyberte možnost **jednotné přihlašování** .
 
-    ![Konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/configure4.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky, který zobrazuje oddíl ověřování s vybraným možnostmi jednotné přihlašování](./media/dropboxforbusiness-tutorial/configure4.png "Konfigurace jednotného přihlašování")
 
 8. V části **jednotné přihlašování** proveďte následující kroky:  
 
-    ![Konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/configure5.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky se zobrazením nastavení konfigurace jednotného přihlašování](./media/dropboxforbusiness-tutorial/configure5.png "Konfigurace jednotného přihlašování")
 
     a. V rozevíracím seznamu vyberte možnost **požadováno** pro **jednotné přihlašování**.
 

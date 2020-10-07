@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e74d22d3d45079a6568f6fca35dc5d84e2d7469f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e30140dc23e64bfc733a0a51fa77fe811ba8fbc7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897972"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776115"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
@@ -39,7 +39,7 @@ V tomto článku se dozvíte, jak:
 > * Export popisků
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Data, která chcete označit, buď v místních souborech nebo v úložišti objektů BLOB v Azure.
 * Sada popisků, které chcete použít.
@@ -156,6 +156,9 @@ Přesný počet imagí označených popiskem, které jsou nutné ke spuštění 
 
 Vzhledem k tomu, že závěrečné popisky stále spoléhají na vstup od štítku, tato technologie se někdy označuje jako *člověk v označení smyčky* .
 
+> [!NOTE]
+> Označení dat s asistencí podle ML nepodporuje výchozí účty úložiště zabezpečené za [virtuální sítí](how-to-network-security-overview.md). Pro označení dat s podporou ML je nutné použít jiný než výchozí účet úložiště. Účet úložiště, který není výchozí, může být zabezpečený za virtuální sítí. 
+
 ### <a name="clustering"></a>Clustering
 
 Po odeslání určitého počtu popisků se model strojového učení pro klasifikaci obrázků začne seskupovat podobně jako v sobě podobné obrázky.  Tyto podobné obrázky jsou prezentovány popiskům na stejné obrazovce, aby se urychlilo ruční označování. Clustering je zvláště užitečný v případě, že popisek zobrazuje mřížku 4, 6 nebo 9 imagí. 
@@ -186,7 +189,7 @@ Pokud chcete pozastavit nebo restartovat projekt, přepněte stav **spuštění*
 
 Karta **řídicí panel** zobrazuje průběh úlohy označování.
 
-:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Řídicí panel pro popisky dat":::
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Průvodce vytvořením projektu s popisem":::
 
 Graf průběhu ukazuje, kolik položek bylo označeno a kolik ještě není hotovo.  Nevyřízené položky mohou být:
 

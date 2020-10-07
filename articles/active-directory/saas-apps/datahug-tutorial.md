@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 787de3e3e44ca921c5dccd7b51a2e655a31d112b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ba76618892cace6681c82e96d7a2f9b36f839664
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555954"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775537"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Kurz: Azure Active Directory integrace s Datahug
 
@@ -30,7 +30,7 @@ Integrace Datahug s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Datahug potřebujete následující položky:
 
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Datahug,
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně Datahug a adresách URL](common/idp-intiated.png)
+    ![Snímek obrazovky s oddílem konfigurace "základní S A M L" s zvýrazněným tlačítkem "identifikátor", "adresa URL odpovědi" a "Uložit".](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://apps.datahug.com/identity/<uniqueID>`
 
@@ -175,7 +175,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Datahug**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Datahug**.
 
@@ -206,11 +206,11 @@ Při Datahug je zřizování ručním úkolem.
 
 2. Najeďte myší na **ozubeného kola** v pravém horním rohu a klikněte na **Nastavení** .
    
-    ![Přidat zaměstnance](./media/datahug-tutorial/1.png)
+    ![Snímek obrazovky, který zobrazuje domovskou stránku "Datahug" s ikonami "ozubeného kola" a "nastavení" vybrané v rozevírací nabídce.](./media/datahug-tutorial/1.png)
 
 3. Vyberte **lidé** a klikněte na kartu **Přidat uživatele** .
 
-    ![Přidat zaměstnance](./media/datahug-tutorial/2.png)
+    ![Snímek obrazovky zobrazující stránku nastavení s vybranou kartou lidé a možnost Přidat uživatele](./media/datahug-tutorial/2.png)
 
 4. Zadejte e-mail osoby, pro kterou chcete vytvořit účet, a klikněte na **Přidat**.
 

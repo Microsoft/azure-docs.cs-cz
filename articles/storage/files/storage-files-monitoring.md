@@ -10,12 +10,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: e0c5e6041da933b4a42bc438900f8c4c91cc6dbc
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 4b2f819edd875130c57d487536691b4588dcc71f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91711366"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772664"
 ---
 # <a name="monitoring-azure-files"></a>Monitorování souborů Azure
 
@@ -71,6 +71,8 @@ Musíte také zadat jednu z následujících kategorií operací, pro které chc
 | StorageRead | Operace čtení u objektů |
 | StorageWrite | Operace zápisu pro objekty. |
 | StorageDelete | Odstraní operace s objekty. |
+
+Seznam operací SMB a REST, které se protokolují, najdete v článku o [operacích protokolovaných úložiště a o stavových zprávách](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a referenčních informacích k [datům monitorování Azure Files](storage-files-monitoring-reference.md).
 
 ## <a name="analyzing-metrics"></a>Analýza metrik
 
@@ -276,7 +278,7 @@ Následující příklad ukazuje, jak číst data metriky v metrikě podporujíc
 
 Protokoly prostředků můžete přistupovat buď jako objekt BLOB v účtu úložiště, jako data události, nebo prostřednictvím analytických dotazů log.
 
-Podrobné informace o polích, která se zobrazují v těchto protokolech, najdete v tématu Referenční informace k [datům monitorování Azure Azure Files](storage-files-monitoring-reference.md).
+Seznam operací SMB a REST, které se protokolují, najdete v článku o [operacích protokolovaných úložiště a o stavových zprávách](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a referenčních informacích k [datům monitorování Azure Files](storage-files-monitoring-reference.md).
 
 > [!NOTE]
 > Protokoly Azure Storage v Azure Monitor jsou ve verzi Public Preview a jsou dostupné pro testování ve verzi Preview ve všech oblastech veřejného cloudu. Pokud se chcete zaregistrovat ve verzi Preview, podívejte se na [tuto stránku](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u). Tato verze Preview umožňuje protokoly pro objekty BLOB (včetně Azure Data Lake Storage Gen2), soubory, fronty, tabulky, účty Premium Storage pro obecné účely V1 a účty úložiště pro obecné účely v2. Klasické účty úložiště se nepodporují.
@@ -292,7 +294,7 @@ Položky protokolu jsou vytvořeny pouze v případě, že jsou zadány požadav
 - Požadavky, které používají sdílený přístupový podpis (SAS) nebo OAuth, včetně neúspěšných a úspěšných požadavků
 - Požadavky na analytické údaje (data protokolu Classic v kontejneru **$logs** a data metriky třídy v **$metricch** tabulkách)
 
-Požadavky samotné službou soubory Azure, jako je vytvoření nebo odstranění protokolu, nejsou protokolovány. Úplný seznam protokolovaných dat naleznete v tématu [operace protokolované úložiště a stavové zprávy](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a [Formát protokolu úložiště](storage-files-monitoring-reference.md).
+Požadavky samotné službou soubory Azure, jako je vytvoření nebo odstranění protokolu, nejsou protokolovány. Úplný seznam protokolů SMB a REST, které jsou protokolovány, najdete v tématu [operace protokolované úložiště a stavové zprávy](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a [referenční informace o monitorování dat sledování služby Azure Files](storage-files-monitoring-reference.md).
 
 ### <a name="log-anonymous-requests"></a>Protokolování anonymních požadavků
 
@@ -303,7 +305,7 @@ Požadavky samotné službou soubory Azure, jako je vytvoření nebo odstraněn�
 - Chyby vypršení časového limitu u klientů i serveru
 - Neúspěšné žádosti o získání s kódem chyby 304 (nezměněno)
 
-Všechny ostatní neúspěšné anonymní požadavky nejsou protokolovány. Úplný seznam protokolovaných dat naleznete v tématu [operace protokolované úložiště a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a [Formát protokolu úložiště](storage-files-monitoring-reference.md).
+Všechny ostatní neúspěšné anonymní požadavky nejsou protokolovány. Úplný seznam protokolů SMB a REST, které jsou protokolovány, najdete v tématu [operace protokolované úložiště a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a [referenční informace o monitorování dat sledování služby Azure Files](storage-files-monitoring-reference.md).
 
 ### <a name="accessing-logs-in-a-storage-account"></a>Přístup k protokolům v účtu úložiště
 
@@ -377,7 +379,7 @@ Seznam názvů sloupců a popisů pro soubory Azure najdete v tématu [StorageFi
 
 Další informace o tom, jak zapisovat dotazy, najdete v tématu [kurz: Začínáme s Log Analytics dotazy](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
 
-## <a name="alerts"></a>Upozornění
+## <a name="alerts"></a>Výstrahy
 
 Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy v systému před tím, než si je vaši zákazníci všimnete. Můžete nastavit výstrahy na [metrikách](/azure/azure-monitor/platform/alerts-metric-overview), [protokolech](/azure/azure-monitor/platform/alerts-unified-log)a [protokolu aktivit](/azure/azure-monitor/platform/activity-log-alerts). 
 

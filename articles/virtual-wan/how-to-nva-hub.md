@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 83267b1bebd501871277ea3e40b7fa9ba38f33cd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 014339b02167a1bb4cba11cc10c9740b8fa53f2c
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91313752"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773242"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Postup vytvoření síťového virtuálního zařízení ve službě Azure Virtual WAN hub (Preview)
 
@@ -21,7 +21,7 @@ V tomto kurzu se dozvíte, jak pomocí virtuální sítě WAN se připojit k pro
 
 Kroky v tomto článku vám pomůžou vytvořit virtuální síťové zařízení **Barracuda CLOUDGEN WAN** ve virtuálním centru sítě WAN. K dokončení tohoto cvičení musíte mít Barracuda cloudové místní zařízení (CPE) a licenci pro zařízení Barracuda CloudGen WAN, které nasadíte do centra před tím, než začnete.
 
-Pokud potřebujete dokumentaci k nasazení **Cisco SD-WAN** v rámci Azure Virtual WAN, pošlete prosím e-mail na adresu Cisco na následující e-mailové adrese: vwan_public_preview@cisco.com .
+Pokud potřebujete dokumentaci k nasazení **Cisco SD-WAN** v rámci Azure Virtual WAN, pošlete prosím e-mail na adresu Cisco na následující e-mailové adrese: vwan_public_preview@external.cisco.com
 
 
 ## <a name="before-you-begin"></a>Než začnete
@@ -55,7 +55,7 @@ Centrum je virtuální síť, která může obsahovat brány pro funkce typu Sit
    **Podrobnosti o projektu**
 
    * Oblast (dříve označovaná jako umístění)
-   * Name
+   * Název
    * Privátní adresní prostor centra Minimální adresní prostor je/24 pro vytvoření centra, což znamená, že při vytváření dojde k chybě z rozsahu od/25 do/32. Azure Virtual WAN, což je spravovaná služba Microsoftu, vytvoří ve virtuálním centru příslušné podsítě pro různé brány nebo služby. (Například: Síťová virtuální zařízení, brány VPN, brány ExpressRoute, uživatelské VPN/brány, brány firewall, směrování atd.). Není potřeba, aby uživatel explicitně naplánoval adresní prostor podsítě pro služby ve virtuálním centru, protože Microsoft to dělá jako součást služby.
 1. Vyberte **zkontrolovat + vytvořit** k ověření.
 1. Vyberte **vytvořit** a vytvořte tak centrum.
@@ -66,14 +66,14 @@ V tomto kroku vytvoříte síťové virtuální zařízení v centru. Postup pro
 
 1. Vyhledejte virtuální síť WAN, kterou jste vytvořili v předchozím kroku, a otevřete ji.
 
-   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="Virtuální rozbočovač":::
+   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="Základy":::
 1. Vyhledejte dlaždici síťová virtuální zařízení a vyberte odkaz **vytvořit** .
 1. V okně **virtuální síťové zařízení** vyberte **Barracuda CloudGen WAN**a pak klikněte na tlačítko **vytvořit** .
 
-   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="Vybrat síťové virtuální zařízení":::
+   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="Základy":::
 1. Tím přejdete na nabídku Azure Marketplace pro bránu Barracuda CloudGen WAN. Přečtěte si tyto informace a po dokončení klikněte na tlačítko **vytvořit** .
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Základy síťové virtuální zařízení pro Barracuda":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Základy":::
 1. Na stránce **základy** budete potřebovat zadat následující informace:
 
    * **Předplatné** – vyberte předplatné, které jste použili k nasazení virtuální sítě WAN a centra.
@@ -83,7 +83,7 @@ V tomto kroku vytvoříte síťové virtuální zařízení v centru. Postup pro
    * **Spravovaná skupina prostředků** – jedná se o název spravované skupiny prostředků, ve které bude Barracuda nasazovat prostředky, které jsou jimi spravované. Název by měl být předem vyplněný.
 1. Vyberte tlačítko **Další: CLOUDGEN WAN Gateway** .
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="CloudGen brána WAN":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="Základy":::
 1. Sem zadejte následující informace:
 
    * **Virtuální síť WAN** – virtuální centrum WAN, do kterého chcete nasadit tuto síťové virtuální zařízení.

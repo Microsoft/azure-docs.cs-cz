@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86d88f841f76b367e83f0ae6b81e604e1b7f3e4b
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: e16f33cb8aa7c6ceeb1398dd23ccba31b5f936b1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950115"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776132"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
 
@@ -39,7 +39,7 @@ Existují čtyři kroky pro přístup k datům Identity Protection prostřednict
 
 ### <a name="retrieve-your-domain-name"></a>Načíst název domény 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).  
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).  
 1. Vyhledejte **Azure Active Directory**  >  **vlastní názvy domén**. 
 1. Poznamenejte si `.onmicrosoft.com` doménu, budete potřebovat tyto informace v pozdějším kroku.
 
@@ -104,6 +104,8 @@ Poslat tuto hlavičku jako požadavek na následující adresu URL API: `https:/
 Odpověď, pokud je úspěšná, je kolekce detekcí rizik identity a přidružených dat ve formátu JSON OData, který se dá analyzovat a zpracovat podle potřeby.
 
 ### <a name="sample"></a>Ukázka
+
+V této ukázce se zobrazuje použití sdíleného tajného klíče k ověření. V produkčním prostředí, které ukládá tajné klíče do kódu, je obecně nelibě neseno. Organizace můžou k zabezpečení těchto přihlašovacích údajů využít spravované identity pro prostředky Azure. Další informace o spravovaných identitách najdete v článku [co jsou spravované identity pro prostředky Azure](../managed-identities-azure-resources/overview.md).
 
 Tady je ukázkový kód pro ověřování a volání rozhraní API pomocí PowerShellu.  
 Stačí přidat ID klienta, tajný klíč a doménu tenanta.

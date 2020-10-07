@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 198b87d0a458108ce76934217c651d613ab5d75e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18b34ff466f3935cb5cd18d46e6d26e36e756a9b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512073"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774456"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>Převzetí služeb při selhání na StorSimple Cloud Appliance
 
@@ -31,7 +31,7 @@ Další informace o převzetí služeb při selhání zařízení a způsobu jeh
 
 Pokud chcete převzít služby při selhání fyzického zařízení StorSimple na jiné fyzické zařízení, přečtěte si [převzetí služeb při selhání na fyzické zařízení StorSimple](storsimple-8000-device-failover-physical-device.md). Pokud chcete převzít služby zařízení při selhání, převzetí [služeb při selhání na stejné fyzické zařízení StorSimple](storsimple-8000-device-failover-same-device.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že jste si prošli požadavky na převzetí služeb při selhání zařízení. Další informace najdete v [častých otázkách pro převzetí služeb zařízení při selhání](storsimple-8000-device-failover-disaster-recovery.md).
 
@@ -46,15 +46,15 @@ Provedením následujících kroků obnovíte zařízení do cílového StorSimp
     ![Vybrat zařízení](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev1.png)
 3. Vyberte zdrojové zařízení a klikněte na něj. Zdrojové zařízení obsahuje kontejnery svazků, u kterých chcete převzít služby při selhání. Přejít na **nastavení > kontejnery svazků**.
 
-    ![Vybrat zařízení](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
+    ![Vyberte zařízení 2.](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
     
 4. Vyberte kontejner svazků, u kterého chcete převzít služby při selhání jiného zařízení. Kliknutím na kontejner svazků zobrazíte seznam svazků v rámci tohoto kontejneru. Vyberte svazek, klikněte pravým tlačítkem myši a kliknutím na tlačítko **Přepnout** do režimu offline zaveďte svazek do režimu offline.
 
-    ![Vybrat zařízení](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
+    ![Vyberte zařízení 3.](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
 
 5. Tento postup opakujte pro všechny svazky v kontejneru svazků.
 
-     ![Vybrat zařízení](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
+     ![Vyberte zařízení 4.](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
 
 6. Opakujte předchozí krok u všech kontejnerů svazků, u kterých chcete převzít služby při selhání do jiného zařízení.
 
@@ -81,7 +81,7 @@ Provedením následujících kroků obnovíte zařízení do cílového StorSimp
 
     1. Vyberte zařízení, které se použilo jako cíl pro převzetí služeb při selhání.
 
-       ![Vybrat zařízení](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![Vyberte zařízení 5.](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
     2. Klikněte na **kontejnery svazků**. Měly by být uvedené všechny kontejnery svazků společně se svazky ze starého zařízení.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e9ca679c7bb8deedca20a5aa97cbb53a9139ea8a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6d0062214b4faa0cb2b26c30f1c2833d25d5493e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536865"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774493"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Kurz: Azure Active Directory integrace s nástrojem náměstek
 
@@ -30,7 +30,7 @@ Integrování zástupce s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s nástrojem náměstek budete potřebovat následující položky:
 
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Zástupce domény a adresy URL jednotného přihlašování](common/idp-intiated.png)
+    ![Snímek obrazovky s oddílem konfigurace "základní S A M L" s zvýrazněným tlačítkem "identifikátor", "adresa URL odpovědi" a "Uložit".](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
@@ -171,7 +171,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
 
 1. Přejděte na následující adresu URL: `https://(your-subdomain).deputy.com/exec/config/system_config` . Přejděte na **nastavení zabezpečení** a klikněte na **Upravit**.
    
-    ![Konfigurace jednotného přihlašování](./media/deputy-tutorial/tutorial_deputy_004.png)
+    ![Snímek obrazovky se stránkou "systémová konfigurace" se zaškrtnutým tlačítkem "nastavení zabezpečení – Upravit".](./media/deputy-tutorial/tutorial_deputy_004.png)
 
 2. Na stránce **nastavení zabezpečení** proveďte následující kroky.
 
@@ -220,7 +220,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **náměstek**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **zástupce**.
 

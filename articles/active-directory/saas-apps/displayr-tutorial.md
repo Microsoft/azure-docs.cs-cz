@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: a69b4a068e62c6376660a79b3a7c8ab5402b5704
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b91f24f9c1a2cedd4292d98fc66630c6b66d37b0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536253"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775159"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Kurz: integrace inplay s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat inplay s Azure Active Directory (Azure
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -88,15 +88,15 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Aplikace aktéra očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "atributy uživatele" se zvýrazněnou ikonou "Upravit".](common/edit-attribute.png)
 
 1. Kromě výše očekává aplikace inplay v odpovědi SAML několik atributů, které se mají vrátit zpátky. V dialogovém okně deklarace identity v části **atributy uživatele & deklarace** v dialogu **deklarace skupiny (Preview)** proveďte následující kroky:
 
     a. Klikněte na **pero** vedle **skupin vrácených v deklaraci identity**.
 
-    ![image](./media/displayr-tutorial/config04.png)
+    ![Snímek obrazovky, který zobrazuje část "atributy uživatele & deklarace identity" ikonou "pero" vedle možnosti "skupiny vrácené v deklaraci".](./media/displayr-tutorial/config04.png)
 
-    ![image](./media/displayr-tutorial/config05.png)
+    ![Snímek obrazovky, který zobrazuje okno deklarace identity (Preview) s vybraným nastavením.](./media/displayr-tutorial/config05.png)
 
     b. V seznamu přepínačů vyberte **všechny skupiny** .
 
@@ -126,11 +126,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. Klikněte na **Nastavení** a potom přejděte na **účet**.
 
-    ![Konfigurace](./media/displayr-tutorial/config01.png)
+    ![Snímek obrazovky zobrazující, že je vybraná ikona nastavení a účet.](./media/displayr-tutorial/config01.png)
 
 5. V horní nabídce přepněte na **Nastavení** a posuňte se dolů na stránku, kde kliknete na **Konfigurovat jednotné přihlašování (SAML)**.
 
-    ![Konfigurace](./media/displayr-tutorial/config02.png)
+    ![Snímek obrazovky zobrazující vybranou kartu nastavení a vybranou akci konfigurovat jednotné přihlašování (S A M L).](./media/displayr-tutorial/config02.png)
 
 6. Na stránce **jednotného přihlašování (SAML)** proveďte následující kroky:
 
@@ -190,11 +190,11 @@ Pokud chcete povolit uživatele Azure AD, přihlaste se k nástroji inplay, mus�
 
 2. Klikněte na **Nastavení** a potom přejděte na **účet**.
 
-    ![Konfigurace pro inplay](./media/displayr-tutorial/config01.png)
+    ![Snímek obrazovky zobrazující ikonu nastavení (ozubeného kola) s vybraným účtem](./media/displayr-tutorial/config01.png)
 
 3. V horní nabídce přepněte na **Nastavení** a posuňte se dolů na stránku, dokud **uživatel** neklikne na **Nový uživatel**.
 
-    ![Konfigurace pro inplay](./media/displayr-tutorial/config07.png)
+    ![Snímek obrazovky, který zobrazuje kartu nastavení s zvýrazněnými uživateli a vybraným tlačítkem nový uživatel.](./media/displayr-tutorial/config07.png)
 
 4. Na stránce **Nový uživatel** proveďte následující kroky:
 

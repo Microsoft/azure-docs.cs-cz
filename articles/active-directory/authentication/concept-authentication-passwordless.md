@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b225ccb0e607b073fd28f79d0151da0b77f5cdf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 922cea49179e63e2481a7f15b1e78bd8bf6c4848
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266611"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773922"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Možnosti ověřování neheslem pro Azure Active Directory
 
@@ -61,6 +61,8 @@ Můžete taky dovolit, aby se telefon od zaměstnance stal metodou ověřování
 ![Přihlášení k Microsoft Edge pomocí aplikace Microsoft Authenticator](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
 Aplikace ověřovatele přepíná telefon s iOS nebo Androidem do silných přihlašovacích údajů bez hesla. Uživatelé se můžou přihlašovat k libovolné platformě nebo prohlížeči tím, že získají oznámení na telefonu, odpovídají číslu zobrazenému na obrazovce na telefonu a pak se pomocí jejich biometriky (dotyky nebo obličeje) nebo kódu PIN ověří. Podrobnosti o instalaci najdete [v tématu Stažení a instalace aplikace Microsoft Authenticator](../user-help/user-help-auth-app-download-install.md) .
+
+Přihlášení bez hesla pomocí aplikace Microsoft Authenticator do služby Azure AD je momentálně ve verzi Preview. Použití aplikace Microsoft Authenticator pro sekundární ověřování pro Azure Multi-Factor Authentication, Samoobslužné resetování hesla (SSPR) nebo tokeny OATH jsou GA. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 Ověřování pomocí hesla s použitím ověřovací aplikace se řídí stejným základním vzorem jako Windows Hello pro firmy. Je to trochu složitější, protože je potřeba identifikovat uživatele, aby služba Azure AD mohla najít Microsoft Authenticator verzi aplikace, která se používá:
 

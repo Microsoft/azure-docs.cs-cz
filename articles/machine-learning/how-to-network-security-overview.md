@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/30/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: d4690062dead8186022cc53ca47dbc7e17a9376f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 7bc56f6296bf41933348fad9ea4aeb640b9afbf0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631184"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776013"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Přehled izolace a ochrany osobních údajů virtuální sítě
 
@@ -28,7 +28,7 @@ Tady jsou další články v této sérii:
 
 **1. virtuální síť – přehled**  >  [2 Zabezpečte pracovní prostor](how-to-secure-workspace-vnet.md)  >  [3. Zabezpečte školicí prostředí](how-to-secure-training-vnet.md)  >  [4. Zabezpečte prostředí Inferencing](how-to-secure-inferencing-vnet.md)  >  [5. Povolit funkci studia](how-to-enable-studio-virtual-network.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte zkušenosti s následujícími tématy:
 + [Virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
@@ -70,7 +70,7 @@ Pomocí následujícího postupu Zabezpečte svůj pracovní prostor a přidruž
 
 1. Vytvořte [pracovní prostor podporující privátní linku](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint) , který umožní komunikaci mezi vaší virtuální sítí a pracovním prostorem.
 1. Přidejte Azure Key Vault do virtuální sítě s [koncovým bodem služby](../key-vault/general/overview-vnet-service-endpoints.md) nebo [soukromým koncovým bodem](../key-vault/general/private-link-service.md). Nastavte Key Vault na ["umožňuje důvěryhodným službám Microsoftu obejít tuto bránu firewall"](how-to-secure-workspace-vnet.md#secure-azure-key-vault).
-1. Přidejte si účet Azure Storage do virtuální sítě pomocí [koncového bodu služby](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts) nebo [privátního koncového bodu](../storage/common/storage-private-endpoints.md) .
+1. Přidejte svůj účet Azure Storage do virtuální sítě s [koncovým bodem služby](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) nebo [soukromým koncovým bodem](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints).
 1. [Nakonfigurujte Azure Container registry pro použití privátního koncového bodu](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr) a [Povolte delegování podsítě v Azure Container Instances](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci).
 
 ![Diagram architektury znázorňující, jak pracovní prostor a přidružené prostředky komunikují přes koncové body služby nebo privátní koncové body uvnitř virtuální sítě](./media/how-to-network-security-overview/secure-workspace-resources.png)
@@ -141,17 +141,17 @@ Následující diagram sítě zobrazuje zabezpečený Azure Machine Learning pra
 
 [Zabezpečte pracovní prostor](#secure-the-workspace-and-associated-resources)  >  [Zabezpečení školicího prostředí](#secure-the-training-environment)  >  [Zabezpečení prostředí Inferencing](#secure-the-inferencing-environment)  >  **Povolit funkci studia**  >  [Konfigurace nastavení brány firewall](#configure-firewall-settings)
 
-I když Studio má přístup k datům v účtu úložiště nakonfigurovaném pomocí koncového bodu služby, jsou ve výchozím nastavení zakázané některé funkce:
+Pokud je vaše úložiště ve virtuální síti, musíte nejdřív provést další kroky konfigurace, abyste mohli v [studiu](overview-what-is-machine-learning-studio.md)povolit všechny funkce. Ve výchozím nastavení jsou zakázány následující funkce:
 
 * Náhled dat v studiu
 * Vizualizujte data v návrháři.
 * Odešlete experiment AutoML.
 * Spusťte Popis projektu.
 
-Pokud chcete povolit plnou funkčnost při používání koncového bodu služby úložiště, přečtěte si téma [použití Azure Machine Learning studia ve virtuální síti](how-to-enable-studio-virtual-network.md#access-data-using-the-studio). Studio podporuje koncové body služeb i privátní koncové body pro účty úložiště.
+Pokud chcete povolit úplnou funkci studia i v rámci virtuální sítě, přečtěte si téma [použití Azure Machine Learning studia ve virtuální síti](how-to-enable-studio-virtual-network.md#access-data-using-the-studio). Studio podporuje účty úložiště buď pomocí koncových bodů služby, nebo soukromých koncových bodů.
 
 ### <a name="limitations"></a>Omezení
-- Studio nemůže získat přístup k datům v účtech úložiště nakonfigurovaným pro použití privátních koncových bodů. Pro plnou funkčnost musíte použít koncové body služby pro úložiště a použít spravovanou identitu.
+- [Označení dat s podporou ml s asistencí](how-to-create-labeling-projects.md#use-ml-assisted-labeling) nepodporuje výchozí účty úložiště zabezpečené za virtuální sítí. Pro popisky dat s podporou ML s asistencí je nutné použít jiný než výchozí účet úložiště. Všimněte si, že účet úložiště, který není výchozí, může být zabezpečený za virtuální sítí. 
 
 ## <a name="configure-firewall-settings"></a>Konfigurace nastavení brány firewall
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: 039e5b94bbd9d3b6c3edcb92eff88e7a9931205d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf0d802dc4ea4d18122a12b107dfb0cc0af80d63
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91448734"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773446"
 ---
 # <a name="what-is-azure-front-door"></a>Co je Azure Front Door?
 
@@ -56,7 +56,7 @@ Klíčové funkce, které jsou součástí front-dveří:
 
 * Definujte vlastní **[doménu](front-door-custom-domain.md)**. 
 
-* Zabezpečení aplikací pomocí vlastních pravidel **[firewallu webových aplikací (WAF)](../web-application-firewall/overview.md)** a **[Azure DDoS Protection](../virtual-network/ddos-protection-overview.md)**.
+* Zabezpečení aplikace pomocí integrovaného  **[firewallu webových aplikací (WAF)](../web-application-firewall/overview.md)**.
 
 * Přesměrujte provoz HTTP na HTTPS pomocí **[přesměrování adresy URL](front-door-url-redirect.md)**.
 

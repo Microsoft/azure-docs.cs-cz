@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 3beefb467f7875e6bc76765811c6525f5dab9393
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 83f1eef14a5c22fbab998fb6c939775873748670
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536168"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774092"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-discovery-benefits-sso"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s výhodami zjišťování pro jednotné přihlašování
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat výhody zjišťování jednotného př
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -86,7 +86,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Kliknutím na ikonu **Upravit**  otevřete dialogové okno **jedinečný identifikátor uživatele (ID názvu)** .
 
-    ![Konfigurace jednotného přihlašování k výhodám zjišťování](./media/discovery-benefits-sso-tutorial/attribute01.png)
+    ![Snímek obrazovky se sekcí "atributy uživatele & deklaracemi" se třemi tečkami "požadovaná deklarace" na pravé straně.](./media/discovery-benefits-sso-tutorial/attribute01.png)
 
     ![Konfigurace jednotného přihlašování k výhodám zjišťování](./media/discovery-benefits-sso-tutorial/attribute02.png)
 
@@ -103,7 +103,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     f. Vyplnili jsme automaticky dodatečné deklarace identity, které jsou potřeba pro konfiguraci jednotného přihlašování ( `SSOInstance` a `SSOID` ). Pomocí ikony **Upravit** namapujte hodnoty dle vaší organizace.
 
-    ![Konfigurace jednotného přihlašování k výhodám zjišťování](./media/discovery-benefits-sso-tutorial/attribute03.png)
+    ![Snímek obrazovky, který zobrazuje "atributy uživatele & deklarace identity" s zvýrazněnými hodnotami "S/O instance" a "S S O D".](./media/discovery-benefits-sso-tutorial/attribute03.png)
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -157,7 +157,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici přihlášení k výhodám vyhledávání, měli byste být automaticky přihlášení k výhodám zjišťování, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

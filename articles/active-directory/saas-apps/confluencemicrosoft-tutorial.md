@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: d629e5d572f1e8fff05104a4a5004b7aaa8c7a0d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 12f6e66140b3654f1283cad45c97325e2bfb1a28
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892945"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775660"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Confluence SAML SSO Microsoftu
 
@@ -159,11 +159,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Najeďte myší na ozubeného kola a klikněte na **Doplňky**.
 
-    ![Konfigurace jednotného přihlašování](./media/confluencemicrosoft-tutorial/addon1.png)
+    ![Snímek obrazovky, na kterém je vybraná ikona ozubeného kola a v rozevírací nabídce se zvýrazní Doplňky](./media/confluencemicrosoft-tutorial/addon1.png)
 
 1. Stáhněte modul plug-in z [webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56503). Ručně nahrajte modul plug-in dodaný Microsoftem pomocí nabídky **nahrát doplňky** . Na stažení modulu plug-in se vztahuje [Smlouva o poskytování služeb společnosti Microsoft](https://www.microsoft.com/servicesagreement/).
 
-    ![Konfigurace jednotného přihlašování](./media/confluencemicrosoft-tutorial/addon12.png)
+    ![Snímek obrazovky zobrazující stránku Spravovat doplňky se zvolenou akcí nahrát doplněk](./media/confluencemicrosoft-tutorial/addon12.png)
 
 1. Pokud chcete spustit scénář reverzního proxy serveru Confluence nebo scénář nástroje pro vyrovnávání zatížení, proveďte následující kroky:
 
@@ -174,19 +174,19 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![Konfigurace jednotného přihlašování](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
+    ![Snímek obrazovky, který zobrazuje soubor server.xml s atributem přidaným do portu "konektor".](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
 
     b. Změnit **základní adresu URL** v **nastavení systému** podle proxy/nástroje pro vyrovnávání zatížení.
 
-    ![Konfigurace jednotného přihlašování](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
+    ![Snímek obrazovky zobrazující stránku Správa nastavení se zvýrazněnou základní adresou URL](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
 
 1. Po nainstalování modulu plug-in se zobrazí v části **nainstalované** doplňky v části **Správa doplňku** . Kliknutím na **Konfigurovat** Nakonfigurujte nový modul plug-in.
 
-    ![Konfigurace jednotného přihlašování](./media/confluencemicrosoft-tutorial/addon15.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "nainstalovaný uživatel" se zvýrazněným tlačítkem konfigurovat.](./media/confluencemicrosoft-tutorial/addon15.png)
 
 1. Na stránce konfigurace proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/confluencemicrosoft-tutorial/addon54.png)
+    ![Snímek obrazovky zobrazující stránku konfigurace jednotného přihlašování](./media/confluencemicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > Zajistěte, aby se na aplikaci namapoval jenom jeden certifikát, aby se při překladu metadat neobjevila žádná chyba. Pokud je k dispozici více certifikátů, správce při řešení metadat získá chybu.
@@ -237,7 +237,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Confluence místním serveru, 
 
 1. V části Uživatelé klikněte na kartu **Přidat uživatele** . Na stránce **Přidat uživatelský** dialog proveďte následující kroky:
 
-    ![Přidat zaměstnance](./media/confluencemicrosoft-tutorial/user2.png)
+    ![Snímek obrazovky, který zobrazuje "Confluence Administration" se zvolenou kartou "Přidat uživatele" a zadali jste informace "Přidat uživatele".](./media/confluencemicrosoft-tutorial/user2.png)
 
     a. Do textového pole **uživatelské jméno** zadejte e-mail uživatele jako B. Simon.
 
@@ -257,7 +257,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Confluence SSO SSO Microsoft, měli byste se automaticky přihlásit k Confluence SAML SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

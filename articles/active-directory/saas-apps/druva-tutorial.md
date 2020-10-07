@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
-ms.openlocfilehash: d0dffe602aef01af2fb2ef8ee9462a0bb99c1ae0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 401b1ef4e057d145574c0a8fcbfce8c9f586c266
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555680"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775061"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Druva
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Druva s Azure Active Directory (Azure 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -93,7 +93,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Druva několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ------------------- | -------------------- |
     | emailAddress | uživatel. e-mail |
     | druva_auth_token | Token jednotného přihlašování generovaný z konzoly správce aplikace DCP bez uvozovek.  Například: X-XXXXX-XXXX-S-A-M-P-L-E + TXOXKXEXNX =. Azure automaticky přidá do tohoto ověřovacího tokenu uvozovky. |
@@ -146,7 +146,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Na kartě **jednotné přihlašování** klikněte na **Upravit**.
 
-    ![Nastavení jednotného přihlašování](./media/druva-tutorial/ic795092.png "Nastavení jednotného přihlašování")
+    ![Snímek obrazovky zobrazující kartu nastavení přístupu – jednotné přihlašování s vybraným tlačítkem Upravit.](./media/druva-tutorial/ic795092.png "Nastavení jednotného přihlašování")
 
 1. Na stránce **Upravit nastavení jednotného přihlašování** proveďte následující kroky:
 
@@ -171,7 +171,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Druva, měli byste se automaticky přihlásit k Druva, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

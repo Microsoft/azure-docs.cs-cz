@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 58395463c494a95a8842cddbe4d51544ce03d212
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4b6f2db8a8245db7dddbabc3a31a0de0d8963b84
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713371"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776081"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Použití Azure Machine Learning studia ve službě Azure Virtual Network
 
@@ -24,14 +24,15 @@ V tomto článku se dozvíte, jak používat Azure Machine Learning Studio ve vi
 
 > [!div class="checklist"]
 > - Přístup k studiu z prostředku v rámci virtuální sítě.
+> - Konfigurace privátních koncových bodů pro účty úložiště.
 > - Udělte studiu přístup k datům uloženým ve virtuální síti.
-> - Seznamte se s tím, jak má Studio vliv na zabezpečení úložiště.
+> - Zjistěte, jak Studio ovlivňuje zabezpečení úložiště.
 
 Tento článek je třetí částí série s pěti částmi, která vás provede zabezpečením Azure Machine Learningho pracovního postupu. Důrazně doporučujeme, abyste si přečetli [část One: VNet – přehled](how-to-network-security-overview.md) , abyste si nejdřív porozuměli celkové architektuře. 
 
 Podívejte se na další články v této sérii:
 
-[1. virtuální síť – přehled](how-to-network-security-overview.md)  >  [2 Zabezpečte pracovní prostor](how-to-secure-workspace-vnet.md)  >  [3. Zabezpečte školicí prostředí](how-to-secure-training-vnet.md)  >  [4. Zabezpečte prostředí Inferencing](how-to-secure-inferencing-vnet.md)  >  [5. Povolit funkci studia](how-to-enable-studio-virtual-network.md)
+[1. virtuální síť – přehled](how-to-network-security-overview.md)  >  [2 Zabezpečte pracovní prostor](how-to-secure-workspace-vnet.md)  >  [3. Zabezpečte školicí prostředí](how-to-secure-training-vnet.md)  >  [4. Zabezpečte prostředí Inferencing](how-to-secure-inferencing-vnet.md)  >  **5. Povolit funkci studia**
 
 
 > [!IMPORTANT]
@@ -46,7 +47,7 @@ Podívejte se na další články v této sérii:
 
 + Existující [Azure Machine Learning pracovní prostor s povoleným privátním odkazem](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint).
 
-+ Existující [účet Azure Storage přidaný do vaší virtuální sítě](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts).
++ Existující [účet Azure Storage přidaný do vaší virtuální sítě](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints).
 
 ## <a name="access-the-studio-from-a-resource-inside-the-vnet"></a>Přístup k studiu z prostředku uvnitř virtuální sítě
 
@@ -56,7 +57,7 @@ Pokud například používáte skupiny zabezpečení sítě (NSG) k omezení odc
 
 ## <a name="access-data-using-the-studio"></a>Přístup k datům pomocí studia
 
-Po [Přidání účtu úložiště Azure do virtuální sítě](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)musíte svůj účet úložiště nakonfigurovat tak, aby používal [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) k udělení přístupu studia k vašim datům. Studio podporuje účty úložiště nakonfigurované pro použití koncových bodů služby nebo privátních koncových bodů. Účty úložiště ve výchozím nastavení používají koncové body služby. Postup povolení privátních koncových bodů pro úložiště najdete v tématu [použití privátních koncových bodů pro Azure Storage](../storage/common/storage-private-endpoints.md)
+Po přidání účtu úložiště Azure do virtuální sítě s [koncovým bodem služby](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) nebo [soukromým koncovým bodem](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)musíte nakonfigurovat účet úložiště tak, aby používal [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) k udělení přístupu Studio k vašim datům.
 
 Pokud nepovolíte spravovanou identitu, zobrazí se tato chyba, navíc se `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` zakážou tyto operace:
 
@@ -64,6 +65,9 @@ Pokud nepovolíte spravovanou identitu, zobrazí se tato chyba, navíc se `Error
 * Vizualizujte data v návrháři.
 * Odešlete experiment AutoML.
 * Spusťte Popis projektu.
+
+> [!NOTE]
+> [Označení dat s asistencí podle ml](how-to-create-labeling-projects.md#use-ml-assisted-labeling) nepodporuje výchozí účty úložiště zabezpečené za virtuální sítí. Pro označení dat s podporou ML je nutné použít jiný než výchozí účet úložiště. Účet úložiště, který není výchozí, může být zabezpečený za virtuální sítí. 
 
 Studio podporuje čtení dat z následujících typů úložiště dat ve virtuální síti:
 

@@ -7,13 +7,13 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
-ms.date: 09/14/2020
-ms.openlocfilehash: 393678342ad1e8e6e2ff5d3c38dab68ce29ee7e7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/06/2020
+ms.openlocfilehash: e9b2ec017ca985c1de739ee74c4d0732f39bdc1d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91711715"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772732"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>Rychlý Start: použití šablony ARM k nasazení rozhraní Azure API pro FHIR
 
@@ -62,8 +62,6 @@ Replace the line above with the following line once https://docs.microsoft.com/a
 * [**Microsoft.HealthcareApis/services**](/azure/templates/microsoft.healthcareapis/services)
 
 -->
-
-Další ukázkové šablony Azure API pro FHIR najdete v [galerii šablon rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Healthcareapis&pageNumber=1&sort=Popular).
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 

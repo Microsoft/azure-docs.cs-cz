@@ -4,24 +4,19 @@ description: Připojení soukromě k webové aplikaci pomocí privátního konco
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 10/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 9f593bd5e1d4970b43b25c434abfa87177b72066
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: c6a55958102c89c78fe2cd797bb59cf72f9ec505
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743008"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773140"
 ---
-# <a name="using-private-endpoints-for-azure-web-app-preview"></a>Používání privátních koncových bodů pro webovou aplikaci Azure (Preview)
-
-> [!Note]
-> S aktualizací Preview jsme vydali funkci data exfiltrace Protection.
->
-> Verze Preview je dostupná ve všech veřejných oblastech pro PremiumV2 a PremiumV3 aplikace pro Windows a Linux a elastické funkce Premium. 
+# <a name="using-private-endpoints-for-azure-web-app"></a>Používání privátních koncových bodů pro webovou aplikaci Azure
 
 Pro webovou aplikaci Azure můžete použít privátní koncový bod, který umožňuje klientům umístěným ve vaší privátní síti zabezpečený přístup k aplikaci prostřednictvím privátního propojení. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě Azure. Síťový provoz mezi klientem v privátní síti a webovou aplikací prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu.
 
@@ -99,7 +94,7 @@ Například překlad názvů bude:
 Po této konfiguraci DNS se můžete připojit k webové aplikaci soukromě s výchozím názvem mywebappname.azurewebsites.net.
 
 
-Pokud potřebujete použít vlastní název DNS, musíte do své webové aplikace přidat vlastní název. Ve verzi Preview se vlastní název musí ověřit jako libovolný vlastní název, a to pomocí veřejného překladu názvů DNS. Další informace najdete v tématu [vlastní ověření DNS][dnsvalidation].
+Pokud potřebujete použít vlastní název DNS, musíte do své webové aplikace přidat vlastní název. Vlastní název musí být ověřen jako libovolný vlastní název, a to pomocí veřejného překladu DNS. Další informace najdete v tématu [vlastní ověření DNS][dnsvalidation].
 
 V případě konzoly Kudu nebo Kudu REST API (například nasazení pomocí samoobslužných agentů Azure DevOps) musíte vytvořit dva záznamy v privátní zóně Azure DNS nebo ve vlastním serveru DNS. 
 
@@ -118,7 +113,9 @@ Podrobnosti o cenách najdete v tématu [ceny za privátní propojení Azure][pr
 
 Když použijete funkci Azure v plánu elastické Premium s privátním koncovým bodem, spustíte nebo spustíte funkci na webovém portálu Azure, musíte mít přímý přístup k síti nebo se zobrazí chyba HTTP 403. Jinými slovy, váš prohlížeč musí být schopný spojit se s privátním koncovým bodem a spustit funkci z webového portálu Azure. 
 
-Během období Preview se za soukromým koncovým bodem zveřejňuje jenom produkční slot, ale v rámci veřejného koncového bodu musí být dostupné jiné sloty.
+Ke konkrétní webové aplikaci se dá připojit až 100 privátního koncového bodu.
+
+K dispozici je privátní koncový bod pro webovou aplikaci PremiumV2, PremiumV3, Windows a Linux, kontejnerový nebo ne a plán služby Azure Functions Premium (někdy označovaný jako plán elastické Premium). 
 
 Pravidelně vylepšujeme funkci privátního propojení a soukromý koncový bod. Další informace o omezeních najdete v [tomto článku][pllimitations] .
 

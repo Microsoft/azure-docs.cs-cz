@@ -4,15 +4,15 @@ description: Navrhněte vysoce výkonné aplikace pomocí spravovaných disků A
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 06/27/2017
+ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 48157c8d9285c48d49e76f39602075a2a8ac9682
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650716"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776149"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: návrh pro vysoký výkon
 
@@ -169,7 +169,7 @@ Velikost v/v je jedním z důležitějších faktorů. Velikost vstupně-výstup
 
 Některé aplikace umožňují změnit jejich vstupně-výstupní operace, zatímco některé aplikace ne. SQL Server například určuje optimální velikost vstupně-výstupních operací a neposkytuje uživatelům žádné ovladače ke změně. Na druhé straně Oracle poskytuje parametr s názvem [ \_ \_ velikost bloku DB](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) , pomocí kterého můžete nakonfigurovat velikost vstupně-výstupních požadavků databáze.
 
-Pokud používáte aplikaci, která vám neumožňuje změnit velikost vstupně-výstupních operací, použijte pokyny v tomto článku k optimalizaci klíčového ukazatele výkonu, který je pro vaši aplikaci nejrelevantnější. Třeba
+Pokud používáte aplikaci, která vám neumožňuje změnit velikost vstupně-výstupních operací, použijte pokyny v tomto článku k optimalizaci klíčového ukazatele výkonu, který je pro vaši aplikaci nejrelevantnější. Příklad:
 
 * Aplikace OLTP generuje miliony malých a náhodných vstupně-výstupních požadavků. Chcete-li tyto typy požadavků na vstupně-výstupní operace zpracovat, je nutné navrhnout infrastrukturu aplikace a získat vyšší IOPS.  
 * Aplikace datového skladu generuje velké a sekvenční vstupně-výstupní požadavky. Chcete-li tyto typy požadavků na vstupně-výstupní operace zpracovat, je nutné navrhnout infrastrukturu vaší aplikace, abyste dosáhli vyšší šířky pásma nebo propustnosti.
@@ -305,45 +305,11 @@ V takovém případě můžete tyto pokyny použít k SQL Server spuštění na 
 
 ## <a name="optimize-performance-on-linux-vms"></a>Optimalizace výkonu pro virtuální počítače se systémem Linux
 
-U všech disků úrovně Premium SSD nebo Ultra s mezipamětí nastavenou na **ReadOnly** nebo **žádné**je při připojování systému souborů nutné zakázat "překážky". V tomto scénáři nepotřebujete překážky, protože zápisy na disky Premium Storage jsou pro tato nastavení mezipaměti trvalé. Po úspěšném dokončení žádosti o zápis se data zapisují do trvalého úložiště. Pokud chcete zakázat "překážky", použijte jednu z následujících metod. Vyberte jednu z těchto souborů v systému souborů:
-  
-* Pro **reiserFS**zakažte překážky pomocí  `barrier=none` Možnosti připojit. (Pokud chcete povolit bariéry, použijte `barrier=flush` .)
-* V případě **ext3/ext4**zakažte překážky pomocí `barrier=0` Možnosti připojit. (Pokud chcete povolit bariéry, použijte `barrier=1` .)
-* Pro **XFS**zakažte překážky pomocí `nobarrier` Možnosti připojit. (Pokud chcete povolit bariéry, použijte `barrier` .)
-* U disků služby Premium Storage s mezipamětí nastavenou **na hodnotu**nepoužívat jako mezipaměť povolte překážky při zápisu.
-* Aby jmenovky svazků po restartování virtuálního počítače zůstaly zachované, je nutné aktualizovat/etc/fstab s použitím univerzálně jedinečného identifikátoru (UUID) na disky. Další informace najdete v tématu [Přidání spravovaného disku do virtuálního počítače se systémem Linux](./linux/add-disk.md).
+Pro všechny disky Premium SSD nebo Ultra můžete pro systémy souborů na disku zakázat "překážky", aby se zlepšil výkon, když je známo, že neexistují žádné mezipaměti, které by mohly přijít o data.  Pokud je ukládání do mezipaměti disku Azure nastaveno na jen pro čtení nebo žádné, můžete zakázat bariéry.  Pokud je však ukládání do mezipaměti nastaveno na jen pro čtení, musí zůstat bariéry povolené, aby se zajistila odolnost proti zápisu  Ve výchozím nastavení jsou překážky standardně povolené, ale v závislosti na typu systému souborů můžete zakázat bariéry pomocí jedné z následujících metod:
 
-Pro prémiové SSD byly ověřeny následující distribuce systému Linux. Pro zajištění lepšího výkonu a stability pomocí Premium SSD doporučujeme, abyste provedli upgrade virtuálních počítačů na některou z těchto verzí nebo novější. 
-
-Některé verze vyžadují nejnovější služby Linux Integration Services (LIS), v 4.0 pro Azure. Chcete-li stáhnout a nainstalovat distribuci, postupujte podle odkazu uvedeného v následující tabulce. Do seznamu přidáme obrázky, protože jsme dokončili ověřování. Naše ověřování ukazují, že se výkon u jednotlivých imagí liší. Výkon závisí na charakteristikách úloh a na nastaveních imagí. Různé obrázky jsou vyladěny pro různé druhy úloh.
-
-| Distribuce | Verze | Podporované jádro | Podrobnosti |
-| --- | --- | --- | --- |
-| Ubuntu | 12,04 nebo novější| 3.2.0 – 75.110 + | &nbsp; |
-| Ubuntu | 14,04 nebo novější| 3.13.0 – 44.73 +  | &nbsp; |
-| Debian | 7. x, 8. x nebo novější| 3.16.7-ckt4-1 + | &nbsp; |
-| SUSE | SLES 12 nebo novější| 3.12.36 – 38.1 + | &nbsp; |
-| SUSE | SLES 11 SP4 nebo novější| 3.0.101 – 0.63.1 + | &nbsp; |
-| CoreOS | 584.0.0 + nebo novější| 3.18.4 + | &nbsp; |
-| CentOS | 6,5, 6,6, 6,7, 7,0 nebo novější| &nbsp; | [Požadováno LIS4](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Viz Poznámka v následující části.* |
-| CentOS | 7.1 + nebo novější| 3.10.0-229.1.2. el7 + | [LIS4 Doporučené](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Viz Poznámka v následující části.* |
-| Red Hat Enterprise Linux (RHEL) | 6.8 +, 7.2 + nebo novější | &nbsp; | &nbsp; |
-| Oracle | 6.0 +, 7.2 + nebo novější | &nbsp; | UEK4 nebo RHCK |
-| Oracle | 7.0-7.1 nebo novější | &nbsp; | UEK4 nebo RHCK s[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
-| Oracle | 6.4 – 6.7 nebo novější | &nbsp; | UEK4 nebo RHCK s[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
-
-### <a name="lis-drivers-for-openlogic-centos"></a>Ovladače LIS pro OpenLogic CentOS
-
-Pokud používáte virtuální počítače s OpenLogic CentOS, spusťte následující příkaz, který nainstaluje nejnovější ovladače:
-
-```
-sudo yum remove hypervkvpd  ## (Might return an error if not installed. That's OK.)
-sudo yum install microsoft-hyper-v
-sudo reboot
-```
-
-V některých případech příkaz výše provede upgrade jádra i. Pokud se vyžaduje aktualizace jádra, možná budete muset po restartování znovu spustit výše uvedené příkazy, abyste mohli plně nainstalovat balíček Microsoft-Hyper-v.
-
+* Pro **reiserFS**použijte možnost připojení bariéra = None a zakažte překážky.  Chcete-li explicitně povolit bariéry, použijte bariéru = flush.
+* Pro **ext3/ext4**použijte k zakázání bariéry možnost bariéra = 0.  Chcete-li explicitně povolit bariéry, použijte bariéru = 1.
+* Pro **XFS**zakažte překážky pomocí možnosti připojit k připojení.  Chcete-li explicitně povolit bariéry, použijte bariéru.  Všimněte si, že v novějších verzích jádra systému Linux je návrh systému souborů XFS vždycky zajištěna odolnost a zákaz bariéry nemá žádný vliv.  
 
 ## <a name="disk-striping"></a>Diskové svazky
 

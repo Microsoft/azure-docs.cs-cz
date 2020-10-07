@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 9435a0eccff5a3be0dc9e0a2844bae175d753a5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be9d0503b411577d4ecbfb65c4bdae42a571d175
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555869"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775133"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Dome9em Check Point CloudGuard
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat kontrolní bod CloudGuard Dome9 ARC po
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -97,7 +97,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše je u aplikace Check Point CloudGuard Dome9ed očekáváno, že se v odpovědi SAML vrátí další atributy, které jsou uvedeny níže. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Name |  Zdrojový atribut|
+    | Název |  Zdrojový atribut|
     | ---------------| --------------- |
     | memberOf | User. assignedroles |
 
@@ -156,11 +156,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 2. Klikněte na **nastavení profilu** v pravém horním rohu a pak klikněte na **Nastavení účtu**. 
 
-    ![Konfigurace ARC kontrolního bodu CloudGuard Dome9](./media/dome9arc-tutorial/configure1.png)
+    ![Snímek obrazovky, který zobrazuje nabídku nastavení profilu s vybraným nastavením účtu.](./media/dome9arc-tutorial/configure1.png)
 
 3. Přejděte na **jednotné přihlašování** a pak klikněte na **Povolit**.
 
-    ![Konfigurace ARC kontrolního bodu CloudGuard Dome9](./media/dome9arc-tutorial/configure2.png)
+    ![Snímek obrazovky zobrazující kartu S S O a povolit](./media/dome9arc-tutorial/configure2.png)
 
 4. V části Konfigurace jednotného přihlašování proveďte následující kroky:
 
@@ -189,11 +189,11 @@ Pokud chcete uživatelům Azure AD povolit, aby se přihlásili ke službě Chec
 
 2. Klikněte na **role uživatelé &** a potom klikněte na **Uživatelé**.
 
-    ![Přidat zaměstnance](./media/dome9arc-tutorial/user1.png)
+    ![Snímek obrazovky, který zobrazuje "uživatelé & rolí" s vybranou akcí "uživatelé".](./media/dome9arc-tutorial/user1.png)
 
 3. Klikněte na **Přidat uživatele**.
 
-    ![Přidat zaměstnance](./media/dome9arc-tutorial/user2.png)
+    ![Snímek obrazovky, který zobrazuje "uživatelé & rolí" s vybraným tlačítkem Přidat uživatele.](./media/dome9arc-tutorial/user2.png)
 
 4. V části **vytvořit uživatele** proveďte následující kroky:
 
@@ -215,7 +215,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici CloudGuard (kontrolní bod) Dome9 oblouk na přístupovém panelu, měli byste se automaticky přihlásit ke CloudGuard Dome9 ARC, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

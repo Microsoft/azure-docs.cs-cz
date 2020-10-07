@@ -4,12 +4,12 @@ description: Pokyny, jak přesunout Recovery Services trezor mezi předplatnými
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 69021131f12b57aedcd531997029858b0722933f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 19b1c930ffc0e4b519c25f421662547a4d8dcde6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181506"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773361"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesunutí trezoru Recovery Services napříč předplatnými Azure a skupinami prostředků
 
@@ -52,7 +52,7 @@ Francie – střed, Francie – jih, Německo – severovýchod, Německo – st
 
 Přesunutí trezoru Recovery Services a přidružených prostředků do jiné skupiny prostředků:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Otevřete seznam **trezorů Recovery Services** a vyberte trezor, který chcete přesunout. Po otevření řídicího panelu trezoru se zobrazí, jak je znázorněno na následujícím obrázku.
 
    ![Otevřít Recovery Services trezor](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -81,7 +81,7 @@ Přesunutí trezoru Recovery Services a přidružených prostředků do jiné sk
 
 Můžete přesunout Recovery Services trezor a jeho přidružené prostředky do jiného předplatného.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Otevřete seznam trezorů Recovery Services a vyberte trezor, který chcete přesunout. Po otevření řídicího panelu trezoru se zobrazí, jak je znázorněno na následujícím obrázku.
 
     ![Otevřít Recovery Services trezor](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -142,6 +142,50 @@ Pokud chcete přejít k novému předplatnému, zadejte `--destination-subscript
 
 1. Nastaví nebo ověří řízení přístupu pro skupiny prostředků.  
 2. Po dokončení přesunu je třeba pro trezor znovu nakonfigurovat funkci vytváření sestav a monitorování zálohování. Předchozí konfigurace bude ztracena během operace přesunutí.
+
+## <a name="move-an-azure-virtual-machine-to-a-different-recovery-service-vault"></a>Přesuňte virtuální počítač Azure do jiného trezoru služby Recovery Services. 
+
+Pokud chcete přesunout virtuální počítač Azure s povoleným zálohováním Azure, máte dvě možnosti. Závisí na vašich obchodních požadavcích:
+
+- [Nemusíte uchovávat předchozí zálohovaná data.](#dont-need-to-preserve-previous-backed-up-data)
+- [Musí zachovat předchozí zálohovaná data.](#must-preserve-previous-backed-up-data)
+
+### <a name="dont-need-to-preserve-previous-backed-up-data"></a>Nemusíte uchovávat předchozí zálohovaná data.
+
+Aby bylo možné chránit úlohy v novém trezoru, bude nutné odstranit aktuální ochranu a data ve starém trezoru a znovu nakonfigurovat zálohování.
+
+>[!WARNING]
+>Následující operace je destruktivní a nelze ji vrátit zpět. Všechna zálohovaná data a zálohované položky přidružené k chráněnému serveru budou trvale odstraněny. Postupujte však opatrně.
+
+**Zastavte a odstraňte aktuální ochranu ve starém trezoru:**
+
+1. Ve vlastnostech trezoru zakažte obnovitelné odstranění. Chcete-li zakázat obnovitelné odstranění, postupujte podle [těchto kroků](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal) .
+
+2. Zastavte ochranu a odstraňte zálohy z aktuálního trezoru. V nabídce řídicího panelu trezoru vyberte **zálohované položky**. Zde uvedené položky, které je třeba přesunout do nového trezoru, je třeba odebrat spolu s jejich zálohovanými daty. Podívejte se, jak [Odstranit chráněné položky v cloudu](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) a [Odstranit chráněné položky místně](backup-azure-delete-vault.md#delete-protected-items-on-premises).
+
+3. Pokud plánujete přesunout službu AFS (sdílené složky Azure), servery SQL nebo SAP HANA servery, budete je muset taky zrušit. V nabídce řídicího panelu trezoru vyberte **infrastruktura zálohování**. Podívejte se, jak [zrušit registraci SQL serveru](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance), [zrušit registraci účtu úložiště přidruženého ke sdíleným složkám Azure](manage-afs-backup.md#unregister-a-storage-account)a [zrušit registraci instance SAP HANA](sap-hana-db-manage.md#unregister-an-sap-hana-instance).
+
+4. Až budou odebrané ze starého trezoru, pokračujte v konfiguraci záloh pro vaše úlohy v novém trezoru.
+
+### <a name="must-preserve-previous-backed-up-data"></a>Musí zachovat předchozí zálohovaná data.
+
+Pokud potřebujete zachovat aktuální chráněná data ve starém trezoru a pokračovat v ochraně v novém trezoru, existují pro některé úlohy omezené možnosti:
+
+- U služby MARS můžete [Zastavit ochranu a zachovávat data](backup-azure-manage-mars.md#stop-protecting-files-and-folder-backup) a zaregistrovat agenta v novém trezoru.
+
+  - Služba Azure Backup bude nadále uchovávat všechny existující body obnovení starého trezoru.
+  - Abyste zachovali body obnovení ve starém trezoru, budete muset platit.
+  - Zálohovaná data bude možné obnovit pouze v případě neplatných bodů obnovení ve starém trezoru.
+  - V novém trezoru se musí vytvořit nová počáteční replika dat.
+
+- U virtuálního počítače Azure můžete [Zastavit ochranu s uchováním dat](backup-azure-manage-vms.md#stop-protecting-a-vm) pro virtuální počítač ve starém trezoru, přesunout virtuální počítač do jiné skupiny prostředků a pak chránit virtuální počítač v novém trezoru. Přečtěte si [doprovodné materiály a omezení](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations) pro přesun virtuálního počítače do jiné skupiny prostředků.
+
+  Virtuální počítač se dá v jednom okamžiku chránit jenom v jednom trezoru. Virtuální počítač v nové skupině prostředků se ale dá chránit v novém trezoru, protože se považuje za jiný virtuální počítač.
+
+  - Služba Azure Backup zachová body obnovení, které byly zálohovány ve starém trezoru.
+  - Abyste zachovali body obnovení ve starém trezoru (podrobnosti najdete v tématu [Azure Backup ceny](azure-backup-pricing.md) ).
+  - V případě potřeby budete moct virtuální počítač obnovit ze starého trezoru.
+  - První záloha v novém trezoru virtuálního počítače v novém prostředku bude počáteční replikou.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 1afa9173c2ca3704bf4408c271e3cf950ef79077
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 58bb08cad111e0744f7831783169901cd76caef4
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302212"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772630"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Použití privátních balíčků Pythonu s Azure Machine Learning
 
@@ -29,7 +29,7 @@ Doporučený postup závisí na tom, jestli máte několik balíčků pro jeden 
 
 Soukromé balíčky se používají přes třídu [prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment) . V rámci prostředí deklarujete, které balíčky python se mají použít, včetně soukromých. Další informace o prostředí v Azure Machine Learning všeobecně najdete v tématu [Jak používat prostředí](how-to-use-environments.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
  * [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
  * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
@@ -58,7 +58,7 @@ Tento přístup používá k ověření v úložišti token Personal Access. Ste
 
  1. Pro instanci Azure DevOps [Vytvořte osobní přístupový token (Pat)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&preserve-view=true&tabs=preview-page#create-a-pat) . Nastavte rozsah tokenu pro __sbalení > číst__. 
 
- 2. Pomocí metody [Workspace. set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=trueset-connection-name--category--target--authtype--value-) přidejte do vlastností pracovního prostoru adresu URL a Pat služby Azure DevOps.
+ 2. Pomocí metody [Workspace.set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=trueset-connection-name--category--target--authtype--value-) přidejte do vlastností pracovního prostoru adresu URL Azure DEVOPS a Pat.
 
      ```python
     from azureml.core import Workspace
@@ -91,7 +91,7 @@ Prostředí je teď připravené k použití v rámci školicích běhů nebo na
 
 Balíčky můžete využívat z účtu služby Azure Storage v rámci brány firewall vaší organizace. Účet úložiště může obsahovat uspořádanou sadu balíčků nebo interní zrcadlo veřejně dostupných balíčků.
 
-Pokud chcete nastavit takové soukromé úložiště, přečtěte si téma [zabezpečení Azure Machine Learningho pracovního prostoru a přidružených prostředků](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts). Také je nutné [umístit Azure Container Registry (ACR) za virtuální síť](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr).
+Pokud chcete nastavit takové soukromé úložiště, přečtěte si téma [zabezpečení Azure Machine Learningho pracovního prostoru a přidružených prostředků](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints). Také je nutné [umístit Azure Container Registry (ACR) za virtuální síť](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr).
 
 > [!IMPORTANT]
 > Tento krok je nutné provést, aby bylo možné procházet nebo nasazovat modely pomocí soukromého úložiště balíčků.

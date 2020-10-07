@@ -1,14 +1,16 @@
 ---
 title: Řízení přístupu na základě role (RBAC) – QnA Maker
 description: Řízení přístupu k QnA Maker s rolemi Azure pro prostředek QnA Maker
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 05/15/2020
-ms.openlocfilehash: 07afdde258c8fa8ee0d98e95881170d5ddb23dff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: efc2ca6ac00a8e310bc5c0b52741ae79fc5f3dc0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665957"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776200"
 ---
 # <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
 

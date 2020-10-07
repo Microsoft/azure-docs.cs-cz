@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 5bae2173fc49cb9f41787905be66cf32a99fa03a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5ffdc510fd2a0f81fbfa5d9d04c337c99b389110
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536943"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774449"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>Kurz: Azure Active Directory integrace s Dealpath
 
@@ -30,7 +30,7 @@ Integrace Dealpath s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Dealpath potřebujete následující položky:
 
@@ -128,7 +128,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Dealpath
 
 2. V pravém horním rohu klikněte **na nástroje pro správu** , přejděte na **integrace**a potom v části **ověřování SAML 2,0** klikněte na **aktualizovat nastavení**:
 
-    ![Konfigurace Dealpath](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
+    ![Snímek obrazovky se stránkou "nástroje pro správu – integrace" s oddílem ověřování S A M L 2,0 a vybranými možnostmi aktualizovat nastavení.](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
 
 3. Na stránce **nastavit ověřování SAML 2,0** proveďte následující kroky:
 
@@ -173,7 +173,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Dealpath**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Dealpath**.
 
