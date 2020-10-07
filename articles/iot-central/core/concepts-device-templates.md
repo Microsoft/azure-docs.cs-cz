@@ -1,6 +1,6 @@
 ---
 title: Co jsou šablony zařízení v Azure IoT Central | Microsoft Docs
-description: Šablony zařízení Azure IoT Central umožňují určit chování zařízení připojených k vaší aplikaci.
+description: Šablony zařízení Azure IoT Central umožňují určit chování zařízení připojených k vaší aplikaci. Šablona zařízení určuje telemetrii, vlastnosti a příkazy, které zařízení musí implementovat. Šablona zařízení také definuje uživatelské rozhraní pro zařízení v IoT Central, jako jsou například formuláře a řídicí panely, které používá operátor.
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/21/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: cdc85029ec004060abf69b111d8a0ebca42147a4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 75317b5c6af2d0ce89d2db32f4343d9cc73a1a81
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015088"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813164"
 ---
 # <a name="what-are-device-templates"></a>Co jsou šablony zařízení?
 
@@ -26,12 +26,10 @@ Tvůrce řešení přidá šablony zařízení do aplikace IoT Central. Vývojá
 Šablona zařízení obsahuje následující oddíly:
 
 - _Model schopností zařízení (DCM)_. Tato část šablony zařízení definuje, jak zařízení komunikuje s vaší aplikací. Vývojář zařízení implementuje chování definované v DCM.
+    - _Rozhraní_. DCM obsahuje jedno nebo více rozhraní, která definují telemetrii, vlastnosti a příkazy, které zařízení musí implementovat.
 - _Vlastnosti cloudu_. Tato část šablony zařízení umožňuje vývojáři řešení určit jakákoli metadata zařízení, která se mají uložit. Vlastnosti cloudu se nesynchronizují se zařízeními a v aplikaci existují jenom. Vlastnosti cloudu neovlivňují kód, který vývojář zařízení zapisuje k implementaci DCM.
 - _Vlastní nastavení_. Tato část šablony zařízení umožňuje vývojáři řešení přepsat některé definice v DCM. Vlastní nastavení jsou užitečná, pokud vývojář řešení chce upřesnit způsob, jakým aplikace zpracovává hodnotu, jako je například Změna zobrazovaného názvu pro vlastnost nebo barva použitou k zobrazení hodnoty telemetrie. Přizpůsobení neovlivňují kód, který vývojář zařízení zapisuje k implementaci DCM.
 - _Zobrazení_. Tato část šablony zařízení umožňuje vývojářům řešení definovat vizualizace pro zobrazení dat ze zařízení a formulářů pro správu a řízení zařízení. Zobrazení používají DCM, vlastnosti cloudu a přizpůsobení. Zobrazení neovlivňují kód, který vývojář zařízení zapisuje k implementaci DCM.
-
-> [!NOTE]
-> [Verze iot technologie Plug and Play Public Preview](../../iot-pnp/overview-iot-plug-and-play.md) slouží vývojářům zařízení a výrobcům OEM, aby mohli začít sestavovat zařízení, která můžou certifikovat pro IoT technologie Plug and Play před spuštěním GA.
 
 ## <a name="device-capability-models"></a>Modely funkcí zařízení
 
@@ -108,11 +106,11 @@ Rozhraní má některá povinná pole:
 
 K dispozici jsou některá volitelná pole, která můžete použít k přidání dalších podrobností do modelu schopností, jako je například zobrazovaný název a popis.
 
-### <a name="interface"></a>Rozhraní
+## <a name="interfaces"></a>Rozhraní
 
 DTDL vám umožňuje popsat možnosti vašeho zařízení. Související možnosti jsou seskupené do rozhraní. Rozhraní popisují vlastnosti, telemetrie a příkazy, které součást vašeho zařízení implementuje:
 
-- `Properties`. Vlastnosti jsou datová pole, která představují stav vašeho zařízení. Použijte vlastnosti, které reprezentují trvalý stav zařízení, jako je například stav Zapnuto pro čerpadlo chladicí kapaliny. Vlastnosti mohou také představovat základní vlastnosti zařízení, například verzi firmwaru zařízení. Vlastnosti můžete deklarovat jako jen pro čtení nebo zapisovatelné.
+- `Properties`. Vlastnosti jsou datová pole, která představují stav vašeho zařízení. Použijte vlastnosti, které reprezentují trvalý stav zařízení, jako je například stav Zapnuto pro čerpadlo chladicí kapaliny. Vlastnosti mohou také představovat základní vlastnosti zařízení, například verzi firmwaru zařízení. Vlastnosti můžete deklarovat jako jen pro čtení nebo zapisovatelné. Pouze zařízení mohou aktualizovat hodnotu vlastnosti jen pro čtení. Operátor může nastavit hodnotu vlastnosti s možností zápisu, která se má odeslat do zařízení.
 - `Telemetry`. Pole telemetrie reprezentují měření od senzorů. Pokaždé, když zařízení získá měření senzorů, mělo by se odeslat událost telemetrie obsahující data ze senzorů.
 - `Commands`. Příkazy reprezentují metody, které můžou uživatelé zařízení na zařízení spouštět. Například příkaz pro obnovení nebo příkaz pro zapnutí nebo vypnutí ventilátoru.
 
@@ -159,7 +157,7 @@ Následující příklad ukazuje definici rozhraní senzoru prostředí:
 }
 ```
 
-Tento příklad ukazuje dvě vlastnosti, typ telemetrie a dva příkazy. Minimální Popis pole má:
+Tento příklad ukazuje dvě vlastnosti (jeden jen pro čtení a jeden zapisovatelný), typ telemetrie a dva příkazy. Minimální Popis pole má:
 
 - `@type` Chcete-li určit typ schopnosti: `Telemetry` , `Property` nebo `Command` .  V některých případech typ obsahuje sémantický typ, který umožňuje IoT Central provést některé předpoklady o tom, jak tuto hodnotu zpracovat.
 - `name` pro hodnotu telemetrie.
@@ -168,7 +166,7 @@ Tento příklad ukazuje dvě vlastnosti, typ telemetrie a dva příkazy. Minimá
 
 Volitelná pole, jako je zobrazované jméno a popis, umožňují přidat další podrobnosti k rozhraní a funkcím.
 
-### <a name="properties"></a>Vlastnosti
+## <a name="properties"></a>Vlastnosti
 
 Ve výchozím nastavení jsou vlastnosti jen pro čtení. Vlastnosti jen pro čtení znamenají, že se hodnota vlastnosti zařízení hlásí jako aktualizace vaší aplikace IoT Central. Vaše aplikace IoT Central nemůže nastavit hodnotu vlastnosti jen pro čtení.
 
@@ -180,13 +178,13 @@ Nepoužívejte vlastnosti k odeslání telemetrie ze zařízení. Například vl
 
 U zapisovatelných vlastností aplikace zařízení vrátí stavový kód požadovaného stavu, verzi a popis, aby označoval, zda obdržel a používal hodnotu vlastnosti.
 
-### <a name="telemetry"></a>Telemetrie
+## <a name="telemetry"></a>Telemetrie
 
 IoT Central umožňuje zobrazit telemetrii na řídicích panelech a grafech a používat pravidla pro aktivaci akcí po dosažení mezních hodnot. IoT Central používá informace v DCM, jako jsou datové typy, jednotky a zobrazované názvy, k určení toho, jak se mají zobrazovat hodnoty telemetrie.
 
 Můžete použít funkci IoT Central data export k streamování telemetrie do jiných míst určení, jako je například úložiště nebo Event Hubs.
 
-### <a name="commands"></a>Příkazy
+## <a name="commands"></a>Příkazy
 
 Příkazy jsou buď synchronní, nebo asynchronní. Synchronní příkaz se musí provést během 30 sekund ve výchozím nastavení a zařízení musí být připojené, až se dorazí na příkaz. Pokud zařízení reaguje v čase nebo pokud zařízení není připojené, příkaz se nezdařil.
 

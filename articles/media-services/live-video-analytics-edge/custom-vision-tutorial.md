@@ -3,12 +3,12 @@ title: Analýza živého videa pomocí živé analýzy videí v IoT Edge a Azure
 description: Naučte se, jak pomocí Custom Vision vytvořit kontejnerový model, který dokáže detekovat nákladní automobil a používat funkci rozšíření AI pro živé video analýzy v IoT Edge (LVA) k nasazení modelu na hraničních zařízeních pro detekci hraček datových toků z živého streamu videa.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 97aa514e2347b3398aab6293d8543afcdc239bdb
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 5da3186e64dd369dc57a0d5d1b635fc082158765
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776591"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804142"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Kurz: Analýza živého videa pomocí živé analýzy videí v IoT Edge a Azure Custom Vision
 
@@ -148,37 +148,15 @@ Klikněte pravým tlačítkem na zařízení Live video Analytics a vyberte **Sp
 
 Pokud otevřete topologii grafu pro tento kurz v prohlížeči, uvidíte, že hodnota inferencingUrl byla nastavena na hodnotu http://cv:80/image , což znamená, že odvozený server vrátí výsledky po zjištění hraček nákladní auta, pokud jsou v živém videu.
 
-1. Chcete-li spustit relaci ladění, vyberte klávesu F5. V okně terminálu se zobrazí zprávy tištěné.
-1. operations.jsv kódu se spouští s voláními přímých metod GraphTopologyList a GraphInstanceList. Pokud jste vyčistili prostředky po dokončení předchozích rychlých startů, pak tento proces vrátí prázdné seznamy a potom se pozastaví. Chcete-li pokračovat, vyberte klávesu ENTER.
-    
-   V okně terminálu se zobrazí další sada volání přímých metod:
-    
-   * Volání GraphTopologySet, které používá předchozí topologyUrl.
-   * Volání GraphInstanceSet, které používá následující tělo:
-        
-   ```
-        {
-          "@apiVersion": "1.0",
-          "name": "Sample-Graph-1",
-          "properties": {
-            "topologyName": "CustomVisionWithHttpExtension",
-            "description": "Sample graph description",
-            "parameters": [
-              { 
-                "name": "inferencingUrl",
-                "value": "http://cv:80/image"
-              },
-              {
-                "name": "rtspUrl",
-                "value": "rtsp://rtspsim:554/media/t2.mkv"
-              },
-              {
-                "name": "rtspUserName",
-                "value": "testuser"
-              },
-              {
-                "name": "rtspPassword",
-                "value": "testpassword"
+1. V Visual Studio Code otevřete kartu **rozšíření** (nebo stiskněte klávesy CTRL + SHIFT + X) a vyhledejte IoT Hub Azure.
+1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Přehled Custom Vision":::
+1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Přehled Custom Vision"
               }
             ]
           }

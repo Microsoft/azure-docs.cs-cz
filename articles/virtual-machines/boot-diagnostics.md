@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: b51b44f3a3d0889836bb41e0bf2fa37234338cf4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a8879bed4160c7cd1bd74cb196ce271964e384f7
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287079"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813232"
 ---
 # <a name="azure-boot-diagnostics"></a>Diagnostika spouštění Azure
 
@@ -25,12 +25,14 @@ Alternativním prostředím pro diagnostiku spouštění je použití účtu úl
 
 > [!IMPORTANT]
 > Zákazníkům Azure se neúčtují náklady na úložiště spojené s diagnostikou spouštění pomocí spravovaného účtu úložiště do října 2020.
+>
+> Datové bloby spouštění diagnostiky dat (které tvoří protokoly a image snímků) se ukládají ve spravovaném účtu úložiště. Zákazníkům se budou účtovat jenom využívané GiBs objekty blob, a ne na zřízené velikosti disku. Měřiče snímků se použijí pro fakturaci spravovaného účtu úložiště. Vzhledem k tomu, že se spravované účty vytvářejí na úrovni Standard LRS nebo Standard ZRS, zákazníkům se budou účtovat jenom za měsíc, který bude mít za velikost svých objektů BLOB diagnostických dat. Další informace o těchto cenách najdete v tématu [ceny služby Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/). Zákazníci uvidí tento poplatek vázaný na svůj identifikátor URI prostředku virtuálního počítače. 
 
 ## <a name="boot-diagnostics-view"></a>Zobrazení diagnostiky spouštění
 V okně virtuální počítač je možnost Diagnostika spouštění v části *Podpora a řešení potíží* v Azure Portal. Když vyberete diagnostiku spouštění, zobrazí se informace o snímku obrazovky a sériového protokolu. Sériový protokol obsahuje zprávy jádra a snímek obrazovky je snímek aktuálního stavu virtuálních počítačů. V závislosti na tom, jestli je na virtuálním počítači spuštěný systém Windows nebo Linux, určuje, jak by měl vypadat očekávaný snímek obrazovky. V případě systému Windows uvidí uživatelé desktopové pozadí a pro Linux se zobrazí výzva k zadání přihlašovacích údajů.
 
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-linux.png" alt-text="Snímek obrazovky s diagnostikou spouštění pro Linux":::
-:::image type="content" source="./media/boot-diagnostics/boot-diagnostics-windows.png" alt-text="Snímek obrazovky s diagnostikou spouštění Windows":::
+:::image type="content" source="./media/boot-diagnostics/boot-diagnostics-windows.png" alt-text="Snímek obrazovky s diagnostikou spouštění pro Linux":::
 
 
 ## <a name="limitations"></a>Omezení

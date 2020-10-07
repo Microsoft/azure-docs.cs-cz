@@ -17,12 +17,12 @@ ms.date: 09/17/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23cfc2ea17e1801ec4caeea9e8933cfdc72e33d4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 994fe6c5005eeeab1399091dca5f72024fdd7262
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331246"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812586"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -35,6 +35,7 @@ Architektura vytváření sestav se skládá z následujících součástí:
 - **Aktivita** 
     - **Přihlášení** – [Sestava přihlášení](concept-sign-ins.md) poskytuje informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
     - **Protokoly auditu** – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. Mezi příklady protokolů auditu patří změny provedené u všech prostředků v rámci Azure AD, jako je přidávání nebo odebírání uživatelů, aplikací, skupin, rolí a zásad.
+    - **Zřizování protokolů**  -  [Protokoly zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) umožňují zákazníkům monitorovat aktivity prostřednictvím služby zřizování, například vytvoření skupiny v ServiceNow nebo uživatele naimportovaného z Workday. 
 - **Zabezpečení** 
     - **Riziková přihlášení** – [rizikové přihlášení](../identity-protection/overview-identity-protection.md) je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
     - **Uživatelé označení příznakem rizika** – [rizikové uživatel](../identity-protection/overview-identity-protection.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
@@ -126,10 +127,10 @@ Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 - GroupManagement
 - KerberosDomain
 - Správa
-- Štítek
-- Další
+- Popisek
+- Ostatní
 - PermissionGrantPolicy
-- Zásady
+- Zásada
 - ResourceManagement
 - RoleManagement
 - UserManagement

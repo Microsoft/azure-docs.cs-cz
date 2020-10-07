@@ -1,6 +1,6 @@
 ---
 title: Vývoj zařízení pro Azure IoT Central | Microsoft Docs
-description: Azure IoT Central je aplikační platforma IoT, která zjednodušuje vytváření řešení IoT. Tento článek poskytuje přehled vývoje zařízení pro připojení k aplikaci IoT Central.
+description: Azure IoT Central je aplikační platforma IoT, která zjednodušuje vytváření řešení IoT. Tento článek poskytuje přehled vývoje zařízení pro připojení k aplikaci IoT Central. Zařízení využívají telemetrii k posílání streamovaná data a vlastností k hlášení stavu zařízení. IoT Central může nastavit stav zařízení pomocí zapisovatelných vlastností a příkazů volání na zařízení.
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/05/2020
@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 6fabd7d8cf5c19f05bd31c2d0b12863fd6e25382
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 39ce436cd59447b2b6f8d9f88deaab80b00dd639
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90017519"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812348"
 ---
 # <a name="iot-central-device-development-overview"></a>Přehled vývoje zařízení pro IoT Central
 
@@ -26,7 +26,7 @@ IoT Central aplikace umožňuje monitorovat a spravovat miliony zařízení běh
 Zařízení komunikují s aplikací IoT Central pomocí následujících primitivních elementů:
 
 - _Telemetrie_ jsou data, která zařízení odesílá IoT Central. Například datový proud hodnot teploty ze senzoru připojení.
-- _Vlastnosti_ jsou hodnoty stavu, které zařízení hlásí IoT Central. Například aktuální verze firmwaru zařízení. Můžete taky mít zapisovatelné vlastnosti, které IoT Central můžou aktualizovat na zařízení.
+- _Vlastnosti_ jsou hodnoty stavu, které zařízení hlásí IoT Central. Například aktuální verze firmwaru zařízení. Můžete taky mít zapisovatelné vlastnosti, které IoT Central můžou aktualizovat na zařízení, jako je třeba cílová teplota.
 - _Příkazy_ jsou volány z IoT Central pro řízení chování zařízení. Například vaše aplikace IoT Central může zavolat příkaz k restartování zařízení.
 
 Tvůrce řešení zodpovídá za konfiguraci řídicích panelů a zobrazení ve webovém uživatelském rozhraní IoT Central k vizualizaci telemetrie, správě vlastností a příkazů volání.

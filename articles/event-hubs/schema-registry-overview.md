@@ -4,12 +4,12 @@ description: Tento článek poskytuje přehled podpory registru schématu pomoc�
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: a0cc54f6ada1a5900e817c8e22fc192cd73f6550
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1da59d7757a7f78235ab3ef7ab18ca78e419b761
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91653566"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812416"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Registr schémat Azure v Event Hubs (Preview)
 V mnoha scénářích pro streamování událostí a zasílání zpráv obsahuje datová část události nebo zprávy strukturovaná data, která jsou buď serializovaná, nebo deserializovaná pomocí formátu založeného na schématu, jako je Apache Avro. Odesílatelé i přijímače můžou chtít ověřit integritu dat pomocí schématu dokumentu jako ve schématu JSON. V případě formátů založených na schématu je k dispozici pro příjemce zprávy je předpokladem, že příjemce může data deserializovat. 
@@ -41,7 +41,7 @@ Můžete použít jednu z následujících knihoven, které obsahují serializá
 - [Java – Azure – Data-schemaregistry – Avro](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/)
 - [Python – Azure – schemaregistry – avroserializer](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer)
 - [JavaScriptu @azure/schema-registry-avro](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro)
-- [Apache Kafka](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/avro/samples) – spouštějte Kafka a deserializace integrovaných serializátorů Apache Avro v registru schématu Azure. Serializátor klienta Apache Kafka klienta Java pro Registry schématu Azure je možné použít v jakémkoli scénáři Apache Kafka a v případě nasazení založeného na Apache Kafka® nebo cloudové služby. 
+- [Apache Kafka](https://github.com/Azure/azure-schema-registry-for-kafka/) – spouštějte Kafka a deserializace integrovaných serializátorů Apache Avro v registru schématu Azure. Serializátor klienta Apache Kafka klienta Java pro Registry schématu Azure je možné použít v jakémkoli scénáři Apache Kafka a v případě nasazení založeného na Apache Kafka® nebo cloudové služby. 
 
 Následující obrázek znázorňuje tok informací v registru schématu pomocí Event Hubs: 
 

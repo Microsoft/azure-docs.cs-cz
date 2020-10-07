@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/21/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: e5aa2c1c51fccddc3fb62d7ebdbadee19a2b093e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265173"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812280"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Testování šířky pásma a propustnosti (NTTTCP)
 
@@ -26,7 +26,7 @@ Při testování výkonu propustnosti sítě v Azure je nejvhodnější použít
 Zkopírujte nástroj do dvou virtuálních počítačů Azure se stejnou velikostí. Jeden virtuální počítač funguje jako ODESÍLATEL a druhý jako přijímač.
 
 #### <a name="deploying-vms-for-testing"></a>Nasazení virtuálních počítačů pro testování
-Pro účely tohoto testu musí být oba virtuální počítače buď ve stejné cloudové službě, nebo ve stejné skupině dostupnosti, aby bylo možné použít své interní IP adresy a vyloučit z testu nástroje pro vyrovnávání zatížení. Je možné provést test pomocí virtuální IP adresy, ale tento druh testování je mimo rozsah tohoto dokumentu.
+Pro účely tohoto testu musí být oba virtuální počítače buď ve stejné [skupině umístění blízkosti](../virtual-machines/windows/co-location.md) , nebo ve stejné skupině dostupnosti, aby bylo možné použít své interní IP adresy a vyloučit z testu nástroje pro vyrovnávání zatížení. Je možné provést test pomocí virtuální IP adresy, ale tento druh testování je mimo rozsah tohoto dokumentu.
 
 Poznamenejte si IP adresu příjemce. Pojďme zavolat tuto IP adresu "a. b. c. r"
 
@@ -52,7 +52,7 @@ Parametry odesílatele: NTttcp-s 10.27.33.7-t 10-n 1-P 1
 
 #### <a name="get-ntttcp-onto-the-vms"></a>Získejte NTTTCP na virtuální počítače.
 
-Stáhnout nejnovější verzi:<https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
+Stáhnout nejnovější verzi: <https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
 
 Nebo ho vyhledejte, pokud je přesunutý: <https://www.bing.com/search?q=ntttcp+download> \< --měl by se nejdřív narazit.
 
@@ -89,7 +89,7 @@ Počkejte na výsledky.
 
 ## <a name="testing-vms-running-linux"></a>Testování virtuálních počítačů se systémem LINUX:
 
-Použijte nttcp-for-Linux. Je k dispozici z<https://github.com/Microsoft/ntttcp-for-linux>
+Použijte nttcp-for-Linux. Je k dispozici z <https://github.com/Microsoft/ntttcp-for-linux>
 
 Na virtuálních počítačích se systémem Linux (ODESÍLATEL i přijímač) spusťte tyto příkazy pro přípravu NTttcp-for-Linux na virtuálních počítačích:
 

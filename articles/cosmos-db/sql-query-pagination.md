@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 7f7f895b61e3c638cb347a2d73bb5ee458b31acd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1cd0c3f48d4dc79294b3ebf9907ac18d23794830
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498816"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804193"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Stránkování v Azure Cosmos DB
 
@@ -23,7 +23,7 @@ Někdy budou výsledky dotazu rozděleny na více stránek. Výsledky každé st
 
 Můžete zadat maximální počet položek vrácených dotazem nastavením `MaxItemCount` . `MaxItemCount`Je určen pro každý požadavek a zaručuje, že dotazovací stroj vrátí tento počet položek nebo méně. Můžete nastavit `MaxItemCount` na, `-1` Pokud nechcete omezit počet výsledků na provedení dotazu.
 
-Kromě toho existují další důvody, proč může dotazovací stroj potřebovat rozdělit výsledky dotazu na více stránek. Mezi ně patří:
+Kromě toho existují další důvody, proč může dotazovací stroj potřebovat rozdělit výsledky dotazu na více stránek. Tady jsou některé z nich:
 
 - Kontejner byl omezen a nebylo k dispozici ru k vrácení více výsledků dotazu.
 - Odpověď na provedení dotazu byla příliš velká.
@@ -56,7 +56,7 @@ Pokud dotaz vrátí token pro pokračování, existují další výsledky dotazu
 
 V REST API Azure Cosmos DB můžete spravovat tokeny pokračování s `x-ms-continuation` hlavičkou. Pokud hlavička odpovědi není prázdná, stejně jako při dotazování na sadu .NET nebo Java SDK `x-ms-continuation` znamená, že dotaz má další výsledky.
 
-Pokud používáte stejnou verzi sady SDK, tokeny pro pokračování nebudou nikdy vypršet. Volitelně můžete [omezit velikost tokenu pro pokračování](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?view=azure-dotnet#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb). Bez ohledu na množství dat nebo počet fyzických oddílů ve vašem kontejneru vrátí dotazy jeden token pro pokračování.
+Pokud používáte stejnou verzi sady SDK, tokeny pro pokračování nebudou nikdy vypršet. Volitelně můžete [omezit velikost tokenu pro pokračování](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb). Bez ohledu na množství dat nebo počet fyzických oddílů ve vašem kontejneru vrátí dotazy jeden token pro pokračování.
 
 Tokeny pro pokračování nelze použít pro dotazy s [Group by](sql-query-group-by.md) nebo [DISTINCT](sql-query-keywords.md#distinct) , protože tyto dotazy by vyžadovaly uložení významného stavu. Pro dotazy s `DISTINCT` můžete použít tokeny pro pokračování, pokud přidáte `ORDER BY` do dotazu.
 
@@ -70,6 +70,6 @@ ORDER BY c.name
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)
 - [Ukázky Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Klauzule ORDER BY](sql-query-order-by.md)

@@ -5,17 +5,37 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2020
-ms.openlocfilehash: 637ac97d1e054599ec297344ff0c5fff600c8487
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 09/23/2020
+ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045344"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812858"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Ochrana dat v Azure Stream Analytics 
 
 Azure Stream Analytics je plně spravovaná platforma jako služba, která umožňuje vytvářet kanály analýz v reálném čase. Všechny těžké zvedá, jako je zřizování clusterů, škálování uzlů, aby vyhovovaly vašemu využití a Správa vnitřních kontrolních bodů, se spravují na pozadí.
+
+## <a name="private-data-assets-that-are-stored"></a>Soukromé datové prostředky, které jsou uloženy
+
+Azure Stream Analytics uchovává následující metadata a data, aby je bylo možné spustit: 
+
+* Definice dotazu a jejich související konfigurace  
+
+* Uživatelsky definované funkce nebo agregace  
+
+* Kontrolní body vyžadované modulem runtime Stream Analytics
+
+* Snímky referenčních dat 
+
+* Podrobnosti o připojení prostředků používaných úlohou Stream Analytics
+
+Další informace o [nabídkách dodržování předpisů Microsoftu](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)vám pomůžou splnit vaše povinnosti dodržování předpisů v jakémkoli regulovaném odvětví nebo prostředí. 
+
+## <a name="in-region-data-residency"></a>Zasídlí dat v oblasti
+Azure Stream Analytics ukládá zákaznická data a další výše popsané metadata. Zákaznická data se ve výchozím nastavení ukládají v rámci Azure Stream Analytics v jedné oblasti, takže tato služba automaticky splňuje požadavky na umístění dat v oblastech, včetně těch, které jsou uvedené v [Centru zabezpečení](https://azuredatacentermap.azurewebsites.net/).
+Kromě toho se můžete rozhodnout pro uložení všech datových assetů (zákaznických dat a dalších metadat) souvisejících s úlohou Stream Analytics v jedné oblasti tak, že je zašifrujete v účtu úložiště podle vašeho výběru.
 
 ## <a name="encrypt-your-data"></a>Šifrování dat
 
@@ -28,11 +48,18 @@ Toto nastavení musí být nakonfigurované v době vytváření úlohy Stream A
 Aktualizace nebo otočení klíčů k účtu úložiště není možné pomocí Stream Analyticsového portálu. Klíče můžete aktualizovat pomocí rozhraní REST API.
 
 
-## <a name="configure-storage-account-for-private-data"></a>Konfigurace účtu úložiště pro soukromá data 
+### <a name="configure-storage-account-for-private-data"></a>Konfigurace účtu úložiště pro soukromá data 
+
+
+Zašifrujte svůj účet úložiště, abyste zabezpečili všechna vaše data, a explicitně zvolíte umístění vašich privátních dat. 
+
+Další informace o [nabídkách dodržování předpisů Microsoftu](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)vám pomůžou splnit vaše povinnosti dodržování předpisů v jakémkoli regulovaném odvětví nebo prostředí. 
+
+
 
 Pomocí následujícího postupu můžete nakonfigurovat účet úložiště pro soukromé datové prostředky. Tato konfigurace se provádí z vaší Stream Analytics úlohy, nikoli z vašeho účtu úložiště.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**. 
 
@@ -46,24 +73,10 @@ Pomocí následujícího postupu můžete nakonfigurovat účet úložiště pro
 
    ![Nastavení účtu úložiště privátních dat](./media/data-protection/storage-account-create.png)
 
-## <a name="private-data-assets-that-are-stored"></a>Soukromé datové prostředky, které jsou uloženy
 
-Všechna privátní data, která jsou potřeba k uchování pomocí Stream Analytics, se ukládají do svého účtu úložiště. Mezi soukromé datové prostředky patří: 
 
-* Dotazy, které jste vytvořili, a jejich související konfigurace  
-
-* Uživatelsky definované funkce 
-
-* Kontrolní body vyžadované modulem runtime Stream Analytics
-
-* Snímky referenčních dat 
-
-Ukládají se také podrobnosti o připojení vašich prostředků, které používá vaše úloha Stream Analytics. Zašifrujte svůj účet úložiště, abyste zabezpečili všechna vaše data. 
-
-Další informace o [nabídkách dodržování předpisů Microsoftu](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)vám pomůžou splnit vaše povinnosti dodržování předpisů v jakémkoli regulovaném odvětví nebo prostředí. 
-
-## <a name="known-issues"></a>Známé problémy
-K dispozici je známý problém, kdy úloha pomocí spravovaného klíče zákazníka spustí chyby při použití spravované identity k ověření pro jakékoli vstupy nebo výstupy. Oprava tohoto problému probíhá na a bude k dispozici v blízké budoucnosti. 
+### <a name="known-issues"></a>Známé problémy
+V současné době existuje známé omezení, kde úloha používající kód spravovaný zákazníkem spustí chyby při použití spravované identity k ověření pro jakékoli vstupy nebo výstupy.
 
 ## <a name="next-steps"></a>Další kroky
 

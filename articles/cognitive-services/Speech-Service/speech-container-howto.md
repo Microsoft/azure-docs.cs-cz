@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 10/07/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: místní, Docker, kontejner
-ms.openlocfilehash: ed14b0b90fadf02ee23852ebce9a60b758b82573
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 0ba479e8c73cb7b0f397f39124ec32d7b9afbf4f
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766460"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813266"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Instalace a spuštění kontejnerů Docker pro rozhraní API služby pro rozpoznávání řeči 
 
@@ -140,7 +140,7 @@ Obrázky kontejneru pro řeč jsou k dispozici v následujících Container Regi
 # <a name="speech-language-detection"></a>[Rozpoznávání jazyka řeči](#tab/lid)
 
 > [!TIP]
-> Pro dosažení nejlepších výsledků doporučujeme použít kontejner rozpoznávání jazyka rozpoznávání řeči s vlastními kontejnery řeči a textu. 
+> Chcete-li získat nejužitečnější výsledky, doporučujeme použít kontejner rozpoznávání jazyka rozpoznávání řeči s vlastními kontejnery řeči a textu. 
 
 | Kontejner | Repository |
 |-----------|------------|
@@ -655,7 +655,7 @@ Můžete mít tento kontejner a jiný kontejner Azure Cognitive Services běží
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Při spuštění nebo spuštění kontejneru může docházet k problémům. Použijte výstupní [připojení](speech-container-configuration.md#mount-settings) a povolte protokolování. Tím umožníte, aby kontejner generoval soubory protokolu, které jsou užitečné při řešení problémů.
 

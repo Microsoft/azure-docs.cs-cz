@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 4ad1bcabc2e30e9e636883219d42f96335e32e78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6d95c07e5bec810ce82e98b2291b348fbcc2d8bc
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90987357"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812433"
 ---
 # <a name="what-is-azure-iot-central"></a>Co je Azure IoT Central?
 
@@ -50,14 +50,21 @@ Můžete rychle nasadit novou aplikaci IoT Central a pak ji přizpůsobit konkr�
 
 Jako tvůrce řešení můžete pomocí webových nástrojů vytvořit _šablonu zařízení_ pro zařízení, která se připojují k vaší aplikaci. Šablona zařízení je plán, který definuje charakteristiky a chování typu zařízení, například:
 
-- Telemetrii, kterou posílá.
-- Obchodní vlastnosti, které můžete upravit operátor
-- Vlastnosti zařízení nastavené zařízením, které jsou v aplikaci jen pro čtení
-- Vlastnosti, které jsou nastaveny jako operátor, které určují chování zařízení.
+- Telemetrii, kterou posílá. Mezi příklady patří teplota a vlhkost. Telemetrie jsou streamovaná data.
+- Obchodní vlastnosti, které můžete upravit operátor Mezi příklady patří adresa zákazníka a datum poslední služby.
+- Vlastnosti zařízení nastavené zařízením, které jsou v aplikaci jen pro čtení Například stav ventilu buď otevřený, nebo vypnutý.
+- Vlastnosti, které jsou nastaveny jako operátor, které určují chování zařízení. Například cílovou teplotu pro zařízení.
+- Příkazy, které může operátor volat, které se spouštějí na zařízení. Například příkaz pro vzdálené restartování zařízení.
 
 Tato [Šablona zařízení](howto-set-up-template.md) zahrnuje:
 
-- _Model schopností zařízení_ , který popisuje možnosti, které by zařízení mělo implementovat, jako je například telemetrie, kterou posílá, a vlastnosti, které vystavuje.
+- _Model schopností zařízení_ , který popisuje možnosti, které zařízení má implementovat. Mezi možnosti zařízení patří:
+
+  - Telemetrie IT, která se má IoT Central.
+  - Vlastnosti jen pro čtení, které používá k hlášení stavu do IoT Central.
+  - Vlastnosti s možností zápisu, které obdrží z IoT Central pro nastavení stavu zařízení.
+  - Příkazy volané z IoT Central.
+
 - Vlastnosti cloudu, které nejsou uložené na zařízení.
 - Vlastní nastavení, řídicí panely a formuláře, které jsou součástí vaší aplikace IoT Central.
 
@@ -144,7 +151,6 @@ Každé předplatné Azure má výchozí kvóty, které by mohly mít vliv na ro
 - Typy schématu pole nejsou podporovány.
 - Podporovaná je jenom sada SDK pro zařízení C a sady SDK pro Node.js zařízení a služeb.
 - IoT Central je v současné době k dispozici v místech USA, Evropa, Asie a Tichomoří, Austrálie, Spojené království a Japonsko.
-- Nemůžete použít šablonu **vlastní aplikace (starší verze)** v umístěních Spojeného království a Japonsko.
 - Modely schopností zařízení musí mít všechna rozhraní definovaná vložené do stejného souboru.
 
 ## <a name="next-steps"></a>Další kroky

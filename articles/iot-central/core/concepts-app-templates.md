@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0cf343ccd89ac5b00740d8c559538a0f97ec7905
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: dae2461336316defb6f2cfc63b775c67cf2196d0
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716567"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813062"
 ---
 # <a name="what-are-application-templates"></a>Co jsou šablony aplikací?
 
@@ -30,12 +30,7 @@ ms.locfileid: "88716567"
 
 ## <a name="custom-templates"></a>Vlastní šablony
 
-Pokud chcete vytvořit aplikaci od začátku, vyberte jednu ze dvou šablon vlastní aplikace:
-
-- Custom application (Vlastní aplikace)
-- Vlastní aplikace (starší verze)
-
-Pokud nemáte konkrétní důvod k použití starší šablony aplikace, vyberte šablonu **vlastní aplikace** .
+Pokud chcete vytvořit aplikaci od začátku, vyberte jednu ze šablon **vlastní aplikace** .
 
 ## <a name="industry-focused-templates"></a>Šablony zaměřené na odvětví
 

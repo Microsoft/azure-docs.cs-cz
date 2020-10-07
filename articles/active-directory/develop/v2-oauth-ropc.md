@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 24d50635efb4d7fe18db9836311cf0a85dfcc734
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 39cd25c2c84e92a0b06bc2ee6c6229ecb2d296d5
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118616"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812535"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Přihlašovací údaje pro heslo vlastníka prostředku Microsoft Identity Platform a OAuth 2,0
 
@@ -64,13 +64,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| Parametr | Podmínka | Popis |
+| Parametr | Stav | Popis |
 | --- | --- | --- |
 | `tenant` | Povinné | Tenant adresáře, do kterého chcete uživatele přihlašovat. Může se jednat o formát GUID nebo popisný název. Tento parametr nemůže být nastaven na hodnotu `common` nebo `consumers` , ale může být nastaven na hodnotu `organizations` . |
-| `client_id` | Vyžadováno | ID aplikace (klienta), ke které se stránka [Azure Portal registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřazená vaší aplikaci. |
-| `grant_type` | Vyžadováno | Musí být nastaven na hodnotu `password` . |
-| `username` | Vyžadováno | E-mailová adresa uživatele. |
-| `password` | Vyžadováno | Heslo uživatele. |
+| `client_id` | Požaduje se | ID aplikace (klienta), ke které se stránka [Azure Portal registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřazená vaší aplikaci. |
+| `grant_type` | Požaduje se | Musí být nastaven na hodnotu `password` . |
+| `username` | Požaduje se | E-mailová adresa uživatele. |
+| `password` | Požaduje se | Heslo uživatele. |
 | `scope` | Doporučeno | Mezerou oddělený seznam [oborů](v2-permissions-and-consent.md)nebo oprávnění, které aplikace vyžaduje. V interaktivním toku musí správce nebo uživatel na tyto obory vyjádřit svůj souhlas předem. |
 | `client_secret`| Někdy vyžadováno | Pokud je vaše aplikace veřejným klientem, nelze ji `client_secret` `client_assertion` zahrnout nebo.  Pokud je aplikace důvěrného klienta, musí být součástí. |
 | `client_assertion` | Někdy vyžadováno | Jiná forma `client_secret` , generovaná pomocí certifikátu.  Další podrobnosti najdete v tématu [přihlašovací údaje k certifikátu](active-directory-certificate-credentials.md) . |
@@ -112,5 +112,4 @@ Pokud uživatel nezadal správné uživatelské jméno nebo heslo nebo pokud kli
 
 ## <a name="learn-more"></a>Další informace
 
-* Vyzkoušejte si ROPC pro sebe pomocí [ukázkové konzolové aplikace](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
-* Pokud chcete zjistit, jestli byste měli použít koncový bod v 2.0, přečtěte si o [omezeních platformy Microsoft Identity](../azuread-dev/azure-ad-endpoint-comparison.md).
+Příklad použití ROPC naleznete v části ukázka kódu [konzolové aplikace .NET Core](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) na GitHubu.

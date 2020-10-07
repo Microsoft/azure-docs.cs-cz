@@ -1,6 +1,6 @@
 ---
 title: Zřizování protokolů na portálu Azure Active Directory (Preview) | Microsoft Docs
-description: Úvod do sestav aktivit zřizování na portálu Azure Active Directory
+description: Úvod do sestav protokolů zřizování na portálu Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/02/2020
+ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8aa31c6e196f916b4c7633da0c54a30ab9d7b548
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361275"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812552"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
 
@@ -39,9 +39,10 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 Toto téma vám poskytne přehled o zřizovacích sestavách.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
+* Vlastníci aplikace
 * Uživatelé v rolích správce zabezpečení, čtenář zabezpečení, čtenář sestav, Správce aplikací a role správce cloudové aplikace
 * Globální správci
 
@@ -85,7 +86,7 @@ To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazen
 
 Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
-![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtrovat")
+![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtr")
 
 
 ## <a name="filter-provisioning-activities"></a>Filtrovat aktivity zřizování
@@ -99,7 +100,7 @@ Ve výchozím zobrazení můžete vybrat následující filtry:
 - Akce
 
 
-![Přidání filtrů](./media/concept-provisioning-logs/default-filter.png "Filtrovat")
+![Přidání filtrů](./media/concept-provisioning-logs/default-filter.png "Filtr")
 
 Filtr **identit** umožňuje zadat název nebo identitu, o které se zajímáte. Tato identita by mohla být uživatel, skupina, role nebo jiný objekt. Můžete hledat podle názvu nebo ID objektu. ID se liší podle scénáře. Například při zřizování objektu ze služby Azure AD do SalesForce je ID zdroje ID objektu uživatele ve službě Azure AD, zatímco TargetID je ID uživatele v Salesforce. Při zřizování z Workday do služby Active Directory je zdrojem ID ID zaměstnance pracovního procesu Workday. Všimněte si, že jméno uživatele nemusí být vždy k dispozici ve sloupci identita. Vždy bude existovat jedno ID. 
 
@@ -131,7 +132,7 @@ Filtr **akcí** umožňuje filtrovat:
 - Aktualizace
 - Odstranit
 - Zakázat
-- Další
+- Ostatní
 
 Kromě toho můžete také nastavit následující filtry pro filtry výchozího zobrazení:
 
@@ -190,7 +191,7 @@ Karta **kroky** popisuje kroky podniknuté při zřizování objektu. Zřizován
 
 
 
-![Snímek obrazovky se zobrazí na kartě kroky, na které se zobrazují kroky zřizování.](./media/concept-provisioning-logs/steps.png "Filtrovat")
+![Snímek obrazovky se zobrazí na kartě kroky, na které se zobrazují kroky zřizování.](./media/concept-provisioning-logs/steps.png "Filtr")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Řešení potíží a doporučení
@@ -210,13 +211,11 @@ Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro ob
 
 ## <a name="what-you-should-know"></a>Co byste měli vědět
 
-- Azure Portal ukládá nahlášená data zřizování po dobu 30 dnů, pokud máte edici Premium a 7 dní, pokud máte bezplatnou edici.
+- Azure Portal ukládá nahlášená data zřizování po dobu 30 dnů, pokud máte edici Premium a 7 dní, pokud máte bezplatnou edici. Zřizovací protokoly je možné publikovat do Log Analytics za účelem uchování po dobu 30 dnů. 
 
 - Atribut Change ID můžete použít jako jedinečný identifikátor. To je například užitečné při interakci s produktovou podporou.
 
 - V tuto chvíli není k dispozici možnost stahovat data zřizování jako soubor CSV, ale data můžete exportovat pomocí [Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http).
-
-- Služba Log Analytics momentálně není podporovaná.
 
 - Pro uživatele, kteří nejsou v oboru, se můžou zobrazit vynechané události. To je očekáváno, zejména v případě, že je rozsah synchronizace nastaven na všechny uživatele a skupiny. Naše služba vyhodnotí všechny objekty v tenantovi, a to i ty, které jsou mimo rozsah. 
 
@@ -252,3 +251,4 @@ Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, kte
 
 * [Ověřit stav zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Problém s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD](../app-provisioning/application-provisioning-config-problem.md)
+* [Rozhraní Graph API pro zřizování protokolů](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)

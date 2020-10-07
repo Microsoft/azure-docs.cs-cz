@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: fd8192b48f6923a8fe68abf674d6100c8b8e5a00
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e5b0eb5fc9014a4f8df0f0cc363b5dddb45674af
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761868"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804176"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Přenos předplatného Azure do jiného adresáře Azure AD
 
@@ -74,7 +74,7 @@ Několik prostředků Azure má závislost na předplatném nebo adresáři. V z
 | Azure Data Lake Storage Gen1 | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
 | Soubory Azure | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
 | Synchronizace souborů Azure | Ano | Ano |  |  |
-| Spravované disky Azure | Ano | – |  |  |
+| Spravované disky Azure | Ano | Ano |  |  Pokud používáte šifrovací sady disku k šifrování Managed Disks pomocí klíčů spravovaných zákazníkem, je nutné zakázat a znovu povolit identity přiřazené systémem, které jsou přidruženy k sadám šifrování disku. A musíte znovu vytvořit přiřazení rolí, tj. znovu udělit požadovaná oprávnění sadám Disk Encryption v trezorech klíčů. |
 | Azure Container Services pro Kubernetes | Ano | Ano |  |  |
 | Azure Active Directory Domain Services | Ano | No |  |  |
 | Registrace aplikací | Ano | Ano |  |  |

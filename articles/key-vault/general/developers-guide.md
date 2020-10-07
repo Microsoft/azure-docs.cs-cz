@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 662c23a29e383800a4591c900e02133c16fa2090
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: a04435b1e2feb537231bb80d2777b9ea2599c241
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743314"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812399"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -61,6 +61,11 @@ Další informace naleznete v tématech:
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
 |[Sada Azure identity SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure identity SDK Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Sada Azure identity SDK Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[JavaScript sady Azure identity SDK](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
+
+Ověřování pro Key Vault v aplikacích:
+- [Ověřování pro Key Vault v aplikaci hostované na virtuálním počítači v .NET](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
+- [Ověřování pro Key Vault v aplikaci hostované na virtuálním počítači v Pythonu](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
+- [Ověřování pro Key Vault s App Service](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)
 
 ## <a name="manage-keys-certificates-and-secrets"></a>Správa klíčů, certifikátů a tajných klíčů
 
@@ -112,9 +117,13 @@ Následující články a scénáře poskytují pokyny pro práci s Azure Key Va
 
 Tyto články se týkají dalších scénářů a služeb, které používají nebo integrují s Key Vault.
 
-- [Šifrování v klidovém umístění pomocí Key Vault](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
-
+- [Šifrování v klidovém](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) případě umožňuje kódování (šifrování) dat, když jsou trvalá. Šifrovací klíče dat se často šifrují pomocí klíčového šifrovacího klíče v Azure Key Vault k dalšímu omezení přístupu.
 - [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) umožňuje správce vlastního klíče tenanta. Místo toho, aby váš klíč tenanta spravovala společnost Microsoft (výchozí možnost), můžete spravovat vlastní klíč tenanta, abyste vyhověli určitým předpisům, které se vztahují na vaši organizaci. Správa vlastního klíče tenanta se také označuje jako funkce Přineste si vlastní klíč (BYOK).
+- [Služba privátního propojení Azure](private-link-service.md) vám umožňuje přístup ke službám Azure (například Azure Key Vault, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím privátního koncového bodu ve vaší virtuální síti.
+- Key Vault integrace s [Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)  umožňuje uživatelům upozornit na změnu stavu tajného klíče uloženého v trezoru klíčů. Můžete distribuovat nové verze tajných kódů do aplikací nebo je otáčet v blízkosti tajných klíčů s vypršenou platností, abyste zabránili výpadkům.
+- Tajné kódy [Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/release/azure-key-vault) můžete chránit před nevyžádaným přístupem v Key Vault.
+- [Pomocí tajného kódu uloženého v Key Vault datacihly se připojte k Azure Storage](https://docs.microsoft.com/azure/key-vault/general/integrate-databricks-blob-storage)
+- Konfigurace a spuštění poskytovatele Azure Key Vault pro [ovladač tajných klíčů úložiště CSI](https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes) na Kubernetes
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault přehledy a koncepty
 
