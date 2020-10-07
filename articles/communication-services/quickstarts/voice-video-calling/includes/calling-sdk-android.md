@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: aec9d2049a69aebc7102a70274e5fb2a3ef865a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377574"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779719"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
@@ -48,7 +48,7 @@ Pak v sestavení na úrovni modulu přidejte následující řádky do oddílu z
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.1'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
     ...
 }
 
@@ -84,7 +84,7 @@ DeviceManage deviceManager = await callClient.getDeviceManager().get();
 Chcete-li vytvořit a spustit volání, je třeba zavolat `CallAgent.call()` metodu a zadat `Identifier` volaného (y).
 Chcete-li se připojit k volání skupiny, je třeba zavolat `CallAgent.join()` metodu a poskytnout identifikátor skupiny. ID skupin musí být ve formátu GUID nebo UUID.
 
-Vytvoření a spuštění volání je synchronní. Instance volání umožňuje přihlásit se k odběru všech událostí volání.
+Vytvoření a spuštění volání jsou synchronní. Instance volání umožňuje přihlásit se k odběru všech událostí volání.
 
 ### <a name="place-a-11-call-to-a-user"></a>Vložení volání 1:1 uživateli
 Chcete-li umístit volání jinému uživateli komunikačních služeb, volejte `call` metodu na `callAgent` a předejte objekt s `communicationUserId` klíčem.
@@ -109,7 +109,7 @@ Context appContext = this.getApplicationContext();
 Call groupCall = callAgent.call(participants, startCallOptions);
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>Nakonání volání 1:1 s videokamerou
+### <a name="place-a-11-call-with-video-camera"></a>Vložení volání 1:1 s videokamerou
 > [!WARNING]
 > V současné době se podporuje jenom jeden odchozí datový proud místního videa, který zadává volání s videem, takže je nutné vytvořit výčet místních kamer pomocí `deviceManager` `getCameraList` rozhraní API.
 Jakmile vyberete požadovanou kameru, použijte ji k vytvoření `LocalVideoStream` instance a předejte ji do `videoOptions` jako položku v `localVideoStream` poli do `call` metody.
@@ -136,17 +136,17 @@ JoinCallOptions joinCallOptions = new JoinCallOptions();
 call = callAgent.join(context, groupCallContext, joinCallOptions);
 ```
 
-## <a name="push-notification"></a>Nabízené oznámení
+## <a name="push-notifications"></a>Nabízená oznámení
 
 ### <a name="overview"></a>Přehled
-Mobilní nabízené oznámení jsou místní oznámení, které získáte na mobilním zařízení. Pro volání se budeme soustředit na nabízená oznámení VoIP (Voice over Internet Protocol). Nabídneme vám možnosti registrace nabízeného oznámení, zpracování nabízeného oznámení a zrušení registrace nabízených oznámení.
+Mobilní nabízená oznámení jsou místní oznámení, která vidíte na mobilních zařízeních. Pro volání se budeme soustředit na nabízená oznámení VoIP (Voice over Internet Protocol). Zaregistruje se na nabízená oznámení, zpracuje nabízená oznámení a pak zruší registraci nabízených oznámení.
 
-### <a name="prerequisite"></a>Požadavek
+### <a name="prerequisites"></a>Předpoklady
 
-V tomto kurzu se předpokládá, že máte nastavené Firebase účtu s povoleným cloudovým zasíláním zpráv (FCM) a že vaše služba Firebase Cloud Messaging je připojená k instanci Azure Notification hub (ANH). Další informace najdete v tématu věnovaném [připojení Firebase k Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) .
-Kromě toho kurz předpokládá, že k sestavení aplikace používáte Android Studio verze 3,6 nebo vyšší.
+K dokončení této části vytvořte účet Firebase a povolte zasílání zpráv v cloudu (FCM). Ujistěte se, že služba Firebase Cloud Messaging je připojená k instanci centra oznámení Azure (ANH). Pokyny najdete v tématu věnovaném [připojení Firebase k Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) .
+V této části se také předpokládá, že pro sestavení aplikace používáte Android Studio verze 3,6 nebo vyšší.
 
-Pro aplikaci pro Android se vyžaduje sada oprávnění, aby bylo možné přijímat zprávy s oznámeními z FCM. V souboru AndroidManifest.xml přidejte následující sadu oprávnění hned za *<manifest... >* nebo pod *</application>* značku.
+Pro aplikaci pro Android se vyžaduje sada oprávnění, aby bylo možné přijímat zprávy oznámení z Firebase cloudového zasílání zpráv. Do `AndroidManifest.xml` souboru přidejte následující sadu oprávnění hned za *<manifest... >* nebo pod *</application>* značku
 
 ```XML
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -154,39 +154,41 @@ Pro aplikaci pro Android se vyžaduje sada oprávnění, aby bylo možné přij�
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 ```
 
-### <a name="register-for-push-notification"></a>Zaregistrujte se na nabízené oznámení.
+### <a name="register-for-push-notifications"></a>Registrace nabízených oznámení
 
-- Aby bylo možné zaregistrovat nabízené oznámení, musí aplikace volat registerPushNotification () na instanci *CallAgent* s registračním tokenem zařízení.
+Aby bylo možné registrovat nabízená oznámení, musí aplikace zavolat `registerPushNotification()` na instanci *CallAgent* s registračním tokenem zařízení.
 
-- Jak získat token registrace zařízení
-1. Nezapomeňte přidat knihovnu klienta Firebase do souboru *Build. Gradle* modulu aplikace tak, že do části *závislosti* přidáte následující řádky, pokud tam ještě není:
+Pokud chcete získat token registrace zařízení, přidejte do souboru *Build. Gradle* v modulu aplikace klientskou knihovnu Firebase tak, že v části přidáte následující řádky, `dependencies` Pokud tam ještě není:
+
 ```
     // Add the client library for Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
 
-2. V souboru *Build. Gradle* na úrovni projektu přidejte následující v části *závislosti* , pokud tam ještě není.
+V souboru *Build. Gradle* na úrovni projektu přidejte následující `dependencies` části do oddílu, pokud tam ještě není:
+
 ```
     classpath 'com.google.gms:google-services:4.3.3'
 ```
 
-3. Pokud tam ještě není, přidejte na začátek souboru následující modul plug-in.
+Přidejte následující modul plug-in na začátek souboru, pokud tam ještě není:
+
 ```
 apply plugin: 'com.google.gms.google-services'
 ```
 
-4. Vybrat *synchronizaci hned* na panelu nástrojů
+Vyberte *synchronizovat hned* na panelu nástrojů. Přidejte následující fragment kódu pro získání tokenu registrace zařízení vygenerovaného klientskou knihovnou zasílání zpráv Firebase pro instanci klientské aplikace nezapomeňte přidat níže uvedené importy do hlavičky hlavní aktivity instance. Jsou vyžadovány, aby fragment mohl načíst token:
 
-5. Přidejte následující fragment kódu pro získání tokenu registrace zařízení vygenerovaného klientskou knihovnou FCM pro instanci klientské aplikace. 
-- Přidejte tyto importy do hlavičky hlavní aktivity pro instanci. Jsou vyžadovány, aby fragment mohl načíst token.
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 ```
-- Přidejte tento fragment kódu pro načtení tokenu.
+
+Přidejte tento fragment kódu pro načtení tokenu:
+
 ```
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -204,7 +206,7 @@ import com.google.firebase.iid.InstanceIdResult;
                     }
                 });
 ```
-6. Registrace tokenu registrace zařízení pomocí klientské knihovny volajících služeb pro příchozí volání nabízených oznámení
+Zaregistrujte token registrace zařízení pomocí klientské knihovny volajících služeb pro příchozí nabízená oznámení volání:
 
 ```java
 String deviceRegistrationToken = "some_token";
@@ -218,10 +220,9 @@ catch(Exception e) {
 
 ### <a name="push-notification-handling"></a>Manipulace s nabízenými oznámeními
 
-- Aby bylo možné přijímat příchozí nabízená oznámení volání, zavolejte *handlePushNotification ()* na instanci *CallAgent* s datovou částí.
+Chcete-li přijímat příchozí nabízená oznámení volání, zavolejte *handlePushNotification ()* na instanci *CallAgent* s datovou částí.
 
-1. Chcete-li získat datovou část z FCM, postupujte podle kroků nezbytných pro:
-- Vytvořte novou službu (soubor > novou službu služby > Service >), která rozšiřuje třídu klientské knihovny *FirebaseMessagingService* Firebase, a ujistěte se, že jste přepsali metodu *onMessageReceived* . Tato metoda je obslužná rutina události volána, když FCM zajišťuje nabízené oznámení do aplikace.
+Pokud chcete datovou část získat z Firebase cloudového zasílání zpráv, Začněte vytvořením nové služby (soubor > novou službu > Service >), která rozšiřuje třídu klientské knihovny *FirebaseMessagingService* Firebase a přepíše `onMessageReceived` metodu. Tato metoda je obslužná rutina události volána, když Firebase Cloud Messaging doručuje nabízené oznámení do aplikace.
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -239,7 +240,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 }
 ```
-- Do souboru AndroidManifest.xml přidejte také následující definici služby uvnitř <application> značky.
+Do tohoto souboru přidejte následující definici služby `AndroidManifest.xml` uvnitř <application> značky:
 
 ```
         <service
@@ -251,7 +252,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-- Jakmile je datová část načtena, může být předána klientské knihovně *komunikačních služeb* , aby byla zpracována voláním metody *HandlePushNotification* v instanci *CallAgent* .
+Jakmile je datová část načtena, může být předána klientské knihovně komunikačních služeb, aby ji bylo možné zpracovat voláním `handlePushNotification` metody v `CallAgent` instanci.
 
 ```java
 java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
@@ -262,11 +263,12 @@ catch(Exception e) {
     System.out.println("Something went wrong while handling the Incoming Calls Push Notifications.");
 }
 ```
+
 Po úspěšném zpracování zprávy nabízených oznámení a obslužné rutiny všechny události jsou správně registrovány, aplikace bude vyzvánět.
 
-### <a name="unregister-push-notification"></a>Zrušit registraci nabízeného oznámení
+### <a name="unregister-push-notifications"></a>Zrušení registrace nabízených oznámení
 
-- Aplikace můžou kdykoli zrušit registraci nabízených oznámení. Zavolejte `unregisterPushNotification()` metodu na callAgent pro zrušení registrace.
+Aplikace můžou kdykoli zrušit registraci nabízených oznámení. Zavolejte `unregisterPushNotification()` metodu na callAgent pro zrušení registrace.
 
 ```java
 try {
@@ -281,25 +283,31 @@ catch(Exception e) {
 Můžete získat přístup k vlastnostem volání a provádět různé operace během volání ke správě nastavení souvisejících s videem a zvukem.
 
 ### <a name="call-properties"></a>Vlastnosti volání
-* Získá jedinečné ID pro toto volání.
+
+Získat jedinečné ID pro toto volání:
+
 ```java
 String callId = call.getCallId();
 ```
 
-* Další informace o dalších účastníkůch v kolekci inspekce volání `remoteParticipant` v `call` instanci:
+Další informace o dalších účastníkůch v kolekci inspekce volání `remoteParticipant` v `call` instanci:
+
 ```java
 List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants();
 ```
 
-* Identita volajícího, pokud je volání příchozí.
+Identita volajícího, pokud je volání příchozí:
+
 ```java
 CommunicationIdentifier callerId = call.getCallerId();
 ```
 
-* Získejte stav volání.
+Získat stav volání: 
+
 ```java
 CallState callState = call.getState();
 ```
+
 Vrátí řetězec představující aktuální stav volání:
 * None – počáteční stav volání
 * ' Příchozí ' – označuje, že volání je příchozí, musí být buď přijato, nebo odmítnuto.
@@ -312,39 +320,45 @@ Vrátí řetězec představující aktuální stav volání:
 * Odpojeno – stav konečného volání
 
 
-* Chcete-li zjistit, proč bylo volání ukončeno, zkontrolujte `callEndReason` vlastnost.
-Obsahuje kód/podkód (odkaz TODO na dokumentaci)
+Chcete-li zjistit, proč bylo volání ukončeno, zkontrolujte `callEndReason` vlastnost. Obsahuje kód/podkód: 
+
 ```java
 CallEndReason callEndReason = call.getCallEndReason();
 int code = callEndReason.getCode();
 int subCode = callEndReason.getSubCode();
 ```
 
-* Chcete-li zjistit, zda aktuální volání je příchozí volání, zkontrolujte `isIncoming` vlastnost:
+Chcete-li zjistit, zda aktuální volání je příchozí volání, zkontrolujte `isIncoming` vlastnost:
+
 ```java
 boolean isIncoming = call.getIsIncoming();
 ```
 
-*  Pokud chcete zjistit, jestli je aktuální mikrofon ztlumený, zkontrolujte `muted` vlastnost:
+Pokud chcete zjistit, jestli je aktuální mikrofon ztlumený, zkontrolujte `muted` vlastnost:
+
 ```java
 boolean muted = call.getIsMicrophoneMuted();
 ```
 
-* Pokud chcete zkontrolovat aktivní streamy videa, zkontrolujte `localVideoStreams` kolekci:
+Pokud chcete zkontrolovat aktivní streamy videa, zkontrolujte `localVideoStreams` kolekci:
+
 ```java
 List<LocalVideoStream> localVideoStreams = call.getLocalVideoStreams();
 ```
 
 ### <a name="mute-and-unmute"></a>Ztlumení a ztlumení
+
 Chcete-li ztlumit nebo zrušit ztlumení místního koncového bodu, můžete použít `mute` `unmute` asynchronní rozhraní API a:
+
 ```java
 call.mute().get();
 call.unmute().get();
 ```
 
 ### <a name="start-and-stop-sending-local-video"></a>Spuštění a zastavení odesílání místního videa
-Chcete-li spustit video, je nutné vytvořit výčet fotoaparátů pomocí `getCameraList` rozhraní API na `deviceManager` objektu.
-Pak vytvořte novou instanci `LocalVideoStream` předání požadované kamery a předejte ji do `startVideo` rozhraní API jako argument.
+
+Chcete-li spustit video, je nutné vytvořit výčet fotoaparátů pomocí `getCameraList` rozhraní API na `deviceManager` objektu. Pak vytvořte novou instanci `LocalVideoStream` předání požadované kamery a předejte ji do `startVideo` rozhraní API jako argument:
+
 ```java
 VideoDeviceInfo desiredCamera = <get-video-device>;
 Context appContext = this.getApplicationContext();
@@ -355,11 +369,13 @@ startVideoFuture.get();
 ```
 
 Po úspěšném spuštění odesílání videa `LocalVideoStream` bude instance přidána do `localVideoStreams` kolekce v instanci volání.
+
 ```java
 currentVideoStream == call.getLocalVideoStreams().get(0);
 ```
 
 Pokud chcete zastavit místní video, předejte `localVideoStream` instanci dostupnou v `localVideoStreams` kolekci:
+
 ```java
 call.stopVideo(localVideoStream).get();
 ```
@@ -452,7 +468,9 @@ MediaStreamType streamType = remoteParticipantStream.getType(); // of type Media
 ```
  
 Pokud chcete vykreslit `RemoteVideoStream` od vzdáleného účastníka, musíte se přihlásit k odběru `OnVideoStreamsUpdated` události.
-V rámci události Změna `isAvailable` vlastnosti na hodnotu true znamená, že vzdálený účastník aktuálně odesílá proud, jakmile k tomu dojde, vytvoří novou instanci a `Renderer` pak vytvoří nové `RendererView` pomocí asynchronního `createView` rozhraní API a připojí se `view.target` kdekoli v uživatelském rozhraní aplikace.
+
+Změna `isAvailable` vlastnosti na hodnotu true v rámci události znamená, že vzdálený účastník aktuálně posílá datový proud. Jakmile k tomu dojde, vytvořte novou instanci a `Renderer` pak vytvořte novou `RendererView` pomocí asynchronního `createView` rozhraní API a připojte se `view.target` kdekoli v uživatelském rozhraní aplikace.
+
 Vždy, když se změní dostupnost vzdáleného streamu, můžete zvolit zničení celého zobrazovacího panelu, jeho konkrétního `RendererView` nebo zachování, ale výsledkem bude zobrazení prázdného snímku videa.
 
 ```java

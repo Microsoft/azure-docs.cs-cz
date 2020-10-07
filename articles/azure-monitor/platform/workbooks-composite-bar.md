@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 9/04/2020
 ms.author: lagayhar
-ms.openlocfilehash: 76c52d47c7fd7e271f3e74439ee8502117eb83a7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 80846ecb1ad48d9f8ba49f0025772b4e131c23e2
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663950"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776353"
 ---
 # <a name="composite-bar-renderer"></a>Vykreslovací modul kompozitních pruhů
 
@@ -124,11 +124,11 @@ U vizualizací mřížky funguje řazení řádků pro sloupec se složeným ná
 3. Změna vizualizace na *dlaždice*
 4. Spustit dotaz.
 5. Vyberte **nastavení dlaždice**.
-6. V poli název vyberte *Left (vlevo* ).
+6. Vyberte položku *vlevo* v poli dlaždice.
 7. V části *Nastavení pole*zadejte následující nastavení.
     1. Použijte sloupec: Server.
     2. Zobrazovací jednotka sloupce: "text".
-8. V poli názvu vyberte *konec* .
+8. V polích dlaždic vyberte *dolní* .
 9. V části *Nastavení pole*zadejte následující nastavení.
     1. Použít sloupec: Total.
     2. Vykreslovací modul sloupců: "složený pruh".
@@ -143,9 +143,9 @@ U vizualizací mřížky funguje řazení řádků pro sloupec se složeným ná
     4. Přidat popisek: `["online"] of ["total"] are healthy` .
 10. Vyberte **Použít**.
 
-Nastavení složeného panelu pro názvy:
+Nastavení složeného panelu pro dlaždice:
 
-![Snímek obrazovky s nastavením názvu složeného panelu s výše popsaným nastavením](./media/workbooks-composite-bar/tiles-settings.png)
+![Snímek obrazovky s nastavením dlaždice složených pruhů s výše popsaným nastavením](./media/workbooks-composite-bar/tiles-settings.png)
 
 Složené zobrazení pruhů pro dlaždice s výše uvedenými nastaveními bude vypadat takto:
 
@@ -157,7 +157,7 @@ Chcete-li pro vizualizaci grafu vytvořit kompozitní zobrazovací panely (typy 
 
 1. Vyberte **Přidat** a *Přidat dotaz*.
 2. Změňte zdroj dat na JSON a zadejte data z [předchozího příkladu](#adding-composite-bar-renderer).
-3. Změna vizualizace na *dlaždice*
+3. Změna vizualizace na *grafy*
 4. Spustit dotaz.
 5. Vyberte **nastavení grafu**.
 6. Vyberte *Vycentrovat obsah* v nastavení formát uzlu.

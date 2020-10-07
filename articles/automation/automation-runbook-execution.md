@@ -1,16 +1,16 @@
 ---
 title: Spouštění runbooků ve službě Azure Automation
-description: Tento článek obsahuje informace o zpracování runbooků v Azure Automation.
+description: Tento článek poskytuje přehled o zpracování runbooků v Azure Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b5dd445ec4dd9014f107c0a349deed6cde47f968
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 883cf48fd38d79544d08a68f2c18fc2d2efb4706
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325823"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776285"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spouštění runbooků ve službě Azure Automation
 
@@ -89,7 +89,7 @@ Azure Automation využívá [Azure monitor](../azure-monitor/overview.md) ke sle
 
 ### <a name="log-analytics-agent-for-windows"></a>Agent Log Analytics pro Windows
 
-[Agent Log Analytics pro systém Windows](../azure-monitor/platform/agent-windows.md) spolupracuje s Azure monitor ke správě virtuálních počítačů a fyzických počítačů s Windows. Počítače můžou běžet v Azure nebo v prostředí mimo Azure, například v místním datovém centru. Je nutné nakonfigurovat agenta tak, aby se nahlásil do jednoho nebo více Log Analytics pracovních prostorů.
+[Agent Log Analytics pro systém Windows](../azure-monitor/platform/agent-windows.md) spolupracuje s Azure monitor ke správě virtuálních počítačů a fyzických počítačů s Windows. Počítače můžou běžet v Azure nebo v prostředí mimo Azure, například v místním datovém centru.
 
 >[!NOTE]
 >Agent Log Analytics pro systém Windows byl dříve označován jako Microsoft Monitoring Agent (MMA).
@@ -100,9 +100,11 @@ Azure Automation využívá [Azure monitor](../azure-monitor/overview.md) ke sle
 
 Během [instalace procesu Hybrid Runbook](automation-linux-hrw-install.md)Worker pro Linux musí být přítomen účet **nxautomation** s odpovídajícími oprávněními sudo. Pokud se pokusíte nainstalovat pracovní proces a účet není přítomen nebo nemáte příslušná oprávnění, instalace se nezdařila.
 
+Neměli byste měnit oprávnění ke `sudoers.d` složce nebo jejímu vlastnictví. Pro účet **nxautomation** se vyžaduje oprávnění sudo a neměla by být odebrána oprávnění. Omezení tohoto omezení na určité složky nebo příkazy může mít za následek zásadní změnu.
+
 K dispozici jsou protokoly pro agenta Log Analytics a účet **nxautomation** :
 
-* /var/opt/Microsoft/omsagent/log/omsagent.log – protokol agenta Log Analytics 
+* /var/opt/Microsoft/omsagent/log/omsagent.log – protokol agenta Log Analytics
 * /var/opt/Microsoft/omsagent/Run/automationworker/Worker.log – protokol pracovních procesů služby Automation
 
 >[!NOTE]
@@ -202,7 +204,7 @@ function Get-ContosoFiles
 }
 ```
 
-## <a name="errors"></a>Chyby
+## <a name="errors"></a>chyby
 
 Vaše Runbooky musí zpracovávat chyby. Azure Automation podporuje dva typy chyb prostředí PowerShell, ukončení a neukončení. 
 
@@ -226,7 +228,7 @@ Externí služby, například Azure DevOps Services a GitHub, mohou spustit sadu
 
 Pro sdílení prostředků mezi všemi Runbooky v cloudu Azure používá koncept nazvaný poctivá sdílená složka. Při použití spravedlivého sdílení Azure dočasně uvolní nebo zastaví jakoukoli úlohu, která běží déle než tři hodiny. Úlohy pro [powershellové Runbooky](automation-runbook-types.md#powershell-runbooks) a [Runbooky v Pythonu](automation-runbook-types.md#python-runbooks) se zastaví a nerestartují a stav úlohy se zastaví.
 
-V případě dlouhotrvajících úloh Azure Automation se doporučuje použít Hybrid Runbook Worker. Hybridní pracovní procesy Runbooku nejsou omezené na poctivé sdílení a nemají omezení, jak dlouho může být sada Runbook spuštěna. Ostatní [omezení](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) úlohy platí pro Azure Sandbox a hybridní pracovní procesy Runbooku. I když se hybridní pracovní procesy Runbooku neomezují na 3 hodiny, měli byste vyvíjet Runbooky, aby se spouštěly na počítačích, které podporují restart z neočekávaných problémů s místní infrastrukturou.
+V případě dlouhotrvajících úloh Azure Automation se doporučuje použít Hybrid Runbook Worker. Hybridní pracovní procesy Runbooku nejsou omezené na poctivé sdílení a nemají omezení, jak dlouho může být sada Runbook spuštěna. Ostatní [omezení](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) úlohy platí pro Azure Sandbox a hybridní pracovní procesy Runbooku. I když hybridní pracovní procesy Runbooku nejsou omezené o tři hodiny, měli byste vyvíjet Runbooky, aby běžely na pracovních procesech, které podporují restart z neočekávaných potíží s místní infrastrukturou.
 
 Další možností je optimalizace sady Runbook pomocí podřízených runbooků. Sada Runbook může například projít stejnou funkcí u několika prostředků, například s databázovou operací na několika databázích. Tuto funkci můžete přesunout do [podřízeného Runbooku](automation-child-runbooks.md) a nechat ji volat pomocí [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook). Podřízené runbooky se spouštějí paralelně v samostatných procesech.
 

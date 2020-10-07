@@ -5,15 +5,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 74586222bbd92b2d6182b34b4667cda0bc599b93
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: eedfe4f24797a9b564479b2f8d3f4d04b0751272
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91709305"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779439"
 ---
 > [!NOTE]
 > K detekci chráněných informací o stavu (FÍ) použijte `domain=phi` parametr a verzi modelu `2020-04-01` nebo novější.
@@ -22,7 +23,7 @@ ms.locfileid: "91709305"
  
 Při odesílání požadavků na koncový bod se vrátí následující kategorie entit `/v3.1-preview.2/entities/recognition/pii` .
 
-| Kategorie   | Subcategory | Description                          | Spouští se verze modelu. | Poznámky |
+| Kategorie   | Subcategory | Popis                          | Spouští se verze modelu. | Poznámky |
 |------------|-------------|--------------------------------------|------------------------|---|
 | Osoba     | –         | Jména lidí.  | `2019-10-01`  | Také vrácen s `domain=phi` . |
 | PersonType | –         | Typy úloh nebo role držené osobou. | `2020-02-01` | |
@@ -45,7 +46,7 @@ Při odesílání požadavků na koncový bod se vrátí následující kategori
 
 Tato kategorie entit zahrnuje identifikovatelné informace Azure, včetně ověřovacích informací a připojovacích řetězců. K dispozici počínaje verzí modelu `2019-10-01` . Nevráceno s `domain=phi` parametrem.
 
-| Subcategory                           | Description                                                                 |
+| Subcategory                           | Popis                                                                 |
 |---------------------------------------|-----------------------------------------------------------------------------|
 | Klíč ověření Azure DocumentDB             | Autorizační klíč pro server Azure Cosmos DB.                           |
 | Připojovací řetězec databáze Azure IAAS a připojovací řetězec SQL Azure | Připojovací řetězec pro databázi Azure Infrastructure as a Service (IaaS) a připojovací řetězec SQL. |

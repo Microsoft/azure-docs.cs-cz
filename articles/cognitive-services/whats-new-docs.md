@@ -1,67 +1,101 @@
 ---
-title: 'Cognitive Services Docs: co je nového ve 1. srpna 2020 – 31. srpna 2020'
-description: Novinky v dokumentaci Cognitive Services pro 1. srpna 2020 – 31. srpna 2020.
+title: 'Cognitive Services Docs: co je nového ve 1. září 2020. září 2020'
+description: Co je nového v dokumentaci Cognitive Services pro 1. září 2020 – 30. září 2020.
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 09/08/2020
-ms.openlocfilehash: a48efed2444a6d2210a24a7f25ad8dce8ae32940
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.date: 10/02/2020
+ms.openlocfilehash: 73a097907a5b44c77ba5e1a9ead4cb4e3a8077c6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567958"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777749"
 ---
-# <a name="cognitive-services-docs-whats-new-for-august-1-2020---august-31-2020"></a>Cognitive Services Docs: co je nového ve 1. srpna 2020 – 31. srpna 2020
+# <a name="cognitive-services-docs-whats-new-for-september-1-2020---september-30-2020"></a>Cognitive Services Docs: co je nového ve 1. září 2020. září 2020
 
-Vítá vás novinky v Cognitive Services docs od 1. srpna 2020 do 31. srpna 2020. V tomto článku jsou uvedené některé hlavní změny v dokumentaci v průběhu tohoto období.
+Vítá vás, co je nového v Cognitive Services docs od 1. září 2020 do 31. září 2020. V tomto článku jsou uvedené některé hlavní změny v dokumentaci v průběhu tohoto období.
+
+## <a name="cognitive-services"></a>Cognitive Services
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Rychlý Start: vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure (CLI)](cognitive-services-apis-create-account-cli.md)
+- [Rychlý Start: vytvoření prostředku Cognitive Services pomocí klientské knihovny pro správu Azure](cognitive-services-apis-create-account-client-library.md)
+- [Rychlý Start: vytvoření prostředku Cognitive Services pomocí Azure Portal](cognitive-services-apis-create-account.md)
+- [Rychlý Start: vytvoření prostředku Cognitive Services pomocí šablony ARM](create-account-resource-manager-template.md)
 
 ## <a name="computer-vision"></a>Počítačové zpracování obrazu
 
 ### <a name="new-articles"></a>Nové články
 
-- [Upgrade na verzi v 3.0 rozhraní API pro počítačové zpracování obrazu z verze 2.0 a v 2.1](/azure/cognitive-services/computer-vision/upgrade-api-versions)
+- [Seznámení s Počítačové zpracování obrazu prostorovou analýzou](https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview?context=/azure/cognitive-services/Computer-vision/context/context)
+- [Zodpovědnost za použití v nasazení AI pro Počítačové zpracování obrazu prostorová analýza](https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment?context=/azure/cognitive-services/Computer-vision/context/context)
+- [Poznatky o výzkumu Počítačové zpracování obrazu prostorové analýzy](https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights?context=/azure/cognitive-services/Computer-vision/context/context)
+- [Pokyny k návrhu zpřístupnění pro Počítačové zpracování obrazu prostorová analýza](https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/Computer-vision/context/context)
+- [Dodržování předpisů, ochrana osobních údajů a zabezpečení Počítačové zpracování obrazu prostorové analýzy](https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/Computer-vision/context/context)
+- [Charakteristiky a omezení pro Počítačové zpracování obrazu prostorová analýza](https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/Computer-vision/context/context)
 
 ## <a name="containers"></a>Containers
 
+### <a name="new-articles"></a>Nové články
+
+- [Instalace a spuštění kontejneru prostorové analýzy (Preview)](/azure/cognitive-services/computer-vision/spatial-analysis-container.md)
+
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Značky image kontejneru Azure Cognitive Services](/azure/cognitive-services/containers/container-image-tags)
+- [Značky image kontejneru Azure Cognitive Services](/azure/cognitive-services/containers/container-image-tags.md)
 
 ## <a name="form-recognizer"></a>Rozpoznávání formulářů
 
-### <a name="new-articles"></a>Nové články
+### <a name="updated-articles"></a>Aktualizované články
 
-- [Principy vizitek](/azure/cognitive-services/form-recognizer/concept-business-cards)
-- [Principy účtenek](/azure/cognitive-services/form-recognizer/concept-receipts)
-- [Rychlý Start: extrakce dat z vizitky pomocí REST API pro rozpoznávání formulářů pomocí Pythonu](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards)
+- [Jazyková podpora pro rozpoznávání formulářů](/azure/cognitive-services/form-recognizer/language-support.md)
+- [Sestavení sady školicích dat pro vlastní model](/azure/cognitive-services/form-recognizer/build-training-data-set.md)
+- [Principy účtenek](/azure/cognitive-services/form-recognizer/concept-receipts.md)
+- [Rozpoznávání vydaných dat v klidovém formátu](/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest.md)
+- [Co je nového ve službě Rozpoznávání formulářů?](/azure/cognitive-services/form-recognizer/whats-new.md)
+- [Principy vizitek](/azure/cognitive-services/form-recognizer/concept-business-cards.md)
+- [Co je služba Rozpoznávání formulářů?](/azure/cognitive-services/form-recognizer/overview.md)
+- [Rychlý Start: použití klientské knihovny pro rozpoznávání formulářů](/azure/cognitive-services/form-recognizer/quickstarts/client-library.md)
+
+## <a name="immersive-reader"></a>Asistivní čtečka
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s kudrlinkou](/azure/cognitive-services/form-recognizer/quickstarts/curl-train-extract)
-- [Rychlý Start: výuka modelu pro rozpoznávání formulářů s popisky pomocí REST API a Pythonu](/azure/cognitive-services/form-recognizer/quickstarts/python-labeled-data)
-- [Rychlý Start: extrakce informací o textu a rozložení pomocí REST API pro rozpoznávání formulářů v Pythonu](/azure/cognitive-services/form-recognizer/quickstarts/python-layout)
-- [Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s Pythonem](/azure/cognitive-services/form-recognizer/quickstarts/python-train-extract)
+- [Podpora jazyků pro moderní čtečku](/azure/cognitive-services/immersive-reader/language-support.md)
+- [Referenční dokumentace sady pro moderní čtečku JavaScript SDK (v 1.1)](/azure/cognitive-services/immersive-reader/reference.md)
+- [Rychlý Start: Začínáme s moderní čtečkou](/azure/cognitive-services/immersive-reader/quickstarts/client-libraries.md)
+- [Kurz: spuštění moderního čtečky pomocí ukázkového projektu Python](/azure/cognitive-services/immersive-reader/tutorial-python.md)
+- [Vytvoření prostředku pro moderní čtečku a konfigurace ověřování Azure Active Directory](/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader.md)
 
-## <a name="speech-service"></a>Speech Service
+## <a name="metrics-advisor"></a>Metrics Advisor
 
 ### <a name="new-articles"></a>Nové články
 
-- [Kvóty a omezení služby Speech Services](/azure/cognitive-services/speech-service/speech-services-quotas-and-limits)
+- [Postupy: Konfigurace metrik a doladění konfigurace zjišťování](/azure/cognitive-services/metrics-advisor/how-tos/configure-metrics.md)
+- [Přidání datových kanálů z různých zdrojů dat do Poradce pro metriky](/azure/cognitive-services/metrics-advisor/data-feeds-from-different-sources.md)
+- [Rychlý Start: použití rozhraní REST API k přizpůsobení řešení](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api.md)
+- [Postupy: Konfigurace výstrah a získání oznámení pomocí zavěšení](/azure/cognitive-services/metrics-advisor/how-tos/alerts.md)
+
+## <a name="text-analytics"></a>Analýza textu
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Dlouhé zvukové rozhraní API (Preview)](/azure/cognitive-services/speech-service/long-audio-api)
+- [Jak používat rozpoznávání pojmenovaných entit v Analýza textu](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
+- [Správa verzí modelů v rozhraní API pro analýzu textu](/azure/cognitive-services/text-analytics/concepts/model-versioning.md)
+- [Rychlý Start: použití klientské knihovny Analýza textu](/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk.md)
 
 ## <a name="community-contributors"></a>Přispěvatelé komunity
 
-Následující lidé přispěli během tohoto období k dokumentaci Cognitive Services. Děkujeme! 
+Následující lidé přispěli během tohoto období k dokumentaci Cognitive Services. Děkujeme! Naučte se, jak přispívat pomocí odkazů v části " [postupovat" na úvodní stránce co je nového](index.yml).
 
-- [hyoshioka0128](https://github.com/hyoshioka0128) -Hiroshi Yoshioka (2)
-- [anwesh-b](https://github.com/anwesh-b) -anwesh Budhathoki (1)
-- [jangelfdez](https://github.com/jangelfdez) -Ángel Fernández (1)
-- [xhan742](https://github.com/xhan742) (1)
-
-[!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]
+- [AzureMentor](https://github.com/AzureMentor) (1)
+- [BeigeBadger](https://github.com/BeigeBadger) -mat Stannett (1)
+- [Gurry](https://github.com/gurry) -Gurinder Singh (1)
+- [hyoshioka0128](https://github.com/hyoshioka0128) -Hiroshi Yoshioka (1)
+- [iAmBipinPaul](https://github.com/iAmBipinPaul) -Bipin Paul (1)
+- [rexwan](https://github.com/rexwan) -Rex Wang (1)
+- [rglidden](https://github.com/rglidden) -Richard Glidden (1)

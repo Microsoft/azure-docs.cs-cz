@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
-ms.openlocfilehash: 0001002636362a74915f9dae21a6beff52baea63
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 030fb4b4e5fa10304167f8d6bc2307c5b93c6d58
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86201777"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776625"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>Cognitive Services Azure pro velké objemy dat
 
@@ -125,12 +125,14 @@ Cognitive Services pro velké objemy dat je příkladem toho, jak můžeme integ
 - [Další informace o tom, jak Cognitive Services pracovat na Apache Spark&trade;](https://azure.microsoft.com/blog/dear-spark-developers-welcome-to-azure-cognitive-services/)
 - [Úspora sněhových Pohádků s hloubkovým učením a Počítačové zpracování obrazu ve Sparku](http://www.datawizard.io/2017/06/27/saving-snow-leopards-with-deep-learning-and-computer-vision-on-spark/)
 - [Microsoft Research podcast: MMLSpark, který umožňuje AI dobrým způsobem s označením Hovorka](https://blubrry.com/microsoftresearch/49485070/092-mmlspark-empowering-ai-for-good-with-mark-hamilton/)
+- [Dokument White Paper: inteligentní mikroslužby škálované velkými objemy](https://arxiv.org/abs/2009.08044)
 
 ## <a name="webinars-and-videos"></a>Webináře a videa
 
 - [Azure Cognitive Services ve Sparku: clustery s integrovanými inteligentními službami](https://databricks.com/session/the-azure-cognitive-services-on-spark-clusters-with-embedded-intelligent-services)
 - [Spark summit vystoupení: škálovatelný AI pro dobré](https://databricks.com/session_eu19/scalable-ai-for-good)
 - [Cognitive Services pro velké objemy dat v Cosmos DB](https://medius.studios.ms/Embed/Video-nc/B19-BRK3004?latestplayer=true&l=2571.208093)
+- [Bleskový rozhovor na rozsáhlých inteligentních mikroslužbách škály](https://www.youtube.com/watch?v=BtuhmdIy9Fk&t=6s)
 
 ## <a name="next-steps"></a>Další kroky
 

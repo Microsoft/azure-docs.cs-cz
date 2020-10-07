@@ -1,14 +1,16 @@
 ---
 title: Omezení a hranice – QnA Maker
 description: QnA Maker má meta omezení pro části znalostní báze a služby. Pro účely testování a publikování je důležité zachovat znalostní bázi v rámci těchto omezení.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: cce95574c8ffc245818b61e9843c5f7984de972f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 773c9caa2fb25b3abe4fb451bc59598c485a6110
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524433"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776251"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker limity a hranice znalostní báze
 
@@ -32,8 +34,8 @@ Názvy souborů nesmí obsahovat tyto znaky:
 
 |Nepoužívat znak|
 |--|
-|Jednoduchá uvozovka`'`|
-|Dvojité uvozovky`"`|
+|Jednoduchá uvozovka `'`|
+|Dvojité uvozovky `"`|
 
 ### <a name="maximum-file-size"></a>Maximální velikost souboru
 
@@ -71,8 +73,8 @@ Délka a přijatelné znaky pro název a hodnotu metadat jsou uvedeny v následu
 
 |Položka|Povolené znaky|Porovnávání vzorů regulárního výrazu|Maximální počet znaků|
 |--|--|--|--|
-|Název (klíč)|Poskytuje<br>alfanumerické znaky (písmena a číslice)<br>`_`podtržítkem<br> Nesmí obsahovat mezery.|`^[a-zA-Z0-9_]+$`|100|
-|Hodnota|Umožňuje vše kromě<br>`:`kolon<br>`|`(vertikální svislá čára)<br>Je povolena pouze jedna hodnota.|`^[^:|]+$`|500|
+|Název (klíč)|Poskytuje<br>alfanumerické znaky (písmena a číslice)<br>`_` podtržítkem<br> Nesmí obsahovat mezery.|`^[a-zA-Z0-9_]+$`|100|
+|Hodnota|Umožňuje vše kromě<br>`:` kolon<br>`|` (vertikální svislá čára)<br>Je povolena pouze jedna hodnota.|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>Omezení obsahu znalostní báze
@@ -81,8 +83,8 @@ Celková omezení obsahu ve znalostní bázi Knowledge Base:
 * Délka textu otázky: 1 000
 * Délka textu klíče metadat: 100
 * Délka textu hodnoty metadat: 500
-* Podporované znaky pro název metadat: abecedy, číslice a`_`
-* Podporované znaky pro hodnotu metadat: vše kromě `:` a`|`
+* Podporované znaky pro název metadat: abecedy, číslice a `_`
+* Podporované znaky pro hodnotu metadat: vše kromě `:` a `|`
 * Délka názvu souboru: 200
 * Podporované formáty souborů: ". TSV", ". PDF", ". txt", ". docx", ". xlsx".
 * Maximální počet alternativních otázek: 300

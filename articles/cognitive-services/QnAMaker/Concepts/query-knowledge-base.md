@@ -1,14 +1,16 @@
 ---
 title: Dotaz na znalostní bázi Knowledge Base – QnA Maker
 description: Je nutné publikovat znalostní bázi. Po publikování se znalostní báze dotazuje na koncový bod předpovědi prostředí runtime pomocí rozhraní generateAnswer API.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e903714aab35de40c1179045505e1520c65b3ebc
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220718"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776914"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Dotazování znalostní báze o odpovědích
 
@@ -42,7 +44,7 @@ Když publikujete znalostní bázi, služba vytvoří koncový bod HTTP založen
 
 ### <a name="the-user-query-request-to-generate-an-answer"></a>Požadavek na dotaz na uživatele pro vygenerování odpovědi
 
-Uživatelský dotaz je otázka, kterou koncový uživatel požaduje ve znalostní bázi, například `How do I add a collaborator to my app?`. Dotaz je často ve formátu přirozeného jazyka nebo některá klíčová slova, která reprezentují otázku, `help with collaborators`jako je například. Dotaz se odešle do znalostní báze z požadavku HTTP v klientské aplikaci.
+Uživatelský dotaz je otázka, kterou koncový uživatel požaduje ve znalostní bázi, například `How do I add a collaborator to my app?` . Dotaz je často ve formátu přirozeného jazyka nebo některá klíčová slova, která reprezentují otázku, jako je například `help with collaborators` . Dotaz se odešle do znalostní báze z požadavku HTTP v klientské aplikaci.
 
 ```json
 {
@@ -65,7 +67,7 @@ Použijte [kontext konverzace](../how-to/metadata-generateanswer-usage.md#use-qu
 
 ### <a name="the-response-from-a-call-to-generate-an-answer"></a>Odpověď ze volání pro vygenerování odpovědi
 
-Odpověď HTTP je odpověď získaná ze znalostní báze na základě nejlepší shody pro daný dotaz uživatele. Odpověď obsahuje odpověď a skóre předpovědi. Pokud jste si vyžádali více než jednu horní otázku `top` s vlastností, získáte více než jednu otázku nejvyšší odpovědi, z nichž každá má skóre.
+Odpověď HTTP je odpověď získaná ze znalostní báze na základě nejlepší shody pro daný dotaz uživatele. Odpověď obsahuje odpověď a skóre předpovědi. Pokud jste si vyžádali více než jednu horní otázku s `top` vlastností, získáte více než jednu otázku nejvyšší odpovědi, z nichž každá má skóre.
 
 ```json
 {

@@ -1,14 +1,16 @@
 ---
 title: 'Kurz: integrace s virtuálními agenty pro napájení – QnA Maker'
 description: V tomto kurzu Vylepšete kvalitu znalostní báze s aktivním učením. Přečtěte, přijměte nebo odmítněte nebo přidejte bez odebrání nebo změny existujících otázek.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 06/08/2020
-ms.openlocfilehash: 6d00833a1331ebca9b070d90f32ee30c56bd5f96
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 42b50fcf0df27ddbc3e587a7d8e038e4979935ae
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319210"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777418"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Kurz: Přidání znalostní báze do virtuálních agentů pro napájení
 Vytvořte a rozšíříte robota [Power Virtual Agents](https://powervirtualagents.microsoft.com/) , abyste získali odpovědi z vaší znalostní báze.
@@ -123,7 +125,7 @@ V této části se vytvoří postup při konverzaci v náhradním tématu.
 
 1. Vyberte **+** spojnici, která se má přesměrovat do pole se **zprávou** , a pak vyberte **zavolat akci**.
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png" alt-text="Částečný snímek obrazovky se voláním akce":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png" alt-text="Částečný snímek obrazovky toku konverzace s zvýrazněnou možností odstranit":::
 
 1. Vyberte **Vytvořit tok**. Proces vás přesměruje na portál Power automatizováno.
 
@@ -133,7 +135,7 @@ V této části se vytvoří postup při konverzaci v náhradním tématu.
 
     Power automatizuje se otevře v nové šabloně. Tuto novou šablonu nebudete používat.
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-flow-initial-template.png" alt-text="Částečný snímek obrazovky automatizace s novou šablonou toku":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-flow-initial-template.png" alt-text="Částečný snímek obrazovky toku konverzace s zvýrazněnou možností odstranit":::
 
 ## <a name="create-a-power-automate-flow-to-connect-to-your-knowledge-base"></a>Vytvoření toku automatizovaného procesu pro připojení k znalostní bázi
 
@@ -147,12 +149,12 @@ Následující postup vytvoří tok automatizovaného automatizace, který:
 
 1. Na nové obrazovce QnA Makerho toku vyberte **pokračovat**.
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-qna-flow-template-continue.png" alt-text="Částečný snímek obrazovky QnA Makerho toku šablony s zvýrazněným tlačítkem pokračovat":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-qna-flow-template-continue.png" alt-text="Částečný snímek obrazovky toku konverzace s zvýrazněnou možností odstranit":::
 
 1. Zaškrtněte políčko **generovat odpověď** a zadejte nastavení QnA maker z předchozí části s názvem [Vytvoření a publikování znalostní báze](#create-and-publish-a-knowledge-base). **Hostitel služby** v následujícím obrázku odkazuje **na hostitele hostitele znalostní báze a má** formát `https://YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker` .
 
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="Částečný snímek obrazovky QnA Makerho toku šablon se zvýrazněnou možností generovat odpověď (Preview).":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="Částečný snímek obrazovky toku konverzace s zvýrazněnou možností odstranit":::
 
 1. Uložte tok výběrem možnosti **Uložit**.
 
@@ -188,11 +190,11 @@ Aby mohl agent vyhledat a připojit se ke toku, musí být tok součástí řeš
 
 1. V automaticky otevíraném okně **Flow** vyberte nový tok s názvem **generovat odpovědi pomocí QnA maker znalostní báze...**. V toku se zobrazí nová akce.
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-flow-after-adding-action.png" alt-text="Částečný snímek obrazovky s tématem konverzace o konverzaci s tématem virtuálního agenta po přidání QnA Makerho toku":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-flow-after-adding-action.png" alt-text="Částečný snímek obrazovky toku konverzace s zvýrazněnou možností odstranit":::
 
 1. Chcete-li správně nastavit vstupní proměnnou na akci QnA Maker, vyberte **možnost vybrat proměnnou**a pak vyberte **robot. UnrecognizedTriggerPhrase**.
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-selection-action-input.png" alt-text="Částečný snímek obrazovky témata konverzace na plátně pro virtuálním virtuálním agentem výběr vstupní proměnné":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-selection-action-input.png" alt-text="Částečný snímek obrazovky toku konverzace s zvýrazněnou možností odstranit":::
 
 
 1. Chcete-li správně nastavit výstupní proměnnou na akci QnA Maker, v akci **zprávy** vyberte možnost **UnrecognizedTriggerPhrase**, vyberte ikonu pro vložení proměnné, `{x}` a pak vyberte možnost **FinalAnswer**.
@@ -212,14 +214,14 @@ Vypadá to, že na plátně finálního agenta se líbí.
 
     |Pořadí otázek|Testovací otázky|Účel|
     |--|--|--|
-    |1|Hello (Nazdar)|Spustit konverzaci|
+    |1|Dobrý den|Spustit konverzaci|
     |2|Hodiny úložiště|Ukázkové téma. To je nakonfigurované pro vás bez jakékoli další práce na vaší straně.|
-    |3|Yes|V reakci na `Did that answer your question?`|
+    |3|Ano|V reakci na `Did that answer your question?`|
     |4|Vynikající|V reakci na `Please rate your experience.`|
-    |5|Yes|V reakci na `Can I help with anything else?`|
+    |5|Ano|V reakci na `Can I help with anything else?`|
     |6|Jak můžu zlepšit výkon propustnosti pro dotaz předpovědi?|Tato otázka spustí záložní akci, která odešle text do vaší znalostní báze na odpověď. Pak se zobrazí odpověď. zelené značky zaškrtnutí u jednotlivých akcí označují úspěch pro každou akci.|
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="Snímek obrazovky s chatem s plátnem, který indikuje zelenou značku zaškrtnutí u úspěšných akcí":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="Částečný snímek obrazovky toku konverzace s zvýrazněnou možností odstranit":::
 
 ## <a name="publish-your-bot"></a>Publikování robota
 

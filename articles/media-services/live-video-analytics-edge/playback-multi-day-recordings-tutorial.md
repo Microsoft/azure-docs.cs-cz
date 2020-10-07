@@ -3,12 +3,12 @@ title: Přehrávání nahrávek na více dní – Azure
 description: V tomto kurzu se naučíte používat rozhraní API služby Azure Media Service k přehrání nepřetržitého nahrávání videa.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: e01c8603869f17ef2d68a39861f11818a4cea975
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7641114dbae5a118937e7f4973092d5f0eadbccc
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530569"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776370"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Kurz: přehrávání vícedenních nahrávek  
 
@@ -33,7 +33,7 @@ Doporučujeme si přečíst následující stránky dokumentace:
 * [Návod: přehrávání nahrávek](playback-recordings-how-to.md)
 * [Kurz: nepřetržité nahrávání videa](continuous-video-recording-tutorial.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončete [kurz CVR](continuous-video-recording-tutorial.md). V tomto kurzu a v relevantních rozhraních API popisovaných v [kurzu se průběžné zaznamenávání videa](continuous-video-recording-tutorial.md) vztahuje na nahrávky, které jsou 5 minut nebo déle, a pokud ne, doporučujeme vám nahrávat 5 hodin na video. Rozhraní API používaná k procházení záznamů jsou nejlépe znázorněná s dlouhými nahrávkami.
 * Doporučujeme, abyste spustili tento kurz v průběhu tohoto [kurzu: nepřetržité nahrávání videa](continuous-video-recording-tutorial.md) je pořád spuštěné – to znamená, že pořád budete nahrávat video do cloudu.
@@ -70,13 +70,21 @@ Dále v nástroji Visual Studio Code otevřete src/AMS – Asset-Player. Tato sl
 } 
 ```
 
-V Visual Studio Code můžete kliknout na ikonu spustit na levé straně (nebo CTRL + SHIFT + D) a spustit tak dostupné aplikace:
+1. V Visual Studio Code otevřete kartu **rozšíření** (nebo stiskněte klávesy CTRL + SHIFT + X) a vyhledejte IoT Hub Azure.
+1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
 
-![Snímek obrazovky zobrazuje v Visual Studio Code nabídku s vybranou položkou spustit.](./media/playback-multi-day-recordings-tutorial/run.png)
- 
-V rozevíracím seznamu vyberte aplikaci přehrávač assetů AMS, jak vidíte níže, a stisknutím klávesy F5 spusťte ladění.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Nastavení rozšíření":::
+1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
 
-![Snímek obrazovky s vybraným aktérem assetů pro zobrazení nabídky Visual Studio Code](./media/playback-multi-day-recordings-tutorial/debug.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Nastavení rozšíření":::
+1. <!--In Visual Studio Code, you can click-->Kliknutím na ikonu **Spustit** na levé straně (nebo CTRL + SHIFT + D) zobrazte dostupné aplikace, které se mají spustit:
+
+    ![Snímek obrazovky zobrazuje v Visual Studio Code nabídku s vybranou položkou spustit.](./media/playback-multi-day-recordings-tutorial/run.png)
+1. V rozevíracím seznamu vyberte aplikaci přehrávač assetů AMS, jak vidíte níže, a stisknutím klávesy F5 spusťte ladění.
+
+    ![Snímek obrazovky s vybraným aktérem assetů pro zobrazení nabídky Visual Studio Code](./media/playback-multi-day-recordings-tutorial/debug.png)
 
 Ukázková aplikace sestaví a spustí výchozí prohlížečovou aplikaci a otevře stránku přehrávače assetů pro AMS.
 

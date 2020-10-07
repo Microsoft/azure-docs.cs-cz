@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 10/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: effbe8e771922ea07ad908dd4871f8dcdb7c1d19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 016741606bad5536985a38b0e0664b39006e1df5
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935973"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776557"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering-preview"></a>Konfigurace připojení VPN typu Site-to-site přes privátní partnerský vztah ExpressRoute (Preview)
 
@@ -72,16 +72,18 @@ V obou těchto příkladech pošle Azure provoz do 10.0.1.0/24 přes připojení
 
 ## <a name="portal-steps"></a><a name="portal"></a>Kroky portálu
 
-1. Nakonfigurujte připojení typu Site-to-site. Postup najdete v článku věnovaném [konfiguraci site-to-site](vpn-gateway-howto-site-to-site-resource-manager-portal.md) . Ujistěte se, že jste pro bránu vybrali SKU redundantní brány v zóně. Záložní sklady v zóně mají na konci SKU "AZ". Například VpnGw1AZ.
+1. Nakonfigurujte připojení typu Site-to-site. Postup najdete v článku věnovaném [konfiguraci site-to-site](vpn-gateway-howto-site-to-site-resource-manager-portal.md) . Ujistěte se, že jste pro bránu vybrali SKU redundantní brány v zóně. 
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="Privátní IP adresy brány":::
+   Záložní sklady v zóně mají na konci SKU "AZ". Například **VpnGw1AZ**. Redundantní brány v zóně jsou dostupné jenom v oblastech, kde je služba zóny dostupnosti k dispozici. Informace o oblastech, ve kterých podporujeme zóny dostupnosti, najdete v tématu [oblasti, které podporují zóny dostupnosti](../availability-zones/az-region.md).
+
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="Obrázek 1":::
 1. Povolte v bráně privátní IP adresy. Vyberte **Konfigurace**a pak nastavte **soukromé IP adresy brány** na **povoleno**. Vyberte **Uložit** a uložte tak provedené změny.
 1. Na stránce **Přehled** vyberte **Zobrazit další** a ZOBRAZTE tak soukromou IP adresu. Zapište tyto informace pro pozdější použití v krocích konfigurace.
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Stránka Přehled" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Obrázek 1" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
 1. Pokud chcete pro připojení povolit **používání privátní IP adresy Azure** , vyberte  **Konfigurace**. Nastavte **použít privátní IP adresu Azure** na **povoleno**a pak vyberte **Uložit**.
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="Privátní IP adresy brány – povoleno":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="Obrázek 1":::
 1. Z brány firewall pomocí příkazového testu otestujte privátní IP adresu, kterou jste vytvořili v kroku 3. Privátní IP adresa by měla být dosažitelná v rámci privátního partnerského vztahu ExpressRoute.
 1. Tato privátní IP adresa se používá jako Vzdálená IP adresa na místní bráně firewall k navázání tunelového propojení typu Site-to-site přes privátní partnerský vztah ExpressRoute.
 

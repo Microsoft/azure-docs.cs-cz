@@ -1,14 +1,16 @@
 ---
 title: Prostředky Azure – QnA Maker
 description: QnA Maker používá několik zdrojů Azure, z nichž každý má jiný účel. Porozumět tomu, jak se používají samostatně, vám umožní naplánovat a vybrat správnou cenovou úroveň nebo zjistit, kdy se má změnit cenová úroveň. Princip použití v kombinaci vám pomůže najít a opravit problémy, když k nim dojde.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 06731c97217e3b6a5c498743b83f1d16bab791eb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62f627fb9765f2a86a373f74c33437680c9305af
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548425"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777050"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Prostředky Azure pro QnA Maker
 
@@ -146,9 +148,9 @@ QnA Maker vytvoří několik prostředků Azure. Pokud chcete snížit úroveň 
 
 |Služba|Sdílení|Důvod|
 |--|--|--|
-|Cognitive Services|X|Není možné podle návrhu|
+|Cognitive Services|×|Není možné podle návrhu|
 |Plán služby App Service|✔|Pevné místo na disku přidělené pro plán App Service. Pokud jiné aplikace sdílející stejný plán App Service používají významné místo na disku, dojde k problémům s instancí App Service Qnamakerem.|
-|App Service|X|Není možné podle návrhu|
+|App Service|×|Není možné podle návrhu|
 |Application Insights|✔|Může být sdíleno|
 |Služba Search|✔|1. `testkb` je rezervovaný název pro službu qnamakerem; nemůže ji použít jiný.<br>2. `synonym-map` pro službu qnamakerem je vyhrazená mapa synonym podle názvu.<br>3. počet publikovaných znalostní báze je omezený na úrovni služby vyhledávání. Pokud jsou dostupné bezplatné indexy, můžou je používat i jiné služby.|
 

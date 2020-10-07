@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: dc344bd6e4927d39b72ba9af3ae2eeb61d9cec95
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1edca9cf8449ff386d0a9920e7d80d69692536fd
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877804"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779281"
 ---
 ### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>Nasazení kontejneru Rozpoznávání jazyka do clusteru AKS
 
@@ -24,7 +25,7 @@ ms.locfileid: "80877804"
     az login
     ```
 
-1. Přihlaste se ke clusteru AKS. `your-cluster-name` Nahraďte `your-resource-group` a odpovídajícími hodnotami.
+1. Přihlaste se ke clusteru AKS. Nahraďte `your-cluster-name` a `your-resource-group` odpovídajícími hodnotami.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group

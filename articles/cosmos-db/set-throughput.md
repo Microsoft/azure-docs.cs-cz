@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 00ed8f6ff9839c227f3d8a929a071834c5559226
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 81a31448a588849a410b37868cf579fbb0a9ceb6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605742"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777787"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Úvod k zřízené propustnosti v Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Databáze Azure Cosmos je jednotkou správy pro sadu kontejnerů. Databáze se s
 
 Pomocí Azure Cosmos DB můžete zřídit propustnost ve dvou členitosti:
  
-- Kontejnery Azure Cosmos DB
+- Kontejnery Azure Cosmos
 - Databáze Azure Cosmos DB
 
 ## <a name="set-throughput-on-a-container"></a>Nastavení propustnosti pro kontejner  
@@ -40,7 +40,7 @@ Doporučujeme, abyste nakonfigurovali propustnost na členitosti kontejneru, pok
 
 Následující obrázek ukazuje, jak fyzický oddíl je hostitelem jednoho nebo více logických oddílů kontejneru:
 
-:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Fyzický oddíl" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Fyzický oddíl, který je hostitelem jednoho nebo více logických oddílů kontejneru" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>Nastavení propustnosti pro databázi
 
@@ -75,7 +75,7 @@ Pokud váš Azure Cosmos DB účet už obsahuje sdílenou databázi propustnosti
 
 Pokud vaše úlohy zahrnují odstranění a opětovné vytvoření všech kolekcí v databázi, doporučuje se odstranit prázdnou databázi a znovu vytvořit novou databázi před vytvořením kolekce. Následující obrázek ukazuje, jak může fyzický oddíl hostovat jeden nebo více logických oddílů, které patří do různých kontejnerů v rámci databáze:
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Fyzický oddíl" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Fyzický oddíl, který je hostitelem jednoho nebo více logických oddílů kontejneru" border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>Nastavení propustnosti pro databázi a kontejner
 
@@ -84,7 +84,7 @@ Tyto dva modely můžete kombinovat. Zajištění propustnosti databáze i konte
 * Můžete vytvořit databázi Azure Cosmos s názvem *Z* s zřízenou propustností *"K"* ru. 
 * Dále v rámci databáze vytvořte pět kontejnerů s názvem *a*, *B*, *C*, *D*a *E* . Při vytváření kontejneru B Nezapomeňte povolit **vyhrazenou propustnost pro tuto možnost kontejneru** a explicitně nakonfigurovat *"P"* ru zřízené propustnosti v tomto kontejneru. Všimněte si, že se sdílená a vyhrazená propustnost dá nakonfigurovat jenom při vytváření databáze a kontejneru. 
 
-   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Nastavení propustnosti na úrovni kontejneru":::
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Fyzický oddíl, který je hostitelem jednoho nebo více logických oddílů kontejneru":::
 
 * Propustnost *"K"* ru se sdílí mezi čtyřmi kontejnery *a*, *C*, *D*a *E*. Přesné množství propustnosti, které je dostupné pro *a*, *C*, *D*nebo *E* , se liší. Pro každou propustnost jednotlivých kontejnerů neexistují žádné SLA.
 * U kontejneru s názvem *B* je zaručeno, že se po celou dobu vrátí propustnost ru *"P"* . Je zajištěný pomocí SLA.
@@ -105,11 +105,11 @@ K odhadu [minimální zřízené propustnosti](concepts-limits.md#storage-and-da
 
 Skutečné minimální RU/s se může lišit v závislosti na konfiguraci vašeho účtu. Pomocí [Azure monitor metrik](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) můžete zobrazit historii zřízené propustnosti (ru/s) a úložiště v prostředku.
 
-Minimální propustnost kontejneru nebo databáze můžete načíst programově pomocí sad SDK nebo zobrazit hodnotu v Azure Portal. Při použití sady .NET SDK umožňuje metoda [DocumentClient. ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) škálovat hodnotu zřízené propustnosti. Při použití sady Java SDK umožňuje metoda [RequestOptions. setOfferThroughput](sql-api-java-sdk-samples.md) škálovat hodnotu zřízené propustnosti. 
+Minimální propustnost kontejneru nebo databáze můžete načíst programově pomocí sad SDK nebo zobrazit hodnotu v Azure Portal. Při použití sady .NET SDK, [kontejneru. Metoda ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) umožňuje škálovat hodnotu zřízené propustnosti. Při použití sady Java SDK umožňuje metoda [CosmosContainer. replaceProvisionedThroughput](sql-api-java-sdk-samples.md) škálovat hodnotu zřízené propustnosti.
 
-Při použití sady .NET SDK umožňuje metoda [DocumentClient. ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) načíst minimální propustnost kontejneru nebo databáze. 
+Při použití sady .NET SDK umožňuje metoda [Container. ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) načíst minimální propustnost kontejneru nebo databáze. 
 
-Zřízenou propustnost kontejneru nebo databáze můžete kdykoli škálovat. Při provádění operace škálování pro zvýšení propustnosti může trvat delší dobu, než systémové úlohy zřídí požadované prostředky. Můžete kontrolovat stav operace škálování v Azure Portal nebo programově pomocí sad SDK. Při použití sady .NET SDK můžete získat stav operace škálování pomocí `DocumentClient.ReadOfferAsync` metody.
+Zřízenou propustnost kontejneru nebo databáze můžete kdykoli škálovat. Při provádění operace škálování pro zvýšení propustnosti může trvat delší dobu, než systémové úlohy zřídí požadované prostředky. Můžete kontrolovat stav operace škálování v Azure Portal nebo programově pomocí sad SDK. Při použití sady .NET SDK můžete získat stav operace škálování pomocí `Container.ReadThroughputAsync` metody.
 
 ## <a name="comparison-of-models"></a>Porovnání modelů
 Tato tabulka ukazuje porovnání mezi zřizováním standardní (ruční) propustností databáze vs. v kontejneru. 

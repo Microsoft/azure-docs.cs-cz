@@ -6,20 +6,21 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: dc52586550f89ddae147d79458584331ed984eea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 543a4d85982adadc86435819679351c8ffaa9814
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876402"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779878"
 ---
 ### <a name="verify-the-language-detection-container-instance"></a>Ověření instance kontejneru Rozpoznávání jazyka
 
 1. Vyberte kartu **Přehled** a zkopírujte IP adresu.
-1. Otevřete novou kartu prohlížeče a zadejte IP adresu. Zadejte `http://<IP-address>:5000 (http://55.55.55.55:5000`například). Zobrazí se Domovská stránka kontejneru, která vám umožní zjistit, že je kontejner spuštěný.
+1. Otevřete novou kartu prohlížeče a zadejte IP adresu. Zadejte například `http://<IP-address>:5000 (http://55.55.55.55:5000` ). Zobrazí se Domovská stránka kontejneru, která vám umožní zjistit, že je kontejner spuštěný.
 
     ![Zobrazte domovskou stránku kontejneru a ověřte, že je spuštěný.](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
@@ -49,7 +50,7 @@ ms.locfileid: "80876402"
     }
     ```
 
-1. Nastavte **showStats** na `true`.
+1. Nastavte **showStats** na `true` .
 
 1. Výběrem příkazu **Execute** určete mínění textu.
 
@@ -127,4 +128,4 @@ ms.locfileid: "80876402"
     }
     ```
 
-Nyní můžeme sladit dokumenty dat JSON datové části odpovědi s původními dokumenty datové části odpovědi odpovídajícími `id`. Každý dokument se považuje za nezávisle obsahující `characterCount` různé `transactionCount`statistiky, například a. Kromě toho `detectedLanguages` má každý výsledný dokument pole s `name`, `iso6391Name`a `score` pro každý nalezený jazyk. `score` Je-li zjištěno více jazyků, používá se k určení nejpravděpodobnějšího jazyka.
+Nyní můžeme sladit dokumenty dat JSON datové části odpovědi s původními dokumenty datové části odpovědi odpovídajícími `id` . Každý dokument se považuje za nezávisle obsahující různé statistiky, například `characterCount` a `transactionCount` . Kromě toho má každý výsledný dokument `detectedLanguages` pole s `name` , `iso6391Name` a `score` pro každý nalezený jazyk. Je-li zjištěno více jazyků, `score` používá se k určení nejpravděpodobnějšího jazyka.

@@ -1,20 +1,22 @@
 ---
 title: Správa znalostní báze – QnA Maker
 description: QnA Maker umožňuje spravovat vaše znalostní báze tím, že poskytuje přístup k nastavení a obsahu znalostní báze.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 08736ce61e6768cfd9ac3d3ded7092a4ab93fca9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 890b555703f922168a820a0535296b9f55218752
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551774"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777727"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Vytvoření znalostní báze a Správa nastavení
 
 QnA Maker umožňuje spravovat vaše znalostní báze tím, že poskytuje přístup k nastavení znalostní báze a zdrojům dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!div class="checklist"]
 > * Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).

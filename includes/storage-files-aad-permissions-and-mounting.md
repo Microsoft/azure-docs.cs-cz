@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 897e5b58aed9c47e0b94ee47d1883e2b7a28bacb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a168b9f721cd9c3d4ab0e8b6a56b764fec3b1fe3
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930791"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779270"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>Přiřazení přístupových oprávnění k identitě
 
@@ -108,7 +108,7 @@ else
 
 ```
 
-Pokud dochází k problémům s připojením k souborům Azure, přečtěte si prosím [Nástroj pro řešení potíží, který jsme publikovali pro chyby připojení k souborům Azure ve Windows](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5). Poskytujeme také [pokyny](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) pro řešení scénářů při zablokování portu 445. 
+Pokud dochází k problémům s připojením k souborům Azure, přečtěte si prosím [Nástroj pro řešení potíží, který jsme publikovali pro chyby připojení k souborům Azure ve Windows](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/). Poskytujeme také [pokyny](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) pro řešení scénářů při zablokování portu 445. 
 
 
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>Konfigurace oprávnění NTFS pomocí Průzkumníka souborů Windows
@@ -122,7 +122,7 @@ Pomocí Průzkumníka souborů Windows udělte úplným oprávněním všem adre
 5. V okně příkazového řádku pro přidání nových uživatelů zadejte cílové uživatelské jméno, kterému chcete udělit oprávnění, do pole **Zadejte názvy objektů k výběru** a vyberte možnost **kontrolovat názvy** a vyhledejte úplný název UPN cílového uživatele.
 7.    Vyberte **OK**.
 8.    Na kartě **zabezpečení** vyberte všechna oprávnění, která chcete novému uživateli udělit.
-9.    Vyberte **Apply** (Použít).
+9.    Vyberte **Použít**.
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>Konfigurace oprávnění systému souborů NTFS pomocí icacls
 

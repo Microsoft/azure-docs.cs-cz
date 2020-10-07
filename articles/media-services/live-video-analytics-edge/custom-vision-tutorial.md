@@ -3,12 +3,12 @@ title: Analýza živého videa pomocí živé analýzy videí v IoT Edge a Azure
 description: Naučte se, jak pomocí Custom Vision vytvořit kontejnerový model, který dokáže detekovat nákladní automobil a používat funkci rozšíření AI pro živé video analýzy v IoT Edge (LVA) k nasazení modelu na hraničních zařízeních pro detekci hraček datových toků z živého streamu videa.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 022dc5714e7a2e19446ee57e827a08ef4c56413e
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 97aa514e2347b3398aab6293d8543afcdc239bdb
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761426"
+ms.locfileid: "91776591"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Kurz: Analýza živého videa pomocí živé analýzy videí v IoT Edge a Azure Custom Vision
 
@@ -56,8 +56,7 @@ Předpoklady pro tento kurz:
 
 ## <a name="review-the-sample-video"></a>Kontrola ukázkového videa
 
-
-V tomto kurzu se k simulaci živého streamu používá soubor [videa pro odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) . Video můžete prošetřit pomocí aplikace, jako je [VLC Media Player](https://www.videolan.org/vlc/). Vyberte CTRL + N a pak vložte odkaz na video o [odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) , kde se má začít přehrávat. Při sledování videa se ve videu zobrazí ve videu Poznámka, 36 že se ve videu objeví nákladní vůz. Vlastní model byl vyškolen k detekci tohoto konkrétního nákladní automobilu. V tomto kurzu budete používat Live video Analytics na IoT Edge k detekci takových hraček a k publikování přidružených událostí odvození do centra IoT Edge.
+V tomto kurzu se k simulaci živého streamu používá soubor [videa pro odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv/) . Video můžete prošetřit pomocí aplikace, jako je [VLC Media Player](https://www.videolan.org/vlc/). Vyberte CTRL + N a pak vložte odkaz na video o [odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) , kde se má začít přehrávat. Při sledování videa se ve videu zobrazí ve videu Poznámka, 36 že se ve videu objeví nákladní vůz. Vlastní model byl vyškolen k detekci tohoto konkrétního nákladní automobilu. V tomto kurzu budete používat Live video Analytics na IoT Edge k detekci takových hraček a k publikování přidružených událostí odvození do centra IoT Edge.
 
 ## <a name="overview"></a>Přehled
 

@@ -1,14 +1,16 @@
 ---
 title: Konverzace s vícenásobným zapnete – QnA Maker
 description: Pomocí výzev a kontextu můžete spravovat vícenásobná vypnutí, označovaná jako vícenásobný křížek, pro robota z jedné otázky do druhé. Vícenásobné zapínání je schopnost mít v případě potřeby konverzaci, kde kontext předchozí otázky ovlivňuje další otázku a odpověď.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: eff2eccac55bc05784636ecd9d2dfb784f86c4ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57e878f11f5857f4c5b629a8069f64de259e8e7a
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322831"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777802"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Použití následných dotazů k vytvoření konverzace s několika směry
 
@@ -92,7 +94,7 @@ Vyberte **Možnosti zobrazení**a pak vyberte **Zobrazit kontext**. V seznamu se
 
 V prvním sloupci se zobrazí kontext vícenásobného zapnutí.
 
-:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="Snímek obrazovky ukazuje zvýrazněný kontextový oddíl." lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
+:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="Snímek obrazovky ukazuje příklad struktury v uživatelské příručce." lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
 
 V předchozím obrázku **#1** označuje tučný text ve sloupci, který označuje aktuální otázku. Nadřazená otázka je nejvyšší položka na řádku. Všechny dotazy pod ní jsou propojené páry otázek a odpovědí. Tyto položky jsou vybrané, takže můžete okamžitě přejít k ostatním položkám kontextu.
 
@@ -167,7 +169,7 @@ Když do znalostní báze přidáte novou dvojici otázek a odpovědí, každá 
 
     Nadřazený dotaz zobrazí novou otázku jako jednu z možností.
 
-    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="Snímek obrazovky zobrazující kontextový sloupec pro obě otázky indikuje vztah následné výzvy." lightbox="../media/conversational-context/child-prompt-created.png":::
+    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="Snímek obrazovky ukazuje příklad struktury v uživatelské příručce." lightbox="../media/conversational-context/child-prompt-created.png":::
 
 1. Po přidání následné výzvy vyberte v horním navigačním panelu možnost **Uložit a výuka** .
 

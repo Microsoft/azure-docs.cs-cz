@@ -1,14 +1,16 @@
 ---
 title: Referenční informace k importu a exportu dat – QnA Maker
 description: Tento odkaz na Import a export vám umožní získat nejlepší výsledky pro zálohování, ukládání a nahrazování znalostní báze.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: c77f51263206c3cc0d4b546e1728963211a186c6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: fd4ea4b671ee8efa853109e288459fdc256bee23
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532150"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776676"
 ---
 # <a name="import-and-export-data-reference"></a>Odkaz na Import a export dat
 

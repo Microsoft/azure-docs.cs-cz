@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: d6635696422c22dfdb4250516a9c3dfc8c577e12
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 46d8aab74f658b039fe07acab82f324ec6ad731f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619878"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777067"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Řešení chyb přechodného připojení v SQL Database a spravované instanci SQL
 
@@ -126,7 +126,7 @@ Aby byl tento test praktický, váš program rozpozná parametr modulu runtime, 
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>Parametry .NET SqlConnection pro opakování připojení
 
-Pokud se klientský program připojuje k vaší databázi v SQL Database pomocí .NET Framework třídy **System. data. SqlClient. SqlConnection**, použijte .NET 4.6.1 nebo novější (nebo .NET Core), abyste mohli použít funkci opakování připojení. Další informace o této funkci najdete na [této webové stránce](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection).
+Pokud se klientský program připojuje k vaší databázi v SQL Database pomocí .NET Framework třídy **System. data. SqlClient. SqlConnection**, použijte .NET 4.6.1 nebo novější (nebo .NET Core), abyste mohli použít funkci opakování připojení. Další informace o této funkci naleznete v tématu [vlastnost SqlConnection. ConnectionString](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=netframework-4.8&preserve-view=true).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
@@ -278,8 +278,8 @@ Tady jsou některé příkazy SELECT jazyka Transact-SQL, které dotazují proto
 
 | Dotaz na protokol | Popis |
 |:--- |:--- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |Zobrazení [Sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) nabízí informace o jednotlivých událostech, které obsahují některé, které mohou způsobit přechodné chyby nebo selhání připojení.<br/><br/>V ideálním případě můžete sladit **start_time** nebo **end_time** hodnoty informacemi o tom, kdy došlo k potížím s klientským programem.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |Zobrazení [Sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) nabízí agregované počty typů událostí pro další diagnostiku.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |Zobrazení [Sys.event_log](https://msdn.microsoft.com/library/dn270018.aspx) nabízí informace o jednotlivých událostech, které obsahují některé, které mohou způsobit přechodné chyby nebo selhání připojení.<br/><br/>V ideálním případě můžete sladit **start_time** nebo **end_time** hodnoty informacemi o tom, kdy došlo k potížím s klientským programem.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |Zobrazení [Sys.database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) nabízí agregované počty typů událostí pro další diagnostiku.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
@@ -312,7 +312,7 @@ ORDER BY
 ;
 ```
 
-#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Několik vrácených řádků z sys. fn_xe_telemetry_blob_target_read_file
+#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Několik vrácených řádků z sys.fn_xe_telemetry_blob_target_read_file
 
 Následující příklad ukazuje, jak vrácený řádek může vypadat. Zobrazené hodnoty null nejsou v jiných řádcích často null.
 

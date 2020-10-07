@@ -1,20 +1,22 @@
 ---
 title: 'Rychlý Start: testování znalostní báze s dotazy služby Batch'
 description: Pomocí nástroje QnA Maker Batch Test otestujete znalostní bázi v prostředku QnA Maker pro očekávané odpovědi, hodnocení spolehlivosti a výzvy k vícenásobnému zapnutí.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: bcee98678212a3bc233c36a831f6bcde7e6ae550
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ac406761abf922ff5f0d86eacd3e419c374ce096
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531065"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776761"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Rychlý Start: testování znalostní báze s dotazy služby Batch a očekávanými odpověďmi
 
 Pomocí nástroje QnA Maker Batch Test otestujete znalostní bázi v prostředku QnA Maker pro očekávané odpovědi, hodnocení spolehlivosti a výzvy k vícenásobnému zapnutí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Buď [vytvořte službu QnA maker](create-publish-knowledge-base.md) , nebo použijte existující službu, která používá anglický jazyk.

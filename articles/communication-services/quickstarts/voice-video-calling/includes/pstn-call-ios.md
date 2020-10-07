@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/11/2020
 ms.author: nikuklic
-ms.openlocfilehash: 7d158b39b3d8297095b65a0d58d38e87dc8ec250
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 63fd0af819fde7d78df289a1b8f5cefa2e415101
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762606"
+ms.locfileid: "91779903"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../includes/emergency-calling-notice-include.md)]
 ## <a name="prerequisites"></a>Předpoklady
@@ -26,15 +26,6 @@ ms.locfileid: "91762606"
 - Můžete sestavit a spustit aplikaci pomocí komunikačních služeb Azure s voláním klientské knihovny pro iOS:
 
 ## <a name="setting-up"></a>Nastavení
-
-## <a name="object-model"></a>Objektový model
-
-Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientské knihovny pro iOS.
-
-| Název                                           | Popis                                                                                          |
-| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| PhoneNumber | Tato třída je nutná k inicializaci telefonního čísla, které byste chtěli použít pro funkce telefonního subsystému. |
-
 
 ## <a name="start-a-call-to-phone"></a>Spustit telefonování
 

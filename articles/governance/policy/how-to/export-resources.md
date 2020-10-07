@@ -1,17 +1,17 @@
 ---
-title: Exportovat Azure Policy prostředky
+title: Export prostředků Azure Policy
 description: Naučte se exportovat Azure Policy prostředky do GitHubu, jako jsou definice zásad a přiřazení zásad.
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 17f0322390cd2cd89ba182a9e3c7c95843cc135e
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 691e0a026c5f4f1a0a68c744ee81b1da8da9e70b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91604326"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777084"
 ---
-# <a name="export-azure-policy-resources"></a>Exportovat Azure Policy prostředky
+# <a name="export-azure-policy-resources"></a>Export prostředků Azure Policy
 
 Tento článek poskytuje informace o tom, jak exportovat stávající prostředky Azure Policy. Export vašich prostředků je užitečný a doporučený pro zálohování, ale je také důležitým krokem ve vaší cestě ke správě cloudu a zpracovávání [zásad jako kódu](../concepts/policy-as-code.md). Prostředky Azure Policy můžete exportovat prostřednictvím [Azure Portal](#export-with-azure-portal), [Azure CLI](#export-with-azure-cli), [Azure PowerShell](#export-with-azure-powershell)a každé z podporovaných sad SDK.
 
@@ -84,7 +84,7 @@ Azure Policy definice, iniciativy a přiřazení lze exportovat jako JSON s [Azu
 Tady je příklad získání formátu JSON pro definici zásady s **názvem** _VirtualMachineStorage_:
 
 ```azurepowershell-interactive
-Get-AzPolicyDefinition --Name 'VirtualMachineStorage'
+Get-AzPolicyDefinition -Name 'VirtualMachineStorage'
 ```
 
 ## <a name="next-steps"></a>Další kroky

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 59b2307bb2e1f4effce9f68530be86e9ca625c9c
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: e0b02f8d6a46c26b8927b4bac4d2089d3b57c295
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766296"
+ms.locfileid: "91777761"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Správa zařízení GPU Azure Stack Edge pro pomocí prostředí Windows PowerShell
 
@@ -429,7 +429,7 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 
 Řadič pro správu základní desky (BMC) se používá ke vzdálenému monitorování a správě zařízení. Tato část popisuje rutiny, které se dají použít ke správě konfigurace řadiče pro správu základní desky. Před spuštěním kterékoli z těchto rutin se [připojte k rozhraní PowerShell zařízení](#connect-to-the-powershell-interface).
 
-- `Get-HcsNetBmcInterface`: Pomocí této rutiny můžete získat vlastnosti konfigurace sítě řadiče pro správu základní desky (BMC), například,, `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` , `DhcpEnabled` : 
+- `Get-HcsNetBmcInterface`: Pomocí této rutiny můžete získat vlastnosti konfigurace sítě řadiče pro správu základní desky (BMC), například,, `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` , `DhcpEnabled` . 
     
     Zde je ukázkový výstup:
     
@@ -476,7 +476,7 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
         [10.100.10.10]: PS>
         ```    
 
-- `Set-HcsBmcPassword`: Pomocí této rutiny můžete změnit heslo řadiče pro správu základní desky pro `EdgeUser` . 
+- `Set-HcsBmcPassword`: Pomocí této rutiny můžete změnit heslo řadiče pro správu základní desky pro `EdgeUser` . Uživatelské jméno – rozlišuje `EdgeUser` velká a malá písmena.
 
     Zde je ukázkový výstup: 
 

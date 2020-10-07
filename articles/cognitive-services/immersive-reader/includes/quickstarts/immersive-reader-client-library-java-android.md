@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-js
 ms.author: dylankil
-ms.openlocfilehash: 32522958b21d31b09c019ebde0862c49e3535488
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4118ef478f43c5887e2c5fba4595314e5a4ac02d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91377550"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779417"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je často navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení pro nové čtenáře, jazyky jazyků a lidi s rozdíly v učení, jako je dyslexia. Pomocí moderního čtecího zařízení ve svých aplikacích můžete izolovat text a vylepšit tak fokus, zobrazit obrázky pro běžně používaná slova, zvýraznit části řeči, číst vybraný text hlasitě, překládat slova a fráze v reálném čase a další.
 
@@ -64,7 +64,7 @@ CLIENT_ID=<YOUR_CLIENT_ID>
 CLIENT_SECRET=<YOUR_CLIENT_SECRET>
 SUBDOMAIN=<YOUR_SUBDOMAIN>
 ```
-![Proměnné prostředí v Android Studio](../../media/android/java/android-studio-assets-and-env-file.png)
+![Snímek obrazovky, který zobrazuje proměnné prostředí v Android Studio.](../../media/android/java/android-studio-assets-and-env-file.png)
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 

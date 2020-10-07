@@ -1,14 +1,16 @@
 ---
 title: Návrh pro jazykově QnA Maker
 description: Prostředek QnA Maker a všechny znalostní báze uvnitř tohoto prostředku podporují jeden jazyk. Jeden jazyk je nutný k tomu, aby poskytoval nejlepší výsledky odpovědi pro dotaz.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 5cb1dcd35649debbafd2e234606ad4c9d6906ea6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e09e15f71b0574a5612e7f9bacd8aaa4739a441c
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76843417"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776999"
 ---
 # <a name="design-knowledge-base-for-content-language"></a>Návrh znalostní báze pro jazyk obsahu
 

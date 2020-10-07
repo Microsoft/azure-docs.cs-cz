@@ -1,14 +1,16 @@
 ---
 title: Použití aktivního učení s využitím znalostní báze Knowledge Base – QnA Maker
 description: Naučte se zlepšovat kvalitu znalostní báze s aktivním učením. Zkontrolujte, přijměte nebo odmítněte, přidejte bez odebrání nebo změny existujících otázek.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 32dfe6a274889181410ab5f800ac595ee81c148c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c67cde3062d88c48eb44a5135bf47ad3948cecc8
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298141"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776795"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Využití aktivního učení k vylepšení vaší znalostní báze
 

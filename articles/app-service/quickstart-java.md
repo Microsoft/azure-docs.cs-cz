@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4041623d1c6ae464afd20e3beff753fb89e0a350
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f6a4045308aa0ae8488839b0d5ea4d476c4dc883
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91405067"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776319"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Rychlý Start: Vytvoření aplikace Java na Azure App Service
 
@@ -207,7 +207,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 
 Konfigurace pro App Service můžete v `pom.xml` případě potřeby upravit přímo. Níže jsou uvedeny některé běžné položky:
 
-Vlastnost | Povinné | Popis | Verze
+Vlastnost | Požaduje se | Popis | Verze
 ---|---|---|---
 `<schemaVersion>` | false (nepravda) | Zadejte verzi schématu konfigurace. Podporované hodnoty jsou: `v1` , `v2` . | 1.5.2
 `<subscriptionId>` | false (nepravda) | Zadejte ID předplatného. | 0.1.0 +
@@ -257,26 +257,24 @@ az group delete --name <your resource group name; for example: helloworld-155840
 Spuštění tohoto příkazu může trvat přibližně minut.
 
 ## <a name="next-steps"></a>Další kroky
-> [!div class="nextstepaction"]
-> [Připojení k Azure SQL Database pomocí Java](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
-
-> [!div class="nextstepaction"]
-> [Připojení k Azure DB for MySQL pomocí Java](../mysql/connect-java.md)
 
 > [!div class="nextstepaction"]
 > [Připojení k Azure DB pro PostgreSQL pomocí Java](../postgresql/connect-java.md)
+
+> [!div class="nextstepaction"]
+> [Nastavení CI/CD](deploy-continuous-deployment.md)
+
+> [!div class="nextstepaction"]
+> [Informace o cenách](https://azure.microsoft.com/pricing/details/app-service/linux/)
+
+> [!div class="nextstepaction"]
+> [Agregované protokoly a metriky](troubleshoot-diagnostic-logs.md)
+
+> [!div class="nextstepaction"]
+> [Vertikální navýšení kapacity](manage-scale-up.md)
 
 > [!div class="nextstepaction"]
 > [Azure pro vývojáře v jazyce Java – prostředky](/java/azure/)
 
 > [!div class="nextstepaction"]
 > [Konfigurace aplikace Java](configure-language-java.md)
-
-> [!div class="nextstepaction"]
-> [CI/CD s využitím Jenkinse](/azure/developer/jenkins/deploy-to-azure-app-service-using-plugin)
-
-> [!div class="nextstepaction"]
-> [Mapování vlastní domény](app-service-web-tutorial-custom-domain.md)
-
-> [!div class="nextstepaction"]
-> [Další informace o modulech plug-in Maven pro Azure](https://github.com/microsoft/azure-maven-plugins)

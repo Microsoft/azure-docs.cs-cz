@@ -3,14 +3,14 @@ title: Nasazení Hybrid Runbook Worker pro Linux v Azure Automation
 description: V tomto článku se dozvíte, jak nainstalovat Azure Automation Hybrid Runbook Worker ke spouštění Runbooků na počítačích se systémem Linux v místním datovém centru nebo v cloudovém prostředí.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/15/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: fb975305e18315fa8d0a39e4fe0ab6902c98b7e7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8295b6bba9703c276bf60a0360ded6f0e195369e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987217"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776268"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
 
@@ -18,7 +18,7 @@ Pomocí funkce Hybrid Runbook Worker služby Azure Automation můžete spouště
 
 Po úspěšném nasazení služby Runbook Worker si přečtěte téma [spuštění runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md) , kde se dozvíte, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -45,6 +45,10 @@ Pokud chcete do svého pracovního prostoru přidat funkci Change Tracking a inv
 ### <a name="log-analytics-agent"></a>Agent Log Analytics
 
 Role Hybrid Runbook Worker vyžaduje, aby byl pro podporovaný operační systém Linux [Log Analytics agent](../azure-monitor/platform/log-analytics-agent.md) .
+
+>[!NOTE]
+>Po instalaci agenta Log Analytics pro Linux byste neměli měnit oprávnění ke `sudoers.d` složce nebo jejímu vlastnictví. Pro účet **nxautomation** se vyžaduje oprávnění sudo, což je kontext uživatele, ke kterému se Hybrid Runbook Worker spouští. Oprávnění by se neměla odebírat. Omezení tohoto omezení na určité složky nebo příkazy může mít za následek zásadní změnu.
+>
 
 ### <a name="supported-linux-operating-systems"></a>Podporované operační systémy Linux
 
@@ -88,7 +92,7 @@ Procesy Hybrid Runbook Worker pro Linux podporují v Azure Automation omezené s
 
 |Typ Runbooku | Podporováno |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |Ano |
 |PowerShell |Ano<sup>1</sup> |
 |Pracovní postup PowerShellu |No |
 |Grafický |No |

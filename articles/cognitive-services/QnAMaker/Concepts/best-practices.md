@@ -1,14 +1,16 @@
 ---
 title: Osvědčené postupy – QnA Maker
 description: Využijte tyto osvědčené postupy k vylepšení znalostní báze a poskytněte uživatelům lepší výsledky pro koncové uživatele robota aplikace/konverzace.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: 9a6f7f7d6edc4544942476050a1ed3c2011af7fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80053137"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777016"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Osvědčené postupy QnA Maker znalostní bázi Knowledge Base
 
@@ -35,11 +37,11 @@ Přidejte tolik alternativních otázek, kolik potřebujete, ale ponechte jednod
 
 ### <a name="add-relevant-alternative-questions"></a>Přidat relevantní alternativní otázky
 
-Uživatel může zadávat dotazy buď pomocí konverzačního stylu textu, nebo pomocí klíčového slova, `How do I add a toner cartridge to my printer?` jako je například `toner cartridge`. Aby bylo možné správně vrátit nejlepší odpověď, musí mít znalostní báze obojí styly otázek. Pokud si nejste jistí, jaká klíčová slova zákazník zadá, použijte k analýze dotazů Application Insights dat.
+Uživatel může zadávat dotazy buď pomocí konverzačního stylu textu, `How do I add a toner cartridge to my printer?` nebo pomocí klíčového slova, jako je například `toner cartridge` . Aby bylo možné správně vrátit nejlepší odpověď, musí mít znalostní báze obojí styly otázek. Pokud si nejste jistí, jaká klíčová slova zákazník zadá, použijte k analýze dotazů Application Insights dat.
 
 ### <a name="good-answers"></a>Dobré odpovědi
 
-Nejlepší odpovědi jsou jednoduché odpovědi, ale nejsou příliš jednoduché. Nepoužívejte odpovědi, jako je `yes` a `no`. Pokud by vaše odpověď měla odkazovat na jiné zdroje nebo poskytovat bohatou zkušenost s médii a odkazy, použijte [označování metadat](../how-to/edit-knowledge-base.md#add-metadata) k rozlišení mezi odpověďmi a pak [odešlete dotaz](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) s značkami `strictFilters` metadat ve vlastnosti, abyste získali správnou verzi odpovědi.
+Nejlepší odpovědi jsou jednoduché odpovědi, ale nejsou příliš jednoduché. Nepoužívejte odpovědi, jako je `yes` a `no` . Pokud by vaše odpověď měla odkazovat na jiné zdroje nebo poskytovat bohatou zkušenost s médii a odkazy, použijte [označování metadat](../how-to/edit-knowledge-base.md#add-metadata) k rozlišení mezi odpověďmi a pak [odešlete dotaz](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) s značkami metadat ve `strictFilters` vlastnosti, abyste získali správnou verzi odpovědi.
 
 |Odpověď|Follup výzvy|
 |--|--|
@@ -54,7 +56,7 @@ CHITEST – chat je podporován v [mnoha jazycích](../how-to/chit-chat-knowledg
 ### <a name="choosing-a-personality"></a>Volba osobnosti
 CHITEST – chat se podporuje pro několik předdefinovaných osobních důvodů:
 
-|Osobní |Soubor datové sady QnA Maker |
+|Osobnost |Soubor datové sady QnA Maker |
 |---------|-----|
 |Professional |[qna_chitchat_professional. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
 |Vhodná |[qna_chitchat_friendly. TSV](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
@@ -77,7 +79,7 @@ Doporučujeme, aby následující funkce CHITEST-chat QnAs konkrétnější:
 
 ### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Přidání vlastního funkce CHITEST – chat se značkou metadat
 
-Pokud přidáte vlastní páry funkce CHITEST-chat QnA, nezapomeňte přidat metadata, aby se tyto odpovědi vracely. Dvojice název/hodnota metadat je `editorial:chitchat`.
+Pokud přidáte vlastní páry funkce CHITEST-chat QnA, nezapomeňte přidat metadata, aby se tyto odpovědi vracely. Dvojice název/hodnota metadat je `editorial:chitchat` .
 
 ## <a name="searching-for-answers"></a>Hledání odpovědí
 
@@ -97,7 +99,7 @@ Ujistěte se, že využijete nejlepšího použití funkcí hodnocení QnA Maker
 Výchozí [hodnocení spolehlivosti](confidence-score.md) , které se používá jako prahová hodnota, je 0, ale v závislosti na vašich potřebách můžete [změnit prahovou hodnotu](confidence-score.md#set-threshold) pro vaši databázi. Vzhledem k tomu, že se každá KB liší, měli byste otestovat a vybrat prahovou hodnotu, která je nejvhodnější pro vaši databázi.
 
 ### <a name="choosing-ranker-type"></a>Volba typu klasifikace
-Ve výchozím nastavení QnA Maker vyhledává dotazy a odpovědi. Pokud chcete vygenerovat odpověď pouze `RankerType=QuestionOnly` v rámci otázek, použijte v těle žádosti GenerateAnswer v části post.
+Ve výchozím nastavení QnA Maker vyhledává dotazy a odpovědi. Pokud chcete vygenerovat odpověď pouze v rámci otázek, použijte `RankerType=QuestionOnly` v těle žádosti GenerateAnswer v části post.
 
 ### <a name="add-alternate-questions"></a>Přidat alternativní otázky
 [Alternativní otázky](../How-To/edit-knowledge-base.md) zlepšují pravděpodobnost shody s uživatelským dotazem. Alternativní otázky jsou užitečné, když existuje několik způsobů, jak se může zobrazit stejná otázka. To může zahrnovat změny ve struktuře vět a ve stylu Wordu.
@@ -130,7 +132,7 @@ Například můžete mít dvě samostatné QnAs s následujícími otázkami:
 |kde je *umístění* parkování|
 |kde je *umístění* ATM|
 
-Vzhledem k tomu, že tyto dvě QnAs jsou fráze s velmi podobnými slovy, může tato podobnost způsobit velmi podobné skóre pro mnoho uživatelských dotazů, které jsou fráze, jako *je například `<x>` umístění*. Místo toho se pokuste jasně odlišit pomocí dotazů, jako *je "kde je zaparkovaná dávka"* a *"kde je ATM"*, a to tak, že se vyhnete slovám, jako je "umístění", které by mohlo být ve vaší znalostní bázi hodně otázek.
+Vzhledem k tomu, že tyto dvě QnAs jsou fráze s velmi podobnými slovy, může tato podobnost způsobit velmi podobné skóre pro mnoho uživatelských dotazů, které jsou fráze, jako  *je například `<x>` umístění*. Místo toho se pokuste jasně odlišit pomocí dotazů, jako  *je "kde je zaparkovaná dávka"* a *"kde je ATM"*, a to tak, že se vyhnete slovám, jako je "umístění", které by mohlo být ve vaší znalostní bázi hodně otázek.
 
 ## <a name="collaborate"></a>Spolupráce
 QnA Maker umožňuje uživatelům [spolupracovat](../How-to/collaborate-knowledge-base.md) na znalostní bázi. Uživatelé potřebují přístup ke skupině prostředků Azure QnA Maker, aby mohli získat přístup ke znalostní bázi. Některé organizace můžou chtít využívat úpravy a údržbu znalostní báze a pořád budou moct chránit přístup ke svým prostředkům Azure. Tento model schvalovatele editoru se provádí nastavením dvou stejných [služeb QnA maker](../How-to/set-up-qnamaker-service-azure.md) v různých předplatných a výběrem jednoho pro cyklus úprav a testování. Po dokončení testování se obsah znalostní báze přenese pomocí procesu importu a [exportu](../Tutorials/migrate-knowledge-base.md) do QnA maker služby schvalovatele, která nakonec publikuje znalostní bázi a aktualizuje koncový bod.

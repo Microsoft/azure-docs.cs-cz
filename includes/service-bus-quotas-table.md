@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 07/15/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d22b0100074a230451e5c6b3967fa5dbc8ae3f56
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 535ee447ff63aabb9af1f32252fb4e4dd2c392de
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515851"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779297"
 ---
 Následující tabulka uvádí informace o kvótě, které jsou specifické pro Azure Service Bus zasílání zpráv. Informace o cenách a dalších kvótách pro Service Bus najdete v tématu [Service Bus ceny](https://azure.microsoft.com/pricing/details/service-bus/).
 
-| Název kvóty | Obor | Poznámky | Hodnota |
+| Název kvóty | Rozsah | Poznámky | Hodnota |
 | --- | --- | --- | --- |
 | Maximální počet základních nebo standardních oborů názvů na předplatné Azure |Obor názvů |Následné žádosti o další obory názvů Basic nebo Standard jsou Azure Portal odmítnuty. |100|
 | Maximální počet oborů názvů úrovně Premium na předplatné Azure |Obor názvů |Následné žádosti o další obory názvů úrovně Premium jsou na portálu odmítnuty. |100 |
@@ -32,7 +32,7 @@ Následující tabulka uvádí informace o kvótě, které jsou specifické pro 
 | Maximální velikost [ID relace](/dotnet/api/microsoft.azure.servicebus.message.sessionid) zprávy | Entita |- | 128 |
 | Velikost zprávy pro entitu, téma nebo předplatného |Entita |Příchozí zprávy, které překračují tyto kvóty, se odmítnou a volající kód obdrží výjimku. |Maximální velikost zprávy: 256 KB pro [úroveň Standard](../articles/service-bus-messaging/service-bus-premium-messaging.md), 1 MB pro [úroveň Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md). <br /><br />Kvůli režii systému je toto omezení menší než tyto hodnoty.<br /><br />Maximální velikost hlavičky: 64 KB.<br /><br />Maximální počet vlastností záhlaví v kontejneru objektů a dat: **Byte/int MaxValue**.<br /><br />Maximální velikost vlastnosti v kontejneru objektů a dat: žádné explicitní omezení Omezeno maximální velikostí hlavičky. |
 | Velikost vlastnosti zprávy pro entitu, téma nebo předplatného |Entita | Výjimka `SerializationException` je vygenerována. |Maximální velikost vlastnosti zprávy pro každou vlastnost je 32 000. Kumulativní velikost všech vlastností nemůže být větší než 64 000. Toto omezení se vztahuje na celé záhlaví zprostředkované [zprávy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage), která má vlastnosti uživatele i systémové vlastnosti, například [pořadové číslo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber), [popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label)a [ID zprávy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid). |
-| Počet předplatných na téma |Entita |Následné žádosti o vytvoření dalších předplatných pro téma jsou odmítnuty. V důsledku toho se zobrazí chybová zpráva, pokud je nakonfigurována prostřednictvím portálu. Pokud je volána z rozhraní API pro správu, je vyvolána výjimka volajícím kódem. |2 000 pro každé téma pro úroveň Standard. |
+| Počet předplatných na téma |Entita |Následné žádosti o vytvoření dalších předplatných pro téma jsou odmítnuty. V důsledku toho se zobrazí chybová zpráva, pokud je nakonfigurována prostřednictvím portálu. Pokud je volána z rozhraní API pro správu, je vyvolána výjimka volajícím kódem. |2 000 na téma pro úroveň Standard a úroveň Premium. |
 | Počet filtrů SQL na téma |Entita |Následné žádosti o vytvoření dalších filtrů v tématu jsou odmítnuty a volající kód obdrží výjimku. |2 000 |
 | Počet filtrů korelace na téma |Entita |Následné žádosti o vytvoření dalších filtrů v tématu jsou odmítnuty a volající kód obdrží výjimku. |100 000 |
 | Velikost filtrů nebo akcí SQL |Obor názvů |Následné žádosti o vytvoření dalších filtrů jsou odmítnuty a volající kód obdrží výjimku. |Maximální délka řetězce podmínky filtru: 1 024 (1 KB).<br /><br />Maximální délka řetězce akce pravidla: 1 024 (1 KB).<br /><br />Maximální počet výrazů na akci pravidla: 32. |

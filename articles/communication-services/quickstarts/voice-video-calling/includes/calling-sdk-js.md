@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 5542ca2f50152e7588f32e9ac8717f691fdb4d63
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eaa7efe761490a639acabd9fd6d91378e1259a67
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376456"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779282"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
@@ -72,9 +72,9 @@ const oneToOneCall = callAgent.call([CommunicationUser]);
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>Nakonání volání 1: n s uživateli a PSTN
-> [!WARNING]
-> Volání veřejné telefonní sítě je aktuálně v privátní verzi Preview. Pro přístup [použijte k programu předčasného](https://aka.ms/ACS-EarlyAdopter)připravení.
+
 Chcete-li umístit volání 1: n uživateli a číslo veřejné telefonní číslo, musíte zadat CommunicationUser a telefonní číslo pro obě volané.
+
 Aby bylo možné volat do veřejné telefonní služby, musí být prostředek komunikačních služeb nakonfigurovaný.
 ```js
 

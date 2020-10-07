@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fb6813875858ab6cc438df5abb78a75391adfeac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6628d693a8df3614097e23785ac234a451565ca3
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280653"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777101"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Přehled srovnávacích testů zabezpečení Azure (v2)
 
@@ -30,19 +30,17 @@ Srovnávací testy zabezpečení Azure obsahují následující ovládací prvky
 
 | DOKUMENTEM SSAE – domény ovládacích prvků | Popis 
 |--|--|
-| [Zabezpečení sítě (NS)](security-controls-v2-network-security.md) | Zabezpečení sítě pokrývá ovládací prvky pro zabezpečení a ochranu sítí Azure, včetně zabezpečení virtuálních sítí, vytváření privátních připojení, prevenci a zmírnění externích útoků a zabezpečení DNS. |
-| [Správa identit (IM)](security-controls-v2-identity-management.md) | Správa identit pokrývá ovládací prvky pro vytvoření zabezpečeného řízení identity a přístupu pomocí Azure Active Directory, včetně použití jednotného přihlašování, silného ověřování, spravovaných identit (a principů služeb) pro aplikace, podmíněný přístup a monitorování anomálií. |
-| [Privilegovaný přístup (PA)](security-controls-v2-privileged-access.md) | Privilegovaný přístup pokrývá ovládací prvky pro ochranu privilegovaného přístupu k vašemu tenantovi a prostředkům Azure, včetně řady ovládacích prvků pro ochranu administrativního modelu, účtů pro správu a pracovních stanic s privilegovaným přístupem proti úmyslnému a neúmyslnému riziku. |
-| [Ochrana dat (DP)](security-controls-v2-data-protection.md) | Ochrana dat pokrývá kontrolu ochrany dat v klidovém provozu, při přenosu a prostřednictvím autorizovaných mechanismů přístupu, včetně zjišťování, klasifikace, ochrany a monitorování citlivých datových prostředků pomocí řízení přístupu, šifrování a protokolování v Azure. |
-| [Správa prostředků (AM)](security-controls-v2-asset-management.md) | Správa prostředků pokrývá ovládací prvky pro zajištění viditelnosti zabezpečení a zásad správného řízení pro prostředky Azure, včetně doporučení týkajících se zabezpečení, přístupu k inventáři prostředků a správě schválení pro služby a prostředky (inventarizace, sledování a opravy). |
-| [Protokolování a detekce hrozeb (LT)](security-controls-v2-logging-threat-detection.md) | Protokolování a detekce hrozeb pokrývá ovládací prvky pro detekci hrozeb v Azure a povolování, shromažďování a ukládání protokolů auditu pro služby Azure, včetně povolování zjišťování, vyšetřování a nápravných procesů s ovládacími prvky pro generování vysoce kvalitních výstrah s detekcí nativních hrozeb ve službách Azure. zahrnuje také shromažďování protokolů s Azure Monitor, centralizaci analýzy zabezpečení s použitím Sentinel Azure, synchronizaci času a uchovávání protokolů. |
-| [Reakce na incidenty (IR)](security-controls-v2-incident-response.md) | Reakce na incidenty pokrývá ovládací prvky v životním cyklu reakce na incidenty – přípravu, zjišťování a analýzu, zahrnutí a následné aktivity, včetně použití služeb Azure, jako jsou Azure Security Center a Sentinel, k automatizaci procesu reakce na incidenty. |
-| [Stav a Správa ohrožení zabezpečení (PV)](security-controls-v2-posture-vulnerability-management.md) | Stav a Správa ohrožení zabezpečení se zaměřují na ovládací prvky pro hodnocení a zlepšení stav zabezpečení Azure, včetně kontroly ohrožení zabezpečení, testování průniku a nápravy, jakož i sledování konfigurace zabezpečení, vytváření sestav a opravy v prostředcích Azure. |
-| [Zabezpečení koncového bodu (ES)](security-controls-v2-endpoint-security.md) | Služba Endpoint Security pokrývá ovládací prvky zjišťování a odezvy koncových bodů, včetně použití zjišťování koncových bodů a odezvy (EDR) a služby anti-malware pro koncové body v prostředích Azure. |
-| [Zálohování a obnovení (BR)](security-controls-v2-backup-recovery.md) | Zálohování a obnovení pokrývá ovládací prvky, aby se zajistilo, že se budou provádět, ověřovat a chránit data a konfigurace v různých úrovních služeb. |
-| [Řízení a strategie (GS)](security-controls-v2-governance-strategy.md) | Zásady správného řízení a strategie poskytují pokyny k zajištění soudržné strategie zabezpečení a dokumentovaného přístupu pro řízení a zajištění zabezpečení, včetně stanovení rolí a odpovědností pro různé funkce cloudového zabezpečení, jednotnou technickou strategii a podpůrné zásady a standardy. |
-
-Můžete si také stáhnout srovnávací test zabezpečení Azure ve [formátu tabulky](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark).
+| [&nbsp;Zabezpečení sítě &nbsp; (NS)](security-controls-v2-network-security.md) | Zabezpečení sítě pokrývá ovládací prvky pro zabezpečení a ochranu sítí Azure, včetně zabezpečení virtuálních sítí, vytváření privátních připojení, prevenci a zmírnění externích útoků a zabezpečení DNS. |
+| [&nbsp;Správa identit &nbsp; (IM)](security-controls-v2-identity-management.md) | Správa identit pokrývá ovládací prvky pro vytvoření zabezpečeného řízení identity a přístupu pomocí Azure Active Directory, včetně použití jednotného přihlašování, silného ověřování, spravovaných identit (a principů služeb) pro aplikace, podmíněný přístup a monitorování anomálií. |
+| [Privilegovaný &nbsp; přístup &nbsp; (PA)](security-controls-v2-privileged-access.md) | Privilegovaný přístup pokrývá ovládací prvky pro ochranu privilegovaného přístupu k vašemu tenantovi a prostředkům Azure, včetně řady ovládacích prvků pro ochranu administrativního modelu, účtů pro správu a pracovních stanic s privilegovaným přístupem proti úmyslnému a neúmyslnému riziku. |
+| [&nbsp;Ochrana dat &nbsp; (DP)](security-controls-v2-data-protection.md) | Ochrana dat pokrývá kontrolu ochrany dat v klidovém provozu, při přenosu a prostřednictvím autorizovaných mechanismů přístupu, včetně zjišťování, klasifikace, ochrany a monitorování citlivých datových prostředků pomocí řízení přístupu, šifrování a protokolování v Azure. |
+| [&nbsp;Správa prostředků &nbsp; (am)](security-controls-v2-asset-management.md) | Správa prostředků pokrývá ovládací prvky pro zajištění viditelnosti zabezpečení a zásad správného řízení pro prostředky Azure, včetně doporučení týkajících se zabezpečení, přístupu k inventáři prostředků a správě schválení pro služby a prostředky (inventarizace, sledování a opravy). |
+| [Protokolování &nbsp; a &nbsp; &nbsp; detekce hrozeb (lt)](security-controls-v2-logging-threat-detection.md) | Protokolování a detekce hrozeb pokrývá ovládací prvky pro detekci hrozeb v Azure a povolování, shromažďování a ukládání protokolů auditu pro služby Azure, včetně povolování zjišťování, vyšetřování a nápravných procesů s ovládacími prvky pro generování vysoce kvalitních výstrah s detekcí nativních hrozeb ve službách Azure. zahrnuje také shromažďování protokolů s Azure Monitor, centralizaci analýzy zabezpečení s použitím Sentinel Azure, synchronizaci času a uchovávání protokolů. |
+| [Reakce na incidenty &nbsp; &nbsp; (IR)](security-controls-v2-incident-response.md) | Reakce na incidenty pokrývá ovládací prvky v životním cyklu reakce na incidenty – přípravu, zjišťování a analýzu, zahrnutí a následné aktivity, včetně použití služeb Azure, jako jsou Azure Security Center a Sentinel, k automatizaci procesu reakce na incidenty. |
+| [Stav &nbsp; a &nbsp; Správa ohrožení zabezpečení &nbsp; &nbsp; (PV)](security-controls-v2-posture-vulnerability-management.md) | Stav a Správa ohrožení zabezpečení se zaměřují na ovládací prvky pro hodnocení a zlepšení stav zabezpečení Azure, včetně kontroly ohrožení zabezpečení, testování průniku a nápravy, jakož i sledování konfigurace zabezpečení, vytváření sestav a opravy v prostředcích Azure. |
+| [Zabezpečení koncového bodu &nbsp; &nbsp; (ES)](security-controls-v2-endpoint-security.md) | Služba Endpoint Security pokrývá ovládací prvky zjišťování a odezvy koncových bodů, včetně použití zjišťování koncových bodů a odezvy (EDR) a služby anti-malware pro koncové body v prostředích Azure. |
+| [Zálohování &nbsp; a &nbsp; obnovení &nbsp; (BR)](security-controls-v2-backup-recovery.md) | Zálohování a obnovení pokrývá ovládací prvky, aby se zajistilo, že se budou provádět, ověřovat a chránit data a konfigurace v různých úrovních služeb. |
+| [Řízení &nbsp; a &nbsp; strategie &nbsp; (GS)](security-controls-v2-governance-strategy.md) | Zásady správného řízení a strategie poskytují pokyny k zajištění soudržné strategie zabezpečení a dokumentovaného přístupu pro řízení a zajištění zabezpečení, včetně stanovení rolí a odpovědností pro různé funkce cloudového zabezpečení, jednotnou technickou strategii a podpůrné zásady a standardy. |
 
 ## <a name="azure-security-benchmark-recommendations"></a>Doporučení pro srovnávací testy zabezpečení Azure
 
@@ -60,7 +58,11 @@ Každé doporučení zahrnuje následující informace:
 
 Uvítáme vaši podrobnou zpětnou vazbu a aktivní účast v úsilí Azure Security test. Pokud chcete zadat přímý vstup týmu Azure Security test, vyplňte formulář na https://aka.ms/AzSecBenchmark
 
+## <a name="download"></a>Stáhnout
 
+Srovnávací test zabezpečení Azure si můžete stáhnout ve [formátu tabulky](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark).
+
+## <a name="next-steps"></a>Další kroky 
 - Podívejte se na první ovládací prvek zabezpečení: [zabezpečení sítě](security-control-network-security.md)
 - Přečtěte si [Úvod k zabezpečení Azure Security test](introduction.md)
-- Stažení [tabulky Azure Security test benchmark v2 Excel](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark)
+- Seznamte se se [Základy zabezpečení Azure](../fundamentals/index.yml)

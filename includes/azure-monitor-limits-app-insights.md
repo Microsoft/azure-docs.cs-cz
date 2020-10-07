@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 32a04518d3cd097a02ec3045da891237fc0e405a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eaf2c2e2c1954ae848c280adf4f1ae81ffc79ee8
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334910"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779920"
 ---
 K dispozici jsou určitá omezení počtu metrik a událostí na aplikaci, tj. na klíč instrumentace. Omezení závisí na zvoleném [cenovém plánu](https://azure.microsoft.com/pricing/details/application-insights/).
 
@@ -24,9 +24,9 @@ K dispozici jsou určitá omezení počtu metrik a událostí na aplikaci, tj. n
 | Uchovávání dat | 90 dnů | Tento prostředek je pro funkce [Vyhledávání](../articles/azure-monitor/app/diagnostic-search.md), [Analýza](../articles/azure-monitor/app/analytics.md) a [Průzkumník metrik](../articles/azure-monitor/app/metrics-explorer.md).
 | [Vícekrokový test dostupnosti](../articles/azure-monitor/app/availability-multistep.md) – uchování podrobných výsledků | 90 dnů | Tento prostředek poskytuje podrobné výsledky každého kroku.
 | Maximální velikost události | 64 000 000 bajtů |
-| Délka názvu vlastnosti a metriky | 150 | Viz [schémata typů](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond/).
-| Délka řetězce hodnoty vlastnosti | 8 192 | Viz [schémata typů](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond/).
-| Délka zprávy trasování a výjimky | 32 768  | Viz [schémata typů](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond/).
+| Délka názvu vlastnosti a metriky | 150 | Viz [schémata typů](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond/).
+| Délka řetězce hodnoty vlastnosti | 8 192 | Viz [schémata typů](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond/).
+| Délka zprávy trasování a výjimky | 32 768  | Viz [schémata typů](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond/).
 | [Testy dostupnosti](../articles/azure-monitor/app/monitor-web-app-availability.md) – počet na aplikaci | 100 |
 | Uchovávání dat [profileru](../articles/azure-monitor/app/profiler.md) | 5 dní |
 | Data [profileru](../articles/azure-monitor/app/profiler.md) odesílaná za den | 10 GB |

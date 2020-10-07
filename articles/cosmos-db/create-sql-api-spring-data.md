@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 10/06/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: f9d82c78ec0f5cd1b86d3fa885f89a25ec6e3672
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ccab295d39e463d4b6d1e764862678469fba751
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91348943"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776404"
 ---
 # <a name="quickstart-build-a-spring-data-azure-cosmos-db-v3-app-to-manage-azure-cosmos-db-sql-api-data"></a>Rychlý Start: Vytvoření aplikace pružinové dat Azure Cosmos DB v3 pro správu Azure Cosmos DB dat rozhraní SQL API
 
@@ -86,7 +86,7 @@ Teď přejděme k práci s kódem. Naklonujeme aplikaci SQL API z GitHubu, nast
 Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří na vašem počítači kopii ukázkové aplikace.
 
 ```bash
-git clone https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos
+git clone https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started.git
 ```
 
 ## <a name="review-the-code"></a>Kontrola kódu

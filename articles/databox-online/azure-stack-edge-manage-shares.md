@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: cc9c7dda86d39d31b8c9a6329ac29970888f12d1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d7ff32b33a8eab5c6729d84d38fec2e5b2c87449
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904466"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777203"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Použití Azure Portal ke správě sdílených složek v Azure Stack Edge pro
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro"></a>Použití Azure Portal ke správě sdílených složek na Azure Stack Edge pro
 
 Tento článek popisuje, jak spravovat sdílené složky na Azure Stack Edge pro. Azure Stack Edge pro můžete spravovat přes Azure Portal nebo prostřednictvím místního webového uživatelského rozhraní. Pomocí Azure Portal můžete přidat, odstranit, aktualizovat sdílené složky nebo synchronizovat klíč úložiště pro účet úložiště, který je přidružený ke sdíleným složkám.
 
@@ -74,7 +74,7 @@ Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal násled
 
 1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **brána > sdílené složky**. Na panelu příkazů vyberte **+ Přidat sdílenou složku** .
 
-   ![Vyberte přidat sdílenou složku](media/azure-stack-edge-manage-shares/add-local-share-1.png)
+   ![Vyberte přidat sdílenou složku 2.](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
 2. V části **Přidat sdílenou složku** zadejte nastavení sdílené složky. Zadejte jedinečný název sdílené složky.
     
@@ -106,7 +106,7 @@ Pokud jste vytvořili sdílenou složku před tím, než jste nakonfigurovali v�
 
 1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **brána > sdílené složky**. V seznamu sdílených složek vyberte sdílenou složku, kterou chcete připojit. Ve sloupci **použito pro výpočty** se zobrazí stav **zakázáno** pro vybranou sdílenou složku.
 
-   ![Vyberte sdílenou složku](media/azure-stack-edge-manage-shares/select-share-mount.png)
+   ![Vybrat sdílenou složku 3](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
 2. Vyberte **připojit**.
 
@@ -130,7 +130,7 @@ Chcete-li odpojit sdílenou složku, proveďte následující kroky v Azure Port
 
 1. V Azure Portal přejdete na prostředek Azure Stack Edge a pak přejdete na **brána > sdílené složky**.
 
-   ![Vyberte sdílenou složku](media/azure-stack-edge-manage-shares/select-share-unmount.png)
+   ![Vybrat sdílenou složku 4](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
 2. V seznamu sdílených složek vyberte sdílenou složku, kterou chcete odpojit. Chcete se ujistit, že se sdílená složka nepoužívá v žádných modulech. Pokud je sdílená složka používána modulem, zobrazí se problémy s odpovídajícím modulem. Vyberte **Odpojit**.
 
@@ -150,7 +150,7 @@ Pokud chcete sdílenou složku odstranit, proveďte na webu Azure Portal násled
 
 1. V seznamu sdílených složek vyberte a klikněte na sdílenou složku, kterou chcete odstranit.
 
-   ![Vyberte sdílenou složku](media/azure-stack-edge-manage-shares/delete-share-1.png)
+   ![Vybrat sdílenou složku 5](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
 2. Klikněte na **Odstranit**.
 
@@ -175,7 +175,7 @@ Pokud chcete sdílenou složku aktualizovat, proveďte na webu Azure Portal nás
 
 1. Na webu Azure Portal přejděte na **Sdílené složky**. Vyberte a klikněte na sdílenou složku, kterou chcete aktualizovat.
 
-   ![Vyberte sdílenou složku](media/azure-stack-edge-manage-shares/refresh-share-1.png)
+   ![Vybrat sdílenou složku 6](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
 2. Klikněte na **Aktualizovat**.
 

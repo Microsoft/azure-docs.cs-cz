@@ -1,14 +1,16 @@
 ---
 title: Spolupráce na znalostní bázi Knowledge Base – QnA Maker
 description: QnA Maker umožňuje více lidem spolupracovat na znalostní bázi. Tato funkce je k dispozici s řízením přístupu na základě role Azure (Azure RBAC).
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 0d59ca83e6067c083e4bfebdb7afaaf6669dda8a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 8adc02d4b397c2b0bdaf5d3998cfbe229c896d41
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926843"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776846"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>Spolupráce s autory a editory
 
@@ -62,7 +64,7 @@ Když někdo nasdílel službu QnA Maker pomocí protokolů na [portál QnA make
 
 Když vyberou znalostní bázi, jejich aktuální role na tomto QnA Maker prostředku se zobrazí vedle názvu znalostní báze.
 
-:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="Snímek znalostní báze v režimu úprav s názvem role v závorkách vedle názvu znalostní báze v levém horním rohu webové stránky.":::
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="QnA Maker přidat roli IAM.":::
 
 ## <a name="next-steps"></a>Další kroky
 

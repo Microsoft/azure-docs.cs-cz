@@ -3,12 +3,12 @@ title: Detekce pohybu, nahrávání videa do Azure Media Services
 description: V tomto rychlém startu se dozvíte, jak používat Live video Analytics na IoT Edge k detekci pohybů v živém datovém streamu a k nahrávání videoklipů do Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d4301a9c0c5684be04ee2cfbace60c1bb1904876
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 861351e16120c3f46612ba35518135fbfaf4c81b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89568998"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776472"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Rychlý Start: zjištění pohybu, nahrání videa do Media Services
 
@@ -39,6 +39,16 @@ Po dokončení níže uvedeného postupu budete pro detekci pohybu auta použív
 ## <a name="use-direct-method-calls"></a>Použití volání přímých metod
 
 Pomocí modulu můžete analyzovat živé streamy videa vyvoláním přímých metod. Přečtěte si [přímé metody pro Live video Analytics na IoT Edge](direct-methods.md) , abyste pochopili všechny přímé metody poskytované modulem. 
+
+1. V Visual Studio Code otevřete kartu **rozšíření** (nebo stiskněte klávesy CTRL + SHIFT + X) a vyhledejte IoT Hub Azure.
+1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Nahrávání videa založeného na událostech na prostředky na základě událostí pohybu":::
+1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Nahrávání videa založeného na událostech na prostředky na základě událostí pohybu":::
 
 ### <a name="invoke-graphtopologylist"></a>Vyvolat GraphTopologyList
 Tento krok vytvoří výčet všech [topologií grafu](media-graph-concept.md#media-graph-topologies-and-instances) v modulu.

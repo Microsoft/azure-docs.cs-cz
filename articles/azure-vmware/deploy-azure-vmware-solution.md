@@ -2,13 +2,14 @@
 title: Nasazení a konfigurace řešení Azure VMware
 description: Naučte se používat informace shromážděné ve fázi plánování k nasazení privátního cloudu řešení Azure VMware.
 ms.topic: tutorial
+ms.author: tredavis
 ms.date: 10/02/2020
-ms.openlocfilehash: af2a9e4fcb4125683342ad739e3890671f64b0bf
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: c20bf0f4a8c182d5ade1caec0dd66100c4613204
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598181"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776421"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Nasazení a konfigurace řešení Azure VMware
 
@@ -19,7 +20,7 @@ V tomto článku použijete informace z [části plánování](production-ready-
 [!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
 
 
-## <a name="deploy-azure-vmware-solution"></a>Nasazení řešení Azure VMware
+## <a name="deploy-azure-vmware-solution"></a>Nasazení služby Azure VMware Solution
 
 Použijte informace, které jste shromáždili v článku [Plánování nasazení řešení Azure VMware](production-ready-deployment-steps.md) :
 
@@ -28,17 +29,15 @@ Použijte informace, které jste shromáždili v článku [Plánování nasazen�
 
 [!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
 
-
+>[!NOTE]
+>Kompletní přehled tohoto kroku najdete v článku [Řešení Azure VMware:](https://www.youtube.com/embed/1JLB3L2WDWI) video o nasazení. 
 
 ## <a name="create-the-jump-box"></a>Vytvoření pole pro skok
 
 >[!IMPORTANT]
 >Pokud jste při počátečním kroku zřizování na obrazovce **Vytvoření privátního cloudu** opustili možnost **Virtual Network** , **před** pokračováním v této části dokončete kurz [Konfigurace sítě pro privátní cloud VMware](tutorial-configure-networking.md) .  
 
-
-
 Po nasazení řešení Azure VMware vytvoříte pole pro skok virtuální sítě, které se připojí k vCenter a NSX. Jakmile nakonfigurujete okruhy ExpressRoute a ExpressRoute Global Reach, není pole s odkazem nutné.  Je ale užitečné dosáhnout vCenter a NSX v řešení Azure VMware.  
-
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Vytvoření pole pro přechod řešení Azure VMware" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 

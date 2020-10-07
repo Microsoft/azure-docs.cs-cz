@@ -5,12 +5,12 @@ description: Seznamte se s osvědčenými postupy pro postup správy zabezpečen
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: c2734aa8e4ebf0bdb693a49c3ba785dd134e8c83
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5f249a7e6e7fac13301f0d2717336651b171b422
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003062"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776302"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení a upgrady clusterů ve službě Azure Kubernetes Service (AKS)
 
@@ -177,7 +177,7 @@ Další informace o dostupných filtrech najdete v tématu [Seccomp Security pro
 
 Kubernetes uvolňuje nové funkce rychlejšího tempa než tradičních platforem infrastruktury. Aktualizace Kubernetes zahrnují nové funkce a opravy chyb nebo zabezpečení. Nové funkce obvykle přecházejí přes *alfa* a pak na stav *beta verze* , než se stanou *stabilní* a jsou všeobecně dostupné a doporučené pro použití v produkčním prostředí. Tento cyklus vydaných verzí by vám měl umožňovat aktualizovat Kubernetes bez pravidelného zaznamenání nejnovějších změn nebo přizpůsobení nasazení a šablon.
 
-AKS podporuje čtyři dílčí verze Kubernetes. To znamená, že při zavedení nové dílčí verze opravy jsou vyřazení nejstarší podverze a verze patch. Drobné aktualizace k Kubernetes dochází v pravidelných intervalech. Ujistěte se, že máte proces zásad správného řízení pro kontrolu a upgrade podle potřeby, abyste nemuseli zaklesnout na podporu. Další informace najdete v tématu [podporované verze KUBERNETES AKS][aks-supported-versions]
+AKS podporuje tři dílčí verze Kubernetes. To znamená, že při zavedení nové dílčí verze opravy jsou vyřazení nejstarší podverze a verze patch. Drobné aktualizace k Kubernetes dochází v pravidelných intervalech. Ujistěte se, že máte proces zásad správného řízení pro kontrolu a upgrade podle potřeby, abyste nemuseli zaklesnout na podporu. Další informace najdete v tématu [podporované verze KUBERNETES AKS][aks-supported-versions].
 
 Chcete-li ověřit verze, které jsou pro cluster k dispozici, použijte příkaz [AZ AKS Get-Upgrades][az-aks-get-upgrades] , jak je znázorněno v následujícím příkladu:
 
@@ -186,6 +186,8 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
 Následně můžete upgradovat cluster AKS pomocí příkazu [AZ AKS upgrade][az-aks-upgrade] . Proces upgradu bezpečně cordons a vyprázdní jeden uzel v čase, plánuje na zbývajících uzlech a pak nasadí nový uzel s nejnovějšími verzemi operačního systému a Kubernetes.
+
+Důrazně doporučujeme otestovat nové podverze ve vývojovém testovacím prostředí, abyste mohli ověřit, že vaše úlohy pokračuje v dobrém provozu s novou verzí Kubernetes. Kubernetes může vyřadit rozhraní API, například ve verzi 1,16, na které se můžou spoléhat vaše úlohy. Při zavedení nových verzí do produkčního prostředí zvažte použití [několika fondů uzlů v samostatných verzích](use-multiple-node-pools.md) a jednotlivé fondy upgradujte postupně, aby se aktualizace provedla v clusteru. Pokud spouštíte více clusterů, upgradujte v jednom okamžiku jeden cluster na postupně monitorující dopad nebo změny.
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version KUBERNETES_VERSION

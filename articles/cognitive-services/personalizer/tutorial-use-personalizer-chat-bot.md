@@ -1,15 +1,17 @@
 ---
 title: Použít přizpůsobování v programu chat robot – Přizpůsobte
 description: Přizpůsobte si robota chatu v C# .NET se smyčkou pro přizpůsobení a poskytněte tak správnému obsahu uživatele na základě akcí (s funkcemi) a funkcí kontextu.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d95a6999186b964e59ff8f287d917b1f93e1813
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 3ae22294d86ab65be0f09b734735885177c1cf63
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089883"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777305"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Kurz: použití přizpůsobeného prostředí v rozhraní .NET chat bot
 
@@ -176,18 +178,18 @@ Nechejte web spuštěný, protože kurz vysvětluje, co dělá robot, takže mů
 
 1. Otevřete emulátor rozhraní bot Framework a vyberte **otevřít robot**.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Snímek obrazovky s úvodní obrazovkou emulátoru bot":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Snímek obrazovky prohlížeče se zobrazením webu chat bot":::
 
 
 1. Nakonfigurujte robota s následující **adresou URL robota** a pak vyberte **připojit**:
 
     `http://localhost:3978/api/messages`
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Snímek obrazovky s emulátorem bot otevřete nastavení robota.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Snímek obrazovky prohlížeče se zobrazením webu chat bot":::
 
     Emulátor se připojí ke robotovi chatu a zobrazí Návodný text spolu s informacemi o protokolování a ladění, které jsou užitečné pro místní vývoj.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="Snímek obrazovky s emulátorem bot v prvním zapnutí konverzace":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="Snímek obrazovky prohlížeče se zobrazením webu chat bot":::
 
 ## <a name="use-the-bot-in-the-bot-emulator"></a>Použití robota v emulátoru bot
 

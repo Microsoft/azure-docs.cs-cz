@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: ec034ac3cf6f4cbec2d373d9dade45a00f70ddbe
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: f2a40744053ccc804b2513faf1bc2879d4fde902
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91566684"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777169"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Emulátor Azure Cosmos – poznámky k verzi a informace ke stažení
 
@@ -25,6 +25,10 @@ Tento článek obsahuje poznámky k verzi emulátoru Azure Cosmos se seznamem ak
 |**Začínáme**|[Místní vývoj pomocí emulátoru Azure Cosmos](local-emulator.md)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="2116-6-october-2020"></a>2.11.6 (6. října 2020)
+
+ - Tato verze řeší problém týkající se souběžnosti, kdy může být vytvořeno více kontejnerů současně. V takových případech jsou data emulátoru ponechána v poškozeném stavu a následující požadavky rozhraní API na koncový bod emulátoru by mohly selhat s chybami "služba není dostupná", která vyžaduje restart a resetování místních dat emulátoru.
 
 ### <a name="2115-23-august-2020"></a>2.11.5 (23. srpna 2020)
 

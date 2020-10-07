@@ -1,16 +1,18 @@
 ---
 title: 'Rychlý Start: získání odpovědi z znalostní báze – REST, Node.js-QnA Maker'
 description: Tento Node.js rychlý Start na bázi REST vás provede tím, že vám prostřednictvím programu získá odpověď z znalostní báze.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: how-to
-ms.openlocfilehash: aa5a6395b537daa750a2e9b97bde4df320193c1e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f14a2f4ffcc0c136e0770235003cbb2b6f4ff9f8
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268053"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777581"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Rychlý Start: Získejte odpovědi na dotaz ze znalostní báze Knowledge Base pomocí Node.js
 
@@ -18,7 +20,7 @@ V tomto rychlém startu se dozvíte, jak programově získat odpověď z publiko
 
 [Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  |  [Ukázka](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/get-answer/get-answer.js)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/)

@@ -1,14 +1,16 @@
 ---
 title: Soubory SharePointu – QnA Maker
 description: Přidejte do znalostní báze zabezpečené zdroje dat SharePointu, abyste mohli rozšířit znalostní bázi s dotazy a odpověďmi, které je možné zabezpečit pomocí služby Active Directory.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 93f17e79834b412ce0babf220ba13649ae07718c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f49621d44b99412b9a6ab0360c30c894a71e5d1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660310"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776863"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Přidání zabezpečeného zdroje dat SharePointu do znalostní báze
 
@@ -18,10 +20,10 @@ Když do znalostní báze přidáte zabezpečený dokument služby SharePoint, j
 
 Pokud správce znalostní báze QnA Maker Knowledge Base není správce služby Active Directory, bude nutné komunikovat se správcem služby Active Directory a dokončit tento proces.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cloudová služba SharePoint – QnA Maker používá Microsoft Graph pro oprávnění. Pokud je váš SharePoint v místním prostředí, nebudete se moct extrahovat ze SharePointu, protože Microsoft Graph nebude moct určit oprávnění.
-* Formát adresy URL – QnA Maker podporují jenom adresy URL SharePointu, které jsou vygenerované pro sdílení a mají formát.`https://\*.sharepoint.com`
+* Formát adresy URL – QnA Maker podporují jenom adresy URL SharePointu, které jsou vygenerované pro sdílení a mají formát. `https://\*.sharepoint.com`
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Přidání podporovaných typů souborů do znalostní báze Knowledge Base
 

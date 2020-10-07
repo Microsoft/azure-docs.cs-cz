@@ -1,16 +1,18 @@
 ---
 title: 'Rychlý Start: získání odpovědi z znalostní báze – REST, přejít na QnA Maker'
 description: Tento rychlý Start založený na REST vás provede tím, že vám pomůžeme získat odpověď ze znalostní báze prostřednictvím kódu programu.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: how-to
-ms.openlocfilehash: f9d9b995f8e78ec91bd26c31dde16b97188f0371
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f826802de2aa979b5af6174fccda2f0203eba433
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269178"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777616"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-go"></a>Rychlý Start: získání odpovědí na otázku ze znalostní báze se službou přejít
 
@@ -18,7 +20,7 @@ V tomto rychlém startu se dozvíte, jak programově získat odpověď z publiko
 
 [Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  |  [Ukázka](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/get-answer/get-answer.go)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Go 1.10.1](https://golang.org/dl/)
 * [Visual Studio Code](https://code.visualstudio.com/)

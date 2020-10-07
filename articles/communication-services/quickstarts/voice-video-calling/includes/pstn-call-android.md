@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/14/2020
 ms.author: nikuklic
-ms.openlocfilehash: d25f14f7413e0f9263b067f31f9075a126b2c124
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 5c20543caf5bf623738996ed01064d71a0745c04
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762604"
+ms.locfileid: "91779572"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../includes/emergency-calling-notice-include.md)]
 ## <a name="prerequisites"></a>Předpoklady
@@ -26,7 +26,7 @@ ms.locfileid: "91762604"
 
 ## <a name="setting-up"></a>Nastavení
 
-### <a name="add-pstn-functionality-your-app"></a>Přidání funkce veřejné sítě do vaší aplikace
+### <a name="add-pstn-functionality-to-your-app"></a>Přidání funkce veřejné sítě do vaší aplikace
 
 `PhoneNumber`Do své aplikace můžete přidat typ úpravou **MainActivity. Java**:
 
@@ -39,15 +39,6 @@ import com.azure.android.communication.common.PhoneNumber;
 > [!TBD]
 > Namespace based on input from Komivi Agbakpem. But it does not correlates with other use namespaces in Calling Quickstart. E.g: "com.azure.communication.calling.CommunicationUser" or "com.azure.communication.common.client.CommunicationUserCredential". Double-chek this.
 -->
-
-## <a name="object-model"></a>Objektový model
-
-Následující třídy a rozhraní zpracovávají některé hlavní funkce komunikačních služeb Azure, které volají klientskou knihovnu pro Android.
-
-| Název                                           | Popis                                                                                          |
-| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| PhoneNumber | Tato třída je nutná k inicializaci telefonního čísla, které byste chtěli použít pro funkce telefonního subsystému. |
-
 
 ## <a name="start-a-call-to-phone"></a>Spustit telefonování
 

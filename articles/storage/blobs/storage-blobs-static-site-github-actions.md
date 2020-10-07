@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure
-ms.openlocfilehash: 9b616f8df0a8b64969fac1d18544e6d316120e50
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 919fa0d7b6dff0361e4439b442bcfe9648ed8677
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91771043"
+ms.locfileid: "91776387"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Nastavte pracovní postup akcí GitHubu pro nasazení statického webu v Azure Storage
 
@@ -83,7 +83,7 @@ V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho 
 
 1. Odstraňte vše po `on:` části souboru pracovního postupu. Zbývající pracovní postup může vypadat například takto: 
 
-    ```yml
+    ```yaml
     name: CI
 
     on:
@@ -95,7 +95,7 @@ V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho 
 
 1. Přejmenujte pracovní postup `Blob storage website CI` a přidejte akce rezervace a přihlášení. Tyto akce vyřadí kód lokality a ověří ho pomocí Azure pomocí `AZURE_CREDENTIALS` tajného klíče GitHubu, který jste vytvořili dříve. 
 
-    ```yml
+    ```yaml
     name: Blob storage website CI
 
     on:
@@ -181,7 +181,7 @@ V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho 
 
 1. Odstraňte vše po `on:` části souboru pracovního postupu. Zbývající pracovní postup může vypadat například takto: 
 
-    ```yml
+    ```yaml
     name: CI
 
     on:
@@ -193,7 +193,7 @@ V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho 
 
 1. Přejmenujte pracovní postup `Blob storage website CI` a přidejte akce rezervace a přihlášení. Tyto akce vyřadí kód lokality a ověří ho pomocí Azure pomocí `AZURE_CREDENTIALS` tajného klíče GitHubu, který jste vytvořili dříve. 
 
-    ```yml
+    ```yaml
     name: Blob storage website CI
 
     on:

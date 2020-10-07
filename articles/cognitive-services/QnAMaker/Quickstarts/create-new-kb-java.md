@@ -1,16 +1,18 @@
 ---
 title: 'Rychlý start: Vytvoření znalostní báze – REST, Java – QnA Maker'
 description: Tento rychlý Start založený na REST Java vás provede vytvořením ukázkové QnA Maker znalostní bázi prostřednictvím kódu programu, který se zobrazí na řídicím panelu Azure vašeho účtu Cognitive Services API.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: 3a20198e1fce7b72befb0963a4f1eb7a5e7e3f08
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 275b1976e51789d4a458e7bd9f7cfa3240cc81d5
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259791"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777666"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Rychlý start: Vytvoření znalostní báze ve službě QnA Maker pomocí Javy
 
@@ -24,7 +26,7 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Go 1.10.1](https://golang.org/dl/)
 * Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .

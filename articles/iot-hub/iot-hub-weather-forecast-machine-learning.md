@@ -1,6 +1,6 @@
 ---
-title: Předpověď počasí s využitím Azure Machine Learning s daty IoT Hub
-description: Použijte Azure Machine Learning pro předpověď pravděpodobnosti deště na základě dat o teplotě a vlhkosti, které vaše centrum IoT shromažďuje ze senzoru.
+title: Předpověď počasí s využitím Azure Machine Learning Studio (Classic) s IoT Hubmi daty
+description: Použijte Azure Machine Learning Studio (Classic) k předvídání pravděpodobnosti deště na základě dat o teplotě a vlhkosti, které vaše centrum IoT shromažďuje ze senzoru.
 author: robinsh
 manager: philmea
 keywords: Předpověď počasí do strojového učení
@@ -10,24 +10,24 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: 5f51ffc3135ff35214a2c5c40cce1f2b3fcaf33e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ba68e56d2475b1ff2fb3e63f291f76063ca62e7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91290889"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777152"
 ---
-# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Předpověď počasí pomocí dat ze senzorů ze služby IoT Hub v Azure Machine Learning
+# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Předpověď počasí s využitím dat ze senzorů ze služby IoT Hub v Azure Machine Learning Studio (Classic)
 
 ![Komplexní diagram](media/iot-hub-get-started-e2e-diagram/6.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-Machine Learning je technika datové vědy, která pomáhá počítačům učit se z existujících dat a předpovídat budoucí chování, výsledky a trendy. Azure Machine Learning je cloudová služba pro prediktivní analýzu, která umožňuje rychle vytvářet a nasazovat prediktivní modely jako analytická řešení.
+Machine Learning je technika datové vědy, která pomáhá počítačům učit se z existujících dat a předpovídat budoucí chování, výsledky a trendy. Azure Machine Learning Studio (Classic) je cloudová služba pro prediktivní analýzu, která umožňuje rychle vytvářet a nasazovat prediktivní modely jako Analytická řešení.
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-Naučíte se, jak pomocí Azure Machine Learning provádět předpověď počasí s využitím dat o teplotě a vlhkosti ve službě Azure IoT Hub. Šance na deště je výstupem připraveného modelu předpovědi počasí. Model je vytvořen na základě historických dat, aby se mohla odhadnout pravděpodobnost srážky na základě teploty a vlhkosti.
+Naučíte se, jak pomocí Azure Machine Learning Studio (Classic) provádět předpověď počasí s využitím dat o teplotě a vlhkosti z Azure IoT Hub. Šance na deště je výstupem připraveného modelu předpovědi počasí. Model je vytvořen na základě historických dat, aby se mohla odhadnout pravděpodobnost srážky na základě teploty a vlhkosti.
 
 ## <a name="what-you-do"></a>Co dělat
 
@@ -49,7 +49,7 @@ Naučíte se, jak pomocí Azure Machine Learning provádět předpověď počas�
 - Účet [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=/azure/storage/blobs/toc.json#types-of-storage-accounts), účet pro **obecné účely v2** , je upřednostňovaný, ale budou fungovat i všechny Azure Storage účty, které podporují službu Azure Blob Storage.
 
 > [!Note]
-> Tento článek používá Azure Stream Analytics a několik dalších placených služeb. Další poplatky se účtují v Azure Stream Analytics, když se data musí přenést napříč oblastmi Azure. Z tohoto důvodu by bylo vhodné zajistit, aby se vaše skupina prostředků, IoT Hub a účet Azure Storage a pracovní prostor Machine Learning Studio (Classic) a Azure Stream Analyticsá úloha v tomto kurzu přidala do stejné oblasti Azure. Místní podporu Azure Machine Learning Studio a dalších služeb Azure najdete na [stránce dostupnost produktu Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all).
+> Tento článek používá Azure Stream Analytics a několik dalších placených služeb. Další poplatky se účtují v Azure Stream Analytics, když se data musí přenést napříč oblastmi Azure. Z tohoto důvodu by bylo vhodné zajistit, aby se vaše skupina prostředků, IoT Hub a účet Azure Storage a pracovní prostor Machine Learning Studio (Classic) a Azure Stream Analyticsá úloha v tomto kurzu přidala do stejné oblasti Azure. Místní podporu pro Azure Machine Learning Studio (Classic) a další služby Azure najdete na [stránce dostupnost produktu Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all).
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Nasazení modelu předpovědi počasí jako webové služby
 
@@ -71,7 +71,7 @@ V této části získáte model předpovědi počasí z Azure AI Gallery a otev�
 
 Aby se model choval správně, musí být data o teplotě a vlhkosti převoditelná na číselná data. V této části přidáte modul R-Script do modelu předpovědi počasí, který odebere všechny řádky, které mají hodnoty dat pro teplotu nebo vlhkost, které nelze převést na číselné hodnoty.
 
-1. Na levé straně okna Azure Machine Learning Studio vyberte šipku a rozbalte panel nástroje. Do vyhledávacího pole zadejte "Execute". Vyberte modul **spuštění skriptu jazyka R** .
+1. Na levé straně okna Azure Machine Learning Studio (Classic) vyberte šipku a rozbalte panel nástroje. Do vyhledávacího pole zadejte "Execute". Vyberte modul **spuštění skriptu jazyka R** .
 
    ![Vyberte možnost spustit modul skriptu jazyka R.](media/iot-hub-weather-forecast-machine-learning/select-r-script-module.png)
 
@@ -242,14 +242,14 @@ Spusťte klientskou aplikaci, která začne shromažďovat a odesílat data o te
 1. [Stáhněte a nainstalujte Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/).
 1. Otevřete Průzkumník služby Azure Storage.
 1. Přihlaste se ke svému účtu Azure.
-1. Vyberte předplatné.
+1. Vyberte své předplatné.
 1. Vyberte své předplatné > **účty úložiště** > svého účtu úložiště > **kontejnery objektů BLOB** > váš kontejner.
 1. Pokud chcete zobrazit výsledek, Stáhněte si soubor. csv. Poslední sloupec zaznamená šanci na deště.
 
-   ![Získat výsledek předpovědi počasí s Azure Machine Learning](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
+   ![Získání výsledku předpovědi počasí pomocí Azure Machine Learning Studio (Classic)](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
 
 ## <a name="summary"></a>Shrnutí
 
-Úspěšně jste použili Azure Machine Learning k vyprodukování pravděpodobnosti deště na základě dat o teplotě a vlhkosti, které vaše centrum IoT přijme.
+Úspěšně jste používali Azure Machine Learning Studio (Classic) k získání pravděpodobnosti deště na základě dat o teplotě a vlhkosti, které vaše centrum IoT obdrží.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 68f54e18cf20680156de8a29c54f7924ca6064d1
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: e6078ffcaaf98702bf809dfeb435cdaa0f9b5701
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91610105"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777186"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migrace do Azure Virtual WAN
 
@@ -66,11 +66,11 @@ Následující obrázek ukazuje podrobný pohled na aktualizovanou cílovou topo
 
 Souhrn:
 
-- SÍDEL v Evropě zůstává ExpressRoute připojená, Evropa místní řadič domény se úplně migruje do Azure a teď je vyřazený z provozu.
-- Asie a sídel pro asijské domény zůstávají připojené k privátní síti WAN. Azure Virtual WAN se teď používá k rozšíření místní sítě dopravců a k zajištění globálního připojení.
-- Virtuální rozbočovače Azure Virtual WAN nasazené v oblastech Západní Evropa a jih Východní Asie Azure pro poskytování centra připojení pro zařízení připojená k síti VPN ExpressRoute a VPN.
-- Rozbočovače také poskytují ukončení sítě VPN pro roaming uživatelů napříč různými typy klientů pomocí připojení OpenVPN k globální síti sítě a umožňují přístup nejen k aplikacím migrováným do Azure, ale i k jakýmkoli místním prostředkům.
-- Připojení k Internetu pro prostředky v rámci virtuální sítě poskytované službou Azure Virtual WAN.
+* SÍDEL v Evropě zůstává ExpressRoute připojená, Evropa místní řadič domény se úplně migruje do Azure a teď je vyřazený z provozu.
+* Asie a sídel pro asijské domény zůstávají připojené k privátní síti WAN. Azure Virtual WAN se teď používá k rozšíření místní sítě dopravců a k zajištění globálního připojení.
+* Virtuální rozbočovače Azure Virtual WAN nasazené v oblastech Západní Evropa a jih Východní Asie Azure pro poskytování centra připojení pro zařízení připojená k síti VPN ExpressRoute a VPN.
+* Rozbočovače také poskytují ukončení sítě VPN pro roaming uživatelů napříč různými typy klientů pomocí připojení OpenVPN k globální síti sítě a umožňují přístup nejen k aplikacím migrováným do Azure, ale i k jakýmkoli místním prostředkům.
+* Připojení k Internetu pro prostředky v rámci virtuální sítě poskytované službou Azure Virtual WAN.
 
 Připojení k Internetu pro vzdálené lokality, které poskytuje i služba Azure Virtual WAN. Místní internetový užitečných podporované prostřednictvím integrace partnerů pro optimalizaci přístupu ke službám SaaS, jako je Microsoft 365.
 
@@ -87,20 +87,21 @@ Následující obrázek ukazuje topologii jedné oblasti pro společnost Contoso
 
 V souladu s přístupem k rozbočovači a paprsku má virtuální síť centra spravovaná zákazníkem několik bloků funkcí:
 
-- Sdílené služby (jakákoli společná funkce požadovaná více paprsky). Příklad: contoso používá řadiče domény Windows serveru na virtuálních počítačích infrastruktury jako služba (IaaS).
-- Služby brány firewall protokolu IP/směrování jsou poskytovány virtuálním síťovým zařízením třetí strany a umožňují směrování IP s paprskovou a koncovou vrstvou 1.
-- Internetové příchozí/odchozí služby, včetně Azure Application Gateway pro příchozí požadavky HTTPS a služby proxy třetích stran běžící na virtuálních počítačích pro filtrovaný odchozí přístup k internetovým prostředkům.
-- Brána virtuální sítě VPN ExpressRoute a VPN pro připojení k místním sítím.
+* Sdílené služby (jakákoli společná funkce požadovaná více paprsky). Příklad: contoso používá řadiče domény Windows serveru na virtuálních počítačích infrastruktury jako služba (IaaS).
+* Služby brány firewall protokolu IP/směrování jsou poskytovány virtuálním síťovým zařízením třetí strany a umožňují směrování IP s paprskovou a koncovou vrstvou 1.
+* Internetové příchozí/odchozí služby, včetně Azure Application Gateway pro příchozí požadavky HTTPS a služby proxy třetích stran běžící na virtuálních počítačích pro filtrovaný odchozí přístup k internetovým prostředkům.
+* Brána virtuální sítě VPN ExpressRoute a VPN pro připojení k místním sítím.
 
 ### <a name="step-2-deploy-virtual-wan-hubs"></a>Krok 2: nasazení virtuálních rozbočovačů sítě WAN
 
 Nasaďte v každé oblasti virtuální síť WAN hub. Nastavte virtuální centrum sítě WAN pomocí funkce VPN a ExpressRoute, jak je popsáno v následujících článcích:
 
-- [Kurz: Vytvoření připojení typu site-to-site pomocí služby Azure Virtual WAN](virtual-wan-site-to-site-portal.md)
-- [Kurz: vytvoření přidružení ExpressRoute pomocí Azure Virtual WAN](virtual-wan-expressroute-portal.md)
+* [Kurz: Vytvoření připojení typu site-to-site pomocí služby Azure Virtual WAN](virtual-wan-site-to-site-portal.md)
+* [Kurz: vytvoření přidružení ExpressRoute pomocí Azure Virtual WAN](virtual-wan-expressroute-portal.md)
 
 > [!NOTE]
 > Azure Virtual WAN musí používat standardní SKU k povolení některých cest k provozu, které jsou uvedené v tomto článku.
+>
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/figure2.png" alt-text="střed a paprskový":::
 **Obrázek 2: migrace centra a paprsků na virtuální síť WAN spravovaná zákazníkem**
@@ -111,6 +112,7 @@ Připojte virtuální síť WAN ke stávajícím okruhům ExpressRoute a nastavt
 
 > [!NOTE]
 > Okruhy Express Routes musí být upgradovány na typ SKU úrovně Premium pro připojení k virtuálnímu centru sítě WAN.
+>
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="střed a paprskový":::
 **Obrázek 3: migrace centra a paprsků na virtuální síť WAN spravovaná zákazníkem**
@@ -176,9 +178,9 @@ Cesta 1 zobrazuje tok přenosů z větve připojení S2S VPN v Asii do virtuáln
 
 Provoz se směruje takto:
 
-- Větev Asie je připojená prostřednictvím tunelového propojení s povoleným protokolem S2S BGP do centra Východní Asie virtuální sítě WAN v jihoasijských sítích.
+* Větev Asie je připojená prostřednictvím tunelového propojení s povoleným protokolem S2S BGP do centra Východní Asie virtuální sítě WAN v jihoasijských sítích.
 
-- Asie z virtuálních sítí WAN směrují provoz místně do připojené virtuální sítě.
+* Asie z virtuálních sítí WAN směrují provoz místně do připojené virtuální sítě.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow1.png" alt-text="střed a paprskový":::
 
@@ -188,9 +190,9 @@ Cesta 2 ukazuje tok provozu z ExpressRoute s připojeným Evropským sídel k vi
 
 Provoz se směruje takto:
 
-- Evropská sídel je prostřednictvím okruhu Premium ExpressRoute připojená k Západní Evropa virtuálnímu centru WAN.
+* Evropská sídel je prostřednictvím okruhu Premium ExpressRoute připojená k Západní Evropa virtuálnímu centru WAN.
 
-- Globální připojení typu rozbočovač sítě WAN do rozbočovače umožňuje přenos provozu do sítě VNet připojené ve vzdálené oblasti.
+* Globální připojení typu rozbočovač sítě WAN do rozbočovače umožňuje přenos provozu do sítě VNet připojené ve vzdálené oblasti.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow2.png" alt-text="střed a paprskový":::
 
@@ -200,11 +202,11 @@ Cesta 3 ukazuje přenosový tok z místního řadiče domény Asie, který je p�
 
 Provoz se směruje takto:
 
-- Asie – řadič domény je připojený k místnímu privátnímu nosiči WAN.
+* Asie – řadič domény je připojený k místnímu privátnímu nosiči WAN.
 
-- Okruh ExpressRoute místně končí v privátní síti WAN a připojuje se k rozbočovači Východní Asie virtuální síti WAN v jihoasijských sítích.
+* Okruh ExpressRoute místně končí v privátní síti WAN a připojuje se k rozbočovači Východní Asie virtuální síti WAN v jihoasijských sítích.
 
-- Globální připojení z rozbočovače WAN na rozbočovač umožňuje přenos provozu.
+* Globální připojení z rozbočovače WAN na rozbočovač umožňuje přenos provozu.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow3.png" alt-text="střed a paprskový":::
 
@@ -214,7 +216,7 @@ Cesta 4 ukazuje přenosový tok z virtuální sítě Azure v oblasti Jižní Vý
 
 Provoz se směruje takto:
 
-- Globální připojení z rozbočovače WAN na rozbočovač umožňuje nativní přenos všech připojených Azure virtuální sítě bez dalších konfiguračních konfigurací uživatele.
+* Globální připojení z rozbočovače WAN na rozbočovač umožňuje nativní přenos všech připojených Azure virtuální sítě bez dalších konfiguračních konfigurací uživatele.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow4.png" alt-text="střed a paprskový":::
 
@@ -224,9 +226,9 @@ Cesta 5 zobrazuje tok přenosů z uživatelů cestovní sítě VPN (P2S) do virt
 
 Provoz se směruje takto:
 
-- Uživatelé přenosných počítačů a mobilních zařízení používají klienta OpenVPN pro transparentní připojení k bráně VPN P2S v Západní Evropa.
+* Uživatelé přenosných počítačů a mobilních zařízení používají klienta OpenVPN pro transparentní připojení k bráně VPN P2S v Západní Evropa.
 
-- Západní Evropa virtuální síť WAN směruje provoz místně do připojené virtuální sítě.
+* Západní Evropa virtuální síť WAN směruje provoz místně do připojené virtuální sítě.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow5.png" alt-text="střed a paprskový":::
 
@@ -254,9 +256,9 @@ Cesta 6 zobrazuje zabezpečený tok provozu mezi virtuální sítě ve stejné o
 
 Provoz se směruje takto:
 
-- Virtuální sítě připojené ke stejnému zabezpečenému virtuálnímu rozbočovači nyní směrují provoz do přes Azure Firewall.
+* Virtuální sítě připojené ke stejnému zabezpečenému virtuálnímu rozbočovači nyní směrují provoz do přes Azure Firewall.
 
-- Azure Firewall můžou pro tyto toky použít zásady.
+* Azure Firewall můžou pro tyto toky použít zásady.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow6.png" alt-text="střed a paprskový":::
 
@@ -266,9 +268,9 @@ Cesta 7 ukazuje tok přenosů z virtuální sítě Azure do Internetu nebo služ
 
 Provoz se směruje takto:
 
-- Virtuální sítě připojené k zabezpečenému virtuálnímu rozbočovači mohou odesílat provoz do veřejné sítě, jejichž cílem je síť Internet, a to pomocí zabezpečeného centra jako centrálního bodu přístupu k Internetu.
+* Virtuální sítě připojené k zabezpečenému virtuálnímu rozbočovači mohou odesílat provoz do veřejné sítě, jejichž cílem je síť Internet, a to pomocí zabezpečeného centra jako centrálního bodu přístupu k Internetu.
 
-- Tento provoz je možné filtrovat místně pomocí Azure Firewall pravidel plně kvalifikovaného názvu domény nebo odeslat službě zabezpečení třetí strany pro kontrolu.
+* Tento provoz je možné filtrovat místně pomocí Azure Firewall pravidel plně kvalifikovaného názvu domény nebo odeslat službě zabezpečení třetí strany pro kontrolu.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow7.png" alt-text="střed a paprskový":::
 
@@ -278,12 +280,12 @@ Cesta 8 zobrazuje tok přenosů z meziinternetu nebo služby zabezpečení třet
 
 Provoz se směruje takto:
 
-- Větve připojené k zabezpečenému virtuálnímu rozbočovači mohou odesílat provoz do veřejných cílů na internetu pomocí zabezpečeného centra jako centrálního bodu přístupu k Internetu.
+* Větve připojené k zabezpečenému virtuálnímu rozbočovači mohou odesílat provoz do veřejných cílů na internetu pomocí zabezpečeného centra jako centrálního bodu přístupu k Internetu.
 
-- Tento provoz je možné filtrovat místně pomocí Azure Firewall pravidel plně kvalifikovaného názvu domény nebo odeslat službě zabezpečení třetí strany pro kontrolu.
+* Tento provoz je možné filtrovat místně pomocí Azure Firewall pravidel plně kvalifikovaného názvu domény nebo odeslat službě zabezpečení třetí strany pro kontrolu.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow8.png" alt-text="střed a paprskový":::
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [Azure Virtual WAN](virtual-wan-about.md)
+Přečtěte si další informace o [Azure Virtual WAN](virtual-wan-about.md).

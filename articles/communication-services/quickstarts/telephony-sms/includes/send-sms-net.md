@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: 33ea02d3fe54ce5c909b1b7477447bda00dcf06b
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: c044e9dc7b8ee622b157a93726e7700e62ba2dfa
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757118"
+ms.locfileid: "91779498"
 ---
 Začněte s komunikačními službami Azure pomocí klientské knihovny služby Communications C# pro SMS k posílání zpráv SMS.
 
@@ -59,7 +59,7 @@ dotnet build
 Stále v adresáři aplikace nainstalujte knihovnu klienta služby Azure Communications Services pro sadu .NET pomocí `dotnet add package` příkazu.
 
 ```console
-dotnet add package Azure.Communication.Sms --version 1.0.0-beta.1
+dotnet add package Azure.Communication.Sms --version 1.0.0-beta.2
 ```
 
 Přidejte `using` do horní části **program.cs** direktivu, aby zahrnovala `Azure.Communication` obor názvů.

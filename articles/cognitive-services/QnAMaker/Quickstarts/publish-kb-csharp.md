@@ -1,16 +1,18 @@
 ---
 title: 'Rychlý Start: publikování znalostní báze, REST, C# – QnA Maker'
 description: Tento rychlý Start založený na REST v C# publikuje vaši znalostní bázi a vytvoří koncový bod, který se dá volat ve vaší aplikaci nebo v robotovi chatu.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-csharp
 ms.topic: how-to
-ms.openlocfilehash: df8ca85ff0d59817a939936aa6738910bd354996
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 2750ecb76cb74fd7650d4f4f0f545f2f76b31c1c
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267016"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777542"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Rychlý start: Publikování znalostní báze ve službě QnA Maker pomocí jazyka C#
 
@@ -19,7 +21,7 @@ Tento rychlý Start založený na REST vás provede programově publikováním z
 Tento rychlý start volá rozhraní API služby QnA Maker:
 * [Publikování](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) –toto rozhraní API nevyžaduje v těle požadavku žádné informace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nejnovější verze sady [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/).
 * Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .

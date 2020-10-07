@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 10/06/2020
 ms.author: b-juche
-ms.openlocfilehash: b5c576211fe7bb202e7a27bee5ee3bfd90d74cf9
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 1c64bd10b34b61797cb3bf3de0cd7d2aa819e795
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743093"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777122"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Úrovně služeb pro Azure NetApp Files
 Úrovně služeb jsou atributem fondu kapacit. Úrovně služeb jsou definované a rozlišené o povolenou maximální propustnost svazku ve fondu kapacity na základě kvóty, která je přiřazená ke svazku.
@@ -59,14 +59,14 @@ Následující diagram ukazuje příklady propustnosti svazků ve fondu kapacity
 
 ### <a name="throughput-limit-examples-of-volumes-in-a-manual-qos-capacity-pool"></a>Příklady omezení propustnosti svazků v ručním fondu kapacity QoS 
 
-Pokud používáte ruční fond kapacit QoS, můžete přiřadit kapacitu a propustnost pro svazek nezávisle. Když vytvoříte svazek v manuálním fondu kapacity QoS, můžete zadat hodnotu propustnosti (MiB/S). Celková propustnost přiřazená svazkům v manuálním fondu kapacity technologie QoS závisí na velikosti fondu a na úrovni služby. Je omezené podle (velikost fondu kapacit v propustnosti TiB x na úrovni služby/TiB). Například fond kapacit 10 TiB s nejvyšší úrovní služeb má celkovou kapacitu propustnosti 1280 MiB/s (10 TiB x 128 MiB/s/TiB), která je pro svazky k dispozici.
+Pokud používáte ruční fond kapacit QoS, můžete přiřadit kapacitu a propustnost pro svazek nezávisle. Když vytvoříte svazek v manuálním fondu kapacity QoS, můžete zadat hodnotu propustnosti (MiB/S). Celková propustnost přiřazená svazkům v manuálním fondu kapacity technologie QoS závisí na velikosti fondu a na úrovni služby. Je omezené podle (velikost fondu kapacit v propustnosti TiB x na úrovni služby/TiB). Například fond kapacit 10 TiB s úrovní Ultra Service úrovně Standard má celkovou kapacitu propustnosti 1280 MiB/s (10 TiB x 128 MiB/s/TiB) pro svazky dostupné.
 
 Pro SAP HANA systém je možné tento fond kapacit použít k vytvoření následujících svazků. Každý svazek poskytuje individuální velikost a propustnost pro splnění požadavků vaší aplikace:
 
-* SAP HANA objem dat: velikost 4 TB s až 704 MiB/s
-* SAP HANA svazek protokolu: velikost 0,5 TB s až 256 MiB/s
-* SAP HANA sdílený svazek: velikost 1 TB s až 64 MiB/s.
-* SAP HANA svazek zálohy: velikost 6,5 TB s až 256 MiB/s.
+* SAP HANA objem dat: velikost 4 TiB s až 704 MiB/s
+* SAP HANA svazek protokolu: size 0,5 TiB s až 256 MiB/s
+* SAP HANA sdílený svazek: velikost 1 TiB s až 64 MiB/s.
+* SAP HANA svazek zálohy: size 4,5 TiB s až 256 MiB/s
 
 Následující diagram znázorňuje scénáře SAP HANAch svazků:
 

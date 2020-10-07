@@ -1,16 +1,18 @@
 ---
 title: 'Rychlý Start: QnA Maker s rozhraním REST API pro Node.js'
 description: V tomto rychlém startu se dozvíte, jak začít s rozhraními REST API QnA Maker pro Node.js. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-js
 ms.topic: how-to
-ms.openlocfilehash: 67c4711d74bdeb970a706eabf795e8f9bdcbbded
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ef17f08677d715292a8ee49621156d130e2f5a6b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324599"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777492"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Rychlý Start: QnA Maker rozhraní REST API pro Node.js
 
@@ -29,7 +31,7 @@ Pro Node.js použijte QnA Maker rozhraní REST API:
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Aktuální verze [Node.js](https://nodejs.org).

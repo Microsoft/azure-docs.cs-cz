@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: f105fd3d3d760d4173c5a271b1bb16942a634dfd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1675ad802f3a117c26ee10218f3b3bedad9b0a00
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946934"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779619"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -56,7 +56,7 @@ V souboru POM se na balíček odkazuje `azure-communication-chat` pomocí rozhra
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-chat</artifactId>
-    <version>1.0.0-beta.1</version> 
+    <version>1.0.0-beta.2</version> 
 </dependency>
 ```
 
@@ -66,7 +66,7 @@ Pro ověřování musí klient odkazovat na `azure-communication-common` balíč
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-common</artifactId>
-    <version>1.0.0-beta.1</version> 
+    <version>1.0.0-beta.2</version> 
 </dependency>
 
 ```

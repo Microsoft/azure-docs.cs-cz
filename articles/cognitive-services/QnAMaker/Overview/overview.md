@@ -1,16 +1,18 @@
 ---
 title: Co je služba QnA Maker?
 description: QnA Maker je cloudová služba NLP, která v rámci vašich dat snadno vytvoří přirozenou konverzační vrstvu. Dá se použít k vyhledání nejvhodnější odpovědi pro všechny vstupy v přirozeném jazyce, od vlastní znalostní báze (KB) informací.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 05/26/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: QNA maker, konverzace s nízkým kódem roboty, konverzace s vícenásobným zahnutím
-ms.openlocfilehash: ed790016c11199a4422f0489fb52bfcfce5533b3
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: fe46fadc6d3f5a74c95faeec6b7759f18e843f7d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761239"
+ms.locfileid: "91776778"
 ---
 # <a name="what-is-qna-maker"></a>Co je QnA Maker?
 

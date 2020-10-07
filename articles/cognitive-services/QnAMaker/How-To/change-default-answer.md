@@ -1,14 +1,16 @@
 ---
 title: Získat výchozí odpověď – QnA Maker
 description: Pokud se k otázce neshoduje, vrátí se výchozí odpověď. Je možné, že budete chtít změnit výchozí odpověď z standardní výchozí odpovědi.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.openlocfilehash: d37e63d84be58e6ccd2f1e23a1344961d39ffa01
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14954f89fcdcbbc1ef4b8654582a3274f4bb0923
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054168"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776812"
 ---
 # <a name="change-default-answer-for-a-qna-maker-resource"></a>Změna výchozí odpovědi pro prostředek QnA Maker
 
@@ -21,7 +23,7 @@ Ve znalostní bázi existují dva typy výchozí odpovědi. Je důležité poroz
 
 |Typ otázky|Popis odpovědi|
 |--|--|
-|Odpověď KB, když se neurčí žádná odpověď|`No good match found in KB.`– Když [rozhraní API GenerateAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) nenajde žádnou odpovídající odpověď na otázku, vrátí se `DefaultAnswer` nastavení služby App Service. Všechna znalostní báze ve stejné QnA Maker prostředku sdílejí stejný výchozí text odpovědi.<br>Nastavení můžete spravovat v Azure Portal, prostřednictvím služby App Service nebo pomocí rozhraní REST API pro [získání](https://docs.microsoft.com/rest/api/appservice/webapps/listapplicationsettings) nebo [aktualizaci](https://docs.microsoft.com/rest/api/appservice/webapps/updateapplicationsettings) nastavení.|
+|Odpověď KB, když se neurčí žádná odpověď|`No good match found in KB.` – Když [rozhraní API GenerateAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) nenajde žádnou odpovídající odpověď na otázku, vrátí se `DefaultAnswer` nastavení služby App Service. Všechna znalostní báze ve stejné QnA Maker prostředku sdílejí stejný výchozí text odpovědi.<br>Nastavení můžete spravovat v Azure Portal, prostřednictvím služby App Service nebo pomocí rozhraní REST API pro [získání](https://docs.microsoft.com/rest/api/appservice/webapps/listapplicationsettings) nebo [aktualizaci](https://docs.microsoft.com/rest/api/appservice/webapps/updateapplicationsettings) nastavení.|
 |Text instrukcí pro následné výzvy|Když v toku konverzace použijete následné výzvy, možná nebudete potřebovat odpověď v páru QnA, protože chcete, aby uživatel mohl vybírat z následných výzev. V takovém případě nastavte konkrétní text nastavením výchozí text odpovědi, který se vrátí s každou předpověď pro následné výzvy. Text má být zobrazen jako instruktážní text pro výběr následných výzev. Příkladem tohoto výchozího textu odpovědi je `Please select from the following choices` . Tato konfigurace je vysvětlena v dalších částech tohoto dokumentu. Dá se nastavit také jako součást definice znalostní báze `defaultAnswerUsedForExtraction` pomocí [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create).|
 
 ### <a name="client-application-integration"></a>Integrace klientské aplikace
