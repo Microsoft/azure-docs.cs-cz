@@ -222,7 +222,7 @@
               href: log-query/query-audit.md
             - name: Optimalizace dotazů
               href: log-query/query-optimization.md
-            - name: Funkce
+            - name: Functions
               href: log-query/functions.md
             - name: Analýza textových dat
               href: log-query/parse-text.md
@@ -301,8 +301,6 @@
               href: platform/move-workspace.md
             - name: Návrh pro poskytovatele služeb
               href: platform/service-providers.md
-            - name: Správa přístupu
-              href: platform/manage-access.md
             - name: Vyhrazené clustery
               href: log-query/logs-dedicated-clusters.md
     - name: Průzkumník metrik
@@ -751,8 +749,6 @@
             - name: Upozornění na dostupnost
               displayname: 'alerts, global, alerting'
               href: app/availability-alerts.md
-            - name: Testování výkonu
-              href: app/performance-testing.md
             - name: Řešení potíží
               displayname: 'availability, troubleshoot, troubleshoot availability'
               href: app/troubleshoot-availability.md

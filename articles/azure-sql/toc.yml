@@ -992,6 +992,8 @@
                 - name: Registrace s využitím SQL VM RP
                   displayName: 'resource provider, registration'
                   items:
+                    - name: Automatická registrace
+                      href: virtual-machines/windows/sql-vm-resource-provider-automatic-registration.md
                     - name: Jeden virtuální počítač
                       href: virtual-machines/windows/sql-vm-resource-provider-register.md
                     - name: Hromadná registrace několika virtuálních počítačů
