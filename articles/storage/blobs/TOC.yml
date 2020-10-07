@@ -462,6 +462,8 @@
               href: storage-blob-static-website-how-to.md
             - name: Integrace s Azure CDN
               href: static-website-content-delivery-network.md
+            - name: Použití GitHub Actions k nasazení statického webu do Azure Storage
+              href: storage-blobs-static-site-github-actions.md
         - name: Použití vlastní domény
           href: storage-custom-domain-name.md
         - name: Směrování událostí na vlastní koncový bod

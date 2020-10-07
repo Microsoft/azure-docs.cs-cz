@@ -29,7 +29,7 @@
           href: create-sql-api-python.md
         - name: Aplikace v Xamarinu
           href: create-sql-api-xamarin-dotnet.md
-- name: Výukové kurzy
+- name: Kurzy
   items:
     - name: 1. Vytváření a správa dat
       items:
@@ -975,6 +975,8 @@
           displayName: ARM
         - name: Přesun mezi oblastmi
           href: how-to-move-regions.md
+        - name: Prevence změn nebo odstranění
+          href: resource-locks.md
     - name: Globální distribuce
       items:
         - name: Konfigurace zápisů do více oblastí
