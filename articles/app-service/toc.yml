@@ -226,7 +226,7 @@
       items:
         - name: Vertikální navýšení kapacity serveru
           href: manage-scale-up.md
-        - name: Konfigurace úrovně PremiumV2
+        - name: Konfigurace úrovně PremiumV3
           href: app-service-configure-premium-tier.md
         - name: Škálování na více instancí
           href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json

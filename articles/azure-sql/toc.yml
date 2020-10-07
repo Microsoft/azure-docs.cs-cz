@@ -497,12 +497,8 @@
               href: database/database-copy.md
             - name: Replikace do SQL Database
               href: database/replication-to-sql-database.md
-            - name: Synchronizace dat SQL
-              items:
-                - name: Replikace změn schématu
-                  href: database/sql-data-sync-update-sync-schema.md
-                - name: Monitorování pomocí OMS
-                  href: database/sql-data-sync-monitor-sync.md
+            - name: Replikace změn schémat (synchronizace dat)
+              href: database/sql-data-sync-update-sync-schema.md
         - name: Sharding databází
           items:
             - name: Upgrade klientské knihovny

@@ -28,6 +28,8 @@
           href: tutorial-discover-physical.md
         - name: Zjišťování instancí AWS
           href: tutorial-discover-aws.md
+        - name: Zjišťování instancí GCP
+          href: tutorial-discover-gcp.md
     - name: Posouzení
       items:
         - name: Posouzení virtuálních počítačů VMware pro migraci na virtuální počítače Azure
@@ -40,6 +42,8 @@
           href: tutorial-assess-physical.md
         - name: Posouzení instancí AWS pro migraci do Azure
           href: tutorial-assess-aws.md
+        - name: Posouzení instancí GCP pro migraci do Azure
+          href: tutorial-assess-gcp.md
         - name: Posouzení importovaných serverů
           href: tutorial-discover-import.md
     - name: Migrace
@@ -58,6 +62,8 @@
           href: tutorial-migrate-physical-virtual-machines.md
         - name: Migrace instancí AWS
           href: tutorial-migrate-aws-virtual-machines.md
+        - name: Migrace instancí GCP
+          href: tutorial-migrate-gcp-virtual-machines.md
 - name: Koncepty
   items:
     - name: Sestavení plánu migrace s využitím Azure Migrate

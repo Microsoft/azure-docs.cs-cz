@@ -1326,6 +1326,8 @@
       href: samples/policy-reference.md
     - name: Vyřazení funkcí a rozhraní API z provozu
       items:
+        - name: Rozhraní API OperationalInsights
+          href: platform/operationalinsights-api-retirement.md
         - name: Klasické rozhraní API pro metriky a automatické škálování
           href: ./platform/classic-api-retirement-metrics-autoscale.md
         - name: Klasické upozorňování a monitorování

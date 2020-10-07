@@ -34,6 +34,8 @@
           href: connect-macos.md
         - name: Připojení s klientem iOS
           href: connect-ios.md
+        - name: Připojení s klientem Microsoft Storu
+          href: connect-microsoft-store.md
     - name: Instalace modulu PowerShellu
       href: powershell-module.md
     - name: Vytvoření fondu hostitelů a hostitelů relací
