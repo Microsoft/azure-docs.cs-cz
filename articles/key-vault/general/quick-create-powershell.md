@@ -6,17 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
-ms.subservice: secrets
+ms.subservice: general
 ms.topic: quickstart
-ms.custom: mvc
 ms.date: 11/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e24f1e546de1ce01896e271dbc9155c47f6c2bb6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 41254accbfff8f1d68a8bbef4d74ed01c64891b9
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87102022"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803887"
 ---
 # <a name="quickstart-create-a-key-vault-using-powershell"></a>Rychlý Start: vytvoření trezoru klíčů pomocí PowerShellu
 
@@ -53,13 +52,13 @@ Ve skupině prostředků z předchozího kroku vytvořte Key Vault. Budete muset
 - Umístění: **EastUS**.
 
 ```azurepowershell-interactive
-New-AzKeyVault -Name "&lt;your-unique-key-vault-name&gt; -ResourceGroupName "myResourceGroup" -Location "East US"
+New-AzKeyVault -Name <your-unique-key-vault-name> -ResourceGroupName "myResourceGroup" -Location "East US"
 ```
 
 Výstup této rutiny zobrazuje vlastnosti nově vytvořeného trezoru klíčů. Poznamenejte si hodnoty dvou vlastností uvedených níže:
 
 - **Název trezoru**: název, který jste zadali do parametru--name výše.
-- **Identifikátor URI trezoru**: v tomto příkladu se jedná o https://a &lt; jedinečné úložiště klíčů – název &gt; . Vault.Azure.NET/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
+- **Identifikátor URI trezoru**: v tomto příkladu se jedná o https://<název trezoru klíčů>. Vault.Azure.NET/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
 V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět jakékoli operace s tímto novým trezorem.
 
@@ -78,5 +77,5 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 V tomto rychlém startu jste vytvořili Key Vault a uložili do něj tajný klíč. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
 - Přečtěte si [přehled Azure Key Vault](overview.md)
-- Přečtěte si referenční informace pro [rutiny Azure PowerShell Key Vault](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault)
+- Přečtěte si referenční informace pro [rutiny Azure PowerShell Key Vault](/powershell/module/az.keyvault/)
 - Kontrola [Azure Key Vault osvědčených postupů](best-practices.md)

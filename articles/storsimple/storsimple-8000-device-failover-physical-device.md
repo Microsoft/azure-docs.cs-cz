@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4fc5c44ab0fcee5cbf1faa2338f65fe12d779f37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67d6fb1f3cc359288ed942d915e186542a62b0fc
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511779"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803938"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>Převzetí služeb při selhání u fyzického zařízení řady StorSimple 8000
 
@@ -32,7 +32,7 @@ Další informace o převzetí služeb při selhání zařízení a způsobu jeh
 Pokud chcete převzít služby při selhání fyzického zařízení StorSimple na StorSimple Cloud Appliance, přečtěte si [převzetí služeb při selhání do StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md). Pokud chcete převzít služby fyzického zařízení při selhání, přečtěte si [převzetí služeb při selhání na stejné fyzické zařízení StorSimple](storsimple-8000-device-failover-same-device.md).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že jste si prošli požadavky na převzetí služeb při selhání zařízení. Další informace najdete v [častých otázkách pro převzetí služeb zařízení při selhání](storsimple-8000-device-failover-disaster-recovery.md).
 
@@ -56,7 +56,7 @@ Provedením následujících kroků obnovíte své zařízení na cílové fyzic
    
    1. Klikněte na **zdroj**. Zobrazí se kontejnery svazků se svazky přidruženými ke snímkům v cloudu. Pro převzetí služeb při selhání mají nárok jenom zobrazené kontejnery. V seznamu kontejnerů svazků vyberte kontejnery svazků, u kterých chcete převzít služby při selhání. **Zobrazují se jenom kontejnery svazků s přidruženými snímky cloudu a offline svazky.**
 
-       ![Výběr zdroje](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev5.png)
+       ![Zvolit zdroj](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev5.png)
    2. Klikněte na **cíl**. V případě kontejnerů svazků vybraných v předchozím kroku vyberte cílové zařízení v rozevíracím seznamu dostupných zařízení. V seznamu se zobrazí pouze zařízení s dostatečnou kapacitou pro kontejnery zdrojových svazků.
 
         ![Výběr cíle](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev6.png)
@@ -75,7 +75,7 @@ Provedením následujících kroků obnovíte své zařízení na cílové fyzic
    
    1. Vyberte zařízení, které se použilo jako cílové zařízení pro proces převzetí služeb při selhání.
 
-       ![Vybrat zařízení](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![Vyberte zařízení 2.](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
    2. Otevřete okno **kontejnery svazků** . Měly by být uvedené všechny kontejnery svazků společně se svazky ze starého zařízení.
 

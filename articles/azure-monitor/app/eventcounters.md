@@ -4,16 +4,16 @@ description: Monitorujte systém a vlastní .NET/.NET Core EventCounters v Appli
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8ae36545eecbbad2a6695ca979fb7da8380e8cc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a9af36f3c81ee52b41a8eed875c1a286b95bf838
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657020"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803639"
 ---
 # <a name="eventcounters-introduction"></a>Úvod do EventCounters
 
-`EventCounter` je základní mechanismus .NET/.NET pro publikování a používání čítačů nebo statistik. [Tento](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) dokument obsahuje přehled `EventCounters` a příklady, jak je publikovat a využívat. EventCounters jsou podporované na všech platformách OS – Windows, Linux a macOS. Můžeme si představit jako ekvivalent pro [čítače výkonu](/dotnet/api/system.diagnostics.performancecounter) pro různé platformy, který je podporován pouze v systémech Windows.
+[`EventCounter`](/dotnet/core/diagnostics/event-counters) je základní mechanismus .NET/.NET pro publikování a používání čítačů nebo statistik. EventCounters jsou podporované na všech platformách OS – Windows, Linux a macOS. Můžeme si představit jako ekvivalent pro [čítače výkonu](/dotnet/api/system.diagnostics.performancecounter) pro různé platformy, který je podporován pouze v systémech Windows.
 
 I když uživatelé mohou publikovat jakékoli vlastní `EventCounters` , aby splnili požadavky, .NET Core 3,0 a vyšší běhový modul zveřejňuje ve výchozím nastavení sadu těchto čítačů. Tento dokument vás provede kroky potřebnými ke shromáždění a zobrazení `EventCounters` (definované systémem nebo uživatelem definovanému) v Azure Application Insights.
 
@@ -23,32 +23,9 @@ Application Insights podporuje shromažďování `EventCounters` s jeho `EventCo
 
 ## <a name="default-counters-collected"></a>Shromážděny výchozí čítače
 
-Pro aplikace běžící v rozhraní .NET Core 3,0 nebo vyšší jsou následující čítače shromažďovány automaticky sadou SDK. Název čítačů bude ve formátu "kategorie | Čítač ".
+Počínaje verzí 2.15.0 sady [ASPNETCORE SDK](asp-net-core.md) nebo sady [WorkerService SDK](worker-service.md)nejsou ve výchozím nastavení shromažďovány žádné čítače. Samotný modul je povolený, takže uživatelé mohou jednoduše přidat požadované čítače a shromáždit je.
 
-|Kategorie | Čítač|
-|---------------|-------|
-|`System.Runtime` | `cpu-usage` |
-|`System.Runtime` | `working-set` |
-|`System.Runtime` | `gc-heap-size` |
-|`System.Runtime` | `gen-0-gc-count` |
-|`System.Runtime` | `gen-1-gc-count` |
-|`System.Runtime` | `gen-2-gc-count` |
-|`System.Runtime` | `time-in-gc` |
-|`System.Runtime` | `gen-0-size` |
-|`System.Runtime` | `gen-1-size` |
-|`System.Runtime` | `gen-2-size` |
-|`System.Runtime` | `loh-size` |
-|`System.Runtime` | `alloc-rate` |
-|`System.Runtime` | `assembly-count` |
-|`System.Runtime` | `exception-count` |
-|`System.Runtime` | `threadpool-thread-count` |
-|`System.Runtime` | `monitor-lock-contention-count` |
-|`System.Runtime` | `threadpool-queue-length` |
-|`System.Runtime` | `threadpool-completed-items-count` |
-|`System.Runtime` | `active-timer-count` |
-
-> [!NOTE]
-> Od verze 2.15.0-beta3 sady [ASPNETCORE SDK](asp-net-core.md) nebo [sady WorkerService SDK](worker-service.md)nejsou ve výchozím nastavení shromažďovány žádné čítače. Samotný modul je povolený, takže uživatelé mohou jednoduše přidat požadované čítače a shromáždit je.
+Seznam známých čítačů publikovaných modulem runtime .NET najdete v dokumentu [Dostupné čítače](/dotnet/core/diagnostics/event-counters#available-counters) .
 
 ## <a name="customizing-counters-to-be-collected"></a>Přizpůsobení čítačů, které se mají shromažďovat
 
@@ -67,7 +44,7 @@ Následující příklad ukazuje, jak přidat nebo odebrat čítače. Toto přiz
         services.ConfigureTelemetryModule<EventCounterCollectionModule>(
             (module, o) =>
             {
-                // This removes all default counters.
+                // This removes all default counters, if any.
                 module.Counters.Clear();
 
                 // This adds a user defined counter "MyCounter" from EventSource named "MyEventSource"

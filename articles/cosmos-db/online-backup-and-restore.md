@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 310fee91ed98409e5a724d1be8de7bc9ccb5601b
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 0db34a615c9d92401e760c702feb0dbbf13ce01d
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570926"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803870"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online zálohování a obnovení dat na vyžádání v Azure Cosmos DB
 
@@ -88,6 +88,13 @@ Když databázi Azure Cosmos omylem odstraníte, můžeme obnovit celou databáz
 Pokud omylem odstraníte nebo upravíte jednu nebo více položek v rámci kontejneru (případ poškození dat), je nutné zadat dobu, po kterou má být obnovena. Čas je důležitý, pokud dojde k poškození dat. Vzhledem k tomu, že je kontejner živý, je zálohování stále spuštěno, takže pokud počkáte mimo dobu uchování (výchozí nastavení je osm hodin), zálohy budou přepsány. **Aby nedošlo k přepsání zálohy, zvyšte dobu uchovávání záloh účtu na alespoň sedm dní. Je nejlepší zvýšit své uchování do 8 hodin od poškození dat.**
 
 Pokud jste data omylem odstranili nebo jste poškodili, měli byste kontaktovat [podporu Azure](https://azure.microsoft.com/support/options/) do 8 hodin, aby tým Azure Cosmos DB vám mohl pomoci obnovit data ze zálohy. Tímto způsobem bude mít tým podpory Azure Cosmos DB dostatek času na obnovení účtu.
+
+> [!NOTE]
+> Po obnovení dat se do obnoveného účtu nemigrují všechny možnosti zdroje nebo nastavení. Následující nastavení se přenesou na nový účet:
+
+> * Seznamy řízení přístupu VNET
+> * Uložené procedury, triggery a uživatelsky definované funkce
+> * Nastavení pro více oblastí  
 
 Pokud zřizujete propustnost na úrovni databáze, proces zálohování a obnovení v tomto případě proběhne na úrovni celé databáze, nikoli na úrovni jednotlivých kontejnerů. V takových případech nemůžete vybrat podmnožinu kontejnerů k obnovení.
 

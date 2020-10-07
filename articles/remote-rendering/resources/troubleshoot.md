@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f82ea8361cef76b2030e5b257b3d3351968d8050
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e8de33e7417ab6421792d341474c320a5f63423b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322185"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803819"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -193,7 +193,7 @@ V případě, že se vygenerované objekty budou pohybovat spolu s pohyby hlav, 
 
 Dalším důvodem pro nestabilní hologramy (wobbling, reformace, kolísání nebo přechodové hologramy) může být špatné připojení k síti, zejména nedostatečná šířka pásma sítě nebo příliš vysoká latence. Dobrým indikátorem pro kvalitu síťového připojení je hodnota [statistiky výkonu](../overview/features/performance-queries.md) `ARRServiceStats.VideoFramesReused` . Znovu používané snímky označují situace, kdy se na straně klienta má znovu použít starý snímek videa, protože není k dispozici žádný nový snímek videa – například kvůli ztrátě paketů nebo kvůli variacím latence sítě. Pokud `ARRServiceStats.VideoFramesReused` je často větší než nula, znamená to, že dojde k potížím se sítí.
 
-Další hodnota, kterou chcete prohledat `ARRServiceStats.LatencyPoseToReceiveAvg` , je. Mělo by se konzistentně nacházet pod 100 ms. Pokud vidíte vyšší hodnoty, znamená to, že jste připojení k datovému centru, které je příliš daleko.
+Další hodnota, kterou chcete prohledat `ARRServiceStats.LatencyPoseToReceiveAvg` , je. Mělo by se konzistentně nacházet pod 100 ms. Zobrazení vyšších hodnot může znamenat, že jste připojení k datovému centru, které je příliš daleko.
 
 Seznam možných rizik najdete v [pokynech k připojení k síti](../reference/network-requirements.md#guidelines-for-network-connectivity).
 
@@ -245,7 +245,9 @@ Coplanar povrchy můžou mít řadu různých příčin:
 
 * Povrchy jsou záměrně vytvořené tak, aby se dotkly, jako je decals nebo text na stěnách.
 
+## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>Artefakty grafiky využívající víceřádkové vykreslování stereo v nativních aplikacích C++
 
+V některých případech vlastní nativní aplikace C++, které používají režim vícenásobného vykreslování stereo pro místní obsah (vykreslování vlevo a vpravo v samostatných průchodech) po volání [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) , mohou aktivovat chybu ovladače. Výsledkem chyby je nedeterministické rastrové histogramu, což způsobí, že jednotlivé trojúhelníky nebo části trojúhelníků místního obsahu budou náhodně zmizet. Z důvodů výkonu je vhodné vykreslovat místní obsah s pokročilejší technikou pro vykreslování v jednom průchodu, například pomocí **SV_RenderTargetArrayIndex**.
 
 ## <a name="next-steps"></a>Další kroky
 

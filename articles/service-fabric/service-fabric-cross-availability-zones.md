@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d763511032ebff9116702b1f649751a4b7b52afd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56f7224d93293a0a26d09692996d2c4a4ace344b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518992"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803734"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Nasazení clusteru Azure Service Fabric napříč Zóny dostupnosti
 Zóny dostupnosti v Azure je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóna dostupnosti je jedinečné fyzické umístění vybavené nezávislým napájením, chlazením a sítí v oblasti Azure.
@@ -150,7 +150,7 @@ Pokud chcete povolit zónu, v sadě škálování virtuálního počítače mus�
 
 * První hodnotou je vlastnost **zóny** , která určuje, do které zóny dostupnosti bude sada škálování virtuálního počítače nasazena.
 * Druhá hodnota je vlastnost "singlePlacementGroup", která musí být nastavena na hodnotu true.
-* Třetí hodnotou je vlastnost "faultDomainOverride" v rozšíření sady škálování virtuálního počítače v Service Fabric. Hodnota této vlastnosti by měla zahrnovat oblast a zónu, do které bude tato sada škálování virtuálního počítače umístěna. Příklad: "faultDomainOverride": "eastus/az1" všechny prostředky sady škálování virtuálního počítače musí být umístěné ve stejné oblasti, protože clustery Azure Service Fabric nepodporují mezioblasti.
+* Třetí hodnotou je vlastnost "faultDomainOverride" v rozšíření sady škálování virtuálního počítače v Service Fabric. Hodnota této vlastnosti by měla zahrnovat pouze zónu, ve které bude tato sada škálování virtuálního počítače umístěna. Příklad: "faultDomainOverride": "az1" všechny prostředky sady škálování virtuálního počítače musí být umístěné ve stejné oblasti, protože clustery Azure Service Fabric nepodporují mezioblasti.
 
 ```json
 {
@@ -183,7 +183,7 @@ Pokud chcete povolit zónu, v sadě škálování virtuálního počítače mus�
             "systemLogUploadSettings": {
                 "Enabled": true
             },
-            "faultDomainOverride": "eastus/az1"
+            "faultDomainOverride": "az1"
         },
         "typeHandlerVersion": "1.0"
     }

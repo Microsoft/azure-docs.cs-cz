@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/24/2020
-ms.openlocfilehash: 2559c4f54aa19df248ddf756e376809dea516997
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5f076f477c36f96d1807ce7071720225a6df8e03
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330946"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803802"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor pro sítě (Preview)
 Azure Monitor pro síť poskytuje komplexní přehled o [stavu](https://docs.microsoft.com/azure/service-health/resource-health-checks-resource-types) a [metrikách](../platform/metrics-supported.md) pro všechny nasazené síťové prostředky bez jakékoli konfigurace.  Poskytuje taky přístup ke všem funkcím monitorování sítě, jako je [monitorování připojení](../../network-watcher/connection-monitor-preview.md), [protokolování toků pro skupiny zabezpečení sítě (skupin zabezpečení sítě)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md), [Analýza provozu](../../network-watcher/traffic-analytics.md)a další funkce [diagnostiky](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) sítě.
@@ -47,7 +47,7 @@ Kliknutím na nedostupná připojení ER a VPN se spustí zobrazení metriky.
 
 V zobrazení mřížky můžete kliknout na jednotlivé prvky. Kliknutím na ikonu stav můžete přesměrovat na stav prostředků pro toto připojení. Klikněte na výstrahy a přesměrujte na stránku výstrahy a metriky pro toto připojení. 
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 Mřížka **výstrahy** na pravé straně poskytuje zobrazení všech výstrah vygenerovaných pro vybrané prostředky ve všech předplatných. Klikněte na tlačítko počty výstrah a přejděte na stránku podrobné výstrahy.
 
 ### <a name="dependency-view"></a>Zobrazení závislostí
@@ -108,6 +108,43 @@ Diagnostická sada poskytuje přístup ke všem diagnostickým funkcím dostupn�
 
 ![Karta diagnostická sada](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
+## <a name="troubleshooting"></a>Řešení potíží 
+
+Obecné pokyny k odstraňování potíží najdete v článku věnovaném [řešení problémů](troubleshoot-workbooks.md)na základě vyhrazeného sešitu.
+
+Tato část vám pomůže s diagnostikou a řešením potíží s některými běžnými problémy, se kterými se můžete setkat při používání Azure Monitor pro sítě. K vyhledání informací týkajících se konkrétního problému použijte níže uvedený seznam.
+
+### <a name="resolving-performance-issues-or-failures"></a>Řešení potíží s výkonem nebo selhání
+
+Chcete-li pomoct řešit problémy související se sítí, které identifikujete pomocí Azure Monitor pro sítě, přečtěte si dokumentaci k řešení potíží s nefunkčním prostředkem. Problémy – odkazy pro vysoce používané služby jsou uvedené níže.
+* Virtual Network (VNET)
+* Application Gateway
+* VPN Gateway
+* ExpressRoute 
+* Load Balancer 
+
+### <a name="why-dont-i-see-the-resources-from-all-the-subscriptions-i-have-selected"></a>Proč se nezobrazují prostředky ze všech vybraných předplatných
+
+Network Insights může zobrazit jenom prostředky z 5 předplatných. 
+
+### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-network-insights-how-do-i-do-so"></a>Chci udělat změny nebo přidat další vizualizace do Network Insights, jak to mám udělat
+
+Chcete-li provést změny, vyberte úpravou "režim úprav" a upravte sešit. potom můžete svou práci uložit jako nový sešit, který je svázán s určeným předplatným a skupinou prostředků.
+
+### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>Jaký je časový interval, po kterém se připnout k libovolné části sešitů
+
+Používáme časový interval "automatického", proto závisí na tom, jaký časový rozsah je vybraný.
+
+### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>Jaký je časový rozsah, kdy je připnuté část sešitu
+
+Časový rozsah bude záviset na nastavení řídicího panelu.
+
+### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-network-insights"></a>Co když chci zobrazit další data nebo vytvořit vlastní vizualizace? Jak udělat změny v síťové službě Insights
+
+Sešit, který vidíte v jakémkoli postranním panelu a podrobné zobrazení metriky, můžete upravit pomocí režimu úprav a pak uložit práci jako nový sešit, který bude mít všechny nové změny.
+
+
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o monitorování sítě v [tom, co je Azure Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md).
+- Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření nových a přizpůsobení existujících sestav a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../platform/workbooks-overview.md).

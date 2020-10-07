@@ -1,5 +1,5 @@
 ---
-title: Vytvoření technických prostředků virtuálního počítače Azure
+title: Vytváření technických prostředků pro nabídku Azure Marketplace virtuálních počítačů
 description: Naučte se vytvářet a konfigurovat technické prostředky pro nabídku virtuálního počítače pro Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,22 +7,22 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 07c8de2a9d94b51f7183829466bd68d56e19efba
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a83532e2dd6fc8e83206a3b4a055170b40d131fd
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646799"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803513"
 ---
-# <a name="create-azure-virtual-machine-technical-assets"></a>Vytvoření technických prostředků virtuálního počítače Azure
+# <a name="create-technical-assets-for-an-azure-marketplace-virtual-machine-offer"></a>Vytváření technických prostředků pro nabídku Azure Marketplace virtuálních počítačů
 
 Když publikujete image virtuálních počítačů do Azure Marketplace, tým Azure ověří image virtuálního počítače, aby zajistila, že se jedná o možnosti spouštění, zabezpečení a kompatibility Azure. Pokud některý z testů s vysokou kvalitou selže, publikování se nezdaří a zobrazí se zpráva obsahující chybu a možné [kroky k nápravě](https://docs.microsoft.com/azure/marketplace/partner-center-portal/vm-certification-issues-solutions).
 
 Tento článek popisuje, jak vytvořit a nakonfigurovat technické prostředky pro nabídku virtuálního počítače pro Azure Marketplace. Virtuální počítač obsahuje dvě součásti: virtuální pevné disky s operačním systémem (VHD) a volitelné přidružené datové disky VHD:
 
-1. **Virtuální pevný disk operačního systému** – obsahuje operační systém a řešení, které se nasadí s vaší nabídkou. Proces přípravy VHD se liší v závislosti na tom, jestli se jedná o virtuální počítač založený na platformě Linux, Windows nebo na vlastním virtuálním počítači.
+- **Virtuální pevný disk operačního systému**: obsahuje operační systém a řešení, které se nasadí s vaší nabídkou. Proces přípravy VHD se liší v závislosti na tom, jestli se jedná o virtuální počítač založený na platformě Linux, Windows nebo na vlastním virtuálním počítači.
 
-2. **Virtuální pevné disky datových disků** – vyhrazené a trvalé úložiště pro virtuální počítač. Nepoužívejte virtuální pevný disk operačního systému (například jednotku C:) k ukládání trvalých informací.
+- **Virtuální pevné disky datových disků**: vyhrazené a trvalé úložiště pro virtuální počítač. Nepoužívejte virtuální pevný disk operačního systému (například jednotku C:) k ukládání trvalých informací.
 
 Image virtuálního počítače obsahuje jeden disk s operačním systémem a až 16 datových disků. Použijte jeden virtuální pevný disk na datový disk, a to i v případě, že je disk prázdný.
 
@@ -98,20 +98,20 @@ Pomocí těchto kroků vytvořte na [Azure Portal](https://ms.portal.azure.com/)
 4. Výběrem **+ Přidat** otevřete **prostředí vytvořit virtuální počítač**.
 5. Vyberte obrázek z rozevíracího seznamu nebo vyberte **Procházet všechny veřejné a soukromé image** , abyste mohli vyhledávat nebo procházet všechny dostupné image virtuálních počítačů. Příklad:
 
-    :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="Zobrazuje ukázkovou bitovou kopii virtuálního počítače.":::
+    :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="Zobrazuje začátek vytváření skupiny prostředků.":::
 
 6. Vyberte velikost virtuálního počítače, který chcete nasadit, a to pomocí následujících doporučení:
     1. Pokud plánujete vývoj virtuálního pevného disku v místním prostředí, nezáleží na velikosti. Zvažte použití jednoho z menších virtuálních počítačů.
     2. Pokud plánujete vývoj image v Azure, zvažte použití jedné z doporučených velikostí virtuálních počítačů pro vybranou bitovou kopii.
 
-    :::image type="content" source="media/vm/create-virtual-machine.png" alt-text="Zobrazuje výběr velikosti virtuálního počítače.":::
+    :::image type="content" source="media/vm/create-virtual-machine.png" alt-text="Zobrazuje začátek vytváření skupiny prostředků.":::
 
 7. V části **disky** rozbalte oddíl **Upřesnit** a nastavte možnost **použít spravované disky** na **ne**.
 
-    :::image type="content" source="media/vm/use-managed-disks.png" alt-text="Zobrazuje možnost použití spravovaných disků.":::
+    :::image type="content" source="media/vm/use-managed-disks.png" alt-text="Zobrazuje začátek vytváření skupiny prostředků.":::
 
 8. Zadejte další požadované podrobnosti pro vytvoření virtuálního počítače.
-9. Vyberte **zkontrolovat + vytvořit** a zkontrolujte své volby. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
+9. Vyberte **zkontrolovat + vytvořit** a zkontrolujte své volby. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
 Azure zahájí zřizování virtuálního počítače, který jste zadali. Svůj průběh můžete sledovat tak, že na levé straně vyberete kartu **Virtual Machines** . Po vytvoření se stav změní na **spuštěno**.
 
@@ -129,7 +129,7 @@ Vytvořte virtuální počítač 2. generace (Gen2) v Azure Portal.
 8. Vyberte doporučenou velikost [podporovaného virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) a velikosti 2. generace.
 9. Pokud chcete dokončit vytváření virtuálního počítače, Projděte si [tok vytváření Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) .
 
-    :::image type="content" source="media/vm/vm-generation.png" alt-text="Ukazuje možnost výběru generace virtuálního počítače.":::
+    :::image type="content" source="media/vm/vm-generation.png" alt-text="Zobrazuje začátek vytváření skupiny prostředků.":::
 
 ## <a name="connect-to-your-azure-vm"></a>Připojení k VIRTUÁLNÍmu počítači Azure
 
@@ -157,7 +157,7 @@ K připojení k virtuálnímu počítači se systémem Linux budete potřebovat 
 7. Otevřete aplikaci pro výstup.
 8. V dialogovém okně Konfigurace výstupu zadejte IP adresu nebo název DNS vašeho virtuálního počítače.
 
-    :::image type="content" source="media/vm/putty-configuration.png" alt-text="Ukazuje nastavení terminálu pro výstup a zvýrazní pole název hostitele a port.":::
+    :::image type="content" source="media/vm/putty-configuration.png" alt-text="Zobrazuje začátek vytváření skupiny prostředků.":::
 
 9. Vyberte **otevřít** a otevřete terminál k výstupu.
 10. Po zobrazení výzvy zadejte název účtu a heslo účtu virtuálního počítače se systémem Linux.
@@ -179,7 +179,7 @@ Vzhledem k tomu, že virtuální počítače umožňují přístup k základním
 
 | Velikost virtuálního pevného disku | Skutečná obsazená velikost | Řešení |
 | --- | --- | --- |
-| >500 TB | Není k dispozici | Obraťte se na tým podpory se schválením výjimky. |
+| >500 TB | neuvedeno | Obraťte se na tým podpory se schválením výjimky. |
 | 250-500 TB | >200 GB se liší od velikosti objektu BLOB | Obraťte se na tým podpory se schválením výjimky. |
 
 ### <a name="install-the-most-current-updates"></a>Nainstalovat nejaktuálnější aktualizace

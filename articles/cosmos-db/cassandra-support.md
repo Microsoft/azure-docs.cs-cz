@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 9fe149fb026aabcb50a595061d3ba57df7812563
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 693a1ae8a8c84479448c2475db12d5bf1b25dbd5
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90602808"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803496"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkce Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB 
 
@@ -72,6 +72,8 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje následující datové typ
 | udts  | Ano |
 | mapa | Ano |
 
+Pro deklaraci datového typu je podporovaná statická.
+
 ## <a name="cql-functions"></a>Funkce CQL
 
 Rozhraní API Cassandra pro Azure Cosmos DB podporuje tyto funkce CQL:
@@ -81,7 +83,7 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje tyto funkce CQL:
 | Klíčové | Ano |
 | TTL | Ano |
 | writetime | Ano |
-| přetypování | Ne |
+| přetypování | No |
 
 \* Rozhraní API Cassandra podporuje token jako projekci nebo selektor a povoluje token (PK) na levé straně klauzule WHERE. Například `WHERE token(pk) > 1024` je podporován, ale není `WHERE token(pk) > token(100)` podporován.
 
@@ -129,48 +131,48 @@ Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující datab
 |---------|---------|
 | POVOLENÍ FILTROVÁNÍ | Ano |
 | ZMĚNIT MÍSTO NA DISKU | Není k dispozici (služba PaaS, interně spravovaná replikace)|
-| ZMĚNIT MATERIALIZOVANÉ ZOBRAZENÍ | Ne |
-| ZMĚNIT ROLI | Ne |
+| ZMĚNIT MATERIALIZOVANÉ ZOBRAZENÍ | No |
+| ZMĚNIT ROLI | No |
 | ALTER TABLE | Ano |
-| ZMĚNIT TYP | Ne |
-| ZMĚNIT UŽIVATELE | Ne |
+| ZMĚNIT TYP | No |
+| ZMĚNIT UŽIVATELE | No |
 | PARTIE | Ano (pouze nezaznamenaná dávka)|
 | KOMPAKTNÍ ÚLOŽIŠTĚ | Není k dispozici (služba PaaS) |
-| VYTVOŘIT AGREGOVANOU | Ne | 
-| VYTVOŘIT VLASTNÍ INDEX (SASI) | Ne |
+| VYTVOŘIT AGREGOVANOU | No | 
+| VYTVOŘIT VLASTNÍ INDEX (SASI) | No |
 | CREATE INDEX | Ano (bez [zadání názvu indexu](cassandra-secondary-index.md)a indexů na klíčích clusteringu nebo celá zmrazená kolekce není podporovaná) |
-| VYTVOŘIT FUNKCI | Ne |
+| VYTVOŘIT FUNKCI | No |
 | VYTVOŘIT prostor (nastavení replikace se ignorují) | Ano |
-| VYTVOŘIT MATERIALIZOVANÉ ZOBRAZENÍ | Ne |
+| VYTVOŘIT MATERIALIZOVANÉ ZOBRAZENÍ | No |
 | CREATE TABLE | Ano |
-| VYTVOŘIT AKTIVAČNÍ UDÁLOST | Ne |
+| VYTVOŘIT AKTIVAČNÍ UDÁLOST | No |
 | VYTVOŘIT TYP | Ano |
-| VYTVOŘIT ROLI | Ne |
-| VYTVOŘIT uživatele (zastaralé v nativní Apache Cassandra) | Ne |
+| VYTVOŘIT ROLI | No |
+| VYTVOŘIT uživatele (zastaralé v nativní Apache Cassandra) | No |
 | DELETE | Ano |
 | Odstranit (odlehčené transakce s PODMÍNKou IF)| Ano |
-| ZRUŠIT AGREGAČNÍ | Ne |
-| DROP – FUNKCE | Ne |
+| ZRUŠIT AGREGAČNÍ | No |
+| DROP – FUNKCE | No |
 | DROP INDEX | Ano |
 | ODKLÁDACÍ MÍSTO | Ano |
-| VYŘADIT MATERIALIZOVANÉ ZOBRAZENÍ | Ne |
-| ROLE ZRUŠENÍ | Ne |
+| VYŘADIT MATERIALIZOVANÉ ZOBRAZENÍ | No |
+| ROLE ZRUŠENÍ | No |
 | ODKLÁDACÍ TABULKA | Ano |
-| VYŘADIT AKTIVAČNÍ UDÁLOST | Ne | 
+| VYŘADIT AKTIVAČNÍ UDÁLOST | No | 
 | TYP PŘETAŽENÍ | Ano |
-| Přetažení uživatele (zastaralé v nativní Apache Cassandra) | Ne |
-| UDĚLIT | Ne |
+| Přetažení uživatele (zastaralé v nativní Apache Cassandra) | No |
+| UDĚLIT | No |
 | INSERT | Ano |
 | Vložit (odlehčené transakce s PODMÍNKou IF)| Ano |
-| OPRÁVNĚNÍ K VYPSÁNÍ | Ne |
-| SEZNAM ROLÍ | Ne |
-| SEZNAM uživatelů (zastaralých v nativních Apache Cassandra) | Ne |
-| ODVOLAT | Ne |
+| OPRÁVNĚNÍ K VYPSÁNÍ | No |
+| SEZNAM ROLÍ | No |
+| SEZNAM uživatelů (zastaralých v nativních Apache Cassandra) | No |
+| ODVOLAT | No |
 | SELECT | Ano |
-| VYBRAT (odlehčené transakce s PODMÍNKou IF)| Ne |
+| VYBRAT (odlehčené transakce s PODMÍNKou IF)| No |
 | UPDATE | Ano |
-| AKTUALIZACE (lehké transakce s PODMÍNKou IF)| Ne |
-| ZKRÁTIT | Ne |
+| AKTUALIZACE (lehké transakce s PODMÍNKou IF)| No |
+| ZKRÁTIT | No |
 | USE | Ano |
 
 ## <a name="json-support"></a>Podpora JSON
@@ -178,8 +180,8 @@ Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující datab
 |---------|---------|
 | VYBRAT JSON | Ano |
 | VLOŽIT JSON | Ano |
-| fromJson() | Ne |
-| toJson () | Ne |
+| fromJson() | No |
+| toJson () | No |
 
 
 ## <a name="cassandra-api-limits"></a>Omezení rozhraní API Cassandra
@@ -273,7 +275,8 @@ CREATE TABLE sampleks.t1(user_id int PRIMARY KEY, lastname text) WITH cosmosdb_p
 ALTER TABLE gks1.t1 WITH cosmosdb_provisioned_throughput=10000 ;
 
 ```
-
+## <a name="secondary-index"></a>Sekundární index
+Rozhraní API Cassandra podporuje sekundární indexy pro všechny datové typy s výjimkou zmrazených typů kolekce, typů Decimal a variant. 
 
 ## <a name="usage-of-cassandra-retry-connection-policy"></a>Používání zásad opakování připojení Cassandra
 

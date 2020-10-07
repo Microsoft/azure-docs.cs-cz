@@ -1,20 +1,20 @@
 ---
-title: Certifikace virtuálních počítačů – problémy a řešení
-description: Tento článek vysvětluje běžné chybové zprávy pro image virtuálních počítačů. Zabývá se taky souvisejícími řešeními.
+title: Běžné problémy při certifikaci imagí virtuálních počítačů pro Azure Marketplace
+description: Tento článek vysvětluje běžné chybové zprávy a problémy při testování a certifikaci imagí virtuálních počítačů pro Azure Marketplace. Také se zabývá souvisejícími řešeními.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 6d7f9ccd1c87b6105988a1f5d23700cb58693062
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296446"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803462"
 ---
-# <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problémy a řešení během certifikace virtuálních počítačů 
+# <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Běžné problémy při certifikaci imagí virtuálních počítačů pro Azure Marketplace
 
 Když publikujete image virtuálního počítače do Azure Marketplace, tým Azure je ověří, aby zajistil, že se jedná o možnosti spouštění, zabezpečení a kompatibility Azure. Pokud některý z testů s vysokou kvalitou selže, publikování se nezdaří a zobrazí se chybová zpráva s popisem problému.
 
@@ -166,7 +166,7 @@ Protože virtuální počítače umožňují přístup k základnímu operační
 
 |Velikost virtuálního pevného disku|Skutečná obsazená velikost|Řešení|
 |---|---|---|
-|>500 tebibytes (TiB)|Není k dispozici|Obraťte se na tým podpory se schválením výjimky.|
+|>500 tebibytes (TiB)|neuvedeno|Obraťte se na tým podpory se schválením výjimky.|
 |250-500 TiB|Rozdíl velikosti objektu BLOB v >200 gibibajtech (GiB)|Obraťte se na tým podpory se schválením výjimky.|
 
 > [!NOTE]
@@ -332,7 +332,7 @@ Krok 1. Nasaďte virtuální počítač a klikněte na možnost spustit příkaz
 
 Krok 2. Vyberte první možnost "RunShellScript" a spusťte následující příkaz.
 
-Příkaz: CAT/dev/null > ~/. bash_history && History-c " ![ bash historie příkazu on Azure Portal](./media/vm-certification-issues-solutions-4.png)
+Příkaz: CAT/dev/null > ~/.bash_history && History-c " ![ bash historie příkazu on Azure Portal](./media/vm-certification-issues-solutions-4.png)
 
 Krok 3. Po úspěšném provedení příkazu restartujte virtuální počítač.
 

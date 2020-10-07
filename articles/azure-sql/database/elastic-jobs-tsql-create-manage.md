@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: 5c05db4d6e0c98935fc13325b5656f8023c6228e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bbecfac4bfd3d5ce1510cb671b93df5f4982cbc4
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443337"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803853"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Vytvoření a správa úloh Elastic Database pomocí jazyka Transact-SQL (T-SQL) (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -1023,13 +1023,13 @@ Přidá databázi nebo skupinu databází do cílové skupiny.
 Název cílové skupiny, do které bude člen přidán. target_group_name je nvarchar (128) bez výchozího nastavení.
 
 [ ** \@ membership_type =** ] ' membership_type '  
-Určuje, jestli bude cílový člen skupiny zahrnutý nebo vyloučený. target_group_name je nvarchar (128) s výchozím nastavením include. Platné hodnoty pro target_group_name jsou include nebo Exclude.
+Určuje, jestli bude cílový člen skupiny zahrnutý nebo vyloučený. target_group_name je nvarchar (128) s výchozím nastavením include. Platné hodnoty pro membership_type jsou include nebo Exclude.
 
 [ ** \@ target_type =** ] ' target_type '  
 Typ cílové databáze nebo kolekce databází včetně všech databází na serveru, všech databází v elastickém fondu, všech databází v mapě horizontálních oddílů nebo jednotlivé databáze. target_type je nvarchar (128) bez výchozího nastavení. Platné hodnoty pro target_type jsou "SqlServer", "SqlElasticPool", "SqlDatabase" nebo "SqlShardMap".
 
 [ ** \@ refresh_credential_name =** ] ' refresh_credential_name '  
-Název serveru. refresh_credential_name je nvarchar (128) bez výchozího nastavení.
+Název databáze s rozsahem pověření. refresh_credential_name je nvarchar (128) bez výchozího nastavení.
 
 [ ** \@ server_name =** ] ' server_name '  
 Název serveru, který má být přidán do zadané cílové skupiny. Pokud target_type je SqlServer, měla by se zadat server_name. server_name je nvarchar (128) bez výchozího nastavení.
@@ -1041,7 +1041,7 @@ Název databáze, která se má přidat do zadané cílové skupiny. Pokud je ta
 Název elastického fondu, který má být přidán do zadané cílové skupiny. Pokud je target_type ' SqlElasticPool ', je třeba zadat elastic_pool_name. elastic_pool_name je nvarchar (128) bez výchozího nastavení.
 
 [ ** \@ shard_map_name =** ] ' shard_map_name '  
-Název fondu mapování horizontálních oddílů, který se má přidat do zadané cílové skupiny. Pokud je target_type ' SqlSqlShardMap ', je třeba zadat elastic_pool_name. shard_map_name je nvarchar (128) bez výchozího nastavení.
+Název fondu mapování horizontálních oddílů, který se má přidat do zadané cílové skupiny. Pokud je target_type ' SqlShardMap ', je třeba zadat elastic_pool_name. shard_map_name je nvarchar (128) bez výchozího nastavení.
 
 [ ** \@ target_id =** ] výstup target_group_id  
 Cílové identifikační číslo přiřazené k cílovému členu skupiny, pokud je vytvořeno do cílové skupiny. target_id je výstupní proměnná typu uniqueidentifier s výchozí hodnotou NULL.
@@ -1204,7 +1204,7 @@ GO
 
 V [databázi Jobs](job-automation-overview.md#job-database)jsou k dispozici následující zobrazení.
 
-|Zobrazit  |Popis  |
+|Zobrazení  |Popis  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  Zobrazuje historii spuštění úlohy.      |
 |[úlohy](#jobs-view)     |   Zobrazí všechny úlohy.      |
