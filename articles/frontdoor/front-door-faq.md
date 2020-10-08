@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 0d669d4232adca3348b51c2a48947e0dabf0a472
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45f9e7a4e508cffd3593cec7bbcea3dd7882a60c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324055"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819024"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy pro přední dveře Azure
 
@@ -248,6 +248,10 @@ Pro úspěšné připojení HTTPS k back-endu, ať už pro sondy stavu nebo pro 
 1. **Neshoda názvů subjektu certifikátu**: u připojení HTTPS očekává přední dveře, že váš server back-end prezentuje certifikát od platné certifikační autority s názvy subjektů odpovídajícími názvu hostitele back-endu. Pokud je například váš název hostitele back-endu nastavený na `myapp-centralus.contosonews.net` a certifikát, který váš back-end prezentuje během metody handshake `myapp-centralus.contosonews.net` TLS `*myapp-centralus*.contosonews.net` , ani v názvu subjektu není, zamítne Tato dvířka připojení a výsledkem bude chyba. 
     1. **Řešení**: i když se z hlediska dodržování předpisů nedoporučuje, můžete tuto chybu obejít tím, že pro vaše přední dveře zakážete kontrolu názvu subjektu certifikátu. Tato možnost je k dispozici v části nastavení v Azure Portal a v části BackendPoolsSettings v rozhraní API.
 2. **Certifikát hostování back-endu z neplatného certifikační autority**: pro back-end s předními dveřmi lze použít pouze certifikáty z [platných certifikačních autorit](/azure/frontdoor/front-door-troubleshoot-allowed-ca) . Certifikáty z interních certifikačních autorit nebo certifikátů podepsaných svým držitelem nejsou povoleny.
+
+### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Můžu použít klienta a vzájemné ověřování s využitím front-dveří Azure?
+
+No. I když přední dvířka Azure podporují protokol TLS 1,2, který zavedl klient a vzájemné ověřování v [RFC 5246](https://tools.ietf.org/html/rfc5246), v současné době se u front-in Azure nepodporuje klient a vzájemné ověřování.
 
 ## <a name="diagnostics-and-logging"></a>Diagnostika a protokolování
 

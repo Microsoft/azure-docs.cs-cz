@@ -1,15 +1,16 @@
 ---
 title: Nejčastější dotazy
 description: Odpovědi na nejčastější dotazy týkající se služby Azure Container Instances
-author: dkkapur
+author: macolso
+ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 95190496df4037a973207e14292911225094782e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1cedfb7464fd97249c5cd3fae73c9290365da6cd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421276"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818483"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Nejčastější dotazy týkající se Azure Container Instances
 
@@ -39,7 +40,7 @@ Přečtěte si podrobnější [pokyny](container-instances-troubleshooting.md#co
 #### <a name="windows-server-2016-base-images"></a>Základní image Windows serveru 2016
 
 * [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `sac2016` `10.0.14393.3506` nebo novější
-* [Jádro Windows serveru](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016` `10.0.14393.3506` nebo novější
+* [Jádro Windows serveru](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`  `10.0.14393.3506` nebo novější
 
 > [!NOTE]
 > Image Windows na základě pololetního kanálu verze 1709 nebo 1803 se nepodporují.
@@ -52,7 +53,7 @@ Přečtěte si podrobnější [pokyny](container-instances-troubleshooting.md#co
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Jakou vrstvu imagí .NET nebo .NET Core mám použít v kontejneru? 
 
-Použijte nejmenší obrázek, který splňuje vaše požadavky. Pro Linux byste mohli použít bitovou kopii .NET Core pro *modul runtime* , která byla od vydání .net Core 2,1 podporovaná. V případě systému Windows, pokud používáte úplný .NET Framework, je nutné použít základní bitovou kopii systému Windows Server (bitovou kopii pouze za běhu, například *4.7.2-windowsservercore-ltsc2016*). Bitové kopie, které jsou jen za běhu, jsou menší, ale nepodporují úlohy, které vyžadují sadu .NET SDK.
+Použijte nejmenší obrázek, který splňuje vaše požadavky. Pro Linux byste mohli použít bitovou kopii .NET Core pro *modul runtime* , která byla od vydání .net Core 2,1 podporovaná. V případě systému Windows, pokud používáte úplný .NET Framework, je nutné použít základní bitovou kopii systému Windows Server (bitovou kopii pouze za běhu, například  *4.7.2-windowsservercore-ltsc2016*). Bitové kopie, které jsou jen za běhu, jsou menší, ale nepodporují úlohy, které vyžadují sadu .NET SDK.
 
 ## <a name="availability-and-quotas"></a>Dostupnost a kvóty
 

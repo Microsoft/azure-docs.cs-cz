@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: 6be33df90ed58dc448009fb0e26ca49c800d1931
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 44813a7662420ab4dedcd0bf99cc1eec7e9d9d2d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766040"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819075"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Onboarding kořenové nebo vrcholové domény ve službě Front Door
 Přední dveře Azure pomocí záznamů CNAME ověří vlastnictví domény pro připojování vlastních domén. Přední dveře nevystavují IP adresu front-endu přidruženou k profilu front-dveří. Proto nemůžete mapovat svoji doménu vrcholu na IP adresu, pokud je vaším záměrem připojit se k Azure na přední dveře.
@@ -54,7 +54,7 @@ Můžete použít Azure Portal k zaregistrování domény vrcholu na vašich fro
 
 1. Vyberte **Uložit** a odešlete změny.
 
-    :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="Záznam aliasu pro vrchol zóny&quot;:::
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="Záznam aliasu pro vrchol zóny&quot;:::
 
 1. Výše uvedený krok vytvoří záznam vrcholu zóny ukazující na prostředek front-dveří a také mapování záznamů CNAME &quot;afdverify":::
 
@@ -64,12 +64,12 @@ Můžete použít Azure Portal k zaregistrování domény vrcholu na vašich fro
 
 1. Vyberte  **typ správy certifikátů** použít vlastní *certifikát*.
 
-    :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="Záznam aliasu pro vrchol zóny&quot;:::
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="Záznam aliasu pro vrchol zóny&quot;:::
 
 1. Výše uvedený krok vytvoří záznam vrcholu zóny ukazující na prostředek front-dveří a také mapování záznamů CNAME &quot;afdverify":::    
 
-    > [!WARNING]
-    > Typ správy certifikátů na předních dveřích se v současné době pro vrcholy nebo kořenové domény nepodporuje. Jediná možnost, která je k dispozici pro povolení protokolu HTTPS ve vrcholu nebo kořenové doméně pro přední dveře, používá vlastní certifikát TLS/SSL hostovaný na Azure Key Vault.
+   > [!WARNING]
+   > Typ správy certifikátů na předních dveřích se v současné době pro vrcholy nebo kořenové domény nepodporuje. Jediná možnost, která je k dispozici pro povolení protokolu HTTPS ve vrcholu nebo kořenové doméně pro přední dveře, používá vlastní certifikát TLS/SSL hostovaný na Azure Key Vault.
 
 1. Než přejdete k dalšímu kroku, ujistěte se, že jste nastavili správná oprávnění pro přední dveře pro přístup k trezoru klíčů, jak je uvedeno v uživatelském rozhraní.
 

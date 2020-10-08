@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45263ca0448042aa972ee53093b51dd47bd51190
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bac3e0dc6c6bcc98bb57989e1335ce6a60872a37
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049345"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818335"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Podmíněný přístup: vyžadovat MFA pro správce
 
@@ -24,11 +24,12 @@ ms.locfileid: "89049345"
 
 Společnost Microsoft doporučuje vyžadovat vícefaktorové ověřování na následujících rolích minimálně:
 
+* Správce ověřování
 * Správce fakturace
 * Správce podmíněného přístupu
 * Správce Exchange
 * Globální správce
-* HelpDesk (heslo) – správce
+* Správce helpdesku
 * Správce hesel
 * Správce zabezpečení
 * Správce SharePointu
@@ -72,7 +73,7 @@ Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu,
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
    1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **všechny cloudové aplikace**a vyberte **Hotovo**.
-1. V části **podmínky**  >  **klientské aplikace (Preview)** v části **Vyberte klientské aplikace, na které se bude tato zásada vztahovat, aby** se vybrala všechna výchozí nastavení a vyberte **Hotovo**.
+1. V **části podmínky**  >  **klientských aplikací**přepněte přepínač **Konfigurovat** na **Ano** a v části **Vyberte klientské aplikace, na které se tato zásada vztahuje, aby** se ponechaly všechny vybrané výchozí hodnoty, a vyberte **Hotovo**
 1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování**a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.

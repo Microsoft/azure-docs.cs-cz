@@ -2,14 +2,14 @@
 title: Přehled serverů s podporou ARC Azure
 description: Naučte se používat servery s podporou ARC Azure ke správě serverů hostovaných mimo Azure, jako je prostředek Azure.
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: overview
-ms.openlocfilehash: 9fcac35f943eefb15a200e9b148b22ce67cc3941
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 881445b19baef4e025cf3bd32dc3b55b2d170ec3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90887535"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818740"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Co jsou servery s podporou služby Azure Arc?
 
@@ -21,7 +21,7 @@ Aby bylo možné doručovat toto prostředí do vašich hybridních počítačů
 
 Když počítač připojíte k serverům s podporou ARC Azure, umožní vám provádět následující úlohy správy a monitorování konfigurace:
 
-- Přiřaďte [Azure Policy konfigurace hostů](../../governance/policy/concepts/guest-configuration.md) stejným způsobem jako přiřazení zásad pro virtuální počítače Azure.
+- Přiřaďte [Azure Policy konfigurace hostů](../../governance/policy/concepts/guest-configuration.md) stejným způsobem jako přiřazení zásad pro virtuální počítače Azure. V současné době většina zásad konfigurace hostů nepoužívá konfigurace, Audituje pouze nastavení v rámci počítače. Pokud chcete pochopit náklady na používání zásad konfigurace Azure Policy hostů se servery s podporou ARC, přečtěte si téma [Cenová příručka](https://azure.microsoft.com/pricing/details/azure-policy/)Azure Policy.
 
 - Pomocí Azure Automation [Change Tracking a inventarizace](../../automation/change-tracking.md)ohlaste změny konfigurace nainstalovaného softwaru, služeb Microsoftu, registru a souborů systému Windows a démony Linux na monitorovaných serverech.
 

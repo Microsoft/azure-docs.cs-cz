@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: de3ef63600b36e1bcee8a2f5db8a1c1248524173
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 002aa9da465d86392aaaa5d404f67959b341ecf9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445927"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818984"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Vytvoření připojení typu Site-to-Site pomocí webu Azure Portal (Classic)
 
@@ -104,7 +104,7 @@ Po vytvoření virtuální sítě můžete přidat IP adresu serveru DNS, aby by
 
 Místní lokalita obvykle odkazuje na vaše místní umístění. Obsahuje IP adresu zařízení VPN, ke kterému vytvoříte připojení, a rozsah IP adres, které budou do tohoto zařízení VPN směrovány přes bránu VPN.
 
-1. Na stránce pro virtuální síť v části **Nastavení**klikněte na **diagram**.
+1. Na stránce vaší virtuální sítě v části **monitorování**klikněte na **diagram**.
 1. Na stránce **připojení VPN** klikněte na nemáte **žádná existující připojení VPN. Začněte kliknutím sem**.
 1. V případě **typu připojení**ponechte vybranou možnost **site-to-site** .
 4. Kliknutím na **Místní lokalita – Konfigurovat požadované nastavení** otevřete stránku **Místní lokalita**. Nakonfigurujte nastavení a potom kliknutím na **OK** nastavení uložte.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dcbd58c5d8dc12898fe343dbba6c3a6f8cd61b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258707"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818343"
 ---
 # <a name="conditional-access-conditions"></a>Podmíněný přístup: podmínky
 
@@ -49,6 +49,9 @@ Podmíněný přístup Azure AD podporuje tyto platformy zařízení:
 - macOS
 
 Pokud zablokujete starší ověřování pomocí podmínky **ostatních klientů** , můžete také nastavit podmínku pro platformu zařízení.
+
+> [!IMPORTANT]
+> Microsoft doporučuje, abyste měli zásady podmíněného přístupu pro nepodporované platformy zařízení. Pokud například chcete blokovat přístup k podnikovým prostředkům ze systému Linux nebo jiných nepodporovaných klientů, měli byste nakonfigurovat zásadu s podmínkou pro platformy zařízení, která zahrnuje jakékoli zařízení a vyloučí podporované platformy zařízení a udělí sadě řízení přístup k blokování přístupu.
 
 ## <a name="locations"></a>Umístění
 

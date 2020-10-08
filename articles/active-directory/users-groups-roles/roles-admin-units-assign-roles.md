@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae663b2c7a88e116315464c11b8d162135f0aff
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 112c1c6a0fbbd7e0011890d1ce92c6e21e168137
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450374"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818003"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Přiřazení vymezených rolí k jednotce pro správu
 
@@ -36,10 +36,12 @@ Správce skupin  |  Může spravovat všechny aspekty nastavení skupin a skupin
 Správce helpdesku  |  Může resetovat hesla správců bez oprávnění správce a helpdesku pouze v přiřazené jednotce pro správu.
 Správce licencí  |  Může přiřazovat, odebírat a aktualizovat přiřazení licencí pouze v rámci jednotky pro správu.
 Správce hesel  |  Může resetovat hesla správců, kteří nejsou správci a hesla, jenom v rámci přiřazené jednotky pro správu.
-Správce uživatele  |  Může spravovat všechny aspekty uživatelů a skupin, včetně resetování hesel pro omezené správce v rámci přiřazené jednotky pro správu.
+Správce uživatelů  |  Může spravovat všechny aspekty uživatelů a skupin, včetně resetování hesel pro omezené správce v rámci přiřazené jednotky pro správu.
 
-## <a name="security-principals-that-can-be-assigned-to-an-au-scoped-role"></a>Objekty zabezpečení, které je možné přiřadit k vymezené roli AU
-K roli s vymezeným oborem AU se dají přiřadit tyto objekty zabezpečení:
+## <a name="security-principals-that-can-be-assigned-to-a-scoped-role"></a>Objekty zabezpečení, které je možné přiřadit k vymezené roli
+
+K roli s rozsahem jednotky pro správu je možné přiřadit následující objekty zabezpečení:
+
 * Uživatelé
 * Role cloudových skupin s přiřazením (Preview)
 * Hlavní název služby (SPN)

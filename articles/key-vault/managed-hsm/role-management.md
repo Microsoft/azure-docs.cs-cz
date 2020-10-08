@@ -8,14 +8,14 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 6654b97f914ce4c1e3e55d38f47bd5bde0a4891e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 814167425fcd39e90edccd952e1a3e4fbd570988
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91000712"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818032"
 ---
-# <a name="managed-hsm-role-management"></a>Spravovaná Správa rolí HSM
+# <a name="managed-hsm-role-management"></a>Správa rolí pro Managed HSM
 
 > [!NOTE]
 > Key Vault podporuje dva typy prostředků: trezory a spravované HSM. Tento článek se týká **spravovaného modulu HSM**. Pokud se chcete dozvědět, jak spravovat trezor, přečtěte si téma [správa Key Vault pomocí rozhraní příkazového řádku Azure CLI](../general/manage-with-cli2.md).
@@ -28,7 +28,7 @@ Aby objekt zabezpečení (například uživatel, instanční objekt, skupina neb
 
 Seznam všech spravovaných rolí modulu HSM a operací, které umožňují, najdete v tématu [vestavěné předdefinované role HSM](built-in-roles.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat příkazy rozhraní příkazového řádku Azure CLI v tomto článku, musíte mít následující položky:
 
@@ -52,7 +52,7 @@ Další informace o možnostech přihlášení prostřednictvím rozhraní pří
 
 ### <a name="assign-roles-for-all-keys"></a>Přiřadit role pro všechny klíče
 
-Pomocí `az keyvault role assignment create` příkazu přiřaďte roli **spravovaného správce HSM** , kterou určí hlavní název uživatele **user2@contoso.com** pro všechny  **klíče** (obor `/keys` ) v ContosoHSM.
+Pomocí `az keyvault role assignment create` příkazu přiřaďte uživateli **spravovanou roli kryptografický pracovník HSM** , kterou identifikuje hlavní název uživatele (upn) **uživatel2 \@ contoso.com** pro všechny  **klíče** (obor `/keys` ) v ContosoHSM.
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys
@@ -60,7 +60,7 @@ az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Cr
 
 ### <a name="assign-role-for-a-specific-key"></a>Přiřazení role pro určitý klíč
 
-Pomocí `az keyvault role assignment create` příkazu přiřaďte roli **spravovaného správce HSM** pro **user2@contoso.com** konkrétní klíč s názvem **myrsakey**a Identifikujte ho uživateli pomocí hlavního názvu uživatele.
+Pomocí `az keyvault role assignment create` příkazu přiřaďte uživateli **spravovanou roli kryptografický pracovník HSM** , kterou určí hlavní název uživatele (upn) **uživatel2 \@ contoso.com** pro konkrétní klíč s názvem **myrsakey**.
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey
@@ -97,7 +97,7 @@ az keyvault role assignment list --hsm-name ContosoMHSM --assignee user2@contoso
 
 ## <a name="delete-a-role-assignment"></a>Odstranění přiřazení role
 
-Pomocí `az keyvault role assignment delete` příkazu můžete odstranit **spravovanou roli šifrovacího důstojníka HSM** přiřazenou uživateli **user2@contoso.com** pro Key **myrsakey2**.
+Pomocí `az keyvault role assignment delete` příkazu můžete odstranit **spravovanou roli kryptografického důstojníka HSM** přiřazenou uživateli **uživatel2 \@ contoso.com** pro Key **myrsakey2**.
 
 ```azurecli-interactive
 az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey2

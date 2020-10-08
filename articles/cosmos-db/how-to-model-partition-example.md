@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: be8e43585fca77fc891a9142066d406444b674d8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7274627ccf0aaab29f3ca569568e0085d53f1dea
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253230"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818101"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modelování a dělení dat ve službě Azure Cosmos DB s využitím příkladu z reálného světa
 
@@ -137,7 +137,7 @@ Tuto žádost je jednoduché implementovat, protože právě vytvoříme nebo ak
 
 Načítání uživatele se provádí čtením odpovídající položky z `users` kontejneru.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q1.png" alt-text="Načtení jedné položky z kontejneru uživatelů" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q1.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 | **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
@@ -147,7 +147,7 @@ Načítání uživatele se provádí čtením odpovídající položky z `users`
 
 Podobně jako **[C1]** musíme pouze zapisovat do `posts` kontejneru.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Zápis jedné položky do kontejneru příspěvky" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 | **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
@@ -157,7 +157,7 @@ Podobně jako **[C1]** musíme pouze zapisovat do `posts` kontejneru.
 
 Začneme načtením odpovídajícího dokumentu z `posts` kontejneru. Ale to není dostatečné, podle našich specifikací také musí být agregované uživatelské jméno autora příspěvku a počty komentářů a kolika má tento příspěvek obsahovat 3 další dotazy SQL, které mají být vydány.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q2.png" alt-text="Načtení příspěvku a agregace dalších dat" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q2.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 Každý z dalších dotazů filtruje klíč oddílu příslušného kontejneru, který přesně odpovídá tomu, co chceme maximalizovat výkon a škálovatelnost. Ale nakonec musíme provést čtyři operace, aby vracely jediný příspěvek, takže ho v další iteraci Vylepšete.
 
@@ -169,7 +169,7 @@ Každý z dalších dotazů filtruje klíč oddílu příslušného kontejneru, 
 
 Nejdřív musíme načíst požadované příspěvky s dotazem SQL, který načte příspěvky odpovídající tomuto konkrétnímu uživateli. Je ale také nutné vystavit další dotazy pro agregaci uživatelského jména autora a počty komentářů a jako je.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q3.png" alt-text="Načítání všech příspěvků pro uživatele a agregace jejich dalších dat" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q3.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 Tato implementace představuje mnoho nevýhod:
 
@@ -184,7 +184,7 @@ Tato implementace představuje mnoho nevýhod:
 
 Komentář je vytvořen zápisem odpovídající položky do `posts` kontejneru.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Zápis jedné položky do kontejneru příspěvky" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 | **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
@@ -194,7 +194,7 @@ Komentář je vytvořen zápisem odpovídající položky do `posts` kontejneru.
 
 Začneme s dotazem, který načte všechny komentáře k tomuto příspěvku a znovu je také potřeba agregovat pro každý komentář samostatně.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q4.png" alt-text="Načítání všech komentářů k příspěvku a agregace jejich dalších dat" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q4.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 I když hlavní dotaz filtruje klíč oddílu kontejneru, agreguje uživatelská jména, a to bez ohledu na celkový výkon. Vylepšete ho později.
 
@@ -206,7 +206,7 @@ I když hlavní dotaz filtruje klíč oddílu kontejneru, agreguje uživatelská
 
 Stejně jako **[C3]** vytvoříme odpovídající položku v `posts` kontejneru.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Zápis jedné položky do kontejneru příspěvky" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 | **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
@@ -216,7 +216,7 @@ Stejně jako **[C3]** vytvoříme odpovídající položku v `posts` kontejneru.
 
 Stejně jako u tohoto příspěvku se jako **[Q4]** dotazuje jako pro tento příspěvek a pak agreguje svá uživatelská jména.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="Načtení všech podobně jako u příspěvku a agregace jejich dalších dat" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 | **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
@@ -226,7 +226,7 @@ Stejně jako u tohoto příspěvku se jako **[Q4]** dotazuje jako pro tento př�
 
 Nejnovější příspěvky načítáme dotazem na `posts` kontejner seřazený podle data sestupného vytváření a pak agregovaná uživatelská jména a počty komentářů a podobně jako u jednotlivých příspěvků.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q6.png" alt-text="Načítání nejnovějších příspěvků a agregace jejich dalších dat" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q6.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 Po opětovném spuštění náš počáteční dotaz nefiltruje klíč oddílu `posts` kontejneru, který aktivuje nákladný ventilátor. Tato jedna je ještě horší, protože cílíme na mnohem větší sadu výsledků a seřadíme výsledky s `ORDER BY` klauzulí, což snižuje náklady na jednotky požadavků.
 
@@ -337,7 +337,7 @@ Uživatelské jméno vyžaduje jiný přístup, protože uživatelé nesedí pou
 
 V našem příkladu používáme kanál změn `users` kontejneru, který reaguje vždycky, když uživatelé aktualizují své uživatelské jméno. V takovém případě jsme změnu rozšířili voláním jiné uložené procedury na `posts` kontejneru:
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-1.png" alt-text="Denormalizace uživatelských jmen do kontejneru příspěvky" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-1.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 ```javascript
 function updateUsernames(userId, username) {
@@ -377,7 +377,7 @@ Tato uložená procedura vezme ID uživatele a nového uživatelského jména u�
 
 Teď, když je naše denormalizace na svém místě, musíme jenom načíst jednu položku, která tento požadavek zpracuje.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q2.png" alt-text="Načtení jedné položky z kontejneru příspěvky" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q2.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 | **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
@@ -387,7 +387,7 @@ Teď, když je naše denormalizace na svém místě, musíme jenom načíst jedn
 
 Tady můžeme vyprázdnit žádosti o další požadavky, které načítají uživatelská jména a končí jediným dotazem, který filtruje klíč oddílu.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q4.png" alt-text="Načítání všech komentářů k příspěvku" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q4.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 | **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
@@ -397,7 +397,7 @@ Tady můžeme vyprázdnit žádosti o další požadavky, které načítají už
 
 Přesná stejná situace při výpisu podobných.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q5.png" alt-text="Načtení všech podobně jako u příspěvku" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q5.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 | **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
@@ -411,7 +411,7 @@ V našich celkových vylepšeních výkonu stále existují dvě požadavky, kte
 
 Tato žádost už přináší výhody vylepšení zavedených ve verzi v2, která vyprázdní další dotazy.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="Načítání všech příspěvků pro uživatele" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 Ale zbývající dotaz se stále nefiltruje na klíč oddílu `posts` kontejneru.
 
@@ -455,11 +455,11 @@ Poznámky:
 
 Pro dosažení této denormalizace znovu použijeme kanál změn. Tentokrát reagujeme na kanál změn `posts` kontejneru, který odesílá nové nebo aktualizované příspěvky do `users` kontejneru. A vzhledem k tomu, že výpis příspěvků nevyžaduje vrácení celého obsahu, můžeme je v procesu zkrátit.
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-2.png" alt-text="Denormalizace příspěvků do kontejneru uživatelů" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-2.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 Nyní můžeme směrovat dotaz do `users` kontejneru a filtrovat klíč oddílu kontejneru.
 
-:::image type="content" source="./media/how-to-model-partition-example/V3-Q3.png" alt-text="Načítání všech příspěvků pro uživatele" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q3.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 | **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
@@ -469,7 +469,7 @@ Nyní můžeme směrovat dotaz do `users` kontejneru a filtrovat klíč oddílu 
 
 Budeme se muset vypořádat s podobným případem: i po tom, co povede k odstranění dalších dotazů, které byly nepotřebné denormalizací představené v v2, zbývající dotaz nefiltruje na klíč oddílu kontejneru:
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="Načítají se nejnovější příspěvky." border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 Po stejném přístupu vyžaduje maximalizaci výkonu a škálovatelnosti této žádosti, aby se narazí jenom na jeden oddíl. To je možné, protože potřebujeme vracet jenom omezený počet položek; abychom mohli naplnit domovskou stránku vaší domovské platformy, stačí získat nejnovější příspěvky 100, aniž byste museli stránkovat celou datovou sadu.
 
@@ -494,7 +494,7 @@ Tento kontejner je rozdělen do oddílů `type` , což bude vždy `post` v naši
 
 Abychom dosáhli denormalizace, musíme jenom připojit se k kanálu změny kanálu, který jsme předtím zavedli k odeslání příspěvků do tohoto nového kontejneru. Je důležité, abyste měli jistotu, že ukládáme jenom 100 nejnovějších příspěvků. v opačném případě může obsah kontejneru přesáhnout maximální velikost oddílu. To se provádí voláním [post-triggeru](stored-procedures-triggers-udfs.md#triggers) pokaždé, když se do kontejneru přidá dokument:
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-3.png" alt-text="Denormalizace příspěvků do kontejneru informačního kanálu" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-3.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 Tady je text aktivační události, která tuto kolekci zkrátí:
 
@@ -545,7 +545,7 @@ function truncateFeed() {
 
 Posledním krokem je přesměrování našeho dotazu na náš nový `feed` kontejner:
 
-:::image type="content" source="./media/how-to-model-partition-example/V3-Q6.png" alt-text="Načítají se nejnovější příspěvky." border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q6.png" alt-text="Zápis jedné položky do kontejneru Users" border="false":::
 
 | **Latence** | **Poplatek za RU** | **Výkon** |
 | --- | --- | --- |
