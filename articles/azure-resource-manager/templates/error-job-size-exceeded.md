@@ -3,12 +3,12 @@ title: Chyba překročení velikosti úlohy
 description: Popisuje, jak řešit chyby, pokud je velikost nebo Šablona úlohy příliš velká.
 ms.topic: troubleshooting
 ms.date: 10/07/2020
-ms.openlocfilehash: 5f0df102611dba8ce49da948b14110fff32dc2a9
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 638bdef246fc908ab997bfb99e7526febdb3792e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812892"
+ms.locfileid: "91822145"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>Řešení chyb pro překročení velikosti úlohy
 
@@ -40,7 +40,7 @@ Další prostředky můžete nastavit jako závislé na propojené šabloně a [
 
 ## <a name="solution-2---reduce-name-size"></a>Řešení 2 – zmenšení velikosti názvu
 
-Zkuste zkrátit délku názvů, které používáte pro [parametry](template-parameters.md), [proměnné](template-variables.md)a [výstupy](template-outputs.md). Pokud jsou tyto hodnoty opakovány prostřednictvím smyčky kopírování, velký název se vynásobí mnohokrát. Konečná velikost šablony je zbytečně velká.
+Zkuste zkrátit délku názvů, které používáte pro [parametry](template-parameters.md), [proměnné](template-variables.md)a [výstupy](template-outputs.md). Pokud jsou tyto hodnoty opakovány prostřednictvím smyčky kopírování, velký název se vynásobí mnohokrát.
 
 ## <a name="solution-3---use-serial-copy"></a>Řešení 3 – použití sériového kopírování
 

@@ -1,15 +1,15 @@
 ---
 title: Předdefinované definice zásad pro Azure Event Grid
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Event Grid. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3edf48d11a426d1a5359b4862be7463734a4608e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 077e6c5e29f2b59f77bae2f1c47a40f376004682
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986994"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822670"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-event-grid"></a>Azure Policy předdefinované definice pro Azure Event Grid
 

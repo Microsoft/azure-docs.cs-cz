@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 606ee409a241db7b4deb9d15db86b034b8fbffd3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bbd39c85385d6690a80f540c9e0cd23a321e7e84
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550971"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821227"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>Kurz: Integrace Azure Active Directory s frontou
 
@@ -30,7 +30,7 @@ Integrace s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD předem potřebujete následující položky:
 
@@ -128,23 +128,23 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
 2. **V dolní části levého bočního panelu klikněte na nastavení (ikona ozubeného kola) > předvolby**.
    
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/front-tutorial/tutorial_front_000.png)
+    ![Snímek obrazovky se zvýrazněnou možností "nastavení (ikona ozubeného kola)" vybraná s "Předvolby".](./media/front-tutorial/tutorial_front_000.png)
 
 3. Klikněte na odkaz **jednotného přihlašování** .
    
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/front-tutorial/tutorial_front_001.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "Předvolby společnosti" s vybraným odkazem pro jednotné přihlašování.](./media/front-tutorial/tutorial_front_001.png)
 
 4. V rozevíracím seznamu **jednotného přihlašování**vyberte **SAML** .
    
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/front-tutorial/tutorial_front_002.png)
+    ![Snímek obrazovky, který zobrazuje rozevírací seznam "jednotné přihlašování" s vybraným "S A M L".](./media/front-tutorial/tutorial_front_002.png)
 
 5. Do textového pole **vstupní bod** zadejte hodnotu **přihlašovací adresa URL** z Průvodce konfigurací aplikace služby Azure AD.
     
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/front-tutorial/tutorial_front_003.png)
+    ![Snímek obrazovky, který zobrazuje textové pole "vstupní bod".](./media/front-tutorial/tutorial_front_003.png)
 
 6. Otevřete stažený soubor **certifikátu (Base64)** v programu Poznámkový blok, zkopírujte jeho obsah do schránky a vložte ho do textového pole **podpisového certifikátu** .
     
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/front-tutorial/tutorial_front_004.png)
+    ![Snímek obrazovky se zvýrazněnou možností podpisový certifikát s textovým polem zobrazeným šedě](./media/front-tutorial/tutorial_front_004.png)
 
 7. V části **Nastavení poskytovatele služeb** proveďte následující kroky:
 
@@ -179,7 +179,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -187,7 +187,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **front**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost **front**.
 
