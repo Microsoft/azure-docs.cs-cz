@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 3e1386fdfafdea3112e26ce6480c7d20061236ba
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 494a698ac4b6f8262851878cfee4bb91126d9f02
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549666"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823022"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s litmus
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat litmus s Azure Active Directory (Azure
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -103,7 +103,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -167,7 +167,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace litmus](./media/litmus-tutorial/user-profile.png)
 
-    a. Do textového pole **e-mail** zadejte e-mailovou adresu uživatele, jako např. **B.Simon@contoso.com**
+    a. Do textového pole **e-mail** zadejte e-mailovou adresu uživatele, jako je **B. Simon \@ contoso.com**
 
     b. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako **B**.
 
@@ -181,7 +181,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici litmus, měli byste se automaticky přihlásit k litmus, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

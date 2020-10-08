@@ -8,12 +8,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/02/2020
 tags: connectors
-ms.openlocfilehash: b832edca79cbbff39b7d526a21b1fbe95bd7a2ad
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: cb851734dc8f71347168e7ac16ac0752845dda7b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761120"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823618"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytváření a správa souborů SFTP pomocí SSH a Azure Logic Apps
 
@@ -259,7 +259,7 @@ K této chybě může dojít, když aplikace logiky nemůže úspěšně naváza
 
 1. Časový limit připojení je 20 sekund. Ujistěte se prosím, že server SFTP má dobrý výkon a že zařízení intermidiate, jako je brána firewall, nezvyšuje spoustu režie. 
 
-2. Pokud je brána firewall zapojená, ujistěte se, že jsou na seznamu povolených **IP adres spravovaného konektoru** . Tyto IP adresy můžete najít v oblasti aplikace logiky [**zde**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+2. Pokud je brána firewall zapojená, ujistěte se, že se do seznamu schválených přidaly **IP adresy spravovaného konektoru** . Tyto IP adresy můžete najít v oblasti aplikace logiky [**zde**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
 
 3. Pokud se jedná o občasný problém, otestujte prosím nastavení opakování, abyste viděli, jestli vám může pomáhat vyšší počet opakování, než je výchozí 4.
 
@@ -279,4 +279,3 @@ Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omez
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
-

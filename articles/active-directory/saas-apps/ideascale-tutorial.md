@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ef388426584dc013d102b929627ce2ba45431d5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32dd392965e8bf33c835b435b5a2a01460740d2b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547490"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823682"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Kurz: Azure Active Directory integrace s IdeaScale
 
@@ -30,7 +30,7 @@ Integrace IdeaScale s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s IdeaScale potřebujete následující položky:
 
@@ -137,7 +137,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí IdeaScal
 
 3. Umožňuje přejít **na \> nastavení zabezpečení s jedním jednotného**.
 
-    ![Nastavení jednoho jednotného](./media/ideascale-tutorial/ic790848.png "Nastavení jednoho jednotného")
+    ![Snímek obrazovky zobrazuje jedno nastavení jednotného vybrané v nabídce zabezpečení.](./media/ideascale-tutorial/ic790848.png "Nastavení jednoho jednotného")
 
 4. Jako **typ s jedním jednotného**vyberte **SAML 2,0**.
 
@@ -145,7 +145,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí IdeaScal
 
 5. V dialogovém okně **Nastavení jednoho jednotného** proveďte následující kroky:
 
-    ![Nastavení jednoho jednotného](./media/ideascale-tutorial/ic790850.png "Nastavení jednoho jednotného")
+    ![Snímek obrazovky se zobrazí v dialogovém okně s jedním nastavením jednotného.](./media/ideascale-tutorial/ic790850.png "Nastavení jednoho jednotného")
 
     a. Do textového pole **ID entity IDP SAML** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal.
 
@@ -178,7 +178,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -186,7 +186,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **IdeaScale**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **IdeaScale**.
 

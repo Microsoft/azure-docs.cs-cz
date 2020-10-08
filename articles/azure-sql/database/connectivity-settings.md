@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: eab9004b37da83b5d571ff700c32215354286c94
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a3ceb78a85546e5e75c4c484f131b67ff7fc9249
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443858"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824142"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Nastavení připojení k Azure SQL
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "91443858"
 V tomto článku se seznámíte s nastaveními, která řídí připojení k serveru pro Azure SQL Database a Azure synapse Analytics. Tato nastavení se vztahují na **všechny** databáze SQL Database a Azure synapse přidružené k tomuto serveru.
 
 > [!IMPORTANT]
-> Tento článek se *nevztahuje na* **SPRAVOVANOU instanci Azure SQL** .
+> Tento článek se *nevztahuje na* **spravovanou instanci SQL Azure**.
 
 Nastavení připojení jsou přístupná z obrazovky **brány firewall a virtuální sítě** , jak je znázorněno na následujícím snímku obrazovky:
 
@@ -38,6 +38,9 @@ Když je nastavení **Odepřít přístup k veřejné síti** nastavené na **An
  ![Snímek obrazovky s přístupem odepřít přístup k veřejné síti][2]
 
 Jakékoli pokusy o nastavení nastavení **Odepřít přístup k veřejné síti** na **Ano** , aniž by se žádné z existujících privátních koncových bodů na logickém serveru nezdařily, chybová zpráva podobná této:  
+
+> [!NOTE]
+> Pokud chcete definovat pravidla brány firewall virtuální sítě na logickém serveru, který je už nakonfigurovaný pomocí privátních koncových bodů, nastavte **Odepřít přístup k veřejné síti** na **ne**.
 
 ```output
 Error 42102

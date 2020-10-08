@@ -8,13 +8,13 @@ ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 5b430d5a8f0c2702617b7f6b3935e1b169753552
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/07/2020
+ms.openlocfilehash: ee1c0957761fc1c8b9ca80477defae8cef044827
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530850"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824471"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Postup modelování komplexních datových typů v Azure Kognitivní hledání
 
@@ -35,11 +35,13 @@ Chcete-li začít, doporučujeme [sadu dat hotelů](https://github.com/Azure-Sam
 
 Následující dokument JSON se skládá z jednoduchých polí a složitých polí. Složitá pole, například `Address` a `Rooms` , mají dílčí pole. `Address` má jednu sadu hodnot pro tyto dílčí pole, protože se jedná o jediný objekt v dokumentu. Naproti tomu `Rooms` má více sad hodnot pro své dílčí pole, jeden pro každý objekt v kolekci.
 
+
 ```json
 {
   "HotelId": "1",
   "HotelName": "Secret Point Motel",
   "Description": "Ideally located on the main commercial artery of the city in the heart of New York.",
+  "Tags": ["Free wifi", "on-site parking", "indoor pool", "continental breakfast"]
   "Address": {
     "StreetAddress": "677 5th Ave",
     "City": "New York",
@@ -48,17 +50,26 @@ Následující dokument JSON se skládá z jednoduchých polí a složitých pol
   "Rooms": [
     {
       "Description": "Budget Room, 1 Queen Bed (Cityside)",
-      "Type": "Budget Room",
-      "BaseRate": 96.99
+      "RoomNumber": 1105,
+      "BaseRate": 96.99,
     },
     {
       "Description": "Deluxe Room, 2 Double Beds (City View)",
       "Type": "Deluxe Room",
-      "BaseRate": 150.99
-    },
+      "BaseRate": 150.99,
+    }
+    . . .
   ]
 }
 ```
+
+<název = "indexování – komplexní typy></a>
+
+## <a name="indexing-complex-types"></a>Indexování složitých typů
+
+Během indexování můžete mít ve všech komplexních kolekcích v rámci jednoho dokumentu maximálně 3000 prvků. Prvek komplexní kolekce je členem této kolekce, takže v případě místností (pouze komplexní kolekce v příkladu hotelu) je každá místnost prvkem. Pokud se v předchozím příkladu Motel "tajným bodem" mělo 500 místností, bude mít dokument z hotelu 500 prvky místnosti. U vnořených komplexních kolekcí je každý vnořený prvek také počítán Kromě vnějšího (nadřazeného) prvku.
+
+Toto omezení platí pouze pro komplexní kolekce, nikoli pro komplexní typy (například adresy) nebo kolekce řetězců (například značky).
 
 ## <a name="creating-complex-fields"></a>Vytváření složitých polí
 
@@ -93,7 +104,7 @@ Následující příklad ukazuje schéma indexu JSON s jednoduchými poli, kolek
 
 ## <a name="updating-complex-fields"></a>Aktualizace složitých polí
 
-Všechna [pravidla přeindexace](search-howto-reindex.md) , která platí pro pole obecně, se stále vztahují na složitá pole. Pokud je zde uvedeno několik hlavních pravidel, přidání pole nevyžaduje opětovné sestavení indexu, ale většina úprav provádí.
+Všechna [pravidla přeindexace](search-howto-reindex.md) , která platí pro pole obecně, se stále vztahují na složitá pole. Pokud je zde uvedeno několik hlavních pravidel, přidání pole do komplexního typu nevyžaduje opětovné sestavení indexu, ale většina úprav provádí.
 
 ### <a name="structural-updates-to-the-definition"></a>Strukturální aktualizace definice
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 072c02401a5d1ef49a3f25828f5b60fa8504d2ee
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c62967950d9f6d9ba9e3578357f65cc4988412c2
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555106"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824907"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Kurz: Azure Active Directory integrace s FilesAnywhere
 
@@ -30,7 +30,7 @@ Integrace FilesAnywhere s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s FilesAnywhere potřebujete následující položky:
 
@@ -101,7 +101,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí FilesAny
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující krok:
 
-    ![Informace o jednotném přihlašování v doméně FilesAnywhere a adresách URL](common/both-replyurl.png)
+    ![Snímek obrazovky s oddílem konfigurace "základní S A M L" se zvýrazněným polem odpovědět U R L a zaškrtnutým tlačítkem Uložit.](common/both-replyurl.png)
 
     Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:  `https://<company name>.filesanywhere.com/saml20.aspx?c=<Client Id>`
 
@@ -116,19 +116,19 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí FilesAny
 
 6. FilesAnywhere aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na ikonu Upravit přidejte atributy.
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "atributy uživatele" s vybraným tlačítkem Upravit.](common/edit-attribute.png)
 
     Když se uživatelé přihlásí pomocí FilesAnywhere, získá hodnotu atributu **ClientID** od [týmu FilesAnywhere](mailto:support@FilesAnywhere.com). Je nutné přidat atribut ID klienta s jedinečnou hodnotou, kterou poskytuje FilesAnywhere.
 
 7. Kromě výše očekává aplikace FilesAnywhere několik dalších atributů, které se vrátí zpátky v odpovědi SAML. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| --------------- |    
     | ClientID | *"uniquevalue"* |
 
     a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    ![image](common/new-save-attribute.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno deklarace identity uživatele s vybranou možnost Přidat novou deklaraci identity a uložit.](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -185,7 +185,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -193,7 +193,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **FilesAnywhere**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **FilesAnywhere**.
 

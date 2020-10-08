@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 6ab826b6816c8f1b71a28c6bf501b651baa2cfff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c34eb87cfc43bbdab051bf4c2527bfa75295cf6c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613454"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825052"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Rychlý Start: přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro iOS nebo macOS
 
@@ -180,7 +180,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 > |Kde: | Popis |
 > |---------|---------|
 > | `clientId` | ID aplikace z aplikace zaregistrované na webu *portal.azure.com* |
-> | `authority` | Koncový bod Microsoft Identity Platform. Ve většině případů to bude *https<span/>://login.microsoftonline.com/common* |
+> | `authority` | Koncový bod Microsoft Identity Platform. Ve většině případů to bude *https://login.microsoftonline.com/common* |
 > | `redirectUri` | Identifikátor URI přesměrování aplikace Můžete předat hodnotu Nil a použít výchozí hodnotu nebo vlastní identifikátor URI přesměrování. |
 
 ### <a name="for-ios-only-additional-app-requirements"></a>Jenom pro iOS, požadavky na další aplikace
@@ -274,3 +274,4 @@ Přejděte k podrobnému kurzu, ve kterém vytvoříte aplikaci pro iOS nebo mac
 
 > [!div class="nextstepaction"]
 > [Kurz: přihlášení uživatelů a volání Microsoft Graph z aplikace pro iOS nebo macOS](tutorial-v2-ios.md)
+

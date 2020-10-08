@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/09/2019
+ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: f77dd21a2c017ee41f955fdf5e0848df190dec2a
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 060048bf786f424d5df6eb8fb4813877acb0fea0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651271"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823212"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>Load Balancer resetování TCP a časový limit nečinnosti
 
@@ -40,7 +40,11 @@ Pečlivě Projděte celý scénář od konce až do konce, abyste se rozhodli, j
 
 ## <a name="configurable-tcp-idle-timeout"></a>Konfigurovatelný časový limit nečinnosti protokolu TCP
 
-Azure Load Balancer má nastavení časového limitu nečinnosti na 4 minuty až 120 minut. Ve výchozím nastavení je nastaveno na 4 minuty. Pokud je období neaktivity delší než hodnota časového limitu, není nijak zaručeno, že relace TCP nebo HTTP mezi klientem a vaší cloudovou službou bude zachovaná.
+Azure Load Balancer má následující rozsah časového limitu nečinnosti:
+-  4 minuty až 100 minut pro odchozí pravidla
+-  4 minuty až 30 minut pro pravidla Load Balancer a příchozí pravidla NAT
+
+Ve výchozím nastavení je nastaveno na 4 minuty. Pokud je období neaktivity delší než hodnota časového limitu, není nijak zaručeno, že relace TCP nebo HTTP mezi klientem a vaší cloudovou službou bude zachovaná.
 
 Po zavření připojení může klientská aplikace zobrazit následující chybovou zprávu: "základní připojení bylo zavřeno: připojení, které bylo očekáváno jako aktivní, bylo zavřeno serverem."
 

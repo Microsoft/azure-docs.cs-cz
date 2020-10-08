@@ -1,5 +1,5 @@
 ---
-title: Mapování transformace Unpivot toku dat
+title: Transformace Unpivot v toku dat mapování
 description: Azure Data Factory transformace Unpivot toku dat
 author: kromerm
 ms.author: makromer
@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: e7c0a4cd6e44994c4b002fcc2e5fde441cf22283
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 38986c3f93856981e903ae93ed7788ae01fc6d5b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541647"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823579"
 ---
-# <a name="azure-data-factory-unpivot-transformation"></a>Transformace Unpivot Azure Data Factory
+# <a name="unpivot-transformation-in-mapping-data-flow"></a>Transformace Unpivot v toku dat mapování
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 

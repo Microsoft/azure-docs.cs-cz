@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: bbd3cb88b017209adff58a646e274caf31ab425f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c297a189f3b13ca8e72daf4eef009bc28fac32bf
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486438"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823201"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Řešení potíží se službou Live video Analytics na IoT Edge
 
@@ -308,7 +308,7 @@ Pokud chcete nakonfigurovat Live video Analytics v modulu IoT Edge tak, aby gene
     `/var/local/mediaservices/logs:/var/lib/azuremediaservices/logs`
 
     > [!NOTE] 
-    > Tento příkaz váže složky protokolů mezi hraničním zařízením a kontejnerem. Pokud chcete protokoly shromáždit v jiném umístění, použijte následující příkaz a nahraďte **$LOG _LOCATION_ON_EDGE_DEVICE** umístění, které chcete použít:`/var/$LOG_LOCATION_ON_EDGE_DEVICE:/var/lib/azuremediaservices/logs`
+    > Tento příkaz váže složky protokolů mezi hraničním zařízením a kontejnerem. Pokud chcete protokoly shromáždit v jiném umístění, použijte následující příkaz a nahraďte **$LOG _LOCATION_ON_EDGE_DEVICE** umístění, které chcete použít: `/var/$LOG_LOCATION_ON_EDGE_DEVICE:/var/lib/azuremediaservices/logs`
 
 1. Vyberte **Aktualizovat**.
 1. Vyberte **zkontrolovat + vytvořit**. Pod zelenou bannerem se publikuje zpráva o úspěšném ověření.
@@ -321,9 +321,11 @@ Pokud chcete nakonfigurovat Live video Analytics v modulu IoT Edge tak, aby gene
     `"DebugLogsDirectory": "/var/lib/azuremediaservices/logs"`
 
     > [!NOTE] 
-    > Tento příkaz váže složky protokolů mezi hraničním zařízením a kontejnerem. Pokud chcete protokoly shromáždit v jiném umístění, použijte následující příkaz a nahraďte **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** umístění, které chcete použít:  
-    > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE"`  
-
+    > Tento příkaz váže složky protokolů mezi hraničním zařízením a kontejnerem. Pokud chcete protokoly shromažďovat v jiném umístění v zařízení:
+    > 1. Vytvořte vazbu pro umístění protokolu ladění v oddílu **Binds** a nahraďte **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** a **$Debug _LOG_LOCATION** umístění, které chcete: `/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE:/var/$DEBUG_LOG_LOCATION`
+    > 2. Použijte následující příkaz a nahraďte **$DEBUG _LOG_LOCATION** umístěním použitým v předchozím kroku:  
+    > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION"`  
+    
     d. Vyberte **Uložit**.
 
 1. Reprodukujte problém.

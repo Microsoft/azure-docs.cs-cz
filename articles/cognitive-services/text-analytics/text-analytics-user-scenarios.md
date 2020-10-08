@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 0e60ba0517fb3b9388045762853c651869cffb6a
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 4f540c7e853efe370c84b7c4d0a7d74911b8cd6c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986453"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823946"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Příklady scénářů uživatelů pro rozhraní API pro analýzu textu
 
@@ -41,7 +41,7 @@ Pomocí Extrakce klíčových frází a rozpoznávání entit můžete zpracovat
 
 ## <a name="monitor-your-products-social-media-feeds"></a>Monitorování informačních kanálů sociálních médií v produktu
 
-Sledujte svůj názor na produkt uživatele na Twitteru nebo na Facebook stránkách. Pomocí dat můžete analyzovat zákaznická mínění k novým produktům, extrahovat klíčové fráze týkající se funkcí a požadavků na funkce nebo řešit reklamace zákazníků při jejich vzniku. Podívejte se na příklad [šablony Microsoft Flow](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/).
+Sledujte svůj názor na produkt uživatele na Twitteru nebo na Facebook stránkách. Pomocí dat můžete analyzovat zákaznická mínění k novým produktům, extrahovat klíčové fráze týkající se funkcí a požadavků na funkce nebo řešit reklamace zákazníků při jejich vzniku. Podívejte se na příklad [šablony Microsoft Power automatizace](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/).
 
 ![Obrázek popisující, jak monitorovat váš produkt a zpětnou vazbu na sociálních médiích pomocí extrakce klíčových frází](media/use-cases/social-feed.svg)
 

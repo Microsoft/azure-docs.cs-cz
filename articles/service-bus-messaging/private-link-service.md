@@ -3,14 +3,14 @@ title: Integrace Azure Service Bus se službou Azure Private Link
 description: Naučte se integrovat Azure Service Bus se službou Azure Private Link.
 author: spelluru
 ms.author: spelluru
-ms.date: 06/23/2020
+ms.date: 10/07/2020
 ms.topic: article
-ms.openlocfilehash: 4f3b67794d1a7f3935c79c70f18b8bd4a1e0d7ef
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 54649c47a896937a512a6041e485abfb03ca88dd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716618"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824955"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Povolení přístupu k Azure Service Bus obory názvů prostřednictvím privátních koncových bodů
 
@@ -55,7 +55,7 @@ Váš privátní koncový bod a virtuální síť musí být ve stejné oblasti.
 
 Pokud již máte existující obor názvů, můžete vytvořit privátní koncový bod pomocí následujících kroků:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 2. Na panelu hledání zadejte **Service Bus**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
 2. V nabídce vlevo vyberte v části **Nastavení**možnost **sítě** . 
@@ -180,16 +180,16 @@ Při vytváření privátního koncového bodu musí být připojení schváleno
 
 Existují čtyři stavy zřizování:
 
-| Akce služby | Stav privátního koncového bodu příjemce služby | Popis |
+| Akce služby | Stav privátního koncového bodu příjemce služby | Description |
 |--|--|--|
-| Žádné | Čekající | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
+| Žádná | Čekající | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
 | Schválení | Schválené | Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití. |
 | Odmítnout | Zamítnuto | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu. |
 | Odebrat | Propojení | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění. |
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Schválení, zamítnutí nebo odebrání připojení privátního koncového bodu
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 1. Na panelu hledání zadejte **Service Bus**.
 1. Vyberte **obor názvů** , který chcete spravovat.
 1. Vyberte kartu **síť** .

@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b97b80927739d9a8658213a00b415c0bf321528b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0a01036eb4856d9fd306a50958285bd469791f24
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91460556"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823870"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Začínáme s příkladem skupiny Hero chat
 
@@ -115,6 +115,6 @@ Další informace najdete v následujících článcích:
 
 - [GitHub pro komunikaci Azure](https://github.com/Azure/communication) – další příklady a informace najdete na oficiální stránce GitHubu.
 - [Redux](https://redux.js.org/) – Správa stavu na straně klienta
-- [FluentUI](https://developer.microsoft.com/fluentui#/) – knihovna rozhraní založená na Microsoftu
+- [FluentUI](https://aka.ms/fluent-ui) – knihovna rozhraní založená na Microsoftu
 - [Reagovat](https://reactjs.org/) – knihovna pro sestavování uživatelských rozhraní
 - [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) – rozhraní pro vytváření webových aplikací

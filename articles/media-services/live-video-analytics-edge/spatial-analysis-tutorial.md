@@ -3,12 +3,12 @@ title: Analýza živého videa pomocí Počítačové zpracování obrazu pro pr
 description: V tomto kurzu se dozvíte, jak pomocí živé analýzy videí společně s funkcí Počítačové zpracování obrazu prostorová analýza AI z Azure Cognitive Services analyzovat živý kanál videa z (simulované) kamery IP.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 72063cdefdf349eaad1b1d2fd760bb30b42786da
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: cad96847d6fbf682f1d694b0c8c255b3725e96d1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649745"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824125"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analýza živého videa pomocí Počítačové zpracování obrazu pro prostorovou analýzu (Preview)
 
@@ -21,7 +21,7 @@ V tomto kurzu provedete tyto kroky:
 > * Projděte si kód.
 > * Spusťte vzorový kód.
 > * Monitorování událostí.
-
+ 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="suggested-pre-reading"></a>Navrhované před čtením
@@ -35,7 +35,7 @@ Než začnete, přečtěte si tyto články:
 * [Kurz: vývoj modulu IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
 * [Nasazení Live video Analytics na Azure Stack Edge](deploy-azure-stack-edge-how-to.md) 
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 Níže jsou uvedené požadavky pro připojení modulu pro prostorovou analýzu do nástroje Live video Analytics.
 
@@ -200,7 +200,16 @@ Pak můžete najít `lvaEdge` moduly, `rtspsim` `spatialAnalysis` a `rtspsim` v 
 
 Chcete-li zobrazit tyto události, postupujte podle následujících kroků:
 
-1. Otevřete podokno Průzkumník v Visual Studio Code a vyhledejte Azure IoT Hub v levém dolním rohu.
+1. V Visual Studio Code otevřete kartu **rozšíření** (nebo stiskněte klávesy CTRL + SHIFT + X) a vyhledejte IoT Hub Azure.
+1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Přehled prostorové analýzy":::
+1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Přehled prostorové analýzy":::
+1. Otevřete podokno Průzkumník a vyhledejte Azure IoT Hub v levém dolním rohu.
 1. Rozbalte uzel zařízení.
 1. Pravým tlačítkem myši klikněte na Azure Stack Edge a vyberte spustit sledování integrovaný koncový bod události.
     

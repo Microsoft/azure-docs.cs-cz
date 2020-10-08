@@ -1,134 +1,105 @@
 ---
-title: Automatizované nasazení virtuálních počítačů s rychlým startem konfigurace Azure App
-description: Tento rychlý Start ukazuje, jak použít modul Azure PowerShell a šablony Azure Resource Manager k nasazení úložiště konfigurace aplikace Azure. Pak použijte hodnoty z úložiště k nasazení virtuálního počítače.
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 08/11/2020
+title: Vytvoření úložiště konfigurace aplikace Azure pomocí šablony Azure Resource Manager (šablona ARM)
+titleSuffix: Azure App Configuration
+description: Naučte se vytvořit úložiště konfigurace aplikace Azure pomocí šablony Azure Resource Manager (šablona ARM).
+author: ZhijunZhao
+ms.author: zhijzhao
+ms.date: 09/21/2020
+ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.service: azure-app-configuration
-ms.custom:
-- mvc
-- subject-armqs
-ms.openlocfilehash: 7b7dd00d3495c24733ecdc213e0e25f8bc9640eb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: subject-armqs
+ms.openlocfilehash: 840f907015e9673caba46998493b5cb705de5fb7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88661465"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824177"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template-arm-template"></a>Rychlý Start: automatizované nasazení virtuálních počítačů s konfigurací aplikace a šablonou Správce prostředků (šablona ARM)
+# <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>Rychlý Start: vytvoření úložiště konfigurace aplikace Azure pomocí šablony ARM
 
-Naučte se používat šablony Azure Resource Manager a Azure PowerShell k nasazení úložiště konfigurace aplikace Azure, přidání hodnot klíč-hodnota do úložiště a použití hodnot klíčového klíče v úložišti k nasazení prostředku Azure, jako je třeba virtuální počítač Azure v tomto příkladu.
+V tomto rychlém startu se dozvíte, jak:
+
+- Nasazení úložiště konfigurace aplikace pomocí šablony ARM
+- Vytvoření hodnot klíčů v App Configuration Storu pomocí šablony ARM
+- Čtení hodnot klíč-hodnota v úložišti konfigurace aplikace ze šablony ARM
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
-[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="review-the-templates"></a>Kontrola šablon
+## <a name="review-the-template"></a>Kontrola šablony
 
-Šablony použité v tomto rychlém startu jsou ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/). [První šablona](https://azure.microsoft.com/resources/templates/101-app-configuration-store/) vytvoří úložiště konfigurace aplikace:
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/en-us/resources/templates/101-app-configuration-store-kv/). Vytvoří nové úložiště konfigurace aplikace se dvěma hodnotami, které jsou uvnitř. Pak použije `reference` funkci k výstupu hodnot dvou prostředků klíč-hodnota. Čtení hodnoty klíče tímto způsobem umožňuje použití na jiných místech v šabloně.
 
-:::code language="json" source="~/quickstart-templates/101-app-configuration-store/azuredeploy.json" range="1-37" highlight="27-35":::
+Rychlý Start používá `copy` element k vytvoření více instancí prostředku klíčové hodnoty. Další informace o elementu najdete v `copy` tématu [iterace prostředků v šablonách ARM](../azure-resource-manager/templates/copy-resources.md).
 
-V této šabloně je definovaný jeden prostředek Azure:
+> [!IMPORTANT]
+> Tato šablona vyžaduje verzi poskytovatele prostředků konfigurace aplikace `2020-07-01-preview` nebo novější. Tato verze používá `reference` funkci ke čtení hodnot klíč-hodnota. `listKeyValue`Funkce, která byla použita ke čtení hodnot klíče v předchozí verzi, není k dispozici počínaje verzí `2020-07-01-preview` .
 
-- [Microsoft. AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2019-10-01/configurationstores): vytvořte úložiště konfigurace aplikace.
+:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json" range="1-88" highlight="52-58,61-75,80,84":::
 
-[Druhá šablona](https://azure.microsoft.com/resources/templates/101-app-configuration/) vytvoří virtuální počítač s použitím hodnot klíč-hodnota ve Storu. Před provedením tohoto kroku je potřeba přidat klíčové hodnoty pomocí portálu nebo rozhraní příkazového řádku Azure CLI.
+V šabloně jsou definované dva prostředky Azure:
 
-:::code language="json" source="~/quickstart-templates/101-app-configuration/azuredeploy.json" range="1-217" highlight="77, 181,189":::
+- [Microsoft. AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-06-01/configurationstores): vytvořte úložiště konfigurace aplikace.
+- Microsoft. AppConfiguration/configurationStores/klíčové hodnoty: vytvoří klíčovou hodnotu v úložišti konfigurace aplikace.
 
-## <a name="deploy-the-templates"></a>Nasazení šablon
+> [!NOTE]
+> `keyValues`Název prostředku je kombinací klíče a popisku. Klíč a popisek jsou připojeny pomocí `$` oddělovače. Popisek je nepovinný. Ve výše uvedeném příkladu `keyValues` prostředek s názvem `myKey` vytvoří klíčovou hodnotu bez popisku.
+>
+> Procentuální kódování, označované také jako kódování adresy URL, umožňuje klíčům nebo popiskům zahrnout znaky, které nejsou povoleny v názvech prostředků šablony ARM. `%` Nejedná se o povolený znak, takže `~` se místo něj použije. Chcete-li správně zakódovat název, postupujte podle následujících kroků:
+>
+> 1. Použít kódování adresy URL
+> 2. Nahradit `~``~7E`
+> 3. Nahradit `%``~`
+>
+> Například pro vytvoření páru klíč-hodnota s názvem klíče `AppName:DbEndpoint` a názvem popisku `Test` by měl být název prostředku `AppName~3ADbEndpoint$Test` .
 
-### <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
+## <a name="deploy-the-template"></a>Nasazení šablony
 
-1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří úložiště konfigurace aplikace.
+Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří úložiště konfigurace aplikace se dvěma hodnotami klíče uvnitř.
 
-    [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store-kv%2Fazuredeploy.json)
 
-1. Vyberte nebo zadejte následující hodnoty.
+Šablonu můžete nasadit také pomocí následující rutiny prostředí PowerShell. Hodnoty klíč budou ve výstupu konzoly PowerShellu.
 
-    - **předplatné**: vyberte předplatné Azure, které se používá k vytvoření úložiště konfigurace aplikace.
-    - **Skupina prostředků**: vyberte **vytvořit novou** a vytvořte novou skupinu prostředků, pokud nechcete použít existující skupinu prostředků.
-    - **Oblast**: vyberte umístění pro skupinu prostředků.  Například **východní USA**.
-    - **Název úložiště**konfigurace: zadejte nový název úložiště konfigurace aplikace.
-    - **Umístění**: zadejte umístění úložiště konfigurace aplikace.  Použijte výchozí hodnotu.
-    - **Název SKU**: zadejte název SKU úložiště konfigurace aplikace. Použijte výchozí hodnotu.
+```azurepowershell-interactive
+$projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-app-configuration-store-kv/azuredeploy.json"
 
-1. Vyberte **Zkontrolovat a vytvořit**.
-1. Ověřte, že se na stránce zobrazuje **úspěšné ověření**, a pak vyberte **vytvořit**.
+$resourceGroupName = "${projectName}rg"
 
-Poznamenejte si název skupiny prostředků a název úložiště konfigurace aplikace.  Tyto hodnoty budete potřebovat při nasazení virtuálního počítače.
-### <a name="add-vm-configuration-key-values"></a>Přidat konfigurační klíč virtuálního počítače – hodnoty
+New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
 
-Po vytvoření úložiště konfigurace aplikace můžete pomocí Azure Portal nebo Azure CLI přidat klíčové hodnoty do úložiště.
-
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pak přejděte do nově vytvořeného úložiště konfigurace aplikace.
-1. V nabídce vlevo vyberte **Průzkumník konfigurace** .
-1. Vyberte **vytvořit** a přidejte následující páry klíč-hodnota:
-
-   |Klíč|Hodnota|Popisek|
-   |-|-|-|
-   |windowsOsVersion|2019 – Datacenter|šablona|
-   |diskSizeGB|1023|šablona|
-
-   Zachovat **typ obsahu** v prázdném
-
-Pokud chcete použít rozhraní příkazového řádku Azure, přečtěte si téma [práce s klíčovými hodnotami v úložišti konfigurace aplikace Azure](./scripts/cli-work-with-keys.md).
-
-### <a name="deploy-vm-using-stored-key-values"></a>Nasazení virtuálního počítače pomocí uložených hodnot klíčů
-
-Teď, když jste do úložiště přidali klíčové hodnoty, jste připraveni nasadit virtuální počítač pomocí šablony Azure Resource Manager. Šablona odkazuje na klíče **windowsOsVersion** a **diskSizeGB** , které jste vytvořili.
-
-> [!WARNING]
-> Šablony ARM nemůžou odkazovat na klíče v úložišti konfigurace aplikace s povoleným privátním odkazem.
-
-1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří virtuální počítač pomocí uložených hodnot klíčů v úložišti konfigurace aplikace.
-
-    [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration%2Fazuredeploy.json)
-
-1. Vyberte nebo zadejte následující hodnoty.
-
-    - **předplatné**: vyberte předplatné Azure, které se používá k vytvoření virtuálního počítače.
-    - **Skupina prostředků**: buď zadejte stejnou skupinu prostředků jako úložiště konfigurace aplikace, nebo vyberte **vytvořit novou** a vytvořte novou skupinu prostředků.
-    - **Oblast**: vyberte umístění pro skupinu prostředků.  Například **východní USA**.
-    - **Umístění**: zadejte umístění virtuálního počítače. použijte výchozí hodnotu.
-    - **Uživatelské jméno správce**: zadejte uživatelské jméno správce pro virtuální počítač.
-    - **Heslo správce**: zadejte heslo správce pro virtuální počítač.
-    - **Popisek názvu domény**: Zadejte jedinečný název domény.
-    - **Název účtu úložiště**: Zadejte jedinečný název účtu úložiště přidruženého k virtuálnímu počítači.
-    - **Skupina prostředků úložiště konfigurace aplikace**: zadejte skupinu prostředků, která obsahuje úložiště konfigurace aplikace.
-    - **Název úložiště konfigurace aplikace**: zadejte název úložiště konfigurace aplikace Azure.
-    - **Klíč SKU virtuálního počítače**: zadejte **windowsOsVersion**.  Toto je název hodnoty klíče, který jste přidali do úložiště.
-    - **Disk s velikostí disku**: zadejte **diskSizeGB**. Jedná se o název hodnoty klíče, který jste přidali do úložiště.
-
-1. Vyberte **Zkontrolovat a vytvořit**.
-1. Ověřte, že se na stránce zobrazuje **úspěšné ověření**, a pak vyberte **vytvořit**.
+Read-Host -Prompt "Press [ENTER] to continue ..."
+```
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a potom přejděte k nově vytvořenému virtuálnímu počítači.
-1. V nabídce vlevo vyberte **Přehled** a ověřte, jestli je **SKU** **2019 – Datacenter**.
-1. V nabídce vlevo vyberte **disky** a ověřte, jestli je velikost datového disku **2013**.
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Do vyhledávacího pole Azure Portal zadejte **Konfigurace aplikace**. V seznamu vyberte **Konfigurace aplikace** .
+1. Vyberte nově vytvořený prostředek konfigurace aplikace.
+1. V části **operace**klikněte na **Průzkumník konfigurace.**
+1. Ověřte, zda existují dvě hodnoty klíč-hodnota.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků, úložiště konfigurace aplikace, virtuální počítač a všechny související prostředky. Pokud plánujete používat úložiště konfigurace aplikace nebo virtuální počítač v budoucnu, můžete ho odstranit. Pokud nebudete tuto úlohu nadále používat, odstraňte všechny prostředky vytvořené tímto rychlým startem spuštěním následující rutiny:
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, úložiště konfigurace aplikace a všechny související prostředky. Pokud plánujete používat úložiště konfigurace aplikace v budoucnu, můžete ho odstranit. Pokud nebudete tento obchod nadále používat, odstraňte všechny prostředky vytvořené tímto rychlým startem spuštěním následující rutiny:
 
 ```azurepowershell-interactive
-Remove-AzResourceGroup `
-  -Name $resourceGroup
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
 ```
 
 ## <a name="next-steps"></a>Další kroky
-
-V tomto rychlém startu jste nasadili virtuální počítač pomocí šablony Azure Resource Manager a hodnot klíč-hodnota z konfigurace aplikace Azure.
 
 Další informace o vytváření dalších aplikací s konfigurací aplikace Azure najdete v následujícím článku:
 

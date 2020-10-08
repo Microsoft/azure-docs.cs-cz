@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d398cfe063dbbb2bc87a3debf1669afa6a16b43e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891993"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822998"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Power BI výstup z Azure Stream Analytics
 
@@ -24,7 +24,7 @@ Power BI výstup z Stream Analytics v současnosti není k dispozici v oblastech
 
 V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro konfiguraci Power BIho výstupu.
 
-| Název vlastnosti | Description |
+| Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup |Zadejte popisný název, který se použije v dotazech k nasměrování výstupu dotazu do tohoto Power BI výstupu. |
 | Pracovní prostor skupiny |Pokud chcete povolit sdílení dat s jinými Power BI uživateli, můžete vybrat skupiny v rámci účtu Power BI nebo zvolit **pracovní prostor** , pokud ho nechcete zapisovat do skupiny. Aktualizace existující skupiny vyžaduje obnovení Power BI ověřování. |
@@ -43,6 +43,9 @@ Návod ke konfiguraci Power BIho výstupu a řídicího panelu najdete v kurzu [
 Azure Stream Analytics vytvoří datovou sadu Power BI a schéma tabulky pro uživatele, pokud ještě neexistují. Ve všech ostatních případech je tabulka aktualizována o nové hodnoty. V současné době může existovat pouze jedna tabulka v rámci datové sady. 
 
 Power BI používá zásady uchovávání dat first in, First-out (FIFO). Data se budou shromažďovat v tabulce, dokud nebude mít 200 000 řádků.
+
+> [!NOTE]
+> Nedoporučujeme používat více výstupů k zápisu do stejné datové sady, protože může způsobit několik problémů. Každý výstup se pokusí vytvořit Power BI datovou sadu nezávisle, což může mít za následek více datových sad se stejným názvem. Kromě toho, pokud výstupy nemají konzistentní schémata, datová sada změní schéma u každého zápisu, což vede k příliš velkému počtu žádostí o změnu schématu. I když se tyto problémy vyhnete, Vícenásobné výstupy budou méně výkonné než jeden sloučený výstup.
 
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>Převod datového typu z Stream Analytics na Power BI
 
