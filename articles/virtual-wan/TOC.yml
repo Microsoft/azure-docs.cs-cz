@@ -134,14 +134,12 @@
       items:
         - name: Instalace Azure Firewallu do centra
           href: howto-firewall.md
+        - name: Konfigurace možností připojení Private Linku
+          href: howto-private-link.md
     - name: Monitorování
       items:
         - name: Protokoly a metriky
           href: logs-metrics.md
-    - name: Private Link
-      items:
-        - name: Konfigurace možností připojení Private Linku
-          href: howto-private-link.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell
