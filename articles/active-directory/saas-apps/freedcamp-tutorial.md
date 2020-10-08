@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 50b5e21c8dc441187b3d78310db55b84aa1cd158
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7f8bc88cf34c3bbea168bd95d2d03bdc3373ad07
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551026"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817036"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Kurz: integrace Freedcamp s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Freedcamp s Azure Active Directory (Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -108,11 +108,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. V pravém horním rohu stránky klikněte na **profil** a potom přejděte na **můj účet**.
 
-    ![Konfigurace Freedcamp](./media/freedcamp-tutorial/config01.png)
+    ![Snímek obrazovky zobrazující, že je vybraná možnost profil a můj účet](./media/freedcamp-tutorial/config01.png)
 
 5. Na levé straně řádku nabídek klikněte na **jednotné přihlašování** a na stránce **připojení SSO** proveďte následující kroky:
 
-    ![Konfigurace Freedcamp](./media/freedcamp-tutorial/config02.png)
+    ![Snímek obrazovky, který zobrazuje "S S" v panelu nabídek na levé straně a na stránce "vaše připojení", se zadanými hodnotami a vybraným tlačítkem Odeslat.](./media/freedcamp-tutorial/config02.png)
 
     a. Do textového pole **název** zadejte název.
 
@@ -134,7 +134,7 @@ V této části vytvoříte testovacího uživatele v Azure Portal s názvem Bri
    1. Do pole **Název** zadejte `Britta Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -162,13 +162,13 @@ Pokud chcete povolit uživatele Azure AD, přihlaste se k Freedcamp, musí být 
 
 1. V jiném okně webového prohlížeče se přihlaste k Freedcamp jako správce zabezpečení.
 
-2. V horním toright rohu stránky klikněte na **profil** a potom přejděte ke **správě systému**.
+2. V pravém horním rohu stránky klikněte na **profil** a potom přejděte ke **správě systému**.
 
     ![Konfigurace Freedcamp](./media/freedcamp-tutorial/config03.png)
 
 3. Na pravé straně stránky Správa systému proveďte následující kroky:
 
-    ![Konfigurace Freedcamp](./media/freedcamp-tutorial/config04.png)
+    ![Snímek obrazovky, který zobrazuje vybrané tlačítko Přidat nebo pozvat uživatele, zvýrazněné pole E-mail a vybrané tlačítko Přidat uživatele.](./media/freedcamp-tutorial/config04.png)
 
     a. Klikněte na **Přidat nebo pozvat uživatele**.
 

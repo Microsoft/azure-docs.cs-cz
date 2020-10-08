@@ -3,12 +3,12 @@ title: Nasazení aplikace .NET v kontejneru do Azure Service Fabric
 description: Podívejte se, jak kontejnerizovat existující aplikaci .NET pomocí sady Visual Studio a jak místně ladit kontejnery v Service Fabricu. Kontejnerizovaná aplikace se odešle do registru kontejneru Azure a nasadí se do clusteru Service Fabricu. Po nasazení do Azure používá aplikace k uchovávání dat databázi SQL Azure.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 7c77b2e5b60aef246b513cb852f6231ba7531056
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: b841591bb200bca7edbde24744c5b47302816ea0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743790"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817643"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Kurz: Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabricu
 
@@ -109,7 +109,7 @@ Write-Host "Server name is $servername"
 
 ## <a name="update-the-web-config"></a>Aktualizace webové konfigurace
 
-Vraťte se do projektu **FabrikamFiber.Web** a aktualizujte připojovací řetězec v souboru **web.config** tak, aby odkazoval na SQL Server v kontejneru.  Aktualizujte část připojovacího řetězce *serveru* tak, aby byl název serveru vytvořený předchozím skriptem. Měl by být podobný jako "fab-fiber-751718376.database.windows.net".
+Vraťte se do projektu **FabrikamFiber.Web** a aktualizujte připojovací řetězec v souboru **web.config** tak, aby odkazoval na SQL Server v kontejneru.  Aktualizujte část připojovacího řetězce *serveru* tak, aby byl název serveru vytvořený předchozím skriptem. Měl by být podobný jako "fab-fiber-751718376.database.windows.net". V následujícím kódu XML potřebujete aktualizovat pouze `connectionString` atribut; `providerName` `name` atributy a není nutné měnit.
 
 ```xml
 <add name="FabrikamFiber-Express" connectionString="Server=<server name>,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
@@ -144,7 +144,7 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 
 Aplikace Service Fabric se spouští v clusteru, což je síťově propojená sada virtuálních nebo fyzických počítačů.  Než budete moct nasadit aplikaci do Azure, vytvořte v Azure Cluster Service Fabric.
 
-Máte následující možnosti:
+Můžete:
 
 * Vytvořit testovací cluster v sadě Visual Studio. Tato možnost umožňuje vytvořit zabezpečený cluster přímo ze sady Visual Studio s použitím upřednostňované konfigurace.
 * [Vytvořit zabezpečený cluster ze šablony](service-fabric-tutorial-create-vnet-and-windows-cluster.md)

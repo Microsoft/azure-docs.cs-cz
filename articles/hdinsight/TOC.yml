@@ -8,6 +8,7 @@
         - name: Co je Azure HDInsight?
           href: ./hdinsight-overview.md
     - name: Kurzy
+      expanded: true
       items:
         - name: Vytváření clusterů HDInsight
           href: ./hdinsight-hadoop-provision-linux-clusters.md

@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 18463c4350895401c9bf73dc249ce93218a44f7c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 68ff753a0c6e21fac512792670a24bede8980e99
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264639"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816465"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurace aplikace App Service v Azure Portal
 
@@ -83,6 +83,32 @@ Nastavení aplikace má následující formátování JSON:
   ...
 ]
 ```
+
+### <a name="automate-app-settings-with-the-azure-cli"></a>Automatizace nastavení aplikací pomocí Azure CLI
+
+Pomocí Azure CLI můžete vytvořit a spravovat nastavení z příkazového řádku.
+
+- Přiřazení hodnoty k nastavení pomocí [AZ WebApp config App set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set):
+
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings <setting-name>="<value>"
+    ```
+        
+    Nahraďte `<setting-name>` názvem nastavení a hodnotou, která se `<value>` má přiřadit. Tento příkaz vytvoří nastavení, pokud ještě neexistuje.
+    
+- Zobrazit všechna nastavení a jejich hodnoty pomocí [AZ WebApp config appSettings list](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_list):
+    
+    ```azurecli-interactive
+    az webapp config appsettings list --name <app-name> --resource-group <resource-group-name>
+    ```
+    
+- Odeberte jedno nebo víc nastavení pomocí [AZ WebApp config App Settings Delete](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_delete):
+
+    ```azurecli-interactive
+    az webapp config appsettings delete --name <app-name> --resource-group <resource-group-name> --setting-names {<names>}
+    ```
+    
+    Nahraďte `<names>` seznamem názvů nastavení oddělených mezerami.
 
 ## <a name="configure-connection-strings"></a>Konfigurace připojovacích řetězců
 
@@ -164,7 +190,12 @@ V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci
 
 Tady můžete nakonfigurovat některá společná nastavení aplikace. Některá nastavení vyžadují [horizontální navýšení kapacity až na vyšší cenové úrovně](manage-scale-up.md).
 
-- **Nastavení zásobníku**: softwarový zásobník pro spuštění aplikace, včetně verze jazyka a sady SDK. Pro aplikace pro Linux a vlastní kontejnerové aplikace můžete také nastavit volitelný spouštěcí příkaz nebo soubor.
+- **Nastavení zásobníku**: softwarový zásobník pro spuštění aplikace, včetně verze jazyka a sady SDK.
+
+    Pro aplikace pro Linux a vlastní kontejnerové aplikace můžete vybrat verzi jazykového modulu runtime a nastavit volitelný **spouštěcí příkaz** nebo soubor spouštěcího příkazu.
+
+    ![Obecná nastavení pro kontejnery Linux](./media/configure-common/open-general-linux.png)
+
 - **Nastavení platformy**: umožňuje konfigurovat nastavení pro hostující platformu, včetně:
     - **Bitová verze**: 32-bit nebo 64-bit.
     - **Protokol WebSocket**: pro [ASP.NET signál] nebo [Socket.IO](https://socket.io/), například.

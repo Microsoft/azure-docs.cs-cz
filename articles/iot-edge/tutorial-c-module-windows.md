@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: edfe0a383ab68b640b5bc7e7e0a1fdd038d0fa38
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f6ed981ab0b67aacaca5300dc3f77894805e3d1b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318326"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816380"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: vývoj modulu C IoT Edge pro zařízení s Windows
 
@@ -43,7 +43,7 @@ Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modu
 | -- | ------------------ | ------------------ |
 | **Systém Windows AMD64** |  | ![Vývoj modulů C pro WinAMD64 v aplikaci Visual Studio](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz pro nastavení vývojového prostředí pro vývoj kontejnerů Windows: [vývoj IoT Edgech modulů pro zařízení s Windows](tutorial-develop-for-windows.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
@@ -346,9 +346,10 @@ Váš vývojový počítač má teď přístup k vašemu registru kontejnerů a 
 
 K nasazení projektu modulu do zařízení IoT Edge použijte Visual Studio Cloud Explorer a rozšíření Azure IoT Edge Tools. Už máte připravený manifest nasazení pro váš scénář, **deployment.windows-amd64.js** v souboru ve složce config. Teď stačí jen vybrat zařízení, na které se nasazení provede.
 
+
 Ujistěte se, že je zařízení IoT Edge spuštěné.
 
-1. V Průzkumníkovi cloudu sady Visual Studio rozbalte prostředky, abyste viděli seznam zařízení IoT.
+1. V Průzkumníku cloudu sady Visual Studio rozbalte prostředky, abyste viděli seznam zařízení IoT.
 
 2. Klikněte pravým tlačítkem myši na název zařízení IoT Edge, pro které chcete nasazení přijmout.
 

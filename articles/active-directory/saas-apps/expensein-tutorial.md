@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 7d0b0a6c935182737a7f207b7c7831fefcd491ea
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ccdfddd3ea76eddea2ab672fe07a092c9b1f1b62
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555293"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817062"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Kurz: integrace ExpenseIn s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat ExpenseIn s Azure Active Directory (Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -100,7 +100,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -135,11 +135,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V horní části stránky klikněte na **správce** , přejděte do **jednotného přihlašování** a klikněte na **Přidat poskytovatele**.
 
-     ![Konfigurace ExpenseIn](./media/expenseIn-tutorial/config01.png)
+     ![Snímek obrazovky, na které se zobrazuje karta správce a stránka pro jednotné přihlašování a poskytovatele a je vybraná možnost Přidat poskytovatele](./media/expenseIn-tutorial/config01.png)
 
 1. V místní nabídce **nového zprostředkovatele identity** proveďte následující kroky:
 
-    ![Konfigurace ExpenseIn](./media/expenseIn-tutorial/config02.png)
+    ![Snímek obrazovky zobrazující automaticky otevírané okno Upravit zprostředkovatele identity se zadanými hodnotami](./media/expenseIn-tutorial/config02.png)
 
     a. Do textového pole **název poskytovatele** zadejte název. například Azure.
 
@@ -151,7 +151,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     e. V programu Poznámkový blok otevřete certifikát (Base64), zkopírujte jeho obsah a vložte ho do textového pole **certifikát** .
 
-    f. Klikněte na možnost **Vytvořit**.
+    f. Klikněte na **Create** (Vytvořit).
 
 ### <a name="create-expensein-test-user"></a>Vytvořit testovacího uživatele ExpenseIn
 
@@ -163,7 +163,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k ExpenseIn, musí se zřídit v
 
 2. V horní části stránky klikněte na **správce** a pak přejděte na **Uživatelé** a klikněte na **Nový uživatel**.
 
-     ![Konfigurace ExpenseIn](./media/expenseIn-tutorial/config03.png)
+     ![Snímek obrazovky, na které se zobrazuje karta správce a stránka spravovat uživatele s vybraným novým uživatelem](./media/expenseIn-tutorial/config03.png)
 
 3. V automaticky otevíraném okně **Podrobnosti** proveďte následující kroky:
 
@@ -175,13 +175,13 @@ Aby se uživatelé Azure AD mohli přihlašovat k ExpenseIn, musí se zřídit v
 
     c. Do textového pole **e-mailu** zadejte e-maily uživatele jako `B.Simon@contoso.com` .
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Create** (Vytvořit).
 
 ## <a name="test-sso"></a>Test SSO
 
 Když na přístupovém panelu vyberete dlaždici ExpenseIn, měli byste se automaticky přihlásit k ExpenseIn, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

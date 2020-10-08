@@ -4,16 +4,16 @@ description: Monitorování aplikací .NET Core/. NET Framework bez protokolu HT
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 12be39e36c003531b815e137cbd1d360ca7f0fd6
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 643edf81d6a98c8f423267b657feb9dfb6da1070
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760474"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816396"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights pro aplikace služby Worker (aplikace jiného typu než HTTP)
 
-Application Insights uvolňuje novou sadu SDK nazvanou `Microsoft.ApplicationInsights.WorkerService` , která je nejvhodnější pro úlohy jiné než HTTP, jako je zasílání zpráv, úlohy na pozadí, konzolové aplikace atd. Tyto typy aplikací nemají pojem příchozího požadavku HTTP, jako je tradiční webová aplikace ASP.NET/ASP.NET Core, a proto použití balíčků Application Insights pro [ASP.NET](asp-net.md) nebo aplikace [ASP.NET Core](asp-net-core.md) není podporované.
+[Sada Application Insights SDK for Worker Service](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) je nová sada SDK, která je nejvhodnější pro úlohy jiné než HTTP, jako je zasílání zpráv, úlohy na pozadí, konzolové aplikace atd. Tyto typy aplikací nemají pojem příchozího požadavku HTTP, jako je tradiční webová aplikace ASP.NET/ASP.NET Core, a proto použití balíčků Application Insights pro [ASP.NET](asp-net.md) nebo aplikace [ASP.NET Core](asp-net-core.md) není podporované.
 
 Nová sada SDK nedělá žádné kolekce telemetrie sám o sobě. Místo toho přináší další známé Application Insights automatické shromažďování, jako je [DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/), [PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/), [ApplicationInsightsLoggingProvider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) atd. Tato sada SDK zpřístupňuje metody rozšíření `IServiceCollection` pro povolení a konfiguraci kolekce telemetrie.
 
@@ -138,7 +138,7 @@ Obvykle `APPINSIGHTS_INSTRUMENTATIONKEY` Určuje klíč instrumentace pro aplika
 
 Úplný příklad se [tady](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) sdílí.
 
-1. Nainstalujte soubor Microsoft. ApplicationInsights. WorkerService ( https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) balíček do aplikace.
+1. Nainstalujte do aplikace balíček [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) .
 2. Přidejte `services.AddApplicationInsightsTelemetryWorkerService();` do `ConfigureServices()` metody, jako v tomto příkladu:
 
 ```csharp
@@ -225,7 +225,7 @@ Jak je uvedeno na začátku tohoto článku, můžete nový balíček použít k
 
 Úplný příklad se [tady](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) sdílí.
 
-1. Nainstalujte soubor Microsoft. ApplicationInsights. WorkerService ( https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) balíček do aplikace.
+1. Nainstalujte do aplikace balíček [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) .
 
 2. Upravte Program.cs podle níže uvedeného příkladu.
 
@@ -293,7 +293,7 @@ Tato Konzolová aplikace také používá stejnou výchozí hodnotu `TelemetryCo
 
 ## <a name="run-your-application"></a>Spusťte aplikaci
 
-Spusťte aplikaci. Ukázkové pracovní procesy ze všech výše uvedených výše provádí volání http každou sekundu do bing.com a generuje také několik protokolů pomocí ILogger. Tyto řádky jsou zabaleny uvnitř `StartOperation` volání `TelemetryClient` , které se používá k vytvoření operace (v tomto příkladu `RequestTelemetry` s názvem "operace"). Application Insights shromáždí tyto protokoly ILogger (ve výchozím nastavení je to upozornění nebo vyšší) a závislosti a bude koreluje `RequestTelemetry` s relací nadřazenosti a podřízenosti. Korelace taky funguje na hranici mezi procesy a sítě. Například pokud bylo volání provedeno na jinou monitorovanou součást, bude koreluje také s tímto nadřazeným prvkem.
+Spusťte aplikaci. Ukázkové pracovní procesy ze všech výše uvedených provedly volání http každou sekundu do bing.com a také vygenerují několik protokolů pomocí `ILogger` . Tyto řádky jsou zabaleny uvnitř `StartOperation` volání `TelemetryClient` , které se používá k vytvoření operace (v tomto příkladu `RequestTelemetry` s názvem "operace"). Application Insights shromáždí tyto protokoly ILogger (ve výchozím nastavení je to upozornění nebo vyšší) a závislosti a bude koreluje `RequestTelemetry` s relací nadřazenosti a podřízenosti. Korelace taky funguje na hranici mezi procesy a sítě. Například pokud bylo volání provedeno na jinou monitorovanou součást, bude koreluje také s tímto nadřazeným prvkem.
 
 Tato vlastní operace `RequestTelemetry` se dá představit jako ekvivalent příchozího webového požadavku v typické webové aplikaci. I když není nutné použít operaci, je nejlepší pro [Application Insights relační datový model](./correlation.md) `RequestTelemetry` , který funguje jako nadřazená operace, a každá telemetrie vygenerovaná v rámci iterace pracovního procesu se považuje za logickou, která patří do stejné operace. Tento přístup také zajišťuje, že všechna vygenerovaná telemetrie (automatická a ruční) bude mít stejnou `operation_id` . Když je vzorkování založené na `operation_id` , algoritmus vzorkování buď udržuje, nebo vyřazuje veškerou telemetrii z jedné iterace.
 
@@ -505,7 +505,7 @@ Připojování k integrovanému vývojovému prostředí (IDE) sady Visual Studi
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>Můžu Application Insights monitorování povolit pomocí nástrojů jako Monitorování stavu?
 
-Ne. [Monitorování stavu](./monitor-performance-live-website-now.md) a [monitorování stavu v2](./status-monitor-v2-overview.md) aktuálně podporují pouze ASP.NET 4. x.
+No. [Monitorování stavu](./monitor-performance-live-website-now.md) a [monitorování stavu v2](./status-monitor-v2-overview.md) aktuálně podporují pouze ASP.NET 4. x.
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Pokud Spouštím aplikaci v systému Linux, jsou podporovány všechny funkce?
 

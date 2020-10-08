@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4387bf8067b399165b32ab1cdbb9e6ce55ab5f59
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88815857"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816337"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Použití Azure Portal k omezení přístupu pro import/export u spravovaných disků s privátními odkazy
 
@@ -30,12 +30,6 @@ Vlastnost NetworkAccessPolicy můžete nastavit tak, aby `DenyAll` nedocházelo 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
 [!INCLUDE [virtual-machines-disks-private-links-regions](../../includes/virtual-machines-disks-private-links-regions.md)]
-
-## <a name="prerequisites"></a>Předpoklady
-
-Pokud chcete používat privátní koncové body pro export a import spravovaných disků, musíte mít ve svém předplatném povolenou funkci. Pokud chcete mdprivatelinks@microsoft funkci povolit pro vaše předplatná, odešlete e-mail na adresu. com s ID předplatného.
-
-Budete si muset poznamenat virtuální síť virtuálního počítače, ke kterému jsou připojené vaše disky. Virtuální síť je nutná při konfiguraci privátního koncového bodu.
 
 ## <a name="create-a-disk-access-resource"></a>Vytvoření prostředku pro přístup k disku
 

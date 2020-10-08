@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
-ms.openlocfilehash: 3b6162552e43c9f475bef2ca3097da22ae198011
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: db23d3b5c532a1539936b51222345c98679c554c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713685"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817539"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>Správa a hledání dat objektů BLOB v Azure pomocí indexu objektů BLOB (Preview)
 
@@ -72,8 +72,11 @@ Následující omezení se vztahují na značky indexu objektu BLOB:
 - V klíčích značek a hodnotách se rozlišují malá a velká písmena.
 - Klíče a hodnoty značek podporují pouze řetězcové typy dat; všechna čísla, datum, čas nebo speciální znaky budou uloženy jako řetězce.
 - Klíče a hodnoty značek musí splňovat následující pravidla pojmenování:
-  - Alfanumerické znaky: a – z, A-Z, 0-9
-  - Speciální znaky: mezera, znaménko, mínus, tečka, dvojtečka, rovná se, podtržítko, lomítko
+  - Alfanumerické znaky:
+    - **a** až **z** (malá písmena)
+    - **A** až **Z** (velká písmena)
+    - **0** až **9** (čísla)
+  - Platné speciální znaky: mezera, znaménko, mínus, tečka, dvojtečka, rovná se, podtržítko, lomítko ( ` +-.:=_/` )
 
 ## <a name="getting-and-listing-blob-index-tags"></a>Získání a výpis značek indexu objektů BLOB
 

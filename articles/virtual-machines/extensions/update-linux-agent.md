@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: 0b13dca7f4a33a7fb9ea55a1505c26a97160d0d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 882ed23fe9f7e759bef7464d512685163a26b288
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502941"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816173"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Postup aktualizace agenta Azure Linux na virtuálním počítači
 
@@ -33,34 +33,30 @@ Vždy byste měli nejprve vyhledat balíček v úložišti distribuce Linux. Je 
 > [!NOTE]
 > Další informace najdete v tématu [schválené distribuce Linux v Azure](../linux/endorsed-distros.md) .
 
-## <a name="minimum-virtual-machine-agent-support-in-azure"></a>Minimální podpora agenta virtuálních počítačů v Azure
 Než budete pokračovat, ověřte [podporu minimální verze pro agenty virtuálních počítačů v Azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) .
 
-## <a name="updating-the-azure-linux-agent"></a>Aktualizuje se agent Azure Linux.
 
 ## <a name="ubuntu"></a>Ubuntu
 
-#### <a name="check-your-current-package-version"></a>Ověřit aktuální verzi balíčku
+Ověřit aktuální verzi balíčku
 
 ```bash
 apt list --installed | grep walinuxagent
 ```
 
-#### <a name="update-package-cache"></a>Aktualizovat mezipaměť balíčku
+Aktualizovat mezipaměť balíčku
 
 ```bash
 sudo apt-get -qq update
 ```
 
-#### <a name="install-the-latest-package-version"></a>Nainstalovat nejnovější verzi balíčku
+Nainstalovat nejnovější verzi balíčku
 
 ```bash
 sudo apt-get install walinuxagent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Zajistěte, aby byla povolená Automatická aktualizace.
-
-Nejprve zkontrolujte, zda je povolena:
+Zajistěte, aby byla povolena automatická aktualizace. Nejprve zkontrolujte, zda je povolena:
 
 ```bash
 cat /etc/waagent.conf
@@ -79,15 +75,13 @@ Chcete-li povolit běh:
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Restartujte službu waagent.
-
-#### <a name="restart-agent-for-1404"></a>Restartovat agenta pro 14,04
+Restartujte službu waagengt pro 14,04.
 
 ```bash
 initctl restart walinuxagent
 ```
 
-#### <a name="restart-agent-for-1604--1704"></a>Restartovat agenta pro 16,04/17,04
+Restartujte službu waagent pro 16,04/17,04.
 
 ```bash
 systemctl restart walinuxagent.service
@@ -97,25 +91,25 @@ systemctl restart walinuxagent.service
 
 ### <a name="rhelcentos-6"></a>RHEL/CentOS 6
 
-#### <a name="check-your-current-package-version"></a>Ověřit aktuální verzi balíčku
+Ověřit aktuální verzi balíčku
 
 ```bash
 sudo yum list WALinuxAgent
 ```
 
-#### <a name="check-available-updates"></a>Vyhledat dostupné aktualizace
+Vyhledat dostupné aktualizace
 
 ```bash
 sudo yum check-update WALinuxAgent
 ```
 
-#### <a name="install-the-latest-package-version"></a>Nainstalovat nejnovější verzi balíčku
+Nainstalovat nejnovější verzi balíčku
 
 ```bash
 sudo yum install WALinuxAgent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Zajistěte, aby byla povolená Automatická aktualizace. 
+Zajistěte, aby byla povolená Automatická aktualizace. 
 
 Nejprve zkontrolujte, zda je povolena:
 
@@ -136,35 +130,33 @@ Chcete-li povolit běh:
 sudo sed -i 's/\# AutoUpdate.Enabled=y/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Restartujte službu waagent.
+Restartujte službu waagent.
 
 ```
 sudo service waagent restart
 ```
 
-### <a name="rhelcentos-7"></a>RHEL/CentOS 7
+## <a name="rhelcentos-7"></a>RHEL/CentOS 7
 
-#### <a name="check-your-current-package-version"></a>Ověřit aktuální verzi balíčku
+Ověřit aktuální verzi balíčku
 
 ```bash
 sudo yum list WALinuxAgent
 ```
 
-#### <a name="check-available-updates"></a>Vyhledat dostupné aktualizace
+Vyhledat dostupné aktualizace
 
 ```bash
 sudo yum check-update WALinuxAgent
 ```
 
-#### <a name="install-the-latest-package-version"></a>Nainstalovat nejnovější verzi balíčku
+Nainstalovat nejnovější verzi balíčku
 
 ```bash
 sudo yum install WALinuxAgent  
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Zajistěte, aby byla povolená Automatická aktualizace. 
-
-Nejprve zkontrolujte, zda je povolena:
+Zajistěte, aby byla povolena automatická aktualizace. Nejprve zkontrolujte, zda je povolena:
 
 ```bash
 cat /etc/waagent.conf
@@ -183,7 +175,7 @@ Chcete-li povolit běh:
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Restartujte službu waagent.
+Restartujte službu waagent.
 
 ```bash
 sudo systemctl restart waagent.service
@@ -193,23 +185,21 @@ sudo systemctl restart waagent.service
 
 ### <a name="suse-sles-11-sp4"></a>SUSE SLES 11 SP4
 
-#### <a name="check-your-current-package-version"></a>Ověřit aktuální verzi balíčku
+Ověřit aktuální verzi balíčku
 
 ```bash
 zypper info python-azure-agent
 ```
 
-#### <a name="check-available-updates"></a>Vyhledat dostupné aktualizace
+Ověřte dostupné aktualizace. Výše uvedený výstup vám ukáže, jestli je balíček aktuální.
 
-Výše uvedený výstup vám ukáže, jestli je balíček aktuální.
-
-#### <a name="install-the-latest-package-version"></a>Nainstalovat nejnovější verzi balíčku
+Nainstalovat nejnovější verzi balíčku
 
 ```bash
 sudo zypper install python-azure-agent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Zajistěte, aby byla povolená Automatická aktualizace. 
+Zajistěte, aby byla povolená Automatická aktualizace. 
 
 Nejprve zkontrolujte, zda je povolena:
 
@@ -230,7 +220,7 @@ Chcete-li povolit běh:
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Restartujte službu waagent.
+Restartujte službu waagent.
 
 ```bash
 sudo /etc/init.d/waagent restart
@@ -238,23 +228,23 @@ sudo /etc/init.d/waagent restart
 
 ### <a name="suse-sles-12-sp2"></a>SUSE SLES 12 SP2
 
-#### <a name="check-your-current-package-version"></a>Ověřit aktuální verzi balíčku
+Ověřit aktuální verzi balíčku
 
 ```bash
 zypper info python-azure-agent
 ```
 
-#### <a name="check-available-updates"></a>Vyhledat dostupné aktualizace
+Vyhledat dostupné aktualizace
 
 Ve výstupu z výše uvedeného se zobrazí, jestli je balíček aktuální.
 
-#### <a name="install-the-latest-package-version"></a>Nainstalovat nejnovější verzi balíčku
+Nainstalovat nejnovější verzi balíčku
 
 ```bash
 sudo zypper install python-azure-agent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Zajistěte, aby byla povolená Automatická aktualizace. 
+Zajistěte, aby byla povolená Automatická aktualizace. 
 
 Nejprve zkontrolujte, zda je povolena:
 
@@ -275,7 +265,7 @@ Chcete-li povolit běh:
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>Restartujte službu waagent.
+Restartujte službu waagent.
 
 ```bash
 sudo systemctl restart waagent.service
@@ -285,51 +275,47 @@ sudo systemctl restart waagent.service
 
 ### <a name="debian-7-jesse-debian-7-stretch"></a>Debian 7 "Jesse"/Debian 7 "Stretch"
 
-#### <a name="check-your-current-package-version"></a>Ověřit aktuální verzi balíčku
+Ověřit aktuální verzi balíčku
 
 ```bash
 dpkg -l | grep waagent
 ```
 
-#### <a name="update-package-cache"></a>Aktualizovat mezipaměť balíčku
+Aktualizovat mezipaměť balíčku
 
 ```bash
 sudo apt-get -qq update
 ```
 
-#### <a name="install-the-latest-package-version"></a>Nainstalovat nejnovější verzi balíčku
+Nainstalovat nejnovější verzi balíčku
 
 ```bash
 sudo apt-get install waagent
 ```
 
-#### <a name="enable-agent-auto-update"></a>Povolit automatickou aktualizaci agenta
-Tato verze Debian nemá verzi >= 2.0.16, proto není pro ni k dispozici žádná aktualizace. Výstup z výše uvedeného příkazu vám ukáže, jestli je balíček aktuální.
-
-
+Povolit automatickou aktualizaci agenta: Tato verze Debian nemá verzi >= 2.0.16, proto není pro ni k dispozici automatické aktualizace. Výstup z výše uvedeného příkazu vám ukáže, jestli je balíček aktuální.
 
 ### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8 "Jessie"/Debian 9 "Stretch"
 
-#### <a name="check-your-current-package-version"></a>Ověřit aktuální verzi balíčku
+Ověřit aktuální verzi balíčku
 
 ```bash
 apt list --installed | grep waagent
 ```
 
-#### <a name="update-package-cache"></a>Aktualizovat mezipaměť balíčku
+Aktualizovat mezipaměť balíčku
 
 ```bash
 sudo apt-get -qq update
 ```
 
-#### <a name="install-the-latest-package-version"></a>Nainstalovat nejnovější verzi balíčku
+Nainstalovat nejnovější verzi balíčku
 
 ```bash
 sudo apt-get install waagent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Zajistěte, aby byla povolená Automatická aktualizace.
-Nejprve zkontrolujte, zda je povolena:
+Zajistěte, aby byla nejprve povolena automatická aktualizace, a zkontrolujte, zda je povolena:
 
 ```bash
 cat /etc/waagent.conf
@@ -400,7 +386,7 @@ Nainstalujte wget (ve výchozím nastavení je k dispozici několik distribuce, 
 ### <a name="1-download-the-latest-version"></a>1. Stáhněte si nejnovější verzi.
 Otevřete [verzi agenta Azure Linux](https://github.com/Azure/WALinuxAgent/releases) na webu GitHub na webové stránce a vyhledejte nejnovější číslo verze. (Svou aktuální verzi můžete vyhledat zadáním `waagent --version` .)
 
-#### <a name="for-version-22x-or-later-type"></a>Pro verzi 2.2. x nebo novější zadejte:
+Pro verzi 2.2. x nebo novější zadejte:
 ```bash
 wget https://github.com/Azure/WALinuxAgent/archive/v2.2.x.zip
 unzip v2.2.x.zip
@@ -417,16 +403,13 @@ cd WALinuxAgent-2.2.14
 
 ### <a name="2-install-the-azure-linux-agent"></a>2. Nainstalujte agenta Azure Linux.
 
-#### <a name="for-version-22x-use"></a>Pro verzi 2.2. x použijte:
-Možná budete muset nainstalovat balíček `setuptools` nejdřív – viz [tady](https://pypi.python.org/pypi/setuptools). Potom následujícím příkazem:
+Pro verzi 2.2. x použijte: možná budete muset nainstalovat balíček `setuptools` nejdřív – viz [tady](https://pypi.python.org/pypi/setuptools). Potom následujícím příkazem:
 
 ```bash
 sudo python setup.py install
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Zajistěte, aby byla povolená Automatická aktualizace.
-
-Nejprve zkontrolujte, zda je povolena:
+Zajistěte, aby byla povolena automatická aktualizace. Nejprve zkontrolujte, zda je povolena:
 
 ```bash
 cat /etc/waagent.conf

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e461bbf8c3a6cd845744fc0e17b5d1f0eb9bef58
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 3b02be8f35ff33f758aebe03c89287c51c9ffef7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010153"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816320"
 ---
 # <a name="set-up-msix-app-attach"></a>Nastavení připojení aplikace MSIX
 
@@ -342,20 +342,25 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 
 ### <a name="destage-powershell-script"></a>Depříprava skriptu PowerShellu
 
-Pro tento skript nahraďte zástupný symbol pro **$PackageName** názvem testovaného balíčku.
+Pro tento skript nahraďte zástupný symbol pro **$PackageName** názvem testovaného balíčku. V produkčním nasazení by to bylo nejlepší spustit ho při vypnutí.
 
 ```powershell
 #MSIX app attach de staging sample
 
+$vhdSrc="<path to vhd>"
+
 #region variables
 $packageName = "<package name>"
-$msixJunction = "C:\temp\AppAttach\"
+$msixJunction = "C:\temp\AppAttach"
 #endregion
 
 #region deregister
 Remove-AppxPackage -AllUsers -Package $packageName
-cd $msixJunction
-rmdir $packageName -Force -Verbose
+Remove-Item "$msixJunction\$packageName" -Recurse -Force -Verbose
+#endregion
+
+#region Detach VHD
+Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
 #endregion
 ```
 
@@ -380,8 +385,8 @@ Tady je postup nastavení licencí pro použití v režimu offline:
 
 1. Stáhněte si balíček aplikace, licence a požadovaná rozhraní z Microsoft Store pro firmy. Potřebujete jak kódované, tak nekódované licenční soubory. Podrobné pokyny ke stažení najdete [tady](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app).
 2. Aktualizujte ve skriptu následující proměnné pro krok 3:
-      1. `$contentID`je hodnota ID obsahu z nekódovaného souboru licence (. XML). Soubor s licencí můžete otevřít v textovém editoru podle vašeho výběru.
-      2. `$licenseBlob`je celý řetězec pro objekt BLOB licence v souboru kódované licence (. bin). Kódovaný soubor s licencí můžete otevřít v textovém editoru podle vašeho výběru.
+      1. `$contentID` je hodnota ID obsahu z nekódovaného souboru licence (. XML). Soubor s licencí můžete otevřít v textovém editoru podle vašeho výběru.
+      2. `$licenseBlob` je celý řetězec pro objekt BLOB licence v souboru kódované licence (. bin). Kódovaný soubor s licencí můžete otevřít v textovém editoru podle vašeho výběru.
 3. Spusťte následující skript z příkazového řádku PowerShellu pro správu. Vhodným místem pro instalaci licence je na konci [přípravného skriptu](#stage-powershell-script) , který se taky musí spustit z příkazového řádku správce.
 
 ```powershell

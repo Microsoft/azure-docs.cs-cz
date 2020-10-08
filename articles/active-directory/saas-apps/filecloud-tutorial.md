@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 155675d6d0f6026c528be66f9a67a21fe65d00ba
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f41312521202f406c3826880f345e0bbe7600bd3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555144"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817212"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>Kurz: Azure Active Directory integrace s cloudem
 
@@ -30,7 +30,7 @@ Integrace cloudu s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD pomocí cloudu potřebujete následující položky:
 
@@ -130,19 +130,19 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí cloudu, 
 
 2. V levém navigačním podokně klikněte na **Nastavení**. 
    
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/filecloud-tutorial/tutorial_filecloud_000.png)
+    ![Snímek obrazovky, který zobrazuje zvýrazněné nastavení v levém navigačním podokně](./media/filecloud-tutorial/tutorial_filecloud_000.png)
 
 3. V části Nastavení klikněte na kartu **jednotné přihlašování** . 
    
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/filecloud-tutorial/tutorial_filecloud_001.png)
+    ![Snímek obrazovky, který zobrazuje oddíl Settings s vybranou kartou S S O.](./media/filecloud-tutorial/tutorial_filecloud_001.png)
 
 4. Vyberte **SAML** jako **výchozí typ jednotného** přihlašování na panelu **nastavení jednotného přihlašování (SSO)** .
    
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/filecloud-tutorial/tutorial_filecloud_002.png)
+    ![Snímek obrazovky, který zobrazuje panel nastavení "jednotné přihlašování" s vybraným s A M L.](./media/filecloud-tutorial/tutorial_filecloud_002.png)
 
 5. Do textového pole **Adresa URL koncového bodu IDP** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal.
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/filecloud-tutorial/tutorial_filecloud_003.png)
+    ![Snímek obrazovky se zvýrazněnou částí "S A M L" se zvýrazněnou možností "I d P end Point U R L".](./media/filecloud-tutorial/tutorial_filecloud_003.png)
 
 6. Otevřete stažený soubor metadat v programu Poznámkový blok, zkopírujte jeho obsah do schránky a vložte ho do textového pole **IDP meta data** na panelu **Nastavení SAML** .
 
@@ -173,7 +173,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -181,7 +181,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Cloud**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Cloud**.
 

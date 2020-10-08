@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 54a81ac36fb0b99f6931b372543dc3e4bca6a12c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 338fe463cec4c44b1ddf019d9ecb435736e46826
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447916"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816816"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage pro virtuální počítače
 
@@ -37,7 +37,7 @@ Azure automanage také automaticky monitoruje při zjištění posunu a oprav. T
 A konečně prostředí je neuvěřitelně jednoduché.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před tím, než se pokusíte povolit službu Azure na virtuálních počítačích, je třeba zvážit několik požadavků.
 
@@ -134,20 +134,20 @@ Pokud to chcete udělat v Azure Portal, přečtěte si stránku s **osvědčený
 
 Než se odsouhlaste s **zakázáním**, důkladně si přečtěte zprávy ve výsledném okně.
 
-```
-Disabling automanagement in a VM results in the following behavior:
+> [!NOTE]
+> Zakázáním funkce automanagement ve virtuálním počítači dojde k následujícímu chování:
+>
+> - Konfigurace virtuálního počítače a služeb, které jsou zaregistrované, aby se nezměnily.
+> - Veškeré poplatky, které tyto služby vznikly, zůstávají fakturovatelné a i nadále budou platit.
+> - Jakékoli chování při autosprávě se okamžitě zastaví.
 
-1.    The configuration of the VM and the services it's onboarded to will not be changed
-2.    Any changes incurred by those services will remain billable and will continue to be incurred
-3.    Any Automanage behaviors will stop immediately
-```
 
 První a první, nebudeme virtuální počítač od žádné ze služeb, které jsme připojili a nakonfigurovali, mimo kartu. Všechny poplatky, které tyto služby vznikly, budou i nadále Fakturovatelné. V případě potřeby budete potřebovat mimo panel. Jakékoli chování funkce automanage se okamžitě zastaví. Například už nebudeme monitorovat virtuální počítač pro posun.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se naučili, že automanage pro virtuální počítače poskytuje způsob, jakým můžete eliminovat nutnost znát, připojit a nakonfigurovat osvědčené postupy pro služby Azure. Kromě toho, pokud se počítač, který se připojí k automatické správě, Virtual Machines Odsadí z nastavených konfiguračních profilů, automaticky ho vrátíme zpátky do dodržování předpisů.
+V tomto článku jste se naučili, že automanage pro virtuální počítače poskytuje způsob, jakým můžete eliminovat nutnost znát, připojit a nakonfigurovat osvědčené postupy pro služby Azure. Kromě toho, pokud se počítač, který se připojí k automatické správě virtuálních počítačů, posune od nastavených konfiguračních profilů, automaticky ho vrátíme zpátky do dodržování předpisů.
 
 Zkuste povolit automanage pro virtuální počítače v Azure Portal.
 

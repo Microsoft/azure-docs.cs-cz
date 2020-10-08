@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 28a01bbc54f752ffc1f25b57dcf2eca566aa635a
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: d2b303c22eea9fb46a68bb3c8e36991d47d61554
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718097"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817744"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric požadavky na plánování kapacity clusteru
 
@@ -34,7 +34,7 @@ Každý cluster vyžaduje jeden **primární typ uzlu**, který spouští důle�
 
 **Typy neprimárních uzlů** lze použít k definování aplikačních rolí (například *front-endové* a *back-endové* služby) a k fyzické izolaci služeb v rámci clusteru. Clustery Service Fabric mohou mít nula nebo více typů neprimárních uzlů.
 
-Typ primárního uzlu je nakonfigurován pomocí `isPrimary` atributu v rámci definice typu uzlu v šabloně nasazení Azure Resource Manager. Úplný seznam vlastností typu uzlu naleznete v [objektu NodeTypeDescription](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) . Například použití otevřete libovolný *AzureDeploy.js* v souboru v části [Service Fabric ukázky clusteru](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) a *vyhledejte na stránce* hledání `nodetTypes` objektu.
+Typ primárního uzlu je nakonfigurován pomocí `isPrimary` atributu v rámci definice typu uzlu v šabloně nasazení Azure Resource Manager. Úplný seznam vlastností typu uzlu naleznete v [objektu NodeTypeDescription](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) . Například použití otevřete libovolný *AzureDeploy.js* v souboru v části [Service Fabric ukázky clusteru](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) a *vyhledejte na stránce* hledání `nodeTypes` objektu.
 
 ### <a name="node-type-planning-considerations"></a>Požadavky na plánování typu uzlu
 

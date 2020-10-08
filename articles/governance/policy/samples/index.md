@@ -3,12 +3,12 @@ title: Index ukázek zásad
 description: Index předdefinovaných funkcí pro Azure Policy Značky kategorií, dodržování předpisů, Key Vault, Kubernetes, konfigurace hostů a další.
 ms.date: 07/20/2020
 ms.topic: sample
-ms.openlocfilehash: b4f76c42eb23ce368875dfb91f2f7b9e7ee1bd50
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 9fec7c7b0db554d424f8faee7e4e10e6121f1caa
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89481558"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812518"
 ---
 # <a name="azure-policy-samples"></a>Ukázky Azure Policy
 
@@ -27,7 +27,7 @@ Následují příklady různých vzorů s využitím jazyka a operátorů ve slu
 - [Pole](./pattern-fields.md)
 - [Parametry](./pattern-parameters.md)
 - [Podrobnosti o efektu](./pattern-effect-details.md)
-- [Použití značek](./pattern-effect-details.md)
+- [Použití značek](./pattern-tags.md)
 - [Operátor hodnoty](./pattern-value-operator.md)
 - [Operátor počtu](./pattern-count-operator.md)
 - [Seskupení definic zásad v iniciativě](./pattern-group-with-initiative.md)
