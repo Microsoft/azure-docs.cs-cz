@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: e5b0eb5fc9014a4f8df0f0cc363b5dddb45674af
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 35c6d94ce69acf59ae6cd8b26b0ad75645eb526a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804176"
+ms.locfileid: "91819709"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Přenos předplatného Azure do jiného adresáře Azure AD
 
@@ -24,7 +24,7 @@ Organizace můžou mít několik předplatných Azure. Každé předplatné je p
 Tento článek popisuje základní kroky, pomocí kterých můžete přenést předplatné do jiného adresáře služby Azure AD a znovu vytvořit některé prostředky po přenosu.
 
 > [!NOTE]
-> U předplatných poskytovatelů cloudových služeb Azure není změna adresáře služby Azure AD pro předplatné podporovaná.
+> U předplatných poskytovatelů cloudových řešení Azure se změna adresáře služby Azure AD pro předplatné nepodporuje.
 
 ## <a name="overview"></a>Přehled
 

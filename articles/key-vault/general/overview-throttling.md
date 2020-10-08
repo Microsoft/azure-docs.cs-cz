@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f32a988ec0d75ca8d8eca04e69edd7226bf283b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aa33bb062abf748031b27df46d42e8f13aabfc3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432083"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819966"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Pokyny k omezování služby Azure Key Vault
 
@@ -41,9 +41,9 @@ Pokud zjistíte, že výše uvedené pořád ještě nesplňuje vaše požadavky
 
 | Název trezoru | Oblast trezoru | Typ objektu (tajný klíč, klíč nebo certifikát) | Operace * | Typ klíče | Délka klíče nebo křivka | Klíč HSM?| Je potřeba RPS stabilního stavu. | Požadovaná špička RPS |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Klíč | Znaménko | EC | P-256 | Ne | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | Klíč | Znaménko | EC | P-256 | No | 200 | 1000 |
 
-\*Úplný seznam možných hodnot naleznete v tématu [Azure Key Vault Operations](/rest/api/keyvault/key-operations).
+\* Úplný seznam možných hodnot naleznete v tématu [Azure Key Vault Operations](/rest/api/keyvault/key-operations).
 
 Pokud je další kapacita schválena, pamatujte na to, že v důsledku zvýšení kapacity se zvyšuje následující:
 1. Změny modelu konzistence dat. Jakmile je trezor povolený v seznamu s další kapacitou propustnosti, konzistence dat Key Vault služby garantuje změny (nutné pro splnění vyššího objemu RPS, protože základní Azure Storage služba nemůže zůstat zapnutá).  V kostce:
@@ -75,7 +75,7 @@ SecretClientOptions options = new SecretClientOptions()
             Mode = RetryMode.Exponential
          }
     };
-    var client = new SecretClient(new Uri(https://keyVaultName.vault.azure.net"), new DefaultAzureCredential(),options);
+    var client = new SecretClient(new Uri("https://keyVaultName.vault.azure.net"), new DefaultAzureCredential(),options);
                                  
     //Retrieve Secret
     secret = client.GetSecret(secretName);
@@ -96,7 +96,7 @@ V kódu chyby HTTP 429 začněte omezovat klienta pomocí exponenciálního př�
 
 V tuto chvíli byste neměli získávat kódy odpovědí HTTP 429.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 Hlubší orientaci při omezování Microsoft Cloud najdete v tématu [model omezování](https://docs.microsoft.com/azure/architecture/patterns/throttling).
 

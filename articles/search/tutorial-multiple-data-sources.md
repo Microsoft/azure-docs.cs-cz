@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 10/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d3dd75d246c1f74253a9ce910e50b05402065464
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 06b80b5fe14a7a913d8ad8454c6568b04fe01c2f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998454"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819792"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Kurz: indexování z více zdrojů dat pomocí sady .NET SDK
 
@@ -31,7 +31,7 @@ V tomto kurzu se používá C# a [.NET SDK](/dotnet/api/overview/azure/search). 
 > * Indexovat data hotelu z Azure Cosmos DB
 > * Sloučení dat z hotelových místností z úložiště objektů BLOB
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -61,19 +61,19 @@ Tato ukázka používá dvě malé sady dat, které popisují sedm fiktivních h
 
 1. Vyberte **Průzkumník dat** a pak vyberte **Nová databáze**.
 
-   ![Vytvoření nové databáze](media/tutorial-multiple-data-sources/cosmos-newdb.png "Vytvoření nové databáze")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-newdb.png" alt-text="Vytvoření nové databáze" border="false":::
 
 1. Zadejte název **hotelu-místnosti-DB**. Přijměte výchozí hodnoty pro zbývající nastavení.
 
-   ![Konfigurace databáze](media/tutorial-multiple-data-sources/cosmos-dbname.png "Konfigurace databáze")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="Vytvoření nové databáze" border="false":::
 
 1. Vytvořte nový kontejner. Použijte existující databázi, kterou jste právě vytvořili. Zadejte **hotely** pro název kontejneru a použijte **/HotelId** pro klíč oddílu.
 
-   ![Přidání kontejneru](media/tutorial-multiple-data-sources/cosmos-add-container.png "Přidání kontejneru")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="Vytvoření nové databáze" border="false":::
 
 1. Vyberte **položky** v části **hotely**a pak klikněte na tlačítko **nahrát položku** na panelu příkazů. Přejděte na a potom vyberte soubor **cosmosdb/HotelsDataSubset_CosmosDb.jsve** složce projektu.
 
-   ![Nahrát do kolekce Azure Cosmos DB](media/tutorial-multiple-data-sources/cosmos-upload.png "Nahrát do kolekce Cosmos DB")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="Vytvoření nové databáze" border="false":::
 
 1. Pomocí tlačítka Aktualizovat aktualizujte zobrazení položek v kolekci hotelů. Měli byste vidět sedm nových databázových dokumentů uvedených v seznamu.
 
@@ -83,11 +83,11 @@ Tato ukázka používá dvě malé sady dat, které popisují sedm fiktivních h
 
 1. [Vytvořte kontejner objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md) s názvem **hotelové místnosti** pro uložení ukázkových souborů JSON pro hotelovou místnost. Úroveň veřejného přístupu můžete nastavit na libovolnou z jeho platných hodnot.
 
-   ![Vytvoření kontejneru objektů blob](media/tutorial-multiple-data-sources/blob-add-container.png "Vytvoření kontejneru objektů blob")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="Vytvoření nové databáze" border="false":::
 
 1. Po vytvoření kontejneru ho otevřete a na panelu příkazů vyberte **nahrát** . Přejděte do složky, která obsahuje ukázkové soubory. Vyberte všechny z nich a pak klikněte na **nahrát**.
 
-   ![Nahrání souborů](media/tutorial-multiple-data-sources/blob-upload.png "Nahrání souborů")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="Vytvoření nové databáze" border="false":::
 
 Až se nahrávání dokončí, soubory by se měly zobrazit v seznamu datového kontejneru.
 
@@ -105,7 +105,7 @@ Abyste mohli komunikovat se službou Azure Kognitivní hledání, budete potřeb
 
    Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
-   ![Získání názvu služby a klíčů pro správu a dotazy](media/search-get-started-nodejs/service-name-and-keys.png)
+   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Vytvoření nové databáze" border="false":::
 
 Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
@@ -115,7 +115,7 @@ Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi apl
 
 1. Na kartě **Procházet** vyhledejte a pak nainstalujte **Microsoft. Azure. Search** (verze 9.0.1 nebo novější). K dokončení instalace budete muset kliknout na další dialogová okna.
 
-    ![Přidání knihoven Azure pomocí NuGet](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Vytvoření nové databáze" border="false":::
 
 1. Vyhledejte **Microsoft.Extensions.Configuration.Jsna** balíčku NuGet a nainstalujte ho také.
 
@@ -352,7 +352,7 @@ Po spuštění programu můžete prozkoumat vyplněný index vyhledávání pomo
 
 V Azure Portal otevřete stránku **Přehled** služby Search a v seznamu **indexy** Najděte rejstřík **Hotel-místnosti – vzor** .
 
-  ![Seznam indexů Kognitivní hledání Azure](media/tutorial-multiple-data-sources/index-list.png "Seznam indexů Kognitivní hledání Azure")
+  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="Vytvoření nové databáze" border="false":::
 
 V seznamu klikněte na rejstřík hotelových místností. Pro index se zobrazí rozhraní Průzkumníka služby Search. Zadejte dotaz pro termín, jako je například "luxus". Ve výsledcích by se měl zobrazit alespoň jeden dokument a tento dokument by měl v poli místností zobrazit seznam objektů místností.
 

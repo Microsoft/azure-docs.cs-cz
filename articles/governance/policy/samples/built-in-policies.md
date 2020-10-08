@@ -1,15 +1,15 @@
 ---
 title: Seznam předdefinovaných definic zásad
 description: Vypíše předdefinované definice zásad pro Azure Policy. Kategorie zahrnují značky, dodržování předpisů, Key Vault, Kubernetes, konfiguraci hostů a další.
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: ca8472c1ee4873977bac47a0b54925b892721a0b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7bbc65d2108fdc97585cb268103d5b66c6e04438
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982393"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820507"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy předdefinované definice zásad
 
@@ -133,7 +133,7 @@ Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pom
 
 [!INCLUDE [azure-policy-reference-policies-network](../../../../includes/policy/reference/bycat/policies-network.md)]
 
-## <a name="search"></a>Hledat
+## <a name="search"></a>Search
 
 [!INCLUDE [azure-policy-reference-policies-search](../../../../includes/policy/reference/bycat/policies-search.md)]
 

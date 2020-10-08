@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3f1829127d1eaf65be586ddff3fb2615cae72c5d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: fcdb0a571a9d6b81e25d061c33d8a3a812da189f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116134"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819325"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Ladění jednotného přihlašování k aplikacím v Azure Active Directory založeného na SAML
 
@@ -86,7 +86,7 @@ Pokud není pro chybu přihlášení k dispozici žádné řešení, doporučuje
 
 Je možné, že se úspěšně přihlásíte a pak na stránce aplikace vidíte chybu. K tomu dochází, když Azure AD vystavil do aplikace token, ale aplikace tuto odpověď nepřijme.
 
-K vyřešení této chyby použijte následující postup:
+Pokud chcete chybu vyřešit, postupujte podle těchto kroků nebo se podívejte na toto [krátké video o tom, jak používat Azure AD k řešení potíží s protokolem SAML SSO](https://www.youtube.com/watch?v=poQCJK0WPUk&list=PLLasX02E8BPBm1xNMRdvP6GtA6otQUqp0&index=8):
 
 1. Pokud je aplikace v galerii Azure AD, ověřte, že jste postupovali podle všech kroků pro integraci aplikace se službou Azure AD. Pokyny pro integraci aplikace najdete v [seznamu kurzů pro integraci aplikací SaaS](../saas-apps/tutorial-list.md).
 1. Načtěte odpověď SAML.

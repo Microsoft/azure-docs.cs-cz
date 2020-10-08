@@ -5,24 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/03/2020
-ms.author: alzam
-ms.openlocfilehash: 279c66fa16ac82335a074da60bce35325d4b4499
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/07/2020
+ms.author: cherylmc
+ms.openlocfilehash: 51004005e10416f3138f69f91b93b9cd19ed3944
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439468"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819766"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Ověřování Azure Active Directory: Konfigurace klienta VPN pro připojení protokolu P2S OpenVPN
 
 Tento článek vám pomůže nakonfigurovat klienta VPN pro připojení k virtuální síti pomocí sítě VPN typu Point-to-site a ověřování Azure Active Directory. Než se budete moct připojit a ověřit pomocí Azure AD, musíte nejdřív nakonfigurovat tenanta Azure AD. Další informace najdete v tématu [Konfigurace tenanta Azure AD](openvpn-azure-ad-tenant.md).
 
-> [!NOTE]
-> Ověřování Azure AD se podporuje jenom pro připojení OpenVPN® protokolu.
->
-> Ověřování Azure AD vyžaduje klienta Azure VPN, který je k dispozici jenom pro Windows 10.
->
+[!INCLUDE [Windows 10 and OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
 
 ## <a name="working-with-client-profiles"></a><a name="profile"></a>Práce s profily klienta
 
@@ -156,7 +152,7 @@ Tyto kroky vám pomůžou nakonfigurovat připojení pro automatické připojen�
 
     ![diagnóz](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Návody přidat do klienta VPN přípony DNS?
 
@@ -194,7 +190,7 @@ Můžete upravit stažený soubor XML profilu a přidat ** \<dnsservers> \<dnsse
 ```
 
 > [!NOTE]
-> Klient služby Azure AD OpenVPN využívá položky tabulky zásad překladu názvů DNS (NRPT), což znamená, že servery DNS nebudou uvedené ve výstupu `ipconfig /all` . Pokud chcete potvrdit nastavení používané v rámci služby DNS, podívejte se prosím do rutiny [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) v PowerShellu.
+> Klient služby Azure AD OpenVPN využívá položky tabulky zásad překladu názvů DNS (NRPT), což znamená, že servery DNS nebudou uvedené ve výstupu `ipconfig /all` . Pokud chcete potvrdit nastavení používané v rámci služby DNS, podívejte se prosím do rutiny [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps&preserve-view=true) v PowerShellu.
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Návody přidat vlastní trasy k klientovi VPN?
@@ -235,7 +231,7 @@ Můžete upravit stažený soubor XML profilu a přidat ** \<excluderoutes> \<ro
 
 ### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>Můžu importovat profil z příkazového řádku?
 
-Profil můžete importovat z příkazového řádku tak, že do složky **%userprofile%\appdata\local\packages\microsoft. AzureVpn_8wekyb3d8bbwe \localstate** umístíte stažený soubor **azurevpnconfig.xml** a spustíte následující příkaz:
+Profil můžete importovat z příkazového řádku tak, že do složky **%userprofile%\appdata\local\packages\ Microsoft.AzureVpn_8wekyb3d8bbwe \localstate** umístíte stažený soubor **azurevpnconfig.xml** a spustíte následující příkaz:
 
 ```
 azurevpn -i azurevpnconfig.xml 

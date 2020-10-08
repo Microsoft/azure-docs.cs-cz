@@ -13,26 +13,26 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 00199f81e2dc8ca699fabf312955bf7a8a2b5cbd
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398385"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819899"
 ---
 # <a name="microsoft-global-network"></a>Globální síť Microsoftu
 
-Společnost Microsoft vlastní a provozuje jednu z největších páteřních sítí na světě. Tato globální a složitá architektura, která pokrývá více než 160 000 mil, spojuje naše datová centra a zákazníky. 
+Společnost Microsoft vlastní a provozuje jednu z největších páteřních sítí na světě. Tato globální a složitá architektura, která pokrývá více než 165 000 mil, spojuje naše datová centra a zákazníky. 
  
 Každý den se zákazníci po celém světě připojí a předají bilióny žádosti Microsoft Azure, Bingu, Dynamics 365, Microsoft 365, XBox a mnoha dalším. Bez ohledu na typ zákazníci očekávají rychlou spolehlivost a odezvu od našich služeb. 
  
-[Microsoft Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) je centrální součástí poskytování skvělého cloudového prostředí. Díky propojení našich [Datacenter Microsoftu v](https://azure.microsoft.com/global-infrastructure/) rámci 54 oblastí Azure a rozsáhlé sítě hraničních uzlů, které jsou strategicky umístěné po celém světě, přináší naše globální síť dostupnost, kapacitu a flexibilitu, aby splnila jakékoli požadavky.
+[Microsoft Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) je centrální součástí poskytování skvělého cloudového prostředí. Díky propojení našich [Datacenter Microsoftu v](https://azure.microsoft.com/global-infrastructure/) rámci 61 oblastí Azure a rozsáhlé sítě hraničních uzlů, které jsou strategicky umístěné po celém světě, přináší naše globální síť dostupnost, kapacitu a flexibilitu, aby splnila jakékoli požadavky.
 
 ![Globální síť Microsoftu](./media/microsoft-global-network/microsoft-global-wan.png)
  
 ## <a name="get-the-premium-cloud-network"></a>Získat cloudovou síť úrovně Premium
  
-[Možnost výběru nejlepšího prostředí](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) je snadná, když používáte Microsoft Cloud. Od okamžiku, kdy provoz zákazníka vstoupí do naší globální sítě prostřednictvím našich strategických hraničních uzlů, vaše data se v blízkosti rychlosti světla přenáší optimalizovanými trasami. Tím se zajistí optimální latence pro nejlepší výkon. Tyto hraniční uzly, které jsou propojeny s více než 3500 jedinečnými internetovými partnery (partnery) prostřednictvím tisíců připojení ve více než 165 umístěních, poskytují základ naší strategie vzájemného propojení. 
+[Možnost výběru nejlepšího prostředí](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) je snadná, když používáte Microsoft Cloud. Od okamžiku, kdy provoz zákazníka vstoupí do naší globální sítě prostřednictvím našich strategických hraničních uzlů, vaše data se v blízkosti rychlosti světla přenáší optimalizovanými trasami. Tím se zajistí optimální latence pro nejlepší výkon. Tyto hraniční uzly, které jsou propojeny s více než 4000 jedinečnými internetovými partnery (partnery) prostřednictvím tisíců připojení ve více než 175 umístěních, poskytují základ naší strategie vzájemného propojení. 
  
 Bez ohledu na to, jestli se připojení z Londýna do Brna nebo z Washington DC do Los Angeles, vyznačuje výkon sítě a bude ovlivněný takovými akcemi, jako je latence, kolísání, ztráta paketů a propustnost.  V Microsoftu upřednostňujeme a používáme přímé propojení na rozdíl od přenosu, což znamená, že je přenos dat symetrický a pomáhá udržet směrování, partnerské strany a cesty co nejkratší a nejjednodušší. 
 

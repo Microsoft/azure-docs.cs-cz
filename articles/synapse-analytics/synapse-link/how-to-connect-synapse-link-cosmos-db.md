@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: f453c074126e448eb54d432532b9064b3eb3cb35
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 50717c7e8a7b0f748df98c1896e1b7eb64cd7be3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91287888"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819354"
 ---
 # <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>Připojení ke službě Azure synapse Link (Preview) pro Azure Cosmos DB
 
@@ -36,7 +36,7 @@ Pro spouštění rozsáhlých analýz do Azure Cosmos DB, aniž by to ovlivnilo 
 
 ## <a name="navigate-to-synapse-studio"></a>Přejít na synapse Studio
 
-V pracovním prostoru synapse vyberte **Spustit synapse Studio**. Na domovské stránce synapse Studio vyberte * * data, která vás převezmou na **Průzkumník objektů dat**.
+V pracovním prostoru synapse vyberte **Spustit synapse Studio**. Na domovské stránce synapse studia vyberte **data**, která vás zajímají do **Průzkumník objektů dat**.
 
 ## <a name="connect-an-azure-cosmos-db-database-to-a-synapse-workspace"></a>Připojení databáze Azure Cosmos DB k pracovnímu prostoru synapse
 

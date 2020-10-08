@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 877e90fa3c1c8a595c438fc6745c142e97b5692c
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: cff2af745e9b79f573aba02e0a9baefe4a5e45a3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803275"
+ms.locfileid: "91819270"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurace způsobu vyjadřování souhlasu koncových uživatelů s aplikacemi
 
@@ -75,7 +75,7 @@ Pokud chcete povolit souhlas s uživatelem, vyberte, které zásady souhlasu apl
   ```powershell
   Set-AzureADMSAuthorizationPolicy `
      -Id "authorizationPolicy" `
-     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("{consent-policy-id}")
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.{consent-policy-id}")
   ```
 
 Nahraďte `{consent-policy-id}` ID zásady, kterou chcete použít. Můžete zvolit [vlastní zásadu souhlasu s aplikací](manage-app-consent-policies.md#create-a-custom-app-consent-policy) , kterou jste vytvořili, nebo si můžete vybrat z následujících předdefinovaných zásad:
@@ -90,7 +90,7 @@ Pokud například chcete povolit souhlas uživatele v souladu s předdefinovaný
 ```powershell
 Set-AzureADMSAuthorizationPolicy `
    -Id "authorizationPolicy" `
-   -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-low")
+   -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.microsoft-user-default-low")
 ```
 
 ---

@@ -13,12 +13,12 @@ ms.date: 09/29/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: a9bf992a65914afb8fa800041b57ad9f44ba4fa0
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 8697676abe5af77c8c7795ae4e2ec6480cb99e91
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91595621"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819437"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform (Preview)
 
@@ -90,9 +90,9 @@ Zásada životního cyklu tokenu je typ objektu zásad, který obsahuje pravidla
 | Doba života přístupového tokenu |AccessTokenLifetime<sup>2</sup> |Přístupové tokeny, tokeny ID, tokeny typu Saml2 |1 hodina |10 minut |1 den |
 | Maximální neaktivní čas obnovovacího tokenu |MaxInactiveTime |Aktualizovat tokeny |90 dnů |10 minut |90 dnů |
 | Maximální stáří tokenu obnovení jednoho faktoru |MaxAgeSingleFactor |Aktualizovat tokeny (pro všechny uživatele) |Do-neodvolán |10 minut |Do-odvolání<sup>1</sup> |
-| Maximální stáří tokenu pro Multi-Factor Refresh |MaxAgeMultiFactor |Aktualizovat tokeny (pro všechny uživatele) | 180 dnů |10 minut |Do-odvolání<sup>1</sup> |
+| Maximální stáří tokenu pro Multi-Factor Refresh |MaxAgeMultiFactor |Aktualizovat tokeny (pro všechny uživatele) | 180 dnů |10 minut |180 dnů<sup>1</sup> |
 | Maximální stáří tokenu relace s jedním faktorem |MaxAgeSessionSingleFactor |Tokeny relace (trvalé a netrvalé) |Do-neodvolán |10 minut |Do-odvolání<sup>1</sup> |
-| Maximální stáří tokenu relace Multi-Factor |MaxAgeSessionMultiFactor |Tokeny relace (trvalé a netrvalé) | 180 dnů |10 minut |Do-odvolání<sup>1</sup> |
+| Maximální stáří tokenu relace Multi-Factor |MaxAgeSessionMultiFactor |Tokeny relace (trvalé a netrvalé) | 180 dnů |10 minut | 180 dnů<sup>1</sup> |
 
 * <sup>1</sup>365 dní je maximální explicitní délka, kterou lze pro tyto atributy nastavit.
 * <sup>2</sup> . Chcete-li zajistit, aby webový klient Microsoft Teams funguje, doporučujeme, abyste pro Microsoft Teams AccessTokenLifetime více než 15 minut.

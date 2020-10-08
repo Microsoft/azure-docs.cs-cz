@@ -1,15 +1,15 @@
 ---
 title: Předdefinované definice zásad pro Azure Event Hubs
 description: Seznam Azure Policy integrovaných definic zásad pro Azure Event Hubs. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: c11c4e69399f14f99e7e7644ab4e49f213269561
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: da5d9be9e7684e3f3ab83856f2477824d9239f04
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984211"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819130"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-event-hubs"></a>Azure Policy předdefinované definice pro Azure Event Hubs
 

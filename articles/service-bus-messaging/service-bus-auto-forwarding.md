@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak zřetězit frontu Azure Service Bus ne
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 34b73967813abdcb811221aa4a3a4ac96dce0664
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8f5f93f65871c0b9658a75264ab959dbae7fefe7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333677"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819566"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Zřetězení Service Bus entit pomocí procesu autopřesměrovávání
 
@@ -52,6 +52,8 @@ Při zřetězení jednotlivých témat k získání složeného tématu s mnoha 
 Service Bus účtuje jednu operaci pro každou předanou zprávu. Například odeslání zprávy do tématu s 20 odběry, každé z nich nakonfigurované na automatického přeposílání zpráv do jiné fronty nebo tématu se účtuje jako 21 operací, pokud všechna předplatná na první úrovni obdrží kopii zprávy.
 
 Aby bylo možné vytvořit odběr zřetězený s jinou frontou nebo tématem, musí mít tvůrce předplatného oprávnění **Spravovat** ke zdrojové i cílové entitě. Odesílání zpráv do zdrojového tématu vyžaduje pouze oprávnění **Odeslat** ve zdrojovém tématu.
+
+Nevytvářejte řetěz, který překračuje 4 segmenty směrování. Zprávy, které překračují 4 segmenty směrování, jsou nedoručené.
 
 ## <a name="next-steps"></a>Další kroky
 

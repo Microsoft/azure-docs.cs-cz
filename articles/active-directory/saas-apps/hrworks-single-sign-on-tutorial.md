@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 0c43dfe3ad28417e13196c5ac1e75419906f6eae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1a0fff21c85104498895c9de20de9961a77cffeb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549140"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820486"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s jednotným přihlašováním HRworks
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat jednotné přihlašování HRworks pom
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -100,7 +100,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -156,15 +156,15 @@ Pokud chcete povolit uživatele Azure AD, přihlaste se k HRworks jednotnému p�
 
 1. V nabídce **Administrator**na  >  **Persons**  >  **Persons**  >  levé straně řádku nabídek klikněte na osoby s oprávněními správce**nová osoba** .
 
-     ![Konfigurace jednotného přihlašování](./media/hrworks-single-sign-on-tutorial/configure02.png)
+     ![Snímek obrazovky znázorňuje stránku práce v jazyce H R s vybranými osobami a novými osobami.](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
 1. V automaticky otevíraném okně klikněte na **Další**.
 
-    ![Konfigurace jednotného přihlašování](./media/hrworks-single-sign-on-tutorial/configure03.png)
+    ![Snímek obrazovky zobrazuje seznam zemí, ze kterých si můžete pro osobu vybrat.](./media/hrworks-single-sign-on-tutorial/configure03.png)
 
 1. V místní nabídce **vytvořit novou osobu s právními podmínkami** vyplňte příslušné údaje jako **křestní jméno**, **příjmení** a klikněte na **vytvořit**.
 
-    ![Konfigurace jednotného přihlašování](./media/hrworks-single-sign-on-tutorial/configure04.png)
+    ![Snímek obrazovky s textovými poli, kde můžete zadat jména a příjmení pro osobu.](./media/hrworks-single-sign-on-tutorial/configure04.png)
 
 ## <a name="test-sso"></a>Test SSO
 
@@ -172,7 +172,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici jednotného přihlašování HRworks, měli byste se automaticky přihlásit k HRworks jednotnému přihlašování, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

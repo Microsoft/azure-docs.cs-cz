@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 1d75e0d9f57aee495524e2d35231dd3c78cedea1
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 8dfc1eb35572a6b706deb47335357417bd837825
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708114"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819932"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Postup plánování nabídky SaaS pro komerční tržiště
 
@@ -130,8 +130,8 @@ Když [vytvoříte novou nabídku SaaS](create-new-saas-offer.md) v partnerském
 5. Podmínky použití
 6. Zásady ochrany osobních údajů
 7. Název nabídky
-8. Souhrn
-9. Description
+8. Shrnutí
+9. Popis
 10. Snímky obrazovky a videa
 11. Dokumenty
 
@@ -158,11 +158,11 @@ Abyste mohli snadněji vytvořit nabídku, připravte si některé z těchto pol
     V tomto textovém poli jsou ovládací prvky editoru formátovaného textu, které můžete použít k lepšímu poutavení popisu. K formátování popisu můžete použít také značky HTML. Do tohoto pole můžete zadat až 3 000 znaků textu, včetně kódu HTML. Další tipy najdete v tématu [Vytvoření skvělého popisu aplikace](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
 
 - **Pokyny pro Začínáme**: Pokud se rozhodnete prodávat nabídku prostřednictvím Microsoft (nabídka s podporou transakcí), toto pole je povinné. Tyto pokyny vám pomůžou zákazníkům připojit se k vaší nabídce SaaS. Můžete přidat až 3 000 znaků textu a odkazy na podrobnější online dokumentaci.
-- **Hledaná klíčová slova** (volitelné): Poskytněte až tři klíčová slova pro hledání, která můžou zákazníci použít k vyhledání vaší nabídky na webu Marketplace. Nemusíte zahrnovat **název** a **Popis**nabídky: Tento text je automaticky zahrnutý do hledání.
+- **Hledaná klíčová slova** (volitelné): Poskytněte až tři klíčová slova pro hledání, která můžou zákazníci použít k vyhledání vaší nabídky v online obchodech. Nemusíte zahrnovat **název** a **Popis**nabídky: Tento text je automaticky zahrnutý do hledání.
 - **Odkaz zásady ochrany osobních údajů**: adresa URL zásad ochrany osobních údajů vaší společnosti. Je nutné zadat platné zásady ochrany osobních údajů a zodpovídá za to, že vaše aplikace bude v souladu se zákony a předpisy ochrany osobních údajů.
 - **Kontaktní informace**: musíte určit následující kontakty z vaší organizace:
   - **Kontakt na podporu**: Zadejte jméno, telefon a e-mail pro partnery Microsoftu, kteří se použijí, když vaši zákazníci otevřou lístky. Musíte taky zahrnout adresu URL vašeho webu podpory.
-  - **Technický kontakt**: Zadejte jméno, telefon a e-mailovou adresu Microsoftu pro použití přímo v případě problémů s vaší nabídkou. Tyto kontaktní údaje nejsou uvedené na webu Marketplace.
+  - **Technický kontakt**: Zadejte jméno, telefon a e-mailovou adresu Microsoftu pro použití přímo v případě problémů s vaší nabídkou. Tyto kontaktní údaje nejsou uvedené na komerčním webu Marketplace.
   - **Kontakt programu CSP** (volitelné): Zadejte jméno, telefon a e-mailovou adresu, pokud se přihlásíte k programu CSP, aby vás mohli kontaktovat s případnými dotazy. Do svých marketingových materiálů můžete také přidat adresu URL.
 - **Užitečné odkazy** (volitelné): můžete poskytnout odkazy na různé prostředky pro uživatele vaší nabídky. Například fóra, nejčastější dotazy a poznámky k verzi.
 - **Podpůrné dokumenty**: můžete poskytnout až tři dokumenty pro zákazníky, jako jsou dokumenty White Paper, brožury, kontrolní seznamy nebo prezentace v PowerPointu.
@@ -174,16 +174,16 @@ Abyste mohli snadněji vytvořit nabídku, připravte si některé z těchto pol
 
   Tato loga se používají na různých místech v online obchodech:
 
-  -  Malé logo se zobrazí ve výsledcích hledání Azure Marketplace a na stránce Microsoft AppSource hlavní stránka a výsledky hledání.
-  -  Logo střední se zobrazí při vytváření nového prostředku v Microsoft Azure.
-  -  Velké logo se zobrazí na stránce se seznamem nabídek v Azure Marketplace a Microsoft AppSource.
+  - Malé logo se zobrazí ve výsledcích hledání Azure Marketplace a na stránce Microsoft AppSource hlavní stránka a výsledky hledání.
+  - Logo střední se zobrazí při vytváření nového prostředku v Microsoft Azure.
+  - Velké logo se zobrazí na stránce se seznamem nabídek v Azure Marketplace a Microsoft AppSource.
 
 - **Média – snímky obrazovky**: musíte přidat aspoň jeden a až pět snímků obrazovky s následujícími požadavky, které ukazují, jak vaše nabídka funguje:
   - 1280 x 720 pixelů
   - soubor. png
   - Musí obsahovat titulek
 - **Média – videa** (volitelné): můžete přidat až čtyři videa s následujícími požadavky, které předvádí vaši nabídku:
-  - Name
+  - Název
   - Adresa URL: musí být hostována pouze na YouTube nebo Vimeo.
   - Miniatura: soubor 1280 x 720. png
 
