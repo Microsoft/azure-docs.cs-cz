@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79254752"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871809"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Rozbalení, připojení k racku a zapojení zařízení StorSimple 8600
 
@@ -42,7 +42,7 @@ Dále proveďte následující kroky a rozbalte své zařízení.
    
     **Nebalené zobrazení úložného zařízení**
    
-   | Popisek | Description |
+   | Popisek | Popis |
    | --- | --- |
    |   1 |Expediční box |
    |   2 |Kabely SAS (v zásobníku příslušenství a kabely) |
@@ -106,7 +106,7 @@ K dispozici je sada montážní kolejnice, která se bude používat pro skří�
    
     **Připojení kolejnicových snímků ke stěnám skříně**
    
-   | Popisek | Description |
+   | Popisek | Popis |
    | --- | --- |
    |  1 |M 3x4 tlačítka – šrouby hlav |
    |  2 |Snímky skříní |
@@ -119,7 +119,7 @@ K dispozici je sada montážní kolejnice, která se bude používat pro skří�
    
     **Připojení železničních sestavení k stojanu**
    
-   | Popisek | Description |
+   | Popisek | Popis |
    | --- | --- |
    |   1 |Montážní šroub |
    |   2 |Šroubový prstenec na druhou stranu |
@@ -145,7 +145,7 @@ Pomocí následujících kroků připojte skříň EBOD do racku a použijte rac
    
     **Instalace Cap k přírubám**
    
-   | Popisek | Description |
+   | Popisek | Popis |
    | --- | --- |
    |   1 |Šroub uzávěrky skříně |
 
@@ -192,13 +192,13 @@ Vaše zařízení je v konfiguraci s aktivním pohotovostním režimem: v jednom
 Pro podporu tohoto redundantního převzetí služeb při selhání je potřeba kabelovat síť zařízení, jak je znázorněno v následujícím postupu.
 
 #### <a name="to-cable-for-network-connection"></a>Pro připojení k síti
-1. Vaše zařízení má na každém řadiči šest síťových rozhraní: čtyři porty sítě Ethernet 1 GB/s a 2 10 GB/s. Pro identifikaci datových portů při replánování zařízení použijte následující obrázek.
+1. Vaše zařízení má na každém řadiči šest síťových rozhraní: porty Ethernet 4 1 GB/s a 2 10 GB/s. Pro identifikaci datových portů při replánování zařízení použijte následující obrázek.
    
      ![Backplane pro zařízení 8600](./media/storsimple-8600-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
    
     **Zpět zařízení, které zobrazuje datové porty**
    
-   | Popisek | Description |
+   | Popisek | Popis |
    | --- | --- |
    |   0, 1, 4, 5 |Síťová rozhraní 1 GbE |
    |   2, 3 |Síťová rozhraní 10 GbE |
@@ -209,7 +209,7 @@ Pro podporu tohoto redundantního převzetí služeb při selhání je potřeba 
 
 **Síťové kabely pro vaše zařízení**
 
-| Popisek | Description |
+| Popisek | Popis |
 | --- | --- |
 | A |SÍŤ LAN s přístupem k Internetu |
 | B |Kontroler 0 |

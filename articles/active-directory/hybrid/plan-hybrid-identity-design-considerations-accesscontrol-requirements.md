@@ -18,17 +18,17 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84b786a1701892823554a83fa2015ac88d6eff4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60295139"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na řízení přístupu pro vaše řešení hybridní identity
 Když organizace navrhuje své řešení hybridní identity, může také využít tuto příležitost ke kontrole požadavků na přístup k prostředkům, které plánuje, aby je uživatelé mohli zpřístupnit. Přístup k datům překračuje všechny čtyři pilíře identity, které jsou:
 
 * Správa
-* Ověřování
+* Authentication
 * Autorizace
 * Auditování
 

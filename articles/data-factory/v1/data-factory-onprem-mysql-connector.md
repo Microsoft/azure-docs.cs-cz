@@ -13,11 +13,11 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281285"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91872098"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Přesun dat z MySQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -65,23 +65,23 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu MySQL.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| typ |Vlastnost Type musí být nastavená na: **OnPremisesMySql** . |Yes |
-| server |Název serveru MySQL |Yes |
-| database |Název databáze MySQL |Yes |
-| XSD |Název schématu v databázi. |No |
-| authenticationType |Typ ověřování, který se používá pro připojení k databázi MySQL. Možné hodnoty jsou: `Basic` . |Yes |
-| userName |Zadejte uživatelské jméno pro připojení k databázi MySQL. |Yes |
-| heslo |Zadejte heslo pro uživatelský účet, který jste zadali. |Yes |
-| gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi MySQL. |Yes |
+| typ |Vlastnost Type musí být nastavená na: **OnPremisesMySql** . |Ano |
+| server |Název serveru MySQL |Ano |
+| database |Název databáze MySQL |Ano |
+| schema |Název schématu v databázi. |No |
+| authenticationType |Typ ověřování, který se používá pro připojení k databázi MySQL. Možné hodnoty jsou: `Basic` . |Ano |
+| userName |Zadejte uživatelské jméno pro připojení k databázi MySQL. |Ano |
+| heslo |Zadejte heslo pro uživatelský účet, který jste zadali. |Ano |
+| gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi MySQL. |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu **relačních** objektů typu (což zahrnuje datovou sadu MySQL) má následující vlastnosti.
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | tableName |Název tabulky v instanci databáze MySQL, na kterou odkazuje propojená služba |Ne (Pokud je zadán **dotaz** na **RelationalSource** ) |
 
@@ -92,7 +92,7 @@ V takovém případě se vlastnosti dostupné v části **typeProperties** v akt
 
 Pokud je zdroj v aktivitě kopírování typu **RelationalSource** (který zahrnuje MySQL), jsou v části typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
+| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
 | query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: SELECT * FROM MyTable. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
 
@@ -300,23 +300,23 @@ Při přesunu dat do MySQL se z typů MySQL do typů .NET používají následuj
 
 | Typ databáze MySQL | Typ rozhraní .NET Framework |
 | --- | --- |
-| bigint bez znaménka |Desetinné číslo |
+| bigint bez znaménka |Decimal |
 | bigint |Int64 |
-| bit |Desetinné číslo |
+| bit |Decimal |
 | blob |Byte [] |
 | bool |Logická hodnota |
 | char |Řetězec |
 | date |Datum a čas |
 | datetime |Datum a čas |
-| decimal |Desetinné číslo |
-| Dvojitá přesnost |Double |
-| double |Double |
+| decimal |Decimal |
+| Dvojitá přesnost |dvojité |
+| double |dvojité |
 | enum |Řetězec |
-| float |Jeden |
+| float |Jednoduché |
 | celé číslo bez znaménka |Int64 |
 | int |Int32 |
 | celé číslo bez znaménka |Int64 |
-| celé číslo |Int32 |
+| integer |Int32 |
 | Long varbinary |Byte [] |
 | Long varchar |Řetězec |
 | longblob |Byte [] |
@@ -325,8 +325,8 @@ Při přesunu dat do MySQL se z typů MySQL do typů .NET používají následuj
 | mediumint bez znaménka |Int64 |
 | mediumint |Int32 |
 | mediumtext |Řetězec |
-| numerické |Desetinné číslo |
-| real |Double |
+| numerické |Decimal |
+| real |dvojité |
 | set |Řetězec |
 | typ smallint bez znaménka |Int32 |
 | smallint |Int16 |

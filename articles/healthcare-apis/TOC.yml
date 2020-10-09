@@ -76,6 +76,8 @@
           href: configure-local-rbac.md
         - name: Konfigurace nastavení databáze
           href: configure-database.md
+        - name: Konfigurace klíčů spravovaných zákazníkem
+          href: bring-your-own-key.md
         - name: Konfigurace CORS
           href: configure-cross-origin-resource-sharing.md
         - name: Konfigurace exportu

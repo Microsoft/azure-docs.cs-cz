@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66390165"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Podpora jazyků a oblastí pro rozhraní API Bingu pro kontrolu pravopisu
 
 Tyto jazyky jsou podporovány rozhraní API Bingu pro kontrolu pravopisu (pouze v `spell` režimu).
 
-Počítejte s tím, že `en-US` `mkt` Pokud chcete pracovat s jiným jazykem, než, by měl být `Accept-Language` nastaven `setLang` a buď, nebo by měl být nastaven, jak byl popsán v tématu [rozhraní API pro kontrolu pravopisu v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+Počítejte s tím, že pokud chcete pracovat s jiným jazykem `en-US` , než, `mkt` by měl být nastaven a buď, `Accept-Language` nebo `setLang` by měl být nastaven, jak byl popsán v tématu [rozhraní API pro kontrolu pravopisu v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
 
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|

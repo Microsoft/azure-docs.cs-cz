@@ -28,6 +28,8 @@
   items:
     - name: Připojení k účtu úložiště
       href: tutorial-private-endpoint-storage-portal.md
+    - name: Připojení k účtu Cosmos DB
+      href: tutorial-private-endpoint-cosmosdb-portal.md
 - name: Koncepty
   items:
     - name: Privátní koncový bod
@@ -42,8 +44,6 @@
           href: security-baseline.md
 - name: Postup
   items:
-    - name: Privátní připojení k účtu Cosmos DB
-      href: create-private-endpoint-cosmosdb-portal.md
     - name: Privátní připojení k webové aplikaci
       href: create-private-endpoint-webapp-portal.md
     - name: Zablokování síťových zásad pro privátní koncový bod

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: 7f597bb5cba1a12bdb93325fe2b877ffc644e3e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60199185"
 ---
 # <a name="using-the-azure-cloud-shell-editor"></a>Použití editoru Azure Cloud Shell
 
-Azure Cloud Shell obsahuje integrovaný editor souborů sestavený z open source [editoru Monako](https://github.com/Microsoft/monaco-editor). Editor Cloud Shellu podporuje funkce, jako je například zvýraznění jazyka, paleta příkazů a průzkumník souborů.
+Azure Cloud Shell obsahuje integrovaný editor souborů sestavený z open source [editoru Monako](https://github.com/Microsoft/monaco-editor). Editor Cloud Shellu podporuje funkce, jako jsou například zvýraznění jazyka, paleta příkazů a průzkumník souborů.
 
 ![Editor Cloud Shell](media/using-cloud-shell-editor/open-editor.png)
 

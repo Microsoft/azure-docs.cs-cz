@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79272198"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871962"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop YARN pomocí služby Azure HDInsight
 
@@ -28,9 +28,9 @@ V tomto příkladu se obě existující fronty (**výchozí** a **thriftsvr**) z
 
 | Fronta | Kapacita | Maximální kapacita |
 | --- | --- | --- |
-| default | 25 % | 50 % |
-| thrftsvr | 25 % | 50 % |
-| Spark | 50 % | 50 % |
+| default | 25% | 50% |
+| thrftsvr | 25% | 50% |
+| Spark | 50% | 50% |
 
 1. Vyberte ikonu **zobrazení Ambari** a pak vyberte vzor mřížky. V dalším kroku vyberte možnost **správce front příz**.
 
@@ -58,7 +58,7 @@ V tomto příkladu se obě existující fronty (**výchozí** a **thriftsvr**) z
 
 Tyto změny jsou okamžitě viditelné v uživatelském rozhraní plánovače PŘÍZe.
 
-### <a name="additional-reading"></a>Další čtení
+### <a name="additional-reading"></a>Další materiály ke čtení
 
 - [Apache Hadoop CapacityScheduler PŘÍZe](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
@@ -129,7 +129,7 @@ Tyto změny jsou okamžitě viditelné v uživatelském rozhraní plánovače P�
 
     Tento příkaz vytvoří soubor protokolu s názvem containerlogs.txt.
 
-### <a name="additional-reading"></a><a name="additional-reading-2"></a>Další čtení
+### <a name="additional-reading"></a><a name="additional-reading-2"></a>Další materiály ke čtení
 
 - [Připojení k HDInsight (Apache Hadoop) pomocí SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Apache Hadoop koncepce a aplikace PŘÍZe](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)

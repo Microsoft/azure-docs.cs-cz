@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.openlocfilehash: 0dad78ad76a870ea9f1db28a3cb5ccace5cd804f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88510925"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Kurz: Vytvoření aplikace pro vzdálené vykreslování Azure připravené pro komerční zpracování
@@ -44,7 +44,7 @@ Integrace analytických nástrojů vám může pomoci spravovat, sledovat a zdok
 
 Úplný seznam dostupných prostředků analýzy najdete na adrese:
 
-* [Služby Azure Analytics](https://azure.microsoft.com/product-categories/analytics/)
+* [Analytické služby Azure](https://azure.microsoft.com/product-categories/analytics/)
 
 ### <a name="tracking-usage-for-billing"></a>Sledování využití pro fakturaci
 
@@ -269,7 +269,7 @@ Je důležité sestavit komplexní řešení vzdáleného vykreslování Azure o
 * Distribuované útoky s cílem odepření služeb (DDoS)
 * Detekce hrozeb
 * Sítě VPN a zabezpečené sítě
-* Brány firewall
+* Firewally
 * Správa certifikátů a tajných klíčů
 * Ohrožení zabezpečení a zneužití aplikace
 

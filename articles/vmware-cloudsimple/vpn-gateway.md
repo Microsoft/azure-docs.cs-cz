@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79279491"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871996"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>Nastavení bran sítě VPN v síti CloudSimple
 
@@ -103,7 +103,7 @@ Brána sítě VPN typu Point-to-site umožňuje definovat zásady automatického
 
     * Možnosti **automaticky přidat** můžete nastavit globální zásady pro bránu. Nastavení platí pro aktuální bránu. Nastavení lze přepsat v oblasti **výběru** .
     * Vyberte **Přidat sítě VLAN pro správu/podsítě privátních cloudů**. 
-    * Pokud chcete přidat všechny sítě VLAN a podsítě definované uživatelem, klikněte na **Přidat uživatelsky definované sítě VLAN/podsítě**.
+    * Pokud chcete přidat všechny sítě VLAN a podsítě definované uživatelem, klikněte na  **Přidat uživatelsky definované sítě VLAN/podsítě**.
     * Nastavení **Vybrat** přepíše globální nastavení v části **automaticky přidat**.
 
 7. Kliknutím na **Další** zkontrolujte nastavení. Kliknutím na ikony úprav proveďte požadované změny.
