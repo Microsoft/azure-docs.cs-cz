@@ -9,13 +9,13 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74270222"
 ---
-# <a name="performance-tiers-for-block-blob-storage"></a>Úrovně výkonu pro úložiště objektů blob bloku
+# <a name="performance-tiers-for-block-blob-storage"></a>Úrovně výkonu úložiště objektů blob bloku
 
 Vzhledem k tomu, že podniky nasazují výkonně citlivé aplikace v cloudu, je důležité mít možnosti pro nákladově efektivní úložiště dat na různých úrovních výkonu.
 

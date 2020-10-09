@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
 ms.openlocfilehash: ed5a1b6dc47c91815cc88200ddd1b1246603f806
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275400"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Příprava místních počítačů na migraci do Azure
@@ -59,7 +59,7 @@ Ověření podporovaných operačních systémů pro migraci:
 
 Zkontrolujte, které adresy URL a porty jsou k dispozici během migrace.
 
-**Scénář** | **Podrobnosti** |  **Adresy URL** | **Přístavu**
+**Scénář** | **Podrobnosti** |  **Adresy URL** | **Porty**
 --- | --- | --- | ---
 **Migrace bez agentů VMware** | K migraci používá [zařízení Azure Migrate](migrate-appliance-architecture.md) . Na virtuálních počítačích VMware není nic nainstalované. | Projděte si veřejné cloudy a [adresy URL](migrate-appliance.md#url-access) pro státní správu, které jsou potřeba pro zjišťování, posuzování a migraci pomocí zařízení. | [Zkontrolujte](migrate-support-matrix-vmware-migration.md#port-requirements-agentless) požadavky na porty pro migraci bez agenta.
 **Migrace založená na agentech VMware** | K migraci používá [replikační zařízení](migrate-replication-appliance.md) . Agent služby mobility je nainstalovaný na virtuálních počítačích. | Projděte si [veřejné cloudy](migrate-replication-appliance.md#url-access) a [Azure Government](migrate-replication-appliance.md#azure-government-url-access) adresy URL, ke kterým musí mít zařízení replikace přístup. | [Zkontrolujte](migrate-replication-appliance.md#port-access) porty používané při migraci na základě agenta.
@@ -135,12 +135,12 @@ Následující tabulka shrnuje kroky prováděné automaticky pro operační sys
 
 | Akce                                      | \-Migrace VMware založená na agentech | Migrace VMware bez agentů | Hyper\-V   |
 |---------------------------------------------|-------------------------------|----------------------------|------------|
-| Nainstalovat \- integrační služby Hyper-V Linux | Yes                           | Yes                        | Není potřeba |
-| Povolit protokolování na sériové konzole Azure         | Yes                           | Yes                        | No         |
-| Aktualizovat soubor mapování zařízení                      | Yes                           | No                         | No         |
-| Aktualizovat položky fstab                        | Yes                           | Yes                        | No         |
-| Odebrat pravidlo udev                            | Yes                           | Yes                        | No         |
-| Aktualizace síťových rozhraní                   | Yes                           | Yes                        | No         |
+| Nainstalovat \- integrační služby Hyper-V Linux | Ano                           | Ano                        | Není potřeba |
+| Povolit protokolování na sériové konzole Azure         | Ano                           | Ano                        | No         |
+| Aktualizovat soubor mapování zařízení                      | Ano                           | No                         | No         |
+| Aktualizovat položky fstab                        | Ano                           | Ano                        | No         |
+| Odebrat pravidlo udev                            | Ano                           | Ano                        | No         |
+| Aktualizace síťových rozhraní                   | Ano                           | Ano                        | No         |
 | Povolit SSH                                  | No                            | No                         | No         |
 
 Přečtěte si další informace o postupu při [spuštění virtuálního počítače se systémem Linux v Azure](../virtual-machines/linux/create-upload-generic.md)a pokyny pro některé z oblíbených distribucí pro Linux.
@@ -181,7 +181,7 @@ Na místních počítačích se systémem Linux:
 
 Po dokončení migrace proveďte tyto kroky na virtuálních počítačích Azure, které se vytvoří:
 
-1. Pokud se chcete připojit k virtuálnímu počítači přes Internet, přiřaďte virtuálnímu počítači veřejnou IP adresu. Pro virtuální počítač Azure je nutné použít jinou veřejnou IP adresu, než jste použili pro místní počítač. [Přečtěte si další informace](../virtual-network/virtual-network-public-ip-address.md).
+1. Pokud se chcete připojit k virtuálnímu počítači přes Internet, přiřaďte virtuálnímu počítači veřejnou IP adresu. Pro virtuální počítač Azure je nutné použít jinou veřejnou IP adresu, než jste použili pro místní počítač. [Další informace](../virtual-network/virtual-network-public-ip-address.md).
 2. Ověřte, že pravidla skupiny zabezpečení sítě (NSG) na virtuálním počítači povolují příchozí připojení k portu RDP nebo SSH.
 3. Zkontrolujte [diagnostiku spouštění](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) a zobrazte si virtuální počítač.
 

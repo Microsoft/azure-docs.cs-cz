@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203244"
 ---
 # <a name="stringcollection-claims-transformations"></a>Transformace deklarací řetězcové deklarace
@@ -132,7 +132,7 @@ Zkontroluje, jestli typ deklarace identitycollection typu StringCollection obsah
 | InputClaim | inputClaim | Třída StringCollection | Typ deklarace, který má být prohledán. |
 |InputParameter|položka|řetězec|Hodnota, která se má hledat|
 |InputParameter|ignoreCase|řetězec|Určuje, zda toto porovnání má ignorovat případ porovnávaných řetězců.|
-| OutputClaim | outputClaim | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. Logický indikátor, pokud kolekce obsahuje takový řetězec |
+| OutputClaim | outputClaim | boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. Logický indikátor, pokud kolekce obsahuje takový řetězec |
 
 Následující příklad ověří, zda `roles` typ deklarace StringCollection obsahuje hodnotu **admin**.
 
@@ -168,7 +168,7 @@ Zkontroluje, jestli typ deklarace identitycollection typu StringCollection obsah
 | InputClaim |  – kolekce | Třída StringCollection | Typ deklarace, který má být prohledán. |
 | InputClaim | položka|řetězec| Typ deklarace identity, který obsahuje hledanou hodnotu.|
 |InputParameter|ignoreCase|řetězec|Určuje, zda toto porovnání má ignorovat případ porovnávaných řetězců.|
-| OutputClaim | outputClaim | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. Logický indikátor, pokud kolekce obsahuje takový řetězec |
+| OutputClaim | outputClaim | boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. Logický indikátor, pokud kolekce obsahuje takový řetězec |
 
 Následující příklad ověří, zda `roles` typ deklarace StringCollection obsahuje hodnotu `role` typu deklarace identity.
 

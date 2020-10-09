@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Povolení doplňku příchozího řadiče pro existující cluster AKS se stávajícím Azure Application Gateway'
-description: Pomocí tohoto kurzu můžete pro stávající cluster AKS povolit doplněk příchozího řadiče s existujícím Application Gateway
+title: 'Kurz: povolení Add-On adaptéru příchozího přenosu dat pro existující cluster AKS se stávajícím Application Gatewaym Azure'
+description: Tento kurz vám umožní povolit Add-On pro existující cluster AKS s existujícím Application Gateway.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
 ms.openlocfilehash: d0ce58c5bb6de4712117959f10b48ae3449f0b97
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285617"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Kurz: Povolení doplňku Application Gateway příchozího adaptéru pro existující cluster AKS s existujícím Application Gateway prostřednictvím Azure CLI (Preview)

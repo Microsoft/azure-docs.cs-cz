@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eaa2984c0d7a5d3763f554e39f687fdbd2865e96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203380"
 ---
 # <a name="social-accounts-claims-transformations"></a>Transformace deklarací účtů sociálních sítí
@@ -82,7 +82,7 @@ Přidá `AlternativeSecurityId` k `alternativeSecurityIdCollection` deklaraci id
 Následující příklad propojuje novou sociální identitu s existujícím účtem. Propojení nové sociální identity:
 1. V technických profilech **AAD-UserReadUsingAlternativeSecurityId** a **AAD-UserReadUsingObjectId** vypíše uživatel deklaraci identity **alternativeSecurityIds** uživatele.
 1. Požádejte uživatele, aby se přihlásil pomocí některého z poskytovatelů identity, kteří nejsou přidružení k tomuto uživateli.
-1. Pomocí transformace deklarací identity **CreateAlternativeSecurityId** vytvořte nový typ deklarace identity **alternativeSecurityId** s názvem.`AlternativeSecurityId2`
+1. Pomocí transformace deklarací identity **CreateAlternativeSecurityId** vytvořte nový typ deklarace identity **alternativeSecurityId** s názvem. `AlternativeSecurityId2`
 1. Zavolejte transformaci deklarací **AddItemToAlternativeSecurityIdCollection** a přidejte tak deklaraci identity **AlternativeSecurityId2** do existující deklarace identity **AlternativeSecurityIds** .
 1. Zachovat deklaraci identity **alternativeSecurityIds** pro uživatelský účet
 

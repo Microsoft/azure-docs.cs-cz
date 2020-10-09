@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74790276"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testování aplikací logiky s využitím povedených dat nastavením statických výsledků
@@ -49,7 +49,7 @@ Pokud jste například nastavili statické výsledky pro akci odeslat poštu v a
       |----------|-------------|
       | **Stav** | Stav akce, která se má vrátit |
       | **Stavový kód** | Konkrétní stavový kód, který se má vrátit |
-      | **Hlavičky** | Obsah záhlaví, který se má vrátit |
+      | **Záhlaví** | Obsah záhlaví, který se má vrátit |
       |||
 
       ![Vyberte Povolit statický výsledek.](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
@@ -136,7 +136,7 @@ Vypnutím statických výsledků nedojde k vygenerování hodnot z poslední ins
 
    ![Zakázat statické výsledky](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
-## <a name="reference"></a>Referenční informace
+## <a name="reference"></a>Odkaz
 
 Další informace o tomto nastavení najdete v příslušných definicích pracovních postupů v tématu [statické výsledky – referenční informace ke schématu pro jazyk pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md#static-results) a [runtimeConfiguration. staticResult – nastavení konfigurace modulu runtime.](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
 

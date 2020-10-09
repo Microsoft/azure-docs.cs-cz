@@ -17,10 +17,10 @@ ms.date: 12/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 51cafb0a344c5b6226b3b033d8c60327eaf2c05f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267937"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>Ukázkový skript pro vytvoření sítě pro vícevrstvé aplikace
@@ -36,7 +36,7 @@ Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 <!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 -->
-Po vytvoření virtuální sítě se přiřadí ID podsítě. konkrétně pomocí rutiny New-AzVirtualNetwork s možností-Subnet. Pokud nakonfigurujete podsíť pomocí rutiny New-AzVirtualNetworkSubnetConfig před voláním rutiny New-AzVirtualNetwork, ID podsítě se nezobrazuje až po volání New-AzVirtualNetwork.
+Po vytvoření virtuální sítě se přiřadí ID podsítě. konkrétně pomocí rutiny New-AzVirtualNetwork s možností-Subnet. Pokud před voláním rutiny New-AzVirtualNetwork nakonfigurujete podsíť pomocí rutiny New-AzVirtualNetworkSubnetConfig, neuvidíte ID podsítě až po volání rutiny New-AzVirtualNetwork.
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.ps1  "Virtual network for multi-tier application")]
 

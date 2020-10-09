@@ -11,10 +11,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
 ms.openlocfilehash: 552b3f55632e817cc4669ce5da41b1e127c7d808
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283866"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Kurz: zabezpečení ve spravované instanci Azure SQL pomocí objektů zabezpečení serveru Azure AD (přihlášení)
@@ -48,7 +48,7 @@ K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)
 - Spravovaná instance
   - Postupujte podle tohoto článku: [rychlý Start: vytvoření spravované instance](instance-create-quickstart.md)
-- Přístup k spravované instanci a [zřízení správce Azure AD pro spravovanou instanci](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance). Další informace naleznete v tématu:
+- Přístup k spravované instanci a [zřízení správce Azure AD pro spravovanou instanci](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance). Další informace najdete v následujících tématech:
   - [Připojení aplikace ke spravované instanci](connect-application-instance.md)
   - [Architektura připojení spravované instance SQL](connectivity-architecture-overview.md)
   - [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL](../database/authentication-aad-configure.md)

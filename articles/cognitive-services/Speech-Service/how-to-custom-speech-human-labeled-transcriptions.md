@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74806058"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Jak vytvořit přepisy s lidským popiskem
@@ -31,7 +31,7 @@ Tady je pár příkladů:
 
 | Znaky, které se mají zabránit | Substituce | Poznámky |
 | ------------------- | ------------ | ----- |
-| Hello World | Hello World | Levé a pravé uvozovky se nahradily odpovídajícími znaky ASCII. |
+| Hello World | Hello world | Levé a pravé uvozovky se nahradily odpovídajícími znaky ASCII. |
 | Den Jan | Den Jan | Apostrof byl nahrazen příslušným znakem ASCII. |
 | to bylo dobré – ne, bylo skvělé! | je dobrá – ne, bylo skvělé! | Em pomlčka byla nahrazena dvěma pomlčkami. |
 
@@ -76,7 +76,7 @@ Tady je několik příkladů normalizace, které se automaticky provedou na pře
 | ELM ulice 104                         | ELM ulice 1 0 4            |
 | Vylaďte 102,7                          | vyladit až 1 0 2 bodů 7    |
 | Pi má přibližně 3,14                       | Pi má přibližně tři body 1 4  |
-| Náklady \$na IT 3,14                        | náklady na IT 3 14           |
+| Náklady na IT \$ 3,14                        | náklady na IT 3 14           |
 
 ## <a name="mandarin-chinese-zh-cn"></a>Mandarin čínština (zh-CN)
 
@@ -133,7 +133,7 @@ Normalizace textu je transformace slov do konzistentního formátu, který se po
 - Zápis desetinných míst jako "," a nikoli ".".
 - Oddělovače času zápisu jako ":", nikoli "." (například: 12:00 Uhr).
 - Zkratky jako "CA". nejsou nahrazeny. Doporučujeme, abyste použili úplný mluvený formulář.
-- Čtyři hlavní matematické operátory (+,-, \*a/) se odeberou. Doporučujeme, abyste je nahradili pomocí vytvořeného formuláře: "plus", "mínus" "," "", "" "
+- Čtyři hlavní matematické operátory (+,-, \* a/) se odeberou. Doporučujeme, abyste je nahradili pomocí vytvořeného formuláře: "plus", "mínus" "," "", "" "
 - Operátory porovnání jsou odebrány (=, < a >). Doporučujeme, abyste je nahradili "Gleich", "Kleiner ALS" a "grösser ALS".
 - Zapište zlomky, například 3/4, v písemné podobě (například "Drei Viertel" namísto 3/4).
 - Nahraďte symbol "€" jeho napsaným formulářem "euro".
@@ -167,5 +167,5 @@ Tady je několik příkladů normalizace, které se automaticky provedou na pře
 - [Příprava a testování dat](how-to-custom-speech-test-data.md)
 - [Kontrola dat](how-to-custom-speech-inspect-data.md)
 - [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
-- [Trénování vašeho modelu](how-to-custom-speech-train-model.md)
+- [Trénování modelu](how-to-custom-speech-train-model.md)
 - [Nasazení modelu](how-to-custom-speech-deploy-model.md)

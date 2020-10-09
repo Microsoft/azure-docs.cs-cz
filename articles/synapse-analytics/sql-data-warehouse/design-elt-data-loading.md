@@ -12,13 +12,13 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 1b73b82b4367d50cc5fbe9881a67e0afa041db86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201154"
 ---
-# <a name="data-loading-strategies-for-synapse-sql-pool"></a>Strategie načítání dat pro synapse fond SQL
+# <a name="data-loading-strategies-for-synapse-sql-pool"></a>Strategie načítání dat do fondu Synapse SQL
 
 Tradiční fondy SQL SMP používají pro načítání dat proces extrakce, transformace a načítání (ETL). Synapse fond SQL v rámci služby Azure synapse Analytics má architekturu MPP (COMPUTE Parallel Processing), která využívá škálovatelnost a flexibilitu výpočetních a úložných prostředků.
 
@@ -111,7 +111,7 @@ Při načítání souborů Parquet použít následující mapování typů dat 
 |                            UVEDENA                             |            INT (8, false)            |     tinyint      |
 |                            UVEDENA                             |            INT (16, false)             |       int        |
 |                            UVEDENA                             |           INT (32, false)            |      bigint      |
-|                            UVEDENA                             |                 DATE (Datum)                  |       date       |
+|                            UVEDENA                             |                 DATE                  |       date       |
 |                            UVEDENA                             |                NOTACI                |     decimal      |
 |                            UVEDENA                             |            ČAS (LISOVNY)             |       time       |
 |                            INT64                             |            INT (64; true)            |      bigint      |

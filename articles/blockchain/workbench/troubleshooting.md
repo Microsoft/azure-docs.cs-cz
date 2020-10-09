@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: troubleshooting
 ms.reviewer: brendal
 ms.openlocfilehash: 20c0f9bdd6f820a73b1ba6660de805268c0d8714
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212849"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Řešení potíží s Azure blockchain Workbench Preview
@@ -35,17 +35,17 @@ git clone https://github.com/Azure-Samples/blockchain.git
 ## <a name="run-the-script"></a>Spuštění skriptu
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
-Spusťte `collectBlockchainWorkbenchTroubleshooting.ps1` skript pro shromáždění protokolů a vytvořte soubor ZIP obsahující složku s informacemi o řešení potíží. Příklad:
+Spusťte `collectBlockchainWorkbenchTroubleshooting.ps1` skript pro shromáždění protokolů a vytvořte soubor ZIP obsahující složku s informacemi o řešení potíží. Například:
 
 ``` powershell
 collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>" -ResourceGroupName "workbench-resource-group-name"
 ```
 Skript přijímá následující parametry:
 
-| Parametr  | Popis | Vyžadováno |
+| Parametr  | Popis | Povinné |
 |---------|---------|----|
-| SubscriptionID | SubscriptionID pro vytvoření nebo vyhledání všech prostředků. | Yes |
-| ResourceGroupName | Název skupiny prostředků Azure, do které se nasadila aplikace blockchain Workbench | Yes |
+| SubscriptionID | SubscriptionID pro vytvoření nebo vyhledání všech prostředků. | Ano |
+| ResourceGroupName | Název skupiny prostředků Azure, do které se nasadila aplikace blockchain Workbench | Ano |
 | OutputDirectory | Cesta pro vytvoření výstupu Soubor ZIP. Pokud není zadaný, použije se ve výchozím nastavení aktuální adresář. | No |
 | LookbackHours | Počet hodin, které se mají použít při přijímání telemetrie Výchozí hodnota je 24 hodin. Maximální hodnota je 90 hodin. | No |
 | OmsSubscriptionId | ID předplatného, kde se nasadí protokoly Azure Monitor Tento parametr předejte jenom v případě, že protokoly Azure Monitor pro síť blockchain se nasazují mimo skupinu prostředků blockchain Workbench.| No |
@@ -56,7 +56,7 @@ Skript přijímá následující parametry:
 
 Výstupní soubor ZIP obsahuje následující strukturu složek:
 
-| Složka nebo soubor | Description  |
+| Složka nebo soubor | Popis  |
 |---------|---------|
 | \Summary.txt | Souhrn systému |
 | \Metrics\blockchain | Metriky o blockchain |

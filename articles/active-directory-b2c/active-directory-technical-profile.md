@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201510"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování Azure Active Directory technického profilu ve vlastních zásadách Azure Active Directory B2C
@@ -24,7 +24,7 @@ ms.locfileid: "85201510"
 
 Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro Azure Active Directory správu uživatelů. Tento článek popisuje konkrétní technické profily pro interakci se zprostředkovatelem deklarací, který podporuje tento standardizovaný protokol.
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protokol
 
 Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `Proprietary` . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` .
 
@@ -76,7 +76,7 @@ Například technický profil **AAD-UserWriteUsingLogonEmail** vytvoří místn�
 
 - **objectID**, což je identifikátor nového účtu
 - **nový_uživatel**, který označuje, zda je uživatel nový
-- **authenticationSource**, který nastavuje ověřování na`localAccountAuthentication`
+- **authenticationSource**, který nastavuje ověřování na `localAccountAuthentication`
 - **userPrincipalName**, což je hlavní název uživatele nového účtu
 - **signInNames. EmailAddress**, což je přihlašovací jméno účtu, podobně jako deklarace vstupu **e-mailu**
 
@@ -122,7 +122,7 @@ Název deklarace identity je název atributu Azure AD, pokud není zadaný atrib
 
 ## <a name="azure-ad-technical-provider-operations"></a>Operace technického poskytovatele služby Azure AD
 
-### <a name="read"></a>Čtení
+### <a name="read"></a>Číst
 
 Operace **čtení** čte data o jednom uživatelském účtu. Následující technický profil čte data o uživatelském účtu pomocí identifikátoru objectId uživatele:
 
@@ -248,7 +248,7 @@ Následující technický profil odstraní účet uživatele sociální sítě p
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Operace | Yes | Operace, která má být provedena. Možné hodnoty: `Read` , `Write` , `DeleteClaims` , nebo `DeleteClaimsPrincipal` . |
+| Operace | Ano | Operace, která má být provedena. Možné hodnoty: `Read` , `Write` , `DeleteClaims` , nebo `DeleteClaimsPrincipal` . |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | No | Vyvolá chybu, pokud objekt uživatele v adresáři neexistuje. Možné hodnoty: `true` nebo `false` . |
 | RaiseErrorIfClaimsPrincipalAlreadyExists | No | Vyvolá chybu, pokud objekt uživatele již existuje. Možné hodnoty: `true` nebo `false` .|
 | ApplicationObjectId | No | Identifikátor objektu aplikace pro atributy rozšíření. Hodnota: ObjectId objektu aplikace. Další informace najdete v tématu [použití vlastních atributů v zásadách úprav vlastního profilu](custom-policy-custom-attributes.md). |

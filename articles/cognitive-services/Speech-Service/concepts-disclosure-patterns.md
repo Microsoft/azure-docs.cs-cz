@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74776618"
 ---
 # <a name="disclosure-design-patterns"></a>Zpřístupnění způsobů návrhu
@@ -62,7 +62,7 @@ Než začnete s hlasovým prostředím, zaveďte digitální asistenta tak, aby 
 *Při připojování nového uživatele se zavádí syntetický hlas.*
 
 Doporučení
-- Popište, že hlas je umělý ( &quot;např&quot;. Digital).
+- Popište, že hlas je umělý (např. &quot; Digital &quot; ).
 - Popište, co je agent schopný provádět
 - Explicitní stav zdroje hlasových&#39;s
 - Nabídnout vstupní bod pro další informace o syntetickém hlasu
@@ -141,7 +141,7 @@ Doporučení
 - Cílové nadřízené položky jako primární cílová skupina pro zpřístupnění
 - Podpora rodičů pro komunikaci se svými dětmi
 - Vstupní body nabídky pro další informace o syntetizovém hlasu
-- Využijte možnost vyžádat si rodiče o &quot;jednoduchou&quot; bezpečnostní otázku, aby si ukázali, že si přečetli zveřejnění.
+- Využijte možnost vyžádat si rodiče o jednoduchou &quot; bezpečnostní &quot; otázku, aby si ukázali, že si přečetli zveřejnění.
 
 ### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>Poskytnutí příležitostí k získání dalších informací o tom, jak byl hlas proveden
 
@@ -193,13 +193,13 @@ V případě, že konverzace spadají do neočekávaných cest, zvažte vytvoře
 ![Zpracování neočekávaných cest](media/responsible-ai/disclosure-patterns/conversational-transparency-1.png)<br/>
 
 <br/>
-Mimo úkol nebo &quot;osobní&quot; dotazy směrované k agentovi jsou vhodný čas k přihlašování uživatelů syntetické povahy agenta a jejich řízení, aby se s ním mohli řádně zapojit nebo přesměrovat na skutečnou osobu.
+Mimo úkol nebo &quot; osobní &quot; dotazy směrované k agentovi jsou vhodný čas k přihlašování uživatelů syntetické povahy agenta a jejich řízení, aby se s ním mohli řádně zapojit nebo přesměrovat na skutečnou osobu.
 
 ![Zpracování dotazů na úlohy](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
 
 ## <a name="when-to-disclose"></a>Kdy se má zveřejnit
 
-Existuje mnoho příležitostí k odhalení během cesty uživatele. Návrh prvního použití, druhé použití, n-tý použití..., ale také k &quot;výpadku selhání&quot; při zdůraznění transparentnosti, například v případě, že systém provede chybu nebo když uživatel zjistí omezení schopností&#39;s agentem.
+Existuje mnoho příležitostí k odhalení během cesty uživatele. Návrh prvního použití, druhé použití, n-tý použití..., ale také &quot; k výpadku selhání &quot; při zdůraznění transparentnosti, například v případě, že systém provede chybu nebo když uživatel zjistí omezení schopností&#39;s agentem.
 
 ![Příležitosti k zveřejnění v průběhu cesty uživatelů](media/responsible-ai/disclosure-patterns/touchpoints.png)<br/>
 
@@ -239,7 +239,7 @@ Vyzrazení můžete využít jako příležitost k řádnému selhání.
 
 
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 - [Pokyny pro Microsoft bot](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
 - [Pokyny pro návrh Cortany](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
 - [Pokyny pro návrh mluveného slova pro Microsoft Windows UWP](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
