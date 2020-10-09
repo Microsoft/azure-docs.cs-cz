@@ -6,10 +6,10 @@ ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 50bf1ec7f21ccbc3a3fa8feaea02e45bd08a158a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87421412"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Nastavení zotavení po havárii pro virtuální počítače Azure
@@ -27,7 +27,7 @@ V tomto kurzu se dozvíte, jak nastavit zotavení po havárii pro virtuální po
 > [!NOTE]
 > Tento článek poskytuje pokyny pro nasazení zotavení po havárii s nejjednodušším nastavením. Pokud se chcete dozvědět o přizpůsobených nastaveních, přečtěte si články v [části postupy](azure-to-azure-how-to-enable-replication.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -75,7 +75,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Odchozí připojení pro rozsahy IP adres
 
-Pokud používáte skupinu zabezpečení sítě (NSG), vytvořte pravidla NSG založená na značkách služby pro přístup k Azure Storage, Azure Active Directory, Site Recovery službě a sledování Site Recovery. [Přečtěte si další informace](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags).
+Pokud používáte skupinu zabezpečení sítě (NSG), vytvořte pravidla NSG založená na značkách služby pro přístup k Azure Storage, Azure Active Directory, Site Recovery službě a sledování Site Recovery. [Další informace](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags).
 
 ## <a name="verify-azure-vm-certificates"></a>Ověření certifikátů virtuálních počítačů Azure
 
@@ -137,7 +137,7 @@ Site Recovery vytvoří výchozí nastavení a zásady replikace pro cílovou ob
    | **Cílové umístění** | Cílová oblast použitá pro zotavení po havárii.<br/><br/> Doporučujeme, aby cílové umístění odpovídalo umístění trezoru Site Recovery. |
    | **Cílová skupina prostředků** | Skupina prostředků v cílové oblasti, která obsahuje virtuální počítače Azure po převzetí služeb při selhání.<br/><br/> Ve výchozím nastavení Site Recovery vytvoří novou skupinu prostředků v cílové oblasti s `asr` příponou. Umístění cílové skupiny prostředků může být libovolná oblast s výjimkou oblasti, ve které jsou hostované vaše zdrojové virtuální počítače. |
    | **Cílová virtuální síť** | Síť v cílové oblasti, ve které jsou virtuální počítače umístěné po převzetí služeb při selhání.<br/><br/> Ve výchozím nastavení Site Recovery vytvoří novou virtuální síť (a podsítě) v cílové oblasti s `asr` příponou. |
-   | **Účty úložiště mezipaměti** | Site Recovery používá účet úložiště ve zdrojové oblasti. Do tohoto účtu se odešlou změny zdrojových virtuálních počítačů před replikací o cílového umístění.<br/><br/> Pokud používáte účet úložiště mezipaměti s podporou brány firewall, ujistěte se, že povolíte možnost **Povolit důvěryhodné služby společnosti Microsoft**. [Přečtěte si další informace](../storage/common/storage-network-security.md#exceptions). Také se ujistěte, že máte povolený přístup k alespoň jedné podsíti zdrojové virtuální sítě. |
+   | **Účty úložiště mezipaměti** | Site Recovery používá účet úložiště ve zdrojové oblasti. Do tohoto účtu se odešlou změny zdrojových virtuálních počítačů před replikací o cílového umístění.<br/><br/> Pokud používáte účet úložiště mezipaměti s podporou brány firewall, ujistěte se, že povolíte možnost **Povolit důvěryhodné služby společnosti Microsoft**. [Další informace](../storage/common/storage-network-security.md#exceptions). Také se ujistěte, že máte povolený přístup k alespoň jedné podsíti zdrojové virtuální sítě. |
    | **Cílové účty úložiště (zdrojový virtuální počítač používá jiné než spravované disky)** | Ve výchozím nastavení Site Recovery vytvoří v cílové oblasti nový účet úložiště pro zrcadlení účtu úložiště zdrojového virtuálního počítače.<br/><br/> Pokud používáte účet úložiště mezipaměti s podporou brány firewall, povolte možnost **Povolit důvěryhodné služby společnosti Microsoft** . |
    | **Repliky spravované disky (Pokud zdrojový virtuální počítač používá spravované disky)** | Ve výchozím nastavení Site Recovery vytvoří repliku spravované disky v cílové oblasti pro zrcadlení spravovaných disků zdrojového virtuálního počítače se stejným typem úložiště (Standard nebo Premium) jako spravovaný disk zdrojového virtuálního počítače. Můžete přizpůsobit jenom typ disku. |
    | **Cílové skupiny dostupnosti** | Ve výchozím nastavení Azure Site Recovery vytvoří novou skupinu dostupnosti v cílové oblasti s názvem s `asr` příponou pro virtuální počítače v rámci skupiny dostupnosti ve zdrojové oblasti. V případě, že sada dostupnosti, kterou vytvořil Azure Site Recovery, už existuje, použije se znovu. |

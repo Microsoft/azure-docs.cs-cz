@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.service: container-service
 ms.date: 06/22/2020
 ms.openlocfilehash: fb81405e85d6e2653e0cf6c007c363493992161a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87419967"
 ---
 # <a name="networking-in-azure-red-hat-on-openshift-4"></a>Sítě v Azure Red Hat na OpenShift 4
@@ -101,7 +101,7 @@ V Azure Red Hat OpenShift 4 jsou k dispozici následující nastavení sítě:
     * "Veřejné" trasy budou ve výchozím nastavení veřejné služby Azure Standard Load Balancer (může být změněno).
     * "Soukromé" trasy budou výchozím nastavením interního nástroje pro vyrovnávání zatížení (Tento stav může být změněn).
 
-## <a name="network-security-groups"></a>skupiny zabezpečení sítě,
+## <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 Skupiny zabezpečení sítě se vytvoří ve skupině prostředků uzlu, která je uzamčená. Skupiny zabezpečení sítě se přiřazují přímo k podsítím, nikoli na síťových kartách uzlu. Skupiny zabezpečení sítě jsou neměnné, což znamená, že nemáte oprávnění je měnit. 
 
 S veřejně viditelným serverem API ale nemůžete vytvářet skupiny zabezpečení sítě a přiřazovat je k síťovým kartám.

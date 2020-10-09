@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86231348"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Kurz: připojení clusteru
@@ -49,7 +49,7 @@ Jiné metody vyrovnávání zatížení můžou být vhodné pro velké nebo kom
 
 Z klienta ``mount`` příkaz mapuje virtuální server (VServer) v clusteru Azure FXT Edge souborového na cestu v místním systému souborů.
 
-Formát je``mount <FXT cluster path> <local path> {options}``
+Formát je ``mount <FXT cluster path> <local path> {options}``
 
 Příkaz Mount obsahuje tři prvky:
 
@@ -77,7 +77,7 @@ IP adresa je jedna z klientských IP adres definovaných pro VServer. Rozsah IP 
 
 Zkombinujte IP adresu a cestu k oboru názvů, abyste pomohli vytvořit cestu clusteru pro příkaz Mount.
 
-Příklad příkazu pro připojení klienta:``mount 10.0.0.12:/sd-access /mnt/fxt {options}``
+Příklad příkazu pro připojení klienta: ``mount 10.0.0.12:/sd-access /mnt/fxt {options}``
 
 ### <a name="create-the-local-path"></a>Vytvoření místní cesty
 
@@ -93,14 +93,14 @@ Chcete-li zajistit bezproblémové připojení klienta, předejte tato nastaven�
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| Požadovaná nastavení | Description |
+| Požadovaná nastavení | Popis |
 --- | ---
 ``hard`` | Do clusteru Azure FXT Edge souborového se dočasná připojení pojí s chybami aplikací a možnou ztrátou dat.
 ``proto=netid`` | Tato možnost podporuje odpovídající zpracování chyb sítě systému souborů NFS.
 ``mountproto=netid`` | Tato možnost podporuje odpovídající zpracování chyb sítě pro operace připojení.
 ``retry=n`` | Nastavte ``retry=30`` , aby nedocházelo k přechodným chybám připojení. (V připojeních na popředí se doporučuje jiná hodnota.)
 
-| Preferované nastavení  | Description |
+| Preferované nastavení  | Popis |
 --- | ---
 ``nointr``            | Pokud klienti používají starší jádra operačního systému (do 15. dubna 2008), které podporují tuto možnost, použijte ji. Výchozím nastavením je možnost "intr".
 

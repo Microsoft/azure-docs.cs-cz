@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
 ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85958357"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Kurz: použití Apache HBA v Azure HDInsight
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Použití rozhraní REST API HBase pomocí Curl
 > * Kontrola stavu clusteru
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -306,15 +306,15 @@ HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledován
 
 Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru. Můžete použít příkaz HBA `disable 'Contacts'` . Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster HBA, který jste vytvořili, pomocí následujícího postupu:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
 1. V části **služby**vyberte **clustery HDInsight** .
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu.
-1. Klikněte na **Odstranit**. Klikněte na tlačítko **Ano**.
+1. Klikněte na **Odstranit**. Klikněte na **Ano**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak vytvořit cluster Apache HBA. A vytváření tabulek a zobrazení dat v těchto tabulkách z prostředí HBA. Zjistili jste také, jak použít dotaz na podregistr na data v rámci tabulek HBA. A použití rozhraní REST API pro adaptéry C# k vytvoření tabulky HBA a načtení dat z tabulky. Další informace naleznete v tématu:
+V tomto kurzu jste zjistili, jak vytvořit cluster Apache HBA. A vytváření tabulek a zobrazení dat v těchto tabulkách z prostředí HBA. Zjistili jste také, jak použít dotaz na podregistr na data v rámci tabulek HBA. A použití rozhraní REST API pro adaptéry C# k vytvoření tabulky HBA a načtení dat z tabulky. Další informace najdete v následujících tématech:
 
 > [!div class="nextstepaction"]
 > [Přehled HBA v HDInsight](./apache-hbase-overview.md)

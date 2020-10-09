@@ -15,10 +15,10 @@ ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 83c437cb613e3dad04dee17f0f67040532066c3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326592"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Kurz: používání příznaků funkcí v aplikaci pro jarní spuštění
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte, jak:
 
 ## <a name="set-up-feature-management"></a>Nastavení správy funkcí
 
-Správce funkcí pro spouštění pružiny `FeatureManager` získá příznaky funkcí z nativního konfiguračního systému rozhraní. V důsledku toho můžete definovat příznaky funkcí vaší aplikace pomocí veškerého zdroje konfigurace, který služba pružinového spouštění podporuje, včetně místního souboru *bootstrap. yml* nebo proměnných prostředí. `FeatureManager`spoléhá na vkládání závislostí. Služby správy funkcí můžete zaregistrovat pomocí standardních konvencí:
+Správce funkcí pro spouštění pružiny `FeatureManager` získá příznaky funkcí z nativního konfiguračního systému rozhraní. V důsledku toho můžete definovat příznaky funkcí vaší aplikace pomocí veškerého zdroje konfigurace, který služba pružinového spouštění podporuje, včetně místního souboru *bootstrap. yml* nebo proměnných prostředí. `FeatureManager` spoléhá na vkládání závislostí. Služby správy funkcí můžete zaregistrovat pomocí standardních konvencí:
 
 ```java
 private FeatureManager featureManager;
@@ -94,9 +94,9 @@ feature-management:
 
 Podle konvence se `feature-management` část tohoto dokumentu YML používá pro nastavení příznaku funkce. Předchozí příklad ukazuje tři příznaky funkcí s jejich filtry definovanými ve `EnabledFor` vlastnosti:
 
-* `feature-a`je *zapnuto*.
-* `feature-b`je *vypnutý*.
-* `feature-c`Určuje filtr s názvem `Percentage` s `parameters` vlastností. `Percentage`je konfigurovatelný filtr. V tomto příkladu `Percentage` určujeme pravděpodobnost 50-Percent pro příznak, `feature-c` který má být *zapnut*.
+* `feature-a` je *zapnuto*.
+* `feature-b` je *vypnutý*.
+* `feature-c` Určuje filtr s názvem `Percentage` s `parameters` vlastností. `Percentage` je konfigurovatelný filtr. V tomto příkladu `Percentage` určujeme pravděpodobnost 50-Percent pro příznak, `feature-c` který má být *zapnut*.
 
 ## <a name="feature-flag-checks"></a>Kontroly příznaků funkcí
 
@@ -110,7 +110,7 @@ if (featureManager.isEnabledAsync("feature-a").block()) {
 }
 ```
 
-## <a name="dependency-injection"></a>Injektáž závislosti
+## <a name="dependency-injection"></a>Injektáž závislostí
 
 V případě jarního spuštění můžete ke Správci funkcí přistupovat `FeatureManager` pomocí injektáže závislosti:
 

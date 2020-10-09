@@ -13,10 +13,10 @@ ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
 ms.openlocfilehash: 0d001144f1a2703db118261e5cae5417b1d8c17a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080127"
 ---
 # <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Kurz – konfigurace strategie nasazení Blue-zelená pro virtuální počítače Azure Linux
@@ -53,7 +53,7 @@ Pomocí možnosti průběžné doručování můžete na své virtuální počí
 1. V **strategii nasazení**vyberte **modrou zelenou**.
 1. Přidejte "modrou" nebo "zelenou" značku do virtuálních počítačů, které mají být součástí nasazení s modrou zelenou verzí. Pokud je virtuální počítač pro roli v pohotovostním režimu, označte ho jako "zelený". V opačném případě jej označte jako "modrý".
 
-   ![Panel nepřetržitého doručování s hodnotou strategie nasazení Blue-zelená vybraná](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-configure.png)
+   ![Na panelu nepřetržitého doručování se Blue-Green zvolila hodnota strategie nasazení.](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-configure.png)
 
 1. Výběrem **OK** nakonfigurujte kanál nepřetržitého doručování pro nasazení na virtuální počítač.
 
@@ -65,7 +65,7 @@ Pomocí možnosti průběžné doručování můžete na své virtuální počí
    1. V této fázi kanál pozastaví a čeká na ruční zásah pro pokračování v běhu. Uživatelé mohou pokračovat v běhu kanálu, jakmile budou ručně zajištěny stabilitu nasazení na virtuální počítače označené jako "zelená".
    1. V této fázi se na virtuálních počítačích zamění značky "Blue" a "zelená". Tím se zajistí, že virtuální počítače se staršími verzemi aplikací jsou teď označené jako "zelená". Během dalšího spuštění kanálu se aplikace nasadí na tyto virtuální počítače.
 
-      ![Podokno skupina nasazení pro úlohu nasadit Blue-zelený úkol](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-tasks.png)
+      ![Podokno skupina nasazení pro úlohu nasazení Blue-Green](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-tasks.png)
 
 1. Ve výchozím nastavení úloha spustit skript nasazení spustí skript nasazení deploy.ps1 nebo deploy.sh. Skript se nachází ve složce deployscripts v kořenové složce publikovaného balíčku. Zajistěte, aby vybraný kanál sestavení publikoval nasazení v kořenové složce balíčku.
 
@@ -84,9 +84,9 @@ Můžete snadno začít pracovat s Azure. Pomocí Azure DevOps Projects spusťte
 - Modul runtime
 - Služba Azure
 
-[Přečtěte si další informace](https://azure.microsoft.com/features/devops-projects/).
+[Další informace](https://azure.microsoft.com/features/devops-projects/).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Nasazení na virtuální počítače Azure pomocí Azure DevOps Projects](../../devops-project/azure-devops-project-vms.md)
 - [Implementace průběžného nasazování vaší aplikace do sady škálování virtuálních počítačů Azure](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

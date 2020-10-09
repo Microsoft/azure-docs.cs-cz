@@ -4,10 +4,10 @@ description: Přehled ukázky podrobného plánu ISO 27001 Tento ukázkový podr
 ms.date: 07/13/2020
 ms.topic: sample
 ms.openlocfilehash: 96156b592b7946a383b29ff701ac1f89a9e504fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86536795"
 ---
 # <a name="overview-of-the-iso-27001-blueprint-sample"></a>Přehled ukázky podrobného plánu ISO 27001

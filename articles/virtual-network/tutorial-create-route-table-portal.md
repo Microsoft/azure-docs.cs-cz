@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
 ms.openlocfilehash: d630a41f9b83a852605ffad2a85ad6dd14bbac73
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86079645"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Kurz: Směrování síťového provozu s využitím směrovací tabulky pomocí webu Azure Portal
@@ -34,7 +34,7 @@ Azure ve výchozím nastavení směruje provoz mezi všemi podsítěmi v rámci 
 
 V tomto kurzu se používá [Azure Portal](https://portal.azure.com). Můžete použít také rozhraní příkazového [řádku Azure](tutorial-create-route-table-cli.md) nebo [Azure PowerShell](tutorial-create-route-table-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-an-nva"></a>Vytvoření síťového virtuálního zařízení
 
@@ -52,15 +52,15 @@ Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtu
     | ------- | ------- | ----- |
     | **Podrobnosti o projektu** | Předplatné | Zvolte vaše předplatné. |
     | | Skupina prostředků | Vyberte **vytvořit novou**, zadejte *MyResourceGroup*a vyberte **OK**. |
-    | **Podrobnosti instance** | Název virtuálního počítače | Zadejte *myVmNva*. |
-    | | Region | Vyberte **východní USA (US)**. |
+    | **Podrobnosti o instancích** | Název virtuálního počítače | Zadejte *myVmNva*. |
+    | | Oblast | Vyberte **východní USA (US)**. |
     | | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury**. |
     | | Image | Vyberte **Windows Server 2016 Datacenter**. |
     | | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
     | **Účet správce** | Uživatelské jméno | Zadejte libovolné uživatelské jméno. |
     | | Heslo | Zadejte heslo, které chcete zvolit. musí mít aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm). |
     | | Potvrdit heslo | Znovu zadejte heslo. |
-    | **Pravidla portů pro příchozí provoz** | Veřejné příchozí porty | Vyberte **žádný**. |
+    | **Pravidla portů pro příchozí spojení** | Veřejné příchozí porty | Vyberte **žádný**. |
     | **Úspora peněz** | Máte už licenci k Windows serveru? | Vyberte **ne**. |
 
     ![Základy, vytváření virtuálních počítačů, Azure Portal](./media/tutorial-create-route-table-portal/basics-create-virtual-machine.png)
@@ -110,7 +110,7 @@ Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtu
 
     1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** a Azure ověří vaši konfiguraci.
 
-1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
+1. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
 
     Vytvoření virtuálního počítače trvá několik minut. Počkejte, až Azure dokončí vytváření virtuálního počítače. Na stránce **vaše nasazení se** zobrazí podrobnosti o nasazení.
 
@@ -131,7 +131,7 @@ Síťová virtuální zařízení (síťová virtuální zařízení) jsou virtu
     | Název | *myRouteTablePublic* |
     | Předplatné | Vaše předplatné |
     | Skupina prostředků | **myResourceGroup** |
-    | Umístění | **VYLEPŠENÍ Východní USA** |
+    | Umístění | **(USA) USA – východ** |
     | Šíření tras brány virtuální sítě | **Povoleno** |
 
     ![Vytvoření směrovací tabulky, Azure Portal](./media/tutorial-create-route-table-portal/create-route-table.png)
@@ -208,7 +208,7 @@ Než vyberete **vytvořit** , abyste vytvořili veřejný nebo privátní virtu�
 | Základy | Skupina prostředků | **myResourceGroup** |
 | | Název virtuálního počítače | *myVmPublic* |
 | | Veřejné příchozí porty | **Povolení vybraných portů** |
-| | Vybrat příchozí porty | **Protokol RDP** |
+| | Vyberte příchozí porty | **Protokol RDP** |
 | Sítě | Virtuální síť | **myVirtualNetwork** |
 | | Podsíť | **Veřejné (10.0.0.0/24)** |
 | | Veřejná IP adresa | Výchozí hodnota |
@@ -221,7 +221,7 @@ Než vyberete **vytvořit** , abyste vytvořili veřejný nebo privátní virtu�
 | Základy | Skupina prostředků | **myResourceGroup** |
 | | Název virtuálního počítače | *myVmPrivate* |
 | | Veřejné příchozí porty | **Povolení vybraných portů** |
-| | Vybrat příchozí porty | **Protokol RDP** |
+| | Vyberte příchozí porty | **Protokol RDP** |
 | Sítě | Virtuální síť | **myVirtualNetwork** |
 | | Podsíť | **Privátní (10.0.1.0/24)** |
 | | Veřejná IP adresa | Výchozí hodnota |

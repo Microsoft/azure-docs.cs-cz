@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/30/2019
 ms.author: kgremban
 ms.openlocfilehash: 0c43c6dcced94225e9ab9ae903535ce74286ad9a
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87406706"
 ---
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
@@ -29,7 +29,7 @@ Pokud ještě nemáte registr kontejnerů, postupujte podle těchto kroků a vyt
    | Skupina prostředků | Pro všechny testovací prostředky, které vytvoříte v průběhu rychlých startů a kurzů pro IoT Edge, doporučujeme použít stejnou skupinu prostředků. Například **IoTEdgeResources**. |
    | Název registru | Zadejte jedinečný název. |
    | Umístění | Zvolte umístění, které je blízko vás. |
-   | SKU | Vyberte **Basic**. |
+   | Skladová jednotka (SKU) | Vyberte **Basic**. |
 
 3. Vyberte **Vytvořit**.
 

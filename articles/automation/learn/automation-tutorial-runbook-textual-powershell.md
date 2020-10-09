@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.openlocfilehash: a1b0dff9421f493958554c659043c49ff2874379
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87014996"
 ---
 # <a name="tutorial-create-a-powershell-runbook"></a>Kurz: vytvoření Runbooku PowerShellu
@@ -23,7 +23,7 @@ V tomto kurzu se seznámíte s vytvořením [powershellového runbooku](../autom
 > * Spuštění a sledování stavu úlohy Runbooku
 > * Aktualizace Runbooku pro spuštění virtuálního počítače Azure s parametry Runbooku
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -119,7 +119,7 @@ Sada Runbook, kterou jste vytvořili, je stále v režimu konceptu. Abyste ho mo
 
    ![Všechny protokoly](../media/automation-tutorial-runbook-textual-powershell/job-pane-status-blade-alllogstile.png)
 
-9. Zavřete podokno streamy a podokno úloh a vraťte se na stránku MyFirstRunbook-PowerShell.
+9. Zavřete podokno datové proudy a podokno úlohy, které se vrátí na stránku MyFirstRunbook-PowerShell.
 
 10. V části **Podrobnosti**klikněte na **úlohy** a otevřete stránku úlohy pro tuto sadu Runbook. Tato stránka obsahuje seznam všech úloh, které sada Runbook vytvořila. Měla by se zobrazit jenom jedna úloha, protože jste úlohu spustili jenom jednou.
 
@@ -162,7 +162,7 @@ Jak je znázorněno v následujícím příkladu, připojení spustit jako je vy
    Get-AzVM -ResourceGroupName myResourceGroup -AzContext $AzureContext
    ```
 
-1. Kliknutím na **Upravit** na stránce MyFirstRunbook-PowerShell otevřete textový editor.
+1. Kliknutím na tlačítko **Upravit** na stránce MyFirstRunbook-PowerShell otevřete textový editor.
 
 2. Řádek už nepotřebujete `Write-Output` . Stačí přejít a odstranit.
 

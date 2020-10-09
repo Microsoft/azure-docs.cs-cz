@@ -9,10 +9,10 @@ ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.openlocfilehash: caf492c2cd3940fd7f37e2a4462c8376a127f393
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86189813"
 ---
 # <a name="python-samples-for-cognitive-services-for-big-data"></a>Ukázky Pythonu pro Cognitive Services pro velké objemy dat
@@ -27,7 +27,7 @@ V ukázkách v tomto článku se používají tyto Cognitive Services:
 - Zvukové soubory s mluveným převodem na text přepisovat k extrakci textových přepisů.
 - Detektor anomálií – zjištění anomálií v datech časové řady
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Postupujte podle kroků uvedených v části [Začínáme](getting-started.md) s nastavením Azure Databricks a Cognitive Services prostředí. V tomto kurzu se dozvíte, jak nainstalovat MMLSpark a jak vytvořit cluster Spark v datacihlách.
 1. Po vytvoření nového poznámkového bloku v Azure Databricks zkopírujte níže **sdílený kód** a vložte ho do nové buňky v poznámkovém bloku.
@@ -245,7 +245,7 @@ display(anamoly_detector.transform(df).select("timestamp", "value", "anomalies.i
 
 ### <a name="expected-result"></a>Očekávaný výsledek
 
-| časové razítko            |   hodnota | Anomálie   |
+| časové razítko            |   value | Anomálie   |
 |:---------------------|--------:|:------------|
 | 1972-01-01T00:00:00Z |     826 | Nepravda       |
 | 1972-02-01T00:00:00Z |     799 | Nepravda       |
@@ -254,14 +254,14 @@ display(anamoly_detector.transform(df).select("timestamp", "value", "anomalies.i
 | 1972-05-01T00:00:00Z |     766 | Nepravda       |
 | 1972-06-01T00:00:00Z |     805 | Nepravda       |
 | 1972 – 07 – 01T00:00:00Z |     821 | Nepravda       |
-| 1972 – 08-01T00:00:00Z |   20000 | Pravda        |
+| 1972 – 08-01T00:00:00Z |   20000 | Ano        |
 | 1972 – 09 – 01T00:00:00Z |     883 | Nepravda       |
 | 1972 – 10 – 01T00:00:00Z |     898 | Nepravda       |
 | 1972-11-01T00:00:00Z |     957 | Nepravda       |
 | 1972 – 12.01T00:00:00Z |     924 | Nepravda       |
 | 1973-01-01T00:00:00Z |     881 | Nepravda       |
 | 1973-02-01T00:00:00Z |     837 | Nepravda       |
-| 1973-03-01T00:00:00Z |    9000 | Pravda        |
+| 1973-03-01T00:00:00Z |    9000 | Ano        |
 
 ## <a name="arbitrary-web-apis"></a>Libovolná webová rozhraní API
 
@@ -304,4 +304,4 @@ display(client.transform(df).select("country", udf(get_response_body)(col("respo
 ## <a name="see-also"></a>Viz také
 
 * [Recept: detekce anomálií](./recipes/anomaly-detection.md)
-* [Recept: Průzkumník grafiky](./recipes/art-explorer.md)
+* [Návod: Art Explorer](./recipes/art-explorer.md)

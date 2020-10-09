@@ -13,10 +13,10 @@ metadata:
   ms.author: jgao
   ms.date: 07/30/2020
   ms.openlocfilehash: 6a21841d24fcafefe25473e428e1926849f5e9cf
-  ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/30/2020
+  ms.lasthandoff: 10/09/2020
   ms.locfileid: "87446732"
 landingContent:
 - title: Informace o šablonách ARM
@@ -119,7 +119,7 @@ landingContent:
       url: /rest/api/resources/
     - text: Azure PowerShell
       url: /powershell/module/az.resources
-    - text: Rozhraní příkazového řádku Azure
+    - text: Azure CLI
       url: /cli/azure/resource
     - text: .NET
       url: /dotnet/api/microsoft.azure.management.resourcemanager

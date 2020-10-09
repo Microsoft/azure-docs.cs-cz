@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.author: sharrai
 ms.custom: MVC
 ms.openlocfilehash: a8cb5ec782b5932c13e321b2ba2d6513597fef52
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87422636"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Přesunutí trezoru Recovery Services a konfigurace Azure Site Recovery do jiné oblasti Azure
@@ -33,7 +33,7 @@ V tomto dokumentu budete:
 > [!IMPORTANT]
 > V současné době neexistuje žádný první způsob, jak přesunout Recovery Services trezor a konfiguraci zotavení po havárii, protože se jedná o jinou oblast. Tento článek vás provede procesem zakázání replikace a její nastavení v nové oblasti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Před pokusem o přesunutí virtuálních počítačů Azure do jiné oblasti nezapomeňte odebrat a odstranit konfiguraci zotavení po havárii. 
 
@@ -73,7 +73,7 @@ Pro každý virtuální počítač Azure, který se právě replikuje, můžete 
 Postupujte podle kroků v těchto článcích v závislosti na vašem požadavku na přesun virtuálních počítačů Azure do cílové oblasti:
 
 - [Přesun virtuálních počítačů Azure do jiné oblasti](azure-to-azure-tutorial-migrate.md)
-- [Přesun virtuálních počítačů Azure do zón dostupnosti](move-azure-VMs-AVset-Azone.md)
+- [Přesun virtuálních počítačů Azure do Zóny dostupnosti](move-azure-VMs-AVset-Azone.md)
 
 ## <a name="set-up-site-recovery-based-on-the-new-source-region-for-the-vms"></a>Nastavení Site Recovery v závislosti na nové zdrojové oblasti pro virtuální počítače
 

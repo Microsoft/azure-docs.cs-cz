@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: ed06aef4d494fbdce5a07c5bc50bad9737ba5433
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86497042"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Kurz: sestavení řídicího panelu poskytovatele Power BI
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 > * Streamování dat do Power BI z aplikace logiky
 > * Vytvoření řídicího panelu v reálném čase pro důležité vlastnosti pacienta
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -81,7 +81,7 @@ Pokud chcete aplikaci logiky připojit k Azure Event Hubs, můžete postupovat p
 |---|---|
 |Typ obsahu|application/json|
 |Interval|3|
-|Frekvence|Second|
+|Frequency|Second|
 
 Na konci tohoto kroku by měl návrhář aplikace logiky vypadat takto:
 

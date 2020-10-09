@@ -6,10 +6,10 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: d902258c80467380518df3b55583cea1efa76609
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119306"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Kurz: použití podmínky v šablonách ARM
@@ -28,7 +28,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Nasazení šablony
 > * Vyčištění prostředků
 
-Tento kurz se zabývá pouze základním scénářem použití podmínek. Další informace naleznete v tématu:
+Tento kurz se zabývá pouze základním scénářem použití podmínek. Další informace naleznete v tématech:
 
 * [Struktura souboru šablony: podmínka](conditional-resource-deployment.md)
 * [Podmíněně nasaďte prostředek v ŠABLONĚ ARM](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
@@ -37,7 +37,7 @@ Tento kurz se zabývá pouze základním scénářem použití podmínek. Dalš�
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete:
 

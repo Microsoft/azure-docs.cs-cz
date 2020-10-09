@@ -11,10 +11,10 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e008091b3d0b450384cb7a672a62c786c33bfeab
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87419627"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>Kurz: použití detekcí rizik pro přihlášení uživatelů k aktivaci Multi-Factor Authentication nebo změn hesel v Azure
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > * Zapnutí vícefaktorového ověřování na základě rizikové události
 > * Testování zásad na základě rizik pro pokusy o přihlášení uživatelů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -95,7 +95,7 @@ Pokud chcete tuto zásadu povolit, proveďte následující kroky:
 
 1. V nabídce na levé straně vyberte **zásady rizik uživatelů** .
 1. Ve výchozím nastavení platí zásady pro *všechny uživatele*. V případě potřeby vyberte **přiřazení**a pak zvolte uživatele nebo skupiny, pro které chcete zásadu použít.
-1. V části *podmínky*zvolte **Vybrat podmínky > vyberte úroveň rizika**a pak zvolte *střední a vyšší*.
+1. V části *podmínky*zvolte  **Vybrat podmínky > vyberte úroveň rizika**a pak zvolte *střední a vyšší*.
 1. Klikněte na **Vybrat**a potom na **Hotovo**.
 1. V části *přístup*vyberte **přístup**. Ujistěte se, že je zaškrtnuta možnost **umožnit přístup** a *vyžadovat změnu hesla* , a pak zvolte **Vybrat**.
 1. Nastavte **zásadu Vynutilit** na *zapnuto*a pak vyberte **Uložit**.
@@ -110,7 +110,7 @@ Pokud chcete tuto zásadu povolit, proveďte následující kroky:
 
 1. V nabídce na levé straně vyberte **zásady rizik přihlašování** .
 1. Ve výchozím nastavení platí zásady pro *všechny uživatele*. V případě potřeby vyberte **přiřazení**a pak zvolte uživatele nebo skupiny, pro které chcete zásadu použít.
-1. V části *podmínky*zvolte **Vybrat podmínky > vyberte úroveň rizika**a pak zvolte *střední a vyšší*.
+1. V části *podmínky*zvolte  **Vybrat podmínky > vyberte úroveň rizika**a pak zvolte *střední a vyšší*.
 1. Klikněte na **Vybrat**a potom na **Hotovo**.
 1. V části *přístup*zvolte **vybrat ovládací prvek**. Ujistěte se, že je zaškrtnuta možnost **Povolení přístupu** a *vyžadovat službu Multi-Factor Authentication* , a pak zvolte **možnost vybrat**.
 1. Nastavte **zásadu Vynutilit** na *zapnuto*a pak vyberte **Uložit**.

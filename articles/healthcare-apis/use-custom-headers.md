@@ -10,10 +10,10 @@ ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
 ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081839"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>Přidávání dat do protokolů auditu pomocí vlastních hlaviček protokolu HTTP
@@ -24,9 +24,9 @@ Například pokud je uživatel rozhraní API ověřený externím systémem, ten
 
 Tento tok dat vidíte v následujícím diagramu:
 
-:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="Diagram vlastních hlaviček":::
+:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="Diagram vlastních hlaviček&quot;:::
 
-Vlastní hlavičky můžete použít k zachycení několika typů informací. Příklad:
+Vlastní hlavičky můžete použít k zachycení několika typů informací. Například:
 
 * Informace o identitě nebo autorizaci
 * Původ volajícího
@@ -38,26 +38,26 @@ Vlastní hlavičky můžete použít k zachycení několika typů informací. P�
 
 Pro hlavičky HTTP je nutné použít následující zásady vytváření názvů: X-MS-AZUREFHIR-AUDIT- \<name> .
 
-Tyto hlavičky HTTP jsou součástí kontejneru objektů a dat přidaných do protokolu. Příklad:
+Tyto hlavičky HTTP jsou součástí kontejneru objektů a dat přidaných do protokolu. Například:
 
 * X-MS-AZUREFHIR-AUDIT-USERID: 1234 
 * X-MS-AZUREFHIR-AUDIT-USERLOCATION: XXXX
 * X-MS-AZUREFHIR-AUDIT-XYZ: 1234
 
-Tyto informace se pak při přidání do sloupce vlastnosti v protokolu zaserializovat do formátu JSON. Příklad:
+Tyto informace se pak při přidání do sloupce vlastnosti v protokolu zaserializovat do formátu JSON. Například:
 
 ```json
-{ "X-MS-AZUREFHIR-AUDIT-USERID" : "1234",
-"X-MS-AZUREFHIR-AUDIT-USERLOCATION" : "XXXX",
-"X-MS-AZUREFHIR-AUDIT-XYZ" : "1234" }
+{ &quot;X-MS-AZUREFHIR-AUDIT-USERID&quot; : &quot;1234&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-USERLOCATION&quot; : &quot;XXXX&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-XYZ&quot; : &quot;1234" }
 ```
  
-Stejně jako u všech hlaviček protokolu HTTP se může stejný název záhlaví opakovat s různými hodnotami. Příklad:
+Stejně jako u všech hlaviček protokolu HTTP se může stejný název záhlaví opakovat s různými hodnotami. Například:
 
 * X-MS-AZUREFHIR-AUDIT-USERLOCATION: nemocnice
 * X-MS-AZUREFHIR-AUDIT-USERLOCATION: Nouzový
 
-Po přidání do protokolu jsou hodnoty kombinovány se seznamem odděleným čárkami. Příklad:
+Po přidání do protokolu jsou hodnoty kombinovány se seznamem odděleným čárkami. Například:
 
 {"X-MS-AZUREFHIR-AUDIT-USERLOCATION": "nemocnice a nouze"}
  

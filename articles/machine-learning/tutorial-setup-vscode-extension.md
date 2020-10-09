@@ -10,10 +10,10 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.openlocfilehash: 48fb2ce3672634af202500ccb256e7730933fff8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86199754"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension-preview"></a>Nastavení rozšíření Azure Machine Learning Visual Studio Code (Preview)
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte provádět následující úlohy:
 > * Přihlaste se k účtu Azure z Visual Studio Code
 > * Použití rozšíření Azure Machine Learning ke spuštění ukázkového skriptu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ho ještě nemáte, zaregistrujte se a vyzkoušejte si [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 - Visual Studio Code. Pokud ho nemáte, [nainstalujte ho](https://code.visualstudio.com/docs/setup/setup-overview).
@@ -35,10 +35,10 @@ V tomto kurzu se naučíte provádět následující úlohy:
 
 ## <a name="install-the-extension"></a>Instalace rozšíření
 
-1. Otevřete nástroj Visual Studio Code.
+1. Otevřete Visual Studio Code.
 1. Kliknutím na ikonu **rozšíření** na **řádku aktivity** otevřete zobrazení rozšíření.
 1. V zobrazení rozšíření vyhledejte "Azure Machine Learning".
-1. Vyberte **Install** (Nainstalovat).
+1. Vyberte **Nainstalovat**.
 
     > [!div class="mx-imgBorder"]
     > ![Nainstalovat rozšíření Azure Machine Learning VS Code](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)
