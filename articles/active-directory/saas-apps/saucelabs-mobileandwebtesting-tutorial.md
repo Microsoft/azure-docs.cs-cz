@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 8dd5ca148474a1fe1464217f60c79e3815a5b26d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88547899"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Kurz: Azure Active Directory integrace s Omáčk Labs – mobilní a webové testování
@@ -74,7 +74,7 @@ Aby bylo jednotné přihlašování fungovat, je třeba vytvořit odkaz na propo
 Chcete-li konfigurovat a testovat jednotné přihlašování Azure AD pomocí programu Omáčk Labs – mobilní a webové testování, je nutné dokončit následující stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Konfigurace programu Omáčk Labs – mobilní a webové testování: jednotné přihlašování](#configure-sauce-labs---mobile-and-web-testing-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Konfigurace programu Omáčk Labs – mobilní a webové testování – jednotné přihlašování](#configure-sauce-labs---mobile-and-web-testing-single-sign-on)** – pro konfiguraci nastavení jediného Sign-On na straně aplikace
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořit testovací laboratoř – mobilní a webový test testování uživatele](#create-sauce-labs---mobile-and-web-testing-test-user)** – Pokud chcete mít protějšek Britta Simon v programu omáčk Labs – mobilní a webové testování, které je propojené s reprezentací uživatele v Azure AD.
@@ -94,7 +94,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí programu
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -102,7 +102,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí programu
 
     ![Omáčka Labs – informace o jednotném přihlašování pro mobilní a webové testování v doméně a adresách URL](common/preintegrated.png)
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -116,25 +116,25 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí programu
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-sauce-labs---mobile-and-web-testing-single-sign-on"></a>Konfigurace omáčky Labs – jednotné přihlašování pro mobilní a webové testování
+### <a name="configure-sauce-labs---mobile-and-web-testing-single-sign-on"></a>Konfigurace omáčky Labs – mobilní a webové testování v jednom Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k webu Omáčk Labs – mobilní a webové testování společnosti jako správce.
 
 2. Klikněte na **ikonu uživatele** a vyberte kartu **Správa týmu** .
 
-    ![Konfigurace jednotného přihlašování](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
+    ![Konfigurace jednoho Sign-On](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
 
 3. Do textového pole zadejte **název domény** .
 
-    ![Konfigurace jednotného přihlašování](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
+    ![Konfigurace jednoho Sign-On](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
 
 4. Klikněte na tlačítko **Konfigurovat** kartu.
 
-    ![Konfigurace jednotného přihlašování](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
+    ![Konfigurace jednoho Sign-On](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
 
 5. V části **Konfigurace jednotného přihlašování** proveďte následující kroky.
 
-    ![Konfigurace jednotného přihlašování](./media/saucelabs-mobileandwebtesting-tutorial/configure4.png)
+    ![Konfigurace jednoho Sign-On](./media/saucelabs-mobileandwebtesting-tutorial/configure4.png)
 
     a. Klikněte na **Procházet** a nahrajte stažený soubor metadat z Azure AD.
 
@@ -165,7 +165,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -173,7 +173,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Omáčk Labs – mobilní a webové testování**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost **omáčka Labs – mobilní a webové testování**.
 

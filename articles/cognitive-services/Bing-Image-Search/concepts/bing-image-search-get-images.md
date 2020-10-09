@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 309bbca762149f8804742d9ef02d4c3e8dfcdc6b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67542767"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Získat obrázky z webu pomocí rozhraní API Bingu pro vyhledávání obrázků
@@ -31,7 +31,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Použijte parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) pro hledaný výraz v kódování URL. Pokud například zadáte *plaveb dinghies*, nastavte `q` na `sailing+dinghies` nebo. `sailing%20dinghies`
+Použijte parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) pro hledaný výraz v kódování URL. Pokud například zadáte *plaveb dinghies*, nastavte `q` na `sailing+dinghies` nebo `sailing%20dinghies` .
 
 > [!IMPORTANT]
 > * Všechny požadavky musí být provedeny ze serveru, nikoli z klienta.
@@ -46,7 +46,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghi
 ```
 
 > [!NOTE]
-> Odpovědi na dotazy, které `site:` používají operátor, mohou zahrnovat obsah pro dospělé bez ohledu na nastavení [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) . Používejte `site:` pouze v případě, že víte o obsahu v doméně.
+> Odpovědi na dotazy, které používají `site:` operátor, mohou zahrnovat obsah pro dospělé bez ohledu na nastavení [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) . Používejte pouze v případě, že víte `site:` o obsahu v doméně.
 
 ## <a name="filter-images"></a>Filtrovat obrázky
 

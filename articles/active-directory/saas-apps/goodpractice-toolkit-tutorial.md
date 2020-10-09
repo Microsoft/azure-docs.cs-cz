@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.openlocfilehash: 10773a2a379291fa861dbb2adfdda2ba3f63117f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550635"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>Kurz: Azure Active Directory integrace s nástroji pro sady nástrojů
@@ -81,16 +81,16 @@ V této části nakonfigurujete jednotné přihlašování služby Azure AD pomo
 
     ![Dialogové okno vybrat metodu jednotného přihlašování s zvýrazněním SAML](common/select-saml-option.png)
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-    ![Stránka nastavit jednotné přihlašování pomocí SAML s ikonou tužky pro základní konfiguraci SAML zvýrazněnou](common/edit-urls.png)
+    ![Stránka nastavit jeden Sign-On se stránkou SAML s ikonou tužky pro základní konfiguraci SAML zvýrazněnou](common/edit-urls.png)
 
 1. V části **základní konfigurace SAML** v poli **přihlašovací adresa URL** zadejte adresu URL, která má vzor `https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId>` .
 
     > [!NOTE]
     > Hodnota **přihlašovací adresy URL** není skutečná. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Chcete-li získat hodnotu, obraťte se na [tým podpory nástrojů](mailto:support@goodpractice.com) pro přístup k nástrojům.
 
-1. Na stránce **nastavit jednotné přihlašování se službou SAML** přejdete do části **podpisový certifikát SAML** . Napravo od **XML federačních metadat**vyberte **Stáhnout** a stáhněte text XML a uložte ho do svého počítače. Obsah XML závisí na možnostech, které vyberete.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML přejdete do části **podpisový certifikát SAML** . Napravo od **XML federačních metadat**vyberte **Stáhnout** a stáhněte text XML a uložte ho do svého počítače. Obsah XML závisí na možnostech, které vyberete.
 
     ![Část podpisový certifikát SAML se zvýrazněnou možností stáhnout vedle metadat federačního kódu XML](common/metadataxml.png)
 
@@ -112,7 +112,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon v Azure P
 1. V horní části obrazovky vyberte **Nový uživatel**.
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **název** zadejte **B. Simon**.  
-   1. Do pole **uživatelské jméno** zadejte **B. Simon@**_doménaspolečnosti_**.** _přípona_. Například, B.Simon@contoso.com.
+   1. Do pole **uživatelské jméno** zadejte **B.Simon@**_doménaspolečnosti_**.** _přípona_. Například, B.Simon@contoso.com.
    1. Zaškrtněte políčko **Zobrazit heslo** a potom zapište hodnotu zobrazenou v poli **heslo** .
    1. Vyberte **Vytvořit**.
 

@@ -49,7 +49,7 @@
           href: troubleshoot-agent-onboard.md
         - name: Problémy s rozšířením virtuálního počítače
           href: troubleshoot-vm-extensions.md
-- name: Referenční informace
+- name: Odkaz
   items:
     - name: Rezidence dat
       href: data-residency.md

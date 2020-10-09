@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
 ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70860319"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Použití Azure Cloud Shellho okna
@@ -44,7 +44,7 @@ Klikněte na ikonu nastavení v levém horním rohu okna, pak najeďte myší na
 Klikněte na ikonu nastavení v levém horním rohu okna, pak najeďte myší na možnost Font (písmo) a vyberte požadované písmo.  Váš výběr bude trvalý napříč relacemi.
 ![Písmo](media/using-the-shell-window/text-font.png)
 
-## <a name="upload-and-download-files"></a>Ukládání a stahování souborů
+## <a name="upload-and-download-files"></a>Nahrávání a stahování souborů
 Klikněte na ikonu nahrát/stáhnout soubory v levém horním rohu okna a pak vyberte nahrát nebo stáhnout.  
 ![Nahrávání a stahování souborů](media/using-the-shell-window/uploaddownload.png)
 * Pro nahrání souborů použijte místní okno k vyhledání souboru na místním počítači, vyberte požadovaný soubor a klikněte na tlačítko otevřít.  Soubor se nahraje do `/home/user` adresáře.
@@ -66,7 +66,7 @@ Klikněte na ikonu náhled webu v levém horním rohu okna, vyberte možnost kon
 ![Náhled webu](media/using-the-shell-window/preview.png)  
 <br>
 ![Konfigurace portu](media/using-the-shell-window/preview-configure.png)  
-Klikněte na ikonu náhled webu v levém horním rohu okna a vyberte možnost port náhledu... pro náhled otevřeného portu na nové kartě klikněte na ikonu náhled webu v levém horním rohu okna, vyberte Zavřít port... pro zavření otevřeného portu.  
+Klikněte na ikonu náhled webu v levém horním rohu okna a vyberte možnost port náhledu... Zobrazí náhled otevřeného portu na nové kartě. Klikněte na ikonu náhled webu v levém horním rohu okna a vyberte Zavřít port... pro zavření otevřeného portu.  
 ![Zobrazit/zavřít port](media/using-the-shell-window/preview-options.png)
 
 ## <a name="minimize--maximize-cloud-shell-window"></a>Minimalizace & maximalizuje Cloud Shell okno

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 5457730494d509a2923ce929f41e397cb6064126
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550053"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cylanceprotect"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s CylancePROTECT
@@ -79,20 +79,20 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **identifikátor** zadejte adresu URL:
     
-    | Region | Hodnota adresy URL |
+    | Oblast | Hodnota adresy URL |
     |----------|---------|
-    | Asie a Tichomoří – Severovýchod (APNE1)| `https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
-    | Asie a Tichomoří – jihovýchod (AU) | `https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml` |
+    | Asia-Pacific Severovýchod (APNE1)| `https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
+    | Asia-Pacific jihovýchod (AU) | `https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml` |
     | Evropa – střed (EUC1)|`https://login-euc1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Severní Amerika|`https://login.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Jižní Amerika (SAE1)|`https://login-sae1.cylance.com/EnterpriseLogin/ConsumeSaml`|
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL:
     
-    | Region | Hodnota adresy URL |
+    | Oblast | Hodnota adresy URL |
     |----------|---------|
-    | Asie a Tichomoří – Severovýchod (APNE1)|`https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
-    | Asie a Tichomoří – jihovýchod (AU)|`https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml`|
+    | Asia-Pacific Severovýchod (APNE1)|`https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
+    | Asia-Pacific jihovýchod (AU)|`https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Evropa – střed (EUC1)|`https://login-euc1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Severní Amerika|`https://login.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | Jižní Amerika (SAE1)|`https://login-sae1.cylance.com/EnterpriseLogin/ConsumeSaml`|
@@ -122,7 +122,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

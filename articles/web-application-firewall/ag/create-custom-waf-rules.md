@@ -9,10 +9,10 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: bfa6690c636e15fa933f50698cd81359600b5c05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77368303"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Vytvoření a použití vlastních pravidel brány firewall webových aplikací v2 na Application Gateway
@@ -28,7 +28,7 @@ Tento článek ukazuje několik ukázkových uživatelských pravidel, která m�
 
 ## <a name="example-1"></a>Příklad 1
 
-Víte, že je k dispozici robot s názvem *evilbot* , který chcete blokovat procházení webu. V takovém případě se zablokuje *Evilbot* User-Agent v hlavičce požadavku.
+Víte, že je k dispozici robot s názvem *evilbot* , který chcete blokovat procházení webu. V takovém případě zablokujete User-Agent *evilbot* v hlavičkách požadavku.
 
 Logika: p
 
@@ -225,11 +225,11 @@ Tady je odpovídající kód JSON:
   }
 ```
 
-Odpovídající pravidlo pro počítačový počítač:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
+Odpovídající pravidlo pro počítačový počítač: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-4"></a>Příklad 4
 
-V tomto příkladu chcete blokovat *Evilbot*uživatelského agenta a provoz v rozsahu 192.168.5.0/24. K tomu můžete vytvořit dvě samostatné podmínky shody a umístit je do stejného pravidla. Tím je zajištěno, že pokud se shodují obě *evilbot* v hlavičce uživatelského agenta **a** IP adresy z rozsahu 192.168.5.0/24, požadavek se zablokuje.
+V tomto příkladu chcete blokovat User-Agent *evilbot*a provoz v rozsahu 192.168.5.0/24. K tomu můžete vytvořit dvě samostatné podmínky shody a umístit je do stejného pravidla. Tím je zajištěno, že pokud se shodují obě *evilbot* v hlavičce User-Agent **a** IP adresy z rozsahu 192.168.5.0/24, požadavek se zablokuje.
 
 Logic: p **a** q
 

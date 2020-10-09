@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: aahi
 ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71840223"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Postupy: použití rozhraní API pro detekci anomálií v datech časových řad  
@@ -47,7 +47,7 @@ Odesláním nových datových bodů při jejich generování můžete monitorova
 
 ## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>Úprava hranic detekce dolních a horních anomálií
 
-Ve výchozím nastavení se horní a dolní hranice pro detekci anomálií počítají `expectedValue`pomocí `upperMargin`, a `lowerMargin`. Pokud požadujete jiné hranice, doporučujeme použít `marginScale` na `upperMargin` nebo. `lowerMargin` Hranice by se vypočítaly takto:
+Ve výchozím nastavení se horní a dolní hranice pro detekci anomálií počítají pomocí `expectedValue` , `upperMargin` a `lowerMargin` . Pokud požadujete jiné hranice, doporučujeme použít `marginScale` na `upperMargin` nebo `lowerMargin` . Hranice by se vypočítaly takto:
 
 |Překračuje  |Výpočet  |
 |---------|---------|

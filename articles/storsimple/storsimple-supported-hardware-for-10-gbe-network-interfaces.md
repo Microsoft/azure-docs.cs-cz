@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
 ms.openlocfilehash: 7fafe177ea0c6c618dc4ab0727ba14c83cbb0102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68965019"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>Podporovaný hardware pro síťová rozhraní 10 GbE na zařízení StorSimple
@@ -42,7 +42,7 @@ Společnost Microsoft testovala následující malé vysílače, kabely a přep�
 | 1. |Cisco |SFP – H10GB – CU1M |
 | 2. |Cisco |SFP – H10GB – CU2M |
 | 3. |Cisco |SFP – H10GB – CU3M |
-| 4. |Tripp – Lite |N820-05M (OM3) |
+| 4. |Tripp-Lite |N820-05M (OM3) |
 
 ### <a name="switches"></a>Přepínače
 | USA: Ne. | Značka | Model |
@@ -73,7 +73,7 @@ Mellanox testoval následující malé přijímače, kabely a přepínače, aby 
 ### <a name="cables-and-modules-supported-by-mellanox"></a>Kabely a moduly podporované Mellanox
 V následující tabulce jsou uvedeny kabely a moduly, které podporuje Mellanox. Tyto testy nebyly testovány společností Microsoft, ale pravděpodobně budou pracovat se zařízením StorSimple.
 
-| USA: Ne. | Rychlost | Model | Description | Značka |
+| USA: Ne. | Rychlost | Model | Popis | Značka |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1 1M |pasivní dráty Copper – kabel + 10 GB/s 1m |Arista |
 | 2. |10 GbE |CAB – SFP – SFP – 2 MIN |pasivní kabel Copper kabelové SFP + 10 GB/s 2 min |Arista |
@@ -114,10 +114,10 @@ V následující tabulce jsou uvedeny kabely a moduly, které podporuje Mellanox
 ### <a name="switches-supported-by-mellanox"></a>Přepínače podporované Mellanox
 V následující tabulce jsou uvedeny přepínače podporované nástrojem Mellanox. Tyto testy nebyly testovány společností Microsoft, ale pravděpodobně budou pracovat se zařízením StorSimple.
 
-| USA: Ne. | Rychlost | Model | Description | Značka |
+| USA: Ne. | Rychlost | Model | Popis | Značka |
 | --- | --- | --- | --- | --- |
 | 1. |10GbE |516733 – B21 |Přepínač HP prozatáčka 6120XG 10GbE Ethernet Switch |EMULEX |
-| 2. |10GbE |538113 – B21 |Modul Pass-through HP 10GbE (PTM) |EMULEX |
+| 2. |10GbE |538113 – B21 |Modul PTM (HP 10GbE Pass-Through Module) |EMULEX |
 | 3. |10GbE |EN4093 |Modul IBM PureFlex System Fabric EN4093 10 Gigabit-Scalable Switch Module |IBM |
 | 4. |10 GbE LOM |3020 |Okno přepínače Cisco Catalyst 3020 10 GbE LOM |Cisco |
 | 5. |10 GbE LOM |3020X |Okno přepínače Cisco Catalyst 3020X 10 GbE LOM |Cisco |

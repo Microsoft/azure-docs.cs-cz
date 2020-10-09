@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/29/2020
 ms.author: jeedes
 ms.openlocfilehash: 4e23c8a8497459ce7cb3cab3d1469359f80ad846
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550767"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-cloud---enterprise-account"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí účtu GitHub Enterprise Cloud – Enterprise
@@ -64,8 +64,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[Konfigurace jednotného přihlašování pro GitHub Enterprise Cloud – podnikový účet](#configure-github-enterprise-cloud-enterprise-account-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace
-    1. **[Vytvoření webu GitHub Enterprise Cloud – podnikový účet testu uživatele](#create-github-enterprise-cloud-enterprise-account-test-user)** – Pokud chcete mít protějšek B. Simon v GitHub Enterprise Cloud-Enterprise, který je propojený s reprezentací uživatele v Azure AD.
+1. **[NAKONFIGURUJTE jednotné přihlašování k účtu GitHub Enterprise Cloud-Enterprise](#configure-github-enterprise-cloud-enterprise-account-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte testovacího uživatele účtu GitHub enterprise Cloud-Enterprise](#create-github-enterprise-cloud-enterprise-account-test-user)** , abyste měli protějšek B. Simon v GitHub Enterprise Cloud-Enterprise, který je propojený s reprezentací uživatele Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
@@ -109,7 +109,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -129,11 +129,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-github-enterprise-cloud-enterprise-account-sso"></a>Konfigurace GitHubu Enterprise cloudu – podnikový účet jednotného přihlašování
+## <a name="configure-github-enterprise-cloud-enterprise-account-sso"></a>Konfigurace jednotného přihlašování k účtu GitHub Enterprise Cloud-Enterprise
 
 Pokud chcete nakonfigurovat jednotné přihlašování na straně **účtu GitHub Enterprise Cloud-Enterprise** , je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do webu [GitHub Enterprise Cloud Enterprise Support Team](mailto:support@github.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
-### <a name="create-github-enterprise-cloud-enterprise-account-test-user"></a>Vytvoření cloudového cloudu GitHub – podnikový účet testu uživatele
+### <a name="create-github-enterprise-cloud-enterprise-account-test-user"></a>Vytvořit testovacího uživatele pro účet GitHub Enterprise Cloud-Enterprise
 
 V této části se v rámci účtu GitHub Enterprise Cloud-Enterprise vytvoří uživatel s názvem B. Simon. GitHub Enterprise Cloud – účet Enterprise podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě neexistuje v rámci účtu GitHub Enterprise Cloud-Enterprise, vytvoří se po ověření nový.
 

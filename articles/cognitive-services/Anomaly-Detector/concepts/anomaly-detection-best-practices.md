@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: aahi
 ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67721619"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Osvědčené postupy pro používání rozhraní API detektoru anomálií
@@ -93,9 +93,9 @@ Rozhraní API pro detekci anomálií funguje nejlépe u rovnoměrně distribuova
 
 Pokud víte, že vaše data časové řady mají sezónní vzor (k tomu dochází v pravidelných intervalech), můžete zlepšit přesnost a dobu odezvy rozhraní API. 
 
-Určení `period` při vytváření požadavku JSON může snížit latenci detekce anomálií až o 50%. `period` Je celé číslo, které určuje zhruba počet datových bodů, které časová řada potřebuje k opakování vzoru. Například časová řada s jedním datovým bodem za den bude `period` mít jako `7`a časová řada s jedním bodem za hodinu (se stejným týdenním vzorem) by `period` měla. `7*24` Pokud si nejste jisti vzorem vašich dat, nemusíte tento parametr zadávat.
+Určení `period` při vytváření požadavku JSON může snížit latenci detekce anomálií až o 50%. `period`Je celé číslo, které určuje zhruba počet datových bodů, které časová řada potřebuje k opakování vzoru. Například časová řada s jedním datovým bodem za den bude mít `period` jako `7` a časová řada s jedním bodem za hodinu (se stejným týdenním vzorem) by měla `period`  `7*24` . Pokud si nejste jisti vzorem vašich dat, nemusíte tento parametr zadávat.
 
-Nejlepších výsledků dosáhnete, když `period`zadáte 4 pro datový bod a navíc ještě další. Například hodinová data s týdenním vzorem, jak je popsáno výše, by měla v textu žádosti (`7 * 24 * 4 + 1`) poskytnout 673 datových bodů.
+Nejlepších výsledků dosáhnete, když zadáte 4 pro `period` datový bod a navíc ještě další. Například hodinová data s týdenním vzorem, jak je popsáno výše, by měla v textu žádosti () poskytnout 673 datových bodů `7 * 24 * 4 + 1` .
 
 ### <a name="sampling-data-for-real-time-monitoring"></a>Vzorkování dat pro sledování v reálném čase
 

@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77019668"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>Monitorování aktivity řešení VMware podle CloudSimple
@@ -46,15 +46,15 @@ Pokud chcete výstrahy potvrdit a odebrat je ze seznamu, vyberte jednu nebo víc
 
 Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Sloupec | Description |
+| Sloupec | Popis |
 ------------ | ------------- |
 | Typ výstrahy | Kategorie výstrahy|
 | Čas | Čas, kdy došlo k upozornění. |
-| Severity | Význam výstrahy.|
+| Závažnost | Význam výstrahy.|
 | Název prostředku | Název přiřazený k prostředku, jako je například název privátního cloudu. |
 | Typ prostředku | Kategorie prostředku: privátní cloud, cloudový stojan. |
 | ID prostředku | Identifikátor prostředku |
-| Description | Popis, který výstrahu aktivoval. |
+| Popis | Popis, který výstrahu aktivoval. |
 | Potvrzeno | Označení, zda je výstraha potvrzena. |
 
 ## <a name="events"></a>Události
@@ -63,14 +63,14 @@ Události zobrazují aktivitu uživatelů a systémů na portálu CloudSimple. N
 
 Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Sloupec | Description |
+| Sloupec | Popis |
 ------------ | ------------- |
 | Čas | Datum a čas, kdy došlo k události. |
 | Event Type | Číselný kód identifikující událost. |
-| Severity | Závažnost události.|
+| Závažnost | Závažnost události.|
 | Název prostředku | Název přiřazený k prostředku, jako je například název privátního cloudu. |
 | Typ prostředku | Kategorie prostředku: privátní cloud, cloudový stojan. |
-| Description | Popis, který výstrahu aktivoval. |
+| Popis | Popis, který výstrahu aktivoval. |
 
 ## <a name="tasks"></a>Úlohy
 
@@ -78,7 +78,7 @@ Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na *
 
 Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Sloupec | Description |
+| Sloupec | Popis |
 ------------ | ------------- |
 | ID úlohy | Jedinečný identifikátor úkolu |
 | Operace | Akce, kterou úkol provede. |
@@ -90,7 +90,7 @@ Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na *
 | End | Čas ukončení úlohy |
 | Status | Aktuální stav úlohy. |
 | Uplynulý čas | Čas potřebný k dokončení úkolu (Pokud je dokončen) nebo v současné době (pokud probíhá). |
-| Description | Popis úlohy |
+| Popis | Popis úlohy |
 
 ## <a name="audit"></a>Auditování
 
@@ -98,7 +98,7 @@ Protokoly auditu udržují přehled o aktivitě uživatelů. Protokoly auditová
 
 Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na **Upravit sloupce** a vyberte sloupce, které chcete zobrazit.
 
-| Sloupec | Description |
+| Sloupec | Popis |
 ------------ | ------------- |
 | Čas | Čas položky auditu |
 | Operace | Akce, kterou úkol provede. |
@@ -108,7 +108,7 @@ Pro výstrahy jsou k dispozici následující sloupce informací. Klikněte na *
 | ID prostředku | Identifikátor prostředku |
 | Výsledek | Výsledek aktivity, například **úspěch**. |
 | Doba trvání | Čas k dokončení úkolu. |
-| Description | Popis akce |
+| Popis | Popis akce |
 
 ## <a name="next-steps"></a>Další kroky
 

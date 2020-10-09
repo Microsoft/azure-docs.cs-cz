@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: ce5572c4c5aca6f48496250c942d50b90551f36f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Kurz: Azure Active Directory Integration s Kantega SSO pro FishEye/kelímek
@@ -73,7 +73,7 @@ Aby se jednotné přihlašování fungovalo, je potřeba zřídit odkazový vzta
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí jednotného přihlašování Kantega pro FishEye/kelímek, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte KANTEGA SSO pro jednotné přihlašování Fisheye/kelímek](#configure-kantega-sso-for-fisheyecrucible-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. Nakonfigurovat jednotné přihlašování **[Kantega pro jednotné přihlašování Fisheye/kelímek](#configure-kantega-sso-for-fisheyecrucible-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte si KANTEGA SSO pro testovacího uživatele Fisheye/kelímek](#create-kantega-sso-for-fisheyecrucible-test-user)** , abyste měli protějšek Britta Simon v Kantega SSO pro Fisheye/kelímek, který se odkazuje na reprezentaci uživatele v Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -112,9 +112,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Tyto hodnoty jsou obdrženy během konfigurace modulu plug-in FishEye/kelímek, který je vysvětlen dále v tomto kurzu.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a adresou URL Sign-On. Tyto hodnoty jsou obdrženy během konfigurace modulu plug-in FishEye/kelímek, který je vysvětlen dále v tomto kurzu.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -128,89 +128,89 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-kantega-sso-for-fisheyecrucible-single-sign-on"></a>Konfigurace jednotného přihlašování Kantega SSO pro FishEye/kelímek
+### <a name="configure-kantega-sso-for-fisheyecrucible-single-sign-on"></a>Konfigurace jednotného přihlašování Kantega pro FishEye/kelímek Single Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k místnímu serveru FishEye/kelímek jako správce.
 
 1. Najeďte myší na ozubeného kola a klikněte na **Doplňky**.
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
 
 1. V části nastavení systému klikněte na **najít nové doplňky**. 
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
 
 1. Vyhledejte **KANTEGA SSO for kelímek** a kliknutím na tlačítko **nainstalovat** nainstalujte nový modul plug-in SAML.
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon2.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/addon2.png)
 
 1. Spustí se instalace modulu plug-in. 
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/addon33.png)
 
 1. Po dokončení instalace. Klikněte na **Zavřít**.
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon34.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/addon34.png)
 
 1.  Klikněte na **Manage** (Spravovat).
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon35.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/addon35.png)
 
 1. Kliknutím na **Konfigurovat** Nakonfigurujte nový modul plug-in. 
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon3.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/addon3.png)
 
 1. V části **SAML** . V rozevíracím seznamu **Přidat poskytovatele identity** vyberte **Azure Active Directory (Azure AD)** .
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
 
 1. Vyberte úroveň předplatného jako **základní**.
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
 
 1. V části **Vlastnosti aplikace** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/addon6.png)
 
-    a. Zkopírujte hodnotu **identifikátoru URI ID aplikace** a použijte ji jako **identifikátor, adresu URL odpovědi a přihlašovací adresu URL** v části **základní konfigurace SAML** v Azure Portal.
+    a. Zkopírujte hodnotu **identifikátoru URI ID aplikace** a použijte ji jako **identifikátor, adresu URL odpovědi a adresu URL Sign-On** v části **základní konfigurace SAML** v Azure Portal.
 
-    b. Klikněte na **Další**.
+    b. Klikněte na **Next** (Další).
 
 1. V části **import metadat** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
 
     a. Vyberte **soubor metadat na mém počítači**a nahrajte soubor metadat, který jste stáhli z Azure Portal.
 
-    b. Klikněte na **Další**.
+    b. Klikněte na **Next** (Další).
 
 1. V části **název a umístění jednotného přihlašování** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
 
     a. Do textového pole **název zprostředkovatele** identity přidejte jméno poskytovatele identity (např. Azure AD).
 
-    b. Klikněte na **Další**.
+    b. Klikněte na **Next** (Další).
 
 1. Ověřte podpisový certifikát a klikněte na tlačítko **Další**.   
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
 
 1. V části **uživatelské účty Fisheye** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/addon10.png)
 
     a. **V případě potřeby vyberte možnost vytvořit uživatele v interním adresáři Fisheye** a zadejte vhodný název skupiny pro uživatele (může to být víc. skupin oddělených čárkami).
 
-    b. Klikněte na **Další**.
+    b. Klikněte na **Next** (Další).
 
 1. Klikněte na **Finish** (Dokončit).
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/addon11.png)
 
 1. V části **známé domény pro Azure AD** proveďte následující kroky:  
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
+    ![Konfigurace jednoho Sign-On](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
 
     a. Na levém panelu stránky vyberte **známé domény** .
 
@@ -240,7 +240,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -248,7 +248,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Kantega SSO pro Fisheye/kelímek**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **KANTEGA SSO pro Fisheye/kelímek**.
 

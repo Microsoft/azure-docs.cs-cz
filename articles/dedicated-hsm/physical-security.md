@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70881025"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Vyhrazené fyzické zabezpečení HSM Azure
@@ -58,5 +58,5 @@ Doporučuje se, aby všechny klíčové koncepty služby, jako je například vy
 * [Vysoká dostupnost](high-availability.md)
 * [Sítě](networking.md)
 * [Možnosti podpory](supportability.md)
-* [Monitorování](monitoring.md)
+* [Sledování](monitoring.md)
 * [Architektura nasazení](deployment-architecture.md)

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68423915"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>Použití hodnocení k zobrazení výsledků hledání entit  
@@ -26,8 +26,8 @@ V rámci každé skupiny pole [položek](https://docs.microsoft.com/rest/api/cog
 
 |Pole | Popis  |
 |---------|---------|
-|`answerType` a `resultIndex` | `answerType`Identifikuje odpověď (entitu nebo místo) a `resultIndex` identifikuje výsledek v rámci této odpovědi (například entity). Index začíná na 0.|
-|`value`    | `value`Obsahuje ID, které odpovídá ID odpovědi nebo výsledku v odpovědi. Buď odpověď, nebo výsledky obsahují ID, ale ne obojí. |
+|`answerType` a `resultIndex` | `answerType` Identifikuje odpověď (entitu nebo místo) a `resultIndex` identifikuje výsledek v rámci této odpovědi (například entity). Index začíná na 0.|
+|`value`    | `value` Obsahuje ID, které odpovídá ID odpovědi nebo výsledku v odpovědi. Buď odpověď, nebo výsledky obsahují ID, ale ne obojí. |
   
 Použití `answerType` a `resultIndex` je proces se dvěma kroky. Nejprve použijte `answerType` k identifikaci odpovědi, která obsahuje výsledky k zobrazení. Pak použijte `resultIndex` k indexování výsledků této odpovědi, aby se zobrazil výsledek. ( `answerType` Hodnota je název pole v objektu [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) .) Pokud chcete zobrazit všechny výsledky odpovědi společně, položka odpovědi na řazení neobsahuje `resultIndex` pole.
 
