@@ -17,10 +17,10 @@ ms.workload: infrastructure
 ms.date: 08/23/2018
 ms.author: kumud
 ms.openlocfilehash: 85fc5687b82947ed16bde0c30ca2b947514ba958
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74186372"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Kurz: Omezení síťového přístupu k prostředkům PaaS s využitím koncových bodů služby pro virtuální síť pomocí webu Azure Portal
@@ -37,7 +37,7 @@ Koncové body služby pro virtuální síť umožňují omezení síťového př
 
 Pokud chcete, můžete tento kurz absolvovat s použitím [Azure CLI](tutorial-restrict-network-access-to-resources-cli.md) nebo [Azure PowerShellu](tutorial-restrict-network-access-to-resources-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
@@ -56,11 +56,11 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
    |Předplatné| Vyberte své předplatné.|
    |Skupina prostředků | Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.|
    |Umístění| Vyberte **východní USA** |
-   |Název podsítě| Veřejný|
+   |Název podsítě| Public|
    |Rozsah adres podsítě| 10.0.0.0/24|
-   |DDoS Protection| Základní|
+   |Ochrana před útoky DDoS| Základní|
    |Koncové body služby| Zakázáno|
-   |Brána firewall| Zakázáno|
+   |Firewall| Zakázáno|
 
    ![Zadání základních informací o virtuální síti](./media/tutorial-restrict-network-access-to-resources/create-virtual-network.png)
 
@@ -77,7 +77,7 @@ Koncové body služby se povolují pro každou službu a podsíť. Vytvořte pod
 
     |Nastavení|Hodnota|
     |----|----|
-    |Název| Soukromá |
+    |Název| Soukromé |
     |Rozsah adres| 10.0.1.0/24|
     |Koncové body služby| V části **Služby** vyberte **Microsoft.Storage**.|
 
@@ -154,7 +154,7 @@ Ve výchozím nastavení mohou všechny virtuální počítače v podsíti komun
 
 Kroky potřebné k omezení síťového přístupu k prostředkům vytvořeným prostřednictvím služeb Azure povolených v koncových bodech se u jednotlivých služeb liší. Konkrétní kroky pro jednotlivé služby najdete v dokumentaci příslušné služby. Zbývající část tohoto kurzu jako příklad obsahuje kroky k omezení síťového přístupu k účtu služby Azure Storage.
 
-### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
 2. Vyberte **Úložiště** a pak vyberte **Účet úložiště – objekt blob, soubor, tabulka, fronta**.
@@ -191,7 +191,7 @@ Kroky potřebné k omezení síťového přístupu k prostředkům vytvořeným 
 
     |Nastavení|Hodnota|
     |----|----|
-    |Předplatné| Vyberte předplatné.|
+    |Předplatné| Vyberte své předplatné.|
     |Virtuální sítě|V části **Virtuální sítě** vyberte **myVirtualNetwork**.|
     |Podsítě| V části **Podsítě** vyberte **Private**.|
 
@@ -219,8 +219,8 @@ Pokud chcete otestovat síťový přístup k účtu úložiště, nasaďte do ka
    |----|----|
    |Název| myVmPublic|
    |Uživatelské jméno|Zadejte libovolné uživatelské jméno.|
-   |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-   |Předplatné| Vyberte předplatné.|
+   |Heslo| Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+   |Předplatné| Vyberte své předplatné.|
    |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
    |Umístění| Vyberte **USA – východ**.|
 

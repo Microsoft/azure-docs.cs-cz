@@ -13,10 +13,10 @@ metadata:
   ms.author: mhopkins
   ms.date: 08/27/2019
   ms.openlocfilehash: 871447957b905157625ab487269b9ce1ca105935
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
+  ms.lasthandoff: 10/09/2020
   ms.locfileid: "75457296"
 landingContent:
 - title: Informace o frontách Azure
@@ -45,7 +45,7 @@ landingContent:
       url: storage-quickstart-queues-nodejs.md
   - linkListType: how-to-guide
     links:
-    - text: Začínáme s Azure Queue Storage pomocí rozhraní .NET
+    - text: Začínáme s úložištěm Azure Queue pomocí rozhraní .NET
       url: storage-dotnet-how-to-use-queues.md
     - text: Používání úložiště Queue z Javy
       url: storage-java-how-to-use-queue-storage.md
@@ -61,7 +61,7 @@ landingContent:
     links:
     - text: Provádění operací Azure Queue Storage s využitím Azure PowerShellu
       url: storage-powershell-how-to-use-queues.md
-- title: Kurz
+- title: Tutoriál
   linkLists:
   - linkListType: tutorial
     links:

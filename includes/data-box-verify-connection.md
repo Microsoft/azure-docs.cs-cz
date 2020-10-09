@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: 8a09a52db40f4f52219bce3e703e275b0f310c1a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67175674"
 ---
 Pomocí těchto kroků se připojte k účtu úložiště a ověřte připojení.
@@ -21,7 +21,7 @@ Pomocí těchto kroků se připojte k účtu úložiště a ověřte připojení
 
     ![Řídicí panel Data Box](media/data-box-verify-connection/data-box-connect-via-rest-11.png)    
 
-3. V dialogovém okně **Souhrn připojení** zkontrolujte zadané informace. Vyberte **Connect** (Připojit).
+3. V dialogovém okně **Souhrn připojení** zkontrolujte zadané informace. Vyberte **Připojit**.
 
     ![Řídicí panel Data Box](media/data-box-verify-connection/data-box-connect-via-rest-12.png)
 

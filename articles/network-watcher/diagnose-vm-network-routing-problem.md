@@ -18,10 +18,10 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76845217"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Kurz: Diagnostika problému se směrováním sítě virtuálního počítače pomocí portálu Azure Portal
@@ -29,20 +29,20 @@ ms.locfileid: "76845217"
 Když nasadíte virtuální počítač, Azure pro něj vytvoří několik výchozích tras. Můžete vytvořit vlastní trasy a přepsat tak výchozí trasy Azure. Někdy se může stát, že vlastní trasa způsobí, že virtuální počítač nemůže komunikovat s ostatními prostředky. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvořit virtuální počítač
+> * Vytvoření virtuálního počítače
 > * Otestování komunikace s adresou URL pomocí funkce dalšího směrování v Network Watcheru
 > * Otestování komunikace s IP adresou
 > * Diagnostika problému se směrováním a způsoby, jak ho vyřešit
 
 Pokud chcete, můžete problém se směrováním sítě virtuálního počítače diagnostikovat pomocí [Azure CLI](diagnose-vm-network-routing-problem-cli.md) nebo [Azure PowerShellu](diagnose-vm-network-routing-problem-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
-## <a name="create-a-vm"></a>Vytvořit virtuální počítač
+## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
 1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
 2. Vyberte **Compute** a pak vyberte **Windows Server 2016 Datacenter** nebo **Ubuntu Server 17.10 VM**.
@@ -52,8 +52,8 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |---|---|
     |Název|myVm|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
-    |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Předplatné| Vyberte předplatné.|
+    |Heslo| Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte **myResourceGroup**.|
     |Umístění| Vyberte **východní USA**|
 

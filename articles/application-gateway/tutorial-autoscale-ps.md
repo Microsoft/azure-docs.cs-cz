@@ -9,10 +9,10 @@ ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: e07fc34c7177e3a1dace34ab298b64dc3aa6a06a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74011369"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Kurz: vytvoření aplikační brány, která vylepšuje přístup k webové aplikaci
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření služby Application Gateway
 > * Otestování aplikační brány
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -180,7 +180,7 @@ $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-K získání veřejné IP adresy služby Application Gateway použijte příkaz Get-AzPublicIPAddress. Zkopírujte veřejnou IP adresu nebo název DNS a pak vložte do adresního řádku prohlížeče.
+K získání veřejné IP adresy služby Application Gateway použijte Get-AzPublicIPAddress. Zkopírujte veřejnou IP adresu nebo název DNS a pak vložte do adresního řádku prohlížeče.
 
 `Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP`
 

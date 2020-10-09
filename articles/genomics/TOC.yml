@@ -4,7 +4,7 @@
   items:
     - name: Co je Microsoft Genomics?
       href: overview-what-is-genomics.md
-- name: Šablony Rychlý start
+- name: Rychlý start
   expanded: true
   items:
     - name: Spuštění ukázkového pracovního postupu Genomics

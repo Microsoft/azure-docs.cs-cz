@@ -18,7 +18,7 @@
       href: forward-events-iothub.md
     - name: Reakce na události služby Blob Storage v místním prostředí
       href: react-blob-storage-events-locally.md
-- name: Ukázky
+- name: ukázky
   href: 'https://github.com/Azure/event-grid-iot-edge'
 - name: Koncepty
   items:

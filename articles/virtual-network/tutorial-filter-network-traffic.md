@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
 ms.openlocfilehash: b5a136ae05b3cd410ca252b6d5a1df443aff6f7a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75350143"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Kurz: filtrování síťového provozu pomocí skupiny zabezpečení sítě pomocí Azure Portal
@@ -33,7 +33,7 @@ Příchozí a odchozí provoz podsítě virtuální sítě můžete filtrovat po
 
 K dokončení tohoto kurzu můžete použít [Azure CLI](tutorial-filter-network-traffic-cli.md) nebo [PowerShell](tutorial-filter-network-traffic-powershell.md) podle toho, čemu dáváte přednost.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -49,7 +49,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     | ---                     | ---                                                |
     | Název                    | myVirtualNetwork                                   |
     | Adresní prostor           | 10.0.0.0/16                                        |
-    | Předplatné            | Vyberte předplatné.                          |
+    | Předplatné            | Vyberte své předplatné.                          |
     | Skupina prostředků          | Vyberte **Vytvořit novou** a zadejte *myResourceGroup*. |
     | Umístění                | Vyberte **USA – východ**.                                |
     | Podsíť – Název            | mySubnet                                           |
@@ -66,7 +66,7 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
     | Nastavení        | Hodnota                                                         |
     | ---            | ---                                                           |
     | Název           | myAsgWebServers                                               |
-    | Předplatné   | Vyberte předplatné.                                     |
+    | Předplatné   | Vyberte své předplatné.                                     |
     | Skupina prostředků | Vyberte **použít existující** a pak vyberte  **myResourceGroup**. |
     | Umístění       | USA – východ                                                       |
 
@@ -75,7 +75,7 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
     | Nastavení        | Hodnota                                                         |
     | ---            | ---                                                           |
     | Název           | myAsgMgmtServers                                              |
-    | Předplatné   | Vyberte předplatné.                                     |
+    | Předplatné   | Vyberte své předplatné.                                     |
     | Skupina prostředků | Vyberte **použít existující** a pak vyberte  **myResourceGroup**. |
     | Umístění       | USA – východ                                                       |
 
@@ -88,7 +88,7 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
     |Nastavení|Hodnota|
     |---|---|
     |Název|myNsg|
-    |Předplatné| Vyberte předplatné.|
+    |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků | Vyberte **Použít existující** a pak vyberte *myResourceGroup*.|
     |Umístění|USA – východ|
 
@@ -144,12 +144,12 @@ Vytvořte ve virtuální síti dva virtuální počítače.
 
     |Nastavení|Hodnota|
     |---|---|
-    |Předplatné| Vyberte předplatné.|
+    |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
     |Název|myVmWeb|
     |Umístění| Vyberte **USA – východ**.|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
-    |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    |Heslo| Zadejte libovolné heslo. Heslo musí mít délku aspoň 12 znaků a musí splňovat [definované požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
 
    
 

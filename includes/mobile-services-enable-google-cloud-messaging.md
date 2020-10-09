@@ -9,10 +9,10 @@ ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67175599"
 ---
 1. Přejděte na [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager) a přihlaste se pomocí svých přihlašovacích údajů k účtu Google. 

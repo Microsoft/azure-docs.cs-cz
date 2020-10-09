@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 965c420fa29c4cf82517148c01e17d6d7dd6ea97
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74106508"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Kurz: ucelené řešení využívající Azure Machine Learning a IoT Edge
@@ -30,11 +30,11 @@ Alternativně se můžete spojit s spolupracovníky různých rolí, které vám
 V obou případech, které vám pomůžou s orientací čtenářů, každý článek v tomto kurzu označuje roli uživatele. Mezi tyto role patří:
 
 * Vývoj pro Cloud (včetně cloudového vývojáře pracujícího v kapacitě DevOps)
-* Analýzy dat
+* Analýza dat
 
 ## <a name="use-case-predictive-maintenance"></a>Případ použití: prediktivní údržba
 
-Tento scénář vychází z případu použití prezentovaného na konferenci Prognostics and Health Management (PHM08) v 2008. Cílem je předpovědět zbývající dobu života (RUL) sady turbofanch motorů pro letadlo. Tato data byla vygenerována pomocí map jazyka C, komerční verze map (modulární simulace systému pro propohon prostředí). Tento software poskytuje flexibilní prostředí pro simulaci turbofan Engine pro pohodlné simulaci parametrů stavu, řízení a stroje.
+Tento scénář vychází z případu použití prezentovaného na konferenci Prognostics and Health Management (PHM08) v 2008. Cílem je předpovědět zbývající dobu života (RUL) sady turbofanch motorů pro letadlo. Tato data byla vygenerována pomocí map jazyka C, komerční verze map (modulární Aero-Propulsion systém simulace). Tento software poskytuje flexibilní prostředí pro simulaci turbofan Engine pro pohodlné simulaci parametrů stavu, řízení a stroje.
 
 Data použitá v tomto kurzu jsou pořízena ze [sady dat simulace degradace modulu Turbofan](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
 

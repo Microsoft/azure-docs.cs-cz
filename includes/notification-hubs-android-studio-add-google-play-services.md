@@ -9,10 +9,10 @@ ms.date: 02/05/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: cd202c98ed605209f5600965ecdb6c0b4c03c17e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67509109"
 ---
 1. V Android Studio v nabídce vyberte **nástroje** a pak vyberte **správce SDK**. 
@@ -27,7 +27,7 @@ ms.locfileid: "67509109"
     ![Android SDK Manager – Služby Google Play vybráno](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
 3. Pokud se zobrazí dialogové okno **Potvrdit změnu** , vyberte **OK**. Instalační program součásti nainstaluje požadované součásti. Po instalaci součástí vyberte **Dokončit** .
 4. Kliknutím na **tlačítko OK** zavřete dialogové okno **nastavení pro nové projekty** .  
-5. Otevřete soubor Build. Gradle v adresáři **aplikace** a přidejte následující řádek do části `dependencies`. 
+5. Otevřete soubor Build. Gradle v adresáři **aplikace** a přidejte následující řádek do části `dependencies` . 
 
     ```gradle
     implementation 'com.google.android.gms:play-services-gcm:16.0.0'
@@ -35,7 +35,7 @@ ms.locfileid: "67509109"
 5. Na panelu nástrojů vyberte ikonu **synchronizovat nyní** .
 
     ![Synchronizovat s Gradle](./media/notification-hubs-android-studio-add-google-play-services/gradle-sync.png)
-1. Otevřete soubor souboru AndroidManifest. XML a přidejte následující značku do značky *aplikace* .
+1. Otevřete soubor AndroidManifest.xml a přidejte následující značku do značky *aplikace* .
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"

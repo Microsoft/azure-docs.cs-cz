@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.custom: mvc
 ms.openlocfilehash: b2ce157f0f192135ab0507e4aae4c0a282bda1ea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76166183"
 ---
 # <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>Spuštění postupu zotavení po havárii do sekundární oblasti pro virtuální počítače Azure
@@ -25,7 +25,7 @@ V tomto kurzu se dozvíte, jak pro virtuální počítač Azure spustit postup z
 > [!NOTE]
 > Tento kurz vám pomůže udělat si podrobné pokyny pro zotavení po havárii s minimálními kroky. Další informace o různých funkcích týkajících se postupu při zotavení po havárii najdete v dokumentaci k [replikaci](azure-to-azure-how-to-enable-replication.md)virtuálních počítačů Azure, [síťové služby](azure-to-azure-about-networking.md), [automatizaci](azure-to-azure-powershell.md)nebo [řešení potíží](azure-to-azure-troubleshoot-errors.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než se pustíte do tohoto kurzu, podívejte se na následující položky:
 

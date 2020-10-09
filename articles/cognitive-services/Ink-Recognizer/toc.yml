@@ -5,12 +5,12 @@
   items:
     - name: Co je rozhraní API pro rozpoznávání rukopisu?
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: REST API
       items:
-        - name: 'C#'
+        - name: C#
           href: quickstarts/csharp.md
         - name: Java
           href: quickstarts/java.md
@@ -20,11 +20,11 @@
   items:
     - name: Odesílání dat do rozhraní API pro rozpoznávání rukopisu
       href: concepts/send-ink-data.md
-- name: Ukázky
+- name: ukázky
   items:
-    - name: 'C# a Univerzální platforma Windows (UPW)'
+    - name: C# a Univerzální platforma Windows (UPW)
       href: 'https://go.microsoft.com/fwlink/?linkid=2089803'
-    - name: 'C# a Windows Presentation Foundation (WPF)'
+    - name: C# a Windows Presentation Foundation (WPF)
       href: 'https://go.microsoft.com/fwlink/?linkid=2089804'
     - name: Aplikace webového prohlížeče v Javascriptu
       href: 'https://go.microsoft.com/fwlink/?linkid=2089908'
@@ -32,7 +32,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2089906'
     - name: Mobilní aplikace ve Swiftu a iOS
       href: 'https://go.microsoft.com/fwlink/?linkid=2089805'
-- name: Referenční informace
+- name: Odkaz
   items:
     - name: REST API – referenční informace
       href: 'https://go.microsoft.com/fwlink/?linkid=2089907'
