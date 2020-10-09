@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.custom: mvc, devx-track-python
 ms.openlocfilehash: 34cea5e0b60c0a7ee8c3d31dd02a6f7e975de738
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87853326"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní Python API
@@ -60,7 +60,7 @@ Ve prostředí Pythonu nainstalujte vyžadované balíčky pomocí `pip`.
 pip install -r requirements.txt
 ```
 
-Otevřete soubor `config.py`. Aktualizujte řetězce přihlašovacích údajů účtu Batch a účtu úložiště s jedinečnými hodnotami pro vaše účty. Příklad:
+Otevřete soubor `config.py`. Aktualizujte řetězce přihlašovacích údajů účtu Batch a účtu úložiště s jedinečnými hodnotami pro vaše účty. Například:
 
 
 ```Python

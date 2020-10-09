@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 4fae7795cdd61e3eb465285163bcd6c0dd9f7db2
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88184920"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>Kurz: Nastavení hardwarových hesel
@@ -34,7 +34,7 @@ Opakujte tyto kroky pro každý uzel, který budete používat ve vašem cluster
 
 Dokončení tohoto kurzu trvá přibližně 15 minut. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením tohoto kurzu proveďte tyto kroky: 
 

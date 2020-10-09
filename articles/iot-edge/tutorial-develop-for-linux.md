@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88056223"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Kurz: vývoj IoT Edgech modulů pro zařízení se systémem Linux
@@ -102,7 +102,7 @@ K vývoji IoT Edgech modulů použijte rozšíření IoT pro Visual Studio Code.
 
 3. Vyhledejte **nástroje Azure IoT Tools**, což je ve skutečnosti kolekce rozšíření, která vám pomůžou pracovat s IoT Hub a zařízeními IoT, a také vyvíjet IoT Edge moduly.
 
-4. Vyberte **Install** (Nainstalovat). Každé zahrnuté rozšíření se nainstaluje jednotlivě.
+4. Vyberte **Nainstalovat**. Každé zahrnuté rozšíření se nainstaluje jednotlivě.
 
 5. Po dokončení instalace rozšíření otevřete paletu příkazů výběrem možnosti **Zobrazit**  >  **paletu příkazů**.
 

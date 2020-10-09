@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-python
 ms.openlocfilehash: 0d1bfd146729a4a0ef94099a0ad79972517b4f42
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87848181"
 ---
 # <a name="azure-storage-samples-using-v12-python-client-libraries"></a>Ukázky Azure Storage pomocí klientských knihoven V12 Python
@@ -254,7 +254,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
    :::column-end:::
 :::row-end:::
 
-### <a name="file"></a>File
+### <a name="file"></a>Soubor
 
 :::row:::
    :::column span="":::
@@ -398,7 +398,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
    :::column-end:::
 :::row-end:::
 
-### <a name="file"></a>File
+### <a name="file"></a>Soubor
 
 :::row:::
    :::column span="":::
@@ -578,7 +578,7 @@ Pokud chcete zobrazit kompletní ukázkové knihovny Pythonu, podívejte se na:
 
 Úložiště GitHubu můžete procházet a klonovat pro každou knihovnu.
 
-## <a name="getting-started-guides"></a>Úvodní příručky
+## <a name="getting-started-guides"></a>Příručky Začínáme
 
 Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure Storage, přečtěte si následující příručky.
 

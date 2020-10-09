@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
 ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87874057"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Začínáme s dotazy protokolů v Azure Monitoru
@@ -130,7 +130,7 @@ SecurityEvent
 ```
     
 > [!NOTE]
-> Hodnoty mohou mít různé typy, takže je možná budete muset přetypovat na provedení porovnání se správným typem. Například sloupec *úrovně* SecurityEvent je typu String, takže je nutné jej přetypovat na číselný typ, jako je *int* nebo *Long*, předtím, než můžete použít numerické operátory:`SecurityEvent | where toint(Level) >= 10`
+> Hodnoty mohou mít různé typy, takže je možná budete muset přetypovat na provedení porovnání se správným typem. Například sloupec *úrovně* SecurityEvent je typu String, takže je nutné jej přetypovat na číselný typ, jako je *int* nebo *Long*, předtím, než můžete použít numerické operátory: `SecurityEvent | where toint(Level) >= 10`
 
 ## <a name="specify-a-time-range"></a>Zadejte časový rozsah.
 
@@ -151,7 +151,7 @@ SecurityEvent
 | where toint(Level) >= 10
 ```
 
-Filtr ve výše uvedeném časovém intervalu `ago(30m)` znamená "před 30 minutami", takže dotaz vrátí pouze záznamy z posledních 30 minut. Mezi další jednotky času patří dny (2D), minuty (25m) a sekundy (desítkách).
+Filtr ve výše uvedeném časovém intervalu  `ago(30m)` znamená "před 30 minutami", takže dotaz vrátí pouze záznamy z posledních 30 minut. Mezi další jednotky času patří dny (2D), minuty (25m) a sekundy (desítkách).
 
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>Projekt a rozšířené: výběrové a výpočetní sloupce

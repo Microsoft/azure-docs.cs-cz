@@ -7,10 +7,10 @@ ms.date: 06/19/2019
 ms.author: jobreen
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 4f425af7681b666b42fbcc70ac0e4c31d9df6d49
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87503748"
 ---
 # <a name="create-and-use-a-custom-provider"></a>Vytvoření a použití vlastního zprostředkovatele
@@ -32,10 +32,10 @@ Po vytvoření koncového bodu můžete vytvořit vlastního poskytovatele, kter
 }
 ```
 
-Vlastnost | Povinné | Popis
+Vlastnost | Požaduje se | Popis
 ---|---|---
 **Jméno** | Ano | Název definice koncového bodu. Azure zpřístupňuje tento název prostřednictvím rozhraní API pod/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}
-**routingType** | Ne | Typ kontraktu koncového bodu. Pokud hodnota není zadaná, použije se výchozí hodnota "proxy".
+**routingType** | No | Typ kontraktu koncového bodu. Pokud hodnota není zadaná, použije se výchozí hodnota "proxy".
 **Služba** | Ano | Koncový bod, do kterého mají být směrovány požadavky. Tento koncový bod zpracovává odpověď a všechny vedlejší účinky žádosti.
 
 Hodnota **koncového bodu** je aktivační adresa URL aplikace funkce Azure Functions. `<yourapp>` `<funcname>` `<functionkey>` Zástupné symboly, a musí být nahrazeny hodnotami pro vaši vytvořenou aplikaci Function App.
@@ -128,7 +128,7 @@ Parametr | Povinné | Popis
 ---|---|---
 *kroky* | Ano | Název akce definované ve vlastním zprostředkovateli
 *identifikační* | Ano | ID prostředku vlastního zprostředkovatele
-*tělo žádosti* | Ne | Text žádosti, který se odešle do koncového bodu
+*tělo žádosti* | No | Text žádosti, který se odešle do koncového bodu
 
 # <a name="template"></a>[Šablona](#tab/template)
 
@@ -218,7 +218,7 @@ Parametr | Povinné | Popis
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o vlastních poskytovatelích. Další informace:
+V tomto článku jste se dozvěděli o vlastních poskytovatelích. Další informace naleznete v tématech:
 
 - [Postupy: Přidání vlastních akcí do Azure REST API](./custom-providers-action-endpoint-how-to.md)
 - [Postupy: Přidání vlastních prostředků do Azure REST API](./custom-providers-resources-endpoint-how-to.md)

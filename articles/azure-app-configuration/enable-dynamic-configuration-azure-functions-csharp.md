@@ -16,10 +16,10 @@ ms.author: zhenlwa
 ms.custom: devx-track-csharp, azure-functions
 ms.tgt_pltfrm: Azure Functions
 ms.openlocfilehash: e603aa8ba85fdd214c04de515f405bcf9028791e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88207105"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Kurz: použití dynamické konfigurace v aplikaci Azure Functions
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Nastavte si aplikaci Azure Functions pro aktualizaci konfigurace v reakci na změny v úložišti konfigurace aplikace.
 > * Vloží nejnovější konfiguraci do vašich Azure Functions volání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) s úlohou **vývoj pro Azure**
@@ -116,7 +116,7 @@ V tomto kurzu se naučíte:
 
     ![Rychlé spuštění funkce spustit místně](./media/quickstarts/dotnet-core-function-launch-local.png)
 
-5. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+5. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 6. Vyberte **Průzkumník konfigurace**a aktualizujte hodnoty následujícího klíče:
 

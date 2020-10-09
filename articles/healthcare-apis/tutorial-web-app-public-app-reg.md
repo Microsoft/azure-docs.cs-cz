@@ -10,10 +10,10 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: 483ca63abbabaabd3b25446c9267a1b0540f60dd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852969"
 ---
 # <a name="client-application-registration"></a>Registrace klientské aplikace
@@ -21,7 +21,7 @@ V předchozím kurzu jste nasadili a nastavili rozhraní API Azure pro FHIR. Te�
 
 1. Přejít na Azure Active Directory
 1. Vybrat **registraci aplikace**  -->  **Nová registrace**
-1. Pojmenujte aplikaci a nastavte identifikátor URI přesměrování nahttps://www.getpostman.com/oauth2/callback
+1. Pojmenujte aplikaci a nastavte identifikátor URI přesměrování na https://www.getpostman.com/oauth2/callback
 
    :::image type="content" source="media/tutorial-web-app/register-public-app.png" alt-text="Snímek obrazovky s podoknem zaregistrovat aplikaci a Příkladem názvu aplikace a adresy URL pro přesměrování.":::
 
@@ -29,7 +29,7 @@ V předchozím kurzu jste nasadili a nastavili rozhraní API Azure pro FHIR. Te�
 
 Po registraci klientské aplikace zkopírujte na stránce Přehled ID aplikace (klienta) a ID tenanta. Tyto dvě hodnoty budete potřebovat později při přístupu k klientovi.
 
-:::image type="content" source="media/tutorial-web-app/client-id-tenant-id.png" alt-text="Snímek obrazovky s oknem nastavení klientské aplikace, kde se zvýrazní ID aplikace a adresáře":::
+:::image type="content" source="media/tutorial-web-app/client-id-tenant-id.png" alt-text="Snímek obrazovky s podoknem zaregistrovat aplikaci a Příkladem názvu aplikace a adresy URL pro přesměrování.":::
 
 ### <a name="connect-with-web-app"></a>Připojení k webové aplikaci
 
@@ -43,7 +43,7 @@ Pokud jste [napsali webovou aplikaci](tutorial-web-app-write-web-app.md) pro př
 
 1. Zaškrtněte políčka **přístupového tokenu** a **tokenu ID** .
 
-   :::image type="content" source="media/tutorial-web-app/web-app-authentication.png" alt-text="Snímek obrazovky s oknem nastavení ověřování aplikací se zvýrazněným postupem přidání platformy":::
+   :::image type="content" source="media/tutorial-web-app/web-app-authentication.png" alt-text="Snímek obrazovky s podoknem zaregistrovat aplikaci a Příkladem názvu aplikace a adresy URL pro přesměrování.":::
 
 ## <a name="add-api-permissions"></a>Přidání oprávnění rozhraní API
 
@@ -53,7 +53,7 @@ Teď, když máte nastavené správné ověření, nastavte oprávnění rozhran
 1. V části **rozhraní API, které používá moje organizace**, vyhledejte rozhraní API pro zdravotní péče Azure.
 1. Vyberte **user_impersonation** a klikněte na **Přidat oprávnění**.
 
-:::image type="content" source="media/tutorial-web-app/api-permissions.png" alt-text="Snímek obrazovky okna Přidat oprávnění rozhraní API se zvýrazněným postupem přidání oprávnění rozhraní API.":::
+:::image type="content" source="media/tutorial-web-app/api-permissions.png" alt-text="Snímek obrazovky s podoknem zaregistrovat aplikaci a Příkladem názvu aplikace a adresy URL pro přesměrování.":::
 
 ## <a name="next-steps"></a>Další kroky
 Nyní máte veřejnou klientskou aplikaci. V dalším kurzu provedeme testování a získáme přístup k této aplikaci prostřednictvím post.

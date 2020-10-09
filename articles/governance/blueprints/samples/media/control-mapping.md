@@ -4,10 +4,10 @@ description: Mapování ovládacího prvku ukázek pro Media details Každý ovl
 ms.date: 08/13/2020
 ms.topic: sample
 ms.openlocfilehash: 4101b9030425c22b8806870d467581521870d639
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88208458"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>Mapování ovládacího prvku ukázka pro Media details
@@ -47,7 +47,7 @@ Následující mapování jsou k ovládacím prvkům **média** . Pomocí naviga
 
 ### <a name="ac-1-21---separation-of-duties-must-be-enforced-through-appropriate-assignment-of-role"></a>AC-1-21 – oddělení cel se musí vyhovět odpovídajícím přiřazením role.
 
-- [Preview \] : Access Control na základě rolí (RBAC) by se měla používat pro služby Kubernetes Services
+- [Preview \] : Role-Based Access Control (RBAC) by se mělo používat pro služby Kubernetes Services.
 
 ### <a name="ac-140--ensure-that-systems-are-not-connecting-trusted-network-and-untrusted-networks-at-the-same-time"></a>AC-1,40 – zajistěte, aby systémy nepřipojovaly důvěryhodnou síť a nedůvěryhodné sítě ve stejnou dobu.
 
@@ -63,7 +63,7 @@ Následující mapování jsou k ovládacím prvkům **média** . Pomocí naviga
 
 ### <a name="ac-154--ensure-multi-factor-authentication-mfa-is-enabled-for-all-cloud-console-users"></a>AC-1,54 – Ujistěte se, že je povoleno vícefaktorové ověřování (MFA) pro všechny uživatele konzoly cloudu.
 
-- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
+- Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA.
 - Multi-Factor Authentication (MFA) by mělo být povolené pro všechny účty předplatného s oprávněním k zápisu, aby se zabránilo narušení účtů nebo prostředků.
 
 ## <a name="auditing--logging"></a>Auditování & protokolování

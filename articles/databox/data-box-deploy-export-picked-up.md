@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
 ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88142107"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>Kurz: návratová Azure Data Box (Preview)
@@ -71,7 +71,7 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
 2. Ujistěte se, že se dokončilo kopírování dat do zařízení a úspěšně proběhla **příprava k odeslání**.
 3. Vypněte zařízení a odpojte kabely.
 4. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
-5. Zarezervujte si vyzvednutí online na [odkazu DHL](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference).
+5. Zarezervujte si vyzvednutí online pomocí [odkazu na DHL](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference).
 
 ## <a name="japan"></a>[Japonsko](#tab/in-japan)
 
@@ -135,7 +135,7 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
 4. Pokud chcete vyrezervovat vyzvednutí pomocí DHL, vyberte jednu z následujících možností:
 
     * Zavolejte kontaktní centrum služby zákazníkům před 2:00. odp. na **+ 27 (0) 11 9213600**vyberte možnost 1 a pak zadejte číslo nákladového pole.
-    * Odeslat e-mail s [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) použitím následující šablony:
+    * Pomocí následující šablony odešlete e-mail na adresu [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com):
 
     ```output
     To: Priority.Support@dhl.com
@@ -145,20 +145,20 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
       *  Requested pickup date: yyyy/mm/dd;time:HH MM
     ```
 
-    * Alternativně můžete balíček odpustit na nejbližším místě služby DHL.
+    * Další možností je donést balíček na nejbližší sběrné místo DHL.
 
-5. Pokud narazíte na nějaké problémy, pošlete e-mail [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) s podrobnostmi o problémech, se kterými jste se setkali, a vložte číslo poštovního pole do předmětu: řádek. Můžete také zavolat + 27 (0) 119213902.
+5. Pokud dojde k nějakým problémům, pošlete e-mail na adresu [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) a uveďte podrobnosti o problému, ke kterému došlo. Do řádku Předmět: nezapomeňte uvést číslo nákladového listu. Můžete také zavolat na číslo +27(0)119213902.
 
 ## <a name="hong-kong"></a>[Hongkong](#tab/in-hk)
 
-1. V původním poli zabalit odeslání do zařízení pro odeslání vratky.
+1. Pro zpáteční zásilku zabalte zařízení do původní krabice.
 2. Poznamenejte si referenční číslo (sledovací číslo pro zpětnou expedici) zobrazené v místním webovém uživatelském rozhraní zařízení. Toto číslo se zobrazí po úspěšném **spuštění Příprava k odeslání** .
 3. Stáhněte a tiskněte expediční štítek, který je k dispozici v místním webovém uživatelském rozhraní zařízení, a přihlaste se k balíčku dodávek.
 4. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
-5. Volejte **Quantium Solutions** Link on **(852) 2318 1213** během hodin kanceláře (9:00 až 18:00, od pondělí do pátku).  
-6. Citace Microsoft Azure vyzvednutí a číslo odkazu a číslo sledování (nad čárovým kódem) na štítku pro návrat k uspořádání pro kolekci.
-7. Obdržíte ústní potvrzení naplánovaného vyzvednutí. Pokud Courier nepřijde ke kolekci, zavolejte na linku řešení Quantium pro alternativní opatření.
-8. Při rezervaci na vyzvednutí pomocí Quantiumu se pomocí této šablony sdílejte potvrzení s [Microsoft Data box Operations Asie](mailto:adbo@microsoft.com) :
+5. Během pracovní doby (pondělí až pátek, 9:00 až 18:00) zavolejte na zákaznickou linku společnosti **Quantium Solutions** na čísle **(852) 2318 1213**.  
+6. Při žádosti o vyzvednutí uveďte, že se jedná o vyzvednutí pro Microsoft Azure, referenční číslo a také sledovací číslo (nad čárovým kódem) ze zpátečního expedičního štítku.
+7. Obdržíte ústní potvrzení naplánovaného vyzvednutí. Pokud se kurýr k vyzvednutí nedostaví, zavolejte zákaznickou linku společnosti Quantium Solutions a domluvte se na náhradním řešení.
+8. Při rezervaci vyzvednutí u společnosti Quantium zašlete oddělení [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) potvrzení pomocí následující šablony:
 
     ```output
     To: adbo@microsoft.com
@@ -176,7 +176,7 @@ Pokud se vyskytnou nějaké problémy, pošlete e-mail Data Box operací Asie [a
 
 ## <a name="self-managed"></a>[V případě svépomoci](#tab/in-selfmanaged)
 
-Pokud používáte Data Box v Japonsku, Singapuru, Koreji, Indii, Jižní Africe nebo Západní Evropa a při vytváření objednávky jste vybrali možnost samostatně spravovaná dodávka, postupujte podle těchto pokynů.
+Pokud používáte Data Box v Japonsku, Singapuru, Indii, Jihoafrické republice, Koreji nebo Západní Evropě a při vytváření objednávky jste vybrali možnost samoobslužné expedice, postupujte podle těchto pokynů.
 
 1. Po úspěšném dokončení tohoto kroku si poznamenejte autorizační kód uvedený na stránce Připravit k odeslání v místním webovém uživatelském rozhraní Data Boxu.
 2. Vypněte zařízení a odpojte kabely. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.

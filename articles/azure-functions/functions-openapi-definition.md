@@ -6,10 +6,10 @@ ms.date: 04/21/2020
 ms.reviewer: sunayv
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47, references_regions
 ms.openlocfilehash: 9083ff7d8f65c68ce8d173973a4eda650ac355aa
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212904"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Vytvoření definice OpenAPI pro rozhraní API bez serveru s využitím Azure API Management
@@ -49,12 +49,12 @@ Funkce pak vypočítá, kolik se bude opravit, a kolik výnosů turbíny by mohl
 
 1. V rozevíracím seznamu **[úroveň autorizace](functions-bindings-http-webhook-trigger.md#http-auth)** zvolte **funkce** a pak vyberte **vytvořit funkci**.
 
-    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="Vytvoření funkce HTTP pro OpenAPI":::
+    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="Vytvoření funkce HTTP pro OpenAPI&quot;:::
 
 1. Vyberte **kód + test**a potom v rozevíracím seznamu vyberte **Spustit. csx** . Nahraďte obsah souboru skriptu jazyka C# s příponou run. csx následujícím kódem a potom zvolte **Uložit**:
 
     ```csharp
-    #r "Newtonsoft.Json"
+    #r &quot;Newtonsoft.Json"
     
     using System.Net;
     using Microsoft.AspNetCore.Mvc;
@@ -115,7 +115,12 @@ Funkce pak vypočítá, kolik se bude opravit, a kolik výnosů turbíny by mohl
     }
     ```
 
-    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="Test funkce na webu Azure Portal":::
+    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="Vytvoření funkce HTTP pro OpenAPI&quot;:::
+
+1. Vyberte **kód + test**a potom v rozevíracím seznamu vyberte **Spustit. csx** . Nahraďte obsah souboru skriptu jazyka C# s příponou run. csx následujícím kódem a potom zvolte **Uložit**:
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
     Na kartě **výstup** se vrátí následující výstup:
 
@@ -131,7 +136,12 @@ Generování definice OpenAPI:
 
 1. Vyberte aplikaci Function App, v levé nabídce vyberte **API Management** a potom v části **API Management**vyberte **vytvořit novou** .
 
-    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="Zvolit API Management":::
+    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="Vytvoření funkce HTTP pro OpenAPI&quot;:::
+
+1. Vyberte **kód + test**a potom v rozevíracím seznamu vyberte **Spustit. csx** . Nahraďte obsah souboru skriptu jazyka C# s příponou run. csx následujícím kódem a potom zvolte **Uložit**:
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
 
 1. Použijte nastavení API Management, jak je uvedeno v následující tabulce:
@@ -158,7 +168,12 @@ Generování definice OpenAPI:
 
 1. Na stránce **vytvořit z Function App** přijměte výchozí hodnoty a pak vyberte **vytvořit**.
 
-    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="Vytvořit z Function App":::
+    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="Vytvoření funkce HTTP pro OpenAPI&quot;:::
+
+1. Vyberte **kód + test**a potom v rozevíracím seznamu vyberte **Spustit. csx** . Nahraďte obsah souboru skriptu jazyka C# s příponou run. csx následujícím kódem a potom zvolte **Uložit**:
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
     Azure vytvoří rozhraní API pro funkci.
 
@@ -179,7 +194,12 @@ Před použitím definice OpenAPI byste měli ověřit, že rozhraní API funguj
 
 1. Vyberte **Odeslat**a pak zobrazte **odpověď HTTP**.
 
-    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="Rozhraní API pro testování funkcí":::
+    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="Vytvoření funkce HTTP pro OpenAPI&quot;:::
+
+1. Vyberte **kód + test**a potom v rozevíracím seznamu vyberte **Spustit. csx** . Nahraďte obsah souboru skriptu jazyka C# s příponou run. csx následujícím kódem a potom zvolte **Uložit**:
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
 ## <a name="download-the-openapi-definition"></a>Stažení definice OpenAPI
 

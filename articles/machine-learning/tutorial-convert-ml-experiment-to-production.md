@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 3a6ce5860704e6fd16b79fc253650dd45ec743e7
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852612"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Kurz: převod experimentů ML na produkční kód v Pythonu
@@ -432,7 +432,7 @@ if __name__ == '__main__':
     main()
 ```
 
-`train.py`lze nyní vyvolat z terminálu spuštěním `python train.py` .
+`train.py` lze nyní vyvolat z terminálu spuštěním `python train.py` .
 Funkce z `train.py` lze také volat z jiných souborů.
 
 Soubor, který se `train_aml.py` nachází v `diabetes_regression/training` adresáři úložiště MLOpsPython, volá funkce definované v `train.py` v kontextu Azure Machine Learning experimentu spustíte. Funkce lze také volat v testování částí popsaných dále v této příručce.
@@ -494,7 +494,7 @@ def init():
 
 Čtvrtě vytvořte testy jednotek pro funkce Pythonu. Testování částí chrání kód před funkční regresí a usnadňuje údržbu. V této části budete vytvářet testy jednotek pro funkce v `train.py` .
 
-`train.py`obsahuje více funkcí, ale v tomto kurzu vytvoříme jenom jeden test jednotky pro `train_model` funkci pomocí rozhraní Pytest Framework. Pytest není jedinou architekturou testování jednotek Pythonu, ale je to jedna z nejčastěji používaných. Další informace najdete na webu [Pytest](https://pytest.org).
+`train.py` obsahuje více funkcí, ale v tomto kurzu vytvoříme jenom jeden test jednotky pro `train_model` funkci pomocí rozhraní Pytest Framework. Pytest není jedinou architekturou testování jednotek Pythonu, ale je to jedna z nejčastěji používaných. Další informace najdete na webu [Pytest](https://pytest.org).
 
 Test jednotek obvykle obsahuje tři hlavní akce:
 

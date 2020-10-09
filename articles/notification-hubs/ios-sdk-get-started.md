@@ -9,10 +9,10 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88042441"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Kurz: odesílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs
@@ -60,11 +60,11 @@ Vygenerujte soubor žádosti o podepsání certifikátu (CSR), který Apple pou�
 
 3. Vyberte svou **e-mailovou adresu uživatele**, zadejte hodnotu pro **běžný název**   , ujistěte se, že jste zadali možnost **uloženo na disk**a pak vyberte **pokračovat**. Ponechte **e-mailovou adresu CA**   prázdnou, protože není potřeba.
 
-   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="Požadované informace o certifikátu":::
+   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="Přístup k řetězci klíčů":::
 
 4. Do pole **Uložit jako**zadejte název souboru CSR, vyberte umístění, **kde**se nachází, a pak vyberte **Uložit**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="Zvolit název souboru":::
+   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="Přístup k řetězci klíčů":::
 
    Tato akce uloží soubor CSR do vybraného umístění. Výchozí umístění je **Desktop**. Zapamatujte si umístění tohoto souboru.
 
@@ -76,26 +76,26 @@ Pokud chcete odesílat nabízená oznámení do aplikace pro iOS, Zaregistrujte 
 
 1. Pokud jste svou aplikaci ještě nezaregistrovali, přejděte na [portál pro zřizování iOS](https://go.microsoft.com/fwlink/p/?LinkId=272456)   na webu Apple Developer Center. Přihlaste se k portálu pomocí Apple ID a vyberte **identifikátory**. Pak vyberte  **+**   registraci nové aplikace.
 
-   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="Stránka s ID aplikací":::
+   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="Přístup k řetězci klíčů":::
 
 2. Na obrazovce **registrovat nový identifikátor**   vyberte přepínač **ID aplikací**   . Pak vyberte **pokračovat**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="Stránka zaregistrovat nové ID":::
+   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="Přístup k řetězci klíčů":::
 
 3. Aktualizujte následující tři hodnoty pro novou aplikaci a pak vyberte **pokračovat**:
 
    - **Popis**: zadejte popisný název vaší aplikace.
    - **ID sady prostředků**: Zadejte ID sady prostředků **identifikátoru organizace. název produktu**   , jak je uvedeno v [Průvodci distribucí aplikací](https://help.apple.com/xcode/mac/current/#/dev91fe7130a).  **Identifikátor organizace**   a hodnoty **názvu produktu**se   musí shodovat s identifikátorem organizace a názvem produktu, který použijete při vytváření projektu Xcode. Na následujícím snímku obrazovky se hodnota **NotificationHubs**   používá jako identifikátor organizace a jako název produktu se používá hodnota **getstarted**   . Ujistěte se, že hodnota **identifikátoru sady prostředků**   odpovídá hodnotě v projektu Xcode, takže Xcode používá správný profil publikování.
 
-      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="Registrovat ID aplikace":::
+      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="Přístup k řetězci klíčů":::
 
    - **Nabízená oznámení**: v části možnosti si přečtěte možnost **nabízená oznámení**    **Capabilities**   .
 
-      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="Zaregistrovat nové ID aplikace":::
+      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="Přístup k řetězci klíčů":::
 
       Tato akce vygeneruje vaše ID aplikace a žádosti o potvrzení informací. Vyberte **pokračovat**a pak vyberte **zaregistrovat**   a potvrďte nové ID aplikace.
 
-      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="Potvrdit nové ID aplikace":::
+      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="Přístup k řetězci klíčů":::
 
       Po výběru položky **zaregistrovat**se na stránce **certifikáty, identifikátory & profily**zobrazí nové ID aplikace jako položka řádku   .
 
@@ -118,11 +118,11 @@ Druhá možnost obsahuje několik výhod v porovnání s používáním certifik
 
 1. Přejděte dolů k možnosti zaškrtnutá **nabízená oznámení**   a pak vyberte **Konfigurovat**   a vytvořte certifikát.
 
-   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="ID aplikace":::
+   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="Přístup k řetězci klíčů":::
 
 2. Zobrazí se okno **certifikáty SSL služby Apple Push Notification Service**   .  **Create Certificate**   V části **vývojový certifikát protokolu SSL**vyberte tlačítko vytvořit certifikát   .
 
-   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="Vytvořit certifikát":::
+   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="Přístup k řetězci klíčů":::
 
    Zobrazí se obrazovka **vytvořit nový certifikát**   .
 
@@ -133,11 +133,11 @@ Druhá možnost obsahuje několik výhod v porovnání s používáním certifik
 
 4. Jakmile portál vytvoří certifikát, klikněte na tlačítko **Stáhnout**   . Uložte certifikát a zapamatujte si umístění, do kterého se uložilo.
 
-   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="Stáhnout certifikát":::
+   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="Přístup k řetězci klíčů":::
 
    Certifikát se stáhne a uloží ve složce **stažené soubory**   .
 
-   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="Najít soubor certifikátu":::
+   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="Přístup k řetězci klíčů":::
 
    Ve výchozím nastavení se stažený vývojový certifikát jmenuje **aps_development. cer**.
 
@@ -149,7 +149,7 @@ Druhá možnost obsahuje několik výhod v porovnání s používáním certifik
 
 6. V části přístup k řetězci klíčů klikněte pravým tlačítkem na nový nabízený certifikát, který jste vytvořili v kategorii **certifikáty**   . Vyberte **exportovat**, zadejte název souboru, vyberte formát **. p12**   a pak vyberte **Uložit**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="Export certifikátu":::
+   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="Přístup k řetězci klíčů":::
 
    Můžete si vybrat, že chcete certifikát chránit heslem, ale to je volitelné.  **OK**   Pokud chcete obejít vytváření hesel, klikněte na OK. Poznamenejte si název souboru a umístění exportovaného certifikátu .p12. Používají se k povolení ověřování pomocí služby APNS.
 
@@ -201,11 +201,11 @@ Na konci těchto kroků byste měli mít následující informace pro pozdějš�
 
 2.  **iOS App Development**   Jako typ zřizovacího profilu vyberte vývoj aplikací pro iOS v části **vývoj**   a pak vyberte **pokračovat**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="Seznam zřizovacích profilů":::
+   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="Přístup k řetězci klíčů":::
 
 3. V dalším kroku vyberte ID aplikace, které jste vytvořili v rozevíracím seznamu **ID aplikace**   , a pak vyberte **pokračovat**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="Vybrat ID aplikace":::
+   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="Přístup k řetězci klíčů":::
 
 4. V okně **Vybrat certifikáty**   Vyberte vývojový certifikát, který používáte pro podepisování kódu, a vyberte **pokračovat**. Tento certifikát není certifikátem push, který jste vytvořili. Pokud jeden neexistuje, musíte ho vytvořit. Pokud certifikát existuje, přejděte k dalšímu kroku. Pokud neexistuje certifikát pro vývoj, vytvořte ho:
 
@@ -224,7 +224,7 @@ Na konci těchto kroků byste měli mít následující informace pro pozdějš�
 
 8. Nakonec zvolte název profilu v **názvu zřizovacího profilu**a pak vyberte **vygenerovat**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="Zvolit název zřizovacího profilu":::
+   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="Přístup k řetězci klíčů":::
 
 9. Po vytvoření nového zřizovacího profilu vyberte **Stáhnout**. Zapamatujte si umístění, ve kterém je uložené.
 
@@ -238,11 +238,11 @@ V této části vytvoříte centrum oznámení a nakonfigurujete ověřování p
 
 2. V nabídce vlevo vyberte **všechny služby**   a **Notification Hubs**   v části **mobilní zařízení**vyberte Notification Hubs   . Výběrem ikony hvězdičky vedle názvu služby přidáte službu do oddílu **Oblíbené položky**   v levé nabídce. Po přidání **Notification Hubs**   k **oblíbeným položkám**ji vyberte.
 
-   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure Portal":::
+   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Přístup k řetězci klíčů":::
 
 3. Na stránce **Notification Hubs**   Vyberte **Přidat**   na panelu nástrojů.
 
-   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="Tlačítko Přidat panel nástrojů":::
+   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="Přístup k řetězci klíčů":::
 
 4. Na stránce **Notification Hubs**   proveďte následující kroky:
 
@@ -252,18 +252,18 @@ V této části vytvoříte centrum oznámení a nakonfigurujete ověřování p
    4. Vyberte existující skupinu prostředků ve **skupině prostředků**nebo vytvořte novou skupinu prostředků.
    5. Vyberte **vytvořit**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="Nastavení vlastností":::
+   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="Přístup k řetězci klíčů":::
 
 5. Vyberte **oznámení**   (ikona zvonku) a pak vyberte **Přejít k prostředku**. Můžete také aktualizovat seznam na stránce **Notification Hubs**   a vybrat své centrum.
 
-   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="Oznámení na portálu":::
+   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="Přístup k řetězci klíčů":::
 
 6. V seznamu vyberte **zásady přístupu**   . Všimněte si, že jsou k dispozici dva připojovací řetězce. Budete je potřebovat později pro zpracování nabízených oznámení.
 
    > [!IMPORTANT]
    > V aplikaci nepoužívejte zásady **DefaultFullSharedAccessSignature** . To je určeno jenom pro použití v back-endu.
 
-   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="Připojovací řetězce":::
+   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="Přístup k řetězci klíčů":::
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>Konfigurace centra oznámení s informacemi o službě APN
 
@@ -284,7 +284,7 @@ V části **Notification Services**vyberte **Apple (APNs)** a pak postupujte p
 
 5. Vyberte režim **izolovaného prostoru**   .
 
-   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="Konfigurace":::
+   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="Přístup k řetězci klíčů":::
 
 6. Vyberte **Uložit**.
 

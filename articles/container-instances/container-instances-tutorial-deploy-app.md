@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc, devx-track-azurecli
 ms.openlocfilehash: 2ea3d285f00d38df84587d9a7c15242fff38453b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87500568"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Kurz: nasazení aplikace typu kontejner do Azure Container Instances
@@ -70,7 +70,7 @@ Po úspěšném nasazení zobrazte plně kvalifikovaný název domény kontejner
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Příklad:
+Například:
 ```output
 "aci-demo.eastus.azurecontainer.io"
 ```

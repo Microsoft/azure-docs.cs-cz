@@ -10,10 +10,10 @@ ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
 ms.openlocfilehash: f8b5e344fc963d466571e75ff16f17367dc32971
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844843"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Přístup k rozhraní API Azure pro FHIR s využitím post
@@ -24,14 +24,14 @@ Klientská aplikace by měla přístup k rozhraní FHIR API prostřednictvím [R
 
 - Koncový bod FHIR v Azure. Můžete ho nastavit pomocí spravovaného rozhraní API Azure pro FHIR nebo open source serveru FHIR pro Azure. Nastavte spravované rozhraní API Azure pro FHIR pomocí [Azure Portal](fhir-paas-portal-quickstart.md), [PowerShellu](fhir-paas-powershell-quickstart.md)nebo rozhraní příkazového [řádku Azure CLI](fhir-paas-cli-quickstart.md).
 - [Klientská aplikace](register-confidential-azure-ad-client-app.md) , kterou budete používat pro přístup ke službě FHIR
-- Po instalaci. Můžete si ho stáhnout z[https://www.getpostman.com](https://www.getpostman.com)
+- Po instalaci. Můžete si ho stáhnout z [https://www.getpostman.com](https://www.getpostman.com)
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR Server a podrobnosti ověřování
 
 Aby bylo možné použít metodu post, jsou potřeba následující podrobnosti:
 
-- Adresa URL vašeho serveru FHIR, například`https://MYACCOUNT.azurehealthcareapis.com`
-- Poskytovatel identity `Authority` pro váš server FHIR, například`https://login.microsoftonline.com/{TENANT-ID}`
+- Adresa URL vašeho serveru FHIR, například `https://MYACCOUNT.azurehealthcareapis.com`
+- Poskytovatel identity `Authority` pro váš server FHIR, například `https://login.microsoftonline.com/{TENANT-ID}`
 - Nakonfigurované `audience` . To je obvykle adresa URL serveru FHIR, např. `https://MYACCOUNT.azurehealthcareapis.com` nebo pouze `https://azurehealthcareapis.com` .
 - `client_id`(Nebo ID aplikace) [klientské aplikace](register-confidential-azure-ad-client-app.md) , kterou budete používat pro přístup ke službě FHIR.
 - `client_secret`(Nebo tajný klíč aplikace) klientské aplikace.
@@ -67,12 +67,12 @@ Budete potřebovat několik podrobností:
 | Název tokenu            | MYTOKEN                                                                                                         | Název, který zvolíte          |
 | Typ udělení            | Autorizační kód                                                                                              |                            |
 | Adresa URL zpětného volání          | `https://www.getpostman.com/oauth2/callback`                                                                      |                            |
-| Ověřovací adresa URL              | `https://login.microsoftonline.com/{TENANT-ID}/oauth2/authorize?resource=<audience>` | `audience`je `https://MYACCOUNT.azurehealthcareapis.com` pro Azure API pro FHIR |
+| Ověřovací adresa URL              | `https://login.microsoftonline.com/{TENANT-ID}/oauth2/authorize?resource=<audience>` | `audience` je `https://MYACCOUNT.azurehealthcareapis.com` pro Azure API pro FHIR |
 | Adresa URL přístupového tokenu      | `https://login.microsoftonline.com/{TENANT ID}/oauth2/token`                                                      |                            |
 | ID klienta             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                            | ID aplikace             |
 | Tajný klíč klienta         | `XXXXXXXX`                                                                                                        | Tajný klíč klienta          |
 | Rozsah | `<Leave Blank>` |
-| State                 | `1234`                                                                                                            |                            |
+| Stav                 | `1234`                                                                                                            |                            |
 | Ověření klienta | Poslat přihlašovací údaje klienta v těle                                                                                 |                 
 
 Zajděte si "token žádosti" a budete provedeni pomocí Azure Active Directoryho toku ověřování a token se vrátí do post. Pokud narazíte na problémy, otevřete konzolu pro odesílání (z položky nabídky Zobrazit a >zobrazit na konzole pro publikování).
