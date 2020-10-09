@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: d7ff9efcedc1a6a5f92555a62e429be0431f2098
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1e92da6f99ccb32580d7f0286b5bcbf77d694262
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448514"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855646"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Kurz: konfigurace zařízení IoT Edge
 
@@ -294,12 +294,9 @@ V dalším kroku aktualizujeme certifikáty a název hostitele přímým úpravo
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
-
 ## <a name="next-steps"></a>Další kroky
 
 Právě jsme dokončili konfiguraci virtuálního počítače Azure jako Azure IoT Edge transparentní brány. Začali jsme vygenerováním testovacích certifikátů, které jsme nahráli do Azure Key Vault. Dále jsme použili skript a šablonu Správce prostředků k nasazení virtuálního počítače s imagí "Ubuntu Server 16,04 LTS Azure IoT Edge + runtime" z Azure Marketplace. Když je virtuální počítač spuštěný a spuštěný přes SSH, přihlásili jsme se k Azure a stáhli jsme certifikáty z Key Vault. Provedli jsme několik aktualizací konfigurace modulu runtime IoT Edge aktualizací souboru config. yaml.
-
-Další informace najdete v tématu [jak se dá zařízení IoT Edge použít jako brána](iot-edge-as-gateway.md) a jak [nakonfigurovat zařízení IoT Edge, aby fungovalo jako transparentní brána](how-to-create-transparent-gateway.md).
 
 Pokračujte dalším článkem a Sestavujte IoT Edge moduly.
 

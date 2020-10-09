@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 9c52050d432701f4af2e166b36e38dc23e0cc002
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3c08694efafef315b0f5e96d293d883767860fef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91286926"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855204"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks---globalprotect"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Palo Alto Networks – GlobalProtect
 
@@ -117,7 +117,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-palo-alto-networks---globalprotect-sso"></a>Konfigurace Palo Alto Networks – GlobalProtect SSO
 
-1. Otevřete okno Palo Alto Networks firewall GlobalProtect jako správce v jiném okně prohlížeče.
+1. Otevřete Palo Alto Networks-GlobalProtect jako správce v jiném okně prohlížeče.
 
 2. Klikněte na **zařízení**.
 

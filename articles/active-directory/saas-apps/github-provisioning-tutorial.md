@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: b88408480bb0822a061e97336eee5c6b3ccfc8e0
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 847c69a18a73d67b9b994e72686a4073ddd6d27f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358317"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857530"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Kurz: Konfigurace GitHubu pro Automatické zřizování uživatelů
 
@@ -28,6 +28,7 @@ Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 * Tenant Azure Active Directory
 * Organizace GitHubu vytvořená v [GitHub Enterprise cloudu](https://help.github.com/articles/github-s-products/#github-enterprise), která vyžaduje [fakturační plán pro GitHub Enterprise](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)
 * Uživatelský účet v GitHubu s oprávněními správce k organizaci
+* [SAML nakonfigurovaný pro organizaci GitHub Enterprise Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/github-tutorial)
 * Zajistěte, aby byl pro vaši organizaci poskytnutý přístup OAuth, jak je popsáno [zde](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization) .
 * Zřizování SCIM pro jedinou organizaci se podporuje jenom v případě, že je jednotné přihlašování povolené na úrovni organizace.
 
@@ -51,9 +52,6 @@ Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, co
 ## <a name="configuring-user-provisioning-to-github"></a>Konfigurace zřizování uživatelů na GitHubu
 
 Tato část vás provede připojením k rozhraní API pro zřizování uživatelských účtů na GitHubu a konfigurací zřizovací služby k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v GitHubu na základě přiřazení uživatelů a skupin ve službě Azure AD.
-
-> [!TIP]
-> Můžete se také rozhodnout, že povolíte jednotné přihlašování založené na SAML pro GitHub, a to podle pokynů uvedených v [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
 
 ### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na GitHubu ve službě Azure AD
 

@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 7554993025d8f64a80c1b223586f856eedf9e964
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 9f01961ec7c7f8e0a4e2d72e28e6def50e93ad5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766601"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854303"
 ---
-# <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Konfigurace brány virtuální sítě pro ExpressRoute pomocí prostředí PowerShell
+# <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Kurz: Konfigurace brány virtuální sítě pro ExpressRoute pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
 > * [Správce prostředků – Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager – PowerShell](expressroute-howto-add-gateway-resource-manager.md)
@@ -30,9 +30,7 @@ V tomto kurzu se naučíte:
 > - Vytvořte podsíť brány.
 > - Vytvořte bránu Virtual Network.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="configuration-reference-list"></a>Seznam odkazů konfigurace
 
@@ -42,7 +40,7 @@ Postup pro tuto úlohu používá virtuální síť na základě hodnot v násle
 | ---                       | ---                                                |
 | Název Virtual Network | *TestVNet* |    
 | Virtual Network adresní prostor | *192.168.0.0/16* |
-| Skupina prostředků | *TestRG* |
+| Resource Group | *TestRG* |
 | Název Subnet1 | *FrontEnd* |   
 | Adresní prostor Subnet1 | *192.168.1.0/24* |
 | Název Subnet1 | *FrontEnd* |
@@ -94,7 +92,7 @@ Postup pro tuto úlohu používá virtuální síť na základě hodnot v násle
    ```azurepowershell-interactive
    $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
    ```
-1. Vytvořte konfiguraci pro bránu. Konfigurace brány definuje podsíť a veřejnou IP adresu, která se bude používat. V tomto kroku zadáte konfiguraci, která se použije při vytváření brány. Tento krok ve skutečnosti nevytváří objekt brány. Podle následující ukázky vytvořte vlastní konfiguraci brány.
+1. Vytvořte konfiguraci pro bránu. Konfigurace brány definuje podsíť a veřejnou IP adresu, která se bude používat. V tomto kroku zadáte konfiguraci, která se použije při vytváření brány. Podle následující ukázky vytvořte vlastní konfiguraci brány.
 
    ```azurepowershell-interactive
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip

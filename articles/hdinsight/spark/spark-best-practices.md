@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 01cdc121abded954c2443599c5d69689acd69b62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3818ce9ebae8e6af6ee8bb5ed30c7ab446a6f6b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82562334"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855170"
 ---
 # <a name="apache-spark-guidelines"></a>Pokyny pro Apache Spark
 
@@ -37,7 +37,7 @@ Tento článek poskytuje různé pokyny k používání Apache Spark v Azure HDI
 
 | Možnost | Dokumenty |
 |---|---|
-| Azure Toolkit for IntelliJ | [Selhání ladění úloh Sparku pomocí Azure Toolkit for IntelliJ (Preview)](apache-spark-intellij-tool-failure-debug.md) |
+| Sada Azure Toolkit for IntelliJ | [Selhání ladění úloh Sparku pomocí Azure Toolkit for IntelliJ (Preview)](apache-spark-intellij-tool-failure-debug.md) |
 | Azure Toolkit for IntelliJ přes SSH | [Místní nebo vzdálené ladění aplikací Apache Spark v clusteru HDInsight pomocí sady Azure Toolkit for IntelliJ přes SSH](apache-spark-intellij-tool-debug-remotely-through-ssh.md) |
 | Azure Toolkit for IntelliJ prostřednictvím sítě VPN | [Použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně ve službě HDInsight prostřednictvím sítě VPN](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md) |
 | Graf úlohy na serveru historie Apache Spark | [Ladění a diagnostika aplikací Apache Spark pomocí rozšířeného serveru historie Apache Sparku](./apache-azure-spark-history-server.md) |
@@ -62,8 +62,8 @@ Tento článek poskytuje různé pokyny k používání Apache Spark v Azure HDI
 
 | Možnost | Dokumenty |
 |---|---|
-| Data Lake Storage Gen2 | [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
-| Data Lake Storage Gen1 | [Použití Data Lake Storage Gen1 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md) |
+| Azure Data Lake Storage Gen2 | [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
+| Azure Data Lake Storage Gen1 | [Použití Azure Data Lake Storage Gen1 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen1.md) |
 | Azure Blob Storage | [Použití úložiště Azure s clustery Azure HDInsight](../hdinsight-hadoop-use-blob-storage.md) |
 
 ## <a name="next-steps"></a>Další kroky

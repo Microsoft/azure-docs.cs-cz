@@ -3,39 +3,72 @@ title: Povolit Azure Automation Update Management z Runbooku
 description: V tomto článku se dozvíte, jak povolit Update Management ze sady Runbook.
 services: automation
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: a5b6fe5cf83eaa18b34a00767e14e75737aa055e
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 870345d244a7f23011c900154e1c486e039a6d8d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450252"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854789"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Povolení Update Managementu z runbooku
 
-Tento článek popisuje, jak můžete pomocí Runbooku povolit funkci [Update Management](update-mgmt-overview.md) pro virtuální počítače ve vašem prostředí. Pokud chcete povolit virtuální počítače Azure ve velkém měřítku, musíte povolit existující virtuální počítač pomocí Update Management. 
+Tento článek popisuje, jak můžete pomocí Runbooku povolit funkci [Update Management](update-mgmt-overview.md) pro virtuální počítače ve vašem prostředí. Pokud chcete povolit virtuální počítače Azure ve velkém měřítku, musíte povolit existující virtuální počítač s Update Management.
 
 > [!NOTE]
 > Při povolování Update Management jsou podporovány pouze určité oblasti pro propojení pracovního prostoru Log Analytics a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](../how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Předpoklady
+Tato metoda používá dva Runbooky:
+
+* **Enable-MultipleSolution** – primární sada Runbook, která vyzve k zadání informací o konfiguraci, zadá dotaz na zadaný virtuální počítač a provede další kontroly ověřování a potom vyvolá sadu Runbook **Enable-AutomationSolution** pro konfiguraci Update Management pro každý virtuální počítač v zadané skupině prostředků.
+* **Enable-AutomationSolution** – povolí Update Management pro jeden nebo více virtuálních počítačů zadaných v cílové skupině prostředků. Ověří splnění požadavků, ověří, že je nainstalované rozšíření virtuálního počítače Log Analytics a když se nenalezne, nainstaluje a přidá virtuální počítače do konfigurace oboru v zadaném Log Analytics pracovním prostoru, který je propojený s účtem Automation.
+
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Účet Automation](../index.yml) pro správu počítačů.
+* [Účet Automation](../automation-security-overview.md) pro správu počítačů.
+* [Pracovní prostor Log Analytics](../../azure-monitor/platform/design-logs-deployment.md)
 * [Virtuální počítač](../../virtual-machines/windows/quick-create-portal.md).
+* Dva prostředky služby Automation, které jsou používány v sadě Runbook **Enable-AutomationSolution** . Tato sada Runbook, pokud už ve vašem účtu Automation neexistuje, je během prvního spuštění automaticky naimportována pomocí Runbooku **Enable-MultipleSolution** .
+    * *LASolutionSubscriptionId*: ID předplatného, kde se nachází Log Analytics pracovní prostor.
+    * *LASolutionWorkspaceId*: ID pracovního prostoru Log Analytics pracovního prostoru, který je propojený s vaším účtem Automation.
+
+    Tyto proměnné se používají ke konfiguraci pracovního prostoru integrovaných virtuálních počítačů. Pokud nejsou zadány, skript nejprve vyhledá libovolný virtuální počítač, který se Update Management v jeho předplatném a následuje předplatné, ve kterém je účet Automation, následovaný všemi ostatními předplatnými, ke kterým má váš uživatelský účet přístup. Pokud není správně nakonfigurovaný, může to mít za následek to, že se vaše počítače připojí do některého náhodného Log Analytics pracovního prostoru.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-update-management"></a>Povolení řešení Update Management
 
-1. Ve svém účtu Automation v části **Update Management**vyberte **Update Management** .
+1. V Azure Portal přejděte na **účty Automation**. Na stránce **účty Automation** v seznamu vyberte svůj účet.
 
-2. Vyberte pracovní prostor Log Analytics a pak klikněte na **Povolit**. I když je povolená Update Management, zobrazí se modrý banner.
+2. Ve svém účtu Automation v části **Update Management**vyberte **Update Management** .
 
-    ![Povolení řešení Update Management](media/update-mgmt-enable-runbook/update-onboard.png)
+3. Vyberte pracovní prostor Log Analytics a pak klikněte na **Povolit**. Když je povolená Update Management, zobrazí se banner.
+
+    ![Povolení řešení Update Management](media/update-mgmt-enable-runbook/enable-update-management.png)
+
+## <a name="install-and-update-modules"></a>Instalace a aktualizace modulů
+
+Je potřeba, abyste aktualizovali na nejnovější moduly Azure a importovali modul [AZ. OperationalInsights](/powershell/module/az.operationalinsights) , který umožňuje úspěšně povolit Update Management pro vaše virtuální počítače pomocí Runbooku.
+
+1. Ve svém účtu Automation v části **sdílené prostředky**vyberte **moduly** .
+
+2. Vyberte **Aktualizovat moduly Azure** a aktualizujte moduly Azure na nejnovější verzi.
+
+3. Kliknutím na **Ano** aktualizujete všechny existující moduly Azure na nejnovější verzi.
+
+    ![Aktualizace modulů](media/update-mgmt-enable-runbook/update-modules.png)
+
+4. Vraťte se do **modulů** v části **sdílené prostředky**.
+
+5. Vyberte **Procházet galerii** a otevřete galerii modulů.
+
+6. Vyhledejte `Az.OperationalInsights` Tento modul a naimportujte ho do svého účtu Automation.
+
+    ![Import modulu OperationalInsights](media/update-mgmt-enable-runbook/import-operational-insights-module.png)
 
 ## <a name="select-azure-vm-to-manage"></a>Vyberte virtuální počítač Azure, který se má spravovat.
 
@@ -45,45 +78,34 @@ Když je povoleno Update Management, můžete přidat virtuální počítač Azu
 
 2. Vyberte **Přidat virtuální počítače Azure** a přidejte svůj virtuální počítač.
 
-3. Vyberte virtuální počítač ze seznamu a kliknutím na **Povolit** nastavte virtuální počítač pro aktualizace.
+3. Vyberte virtuální počítač ze seznamu a kliknutím na **Povolit** nakonfigurujte virtuální počítač pro správu.
 
-   ![Povolit Update Management pro virtuální počítač](media/update-mgmt-enable-runbook/enable-update.png)
+   ![Povolit Update Management pro virtuální počítač](media/update-mgmt-enable-runbook/enable-update-management-vm.png)
 
     > [!NOTE]
-    > Pokud se pokusíte povolit další funkci před dokončením instalace Update Management, zobrazí se tato zpráva:`Installation of another solution is in progress on this or a different virtual machine. When that installation completes the Enable button is enabled, and you can request installation of the solution on this virtual machine.`
-
-## <a name="install-and-update-modules"></a>Instalace a aktualizace modulů
-
-Je potřeba, abyste aktualizovali na nejnovější moduly Azure a importovali modul [AZ. OperationalInsights](/powershell/module/az.operationalinsights/?view=azps-3.7.0) , který umožňuje úspěšně povolit Update Management pro vaše virtuální počítače.
-
-1. Ve svém účtu Automation v části **sdílené prostředky**vyberte **moduly** .
-2. Vyberte **Aktualizovat moduly Azure** a aktualizujte moduly Azure na nejnovější verzi.
-3. Kliknutím na **Ano** aktualizujete všechny existující moduly Azure na nejnovější verzi.
-
-    ![Aktualizace modulů](media/update-mgmt-enable-runbook/update-modules.png)
-
-4. Vraťte se do **modulů** v části **sdílené prostředky**.
-5. Vyberte **Procházet galerii** a otevřete galerii modulů.
-6. Vyhledejte `Az.OperationalInsights` Tento modul a naimportujte ho do svého účtu Automation.
-
-    ![Import modulu OperationalInsights](media/update-mgmt-enable-runbook/import-operational-insights-module.png)
+    > Pokud se pokusíte povolit další funkci před dokončením instalace Update Management, zobrazí se tato zpráva: `Installation of another solution is in progress on this or a different virtual machine. When that installation completes the Enable button is enabled, and you can request installation of the solution on this virtual machine.`
 
 ## <a name="import-a-runbook-to-enable-update-management"></a>Import Runbooku pro povolení Update Management
 
 1. Ve svém účtu Automation v části **Automatizace procesu**vyberte **Runbooky** .
+
 2. Vyberte **Procházet galerii**.
-3. Vyhledejte `update and change tracking`.
-4. Vyberte Runbook a klikněte na tlačítko **importovat** na stránce zdroj zobrazení.
+
+3. Vyhledejte **aktualizace a sledování změn**.
+
+4. Vyberte Runbook a klikněte na tlačítko **importovat** na stránce **zdroj zobrazení** .
+
 5. Kliknutím na **OK** importujte Runbook do účtu Automation.
 
    ![Importovat Runbook pro instalaci](media/update-mgmt-enable-runbook/import-from-gallery.png)
 
-6. Na stránce sada Runbook klikněte na tlačítko **Upravit**a pak vyberte možnost **publikovat**.
-7. V podokně Publikovat sadu Runbook kliknutím na tlačítko **Ano** publikujte sadu Runbook.
+6. Na stránce **sada Runbook** vyberte sadu Runbook **Enable-MultipleSolution** a pak klikněte na tlačítko **Upravit**. V textovém editoru vyberte  **publikovat**.
+
+7. Po zobrazení výzvy k potvrzení klikněte na **Ano** , aby se Runbook publikoval.
 
 ## <a name="start-the-runbook"></a>Spuštění runbooku
 
-Abyste mohli spustit tuto sadu Runbook, musíte mít povolený Update Management pro virtuální počítač Azure. Vyžaduje existující virtuální počítač a skupinu prostředků s povolenou funkcí pro parametry.
+Abyste mohli spustit tuto sadu Runbook, musíte mít povolený Update Management pro virtuální počítač Azure. Pro konfiguraci jednoho nebo více virtuálních počítačů v cílové skupině prostředků vyžaduje existující virtuální počítač a skupinu prostředků s povolenou funkcí.
 
 1. Otevřete Runbook **Enable-MultipleSolution** .
 

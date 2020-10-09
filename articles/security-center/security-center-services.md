@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 61e5c60317bf872b8e27a7bd2edea7247e01a3b8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a311439e8efc5481fbfd7431c1514ba6be576e39
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91439421"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858009"
 ---
 # <a name="feature-coverage-for-machines"></a>Pokrytí funkcí pro počítače
 
@@ -45,9 +45,9 @@ Následující dvě karty ukazují funkce Azure Security Center, které jsou dos
 |Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: ne<br><br>Mimo Azure: Ano|
 |Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: ne<br><br>Mimo Azure: Ano|
 |[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: ne<br><br>Mimo Azure: Ano|
-|Vyhodnocení šifrování disku|✔</br>(pro [podporované scénáře](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Ne|
-|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Ne|
-|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Ne|
+|Vyhodnocení šifrování disku|✔</br>(pro [podporované scénáře](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|No|
+|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|No|
+|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|No|
 
 
 ### <a name="linux-machines"></a>[**Počítače se systémem Linux**](#tab/features-linux)
@@ -68,10 +68,10 @@ Následující dvě karty ukazují funkce Azure Security Center, které jsou dos
 |Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|✔|✔|✔|Ano|
 |Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: ne<br><br>Mimo Azure: Ano|
 |Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: ne<br><br>Mimo Azure: Ano|
-|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Ne|
-|Vyhodnocení šifrování disku|✔</br>(pro [podporované scénáře](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Ne|
-|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Ne|
-|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Ne|
+|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|No|
+|Vyhodnocení šifrování disku|✔</br>(pro [podporované scénáře](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|No|
+|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|No|
+|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|No|
 
 --- 
 
@@ -93,11 +93,11 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 |------|------|-----|-----|
 | Antivirová ochrana v programu Microsoft Defender| Windows Server 2016 nebo novější| Ne, součást operačního systému| Ano |
 | Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
-| Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | Ne | Ano |
-| Symantec v12.1.1100+| Řada Windows Serverů  | Ne | Ano |
-| McAfee v10+ | Řada Windows Serverů  | Ne | Ano |
-| McAfee v10+ | Řada Linux serverů  | Ne | Ano **\*** |
-| Sophos v9 +| Řada Linux serverů  | Ne | Ano  **\***  |
+| Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | No | Ano |
+| Symantec v12.1.1100+| Řada Windows Serverů  | No | Ano |
+| McAfee v10+ | Řada Windows Serverů  | No | Ano |
+| McAfee v10+ | Řada Linux serverů  | No | Ano **\*** |
+| Sophos v9 +| Řada Linux serverů  | No | Ano  **\***  |
 
  **\*** Stav pokrytí a podpůrná data jsou v tuto chvíli k dispozici pouze v pracovním prostoru Log Analytics přidruženém k vašim chráněným předplatným. Neprojeví se na portálu Azure Security Center.
 
@@ -107,6 +107,6 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [Security Center shromažďuje data a agenta Log Analytics](security-center-enable-data-collection.md).
+- Přečtěte si [, jak Security Center shromažďuje data pomocí agenta Log Analytics](security-center-enable-data-collection.md).
 - Přečtěte si [, jak Security Center spravuje a chrání data](security-center-data-security.md).
 - Přečtěte si [platformy, které podporují Security Center](security-center-os-coverage.md).

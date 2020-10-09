@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 507298f323fe14e3b114afebed5f2f258145a76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bc820eb282d08c248b588aa926eb3fd837fe51c3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549931"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858111"
 ---
 # <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>Kurz: integrace znalostí odkudkoli do LMS pomocí Azure Active Directory
 
@@ -69,7 +69,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce **znalostní báze** aplikace pro hledání na úrovni Standard pro LMS najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -89,7 +89,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné přihlašovací adresy URL. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory pro klienty ve znalostní bázi LMS](https://knowany.zendesk.com/hc/en-us/articles/360000469034-SAML-2-0-Single-Sign-On-SSO-Set-Up-Guide) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte si certifikát a uložte ho do svého počítače.
 
    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -111,19 +111,19 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. Vyberte na kartě **Web** .
 
-    ![Konfigurace znalostí odkudkoli](./media/knowledge-anywhere-lms-tutorial/configure1.png)
+    ![Snímek obrazovky se zobrazí na kartě webu.](./media/knowledge-anywhere-lms-tutorial/configure1.png)
 
 5. Vyberte na kartě **Nastavení SAML** .
 
-    ![Konfigurace znalostí odkudkoli](./media/knowledge-anywhere-lms-tutorial/configure2.png)
+    ![Snímek obrazovky s vybraným nastavením SAML zobrazuje stránku s vědomím](./media/knowledge-anywhere-lms-tutorial/configure2.png)
 
 6. Klikněte na **Přidat nový**.
 
-    ![Konfigurace znalostí odkudkoli](./media/knowledge-anywhere-lms-tutorial/configure3.png)
+    ![Snímek obrazovky se zobrazí tlačítko Přidat nový v nastavení poskytovatele služeb.](./media/knowledge-anywhere-lms-tutorial/configure3.png)
 
 7. Na stránce **Přidat nebo aktualizovat nastavení SAML** proveďte následující kroky:
 
-    ![Konfigurace znalostí odkudkoli](./media/knowledge-anywhere-lms-tutorial/configure4.png)
+    ![Snímek obrazovky se zobrazí stránka Přidat nebo aktualizovat nastavení SAML, kde můžete udělat změny popsané tady.](./media/knowledge-anywhere-lms-tutorial/configure4.png)
 
     a. Zadejte název IDP podle vaší organizace. Pro např.: `Azure` .
 
@@ -153,7 +153,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B. Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

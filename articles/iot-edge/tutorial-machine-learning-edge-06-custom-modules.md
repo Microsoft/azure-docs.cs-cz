@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 734c898dae10233463fbf783802ffae4c6a3add8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a2087c83ec48b0b732ce1cb954f78fad9b46fef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997927"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857431"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Kurz: vytvoření a nasazení vlastních modulů IoT Edge
 
@@ -809,14 +809,6 @@ Když se přihlásíte do zařízení IoT Edge (v našem případě se jedná o 
 V tomto článku jsme vytvořili řešení IoT Edge v Visual Studio Code se třemi moduly: klasifikátor, směrovač a zapisovač nebo odeslání souboru. Nastavíme trasy, které umožní, aby se na hraničním zařízení vzájemně komunikovaly moduly. Změnili jsme konfiguraci hraničního zařízení a aktualizovali fázemi pro instalaci závislostí a přidání připojení vazby k kontejnerům modulů. 
 
 Dále jsme aktualizovali konfiguraci IoT Hub pro směrování našich zpráv na základě typu a pro zpracování nahrávání souborů. Na všech místech jsme nasadili moduly na zařízení IoT Edge a zajistili, že moduly běžely správně.
-
-Další pokyny najdete v následujících článcích:
-
-* [Nasazování modulů a vytváření tras ve službě IoT Edge](module-composition.md)
-* [Syntaxe dotazu směrování zpráv IoT Hubu](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
-* [Směrování zpráv IoT Hub: teď se směrováním na text zprávy](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
-* [Nahrávání souborů s využitím služby IoT Hub](../iot-hub/iot-hub-devguide-file-upload.md)
-* [Nahrání souborů ze zařízení do cloudu pomocí IoT Hub](../iot-hub/iot-hub-python-python-file-upload.md)
 
 Přejděte k dalšímu článku a začněte posílat data a podívejte se na vaše řešení v akci.
 

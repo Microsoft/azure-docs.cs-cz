@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a11ff33245bf92e225f0f2382f6e873eab1338c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9ebb0927f9721c5c35ee0d83a108efd72732958b
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323777"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851216"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Kurz: Konfigurace dynamického signálu pro Automatické zřizování uživatelů
 
@@ -100,11 +100,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 6. V konzole pro správu dynamického signálu přejděte na **správce > rozšířené rozhraní > API**.
 
-    ![Dynamické zřizování signálu](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-1.png" alt-text="Snímek obrazovky s konzolou správce dynamického signálu V nabídce správce je zvýrazněna položka Upřesnit. Zobrazí se také nabídka Upřesnit se zvýrazněnou možností P." border="false":::
 
     Zkopírujte **adresu URL rozhraní API SCIM** na **adresu URL tenanta**. Kliknutím na **vygenerovat nový token** vygenerujte **nosný token** a zkopírujte hodnotu do **tajného tokenu**.
 
-    ![Dynamické zřizování signálu](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-2.png" alt-text="Snímek obrazovky s konzolou správce dynamického signálu V nabídce správce je zvýrazněna položka Upřesnit. Zobrazí se také nabídka Upřesnit se zvýrazněnou možností P." border="false":::
 
 7. Po vyplnění polí zobrazených v kroku 5 klikněte na **Test připojení** , aby se služba Azure AD mohla připojit k dynamickému signálu. Pokud se připojení nepovede, ujistěte se, že váš účet dynamického signálu má oprávnění správce, a zkuste to znovu.
 

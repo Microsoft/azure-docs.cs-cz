@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: c6a55958102c89c78fe2cd797bb59cf72f9ec505
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 855cbe3d2926a04af773aa32ea0ab63bde89491c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773140"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857261"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Používání privátních koncových bodů pro webovou aplikaci Azure
 
@@ -114,6 +114,8 @@ Podrobnosti o cenách najdete v tématu [ceny za privátní propojení Azure][pr
 Když použijete funkci Azure v plánu elastické Premium s privátním koncovým bodem, spustíte nebo spustíte funkci na webovém portálu Azure, musíte mít přímý přístup k síti nebo se zobrazí chyba HTTP 403. Jinými slovy, váš prohlížeč musí být schopný spojit se s privátním koncovým bodem a spustit funkci z webového portálu Azure. 
 
 Ke konkrétní webové aplikaci se dá připojit až 100 privátního koncového bodu.
+
+Funkce vzdáleného ladění nejsou k dispozici, pokud je pro webovou aplikaci povolen soukromý koncový bod. Doporučení je nasazení kódu do slotu a jeho vzdálené ladění.
 
 K dispozici je privátní koncový bod pro webovou aplikaci PremiumV2, PremiumV3, Windows a Linux, kontejnerový nebo ne a plán služby Azure Functions Premium (někdy označovaný jako plán elastické Premium). 
 

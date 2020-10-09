@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 7e298afa7efa6035b24f689d1163308ac6b14bff
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: af61254643e9f072995bceed1b6ecf8ecc29e5f8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82233325"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855448"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>Nasazení aplikací ASP.NET Core do služby Azure Kubernetes pomocí Azure DevOps Starter
 
@@ -24,7 +24,7 @@ DevOps Starter také:
 * Automaticky vytvoří prostředky Azure, jako je Azure Kubernetes Service (AKS).
 * Vytvoří a nakonfiguruje kanál verze ve službě Azure DevOps, který nastaví kanál sestavení a vydání pro CI/CD.
 * Vytvoří prostředek Azure Application Insights pro monitorování.
-* Povolí [Azure monitor pro kontejnery](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) monitorovat výkon pro úlohy kontejneru v clusteru AKS.
+* Povolí [Azure monitor pro kontejnery](../azure-monitor/insights/container-insights-overview.md) monitorovat výkon pro úlohy kontejneru v clusteru AKS.
 
 V tomto kurzu provedete následující:
 
@@ -45,7 +45,7 @@ V tomto kurzu provedete následující:
 
 DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Starter také vytvoří prostředky Azure, jako je cluster AKS, v předplatném Azure dle vašeho výběru.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
@@ -171,4 +171,4 @@ Tyto kanály buildu a verze můžete volitelně upravit tak, aby splňovaly pož
 Další informace o používání řídicího panelu Kubernetes najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Použití řídicího panelu Kubernetes](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)
+> [Použití řídicího panelu Kubernetes](../aks/kubernetes-dashboard.md)

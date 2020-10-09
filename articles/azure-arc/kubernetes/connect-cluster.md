@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Připojení clusteru Kubernetes s povoleným ARC Azure pomocí ARC Azure
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
 ms.custom: references_regions
-ms.openlocfilehash: 8f1d95db9c30e78e1ca697d5d7e5638988bc9965
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 74a0de494148f1f3315511c0bf6cb10f40cdc416
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540621"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855000"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
 
@@ -68,10 +68,8 @@ Agenti Azure ARC vyžadují, aby následující protokoly/porty/odchozí adresy 
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Vyžaduje se, aby se agent připojil k Azure a zaregistroval cluster.                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Koncový bod roviny dat pro agenta, aby načetl stav a načetl informace o konfiguraci                                      |
-| `https://docker.io`                                                                                            | Požadováno pro načtení imagí kontejneru                                                                                         |
-| `https://github.com`, git://github.com                                                                         | Příklady úložišť GitOps jsou hostované na GitHubu. Agent konfigurace vyžaduje připojení k libovolnému koncovému bodu Git, který zadáte. |
 | `https://login.microsoftonline.com`                                                                            | Požadováno pro načtení a aktualizaci tokenů Azure Resource Manager                                                                                    |
-| `https://azurearcfork8s.azurecr.io`                                                                            | Požadováno pro získání imagí kontejneru pro agenty Azure ARC                                                                  |
+| `https://mcr.microsoft.com`                                                                            | Požadováno pro získání imagí kontejneru pro agenty Azure ARC                                                                  |
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  Požadováno pro získání certifikátů spravovaných identitou přidělené systémem                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Zaregistrujte dva poskytovatele pro Kubernetes s povoleným ARC Azure:
@@ -183,17 +181,36 @@ Pokud je váš cluster za odchozím proxy server, Azure CLI a agenti Kubernetes 
     az -v
     ```
 
-    `connectedk8s`K nastavení agentů s odchozím proxy serverem potřebujete rozšíření >= 0.2.3. Pokud máte na svém počítači verzi < 0.2.3, postupujte podle [kroků aktualizace](#before-you-begin) a získejte na svém počítači nejnovější verzi rozšíření.
+    `connectedk8s`K nastavení agentů s odchozím proxy serverem potřebujete rozšíření >= 0.2.5. Pokud máte na svém počítači verzi < 0.2.3, postupujte podle [kroků aktualizace](#before-you-begin) a získejte na svém počítači nejnovější verzi rozšíření.
 
-2. Spusťte příkaz Connect se zadanými parametry proxy serveru:
+2. Nastavte proměnné prostředí potřebné pro použití odchozího proxy server v Azure CLI:
+
+    * Pokud používáte bash, spusťte následující příkaz s příslušnými hodnotami:
+
+        ```bash
+        export HTTP_PROXY=<proxy-server-ip-address>:<port>
+        export HTTPS_PROXY=<proxy-server-ip-address>:<port>
+        export NO_PROXY=<cluster-apiserver-ip-address>:<port>
+        ```
+
+    * Pokud používáte PowerShell, spusťte následující příkaz s příslušnými hodnotami:
+
+        ```powershell
+        $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
+        $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
+        $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
+        ```
+
+3. Spusťte příkaz Connect se zadanými parametry proxy serveru:
 
     ```console
-    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR>
+    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR> --proxy-cert <path-to-cert-file>
     ```
 
 > [!NOTE]
 > 1. Zadání excludedCIDR pod položkou--proxy-Skip-Range je důležité, aby se zajistilo, že komunikace v clusteru není pro agenty poškozená.
-> 2. Výše uvedená specifikace proxy serveru se momentálně používá jenom pro agenty ARC a ne pro tok lusků používaných v sourceControlConfiguration. Kubernetes tým s povoleným obloukem aktivně pracuje na této funkci a brzy bude k dispozici.
+> 2. I když--proxy-HTTP,--proxy-https a--proxy-Skip-Range se očekává pro většinu odchozích proxy prostředí,--proxy-CERT se vyžaduje jenom v případě, že proxy servery obsahují důvěryhodné certifikáty, které je potřeba vložit do důvěryhodného úložiště certifikátů agenta.
+> 3. Výše uvedená specifikace proxy serveru se v tuto chvíli používá jenom pro agenty ARC a ne pro tok lusků používaných v sourceControlConfiguration. Kubernetes tým s povoleným obloukem aktivně pracuje na této funkci a brzy bude k dispozici.
 
 ## <a name="azure-arc-agents-for-kubernetes"></a>Agenti Azure ARC pro Kubernetes
 

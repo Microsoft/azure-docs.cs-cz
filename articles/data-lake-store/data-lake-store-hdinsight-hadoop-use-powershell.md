@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 69cfe529f3d2b0f956bfbe9d002a5a220b37e19f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: d11d3edc4eec0a006e71ef1787cbbd62a7f5957e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620000"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856972"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Použití Azure PowerShell k vytvoření clusteru HDInsight s Azure Data Lake Storage Gen1 (jako další úložiště)
 
@@ -29,7 +29,7 @@ Naučte se, jak pomocí Azure PowerShell nakonfigurovat cluster HDInsight s Azur
 > Pokud budete používat Data Lake Storage Gen1 jako další úložiště pro cluster HDInsight, důrazně doporučujeme, abyste to provedli během vytváření clusteru, jak je popsáno v tomto článku. Přidání Data Lake Storage Gen1 jako dalšího úložiště do stávajícího clusteru HDInsight je složitý proces a náchylné k chybám.
 >
 
-U podporovaných typů clusterů se Data Lake Storage Gen1 dá použít jako výchozí úložiště nebo další účet úložiště. Pokud se Data Lake Storage Gen1 používá jako další úložiště, bude se výchozí účet úložiště pro clustery pořád naAzure Storage objekty BLOB (WASB) a soubory související s clusterem (například protokoly atd.) se zapisují do výchozího úložiště, zatímco data, která chcete zpracovat, můžou být uložená v účtu Data Lake Storage Gen1. Použití Data Lake Storage Gen1 jako dalšího účtu úložiště nemá vliv na výkon ani možnost čtení a zápisu do úložiště z clusteru.
+U podporovaných typů clusterů se Data Lake Storage Gen1 dá použít jako výchozí úložiště nebo další účet úložiště. Když se Data Lake Storage Gen1 používá jako další úložiště, bude výchozí účet úložiště pro clustery stále úložiště objektů BLOB v Azure (WASB) a soubory související s clusterem (například protokoly atd.) se zapisují do výchozího úložiště, zatímco data, která chcete zpracovat, můžou být uložená v Data Lake Storage Gen1. Použití Data Lake Storage Gen1 jako dalšího účtu úložiště nemá vliv na výkon ani možnost čtení a zápisu do úložiště z clusteru.
 
 ## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>Použití Data Lake Storage Gen1 pro úložiště clusteru HDInsight
 
@@ -39,7 +39,7 @@ Tady jsou některé důležité informace pro používání služby HDInsight s 
 
 Konfigurace HDInsight pro práci s Data Lake Storage Gen1 pomocí prostředí PowerShell zahrnuje následující kroky:
 
-* Vytvoření účtu Data Lake Storage Gen1
+* Vytvoření účtu Data Lake Storage Gen1 
 * Nastavení ověřování pro přístup na základě rolí na Data Lake Storage Gen1
 * Vytvoření clusteru HDInsight s ověřováním pro Data Lake Storage Gen1
 * Spuštění testovací úlohy na clusteru
@@ -57,7 +57,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
     **Pokud nejste správce Azure AD**, nebudete moct provádět kroky potřebné k vytvoření instančního objektu. V takovém případě musí správce Azure AD nejdřív vytvořit instanční objekt, abyste mohli vytvořit cluster HDInsight s Data Lake Storage Gen1. Instanční objekt musí být také vytvořen pomocí certifikátu, jak je popsáno v tématu [Vytvoření instančního objektu s certifikátem](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority).
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Vytvoření účtu Data Lake Storage Gen1
+## <a name="create-a-data-lake-storage-gen1-account"></a>Vytvoření účtu Data Lake Storage Gen1 
 Pomocí těchto kroků vytvořte účet Data Lake Storage Gen1.
 
 1. Z plochy otevřete nové okno Azure PowerShell a zadejte následující fragment kódu. Po zobrazení výzvy k přihlášení se ujistěte, že jste se přihlásili jako jeden ze správce nebo vlastníka předplatného:
@@ -80,7 +80,7 @@ Pomocí těchto kroků vytvořte účet Data Lake Storage Gen1.
    > Pokud se zobrazí chybová zpráva podobná `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` při registraci Data Lake Storage Gen1 poskytovatele prostředků, je možné, že vaše předplatné není schválené pro data Lake Storage Gen1. Ujistěte se, že jste povolili předplatné Azure pro Data Lake Storage Gen1 pomocí následujících [pokynů](data-lake-store-get-started-portal.md).
    >
    >
-2. Účet Data Lake Storage Gen1 je přidružený ke skupině prostředků Azure. Začněte vytvořením skupiny prostředků Azure.
+2. Účet úložiště s Data Lake Storage Gen1 je přidružený ke skupině prostředků Azure. Začněte vytvořením skupiny prostředků Azure.
 
     ```azurepowershell
     $resourceGroupName = "<your new resource group name>"
@@ -97,10 +97,10 @@ Pomocí těchto kroků vytvořte účet Data Lake Storage Gen1.
     ResourceId        : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp
     ```
 
-3. Vytvořte účet Data Lake Storage Gen1. Název účtu, který zadáte, musí obsahovat jenom malá písmena a číslice.
+3. Vytvořte účet úložiště pomocí Data Lake Storage Gen1. Název účtu, který zadáte, musí obsahovat jenom malá písmena a číslice.
 
     ```azurepowershell
-    $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
+    $dataLakeStorageGen1Name = "<your new storage account with Data Lake Storage Gen1 name>"
     New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
     ```
 
@@ -132,7 +132,7 @@ Pomocí těchto kroků vytvořte účet Data Lake Storage Gen1.
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>Nastavení ověřování pro přístup na základě rolí na Data Lake Storage Gen1
 
-Každé předplatné Azure je přidruženo k Azure Active Directory. Uživatelé a služby, kteří přistupují k prostředkům předplatného pomocí Azure Portal nebo rozhraní Azure Resource Manager API, se musí nejdřív ověřit pomocí tohoto Azure Active Directory. Přístup k předplatným a službám Azure se uděluje tím, že jim přiřadíte příslušnou roli na prostředku Azure.  Pro služby identifikuje instanční objekt službu v Azure Active Directory (AAD). Tato část ukazuje, jak udělit aplikační službu, jako je HDInsight, přístup k prostředku Azure (Data Lake Storage Gen1 účet, který jste vytvořili dříve) vytvořením instančního objektu pro aplikaci a přiřazením rolí k této službě prostřednictvím Azure PowerShell.
+Každé předplatné Azure je přidruženo k Azure Active Directory. Uživatelé a služby, kteří přistupují k prostředkům předplatného pomocí Azure Portal nebo rozhraní Azure Resource Manager API, se musí nejdřív ověřit pomocí tohoto Azure Active Directory. Přístup k předplatným a službám Azure se uděluje tím, že jim přiřadíte příslušnou roli na prostředku Azure.  Pro služby identifikuje instanční objekt službu v Azure Active Directory (Azure AD). Tato část ukazuje, jak udělit aplikační službu, jako je HDInsight, přístup k prostředku Azure (účet úložiště s Data Lake Storage Gen1, který jste vytvořili dříve), vytvořením instančního objektu pro aplikaci a přiřazením rolí k této službě prostřednictvím Azure PowerShell.
 
 Chcete-li nastavit ověřování služby Active Directory pro Data Lake Storage Gen1, je nutné provést následující úlohy.
 
@@ -197,7 +197,7 @@ V této části provedete kroky k vytvoření instančního objektu pro Azure Ac
      $objectId = $servicePrincipal.Id
     ```
 
-3. Udělte instančnímu objektu přístup ke složce Data Lake Storage Gen1 a k souboru, ke kterému budete přistupovat z clusteru HDInsight. Následující fragment kódu poskytuje přístup ke kořenovému adresáři Data Lake Storage Gen1 účtu (kam jste zkopírovali soubor ukázkových dat) a samotnému souboru.
+3. Udělte instančnímu objektu přístup ke složce Data Lake Storage Gen1 a k souboru, ke kterému budete přistupovat z clusteru HDInsight. Následující fragment kódu poskytuje přístup ke kořenu účtu úložiště pomocí Data Lake Storage Gen1 (kam jste zkopírovali soubor ukázkových dat) a samotného souboru.
 
     ```azurepowershell
     Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
@@ -206,7 +206,7 @@ V této části provedete kroky k vytvoření instančního objektu pro Azure Ac
 
 ## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-additional-storage"></a>Vytvoření clusteru HDInsight Linux s Data Lake Storage Gen1 jako další úložiště
 
-V této části vytvoříme cluster HDInsight Hadoop Linux s Data Lake Storage Gen1 jako další úložiště. V této verzi musí být cluster HDInsight a účet Data Lake Storage Gen1 ve stejném umístění.
+V této části vytvoříme cluster HDInsight Hadoop Linux s Data Lake Storage Gen1 jako další úložiště. V této verzi musí být cluster HDInsight a účet úložiště Data Lake Storage Gen1 ve stejném umístění.
 
 1. Začněte s načtením ID tenanta předplatného. Budete je potřebovat později.
 
@@ -214,7 +214,7 @@ V této části vytvoříme cluster HDInsight Hadoop Linux s Data Lake Storage G
     $tenantID = (Get-AzContext).Tenant.TenantId
     ```
 
-2. V této verzi můžete pro cluster Hadoop použít Data Lake Storage Gen1 jenom jako dodatečné úložiště pro cluster. Výchozím úložištěm budou i objekty blob služby Azure Storage (WASB). Nejprve vytvoříme účet úložiště a kontejnery úložiště vyžadované pro cluster.
+2. V této verzi můžete pro cluster Hadoop použít Data Lake Storage Gen1 jenom jako dodatečné úložiště pro cluster. Výchozím úložištěm bude i úložiště objektů BLOB v Azure (WASB). Nejprve vytvoříme účet úložiště a kontejnery úložiště vyžadované pro cluster.
 
     ```azurepowershell
     # Create an Azure storage account
@@ -245,8 +245,8 @@ V této části vytvoříme cluster HDInsight Hadoop Linux s Data Lake Storage G
     Po úspěšném dokončení rutiny by se měl zobrazit výstup s výpisem podrobností o clusteru.
 
 
-## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-storage-gen1-account"></a>Spuštění testovacích úloh v clusteru HDInsight pro použití účtu Data Lake Storage Gen1
-Po nakonfigurování clusteru HDInsight můžete spustit testovací úlohy v clusteru, abyste otestovali, že cluster HDInsight má přístup k Data Lake Storage Gen1. Uděláte to tak, že spustíte ukázkovou úlohu podregistru, která vytvoří tabulku pomocí ukázkových dat, která jste předtím nahráli do svého účtu Data Lake Storage Gen1.
+## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-storage-gen1"></a>Spuštění testovacích úloh v clusteru HDInsight pro použití Data Lake Storage Gen1
+Po nakonfigurování clusteru HDInsight můžete spustit testovací úlohy v clusteru, abyste otestovali, že cluster HDInsight má přístup k Data Lake Storage Gen1. Uděláte to tak, že spustíte ukázkovou úlohu podregistru, která vytvoří tabulku pomocí ukázkových dat, která jste předtím nahráli do svého účtu úložiště pomocí Data Lake Storage Gen1.
 
 V této části provedete SSH do clusteru HDInsight Linux, který jste vytvořili, a spustíte ukázkový dotaz na podregistr.
 
@@ -290,10 +290,10 @@ V této části provedete SSH do clusteru HDInsight Linux, který jste vytvořil
 * Pokud ke službě SSH v clusteru používáte klienta Windows, přečtěte si téma [Použití SSH se systémem Linux Hadoop ve službě HDInsight ze systému Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 * Pokud ke službě SSH v clusteru používáte klienta se systémem Linux, přečtěte si téma [Použití SSH se systémem Linux Hadoop ve službě HDInsight ze systému Linux](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md) .
 
-Po připojení použijte následující příkaz HDFS systému souborů k vypsání souborů v Data Lake Storage Gen1m účtu.
+Po připojení použijte následující příkaz HDFS systému souborů k vypsání souborů v účtu úložiště pomocí Data Lake Storage Gen1.
 
 ```azurepowershell
-hdfs dfs -ls adl://<Data Lake Storage Gen1 account name>.azuredatalakestore.net:443/
+hdfs dfs -ls adl://<storage account with Data Lake Storage Gen1 name>.azuredatalakestore.net:443/
 ```
 
 Mělo by se zobrazit seznam souborů, které jste dříve nahráli do Data Lake Storage Gen1.
@@ -307,7 +307,7 @@ Found 1 items
 Pomocí příkazu můžete také `hdfs dfs -put` Odeslat některé soubory do data Lake Storage Gen1 a potom použít `hdfs dfs -ls` k ověření, jestli se soubory úspěšně nahrály.
 
 ## <a name="see-also"></a>Viz také
-* [Použití Data Lake Storage Gen1 s clustery Azure HDInsight](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [Použití Data Lake Storage Gen1 s clustery Azure HDInsight](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [Portál: Vytvoření clusteru HDInsight pro použití Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx

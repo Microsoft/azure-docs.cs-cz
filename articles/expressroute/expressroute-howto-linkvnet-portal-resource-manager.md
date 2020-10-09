@@ -4,16 +4,16 @@ description: V tomto kurzu se dozvíte, jak vytvořit připojení k propojení v
 services: expressroute
 author: duongau
 ms.service: expressroute
-ms.topic: how-to
+ms.topic: tutorial
 ms.date: 10/06/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: bfb358694cbdd214490fb41052e508b94d10baf4
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: f46ad0d45967f94191732f472b44a47de930a3a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773012"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855349"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Kurz: připojení virtuální sítě k okruhu ExpressRoute pomocí portálu
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 > - Připojení virtuální sítě k okruhu v jiném předplatném.
 > - Odstraňte propojení mezi virtuální sítí a okruhem ExpressRoute.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Než začnete s konfigurací, Projděte si [požadavky,](expressroute-prerequisites.md) [požadavky na směrování](expressroute-routing.md)a [pracovní postupy](expressroute-workflows.md) .
 

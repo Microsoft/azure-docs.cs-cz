@@ -4,17 +4,17 @@ description: K identifikaci, diagnostice a řešení potíží souvisejících s
 author: normesta
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 10/02/2020
+ms.date: 10/08/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: a63af55161c2e60724fd35987f9dcbf05b12df2e
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 5f43654b4ff7d0e1f73bd2d83df21d7277c570d1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667907"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854553"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -23,8 +23,6 @@ ms.locfileid: "91667907"
 Diagnostiku a řešení problémů v distribuované aplikaci hostované v cloudovém prostředí může být složitější než v tradičních prostředích. Aplikace se dají nasadit v infrastruktuře PaaS nebo IaaS, místně, na mobilním zařízení nebo v některé kombinaci těchto prostředí. Síťový provoz vaší aplikace obvykle může procházet veřejné a privátní sítě a vaše aplikace může kromě jiných úložišť dat, jako jsou relační databáze a dokumenty dokumentů, používat víc technologií úložiště, jako jsou Microsoft Azure Storage tabulky, objekty blob, fronty nebo soubory.
 
 Aby bylo možné tyto aplikace spravovat úspěšně, měli byste je monitorovat aktivně a pochopit, jak diagnostikovat a řešit potíže se všemi aspekty a jejich závislými technologiemi. Jako uživatel služby Azure Storage Services byste měli průběžně monitorovat služby úložiště, které vaše aplikace používá k jakýmkoli neočekávaným změnám v chování (například pomalejší než obvyklá doba odezvy), a používat protokolování ke shromažďování podrobnějších dat a k analýze problému podrobněji. Diagnostické informace, které získáte z monitorování a protokolování, vám pomůžou určit hlavní příčinu problému, ke kterému vaše aplikace došlo. Pak můžete problém vyřešit a určit vhodné kroky, které můžete provést, abyste ho mohli opravit. Azure Storage je základní služba Azure a tvoří důležitou část většiny řešení, která zákazníci nasazují do infrastruktury Azure. Azure Storage obsahuje možnosti pro zjednodušení monitorování, diagnostikování a odstraňování potíží s úložištěm ve vašich cloudových aplikacích.
-
-Praktickou příručku pro komplexní řešení potíží v aplikacích Azure Storage najdete v tématu [komplexní řešení potíží pomocí Azure Storage metrik a protokolování, AzCopy a analyzátoru zpráv](../storage-e2e-troubleshooting.md).
 
 * [Úvod]
   * [Jak je tato příručka organizována]
@@ -68,7 +66,6 @@ Praktickou příručku pro komplexní řešení potíží v aplikacích Azure St
 * [Dodatky]
   * [Příloha 1: použití Fiddler k zachycení přenosů HTTP a HTTPS]
   * [Příloha 2: použití programu Wireshark k zachycení síťového provozu]
-  * [Příloha 3: použití nástroje Microsoft Message Analyzer pro zachycení síťového provozu]
   * [Příloha 4: použití Excelu k zobrazení metrik a dat protokolu]
   * [Příloha 5: monitorování pomocí Application Insights pro Azure DevOps]
 
@@ -92,7 +89,7 @@ Oddíl "[diagnostikování problémů s úložištěm]" popisuje, jak diagnostik
 
 Část "[pokyny k odstraňování]potíží" poskytuje pokyny k odstraňování některých běžných problémů souvisejících s úložištěm, se kterými se můžete setkat.
 
-"[Dodatky]" obsahují informace o použití jiných nástrojů, jako je třeba Wireshark a Netmon pro analýzu dat síťového paketu, Fiddler pro analýzu zpráv HTTP/HTTPS a Microsoft Message Analyzer pro korelace dat protokolu.
+"[Dodatky]" obsahují informace o použití jiných nástrojů, jako je třeba Wireshark a Netmon pro analýzu dat síťových paketů, a Fiddler pro analýzu zpráv HTTP/HTTPS.
 
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>Monitorování služby úložiště
 Pokud jste obeznámeni s monitorováním výkonu systému Windows, můžete si představit metriky úložiště jako Azure Storage ekvivalent čítačů sledování výkonu systému Windows. V části metriky úložiště najdete komplexní sadu metrik (čítače v terminologii sledování výkonu systému Windows), jako je například dostupnost služby, celkový počet požadavků na službu nebo procento úspěšných požadavků na službu. Úplný seznam dostupných metrik najdete v tématu [Analýza úložiště schéma tabulky metrik](https://msdn.microsoft.com/library/azure/hh343264.aspx). Můžete určit, jestli chcete, aby služba úložiště shromáždila a agregační metriky každou hodinu nebo každou minutu. Další informace o tom, jak povolit metriky a monitorovat účty úložiště, najdete v tématu [Povolení metrik úložiště a zobrazení dat metrik](https://go.microsoft.com/fwlink/?LinkId=510865).
@@ -176,7 +173,7 @@ Problémy související se službou Azure Storage se typicky nacházejí v jedn�
 Následující části popisují kroky, které byste měli provést při diagnostice a řešení problémů v každé z těchto čtyř kategorií. Část "[pokyny k odstraňování potíží]dále v tomto průvodci poskytuje další podrobnosti k běžným problémům, se kterými se můžete setkat.
 
 ### <a name="service-health-issues"></a><a name="service-health-issues"></a>Problémy se stavem služby
-Problémy se stavem služby jsou obvykle mimo váš ovládací prvek. [Azure Portal](https://portal.azure.com) poskytuje informace o všech probíhajících problémech se službami Azure, včetně služeb úložiště. Pokud jste se při vytváření účtu úložiště rozhodli pro geograficky redundantní úložiště s přístupem pro čtení, pak se vaše aplikace může v primárním umístění dočasně přepnout na kopii, která je jen pro čtení. Aby bylo možné číst ze sekundárního nástroje, musí být aplikace schopná přepínat mezi primárním a sekundárním úložištěm a být schopná pracovat v režimu omezené funkčnosti s daty jen pro čtení. Klientské knihovny Azure Storage umožňují definovat zásady opakování, které se můžou číst ze sekundárního úložiště v případě, že se operace čtení z primárního úložiště nezdařila. Vaše aplikace také potřebuje vědět, že data v sekundárním umístění jsou nakonec konzistentní. Další informace najdete v blogovém příspěvku [Azure Storage možnosti redundance a geograficky redundantního úložiště s přístupem pro čtení](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
+Problémy se stavem služby jsou obvykle mimo váš ovládací prvek. [Azure Portal](https://portal.azure.com) poskytuje informace o všech probíhajících problémech se službami Azure, včetně služeb úložiště. Pokud jste se rozhodli, že Read-Access Geo-Redundant úložiště při vytváření účtu úložiště, pak se vaše data budou v primárním umístění dočasně přepnout na kopii, která je jen pro čtení. Aby bylo možné číst ze sekundárního nástroje, musí být aplikace schopná přepínat mezi primárním a sekundárním úložištěm a být schopná pracovat v režimu omezené funkčnosti s daty jen pro čtení. Klientské knihovny Azure Storage umožňují definovat zásady opakování, které se můžou číst ze sekundárního úložiště v případě, že se operace čtení z primárního úložiště nezdařila. Vaše aplikace také potřebuje vědět, že data v sekundárním umístění jsou nakonec konzistentní. Další informace najdete v blogovém příspěvku [Azure Storage možnosti redundance a geograficky redundantního úložiště s přístupem pro čtení](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
 
 ### <a name="performance-issues"></a><a name="performance-issues"></a>Problémy s výkonem
 Výkon aplikace může být subjektivní, zejména z pohledu uživatele. Proto je důležité mít k dispozici základní metriku, která vám pomůže identifikovat možné problémy s výkonem. Mnoho faktorů může ovlivnit výkon služby Azure Storage z pohledu klientské aplikace. Tyto faktory mohou fungovat ve službě úložiště, v klientovi nebo v síťové infrastruktuře; Proto je důležité mít strategii pro identifikaci původu problému s výkonem.
@@ -221,10 +218,9 @@ Můžete zachytit provoz mezi klientem a serverem a poskytnout podrobné informa
 
 * [Fiddler](https://www.telerik.com/fiddler) je bezplatný webový proxy server pro ladění, který umožňuje kontrolovat hlavičky a data datové části požadavků HTTP a HTTPS a zprávy s odpovědí. Další informace najdete v [dodatku 1: použití Fiddler k zachycení přenosů http a HTTPS](#appendix-1).
 * [Microsoft sledování sítě (Netmon)](https://cnet-downloads.com/network-monitor) a [Wireshark](https://www.wireshark.org/) jsou bezplatné nástroje pro analyzátor síťových protokolů, které umožňují zobrazit podrobné informace o paketech pro nejrůznější síťové protokoly. Další informace o nástroji Wireshark najdete v[dodatku 2: použití nástroje Wireshark k zachycení síťového provozu](#appendix-2).
-* Microsoft Message Analyzer je nástroj od Microsoftu, který nahrazuje Netmon a který kromě zachytávání dat síťových paketů vám pomůže zobrazit a analyzovat data protokolu zaznamenaná z jiných nástrojů. Další informace najdete v[dodatku 3: použití nástroje Microsoft Message Analyzer k zachycení síťového provozu](#appendix-3).
 * Pokud chcete provést základní test připojení, abyste zkontrolovali, jestli se Váš klientský počítač může připojit ke službě Azure Storage přes síť, nemůžete to udělat pomocí standardního nástroje **příkazového** testu na klientovi. K zkontrolování připojení ale můžete použít [Nástroj **tcping** ](https://www.elifulkerson.com/projects/tcping.php) .
 
-V mnoha případech budou data protokolu z protokolování úložiště a klientské knihovny pro úložiště dostatečné k diagnostice problému, ale v některých scénářích budete možná potřebovat podrobnější informace, které tyto nástroje pro protokolování sítě můžou poskytnout. Například použití Fiddler k zobrazení zpráv HTTP a HTTPS vám umožní zobrazit hlavičku a data datové části odesílané do a ze služeb úložiště, což vám umožní zjistit, jak klientská aplikace opakuje operace úložiště. Analyzátory protokolů, jako je třeba Wireshark, pracují na úrovni paketů, což vám umožní zobrazit data protokolu TCP, což vám umožní řešit ztracené pakety a problémy s připojením. Analyzátor zpráv může pracovat na vrstvách HTTP i TCP.
+V mnoha případech budou data protokolu z protokolování úložiště a klientské knihovny pro úložiště dostatečné k diagnostice problému, ale v některých scénářích budete možná potřebovat podrobnější informace, které tyto nástroje pro protokolování sítě můžou poskytnout. Například použití Fiddler k zobrazení zpráv HTTP a HTTPS vám umožní zobrazit hlavičku a data datové části odesílané do a ze služeb úložiště, což vám umožní zjistit, jak klientská aplikace opakuje operace úložiště. Analyzátory protokolů, jako je třeba Wireshark, pracují na úrovni paketů, což vám umožní zobrazit data protokolu TCP, což vám umožní řešit ztracené pakety a problémy s připojením. 
 
 ## <a name="end-to-end-tracing"></a><a name="end-to-end-tracing"></a>Komplexní trasování
 Komplexní trasování pomocí nejrůznějších souborů protokolu je užitečnou technikou pro zkoumání potenciálních problémů. Informace o datu a čase z vašich dat metriky můžete použít jako indikaci, kde začít hledat v souborech protokolu, kde najdete podrobné informace, které vám pomůžou problém vyřešit.
@@ -385,11 +381,9 @@ queueServicePoint.UseNagleAlgorithm = false;
 Měli byste kontrolovat protokoly na straně klienta, abyste viděli, kolik požadavků vaše klientská aplikace odesílá, a měli byste vyhledat obecná slabá místa výkonu související s .NET v klientovi, jako je například CPU, uvolňování paměti .NET, využití sítě nebo paměť. Jako výchozí bod pro řešení potíží s klientskými aplikacemi .NET si přečtěte téma [ladění, trasování a profilace](https://msdn.microsoft.com/library/7fe0dd2y).
 
 #### <a name="investigating-network-latency-issues"></a>Zkoumání potíží s latencí sítě
-Většinou je vysoká koncová latence způsobená sítí způsobená přechodnými podmínkami. Dočasné a trvalé problémy se sítí, jako jsou například vyřazené pakety, můžete prozkoumat pomocí nástrojů, jako je třeba Wireshark nebo Microsoft Message Analyzer.
+Většinou je vysoká koncová latence způsobená sítí způsobená přechodnými podmínkami. Dočasné a trvalé problémy se sítí, jako jsou například vyřazené pakety, můžete prozkoumat pomocí nástrojů, jako je třeba Wireshark.
 
 Další informace o použití nástroje Wireshark k řešení problémů se sítí najdete v[dodatku 2: použití nástroje Wireshark k zachycení síťového provozu].
-
-Další informace o použití nástroje Microsoft Message Analyzer k řešení problémů se sítí najdete v části "[Příloha 3: použití nástroje Microsoft Message Analyzer k zachycení síťového provozu]".
 
 ### <a name="metrics-show-low-averagee2elatency-and-low-averageserverlatency-but-the-client-is-experiencing-high-latency"></a><a name="metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency"></a>Metrika ukazuje nízkou hodnotu AverageE2ELatency i hodnotu AverageServerLatency, ale latence klienta je vysoká.
 V tomto scénáři je nejpravděpodobnější příčinou zpoždění požadavků úložiště, které se blíží službě úložiště. Měli byste prozkoumat, proč se požadavky klienta neprovádějí do služby BLOB Service.
@@ -402,11 +396,9 @@ Také zkontrolujte, zda klient provádí více opakovaných pokusů, a prozkouma
 * Projděte si protokoly klienta. Podrobné protokolování znamená, že došlo k opakování.
 * Proveďte ladění kódu a ověřte vlastnosti objektu **OperationContext** přidruženého k žádosti. Pokud se operace zopakuje, bude vlastnost **RequestResults** zahrnovat několik jedinečných ID žádosti serveru. Můžete také kontrolovat počáteční a koncové časy pro každý požadavek. Další informace naleznete v ukázce kódu v části [ID žádosti serveru].
 
-Pokud v klientovi nejsou žádné problémy, měli byste prozkoumat potenciální problémy se sítí, jako je například ztráta paketů. K prozkoumání problémů se sítí můžete použít nástroje, jako je třeba Wireshark nebo Microsoft Message Analyzer.
+Pokud v klientovi nejsou žádné problémy, měli byste prozkoumat potenciální problémy se sítí, jako je například ztráta paketů. K prozkoumání problémů se sítí můžete použít nástroje, jako je třeba Wireshark.
 
 Další informace o použití nástroje Wireshark k řešení problémů se sítí najdete v[dodatku 2: použití nástroje Wireshark k zachycení síťového provozu].
-
-Další informace o použití nástroje Microsoft Message Analyzer k řešení problémů se sítí najdete v části "[Příloha 3: použití nástroje Microsoft Message Analyzer k zachycení síťového provozu]".
 
 ### <a name="metrics-show-high-averageserverlatency"></a><a name="metrics-show-high-AverageServerLatency"></a>Metrika ukazuje vysokou hodnotu AverageServerLatency.
 V případě vysokého **hodnotu averageserverlatency** požadavků na stažení objektů BLOB byste měli použít protokoly protokolování úložiště a zjistit, jestli existují opakované žádosti pro stejný objekt BLOB (nebo sadu objektů BLOB). V případě požadavků na nahrání objektů BLOB byste měli prozkoumat, jakou velikost bloku klient používá (například bloky menší než 64 KB můžou způsobit, že se v případě, že jsou v nich taky méně než 64 MB bloků dat, nahrávají i v případě, že jsou bloky do stejného objektu BLOB souběžně nahrávají. Měli byste taky kontrolovat metriky pro špičky v počtu požadavků, které vedou k překročení cílů škálovatelnosti za sekundu: taky se v části[metriky zobrazuje zvýšení PercentTimeoutError].
@@ -476,7 +468,7 @@ Vypršení časových limitů serveru indikují problém se službou úložišt�
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>Metrika ukazuje zvýšení u PercentNetworkError.
 Vaše metriky ukazují zvýšení **PercentNetworkError** pro jednu z vašich služeb úložiště. Metrika **PercentNetworkError** je agregace následujících metrik: **NetworkError**, **AnonymousNetworkError**a **SASNetworkError**. K tomu dojde, když služba úložiště detekuje chybu sítě, když klient vytvoří požadavek na úložiště.
 
-Nejběžnější příčinou této chyby je odpojení klienta před vypršením časového limitu ve službě úložiště. Prozkoumejte kód ve vašem klientovi, abyste zjistili, proč a kdy se klient odpojí od služby úložiště. K prozkoumání problémů s připojením k síti od klienta můžete také použít Nástroj Wireshark, Microsoft Message Analyzer nebo Tcping. Tyto nástroje jsou popsány v [dodatcích].
+Nejběžnější příčinou této chyby je odpojení klienta před vypršením časového limitu ve službě úložiště. Prozkoumejte kód ve vašem klientovi, abyste zjistili, proč a kdy se klient odpojí od služby úložiště. Nástroj Wireshark nebo Tcping můžete použít také k prozkoumání problémů s připojením k síti z klienta. Tyto nástroje jsou popsány v [dodatcích].
 
 ### <a name="the-client-is-receiving-http-403-forbidden-messages"></a><a name="the-client-is-receiving-403-messages"></a>Klient dostává stavové kódy HTTP 403 (Zakázáno)
 Pokud vaše klientská aplikace způsobuje chyby HTTP 403 (Zakázáno), pravděpodobnou příčinou je, že klient používá při odesílání žádosti na úložiště prošlý sdílený přístupový podpis (SAS) (i když další možné příčiny zahrnují nesoulad hodin, neplatné klíče a prázdné záhlaví). Pokud je příčinou vypršení platnosti klíče SAS, neuvidíte žádné záznamy v protokolu úložiště na straně serveru. Následující tabulka ukazuje ukázku z protokolu na straně klienta generovaného klientskou knihovnou úložiště, která ukazuje tento problém:
@@ -575,7 +567,7 @@ Pokud se klientská aplikace pokusí použít klíč SAS, který neobsahuje pot�
 
 Následující tabulka ukazuje ukázkovou zprávu protokolu na straně serveru ze souboru protokolu protokolování úložiště:
 
-| Name | Hodnota |
+| Název | Hodnota |
 | --- | --- |
 | Čas zahájení požadavku | 2014-05-30T06:17:48.4473697 Z |
 | Typ operace     | GetBlobProperties            |
@@ -719,13 +711,11 @@ Pokud předchozí oddíly řešení potíží neobsahují problém, který použ
 
 * Podívejte se na metriky a zjistěte, jestli nedošlo ke změně očekávaného chování na základním řádku. Z metriky můžete určit, jestli je problém přechodný nebo trvalý, a u kterých operací s úložištěm dochází k ovlivnění problému.
 * Informace o metrikách můžete použít k vyhledání podrobnějších informací o všech chybách, ke kterým dochází, v datech protokolu na straně serveru. Tyto informace vám můžou pomoct při odstraňování problému a jeho řešení.
-* Pokud informace v protokolech na straně serveru nejsou dostačující k úspěšnému vyřešení problému, můžete pomocí protokolů klientské klientské knihovny pro úložiště prozkoumat chování klientské aplikace a nástroje, jako je Fiddler, Wireshark a Microsoft Message Analyzer, prozkoumat vaši síť.
+* Pokud informace v protokolech na straně serveru nestačí k úspěšnému vyřešení tohoto problému, můžete použít protokoly klientské knihovny pro úložiště k prozkoumání chování klientské aplikace a nástroje, jako je Fiddler, Wireshark k prozkoumání vaší sítě.
 
 Další informace o použití Fiddler najdete v části "[Příloha 1: použití Fiddler pro zachycení přenosů http a HTTPS]".
 
 Další informace o použití nástroje Wireshark najdete v[dodatku 2: použití nástroje Wireshark k zachycení síťového provozu].
-
-Další informace o použití nástroje Microsoft Message Analyzer najdete v části "[Příloha 3: použití nástroje Microsoft Message Analyzer k zachycení síťového provozu]".
 
 ## <a name="appendices"></a><a name="appendices"></a>Dodatky
 Přílohy popisují několik nástrojů, které mohou být užitečné při diagnostice a řešení potíží s Azure Storage (a dalšími službami). Tyto nástroje nejsou součástí Azure Storage a některé jsou produkty třetích stran. V takovém případě se nástroje popsané v těchto dodatcích nevztahují na žádnou smlouvu o podpoře, kterou máte Microsoft Azure nebo Azure Storage, a proto jako součást procesu hodnocení byste měli prostudovat možnosti licencování a podpory, které jsou dostupné od poskytovatelů těchto nástrojů.
@@ -776,40 +766,6 @@ Můžete se také rozhodnout zobrazit data TCP jako aplikační vrstvu, a to tak
 > Další informace o použití nástroje Wireshark najdete v [příručce uživatelů nástroje Wireshark](https://www.wireshark.org/docs/wsug_html_chunked).
 >
 >
-
-### <a name="appendix-3-using-microsoft-message-analyzer-to-capture-network-traffic"></a><a name="appendix-3"></a>Příloha 3: použití nástroje Microsoft Message Analyzer pro zachycení síťového provozu
-Pomocí nástroje Microsoft Message Analyzer můžete zachytit provoz HTTP a HTTPS podobným způsobem jako Fiddler a zachytit síťový provoz podobným způsobem jako na Wireshark.
-
-#### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>Konfigurace relace webového trasování pomocí nástroje Microsoft Message Analyzer
-Pokud chcete nakonfigurovat relaci webového trasování pro přenosy HTTP a HTTPS pomocí Microsoft Message Analyzer, spusťte aplikaci Microsoft Message Analyzer a pak v nabídce **soubor** klikněte na **zachytit/trasovat**. V seznamu dostupných scénářů trasování vyberte **webový proxy server**. Pak na panelu **Konfigurace scénáře trasování** v textovém poli **HostnameFilter** přidejte názvy koncových bodů úložiště (můžete vyhledat tyto názvy v [Azure Portal](https://portal.azure.com)). Například pokud je název vašeho účtu úložiště Azure **contosodata**, měli byste do textového pole **HostnameFilter** přidat následující:
-
-```
-contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
-```
-
-> [!NOTE]
-> Znak mezery odděluje názvy hostitelů.
->
->
-
-Až budete připraveni začít shromažďovat data trasování, klikněte na tlačítko **začít s** .
-
-Další informace o trasování **webového proxy serveru** Microsoft Message Analyzer najdete v tématu [poskytovatel Microsoft-PEF-WebProxy serveru](https://technet.microsoft.com/library/jj674814.aspx).
-
-Integrované trasování **webového proxy serveru** v nástroji Microsoft Message Analyzer vychází z Fiddler. může zachytit provoz HTTPS na straně klienta a zobrazovat nešifrované zprávy HTTPS. Trasování **webového proxy** funguje pomocí konfigurace místního proxy serveru pro všechny přenosy HTTP a HTTPS, které jim umožní přístup k nešifrovaným zprávám.
-
-#### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>Diagnostikování problémů se sítí pomocí nástroje Microsoft Message Analyzer
-Kromě použití trasování **webového proxy serveru** analyzátoru zpráv společnosti Microsoft k zachycení podrobností o přenosech HTTP/HTTPS mezi klientskou aplikací a službou úložiště můžete k zaznamenání informací o síťovém paketu použít také integrované trasování **místní vrstvy** . To vám umožní zachytit data podobná těm, která můžete zachytit pomocí nástroje Wireshark, a diagnostikovat problémy se sítí, jako jsou vyřazené pakety.
-
-Následující snímek obrazovky ukazuje příklad trasování **místní vrstvy odkazů** s některými **informačními** zprávami ve sloupci **DiagnosisTypes** . Kliknutím na ikonu ve sloupci **DiagnosisTypes** se zobrazí podrobnosti zprávy. V tomto příkladu se #305 zpráva přenáší Server, protože neobdržela potvrzení od klienta:
-
-![Snímek obrazovky, který ukazuje příklad trasování místní vrstvy odkazů s některými informativními zprávami ve sloupci DiagnosisTypes][9]
-
-Když vytvoříte relaci trasování v nástroji Microsoft Message Analyzer, můžete určit filtry pro snížení objemu hluku v trasování. Na stránce **zaznamenat/trasovat** , kde je trasování definováno, klikněte na odkaz **Konfigurovat vedle nastavení** **Microsoft-Windows-NDIS-PacketCapture**. Na následujícím snímku obrazovky vidíte konfiguraci, která filtruje provoz TCP pro IP adresy tří služeb úložiště:
-
-![Snímek obrazovky zobrazující konfiguraci, která filtruje provoz TCP pro IP adresy tří služeb úložiště.][10]
-
-Další informace o trasování vrstvy místního propojení Microsoft Message Analyzer najdete v tématu [poskytovatel Microsoft-PEF-NDIS-PacketCapture](https://technet.microsoft.com/library/jj659264.aspx).
 
 ### <a name="appendix-4-using-excel-to-view-metrics-and-log-data"></a><a name="appendix-4"></a>Příloha 4: použití Excelu k zobrazení metrik a dat protokolu
 Řada nástrojů vám umožňuje stahovat data metrik úložiště z Azure Table Storage ve formátu s oddělovači, který usnadňuje načítání dat do Excelu pro zobrazení a analýzu. Data protokolování úložiště z Azure Blob Storage jsou už ve formátu s oddělovači, který můžete načíst do Excelu. Budete ale muset přidat vhodné záhlaví sloupců na základě informací ve [formátu protokolu analýza úložiště](https://msdn.microsoft.com/library/azure/hh343259.aspx) a [Analýza úložiště schématu tabulky metrik](https://msdn.microsoft.com/library/azure/hh343264.aspx).
@@ -897,7 +853,6 @@ Další informace o analýzách v Azure Storage najdete v těchto materiálech:
 [Dodatky]: #appendices
 [Příloha 1: použití Fiddler k zachycení přenosů HTTP a HTTPS]: #appendix-1
 [Příloha 2: použití programu Wireshark k zachycení síťového provozu]: #appendix-2
-[Příloha 3: použití nástroje Microsoft Message Analyzer pro zachycení síťového provozu]: #appendix-3
 [Příloha 4: použití Excelu k zobrazení metrik a dat protokolu]: #appendix-4
 [Příloha 5: monitorování pomocí Application Insights pro Azure DevOps]: #appendix-5
 

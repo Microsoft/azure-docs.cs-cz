@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: d598017c8b41dffc486bfef4b9af63c6942cef58
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fde0bcdb70384e791d7337d212d7353b6ea168bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549785"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856377"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-learning"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí programu LinkedIn Learning
 
@@ -115,7 +115,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -141,19 +141,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. V **centru účtů**klikněte na **globální nastavení** v části **Nastavení**. V rozevíracím seznamu vyberte také možnost **učení – výchozí** .
 
-    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
+    ![Snímek obrazovky zobrazuje globální nastavení, kde můžete vybrat výchozí.](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
 3. Klikněte **nebo klikněte sem, abyste načetli a zkopírovali jednotlivá pole z formuláře** a zkopírovali **ID entity** a **adresu URL služby kontrolního výrazu (ACS)** a vložili je do části **základní konfigurace SAML** v Azure Portal.
 
-    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
+    ![Snímek obrazovky zobrazuje jednu Sign-On, kde můžete zadat hodnoty, které jsou popsány.](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
 4. Přejít na část **Nastavení správce LinkedIn** . Nahrajte soubor XML, který jste stáhli z Azure Portal kliknutím na možnost **nahrát soubor XML** .
 
-    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Snímek obrazovky ukazuje konfiguraci nastavení poskytovatele služby LinkedIn Service S příponami v, kde můžete nahrát soubor X M L.](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
 
 5. Kliknutím **na** povolíte jednotné přihlašování. Změna stavu jednotného přihlašování z **nepřipojeného** k **připojenému**
 
-    ![Konfigurace jednotného přihlašování](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
+    ![Snímek obrazovky zobrazuje jednu Sign-On, kde můžete povolit ověřování uživatelů pomocí s S S S.](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="create-linkedin-learning-test-user"></a>Vytvořit testovacího uživatele pro LinkedIn Learning
 

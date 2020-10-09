@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: a6dc9aa70c55a0ed511a73570274c68708988451
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8350ebc92575911991ca772229912941f2af10e0
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331229"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851284"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Kurz: Konfigurace 4me pro Automatické zřizování uživatelů
 
@@ -122,15 +122,15 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé 4me**.
 
-    ![Mapování uživatelů 4me](media/4me-provisioning-tutorial/4me-user-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-mapping.png" alt-text="Snímek obrazovky se stránkou mapování V části název je zvýrazněná položka synchronizovat Azure Active Directory uživatelů do FourMe." border="false":::
     
 11. Zkontrolujte atributy uživatele synchronizované z Azure AD do 4me v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v 4me pro operace aktualizace. Ujistěte se prosím, že [4me podporuje filtrování](https://developer.4me.com/v1/scim/users/) u odpovídajícího atributu, který jste zvolili. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Mapování uživatelů 4me](media/4me-provisioning-tutorial/4me-user-attributes.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="Snímek obrazovky se stránkou mapování V části název je zvýrazněná položka synchronizovat Azure Active Directory uživatelů do FourMe." border="false":::
     
 12. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do 4me**.
 
-    ![Mapování uživatelů 4me](media/4me-provisioning-tutorial/4me-group-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="Snímek obrazovky se stránkou mapování V části název je zvýrazněná položka synchronizovat Azure Active Directory uživatelů do FourMe." border="false":::
     
 13. Zkontrolujte atributy skupiny synchronizované z Azure AD do 4me v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v 4me pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 

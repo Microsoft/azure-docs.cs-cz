@@ -3,18 +3,18 @@ title: Začínáme s úložištěm Azure Queue pomocí Azure Storage .NET
 description: Fronty Azure Queue poskytují spolehlivý asynchronní přenos zpráv mezi součástmi aplikace. Cloudový přenos zpráv umožňuje nezávislé škálování součástí vaší aplikace.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/08/2020
+ms.date: 10/08/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8dadc999f3bd26671b5a8ee4da26f051a822a26
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c07ad6e631482b47da674549e976953842cf983e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001106"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855918"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Začínáme s úložištěm Azure Queue pomocí rozhraní .NET
 
@@ -30,12 +30,9 @@ V tomto kurzu si ukážeme, jak napsat kód .NET pro některé běžné scéná�
 
 **Odhadovaný čas dokončení:** 45 minut
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-- [Azure Storage společnou klientskou knihovnu pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-- [Klientská knihovna Azure Storage Queue pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
-- [Azure Configuration Manager for .NET](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
 - [Účet úložiště Azure](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
@@ -72,7 +69,7 @@ Abyste mohli dokončit tento kurz, musíte odkazovat na následující čtyři b
 - [Knihovna front Azure Storage pro .NET](https://www.nuget.org/packages/Azure.Storage.Queues/): Tento balíček umožňuje pracovat s Služba frontem Azure Storage pro ukládání zpráv, ke kterým může klient přicházet.
 - [Knihovna Configuration Manager pro .NET](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/): Tento balíček poskytuje přístup ke konfiguračním souborům pro klientské aplikace.
 
-K získání těchto balíčků můžete použít NuGet. Postupujte následovně:
+K získání těchto balíčků můžete použít NuGet. Postupujte takto:
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
 1. Vyberte **Procházet** .
@@ -87,7 +84,7 @@ Abyste mohli dokončit tento kurz, musíte odkazovat na následující tři bal�
 - [Knihovna Microsoft Azure Storage Queue Library pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Tato Klientská knihovna umožňuje pracovat s služba front Microsoft Azure Storage pro ukládání zpráv, ke kterým může klient přicházet.
 - [Microsoft Azure Configuration Manager library for .NET:](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) Tento balíček poskytuje třídu pro potřeby analýzy připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
 
-K získání těchto balíčků můžete použít NuGet. Postupujte následovně:
+K získání těchto balíčků můžete použít NuGet. Postupujte takto:
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
 1. Vyberte **Procházet** .
@@ -95,11 +92,6 @@ K získání těchto balíčků můžete použít NuGet. Postupujte následovně
 1. Hledejte online Microsoft.Azure.ConfigurationManager a vyberte **nainstalovat** a nainstalujte Configuration Manager Azure.
 
 ---
-
-> [!NOTE]
-> Balíčky klientských knihoven pro úložiště jsou taky součástí [sady Azure SDK for .NET](https://azure.microsoft.com/downloads/). Doporučujeme ale nainstalovat taky klientské knihovny pro úložiště z NuGet, abyste měli jistotu, že máte vždycky nejnovější verze.
->
-> ODataLibé závislosti v knihovnách klienta úložiště pro .NET jsou vyřešeny balíčky ODataLib dostupnými v NuGet, nikoli z WCF Data Services. Knihovny ODataLib můžete stáhnout přímo nebo z odkazu ve vašem kódovém projektu prostřednictvím balíčku NuGet. Konkrétní balíčky ODataLib používané klientskými knihovnami pro úložiště jsou [OData](https://nuget.org/packages/Microsoft.Data.OData/), [EDM](https://nuget.org/packages/Microsoft.Data.Edm/)a [prostor](https://nuget.org/packages/System.Spatial/). I když tyto knihovny používají třídy úložiště tabulek Azure, jsou požadované závislosti pro programování s klientskými knihovnami pro úložiště.
 
 ### <a name="determine-your-target-environment"></a>Určení cílového prostředí
 
@@ -185,7 +177,7 @@ Třída [QueueClient](/dotnet/api/azure.storage.queues.queueclient) vám umožň
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-Třída [CloudQueueClient](/dotnet/api/microsoft.azure.storage.queue.cloudqueueclient?view=azure-dotnet-legacy) vám umožňuje načíst fronty uložené v rámci Queue Storage. Tady je jeden ze způsobů, jak vytvořit klienta služby:
+Třída [CloudQueueClient](/dotnet/api/microsoft.azure.storage.queue.cloudqueueclient?view=azure-dotnet-legacy&preserve-view=true) vám umožňuje načíst fronty uložené v rámci Queue Storage. Tady je jeden ze způsobů, jak vytvořit klienta služby:
 
 ```csharp
 // Retrieve storage account from connection string
@@ -237,7 +229,7 @@ Chcete-li vložit zprávu do existující fronty, zavolejte metodu [SendMessage]
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-Pokud chcete vložit zprávu do existující fronty, vytvořte nejdříve novou třídu [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet-legacy). Pak zavolejte metodu [AddMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet-legacy). A `CloudQueueMessage` lze vytvořit buď z typu `string` (ve formátu UTF-8), nebo `byte` pole. Tady je kód, který vytvoří frontu (Pokud neexistuje) a vloží zprávu "Hello, World":
+Pokud chcete vložit zprávu do existující fronty, vytvořte nejdříve novou třídu [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet-legacy&preserve-view=true). Pak zavolejte metodu [AddMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet-legacy&preserve-view=true). A `CloudQueueMessage` lze vytvořit buď z typu `string` (ve formátu UTF-8), nebo `byte` pole. Tady je kód, který vytvoří frontu (Pokud neexistuje) a vloží zprávu "Hello, World":
 
 ```csharp
 // Retrieve storage account from connection string
@@ -270,7 +262,7 @@ Můžete prohlížet zprávy ve frontě bez jejich odebrání z fronty voláním
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-Pomocí volání metody [PeekMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.peekmessage?view=azure-dotnet-legacy) můžete prohlížet zprávy ve frontě, aniž byste je z fronty odebrali.
+Pomocí volání metody [PeekMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.peekmessage?view=azure-dotnet-legacy&preserve-view=true) můžete prohlížet zprávy ve frontě, aniž byste je z fronty odebrali.
 
 ```csharp
 // Retrieve storage account from connection string
@@ -333,7 +325,7 @@ Odřadí zprávu z fronty ve dvou krocích. Když zavoláte [ReceiveMessages](/d
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-Váš kód vyřazuje zprávy z fronty ve dvou krocích. Zavoláním metody [GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?view=azure-dotnet-legacy) získáte další zprávu ve frontě. Zpráva vrácená z `GetMessage` se bude neviditelná pro jakýkoliv jiný kód, který čte zprávy z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund. Aby bylo možné odebrání zprávy z fronty dokončit, musíte také zavolat metodu [DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?view=azure-dotnet-legacy). Tento dvoukrokový proces odebrání zprávy zaručuje, aby v případě, že se vašemu kódu nepodaří zprávu zpracovat z důvodu selhání hardwaru nebo softwaru, mohla stejnou zprávu získat jiná instance vašeho kódu a bylo možné to zkusit znovu. Váš kód volá `DeleteMessage` hned po zpracování zprávy.
+Váš kód vyřazuje zprávy z fronty ve dvou krocích. Zavoláním metody [GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?view=azure-dotnet-legacy&preserve-view=true) získáte další zprávu ve frontě. Zpráva vrácená z `GetMessage` se bude neviditelná pro jakýkoliv jiný kód, který čte zprávy z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund. Aby bylo možné odebrání zprávy z fronty dokončit, musíte také zavolat metodu [DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?view=azure-dotnet-legacy&preserve-view=true). Tento dvoukrokový proces odebrání zprávy zaručuje, aby v případě, že se vašemu kódu nepodaří zprávu zpracovat z důvodu selhání hardwaru nebo softwaru, mohla stejnou zprávu získat jiná instance vašeho kódu a bylo možné to zkusit znovu. Váš kód volá `DeleteMessage` hned po zpracování zprávy.
 
 ```csharp
 // Retrieve storage account from connection string
@@ -406,7 +398,7 @@ Následující příklad kódu používá metodu [ReceiveMessages](/dotnet/api/a
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-V následujícím příkladu kódu se pomocí metody [GetMessages](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessages?view=azure-dotnet-legacy) získá 20 zpráv v jednom volání. Pak každou zprávu zpracuje pomocí `foreach` smyčky. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut. Všimněte si, že 5 minut začne u všech zpráv současně, takže po uplynutí 5 minut od jejich volání `GetMessages` budou všechny zprávy, které nebyly odstraněny, opět viditelné.
+V následujícím příkladu kódu se pomocí metody [GetMessages](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessages?view=azure-dotnet-legacy&preserve-view=true) získá 20 zpráv v jednom volání. Pak každou zprávu zpracuje pomocí `foreach` smyčky. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut. Všimněte si, že 5 minut začne u všech zpráv současně, takže po uplynutí 5 minut od jejich volání `GetMessages` budou všechny zprávy, které nebyly odstraněny, opět viditelné.
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -438,7 +430,7 @@ Podle potřeby můžete získat odhadovaný počet zpráv ve frontě. Metoda [Ge
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-Podle potřeby můžete získat odhadovaný počet zpráv ve frontě. Metoda [FetchAttributes](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet-legacy) požádá Službu front o načtení atributů fronty, včetně počtu zpráv. Vlastnost [ApproximateMessageCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet-legacy) vrací poslední hodnotu získanou `FetchAttributes` metodou bez volání služba front.
+Podle potřeby můžete získat odhadovaný počet zpráv ve frontě. Metoda [FetchAttributes](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet-legacy&preserve-view=true) požádá Službu front o načtení atributů fronty, včetně počtu zpráv. Vlastnost [ApproximateMessageCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet-legacy&preserve-view=true) vrací poslední hodnotu získanou `FetchAttributes` metodou bez volání služba front.
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -473,7 +465,7 @@ Pokud budete chtít odstranit frontu se všemi zprávami, které v ní jsou, zav
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-Pokud budete chtít odstranit frontu se všemi zprávami, které v ní jsou, zavolejte metodu [Delete](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet-legacy) pro objekt fronty.
+Pokud budete chtít odstranit frontu se všemi zprávami, které v ní jsou, zavolejte metodu [Delete](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet-legacy&preserve-view=true) pro objekt fronty.
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -499,16 +491,8 @@ Teď, když jste se naučili základy používání služby Queue Storage, podí
 - Projděte si referenční dokumentaci ke Službě front, kde najdete úplné podrobnosti o dostupných rozhraních API:
   - [Klientská knihovna pro úložiště – referenční informace pro .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
   - [REST API – referenční informace](https://msdn.microsoft.com/library/azure/dd179355)
-- Naučte se, jak zjednodušit psaní kódu pro práci s Azure Storage pomocí [sady Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 - Projděte si další průvodce funkcemi, kde najdete další informace o dalších možnostech pro ukládání dat v Azure.
   - [Začínáme s Azure Table Storage pomocí rozhraní .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) pro ukládání strukturovaných dat
   - [Začínáme s Azure Blob Storage pomocí rozhraní .NET](../blobs/storage-dotnet-how-to-use-blobs.md) pro ukládání nestrukturovaných dat
   - [Připojení k SQL Database s použitím rozhraní .NET (C#)](../../azure-sql/database/connect-query-dotnet-core.md) pro uložení relačních dat
-
-[Download and install the Azure SDK for .NET]: /develop/net/
-[.NET client library reference]: https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-[Creating an Azure Project in Visual Studio]: https://msdn.microsoft.com/library/azure/ee405487.aspx
-[Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/
-[OData]: https://nuget.org/packages/Microsoft.Data.OData/5.0.2
-[Edm]: https://nuget.org/packages/Microsoft.Data.Edm/5.0.2
-[Spatial]: https://nuget.org/packages/System.Spatial/5.0.2
+- Naučte se, jak zjednodušit psaní kódu pro práci s Azure Storage pomocí [sady Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).

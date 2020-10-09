@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 3eae423763d2d4a05b33e4e1d4b6e9e087a47ba3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 989b41d4fc55241a5fa75a0eed9ea8f4ebaeee67
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521524"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856819"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SignalFx
 
@@ -92,7 +92,7 @@ Pomocí těchto pokynů povolte jednotné přihlašování služby Azure AD v Az
     
 1. Zkontrolujte a ověřte, zda jsou následující deklarace identity mapovány na zdrojové atributy, které jsou vyplněny ve službě Active Directory. 
 
-    | Name |  Zdrojový atribut|
+    | Název |  Zdrojový atribut|
     | ------------------- | -------------------- |
     | User. FirstName  | User. křestní jméno |
     | Uživatel. e-mail  | uživatel. pošta |
@@ -118,7 +118,7 @@ Pomocí těchto pokynů můžete vytvořit testovacího uživatele ve Azure Port
    1. Do **uživatelského jména**zadejte `username@companydomain.extension` , například `b.simon@contoso.com` .
    1. Do **název**zadejte `B.Simon` .
    1. Označte **Zobrazit heslo**a potom zkopírujte zobrazenou hodnotu v **hesle**. Tyto informace budete potřebovat v pozdějším kroku, aby bylo možné tuto integraci otestovat. 
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ## <a name="step-5-assign-the-azure-ad-test-user"></a>Krok 5: přiřazení testovacího uživatele Azure AD
 
@@ -159,7 +159,7 @@ Přečtěte si následující informace týkající se testování jednotného p
         * Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 * K aplikaci SignalFx se dá získat přístup prostřednictvím přístupového panelu nebo vlastní přihlašovací stránky přiřazené k organizaci. Testovací uživatel by měl otestovat integraci od některého z těchto umístění.
-    * Testovací uživatel může použít pověření vytvořená dříve v tomto procesu pro **b.simon@contoso.com** .
+    * Testovací uživatel může použít přihlašovací údaje vytvořené dříve v tomto procesu pro **b. simon \@ contoso.com**.
 
 ### <a name="first-time-logins"></a>Přihlašovací jména při prvním přihlášení
 

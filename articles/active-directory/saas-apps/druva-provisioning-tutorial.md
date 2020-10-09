@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: b669ef7856628f7e5d698edf674eee0b84845295
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9163c64370e0718d6b9acf37bb7a9fc28c936948
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323511"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851148"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Kurz: Konfigurace Druva pro Automatické zřizování uživatelů
 
@@ -58,15 +58,15 @@ Před konfigurací Druva pro Automatické zřizování uživatelů pomocí Azure
 
 2. Přejděte ke **správě**  >  **nasazení**  >  **Uživatelé**.
 
-    ![Druva přidat SCIM](media/druva-provisioning-tutorial/manage.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/manage.png" alt-text="Snímek obrazovky s konzolou pro správu Druva Správa je zvýrazněna a nabídka spravovat je viditelná. V této nabídce se v části nasazení zvýrazní uživatelé." border="false":::
 
 3.  Přejděte na **Nastavení**. Klikněte na **vygenerovat token**.
 
-    ![Druva přidat SCIM](media/druva-provisioning-tutorial/settings.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/settings.png" alt-text="Snímek obrazovky s konzolou pro správu Druva Správa je zvýrazněna a nabídka spravovat je viditelná. V této nabídce se v části nasazení zvýrazní uživatelé." border="false":::
 
 4.  Zkopírujte hodnotu **tokenu ověřování** . Tato hodnota se zadá do pole **token tajného** kódu na kartě zřizování vaší aplikace Druva ve Azure Portal.
     
-    ![Druva přidat SCIM](media/druva-provisioning-tutorial/auth.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/auth.png" alt-text="Snímek obrazovky s konzolou pro správu Druva Správa je zvýrazněna a nabídka spravovat je viditelná. V této nabídce se v části nasazení zvýrazní uživatelé." border="false":::
 
 ## <a name="add-druva-from-the-gallery"></a>Přidání Druva z Galerie
 

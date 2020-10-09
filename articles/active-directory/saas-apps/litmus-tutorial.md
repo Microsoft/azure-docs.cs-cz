@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 494a698ac4b6f8262851878cfee4bb91126d9f02
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a050f7a7d86ef8586cab3e90d9c1bac310a7f18b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823022"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854541"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s litmus
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat litmus s Azure Active Directory (Azure
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -103,7 +103,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Create** (Vytvořit).
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -129,11 +129,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V levém navigačním panelu klikněte na **zabezpečení** .
 
-    ![Konfigurace litmus](./media/litmus-tutorial/security-img.png)
+    ![Snímek obrazovky se zobrazí položka zabezpečení vybraná.](./media/litmus-tutorial/security-img.png)
 
 1. V části **Konfigurace ověřování SAML** proveďte následující kroky:
 
-    ![Konfigurace litmus](./media/litmus-tutorial/configure1.png)
+    ![Snímek obrazovky se zobrazí v části Konfigurace ověřování SAML, kde můžete zadat hodnoty, které jsou popsány.](./media/litmus-tutorial/configure1.png)
 
     a. Přepněte na přepínač **Enable SAML** .
 
@@ -143,7 +143,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Proveďte tyto kroky:
 
-    ![Konfigurace litmus](./media/litmus-tutorial/configure3.png)
+    ![Snímek obrazovky se zobrazí část, kde můžete zadat hodnoty, které jsou popsány.](./media/litmus-tutorial/configure3.png)
 
     a. Do textového pole **koncového bodu SAML 2,0 (http)** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
@@ -157,15 +157,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V levém navigačním panelu klikněte na **účty** .
 
-    ![Konfigurace litmus](./media/litmus-tutorial/accounts-img.png)
+    ![Snímek obrazovky znázorňující vybranou položku účtů.](./media/litmus-tutorial/accounts-img.png)
 
 1. Klikněte na tlačítko **Přidat novou kartu uživatele** .
 
-    ![Konfigurace litmus](./media/litmus-tutorial/add-new-user.png)
+    ![Snímek obrazovky se zobrazí vybraná položka Přidat nový uživatel.](./media/litmus-tutorial/add-new-user.png)
 
 1. V části **Přidat uživatele** proveďte následující kroky:
 
-    ![Konfigurace litmus](./media/litmus-tutorial/user-profile.png)
+    ![Snímek obrazovky se zobrazí oddíl přidat uživatele, kde můžete zadat hodnoty, které jsou popsány.](./media/litmus-tutorial/user-profile.png)
 
     a. Do textového pole **e-mail** zadejte e-mailovou adresu uživatele, jako je **B. Simon \@ contoso.com**
 
@@ -181,7 +181,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici litmus, měli byste se automaticky přihlásit k litmus, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

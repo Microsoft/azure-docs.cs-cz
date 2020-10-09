@@ -3,12 +3,12 @@ title: Provádění akcí pomocí centra zálohování
 description: Tento článek vysvětluje, jak provádět akce pomocí centra zálohování.
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 81c81f0e9d955e0a5243485baaedff4e6f0fc10d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 65ac6374b1a9571d0415bc097a6ee957874d3d44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995794"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854422"
 ---
 # <a name="perform-actions-using-backup-center"></a>Provádění akcí pomocí centra zálohování
 
@@ -70,7 +70,7 @@ V závislosti na typu zdroje dat, který chcete obnovit, postupujte podle přís
 ### <a name="if-youre-restoring-an-azure-database-for-postgresql-server"></a>Pokud obnovujete Azure Database for PostgreSQL Server
 
 1. Přejděte do centra záloh a v horní části karty **Přehled** vyberte **obnovit** .
-2. Vyberte typ zdroje dat, který chcete zálohovat (Azure Database for PostgreSQL Server v tomto případě).
+2. Vyberte typ zdroje dat, který chcete obnovit (Azure Database for PostgreSQL Server v tomto případě).
 
     ![Výběr zdroje dat pro obnovení serveru Azure Database for PostgreSQL](./media/backup-center-actions/restore-select-datasource-postgresql.png)
 

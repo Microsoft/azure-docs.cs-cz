@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 2f602c23f182ede2b9897563a8421163e1328e24
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 44c87a3415a236f614510aa3163ad2e9cbd1f64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079186"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856173"
 ---
 # <a name="use-scp-with-apache-hadoop-in-azure-hdinsight"></a>Použití spojovacího bodu služby s Apache Hadoop ve službě Azure HDInsight
 
@@ -42,7 +42,7 @@ Pokud potřebujete nahrát prostředek pro použití z relace SSH, použijte `sc
 Informace o přímém načítání dat do úložiště kompatibilního se systémem HDFS najdete v následujících dokumentech:
 
 * [HDInsight používající Azure Storage](hdinsight-hadoop-use-blob-storage.md).
-* [HDInsight používající Azure Data Lake Storage](hdinsight-hadoop-use-data-lake-store.md).
+* [HDInsight používající Azure Data Lake Storage Gen1](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md).
 
 ## <a name="next-steps"></a>Další kroky
 

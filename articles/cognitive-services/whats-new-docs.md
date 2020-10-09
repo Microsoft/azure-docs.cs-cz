@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 10/02/2020
-ms.openlocfilehash: 73a097907a5b44c77ba5e1a9ead4cb4e3a8077c6
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 17d887f0834733fdc833bbbad66c957b057a588a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777749"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857805"
 ---
 # <a name="cognitive-services-docs-whats-new-for-september-1-2020---september-30-2020"></a>Cognitive Services Docs: co je nového ve 1. září 2020. září 2020
 
@@ -22,12 +22,12 @@ Vítá vás, co je nového v Cognitive Services docs od 1. září 2020 do 31. z
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Rychlý Start: vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure (CLI)](cognitive-services-apis-create-account-cli.md)
+- [Rychlý Start: vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure Command-Line (CLI)](cognitive-services-apis-create-account-cli.md)
 - [Rychlý Start: vytvoření prostředku Cognitive Services pomocí klientské knihovny pro správu Azure](cognitive-services-apis-create-account-client-library.md)
 - [Rychlý Start: vytvoření prostředku Cognitive Services pomocí Azure Portal](cognitive-services-apis-create-account.md)
 - [Rychlý Start: vytvoření prostředku Cognitive Services pomocí šablony ARM](create-account-resource-manager-template.md)
 
-## <a name="computer-vision"></a>Počítačové zpracování obrazu
+## <a name="computer-vision"></a>Computer Vision
 
 ### <a name="new-articles"></a>Nové články
 
@@ -99,3 +99,5 @@ Následující lidé přispěli během tohoto období k dokumentaci Cognitive Se
 - [iAmBipinPaul](https://github.com/iAmBipinPaul) -Bipin Paul (1)
 - [rexwan](https://github.com/rexwan) -Rex Wang (1)
 - [rglidden](https://github.com/rglidden) -Richard Glidden (1)
+
+[!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

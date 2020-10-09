@@ -7,16 +7,16 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0ea4523d1558f6887e1aef344198026591dac617
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07eae453441ea8bff81d7cdb60f9c46c08a22829
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84752618"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851165"
 ---
 # <a name="configure-a-custom-ipsec-policy-for-virtual-wan-using-the-portal"></a>Konfigurace vlastní zásady IPsec pro virtuální síť WAN pomocí portálu
 
-V Azure Portal můžete nakonfigurovat vlastní zásadu IPsec pro virtuální síť WAN. Vlastní zásady jsou užitečné, pokud chcete, aby obě strany (místní i brána Azure VPN Gateway) používaly stejné nastavení pro protokol IKE fáze 1 a IKE fáze 2.
+V Azure Portal můžete nakonfigurovat vlastní zásadu IPsec pro připojení k virtuální síti WAN VPN. Vlastní zásady jsou užitečné, pokud chcete, aby obě strany (místní i brána Azure VPN Gateway) používaly stejné nastavení pro protokol IKE fáze 1 a IKE fáze 2.
 
 ## <a name="working-with-custom-policies"></a>Práce s vlastními zásadami
 
@@ -24,14 +24,14 @@ V Azure Portal můžete nakonfigurovat vlastní zásadu IPsec pro virtuální s�
 
 ## <a name="configure-a-policy"></a>Konfigurace zásady
 
-1. **Vyhledejte virtuální rozbočovač**. V prohlížeči přejděte na web [Azure Portal](https://aka.ms/azurevirtualwanpreviewfeatures) a přihlaste se pomocí svého účtu Azure. Vyhledejte virtuální rozbočovač pro svůj web.
-2. **Vyberte lokalitu VPN**. Na stránce centra vyberte lokalitu VPN, pro kterou chcete nastavit vlastní zásady.
+1. **Vyhledejte virtuální rozbočovač**. V prohlížeči přejděte na web [Azure Portal](https://aka.ms/azurevirtualwanpreviewfeatures) a přihlaste se pomocí svého účtu Azure. Přejděte ke svému virtuálnímu prostředku sítě WAN a vyhledejte virtuální rozbočovač, ke kterému je připojená síť VPN.
+2. **Vyberte lokalitu VPN**. Na stránce Přehled centra klikněte na **síť VPN (site-to-site)** a vyberte LOKALITu VPN, pro kterou chcete nastavit vlastní zásadu IPSec.
 
    ![vybrali](./media/virtual-wan-custom-ipsec-portal/locate.png)
 3. **Upravte připojení VPN**. V **místní nabídce** **...** vyberte **Upravit připojení VPN**.
 
    ![upravit](./media/virtual-wan-custom-ipsec-portal/contextmenu.png)
-4. **Nakonfigurujte nastavení**. Na stránce **Upravit připojení VPN** nakonfigurujte nastavení. Vyberte **Uložit** a uložte nastavení.
+4. **Nakonfigurujte nastavení**. Na stránce **Upravit připojení VPN** změňte nastavení IPSec z výchozí na vlastní a přizpůsobte zásadu IPSec. Vyberte **Uložit** a uložte nastavení.
 
    ![Konfigurace a uložení](./media/virtual-wan-custom-ipsec-portal/edit.png)
 

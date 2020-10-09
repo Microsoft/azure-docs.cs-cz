@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 642a1937f44a608ebf235c20da060972788046a0
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 3274e45738c079c89560f546fe58163f695e12df
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321731"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851097"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava disku VHD nebo VHDX s Windows pro nahrání do Azure
 
@@ -197,7 +197,7 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
 
 1. Pokud je virtuální počítač součástí domény, zkontrolujte následující zásady, abyste se ujistili, že předchozí nastavení se nevrátí.
 
-    |                 Cíl                  |                                                                            Zásady                                                                            |                           Hodnota                            |
+    |                 Cíl                  |                                                                            Zásada                                                                            |                           Hodnota                            |
     | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
     | Protokol RDP je povolený.                        | Computer cestě konfigurace Settings\Administrative Templates\Components\Remote Desktop – pracovní relace, Host\Connections         | Umožňuje uživatelům vzdálené připojení pomocí vzdálené plochy.    |
     | NLA – zásady skupiny                      | Settings\Administrative Templates\Components\Remote Desktop – relace pro pracovní plochu – Host\Security                                                    | Vyžadovat ověření uživatele pro vzdálený přístup pomocí NLA |
@@ -241,7 +241,7 @@ Ujistěte se, že jsou pro vzdálený přístup správně nakonfigurovaná násl
 
 1. Pokud je virtuální počítač součástí domény, zkontrolujte následující zásady služby Azure AD a ujistěte se, že předchozí nastavení nejsou obnovena.
 
-    |                 Cíl                 |                                                                         Zásady                                                                          |                  Hodnota                  |
+    |                 Cíl                 |                                                                         Zásada                                                                          |                  Hodnota                  |
     | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
     | Povolit profily brány Windows Firewall | Computer cestě konfigurace Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Chránit všechna síťová připojení         |
     | Povolit protokol RDP                           | Computer cestě konfigurace Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows firewall   | Povolit příchozí výjimky vzdálené plochy |
@@ -421,6 +421,7 @@ Nástroj Sysprep vyžaduje, aby před provedením plně dešifroval jednotky. Po
 
 1. Přihlaste se k virtuálnímu počítači s Windows.
 1. Spusťte relaci PowerShellu jako správce.
+1. Odstraňte adresář Panther (C:\Windows\Panther).
 1. Změňte adresář na `%windir%\system32\sysprep` . Potom spusťte `sysprep.exe`.
 1. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost spustit **prostředí při spuštění v systému (OOBE)** a ujistěte se, že je zaškrtnuté políčko **generalizace** .
 
@@ -432,7 +433,7 @@ Nástroj Sysprep vyžaduje, aby před provedením plně dešifroval jednotky. Po
 Virtuální pevný disk je teď připravený k nahrání. Další informace o tom, jak vytvořit virtuální počítač z zobecněného disku, najdete v tématu [nahrání zobecněného virtuálního pevného disku a jeho použití k vytvoření nového virtuálního počítače v Azure](sa-upload-generalized.md).
 
 >[!NOTE]
-> Vlastní soubor *unattend.xml* není podporován. I když podporujeme vlastnost **additionalUnattendContent** , která poskytuje jenom omezené podpory pro přidání možností [Microsoft-Windows-Shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) do souboru *unattend.xml* , který používá agent zřizování Azure. Můžete použít například [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) k přidání FirstLogonCommands a LogonCommands. Další informace najdete v tématu [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+> Vlastní soubor *unattend.xml* není podporován. I když podporujeme vlastnost **additionalUnattendContent** , která poskytuje jenom omezené podpory pro přidání možností [Microsoft-Windows-Shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) do souboru *unattend.xml* , který používá agent zřizování Azure. Můžete použít například [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) k přidání FirstLogonCommands a LogonCommands. Další informace najdete v tématu [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>Převést virtuální disk na virtuální pevný disk s pevnou velikostí
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: 14b449590f6ffc5e735faa26baadfcc4e526450c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8be230044d868cc3ec03f6dc3fc2d21e102f121
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996410"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856292"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Řešení chyb při vytváření clusteru s Azure HDInsight
 
@@ -21,7 +21,7 @@ Následující problémy jsou nejběžnější hlavní příčiny selhání při
 
 - Problémy s oprávněním
 - Omezení zásad prostředků
-- Brány firewall
+- Firewally
 - Zámky prostředků
 - Nepodporované verze součástí
 - Omezení názvu účtu úložiště
@@ -29,9 +29,9 @@ Následující problémy jsou nejběžnější hlavní příčiny selhání při
 
 ## <a name="permissions-issues"></a>Problémy s oprávněními
 
-Pokud používáte Azure Data Lake Storage Gen2 a obdržíte chybu: " `AmbariClusterCreationFailedErrorCode` :::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support."::: ", otevřete Azure Portal, přejděte na svůj účet úložiště a v části Access Control (IAM) Zkontrolujte, že **Přispěvatel dat objektu BLOB úložiště** nebo role **vlastníka dat objektu BLOB úložiště** přiřadili přístup k **spravované identitě** , která je přiřazená k tomuto předplatnému uživateli. Podrobné pokyny najdete v tématu [Nastavení oprávnění pro spravovanou identitu v účtu Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account).
+Pokud používáte Azure Data Lake Storage Gen2 a obdržíte chybu: " `AmbariClusterCreationFailedErrorCode` :::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support."::: ", otevřete Azure Portal, přejděte na svůj účet úložiště a v části Access Control (IAM) Zkontrolujte, že **Přispěvatel dat objektu BLOB úložiště** nebo role **vlastníka dat objektu BLOB úložiště** přiřadili přístup k **spravované identitě** , která je přiřazená k tomuto předplatnému uživateli. Podrobné pokyny najdete v tématu [Nastavení oprávnění pro spravovanou identitu na data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2-portal.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2) .
 
-Pokud používáte Azure Data Lake Storage Gen1, přečtěte si [tady](../hdinsight-hadoop-use-data-lake-store.md)pokyny k instalaci a konfiguraci. Data Lake Storage Gen1 se u clusterů HBA nepodporuje a v HDInsight verze 4,0 se nepodporuje.
+Pokud používáte Azure Data Lake Storage Gen1, přečtěte si téma pokyny k instalaci a konfiguraci [použití Azure Data Lake Storage Gen1 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen1.md). Data Lake Storage Gen1 se u clusterů HBA nepodporuje a v HDInsight verze 4,0 se nepodporuje.
 
 Pokud používáte Azure Storage, ujistěte se, že je název účtu úložiště během vytváření clusteru platný.
 
@@ -45,7 +45,7 @@ Obecně platí, že následující zásady mohou ovlivnit vytváření clusteru:
 * Zásada brání vytvoření účtu úložiště.
 * Zásady zabraňující odstraňování síťových prostředků (IP adres/Load vyrovnávání zatížení).
 
-## <a name="firewalls"></a>Brány firewall
+## <a name="firewalls"></a>Firewally
 
 Brány firewall ve vaší virtuální síti nebo účtu úložiště můžou odepřít komunikaci s IP adresami správy HDInsight.
 

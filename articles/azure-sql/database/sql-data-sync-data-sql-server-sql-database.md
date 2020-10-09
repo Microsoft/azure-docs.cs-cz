@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: f7d2351fdc39ec4600cbca2e436cdcd527157275
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7bdb2c6ba6717624b19184ca3bcb47ee9b3da367
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332960"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856105"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Co je Synchronizace dat SQL pro Azure?
 
@@ -126,7 +126,7 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 > - Data mezi centrem a členy mohou být ztracena, i když synchronizace neoznamuje žádné potíže.
 > - Synchronizace může selhat, protože tabulka sledování má neexistující řádek ze zdroje z důvodu změny primárního klíče.
 
-- Izolace snímku musí být povolená. Další informace najdete v tématu [Izolace snímku na SQL Serveru](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+- Pro členy synchronizace i pro centrum musí být povolena izolace snímku. Další informace najdete v tématu [Izolace snímku na SQL Serveru](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Obecná omezení
 
@@ -137,7 +137,7 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 - Názvy objektů (databáze, tabulky a sloupce) nesmí obsahovat tečky tisknutelné znaky (.), levou hranatou závorku ([) nebo pravou hranatou závorku (]).
 - Ověřování Azure Active Directory se nepodporuje.
 - Tabulky se stejným názvem, ale různými schématy (například dbo. Customers a Sales. Customers), nejsou podporovány.
-- Sloupce s uživatelsky definovanými datovými typy nejsou podporované.
+- Sloupce s datovými typy User-Defined se nepodporují.
 - Přesun serverů mezi různými předplatnými není podporován. 
 
 #### <a name="unsupported-data-types"></a>Nepodporované datové typy
@@ -224,7 +224,7 @@ Jednu z doporučených postupů zálohování najdete [v tématu kopírování d
 ### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Může synchronizovat data synchronizace šifrovaných tabulek a sloupců
 
 - Pokud databáze používá Always Encrypted, můžete synchronizovat pouze ty tabulky a sloupce, které *nejsou šifrované.* Šifrované sloupce nemůžete synchronizovat, protože synchronizace dat nemůže data dešifrovat.
-- Pokud sloupec používá šifrování na úrovni sloupce (CLE), můžete sloupec synchronizovat, pokud je velikost řádku menší než maximální velikost 24 MB. Synchronizace dat zachází s sloupcem šifrovaným klíčem (CLE) jako s normálními binárními daty. Chcete-li dešifrovat data u jiných členů synchronizace, je nutné mít stejný certifikát.
+- Pokud sloupec používá Column-Level šifrování (CLE), můžete sloupec synchronizovat, pokud je velikost řádku menší než maximální velikost 24 MB. Synchronizace dat zachází s sloupcem šifrovaným klíčem (CLE) jako s normálními binárními daty. Chcete-li dešifrovat data u jiných členů synchronizace, je nutné mít stejný certifikát.
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>Je kolace podporovaná v Synchronizace dat SQL
 

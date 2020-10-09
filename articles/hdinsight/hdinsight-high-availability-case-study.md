@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 keywords: vysoká dostupnost Hadoop
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: a77dba165d76cc131f7a2a25a4b2f62e945a3089
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.date: 10/08/2020
+ms.openlocfilehash: 4b98b03c2d7eb4a0403b4595c1376656ed42511b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91843812"
+ms.locfileid: "91855034"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Případová studie architektury řešení Azure HDInsight s vysokou dostupností
 
@@ -86,8 +86,6 @@ Během nákupní sezóny špičky je celý sekundární kanál vždy aktivní a 
 
 Další informace o položkách, které jsou popsány v tomto článku, najdete v těchto tématech:
 
-* [Referenční informace k Apache Ambari REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [Instalace a konfigurace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
-* [Instalace a konfigurace Azure PowerShell modul AZ](/powershell/azure/)
-* [Správa HDInsight pomocí Apache Ambari](hdinsight-hadoop-manage-ambari.md)
-* [Zřizování clusterů HDInsight se systémem Linux](hdinsight-hadoop-provision-linux-clusters.md)
+* [Provozní kontinuita Azure HDInsight](./hdinsight-business-continuity.md)
+* [Architektury Azure HDInsight pro provozní kontinuitu](./hdinsight-business-continuity-architecture.md)
+* [Co je Apache Hive a HiveQL ve službě Azure HDInsight?](./hadoop/hdinsight-use-hive.md)

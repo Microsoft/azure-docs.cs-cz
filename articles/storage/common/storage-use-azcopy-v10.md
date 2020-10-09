@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 03f996f1105601dc46c81fa1a874816913e80633
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2f5b82f07ecff36ba95917a1f1b347c42ae7e074
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716049"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856772"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s nástrojem AzCopy
 
@@ -50,7 +50,9 @@ Pokud chcete zobrazit seznam příkazů, zadejte `azcopy -h` a potom stiskněte 
 
 Chcete-li získat informace o konkrétním příkazu, stačí zahrnout název příkazu (například: `azcopy list -h` ).
 
-![Vložená Help](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+> [!div class="mx-imgBorder"]
+> ![Vložená Help](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+
 
 Podrobné referenční dokumentaci k jednotlivým příkazům a parametrům příkazu najdete v tématu [AzCopy](storage-ref-azcopy.md) .
 

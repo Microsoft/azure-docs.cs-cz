@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a5a69bedb45f8037f3a97f5ebf4e2128930330a
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: a9433945ffe1181b62ee193baf1c2dd0b89ec14c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728348"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856802"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Co je zřízení cloudu Azure AD Connect?
 Zřizování cloudu Azure AD Connect je nový agent Microsoftu navržený tak, aby splnil a splnil vaše hybridní cíle identity pro synchronizaci uživatelů, skupin a kontaktů do Azure AD.  Dá se použít společně Azure AD Connect synchronizaci a nabízí následující výhody:
@@ -34,7 +34,7 @@ Při zřizování cloudu Azure AD Connect se zřizování ze služby AD do služ
 ## <a name="azure-ad-connect-cloud-provisioning-video"></a>Video zřizování cloudu Azure AD Connect
 Následující krátké video poskytuje vynikající overveiw Azure AD Connectho zřizování cloudu:
 
-> [!VIDEO https://youtube/embed/mOT3ID02_YQ]
+> [!VIDEO https://youtube.com/embed/mOT3ID02_YQ]
 
 
 ## <a name="comparison-between-azure-ad-connect-and-cloud-provisioning"></a>Srovnání mezi zřizováním Azure AD Connect a cloudem
@@ -58,7 +58,7 @@ Následující tabulka poskytuje srovnání mezi Azure AD Connect a Azure AD Con
 | Synchronizovat atributy rozšíření 1-15 |● |● |
 | Synchronizace atributů AD definovaných zákazníkem (rozšíření adresáře) |● | |
 | Podpora synchronizace hodnot hash hesel |●|●|
-| Podpora předávacího ověřování |●||
+| Podpora pro ověřování Pass-Through |●||
 | Podpora pro federaci |●|●|
 | Bezproblémové jednotné přihlašování|● |●|
 | Podporuje instalaci na řadič domény |● |● |

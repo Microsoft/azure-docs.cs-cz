@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 336c1e78143c09e07b8f05c3dbd10ca647844242
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5596dfab98f6826cd61241441a9ddade72e36674
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319941"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851267"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>Kurz: Konfigurace federovaného adresáře pro Automatické zřizování uživatelů
 
@@ -53,24 +53,24 @@ Před konfigurací federovaného adresáře pro Automatické zřizování uživa
 
 1. Přihlaste se ke [konzole správce federovaného adresáře](https://federated.directory/of) .
 
-    ![Kurz federovaného adresáře](media/federated-directory-provisioning-tutorial/companyname.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/companyname.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
 
 2. Přejděte do **složky adresáře > uživatelských adresářů** a vyberte svého tenanta. 
 
-    ![federovaný adresář](media/federated-directory-provisioning-tutorial/ad-user-directories.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/ad-user-directories.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
 
 3.  Pokud chcete vygenerovat trvalý nosný token, přejděte k **klíčům adresáře > vytvořit nový klíč.** 
 
-    ![federovaný adresář](media/federated-directory-provisioning-tutorial/federated01.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated01.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
 
 4. Vytvořte klíč adresáře. 
 
-    ![federovaný adresář](media/federated-directory-provisioning-tutorial/federated02.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated02.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
     
 
 5. Zkopírujte hodnotu **přístupového tokenu** . Tato hodnota se zadá do pole **token tajného klíče** na kartě zřizování aplikace federovaného adresáře v Azure Portal. 
 
-    ![federovaný adresář](media/federated-directory-provisioning-tutorial/federated03.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated03.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
     
 ## <a name="add-federated-directory-from-the-gallery"></a>Přidat federovaný adresář z Galerie
 
@@ -96,15 +96,15 @@ Pokud chcete nakonfigurovat federované adresáře pro Automatické zřizování
 
 5. V samostatném prohlížeči přejděte na **adresu URL** zvýrazněnou níže. 
 
-    ![federovaný adresář](media/federated-directory-provisioning-tutorial/loginpage1.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage1.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
 
 6. Klikněte na **Přihlásit se**.
 
-    ![federovaný adresář](media/federated-directory-provisioning-tutorial/federated04.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated04.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
 
 7.  Jako federovaný adresář je aplikace pro OpenIDConnect, která umožňuje přihlášení ke federovanému adresáři pomocí pracovního účtu Microsoft.
     
-    ![federovaný adresář](media/federated-directory-provisioning-tutorial/loginpage3.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage3.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
  
 8. Po úspěšném ověření Přijměte výzvu k zadání souhlasu pro stránku souhlasu. Aplikace se pak automaticky přidá do vašeho tenanta a budete přesměrováni na svůj účet federovaného adresáře.
 
@@ -146,12 +146,12 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatele do federovaného adresáře**.
 
-    ![Kurz federovaného adresáře](media/federated-directory-provisioning-tutorial/user-mappings.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-mappings.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
     
     
 11. Zkontrolujte atributy uživatele synchronizované z Azure AD do federovaného adresáře v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v federovaném adresáři pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Kurz federovaného adresáře](media/federated-directory-provisioning-tutorial/user-attributes.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-attributes.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
     
 
 12. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).

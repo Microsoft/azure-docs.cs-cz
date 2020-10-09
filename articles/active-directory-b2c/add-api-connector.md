@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 092246da4c01aa826fd4425e5a778d567b75d9d6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828388"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854354"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>Přidání konektoru API do toku uživatele pro registraci
 
@@ -70,7 +70,7 @@ Content-type: application/json
 }
 ```
 
-V požadavku jsou k dispozici pouze uživatelské vlastnosti a vlastní atributy uvedené v **Azure Active Directory**  >  **External Identities**  >  **vlastní uživatelské atributy** identit.
+V požadavku jsou k dispozici pouze vlastnosti uživatele a vlastní atributy uvedené v části **Azure AD B2C**  >  možnosti**atributů uživatele** .
 
 Vlastní atributy existují ve formátu **extension_ \<extensions-app-id> _CustomAttribute**  v adresáři. Rozhraní API by mělo očekávat deklarace identity v tomto stejném serializovaném formátu. Další informace o vlastních atributech naleznete [v tématu Definování vlastních atributů v Azure Active Directory B2C](user-flow-custom-attributes.md).
 
@@ -294,7 +294,7 @@ Content-type: application/json
 ## <a name="best-practices-and-how-to-troubleshoot"></a>Osvědčené postupy a řešení potíží
 
 ### <a name="using-serverless-cloud-functions"></a>Používání cloudových funkcí bez serveru
-Funkce bez serveru, jako například triggery HTTP v Azure Functions, poskytují jednoduchý způsob vytváření koncových bodů rozhraní API pro použití s konektorem rozhraní API. Cloudovou funkci bez serveru můžete použít například k provedení logiky ověřování a omezení podpisů na konkrétní domény. Cloudová funkce bez serveru může také volat a volat další webová rozhraní API, uživatelská úložiště a další cloudové služby pro složitější scénáře.
+Funkce bez serveru, jako například triggery HTTP v Azure Functions, poskytují jednoduchý způsob vytváření koncových bodů rozhraní API pro použití s konektorem rozhraní API. Cloudovou funkci bez serveru můžete použít [například](code-samples.md#api-connectors)k provedení logiky ověřování a omezení podpisů na konkrétní e-mailové domény. Cloudová funkce bez serveru může také volat a volat další webová rozhraní API, uživatelská úložiště a další cloudové služby pro složitější scénáře.
 
 ### <a name="best-practices"></a>Osvědčené postupy
 Zajistěte, aby:
@@ -314,4 +314,4 @@ Obecně je užitečné použít protokolovací nástroje povolené vaší služb
 
 ## <a name="next-steps"></a>Další kroky
 <!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
-<!-- - Get started with our [Azure Function quickstart samples](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts). -->
+- Začněte s našimi [ukázkami Azure Functions pro rychlý Start](code-samples.md#api-connectors).

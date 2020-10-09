@@ -1,41 +1,42 @@
 ---
-title: Událost zahájení úlohy Azure Batch
-description: Referenční informace pro událost zahájení úlohy Batch Tato událost je generována, jakmile Scheduler naplánuje spuštění úlohy na výpočetním uzlu.
+title: Událost selhání plánu úlohy Azure Batch
+description: Referenční informace pro událost selhání plánu úlohy Batch Tato událost se vygeneruje, když se úloha nepovede naplánovat a později se zopakuje.
 ms.topic: reference
-ms.date: 10/08/2020
-ms.openlocfilehash: 3a57ffbb1e1659cff54d101aa4b90ca1bd5d3a57
+ms.date: 09/20/2020
+ms.openlocfilehash: 549281d2b2c371e8f09c584e771cf44f7abc8a00
 ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91851012"
+ms.locfileid: "91852140"
 ---
-# <a name="task-start-event"></a>Událost zahájení úlohy
+# <a name="task-schedule-fail-event"></a>Událost selhání plánu úlohy
 
- Tato událost je generována, jakmile Scheduler naplánuje spuštění úlohy na výpočetním uzlu. Všimněte si, že pokud se úloha zopakuje nebo znovu zařadí do fronty, tato událost se pro stejnou úlohu vygeneruje znovu, ale počet opakování a verze systémové úlohy se odpovídajícím způsobem aktualizuje.
+ Tato událost je generována v případě, že se úloha nezdařila a bude opakována později. Jedná se o dočasnou chybu v době plánování úkolu v důsledku omezení prostředků, například nedostatek slotů dostupných na uzlech ke spuštění úlohy se `requiredSlots` zadaným.
 
-
- Následující příklad ukazuje tělo události zahájení úlohy.
+ Následující příklad ukazuje tělo události selhání plánu úkolu.
 
 ```
 {
-    "jobId": "myJob",
-    "id": "myTask",
+    "jobId": "job-01",
+    "id": "task-01",
     "taskType": "User",
-    "systemTaskVersion": 220192842,
+    "systemTaskVersion": 665378862,
     "requiredSlots": 1,
     "nodeInfo": {
-        "poolId": "pool-001",
-        "nodeId": "tvm-257509324_1-20160908t162728z"
+        "poolId": "pool-01",
+        "nodeId": " "
     },
     "multiInstanceSettings": {
         "numberOfInstances": 1
     },
     "constraints": {
-        "maxTaskRetryCount": 2
+        "maxTaskRetryCount": 0
     },
-    "executionInfo": {
-        "retryCount": 0
+    "schedulingError": {
+        "category": "UserError",
+        "code": "JobPreparationTaskFailed",
+        "message": "Task cannot run because the job preparation task failed on node"
     }
 }
 ```
@@ -44,13 +45,13 @@ ms.locfileid: "91851012"
 |------------------|----------|-----------|
 |`jobId`|Řetězec|ID úlohy obsahující úlohu.|
 |`id`|Řetězec|ID úkolu|
-|`taskType`|Řetězec|Typ úkolu. Může to být buď "JobManager", což značí, že se jedná o úkol správce úloh nebo "uživatel", což značí, že se nejedná o úkol správce úloh.|
+|`taskType`|Řetězec|Typ úkolu. Může to být buď "JobManager", což značí, že se jedná o úkol správce úloh nebo "uživatel", což značí, že se nejedná o úkol správce úloh. Tato událost není vygenerována pro úlohy přípravy úlohy, úkoly uvolnění úlohy ani pro úlohy zahájení.|
 |`systemTaskVersion`|Int32|Toto je interní čítač opakování na úkolu. Interně může služba Batch Opakovat úlohu, aby se zohlednila přechodná chyba. Tyto problémy mohou zahrnovat interní chyby plánování nebo se pokusí o zotavení z výpočetních uzlů ve špatném stavu.|
 |`requiredSlots`|Int32|Požadované sloty pro spuštění úlohy.|
 |[`nodeInfo`](#nodeInfo)|Komplexní typ|Obsahuje informace o výpočetním uzlu, na kterém byl úkol spuštěn.|
-|[`multiInstanceSettings`](#multiInstanceSettings)|Komplexní typ|Určuje, že úkol je úloha s více instancemi vyžadující více výpočetních uzlů.  Podrobnosti najdete v tématu [multiInstanceSettings](/rest/api/batchservice/get-information-about-a-task) .|
+|[`multiInstanceSettings`](#multiInstanceSettings)|Komplexní typ|Určuje, že úkol je úloha s více instancemi vyžadující více výpočetních uzlů.  Podrobnosti najdete v tématu [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task) .|
 |[`constraints`](#constraints)|Komplexní typ|Omezení provádění, která se vztahují na tento úkol.|
-|[`executionInfo`](#executionInfo)|Komplexní typ|Obsahuje informace o provedení úlohy.|
+|[`schedulingError`](#schedulingError)|Komplexní typ|Obsahuje informace o chybě plánování úkolu.|
 
 ###  <a name="nodeinfo"></a><a name="nodeInfo"></a> nodeInfo
 
@@ -63,7 +64,7 @@ ms.locfileid: "91851012"
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
-|`numberOfInstances`|Int|Počet výpočetních uzlů vyžadovaných úkolem.|
+|`numberOfInstances`|Int32|Počet výpočetních uzlů vyžadovaných úkolem.|
 
 ###  <a name="constraints"></a><a name="constraints"></a> jednotlivým
 
@@ -71,8 +72,11 @@ ms.locfileid: "91851012"
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|Maximální počet pokusů, kolikrát může být úloha opakována. Služba Batch opakuje úlohu, pokud je její ukončovací kód nenulový.<br /><br /> Všimněte si, že tato hodnota konkrétně řídí počet opakování. Služba Batch úlohu zopakuje a potom ji můžete opakovat až do tohoto limitu. Například pokud je maximální počet opakování 3, Batch se pokusí úlohu provést až čtyřikrát (jeden počáteční pokus a 3 opakování).<br /><br /> Pokud je maximální počet opakování 0, služba Batch neopakuje úlohy.<br /><br /> Pokud je maximální počet opakování-1, služba Batch zopakuje úlohy bez omezení.<br /><br /> Výchozí hodnota je 0 (žádné opakování).|
 
-###  <a name="executioninfo"></a><a name="executionInfo"></a> executionInfo
+
+###  <a name="schedulingerror"></a><a name="schedulingError"></a> schedulingError
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
-|`retryCount`|Int32|Počet opakovaných pokusů o úlohu službou Batch. Úloha se zopakuje, pokud se ukončí s nenulovým ukončovacím kódem, až do zadaného MaxTaskRetryCount|
+|`category`|Řetězec|Kategorie chyby|
+|`code`|Řetězec|Identifikátor chyby plánování úlohy. Kódy jsou invariantní a mají být zpracovány programově.|
+|`message`|Řetězec|Zpráva popisující chybu plánování úkolů, která má být vhodná pro zobrazení v uživatelském rozhraní.|

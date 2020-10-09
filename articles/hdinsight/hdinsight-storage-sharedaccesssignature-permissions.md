@@ -1,6 +1,6 @@
 ---
 title: Omezení přístupu pomocí sdílených přístupových podpisů – Azure HDInsight
-description: Naučte se používat signatury Shared Access k omezení přístupu HDInsight k datům uloženým v objektech blob služby Azure Storage.
+description: Naučte se používat sdílené přístupové podpisy k omezení přístupu HDInsight k datům uloženým v úložišti objektů BLOB v Azure.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 8ab181eb72b5a3ab54ad8dba19d23288926b8969
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea14a67f11974c8f7cdeea9eb84e5efb2377fb15
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006309"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856560"
 ---
-# <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Použití sdílených přístupových podpisů služby Azure Storage k omezení přístupu k datům ve službě HDInsight
+# <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Použití sdílených přístupových podpisů Azure Blob Storage k omezení přístupu k datům v HDInsight
 
-Služba HDInsight má úplný přístup k datům v účtech Azure Storage přidružených ke clusteru. Pomocí sdílených přístupových podpisů v kontejneru objektů blob můžete omezit přístup k datům. Sdílené přístupové podpisy (SAS) jsou funkcemi účtů úložiště Azure, které umožňují omezit přístup k datům. Například poskytnutí přístupu k datům jen pro čtení.
+Služba HDInsight má úplný přístup k datům v účtech služby Azure Blob Storage přidružených ke clusteru. Pomocí sdílených přístupových podpisů v kontejneru objektů blob můžete omezit přístup k datům. Sdílené přístupové podpisy (SAS) jsou funkcemi účtů úložiště Azure Blob, které vám umožňují omezit přístup k datům. Například poskytnutí přístupu k datům jen pro čtení.
 
 > [!IMPORTANT]  
 > Pro řešení využívající Apache Ranger zvažte použití služby HDInsight připojené k doméně. Další informace najdete v tématu [Konfigurace dokumentu HDInsight připojeného k doméně](./domain-joined/apache-domain-joined-configure.md) .
@@ -25,7 +25,7 @@ Služba HDInsight má úplný přístup k datům v účtech Azure Storage přidr
 > [!WARNING]  
 > HDInsight musí mít úplný přístup k výchozímu úložišti pro cluster.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -39,7 +39,7 @@ Služba HDInsight má úplný přístup k datům v účtech Azure Storage přidr
 
 * Pokud používáte jazyk C#, Visual Studio musí být verze 2013 nebo vyšší.
 
-* Schéma identifikátoru URI pro váš účet úložiště. Toto schéma bude `wasb://` Azure Storage pro `abfs://` Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` .
+* Schéma identifikátoru URI pro váš účet úložiště. Toto schéma bude `wasb://` pro službu Azure Blob Storage `abfs://` pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro úložiště objektů BLOB v Azure povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` .
 
 * Existující cluster HDInsight, do kterého se má přidat sdílený přístupový podpis V takovém případě můžete použít Azure PowerShell k vytvoření clusteru a přidání sdíleného přístupového podpisu během vytváření clusteru.
 
@@ -48,7 +48,7 @@ Služba HDInsight má úplný přístup k datům v účtech Azure Storage přidr
   * Projekt sady Visual Studio, který může vytvořit kontejner úložiště, uloženou zásadu a SAS pro použití se službou HDInsight
   * Skript Pythonu, který může vytvořit kontejner úložiště, uloženou zásadu a SAS pro použití se službou HDInsight
   * PowerShellový skript, který může vytvořit cluster HDInsight a nakonfigurovat ho tak, aby používal SAS. Níže je využívána aktualizovaná verze.
-  * Vzorový soubor:`hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
+  * Vzorový soubor: `hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
 
 ## <a name="shared-access-signatures"></a>Sdílené přístupové podpisy
 
@@ -357,7 +357,7 @@ Pokud máte existující cluster, můžete přidat SAS do konfigurace **základn
 
 1. Rozbalte část **vlastní základ pro základní lokalitu** , přejděte na konec a a pak vyberte **Přidat vlastnost...**. Pro **klíč** a **hodnotu**použijte následující hodnoty:
 
-    * **Klíč**:`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Klíč**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
     * **Hodnota**: SAS vrácená jednou z výše provedených metod.
 
     Nahraďte `CONTAINERNAME` názvem kontejneru, který jste použili v aplikaci C# nebo SAS. Nahraďte `STORAGEACCOUNTNAME` názvem účtu úložiště, který jste použili.

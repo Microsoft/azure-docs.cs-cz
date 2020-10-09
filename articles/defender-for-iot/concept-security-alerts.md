@@ -4,21 +4,21 @@ description: Přečtěte si o výstrahách zabezpečení a doporučené náprav�
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 09ee0f9d5bd6e789d8acd4c70db866983beb1119
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: c4c92bfa25d9c43d3c654fbd1f23e242effc7577
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936894"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851199"
 ---
 # <a name="defender-for-iot-security-alerts"></a>Defender pro výstrahy zabezpečení IoT
 
@@ -28,11 +28,11 @@ Výstraha funguje jako ukazatel potenciálního ohrožení a měla by být prov�
 
 V tomto článku najdete seznam integrovaných výstrah, které se můžou aktivovat na vašich IoT Hub nebo zařízeních IoT.
 Kromě integrovaných výstrah vám Defender pro IoT umožňuje definovat vlastní výstrahy na základě očekávaného IoT Hub nebo chování zařízení.
-Další podrobnosti najdete v tématu [přizpůsobitelná upozornění](concept-customizable-security-alerts.md).
+Další informace najdete v tématu [přizpůsobitelná upozornění](concept-customizable-security-alerts.md).
 
 ## <a name="built-in-alerts-for-iot-devices"></a>Integrované výstrahy pro zařízení IoT
 
-| Name | Závažnost | Zdroj dat | Description | Navrhované kroky k nápravě|
+| Název | Závažnost | Zdroj dat | Popis | Navrhované kroky k nápravě|
 |----------|---------------|-------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |**Vysoká** závažnost|  |  |  |
 |   Binární příkazový řádek   | Vysoké | Agent | Byl zjištěn binární soubor LA Linux, který byl spuštěn z příkazového řádku. Tento proces může být legitimní aktivity nebo indikace, že dojde k ohrožení zabezpečení vašeho zařízení.|   Projděte si příkaz s uživatelem, který ho spustil, a zkontrolujte, jestli se jedná o něco oprávněného spuštění na zařízení. Pokud ne, požádejte o upozornění svůj tým zabezpečení informací. |

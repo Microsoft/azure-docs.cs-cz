@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c65d77d2cf50a59f18f0007e809e9913c3a5ae13
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a6ccc2911312a74825b885f5f492e67774354316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91304216"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858123"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -274,7 +274,7 @@ Tato role se dřív nazývala "správce hesel" ve [Azure Portal](https://portal.
 
 ### <a name="hybrid-identity-administrator"></a>[Správce hybridní identity](#hybrid-identity-administrator-permissions)
 
-Uživatelé v této roli můžou povolit, konfigurovat a spravovat služby a nastavení související s povolením hybridní identity ve službě Azure AD. Tato role umožňuje nakonfigurovat Azure AD na jednu ze tří podporovaných metod ověřování, synchronizace hodnot hash hesel (KOSMETICE), předávacího ověřování (PTA) nebo federace (AD FS nebo poskytovatel federačních služeb od jiného výrobce) a nasadit související místní infrastrukturu a povolit je. Infrastruktura on-Prem zahrnuje zřizování a PTA agenty. Tato role uděluje možnost Povolit bezproblémové jednotné přihlašování (S-SSO) k zajištění bezproblémového ověřování na zařízeních s jiným systémem než Windows 10 nebo na počítačích s jiným systémem než Windows Server 2016. Kromě toho tato role uděluje možnost Zobrazit protokoly přihlášení a přístup ke stavům a analýzám pro účely monitorování a řešení potíží. 
+Uživatelé v této roli můžou vytvářet, spravovat a nasazovat nastavení konfigurace zřizování z AD do Azure AD pomocí zřizování cloudu a také spravovat nastavení federace. Uživatelé mohou také řešit a monitorovat protokoly pomocí této role.  
 
 ### <a name="insights-administrator"></a>[Správce Insights](#insights-administrator-permissions)
 Uživatelé v této roli mají přístup k plné sadě možností správy v [aplikaci M365 Insights](https://go.microsoft.com/fwlink/?linkid=2129521). Tato role má možnost číst informace o adresáři, monitorovat stav služby, lístky podpory souborů a přistupovat k aspektům nastavení pro správu Insights.
@@ -489,7 +489,7 @@ Uživatelé s touto rolí můžou spravovat [zařízení s certifikací pro tým
 
 Uživatelé v této roli můžou spravovat všechny aspekty úloh Microsoft Teams prostřednictvím Microsoft Teams & centra pro správu Skypu pro firmy a příslušné moduly PowerShellu. Mezi další oblasti patří i všechny nástroje pro správu, které se týkají telefonního subsystému, zasílání zpráv, schůzek a týmů. Tato role navíc uděluje možnost vytvářet a spravovat všechny Microsoft 365 skupiny, spravovat lístky podpory a monitorovat stav služby.
 
-### <a name="user-administrator"></a>[Správce uživatele](#user-administrator-permissions)
+### <a name="user-administrator"></a>[Správce uživatelů](#user-administrator-permissions)
 
 Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny aspekty uživatelů s některými omezeními (viz tabulku) a můžou aktualizovat zásady vypršení platnosti hesla. Uživatelé s touto rolí můžou navíc vytvářet a spravovat všechny skupiny. Tato role také zahrnuje možnost vytvářet a spravovat zobrazení uživatelů, spravovat lístky podpory a monitorovat stav služby. Správci uživatelů nemají oprávnění ke správě některých uživatelských vlastností pro uživatele ve většině rolí správce. Uživatel s touto rolí nemá oprávnění ke správě vícefaktorového ověřování. Role, které jsou výjimkou tohoto omezení, jsou uvedeny v následující tabulce.
 
@@ -497,7 +497,7 @@ Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny asp
 | --- | --- |
 |Obecná oprávnění|<p>Vytváření uživatelů a skupin</p><p>Vytvářet a spravovat zobrazení uživatelů</p><p>Správa lístků podpory Office<p>Aktualizace zásad vypršení platnosti hesla|
 | <p>U všech uživatelů, včetně všech správců</p>|<p>Správa licencí</p><p>Spravovat všechny vlastnosti uživatele kromě hlavního názvu uživatele</p>
-| Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Správce skupin<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Správce hesel<li>Čtečka sestav<li>Správce uživatele|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
+| Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Správce skupin<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Správce hesel<li>Čtečka sestav<li>Správce uživatelů|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
 
 > [!IMPORTANT]
 > Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
@@ -1216,9 +1216,6 @@ Umožňuje povolit, nasadit, konfigurovat, spravovat, monitorovat a řešit pot�
 | Microsoft. Directory/cloudProvisioning/allProperties/allTasks | Přečtěte si a nakonfigurujte všechny vlastnosti služby Azure AD Cloud Provisioning. |
 | Microsoft. Directory/události FederatedAuthentication/allProperties/allTasks | Spravujte všechny aspekty služby AD FS (Active Directory Federation Services) nebo poskytovatele federace třetích stran ve službě Azure AD. |
 | Microsoft. Directory/Organization/dirSync/Update | Aktualizuje vlastnost Organization. dirSync v Azure Active Directory. |
-| Microsoft. Directory/passwordHashSync/allProperties/allTasks | Spravujte všechny aspekty synchronizace hodnot hash hesel (KOSMETICE) ve službě Azure AD. |
-| Microsoft. Directory/passThroughAuthentication/allProperties/allTasks | Spravujte všechny aspekty předávacího ověřování (PTA) ve službě Azure AD. |
-| Microsoft. Directory/seamlessSSO/allProperties/allTasks | Spravujte všechny aspekty bezproblémového jednotného přihlašování (SSO) ve službě Azure AD. |
 | Microsoft. Directory/servicePrincipals/publikum/Update | Aktualizuje vlastnost servicePrincipals. cílová skupina v Azure Active Directory. |
 | Microsoft. Directory/servicePrincipals/Authentication/Update | Aktualizuje vlastnost servicePrincipals. Authentication v Azure Active Directory. |
 | Microsoft. Directory/servicePrincipals/Basic/Update | Aktualizuje základní vlastnosti v servicePrincipals v Azure Active Directory. |

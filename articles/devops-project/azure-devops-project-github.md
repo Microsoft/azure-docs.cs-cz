@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 55c6cbc18e37368dd47c47227041024b13987c47
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 41f2ee9806b8f6818f2b2dd7a48920ac9907ca79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82233206"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854643"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro úložiště GitHub pomocí Azure DevOps Starter
 
@@ -43,7 +43,7 @@ V této lekci:
 
 Azure DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. Azure DevOps Starter také vytvoří prostředky Azure v předplatném Azure podle vašeho výběru.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 
@@ -83,7 +83,7 @@ Azure DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvoři
 
 Nyní jste připraveni spolupracovat na své aplikaci s týmem. Proces CI/CD automaticky nasadí vaši nejnovější práci na web. Každá změna úložiště GitHub spustí sestavení v Azure DevOps a kanál CD spustí nasazení do Azure.
 
-1. Na řídicím panelu DevOps Starter vyberte **úložiště**. Vaše úložiště GitHub se otevře na nové kartě prohlížeče. proveďte u své aplikace změnu a pak vyberte **Potvrdit změny**.
+1. Na řídicím panelu DevOps Starter vyberte **úložiště**. Vaše úložiště GitHub se otevře na nové kartě prohlížeče. Proveďte změnu aplikace a pak vyberte **Potvrdit změny**.
 
 1. Po chvíli začíná sestavení v Azure Pipelines. Stav sestavení můžete monitorovat na řídicím panelu Start DevOps. Můžete ho také monitorovat ve vaší organizaci Azure DevOps, a to tak, že na řídicím panelu DevOps Starter vyberete kartu **kanály sestavení** .
 
@@ -118,9 +118,9 @@ Při konfiguraci procesu CI/CD v tomto kurzu jste automaticky vytvořili kanál 
 Další informace o kanálu CI/CD najdete tady:
 
 > [!div class="nextstepaction"]
-> [Definice kanálu pro průběžné nasazování (CD) s více fázemi](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [Definice kanálu pro průběžné nasazování (CD) s více fázemi](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
 Další informace o monitorování aplikací najdete v těchto tématech:
   
  > [!div class="nextstepaction"]
- > [Co je Azure monitor?](https://docs.microsoft.com/azure/azure-monitor/overview)
+ > [Co je Azure monitor?](../azure-monitor/overview.md)

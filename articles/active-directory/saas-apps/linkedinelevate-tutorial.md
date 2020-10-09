@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 1f4569a45b9ed0eee7c375e660df97925335313b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5dcd705719510cce3a113c5b0fdc46d016313b6d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549793"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856402"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-elevate"></a>Kurz: Azure Active Directory integrace jednotného přihlašování se zvýšením úrovně LinkedInu
 
@@ -96,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho bude aplikace LinkedIn zvýšení oprávnění v odpovědi SAML, která je uvedena níže, očekává několik atributů, které se mají znovu předat. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | -------| -------------|
     | Oddělení | User. Department |
 
@@ -118,7 +118,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -144,11 +144,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. V **centru účtů**klikněte na **globální nastavení** v části **Nastavení**. Také v rozevíracím seznamu vyberte **zvýšit úroveň testu AAD** .
 
-    ![Konfigurace jednotného přihlašování](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
+    ![Snímek obrazovky ukazuje globální nastavení, kde můžete vybrat možnost zvýšit úroveň testu na D.](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
 
 1. Kliknutím **nebo kliknutím sem načtěte a zkopírujte jednotlivá pole z formuláře** a proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
+    ![Snímek obrazovky zobrazuje jednu Sign-On, kde můžete zadat hodnoty, které jsou popsány.](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
 
     a. Zkopírujte **ID entity** a vložte ho do textového pole **identifikátor** v **základní konfiguraci SAML** v Azure Portal.
 
@@ -156,11 +156,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Přejít na část **Nastavení správce LinkedIn** . Kliknutím na možnost nahrát soubor XML nahrajte soubor XML, který jste stáhli z Azure Portal.
 
-    ![Konfigurace jednotného přihlašování](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Snímek obrazovky ukazuje konfiguraci nastavení poskytovatele služby LinkedIn Service S příponami v, kde můžete nahrát soubor X M L.](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
 
 1. Kliknutím **na** povolíte jednotné přihlašování. Stav jednotného přihlašování se změní z **nepřipojeného** k **připojenému**
 
-    ![Konfigurace jednotného přihlašování](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
+    ![Snímek obrazovky zobrazuje jednu Sign-On, kde můžete vybrat automaticky přiřadit licence.](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="create-linkedin-elevate-test-user"></a>Vytvořit testovacího uživatele ve zvýšení úrovně LinkedIn
 

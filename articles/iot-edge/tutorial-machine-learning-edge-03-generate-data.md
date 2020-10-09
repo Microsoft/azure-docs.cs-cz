@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: generování dat simulovaného zařízení – Machine Learning na Azure IoT Edge'
-description: Vytvářejte virtuální zařízení, která generují simulovanou telemetrii, kterou můžete později využít ke školení modelu Machine Learning.
+description: Kurz – vytvoření virtuálních zařízení, která generují simulovanou telemetrii, kterou můžete později využít ke studiu modelu strojového učení.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8f7a971315183e867ae06b58801d5855f90462a1
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c40f7d988f2b5f206f42eae787efcdce786948a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "76722361"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857074"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Kurz: generování dat simulovaného zařízení
 

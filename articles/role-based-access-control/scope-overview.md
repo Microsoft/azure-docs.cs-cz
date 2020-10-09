@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 10/08/2020
 ms.author: rolyon
-ms.openlocfilehash: 80a05fd389ecaf504f58d12bf8efe87debd4ab86
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: ad906e3665c6ffc354cf6292c2559d1184037594
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91604306"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856142"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>Vysvětlení oboru pro Azure RBAC
 
@@ -25,6 +25,10 @@ ms.locfileid: "91604306"
 V Azure můžete zadat obor na čtyřech úrovních: [skupina pro správu](../governance/management-groups/overview.md), předplatné, [Skupina prostředků](../azure-resource-manager/management/overview.md#resource-groups)a prostředek. Obory jsou strukturovány ve vztahu nadřazený-podřízený obor. Jednotlivé úrovně hierarchie usnadňují rozsah konkrétního rozsahu. Role můžete přiřadit na kterékoli z těchto úrovní rozsahu. Úroveň, kterou vyberete, určuje, jak široce je role použita. Nižší úrovně dědí oprávnění role z vyšších úrovní. 
 
 ![Obor přiřazení role](./media/scope-overview/rbac-scope-no-label.png)
+
+Skupiny pro správu jsou úrovní rozsahu nad odběry, ale skupiny pro správu podporují složitější hierarchie. Následující diagram znázorňuje příklad hierarchie skupin pro správu a předplatných, které můžete definovat. Další informace o skupinách pro správu najdete v tématu [co jsou skupiny pro správu Azure](../governance/management-groups/overview.md).
+
+![Skupina pro správu a hierarchie předplatných](./media/scope-overview/rbac-scope-management-groups.png)
 
 ## <a name="scope-format"></a>Formát oboru
 
@@ -62,7 +66,7 @@ Skupiny pro správu jsou vyšší úrovně předplatných a mají nejširší (n
 ## <a name="scope-examples"></a>Příklady oboru
 
 > [!div class="mx-tableFixed"]
-> | Obor | Příklad |
+> | Rozsah | Příklad |
 > | --- | --- |
 > | Skupina pro správu | `/providers/Microsoft.Management/managementGroups/marketing-group` |
 > | Předplatné | `/subscriptions/00000000-0000-0000-0000-000000000000` |
@@ -118,6 +122,6 @@ Určení rozsahu skupiny pro správu, předplatného nebo skupiny prostředků j
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Postup přidání přiřazení role](role-assignments-steps.md)
+- [Kroky pro přidání přiřazení role](role-assignments-steps.md)
 - [Poskytovatelé prostředků pro služby Azure](../azure-resource-manager/management/azure-services-resource-providers.md)
-- [Uspořádání prostředků s využitím skupin pro správu Azure](../governance/management-groups/overview.md)
+- [Co jsou skupiny pro správu Azure?](../governance/management-groups/overview.md)

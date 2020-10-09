@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: b678e4de76619ff17703caecfa7a52682e835674
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 45170e9df7082e277c445a2dab6d617eb208cd44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462560"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855629"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Nahrávání dat pro úlohy Apache Hadoop v HDInsight
 
-HDInsight poskytuje systém Hadoop Distributed File System (HDFS) po Azure Storage a Azure Data Lake Storage. Toto úložiště zahrnuje Gen1 a Gen2. Azure Storage a Data Lake Storage Gen1 a Gen2 jsou navržené jako HDFS Extensions. Umožňují v prostředí Hadoop pracovat přímo s daty, která spravuje. Azure Storage, Data Lake Storage Gen1 a Gen2 jsou odlišné systémy souborů. Systémy jsou optimalizované pro ukládání dat a výpočtů na těchto datech. Informace o výhodách použití Azure Storage najdete v tématu [použití Azure Storage se službou HDInsight](hdinsight-hadoop-use-blob-storage.md). Přečtěte si také téma [použití Data Lake Storage Gen1 se službou HDInsight](hdinsight-hadoop-use-data-lake-store.md)a [použití Data Lake Storage Gen2 se službou HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+HDInsight poskytuje systém Hadoop Distributed File System (HDFS) po Azure Storage a Azure Data Lake Storage. Toto úložiště zahrnuje Gen1 a Gen2. Azure Storage a Data Lake Storage Gen1 a Gen2 jsou navržené jako HDFS Extensions. Umožňují v prostředí Hadoop pracovat přímo s daty, která spravuje. Azure Storage, Data Lake Storage Gen1 a Gen2 jsou odlišné systémy souborů. Systémy jsou optimalizované pro ukládání dat a výpočtů na těchto datech. Informace o výhodách použití Azure Storage najdete v tématu [použití Azure Storage se službou HDInsight](hdinsight-hadoop-use-blob-storage.md). Přečtěte si také téma [použití Data Lake Storage Gen1 se službou HDInsight](hdinsight-hadoop-use-data-lake-storage-gen1.md)a [použití Data Lake Storage Gen2 se službou HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -26,7 +26,7 @@ Než začnete, vezměte na vědomí následující požadavky:
 * Cluster Azure HDInsight. Pokyny najdete v tématu Začínáme [se službou Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * Znalost následujících článků:
     * [Použití Azure Storage se službou HDInsight](hdinsight-hadoop-use-blob-storage.md)
-    * [Použití Data Lake Storage Gen1 se službou HDInsight](hdinsight-hadoop-use-data-lake-store.md)
+    * [Použití Data Lake Storage Gen1 se službou HDInsight](hdinsight-hadoop-use-data-lake-storage-gen1.md)
     * [Použití Data Lake Storage Gen2 se službou HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 
 ## <a name="upload-data-to-azure-storage"></a>Nahrání dat do Azure Storage

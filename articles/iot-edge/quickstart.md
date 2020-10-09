@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d56f17f6c60f30a38431ee347c7bdfc5b200b641
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7e9ce523efd12ce372d7bfef6c653e95f6689415
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91328581"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856955"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rychlý Start: nasazení prvního IoT Edge modulu do virtuálního zařízení s Windows
 
@@ -22,12 +22,10 @@ Vyzkoušejte si Azure IoT Edge v tomto rychlém startu tak, že nasadíte kontej
 
 V tomto rychlém startu se naučíte:
 
-> [!div class="checklist"]
->
-> * Vytvořte centrum IoT.
-> * Zaregistrovat zařízení IoT Edge do centra IoT Hub.
-> * Nainstalujte a spusťte modul runtime IoT Edge na virtuálním zařízení.
-> * Vzdáleně nasadit modul na zařízení IoT Edge a odeslat telemetrická data do služby IoT Hub.
+* Vytvořte centrum IoT.
+* Zaregistrovat zařízení IoT Edge do centra IoT Hub.
+* Nainstalujte a spusťte modul runtime IoT Edge na virtuálním zařízení.
+* Vzdáleně nasadit modul na zařízení IoT Edge a odeslat telemetrická data do služby IoT Hub.
 
 ![Architektura pro rychlé zprovoznění diagramu pro zařízení a Cloud](./media/quickstart/install-edge-full.png)
 
@@ -47,7 +45,7 @@ Přidejte rozšíření Azure IoT do instance Cloud Shell.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Cloudové prostředky:
 
@@ -162,7 +160,7 @@ Pomocí PowerShellu stáhněte a nainstalujte modul runtime IoT Edge. Ke konfigu
    Deploy-IoTEdge -ContainerOs Windows
    ```
 
-4. Počítač se může automaticky restartovat. Pokud se zobrazí výzva k restartování příkazu Deploy-IoTEdge, udělejte to teď.
+4. Počítač se může automaticky restartovat. Pokud se zobrazí výzva Deploy-IoTEdgem příkazem k restartování, udělejte to teď.
 
 5. Spusťte PowerShell jako správce znovu.
 

@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: ef4b42b56ea3e9e73de6d5bc793b2f1b206f34f3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ce9de630af5854b965db27487379cd9eea4cfd1a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829981"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857374"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Kurz: vývoj modulu Java IoT Edge pro zařízení se systémem Linux
 
@@ -306,7 +306,7 @@ Jinak můžete místní konfigurace a prostředky Azure vytvořené v tomto čl�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili modul IoT Edge, který filtruje nezpracovaná data generovaná zařízením IoT Edge. Až budete připraveni vytvořit vlastní moduly, můžete získat další informace o [vývoji IoT Edgech modulů](module-development.md) nebo o [vývoji modulů pomocí Visual Studio Code](how-to-vs-code-develop-module.md). Příklady kódu, včetně simulovaného modulu teploty, najdete v tématu [ukázky IoT Edge modulu](https://github.com/Azure/iotedge/tree/master/edge-modules) .
+V tomto kurzu jste vytvořili modul IoT Edge, který filtruje nezpracovaná data generovaná zařízením IoT Edge.
 
 V dalších kurzech se dozvíte, jak Azure IoT Edge pomáhá nasadit Azure Cloud Services pro zpracování a analýzu dat na hraničních zařízeních.
 

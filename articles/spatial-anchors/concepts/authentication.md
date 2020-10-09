@@ -5,20 +5,20 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 05/28/2019
+ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1726f3a1ddc62cbb76a65f1d284793e57ea2f2a8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 133b565bc54feaf49a2fec9dd0056ca8e7ef43f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538241"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857720"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Ověřování a autorizace pro prostorové kotvy Azure
 
-V této části se dozvíte o různých způsobech ověření pro prostorové kotvy Azure z vaší aplikace nebo webové služby a způsobů, jak můžete použít Access Control na základě rolí v adresáři Azure (Azure AD) k řízení přístupu k vašim účtům prostorových kotev.
+V této části se dozvíte o různých způsobech ověření pro prostorové kotvy Azure z vaší aplikace nebo webové služby a způsobů, jak můžete použít Role-Based Access Control v adresáři Azure (Azure AD) k řízení přístupu k vašim účtům prostorových kotev.
 
 ## <a name="overview"></a>Přehled
 
@@ -95,28 +95,28 @@ Až to bude hotové, sada SDK bude pokládat s výměnou klíče účtu pro př�
 U aplikací, které cílí na Azure Active Directory uživatele, se doporučuje použít pro uživatele token Azure AD, který můžete získat pomocí [knihovny MSAL](../../active-directory/develop/msal-overview.md). Měli byste postupovat podle kroků uvedených v [rychlém startu pro registraci aplikace](../../active-directory/develop/quickstart-register-app.md), mezi které patří:
 
 1. Konfigurace v Azure Portal
-    1.  Zaregistrujte svoji aplikaci ve službě Azure AD jako **nativní aplikaci**. V rámci registrace budete muset určit, jestli má aplikace více tenantů, nebo ne, a zadat adresy URL pro přesměrování povolené pro vaši aplikaci.
+    1.    Zaregistrujte svoji aplikaci ve službě Azure AD jako **nativní aplikaci**. V rámci registrace budete muset určit, jestli má aplikace více tenantů, nebo ne, a zadat adresy URL pro přesměrování povolené pro vaši aplikaci.
         1.  Přepnout na kartu **oprávnění rozhraní API**
         2.  Vyberte **Přidat oprávnění** .
-            1.  Vyberte **Microsoft Mixed reality** v části **rozhraní API moje organizace používá** kartu.
+            1.  Vybrat **poskytovatele prostředků hybridní reality** v **rozhraní API moje organizace používá** kartu
             2.  Vyberte **delegovaná oprávnění** .
             3.  Zaškrtněte políčko **mixedreality.** Přihlaste se pod **mixedreality**
             4.  Vyberte **Přidat oprávnění** .
         3.  Vyberte **udělit souhlas správce** .
-    2.  Udělit vaší aplikaci nebo uživatelům přístup k vašemu prostředku:
-        1.  Přejděte ke zdroji prostorových kotev v Azure Portal
-        2.  Přepnout na kartu **řízení přístupu (IAM)**
-        3.  Kliknutí na **Přidat přiřazení role**
-            1.  [Vybrat roli](#role-based-access-control)
-            2.  Do pole **Vybrat** zadejte jména uživatelů, skupin nebo aplikací, ke kterým chcete přiřadit přístup, a jejich skupiny (y).
-            3.  Klikněte na **Uložit**.
+    2.    Udělit vaší aplikaci nebo uživatelům přístup k vašemu prostředku:
+        1.    Přejděte ke zdroji prostorových kotev v Azure Portal
+        2.    Přepnout na kartu **řízení přístupu (IAM)**
+        3.    Kliknutí na **Přidat přiřazení role**
+            1.    [Vybrat roli](#role-based-access-control)
+            2.    Do pole **Vybrat** zadejte jména uživatelů, skupin nebo aplikací, ke kterým chcete přiřadit přístup, a jejich skupiny (y).
+            3.    Klikněte na **Uložit**.
 2. V kódu:
-    1.  Nezapomeňte použít **ID aplikace** a **identifikátor URI přesměrování** vlastní aplikace Azure AD jako **ID klienta** a parametry **RedirectUri** v MSAL.
-    2.  Nastavte informace o tenantovi:
-        1.  Pokud vaše aplikace podporuje **pouze moji organizaci**, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** (například contoso.Microsoft.com).
-        2.  Pokud vaše aplikace podporuje **účty v jakémkoli organizačním adresáři**, nahraďte tuto hodnotu **organizacemi** .
-        3.  Pokud vaše aplikace podporuje **všechny účet Microsoft uživatele**, nahraďte tuto hodnotu **běžnými** .
-    3.  U žádosti o token nastavte **Rozsah** na https://sts.mixedreality.azure.com//.default . Tento obor oznamuje službě Azure AD, že vaše aplikace požaduje token pro službu tokenu zabezpečení (STS) pro Mixed reality.
+    1.    Nezapomeňte použít **ID aplikace** a **identifikátor URI přesměrování** vlastní aplikace Azure AD jako **ID klienta** a parametry **RedirectUri** v MSAL.
+    2.    Nastavte informace o tenantovi:
+        1.    Pokud vaše aplikace podporuje **pouze moji organizaci**, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** (například contoso.Microsoft.com).
+        2.    Pokud vaše aplikace podporuje **účty v jakémkoli organizačním adresáři**, nahraďte tuto hodnotu **organizacemi** .
+        3.    Pokud vaše aplikace podporuje **všechny účet Microsoft uživatele**, nahraďte tuto hodnotu **běžnými** .
+    3.    U žádosti o token nastavte **Rozsah** na https://sts.mixedreality.azure.com//.default . Tento obor oznamuje službě Azure AD, že vaše aplikace požaduje token pro službu tokenu zabezpečení (STS) pro Mixed reality.
 
 V takovém případě by vaše aplikace měla být schopná získat z MSAL tokenu Azure AD; Tento token Azure AD můžete nastavit jako **authenticationToken** v objektu konfigurace cloudové relace.
 
@@ -170,24 +170,24 @@ V tomto případě se předpokládá, že vaše aplikace používá vlastní mec
 
 Přístupový token Azure AD se načte pomocí [knihovny MSAL](../../active-directory/develop/msal-overview.md). Měli byste postupovat podle kroků uvedených v [rychlém startu pro registraci aplikace](../../active-directory/develop/quickstart-register-app.md), mezi které patří:
 
-1.  Konfigurace v Azure Portal:
-    1.  Registrace aplikace ve službě Azure AD:
-        1.  V Azure Portal přejděte na **Azure Active Directory**a vyberte **Registrace aplikací** .
-        2.  Vybrat **registraci nové aplikace**
-        3.  Zadejte název vaší aplikace, jako typ aplikace vyberte **Webová aplikace nebo rozhraní API** a zadejte adresu URL ověřování pro vaši službu. Pak stiskněte **vytvořit**.
-        4.  V této aplikaci klikněte na **Nastavení**a pak vyberte kartu **certifikáty a tajné klíče** . Vytvořte nový tajný klíč klienta, vyberte dobu trvání a pak stiskněte **Přidat**. Nezapomeňte uložit tajnou hodnotu, protože ji budete muset zahrnout do kódu vaší webové služby.
-    2.  Udělte vaší aplikaci nebo uživatelům přístup k vašemu prostředku:
-        1.  Přejděte ke zdroji prostorových kotev v Azure Portal
-        2.  Přepnout na kartu **řízení přístupu (IAM)**
-        3.  Kliknutí na **Přidat přiřazení role**
-        1.  [Vybrat roli](#role-based-access-control)
-        2.  Do pole **Vybrat** zadejte název aplikace, kterou jste vytvořili a ke kterému chcete přiřadit přístup. Pokud chcete, aby uživatelé vaší aplikace měli různé role proti účtu prostorové kotvy, měli byste v Azure AD zaregistrovat několik aplikací a přiřadit je ke každé samostatné roli. Potom implementujte logiku autorizace pro použití správné role pro vaše uživatele.
-        3.  Poznámka: v seznamu **Přidat přiřazení role** , ke kterému chcete **přiřadit přístup** , nastavte možnost uživatel, skupina nebo INSTANČNÍ objekt služby Azure AD.
-    3.  Klikněte na **Uložit**.
-2.  V kódu (Poznámka: můžete použít ukázku služby, která je součástí GitHubu):
-    1.  Nezapomeňte použít ID aplikace, tajný klíč aplikace a identifikátor URI pro přesměrování vlastní aplikace Azure AD jako ID klienta, tajný klíč a parametry RedirectUri v MSAL.
-    2.  Nastavte ID tenanta na vlastní ID tenanta Azure ADD v parametru autorita v MSAL.
-    3.  U žádosti o token nastavte **Rozsah** na "". https://sts.mixedreality.azure.com//.default
+1.    Konfigurace v Azure Portal:
+    1.    Registrace aplikace ve službě Azure AD:
+        1.    V Azure Portal přejděte na **Azure Active Directory**a vyberte **Registrace aplikací** .
+        2.    Vybrat **registraci nové aplikace**
+        3.    Zadejte název vaší aplikace, jako typ aplikace vyberte **Webová aplikace nebo rozhraní API** a zadejte adresu URL ověřování pro vaši službu. Pak stiskněte **vytvořit**.
+        4.    V této aplikaci klikněte na **Nastavení**a pak vyberte kartu **certifikáty a tajné klíče** . Vytvořte nový tajný klíč klienta, vyberte dobu trvání a pak stiskněte **Přidat**. Nezapomeňte uložit tajnou hodnotu, protože ji budete muset zahrnout do kódu vaší webové služby.
+    2.    Udělte vaší aplikaci nebo uživatelům přístup k vašemu prostředku:
+        1.    Přejděte ke zdroji prostorových kotev v Azure Portal
+        2.    Přepnout na kartu **řízení přístupu (IAM)**
+        3.    Kliknutí na **Přidat přiřazení role**
+        1.    [Vybrat roli](#role-based-access-control)
+        2.    Do pole **Vybrat** zadejte název aplikace, kterou jste vytvořili a ke kterému chcete přiřadit přístup. Pokud chcete, aby uživatelé vaší aplikace měli různé role proti účtu prostorové kotvy, měli byste v Azure AD zaregistrovat několik aplikací a přiřadit je ke každé samostatné roli. Potom implementujte logiku autorizace pro použití správné role pro vaše uživatele.
+        3.    Poznámka: v seznamu **Přidat přiřazení role** , ke kterému chcete **přiřadit přístup** , nastavte možnost uživatel, skupina nebo INSTANČNÍ objekt služby Azure AD.
+    3.    Klikněte na **Uložit**.
+2.    V kódu (Poznámka: můžete použít ukázku služby, která je součástí GitHubu):
+    1.    Nezapomeňte použít ID aplikace, tajný klíč aplikace a identifikátor URI pro přesměrování vlastní aplikace Azure AD jako ID klienta, tajný klíč a parametry RedirectUri v MSAL.
+    2.    Nastavte ID tenanta na vlastní ID tenanta Azure ADD v parametru autorita v MSAL.
+    3.    U žádosti o token nastavte **Rozsah** na "". https://sts.mixedreality.azure.com//.default
 
 V takovém případě může back-end služba získat token Azure AD. Pak ho může vyměňovat pro token MR, který se vrátí zpátky klientovi. Použití tokenu Azure AD k načtení tokenu MR se provádí prostřednictvím volání REST. Toto je ukázkové volání:
 

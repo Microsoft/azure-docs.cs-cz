@@ -4,7 +4,7 @@ description: Přečtěte si další informace o službě Defender pro službu za
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
@@ -12,20 +12,20 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
-ms.author: mlottner
-ms.openlocfilehash: 19fa5b2949888993954f3075d1e10c9e8f126e2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: 13c16407481d4fa6f7d468a73051cc4945e6314e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936303"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851229"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Principy místního konfiguračního souboru (agent C#)
 
 Agent zabezpečení služby Defender pro IoT používá konfigurace z místního konfiguračního souboru.
 
-Agent zabezpečení čte konfigurační soubor jednou při spuštění agenta. Konfigurace nalezené v místním konfiguračním souboru obsahuje konfiguraci ověřování i další konfigurace související s agenty.
+Agent zabezpečení čte konfigurační soubor jednou při spuštění agenta. Konfigurace nalezené v místním konfiguračním souboru obsahují konfiguraci ověřování i další konfigurace vztahující se k agentům.
 
 Agent zabezpečení v jazyce C# používá více konfiguračních souborů:
 
@@ -57,7 +57,7 @@ Ve Windows:
 | highPriorityQueueSizePercentage | 0 < číslo < 1 | Část celkové mezipaměti vyhrazená pro zprávy s vysokou prioritou. |
 | logLevel | "Vypnuto", "závažná", "Chyba", "upozornění", "informace", "ladění"  | Zprávy protokolu rovnající se této závažnosti se budou protokolovat do ladicí konzoly (syslog v systému Linux). |
 | LogLevel |  "Vypnuto", "závažná", "Chyba", "upozornění", "informace", "ladění"| Zprávy protokolu rovnající se této závažnosti se budou protokolovat do souboru (syslog v Linux). |
-| diagnosticVerbosityLevel | None, "All", "All", | Úroveň podrobností diagnostických událostí. Žádné – neodesílají se diagnostické události, odesílají se jenom diagnostické události s vysokou důležitostí, všechny protokoly se také odesílají jako diagnostické události. |
+| diagnosticVerbosityLevel | None, "All", "All", | Úroveň podrobností diagnostických událostí. Žádné – diagnostické události se neodesílají. Odesílají se jenom diagnostické události s vysokou důležitostí. Vše – všechny protokoly se také odesílají jako diagnostické události. |
 | logFilePath | Cesta k souboru | Pokud > vypnuto, protokoly se zapisují do tohoto souboru. |
 | defaultEventPriority | "Vysoká", "nízká", "off" | Výchozí priorita události |
 
@@ -85,7 +85,8 @@ Ve Windows:
 | Název konfigurace | Možné hodnoty | Podrobnosti |
 |:-----------|:---------------|:--------|
 | moduleName | řetězec | Název identity modulu zabezpečení Tento název musí odpovídat názvu identity modulu v zařízení. |
-| deviceId | řetězec | ID zařízení (registrované v Azure IoT Hub) || schedulerInterval | Řetězec TimeSpan | Interval interního plánovače. |
+| deviceId | řetězec | ID zařízení (registrované v Azure IoT Hub) |
+| schedulerInterval | Řetězec TimeSpan | Interval interního plánovače. |
 | gatewayHostname | řetězec | Název hostitele služby Azure IoT Hub. Obvykle <>. azure-devices.net |
 | filePath | řetězec – cesta k souboru | Cesta k souboru, který obsahuje tajný klíč ověřování.|
 | typ | "SymmetricKey", "SelfSignedCertificate" | Tajný klíč uživatele pro ověřování. Pokud je tajný klíč uživatele symetrický klíč, vyberte *SymmetricKey* . Pokud je tajný kód certifikát podepsaný svým držitelem, vyberte *certifikát podepsaný držitelem* . |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a35fb30ca19e08c68c99c9c9524231706b066e11
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc6cb5d992d4c961e23034560a688c7090622359
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549887"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858092"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s KnowledgeOwl
 
@@ -111,7 +111,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     ```
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Tuto hodnotu budete muset aktualizovat ze skutečného identifikátoru, adresy URL odpovědi a přihlašovací adresy URL, která se vysvětluje později v tomto kurzu.
+    > Tyto hodnoty nejsou reálné. Tuto hodnotu budete muset aktualizovat ze skutečného identifikátoru, adresy URL odpovědi a Sign-On URL, které jsou vysvětleny dále v tomto kurzu.
 
 1. KnowledgeOwl aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
@@ -119,7 +119,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace KnowledgeOwl několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut | Obor názvů |
+    | Název | Zdrojový atribut | Obor názvů |
     | ------------ | -------------------- | -----|
     | ssoid | uživatel. pošta | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
 
@@ -141,7 +141,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -167,11 +167,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **Nastavení** a pak vyberte **zabezpečení**.
 
-    ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure1.png)
+    ![Snímek obrazovky zobrazuje zabezpečení vybraný v nabídce nastavení.](./media/knowledgeowl-tutorial/configure1.png)
 
 1. Přejděte do **integrace SAML SSO** a proveďte následující kroky:
 
-    ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure2.png)
+    ![Snímek obrazovky ukazuje integraci S protokolem SAML S S O, kde můžete provádět změny popsané tady.](./media/knowledgeowl-tutorial/configure2.png)
 
     a. Vyberte možnost **Povolit jednotné přihlašování SAML**.
 
@@ -189,7 +189,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     h. Klikněte na **mapování atributů SAML** pro mapování atributů a proveďte následující kroky:
 
-    ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure3.png)
+    ![Snímek obrazovky ukazuje mapy atributů SAML, kde můžete provádět změny popsané tady.](./media/knowledgeowl-tutorial/configure3.png)
 
     * Zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` do textového pole **ID jednotného přihlašování** .
     * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`Do textového pole **uživatelské jméno/e-mail** zadejte.
@@ -199,7 +199,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     i. V dolní části stránky klikněte na **Uložit**.
 
-    ![Konfigurace KnowledgeOwl](./media/knowledgeowl-tutorial/configure4.png)
+    ![Snímek obrazovky se zobrazením tlačítka Uložit.](./media/knowledgeowl-tutorial/configure4.png)
 
 ### <a name="create-knowledgeowl-test-user"></a>Vytvořit testovacího uživatele KnowledgeOwl
 

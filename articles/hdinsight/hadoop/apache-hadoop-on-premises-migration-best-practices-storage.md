@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 0394a7db6776e00ea031a2f40ab4de01540982a6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cd27babee4b78d22bbd49ab53c1ed2fe5a54a0da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080206"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856683"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight
 
@@ -21,7 +21,7 @@ Tento článek obsahuje doporučení pro ukládání dat v systémech Azure HDIn
 
 ## <a name="choose-right-storage-system-for-hdinsight-clusters"></a>Volba správného systému úložiště pro clustery HDInsight
 
-Místní strukturu adresářů Apache Hadoopho systému souborů (HDFS) je možné v Azure Storage nebo Azure Data Lake Storage znovu vytvořit. Pak můžete bezpečně odstranit clustery HDInsight, které jsou používány pro výpočty, aniž by došlo ke ztrátě uživatelských dat. Obě služby se dají použít jako výchozí systém souborů i pro další systém souborů pro cluster HDInsight. Cluster HDInsight a účet úložiště musí být hostované ve stejné oblasti.
+Místní strukturu adresářů Apache Hadoopho systému souborů (HDFS) je možné znovu vytvořit ve službě Azure Blob Storage nebo v Azure Data Lake Storage. Pak můžete bezpečně odstranit clustery HDInsight, které jsou používány pro výpočty, aniž by došlo ke ztrátě uživatelských dat. Obě služby se dají použít jako výchozí systém souborů i pro další systém souborů pro cluster HDInsight. Cluster HDInsight a účet úložiště musí být hostované ve stejné oblasti.
 
 ### <a name="azure-storage"></a>Azure Storage
 
@@ -33,7 +33,7 @@ Azure Storage lze geograficky replikovat. I když geografická replikace zajiš�
 
 Pro přístup k datům, která jsou uložená v Azure Storage, se dá použít jeden z následujících formátů:
 
-|Formát přístupu k datům |Description |
+|Formát přístupu k datům |Popis |
 |---|---|
 |`wasb:///`|Přístup k výchozímu úložišti pomocí nešifrované komunikace|
 |`wasbs:///`|Přístup k výchozímu úložišti pomocí šifrované komunikace.|
@@ -81,18 +81,18 @@ Další informace najdete v následujících článcích:
 
 ### <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
 
-Azure Data Lake Storage implementuje model řízení přístupu k stylu aplikace HDFS a POSIX. Poskytuje pro jemně odstupňované řízení přístupu první integraci třídy s AAD. Neexistují žádná omezení velikosti dat, která může uložit, nebo schopnost spouštět výkonné paralelní analýzy.
+Azure Data Lake Storage Gen1 implementuje model řízení přístupu k stylu aplikace HDFS a POSIX. Poskytuje pro detailní řízení přístupu prvotřídní integraci třídy se službou Azure AD. Neexistují žádná omezení velikosti dat, která může uložit, nebo schopnost spouštět výkonné paralelní analýzy.
 
 Další informace najdete v následujících článcích:
 
-- [Vytváření clusterů HDInsight pomocí Data Lake Storage pomocí Azure Portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
-- [Použití Data Lake Storage s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
+- [Vytváření clusterů HDInsight s Data Lake Storage Gen1 pomocí Azure Portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Použití Data Lake Storage Gen1 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen1.md)
 
 ### <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 je nejnovější nabídka úložiště. Sjednocuje základní funkce od první generace Azure Data Lake Storage s koncovým bodem systému souborů kompatibilním s Hadoop přímo integrovanými do Azure Blob Storage. Toto vylepšení kombinuje výhody škálování a nákladů na úložiště objektů s spolehlivostí a výkonem obvykle přidruženou pouze k místním systémům souborů.
+Azure Data Lake Storage Gen2 je nejnovější nabídka úložiště. Sjednocuje základní funkce od první generace Azure Data Lake Storage Gen1 s koncovým bodem systému souborů kompatibilním s Hadoop přímo integrovanými do Azure Blob Storage. Toto vylepšení kombinuje výhody škálování a nákladů na úložiště objektů s spolehlivostí a výkonem obvykle přidruženou pouze k místním systémům souborů.
 
-ADLS Gen 2 je postaven na [službě Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) a umožňuje rozhraní s daty pomocí systémů souborů i úložišť objektů. Funkce z [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml), jako jsou sémantika systému souborů, zabezpečení na úrovni souborů a škálování, jsou kombinovány s nízkými náklady, vrstvenými úložištěm, vysoce dostupnými možnostmi zotavení po havárii a rozsáhlým EKOSYSTÉMEM sady SDK/nástrojů ze služby [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md). V Data Lake Storage Gen2 všechny kvality úložiště objektů zůstanou při přidávání výhod rozhraní systému souborů optimalizovaného pro analytické úlohy.
+Azure Data Lake Storage Gen 2 je postavené na [službě Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) a umožňuje rozhraní s daty pomocí systémů souborů i úložišť objektů. Funkce z [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml), jako jsou sémantika systému souborů, zabezpečení na úrovni souborů a škálování, jsou kombinovány s nízkými náklady, vrstvenými úložištěm, vysoce dostupnými možnostmi zotavení po havárii a rozsáhlým EKOSYSTÉMEM sady SDK/nástrojů ze služby [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md). V Data Lake Storage Gen2 všechny kvality úložiště objektů zůstanou při přidávání výhod rozhraní systému souborů optimalizovaného pro analytické úlohy.
 
 Základní funkcí Data Lake Storage Gen2 je přidání [hierarchického oboru názvů](../../storage/data-lake-storage/namespace.md)   ke službě BLOB Storage, která uspořádá objekty a soubory do hierarchie adresářů pro účely přístupu k datům.Hierarchická struktura umožňuje operace, jako je například přejmenování nebo odstranění adresáře, aby byly jednou atomické operace s metadaty v adresáři, nikoli vytváření výčtu a zpracování všech objektů, které sdílejí předponu názvu adresáře.
 
@@ -153,9 +153,9 @@ Ve výchozím nastavení má služba HDInsight úplný přístup k datům v úč
 
 ### <a name="using-the-sas-token-created-with-python"></a>Použití tokenu SAS vytvořeného v Pythonu
 
-1. Otevřete soubor [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) a změňte následující hodnoty:
+1. Otevřete soubor  [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) a změňte následující hodnoty:
 
-    |Vlastnost token|Description|
+    |Vlastnost token|Popis|
     |---|---|
     |policy_name|Název, který se má použít pro vytvoření uložené zásady.|
     |storage_account_name|Název vašeho účtu úložiště.|
@@ -165,9 +165,9 @@ Ve výchozím nastavení má služba HDInsight úplný přístup k datům v úč
 
 2. Soubor SASToken.py se dodává s `ContainerPermissions.READ + ContainerPermissions.LIST` oprávněními a dá se upravit na základě případu použití.
 
-3. Skript spusťte následujícím způsobem:`python SASToken.py`
+3. Skript spusťte následujícím způsobem: `python SASToken.py`
 
-4. Po dokončení skriptu se zobrazí token SAS podobný následujícímu textu:`sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
+4. Po dokončení skriptu se zobrazí token SAS podobný následujícímu textu: `sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
 
 5. Pokud chcete omezit přístup k kontejneru se sdíleným přístupovým podpisem, přidejte vlastní položku do Konfigurace základního serveru pro cluster v části Ambari HDFS config Advanced Custom-site Add Property.
 
@@ -200,16 +200,16 @@ Všechna data zapsaná do Azure Storage se automaticky šifrují pomocí [šifr
 - [Geograficky redundantní úložiště (GRS)](../../storage/common/storage-redundancy-grs.md)
 - [Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../../storage/common/storage-redundancy.md)
 
-Azure Data Lake Storage poskytuje místně redundantní úložiště (LRS), ale měli byste také zkopírovat kritická data do jiného účtu Data Lake Storage v jiné oblasti s frekvencí, která je zarovnaná na požadavky plánu zotavení po havárii.Existují různé metody kopírování dat, včetně [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html), [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)nebo [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md).Doporučuje se také vyhovět zásadám přístupu pro účet Data Lake Storage, abyste zabránili nechtěnému odstranění.
+Azure Storage poskytuje místně redundantní úložiště (LRS), ale měli byste také zkopírovat kritická data do jiného účtu Azure Storage v jiné oblasti s frekvencí, která je zarovnaná na požadavky plánu zotavení po havárii.Existují různé metody kopírování dat, včetně [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html), [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)nebo [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md).Doporučuje se také vyhovět zásadám přístupu pro účet Azure Storage, abyste zabránili nechtěnému odstranění.
 
 Další informace najdete v následujících článcích:
 
 - [Replikace Azure Storage](../../storage/common/storage-redundancy.md)
-- [Pokyny k havárii pro Azure Data Lake Storage (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
+- [Pokyny k havárii pro Azure Data Lake Storage Gen1 (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
 ## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>Připojení dalších účtů Azure Storage ke clusteru
 
-Během procesu vytváření služby HDInsight je jako výchozí systém souborů zvolen účet Azure Storage nebo účet Azure Data Lake Storage. Kromě tohoto výchozího účtu úložiště můžete během procesu vytváření clusteru nebo po vytvoření clusteru přidat do stejného předplatného Azure nebo různých předplatných Azure další účty úložiště.
+Během procesu vytváření služby HDInsight je jako výchozí systém souborů zvolen účet Azure Storage, Azure Data Lake Storage Gen1 nebo Azure Data Lake Storage Gen2. Kromě tohoto výchozího účtu úložiště můžete během procesu vytváření clusteru nebo po vytvoření clusteru přidat do stejného předplatného Azure nebo různých předplatných Azure další účty úložiště.
 
 Další účet úložiště je možné přidat jedním z následujících způsobů:
 - Ambari HDFS config Advanced Custom Core-site přidejte název účtu úložiště a klíč pro restartování služeb.

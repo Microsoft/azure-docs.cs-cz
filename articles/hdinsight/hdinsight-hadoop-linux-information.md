@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 55ffd563ea0a99d32608bd90bd53d7dc88eb4cf2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c8862398d5c79335e4ed59f4ca42df9abd58965e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961808"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856581"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
@@ -101,15 +101,15 @@ Příklady dat a souborů JAR najdete v systém souborů DFS (Distributed File S
 
 Ve většině distribucí Hadoop jsou data uložená v HDFS. HDFS je zajištěno místním úložištěm v počítačích v clusteru. Použití místního úložiště může být nákladné pro cloudové řešení, ve kterém se za výpočetní prostředky účtují každou hodinu nebo za minutu.
 
-Při použití HDInsight se datové soubory ukládají v cloudu s možností adaptivního a odolného v cloudu s využitím Azure Blob Storage a volitelně Azure Data Lake Storage. Tyto služby poskytují následující výhody:
+Při použití HDInsight se datové soubory ukládají v cloudu s možností adaptivního a odolného v cloudu pomocí Azure Blob Storage a volitelně Azure Data Lake Storage Gen1/Gen2. Tyto služby poskytují následující výhody:
 
 * Levné dlouhodobé úložiště.
 * Přístupnost z externích služeb, jako jsou weby, odesílání souborů/stahování nástrojů, různé jazykové sady SDK a webové prohlížeče.
 * Velká kapacita souborů a velké adaptivní úložiště.
 
-Další informace najdete v tématu [Principy objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) a [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/).
+Další informace najdete v tématu [úložiště objektů BLOB v Azure](../storage/common/storage-introduction.md), [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)nebo [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
 
-Pokud používáte Azure Storage nebo Data Lake Storage, nemusíte pro přístup k datům dělat nic zvláštního. Například následující příkaz vypíše soubory ve `/example/data` složce, ať jsou uloženy v Azure Storage nebo data Lake Storage:
+Pokud používáte úložiště objektů BLOB v Azure nebo Data Lake Storage Gen1/Gen2, nemusíte pro přístup k datům dělat nic jiného, než HDInsight. Například následující příkaz vypíše soubory ve `/example/data` složce, ať jsou uloženy v Azure Storage nebo data Lake Storage:
 
 ```console
 hdfs dfs -ls /example/data
@@ -135,7 +135,7 @@ Při použití [**Azure Data Lake Storage Gen2**](./hdinsight-hadoop-use-data-la
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Používá se při komunikaci s jiným než výchozím účtem úložiště. Například když máte další účet úložiště nebo když přistupujete k datům uloženým v veřejně přístupném účtu úložiště.
 
-Při použití [**Azure Data Lake Storage Gen1**](./hdinsight-hadoop-use-data-lake-store.md)použijte jedno z následujících schémat identifikátorů URI:
+Při použití [**Azure Data Lake Storage Gen1**](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)použijte jedno z následujících schémat identifikátorů URI:
 
 * `adl:///`: Přístup k výchozímu Data Lake Storage clusteru.
 
@@ -159,11 +159,11 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 Tento příkaz vrátí hodnotu podobnou následujícím identifikátorům URI:
 
-* `wasb://<container-name>@<account-name>.blob.core.windows.net`Pokud používáte účet Azure Storage.
+* `wasb://<container-name>@<account-name>.blob.core.windows.net` Pokud používáte účet Azure Storage.
 
     Název účtu je název účtu Azure Storage. Název kontejneru je kontejner objektů blob, který je kořenovým adresářem úložiště clusteru.
 
-* `adl://home`Pokud používáte Azure Data Lake Storage. Chcete-li získat název Data Lake Storage, použijte následující volání REST:
+* `adl://home` Pokud používáte Azure Data Lake Storage. Chcete-li získat název Data Lake Storage, použijte následující volání REST:
 
      ```bash
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
@@ -189,9 +189,9 @@ Informace o úložišti můžete také najít pomocí Azure Portal pomocí násl
 
 Existují různé způsoby, jak získat přístup k datům mimo cluster HDInsight. Následuje několik odkazů na nástroje a sady SDK, které lze použít pro práci s daty:
 
-Pokud používáte __Azure Storage__, přečtěte si následující odkazy, které vám umožní získat přístup k datům:
+Pokud používáte __úložiště objektů BLOB v Azure__, přečtěte si následující odkazy, které vám umožní získat přístup k datům:
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): příkazy rozhraní příkazového řádku pro práci s Azure. Po instalaci použijte `az storage` příkaz pro nápovědu k používání úložiště nebo `az storage blob` pro příkazy pro objekty blob.
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): příkazy rozhraní Command-Line pro práci s Azure. Po instalaci použijte `az storage` příkaz pro nápovědu k používání úložiště nebo `az storage blob` pro příkazy pro objekty blob.
 * [blobxfer.py](https://github.com/Azure/blobxfer): skript Pythonu pro práci s objekty blob v Azure Storage.
 * Různé sady SDK:
 
@@ -203,7 +203,7 @@ Pokud používáte __Azure Storage__, přečtěte si následující odkazy, kter
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [Rozhraní REST API pro službu Storage](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
-Pokud používáte __Azure Data Lake Storage__, přečtěte si následující odkazy, které vám umožní získat přístup k datům:
+Pokud používáte __Azure Data Lake Storage Gen1__, přečtěte si následující odkazy, které vám umožní získat přístup k datům:
 
 * [Webový prohlížeč](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
