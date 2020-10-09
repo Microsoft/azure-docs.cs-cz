@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s jednotným přihlašováním centra dat Michigan | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s jedním Sign-Onm datového centra Michigan | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Michigan a jednotným přihlašováním centra dat.
 services: active-directory
 author: jeevansd
@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 07/23/2020
 ms.author: jeedes
 ms.openlocfilehash: 031190bee2dc81398ee0c4ac23ad9ec62469333a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88528365"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-michigan-data-hub-single-sign-on"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s jednotným přihlašováním Michigan data hub
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-michigan-data-hub-single-sign-on"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s jedním Sign-Onm datového centra Michigan
 
-V tomto kurzu se dozvíte, jak integrovat jednotné přihlašování Michigan data hub pomocí Azure Active Directory (Azure AD). Když integrujete jednotné přihlašování Michigan data hub s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat Michigan data hub Single Sign-On s Azure Active Directory (Azure AD). Když integruje Michigan data hub Single Sign-On s Azure AD, můžete:
 
 * Řízení ve službě Azure AD, která má přístup k jednotnému přihlašování k Michigan data hub.
-* Umožněte, aby se vaši uživatelé automaticky přihlásili ke službě Michigan data hub jednotného přihlašování pomocí svých účtů Azure AD.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Michigan datovému Sign-On centru pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
@@ -33,18 +33,18 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Michigan odběr datového centra jednotného přihlašování s povoleným jednotným přihlašováním (SSO).
+* Michigan data hub Single Sign-On předplatné s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Jednotné přihlašování datového centra Michigan podporuje jednotné přihlašování (SSO) iniciované v **SP**
-* Po nakonfigurování jednotného přihlašování Michigan data Hub můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Michigan data hub Single Sign-On podporuje jednotné přihlašování spouštěné v **SP**
+* Jakmile nakonfigurujete jeden Sign-On Michigan data hub, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-michigan-data-hub-single-sign-on-from-the-gallery"></a>Přidávání jednotného přihlašování Michigan data hub z Galerie
+## <a name="adding-michigan-data-hub-single-sign-on-from-the-gallery"></a>Přidání jednoho Sign-On datového centra Michigan z Galerie
 
-Pokud chcete nakonfigurovat integraci jednotného přihlašování ke službě Michigan data hub do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat jednotné přihlašování Michigan datového centra z galerie.
+Pokud chcete nakonfigurovat integraci Michigan data hub Single Sign-On do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat Sign-On datového centra Michigan z galerie.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
@@ -54,17 +54,17 @@ Pokud chcete nakonfigurovat integraci jednotného přihlašování ke službě M
 1. Na panelu výsledků vyberte **jednotné přihlašování Michigan data hub** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
-## <a name="configure-and-test-azure-ad-sso-for-michigan-data-hub-single-sign-on"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro jednotné přihlašování Michigan data hub
+## <a name="configure-and-test-azure-ad-sso-for-michigan-data-hub-single-sign-on"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro Michigan data hub na jednom Sign-On
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí jednotného přihlašování Michigan data hub pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v rámci jednotného přihlašování Michigan data hub.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Michigan data hub s jedním Sign-On pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v rámci jednotného přihlašování Michigan data hub.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí jednotného přihlašování Michigan data hub, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[Konfigurace jednotného přihlašování Michigan data hub](#configure-michigan-data-hub-single-sign-on-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
-    1. **[Vytvořit testovacího uživatele jednotného přihlašování Michigan data hub](#create-michigan-data-hub-single-sign-on-test-user)** – Pokud chcete mít protějšek B. Simon v rámci jednotného přihlašování centra dat Michigan, které je propojené s reprezentací uživatele Azure AD.
+1. **[Nakonfigurovat Michigan jednotné PŘIhlašování pro dataSign-On centrum dat](#configure-michigan-data-hub-single-sign-on-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace
+    1. **[Vytvořte Michigan data hub single Sign-On Test User](#create-michigan-data-hub-single-sign-on-test-user)** , abyste měli protějšek B. Simon v Michiganch datových Sign-On rozbočovačích, který je propojený s reprezentací uživatele Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
@@ -95,7 +95,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -115,19 +115,19 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-michigan-data-hub-single-sign-on-sso"></a>Konfigurace jednotného přihlašování k jednotnému přihlašování Michigan data hub
+## <a name="configure-michigan-data-hub-single-sign-on-sso"></a>Konfigurace Sign-On jednotného přihlašování pro Michigan data hub
 
-Ke konfiguraci jednotného přihlašování na straně **jednotného přihlašování Michigan data hub** je potřeba odeslat **adresu URL federačních metadat aplikace** do [týmu podpory pro jednotné přihlašování Michigan datového centra](mailto:support@midatahub.org). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **jednotného přihlašování Michigan data hub** , je potřeba odeslat **adresu URL federačních metadat aplikace** do [Michiganho týmu datového centra, který podporuje jeden Sign-On tým podpory](mailto:support@midatahub.org). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
-### <a name="create-michigan-data-hub-single-sign-on-test-user"></a>Vytvořit testovacího uživatele jednotného přihlašování Michigan data hub
+### <a name="create-michigan-data-hub-single-sign-on-test-user"></a>Vytvořit Michigan testovacího uživatele pro jednoho Sign-On datového centra
 
-V této části vytvoříte uživatele s názvem B. Simon v rámci jednotného přihlašování Michigan data hub. Pokud chcete přidat uživatele na platformě jednotného přihlašování Michigan data hub, pracujte s [týmem podpory pro jednotné přihlašování Michigan data hub](mailto:support@midatahub.org) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v rámci jednotného přihlašování Michigan data hub. Pokud chcete přidat uživatele na Michigan platformu Michigan data hub, pracujte s [Sign-On jedním](mailto:support@midatahub.org) Sign-On platformou datového centra. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici jednotného přihlašování Michigan data hub na přístupovém panelu byste měli být automaticky přihlášeni k jednotnému přihlašování centra dat Michigan, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Michigan data hub Single Sign-On na přístupovém panelu byste měli být automaticky přihlášeni k Michigan datovému Sign-On rozbočovači, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje
 
@@ -137,8 +137,8 @@ Po kliknutí na dlaždici jednotného přihlašování Michigan data hub na př�
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Vyzkoušejte si jednotné přihlašování Michigan data hub pomocí Azure AD](https://aad.portal.azure.com/)
+- [Vyzkoušejte Michigan data hub Single Sign-On s Azure AD](https://aad.portal.azure.com/)
 
 - [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit jednotné přihlašování Michigan data hub s pokročilou viditelností a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit Michigan data hub Single Sign-On s pokročilou viditelností a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

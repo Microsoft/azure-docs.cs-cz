@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68934871"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Osvědčené postupy pro zabezpečení vývoje v Azure
@@ -46,10 +46,10 @@ Fáze SDL:
   - Návrh
   - Implementace
   - Ověření
-  - Vydaná verze
+  - Vydat
   - Odpověď
 
-![Security Development Lifecycle](./media/secure-dev-overview/01-sdl-phase.png)
+![Životní cyklus vývoje zabezpečení (Security Development Lifecycle)](./media/secure-dev-overview/01-sdl-phase.png)
 
 V těchto článcích se fáze SDL seskupují do návrhu, vývoje a nasazení.
 
@@ -59,7 +59,7 @@ Vaše organizace může mít formální program zabezpečení aplikací, který 
 
 Chápeme, že mnoho čtenářů nemusí mít tým zabezpečení nebo dodržování předpisů, aby mohl zapojit. Tyto články vám pomůžou s bezpečnostními otázkami a rozhodnutími, která je potřeba vzít v úvahu v každé fázi SDL.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 Následující zdroje vám pomůžou získat další informace o vývoji zabezpečených aplikací a k zabezpečení aplikací v Azure:
 

@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68946325"
 ---
 # <a name="detect-domain-specific-content"></a>Rozpoznávání obsahu specifického doménu
@@ -26,7 +26,7 @@ Existují dva způsoby, jak použít modely specifické pro doménu: samy o sebe
 
 ### <a name="scoped-analysis"></a>Analýza s vymezeným oborem
 
-Můžete analyzovat bitovou kopii pomocí pouze zvoleného modelu specifického pro doménu voláním rozhraní API [\<modelů\>/modelu/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) .
+Můžete analyzovat image jenom pomocí zvoleného modelu specifického pro doménu voláním [modelů/rozhraní API \<model\> /analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) .
 
 Následuje ukázková odpověď JSON, kterou vrátí rozhraní API **modelů/celebrit/analyzovat** pro danou Image:
 
@@ -103,7 +103,7 @@ V současné době Počítačové zpracování obrazu podporuje následující m
 | Název | Popis |
 |------|-------------|
 | celebrit | Rozpoznávání celebrit, podporované pro obrázky klasifikované v `people_` kategorii |
-| památek | Rozpoznávání bodů podporované pro obrázky klasifikované v `outdoor_` kategoriích `building_` nebo |
+| památek | Rozpoznávání bodů podporované pro obrázky klasifikované v `outdoor_` `building_` kategoriích nebo |
 
 Volání [modelů](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) rozhraní API vrátí tyto informace spolu s kategoriemi, pro které lze použít každý model:
 

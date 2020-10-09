@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 72c7a24f165d48d3ba2ea0dbcc2b41c818e3f1d7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88524545"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-splashtop"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Splashtop
@@ -104,7 +104,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -139,7 +139,7 @@ V této části budete muset požádat o novou metodu jednotného přihlašován
 
     ![obrázek ](media/splashtop-tutorial/cert-1.png) obrázku ![ obrázku ](media/splashtop-tutorial/cert-2.png) ![](media/splashtop-tutorial/azure-sso-2.png)
 
-1. A to je vše! Klikněte na **Uložit** a Splashtop ověřovací tým jednotného přihlašování vám pošle informace o ověření a pak aktivuje metodu jednotného přihlašování.
+1. A je to! Klikněte na **Uložit** a Splashtop ověřovací tým jednotného přihlašování vám pošle informace o ověření a pak aktivuje metodu jednotného přihlašování.
 
 ### <a name="create-splashtop-test-user"></a>Vytvořit testovacího uživatele Splashtop
 
@@ -153,7 +153,7 @@ V této části budete muset požádat o novou metodu jednotného přihlašován
 
 1. Existující účet Splashtop můžete také změnit na účet jednotného přihlašování, viz [pokyny](https://support-splashtopbusiness.splashtop.com/hc/en-us/articles/360038685691-How-to-associate-SSO-method-to-existing-team-admin-member-).
 
-1. A to je vše! Účet jednotného přihlašování můžete použít k přihlášení k webovému portálu Splashtop nebo obchodní aplikaci Splashtop.
+1. A je to! Účet jednotného přihlašování můžete použít k přihlášení k webovému portálu Splashtop nebo obchodní aplikaci Splashtop.
 
 ## <a name="test-sso"></a>Test SSO 
 

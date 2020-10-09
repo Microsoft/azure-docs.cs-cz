@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 3313e923bbe5218a965c58d2faee810182c00aa6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88532700"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Kurz: Azure Active Directory integrace se službou UserVoice
@@ -73,7 +73,7 @@ Aby bylo jednotné přihlašování fungovat, je třeba vytvořit odkaz na propo
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí služby UserVoice, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování UserVoice](#configure-uservoice-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování UserVoice](#configure-uservoice-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte si testovacího uživatele UserVoice](#create-uservoice-test-user)** , abyste měli protějšek Britta Simon ve službě UserVoice, který je propojený s reprezentací uživatele v Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby 
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -126,7 +126,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby 
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-uservoice-single-sign-on"></a>Konfigurace jednotného přihlašování UserVoice
+### <a name="configure-uservoice-single-sign-on"></a>Konfigurace jednotného Sign-On UserVoice
 
 1. V jiném okně webového prohlížeče se přihlaste k webu UserVoice společnosti jako správce.
 
@@ -142,11 +142,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby 
    
     ![Upravit ověřování uživatelů](./media/uservoice-tutorial/ic777521.png "Upravit ověřování uživatelů")
    
-    a. Klikněte na **jednotné přihlašování (SSO)**.
+    a. Klikněte na možnost **jednotné Sign-On (SSO)**.
  
     b. Vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal do textového pole pro **vzdálené přihlášení SSO** .
 
-    c. Vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z Azure Portal do **textového pole pro vzdálené přihlášení SSO**.
+    c. Vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z Azure Portal do **textového pole vzdáleného Sign-Out jednotného přihlašování**.
  
     d. Vložte hodnotu **kryptografického otisku** , kterou jste zkopírovali z Azure Portal do aktuálního textového pole **otisku SHA1 certifikátu** .
     
@@ -174,7 +174,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -182,7 +182,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **UserVoice**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **UserVoice**.
 

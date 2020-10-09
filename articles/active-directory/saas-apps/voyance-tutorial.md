@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/07/2019
 ms.author: jeedes
 ms.openlocfilehash: e51d275b32b634b7914b4e4f53959c1b89d96aed
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88531655"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-voyance"></a>Kurz: Azure Active Directory integrace s Voyance
@@ -75,7 +75,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Voyance, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Voyance](#configure-voyance-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování Voyance](#configure-voyance-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření Voyance Test User](#create-voyance-test-user)** – pro Britta Simon v Voyance, který je propojený s reprezentací uživatele Azure AD.
@@ -95,7 +95,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Voyance,
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -116,7 +116,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Voyance,
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Voyance](mailto:support@nyansa.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -130,29 +130,29 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Voyance,
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-voyance-single-sign-on"></a>Konfigurace jednotného přihlašování Voyance
+### <a name="configure-voyance-single-sign-on"></a>Nakonfigurovat Voyance jednu Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k tenantovi Voyance jako správce.
 
 2. Přejděte do pravého horního rohu navigačního panelu a klikněte na **profil**.
     
-    ![Konfigurace jednotného přihlašování na Acme University na straně aplikace](./media/voyance-tutorial/tutorial_voyance_001.png) 
+    ![Konfigurace jednoho Sign-On na Acme University na straně aplikace](./media/voyance-tutorial/tutorial_voyance_001.png) 
 
 3. Klikněte na **Nastavení správce**.
 
-    ![Konfigurace jednotného přihlašování při nastavení správce na straně aplikace](./media/voyance-tutorial/tutorial_voyance_002.png)
+    ![Konfigurace jednoho Sign-On na nastavení správce na straně aplikace](./media/voyance-tutorial/tutorial_voyance_002.png)
 
 4. Klikněte na kartu **přístup uživatelů** .
 
-    ![Konfigurace jednotného přihlašování při přístupu uživatele na straně aplikace](./media/voyance-tutorial/tutorial_voyance_003.png)
+    ![Konfigurace jednoho Sign-On při přístupu uživatele na straně aplikace](./media/voyance-tutorial/tutorial_voyance_003.png)
 
 5. Kliknutím na tlačítko **jednotného přihlašování (SSO) je zakázané** nakonfigurovat Azure AD jako IDP s využitím SAML 2,0.
 
-    ![Tlačítko Konfigurovat jednotné přihlašování při jednotném přihlašování na straně aplikace je zakázané.](./media/voyance-tutorial/tutorial_voyance_004.png)
+    ![Tlačítko Konfigurovat jednu Sign-On pro jednotné přihlašování na straně aplikace je zakázané.](./media/voyance-tutorial/tutorial_voyance_004.png)
 
 6. Přejít na část **SAML v2** a provést následující kroky:
 
-    ![Konfigurace jednotného přihlašování na straně aplikace SAML v2](./media/voyance-tutorial/tutorial-voyance-005.png)
+    ![Konfigurace jednoho Sign-On na straně aplikace SAML v2](./media/voyance-tutorial/tutorial-voyance-005.png)
     
     a. Vyberte **Povoleno**.
     
@@ -184,7 +184,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -192,7 +192,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Voyance**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Voyance**.
 

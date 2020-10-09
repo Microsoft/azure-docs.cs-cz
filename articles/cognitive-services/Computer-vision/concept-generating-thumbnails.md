@@ -12,10 +12,10 @@ ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68945235"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Generování miniatur s inteligentním oříznutím pomocí Počítačové zpracování obrazu
@@ -24,7 +24,7 @@ Miniatura je reprezentace obrázku zmenšené velikosti. Miniatury slouží k re
 
 Počítačové zpracování obrazu algoritmus pro generování miniatury funguje takto:
 
-1. Odstraňte rušivé elementy z obrázku a Identifikujte _oblast zájmu_&mdash;v oblasti obrázku, ve kterém se zobrazují hlavní objekty.
+1. Odstraňte rušivé elementy z obrázku a Identifikujte _oblast zájmu_ &mdash; v oblasti obrázku, ve kterém se zobrazují hlavní objekty.
 1. Ořízne obrázek na základě identifikované _oblasti zájmu_.
 1. Změňte poměr stran tak, aby odpovídal rozměrům cílové miniatury.
 

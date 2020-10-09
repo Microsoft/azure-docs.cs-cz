@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: alkohli
 ms.openlocfilehash: ea7e4801dfaad533403c0f927a03735ae409cc52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66420600"
 ---
 # <a name="storsimple-virtual-array-update-12-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 1,2
@@ -46,7 +46,7 @@ Stáhněte si KB4502035 a postupujte podle těchto pokynů, abyste [aktualizaci 
 
 Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
-| Ne. | Funkce | Problém |
+| Ne. | Příznak | Problém |
 | --- | --- | --- |
 | 1 |Odstranění| V předchozích verzích softwaru došlo k potížím, pokud se použití zařízení nezměnilo ani když byly soubory smazány. Tento problém je opravený v této verzi. Při zpracování odstraněných souborů byla cesta k vrstvení kódu pružnější.|
 | 2 |Ošetření výjimek| V předchozích verzích softwaru došlo k potížím po restartování systému, které by mohlo vést k chybám při zálohování, obnovení, čtení z cloudu a automatizovanému opakovanému získávání místa. Tato verze obsahuje změny, jak byly výjimky zpracovány v cestě při spuštění.|

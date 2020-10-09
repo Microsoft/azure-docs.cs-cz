@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
 ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88526512"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Kurz: Azure Active Directory integrace s ovládacím prvkem Workspot
@@ -94,7 +94,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ovládac
 
     ![Vyberte okno pro výběr metody jednotného přihlašování.](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu **Upravit** (tužka) pro přístup ke **základní konfiguraci SAML**.
+3. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte ikonu **Upravit** (tužka) pro přístup ke **základní konfiguraci SAML**.
 
     ![Ikona úprav zvýrazněná v základní konfiguraci SAML](common/edit-urls.png)
 
@@ -118,7 +118,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ovládac
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Nahraďte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory Workspot Control Client](mailto:support@workspot.com) . Případně můžete také odkazovat na vzory v části **základní konfigurační oddíl SAML** v Azure Portal.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte **Stáhnout** pro stažení **certifikátu (Base64)** z dostupných možností podle vašich požadavků. Uložte ho do svého počítače.
+6. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte v části **podpisový certifikát SAML** možnost **Stáhnout** a Stáhněte si **certifikát (Base64)** z dostupných možností podle vašich požadavků. Uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu (Base64)](common/certificatebase64.png)
 

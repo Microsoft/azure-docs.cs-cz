@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: eb006482b851e9094b82ec3d0753b74c05296994
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68727828"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft Threat Modeling Tool hrozby
@@ -38,13 +38,13 @@ Threat Modeling Tool vám pomůže odpovědět na některé otázky, jako jsou t
 
 K lepšímu seřazení těchto druhů podaných otázek Microsoft používá model pro rozteč, který kategorizuje různé typy hrozeb a zjednodušuje celkové bezpečnostní hovory.
 
-| Kategorie | Description |
+| Kategorie | Popis |
 | -------- | ----------- |
 | **Falšování identity** | Zahrnuje neoprávněný přístup a následné použití ověřovacích informací jiného uživatele, jako je uživatelské jméno a heslo. |
-| **Falšování** | Zahrnuje škodlivou úpravu dat. Mezi příklady patří neoprávněné změny provedené u trvalých dat, jako je třeba ta, která se uchovávají v databázi, a změna dat při jejich toku mezi dvěma počítači přes otevřenou síť, jako je například Internet. |
+| **Manipulace** | Zahrnuje škodlivou úpravu dat. Mezi příklady patří neoprávněné změny provedené u trvalých dat, jako je třeba ta, která se uchovávají v databázi, a změna dat při jejich toku mezi dvěma počítači přes otevřenou síť, jako je například Internet. |
 | **Popírání odpovědnosti** | Přidruženo k uživatelům, kteří zakazují provedení akce bez dalších smluv, mají-li například možnost prokázat jinak, například uživatel provede neplatnou operaci v systému, který nemá schopnost trasovat zakázané operace. Neodmítnutím se rozumí schopnost systému vyhodnotit hrozby hrozeb. Například uživatel, který kupuje položku, může muset podepsat položku při přijetí. Dodavatel pak může použít podepsaný příjem jako důkaz, že uživatel balíček dostal. |
-| **Zpřístupnění informací** | Zahrnuje expozici informací jednotlivcům, kteří k nim nemají přístup, například schopnost uživatelů číst soubor, ke kterému nebyli udělen přístup, nebo může útočníkovi umožnit čtení dat při přenosu mezi dvěma počítači. |
-| **Útok DoS** | Útoky DoS (Denial of Service) brání službě platným uživatelům – například tím, že webový server bude dočasně nedostupný nebo nepoužitelný. Abyste mohli zlepšit dostupnost a spolehlivost systému, musíte chránit před některými typy hrozeb pro DoS. |
+| **Zveřejňování informací** | Zahrnuje expozici informací jednotlivcům, kteří k nim nemají přístup, například schopnost uživatelů číst soubor, ke kterému nebyli udělen přístup, nebo může útočníkovi umožnit čtení dat při přenosu mezi dvěma počítači. |
+| **Odepření služby** | Útoky DoS (Denial of Service) brání službě platným uživatelům – například tím, že webový server bude dočasně nedostupný nebo nepoužitelný. Abyste mohli zlepšit dostupnost a spolehlivost systému, musíte chránit před některými typy hrozeb pro DoS. |
 | **Zvýšení oprávnění** | Neprivilegovaný uživatel získá privilegovaný přístup, a proto má dostatečný přístup k zabezpečení nebo zničení celého systému. Zvýšení úrovně hrozeb mezi hrozby zahrnuje situace, kdy útočník účinně provedl všechny obrany systému a se stane součástí samotného důvěryhodného systému, což je skutečně nebezpečná situace. |
 
 ## <a name="next-steps"></a>Další kroky

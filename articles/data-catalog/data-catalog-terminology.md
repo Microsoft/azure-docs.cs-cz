@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68736294"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog terminologie
@@ -41,7 +41,7 @@ Strukturální metadata jsou metadata extrahovaná ze zdroje dat, který popisuj
 
 Popisná metadata jsou metadata, která popisují účel nebo záměr datového assetu. Uživatelé katalogu obvykle přidávají popisné metadata pomocí portálu Azure Data Catalog, ale je možné je také extrahovat ze zdroje dat během registrace. Například nástroj pro registraci Azure Data Catalog extrahuje popisy z vlastnosti Description v SQL Server Analysis Services a SQL Server Reporting Services a v [MS_Description rozšířené vlastnosti](https://technet.microsoft.com/library/ms190243.aspx) v SQL Server databázích, pokud byly tyto vlastnosti naplněny hodnotami.
 
-## <a name="request-access"></a>Vyžádání přístupu
+## <a name="request-access"></a>Vyžádání přístup
 
 Popisná metadata datového assetu můžou obsahovat informace o tom, jak požádat o přístup k datovému assetu nebo ke zdroji dat. Tyto informace se zobrazují v umístění datového assetu a mohou obsahovat jednu nebo více z následujících možností:
 

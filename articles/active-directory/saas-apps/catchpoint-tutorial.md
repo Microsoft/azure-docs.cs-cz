@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 649396b81402e9229eb9ea2c627b60f249f8c601
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88530252"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí záchytný bod
@@ -74,7 +74,7 @@ Pokud chcete povolit jednotné přihlašování Azure AD, postupujte podle těch
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Na stránce integrace aplikací **záchytný bod** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu pera a upravte **základní nastavení konfigurace SAML** .
+1. Na stránce **nastavit jeden Sign-On s SAML** vyberte ikonu pera a upravte **základní nastavení konfigurace SAML** .
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -87,26 +87,26 @@ Pokud chcete povolit jednotné přihlašování Azure AD, postupujte podle těch
 
 1. Aplikace záchytný bod očekává kontrolní výrazy SAML v určitém formátu. Přidejte mapování vlastních atributů do vaší konfigurace atributů tokenu SAML. Následující tabulka obsahuje seznam výchozích atributů:
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ------------ | --------- |
     | GivenName | User. givenneame |
     | příjmení | User. příjmení |
     | EmailAddress | uživatel. pošta |
-    | Name | User. userPrincipalName |
+    | Název | User. userPrincipalName |
     | Jedinečný identifikátor uživatele | User. userPrincipalName |
 
     ![Uživatelské atributy & snímku seznamu deklarací identity](common/default-attributes.png)
 
 1. Také aplikace záchytný bod očekává, že se do odpovědi SAML předává jiný atribut. Podívejte se na následující tabulku. Tento atribut je také předem vyplněný, ale můžete ho zkontrolovat a aktualizovat tak, aby vyhovoval vašim požadavkům.
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ------------ | --------- |
     | namespace | User. assignedrole |
 
     > [!NOTE]
     > `namespace`Deklarace identity musí být namapovaná s názvem účtu. Tento název účtu by měl být nastavený s rolí v Azure AD, aby se zpátky v odpovědi SAML. Další informace o rolích ve službě Azure AD najdete v tématu [konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
-1. Přejít na stránku **nastavit jednotné přihlašování pomocí SAML** . V části **podpisový certifikát SAML** Najděte **certifikát (Base64)**. Vyberte **Stáhnout** a uložte certifikát do počítače.
+1. Přejít na stránku **nastavit jeden Sign-On se** stránkou SAML. V části **podpisový certifikát SAML** Najděte **certifikát (Base64)**. Vyberte **Stáhnout** a uložte certifikát do počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -158,7 +158,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
    Pole | Hodnota
    ----- | ----- 
-   **Obor názvů** | Platná hodnota oboru názvů.
+   **Hosting** | Platná hodnota oboru názvů.
    **Vystavitel zprostředkovatele identity** | `Azure AD Identifier`Hodnota z Azure Portal.
    **Adresa URL jednotného přihlašování** | `Login URL`Hodnota z Azure Portal.
    **Certifikát** | Obsah staženého `Certificate (Base64)` souboru z Azure Portal. K zobrazení a kopírování použijte Poznámkový blok.
