@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.date: 08/03/2020
 ms.author: punagpal
 ms.openlocfilehash: 3b2e4a1ae5ff43283893b286dafb38491a1181b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308220"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Kurz: příjem dat ze zařízení prostřednictvím Azure IoT Hub
 
 Azure IoT Connector pro FHIR * nabízí možnost ingestovat data ze zařízení s IoMT (Internet of medicíny) do Azure API pro FHIR. [Nasazení Azure IoT Connectoru pro FHIR (Preview) pomocí Azure Portal](iot-fhir-portal-quickstart.md) rychlý Start ukazuje příklad zařízení spravovaného službou Azure IoT Central [odesílání telemetrie](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot) do Azure IoT Connector pro FHIR. Azure IoT Connector pro FHIR může také pracovat se zařízeními zřízenými a spravovanými prostřednictvím Azure IoT Hub. V tomto kurzu najdete postup připojení a směrování dat zařízení z Azure IoT Hub do služby Azure IoT Connector pro FHIR.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Aktivní předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 - Azure API pro prostředek FHIR s minimálně jedním konektorem Azure IoT pro FHIR- [Deploy Azure IoT Connector pro FHIR (Preview) pomocí Azure Portal](iot-fhir-portal-quickstart.md)

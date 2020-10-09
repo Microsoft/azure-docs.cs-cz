@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
 ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74110343"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Nejčastější dotazy k hlasovým pomocníkům
@@ -43,9 +43,9 @@ Odpověď **:** [vlastní příkazy (Preview)](custom-commands.md) jsou vysoce s
 
 **Otázka: kde je tajný kód mého kanálu?**
 
-**A:** Pokud jste použili verzi Preview funkce Direct line Speech nebo čtete související dokumentaci, možná budete chtít najít tajný klíč na stránce pro registraci kanálu s přímým přístupem. Tato hodnota také `DialogServiceConfig` očekává výrobní `FromBotSecret` metoda v 1.7 v sadě Speech SDK.
+**A:** Pokud jste použili verzi Preview funkce Direct line Speech nebo čtete související dokumentaci, možná budete chtít najít tajný klíč na stránce pro registraci kanálu s přímým přístupem. `DialogServiceConfig` `FromBotSecret` Tato hodnota také očekává výrobní metoda v 1.7 v sadě Speech SDK.
 
-Nejnovější verze funkce Direct line Speech zjednodušuje proces kontaktování robota ze zařízení. Na stránce registrace kanálu rozevírací seznam v horní části přidruží k registraci kanálu rozpoznávání řeči pomocí prostředku řeči. Po přidružení sada Speech SDK v 1.8 zahrnuje `BotFrameworkConfig::FromSubscription` výrobní metodu, která nakonfiguruje `DialogServiceConnector` tak, aby kontaktovala robota, kterou jste přidružili k vašemu předplatnému.
+Nejnovější verze funkce Direct line Speech zjednodušuje proces kontaktování robota ze zařízení. Na stránce registrace kanálu rozevírací seznam v horní části přidruží k registraci kanálu rozpoznávání řeči pomocí prostředku řeči. Po přidružení sada Speech SDK v 1.8 zahrnuje `BotFrameworkConfig::FromSubscription` výrobní metodu, která nakonfiguruje tak, `DialogServiceConnector` aby kontaktovala robota, kterou jste přidružili k vašemu předplatnému.
 
 Pokud stále migrujete klientskou aplikaci z verze 1.7 na verzi 1.8, `DialogServiceConfig::FromBotSecret` může i nadále fungovat s neprázdnou hodnotou, která není null, pro parametr tajného klíče kanálu, např. předchozí tajný klíč, který jste použili. Bude jednoduše ignorováno při použití předplatného pro rozpoznávání řeči přidruženého k novější registraci kanálu. Počítejte s tím, že hodnota _nesmí_ být null a neprázdná, protože je na zařízení zaškrtnutá před relevantním přidružení na straně služby.
 
@@ -57,18 +57,18 @@ Podrobnější příručku najdete v [části kurzu](tutorial-voice-enable-your-
 
 ![správné předplatné pro přímý line Speech](media/voice-assistants/faq-supported-subscription.png "Příklad kompatibilního předplatného pro rozpoznávání řeči")
 
-**Otázka: mohu získat text rozpoznávání zpátky z my `DialogServiceConnector`, ale zobrazí se chyba 1011 a nic od robota. Proč?**
+**Otázka: mohu získat text rozpoznávání zpátky z my `DialogServiceConnector` , ale zobrazí se chyba 1011 a nic od robota. Proč?**
 
 **A:** Tato chyba označuje problém s komunikací mezi vaším asistentem a službou hlasového asistenta.
 
 - Pro vlastní příkazy (Preview) se ujistěte, že je publikovaná vaše aplikace Custom Commands (Preview).
 - V případě přímého vstupu na řeč se ujistěte, že jste [připojili robota k kanálu přímého řádku s přímým přístupem](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), [Přidali jsme podporu protokolu streamování](https://aka.ms/botframework/addstreamingprotocolsupport) do robotu (s příslušnou podporou webového soketu) a pak zkontrolujete, že robot reaguje na příchozí požadavky z kanálu.
 
-**Otázka: Tento kód stále nefunguje a/nebo se při použití `DialogServiceConnector`. zobrazuje jiná chyba. Co mám dělat?**
+**Otázka: Tento kód stále nefunguje a/nebo se při použití. zobrazuje jiná chyba `DialogServiceConnector` . Co mám dělat?**
 
 **A:** Protokolování na základě souborů poskytuje podstatně větší podrobnosti a může pomoci zrychlit žádosti o podporu. Pokud chcete tuto funkci povolit, přečtěte si téma [Jak používat protokolování souborů](how-to-use-logging.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Odstraňování potíží](troubleshooting.md)
-- [Poznámky k verzi](releasenotes.md)
+- [Řešení potíží](troubleshooting.md)
+- [Zpráva k vydání verze](releasenotes.md)

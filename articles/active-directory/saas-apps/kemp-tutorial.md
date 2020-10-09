@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 68869d464df01d3cc89493c64d66511b4a6f369d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91299987"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s integrací služby Azure AD v kemp LoadMaster
@@ -336,7 +336,7 @@ Navštivte web kemp LoadMaster Integration webová Konzola služby Azure AD > sl
 
 a. Přejděte na konfigurace jednotného přihlašování na straně serveru.
 
-b. Do rozevíracího okna Přidat novou konfiguraci na straně serveru a klikněte na Přidat.
+b. Do Přidat novou Server-Side konfiguraci zadejte název a klikněte na Přidat.
 
 c. V ověřovacím protokolu vyberte omezené delegování protokolu Kerberos.
 
@@ -368,7 +368,7 @@ b. Klikněte na možnost ESP.
     
 c. V části režim ověřování serveru vyberte KCD.
         
-d. V části konfigurace na straně serveru vyberte dříve vytvořený profil na straně serveru.
+d. V části Konfigurace Server-Side vyberte dříve vytvořený profil na straně serveru.
 
 ### <a name="create-kemp-loadmaster-azure-ad-integration-test-user"></a>Vytvoření testovacího uživatele integrace služby Azure AD v kemp LoadMaster
 

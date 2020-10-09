@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 8b10dd2d87ab7d4cf41a0bf860798f27651294d7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258995"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Kurz: ochrana a udělení přístupu k Node.js webovému rozhraní API z jednostránkové aplikace s Azure AD B2C
@@ -131,7 +131,7 @@ I když jsou obě aplikace spuštěné v tomto kurzu místně, jste je nakonfigu
 
 ### <a name="run-the-nodejs-web-api"></a>Spuštění Node.js webového rozhraní API
 
-1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku Node.js webového rozhraní API. Příklad:
+1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku Node.js webového rozhraní API. Například:
 
     ```console
     cd active-directory-b2c-javascript-nodejs-webapi
@@ -152,7 +152,7 @@ I když jsou obě aplikace spuštěné v tomto kurzu místně, jste je nakonfigu
 
 ### <a name="run-the-single-page-app"></a>Spuštění jednostránkové aplikace
 
-1. Otevřete jiné okno konzoly a přejděte do adresáře, který obsahuje ukázku kódu JavaScript SPA. Příklad:
+1. Otevřete jiné okno konzoly a přejděte do adresáře, který obsahuje ukázku kódu JavaScript SPA. Například:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp

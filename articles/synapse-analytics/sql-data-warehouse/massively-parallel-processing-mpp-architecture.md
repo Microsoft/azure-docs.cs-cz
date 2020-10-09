@@ -11,15 +11,15 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: cde6cb514b6f87315400b3c40d8b86bcb7ff0adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85210962"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architektura Azure synapse Analytics (dříve SQL DW)
 
-Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat a analýzy velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku. Azure synapse přináší tyto dvě světů společně s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro potřeby okamžitého BI a strojového učení.
+Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat a analýzy velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku. Azure Synapse spojuje tyto dva světy do sjednoceného prostředí, které nabízí příjem, přípravu, správu a obsluhu dat pro aktuální potřeby BI a strojového učení.
 
  Azure synapse má čtyři součásti:
 
@@ -48,25 +48,25 @@ S odděleným úložištěm a výpočetním prostředím může při použití s
 - Bez ohledu na požadavky na úložiště se výpočetní výkon nezávisle mění.
 - Zvětšete nebo zmenšete výpočetní výkon v rámci fondu SQL (datový sklad) bez přesouvání dat.
 - pozastavit výpočetní kapacitu a zachovat neporušená data, zatímco platíte pouze za úložiště,
-- Obnovit výpočetní kapacitu za provozu
+- obnovit výpočetní kapacitu za provozu.
 
 ### <a name="azure-storage"></a>Azure Storage
 
 Synapse SQL využívá Azure Storage k zabezpečení vašich uživatelských dat.  Vzhledem k tomu, že vaše data jsou uložená a spravovaná pomocí Azure Storage, pro vaši spotřebu úložiště se účtuje samostatně. Data se horizontálně dělené do **distribucí** za účelem optimalizace výkonu systému. Můžete zvolit, který vzor horizontálního dělení se má použít k distribuci dat při definování tabulky. Jsou podporovány tyto horizontálního dělení vzory:
 
-- Hodnota hash
-- Kruhové dotazování.
+- Hodnoty hash
+- Kruhové dotazování
 - Replikace
 
 ### <a name="control-node"></a>Řídicí uzel
 
-Řídicí uzel je mozek architektury. Jde o prvek front-end, který komunikuje se všemi aplikacemi a připojeními. Modul MPP běží na řídicím uzlu, aby se zajistila optimalizace a koordinace paralelních dotazů. Když odešlete dotaz T-SQL, řídicí uzel ho transformuje na dotazy, které se spouštějí proti každé distribuci paralelně.
+Mozkem této architektury je řídicí uzel. Jde o front-end, který komunikuje se všemi aplikacemi a připojeními. Modul MPP běží na řídicím uzlu, aby se zajistila optimalizace a koordinace paralelních dotazů. Když odešlete dotaz T-SQL, řídicí uzel ho transformuje na dotazy, které se spouštějí proti každé distribuci paralelně.
 
 ### <a name="compute-nodes"></a>Výpočetní uzly
 
 Výpočetní uzly poskytují výpočetní výkon. Distribuce se mapují na výpočetní uzly pro zpracování. Když platíte za více výpočetních prostředků, distribuce se přemapují na dostupné výpočetní uzly. Počet výpočetních uzlů je rozsah od 1 do 60 a je určen úrovní služeb pro synapse SQL.
 
-Každý výpočetní uzel má ID uzlu, které je viditelné v systémových zobrazeních. ID výpočetního uzlu můžete zobrazit tak, že vyhledáte sloupec node_id v systémových zobrazeních, jejichž názvy začínají řetězcem sys. pdw_nodes. Seznam těchto systémových zobrazení najdete v tématu [Systémová zobrazení MPP](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Každý výpočetní uzel má ID uzlu, které je viditelné v systémových zobrazeních. ID výpočetního uzlu můžete zobrazit tak, že vyhledáte sloupec node_id v systémových zobrazeních, jejichž názvy začínají na sys.pdw_nodes. Seznam těchto systémových zobrazení najdete v tématu [Systémová zobrazení MPP](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="data-movement-service"></a>Data Movement Service
 

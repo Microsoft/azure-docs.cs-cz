@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266492"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudu pro existující synchronizovanou doménovou strukturu AD 
@@ -24,7 +24,7 @@ Tento kurz vás provede pilotním zřizováním cloudu pro testovací doménovou
 
 ![Vytvořit](media/tutorial-migrate-aadc-aadccp/diagram.png)
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 Než si vyzkoušíte tento kurz, vezměte v úvahu následující položky:
 1. Ujistěte se, že jste obeznámeni se základy zřizování cloudu. 
 2. Ujistěte se, že používáte Azure AD Connect Sync verze 1.4.32.0 nebo novější a že jste nakonfigurovali pravidla synchronizace podle zdokumentovaného postupu. Při pilotním nasazení budete z rozsahu Azure AD Connect synchronizace odebírat testovací organizační jednotku nebo skupinu. Přesunutí objektů z oboru vede k odstranění těchto objektů ve službě Azure AD. V případě uživatelských objektů se objekty ve službě Azure AD odpouštějí a dají se obnovit. V případě objektů skupin se objekty ve službě Azure AD neodstraní a nelze je obnovit. V Azure AD Connect synchronizaci se zavedl nový typ odkazu, který zabrání odstranění v případě pilotního scénáře. 
@@ -35,7 +35,7 @@ Než si vyzkoušíte tento kurz, vezměte v úvahu následující položky:
 
 4. Toto je pokročilý scénář. Ujistěte se, že postup je přesně popsaný v tomto kurzu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Testovací prostředí s Azure AD Connect synchronizace verze 1.4.32.0 nebo novější
 - Organizační jednotka nebo skupina, která je v rozsahu synchronizace a kterou lze použít pro pilotní nasazení. Doporučujeme začít s malou sadou objektů.
@@ -50,8 +50,8 @@ Jako minimum byste měli mít [službu Azure AD Connect](https://www.microsoft.c
 Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místním adresáři, pomocí plánovače. Chcete-li upravit a přidat vlastní pravidla, je třeba zakázat Plánovač, aby při práci na tomto procesu neběžely synchronizace.  Použijte k tomu následující postup:
 
 1.  Na serveru se spuštěným Azure AD Connect synchronizace otevřete PowerShell s oprávněními správce.
-2.  Spusťte `Stop-ADSyncSyncCycle`.  Stiskněte ENTER.
-3.  Spusťte `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+2.  Spusťte příkaz `Stop-ADSyncSyncCycle`.  Stiskněte ENTER.
+3.  Spusťte příkaz `Set-ADSyncScheduler -SyncCycleEnabled $false`.
 
 >[!NOTE] 
 >Pokud používáte vlastní Plánovač pro Azure AD Connect synchronizaci, zakažte prosím Plánovač. 

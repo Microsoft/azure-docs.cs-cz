@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2019
 ms.openlocfilehash: ad047a30b901d71604c775e9882b0f242f094638
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74793024"
 ---
 # <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>Referenční informace k nastavení zpráv AS2 v Azure Logic Apps s Enterprise Integration Pack
@@ -25,7 +25,7 @@ Tento odkaz popisuje vlastnosti, které můžete nastavit pro určení způsobu,
 
 ![Vyberte přijmout nastavení.](./media/logic-apps-enterprise-integration-as2-message-settings/receive-settings.png)
 
-| Vlastnost | Povinné | Popis |
+| Vlastnost | Požaduje se | Popis |
 |----------|----------|-------------|
 | **Přepsat vlastnosti zprávy** | No | Potlačí vlastnosti příchozích zpráv s nastavením vlastností. |
 | **Zpráva by měla být podepsaná.** | No | Určuje, zda musí být všechny příchozí zprávy digitálně podepsány. Pokud požadujete podepisování, vyberte ze seznamu **certifikát** stávající veřejný certifikát hostovaného partnera pro ověření podpisu zpráv. Pokud certifikát nemáte, přečtěte si další informace o [Přidávání certifikátů](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
@@ -44,7 +44,7 @@ Tento odkaz popisuje vlastnosti, které můžete nastavit pro určení způsobu,
 
 ![Vyberte Odeslat nastavení.](./media/logic-apps-enterprise-integration-as2-message-settings/send-settings.png)
 
-| Vlastnost | Povinné | Popis |
+| Vlastnost | Požaduje se | Popis |
 |----------|----------|-------------|
 | **Povolit podepisování zpráv** | No | Určuje, jestli všechny odchozí zprávy musí být digitálně podepsané. Pokud požadujete podepisování, vyberte tyto hodnoty: <p>– Ze seznamu **podpisového algoritmu** vyberte algoritmus, který se má použít pro podepisování zpráv. <br>– V seznamu **certifikát** vyberte existující privátní certifikát hostitelského partnera pro podpisové zprávy. Pokud certifikát nemáte, přečtěte si další informace o [Přidávání certifikátů](../logic-apps/logic-apps-enterprise-integration-certificates.md). |
 | **Povolit šifrování zpráv** | No | Určuje, jestli se všechny odchozí zprávy musí šifrovat. Pokud vyžadujete šifrování, vyberte tyto hodnoty: <p>– V seznamu **šifrovací algoritmus** vyberte algoritmus veřejného certifikátu hostovaného partnera hosta, který se použije k šifrování zpráv. <br>– Ze seznamu **certifikát** vyberte existující privátní certifikát hostovaného partnera pro šifrování odchozích zpráv. Pokud certifikát nemáte, přečtěte si další informace o [Přidávání certifikátů](../logic-apps/logic-apps-enterprise-integration-certificates.md). |

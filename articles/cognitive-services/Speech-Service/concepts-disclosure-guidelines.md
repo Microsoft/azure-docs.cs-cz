@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74776381"
 ---
 # <a name="disclosure-design-guidelines"></a>Zpřístupnění pokynů pro návrh
@@ -56,7 +56,7 @@ S ohledem na obrovské tělo pokynů pro vytváření hlasových prostředí se 
 3. [**Kdy se má zveřejnit**](concepts-disclosure-patterns.md#when-to-disclose): optimální moment pro zveřejnění celé cesty uživatele
 
 ## <a name="disclosure-assessment"></a>Vyhodnocování zveřejnění
-Berte v úvahu své uživatele&#39; očekávání týkající se interakce a kontextu, ve kterém se budou na hlasu zacházet. Pokud je v kontextu jasné, že je &quot;hovoří syntetický hlas,&quot; může být odhalení minimální, chvilku nebo dokonce zbytečné. Hlavní typy kontextu, které mají vliv na zveřejnění, zahrnují typ osoby, typ scénáře a úroveň ozáření. Pomáhá také zvážit, kdo může naslouchat.
+Berte v úvahu své uživatele&#39; očekávání týkající se interakce a kontextu, ve kterém se budou na hlasu zacházet. Pokud je v kontextu jasné, že je hovoří syntetický hlas &quot; , &quot; může být odhalení minimální, chvilku nebo dokonce zbytečné. Hlavní typy kontextu, které mají vliv na zveřejnění, zahrnují typ osoby, typ scénáře a úroveň ozáření. Pomáhá také zvážit, kdo může naslouchat.
 
 ### <a name="understand-context"></a>Pochopení kontextu
 

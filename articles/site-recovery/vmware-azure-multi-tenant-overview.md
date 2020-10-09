@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74083990"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Přehled podpory více tenantů pro zotavení po havárii VMware do Azure pomocí CSP
@@ -91,7 +91,7 @@ Nakonfigurujte konfigurační server pomocí účtu, který má přiřazenou zvl
 
 >| Objekt | Role | Poznámky |
 >| --- | --- | --- |
->| vCenter | Jen pro čtení | Potřeba jenom k tomu, aby byl přístup vCenter povolený pro správu různých objektů. Toto oprávnění můžete odebrat, pokud se účet nikdy neposkytne klientovi nebo se nepoužije pro žádné operace správy na vCenter. |
+>| vCenter | Read-Only | Potřeba jenom k tomu, aby byl přístup vCenter povolený pro správu různých objektů. Toto oprávnění můžete odebrat, pokud se účet nikdy neposkytne klientovi nebo se nepoužije pro žádné operace správy na vCenter. |
 >| Datové centrum | Azure_Site_Recovery |  |
 >| Hostitelský cluster a hostitelský cluster | Azure_Site_Recovery | Znovu zajistěte, aby byl přístup na úrovni objektu, aby k převzetí služeb při selhání a po navrácení služeb po obnovení měly virtuální počítače tenanta jenom přístupné hostitele. |
 >| Úložiště dat a cluster úložiště dat | Azure_Site_Recovery | Stejné jako předchozí. |

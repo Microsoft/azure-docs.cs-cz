@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
 ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74792160"
 ---
 # <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Ověřování XML pro podnikovou integraci B2B v Azure Logic Apps pomocí Enterprise Integration Packu
@@ -57,7 +57,7 @@ Ve scénářích B2B se často musí obchodní partneři v rámci smlouvy ujisti
 
    ![Vyberte schéma, které se má použít k ověření.](./media/logic-apps-enterprise-integration-xml-validation/select-validation-schema.png)
 
-1. Uložte svou aplikaci logiky.
+1. Uložte aplikaci logiky.
 
    Nyní jste dokončili nastavení ověřování. V reálné aplikaci můžete ukládat ověřená data do obchodní aplikace (LOB), jako je třeba SalesForce. Pokud chcete odeslat ověřený výstup do Salesforce, přidejte akci.
 

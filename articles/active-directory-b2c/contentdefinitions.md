@@ -12,10 +12,10 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202853"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
@@ -44,7 +44,7 @@ Následující příklad ukazuje identifikátor definice obsahu a definici lokal
     ...
 ```
 
-Metadata **LocalAccountSignUpWithLogonEmailho** technického profilu s vlastním uplatněním obsahují identifikátor definice obsahu **ContentDefinitionReferenceId** nastaven na`api.localaccountsignup`
+Metadata **LocalAccountSignUpWithLogonEmailho** technického profilu s vlastním uplatněním obsahují identifikátor definice obsahu **ContentDefinitionReferenceId** nastaven na `api.localaccountsignup`
 
 ```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -63,11 +63,11 @@ Element **ContentDefinition** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Yes | Identifikátor definice obsahu. Hodnota je jedna zadaná v oddílu **ID definice obsahu** dále na této stránce. |
+| Id | Ano | Identifikátor definice obsahu. Hodnota je jedna zadaná v oddílu **ID definice obsahu** dále na této stránce. |
 
 Element **ContentDefinition** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Řetězec, který obsahuje adresu URL stránky HTML5 pro definici obsahu. |
 | RecoveryUri | 1:1 | Řetězec, který obsahuje adresu URL stránky HTML pro zobrazení chyby související s definicí obsahu. Aktuálně se nepoužívá, hodnota musí být `~/common/default_page_error.html` . |
@@ -79,11 +79,11 @@ Element **ContentDefinition** obsahuje následující prvky:
 
 Element **DataUri** slouží k určení identifikátoru stránky. Azure AD B2C používá identifikátor stránky k načtení a spuštění prvků uživatelského rozhraní a JavaScriptu na straně klienta. Formát hodnoty je `urn:com:microsoft:aad:b2c:elements:page-name:version` . Následující tabulka obsahuje seznam identifikátorů stránek, které můžete použít.
 
-| Identifikátor stránky | Description |
+| Identifikátor stránky | Popis |
 | ----- | ----------- |
 | `globalexception` | Zobrazí chybovou stránku, pokud dojde k výjimce nebo chybě. |
 | `providerselection`, `idpselection` | Zobrazuje seznam zprostředkovatelů identity, ze kterých si uživatelé můžou vybrat během přihlašování.  |
-| `unifiedssp` | Zobrazí formulář pro přihlášení pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. Tato hodnota také poskytuje možnost "zachovat funkce přihlašování" a zapomněli jste heslo? " propojit. |
+| `unifiedssp` | Zobrazí formulář pro přihlášení pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. Tato hodnota také poskytuje možnost "zachovat funkce přihlašování" a zapomněli jste heslo? " . |
 | `unifiedssd` | Zobrazí formulář pro přihlášení pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. |
 | `multifactor` | Ověřuje telefonní čísla pomocí textu nebo hlasu během registrace nebo přihlašování. |
 | `selfasserted` | Zobrazí formulář pro shromažďování dat od uživatele. Například umožňuje uživatelům vytvořit nebo aktualizovat svůj profil. |
@@ -131,7 +131,7 @@ Formát hodnoty musí obsahovat slovo `contract` : _urn: com: Microsoft: AAD: B2
 
 Element **metadata** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Položka | 0: n | Metadata vztahující se k definici obsahu. |
 
@@ -139,7 +139,7 @@ Element **Item** elementu **metadata** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Klíč | Yes | Klíč metadat.  |
+| Klíč | Ano | Klíč metadat.  |
 
 #### <a name="metadata-keys"></a>Klíče metadat
 
@@ -153,7 +153,7 @@ Definice obsahu podporuje následující položky metadat:
 
 Element **LocalizedResourcesReferences** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | Seznam lokalizovaných odkazů na prostředky pro definici obsahu. |
 
@@ -161,8 +161,8 @@ Element **LocalizedResourcesReference** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Jazyk | Yes | Řetězec, který obsahuje podporovaný jazyk pro zásady na značku RFC 5646-Tags pro identifikaci jazyků. |
-| LocalizedResourcesReferenceId | Yes | Identifikátor elementu **LocalizedResources** |
+| Jazyk | Ano | Řetězec, který obsahuje podporovaný jazyk pro zásady na značku RFC 5646-Tags pro identifikaci jazyků. |
+| LocalizedResourcesReferenceId | Ano | Identifikátor elementu **LocalizedResources** |
 
 Následující příklad ukazuje definici obsahu pro registraci nebo přihlašování s odkazem na lokalizaci pro angličtinu, francouzštinu a španělštinu:
 
@@ -188,7 +188,7 @@ Další informace o tom, jak přidat podporu lokalizace do definic obsahu, nalez
 
 Atribut ID elementu **ContentDefinition** určuje typ stránky, která se vztahuje k definici obsahu. Prvek definuje kontext, který bude použita vlastní šablona HTML5/CSS. V následující tabulce jsou popsány sady ID definic obsahu rozpoznávané architekturou prostředí identity a typy stránek, které se na ně vztahují. Můžete vytvořit vlastní definice obsahu s libovolným ID.
 
-| ID | Výchozí šablona | Description |
+| ID | Výchozí šablona | Popis |
 | -- | ---------------- | ----------- |
 | **rozhraní API. Chyba** | [výjimka. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Chybová stránka** – zobrazí chybovou stránku, když dojde k výjimce nebo chybě. |
 | **API. idpselections** | [idpSelector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Stránka Výběr zprostředkovatele identity** – zobrazí seznam zprostředkovatelů identity, ze kterých si uživatelé můžou během přihlašování vybírat. Tyto možnosti jsou obvykle poskytovatelé podnikových identit, poskytovatelé sociálních identit, jako je Facebook, Google + nebo místní účty. |

@@ -4,10 +4,10 @@ description: V tomto kurzu se dozvíte, jak pomocí živé analýzy videí spole
 ms.topic: tutorial
 ms.date: 09/08/2020
 ms.openlocfilehash: cad96847d6fbf682f1d694b0c8c255b3725e96d1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91824125"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analýza živého videa pomocí Počítačové zpracování obrazu pro prostorovou analýzu (Preview)
@@ -35,7 +35,7 @@ Než začnete, přečtěte si tyto články:
 * [Kurz: vývoj modulu IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
 * [Nasazení Live video Analytics na Azure Stack Edge](deploy-azure-stack-edge-how-to.md) 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Níže jsou uvedené požadavky pro připojení modulu pro prostorovou analýzu do nástroje Live video Analytics.
 
@@ -51,7 +51,7 @@ Níže jsou uvedené požadavky pro připojení modulu pro prostorovou analýzu 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/spatial-analysis-tutorial/overview.png" alt-text="Přehled prostorové analýzy":::
  
-Tento diagram znázorňuje způsob, jakým se v tomto kurzu Flow signalizují. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server RTSP (Real-time streaming Protocol). [Zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a pošle snímky videa na uzel [procesoru filtru snímkové frekvence](media-graph-concept.md#frame-rate-filter-processor) . Tento procesor omezuje snímkovou frekvenci streamu videa, která dosáhne uzlu procesoru MediaGraphCognitiveServicesVisionExtension.
+Tento diagram znázorňuje způsob, jakým se v tomto kurzu Flow signalizují. [Hraniční modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuluje fotoaparát IP, který hostuje server protokolu RTSP (Real-Time streaming Protocol). [Zdrojový uzel RTSP](media-graph-concept.md#rtsp-source) načte kanál videa z tohoto serveru a pošle snímky videa na uzel [procesoru filtru snímkové frekvence](media-graph-concept.md#frame-rate-filter-processor) . Tento procesor omezuje snímkovou frekvenci streamu videa, která dosáhne uzlu procesoru MediaGraphCognitiveServicesVisionExtension.
 
 Uzel MediaGraphCognitiveServicesVisionExtension hraje roli proxy serveru. Převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes **sdílenou paměť** do jiného modulu Edge, který spouští operace AI za koncovým bodem gRPC. V tomto příkladu je tento modul Edge modul pro prostorovou analýzu. Uzel procesoru MediaGraphCognitiveServicesVisionExtension má dvě věci:
 
@@ -184,7 +184,7 @@ Pomocí těchto kroků vygenerujte manifest ze souboru šablony a potom ho nasa�
 1. Po přibližně 30 sekundách se v levém dolním rohu okna aktualizují Azure IoT Hub. Hraniční zařízení nyní zobrazuje následující nasazené moduly:
     
     * Live video Analytics na IoT Edge (název modulu lvaEdge).
-    * Simulátor protokolu RTSP (Real-time streaming Protocol) (název modulu rtspsim).
+    * Simulátor protokolu RTSP (Real-Time streaming Protocol) (název modulu rtspsim).
     * Prostorová analýza (název modulu spatialAnalysis).
     
 V případě úspěšného nasazení bude ve výstupu vypadat zpráva:

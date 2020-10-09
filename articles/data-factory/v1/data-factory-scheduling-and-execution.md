@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: e0707f9a7694741f54771699f5aeb3b452b11b8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85319716"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Plánování a provádění Data Factory
@@ -25,7 +25,7 @@ ms.locfileid: "85319716"
 Tento článek vysvětluje aspekty plánování a spouštění aplikačního modelu služby Azure Data Factory. V tomto článku se předpokládá, že rozumíte základům Data Factory konceptů aplikačního modelu, včetně aktivit, kanálů, propojených služeb a datových sad. Základní koncepty Azure Data Factory najdete v následujících článcích:
 
 * [Úvodní informace k Data Factory](data-factory-introduction.md)
-* [Pipelines](data-factory-create-pipelines.md)
+* [Kanály](data-factory-create-pipelines.md)
 * [Datové sady](data-factory-create-datasets.md) 
 
 ## <a name="start-and-end-times-of-pipeline"></a>Počáteční a koncové časy kanálu
@@ -182,13 +182,13 @@ V části dostupnost definice datové sady jste viděli použití vlastností č
 ### <a name="dataset-availability"></a>Dostupnost datové sady 
 Následující tabulka obsahuje popis vlastností, které můžete použít v části **dostupnost** :
 
-| Vlastnost | Popis | Vyžadováno | Výchozí |
+| Vlastnost | Popis | Povinné | Výchozí |
 | --- | --- | --- | --- |
-| frequency |Určuje časovou jednotku pro produkci řezu datové sady.<br/><br/><b>Podporovaná frekvence</b>: minuta, hodina, den, týden, měsíc |Yes |NA |
-| interval |Určuje násobitel pro frekvenci.<br/><br/>Frekvence x interval určuje, jak často se řez vytvoří.<br/><br/>Pokud potřebujete datovou sadu rozdělit na každou hodinu, nastavte <b>četnost</b> na <b>hodinu</b>a <b>interval</b> na <b>1</b>.<br/><br/><b>Poznámka</b>: Pokud zadáte frekvenci jako minutu, doporučujeme nastavit interval na ne méně než 15. |Yes |NA |
+| frequency |Určuje časovou jednotku pro produkci řezu datové sady.<br/><br/><b>Podporovaná frekvence</b>: minuta, hodina, den, týden, měsíc |Ano |Není k dispozici |
+| interval |Určuje násobitel pro frekvenci.<br/><br/>Frekvence x interval určuje, jak často se řez vytvoří.<br/><br/>Pokud potřebujete datovou sadu rozdělit na každou hodinu, nastavte <b>četnost</b> na <b>hodinu</b>a <b>interval</b> na <b>1</b>.<br/><br/><b>Poznámka</b>: Pokud zadáte frekvenci jako minutu, doporučujeme nastavit interval na ne méně než 15. |Ano |Není k dispozici |
 | style |Určuje, zda má být řez vytvořen na začátku nebo konci intervalu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Pokud je frekvence nastavená na month (měsíc) a Style je nastavená na EndOfInterval, řez se vytvoří během posledního dne v měsíci. Pokud je styl nastaven na StartOfInterval, řez se vytvoří první den v měsíci.<br/><br/>Pokud je frekvence nastavená na den a styl je nastavený na EndOfInterval, řez se vytvoří za poslední hodinu dne.<br/><br/>Pokud je frekvence nastavená na Hour (hodina) a Style je nastavená na EndOfInterval, řez se vytvoří na konci hodiny. Například pro řez v období 1 PM – 2 se vytvoří řez na 2 ODP. |No |EndOfInterval |
 | anchorDateTime |Definuje absolutní pozici v čase využívané schedulerem k výpočtu hranic řezu datové sady. <br/><br/><b>Poznámka</b>: Pokud AnchorDateTime obsahuje části s daty, které jsou lépe podrobnější než frekvence, budou podrobnější části ignorovány. <br/><br/>Například pokud je <b>interval</b> <b>každou hodinu</b> (četnost: hodina a interval: 1) a <b>AnchorDateTime</b> obsahuje <b>minuty a sekundy</b>, budou části <b>minut a sekund</b> AnchorDateTime ignorovány. |No |01/01/0001 |
-| posun |Časový interval, podle kterého se posune začátek a konec všech řezů datové sady <br/><br/><b>Poznámka</b>: Pokud jsou zadány oba anchorDateTime i offset, výsledkem je kombinovaný posun. |No |NA |
+| posun |Časový interval, podle kterého se posune začátek a konec všech řezů datové sady <br/><br/><b>Poznámka</b>: Pokud jsou zadány oba anchorDateTime i offset, výsledkem je kombinovaný posun. |No |Není k dispozici |
 
 ### <a name="offset-example"></a>Příklad posunutí
 Ve výchozím nastavení se pro každý den ( `"frequency": "Day", "interval": 1` ) řezy začnou začínat časem UTC (půlnoc). Pokud chcete, aby byl čas zahájení nastavený na hodnotu 6 času UTC, nastavte posun, jak je znázorněno v následujícím fragmentu kódu: 
@@ -230,10 +230,10 @@ Datová sada může mít definované zásady ověřování, které určují, jak
 
 Oddíl **Policy** v definici datové sady definuje kritéria nebo podmínku, kterou musí řezy datové sady splňovat. Následující tabulka obsahuje popis vlastností, které můžete použít v části **Policy (zásady** ):
 
-| Název zásady | Description | Použito pro | Vyžadováno | Výchozí |
+| Název zásady | Popis | Použito pro | Požaduje se | Výchozí |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | Ověří, jestli data v **objektu blob Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob |No |NA |
-| minimumRows | Ověří, jestli data v **Azure SQL Database** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |No |NA |
+| minimumSizeMB | Ověří, jestli data v **objektu blob Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob |No |Není k dispozici |
+| minimumRows | Ověří, jestli data v **Azure SQL Database** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |No |Není k dispozici |
 
 #### <a name="examples"></a>Příklady
 **minimumSizeMB:**
@@ -266,7 +266,7 @@ Další informace o těchto vlastnostech a příkladech najdete v článku o [vy
 ## <a name="activity-policies"></a>Zásady aktivit
 Zásady ovlivňují chování aktivity za běhu, konkrétně při zpracování řezu tabulky. Podrobnosti jsou uvedeny v následující tabulce.
 
-| Vlastnost | Povolené hodnoty | Výchozí hodnota | Description |
+| Vlastnost | Povolené hodnoty | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
 | souběžnost |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet paralelních spuštění aktivit, ke kterým může dojít v různých řezech. Například pokud aktivita potřebuje projít velkou sadou dostupných dat, větší hodnota souběžnosti zrychluje zpracování dat. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Určuje pořadí datových řezů, které jsou zpracovávány.<br/><br/>Například pokud máte 2 řezy (jedna se děje na 16:00 a druhý na 17:00), a obě jsou vyřízeny. Pokud nastavíte executionPriorityOrder na NewestFirst, řez se nejprve zpracuje v 5 odp. Podobně pokud nastavíte executionPriorityORder na OldestFIrst, bude zpracován řez ve 4 PM. |
@@ -597,7 +597,7 @@ Aktivita podregistru přijímá dva vstupy a vytváří výstupní řez každý 
 
 Seznam funkcí a systémových proměnných, které Data Factory podporuje, najdete v tématu [Data Factory functions a systémových proměnných](data-factory-functions-variables.md) .
 
-## <a name="appendix"></a>Příloha
+## <a name="appendix"></a>Přílohy
 
 ### <a name="example-copy-sequentially"></a>Příklad: kopírování sekvenčně
 Je možné spustit více operací kopírování jeden po druhém sekvenčním a seřazeným způsobem. Například můžete mít dvě aktivity kopírování v kanálu (soubor copyactivity1 a CopyActivity2) s následujícími vstupními datovými sadami výstupních dat:   
@@ -695,7 +695,7 @@ Tady je ukázkový formát JSON kanálu:
 
 Všimněte si, že v příkladu je výstupní datová sada první aktivity kopírování (Dataset2) zadána jako vstup pro druhou aktivitu. Proto se druhá aktivita spustí pouze v případě, že je výstupní datová sada z první aktivity připravena.  
 
-V tomto příkladu může mít CopyActivity2 jiný vstup, jako je například Dataset3, ale zadáte Dataset2 jako vstup do CopyActivity2, takže se aktivita nespustí až do dokončení soubor copyactivity1. Příklad:
+V tomto příkladu může mít CopyActivity2 jiný vstup, jako je například Dataset3, ale zadáte Dataset2 jako vstup do CopyActivity2, takže se aktivita nespustí až do dokončení soubor copyactivity1. Například:
 
 Soubor copyactivity1
 

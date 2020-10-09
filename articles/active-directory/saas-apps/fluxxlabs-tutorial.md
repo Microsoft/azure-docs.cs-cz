@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 00cf3e33c87255485f7ea73526e474b0d941124b
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826368"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím Fluxx Labs
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Fluxx Labs s Azure Active Directory (A
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -76,7 +76,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** proveďte následující kroky:
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML proveďte následující kroky:
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
@@ -113,7 +113,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Create** (Vytvořit).
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -155,7 +155,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     c. Do textového pole **cesta zpětného volání** zadejte **/auth/SAML/callback**.
 
-    d. Do textového pole **Adresa URL služby assertion Consumer Service (adresa URL jednotného přihlašování)** zadejte hodnotu **adresy URL odpovědi** , kterou jste zadali v Azure Portal.
+    d. Do textového pole **Adresa URL služby pro příjemce kontrolního výrazu (Single Sign-On URL)** zadejte hodnotu **adresy URL odpovědi** , kterou jste zadali v Azure Portal.
 
     e. Do textového pole **cílová skupina (ID entity SP)** zadejte hodnotu **identifikátoru** , kterou jste zadali v Azure Portal.
 
@@ -200,7 +200,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici Fluxx Labs na přístupovém panelu, měli byste se automaticky přihlásit k Fluxx Labs, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

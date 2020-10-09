@@ -8,10 +8,10 @@ keywords: Azure App Service, Web App, Linux, Windows, Docker, kontejner
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
 ms.openlocfilehash: f4b2aea0a6782b5484b2f6d15066d71990348596
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91312052"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Migrace vlastního softwaru na Azure App Service pomocí vlastního kontejneru
@@ -64,7 +64,7 @@ Protože tato aplikace používá nainstalované písmo, nemůže běžet v sand
 
 V Průzkumníku řešení klikněte pravým tlačítkem na projekt **CustomFontSample** a vyberte **Přidat** > **Podpora orchestrace kontejnerů**.
 
-:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Snímek obrazovky okna Průzkumník řešení znázorňující vybrané položky nabídky projektu CustomFontSample, přidat a kontejner produktu Orchestrator support":::
+:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Snímek obrazovky zobrazující aplikaci zobrazenou ve výchozím prohlížeči":::
 
 Vyberte **Docker Compose**  >  **OK**.
 
@@ -98,13 +98,13 @@ Služba [Azure Container Registry](../container-registry/index.yml) uchovává v
 
 V Průzkumníku řešení klikněte pravým tlačítkem na projekt **CustomFontSample** a vyberte **Publikovat**.
 
-:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Snímek obrazovky Průzkumník řešení se zobrazením projektu CustomFontSample a publikováním vybraného.":::
+:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Snímek obrazovky zobrazující aplikaci zobrazenou ve výchozím prohlížeči":::
 
 ### <a name="create-registry-and-publish"></a>Vytvoření registru a publikování
 
 V Průvodci publikováním vyberte **Container Registry**  >  **vytvořit nové Azure Container Registry**  >  **publikovat**.
 
-:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Snímek obrazovky s průvodcem publikováním, který zobrazuje Container Registry, vytvořte nové Azure Container Registry a vybrané tlačítko publikovat.":::
+:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Snímek obrazovky zobrazující aplikaci zobrazenou ve výchozím prohlížeči":::
 
 ### <a name="sign-in-with-azure-account"></a>Přihlášení pomocí účtu Azure
 

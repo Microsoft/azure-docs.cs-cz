@@ -8,10 +8,10 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74184254"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Nejčastější dotazy k Azure Internet Analyzer (Preview)
@@ -64,21 +64,21 @@ Každý test, který vytvoříte v nástroji Internet Analyzer, se skládá ze d
 * Dva [vlastní koncové body](internet-analyzer-custom-endpoint.md) (jeden vlastní koncový bod se musí nacházet v Azure).
 
 Během verze Preview jsou k dispozici následující předem nakonfigurované koncové body:
-* **Oblast Azure**
-    * Brazílie – jih
+* **Oblasti Azure**
+    * Brazil South
     * Indie – střed
-    * USA – střed
+    * Střední USA
     * Východní Asie
-    * USA – východ
+    * East US
     * Japonsko – západ
     * Severní Evropa
     * Jižní Afrika – sever
-    * Jihovýchodní Asie
+    * Southeast Asia
     * Spojené arabské emiráty sever
     * Spojené království – západ  
-    * Západní Evropa
+    * West Europe
     * USA – západ
-    * USA – západ 2
+    * Západní USA 2
 * **Několik kombinací oblastí Azure**
     * Východní USA, Brazílie – jih
     * Východní USA Východní Asie

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 keywords: Kinect, Azure, senzor, sada SDK, systém souřadnic, kalibrace, projekt, neprojekt, transformace, RGB (Point-d) – Point Cloud
 ms.openlocfilehash: df7f2aa13c0e9c0241494e96e720b30f3ff1d8a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277140"
 ---
 # <a name="use-azure-kinect-sensor-sdk-image-transformations"></a>Použití transformací imagí sady Kinect pro senzory Azure
@@ -72,7 +72,7 @@ https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7
 
 #### <a name="parameters"></a>Parametry
 
-Vstupní parametry jsou transformační popisovač, obrázek hloubky a barevný obrázek. Rozlišení hloubkové a barevné image se musí shodovat s depth_mode a color_resolution určena při vytváření popisovače transformace. Výstupem je transformovaný barevný obrázek, který musí být přidělen uživatelem prostřednictvím volání [k4a_image_create ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga859554581bb97a620ff8e92a893e71ef.html#ga859554581bb97a620ff8e92a893e71ef). Rozlišení transformované barvy obrázku se musí shodovat s depth_resolution zadanou při vytváření popisovače transformace. Výstupní image ukládá čtyři 8bitové hodnoty, které představují BGRA pro každý pixel. Proto je rozteč obrázku ```width * 4 * sizeof(uint8_t)``` . Pořadí dat je prokládaných pixelů, tj. modrou hodnotou pixelů 0, zelená hodnota – pixel 0, červená hodnota – pixel 0, hodnota alfa – pixel 0, modrá hodnota – pixel 1 atd.
+Vstupní parametry jsou transformační popisovač, obrázek hloubky a barevný obrázek. Rozlišení hloubkové a barevné image se musí shodovat s depth_mode a color_resolution určena při vytváření popisovače transformace. Výstupem je transformovaný barevný obrázek, který musí být přidělen uživatelem prostřednictvím volání [k4a_image_create ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga859554581bb97a620ff8e92a893e71ef.html#ga859554581bb97a620ff8e92a893e71ef). Rozlišení transformované barvy obrázku se musí shodovat s depth_resolution zadanou při vytváření popisovače transformace. Výstupní obrázek uchovává hodnoty 4 8, které představují BGRA pro každý pixel. Proto je rozteč obrázku ```width * 4 * sizeof(uint8_t)``` . Pořadí dat je prokládaných pixelů, tj. modrou hodnotou pixelů 0, zelená hodnota – pixel 0, červená hodnota – pixel 0, hodnota alfa – pixel 0, modrá hodnota – pixel 1 atd.
 
 ### <a name="k4a_transformation_depth_image_to_point_cloud"></a>k4a_transformation_depth_image_to_point_cloud
 

@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: a9ebee68c7abd90f5fb3345eec1ee929fc30ca20
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212305"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation"></a>Izolace skupiny úloh Azure synapse Analytics
@@ -50,14 +50,14 @@ Uživatelé by se měli vyhnout řešení správy úloh, které konfiguruje 100%
 
 ## <a name="workload-containment"></a>Zahrnutí úloh
 
-Zahrnutí úloh znamená omezení množství prostředků, které může skupina úloh spotřebovat.  Omezení úloh se dosahuje tak, že v syntaxi [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) nakonfigurujete parametr CAP_PERCENTAGE_RESOURCE na hodnotu menší než 100.  Vezměte v úvahu scénář, kdy uživatelé potřebují přístup pro čtení do systému, aby mohli spustit analýzu citlivosti pomocí dotazů ad-hoc.  Tyto typy požadavků mohou mít negativní dopad na jiné úlohy spuštěné v systému.  Při konfiguraci omezení se zajistí, že se omezí množství prostředků.
+Zahrnutí úloh znamená omezení množství prostředků, které může skupina úloh spotřebovat.  Omezení úloh se dosahuje tak, že v syntaxi [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  nakonfigurujete parametr CAP_PERCENTAGE_RESOURCE na hodnotu menší než 100.  Vezměte v úvahu scénář, kdy uživatelé potřebují přístup pro čtení do systému, aby mohli spustit analýzu citlivosti pomocí dotazů ad-hoc.  Tyto typy požadavků mohou mít negativní dopad na jiné úlohy spuštěné v systému.  Při konfiguraci omezení se zajistí, že se omezí množství prostředků.
 
 Konfigurace omezení úloh implicitně definuje maximální úroveň souběžnosti.  S CAP_PERCENTAGE_RESOURCE nastavenou na 60% a REQUEST_MIN_RESOURCE_GRANT_PERCENT nastavenou na 1% se pro skupinu úloh povoluje až 60 úroveň souběžnosti.  Zvažte, jak níže uvedená metoda určuje maximální souběžnost:
 
 [Max. Concurrency] = [ `CAP_PERCENTAGE_RESOURCE` ]/[ `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ]
 
 > [!NOTE]
-> Pokud se vytvoří skupiny úloh s MIN_PERCENTAGE_RESOURCE na úrovni větší než nula, bude efektivní CAP_PERCENTAGE_RESOURCE skupiny úloh nedosahovat 100%.  Platné hodnoty modulu runtime najdete v tématu [Sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+> Pokud se vytvoří skupiny úloh s MIN_PERCENTAGE_RESOURCE na úrovni větší než nula, bude efektivní CAP_PERCENTAGE_RESOURCE skupiny úloh nedosahovat 100%.  Platné běhové hodnoty najdete v tématu [Sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 
 ## <a name="resources-per-request-definition"></a>Definice prostředků na žádost
 
@@ -71,7 +71,7 @@ Podobně jako při volbě třídy prostředku konfigurace REQUEST_MIN_RESOURCE_G
 Konfigurace REQUEST_MAX_RESOURCE_GRANT_PERCENT na hodnotu větší než REQUEST_MIN_RESOURCE_GRANT_PERCENT umožňuje systému přidělit více prostředků na požadavek.  Při plánování požadavku systém Určuje skutečné přidělení prostředků žádosti, která je mezi REQUEST_MIN_RESOURCE_GRANT_PERCENT a REQUEST_MAX_RESOURCE_GRANT_PERCENT, na základě dostupnosti prostředků ve sdíleném fondu a současného zatížení systému.  Prostředky musí existovat ve [sdíleném fondu](#shared-pool-resources) prostředků, když je dotaz naplánován.  
 
 > [!NOTE]
-> REQUEST_MIN_RESOURCE_GRANT_PERCENT a REQUEST_MAX_RESOURCE_GRANT_PERCENT mají platné hodnoty, které jsou závislé na platných MIN_PERCENTAGE_RESOURCE a CAP_PERCENTAGE_RESOURCEch hodnotách.  Platné hodnoty modulu runtime najdete v tématu [Sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+> REQUEST_MIN_RESOURCE_GRANT_PERCENT a REQUEST_MAX_RESOURCE_GRANT_PERCENT mají platné hodnoty, které jsou závislé na platných MIN_PERCENTAGE_RESOURCE a CAP_PERCENTAGE_RESOURCEch hodnotách.  Platné běhové hodnoty najdete v tématu [Sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 
 ## <a name="execution-rules"></a>Pravidla spuštění
 

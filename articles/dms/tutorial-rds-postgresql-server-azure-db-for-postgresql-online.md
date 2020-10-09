@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
 ms.openlocfilehash: 627c03409b0808ff2bcdbb24e961800e944dcfc8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291295"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>Kurz: migrace programu RDS PostgreSQL do služby Azure DB pro PostgreSQL online pomocí DMS
@@ -43,7 +43,7 @@ V tomto kurzu se naučíte:
 
 Tento článek popisuje, jak provést online migraci z místní instance PostgreSQL do Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -65,7 +65,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 2. Pomocí hlavního uživatelského jména se připojte ke zdroji z Azure Database Migration Service. Pokud používáte jiný účet než hlavní uživatelský účet, musí mít účet roli rds_superuser a roli rds_replication. Role rds_replication uděluje oprávnění ke správě logických slotů a ke streamování dat pomocí logických slotů.
 3. Vytvořte novou skupinu parametrů s následující konfigurací:
 
-    a. Nastavte parametr RDS. logical_replication ve skupině parametrů databáze na hodnotu 1.
+    a. Nastavte parametr rds.logical_replication ve skupině parametrů databáze na hodnotu 1.
 
     b. max_wal_senders = [počet souběžných úloh] – parametr max_wal_senders nastaví počet souběžných úloh, které mohou být spuštěny, doporučí 10 úkolů.
 
@@ -100,7 +100,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    Příklad:
+    Například:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql

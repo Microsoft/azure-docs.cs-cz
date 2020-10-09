@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
 ms.openlocfilehash: f00ffee47e3eb6366d632d8b6ee9beb01f048442
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76983108"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Volání instance Vlastní vyhledávání Bingu z portálu
@@ -42,7 +42,7 @@ Kliknutím na **Další parametry** se odhalí následující parametry:
 
 |Parametr  |Popis  |
 |---------|---------|
-|Bezpečné vyhledávání     | Filtr použitý k filtrování webových stránek pro obsah určený pro dospělé K dispozici pouze pro koncové body webu, obrázku, videa a hostovaného uživatelského rozhraní. Všimněte si, že vlastní Vyhledávání videí Bingu podporuje jenom `moderate` dvě `strict`hodnoty: a.        |
+|Bezpečné vyhledávání     | Filtr použitý k filtrování webových stránek pro obsah určený pro dospělé K dispozici pouze pro koncové body webu, obrázku, videa a hostovaného uživatelského rozhraní. Všimněte si, že vlastní Vyhledávání videí Bingu podporuje jenom dvě hodnoty: `moderate` a `strict` .        |
 |Jazyk uživatelského rozhraní    | Jazyk používaný pro řetězce uživatelského rozhraní. Pokud například povolíte image a videa v hostovaném uživatelském rozhraní, na kartách **Obrázek** a **video** se použije zadaný jazyk.        |
 |Počet     | Počet výsledků hledání, které se mají vrátit v odpovědi K dispozici pouze pro koncové body webu, obrázku a videa.         |
 |Posun    | Počet výsledků hledání, které se mají přeskočit před vrácením výsledků K dispozici pouze pro koncové body webu, obrázku a videa.        |

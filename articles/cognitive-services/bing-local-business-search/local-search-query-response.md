@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
 ms.openlocfilehash: 25bcdb89002fec4f9b67b091996d7bf80bcf21c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74326723"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Odesílání a používání dotazů a odpovědí v rozhraní API Bingu pro vyhledávání místních obchodních hledání
 
-Místní výsledky můžete získat z rozhraní API pro místní vyhledávání Bingu, a to tak, že odešlete vyhledávací dotaz na `Ocp-Apim-Subscription-Key` jeho koncový bod a zahrnete do něj hlavičku, která je povinná. Spolu s dostupnými [hlavičkami](local-search-reference.md#headers) a [parametry](local-search-reference.md#query-parameters)můžete vyhledávat pomocí [geografických hranic](specify-geographic-search.md) pro oblast, která má být prohledána, a [kategorií](local-search-query-response.md) vrácených míst.
+Místní výsledky můžete získat z rozhraní API pro místní vyhledávání Bingu, a to tak, že odešlete vyhledávací dotaz na jeho koncový bod a zahrnete do něj `Ocp-Apim-Subscription-Key` hlavičku, která je povinná. Spolu s dostupnými [hlavičkami](local-search-reference.md#headers) a [parametry](local-search-reference.md#query-parameters)můžete vyhledávat pomocí [geografických hranic](specify-geographic-search.md) pro oblast, která má být prohledána, a [kategorií](local-search-query-response.md) vrácených míst.
 
 ## <a name="creating-a-request"></a>Vytvoření žádosti
 
-Pokud chcete poslat požadavek do rozhraní API služby Bing pro vyhledávání v místním obchodu, před přidáním ho `q=` do koncového bodu rozhraní API přidejte hledaný termín a včetně `Ocp-Apim-Subscription-Key` hlavičky. Příklad:
+Pokud chcete poslat požadavek do rozhraní API služby Bing pro vyhledávání v místním obchodu, `q=` před přidáním ho do koncového bodu rozhraní API přidejte hledaný termín a včetně `Ocp-Apim-Subscription-Key` hlavičky. Například:
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 
@@ -37,7 +37,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localC
 
 ## <a name="using-responses"></a>Použití odpovědí
 
-Odpovědi JSON z rozhraní API služby Bing pro vyhledávání v místním `SearchResponse` obchodu obsahují objekt. Rozhraní API vrátí relevantní výsledky hledání v `places` poli. Pokud nejsou nalezeny žádné výsledky, `places` pole nebude zahrnuto do odpovědi.
+Odpovědi JSON z rozhraní API služby Bing pro vyhledávání v místním obchodu obsahují `SearchResponse` objekt. Rozhraní API vrátí relevantní výsledky hledání v `places` poli. Pokud nejsou nalezeny žádné výsledky, `places` pole nebude zahrnuto do odpovědi.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -61,7 +61,7 @@ Výsledky JSON vracené rozhraním API obsahují tyto atributy:
 * entityPresentationInfo
 * geograficky
 * id
-* jméno
+* name
 * routeablePoint
 * Link
 * url
@@ -74,7 +74,7 @@ Obecné informace o hlavičkách, parametrech, kódech trhu, objektech odpověd�
 
 ## <a name="example-json-response"></a>Příklad odpovědi JSON
 
-Následující odpověď JSON obsahuje výsledky hledání zadané dotazem `?q=restaurant+in+Bellevue`.
+Následující odpověď JSON obsahuje výsledky hledání zadané dotazem `?q=restaurant+in+Bellevue` .
 
 ```json
 Vary: Accept-Encoding

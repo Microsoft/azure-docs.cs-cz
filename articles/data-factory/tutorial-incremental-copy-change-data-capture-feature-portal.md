@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
 ms.openlocfilehash: 06dd55ce400667939fca4b0f48159f8b7dde66c6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825146"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Přírůstkové načtení dat ze spravované instance Azure SQL do Azure Storage pomocí Change Data Capture (CDC)
@@ -124,7 +124,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 5. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 6. Zrušte výběr **Povolit Git**.     
-7. Klikněte na **Create** (Vytvořit).
+7. Klikněte na **Vytvořit**.
 8. Po dokončení nasazení klikněte na **Přejít k prostředku** .
 
    ![Snímek obrazovky se zobrazí zpráva, že vaše nasazení je hotové a možnost přejít k prostředku.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)

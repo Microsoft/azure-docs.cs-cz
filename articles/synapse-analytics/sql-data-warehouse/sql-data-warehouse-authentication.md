@@ -13,10 +13,10 @@ ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
 ms.openlocfilehash: 29709dc03ee3a06bdf2aec2587909a08ee13504e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85206726"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Ověření ve službě Azure synapse Analytics
@@ -27,7 +27,7 @@ Pokud se chcete připojit ke fondu SQL, musíte předat přihlašovací údaje z
 
 Další informace o zabezpečení a o tom, jak povolit připojení k datovému skladu, najdete v tématu [zabezpečení dokumentace k databázi](sql-data-warehouse-overview-manage-security.md).
 
-## <a name="sql-authentication"></a>Ověřování pomocí SQL
+## <a name="sql-authentication"></a>Ověřování SQL
 
 Chcete-li se připojit ke fondu SQL, je nutné zadat následující informace:
 
@@ -76,7 +76,7 @@ Pomocí těchto kroků můžete nakonfigurovat ověřování Azure Active Direct
 5. Umožňuje vytvořit uživatele databáze s omezením v databázi namapované na identity Azure AD.
 6. Připojení ke svému fondu SQL pomocí identit Azure AD
 
-Aktuálně Azure Active Directory uživatelé nejsou zobrazeni v Průzkumník objektů SSDT. Alternativním řešením je zobrazit uživatele v zobrazení [Sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Aktuálně Azure Active Directory uživatelé nejsou zobrazeni v Průzkumník objektů SSDT. Alternativním řešením je zobrazit uživatele v [Sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="find-the-details"></a>Najít podrobnosti
 
