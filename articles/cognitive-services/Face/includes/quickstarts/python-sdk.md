@@ -1,20 +1,20 @@
 ---
 title: Rychlý Start knihovny pro klienta Pythonu pro Python
-description: Pomocí klientské knihovny obličeje pro Python můžete detekovat plošky, najít podobné (vyhledávání obličejem na obrázku), identifikovat plošky (hledání rozpoznávání obličeje) a migrovat data z obličeje.
+description: Pomocí klientské knihovny obličeje pro Python můžete detekovat plošky, najít podobné (vyhledávání na ploše podle obrázku) a identifikovat plošky (hledání v rozpoznávání obličeje).
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 09/17/2020
+ms.date: 10/07/2020
 ms.author: pafarley
-ms.openlocfilehash: f746a61850567014ce216c47df472d035f1ae123
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 587e702f5c74149542e2fffcf7891b7ea41f4202
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322944"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859364"
 ---
 Začněte s rozpoznáváním obličeje pomocí klientské knihovny pro tvář pro Python. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
 
@@ -25,11 +25,10 @@ Pomocí klientské knihovny obličeje pro Python:
 * Vytvoření a výuka skupiny osob
 * Identifikace obličeje
 * Ověřit plošky
-* Pořídit snímek migrace dat
 
 [Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face)  |  [Balíček (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)  |  [Ukázky](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Python 3.x](https://www.python.org/)
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
@@ -85,7 +84,6 @@ Tyto fragmenty kódu ukazují, jak provádět následující úkoly s klientskou
 * [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group)
 * [Identifikace obličeje](#identify-a-face)
 * [Ověřit plošky](#verify-faces)
-* [Pořídit snímek migrace dat](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -207,52 +205,6 @@ Následující kód porovnává každý zdrojový obraz s cílovou imagí a vyti
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
 
-## <a name="take-a-snapshot-for-data-migration"></a>Pořídit snímek migrace dat
-
-Funkce snímků umožňuje přesunout uložená data o obličejích, jako je například školená **osoba**, do jiného předplatného služby Azure Cognitive Services Face. Tuto funkci můžete chtít použít například v případě, že jste vytvořili objekt **Person** pomocí bezplatného předplatného a teď ho chcete migrovat do placeného předplatného. Přehled funkce snímků najdete v tématu [migrace dat](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) o ploše.
-
-V tomto příkladu migrujete skupinu **Person** , kterou jste vytvořili v části [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group). Tuto část můžete buď dokončit jako první, nebo použít vlastní tváře datové konstrukce.
-
-### <a name="set-up-target-subscription"></a>Nastavit cílové předplatné
-
-Nejdřív musíte mít k dispozici druhé předplatné Azure s předním prostředkem; to můžete provést podle kroků v části [Nastavení](#setting-up) . 
-
-Pak v horní části skriptu vytvořte následující proměnné. Budete také muset vytvořit nové proměnné prostředí pro ID předplatného vašeho účtu Azure a také klíč, koncový bod a ID předplatného vašeho nového (cílového) účtu. 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshotvars)]
-
-### <a name="authenticate-target-client"></a>Ověřit cílového klienta
-
-Později ve svém skriptu uložte aktuální objekt klienta jako zdrojový klient a pak ověřte nový objekt klienta pro cílové předplatné. 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_auth)]
-
-### <a name="use-a-snapshot"></a>Použití snímku
-
-Zbývající operace snímku se provádějí v rámci asynchronní funkce. 
-
-1. Prvním krokem je **pořídit** snímek, který ukládá data z původního předplatného do dočasného cloudového umístění. Tato metoda vrací ID, které slouží k dotazování na stav operace.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_take)]
-
-1. V dalším kroku vydáte dotaz na ID, dokud se operace nedokončí.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait)]
-
-    Tento kód využívá `wait_for_operation` funkci, kterou byste měli definovat samostatně:
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_waitforop)]
-
-1. Vraťte se k asynchronní funkci. Pomocí operace **Apply** můžete zapsat data vaší plochy do cílového předplatného. Tato metoda také vrací ID.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_apply)]
-
-1. Znovu použijte `wait_for_operation` funkci pro dotazování ID, dokud se operace nedokončí.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait2)]
-
-Až dokončíte tyto kroky, budete mít přístup k konstrukcím vašich datových dat z vašeho nového (cílového) předplatného.
-
 ## <a name="run-the-application"></a>Spuštění aplikace
 
 Spusťte aplikaci pro rozpoznávání tváře z adresáře aplikace pomocí `python` příkazu.
@@ -271,10 +223,6 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 Pokud jste v tomto rychlém startu vytvořili pole **Person** a chcete ho odstranit, spusťte ve svém skriptu následující kód:
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletegroup)]
-
-Pokud jste migrovali data pomocí funkce snímku v tomto rychlém startu, budete také muset odstranit **pracovní** buňku uloženou do cílového předplatného.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletetargetgroup)]
 
 ## <a name="next-steps"></a>Další kroky
 

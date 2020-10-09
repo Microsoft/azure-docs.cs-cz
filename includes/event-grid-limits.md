@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/18/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: e084256d9c2043d4382ca180ef3178175b301367
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: b884bc72381c98af77f2f49336f3dd5762c68734
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91745709"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859302"
 ---
 Následující omezení se vztahují na Azure Event Grid **témata** (systémová, vlastní a partnerská témata). 
 
@@ -21,7 +21,7 @@ Následující omezení se vztahují na Azure Event Grid **témata** (systémov�
 | --- | --- |
 | Vlastní témata pro každé předplatné Azure | 100 |
 | Odběry událostí na téma | 500 |
-| Míra publikování vlastního nebo partnerského tématu (příchozí) | 5 000 událostí za sekundu nebo 1 MB/s (podle toho, co je splněno jako první)<br/>Neplatí pro systémová témata. |
+| Míra publikování vlastního nebo partnerského tématu (příchozí) | 5 000 událostí za sekundu nebo 1 MB/s (podle toho, co je splněno jako první) |
 | Velikost události | 1 MB  |
 | Připojení privátního koncového bodu na téma  | 64 | 
 | Pravidla brány firewall protokolu IP pro každé téma | 16 | 

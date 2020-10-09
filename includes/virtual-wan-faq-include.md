@@ -8,13 +8,17 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2519baa01fa9d8a13dd2e7855f9da3ec7f9093f9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6fac71572446a80ff00368991d6cb80c572864ac
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89570000"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859880"
 ---
+### <a name="is-azure-virtual-wan-in-ga"></a>Je Azure Virtual WAN v GA?
+
+Ano, Azure Virtual WAN je všeobecně dostupná (GA). Virtuální síť WAN se ale skládá z několika funkcí a scénářů. Ve virtuální síti WAN existují funkce nebo scénáře, kde Microsoft používá značku Preview. V těchto případech je konkrétní funkce nebo samotný scénář ve verzi Preview. Pokud nepoužíváte určitou funkci verze Preview, použije se běžná podpora GA. Další informace o podpoře verze Preview najdete v tématu Další informace o [použití Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzích Preview.
+
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Musí mít uživatel k používání Azure Virtual WAN rozbočovač a paprsek se zařízeními SD-WAN/VPN?
 
 Služba Virtual WAN poskytuje mnoho funkcí integrovaných v jednom podokně, jako je například připojení Site-to-Site VPN, User/P2S Connectivity, ExpressRoute konektivita, Virtual Network připojení, VPN ExpressRoute vzájemné propojení, přenosné připojení typu VNet-to-VNet, centralizované směrování, Azure Firewall Správce brány firewall, monitorování, šifrování ExpressRoute a mnoho dalších možností. Nemusíte mít všechny tyto případy použití, abyste mohli začít používat virtuální síť WAN. Můžete začít jenom s jedním případem použití. Virtuální architektura sítě WAN je architektura rozbočovače a paprsku s integrovaným škálováním a výkonem v umístění, kde se větví (zařízení VPN/SD-WAN), uživatelé (klienti Azure VPN, openVPN nebo IKEv2), ExpressRoute okruhy, virtuální sítě slouží jako paprsky k virtuálním rozbočovačům. Všechna centra jsou připojená v celé síti sítě WAN, která usnadňuje uživateli používání páteřní sítě Microsoftu pro připojení typu any-to-Any (jakékoli paprsky). Pro centrum a paprsky se zařízeními SD-WAN/VPN je uživatelé mohli ručně nastavit na portálu Azure Virtual WAN nebo použít virtuální síť WAN partner (SD-WAN/VPN) pro nastavení připojení k Azure. Virtuální partneři sítě WAN poskytují automatizaci pro připojení, což je schopnost exportovat informace o zařízení do Azure, stáhnout konfiguraci Azure a navázat připojení ke službě Azure Virtual WAN hub. Pro připojení VPN typu Point-to-site/User podporujeme klienta [Azure VPN](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN nebo IKEv2. 

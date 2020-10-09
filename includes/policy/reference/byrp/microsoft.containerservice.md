@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a60fca5bf9e3d33992ee1a22a13e4503a925b23d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 802a98c76106fade2b4fffa3fa0e8ff6ad5ceb96
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983933"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859764"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Pro služby Kubernetes by měly být definované rozsahy povolených IP adres.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e246bcf-5f6f-4f87-bc6f-775d4712c7ea) |Omezte přístup k Kubernetes rozhraní API pro správu služeb tím, že udělíte přístup k rozhraní API jenom na IP adresy v určitých rozsahech. Doporučuje se omezit přístup k povoleným rozsahům IP adres, aby se zajistilo, že ke clusteru budou mít přístup jenom aplikace z povolených sítí. |Audit, zakázáno |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableIpRanges_KubernetesService_Audit.json) |
 |[V clusterech by měl být nainstalovaný a povolený doplněk Azure Policy pro službu Kubernetes (AKS).](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |Azure Policy doplněk pro službu Kubernetes (AKS) rozšiřuje Server Gatekeeper v3, Webhook kontroleru pro přístup pro Open Policy Agent (NEPRŮ), který se použije při vynuceném škálování a ochraně vašich clusterů v centralizovaném, konzistentním způsobem. |Audit, zakázáno |[1.0.1 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
@@ -37,4 +37,4 @@ ms.locfileid: "90983933"
 |[Kubernetes clustery by měly používat jenom schválenou síť hostitele a rozsah portů.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe) |Tato zásada řídí přístup k síti hostitele a povolený rozsah portů hostitele v clusteru Kubernetes. Tato zásada je všeobecně dostupná pro Kubernetes službu (AKS) a verzi Preview pro modul AKS a Azure ARC s povoleným Kubernetes. Pokyny k používání těchto zásad najdete v tématu [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |audit, zamítnutí, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/HostNetworkPorts.json) |
 |[Clustery Kubernetes by neměly umožňovat eskalaci oprávnění kontejnerů.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) |Tato zásada nepovoluje, aby kontejnery používaly eskalaci oprávnění v clusteru Kubernetes. Tato zásada je všeobecně dostupná pro Kubernetes službu (AKS) a verzi Preview pro modul AKS a Azure ARC s povoleným Kubernetes. Pokyny k používání těchto zásad najdete v tématu [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |audit, zamítnutí, zakázáno |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilegeEscalation.json) |
 |[Služby Kubernetes by se měly upgradovat na nezranitelnou Kubernetes verzi.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb893a29-21bb-418c-a157-e99480ec364c) |Upgradujte cluster služby Kubernetes na novější verzi Kubernetes, abyste chránili před známými chybami zabezpečení ve vaší aktuální verzi Kubernetes. Chyba zabezpečení CVE-2019-9946 byla opravena ve verzích Kubernetes verze 1.11.9 +, 1.12.7 +, 1.13.5 + a 1.14.0 + |Audit, zakázáno |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UpgradeVersion_KubernetesService_Audit.json) |
-|[Pro služby Kubernetes by se měla použít Access Control na základě rolí (RBAC).](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac4a19c2-fa67-49b4-8ae5-0b2e78c49457) |K zajištění podrobného filtrování akcí, které mohou uživatelé provádět, použijte Access Control na základě rolí (RBAC) ke správě oprávnění v clusterech služby Kubernetes a ke konfiguraci relevantních zásad autorizace. |Audit, zakázáno |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableRBAC_KubernetesService_Audit.json) |
+|[Pro služby Kubernetes by se měla použít Access Control na základě rolí (RBAC).](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac4a19c2-fa67-49b4-8ae5-0b2e78c49457) |K zajištění podrobného filtrování akcí, které mohou uživatelé provádět, použijte Role-Based Access Control (RBAC) ke správě oprávnění v clusterech služby Kubernetes a ke konfiguraci relevantních zásad autorizace. |Audit, zakázáno |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableRBAC_KubernetesService_Audit.json) |

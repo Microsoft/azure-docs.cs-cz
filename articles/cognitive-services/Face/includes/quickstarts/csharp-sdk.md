@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 09/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 80255790129468857e1115f3034516f04bc86d26
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ef0791eeec169bb925b8f667523203beaacdd2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322943"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859865"
 ---
 Začněte s rozpoznáváním obličeje pomocí klientské knihovny pro tvář pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
 
@@ -24,11 +24,10 @@ Pomocí klientské knihovny obličeje pro .NET:
 * [Hledání podobných plošek](#find-similar-faces)
 * [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group)
 * [Identifikace obličeje](#identify-a-face)
-* [Pořídit snímek migrace dat](#take-a-snapshot-for-data-migration)
 
 [Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1)  |  [Ukázky](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
@@ -106,8 +105,6 @@ Níže uvedené fragmenty kódu ukazují, jak provádět následující úlohy p
 * [Hledání podobných plošek](#find-similar-faces)
 * [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group)
 * [Identifikace obličeje](#identify-a-face)
-* [Pořídit snímek migrace dat](#take-a-snapshot-for-data-migration)
-
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -216,56 +213,6 @@ Další fragment kódu volá operaci **IdentifyAsync** a vytiskne výsledky do k
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_identify)]
 
-## <a name="take-a-snapshot-for-data-migration"></a>Pořídit snímek migrace dat
-
-Funkce snímků umožňuje přesunout uložená data o obličejích, jako je například školená **osoba**, do jiného předplatného služby Azure Cognitive Services Face. Tuto funkci můžete chtít použít například v případě, že jste vytvořili objekt **Person** pomocí bezplatného předplatného a chcete ho migrovat do placeného předplatného. Přehled funkce snímků najdete v tématu [migrace dat](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) na ploše.
-
-V tomto příkladu migrujete skupinu **Person** , kterou jste vytvořili v části [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group). Tuto část můžete buď dokončit jako první, nebo vytvořit vlastní tváře datové konstrukce, které chcete migrovat.
-
-### <a name="set-up-target-subscription"></a>Nastavit cílové předplatné
-
-Nejdřív musíte mít k dispozici druhé předplatné Azure s předním prostředkem; to můžete provést podle kroků v části [Nastavení](#setting-up) . 
-
-Pak definujte v `Main` metodě programu následující proměnné. Budete muset vytvořit nové proměnné prostředí pro ID předplatného vašeho účtu Azure a také klíč, koncový bod a ID předplatného vašeho nového (cílového) účtu. 
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_vars)]
-
-V tomto příkladu deklarujte proměnnou pro ID cílové **osoby** &mdash; objektu, který patří do nového předplatného, do kterého budete kopírovat data.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_vars)]
-
-### <a name="authenticate-target-client"></a>Ověřit cílového klienta
-
-Dále přidejte kód pro ověření předplatného sekundární plochy.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_client)]
-
-### <a name="use-a-snapshot"></a>Použití snímku
-
-Zbývající operace snímku musí probíhat v rámci asynchronní metody. 
-
-1. Prvním krokem je **pořídit** snímek, který ukládá data z původního předplatného do dočasného cloudového umístění. Tato metoda vrací ID, které slouží k dotazování na stav operace.
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_take)]
-
-1. V dalším kroku vydáte dotaz na ID, dokud se operace nedokončí.
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_take_wait)]
-
-1. Pak použijte operaci **Apply** pro zápis dat do cílového předplatného. Tato metoda také vrátí hodnotu ID.
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_apply)]
-
-1. Znovu spusťte dotaz na nové ID, dokud se operace nedokončí.
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_apply)]
-
-1. Nakonec dokončete blok try/catch a dokončete metodu.
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_trycatch)]
-
-V tomto okamžiku by měl mít nový objekt **Person** stejná data jako původní a měla by být přístupná z vašeho nového (cílového) předplatného Azure Face.
-
 ## <a name="run-the-application"></a>Spuštění aplikace
 
 Spusťte aplikaci pro rozpoznávání tváře z adresáře aplikace pomocí `dotnet run` příkazu.
@@ -288,10 +235,6 @@ Pokud jste v tomto rychlém startu vytvořili pole **Person** a chcete ho odstra
 Metodu odstranění definujte pomocí následujícího kódu:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_deletepersongroup)]
-
-Kromě toho, pokud jste migrovali data pomocí funkce snímku v tomto rychlém startu, budete také muset odstranit **pracovníka** uloženou do cílového předplatného.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_target_persongroup_delete)]
 
 ## <a name="next-steps"></a>Další kroky
 

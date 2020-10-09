@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 09/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 382a04021053bef0b5d3378231e38453885b0ef2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1154bf3ddde67ba5074517ab4f96ed6764edf6a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322945"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859710"
 ---
 Začněte s rozpoznáváním obličeje pomocí klientské knihovny pro tvář pro funkci přejít. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
 
@@ -24,11 +24,10 @@ Použijte klientskou knihovnu služby FACET k přechodu na:
 * [Hledání podobných plošek](#find-similar-faces)
 * [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group)
 * [Identifikace obličeje](#identify-a-face)
-* [Pořídit snímek migrace dat](#take-a-snapshot-for-data-migration)
 
 [Referenční dokumentace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face)  |  [Stažení sady SDK](https://github.com/Azure/azure-sdk-for-go)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze nástroje [Přejít](https://golang.org/dl/)
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
@@ -109,7 +108,6 @@ Tyto ukázky kódu ukazují, jak dokončit základní úlohy pomocí klientské 
 * [Hledání podobných plošek](#find-similar-faces)
 * [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group)
 * [Identifikace obličeje](#identify-a-face)
-* [Pořídit snímek migrace dat](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
@@ -246,53 +244,6 @@ Následující kód porovnává každý zdrojový obraz s cílovou imagí a vyti
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_ver)]
 
-
-## <a name="take-a-snapshot-for-data-migration"></a>Pořídit snímek migrace dat
-
-Funkce snímků umožňuje přesunout uložená data o obličejích, jako je například školená **osoba**, do jiného předplatného služby Azure Cognitive Services Face. Tuto funkci můžete použít například v případě, že jste vytvořili objekt **Person** pomocí bezplatného předplatného a teď ho chcete migrovat na placené předplatné. Přehled funkce snímků najdete v tématu [migrace dat](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) o ploše.
-
-V tomto příkladu migrujete skupinu **Person** , kterou jste vytvořili v části [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group). Tuto část můžete buď dokončit jako první, nebo použít vlastní tváře datové konstrukce.
-
-### <a name="set-up-target-subscription"></a>Nastavit cílové předplatné
-
-Nejdřív musíte mít k dispozici druhé předplatné Azure s předním prostředkem; to můžete provést opakováním kroků v části [Nastavení](#setting-up) . 
-
-Pak vytvořte následující proměnné v horní části metody **Main** . Budete také muset vytvořit nové proměnné prostředí pro ID předplatného vašeho účtu Azure a také klíč, koncový bod a ID předplatného vašeho nového (cílového) účtu.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_target_client)]
-
-Pak zadejte hodnotu ID předplatného do pole pro další kroky.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_id)]
-
-### <a name="authenticate-target-client"></a>Ověřit cílového klienta
-
-Později ve svém skriptu uložte původní objekt klienta jako zdrojového klienta a pak ověřte nový objekt klienta pro cílové předplatné. 
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_auth)]
-
-### <a name="take-a-snapshot"></a>Pořízení snímku
-
-V dalším kroku se pořídí snímek s příkazem **[přijmout](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Take)**, který ukládá vaše původní data z vašich předplatných do dočasného cloudového umístění. Tato metoda vrací ID, které slouží k dotazování na stav operace.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_take)]
-
-V dalším kroku vydáte dotaz na ID, dokud se operace nedokončí.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_query)]
-
-### <a name="apply-the-snapshot"></a>Použít snímek
-
-Pomocí operace **[Apply](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Apply)** napíšete nově nahraná data ze strany do cílového předplatného. Tato metoda také vrací ID.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply)]
-
-Znovu dotaz na ID, dokud se operace nedokončí.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply_query)]
-
-Po dokončení těchto kroků máte k vašim novým (cílovým) předplatnému přístup k konstrukcím vašich obličejových dat.
-
 ## <a name="run-the-application"></a>Spuštění aplikace
 
 Spusťte aplikaci pro rozpoznávání tváře z adresáře aplikace pomocí `go run <app-name>` příkazu.
@@ -308,7 +259,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-Pokud jste v tomto rychlém startu vytvořili pole **Person** a chcete ho odstranit, zavolejte metodu **[Delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** . Pokud jste migrovali data pomocí funkce snímku v tomto rychlém startu, budete také muset odstranit **pracovní** buňku uloženou do cílového předplatného.
+Pokud jste v tomto rychlém startu vytvořili pole **Person** a chcete ho odstranit, zavolejte metodu **[Delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** .
 
 ## <a name="next-steps"></a>Další kroky
 
