@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: e0226392ff96c6dc10cbd729135a15c066378f68
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5486752c8a1e36eba047ffd4d82b10cddfc771a1
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552714"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850011"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-isams"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím iSAMs
 
@@ -105,7 +105,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -132,16 +132,16 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. Přejděte do ovládacích panelů a otevřete modul **ověřování** .
 1. V nabídce na pravé straně vyberte **Zprostředkovatelé identity** .
 
-    ![Konfigurace](./media/isams-tutorial/click-identity-provider.png)
+    ![Snímek obrazovky se zobrazí konfigurace služby Active Directory s vybranými zprostředkovateli identity.](./media/isams-tutorial/click-identity-provider.png)
 
 1. Vybrat **Přidat poskytovatele**
 
-    ![Konfigurace](./media/isams-tutorial/add-identity-provider.png)
+    ![Snímek obrazovky se zobrazí zprostředkovatelé identity s vybranými přidat poskytovatele.](./media/isams-tutorial/add-identity-provider.png)
 
 
 1. Na následující stránce proveďte následující kroky:
 
-    ![Konfigurace](./media/isams-tutorial/configure-isams.png)
+    ![Snímek obrazovky se zobrazí v průvodci zprostředkovateli identity, kde můžete postupovat podle pokynů.](./media/isams-tutorial/configure-isams.png)
 
     a. Do textového pole **název** zadejte platný název jako `Saml2 Azure` . Toto je název, který se zobrazí na přihlašovací stránce.
 
@@ -159,12 +159,12 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 2.  Přejít na **ovládací panel Hlavní**  ->  **zabezpečení & oprávnění**uživatele  ->  **uživatelské účty**uživatelské  ->  **Možnosti & úlohy**  ->  **Upravit vlastnosti uživatele**
 
-    ![Testovací uživatel](./media/isams-tutorial/modify-user-properties.png)
+    ![Snímek obrazovky se zobrazí stránka uživatelských účtů s vybraným možnost upravit vlastnosti uživatele.](./media/isams-tutorial/modify-user-properties.png)
 
 
 3. Ve výsledném překryvném okně vyberte kartu **Podrobnosti účtu** a změňte **autorizaci** na tohoto nově vytvořeného poskytovatele identity.
 
-    ![Testovací uživatel](./media/isams-tutorial/account-details.png)
+    ![Snímek obrazovky zobrazuje podrobnosti účtu s hodnotou pro autorizaci.](./media/isams-tutorial/account-details.png)
 
 4. Klikněte na **uložit & zavřít**.
 

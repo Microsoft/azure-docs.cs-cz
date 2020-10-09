@@ -3,15 +3,15 @@ title: Vytvoření fondu služby Azure Batch bez veřejných IP adres
 description: Zjistěte, jak vytvořit fond bez veřejných IP adres.
 author: pkshultz
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/08/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 3106ceef8bc45d70401265f61bacb17cb0dc7262
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: fcc0538dfef1581a244ae5fd9a3515be3470026c
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743654"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850927"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Vytvoření fondu služby Azure Batch bez veřejných IP adres
 
@@ -27,17 +27,14 @@ Pokud chcete omezit přístup k těmto uzlům a snížit zjistitelnost těchto u
 > Podpora fondů bez veřejných IP adres v Azure Batch je v současnosti ve verzi Public Preview pro následující oblasti: Francie – střed, Východní Asie, Středozápadní USA, Střed USA – jih, Západní USA 2, Východní USA, Severní Evropa, Východní USA 2, Střed USA, Západní Evropa, Střed USA – sever, Západní USA, Austrálie – východ, Japonsko – východ, Japonsko – západ.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Ověřování**. Aby bylo možné použít fond bez veřejných IP adres v rámci [virtuální sítě](./batch-virtual-network.md), musí klientské rozhraní API služby Batch používat ověřování Azure Active Directory (AD). Podpora služby Azure AD ve službě Azure Batch je zdokumentovaná v tématu [Ověřování řešení služby Batch pomocí Active Directory](batch-aad-auth.md). Pokud nevytváříte fond v rámci virtuální sítě, můžete použít ověřování Azure AD nebo ověřování založené na klíčích.
 
-- **Virtuální síť Azure**. Pokud vytváříte fond ve [virtuální síti](batch-virtual-network.md), postupujte podle těchto požadavků a konfigurací. Pokud chcete připravit virtuální síť s jednou nebo více podsítěmi předem, můžete použít Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure (CLI) nebo jiné metody.
+- **Virtuální síť Azure**. Pokud vytváříte fond ve [virtuální síti](batch-virtual-network.md), postupujte podle těchto požadavků a konfigurací. Pokud chcete předem připravit virtuální síť s jednou nebo více podsítěmi, můžete použít Azure Portal, Azure PowerShell, rozhraní příkazového řádku (CLI) Azure Command-Line nebo jiné metody.
   - Virtuální síť musí být ve stejném předplatném a stejné oblasti jako účet Batch, který použijete k vytvoření fondu.
   - Podsíť zadaná pro fond musí obsahovat dostatek nepřiřazených IP adres pro všechny virtuální počítače, na které fond cílí, jejichž počet je součtem vlastností `targetDedicatedNodes` a `targetLowPriorityNodes` fondu. Pokud podsíť nemá dostatek nepřiřazených IP adres, fond částečně přidělí výpočetní uzly a dojde k chybě změny velikosti.
-  - Je nutné zakázat zásady služby privátního propojení a sítě koncového bodu. To se dá udělat pomocí Azure CLI:
-    ```azurecli
-    az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies
-    ```
+  - Je nutné zakázat zásady služby privátního propojení a sítě koncového bodu. To se dá udělat pomocí Azure CLI: ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
 
 > [!IMPORTANT]
 > Pro každý 100 vyhrazený uzel nebo uzly s nízkou prioritou služba Batch přiděluje jednu službu privátního propojení a jeden nástroj pro vyrovnávání zatížení. Pro tyto prostředky platí omezení [kvót prostředků](../azure-resource-manager/management/azure-subscription-service-limits.md) předplatného. U rozsáhlých fondů možná budete muset [požádat o zvýšení kvóty](batch-quota-limit.md#increase-a-quota) u jednoho nebo více těchto prostředků. Kromě toho by se neměly žádné zámky prostředků použít pro všechny prostředky vytvořené službou Batch, protože to brání vyčištění prostředků v důsledku akcí iniciované uživatelem, jako je odstranění fondu nebo změna velikosti na nulu.
@@ -50,7 +47,7 @@ Pokud chcete omezit přístup k těmto uzlům a snížit zjistitelnost těchto u
 
 ## <a name="create-a-pool-without-public-ip-addresses-in-the-azure-portal"></a>Vytvoření fondu bez veřejných IP adres v Azure Portal
 
-1. Na webu Azure Portal přejděte ke svému účtu Batch. 
+1. Na webu Azure Portal přejděte ke svému účtu Batch.
 1. V okně **Nastavení** na levé straně vyberte **fondy**.
 1. V okně **fondy** vyberte **Přidat**.
 1. V okně **Přidat fond** vyberte v rozevíracím seznamu **typ obrázku** možnost, kterou hodláte použít.
@@ -95,7 +92,7 @@ client-request-id: 00000000-0000-0000-0000-000000000000
      "resizeTimeout": "PT15M",
      "targetDedicatedNodes": 5,
      "targetLowPriorityNodes": 0,
-     "maxTasksPerNode": 3,
+     "taskSlotsPerNode": 3,
      "taskSchedulingPolicy": {
           "nodeFillType": "spread"
      },

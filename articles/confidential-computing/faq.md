@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 519b5b669cfc8140b837743d694184a5cb859f20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: cf90ff5b94eb03f76dffc8b64dd4d92a44ac20ee
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987988"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848904"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Nejčastější dotazy týkající se důvěrného výpočetního prostředí Azure
 
@@ -32,7 +32,7 @@ Tady je několik způsobů, jak můžete nasadit virtuální počítač s DCsv2:
 
 **Budou všechny image operačních systémů fungovat s důvěrným výpočetním prostředím Azure?**
 
-No. Virtuální počítače se dají nasadit jenom na operační počítače generace 2 s Ubuntu serverem 18,04, Ubuntu serverem 16,04, Windows Server 2019 Datacenter a Windows Server 2016 Datacenter. Další informace o virtuálních počítačích 2. generace v systémech [Linux](../virtual-machines/linux/generation-2.md) a [Windows](../virtual-machines/windows/generation-2.md)
+Ne. Virtuální počítače se dají nasadit jenom na operační počítače generace 2 s Ubuntu serverem 18,04, Ubuntu serverem 16,04, Windows Server 2019 Datacenter a Windows Server 2016 Datacenter. Další informace o virtuálních počítačích 2. generace v systémech [Linux](../virtual-machines/linux/generation-2.md) a [Windows](../virtual-machines/windows/generation-2.md)
 
 **Virtuální počítače s DCsv2 jsou na portálu zobrazeny šedě a nelze je vybrat.**
 
@@ -49,13 +49,17 @@ Ujistěte se, že jste vybrali oblast, která je [k dispozici](https://azure.mic
 
 [Vytvořte žádost o podporu, která zvýší vaši kvótu](../azure-portal/supportability/per-vm-quota-requests.md). Bezplatné zkušební předplatné nemají kvótu pro virtuální počítače s důvěrnými výpočetními prostředími. 
 
-**Jaký je rozdíl mezi virtuálními počítači řady DCsv2-Series a DC-Series?**
+**Jaký je rozdíl mezi DCsv2-Series a DC-Seriesmi virtuálními počítači?**
 
-Virtuální počítače DC-Series běží na starších 6 procesorech Intel s Intel SGX a mají méně celkové paměti, méně enklávy paměti mezipaměti (EPC) a jsou dostupné jenom v dvou oblastech (USA – východ a Evropa – západ v Standard_DC2s a Standard_DC4s velikosti). Nejsou k dispozici žádné plány pro zajištění všeobecně dostupných virtuálních počítačů a nedoporučují se pro produkční použití. K nasazení těchto virtuálních počítačů použijte instanci webu Marketplace  [COMPUTE COMPUTE DC-Series VM [Preview]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) .
+DC-Series virtuální počítače běží na starších 6 procesorech Intel s Intel SGX a mají méně celkovou paměť, méně enklávy paměti mezipaměti (EPC) a jsou dostupné jenom v dvou oblastech (USA – východ a Evropa – západ v Standard_DC2s a Standard_DC4s velikosti). Nejsou k dispozici žádné plány pro zajištění všeobecně dostupných virtuálních počítačů a nedoporučují se pro produkční použití. K nasazení těchto virtuálních počítačů použijte instanci webu Marketplace  [compute DC-Series virtuální počítač [Preview]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) .
 
 **Jsou virtuální počítače DCsv2 k dispozici globálně?**
 
-No. Tyto virtuální počítače jsou v tuto chvíli dostupné jenom ve vybraných oblastech. Poslední dostupné oblasti najdete na [stránce produkty podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) . 
+Ne. Tyto virtuální počítače jsou v tuto chvíli dostupné jenom ve vybraných oblastech. Poslední dostupné oblasti najdete na [stránce produkty podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) . 
+
+**Je technologie Hyper-Threading na těchto počítačích VYPNUTá?**
+
+Technologie Hyper-Threading je zakázaná pro všechny clustery s důvěrnými výpočetními prostředími Azure.
 
 **Návody na virtuální počítače s DCsv2 nainstalovat sadu Open enklávy SDK?**
    

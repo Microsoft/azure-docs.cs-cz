@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 0af8df35bc2cc323e5165b973c889a0ab10f4cbb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bf779918dbfb9f7b95096f3a5efcc8e64f09c403
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91304895"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850494"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>Kurz: Konfigurace iPass SmartConnect pro Automatické zřizování uživatelů
 
@@ -114,11 +114,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatele a IPASS SmartConnect**.
 
-    ![Mapování uživatelů iPass SmartConnect](media/ipass-smartconnect-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/ipass-smartconnect-provisioning-tutorial/usermapping.png" alt-text="Snímek obrazovky oddílu mapování V části název je synchronizace Azure Active Directorych uživatelů na iPass SmartConnect viditelná." border="false":::
 
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD do iPass SmartConnect v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v IPASS SmartConnect pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Mapování uživatelů iPass SmartConnect](media/ipass-smartconnect-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/ipass-smartconnect-provisioning-tutorial/userattribute.png" alt-text="Snímek obrazovky oddílu mapování V části název je synchronizace Azure Active Directorych uživatelů na iPass SmartConnect viditelná." border="false":::
 
 
 10. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 99f29f884997fbdd4761a5aa2d1f3a8bc15aa797
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: d55f461205ceecad098319d7b4b41c175390abfd
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891585"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850503"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s JIRA SAML SSO Microsoftu
 
@@ -32,7 +32,7 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 
 K povolení jednotného přihlašování použijte účet Microsoft Azure Active Directory se serverem Atlassian JIRA. Díky tomu můžou všichni uživatelé vaší organizace používat přihlašovací údaje Azure AD k přihlášení do aplikace JIRA. Tento modul plug-in používá pro federaci protokol SAML 2,0.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K nakonfigurování integrace služby Azure AD pomocí jednotného přihlašování JIRA SAML od Microsoftu budete potřebovat následující položky:
 
@@ -114,7 +114,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Port je nepovinný pro případ, že se jedná o pojmenovanou adresu URL. Tyto hodnoty jsou obdrženy během konfigurace modulu plug-in JIRA, který je vysvětlen dále v tomto kurzu.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a adresou URL Sign-On. Port je nepovinný pro případ, že se jedná o pojmenovanou adresu URL. Tyto hodnoty jsou obdrženy během konfigurace modulu plug-in JIRA, který je vysvětlen dále v tomto kurzu.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
@@ -130,7 +130,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -156,11 +156,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 2. Najeďte myší na ozubeného kola a klikněte na **Doplňky**.
 
-    ![Konfigurace jednotného přihlašování](./media/jiramicrosoft-tutorial/addon1.png)
+    ![Snímek obrazovky zobrazuje doplňky vybrané v nabídce nastavení.](./media/jiramicrosoft-tutorial/addon1.png)
 
 3. Stáhněte modul plug-in z [webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56506). Ručně nahrajte modul plug-in dodaný Microsoftem pomocí nabídky **nahrát doplňky** . Na stažení modulu plug-in se vztahuje [Smlouva o poskytování služeb společnosti Microsoft](https://www.microsoft.com/servicesagreement/).
 
-    ![Konfigurace jednotného přihlašování](./media/jiramicrosoft-tutorial/addon12.png)
+    ![Snímek obrazovky ukazuje spravovat doplňky pomocí odkazu nahrát doplněk, který se vyvolal.](./media/jiramicrosoft-tutorial/addon12.png)
 
 4. Pokud chcete spustit scénář reverzního proxy serveru JIRA nebo scénář nástroje pro vyrovnávání zatížení, proveďte následující kroky:
 
@@ -171,19 +171,19 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![Konfigurace jednotného přihlašování](./media/jiramicrosoft-tutorial/reverseproxy1.png)
+    ![Snímek obrazovky ukazuje soubor. x m l v editoru s přidaným novým řádkem.](./media/jiramicrosoft-tutorial/reverseproxy1.png)
 
     b. Změnit **základní adresu URL** v **nastavení systému** podle proxy/nástroje pro vyrovnávání zatížení.
 
-    ![Konfigurace jednotného přihlašování](./media/jiramicrosoft-tutorial/reverseproxy2.png)
+    ![Snímek obrazovky ukazuje nastavení správy, kde můžete změnit základní U R L.](./media/jiramicrosoft-tutorial/reverseproxy2.png)
 
 5. Po nainstalování modulu plug-in se zobrazí v části **nainstalované** doplňky v části **Správa doplňku** . Kliknutím na **Konfigurovat** Nakonfigurujte nový modul plug-in.
 
-    ![Konfigurace jednotného přihlašování](./media/jiramicrosoft-tutorial/addon14.png)
+    ![Snímek obrazovky ukazuje jednotné přihlašování Azure A D SAML pro JIRA s vybranou konfigurací.](./media/jiramicrosoft-tutorial/addon14.png)
 
 6. Na stránce konfigurace proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/jiramicrosoft-tutorial/addon54.png)
+    ![Snímek obrazovky se zobrazí Microsoft Azure Active Directory jednotné přihlašování pro konfigurační stránku JIRA.](./media/jiramicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > Zajistěte, aby se na aplikaci namapoval jenom jeden certifikát, aby se při překladu metadat neobjevila žádná chyba. Pokud je k dispozici více certifikátů, při překladu metadat správce získá chybu.
@@ -230,19 +230,19 @@ Aby se uživatelé Azure AD mohli přihlašovat k JIRA místním serveru, musí 
 
 2. Najeďte myší na ozubeného kola a klikněte na **Správa uživatelů**.
 
-    ![Přidat zaměstnance](./media/jiramicrosoft-tutorial/user1.png)
+    ![Snímek obrazovky se zobrazí Správa uživatelů vybraná v nabídce nastavení.](./media/jiramicrosoft-tutorial/user1.png)
 
 3. Budete přesměrováni na stránku pro přístup správce k zadání **hesla** a kliknutím na tlačítko **Potvrdit** .
 
-    ![Přidat zaměstnance](./media/jiramicrosoft-tutorial/user2.png)
+    ![Snímek obrazovky se zobrazí stránka pro přístup správce, kde můžete zadat svoje přihlašovací údaje.](./media/jiramicrosoft-tutorial/user2.png)
 
 4. V části karta **Správa uživatelů** klikněte na možnost **vytvořit uživatele**.
 
-    ![Přidat zaměstnance](./media/jiramicrosoft-tutorial/user3.png) 
+    ![Snímek obrazovky se zobrazí karta Správa uživatelů, kde můžete vytvořit uživatele.](./media/jiramicrosoft-tutorial/user3.png) 
 
 5. Na stránce **vytvořit nového uživatele** proveďte následující kroky:
 
-    ![Přidat zaměstnance](./media/jiramicrosoft-tutorial/user4.png) 
+    ![Snímek obrazovky se zobrazí v dialogovém okně vytvořit nový uživatel, kde můžete zadat informace v tomto kroku.](./media/jiramicrosoft-tutorial/user4.png) 
 
     a. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele B.simon@contoso.com .
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 686a186650bfe4066533b0f086c080b5ffb14eb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: af68100d0064187931ede43916d1ab3258baea38
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546827"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850706"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kanbanize"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Kanbanize
 
@@ -115,7 +115,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -153,15 +153,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 5. Na stránce panelu pro správu na levé straně nabídky klikněte na **integrace** a pak povolte **jednotné přihlašování**.
 
-    ![Integrace Kanbanize](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
+    ![Snímek obrazovky se zobrazí panel pro správu s vybraným integrací.](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
 
-6. V části integrace klikněte na **Konfigurovat** a otevřete stránku **Integrace jednotného přihlašování** .
+6. V části integrace klikněte na **Konfigurovat** a otevřete stránku **integrace s jedním Sign-On** .
 
     ![Kanbanize konfigurace](./media/kanbanize-tutorial/tutorial-kanbanize-config.png)
 
-7. Na stránce **Integrace jednotného přihlašování** v části **Konfigurace**proveďte následující kroky:
+7. Na stránce **integrace s jedním Sign-On** v části **Konfigurace**proveďte následující kroky:
 
-    ![Integrace Kanbanize](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
+    ![Snímek obrazovky se zobrazí stránka integrace na jednom Sign-On, kde zadáte hodnoty v tomto kroku.](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
 
     a. Do textového pole **ID entity IDP** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal.
 

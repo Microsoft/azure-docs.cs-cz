@@ -2,19 +2,19 @@
 title: Kurz – použití klientské knihovny Azure Batch pro Node.js
 description: Informace o základních konceptech služby Azure Batch a vytvoření jednoduchého řešení pomocí Node.js.
 ms.topic: tutorial
-ms.date: 05/22/2017
-ms.openlocfilehash: 4cecd25346d868dfb27deb9f768342ab2e72ade9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 10/08/2020
+ms.openlocfilehash: 33ca65421802cdbe31497f3a19ba5992961daa12
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83780180"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850604"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Začínáme se sadou SDK služby Batch pro Node.js
 
-Naučíte se základy vytvoření klienta služby Batch v Node.js pomocí sady [SDK služby Azure Batch pro Node.js](/javascript/api/overview/azure/batch). Pro pochopení scénáře pro aplikaci služby Batch si ho projdeme krok za krokem a pak aplikaci nastavíme pomocí klienta Node.js.  
+Naučíte se základy vytvoření klienta služby Batch v Node.js pomocí sady [SDK služby Azure Batch pro Node.js](/javascript/api/overview/azure/batch). Pro pochopení scénáře pro aplikaci služby Batch si ho projdeme krok za krokem a pak aplikaci nastavíme pomocí klienta Node.js.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že máte praktické znalosti Node.js a umíte do jisté míry pracovat s Linuxem. Předpokládá se také, že máte nastavený účet Azure s přístupovými právy k vytvoření služeb Batch a Storage.
 
 Doporučujeme, abyste si přečetli článek [Technický přehled služby Azure Batch](batch-technical-overview.md), než budete postupovat podle kroků popsaných v tomto článku.
@@ -174,7 +174,7 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
         {
             if(error.statusCode==404)
             {
-                console.log("Pool not found yet returned 404...");    
+                console.log("Pool not found yet returned 404...");
 
             }
             else
@@ -241,7 +241,7 @@ Následuje ukázka objektu výsledků vráceného funkcí pool.get.
   targetDedicated: 4,
   enableAutoScale: false,
   enableInterNodeCommunication: false,
-  maxTasksPerNode: 1,
+  taskSlotsPerNode: 1,
   taskSchedulingPolicy: { nodeFillType: 'Spread' } }
 ```
 
@@ -252,7 +252,7 @@ Následuje ukázka objektu výsledků vráceného funkcí pool.get.
 Tyto úkoly budou spouštěné paralelně, nasazené v několika uzlech a orchestrované službou Azure Batch.
 
 > [!Tip]
-> Pomocí vlastnosti [maxTasksPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) můžete zadat maximální počet úkolů, které můžou být spuštěné současně v jednom uzlu.
+> Vlastnost [taskSlotsPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) můžete použít k určení maximálního počtu úloh, které mohou běžet souběžně v jednom uzlu.
 >
 >
 
@@ -317,7 +317,7 @@ Za předpokladu, že máme čtyři kontejnery con1, con2, con3 a con4, následuj
 ```nodejs
 // storing container names in an array
 var container_list = ["con1","con2","con3","con4"]
-    container_list.forEach(function(val,index){           
+    container_list.forEach(function(val,index){
 
            var container_name = val;
            var taskID = container_name + "_process";
@@ -325,7 +325,7 @@ var container_list = ["con1","con2","con3","con4"]
            var task = batch_client.task.add(poolid,task_config,function(error,result){
                 if(error != null)
                 {
-                    console.log(error.response);     
+                    console.log(error.response);
                 }
                 else
                 {
@@ -339,7 +339,7 @@ var container_list = ["con1","con2","con3","con4"]
     });
 ```
 
-Kód do fondu přidá několik úkolů. Každý z úkolů se provede na uzlu ve vytvořeném fondu virtuálních počítačů. Pokud počet úkolů překročí počet virtuálních počítačů ve fondu nebo hodnotu vlastnosti maxTasksPerNode, úkoly počkají na uvolnění uzlu. Tuto orchestraci automaticky zařizuje služba Azure Batch.
+Kód do fondu přidá několik úkolů. Každý z úkolů se provede na uzlu ve vytvořeném fondu virtuálních počítačů. Pokud počet úloh překročí počet virtuálních počítačů ve fondu nebo vlastnost taskSlotsPerNode, budou úlohy čekat na zpřístupnění uzlu. Tuto orchestraci automaticky zařizuje služba Azure Batch.
 
 Na portálu jsou podrobná zobrazení stavů úkolů a úloh. Můžete také použít funkce list a get v sadě SDK Azure pro Node.js. Podrobnosti jsou uvedeny v [dokumentaci](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html).
 

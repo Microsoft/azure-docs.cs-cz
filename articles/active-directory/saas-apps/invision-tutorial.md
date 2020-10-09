@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/09/2020
 ms.author: jeedes
-ms.openlocfilehash: c988168f5d56fd7dcf8142a9f1e68af2defdcfc7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e8f542f8a734f5bd6592ebc743b30676dd61f07
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552964"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850538"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s InVision
 
@@ -107,7 +107,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -133,15 +133,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **tým** a vyberte **Nastavení**.
 
-    ![Konfigurace InVision](./media/invision-tutorial/config1.png)
+    ![Snímek obrazovky zobrazuje kartu týmu s vybraným nastavením.](./media/invision-tutorial/config1.png)
 
 1. Posuňte se dolů k **jednotnému přihlašování** a pak klikněte na **změnit**.
 
-    ![Konfigurace InVision](./media/invision-tutorial/config3.png)
+    ![Snímek obrazovky se zobrazením tlačítka pro změnu jednotného přihlašování.](./media/invision-tutorial/config3.png)
 
 1. Na stránce **jednotného přihlašování** proveďte následující kroky:
 
-    ![Konfigurace InVision](./media/invision-tutorial/config4.png)
+    ![Snímek obrazovky se zobrazí na stránce jednotného přihlašování, kde zadáte hodnoty v tomto kroku.](./media/invision-tutorial/config4.png)
 
     a. Změna **vyžaduje jednotné přihlašování pro každý člen < název účtu >** na **zapnuto**.
 
@@ -169,19 +169,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **tým** a vyberte **osoby**.
 
-    ![Konfigurace InVision](./media/invision-tutorial/config2.png)
+    ![Snímek obrazovky zobrazuje kartu týmu s vybranými lidmi.](./media/invision-tutorial/config2.png)
 
 1. Kliknutím na **ikonu +** přidejte nového uživatele.
 
-    ![Konfigurace InVision](./media/invision-tutorial/user1.png)
+    ![Snímek obrazovky se zobrazí ikona + pro přidání uživatele.](./media/invision-tutorial/user1.png)
 
 1. Zadejte e-mailovou adresu uživatele a klikněte na tlačítko **Další**.
 
-    ![Konfigurace InVision](./media/invision-tutorial/user2.png)
+    ![Snímek obrazovky se zobrazí dialogové okno pozvat do, kde můžete zadat adresy.](./media/invision-tutorial/user2.png)
 
 1. Po ověření e-mailové adresy a kliknutí na **pozvat**.
 
-    ![Konfigurace InVision](./media/invision-tutorial/user3.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně pozvání, kde můžete vybrat pozvánku a pokračovat.](./media/invision-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Test SSO
 

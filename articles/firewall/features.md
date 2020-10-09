@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 16e128fd61c8b0aeae017e5298ae1d8aed6e97e9
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 7429be4430b2b520fb2a66b6b2c0dd138af8e501
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91408503"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850587"
 ---
 # <a name="azure-firewall-features"></a>Funkce Azure Firewallu
 
@@ -101,7 +101,11 @@ To umožňuje následující scénáře:
 
 ## <a name="azure-monitor-logging"></a>Protokolování Azure Monitor
 
-Všechny události jsou integrované s Azure Monitor, což umožňuje archivaci protokolů do účtu úložiště, streamování událostí do centra událostí nebo jejich odeslání do protokolů Azure Monitor. Další informace najdete v tématu [kurz: monitorování Azure firewall protokolů a metrik](tutorial-diagnostics.md).
+Všechny události jsou integrované s Azure Monitor, což umožňuje archivaci protokolů do účtu úložiště, streamování událostí do centra událostí nebo jejich odeslání do protokolů Azure Monitor. Ukázky protokolu Azure Monitor najdete v tématu [protokoly Azure monitor pro Azure firewall](log-analytics-samples.md).
+
+Další informace najdete v tématu [kurz: monitorování Azure firewall protokolů a metrik](tutorial-diagnostics.md). 
+
+Azure Firewall sešit nabízí flexibilní plátno pro Azure Firewall analýzu dat. Můžete ho použít k vytvoření bohatých vizuálních sestav v rámci Azure Portal. Další informace najdete v tématu [monitorování protokolů pomocí Azure firewall sešitu](firewall-workbook.md).
 
 ## <a name="forced-tunneling"></a>Vynucené tunelování
 

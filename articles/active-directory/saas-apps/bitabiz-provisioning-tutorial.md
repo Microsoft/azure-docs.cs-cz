@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 1274679bdd9892e2dc39f3c5e94d8d8d486928b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f87a2347890f8d17e3901c6d8fc168c1d96c7661
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329189"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849295"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Kurz: Konfigurace BitaBIZ pro Automatické zřizování uživatelů
 
@@ -54,11 +54,11 @@ Před konfigurací BitaBIZ pro Automatické zřizování uživatelů pomocí Azu
 
 1. Přihlaste se ke [konzole pro správu BitaBIZ](https://www.bitabiz.com/login?lang=en). Klikněte na **Správce instalace**.
 
-    ![Konzola pro správu BitaBIZ](media/bitabiz-provisioning-tutorial/setup-admin.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/setup-admin.png" alt-text="Snímek obrazovky s konzolou pro správu BitaBIZ s zvýrazněným správcem instalace" border="false":::
 
 2.  Přejděte k **integraci**.
 
-    ![Konzola pro správu BitaBIZ](media/bitabiz-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="Snímek obrazovky s konzolou pro správu BitaBIZ s zvýrazněným správcem instalace" border="false":::
 
 2.  Přejděte na **Microsoft Azure AD zřizování**.  V případě automatického zřizování uživatelů vyberte **povoleno** . Zkopírujte hodnoty pro **adresu URL koncového bodu zřizování SCIM** a  **token nosiče**. Tyto hodnoty se zadají do polí Adresa URL tenanta a tajného tokenu na kartě zřizování vaší aplikace BitaBIZ ve Azure Portal.
 

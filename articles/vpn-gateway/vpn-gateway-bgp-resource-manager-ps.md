@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5abfa26f5d897ade963253da81927a48cc65d781
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: aeb43f1b9f53a9f57cc436ced1db1bc3feed02d1
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394070"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843256"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Postup konfigurace protokolu BGP u bran Azure VPN Gateway pomocí PowerShellu
 Tento článek vás provede postupem povolení protokolu BGP pro připojení VPN typu Site-to-Site (S2S) a připojení typu VNet-to-VNet pomocí modelu nasazení Správce prostředků a PowerShellu.
@@ -109,7 +109,7 @@ $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 -Subnet $s
 ```
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. Vytvořte bránu VPN s číslem AS
-Vytvořte bránu virtuální sítě pro virtuální síť TestVNet1. Protokol BGP vyžaduje bránu sítě VPN založenou na trasách a také parametr sčítání – ASN pro nastavení čísla ASN (AS Number) pro virtuální sítě testvnet1. Pokud nenastavíte parametr ASN, přiřadí se číslo ASN 65515. Vytvoření brány může nějakou dobu trvat (30 minut nebo déle).
+Vytvořte bránu virtuální sítě pro virtuální síť TestVNet1. Protokol BGP vyžaduje bránu Route-Based VPN a také parametr sčítání – ASN pro nastavení čísla ASN (AS Number) pro virtuální sítě testvnet1. Pokud nenastavíte parametr ASN, přiřadí se číslo ASN 65515. Vytvoření brány může nějakou dobu trvat (30 minut nebo déle).
 
 ```powershell
 New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN
@@ -214,7 +214,7 @@ Připojení se naváže po několika minutách a relace partnerského vztahu pro
 
 Tato část přidá připojení typu VNet-to-VNet s protokolem BGP, jak je znázorněno na následujícím obrázku:
 
-![Protokol BGP pro VNet-to-VNet](./media/vpn-gateway-bgp-resource-manager-ps/bgp-vnet2vnet.png)
+![Diagram, který ukazuje připojení V síti NET k V NET.](./media/vpn-gateway-bgp-resource-manager-ps/bgp-vnet2vnet.png)
 
 Následující pokyny pokračují v předchozích krocích. K vytvoření a konfiguraci virtuální sítě testvnet1 a VPN Gateway s protokolem BGP je potřeba vyplnit [část I](#enablebgp) . 
 

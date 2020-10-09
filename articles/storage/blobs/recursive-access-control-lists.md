@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 10/07/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9f0983bdb5e8763d13eeab8ea21bef7fb9ef47f
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: cedb6d162829d63aaac1a36b35abee1faeae3f1b
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803326"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843392"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Nastavení seznamů řízení přístupu (ACL) pro Azure Data Lake Storage Gen2 rekurzivně
 
@@ -25,7 +25,7 @@ Dědičnost seznamů ACL je již k dispozici pro nové podřízené položky, kt
 
 [Knihovny](#libraries)  |  [Ukázky](#code-samples)  |  [Osvědčené postupy](#best-practice-guidelines)  |  [Sdělte nám svůj názor](#provide-feedback)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -303,14 +303,19 @@ Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $
 
 ```
 
+> [!NOTE]
+> Pokud chcete nastavit **výchozí** položku seznamu řízení přístupu (ACL), použijte při spuštění příkazu **set-AzDataLakeGen2ItemAclObject** parametr **-DefaultScope platná** . Například: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`.
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Nastavte seznam ACL rekurzivně voláním metody **DataLakeDirectoryClient. SetAccessControlRecursiveAsync** . Předá tuto metodu [seznam](/dotnet/api/system.collections.generic.list-1) [PathAccessControlItems](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). Každý [PathAccessControlItems](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) definuje položku seznamu ACL.
+Nastavte seznam ACL rekurzivně voláním metody **DataLakeDirectoryClient. SetAccessControlRecursiveAsync** . Předá tuto metodu [seznam](/dotnet/api/system.collections.generic.list-1) [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). Každý [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) definuje položku seznamu ACL. 
 
-Tento příklad nastaví seznam řízení přístupu k adresáři s názvem `my-parent-directory` . Tyto záznamy poskytují oprávnění ke čtení, zápisu a spouštění vlastnícího uživatele, přidělí skupině pouze oprávnění ke čtení a spouštění a všem ostatním uživatelům nezíská přístup. Poslední položka seznamu ACL v tomto příkladu poskytuje konkrétního uživatele s ID objektu "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" oprávnění číst a spustit.
+Pokud chcete nastavit **výchozí** položku seznamu řízení přístupu (ACL), můžete vlastnost [PathAccessControlItem. DefaultScope platná](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) [nastavit na](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) **hodnotu true**. 
+
+Tento příklad nastaví seznam řízení přístupu k adresáři s názvem `my-parent-directory` . Tato metoda přijímá logický parametr s názvem `isDefaultScope` , který určuje, zda se má nastavit výchozí seznam řízení přístupu. Tento parametr se používá v konstruktoru třídy [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). Položky seznamu řízení přístupu poskytují oprávnění ke čtení, zápisu a spouštění vlastnícího uživatele, přidělí skupině jenom oprávnění ke čtení a spouštění a všem ostatním uživatelům se neudělí žádný přístup. Poslední položka seznamu ACL v tomto příkladu poskytuje konkrétního uživatele s ID objektu "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" oprávnění číst a spustit.
 
 ```cs
-public async void SetACLRecursively(DataLakeServiceClient serviceClient)
+public async void SetACLRecursively(DataLakeServiceClient serviceClient, bool isDefaultScope)
 {
     DataLakeDirectoryClient directoryClient =
         serviceClient.GetFileSystemClient("my-container").
@@ -322,18 +327,18 @@ public async void SetACLRecursively(DataLakeServiceClient serviceClient)
         new PathAccessControlItem(AccessControlType.User, 
             RolePermissions.Read | 
             RolePermissions.Write | 
-            RolePermissions.Execute),
+            RolePermissions.Execute, isDefaultScope),
                     
         new PathAccessControlItem(AccessControlType.Group, 
             RolePermissions.Read | 
-            RolePermissions.Execute),
+            RolePermissions.Execute, isDefaultScope),
                     
         new PathAccessControlItem(AccessControlType.Other, 
-            RolePermissions.None),
+            RolePermissions.None, isDefaultScope),
 
         new PathAccessControlItem(AccessControlType.User, 
             RolePermissions.Read | 
-            RolePermissions.Execute, 
+            RolePermissions.Execute, isDefaultScope,
             entityId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
     };
 
@@ -347,17 +352,26 @@ public async void SetACLRecursively(DataLakeServiceClient serviceClient)
 
 Nastavte seznam ACL rekurzivně voláním metody **DataLakeDirectoryClient.set_access_control_recursive** .
 
-Tento příklad nastaví seznam řízení přístupu k adresáři s názvem `my-parent-directory` . Tyto záznamy poskytují oprávnění ke čtení, zápisu a spouštění vlastnícího uživatele, přidělí skupině pouze oprávnění ke čtení a spouštění a všem ostatním uživatelům nezíská přístup. Poslední položka seznamu ACL v tomto příkladu poskytuje konkrétního uživatele s ID objektu "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" oprávnění číst a spustit.
+Pokud chcete nastavit **výchozí** položku seznamu řízení přístupu (ACL), přidejte řetězec `default:` na začátek každého řetězce položky seznamu ACL. 
+
+Tento příklad nastaví seznam řízení přístupu k adresáři s názvem `my-parent-directory` . 
+
+Tato metoda přijímá logický parametr s názvem `is_default_scope` , který určuje, zda se má nastavit výchozí seznam řízení přístupu. Pokud je tento parametr `True` , seznam položek seznamu ACL předchází řetězci `default:` . 
+
+Položky seznamu řízení přístupu poskytují oprávnění ke čtení, zápisu a spouštění vlastnícího uživatele, přidělí skupině jenom oprávnění ke čtení a spouštění a všem ostatním uživatelům se neudělí žádný přístup. Poslední položka seznamu ACL v tomto příkladu poskytuje konkrétního uživatele s ID objektu "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" oprávnění číst a spustit. Tyto záznamy poskytují oprávnění ke čtení, zápisu a spouštění vlastnícího uživatele, přidělí skupině pouze oprávnění ke čtení a spouštění a všem ostatním uživatelům nezíská přístup. Poslední položka seznamu ACL v tomto příkladu poskytuje konkrétního uživatele s ID objektu "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" oprávnění číst a spustit.
 
 ```python
-def set_permission_recursively():
+def set_permission_recursively(is_default_scope):
     
     try:
         file_system_client = service_client.get_file_system_client(file_system="my-container")
 
         directory_client = file_system_client.get_directory_client("my-parent-directory")
               
-        acl = 'user::rwx,group::rwx,other::rwx,user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r-x'
+        acl = 'user::rwx,group::rwx,other::rwx,user:4a9028cf-f779-4032-b09d-970ebe3db258:r--'   
+
+        if is_default_scope:
+           acl = 'default:user::rwx,default:group::rwx,default:other::rwx,default:user:4a9028cf-f779-4032-b09d-970ebe3db258:r--'
 
         directory_client.set_access_control_recursive(acl=acl)
         
@@ -392,14 +406,19 @@ Update-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Pat
 
 ```
 
+> [!NOTE]
+> Pokud chcete aktualizovat **výchozí** položku seznamu řízení přístupu (ACL), použijte při spuštění příkazu **set-AzDataLakeGen2ItemAclObject** parametr **-DefaultScope platná** . Například: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`.
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Aktualizujte seznam ACL rekurzivně voláním metody **DataLakeDirectoryClient. UpdateAccessControlRecursiveAsync** . 
+Aktualizujte seznam ACL rekurzivně voláním metody **DataLakeDirectoryClient. UpdateAccessControlRecursiveAsync** .  Předá tuto metodu [seznam](/dotnet/api/system.collections.generic.list-1) [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). Každý [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) definuje položku seznamu ACL. 
 
-Tento příklad aktualizuje položku seznamu řízení přístupu (ACL) s oprávněním k zápisu. 
+Pokud chcete aktualizovat **výchozí** položku seznamu řízení přístupu (ACL), můžete vlastnost [PathAccessControlItem. DefaultScope platná](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) [nastavit na](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) **hodnotu true**. 
+
+Tento příklad aktualizuje položku seznamu řízení přístupu (ACL) s oprávněním k zápisu. Tato metoda přijímá logický parametr s názvem `isDefaultScope` , který určuje, zda se má aktualizovat výchozí seznam ACL. Tento parametr se používá v konstruktoru třídy [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem).
 
 ```cs
-public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient)
+public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient, bool isDefaultScope)
 {
     DataLakeDirectoryClient directoryClient =
         serviceClient.GetFileSystemClient("my-container").
@@ -411,7 +430,7 @@ public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient)
         new PathAccessControlItem(AccessControlType.User, 
             RolePermissions.Read |
             RolePermissions.Write | 
-            RolePermissions.Execute, 
+            RolePermissions.Execute, isDefaultScope, 
             entityId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
     };
 
@@ -423,19 +442,24 @@ public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-Aktualizujte seznam ACL rekurzivně voláním metody **DataLakeDirectoryClient.update_access_control_recursive** . 
+Aktualizujte seznam ACL rekurzivně voláním metody **DataLakeDirectoryClient.update_access_control_recursive** . Pokud chcete aktualizovat **výchozí** položku seznamu řízení přístupu (ACL), přidejte řetězec `default:` na začátek každého řetězce položky seznamu ACL. 
 
-Tento příklad aktualizuje položku seznamu řízení přístupu (ACL) s oprávněním k zápisu. 
+Tento příklad aktualizuje položku seznamu řízení přístupu (ACL) s oprávněním k zápisu.
+
+Tento příklad nastaví seznam řízení přístupu k adresáři s názvem `my-parent-directory` . Tato metoda přijímá logický parametr s názvem `is_default_scope` , který určuje, zda se má aktualizovat výchozí seznam ACL. Pokud je tento parametr `True` , aktualizovaná položka seznamu ACL předá řetězec `default:` .  
 
 ```python
-def update_permission_recursively():
+def update_permission_recursively(is_default_scope):
     
     try:
         file_system_client = service_client.get_file_system_client(file_system="my-container")
 
         directory_client = file_system_client.get_directory_client("my-parent-directory")
-              
-        acl = 'user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx'
+
+        acl = 'user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx'   
+
+        if is_default_scope:
+           acl = 'default:user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx'
 
         directory_client.update_access_control_recursive(acl=acl)
 
@@ -453,7 +477,7 @@ def update_permission_recursively():
 
 Jednu nebo více položek seznamu ACL můžete rekurzivně odebrat. Chcete-li odebrat položku seznamu řízení přístupu (ACL), vytvořte nový objekt ACL pro položku seznamu ACL, která se má odebrat, a pak tento objekt použijte v operaci odebrat seznam ACL. Nezískávat existující seznam ACL, stačí zadat položky seznamu ACL, které se mají odebrat. 
 
-Tato část obsahuje příklady odebrání seznamu ACL.
+Tato část obsahuje příklady odebrání seznamu ACL. 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -470,14 +494,19 @@ $acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID
 Remove-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName  -Acl $acl
 ```
 
+> [!NOTE]
+> Pokud chcete odebrat **výchozí** položku seznamu řízení přístupu (ACL), použijte při spuštění příkazu **set-AzDataLakeGen2ItemAclObject** parametr **-DefaultScope platná** . Například: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission "---" -DefaultScope`.
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Odeberte položky seznamu ACL voláním metody **DataLakeDirectoryClient. RemoveAccessControlRecursiveAsync** . 
+Odeberte položky seznamu ACL voláním metody **DataLakeDirectoryClient. RemoveAccessControlRecursiveAsync** . Předá tuto metodu [seznam](/dotnet/api/system.collections.generic.list-1) [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). Každý [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) definuje položku seznamu ACL. 
 
-Tento příklad odebere položku seznamu řízení přístupu z seznamu řízení přístupu (ACL) adresáře s názvem `my-parent-directory` . 
+Pokud chcete odebrat **výchozí** položku seznamu řízení přístupu (ACL), můžete vlastnost [PathAccessControlItem. DefaultScope platná](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) [nastavit na](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) **hodnotu true**. 
+
+Tento příklad odebere položku seznamu řízení přístupu z seznamu řízení přístupu (ACL) adresáře s názvem `my-parent-directory` . Tato metoda přijímá logický parametr s názvem `isDefaultScope` , který určuje, zda má být položka odebrána z výchozího seznamu ACL. Tento parametr se používá v konstruktoru třídy [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem).
 
 ```cs
-public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient)
+public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient, isDefaultScope)
 {
     DataLakeDirectoryClient directoryClient =
         serviceClient.GetFileSystemClient("my-container").
@@ -486,7 +515,7 @@ public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient)
     List<RemovePathAccessControlItem> accessControlListForRemoval = 
         new List<RemovePathAccessControlItem>()
         {
-            new RemovePathAccessControlItem(AccessControlType.User, 
+            new RemovePathAccessControlItem(AccessControlType.User, isDefaultScope,
             entityId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
         };
 
@@ -498,12 +527,12 @@ public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-Odeberte položky seznamu ACL voláním metody **DataLakeDirectoryClient.remove_access_control_recursive** . 
+Odeberte položky seznamu ACL voláním metody **DataLakeDirectoryClient.remove_access_control_recursive** . Pokud chcete odebrat **výchozí** položku seznamu řízení přístupu (ACL), přidejte řetězec `default:` na začátek řetězce položky seznamu řízení přístupu. 
 
-Tento příklad odebere položku seznamu řízení přístupu z seznamu řízení přístupu (ACL) adresáře s názvem `my-parent-directory` . 
+Tento příklad odebere položku seznamu řízení přístupu z seznamu řízení přístupu (ACL) adresáře s názvem `my-parent-directory` . Tato metoda přijímá logický parametr s názvem `is_default_scope` , který určuje, zda má být položka odebrána z výchozího seznamu ACL. Pokud je tento parametr `True` , aktualizovaná položka seznamu ACL předá řetězec `default:` . 
 
 ```python
-def remove_permission_recursively():
+def remove_permission_recursively(is_default_scope):
     
     try:
         file_system_client = service_client.get_file_system_client(file_system="my-container")
@@ -511,6 +540,9 @@ def remove_permission_recursively():
         directory_client = file_system_client.get_directory_client("my-parent-directory")
               
         acl = 'user:4a9028cf-f779-4032-b09d-970ebe3db258'
+
+        if is_default_scope:
+           acl = 'default:user:4a9028cf-f779-4032-b09d-970ebe3db258'
 
         directory_client.remove_access_control_recursive(acl=acl)
 
@@ -602,7 +634,7 @@ def resume_set_acl_recursive(continuation_token):
 
 ---
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 Tato část obsahuje odkazy na knihovny a ukázky kódu.
 
@@ -632,7 +664,7 @@ K běhové chybě může dojít z mnoha důvodů (například při výpadku nebo
 
 Pokud při spuštění rekurzivního procesu seznamu ACL narazíte na výjimku řízení přístupu, váš [objekt zabezpečení](https://docs.microsoft.com/azure/role-based-access-control/overview#security-principal) služby AD nemusí mít dostatečná oprávnění k použití seznamu ACL pro jednu nebo více podřízených položek v hierarchii adresáře. Pokud dojde k chybě oprávnění, proces se zastaví a poskytne se token pro pokračování. Opravte problém s oprávněním a pak použijte token pro pokračování ke zpracování zbývající datové sady. Adresáře a soubory, které již byly úspěšně zpracovány, nemusí být zpracovány znovu. Můžete také zvolit restartování rekurzivního procesu seznamu ACL. Seznamy řízení přístupu (ACL) lze znovu použít na položky, aniž by došlo k negativnímu dopadu. 
 
-#### <a name="credentials"></a>Přihlašovací údaje 
+#### <a name="credentials"></a>Credentials 
 
 Doporučujeme zřídit objekt zabezpečení služby Azure AD, kterému byla přiřazena role [vlastníka dat objektů BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) v oboru cílového účtu úložiště nebo kontejneru. 
 

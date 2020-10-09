@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: d88b8f2a6cc66e239706677bd1ebfe01bccd49af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5b14ecf061e8f0c53dc1387d1581bc780d190b9
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322026"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850869"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Kurz: Konfigurace Figma pro Automatické zřizování uživatelů
 
@@ -53,23 +53,23 @@ Před konfigurací Figma pro Automatické zřizování uživatelů se službou A
 
 1. Přihlaste se ke [konzole pro správu Figma](https://www.Figma.com/). Klikněte na ikonu ozubeného kolečka vedle vašeho tenanta.
 
-    ![FigmaFigma – zřízení zaměstnanců](media/Figma-provisioning-tutorial/image0.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/image0.png" alt-text="Snímek obrazovky s konzolou pro správu Figma Je viditelný tenant s názvem a D SCIM test. Vedle klienta se zvýrazní ikona ozubeného kolečka." border="false":::
 
 2. Přejděte na **obecné > aktualizace nastavení přihlášení**.
 
-    ![FigmaFigma – zřízení zaměstnanců](media/Figma-provisioning-tutorial/figma03.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma03.png" alt-text="Snímek obrazovky s konzolou pro správu Figma Je viditelný tenant s názvem a D SCIM test. Vedle klienta se zvýrazní ikona ozubeného kolečka." border="false":::
 
 3. Zkopírujte **ID tenanta**. Tato hodnota se použije k vytvoření adresy URL koncového bodu SCIM, která se má zadat do pole **Adresa URL tenanta** na kartě zřizování vaší aplikace Figma v Azure Portal.
 
-    ![Figma vytvořit token](media/Figma-provisioning-tutorial/figma-tenantid.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma-tenantid.png" alt-text="Snímek obrazovky s konzolou pro správu Figma Je viditelný tenant s názvem a D SCIM test. Vedle klienta se zvýrazní ikona ozubeného kolečka." border="false":::
 
 4. Posuňte se dolů a klikněte na **vygenerovat token rozhraní API**.
 
-    ![Figma vytvořit token](media/Figma-provisioning-tutorial/token.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/token.png" alt-text="Snímek obrazovky s konzolou pro správu Figma Je viditelný tenant s názvem a D SCIM test. Vedle klienta se zvýrazní ikona ozubeného kolečka." border="false":::
 
 5. Zkopírujte hodnotu  **tokenu rozhraní API** . Tato hodnota se zadá do pole **token tajného** kódu na kartě zřizování vaší aplikace Figma ve Azure Portal. 
 
-    ![Figma vytvořit token](media/Figma-provisioning-tutorial/figma04.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma04.png" alt-text="Snímek obrazovky s konzolou pro správu Figma Je viditelný tenant s názvem a D SCIM test. Vedle klienta se zvýrazní ikona ozubeného kolečka." border="false":::
 
 ## <a name="add-figma-from-the-gallery"></a>Přidání Figma z Galerie
 

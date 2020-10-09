@@ -2,14 +2,14 @@
 title: Kompletní spouštění úloh pomocí šablon
 description: Když máte jenom příkazy rozhraní příkazového řádku, můžete vytvořit fond, nahrávat vstupní data, vytvářet úlohy a související úlohy a stahovat výsledná výstupní data.
 ms.topic: how-to
-ms.date: 12/07/2018
+ms.date: 10/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e9b4930dee1b28bb4ec71690cbfcef88e0365b9e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 845a32c2feda5a5a3b8d44d237c62db94cae1779
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494923"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848717"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Použití Azure Batch šablon CLI a přenosu souborů
 
@@ -65,7 +65,7 @@ Pokud se chcete přihlásit k účtu Batch pomocí Azure CLI, přečtěte si té
 -   **Parametry**
 
     -   Povolí zadání hodnot vlastností v oddílu body, přičemž při použití šablony se musí zadat jenom hodnoty parametrů. Například úplná definice pro fond může být umístěná v těle a jenom jeden parametr definovaný pro `poolId` ; pro vytvoření fondu je potřeba zadat jenom řetězec ID fondu.
-        
+
     -   Tělo šablony může vytvořit někdo se znalostí o službě Batch a aplikace, které se mají spustit pomocí dávky. Při použití šablony musí být zadány pouze hodnoty pro parametry definované autorem. Uživatel bez podrobných znalostí a/nebo aplikací v dávce může proto šablony použít.
 
 -   **Proměnné**
@@ -121,7 +121,7 @@ Následuje příklad šablony, která vytváří fond virtuálních počítačů
             "vmSize": "STANDARD_D3_V2",
             "targetDedicatedNodes": "[parameters('nodeCount')]",
             "enableAutoScale": false,
-            "maxTasksPerNode": 1,
+            "taskSlotsPerNode": 1,
             "packageReferences": [
                 {
                     "type": "aptPackage",
@@ -209,7 +209,7 @@ Následuje příklad šablony, která vytvoří úlohu pro překódování video
             },
             "taskFactory": {
                 "type": "taskPerFile",
-                "source": { 
+                "source": {
                     "fileGroup": "ffmpeg-input"
                 },
                 "repeatTask": {
@@ -271,7 +271,7 @@ Skupina souborů odpovídá kontejneru vytvořenému v účtu služby Azure Stor
 Rozšíření Batch CLI poskytuje příkazy pro nahrání souborů z klienta do zadané skupiny souborů a stažení souborů ze zadané skupiny souborů do klienta.
 
 ```azurecli
-az batch file upload --local-path c:\source_videos\*.mp4 
+az batch file upload --local-path c:\source_videos\*.mp4
     --file-group ffmpeg-input
 
 az batch file download --file-group ffmpeg-output --local-path

@@ -2,14 +2,14 @@
 title: Použití úkolů s více instancemi ke spouštění aplikací MPI
 description: Naučte se spouštět aplikace MPI (Message Passing Interface) pomocí typu úlohy s více instancemi v Azure Batch.
 ms.topic: how-to
-ms.date: 03/13/2019
+ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: fd39af127d975f085bbd55fe2a21f925b5aae8e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6207fc5295de28d4caf956b74e14f97f1113120c
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926367"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850621"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Použití úkolů s více instancemi ke spouštění aplikací rozhraní MPI (Message Passing Interface) ve Batch
 
@@ -39,7 +39,7 @@ Když odešlete úlohu s nastavením více instancí do úlohy, dávka provede n
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>Požadavky na úlohy s více instancemi
-Úkoly s více instancemi vyžadují fond se **zapnutou komunikací mezi uzly**a **Souběžné spouštění úloh je zakázané**. Chcete-li zakázat souběžné provádění úloh, nastavte vlastnost [CloudPool. MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool) na hodnotu 1.
+Úkoly s více instancemi vyžadují fond se **zapnutou komunikací mezi uzly**a **Souběžné spouštění úloh je zakázané**. Chcete-li zakázat souběžné provádění úloh, nastavte vlastnost [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) na hodnotu 1.
 
 > [!NOTE]
 > Batch [omezuje](batch-quota-limit.md#pool-size-limits) velikost fondu, který má povolenou komunikaci mezi uzly.
@@ -58,11 +58,11 @@ CloudPool myCloudPool =
 // Multi-instance tasks require inter-node communication, and those nodes
 // must run only one task at a time.
 myCloudPool.InterComputeNodeCommunicationEnabled = true;
-myCloudPool.MaxTasksPerComputeNode = 1;
+myCloudPool.TaskSlotsPerNode = 1;
 ```
 
 > [!NOTE]
-> Pokud se pokusíte spustit úlohu s více instancemi ve fondu s zakázáním komunikace mezi uzly nebo s hodnotou *maxTasksPerNode* větší než 1, úloha není nikdy naplánována – zůstane neomezeně ve stavu "aktivní". 
+> Pokud se pokusíte spustit úlohu s více instancemi ve fondu s zakázáním komunikace mezi uzly nebo s hodnotou *taskSlotsPerNode* větší než 1, úloha není nikdy naplánována – zůstane neomezeně ve stavu "aktivní".
 
 
 ### <a name="use-a-starttask-to-install-mpi"></a>Použití StartTask k instalaci MPI
@@ -99,7 +99,7 @@ V následujících článcích vyhledejte velikosti zadané jako "RDMA podporuje
   * [Velikosti virtuálních počítačů v Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
-> Pokud chcete využít výhod RDMA na [výpočetních uzlech pro Linux](batch-linux-nodes.md), musíte na uzlech použít **Intel MPI** . 
+> Pokud chcete využít výhod RDMA na [výpočetních uzlech pro Linux](batch-linux-nodes.md), musíte na uzlech použít **Intel MPI** .
 >
 
 ## <a name="create-a-multi-instance-task-with-batch-net"></a>Vytvoření úlohy s více instancemi pomocí batch .NET

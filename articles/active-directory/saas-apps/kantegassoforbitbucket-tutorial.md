@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 36d843e80f024408747c1f94512a3ccc04c6709b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e6acb5f30268f0e771d80489dff52f03eb58234a
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546894"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850747"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>Kurz: Azure Active Directory Integration s Kantega SSO pro Bitbucket
 
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí jednotného přihlašování Kantega pro BitBucket, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte KANTEGA SSO pro jednotné přihlašování Bitbucket](#configure-kantega-sso-for-bitbucket-single-sign-on)** a nakonfigurujte nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte KANTEGA SSO pro jednotné přihlašování Bitbucket](#configure-kantega-sso-for-bitbucket-single-sign-on)** a nakonfigurujte nastavení s jedním Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte KANTEGA SSO pro Bitbucket testovacího uživatele](#create-kantega-sso-for-bitbucket-test-user)** – abyste měli protějšek Britta Simon v Kantega SSO pro BitBucket, který je propojený s reprezentací uživatele v Azure AD.
@@ -93,13 +93,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Kantega SSO pro přihlašovací údaje domény Bitbucket a adresy URL jednotného přihlašování](common/idp-intiated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -107,14 +107,14 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Kantega SSO pro přihlašovací údaje domény Bitbucket a adresy URL jednotného přihlašování](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Tyto hodnoty jsou obdrženy během konfigurace modulu plug-in BitBucket, který je vysvětlen dále v tomto kurzu.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a adresou URL Sign-On. Tyto hodnoty jsou obdrženy během konfigurace modulu plug-in BitBucket, který je vysvětlen dále v tomto kurzu.
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -128,85 +128,85 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-kantega-sso-for-bitbucket-single-sign-on"></a>Konfigurace jednotného přihlašování Kantega SSO pro Bitbucket
+### <a name="configure-kantega-sso-for-bitbucket-single-sign-on"></a>Konfigurace Kantega SSO pro Bitbucket Single Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k portálu pro správu Bitbucket jako správce.
 
 1. Klikněte na ozubeného kola a potom klikněte na **najít nové**doplňky.
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforbitbucket-tutorial/addon1.png)
+    ![Snímek obrazovky zobrazuje BitBucket správu s vybranými možnostmi najít nové doplňky.](./media/kantegassoforbitbucket-tutorial/addon1.png)
 
 1. Vyhledejte **KANTEGA SSO pro BITBUCKET SAML & Kerberos** a kliknutím na **instalovat** nainstalujete nový modul plug-in SAML.
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforbitbucket-tutorial/addon2.png)
+    ![Snímek obrazovky zobrazuje Kantega SSO pro Bitbucket SAML & Kerberos s možností instalace.](./media/kantegassoforbitbucket-tutorial/addon2.png)
 
 1. Spustí se instalace modulu plug-in.
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforbitbucket-tutorial/addon31.png)
+    ![Snímek obrazovky se zobrazí průběh instalace.](./media/kantegassoforbitbucket-tutorial/addon31.png)
 
 1. Po dokončení instalace. Klikněte na **Zavřít**.
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforbitbucket-tutorial/addon33.png)
+    ![Snímek obrazovky se zobrazí tlačítko Zavřít.](./media/kantegassoforbitbucket-tutorial/addon33.png)
 
 1. Klikněte na **Manage** (Spravovat).
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforbitbucket-tutorial/addon34.png)
+    ![Snímek obrazovky se zobrazeným tlačítkem spravovat.](./media/kantegassoforbitbucket-tutorial/addon34.png)
 
 1. Kliknutím na **Konfigurovat** Nakonfigurujte nový modul plug-in.
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforbitbucket-tutorial/addon35.png)
+    ![Snímek obrazovky zobrazuje doplňky nainstalované uživatelem s vybranou konfigurací.](./media/kantegassoforbitbucket-tutorial/addon35.png)
 
 1. V části **SAML** . V rozevíracím seznamu **Přidat poskytovatele identity** vyberte **Azure Active Directory (Azure AD)** .
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforbitbucket-tutorial/addon4.png)
+    ![Snímek obrazovky zobrazuje Kantega jednu Sign-On s Azure A D vybraným jako poskytovatel identity.](./media/kantegassoforbitbucket-tutorial/addon4.png)
 
 1. Vyberte úroveň předplatného jako **základní**.
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforbitbucket-tutorial/addon5.png)
+    ![Snímek obrazovky s vybraným základním sestavením Azure A D](./media/kantegassoforbitbucket-tutorial/addon5.png)
 
 1. V části **Vlastnosti aplikace** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforbitbucket-tutorial/addon6.png)
+    ![Snímek obrazovky se zobrazí v části vlastnosti aplikace, kde můžete zadat informace v tomto kroku.](./media/kantegassoforbitbucket-tutorial/addon6.png)
 
-    a. Zkopírujte hodnotu **identifikátoru URI ID aplikace** a použijte ji jako **identifikátor, adresu URL odpovědi a přihlašovací adresu URL** v části **základní konfigurace SAML** v Azure Portal.
+    a. Zkopírujte hodnotu **identifikátoru URI ID aplikace** a použijte ji jako **identifikátor, adresu URL odpovědi a adresu URL Sign-On** v části **základní konfigurace SAML** v Azure Portal.
 
-    b. Klikněte na **Další**.
+    b. Klikněte na **Next** (Další).
 
 1. V části **import metadat** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforbitbucket-tutorial/addon7.png)
+    ![Snímek obrazovky se zobrazí v části import metadat, kde můžete vyhledat soubor metadat.](./media/kantegassoforbitbucket-tutorial/addon7.png)
 
     a. Vyberte **soubor metadat na mém počítači**a nahrajte soubor metadat, který jste stáhli z Azure Portal.
 
-    b. Klikněte na **Další**.
+    b. Klikněte na **Next** (Další).
 
 1. V části **název a umístění jednotného přihlašování** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforbitbucket-tutorial/addon8.png)
+    ![Snímek obrazovky se zobrazí název a umístění s S S, kde je Azure A D názvem zprostředkovatele identity.](./media/kantegassoforbitbucket-tutorial/addon8.png)
 
     a. Do textového pole **název zprostředkovatele** identity přidejte jméno poskytovatele identity (např. Azure AD).
 
-    b. Klikněte na **Další**.
+    b. Klikněte na **Next** (Další).
 
 1. Ověřte podpisový certifikát a klikněte na tlačítko **Další**.
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforbitbucket-tutorial/addon9.png)
+    ![Snímek obrazovky ukazuje ověření podpisu.](./media/kantegassoforbitbucket-tutorial/addon9.png)
 
 1. V části **uživatelské účty Bitbucket** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforbitbucket-tutorial/addon10.png)
+    ![Snímek obrazovky zobrazuje uživatelské účty BitBucket, kde máte možnost vytvářet uživatele.](./media/kantegassoforbitbucket-tutorial/addon10.png)
 
     a. **V případě potřeby vyberte možnost vytvořit uživatele v interním adresáři Bitbucket** a zadejte vhodný název skupiny pro uživatele (může to být víc. skupin oddělených čárkami).
 
-    b. Klikněte na **Další**.
+    b. Klikněte na **Next** (Další).
 
 1. Klikněte na **Finish** (Dokončit).
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforbitbucket-tutorial/addon11.png)
+    ![Snímek obrazovky zobrazující stránku souhrnu](./media/kantegassoforbitbucket-tutorial/addon11.png)
 
 1. V části **známé domény pro Azure AD** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/kantegassoforbitbucket-tutorial/addon12.png)
+    ![Snímek obrazovky ukazuje známé domény pro Azure A D, kde můžete provádět tyto kroky.](./media/kantegassoforbitbucket-tutorial/addon12.png)
 
     a. Na levém panelu stránky vyberte **známé domény** .
 
@@ -237,7 +237,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -245,7 +245,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Kantega SSO pro Bitbucket**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **KANTEGA SSO pro Bitbucket**.
 
@@ -275,19 +275,19 @@ Aby se uživatelé Azure AD mohli přihlašovat k BitBucket, musí se zřídit v
 
 1. Klikněte na ikonu nastavení.
 
-    ![Přidat zaměstnance](./media/kantegassoforbitbucket-tutorial/user1.png) 
+    ![Snímek obrazovky se zobrazí ikona nastavení.](./media/kantegassoforbitbucket-tutorial/user1.png) 
 
 1. V části karta **Správa** klikněte na **Uživatelé**.
 
-    ![Přidat zaměstnance](./media/kantegassoforbitbucket-tutorial/user2.png)
+    ![Snímek obrazovky zobrazuje BitBucket správu s vybranými uživateli. ](./media/kantegassoforbitbucket-tutorial/user2.png)
 
 1. Klikněte na **vytvořit uživatele**.
 
-    ![Přidat zaměstnance](./media/kantegassoforbitbucket-tutorial/user3.png)   
+    ![Snímek obrazovky zobrazuje BitBucket správu s vybraným nástrojem vytvořit uživatele.](./media/kantegassoforbitbucket-tutorial/user3.png)   
 
 1. Na stránce **vytvořit uživatele** proveďte následující kroky:
 
-    ![Přidat zaměstnance](./media/kantegassoforbitbucket-tutorial/user4.png) 
+    ![Snímek obrazovky se zobrazí v dialogovém okně vytvořit uživatele, kde můžete provést tyto kroky.](./media/kantegassoforbitbucket-tutorial/user4.png) 
 
     a. Do textového pole **uživatelské jméno** zadejte e-maily jako uživatel Brittasimon@contoso.com .
 

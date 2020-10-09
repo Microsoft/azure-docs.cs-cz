@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 4b318057254688ba3060c825a7926b1c40de437c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c81c6145aed5f45849f6f08fdd1136862c3b7d8
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91305009"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850865"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace informačního CloudSuiteu pro Automatické zřizování uživatelů
 
@@ -68,11 +68,11 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
     
     ![Heslo pro informační CloudSuite](media/infor-cloudsuite-provisioning-tutorial/password.png)
 
-    ![CloudSuite – identifikátor](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/identifier.png" alt-text="Snímek obrazovky s konzolou správce CloudSuite, která zobrazuje zvýrazněný řádek tabulky Tento řádek obsahuje identifikátor uživatele, hesla a časové razítko." border="false":::
 
 5. Pokud chcete vygenerovat nosný token, zkopírujte **identifikátor uživatele** a **heslo SCIM**. Vložte je do poznámkového bloku + + oddělené dvojtečkou. Zakódovat řetězcovou hodnotu tak, že přejdete na **moduly plug-in > nástroje MIME > Basic64 kódování**. 
 
-    ![CloudSuite – identifikátor](media/infor-cloudsuite-provisioning-tutorial/token.png)
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="Snímek obrazovky s konzolou správce CloudSuite, která zobrazuje zvýrazněný řádek tabulky Tento řádek obsahuje identifikátor uživatele, hesla a časové razítko." border="false":::
 
 3.  Zkopírujte token nosiče. Tato hodnota se zadá do pole token tajného kódu na kartě zřizování aplikace CloudSuite, která se nachází v Azure Portal.
 

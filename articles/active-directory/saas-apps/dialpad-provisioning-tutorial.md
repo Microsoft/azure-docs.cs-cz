@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: dee9ca2879d456270cfed667b8a02a6e5c4f100b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7475ebc6dd51bbc1c30ee22623c7cbda1a5237ab
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328050"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848955"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Kurz: Konfigurace Dialpad pro Automatické zřizování uživatelů
 
@@ -54,13 +54,13 @@ Před konfigurací Dialpad pro Automatické zřizování uživatelů se službou
 
 1. Přihlaste se ke [konzole správce Dialpad](https://dialpadbeta.com/login) a vyberte **Nastavení správce**. Ujistěte se, že je v rozevíracím seznamu vybraná možnost **Moje společnost** . Přejděte na **ověřovací > klíče rozhraní API**.
 
-    ![Dialpad přidat SCIM](media/dialpad-provisioning-tutorial/dialpad01.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad01.png" alt-text="Snímek obrazovky s konzolou pro správu Dialpad s ikonou nastavení, se zvýrazněnou firmou, ověřováním a vybranými klíči P a vybranou společností" border="false":::
 
 2. Vygenerujte nový klíč kliknutím na **Přidat klíč** a nakonfigurujete vlastnosti tajného tokenu.
 
-    ![Dialpad přidat SCIM](media/dialpad-provisioning-tutorial/dialpad02.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Snímek obrazovky s konzolou pro správu Dialpad s ikonou nastavení, se zvýrazněnou firmou, ověřováním a vybranými klíči P a vybranou společností" border="false":::
 
-    ![Dialpad přidat SCIM](media/dialpad-provisioning-tutorial/dialpad03.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Snímek obrazovky s konzolou pro správu Dialpad s ikonou nastavení, se zvýrazněnou firmou, ověřováním a vybranými klíči P a vybranou společností" border="false":::
 
 3. Klikněte na tlačítko **kliknutím zobrazit hodnotu** pro nedávno vytvořený klíč rozhraní API a zkopírujte zobrazenou hodnotu. Tato hodnota se zadá do pole **token tajného** kódu na kartě zřizování vaší aplikace Dialpad ve Azure Portal. 
 
@@ -89,19 +89,19 @@ Pokud chcete nakonfigurovat Dialpad pro Automatické zřizování uživatelů po
 
 5. V samostatném prohlížeči přejděte na **adresu URL** zvýrazněnou níže. 
 
-    ![Dialpad přidat SCIM](media/dialpad-provisioning-tutorial/dialpad05.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Snímek obrazovky s konzolou pro správu Dialpad s ikonou nastavení, se zvýrazněnou firmou, ověřováním a vybranými klíči P a vybranou společností" border="false":::
 
 6. V pravém horním rohu vyberte možnost **přihlásit > použijte Dialpad online**.
 
-    ![Dialpad přidat SCIM](media/dialpad-provisioning-tutorial/dialpad06.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Snímek obrazovky s konzolou pro správu Dialpad s ikonou nastavení, se zvýrazněnou firmou, ověřováním a vybranými klíči P a vybranou společností" border="false":::
 
 7. Dialpad je aplikace OpenIDConnect, která se rozhodne přihlásit k Dialpad pomocí pracovního účtu Microsoft.
 
-    ![Dialpad přidat SCIM](media/dialpad-provisioning-tutorial/loginpage.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Snímek obrazovky s konzolou pro správu Dialpad s ikonou nastavení, se zvýrazněnou firmou, ověřováním a vybranými klíči P a vybranou společností" border="false":::
 
 8. Po úspěšném ověření Přijměte výzvu k zadání souhlasu pro stránku souhlasu. Aplikace se pak automaticky přidá do vašeho tenanta a budete přesměrováni na svůj účet Dialpad.
 
-    ![Dialpad přidat SCIM](media/dialpad-provisioning-tutorial/redirect.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Snímek obrazovky s konzolou pro správu Dialpad s ikonou nastavení, se zvýrazněnou firmou, ověřováním a vybranými klíči P a vybranou společností" border="false":::
 
  ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Konfigurace automatického zřizování uživatelů na Dialpad
 

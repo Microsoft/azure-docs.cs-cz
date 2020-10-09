@@ -4,12 +4,12 @@ description: Tento článek poskytuje informace o tom, jak přidat koncový bod 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f902c77c3c7e614247abd4f8af50b8ed37b7e574
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 1b62f69bad4484239b3a6c5d6f7ae910fbdef03f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552981"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843375"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Povolení přístupu k oboru názvů Azure Service Bus z konkrétních virtuálních sítí
 
@@ -54,6 +54,10 @@ To znamená, že vaše cloudová řešení citlivá na zabezpečení nezískají
 Vytvoření vazby oboru názvů Service Bus k virtuální síti je proces se dvěma kroky. Nejdřív je potřeba vytvořit **koncový bod služby Virtual Network** v podsíti Virtual Network a povolit ho pro **Microsoft. ServiceBus** , jak je vysvětleno v tématu [Přehled koncového bodu služby][vnet-sep]. Po přidání koncového bodu služby navážete obor názvů Service Bus s **pravidlem virtuální sítě**.
 
 Pravidlo virtuální sítě je přidružení oboru názvů Service Bus k podsíti virtuální sítě. I když toto pravidlo existuje, budou mít všechny úlohy vázané na podsíť přístup k oboru názvů Service Bus. Service Bus sám o sobě nenavazuje odchozí připojení, nemusí získat přístup, a proto nikdy neudělí přístup k podsíti tím, že toto pravidlo povolí.
+
+> [!NOTE]
+> Mějte na paměti, že koncový bod síťové služby poskytuje aplikacím běžícím ve virtuální síti přístup k oboru názvů Service Bus. Virtuální síť ovládá dostupnost koncového bodu, ale ne operace, které je možné provést na Service Bus entit (fronty, témata nebo odběry). Použijte Azure Active Directory (Azure AD) k autorizaci operací, které můžou aplikace provádět na oboru názvů a jejích entitách. Další informace najdete v tématu [ověřování a autorizace aplikace pomocí Azure AD pro přístup k Service Bus entit](authenticate-application.md).
+
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
 V této části se dozvíte, jak pomocí Azure Portal přidat koncový bod služby virtuální sítě. Chcete-li omezit přístup, je nutné integrovat koncový bod služby virtuální sítě pro tento Event Hubs obor názvů.

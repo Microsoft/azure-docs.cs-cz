@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 7cc6886b5341d8bc8a82288ad8a2a699381a953c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46b3009a7a57f726457a767afe501bfb28a06606
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935298"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843358"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>Vysvětlení souboru LocalConfiguration.json – agent v jazyce C
 
@@ -40,7 +40,7 @@ Změny konfiguračního souboru se provádějí při restartování agenta.
 | ConnectionTimeout | ISO8601 řetězec | Doba, po jejímž uplynutí vypršel časový limit připojení k IoThub |
 | Authentication | JsonObject | Konfigurace ověřování. Tento objekt obsahuje všechny informace potřebné pro ověřování proti IoTHub |
 | Identita | "DPS", "SecurityModule", "Device" | Ověřování identity – DPS Pokud se provádí ověření prostřednictvím DPS, SecurityModule Pokud se provádí ověřování prostřednictvím přihlašovacích údajů modulu zabezpečení nebo zařízení, pokud se provede ověřování pomocí přihlašovacích údajů k zařízení |
-| Parametr | "SasToken", "SelfSignedCertificate" | uživatelský tajný klíč pro ověřování – vyberte SasToken, pokud je klíč use symetrický, vyberte certifikát podepsaný svým držitelem, pokud je tajný kód certifikát podepsaný svým držitelem.  |
+| Parametr | "SasToken", "SelfSignedCertificate" | uživatelský tajný klíč pro ověřování – vyberte SasToken, pokud je klíč use symetrický, vyberte certifikát podepsaný držitelem, pokud se jedná o certifikát podepsaný svým držitelem.  |
 | FilePath | Cesta k souboru (řetězec) | Cesta k souboru, který obsahuje tajný klíč ověřování |
 | Název hostitele | řetězec | Název hostitele služby Azure IoT Hub. obvykle <>. azure-devices.net |
 | DeviceId | řetězec | ID zařízení (registrované ve službě Azure IoT Hub) |

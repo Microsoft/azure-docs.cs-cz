@@ -2,14 +2,14 @@
 title: Automatické škálování výpočetních uzlů ve fondu služby Azure Batch
 description: Povolte automatické škálování v cloudovém fondu, abyste mohli dynamicky upravovat počet výpočetních uzlů ve fondu.
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: e3e7a354e015ffa8a6164de59edcf572ab773319
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5774acbfc035ab61267dddb31b01b0e82689f690
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932317"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849788"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření automatického vzorce pro škálování výpočetních uzlů ve fondu služby Batch
 
@@ -255,7 +255,7 @@ Při definování vzorce můžete použít metriky prostředků i úloh. Cílov�
       <li>$NetworkOutBytes</li></ul></p>
   </tr>
   <tr>
-    <td><b>Úkol</b></td>
+    <td><b>Úloha</b></td>
     <td><p>Metriky úloh jsou založené na stavu úkolů, například aktivní, čeká na vyřízení a dokončeno. Následující proměnné definované službou jsou užitečné při vytváření úprav velikosti fondu na základě metrik úloh:</p>
     <p><ul>
       <li>$ActiveTasks</li>
@@ -648,6 +648,24 @@ Result:
 Error:
 ```
 
+## <a name="get-autoscale-run-history-using-pool-autoscale-events"></a>Získat historii spuštění automatického škálování pomocí událostí automatického škálování fondu
+Pomocí dotazu na [PoolAutoScaleEvent](batch-pool-autoscale-event.md)můžete také zaškrtnout historii automatického škálování. Služba Batch generuje tuto událost za účelem zaznamenávání každého výskytu vyhodnocování a provádění vzorce automatického škálování, což může být užitečné při řešení potenciálních problémů.
+
+Ukázková událost pro PoolAutoScaleEvent:
+```json
+{
+    "id": "poolId",
+    "timestamp": "2020-09-21T23:41:36.750Z",
+    "formula": "...",
+    "results": "$TargetDedicatedNodes=10;$NodeDeallocationOption=requeue;$curTime=2016-10-14T18:36:43.282Z;$isWeekday=1;$isWorkingWeekdayHour=0;$workHours=0",
+    "error": {
+        "code": "",
+        "message": "",
+        "values": []
+    }
+}
+```
+
 ## <a name="example-autoscale-formulas"></a>Ukázka vzorců automatického škálování
 
 Pojďme se podívat na několik vzorců, které ukazují různé způsoby, jak upravit množství výpočetních prostředků ve fondu.
@@ -691,7 +709,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ### <a name="example-3-accounting-for-parallel-tasks"></a>Příklad 3: monitorování účtů pro paralelní úlohy
 
-Tento příklad v jazyce C# upravuje velikost fondu na základě počtu úkolů. Tento vzorec také bere v úvahu hodnotu [MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode) , která byla pro fond nastavena. Tento přístup je užitečný v situacích, kdy je na vašem fondu povolených [paralelního spouštění úkolů](batch-parallel-node-tasks.md) .
+Tento příklad v jazyce C# upravuje velikost fondu na základě počtu úkolů. Tento vzorec také bere v úvahu hodnotu [TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) , která byla pro fond nastavena. Tento přístup je užitečný v situacích, kdy je na vašem fondu povolených [paralelního spouštění úkolů](batch-parallel-node-tasks.md) .
 
 ```csharp
 // Determine whether 70 percent of the samples have been recorded in the past
@@ -699,7 +717,7 @@ Tento příklad v jazyce C# upravuje velikost fondu na základě počtu úkolů.
 $samples = $ActiveTasks.GetSamplePercent(TimeInterval_Minute * 15);
 $tasks = $samples < 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1),avg($ActiveTasks.GetSample(TimeInterval_Minute * 15)));
 // Set the number of nodes to add to one-fourth the number of active tasks
-// (theMaxTasksPerComputeNode property on this pool is set to 4, adjust
+// (the TaskSlotsPerNode property on this pool is set to 4, adjust
 // this number for your use case)
 $cores = $TargetDedicatedNodes * 4;
 $extraVMs = (($tasks - $cores) + 3) / 4;

@@ -2,26 +2,28 @@
 title: Úlohy kontejneru
 description: Naučte se spouštět a škálovat aplikace z imagí kontejnerů na Azure Batch. Vytvořte fond výpočetních uzlů, které podporují spouštění úloh kontejneru.
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/06/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 0efc63258295ec7a7db20ec97e0ac81bd4c382f7
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9d8776ba8e683cd14c766fead1e7238a6c24d000
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018505"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843443"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Spustit aplikace kontejneru v Azure Batch
 
 Azure Batch umožňuje spouštět a škálovat velké počty úloh služby Batch computing v Azure. Úlohy Batch lze spustit přímo na virtuálních počítačích (uzlech) ve fondu Batch, ale můžete také nastavit fond dávek pro spouštění úloh v kontejnerech kompatibilních s Docker na uzlech. V tomto článku se dozvíte, jak vytvořit fond výpočetních uzlů, které podporují spouštění úloh kontejneru, a pak spouštějí úlohy kontejneru ve fondu.
 
-Měli byste být obeznámeni se základními pojmy kontejnerů a vytvářením fondu a úloh Batch. Příklady kódu používají sady SDK Batch .NET a Python. Můžete také použít další sady SDK a nástroje sady Batch, včetně Azure Portal, k vytvoření fondů dávek s podporou kontejneru a ke spouštění úloh kontejneru.
+Příklady kódu zde používají sady SDK Batch .NET a Python. Můžete také použít další sady SDK a nástroje sady Batch, včetně Azure Portal, k vytvoření fondů dávek s podporou kontejneru a ke spouštění úloh kontejneru.
 
 ## <a name="why-use-containers"></a>Proč používat kontejnery?
 
 Pomocí kontejnerů můžete snadno spouštět úlohy služby Batch bez nutnosti spravovat prostředí a závislosti pro spouštění aplikací. Kontejnery nasazují aplikace jako odlehčené, přenosné a dostatečné jednotky, které mohou běžet v několika různých prostředích. Můžete například sestavit a otestovat kontejner místně a pak nahrát image kontejneru do registru v Azure nebo jinde. Model nasazení kontejneru zajišťuje, že běhové prostředí aplikace je vždy správně nainstalováno a nakonfigurováno všude, kde je aplikace hostována. Úlohy založené na kontejneru v dávce můžou také využívat funkce nekontejnerových úloh, včetně balíčků aplikací a správy souborů prostředků a výstupních souborů.
 
 ## <a name="prerequisites"></a>Požadavky
+
+Měli byste být obeznámeni se základními pojmy kontejnerů a vytvářením fondu a úloh Batch.
 
 - **Verze sady SDK**: sady SDK pro Batch podporují image kontejnerů v následujících verzích:
   - Batch REST API verze 2017 -09-01.6.0
@@ -282,6 +284,12 @@ Chcete-li spustit úlohu kontejneru ve fondu s podporou kontejneru, zadejte nast
 - Použijte `ContainerSettings` vlastnost tříd úloh ke konfiguraci nastavení specifických pro kontejner. Tato nastavení jsou definována třídou [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) . Všimněte si, že `--rm` možnost kontejneru nevyžaduje další `--runtime` možnost, protože se stará o dávku.
 
 - Pokud spouštíte úlohy na obrázcích kontejneru, úloha [cloudu](/dotnet/api/microsoft.azure.batch.cloudtask) a [úkol správce úloh](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) vyžadují nastavení kontejneru. Úkol [Spustit úkol](/dotnet/api/microsoft.azure.batch.starttask), [úkol přípravy úlohy](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)a [úkol uvolnění úlohy](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) však nevyžadují nastavení kontejneru (to znamená, že mohou být spuštěny v kontextu kontejneru nebo přímo na uzlu).
+
+- V případě systému Windows musí být úlohy spuštěny s [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) nastavenou na `admin` . 
+
+- Pro Linux bude Batch mapovat oprávnění uživatele nebo skupiny k kontejneru. Pokud přístup k libovolné složce v kontejneru vyžaduje oprávnění správce, bude pravděpodobně nutné spustit úlohu jako rozsah fondu s úrovní zvýšení oprávnění správce. Tím se zajistí, že dávka spustí úlohu jako kořen v kontextu kontejneru. V opačném případě uživatel bez oprávnění správce nemusí mít přístup k těmto složkám.
+
+- Pro fondy kontejnerů s hardwarem podporujícím GPU Batch automaticky povolí GPU pro úlohy kontejneru, takže by neměl obsahovat `–gpus` argument.
 
 ### <a name="container-task-command-line"></a>Příkazový řádek úlohy kontejneru
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 5956623876646d976c2c93b4953adab33e8231b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 429820f41025eda262742ac9aec1de3b646b141f
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535573"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850541"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s IntelligenceBank
 
@@ -111,7 +111,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -137,11 +137,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **ověřovací data** a pak klikněte na **Přidat nový** .
 
-    ![Konfigurace IntelligenceBank](./media/intelligencebank-tutorial/authenticator.PNG)
+    ![Snímek obrazovky se zobrazí karta správce a ikona Přidat nový.](./media/intelligencebank-tutorial/authenticator.PNG)
 
 1. Proveďte tyto kroky:
 
-    ![Konfigurace IntelligenceBank](./media/intelligencebank-tutorial/urls.PNG)
+    ![Snímek obrazovky se zobrazí pole, kde v tomto kroku zadáte informace.](./media/intelligencebank-tutorial/urls.PNG)
 
     a. Do textového pole **název** zadejte například název jako `azureadsso` .
 
@@ -165,11 +165,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Otevřete **správce**  ->  **Users** a přidejte **uživatele**kliknutím na **ikonu Přidat nového uživatele** .
 
-    ![Konfigurace IntelligenceBank](./media/intelligencebank-tutorial/creating-user.PNG)
+    ![Snímek obrazovky ukazuje ikonu uživatelé vybranou na kartě Uživatelé.](./media/intelligencebank-tutorial/creating-user.PNG)
 
 1. Vyplňte potřebná pole podle požadavků vaší organizace a klikněte na **Uložit**.
 
-    ![Konfigurace IntelligenceBank](./media/intelligencebank-tutorial/creating-user-1.PNG)
+    ![Snímek obrazovky se stránkou přidat nového uživatele, kde zadáte informace o uživateli.](./media/intelligencebank-tutorial/creating-user-1.PNG)
 
 ## <a name="test-sso"></a>Test SSO 
 

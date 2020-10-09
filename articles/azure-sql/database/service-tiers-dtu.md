@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
+ms.date: 10/07/2020
 ms.reviewer: ''
-ms.date: 11/26/2019
-ms.openlocfilehash: ba2170923885eac19af4bfe3ce55ea653371c0e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321352"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848853"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služby v nákupním modelu založeném na DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,16 +40,21 @@ Výběr úrovně služeb závisí hlavně na požadavcích na provozní kontinui
 |**Smlouva SLA pro dobu provozu**|99,99 %|99,99 %|99,99 %|
 |**Maximální uchovávání záloh**|7 dní|35 dní|35 dní|
 |**Procesor**|Nízká|Nízká, střední, vysoká|Střední, vysoká|
-|**Propustnost vstupně-výstupních operací (přibližná)** |1-5 IOPS na DTU| 1-5 IOPS na DTU | 25 IOPS na DTU|
+|**IOPS (přibližná)**\* |1-5 IOPS na DTU| 1-5 IOPS na DTU | 25 IOPS na DTU|
 |**Latence v/v (přibližná)**|5 ms (čtení), 10 ms (zápis)|5 ms (čtení), 10 ms (zápis)|2 ms (čtení a zápis)|
 |**Indexování columnstore** |Není k dispozici|S3 a vyšší|Podporováno|
 |**OLTP v paměti**|N/A|N/A|Podporováno|
 
+\* Všechny vstupně-výstupní operace čtení a zápisu proti datovým souborům, včetně/v v/v (kontrolní bod a opožděný zápis)
+
 > [!IMPORTANT]
-> Úrovně služeb Basic, Standard S0, S1 a S2 poskytují méně než jeden vCore (CPU).  Pro úlohy náročné na procesor se doporučuje úroveň služby S3 nebo vyšší. 
+> Cíle služeb Basic, S0, S1 a S2 poskytují méně než jeden vCore (CPU).  Pro úlohy náročné na procesor se doporučuje cíl služby S3 nebo vyšší. 
 >
->V případě úložiště dat se úrovně služeb Basic, Standard S0 a S1 nacházejí v objektech blob stránky úrovně Standard. Objekty blob stránky úrovně Standard využívají úložná média založená na pevných discích (HDD) a jsou nejvhodnější pro vývoj, testování a jiné zřídka používané úlohy, které jsou méně citlivé na variabilitu výkonu.
+> V cílech služeb Basic, S0 a S1 se soubory databáze ukládají ve službě Azure Storage úrovně Standard, která využívá úložná média založená na pevných discích (HDD). Tyto cíle služeb jsou nejvhodnější pro vývoj, testování a jiné často používané úlohy, které jsou méně citlivé na variabilitu výkonu.
 >
+
+> [!TIP]
+> Pokud chcete zobrazit skutečná omezení [zásad správného řízení prostředků](resource-limits-logical-server.md#resource-governance) pro databázi nebo elastický fond, Dotazujte zobrazení [Sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) .
 
 > [!NOTE]
 > Pokud chcete prozkoumat Azure, můžete získat bezplatnou databázi v Azure SQL Database v základní úrovni služby ve spojení s bezplatným účtem Azure. Informace najdete v tématu [Vytvoření spravované cloudové databáze pomocí bezplatného účtu Azure](https://azure.microsoft.com/free/services/sql-database/).
@@ -68,7 +73,7 @@ Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (D
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Omezení eDTU elastického fondu, úložiště a databáze ve fondu
 
-|| **Basic** | **Standard** | **Premium** |
+|| **Basic** | **Standardní** | **Premium** |
 | :-- | --: | --: | --: |
 | **Maximální velikost úložiště na databázi**  | 2 GB | 1 TB | 1 TB |
 | **Maximální velikost úložiště na fond** | 156 GB | 4 TB | 4 TB |
@@ -118,7 +123,7 @@ Zatížení se skládá z devíti typů transakcí, jak je znázorněno v násle
 | Aktualizace těžkých |Update hlavně není v paměti; čtení i zápis |
 | Vložit Lite |ZADAT v paměti; čtení i zápis |
 | Vložit těžký |ZADAT hlavně není v paměti; čtení i zápis |
-| Odstranit |DSTRANIT kombinace v paměti a nikoli v paměti; čtení i zápis |
+| Delete |DSTRANIT kombinace v paměti a nikoli v paměti; čtení i zápis |
 | Vysoký procesor |VYBRALI v paměti; poměrně silné zatížení procesoru; jen pro čtení |
 
 ### <a name="workload-mix"></a>Kombinace úloh
@@ -134,7 +139,7 @@ Transakce se vyberou náhodně z vážené distribuce s následující celkovou 
 | Aktualizace těžkých |3 |
 | Vložit Lite |3 |
 | Vložit těžký |2 |
-| Odstranit |2 |
+| Delete |2 |
 | Vysoký procesor |10 |
 
 ### <a name="users-and-pacing"></a>Uživatelé a stimulace

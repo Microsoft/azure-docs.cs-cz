@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 570481eab44c64db3ec3f513281badd124a2bbdc
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7e3a5fcdcead402d59e680fcba270e80b4eda8bb
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825495"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843426"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Limity služby ve službě Azure Cognitive Search
 
@@ -50,7 +50,7 @@ Maximální limity pro úložiště, úlohy a množství indexů a dalších obj
 
 <sup>1</sup> základní služby vytvořené před prosince 2017 mají nižší limity (5 namísto 15) na indexech. Úroveň Basic je jediná SKU s nižším limitem 100 polí na jeden index.
 
-<sup>2</sup> pro elementy existuje horní limit, protože u velkého počtu těchto hodnot dochází k vysokému využití úložiště. Prvek komplexní kolekce je definován jako člen této kolekce. Předpokládejme například, že máte [hotelový dokument s složitou kolekcí místností](search-howto-complex-data-types.md#indexing-complex-types), kde každá místnost v kolekci místností je považována za prvek. Při indexování může modul indexování bezpečně zpracovávat maximálně 3000 prvků v celém dokumentu. [Toto omezení](search-api-migration.md#upgrade-to-2019-05-06) bylo zavedeno v `api-version=2019-05-06` a vztahuje se pouze na komplexní kolekce, nikoli na kolekce řetězců ani na složitá pole.
+<sup>2</sup> pro prvky existuje horní limit, protože větší počet výrazně zvyšuje kapacitu úložiště potřebnou pro váš index. Prvek komplexní kolekce je definován jako člen této kolekce. Předpokládejme například, že máte [hotelový dokument s složitou kolekcí místností](search-howto-complex-data-types.md#indexing-complex-types), kde každá místnost v kolekci místností je považována za prvek. Při indexování může modul indexování bezpečně zpracovávat maximálně 3000 prvků v celém dokumentu. [Toto omezení](search-api-migration.md#upgrade-to-2019-05-06) bylo zavedeno v `api-version=2019-05-06` a vztahuje se pouze na komplexní kolekce, nikoli na kolekce řetězců ani na složitá pole.
 
 <a name="document-limits"></a>
 
@@ -78,15 +78,15 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 
 | Prostředek | Zdarma &nbsp; <sup>1</sup> | Základní &nbsp; <sup>2</sup>| S1 | S2 | S3 | S3 &nbsp; HD &nbsp; <sup>3</sup>|L1 |Paměť |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |– |10 |10 |
-| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |– |10 |10 |
-| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |– |10 |10 |
-| Maximální zatížení indexování na vyvolání |dokumenty 10 000 |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |– |Bez omezení |Bez omezení |
+| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |Není k dispozici |10 |10 |
+| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |Není k dispozici |10 |10 |
+| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |Není k dispozici |10 |10 |
+| Maximální zatížení indexování na vyvolání |dokumenty 10 000 |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Není k dispozici |Bez omezení |Bez omezení |
 | Minimální plán | 5 minut |5 minut |5 minut |5 minut |5 minut |5 minut |5 minut | 5 minut |
-| Maximální doba běhu| 1-3 minut |24 hodin |24 hodin |24 hodin |24 hodin |–  |24 hodin |24 hodin |
-| Maximální doba běhu indexerů s dovednosti <sup>5</sup> | 3-10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |–  |2 hodiny |2 hodiny |
-| Indexer objektů BLOB: maximální velikost objektu blob, MB |16 |16 |128 |256 |256 |–  |256 |256 |
-| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32 000 |64 000 |4 &nbsp; miliony |8 &nbsp; milionů |16 &nbsp; milionů |– |4 &nbsp; miliony |4 &nbsp; miliony |
+| Maximální doba běhu| 1-3 minut |24 hodin |24 hodin |24 hodin |24 hodin |Není k dispozici  |24 hodin |24 hodin |
+| Maximální doba běhu indexerů s dovednosti <sup>5</sup> | 3-10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |Není k dispozici  |2 hodiny |2 hodiny |
+| Indexer objektů BLOB: maximální velikost objektu blob, MB |16 |16 |128 |256 |256 |Není k dispozici  |256 |256 |
+| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32 000 |64 000 |4 &nbsp; miliony |8 &nbsp; milionů |16 &nbsp; milionů |Není k dispozici |4 &nbsp; miliony |4 &nbsp; miliony |
 
 <sup>1</sup> bezplatné služby mají maximální dobu provádění indexeru 3 minuty pro zdroje objektů BLOB a 1 minutu pro všechny ostatní zdroje dat. V případě indexování AI, který volá Cognitive Services, jsou bezplatné služby omezené na 20 bezplatných transakcí za den, kde transakce je definovaná jako dokument, který úspěšně projde kanálem pro obohacení.
 
@@ -110,7 +110,7 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Podpora indexeru privátního koncového bodu | No | Ano | Ano | Ano | Ano | No | Ano | Ano |
 | Podpora privátního koncového bodu pro indexery s dovednosti<sup>1</sup> | No | No | No | Ano | Ano | No | Ano | Ano |
-| Maximální počet privátních koncových bodů | – | 10 nebo 30 | 100 | 400 | 400 | – | 20 | 20 |
+| Maximální počet privátních koncových bodů | Není k dispozici | 10 nebo 30 | 100 | 400 | 400 | Není k dispozici | 20 | 20 |
 | Maximální počet různých typů prostředků<sup>2</sup> | Není k dispozici | 4 | 7 | 15 | 15 | Není k dispozici | 4 | 4 |
 
 <sup>1</sup> rozšíření pro obohacení a analýzu obrázků je náročné na výpočetní výkon a spotřebovává neúměrné objemy dostupného výpočetního výkonu, a proto u nižších úrovní služby vyhledávání, které je možné spouštět v privátním prostředí, můžou mít negativní dopad na výkon a stabilitu vyhledávací služby.

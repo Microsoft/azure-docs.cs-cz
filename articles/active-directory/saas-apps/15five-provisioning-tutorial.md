@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 40fd048e1ace56af7a9198088d6129925033be93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c26a581df7ac10777687bf268027eb94862605b1
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331212"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850128"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Kurz: Konfigurace 15Five pro Automatické zřizování uživatelů
 
@@ -54,19 +54,19 @@ Před konfigurací 15Five pro Automatické zřizování uživatelů pomocí Azur
 
 1. Přihlaste se ke [konzole pro správu 15Five](https://my.15five.com/). Přejděte na **funkce > integrace**.
 
-    ![Konzola pro správu 15Five](media/15five-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/integration.png" alt-text="Snímek obrazovky s konzolou pro správu 15Five Integrace se zobrazí v části funkce v nabídce a zvýrazní se obě funkce a integrace." border="false":::
 
 2.  Klikněte na **SCIM 2,0**.
 
-    ![Konzola pro správu 15Five](media/15five-provisioning-tutorial/image00.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image00.png" alt-text="Snímek obrazovky s konzolou pro správu 15Five Integrace se zobrazí v části funkce v nabídce a zvýrazní se obě funkce a integrace." border="false":::
 
 3.  Přejděte na **SCIM integration > vygenerujte token OAuth**.
 
-    ![15Five přidat SCIM](media/15five-provisioning-tutorial/image02.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image02.png" alt-text="Snímek obrazovky s konzolou pro správu 15Five Integrace se zobrazí v části funkce v nabídce a zvýrazní se obě funkce a integrace." border="false":::
 
 4.  Zkopírujte hodnoty **základní adresy URL** a **přístupového tokenu**pro SCIM 2,0. Tato hodnota se zadá do pole **Adresa URL tenanta** a **tajný token** na kartě zřizování vaší aplikace 15Five ve Azure Portal.
     
-    ![15Five přidat SCIM](media/15five-provisioning-tutorial/image03.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image03.png" alt-text="Snímek obrazovky s konzolou pro správu 15Five Integrace se zobrazí v části funkce v nabídce a zvýrazní se obě funkce a integrace." border="false":::
 
 ## <a name="step-3-add-15five-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání 15Five z Galerie aplikací Azure AD
 
@@ -126,7 +126,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |name.givenName|Řetězec|
    |name.familyName|Řetězec|
    |externalId|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Odkaz|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: 15Five: 2.0: uživatel: umístění|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: 15Five: 2.0: uživatel: startDate|Řetězec|

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: b81a0fc81478fb50c356a92371ece2e79ff417ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f3657feb5a68600e4eb2d7bcaa4891a398c2682
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333558"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850689"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Kurz: Konfigurace Looop pro Automatické zřizování uživatelů
 
@@ -55,11 +55,11 @@ Před konfigurací Looop pro Automatické zřizování uživatelů se službou A
 
 1. Přihlaste se ke [konzole správce Looop](https://app.looop.co/#/login) a vyberte **účet**. V části **Nastavení účtu** vyberte **ověřování**.
 
-    ![Looop přidat SCIM](media/looop-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/admin.png" alt-text="Snímek obrazovky s konzolou pro správu Looop Karta účtu je zvýrazněná a otevřená. V části nastavení účtu se zvýrazní ověřování." border="false":::
 
 2. Kliknutím na **resetovat token** v části **integrace SCIM**Vygenerujte nový token.
 
-    ![Looop přidat SCIM](media/looop-provisioning-tutorial/resettoken.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Snímek obrazovky s konzolou pro správu Looop Karta účtu je zvýrazněná a otevřená. V části nastavení účtu se zvýrazní ověřování." border="false":::
 
 3. Zkopírujte **koncový bod SCIM** a **token**. Tyto hodnoty se zadají do polí **Adresa URL tenanta** a **tajného tokenu** na kartě zřizování vaší aplikace Looop ve Azure Portal. 
 

@@ -4,21 +4,21 @@ description: Přečtěte si o toku informací v Azure Defenderu pro službu IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
-ms.author: mlottner
-ms.openlocfilehash: 3d26d9e3d686ad7c34e7493dc1413b7a9e7a2f6b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: 3fc695770350e5a60ae3da9ab1796da5cac99370
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936895"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843409"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender pro architekturu IoT
 
@@ -43,11 +43,11 @@ V **integrovaném** režimu je program Defender pro IoT povolený, když se rozh
 
 ### <a name="enhanced"></a>Rozšířené
 
-V **rozšířeném** režimu po zapnutí možnosti **zabezpečení** ve vašem IoT Hub a instalaci programu Defender pro agenty zařízení IoT na vaše zařízení agenti shromáždí, agreguje a analyzuje nezpracované události zabezpečení z vašich zařízení. Nezpracované události zabezpečení můžou zahrnovat připojení IP, vytváření procesů, přihlášení uživatelů a další informace týkající se zabezpečení. Defender pro agenty zařízení IoT také zpracovává agregaci událostí, aby se předešlo vysoké propustnosti sítě. Agenti jsou vysoce přizpůsobitelní, což umožňuje jejich použití pro konkrétní úkoly, jako je například odesílání pouze důležitých informací na nejrychlejší smlouvu SLA nebo pro agregaci rozsáhlých informací o zabezpečení a kontextu do větších segmentů, což vyloučí vyšší náklady na službu.
+V **rozšířeném** režimu po zapnutí možnosti **zabezpečení** ve vašem IoT Hub a instalaci programu Defender pro agenty zařízení IoT na vaše zařízení budou agenti shromažďovat, agregovat a analyzovat nezpracované události zabezpečení z vašich zařízení. Nezpracované události zabezpečení můžou zahrnovat připojení IP, vytváření procesů, přihlášení uživatelů a další informace týkající se zabezpečení. Obrana pro agenty zařízení IoT také zpracovávají agregaci událostí, aby se zabránilo vysoké propustnosti sítě. Agenti jsou vysoce přizpůsobitelní, což umožňuje jejich použití pro konkrétní úkoly, jako je například odesílání pouze důležitých informací na nejrychlejší smlouvu SLA nebo pro agregaci rozsáhlých informací o zabezpečení a kontextu do větších segmentů, což vyloučí vyšší náklady na službu.
 
 ![Defender pro architekturu IoT](./media/architecture/azure-iot-security-architecture.png)
 
-Agenti zařízení a další aplikace používají k posílání informací o zabezpečení do Azure IoT Hub k dismailu **sadu SDK pro zprávy zabezpečení Azure** . IoT Hub tyto informace vybírá a předá je do programu Defender pro službu IoT.
+Agenti zařízení a další aplikace používají k posílání informací o zabezpečení do Azure IoT Hub k dismailu **sadu SDK pro zprávy zabezpečení Azure** . IoT Hub získá tyto informace a předá ji do programu Defender pro službu IoT.
 
 Po povolení služby Defender for IoT se kromě předávaných dat IoT Hub také pošle veškerá interní data pro analýzu pomocí programu Defender pro IoT. Mezi tato data patří protokoly operací cloudového zařízení, identity zařízení a konfigurace centra. Všechny tyto informace pomáhají vytvořit kanál Defender for IoT Analytics.
 

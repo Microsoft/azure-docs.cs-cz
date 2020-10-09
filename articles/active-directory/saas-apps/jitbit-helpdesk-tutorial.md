@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 5d4900713cd8d96180bf74b300a738a8b676421e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bd47a528b6c9aef354df8e52da63409002f6fb32
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547150"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850791"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Kurz: Azure Active Directory integrace s helpdeskem Jitbit
 
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Jitbit helpdesku, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování Jitbit Helpdesk](#configure-jitbit-helpdesk-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování Jitbit Helpdesk](#configure-jitbit-helpdesk-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření testovacího uživatele Jitbit helpdesku](#create-jitbit-helpdesk-test-user)** – Pokud chcete mít protějšek Britta Simon v Jitbit helpdesku, která je propojená s reprezentací uživatele v Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí helpdesk
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -109,11 +109,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí helpdesk
     | |
     
     > [!NOTE] 
-    > Tato hodnota není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné přihlašovací adresy URL. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory Jitbit Helpdesk klienta](https://www.jitbit.com/support/) .
+    > Tato hodnota není reálné číslo. Aktualizujte tuto hodnotu skutečnou adresou URL Sign-On. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory Jitbit Helpdesk klienta](https://www.jitbit.com/support/) .
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL následujícím způsobem: `https://www.jitbit.com/web-helpdesk/`
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -127,7 +127,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí helpdesk
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-jitbit-helpdesk-single-sign-on"></a>Konfigurace jednotného přihlašování Jitbit helpdesku
+### <a name="configure-jitbit-helpdesk-single-sign-on"></a>Konfigurace Jitbit helpdesku pro jednu Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k webu společnosti Jitbit helpdesku jako správce.
 
@@ -137,13 +137,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí helpdesk
 
 1. Klikněte na **Obecné nastavení**.
 
-    ![Uživatelé, společnosti a oprávnění](./media/jitbit-helpdesk-tutorial/ic777680.png "Uživatelé, společnosti a oprávnění")
+    ![Snímek obrazovky se zobrazeným odkazem na Obecné nastavení.](./media/jitbit-helpdesk-tutorial/ic777680.png "Uživatelé, společnosti a oprávnění")
 
 1. V části konfigurace **nastavení ověřování** proveďte následující kroky:
 
     ![Nastavení ověřování](./media/jitbit-helpdesk-tutorial/ic777683.png "Nastavení ověřování")
 
-    a. Vyberte **Povolit jednotné přihlašování SAML 2,0**, abyste se mohli přihlásit pomocí jednotného přihlašování (SSO), a to pomocí **OneLogin**.
+    a. Vyberte **Povolit jednotné přihlašování SAML 2,0**, abyste se mohli přihlásit pomocí jednotného Sign-On (SSO), a to pomocí **OneLogin**.
 
     b. Do textového pole **Adresa URL koncového bodu** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
@@ -174,7 +174,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -182,7 +182,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Jitbit Helpdesk**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Jitbit Helpdesk**.
 
@@ -234,7 +234,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Jitbit helpdesku, musí se zř
 
    d. Do textového pole **příjmení** zadejte příjmení uživatele, jako je **Simon**.
 
-   e. Klikněte na možnost **Vytvořit**.
+   e. Klikněte na **Vytvořit**.
 
 > [!NOTE]
 > K zřizování uživatelských účtů Azure AD můžete použít jakékoli další nástroje pro vytváření uživatelských účtů Jitbit helpdesku nebo rozhraní API poskytovaná Jitbit helpdesk.

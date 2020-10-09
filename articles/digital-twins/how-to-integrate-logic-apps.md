@@ -8,18 +8,21 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 6726dab6f1037f01eda316968e3c5b503aa9dbfb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: baf89ec75f844ae1a1f7797d26d2fb04a0d5df34
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326568"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849839"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrace s Logic Apps s využitím vlastního konektoru
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) je cloudová služba, která pomáhá automatizovat pracovní postupy napříč aplikacemi a službami. Připojením Logic Apps k rozhraním API digitálních vláken Azure můžete vytvářet automatizované toky kolem digitálních vláken Azure a jejich dat.
 
 Digitální vlákna Azure momentálně nemají certifikovaný (předem sestavený) konektor pro Logic Apps. Místo toho aktuální proces použití Logic Apps s digitálními úkoly typu Azure vytvoří [**vlastní konektor Logic Apps**](../logic-apps/custom-connector-overview.md)pomocí [vlastního Swagger](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) , který je upravený tak, aby fungoval s Logic Apps.
+
+> [!NOTE]
+> Existuje více verzí Swagger obsažených ve vlastní ukázce Swagger, který je výše propojen. Nejnovější verzi najdete v podsložce s nejaktuálnějším datem, ale starší verze obsažené v ukázce jsou i nadále podporované.
 
 V tomto článku použijete [Azure Portal](https://portal.azure.com) k **Vytvoření vlastního konektoru** , který se dá použít k připojení Logic Apps k instanci digitálních vláken Azure. Pak **vytvoříte aplikaci logiky** , která bude toto připojení používat pro ukázkový scénář, ve kterém události aktivované časovačem automaticky aktualizují dvojitou repliku v instanci digitálních vláken Azure. 
 
@@ -54,11 +57,11 @@ V nabídce registrace klikněte na *certifikáty a tajné klíče* a vyberte *+ 
 
 Zadejte libovolné hodnoty, které chcete pro popis a vypršení platnosti, a potom stiskněte *Přidat*.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Přidat tajný klíč klienta":::
+:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
 
 Nyní ověřte, zda je tajný klíč klienta zobrazen na stránce _certifikáty & tajných_ kódů s poli _Expires_ a _Value_ . Poznamenejte si jeho _hodnotu_ pro pozdější použití (můžete ji také zkopírovat do schránky pomocí ikony kopírování).
 
-:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Kopírovat tajnou hodnotu klienta":::
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
 
 ### <a name="add-a-digital-twin"></a>Přidání digitálního vlákna
 
@@ -74,15 +77,15 @@ V tomto kroku vytvoříte [vlastní konektor Logic Apps](../logic-apps/custom-co
 
 Přejít na stránku [vlastního konektoru Logic Apps](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) v Azure Portal (můžete použít tento odkaz nebo ho vyhledat na portálu pro hledání). Stiskněte *+ Přidat*.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="Stránka Logic Apps vlastní konektor v Azure Portal. Zvýraznění kolem tlačítka Přidat":::
+:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
 
 Na následující stránce *vytvořit Logic Apps vlastní konektor* vyberte své předplatné a skupinu prostředků a název a umístění nasazení nového konektoru. Podívejte se na *Revize + vytvořit*. 
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Stránka vytvořit Logic Apps vlastního konektoru v Azure Portal.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
 
 Tím přejdete na kartu *Revize + vytvořit* , kde *můžete v dolní části vytvořit prostředek* .
 
-:::image type="content" source="media/how-to-integrate-logic-apps/review-logic-apps-custom-connector.png" alt-text="Karta Revize a vytvoření vlastního konektoru v Azure Portal na stránce revize Logic Apps Custom Connector. Zvýraznění kolem tlačítka pro vytvoření":::
+:::image type="content" source="media/how-to-integrate-logic-apps/review-logic-apps-custom-connector.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
 
 Přejdete na stránku pro nasazení konektoru. Po dokončení nasazení klikněte na tlačítko *Přejít do prostředku* a zobrazte podrobnosti o konektoru na portálu.
 
@@ -90,11 +93,16 @@ Přejdete na stránku pro nasazení konektoru. Po dokončení nasazení kliknět
 
 Dále nakonfigurujete konektor, který jste vytvořili pro dosažení digitálních vláken Azure.
 
-Nejdřív Stáhněte si vlastní soubor Swagger pro digitální vlákna Azure, který je upravený tak, aby fungoval s Logic Apps. Stáhněte si ukázku **digitálních Swagger z digitálního vlákna Azure** z [tohoto odkazu](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) přes tlačítko *Stáhnout soubor zip* . Přejděte do složky Stažené *Azure_Digital_Twins_Custom_Swaggers.zip* a rozbalte ji. Vlastní Swagger pro tento kurz najdete na adrese *Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.js*.
+Nejdřív Stáhněte si vlastní soubor Swagger pro digitální vlákna Azure, který je upravený tak, aby fungoval s Logic Apps. Stáhněte si ukázku **digitálních Swagger z digitálního vlákna Azure** z [**tohoto odkazu**](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) přes tlačítko *Stáhnout soubor zip* . Přejděte do složky Stažené *Azure_Digital_Twins_Custom_Swaggers.zip* a rozbalte ji. 
+
+Vlastní Swagger pro tento kurz je umístěný ve složce _**Azure_Digital_Twins_Custom_Swaggers \logicapps**_ . Tato složka obsahuje podsložky s názvem *stabilní* a ve *verzi Preview*, obě obsahují různé verze Swagger seřazené podle data. Složka s nejnovějším datem bude obsahovat poslední kopii Swagger. Podle vybrané verze se soubor Swagger jmenuje _**digitaltwins.js**_.
+
+> [!NOTE]
+> Pokud nepracujete s funkcí Preview, obecně se doporučuje použít nejnovější *stabilní* verzi Swagger. Starší verze a verze Preview se ale pořád podporují i ve verzi Preview. 
 
 Potom přejděte na stránku Přehled vašeho konektoru v [Azure Portal](https://portal.azure.com) a stiskněte *Upravit*.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="Stránka Přehled pro konektor vytvořený v předchozím kroku. Zvýraznění kolem tlačítka pro úpravy":::
+:::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
 
 Na následující stránce *upravit Logic Apps vlastní konektor* nakonfigurujte tyto informace:
 * **Vlastní konektory**
@@ -111,7 +119,7 @@ Na následující stránce *upravit Logic Apps vlastní konektor* nakonfigurujte
 
 Potom v dolní části okna stiskněte tlačítko *zabezpečení* , aby pokračoval k dalšímu kroku konfigurace.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/configure-next.png" alt-text="Snímek obrazovky dolní části stránky upravit Logic Apps vlastní konektor Zvýrazňování kolem tlačítka pro pokračování v zabezpečení":::
+:::image type="content" source="media/how-to-integrate-logic-apps/configure-next.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
 
 V kroku zabezpečení stiskněte *Upravit* a nakonfigurujte tyto informace:
 * **Typ ověřování**: OAuth 2,0
@@ -127,13 +135,13 @@ V kroku zabezpečení stiskněte *Upravit* a nakonfigurujte tyto informace:
 
 Všimněte si, že pole Adresa URL *pro přesměrování říká uložení vlastního konektoru pro vygenerování adresy URL pro přesměrování*. Provedete to teď pomocí *konektoru aktualizací* v horní části podokna, abyste potvrdili nastavení konektoru.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/update-connector.png" alt-text="Snímek obrazovky horní části stránky upravit Logic Apps vlastní konektor Zvýraznění kolem tlačítka pro aktualizaci konektoru":::
+:::image type="content" source="media/how-to-integrate-logic-apps/update-connector.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
 
 <!-- Success message? didn't see one -->
 
 Vraťte se do pole Adresa URL pro přesměrování a zkopírujte hodnotu, která byla vygenerována. Budete ho používat v dalším kroku.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="Pole Adresa URL pro přesměrování na stránce Upravit Logic Apps vlastní konektor má nyní hodnotu https://logic-apis-westus2.consent.azure-apim.net/redirect . Tlačítko pro zkopírování hodnoty je zvýrazněno.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
 
 Jedná se o všechny informace, které jsou nutné k vytvoření konektoru (není nutné pokračovat v minulém zabezpečení do kroku definice). Podokno *upravit Logic Apps vlastní konektor* můžete zavřít.
 
@@ -148,11 +156,11 @@ Přejděte na stránku [Registrace aplikací](https://portal.azure.com/#blade/Mi
 
 V části *ověřování* v nabídce registrace přidejte identifikátor URI.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/add-uri.png" alt-text="Ověřovací stránka pro registraci aplikace v Azure Portal. V nabídce je zvýrazněna možnost ověřování a na stránce je zvýrazněno tlačítko Přidat identifikátor URI."::: 
+:::image type="content" source="media/how-to-integrate-logic-apps/add-uri.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta."::: 
 
 Do nového pole zadejte *adresu URL pro přesměrování* vlastního konektoru a stiskněte ikonu *Uložit* .
 
-:::image type="content" source="media/how-to-integrate-logic-apps/save-uri.png" alt-text="Ověřovací stránka pro registraci aplikace v Azure Portal. Nová adresa URL pro přesměrování je zvýrazněna a tlačítko Uložit pro stránku.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/save-uri.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
 
 Nyní jste dokončili vytváření vlastního konektoru, který má přístup k rozhraním API pro digitální vlákna Azure. 
 
@@ -162,7 +170,7 @@ V dalším kroku vytvoříte aplikaci logiky, která bude používat váš nový
 
 V [Azure Portal](https://portal.azure.com)na panelu hledání na portálu vyhledejte *Logic Apps* . Výběr by měl přebírat stránku *Logic Apps* . Stiskněte tlačítko *vytvořit aplikaci logiky* a vytvořte novou aplikaci logiky.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Stránka Logic Apps v Azure Portal Stiskněte tlačítko Přidat.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
 
 Na stránce *Aplikace logiky* , které následují, zadejte své předplatné a skupinu prostředků. Také zvolte název aplikace logiky a vyberte umístění nasazení.
 
@@ -176,7 +184,7 @@ Přejdete na stránku nasazení aplikace logiky. Až se nasazení dokončí, př
 
 V *návrháři Logic Apps*v části *začít se společným triggerem*vyberte _**opakování**_.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="Stránka Logic Apps Designer v Azure Portal. Zvýrazněte běžný Trigger opakování.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
 
 Na následující stránce *návrháře Logic Apps* změňte četnost **opakování** na *sekundu*, aby se událost spouštěla každé 3 sekundy. Díky tomu bude možné výsledky snadno zobrazit, aniž byste museli čekat velmi dlouho.
 
@@ -184,7 +192,7 @@ Stiskněte *+ Nový krok*.
 
 Tím se otevře pole *zvolit akci* . Přepněte na *vlastní* kartu. V horním poli byste měli vidět vlastní konektor z výše uvedeného.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="Vytvoření toku v Návrháři Logic Apps v Azure Portal. V poli zvolit akci se vybere karta vlastní. Vlastní konektor uživatele ze starší verze se zobrazí v poli s zvýrazněním kolem.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
 
 Vyberte ho, aby se zobrazil seznam rozhraní API obsažených v tomto konektoru. Pomocí panelu hledání nebo procházením seznamu vyberte **DigitalTwins_Add**. (Toto je rozhraní API použité v tomto článku, ale můžete také vybrat jiné rozhraní API jako platnou volbu pro Logic Apps připojení).
 
@@ -199,7 +207,7 @@ Stiskněte *Uložit* v Návrháři Logic Apps.
 
 Výběrem možnosti _+ Nový krok_ ve stejném okně můžete vybrat jiné operace.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/save-logic-app.png" alt-text="Zobrazení aplikace bylo dokončeno v konektoru aplikace logiky. Pole DigitalTwinsAdd se vyplní hodnotami popsanými výše, včetně ukázkového těla opravy JSON. Tlačítko Uložit pro okno je zvýrazněné.":::
+:::image type="content" source="media/how-to-integrate-logic-apps/save-logic-app.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
 
 ## <a name="query-twin-to-see-the-update"></a>Pro zobrazení aktualizace se zobrazí dvojitá vlákna dotazu.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: a6db1866c42dbb90d6ea0f288aceed4672424fe0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 56aad5ce9045ca205221ba0c56d1ea75f8f3610a
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321966"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850485"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Kurz: Konfigurace myPolicies pro Automatické zřizování uživatelů
 
@@ -118,7 +118,7 @@ Příklad: `<demo0-qa>` . mypolicies.com.
 
 9. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé myPolicies**.
 
-    ![Mapování uživatelů myPolicies](media/mypolicies-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/mypolicies-provisioning-tutorial/usermapping.png" alt-text="Snímek obrazovky oddílu mapování V části název je synchronizace Azure Active Directory uživatelů na customappsso viditelná." border="false":::
 
 10. Zkontrolujte atributy uživatele synchronizované z Azure AD do myPolicies v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v myPolicies pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 

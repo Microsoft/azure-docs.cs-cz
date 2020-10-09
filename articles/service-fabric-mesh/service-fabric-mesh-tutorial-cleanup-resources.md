@@ -1,17 +1,17 @@
 ---
 title: Kurz – vyčištění prostředků sítě pro síť Azure Service Fabric
 description: Naučte se, jak odebrat prostředky Azure Service Fabric Mesh, aby vám nebyly účtovány prostředky, které už nepoužíváte.
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b8ce3c795bc9ad212331ce1c1f413fe7fd6da909
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1d594001340f76c6dde9f3e00de2d76ee4e5104b
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246741"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843324"
 ---
 # <a name="tutorial-remove-azure-resources"></a>Kurz: Odebrání prostředků Azure
 

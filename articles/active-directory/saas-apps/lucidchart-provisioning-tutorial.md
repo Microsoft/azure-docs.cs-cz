@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 632330d7c94e145124e202be9050e4e1beeb12b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 43d6ac8354e992a87091bc66417f7ca88e784199
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265455"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850655"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Kurz: Konfigurace Lucidchart pro Automatické zřizování uživatelů
 
@@ -49,11 +49,11 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 1. Přihlaste se ke [konzole pro správu Lucidchart](https://www.lucidchart.com). Přejděte do **týmové > integrace aplikací**.
 
-      ![Lucidchart SCIM](./media/lucidchart-provisioning-tutorial/team1.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/team1.png" alt-text="Snímek obrazovky s konzolou pro správu Lucidchart Nabídka tým je zvýrazněná a otevřená. V části správce se zvýrazní integrace aplikací." border="false":::
 
 2. Přejděte na **SCIM**.
 
-      ![Lucidchart SCIM](./media/lucidchart-provisioning-tutorial/scim.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Snímek obrazovky s konzolou pro správu Lucidchart Nabídka tým je zvýrazněná a otevřená. V části správce se zvýrazní integrace aplikací." border="false":::
 
 3. Posuňte se dolů a zobrazte **token nosiče** a **základní adresu URL Lucidchart**. Zkopírujte a uložte **token nosiče**. Tato hodnota se zadá do pole **tajný token** * na kartě zřizování aplikace LucidChart ve Azure Portal. 
 
@@ -120,7 +120,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: costCenter|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Organization|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Odkaz|
    |urn: IETF: parametry: SCIM: schémata: přípona: Lucidchart: 1.0: User: hodnoty CanEdit|Logická hodnota|
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do Lucidchart**.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: e5145aee31b4f82b34f9256257cf6c2951ca24da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 145793d7e451e7db9598118fb3adbd49d1d9c650
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256428"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850672"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>Kurz: Konfigurace MindTickle pro Automatické zřizování uživatelů
 
@@ -115,11 +115,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé MindTickle**.
 
-    ![Mapování uživatelů MindTickle](media/mindtickle-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/mindtickle-provisioning-tutorial/usermapping.png" alt-text="Snímek obrazovky oddílu mapování V části název je synchronizace Azure Active Directory uživatelů na MindTickle viditelná." border="false":::
 
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD do MindTickle v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v MindTickle pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Mapování uživatelů MindTickle](media/mindtickle-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/mindtickle-provisioning-tutorial/userattribute.png" alt-text="Snímek obrazovky oddílu mapování V části název je synchronizace Azure Active Directory uživatelů na MindTickle viditelná." border="false":::
 
 12. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

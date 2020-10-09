@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a49edf738586dce190fa90f7349f2c9b01e2050d
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552788"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Kurz: Azure Active Directory integrace s ITRP
 
@@ -54,7 +54,7 @@ K nastavení integrace ITRP do služby Azure AD je nutné přidat ITRP z Galerie
 
 2. Přejít k **podnikovým aplikacím**  >  **všechny aplikace**:
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat aplikaci, vyberte v horní části okna možnost **Nová aplikace** :
 
@@ -92,9 +92,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ITRP, pr
 
     ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu **Upravit** a otevřete DIALOGOVÉ okno **základní konfigurace SAML** :
+3. Na stránce **nastavit jeden Sign-On s SAML** vyberte ikonu **Upravit** a otevřete DIALOGOVÉ okno **základní konfigurace SAML** :
 
-    ![Ikona úprav](common/edit-urls.png)
+    ![Snímek obrazovky s vybranou ikonou pro úpravu zobrazí stránku nastavit jednu Sign-On se stránkou SAML.](common/edit-urls.png)
 
 4. V dialogovém okně **základní konfigurace SAML** proveďte následující kroky.
 
@@ -113,7 +113,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ITRP, pr
 
 5. V části **podpisový certifikát SAML** vyberte ikonu **Upravit** a otevřete dialogové okno **podpisový certifikát SAML** :
 
-    ![Ikona úprav](common/edit-certificate.png)
+    ![Snímek obrazovky se stránkou podpisového certifikátu SAML se zvolenou ikonou pro úpravy.](common/edit-certificate.png)
 
 6. V dialogovém okně **podpisový certifikát SAML** Zkopírujte hodnotu **kryptografického otisku** a uložte ji:
 
@@ -139,13 +139,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ITRP, pr
 
 1. V levém podokně vyberte **jednotné přihlašování**:
 
-    ![Vyberte jednotné přihlašování.](./media/itrp-tutorial/ic775571.png "Vyberte jednotné přihlašování.")
+    ![Vyberte jednotné přihlašování.](./media/itrp-tutorial/ic775571.png "Vyberte jeden Sign-On")
 
 1. V části konfigurace **jednotného přihlašování** proveďte následující kroky.
 
-    ![Oddíl jednotného přihlašování](./media/itrp-tutorial/ic775572.png "Oddíl jednotného přihlašování")
+    ![Snímek obrazovky ukazuje jednu Sign-On oddíl s povoleným vybraným.](./media/itrp-tutorial/ic775572.png "Oddíl s jednou Sign-On")
 
-    ![Oddíl jednotného přihlašování](./media/itrp-tutorial/ic775573.png "Oddíl jednotného přihlašování")
+    ![Snímek obrazovky zobrazuje jednu část Sign-On, do které můžete přidat informace popsané v tomto kroku.](./media/itrp-tutorial/ic775573.png "Oddíl s jednou Sign-On")
 
     1. Vyberte **Povoleno**.
 
@@ -187,7 +187,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **ITRP**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikací vyberte možnost **ITRP**.
 

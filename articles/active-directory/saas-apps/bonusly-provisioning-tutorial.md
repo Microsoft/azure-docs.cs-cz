@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: ee150c2fdeb29dcd01d94a335635db7e3939b59c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1db1ef3a8fa7de557444c25650410b4e84422be4
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549309"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849279"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Kurz: konfigurace pro Automatické zřizování uživatelů v bonusovém prostředí
 
 Cílem tohoto kurzu je předvést kroky, které je třeba provést v bonusu a Azure Active Directory (Azure AD), abyste mohli nakonfigurovat službu Azure AD tak, aby automaticky zřídila a zrušila zřizování uživatelů a skupin.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -83,69 +83,69 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **bonusně**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **bonusně**.
 
     ![Bonusový odkaz v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **zřizování** .
+3. Vyberte kartu **Zřizování**.
 
-    ![Bonusové zřizování](./media/bonusly-provisioning-tutorial/ProvisioningTab.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningTab.png" alt-text="Snímek obrazovky s bonusovým zřizováním V části Správa se zvýrazní zřizování." border="false":::
 
-4. Nastavte **režim zřizování** na **automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
-    ![Bonusové zřizování](./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png" alt-text="Snímek obrazovky s bonusovým zřizováním V části Správa se zvýrazní zřizování." border="false":::
 
 5. V části **přihlašovací údaje správce** zadejte **tajný token** účtu, který je popsaný v kroku 6.
 
-    ![Bonusové zřizování](./media/bonusly-provisioning-tutorial/secrettoken.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/secrettoken.png" alt-text="Snímek obrazovky s bonusovým zřizováním V části Správa se zvýrazní zřizování." border="false":::
 
 6. **Tajný token** pro váš účet v bonusovém účtu najdete v části **správce > integrace > společnosti**. V části **Pokud chcete Code Code** klikněte na **rozhraní API > vytvořit nový přístupový token rozhraní API** k vytvoření nového tajného tokenu.
 
-    ![Bonusové zřizování](./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png" alt-text="Snímek obrazovky s bonusovým zřizováním V části Správa se zvýrazní zřizování." border="false":::
 
-    ![Bonusové zřizování](./media/bonusly-provisioning-tutorial/BonsulyRestApi.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/BonsulyRestApi.png" alt-text="Snímek obrazovky s bonusovým zřizováním V části Správa se zvýrazní zřizování." border="false":::
 
-    ![Bonusové zřizování](./media/bonusly-provisioning-tutorial/CreateToken.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/CreateToken.png" alt-text="Snímek obrazovky s bonusovým zřizováním V části Správa se zvýrazní zřizování." border="false":::
 
 7. Na následující obrazovce zadejte do zadaného textového pole název přístupového tokenu a pak stiskněte tlačítko **vytvořit klíč rozhraní API**. Nový přístupový token se v automaticky otevíraném okně zobrazí během několika sekund.
 
-    ![Bonusové zřizování](./media/bonusly-provisioning-tutorial/Token01.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/Token01.png" alt-text="Snímek obrazovky s bonusovým zřizováním V části Správa se zvýrazní zřizování." border="false":::
 
-    ![Bonusové zřizování](./media/bonusly-provisioning-tutorial/Token02.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/Token02.png" alt-text="Snímek obrazovky s bonusovým zřizováním V části Správa se zvýrazní zřizování." border="false":::
 
 8. Po vyplnění polí zobrazených v kroku 5 klikněte na **Test připojení** , aby se služba Azure AD mohla připojit k bonusům. Pokud se připojení nepovede, zajistěte, aby měl účet v bonusovém účtu oprávnění správce, a zkuste to znovu.
 
-    ![Bonusové zřizování](./media/bonusly-provisioning-tutorial/TestConnection.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/TestConnection.png" alt-text="Snímek obrazovky s bonusovým zřizováním V části Správa se zvýrazní zřizování." border="false":::
 
 9. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko **Odeslat e-mailové oznámení, když dojde k selhání**.
 
-    ![Bonusové zřizování](./media/bonusly-provisioning-tutorial/EmailNotification.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/EmailNotification.png" alt-text="Snímek obrazovky s bonusovým zřizováním V části Správa se zvýrazní zřizování." border="false":::
 
 10. Klikněte na **Uložit**.
 
 11. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatelé pro bonus**.
 
-    ![Bonusové zřizování](./media/bonusly-provisioning-tutorial/UserMappings.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/UserMappings.png" alt-text="Snímek obrazovky s bonusovým zřizováním V části Správa se zvýrazní zřizování." border="false":::
 
 12. Zkontrolujte atributy uživatele synchronizované z Azure AD, aby byly v oddílu **mapování atributů** bonusně. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v bonusu za operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Bonusové zřizování](./media/bonusly-provisioning-tutorial/UserAttributeMapping.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/UserAttributeMapping.png" alt-text="Snímek obrazovky s bonusovým zřizováním V části Správa se zvýrazní zřizování." border="false":::
 
-13. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+13. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 14. Pokud chcete povolit službu Azure AD Provisioning pro bonus, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Bonusové zřizování](./media/bonusly-provisioning-tutorial/ProvisioningStatus.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningStatus.png" alt-text="Snímek obrazovky s bonusovým zřizováním V části Správa se zvýrazní zřizování." border="false":::
 
 15. Definujte uživatele nebo skupiny, které chcete zřídit, aby se vybraly bonusem, a to výběrem požadovaných hodnot v **rozsahu** v části **Nastavení** .
 
-    ![Bonusové zřizování](./media/bonusly-provisioning-tutorial/ScopeSync.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ScopeSync.png" alt-text="Snímek obrazovky s bonusovým zřizováním V části Správa se zvýrazní zřizování." border="false":::
 
-16. Až budete připraveni zřídit, klikněte na **Uložit**.
+16. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
-    ![Bonusové zřizování](./media/bonusly-provisioning-tutorial/SaveProvisioning.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/SaveProvisioning.png" alt-text="Snímek obrazovky s bonusovým zřizováním V části Správa se zvýrazní zřizování." border="false":::
 
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Část **Podrobnosti o synchronizaci** můžete použít ke sledování průběhu a následnému odkazu na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na bonus.
 
@@ -158,7 +158,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
 
 <!--Image references-->
 [1]: ./media/bonusly-provisioning-tutorial/tutorial_general_01.png

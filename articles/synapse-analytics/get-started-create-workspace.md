@@ -9,18 +9,18 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: d3a5f2bd4bf536c1bc5b3723b9b612beef6a647c
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: d74c3e42317b954a510f3276db38c0dcdf5e2362
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812314"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850375"
 ---
 # <a name="creating-a-synapse-workspace"></a>Vytváření pracovního prostoru synapse
 
 V tomto kurzu se dozvíte, jak vytvořit synapse pracovní prostor, fond SQL a fond Apache Spark. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento krok tohoto kurzu dokončíte tak, že budete mít přístup ke skupině prostředků, ke které jste přiřadili roli **vlastníka** . V této skupině prostředků vytvořte pracovní prostor synapse.
 
@@ -29,8 +29,9 @@ Tento krok tohoto kurzu dokončíte tak, že budete mít přístup ke skupině p
 1. Otevřete [Azure Portal](https://portal.azure.com)a v horní části vyhledejte **synapse**.
 1. Ve výsledcích hledání v části **služby**vyberte **Azure synapse Analytics (pracovní prostory verze Preview)**.
 1. Vyberte **Přidat** a vytvořte pracovní prostor.
-1. V části **základy**zadejte požadovaná pole a vyberte název pracovního prostoru. V tomto kurzu použijeme **MyWorkspace**.
-1. K vytvoření pracovního prostoru potřebujete účet ADLSGEN2. Nejjednodušší volbou je vytvořit nové. Pokud chcete znovu použít stávající, musíte provést nějakou další konfiguraci. 
+1. V oblasti **základy**zadejte preferované **předplatné**, **skupinu prostředků**, **oblast**a pak zvolte název pracovního prostoru. V tomto kurzu použijeme **MyWorkspace**.
+1. K vytvoření pracovního prostoru potřebujete účet ADLSGEN2 a kontejner v tomto účtu. Nejjednodušší volbou je vytvořit nové. Pokud chcete znovu použít stávající, musíte provést nějakou další konfiguraci. 
+    1. Pracovní prostor synapse bude tento kontejner používat jako výchozí umístění pro ukládání protokolů Spark a dat pro tabulky Spark.
 1. MOŽNOST 1 Vytvoření nového účtu ADLSGEN2 
     1. Přejděte k **výběru Data Lake Storage Gen 2**. 
     1. Klikněte na **vytvořit nový** a pojmenujte ho **contosolake**.
@@ -69,7 +70,7 @@ Fond SQL spotřebovává Fakturovatelné prostředky, pokud je aktivní. Fond m�
     |Nastavení | Navrhovaná hodnota | 
     |---|---|---|
     |**Název Apache Spark fondu**|**Spark1**
-    |**Velikost uzlu**| **Malá**|
+    |**Velikost uzlu**| **Malý**|
     |**Počet uzlů**| Nastavte minimum na 3 a maximum na 3.|
 
 1. Vyberte **Zkontrolovat a vytvořit** > **Vytvořit**. Váš fond Apache Spark bude připravený během několika sekund.

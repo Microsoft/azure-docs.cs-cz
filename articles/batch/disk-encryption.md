@@ -3,15 +3,15 @@ title: Vytvoření fondu s povoleným šifrováním disků
 description: Naučte se používat konfiguraci šifrování disku k šifrování uzlů pomocí klíče spravovaného platformou.
 author: pkshultz
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 10/08/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 9b0f7f9963ee0edd3986f7ec808a8a4060d857f8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 55a7e117ebd49f268d4b075d58791df4e9223fdf
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267036"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849258"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>Vytvoření fondu s povoleným šifrováním disků
 
@@ -21,7 +21,7 @@ Tento článek vysvětluje, jak vytvořit fond Batch s povoleným šifrováním 
 
 ## <a name="why-use-a-pool-with-disk-encryption-configuration"></a>Proč používat fond s konfigurací šifrování disku?
 
-Pomocí fondu Batch můžete získat přístup k datům a jejich uložení v operačním systému a na dočasných discích výpočetního uzlu. Šifrování disku na straně serveru pomocí klíče spravovaného platformou bude chránit tato data s nízkou režií a pohodlíí.  
+Pomocí fondu Batch můžete získat přístup k datům a jejich uložení v operačním systému a na dočasných discích výpočetního uzlu. Šifrování disku na straně serveru pomocí klíče spravovaného platformou bude chránit tato data s nízkou režií a pohodlíí.
 
 Batch použije jednu z těchto technologií pro šifrování disků na výpočetních uzlech na základě konfigurace fondu a regionální podpory.
 
@@ -35,8 +35,8 @@ Batch použije jednu z těchto technologií pro šifrování disků na výpočet
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Nebudete moci určit, která metoda šifrování bude použita pro uzly ve vašem fondu. Místo toho zadáte cílové disky, které chcete šifrovat na svých uzlech, a v dávce si můžete vybrat vhodnou metodu šifrování, která zajistí, že zadané disky budou na výpočetním uzlu šifrované.
- 
-## <a name="azure-portal"></a>portál Azure 
+
+## <a name="azure-portal"></a>portál Azure
 
 Při vytváření fondu Batch v Azure Portal vyberte v části **Konfigurace šifrování disku**buď **TemporaryDisk** nebo **OsAndTemporaryDisk** .
 
@@ -44,7 +44,7 @@ Při vytváření fondu Batch v Azure Portal vyberte v části **Konfigurace ši
 
 Po vytvoření fondu se můžete podívat na cíle konfigurace šifrování disků v oddílu **vlastnosti** fondu.
 
-:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Snímek obrazovky znázorňující cíle konfigurace šifrování disku v Azure Portal.":::
+:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Snímek obrazovky s možností konfigurace šifrování disku v Azure Portal.":::
 
 ## <a name="examples"></a>Příklady
 
@@ -87,7 +87,7 @@ Text požadavku:
     "resizeTimeout": "PT15M",
     "targetDedicatedNodes": 5,
     "targetLowPriorityNodes": 0,
-    "maxTasksPerNode": 3,
+    "taskSlotsPerNode": 3,
     "enableAutoScale": false,
     "enableInterNodeCommunication": false
 }

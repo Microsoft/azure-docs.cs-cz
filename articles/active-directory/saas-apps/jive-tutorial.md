@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 432ca72a667caa9c2a78b08396884d957b4c650b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: da0e042664d6ca90c53b83bb38770a97d4e97498
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547099"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850724"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jive"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s jive
 
@@ -90,7 +90,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Jive](https://www.jivesoftware.com/services-support/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -114,7 +114,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -140,7 +140,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V nabídce v horní části klikněte na **SAML**.
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/jive-tutorial/tutorial_jive_002.png)
+    ![Snímek obrazovky zobrazuje kartu SAML s povoleným vybraným.](./media/jive-tutorial/tutorial_jive_002.png)
 
     a. Na kartě **Obecné** vyberte **povoleno** .
 
@@ -148,7 +148,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Přejděte na kartu **metadata IDP** .
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/jive-tutorial/tutorial_jive_003.png)
+    ![Snímek obrazovky ukazuje vybranou METADATA karta SAML I D P.](./media/jive-tutorial/tutorial_jive_003.png)
 
     a. Zkopírujte obsah staženého souboru XML metadat a vložte jej do textového pole **metadat poskytovatele identity (IDP)** .
 
@@ -156,7 +156,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Vyberte kartu **mapování atributu uživatele** .
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/jive-tutorial/tutorial_jive_004.png)
+    ![Snímek obrazovky s vybraným MAPOVÁNÍm atributu uživatele zobrazuje kartu SAML.](./media/jive-tutorial/tutorial_jive_004.png)
 
     a. Do textového pole **e-mail** zkopírujte a vložte název atributu hodnoty **pošty** .
 

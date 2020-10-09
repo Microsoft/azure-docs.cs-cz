@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3f835c021e20edba21583e71c6c1a480eca7fd89
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45a1ae281a8a1acb1cfd12efe500f5a623033ef3
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255821"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850014"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>Kurz: Konfigurace Oracle Fusion ERP pro Automatické zřizování uživatelů
 
@@ -56,11 +56,11 @@ Před konfigurací Oracle Fusion ERP pro Automatické zřizování uživatelů p
 
 2. Klikněte na navigátor v levém horním rohu. V části **nástroje**vyberte **Konzola zabezpečení**.
 
-    ![Oracle Fusion ERP přidání SCIM](media/oracle-fusion-erp-provisioning-tutorial/login.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/login.png" alt-text="Snímek stránky navigátoru v konzole pro správu Oracle Fusion E R P Nástroje a konzola zabezpečení jsou zvýrazněné." border="false":::
 
 3. Přejděte na **uživatele**.
     
-    ![Oracle Fusion ERP přidání SCIM](media/oracle-fusion-erp-provisioning-tutorial/user.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user.png" alt-text="Snímek stránky navigátoru v konzole pro správu Oracle Fusion E R P Nástroje a konzola zabezpečení jsou zvýrazněné." border="false":::
 
 4. Uložte uživatelské jméno a heslo pro uživatelský účet správce, který použijete k přihlášení do konzoly pro správu nástroje Oracle Fusion ERP. Tyto hodnoty je třeba zadat do polí **uživatelské jméno** a **heslo** správce na kartě zřizování aplikace Oracle Fusion ERP v Azure Portal.
 
@@ -116,7 +116,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` **adresu URL tenanta**. Zadejte uživatelské jméno a heslo správce dříve načtené do polí **uživatelské jméno** a **heslo** správce. Klikněte na **Testovat připojení** mezi Azure AD a Oracle Fusion ERP. 
 
-    ![Oracle Fusion ERP přidání SCIM](media/oracle-fusion-erp-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/admin.png" alt-text="Snímek stránky navigátoru v konzole pro správu Oracle Fusion E R P Nástroje a konzola zabezpečení jsou zvýrazněné." border="false":::
 
 6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
@@ -126,11 +126,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatele do Oracle Fusion ERP**.
 
-    ![Oracle Fusion ERP přidání SCIM](media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png" alt-text="Snímek stránky navigátoru v konzole pro správu Oracle Fusion E R P Nástroje a konzola zabezpečení jsou zvýrazněné." border="false":::
 
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Oracle Fusion ERP v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Oracle Fusion ERP pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Oracle Fusion ERP přidání SCIM](media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png" alt-text="Snímek stránky navigátoru v konzole pro správu Oracle Fusion E R P Nástroje a konzola zabezpečení jsou zvýrazněné." border="false":::
 
 10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny do Oracle Fusion ERP**.
 

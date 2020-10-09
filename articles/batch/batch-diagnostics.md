@@ -2,22 +2,22 @@
 title: Metriky, výstrahy a diagnostické protokoly
 description: Zaznamenává a analyzuje události diagnostického protokolu pro prostředky Azure Batch účtů, jako jsou fondy a úkoly.
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: abf9ef53d3f2e3ffeffabfe9b7c77dc5c5debec3
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 265149e8d3cd775974ec690ebffbce92a1b82b2e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145092"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848683"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metriky, výstrahy a protokoly služby Batch pro vyhodnocení a monitorování diagnostiky
- 
+
 Tento článek vysvětluje, jak monitorovat účet Batch pomocí funkcí [Azure monitor](../azure-monitor/overview.md). Azure Monitor shromažďuje [metriky](../azure-monitor/platform/data-platform-metrics.md) a [diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md) pro prostředky v účtu Batch. Shromažďovat a spotřebovávat tato data různými způsoby, jak monitorovat účet Batch a diagnostikovat problémy. Můžete také nakonfigurovat [Upozornění na metriky](../azure-monitor/platform/alerts-overview.md) , abyste obdrželi oznámení, když metrika dosáhne zadané hodnoty.
 
 ## <a name="batch-metrics"></a>Metriky dávky
 
-Metriky jsou data telemetrie Azure (označují se taky jako čítače výkonu), která vycházejí z vašich prostředků Azure a jsou využívaná službou Azure Monitor. Příklady metrik v účtu Batch jsou události vytvoření fondu, počet uzlů s nízkou prioritou a události dokončení úlohy.
+Metriky jsou data telemetrie Azure (označují se taky jako čítače výkonu), která vycházejí z vašich prostředků Azure a jsou využívaná službou Azure Monitor. Příklady metrik v účtu Batch jsou události vytvoření fondu, Low-Priority počet uzlů a události dokončení úlohy.
 
 Podívejte se na [seznam podporovaných metrik dávky](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts).
 
@@ -34,7 +34,7 @@ V Azure Portal zobrazí stránka **Přehled** pro účet ve výchozím nastaven�
 Zobrazení všech metrik účtu Batch v Azure Portal:
 
 1. V Azure Portal vyberte **všechny služby**  >  **účty Batch**a potom vyberte název účtu Batch.
-2. V části **monitorování**vyberte **metriky**.
+2. V části **Sledování** klikněte na **Metriky**.
 3. Vyberte **Přidat metriku** a potom vyberte metriku v rozevíracím seznamu.
 4. Vyberte možnost **agregace** pro metriku. Pro metriky založené na počtu (například "vyhrazený počet jader" nebo "počet uzlů s nízkou prioritou") použijte **průměrnou** agregaci. Pro metriky založené na událostech (jako je "Změna velikosti fondu na události") použijte agregaci **Count (počet**dokončených událostí).
 
@@ -57,7 +57,7 @@ Můžete nakonfigurovat *výstrahy metriky* téměř v reálném čase, které s
 
 Výstrahy, které se aktivují v jednom datovém bodě, se nedoporučují, protože metriky podléhají doručování, ztrátě dat a duplicitám při neurčitém pořadí. Při vytváření výstrah můžete pro tyto nekonzistence použít prahové hodnoty.
 
-Můžete například chtít nakonfigurovat výstrahu metriky, když počet jader s nízkou prioritou spadá na určitou úroveň, abyste mohli upravit složení fondů. Pro dosažení nejlepších výsledků nastavte období 10 nebo více minut, kde se aktivují výstrahy, pokud průměrný počet jader s nízkou prioritou klesne pod prahovou hodnotu pro celé období. Díky tomu je možné metrikám agregovat více času, abyste získali přesnější výsledky. 
+Můžete například chtít nakonfigurovat výstrahu metriky, když počet jader s nízkou prioritou spadá na určitou úroveň, abyste mohli upravit složení fondů. Pro dosažení nejlepších výsledků nastavte období 10 nebo více minut, kde se aktivují výstrahy, pokud průměrný počet jader s nízkou prioritou klesne pod prahovou hodnotu pro celé období. Díky tomu je možné metrikám agregovat více času, abyste získali přesnější výsledky.
 
 Postup konfigurace výstrahy metriky v Azure Portal:
 
@@ -87,11 +87,11 @@ Běžným scénářem je výběr účtu Azure Storage jako cíle protokolu. Chce
 
 Alternativně můžete:
 
-- Umožňuje streamovat události protokolu diagnostiky služby Batch do [centra událostí Azure](../event-hubs/event-hubs-about.md). Event Hubs může ingestovat miliony událostí za sekundu, které pak můžete transformovat a ukládat pomocí libovolného zprostředkovatele analýz v reálném čase. 
+- Umožňuje streamovat události protokolu diagnostiky služby Batch do [centra událostí Azure](../event-hubs/event-hubs-about.md). Event Hubs může ingestovat miliony událostí za sekundu, které pak můžete transformovat a ukládat pomocí libovolného zprostředkovatele analýz v reálném čase.
 - Odešlete diagnostické protokoly do [protokolů Azure monitor](../azure-monitor/log-query/log-query-overview.md), kde je můžete analyzovat nebo exportovat pro účely analýzy v Power BI nebo Excelu.
 
 > [!NOTE]
-> Pro ukládání nebo zpracování dat protokolů diagnostiky se službami Azure můžete účtovat další náklady. 
+> Pro ukládání nebo zpracování dat protokolů diagnostiky se službami Azure můžete účtovat další náklady.
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>Povolit shromažďování diagnostických protokolů Batch
 
@@ -119,7 +119,7 @@ m={two-digit numeric month}/d={two-digit numeric day}/
 h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Zde je příklad:
+Příklad:
 
 ```json
 insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/
@@ -155,7 +155,7 @@ Protokoly služby Azure Batch, pokud jsou shromažďovány, obsahují události 
     },
     "resizeTimeout": "300000",
     "targetDedicatedComputeNodes": 2,
-    "maxTasksPerNode": 1,
+    "taskSlotsPerNode": 1,
     "vmFillType": "Spread",
     "enableAutoscale": false,
     "enableInterNodeCommunication": false,
@@ -170,9 +170,11 @@ Události protokolu služby emitované službou Batch zahrnují následující:
 - [Odstranění fondu bylo dokončeno.](batch-pool-delete-complete-event.md)
 - [Začátek změny velikosti fondu](batch-pool-resize-start-event.md)
 - [Změna velikosti fondu dokončena](batch-pool-resize-complete-event.md)
+- [Automatické škálování fondu](batch-pool-autoscale-event.md)
 - [Začátek úlohy](batch-task-start-event.md)
 - [Úloha dokončena](batch-task-complete-event.md)
 - [Selhání úlohy](batch-task-fail-event.md)
+- [Plán úlohy selže](batch-task-schedule-fail-event.md)
 
 ## <a name="next-steps"></a>Další kroky
 

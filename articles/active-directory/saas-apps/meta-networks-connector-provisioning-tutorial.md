@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: bcddaec1660082c2d3fed42e0c10cbdde987693c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c43624b57f5a46473e8640200a7284a9fa737790
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273513"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849217"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>Kurz: Konfigurace konektoru meta Networks Connector pro Automatické zřizování uživatelů
 
@@ -60,7 +60,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 3.  Nastavte **název klíče rozhraní API** a **Popis klíče rozhraní API**.
 
-    ![Vytvoření tokenu pro konektor meta Networks](media/meta-networks-connector-provisioning-tutorial/keyname.png)
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/keyname.png" alt-text="Snímek obrazovky konzoly pro správu konektoru meta Networks s zvýrazněným názvem klíče P I a popisem hodnot v Azure a a klíčovým popisem p" border="false":::
 
 4.  Zapněte oprávnění **zapisovat** pro **skupiny** a **uživatele**.
 
@@ -68,7 +68,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 5.  Klikněte na **Přidat**. Zkopírujte **tajný klíč** a uložte ho tak, jak se to bude zobrazovat jenom v takovém případě. Tato hodnota se zadá do pole token tajného klíče na kartě zřizování v aplikaci konektoru meta Networks v Azure Portal.
 
-    ![Vytvoření tokenu pro konektor meta Networks](media/meta-networks-connector-provisioning-tutorial/token.png)
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/token.png" alt-text="Snímek obrazovky konzoly pro správu konektoru meta Networks s zvýrazněným názvem klíče P I a popisem hodnot v Azure a a klíčovým popisem p" border="false":::
 
 6.  IdP můžete přidat tak, že přejdete do **Nastavení správa > > IdP > vytvořit nový**.
 

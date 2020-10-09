@@ -3,16 +3,14 @@ title: Vytváření clusterů na serverech Windows Server a Linux
 description: Service Fabric clustery běží na systémech Windows Server a Linux. Můžete nasazovat a hostovat aplikace Service Fabric kdekoli, kde můžete používat Windows Server nebo Linux.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: dekapur
-ms.openlocfilehash: 2c0cc1ddc58347933b498b015c562c3822e8a688
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7446a221d266230b319c808a88ef4fac05e6fff5
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978700"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843307"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Přehled clusterů Service Fabric v Azure
 Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se označuje jako uzel clusteru. Clustery se můžou škálovat na tisíce uzlů. Pokud do clusteru přidáte nové uzly, Service Fabric rebilance repliky oddílů služby a instance napříč rostoucím počtem uzlů. Celkový výkon aplikace vylepšuje a kolizí pro přístup k snížení velikosti paměti. Pokud se uzly v clusteru nepoužívají efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu vyrovnává repliky oddílů a instance napříč sníženým počtem uzlů, aby bylo možné lépe využívat hardware na jednotlivých uzlech.
@@ -71,11 +69,11 @@ Kromě klientských certifikátů je možné Azure Active Directory taky nakonfi
 Další informace najdete v článku [zabezpečení mezi klienty a uzly](service-fabric-cluster-security.md#client-to-node-security) .
 
 ### <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
-Access Control na základě rolí (RBAC) umožňuje přiřadit podrobné řízení přístupu k prostředkům Azure.  K předplatným, skupinám prostředků a prostředkům můžete přiřadit různá pravidla přístupu.  Pravidla RBAC jsou zděděna v hierarchii prostředků, pokud nejsou přepsána na nižší úrovni.  Můžete přiřadit všechny uživatele nebo skupiny uživatelů ve službě AAD s pravidly RBAC, aby mohli vlastní určení uživatelé a skupiny upravovat cluster.  Další informace najdete v tématu [Přehled Azure RBAC](../role-based-access-control/overview.md).
+Role-Based Access Control (RBAC) umožňuje v prostředcích Azure přiřadit jemně odstupňované ovládací prvky přístupu.  K předplatným, skupinám prostředků a prostředkům můžete přiřadit různá pravidla přístupu.  Pravidla RBAC jsou zděděna v hierarchii prostředků, pokud nejsou přepsána na nižší úrovni.  Můžete přiřadit všechny uživatele nebo skupiny uživatelů ve službě AAD s pravidly RBAC, aby mohli vlastní určení uživatelé a skupiny upravovat cluster.  Další informace najdete v tématu [Přehled Azure RBAC](../role-based-access-control/overview.md).
 
 Service Fabric také podporuje řízení přístupu pro omezení přístupu k určitým operacím clusteru pro různé skupiny uživatelů. To pomáhá zvýšit zabezpečení clusteru. Pro klienty, kteří se připojují ke clusteru, jsou podporovány dva typy řízení přístupu: role správce a role uživatele.  
 
-Další informace najdete v [Service Fabric Access Control na základě rolí (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac).
+Další informace najdete v článku [Service Fabric Role-Based Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac).
 
 ### <a name="network-security-groups"></a>Skupiny zabezpečení sítě 
 Skupiny zabezpečení sítě (skupin zabezpečení sítě) řízení příchozího a odchozího provozu podsítě, virtuálního počítače nebo konkrétního síťového adaptéru.  Ve výchozím nastavení platí, že pokud je více virtuálních počítačů umístěno ve stejné virtuální síti, mohou vzájemně komunikovat prostřednictvím libovolného portu.  Pokud chcete omezit komunikaci mezi počítači, můžete definovat skupin zabezpečení sítě k segmentaci sítě nebo izolaci virtuálních počítačů od sebe navzájem.  Pokud máte v clusteru více typů uzlů, můžete použít skupin zabezpečení sítě na podsítě, abyste zabránili vzájemné komunikaci počítačů, které patří různým typům uzlů.  

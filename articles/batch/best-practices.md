@@ -3,12 +3,12 @@ title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj řešení Azure Batch.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca6e491586fd653f39da7466ea116109000facd6
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 695f213c0683bd158539b97719f2c2d8c0210edf
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146534"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849485"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -109,7 +109,7 @@ Odstranění úloh provede dvě věci. Zajišťuje, abyste v úloze nemuseli ses
 
 ### <a name="set-max-tasks-per-node-appropriately"></a>Nastavit maximální počet úkolů na uzel správně
 
-Batch podporuje přepočet úkolů na uzlech (spouštění více úloh, než má uzel obsahuje jádra). Je to na vás, abyste se ujistili, že se vaše úkoly vejdou do uzlů ve fondu. Například můžete mít zhoršené prostředí, pokud se pokusíte naplánovat osm úloh, které každý využívá 25% využití CPU na jeden uzel (ve fondu s `maxTasksPerNode = 8` ).
+Batch podporuje přepočet úkolů na uzlech (spouštění více úloh, než má uzel obsahuje jádra). Je to na vás, abyste se ujistili, že se vaše úkoly vejdou do uzlů ve fondu. Například můžete mít zhoršené prostředí, pokud se pokusíte naplánovat osm úloh, které každý využívá 25% využití CPU na jeden uzel (ve fondu s `taskSlotsPerNode = 8` ).
 
 ### <a name="design-for-retries-and-re-execution"></a>Návrh pro opakování a opakované spuštění
 
@@ -217,6 +217,6 @@ Azure Batch vytvoří a spravuje skupinu uživatelů a skupin na virtuálním po
 
 ### <a name="file-cleanup"></a>Vyčištění souboru
 
-Batch se aktivně snaží vyčistit pracovní adresář, ve kterém jsou spuštěné úlohy, jakmile doba uchování vyprší. Všechny soubory napsané mimo tento adresář jsou [vaší zodpovědností na vyčištění](#manage-task-lifetime) , aby nedošlo k zaplnění místa na disku. 
+Batch se aktivně snaží vyčistit pracovní adresář, ve kterém jsou spuštěné úlohy, jakmile doba uchování vyprší. Všechny soubory napsané mimo tento adresář jsou [vaší zodpovědností na vyčištění](#manage-task-lifetime) , aby nedošlo k zaplnění místa na disku.
 
 Automatizované vyčištění pro pracovní adresář se zablokuje, pokud spustíte službu ve Windows z pracovního adresáře startTask, protože se tato složka pořád používá. Výsledkem bude snížení výkonu. Chcete-li tento problém vyřešit, změňte adresář této služby na samostatný adresář, který není spravován službou Batch.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: bb6ad9aae5f92f03ea5bfacc028973e4c4a6dbea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 636bb4c3340f13046706bf887119108b86b6a660
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91312550"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850863"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>Kurz: Konfigurace hejna pro Automatické zřizování uživatelů
 
@@ -54,15 +54,15 @@ Před konfigurací hejna pro Automatické zřizování uživatelů pomocí Azure
 
 1. Přihlaste se k [hejnu](https://web.flock.com/?). Klikněte na **ikonu nastavení**  >  **spravovat váš tým**.
 
-    ![Flock](media/flock-provisioning-tutorial/icon.png)
+    :::image type="content" source="media/flock-provisioning-tutorial/icon.png" alt-text="Snímek obrazovky s webem hejna Ikona nastavení je zvýrazněna a její místní nabídka je viditelná. V této nabídce je zvýrazněna volba spravovat váš tým." border="false":::
 
 2. Vyberte **ověřování a zřizování**.
 
-    ![Flock](media/Flock-provisioning-tutorial/auth.png)
+    :::image type="content" source="media/Flock-provisioning-tutorial/auth.png" alt-text="Snímek obrazovky s webem hejna Ikona nastavení je zvýrazněna a její místní nabídka je viditelná. V této nabídce je zvýrazněna volba spravovat váš tým." border="false":::
 
 3. Zkopírujte **token rozhraní API**. Tyto hodnoty se zadají do pole **token tajného klíče** na kartě zřizování vaší aplikace v rámci vašeho hejna v Azure Portal.
 
-    ![Flock](media/Flock-provisioning-tutorial/provisioning.png)
+    :::image type="content" source="media/Flock-provisioning-tutorial/provisioning.png" alt-text="Snímek obrazovky s webem hejna Ikona nastavení je zvýrazněna a její místní nabídka je viditelná. V této nabídce je zvýrazněna volba spravovat váš tým." border="false":::
 
 
 ## <a name="add-flock--from-the-gallery"></a>Přidání hejna z Galerie

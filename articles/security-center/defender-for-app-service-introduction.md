@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c53f7e712668f32766feaf76d6a08582bda9af22
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7026757651d1b0510293101203f41a651c7b851
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91449112"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850961"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>Seznámení s Azure Defenderem pro App Service
 
@@ -27,10 +27,10 @@ Díky viditelnosti, kterou Azure nabízí jako poskytovatel cloudu, Security Cen
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Preview|
+|Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|[Azure Defender pro App Service](azure-defender.md) se účtuje tak, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
 |Podporované plány App Service:|![Ano, ](./media/icons/yes-icon.png) Basic, Standard, Premium, izolovaný režim nebo Linux<br>![Žádná ](./media/icons/no-icon.png) volná, sdílená ani spotřebovaná<br>[Další informace o plánech App Service](https://azure.microsoft.com/pricing/details/app-service/plans/)|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="what-does-azure-defender-for-app-service-protect"></a>Co je Azure Defender pro App Service chránit?
