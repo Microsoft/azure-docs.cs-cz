@@ -17,10 +17,10 @@ ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73159696"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Přehled zásad sítě Azure Kubernetes
@@ -32,7 +32,7 @@ Zásady sítě poskytují mikrosegmentaci pro lusky stejně jako skupiny zabezpe
 Zásady sítě Azure fungují ve spojení se službou Azure CNI, která poskytuje integraci virtuální sítě pro kontejnery. V současné době se podporuje jenom na uzlech se systémem Linux. Implementace konfigurují pravidla tabulky IP pro Linux na základě definovaných zásad pro vymáhání filtrování provozu.
 
 ## <a name="planning-security-for-your-kubernetes-cluster"></a>Plánování zabezpečení pro cluster Kubernetes
-Při implementaci zabezpečení pro váš cluster použijte skupiny zabezpečení sítě (skupin zabezpečení sítě) k filtrování provozu na Severe, to znamená přenos provozu a opustí podsíť clusteru a použijte zásady sítě Kubernetes pro přenosy v oblasti východ-západ, tedy provoz mezi lusky ve vašem clusteru.
+Při implementaci zabezpečení pro váš cluster použijte skupiny zabezpečení sítě (skupin zabezpečení sítě) k filtrování North-South provozu, to znamená provoz, který vstupuje do provozu a opustí podsíť clusteru, a použijte zásady sítě Kubernetes pro provoz East-West, to znamená provoz mezi lusky v clusteru.
 
 ## <a name="using-azure-kubernetes-network-policies"></a>Použití zásad sítě Azure Kubernetes
 Zásady sítě Azure je možné použít v následujících způsobech, jak poskytnout mikrosegmentaci pro lusky.

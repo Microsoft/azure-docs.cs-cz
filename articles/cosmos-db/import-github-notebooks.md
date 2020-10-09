@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.openlocfilehash: d85f020152fa3cadb1d437c125d327f5e895e14e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85262884"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Import poznámkových bloků z úložiště GitHub do Azure Cosmos DB
@@ -37,7 +37,7 @@ Můžete se připojit k vlastním úložištím GitHubu nebo k jiným veřejným
 
 1. Jakmile vyberete požadované úložiště, položka úložiště se přesune z oddílu **nepřipnutých úložišť** do **připnutých úložišť** . V případě potřeby můžete také zvolit konkrétní větev úložiště, ze které se mají importovat poznámkové bloky.
 
-   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="Výběr úložiště a větve":::
+   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="Autorizovat Azure Cosmos DB k přístupu k úložištím GitHubu":::
 
 1. Kliknutím na **tlačítko OK** dokončete operaci importu. Všechny poznámkové bloky dostupné ve vybrané větvi úložiště se importují do svého účtu Azure Cosmos.
 
@@ -53,7 +53,7 @@ Po úpravě existujícího poznámkového bloku vyberte **Save (Uložit**). Otev
 
 V normálním toku GitHub po potvrzení změn se obvykle dokončí změny do vzdáleného. V takovém případě ale možnost potvrzení slouží jako "fázování, potvrzování a" doručování "vašich aktualizací do GitHubu.
 
-:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Upravit poznámkové bloky a potvrdit změny do GitHubu":::
+:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Autorizovat Azure Cosmos DB k přístupu k úložištím GitHubu":::
 
 ## <a name="next-steps"></a>Další kroky
 

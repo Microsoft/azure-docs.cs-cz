@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
 ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263256"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Výpočetní databáze bez serveru s využitím Azure Cosmos DB a Azure Functions
@@ -61,7 +61,7 @@ V implementacích IoT můžete funkci vyvolat, když se na připojeném automobi
 
 Následující obrázek ukazuje kód napsaný v Azure Portal pro tuto aktivační událost.
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Vytvoření triggeru Azure Functions pro Cosmos DB v Azure Portal":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Způsob integrace Azure Cosmos DB a Azure Functions":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>Případ finančního použití – aktivační událost časovače a vstupní vazba
 
@@ -75,9 +75,9 @@ V případě finančních implementací můžete funkci vyvolat, když zůstatek
 
 Následující obrázky znázorňují kód v Azure Portal pro tento scénář.
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="SouborIndex.js pro aktivační událost časovače pro finanční scénář":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Způsob integrace Azure Cosmos DB a Azure Functions":::
 
-:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Spuštění souboru. csx pro aktivační událost časovače pro finanční scénář":::
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Způsob integrace Azure Cosmos DB a Azure Functions":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Případ herního případu použití – aktivační událost Azure Functions a výstupní vazba pro Cosmos DB 
 

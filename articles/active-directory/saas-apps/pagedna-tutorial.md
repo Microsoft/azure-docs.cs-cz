@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 543085eaea993f6e464a501ffc93befd7589a009
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554120"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Kurz: Azure Active Directory integrace s PageDNA
@@ -51,7 +51,7 @@ PageDNA podporuje následující funkce:
 
 Pokud chcete nakonfigurovat integraci PageDNA do služby Azure AD, musíte přidat PageDNA z Azure Marketplace do seznamu spravovaných aplikací SaaS:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com?azure-portal=true).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com?azure-portal=true).
 1. V levém podokně vyberte **Azure Active Directory**.
 
     ![Možnost Azure Active Directory](common/select-azuread.png)
@@ -95,7 +95,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí PageDNA,
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-1. V podokně **nastavit jednotné přihlašování pomocí SAML** vyberte **Upravit** (ikona tužky) a otevřete **základní podokno konfigurace SAML** .
+1. V podokně **nastavit jednu Sign-On s** podoknem SAML vyberte **Upravit** (ikona tužky) a otevřete základní podokno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -122,7 +122,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí PageDNA,
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a identifikátoru. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory PageDNA](mailto:success@pagedna.com). Můžete také odkazovat na vzory zobrazené v podokně **základní konfigurace SAML** v Azure Portal.
 
-1. V podokně **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte **Stáhnout** a ze daných možností stáhněte **certifikát (RAW)** a uložte ho do svého počítače.
+1. V části **nastavit jednu Sign-On s** podoknem SAML vyberte v části **podpisový certifikát SAML** možnost **Stáhnout** a ze daných možností stáhněte **certifikát (RAW)** a uložte ho do svého počítače.
 
     ![Možnost stažení certifikátu (RAW)](common/certificateraw.png)
 

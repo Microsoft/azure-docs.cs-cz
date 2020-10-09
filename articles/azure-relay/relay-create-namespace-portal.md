@@ -4,10 +4,10 @@ description: Tento článek obsahuje návod, který ukazuje, jak vytvořit obor 
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 4c26928d2ee53a5c76ff982b5d57b59f9a7a8ab8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85316997"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Vytvoření oboru názvů přenosu pomocí webu Azure Portal
@@ -21,7 +21,7 @@ Obor názvů je kontejner oboru pro všechny součásti služby Azure Relay. Sou
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-Gratulujeme! Právě jste vytvořili obor názvů přenosu.
+Blahopřejeme! Právě jste vytvořili obor názvů přenosu.
 
 ## <a name="next-steps"></a>Další kroky
 

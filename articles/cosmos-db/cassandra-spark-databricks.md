@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
 ms.openlocfilehash: 30bd3187973de204f27a3be3862351550d6a56f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85260470"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Přístup k datům Azure Cosmos DB rozhraní API Cassandra z Azure Databricks
@@ -47,7 +47,7 @@ Tento článek podrobně popisuje, jak workwith Azure Cosmos DB rozhraní API Ca
 
 * **Konektor Cassandra Spark:** – aby bylo možné integrovat Azure Cosmos DB rozhraní API Cassandra pomocí Sparku, konektor Cassandra by měl být připojen ke clusteru Azure Databricks. Postup připojení clusteru:
 
-  * Podívejte se na verzi modulu runtime datacihly, verzi Sparku. Pak vyhledejte [souřadnice Maven](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) , které jsou kompatibilní s konektorem Spark Cassandra, a připojte je ke clusteru. Pokud chcete připojit knihovnu konektorů ke clusteru, přečtěte si článek [odeslání balíčku Maven nebo balíčku Spark](https://docs.databricks.com/user-guide/libraries.html) . Například souřadnice Maven pro "Databricks Runtime verze 4,3", "Spark 2.3.1" a "Scala 2,11" je`spark-cassandra-connector_2.11-2.3.1`
+  * Podívejte se na verzi modulu runtime datacihly, verzi Sparku. Pak vyhledejte [souřadnice Maven](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) , které jsou kompatibilní s konektorem Spark Cassandra, a připojte je ke clusteru. Pokud chcete připojit knihovnu konektorů ke clusteru, přečtěte si článek [odeslání balíčku Maven nebo balíčku Spark](https://docs.databricks.com/user-guide/libraries.html) . Například souřadnice Maven pro "Databricks Runtime verze 4,3", "Spark 2.3.1" a "Scala 2,11" je `spark-cassandra-connector_2.11-2.3.1`
 
 * **Azure Cosmos DB knihovna specifická pro rozhraní API Cassandra:** – ke konfiguraci zásad opakování z konektoru Spark Cassandra na Azure Cosmos DB rozhraní API Cassandra se vyžaduje vlastní továrna připojení. Přidejte `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0` [souřadnice Maven](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) pro připojení knihovny ke clusteru.
 

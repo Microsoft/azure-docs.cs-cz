@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
 ms.openlocfilehash: 56899b7d81f17e678026b1aad7f3e2d9f8b9b0b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85260520"
 ---
 # <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Vytvoření nebo vložení dat do Azure Cosmos DB rozhraní API Cassandra ze Sparku
@@ -140,7 +140,7 @@ Po vložení dat do tabulky Azure Cosmos DB rozhraní API Cassandra proveďte da
  
 * [Operace čtení](cassandra-spark-read-ops.md)
 * [Operace Upsert](cassandra-spark-upsert-ops.md)
-* [Operace odstranění](cassandra-spark-delete-ops.md)
-* [Operace agregace](cassandra-spark-aggregation-ops.md)
+* [Operace Delete](cassandra-spark-delete-ops.md)
+* [Agregační operace](cassandra-spark-aggregation-ops.md)
 * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)
 

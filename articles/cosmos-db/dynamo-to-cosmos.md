@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
 ms.openlocfilehash: cfdeda8ac3957da272ab4c47fb93930c826d55aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85261864"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>Migrace aplikace z Amazon DynamoDB na Azure Cosmos DB
@@ -24,11 +24,11 @@ Níže jsou uvedené klíčové rozdíly mezi Azure Cosmos DB a DynamoDB:
 |  DynamoDB | Azure Cosmos DB  |
 |---|---|
 |Nelze použít|  databáze |
-|Tabulka      |  Kolekce |
+|Tabulka      |  Collection (Kolekce) |
 |  Položka |  Dokument |
 |Atribut|Pole|
 |Sekundární index|Sekundární index|
-|Primary Key – klíč oddílu|Klíč oddílu|
+|Primary Key – klíč oddílu|Partition Key (Klíč oddílu)|
 |Primary Key – klíč řazení| Nepožadováno |
 |Datový proud|ChangeFeed|
 |Zapsat výpočetní jednotku|Jednotka požadavku (flexibilní, dá se použít pro čtení nebo zápisy)|
@@ -438,7 +438,7 @@ while (result.HasMoreResults)
   }
 ```
 
-### <a name="query-documents"></a>Dotazování dokumentů
+### <a name="query-documents"></a>Dotazování na dokumenty
 
 **DynamoDB**:
 

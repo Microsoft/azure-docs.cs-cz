@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: 0cbc57922b31f1b3879bb2cad8a988a1ba4cc368
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85307591"
 ---
-# <a name="add-language-generation-templates-for-speech-responses"></a>Přidání šablon generování jazyka pro odezvy řeči
+# <a name="add-language-generation-templates-for-speech-responses"></a>Přidání šablon generování jazyka pro hlasové odpovědi
 
 V tomto článku se dozvíte, jak používat šablony generování jazyka s vlastními příkazy. Šablony generování jazyka umožňují přizpůsobit odpovědi odeslané klientovi a zavádět odchylky v odpovědích. Přizpůsobení generování jazyka lze dosáhnout:
 
@@ -64,9 +64,9 @@ Využití šablon LG vám také umožňuje definovat složité odezvy řeči pro
 
 | Nastavení            | Navrhovaná hodnota       | 
 | ------------------ | --------------------- | 
-| Name               | `SubjectContext`         | 
+| Název               | `SubjectContext`         | 
 | Je globální          | unchecked             | 
-| Vyžadováno           | unchecked               | 
+| Požaduje se           | unchecked               | 
 | Typ               | Řetězec                |
 | Výchozí hodnota      | `all` |
 | Konfigurace      | Přijměte předdefinované vstupní hodnoty z interního katalogu. | 
@@ -97,7 +97,7 @@ Proveďte **analýzu** a **testování** aplikace následujícím způsobem. Vš
 * Vstup: vypnout kvadranty místností
 * Výstup: OK, vypnutí místnostních indikátorů
 
-## <a name="use-custom-voice"></a>Použít vlastní hlas
+## <a name="use-custom-voice"></a>Použití sady Vlastní hlas
 
 Dalším způsobem přizpůsobení odpovědí vlastních příkazů je výběr vlastního výstupního hlasu. Pomocí následujícího postupu přepnete výchozí hlas na vlastní hlas.
 

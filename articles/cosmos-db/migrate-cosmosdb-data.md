@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
 ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263540"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrace stovek terabajtů dat do Azure Cosmos DB 
@@ -145,7 +145,7 @@ Po dokončení migrace můžete ověřit, že je počet dokumentů v Azure Cosmo
 ## <a name="contact-the-azure-cosmos-db-team"></a>Kontaktovat tým Azure Cosmos DB
 I když můžete postupovat podle tohoto průvodce k úspěšné migraci velkých datových sad do Azure Cosmos DB pro velké objemy migrace se doporučuje získat od Azure Cosmos DBho produktového týmu, abyste ověřili modelování dat a obecnou kontrolu architektury. V závislosti na datové sadě a úloze může produktový tým také navrhovat další optimalizace výkonu a nákladů, které by vám mohly platit. Chcete-li kontaktovat tým Azure Cosmos DB pro pomoc s migrací ve velkém rozsahu, můžete otevřít lístek podpory pod typem problému "Obecné poradenství" a "velké (TB +) migrace", jak je uvedeno níže.
 
-:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Téma podpory migrace":::
+:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Nastavení nástroje pro migraci":::
 
 
 ## <a name="next-steps"></a>Další kroky

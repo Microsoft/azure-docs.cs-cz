@@ -12,10 +12,10 @@ ms.author: procha
 ms.reviewer: mabasile
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 43008d33d8d50911c2c97516cb7896b0d3975b06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85299037"
 ---
 # <a name="azure-synapse-analytics-launch-partners"></a>Partneři, kteří spouštějí Azure synapse Analytics
@@ -23,7 +23,7 @@ ms.locfileid: "85299037"
 Partneři Azure synapse Analytics se dodávají s integrovanými nástroji pro integraci & poskytováním zkušeností v odvětvích, aby naši zákazníci mohli zrychlit svou digitální transformaci pomocí analýzy cloudového škálování. Projděte si nabídky od následujících partnerů, kteří podporují spuštění veřejné verze Preview, od 19. května se sociálními zesíleními, workshopy a nabídkami.
 
 ## <a name="our-public-preview-launch-partners"></a>Naši partneři pro spuštění veřejné verze Preview
-| Partner | Description | Odkaz na web/produkt |
+| Partner | Popis | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
 | ![Accenture](./media/sql-data-warehouse-partner-public-preview/accenture-logo.png) |**Accenture**<br>Společnost 45000 + vyhrazená profesionály, Accenture Microsoft Business Group, využívající Avanade – pomáhá podnikům i v oblasti digitálního výpadku.|[Stránka partnerského serveru](https://www.accenture.com/us-en/services/microsoft-index)<br>|
 | ![Adatis](./media/sql-data-warehouse-partner-public-preview/adatis-logo.png) |**Adatis**<br>Adatis nabízí služby, které se specializují na pokročilé analýzy dat, od strategie a poradenství, až po poskytování a spravované služby na světové úrovni. |[Stránka partnerského serveru](https://adatis.co.uk/)<br> |

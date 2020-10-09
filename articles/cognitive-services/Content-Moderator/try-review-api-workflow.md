@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 3e58be4b94457d95d28cf6528b9151e4be1802cf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72754187"
 ---
 # <a name="define-and-use-moderation-workflows-rest"></a>Definování a použití pracovních postupů moderování (REST)
@@ -43,7 +43,7 @@ Zadejte hodnoty pro **Team**, **Workflow**a **OCP-APIM-Subscription-Key**:
 
 ### <a name="enter-a-workflow-definition"></a>Zadejte definici pracovního postupu.
 
-1. Upravte pole **Text žádosti** a zadejte žádost JSON s podrobnostmi o **popisu** a **typu** ( `Image` nebo `Text`).
+1. Upravte pole **Text žádosti** a zadejte žádost JSON s podrobnostmi o **popisu** a **typu** ( `Image` nebo `Text` ).
 2. Ve **výrazu pro výraz**zkopírujte výchozí výraz JSON pracovního postupu. Výsledný řetězec JSON by měl vypadat takto:
 
 ```json
@@ -78,13 +78,13 @@ Zadejte hodnoty pro **Team**, **Workflow**a **OCP-APIM-Subscription-Key**:
 > [!NOTE]
 > Pomocí tohoto rozhraní API můžete definovat jednoduché, komplexní a dokonce vnořené výrazy pro vaše pracovní postupy. Dokumentace [pracovní postup – vytvořit nebo aktualizovat](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) obsahuje příklady složitější logiky.
 
-### <a name="submit-your-request"></a>Odeslat žádost
+### <a name="submit-your-request"></a>Odeslání žádosti
   
-Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK`a zobrazí `true`se okno **obsah odpovědi** .
+Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK` a zobrazí se okno **obsah odpovědi** `true` .
 
 ### <a name="examine-the-new-workflow"></a>Kontrola nového pracovního postupu
 
-V [nástroji pro revize](https://contentmoderator.cognitive.microsoft.com/)vyberte **Nastavení** > **pracovní postupy**. Nový pracovní postup by se měl zobrazit v seznamu.
+V [nástroji pro revize](https://contentmoderator.cognitive.microsoft.com/)vyberte **Nastavení**  >  **pracovní postupy**. Nový pracovní postup by se měl zobrazit v seznamu.
 
 ![Seznam pracovních postupů nástroje pro kontrolu](images/workflow-console-new-workflow.PNG)
 
@@ -102,7 +102,7 @@ Zadejte parametry volání REST jako v předchozí části. Ujistěte se, že te
 
 ![Získat parametry a záhlaví dotazů](images/workflow-get-default.PNG)
 
-Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK`a v poli **obsah odpovědi** se zobrazí pracovní postup ve formátu JSON, například takto:
+Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je a v `200 OK` poli **obsah odpovědi** se zobrazí pracovní postup ve formátu JSON, například takto:
 
 ```json
 {

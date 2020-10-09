@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.openlocfilehash: d5af58f886eccf0835941bd4a65982b17cf9cbbb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88521463"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ares-for-enterprise"></a>Kurz: Azure Active Directory integrace s ARECH pro podniky
@@ -75,7 +75,7 @@ Aby se jednotné přihlašování fungovalo, musí se zřídit vztah propojení 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s ARECH pro firmy, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte pro podnikové jednotné přihlašování](#configure-ares-for-enterprise-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace. 
+2. **[Nakonfigurujete pro podnikové jednotné přihlašování](#configure-ares-for-enterprise-single-sign-on)** – pro konfiguraci nastavení jednoho Sign-On na straně aplikace. 
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. Vytvořte geografickou verzi **[pro podnikového testovacího uživatele](#create-ares-for-enterprise-test-user)** , která bude mít protějšek Britta Simon v arech pro firmy, která je propojená s reprezentací uživatele v Azure AD.
@@ -95,7 +95,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s ARECH pro podn
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -105,11 +105,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s ARECH pro podn
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://login.graebert.com`
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte v části **podpisový certifikát SAML** na Kopírovat tlačítko a zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
-### <a name="configure-ares-for-enterprise-single-sign-on"></a>Konfigurace geografického podnikového jednotného přihlašování
+### <a name="configure-ares-for-enterprise-single-sign-on"></a>Konfigurace ARECH pro Enterprise Single Sign-On
 
 Pokud chcete nakonfigurovat jednotné přihlašování pro geografickou stranu na straně **Enterprise** , musíte poslat **adresu URL federačních metadat aplikace** pro [tým podnikových služeb](mailto:support@graebert.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
@@ -136,7 +136,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -144,7 +144,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak **pro Enterprise vyberte arů**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost **arů pro Enterprise**.
 

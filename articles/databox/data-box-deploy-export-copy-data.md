@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1d39b29ba340b34d6f0add8ff5da473408bd6360
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 204e89bdf8c660a7e96438f8cb3b8a18aeaec306
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259133"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742379"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Kurz: Kopírování dat z Azure Data Boxu přes protokol SMB (Preview)
 
@@ -50,7 +50,7 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 
 1. Prvním krokem je ověření a zahájení relace. Přejděte do části **Připojit a kopírovat**. Výběrem **Získat přihlašovací údaje** získáte přihlašovací údaje pro přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště. 
 
-    ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
+    ![Získání přihlašovacích údajů sdílené složky](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
 
 2. V dialogovém okně Přístup ke sdílené složce a kopírování dat zkopírujte **Uživatelské jméno** a **Heslo** odpovídající sdílené složce. Vyberte **OK**.
     
@@ -75,7 +75,7 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 
 4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Výběrem **OK** otevřete Průzkumníka souborů.
     
-    ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![Připojení ke sdílené složce přes Průzkumníka souborů](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     Sdílené složky by se teď měly zobrazit jako složky.
     

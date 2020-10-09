@@ -8,17 +8,17 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: fa02ac0dfe229f3e82d1c1c62d83ca06a81efca6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887321"
 ---
 # <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>Scénář: `hbase hbck` příkaz vrátí nekonzistence ve službě Azure HDInsight.
 
 Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
 
-## <a name="issue-region-is-not-in-hbasemeta"></a>Problém: oblast není v`hbase:meta`
+## <a name="issue-region-is-not-in-hbasemeta"></a>Problém: oblast není v `hbase:meta`
 
 Oblast XXX na HDFS, ale není uvedená v `hbase:meta` systému nebo nasazená na žádném serveru oblasti.
 
@@ -67,7 +67,7 @@ Se liší.
 
 ### <a name="resolution"></a>Řešení
 
-Ručně sloučí tyto překryté oblasti. V části přejít na HMaster web UI tabulka webové uživatelské rozhraní vyberte odkaz tabulka, který má problém. Zobrazí se počáteční klíč/koncový klíč každé oblasti patřící do této tabulky. Pak tyto překryté oblasti slučte. V prostředí HBA Shell `merge_region 'xxxxxxxx','yyyyyyy', true` . Příklad:
+Ručně sloučí tyto překryté oblasti. V části přejít na HMaster web UI tabulka webové uživatelské rozhraní vyberte odkaz tabulka, který má problém. Zobrazí se počáteční klíč/koncový klíč každé oblasti patřící do této tabulky. Pak tyto překryté oblasti slučte. V prostředí HBA Shell `merge_region 'xxxxxxxx','yyyyyyy', true` . Například:
 
 ```
 RegionA, startkey:001, endkey:010,
@@ -81,7 +81,7 @@ V tomto scénáři je potřeba sloučit oblast a RegionC a získat v oblasti ste
 
 ---
 
-## <a name="issue-cant-load-regioninfo"></a>Problém: nejde načíst.`.regioninfo`
+## <a name="issue-cant-load-regioninfo"></a>Problém: nejde načíst. `.regioninfo`
 
 Nelze načíst `.regioninfo` pro oblast `/hbase/data/default/tablex/regiony` .
 

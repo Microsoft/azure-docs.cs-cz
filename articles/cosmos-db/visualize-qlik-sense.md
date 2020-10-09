@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263343"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Připojte Qlik smysl pro Azure Cosmos DB a vizualizaci dat
@@ -62,15 +62,15 @@ Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte p
 
 4. Přepněte na **uživatelské DSN** a vyberte připojení ODBC, které jste vytvořili dříve. Zadejte název připojení a vyberte **vytvořit**. 
 
-   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="Vytvoření nového připojení":::
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="Vytvoření nové aplikace pro rozpoznávání Qlik":::
 
 5. Po vytvoření připojení můžete zvolit databázi, kolekci, ve které se nachází data hry, a pak je zobrazíte ve verzi Preview.
 
-   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="Zvolit databázi a kolekci"::: 
+   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="Vytvoření nové aplikace pro rozpoznávání Qlik"::: 
 
 6. V dalším kroku vyberte **Přidat data** , aby se data načetla do Qlik. Po načtení dat do Qlikového rozpoznávání můžete vygenerovat přehledy a provádět analýzy dat. Můžete buď použít přehledy nebo sestavit vlastní aplikaci a prozkoumat si prodejní hry. Následující obrázek ukazuje 
 
-   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="Vizualizace dat":::
+   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="Vytvoření nové aplikace pro rozpoznávání Qlik":::
 
 ### <a name="limitations-when-connecting-with-odbc"></a>Omezení při připojování pomocí rozhraní ODBC 
 

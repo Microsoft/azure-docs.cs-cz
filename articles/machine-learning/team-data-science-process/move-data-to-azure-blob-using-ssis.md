@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ad87272749011c81c1040825da3f3c53858a55bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85322857"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Přesun dat do a z Azure Blob Storage pomocí konektorů SSIS
@@ -64,7 +64,7 @@ K přesunu dat pomocí balíčku funkcí SSIS z místního prostředí do úlož
 
 Parametry, které používá úkol, jsou popsány zde:
 
-| Pole | Description |
+| Pole | Popis |
 | --- | --- |
 | **AzureStorageConnection** |Určuje existujícího Správce připojení Azure Storage nebo vytvoří nový, který odkazuje na účet Azure Storage, který odkazuje na místo, kde jsou hostované soubory objektů BLOB. |
 | **BlobContainer** |Určuje název kontejneru objektů blob, který obsahuje nahrané soubory jako objekty blob. |
@@ -81,7 +81,7 @@ Parametry, které používá úkol, jsou popsány zde:
 ## <a name="download-data-from-azure-blob-storage"></a>Stažení dat ze služby Azure Blob Storage
 Pokud chcete stáhnout data ze služby Azure Blob Storage do místního úložiště pomocí SSIS, použijte instanci [úlohy stažení objektu BLOB v Azure](https://msdn.microsoft.com/library/mt146779.aspx).
 
-## <a name="more-advanced-ssis-azure-scenarios"></a>Pokročilejší SSIS – scénáře Azure
+## <a name="more-advanced-ssis-azure-scenarios"></a>Pokročilejší SSIS-Azure scénáře
 SSIS Feature Pack umožňuje zpracování složitějších toků sečtením úloh sbalení. Data objektů BLOB by se například mohla předávat přímo do clusteru HDInsight, jehož výstupy se můžou stáhnout zpátky do objektu BLOB a potom do místního úložiště. SSIS může spouštět úlohy podregistru a vepřového sádla v clusteru HDInsight pomocí dalších konektorů SSIS:
 
 * Pokud chcete spustit skript podregistru v clusteru Azure HDInsight s SSIS, použijte [úlohu pro podregistr Azure HDInsight](https://msdn.microsoft.com/library/mt146771.aspx).

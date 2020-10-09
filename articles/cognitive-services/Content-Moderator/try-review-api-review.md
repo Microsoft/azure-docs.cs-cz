@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
 ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72757145"
 ---
 # <a name="create-human-reviews-rest"></a>Vytvořit lidské recenze (REST)
@@ -127,15 +127,15 @@ Výchozí text požadavku ukazuje příklady různých typů revizí, které mů
 ]
 ```
 
-### <a name="submit-your-request"></a>Odeslat žádost
+### <a name="submit-your-request"></a>Odeslání žádosti
   
-Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK`a v poli **obsah odpovědi** se zobrazí ID revize. Zkopírujte toto ID, které chcete použít v následujících krocích.
+Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK` a v poli **obsah odpovědi** se zobrazí ID revize. Zkopírujte toto ID, které chcete použít v následujících krocích.
 
 ![Revize – pole vytvořit obsah odpovědi konzoly zobrazí ID revize.](images/test-drive-review-2.PNG)
 
 ### <a name="examine-the-new-review"></a>Prozkoumejte novou kontrolu
 
-V [nástroji pro revize](https://contentmoderator.cognitive.microsoft.com)vyberte **zkontrolovat** > **video** **text**/**Obrázek**/(v závislosti na obsahu, který jste použili). Obsah, který jste nahráli, by měl být připravený k lidské kontrole.
+V [nástroji pro revize](https://contentmoderator.cognitive.microsoft.com)vyberte **zkontrolovat**  >  **Image** / **Text** / **video** text obrázek (v závislosti na obsahu, který jste použili). Obsah, který jste nahráli, by měl být připravený k lidské kontrole.
 
 ![Obrázek nástroje pro kontrolu fotbalového míče](images/test-drive-review-5.PNG)
 
@@ -149,7 +149,7 @@ Zadejte parametry volání REST jako v předchozí části. Pro tento krok je **
 
 ![Kontrola – vytvoření výsledků získání konzoly](images/test-drive-review-3.PNG)
   
-Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK`a v poli **obsah odpovědi** se zobrazí podrobnosti o kontrole ve formátu JSON, jako je například následující:
+Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je a v `200 OK` poli **obsah odpovědi** se zobrazí podrobnosti o kontrole ve formátu JSON, jako je například následující:
 
 ```json
 {  

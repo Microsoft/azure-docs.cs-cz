@@ -4,10 +4,10 @@ description: Tento článek obsahuje přehled vyhrazených Event Hubs Azure, kte
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 70061b5dc4fe72c9fd2fd60dd8c67da31b1d1e6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85322448"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Přehled Event Hubs úrovně Dedicated
@@ -38,18 +38,18 @@ Na svazcích s vysokou úrovní příchozího přenosu dat (>100 počet propustn
 
 V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s minimálním počtem 4 hodin využití. Vyhrazená úroveň nabízí všechny funkce plánu Standard, ale kapacitu a omezení na úrovni podniku pro zákazníky s náročnými úlohami. 
 
-| Funkce | Standard | Vyhrazená |
+| Příznak | Standard | Vyhrazená |
 | --- |:---:|:---:|
 | Šířka pásma | 20 počet propustnosti (až 40 počet propustnosti) | 20 kapacitní jednotky |
-| Obory názvů |  1 | 50 za CU |
+| Jmenné prostory |  1 | 50 za CU |
 | Event Hubs |  10 na obor názvů | 1000 na obor názvů |
 | Události příchozího přenosu dat | Plaťte za milion událostí | Zahrnuje |
 | Velikost zprávy | 1 000 000 bajtů | 1 000 000 bajtů |
 | Oddíly | 32 na centrum událostí | 1024 na centrum událostí |
-| Skupiny příjemců | 20 na centrum událostí | Bez omezení na CU, 1000 na každé centrum událostí |
+| Skupiny uživatelů | 20 na centrum událostí | Bez omezení na CU, 1000 na každé centrum událostí |
 | Zprostředkovaná připojení | 1 000 zahrnutý, 5 000 max | 100 K zahrnutí a maximum |
 | Uchovávání zpráv | 7 dní, 84 GB zahrnutých za TU | 90 dní, zahrnutých 10 TB za CU |
-| Zachycování | Platba za hodinu | Zahrnuje |
+| Zachytávání | Platba za hodinu | Zahrnuje |
 
 ## <a name="how-to-onboard"></a>Postup zprovoznění
 

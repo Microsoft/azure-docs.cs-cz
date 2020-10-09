@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
 ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72968741"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Automatické určení a přepisovat obsahu s více jazyky (Preview)
@@ -23,7 +23,7 @@ Video Indexer podporuje automatickou identifikaci jazyka a přepis v obsahu s v�
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-portal"></a>Výběr vícejazyčné identifikace při indexování pomocí portálu
 
-Můžete zvolit **rozpoznávání více jazyků** při nahrávání a indexování videa. Případně můžete zvolit **rozpoznávání více jazyků** při opakovaném indexování videa. Následující postup popisuje, jak znovu indexovat:
+Můžete zvolit **rozpoznávání více jazyků** při nahrávání a indexování videa. Případně můžete zvolit **rozpoznávání více jazyků**  při opakovaném indexování videa. Následující postup popisuje, jak znovu indexovat:
 
 1. Přejděte na web [Video Indexer](https://vi.microsoft.com/) a přihlaste se.
 1. Přejděte na stránku **Knihovna** a najeďte myší na název videa, které chcete znovu indexovat. 

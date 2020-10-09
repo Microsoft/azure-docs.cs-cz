@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85298544"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
@@ -135,7 +135,7 @@ Při použití instančních objektů služeb Azure AD a AKS mějte na paměti n
 - Ve výchozím nastavení jsou přihlašovací údaje instančního objektu platné po dobu jednoho roku. [Přihlašovací údaje instančního objektu můžete kdykoli aktualizovat nebo otáčet][update-credentials] .
 - Každý instanční objekt je přidružený k aplikaci Azure AD. Instanční objekt pro cluster Kubernetes se dá přidružit k libovolnému platnému názvu aplikace Azure AD (například: *https://www.contoso.org/example* ). Adresa URL aplikace nemusí být skutečný koncový bod.
 - Při zadávání **ID klienta** instančního objektu použijte hodnotu `appId`.
-- Na virtuálních počítačích uzlů agentů v clusteru Kubernetes se přihlašovací údaje instančního objektu ukládají do souboru.`/etc/kubernetes/azure.json`
+- Na virtuálních počítačích uzlů agentů v clusteru Kubernetes se přihlašovací údaje instančního objektu ukládají do souboru. `/etc/kubernetes/azure.json`
 - Pokud použijete příkaz [az aks create][az-aks-create] k automatickému vygenerování instančního objektu, zapíší se přihlašovací údaje instančního objektu do souboru `~/.azure/aksServicePrincipal.json` na počítači, který jste ke spuštění příkazu použili.
 - Pokud instanční objekt nebudete výslovně předávat v dalších příkazech rozhraní příkazového řádku AKS, použije se výchozí instanční objekt umístěný v `~/.azure/aksServicePrincipal.json` .  
 - Volitelně můžete také odebrat aksServicePrincipal.jsv souboru a AKS vytvořit nový instanční objekt.

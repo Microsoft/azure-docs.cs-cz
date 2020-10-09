@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75862556"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Řešení potíží: Připojení site-to-site VPN k Azure se přerušovaně odpojuje
@@ -42,7 +42,7 @@ Ověřte typ brány virtuální sítě Azure:
 1. Zajistěte, aby byla virtuální síť, podsítě a rozsahy v definici **brány místní sítě** v Microsoft Azure stejné jako konfigurace na místním zařízení VPN.
 2. Ověřte, že se nastavení přidružení zabezpečení shodují.
 
-### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>Krok 3: Vyhledání tras definovaných uživatelem nebo skupin zabezpečení sítě v podsíti brány
+### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>Krok 3 – vyhledání tras User-Defined nebo skupin zabezpečení sítě v podsíti brány
 
 Trasa definovaná uživatelem v podsíti brány může omezit určitý provoz a povolit další provoz. Tím se zobrazí, že připojení VPN není pro určitý provoz a dobré pro ostatní funkční. 
 

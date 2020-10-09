@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
 ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887151"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Řešení potíží s výkonem Apache HBase ve službě Azure HDInsight
@@ -55,7 +55,7 @@ Pokud používáte srovnávací testy, například Yahoo! Cloud obsluhující sr
 
 Pokud vaše dotazy náhle začaly mnohem horší než předtím, vyhledejte potenciální chyby v kódu aplikace. Dochází k náhlému generování velkých objemů neplatných dat? V takovém případě může zvýšit latenci čtení.
 
-## <a name="migration-issues"></a>Problémy s migrací
+## <a name="migration-issues"></a>problémy s migrací
 
 Pokud migrujete do Azure HDInsight, ujistěte se, že je migrace prováděna systematicky a přesně, nejlépe prostřednictvím automatizace. Vyhněte se ruční migraci. Ujistěte se, že:
 
@@ -110,7 +110,7 @@ Níže jsou uvedené některé další konkrétní parametry, které jsme proved
 
 Níže jsou uvedené další parametry pro zvážení ladění:
 
-- `Hbase.rs.cacheblocksonwrite`– ve výchozím nastavení je v HDI toto nastavení nastaveno na **hodnotu true**.
+- `Hbase.rs.cacheblocksonwrite` – ve výchozím nastavení je v HDI toto nastavení nastaveno na **hodnotu true**.
 
 - Nastavení, které umožňuje odložit menší komprimaci na později.
 

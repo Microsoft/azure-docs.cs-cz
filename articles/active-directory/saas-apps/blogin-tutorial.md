@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 2a50d7b037cec2c10f83fdbbd875f80513c00a6d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88517016"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blogin"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s BlogIn
@@ -97,7 +97,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace BlogIn několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Name | Zdrojový atribut |
+    | Název | Zdrojový atribut |
     | ------ | --------- |
     | title |User. jobtitle |
     
@@ -116,7 +116,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -141,7 +141,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 Pokud chcete nakonfigurovat jednotné přihlašování při přihlášení na straně **BlogIn** k vašemu účtu BlogIn, postupujte takto:
 
 1. Přejít na **Nastavení**  >  **ověřování uživatelů**  >  **Konfigurace jednotného přihlašování & zřizování uživatelů**.
-2. Na další obrazovce změňte stav jednotného přihlašování na **zapnuto** a jako tlačítko pro přihlášení SSO klikněte na vlastní název, který se zobrazí na přihlašovací obrazovce.
+2. Na další obrazovce změňte stav jednoho Sign-On na **zapnuto** a jako tlačítko pro přihlášení SSO klikněte na vlastní název, který se zobrazí na přihlašovací obrazovce.
 
 3. Pokud jste v posledním kroku předchozí části uložili **adresu URL federačních metadat aplikace** , vyberte **adresu URL metadat** metody konfigurace a vložte **adresu URL federačních METADAT aplikace** do pole Adresa URL metadat. Jinak změňte metodu konfigurace na **Ruční**, ručně naplňte **adresu URL jednotného přihlašování zprostředkovatele identity (přihlašovací adresu URL)** a **vystavitele zprostředkovatele identity (ID entity)** a nahrajte **certifikát (Base64)**,   který jste získali ze služby Azure AD.
 

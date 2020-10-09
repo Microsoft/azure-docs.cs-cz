@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
 ms.openlocfilehash: 4848bdceef084d587c839f2af93d1ff5a43c850b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85260565"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Přístup k Azure Cosmos DB rozhraní API Cassandra ze Sparku na PŘÍZi pomocí HDInsight
@@ -114,7 +114,7 @@ Prostředí Spark se používá pro účely testování/průzkumu.
 
 ## <a name="access-azure-cosmos-db-cassandra-api-from-jupyter-notebooks"></a>Přístup k Azure Cosmos DB rozhraní API Cassandra z poznámkových bloků Jupyter
 
-HDInsight – Spark přichází se službami Zeppelin a Jupyter notebook. Jsou to webová poznámková bloková prostředí, která podporují Scala a Python. Poznámkové bloky jsou skvělé pro interaktivní průzkumné analýzy a spolupráci, ale nejsou určeny pro provozní a produkční procesy.
+HDInsight-Spark se dodává se službami poznámkových bloků Zeppelin a Jupyter. Jsou to webová poznámková bloková prostředí, která podporují Scala a Python. Poznámkové bloky jsou skvělé pro interaktivní průzkumné analýzy a spolupráci, ale nejsou určeny pro provozní a produkční procesy.
 
 Následující poznámkové bloky Jupyter se dají nahrát do clusteru HDInsight Spark a poskytnou připravené ukázky pro práci s Azure Cosmos DB rozhraní API Cassandra. Nezapomeňte si projít první Poznámkový blok `1.0-ReadMe.ipynb` a zkontrolovat konfiguraci služby Spark pro připojení k Azure Cosmos DB rozhraní API Cassandra.
 

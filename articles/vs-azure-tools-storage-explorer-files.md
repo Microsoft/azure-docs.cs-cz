@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60456607"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Použití Storage Exploreru se službou Azure File Storage
@@ -89,7 +89,7 @@ Následující postup ukazuje odstranění sdílené složky v Průzkumníkovi s
 
 1. Klikněte pravým tlačítkem na sdílenou složku, kterou chcete odstranit, a v místní nabídce vyberte **Odstranit**. Můžete také stisknout klávesu **Delete** a odstranit tak aktuálně vybranou sdílenou složku.
 
-    ![Odstranit](media/vs-azure-tools-storage-explorer-files/image6.png)
+    ![Delete](media/vs-azure-tools-storage-explorer-files/image6.png)
 
 1. V potvrzovacím dialogovém okně klikněte na **Ano**.
     
