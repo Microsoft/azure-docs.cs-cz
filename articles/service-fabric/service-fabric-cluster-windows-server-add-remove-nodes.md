@@ -1,19 +1,20 @@
 ---
 title: Přidání nebo odebrání uzlů do samostatného Service Fabric clusteru
 description: Naučte se přidávat nebo odebírat uzly do clusteru Azure Service Fabric na fyzickém nebo virtuálním počítači s Windows serverem, který může být místní nebo v jakémkoli cloudu.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: dekapur
-ms.openlocfilehash: 9fa8b0970d198f9801c7661b9555db17cdf67b3c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3e5f32274d2263bc5bf1bbec8f1626d519f8ca3f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258722"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842916"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Přidání nebo odebrání uzlů u samostatného clusteru Service Fabric na Windows Serveru
-Po [vytvoření samostatného clusteru Service Fabric na počítačích s Windows serverem](service-fabric-cluster-creation-for-windows-server.md)se můžou vaše (firmy) změnit a bude potřeba přidat nebo odebrat uzly do clusteru. Tento článek poskytuje podrobné pokyny k tomuto účelu. Všimněte si, že místní vývojové clustery nepodporuje funkce Přidat nebo odebrat uzel.
+Po [vytvoření samostatného clusteru Service Fabric na počítačích s Windows serverem](service-fabric-cluster-creation-for-windows-server.md)se můžou vaše (firmy) změnit a budete muset přidat nebo odebrat uzly do clusteru, jak je popsáno v tomto článku.
+
+> [!NOTE]
+> Funkce přidávání a odebírání uzlů se v místních vývojových clusterech nepodporují.
 
 ## <a name="add-nodes-to-your-cluster"></a>Přidání uzlů do clusteru
 
@@ -29,7 +30,7 @@ Po [vytvoření samostatného clusteru Service Fabric na počítačích s Window
 
 5. Spusťte PowerShell se zvýšenými oprávněními a přejdete do umístění balíčku Get.
 
-6. Spusťte skript *AddNode.ps1* s parametry, které popisují nový uzel, který chcete přidat. Následující příklad přidá nový uzel s názvem VM5 s typem NodeType0 a IP adresa 182.17.34.52 do UD1 a FD:/DC1/R0. `ExistingClusterConnectionEndPoint`je koncový bod připojení pro uzel, který už je v existujícím clusteru, což může být IP adresa *kteréhokoli* uzlu v clusteru. 
+6. Spusťte skript *AddNode.ps1* s parametry, které popisují nový uzel, který chcete přidat. Následující příklad přidá nový uzel s názvem VM5 s typem NodeType0 a IP adresa 182.17.34.52 do UD1 a FD:/DC1/R0. `ExistingClusterConnectionEndPoint` je koncový bod připojení pro uzel, který už je v existujícím clusteru, což může být IP adresa *kteréhokoli* uzlu v clusteru. 
 
    Nezabezpečené (vytváření prototypů):
 
@@ -132,7 +133,7 @@ Přidejte do oddílu "nastavení" v části "FabricSettings" parametr "NodesToBe
 > 
 
 ### <a name="remove-node-types-from-your-cluster"></a>Odebrání typů uzlů z clusteru
-Před odebráním typu uzlu prosím poklikejte na to, jestli se na typ uzlu neodkazují žádné uzly. Odeberte tyto uzly před odebráním odpovídajícího typu uzlu. Po odebrání všech odpovídajících uzlů můžete z konfigurace clusteru odebrat uzel NodeType a zahájit upgrade konfigurace pomocí funkce [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps).
+Před odebráním typu uzlu ověřte, zda existují uzly odkazující na typ uzlu. Odeberte tyto uzly před odebráním odpovídajícího typu uzlu. Po odebrání všech odpovídajících uzlů můžete z konfigurace clusteru odebrat uzel NodeType a zahájit upgrade konfigurace pomocí funkce [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps).
 
 
 ### <a name="replace-primary-nodes-of-your-cluster"></a>Nahrazení primárních uzlů clusteru

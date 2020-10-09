@@ -1,16 +1,14 @@
 ---
 title: Upgrade verze samostatného clusteru
 description: Upgradujte kód Azure Service Fabric, který spouští samostatný cluster Service Fabric.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.author: dekapur
-ms.openlocfilehash: 31712ce4f661b13802d9a0f2d798c1fe87fdebf3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5831fcffe718e4966c3444a29d35c5bbd55e5f57
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261006"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842933"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>Upgrade verze Service Fabric, která běží na vašem clusteru 
 

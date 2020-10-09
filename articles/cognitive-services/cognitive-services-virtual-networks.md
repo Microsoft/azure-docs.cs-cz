@@ -3,18 +3,18 @@ title: Virtuální sítě
 titleSuffix: Azure Cognitive Services
 description: Nakonfigurujte vícevrstvé zabezpečení sítě pro prostředky Cognitive Services.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.author: dapine
-ms.openlocfilehash: 808d42c821272882bbf0e01a36e49f7f10b30efa
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 10/07/2020
+ms.author: aahi
+ms.openlocfilehash: d320fcd0b7f9666da39dd1208efd9cdec04ad6b5
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505023"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843137"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurace virtuálních sítí služeb Azure Cognitive Services
 
@@ -40,40 +40,29 @@ Síťová pravidla se vynutila na všech síťových protokolech do Azure Cognit
 
 ## <a name="supported-regions-and-service-offerings"></a>Podporované oblasti a nabídky služeb
 
-Virtuální sítě (virtuální sítě) jsou podporované v [oblastech, kde jsou k dispozici Cognitive Services](https://azure.microsoft.com/global-infrastructure/services/). Pokud není uvedená Služba rozpoznávání, aktuálně nepodporuje virtuální sítě.
+Virtuální sítě (virtuální sítě) jsou podporované v [oblastech, kde jsou k dispozici Cognitive Services](https://azure.microsoft.com/global-infrastructure/services/). Cognitive Services podporuje značky služby pro konfiguraci pravidel sítě. Níže uvedené služby jsou součástí značky služby **CognitiveServicesManagement** .
 
 > [!div class="checklist"]
-> * [Detektor anomálií](./anomaly-detector/index.yml)
-> * [Počítačové zpracování obrazu](./computer-vision/index.yml)
-> * [Content Moderator](./content-moderator/index.yml)
-> * [Custom Vision](./custom-vision-service/index.yml)
-> * [Rozpoznávání tváře](./face/index.yml)
-> * [Rozpoznávání formulářů](./form-recognizer/index.yml)
-> * [Language Understanding](./luis/index.yml)
-> * [Personalizace](./personalizer/index.yml)
-> * [Analýza textu](./text-analytics/index.yml)
-> * [QnA Maker](./qnamaker/index.yml)
-> * [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
-> * [Asistivní čtečka](./immersive-reader/index.yml)
+> * Detektor anomálií
+> * Computer Vision
+> * Content Moderator
+> * Custom Vision
+> * Tvář
+> * Rozpoznávání formulářů
+> * Language Understanding (LUIS)
+> * Personalizace
+> * Analýza textu
+> * QnA Maker
+> * Translator Text
+> * Asistivní čtečka
 
-## <a name="service-tags"></a>Značky služeb
+> [!NOTE]
+> Pokud používáte LUIS, značka **CognitiveServicesManagement** vám umožňuje používat jenom tuto službu pomocí sady SDK nebo REST API. Pokud chcete získat přístup k portálu LUIS z virtuální sítě a používat ho, budete muset použít následující značky:  
+> * **AzureResourceManager** 
+> * **CognitiveServicesManagement**
+> * **Azureactivedirectory selhala**
+> * **AzureFrontDoor. front-end**
 
-Cognitive Services podporuje značky služby pro konfiguraci pravidel sítě. Níže uvedené služby jsou součástí značky služby **CognitiveServicesManagement** .
-
-> [!div class="checklist"]
-> * [Detektor anomálií](./anomaly-detector/index.yml)
-> * [Počítačové zpracování obrazu](./computer-vision/index.yml)
-> * [Content Moderator](./content-moderator/index.yml)
-> * [Custom Vision](./custom-vision-service/index.yml)
-> * [Rozpoznávání tváře](./face/index.yml)
-> * [Rozpoznávání formulářů](./form-recognizer/index.yml)
-> * [Language Understanding (LUIS)](./luis/index.yml)
-> * [Personalizace](./personalizer/index.yml)
-> * [Analýza textu](./text-analytics/index.yml)
-> * [QnA Maker](./qnamaker/index.yml)
-> * [Překladač](./translator/index.yml)
-> * [Služba řeči](./speech-service/index.yml)
-> * [Asistivní čtečka](./immersive-reader/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Změna výchozího pravidla přístupu k síti
 

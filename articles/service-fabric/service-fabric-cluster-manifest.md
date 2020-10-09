@@ -1,16 +1,14 @@
 ---
 title: Konfigurace samostatného clusteru Azure Service Fabric
 description: Přečtěte si, jak nakonfigurovat samostatný nebo místní cluster Azure Service Fabric.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: dekapur
-ms.openlocfilehash: e8a1fdfb23b6e0aee9b9bdd04f70c554824f4c35
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fd93263b38340ce080cca1aecb98f3a599ff1861
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246567"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843154"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Nastavení konfigurace samostatného clusteru Windows
 Tento článek popisuje nastavení konfigurace samostatného clusteru Azure Service Fabric, který je možné nastavit v *ClusterConfig.jsv* souboru. Tento soubor použijete k zadání informací o uzlech clusteru, konfiguracích zabezpečení a topologii sítě z hlediska selhání a upgradovacích domén.  Po změně nebo přidání nastavení konfigurace můžete buď [vytvořit samostatný cluster](service-fabric-cluster-creation-for-windows-server.md) , nebo [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -199,7 +197,7 @@ Všechny dostupné funkce doplňku se dají zobrazit v [odkazu Service Fabric RE
 Pokud chcete povolit podporu kontejnerů pro kontejnery Windows serveru i pro kontejnery Hyper-V pro samostatné clustery, musí být povolená funkce doplňku služba DNSservice.
 
 ## <a name="next-steps"></a>Další kroky
-PoClusterConfig.jsdokončení nastavení souboru *na* základě samostatné instalace clusteru můžete nasadit svůj cluster. Postupujte podle kroků v části [vytvoření samostatného Service Fabricho clusteru](service-fabric-cluster-creation-for-windows-server.md). 
+PoClusterConfig.jsdokončení nastavení souboru * na* základě samostatné instalace clusteru můžete nasadit svůj cluster. Postupujte podle kroků v části [vytvoření samostatného Service Fabricho clusteru](service-fabric-cluster-creation-for-windows-server.md). 
 
 Pokud máte nasazen samostatný cluster, můžete také [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md). 
 

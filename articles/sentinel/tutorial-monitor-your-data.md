@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 3f59fea9f6d96f6e259a47c75bcfb0fd0be76d34
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 63a9a6dc9f052c01a7440f616f0baeaab083ad73
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826569"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843069"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Kurz: Vizualizace a monitorování dat
 
@@ -33,7 +33,7 @@ Tento kurz vám pomůže vizualizovat data v Azure Sentinel.
 > * Použití vestavěných sešitů
 > * Vytváření nových sešitů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pro skupinu prostředků pracovního prostoru Azure Sentinel musíte mít alespoň oprávnění čtenář nebo přispěvatel sešitu.
 
@@ -62,7 +62,7 @@ Tento kurz vám pomůže vizualizovat data v Azure Sentinel.
 ## <a name="create-new-workbook"></a>Vytvořit nový sešit
 
 1. Chcete-li vytvořit nový sešit od začátku, klikněte na **sešity** a pak vyberte **Přidat sešit** .
-  ![Přejít na sešity](./media/tutorial-monitor-data/create-workbook.png)
+  ![Snímek obrazovky, který ukazuje obrazovku nového sešitu.](./media/tutorial-monitor-data/create-workbook.png)
 
 1. Chcete-li upravit sešit, vyberte možnost **Upravit**a pak podle potřeby přidejte text, dotazy a parametry. Další informace o tom, jak sešit přizpůsobit, najdete v tématu [vytváření interaktivních sestav pomocí Azure monitor sešitů](../azure-monitor/platform/workbooks-overview.md). 
 
@@ -72,7 +72,7 @@ Tento kurz vám pomůže vizualizovat data v Azure Sentinel.
 
 1. Pokud chcete ostatním uživatelům ve vaší organizaci umožnit používání sešitu, v části **Uložit na** výběr **sdílených sestav**. Pokud chcete, aby byl tento sešit dostupný jenom pro vás, vyberte **Moje sestavy**.
 
-1. Chcete-li přepínat mezi sešity v pracovním prostoru **Open** , můžete ![ ](./media/tutorial-monitor-data/switch.png) v horním podokně libovolného sešitu vybrat možnost otevřít sešity Switch. V okně, které se otevře vpravo, přepínejte mezi sešity.
+1. Pokud chcete přepínat mezi sešity v pracovním prostoru, můžete vybrat **otevřít** ![ ikonu pro otevření sešitu. ](./media/tutorial-monitor-data/switch.png) v horním podokně libovolného sešitu. V okně, které se otevře vpravo, přepínejte mezi sešity.
 
    ![Přepnout sešity](./media/tutorial-monitor-data/switch-workbooks.png)
 

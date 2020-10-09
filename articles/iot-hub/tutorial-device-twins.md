@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: 0aee3fef5c2b9e7e1d8cdd8c3d27192b17161351
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aecf5c8b71f23e3d51c755c86ec0122d6da05f21
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251877"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842763"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující úlohy:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -191,11 +191,11 @@ node ServiceClient.js "{your service connection string}"
 
 Následující snímek obrazovky ukazuje výstup z aplikace simulovaného zařízení, je na něm zvýrazněno zpracování aktualizace požadované vlastnosti **maxTemperature**. Vidíte zde, jak se spouští obslužná rutina nejvyšší úrovně a obslužná rutina součásti climate:
 
-![Simulované zařízení](./media/tutorial-device-twins/SimulatedDevice1.png)
+![Snímek obrazovky, který ukazuje, jak je spuštěná obslužná rutina nejvyšší úrovně a obslužné rutiny komponenty klimatického procesu.](./media/tutorial-device-twins/SimulatedDevice1.png)
 
 Následující snímek obrazovky ukazuje výstup z back-endové aplikace, je na něm zvýrazněno odeslání aktualizace požadované vlastnosti **maxTemperature**:
 
-![Back-endová aplikace](./media/tutorial-device-twins/BackEnd1.png)
+![Snímek obrazovky, který zobrazuje výstup z back-endové aplikace a zvýrazní, jak pošle aktualizaci.](./media/tutorial-device-twins/BackEnd1.png)
 
 ## <a name="receive-state-information"></a>Příjem informací o stavu
 

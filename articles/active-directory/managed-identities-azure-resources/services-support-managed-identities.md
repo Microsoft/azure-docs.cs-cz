@@ -4,19 +4,19 @@ description: Seznam služeb, které podporují spravované identity pro prostře
 services: active-directory
 author: barclayn
 ms.author: barclayn
-ms.date: 07/09/2020
+ms.date: 10/07/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 207b4a926e77ff55faad388b6eeaeb221ec252a8
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: e875eda2a59841d3238a13389768c6fa37cef774
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006776"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843171"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity prostředků Azure
 
@@ -39,7 +39,7 @@ Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti A
 
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure API Management (v oblastech, kde je dostupná), podívejte se na následující seznam:
 
-- [Šablona Azure Resource Manager](../../api-management/api-management-howto-use-managed-service-identity.md)
+- [Šablona Azure Resource Manageru](../../api-management/api-management-howto-use-managed-service-identity.md)
 
 
 ### <a name="azure-app-service"></a>Azure App Service
@@ -54,7 +54,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure App Service (v oblast
 - [Azure Portal](../../app-service/overview-managed-identity.md#using-the-azure-portal)
 - [Azure CLI](../../app-service/overview-managed-identity.md#using-the-azure-cli)
 - [Azure PowerShell](../../app-service/overview-managed-identity.md#using-azure-powershell)
-- [Šablona Azure Resource Manager](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
+- [Šablona Azure Resource Manageru](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
 
 ### <a name="azure-arc-enabled-kubernetes"></a>Kubernetes s podporou Azure Arc
 
@@ -103,7 +103,7 @@ Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti A
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Container Instances (v oblastech, kde je dostupná), použijte následující seznam:
 
 - [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)
-- [Šablona Azure Resource Manager](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
+- [Šablona Azure Resource Manageru](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
 - [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
 
 
@@ -168,7 +168,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Functions (v oblastec
 - [Azure Portal](../../app-service/overview-managed-identity.md#using-the-azure-portal)
 - [Azure CLI](../../app-service/overview-managed-identity.md#using-the-azure-cli)
 - [Azure PowerShell](../../app-service/overview-managed-identity.md#using-azure-powershell)
-- [Šablona Azure Resource Manager](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
+- [Šablona Azure Resource Manageru](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
 
 ### <a name="azure-iot-hub"></a>Azure IoT Hub
 
@@ -210,7 +210,7 @@ Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti A
 Pokud chcete nakonfigurovat spravovanou identitu pro Azure Logic Apps (v oblastech, kde je dostupná), použijte následující seznam:
 
 - [Azure Portal](../../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)
-- [Šablona Azure Resource Manager](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+- [Šablona Azure Resource Manageru](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
 
 ### <a name="azure-policy"></a>Azure Policy
@@ -225,7 +225,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Policy (v oblastech, 
 - [Azure Portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
 - [Azure CLI](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
-- [Šablony Azure Resource Manager](/azure/templates/microsoft.authorization/policyassignments)
+- [Šablony Azure Resource Manageru](/azure/templates/microsoft.authorization/policyassignments)
 - [REST](/rest/api/resources/policyassignments/create)
 
 
@@ -240,7 +240,7 @@ Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti A
 
 Pokud chcete nakonfigurovat spravovanou identitu pro aplikace Service Fabric Azure ve všech oblastech, přečtěte si následující seznam:
 
-- [Šablona Azure Resource Manager](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
+- [Šablona Azure Resource Manageru](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
 
 ### <a name="azure-spring-cloud"></a>Azure Spring Cloud
 
@@ -252,6 +252,12 @@ Pokud chcete nakonfigurovat spravovanou identitu pro aplikace Service Fabric Azu
 
 Další informace najdete v tématu [Povolení spravované identity přiřazené systémem pro aplikaci Azure jaře Cloud](~/articles/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity.md).
 
+### <a name="azure-stack-edge"></a>Azure Stack Edge
+
+Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
+| --- | --- | --- | --- | --- |
+| Přiřazená systémem | K dispozici v oblasti, kde je k dispozici služba Azure Stack Edge | Není k dispozici | Není k dispozici | Není k dispozici |
+| Přiřazená uživatelem | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Azure Virtual Machine Scale Sets
 
@@ -265,7 +271,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machine Scale
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Šablony Azure Resource Manager](qs-configure-template-windows-vm.md)
+- [Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 
@@ -282,7 +288,7 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure Virtual Machines (v o
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Šablony Azure Resource Manager](qs-configure-template-windows-vm.md)
+- [Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 - [Sady Azure SDK](qs-configure-sdk-windows-vm.md)
 
@@ -304,7 +310,7 @@ Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti A
 
 Pokud chcete nakonfigurovat spravovanou identitu pro službu signalizace Azure (v oblastech, kde je dostupná), podívejte se na následující seznam:
 
-- [Šablona Azure Resource Manager](../../azure-signalr/howto-use-managed-identity.md)
+- [Šablona Azure Resource Manageru](../../azure-signalr/howto-use-managed-identity.md)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Služby Azure, které podporují ověřování Azure AD
 
@@ -319,7 +325,7 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 - [Přiřazení přístupu přes rozhraní příkazového řádku Azure](howto-assign-access-CLI.md)
 - [Přiřazení přístupu prostřednictvím šablony Azure Resource Manager](../../role-based-access-control/role-assignments-template.md)
 
-| Cloud | ID prostředku | Stav |
+| Cloud | ID prostředku | Status |
 |--------|------------|:-:|
 | Globální Azure | `https://management.azure.com/`| ![K dispozici][check] |
 | Azure Government | `https://management.usgovcloudapi.net/` | ![K dispozici][check] |
@@ -328,7 +334,7 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 
 ### <a name="azure-key-vault"></a>Azure Key Vault
 
-| Cloud | ID prostředku | Stav |
+| Cloud | ID prostředku | Status |
 |--------|------------|:-:|
 | Globální Azure | `https://vault.azure.net`| ![K dispozici][check] |
 | Azure Government | `https://vault.usgovcloudapi.net` | ![K dispozici][check] |
@@ -337,7 +343,7 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
 
-| Cloud | ID prostředku | Stav |
+| Cloud | ID prostředku | Status |
 |--------|------------|:-:|
 | Globální Azure | `https://datalake.azure.net/` | ![K dispozici][check] |
 | Azure Government |  | Není k dispozici |
@@ -346,7 +352,7 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 
 ### <a name="azure-sql"></a>Azure SQL
 
-| Cloud | ID prostředku | Stav |
+| Cloud | ID prostředku | Status |
 |--------|------------|:-:|
 | Globální Azure | `https://database.windows.net/` | ![K dispozici][check] |
 | Azure Government | `https://database.usgovcloudapi.net/` | ![K dispozici][check] |
@@ -355,7 +361,7 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-| Cloud | ID prostředku | Stav |
+| Cloud | ID prostředku | Status |
 |--------|------------|:-:|
 | Globální Azure | `https://eventhubs.azure.net` | ![K dispozici][check] |
 | Azure Government |  | Není k dispozici |
@@ -364,7 +370,7 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 
 ### <a name="azure-service-bus"></a>Azure Service Bus
 
-| Cloud | ID prostředku | Stav |
+| Cloud | ID prostředku | Status |
 |--------|------------|:-:|
 | Globální Azure | `https://servicebus.azure.net`  | ![K dispozici][check] |
 | Azure Government |  | ![K dispozici][check] |
@@ -381,7 +387,7 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 
 ### <a name="azure-storage-blobs-and-queues"></a>Azure Storage objekty BLOB a fronty
 
-| Cloud | ID prostředku | Stav |
+| Cloud | ID prostředku | Status |
 |--------|------------|:-:|
 | Globální Azure | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | ![K dispozici][check] |
 | Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.usgovcloudapi.net` <br /><br />`https://<account>.queue.core.usgovcloudapi.net` | ![K dispozici][check] |
@@ -390,7 +396,7 @@ Pokud chcete nakonfigurovat přístup k Azure Resource Manager, přečtěte si n
 
 ### <a name="azure-analysis-services"></a>Azure Analysis Services
 
-| Cloud | ID prostředku | Stav |
+| Cloud | ID prostředku | Status |
 |--------|------------|:-:|
 | Globální Azure | `https://*.asazure.windows.net` | ![K dispozici][check] |
 | Azure Government | `https://*.asazure.usgovcloudapi.net` | ![K dispozici][check] |

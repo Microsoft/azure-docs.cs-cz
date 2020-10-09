@@ -1,16 +1,14 @@
 ---
 title: Upgrade konfigurace clusteru Azure Service Fabric
 description: Naučte se upgradovat konfiguraci, která spouští Cluster Service Fabric v Azure pomocí šablony Správce prostředků.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.author: dekapur
-ms.openlocfilehash: 010f2b5d6dee3a5985c421e468bcd28b18148e5a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 692dc2162159ab61a3ac527e12dac43438084a60
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247723"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842712"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Upgrade konfigurace clusteru v Azure 
 

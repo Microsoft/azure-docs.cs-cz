@@ -1,16 +1,16 @@
 ---
 title: Terminologie pro síť Azure Service Fabric
 description: Tento článek podrobně popisuje terminologii, kterou používá Azure Service Fabric mřížka, která vám pomůže lépe pochopit výrazy používané v dokumentaci.
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: fcd17c64ac41056420a22e328d13862e52bd99bd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d82df6ee598664c2b85cfa82395ac66f3865cf7f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246720"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843002"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Terminologie Service Fabricch mřížek
 

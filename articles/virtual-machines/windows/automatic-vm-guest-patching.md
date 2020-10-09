@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 47ac9fa91f391442691661a3ba03dd1f0d918601
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 0a777b9008864368a6d1731cae0374e55a4c585f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669068"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842865"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Preview: Automatické opravy hosta virtuálního počítače pro virtuální počítače s Windows v Azure
 
@@ -162,7 +162,7 @@ Po registraci funkce pro vaše předplatné dokončete proces výslovných přih
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
 ```
-## <a name="enable-automatic-vm-guest-patching"></a>Povolit automatické opravy hosta virtuálního počítače
+## <a name="enable-automatic-vm-guest-patching"></a>Povolení automatických oprav hosta virtuálního počítače
 Chcete-li povolit automatické opravy hosta virtuálního počítače, zajistěte, aby vlastnost *osProfile. windowsConfiguration. enableAutomaticUpdates* byla v definici šablony virtuálního počítače nastavena na *hodnotu true* . Tuto vlastnost lze nastavit pouze při vytváření virtuálního počítače.
 
 ### <a name="rest-api"></a>REST API
@@ -251,8 +251,10 @@ Výsledky instalace opravy pro váš virtuální počítač je možné zkontrolo
 ## <a name="on-demand-patch-assessment"></a>Posouzení oprav na vyžádání
 Pokud je pro váš virtuální počítač už povolená Automatická oprava hosta virtuálního počítače, na VIRTUÁLNÍm počítači se v době mimo špičku virtuálního počítače provede pravidelné vyhodnocení opravy. Tento proces je automatický a výsledky nejnovějšího vyhodnocení si můžete prohlédnout v zobrazení instance virtuálního počítače, jak je popsáno výše v tomto dokumentu. Pro váš virtuální počítač můžete kdykoli okamžitě aktivovat hodnocení oprav. Dokončení posouzení opravy může trvat několik minut a v zobrazení instance virtuálního počítače se aktualizuje stav nejnovějšího posouzení.
 
+Povolení funkcí verze Preview vyžaduje jednorázové přihlášení k funkci *InGuestPatchVMPreview* na předplatné. Verze Preview funkce pro posouzení opravy na vyžádání se dá povolit po [procesu povolení verze Preview](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) popsaném dříve pro automatické opravy hosta virtuálního počítače.
+
 > [!NOTE]
->Vyhodnocení opravy na vyžádání nespustí automaticky instalaci opravy. Vyhodnocené a použitelné opravy pro virtuální počítač se budou instalovat jenom v době mimo špičku virtuálního počítače, a to po procesu aktualizace, který je popsaný výše v tomto dokumentu.
+>Vyhodnocení opravy na vyžádání neaktivuje automaticky instalaci opravy. Vyhodnocené a použitelné opravy pro virtuální počítač se budou instalovat jenom v době mimo špičku virtuálního počítače, a to po procesu aktualizace, který je popsaný výše v tomto dokumentu.
 
 ### <a name="rest-api"></a>REST API
 ```

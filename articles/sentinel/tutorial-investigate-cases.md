@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 4ef08ac8d386bd8a28dce38cb53aed31d79b37a2
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 648d456534e86075a243a84ac0485d95a7f28479
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566331"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843103"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Kurz: zkoumání incidentů pomocí služby Azure Sentinel
 
@@ -119,11 +119,11 @@ Po vyřešení konkrétního incidentu (například když vaše šetření dosá
 - Falešně pozitivní – nesprávná data
 - Neurčené
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="{ALT-text}":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="Snímek obrazovky, který zvýrazní klasifikace dostupné v seznamu vybrat klasifikace.":::
 
 Po zvolení příslušné klasifikace přidejte do pole **Komentář** nějaký popisný text. To bude užitečné v případě, že se potřebujete vrátit k tomuto incidentu. Až budete hotovi, klikněte na **použít** a incident se uzavře.
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{ALT-text}":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="Snímek obrazovky, který zvýrazní klasifikace dostupné v seznamu vybrat klasifikace.":::
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak začít s vyšetřováním incidentů pomocí služby Azure Sentinel. Přejděte k kurzu, [jak reagovat na hrozby pomocí automatizovaného playbooky](tutorial-respond-threats-playbook.md).

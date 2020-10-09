@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1b7b5e209329bd5dc4c95f81f61fecf48fb74e40
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e64c5ddfafb8bc8e9041e6d6b3e473a9a20565ed
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362106"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843120"
 ---
 # <a name="set-up-web-endpoints"></a>Nastavení webových koncových bodů
 
@@ -79,7 +79,7 @@ V tomto článku se naučíte, jak v aplikaci Vlastní příkazy nastavit webov�
     V části **Simple editor** (Jednoduchý editor) zadejte `{SubjectDevice} is {OnOff}`.
    
    > [!div class="mx-imgBorder"]
-   > ![Akce volání koncových bodů při úspěchu](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
+   > ![Snímek obrazovky, který zobrazuje akci při úspěchu – spuštění](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | Nastavení | Navrhovaná hodnota | Popis |
    | ------- | --------------- | ----------- |
@@ -107,7 +107,7 @@ V tomto článku se naučíte, jak v aplikaci Vlastní příkazy nastavit webov�
 - Odpověď při úspěchu:
 Uložení, natrénování a testování
    > [!div class="mx-imgBorder"]
-   > ![Akce volání koncových bodů při úspěchu](media/custom-commands/setup-web-endpoint-on-success-response.png)
+   > ![Snímek obrazovky, který zobrazuje odpověď po úspěšném dokončení.](media/custom-commands/setup-web-endpoint-on-success-response.png)
 - Odpověď při úspěchu:
 Odebrání jednoho z parametrů dotazu, uložení, přetrénování a testování
    > [!div class="mx-imgBorder"]

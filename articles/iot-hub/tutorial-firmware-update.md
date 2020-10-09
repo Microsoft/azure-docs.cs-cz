@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: fe6c7f10ce64e25f46444cd2db8b67aab4ae2135
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 304ded466aeb734388c13b87331eb4813e850e56
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308244"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842814"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Kurz: Implementace procesu aktualizace firmwaru zařízení
 
@@ -39,7 +39,7 @@ V tomto kurzu provedete následující úlohy:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -184,7 +184,7 @@ Následující snímek obrazovky ukazuje výstup z aplikace simulovaného zaří
 
 Následující snímek obrazovky ukazuje výstup z back-endové aplikace a je na něm zvýrazněno vytvoření konfigurace pro aktualizaci požadovaných vlastností firmwaru:
 
-![Back-endová aplikace](./media/tutorial-firmware-update/BackEnd1.png)
+![Snímek obrazovky, který zobrazuje výstup z back-endové aplikace.](./media/tutorial-firmware-update/BackEnd1.png)
 
 Následující snímek obrazovky ukazuje výstup z back-endové aplikace a je na něm zvýrazněno monitorování metrik aktualizace firmwaru ze simulovaného zařízení:
 
