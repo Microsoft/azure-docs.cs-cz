@@ -8,12 +8,12 @@ ms.topic: include
 author: sdgilley
 ms.author: sgilley
 ms.date: 10/14/2019
-ms.openlocfilehash: ea5f893008bee41fd24312036a210215c8a29e54
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 119d9579cb139a6b1611b8ccec4ebf271e610d3c
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73476189"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841835"
 ---
 Pokud jste použili výpočetní instanci nebo virtuální počítač poznámkového bloku, zastavte virtuální počítač, pokud ho nepoužíváte ke snížení nákladů.
 

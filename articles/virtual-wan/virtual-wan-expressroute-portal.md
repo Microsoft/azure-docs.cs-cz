@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 1694c8a602315ab5f0ffa5d4e0bc218f03220c30
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 50b86c4c86391b6ffdee18cdadbdddbdff8642a8
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91821880"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841131"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Kurz: vytvoření přidružení ExpressRoute pomocí Azure Virtual WAN
 
@@ -40,7 +40,7 @@ Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
 * Zařiďte rozsah IP adres pro oblast vašeho rozbočovače. Centrum je virtuální síť, kterou vytváří a používá virtuální síť WAN. Rozsah adres, který zadáte pro centrum, se nemůže překrývat s žádnou ze stávajících virtuálních sítí, ke kterým se připojujete. Také se nemůže překrývat s rozsahy adres, ke kterým se připojujete místně. Pokud neznáte rozsahy IP adres nacházející se v konfiguraci vaší místní sítě, zajistěte koordinaci s někým, kdo vám poskytne tyto podrobnosti.
 
-* Okruh ExpressRoute musí být okruh Premium/Standard, aby se mohl připojit k bráně centra.
+* Okruh ExpressRoute musí být okruhem Standard nebo Standard, aby se mohl připojit k bráně centra.
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

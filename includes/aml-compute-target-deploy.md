@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 06/25/2020
-ms.openlocfilehash: bd3ac8d512c1b9d151c0dc549ffeee6a05c7f94b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 944b96e7726f2b2becd5960a17a89c00d00c878a
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542767"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841938"
 ---
-Cílový výpočetní výkon, který používáte k hostování vašeho modelu, bude mít vliv na náklady a dostupnost nasazeného koncového bodu. Použijte následující tabulku k výběru vhodného cíle služby Compute.
+Cílový výpočetní výkon, který používáte k hostování vašeho modelu, bude mít vliv na náklady a dostupnost nasazeného koncového bodu. Pomocí této tabulky můžete zvolit vhodný cíl služby Compute.
 
 | Cílový výpočetní objekt | Použití | Podpora GPU | Podpora FPGA | Popis |
 | ----- | ----- | ----- | ----- | ----- |
@@ -26,14 +26,14 @@ Cílový výpočetní výkon, který používáte k hostování vašeho modelu, 
 | [Azure Container Instances](../articles/machine-learning/how-to-deploy-azure-container-instance.md) | Testování a vývoj | &nbsp;  | &nbsp; | Používejte pro vysoce škálovatelné úlohy založené na procesoru, které vyžadují méně než 48 GB paměti RAM. |
 | [Výpočetní clustery Azure Machine Learning](../articles/machine-learning/how-to-use-parallel-run-step.md) | &nbsp;Odvození dávky | [Ano](../articles/machine-learning/how-to-use-parallel-run-step.md) (kanál strojového učení) | &nbsp;  | Spusťte dávkové vyhodnocování pro výpočetní prostředky bez serveru. Podporuje virtuální počítače s normálním a nízkou prioritou. |
 | [Azure Functions](../articles/machine-learning/how-to-deploy-functions.md) | Tisk Odvození v reálném čase | &nbsp; | &nbsp; | &nbsp; |
-| [Azure IoT Edge](../articles/machine-learning/how-to-deploy-and-where.md#iotedge) | Tisk &nbsp;Modul IoT |  &nbsp; | &nbsp; | Nasaďte a zajišťovat modely ML na zařízeních IoT. |
-| [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | Přes IoT Edge |  &nbsp; | Ano | Nasaďte a zajišťovat modely ML na zařízeních IoT. |
+| [Azure IoT Edge](../articles/machine-learning/how-to-deploy-and-where.md#iotedge) | Tisk &nbsp;Modul IoT |  &nbsp; | &nbsp; | Nasaďte a zajišťovat modely strojového učení na zařízeních IoT. |
+| [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | Přes IoT Edge |  &nbsp; | Ano | Nasaďte a zajišťovat modely strojového učení na zařízeních IoT. |
 
 > [!NOTE]
-> I když výpočetní cíle, jako je místní, Azure Machine Learning výpočetní instance a Azure Machine Learning výpočetní clustery, podporují GPU pro školení a experimentování a __při nasazení jako webové služby v případě__ , že je tato služba dostupná jenom ve službě Azure Kubernetes, se používá GPU pro odvození.
+> I když výpočetní prostředky, jako jsou místní, Azure Machine Learning výpočetní prostředí a Azure Machine Learning výpočetní clustery, podporují GPU pro školení a experimentování, při použití GPU pro odvození _při nasazení jako webové služby_ se podporuje jenom AKS.
 >
-> Použití GPU pro odvození __při vyhodnocování s kanálem strojového učení__ je podporované jenom v Azure Machine Learning Compute.
+> Použití GPU pro odvození _při vyhodnocování s kanálem strojového učení_ je podporované jenom v Azure Machine Learning Compute.
 
 > [!NOTE]
-> * Azure Container Instances (ACI) jsou vhodné pouze pro malé modely, jejichž velikost je menší než 1 GB. 
-> * Pro vývoj a testování větších modelů doporučujeme použít clustery Azure Kubernetes Service (AKS) s jedním uzlem.
+> * Instance kontejnerů jsou vhodné jenom pro malé modely, které mají velikost menší než 1 GB.
+> * Používejte clustery AKS s jedním uzlem pro vývoj a testování větších modelů.

@@ -4,12 +4,12 @@ description: Získejte zobrazení stránky a počty relací, data webového klie
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: ddbdeaed1cf3f69c20c272ea3e9dde405119bc24
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5a90f0b4223d69ccb6c4def871eb9d5bf5fbc2e8
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328900"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841437"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -107,7 +107,7 @@ Dostupné možnosti konfigurace jsou
 | Název | Typ | Popis
 |------|------|----------------
 | src | řetězec **[povinné]** | Úplná adresa URL, ze které se má načíst sada SDK Tato hodnota se používá pro atribut src dynamicky přidávaného &lt; skriptu nebo &gt; značky. Můžete použít veřejné umístění CDN nebo vlastní soukromý hostovaný.
-| jméno | řetězec *[nepovinné]* | Globální název inicializované sady SDK, výchozí hodnota `appInsights` . Proto ```window.appInsights``` bude odkaz na inicializovaná instanci. Poznámka: Pokud zadáte hodnotu názvu nebo předchozí instanci, která má být přiřazena (prostřednictvím globálního názvu appInsightsSDK), bude tato hodnota názvu také definována v globálním oboru názvů jako ```window.appInsightsSDK=<name value>``` , to je vyžadováno inicializačním kódem sady SDK, aby bylo zajištěno, že se inicializuje a aktualizuje správné kostry fragmentů a metod proxy.
+| name | řetězec *[nepovinné]* | Globální název inicializované sady SDK, výchozí hodnota `appInsights` . Proto ```window.appInsights``` bude odkaz na inicializovaná instanci. Poznámka: Pokud zadáte hodnotu názvu nebo předchozí instanci, která má být přiřazena (prostřednictvím globálního názvu appInsightsSDK), bude tato hodnota názvu také definována v globálním oboru názvů jako ```window.appInsightsSDK=<name value>``` , to je vyžadováno inicializačním kódem sady SDK, aby bylo zajištěno, že se inicializuje a aktualizuje správné kostry fragmentů a metod proxy.
 | ld | číslo v MS *[nepovinné]* | Definuje zpoždění zátěže, které se má počkat, než se pokusí načíst sadu SDK. Výchozí hodnota je 0ms a jakákoliv záporná hodnota okamžitě Přidá značku skriptu do &lt; hlavní &gt; oblasti stránky. tím se pak zablokuje událost načtení stránky, dokud není načten skript (nebo selže).
 | useXhr | logická hodnota *[nepovinné]* | Toto nastavení se používá pouze při selhání načtení sady SDK pro generování sestav. Vytváření sestav se nejprve pokusí použít metodu Fetch (), je-li k dispozici a pak přechod na XHR, nastavení této hodnoty na hodnotu true pouze obchází kontrolu načtení. Použití této hodnoty se vyžaduje jenom v případě, že se vaše aplikace používá v prostředí, kde se při načítání nepodaří odeslat události selhání.
 | crossOrigin | řetězec *[nepovinné]* | Zahrnutím tohoto nastavení se značka skriptu přidaná ke stažení SDK bude týkat atributu crossOrigin s touto řetězcovou hodnotou. Pokud není definován (výchozí), není přidán žádný atribut crossOrigin. Doporučené hodnoty nejsou definovány (výchozí nastavení); ""; nebo "anonymní" (pro všechny platné hodnoty viz [atribut HTML: `crossorigin` ](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) dokumentace)
@@ -153,7 +153,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfigurace
 Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s výjimkou `instrumentationKey` .
 
-| Name | Výchozí | Popis |
+| Název | Výchozí | Popis |
 |------|---------|-------------|
 | instrumentationKey | null | **Požadováno**<br>Klíč instrumentace, který jste získali z Azure Portal. |
 | accountId | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
@@ -218,7 +218,7 @@ Nastavením se `autoTrackPageVisitTime: true` sleduje čas strávený uživateli
 |---------------|
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
-| [Angular](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-angularplugin-js) |
+| [Angular](javascript-angular-plugin.md) |
 
 ## <a name="correlation"></a>Korelace
 

@@ -1,17 +1,17 @@
 ---
 title: Kurz – nasazení aplikace do sítě Azure Service Fabric
 description: V tomto kurzu se dozvíte, jak nasadit aplikaci do služby Service Fabric Mesh pomocí šablony.
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f7cb3f75dcaaeb6e0304784941dfcfc81ae6d68f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cc4912545bedb650268b3d8e4a3e9820b70b5fe2
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248386"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842525"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Kurz: Nasazení aplikace do služby Service Fabric Mesh pomocí šablony
 
@@ -342,8 +342,8 @@ V souboru parametrů aktualizujte hodnoty následujících parametrů:
 |registryPassword|Heslo, které jste získali dříve v části [Načtení přihlašovacích údajů registru](#retrieve-credentials-for-the-registry). Tento parametr je v šabloně zabezpečeným řetězcem a nezobrazí se ve stavu nasazení ani v příkazech `az mesh service show`.|
 |registryUserName|Uživatelské jméno, které jste získali v části [Načtení přihlašovacích údajů registru](#retrieve-credentials-for-the-registry).|
 |registryServer|Název serveru registru, který jste získali v části [Načtení přihlašovacích údajů registru](#retrieve-credentials-for-the-registry).|
-|frontEndImage|Image kontejneru pro front-endovou službu.  Například `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709`.|
-|serviceImage|Image kontejneru pro back-endovou službu.  Například `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709`.|
+|frontEndImage|Image kontejneru pro front-endovou službu.  Například, `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709`.|
+|serviceImage|Image kontejneru pro back-endovou službu.  Například, `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709`.|
 
 Aplikaci nasadíte spuštěním následujícího příkazu:
 

@@ -1,17 +1,17 @@
 ---
 title: Vytvoření, nasazení aplikace s více službami do Service Fabric sítě
 description: V tomto kurzu vytvoříte aplikaci Azure Service Fabric Mesh s více službami složenou z webu ASP.NET Core, který komunikuje s back-endovou webovou službou, provedete její místní ladění a publikujete ji do Azure.
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: 6531b8a631c38339733aa5fdad60bb1917fe7d9b
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: fa15432072f6478100a378fdbdb697556fdf1dc9
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653107"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842542"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Kurz: Vytvoření, ladění, nasazení a upgrade aplikace Service Fabric Mesh s více službami
 
@@ -41,7 +41,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem:
 

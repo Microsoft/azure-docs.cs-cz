@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: dbe37e8a5cba18254cff1dc5d0fff4d5b9bc783d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b8979691d03746634b6282b23b05723c35854e1f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91372608"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841522"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
 
@@ -31,15 +31,15 @@ Vzorový graf, se kterým budete pracovat, představuje sestavení se dvěma pod
 
 :::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu budete potřebovat předplatné Azure. Pokud ho ještě nemáte, vytvořte si **[ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** hned teď.
 
 Budete také potřebovat **Node.js** na svém počítači. Nejnovější verzi můžete získat na tomto odkazu: [Node.js](https://nodejs.org/).
 
 Nakonec budete muset stáhnout dvě ukázky, které byste měli použít při rychlém startu:
-* Ukázková aplikace **Průzkumníka aplikace ADT** Tato ukázka obsahuje hlavní aplikaci, kterou používáte v rychlém startu k načtení a prozkoumání scénáře digitálních vláken Azure. Aplikaci získáte tak, že přejdete sem: [Průzkumník digitálních vláken Azure (ADT)](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Stiskněte tlačítko *Stáhnout soubor zip* a Stáhněte si *. Soubor ZIP* tohoto ukázkového kódu na váš počítač jako _**Azure_Digital_Twins__ADT__explorer.zip**_. Rozbalte složku a extrahujte soubory.
-* **Příklad scénáře digitálních vláken Azure** To zahrnuje předem sestavený graf digitálních vláken Azure, který budete načítat do Průzkumníka služby ADT, abyste mohli pracovat s. Scénář získáte tak, že přejdete sem: [ukázky digitálních vláken Azure](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). Stiskněte tlačítko *Stáhnout soubor zip* a Stáhněte si *. Soubor ZIP* tohoto ukázkového kódu do vašeho počítače, který se stáhne. Složka ZIP na váš počítač jako **Azure_Digital_Twins_samples.zip**. Rozbalte složku a extrahujte soubory.
+* Ukázková aplikace **Průzkumníka aplikace ADT** Tato ukázka obsahuje hlavní aplikaci, kterou používáte v rychlém startu k načtení a prozkoumání scénáře digitálních vláken Azure. Aplikaci získáte tak, že přejdete sem: [Průzkumník digitálních vláken Azure (ADT)](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Stiskněte tlačítko *Stáhnout soubor zip* a Stáhněte si *. Soubor ZIP* tohoto ukázkového kódu do vašeho počítače. Tím se stáhne. Složka ZIP na váš počítač jako _**Azure_Digital_Twins__ADT__explorer.zip**_. Rozbalte složku a extrahujte soubory.
+* **Příklad scénáře digitálních vláken Azure** To zahrnuje předem sestavený graf digitálních vláken Azure, který budete načítat do Průzkumníka služby ADT, abyste mohli pracovat s. Scénář získáte tak, že přejdete sem: [ukázky digitálních vláken Azure](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). Stiskněte tlačítko *Stáhnout soubor zip* a Stáhněte si *. Soubor ZIP* tohoto ukázkového kódu do vašeho počítače. Tím se stáhne. Složka ZIP na váš počítač jako _**Azure_Digital_Twins_samples.zip**_. Rozbalte složku a extrahujte soubory.
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Nastavení digitálních vláken Azure a Průzkumníka služby ADT
 

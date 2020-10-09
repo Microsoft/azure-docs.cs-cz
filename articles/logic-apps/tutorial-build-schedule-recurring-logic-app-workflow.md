@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
-ms.openlocfilehash: 3bf4ad12bab3e71675ff35203bf69526b3b8614f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: aad271875abb9024a1ecc7f45018c04d8c79ce95
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574577"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842559"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>Kurz: vytvoření pracovních postupů založených na plánech a opakovaných automatizacích pomocí Azure Logic Apps
 
@@ -149,7 +149,7 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
 1. V akci otevřete **seznam přidat nový parametr**a vyberte tyto vlastnosti.
 
-   * **Optimalizace**
+   * **Zvýšit**
    * **Jednotka vzdálenosti**
    * **Způsob cestování**
 
@@ -163,9 +163,9 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
    |----------|----------|-------|-------------|
    | **Bod na trase 1** | Ano | <*Začátek – umístění*> | Počátek vaší trasy. Tento příklad určuje ukázkovou počáteční adresu. |
    | **Bod na trase 2** | Ano | <*koncové umístění*> | Cíl vaší trasy. Tento příklad určuje ukázkovou cílovou adresu. |
-   | **Optimalizace** | Ne | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte hodnotu parametru **timeWithTraffic**. |
-   | **Jednotka vzdálenosti** | Ne | <*vaše preference*> | Jednotka vzdálenosti použitá pro trasu. V tomto příkladu se jako jednotka používá **míle** . |
-   | **Způsob cestování** | Ne | Autem | Způsob cestování pro danou trasu. Vyberte režim **řízení** . |
+   | **Zvýšit** | No | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte hodnotu parametru **timeWithTraffic**. |
+   | **Jednotka vzdálenosti** | No | <*vaše preference*> | Jednotka vzdálenosti použitá pro trasu. V tomto příkladu se jako jednotka používá **míle** . |
+   | **Způsob cestování** | No | Autem | Způsob cestování pro danou trasu. Vyberte režim **řízení** . |
    |||||
 
    Další informace o těchto parametrech a hodnotách najdete v tématu [Výpočet trasy](/bingmaps/rest-services/routes/calculate-a-route).
@@ -194,7 +194,7 @@ Ve výchozím nastavení akce **získat trasu** vrátí aktuální dobu trvání
    |----------|----------|-------|-------------|
    | **Název** | Ano | dobacesty | Název proměnné. Tento příklad používá `travelTime` . |
    | **Typ** | Ano | Integer | Datový typ proměnné |
-   | **Hodnota** | Ne | Výraz, který převede aktuální dobu trvání cesty z sekund na minuty (viz postup v této tabulce). | Počáteční hodnota proměnné |
+   | **Hodnota** | No | Výraz, který převede aktuální dobu trvání cesty z sekund na minuty (viz postup v této tabulce). | Počáteční hodnota proměnné |
    |||||
 
    1. Chcete-li vytvořit výraz pro vlastnost **Value** , klikněte do pole, aby se zobrazil seznam dynamického obsahu. V případě potřeby Rozšiřte prohlížeč, dokud se nezobrazí dynamický seznam. V seznamu dynamický obsah vyberte **výraz**, který ukazuje Editor výrazů.
@@ -360,18 +360,18 @@ Vaše aplikace logiky pokračuje běžet, dokud aplikaci nezakážete nebo neods
 
 1. Do vyhledávacího pole Azure Portal zadejte název skupiny prostředků, kterou jste vytvořili. Z výsledků v části **skupiny prostředků**vyberte skupinu prostředků.
 
-   V tomto příkladu se vytvořila skupina prostředků s názvem `LA-TravelTime-RG` . 
+   V tomto příkladu se vytvořila skupina prostředků s názvem `LA-TravelTime-RG` .
 
    ![Snímek obrazovky, který zobrazuje pole Azure Search s uvedením "La-cestovné-Time-RG" a * * LA-Dobacesty-RG * * vybrány.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/find-resource-group.png)
 
    > [!TIP]
    > Pokud se na domovské stránce Azure zobrazuje skupina prostředků v části **nedávné prostředky**, můžete vybrat skupinu z domovské stránky.
 
-1. V nabídce skupina prostředků ověřte, že je vybraná možnost **Přehled** . Na panelu nástrojů v podokně **Přehled** vyberte **Odstranit skupinu prostředků**. 
+1. V nabídce skupina prostředků ověřte, že je vybraná možnost **Přehled** . Na panelu nástrojů v podokně **Přehled** vyberte **Odstranit skupinu prostředků**.
 
    ![Snímek obrazovky, který zobrazuje podokno "Přehled" skupiny prostředků a na panelu nástrojů, je vybrána možnost odstranit skupinu prostředků.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
 
-1. V podokně potvrzení zadejte název skupiny prostředků a vyberte **Odstranit**.
+1. V podokně potvrzení, které se zobrazí, zadejte název skupiny prostředků a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

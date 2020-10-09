@@ -6,24 +6,23 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/07/2020
+ms.openlocfilehash: ac63846e2679e9b4a51cb26b32415eb81a4b76ed
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609161"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842576"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Služby vysoké dostupnosti podporované službou Azure HDInsight
 
- Pro zajištění optimální úrovně dostupnosti pro komponenty analýzy se služba HDInsight vyvinula s jedinečnou architekturou pro zajištění vysoké dostupnosti důležitých služeb (HA). Některé součásti této architektury byly vyvinuty společností Microsoft za účelem poskytování automatického převzetí služeb při selhání. Další komponenty jsou standardní komponenty Apache, které jsou nasazené pro podporu konkrétních služeb. Tento článek popisuje architekturu modelu služby HA v HDInsight, jak HDInsight podporuje převzetí služeb při selhání pro služby HA a osvědčené postupy pro obnovení z dalších přerušení služby.
+Pro zajištění optimální úrovně dostupnosti pro komponenty analýzy se služba HDInsight vyvinula s jedinečnou architekturou pro zajištění vysoké dostupnosti důležitých služeb (HA). Některé součásti této architektury byly vyvinuty společností Microsoft za účelem poskytování automatického převzetí služeb při selhání. Další komponenty jsou standardní komponenty Apache, které jsou nasazené pro podporu konkrétních služeb. Tento článek popisuje architekturu modelu služby HA v HDInsight, jak HDInsight podporuje převzetí služeb při selhání pro služby HA a osvědčené postupy pro obnovení z dalších přerušení služby.
  
 > [!NOTE]
 > Komunikace bez posunu
 >
 > Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
 >
-
 
 ## <a name="high-availability-infrastructure"></a>Infrastruktura vysoké dostupnosti
 
@@ -43,7 +42,7 @@ Tato infrastruktura se skládá z řady služeb a softwarových komponent, kter�
 
 ![infrastruktura vysoké dostupnosti](./media/hdinsight-high-availability-components/high-availability-architecture.png)
 
-K dispozici jsou i další služby vysoké dostupnosti, které podporuje Open Source součásti pro spolehlivost Apache. Tyto součásti jsou také k dispozici v clusterech HDInsight:
+K dispozici jsou také další služby vysoké dostupnosti, které jsou podporovány v části Open Source součásti pro spolehlivost Apache. Tyto součásti jsou také k dispozici v clusterech HDInsight:
 
 - Systém souborů Hadoop (HDFS) NameNode
 - Správce prostředků PŘÍZe
@@ -100,7 +99,7 @@ Hlavní-ha-Service se spouští jenom na aktivním hlavnímu uzlu, zastaví slu�
 
 ![proces převzetí služeb při selhání](./media/hdinsight-high-availability-components/failover-steps.png)
 
-Monitor stavu běží na každém hlavnímu uzlu spolu s hlavním řadičem pro převzetí služeb při selhání, aby odesílal hearbeat oznámení do kvora Zookeeper. Hlavnímu uzlu se v tomto scénáři považuje za službu HA. Monitor stavu zkontroluje, jestli je každá služba vysoké dostupnosti v pořádku a jestli je připravená k zapojení do volby vedoucího vedení. Pokud ano, bude tento hlavnímu uzlu konkurovat ve volbách. Pokud ne, ukončí volbu, dokud nebude znovu připravena.
+Monitor stavu běží na každém hlavnímu uzlu spolu s hlavním řadičem pro převzetí služeb při selhání pro odesílání oznámení prezenčního signálu do kvora Zookeeper. Hlavnímu uzlu se v tomto scénáři považuje za službu HA. Monitor stavu zkontroluje, jestli je každá služba vysoké dostupnosti v pořádku a jestli je připravená k zapojení do volby vedoucího vedení. Pokud ano, bude tento hlavnímu uzlu konkurovat ve volbách. Pokud ne, ukončí volbu, dokud nebude znovu připravena.
 
 Pokud se v pohotovostním režimu hlavnímu uzlu kdykoli dosáhne vedoucího a bude aktivní (například v případě selhání s předchozím aktivním uzlem), zahájí hlavní řadič pro převzetí služeb při selhání všechny služby HDInsight HA. Hlavní kontroler převzetí služeb při selhání také zastaví tyto služby na ostatních hlavnímu uzlu.
 

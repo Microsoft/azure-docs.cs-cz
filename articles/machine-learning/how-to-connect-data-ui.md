@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: 5ddfa2adbc9ec39949d7352903445407ff8e8881
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 116dd65bf04c01f513e196a2f1b37d54aacbf1fe
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542151"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841352"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Připojení k datům pomocí Azure Machine Learning studia
 
@@ -35,9 +35,9 @@ Pro prostředí prvního kódu si přečtěte následující články, které po
 * [Připojte se ke službám úložiště Azure s úložištěm dat](how-to-access-data.md). 
 * [Vytvořte Azure Machine Learning datové sady](how-to-create-register-datasets.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).
 
@@ -87,6 +87,7 @@ Vytvoření datové sady v studiu:
 1. Vyberte **tabulkové** nebo **soubor** pro typ datové sady.
 1. Výběrem **Další** otevřete formulář **úložiště dat a výběr souboru** . V tomto formuláři můžete vybrat, kde má být datová sada po vytvoření, a také vybrat datové soubory, které se mají použít pro datovou sadu.
     1. Pokud se data nachází ve virtuální síti, povolte přeskočit ověřování. Přečtěte si další informace o [izolaci virtuální sítě a ochraně osobních údajů](how-to-enable-virtual-network.md#machine-learning-studio).
+    1. U tabelárních datových sad můžete zadat vlastnost časové řady, která pro datovou sadu povoluje operace související s časem. Naučte se, jak do [datové sady přidat vlastnost časové řady](how-to-monitor-datasets.md#studio-dataset).
 1. Výběrem možnosti **Další** naplníte formuláře **nastavení a náhled** a **schéma** . jsou inteligentně vyplněné na základě typu souboru a můžete ještě před vytvořením těchto formulářů nakonfigurovat datovou sadu. 
 1. Kliknutím na tlačítko **Další** zkontrolujte formulář **potvrdit podrobnosti** . Projděte si výběr a vytvořte pro datovou sadu volitelný datový profil. Přečtěte si další informace o [profilování dat](#profile).
 1. Vytvoření datové sady dokončíte výběrem **vytvořit** .
@@ -114,13 +115,13 @@ Konkrétně datový profil Azure Machine Learning datové sady zahrnuje:
 
 |Statistický údaj|Popis
 |------|------
-|Příznak| Název sloupce, který je sumarizován.
+|Funkce| Název sloupce, který je sumarizován.
 |Profil| Vložená vizualizace na základě typu odvozeného. Například řetězce, logické hodnoty a data budou mít počty hodnot, zatímco desetinná místa (číslice) mají přibližné histogramy. To vám umožní získat rychlé porozumění distribuci dat.
 |Distribuce typu| Počet vložené hodnoty typů v rámci sloupce. Hodnoty null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro zjištění lichých nebo chybějících hodnot.
 |Typ|Odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.
 |Minimum| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (například logické hodnoty), se zobrazí prázdné položky.
 |Maximum| Maximální hodnota sloupce 
-|Počet| Celkový počet chybějících a nechybějících položek ve sloupci
+|Count| Celkový počet chybějících a nechybějících položek ve sloupci
 |Počet nechybějících| Počet položek ve sloupci, které nebyly nalezeny. Prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybějícímu počtu".
 |Kvantily| Přibližné hodnoty na jednotlivých Quantile, které poskytují smysl distribuce dat.
 |Mean| Aritmetický průměr nebo průměr sloupce

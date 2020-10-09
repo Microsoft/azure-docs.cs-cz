@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 454e205904b3623bdb5adc906465f01abd77092a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 48db8541ebad19e3b22b737f7e92dcc980708ef6
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795605"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841590"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu s využitím uspořádaného clusterovaného indexu columnstore  
 
@@ -48,9 +48,6 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 
 ```
-
->[!TIP]
-> Pro zlepšení výkonu v synapse SQL zvažte použití **Sys. pdw_permanent_table_mappings** místo **Sys. pdw_table_mappings** v trvalých uživatelských tabulkách. Další informace najdete v tématu **[Sys. pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** .
 
 > [!NOTE] 
 > V seřazené tabulce Ski se v rámci této dávky seřadí nová data, která jsou výsledkem stejné dávky operací DML nebo načítání dat, ale neexistují žádná globální řazení napříč všemi daty v tabulce.  Uživatelé mohou znovu sestavit uspořádanou INSTRUKCi pro řazení všech dat v tabulce.  V synapse SQL je opětovné sestavení indexu columnstore operací offline.  Pro dělenou tabulku je opětovné sestavení provedeno po jednom oddílu.  Data v oddílu, který se má znovu sestavit, jsou "offline" a nejsou k dispozici, dokud není znovu dokončeno opětovné sestavení pro tento oddíl. 
@@ -98,7 +95,7 @@ Výkon načítání dat do seřazené tabulky Ski je podobný tabulce děleno.  
 
 Zde je příklad porovnání výkonu načítání dat do tabulek s různými schématy.
 
-![Performance_comparison_data_loading](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
+![Pruhový graf, který zobrazuje porovnání výkonu při načítání dat do tabulek s různými schématy.](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
 
 
 Tady je příklad porovnání výkonu dotazů mezi Ski a seřazenou konzulární instrukcí.
@@ -139,7 +136,7 @@ Vytvoření seřazené konzulární instrukce je offline operace.  Pro tabulky, 
 
 ## <a name="examples"></a>Příklady
 
-**A. pro kontrolu seřazených sloupců a pořadí pořadí:**
+**Určitého. Chcete-li kontrolovat seřazené sloupce a pořadí pořadí:**
 
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
@@ -148,7 +145,7 @@ JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
 WHERE column_store_order_ordinal <>0
 ```
 
-**B. pro změnu pořadí sloupců, přidání nebo odebrání sloupců ze seznamu objednávek nebo pro změnu z instrukce na seřazenou INSTRUKCi:**
+**B. Změna pořadí sloupců, přidání nebo odebrání sloupců ze seznamu objednávek nebo změna z instrukce na seřazenou INSTRUKCi:**
 
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales

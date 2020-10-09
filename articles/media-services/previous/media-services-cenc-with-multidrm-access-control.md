@@ -15,12 +15,12 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7e63225df4e337a93912bf1e1c17eb61a6cc9e0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b98b66d8f0350c32e89d62d776ee1288d9271712
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258584"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841148"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Návrh systému ochrany obsahu s řízením přístupu pomocí Azure Media Services
 
@@ -210,7 +210,7 @@ Implementace zahrnuje následující kroky:
    * Install-Package Microsoft. Owin. Security. OpenIdConnect
    * Install-Package Microsoft. Owin. Security. cookies
    * Install-Package Microsoft.Owin.Host.SystemWeb
-   * Install-Package Microsoft. IdentityModel. clients. Active
+   * Install-Package Microsoft. IdentityModel. clients. dataactive
 
 8. Vytvořte přehrávač pomocí [rozhraní Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/). Pomocí [rozhraní Azure Media Player ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) určete, která technologie DRM se má používat na různých platformách DRM.
 
@@ -421,11 +421,11 @@ Následující snímky obrazovky zobrazují různé přihlašovací stránky pou
 
 **Vlastní účet domény tenanta Azure AD**: přizpůsobená přihlašovací stránka vlastní domény TENANTA Azure AD.
 
-![Vlastní účet domény tenanta Azure AD](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
+![Snímek obrazovky zobrazující přizpůsobenou přihlašovací stránku vlastní domény tenanta Azure A D](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
 **Účet domény Microsoft s čipovou kartou**: přihlašovací stránka přizpůsobená MICROSOFTem IT má dvojúrovňové ověřování.
 
-![Vlastní účet domény tenanta Azure AD](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
+![Snímek obrazovky, který zobrazuje přihlašovací stránku přizpůsobenou podnikem I T s ověřováním pomocí dvou faktorů.](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
 **Účet Microsoft**: přihlašovací stránka účet Microsoft pro příjemce.
 
@@ -473,7 +473,7 @@ Následující snímek obrazovky ukazuje scénář, který používá asymetrick
 
 V obou předchozích případech zůstává ověřování uživatelů stejné. Probíhá přes Azure AD. Jediným rozdílem je, že JWTs vydávají vlastní STS místo Azure AD. Když konfigurujete dynamickou ochranu CENC Protection, omezení služby doručování licencí určuje typ JWT, buď symetrický, nebo asymetrický klíč.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Tento dokument popisuje CENC s více nativními technologiemi DRM a Access Control přes ověřování tokenů, jeho návrh a implementaci pomocí Azure, Media Services a Media Player.
 
