@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
 ms.openlocfilehash: f717903b3f953e04c793092c86802f2006de7e82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80349808"
 ---
 # <a name="query-ingested-telemetry-data"></a>Dotazování na ingestovaná telemetrická data
@@ -42,7 +42,7 @@ Postupujte podle kroků pro dotazování na data telemetrie pro ingestování se
 > [!NOTE]
 > **ID** a **sensorModelId** objektu daného senzoru.
 
-2. Pro **sensorModelId** , jak je uvedeno v kroku 1, vytvořte/SENSORMODEL API Get/{ID}. "Model senzoru" obsahuje všechna metadata a podrobnosti o ingestované telemetrie ze senzorů. Například **míra senzoru** v objektu **modelu senzoru** obsahuje podrobné informace o tom, jaká opatření se senzor posílá a v jakých typech a jednotkách. Třeba
+2. Pro **sensorModelId** , jak je uvedeno v kroku 1, vytvořte/SENSORMODEL API Get/{ID}. "Model senzoru" obsahuje všechna metadata a podrobnosti o ingestované telemetrie ze senzorů. Například **míra senzoru** v objektu **modelu senzoru** obsahuje podrobné informace o tom, jaká opatření se senzor posílá a v jakých typech a jednotkách. Příklad:
 
   ```json
   {

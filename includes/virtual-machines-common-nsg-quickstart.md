@@ -9,10 +9,10 @@ ms.date: 09/12/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: ec6cbcbc93fe87634c87caeb0041b75ec916a22f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67174977"
 ---
 Otevřete port nebo vytvořte koncový bod s virtuálním počítačem v Azure vytvořením síťového filtru v podsíti nebo síťovém rozhraní virtuálního počítače. Tyto filtry umístíte, což řídí příchozí i odchozí provoz, ve skupině zabezpečení sítě připojené k prostředku, který přijímá provoz.
@@ -21,7 +21,7 @@ V příkladu v tomto článku se dozvíte, jak vytvořit filtr sítě, který po
 
 Po vytvoření virtuálního počítače, který je nakonfigurovaný tak, aby sloužil webovým požadavkům na standardním portu TCP 80, můžete:
 
-1. Vytvořte skupinu zabezpečení sítě.
+1. Vytvoření skupiny zabezpečení sítě
 
 2. Vytvořte příchozí pravidlo zabezpečení, které povolí přenos, a přiřaďte hodnoty k následujícímu nastavení:
 

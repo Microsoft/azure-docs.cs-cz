@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.openlocfilehash: cfd7a007c8f26a96d929026e231cb412cdc70279
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440843"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ekarda
@@ -73,12 +73,12 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pokud chcete povolit jednotné přihlašování Azure AD, postupujte podle těchto kroků Azure Portal:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Na stránce integrace aplikací **ekarda** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu tužky a upravte **základní nastavení konfigurace SAML** .
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte ikonu tužky a upravte základní nastavení **Konfigurace SAML** .
 
-   ![Snímek obrazovky nastavení jednotného přihlašování pomocí stránky SAML se zvýrazněnou ikonou tužky](common/edit-urls.png)
+   ![Snímek obrazovky s nastavením jednoduchého Sign-On se stránkou SAML se zvýrazněnou ikonou tužky](common/edit-urls.png)
 
 1. Pokud se v části **základní konfigurace SAML** zobrazuje **soubor metadat poskytovatele služby**, postupujte podle těchto kroků:
     1. Vyberte **nahrát soubor metadat**.
@@ -100,13 +100,13 @@ Pokud chcete povolit jednotné přihlašování Azure AD, postupujte podle těch
     > [!NOTE]
     > Hodnoty v obou předchozích krocích nejsou reálné. Aktualizujte je skutečným identifikátorem, adresou URL odpovědi a hodnotami přihlašovací adresy URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta ekarda](mailto:contact@ekarda.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte **Stáhnout** a uložte **certifikát (Base64)** do počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte v části **podpisový certifikát SAML** možnost **Stáhnout** a uložte **certifikát (Base64)** do počítače.
 
-    ![Snímek obrazovky s oddílem podpisového certifikátu SAML na stránce nastavit jednotné přihlašování s protokolem SAML s zvýrazněným odkazem na stažení pro certifikát base64.](common/certificatebase64.png)
+    ![Snímek obrazovky s oddílem podpisového certifikátu SAML na stránce nastavit jeden Sign-On se stránkou SAML se zvýrazněným odkazem na stažení pro certifikát base64.](common/certificatebase64.png)
 
 1. V části **Nastavení ekarda** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Snímek obrazovky s oddílem nastavení ekarda na stránce nastavit jednotné přihlašování se zvýrazněnými odkazy pro kopírování URL](common/copy-configuration-urls.png)
+    ![Snímek obrazovky s oddílem nastavit ekarda na stránce nastavit jeden Sign-On se stránkou SAML s zvýrazněnými odkazy pro kopírování URL](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 

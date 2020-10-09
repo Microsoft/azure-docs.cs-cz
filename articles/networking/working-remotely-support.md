@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
 ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80982850"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Vzdálená práce pomocí Azure Networking Services
@@ -80,7 +80,7 @@ Pro vaše nasazení v jiných veřejných cloudech může společnost Microsoft 
 
 Následující články popisují, jak lze pomocí různých síťových funkcí Azure škálovat uživatele, aby fungovaly vzdáleně:
 
-| **Předmětu** | **Popis** |
+| **Článek** | **Popis** |
 | --- | --- |
 | [Jak povolit vzdálenou práci uživatelů](../vpn-gateway/work-remotely-support.md) | Projděte si dostupné možnosti pro nastavení vzdáleného přístupu pro uživatele nebo doplnění stávajících řešení o další kapacitu vaší organizace.|
 | [Působit potíže se do služby stravování, abyste mohli pracovat s požadavky na domácnosti? Tady je místo, kde může Azure Virtual WAN pomáhat.](../virtual-wan/work-remotely-support.md) | Využijte Azure Virtual WAN k řešení potřeb vaší organizace pro vzdálené připojení.|

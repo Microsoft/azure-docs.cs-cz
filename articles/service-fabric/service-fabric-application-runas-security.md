@@ -1,13 +1,13 @@
 ---
 title: Spuštění služby pod systémovými a místními účty zabezpečení
-description: Naučte se, jak spustit aplikaci Service Fabric v části účty System a Local Security.  Vytvořte objekty zabezpečení a použijte zásady spustit jako pro bezpečné spouštění služeb.
+description: Naučte se, jak spustit aplikaci Service Fabric v části účty System a Local Security.  Vytvořte objekty zabezpečení a použijte zásady Run-As pro bezpečné spouštění služeb.
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75610113"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Spusťte službu jako místní uživatelský účet nebo účet místního systému.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 9e9d98e8b68b4e01d7e8f19e7c7d89a88d9bf69f
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500849"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vmware-horizon---unified-access-gateway"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím VMware Horizon – Unified Access Gateway
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat službu VMware Horizon – Unified Acc
 * Umožněte uživatelům, aby se automaticky přihlásili k bráně VMware Horizon – Unified Access Gateway s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -60,8 +60,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[Konfigurace nástroje VMware Horizon – Unified Access Gateway SSO](#configure-vmware-horizon-unified-access-gateway-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
-    1. **[Vytvoření testovacího uživatele brány VMware Horizon – Unified Access Gateway](#create-vmware-horizon-unified-access-gateway-test-user)** – Pokud chcete mít protějšek B. Simon ve VMware horizont-Unified Access Gateway, která je propojená s reprezentací uživatele Azure AD.
+1. **[NAKONFIGURUJTE jednotné přihlašování VMware Horizon-Unified Access Gateway](#configure-vmware-horizon-unified-access-gateway-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvoření testovacího uživatele brány vmware Horizon-Unified Access Gateway](#create-vmware-horizon-unified-access-gateway-test-user)** – Pokud chcete mít protějšek B. Simon ve VMware horizont-Unified Access Gateway, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
@@ -105,7 +105,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -119,11 +119,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci nebyla nastavena žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-vmware-horizon-unified-access-gateway-sso"></a>Konfigurace VMware Horizon – Unified Access Gateway SSO
+## <a name="configure-vmware-horizon-unified-access-gateway-sso"></a>Konfigurace jednotného přihlašování k VMware Horizon-Unified Access Gateway
 
 Pokud chcete nakonfigurovat jednotné přihlašování na straně **brány VMware Horizon (Unified Access Gateway** ), musíte stáhnout stažená **metadata federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory VMware Horizon – Unified Access Gateway](mailto:support@vmware.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
-### <a name="create-vmware-horizon-unified-access-gateway-test-user"></a>Vytvořit VMware Horizon – pro testovacího uživatele brány Unified Access Gateway
+### <a name="create-vmware-horizon-unified-access-gateway-test-user"></a>Vytvořit testovacího uživatele brány VMware Horizon-Unified Access
 
 V této části vytvoříte uživatele s názvem B. Simon v bráně VMware Horizon – Unified Access Gateway. Pokud chcete přidat uživatele na platformě VMware Horizon – Unified Access Gateway, pracujte s [týmem podpory VMware Horizon – Unified Access](mailto:support@vmware.com) Gateway. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 

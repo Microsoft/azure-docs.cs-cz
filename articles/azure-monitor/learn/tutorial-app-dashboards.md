@@ -8,10 +8,10 @@ ms.author: lagayhar
 ms.date: 09/30/2020
 ms.custom: mvc, contperfq1
 ms.openlocfilehash: 1a83385c7f384f7727a0fd10e238c6511950abfe
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612644"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Vytváření vlastních řídicích panelů klíčového ukazatele výkonu pomocí Azure Application Insights
@@ -27,7 +27,7 @@ Můžete vytvořit více řídicích panelů na portálu Azure Portal, aby každ
 > * Přidání grafu vlastní metriky v Application Insights na řídicí panel
 > * Přidání výsledků dotazu log (Analytics) na řídicí panel
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -132,7 +132,7 @@ Protokoly Azure Application Insights poskytují bohatý dotazovací jazyk, kter�
 ## <a name="share-dashboard"></a>Sdílet řídicí panel
 
 1. V horní části řídicího panelu vyberte **sdílet** , aby se změny publikovaly.
-2. Volitelně můžete definovat konkrétní uživatele, kteří mají mít přístup k řídicímu panelu. Další informace najdete v tématu [sdílení řídicích panelů Azure pomocí Access Control na základě rolí](../../azure-portal/azure-portal-dashboard-share-access.md).
+2. Volitelně můžete definovat konkrétní uživatele, kteří mají mít přístup k řídicímu panelu. Další informace najdete v tématu [sdílení řídicích panelů Azure pomocí Role-Based Access Control](../../azure-portal/azure-portal-dashboard-share-access.md).
 3. Vyberte **Publikovat**.
 
 ## <a name="next-steps"></a>Další kroky

@@ -4,10 +4,10 @@ description: Tento článek poskytuje referenci pro SQLRuleAction syntax. Akce j
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 61fa6e046b4d4a0ba91bf8608c846755026d07ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85341586"
 ---
 # <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Reference syntaxe SQLRuleAction pro Azure Service Bus
@@ -52,9 +52,9 @@ V tomto článku jsou uvedeny podrobnosti o gramatické akci pravidla SQL.
     [<scope> .] <property_name>
 ``` 
   
-## <a name="arguments"></a>Arguments  
+## <a name="arguments"></a>Argumenty  
   
--   `<scope>`je volitelný řetězec, který označuje rozsah `<property_name>` . Platné hodnoty jsou `sys` nebo `user` . `sys`Hodnota označuje rozsah systému, kde `<property_name>` je název veřejné vlastnosti [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user`označuje obor uživatele, kde `<property_name>` je klíč slovníku [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . `user`Obor je výchozím rozsahem, pokud není `<scope>` zadán.  
+-   `<scope>` je volitelný řetězec, který označuje rozsah `<property_name>` . Platné hodnoty jsou `sys` nebo `user` . `sys`Hodnota označuje rozsah systému, kde `<property_name>` je název veřejné vlastnosti [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` označuje obor uživatele, kde `<property_name>` je klíč slovníku [třídy BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . `user` Obor je výchozím rozsahem, pokud není `<scope>` zadán.  
   
 ### <a name="remarks"></a>Poznámky  
 
@@ -72,8 +72,8 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 ```  
   
-### <a name="arguments"></a>Arguments  
- `<regular_identifier>`je řetězec reprezentovaný následujícím regulárním výrazem:  
+### <a name="arguments"></a>Argumenty  
+ `<regular_identifier>` je řetězec reprezentovaný následujícím regulárním výrazem:  
   
 ```  
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
@@ -81,13 +81,13 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
  To znamená, že všechny řetězce, které začínají písmenem a jsou následovány jedním nebo více podtržítkem/písmenem nebo číslicí.  
   
- `[:IsLetter:]`označuje libovolný znak Unicode, který je zařazený do kategorie jako písmeno Unicode. `System.Char.IsLetter(c)`Vrátí, `true` Pokud `c` je písmeno Unicode.  
+ `[:IsLetter:]` označuje libovolný znak Unicode, který je zařazený do kategorie jako písmeno Unicode. `System.Char.IsLetter(c)` Vrátí, `true` Pokud `c` je písmeno Unicode.  
   
- `[:IsDigit:]`znamená, že každý znak Unicode, který je zařazen jako desítkovou číslici. `System.Char.IsDigit(c)`Vrátí, `true` Pokud `c` je číslice Unicode.  
+ `[:IsDigit:]` znamená, že každý znak Unicode, který je zařazen jako desítkovou číslici. `System.Char.IsDigit(c)` Vrátí, `true` Pokud `c` je číslice Unicode.  
   
  `<regular_identifier>`Klíčové slovo nemůže být rezervované.  
   
- `<delimited_identifier>`je libovolný řetězec, který je uzavřený pomocí levé nebo pravé hranaté závorky ([]). Pravá hranatá závorka je vyjádřena jako dvě pravé hranaté závorky. Následují příklady `<delimited_identifier>` :  
+ `<delimited_identifier>` je libovolný řetězec, který je uzavřený pomocí levé nebo pravé hranaté závorky ([]). Pravá hranatá závorka je vyjádřena jako dvě pravé hranaté závorky. Následují příklady `<delimited_identifier>` :  
   
 ```  
 [Property With Space]  
@@ -95,7 +95,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 ```  
   
- `<quoted_identifier>`je libovolný řetězec, který je uzavřený pomocí dvojitých uvozovek. Dvojité uvozovky v identifikátoru jsou reprezentovány dvěma dvojitými uvozovkami. Nedoporučuje se používat identifikátory v uvozovkách, protože je lze snadno zaměňovat pomocí řetězcové konstanty. Pokud je to možné, použijte oddělený identifikátor. Zde je příklad `<quoted_identifier>` :  
+ `<quoted_identifier>` je libovolný řetězec, který je uzavřený pomocí dvojitých uvozovek. Dvojité uvozovky v identifikátoru jsou reprezentovány dvěma dvojitými uvozovkami. Nedoporučuje se používat identifikátory v uvozovkách, protože je lze snadno zaměňovat pomocí řetězcové konstanty. Pokud je to možné, použijte oddělený identifikátor. Zde je příklad `<quoted_identifier>` :  
   
 ```  
 "Contoso & Northwind"  
@@ -110,7 +110,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 ### <a name="remarks"></a>Poznámky
   
- `<pattern>`musí být výraz, který je vyhodnocen jako řetězec. Slouží jako vzor pro operátor LIKE.      Může obsahovat následující zástupné znaky:  
+ `<pattern>` musí být výraz, který je vyhodnocen jako řetězec. Slouží jako vzor pro operátor LIKE.      Může obsahovat následující zástupné znaky:  
   
 -   `%`: Libovolný řetězec nula nebo více znaků.  
   
@@ -125,7 +125,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
   
 ### <a name="remarks"></a>Poznámky
   
- `<escape_char>`musí se jednat o výraz, který se vyhodnotí jako řetězec o délce 1. Slouží jako řídicí znak pro operátor LIKE.  
+ `<escape_char>` musí se jednat o výraz, který se vyhodnotí jako řetězec o délce 1. Slouží jako řídicí znak pro operátor LIKE.  
   
  Například `property LIKE 'ABC\%' ESCAPE '\'` odpovídá `ABC%` místo řetězce, který začíná na `ABC` .  
   
@@ -136,9 +136,9 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
       <integer_constant> | <decimal_constant> | <approximate_number_constant> | <boolean_constant> | NULL  
 ```  
   
-### <a name="arguments"></a>Arguments  
+### <a name="arguments"></a>Argumenty  
   
--   `<integer_constant>`je řetězec čísel, který není uzavřen v uvozovkách a neobsahuje desetinná místa. Hodnoty se ukládají jako `System.Int64` interně a používají stejný rozsah.  
+-   `<integer_constant>` je řetězec čísel, který není uzavřen v uvozovkách a neobsahuje desetinná místa. Hodnoty se ukládají jako `System.Int64` interně a používají stejný rozsah.  
   
      Následují příklady dlouhých konstant:  
   
@@ -147,7 +147,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
     2  
     ```  
   
--   `<decimal_constant>`je řetězec čísel, který není uzavřen v uvozovkách a obsahuje desetinnou čárku. Hodnoty se ukládají jako `System.Double` interně a používají stejný rozsah nebo přesnost.  
+-   `<decimal_constant>` je řetězec čísel, který není uzavřen v uvozovkách a obsahuje desetinnou čárku. Hodnoty se ukládají jako `System.Double` interně a používají stejný rozsah nebo přesnost.  
   
      V budoucí verzi může být toto číslo Uloženo v jiném datovém typu, aby podporovalo přesnou sémantiku čísel, takže byste neměli spoléhat na skutečnost, že základní datový typ je `System.Double` `<decimal_constant>` .  
   
@@ -158,7 +158,7 @@ Pokus o přístup k neexistující systémové vlastnosti je chyba, ale pokus o 
     2.0  
     ```  
   
--   `<approximate_number_constant>`je číslo napsané v matematickém zápisu. Hodnoty se ukládají jako `System.Double` interně a používají stejný rozsah nebo přesnost. Následující příklady představují přibližné číselné konstanty:  
+-   `<approximate_number_constant>` je číslo napsané v matematickém zápisu. Hodnoty se ukládají jako `System.Double` interně a používají stejný rozsah nebo přesnost. Následující příklady představují přibližné číselné konstanty:  
   
     ```  
     101.5E5  

@@ -12,10 +12,10 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 36592151385a08d75b9b34e85bfa9d62342fc8cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80991565"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Přesun dat ze zdroje HTTP pomocí Azure Data Factory
@@ -50,11 +50,11 @@ Můžete vytvořit kanál, který má aktivitu kopírování pro přesun dat ze 
 
 Následující tabulka popisuje elementy JSON, které jsou specifické pro propojenou službu HTTP:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| typ | Vlastnost **Type** musí být nastavená na **http**. | Yes |
-| url | Základní adresa URL webového serveru. | Yes |
-| authenticationType | Určuje typ ověřování. Povolené hodnoty jsou **anonymní**, **základní**, **Digest**, **Windows**a **ClientCertificate**. <br><br> Další vlastnosti a ukázky JSON pro tyto typy ověřování najdete v dalších částech tohoto článku. | Yes |
+| typ | Vlastnost **Type** musí být nastavená na **http**. | Ano |
+| url | Základní adresa URL webového serveru. | Ano |
+| authenticationType | Určuje typ ověřování. Povolené hodnoty jsou **anonymní**, **základní**, **Digest**, **Windows**a **ClientCertificate**. <br><br> Další vlastnosti a ukázky JSON pro tyto typy ověřování najdete v dalších částech tohoto článku. | Ano |
 | enableServerCertificateValidation | Určuje, jestli se má povolit ověřování certifikátu TLS/SSL serveru, pokud je zdrojem webovým serverem HTTPS. Pokud server HTTPS používá certifikát podepsaný svým držitelem, nastavte tuto hodnotu na **false**. | No<br /> (výchozí hodnota je **true**) |
 | gatewayName | Název instance Správa dat brány, která se má použít pro připojení k místnímu zdroji HTTP | Ano, pokud kopírujete data z místního zdroje HTTP |
 | encryptedCredential | Šifrované přihlašovací údaje pro přístup ke koncovému bodu HTTP Hodnota je generována automaticky při konfiguraci ověřovacích informací v průvodci kopírováním nebo pomocí dialogového okna **ClickOnce** . | No<br /> (platí jenom při kopírování dat z místního serveru HTTP) |
@@ -65,10 +65,10 @@ Podrobnosti o nastavení přihlašovacích údajů pro zdroj dat konektoru HTTP 
 
 Nastavte **AuthenticationType** na **Basic**, **Digest**nebo **Windows**. Kromě obecných vlastností konektoru protokolu HTTP popsaných v předchozích částech nastavte následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
-| userName | Uživatelské jméno, které se má použít pro přístup ke koncovému bodu HTTP. | Yes |
-| heslo | Heslo pro uživatele (**uživatelské jméno**). | Yes |
+| userName | Uživatelské jméno, které se má použít pro přístup ke koncovému bodu HTTP. | Ano |
+| heslo | Heslo pro uživatele (**uživatelské jméno**). | Ano |
 
 **Příklad: použití ověřování Basic, Digest nebo Windows**
 
@@ -93,7 +93,7 @@ Nastavte **AuthenticationType** na **Basic**, **Digest**nebo **Windows**. Kromě
 
 Pokud chcete použít základní ověřování, nastavte **AuthenticationType** na **ClientCertificate**. Kromě obecných vlastností konektoru protokolu HTTP popsaných v předchozích částech nastavte následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | embeddedCertData | Obsah binárních dat v souboru PFX kódovaný ve formátu base64 | Zadejte buď **embeddedCertData** nebo **certThumbprint** |
 | certThumbprint | Kryptografický otisk certifikátu, který byl nainstalován v úložišti certifikátů počítače brány. Platí pouze při kopírování dat z místního zdroje HTTP. | Zadejte buď **embeddedCertData** nebo **certThumbprint** |
@@ -157,9 +157,9 @@ Některé oddíly souboru JSON datové sady, jako je například struktura, dost
 
 Oddíl **typeProperties** se liší pro každý typ datové sady. Část **typeProperties** poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu typu **http** má následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | **Typ** datové sady musí být nastaven na **http**. | Yes |
+| typ | **Typ** datové sady musí být nastaven na **http**. | Ano |
 | relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Když cesta není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. <br><br> Chcete-li vytvořit dynamickou adresu URL, můžete použít [funkce Data Factory a systémové proměnné](data-factory-functions-variables.md). Příklad: **RelativeURL**: **$ $text. Format ('/My/Report? month = {0: rrrr}-{0: mm} &FMT = CSV ', vlastnosti slicestart)**. | No |
 | requestMethod | Metoda HTTP. Povolené hodnoty jsou **Get** a **post**. | No <br />(výchozí nastavení se **získá**) |
 | additionalHeaders | Další hlavičky požadavku HTTP | No |
@@ -220,7 +220,7 @@ Vlastnosti, které jsou k dispozici v části **typeProperties** v aktivitě, se
 
 V současné době platí, že pokud je zdroj v aktivitě kopírování **HttpSource** typu, jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Je časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. | No<br />(výchozí hodnota: **00:01:40**) |
 

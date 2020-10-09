@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: 27d43af2d5860d287d8b5914379747ae528db34b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79250670"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871860"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače závislosti Azure Monitor pro Windows
 
@@ -71,7 +71,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta závislostí virt
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name | Hodnota/příklad |
+| Název | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | vydavatel | Microsoft. Azure. Monitoring. DependencyAgent |
@@ -125,7 +125,7 @@ Když umístíte JSON rozšíření do kořenového adresáře šablony, název 
 }
 ```
 
-## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
+## <a name="powershell-deployment"></a>Nasazení PowerShellu
 
 Pomocí `Set-AzVMExtension` příkazu můžete nasadit rozšíření virtuálního počítače agenta závislosti na existující virtuální počítač. Před spuštěním příkazu musí být veřejné a privátní konfigurace uložené v zatřiďovací tabulce PowerShellu.
 

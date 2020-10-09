@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5f8b87684847089a05341a5a68f6ad3e2ac86b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85355858"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Řešení potíží s připojením SQL u služby Azure AD Connect
@@ -39,7 +39,7 @@ Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\A
 >Install-Module vyžaduje aktualizaci [powershellu 5,0 (WMF 5,0)](https://www.microsoft.com/download/details.aspx?id=50395) nebo novější.  
 Nebo nainstalujte [Preview moduly PackageManagement PowerShellu – březen 2016 pro PowerShell 3.0/4.0](/powershell/module/PackageManagement) . 
 
-- **Zobrazit všechny příkazy**:`Get-Command -Module AdSyncTools` 
+- **Zobrazit všechny příkazy**: `Get-Command -Module AdSyncTools` 
 - **Spustit funkci PowerShellu**: `Connect-ADSyncDatabase` s následujícími parametry
     - WebServer. Název SQL Server
     - Případě. Volitelné Název instance SQL Server a volitelně číslo portu, který chcete použít. Nezadávejte tento parametr pro použití výchozí instance.

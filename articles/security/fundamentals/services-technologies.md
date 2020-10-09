@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
 ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80549204"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Služby a technologie zabezpečení dostupné v Azure
@@ -35,7 +35,7 @@ V průběhu času se tento seznam změní a rozroste stejně jako Azure. Nezapom
 |--------|--------|
 |[Azure &nbsp; Security &nbsp; Center](/azure/security-center/security-center-intro)| Řešení ochrany zátěže v cloudu, které poskytuje správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudy.|
 |[Azure Key Vault](/azure/key-vault/key-vault-overview)| Zabezpečené úložiště tajných kódů pro hesla, připojovací řetězce a další informace, které potřebujete k zajištění fungování vašich aplikací. |
-|[Protokoly služby Azure Monitor](/azure/log-analytics/log-analytics-overview)|Služba monitorování, která shromažďuje telemetrii a jiná data a poskytuje dotazovací jazyk a analytický modul pro poskytování provozních přehledů pro vaše aplikace a prostředky. Dá se použít samostatně nebo s jinými službami, jako je Security Center. |
+|[Protokoly Azure Monitor](/azure/log-analytics/log-analytics-overview)|Služba monitorování, která shromažďuje telemetrii a jiná data a poskytuje dotazovací jazyk a analytický modul pro poskytování provozních přehledů pro vaše aplikace a prostředky. Dá se použít samostatně nebo s jinými službami, jako je Security Center. |
 |[Vývojové a testovací cvičení pro Azure](/azure/lab-services/devtest-lab-overview)|Služba, která vývojářům a testerům pomáhá rychle vytvářet prostředí v Azure během minimalizace odpadů a řízení nákladů.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
@@ -45,7 +45,7 @@ V průběhu času se tento seznam změní a rozroste stejně jako Azure. Nezapom
 |------|--------|
 | [&nbsp; &nbsp; Šifrování služby Azure &nbsp; Storage](/azure/storage/common/storage-service-encryption)|Funkce zabezpečení, která automaticky šifruje vaše data ve službě Azure Storage.   |
 |[StorSimple šifrované hybridní úložiště](/azure/storsimple/storsimple-ova-overview)| Integrované řešení úložiště, které spravuje úlohy úložiště mezi místními zařízeními a cloudovým úložištěm Azure.|
-|[Šifrování na straně klienta Azure](/azure/storage/common/storage-client-side-encryption)| Řešení šifrování na straně klienta, které šifruje data v klientských aplikacích před odesláním do Azure Storage; také dešifruje data při stahování. |
+|[Šifrování Azure Client-Side](/azure/storage/common/storage-client-side-encryption)| Řešení šifrování na straně klienta, které šifruje data v klientských aplikacích před odesláním do Azure Storage; také dešifruje data při stahování. |
 | [Azure Storage signatury sdíleného přístupu](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)|Sdílený přístupový podpis poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště.  |
 |[Azure Storage klíče účtu](/azure/storage/common/storage-create-storage-account)| Metoda řízení přístupu pro Azure Storage, která se používá k ověřování při přístupu k účtu úložiště. |
 |[Sdílené složky Azure s šifrováním SMB 3,0](/azure/storage/files/storage-files-introduction)|Technologie zabezpečení sítě, která umožňuje automatické šifrování sítě pro protokol sdílení souborů protokolu SMB (Server Message Block). |
@@ -83,13 +83,13 @@ V průběhu času se tento seznam změní a rozroste stejně jako Azure. Nezapom
 |Služba|Popis|
 |------|--------|
 | [&nbsp;Skupiny zabezpečení &nbsp; sítě](/azure/virtual-network/virtual-networks-nsg)| Funkce řízení přístupu k síti pomocí 5 řazené kolekce členů k rozhodování o povolení nebo zamítnutí.  |
-| [Službu Azure VPN Gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways)| Síťové zařízení používané jako koncový bod VPN, které umožňuje přístup mezi místními sítěmi k virtuálním sítím Azure.  |
+| [Azure VPN Gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways)| Síťové zařízení používané jako koncový bod VPN, které umožňuje přístup mezi místními sítěmi k virtuálním sítím Azure.  |
 | [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction)|Pokročilý nástroj pro vyrovnávání zatížení webové aplikace, který může směrovat na základě adresy URL a provádění přesměrování zpracování SSL. |
 |[Firewall webových aplikací](/azure/frontdoor/waf-overview) (WAF)|Funkce Application Gateway, která poskytuje centralizovanou ochranu webových aplikací před běžnými zneužitími a chybami zabezpečení|
-| [Nástroj pro vyrovnávání zatížení Azure](/azure/load-balancer/load-balancer-overview)|Aplikační Nástroj pro vyrovnávání zatížení sítě TCP/UDP. |
+| [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)|Aplikační Nástroj pro vyrovnávání zatížení sítě TCP/UDP. |
 | [Azure ExpressRoute](/azure/expressroute/expressroute-introduction)| Vyhrazené propojení WAN mezi místními sítěmi a virtuálními sítěmi Azure. |
 | [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-overview)| Globální nástroj pro vyrovnávání zatížení DNS.|
 | [Azure Application proxy](/azure/active-directory/active-directory-application-proxy-get-started)| Ověřuje se front-end, který se používá k zabezpečení vzdáleného přístupu pro webové aplikace hostované v místním prostředí. |
 |[Azure Firewall](/azure/firewall/overview)|Spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky Azure Virtual Network.|
-|[Ochrana Azure DDoS](/azure/virtual-network/ddos-protection-overview)|V kombinaci s osvědčenými postupy pro návrh aplikace poskytuje ochranu před DDoS útoky.|
+|[Azure DDoS Protection](/azure/virtual-network/ddos-protection-overview)|V kombinaci s osvědčenými postupy pro návrh aplikace poskytuje ochranu před DDoS útoky.|
 |[Koncové body služby Virtual Network](/azure/virtual-network/virtual-network-service-endpoints-overview)|Rozšiřuje privátní adresní prostor vaší virtuální sítě a identitu vaší virtuální sítě do služeb Azure přes přímé připojení.|

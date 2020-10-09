@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
 ms.openlocfilehash: 63f1d1d40d8aff21641f3fa4ee10a289de40800d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552590"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Kurz: Integrace Azure Active Directory s platformou Mitel MiCloud Connect nebo dodavatelů CloudLink
@@ -104,11 +104,11 @@ Pokud chcete nakonfigurovat MiCloud Connect s SSO pro Azure AD, je nejjednoduš�
 
     1. Napravo od **jednotného přihlašování**vyberte **aktivovat** nebo **Nastavení**.
     
-    Zobrazí se dialogové okno připojit nastavení jednotného přihlašování.
+    Zobrazí se dialogové okno připojit nastavení jednoho Sign-On.
     
 3. Zaškrtněte políčko **Povolit jednotné přihlašování** .
     
-    ![Snímek obrazovky, na které se zobrazí stránka nastavení jednotného přihlašování Mitel Connect, se zaškrtnutým políčkem Povolit jednotné přihlašování.](./media/mitel-connect-tutorial/mitel-connect-enable.png)
+    ![Snímek obrazovky, který zobrazuje stránku nastavení Mitel Connect Single Sign-On, se zaškrtnutým políčkem Povolit jednu Sign-On](./media/mitel-connect-tutorial/mitel-connect-enable.png)
 
 4. V Azure Portal vyberte v části **základní konfigurační oddíl SAML** ikonu **Upravit** .
    
@@ -148,7 +148,7 @@ Pokud chcete nakonfigurovat MiCloud Connect s SSO pro Azure AD, je nejjednoduš�
          
          ![image](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
 
-12. V dialogovém okně **připojit k nastavení jednotného přihlašování** na portálu účtu Mitel vyberte **Save (Uložit** ).
+12. V dialogovém okně **připojit nastavení jednoho Sign-On** na portálu účtu Mitel vyberte **Save (Uložit** ).
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -180,7 +180,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Mitel připojit**.
 
@@ -335,7 +335,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **Mitel připojit**.
 

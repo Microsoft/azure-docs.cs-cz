@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75614413"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Vytvoření kontejneru Service Fabric, na kterém běží Apache Tomcat Server v systému Linux
@@ -75,8 +75,8 @@ Podle kroků v této části vytvoříte Docker image na základě image Apache 
    docker run -itd --name tomcat-site -p 8080:8080 tomcattest.
    ```
    
-   * `--name`pojmenuje kontejner, takže se na něj můžete odkazovat pomocí popisného názvu místo jeho ID.
-   * `-p`Určuje mapování portů mezi kontejnerem a hostitelským operačním systémem. 
+   * `--name` pojmenuje kontejner, takže se na něj můžete odkazovat pomocí popisného názvu místo jeho ID.
+   * `-p` Určuje mapování portů mezi kontejnerem a hostitelským operačním systémem. 
 
    > [!Note]
    > Port, který otevřete s `-p` parametrem, by měl být port, na kterém vaše aplikace Tomcat naslouchá požadavkům. V aktuálním příkladu je v souboru *ApacheTomcat/conf/server.xml* nakonfigurovaný konektor, který naslouchá požadavkům HTTP na portu 8080. Tento port je namapován na port 8080 na hostiteli. 

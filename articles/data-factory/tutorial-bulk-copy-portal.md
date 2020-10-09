@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/22/2020
 ms.openlocfilehash: a047872f519de1873c03998fd1d3a9c273ce9fa1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89442850"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Hromadné kopírování více tabulek pomocí Azure Data Factory v Azure Portal
@@ -49,7 +49,7 @@ V tomto scénáři máte v Azure SQL Database několik tabulek, které chcete zk
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * **Účet Azure Storage**. Účet Azure Storage se v operaci hromadného kopírování používá jako pracovní úložiště objektů blob. 
 * **Azure SQL Database**. Tato databáze obsahuje zdrojová data. 
 * **Azure synapse Analytics (dřív SQL DW)**. Tento datový sklad obsahuje data zkopírovaná z SQL Database. 
@@ -94,7 +94,7 @@ Pokud chcete toto nastavení ověřit a zapnout, přejděte na server > zabezpe�
      Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 1. Jako **verzi** vyberte **V2**.
 1. Vyberte **umístění** pro objekt pro vytváření dat. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:**[Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
-1. Klikněte na možnost **Vytvořit**.
+1. Klikněte na **Vytvořit**.
 1. Po dokončení vytváření vyberte **Přejít k prostředku** a přejděte na stránku **Data Factory** . 
    
 1. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě aplikaci uživatelského rozhraní služby Data Factory.
@@ -151,7 +151,7 @@ V tomto kroku vytvoříte propojenou službu, která propojí vaši databázi v 
      
     f. Pokud chcete otestovat připojení k databázi pomocí zadaných informací, klikněte na **Test připojení**.
      
-    například Klikněte na možnost **Vytvořit**.
+    například Klikněte na **Vytvořit**.
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>Vytvoření pracovní propojené služby Azure Storage
 V tomto kurzu použijete Azure Blob Storage jako dočasné pracovní oblast, abyste zajistili lepší výkon kopírování pro funkci PolyBase.
@@ -163,7 +163,7 @@ V tomto kurzu použijete Azure Blob Storage jako dočasné pracovní oblast, aby
     a. Jako **Název** zadejte **AzureStorageLinkedService**.                                                 
     b. Jako **Název účtu úložiště** vyberte svůj **účet služby Azure Storage**.
     
-    c. Klikněte na možnost **Vytvořit**.
+    c. Klikněte na **Vytvořit**.
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
 V tomto kurzu vytvoříte zdrojovou datovou sadu a datovou sadu jímky, které určují umístění pro uložení dat. 

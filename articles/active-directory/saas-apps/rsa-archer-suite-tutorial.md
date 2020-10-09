@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
 ms.openlocfilehash: fa8b150e7b5e1bd5bfc5e05b3b00a13522b52f87
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500840"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rsa-archer-suite"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím RSA Archer Suite
@@ -93,14 +93,14 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho aplikace RSA Archer Suite očekává, že se v odpovědi SAML vrátí zpátky několik atributů, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | -------------- | --------- |
     | FirstName | User. křestní jméno |
     | LastName | User. příjmení |
     | PhoneNumber | User. telephoneNumber |
-    | City | User. City |
+    | City (Město) | User. City |
     | PSČ | User. PostalCode |
-    | Stav | User. State |
+    | State | User. State |
     | Ulice | User. StreetAddress |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
@@ -121,7 +121,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -143,7 +143,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace jednotného přihlašování RSA Archer Suite](./media/rsa-archer-suite-tutorial/configuring-saml-sso.png)
 
-    a. Přejít na kartu **jednotného přihlašování** a v rozevíracím seznamu vyberte **SAML** jako **režim jednotného přihlašování** .
+    a. Přejít na kartu **jednotného přihlašování** a v rozevíracím seznamu vyberte možnost **SAML** jako **jeden Sign-On režim** .
 
     b. Zaškrtněte políčko pro **Povolení ručního obejití** .
 
@@ -153,7 +153,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     e. Klikněte na tlačítko **Vybrat** a nahrajte stažený soubor **XML federačních metadat** z Azure Portal.
 
-    f. **Uložte** nastavení jednotného přihlašování. 
+    f. **Uložte** nastavení jednoho Sign-On. 
 
 ### <a name="create-rsa-archer-suite-test-user"></a>Vytvořit testovacího uživatele RSA Archer Suite
 

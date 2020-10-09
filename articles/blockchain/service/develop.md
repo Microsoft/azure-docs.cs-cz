@@ -5,10 +5,10 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 4a98e5ea025894303bc5c77bba0c6154a08315f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80348386"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Přehled vývoje služeb Azure blockchain
@@ -41,7 +41,7 @@ Další informace najdete v tématu [rychlý Start: použití Geth k připojení
 
 ## <a name="ethereum-quorum-private-transactions"></a>Privátní transakce kvora ethereem
 
-Kvorum je protokol distribuované hlavní knihy založený na Ethereem s transakcí a ochranou osobních údajů smluv a novými mechanismy konsensu. Mezi klíčová vylepšení v cestách Ethereem patří:
+Kvorum je protokol distribuované hlavní knihy založený na Ethereem s transakcí a ochranou osobních údajů smluv a novými mechanismy konsensu. Mezi Go-Ethereum jsou klíčové vylepšení:
 
 * **Soukromí** – kvorum podporuje privátní transakce a soukromé kontrakty prostřednictvím oddělení veřejných a soukromých stavů a využívá zašifrované zprávy typu peer-to-peer, které slouží k přímému přenosu privátních dat do účastníků sítě.
 * **Alternativní** požadavky na konsensu – ověření platnosti nebo ověření příložení není pro udělenou síť nutné. Kvorum nabízí více mechanismů konsensu, které jsou navrženy pro konsorcia, jako jsou například vory a IBFT.Služba Azure blockchain používá mechanismus IBFT konsensu.

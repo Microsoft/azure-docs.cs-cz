@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80436014"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>Nejčastější dotazy týkající se virtuálních počítačů
@@ -56,4 +56,4 @@ Security Center obvykle vyhledává nová data každou hodinu a příslušná do
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Proč se zobrazí zpráva "agent virtuálního počítače chybí?"
 
-Na virtuálních počítačích musí být nainstalován agent virtuálního počítače, aby bylo možné shromažďování dat povolit. Agent virtuálního počítače je ve výchozím nastavení nainstalován na virtuálních počítačích nasazených z Azure Marketplace. Informace o tom, jak nainstalovat agenta virtuálního počítače na jiné virtuální počítače, najdete v blogovém příspěvku [agenta a rozšíření virtuálního počítače](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/).
+Na virtuálních počítačích musí být nainstalován agent virtuálního počítače, aby bylo možné shromažďování dat povolit. Agent virtuálního počítače je ve výchozím nastavení nainstalovaný na virtuálních počítačích nasazených z Azure Marketplace. Informace o tom, jak nainstalovat agenta virtuálního počítače na jiné virtuální počítače, najdete v blogovém příspěvku [agenta a rozšíření virtuálního počítače](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/).

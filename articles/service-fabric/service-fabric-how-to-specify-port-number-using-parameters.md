@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: a53626b8fd362397ba89df30b099fa3c9ff7b0a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75609855"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Jak zadat číslo portu služby pomocí parametrů v Service Fabric
@@ -40,7 +40,7 @@ V tomto příkladu nastavíte číslo portu webového rozhraní API asp.net Core
       </ServiceManifestImport>
     ```
 
-1. V `Endpoint` elementu teď můžete přepsat libovolný atribut pomocí parametru. V tomto příkladu zadáte `Port` a nastavíte ho na název parametru pomocí hranatých závorek – například`[MyWebAPI_PortNumber]`
+1. V `Endpoint` elementu teď můžete přepsat libovolný atribut pomocí parametru. V tomto příkladu zadáte `Port` a nastavíte ho na název parametru pomocí hranatých závorek – například `[MyWebAPI_PortNumber]`
 
     ```xml
       <ServiceManifestImport>
@@ -62,7 +62,7 @@ V tomto příkladu nastavíte číslo portu webového rozhraní API asp.net Core
       </Parameters>
     ```
 
-1. A definovat`DefaultValue`
+1. A definovat `DefaultValue`
 
     ```xml
       <Parameters>

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c07e161042a497a232cbd5e3f11128893a095381
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80550341"
 ---
 # <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>Jak nakonfigurovat možnosti vytváření kontejnerů pro IoT Edge moduly
@@ -52,13 +52,13 @@ Manifest nasazení IoT Edge přijímá možnosti vytváření formátované jako
 
 Tento příklad edgeHub používá parametr **Hostconfig. PortBindings** k mapování vystavených portů na kontejneru na port v hostitelském zařízení.
 
-Pokud používáte rozšíření Azure IoT Tools pro Visual Studio nebo Visual Studio Code, můžete napsat možnosti vytvoření ve formátu JSON v **deployment.template.js** souboru. Poté, když použijete rozšíření k sestavení IoT Edge řešení nebo vygenerování manifestu nasazení, bude stringify JSON pro vás ve formátu, který očekává IoT Edge runtime. Příklad:
+Pokud používáte rozšíření Azure IoT Tools pro Visual Studio nebo Visual Studio Code, můžete napsat možnosti vytvoření ve formátu JSON v **deployment.template.js** souboru. Poté, když použijete rozšíření k sestavení IoT Edge řešení nebo vygenerování manifestu nasazení, bude stringify JSON pro vás ve formátu, který očekává IoT Edge runtime. Například:
 
 ```json
 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
 ```
 
-Jedním z tipů pro psaní možností vytváření je použití `docker inspect` příkazu. V rámci procesu vývoje spusťte modul místně pomocí nástroje `docker run <container name>` . Jakmile modul funguje způsobem, který chcete, spusťte `docker inspect <container name>` . Tento příkaz vypíše podrobnosti o modulu ve formátu JSON. Vyhledejte parametry, které jste nakonfigurovali, a zkopírujte kód JSON. Příklad:
+Jedním z tipů pro psaní možností vytváření je použití `docker inspect` příkazu. V rámci procesu vývoje spusťte modul místně pomocí nástroje `docker run <container name>` . Jakmile modul funguje způsobem, který chcete, spusťte `docker inspect <container name>` . Tento příkaz vypíše podrobnosti o modulu ve formátu JSON. Vyhledejte parametry, které jste nakonfigurovali, a zkopírujte kód JSON. Například:
 
 [![Výsledky kontroly edgeHub ](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png) Docker](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
 
