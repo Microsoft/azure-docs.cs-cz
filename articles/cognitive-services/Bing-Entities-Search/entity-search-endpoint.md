@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: e7f5af42d0bb0079746cc9e64b621adfebd565d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74072670"
 ---
 # <a name="bing-entity-search-api-endpoint"></a>rozhraní API Bingu pro vyhledávání entit koncový bod
@@ -24,7 +24,7 @@ Rozhraní API Bingu pro vyhledávání entit má jeden koncový bod, který vrac
 
 ## <a name="get-entity-results-from-the-endpoint"></a>Získat výsledky entity z koncového bodu
 
-Pokud chcete získat výsledky entity pomocí **rozhraní API Bingu**, `GET` odešlete požadavek na následující koncový bod. K přizpůsobení žádosti o vyhledávání použijte [záhlaví](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) a [Parametry dotazů](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) . Žádosti o vyhledávání lze odeslat pomocí `?q=` parametru.
+Pokud chcete získat výsledky entity pomocí **rozhraní API Bingu**, odešlete `GET` požadavek na následující koncový bod. K přizpůsobení žádosti o vyhledávání použijte [záhlaví](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) a [Parametry dotazů](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) . Žádosti o vyhledávání lze odeslat pomocí `?q=` parametru.
 
 ```cURL
  GET https://api.cognitive.microsoft.com/bing/v7.0/entities

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
 ms.openlocfilehash: f209be383e445e3b0c011e0bfb4266a191a8d931
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85080870"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Rozpoznávání extrakce dokumentů – dovednost
@@ -34,15 +34,15 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Vstupy            | Povolené hodnoty | Description |
+| Vstupy            | Povolené hodnoty | Popis |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | Nastavte na `default` pro extrakci dokumentů ze souborů, které nejsou čistě textové nebo JSON. Nastavte na `text` , aby se zlepšil výkon souborů ve formátu prostého textu. Nastavte na `json` extrakci strukturovaného obsahu ze souborů JSON. Pokud `parsingMode` není definováno explicitně, bude nastaveno na `default` . |
 | `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Nastavte na `contentAndMetadata` pro extrakci všech metadat a textových obsahu z každého souboru. Nastavte na `allMetadata` extrakci pouze [metadat specifických pro typ obsahu](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) (například metadata jedinečná pouze pro soubory PNG). Pokud `dataToExtract` není definováno explicitně, bude nastaveno na `contentAndMetadata` . |
 | `configuration` | Viz níže. | Slovník volitelných parametrů, který upravuje způsob, jakým se provádí extrakce dokumentu. Popisy podporovaných vlastností konfigurace najdete v následující tabulce. |
 
-| Konfigurační parametr   | Povolené hodnoty | Description |
+| Konfigurační parametr   | Povolené hodnoty | Popis |
 |-------------------------|----------------|-------------|
-| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Nastavte na `none` Ignorovat vložené obrázky nebo soubory obrázků v sadě dat. Toto nastavení je výchozí. <br/>V případě [analýzy obrázků s využitím zkušeností s rozpoznáváním](cognitive-search-concept-image-scenarios.md)nastavte, aby `generateNormalizedImages` dovednost vytvořila pole normalizovaných imagí jako součást odhalující dokumentu. Tato akce vyžaduje, aby `parsingMode` byl nastaven na hodnotu `default` a `dataToExtract` byl nastaven na hodnotu `contentAndMetadata` . Normalizovaná bitová kopie odkazuje na další zpracování, které vede k podpoře konzistentního vykreslování při zahrnutí obrázků do výsledků vizuálního vyhledávání (například fotografií stejné velikosti v ovládacím prvku graf, jak je vidět v [ukázce JFK](https://github.com/Microsoft/AzureSearch_JFK_Files)). Tyto informace jsou vygenerovány pro každý obrázek při použití této možnosti.  <br/>Pokud nastavíte na `generateNormalizedImagePerPage` , soubory PDF budou zpracovávány jinak než při extrakci vložených obrázků, každá stránka bude vygenerována jako obrázek a v odpovídajícím způsobem provede normální nastavení.  Typy souborů, které nejsou v PDF, se budou považovat za stejné, jako kdyby `generateNormalizedImages` byla nastavena.
+| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Nastavte na `none` Ignorovat vložené obrázky nebo soubory obrázků v sadě dat. Tato možnost je výchozí. <br/>V případě [analýzy obrázků s využitím zkušeností s rozpoznáváním](cognitive-search-concept-image-scenarios.md)nastavte, aby `generateNormalizedImages` dovednost vytvořila pole normalizovaných imagí jako součást odhalující dokumentu. Tato akce vyžaduje, aby `parsingMode` byl nastaven na hodnotu `default` a `dataToExtract` byl nastaven na hodnotu `contentAndMetadata` . Normalizovaná bitová kopie odkazuje na další zpracování, které vede k podpoře konzistentního vykreslování při zahrnutí obrázků do výsledků vizuálního vyhledávání (například fotografií stejné velikosti v ovládacím prvku graf, jak je vidět v [ukázce JFK](https://github.com/Microsoft/AzureSearch_JFK_Files)). Tyto informace jsou vygenerovány pro každý obrázek při použití této možnosti.  <br/>Pokud nastavíte na `generateNormalizedImagePerPage` , soubory PDF budou zpracovávány jinak než při extrakci vložených obrázků, každá stránka bude vygenerována jako obrázek a v odpovídajícím způsobem provede normální nastavení.  Typy souborů, které nejsou v PDF, se budou považovat za stejné, jako kdyby `generateNormalizedImages` byla nastavena.
 | `normalizedImageMaxWidth` | Libovolné celé číslo mezi 50-10000 | Maximální šířka (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000. | 
 | `normalizedImageMaxHeight` | Libovolné celé číslo mezi 50-10000 | Maximální výška (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000. |
 
@@ -50,7 +50,7 @@ U parametrů se rozlišují malá a velká písmena.
 > Výchozí hodnota 2000 pixelů pro normalizované maximální šířky a výšky obrázků je založena na maximální velikosti podporované [dovedností OCR](cognitive-search-skill-ocr.md) a [dovedností analýzy obrázků](cognitive-search-skill-image-analysis.md). [Dovednost optického rozpoznávání znaků](cognitive-search-skill-ocr.md) podporuje maximální šířku a výšku 4200 pro jiné než anglické jazyky a 10000 pro angličtinu.  Pokud zvýšíte maximální limity, zpracování na větších obrázcích může selhat v závislosti na definici dovednosti a jazyku dokumentů. 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu     | Description |
+| Název vstupu     | Popis |
 |--------------------|-------------|
 | `file_data` | Soubor, ze kterého má být extrahován obsah. |
 
@@ -73,7 +73,7 @@ Tento objekt odkazu na soubor může být vygenerován jedním ze tří způsob�
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Název výstupu    | Description |
+| Název výstupu    | Popis |
 |--------------|-------------|
 | `content` | Textový obsah dokumentu |
 | `normalized_images`   | Pokud `imageAction` je hodnota nastavena na jinou hodnotu `none` , pole nový *normalized_images* bude obsahovat pole obrázků. Další podrobnosti o výstupním formátu jednotlivých imagí najdete v [dokumentaci k extrakci imagí](cognitive-search-concept-image-scenarios.md) . |
@@ -110,7 +110,7 @@ Tento objekt odkazu na soubor může být vygenerován jedním ze tří způsob�
   }
 ```
 
-##  <a name="sample-input"></a>Vzorový vstup
+##  <a name="sample-input"></a>Ukázkový vstup
 
 ```json
 {

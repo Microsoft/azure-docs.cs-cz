@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: c82f9cbfaf2e23ddaa5e4b05f4aac4795d3e16a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76903049"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-a"></a>Vytváření vlastních schémat sledování, která monitorují koncové pracovní postupy v Azure Logic A
@@ -51,22 +51,22 @@ Azure Logic Apps má integrované sledování, které můžete povolit pro čás
 }
 ```
 
-| Vlastnost | Požaduje se | Typ | Description |
+| Vlastnost | Požaduje se | Typ | Popis |
 |----------|----------|------|-------------|
-| Zdroje | Yes | Řetězec | Typ zdroje spuštění s těmito povolenými hodnotami: `Microsoft.Logic/workflows` ,`custom` |
-| source | Yes | Řetězec nebo JToken | Pokud se jedná o typ zdroje `Microsoft.Logic/workflows` , musí zdrojové informace postupovat podle tohoto schématu. Pokud je typ zdroje `custom` , je schéma JToken. |
-| systemId | Yes | Řetězec | ID systému aplikace logiky |
-| runId | Yes | Řetězec | ID spuštění aplikace logiky |
-| operationName | Yes | Řetězec | Název operace, například akce nebo aktivační událost |
-| repeatItemScopeName | Yes | Řetězec | Opakovat název položky, pokud je akce uvnitř `foreach` smyčky or `until` |
-| repeatItemIndex | Yes | Integer | Označuje, že akce je uvnitř `foreach` smyčky nebo `until` a je opakujícím se číslem indexu položky. |
+| Zdroje | Ano | Řetězec | Typ zdroje spuštění s těmito povolenými hodnotami: `Microsoft.Logic/workflows` , `custom` |
+| source | Ano | Řetězec nebo JToken | Pokud se jedná o typ zdroje `Microsoft.Logic/workflows` , musí zdrojové informace postupovat podle tohoto schématu. Pokud je typ zdroje `custom` , je schéma JToken. |
+| systemId | Ano | Řetězec | ID systému aplikace logiky |
+| runId | Ano | Řetězec | ID spuštění aplikace logiky |
+| operationName | Ano | Řetězec | Název operace, například akce nebo aktivační událost |
+| repeatItemScopeName | Ano | Řetězec | Opakovat název položky, pokud je akce uvnitř `foreach` smyčky or `until` |
+| repeatItemIndex | Ano | Integer | Označuje, že akce je uvnitř `foreach` smyčky nebo `until` a je opakujícím se číslem indexu položky. |
 | trackingId | No | Řetězec | ID sledování ke korelaci zpráv |
 | correlationId | No | Řetězec | ID korelace ke korelaci zpráv |
 | ID žádosti klienta | No | Řetězec | Klient může tuto vlastnost naplnit tak, aby koreluje zprávy. |
-| eventLevel | Yes | Řetězec | Úroveň události |
-| eventTime | Yes | DateTime | Čas události ve formátu UTC: *RRRR-MM-DDThh: mm: ss. 00000Z* |
-| recordType | Yes | Řetězec | Typ záznamu sledování s touto povolenou hodnotou:`custom` |
-| zapisovací | Yes | JToken | Vlastní typ záznamu pouze ve formátu JToken |
+| eventLevel | Ano | Řetězec | Úroveň události |
+| eventTime | Ano | DateTime | Čas události ve formátu UTC: *RRRR-MM-DDThh: mm: ss. 00000Z* |
+| recordType | Ano | Řetězec | Typ záznamu sledování s touto povolenou hodnotou: `custom` |
+| zapisovací | Ano | JToken | Vlastní typ záznamu pouze ve formátu JToken |
 |||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>Schémata sledování protokolu B2B

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: bf3da62e989f0e029efdc8e9c70f5f45e0ddd765
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76932301"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Přehled reverzních DNS a podpory v Azure
@@ -87,7 +87,7 @@ Zpětné vyhledávání pro dotaz 192.0.2.129 IP adresy pro záznam PTR s názve
 
 ### <a name="ipv6"></a>IPv6
 
-Název zóny zpětného vyhledávání IPv6 by měl být v následujícím tvaru:`<IPv6 network prefix in reverse order>.ip6.arpa`
+Název zóny zpětného vyhledávání IPv6 by měl být v následujícím tvaru: `<IPv6 network prefix in reverse order>.ip6.arpa`
 
 Například. Při vytváření reverzní zóny k záznamům hostitelů pro hostitele s IP adresami, které jsou v předponě 2001: db8:1000: ABDC::/64, se vytvoří název zóny tak, že izoluje předponu sítě adresy (2001: db8: ABDC::). Dále rozbalte předponu sítě IPv6 pro odebrání [nulové komprese](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), pokud se použila k zkrácení předpony adresy IPv6 (2001:0db8: ABDC: 0000::). Obrátí pořadí a pomocí tečky jako oddělovače mezi každým šestnáctkovým číslem v předponě vytvořte reverzní předponu sítě ( `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2` ) a přidejte příponu `.ip6.arpa` .
 

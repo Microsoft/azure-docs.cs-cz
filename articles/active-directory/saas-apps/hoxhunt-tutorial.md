@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: jeedes
 ms.openlocfilehash: 03b31f80ecd5cc388b66c6eae54db83be300cd95
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91348406"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hoxhunt"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Hoxhunt
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Hoxhunt s Azure Active Directory (Azur
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Hoxhunt svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 

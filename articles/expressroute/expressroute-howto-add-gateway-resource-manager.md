@@ -12,7 +12,7 @@ ms.openlocfilehash: 9f01961ec7c7f8e0a4e2d72e28e6def50e93ad5d
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91854303"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Kurz: Konfigurace brány virtuální sítě pro ExpressRoute pomocí prostředí PowerShell
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > - Vytvořte podsíť brány.
 > - Vytvořte bránu Virtual Network.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="configuration-reference-list"></a>Seznam odkazů konfigurace
 

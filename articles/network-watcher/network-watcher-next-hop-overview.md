@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 33c22b5b68b6677e8cf271dc185007316ec44500
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76844054"
 ---
 # <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Použití dalšího směrování k diagnostice problémů s směrováním virtuálních počítačů
@@ -34,7 +34,7 @@ Další segmenty, které může vrátit funkce dalšího směrování, jsou nás
 * VirtualNetworkPeering
 * VirtualNetworkServiceEndpoint 
 * MicrosoftEdge
-* Žádná
+* Žádné
 
 Další informace o jednotlivých typech dalších segmentů směrování najdete v tématu [Přehled směrování](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 

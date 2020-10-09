@@ -15,7 +15,7 @@ ms.openlocfilehash: f44d53fb8608950e571201ab8b0edd2cfadb4ca7
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856496"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>Kurz: Azure Active Directory integrace se systémem školení pro LMS
@@ -30,7 +30,7 @@ Integrací LMS na vzdělávacím místě do Azure AD získáte následující v�
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s využitím LMS pro vzdělávací stanice potřebujete následující položky:
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 48524bec352d2fa9c169a1345e52ad4c789e59d3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552114"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SuccessFactors
@@ -63,7 +63,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-2. **[Nakonfigurujte SUCCESSFACTORS SSO](#configure-successfactors-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte SUCCESSFACTORS SSO](#configure-successfactors-sso)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace.
     1. **[Vytvořte SuccessFactors Test User](#create-successfactors-test-user)** -to, abyste měli protějšek B. Simon v SuccessFactors, která je propojená s reprezentací uživatele v Azure AD.
 3. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
@@ -73,7 +73,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **SuccessFactors** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -114,7 +114,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta SuccessFactors](https://www.sap.com/support.html) .
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+4. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte si certifikát a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -132,7 +132,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
     1. Do pole **Název** zadejte `B.Simon`.  
     1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-    1. Klikněte na možnost **Vytvořit**.
+    1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -204,11 +204,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     e. Vyberte **Ano** jako **Povolit přihlášení iniciované SP (AuthnRequest)**.
 
-    f. Do textového pole **Odeslat žádost jako název vystavitele v rámci společnosti** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+    f. Do textového pole **Odeslat žádost jako Company-Wide vystavitele** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
 6. Tyto kroky proveďte, pokud chcete, aby přihlašovací jména uživatele necitlivá velká a malá písmena.
 
-    ![Konfigurace jednotného přihlašování][29]
+    ![Konfigurace jednoho Sign-On][29]
 
     a. Přejděte na **nastavení společnosti**(v dolní části).
 

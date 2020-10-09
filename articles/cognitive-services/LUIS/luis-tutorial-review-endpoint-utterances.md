@@ -7,10 +7,10 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.openlocfilehash: b8f8fa2cd3c9c22187bb95c55d9de2abb2e8caec
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324633"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Opravte si nejistotu, že předpovědi zkontroluje projevy koncového bodu.
@@ -84,7 +84,7 @@ Prohlédněte si projevy koncového bodu pro správné zarovnání záměru. I k
 
 1. V části **Build (sestavení** ) na portálu vyberte **zkontrolovat koncový bod projevy** z levé navigační oblasti. Seznam je filtrovaný pro záměr **ApplyForJob**.
 
-    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="Snímek obrazovky s tlačítkem revize koncového bodu projevy v levém navigačním panelu":::
+    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="Změňte ze stránky verze na stránku záměry.":::
 
     Tento utterance, není `I'm looking for a job with Natural Language Processing` správného záměru _GetJobInformation_. V důsledku podobnosti názvů úloh a operací v obou záměrech došlo k neočekávanému odhadu _ApplyForJob_ .
 

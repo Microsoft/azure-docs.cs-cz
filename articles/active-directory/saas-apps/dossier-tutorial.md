@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.openlocfilehash: ef57db315fa29a70a604f180671091a5b372f316
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88555854"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dossier"></a>Kurz: Azure Active Directory integrace s dokumentací
@@ -73,7 +73,7 @@ Aby bylo jednotné přihlašování fungovat, je třeba vytvořit odkaz na propo
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí dokumentace, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurovat jednotné přihlašování pro dokumentaci](#configure-dossier-single-sign-on)** ke konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Nakonfigurujte jednotné přihlašování pro dokumentaci](#configure-dossier-single-sign-on)** , abyste na straně aplikace nakonfigurovali nastavení jednoho Sign-On.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte si uživatele s testovacími dokumenty](#create-dossier-test-user)** , abyste měli protějšek Britta Simon v dokumentaci, který se odkazuje na reprezentaci uživatele v Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -124,7 +124,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí vlastního přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pro získání těchto hodnot se obraťte na [tým podpory klienta technické dokumentace](mailto:support@intellimedia.ca) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** z daných možností dle vašeho požadavku a uložte ji do počítače.
+4. Na stránce **nastavit jednu Sign-On s SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** z daných možností podle vašich požadavků a uložte je do vašeho počítače.
 
     ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
@@ -138,7 +138,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-dossier-single-sign-on"></a>Konfigurace jednotného přihlašování k dokumentaci
+### <a name="configure-dossier-single-sign-on"></a>Konfigurovat jednu Sign-On dokumentace
 
 Pokud chcete nakonfigurovat jednotné přihlašování na straně **dokumentace** , musíte odeslat **adresu URL federačních metadat aplikace** [týmu podpory dokumentace](mailto:support@intellimedia.ca). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
@@ -164,7 +164,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -172,7 +172,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **dokumentace**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte položku **dokumentace**.
 

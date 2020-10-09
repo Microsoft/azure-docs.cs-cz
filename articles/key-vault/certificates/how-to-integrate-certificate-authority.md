@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
 ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88588921"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Integrace služby Key Vault s certifikační autoritou DigiCert
@@ -25,7 +25,7 @@ Uživatelé služby Azure Key Recovery můžou certifikáty DigiCert vygenerovat
 
 Obecnější informace o certifikátech najdete v tématu [Azure Key Vault certifikátů](/azure/key-vault/certificates/about-certificates).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -61,7 +61,7 @@ Po shromáždění výše uvedených informací z účtu DigiCert CertCentral te
     -   **ID účtu**: Zadejte ID účtu DigiCert CertCentral.
     -   **Heslo účtu**: Zadejte klíč rozhraní API, který jste vygenerovali v účtu DigiCert CertCentral.
     -   **ID organizace**: zadejte OrgID shromážděné z účtu DigiCert CertCentral 
-    -   Klikněte na možnost **Vytvořit**.
+    -   Klikněte na **Vytvořit**.
    
 6.  Uvidíte, že v seznamu certifikačních autorit se teď přidalo DigicertCA.
 

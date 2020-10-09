@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: 9c2160a241243b59ca7adda99fe2100d416c55be
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335258"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Kurz: vytvoření lokátoru úložiště pomocí Azure Maps
@@ -78,7 +78,7 @@ Podívejte se na snímek obrazovky s daty, můžeme udělat následující pozn�
 
 * Informace o umístění se ukládají pomocí sloupců **AddressLine**, **City**, **obec** (okres), **AdminDivision** (stát/provincie), **PostCode** (PSČ) a **Country (země** ).  
 * Sloupce **Zeměpisná šířka** a **Délka** obsahují souřadnice pro každé místo v kavárně pro kavárnu v rámci společnosti Contoso. Pokud nemáte informace o souřadnicích, můžete použít vyhledávací služby v Azure Maps k určení souřadnic umístění.
-* Některé další sloupce obsahují metadata týkající se kavárny: telefonní číslo, logické sloupce a časy počátečního a koncového skladu ve 24hodinovém formátu. Logické sloupce jsou pro přístupnost Wi-Fi a invalidního vozíku. Můžete vytvořit vlastní sloupce, které obsahují metadata, která jsou pro data o poloze relevantnější.
+* Některé další sloupce obsahují metadata týkající se kavárny: telefonní číslo, logické sloupce a časy počátečního a koncového skladu ve 24hodinovém formátu. Logické sloupce jsou pro přístup Wi-Fi a invalidního vozíku. Můžete vytvořit vlastní sloupce, které obsahují metadata, která jsou pro data o poloze relevantnější.
 
 > [!NOTE]
 > Azure Maps vykreslí data v kulové Mercator projekci "EPSG: 3857", ale přečte data v "EPSG: 4325", která používají WGS84 datum.

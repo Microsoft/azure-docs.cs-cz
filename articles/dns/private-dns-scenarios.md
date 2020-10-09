@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
 ms.openlocfilehash: ab850adb2e9a25778d5f44ba711eb0762fe562c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76939342"
 ---
-# <a name="azure-dns-private-zones-scenarios"></a>Scénáře Azure DNS privátních zón
+# <a name="azure-dns-private-zones-scenarios"></a>Scénáře Azure DNS Private Zones
 
 Azure DNS Private Zones poskytovat překlad názvů v rámci virtuální sítě i mezi virtuálními sítěmi. V tomto článku se podíváme na některé běžné scénáře, které se dají realizovat pomocí této funkce.
 
@@ -37,7 +37,7 @@ Následující diagram znázorňuje jednoduchou verzi tohoto scénáře, kdy jso
 
 ![Více rozlišení virtuální sítě](./media/private-dns-scenarios/multi-vnet-resolution.png)
 
-## <a name="scenario-split-horizon-functionality"></a>Scénář: funkce Split-horizon
+## <a name="scenario-split-horizon-functionality"></a>Scénář: funkce Split-Horizon
 
 V tomto scénáři máte případ použití, ve kterém chcete využít jiné chování překladu DNS v závislosti na tom, kde je klient umístěný (uvnitř Azure nebo na internetu) pro stejnou zónu DNS. Můžete mít například soukromou a veřejnou verzi aplikace, která má jiné funkce nebo chování, ale chcete pro obě verze použít stejný název domény. Tento scénář je možné vytvořit pomocí Azure DNS vytvořením veřejné zóny DNS i privátní zóny se stejným názvem.
 

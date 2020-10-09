@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 1f17463125cead64bd58a2d07e53eee4d3cfcd70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76840804"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Seznámení s proměnným zachytávání paketů v Azure Network Watcher
@@ -41,7 +41,7 @@ Chcete-li omezit informace, které zachytíte pouze na požadované informace, j
 
 |Vlastnost|Popis|
 |---|---|
-|**Protocol (Protokol)** | Protokol, který se má vyfiltrovat pro zachytávání paketů. Dostupné hodnoty jsou TCP, UDP a All.|
+|**Protokol** | Protokol, který se má vyfiltrovat pro zachytávání paketů. Dostupné hodnoty jsou TCP, UDP a All.|
 |**Místní IP adresa** | Tato hodnota filtruje zachytávání paketů do paketů, u kterých místní IP adresa odpovídá této hodnotě filtru.|
 |**Místní port** | Tato hodnota filtruje zachytávání paketů do paketů, kde místní port odpovídá této hodnotě filtru.|
 |**Vzdálená IP adresa** | Tato hodnota filtruje zachytávání paketů do paketů, ve kterých Vzdálená IP adresa odpovídá této hodnotě filtru.|

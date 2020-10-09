@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
 ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85132002"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Protokoly prostředků pro službu Azure Signal Service
@@ -68,7 +68,7 @@ Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON).
 
 **Formát**
 
-Name | Description
+Název | Popis
 ------- | -------
 time | Čas události protokolu
 úroveň | Úroveň události protokolu
@@ -81,10 +81,10 @@ properties | Podrobné vlastnosti související s touto událostí protokolu Dal
 
 **Tabulka vlastností**
 
-Name | Description
+Název | Popis
 ------- | -------
 typ | Typ události protokolu V současné době poskytujeme informace o připojení ke službě Azure Signal. `ConnectivityLogs`K dispozici je jenom typ.
- – kolekce | Kolekce události protokolu Povolené hodnoty jsou: `Connection` `Authorization` a`Throttling`
+ – kolekce | Kolekce události protokolu Povolené hodnoty jsou: `Connection` `Authorization` a `Throttling`
 connectionId | Identita připojení
 transportType | Typ přenosu připojení. Povolené hodnoty jsou: `Websockets` \| `ServerSentEvents` \|`LongPolling`
 connectionType | Typ připojení. Povolené hodnoty jsou: `Server` \| `Client` . `Server`: připojení ze strany serveru; `Client`: připojení ze strany klienta
@@ -128,10 +128,10 @@ Chcete-li zobrazit protokoly prostředků, postupujte podle následujících kro
 
 Sloupce protokolu archivu obsahují prvky uvedené v následující tabulce:
 
-Name | Description
+Název | Popis
 ------- | ------- 
 TimeGenerated | Čas události protokolu
-Kolekce | Kolekce události protokolu Povolené hodnoty jsou: `Connection` `Authorization` a`Throttling`
+Collection (Kolekce) | Kolekce události protokolu Povolené hodnoty jsou: `Connection` `Authorization` a `Throttling`
 OperationName | Název operace události
 Umístění | Umístění služby signalizace Azure
 Úroveň | Úroveň události protokolu
@@ -162,7 +162,7 @@ Rozdíl mezi `ConnectionAborted` a `ConnectionEnded` je `ConnectionEnded` oček�
 
 Důvody přerušení jsou uvedeny v následující tabulce:
 
-Důvod | Description
+Důvod | Popis
 ------- | ------- 
 Počet připojení dosáhl limitu. | Počet připojení dosáhl limitu aktuální cenové úrovně. Zvažte horizontální navýšení kapacity jednotek služby
 Aplikační server uzavřel připojení. | App Server aktivuje přerušení. Dá se zvážit jako očekávané přerušení.

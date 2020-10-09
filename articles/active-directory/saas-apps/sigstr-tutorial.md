@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 1afe57b90e3bee6b4389d384d4f9d9a59dd0bbed
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552148"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sigstr"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Sigstr
@@ -84,7 +84,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše očekává aplikace Sigstr několik dalších atributů, které se vrátí zpátky v odpovědi SAML. V části deklarace identity uživatelů v dialogovém okně atributy uživatele proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
-    | Name |  Zdrojový atribut|
+    | Název |  Zdrojový atribut|
     | -------|----------- |
     | e-mail | uživatel. pošta |
 
@@ -124,7 +124,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

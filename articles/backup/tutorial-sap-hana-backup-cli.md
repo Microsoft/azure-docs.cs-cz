@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: f11e01c6af18cac956d58b9c692d7b57c8fe653a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324956"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure pomocí Azure CLI
@@ -50,7 +50,7 @@ az backup vault create --resource-group saphanaResourceGroup \
     --location westus2
 ```
 
-Ve výchozím nastavení je trezor služby Recovery Services nastavený pro geograficky redundantní úložiště. Geograficky redundantní úložiště zajišťuje replikaci zálohovaných dat do sekundární oblasti Azure, která je od primární oblasti od sebe stovky mil. Pokud je potřeba upravit nastavení redundance úložiště, použijte rutinu [AZ Backup trezor-Properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set) .
+Ve výchozím nastavení je trezor služby Recovery Services nastavený pro geograficky redundantní úložiště. Služba Geo-Redundant Storage zajišťuje replikaci zálohovaných dat do sekundární oblasti Azure, která je od primární oblasti vzdálena stovky mil. Pokud je potřeba upravit nastavení redundance úložiště, použijte rutinu [AZ Backup trezor-Properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set) .
 
 ```azurecli
 az backup vault backup-properties set \

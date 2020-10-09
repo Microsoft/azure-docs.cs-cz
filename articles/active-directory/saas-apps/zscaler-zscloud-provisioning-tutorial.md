@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 0454ffc1ed68056b2aedc10a6e904a9a934ab223
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333490"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler ZSCloud pro Automatické zřizování uživatelů
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak nakonfigurovat Azure Active Directory (Azure AD) 
 > Tento kurz popisuje konektor, který je založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů při SaaS aplikací pomocí Azure Active Directory](../active-directory-saas-app-provisioning.md).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků popsaných v tomto kurzu budete potřebovat následující:
 
@@ -102,7 +102,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Konfigurovat okno SAML](./media/zscaler-zscloud-provisioning-tutorial/secrettoken2.png)
 
-    Vyberte **Povolit zřizování na základě SCIM** a zkopírujte **základní adresu URL** a **nosný token**a pak nastavení uložte. V Azure Portal vložte **základní adresu URL** do pole **Adresa URL tenanta** a **token nosiče** do pole **tajný token** .
+    Vyberte **povolit SCIM-Based zřizování** a zkopírujte **základní adresu URL** a **nosný token**a pak nastavení uložte. V Azure Portal vložte **základní adresu URL** do pole **Adresa URL tenanta** a **token nosiče** do pole **tajný token** .
 
 7. Až zadáte hodnoty do polí **Adresa URL tenanta** a **tajný token** , vyberte **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Zscaler ZSCloud. Pokud se připojení nepovede, ujistěte se, že váš účet Zscaler ZSCloud má oprávnění správce, a zkuste to znovu.
 

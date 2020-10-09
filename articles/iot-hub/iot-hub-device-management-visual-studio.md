@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73953183"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Použití Průzkumníka cloudu pro Visual Studio pro správu zařízení IoT Hub Azure
@@ -22,7 +22,7 @@ ms.locfileid: "73953183"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Možnost správy          | Úkol                    |
+| Možnost správy          | Úloha                    |
 |----------------------------|--------------------------------|
 | Přímé metody             | Udělejte zařízení jako takové, jako je spuštění nebo zastavení odesílání zpráv nebo restartování zařízení.                                        |
 | Čtení z vlákna zařízení           | Načte stav nahlášeného zařízení. Například zařízení nahlásí, že indikátor LED právě bliká.                                    |
@@ -41,11 +41,11 @@ V tomto článku se dozvíte, jak používat Průzkumníka cloudu pro Visual Stu
 
 V tomto článku spusťte Průzkumníka cloudu pro Visual Studio s různými možnostmi správy.
 
-## <a name="what-you-need"></a>Co potřebujete
+## <a name="what-you-need"></a>Co budete potřebovat
 
 Potřebujete následující požadavky:
 
-- Aktivní předplatné Azure.
+- Musíte mít aktivní předplatné Azure.
 
 - IoT Hub Azure v rámci vašeho předplatného.
 

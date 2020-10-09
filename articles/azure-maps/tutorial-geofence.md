@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 7a0c39b6d2369a1279fee3905083f0660a4aabb8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335190"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Kurz: Nastavení monitorované geografické zóny pomocí Azure Maps
@@ -188,7 +188,7 @@ V tomto kurzu nahrajete data geografického geografického geografického monito
 
 V dalším kroku vytvoříte dva koncové body [Aplikace logiky](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) , které aktivují e-mailové oznámení. Tady je postup, jak vytvořit první z těchto akcí:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. V levém horním rohu Azure Portal vyberte **vytvořit prostředek**.
 
@@ -209,19 +209,19 @@ V dalším kroku vytvoříte dva koncové body [Aplikace logiky](https://docs.mi
 
 7. Vyberte typ triggeru. Přejděte dolů do části **Začínáme s běžným triggerem** . Vyberte, **kdy se přijme požadavek HTTP**.
 
-     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="Snímek obrazovky s vytvořením triggeru HTTP aplikace logiky":::
+     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="Snímek obrazovky s vytvořením aplikace logiky":::
 
 8. V pravém horním rohu návrháře aplikace logiky vyberte **Uložit**. **Adresa URL příspěvku http** se vygeneruje automaticky. Uložte adresu URL. Budete ho potřebovat v další části, abyste vytvořili koncový bod události.
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="Snímek adresy URL požadavku HTTP aplikace logiky a formátu JSON":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="Snímek obrazovky s vytvořením aplikace logiky":::
 
 9. Vyberte **+ Nový krok**. Nyní vyberete akci. `outlook.com email`Do vyhledávacího pole zadejte. V seznamu **Akce** přejděte dolů a vyberte **Odeslat e-mail (v2)**.
   
-    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="Snímek obrazovky s vytvořením návrháře aplikace logiky":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="Snímek obrazovky s vytvořením aplikace logiky":::
 
 10. Přihlaste se k účtu Outlooku. Nezapomeňte vybrat **Ano** , pokud chcete, aby aplikace logiky měla přístup k účtu. Vyplňte pole k odeslání e-mailu.
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="Snímek obrazovky vytvoření kroku odeslání e-mailu aplikace logiky":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="Snímek obrazovky s vytvořením aplikace logiky":::
 
     >[!TIP]
     > `geometryId` `deviceId` V e-mailových oznámeních můžete načíst data o neodpověďech na data typu injson, jako je například nebo. Logic Apps můžete nakonfigurovat pro čtení dat odesílaných Event Grid. Informace o tom, jak nakonfigurovat Logic Apps pro využívání a předávání dat událostí do e-mailových oznámení, najdete v tématu [kurz: odesílání e-mailových oznámení o událostech Azure IoT Hub pomocí Event Grid a Logic Apps](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps).
@@ -238,11 +238,11 @@ Následující kroky ukazují, jak vytvořit odběr událostí pro události zad
 
 1. Přejít na účet Azure Maps. Na řídicím panelu vyberte **předplatná**. Vyberte název vašeho předplatného a v nabídce nastavení vyberte **události** .
 
-    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="Snímek obrazovky s přechodem na události Azure Maps účtu":::
+    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="Snímek obrazovky s vytvořením aplikace logiky":::
 
 2. Chcete-li vytvořit odběr události, vyberte **+ odběr události** ze stránky události.
 
-    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="Snímek obrazovky s vytvořením předplatného Azure Mapsch událostí":::
+    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="Snímek obrazovky s vytvořením aplikace logiky":::
 
 3. Na stránce **vytvořit odběr události** zadejte následující hodnoty:
     * **Název** odběru události
@@ -252,7 +252,7 @@ Následující kroky ukazují, jak vytvořit odběr událostí pro události zad
     * Jako **Typ koncového bodu**vyberte `Web Hook` .
     * Pro **koncový bod**zkopírujte adresu URL post protokolu HTTP pro aplikaci logiky Zadejte koncový bod, který jste vytvořili v předchozí části. Pokud jste zapomněli ho uložit, můžete se vrátit zpátky do návrháře aplikace logiky a zkopírovat ho z kroku triggeru HTTP.
 
-    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Snímek obrazovky s podrobnostmi o předplatném Azure Mapsch událostí":::
+    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Snímek obrazovky s vytvořením aplikace logiky":::
 
 4. Vyberte **Vytvořit**.
 

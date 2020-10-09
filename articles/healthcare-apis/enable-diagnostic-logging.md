@@ -10,10 +10,10 @@ ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/01/2019
 ms.openlocfilehash: 948ca03b5bf503c884df5df56c61951b381874a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84871698"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Povolení protokolování diagnostiky v rozhraní Azure API pro FHIR®
@@ -60,7 +60,7 @@ V tuto chvíli vrátí služba Azure API pro FHIR® v protokolu auditu následuj
 |OperationDuration|Int|Čas potřebný k dokončení této žádosti v řádu sekund
 |OperationName|Řetězec| Popisuje typ operace (například aktualizace, hledání typu).
 |RequestUri|Řetězec|Identifikátor URI žádosti 
-|Hodnotu|Řetězec|Dostupné hodnoty jsou aktuálně **spuštěny**, **úspěšné**nebo **neúspěšné** .
+|ResultType|Řetězec|Dostupné hodnoty jsou aktuálně **spuštěny**, **úspěšné**nebo **neúspěšné** .
 |StatusCode|Int|Stavový kód HTTP (např. 200) 
 |TimeGenerated|DateTime|Datum a čas události|
 |Vlastnosti|Řetězec| Popisuje vlastnosti fhirResourceType.

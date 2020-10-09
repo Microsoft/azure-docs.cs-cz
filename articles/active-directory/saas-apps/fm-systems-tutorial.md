@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 2d6ad7daf68d9cd3ffbf4d489e3c170eef4dbe7f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554936"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>Kurz: Azure Active Directory integrace s FM: systémy
@@ -73,7 +73,7 @@ Aby bylo možné jednotné přihlašování pracovat, je nutné zřídit vztah p
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí FM: systémů, musíte provést následující stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Konfigurace FM: systémy jednotného přihlašování](#configure-fmsystems-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Konfigurace FM: systémy jednotné přihlašování](#configure-fmsystems-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytváření FM: systémy testovacího uživatele](#create-fmsystems-test-user)** , které mají protějšek Britta Simon v FM: systémy, které jsou propojené s reprezentací uživatele v Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí FM: Syst
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -106,7 +106,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí FM: Syst
     > [!NOTE]
     > Tato hodnota není reálné číslo. Aktualizujte tuto hodnotu skutečnou adresou URL odpovědi. Kontaktujte [FM: systémy klientů podpory klientů](https://fmsystems.com/support-services/) , aby získali hodnotu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -120,7 +120,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí FM: Syst
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-fmsystems-single-sign-on"></a>Konfigurace FM: jednotné přihlašování systémů
+### <a name="configure-fmsystems-single-sign-on"></a>Konfigurace FM: Systems Single Sign-On
 
 Pokud chcete nakonfigurovat jednotné přihlašování v **FM:** na straně systémů, je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [FM: Systems Support Team](https://fmsystems.com/support-services/). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
@@ -146,7 +146,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -154,7 +154,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte položku **FM: systémy**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost **FM: systémy**.
 
@@ -180,7 +180,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 2. V ** \> seznamu Správa systému spravovat \> \> uživatele zabezpečení Uživatelé**.
    
-    ![Správa systému](./media/fm-systems-tutorial/ic795905.png "Správa systému")
+    ![Správa systémů](./media/fm-systems-tutorial/ic795905.png "Správa systémů")
 
 3. Klikněte na **vytvořit nového uživatele**.
    
@@ -192,7 +192,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
    
     a. Zadejte **uživatelské jméno**, **heslo**, **potvrzení hesla**, **E-mail** a **ID zaměstnance** platného Azure Active Directory účtu, který chcete zřídit v souvisejících textových polích.
    
-    b. Klikněte na **Další**.
+    b. Klikněte na **Next** (Další).
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 

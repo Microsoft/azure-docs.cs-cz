@@ -13,7 +13,7 @@ ms.openlocfilehash: de98d9db515e4ed88759efa7f22dddcca06151c8
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91854677"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>Nasazení aplikací Node.js využívajících Azure Cosmos DB s DevOps Starter
@@ -45,7 +45,7 @@ Potřebujete předplatné Azure, které můžete získat zdarma prostřednictví
 
 DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Starter také vytvoří prostředky Azure, jako jsou Azure Cosmos DB, Application Insights, App Service a plány App Service, v předplatném Azure dle vašeho výběru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 

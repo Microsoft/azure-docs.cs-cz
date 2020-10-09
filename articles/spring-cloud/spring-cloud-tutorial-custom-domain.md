@@ -8,10 +8,10 @@ ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: 5892fd732a1e66b2b7dd4c1031cabfcbcc768c6d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326146"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mapování stávající vlastní domény na jarní cloud Azure
@@ -22,7 +22,7 @@ Služba DNS (Domain Name Service) je technika pro ukládání názvů síťovýc
 
 Certifikáty šifrují webový provoz. Tyto certifikáty TLS/SSL můžou být uložené v Azure Key Vault. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Aplikace nasazená do jarního cloudu Azure (Další informace najdete v tématu [rychlý Start: spuštění stávající aplikace pro jarní Cloud v Azure pomocí Azure Portal](spring-cloud-quickstart.md), nebo použití existující aplikace).
 * Název domény s přístupem k registru DNS pro poskytovatele domény, jako je GoDaddy.
 * Privátní certifikát (tedy certifikát podepsaný svým držitelem) od poskytovatele třetí strany. Certifikát se musí shodovat s doménou.
@@ -50,7 +50,7 @@ Pokud chcete vašemu trezoru klíčů udělit přístup k Azure jaře cloudu př
 
 | Oprávnění tajného kódu | Oprávnění certifikátu | Vybrat objekt zabezpečení |
 |--|--|--|
-| Získat, seznam | Získat, seznam | Azure pružinová cloudová správa domén – Správa |
+| Získat, seznam | Získat, seznam | Domain-Management Azure jaře Cloud |
 
 ![Importovat certifikát 2](./media/custom-dns-tutorial/import-certificate-b.png)
 

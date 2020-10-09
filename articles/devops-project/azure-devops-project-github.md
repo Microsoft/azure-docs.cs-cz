@@ -17,7 +17,7 @@ ms.openlocfilehash: 41f2ee9806b8f6818f2b2dd7a48920ac9907ca79
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91854643"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro úložiště GitHub pomocí Azure DevOps Starter
@@ -34,7 +34,7 @@ V této lekci:
 > * Projděte si kanál Azure Pipelines CI/CD.
 > * Vyčištění prostředků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 * Přístup k GitHubu nebo externímu úložišti Git, které obsahuje .NET, Java, PHP, Node.js, Python nebo statický webový kód.
@@ -43,7 +43,7 @@ V této lekci:
 
 Azure DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. Azure DevOps Starter také vytvoří prostředky Azure v předplatném Azure podle vašeho výběru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 

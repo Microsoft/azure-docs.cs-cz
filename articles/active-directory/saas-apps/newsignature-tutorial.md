@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.openlocfilehash: d45a3ddda44922c70080a09447866a9a4c6997a7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554397"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>Kurz: Azure Active Directory integrace s cloudovým Portál pro správu pro Microsoft Azure
@@ -73,7 +73,7 @@ Aby se jednotné přihlašování fungovalo, musí být navázán odkaz na odkaz
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí cloudových Portál pro správu pro Microsoft Azure, je nutné dokončit následující stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte Cloud portál pro správu pro Microsoft Azure jednotné přihlašování](#configure-cloud-management-portal-for-microsoft-azure-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte Cloud portál pro správu pro Microsoft Azure jednotné přihlašování](#configure-cloud-management-portal-for-microsoft-azure-single-sign-on)** – ke konfiguraci jednoho Sign-On nastavení na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření cloudové portál pro správu pro Microsoft Azure testovacího uživatele](#create-cloud-management-portal-for-microsoft-azure-test-user)** – Pokud chcete mít protějšek Britta Simon v cloudovém Portál pro správu pro Microsoft Azure, který je propojený s reprezentací uživatele v Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí cloudov�
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -124,9 +124,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí cloudov�
     ```
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, kontaktujte [Cloud Portál pro správu Microsoft Azure tým podpory klientů](mailto:jczernuszka@newsignature.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným Sign-On URL, identifikátor a adresu URL odpovědi. Pokud chcete získat tyto hodnoty, kontaktujte [Cloud Portál pro správu Microsoft Azure tým podpory klientů](mailto:jczernuszka@newsignature.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -140,7 +140,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí cloudov�
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-cloud-management-portal-for-microsoft-azure-single-sign-on"></a>Konfigurace cloudové Portál pro správu pro Microsoft Azure jednotné přihlašování
+### <a name="configure-cloud-management-portal-for-microsoft-azure-single-sign-on"></a>Konfigurace cloudových Portál pro správu pro Microsoft Azure jednoho Sign-On
 
 Ke konfiguraci jednotného přihlašování v **cloudové portál pro správu pro Microsoft Azure** straně je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [cloudové portál pro správu pro tým podpory Microsoft Azure](mailto:jczernuszka@newsignature.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
@@ -167,7 +167,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -175,7 +175,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **cloudové portál pro správu pro Microsoft Azure**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **cloudové portál pro správu pro Microsoft Azure**.
 

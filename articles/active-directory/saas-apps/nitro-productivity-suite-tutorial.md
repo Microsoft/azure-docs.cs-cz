@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
 ms.openlocfilehash: b67e280824c5e2336aa79e14d3e09d3a670118a5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554324"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>Kurz: Azure Active Directory integraci jednotného přihlašování se sadou nitro produktivity
@@ -93,9 +93,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     d. Vyberte **Povolit jednotné přihlašování**.
 
 
-1. Vraťte se na [Azure Portal](https://portal.azure.com/). Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
+1. Vraťte se na [Azure Portal](https://portal.azure.com/). Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Snímek obrazovky nastavení jednotného přihlašování pomocí stránky SAML se zvýrazněnou ikonou tužky](common/edit-urls.png)
+   ![Snímek obrazovky nastavení jednoho Sign-On se stránkou SAML se zvýrazněnou ikonou tužky](common/edit-urls.png)
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v části **základní konfigurace SAML** hodnoty následujících polí:
 
@@ -115,7 +115,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě předchozích atributů očekává aplikace nitro produktivní sada několik dalších atributů, které se vrátí zpět v odpovědi SAML. Tyto atributy jsou předem vyplněné, ale můžete je zkontrolovat podle svých požadavků.
     
-    | Name  |  Zdrojový atribut|
+    | Název  |  Zdrojový atribut|
     | ---------------| --------------- |
     | employeeNumber |  User. objectID |
 

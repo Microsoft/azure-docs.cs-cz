@@ -12,10 +12,10 @@ ms.date: 03/31/2020
 ms.author: scottwhi
 ms.custom: devx-track-js
 ms.openlocfilehash: d5dc762499342f0004073fb6c240c98c4ac2bc09
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334561"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Kurz: nahrání obrázků do rozhraní API pro vizuální vyhledávání Bingu
@@ -31,7 +31,7 @@ Ukázková aplikace předvádí, jak:
 > * Zobrazení výsledků hledání obrázků ve webové aplikaci
 > * Prozkoumejte různé přehledy poskytované rozhraním API
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 

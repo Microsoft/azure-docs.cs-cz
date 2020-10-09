@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.openlocfilehash: 9814304aed4d7a5f307fb2179491b0fa9635fd68
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324650"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Kurz: Přidání běžných formátů šablon vzorků utterance ke zlepšení předpovědi
@@ -193,7 +193,7 @@ Byl dosažen správný nejvyšší záměr, `OrgChart-Manager` ale skóre není 
 Toto druhé okno prohlížeče ponechte otevřené. Později ji budete používat později v tomto kurzu.
 
 ## <a name="template-utterances"></a>Šablony promluv
-Vzhledem k povaze domény subjektu lidských zdrojů existuje několik běžných způsobů, jak v organizacích zeptat se na vztahy zaměstnanců. Příklad:
+Vzhledem k povaze domény subjektu lidských zdrojů existuje několik běžných způsobů, jak v organizacích zeptat se na vztahy zaměstnanců. Například:
 
 |Výroky|
 |--|
@@ -217,7 +217,7 @@ Aby se model shodoval s utterance, musí _nejdřív_ entity v rámci utterance o
 
 **Vzory sice umožňují poskytovat méně ukázkových promluv, když ale není detekovaná entita, vzor se nespáruje.**
 
-### <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>Přidejte vzory pro záměr vedoucího organizačního diagramu
+### <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>Přidání vzorů pro OrgChart-Manager záměr
 
 1. Vyberte **Sestavení** v horní nabídce.
 

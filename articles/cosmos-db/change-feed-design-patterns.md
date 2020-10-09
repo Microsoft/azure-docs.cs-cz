@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 6101e80131aca94e44bb4e85ee51fe607f47c10f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85118946"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Změna vzorů návrhu informačního kanálu v Azure Cosmos DB
@@ -38,7 +38,7 @@ Můžete také selektivně aktivovat oznámení nebo poslat volání rozhraní A
 Kanál změny Azure Cosmos DB lze použít pro zpracování datových proudů v reálném čase pro zpracování dat IoT nebo v reálném čase pro provozní data.
 Můžete například přijímat a ukládat data událostí ze zařízení, senzorů, infrastruktury a aplikací a zpracovávat tyto události v reálném čase pomocí [Sparku](../hdinsight/spark/apache-spark-overview.md). Následující obrázek ukazuje, jak můžete implementovat architekturu lambda pomocí Azure Cosmos DB přes změnu kanálu:
 
-:::image type="content" source="./media/change-feed/lambda.png" alt-text="Azure Cosmos DB kanál lambda založený na ingestování a dotazování" border="false":::
+:::image type="content" source="./media/change-feed/lambda.png" alt-text="Použití Azure Cosmos DB změn kanálu k napájení analýz v reálném čase a výpočetních scénářů založených na událostech" border="false":::
 
 V mnoha případech implementace zpracování datových proudů nejprve obdrží velký objem příchozích dat do dočasné fronty zpráv, jako je například Azure Event hub nebo Apache Kafka. Kanál změn je skvělou alternativou, protože Azure Cosmos DB schopnost podporovat trvalou vysokou míru příjmu dat s garantovanou nízkou latencí čtení a zápisu. Mezi výhody Azure Cosmos DBho kanálu změny v rámci fronty zpráv patří:
 

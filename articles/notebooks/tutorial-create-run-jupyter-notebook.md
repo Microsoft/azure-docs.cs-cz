@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: cb8be1618de7e95a7096e4ea9dec78bf4aa277f6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88589247"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Kurz: vytvoření a spuštění Jupyter Notebook pomocí Pythonu
@@ -155,7 +155,7 @@ Skupiny příkazů nabídky jsou následující:
 | Nabídka | Popis |
 | --- | --- |
 | File | Příkazy pro správu souboru poznámkového bloku, včetně příkazů pro vytváření a kopírování poznámkových bloků, zobrazení náhledu tisku a stažení poznámkového bloku v nejrůznějších formátech. |
-| Upravit | Typické příkazy pro vyjímání, kopírování a vkládání buněk, hledání a nahrazování hodnot, správu příloh buněk a vkládání obrázků.  |
+| Edit | Typické příkazy pro vyjímání, kopírování a vkládání buněk, hledání a nahrazování hodnot, správu příloh buněk a vkládání obrázků.  |
 | Zobrazit | Příkazy pro řízení viditelnosti různých částí uživatelského rozhraní Jupyter. |
 | Vložit | Příkazy pro vložení nové buňky nad nebo pod aktuální buňku. Tyto příkazy použijete často při vytváření poznámkového bloku. |
 | Mobilní telefon | Různé příkazy **spuštění** spouštějí jednu nebo více buněk v různých kombinacích. Příkazy **typu buňky** mění typ buňky mezi **kódem**, **Markdownu**a **nezpracovaným NBConvert** (prostý text). Příkazy **aktuální výstupy** a **všechny výstupy** řídí způsob, jakým se zobrazuje výstup z kódu spuštění, a obsahuje příkaz pro vymazání všech výstupů. |

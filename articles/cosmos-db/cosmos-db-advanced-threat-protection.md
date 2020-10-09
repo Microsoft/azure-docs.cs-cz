@@ -9,17 +9,17 @@ ms.author: memildin
 author: memildin
 manager: rkarlin
 ms.openlocfilehash: 0affd1660a88421f6df24bc5ef2e00497dae32a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85119265"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB (Preview)
 
 Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům Azure Cosmos DB nebo jejich zneužití. Tato vrstva ochrany umožňuje řešit hrozby, i když není odborník na zabezpečení a integruje se se systémy centrálního monitorování zabezpečení.
 
-Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy zabezpečení jsou integrovány do [Azure Security Center](https://azure.microsoft.com/services/security-center/)a jsou také odesílány prostřednictvím e-mailu správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak tyto hrozby prozkoumat a opravit.
+Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy zabezpečení jsou integrovány do  [Azure Security Center](https://azure.microsoft.com/services/security-center/)a jsou také odesílány prostřednictvím e-mailu správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak tyto hrozby prozkoumat a opravit.
 
 > [!NOTE]
 >
@@ -44,7 +44,7 @@ Rozšířenou ochranu před internetovými útoky můžete nakonfigurovat libovo
 
 ### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com/) .
+1. Spusťte Azure Portal v  [https://portal.azure.com](https://portal.azure.com/) .
 
 2. Z účtu Azure Cosmos DB v nabídce **Nastavení** vyberte **Rozšířené zabezpečení**.
 
@@ -81,16 +81,16 @@ K povolení rozšířené ochrany před internetovými útoky pro Cosmos DB pou�
 
 1. Spusťte stránku Azure **Policy-definitions** a vyhledejte zásadu **nasazení rozšířené ochrany před internetovými útoky pro Cosmos DB** .
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="Zásady hledání"::: 
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="Nastavení ATP"::: 
 
 1. Klikněte na zásady **nasadit rozšířenou ochranu před internetovými útoky pro CosmosDB** a pak klikněte na **přiřadit**.
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="Vybrat předplatné nebo skupinu":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="Nastavení ATP":::
 
 
 1. V poli **obor** klikněte na tři tečky, vyberte předplatné Azure nebo skupinu prostředků a pak klikněte na **Vybrat**.
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="Stránka definice zásad":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="Nastavení ATP":::
 
 
 1. Zadejte další parametry a klikněte na **přiřadit**.
@@ -104,11 +104,11 @@ Při Azure Cosmos DB výskytu anomálií aktivit se aktivuje výstraha zabezpeč
 
  Z Azure Security Center můžete zkontrolovat a spravovat aktuální [výstrahy zabezpečení](../security-center/security-center-alerts-overview.md).  Kliknutím na konkrétní výstrahu v [Security Center](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) zobrazíte možné příčiny a doporučené akce pro prošetření a zmírnění potenciální hrozby. Následující obrázek ukazuje příklad podrobností výstrahy, které jsou k dispozici v Security Center.
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="Podrobnosti hrozby":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="Nastavení ATP":::
 
 E-mailové oznámení se také pošle s podrobnostmi výstrahy a doporučenými akcemi. Na následujícím obrázku vidíte příklad e-mailu s výstrahou.
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="Podrobnosti výstrahy":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="Nastavení ATP":::
 
 ## <a name="cosmos-db-atp-alerts"></a>Výstrahy ATP Cosmos DB
 

@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
 ms.openlocfilehash: 9c49f7ac744ee516aefc1571d50264132035ba8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73890601"
 ---
-# <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>Vytvoření služby IoT Hub pomocí rutiny New-AzIotHub
+# <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>Vytvoření centra IoT pomocí rutiny New-AzIotHub
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "73890601"
 
 Pomocí rutin Azure PowerShell můžete vytvářet a spravovat centra IoT Azure. V tomto kurzu se dozvíte, jak vytvořit centrum IoT pomocí PowerShellu.
 
-K dokončení tohoto postupu potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+K dokončení tohoto postupu potřebujete předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -47,7 +47,7 @@ Pokud chcete vytvořit skupinu prostředků pro Centrum IoT, použijte příkaz 
 New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
 ```
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 Pokud chcete vytvořit centrum IoT ve skupině prostředků, kterou jste vytvořili v předchozím kroku, použijte příkaz [New-AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub) . Tento příklad vytvoří centrum **S1** s názvem **MyTestIoTHub** v oblasti **východní USA** :
 

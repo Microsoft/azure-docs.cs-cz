@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 643010ef1f6e941a57673a711e1871aafd1e341d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361904"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Kurz: Konfigurace Průvodce Log Analytics
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření vlastního sešitu pomocí šablony pro rychlý Start
 > * Přidat dotaz do existující šablony sešitu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure s alespoň jedním správcem licencované licence P1. Pokud nemáte předplatné Azure, můžete si [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 
@@ -78,7 +78,7 @@ Konfigurace pracovního prostoru Log Analytics se skládá ze dvou hlavních kro
 
     ![Vytvoření pracovního prostoru Log Analytics](./media/tutorial-log-analytics-wizard/create-log-analytics-workspace.png)
 
-    1. Vyberte předplatné.
+    1. Vyberte své předplatné.
 
     2. Vyberte skupinu prostředků.
  

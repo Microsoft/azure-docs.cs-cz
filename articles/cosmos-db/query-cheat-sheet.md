@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
 ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85117977"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB tahák dotazů
@@ -28,7 +28,7 @@ Pokud se chystáte tisknout na papír ve velikosti Letter (8,5 "x 11"), [Azure C
 ## <a name="oversized-cheat-sheets"></a>Tahák tabulky s příliš velikostí
 Pokud chcete tisknout pomocí plotru nebo rozsáhlé tiskárny na papír ve formátu A3 (11,7 "x 16,5"), Stáhněte si [listy tahák dotazů Azure Cosmos DB na velikost a3](https://go.microsoft.com/fwlink/?linkid=870413) .
 
-:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB dotazů tahák dotazů – velikost a3, pomocí rozhraní SQL API, JavaScriptu, MongoDB, Gremlin a rozhraní API pro tabulky dotazů a funkcí" border="false":::
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB dotazování tahák listů – velikost písmen, SQL API, JavaScript, MongoDB, Gremlin a rozhraní API pro tabulky dotazy a funkce" border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 Další nápovědu k zápisu dotazů naleznete v následujících článcích:

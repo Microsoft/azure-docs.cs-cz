@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
 ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85081077"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Vyhodnocení velkého počtu fyzických serverů pro migraci do Azure
@@ -48,7 +48,7 @@ Pro plánování použijte omezení shrnutá v této tabulce.
 --- | --- 
 **Azure Migrate projekty** | Vyhodnoťte až 35 000 serverů v projektu.
 **Zařízení Azure Migrate** | Zařízení může zjistit až 1000 serverů.<br/> Zařízení může být přidruženo pouze k jednomu Azure Migrate projektu.<br/> K jednomu Azure Migrate projektu může být přidružen libovolný počet zařízení. <br/><br/> 
-**Skupiny** | Do jedné skupiny můžete přidat až 35 000 serverů.
+**Skupina** | Do jedné skupiny můžete přidat až 35 000 serverů.
 **Posouzení Azure Migrate** | V jednom posouzení můžete posoudit až 35 000 serverů.
 
 

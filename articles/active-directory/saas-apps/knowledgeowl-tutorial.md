@@ -15,7 +15,7 @@ ms.openlocfilehash: fc6cb5d992d4c961e23034560a688c7090622359
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858092"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s KnowledgeOwl
@@ -199,7 +199,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     i. V dolní části stránky klikněte na **Uložit**.
 
-    ![Snímek obrazovky se zobrazením tlačítka Uložit.](./media/knowledgeowl-tutorial/configure4.png)
+    ![Snímek obrazovky ukazuje tlačítko Uložit.](./media/knowledgeowl-tutorial/configure4.png)
 
 ### <a name="create-knowledgeowl-test-user"></a>Vytvořit testovacího uživatele KnowledgeOwl
 

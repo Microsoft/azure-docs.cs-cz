@@ -15,7 +15,7 @@ ms.openlocfilehash: 32b856a80209c015c9fc96029bdf8d540b340c25
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91858162"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-sales-navigator"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím LinkedIn Sales Navigatoru

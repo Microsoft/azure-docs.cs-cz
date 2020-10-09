@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 5e0533a44db269229b2f26fa8d2f2b4f84f4d0b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85125459"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Automatické škálování AKSch lusků pomocí Application Gatewaych metrik (beta verze)
 
 Vzhledem k tomu, že se příchozí provoz zvyšuje, je důležité škálovat aplikace na základě požadavků.
 
-V následujícím kurzu vyvysvětlíme, jak můžete použít `AvgRequestCountPerHealthyHost` metriku Application Gateway k horizontálnímu navýšení kapacity aplikace. `AvgRequestCountPerHealthyHost`měří průměrné požadavky odeslané na konkrétní back-end fond a kombinaci nastavení back-endu HTTP.
+V následujícím kurzu vyvysvětlíme, jak můžete použít `AvgRequestCountPerHealthyHost` metriku Application Gateway k horizontálnímu navýšení kapacity aplikace. `AvgRequestCountPerHealthyHost` měří průměrné požadavky odeslané na konkrétní back-end fond a kombinaci nastavení back-endu HTTP.
 
 Budeme používat tyto dvě komponenty:
 
-* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter)– K vystavení metriky Application Gateway prostřednictvím serveru metrik budeme používat adaptér metriky. Adaptér metriky Azure Kubernetes je otevřený zdrojový projekt v Azure, podobně jako kontroler Application Gateway příchozího přenosu dat. 
-* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler)– Použijeme HPA k použití metrik Application Gateway a cílem nasazení pro škálování.
+* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) – K vystavení metriky Application Gateway prostřednictvím serveru metrik budeme používat adaptér metriky. Adaptér metriky Azure Kubernetes je otevřený zdrojový projekt v Azure, podobně jako kontroler Application Gateway příchozího přenosu dat. 
+* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) – Použijeme HPA k použití metrik Application Gateway a cílem nasazení pro škálování.
 
 ## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Nastavení adaptéru metriky Azure Kubernetes
 

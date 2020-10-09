@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76905104"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Řešení potíží s chybami pracovního postupu a jejich diagnostika v Azure Logic Apps
@@ -66,7 +66,7 @@ Pokaždé, když se Trigger aktivuje pro položku nebo událost, vytvoří modul
 
    ![Zobrazení podrobností o spuštění aplikace logiky](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-1. Chcete-li prostudovat vstupy, výstupy a jakékoli chybové zprávy pro určitý krok, vyberte tento krok, aby se tvar rozbalí a zobrazí podrobnosti. Příklad:
+1. Chcete-li prostudovat vstupy, výstupy a jakékoli chybové zprávy pro určitý krok, vyberte tento krok, aby se tvar rozbalí a zobrazí podrobnosti. Například:
 
    ![Zobrazení podrobností o kroku](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 

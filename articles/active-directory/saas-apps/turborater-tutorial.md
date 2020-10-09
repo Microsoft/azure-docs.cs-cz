@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
 ms.openlocfilehash: 0c22993baa6a9095bddba67bdc9d18a40021db6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Kurz: Azure Active Directory integrace s TurboRater
@@ -30,7 +30,7 @@ Integrace TurboRater s Azure AD poskytuje následující výhody:
 
 Podrobnosti o integraci aplikací SaaS (software jako služba) se službou Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s TurboRater potřebujete následující položky:
 
@@ -47,7 +47,7 @@ TurboRater podporuje jednotné přihlašování (SSO) iniciované IDP.
 
 Pokud chcete nakonfigurovat integraci TurboRater do služby Azure AD, musíte přidat TurboRater z Azure Marketplace do seznamu spravovaných aplikací SaaS:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com?azure-portal=true).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com?azure-portal=true).
 1. V levém podokně vyberte **Azure Active Directory**.
 
     ![Možnost Azure Active Directory](common/select-azuread.png)
@@ -91,7 +91,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TurboRat
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte **Upravit** (ikona tužky) a otevřete **základní podokno konfigurace SAML** .
+1. Na stránce **nastavit jeden Sign-On s SAML** vyberte **Upravit** (ikona tužky) a otevřete **základní podokno konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -113,7 +113,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TurboRat
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory TurboRater](https://www.getitc.com/support). Můžete také odkazovat na vzory zobrazené v podokně **základní konfigurace SAML** v Azure Portal.
 
-1. V podokně **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte **Stáhnout** a ze daných možností stáhněte **XML federačních metadat** a uložte ho do svého počítače.
+1. V podokně **nastavit jednu Sign-On s SAML** v části **podpisový certifikát SAML** vyberte **Stáhnout** a ze daných možností stáhněte **XML federačních metadat** a uložte ho do svého počítače.
 
     ![Možnost stažení XML federačních metadat](common/metadataxml.png)
 

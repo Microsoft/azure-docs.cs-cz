@@ -15,7 +15,7 @@ ms.openlocfilehash: 5dcd705719510cce3a113c5b0fdc46d016313b6d
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856402"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-elevate"></a>Kurz: Azure Active Directory integrace jednotného přihlašování se zvýšením úrovně LinkedInu
@@ -96,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho bude aplikace LinkedIn zvýšení oprávnění v odpovědi SAML, která je uvedena níže, očekává několik atributů, které se mají znovu předat. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | -------| -------------|
     | Oddělení | User. Department |
 

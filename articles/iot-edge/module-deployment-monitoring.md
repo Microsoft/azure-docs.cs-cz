@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 81db9c7e729aa0be67a807d9d77a3cccb8f41604
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85194786"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Pochopení IoT Edge automatického nasazení pro jednotlivá zařízení nebo ve velkém měřítku
@@ -98,7 +98,7 @@ Ve výchozím nastavení všechna nasazení hlásí čtyři metriky:
 
 Kromě toho můžete definovat vlastní metriky, které vám pomůžou monitorovat a spravovat nasazení.
 
-Metriky poskytují souhrnné počty různých stavů, které mohou zařízení nahlásit zpět v důsledku použití konfigurace nasazení. Metriky se mohou dotazovat na [nedokončené hlášené vlastnosti modulu edgeHub](module-edgeagent-edgehub.md#edgehub-reported-properties), jako je *lastDesiredStatus* nebo *lastConnectTime*. Příklad:
+Metriky poskytují souhrnné počty různých stavů, které mohou zařízení nahlásit zpět v důsledku použití konfigurace nasazení. Metriky se mohou dotazovat na [nedokončené hlášené vlastnosti modulu edgeHub](module-edgeagent-edgehub.md#edgehub-reported-properties), jako je *lastDesiredStatus* nebo *lastConnectTime*. Například:
 
 ```sql
 SELECT deviceId FROM devices

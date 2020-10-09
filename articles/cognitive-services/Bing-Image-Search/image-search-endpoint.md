@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 38416f6a580d270aefc287de0c198bd418a44db9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74072628"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>Koncové body pro rozhraní API Bingu pro vyhledávání obrázků
@@ -25,18 +25,18 @@ ms.locfileid: "74072628"
 
 Pokud chcete získat výsledky obrázků pomocí rozhraní API Bingu, odešlete žádost jednomu z následujících koncových bodů. K definování dalších specifikací použijte záhlaví a parametry URL.
 
-**Koncový bod 1:** Vrátí obrázky, které jsou relevantní pro vyhledávací dotaz uživatele definovaný v `?q=""`.
+**Koncový bod 1:** Vrátí obrázky, které jsou relevantní pro vyhledávací dotaz uživatele definovaný v `?q=""` .
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search
 ```
 
-**Koncový bod 2:** Vrátí přehledy o obrázku pomocí `GET` nebo. `POST`
+**Koncový bod 2:** Vrátí přehledy o obrázku pomocí `GET` nebo `POST` .
 ```
  GET or POST https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
 Požadavek GET vrátí přehled o obrázku, jako jsou například webové stránky, které obsahují obrázek. Zahrňte parametr [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) s `GET` požadavkem.
 
-Nebo můžete do těla `POST` žádosti zahrnout binární obrázek a nastavit parametr [moduly](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) na. `RecognizedEntities` Tím se vrátí [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) , který se použije jako parametr v následné `GET` žádosti, který vrátí informace o lidech v imagi.  Nastavte `modules` na `All` pro získání všech přehledů s `RecognizedEntities` výjimkou výsledků `POST` bez dalšího volání pomocí `insightsToken`.
+Nebo můžete do těla žádosti zahrnout binární obrázek `POST` a nastavit parametr [moduly](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) na `RecognizedEntities` . Tím se vrátí [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference#insightstoken) , který se použije jako parametr v následné `GET` žádosti, který vrátí informace o lidech v imagi.  Nastavte `modules` na `All` pro získání všech přehledů s výjimkou `RecognizedEntities` výsledků `POST` bez dalšího volání pomocí `insightsToken` .
 
 
 **Koncový bod 3:** Vrátí obrázky, které jsou v trendech, na základě požadavků na hledání provedených ostatními. Obrázky jsou rozdělené do různých kategorií, například podle zajímavosti lidí nebo událostí.

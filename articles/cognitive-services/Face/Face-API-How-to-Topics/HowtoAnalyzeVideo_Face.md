@@ -15,7 +15,7 @@ ms.openlocfilehash: 730946a0c581be4697c0f45c8bdeb1d38f0ca23d
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856384"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Příklad: Analýza videí v reálném čase
@@ -169,7 +169,7 @@ Pokud chcete s touto ukázkou začít, postupujte takto:
 
 Až budete připraveni na integraci, **odkazujte na knihovnu VideoFrameAnalyzer ze svých vlastních projektů.** 
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V této příručce jste zjistili, jak spustit analýzu v reálném čase v reálném čase pomocí rozhraní API pro obličeje, Počítačové zpracování obrazu a emoce a jak začít používat náš vzorový kód.
 

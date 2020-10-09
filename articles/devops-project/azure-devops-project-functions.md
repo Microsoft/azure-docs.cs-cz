@@ -10,10 +10,10 @@ ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91355470"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>Nasazení do Azure Functions s DevOps Starter
@@ -39,7 +39,7 @@ V tomto kurzu provedete následující:
 
 V současné době jsou podporované běhové moduly pro funkce **.NET** a **Node.js**. Používáme. .NET runtime pro tento kurz nasazení na Azure Functions. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Můžete si ji stáhnout [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/)
 

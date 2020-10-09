@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
 ms.openlocfilehash: 38b4713383368f0c64983738f2ed65f60edb9e67
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334085"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Kurz: automatizace úloh pro zpracování e-mailů pomocí Azure Logic Apps, Azure Functions a Azure Storage
@@ -34,7 +34,7 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 ![Hotová aplikace logiky na základní úrovni](./media/tutorial-process-email-attachments-workflow/overview.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -259,7 +259,7 @@ Teď přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
 
 1. Do návrháře v poli hledání zadejte `when new email arrives` jako filtr. Vyberte pro svého poskytovatele e-mailu tento trigger: **Při přijetí nového e-mailu – <*váš_poskytovatel_e-mailu*>**.
 
-   Příklad:
+   Například:
 
    ![Výběr triggeru pro konkrétního poskytovatele e-mailu: „Při přijetí nového e-mailu“](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
@@ -278,8 +278,8 @@ Teď přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
       | Nastavení | Hodnota | Popis |
       | ------- | ----- | ----------- |
       | **Složka** | Doručená pošta | E-mailová složka, která se má kontrolovat |
-      | **Má přílohu** | Yes | Načte jen e-maily s přílohami. <p>**Poznámka:** Trigger neodebere z vašeho účtu žádné e-maily. Kontroluje jenom nové zprávy a zpracovává jenom e-maily odpovídající filtru pro předmět. |
-      | **Zahrnout přílohy** | Yes | Místo samotné kontroly příloh je načtěte jako vstup do pracovního postupu. |
+      | **Má přílohu** | Ano | Načte jen e-maily s přílohami. <p>**Poznámka:** Trigger neodebere z vašeho účtu žádné e-maily. Kontroluje jenom nové zprávy a zpracovává jenom e-maily odpovídající filtru pro předmět. |
+      | **Zahrnout přílohy** | Ano | Místo samotné kontroly příloh je načtěte jako vstup do pracovního postupu. |
       | **Interval** | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
       | **Frekvence** | Minuta | Jednota času pro každý interval mezi kontrolami |
       ||||
@@ -603,7 +603,7 @@ V dalším kroku přidejte akci, která zajistí, aby aplikace logiky odeslala e
    | ------- | ----- | ----- |
    | **Záměr** | <*příjemce-e-mailová adresa*> | Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
    | **Předmět**  | ```ASAP - Review applicant for position:``` **Předmět** | Předmět e-mailu, který chcete zahrnout. Klikněte do tohoto pole, zadejte příklad textu a v seznamu dynamického obsahu u položky **Při přijetí nového e-mailu** vyberte pole **Předmět**. |
-   | **Text** | ```Please review new applicant:``` <p>```Applicant name:```**Od** <p>```Application file location:``` **Cesta** <p>```Application email content:``` **Text** | Obsah textu e-mailu. Klikněte do tohoto pole, zadejte příklad textu a v seznamu dynamického obsahu vyberte tato pole: <p>- Pole **Od** v části **Při přijetí nového e-mailu** </br>- Pole **Cesta** v části **Vytvořit objekt blob pro tělo e-mailu** </br>- Pole **Text** v části **Volat funkci RemoveHTMLFunction k vymazání textu e-mailu** |
+   | **Text** | ```Please review new applicant:``` <p>```Applicant name:``` **Z** <p>```Application file location:```**Cesta** <p>```Application email content:``` **Text** | Obsah textu e-mailu. Klikněte do tohoto pole, zadejte příklad textu a v seznamu dynamického obsahu vyberte tato pole: <p>- Pole **Od** v části **Při přijetí nového e-mailu** </br>- Pole **Cesta** v části **Vytvořit objekt blob pro tělo e-mailu** </br>- Pole **Text** v části **Volat funkci RemoveHTMLFunction k vymazání textu e-mailu** |
    ||||
 
    > [!NOTE]

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: 1b6fcf38f9f69976e6ed8d64040cfbcf44f090e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85124047"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Osvědčené postupy šifrování a zabezpečení dat v Azure
@@ -39,7 +39,7 @@ Ochrana vašich klíčů je zásadní pro ochranu vašich dat v cloudu.
 
 [Azure Key Vault](/azure/key-vault/key-vault-overview) pomáhá chránit kryptografické klíče a tajné kódy používané cloudovými aplikacemi a službami. Key Vault zjednodušuje proces správy klíčů a zajišťuje vám kontrolu nad klíči, které se používají k přístupu a šifrování dat. Vývojáři můžou během pár minut vytvořit klíče pro vývoj a testování a potom je migrovat na produkční klíče. Správci zabezpečení můžou klíčům podle potřeby udělovat (a odvolávat) oprávnění.
 
-Key Vault můžete použít k vytvoření několika zabezpečených kontejnerů nazývaných trezory. Tyto trezory se zálohují pomocí HSM. Trezory pomáhají snížit riziko nechtěné ztráty informací o zabezpečení tím, že centralizují ukládání tajných klíčů aplikací. Trezory klíčů také řídí a protokolují přístup ke všem položkám, které jsou v nich uložené. Azure Key Vault může zpracovávat požadavky a obnovovat certifikáty protokolu TLS (Transport Layer Security). Poskytuje funkce pro robustní řešení pro správu životního cyklu certifikátů.
+Key Vault můžete použít k vytvoření několika zabezpečených kontejnerů nazývaných trezory. Tyto trezory se zálohují pomocí HSM. Trezory pomáhají snížit riziko nechtěné ztráty informací o zabezpečení tím, že centralizují ukládání tajných kódů aplikací. Trezory klíčů také řídí a protokolují přístup ke všem položkám, které jsou v nich uložené. Azure Key Vault může zpracovávat požadavky a obnovovat certifikáty protokolu TLS (Transport Layer Security). Poskytuje funkce pro robustní řešení pro správu životního cyklu certifikátů.
 
 Azure Key Vault je navržena pro podporu klíčů a tajných klíčů aplikací. Key Vault není určeno jako úložiště uživatelských hesel.
 
@@ -139,4 +139,4 @@ V článku [osvědčené postupy a vzory zabezpečení Azure](best-practices-and
 
 K dispozici jsou následující prostředky, které poskytují obecnější informace o zabezpečení Azure a souvisejících službách Microsoftu:
 * [Blog týmu pro zabezpečení Azure](https://blogs.msdn.microsoft.com/azuresecurity/) – aktuální informace o nejnovější verzi v zabezpečení Azure
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – kde můžou být chyby zabezpečení Microsoftu, včetně problémů s Azure, nahlášené nebo prostřednictvím e-mailu.secure@microsoft.com
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – kde můžou být chyby zabezpečení Microsoftu, včetně problémů s Azure, nahlášené nebo prostřednictvím e-mailu. secure@microsoft.com
