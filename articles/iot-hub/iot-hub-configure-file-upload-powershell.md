@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: c8fc0393e0961b46fbb8031d735f27e9ad785031
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60318437"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurace nahrávání souborů IoT Hub pomocí prostředí PowerShell
@@ -23,7 +23,7 @@ Pokud chcete používat [funkci nahrávání souborů v IoT Hub](iot-hub-devguid
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pro absolvování tohoto kurzu potřebujete:
+K dokončení tohoto kurzu potřebujete:
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 

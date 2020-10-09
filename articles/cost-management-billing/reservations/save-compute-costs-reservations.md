@@ -1,19 +1,19 @@
 ---
 title: Co jsou rezervace Azure?
-description: Informace o rezervacích Azure a úsporách nákladů na virtuální počítače, databáze SQL, službu Azure Cosmos DB a další prostředky
+description: Informace o rezervacích Azure a úsporách nákladů na rezervované instance pro virtuální počítače, databáze SQL, službu Azure Cosmos DB a další prostředky
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 08/04/2020
+ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: a5ab489e995506deb806fe5f0cee4a147ae42ac2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d8c9f35ec7a8db3a777e48a629e4af1f15090a89
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682582"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652359"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -50,9 +50,9 @@ Další informace najdete v tématu  [Určení rezervace k zakoupení](determi
 
 Rezervace si můžete koupit prostřednictvím webu Azure Portal, rozhraní API, PowerShellu nebo rozhraní příkazového řádku. 
 
-Pokud chcete provést nákup, přejděte na web Azure Portal (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs). 
+Pokud chcete provést nákup, přejděte na [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs).
 
-Další informace najdete v tématu  [Nákup rezervace](prepare-buy-reservation.md). 
+Další informace najdete v tématu  [Nákup rezervace](prepare-buy-reservation.md).
 
 ## <a name="how-is-a-reservation-billed"></a>Jak se rezervace fakturuje? 
 
@@ -106,7 +106,7 @@ Softwarové plány:
 
 - **SUSE Linux** – Rezervace se vztahuje na náklady na plán softwaru. Slevy se vztahují pouze na měřiče SUSE, a ne na využití virtuálního počítače.
 - **Plány Red Hat** – Rezervace se vztahuje na náklady na plán softwaru. Slevy se vztahují pouze na měřiče Red Hat, a ne na využití virtuálního počítače.
-- **Azure VMware Solution by CloudSimple** – Rezervace se vztahuje na uzly VMWare CloudSimple. Stále se však účtují další náklady na software.
+- **Azure VMware Solution by CloudSimple** – Rezervace se vztahuje na uzly VMware CloudSimple. Stále se však účtují další náklady na software.
 - **Azure Red Hat OpenShift** – Rezervace se vztahuje na náklady na OpenShift, ne na infrastrukturu Azure.
 
 U virtuálních počítačů s Windows a SQL Database se sleva za rezervaci nevztahuje na náklady na software. Licenční náklady můžete pokrýt pomocí programu [Zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).

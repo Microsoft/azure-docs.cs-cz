@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.openlocfilehash: 035bc13ee44a8a003ae860eb2bdd67432fa91f14
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88542507"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Tableau online
@@ -81,7 +81,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Tableau 
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -96,7 +96,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Tableau 
     > [!NOTE]
     > `<entityid>`Tuto hodnotu získáte v tomto kurzu v části **nastavení online Tableau** . Hodnota ID entity bude hodnota **identifikátoru Azure AD** v **nastavení online** oddílu pro Tableau.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -133,7 +133,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -141,7 +141,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **Tableau online**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost **Tableau online**.
 
@@ -165,15 +165,15 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V jiném okně prohlížeče se přihlaste k online aplikaci Tableau. Přejít na **Nastavení** a pak na **ověřování**.
 
-    ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
+    ![Konfigurace jednoho Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
 
 2. Chcete-li povolit SAML, v části **typy ověřování** . Zaškrtněte políčko **Povolit další metodu ověřování** a zaškrtněte políčko **SAML** .
 
-    ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
+    ![Konfigurace jednoho Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
 
 3. Posuňte se dolů a **importujte soubor metadat do online oddílu Tableau** .  Klikněte na Procházet a importujte soubor metadat, který jste stáhli ze služby Azure AD. Pak klikněte na **použít**.
 
-   ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
+   ![Konfigurace jednoho Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
 
 4. V části **kontrolní výrazy shody** vložte odpovídající název kontrolního výrazu zprostředkovatele identity pro **e-mailovou adresu**, **křestní jméno**a **příjmení**. Získání těchto informací z Azure AD: 
   
@@ -181,17 +181,17 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     b. V části **atributy uživatele & deklarace identity** klikněte na ikonu Upravit.
 
-   ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/attributesection.png)
+   ![Konfigurace jednoho Sign-On](./media/tableauonline-tutorial/attributesection.png)
 
     c. Zkopírujte hodnotu oboru názvů těchto atributů: křestní číslo, e-mail a příjmení pomocí následujících kroků:
 
-   ![Jednotné přihlašování Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
+   ![Služba Azure AD Single Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
 
     d. Klikněte na tlačítko **uživatel. prodané** hodnoty
 
     e. Zkopírujte hodnotu z textového pole **obor názvů** .
 
-    ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/attributesection2.png)
+    ![Konfigurace jednoho Sign-On](./media/tableauonline-tutorial/attributesection2.png)
 
     f. Pokud chcete zkopírovat hodnoty oboru názvů pro e-mail a příjmení, opakujte výše uvedené kroky.
 
@@ -203,7 +203,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     * Příjmení: **příjmení**
 
-    ![Konfigurace jednotného přihlašování](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
+    ![Konfigurace jednoho Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
 
 ### <a name="create-tableau-online-test-user"></a>Vytvořit online testovacího uživatele Tableau
 

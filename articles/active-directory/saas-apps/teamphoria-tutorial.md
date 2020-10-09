@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
 ms.openlocfilehash: 30971c9c5280bfba37f46aaab0aaf2c2506502c0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88542339"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamphoria"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Teamphoria
@@ -80,7 +80,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<sub-domain>.teamphoria.com/login`
 
     > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta Teamphoria](https://www.teamphoria.com/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou adresou Sign-On. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta Teamphoria](https://www.teamphoria.com/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -100,7 +100,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -134,15 +134,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. Přejděte na možnost **Nastavení správce** na levém panelu nástrojů a na kartě konfigurovat klikněte na **jednotné přihlašování** . otevře se okno Konfigurace jednotného přihlašování.
 
-    ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/admin_sso_configure.png)
+    ![Konfigurace jednoho Sign-On](./media/teamphoria-tutorial/admin_sso_configure.png)
 
 5. Kliknutím na **Přidat novou možnost zprostředkovatel identity** v pravém horním rohu otevřete formulář pro přidání nastavení pro jednotné přihlašování.
 
-    ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/add_new_identity_provider.png)
+    ![Konfigurace jednoho Sign-On](./media/teamphoria-tutorial/add_new_identity_provider.png)
 
 6. Zadejte podrobnosti do polí, jak je popsáno níže.
 
-    ![Konfigurace jednotného přihlašování](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
+    ![Konfigurace jednoho Sign-On](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
     a. **ZOBRAZOVANÝ název**: Zadejte zobrazovaný název modulu plug-in na stránce správce.
 

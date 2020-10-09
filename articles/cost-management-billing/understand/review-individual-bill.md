@@ -1,24 +1,24 @@
 ---
-title: Kontrola jednotlivého vyúčtování Azure
-description: Naučte se porozumět svému vyúčtování a využití prostředků a ověřit poplatky za jednotlivá předplatná Azure.
+title: Kontrola jednotlivého vyúčtování předplatného Azure
+description: Naučte se porozumět svému vyúčtování a využití prostředků a ověřit poplatky za jednotlivá předplatná Azure, včetně průběžných plateb.
 author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: 0c93375abd57ff5e96906ef7befbbb546a3a1caf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 95af762e0ff1986f9d1395e787c73b3a886a7a2e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270521"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653277"
 ---
-# <a name="tutorial-review-your-individual-azure-bill"></a>Kurz: Kontrola jednotlivého vyúčtování Azure
+# <a name="tutorial-review-your-individual-azure-subscription-bill"></a>Kurz: Kontrola jednotlivého vyúčtování předplatného Azure
 
-Tento článek vám pomůže pochopit a zkontrolovat vyúčtování Azure. Pro každé fakturační období obvykle obdržíte fakturu e-mailem. Faktura představuje vyúčtování Azure. Stejné informace o nákladech jako na faktuře najdete i na webu Azure Portal. V tomto kurzu porovnáte svou fakturu se souborem s podrobným denním využitím a s analýzou nákladů na webu Azure Portal.
+Tento článek vám pomůže pochopit a zkontrolovat fakturu pro předplatné Azure s průběžnými platbami nebo předplatné sady Visual Studio, včetně průběžných plateb a sady Visual Studio. Pro každé fakturační období obvykle obdržíte fakturu e-mailem. Faktura představuje vyúčtování Azure. Stejné informace o nákladech jako na faktuře najdete i na webu Azure Portal. V tomto kurzu porovnáte svou fakturu se souborem s podrobným denním využitím a s analýzou nákladů na webu Azure Portal.
 
 Tento kurz se týká pouze zákazníků Azure, kteří mají jednotlivé předplatné. Běžná jednotlivá předplatná jsou předplatná s tarify průběžných plateb zakoupená přímo na webu Azure.
 
@@ -42,7 +42,7 @@ Od vytvoření vašeho předplatného Azure musí uplynout více než 30 dnů. A
 
 - Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="compare-invoiced-charges-with-usage-file"></a>Porovnat fakturované poplatky se souborem využití
+## <a name="compare-billed-charges-with-your-usage-file"></a>Porovnání účtovaných poplatků se souborem využití
 
 <a name="charges"></a>
 
@@ -109,7 +109,7 @@ Souhrnná hodnota *Náklady* musí přesně odpovídat *poplatkům za využití*
 
 Další informace najdete v tématu [Vysvětlení faktury za Azure](understand-invoice.md) a [Vysvětlení podrobného využití Azure](understand-usage.md).
 
-## <a name="compare-charges-and-usage-in-cost-analysis"></a>Porovnání poplatků a využití v analýze nákladů
+## <a name="compare-billed-charges-and-usage-in-cost-analysis"></a>Porovnání účtovaných poplatků a využití v analýze nákladů
 
 S ověřením poplatků vám může pomoci také analýza nákladů na webu Azure Portal. Pokud chcete získat rychlý přehled fakturovaného využití a poplatků, vyberte předplatné na [stránce Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na webu Azure Portal. Dále klikněte na **Analýza nákladů** a potom v seznamu zobrazení klikněte na **Podrobnosti o faktuře**.
 
@@ -123,13 +123,15 @@ Náklady v analýze nákladů musí přesně odpovídat *poplatkům za využití
 
 ![Poplatky za využití na faktuře](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external-services-billed-separately"></a><a name="external"></a>Externí služby fakturované samostatně
+## <a name="external-marketplace-services-are-billed-separately"></a>Poplatky za externí služby Marketplace se fakturují zvlášť.
+
+<a name="external"></a>
 
 Poplatky za externí služby nebo Marketplace se účtují za prostředky, které byly vytvořeny dodavateli softwaru třetích stran. Tyto prostředky jsou dostupné z Azure Marketplace. Například Barracuda Firewall je prostředek z Azure Marketplace nabízený třetí stranou. Všechny poplatky za tuto bránu firewall a její odpovídající měřiče se zobrazují jako poplatky za externí služby.
 
 Poplatky za externí služby se fakturují zvlášť. Tyto poplatky nejsou uvedené na faktuře za Azure. Další informace najdete v článku [Vysvětlení poplatků za externí služby Azure](understand-azure-marketplace-charges.md).
 
-### <a name="resources-billed-by-usage-meters"></a>Prostředky fakturované měřiči využití
+### <a name="resources-are-billed-by-usage-meters"></a>Prostředky se účtují na základě měřičů využití.
 
 Azure se nefakturuje přímo na základě nákladů na určitý prostředek. Poplatky za prostředek se počítají pomocí jednoho nebo více měřičů. Měřiče slouží ke sledování využití prostředků během doby jejich života. Tyto měřiče se pak použijí k výpočtu faktury.
 
@@ -152,7 +154,9 @@ Po vytvoření virtuálního počítače začne každý měřič generovat zázn
 
 Na měřiče, které byly použity k výpočtu faktury, se můžete podívat v souboru CSV s údaji o využití (stejně jako v předchozím příkladu).
 
-## <a name="pay-your-bill"></a><a name="payment"></a>Úhrada faktury
+## <a name="pay-your-bill"></a>Úhrada faktury
+
+<a name="payment"></a>
 
 Pokud jako způsob platby nastavíte platební kartu, strhne se platba automaticky do 10 dnů od skončení fakturačního období. Ve výpisu platební karty by na řádkové položce bylo uvedeno **MSFT Azure**.
 

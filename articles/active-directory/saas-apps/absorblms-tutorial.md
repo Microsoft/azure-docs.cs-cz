@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 59fb36765ad3cd584af4d6459cd78e2886d0edce
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88538668"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Kurz: Azure Active Directory integrace s absorpčním LMS
@@ -76,7 +76,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD pomocí systému s absorpcí, je nutné dokončit následující stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování](#configure-absorb-lms-single-sign-on)** pro program pro nastavení jednotného přihlašování – ke konfiguraci jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování](#configure-absorb-lms-single-sign-on)** s použitím programu pro nastavení jednoho přihlašování, abyste na straně aplikace nakonfigurovali nastavení jedna Sign-On.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořit testovacího uživatele LMS s pohlcováním](#create-absorb-lms-test-user)** – Pokud chcete mít protějšek Britta Simon v systému LMS s absorpcí, který je propojený s reprezentací uživatele v Azure AD.
@@ -96,11 +96,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí programu
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** kliknutím na tlačítko **Upravit** otevřete základní dialogové okno **Konfigurace SAML** .
+4. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na tlačítko **Upravit** a otevřete tak základní dialogové okno **Konfigurace SAML** .
 
     ![Absorpční informace o jednotném přihlašování k doméně LMS a adres URL](common/idp-intiated.png)
 
@@ -123,7 +123,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí programu
 
     ![image](common/edit-attribute.png)
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -137,7 +137,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí programu
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-absorb-lms-single-sign-on"></a>Konfigurace jednotného přihlašování v systému pro pohlcování LMS
+### <a name="configure-absorb-lms-single-sign-on"></a>Nakonfigurovat jeden Sign-On pro LMS s pohlcováním
 
 1. V novém okně webového prohlížeče se přihlaste k vašemu firemnímu LMS webu jako správce.
 
@@ -153,7 +153,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí programu
 
     ![Karta uživatelé](./media/absorblms-tutorial/managesso.png)
 
-5. Na stránce **Spravovat nastavení jednotného přihlašování** udělejte toto:
+5. Na stránce **Spravovat nastavení jednoho Sign-On** postupujte takto:
 
     ![Stránka Konfigurace jednotného přihlašování](./media/absorblms-tutorial/settings.png)
 
@@ -202,7 +202,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -210,7 +210,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **absorpční LMS**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace zadejte a vyberte **absorpční LMS**.
 

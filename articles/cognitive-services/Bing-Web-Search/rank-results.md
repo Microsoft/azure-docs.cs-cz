@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66390124"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>Jak používat hodnocení k zobrazení výsledků rozhraní API Bingu pro vyhledávání na webu  
@@ -24,9 +24,9 @@ Každá odpověď na hledání zahrnuje odpověď [RankingResponse](https://docs
 
 V rámci každé skupiny (hlavní nebo postranní panel) pole [položky](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) identifikuje pořadí, ve kterém se obsah musí objevit. Každá položka poskytuje následující dva způsoby, jak identifikovat výsledek v odpovědi.  
 
--   `answerType`a `resultIndex` – `answerType` pole identifikuje odpověď (například webovou stránku nebo novinky) a `resultIndex` identifikuje výsledek v odpovědi (například v článku News). Index je založený na nule.  
+-   `answerType` a `resultIndex` – `answerType` pole identifikuje odpověď (například webovou stránku nebo novinky) a `resultIndex` identifikuje výsledek v odpovědi (například v článku News). Index je založený na nule.  
 
--   `value`– `value` Pole obsahuje ID, které odpovídá ID odpovědi nebo výsledku v odpovědi. Buď odpověď, nebo výsledky obsahují ID, ale ne obojí.  
+-   `value` – `value` Pole obsahuje ID, které odpovídá ID odpovědi nebo výsledku v odpovědi. Buď odpověď, nebo výsledky obsahují ID, ale ne obojí.  
 
 Použití ID se zjednodušuje, protože stačí pouze porovnat ID hodnocení s ID odpovědi nebo jedním z jeho výsledků. Pokud objekt odpovědi obsahuje `id` pole, zobrazí se všechny výsledky odpovědi společně. Například pokud `News` objekt obsahuje `id` pole, zobrazí se všechny články ve zprávách dohromady. Pokud `News` objekt neobsahuje `id` pole, pak jednotlivé příspěvky obsahují `id` pole a odpověď na řazení kombinuje články s výsledky z jiných odpovědí.  
 

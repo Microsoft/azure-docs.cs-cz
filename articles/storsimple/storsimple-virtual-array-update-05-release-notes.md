@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 385d9126d578250064659153f6f0f54eec696790
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60870668"
 ---
 # <a name="storsimple-virtual-array-update-05-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 0,5
@@ -47,7 +47,7 @@ Aktualizace 0,5 je primárně sestavení pro opravu chyb. Hlavní vylepšení a 
 
 Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
-| Ne. | Funkce | Problém |
+| Ne. | Příznak | Problém |
 | --- | --- | --- |
 | 1 |Odolnost proti zálohování| V dřívějších verzích byly zálohy opakovány pouze pro určité výjimky. Tato verze obsahuje opravu pro zajištění větší odolnosti před opakováním všech výjimek zálohování.|
 | 2 |Sledování| Monitorování využití úložiště pro řady virtuálních zařízení StorSimple se od 30. června 2017 už nepoužívá. Tato akce má vliv na grafy monitorování ve službě StorSimple Device Manager běžící na virtuálních polích StorSimple (1200 modelu). Tato verze obsahuje aktualizace, které umožňují uživateli pokračovat ve využívání monitorování využívání úložiště u virtuálních polí po 30. června 2017.|
@@ -58,7 +58,7 @@ Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
 Následující tabulka obsahuje souhrn známých problémů pro virtuální pole StorSimple a obsahuje vydané verze zaznamenané z předchozích verzí.
 
-| Ne. | Funkce | Problém | Alternativní řešení/komentáře |
+| Ne. | Příznak | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 | **1.** |Aktualizace |Virtuální zařízení vytvořená ve verzi Preview nejde aktualizovat na podporovanou obecnou verzi dostupnosti. |U těchto virtuálních zařízení je potřeba převzít služby při selhání pro vydání obecné dostupnosti pomocí pracovního postupu zotavení po havárii (DR). |
 | **2.** |Zřízený datový disk |Jakmile zřídíte datový disk určité zadané velikosti a vytvoříte odpovídající virtuální zařízení StorSimple, nesmíte tento datový disk rozbalit ani zmenšit. Při pokusu o provedení dojde ke ztrátě všech dat v místních vrstvách zařízení. | |

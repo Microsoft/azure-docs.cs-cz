@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 7fffe58dfdb63da28edc19c19b56b576f4fbadd3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544039"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Moxtra
@@ -89,7 +89,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše očekává aplikace Moxtra několik dalších atributů, které se vrátí zpátky v odpovědi SAML. V části deklarace identity uživatelů v dialogovém okně atributy uživatele proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ------------------- | -------------------- |    
     | FirstName | User. křestní jméno |
     | polím | User. příjmení |
@@ -130,7 +130,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -156,11 +156,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Na panelu nástrojů na levé straně klikněte na **Konzola pro správu > jednotné přihlašování SAML**a potom klikněte na **Nový**.
    
-    ![Konfigurace jednotného přihlašování](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
+    ![Konfigurace jednoho Sign-On](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
 
 3. Na stránce **SAML** proveďte následující kroky:
    
-    ![Konfigurace jednotného přihlašování](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
+    ![Konfigurace jednoho Sign-On](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
     a. Do textového pole **název** zadejte název vaší konfigurace (např.: *SAML*). 
   
@@ -191,7 +191,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v Moxtra.
 
 1. Na panelu nástrojů na levé straně klikněte na **Konzola pro správu > Správa uživatelů**a pak na **Přidat uživatele**.
    
-    ![Konfigurace jednotného přihlašování](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
+    ![Konfigurace jednoho Sign-On](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
 1. V dialogovém okně **Přidat uživatele** proveďte následující kroky:
   

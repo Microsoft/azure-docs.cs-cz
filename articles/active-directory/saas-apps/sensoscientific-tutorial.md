@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 61807f90caad9e6be2a25e54dcaa837595afc729
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543151"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sensoscientific-wireless-temperature-monitoring-system"></a>Kurz: Azure Active Directory integrací se systémem SensoScientific pro monitorování teploty bezdrátových sítí
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, je potřeba zřídit vztah propojení 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SensoScientific systému pro monitorování teploty bezdrátových sítí, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování systému SensoScientific pro monitorování teploty sítě](#configure-sensoscientific-wireless-temperature-monitoring-system-single-sign-on)** a nakonfigurujte nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování systému SensoScientific pro monitorování teploty bezdrátové sítě](#configure-sensoscientific-wireless-temperature-monitoring-system-single-sign-on)** , abyste mohli konfigurovat nastavení jednoho Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření SensoScientific bezdrátového monitorování teploty systému – uživatel](#create-sensoscientific-wireless-temperature-monitoring-system-test-user)** , který bude mít protějšek Britta Simon v systému SensoScientific pro monitorování teploty bezdrátové sítě, který je propojený s reprezentací uživatele v Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SensoSci
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -101,7 +101,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SensoSci
 
     ![SensoScientific informace o jednotném přihlašování k systémové doméně a k adresám URL pro sledování bezdrátové teploty](common/preintegrated.png)
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -115,21 +115,21 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SensoSci
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-sensoscientific-wireless-temperature-monitoring-system-single-sign-on"></a>Konfigurace jednotného přihlašování systému SensoScientific pro monitorování teploty bezdrátové sítě
+### <a name="configure-sensoscientific-wireless-temperature-monitoring-system-single-sign-on"></a>Konfigurovat systém SensoScientific pro monitorování bezdrátových teplot v jednom Sign-On
 
 1. Přihlaste se k systémové aplikaci monitorování bezdrátové teploty SensoScientific jako správce.
 
 1. V navigační nabídce v horní části klikněte na **Konfigurace** a přejít na **Konfigurovat** v rámci **jednotného přihlašování** a otevřete nastavení jednotného přihlašování a proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_admin.png)
+    ![Konfigurace jednoho Sign-On](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_admin.png)
 
     a. Jako Azure AD vyberte **název vystavitele** .
 
     b. Do textového pole **Adresa URL vystavitele** vložte **identifikátor Azure AD** , který jste zkopírovali z Azure Portal.
 
-    c. Do textového pole **Adresa URL služby jednotného přihlašování** vložte **přihlašovací adresu URL** , kterou jste zkopírovali z Azure Portal.
+    c. Do textového pole **Adresa URL služby Single Sign-On Service** vložte **přihlašovací adresu URL** , kterou jste zkopírovali z Azure Portal.
 
-    d. Do textového pole **Adresa URL služby jednotného přihlašování** vložte **adresu URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
+    d. Do textového pole **Adresa URL služby Single Sign-Out Service** vložte **adresu URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
 
     e. Vyhledejte certifikát, který jste si stáhli z Azure Portal a nahrajte ho sem.
 
@@ -157,7 +157,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -165,7 +165,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **SensoScientific systém monitorování teploty bezdrátových sítí**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **SensoScientific systém monitorování teploty bezdrátových sítí**.
 

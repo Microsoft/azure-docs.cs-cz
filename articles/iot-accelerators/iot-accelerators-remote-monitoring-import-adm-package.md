@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "61443328"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Import automatického balíčku pro správu zařízení do akcelerátoru řešení vzdáleného monitorování
@@ -47,7 +47,7 @@ Nyní máte soubor, který obsahuje automatickou konfiguraci správy zařízení
 
 Pomocí následujícího postupu naimportujte automatickou konfiguraci správy zařízení jako balíček do svého řešení:
 
-1. Přejděte na stránku **balíčky** ve webovém uživatelském rozhraní vzdáleného monitorování: ![ balíčky.](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
+1. Přejděte na stránku **balíčky** ve webovém uživatelském rozhraní vzdáleného monitorování:  ![ balíčky.](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
 
 1. Klikněte na **+ nový balíček**, zvolte **Konfigurace** jako typ balíčku a klikněte na **Procházet** a vyberte **configuration.jspro** soubor, který jste uložili v předchozí části:
 

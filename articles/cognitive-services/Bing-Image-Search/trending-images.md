@@ -13,10 +13,10 @@ ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: 2936b94d7ba791b1a4e5a9b95aca3ca3ecdb5904
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66383435"
 ---
 # <a name="get-trending-images-from-the-web"></a>Získat obrázky z vývoje z webu
@@ -39,7 +39,7 @@ Rozhraní API pro vývojové obrázky aktuálně podporuje jenom tyto trhy:
 - EN-AU (angličtina, Austrálie)  
 - zh-CN (čínština, Čína)
 
-Odpověď obsahuje objekt [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) , který obsahuje obrázky podle kategorie. `title` K seskupení imagí v uživatelském prostředí použijte kategorii. Kategorie se můžou každý den měnit.  
+Odpověď obsahuje objekt [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) , který obsahuje obrázky podle kategorie. `title`K seskupení imagí v uživatelském prostředí použijte kategorii. Kategorie se můžou každý den měnit.  
 
 ```json
 {

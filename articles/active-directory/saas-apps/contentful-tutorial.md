@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 9b6abb280a505264a8092cfd700e225e93aa74a1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544393"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím obsahu
@@ -89,7 +89,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     - Do textového pole **Adresa URL pro přihlášení** zkopírujte stejnou adresu URL služby ACS (služba pro vyhodnocení zákazníka). Bude vypadat takto: `https://be.contentful.com/sso/<organization_id>/login`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a přihlašovací adresy URL tak, že na stránce pro nastavení jednotného přihlašování nakopírujete adresu URL služby ACS (kontrolní výraz).
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a adresy URL Sign-On zkopírováním adresy URL služby ACS (kontrolní služba vyhodnocení) na stránce pro nastavení jednotného přihlašování v obsahu.
 
 1. Obsahovaná aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
@@ -97,7 +97,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše jsou u obsahu aplikace v odpovědi SAML, které jsou uvedeny níže, očekáváno méně dalších atributů. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Name |  Zdrojový atribut|
+    | Název |  Zdrojový atribut|
     | --------------- | --------- |
     | e-mail | User. userPrincipalName |
 
@@ -119,7 +119,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

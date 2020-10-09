@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 323d6324bc99028a3df4cb9cada133ad8cd990aa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543257"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s elementy SD
@@ -91,7 +91,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše je aplikace prvků SD očekává, že se v odpovědi SAML vrátí zpět několik atributů, které jsou uvedeny níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name |  Zdrojový atribut|
+    | Název |  Zdrojový atribut|
     | --- | --- |
     | e-mail |uživatel. pošta |
     | FirstName |User. křestní jméno |
@@ -115,7 +115,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -143,17 +143,17 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V nabídce v horní části klikněte na **systém**a pak na **jednotné přihlašování**.
 
-    ![Konfigurace jednotného přihlašování](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
+    ![Konfigurace jednoho Sign-On](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
 
-1. V dialogovém okně **nastavení jednotného přihlašování** proveďte následující kroky:
+1. V dialogovém okně **Nastavení jednoho Sign-On** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/sd-elements-tutorial/tutorial_sd-elements_10.png)
+    ![Konfigurace jednoho Sign-On](./media/sd-elements-tutorial/tutorial_sd-elements_10.png)
 
     a. Jako **Typ jednotného přihlašování**vyberte **SAML**.
 
     b. Do textového pole **ID entity zprostředkovatele identity** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal.
 
-    c. Do textového pole **Služba jednotného přihlašování zprostředkovatele identity** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
+    c. Do textového pole **služba poskytovatele identity s jednou Sign-On službou** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal.
 
     d. Klikněte na **Uložit**.
 

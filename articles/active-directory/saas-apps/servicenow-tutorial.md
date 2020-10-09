@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
 ms.openlocfilehash: 9748c772466db73fc49b1291ffe2ce7d13da1d8c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88540209"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ServiceNow
@@ -90,7 +90,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu pera pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Snímek obrazovky nastavení jednotného přihlašování pomocí stránky SAML se zvýrazněnou ikonou pera](common/edit-urls.png)
+   ![Snímek obrazovky nastavení jednoho Sign-On se stránkou SAML se zvýrazněnou ikonou pera](common/edit-urls.png)
 
 1. V části **základní konfigurace SAML** proveďte následující kroky:
 
@@ -204,7 +204,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     b. Vyhledat **integraci – instalační program jednotného přihlašování s více poskytovateli**
 
-     ![Snímek obrazovky systémových modulů plug-in se zvýrazněnou možností instalace jednotného přihlašování s více poskytovateli](./media/servicenow-tutorial/tutorial_servicenow_04.png "Aktivovat modul plug-in")
+     ![Snímek obrazovky systémových modulů plug-in se zvýrazněnou možností integrace-vícenásobný poskytovatel s jedním Sign-On instalační program](./media/servicenow-tutorial/tutorial_servicenow_04.png "Aktivovat modul plug-in")
 
     c. Vyberte modul plug-in. Klikněte pravým tlačítkem a vyberte **aktivovat nebo upgradovat**.
 
@@ -246,7 +246,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     1. Přihlaste se k aplikaci ServiceNow jako správce.
 
-       * V rámci automatické konfigurace jsou všechna potřebná nastavení nakonfigurovaná na straně **ServiceNow** , ale **certifikát X. 509** není ve výchozím nastavení povolený. Musíte ho ručně namapovat na svého poskytovatele identity v ServiceNow. Postupujte následovně:
+       * V rámci automatické konfigurace jsou všechna potřebná nastavení nakonfigurovaná na straně **ServiceNow** , ale **certifikát X. 509** není ve výchozím nastavení povolený. Musíte ho ručně namapovat na svého poskytovatele identity v ServiceNow. Postupujte takto:
 
          1. V levém podokně vyhledejte v poli hledání oddíl **jednotného přihlašování k více poskytovatelům** a vyberte **Zprostředkovatelé identity**.
 
@@ -366,11 +366,11 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v ServiceNow. Se
 
 2. V levém podokně vyberte **jednotné přihlašování**.
 
-    ![Snímek obrazovky aplikace ServiceNow Express se zvýrazněným jednotným přihlašováním](./media/servicenow-tutorial/ic7694980ex.png "Konfigurace adresy URL aplikace")
+    ![Snímek obrazovky aplikace ServiceNow Express se zvýrazněnou jednou Sign-On](./media/servicenow-tutorial/ic7694980ex.png "Konfigurace adresy URL aplikace")
 
 3. V dialogovém okně **jednotné přihlašování** vyberte ikonu konfigurace v pravém horním rohu a nastavte následující vlastnosti:
 
-    ![Snímek obrazovky s dialogovým oknem jednotného přihlašování](./media/servicenow-tutorial/ic7694981ex.png "Konfigurace adresy URL aplikace")
+    ![Snímek obrazovky s jedním Sign-Onovým dialogovým oknem](./media/servicenow-tutorial/ic7694981ex.png "Konfigurace adresy URL aplikace")
 
     a. Přepněte na právo **Povolit jednotné přihlašování pro více zprostředkovatelů** .
 
@@ -380,7 +380,7 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v ServiceNow. Se
 
 4. V dialogovém okně **jednotné přihlašování** vyberte **Přidat nový certifikát**.
 
-    ![Snímek obrazovky dialogového okna jednotného přihlašování s zvýrazněným přidáním nového certifikátu](./media/servicenow-tutorial/ic7694973ex.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky s jedním Sign-Onovým dialogovým oknem přidat nový certifikát zvýrazněný](./media/servicenow-tutorial/ic7694973ex.png "Konfigurace jednotného přihlašování")
 
 5. V dialogovém okně **certifikáty X. 509** proveďte následující kroky:
 
@@ -396,11 +396,11 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v ServiceNow. Se
 
     e. Otevřete certifikát kódovaný ve formátu base64 stažený z Azure Portal v programu Poznámkový blok. Zkopírujte obsah této složky do schránky a vložte ji do textového pole **certifikát PEM** .
 
-    f. Vybrat **aktualizaci**
+    f. Vyberte **Aktualizovat**.
 
 6. V dialogovém okně **jednotné přihlašování** vyberte **Přidat nový IDP**.
 
-    ![Snímek obrazovky dialogového okna jednotného přihlašování se zvýrazněnou možností přidat nový IdP](./media/servicenow-tutorial/ic7694976ex.png "Konfigurace jednotného přihlašování")
+    ![Snímek obrazovky s jedním Sign-On dialogového okna s zvýrazněnou možností přidat nový IdP](./media/servicenow-tutorial/ic7694976ex.png "Konfigurace jednotného přihlašování")
 
 7. V dialogovém okně **Přidat nového zprostředkovatele identity** v části **Konfigurovat zprostředkovatele identity**proveďte následující kroky:
 

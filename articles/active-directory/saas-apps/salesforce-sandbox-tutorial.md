@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 277acbc84ab435ce1076c30a1e49f6ffdd2a0586
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543704"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce-sandbox"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s izolovaným prostorem Salesforce
@@ -99,7 +99,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!Note]
     > Pokud hodnota **adresy URL odpovědi** nezíská auto polulated, pak tuto hodnotu vyplňte ručně podle vašeho požadavku.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a stáhněte **XML metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jednu Sign-On s SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a stáhněte **XML metadat** z daných možností podle vašeho požadavku a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
@@ -123,7 +123,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -149,35 +149,35 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Klikněte na **ikonu nastavení** **v pravém** horním rohu stránky.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/configure1.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/configure1.png)
 
-3. Posuňte se dolů k **Nastavení** v levém navigačním podokně a kliknutím na **Identita** rozbalte související část. Pak klikněte na **nastavení jednotného přihlašování**.
+3. Posuňte se dolů k **Nastavení** v levém navigačním podokně a kliknutím na **Identita** rozbalte související část. Pak klikněte na **Nastavení jednoho Sign-On**.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
-4. Na stránce **nastavení jednotného přihlašování** klikněte na tlačítko **Upravit** .
+4. Na stránce **nastavení s jedním Sign-On** klikněte na tlačítko **Upravit** .
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/configure3.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/configure3.png)
 
 5. Vyberte možnost **SAML povolena**a pak klikněte na tlačítko **Uložit**.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
 6. Pokud chcete nakonfigurovat nastavení jednotného přihlašování SAML, klikněte na **Nový ze souboru metadat**.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
 7. Kliknutím na **zvolit soubor** odešlete soubor XML s metadaty, který jste stáhli z Azure Portal, a kliknete na **vytvořit**.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/xmlchoose.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-8. Na stránce **nastavení jednotného přihlašování SAML** se automaticky naplní pole a klikněte na Uložit.
+8. Na stránce **Nastavení jednoduchého Sign-On SAML** se automaticky naplní pole a klikněte na Uložit.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/salesforcexml.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/salesforcexml.png)
 
-9. Na stránce **nastavení jednotného přihlašování** klikněte na tlačítko **Stáhnout metadata** a Stáhněte soubor metadat poskytovatele služby. Tento soubor použijte v části **základní konfigurace SAML** v Azure Portal ke konfiguraci nezbytných adres URL, jak je vysvětleno výše.
+9. Na stránce **Nastavení jednoho Sign-On** klikněte na tlačítko **Stáhnout metadata** a Stáhněte soubor metadat poskytovatele služby. Tento soubor použijte v části **základní konfigurace SAML** v Azure Portal ke konfiguraci nezbytných adres URL, jak je vysvětleno výše.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/configure4.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/configure4.png)
 
 10. Pokud chcete nakonfigurovat aplikaci v režimu **SP** iniciované, je nutné splnit následující požadavky:
 
@@ -202,31 +202,31 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 13. Klikněte na **ikonu nastavení** **v pravém** horním rohu stránky.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/configure1.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/configure1.png)
 
-14. Posuňte se dolů k **Nastavení** v levém navigačním podokně a kliknutím na **Identita** rozbalte související část. Pak klikněte na **nastavení jednotného přihlašování**.
+14. Posuňte se dolů k **Nastavení** v levém navigačním podokně a kliknutím na **Identita** rozbalte související část. Pak klikněte na **Nastavení jednoho Sign-On**.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
-15. Na stránce **nastavení jednotného přihlašování** klikněte na tlačítko **Upravit** .
+15. Na stránce **nastavení s jedním Sign-On** klikněte na tlačítko **Upravit** .
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/configure3.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/configure3.png)
 
 16. Vyberte možnost **SAML povolena**a pak klikněte na tlačítko **Uložit**.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
 17. Pokud chcete nakonfigurovat nastavení jednotného přihlašování SAML, klikněte na **Nový ze souboru metadat**.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
 18. Kliknutím na **zvolit soubor** odešlete soubor XML s metadaty a kliknete na **vytvořit**.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/xmlchoose.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-19. Na stránce **nastavení jednotného přihlašování SAML** se pole naplní automaticky, do textového pole **název** zadejte název konfigurace (například *SPSSOWAAD_Test*) a klikněte na Uložit.
+19. Na stránce **Nastavení jednoduchého Sign-On SAML** se automaticky naplní pole, do textového pole **název** zadejte název konfigurace (například: *SPSSOWAAD_Test*) a klikněte na Uložit.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
 20. Pokud chcete povolit doménu v izolovaném prostoru služby Salesforce, proveďte následující kroky:
 
@@ -235,15 +235,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 21. V levém navigačním podokně v izolovaném prostoru Salesforce klikněte na **nastavení společnosti** a rozbalte související část a potom klikněte na **moje doména**.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-my-domain.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-my-domain.png)
 
 22. V části **Konfigurace ověřování** klikněte na **Upravit**.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/sf-edit-auth-config.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-edit-auth-config.png)
 
-23. V části **Konfigurace ověřování** jako **ověřovací služba**vyberte název nastavení jednotného přihlašování SAML, které jste nastavili během konfigurace jednotného přihlašování v izolovaném prostoru Salesforce, a klikněte na **Uložit**.
+23. V části **Konfigurace ověřování** jako **ověřovací služba**vyberte název nastavení Single Sign-On SAML, které jste nastavili během konfigurace jednotného přihlašování v izolovaném prostoru Salesforce, a klikněte na **Uložit**.
 
-    ![Konfigurace jednotného přihlašování](./media/salesforce-sandbox-tutorial/configure2.png)
+    ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/configure2.png)
 
 ### <a name="create-salesforce-sandbox-test-user"></a>Vytvořit testovacího uživatele izolovaného prostoru Salesforce
 

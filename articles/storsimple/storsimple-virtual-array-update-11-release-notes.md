@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: alkohli
 ms.openlocfilehash: 55103d6307614f8796c41c35d6345e1fc3aca261
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60789633"
 ---
 # <a name="storsimple-virtual-array-update-11-release-notes"></a>Zpráva k vydání verze pro StorSimple Virtual Array Update 1,1
@@ -48,7 +48,7 @@ Tato aktualizace obsahuje následující vylepšení a opravy chyb:
 
 Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
-| Ne. | Funkce | Problém |
+| Ne. | Příznak | Problém |
 | --- | --- | --- |
 | 1 |Zálohování| Tato verze obsahuje změny, které vylepšily selhání zálohování tím, že zvyšují odolnost proti selháním cloudu a vysokému využití procesoru.|
 | 2 |protokolování| Tato verze obsahuje změny v protokolování, když je zařízení v relaci podpory v režimu podrobného výpisu.|
@@ -58,7 +58,7 @@ Následující tabulka poskytuje souhrn chyb opravených v této verzi.
 
 Následující tabulka obsahuje souhrn známých problémů pro virtuální pole StorSimple a obsahuje vydané verze zaznamenané z předchozích verzí.
 
-| Ne. | Funkce | Problém | Alternativní řešení/komentáře |
+| Ne. | Příznak | Problém | Alternativní řešení/komentáře |
 | --- | --- | --- | --- |
 | **1.** |Aktualizace |Virtuální pole vytvořená ve verzi Preview nelze aktualizovat na podporovanou verzi obecné dostupnosti. |U těchto virtuálních polí je potřeba převzít služby při selhání pro vydání obecné dostupnosti pomocí pracovního postupu zotavení po havárii (DR). |
 | **2.** |Zřízený datový disk |Jakmile zřídíte datový disk určité zadané velikosti a vytvoříte odpovídající virtuální pole StorSimple, nesmíte tento datový disk zvětšit ani zmenšit. Při pokusu o provedení dojde ke ztrátě všech dat v místních vrstvách zařízení. | |

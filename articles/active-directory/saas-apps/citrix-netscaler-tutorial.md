@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 4ff6154e17408b9e2daaf3c81321ae31693de3aa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544600"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí Citrix NetScaler (ověřování založené na protokolu Kerberos)
@@ -91,7 +91,7 @@ Pokud chcete povolit jednotné přihlašování Azure AD pomocí Azure Portal, p
 
 1. V podokně **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 
-1. V podokně **nastavit jednotné přihlašování pomocí SAML** vyberte pro **základní konfiguraci SAML** ikonu pro **úpravu** pera pro úpravu nastavení.
+1. V podokně **nastavit jednu Sign-On s** podoknem SAML vyberte ikonu pro **úpravu** pera **základní konfigurace SAML** pro úpravu nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -109,7 +109,7 @@ Pokud chcete povolit jednotné přihlašování Azure AD pomocí Azure Portal, p
     > * Adresy URL použité v této části nejsou reálné hodnoty. Aktualizujte tyto hodnoty skutečnými hodnotami pro identifikátor, adresu URL odpovědi a přihlašovací adresu URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienta Citrix NetScaler](https://www.citrix.com/contact/technical-support.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
     > * Aby bylo možné nastavit jednotné přihlašování, adresy URL musí být přístupné z veřejných webů. Abyste mohli token publikovat na konfigurované adrese URL, musíte povolit bránu firewall nebo jiné nastavení zabezpečení na straně Citrix NetScaler a enble službu Azure AD.
 
-1. V podokně **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** pro **adresu URL FEDERAČNÍCH metadat aplikace**zkopírujte adresu URL a uložte ji v programu Poznámkový blok.
+1. V podokně **nastavit jeden Sign-On s** podoknem SAML v části **podpisový certifikát SAML** pro **adresu URL FEDERAČNÍCH metadat aplikace**zkopírujte adresu URL a uložte ji do programu Poznámkový blok.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -281,7 +281,7 @@ Vytvoření virtuálního serveru pro ověřování:
 
     1. Vyberte **OK**.
     
-1. Vyberte **pokračovat**.
+1. Vyberte **Pokračovat**.
 
 ### <a name="configure-the-authentication-virtual-server-to-use-azure-ad"></a>Konfigurace virtuálního serveru pro ověřování pro použití Azure AD
 

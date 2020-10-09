@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.openlocfilehash: e5e92c40cef15e99431dc9652820c71e87935f67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "61244340"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Použití směrování zpráv a vlastních koncových bodů pro zprávy ze zařízení do cloudu
@@ -25,8 +25,8 @@ IoT Hub [směrování zpráv](iot-hub-devguide-routing-query-syntax.md) umožňu
 | ------------- | ----------- |
 | **Název**      | Jedinečný název, který identifikuje dotaz. |
 | **Zdroj**    | Původ datového proudu, na kterém se má pracovat. Například telemetrie zařízení. |
-| **Podmínka** | Výraz dotazu pro dotaz směrování, který se spouští proti vlastnostem aplikace zprávy, vlastnostem systému, textu zprávy, značkám dvojitých značek zařízení a nevyhovujícím vlastnostem, aby bylo možné určit, zda se jedná o shodu koncového bodu. Další informace o vytváření dotazů najdete v tématu [syntaxe dotazů směrování zpráv](iot-hub-devguide-routing-query-syntax.md) . |
-| **Služba**  | Název koncového bodu, kde IoT Hub odesílá zprávy, které odpovídají dotazu. Doporučujeme, abyste vybrali koncový bod ve stejné oblasti jako centrum IoT. |
+| **Condition** (Podmínka) | Výraz dotazu pro dotaz směrování, který se spouští proti vlastnostem aplikace zprávy, vlastnostem systému, textu zprávy, značkám dvojitých značek zařízení a nevyhovujícím vlastnostem, aby bylo možné určit, zda se jedná o shodu koncového bodu. Další informace o vytváření dotazů najdete v tématu [syntaxe dotazů směrování zpráv](iot-hub-devguide-routing-query-syntax.md) . |
+| **Koncový bod**  | Název koncového bodu, kde IoT Hub odesílá zprávy, které odpovídají dotazu. Doporučujeme, abyste vybrali koncový bod ve stejné oblasti jako centrum IoT. |
 
 Jedna zpráva se může shodovat s podmínkou pro více směrovacích dotazů. v takovém případě IoT Hub doručuje zprávu koncovému bodu přidruženému k jednotlivým odpovídajícím dotazům. IoT Hub také automaticky odstraněné doručování zpráv, takže pokud zpráva odpovídá více dotazům, které mají stejný cíl, je do tohoto cíle zapisována pouze jednou.
 

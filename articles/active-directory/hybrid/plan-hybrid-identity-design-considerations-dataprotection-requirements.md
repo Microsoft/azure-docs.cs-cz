@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 056d0caf2bfc6e99d5d659a2561bc41844feb79a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "64918779"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Plánování vylepšení zabezpečení dat prostřednictvím řešení silné identity
@@ -73,7 +73,7 @@ Data přenášená mezi zařízením a datacenterm nebo mezi zařízením a clou
 * Udržuje Správa identit v cloudu i v úložišti adresářů (v rámci a mezi datacentry) podepsané přenosy?
 
 ## <a name="compliance"></a>Dodržování předpisů
-Předpisy, zákony a požadavky na dodržování legislativních předpisů se budou lišit v závislosti na odvětví, ve kterém vaše společnost patří. Společnosti ve vysoce regulovaných odvětvích musí řešit aspekty týkající se správy identit související s problémy s dodržováním předpisů. Nařízení, jako je Sarbanes-Oxley (SOX), přenositelnost zdravotního pojištění a AKT (HIPAA), jsou v souvislosti s identitou a přístupem striktní (BLILEY) a standard zabezpečení dat v oboru platebních karet (PCI DSS). Řešení hybridní identity, které vaše společnost přijme, musí mít základní funkce, které budou plnit požadavky jednoho nebo více těchto předpisů. V této oblasti se ujistěte, že jsou kladeny následující otázky:
+Předpisy, zákony a požadavky na dodržování legislativních předpisů se budou lišit v závislosti na odvětví, ve kterém vaše společnost patří. Společnosti ve vysoce regulovaných odvětvích musí řešit aspekty týkající se správy identit související s problémy s dodržováním předpisů. Právní předpisy, jako je například Sarbanes-Oxley (SOX), přenositelnost zdravotního pojištění a AKT (HIPAA), Bliley Act (Gramm) a standard zabezpečení dat v odvětví platebních karet (PCI DSS) jsou striktní v souvislosti s identitou a přístupem. Řešení hybridní identity, které vaše společnost přijme, musí mít základní funkce, které budou plnit požadavky jednoho nebo více těchto předpisů. V této oblasti se ujistěte, že jsou kladeny následující otázky:
 
 * Dodržuje řešení hybridní identity dodržování zákonných požadavků pro vaši firmu?
 * Má vytvořené řešení hybridní identity 
