@@ -10,10 +10,10 @@ ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
 ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84266521"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Kurz: seřazení Azure Data Box Disk
@@ -57,7 +57,7 @@ Pro objednání Data Box Disk proveďte následující kroky.
 
    ![Vyhledání Azure Data Box 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
-2. Klikněte na možnost **Vytvořit**.
+2. Klikněte na **Vytvořit**.
 
 3. Podívejte se, zda je služba Data Box dostupná ve vaší oblasti. Zadejte nebo vyberte následující informace a pak klikněte na **Použít**.
 
@@ -99,7 +99,7 @@ Pro objednání Data Box Disk proveďte následující kroky.
 
     Účet úložiště zadaný pro spravované disky slouží jako přípravný účet úložiště. Služba Data Box nahrává virtuální pevné disky do přípravného účtu úložiště a pak je převede na spravované disky a přesune se do skupin prostředků. Další informace najdete v tématu popisujícím [ověření nahrání dat do Azure](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure).
 
-6. Klikněte na **Další**.
+6. Klikněte na **Next** (Další).
 
     ![Zadání podrobností objednávky](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 

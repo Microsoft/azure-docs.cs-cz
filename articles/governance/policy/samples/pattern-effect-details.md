@@ -4,10 +4,10 @@ description: Tento model Azure Policy poskytuje příklad použití různých ef
 ms.date: 06/29/2020
 ms.topic: sample
 ms.openlocfilehash: 9c7e7689aa837a2dba0992112df3cd36ac9affe6
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85565726"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy – vzor: efekty

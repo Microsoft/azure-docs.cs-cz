@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: f02c08e752575dd1f57ce91dfc3145b69e3a2fd2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81010490"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Ukázky Azure Storage pomocí klientských knihoven V12 .NET
@@ -23,7 +23,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 ## <a name="blob-samples"></a>Ukázky objektů BLOB
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 :::row:::
    :::column span="":::
@@ -94,7 +94,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 ## <a name="data-lake-storage-gen2-samples"></a>Ukázky Data Lake Storage Gen2
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 :::row:::
    :::column span="":::
@@ -180,7 +180,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 ## <a name="azure-files-samples"></a>Ukázky souborů Azure
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 :::row:::
    :::column span="":::
@@ -222,7 +222,7 @@ Následující tabulka poskytuje přehled našich ukázek úložiště a scéná
 
 ## <a name="queue-samples"></a>Ukázky front
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 :::row:::
    :::column span="":::
@@ -320,7 +320,7 @@ Chcete-li zobrazit kompletní ukázkové knihovny .NET, přečtěte si:
 
 Úložiště GitHubu můžete procházet a klonovat pro každou knihovnu.
 
-## <a name="getting-started-guides"></a>Úvodní příručky
+## <a name="getting-started-guides"></a>Příručky Začínáme
 
 Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure Storage, přečtěte si následující příručky.
 

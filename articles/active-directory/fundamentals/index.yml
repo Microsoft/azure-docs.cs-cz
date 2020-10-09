@@ -13,17 +13,17 @@ metadata:
   ms.topic: landing-page
   services: active-directory
   ms.openlocfilehash: 7a6692b4ed0314acc8200e3e364e9a045d33e799
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
+  ms.lasthandoff: 10/09/2020
   ms.locfileid: "80049684"
 landingContent:
 - title: Informace o Azure AD
   linkLists:
   - linkListType: overview
     links:
-    - text: Představení služby Azure Active Directory
+    - text: Co je Azure Active Directory?
       url: active-directory-whatis.md
     - text: Novinky ve službě Azure Active Directory
       url: whats-new.md

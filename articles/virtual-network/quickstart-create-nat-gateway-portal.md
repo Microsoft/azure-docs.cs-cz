@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
 ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711404"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>Kurz: Vytvoření brány NAT pomocí Azure Portal
@@ -30,7 +30,7 @@ Pokud chcete, můžete tento postup provést pomocí [Azure CLI](quickstart-crea
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
 
@@ -96,9 +96,9 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Verze protokolu IP | Vyberte **IPv4**.
-    | SKU | Vyberte **Standard**.
-    | Name | Zadejte **myPublicIP**. |
-    | Předplatné | Vyberte předplatné.|
+    | Skladová jednotka (SKU) | Vyberte **Standard**.
+    | Název | Zadejte **myPublicIP**. |
+    | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **myResourceGroupNAT**. |
     | Umístění | Vyberte **USA – východ 2**.|
 

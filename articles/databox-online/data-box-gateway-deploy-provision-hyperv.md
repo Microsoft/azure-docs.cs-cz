@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: ffbfd3214242d8df5fe33faf465bc1da3eb9986d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84196642"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Kurz: zřízení Azure Data Box Gateway v Hyper-V
@@ -31,9 +31,9 @@ V tomto kurzu se naučíte:
 > * Zřízení virtuálního zařízení v hypervisoru
 > * Spuštění virtuálního zařízení a získání IP adresy
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Požadavky na zřízení virtuálního zařízení v hostitelském systému s Hyper-V ve Windows Serveru 2016 nebo Windows Serveru 2012 R2 jsou následující.
 
@@ -83,7 +83,7 @@ K vytvoření virtuálního zařízení potřebujete:
 
 ## <a name="bitlocker-considerations"></a>Požadavky nástroje BitLocker
 
-* Doporučujeme povolit nástroj BitLocker na svém virtuálním počítači s Data Box Gateway. Ve výchozím nastavení není BitLocker povolený. Další informace naleznete v tématu:
+* Doporučujeme povolit nástroj BitLocker na svém virtuálním počítači s Data Box Gateway. Ve výchozím nastavení není BitLocker povolený. Další informace naleznete v tématech:
   * [Nastavení podpory šifrování ve Správci technologie Hyper-V](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
   * [Podpora BitLockeru ve virtuálním počítači](https://kb.vmware.com/s/article/2036142)
 
@@ -100,7 +100,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte zařízení.
 
    ![Vytvořit nový virtuální počítač ve Správci technologie Hyper-V](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
 4. Na stránce **Než začnete** Průvodce novým virtuálním počítačem klikněte na **Další**.
-5. Na stránce **Zadejte název a umístění** zadejte **Název** virtuálního zařízení. Klikněte na **Další**.
+5. Na stránce **Zadejte název a umístění** zadejte **Název** virtuálního zařízení. Klikněte na **Next** (Další).
 
    ![Zadat název a stránku umístění](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
 6. Na stránce **Zadat generaci** zvolte jako typ image zařízení .vhdx **Generace 2** a pak klikněte na **Další**.    
@@ -134,16 +134,16 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte zařízení.
 
     ![Průvodce novým virtuálním pevným diskem](./media/data-box-gateway-deploy-provision-hyperv/image12.png)
 15. Na stránce **Než začnete** Průvodce novým virtuálním pevným diskem klikněte na **Další**.
-16. Na stránce **Zvolit formát disku** přijměte výchozí možnost formátu **VHDX**. Klikněte na **Další**.
-17. Na stránce **Zvolit typ disku** jako typ virtuálního pevného disku nastavte **Dynamicky se zvětšující** (doporučeno). Disk **pevné velikosti** by také fungoval, ale možná byste museli dlouho čekat. Doporučujeme nepoužívat možnost **Rozdílový**. Klikněte na **Další**.
+16. Na stránce **Zvolit formát disku** přijměte výchozí možnost formátu **VHDX**. Klikněte na **Next** (Další).
+17. Na stránce **Zvolit typ disku** jako typ virtuálního pevného disku nastavte **Dynamicky se zvětšující** (doporučeno). Disk **pevné velikosti** by také fungoval, ale možná byste museli dlouho čekat. Doporučujeme nepoužívat možnost **Rozdílový**. Klikněte na **Next** (Další).
 
     ![Výběr stránky typ disku](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
-18. Na stránce **Zadejte název a umístění** zadejte **název** a **umístění** (k umístění můžete přejít) datového disku. Klikněte na **Další**.
+18. Na stránce **Zadejte název a umístění** zadejte **název** a **umístění** (k umístění můžete přejít) datového disku. Klikněte na **Next** (Další).
 
     ![Zadat název a stránku umístění](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
 19. Na stránce **Konfigurovat disk** vyberte možnost **Vytvořit nový prázdný virtuální pevný disk** a jako velikost zadejte **2 TB** (nebo více).
 
-    Minimální požadavek je 2 TB, ale vždy můžete zřídit větší disk. Mějte na paměti, že disk po zřízení už není možné zmenšit. Při pokusu o zmenšení disku dojde ke ztrátě všech místních dat v zařízení. Rozšíření datového disku není podporováno. Klikněte na **Další**.
+    Minimální požadavek je 2 TB, ale vždy můžete zřídit větší disk. Mějte na paměti, že disk po zřízení už není možné zmenšit. Při pokusu o zmenšení disku dojde ke ztrátě všech místních dat v zařízení. Rozšíření datového disku není podporováno. Klikněte na **Next** (Další).
 
     ![Stránka konfigurace disku](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
 20. Na stránce **Souhrn** zkontrolujte podrobnosti virtuálního pevného disku, a pokud budete spokojeni, kliknutím na **Dokončit** disk vytvořte. Průvodce se zavře a do vašeho počítače se přidá virtuální pevný disk.

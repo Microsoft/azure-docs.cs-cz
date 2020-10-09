@@ -9,10 +9,10 @@ ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
 ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78244990"
 ---
 ## <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
@@ -27,7 +27,7 @@ V této části vytvoříte virtuální síť a podsíť.
     |------------------|-----------------------------------------------------------------|
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Vyberte své předplatné Azure.                                  |
-    | Skupina prostředků   | Vyberte **vytvořit nové**, zadejte **\<resource-group-name>** a pak vyberte OK nebo vyberte existující na **\<resource-group-name>** základě parametrů. |
+    | Resource Group   | Vyberte **vytvořit nové**, zadejte **\<resource-group-name>** a pak vyberte OK nebo vyberte existující na **\<resource-group-name>** základě parametrů. |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Napište **\<virtual-network-name>**                                    |
     | Oblast           | Vybrali **\<region-name>** |

@@ -9,10 +9,10 @@ ms.date: 03/24/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
 ms.openlocfilehash: 5ba9bb723ab7b052440eea2ac509692200b80f6e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84750701"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Kurz: nasazení a konfigurace Azure Firewall v hybridní síti pomocí Azure Portal
@@ -45,15 +45,15 @@ V tomto kurzu se naučíte:
 
 Pokud chcete použít Azure PowerShell k provedení tohoto postupu, přečtěte si téma [nasazení a konfigurace Azure firewall v hybridní síti pomocí Azure PowerShell](tutorial-hybrid-ps.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Hybridní síť používá model architektury hvězdicové a hvězdicové ke směrování provozu mezi Azure virtuální sítě a místními sítěmi. Architektura centra a paprsků má následující požadavky:
 
-- Nastavte **AllowGatewayTransit** při partnerském vztahu VNet-hub k virtuální síti VNet-paprsek. V architektuře sítě s rozbočovačem a paprsky umožňuje přenos brány virtuální sítě rozbočovače sdílení brány VPN v centru místo nasazení bran VPN v každé virtuální síti paprsků. 
+- Nastavte **AllowGatewayTransit** při VNet-Hub partnerských vztahů na VNet-paprsek. V architektuře sítě s rozbočovačem a paprsky umožňuje přenos brány virtuální sítě rozbočovače sdílení brány VPN v centru místo nasazení bran VPN v každé virtuální síti paprsků. 
 
    Trasy k virtuálním sítím připojeným bránou nebo místním sítím se navíc automaticky rozšíří do směrovacích tabulek pro partnerské virtuální sítě s použitím přenosu brány. Další informace najdete v tématu [Konfigurace přenosu brány VPN pro partnerský vztah virtuálních sítí](../vpn-gateway/vpn-gateway-peering-gateway-transit.md).
 
-- Nastavte **useremotegateways nastavený** při partnerské virtuální síti s rozbočovačem VNet-paprsek. Pokud je nastavená taky **useremotegateways nastavený** a **AllowGatewayTransit** ve vzdáleném partnerském vztahu, virtuální síť paprsků používá pro přenos brány vzdálenou virtuální síť.
+- Nastavte **useremotegateways nastavený** , když se VNet-Spoke partnerských vztahů k virtuálnímu centru VNET. Pokud je nastavená taky **useremotegateways nastavený** a **AllowGatewayTransit** ve vzdáleném partnerském vztahu, virtuální síť paprsků používá pro přenos brány vzdálenou virtuální síť.
 - Chcete-li směrovat přenos podsítě paprsků přes bránu firewall centra, můžete použít trasu definovanou uživatelem (UDR), která odkazuje na bránu firewall s možností **šíření tras brány virtuální sítě** zakázané. Možnost zakázat **šíření tras brány virtuální sítě** zabraňuje distribuci tras do podsítí paprsků. Tím se zabrání tomu, aby se naučily trasy z konfliktu s vaším UDR. Pokud chcete zajistit, aby **šíření tras brány virtuální sítě** bylo povolené, nezapomeňte v bráně firewall definovat konkrétní trasy pro přepsání těch, které jsou publikované z místního počítače přes protokol BGP.
 - Nakonfigurujte UDR v podsíti brány centra, která odkazuje na IP adresu brány firewall jako na další segment směrování sítí paprsků. V Azure Firewall podsíti se nevyžadují žádné UDR, protože se učí trasy od protokolu BGP.
 
@@ -67,7 +67,7 @@ Postup vytvoření těchto tras najdete v části [Vytvoření pravidel](#create
 >[!NOTE]
 >Provoz mezi přímo rovnocenným virtuální sítě je směrován přímo, i když jako výchozí bránu UDR body Azure Firewall. Aby bylo možné odeslat podsíť do brány firewall v tomto scénáři, musí UDR v obou podsítích explicitně obsahovat předponu sítě cílové podsítě.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-the-firewall-hub-virtual-network"></a>Vytvoření virtuální sítě centra firewallu
 
@@ -143,7 +143,7 @@ Teď nasaďte bránu firewall do virtuální sítě centra brány firewall.
    |---------|---------|
    |Předplatné     |\<your subscription\>|
    |Skupina prostředků     |**FW – Hybrid-test** |
-   |Name     |**AzFW01**|
+   |Název     |**AzFW01**|
    |Umístění     |Vyberte dříve použité umístění.|
    |Volba virtuální sítě     |**Použít existující**:<br> **Virtuální síť – centrum**|
    |Veřejná IP adresa     |Create new (Vytvořit novou): <br>**Název**  -  **FW-PIP** |
@@ -237,7 +237,7 @@ V tomto kroku vytvoříte připojení z virtuální sítě rozbočovače k míst
 7. Pro **sdílený klíč (PSK)** zadejte **AzureA1b2C3**.
 8. Vyberte **OK**.
 
-Vytvořte připojení k virtuální síti z místního prostředí k rozbočovači. Tento krok je podobný předchozímu, s tím rozdílem, že vytvoříte připojení z VNet-OnPrem do VNet-hub. Ověřte, že se sdílené klíče shodují. Připojení se vytvoří během několika minut.
+Vytvořte připojení k virtuální síti z místního prostředí k rozbočovači. Tento krok je podobný předchozímu, s tím rozdílem, že vytvoříte připojení z VNet-Onprem k rozbočovači VNet. Ověřte, že se sdílené klíče shodují. Připojení se vytvoří během několika minut.
 
 1. Otevřete skupinu prostředků " **Hybrid-test FW** " a vyberte bránu **GS-OnPrem** .
 2. V levém sloupci vyberte **připojení** .

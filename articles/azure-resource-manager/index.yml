@@ -12,10 +12,10 @@ metadata:
   ms.author: tomfitz
   ms.date: 03/04/2020
   ms.openlocfilehash: 6a0c4ecff3f381dc12ba3ce6f385782754857bfe
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/24/2020
+  ms.lasthandoff: 10/09/2020
   ms.locfileid: "78297723"
 highlightedContent:
   items:
@@ -79,7 +79,7 @@ conceptualContent:
     footerLink:
       url: management/index.yml
       text: Další informace
-  - title: Spravované aplikace
+  - title: Managed Applications
     links:
     - url: managed-applications/overview.md
       itemType: overview
@@ -96,7 +96,7 @@ conceptualContent:
     footerLink:
       url: managed-applications/index.yml
       text: Další informace
-  - title: Azure Custom Providers
+  - title: Vlastní poskytovatelé Azure
     links:
     - url: custom-providers/overview.md
       itemType: overview

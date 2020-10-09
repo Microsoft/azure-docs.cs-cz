@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85253958"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Kopírování dat z úložiště objektů BLOB v Azure do databáze v Azure SQL Database pomocí Azure Data Factory
@@ -38,7 +38,7 @@ V tomto kurzu budete provádět následující kroky:
 > * Aktivace kanálu podle plánu
 > * Monitorování spuštění aktivit a kanálu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. Blob Storage použijete jako *zdrojové* úložiště dat. Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md), kde najdete postup jeho vytvoření.
 * **Azure SQL Database**. Tuto databázi použijete jako úložiště dat *jímky*. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření.
@@ -127,7 +127,7 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
 >V tomto kurzu použijete *klíč účtu* jako typ ověřování pro zdrojové úložiště dat, ale v případě potřeby můžete vybrat jiné podporované metody ověřování: *URI SAS*,*instanční objekt* a *spravovaná identita* . Podrobnosti najdete v odpovídajících částech [tohoto článku](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties) .
 >K bezpečnému ukládání tajných kódů pro úložiště dat je také vhodné použít Azure Key Vault. Podrobnější ilustrace najdete v [tomto článku](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) .
 
-1. Pokud chcete vytvořit zdrojovou datovou sadu, přejít na kartu **zdroj** . Vyberte **+ Nová** .
+1. Přejít na kartu **zdroj** . Vyberte **+ Nová** a vytvořte zdrojovou datovou sadu.
 
 1. V dialogovém okně **Nová datová sada** vyberte **Azure Blob Storage**a pak vyberte **pokračovat**. Zdrojová data jsou v úložišti Blob Storage, takže jako zdrojovou datovou sadu vyberete **Azure Blob Storage**.
 

@@ -2,11 +2,11 @@
   items:
     - name: Začínáme s Azure
       href: azure-operations-guide.md
-    - name: Šablony Rychlý start
+    - name: Rychlý start
       items:
-        - name: Virtuální počítače
+        - name: Virtual Machines
           items:
-            - name: Virtuální počítače s Windows
+            - name: Windows Virtual Machines
               href: ../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Linux Virtual Machines
               href: ../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
@@ -32,7 +32,7 @@
               href: ../../site-recovery/azure-to-azure-quickstart.md
     - name: Kurzy
       items:
-        - name: Virtuální počítače
+        - name: Virtual Machines
           items:
             - name: Vytvoření a správa virtuálního počítače s Windows
               href: ../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
@@ -60,4 +60,4 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Přehled Portálu Microsoft Azure
           href: 'https://azure.microsoft.com/documentation/articles/azure-portal-overview/'
-    - name: Odkazy
+    - name: Reference

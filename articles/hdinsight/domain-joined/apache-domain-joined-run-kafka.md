@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
 ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85105935"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Kurz: Konfigurace zásad Apache Kafka v HDInsight pomocí Balíček zabezpečení podniku (Preview)
@@ -142,7 +142,7 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** vytv
 3. Postupujte podle kroků 3 v části **sestavení a nasazení příkladu** v [kurzu: pomocí rozhraní API pro Apache Kafka výrobce a příjemce](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) ověřte, zda `kafka-producer-consumer.jar` je k dispozici také **sales_user**.
 
    > [!NOTE]  
-   > Pro tento kurz použijte Kafka-Producer-Consumer. jar v části "DomainJoined-producent-Consumer" Project (nikoli na jednom projektu producent-příjemce).
+   > Pro tento kurz prosím použijte Kafka-Producer-Consumer. jar v projektu DomainJoined-producent-Consumer (ne na Producer-Consumer projektu, což je pro scénáře nepřipojeného k doméně).
 
 4. Spuštěním následujícího příkazu ověřte, že **sales_user1** může vydávat k tématu `salesevents` :
 
@@ -218,14 +218,14 @@ Vytvoření a použití témat v Kafka ESP pomocí konzoly:
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster Kafka, který jste vytvořili, pomocí následujících kroků:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
 1. V části **služby**vyberte **clustery HDInsight** .
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu. 
-1. Klikněte na **Odstranit**. Klikněte na tlačítko **Ano**.
+1. Klikněte na **Odstranit**. Klikněte na **Ano**.
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Pokud Kafka-Producer-Consumer. jar v clusteru připojeném k doméně nefunguje, ujistěte se prosím, že používáte Kafka-Producer-Consumer. jar v rámci projektu DomainJoined-producent-příjemce (nikoli v rámci projektu, který není připojený k doméně).
+Pokud Kafka-Producer-Consumer. jar v clusteru připojeném k doméně nefunguje, ujistěte se prosím, že používáte Kafka-Producer-Consumer. jar v rámci projektu DomainJoined-producent-příjemce (ne pod Producer-Consumer projektu, což je pro scénáře nepřipojeného k doméně).
 
 ## <a name="next-steps"></a>Další kroky
 
