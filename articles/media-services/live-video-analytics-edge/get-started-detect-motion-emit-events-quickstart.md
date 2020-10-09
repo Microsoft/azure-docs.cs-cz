@@ -3,12 +3,12 @@ title: Začínáme se službou Live video Analytics v IoT Edge – Azure
 description: V tomto rychlém startu se dozvíte, jak začít pracovat se službou Live video Analytics na IoT Edge. Naučte se detekovat pohyb v živém streamu videa.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 9cf574cba023c9eb5a44999b3aa04f6c1e626ed1
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 4975223255cb92c85c3117dbd44a64916054b590
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773384"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825928"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Rychlý Start: Začínáme – Live video Analytics na IoT Edge
 
@@ -81,7 +81,7 @@ Podle těchto pokynů se připojte ke službě IoT Hub pomocí rozšíření Azu
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Analýza živých videí na základě detekce pohybu":::
-1. <!--In Visual Studio Code-->Vyberte **Zobrazit**  >  **Průzkumníka**. Případně vyberte CTRL + SHIFT + E.
+1. Vyberte **Zobrazit**  >  **Průzkumníka**. Případně vyberte CTRL + SHIFT + E.
 1. V levém dolním rohu karty **Průzkumník** vyberte **Azure IoT Hub**.
 1. Kliknutím na ikonu **Další možnosti** zobrazíte kontextovou nabídku. Pak vyberte **nastavit IoT Hub připojovací řetězec**.
 1. Po zobrazení vstupního pole zadejte připojovací řetězec IoT Hub. V Cloud Shell můžete získat připojovací řetězec z *~/clouddrive/lva-sample/appsettings.jsna*.

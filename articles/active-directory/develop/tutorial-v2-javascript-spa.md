@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 2cfc0324a06b4d950fc289b9c8ef033e77ffa53f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 027305d953a24de17e62aa74b33b72494b03e652
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627903"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825917"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA)
 
@@ -35,7 +35,7 @@ V tomto kurzu:
 >[!TIP]
 > V tomto kurzu se používá MSAL.js V1. x, která je omezená na použití implicitního toku udělení pro jednostránkové aplikace. Místo toho doporučujeme, aby všechny nové aplikace používaly [MSAL.js 2. x a tok autorizačního kódu s podporou PKCE a CORS](tutorial-v2-javascript-auth-code.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Node.js](https://nodejs.org/en/download/) pro spuštění místního webového serveru.
 * [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný editor pro úpravu souborů projektu.
@@ -72,7 +72,7 @@ Ujistěte se, že máte nainstalovanou [Node.js](https://nodejs.org/en/download/
    npm install morgan --save
    ```
 
-1. Nyní vytvořte soubor. js s názvem `index.js` a přidejte následující kód:
+1. Nyní vytvořte soubor. js s názvem `server.js` a přidejte následující kód:
 
    ```JavaScript
    const express = require('express');
@@ -265,7 +265,7 @@ Teď máte k dispozici jednoduchý Server, který bude sloužit pro SPA. Zamýš
 
 Než budete pokračovat s ověřováním, zaregistrujte svou aplikaci na **Azure Active Directory**.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a pak nastavte relaci portálu na klienta služby Azure AD, kterého chcete použít.
 1. Přejít na stránku Microsoft Identity Platform for Developers [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
 1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
@@ -279,7 +279,7 @@ Než budete pokračovat s ověřováním, zaregistrujte svou aplikaci na **Azure
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Nastavit adresu URL pro přesměrování pro Node.js
 >
-> V případě Node.js můžete port webového serveru nastavit v souboru *index.js* . V tomto kurzu se používá port 3000, ale můžete použít jakýkoli jiný dostupný port.
+> V případě Node.js můžete port webového serveru nastavit v souboru *server.js* . V tomto kurzu se používá port 3000, ale můžete použít jakýkoli jiný dostupný port.
 >
 > Chcete-li nastavit adresu URL pro přesměrování v informacích o registraci aplikace, přepněte zpět do podokna **Registrace aplikace** a proveďte jednu z následujících akcí:
 >
@@ -513,3 +513,4 @@ V naší sadě scénářů s více částmi se dostanete hlouběji do vývoje je
 
 > [!div class="nextstepaction"]
 > [Scénář: jednostránkové aplikace](scenario-spa-overview.md)
+

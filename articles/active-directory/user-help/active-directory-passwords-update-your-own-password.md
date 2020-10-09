@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: c2bf4d5facc96a0876d4321a61ed6f414dfd78da
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029541"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827763"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Resetujte své pracovní nebo školní heslo pomocí bezpečnostních údajů
 
@@ -69,7 +69,7 @@ Pokud nemůžete získat přístup k účtu Azure Active Directory (Azure AD), m
 
     3. Zadejte a potvrďte nové heslo a pak vyberte **Dokončit**.
 
-- **Resetujte heslo pomocí telefonního čísla.** Pošle textovou zprávu na telefonní číslo, které jste předtím nastavili v části informace o zabezpečení. Pokud váš správce zapnul prostředí informací o zabezpečení, můžete získat další informace o nastavení telefonního čísla v článku [Nastavení bezpečnostních údajů pro použití telefonního hovoru (Preview)](security-info-setup-phone-number.md) . Pokud ještě nepoužíváte bezpečnostní údaje, najdete další informace o nastavení telefonního čísla v článku [Nastavení mého účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) .
+- **Resetujte heslo pomocí telefonního čísla.** Vloží automatizované hlasové volání do telefonního čísla, které jste dříve nastavili v informacích o zabezpečení. Pokud váš správce zapnul prostředí informací o zabezpečení, můžete získat další informace o nastavení telefonního čísla v článku [Nastavení bezpečnostních údajů pro použití telefonního hovoru (Preview)](security-info-setup-phone-number.md) . Pokud ještě nepoužíváte bezpečnostní údaje, najdete další informace o nastavení telefonního čísla v článku [Nastavení mého účtu pro dvoustupňové ověřování](multi-factor-authentication-end-user-first-time.md) .
 
     1. Vyberte **zavolat mi na mobilní telefon**, zadejte své telefonní číslo a pak vyberte **zavolat**.
 

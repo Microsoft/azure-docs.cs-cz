@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 165a2c6221c8d3c14f71134deef962d0859bb438
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9a06dea64ffb348477308979fa07c0e2ce822b0c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816707"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825409"
 ---
 # <a name="deploy-spot-vms-using-the-azure-cli"></a>Nasazení virtuálních počítačů s přímým použitím Azure CLI
 
@@ -64,8 +64,25 @@ az vm list \
    --output table
 ```
 
+## <a name="simulate-an-eviction"></a>Simulace vyřazení
+
+Můžete [simulovat vyřazení](/rest/api/compute/virtualmachines/simulateeviction) virtuálních počítačů s virtuálním počítačem, abyste mohli otestovat, jak dobře bude vaše aplikace schopná vyřadit do náhlého vyřazení. 
+
+Pro vaše informace nahraďte následující údaje: 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```http
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
 **Další kroky**
 
-Můžete také vytvořit virtuální počítač s přímým použitím pomocí [Azure PowerShell](../windows/spot-powershell.md), [portálu](../windows/spot-portal.md)nebo [šablony](spot-template.md).
+Můžete také vytvořit virtuální počítač s přímým použitím pomocí [Azure PowerShell](../windows/spot-powershell.md), [portálu](../spot-portal.md)nebo [šablony](spot-template.md).
+
+Dotaz na aktuální informace o cenách pomocí [API maloobchodních cen Azure](/rest/api/cost-management/retail-prices/azure-retail-prices) najdete v informacích o přímých cenách. `meterName`A `skuName` bude obsahovat oba `Spot` .
 
 Pokud dojde k chybě, přečtěte si [kódy chyb](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

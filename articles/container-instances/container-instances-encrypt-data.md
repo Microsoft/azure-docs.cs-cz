@@ -3,14 +3,14 @@ title: Šifrování dat nasazení
 description: Informace o šifrování trvalých dat pro prostředky instance kontejneru a o tom, jak šifrovat data pomocí klíče spravovaného zákazníkem
 ms.topic: article
 ms.date: 01/17/2020
-author: dkkapur
-ms.author: dekapur
-ms.openlocfilehash: 3c7a84dad1f107d8709e3bcdeac696414cdf883d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+author: macolso
+ms.author: macolso
+ms.openlocfilehash: 1c45999dbb354e8c2d550be82cdf37a6694d2dbb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259703"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825671"
 ---
 # <a name="encrypt-deployment-data"></a>Šifrování dat nasazení
 
@@ -24,11 +24,11 @@ Data v ACI se šifrují a dešifrují pomocí 256 šifrování AES. Je povolená
 
 Pro šifrování dat kontejneru můžete spoléhat na klíče spravované Microsoftem, nebo můžete šifrování spravovat pomocí vlastních klíčů. Následující tabulka porovnává tyto možnosti: 
 
-|    |    Klíče spravované společností Microsoft     |     Klíče spravované zákazníkem     |
+|    |    Klíče spravované Microsoftem     |     Klíče spravované zákazníkem     |
 |----|----|----|
 |    **Operace šifrování a dešifrování**    |    Azure    |    Azure    |
 |    **Úložiště klíčů**    |    Úložiště klíčů Microsoftu    |    Azure Key Vault    |
-|    **Zodpovědnost za střídání klíčů**    |    Partnerský vztah Microsoftu    |    Customer (Zákazník)    |
+|    **Zodpovědnost za střídání klíčů**    |    Partnerský vztah Microsoftu    |    Zákazník    |
 |    **Přístup ke klíči**    |    Jenom Microsoft    |    Microsoft, zákazník    |
 
 Zbývající část dokumentu popisuje kroky potřebné k zašifrování dat nasazení ACI s klíčem (klíč spravovaný zákazníkem). 

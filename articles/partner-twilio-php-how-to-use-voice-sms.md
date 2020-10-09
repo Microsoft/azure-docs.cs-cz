@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: c29e0f687e36eb679875ea7899aa1a0cd91bd122
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2ce0e34032d8f0d07af3a7dcd3c47558814be7bd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169489"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826824"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>Použití Twilio pro hlasové funkce a možnosti SMS v PHP
 Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí služby Twilio API v Azure. Mezi zahrnuté scénáře patří telefonní hovor a odeslání zprávy o krátké službě zprávy (SMS). Další informace o Twilio a použití hlasu a SMS v aplikacích najdete v části [Další kroky](#NextSteps) .
@@ -146,7 +146,7 @@ catch (Exception $e)
 
 Jak bylo zmíněno, tento kód používá Twilio web k vrácení TwiML odpovědi. Místo toho můžete k poskytnutí odpovědi TwiML použít svůj vlastní web. Další informace najdete v tématu [jak poskytnout TwiML odpovědi z vašeho vlastního](#howto_provide_twiml_responses)webu.
 
-* **Poznámka**: k odstraňování potíží s chybami ověřování certifikátu TLS/SSL si přečtěte téma.[http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
+* **Poznámka**: k odstraňování potíží s chybami ověřování certifikátu TLS/SSL si přečtěte téma. [https://www.twilio.com/docs/api/errors][ssl_validation] 
 
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>Postupy: odeslání zprávy SMS
 Následující příklad ukazuje, jak odeslat zprávu SMS pomocí třídy **Services_Twilio** . Číslo **od** je poskytované Twilio pro zkušební účty k odeslání zpráv SMS. Aby bylo možné účet Twilio spustit před spuštěním kódu, je nutné ověřit **jeho číslo.**
@@ -210,7 +210,7 @@ print $response;
 
 Další informace o TwiML najdete v tématu [https://www.twilio.com/docs/api/twiml][twiml_reference] . 
 
-Jakmile nastavíte stránku PHP tak, aby poskytovala odpovědi TwiML, použijte adresu URL stránky PHP jako adresu URL předanou `Services_Twilio->account->calls->create` metodě. Například pokud máte webovou aplikaci s názvem **MyTwiML** nasazenou do hostované služby Azure a název stránky PHP je **MyTwiML. php**, můžete adresu URL předat **Services_Twilio->>volání – >vytvořit** , jak je znázorněno v následujícím příkladu:
+Jakmile nastavíte stránku PHP tak, aby poskytovala odpovědi TwiML, použijte adresu URL stránky PHP jako adresu URL předanou  `Services_Twilio->account->calls->create`  metodě. Například pokud máte webovou aplikaci s názvem **MyTwiML** nasazenou do hostované služby Azure a název stránky PHP je **MyTwiML. php**, můžete adresu URL předat  **Services_Twilio->>volání – >vytvořit**  , jak je znázorněno v následujícím příkladu:
 
 ```php
 require_once 'Services/Twilio.php';

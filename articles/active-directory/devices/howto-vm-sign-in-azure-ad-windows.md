@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 27ffc176fc890d90e4201069ec1728eed69d4011
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287096"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826665"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -191,7 +191,7 @@ az role assignment create \
 
 Další informace o tom, jak pomocí Azure RBAC spravovat přístup k prostředkům předplatného Azure, najdete v následujících článcích:
 
-- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](../../role-based-access-control/role-assignments-cli.md)
+- [Přidání nebo odebrání přiřazení rolí v Azure pomocí Azure CLI](../../role-based-access-control/role-assignments-cli.md)
 - [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](../../role-based-access-control/role-assignments-portal.md)
 - [Přidejte nebo odeberte přiřazení rolí Azure pomocí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
@@ -236,7 +236,7 @@ Aby virtuální počítač dokončil proces připojení k Azure AD, musí se ús
 
    > [!NOTE]
    > Pokud se rozšíření po počátečním selhání restartuje, protokol s chybou nasazení se uloží jako CommandExecution_YYYYMMDDHHMMSSSSS. log. "
-1. Na virtuálním počítači otevřete příkazový řádek a ověřte tyto dotazy proti koncovému bodu Instance Metadata Service (IMDS), který běží na hostiteli Azure, vrátí:
+1. Na virtuálním počítači otevřete příkazový řádek prostředí PowerShell a ověřte tyto dotazy proti koncovému bodu Instance Metadata Service (IMDS) běžícímu na hostiteli Azure:
 
    | Příkaz, který se má spustit | Očekávaný výstup |
    | --- | --- |

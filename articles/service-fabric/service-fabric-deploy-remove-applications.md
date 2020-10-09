@@ -3,12 +3,12 @@ title: Nasazení Azure Service Fabric s využitím PowerShellu
 description: Přečtěte si o odebrání a nasazení aplikací v Azure Service Fabric a o tom, jak provádět tyto akce v prostředí PowerShell.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 3a6f5411c30087e15d1164cd02d4e6eb66566388
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 8bc4557c5d0d59330c7e91a4b3fdce83cfbf334c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611448"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827433"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Nasazení a odebrání aplikací pomocí PowerShellu
 
@@ -100,7 +100,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 ```
 
 Pokud je balíček aplikace velký nebo má mnoho souborů, můžete [ho zkomprimovat](service-fabric-package-apps.md#compress-a-package). Komprese zmenšuje velikost a počet souborů.
-Vedlejším účinkem je, že registrace a zrušení registrace typu aplikace je rychlejší. Čas nahrávání může být v současné době pomalejší, zejména pokud zadáte čas komprimace balíčku. 
+Výsledkem je rychlejší registrace a zrušení registrace typu aplikace. Čas nahrávání může být v současné době pomalejší, zejména pokud zadáte čas komprimace balíčku. 
 
 Pro komprimaci balíčku použijte stejný příkaz [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) . Kompresi lze provést odděleně od nahrávání pomocí `SkipCopy` příznaku nebo spolu s operací nahrávání. Použití komprese u komprimovaného balíčku je no-op.
 K dekomprimaci komprimovaného balíčku použijte stejný příkaz [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) s `UncompressPackage` přepínačem.

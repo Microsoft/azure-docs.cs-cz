@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 219dd6e4a8f04da8b28a28e5473394f0721e4013
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 03b8110db94a08f44035e75371fd7641fcd91626
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545199"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826355"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Kurz: integrace iLMS s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat iLMS s Azure Active Directory (Azure A
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -90,7 +90,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše očekává aplikace iLMS několik dalších atributů, které se vrátí zpátky v odpovědi SAML. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | --------|------------- |
     | dělení | User. Department |
     | oblast | User. State |
@@ -130,29 +130,29 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 2. Klikněte na **SSO: SAML** na kartě **Nastavení** otevřete nastavení SAML a proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/ilms-tutorial/1.png)
+    ![Snímek obrazovky zobrazuje kartu nastavení I L M, kde můžete vybrat S S: SAML.](./media/ilms-tutorial/1.png)
 
 3. Rozbalte část **poskytovatel služeb** a zkopírujte hodnotu **identifikátor** a **koncový bod (URL)** .
 
-    ![Konfigurace jednotného přihlašování](./media/ilms-tutorial/2.png) 
+    ![Snímek obrazovky zobrazuje nastavení SAML, kde můžete získat hodnoty.](./media/ilms-tutorial/2.png) 
 
 4. V části **zprostředkovatel identity** klikněte na **importovat metadata**.
 
 5. Vyberte soubor **federačních metadat** stažený z Azure Portal v části **podpisový certifikát SAML** .
 
-    ![Konfigurace jednotného přihlašování](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
+    ![Snímek obrazovky ukazuje nastavení SAML, kde můžete vybrat soubor metadat.](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
 
 6. Pokud chcete povolit zřizování JIT pro vytváření účtů iLMS pro zrušení rozpoznávání uživatelů, postupujte podle následujících kroků:
 
     a. Ověřte **Vytvoření nerozpoznaného uživatelského účtu**.
 
-    ![Konfigurace jednotného přihlašování](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
+    ![Snímek obrazovky ukazuje možnost vytvořit nerozpoznaný uživatelský účet.](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
 
     b. Namapujte atributy v Azure AD pomocí atributů v iLMS. Ve sloupci atribut zadejte název atributů nebo výchozí hodnotu.
 
     c. Přejít na kartu **obchodní pravidla** a proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/ilms-tutorial/5.png)
+    ![Snímek obrazovky zobrazuje nastavení obchodních pravidel, kde můžete zadat informace v tomto kroku.](./media/ilms-tutorial/5.png)
 
     d. Pokud chcete vytvořit oblasti, divize a oddělení, které ještě neexistují v době jednotného přihlašování, Projděte si část **Vytvoření nerozpoznaných oblastí, divizí a oddělení** .
 
@@ -164,7 +164,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 7. Uložte nastavení kliknutím na tlačítko **Uložit** .
 
-    ![Konfigurace jednotného přihlašování](./media/ilms-tutorial/save.png)
+    ![Snímek obrazovky se zobrazením tlačítka Uložit.](./media/ilms-tutorial/save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -176,7 +176,7 @@ V této části vytvoříte testovacího uživatele v Azure Portal s názvem Bri
    1. Do pole **Název** zadejte `Britta Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -206,11 +206,11 @@ Pokud potřebujete ručně vytvořit uživatele, postupujte podle následující
 
 2. Kliknutím na **Registrovat uživatele** na kartě **Uživatelé** otevřete stránku **zaregistrovat uživatele** .
 
-   ![Přidat zaměstnance](./media/ilms-tutorial/3.png)
+   ![Snímek obrazovky se zobrazí na kartě nastavení I L M, kde můžete vybrat zaregistrovat uživatele.](./media/ilms-tutorial/3.png)
 
 3. Na stránce **zaregistrovat uživatele** proveďte následující kroky.
 
-    ![Přidat zaměstnance](./media/ilms-tutorial/create_testuser_add.png)
+    ![Snímek obrazovky se zobrazí stránka registrace uživatele, kde zadáte zadané informace.](./media/ilms-tutorial/create_testuser_add.png)
 
     a. Do textového pole **název** zadejte jméno, například Britta.
 

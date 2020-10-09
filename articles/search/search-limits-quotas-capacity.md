@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/21/2020
-ms.openlocfilehash: b541af5351a0dd98e782c584d869de0d98445b74
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.date: 10/07/2020
+ms.openlocfilehash: 570481eab44c64db3ec3f513281badd124a2bbdc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462509"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825495"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Limity služby ve službě Azure Cognitive Search
 
@@ -50,7 +50,7 @@ Maximální limity pro úložiště, úlohy a množství indexů a dalších obj
 
 <sup>1</sup> základní služby vytvořené před prosince 2017 mají nižší limity (5 namísto 15) na indexech. Úroveň Basic je jediná SKU s nižším limitem 100 polí na jeden index.
 
-<sup>2</sup> má velký počet prvků v komplexních kolekcích pro každý dokument v současné době způsobuje vysoké využití úložiště. Jedná se o známý problém. Do té doby je limit 3000 bezpečný horní mez pro všechny úrovně služeb. Tento limit se vynutil jenom pro operace indexování, které využívají nejstarší dostupnou verzi rozhraní API GA (GA), která podporuje pole komplexního typu ( `2019-05-06` ) a vyšší. Aby nedošlo k přerušení klientů, kteří používají dřívější verze Preview rozhraní API (které podporují pole komplexních typů), nebudeme toto omezení vynucovat pro operace indexování, které používají tyto verze rozhraní API Preview. Verze Preview rozhraní API není určena k použití v produkčních scénářích a důrazně doporučujeme zákazníkům přejít na nejnovější verzi rozhraní API GA.
+<sup>2</sup> pro elementy existuje horní limit, protože u velkého počtu těchto hodnot dochází k vysokému využití úložiště. Prvek komplexní kolekce je definován jako člen této kolekce. Předpokládejme například, že máte [hotelový dokument s složitou kolekcí místností](search-howto-complex-data-types.md#indexing-complex-types), kde každá místnost v kolekci místností je považována za prvek. Při indexování může modul indexování bezpečně zpracovávat maximálně 3000 prvků v celém dokumentu. [Toto omezení](search-api-migration.md#upgrade-to-2019-05-06) bylo zavedeno v `api-version=2019-05-06` a vztahuje se pouze na komplexní kolekce, nikoli na kolekce řetězců ani na složitá pole.
 
 <a name="document-limits"></a>
 
@@ -106,10 +106,10 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 > [!NOTE]
 > Indexery mají zabezpečený přístup k prostředkům přes soukromé koncové body spravované prostřednictvím [rozhraní API sdíleného privátního propojení](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) , jak je popsáno v [tomto průvodci](search-indexer-howto-access-private.md) .
 
-| Prostředek | Free | Basic | S1 | S2 | S3 | S3 HD | L1 | Paměť
+| Prostředek | Free | Základní | S1 | S2 | S3 | S3 HD | L1 | Paměť
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Podpora indexeru privátního koncového bodu | No | Yes | Yes | Yes | Yes | No | Yes | Yes |
-| Podpora privátního koncového bodu pro indexery s dovednosti<sup>1</sup> | No | No | No | Yes | Yes | No | Yes | Yes |
+| Podpora indexeru privátního koncového bodu | No | Ano | Ano | Ano | Ano | No | Ano | Ano |
+| Podpora privátního koncového bodu pro indexery s dovednosti<sup>1</sup> | No | No | No | Ano | Ano | No | Ano | Ano |
 | Maximální počet privátních koncových bodů | – | 10 nebo 30 | 100 | 400 | 400 | – | 20 | 20 |
 | Maximální počet různých typů prostředků<sup>2</sup> | Není k dispozici | 4 | 7 | 15 | 15 | Není k dispozici | 4 | 4 |
 
@@ -121,7 +121,7 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 
 Maximální počet mapování synonym se liší podle úrovně. Každé pravidlo může mít až 20 rozšíření, kde rozšíření je ekvivalentní termín. Například dané "Cat", asociace s "Kitty", "Feline" a "Felis" (rod pro kočky) by se znamenaly jako 3 rozšíření.
 
-| Prostředek | Free | Basic | S1 | S2 | S3 | S3-HD |L1 | Paměť |
+| Prostředek | Free | Základní | S1 | S2 | S3 | S3-HD |L1 | Paměť |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Maximální počet mapování synonym |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Maximální počet pravidel na mapování |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |

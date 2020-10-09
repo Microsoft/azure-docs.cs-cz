@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 0348e5c773f37606a3975a8e62e556bef291a758
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d39f46469d80b3e2d7bf361bd349a39afb16bd2d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297259"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826188"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Hightail
 
@@ -121,7 +121,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -155,15 +155,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **ikonu uživatele** v pravém horním rohu stránky. 
 
-    ![Konfigurace jednotného přihlašování](./media/hightail-tutorial/configure1.png)
+    ![Snímek obrazovky se zobrazí ikona uživatele.](./media/hightail-tutorial/configure1.png)
 
 1. Klikněte na **Zobrazit kartu Konzola pro správu** .
 
-    ![Konfigurace jednotného přihlašování](./media/hightail-tutorial/configure2.png)
+    ![Snímek obrazovky pro uživatele zobrazuje tlačítko Zobrazit konzolu pro správu.](./media/hightail-tutorial/configure2.png)
 
 1. V nabídce v horní části klikněte na kartu **SAML** a proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/hightail-tutorial/configure3.png)
+    ![Snímek obrazovky se zobrazí na kartě SAML, kde můžete zadat přihlašovací jméno U R L a certifikát SAML.](./media/hightail-tutorial/configure3.png)
 
     a. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **adresy URL pro přihlášení** zkopírované z Azure Portal.
 

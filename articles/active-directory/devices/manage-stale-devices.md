@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b327e388366fe3129695a5c1780600e5903508a
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: ea5d24fd36e668fc52a8b5c9a20472c42ef3c420
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705533"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825962"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Postupy: Správa zastaralých zařízení v Azure AD
 
@@ -163,9 +163,9 @@ Pokud je to nakonfigurováno, jsou klíče nástroje BitLocker pro zařízení s
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Proč se mám starat o zařízení s Windows autopilotem?
 
 Když odstraníte zařízení Azure AD, které bylo přidruženo k objektu Windows autopilotu, může dojít k následujícím třem scénářům, pokud bude zařízení v budoucnu účelné:
-- Díky uživatelsky nasazeným samoobslužným nasazením Windows bez použití prázdných šetrnější se vytvoří nové zařízení Azure AD, které ale nebude označené ZTDID.
+- U uživatelských nasazení řízených pomocí Windows autopilotu bez použití předběžného zřizování se vytvoří nové zařízení Azure AD, které ale nebude označené ZTDID.
 - S nasazením autopilotního režimu automatického nasazení Windows se nezdaří, protože nejde najít přidružení zařízení Azure AD.  (Toto je bezpečnostní mechanismus, který zajistí, že se zařízení bez jakýchkoli přihlašovacích údajů pokusí připojit k Azure AD.) Selhání bude označovat neshodu ZTDID.
-- S bílými šetrnější nasazeními Windows autopilotu se nezdaří, protože se nepovedlo najít přidružené zařízení Azure AD. (Na pozadí budou šetrnější nasazení používat stejný proces režimu samoobslužného nasazení, aby vynutila stejné mechanismy zabezpečení.)
+- S předběžnými nasazeními Windows autopilotu se nezdaří, protože se nepovedlo najít přidružené zařízení Azure AD. (Na pozadí předběžných nasazení používá stejný proces režimu samoobslužného nasazení, aby vynutila stejné mechanismy zabezpečení.)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>Jak poznám všechny typy připojených zařízení?
 

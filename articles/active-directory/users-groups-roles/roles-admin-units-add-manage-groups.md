@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 09/22/2020
+ms.date: 10/07/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d22ec2219a86b8445931350b616dd76d0a22ec5
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 133ea21bf7a7c1df0fccaeacce7d7a29199c033d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439810"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827643"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Přidávání a Správa skupin v jednotkách pro správu v Azure Active Directory
 
@@ -101,6 +101,7 @@ Get-AzureADGroup -ObjectId $member.ObjectId
 }
 }
 ```
+
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
 ```http
@@ -136,13 +137,20 @@ https://graph.microsoft.com/v1.0/groups/<group-id>/memberOf/$/Microsoft.Graph.Ad
 
 Existují dva způsoby, jak skupinu odebrat z jednotky pro správu v Azure Portal.
 
-Otevřete **skupiny Azure AD**  >  **Groups** a otevřete profil pro skupinu, kterou chcete odebrat z jednotky pro správu. Vyberte **jednotky pro správu** na levém panelu a seznam všech jednotek správy, v nichž je skupina členem. Vyberte jednotku správy, ze které chcete skupinu odebrat, a pak vyberte **Odebrat z jednotky pro správu**.
+- Odebrat ze skupiny – přehled
 
-![Odebrání skupiny z jednotky pro správu](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
+  1. Otevřete **skupiny Azure AD**  >  **Groups** a otevřete profil pro skupinu, kterou chcete odebrat z jednotky pro správu.
+  1. Vyberte **jednotky pro správu** na levém panelu a seznam všech jednotek správy, v nichž je skupina členem. Vyberte jednotku správy, ze které chcete skupinu odebrat, a pak vyberte **Odebrat z jednotky pro správu**.
 
-Případně můžete přejít na **Azure AD**  >  **jednotky pro správu** Azure AD a vybrat jednotku správy, kde je skupina členem. Vyberte **skupiny** na levém panelu a seznamte se se skupinami členů. Vyberte skupinu, která se má odebrat z jednotky pro správu, a pak vyberte **odebrat skupiny**.
+    ![Odebrání skupiny z jednotky pro správu](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
 
-![Seznam skupin v jednotce pro správu](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+- Odebrat z jednotky pro správu
+
+  1. Otevřete **Azure AD**  >  **jednotky pro správu** Azure AD a vyberte jednotku pro správu, kde je skupina členem.
+  1. Vyberte **skupiny** na levém panelu a seznamte se se skupinami členů.
+  1. Vyberte skupinu, která se má odebrat z jednotky pro správu, a pak vyberte **odebrat skupiny**.
+
+    ![Seznam skupin v jednotce pro správu](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 

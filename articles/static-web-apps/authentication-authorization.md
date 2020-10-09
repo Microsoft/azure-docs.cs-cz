@@ -7,19 +7,19 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4c72a80b164e8ca1dd649503dcb968efd92be797
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e95cd313d341844eabf4f5c5feae8a8ca3dc9c2e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297065"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826539"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Ověřování a autorizace pro službu Azure Static Web Apps ve verzi Preview
 
 Služba Azure static Web Apps zjednodušuje možnosti ověřování tím, že spravuje ověřování s následujícími poskytovateli:
 
 - Azure Active Directory
-- GitHubu
+- GitHub
 - Facebook
 - Google<sup>1</sup>
 - Twitter
@@ -57,9 +57,9 @@ Pozvánky jsou specifické pro jednotlivé zprostředkovatele autorizace, takže
 | ---------------------- | ----------------- |
 | Azure Active Directory | e-mailovou adresu     |
 | Facebook               | e-mailovou adresu     |
-| GitHubu                 | uživatelské jméno          |
+| GitHubu                 | username          |
 | Google<sup>1</sup>     | e-mailovou adresu     |
-| Twitter                | uživatelské jméno          |
+| Twitter                | username          |
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na prostředek statického Web Apps.
 1. V části _Nastavení_klikněte na **Správa rolí**.
@@ -95,7 +95,7 @@ Když uživatel klikne na odkaz v rámci pozvánky, zobrazí se výzva, abyste s
 1. V části _Nastavení_klikněte na **Správa rolí**.
 1. Vyhledejte uživatele v seznamu.
 1. Zaškrtněte políčko na řádku uživatele.
-1. Klikněte na **Odstranit**.
+1. Klikněte na tlačítko **Odstranit**.
 
 Při odebírání uživatele Pamatujte na následující položky:
 

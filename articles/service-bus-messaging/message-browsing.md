@@ -3,12 +3,12 @@ title: Azure Service Bus – procházení zpráv
 description: Procházení a prohlížení zpráv Service Bus umožňuje klientovi Azure Service Bus zobrazit výčet všech zpráv, které jsou umístěny ve frontě nebo předplatném.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0f2d4ed1225aef4c28a5f3d841669c2e3122ba10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e50fc737f6c81c07854ff07d8cc64061306749b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341238"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827439"
 ---
 # <a name="message-browsing"></a>Procházení zpráv
 
@@ -30,7 +30,7 @@ Při opakovaném volání bude metoda náhled vyčíslit všechny zprávy, kter�
 
 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) načte více zpráv a vrátí je jako výčet. Pokud nejsou k dispozici žádné zprávy, je objekt výčtu prázdný, nikoli null.
 
-Můžete také naplnit přetížení metody pomocí [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) , na kterém se má spustit, a potom volat přetížení metody bez parametrů k dalšímu výčtu. Funkce **PeekBatch** jsou ekvivalentní, ale načítá sadu zpráv najednou.
+Můžete také použít přetížení metody s [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) , na které se má spustit, a pak volat přetížení metody bez parametrů k dalšímu výčtu. Funkce **PeekBatch** jsou ekvivalentní, ale načítá sadu zpráv najednou.
 
 ## <a name="next-steps"></a>Další kroky
 

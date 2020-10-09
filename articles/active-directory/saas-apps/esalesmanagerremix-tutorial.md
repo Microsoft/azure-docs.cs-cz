@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: dd5a200d1c17f0417b2ee88f7f905ee6de3cfe62
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: efcf634c9f34fd2b479140af800bb650f66bd821
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555385"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826749"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrace Azure Active Directory s E-Remix manažerem E Sales
 
@@ -30,7 +30,7 @@ Integrací služby Azure AD s E-Remix Sales Managerem získáte následující v
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete nakonfigurovat integraci Azure AD s E-Remix Sales managerem, potřebujete následující položky:
 
@@ -121,7 +121,7 @@ Povolte jednotné přihlašování Azure AD v Azure Portal a nakonfigurujte jedn
 
 1. V části **E-Remix konfigurace aplikace Sales Manager**vyberte **Konfigurovat E Sales Manager Remix**.
 
-    ![Remix konfigurace E Sales Manageru](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
+    ![Snímek obrazovky, který zobrazuje oddíl "E Sales Remix Configuration Manager" s vybranou možnost konfigurovat E Sales Manager Remix.](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
     Otevře se okno **Konfigurovat přihlašování** .
 
@@ -253,7 +253,7 @@ V této části povolíte, aby uživatel Britta Simon pomocí jednotného přihl
 
 1. V okně **Uživatelé a skupiny** vyberte v seznamu **Uživatelé** možnost **Britta Simon**.
 
-1. Vyberte tlačítko **Vybrat** .
+1. Vyberte tlačítko **Vybrat**.
 
 1. V okně **Přidat přiřazení** vyberte **přiřadit**.
     
@@ -265,7 +265,7 @@ Po výběru dlaždice E Sales Manager Remix na přístupovém panelu byste měli
 
 Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

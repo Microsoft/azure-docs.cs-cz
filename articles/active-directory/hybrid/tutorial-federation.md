@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00257dc549754f7466fdf1dd2d0293de944b0944
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4410708905610562feb15804277021950eb1edeb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287028"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826529"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Kurz: federovat jednoho prostředí doménové struktury služby AD do cloudu
 
@@ -27,7 +27,7 @@ ms.locfileid: "91287028"
 
 Následující kurz vás provede vytvořením hybridního prostředí identity pomocí federace.  Toto prostředí se pak dá použít k testování nebo pro získání více znalostí, jak hybridní identita funguje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Počítač s nainstalovanou [technologií Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) .  Tento postup je navržený na počítači s [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) nebo [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) .
 - [Předplatné Azure](https://azure.microsoft.com/free)
@@ -87,7 +87,7 @@ Aby bylo možné dokončit vytváření virtuálního počítače, je nutné dok
 4. Na úvodní obrazovce Windows serveru vyberte svůj jazyk a klikněte na **Další**.
 5. Klikněte na **instalovat hned**.
 6. Zadejte svůj licenční klíč a klikněte na **Další**.
-7. Zaškrtněte * * Přijímám licenční podmínky a klikněte na tlačítko **Další**.
+7. Zaškrtněte políčko **Přijímám licenční podmínky** a klikněte na tlačítko **Další**.
 8. Vyberte **vlastní: jenom instalovat Windows (rozšířené)**
 9. Klikněte na **Další** .
 10. Až se instalace dokončí, restartujte virtuální počítač, přihlaste se a spusťte aktualizace Windows, abyste měli jistotu, že je virtuální počítač nejaktuálnější.  Nainstalujte nejnovější aktualizace.

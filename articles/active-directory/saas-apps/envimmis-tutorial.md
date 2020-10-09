@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: aababc6ffd84540b99ba68f6bbb449d2aa78ed4b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1eb408025a45f09a6bdb854f4379a560842ef2d7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551740"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826274"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Kurz: Azure Active Directory integrace s ENVI MMIS
 
@@ -30,7 +30,7 @@ Integrace ENVI MMIS se službou Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s ENVI MMIS potřebujete následující položky:
 
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ENVI MMI
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![ENVI MMIS, informace o jednotném přihlašování v doméně a adresách URL](common/idp-intiated.png)
+    ![Snímek obrazovky zobrazující konfiguraci "základní S A M L" se zvýrazněným tlačítkem "identifikátor", "odpovědět U R L" a "Uložit".](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://www.<CUSTOMER DOMAIN>.com/Account`
 
@@ -134,23 +134,23 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ENVI MMI
 
 2. Klikněte na kartu **moje doména** .
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/envimmis-tutorial/configure1.png)
+    ![Snímek obrazovky s vybraným názvem moje doména v nabídce uživatele](./media/envimmis-tutorial/configure1.png)
 
 3. Klikněte na **Upravit**.
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/envimmis-tutorial/configure2.png)
+    ![Snímek obrazovky, který zobrazuje vybrané tlačítko pro úpravy](./media/envimmis-tutorial/configure2.png)
 
 4. Zaškrtněte políčko **použít vzdálené ověřování** a potom v rozevíracím seznamu **typ ověřování** vyberte **http přesměrování** .
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/envimmis-tutorial/configure3.png)
+    ![Snímek obrazovky, který zobrazuje kartu Podrobnosti s zaškrtnutým políčkem použít vzdálené ověřování a je zaškrtnuté políčko "H T T P redirect".](./media/envimmis-tutorial/configure3.png)
 
 5. Vyberte kartu **prostředky** a pak klikněte na **Odeslat metadata**.
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/envimmis-tutorial/configure4.png)
+    ![Snímek obrazovky zobrazující kartu prostředky s vybranou akcí odeslat metadata](./media/envimmis-tutorial/configure4.png)
 
 6. V překryvném okně **nahrát metadata** proveďte následující kroky:
 
-    ![Konfigurovat tlačítko pro uložení jednotného přihlašování](./media/envimmis-tutorial/configure5.png)
+    ![Snímek obrazovky, který zobrazuje automaticky otevírané okno pro nahrávání metadat se zvolenou možností "soubor" a ikona zvolit soubor a tlačítko OK se zvýrazní.](./media/envimmis-tutorial/configure5.png)
 
     a. V rozevíracím seznamu **Odeslat z** vyberte možnost **soubor** .
 
@@ -185,7 +185,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -193,7 +193,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **ENVI MMIS**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte možnost **ENVI MMIS**.
 
@@ -223,11 +223,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k ENVI MMIS, musí se zřídit v
 
 2. Klikněte na kartu **seznam uživatelů** .
 
-    ![Přidat zaměstnance](./media/envimmis-tutorial/user1.png)
+    ![Snímek obrazovky, který zobrazuje nabídku uživatel se zvoleným seznamem uživatelů](./media/envimmis-tutorial/user1.png)
 
 3. Klikněte na tlačítko **Přidat uživatele** .
 
-    ![Přidat zaměstnance](./media/envimmis-tutorial/user2.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "uživatelé" s vybraným tlačítkem Přidat uživatele.](./media/envimmis-tutorial/user2.png)
 
 4. V části **Přidat uživatele** proveďte následující kroky:
 

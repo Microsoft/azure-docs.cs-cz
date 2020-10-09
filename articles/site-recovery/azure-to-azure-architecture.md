@@ -8,17 +8,17 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 08796b0a9b232c7b42b3f62fea69ab49b8957c60
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57435e703395928c4619b7c9c6bf8614269f58a0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322083"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825417"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
 
 
-Tento článek popisuje architekturu, komponenty a procesy používané při nasazení zotavení po havárii pro virtuální počítače Azure pomocí služby [Azure Site Recovery](site-recovery-overview.md) . Po nastavení zotavení po havárii se virtuální počítače Azure průběžně replikují z do jiné cílové oblasti. Pokud dojde k výpadku, můžete převzít služby virtuálních počítačů do sekundární oblasti a získat k nim přístup. Když všechno běží normálně, můžete navrátit služby po obnovení a pokračovat v práci v primárním umístění.
+Tento článek popisuje architekturu, komponenty a procesy používané při nasazení zotavení po havárii pro virtuální počítače Azure pomocí služby [Azure Site Recovery](site-recovery-overview.md) . Po nastavení zotavení po havárii se virtuální počítače Azure průběžně replikují do jiné cílové oblasti. Pokud dojde k výpadku, můžete převzít služby virtuálních počítačů do sekundární oblasti a získat k nim přístup. Když všechno běží normálně, můžete navrátit služby po obnovení a pokračovat v práci v primárním umístění.
 
 
 

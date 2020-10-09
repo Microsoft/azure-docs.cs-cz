@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: e4739c0c550988e1639e89a647815e5dd86b17b7
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 6203c230f7ca27b1d4b48e9f56a7f46cd5a5ce78
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461338"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825317"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Jak nastavit geografickou replikaci pro Azure cache pro Redis
 
@@ -111,6 +111,7 @@ Po nakonfigurování geografické replikace platí následující omezení pro v
 - [Proč při pokusu o odstranění propojené mezipaměti došlo k chybě operace?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
 - [Jakou oblast mám použít pro moji sekundární propojenou mezipaměť?](#what-region-should-i-use-for-my-secondary-linked-cache)
 - [Jak převzetí služeb při selhání sekundární propojenou mezipamětí funguje?](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- [Můžu nakonfigurovat bránu firewall pro geografickou replikaci?](#can-i-configure-a-firewall-with-geo-replication)
 
 ### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>Můžu geografickou replikaci použít s mezipamětí úrovně Standard nebo Basic?
 
@@ -185,7 +186,12 @@ Automatické převzetí služeb při selhání napříč oblastmi Azure se u geo
 
 Pokud chcete zahájit převzetí služeb při selhání iniciované zákazníkem, nejdřív odpojte mezipaměti. Pak změňte svého klienta Redis na použití koncového bodu připojení (dříve propojené) sekundární mezipaměti. Pokud jsou dvě mezipaměti odpojování, sekundární mezipaměť se znovu vytvoří do běžné mezipaměti pro čtení a zápis a přijímá požadavky přímo od klientů Redis.
 
+### <a name="can-i-configure-a-firewall-with-geo-replication"></a>Můžu nakonfigurovat bránu firewall pro geografickou replikaci?
+
+Ano, můžete nakonfigurovat [bránu firewall](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall) pomocí geografické replikace. Aby geografická replikace fungovala společně s bránou firewall, zajistěte, aby se IP adresa sekundární mezipaměti přidala do pravidel brány firewall primární mezipaměti.
+
 ## <a name="next-steps"></a>Další kroky
+
 Přečtěte si další informace o funkcích Azure cache pro Redis.
 
 * [Mezipaměť Azure pro úrovně služeb Redis](cache-overview.md#service-tiers)

@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: 7bc56f6296bf41933348fad9ea4aeb640b9afbf0
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: d08c1d23539c817792415d359b8e1cbb3979ca40
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776013"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825499"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Přehled izolace a ochrany osobních údajů virtuální sítě
 
@@ -158,6 +158,12 @@ Pokud chcete povolit úplnou funkci studia i v rámci virtuální sítě, přeč
 Nakonfigurujte bránu firewall pro řízení přístupu k prostředkům vašeho Azure Machine Learning pracovního prostoru a k veřejnému Internetu. I když doporučujeme Azure Firewall, měli byste být schopni použít jiné produkty brány firewall k zabezpečení sítě. Pokud máte dotazy týkající se povolení komunikace přes bránu firewall, přečtěte si prosím dokumentaci pro bránu firewall, kterou používáte.
 
 Další informace o nastavení brány firewall najdete v tématu [použití pracovního prostoru za bránou firewall](how-to-access-azureml-behind-firewall.md).
+
+## <a name="custom-dns"></a>Vlastní DNS
+
+Pokud pro svoji virtuální síť potřebujete použít vlastní řešení DNS, musíte přidat záznamy hostitele pro svůj pracovní prostor.
+
+Další informace o požadovaných názvech domén a IP adresách najdete v tématu [použití pracovního prostoru s vlastním serverem DNS](how-to-custom-dns.md).
 
 ## <a name="next-steps"></a>Další kroky
 

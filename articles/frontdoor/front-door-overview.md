@@ -12,18 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: bf0d802dc4ea4d18122a12b107dfb0cc0af80d63
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e5b8e5059d4d7df8d7061698ea29d7a6785236f9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773446"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825643"
 ---
 # <a name="what-is-azure-front-door"></a>Co je Azure Front Door?
 
 Přední dvířka Azure jsou globální, škálovatelný vstupní bod, který využívá síť Microsoft Global Edge k vytváření rychlých, zabezpečených a široce škálovatelných webových aplikací. S předními dvířky můžete své globální aplikace a podnikové aplikace transformovat na robustní a vysoce výkonné přizpůsobené moderní aplikace s obsahem, který je přístupný pro globální cílovou skupinu prostřednictvím Azure.
 
-:::image type="content" source="media/front-door-overview/front-door-visual-diagram.png#center" alt-text="Architektura front-dveří":::
+<p align="center">
+  <img src="./media/front-door-overview/front-door-visual-diagram.png" alt="Front Door architecture" width="600" title="Azure Front Door">
+</p>
 
 Přední dveře pracují ve vrstvě 7 (vrstva HTTP/HTTPS) pomocí protokolu libovolného vysílání s rozdělenou sítí TCP a Microsoft globální sítě pro zlepšení globálního připojení. Na základě metody směrování můžete zajistit, aby přední dvířka směrovala požadavky klientů na nejrychlejší a nejvíce dostupnou back-end aplikace. Back-end aplikace je jakákoli internetová služba hostovaná v rámci služby Azure nebo mimo ni. Přední dvířka poskytují řadu [metod směrování provozu](front-door-routing-methods.md) a [Možnosti sledování stavu back-endu](front-door-health-probes.md) , které vyhovují různým požadavkům aplikací a automatickým scénářům pro převzetí služeb při selhání. Podobně jako u [Traffic Manager](../traffic-manager/traffic-manager-overview.md)je přední dveře odolná vůči chybám, včetně selhání do celé oblasti Azure.
 

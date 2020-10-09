@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/02/2020
-ms.openlocfilehash: 48d233dee063d8f9049e6e54baa2d744e1b8b058
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: ab37fcdb4012394f1c5131a23f7c67063d3d6e37
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033451"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825763"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Přehled agentů Azure Monitor
 
@@ -144,7 +144,7 @@ V následujících tabulkách jsou uvedeny operační systémy, které jsou podp
 |:---|:---:|:---:|:---:|:---:|
 | Windows Server 2019                                      | X | X | X | X |
 | Windows Server 2016                                      | X | X | X | X |
-| Windows Server 2016 Core                                 |   |   |   | X |
+| Windows Server 2016 Core                                 |   |   |   | × |
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2                                   |   | X | X | X |
@@ -157,26 +157,28 @@ V následujících tabulkách jsou uvedeny operační systémy, které jsou podp
 
 | Provozní systém | Agent Azure Monitoru | Agent Log Analytics | Agent závislostí | Rozšíření diagnostiky | 
 |:---|:---:|:---:|:---:|:---:
-| Amazon Linux 2017,09                                     |   | X |   |   |
+| Amazon Linux 2017,09                                     |   | × |   |   |
+| CentOS Linux 8                                           |   | × |   |   |
 | CentOS Linux 7                                           | X | X |   | X |
 | CentOS Linux 7,8                                         | X | X | X | X |
 | CentOS Linux 7,6                                         | X | X | X | X |
 | CentOS Linux 6                                           | X | X |   |   |
 | CentOS Linux 6.5 +                                        | X | X |   | X |
-| Debian 10                                                | X |   |   |   |
-| Debian 9                                                 | X | X | x | X |
+| Debian 10                                                | × |   |   |   |
+| Debian 9                                                 | X | X | x | × |
 | Debian 8                                                 |   | X | X | X |
-| Debian 7                                                 |   |   |   | X |
-| OpenSUSE 13.1 +                                           |   |   |   | X |
+| Debian 7                                                 |   |   |   | × |
+| OpenSUSE 13.1 +                                           |   |   |   | × |
 | Oracle Linux 7                                           | X | X |   | X |
 | Oracle Linux 6                                           | X | X |   |   |
 | Oracle Linux 6.4 +                                        | X | X |   | X |
-| Server Red Hat Enterprise Linux 8                        |   | X |   |   |
+| Server Red Hat Enterprise Linux 8                        |   | × |   |   |
 | Red Hat Enterprise Linux Server 7                        | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                        | X | X | X |   |
 | Red Hat Enterprise Linux Server 6.7 +                     | X | X | X | X |
 | SUSE Linux Enterprise Server 15                          | X | X |   |   |
 | SUSE Linux Enterprise Server 12                          | X | X | X | X |
+| Ubuntu 20,04 LTS                                         |   | × |   |   |
 | Ubuntu 18,04 LTS                                         | X | X | X | X |
 | Ubuntu 16.04 LTS                                         | X | X | X | X |
 | Ubuntu 14,04 LTS                                         | X | X |   | X |

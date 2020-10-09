@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 10/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1e88afd91c0e0b344cc0eb8d82b637a88d5a1656
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0b9b8ba555cddd56c49c750709e69ec180291c95
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447965"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827238"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Směrování VPN typu Point-to-Site
 
@@ -32,7 +32,7 @@ Tento článek obsahuje řadu různých diagramů. V každé části se zobrazuj
 
 Připojení brány VPN typu Point-to-site v tomto příkladu je pro virtuální síť, která není připojená nebo má partnerský vztah s jinou virtuální sítí (VNet1). V tomto příkladu můžou klienti získat přístup k VNet1.
 
-![směrování izolované virtuální sítě](./media/vpn-gateway-about-point-to-site-routing/1.jpg "směrování izolované virtuální sítě")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/isolated.jpg" alt-text="Směrování izolované virtuální sítě" lightbox="./media/vpn-gateway-about-point-to-site-routing/isolated.jpg":::
 
 ### <a name="address-space"></a>Adresní prostor
 
@@ -56,7 +56,7 @@ V tomto příkladu je připojení brány VPN typu Point-to-site pro VNet1. VNet1
 
 Klienti, kteří používají systém Windows, mají přístup přímo k virtuální sítě s partnerským vztahem, ale klient VPN se musí stáhnout znovu, pokud se změní na partnerský vztah VNet nebo síťová topologie. Klienti s jiným operačním systémem než Windows mají přístup přímo k virtuální sítě partnerských vztahů. Přístup není přenosný a je omezený jenom na přímo partnerský virtuální sítě.
 
-![několik virtuální sítě s partnerským vztahem](./media/vpn-gateway-about-point-to-site-routing/2.jpg "několik virtuální sítě s partnerským vztahem")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg" alt-text="Směrování izolované virtuální sítě" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg":::
 
 ### <a name="address-space"></a>Adresní prostor:
 
@@ -86,7 +86,7 @@ V tomto příkladu je připojení brány VPN typu Point-to-site pro VNet1. VNet1
 
 Klienti, kteří používají systém Windows nebo jiný podporovaný operační systém, mohou přistupovat pouze k VNet1. Pro přístup k dalším virtuální sítě se musí použít protokol BGP.
 
-![několik virtuální sítě a S2S](./media/vpn-gateway-about-point-to-site-routing/3.jpg "několik virtuální sítě a S2S")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg" alt-text="Směrování izolované virtuální sítě" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg":::
 
 ### <a name="address-space"></a>Adresní prostor
 
@@ -114,7 +114,7 @@ V tomto příkladu je připojení brány VPN typu Point-to-site pro VNet1. VNet1
 
 Klienti s Windows nebo jiným podporovaným operačním systémem mají přístup ke všem virtuální sítě, která jsou připojená pomocí připojení VPN typu Site-to-site, ale trasy k připojeným virtuální sítě se musí do klientů Windows přidat ručně.
 
-![Vícenásobná virtuální sítě a S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "několik virtuální sítě a protokolu BGP S2S")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg" alt-text="Směrování izolované virtuální sítě" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg":::
 
 ### <a name="address-space"></a>Adresní prostor
 
@@ -142,7 +142,7 @@ V tomto příkladu je připojení brány VPN typu Point-to-site pro VNet1. VNet1
 
 Klienti s Windows a jiným systémem než Windows mají přístup jenom k VNet1.
 
-![směrování pomocí virtuální sítě a firemní pobočky](./media/vpn-gateway-about-point-to-site-routing/5.jpg "směrování pomocí virtuální sítě a firemní pobočky")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg" alt-text="Směrování izolované virtuální sítě" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg":::
 
 ### <a name="address-space"></a>Adresní prostor
 
@@ -168,7 +168,7 @@ V tomto příkladu je připojení brány VPN typu Point-to-site pro VNet1. VNet1
 
 Klienti Windows mají přístup k virtuální síti a pobočce (Site1), ale trasy k Site1 je nutné do klienta přidat ručně. Klienti s jiným systémem než Windows mají přístup k virtuální síti i k místní pobočce.
 
-![Jedna virtuální síť a odloučená kancelář (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "Jedna virtuální síť a firemní pobočky")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg" alt-text="Směrování izolované virtuální sítě" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg":::
 
 ### <a name="address-space"></a>Adresní prostor
 
@@ -195,7 +195,7 @@ V tomto příkladu je připojení brány VPN typu Point-to-site pro VNet1. VNet1
 
 Všichni klienti mají přístup jenom k VNet1.
 
-![Diagram, který zobrazuje S2S a pobočku s více virtuálními sítěmi.](./media/vpn-gateway-about-point-to-site-routing/7.jpg "připojení S2S a pobočky s více virtuálními sítěmi")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg" alt-text="Směrování izolované virtuální sítě" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg":::
 
 ### <a name="address-space"></a>Adresní prostor
 
@@ -225,7 +225,7 @@ V tomto příkladu je připojení brány VPN typu Point-to-site pro VNet1. VNet1
 
 Klienti, kteří používají systém Windows, mají přístup k virtuální sítě a lokalitám, které jsou připojené pomocí připojení VPN typu Site-to-site, ale trasy k VNet2, síti vnet3 a Site1 se musí do klienta přidat ručně. Klienti s jiným systémem než Windows mají přístup k virtuální sítě a lokalitám, které jsou připojené pomocí připojení VPN typu Site-to-site bez nutnosti ručního zásahu. Přístup je přenosný a klienti mají přístup k prostředkům ve všech připojených virtuální sítě a lokalitách (místně).
 
-![připojení S2S a pobočky s více virtuálními sítěmi](./media/vpn-gateway-about-point-to-site-routing/8.jpg "připojení S2S a pobočky s více virtuálními sítěmi")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg" alt-text="Směrování izolované virtuální sítě" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg":::
 
 ### <a name="address-space"></a>Adresní prostor
 

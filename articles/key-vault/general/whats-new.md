@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 324e8b86c42f991fa7b0d566bf71b50ca69a53a6
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 194b0122987d4fdc5d100112c60006588d28f96c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728756"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826920"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Co je nového pro Azure Key Vault
 
@@ -31,7 +31,7 @@ Po konci 2020 **budou obnovitelné odstranění standardně zapnuté pro všechn
 
 ### <a name="azure-tls-certificate-changes"></a>Změny certifikátu Azure TLS  
 
-Microsoft aktualizuje služby Azure tak, aby používaly certifikáty TLS z jiné sady kořenových certifikačních autorit (CAs). Tato změna se provádí, protože aktuální certifikáty certifikační autority nejsou v rozporu s jedním z požadavků na základní hodnoty fóra CA nebo prohlížeče.
+Microsoft aktualizuje služby Azure tak, aby používaly certifikáty TLS z jiné sady kořenových certifikačních autorit (CAs). Tato změna se provádí, protože aktuální certifikáty certifikační autority [nejsou v rozporu s jedním z požadavků na základní hodnoty fóra CA nebo prohlížeče](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951).
 
 ### <a name="when-will-this-change-happen"></a>Kdy bude tato změna provedena?
 

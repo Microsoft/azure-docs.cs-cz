@@ -8,16 +8,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: d6ac552640b4a557c51b674624e6a4493241e0ed
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e8ce4feaec6571adfb15f5928a6eb7c910173353
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977562"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825775"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor sešity
 
-Pracovní sešity poskytují flexibilní plátno pro analýzu dat a vytváření bohatých vizuálních sestav v rámci Azure Portal. Umožňují využívat více zdrojů dat v rámci Azure a kombinovat je do sjednocených interaktivních prostředí. 
+Sešity poskytují flexibilní plátno pro analýzu dat a vytváření bohatých vizuálních sestav v rámci webu Azure Portal. Umožňují využívat více zdrojů dat v rámci Azure a kombinovat je do sjednocených interaktivních prostředí. 
 
 Tady je video s návodem k vytváření sešitů.
 
@@ -25,16 +25,16 @@ Tady je video s návodem k vytváření sešitů.
 
 ## <a name="data-sources"></a>Zdroje dat
 
-Sešity se můžou dotazovat na data z několika zdrojů v rámci Azure. Autoři sešitů můžou tato data transformovat, aby poskytovaly přehled o dostupnosti, výkonu, využití a celkovém stavu základních komponent. Například analýza protokolů výkonu z virtuálních počítačů za účelem identifikace vysokého procesoru nebo nedostatku paměti a zobrazení výsledků v interaktivní sestavě jako mřížku.
+Sešity se můžou dotazovat na data z několika zdrojů v rámci Azure. Autoři sešitů můžou tato data transformovat, aby poskytovala přehledy o dostupnosti, výkonu, využití a celkovém stavu podkladových komponent. Například analýza protokolů výkonu z virtuálních počítačů za účelem identifikace vysokého procesoru nebo nedostatku paměti a zobrazení výsledků v interaktivní sestavě jako mřížku.
   
-Ale skutečná síla sešitů je možnost kombinovat data z různorodých zdrojů v rámci jedné sestavy. To umožňuje vytváření složených zobrazení prostředků nebo spojení mezi prostředky, které umožňují rozsáhlejší data a přehledy, které by jinak nebyly možné.
+Ale skutečná síla sešitů je schopnost kombinovat data z různorodých zdrojů v rámci jedné sestavy. To umožňuje vytváření složených zobrazení prostředků nebo spojení mezi prostředky, které umožňují rozsáhlejší data a přehledy, které by jinak nebyly možné.
 
 Sešity jsou aktuálně kompatibilní s následujícími zdroji dat:
 
 * [Protokoly](workbooks-data-sources.md#logs)
 * [Metriky](workbooks-data-sources.md#metrics)
 * [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
-* [Upozornění (Preview)](workbooks-data-sources.md#alerts-preview)
+* [Výstrahy (Preview)](workbooks-data-sources.md#alerts-preview)
 * [Stav úlohy](workbooks-data-sources.md#workload-health)
 * [Azure Resource Health](workbooks-data-sources.md#azure-resource-health)
 * [Azure Data Explorer](workbooks-data-sources.md#azure-data-explorer)

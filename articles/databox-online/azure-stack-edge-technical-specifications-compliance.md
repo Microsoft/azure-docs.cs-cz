@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 91aa386311452ae08ead2b8eac9005b2c730f3f3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c177de3a862370f4d1daa19c6560950b66b18352
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883445"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826835"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Technické specifikace Azure Stack Edge pro
 
@@ -25,8 +25,8 @@ Zařízení Azure Stack Edge pro má následující specifikace pro výpočetní
 
 | Specifikace           | Hodnota                  |
 |-------------------------|----------------------------|
-| Procesor    | PROCESOR 2 X 10 Core                     |
-| Memory (Paměť)              | 128 GB RAM                  |
+| Procesor    | 2 X 10 jader procesor Intel Xeon stříbrné 4114 2.2 G                    |
+| Paměť              | 128 GB RAM (8rychlostní 16GB RDIMM)                 |
 
 ## <a name="fpga-specifications"></a>Specifikace FPGA
 
@@ -45,7 +45,7 @@ Zařízení Azure Stack Edge pro má dvě 100-240 V jednotkách napájení (PSUs
 | Maximální výstupní výkon    | 750 W                     |
 | Frequency               | 50/60 Hz                   |
 | Výběr rozsahu napětí | Automatické rozsahy: 100-240 V AC |
-| Horká, připojitelná           | Yes                        |
+| Horká, připojitelná           | Ano                        |
 
 ### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>Azure Stack specifikace napájecího kabelu pro Edge podle oblasti
 
@@ -60,9 +60,18 @@ The following table lists the typical power consumption data (actual values may 
 
 Vaše zařízení Azure Stack Edge pro má 6 síťových rozhraní PORT1-PORT6.
 
-| Specifikace           | Description                 |
+| Specifikace           | Popis                 |
 |-------------------------|----------------------------|
 |  Síťová rozhraní    | 2× rozhraní 1 GbE, z nichž jedno slouží pro správu, uživatelé ho nemohou konfigurovat a používá se pro počáteční instalaci. Druhé rozhraní je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP. <br>2× rozhraní 25 GbE – mohou fungovat také jako rozhraní 10 GbE. Tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická. <br> 2× rozhraní 25 GbE – tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická.                  |
+
+Používají se síťové adaptéry: 
+
+| Specifikace           | Popis                 |
+|-------------------------|----------------------------|
+|Karta dceřiné sítě (rNDC) |Adaptér QLogic FastLinQ 41264 Dual Port 25GbE SFP +, Dual Port 10 GbE LOM, rNDC|
+|Síťový adaptér PCI |Adaptér 41262 FastLinQ Zwei porty 25Gbit/s SFP28|
+
+Přečtěte si prosím seznam kompatibilního hardwaru z Intel QLogic pro kompatibilní převodník gigabitových rozhraní (GBIC). Převaděč gigabitového rozhraní (GBIC) není zahrnutý v doručování Azure Stack hraničních zařízení. 
 
 ## <a name="storage-specifications"></a>Specifikace úložiště
 

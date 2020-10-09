@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: c43cac4d599753ecc3486ef7b86aa54b5697b0f6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: db5384f843173bdc795fba64f277ff8bf85dc4f5
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435639"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827133"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Integrace dat pomocí Azure Data Factory a sdílení dat Azure
 
@@ -26,7 +26,7 @@ V této dílně použijete Azure Data Factory (ADF) k ingestování dat z Azure 
 
 Data použitá v tomto testovacím prostředí jsou v New Yorku City taxislužby data. Pokud ho chcete importovat do databáze v SQL Database, Stáhněte si [soubor taxislužby-data BacPac](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -105,7 +105,7 @@ Pokud chcete zapnout ladění, klikněte na posuvník pro **ladění toku dat** 
 
 ## <a name="ingest-data-using-the-copy-activity"></a>Ingestování dat pomocí aktivity kopírování
 
-V této části vytvoříte kanál s aktivitou kopírování, která ingestuje jednu tabulku z databáze SQL Azure do účtu úložiště ADLS Gen2. Naučíte se, jak přidat kanál, nakonfigurovat datovou sadu a ladit kanál prostřednictvím uživatelského rozhraní ADF. Vzor konfigurace použitý v této části lze použít pro kopírování z relačního úložiště dat do úložiště dat založeného na souborech.
+V této části vytvoříte kanál s aktivitou kopírování, která ingestuje jednu tabulku z databáze SQL Azure do účtu úložiště ADLS Gen2. Naučíte se, jak přidat kanál, nakonfigurovat datovou sadu a ladit kanál prostřednictvím uživatelského rozhraní ADF. Konfigurační vzor použitý v této části lze použít pro kopírování z relačního úložiště dat do úložiště dat založeného na souborech.
 
 V Azure Data Factory kanál je logické seskupení aktivit, které dohromady provádějí úlohu. Aktivita definuje operaci, která se má provést na vašich datech. Datová sada odkazuje na data, která chcete použít v propojené službě.
 
@@ -336,7 +336,7 @@ Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemce
 
     ![Sdílet podrobnosti](media/lab-data-flow-data-share/ads-details.png)
 
-1. Vyberte **pokračovat**. 
+1. Vyberte **Pokračovat**. 
 
 1. Vyberte **přidat datové sady** . 
 

@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 57417a80ea83005c01b6f2a17206d46e6c049719
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98cd28e8b770ebfb7ab395fbe7fff16a078e3529
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85112774"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826852"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Dělení a horizontální škálování ve službě Azure Cosmos DB
 
@@ -23,7 +23,7 @@ Logický oddíl obsahuje sadu položek, které mají stejný klíč oddílu. Nap
 
 Logický oddíl také definuje rozsah databázových transakcí. Položky v rámci logického oddílu lze aktualizovat pomocí [transakce s izolací snímku](database-transactions-optimistic-concurrency.md). Při přidání nových položek do kontejneru jsou nové logické oddíly transparentně vytvořeny systémem.
 
-Počet logických oddílů ve vašem kontejneru není nijak omezený. Každý logický oddíl může ukládat až 20 GB dat. Dobrá volba klíče oddílu má široké spektrum možných hodnot. Například v kontejneru, kde všechny položky obsahují `foodGroup` vlastnost, data v rámci `Beef Products` logického oddílu mohou růst až 20 GB. [Výběr klíče oddílu](partitioning-overview.md#choose-partitionkey) s široké škálou možných hodnot zajistí, že kontejner bude schopný škálovat.
+Počet logických oddílů ve vašem kontejneru není nijak omezený. Každý logický oddíl může ukládat až 20 GB dat. Dobrá volba klíče oddílu má široké spektrum možných hodnot. Například v kontejneru, kde všechny položky obsahují `foodGroup` vlastnost, může data v rámci `Beef Products` logického oddílu růst až 20 GB. [Výběr klíče oddílu](partitioning-overview.md#choose-partitionkey) s široké škálou možných hodnot zajistí, že kontejner bude schopný škálovat.
 
 ## <a name="physical-partitions"></a>Fyzické oddíly
 
@@ -36,7 +36,7 @@ Počet fyzických oddílů v kontejneru Cosmos závisí na následujících:
 
 Celkový počet fyzických oddílů ve vašem kontejneru není nijak omezený. Jak vaše zřízená propustnost nebo velikost dat roste, Azure Cosmos DB automaticky vytvoří nové fyzické oddíly tím, že se rozdělí stávající. Rozdělení fyzického oddílu nemá vliv na dostupnost vaší aplikace. Po rozdělení fyzického oddílu budou všechna data v jednom logickém oddílu stále uložena ve stejném fyzickém oddílu. Rozdělení fyzického oddílu jednoduše vytvoří nové mapování logických oddílů na fyzické oddíly.
 
-Propustnost zřízená pro kontejner je rozdělená rovnoměrně mezi fyzické oddíly. Návrh klíče oddílu, který nedistribuuje požadavky propustnosti rovnoměrně, může vytvořit oddíly "Hot". Aktivní oddíly můžou mít za následek omezení četnosti a neefektivní využívání zřízené propustnosti a vyšší náklady.
+Propustnost zřízená pro kontejner je rozdělená rovnoměrně mezi fyzické oddíly. Návrh klíče oddílu, který nedistribuuje požadavky rovnoměrně, může mít za následek příliš mnoho požadavků směrovaných na malou podmnožinu oddílů, které se stanou "horkou". Hot partitions vede k neefektivnímu využití zřízené propustnosti, což může vést k omezení rychlosti a vyššímu počtu nákladů.
 
 Fyzické oddíly kontejneru můžete zobrazit v části **úložiště** v okně **metriky** Azure Portal:
 
@@ -54,7 +54,7 @@ Většina malých Cosmos kontejnerů vyžaduje jenom jeden fyzický oddíl, ale 
 
 Následující obrázek ukazuje, jak jsou logické oddíly namapovány na fyzické oddíly distribuované globálně:
 
-:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="Obrázek, který ukazuje Azure Cosmos DB dělení" border="false":::
+:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="Zobrazení počtu fyzických oddílů" border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 

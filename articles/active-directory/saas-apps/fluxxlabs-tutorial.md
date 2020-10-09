@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 756bbaab1cbf359def01e371e4370607bee67ce3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 00cf3e33c87255485f7ea73526e474b0d941124b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554856"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826368"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím Fluxx Labs
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Fluxx Labs s Azure Active Directory (A
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -113,7 +113,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -139,15 +139,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. V části **Nastavení** vyberte **správce** .
 
-    ![Konfigurace Fluxx Labs](./media/fluxxlabs-tutorial/config1.png)
+    ![Snímek obrazovky, který zobrazuje oddíl Settings (nastavení) se zvoleným správcem](./media/fluxxlabs-tutorial/config1.png)
 
 3. Na panelu pro správu vyberte integrace **s modulem plug-in**  >  **Integrations** a pak vyberte **jednotné přihlašování SAML – (zakázáno)** .
 
-    ![Konfigurace Fluxx Labs](./media/fluxxlabs-tutorial/config2.png)
+    ![Snímek obrazovky zobrazující kartu Integration (integrace) s vybraným S A M L S S O – (zakázaný)](./media/fluxxlabs-tutorial/config2.png)
 
 4. V části atributu proveďte následující kroky:
 
-    ![Konfigurace Fluxx Labs](./media/fluxxlabs-tutorial/config3.png)
+    ![Snímek obrazovky, který zobrazuje oddíl Attributes s zaškrtnutým políčkem S A M L S S, hodnotami zadanými v polích a vybraným tlačítkem Uložit.](./media/fluxxlabs-tutorial/config3.png)
 
     a. Zaškrtněte políčko **SAML SSO** .
 
@@ -180,11 +180,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k Fluxx Labs, musí se zřídit 
 
 2. Klikněte na **ikonu**zobrazené níže.
 
-    ![Konfigurace Fluxx Labs](./media/fluxxlabs-tutorial/config6.png)
+    ![Snímek obrazovky, který zobrazuje možnosti Správce se ikonou "plus" vybraným v "řídicí panel je prázdný".](./media/fluxxlabs-tutorial/config6.png)
 
 3. Na řídicím panelu klikněte na ikonu níže zobrazené a otevřete kartu **nové osoby** .
 
-    ![Konfigurace Fluxx Labs](./media/fluxxlabs-tutorial/config4.png)
+    ![Snímek obrazovky, který zobrazuje nabídku "Správa kontaktů" se ikonou "plus" vedle možnosti "lidé".](./media/fluxxlabs-tutorial/config4.png)
 
 4. V části **noví lidé** proveďte následující kroky:
 
@@ -200,7 +200,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici Fluxx Labs na přístupovém panelu, měli byste se automaticky přihlásit k Fluxx Labs, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

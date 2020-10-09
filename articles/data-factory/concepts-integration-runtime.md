@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 03b8deaa700d15a20571a8ec5f389c252c32eed2
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: b899485589f19a5b74d6d22b4e5dae5fbf3ff604
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485715"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827533"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory 
 
@@ -69,7 +69,7 @@ Prostředí Azure Integration Runtime poskytuje nativní výpočetní prostřed�
 
 Odeslání aktivity je odlehčená operace pro směrování aktivity do cílové výpočetní služby, takže nemusíte škálovat výpočetní velikost pro tento scénář.
 
-Informace o vytváření a konfiguraci Azure IR najdete v tématu Jak vytvořit a nakonfigurovat Azure IR v části průvodce. 
+Informace o vytváření a konfiguraci Azure IR najdete v tématu [jak vytvořit a nakonfigurovat Azure Integration runtime](create-azure-integration-runtime.md). 
 
 > [!NOTE] 
 > Prostředí Azure Integration runtime má vlastnosti související s modulem runtime toku dat, který definuje základní výpočetní infrastrukturu, která by se použila ke spouštění toků dat. 

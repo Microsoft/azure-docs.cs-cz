@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f34355f790b56c43c2e9fae7ce23b6344b4739d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e8051621cf05b0f8c387c41cf0b95bb32e15e667
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362142"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825897"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Otázky zabezpečení při vzdáleném přístupu k aplikacím pomocí Azure Proxy aplikací služby AD
 
@@ -83,7 +83,7 @@ Abychom vylepšili zabezpečení aplikací publikovaných v Azure Proxy aplikac�
 
 #### <a name="azure-ddos-protection-service"></a>Služba Azure DDoS Protection
 
-Aplikace publikované prostřednictvím proxy aplikací jsou chráněné před distribuovanými útoky s cílem odepření služeb (DDoS). **Azure DDoS Protection** je služba poskytovaná na platformě Azure, která chrání vaše prostředky Azure před útoky DoS (Denial of Service). Úroveň služeb **Basic** je automaticky povolená a zajišťuje nepřetržité monitorování provozu a zmírnění běžných útoků na úrovni sítě v reálném čase. Podrobnosti najdete v tématu [Přehled služby Azure DDoS Protection Standard](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
+Aplikace publikované prostřednictvím proxy aplikací jsou chráněné před distribuovanými útoky s cílem odepření služeb (DDoS). Tato ochrana je spravovaná Microsoftem a je automaticky povolená ve všech našich datacentrech. Služba Azure DDoS Protection zajišťuje nepřetržité monitorování provozu a zmírnění běžných útoků na úrovni sítě v reálném čase. 
 
 ## <a name="under-the-hood"></a>Pod pokličkou
 

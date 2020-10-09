@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: f27771291d95770a693fa56041f7dce3de459d13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd231ca527b4c01509230e839b97187de29febd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081419"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825746"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Zdroje dat Azure Monitor sešity
 
@@ -85,7 +85,7 @@ Chcete-li, aby ovládací prvek dotazu použil tento zdroj dat, použijte rozev�
 
 Zprostředkovatel JSON umožňuje vytvořit výsledek dotazu ze statického obsahu JSON. Nejčastěji se používá v parametrech k vytvoření parametrů rozevíracího seznamu statických hodnot. Jednoduchá pole nebo objekty JSON se automaticky převedou na řádky a sloupce mřížky.  Pro přesnější chování můžete nakonfigurovat sloupce pomocí karty výsledky a nastavení JSONPath.
 
-## <a name="alerts-preview"></a>Výstrahy (Preview)
+## <a name="alerts-preview"></a>Upozornění (Preview)
 
 > [!NOTE]
 > Doporučeným způsobem, jak dotazovat se na informace o výstrahách Azure, je použít zdroj dat [grafu prostředků Azure](#azure-resource-graph) dotazem na `AlertsManagementResources` tabulku.
@@ -114,4 +114,3 @@ Aby nedocházelo k automatickému volání nedůvěryhodných hostitelů při po
 * [Začínáme](workbooks-visualizations.md) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
 * [Řízení](workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu.
 * [Tipy pro optimalizaci dotazů Log Analytics](../log-query/query-optimization.md)
-* 

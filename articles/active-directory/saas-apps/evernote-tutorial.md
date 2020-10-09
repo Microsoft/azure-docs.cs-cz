@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 22225d9810c7b913505cb003a1ed2ce8f1a144e1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b22bf4ee3ff830a80ee97851f08173257697c50d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555329"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826485"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Evernote
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Evernote s Azure Active Directory (Azu
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -92,7 +92,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 7. Chcete-li upravit možnosti **podepisování** , klikněte na tlačítko **Upravit** a otevřete dialogové okno **podpisový certifikát SAML** .
 
-    ![image](common/edit-certificate.png) 
+    ![Snímek obrazovky s dialogovým oknem pro podpisový certifikát, který obsahuje vybrané tlačítko pro úpravy](common/edit-certificate.png) 
 
     ![image](./media/evernote-tutorial/samlassertion.png)
 
@@ -114,7 +114,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -181,7 +181,7 @@ V případě Evernote je zřizování ručním úkolem.
 
 3. Z **konzoly pro správu**, přejít na **Přidat uživatele**.
 
-    ![Přidat-testUser](./media/evernote-tutorial/create_aaduser_0001.png)
+    ![Snímek obrazovky, který zobrazuje nabídku uživatelé s vybranou možnost Přidat uživatele.](./media/evernote-tutorial/create_aaduser_0001.png)
 
 4. Do textového pole **E-mail** **přidejte členy týmu** , zadejte e-mailovou adresu uživatelského účtu a klikněte na **pozvat.**
 
@@ -195,7 +195,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Evernote, měli byste se automaticky přihlásit k Evernote, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

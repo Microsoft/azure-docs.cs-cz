@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: c0b8f395dde1d94c4c1efa32a2f78707d1456d88
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 66d62cde9ea17e73f561dfbce94eb3d3e7175b6d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817539"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827823"
 ---
 # <a name="use-spot-vms-in-azure"></a>Použití bodových virtuálních počítačů v Azure
 
@@ -67,8 +67,22 @@ V současné době jsou podporovány následující [typy nabídek](https://azur
 
 Ceny pro virtuální počítače na místě jsou proměnné na základě oblastí a SKU. Další informace najdete v tématu ceny virtuálních počítačů pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
+Můžete také zadat dotaz na informace o cenách pomocí [rozhraní API maloobchodních cen Azure](/rest/api/cost-management/retail-prices/azure-retail-prices) a dotazovat se na informace o cenách s cenami. `meterName`A `skuName` bude obsahovat oba `Spot` .
 
 S proměnnými cenami máte možnost nastavit maximální cenu v USD (USD), která používá až 5 desetinných míst. Hodnota by měla být například `0.98765` maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu `-1` , nebude se virtuální počítač vyřadit podle ceny. Cena za virtuální počítač bude aktuální cena za bod nebo cena za standardní virtuální počítač, který je stále menší, pokud je dostupná kapacita a kvóta.
+
+## <a name="pricing-and-eviction-history"></a>Historie cen a vyřazení
+
+V oblasti portálu můžete zobrazit historické ceny a sazby vyřazení podle velikosti. Vyberte **Zobrazit historii cen a porovnat ceny v přilehlých oblastech** , abyste viděli tabulku nebo graf cen pro konkrétní velikost.  Ceny a sazby vyřazení na následujících obrázcích jsou pouze příklady. 
+
+**Graf**:
+
+:::image type="content" source="./media/spot-chart.png" alt-text="Snímek obrazovky s možnostmi oblastí s rozdílem v cenách a tarify vyřazení jako graf":::
+
+**Tabulka**:
+
+:::image type="content" source="./media/spot-table.png" alt-text="Snímek obrazovky s možnostmi oblastí s rozdílem v cenách a tarify vyřazení jako graf":::
+
 
 
 ##  <a name="frequently-asked-questions"></a>Nejčastější dotazy
@@ -98,7 +112,7 @@ S proměnnými cenami máte možnost nastavit maximální cenu v USD (USD), kter
 **A:** Svůj dotaz můžete odeslat a označit `azure-spot` na adrese [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html). 
 
 ## <a name="next-steps"></a>Další kroky
-K nasazení virtuálních počítačů na místě použijte rozhraní příkazového [řádku](./linux/spot-cli.md), [portálu](./windows/spot-portal.md), [ARM](./linux/spot-template.md)nebo [PowerShell](./windows/spot-powershell.md) .
+K nasazení virtuálních počítačů na místě použijte rozhraní příkazového [řádku](./linux/spot-cli.md), [portálu](spot-portal.md), [ARM](./linux/spot-template.md)nebo [PowerShell](./windows/spot-powershell.md) .
 
 Můžete také nasadit [sadu škálování s instancemi virtuálních počítačů na místě](../virtual-machine-scale-sets/use-spot.md).
 

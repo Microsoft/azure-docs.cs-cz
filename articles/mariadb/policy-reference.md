@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure Database for MariaDB
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Database for MariaDB. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: reference
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 2e17d41d10c56d4f97463c51a6bcca6093d057b7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: fb2d8815c6584561135bb2b186e6cee27cb62b9a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974949"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827507"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-mariadb"></a>Azure Policy předdefinované definice pro Azure Database for MariaDB
 

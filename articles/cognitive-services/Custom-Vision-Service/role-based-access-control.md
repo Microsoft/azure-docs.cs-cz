@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: fc536b3b0c7af113919f274fc4bdd5fad63cbd06
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 4eea87d7b5ef543551b789ddc6b045358fa98631
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057184"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826939"
 ---
 # <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
@@ -43,8 +43,8 @@ K určení potřeb přístupu k prostředkům Custom Vision použijte následuj�
 
 |Role  |Oprávnění  |
 |---------|---------|
-|`Cognitive Service Custom Vision Contributor`     | Úplný přístup k projektům včetně možnosti vytvořit, upravit nebo odstranit projekt.        |
-|`Cognitive Service Custom Vision Trainer`     | Úplný přístup s výjimkou možnosti vytvořit nebo odstranit projekt. Školitel může zobrazit a upravit projekty a vlaky, publikovat, zrušit publikování nebo exportovat modely.        |
-|`Cognitive Service Custom Vision Labeler`     | Možnost nahrávání, úpravy nebo odstraňování školicích imagí a vytváření, přidávání, odebírání a odstraňování značek. Popisky můžou zobrazit projekty, ale nemůžou aktualizovat cokoli jiného než školicí image a značky.         |
-|`Cognitive Service Custom Vision Deployment`     | Možnost publikovat, zrušit publikování nebo exportovat modely. Nasazení mohou zobrazit projekty, ale nemohou aktualizovat projekt, školicí snímky nebo značky.        |
-|`Cognitive Service Custom Vision Reader`     | Možnost zobrazit projekty. Čtenáři nemůžou dělat žádné změny.        |
+|`Cognitive Services Custom Vision Contributor`     | Úplný přístup k projektům včetně možnosti vytvořit, upravit nebo odstranit projekt.        |
+|`Cognitive Services Custom Vision Trainer`     | Úplný přístup s výjimkou možnosti vytvořit nebo odstranit projekt. Školitel může zobrazit a upravit projekty a vlaky, publikovat, zrušit publikování nebo exportovat modely.        |
+|`Cognitive Services Custom Vision Labeler`     | Možnost nahrávání, úpravy nebo odstraňování školicích imagí a vytváření, přidávání, odebírání a odstraňování značek. Popisky můžou zobrazit projekty, ale nemůžou aktualizovat cokoli jiného než školicí image a značky.         |
+|`Cognitive Services Custom Vision Deployment`     | Možnost publikovat, zrušit publikování nebo exportovat modely. Nasazení mohou zobrazit projekty, ale nemohou aktualizovat projekt, školicí snímky nebo značky.        |
+|`Cognitive Services Custom Vision Reader`     | Možnost zobrazit projekty. Čtenáři nemůžou dělat žádné změny.        |

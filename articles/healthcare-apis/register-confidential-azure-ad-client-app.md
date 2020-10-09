@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: e74271119b581b2bb291b1a9ddd74ad0781855e6
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 8021fb3fa9f11ef895569f48a2ae21b3f7adcd36
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629119"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826222"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Registrace důvěrné klientské aplikace v Azure Active Directory
 
@@ -50,7 +50,7 @@ Teď, když jste zaregistrovali aplikaci, musíte vybrat, která oprávnění AP
 
 1. Vyberte **Přidat oprávnění**.
 
-    Pokud používáte rozhraní API Azure pro FHIR, přidáte oprávnění k rozhraním API pro zdravotní péče Azure pomocí hledání **rozhraní API pro zdravotní péče Azure** v části **rozhraní API, které používá moje organizace**. 
+    Pokud používáte rozhraní API Azure pro FHIR, přidáte oprávnění k rozhraním API pro zdravotní péče Azure pomocí hledání **rozhraní API pro zdravotní péče Azure** v části **rozhraní API, které používá moje organizace**. Tuto adresu budete moct najít, jenom když už máte [nasazené rozhraní API Azure pro FHIR](fhir-paas-powershell-quickstart.md).
 
     Pokud odkazujete na jinou aplikaci prostředků, vyberte svou [registraci aplikace prostředků rozhraní API FHIR](register-resource-azure-ad-client-app.md) , kterou jste vytvořili dříve v části **Moje rozhraní API**.
 
@@ -75,9 +75,7 @@ Teď, když jste zaregistrovali aplikaci, musíte vybrat, která oprávnění AP
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se seznámili s postupem registrace důvěrné klientské aplikace v Azure Active Directory. Nyní jste připraveni nasadit [rozhraní API Azure pro FHIR](fhir-paas-powershell-quickstart.md).
-
-Po nasazení rozhraní API Azure pro FHIR můžete zkontrolovat další dostupná nastavení.
+V tomto článku jste se seznámili s postupem registrace důvěrné klientské aplikace v Azure Active Directory. V dalším kroku získáte přístup k serveru FHIR pomocí post.
  
 >[!div class="nextstepaction"]
->[Nasazení Azure API for FHIR](fhir-paas-powershell-quickstart.md)
+>[Přístup k rozhraní API Azure pro FHIR s využitím post](access-fhir-postman-tutorial.md)

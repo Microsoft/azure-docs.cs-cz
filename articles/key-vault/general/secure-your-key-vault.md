@@ -4,36 +4,47 @@ description: Model přístupu pro Azure Key Vault, včetně ověřování služb
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
-tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 9516a32e89b9ad671cf705c8f520c73e28801c19
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d110630ad3291473aee395259d1aaa623a935f5f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320587"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825465"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Zabezpečený přístup k trezoru klíčů
 
 Azure Key Vault je cloudová služba, která chrání šifrovací klíče a tajné kódy, jako jsou certifikáty, připojovací řetězce a hesla. Vzhledem k tomu, že tato data jsou citlivá a důležitá pro podnikání, je nutné zabezpečený přístup k vašim trezorům klíčů povolit pouze autorizovaným aplikacím a uživatelům. Tento článek poskytuje přehled modelu přístupu Key Vault. Vysvětluje ověřování a autorizaci a popisuje, jak zabezpečit přístup k vašim trezorům klíčů.
 
+Další informace o Key Vault najdete v tématu [o Azure Key Vault](overview.md). Další informace o tom, co je možné uložit v trezoru klíčů, najdete v tématu [informace o klíčích, tajných klíčích a certifikátech](about-keys-secrets-certificates.md).
+
 ## <a name="access-model-overview"></a>Přehled modelu přístupu
 
 Přístup k trezoru klíčů se ovládá prostřednictvím dvou rozhraní: **rovina správy** a **rovina dat**. Rovina správy je místo, kde spravujete Key Vault sebe sama. Mezi operace v této rovině patří vytváření a odstraňování trezorů klíčů, načítání vlastností Key Vault a aktualizace zásad přístupu. Rovina dat je místo, kde pracujete s daty uloženými v trezoru klíčů. Můžete přidávat, odstraňovat a upravovat klíče, tajné klíče a certifikáty.
 
-Pro přístup k trezoru klíčů v kterékoli rovině musí mít všichni volající (uživatelé nebo aplikace) správné ověřování a autorizaci. Ověřování vytváří identitu volajícího. Autorizace určuje, které operace může volající spustit.
+Obě roviny používají pro ověřování [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) . Pro autorizaci rovina správy používá [řízení přístupu na základě role (RBAC) Azure](https://docs.microsoft.com/azure/role-based-access-control/overview) a rovina dat používá [zásady přístupu Key Vault](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal) a [Azure RBAC pro Key Vault operace roviny dat (Preview)](https://docs.microsoft.com/azure/key-vault/general/rbac-guide).
 
-Obě roviny používají pro ověřování Azure Active Directory (Azure AD). Pro autorizaci rovina správy používá řízení přístupu na základě role (RBAC) Azure a rovina dat používá zásady přístupu Key Vault a Azure RBAC (Preview).
+Pro přístup k trezoru klíčů v kterékoli rovině musí mít všichni volající (uživatelé nebo aplikace) správné ověřování a autorizaci. Ověřování vytváří identitu volajícího. Autorizace určuje, které operace může volající spustit. Ověřování pomocí Key Vault funguje ve spojení s [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis), která zodpovídá za ověřování identity libovolného **objektu zabezpečení**.
 
-## <a name="active-directory-authentication"></a>Ověřování služby Active Directory
+Objekt zabezpečení je objekt, který představuje uživatele, skupinu, službu nebo aplikaci požadující přístup k prostředkům Azure. Azure přiřadí jedinečné **ID objektu** každému objektu zabezpečení.
+
+* Objekt zabezpečení **uživatele** identifikuje jednotlivce, který má profil v Azure Active Directory.
+
+* Objekt zabezpečení **skupiny** identifikuje sadu uživatelů vytvořených v Azure Active Directory. Všechny role nebo oprávnění přiřazených ke skupině jsou udělena všem uživatelům v rámci dané skupiny.
+
+* **Instanční objekt** je typ instančního objektu, který slouží k identitě aplikace nebo služby, což znamená, že místo uživatele nebo skupiny říkáte část kódu. ID objektu instančního objektu se označuje jako jeho **ID klienta** a funguje jako jeho uživatelské jméno. **Tajný klíč klienta** instančního objektu nebo **certifikát** funguje jako heslo. Řada služeb Azure podporuje přiřazování [spravované identity](/azure/active-directory/managed-identities-azure-resources/overview) pomocí automatizované správy **ID klienta** a **certifikátu**. Spravovaná identita představuje nejbezpečnější a doporučenou možnost ověřování v rámci Azure.
+
+Další informace o ověřování pro Key Vault najdete v tématu [ověření pro Azure Key Vault](authentication.md)
+
+## <a name="key-vault-authentication-options"></a>Možnosti ověřování Key Vault
 
 Když vytvoříte Trezor klíčů v rámci předplatného Azure, automaticky se přiřadí k tenantovi Azure AD daného předplatného. Všichni volající v obou rovinách se musí zaregistrovat v tomto tenantovi a ověřit pro přístup k trezoru klíčů. V obou případech můžou aplikace získat přístup k Key Vault dvěma způsoby:
 
-- **Pouze aplikace**: aplikace představuje úlohu služby nebo na pozadí. Tato identita je nejběžnější scénář pro aplikace, které pravidelně potřebují přistupovat k certifikátům, klíčům nebo tajným klíčům z trezoru klíčů. Aby tento scénář fungoval, `objectId` musí být aplikace zadaná v zásadách přístupu a `applicationId` nesmí být zadána nebo musí být zadaná _not_ `null` .
+- **Pouze aplikace**: aplikace představuje instanční objekt nebo spravovanou identitu. Tato identita je nejběžnější scénář pro aplikace, které pravidelně potřebují přistupovat k certifikátům, klíčům nebo tajným klíčům z trezoru klíčů. Aby tento scénář fungoval, `objectId` musí být aplikace zadaná v zásadách přístupu a `applicationId` nesmí být zadána nebo musí být zadaná _not_ `null` .
 - **Pouze uživatel**: uživatel přistupuje k trezoru klíčů z jakékoli aplikace zaregistrované v tenantovi. Příklady tohoto typu přístupu zahrnují Azure PowerShell a Azure Portal. Aby tento scénář fungoval, `objectId` musí být uživatel uveden v zásadách přístupu a `applicationId` nesmí být zadán nebo musí být zadán _not_ `null` .
 - **Aplikace-plus – uživatel** (někdy označovaný jako _složená identita_): uživatel je vyžadován pro přístup k trezoru klíčů z konkrétní aplikace _a_ aplikace musí k zosobnění uživatele používat tok spouštěný jménem ověřování (OBO). Aby tento scénář fungoval, `applicationId` `objectId` musí být v zásadách přístupu zadány obě i. `applicationId`Identifikuje požadovanou aplikaci a `objectId` identifikuje uživatele. V současné době tato možnost není k dispozici pro rovinu dat Azure RBAC (Preview).
 
@@ -58,7 +69,7 @@ V následující tabulce jsou uvedeny koncové body pro řídicí a datové rovi
 
 ## <a name="management-plane-and-azure-rbac"></a>Rovina správy a Azure RBAC
 
-Na rovině správy můžete pomocí řízení přístupu na základě role Azure (Azure RBAC) autorizovat operace, které volající může spustit. V modelu Azure RBAC má každé předplatné Azure instanci Azure AD. Přístup k uživatelům, skupinám a aplikacím udělíte z tohoto adresáře. Přístup se uděluje pro správu prostředků v předplatném Azure, které používají model nasazení Azure Resource Manager.
+Na rovině správy můžete pomocí [řízení přístupu na základě role Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) autorizovat operace, které volající může spustit. V modelu Azure RBAC má každé předplatné Azure instanci Azure AD. Přístup k uživatelům, skupinám a aplikacím udělíte z tohoto adresáře. Přístup se uděluje pro správu prostředků v předplatném Azure, které používají model nasazení Azure Resource Manager.
 
 V rámci skupiny prostředků můžete vytvořit Trezor klíčů a spravovat přístup pomocí Azure AD. Uživatelům nebo skupinám udělíte možnost spravovat trezory klíčů ve skupině prostředků. Přístup na konkrétní úroveň oboru udělíte tak, že jim přiřadíte příslušné role Azure. Chcete-li uživateli udělit přístup ke správě trezorů klíčů, přiřaďte uživatele předdefinované `key vault Contributor` role v konkrétním oboru. K roli Azure se dají přiřadit tyto úrovně oborů:
 
@@ -66,7 +77,9 @@ V rámci skupiny prostředků můžete vytvořit Trezor klíčů a spravovat př
 - **Skupina prostředků**: role Azure přiřazená na úrovni skupiny prostředků se vztahuje na všechny prostředky v této skupině prostředků.
 - **Konkrétní prostředek**: na tento prostředek se vztahuje role Azure přiřazená pro konkrétní prostředek. V tomto případě je prostředkem konkrétní Trezor klíčů.
 
-Existuje několik předdefinovaných rolí. Pokud předdefinovaná role nevyhovuje vašim potřebám, můžete definovat vlastní roli. Další informace najdete v tématu [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md).
+Existuje několik předdefinovaných rolí. Pokud předdefinovaná role nevyhovuje vašim potřebám, můžete definovat vlastní roli. Další informace najdete v tématu [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md). 
+
+Musíte mít `Microsoft.Authorization/roleAssignments/write` `Microsoft.Authorization/roleAssignments/delete` oprávnění a, jako je například správce nebo [vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#owner) [přístupu uživatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles.md#user-access-administrator) .
 
 > [!IMPORTANT]
 > Pokud má uživatel `Contributor` oprávnění k rovině správy trezoru klíčů, uživatel může udělit přístup k rovině dat nastavením zásad přístupu Key Vault. Měli byste přesně řídit, kdo má `Contributor` roli přístup k vašim trezorům klíčů. Ujistěte se, že k vašim trezorům klíčů, klíčům, tajným klíčům a certifikátům mají přístup jenom autorizovaní uživatelé.
@@ -75,13 +88,15 @@ Existuje několik předdefinovaných rolí. Pokud předdefinovaná role nevyhovu
 <a id="data-plane-access-control"></a>
 ## <a name="data-plane-and-access-policies"></a>Rovina dat a zásady přístupu
 
-Nastavením zásad přístupu Key Vault pro Trezor klíčů můžete udělit přístup k rovině dat. Aby bylo možné nastavit tyto zásady přístupu, musí mít uživatel, skupina nebo aplikace `Contributor` oprávnění pro rovinu správy pro daný Trezor klíčů.
+Nastavením zásad přístupu Key Vault pro Trezor klíčů můžete udělit přístup k rovině dat. Aby bylo možné nastavit tyto zásady přístupu, musí mít uživatel, skupina nebo aplikace `Key Vault Contributor` oprávnění pro rovinu správy pro daný Trezor klíčů.
 
 Uživateli, skupině nebo aplikaci udělíte přístup k provádění konkrétních operací pro klíče nebo tajné klíče v trezoru klíčů. Key Vault podporuje až 1 024 záznamů zásad přístupu pro Trezor klíčů. Pokud chcete udělit přístup k rovině dat několika uživatelům, vytvořte skupinu zabezpečení Azure AD a přidejte do této skupiny uživatele.
 
 Úplný seznam operací trezoru a tajné operace můžete zobrazit tady: [Key Vault odkaz na operaci](https://docs.microsoft.com/rest/api/keyvault/#vault-operations)
 
 <a id="key-vault-access-policies"></a> Zásady přístupu Key Vault udělují oprávnění nezávisle na klíčích, tajných klíčích a certifikátech.  Přístupová oprávnění pro klíče, tajné klíče a certifikáty jsou na úrovni trezoru. 
+
+Další informace o použití zásad přístupu trezoru klíčů najdete v tématu [přiřazení zásad Key Vault přístupu](assign-access-policy-portal.md) .
 
 > [!IMPORTANT]
 > Zásady přístupu Key Vault platí na úrovni trezoru. Když je uživateli udělené oprávnění k vytváření a odstraňování klíčů, můžou tyto operace provádět u všech klíčů v tomto trezoru klíčů.
@@ -90,22 +105,25 @@ Zásady přístupu Key Vault nepodporují podrobné oprávnění na úrovni obje
 
 ## <a name="data-plane-and-azure-rbac-preview"></a>Rovina dat a Azure RBAC (Preview)
 
-Řízení přístupu na základě role v Azure je alternativním modelem oprávnění pro řízení přístupu k Azure Key Vault rovině dat, která se dají povolit pro jednotlivé trezory klíčů. Model oprávnění Azure RBAC je exkluzivní a nastavený na nastavení, zásady přístupu k trezoru se staly neaktivními. Azure Key Vault definuje sadu předdefinovaných rolí Azure, které zahrnují společné sady oprávnění používaných pro přístup k klíčům, tajným klíčům nebo certifikátům.
+Řízení přístupu na základě role v Azure je alternativním modelem oprávnění pro řízení přístupu k Azure Key Vault rovině dat, která se dají povolit pro jednotlivé trezory klíčů. Model oprávnění Azure RBAC je exkluzivní a nastavený na nastavení, zásady přístupu k trezoru se staly neaktivními. Azure Key Vault definuje sadu předdefinovaných rolí Azure, které zahrnují společné sady oprávnění používané pro přístup k klíčům, tajným klíčům nebo certifikátům.
 
 Když je role Azure přiřazená k objektu zabezpečení Azure AD, poskytuje Azure přístup k těmto prostředkům pro daný objekt zabezpečení. Přístup může být vymezen na úrovni předplatného, skupiny prostředků, trezoru klíčů nebo jednotlivého klíče, tajného klíče nebo certifikátu. Objekt zabezpečení Azure AD může být uživatelem, skupinou, instančním objektem služby nebo [spravovanou identitou pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Klíčové výhody použití oprávnění Azure RBAC pro zásady přístupu do trezoru jsou Centralizovaná správa řízení přístupu a jejich integrace s Privileged Identity Management (PIM). Privileged Identity Management poskytuje aktivaci rolí na základě času a schválení, která vám umožní zmírnit rizika nadměrných, zbytečných nebo nepoužívaných přístupových oprávnění k prostředkům, o kterých se zajímáte.
+Klíčové výhody použití oprávnění Azure RBAC pro zásady přístupu do trezoru jsou Centralizovaná správa řízení přístupu a její integrace s [Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure). Privileged Identity Management poskytuje aktivaci rolí na základě času a schválení, která vám umožní zmírnit rizika nadměrných, zbytečných nebo nepoužívaných přístupových oprávnění k prostředkům, o kterých se zajímáte.
 
+Další informace o Key Vault rovině dat pomocí RBAC najdete v tématu [Key Vault klíče, certifikáty a tajné klíče s řízením přístupu na základě role Azure (Preview)](rbac-guide.md) .
 
 ## <a name="firewalls-and-virtual-networks"></a>Brány firewall a virtuální sítě
 
-Pro další vrstvu zabezpečení můžete nakonfigurovat brány firewall a pravidla virtuální sítě. Ve výchozím nastavení můžete nakonfigurovat Key Vault brány firewall a virtuální sítě tak, aby odepřely přístup k provozu ze všech sítí (včetně internetového provozu). Můžete udělit přístup k provozu z konkrétních virtuálních sítí Azure a rozsahů veřejných IP adres, což vám umožní vytvořit zabezpečenou hranici sítě pro vaše aplikace.
+Pro další vrstvu zabezpečení můžete nakonfigurovat brány firewall a pravidla virtuální sítě. Ve výchozím nastavení můžete nakonfigurovat Key Vault brány firewall a virtuální sítě tak, aby odepřely přístup k provozu ze všech sítí (včetně internetového provozu). Můžete udělit přístup k provozu z konkrétních [virtuálních sítí Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) a rozsahů veřejných IP adres, což vám umožní vytvořit zabezpečenou hranici sítě pro vaše aplikace.
 
 Tady je několik příkladů použití koncových bodů služby:
 
 * Používáte Key Vault k ukládání šifrovacích klíčů, tajných klíčů aplikací a certifikátů a chcete zablokovat přístup k trezoru klíčů z veřejného Internetu.
 * Chcete uzamknout přístup k trezoru klíčů, aby se k vašemu trezoru klíčů mohli připojit jenom vaše aplikace nebo krátký seznam určených hostitelů.
 * Máte aplikaci spuštěnou ve službě Azure Virtual Network a tato virtuální síť je u všech příchozích a odchozích přenosů uzamčena. Vaše aplikace se pořád potřebuje připojit k Key Vault k načtení tajných klíčů nebo certifikátů nebo k používání kryptografických klíčů.
+
+Další informace o Key Vault brány firewall a virtuálních sítích najdete v tématu [konfigurace Azure Key Vault bran firewall a virtuálních sítí](network-security.md) .
 
 > [!NOTE]
 > Brány firewall Key Vault a pravidla virtuální sítě se vztahují jenom na rovinu dat Key Vault. Brány firewall a pravidla virtuální sítě neovlivní Key Vault operace roviny řízení (například operace vytvoření, odstranění a úpravy, nastavení zásad přístupu, nastavení brány firewall a pravidel virtuální sítě).
@@ -118,13 +136,15 @@ Běžné scénáře použití privátního odkazu pro služby Azure:
 
 - **Služby soukromého přístupu na platformě Azure**: Připojte svoji virtuální síť ke službám v Azure bez veřejné IP adresy ve zdroji nebo cíli. Poskytovatelé služeb mohou vykreslovat své služby ve své vlastní virtuální síti a příjemci mají přístup k těmto službám ve své místní virtuální síti. Platforma privátního propojení bude zpracovávat připojení mezi příjemcem a službami přes páteřní síť Azure. 
  
-- **Místní a partnerské sítě**: přístup ke službám, které běží v Azure, prostřednictvím privátního partnerského vztahu ExpressRoute, tunelových propojení VPN a partnerských virtuálních sítí s použitím privátních koncových bodů. Pro přístup ke službě není nutné nastavovat veřejný partnerský vztah ani procházet internetem. Privátní odkaz poskytuje zabezpečený způsob migrace úloh do Azure.
+- **Místní a partnerské sítě**: přístup ke službám, které běží v Azure, prostřednictvím privátního partnerského vztahu ExpressRoute, tunelových propojení VPN a partnerských virtuálních sítí s použitím privátních koncových bodů. Není nutné nastavovat veřejný partnerský vztah ani procházet internetem, aby bylo možné službu kontaktovat. Privátní odkaz poskytuje zabezpečený způsob migrace úloh do Azure.
  
 - **Ochrana před únikem dat**: privátní koncový bod je namapován na instanci prostředku PaaS namísto celé služby. Příjemci se můžou připojit jenom ke konkrétnímu prostředku. Přístup k jakémukoli jinému prostředku ve službě je blokovaný. Tento mechanismus zajišťuje ochranu před riziky úniku dat. 
  
 - **Globální dosah**: Připojte soukromě ke službám běžícím v jiných oblastech. Virtuální síť příjemce může být v oblasti A a může se připojit ke službám za soukromým odkazem v oblasti B.  
  
 - **Rozšiřování na vlastní služby**: umožňuje stejné prostředí a funkce pro vlastní vygenerování služby pro uživatele v Azure. Umístěním služby za standardní Azure Load Balancer můžete povolit pro privátní propojení. Příjemce se pak může připojit přímo k vaší službě pomocí privátního koncového bodu ve své vlastní virtuální síti. Žádosti o připojení můžete spravovat pomocí toku volání schválení. Privátní propojení Azure funguje pro zákazníky a služby patřící různým klientům Azure Active Directory. 
+
+Další informace o privátních koncových bodech najdete v tématu [Key Vault s privátním odkazem Azure](https://docs.microsoft.com/azure/key-vault/general/private-link-service) .
 
 ## <a name="example"></a>Příklad
 
@@ -183,7 +203,7 @@ Náš příklad popisuje jednoduchý scénář. Scénáře reálného života m�
 
 ## <a name="next-steps"></a>Další kroky
 
-[Ověřování pro Azure Key Vault](authentication.md)
+[Ověřování ve službě Azure Key Vault](authentication.md)
 
 [Přiřazení zásady přístupu Key Vault](assign-access-policy-portal.md)
 
