@@ -1,30 +1,30 @@
 ---
-title: Aktualizace RU/s pro rozhraní API pro tabulky tabulku pro Azure Cosmos DB
-description: Aktualizace RU/s pro rozhraní API pro tabulky tabulku pro Azure Cosmos DB
+title: Operace skriptů Azure CLI pro propustnost (RU/s) pro prostředky Azure Cosmos DB rozhraní API pro tabulky
+description: Operace skriptů Azure CLI pro propustnost (RU/s) pro prostředky Azure Cosmos DB rozhraní API pro tabulky
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 07/29/2020
-ms.openlocfilehash: 3f3a39e546c83620ded539180197f6fda760260f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 10/07/2020
+ms.openlocfilehash: 19fe3ecd3b8127c50ef90ef8195afbf14b04509b
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431548"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839329"
 ---
-# <a name="update-rus-for-a-table-api-table-for-azure-cosmos-db-azure-cli"></a>Aktualizace RU/s pro rozhraní API pro tabulky tabulku pro Azure Cosmos DB Azure CLI
+# <a name="throughput-rus-operations-with-azure-cli-for-a-table-for-azure-cosmos-db-table-api"></a>Operace propustnosti (RU/s) pomocí rozhraní příkazového řádku Azure pro tabulku Azure Cosmos DB rozhraní API pro tabulky
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.9.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.12.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-Tento skript vytvoří tabulku rozhraní API pro tabulky a pak aktualizuje propustnost tabulky.
+Tento skript vytvoří tabulku rozhraní API pro tabulky a pak aktualizuje propustnost tabulky. Skript pak migruje z úrovně Standard na propustnost automatického škálování a potom po migraci přečte hodnotu propustnosti automatického škálování.
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/table/throughput.sh "Update RU/s for a Table API table.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/table/throughput.sh "Throughput operations for Table API.")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
@@ -43,7 +43,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Vytvoří účet služby Azure Cosmos DB. |
 | [AZ cosmosdb Table Create](/cli/azure/cosmosdb/table#az-cosmosdb-table-create) | Vytvoří tabulku rozhraní API pro tabulky služby Azure Cosmos. |
-| [AZ cosmosdb Table propustnost Update](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-update) | Aktualizujte RU/s pro Azure Cosmos rozhraní API pro tabulky tabulku. |
+| [AZ cosmosdb Table propustnost Update](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-update) | Aktualizujte propustnost pro rozhraní API pro tabulky tabulku Azure Cosmos. |
+| [AZ cosmosdb Table propustnost migrace](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-migrate) | Migrace propustnosti pro službu Azure Cosmos rozhraní API pro tabulky Table |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky

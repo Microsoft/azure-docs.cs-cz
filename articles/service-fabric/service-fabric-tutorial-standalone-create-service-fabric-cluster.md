@@ -1,17 +1,15 @@
 ---
 title: Nainstalovat samostatného klienta Service Fabric
-description: V tomto kurzu se dozvíte, jak nainstalovat samostatného klienta Service Fabric v clusteru, který jste vytvořili v předchozím článku kurzu.
-author: dkkapur
+description: V tomto kurzu se dozvíte, jak nainstalovat klienta Service Fabric Standalone do clusteru.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: ae0b343be986f4d8d5176c1f39eef6b23ca81278
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75613937"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840638"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Kurz: Instalace a vytvoření clusteru Service Fabric
 
@@ -19,7 +17,7 @@ Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostř
 
 Tento kurz je druhá část série. Tento kurz vás provede kroky vytvoření samostatného clusteru Service Fabric.
 
-Ve druhé části této série se naučíte:
+V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
 > * Stáhnout a nainstalovat samostatný balíček Service Fabric
@@ -38,7 +36,7 @@ Můžete si přečíst podrobnější informace o [obsahu instalačního balíč
 
 Sestavujete cluster Windows se třemi uzly, takže potřebujete upravit soubor `ClusterConfig.Unsecure.MultiMachine.json`.
 
-Potom je třeba aktualizovat tři řádky ipAddress, které jsou v souboru jako řádky 8, 15 a 22, na IP adresy pro každou z instancí.
+Dále aktualizujte tři linky ipAddress, ke kterým dojde v souboru na řádcích 8, 15 a 22 na IP adresy pro každou instanci.
 
 Po aktualizaci uzlů vypadají hodnoty takto:
 
@@ -77,7 +75,7 @@ cd .\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
 ```
 
-Měl by se zobrazit výstup podobný následujícímu. Pokud je pro spodní pole „Passed“ (Úspěch) vrácena hodnota `True`, znamená to, že kontroly správnosti úspěšně proběhly a na základě vstupní konfigurace zřejmě bude možné cluster nasadit.
+Měl by se zobrazit výstup podobný následujícímu příkladu. Pokud je pro spodní pole „Passed“ (Úspěch) vrácena hodnota `True`, znamená to, že kontroly správnosti úspěšně proběhly a na základě vstupní konfigurace zřejmě bude možné cluster nasadit.
 
 ```powershell
 Trace folder already exists. Traces will be written to existing trace folder: C:\Users\Administrator\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\DeploymentTraces
@@ -101,7 +99,7 @@ Passed                     : True
 
 ## <a name="create-the-cluster"></a>Vytvoření clusteru
 
-Po úspěšném ověření konfigurace clusteru spusťte skript *CreateServiceFabricCluster.ps1* a nasaďte cluster Service Fabric do virtuálních počítačů v konfiguračním souboru.
+Po úspěšném ověření konfigurace clusteru spusťte skript *CreateServiceFabricCluster.ps1* a nasaďte Service Fabric cluster do virtuálních počítačů v konfiguračním souboru.
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json -AcceptEULA
@@ -118,7 +116,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 >
 >
 
-### <a name="bring-up-service-fabric-explorer"></a>Vyvolání Service Fabric Exploreru
+### <a name="open-service-fabric-explorer"></a>Otevřít Service Fabric Explorer
 
 Nyní se můžete připojit ke clusteru pomocí Service Fabric Explorer přímo z jednoho z počítačů pomocí http: \/ /localhost: 19080/Explorer/index.html nebo vzdáleně s http: \/ /< *IPAddressofaMachine*>:19080/Explorer/index.html.
 
@@ -128,7 +126,7 @@ Podle toho, jak se vaše obchodní potřeby mění, můžete uzly do samostatné
 
 ## <a name="next-steps"></a>Další kroky
 
-V druhé části série jste se seznámili s paralelním nahráváním velkých objemů náhodných dat do účtu úložiště a naučili jste se například:
+V tomto článku jste se dozvěděli o nahrávání velkých objemů náhodných dat do účtu úložiště paralelně, jako je například:
 
 > [!div class="checklist"]
 > * Konfigurace připojovacího řetězce

@@ -1,17 +1,14 @@
 ---
 title: Spuštění služby Azure Service Fabric v rámci účtu gMSA
 description: Naučte se, jak spustit službu jako účet spravované služby (gMSA) na samostatném clusteru s Service Fabric Windows.
-author: dkkapur
 ms.topic: how-to
 ms.date: 03/29/2018
-ms.author: dekapur
-ms.custom: sfrev
-ms.openlocfilehash: 8dea63ef6a50597d9ad852cb9cdea4745532fed4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9750042764306c5df7a391429cc6926704db05ab
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252908"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838904"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Spuštění služby jako skupinový účet spravované služby
 

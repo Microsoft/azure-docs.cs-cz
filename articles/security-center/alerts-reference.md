@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: memildin
-ms.openlocfilehash: 257c6f30709448da2f6067cec226bc810d0ffe53
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 943aedb34cef8e7db73877c926da81887ca01df2
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826146"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839495"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Výstrahy zabezpečení – referenční příručka
 
@@ -112,7 +112,6 @@ V dolní části této stránky je k dispozici Tabulka popisující Azure Securi
 |**Zjištěn podezřelý název procesu [více než jednou]**|Analýza dat hostitele na% {napadený hostitel} zjistila proces, jehož název je podezřelý, například odpovídající známému nástroji útočníka, nebo je pojmenován způsobem, který sugestivní nástroje útočníka, který se snaží skrýt v jednoduchém pohledu. Tento proces může být legitimní aktivity nebo indikuje, že jeden z vašich počítačů byl ohrožen. Toto chování bylo pozorováno [x] krát ještě dnes na následujících počítačích: [názvy počítačů]|-|Střední|
 |**Zjistil se podezřelý název procesu.**|Analýza dat hostitele na% {napadený hostitel} zjistila proces, jehož název je podezřelý, například odpovídající známému nástroji útočníka, nebo je pojmenován způsobem, který sugestivní nástroje útočníka, který se snaží skrýt v jednoduchém pohledu. Tento proces může být legitimní aktivity nebo indikuje, že jeden z vašich počítačů byl ohrožen.|-|Střední|
 |**Nárůst ukončení pro podezřelé procesy**|Analýza dat hostitele indikuje, že se v umístění% {Machine Name} vytvoří nárůst ukončení u podezřelého procesu. Konkrétně byly ukončeny procesy% {NumberOfCommands} mezi% {Begin} a% {končícím}.|-|Nízká|
-|**Podezřelé spuštění systémového souboru**|Analýza dat hostitele zjistila spustitelný soubor na% {ohroženém hostiteli}, který běží z neobvyklého umístění. Tento spustitelný soubor může být buď legitimní aktivity, nebo označení ohroženého hostitele.|-|Vysoké|
 |**Podezřelý spuštěný systémový proces**|Systémový proces% {název procesu} byl spuštěný v neobvyklém kontextu. Malware často používá tento název procesu k maskování své škodlivé aktivity.|-|Vysoké|
 |**Zjištěn podezřelý pojmenovaný proces**|Analýza dat hostitele na% {napadený hostitel} zjistila proces, jehož název se velmi podobá, ale liší se od velmi běžně spouštěného procesu (% {podobný názvu procesu). I když může být tento proces neškodný, je známo, že se v prostém pohledu někdy skryje pojmenování jejich škodlivých nástrojů, aby vypadaly jako legitimní názvy procesů.|-|Střední|
 |**Zjistilo se neobvyklé spuštění procesu.**|Analýza dat hostitele na% {napadený hostitel} zjistila spuštění procesu uživatelem:% {uživatelské jméno}, které nebylo neobvyklé. Účty, jako je například% {User Name}, mají za následek omezené sady operací, toto spuštění bylo zjištěno, že je mimo znak a může být podezřelé.|-|Vysoké|

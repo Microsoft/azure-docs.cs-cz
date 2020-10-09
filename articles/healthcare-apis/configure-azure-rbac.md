@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.reviewer: dseven
-ms.openlocfilehash: c4a78168f2759f9d7bb9e50165b8cf03c71ecab5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1df2d112814c93261c364883f4b834e0bdb657bb
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845933"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839907"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>Konfigurace služby Azure RBAC pro FHIR 
 
@@ -31,11 +31,11 @@ Pokud chcete používat službu Azure RBAC, musí být vaše rozhraní API Azure
 
 Pokud chcete udělit uživatelům, instančním objektům nebo skupinám přístup k rovině dat FHIR, klikněte na **řízení přístupu (IAM)**, pak na **přiřazení rolí** a klikněte na **+ Přidat**:
 
-:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Přidat přiřazení role Azure":::
+:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Potvrďte režim Azure RBAC":::
 
 V části Výběr **role** vyhledejte jednu z předdefinovaných rolí pro rovinu dat FHIR:
 
-:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="Předdefinované role FHIR dat":::
+:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="Potvrďte režim Azure RBAC":::
 
 Můžete si vybrat mezi:
 
@@ -57,4 +57,4 @@ Rozhraní Azure API pro FHIR zapíše do mezipaměti rozhodnutí po dobu až 5 m
 V tomto článku jste zjistili, jak přiřadit role Azure pro rovinu dat FHIR. Další informace o dalších nastaveních pro Azure API pro FHIR:
  
 >[!div class="nextstepaction"]
->[Další nastavení rozhraní Azure API pro FHIR](azure-api-for-fhir-additional-settings.md)
+>[Další nastavení pro Azure API pro FHIR](azure-api-for-fhir-additional-settings.md)

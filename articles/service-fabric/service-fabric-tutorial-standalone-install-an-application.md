@@ -1,17 +1,15 @@
 ---
 title: Instalace aplikace do samostatného clusteru
 description: V tomto kurzu se dozvíte, jak nainstalovat aplikaci do samostatného Service Fabricho clusteru.
-author: dkkapur
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 8dd47d27f928cb33e5a2bbc3ba9a6ab2bc044852
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0b35bd02af5e1c90cac2e94d31dfca2344f3cc85
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245377"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840621"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Kurz: Nasazení aplikace do samostatného clusteru Service Fabric
 
@@ -19,7 +17,7 @@ Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostř
 
 Tento kurz je třetí částí série.  Service Fabric samostatné clustery nabízejí možnost zvolit si vlastní prostředí a vytvořit cluster jako součást libovolného operačního systému, jakéhokoli cloudu s přístupem k Service Fabric. V tomto kurzu se dozvíte, jak vytvořit infrastrukturu AWS potřebnou k hostování tohoto samostatného clusteru.
 
-Ve třetí části této série se naučíte:
+V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
 > * Stažení ukázkové aplikace
@@ -52,7 +50,7 @@ Jakmile je aplikace stažená, můžete ji do clusteru nasadit přímo ze sady V
 
 4. V Průzkumníku řešení klikněte pravým tlačítkem na projekt aplikace `Voting` a zvolte **Publikovat**.
 
-5. Vyberte rozevírací seznam pro **Koncový bod připojení** a zadejte veřejný název DNS jednoho z uzlů v clusteru.  Například `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Všimněte si, že v Azure se plně kvalifikovaný název domény (FQDN) neposkytuje automaticky, ale dá se snadno [nastavit na stránce s přehledem virtuálního počítače.](../virtual-machines/linux/portal-create-fqdn.md)
+5. Vyberte rozevírací seznam pro **Koncový bod připojení** a zadejte veřejný název DNS jednoho z uzlů v clusteru.  Například, `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. V Azure se plně kvalifikovaný název domény (FQDN) neposkytuje automaticky, ale dá se snadno [nastavit na stránce s přehledem virtuálního počítače.](../virtual-machines/linux/portal-create-fqdn.md)
 
 6. Otevřete váš preferovaný prohlížeč a zadejte adresu clusteru (koncový bod připojení, tato aplikace se nasadí na port 8080 – například ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 
@@ -60,7 +58,7 @@ Jakmile je aplikace stažená, můžete ji do clusteru nasadit přímo ze sady V
 
 ## <a name="next-steps"></a>Další kroky
 
-Ve třetí části této série jste zjistili, jak nasadit aplikaci do clusteru:
+V tomto článku jste zjistili, jak nasadit aplikaci do clusteru:
 
 > [!div class="checklist"]
 > * Stažení ukázkové aplikace

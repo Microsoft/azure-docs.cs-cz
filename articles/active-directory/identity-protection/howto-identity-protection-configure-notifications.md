@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 10/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291afbdd902c7563e47595132d56b354dab28a3a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 71c786aaecd3ab2f18f242cea2f5c45838f9ecf3
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950387"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839343"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Oznámení Azure Active Directory Identity Protection
 
@@ -44,8 +44,8 @@ Aby nedocházelo k přetížení e-mailů, obdržíte jenom jednoho uživatele, 
 Jako správce můžete nastavit:
 
 - **Úroveň rizika uživatele, která aktivuje generování tohoto e-mailu** – ve výchozím nastavení je úroveň rizika nastavena na "vysoké" riziko.
-- **Příjemci tohoto e-mailu** – ve výchozím nastavení mají příjemci všechny globální správce. Globální správci můžou také přidat další globální správce, správce zabezpečení, čtenáře zabezpečení jako příjemce.
-   - Volitelně můžete **Přidat další e-maily pro příjem oznámení o výstrahách** . Tato funkce je verze Preview a uživatelé musí mít příslušná oprávnění k zobrazení propojených sestav v Azure Portal.
+- **Příjemci tohoto e-mailu** – uživatelé v rolích Globální správce, správce zabezpečení nebo čtenář zabezpečení jsou automaticky přidáni do tohoto seznamu. Pokusíme se odeslat e-maily prvních 20 členům každé role. Pokud je uživatel zaregistrovaný v PIM, aby na vyžádání promohl zvýšit na jednu z těchto rolí, **bude dostávat jenom e-maily, pokud se ve chvíli, kdy se e-mail pošle,** zvýší.
+   - Volitelně můžete **Přidat vlastní e-maily** , které jsou tady definované, musí mít příslušná oprávnění k zobrazení propojených sestav v Azure Portal.
 
 V **Azure Portal** v části **Azure Active Directory**  >  **zabezpečení**  >  **identity ochrany**  >  **uživatelů při zjištěných výstrahách**nakonfigurujte e-mailová rizika uživatelů.
 
@@ -60,7 +60,7 @@ Obsahuje:
 
 ![Týdenní e-mail pro výtah](./media/howto-identity-protection-configure-notifications/weekly-digest-email.png)
 
-Ve výchozím nastavení mají příjemci všechny globální správce. Globální správci můžou také přidat další globální správce, správce zabezpečení, čtenáře zabezpečení jako příjemce.
+Do tohoto seznamu se automaticky přidají uživatelé v rolích Globální správce, správce zabezpečení nebo čtenáře zabezpečení. Pokusíme se odeslat e-maily prvních 20 členům každé role. Pokud je uživatel zaregistrovaný v PIM, aby na vyžádání promohl zvýšit na jednu z těchto rolí, **bude dostávat jenom e-maily, pokud se ve chvíli, kdy se e-mail pošle,** zvýší.
 
 ### <a name="configure-weekly-digest-email"></a>Konfigurace týdenního e-mailu pro vydigest
 

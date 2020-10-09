@@ -1,30 +1,30 @@
 ---
-title: Aktualizace RU/s pro databázi Gremlin a graf pro Azure Cosmos DB
-description: Aktualizace RU/s pro databázi Gremlin a graf pro Azure Cosmos DB
+title: Operace skriptů Azure CLI pro propustnost (RU/s) pro Azure Cosmos DB prostředky rozhraní API Gremlin
+description: Operace skriptů Azure CLI pro propustnost (RU/s) pro Azure Cosmos DB prostředky rozhraní API Gremlin
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
-ms.date: 07/29/2020
-ms.openlocfilehash: 4774f5b4e74a963a5a4a07873305c79e2e7019f4
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 10/07/2020
+ms.openlocfilehash: 3e4b912d086065f28c56fd4af309d373b811a8ec
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432192"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838620"
 ---
-# <a name="update-rus-for-a-gremlin-database-and-graph-for-azure-cosmos-db-using-azure-cli"></a>Aktualizace RU/s pro databázi Gremlin a graf pro Azure Cosmos DB pomocí Azure CLI
+# <a name="throughput-rus-operations-with-azure-cli-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>Operace propustnosti (RU/s) pomocí Azure CLI pro databázi nebo graf pro rozhraní API Azure Cosmos DB Gremlin
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.9.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.12.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-Tento skript vytvoří databázi Gremlin se sdílenou propustností a grafem Gremlin s vyhrazenou propustností a pak aktualizuje propustnost pro databázi i graf.
+Tento skript vytvoří databázi Gremlin se sdílenou propustností a grafem Gremlin s vyhrazenou propustností a pak aktualizuje propustnost pro databázi i graf. Skript pak migruje z úrovně Standard na propustnost automatického škálování a potom po migraci přečte hodnotu propustnosti automatického škálování.
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/gremlin/throughput.sh "Update RU/s for a Gremlin database and graph.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/gremlin/throughput.sh "Throughput operations for a Gremlin database and graph.")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
@@ -46,6 +46,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [AZ cosmosdb Gremlin Graph Create](/cli/azure/cosmosdb/gremlin/graph#az-cosmosdb-gremlin-graph-create) | Vytvoří graf Azure Cosmos Gremlin. |
 | [AZ cosmosdb Gremlin Database propustnost Update](/cli/azure/cosmosdb/gremlin/database/throughput#az-cosmosdb-gremlin-database-throughput-update) | Aktualizujte RU/s pro databázi Azure Cosmos Gremlin. |
 | [AZ cosmosdb Gremlin Graph propustnost Update](/cli/azure/cosmosdb/gremlin/graph/throughput#az-cosmosdb-gremlin-graph-throughput-update) | Aktualizujte RU/s pro Azure Cosmos Gremlin Graph. |
+| [AZ cosmosdb Gremlin Database propustnost migrace](/cli/azure/cosmosdb/gremlin/database/throughput#az_cosmosdb_gremlin_database_throughput_migrate) | Migruje propustnost databáze Azure Cosmos Gremlin. |
+| [AZ cosmosdb Gremlin Graph propustnost migrace](/cli/azure/cosmosdb/gremlin/graph/throughput#az_cosmosdb_gremlin_graph_throughput_migrate) | Migruje propustnost pro graf Azure Cosmos Gremlin. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky

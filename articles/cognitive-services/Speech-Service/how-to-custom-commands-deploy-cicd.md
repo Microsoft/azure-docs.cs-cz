@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: f4dde6831902c0d15d5f985208e382963125d200
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bd1ab5110313380c90e71ed161935c7274a845b7
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307548"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839244"
 ---
-# <a name="continuous-deployment-with-azure-devops"></a>Průběžné nasazování pomocí Azure DevOps
+# <a name="continuous-deployment-with-azure-devops"></a>Průběžné nasazování s využitím Azure DevOps
 
 V tomto článku se dozvíte, jak nastavit průběžné nasazování pro aplikace s vlastními příkazy. K dispozici jsou skripty pro podporu pracovního postupu CI/CD.
 
@@ -72,7 +72,7 @@ Skripty se hostují v [Cognitive Services hlasového asistenta – vlastní př�
 1. Všimněte si, že tyto skripty předpokládají, že používáte oblast, v opačném `westus2` případě neaktualizují argumenty úkolů odpovídajícím způsobem.
 
     > [!div class="mx-imgBorder"]
-    > ![Datová část aktivity odeslání](media/custom-commands/cicd-new-pipeline-yaml.png)
+    > ![Snímek obrazovky, který zvýrazní hodnotu oblasti v argumentech.](media/custom-commands/cicd-new-pipeline-yaml.png)
 
 1. V tlačítku Uložit a spustit otevřete rozevírací seznam a klikněte na Uložit.
 
@@ -83,7 +83,7 @@ Skripty se hostují v [Cognitive Services hlasového asistenta – vlastní př�
 1. V pravém horním rohu vedle tlačítka Spustit vyberte **proměnné**. Klikněte na **Nová proměnná**.
 1. Přidejte tyto proměnné:
     
-    | Proměnná | Description |
+    | Proměnná | Popis |
     | ------- | --------------- | ----------- |
     | SourceAppId | ID aplikace pro vývojáře |
     | TargetAppId | ID aplikace VÝROBNÍho programu |
@@ -110,7 +110,7 @@ Skripty se hostují v [Cognitive Services hlasového asistenta – vlastní př�
     ```BASH
     bash/export.sh -r <region> -s <subscriptionkey> -c en-us -a <appid> -f apps/myapp.json
     ```
-    | Arguments | Description |
+    | Argumenty | Popis |
     | ------- | --------------- | ----------- |
     | oblast | oblast aplikace, například westus2. |
     | subscriptionkey | klíč předplatného prostředku řeči |
@@ -159,7 +159,7 @@ Skripty se hostují v [Cognitive Services hlasového asistenta – vlastní př�
 1. V pravém horním rohu vedle tlačítka Spustit vyberte **proměnné**. Klikněte na **Nová proměnná**.
 1. Přidejte tyto proměnné:
 
-    | Proměnná | Description |
+    | Proměnná | Popis |
     | ------- | --------------- | ----------- |
     | TargetAppId | ID aplikace VÝROBNÍho programu |
     | SubscriptionKey | Klíč předplatného použitý pro obě aplikace |

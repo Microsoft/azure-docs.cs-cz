@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 10/07/2020
 ms.author: alkohli
-ms.openlocfilehash: b0eaa9778480a6a767a4b37bd92a395d2b1ee6cb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899026"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839941"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>Technické specifikace a dodržování předpisů pro Azure Stack Edge pro pomocí GPU 
 
@@ -26,7 +26,7 @@ Zařízení Azure Stack Edge pro má následující specifikace pro výpočetní
 | Specifikace           | Hodnota                  |
 |-------------------------|----------------------------|
 | Procesor                     | 2 X procesor Intel Xeon stříbrné 4214 (Cascade Lake) – procesor            |
-| Memory (Paměť)                  | 128 (8x16 GB) GB RAM                     |
+| Paměť                  | 128 (8x16 GB) GB RAM                     |
 
 
 ## <a name="compute-acceleration-specifications"></a>Specifikace zrychlení výpočtů
@@ -47,14 +47,14 @@ Zařízení Azure Stack Edge pro má dvě 100-240 V jednotkách napájení (PSUs
 | Maximální výstupní výkon    | 750 W                     |
 | Frequency               | 50/60 Hz                   |
 | Výběr rozsahu napětí | Automatické rozsahy: 100-240 V AC |
-| Horká, připojitelná           | Yes                        |
+| Horká, připojitelná           | Ano                        |
 
 
 ## <a name="network-interface-specifications"></a>Specifikace síťového rozhraní
 
 Vaše zařízení Azure Stack Edge pro má šest síťových rozhraní PORT1-PORT6.
 
-| Specifikace           | Description                 |
+| Specifikace           | Popis                 |
 |-------------------------|----------------------------|
 |  Síťová rozhraní    | **rozhraní 2 X 1 GbE** – 1 rozhraní pro správu se používá pro počáteční instalaci a ve výchozím nastavení je statický. Po dokončení počáteční instalace můžete použít rozhraní pro data s libovolnou IP adresou. Při resetování se ale rozhraní vrátí zpět na statickou IP adresu. <br>Druhý port rozhraní 2 je uživatelsky konfigurovatelné, dá se použít k přenosu dat a je ve výchozím nastavení DHCP. <br>**4 X 25 rozhraní rozhraní** – tato datová rozhraní, port 3 až port 6, můžou být nakonfigurovaná uživatelem jako DHCP (výchozí) nebo static. Můžou také fungovat jako rozhraní s 10 GbE.  | 
 
@@ -67,7 +67,7 @@ Tady jsou podrobnosti o kartě Mellanox:
 
 | Parametr           | Popis                 |
 |-------------------------|----------------------------|
-| Modelování    | ConnectX®-4 LX EN síťová karta                      |
+| Model    | ConnectX®-4 LX EN síťová karta                      |
 | Popis modelu               | 25GbE Dual-Port SFP28; PCIe 3.0 x8; ROHS R6                    |
 | Číslo součásti zařízení (R640) | MCX4121A-ACAT  |
 | PSID MÁ (R640)           | MT_2420110034                         |
@@ -79,20 +79,20 @@ Tady jsou podrobnosti o kartě Mellanox:
 
 ## <a name="storage-specifications"></a>Specifikace úložiště
 
-Zařízení Azure Stack Edge pro mají pět 2,5 DC P4610 SSD, každé s kapacitou 1,6 TB. Spouštěcí jednotka je 240 GB SATA SSD. Celková použitelná kapacita pro zařízení je zhruba 8,28 TB. V následující tabulce je uvedena kapacita úložiště zařízení.
+Zařízení Azure Stack Edge pro mají pět 2,5 DC P4610 SSD, každé s kapacitou 1,6 TB. Spouštěcí jednotka je 240 GB SATA SSD. Celková použitelná kapacita pro zařízení je zhruba 4,19 TB. V následující tabulce je uvedena kapacita úložiště zařízení.
 
 |     Specifikace                          |     Hodnota             |
 |--------------------------------------------|-----------------------|
-|    Spouštěcí SATA jednotky SSD (Solid-State Drive)      |    1                  |
 |    Počet NVMe SSD                     |    5                  |
-|    Spouštěcí kapacita SSD                       |    240 GB             |
 |    Jedna kapacita NVMe SSD                |    1,6 TB             |
-|    Celková kapacita                          |    8,28 TB            |
-|    Celková použitelná kapacita *                  |    ~ 7,95 TB          |
+|    Spouštěcí SATA jednotky SSD (Solid-State Drive)      |    1                  |
+|    Spouštěcí kapacita SSD                       |    240 GB             |
+|    Celková kapacita                          |    8,0 TB             |
+|    Celková použitelná kapacita *                  |    ~ 4,19 TB          |
 |    Řadič SAS                          |    HBA330 12 GB/s     |
 
 
-**Místo pro interní použití je rezervované.*
+**Po zajištění odolnosti proti chybám a rezervování prostoru pro interní použití.*
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications

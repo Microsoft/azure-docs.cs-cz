@@ -1,5 +1,5 @@
 ---
-title: Dostupnost oblasti a zasídlí dat
+title: Rezidence dat a dostupnost oblastí
 titleSuffix: Azure AD B2C
 description: Dostupnost v oblasti, data a sídlo a informace o klientech Azure Active Directory B2C ve verzi Preview.
 services: active-directory-b2c
@@ -12,12 +12,12 @@ ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: bb9c6dbf9984ec81fbd4b93a61552211928d0f0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8c6f7daecd38babaa4f2961d04a6cd4c3b4dbed
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388710"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840553"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: dostupnost oblasti & data zasídlí
 
@@ -45,15 +45,15 @@ Data zasídlí závisí na zemi nebo oblasti, kterou vyberete při [vytváření
 
 Data se nachází v **USA** v následujících zemích nebo oblastech:
 
-> USA, Kanada, Kostarika, Dominikánská republika, Salvador, Guatemala, Mexiko, Panama, Portoriko a Trinidad & Tobago
+> USA (US), Kanada (CA), Kostarika (CR), Dominikánská republika (DO), Salvador (SV), Guatemala (GT), Mexiko (MX), Panama (PA), Portoriko (PR) a Trinidad & Tobago (TT)
 
 Data se nachází v **Evropě** v následujících zemích nebo oblastech:
 
-> Alžírsko, Rakousko, Ázerbájdžán, Bahrajn, Bělorusko, Belgie, Bulharsko, Chorvatsko, Kypr, Česká republika, Dánsko, Egypt, Estonsko, Finsko, Francie, Německo, Řecko, Maďarsko, Irsko, Itálie, Island Kazachstán, Keňa, Kuvajt, Lotyšsko, Libanon, Rumunsko, Lotyšsko, Lucembursko, Severní Makedonie, Malta, Černá Hora, Maroko, Nizozemsko, Indie, Norsko, Rumunsko, Srbsko, Portugalsko, Portugalsko, Indie, Slovinsko, Španělsko, Švédsko, Švýcarsko, Egypt, Spojené arabské emiráty a Spojené království.
+> Alžírsko (DZ), Ázerbájdžán (AZ), Bahrajn (BH), Bělorusko (BY), Belgie (), Bulharsko (BG), Chorvatsko (HR), Kypr (CY), Česká republika (a Dánsko), Egypt (např.), Estonsko (EE), Finsko (FT), Francie (FR), Čeština (FR), Německo (DE), Řecko (GR), Maďarsko (HU), Island (IS), Irsko (IE), Izrael (IT), Jordánsko (JO), Kazachstán (KZ), Keňa (), Kuvajt (KW), Lotyšsko (LV), Libanon (9,1), Lotyšsko (a), Litva (LT) , Lucembursko (LU), Severní Makedonie (ML), Malta (MT), Černá Hora (já), Maroko (MA), Nizozemsko (NL), Nigérie (NG), Norsko (ne), Omán (OM), Pákistán (PK), Polsko (PT), Portugalsko (QA), Rumunsko (RO), Rumunsko (RO); Rusko (RU), Saúdská Arábie (SA), Srbsko (RS), Slovensko (SK), Slovinsko (Svatý), Jižní Afrika (ZA), Španělsko (ES), Švýcarsko (SE), Švýcarsko (CH), Tunisko (TR), Turecko (TR), Ukrajina (UA), Spojené arabské emiráty (AE) a Spojené království (GB)
 
 Data se nachází v **Asie a Tichomoří** v následujících zemích nebo oblastech:
 
-> Afghánistán, Hongkong – zvláštní správní oblast, Indie, Indonésie, Japonsko, Indie, Malajsie, Singapur, Srí Lanka, Tchaj-wan a Thajsko.
+> Afghánistán (AF), Hongkong – zvláštní správní oblast (HK), Indie (IN), Indonésie (ID), Japonsko (JP), Korea (KR), Malajsie (MY), Filipíny (PH), Singapur (SG), Srí Lanka (LK), Tchaj-wan (TW) a Thajsko (TH).
 
 Do seznamu se přidávají následující země nebo oblasti. Prozatím můžete dál používat Azure AD B2C, a to tak, že vybíráte některou z výše uvedených zemí nebo oblastí.
 

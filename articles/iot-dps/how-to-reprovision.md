@@ -7,12 +7,12 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 0ded494debab19daa15a953715b1ab7b0b10ad18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5cc5b557aa4dff793f7e87093eeb65028da4f8c
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974900"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839788"
 ---
 # <a name="how-to-reprovision-devices"></a>Postup opětovného zřízení zařízení
 
@@ -75,7 +75,7 @@ Pomocí následujících kroků můžete nakonfigurovat zásady přidělování 
 
 4. Kliknutím na **Uložit** povolte opětovné zřízení zařízení na základě vašich změn.
 
-    ![Vyberte zásady přidělení registrace.](./media/how-to-reprovision/reprovisioning-policy.png)
+    ![Snímek obrazovky, který zvýrazní změny, které jste udělali, a tlačítko Uložit.](./media/how-to-reprovision/reprovisioning-policy.png)
 
 
 

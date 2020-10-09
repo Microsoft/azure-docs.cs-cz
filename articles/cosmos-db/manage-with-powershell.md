@@ -1,22 +1,22 @@
 ---
-title: Vytvoření a Správa Azure Cosmos DB pomocí prostředí PowerShell
-description: Využijte Azure PowerShell správu účtů, databází, kontejnerů a propustnosti Azure Cosmos.
+title: Správa prostředků rozhraní API pro Azure Cosmos DB Core (SQL) API pomocí prostředí PowerShell
+description: Spravujte prostředky rozhraní API pro Azure Cosmos DB Core (SQL) API pomocí prostředí PowerShell.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 77c91d96beb2722b7fce54be8a1db32d66be6196
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 652c546c5a38543e89f7a3b5ab8bc036c8d80911
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767543"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840876"
 ---
-# <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Správa prostředků rozhraní SQL API Azure Cosmos DB pomocí PowerShellu
+# <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Správa prostředků rozhraní API pro Azure Cosmos DB Core (SQL) pomocí PowerShellu
 
-Následující příručka popisuje, jak pomocí PowerShellu skriptovat a automatizovat správu prostředků Azure Cosmos DB, včetně účtů, databází, kontejnerů a propustnosti.
+Následující příručka popisuje použití prostředí PowerShell ke skriptování a automatizaci správy prostředků rozhraní API pro Azure Cosmos DB Core (SQL), včetně účtu Cosmos, databáze, kontejneru a propustnosti.
 
 > [!NOTE]
 > Ukázky v tomto článku využívají rutiny [AZ. CosmosDB](/powershell/module/az.cosmosdb) Management. Nejnovější změny najdete na stránce s referenční stránkou [AZ. CosmosDB](/powershell/module/az.cosmosdb) API.
@@ -169,6 +169,7 @@ Update-AzCosmosDBAccountRegion `
 Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 ```
+
 ### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-region-writes"></a> Povolení více oblastí zápisu pro účet Azure Cosmos
 
 ```azurepowershell-interactive
@@ -352,6 +353,7 @@ Následující části demonstrují, jak spravovat databázi Azure Cosmos DB, v�
 * [Vytvoření databáze Azure Cosmos DB](#create-db)
 * [Vytvoření databáze Azure Cosmos DB se sdílenou propustností](#create-db-ru)
 * [Získání propustnosti Azure Cosmos DB databáze](#get-db-ru)
+* [Migrace propustnosti databáze do automatického škálování](#migrate-db-ru)
 * [Výpis všech Azure Cosmos DB databází v účtu](#list-db)
 * [Získat jednu Azure Cosmos DB databázi](#get-db)
 * [Odstranění databáze Azure Cosmos DB](#delete-db)
@@ -397,6 +399,20 @@ Get-AzCosmosDBSqlDatabaseThroughput `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -Name $databaseName
+```
+
+## <a name="migrate-database-throughput-to-autoscale"></a><a id="migrate-db-ru"></a>Migrace propustnosti databáze do automatického škálování
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+
+Invoke-AzCosmosDBSqlDatabaseThroughputMigration `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -Name $databaseName `
+    -ThroughputType Autoscale
 ```
 
 ### <a name="get-all-azure-cosmos-db-databases-in-an-account"></a><a id="list-db"></a>Získání všech Azure Cosmos DB databází v účtu
@@ -480,6 +496,7 @@ Následující části ukazují, jak spravovat Azure Cosmos DB kontejner, včetn
 * [Vytvoření kontejneru Azure Cosmos DB s AutoScale](#create-container-autoscale)
 * [Vytvoření kontejneru Azure Cosmos DB s velkým klíčem oddílu](#create-container-big-pk)
 * [Získání propustnosti Azure Cosmos DB kontejneru](#get-container-ru)
+* [Migrace propustnosti kontejneru do automatického škálování](#migrate-container-ru)
 * [Vytvoření kontejneru Azure Cosmos DB s vlastním indexováním](#create-container-custom-index)
 * [Vytvoření kontejneru Azure Cosmos DB s vypnutým indexováním](#create-container-no-index)
 * [Vytvoření kontejneru Azure Cosmos DB s jedinečným klíčem a hodnotou TTL](#create-container-unique-key-ttl)
@@ -565,6 +582,22 @@ Get-AzCosmosDBSqlContainerThroughput `
     -AccountName $accountName `
     -DatabaseName $databaseName `
     -Name $containerName
+```
+
+### <a name="migrate-container-throughput-to-autoscale"></a><a id="migrate-container-ru"></a>Migrace propustnosti kontejneru do automatického škálování
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+
+Invoke-AzCosmosDBSqlContainerThroughputMigration `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -ThroughputType Autoscale
 ```
 
 ### <a name="create-an-azure-cosmos-db-container-with-custom-index-policy"></a><a id="create-container-custom-index"></a>Vytvoření kontejneru Azure Cosmos DB s vlastními zásadami indexů

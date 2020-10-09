@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 71bfff1b2ef75a13a3898d2fd9760dd60b83e3a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a6f1a5b532ba3d8d5ce24d6f9856d86719d35c6f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318309"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839533"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Kurz: komplexní ochrana obsahu pomocí Azure AD
 
@@ -77,7 +77,7 @@ Je volitelné, ale doporučujeme, abyste před zahájením tohoto kurzu seznámi
 
 V návrhu subsystému se zobrazí několik výzev. Má několik přesouvaných částí, existuje omezení klientské aplikace a výměna klíčů Azure AD, ke které dochází každých šest týdnů.
 
-Jednostránkové aplikace (SPA) použitá v tomto kurzu vezme v úvahu problémy s požadavky na ověření a níže uvedené omezení. Používá:
+Aplikace Single-Page (SPA) použitá v tomto kurzu vezme v úvahu problémy s požadavky na ověření a níže uvedené omezení. Používá:
 
 * Koncové body Azure AD v2 jako Azure AD Developer Platform (v1 koncové body) se mění na platformu Microsoft Identity Platform (v2 – koncové body).
 * Tok autorizačního kódu, protože tok implicitního udělení OAuth 2 je zastaralý.
@@ -129,11 +129,11 @@ Obrazovka pro přihlášení, získání tokenu, obnovení tokenu a zobrazení t
 
 Obrazovka pro analýzu tokenů JWT (access_token nebo id_token):
 
-![obrazovka pro analýzu tokenů JWT](media/aad-ams-content-protection/parsing-jwt-tokens.png)
+![Snímek obrazovky, který ukazuje analýzu tokenů J W T](media/aad-ams-content-protection/parsing-jwt-tokens.png)
 
 Obrazovka pro testování chráněného obsahu s různými kombinacemi protokolů DRM/AES vs streaming a formátu kontejneru:
 
-![obrazovka pro analýzu tokenů JWT](media/aad-ams-content-protection/testing-protected-content.png)
+![Snímek obrazovky, který ukazuje testování chráněného obsahu různými kombinacemi D R M nebo E S versus protokoly streamování oproti formátu kontejneru](media/aad-ams-content-protection/testing-protected-content.png)
 -->
 
 <!-- You can see a hosted version of the sample at [https://aka.ms/ott](https://aka.ms/ott)-->
@@ -313,7 +313,7 @@ Pokud máte v úmyslu použít jinou platformu IDE/web nebo webový server, jako
 
 Teď, když jste dokončili kurz a máte funkční subsystém, můžete ho zkusit upravit v následujících scénářích zákazníků:
 
-### <a name="role-based-access-control-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Access Control na základě rolí (RBAC) pro doručování licencí prostřednictvím členství ve skupině Azure AD
+### <a name="role-based-access-control-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Role-Based Access Control (RBAC) pro doručování licencí prostřednictvím členství ve skupině Azure AD
 
 V tomto případě systém umožňuje každému uživateli, který se může přihlásit, získat platnou licenci a přehrát chráněný obsah.
 

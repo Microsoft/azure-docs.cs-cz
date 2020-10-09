@@ -1,25 +1,25 @@
 ---
-title: Správa prostředků Azure Cosmos DB pomocí Azure CLI
-description: Pomocí Azure CLI můžete spravovat Azure Cosmos DB účet, databázi a kontejnery.
+title: Správa prostředků rozhraní API pro Azure Cosmos DB Core (SQL) pomocí Azure CLI
+description: Spravujte prostředky rozhraní API pro Azure Cosmos DB Core (SQL) pomocí Azure CLI.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: c8726801e8becd6533ae5fec099d6c535b63261a
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: dce041a46f173216844322b5a8985acbdfb86f26
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767558"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840587"
 ---
-# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Správa prostředků Azure Cosmos pomocí Azure CLI
+# <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Správa prostředků rozhraní API pro Azure Cosmos Core (SQL) pomocí Azure CLI
 
 Následující příručka popisuje běžné příkazy pro automatizaci správy účtů, databází a kontejnerů Azure Cosmos DB pomocí Azure CLI. Referenční stránky pro všechny příkazy rozhraní příkazového řádku Azure Cosmos DB jsou k dispozici v [referenčních informacích k Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb). Další příklady najdete v [ukázkách Azure CLI pro Azure Cosmos DB](cli-samples.md), včetně toho, jak vytvářet a spravovat Cosmos DB účty, databáze a kontejnery pro MongoDB, Gremlin, Cassandra a rozhraní API pro tabulky.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.9.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.12.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 > [!IMPORTANT]
 > Prostředky Azure Cosmos DB nelze přejmenovat, protože jsou v rozporu s tím, jak Azure Resource Manager pracuje s identifikátory URI prostředků.
@@ -214,8 +214,9 @@ Následující části demonstrují, jak spravovat databázi Azure Cosmos DB, v�
 
 * [Vytvoření databáze](#create-a-database)
 * [Vytvoření databáze se sdílenou propustností](#create-a-database-with-shared-throughput)
+* [Migrace databáze do propustnosti automatického škálování](#migrate-a-database-to-autoscale-throughput)
 * [Změna propustnosti databáze](#change-database-throughput)
-* [Správa zámků v databázi](#manage-lock-on-a-database)
+* [Zabránit odstranění databáze](#prevent-a-database-from-being-deleted)
 
 ### <a name="create-a-database"></a>Vytvoření databáze
 
@@ -249,6 +250,29 @@ az cosmosdb sql database create \
     --throughput $throughput
 ```
 
+### <a name="migrate-a-database-to-autoscale-throughput"></a>Migrace databáze do propustnosti automatického škálování
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+
+# Migrate to autoscale throughput
+az cosmosdb sql database throughput migrate \
+    -a $accountName \
+    -g $resourceGroupName \
+    -n $databaseName \
+    -t 'autoscale'
+
+# Read the new autoscale max throughput
+az cosmosdb sql database throughput show \
+    -g $resourceGroupName \
+    -a $accountName \
+    -n $databaseName \
+    --query resource.autoscaleSettings.maxThroughput \
+    -o tsv
+```
+
 ### <a name="change-database-throughput"></a>Změna propustnosti databáze
 
 Zvyšte propustnost databáze Cosmos o 1000 RU/s.
@@ -275,14 +299,14 @@ az cosmosdb sql database throughput update \
     --throughput $newRU
 ```
 
-### <a name="manage-lock-on-a-database"></a>Správa zámku pro databázi
+### <a name="prevent-a-database-from-being-deleted"></a>Zabránit odstranění databáze
 
-Vložte zámek proti odstranění databáze. Další informace o tom, jak tento postup povolit, najdete v tématu [prevence změn ze sad SDK](role-based-access-control.md#prevent-sdk-changes).
+Uložte zámek pro odstranění prostředku Azure do databáze, aby se zabránilo jeho odstranění. Tato funkce vyžaduje uzamčení účtu Cosmos pomocí sad SDK pro rovinu dat. Další informace najdete v tématu [prevence změn ze sad SDK](role-based-access-control.md#prevent-sdk-changes). Zámky prostředků Azure taky můžou zabránit změně prostředků zadáním `ReadOnly` typu zámku. V případě databáze Cosmos se dá použít k zabránění změně propustnosti.
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
-accountName='my-cosmos-account'
-databaseName='myDatabase'
+accountName='mycosmosaccount'
+databaseName='database1'
 
 lockType='CanNotDelete' # CanNotDelete or ReadOnly
 databaseParent="databaseAccounts/$accountName"
@@ -315,7 +339,8 @@ Následující části ukazují, jak spravovat Azure Cosmos DB kontejner, včetn
 * [Vytvoření kontejneru s povoleným TTL](#create-a-container-with-ttl)
 * [Vytvoření kontejneru s vlastními zásadami indexů](#create-a-container-with-a-custom-index-policy)
 * [Změna propustnosti kontejneru](#change-container-throughput)
-* [Správa zámků na kontejneru](#manage-lock-on-a-container)
+* [Migrace kontejneru do propustnosti automatického škálování](#migrate-a-container-to-autoscale-throughput)
+* [Zabránit odstranění kontejneru](#prevent-a-container-from-being-deleted)
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru
 
@@ -454,15 +479,41 @@ az cosmosdb sql container throughput update \
     --throughput $newRU
 ```
 
-### <a name="manage-lock-on-a-container"></a>Správa zámku na kontejneru
+### <a name="migrate-a-container-to-autoscale-throughput"></a>Migrace kontejneru do propustnosti automatického škálování
 
-Vložte zámek proti odstranění do kontejneru. Další informace o tom, jak tento postup povolit, najdete v tématu [prevence změn ze sad SDK](role-based-access-control.md#prevent-sdk-changes).
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+
+# Migrate to autoscale throughput
+az cosmosdb sql container throughput migrate \
+    -a $accountName \
+    -g $resourceGroupName \
+    -d $databaseName \
+    -n $containerName \
+    -t 'autoscale'
+
+# Read the new autoscale max throughput
+az cosmosdb sql container throughput show \
+    -g $resourceGroupName \
+    -a $accountName \
+    -d $databaseName \
+    -n $containerName \
+    --query resource.autoscaleSettings.maxThroughput \
+    -o tsv
+```
+
+### <a name="prevent-a-container-from-being-deleted"></a>Zabránit odstranění kontejneru
+
+Uložte zámek pro odstranění prostředku Azure na kontejneru, abyste zabránili jeho odstranění. Tato funkce vyžaduje uzamčení účtu Cosmos pomocí sad SDK pro rovinu dat. Další informace najdete v tématu [prevence změn ze sad SDK](role-based-access-control.md#prevent-sdk-changes). Zámky prostředků Azure taky můžou zabránit změně prostředků zadáním `ReadOnly` typu zámku. V případě kontejneru Cosmos to můžete použít k zabránění změně propustnosti nebo jakékoli jiné vlastnosti.
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
-accountName='my-cosmos-account'
-databaseName='myDatabase'
-containerName='myContainer'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
 
 lockType='CanNotDelete' # CanNotDelete or ReadOnly
 databaseParent="databaseAccounts/$accountName"
@@ -491,6 +542,6 @@ az lock delete --ids $lockid
 
 Další informace o rozhraní příkazového řádku Azure najdete v těchto tématech:
 
-- [Instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli)
-- [Reference k rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb)
-- [Další ukázky v Azure CLI pro Azure Cosmos DB](cli-samples.md)
+* [Instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli)
+* [Reference k rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb)
+* [Další ukázky v Azure CLI pro Azure Cosmos DB](cli-samples.md)

@@ -1,17 +1,17 @@
 ---
 title: Konfigurace brány na požadavky směrování
 description: Zjistěte, jak nakonfigurovat bránu, která zpracovává příchozí provoz pro vaše aplikace běžící na Service Fabric síti.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa3ac9d8835cd17387346bb29b3e7c30f286cd1f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75461964"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839720"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>Konfigurace prostředku brány na požadavky směrování
 
@@ -26,11 +26,11 @@ Vzhledem k tomu, že prostředek brány slouží jako most mezi sítí vaší ap
 ### <a name="gateway-resource-metadata"></a>Metadata prostředku brány
 
 Brána je deklarována s následujícími metadaty:
-* `apiVersion`– musí být nastavené na "2018-09-01-Preview" (nebo novější), a to v budoucnu.
-* `name`– název řetězce pro tuto bránu
-* `type`– "Microsoft. ServiceFabricMesh/gateways"
-* `location`– mělo by být nastavené na umístění vaší aplikace nebo sítě; obvykle bude odkaz na parametr Location v nasazení
-* `dependsOn`– síť, pro kterou bude tato brána sloužit jako vstupní bod pro
+* `apiVersion` – musí být nastavené na "2018-09-01-Preview" (nebo novější), a to v budoucnu.
+* `name` – název řetězce pro tuto bránu
+* `type` – "Microsoft. ServiceFabricMesh/gateways"
+* `location` – mělo by být nastavené na umístění vaší aplikace nebo sítě; obvykle bude odkaz na parametr Location v nasazení
+* `dependsOn` – síť, pro kterou bude tato brána sloužit jako vstupní bod pro
 
 Tady je postup, jak vypadá v šabloně nasazení Azure Resource Manager (JSON): 
 
@@ -79,9 +79,9 @@ Pravidla směrování se zadává na základě jednotlivých portů. Každý por
 #### <a name="tcp-routing-rules"></a>Pravidla směrování TCP 
 
 Pravidlo směrování TCP se skládá z následujících vlastností: 
-* `name`– odkaz na pravidlo, které může být libovolný řetězec podle vašeho výběru 
-* `port`– port, na kterém se má naslouchat příchozím žádostem 
-* `destination`– specifikace koncového bodu, která zahrnuje `applicationName` , `serviceName` a `endpointName` , kde je potřeba směrovat požadavky na
+* `name` – odkaz na pravidlo, které může být libovolný řetězec podle vašeho výběru 
+* `port` – port, na kterém se má naslouchat příchozím žádostem 
+* `destination` – specifikace koncového bodu, která zahrnuje `applicationName` , `serviceName` a `endpointName` , kde je potřeba směrovat požadavky na
 
 Tady je příklad pravidla směrování TCP:
 
@@ -106,16 +106,16 @@ Tady je příklad pravidla směrování TCP:
 #### <a name="http-routing-rules"></a>Pravidla směrování protokolu HTTP 
 
 Pravidlo směrování protokolu HTTP se skládá z následujících vlastností: 
-* `name`– odkaz na pravidlo, které může být libovolný řetězec podle vašeho výběru 
-* `port`– port, na kterém se má naslouchat příchozím žádostem 
-* `hosts`– pole zásad, které se vztahují na požadavky přicházející do různých hostitelů na výše uvedeném portu. Hostitelé jsou sada aplikací a služeb, které mohou být spuštěny v síti a mohou obsluhovat příchozí požadavky, tj. webovou aplikaci. Zásady hostitele jsou interpretovány v pořadí, takže byste měli vytvořit následující v sestupných úrovních specifičnosti.
-    * `name`– název DNS hostitele, pro který jsou zadána následující pravidla směrování. Pomocí tohoto postupu můžete vytvořit pravidla směrování pro všechny hostitele.
-    * `routes`– pole zásad pro tohoto konkrétního hostitele
-        * `match`– specifikace příchozí struktury požadavků pro toto pravidlo, které se má použít, na základě`path`
-            * `path`-obsahuje `value` (příchozí identifikátor URI) `rewrite` (jak chcete přesměrovat požadavek) a `type` (může aktuálně být jenom "prefix").
-            * `header`– je volitelná hodnota pole hlaviček, která se má shodovat s hlavičkou požadavku, pokud požadavek odpovídá specifikaci cesty (výše).
+* `name` – odkaz na pravidlo, které může být libovolný řetězec podle vašeho výběru 
+* `port` – port, na kterém se má naslouchat příchozím žádostem 
+* `hosts` – pole zásad, které se vztahují na požadavky přicházející do různých hostitelů na výše uvedeném portu. Hostitelé jsou sada aplikací a služeb, které mohou být spuštěny v síti a mohou obsluhovat příchozí požadavky, tj. webovou aplikaci. Zásady hostitele jsou interpretovány v pořadí, takže byste měli vytvořit následující v sestupných úrovních specifičnosti.
+    * `name` – název DNS hostitele, pro který jsou zadána následující pravidla směrování. Pomocí tohoto postupu můžete vytvořit pravidla směrování pro všechny hostitele.
+    * `routes` – pole zásad pro tohoto konkrétního hostitele
+        * `match` – specifikace příchozí struktury požadavků pro toto pravidlo, které se má použít, na základě `path`
+            * `path` -obsahuje `value` (příchozí identifikátor URI) `rewrite` (jak chcete přesměrovat požadavek) a `type` (může aktuálně být jenom "prefix").
+            * `header` – je volitelná hodnota pole hlaviček, která se má shodovat s hlavičkou požadavku, pokud požadavek odpovídá specifikaci cesty (výše).
               * Každá položka obsahuje `name` (název řetězce záhlaví, který se má shodovat), `value` (Řetězcová hodnota hlavičky v žádosti) a a `type` (aktuálně může být pouze "přesný").
-        * `destination`– Pokud požadavek odpovídá, bude směrován do tohoto cíle, který je určen pomocí `applicationName` , `serviceName` a.`endpointName`
+        * `destination` – Pokud požadavek odpovídá, bude směrován do tohoto cíle, který je určen pomocí `applicationName` , `serviceName` a. `endpointName`
 
 Tady je příklad pravidla směrování protokolu HTTP, které se vztahuje na žádosti přicházející na port 80 na všechny hostitele obsluhované aplikacemi v této síti. Má-li adresa URL požadavku strukturu, která odpovídá specifikaci cesty, tj., `<IPAddress>:80/pickme/<requestContent>` pak bude přesměrována do `myListener` koncového bodu.  
 

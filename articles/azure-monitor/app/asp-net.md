@@ -4,12 +4,12 @@ description: Nakonfigurujte nástroje pro analýzu výkonu, dostupnosti a chová
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 5f52f1febcc69723dae76e31d17b5a9a7e8c67bb
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 861a9f53c2f149268e06005053206a7411e842f8
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91616750"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838938"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>Konfigurace Application Insights pro web ASP.NET
 
@@ -349,6 +349,12 @@ Chcete-li přidat monitorování na straně klienta, otevřete `_Layout.cshtml` 
 ## <a name="troubleshooting"></a>Řešení potíží
 
 V aktuální verzi sady Visual Studio 2019 je známý problém, který při ukládání klíče instrumentace v tajnosti uživatele je u aplikací založených na .NET Framework poškozen a klíč, který je nakonec nutné pevně zakódované do applicationinsights.config souboru, aby se tato chyba mohla vyřešit. Tento článek je navržený tak, aby se předešlo tomuto problému zcela bez použití uživatelských tajných klíčů.  
+
+## <a name="open-source-sdk"></a>Open-Source sada SDK
+
+* [Číst a přispívat do kódu](https://github.com/microsoft/ApplicationInsights-dotnet).
+
+Nejnovější aktualizace a opravy chyb [najdete v poznámkách k verzi](./release-notes.md).
 
 ## <a name="next-steps"></a>Další kroky
 

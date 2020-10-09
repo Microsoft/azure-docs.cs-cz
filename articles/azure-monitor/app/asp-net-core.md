@@ -4,12 +4,12 @@ description: Monitorujte ASP.NET Core webové aplikace pro účely dostupnosti, 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: eae6117f82f3bb138edb6cea23a2c052e19fb0cf
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: cb192aa44e9e2ab8578881494852ddd41ae9094d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803587"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839006"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro ASP.NET Core aplikace
 
@@ -31,7 +31,7 @@ Příklad, který budeme používat, je [aplikace MVC](/aspnet/core/tutorials/fi
 > [!NOTE]
 > ASP.NET Core 3. X vyžaduje [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) nebo novější.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Funkční aplikace ASP.NET Core. Pokud potřebujete vytvořit aplikaci ASP.NET Core, postupujte podle tohoto [ASP.NET Core kurzu](/aspnet/core/getting-started/).
 - Platný klíč instrumentace Application Insights. Tento klíč je nutný k odeslání jakékoli telemetrie do Application Insights. Pokud potřebujete vytvořit nový prostředek Application Insights, abyste získali klíč instrumentace, přečtěte si téma [vytvoření prostředku Application Insights](./create-new-resource.md).
@@ -134,7 +134,7 @@ Spusťte aplikaci a proveďte na ni požadavky. Telemetrii by teď měla přesm�
 
 ### <a name="ilogger-logs"></a>Protokoly ILogger
 
-Protokoly emitované pomocí `ILogger` závažnosti `Warning` nebo většího jsou zachyceny automaticky. Dodržujte [ILogger docs](ilogger.md#control-logging-level) k přizpůsobení, které úrovně protokolu jsou zachyceny Application Insights.
+Protokoly emitované pomocí `ILogger` závažnosti `Warning` a výše jsou automaticky zachyceny. Dodržujte [ILogger docs](ilogger.md#control-logging-level) k přizpůsobení, které úrovně protokolu jsou zachyceny Application Insights.
 
 ### <a name="dependencies"></a>Závislosti
 
@@ -397,7 +397,7 @@ Také Pokud používáte pokyny na základě sady Visual Studio z [tohoto místa
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>Jak můžu sledovat telemetrii, která se automaticky neshromažďuje?
 
-Získání instance `TelemetryClient` pomocí injektáže konstruktoru a volání požadované `TrackXXX()` metody. Nedoporučujeme vytvářet nové `TelemetryClient` instance v ASP.NET Core aplikaci. Instance typu Singleton `TelemetryClient` je již v kontejneru zaregistrována `DependencyInjection` , která sdílí `TelemetryConfiguration` se zbytkem telemetrie. Vytvoření nové `TelemetryClient` instance se doporučuje jenom v případě, že potřebuje konfiguraci, která je oddělená od zbytku telemetrie.
+Získání instance `TelemetryClient` pomocí injektáže konstruktoru a volání požadované `TrackXXX()` metody. Nedoporučujeme vytvářet nové `TelemetryClient` `TelemetryConfiguration` instance ani instance v ASP.NET Core aplikaci. Instance typu Singleton `TelemetryClient` je již v kontejneru zaregistrována `DependencyInjection` , která sdílí `TelemetryConfiguration` se zbytkem telemetrie. Vytvoření nové `TelemetryClient` instance se doporučuje jenom v případě, že potřebuje konfiguraci, která je oddělená od zbytku telemetrie.
 
 Následující příklad ukazuje, jak sledovat další telemetrii z kontroleru.
 
@@ -424,6 +424,40 @@ public class HomeController : Controller
 
 Další informace o vlastních datových sestavách v Application Insights najdete v tématu [Application Insights referenční informace k rozhraní API pro vlastní metriky](./api-custom-events-metrics.md). Podobný přístup lze použít k posílání vlastních metrik pro Application Insights pomocí [rozhraní Getmetric API](./get-metric.md).
 
+### <a name="how-do-i-customize-ilogger-logs-collection"></a>Návody přizpůsobit kolekci protokolů ILogger?
+
+Ve výchozím nastavení `Warning` jsou zachyceny pouze protokoly závažnost a výše. Chcete-li toto chování změnit, explicitně popište konfiguraci protokolování pro poskytovatele `ApplicationInsights` , jak je uvedeno níže.
+Následující konfigurace umožňuje ApplicationInsights zachytit všechny protokoly závažnosti `Information` a vyšší.
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    },
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Default": "Information"
+      }
+    }
+  }
+}
+```
+
+Je důležité si uvědomit, že následující informace nezpůsobí, že poskytovatel ApplicationInsights zachytí `Information` protokoly. Důvodem je to, že sada SDK přidává výchozí filtr protokolování, `ApplicationInsights` který dává pokyn k zachycení jenom `Warning` a vyšších. Z tohoto důvodu je pro ApplicationInsights vyžadováno Explicitní přepsání.
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information"
+    }
+  }
+}
+```
+
+Přečtěte si další informace o [konfiguraci ILogger](ilogger.md#control-logging-level).
+
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>Některé šablony sady Visual Studio používaly metodu rozšíření UseApplicationInsights () na IWebHostBuilder pro povolení Application Insights. Je toto použití stále platné?
 
 I když je rozšiřující metoda `UseApplicationInsights()` stále podporovaná, je označená jako zastaralá v sadě Application Insights SDK verze 2.8.0 a vyšší. V další hlavní verzi sady SDK se odebere. Doporučený způsob, jak povolit telemetrii Application Insights, je použití, `AddApplicationInsightsTelemetry()` protože poskytuje přetížení k řízení některých konfigurací. V aplikacích ASP.NET Core 3. X `services.AddApplicationInsightsTelemetry()` je také jediným způsobem, jak povolit službu Application Insights.
@@ -444,7 +478,7 @@ Pokud je sada SDK nainstalována v době sestavení, jak je znázorněno v tomto
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>Můžu Application Insights monitorování povolit pomocí nástrojů jako Monitorování stavu?
 
-No. [Monitorování stavu](./monitor-performance-live-website-now.md) a [monitorování stavu v2](./status-monitor-v2-overview.md) aktuálně podporují pouze ASP.NET 4. x.
+Ne. [Monitorování stavu](./monitor-performance-live-website-now.md) a [monitorování stavu v2](./status-monitor-v2-overview.md) aktuálně podporují pouze ASP.NET 4. x.
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Pokud Spouštím aplikaci v systému Linux, jsou podporovány všechny funkce?
 
@@ -477,7 +511,7 @@ Tato sada SDK vyžaduje `HttpContext` , a proto nefunguje v aplikacích, které 
 
 ## <a name="open-source-sdk"></a>Open-Source sada SDK
 
-* [Číst a přispívat do kódu](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
+* [Číst a přispívat do kódu](https://github.com/microsoft/ApplicationInsights-dotnet).
 
 Nejnovější aktualizace a opravy chyb [najdete v poznámkách k verzi](./release-notes.md).
 

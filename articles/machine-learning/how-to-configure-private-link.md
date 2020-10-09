@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: 1a34f8ec42969cded5921d377b1fa62276a30cc7
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 4ba7ec73ac70723e21b6acad571d62d14edd250a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630385"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828118"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurace privátního odkazu Azure pro pracovní prostor Azure Machine Learning
 
@@ -29,7 +29,7 @@ Privátní odkaz Azure umožňuje připojit se k pracovnímu prostoru pomocí pr
 >
 > Pokud používáte Mozilla Firefox, může dojít k potížím při pokusu o přístup k privátnímu koncovému bodu pro váš pracovní prostor. Tento problém může souviset s DNS přes HTTPS v Mozilla. Jako alternativní řešení doporučujeme používat Microsoft Edge Google Chrome.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud plánujete použít pracovní prostor s povoleným privátním propojením s klíčem spravovaným zákazníkem, musíte požádat o tuto funkci pomocí lístku podpory. Další informace najdete v tématu [Správa a zvýšení kvót](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
@@ -82,4 +82,6 @@ Informace o službě Azure Virtual Machines najdete v [dokumentaci k Virtual Mac
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o zabezpečení Azure Machine Learning pracovního prostoru najdete v článku věnovaném [izolaci virtuální sítě a ochraně osobních údajů](how-to-network-security-overview.md) .
+* Další informace o zabezpečení Azure Machine Learning pracovního prostoru najdete v článku věnovaném [izolaci virtuální sítě a ochraně osobních údajů](how-to-network-security-overview.md) .
+
+* Pokud plánujete používat vlastní řešení DNS ve virtuální síti, přečtěte si téma [jak použít pracovní prostor s vlastním serverem DNS](how-to-custom-dns.md).

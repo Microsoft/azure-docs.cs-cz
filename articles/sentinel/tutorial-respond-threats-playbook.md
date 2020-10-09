@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
-ms.openlocfilehash: f75731fab9a238ffcac2e620235c9d8c5da97549
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 0e7d790fa9c5d4052ddb1e20defed1d1cc457a2e
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053486"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840196"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Kurz: nastavení automatických odpovědí na hrozby v Azure Sentinel
 
@@ -72,7 +72,7 @@ Pomocí těchto kroků vytvořte nové PlayBook zabezpečení v Azure Sentinel:
 
 5. V [**Návrháři aplikace logiky**](../logic-apps/logic-apps-overview.md)vyberte šablonu, kterou chcete použít. Pokud vyberete šablonu, která vyžaduje přihlašovací údaje, budete je muset zadat. Alternativně můžete vytvořit nové prázdné PlayBook od začátku. Vyberte **prázdnou aplikaci logiky**. 
 
-   ![Návrhář aplikace logiky](./media/tutorial-respond-threats-playbook/playbook-template.png)
+   ![Snímek obrazovky, který zobrazuje panel prázdné aplikace logiky](./media/tutorial-respond-threats-playbook/playbook-template.png)
 
 6. Přejdete do návrháře aplikace logiky, kde můžete vytvořit novou nebo upravit šablonu. Další informace o vytvoření PlayBook s [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md).
 

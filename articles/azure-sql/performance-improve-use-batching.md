@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 94f54e02de1b61cb05b4e41bb4c40118299cf20f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 487b668d9a3d934220fecf5c0896f7ef492c6775
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618637"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840485"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Jak používat dávkování ke zlepšování Azure SQL Database a výkonu aplikací spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -229,7 +229,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-V některých případech je vhodnější hromadné kopírování přes parametry s hodnotou tabulky. Prohlédněte si srovnávací tabulku parametrů s hodnotou tabulky a BULK INSERT operace v článku [parametry s hodnotou tabulky](/sql/relational-databases/tables/use-table-valued-parameters-database-engine).
+V některých případech je vhodnější hromadné kopírování přes parametry s hodnotou tabulky. Viz srovnávací tabulka parametrů Table-Valued a BULK INSERT operace v článku [parametry s hodnotou tabulky](/sql/relational-databases/tables/use-table-valued-parameters-database-engine).
 
 Následující výsledky ad hoc testu ukazují výkon dávkování s **SqlBulkCopy** v milisekundách.
 
@@ -293,7 +293,7 @@ Třída **DataAdapter** umožňuje upravit objekt **DataSet** a následně odesl
 
 ### <a name="entity-framework"></a>Entity Framework
 
-[Entity Framework 6](https://github.com/dotnet/ef6) teď podporuje dávkování.
+[Entity Framework Core](https://docs.microsoft.com/ef/efcore-and-ef6/#saving-data) podporuje dávkování.
 
 ### <a name="xml"></a>XML
 

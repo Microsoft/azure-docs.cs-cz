@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: 652445a96acfa0358211d1d97e0fcf288989d6ba
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: be3cf7d946e7502147942fa8954ade70dd47bedf
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795775"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839924"
 ---
 # <a name="configure-database-settings"></a>Konfigurovat nastavení databáze 
 
@@ -38,7 +38,12 @@ Je-li propustnost databáze větší než 10 000 RU/s nebo pokud jsou data ulož
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak aktualizovat ru pro Azure API pro FHIR. Dále nasaďte plně spravované rozhraní Azure API pro FHIR:
+V tomto článku jste zjistili, jak aktualizovat ru pro Azure API pro FHIR. Další informace o konfiguraci klíčů spravovaných zákazníkem jako nastavení databáze:
+
+>[!div class="nextstepaction"]
+>[Konfigurace klíčů spravovaných zákazníkem](bring-your-own-key.md)
+
+Nebo můžete nasadit plně spravované rozhraní API Azure pro FHIR:
  
 >[!div class="nextstepaction"]
 >[Nasazení Azure API for FHIR](fhir-paas-portal-quickstart.md)

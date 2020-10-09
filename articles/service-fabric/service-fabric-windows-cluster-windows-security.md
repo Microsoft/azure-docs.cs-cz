@@ -1,16 +1,14 @@
 ---
 title: Zabezpečte cluster běžící v systému Windows pomocí zabezpečení systému Windows.
 description: Přečtěte si, jak nakonfigurovat zabezpečení mezi uzly a klientem a uzlem na samostatném clusteru běžícím v systému Windows pomocí zabezpečení systému Windows.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.author: dekapur
-ms.openlocfilehash: 360bba2ffc344175214c44e2c9c1d3c0859ac3e5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e97a951f6dc0a97b1cfa8f960ed762084c82d2ed
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255961"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839476"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Zabezpečení samostatného clusteru ve Windows pomocí zabezpečení systému Windows
 Aby se zabránilo neoprávněnému přístupu ke clusteru Service Fabric, musíte zabezpečit cluster. Zabezpečení je obzvláště důležité, když cluster spouští produkční úlohy. Tento článek popisuje, jak nakonfigurovat zabezpečení mezi uzly a klientem a uzlem pomocí zabezpečení systému Windows v *ClusterConfig.JSv* souboru.  Proces odpovídá kroku konfigurace zabezpečení [vytvoření samostatného clusteru běžícího v systému Windows](service-fabric-cluster-creation-for-windows-server.md). Další informace o tom, jak Service Fabric používá zabezpečení systému Windows, najdete v tématu [scénáře zabezpečení clusteru](service-fabric-cluster-security.md).
@@ -21,7 +19,7 @@ Aby se zabránilo neoprávněnému přístupu ke clusteru Service Fabric, musít
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>Konfigurace zabezpečení Windows pomocí gMSA  
-Ukázka *ClusterConfig.gMSA.Windows.MultiMachine.JS* konfiguračního souboru staženého pomocí [Microsoft. Azure. ServiceFabric. windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690)samostatný clusterový balíček zip obsahuje šablonu pro konfiguraci zabezpečení systému Windows pomocí [skupinového účtu spravované služby (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)):  
+Ukázka *ClusterConfig.gMSA.Windows.MultiMachine.JS* konfiguračního souboru staženého pomocí [Microsoft. Azure. ServiceFabric. windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690) samostatný clusterový balíček zip obsahuje šablonu pro konfiguraci zabezpečení systému Windows pomocí [skupinového účtu spravované služby (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)):  
 
 ```
 "security": {
@@ -77,7 +75,7 @@ Následující příklad oddílu **zabezpečení** nakonfiguruje zabezpečení s
 ```
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>Konfigurace zabezpečení systému Windows pomocí skupiny počítačů  
-Tento model je zastaralý. Doporučujeme použít gMSA, jak je popsáno výše. Ukázka *ClusterConfig.Windows.MultiMachine.JS* konfiguračního souboru staženého pomocí [Microsoft. Azure. ServiceFabric. windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690)samostatný clusterový balíček zip obsahuje šablonu pro konfiguraci zabezpečení systému Windows.  Zabezpečení systému Windows je konfigurováno v části **Properties (vlastnosti** ): 
+Tento model je zastaralý. Doporučujeme použít gMSA, jak je popsáno výše. Ukázka *ClusterConfig.Windows.MultiMachine.JS* konfiguračního souboru staženého pomocí [Microsoft. Azure. ServiceFabric. windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690) samostatný clusterový balíček zip obsahuje šablonu pro konfiguraci zabezpečení systému Windows.  Zabezpečení systému Windows je konfigurováno v části **Properties (vlastnosti** ): 
 
 ```
 "security": {

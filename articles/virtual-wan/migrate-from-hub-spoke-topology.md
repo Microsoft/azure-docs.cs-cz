@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: e6078ffcaaf98702bf809dfeb435cdaa0f9b5701
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e602905b461e370189cefed706ddc3a47e0199fe
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777186"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839635"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migrace do Azure Virtual WAN
 
@@ -110,10 +110,6 @@ Nasaďte v každé oblasti virtuální síť WAN hub. Nastavte virtuální centr
 
 Připojte virtuální síť WAN ke stávajícím okruhům ExpressRoute a nastavte VPN typu Site-to-site přes Internet do všech vzdálených větví.
 
-> [!NOTE]
-> Okruhy Express Routes musí být upgradovány na typ SKU úrovně Premium pro připojení k virtuálnímu centru sítě WAN.
->
-
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="střed a paprskový":::
 **Obrázek 3: migrace centra a paprsků na virtuální síť WAN spravovaná zákazníkem**
 
@@ -190,7 +186,7 @@ Cesta 2 ukazuje tok provozu z ExpressRoute s připojeným Evropským sídel k vi
 
 Provoz se směruje takto:
 
-* Evropská sídel je prostřednictvím okruhu Premium ExpressRoute připojená k Západní Evropa virtuálnímu centru WAN.
+* Evropské sídel je prostřednictvím okruhu ExpressRoute připojená k Západní Evropa virtuálnímu centru WAN.
 
 * Globální připojení typu rozbočovač sítě WAN do rozbočovače umožňuje přenos provozu do sítě VNet připojené ve vzdálené oblasti.
 

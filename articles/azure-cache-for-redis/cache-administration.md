@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: c9da97607961a7d701851c6892393cdf537b9a32
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 156dfd1d9553e369357eb68225e722222a59d847
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008028"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838666"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Jak spravovat službu Azure cache pro Redis
 Toto téma popisuje, jak provádět úlohy správy, jako je třeba [restartování](#reboot) a [Plánování aktualizací](#schedule-updates) pro instance Redis v mezipaměti Azure.
@@ -21,11 +21,11 @@ Toto téma popisuje, jak provádět úlohy správy, jako je třeba [restartován
 ## <a name="reboot"></a>Restartování
 Okno **restartování** vám umožní restartovat jeden nebo několik uzlů mezipaměti. Tato schopnost restartování umožňuje testovat aplikaci, aby byla odolná proti chybám, pokud dojde k selhání uzlu mezipaměti.
 
-![Restartování](./media/cache-administration/redis-cache-administration-reboot.png)
+![Snímek obrazovky, který zvýrazní možnost nabídky restartovat.](./media/cache-administration/redis-cache-administration-reboot.png)
 
 Vyberte uzly, které chcete restartovat, a klikněte na **restartovat**.
 
-![Restartování](./media/cache-administration/redis-cache-reboot.png)
+![Snímek obrazovky, který zobrazuje uzly, které můžete restartovat.](./media/cache-administration/redis-cache-reboot.png)
 
 Pokud máte mezipaměť Premium s povoleným clusteringem, můžete vybrat, které horizontálních oddílů mezipaměti se mají restartovat.
 

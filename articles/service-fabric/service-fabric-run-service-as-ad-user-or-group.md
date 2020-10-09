@@ -1,16 +1,14 @@
 ---
 title: Spuštění služby Azure Service Fabric jako uživatele nebo skupiny AD
 description: Naučte se, jak spustit službu jako uživatel nebo skupinu služby Active Directory v Service Fabric samostatném clusteru se systémem Windows.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 03/29/2018
-ms.author: dekapur
-ms.openlocfilehash: d440aadb66562e32331c9725a9367c12440a315d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4a7afc2ddb0f39014a7cf0fd006d7fe23673a95
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464245"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840723"
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>Spuštění služby jako uživatel nebo skupina služby Active Directory
 V samostatném clusteru se systémem Windows Server můžete službu spustit jako uživatele nebo skupinu služby Active Directory pomocí zásad RunAs.  Ve výchozím nastavení Service Fabric aplikace běží pod účtem, pod kterým běží proces Fabric.exe. Spouštění aplikací v rámci různých účtů, i ve sdíleném hostovaném prostředí, je mezi sebou bezpečnější. Všimněte si, že se používá místní služba Active Directory v rámci vaší domény a ne Azure Active Directory (Azure AD).  Službu můžete také spustit jako [skupinový účet spravované služby (gMSA)](service-fabric-run-service-as-gmsa.md).

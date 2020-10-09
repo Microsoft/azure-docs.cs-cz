@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: c439f1a5aaa03774652dc815364c45633096f6de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b433ab29ab5a2520f503e002e630068126ddb328
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327595"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838683"
 ---
 # <a name="get-started-with-device-twins-java"></a>Začínáme se zdvojením zařízení (Java)
 
@@ -39,7 +39,7 @@ V tomto kurzu vytvoříte dvě konzolové aplikace Java:
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -380,7 +380,7 @@ Nyní jste připraveni spustit konzolové aplikace.
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Aplikace služby Java IoT Hub pro aktualizaci hodnot značek a spuštění dotazů na zařízení](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
+    ![Snímek obrazovky, který zobrazuje výstup příkazu pro spuštění aplikace služby dotazů na přidání značek](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
 
     Můžete zobrazit značky **zařízení** a **oblasti** přidané do vlákna zařízení. První dotaz vrátí vaše zařízení, ale druhá ne.
 
@@ -390,7 +390,7 @@ Nyní jste připraveni spustit konzolové aplikace.
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Klient zařízení přidá vlastnost hlášené * * connectivityType * *.](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
+    ![Klient zařízení přidá vlastnost nahlášený typ připojení.](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
 
 3. Na příkazovém řádku ve složce **Add-tags-Query** spusťte následující příkaz pro spuštění aplikace služby pro dotaz rutiny **Add-tags-Tags** :
 

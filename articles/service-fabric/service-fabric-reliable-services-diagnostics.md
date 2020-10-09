@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric stavová Diagnostika Reliable Services
 description: Diagnostické funkce pro stavové Reliable Services v Azure Service Fabric
-author: dkkapur
 ms.topic: conceptual
 ms.date: 8/24/2018
-ms.author: dekapur
-ms.openlocfilehash: 92fd8dbd1afbd2bdcabbaebbd5dc056d912ae118
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5a3831dd4f8d5402980fac3daf8c35d9884c852d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253112"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840757"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnostické funkce pro stavové služby Reliable Services
 Stavová Reliable Services StatefulServiceBase třídy Azure Service Fabric emituje události [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) , které se dají použít k ladění služby, poskytování přehledů o fungování modulu runtime a k řešení potíží.
@@ -21,7 +19,7 @@ Název EventSource pro stavovou Reliable Services třídy StatefulServiceBase je
 Příklady nástrojů a technologií, které vám pomůžou při shromažďování a zobrazování událostí EventSource, jsou [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md)a [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
 ## <a name="events"></a>Události
-| Název události | ID události | Level | Popis události |
+| Název události | ID události | Úroveň | Popis události |
 | --- | --- | --- | --- |
 | StatefulRunAsyncInvocation |1 |Informační |Vygenerováno při spuštění úlohy služby RunAsync |
 | StatefulRunAsyncCancellation |2 |Informační |Vygenerováno při zrušení úlohy RunAsync služby |
@@ -89,7 +87,7 @@ Následující název instance čítače je typický pro čítač v `Service Fab
 
 `00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337_urn:MyReliableDictionary/dataStore`
 
-V předchozím příkladu `00d0126d-3e36-4d68-98da-cc4f7195d85e` je řetězcové vyjádření ID oddílu Service Fabric, `131652217797162571` je ID repliky, `142652217797162571` je ID zprostředkovatele stavu a `1337` je rozdíl instance čítače výkonu. `urn:MyReliableDictionary/dataStore`je název zprostředkovatele stavu, který ukládá data pro kolekci s názvem `urn:MyReliableDictionary` .
+V předchozím příkladu `00d0126d-3e36-4d68-98da-cc4f7195d85e` je řetězcové vyjádření ID oddílu Service Fabric, `131652217797162571` je ID repliky, `142652217797162571` je ID zprostředkovatele stavu a `1337` je rozdíl instance čítače výkonu. `urn:MyReliableDictionary/dataStore` je název zprostředkovatele stavu, který ukládá data pro kolekci s názvem `urn:MyReliableDictionary` .
 
 ### <a name="transactional-replicator-performance-counters"></a>Čítače výkonu transakčního replikátoru
 

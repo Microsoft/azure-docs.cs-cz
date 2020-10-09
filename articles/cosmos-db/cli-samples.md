@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/29/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 954215f04525e850151fdad93af6e7272b41b3df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 58460dffad3d44090644a544f4082b7727ece3f2
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498459"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840332"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Ukázky v Azure CLI pro službu Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Tyto ukázky vyžadují Azure CLI verze 2.9.1 nebo novější. Verzi zjistíte s
 
 Tyto ukázky se vztahují na všechna rozhraní Azure Cosmos DB API.
 
-|Úkol | Popis |
+|Úloha | Popis |
 |---|---|
 | [Oblasti přidání nebo převzetí služeb při selhání](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Přidání oblasti, změna priority převzetí služeb při selhání, aktivace ručního převzetí služeb při selhání|
 | [Klíče účtu a připojovací řetězce](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Vypíše klíče účtu, klíče jen pro čtení, znovu vygeneruje klíče a seznam připojovacích řetězců.|
@@ -36,50 +36,50 @@ Tyto ukázky se vztahují na všechna rozhraní Azure Cosmos DB API.
 
 ## <a name="core-sql-api-samples"></a>Core (SQL) – ukázky rozhraní API
 
-|Úkol | Popis |
+|Úloha | Popis |
 |---|---|
 | [Vytvoření účtu Azure Cosmos, databáze a kontejneru](scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a kontejner pro rozhraní API jádra (SQL). |
 | [Vytvoření účtu Azure Cosmos, databáze a kontejneru pomocí automatického škálování](scripts/cli/sql/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a kontejner s funkcí automatického škálování pro rozhraní API jádra (SQL). |
-| [Změna propustnosti](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualizujte RU/s na databázi a kontejner.|
+| [Operace propustnosti](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Čtení, aktualizace a migrace mezi automatické škálování a standardní propustností databáze a kontejneru.|
 | [Uzamčení prostředků před odstraněním](scripts/cli/sql/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Zabránit odstranění prostředků s zámky prostředků|
 |||
 
 ## <a name="mongodb-api-samples"></a>Ukázky rozhraní API pro MongoDB
 
-|Úkol | Popis |
+|Úloha | Popis |
 |---|---|
 | [Vytvoření účtu Azure Cosmos, databáze a kolekce](scripts/cli/mongodb/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a kolekci pro rozhraní API MongoDB. |
 | [Vytvoření účtu Azure Cosmos, databáze s možností automatického škálování a dvou kolekcí se sdílenou propustností](scripts/cli/mongodb/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi s možností automatického škálování a dvě kolekce se sdílenou propustností pro rozhraní MongoDB API. |
-| [Změna propustnosti](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualizujte RU/s na databázi a kolekci.|
+| [Operace propustnosti](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Přečtěte si, aktualizujte a migrujte mezi automatické škálování a standardní propustností databáze a kolekce.|
 | [Uzamčení prostředků před odstraněním](scripts/cli/mongodb/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Zabránit odstranění prostředků s zámky prostředků|
 |||
 
 ## <a name="cassandra-api-samples"></a>Ukázky rozhraní API Cassandra
 
-|Úkol | Popis |
+|Úloha | Popis |
 |---|---|
 | [Vytvoření účtu Azure Cosmos, místa a tabulky](scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, prostor a tabulku pro rozhraní API Cassandra. |
 | [Vytvoření účtu Azure Cosmos, místa a tabulky s použitím automatického škálování](scripts/cli/cassandra/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří Azure Cosmos DB účet, prostor a tabulku s AutoScale rozhraní API Cassandra. |
-| [Změna propustnosti](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualizujte RU/s na místě a tabulce klíčů.|
+| [Operace propustnosti](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Přečtěte si, aktualizujte a migrujte mezi automatické škálování a standardní propustností v prostoru a tabulce klíčů.|
 | [Uzamčení prostředků před odstraněním](scripts/cli/cassandra/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Zabránit odstranění prostředků s zámky prostředků|
 |||
 
 ## <a name="gremlin-api-samples"></a>Ukázky rozhraní API pro Gremlin
 
-|Úkol | Popis |
+|Úloha | Popis |
 |---|---|
 | [Vytvoření účtu Azure Cosmos, databáze a grafu](scripts/cli/gremlin/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a graf pro rozhraní Gremlin API. |
 | [Vytvoření účtu Azure Cosmos, databáze a grafu pomocí automatického škálování](scripts/cli/gremlin/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a graf s možností automatického škálování pro rozhraní Gremlin API. |
-| [Změna propustnosti](scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualizujte RU/s na databázi a graf.|
+| [Operace propustnosti](scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Přečtěte si, aktualizujte a migrujte mezi automatické škálování a standardní propustností databáze a grafu.|
 | [Uzamčení prostředků před odstraněním](scripts/cli/gremlin/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Zabránit odstranění prostředků s zámky prostředků|
 |||
 
 ## <a name="table-api-samples"></a>Ukázky rozhraní API pro tabulky
 
-|Úkol | Popis |
+|Úloha | Popis |
 |---|---|
 | [Vytvoření účtu Azure Cosmos a tabulky](scripts/cli/table/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB a tabulku pro rozhraní API pro tabulky. |
 | [Vytvoření účtu Azure Cosmos a tabulky pomocí automatického škálování](scripts/cli/table/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB a tabulku s automatickém škálováním pro rozhraní API pro tabulky. |
-| [Změna propustnosti](scripts/cli/table/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualizujte RU/s na tabulce.|
+| [Operace propustnosti](scripts/cli/table/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Přečtěte si, aktualizujte a migrujte mezi automatické škálování a standardní propustností tabulky.|
 | [Uzamčení prostředků před odstraněním](scripts/cli/table/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Zabránit odstranění prostředků s zámky prostředků|
 |||

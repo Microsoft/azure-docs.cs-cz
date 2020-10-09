@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 1fb05b52bbe3e8f544b17537ef9070e5b2b0b77b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 81a65c088fd83ce179f67edd1ecdb96149dd1614
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460165"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840247"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
 Toto téma popisuje konfigurace dostupné pro instance Redis v mezipaměti Azure. Toto téma také popisuje výchozí konfiguraci serveru Redis pro Azure cache pro instance Redis.
@@ -37,7 +37,7 @@ Pomocí **nabídky prostředků**můžete zobrazit a nakonfigurovat následujíc
 * [Diagnóza a řešení problémů](#diagnose-and-solve-problems)
 * [Nastavení](#settings)
     * [Přístupové klíče](#access-keys)
-    * [Pokročilá nastavení](#advanced-settings)
+    * [Rozšířená nastavení](#advanced-settings)
     * [Mezipaměť Azure pro poradce Redis](#azure-cache-for-redis-advisor)
     * [Škálování](#scale)
     * [Velikost clusteru](#cluster-size)
@@ -89,7 +89,7 @@ Klikněte na **Diagnostika a řešení problémů** , které se budou poskytovat
 Část **Nastavení** vám umožní získat přístup k následujícím nastavením pro mezipaměť a nakonfigurovat je.
 
 * [Přístupové klíče](#access-keys)
-* [Pokročilá nastavení](#advanced-settings)
+* [Rozšířená nastavení](#advanced-settings)
 * [Mezipaměť Azure pro poradce Redis](#azure-cache-for-redis-advisor)
 * [Škálování](#scale)
 * [Velikost clusteru](#cluster-size)
@@ -109,7 +109,7 @@ Kliknutím na **přístupové klíče** zobrazíte nebo znovu vygenerujete pří
 
 ![Mezipaměť Azure pro přístupové klíče Redis](./media/cache-configure/redis-cache-manage-keys.png)
 
-### <a name="advanced-settings"></a>Pokročilá nastavení
+### <a name="advanced-settings"></a>Rozšířená nastavení
 V okně **Upřesnit nastavení** jsou nakonfigurovaná následující nastavení.
 
 * [Přístupové porty](#access-ports)
@@ -169,11 +169,11 @@ Další informace najdete v tématu [oznámení o prostorech Redis](https://redi
 ## <a name="azure-cache-for-redis-advisor"></a>Mezipaměť Azure pro poradce Redis
 Okno **Poradce Azure cache pro Redis** zobrazí doporučení pro vaši mezipaměť. Při normálních operacích se nezobrazují žádná doporučení.
 
-![Doporučení](./media/cache-configure/redis-cache-no-recommendations.png)
+![Snímek obrazovky, který ukazuje, kde se mají doporučení zobrazovat](./media/cache-configure/redis-cache-no-recommendations.png)
 
 V případě, že během operací mezipaměti, jako je například využití vysoké paměti, Šířka pásma nebo zatížení serveru, dojde k jakýmkoli podmínkám, zobrazí se výstraha v okně **Azure cache pro Redis** .
 
-![Doporučení](./media/cache-configure/redis-cache-recommendations-alert.png)
+![Snímek obrazovky, který ukazuje, kde se výstrahy zobrazují v části mezipaměť Azure pro Redis.](./media/cache-configure/redis-cache-recommendations-alert.png)
 
 Další informace najdete v okně **doporučení** .
 
@@ -258,13 +258,13 @@ Okno **geografické replikace** poskytuje mechanismus pro propojení dvě mezipa
 >
 >
 
-### <a name="firewall"></a>Brána firewall
+### <a name="firewall"></a>Firewall
 
 Konfigurace pravidel brány firewall je dostupná pro všechny úrovně Redis v mezipaměti Azure.
 
 Kliknutím na **firewall** zobrazíte a nakonfigurujete pravidla brány firewall pro mezipaměť.
 
-![Brána firewall](./media/cache-configure/redis-firewall-rules.png)
+![Firewall](./media/cache-configure/redis-firewall-rules.png)
 
 Můžete zadat pravidla brány firewall s rozsahem počátečních a koncových IP adres. Když jsou pravidla brány firewall nakonfigurovaná, můžou se k ní připojit jenom připojení klientů ze zadaných rozsahů IP adres. Po uložení pravidla brány firewall dojde k krátké prodlevě, než bude pravidlo platné. Toto zpoždění je obvykle méně než jedna minuta.
 
@@ -314,7 +314,7 @@ Okno **restartování** vám umožní restartovat uzly mezipaměti. Tato schopno
 
 Pokud máte mezipaměť Premium s povoleným clusteringem, můžete vybrat, které horizontálních oddílů mezipaměti se mají restartovat.
 
-![Restartování](./media/cache-configure/redis-cache-reboot-cluster.png)
+![Snímek obrazovky, který ukazuje, kde vybrat, které horizontálních oddílů mezipaměti se mají restartovat.](./media/cache-configure/redis-cache-reboot-cluster.png)
 
 Chcete-li restartovat jeden nebo více uzlů mezipaměti, vyberte požadované uzly a klikněte na tlačítko **restartovat**. Pokud máte mezipaměť Premium s povoleným clusteringem, vyberte horizontálních oddílů pro restartování a pak klikněte na **restartovat**. Po několika minutách se vybraný uzel (y) restartuje a později se znovu dovede k online několika minutám.
 
@@ -474,11 +474,11 @@ Pomocí **konzoly Redis**, která je k dispozici v Azure Portal pro všechny úr
 
 Přístup ke konzole Redis získáte tak, že kliknete na **Konzola** v okně **Azure cache pro Redis** .
 
-![Konzola Redis](./media/cache-configure/redis-console-menu.png)
+![Snímek obrazovky, který zvýrazní tlačítko konzoly.](./media/cache-configure/redis-console-menu.png)
 
 Chcete-li vydávat příkazy pro instanci mezipaměti, zadejte požadovaný příkaz do konzoly.
 
-![Konzola Redis](./media/cache-configure/redis-console.png)
+![Thas obrazovky zobrazuje konzolu Redis se vstupním příkazem a výsledky.](./media/cache-configure/redis-console.png)
 
 
 ### <a name="using-the-redis-console-with-a-premium-clustered-cache"></a>Použití konzoly Redis s Clusterovou mezipamětí Premium
