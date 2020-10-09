@@ -1,5 +1,5 @@
 ---
-title: Přizpůsobení tlačítka pro moderní čtečku
+title: Přizpůsobení tlačítka pro asistivní čtečku
 titleSuffix: Azure Cognitive Services
 description: V tomto článku se dozvíte, jak přizpůsobit tlačítko, které spouští moderní čtečku.
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 6461cc60a237cf834226b07db5e1ea6fbbea7a92
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75946207"
 ---
 # <a name="how-to-customize-the-immersive-reader-button"></a>Přizpůsobení tlačítka pro moderní čtečku
@@ -23,7 +23,7 @@ Tento článek ukazuje, jak přizpůsobit tlačítko, které spouští moderní 
 
 ## <a name="add-the-immersive-reader-button"></a>Přidání tlačítka pro moderní čtečku
 
-Sada moderní čtečka SDK nabízí výchozí styly pro tlačítko, které spouští moderní čtečku. Pro povolení `immersive-reader-button` tohoto stylu použijte atribut class.
+Sada moderní čtečka SDK nabízí výchozí styly pro tlačítko, které spouští moderní čtečku. `immersive-reader-button`Pro povolení tohoto stylu použijte atribut class.
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -31,7 +31,7 @@ Sada moderní čtečka SDK nabízí výchozí styly pro tlačítko, které spou�
 
 ## <a name="customize-the-button-style"></a>Přizpůsobení stylu tlačítka
 
-Použijte `data-button-style` atribut pro nastavení stylu tlačítka. Povolené hodnoty jsou `icon`, `text`a. `iconAndText` Výchozí hodnota je `icon`.
+Použijte `data-button-style` atribut pro nastavení stylu tlačítka. Povolené hodnoty jsou `icon` , `text` a `iconAndText` . Výchozí hodnota je `icon`.
 
 ### <a name="icon-button"></a>Tlačítko ikony
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 729427dac174037c8750af7ab0f6cb17fa4d4c1e
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91741445"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>Kurz: Azure Active Directory integrace s BitaBIZ
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí BitaBIZ, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování BitaBIZ](#configure-bitabiz-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování BitaBIZ](#configure-bitabiz-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření BitaBIZ Test User](#create-bitabiz-test-user)** – pro Britta Simon v BitaBIZ, který je propojený s reprezentací uživatele Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí BitaBIZ,
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -112,7 +112,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí BitaBIZ,
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://www.bitabiz.com/dashboard`
 
-6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+6. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -126,7 +126,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí BitaBIZ,
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-bitabiz-single-sign-on"></a>Konfigurace jednotného přihlašování BitaBIZ
+### <a name="configure-bitabiz-single-sign-on"></a>Nakonfigurovat BitaBIZ jednu Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste k tenantovi BitaBIZ jako správce.
 
@@ -144,7 +144,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí BitaBIZ,
 
     a. Zkopírujte hodnotu z pole **ID entity ("identifikátor" v Azure AD)** TextBox a vložte ji do textového pole **identifikátoru** v **základní části Konfigurace SAML** v Azure Portal. 
 
-    b. V poli **Adresa URL služby jednotného přihlašování služby Azure AD** vložte **přihlašovací adresu URL**, kterou jste zkopírovali z Azure Portal.
+    b. Do textového pole **Adresa URL služby Azure AD Single Sign-On Service** vložte **přihlašovací adresu URL**, kterou jste zkopírovali z Azure Portal.
 
     c. Do textového pole **ID entity Azure AD SAML** vložte **identifikátor Azure AD**, který jste zkopírovali z Azure Portal.
 
@@ -179,7 +179,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Create** (Vytvořit).
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

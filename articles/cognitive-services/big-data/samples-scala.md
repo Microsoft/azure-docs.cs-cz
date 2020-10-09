@@ -9,10 +9,10 @@ ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.openlocfilehash: 4546ef03c82f19d188a71a86f6964ca87c0f834e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90524959"
 ---
 # <a name="quick-examples"></a>Rychlé příklady
@@ -27,7 +27,7 @@ Tyto ukázky používají tyto Cognitive Services:
 - Zvukové soubory s mluveným převodem na text přepisovat k extrakci textových přepisů.
 - Detektor anomálií – zjištění anomálií v datech časové řady
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Postupujte podle kroků uvedených v části [Začínáme](getting-started.md) s nastavením Azure Databricks a Cognitive Services prostředí. Tento kurz obsahuje postup instalace MMLSpark a postup vytvoření clusteru Spark v datacihlách.
 1. Po vytvoření nového poznámkového bloku v Azure Databricks zkopírujte níže **sdílený kód** a vložte ho do nové buňky v poznámkovém bloku.
@@ -79,7 +79,7 @@ display(sentiment.transform(df).select(col("text"), col("sentiment")(0).getItem(
 | Frustrovaní tento přenos nespěcháte hodin | 0.023795604705810547                                  |
 | Služba rozpoznávání na Spark aint je chybná.  | 0.8888956308364868                                    |
 
-## <a name="computer-vision"></a>Počítačové zpracování obrazu
+## <a name="computer-vision"></a>Computer Vision
 
 [Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) analyzuje obrázky pro identifikaci struktury, jako jsou obličeje, objekty a popisy přirozeného jazyka.
 V této ukázce označíte seznam imagí. Značky jsou jedním z popisů textu v obrázku, jako jsou například rozpoznatelné objekty, lidé, krajin a akce.
@@ -237,7 +237,7 @@ display(anamolyDetector.transform(df).select("timestamp", "value", "anomalies.is
 
 ### <a name="expected-result"></a>Očekávaný výsledek
 
-| časové razítko            |   Hodnota | Anomálie   |
+| časové razítko            |   value | Anomálie   |
 |:---------------------|--------:|:------------|
 | 1972-01-01T00:00:00Z |     826 | Nepravda       |
 | 1972-02-01T00:00:00Z |     799 | Nepravda       |

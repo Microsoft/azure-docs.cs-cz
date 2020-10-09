@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 37ed9bb09b6b15af0c32f489cbc3c02ec27c2827
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89461948"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí cloudu Academy-SSO
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Cloud Academy-SSO pomocí Azure Active
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -74,13 +74,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce **cloudová integrace aplikací Academy-SSO** v části **Spravovat** vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte tlačítko tužky pro **základní konfiguraci SAML** a upravte nastavení:
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte tlačítko tužky pro **základní konfiguraci SAML** a upravte nastavení:
 
    ![Snímek obrazovky, který zobrazuje tlačítko tužky pro úpravu základní konfigurace SAML.](common/edit-urls.png)
 
 1. V části **základní konfigurace SAML** v poli **přihlašovací adresa URL** zadejte `https://cloudacademy.com/login/enterprise/` .
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte tlačítko Kopírovat a zkopírujte **adresu URL federačních metadat aplikace**. Uložte adresu URL.
+1. Na stránce **nastavit jednu Sign-On s SAML** v části **podpisový certifikát SAML** vyberte tlačítko Kopírovat, aby se zkopírovala **Adresa URL federačních metadat aplikace**. Uložte adresu URL.
 
     ![Snímek obrazovky, který zobrazuje tlačítko pro kopírování pro adresu URL federačních metadat aplikace](common/copy-metadataurl.png)
 

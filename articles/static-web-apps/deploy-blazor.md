@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
 ms.openlocfilehash: 60e62228e33d2d86bb407e45802f5c0621a94049
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761086"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>Kurz: Vytvoření statické webové aplikace pomocí Blazor ve statickém Web Apps Azure
@@ -20,7 +20,7 @@ Služba Azure static Web Apps publikuje web do produkčního prostředí tím, �
 
 Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet [GitHub](https://github.com)
 - Účet [Azure](https://portal.azure.com)

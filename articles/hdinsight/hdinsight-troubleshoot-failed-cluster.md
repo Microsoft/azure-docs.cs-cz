@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895318"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Řešení potíží s pomalou úlohou na clusteru HDInsight nebo jejím selháním
@@ -63,7 +63,7 @@ az hdinsight list --resource-group <ResourceGroup>
 az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
 
-Další možností je použití prostředí PowerShell. Další informace najdete v tématu [správa Apache Hadoop clusterů ve službě HDInsight s Azure PowerShell](hdinsight-administer-use-powershell.md).
+Další možností je použití prostředí PowerShell. Další informace najdete v tématu  [správa Apache Hadoop clusterů ve službě HDInsight s Azure PowerShell](hdinsight-administer-use-powershell.md).
 
 ## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>Krok 2: ověření prostředí clusteru HDInsight
 
@@ -148,7 +148,7 @@ Následující části popisují některé možné příčiny WebHCat časových
 
 ##### <a name="webhcat-level-timeout"></a>Časový limit úrovně WebHCat
 
-Když je WebHCat pod zatížením, s více než 10 otevřenými sokety trvá vytvoření nových připojení soketu déle, což může mít za následek časový limit. Chcete-li zobrazit seznam síťových připojení k WebHCat a z nich, použijte `netstat` aktuální aktivní hlavnímu uzlu:
+Když je WebHCat pod zatížením, s více než 10 otevřenými sokety trvá vytvoření nových připojení soketu déle, což může mít za následek časový limit. Chcete-li zobrazit seznam síťových připojení k WebHCat a z nich, použijte `netstat`  aktuální aktivní hlavnímu uzlu:
 
 ```bash
 netstat | grep 30111
@@ -202,11 +202,11 @@ Diagnostikujte tyto problémy:
 
     Můžou nastat případy, kdy interakce s WebHCat jsou úspěšné, ale úlohy selžou.
 
-    Templeton shromažďuje výstup konzoly úloh jako `stderr` v `statusdir` , což je často užitečné při řešení potíží. `stderr`obsahuje identifikátor aplikace nitě aktuálního dotazu.
+    Templeton shromažďuje výstup konzoly úloh jako `stderr` v `statusdir` , což je často užitečné při řešení potíží. `stderr` obsahuje identifikátor aplikace nitě aktuálního dotazu.
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>Krok 4: Kontrola zásobníku prostředí a verzí
 
-Stránka zásobník uživatelského rozhraní **a verze** Ambari poskytuje informace o konfiguraci služby Cluster Services a historii verzí služby.  Nesprávná verze knihovny služby Hadoop může způsobovat selhání clusteru.  V uživatelském rozhraní Ambari vyberte nabídku **správce** a pak nastavte **zásobníky a verze**.  Na stránce vyberte kartu **verze** , kde najdete informace o verzi služby:
+Stránka zásobník uživatelského rozhraní **a verze** Ambari poskytuje informace o konfiguraci služby Cluster Services a historii verzí služby.  Nesprávná verze knihovny služby Hadoop může způsobovat selhání clusteru.  V uživatelském rozhraní Ambari vyberte nabídku **správce** a pak nastavte  **zásobníky a verze**.  Na stránce vyberte kartu **verze** , kde najdete informace o verzi služby:
 
 ![Stack a verze Apache Ambari](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 

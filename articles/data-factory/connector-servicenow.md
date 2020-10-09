@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: bc48f651a1adb099017e8f47d9fa6bcfa8078fa1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415338"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopírování dat z ServiceNow pomocí Azure Data Factory
@@ -44,18 +44,18 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu ServiceNow jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **ServiceNow** . | Ano |
 | endpoint | Koncový bod serveru ServiceNow ( `http://<instance>.service-now.com` ).  | Ano |
 | authenticationType | Typ ověřování, který se má použít. <br/>Povolené hodnoty jsou: **Basic**, **OAuth2** | Ano |
-| uživatelské jméno | Uživatelské jméno použité pro připojení k serveru ServiceNow pro ověřování Basic a OAuth2.  | Ano |
+| username | Uživatelské jméno použité pro připojení k serveru ServiceNow pro ověřování Basic a OAuth2.  | Ano |
 | heslo | Heslo odpovídající uživatelskému jménu pro základní a OAuth2 ověřování. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| clientId | ID klienta pro ověřování OAuth2  | Ne |
-| clientSecret | Tajný klíč klienta pro ověřování OAuth2 Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| clientId | ID klienta pro ověřování OAuth2  | No |
+| clientSecret | Tajný klíč klienta pro ověřování OAuth2 Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
+| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | No |
+| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
 
 **Příklad:**
 
@@ -83,7 +83,7 @@ Pro propojenou službu ServiceNow jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z ServiceNow, nastavte vlastnost Type datové sady na **ServiceNowObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **ServiceNowObject** . | Ano |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
@@ -113,7 +113,7 @@ Chcete-li kopírovat data z ServiceNow, nastavte vlastnost Type datové sady na 
 
 Chcete-li kopírovat data z ServiceNow, nastavte typ zdroje v aktivitě kopírování na **ServiceNowSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ServiceNowSource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Actual.alm_asset"`. | Ne (Pokud je zadáno "tableName" v datové sadě |

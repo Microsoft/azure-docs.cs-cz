@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: a1f878361a96c5584f43b31135d79ff799f66efa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75976622"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Vytvoření služby IoT Hub pomocí šablony Azure Resource Manager (PowerShell)
@@ -21,15 +21,15 @@ ms.locfileid: "75976622"
 
 Naučte se používat šablonu Azure Resource Manager k vytvoření IoT Hub a skupiny uživatelů. Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit. Další informace o vývoji šablon Správce prostředků najdete v [dokumentaci k Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
 
 Šablona Správce prostředků použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-iothub-with-consumergroup-create/). Tady je kopie šablony:
 
 [!code-json[iothub-creation](~/quickstart-templates/101-iothub-with-consumergroup-create/azuredeploy.json)]
 
-Šablona vytvoří službu Azure IoT Hub se třemi koncovými body (eventhub, Cloud-zařízení a zasílání zpráv) a skupinou uživatelů. Další ukázky šablon najdete v tématu [šablony rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular). Schéma šablon IoT Hub najdete [tady](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions).
+Šablona vytvoří službu Azure IoT Hub se třemi koncovými body (eventhub, Cloud-zařízení a zasílání zpráv) a skupinou uživatelů. Další ukázky šablon najdete v tématu [šablony rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular). Schéma šablon IoT Hub najdete  [tady](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions).
 
 Existuje několik metod pro nasazení šablony.  V tomto kurzu použijete Azure PowerShell.
 

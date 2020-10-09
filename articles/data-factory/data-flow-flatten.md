@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81413677"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>Transformace sloučení v toku dat mapování
@@ -68,7 +68,7 @@ Viz následující objekt JSON pro níže uvedené příklady transformace slou�
 
 | Odvádět od | Odveďte kořen | Projekce |
 | --------- | ----------- | ---------- |
-| zboží. zákazníci | Žádná | name <br> Zákazník = zboží. Zákazník |
+| zboží. zákazníci | Žádné | name <br> Zákazník = zboží. Zákazník |
 
 #### <a name="output"></a>Výstup
 
@@ -86,7 +86,7 @@ Viz následující objekt JSON pro níže uvedené příklady transformace slou�
 
 | Odvádět od | Odveďte kořen | Projekce |
 | --------- | ----------- | ---------- |
-| zboží. Orders. expedovaných. orderItems | Žádná | name <br> ČísloObjednávky = zboží. Orders. ČísloObjednávky <br> Item = zboží. Orders. expedováno. orderItems. Item <br> itemQty = zboží. Orders. dodána. orderItems. itemQty <br> umístění = umístění |
+| zboží. Orders. expedovaných. orderItems | Žádné | name <br> ČísloObjednávky = zboží. Orders. ČísloObjednávky <br> Item = zboží. Orders. expedováno. orderItems. Item <br> itemQty = zboží. Orders. dodána. orderItems. itemQty <br> umístění = umístění |
 
 #### <a name="output"></a>Výstup
 
@@ -141,7 +141,7 @@ Viz následující objekt JSON pro níže uvedené příklady transformace slou�
 
 ## <a name="data-flow-script"></a>Skript toku dat
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Syntaxe
 
 ```
 <incomingStream>

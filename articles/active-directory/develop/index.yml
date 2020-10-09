@@ -3,18 +3,18 @@ title: Dokumentace k platformě Microsoft Identity Platform
 summary: Microsoft Identity Platform poskytuje službu ověřování, opensourcové knihovny a nástroje pro správu aplikací. Prostřednictvím našich rychlých zprovoznění, kurzů a ukázek kódu se naučíte vytvářet moderní řešení ověřování založená na standardech. Vytvářejte aplikace, ke kterým se uživatelé a zákazníkům přihlásí pomocí svých identit Microsoft nebo účtů na sociálních sítí, a autorizujte přístup k vašim rozhraním API nebo rozhraním API Microsoftu, jako je Microsoft Graph.
 metadata:
   ms.topic: landing-page
-  ms.date: 09/26/2020
+  ms.date: 10/07/2020
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: d80d722594e717319bda473e2cb86551acc8d9f0
-  ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+  ms.openlocfilehash: b6dfd02b11c972ae4877e45e7424d3e35f0d0874
+  ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/28/2020
-  ms.locfileid: "91403139"
+  ms.lasthandoff: 10/07/2020
+  ms.locfileid: "91801881"
 landingContent:
 - title: O platformě Microsoft Identity Platform
   linkLists:
@@ -120,6 +120,8 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: Přehled webových knihoven Microsoft Identity
+      url: microsoft-identity-web.md
     - text: 'Kurz: Blazor Server'
       url: tutorial-blazor-server.md
     - text: 'Rychlý start: Ochrana webového rozhraní API ASP.NET Core'

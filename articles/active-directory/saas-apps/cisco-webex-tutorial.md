@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 466e69ece993ca34f8f6770c0465471d01b9c3ed
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760933"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s WebEx schůzkami Cisco
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat schůzky Cisco Webex s Azure Active Di
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -76,7 +76,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **schůzky Cisco Webex** vyhledejte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** můžete nakonfigurovat aplikaci v režimu iniciované **IDP** tím, že nahrajete soubor **metadat poskytovatele služby** následujícím způsobem:
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML můžete nakonfigurovat aplikaci v režimu iniciované **IDP** tím, že nahrajete soubor **metadat poskytovatele služby** následujícím způsobem:
 
     a. Klikněte na **nahrát soubor metadat**.
 
@@ -101,7 +101,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 6. Kromě výše očekává aplikace WebEx schůzky Cisco několik atributů, které se vrátí zpátky v odpovědi SAML. V části deklarace identity uživatelů v dialogovém okně atributy uživatele proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce: 
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------|  --------- |
     |   FirstName    | User. křestní jméno |
     |   polím    | User. příjmení |
@@ -138,7 +138,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
     1. Do pole **Název** zadejte `B.Simon`.  
     1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-    1. Klikněte na možnost **Vytvořit**.
+    1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

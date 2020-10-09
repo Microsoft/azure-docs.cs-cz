@@ -106,6 +106,8 @@
       items:
         - name: Průvodce vývojáře pro službu Azure Key Vault
           href: developers-guide.md
+        - name: Použití Azure Resource Manager k nasazení služby Key Vault
+          href: vault-create-template.md
         - name: Uložení tajných kódů webové aplikace
           href: vs-secure-secret-appsettings.md
         - name: Ověřování služba-služba s využitím .NET

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73663178"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Výsledky testů pro replikaci Hyper-V do sekundární lokality
@@ -134,10 +134,10 @@ Výsledky jasně ukazují, že Site Recovery, společně s replikou technologie 
 | Úloha | I/O velikost (KB) | % Přístup | % Čtení | Nezpracované vstupně-výstupních | Vzor I/O |
 | --- | --- | --- | --- | --- | --- |
 | Souborový server |4<br />8<br />16<br />32<br />64 |60 %<br />20 %<br />5 %<br />5 %<br />10 % |80 %<br />80 %<br />80 %<br />80 %<br />80 % |8<br />8<br />8<br />8<br />8 |Všechny 100% náhodné |
-| SQL Server (svazek 1)<br />SQL Server (svazek 2) |8<br />64 |100 %<br />100 % |70 %<br />0% |8<br />8 |100% náhodný<br />100% sekvenční |
-| Výměna |32 |100 % |67 % |8 |100% náhodný |
-| Pracovní stanice/VDI |4<br />64 |66%<br />34% |70 %<br />95% |1<br />1 |100% náhodný |
-| Webový souborový server |4<br />8<br />64 |33%<br />34%<br />33% |95%<br />95%<br />95% |8<br />8<br />8 |Všechny 75% náhodné |
+| SQL Server (svazek 1)<br />SQL Server (svazek 2) |8<br />64 |100 %<br />100 % |70 %<br />0 % |8<br />8 |100% náhodný<br />100% sekvenční |
+| Výměna |32 |100 % |67 % |8 |100% náhodný |
+| Pracovní stanice/VDI |4<br />64 |66%<br />34% |70 %<br />95 % |1<br />1 |100% náhodný |
+| Webový souborový server |4<br />8<br />64 |33%<br />34%<br />33% |95 %<br />95 %<br />95 % |8<br />8<br />8 |Všechny 75% náhodné |
 
 ### <a name="vm-configuration"></a>Konfigurace virtuálního počítače
 
@@ -150,7 +150,7 @@ Výsledky jasně ukazují, že Site Recovery, společně s replikou technologie 
 | SQL Server |51 |1 |4 |167 |10 |
 | Exchange Server |71 |1 |4 |552 |10 |
 | Souborový server |50 |1 |2 |552 |22 |
-| Place |149 |0,5 |1 |80 |6 |
+| VDI |149 |0,5 |1 |80 |6 |
 | Webový server |149 |0,5 |1 |80 |6 |
 | TOTAL |470 | | |96,83 TB |4108 |
 
@@ -161,10 +161,10 @@ Výsledky jasně ukazují, že Site Recovery, společně s replikou technologie 
 
 | Primární Cloud VMM | Chráněné virtuální počítače | Četnost replikací | Další body obnovení |
 | --- | --- | --- | --- |
-| PrimaryCloudRpo15m |142 |15 minut |Žádná |
-| PrimaryCloudRpo30s |47 |30 sekund |Žádná |
+| PrimaryCloudRpo15m |142 |15 minut |Žádné |
+| PrimaryCloudRpo30s |47 |30 sekund |Žádné |
 | PrimaryCloudRpo30sArp1 |47 |30 sekund |1 |
-| PrimaryCloudRpo5m |235 |5 minut |Žádná |
+| PrimaryCloudRpo5m |235 |5 minut |Žádné |
 
 ### <a name="performance-metrics"></a>Metriky výkonu
 

@@ -4,13 +4,13 @@ description: Popisuje, jak definovat parametry v šabloně Azure Resource Manage
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: 89c6984c587e8dae59c1825a99d4f8da1c06dafb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76122419"
 ---
-# <a name="parameters-in-azure-resource-manager-templates"></a>Parametry v šablonách Azure Resource Manager
+# <a name="parameters-in-azure-resource-manager-templates"></a>Parametry v šablonách Azure Resource Manageru
 
 Tento článek popisuje, jak definovat a používat parametry v šabloně Azure Resource Manager. Zadáním různých hodnot pro parametry můžete znovu použít šablonu pro různá prostředí.
 
@@ -152,7 +152,7 @@ Odkazujete na vlastnosti objektu pomocí operátoru tečka.
 
 Následující příklady ukazují scénáře použití parametrů.
 
-|Šablona  |Description  |
+|Šablona  |Popis  |
 |---------|---------|
 |[parametry s funkcemi pro výchozí hodnoty](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Ukazuje, jak používat funkce šablon při definování výchozích hodnot pro parametry. Šablona neimplementuje žádné prostředky. Vytvoří hodnoty parametrů a vrátí tyto hodnoty. |
 |[objekt parametru](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Ukazuje použití objektu pro parametr. Šablona neimplementuje žádné prostředky. Vytvoří hodnoty parametrů a vrátí tyto hodnoty. |

@@ -12,10 +12,10 @@ author: nabhishek
 manager: shwang
 ms.date: 03/15/2018
 ms.openlocfilehash: 6b010000a674e351051c664dd5eeacd40e802439
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81414616"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Transformujte data spuštěním aktivity jar v Azure Databricks
@@ -56,15 +56,15 @@ Tady je ukázka definice JSON aktivity JAR pro datacihly:
 
 Následující tabulka obsahuje popis vlastností JSON použitých v definici JSON:
 
-|Vlastnost|Popis|Vyžadováno|
+|Vlastnost|Popis|Povinné|
 |:--|---|:-:|
 |name|Název aktivity v kanálu.|Ano|
-|description|Text popisující, co aktivita dělá.|Ne|
+|Popis|Text popisující, co aktivita dělá.|No|
 |typ|U aktivity JAR pro datacihly je typ aktivity DatabricksSparkJar.|Ano|
 |linkedServiceName|Název propojené služby datacihly, na které běží aktivita jar Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md)   .|Ano|
 |mainClassName|Úplný název třídy obsahující metodu Main, která má být provedena. Tato třída musí být obsažena v JAR poskytnutém jako knihovna.|Ano|
-|parameters|Parametry, které budou předány metodě Main.  Toto je pole řetězců.|Ne|
-|Knihovna|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole <řetězec, objekt>|Ano (aspoň jeden obsahující metodu mainClassName)|
+|parameters|Parametry, které budou předány metodě Main.  Toto je pole řetězců.|No|
+|knihovny|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole <řetězec, objekt>|Ano (aspoň jeden obsahující metodu mainClassName)|
 
 > [!NOTE]
 > **Známý problém** – při použití stejného [interaktivního clusteru](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) pro provozování souběžných aktivit JAR pro datacihly (bez restartování clusteru) je známý problém v datacihlách, kde se v parametrech první aktivity budou používat i následující aktivity. Proto jsou výsledkem předávány nesprávné parametry do následujících úloh. Pokud to chcete zmírnit, použijte místo toho [cluster úloh](compute-linked-services.md#example---using-new-job-cluster-in-databricks) . 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 83ee8e0c0583cba72da8702e196f0f38128f8d8a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72935939"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>Definování a použití úloh moderování (REST)
@@ -45,13 +45,13 @@ Zadejte následující hodnoty pro sestavení volání REST:
 
 ### <a name="fill-in-the-request-body"></a>Vyplnit text žádosti
 
-Tělo volání REST obsahuje jedno pole **ContentValue**. Pokud připravujete text, vložte obsah nezpracovaného textu, pokud jste přihlásili obrázek nebo video, pokud jste přihlásili obrázek nebo video. Můžete použít následující adresu URL ukázkového obrázku:[https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
+Tělo volání REST obsahuje jedno pole **ContentValue**. Pokud připravujete text, vložte obsah nezpracovaného textu, pokud jste přihlásili obrázek nebo video, pokud jste přihlásili obrázek nebo video. Můžete použít následující adresu URL ukázkového obrázku: [https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
 
 ![Úloha – vytvoření parametrů dotazu konzoly, záhlaví a textu požadavku na konzolu](images/job-api-console-inputs.PNG)
 
-### <a name="submit-your-request"></a>Odeslat žádost
+### <a name="submit-your-request"></a>Odeslání žádosti
 
-Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK`a v poli **obsah odpovědi** se zobrazí ID úlohy. Zkopírujte toto ID, které chcete použít v následujících krocích.
+Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK` a v poli **obsah odpovědi** se zobrazí ID úlohy. Zkopírujte toto ID, které chcete použít v následujících krocích.
 
 ![Revize – pole vytvořit obsah odpovědi konzoly zobrazí ID revize.](images/test-drive-job-3.PNG)
 
@@ -61,7 +61,7 @@ Chcete-li získat stav a podrobnosti o spuštěné nebo dokončené úloze, klik
 
 ![Úloha – získat výběr oblasti](images/test-drive-region.png)
 
-Zadejte parametry volání REST jako v předchozí části. Pro tento krok je identifikátor **JobId** jedinečným řetězcem ID, který jste dostali při vytváření úlohy. Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK`a pole **obsah odpovědi** zobrazí úlohu ve formátu JSON, třeba takto:
+Zadejte parametry volání REST jako v předchozí části. Pro tento krok je identifikátor **JobId** jedinečným řetězcem ID, který jste dostali při vytváření úlohy. Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK` a pole **obsah odpovědi** zobrazí úlohu ve formátu JSON, třeba takto:
 
 ```json
 {  
@@ -115,7 +115,7 @@ Zadejte parametry volání REST jako v předchozí části. Pro tento krok je id
 
 ### <a name="examine-the-new-reviews"></a>Prozkoumejte nové revize (y)
 
-Pokud vaše úloha s obsahem skončila vytvořením recenze, můžete ji zobrazit v [nástroji pro revize](https://contentmoderator.cognitive.microsoft.com). Vyberte **zkontrolovat** > /**video** **textu****obrazu**/(v závislosti na obsahu, který jste použili). Měl by se zobrazit obsah, který je připravený pro lidskou kontrolu. Po revizi lidského moderátora se automaticky přiřadí značky a předpovědi a odešle konečné rozhodnutí o moderování. rozhraní API úlohy odešle všechny tyto informace do určeného koncového bodu koncového bodu zpětného volání.
+Pokud vaše úloha s obsahem skončila vytvořením recenze, můžete ji zobrazit v [nástroji pro revize](https://contentmoderator.cognitive.microsoft.com). Vyberte **zkontrolovat**  >  **Image** / **Text** / **video** textu obrazu (v závislosti na obsahu, který jste použili). Měl by se zobrazit obsah, který je připravený pro lidskou kontrolu. Po revizi lidského moderátora se automaticky přiřadí značky a předpovědi a odešle konečné rozhodnutí o moderování. rozhraní API úlohy odešle všechny tyto informace do určeného koncového bodu koncového bodu zpětného volání.
 
 ## <a name="next-steps"></a>Další kroky
 

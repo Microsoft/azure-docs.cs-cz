@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 9af4de51e94a1be118211e2bb4404926656fedf6
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91739863"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Kurz: použití Data Box k importu dat jako spravovaných disků v Azure
@@ -76,7 +76,7 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
     > [!NOTE]
     > Přihlašovací údaje pro všechny sdílené složky pro spravované disky jsou identické.
 
-    ![Získat přihlašovací údaje pro sdílení](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![Získání přihlašovacích údajů sdílené složky](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
 2. V dialogovém okně sdílená složka pro přístup a kopírovat data zkopírujte **uživatelské jméno** a **heslo** sdílené složky. Klikněte na **OK**.
     
@@ -102,7 +102,7 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 
 4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>\<ShareName>`. Kliknutím na **OK** otevřete Průzkumníka souborů.
     
-    ![Připojení ke sdílené složce prostřednictvím Průzkumníka souborů](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
+    ![Připojení ke sdílené složce přes Průzkumníka souborů](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     V každé sdílené složce by se teď měly zobrazit následující předem vytvořené složky.
     

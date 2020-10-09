@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.openlocfilehash: f2a6598cc28c39719d73be333bd74c24fce9371b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551887"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím Trend Micro Web Security (TMWS)
@@ -72,7 +72,7 @@ Provedením těchto kroků povolíte jednotné přihlašování služby Azure AD
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **TMWS (Trend Micro Web Security)** v části **Spravovat** vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte tlačítko pera pro **základní konfiguraci SAML** , abyste mohli upravit nastavení:
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte tlačítko pera pro **základní konfiguraci SAML** , abyste mohli upravit nastavení:
 
    ![Upravit základní nastavení konfigurace SAML](common/edit-urls.png)
 
@@ -95,7 +95,7 @@ Provedením těchto kroků povolíte jednotné přihlašování služby Azure AD
 
 1. Kromě atributů na předchozím snímku obrazovky očekává TMWS dva další atributy, které mají být zpět v odpovědi SAML. Tyto atributy jsou uvedeny v následující tabulce. Atributy jsou předem vyplněné, ale můžete je změnit tak, aby splňovaly vaše požadavky.
     
-    | Name | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | --------------- | --------- |
     | sAMAccountName | User. onpremisessamaccountname |
     | Názvu | User. userPrincipalName |

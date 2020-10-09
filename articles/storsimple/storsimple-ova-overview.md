@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76273872"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Seznámení s virtuálním polem StorSimple
@@ -32,7 +32,7 @@ Virtuální pole podporuje protokol iSCSI nebo protokol SMB (Server Message Bloc
 
 Následující tabulka shrnuje důležité funkce virtuálního pole StorSimple.
 
-| Funkce | StorSimple Virtual Array |
+| Příznak | StorSimple Virtual Array |
 | --- | --- |
 | Požadavky na instalaci |Používá infrastrukturu virtualizace (Hyper-V nebo VMware). |
 | Dostupnost |Jeden uzel |
@@ -45,7 +45,7 @@ Následující tabulka shrnuje důležité funkce virtuálního pole StorSimple.
 | Podpora |Infrastruktura virtualizace podporovaná dodavatelem |
 | Výkon |Liší se v závislosti na základní infrastruktuře. |
 | Mobilita dat |Může obnovit stejné zařízení nebo provést obnovení na úrovni položek (souborový server). |
-| Vrstvy úložiště |Místní úložiště hypervisoru a Cloud |
+| Úrovně úložiště |Místní úložiště hypervisoru a Cloud |
 | Velikost sdílené složky |Vrstvený: až 20 TB; místně připnuté: až 2 TB |
 | Velikost svazku |Vrstvené: 500 GB až 5 TB; místně připnuté: 50 GB až 200 GB <br> Maximální místní rezervace pro vrstvené svazky je 200 GB. |
 | Snímky |Konzistence na úrovni chybového ukončení |
@@ -57,7 +57,7 @@ StorSimple spojuje uživatele a servery s úložištěm Azure během několika m
 
 Následující tabulka popisuje některé klíčové výhody, které poskytuje řešení Virtual Array v StorSimple.
 
-| Funkce | Výhoda |
+| Příznak | Výhoda |
 | --- | --- |
 | Transparentní integrace |Virtuální pole podporuje protokol iSCSI nebo protokol SMB. Pohyb dat mezi místní vrstvou a cloudovou vrstvou je pro uživatele hladce a transparentní. |
 | Snížení nákladů na úložiště |Pomocí StorSimple zřídíte dostatečné místní úložiště, které bude plnit aktuální požadavky na nejčastěji používaná aktivní data. Jak úložiště potřebuje růst, StorSimple úrovně studených dat do nákladově efektivního cloudového úložiště. Data se před odesláním do cloudu ododstraňují a komprimují, aby se snížila nároky na úložiště a náklady. |
@@ -69,10 +69,10 @@ Následující tabulka popisuje některé klíčové výhody, které poskytuje �
 
 Souhrn podporovaných úloh StorSimple je v tabulce.
 
-|Scénář     |Úloha     |Podporuje se      |Omezení               | Použitelné verze|
+|Scénář     |Úloha     |Podporováno      |Omezení               | Použitelné verze|
 |-------------|-------------|---------------|---------------------------|--------------------|
-|Vzdálená kancelář nebo pobočka (ROBO)  |Sdílení souborů     |Yes      |Zobrazení [maximálních limitů pro souborový server](storsimple-ova-limits.md).<br></br>[Podporované verze SMB najdete v tématu požadavky na systém](storsimple-ova-system-requirements.md).| Všechny verze     |
-|Archivace v cloudu  |Sdílení souborů archivu     |Yes      |Zobrazení [maximálních limitů pro souborový server](storsimple-ova-limits.md).<br></br>[Podporované verze SMB najdete v tématu požadavky na systém](storsimple-ova-system-requirements.md).| Všechny verze     |
+|Vzdálená kancelář nebo pobočka (ROBO)  |Sdílení souborů     |Ano      |Zobrazení [maximálních limitů pro souborový server](storsimple-ova-limits.md).<br></br>[Podporované verze SMB najdete v tématu požadavky na systém](storsimple-ova-system-requirements.md).| Všechny verze     |
+|Archivace v cloudu  |Sdílení souborů archivu     |Ano      |Zobrazení [maximálních limitů pro souborový server](storsimple-ova-limits.md).<br></br>[Podporované verze SMB najdete v tématu požadavky na systém](storsimple-ova-system-requirements.md).| Všechny verze     |
 
 Virtuální pole StorSimple je nejvhodnější pro zřídka používaná data. I když má virtuální pole místní mezipaměť, aby zvýšila výkon, uživatelé by měli předpokládat, že soubory služeb zařízení jsou v nejnižší úrovni úložiště (Cloud). Každé virtuální pole může zapisovat a číst do úložiště Azure s přibližně 100 MB/s. Tento odkaz se sdílí mezi všemi požadavky přicházející do zařízení a může se stát kritickým bodem, jak je znázorněno na následujícím obrázku.
 

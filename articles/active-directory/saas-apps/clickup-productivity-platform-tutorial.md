@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 8a8a9587fd50b63dc862f8b74bc99548699fa6e2
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760661"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Kurz: Azure Active Directory integrace s platformou produktivity ClickUp
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, je potřeba zřídit vztah propojení 
 Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD pomocí platformy ClickUp produktivity, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurovat jednotné přihlašování pro ClickUp produktivitu platformy](#configure-clickup-productivity-platform-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Nakonfigurovat jednotné přihlašování pro ClickUp produktivitu platformy](#configure-clickup-productivity-platform-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte testovacího uživatele platformy pro ClickUp produktivitu](#create-clickup-productivity-platform-test-user)** – abyste měli protějšek Britta Simon na platformě ClickUp produktivity, která je propojená s reprezentací uživatele v Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s platformou pro
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -108,11 +108,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s platformou pro
     > [!NOTE]
     > Hodnota identifikátoru není reálné číslo. Aktualizujte tuto hodnotu skutečným identifikátorem, který je vysvětlen dále v tomto kurzu.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte v části **podpisový certifikát SAML** na Kopírovat tlačítko a zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
-### <a name="configure-clickup-productivity-platform-single-sign-on"></a>Konfigurace jednotného přihlašování pro ClickUp produktivitu platformy
+### <a name="configure-clickup-productivity-platform-single-sign-on"></a>Konfigurace ClickUp produktivity platformy s jednou Sign-On
 
 1. V jiném okně webového prohlížeče se přihlaste do svého tenanta ClickUp produktivity vaší platformy jako správce.
 
@@ -122,7 +122,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s platformou pro
 
     ![Snímek obrazovky se zobrazí nastavení.](./media/clickup-productivity-platform-tutorial/configure1.png)
 
-3. V části poskytovatel jednotného přihlašování (SSO) vyberte **Microsoft**.
+3. V části zprostředkovatel jednotného Sign-On (SSO) vyberte **Microsoft**.
 
     ![Snímek obrazovky zobrazuje podokno ověřování s vybraným Microsoftem.](./media/clickup-productivity-platform-tutorial/configure2.png)
 
@@ -161,7 +161,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

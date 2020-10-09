@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
 ms.openlocfilehash: c43a50dbbd2276573a80b866ee673e4391d9736b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551400"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grovo"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Grovo
@@ -111,7 +111,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -155,7 +155,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
     
     d. Otevřete stažený **certifikát kódovaný v kódování Base64** z Azure Portal v programu Poznámkový blok, vložte jej do textového pole **veřejné klíče** .
 
-    e. Klikněte na **Další**.
+    e. Klikněte na **Next** (Další).
 
 ### <a name="create-grovo-test-user"></a>Vytvořit testovacího uživatele Grovo
 

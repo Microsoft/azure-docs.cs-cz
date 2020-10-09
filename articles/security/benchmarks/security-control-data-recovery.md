@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 4f3e8540902809f951a441aa2fe8d00026c44d82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81408604"
 ---
 # <a name="security-control-data-recovery"></a>Řízení zabezpečení: obnovení dat
@@ -32,7 +32,7 @@ Povolte Azure Backup a nakonfigurujte zdroj zálohy (virtuální počítače Azu
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 9,2 | 10.2 | Zákazník |
+| 9,2 | 10,2 | Zákazník |
 
 Povolte Azure Backup a cílové virtuální počítače a také požadovanou četnost a dobu uchování. Zálohujte spravované klíče zákazníka v rámci Azure Key Vault.
 
@@ -56,19 +56,19 @@ Zajistěte, aby možnost pravidelně prováděla obnovování obsahu v rámci Az
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 9.4 | 10,4 | Zákazník |
+| 9,4 | 10,4 | Zákazník |
 
 V případě místního zálohování se šifrování v klidovém stavu zajišťuje pomocí hesla, které zadáte při zálohování do Azure. Pro virtuální počítače Azure jsou neaktivní uložená data zašifrovaná pomocí Šifrování služby Storage (SSE). Použijte řízení přístupu na základě rolí k ochraně záloh a spravovaných klíčů zákazníků.  
 
-Povolení ochrany před náhodným odstraněním a vyprázdněním v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.  Pokud se pro ukládání záloh používá Azure Storage, povolte obnovitelné odstranění, abyste mohli data ukládat a obnovovat při odstraňování objektů BLOB nebo snímků objektů BLOB. 
+Povolit Soft-Delete a vyprázdnit ochranu v Key Vault a chránit tak klíče proti náhodnému nebo škodlivému odstranění.  Pokud se pro ukládání záloh používá Azure Storage, povolte obnovitelné odstranění, abyste mohli data ukládat a obnovovat při odstraňování objektů BLOB nebo snímků objektů BLOB. 
 
 - [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-- [Jak povolit ochranu s možnostmi obnovitelného odstranění a vyprázdnění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Postup povolení ochrany Soft-Delete a vyprázdnění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 - [Obnovitelné odstranění objektů blob služby Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit další řízení zabezpečení: [reakce na incidenty](security-control-incident-response.md)
+- Zobrazit další řízení zabezpečení:  [reakce na incidenty](security-control-incident-response.md)

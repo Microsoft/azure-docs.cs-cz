@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 570653d620c5e314db9e6a0bc56d731f8acf9296
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 77c09385c69e4a2922fa3b2249143e6e969bfc5a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925647"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759900"
 ---
 ::: zone target="docs"
 
@@ -268,7 +268,7 @@ Pokud při odemykání disků narazíte na nějaké problémy, přečtěte si, j
     
 8. Po odemknutí disku můžete přejít na tento přípojný bod a zobrazit obsah disku. Nyní jste připraveni ke kopírování dat do složek *BlockBlob* nebo *PageBlob*. 
 
-    ![Obsah Data Box Disku](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
+    ![Obsah Data Box Disku 2](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
 
 
 Pokud při odemykání disků narazíte na nějaké problémy, přečtěte si, jak [řešit potíže s odemykáním](data-box-disk-troubleshoot-unlock.md). 

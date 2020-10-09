@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/25/2019
 ms.openlocfilehash: bbb4aed8ca10fcf7c15e7442ee7067b2e3f8087d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81410708"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>Kopírování dat do a z Azure Database for MySQL pomocí Azure Data Factory
@@ -47,18 +47,18 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro Azure Database for MySQL propojenou službu jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **AzureMySql** . | Ano |
 | připojovací řetězec | Zadejte informace potřebné pro připojení k instanci Azure Database for MySQL. <br/> Můžete také do Azure Key Vault umístit heslo a načíst konfiguraci z `password` připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud je úložiště dat umístěné v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud je úložiště dat umístěné v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 Typický připojovací řetězec je `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>` . Další vlastnosti, které můžete nastavit pro váš případ:
 
-| Vlastnost | Popis | Možnosti | Vyžadováno |
+| Vlastnost | Popis | Možnosti | Požaduje se |
 |:--- |:--- |:--- |:--- |
-| SSLMode | Tato možnost určuje, zda ovladač při připojování k MySQL používá šifrování TLS a ověřování. Například `SSLMode=<0/1/2/3/4>`| DISABLEd (0)/PREFEROVÁNo (1) **(výchozí)** /požadováno (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Ne |
-| UseSystemTrustStore | Tato možnost určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Například `UseSystemTrustStore=<0/1>;`| Povoleno (1)/zakázáno (0) **(výchozí)** | Ne |
+| SSLMode | Tato možnost určuje, zda ovladač při připojování k MySQL používá šifrování TLS a ověřování. Například `SSLMode=<0/1/2/3/4>`| DISABLEd (0)/PREFEROVÁNo (1) **(výchozí)** /požadováno (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | No |
+| UseSystemTrustStore | Tato možnost určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Například `UseSystemTrustStore=<0/1>;`| Povoleno (1)/zakázáno (0) **(výchozí)** | No |
 
 **Příklad:**
 
@@ -110,7 +110,7 @@ Typický připojovací řetězec je `Server=<server>.mysql.database.azure.com;Po
 
 Chcete-li kopírovat data z Azure Database for MySQL, nastavte vlastnost Type datové sady na **AzureMySqlTable**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **AzureMySqlTable** . | Ano |
 | tableName | Název tabulky v databázi MySQL | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
@@ -141,11 +141,11 @@ Chcete-li kopírovat data z Azure Database for MySQL, nastavte vlastnost Type da
 
 Chcete-li kopírovat data z Azure Database for MySQL, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AzureMySqlSource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
-| queryCommandTimeout | Doba čekání před vypršením časového limitu požadavku na dotaz Výchozí hodnota je 120 minut (02:00:00). | Ne |
+| queryCommandTimeout | Doba čekání před vypršením časového limitu požadavku na dotaz Výchozí hodnota je 120 minut (02:00:00). | No |
 
 **Příklad:**
 
@@ -183,10 +183,10 @@ Chcete-li kopírovat data z Azure Database for MySQL, jsou v části **zdroje** 
 
 Chcete-li kopírovat data do Azure Database for MySQL, v části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na: **AzureMySqlSink** . | Ano |
-| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která má být provedena před zápisem dat do Azure Database for MySQL při každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. | Ne |
+| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která má být provedena před zápisem dat do Azure Database for MySQL při každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. | No |
 | writeBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, vloží data do tabulky Azure Database for MySQL.<br>Povolená hodnota je celé číslo představující počet řádků. | Ne (výchozí hodnota je 10 000) |
 | writeBatchTimeout | Počkejte, než se operace dávkového vložení dokončí předtím, než vyprší časový limit.<br>Povolené hodnoty jsou TimeSpan. Příklad je 00:30:00 (30 minut). | Ne (výchozí hodnota je 00:00:30) |
 

@@ -48,6 +48,22 @@
           href: tutorial-dr-drill-azure.md
         - name: Převzetí služeb při selhání do Azure
           href: vmware-azure-tutorial-failover-failback.md
+    - name: Zotavení po havárii služby Azure VMware Solution do Azure
+      items:
+        - name: Příprava Azure
+          href: avs-tutorial-prepare-azure.md
+        - name: Příprava služby Azure VMware Solution
+          href: avs-tutorial-prepare-avs.md
+        - name: Nastavení replikace
+          href: avs-tutorial-replication.md
+        - name: Spuštění postupu zotavení po havárii
+          href: avs-tutorial-dr-drill-azure.md
+        - name: Převzetí služeb při selhání do Azure
+          href: avs-tutorial-failover.md
+        - name: Znovunastavení ochrany virtuálních počítačů
+          href: avs-tutorial-reprotect.md
+        - name: Navrácení služeb po obnovení z Azure
+          href: avs-tutorial-failback.md
     - name: Zotavení po havárii virtuálního počítače Hyper-V do Azure
       items:
         - name: Příprava Azure
@@ -260,7 +276,7 @@
               href: vmware-azure-enable-replication.md
             - name: Vyloučení disků z replikace
               href: vmware-azure-exclude-disk.md
-            - name: Průvodce nastavením replikace s víceklientským prostředím a CSP pro virtuální počítače VMware
+            - name: Průvodce nastavením replikace s víceklientským prostředím a CSP pro virtuální počítače s VMware
               href: vmware-azure-multi-tenant-csp-disaster-recovery.md
         - name: Spuštění převzetí služeb při selhání a navrácení služeb po obnovení
           items:

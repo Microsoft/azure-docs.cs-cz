@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 09/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: a0622c7556896b7ae7201ffa3a7ecac8de1106a4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: fcdc5d0e7254b8e491285baae6c2a1bc6979e437
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053537"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766309"
 ---
 ::: zone target="docs"
 
@@ -72,11 +72,11 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 
 1. Prvním krokem je ověření a zahájení relace. Přejděte do části **Připojit a kopírovat**. Výběrem **SMB** získáte přihlašovací údaje pro přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště. 
 
-    ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
+    ![Získání přihlašovacích údajů pro sdílené složky SMB](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
 2. V dialogovém okně Přístup ke sdílené složce a kopírování dat zkopírujte **Uživatelské jméno** a **Heslo** odpovídající sdílené složce. Vyberte **OK**.
     
-    ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
+    ![Získání uživatelského jména a hesla pro sdílenou složku](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
 3. Pokud chcete získat přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště (*utsac1* v následujícím příkladu) z hostitelského počítače, otevřete okno příkazového řádku. Na příkazovém řádku zadejte:
 
@@ -97,11 +97,11 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
 
 4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Výběrem **OK** otevřete Průzkumníka souborů.
     
-    ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
+    ![Připojení ke sdílené složce přes Průzkumníka souborů](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
     Sdílené složky by se teď měly zobrazit jako složky.
     
-    ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
+    ![Sdílené složky zobrazené v Průzkumníku souborů](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
     **Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky**. Složky vytvořené ve sdílených složkách objektů blob bloku a objektů blob stránky představují kontejnery, do kterých se data nahrávají jako objekty blob. Soubory nemůžete kopírovat přímo do složky *root* v účtu úložiště.
     
@@ -116,7 +116,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home
 Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírování dat. Než začnete s kopírováním dat, projděte si následující důležité informace:
 
 * Ujistěte se, že data kopírujete do sdílených složek odpovídajících příslušnému formátu dat. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Virtuální pevné disky je potřeba zkopírovat do objektu blob stránky. Pokud formát dat neodpovídá příslušnému typu sdílené složky, nahrávání dat do Azure v pozdějším kroku selže.
-* Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v článku [Omezení úložiště Azure a Data Boxu](data-box-limits.md).
+* Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v článku věnovaném [omezením velikosti účtu úložiště Azure](data-box-limits.md#azure-storage-account-size-limits).
 * Pokud data nahrávaná Data Boxem zároveň nahrávají jiné aplikace mimo Data Box, může to způsobit selhání úlohy nahrávání a poškození dat.
 * Naše doporučení:
   * Nepoužívejte protokol SMB a systém souborů NFS současně.
@@ -225,15 +225,15 @@ Další informace o příkazu Robocopy najdete v článku [Robocopy and a few ex
 
 Pokud během procesu kopírování dojde k nějakým chybám, zobrazí se oznámení.
 
-![Stažení a zobrazení chyb pro operaci Připojit a kopírovat](media/data-box-deploy-copy-data/view-errors-1.png)
+![Oznámení o chybě kopírování pro operaci Připojit a kopírovat](media/data-box-deploy-copy-data/view-errors-1.png)
 
 Vyberte **Stáhnout seznam problémů**.
 
-![Stažení a zobrazení chyb pro operaci Připojit a kopírovat](media/data-box-deploy-copy-data/view-errors-2.png)
+![Stažení a zobrazení chyb pro operaci Připojit a kopírovat 2](media/data-box-deploy-copy-data/view-errors-2.png)
 
 Otevřete tento seznam, projděte si podrobnosti o chybě a vyberte adresu URL pro zobrazení doporučeného řešení.
 
-![Stažení a zobrazení chyb pro operaci Připojit a kopírovat](media/data-box-deploy-copy-data/view-errors-3.png)
+![Stažení a zobrazení chyb pro operaci Připojit a kopírovat 3](media/data-box-deploy-copy-data/view-errors-3.png)
 
 Další informace najdete v tématu věnovaném [zobrazení protokolů chyb při kopírování dat do Data Boxu](data-box-logs.md#view-error-log-during-data-copy). Podrobný seznam chyb při kopírování dat najdete v tématu [Řešení potíží s Data Boxem](data-box-troubleshoot.md).
 

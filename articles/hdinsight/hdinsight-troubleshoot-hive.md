@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895235"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hivem s využitím Azure HDInsightu
@@ -41,7 +41,7 @@ Přečtěte si o nejčastějších dotazech a jejich řešeních při práci s A
 
 Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru jsou stejné jako cesty k datům v původním clusteru. Pokud se cesty k datům liší, můžete vygenerovaný soubor ručně upravit `alltables.sql` tak, aby odrážel všechny změny.
 
-### <a name="additional-reading"></a>Další čtení
+### <a name="additional-reading"></a>Další materiály ke čtení
 
 - [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -69,7 +69,7 @@ Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru j
    /var/log/hive/hiveserver2.log
    ```
 
-### <a name="additional-reading"></a>Další čtení
+### <a name="additional-reading"></a>Další materiály ke čtení
 
 - [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -95,7 +95,7 @@ Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru j
    hive -hiveconf hive.root.logger=ALL,console
    ```
 
-### <a name="additional-reading"></a>Další čtení
+### <a name="additional-reading"></a>Další materiály ke čtení
 
 - [Vlastnosti konfigurace podregistru](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
@@ -132,7 +132,7 @@ Kód v krocích řešení předpokládá, že cesty k datům v novém clusteru j
     - **TaskConcurrencyAnalyzer**: tisk podrobností o souběžnosti úkolu v Dag
     - **VertexLevelCriticalPathAnalyzer**: najít kritickou cestu na úrovni vrcholu v Dag
 
-### <a name="additional-reading"></a>Další čtení
+### <a name="additional-reading"></a>Další materiály ke čtení
 
 - [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -157,7 +157,7 @@ Existují dva způsoby, jak shromažďovat data DAG tez:
   3. Vyberte DAG, který chcete zobrazit.
   4. Vyberte **stáhnout data**.
 
-### <a name="additional-reading"></a><a name="additional-reading-end"></a>Další čtení
+### <a name="additional-reading"></a><a name="additional-reading-end"></a>Další materiály ke čtení
 
 [Připojení ke clusteru HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81410220"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopírování dat z webové tabulky pomocí Azure Data Factory
@@ -57,7 +57,7 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu webové tabulky jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **Web** . |Ano |
 | url | Adresa URL webového zdroje |Ano |
@@ -89,10 +89,10 @@ Pro propojenou službu webové tabulky jsou podporovány následující vlastnos
 
 Chcete-li kopírovat data z webové tabulky, nastavte vlastnost typ datové sady na **webtable**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **webtable** . | Ano |
-| cesta |Relativní adresa URL k prostředku, který obsahuje tabulku. |Ne. Pokud cesta není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. |
+| program |Relativní adresa URL k prostředku, který obsahuje tabulku. |Ne. Pokud cesta není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. |
 | index |Index tabulky v prostředku Postup pro získání indexu tabulky na stránce HTML najdete v části [získání indexu tabulky v oddílu stránky HTML](#get-index-of-a-table-in-an-html-page) . |Ano |
 
 **Příklad:**
@@ -166,7 +166,7 @@ Chcete-li získat index tabulky, kterou potřebujete nakonfigurovat ve [vlastnos
 
     ![Z dialogového okna Web](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
-    Adresa URL použitá v tomto příkladu:https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+    Adresa URL použitá v tomto příkladu: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
 4. Pokud se zobrazí dialogové okno **přístup k webovému obsahu** , vyberte správnou **adresu URL**, **ověřování**a klikněte na **připojit**.
 
    ![Přístup k webovému obsahu – dialogové okno](./media/copy-data-from-web-table/AccessWebContentDialog.png)

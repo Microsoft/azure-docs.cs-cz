@@ -1,5 +1,5 @@
 ---
-title: Ověřování pro Azure Key Vault
+title: Ověřování ve službě Azure Key Vault
 description: Zjistěte, jak ověřit a Azure Key Vault
 author: ShaneBala-keyvault
 ms.author: sudbalas
@@ -8,13 +8,13 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.openlocfilehash: d247e657e93afd0c43ecee1154c542398304d8dd
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89481371"
 ---
-# <a name="authenticate-to-azure-key-vault"></a>Ověřování pro Azure Key Vault
+# <a name="authenticate-to-azure-key-vault"></a>Ověřování ve službě Azure Key Vault
 
 Azure Key Vault umožňuje ukládat tajné klíče a řídit jejich distribuci v centralizovaném, zabezpečeném cloudovém úložišti, což eliminuje nutnost ukládat přihlašovací údaje v aplikacích. Pro přístup k těmto tajným klíčům se aplikace potřebují ověřit pouze pomocí Key Vault za běhu.
 
@@ -62,7 +62,7 @@ Key Vault pracuje se dvěma různými úrovněmi autorizace:
 
     Key Vault aktuálně podporuje roli [Přispěvatel](/azure/role-based-access-control/built-in-roles#key-vault-contributor) , která umožňuje operace správy u prostředků Key Vault. Řada dalších rolí je aktuálně ve verzi Preview. Můžete také vytvořit vlastní role, jak je popsáno v tématu [vlastní role Azure](/azure/role-based-access-control/custom-roles).
 
-    Obecné informace o rolích najdete v tématu [co je Azure založené na rolích Access Control (RBAC)?](/azure/role-based-access-control/overview).
+    Obecné informace o rolích najdete v tématu [co je Azure Role-Based Access Control (RBAC)?](/azure/role-based-access-control/overview).
 
 
 > [!IMPORTANT]
@@ -125,4 +125,4 @@ Následující tabulka obsahuje odkazy na různé články, které ukazují, jak
 - [Řešení potíží se zásadami přístupu Key Vault](troubleshooting-access-issues.md)
 - [Kódy chyb Key Vault REST API](rest-error-codes.md)
 - [Key Vault příručka pro vývojáře](developers-guide.md)
-- [Co je Access Control založené na rolích Azure (RBAC)?](/azure/role-based-access-control/overview)
+- [Co je Azure Role-Based Access Control (RBAC)?](/azure/role-based-access-control/overview)

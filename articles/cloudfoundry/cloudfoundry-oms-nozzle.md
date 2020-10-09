@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76277363"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Nasazení služby Azure Log Analytics trysek pro Cloud Foundry sledování systému
@@ -193,7 +193,7 @@ Tato zobrazení můžete přizpůsobit nebo vytvořit nová zobrazení prostřed
 
 Můžete [vytvořit výstrahy](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)a podle potřeby upravit dotazy a prahové hodnoty. Následující jsou doporučené výstrahy:
 
-| Vyhledávací dotaz                                                                  | Generovat výstrahu na základě | Description                                                                       |
+| Vyhledávací dotaz                                                                  | Generovat výstrahu na základě | Popis                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type = CF_ValueMetric_CL Origin_s = BBS Name_s = "doména. CF-aplikace"                   | Počet výsledků < 1   | **BBS. Domain.cf – aplikace** určuje, jestli je doména CF-Apps aktuální. To znamená, že žádosti o aplikace z cloudového kontroleru se synchronizují do BBS. LRPsDesired (Diegu-požadovaný AIs) pro provedení. Žádná data neobdržena znamená, že doména CF-Apps není v určeném časovém intervalu v aktuálním stavu. |
 | Type = CF_ValueMetric_CL Origin_s = REP Name_s = UnhealthyCell Value_d>1            | Počet výsledků > 0   | U Dieguch buněk znamená 0 v pořádku a 1 znamená špatný stav. Nastavte výstrahu, pokud v určeném časovém intervalu dojde k detekci více Diegu buněk v pořádku. |

@@ -110,18 +110,26 @@
   items:
     - name: Přiřazení uživatelů a správa přístupu k aplikacím
       items:
-        - name: Konfigurace souhlasu uživatele
-          href: configure-user-consent.md
-        - name: Správa a vyhodnocení žádostí o souhlas
-          href: manage-consent-requests.md
-        - name: Udělení souhlasu správce v rámci celého tenanta
-          href: grant-admin-consent.md
-        - name: Konfigurace pracovního postupu souhlasu správce (Preview)
-          href: configure-admin-consent-workflow.md
+        - name: Souhlas a oprávnění
+          items:
+            - name: Konfigurace souhlasu uživatele
+              href: configure-user-consent.md
+            - name: Konfigurace souhlasu vlastníka skupiny
+              href: configure-user-consent-groups.md
+            - name: Konfigurace klasifikací oprávnění
+              href: configure-permission-classifications.md
+            - name: Správa zásad souhlasu pro aplikace
+              href: manage-app-consent-policies.md
+            - name: Konfigurace pracovního postupu souhlasu správce (Preview)
+              href: configure-admin-consent-workflow.md
+            - name: Správa a vyhodnocení žádostí o souhlas
+              href: manage-consent-requests.md
+            - name: Udělení souhlasu správce v rámci celého tenanta
+              href: grant-admin-consent.md
+            - name: Kontrola oprávnění udělených aplikacím
+              href: manage-application-permissions.md
         - name: Správa přiřazení uživatelů pro aplikaci
           href: assign-user-or-group-access-portal.md
-        - name: Kontrola oprávnění udělených aplikacím
-          href: manage-application-permissions.md
         - name: Vytváření kolekcí na portálu Moje aplikace
           href: access-panel-collections.md
         - name: Použití samoobslužného přístupu k aplikacím

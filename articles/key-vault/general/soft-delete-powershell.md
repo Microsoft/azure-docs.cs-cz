@@ -11,10 +11,10 @@ ms.date: 08/11/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 05ff5d2f7ff87d2ce58f135330487f746cc5c1c7
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90528359"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu
@@ -41,7 +41,7 @@ Informace o Key Vault specifických referenčních informacích pro PowerShell n
 
 Operace Key Vault se samostatně spravují prostřednictvím oprávnění řízení přístupu na základě role (RBAC) následujícím způsobem:
 
-| Operace | Description | Oprávnění uživatele |
+| Operace | Popis | Oprávnění uživatele |
 |:--|:--|:--|
 |Seznam|Zobrazí seznam odstraněných trezorů klíčů.|Microsoft. deletedVaults trezor//Read|
 |Zotavit|Obnoví odstraněný Trezor klíčů.|Trezor Microsoft. a trezory/zápis|

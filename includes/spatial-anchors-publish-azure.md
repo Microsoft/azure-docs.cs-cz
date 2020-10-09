@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
 ms.openlocfilehash: 0dab71b6d169e26a3d7dc208dd09efe1143fbe13
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67174696"
 ---
 ### <a name="open-the-publish-wizard"></a>Otevřít Průvodce publikováním
 
 V **Průzkumník řešení**klikněte pravým tlačítkem na projekt **SharingService** a vyberte **publikovat**.
 
-Spustí se Průvodce publikováním. Vyberte **App Service** > **publikovat** a otevřete dialogové okno **vytvořit App Service** .
+Spustí se Průvodce publikováním. Vyberte **App Service**  >  **publikovat** a otevřete dialogové okno **vytvořit App Service** .
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -51,7 +51,7 @@ Vyberte **OK**.
 
 ### <a name="create-and-publish-the-web-app"></a>Vytvoření a publikování webové aplikace
 
-Do pole **název aplikace**zadejte jedinečný název aplikace (platné znaky jsou `a-z`, `0-9`a `-`) nebo přijměte automaticky generovaný jedinečný název. Adresa URL webové aplikace je `https://<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší aplikace.
+Do pole **název aplikace**zadejte jedinečný název aplikace (platné znaky jsou `a-z` , `0-9` a `-` ) nebo přijměte automaticky generovaný jedinečný název. Adresa URL webové aplikace je `https://<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší aplikace.
 
 Výběrem možnosti **Vytvořit** spustíte vytváření prostředků Azure.
 
@@ -59,4 +59,4 @@ Po dokončení průvodce publikuje ASP.NET Core webovou aplikaci do Azure a pak 
 
 ![Publikovaná webová aplikace ASP.NET v Azure](./media/spatial-anchors-azure/web-app-running-live.png)
 
-Název aplikace, který jste použili v této části, se použije jako předpona adresy URL `https://<app_name>.azurewebsites.net`ve formátu. Tuto adresu URL si poznamenejte, protože ji budete potřebovat.
+Název aplikace, který jste použili v této části, se použije jako předpona adresy URL ve formátu `https://<app_name>.azurewebsites.net` . Tuto adresu URL si poznamenejte, protože ji budete potřebovat.

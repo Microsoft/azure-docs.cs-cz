@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73666966"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů Azure Data Factory pomocí Azure Portal a PowerShellu
@@ -87,10 +87,10 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu**můžete zobrazit vše
 
 <table>
 <tr>
-    <th align="left">Stav</th><th align="left">Podstav</th><th align="left">Description</th>
+    <th align="left">State</th><th align="left">Podstav</th><th align="left">Popis</th>
 </tr>
 <tr>
-    <td rowspan="8">Čekání</td><td>ScheduleTime</td><td>Čas nepřijde, aby se řez spouštěl.</td>
+    <td rowspan="8">Čekající</td><td>ScheduleTime</td><td>Čas nepřijde, aby se řez spouštěl.</td>
 </tr>
 <tr>
 <td>DatasetDependencies</td><td>Nadřazené závislosti nejsou připravené.</td>
@@ -105,7 +105,7 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu**můžete zobrazit vše
 <td>ActivityResume</td><td>Aktivita je pozastavena a nemůže tyto řezy spustit, dokud nebude aktivita obnovena.</td>
 </tr>
 <tr>
-<td>Zkusit znovu</td><td>Probíhá opakování provádění aktivity.</td>
+<td>Retry</td><td>Probíhá opakování provádění aktivity.</td>
 </tr>
 <tr>
 <td>Ověřování</td><td>Ověřování ještě nebylo zahájeno.</td>
@@ -121,7 +121,7 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu**můžete zobrazit vše
 <td>Řez se zpracovává.</td>
 </tr>
 <tr>
-<td rowspan="4">Failed</td><td>Vypršel časový limit</td><td>Provádění aktivit trvalo déle, než je povoleno aktivitou.</td>
+<td rowspan="4">Neúspěšný</td><td>Vypršel časový limit</td><td>Provádění aktivit trvalo déle, než je povoleno aktivitou.</td>
 </tr>
 <tr>
 <td>Zrušeno</td><td>Řez byl zrušen akcí uživatele.</td>
@@ -135,10 +135,10 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu**můžete zobrazit vše
 <td>Připraveno</td><td>-</td><td>Řez je připravený na spotřebu.</td>
 </tr>
 <tr>
-<td>Přeskočeno</td><td>Žádná</td><td>Řez se nezpracovává.</td>
+<td>Přeskočeno</td><td>Žádné</td><td>Řez se nezpracovává.</td>
 </tr>
 <tr>
-<td>Žádná</td><td>-</td><td>Řez použitý k existenci s jiným stavem, ale byl obnoven.</td>
+<td>Žádné</td><td>-</td><td>Řez použitý k existenci s jiným stavem, ale byl obnoven.</td>
 </tr>
 </table>
 
@@ -178,7 +178,7 @@ Kanály můžete pozastavit nebo pozastavit pomocí rutiny **Suspend-AzDataFacto
 ```powershell
 Suspend-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-Příklad:
+Například:
 
 ```powershell
 Suspend-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -189,7 +189,7 @@ Po vyřešení problému s kanálem můžete pozastavený kanál obnovit spušt�
 ```powershell
 Resume-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-Příklad:
+Například:
 
 ```powershell
 Resume-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -222,7 +222,7 @@ Pokud se spuštění aktivity v kanálu nezdaří, datová sada vytvořená kan�
     ```powershell   
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```   
-   Příklad:
+   Například:
 
     ```powershell   
     Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
@@ -236,7 +236,7 @@ Pokud se spuštění aktivity v kanálu nezdaří, datová sada vytvořená kan�
     <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```
 
-    Příklad:
+    Například:
 
     ```powershell   
     Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"

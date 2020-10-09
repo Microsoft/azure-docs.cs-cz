@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.openlocfilehash: 478f7b7671a71d0d1f1f56c5d1d9889db81f7d37
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760190"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Kurz: střední příspěvky a příkazy Facebooku pomocí Azure Content Moderator
@@ -37,7 +37,7 @@ Tento diagram znázorňuje jednotlivé komponenty tohoto scénáře:
 
 ![Diagram Content Moderator přijímání informací z Facebooku prostřednictvím "FBListener" a odesílání informací prostřednictvím "CMListener"](images/tutorial-facebook-moderation.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Klíč předplatného Content Moderatoru. Podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se přihlaste k odběru služby Content moderator a Získejte svůj klíč.
 - [Účet Facebook](https://www.facebook.com/).
@@ -87,7 +87,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/) a proveďte následuj�
 
     1. Klikněte na dlaždici, která říká **Trigger http**.
     1. Zadejte název **FBListener**. Pole **Úroveň autorizace** by mělo být nastavené na možnost **Funkce**.
-    1. Klikněte na možnost **Vytvořit**.
+    1. Klikněte na **Vytvořit**.
     1. Nahraďte obsah rutiny **Run. csx** obsahem z **FbListener/run. csx**
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]

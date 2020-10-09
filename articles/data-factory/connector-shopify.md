@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: e387d8329249fff0b3e84460bd753f35dd275507
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415193"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Kopírování dat z Shopify pomocí Azure Data Factory (Preview)
@@ -47,14 +47,14 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu Shopify jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **Shopify** . | Ano |
-| host | Koncový bod serveru Shopify (tj. mystore.myshopify.com)  | Ano |
+| Hostitel | Koncový bod serveru Shopify (tj. mystore.myshopify.com)  | Ano |
 | accessToken | Přístupový token rozhraní API, který se dá použít pro přístup k datům Shopify Platnost tokenu nevyprší, pokud je offline režim. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
+| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | No |
+| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
 
 **Příklad:**
 
@@ -80,7 +80,7 @@ Pro propojenou službu Shopify jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z Shopify, nastavte vlastnost Type datové sady na **ShopifyObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **ShopifyObject** . | Ano |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
@@ -110,7 +110,7 @@ Chcete-li kopírovat data z Shopify, nastavte vlastnost Type datové sady na **S
 
 Chcete-li kopírovat data z Shopify, nastavte typ zdroje v aktivitě kopírování na **ShopifySource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **ShopifySource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`. | Ne (Pokud je zadáno "tableName" v datové sadě |

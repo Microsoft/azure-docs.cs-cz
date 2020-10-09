@@ -256,6 +256,12 @@
               href: configure-tokens-custom-policy.md
             - name: Konfigurace chování relace
               href: session-behavior-custom-policy.md
+        - name: Konektory rozhraní API
+          items:
+            - name: Přehled
+              href: api-connectors-overview.md
+            - name: Přidání konektoru rozhraní API
+              href: add-api-connector.md
         - name: Předávací externí token IdP
           href: idp-pass-through-custom.md
         - name: Adaptivní prostředí

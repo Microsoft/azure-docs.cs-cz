@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s GRA-PE | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integrace s Gra-Pe | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a GRA-PE.
 services: active-directory
 author: jeevansd
@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 99357c01774ef10d9c759df89b94c538abc720f3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551537"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>Kurz: Azure Active Directory integrace s GRA-PE
+# <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>Kurz: Azure Active Directory integrace s Gra-Pe
 
-V tomto kurzu se naučíte integrovat GRA-PE s Azure Active Directory (Azure AD).
-Integrace GRA-PE s Azure AD poskytuje následující výhody:
+V tomto kurzu se naučíte, jak integrovat Gra-Pe s Azure Active Directory (Azure AD).
+Integrace Gra-Pe se službou Azure AD poskytuje následující výhody:
 
 * Můžete kontrolovat v Azure AD, kteří mají přístup k GRA-PE.
-* Uživatelům můžete povolit, aby se automaticky přihlásili k GRA-PE (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Gra-Pe (jednotné přihlašování) se svými účty Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -35,19 +35,19 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 Ke konfiguraci integrace služby Azure AD s GRA-PE potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Předplatné GRA-PE s povoleným jednotným přihlašováním
+* Gra-Pe odběr povoleného jednotného přihlašování
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* GRA-PE podporuje jednotné přihlašování spouštěné v **SP**
+* Gra-Pe podporuje jednotné přihlašování spouštěné přes **SP**
 
-## <a name="adding-gra-pe-from-the-gallery"></a>Přidání GRA-PE z Galerie
+## <a name="adding-gra-pe-from-the-gallery"></a>Přidání Gra-Pe z Galerie
 
-Pokud chcete nakonfigurovat integraci GRA-PE do Azure AD, musíte přidat GRA-PE z Galerie do svého seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Gra-Pe do služby Azure AD, musíte přidat Gra-Pe z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Pokud chcete přidat GRA-PE z Galerie, proveďte následující kroky:**
+**Chcete-li přidat Gra-Pe z Galerie, proveďte následující kroky:**
 
 1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
@@ -63,20 +63,20 @@ Pokud chcete nakonfigurovat integraci GRA-PE do Azure AD, musíte přidat GRA-PE
 
 4. Do vyhledávacího pole zadejte **GRA-PE**, vyberte **GRA-PE** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![GRA-PE v seznamu výsledků](common/search-new-app.png)
+     ![Gra-Pe v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí GRA-PE na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být navázán odkaz na odkaz mezi uživatelem služby Azure AD a souvisejícím uživatelem v GRA-PE.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Gra-Pe na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být navázán odkaz na odkaz mezi uživatelem služby Azure AD a souvisejícím uživatelem v Gra-Pe.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí GRA-PE, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Konfigurace jednotného přihlašování GRA-PE](#configure-gra-pe-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Nakonfigurujte Gra-Pe jednotné přihlašování](#configure-gra-pe-single-sign-on)** – ke konfiguraci nastavení jednoho Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořte testovacího uživatele GRA-PE](#create-gra-pe-test-user)** , abyste měli protějšek Britta Simon v GRA-PE, který je propojený s reprezentací uživatele Azure AD.
+5. **[Vytvořte Gra-Pe testovacího uživatele](#create-gra-pe-test-user)** – Britta Simon v Gra-Pe, který je propojený s reprezentací uživatele Azure AD.
 6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
@@ -93,17 +93,17 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí GRA-PE, 
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![GRA-PE informace o jednotném přihlašování v doméně a adresách URL](common/sp-signonurl.png)
+    ![Informace o jednotném přihlašování k doméně a adresám URL Gra-Pe](common/sp-signonurl.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://btm.tts.co.jp/portal/apl/SSOLogin.aspx`
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -117,7 +117,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí GRA-PE, 
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-gra-pe-single-sign-on"></a>Konfigurace jednotného přihlašování GRA-PE
+### <a name="configure-gra-pe-single-sign-on"></a>Konfigurace Gra-Pe jednoho Sign-On
 
 Chcete-li nakonfigurovat jednotné přihlašování na straně **GRA-PE** , je třeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory GRA-PE](https://www.toppantravel.com/inquiry/). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
@@ -144,7 +144,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -152,11 +152,11 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **GRA-PE**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **GRA-PE**.
 
-    ![Odkaz GRA-PE v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Gra-Pe v seznamu aplikací](common/all-applications.png)
 
 3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
@@ -172,15 +172,15 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-gra-pe-test-user"></a>Vytvořit testovacího uživatele GRA-PE
+### <a name="create-gra-pe-test-user"></a>Vytvořit Gra-Pe testovacího uživatele
 
-V této části vytvoříte uživatele s názvem Britta Simon v GRA-PE. Pokud chcete přidat uživatele do platformy GRA-PE, pracujte s [týmem podpory GRA-PE](https://www.toppantravel.com/inquiry/) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v GRA-PE. Pokud chcete přidat uživatele na Gra-Peovou platformu, pracujte s [týmem podpory GRA-PE](https://www.toppantravel.com/inquiry/) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici GRA-PE na přístupovém panelu, měli byste se automaticky přihlásit k GRA-PE, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Gra-Pe na přístupovém panelu byste měli být automaticky přihlášení do Gra-Pe, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další materiály
 

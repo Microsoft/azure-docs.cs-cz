@@ -9,10 +9,10 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 64470b42efeea49b7c778d6dffd88465b8445e36
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90606188"
 ---
 1. Vyhledejte virtuální síť WAN, kterou jste vytvořili. Na stránce virtuální síť WAN v části **připojení** vyberte **rozbočovače**.
@@ -24,7 +24,7 @@ ms.locfileid: "90606188"
     **Podrobnosti o projektu**
 
    * Oblast (dříve označovaná jako umístění)
-   * Name
+   * Název
    * Privátní adresní prostor centra Minimální adresní prostor je/24 pro vytvoření centra, což znamená, že při vytváření dojde k chybě z rozsahu od/25 do/32. Azure Virtual WAN je spravovaná služba Microsoftu vytvoří ve virtuálním centru příslušné podsítě pro různé brány nebo služby (např. brány VPN, brány ExpressRoute, uživatelské VPN/brány, brány firewall, směrování atd.). Není nutné, aby uživatel explicitně naplánoval adresní prostor podsítě pro služby ve virtuálním rozbočovači, protože společnost Microsoft to dělá jako součást služby.
 4. Vyberte **Další: Site-to-site**.
 

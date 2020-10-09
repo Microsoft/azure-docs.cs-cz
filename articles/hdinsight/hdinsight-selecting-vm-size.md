@@ -10,10 +10,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73682208"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Výběr správné velikosti virtuálního počítače pro cluster Azure HDInsight
@@ -38,12 +38,12 @@ Velikost a typ virtuálního počítače závisí na výkonu procesoru, velikost
 
 Rodiny virtuálních počítačů v Azure jsou optimalizované tak, aby vyhovovaly různým případům použití. V níže uvedené tabulce najdete některé z nejoblíbenějších případů použití a rodin virtuálních počítačů, které se na ně shodují.
 
-| Typ                     | Velikosti           |    Description       |
+| Typ                     | Velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Vstupní úroveň](../virtual-machines/linux/sizes-general.md)          | A, Av2  | Pro úlohy vstupní úrovně, jako je vývoj a testování, se nejlépe hodí konfigurace výkonu a paměti procesoru. Je to ekonomicky výhodná možnost, která vám umožní začít s Azure. |
-| [Obecné účely](../virtual-machines/linux/sizes-general.md)          | D, DSv2, Dv2  | Poměr vyrovnaných PROCESORů k paměti. Tato možnost je ideální pro testování a vývoj, malé až střední databáze a webové servery s nízkým až středním provozem. |
-| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md)        | F           | Vysoký poměr PROCESORů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery.        |
-| [Optimalizované z hlediska paměti](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Vysoký poměr paměti k procesoru. Jsou velmi vhodné pro servery s relační databází, střední a velké mezipaměti a analýzu v paměti.                 |
+| [Obecné účely](../virtual-machines/linux/sizes-general.md)          | D, DSv2, Dv2  | Vyvážený poměr procesorů k paměti. Tato možnost je ideální pro testování a vývoj, malé až střední databáze a webové servery s nízkým až středním provozem. |
+| [Optimalizované pro výpočty](../virtual-machines/linux/sizes-compute.md)        | F           | Vysoký poměr procesorů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery.        |
+| [Optimalizované pro paměť](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Vysoký poměr paměti k procesoru. Velmi vhodné pro relační databázové servery, střední a velké mezipaměti a analýzu v paměti.                 |
 
 - Informace o cenách dostupných instancí virtuálních počítačů napříč oblastmi podporovanými HDInsight najdete v tématu [ceny služby HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
@@ -60,7 +60,7 @@ Následující tabulka popisuje typy clusterů a typy uzlů, které lze vytvoři
 | Kafka | Vše | F4 a vyšší | ne | ne |
 | HBase | Vše | F4 a vyšší | ne | ne |
 | LLAP | zakázaný | ne | ne | ne |
-| Storm | zakázaný | ne | ne | ne |
+| Bouře | zakázaný | ne | ne | ne |
 | Služba ML | JENOM HDI 3,6 | F4 a vyšší | ne | ne |
 
 Specifikace jednotlivých SKU F-Series najdete v tématu [velikosti virtuálních počítačů řady f-Series](https://azure.microsoft.com/blog/f-series-vm-size/).
@@ -74,4 +74,4 @@ Další informace o srovnávacích testech pro SKU virtuálních počítačů a 
 ## <a name="next-steps"></a>Další kroky
 
 - [Konfigurace podporovaných uzlů Azure HDInsight](hdinsight-supported-node-configuration.md)
-- [Velikosti virtuálních počítačů s Linuxem v Azure](../virtual-machines/linux/sizes.md)
+- [Sizes for Linux virtual machines in Azure](../virtual-machines/linux/sizes.md)

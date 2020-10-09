@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.openlocfilehash: dcc304febe6fcebe3aba3047d1773e695b80f9e2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551933"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Trelica
@@ -77,7 +77,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Stránka nastavit jednotné přihlašování pomocí SAML s ikonou tužky pro základní konfiguraci SAML zvýrazněnou](common/edit-urls.png)
+   ![Stránka nastavit jeden Sign-On se stránkou SAML s ikonou tužky pro základní konfiguraci SAML zvýrazněnou](common/edit-urls.png)
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** zadejte následující hodnoty:
 
@@ -102,7 +102,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 1. V horní části obrazovky vyberte **Nový uživatel**.
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **název** zadejte **B. Simon**.
-   1. Do pole **uživatelské jméno** zadejte **B. Simon@**_doménaspolečnosti_**.** _přípona_. Například, B.Simon@contoso.com.
+   1. Do pole **uživatelské jméno** zadejte **B.Simon@**_doménaspolečnosti_**.** _přípona_. Například, B.Simon@contoso.com.
    1. Zaškrtněte políčko **Zobrazit heslo** a potom zapište hodnotu zobrazenou v poli **heslo** .
    1. Vyberte **Vytvořit**.
 

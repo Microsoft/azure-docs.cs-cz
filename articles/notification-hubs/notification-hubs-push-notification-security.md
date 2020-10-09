@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
 ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76263757"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs zabezpečení
@@ -48,7 +48,7 @@ Klíč s přístupem k **naslouchání** umožňuje klientské aplikaci zaregist
 
 Podobně jako u jiných entit jsou operace centra oznámení povoleny pro tři deklarace zabezpečení: **naslouchat**, **odesílat**a **Spravovat**.
 
-| Deklarovat   | Description                                          | Povolené operace |
+| Deklarovat   | Popis                                          | Povolené operace |
 | ------- | ---------------------------------------------------- | ------------------ |
 | Naslouchat  | Vytváření, aktualizace, čtení a odstraňování jednotlivých registrací | Vytvořit nebo aktualizovat registraci<br><br>Čtení registrace<br><br>Čtení všech registrací pro popisovač<br><br>Odstranit registraci |
 | Odeslat    | Odesílání zpráv do centra oznámení                | Odeslat zprávu |
