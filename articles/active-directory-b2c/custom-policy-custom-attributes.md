@@ -12,10 +12,10 @@ ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dbeb2540084fad2cfab3ce360dd15b60a75e5e59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85389322"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: povolení vlastních atributů v zásadách vlastního profilu
@@ -50,14 +50,14 @@ Atributy rozšíření se dají registrovat jenom u objektu aplikace, i když m�
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**a pak vyberte **všechny aplikace**.
-1. Vyberte `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` aplikaci.
+1. Vyberte aplikaci `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.`.
 1. Zkopírujte do schránky následující identifikátory a uložte je:
-    * **ID aplikace** Příklad: `11111111-1111-1111-1111-111111111111`.
+    * **ID aplikace:** Příklad: `11111111-1111-1111-1111-111111111111`.
     * **ID objektu** Příklad: `22222222-2222-2222-2222-222222222222`.
 
 ## <a name="modify-your-custom-policy"></a>Úprava vlastních zásad
 
-Pokud chcete v zásadách povolit vlastní atributy, zadejte **ID aplikace** a **ID objektu** aplikace v metadatech technického profilu pro AAD-Common. Technický profil *AAD-Common* se nachází v základním profilu [Azure Active Directory](active-directory-technical-profile.md) Technical a poskytuje podporu pro správu uživatelů Azure AD. Další technické profily Azure AD zahrnují konfiguraci AAD, která je společná pro využití své konfigurace. V souboru s příponou popište běžný technický profil AAD.
+Pokud chcete v zásadách povolit vlastní atributy, zadejte **ID aplikace** a **ID objektu** aplikace v metadatech AAD-Common Technical Profile. Technický profil *AAD-Common* se nachází v základním profilu [Azure Active Directory](active-directory-technical-profile.md) Technical a poskytuje podporu pro správu uživatelů Azure AD. Další technické profily Azure AD zahrnují AAD-Common pro využití jeho konfigurace. Přepsat AAD-Common technický profil v souboru rozšíření.
 
 1. Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Vyhledejte element ClaimsProviders. Přidejte nový ClaimsProvider do elementu ClaimsProviders.
@@ -96,7 +96,7 @@ Mezi integrovanými a vlastními zásadami se sdílí stejné atributy rozšíř
 
 Tyto atributy můžete vytvořit pomocí uživatelského rozhraní portálu před nebo po jejich použití ve vlastních zásadách. Postupujte podle pokynů pro [definování vlastních atributů v Azure Active Directory B2C](user-flow-custom-attributes.md). Když vytvoříte atribut **loyaltyId** na portálu, je nutné na něj odkazovat následujícím způsobem:
 
-|Name     |Použito v |
+|Název     |Použito v |
 |---------|---------|
 |`extension_loyaltyId`  | Vlastní zásady|
 |`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|

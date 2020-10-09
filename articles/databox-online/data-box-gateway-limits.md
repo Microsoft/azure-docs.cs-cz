@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: d160b0ead1ceb8c41bede20cb389a360d24258f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82561393"
 ---
 # <a name="azure-data-box-gateway-limits"></a>Omezení Azure Data Box Gateway
@@ -27,7 +27,7 @@ Tato omezení zvažte při nasazení a provozu Data Box Gateway řešení Micros
 
 Následující tabulka popisuje omezení pro Data Box Gateway zařízení.
 
-| Popis | Hodnota |
+| Description | Hodnota |
 |---|---|
 |Ne. souborů na zařízení |100 000 000 <br> Pro každý 25 000 000 souborů, které se přidávají (s maximálním limitem na 100 000 000), byste měli přidat 2 TB místa na disku, 8 GB paměti RAM a 4 jádra procesoru. |
 |Ne. sdílených složek na zařízení |24 |

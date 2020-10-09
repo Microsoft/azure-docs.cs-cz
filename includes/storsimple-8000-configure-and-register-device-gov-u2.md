@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 7700f1c92aecab76dbc347814b7b161bc3d822a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67175063"
 ---
 ### <a name="to-configure-and-register-the-device"></a>Konfigurace a registrace zařízení
@@ -32,7 +32,7 @@ ms.locfileid: "67175063"
    3. Zobrazí se průvodce instalací, který vám pomůže konfigurovat nastavení sítě pro zařízení. Zadejte následující informace:
       
       * IP adresa pro síťové rozhraní DATA 0
-      * maska podsítě
+      * Maska podsítě
       * brána
       * IP adresa primárního serveru DNS
       * IP adresa primárního serveru NTP

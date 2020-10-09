@@ -8,10 +8,10 @@ ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: d9f08840165e7e4cf4d13e9a66cbb59489a2b3f7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90974259"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>Kurz: sestavení aplikace v PHP a MySQL v Azure App Service
@@ -137,7 +137,7 @@ Vygenerujte nový klíč aplikace Laravel.
 php artisan key:generate
 ```
 
-Aplikaci spusťte.
+Spusťte aplikaci.
 
 ```bash
 php artisan serve
@@ -498,7 +498,7 @@ remote: Running deployment command...
 
 Přejděte na adresu `http://<app-name>.azurewebsites.net` a přidejte do seznamu několik úkolů.
 
-:::image type="content" source="./media/tutorial-php-mysql-app/php-mysql-in-azure.png" alt-text="Snímek obrazovky s příkladem aplikace Azure s názvem Seznam úkolů zobrazení nových přidaných úkolů":::
+:::image type="content" source="./media/tutorial-php-mysql-app/php-mysql-in-azure.png" alt-text="Snímek obrazovky s příkladem aplikace PHP s názvem Seznam úkolů.":::
 
 Blahopřejeme! Teď máte ve službě Azure App Service spuštěnou aplikaci PHP řízenou daty.
 

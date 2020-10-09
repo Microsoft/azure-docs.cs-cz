@@ -11,10 +11,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82100902"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
@@ -26,10 +26,10 @@ Tady je několik tipů pro řešení potíží s některými běžnými problém
 
 Můžete najít chybové zprávy přidružené k pracovnímu postupu:
 
-1. Použití příkazového řádku a psaní`msgen status`
+1. Použití příkazového řádku a psaní  `msgen status`
 2. Prozkoumání obsahu standardoutput.txt.
 
-### <a name="1-using-the-command-line-msgen-status"></a>1. používání příkazového řádku`msgen status`
+### <a name="1-using-the-command-line-msgen-status"></a>1. používání příkazového řádku `msgen status`
 
 ```bash
 msgen status -u URL -k KEY -w ID 
@@ -82,7 +82,7 @@ msgen status -w 1001 -f "config.txt"
 ```
 
 ### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. Projděte si obsah standardoutput.txt 
-Vyhledejte kontejner výstupu pro daný pracovní postup. MSGEN vytvoří `[workflowfilename].logs.zip` složku po každém spuštění pracovního postupu. Rozbalte složku pro zobrazení jejího obsahu:
+Vyhledejte kontejner výstupu pro daný pracovní postup. MSGEN vytvoří   `[workflowfilename].logs.zip` složku po každém spuštění pracovního postupu. Rozbalte složku pro zobrazení jejího obsahu:
 
 * outputFileList.txt – seznam výstupních souborů vyprodukovaných během pracovního postupu
 * standarderror.txt – tento soubor je prázdný.

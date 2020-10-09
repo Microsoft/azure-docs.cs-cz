@@ -9,10 +9,10 @@ ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc
 ms.openlocfilehash: 1bad9a7da6f0604f910ce1095b734043be8cf3c3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90946535"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Kurz: Vytvoření aplikace PHP (Laravel) a MySQL flexibilního serveru (Preview) v Azure App Service
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte [předplatné Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -126,7 +126,7 @@ Vygenerujte nový klíč aplikace Laravel.
 php artisan key:generate
 ```
 
-Aplikaci spusťte.
+Spusťte aplikaci.
 
 ```bash
 php artisan serve
@@ -134,7 +134,7 @@ php artisan serve
 
 V prohlížeči přejděte na `http://localhost:8000`. Na stránce přidejte několik úkolů.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Úspěšné připojení aplikace PHP k MySQL":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Webová aplikace PHP v Azure s flexibilním serverem":::
 
 Pokud chcete zastavit PHP, zadejte v terminálu `Ctrl + C`.
 
@@ -257,7 +257,7 @@ Přejděte na adresu `http://localhost:8000`. Pokud se stránka načte bez chyb,
 
 Na stránce přidejte několik úkolů.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Úspěšné připojení aplikace PHP k Azure Database for MySQL":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Webová aplikace PHP v Azure s flexibilním serverem":::
 
 Pokud chcete zastavit PHP, zadejte v terminálu `Ctrl + C`.
 
@@ -414,7 +414,7 @@ remote: Running deployment command...
 
 Přejděte na adresu `http://<app-name>.azurewebsites.net` a přidejte do seznamu několik úkolů.
 
-:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Webová aplikace PHP v Azure":::
+:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Webová aplikace PHP v Azure s flexibilním serverem":::
 
 Blahopřejeme! Teď máte ve službě Azure App Service spuštěnou aplikaci PHP řízenou daty.
 
@@ -534,7 +534,7 @@ php artisan serve
 
 Pokud chcete vidět změnu stavu úkolu, přejděte na adresu `http://localhost:8000` a zaškrtněte políčko.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="U úkolu přibylo zaškrtávací políčko":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="Webová aplikace PHP v Azure s flexibilním serverem":::
 
 Pokud chcete zastavit PHP, zadejte v terminálu `Ctrl + C`.
 
@@ -556,7 +556,7 @@ git push azure master
 
 Až `git push` to bude hotové, přejděte do aplikace Azure a vyzkoušejte nové funkce.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Změny modelu a databáze publikované v Azure":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Webová aplikace PHP v Azure s flexibilním serverem":::
 
 Pokud jste přidali nějaké úkoly, zůstanou v databázi. Aktualizace schématu dat nechávají existující data netknutá.
 

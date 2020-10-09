@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
 ms.openlocfilehash: a3a5834cd63351b9bf61dc97c8d6e14d430b6284
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979715"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí služby SharePoint v místním prostředí
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte integrovat SharePoint místně pomocí Azure Active D
 * Umožněte uživatelům, aby se automaticky přihlásili k místnímu SharePointu pomocí svých účtů Azure AD.
 * Spravujte své účty v Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete nakonfigurovat integraci Azure AD s místním SharePointem, budete potřebovat tyto položky:
 
@@ -89,7 +89,7 @@ Konfigurace jednotného přihlašování Azure AD pomocí služby SharePoint v m
 
 1. V dialogovém okně **Vybrat metodu jednotného přihlašování** vyberte režim **SAML** , aby bylo možné povolit jednotné přihlašování.
  
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu **Upravit** a otevřete tak základní dialogové okno **Konfigurace SAML** .
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte ikonu **Upravit** a otevřete tak základní dialogové okno **Konfigurace SAML** .
 
 1. V části **základní konfigurace SAML** postupujte následovně:
 
@@ -105,7 +105,7 @@ Konfigurace jednotného přihlašování Azure AD pomocí služby SharePoint v m
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností na základě vašich požadavků a uložte ho do svého počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** vyberte **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](./media/sharepoint-on-premises-tutorial/certificatebase64.png)
 
@@ -216,7 +216,7 @@ Chcete-li přiřadit skupiny zabezpečení Azure AD k místnímu serveru SharePo
 
 1. V Azure Portal vyberte **Azure Active Directory**  >  **podnikových aplikací**. Vyberte dříve vytvořený název podnikové aplikace a vyberte **jednotné přihlašování**.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** upravte **atributy uživatele & deklarace identity** .
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML upravte **atributy uživatele & deklarace identity** .
 
 1. Vyberte **přidat deklaraci skupiny**.
 
@@ -236,7 +236,7 @@ Konzistentním způsobem můžete udělit přístup k webu služby SharePoint k 
 
 1. V Azure Portal vyberte **Azure Active Directory**  >  **podnikových aplikací**. Vyberte dříve vytvořený název podnikové aplikace a vyberte **jednotné přihlašování**.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** upravte **atributy uživatele & deklarace identity** .
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML upravte **atributy uživatele & deklarace identity** .
 
 1. V **požadované zóně deklarací identity** vyberte **jedinečný identifikátor uživatele (ID názvu)**.
 
@@ -267,7 +267,7 @@ Konfigurace funguje pro jednu webovou aplikaci, ale pokud chcete použít stejn�
 
 1. V Azure Portal vyberte **Azure Active Directory**  >  **podnikových aplikací**. Vyberte dříve vytvořený název podnikové aplikace a vyberte **jednotné přihlašování**.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** upravte **základní konfiguraci SAML**.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML upravte **základní konfiguraci SAML**.
 
     ![Základní konfigurace SAML](./media/sharepoint-on-premises-tutorial/add-reply-url.png)
 

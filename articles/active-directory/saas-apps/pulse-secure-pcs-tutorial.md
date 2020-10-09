@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
 ms.openlocfilehash: c46565f7eaa060a060183cf321bb1df1903b945c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91000720"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-pcs"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s pulsem zabezpečenými počítači
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Pulse zabezpečené počítače s Azur
 * Umožněte uživatelům, aby se automaticky přihlásili k pulsně zabezpečeným počítačům s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -162,7 +162,7 @@ Na následující stránce proveďte následující kroky:
 
     d. Z **rozevíracího seznamu ID entity zprostředkovatele identity**vyberte hodnotu ID entity Azure AD.
 
-    e. Z **rozevíracího seznamu Adresa URL služby jednotného přihlašování zprostředkovatele identity**vyberte hodnotu adresa URL pro přihlášení Azure AD.
+    e. Z **rozevíracího seznamu Adresa URL pro přihlášení k jedné Sign-On službě zprostředkovatele identity**vyberte hodnotu URL pro přihlášení Azure AD.
 
     f. **Jediným odhlášením** je volitelné nastavení. Pokud je vybraná tato možnost, po odhlášení se zobrazí výzva k zadání nového ověřování. Pokud tuto možnost nevyberete a nezavřeli jste prohlížeč, můžete se znovu připojit bez ověřování.
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a195497b4376633bd3c767d7d0ea029109fdf9d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76314534"
 ---
 # <a name="apply-sql-transformation"></a>Použití transformace SQL
 
-Tento článek popisuje modul návrháře Azure Machine Learning (Preview).
+Tento článek popisuje modul návrháře Azure Machine Learning.
 
 Pomocí modulu použít transformaci SQL můžete:
   
@@ -53,7 +53,7 @@ I když SQLite podporuje většinu standardu ANSI SQL, nezahrnuje mnoho funkcí 
   
 - SQLite používá dynamické zadání pro hodnoty namísto přiřazování typu do sloupce jako u většiny relačních databázových systémů. Je slabě typované a umožňuje implicitní převod typu.  
   
-- `LEFT OUTER JOIN`je implementován, ale ne `RIGHT OUTER JOIN` nebo `FULL OUTER JOIN` .  
+- `LEFT OUTER JOIN` je implementován, ale ne `RIGHT OUTER JOIN` nebo `FULL OUTER JOIN` .  
 
 - `RENAME TABLE`Příkazy a se dají použít `ADD COLUMN` spolu s `ALTER TABLE` příkazem, ale jiné klauzule nejsou podporované, včetně `DROP COLUMN` , `ALTER COLUMN` a `ADD CONSTRAINT` .  
   

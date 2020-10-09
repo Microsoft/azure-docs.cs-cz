@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 22abd38ead1257b49eeae98acfcd74349f563811
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91000663"
 ---
 # <a name="managed-hsm-logging"></a>Spravované protokolování HSM 
@@ -123,10 +123,10 @@ Jednotlivé objekty blob jsou uložené jako text formátované jako JSON. Pojď
 
 V následující tabulce jsou uvedené názvy a popisy polí:
 
-| Název pole | Description |
+| Název pole | Popis |
 | --- | --- |
 | **TenantId** | ID tenanta Azure Active Directory předplatného, ve kterém se vytvořil spravovaný modul HSM |
-| **time** |Datum a čas ve standardu UTC. |
+| **interval** |Datum a čas ve standardu UTC. |
 | **Prostředku** |ID prostředku Azure Resource Manager. U spravovaných protokolů HSM se jedná vždy o spravované ID prostředku HSM. |
 | **operationName** |Název operace, jak popisuje následující tabulka. |
 | **operationVersion** |Verze REST API požadovaná klientem |

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: sudbalas
 ms.openlocfilehash: 0e811cc219002c034afb968be760ce2c249b08f3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825255"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>Obnovitelné odstranění bude povolené u všech trezorů klíčů.
@@ -102,7 +102,7 @@ Pokud uživatel omylem odstraní Trezor klíčů nebo tajný klíč, můžete ji
 
 ### <a name="how-do-i-find-out-if-i-need-to-take-action"></a>Návody zjistit, jestli je potřeba provést akci?
 
-Postupujte prosím podle kroků uvedených v části Postup pro audit vašich trezorů klíčů, abyste zkontrolovali, jestli je obnovitelné odstranění zapnuté. Tato změna ovlivní všechny trezory klíčů, které nemají zapnuté obnovitelné odstranění. Další nástroje, které vám pomůžou auditovat, budou brzy dostupné a tento dokument se aktualizuje.
+Postupujte prosím podle kroků uvedených v části Postup pro audit vašich trezorů klíčů, abyste zkontrolovali, jestli je Soft-Delete zapnutá. Tato změna ovlivní všechny trezory klíčů, které nemají zapnuté obnovitelné odstranění. Další nástroje, které vám pomůžou auditovat, budou brzy dostupné a tento dokument se aktualizuje.
 
 ### <a name="what-action-do-i-need-to-take"></a>Jakou akci Potřebuji udělat?
 

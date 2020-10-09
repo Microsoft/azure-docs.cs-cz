@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 06/26/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 4ef08ea03cab711901225cab227a0f5f84055d7a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906810"
 ---
 # <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>Kurz: zřízení instance služby jarního cloudu Azure pomocí Terraformu
@@ -21,7 +21,7 @@ ms.locfileid: "90906810"
 V tomto kurzu se vytvoří instance cloudu Azure jaře pomocí Terraformu. Postupy vás provedou vytvořením následujících prostředků:
 
 > [!div class="checklist"]
-> * Skupina prostředků
+> * Resource Group
 > * Instance Azure jaře Cloud
 > * Azure Storage pro Log Analytics
 
@@ -31,13 +31,13 @@ V tomto kurzu se vytvoří instance cloudu Azure jaře pomocí Terraformu. Postu
 > * Dotazy, případy použití a užitečné vzory: [část terraformu na portálu komunity HashiCorp](https://discuss.hashicorp.com/c/terraform-core)
 > * Otázky související se zprostředkovatelem: [oddíl Terraformu Providers na portálu komunity HashiCorp](https://discuss.hashicorp.com/c/terraform-providers)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
 ## <a name="create-configuration-file"></a>Vytvoření konfiguračního souboru
 
-1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otevřete [Azure Cloud Shell](https://docs.microsoft.com/azure/app-service/quickstart-java#use-azure-cloud-shell).
 

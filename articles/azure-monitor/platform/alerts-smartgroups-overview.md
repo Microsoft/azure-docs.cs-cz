@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
 ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77665489"
 ---
 # <a name="smart-groups"></a>Inteligentní skupiny
@@ -31,7 +31,7 @@ Podporovány jsou následující stavy inteligentních skupin.
 |:---|:---|
 | Nová | Problém se právě zjistil a ještě není zkontrolovaný. |
 | Potvrzeno | Správce zkontroloval tuto inteligentní skupinu a začal na ní pracovat. |
-| Zavřeno | Problém byl vyřešen. Po zavření čipové skupiny ji můžete znovu otevřít změnou do jiného stavu. |
+| Uzavřená | Problém byl vyřešen. Po zavření čipové skupiny ji můžete znovu otevřít změnou do jiného stavu. |
 
 [Zjistěte, jak změnit stav vaší inteligentní skupiny.](https://aka.ms/managing-alert-smart-group-states)
 
@@ -47,7 +47,7 @@ Stránka s podrobnostmi inteligentní skupiny se zobrazí, když vyberete inteli
 
 Stránka podrobností inteligentní skupiny obsahuje následující části.
 
-| Sekce | Description |
+| Sekce | Popis |
 |:---|:---|
 | Výstrahy | Zobrazí seznam jednotlivých výstrah, které jsou zahrnuty v inteligentní skupině. Výběrem výstrahy otevřete stránku s podrobnostmi o výstrahách. |
 | Historie | Zobrazí všechny akce prováděné čipovou skupinou a veškeré změny, které jsou v něm provedeny. V současné době je omezen na změny stavu a změny členství v výstrahách. |

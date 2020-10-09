@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81458279"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Přístup Key Vault tajného klíče při nasazení Azure Managed Applications
@@ -22,7 +22,7 @@ Tento článek popisuje, jak nakonfigurovat Key Vault pro práci se spravovaným
 
 1. Na portálu vyberte svůj Key Vault.
 
-1. Vyberte **Zásady přístupu**.   
+1. Vyberte **zásady přístupu**.   
 
    ![Vybrat zásady přístupu](./media/key-vault-access/select-access-policies.png)
 

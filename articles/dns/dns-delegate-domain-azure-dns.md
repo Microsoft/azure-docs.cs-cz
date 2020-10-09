@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: 207254164296d6ed3b0c412c4bf19322ca3ffc0c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89077989"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Kurz: Hostování vaší domény v Azure DNS
@@ -55,7 +55,7 @@ V tomto příkladu budeme odkazovat na nadřazenou doménu jako na **contoso.NET
     | **Skupina prostředků**    | ContosoRG | Vytvořte skupinu prostředků. Název skupiny prostředků musí být v rámci předplatného, který jste vybrali, jedinečný. Umístění skupiny prostředků nemá žádný vliv na zónu DNS. Umístění zóny DNS je vždy globální a není zobrazeno. |
     | **Podrobnosti instance:** |  |  |
     | **Podřízená zóna**        | ponechat nezaškrtnutou | Vzhledem k tomu, že tato **zóna není** [podřízenou zónou](./tutorial-public-dns-zones-child.md) , měli byste toto políčko nechat nezaškrtnuté. |
-    | **Name**              | contoso.net | Pole pro název nadřazené zóny      |
+    | **Název**              | contoso.net | Pole pro název nadřazené zóny      |
     | **Umístění**          | East US | Toto pole je založené na umístění, které jste vybrali jako součást vytváření skupiny prostředků.  |
     
 

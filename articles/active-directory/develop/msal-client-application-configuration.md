@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81534461"
 ---
 # <a name="application-configuration-options"></a>Možnosti konfigurace aplikace
@@ -79,9 +79,9 @@ Pomocí MSAL ve svém kódu určíte cílovou skupinu pomocí jedné z následuj
   - Identifikátor GUID (ID vaší instance služby Azure AD) pro aplikace s jedním klientem
   - Název domény, který je přidružený k vaší instanci služby Azure AD (také pro aplikace pro jednoho tenanta)
 - Jedna z těchto zástupných symbolů jako ID tenanta místo výčtu cílové skupiny autorit Azure AD:
-    - `organizations`pro víceklientské aplikace
-    - `consumers`přihlášení uživatelů jenom pomocí svých osobních účtů
-    - `common`přihlášení uživatelů pomocí pracovních a školních účtů nebo jejich osobních účtů Microsoft
+    - `organizations` pro víceklientské aplikace
+    - `consumers` přihlášení uživatelů jenom pomocí svých osobních účtů
+    - `common` přihlášení uživatelů pomocí pracovních a školních účtů nebo jejich osobních účtů Microsoft
 
 MSAL vyvolá smysluplnou výjimku, pokud zadáte jak cílovou skupinu autority Azure AD, tak i ID tenanta.
 
@@ -111,7 +111,7 @@ Pokud jste vývojář aplikace veřejného klienta, který používá MSAL:
   Platforma  | Identifikátor URI pro přesměrování
   ---------  | --------------
   Aplikace klasické pracovní plochy (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient`
-  UPW | hodnota `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` . To umožňuje jednotné přihlašování s prohlížečem nastavením hodnoty na výsledek WebAuthenticationBroker. GetCurrentApplicationCallbackUri (), který se musí zaregistrovat.
+  UWP | hodnota `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` . To umožňuje jednotné přihlašování s prohlížečem nastavením hodnoty na výsledek WebAuthenticationBroker. GetCurrentApplicationCallbackUri (), který se musí zaregistrovat.
   .NET Core | `https://localhost`. Díky tomu může uživatel používat prohlížeč systému pro interaktivní ověřování, protože .NET Core nemá v současnosti uživatelské rozhraní pro vložené webové zobrazení.
 
 - Pokud vytváříte aplikaci pro Xamarin Android a iOS, která nepodporuje zprostředkovatele (identifikátor URI pro přesměrování je automaticky nastavený na `msal{ClientId}://auth` pro Xamarin Android a iOS), nemusíte přidávat identifikátor URI pro přesměrování.
@@ -122,8 +122,8 @@ Pokud jste vývojář aplikace veřejného klienta, který používá MSAL:
 
 Identifikátor URI přesměrování můžete přepsat pomocí `RedirectUri` vlastnosti (například při použití zprostředkovatelů). Tady jsou některé příklady identifikátorů URI přesměrování pro tento scénář:
 
-- `RedirectUriOnAndroid`= "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc://com.Microsoft.identity.Client.Sample";
-- `RedirectUriOnIos`= $ "msauth. {Svazek. ID}://auth ";
+- `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc://com.Microsoft.identity.Client.Sample";
+- `RedirectUriOnIos` = $ "msauth. {Svazek. ID}://auth ";
 
 Další podrobnosti o iOS najdete v tématu [migrace aplikací pro iOS, které používají Microsoft Authenticator od ADAL.NET k MSAL.NET](msal-net-migration-ios-broker.md) a [využití zprostředkovatele v iOS](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS).
 Další podrobnosti o Androidu najdete v tématu zprostředkované [ověřování v Androidu](brokered-auth.md).

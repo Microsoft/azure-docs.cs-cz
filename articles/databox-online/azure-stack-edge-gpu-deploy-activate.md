@@ -10,10 +10,10 @@ ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: 6807174f374e75f826001afecc1eccf8ba1a0603
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91743382"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>Kurz: Aktivace Azure Stack Edge pro pomocí GPU
@@ -25,10 +25,10 @@ Dokončení procesu aktivace může trvat přibližně 5 minut.
 V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Aktivace fyzického zařízení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než nakonfigurujete a nastavíte Azure Stack Edge pro zařízení s grafickým procesorem, ujistěte se, že:
 
@@ -50,7 +50,7 @@ Než nakonfigurujete a nastavíte Azure Stack Edge pro zařízení s grafickým 
     
 3. V podokně **aktivovat** zadejte **aktivační klíč** , který jste získali v [části získání aktivačního klíče pro Azure Stack Edge pro](azure-stack-edge-gpu-deploy-prep.md#get-the-activation-key).
 
-4. Vyberte **Apply** (Použít).
+4. Vyberte **Použít**.
 
     ![Místní webové uživatelské rozhraní "Podrobnosti o cloudu" – Stránka 2](./media/azure-stack-edge-gpu-deploy-activate/activate-2.png)
 
@@ -98,7 +98,7 @@ Aktivace zařízení je dokončená. V zařízení teď můžete přidat sdílen
 V tomto kurzu jste se dozvěděli o:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Aktivace fyzického zařízení
 
 Informace o tom, jak přenést data pomocí zařízení Azure Stack Edge pro, najdete v těchto tématech:

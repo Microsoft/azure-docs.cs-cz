@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1127a470a48660ffffa892d24c9f2991ec64c8e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76716685"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Výběr funkcí ve vědeckém zpracování týmových dat (TDSP)
@@ -44,7 +44,7 @@ V Azure Machine Learning Studio jsou k dispozici moduly pro výběr funkcí. Jak
 
 Vezměte v úvahu například použití modulu [výběru funkcí založených na filtrech][filter-based-feature-selection] . Pro usnadnění práce pokračujte v příkladu dolování textu. Předpokládejme, že chcete sestavit regresní model poté, co je vytvořena sada funkcí 256 pomocí modulu [hashování funkcí][feature-hashing] a že proměnná odpovědi je "Sloupec1", která obsahuje knihu hodnocení v rozsahu od 1 do 5. Nastavením "metoda bodování funkce" na "Pearsonova Correlation", "cílový sloupec", který bude "Sloupec1", a "počet požadovaných funkcí" na 50. Pak [Výběr funkce založený na filtrech][filter-based-feature-selection] vytvoří datovou sadu obsahující 50 funkcí společně s atributem target "Sloupec1". Následující obrázek ukazuje tok tohoto experimentu a vstupní parametry:
 
-![Vlastnosti modulu výběru funkcí založených na filtrech](./media/select-features/feature-Selection1.png)
+![Filter-Based vlastností modulu výběru funkcí](./media/select-features/feature-Selection1.png)
 
 Následující obrázek ukazuje výsledné datové sady:
 

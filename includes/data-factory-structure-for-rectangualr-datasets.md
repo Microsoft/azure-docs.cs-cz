@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67175677"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Určení definice struktury pro pravoúhlé datové sady
@@ -16,7 +16,7 @@ Oddíl Structure v datových sadách JSON je **volitelný** oddíl pro obdélní
 
 Každý sloupec obsahuje následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 | --- | --- | --- |
 | name |Název sloupce |Yes |
 | typ |Datový typ sloupce Další podrobnosti o tom, kdy byste měli zadat informace o typu, najdete v části převody typů níže. |No |
@@ -39,7 +39,7 @@ Pokud chcete zahrnout informace o struktuře a zahrnout do části **Struktura**
 * **U strukturovaných zdrojů dat** , které ukládají schéma dat a informace o typech spolu s samotnými daty (zdroje jako SQL Server, Oracle, tabulka Azure atd.), byste měli zadat oddíl Structure (struktura) pouze v případě, že chcete provést mapování sloupce pro konkrétní zdrojové sloupce na konkrétní sloupce v jímky a jejich názvy nejsou stejné (podrobnosti najdete v části mapování sloupců níže). 
   
     Jak je uvedeno výše, informace o typu jsou v části Structure volitelné. V případě strukturovaných zdrojů jsou informace o typech již k dispozici v rámci definice datové sady v úložišti dat, takže byste neměli zahrnovat informace o typu, pokud zahrnete oddíl "Structure".
-* **Pro schéma při čtení zdrojů dat (konkrétně blob Azure)** se můžete rozhodnout ukládat data bez uložení informací o schématu nebo typu s daty. Pro tyto typy zdrojů dat byste měli zahrnout "Structured" v následujících dvou případech:
+* **Pro schéma při čtení zdrojů dat (konkrétně blob Azure)**  se můžete rozhodnout ukládat data bez uložení informací o schématu nebo typu s daty. Pro tyto typy zdrojů dat byste měli zahrnout "Structured" v následujících dvou případech:
   * Chcete provést mapování sloupce.
   * Pokud je datová sada zdrojem v aktivitě kopírování, můžete zadat informace o typu v části struktura a Data Factory budou používat tyto informace o typu pro převod na nativní typy jímky. Další informace najdete v článku o [přesunu dat do a z objektu BLOB v Azure](../articles/data-factory/v1/data-factory-azure-blob-connector.md) .
 
@@ -49,9 +49,9 @@ Data Factory podporuje následující hodnoty typů založené na specifikaci CL
 * Int16
 * Int32 
 * Int64
-* Jeden
-* Double
-* Desetinné číslo
+* Jednoduché
+* dvojité
+* Decimal
 * Byte []
 * Logická hodnota
 * Řetězec 

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 340cdd97e7097a9fe6f0653d9f50f5a5cc41f890
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91740922"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Kurz: prohledávatelný obsah generovaný AI z objektů blob Azure pomocí sady .NET SDK
@@ -36,7 +36,7 @@ V tomto kurzu se používá C# a Klientská knihovna **Azure.Search.Documents** 
 
 Dovednosti využívá integrované dovednosti založené na rozhraní API služeb Cognitive Services. Mezi kroky v kanálu patří optické rozpoznávání znaků (OCR) na obrázcích, rozpoznávání jazyka na textu, extrakce klíčových frází a rozpoznávání entit (organizace). Nové informace jsou uloženy v nových polích, která lze využít v dotazech, omezujících vlastnostech a filtrech.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 * [ Balíček NuGetAzure.Search.Documents 11. x](https://www.nuget.org/packages/Azure.Search.Documents) 
@@ -46,7 +46,7 @@ Dovednosti využívá integrované dovednosti založené na rozhraní API služe
 > [!Note]
 > Pro tento kurz můžete použít bezplatnou vyhledávací službu. Bezplatná vyhledávací služba omezuje tři indexy, tři indexery a tři zdroje dat. V tomto kurzu se vytváří od každého jeden. Než začnete, ujistěte se, že máte ve své službě místo pro přijímání nových prostředků.
 
-## <a name="download-sample-data"></a>Stažení ukázkových dat
+## <a name="download-sample-data"></a>Stáhněte si ukázková data
 
 Ukázková data se skládají ze 14 souborů smíšeného obsahu, které v pozdějším kroku nahrajete do úložiště objektů BLOB v Azure.
 
@@ -854,7 +854,7 @@ Nakonec jste se dozvěděli, jak testovat výsledky a resetovat systém pro dal�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
 

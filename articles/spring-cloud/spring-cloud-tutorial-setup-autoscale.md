@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 07/22/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 5ca0c498e9fd03ce6397824465f9e1e006eeccc1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905391"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Kurz: nastavení automatického škálování pro aplikace mikroslužeb
@@ -30,7 +30,7 @@ Chcete-li provést tyto postupy, potřebujete:
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>Přejít na stránku automatického škálování v Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Přejít na stránku **přehledu** jarního cloudu Azure.
 3. Vyberte skupinu prostředků, která obsahuje vaši službu.
 4. V nabídce **Nastavení** v levém navigačním podokně vyberte kartu **aplikace** .

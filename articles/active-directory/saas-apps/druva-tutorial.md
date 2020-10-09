@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
 ms.openlocfilehash: 401b1ef4e057d145574c0a8fcbfce8c9f586c266
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91775061"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Druva
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Druva s Azure Active Directory (Azure 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -116,7 +116,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -146,18 +146,18 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Na kartě **jednotné přihlašování** klikněte na **Upravit**.
 
-    ![Snímek obrazovky zobrazující kartu nastavení přístupu – jednotné přihlašování s vybraným tlačítkem Upravit.](./media/druva-tutorial/ic795092.png "Nastavení jednotného přihlašování")
+    ![Snímek obrazovky zobrazující kartu nastavení přístupu – jednotné přihlašování s vybraným tlačítkem Upravit.](./media/druva-tutorial/ic795092.png "Nastavení jednoho Sign-On")
 
-1. Na stránce **Upravit nastavení jednotného přihlašování** proveďte následující kroky:
+1. Na stránce **Upravit nastavení jednoho Sign-On** proveďte následující kroky:
 
-    ![Nastavení jednotného přihlašování](./media/druva-tutorial/ic795095.png "Nastavení jednotného přihlašování")
+    ![Nastavení jednoho Sign-On](./media/druva-tutorial/ic795095.png "Nastavení jednoho Sign-On")
 
     1. Do textového pole **přihlašovací adresa URL poskytovatele ID** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal.
 
     1. Otevřete v programu Poznámkový blok certifikát s kódováním Base-64, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikát poskytovatele ID** .
 
        > [!NOTE]
-       > Pokud chcete pro správce povolit jednotné přihlašování, vyberte **Správci se přihlásí do cloudu Druva prostřednictvím poskytovatele jednotného přihlašování** a **povolí Failsafe přístup k Druva správcům cloudu (doporučeno)** . Druva doporučuje povolit **Failsafe správcům** , aby měli přístup k konzole DCP v případě jakýchkoli selhání v IDP. Umožňuje správcům také použít heslo SSO i DCP pro přístup ke konzole DCP.
+       > Pokud chcete pro správce povolit jednu Sign-On, vyberte možnost **Správci se přihlaste do cloudu Druva prostřednictvím poskytovatele jednotného přihlašování** a **umožněte Failsafe přístup Druva správcům cloudu (doporučeno)** . Druva doporučuje povolit **Failsafe správcům** , aby měli přístup k konzole DCP v případě jakýchkoli selhání v IDP. Umožňuje správcům také použít heslo SSO i DCP pro přístup ke konzole DCP.
 
     1. Klikněte na **Uložit**. To umožňuje přístup k Druva cloudové platformě pomocí jednotného přihlašování.
 
@@ -171,7 +171,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Druva, měli byste se automaticky přihlásit k Druva, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

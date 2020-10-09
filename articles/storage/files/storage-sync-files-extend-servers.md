@@ -8,10 +8,10 @@ ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 1d2a0d79a5cdd53f8376c088fc986c20908575eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329448"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Kurz: Rozšíření souborových serverů Windows s využitím Synchronizace souborů Azure
@@ -26,11 +26,11 @@ Tento článek popisuje základní kroky pro rozšíření kapacity úložiště
 > * Vytvoření skupiny synchronizace a koncového bodu cloudu
 > * Vytvoření koncového bodu serveru
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
@@ -241,7 +241,7 @@ Agent Synchronizace souborů Azure je balíček ke stažení, který umožňuje 
 1. Vyberte možnost **po**  >  **spuštění**  >  **otevřít**.
 1. Pokud jste to ještě neudělali, zavřete okno PowerShellu.
 1. V **Průvodci instalací agenta synchronizace úložiště** přijměte výchozí hodnoty.
-1. Vyberte **Install** (Nainstalovat).
+1. Vyberte **Nainstalovat**.
 1. Vyberte **Dokončit**.
 
 Na virtuální počítač s Windows Serverem 2016 Datacenter jste nasadili službu synchronizace Azure a nainstalovali agenta. Teď je potřeba virtuální počítač zaregistrovat ve službě synchronizace úložiště.
