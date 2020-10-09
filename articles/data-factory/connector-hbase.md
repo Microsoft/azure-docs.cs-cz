@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: f2d10a6150a6e6957b303ca391c97e166342111c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417255"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopírování dat z HBA pomocí Azure Data Factory 
@@ -48,20 +48,20 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu HBA jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na: **HBA** . | Ano |
-| host | IP adresa nebo název hostitele serveru HBA. t.  `[clustername].azurehdinsight.net`, `192.168.222.160` )  | Ano |
-| port | Port TCP, který instance HBA používá k naslouchání klientským připojením. Výchozí hodnota je 9090. Pokud se připojíte k Azure HDInsights, zadejte port jako 443. | Ne |
-| httpPath | Částečná adresa URL odpovídající serveru HBA, např. `/hbaserest0` při použití clusteru HDInsights. | Ne |
+| Hostitel | IP adresa nebo název hostitele serveru HBA. t.  `[clustername].azurehdinsight.net`, `192.168.222.160` )  | Ano |
+| port | Port TCP, který instance HBA používá k naslouchání klientským připojením. Výchozí hodnota je 9090. Pokud se připojíte k Azure HDInsights, zadejte port jako 443. | No |
+| httpPath | Částečná adresa URL odpovídající serveru HBA, např. `/hbaserest0` při použití clusteru HDInsights. | No |
 | authenticationType | Mechanismus ověřování, který se má použít pro připojení k serveru HBA. <br/>Povolené hodnoty jsou: **anonymní**, **základní** | Ano |
-| uživatelské jméno | Uživatelské jméno použité pro připojení k instanci HBA.  | Ne |
-| heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je False.  | Ne |
-| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority pro ověření serveru při připojení přes protokol TLS. Tuto vlastnost lze nastavit pouze při použití protokolu TLS v místním prostředí IR. Výchozí hodnota je soubor cacerts. pem nainstalovaný s IR.  | Ne |
-| allowHostNameCNMismatch | Určuje, jestli se má při připojování přes protokol TLS vyžadovat, aby název certifikátu TLS/SSL vydaný certifikační autoritou odpovídal názvu hostitele serveru. Výchozí hodnota je False.  | Ne |
-| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | Ne |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| username | Uživatelské jméno použité pro připojení k instanci HBA.  | No |
+| heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
+| enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je False.  | No |
+| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority pro ověření serveru při připojení přes protokol TLS. Tuto vlastnost lze nastavit pouze při použití protokolu TLS v místním prostředí IR. Výchozí hodnota je soubor cacerts. pem nainstalovaný s IR.  | No |
+| allowHostNameCNMismatch | Určuje, jestli se má při připojování přes protokol TLS vyžadovat, aby název certifikátu TLS/SSL vydaný certifikační autoritou odpovídal názvu hostitele serveru. Výchozí hodnota je False.  | No |
+| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | No |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 >[!NOTE]
 >Pokud váš cluster nepodporuje rychlou relaci, např. HDInsight, explicitně přidejte index uzlu na konci nastavení cesty http, třeba zadejte `/hbaserest0` místo `/hbaserest` .
@@ -129,7 +129,7 @@ Pro propojenou službu HBA jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z adaptérů HBA, nastavte vlastnost Type datové sady na **HBaseObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na: **HBaseObject** . | Ano |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
@@ -159,7 +159,7 @@ Chcete-li kopírovat data z adaptérů HBA, nastavte vlastnost Type datové sady
 
 Chcete-li kopírovat data z adaptérů HBA, nastavte typ zdroje v aktivitě kopírování na **HBaseSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **HBaseSource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: adf936d6d1b99bf81a8c055237ca597020452bd7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91716553"
 ---
 # <a name="tutorial-assess-google-cloud-platform-gcp-vm-instances-for-migration-to-azure"></a>Kurz: vyhodnocení instancí virtuálních počítačů Google Cloud Platform (GCP) pro migraci do Azure
@@ -73,7 +73,7 @@ Proveďte posouzení následujícím způsobem:
         - Případně vyberte typ úložiště, který chcete použít pro virtuální počítač, když ho migrujete.
     - V části **rezervované instance**určete, jestli chcete pro virtuální počítač použít rezervované instance, když ho migrujete.
         - Pokud vyberete možnost použití rezervované instance, nemůžete zadat hodnotu "**sleva (%)**" nebo **Doba provozu virtuálního počítače**. 
-        - [Přečtěte si další informace](https://aka.ms/azurereservedinstances).
+        - [Další informace](https://aka.ms/azurereservedinstances).
 8. Ve **velikosti virtuálního počítače**:
  
     - V části **kritéria změny velikosti**vyberte, pokud chcete vyhodnotit vyhodnocení pro data konfigurace počítače/metadata nebo na data založená na výkonu. Pokud používáte údaje o výkonu:

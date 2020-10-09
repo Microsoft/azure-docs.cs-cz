@@ -10,10 +10,10 @@ ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81767025"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Sada SDK pro zařízení Azure IoT pro C – Další informace o serializátoru
@@ -74,8 +74,8 @@ V modelech vytvořených pomocí knihovny **serializátoru** jsou podporovány n
 | int8 \_ t |8bitové celé číslo |
 | Int16 \_ t |16bitové celé číslo |
 | Int32 \_ t |32-bitové celé číslo |
-| Int64 \_ t |64-bitové celé číslo |
-| bool |Boolean |
+| Int64 \_ t |64bitové celé číslo |
+| bool |boolean |
 | \_znak \_ PTR pro ASCII |Řetězec ASCII |
 | \_posun data a \_ času \_ EDM |posun data a času |
 | \_identifikátor GUID modelu EDM |Identifikátor GUID |

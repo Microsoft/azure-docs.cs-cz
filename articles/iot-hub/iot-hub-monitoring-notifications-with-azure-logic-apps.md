@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
 ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81680724"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Vzdálené monitorování a oznámení IoT pomocí Azure Logic Apps připojení ke službě IoT Hub a poštovní schránce
@@ -56,11 +56,11 @@ V tomto tématu nastavíte směrování ve službě IoT Hub pro odesílání zpr
 * Přidejte vlastní koncový bod a pravidlo směrování do služby IoT Hub, abyste mohli směrovat zprávy, které obsahují upozornění na teplotu Service Bus fronty.
 * Vytvoření, konfigurace a otestování aplikace logiky pro využívání zpráv z fronty Service Bus a odesílání e-mailů s oznámením požadovanému příjemci.
 
-## <a name="what-you-need"></a>Co potřebujete
+## <a name="what-you-need"></a>Co budete potřebovat
 
 * Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto požadavky se týkají následujících požadavků:
 
-  * Aktivní předplatné Azure.
+  * Musíte mít aktivní předplatné Azure.
   * Azure IoT Hub v rámci vašeho předplatného.
   * Klientská aplikace spuštěná na vašem zařízení, která odesílá zprávy telemetrie do služby Azure IoT Hub.
 
@@ -68,7 +68,7 @@ V tomto tématu nastavíte směrování ve službě IoT Hub pro odesílání zpr
 
 Vytvořte oboru názvů a frontu Service Bus. Později v tomto tématu vytvoříte pravidlo směrování ve službě IoT Hub, abyste mohli směrovat zprávy, které obsahují upozornění na teplotu, do fronty Service Bus, kde budou vyzvednuta aplikace logiky a aktivovat ji pro odesílání e-mailových oznámení.
 
-### <a name="create-a-service-bus-namespace"></a>Vytvoření oboru názvů Service Bus
+### <a name="create-a-service-bus-namespace"></a>Vytvoření oboru názvů Service Busu
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte **+ vytvořit Service Bus pro**  >  **integraci**prostředků  >  **Service Bus**.
 
@@ -185,7 +185,7 @@ V předchozí části nastavíte službu IoT Hub pro směrování zpráv, které
 
       ![Vytvořte připojení ke službě Service Bus pro vaši aplikaci logiky v Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
 
-   1. Vyberte zásady služby Service Bus (RootManageSharedAccessKey). Pak vyberte **vytvořit**.
+   1. Vyberte zásady služby Service Bus (RootManageSharedAccessKey). Pak vyberte  **vytvořit**.
 
       ![Vytvořte připojení ke službě Service Bus pro vaši aplikaci logiky v Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7-create-service-bus-connection-in-logic-app-azure-portal.png)
 

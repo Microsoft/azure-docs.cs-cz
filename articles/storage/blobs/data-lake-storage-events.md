@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8df4de01750de92222bfa9021b66828927804e85
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89005475"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Kurz: implementace vzoru Data Lake Capture pro aktualizaci rozdílové tabulky datacihly
@@ -31,7 +31,7 @@ V tomto kurzu provedete následující:
 
 Toto řešení sestavíme v obráceném pořadí, počínaje Azure Databricks pracovním prostorem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

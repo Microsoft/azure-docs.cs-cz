@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 02e13ce81ed2f11c0bb69015a4864c4a1ad55593
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81430965"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Monitorování a správa vytvoření certifikátu
@@ -84,11 +84,11 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Žádost
-Čtěte`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Čtěte `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 NEBO
 
-Čtěte`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Čtěte `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 > [!NOTE]
 > Pokud je v dotazu zadána *request_id* , funguje jako filtr. Pokud *request_id* v dotazu a v objektu, který čeká na vyřízení, se vrátí stavový kód HTTP 404.
@@ -119,11 +119,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-Čtěte`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Čtěte `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 NEBO
 
-Čtěte`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Čtěte `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Odpověď
 
@@ -151,11 +151,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-Čtěte`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Čtěte `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 NEBO
 
-Čtěte`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Čtěte `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Odpověď
 
@@ -190,11 +190,11 @@ Objekt, který čeká na vyřízení, může být odstraněn nebo přepsán oper
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Žádost
-Čtěte`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Čtěte `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 NEBO
 
-Čtěte`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Čtěte `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Odpověď
 
@@ -294,11 +294,11 @@ Zrušení může být požadováno pouze. Požadavek se může nebo nemusí zru�
 |POUŽITA|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Žádost
-POUŽITA`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+POUŽITA `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 NEBO
 
-POUŽITA`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+POUŽITA `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ```json
 {
@@ -334,11 +334,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |DELETE|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Žádost
-DSTRANIT`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+DSTRANIT `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 NEBO
 
-DSTRANIT`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+DSTRANIT `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Odpověď
 
@@ -414,7 +414,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 |Název elementu|Požaduje se|Typ|Verze|Popis|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|Ano|pole|\<introducing version>|Řetěz certifikátů x509 jako základní pole řetězců 64.|
+|x5c|Ano|array|\<introducing version>|Řetěz certifikátů x509 jako základní pole řetězců 64.|
 
 ### <a name="response"></a>Odpověď
 

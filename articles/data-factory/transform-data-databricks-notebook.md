@@ -12,10 +12,10 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 6d3c9f0df0d834ffe75d0b56e3c80a432c27ea38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81419013"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Transformujte data spuštěním poznámkového bloku datacihly.
@@ -57,15 +57,15 @@ Tady je ukázka definice JSON aktivity poznámkového bloku datacihly:
 
 Následující tabulka obsahuje popis vlastností JSON použitých v definici JSON:
 
-|Vlastnost|Popis|Vyžadováno|
+|Vlastnost|Popis|Povinné|
 |---|---|---|
 |name|Název aktivity v kanálu.|Ano|
-|description|Text popisující, co aktivita dělá.|Ne|
+|Popis|Text popisující, co aktivita dělá.|No|
 |typ|V případě aktivity poznámkového bloku datacihly je typ aktivity DatabricksNotebook.|Ano|
 |linkedServiceName|Název propojené služby datacihly, na které se Poznámkový blok datacihly spouští. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md)   .|Ano|
 |notebookPath|Absolutní cesta poznámkového bloku, který má být spuštěn v pracovním prostoru datacihly. Tato cesta musí začínat lomítkem.|Ano|
-|baseParameters|Pole párů klíč-hodnota. Základní parametry lze použít pro každý běh aktivity. Pokud Poznámkový blok převezme parametr, který není zadaný, použije se výchozí hodnota z poznámkového bloku. Přečtěte si další informace o parametrech v [poznámkových blocích datacihly](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Ne|
-|Knihovna|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole \<string, object> .|Ne|
+|baseParameters|Pole párů Key-Value. Základní parametry lze použít pro každý běh aktivity. Pokud Poznámkový blok převezme parametr, který není zadaný, použije se výchozí hodnota z poznámkového bloku. Přečtěte si další informace o parametrech v [poznámkových blocích datacihly](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|No|
+|knihovny|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole \<string, object> .|No|
 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Podporované knihovny pro aktivity datacihly

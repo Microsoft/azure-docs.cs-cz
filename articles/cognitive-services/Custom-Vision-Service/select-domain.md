@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
 ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82127778"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Vyberte doménu pro Custom Vision projekt.
@@ -23,17 +23,17 @@ V okně nastavení pro váš Custom Vision projekt můžete vybrat doménu pro s
 
 ## <a name="image-classification"></a>Klasifikace obrázků
 
-|Domain (Doména)|Účel|
+|Doména|Účel|
 |---|---|
 |__Obecné__| Optimalizováno pro širokou škálu úloh klasifikace imagí. Pokud žádná z ostatních domén není vhodná nebo si nejste jisti, jakou doménu chcete vybrat, vyberte obecnou doménu.|
 |__Simulant__|Optimalizováno pro fotografie misek, jak byste je viděli v nabídce restaurace. Pokud chcete klasifikovat fotografie jednotlivých druhů ovoce a zeleniny, použijte doménu jídla.|
-|__Památek__|Optimalizováno pro rozpoznatelný orientačních bodů, jak přirozené, tak umělé. Tato doména funguje nejlépe, když je ve fotografii jasně viditelný bod. Tato doména funguje i v případě, že je bod lehce překážkou pro lidi před ním.|
+|__Orientační body tváře__|Optimalizováno pro rozpoznatelný orientačních bodů, jak přirozené, tak umělé. Tato doména funguje nejlépe, když je ve fotografii jasně viditelný bod. Tato doména funguje i v případě, že je bod lehce překážkou pro lidi před ním.|
 |__Maloobchod__|Optimalizováno pro obrázky, které se nacházejí v nákupním katalogu nebo na nákupním webu. Pokud požadujete vysokou přesnost klasifikace mezi dresses, Pants a košile, použijte tuto doménu.|
 |__Kompaktní domény__| Optimalizováno pro omezení klasifikace v reálném čase u hraničních zařízení.|
 
 ## <a name="object-detection"></a>Detekce objektů
 
-|Domain (Doména)|Účel|
+|Doména|Účel|
 |---|---|
 |__Obecné__| Optimalizováno pro širokou škálu úloh detekce objektů. Pokud žádná z ostatních domén není vhodná nebo si nejste jisti, kterou doménu si zvolíte, vyberte obecnou doménu.|
 |__Logo__|Optimalizováno pro hledání loga značky v obrázcích.|
@@ -42,12 +42,12 @@ V okně nastavení pro váš Custom Vision projekt můžete vybrat doménu pro s
 
 ## <a name="compact-domains"></a>Kompaktní domény
 
-Modely generované pomocí kompaktních domén lze exportovat pro místní spuštění. Výkon modelu se liší podle vybrané domény. V níže uvedené tabulce oznamujeme velikost modelu a dobu odvození na PROCESORech Intel Desktop a NVidia GPU \[1.\] 
+Modely generované pomocí kompaktních domén lze exportovat pro místní spuštění. Výkon modelu se liší podle vybrané domény. V níže uvedené tabulce oznamujeme velikost modelu a dobu odvození na PROCESORech Intel Desktop a NVidia GPU \[ 1 \] . 
 
 > [!NOTE]
 > Tato čísla nezahrnují předzpracování a postprocessingí času.
 
-|Úkol|Domain (Doména)|Velikost modelu|Čas odvození procesoru|Čas odvození GPU|
+|Úloha|Doména|Velikost modelu|Čas odvození procesoru|Čas odvození GPU|
 |---|---|---|---|---|
 |Classification|Obecné (kompaktní)|5 MB|13 MS|5 MS|
 |Detekce objektů|Obecné (kompaktní)|45 MB|35 MS|5 MS|
@@ -70,4 +70,4 @@ Když je _sada Vision AI dev Kit_ vybraná jako _Obecné_, _orientační_a _malo
 >[!IMPORTANT]
 >Neexistuje žádná záruka, že exportované modely přidávají přesně stejný výsledek jako předpověď rozhraní API v cloudu. Nepatrný rozdíl ve spuštěné platformě nebo implementace předběžného zpracování může způsobit větší rozdíl v výstupech modelu. Podrobnosti o logice předběžného zpracování najdete v [tomto dokumentu](quickstarts/image-classification.md).
 
-\[1\] Intel Xeon E5-2690 CPU a NVIDIA Tesla M60
+\[1 \] Intel Xeon E5-2690 CPU a NVIDIA Tesla M60

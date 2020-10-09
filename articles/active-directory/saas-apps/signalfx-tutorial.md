@@ -15,7 +15,7 @@ ms.openlocfilehash: 989b41d4fc55241a5fa75a0eed9ea8f4ebaeee67
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856819"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SignalFx
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat SignalFx s Azure Active Directory (Azu
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, budete potřebovat:
 
@@ -92,7 +92,7 @@ Pomocí těchto pokynů povolte jednotné přihlašování služby Azure AD v Az
     
 1. Zkontrolujte a ověřte, zda jsou následující deklarace identity mapovány na zdrojové atributy, které jsou vyplněny ve službě Active Directory. 
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | ------------------- | -------------------- |
     | User. FirstName  | User. křestní jméno |
     | Uživatel. e-mail  | uživatel. pošta |

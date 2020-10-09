@@ -10,10 +10,10 @@ ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89051286"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Kurz: vývoj webové aplikace ASP.NET Core MVC pomocí Azure Cosmos DB pomocí sady .NET SDK
@@ -43,11 +43,11 @@ Tento kurz zahrnuje:
 > [!TIP]
 > V tomto kurzu se předpokládá, že máte předchozí zkušenosti s používáním ASP.NET Core MVC a Azure App Service. Pokud ASP.NET Core nebo požadované [nástroje](#prerequisites)nepoužíváte, doporučujeme si stáhnout kompletní ukázkový projekt z [GitHubu][GitHub], přidat požadované balíčky NuGet a spustit ho. Po sestavení projektu si můžete projít tento článek, abyste získali přehled o kódu v kontextu projektu.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a><a name="prerequisites"></a>Předpoklady
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující zdroje:
 
-* Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Aktivní účet Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -71,7 +71,7 @@ V další části vytvoříte novou ASP.NET Core aplikaci MVC.
 
 1. V nástroji **vytvořit nový projekt**vyhledejte a vyberte **ASP.NET Core webové aplikace** pro C#. Pokračujte výběrem tlačítka **Další**.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Vytvořit nový projekt ASP.NET Core webové aplikace":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
 
 1. V části **Konfigurovat nový projekt**zadejte název *projektu a vyberte* **vytvořit**.
 
@@ -87,9 +87,9 @@ Teď, když máme většinu ASP.NET Core rozhraní MVC, které potřebujeme pro 
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
 
-1. Ve **Správci balíčků NuGet**vyhledejte a vyberte **Microsoft. Azure. Cosmos**. Vyberte **Install** (Nainstalovat).
+1. Ve **Správci balíčků NuGet**vyhledejte a vyberte **Microsoft. Azure. Cosmos**. Vyberte **Nainstalovat**.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="Nainstalovat balíček NuGet":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
 
    Sada Visual Studio stáhne a nainstaluje balíček Azure Cosmos DB a jeho závislosti.
 
@@ -139,7 +139,7 @@ Nyní přidáme následující zobrazení.
    * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
    * Vyberte **Přidat**.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Snímek obrazovky se zobrazeným dialogovým oknem přidat zobrazení MVC":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
 
 1. Potom vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony. Nahraďte kód ve vygenerovaném souboru následujícím obsahem:
 
@@ -262,7 +262,7 @@ Nejprve přidáme třídu, která obsahuje logiku pro připojení a použití Az
 
 1. V nástroji **Přidat generování uživatelského rozhraní**vyberte možnost **kontroler MVC – prázdné** a vyberte **Přidat**.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="Vybrat kontroler MVC – prázdné v přidat generování uživatelského rozhraní":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
 
 1. Pojmenujte svůj nový kontroler *ItemController*.
 
@@ -280,7 +280,7 @@ K otestování aplikace na místním počítači použijte následující postup
 
 1. Stisknutím klávesy F5 v aplikaci Visual Studio sestavte aplikaci v režimu ladění. Po sestavení aplikace by se měl spustit prohlížeč se stránkou s prázdnou mřížkou, kterou jsme viděli dříve:
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png" alt-text="Snímek webové aplikace seznamu úkolů vytvořené v tomto kurzu":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
    
    Pokud se místo toho aplikace otevře na domovské stránce, připojí `/Item` se k adrese URL.
 
@@ -288,11 +288,11 @@ K otestování aplikace na místním počítači použijte následující postup
 
 1. Vyberte **Vytvořit**. Aplikace vás pošle zpátky do zobrazení **indexu** a položka se zobrazí v seznamu. Do seznamu **úkolů** můžete přidat několik dalších položek.
 
-    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="Snímek obrazovky s zobrazením indexu":::
+    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
   
 1. Vyberte **Upravit** vedle **položky** v seznamu. Aplikace otevře zobrazení pro **Úpravy** , kde můžete aktualizovat jakoukoli vlastnost objektu, včetně příznaku **dokončeno** . Pokud vyberete **dokončeno** a vyberete **Uložit**, aplikace zobrazí **položku** jako dokončenou v seznamu.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="Snímek obrazovky zobrazení indexu se zaškrtnutým políčkem dokončeno":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
 
 1. Ověřte stav dat ve službě Azure Cosmos DB pomocí [Průzkumníka Cosmos](https://cosmos.azure.com) nebo Průzkumník dat emulátoru Azure Cosmos DB.
 
@@ -312,7 +312,7 @@ Nyní, když je aplikace dokončena a správně funguje se službou Azure Cosmos
 
 1. Najděte svůj profil a pak vyberte **OK**. V dalším hledání požadovaného Azure App Service a vyberte **OK**.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="Dialogové okno App Service v sadě Visual Studio":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
 
 Další možností je vytvořit nový profil:
 
@@ -324,7 +324,7 @@ Další možností je vytvořit nový profil:
 
 1. V **App Service**zadejte název vaší webové aplikace a příslušné předplatné, skupinu prostředků a plán hostování a pak vyberte **vytvořit**.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="Dialogové okno Vytvořit plán App Service v sadě Visual Studio":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
 
 Během několika sekund Visual Studio publikuje vaši webovou aplikaci a spustí prohlížeč, kde vidíte svůj projekt spuštěný v Azure!
 
@@ -333,7 +333,7 @@ Během několika sekund Visual Studio publikuje vaši webovou aplikaci a spustí
 V tomto kurzu jste se naučili, jak vytvořit webovou aplikaci ASP.NET Core MVC. Vaše aplikace má přístup k datům uloženým v Azure Cosmos DB. Teď můžete pokračovat s těmito prostředky:
 
 * [Dělení ve službě Azure Cosmos DB](./partitioning-overview.md)
-* [Začínáme s dotazy SQL](./how-to-sql-query.md)
+* [Začínáme s příkazy jazyka SQL](./how-to-sql-query.md)
 * [Modelování a dělení dat ve službě Azure Cosmos DB s využitím příkladu z reálného světa](./how-to-model-partition-example.md)
 
 [Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx

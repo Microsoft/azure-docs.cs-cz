@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: f59c924caca86505e9f1e91bf58095b271475794
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75383715"
 ---
 # <a name="sending-queries-to-the-bing-news-search-api"></a>Odesílání dotazů do rozhraní API Bingu pro vyhledávání zpráv
@@ -31,7 +31,7 @@ Pokud chcete získat výsledky hledání, které se týkají jenom zpráv, odeš
 https://api.cognitive.microsoft.com/bing/v7.0/news/search
 ```
 
-Požadavek musí používat protokol HTTPS.
+Tento požadavek musí používat protokol HTTPS.
 
 Doporučujeme, aby všechny požadavky pocházely ze serveru. Distribuce klíče v rámci klientské aplikace nabízí více příležitostí pro přístup kyberzločinců. Voláním ze serveru také zajistíte, že u budoucích verzí rozhraní API bude stačit upgradovat pouze jediný bod.
 

@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 4c7382f84522333b6aae0d79941aae8f2147a12f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81729146"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Informace o cenách Azure IoT Hub
@@ -45,7 +45,7 @@ ms.locfileid: "81729146"
 
 ## <a name="example-1"></a>Příklad #1
 
-Zařízení pošle jednu zprávu typu zařízení-Cloud od 1 KB za minutu do IoT Hub, kterou pak přečte Azure Stream Analytics. Back-end řešení vyvolá metodu (s 512 bajtovou částí) na zařízení každých 10 minut, aby aktivoval určitou akci. Zařízení odpoví na metodu s výsledkem 200 bajtů.
+Zařízení pošle do IoT Hub zprávu typu zařízení-Cloud 1 1-KB za minutu, kterou pak přečte Azure Stream Analytics. Back-end řešení vyvolá metodu (s 512 bajtovou částí) na zařízení každých 10 minut, aby aktivoval určitou akci. Zařízení odpoví na metodu s výsledkem 200 bajtů.
 
 Zařízení spotřebovává:
 

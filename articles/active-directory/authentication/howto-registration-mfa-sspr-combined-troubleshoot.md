@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81450934"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>Řešení potíží s kombinovanou registrací informací o zabezpečení
@@ -30,16 +30,16 @@ Události protokolované pro kombinovanou registraci jsou v kategorii metody ov�
 
 V následující tabulce jsou uvedeny všechny události auditu generované kombinovanou registrací:
 
-| Aktivita | Status | Důvod | Popis |
+| Aktivita | Status | Důvod | Description |
 | --- | --- | --- | --- |
-| Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Úspěch | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Tato událost nastane, pokud uživatel úspěšně dokončil registraci.|
+| Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Success | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Tato událost nastane, pokud uživatel úspěšně dokončil registraci.|
 | Uživatel zaregistroval všechny požadované bezpečnostní údaje. | Selhání | Uživatel zrušil registraci bezpečnostních údajů. | K této události dojde, když uživatel zruší registraci z režimu přerušení.|
-| Uživatel zaregistroval informace o zabezpečení | Úspěch | *Metoda*registrovaná uživatelem | Tato událost nastane, když uživatel zaregistruje jednotlivou metodu. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.| 
-| Uživatel zkontroloval bezpečnostní informace. | Úspěch | Uživatel úspěšně zkontroloval informace o zabezpečení. | K této události dojde, když uživatel vybere na stránce Kontrola bezpečnostních údajů **dobrý tvar** .|
+| Uživatel zaregistroval informace o zabezpečení | Success | *Metoda*registrovaná uživatelem | Tato událost nastane, když uživatel zaregistruje jednotlivou metodu. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.| 
+| Uživatel zkontroloval bezpečnostní informace. | Success | Uživatel úspěšně zkontroloval informace o zabezpečení. | K této události dojde, když uživatel vybere na stránce Kontrola bezpečnostních údajů **dobrý tvar** .|
 | Uživatel zkontroloval bezpečnostní informace. | Selhání | Uživateli se nepodařilo zkontrolovat informace o zabezpečení. | K této události dojde, když uživatel vybere na stránce Kontrola bezpečnostních údajů **dobrý tvar** , ale v back-endu dojde k nějakému problému.|
-| Uživatel odstranil informace o zabezpečení. | Úspěch | Uživatel odstranil *metodu*. | Tato událost nastane, když uživatel odstraní jednotlivou metodu. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.|
+| Uživatel odstranil informace o zabezpečení. | Success | Uživatel odstranil *metodu*. | Tato událost nastane, když uživatel odstraní jednotlivou metodu. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.|
 | Uživatel odstranil informace o zabezpečení. | Selhání | Uživateli se nepovedlo odstranit *metodu*. | K této události dojde, když se uživatel pokusí odstranit metodu, ale pokus z nějakého důvodu se nezdařil. *Metoda* může být ověřovací aplikace, telefon, E-mail, bezpečnostní otázky, heslo aplikace, alternativní telefon a tak dále.|
-| Uživatel změnil výchozí bezpečnostní údaje. | Úspěch | Uživatel změnil výchozí bezpečnostní údaje pro *metodu*. | K této události dojde, když uživatel změní výchozí metodu. *Metoda* může být oznamování ověřovací aplikace, kód z aplikace ověřovatele nebo tokenu, zavolat + x XXXXXXXXXX, text a kód na + X XXXXXXXXX a tak dále.|
+| Uživatel změnil výchozí bezpečnostní údaje. | Success | Uživatel změnil výchozí bezpečnostní údaje pro *metodu*. | K této události dojde, když uživatel změní výchozí metodu. *Metoda* může být oznamování ověřovací aplikace, kód z aplikace ověřovatele nebo tokenu, zavolat + x XXXXXXXXXX, text a kód na + X XXXXXXXXX a tak dále.|
 | Uživatel změnil výchozí bezpečnostní údaje. | Selhání | Uživateli se nepodařilo změnit výchozí bezpečnostní údaje pro *metodu*. | K této události dojde, když se uživatel pokusí změnit výchozí metodu, ale pokus z nějakého důvodu se nezdaří. *Metoda* může být oznamování ověřovací aplikace, kód z aplikace ověřovatele nebo tokenu, zavolat + x XXXXXXXXXX, text a kód na + X XXXXXXXXX a tak dále.|
 
 ## <a name="troubleshooting-interrupt-mode"></a>Řešení potíží s režimem přerušení

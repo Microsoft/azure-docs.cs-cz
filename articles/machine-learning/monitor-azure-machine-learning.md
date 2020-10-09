@@ -10,10 +10,10 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78399097"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Azure Machine Learning monitorování
@@ -62,7 +62,7 @@ Výstrahy pro Azure Machine Learning můžete zpřístupnit otevřením **výstr
 
 V následující tabulce jsou uvedeny běžné a doporučené pravidla upozorňujících na metriky pro Azure Machine Learning:
 
-| Typ upozornění | Podmínka | Description |
+| Typ upozornění | Stav | Popis |
 |:---|:---|:---|
 | Nasazení modelu se nezdařilo | Typ agregace: celkem, operátor: větší než, prahová hodnota: 0 | V případě neúspěchu jednoho nebo více nasazení modelů |
 | Procento využití kvóty | Typ agregace: průměr, operátor: větší než, prahová hodnota: 90| Pokud je procento využití kvóty větší než 90% |
@@ -85,7 +85,7 @@ Další informace o vytváření nastavení diagnostiky najdete v tématu [Vytvo
 
 Pro Azure Machine Learning můžete nakonfigurovat následující protokoly:
 
-| Kategorie | Description |
+| Kategorie | Popis |
 |:---|:---|
 | AmlComputeClusterEvent | Události z Azure Machine Learning výpočetních clusterů. |
 | AmlComputeClusterNodeEvent | Události z uzlů v rámci Azure Machine Learning výpočetního clusteru. |

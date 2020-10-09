@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
 ms.openlocfilehash: cb052f4ce962b1757f47f64e3f26fa5db2a731fa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88999594"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Kurz: Azure Active Directory integrace jednotného přihlašování se serverem Tableau
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Server Tableau s Azure Active Director
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -105,7 +105,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -131,11 +131,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Na kartě **Konfigurace** vyberte **identita uživatele & přístup**a pak vyberte kartu metoda **ověřování** .
 
-    ![Konfigurace jednotného přihlašování](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
+    ![Konfigurace jednoho Sign-On](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
 
 3. Na stránce **Konfigurace** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
+    ![Konfigurace jednoho Sign-On](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
 
     a. V případě **metody ověřování**vyberte SAML.
 

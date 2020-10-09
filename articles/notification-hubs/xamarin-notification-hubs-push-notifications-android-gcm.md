@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
 ms.openlocfilehash: ce47d2ae65a4ea9e6878381ce58d62cb6c998599
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998199"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Kurz: odesílání nabízených oznámení do aplikací pro Xamarin. Android pomocí Notification Hubs
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoříte aplikaci pro Xamarin.Android a připojíte ji k centru oznámení
 > * Odešlete z webu Azure Portal zkušební oznámení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 * [Visual Studio s Xamarinem] ve Windows nebo [Visual Studio pro Mac] v systému OS X.

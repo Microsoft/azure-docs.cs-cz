@@ -13,7 +13,7 @@ ms.openlocfilehash: 76b50e2812be79a374143010e0c0212ca1b97f84
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856248"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Kurz: vývoj modulu C IoT Edge pro zařízení se systémem Linux
@@ -44,7 +44,7 @@ Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modu
 | **Linux AMD64** | ![Použití VS Code pro moduly jazyka C v systému Linux AMD64](./media/tutorial-c-module/green-check.png) | ![Použití VS pro moduly C v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |
 | **Linux ARM32** | ![Použití VS Code pro moduly jazyka C v systému Linux ARM32](./media/tutorial-c-module/green-check.png) | ![Použití VS pro moduly C v ARM32 pro Linux](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 

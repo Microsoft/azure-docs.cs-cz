@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: cc36eca0b39db5188be7a63ffb148cc0f4cf30bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252863"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Kurz: Vytvoření vlastních záznamů DNS ve vlastní doméně pro webovou aplikaci 
@@ -43,7 +43,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -175,7 +175,7 @@ Otevřete prohlížeč a přejděte na `http://www.<your domainname>` a `http://
 > [!NOTE]
 > Ujistěte se, že jste `http://` předponu zahrnuli, jinak se může váš prohlížeč pokusit předpovědět adresu URL.
 
-Pro obě adresy URL by se vám měla zobrazit stejná stránka. Příklad:
+Pro obě adresy URL by se vám měla zobrazit stejná stránka. Například:
 
 ![Služba aplikace Contoso](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

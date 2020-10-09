@@ -4,10 +4,10 @@ description: Seznamte se se základními koncepty služby Lab Service a s tím, 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 38dd77df7a80ad252b553b6afa8b52d7fee753a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85443702"
 ---
 # <a name="classroom-labs-concepts"></a>Koncepce testovacích prostředí v učebnách
@@ -26,7 +26,7 @@ Plány jsou časové sloty, které může Educator vytvořit pro třídu, takže
 
 Existují tři typy plánů: standardní, pouze spustit a zastavit.
 
-- **Úroveň Standard**.  Tento plán spustí všechny virtuální počítače studenta v zadaném čase zahájení a vypíná všechny virtuální počítače studenta v zadané době zastavení.
+- **Standard:**  Tento plán spustí všechny virtuální počítače studenta v zadaném čase zahájení a vypíná všechny virtuální počítače studenta v zadané době zastavení.
 - **Pouze spustit**.   Tento plán spustí všechny virtuální počítače studenta v zadanou dobu.  Virtuální počítače studenta se neukončí, dokud student nezastaví svůj virtuální počítač prostřednictvím portálu Azure Lab Services nebo dojde k zastavení pouze plánu.
 - **Pouze zastavit**.  Tento plán zastaví všechny virtuální počítače studenta v zadanou dobu.  
 

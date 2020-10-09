@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: 1cdee99378feb381d75edef0d150089132d1bbc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75435698"
 ---
 # <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>Odesílání úloh Apache Hadoop v HDInsight
 
 Můžete odesílat Apache Hadoop úlohy ve službě Azure HDInsight pomocí sady Microsoft .NET SDK pro HDInsight, kudrlinkou nebo Azure PowerShell.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 - **sada .NET SDK**:
 
@@ -42,4 +42,4 @@ Můžete odesílat Apache Hadoop úlohy ve službě Azure HDInsight pomocí sady
 
 ## <a name="see-also"></a>Viz také
 
-- [Dokumentace ke službě Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/)
+- [Dokumentace k Azure HDInsightu](https://docs.microsoft.com/azure/hdinsight/)

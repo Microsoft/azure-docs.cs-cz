@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 57d71d517cb953a2a2c84b7e003fd08541416539
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319567"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Migrace webové služby z Google Maps
@@ -94,7 +94,7 @@ Tato tabulka křížově odkazuje na parametry rozhraní API služby Google Maps
 | `key`                       | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
 | `language`                  | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `latlng`                    | `query`  |
-| `location_type`             | *Není k dispozici*     |
+| `location_type`             | *NENÍ K DISPOZICI*     |
 | `result_type`               | `entityType`    |
 
 Projděte si [osvědčené postupy pro hledání](how-to-use-best-practices-for-search.md).
@@ -138,9 +138,9 @@ Tabulka křížově odkazuje na parametry rozhraní API Google Maps pomocí srov
 
 | Parametr rozhraní API pro Google Maps | Srovnatelný parametr Azure Maps rozhraní API |
 |---------------------------|-------------------------------------|
-| `fields`                  | *Není k dispozici*                               |
+| `fields`                  | *NENÍ K DISPOZICI*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *Není k dispozici*                               |
+| `inputtype`               | *NENÍ K DISPOZICI*                               |
 | `key`                     | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
 | `language`                | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `locationbias`            | `lat``lon`a`radius`<br/>`topLeft` a `btmRight`<br/>`countrySet`  |
@@ -157,13 +157,13 @@ V tabulce jsou uvedeny parametry rozhraní API služby Google Maps s podobnými 
 | `keyword`                   | `categorySet` a `brandSet`        |
 | `language`                  | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `location`                  | `lat` a `lon`                     |
-| `maxprice`                  | *Není k dispozici*                               |
-| `minprice`                  | *Není k dispozici*                               |
+| `maxprice`                  | *NENÍ K DISPOZICI*                               |
+| `minprice`                  | *NENÍ K DISPOZICI*                               |
 | `name`                      | `categorySet` a `brandSet`        |
-| `opennow`                   | *Není k dispozici*                               |
+| `opennow`                   | *NENÍ K DISPOZICI*                               |
 | `pagetoken`                 | `ofs` a `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *Není k dispozici*                               |
+| `rankby`                    | *NENÍ K DISPOZICI*                               |
 | `type`                      | `categorySet –` Viz dokumentace k [kategoriím hledání podporované](supported-search-categories.md) .   |
 
 ## <a name="calculate-routes-and-directions"></a>Vypočítat trasy a směry
@@ -243,10 +243,10 @@ Tabulka křížově odkazuje na parametry rozhraní API Google Maps s podobnými
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | Není *k dispozici* – jedná se o funkci související s geografické kódování. Použijte `countrySet` parametr při použití Azure Maps rozhraní API pro geografické kódování.  |
-| `scale`                     | *Není k dispozici*                              |
+| `scale`                     | *NENÍ K DISPOZICI*                              |
 | `size`                      | `width` a `height` – může mít velikost až 8192x8192. |
-| `style`                     | *Není k dispozici*                              |
-| `visible`                   | *Není k dispozici*                              |
+| `style`                     | *NENÍ K DISPOZICI*                              |
+| `visible`                   | *NENÍ K DISPOZICI*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]

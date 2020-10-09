@@ -8,10 +8,10 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81461646"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Osvědčené postupy zabezpečení Azure Service Fabric
@@ -60,7 +60,7 @@ Existují tři [scénáře](../../service-fabric/service-fabric-cluster-security
 -   Zabezpečení mezi uzly: Tento scénář zabezpečuje komunikaci mezi virtuálními počítači a počítači v clusteru. Tato forma zabezpečení zajišťuje, že aplikace a služby v clusteru můžou hostovat jenom ty počítače, které jsou autorizované pro připojení ke clusteru.
 V tomto scénáři můžou clustery spuštěné v Azure nebo samostatné clustery, které běží v systému Windows, používat [zabezpečení certifikátů](../../service-fabric/service-fabric-windows-cluster-x509-security.md) nebo [zabezpečení systému Windows](../../service-fabric/service-fabric-windows-cluster-windows-security.md) pro počítače se systémem Windows Server.
 -   Zabezpečení typu klient-uzel: Tento scénář zabezpečuje komunikaci mezi klientem Service Fabric a jednotlivými uzly v clusteru.
--   Access Control na základě rolí (RBAC): Tento scénář používá samostatné identity (certifikáty, Azure AD atd.) pro každou roli správce a uživatele, která přistupuje ke clusteru. Identity role se určují při vytváření clusteru.
+-   Role-Based Access Control (RBAC): Tento scénář používá samostatné identity (certifikáty, Azure AD atd.) pro každou roli správce a uživatele, která přistupuje ke clusteru. Identity role se určují při vytváření clusteru.
 
 >[!NOTE]
 >**Doporučení zabezpečení pro clustery Azure:** Použijte zabezpečení Azure AD k ověřování klientů a certifikátů pro zabezpečení mezi uzly.

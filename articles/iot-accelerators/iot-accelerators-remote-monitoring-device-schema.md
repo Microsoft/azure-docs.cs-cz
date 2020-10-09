@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ac681bb13ccea49c7a2f566a6fcdb6adb8cec5bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81683749"
 ---
 # <a name="understand-the-device-model-schema"></a>Pochopení schématu modelu zařízení
@@ -88,8 +88,8 @@ V `Simulation` části definujete vnitřní stav simulovaného zařízení. Vše
 
 Definice stavu zařízení má dva prvky:
 
-* `InitialState`Definuje počáteční hodnoty pro všechny vlastnosti objektu stavu zařízení.
-* `Script`Identifikuje soubor JavaScriptu, který se spouští podle plánu, aby se aktualizoval stav zařízení. Tento soubor skriptu můžete použít k náhodnému vynechání hodnot telemetrie odesílaných zařízením.
+* `InitialState` Definuje počáteční hodnoty pro všechny vlastnosti objektu stavu zařízení.
+* `Script` Identifikuje soubor JavaScriptu, který se spouští podle plánu, aby se aktualizoval stav zařízení. Tento soubor skriptu můžete použít k náhodnému vynechání hodnot telemetrie odesílaných zařízením.
 
 Další informace o souboru JavaScriptu, který aktualizuje objekt stavu zařízení, najdete v tématu [pochopení chování modelu zařízení](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md).
 
@@ -119,7 +119,7 @@ Služba simulace spouští soubor **chiller-01-state.js** každých pět sekund,
 
 ## <a name="properties"></a>Vlastnosti
 
-`Properties`Oddíl schématu definuje hodnoty vlastností, které zařízení hlásí do řešení. Příklad:
+`Properties`Oddíl schématu definuje hodnoty vlastností, které zařízení hlásí do řešení. Například:
 
 ```json
 "Properties": {
@@ -158,9 +158,9 @@ Následující příklad pošle zprávu telemetrie JSON každých 10 sekund s `f
 ]
 ```
 
-`MessageTemplate`definuje strukturu zprávy JSON odesílané simulovaným zařízením. Zástupné symboly v nástroji `MessageTemplate` používají syntaxi `${NAME}` , kde `NAME` je klíč z [objektu stavu zařízení](#simulation). Řetězce by měly být v uvozovkách, čísla by neměla.
+`MessageTemplate` definuje strukturu zprávy JSON odesílané simulovaným zařízením. Zástupné symboly v nástroji `MessageTemplate` používají syntaxi `${NAME}` , kde `NAME` je klíč z [objektu stavu zařízení](#simulation). Řetězce by měly být v uvozovkách, čísla by neměla.
 
-`MessageSchema`definuje schéma zprávy odesílané simulovaným zařízením. Schéma zprávy je také Publikováno do IoT Hub, aby back-end aplikace mohly znovu použít informace k interpretaci příchozí telemetrie.
+`MessageSchema` definuje schéma zprávy odesílané simulovaným zařízením. Schéma zprávy je také Publikováno do IoT Hub, aby back-end aplikace mohly znovu použít informace k interpretaci příchozí telemetrie.
 
 V současné době můžete použít pouze schémata zpráv JSON. Pole uvedená ve schématu mohou mít následující typy:
 
@@ -169,7 +169,7 @@ V současné době můžete použít pouze schémata zpráv JSON. Pole uvedená 
 * Text
 * Logická hodnota
 * Integer
-* Double
+* dvojité
 * DateTime
 
 Chcete-li odesílat zprávy telemetrie v různých intervalech, přidejte k poli více typů telemetrie `Telemetry` . Následující příklad odesílá data o teplotě a vlhkosti každých 10 sekund a stav světla každou minutu:

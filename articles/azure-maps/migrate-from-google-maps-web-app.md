@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
 ms.openlocfilehash: 3414f50d6d0fc4983b7a05226a2f768e7ead81dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319669"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Migrace webové aplikace z Map Google
@@ -1504,7 +1504,7 @@ Použijte `atlas.layer.ImageLayer` třídu k překrytí nesledovaných imagí. T
 
 ### <a name="add-kml-data-to-the-map"></a>Přidání dat KML do mapy
 
-Mapy Azure i Google můžou na mapě importovat a vykreslovat data KML, KMZ a GeoRSS. Azure Maps podporuje také GPX, GML, prostorové soubory CSV, geografickou JSON, dobře známý text (Well), službu Web-Mapping Services (WMS), služby dlaždicového mapování webu (WMTS) a službu webové funkce (WFS). Azure Maps přečte soubory místně do paměti a ve většině případů může zvládnout mnohem větší soubory KML. 
+Mapy Azure i Google můžou na mapě importovat a vykreslovat data KML, KMZ a GeoRSS. Azure Maps podporuje také GPX, GML, prostorové Web-Mapping soubory CSV, služby (WMS), služby pro Web-Mapping dlaždici (WMTS) a služby webových funkcí (WFS). Azure Maps přečte soubory místně do paměti a ve většině případů může zvládnout mnohem větší soubory KML. 
 
 #### <a name="before-google-maps"></a>Před: Google Maps
 

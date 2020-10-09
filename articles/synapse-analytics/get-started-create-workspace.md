@@ -10,17 +10,17 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 10/07/2020
 ms.openlocfilehash: d74c3e42317b954a510f3276db38c0dcdf5e2362
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91850375"
 ---
 # <a name="creating-a-synapse-workspace"></a>Vytváření pracovního prostoru synapse
 
 V tomto kurzu se dozvíte, jak vytvořit synapse pracovní prostor, fond SQL a fond Apache Spark. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento krok tohoto kurzu dokončíte tak, že budete mít přístup ke skupině prostředků, ke které jste přiřadili roli **vlastníka** . V této skupině prostředků vytvořte pracovní prostor synapse.
 

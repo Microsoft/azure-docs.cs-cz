@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 10/07/2020
 ms.author: mjbrown
 ms.openlocfilehash: 781d74c2d9617972d70a8d2d3af771589fffdab7
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91844224"
 ---
 # <a name="throughput-rus-operations-with-powershell-for-a-database-or-collection-for-azure-cosmos-db-api-for-mongodb"></a>Operace propustnosti (RU/s) s PowerShellem pro databázi nebo kolekci pro rozhraní Azure Cosmos DB API pro MongoDB

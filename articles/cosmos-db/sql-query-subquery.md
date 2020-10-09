@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74870560"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Příklady poddotazů SQL pro Azure Cosmos DB
@@ -124,7 +124,7 @@ WHERE AvgNutritionValue > 80
 
 Zvažte například tuto sadu referenčních dat:
 
-| **Jednotce** | **Název**            | **Koeficient** | **Základní jednotka** |
+| **Jednotka** | **Název**            | **Koeficient** | **Základní jednotka** |
 | -------- | ------------------- | -------------- | ------------- |
 | plyn       | Nanogram            | 1,00 e-09       | Gram          |
 | μg       | Microgram           | 1,00 e-06       | Gram          |

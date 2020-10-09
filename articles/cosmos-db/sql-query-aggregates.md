@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: tisande
 ms.openlocfilehash: 24acd1e9c13320244ff4c27abd13abeda6f70b2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79464457"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Agregační funkce v Azure Cosmos DB
@@ -61,7 +61,7 @@ Výsledky jsou následující:
 
 ## <a name="types-of-aggregate-functions"></a>Typy agregačních funkcí
 
-Rozhraní SQL API podporuje následující agregační funkce. `SUM`a `AVG` pracují s numerickými hodnotami, a `COUNT` , `MIN` a `MAX` pracují na číslech, řetězcích, logických hodnotách a hodnotách null.
+Rozhraní SQL API podporuje následující agregační funkce. `SUM` a `AVG` pracují s numerickými hodnotami, a `COUNT` , `MIN` a `MAX` pracují na číslech, řetězcích, logických hodnotách a hodnotách null.
 
 | Funkce | Popis |
 |-------|-------------|
@@ -82,6 +82,6 @@ Tyto agregované systémové funkce budou využívat výhod [indexu rozsahu](ind
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Úvod do Azure Cosmos DB](introduction.md)
+- [Úvod do služby Azure Cosmos DB](introduction.md)
 - [Systémové funkce](sql-query-system-functions.md)
 - [Uživatelsky definované funkce](sql-query-udfs.md)

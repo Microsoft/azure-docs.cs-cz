@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75435397"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Streamování ve velkém měřítku ve službě HDInsight
@@ -35,7 +35,7 @@ Apache Storm je distribuovaný a open source výpočetní systém odolný proti 
 
 Další informace najdete v tématu [co je Apache Storm ve službě Azure HDInsight?](storm/apache-storm-overview.md).
 
-## <a name="spark-streaming"></a>Streamování Sparku
+## <a name="spark-streaming"></a>Spark Streaming
 
 Streamování Sparku je rozšíření pro Spark, které umožňuje znovu použít stejný kód, který používáte pro dávkové zpracování. V rámci jedné aplikace můžete kombinovat dávkové i interaktivní dotazy. Na rozdíl od neúspěchu poskytuje streamování Spark stav přesně po sémantikě zpracování. Pokud se používá v kombinaci s [rozhraním API Kafka Direct](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), které zajišťuje, aby všechna Kafka data přijímala pouze jednou za vás, je možné, že se přesně zajistěte. Jedna z možností streamování Sparku je odolná proti chybám, která umožňuje rychle obnovit chybové uzly, když se v clusteru používá víc uzlů.
 
@@ -49,7 +49,7 @@ Existují výhody pro oddělení technologií. Kafka je například technologie 
 
 ### <a name="scale-the-stream-buffering-layer"></a>Škálování vrstvy vyrovnávací paměti streamu
 
-Technologie ukládání do vyrovnávací paměti datového proudu Event Hubs a Kafka používají oddíly a spotřebitelé si z těchto oddílů čtou. Škálování vstupní propustnosti vyžaduje škálování počtu oddílů a přidání oddílů poskytuje rostoucí paralelismus. V Event Hubs se po nasazení nedá změnit počet oddílů, takže je důležité začít s cílovým škálováním. Pomocí Kafka je možné [Přidat oddíly](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)i v případě, že Kafka zpracovává data. Kafka poskytuje nástroj k opětovnému přiřazení oddílů `kafka-reassign-partitions.sh` . HDInsight poskytuje [Nástroj pro vyrovnávání repliky oddílů](https://github.com/hdinsight/hdinsight-kafka-tools) `rebalance_rackaware.py` . Tento nástroj pro opětovné vyrovnávání zatížení zavolá `kafka-reassign-partitions.sh` Nástroj takovým způsobem, že každá replika je v samostatné doméně selhání a aktualizační doméně, což Kafka zablokuje a zvyšuje odolnost proti chybám.
+Technologie ukládání do vyrovnávací paměti datového proudu Event Hubs a Kafka používají oddíly a spotřebitelé si z těchto oddílů čtou. Škálování vstupní propustnosti vyžaduje škálování počtu oddílů a přidání oddílů poskytuje rostoucí paralelismus. V Event Hubs se po nasazení nedá změnit počet oddílů, takže je důležité začít s cílovým škálováním. Pomocí Kafka je možné [Přidat oddíly](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)i v případě, že Kafka zpracovává data. Kafka poskytuje nástroj k opětovnému přiřazení oddílů  `kafka-reassign-partitions.sh` . HDInsight poskytuje [Nástroj pro vyrovnávání repliky oddílů](https://github.com/hdinsight/hdinsight-kafka-tools)  `rebalance_rackaware.py` . Tento nástroj pro opětovné vyrovnávání zatížení zavolá `kafka-reassign-partitions.sh` Nástroj takovým způsobem, že každá replika je v samostatné doméně selhání a aktualizační doméně, což Kafka zablokuje a zvyšuje odolnost proti chybám.
 
 ### <a name="scale-the-stream-processing-layer"></a>Škálování vrstvy zpracování datového proudu
 

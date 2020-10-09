@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 596a6657018658d2d00abe7f221ffae9a6730a7a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826465"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Kurz: Azure Active Directory integrace se soubory plošší
@@ -73,7 +73,7 @@ Aby se jednotné přihlašování fungovalo, musí se zřídit vztah propojení 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí souborů plošší, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurovat jednotné přihlašování souborů plošší](#configure-flatter-files-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Nakonfigurovat jednotné přihlašování souborů plošší](#configure-flatter-files-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření plošší souborů testovacího uživatele](#create-flatter-files-test-user)** – pro Britta Simon v souborech plošší, které jsou propojené s reprezentací uživatele v Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí souborů
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -101,7 +101,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí souborů
 
     ![Informace o jednotném přihlašování plošší souborů a adres URL](common/preintegrated.png)
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -115,7 +115,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí souborů
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-flatter-files-single-sign-on"></a>Konfigurace jednotného přihlašování souborů plošší
+### <a name="configure-flatter-files-single-sign-on"></a>Konfigurace plošší souborů s jedním Sign-On
 
 1. Přihlaste se k vaší aplikaci plošší Files jako správce.
 
@@ -133,7 +133,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí souborů
 
 4. V dialogovém okně **Konfigurace SAML** proveďte následující kroky: 
    
-    ![Konfigurace jednotného přihlašování](./media/flatter-files-tutorial/tutorial_flatter_files_08.png)  
+    ![Konfigurace jednoho Sign-On](./media/flatter-files-tutorial/tutorial_flatter_files_08.png)  
    
     a. Do textového pole **doména** zadejte registrovanou doménu.
    
@@ -169,7 +169,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Create** (Vytvořit).
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

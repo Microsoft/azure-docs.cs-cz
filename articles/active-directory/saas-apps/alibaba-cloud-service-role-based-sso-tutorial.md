@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 4ffaad77a34be66d06f8f0033731d0496e444e52
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715879"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s cloudovou službou Alibaba (jednotné přihlašování založené na rolích)
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat cloudovou službu Alibaba (SSO založe
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -65,8 +65,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-2. **[Konfigurace jednotného přihlašování založeného na rolích v Alibaba cloudové službě](#configure-role-based-single-sign-on-in-alibaba-cloud-service)** – umožní uživatelům používat tuto funkci.
-    1. **[Nakonfigurujte Alibaba cloudovou službu (SSO na základě rolí) SSO](#configure-alibaba-cloud-service-role-based-sso-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte Role-Based jeden Sign-On v cloudové službě Alibaba](#configure-role-based-single-sign-on-in-alibaba-cloud-service)** – umožníte uživatelům používat tuto funkci.
+    1. **[Nakonfigurujte Alibaba cloudovou službu (jednotné přihlašování na základě rolí)](#configure-alibaba-cloud-service-role-based-sso-sso)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
     1. **[Vytvořte testovacího uživatele Alibaba cloudovou službu (SSO založená na rolích)](#create-alibaba-cloud-service-role-based-sso-test-user)** – bude mít protějšek Britta Simon v cloudové službě v Alibaba (jednotné přihlašování založené na rolích), která je propojená s reprezentací uživatele v Azure AD.
 3. **[Testování jednotného jednotného přihlašování](#test-sso)** – ověřte, jestli konfigurace funguje.
 
@@ -114,7 +114,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Create** (Vytvořit).
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -132,7 +132,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Na kartě **Uživatelé a skupiny** vyberte v seznamu uživatelů možnost U2 a klikněte na **Vybrat**. Pak klikněte na **přiřadit**.
 
-    ![Snímek obrazovky se zobrazí podokno přidat přiřazení pro Alibaba bez vybraných uživatelů a skupin.](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
+    ![Snímek obrazovky zobrazuje podokno Add-Assignment Alibaba bez výběru uživatelů a skupin.](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
 1. Zobrazit přiřazenou roli a testovat cloudovou službu Alibaba (jednotné přihlašování založené na rolích)
 
@@ -141,7 +141,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
     >[!NOTE]
     >Po přiřazení uživatele (U2) je vytvořená role automaticky připojena k uživateli. Pokud jste vytvořili více rolí, musíte k uživateli podle potřeby připojit příslušnou roli. Pokud chcete implementovat jednotné přihlašování založené na rolích z Azure AD do několika cloudových účtů Alibaba, opakujte předchozí kroky.
 
-## <a name="configure-role-based-single-sign-on-in-alibaba-cloud-service"></a>Konfigurace jednotného přihlašování na základě rolí v cloudové službě Alibaba
+## <a name="configure-role-based-single-sign-on-in-alibaba-cloud-service"></a>Konfigurace Role-Based jednoho Sign-On v cloudové službě Alibaba
 
 1. Přihlaste se ke konzole Alibaba Cloud [RAM](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A%2F%2Fram.console.aliyun.com%2F%3Fspm%3Da2c63.p38356.879954.8.7d904e167h6Yg9) pomocí Account1.
 
@@ -248,7 +248,7 @@ Po dokončení předchozích konfigurací otestujte cloudovou službu Alibaba (S
 
     ![Snímek obrazovky se zobrazí stránka Produkty & služby, která indikuje, že test proběhl úspěšně. ](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

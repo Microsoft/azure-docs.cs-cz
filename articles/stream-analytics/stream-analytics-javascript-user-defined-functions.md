@@ -9,10 +9,10 @@ ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
 ms.openlocfilehash: 7df244ee024b0d67ba678e296b882fbb08c3e16b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317714"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics
@@ -86,7 +86,7 @@ Stream Analytics | JavaScript
 bigint | Číslo (JavaScript může používat celá čísla jenom do hodnoty 2^53)
 DateTime | Datum (JavaScript podporuje jenom milisekundy)
 double | Číslo
-nvarchar(MAX) | Řetězec
+nvarchar(MAX) | String
 Záznam | Objekt
 Pole | Pole
 NULL | Null
@@ -96,8 +96,8 @@ Převody z jazyka JavaScript do Stream Analytics:
 JavaScript | Stream Analytics
 --- | ---
 Číslo | Bigint (pokud je číslo zaokrouhlené a je v rozsahu long.MinValue a long.MaxValue; jinak typ double)
-Datum | DateTime
-Řetězec | nvarchar(MAX)
+Date | DateTime
+String | nvarchar(MAX)
 Objekt | Záznam
 Pole | Pole
 Null, Nedefinováno | NULL

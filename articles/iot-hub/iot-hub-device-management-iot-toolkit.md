@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81688095"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Použití nástrojů Azure IoT pro Visual Studio Code pro správu zařízení Azure IoT Hub
@@ -22,7 +22,7 @@ ms.locfileid: "81688095"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Možnost správy          | Úkol                    |
+| Možnost správy          | Úloha                    |
 |----------------------------|--------------------------------|
 | Přímé metody             | Udělejte zařízení jako takové, jako je spuštění nebo zastavení odesílání zpráv nebo restartování zařízení.                                        |
 | Čtení z vlákna zařízení           | Načte stav nahlášeného zařízení. Například zařízení nahlásí, že indikátor LED právě bliká.                                    |
@@ -43,9 +43,9 @@ Naučíte se používat nástroje Azure IoT pro Visual Studio Code s různými m
 
 Spusťte nástroje Azure IoT Tools pro Visual Studio Code s různými možnostmi správy.
 
-## <a name="what-you-need"></a>Co potřebujete
+## <a name="what-you-need"></a>Co budete potřebovat
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
 * Azure IoT Hub v rámci vašeho předplatného.
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Nástroje Azure IoT pro vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo zkopírujte tuto adresu URL a vložte ji do okna prohlížeče: `vscode:extension/vsciot-vscode.azure-iot-tools` .

@@ -17,10 +17,10 @@ ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82232304"
 ---
 # <a name="email-notifications-in-pim"></a>E-mailová oznámení v PIM
@@ -31,7 +31,7 @@ Privileged Identity Management (PIM) vám umožní zjistit, kdy se v organizaci 
 
 E-maily odeslané z Privileged Identity Management pro role prostředků Azure AD a Azure mají následující e-mailovou adresu odesílatele:
 
-- E-mailová adresa: **Azure- \@ Microsoft.com Reply**
+- E-mailová adresa:  **Azure- \@ Microsoft.com Reply**
 - Zobrazovaný název: Microsoft Azure
 
 Tyto e-maily obsahují předponu **PIM** v řádku předmětu. Tady je příklad:
@@ -50,9 +50,9 @@ Kdo obdrží tyto e-maily pro role Azure AD, závisí na vaší roli, události 
 
 | Uživatel | Aktivace role čeká na schválení. | Žádost o aktivaci role je dokončená. | PIM je povolený. |
 | --- | --- | --- | --- |
-| Správce privilegovaných rolí</br>(Aktivováno/způsobilo) | Ano</br>(pouze pokud nejsou zadáni žádní explicitní schvalovatelé) | Ano* | Ano |
-| Správce zabezpečení</br>(Aktivováno/způsobilo) | Ne | Ano* | Ano |
-| Globální správce</br>(Aktivováno/způsobilo) | Ne | Ano* | Ano |
+| Správce privilegovaných rolí</br>(Aktivováno/způsobilo) | Yes</br>(pouze pokud nejsou zadáni žádní explicitní schvalovatelé) | Ano* | Yes |
+| Správce zabezpečení</br>(Aktivováno/způsobilo) | No | Ano* | Yes |
+| Globální správce</br>(Aktivováno/způsobilo) | No | Ano* | Yes |
 
 \*Pokud je [nastavení **oznámení** ](pim-how-to-change-default-settings.md#notifications) nastaveno na **Povolit**.
 
@@ -68,7 +68,7 @@ Týdenní Privileged Identity Management souhrnný e-mail pro role Azure AD se p
 
 E-mail obsahuje čtyři dlaždice:
 
-| dlaždici | Popis |
+| dlaždici | Description |
 | --- | --- |
 | **Aktivované uživatelé** | Počet, kolikrát uživatelé aktivovali svou oprávněnou roli v rámci organizace. |
 | **Uživatelé, kteří udělali trvalé** | Počet, kolikrát se uživatelé s oprávněným přiřazením udělali jako trvalé |

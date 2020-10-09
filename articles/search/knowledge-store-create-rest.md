@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/02/2020
 ms.openlocfilehash: 1745a2bf83cb704c8cc73e9d3bf0eba8245329b3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88924261"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Vytvoření úložiště znalostí pomocí REST a předzálohovacího
@@ -23,7 +23,7 @@ V tomto článku použijete rozhraní REST API k ingestování, indexování a p
 
 Po vytvoření znalostní báze můžete získat informace o tom, jak získat přístup k znalostnímu obchodu pomocí [Průzkumník služby Storage](knowledge-store-view-storage-explorer.md) nebo [Power BI](knowledge-store-connect-power-bi.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!TIP]
 > Pro tento článek doporučujeme [publikovat desktopovou aplikaci](https://www.getpostman.com/) . [Zdrojový kód](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) tohoto článku obsahuje kolekci post obsahující všechny požadavky. 
