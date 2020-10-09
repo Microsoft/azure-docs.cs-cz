@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80882875"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: přesunout do produkčního prostředí
@@ -35,8 +35,8 @@ Pomocí koncového bodu Microsoft Identity Platform (v 2.0) nemůžete získat t
 
 Například můžete mít dva prostředky, které mají dva obory:
 
-- `https://mytenant.onmicrosoft.com/customerapi`s rozsahy `customer.read` a`customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`s rozsahy `vendor.read` a`vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi` s rozsahy `customer.read` a `customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi` s rozsahy `vendor.read` a `vendor.write`
 
 V tomto příkladu použijte `.WithAdditionalPromptToConsent` modifikátor, který má `extraScopesToConsent` parametr.
 

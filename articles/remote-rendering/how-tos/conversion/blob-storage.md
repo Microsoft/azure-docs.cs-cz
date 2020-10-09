@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80681646"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Použití služby Azure Blob Storage pro převod modelů
@@ -29,7 +29,7 @@ Vytváření účtů úložiště a kontejnerů objektů BLOB se dá udělat jed
 
 - [Azure Portal](https://portal.azure.com)
 - [AZ Command line](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+- [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/)
 - Sady SDK (C#, Python...)
 
 ## <a name="ensure-azure-remote-rendering-can-access-your-storage-account"></a>Zajistěte, aby vzdálené vykreslování Azure mohlo mít přístup k vašemu účtu úložiště.
@@ -53,7 +53,7 @@ Identifikátor URI SAS může být vygenerován pomocí jednoho z těchto:
 - AZ PowerShell Module
   - Podívejte se na [ukázkové skripty PowerShellu](../../samples/powershell-example-scripts.md)
 - [AZ Command line](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+- [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/)
   - Klikněte pravým tlačítkem na kontejner získat sdílený přístupový podpis (číst, vypsat přístup pro vstupní kontejner, oprávnění k zápisu pro kontejner výstupu).
 - Sady SDK (C#, Python...)
 

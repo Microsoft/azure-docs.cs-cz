@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76277191"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Přehled integrace mezi Application Gateway a Azure Security Center
@@ -40,7 +40,7 @@ Kliknutím na webovou aplikaci s kritickým problémem získáte stránku **stav
 
 Kliknutím na **Přidat Firewall webových aplikací** v části **doporučení** otevřete stránku **Přidat Firewall webových aplikací** .
 
-Pokud nemáte existující Application Gateway nebo chcete vytvořit nový, klikněte na **vytvořit nové** a **vytvořte novou bránu firewall webových aplikací**a klikněte na **Microsoft-Application Gateway**. Provede vás kroky k vytvoření aplikační brány. V tomto okamžiku je webová aplikace přidána jako chráněný prostředek, Security Center nyní sleduje, zda je tento prostředek chráněn bránou firewall webových aplikací. Tím se nepřidá jako člen fondu back-end.
+Pokud nemáte existující Application Gateway nebo chcete vytvořit nový, klikněte na **vytvořit nové** a  **vytvořte novou bránu firewall webových aplikací**a klikněte na **Microsoft-Application Gateway**. Provede vás kroky k vytvoření aplikační brány. V tomto okamžiku je webová aplikace přidána jako chráněný prostředek, Security Center nyní sleduje, zda je tento prostředek chráněn bránou firewall webových aplikací. Tím se nepřidá jako člen fondu back-end.
 
 Pokud máte existující Aplikační bránu, můžete ji vybrat v části **použít existující řešení** .
 

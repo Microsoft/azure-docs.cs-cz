@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
 ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80811103"
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
@@ -46,7 +46,7 @@ Azure vyžaduje, aby se virtuální počítače připojovaly k Virtual Network A
 
 Další informace:
 
-* [Přehled virtuální sítě](../../virtual-network/virtual-networks-overview.md)
+* [Přehled virtuálních sítí](../../virtual-network/virtual-networks-overview.md)
 
 ## <a name="network-access-control"></a>Řízení přístupu k síti
 
@@ -210,7 +210,7 @@ Další informace:
 
 * [Konfigurace připojení typu VNet-to-VNet pomocí Azure Resource Manager a PowerShellu](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
-Dalším způsobem připojení virtuálních sítí je vytvoření [partnerského vztahu](../../virtual-network/virtual-network-peering-overview.md)virtuální sítě. Tato funkce umožňuje propojit dvě sítě Azure, aby komunikace mezi nimi byla přes páteřní infrastrukturu Microsoftu, aniž by bylo možné přejít přes Internet. Partnerský vztah virtuálních sítí může propojit dvě virtuální sítě v rámci stejné oblasti nebo dvou virtuální sítě napříč oblastmi Azure. Skupin zabezpečení sítě se dá použít k omezení připojení mezi různými podsítěmi nebo systémy.
+Dalším způsobem připojení virtuálních sítí je vytvoření  [partnerského vztahu](../../virtual-network/virtual-network-peering-overview.md)virtuální sítě. Tato funkce umožňuje propojit dvě sítě Azure, aby komunikace mezi nimi byla přes páteřní infrastrukturu Microsoftu, aniž by bylo možné přejít přes Internet. Partnerský vztah virtuálních sítí může propojit dvě virtuální sítě v rámci stejné oblasti nebo dvou virtuální sítě napříč oblastmi Azure. Skupin zabezpečení sítě se dá použít k omezení připojení mezi různými podsítěmi nebo systémy.
 
 ## <a name="availability"></a>Dostupnost
 
@@ -283,7 +283,7 @@ V případě překladu interních názvů máte dvě možnosti:
 
 Další informace:
 
-* [Přehled virtuální sítě](../../virtual-network/virtual-networks-overview.md)
+* [Přehled virtuálních sítí](../../virtual-network/virtual-networks-overview.md)
 * [Správa serverů DNS používaných virtuální sítí](../../virtual-network/manage-virtual-network.md#change-dns-servers)
 
 Pro překlad externích názvů máte dvě možnosti:

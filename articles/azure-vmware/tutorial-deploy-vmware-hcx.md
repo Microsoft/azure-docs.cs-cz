@@ -4,13 +4,13 @@ description: Naučte se, jak nasadit a nakonfigurovat řešení VMware HCX pro p
 ms.topic: tutorial
 ms.date: 10/02/2020
 ms.openlocfilehash: 69832d1537f0f1be95d3283f543ef6e54187b58d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91583284"
 ---
-# <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace HCX VMware
+# <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
 
 V tomto článku se seznámíme s postupy nasazení a konfigurace VMware HCX pro privátní cloud řešení Azure VMWare. VMware HCX umožňuje migraci úloh VMware do řešení Azure VMware a dalších připojených lokalit prostřednictvím různých typů migrace.
 

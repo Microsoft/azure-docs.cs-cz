@@ -13,10 +13,10 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 7a8a1667ba1ca2a99c053c6941e3ba778299fd53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80880746"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Postupy: jednotné přihlašování mezi aplikacemi ADAL a MSAL v macOS a iOS
@@ -41,7 +41,7 @@ MSAL a ADAL používají jiné identifikátory účtu. ADAL používá jako svů
 
 Když obdržíte `MSALAccount` objekt ve výsledku MSAL, obsahuje identifikátor účtu ve `identifier` Vlastnosti. Aplikace by měla tento identifikátor používat pro následné tiché požadavky.
 
-Kromě `identifier` toho `MSALAccount` objekt obsahuje zobrazitelný identifikátor s názvem `username` . To se týká i `userId` v ADAL. `username`není považován za jedinečný identifikátor a může být kdykoli změněn, takže by měl být použit pouze pro scénáře zpětné kompatibility s ADAL. MSAL podporuje dotazy mezipaměti pomocí `username` nebo `identifier` , kde se doporučuje dotazování podle `identifier` .
+Kromě `identifier` toho `MSALAccount` objekt obsahuje zobrazitelný identifikátor s názvem `username` . To se týká i `userId` v ADAL. `username` není považován za jedinečný identifikátor a může být kdykoli změněn, takže by měl být použit pouze pro scénáře zpětné kompatibility s ADAL. MSAL podporuje dotazy mezipaměti pomocí `username` nebo `identifier` , kde se doporučuje dotazování podle `identifier` .
 
 Následující tabulka shrnuje rozdíly v identifikátorech účtů mezi ADAL a MSAL:
 
@@ -49,7 +49,7 @@ Následující tabulka shrnuje rozdíly v identifikátorech účtů mezi ADAL a 
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | zobrazitelný identifikátor            | `username`                                                   | `userId`        | `userId`                       |
 | jedinečný nezobrazitelný identifikátor | `identifier`                                                 | `homeAccountId` | Není k dispozici                            |
-| Není známé žádné ID účtu.               | Dotazování všech účtů prostřednictvím `allAccounts:` rozhraní API v`MSALPublicClientApplication` | Není k dispozici             | Není k dispozici                            |
+| Není známé žádné ID účtu.               | Dotazování všech účtů prostřednictvím `allAccounts:` rozhraní API v `MSALPublicClientApplication` | N/A             | N/A                            |
 
 Toto je rozhraní, které `MSALAccount` poskytuje tyto identifikátory:
 
@@ -99,9 +99,9 @@ ADAL 2.7. x vrátí `homeAccountId` `ADUserInformation` objekt ve výsledku pros
 @property (readonly) NSString *homeAccountId;
 ```
 
-`homeAccountId`v ADAL je ekvivalentem `identifier` v MSAL. Tento identifikátor můžete uložit pro použití v MSAL pro vyhledávání účtů s `accountForIdentifier:error:` rozhraním API.
+`homeAccountId` v ADAL je ekvivalentem `identifier` v MSAL. Tento identifikátor můžete uložit pro použití v MSAL pro vyhledávání účtů s `accountForIdentifier:error:` rozhraním API.
 
-#### <a name="adals-userid"></a>ADAL`userId`
+#### <a name="adals-userid"></a>ADAL `userId`
 
 Pokud `homeAccountId` není k dispozici nebo máte jenom zobrazitelný identifikátor, můžete `userId` k vyhledání účtu v MSAL použít ADAL.
 
@@ -203,7 +203,7 @@ Protože `homeAccountId` není k dispozici ve starších verzích ADAL, budete p
                               error:(NSError * __autoreleasing *)error;
 ```
 
-Příklad:
+Například:
 
 Cíl-C:
 

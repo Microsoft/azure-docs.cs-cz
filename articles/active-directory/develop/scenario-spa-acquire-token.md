@@ -12,10 +12,10 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80882314"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Jednostránkové aplikace: získání tokenu pro volání rozhraní API
@@ -24,8 +24,8 @@ Vzor pro získání tokenů pro rozhraní API s MSAL.js je prvním pokusem o po�
 
 Požadavky na tiché tokeny do služby Azure AD mohou selhat z důvodů, jako je například relace Azure AD s vypršenou platností nebo změna hesla. V takovém případě můžete vyvolat jednu z interaktivních metod (s výzvou uživateli) získat tokeny:
 
-* [Automaticky otevírané okno](#acquire-a-token-with-a-pop-up-window)pomocí`acquireTokenPopup`
-* [Přesměrování](#acquire-a-token-with-a-redirect)pomocí`acquireTokenRedirect`
+* [Automaticky otevírané okno](#acquire-a-token-with-a-pop-up-window)pomocí `acquireTokenPopup`
+* [Přesměrování](#acquire-a-token-with-a-redirect)pomocí `acquireTokenRedirect`
 
 ## <a name="choose-between-a-pop-up-or-redirect-experience"></a>Volba mezi prostředím pro místní nebo přesměrování
 
@@ -70,7 +70,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 MSAL úhlová obálka poskytuje zachytávací protokolem HTTP, která automaticky získá přístupové tokeny a připojí je k požadavkům HTTP na rozhraní API.
 
-V možnosti konfigurace můžete zadat obory pro rozhraní API `protectedResourceMap` . `MsalInterceptor`vyžádá si tyto obory při automatickém získávání tokenů.
+V možnosti konfigurace můžete zadat obory pro rozhraní API `protectedResourceMap` . `MsalInterceptor` vyžádá si tyto obory při automatickém získávání tokenů.
 
 ```javascript
 // app.module.ts

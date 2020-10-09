@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, stažení aktualizace, nejnovější, dostupná, instalace, tělo, sledování
 ms.openlocfilehash: e3f8233d208e2a45c1af9a52a76b6064b15bfe4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277222"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>Stáhnout sadu SDK pro sledování textu v Azure Kinect
@@ -109,9 +109,9 @@ Pokud příkaz uspěje, sada SDK je připravena k použití.
 
 * [Zásadní změna] Přechod na verzi sady SDK na CUDA 10,0 (z CUDA 10,1). Běhový modul ONNX se oficiálně podporuje jenom až CUDA 10,0.
 * [Zásadní změna] Přepnuto na modul runtime ONNX namísto modulu runtime Tensorflow. Snižuje čas spuštění prvního snímku a využití paměti. Zároveň se tím zmenší binární velikost sady SDK.
-* [Změna rozhraní API] Přejmenováno `k4abt_tracker_queue_capture()` na`k4abt_tracker_enqueue_capture()`
+* [Změna rozhraní API] Přejmenováno `k4abt_tracker_queue_capture()` na `k4abt_tracker_enqueue_capture()`
 * [Změna rozhraní API] Podařilo přerušit `k4abt_frame_get_body()` do dvou samostatných funkcí: `k4abt_frame_get_body_skeleton()` a `k4abt_frame_get_body_id()` . Nyní můžete zadat dotaz na ID textu bez nutnosti kopírování celé kostry struktury.
-* [Změna rozhraní API] Přidání `k4abt_frame_get_timestamp_usec()` funkce pro zjednodušení kroků pro uživatele k dotazování časového razítka rámce textu.
+* [Změna rozhraní API] Přidání  `k4abt_frame_get_timestamp_usec()` funkce pro zjednodušení kroků pro uživatele k dotazování časového razítka rámce textu.
 * Další vylepšení přesnosti algoritmu sledování textu a sledování spolehlivosti
 
 ## <a name="next-steps"></a>Další kroky

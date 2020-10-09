@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 00ddd61209af6e0d16b7f7579a6e8729cde0cdf0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552462"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>Kurz: Azure Active Directory integrace s konkrétně
@@ -73,7 +73,7 @@ Aby jednotné přihlašování fungovalo, musí být navázán odkaz na vztah me
 Ke konfiguraci a testování jednotného přihlašování Azure AD pomocí konkrétně je potřeba dokončit následující stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Konfigurace konkrétně jednotného přihlašování](#configure-namely-single-sign-on)** pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+2. **[Nakonfigurujte konkrétně jednotné přihlašování](#configure-namely-single-sign-on)** , abyste na straně aplikace nakonfigurovali nastavení jednoho Sign-On.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvořte konkrétně testovacího uživatele](#create-namely-test-user)** , který bude mít protějšek Britta Simon v, konkrétně propojený s reprezentací uživatele Azure AD.
@@ -93,7 +93,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pro získání těchto hodnot kontaktujte [konkrétně tým podpory klienta](https://www.namely.com/contact/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
@@ -122,25 +122,25 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-namely-single-sign-on"></a>Konfigurace konkrétně jednotného přihlašování
+### <a name="configure-namely-single-sign-on"></a>Konfigurovat konkrétně jednu Sign-On
 
 1. V jiném okně prohlížeče se přihlaste k vaší organizaci jako správce.
 
 2. Na panelu nástrojů v horní části klikněte na možnost **Společnost**.
    
-    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_06.png) 
+    ![Konfigurace jednoho Sign-On](./media/namely-tutorial/tutorial_namely_06.png) 
 
 3. Klikněte na kartu **Nastavení**.
    
-    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_07.png) 
+    ![Konfigurace jednoho Sign-On](./media/namely-tutorial/tutorial_namely_07.png) 
 
 4. Klikněte na **SAML**.
    
-    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_08.png) 
+    ![Konfigurace jednoho Sign-On](./media/namely-tutorial/tutorial_namely_08.png) 
 
 5. Na stránce **Nastavení SAML** proveďte následující kroky:
    
-    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_09.png)
+    ![Konfigurace jednoho Sign-On](./media/namely-tutorial/tutorial_namely_09.png)
  
     a. Klikněte na **Povolit SAML**. 
 
@@ -173,7 +173,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -181,7 +181,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **konkrétně**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **konkrétně**.
 
@@ -211,15 +211,15 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v, konkrétn
 
 2. Na panelu nástrojů v horní části klikněte na **lidé**.
    
-    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_10.png) 
+    ![Konfigurace jednoho Sign-On](./media/namely-tutorial/tutorial_namely_10.png) 
 
 3. Klikněte na kartu **adresář** .
    
-    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_11.png) 
+    ![Konfigurace jednoho Sign-On](./media/namely-tutorial/tutorial_namely_11.png) 
 
 4. Klikněte na **Přidat novou osobu**.
 
-    ![Konfigurace jednotného přihlašování](./media/namely-tutorial/tutorial_namely_12.png)
+    ![Konfigurace jednoho Sign-On](./media/namely-tutorial/tutorial_namely_12.png)
 
 5. V dialogovém okně **Přidat novou osobu** proveďte následující kroky:
 

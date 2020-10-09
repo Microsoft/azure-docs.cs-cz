@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85262663"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Zabezpečení klíčů Azure Cosmos s využitím služby Azure Key Vault 
@@ -70,11 +70,11 @@ Pro ukládání a čtení Azure Cosmos DB přístupových klíčů z Key Vault j
 
 5. Po nasazení aplikace. Z Azure Portal přejděte na webovou aplikaci, kterou jste nasadili, a zapněte **identitu spravované služby** této aplikace.  
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="Identita spravované služby":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="Vytvoření tajného kódu":::
 
 Pokud teď aplikaci spustíte, zobrazí se následující chyba, protože jste neudělili žádné oprávnění k této aplikaci v Key Vault.
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="Aplikace nasazená bez přístupu":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="Vytvoření tajného kódu":::
 
 ## <a name="register-the-application--grant-permissions-to-read-the-key-vault"></a>Zaregistrujte aplikaci & udělte oprávnění ke čtení Key Vault
 
@@ -84,11 +84,11 @@ V této části zaregistrujete aplikaci pomocí Azure Active Directory a udělí
 
 2. Otevřete **zásady přístupu**, vyberte **+ Přidat nový** najít webovou aplikaci, kterou jste nasadili, vyberte oprávnění a vyberte **OK**.  
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Přidat zásady přístupu":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Vytvoření tajného kódu":::
 
 Když teď aplikaci spustíte, můžete si přečíst tajný klíč z Key Vault.
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="Aplikace nasazená s tajným klíčem":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="Vytvoření tajného kódu":::
  
 Podobně můžete přidat uživatele pro přístup k trezoru klíčů. K Key Vault se musíte přidat sami tak, že vyberete **zásady přístupu** a potom udělíte všechna oprávnění, která potřebujete ke spuštění aplikace ze sady Visual Studio. Když je tato aplikace spuštěná z plochy, převezme vaši identitu.
 

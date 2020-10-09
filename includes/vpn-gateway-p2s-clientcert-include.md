@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.openlocfilehash: 31ccf14c82f6248c74d6af932fe9e338d26d2747
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67174869"
 ---
 Každý klientský počítač, který se připojujete k virtuální síti s připojením typu Point-to-site, musí mít nainstalovaný klientský certifikát. Vygenerujete ho z kořenového certifikátu a nainstalujete ho na každý klientský počítač. Pokud nenainstalujete platný certifikát klienta, ověřování se nezdaří, pokud se klient pokusí připojit k virtuální síti.

@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
 ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76986032"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: běžné otázky
@@ -25,7 +25,7 @@ Tento článek obsahuje seznam nejčastějších dotazů, které jste pravděpod
 V souboru config.txt služby Microsoft Genomics zadejte process_name do `gatk4` . Všimněte si, že se vám budou účtovat pravidelné fakturační sazby.
 
 ## <a name="how-do-i-enable-output-compression"></a>Návody povolit kompresi výstupu?
-Výstupní VCF nebo gvcf můžete zkomprimovat pomocí volitelného argumentu pro výstupní kompresi. Jedná se o ekvivalent spuštění `-bgzip` následovaný `-tabix` na výstupu VCF nebo gvcf, aby se vytvořily `.gz` (bgzip Output) a `.tbi` (tabix Output) soubory. `bgzip`zkomprimuje soubor VCF nebo gvcf a `tabix` vytvoří index komprimovaného souboru. Argument je logická hodnota, která je standardně nastavená na `false` výstup VCF a `true` ve výchozím nastavení pro výstup gcvf. Chcete-li použít příkaz v příkazovém řádku, zadejte `-bz` nebo `--bgzip-output` jako `true` (spusťte bgzip a tabix) nebo `false` . Chcete-li použít tento argument v souboru config.txt, přidejte `bgzip_output: true` nebo `bgzip_output: false` do souboru.
+Výstupní VCF nebo gvcf můžete zkomprimovat pomocí volitelného argumentu pro výstupní kompresi. Jedná se o ekvivalent spuštění `-bgzip` následovaný `-tabix` na výstupu VCF nebo gvcf, aby se vytvořily `.gz` (bgzip Output) a `.tbi` (tabix Output) soubory. `bgzip` zkomprimuje soubor VCF nebo gvcf a `tabix` vytvoří index komprimovaného souboru. Argument je logická hodnota, která je standardně nastavená na `false` výstup VCF a `true` ve výchozím nastavení pro výstup gcvf. Chcete-li použít příkaz v příkazovém řádku, zadejte `-bz` nebo `--bgzip-output` jako `true` (spusťte bgzip a tabix) nebo `false` . Chcete-li použít tento argument v souboru config.txt, přidejte `bgzip_output: true` nebo `bgzip_output: false` do souboru.
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Jaká je smlouva SLA pro Microsoft Genomics?
 Garantujeme, že 99,9% času Microsoft Genomics služby bude k dispozici pro příjem požadavků rozhraní API pracovního postupu. Další informace najdete v tématu [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/).
@@ -63,7 +63,7 @@ Váš klíč účtu úložiště se používá k vytvoření krátkodobého př�
 
 Jsou podporovány tyto odkazy:
 
- |Referenční informace              | Hodnota`-pa/--process-args` |
+ |Odkaz              | Hodnota `-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      

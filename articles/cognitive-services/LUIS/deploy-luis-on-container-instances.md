@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: aahi
 ms.openlocfilehash: 08af17106846a0f5f7a0ccc2b01da1b2e15c1143
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80879194"
 ---
 # <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>Nasazení kontejneru Language Understanding (LUIS) do služby Azure Container Instances
@@ -29,11 +29,11 @@ Naučte se, jak nasadit kontejner Cognitive Services [Luis](luis-container-howto
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 
-Kontejner LUIS vyžaduje soubor `.gz` modelu, který je načítán za běhu. Kontejner musí být schopný získat přístup k tomuto souboru modelu prostřednictvím připojení svazku z instance kontejneru. Informace o tom, jak vytvořit sdílenou složku Azure, najdete v tématu [Vytvoření sdílení souborů](../../storage/files/storage-how-to-create-file-share.md). Poznamenejte si název účtu Azure Storage, klíč a název sdílené složky, abyste je mohli později potřebovat.
+Kontejner LUIS vyžaduje `.gz` soubor modelu, který je načítán za běhu. Kontejner musí být schopný získat přístup k tomuto souboru modelu prostřednictvím připojení svazku z instance kontejneru. Informace o tom, jak vytvořit sdílenou složku Azure, najdete v tématu [Vytvoření sdílení souborů](../../storage/files/storage-how-to-create-file-share.md). Poznamenejte si název účtu Azure Storage, klíč a název sdílené složky, abyste je mohli později potřebovat.
 
 ### <a name="export-and-upload-packaged-luis-app"></a>Export a nahrání zabalených aplikací v LUIS
 
-Aby bylo možné nahrát LUIS model (zabalenou aplikaci) do sdílené složky Azure, budete <a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">ho muset nejdřív <span class="docon docon-navigate-external x-hidden-focus"> </span>exportovat z portálu Luis </a>. V Azure Portal přejděte na stránku **Přehled** prostředku účtu úložiště a vyberte **sdílené složky**. Vyberte název sdílené složky, který jste nedávno vytvořili, a pak vyberte tlačítko **nahrát** .
+Aby bylo možné nahrát LUIS model (zabalenou aplikaci) do sdílené složky Azure, budete <a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">ho muset nejdřív <span class="docon docon-navigate-external x-hidden-focus"></span> exportovat z portálu Luis </a>. V Azure Portal přejděte na stránku **Přehled** prostředku účtu úložiště a vyberte **sdílené složky**. Vyberte název sdílené složky, který jste nedávno vytvořili, a pak vyberte tlačítko **nahrát** .
 
 > [!div class="mx-imgBorder"]
 > ![Odeslat do sdílení souborů](media/luis-how-to-deploy-to-aci/upload-file-share.png)

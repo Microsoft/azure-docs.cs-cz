@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
 ms.openlocfilehash: d35c02386b7bcb18781dcbd8c209da43d590868c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76169515"
 ---
 # <a name="support-and-help-options"></a>Možnosti pomoci a podpory
@@ -33,11 +33,11 @@ Právě začínáte zkoumat funkčnost služby Speech? Implementujete u své apl
 
 Novinky o Cognitive Services se shromažďují na [blogu Cognitive Services](https://azure.microsoft.com/blog/topics/cognitive-services/). Nejnovější informace o službě Speech Service najdete na [blogu služby Speech](https://azure.microsoft.com/blog/tag/speech-service/).
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Zpráva k vydání verze
 
 [Poznámky k verzi](https://aka.ms/csspeech/whatsnew) se aktualizují, jakmile bude k dispozici nová verze. Poznámky obsahují informace o nových funkcích, vylepšeních a opravách chyb.
 
-## <a name="search"></a>Search
+## <a name="search"></a>Hledat
 
 Odpověď, kterou potřebujete, najdete v dokumentaci, ukázkách nebo odpovědích na [Stack Overflow](https://www.stackoverflow.com) dotazy nebo v ukázkách.
 
@@ -55,7 +55,7 @@ Kde *{vaše hledané výrazy}* jsou vaše klíčová slova pro hledání.
 
 Zákazníci Azure můžou vytvářet a spravovat žádosti o podporu v Azure Portal.
 
-* [portál Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure Portal pro vládu USA](https://portal.azure.us)
 
 ## <a name="create-a-github-issue"></a>Vytvoření problému GitHubu
@@ -101,7 +101,7 @@ Kterou verzi sady SDK používáte.
 
 Stack Overflow je preferovaným kanálem pro otázky související s vývojem. Je tam, kde jsou členové komunity a členové týmu Microsoftu přímo zapojeni na pomoc při řešení vašich problémů.
 
-Pokud nemůžete najít odpověď na váš problém prostřednictvím hledání, odešlete novou otázku do Stack Overflow pomocí značek [ \[\]\[rozpoznávání\]řeči společnosti Microsoft](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech).
+Pokud nemůžete najít odpověď na váš problém prostřednictvím hledání, odešlete novou otázku do Stack Overflow pomocí značek [ \[ \] \[ rozpoznávání řeči \] společnosti Microsoft](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech).
 
 > [!TIP]
 > Následující příspěvky z Stack Overflow obsahují tipy, jak vytvořit otázky a přidat zdrojový kód. Podle těchto pokynů může pomáhat zvýšit riziko, že členové komunity vyhodnotili a rychle reagují na své otázky:  

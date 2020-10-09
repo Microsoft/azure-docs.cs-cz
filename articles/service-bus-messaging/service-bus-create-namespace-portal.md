@@ -4,10 +4,10 @@ description: Tento článek poskytuje pokyny pro vytvoření oboru názvů Azure
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 3c665dad06ca7cf7bba39b5e1a0f748b420ad770
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85337748"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Vytvoření oboru názvů služby Service Bus pomocí webu Azure Portal
@@ -16,7 +16,7 @@ Obor názvů je kontejner oboru pro všechny součásti zasílání zpráv. Sou�
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-Gratulujeme! Právě jste vytvořili obor názvů zasílání zpráv služby Service Bus.
+Blahopřejeme! Právě jste vytvořili obor názvů zasílání zpráv služby Service Bus.
 
 ## <a name="next-steps"></a>Další kroky
 
