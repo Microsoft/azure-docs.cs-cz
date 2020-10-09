@@ -2,15 +2,15 @@
 title: Řešení potíží s Azure Automation Update Management
 description: V tomto článku se dozvíte, jak řešit problémy s Azure Automation Update Management.
 services: automation
-ms.date: 09/25/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 9f832b45b3aca11fb96a56643f2cce0228adf8ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c70d164325f536187c5ce99419bb41daaa9b1e88
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713498"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858400"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Řešení problémů s Update Managementem
 
@@ -57,27 +57,25 @@ Pro účet Automation se zobrazí staré aktualizace, které chybí, i když byl
 
 ### <a name="cause"></a>Příčina
 
-Nahrazené aktualizace nejsou správně označeny jako odmítnuté, aby je bylo možné považovat za nepoužité.
+Nahrazené aktualizace nejsou odmítnuté ve Windows Server Update Services (WSUS), aby je bylo možné považovat za nepoužité.
 
 ### <a name="resolution"></a>Řešení
 
-Pokud se nahradí nahrazené aktualizace 100 procent, měli byste změnit stav schválení této aktualizace na `Declined` . Změna stavu schválení pro všechny vaše aktualizace:
+Pokud se nahrazená aktualizace bude 100%, měli byste změnit stav schválení této aktualizace na `Declined` ve službě WSUS. Změna stavu schválení pro všechny vaše aktualizace:
 
 1. V účtu Automation vyberte **Update Management** pro zobrazení stavu počítače. Viz [zobrazení posouzení aktualizací](../update-management/update-mgmt-view-update-assessments.md).
 
 2. Zkontrolujte nahrazenou aktualizaci a ujistěte se, že se nejedná o 100%.
 
-3. Pokud nemáte dotaz týkající se aktualizace, označte ji jako odmítnutou.
+3. Na serveru WSUS, na který počítače nahlásí, [odmítněte aktualizaci](/windows-server/administration/windows-server-update-services/manage/updates-operations#declining-updates).
 
 4. Vyberte **počítače** a ve sloupci **dodržování předpisů** vynuťte opětovné prohledání dodržování předpisů. Viz [Správa aktualizací pro virtuální počítače](../update-management/update-mgmt-manage-updates-for-vm.md).
 
 5. Opakujte výše uvedené kroky pro další nahrazené aktualizace.
 
-6. Spuštěním Průvodce vyčištěním odstraňte soubory z odmítnutých aktualizací. 
+6. Pro Windows Server Update Services (WSUS) vyčistěte všechny nahrazené aktualizace a aktualizujte infrastrukturu pomocí [Průvodce vyčištěním serveru](/windows-server/administration/windows-server-update-services/manage/the-server-cleanup-wizard)WSUS.
 
-7. Pro Windows Server Update Services (WSUS) ručně vyčistěte všechny nahrazené aktualizace a aktualizujte infrastrukturu.
-
-8. Opakujte tento postup pravidelně, abyste opravili problém zobrazení a minimalizovali velikost místa na disku využitého pro správu aktualizací.
+7. Opakujte tento postup pravidelně, abyste opravili problém zobrazení a minimalizovali velikost místa na disku využitého pro správu aktualizací.
 
 ## <a name="scenario-machines-dont-show-up-in-the-portal-under-update-management"></a><a name="nologs"></a>Scénář: počítače se nezobrazují na portálu v části Update Management
 
@@ -150,7 +148,7 @@ Chcete-li zaregistrovat poskytovatele prostředků služby Automation, postupujt
 
 1. V seznamu služeb Azure v dolní části portálu vyberte **všechny služby**a potom vyberte **předplatná** ve skupině obecné služby.
 
-2. Vyberte předplatné.
+2. Vyberte své předplatné.
 
 3. V části **Nastavení**vyberte **poskytovatelé prostředků**.
 

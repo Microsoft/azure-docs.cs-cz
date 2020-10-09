@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9541f2c5f8ee1aac45b6f659547a3ee34c093181
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 47ecf00b608121271e98ca5abbbd5e69ca811fd2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535114"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858213"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Kurz: Azure Active Directory integrace s LearnUpon
 
@@ -77,7 +77,7 @@ Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mez
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí LearnUpon, musíte dokončit tyto stavební bloky:
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování LearnUpon](#configure-learnupon-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Nakonfigurujte jednotné přihlašování LearnUpon](#configure-learnupon-single-sign-on)** – ke konfiguraci nastavení jediného Sign-On na straně aplikace.
 3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
 4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
 5. **[Vytvoření LearnUpon Test User](#create-learnupon-test-user)** – pro Britta Simon v LearnUpon, který je propojený s reprezentací uživatele Azure AD.
@@ -97,7 +97,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí LearnUpo
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+3. Na stránce **nastavit jeden Sign-On s SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -110,7 +110,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí LearnUpo
     > [!NOTE]
     > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou adresou URL odpovědi. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta LearnUpon](https://www.learnupon.com/features/support/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** Najděte **kryptografický otisk** , který se přidá do nastavení LearnUpon SAML.
+5. Na stránce **nastavit jeden Sign-On se** stránkou SAML Najděte **kryptografický otisk** , který se přidá do nastavení LearnUpon SAML.
 
     ![Odkaz na stažení certifikátu](common/certificateraw.png)
 
@@ -124,21 +124,21 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí LearnUpo
 
     c. Odhlašovací adresa URL
 
-### <a name="configure-learnupon-single-sign-on"></a>Konfigurace jednotného přihlašování LearnUpon
+### <a name="configure-learnupon-single-sign-on"></a>Nakonfigurovat LearnUpon jednu Sign-On
 
 1. Otevřete jinou instanci prohlížeče a přihlaste se k LearnUpon pomocí účtu správce.
 
 1. Klikněte na kartu **Nastavení** .
 
-    ![Konfigurace jednotného přihlašování](./media/learnupon-tutorial/tutorial_learnupon_06.png)
+    ![Snímek obrazovky se zobrazí karta nastavení.](./media/learnupon-tutorial/tutorial_learnupon_06.png)
 
 1. Klikněte na **jednotné přihlašování – SAML**a pak klikněte na **Obecné nastavení** a nakonfigurujte nastavení SAML.
    
-    ![Konfigurace jednotného přihlašování](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
+    ![Snímek obrazovky, který zobrazuje jednotné přihlašování-SAML, je vybraný s obecným nastavením.](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
 
 1. V části **Obecné nastavení** proveďte následující kroky:
    
-    ![Konfigurace jednotného přihlašování](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
+    ![Snímek obrazovky se zobrazí v sekci Obecné nastavení, kde můžete zadat hodnoty, které jsou popsány.](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
   
     a. Vyberte **Povoleno**.
 
@@ -158,7 +158,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí LearnUpo
 
 1. Klikněte na **nastavení uživatele**a pak proveďte následující kroky:
 
-     ![Konfigurace jednotného přihlašování](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
+     ![Snímek obrazovky se zobrazí oddíl nastavení uživatele, kde můžete zadat hodnoty, které jsou popsány.](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
     a. Do textového pole **první formát identifikátoru názvu** zadejte hodnotu, která nám sdělí, kde ve vašem kontrolním výrazu SAML se nacházejí uživatelé, například: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
   
@@ -186,7 +186,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -194,7 +194,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **LearnUpon**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+    ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
 2. V seznamu aplikace vyberte **LearnUpon**.
 

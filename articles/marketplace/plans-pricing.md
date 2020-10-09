@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 09/02/2020
-ms.openlocfilehash: ef860d57556e17d432988fd0fd43f861a31fde6c
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e97171e61814b832e78f7bd815d8d6f341a90840
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380740"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858168"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>Plány a ceny pro komerční nabídky na webu Marketplace
 
@@ -39,11 +39,12 @@ V následující tabulce jsou uvedeny možnosti plánu pro každý typ nabídky.
 |||||
 
 Plány nejsou podporovány pro následující typy nabídek:
--  Konzultační služba
--  Dynamics 365 Business Central
--  Dynamics 365 Customer Engagement & PowerApps
--  Dynamics 365 for Operations
--  Aplikace Power BI
+
+- Konzultační služba
+- Dynamics 365 Business Central
+- Dynamics 365 Customer Engagement & PowerApps
+- Dynamics 365 for Operations
+- Aplikace Power BI
 
 ## <a name="plan-information"></a>Informace o plánu
 
@@ -53,12 +54,12 @@ Každý typ nabídky při vytváření nového plánu vyžaduje jiné informace.
 
 Pro nový plán je potřeba provést několik běžných podrobností:
 
--  **ID plánu**: Vytvořte jedinečné ID pro každý plán v této nabídce. Použijte maximálně 50 znaků: jenom malá písmena, alfanumerické znaky, pomlčky a podtržítka. Toto ID se bude zobrazovat zákazníkům v adrese URL produktu a šablony Azure Resource Manager (pokud jsou k dispozici). Po publikování této nabídky nelze toto ID změnit.
--  **Název plánu**: (popisek 1 na obrázku výše) Pro každý plán v této nabídce Vytvořte jedinečný název. Použijte maximálně 50 znaků. Název plánu slouží k rozlišení softwarových plánů, které mohou být součástí stejné nabídky (například název nabídky: Plán Standard a plán Enterprise). Zákazníci uvidí tento název při rozhodování, který plán vybrat v rámci vaší nabídky.
--  **Souhrn plánu**: (popisek 2 na obrázku výše) Tento souhrn se zobrazí ve výsledcích hledání Azure Marketplace a může obsahovat až 100 znaků.
+- **ID plánu**: Vytvořte jedinečné ID pro každý plán v této nabídce. Použijte maximálně 50 znaků: jenom malá písmena, alfanumerické znaky, pomlčky a podtržítka. Toto ID se bude zobrazovat zákazníkům v adrese URL produktu a šablony Azure Resource Manager (pokud jsou k dispozici). Po publikování této nabídky nelze toto ID změnit.
+- **Název plánu**: (popisek 1 na obrázku výše) Pro každý plán v této nabídce Vytvořte jedinečný název. Použijte maximálně 50 znaků. Název plánu slouží k rozlišení softwarových plánů, které mohou být součástí stejné nabídky (například název nabídky: Plán Standard a plán Enterprise). Zákazníci uvidí tento název při rozhodování, který plán vybrat v rámci vaší nabídky.
+- **Souhrn plánu**: (popisek 2 na obrázku výše) Tento souhrn se zobrazí ve výsledcích hledání Azure Marketplace a může obsahovat až 100 znaků.
    > [!NOTE]
    > Toto pole se nevztahuje na nabídky SaaS.
--  **Popis plánu**: (popisek 3 na obrázku výše) Přidejte popis plánu, který vysvětluje, co dělá tento plán jedinečný z jiných plánů vaší nabídky. Použijte maximálně 500 znaků. Tento obsah se uživatelům zobrazí na stránkách seznamu nabídky při procházení a vyberte plán pro vaši nabídku.
+- **Popis plánu**: (popisek 3 na obrázku výše) Přidejte popis plánu, který vysvětluje, co dělá tento plán jedinečný z jiných plánů vaší nabídky. Použijte maximálně 500 znaků. Tento obsah se uživatelům zobrazí na stránkách seznamu nabídky při procházení a vyberte plán pro vaši nabídku.
 
 Název a popis plánu se zobrazí na stránce seznam nabídek v online obchodech s komerčním Marketplace. Následující snímek obrazovky ukazuje tři plány pro seznam SaaS nabídek v Azure Marketplace.
 
@@ -66,8 +67,8 @@ Název a popis plánu se zobrazí na stránce seznam nabídek v online obchodech
 
 Po vytvoření plánů se na stránce **Přehled plánu** zobrazí seznam názvů vašich plánů, ID, další podrobnosti, aktuální stav publikování a všechny dostupné akce. Dostupné akce budou záviset na stavu vašeho plánu a můžou zahrnovat:
 
--  Pokud je stav plánu **koncept** – odstranit koncept.
--  Pokud je stav plánu **Live** – zastavit prodej plánu nebo synchronizovat soukromou cílovou skupinu.
+- Pokud je stav plánu **koncept** – odstranit koncept.
+- Pokud je stav plánu **Live** – zastavte prodej plánu nebo synchronizujte soukromou cílovou skupinu.
 
 Následující snímek obrazovky ukazuje dvě koncepty nabídek.
 
@@ -77,9 +78,9 @@ Následující snímek obrazovky ukazuje dvě koncepty nabídek.
 
 Komerční tržiště funguje na modelu agentury, na základě kterého vydavatelé nastavili ceny, zákazníky s Microsoftem a Microsoft platí za to, že budou mít poplatky za srážku. Na kartě **ceny a dostupnost** **nebo dostupnost můžete** definovat ceny, viditelnost a ceny vaší nabídky (Pokud je k dispozici).
 
--  **Trhy**: každý plán musí být k dispozici aspoň na jednom trhu.  Máte možnost vybrat jenom země "daňové prominuté", ve kterých Microsoft za vás vybírá prodej a používání daně.
--  **Ceny**: cenové modely se vztahují jenom na plány pro nabídky Azure Managed Application, SaaS a Azure pro virtuální počítače. Všechny plány pro stejnou nabídku musí používat stejný cenový model.  
--  **Plánování viditelnosti**: v závislosti na typu nabídky můžete definovat privátní cílovou skupinu nebo skrýt nabídku nebo plán z Azure Marketplace. Tato informace je podrobněji vysvětlena v části [plánování viditelnosti](#plan-visibility) dále v tomto článku.
+- **Trhy**: každý plán musí být k dispozici aspoň na jednom trhu.  Máte možnost vybrat jenom země "daňové prominuté", ve kterých Microsoft za vás vybírá prodej a používání daně.
+- **Ceny**: cenové modely se vztahují jenom na plány pro nabídky Azure Managed Application, SaaS a Azure pro virtuální počítače. Všechny plány pro stejnou nabídku musí používat stejný cenový model.  
+- **Plánování viditelnosti**: v závislosti na typu nabídky můžete definovat privátní cílovou skupinu nebo skrýt nabídku nebo plán z Azure Marketplace. Tato informace je podrobněji vysvětlena v části [plánování viditelnosti](#plan-visibility) dále v tomto článku.
 
 > [!TIP]
 > Doporučujeme vytvořit plány, které jsou nejvhodnější pro vzorce používání cílové zákaznické základny. Tím se snižuje počet uživatelů, kteří budou často přepínat plány na základě jejich změn v používání. Příklad nabídky SaaS se třemi měřenými fakturačními plány najdete v tématu [Ukázka nabídky](./partner-center-portal/saas-metered-billing.md#sample-offer).
@@ -88,9 +89,9 @@ Komerční tržiště funguje na modelu agentury, na základě kterého vydavate
 
 Pro následující typy nabídek musíte přidružit cenový model k jednotlivým plánům. Každý z těchto typů nabídek má různé dostupné cenové modely:
 
--  **Spravovaná aplikace Azure**: paušální sazba (měsíčně) a ceny na základě využití (dimenze služby měření).
--  **Software jako služba**: paušální sazba (měsíční nebo roční), na uživatele a ceny na základě využití (dimenze služby měření). 
--  **Virtuální počítač Azure**: Přineste si vlastní licenci (BYOL) a ceny na základě využití. V případě cenového modelu založeného na využití můžete účtovat za jádro, na velikost jádra nebo na trh a základní velikost. Model licence BYOL neumožňuje další poplatky založené na využití.   (Nabídky virtuálních počítačů s BYOL nevyžadují cenový model.)
+- **Spravovaná aplikace Azure**: paušální sazba (měsíčně) a ceny na základě využití (dimenze služby měření).
+- **Software jako služba**: paušální sazba (měsíční nebo roční), na uživatele a ceny na základě využití (dimenze služby měření). 
+- **Virtuální počítač Azure**: Přineste si vlastní licenci (BYOL) a ceny na základě využití. V případě cenového modelu založeného na využití můžete účtovat za jádro, na velikost jádra nebo na trh a základní velikost. Model licence BYOL neumožňuje další poplatky založené na využití.   (Nabídky virtuálních počítačů s BYOL nevyžadují cenový model.)
 
 Všechny plány pro stejnou nabídku musí používat stejný cenový model. Například nabídka SaaS nemůže mít jeden plán, který je paušální sazbou a druhý plán na uživatele. Podrobné informace najdete v dokumentaci ke konkrétní nabídce.
 
@@ -107,38 +108,23 @@ Chcete-li nastavit vlastní ceny v individuálním trhu, exportujte, upravte a p
 
 Před publikováním pečlivě zkontrolujte své ceny, protože existují určitá omezení, co se může po publikování plánu změnit:
 
--  Po publikování plánu se cenový model nedá změnit.
--  Po zveřejnění fakturačního období pro určitý plán ho nebude možné odebrat později.
--  Po zveřejnění ceny za uvedení na trh ve vašem plánu ji nelze později změnit.
+- Po publikování plánu se cenový model nedá změnit.
+- Po zveřejnění fakturačního období pro určitý plán ho nebude možné odebrat později.
+- Po zveřejnění ceny za uvedení na trh ve vašem plánu ji nelze později změnit.
 
 Ceny nastavené v USA dolarů (USD) se při uložení převedou na místní měnu všech vybraných trhů. Před publikováním tyto ceny ověřte, a to tak, že vyexportujete tabulku cen a provedete kontrolu ceny na všech vybraných trzích.
 
-1.  Aby bylo možné exportovat data o cenách, musíte nejdřív Uložit změny cen. U dolního okraje karty **ceny a dostupnost** vyberte **Uložit koncept**.
-1.  V části **ceny**vyberte odkaz **exportovat data cen** .
-1.  Otevřete soubor exportedPrice.xlsx v aplikaci Microsoft Excel.
-1.  V tabulce proveďte požadované aktualizace informací o cenách a pak uložte. Soubor CSV.
+1. Aby bylo možné exportovat data o cenách, musíte nejdřív Uložit změny cen. U dolního okraje karty **ceny a dostupnost** vyberte **Uložit koncept**.
+1. V části **ceny**vyberte odkaz **exportovat data cen** .
+1. Otevřete soubor exportedPrice.xlsx v aplikaci Microsoft Excel.
+1. V tabulce proveďte požadované aktualizace informací o cenách a pak uložte. Soubor CSV.
     > [!NOTE]
     > Než budete moct soubor aktualizovat, možná budete muset povolit úpravy v Excelu.
-1.  Na kartě **ceny a dostupnost** v části **ceny**vyberte odkaz **importovat data ceny** .
-1.  V dialogovém okně, které se zobrazí, vyberte **Ano**.
-1.  Vyberte soubor exportedPrice.xlsx, který jste aktualizovali, a pak vyberte **otevřít**.
+1. Na kartě **ceny a dostupnost** v části **ceny**vyberte odkaz **importovat data ceny** .
+1. V dialogovém okně, které se zobrazí, vyberte **Ano**.
+1. Vyberte soubor exportedPrice.xlsx, který jste aktualizovali, a pak vyberte **otevřít**.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### <a name="plan-visibility"></a>Zobrazení plánu
+## <a name="plan-visibility"></a>Zobrazení plánu
 
 Můžete vytvořit plány pro některé typy nabídek veřejně dostupné nebo k dispozici pouze konkrétní (soukromé) cílové skupině. Nabídky s privátními plány budou publikovány na Azure Portal. Další informace o privátních plánech najdete v [části soukromé nabídky na komerčním webu Microsoft Marketplace](private-offers.md).
 
@@ -157,12 +143,12 @@ Můžete povolit bezplatnou zkušební verzi plánů pro virtuální počítač 
 
 > [!NOTE]
 > Tato část vysvětluje bezplatné zkušební verze na placené plány pro nabídky, které se prodávají prostřednictvím Microsoftu. To je jiné než bezplatné zkušební výpisy od partnerů, kteří se rozhodnou zpracovávat své transakce nezávisle. Seznam bezplatné zkušební verze (který není spojen s plánem) můžete vytvořit pro následující typy nabídek:
-> -  Virtuální počítač Azure 
-> -  SaaS 
-> -  Dynamics 365 Business Central
-> -  Dynamics 365 pro Customer Engagement & PowerApps
-> -  Dynamics 365 for Operations
-> 
+> - Virtuální počítač Azure 
+> - SaaS 
+> - Dynamics 365 Business Central
+> - Dynamics 365 pro Customer Engagement & PowerApps
+> - Dynamics 365 for Operations
+>
 > Další informace o možnostech výpisu najdete v tématu [Určení možnosti publikování](determine-your-listing-type.md).
 
 Bezplatné zkušební verze se podporují pro všechny modely fakturace s výjimkou měřených plánů. Plány SaaS umožňují bezplatné zkušební verze na 1 měsíc. Plány virtuálních počítačů Azure umožňují bezplatné zkušební verze na 1, 3 nebo 6 měsíců.
@@ -180,5 +166,5 @@ Pokud chcete získat informace o zákaznických předplatných, která se aktuá
 
 ## <a name="next-steps"></a>Další kroky
 
--  Informace o tom, jak přidat nebo aktualizovat plány pro existující nabídku, najdete v tématu [aktualizace stávající nabídky na komerčním webu Marketplace](./partner-center-portal/update-existing-offer.md).
--  Další informace o možnostech transakcí a přidružených cenových modelech najdete v tématu možnosti Transact-The pro [prodej na webu Marketplace](./marketplace-commercial-transaction-capabilities-and-considerations.md).
+- Informace o tom, jak přidat nebo aktualizovat plány pro existující nabídku, najdete v tématu [aktualizace stávající nabídky na komerčním webu Marketplace](./partner-center-portal/update-existing-offer.md).
+- Další informace o možnostech transakcí a přidružených cenových modelech najdete v tématu možnosti Transact-The pro [prodej na webu Marketplace](./marketplace-commercial-transaction-capabilities-and-considerations.md).

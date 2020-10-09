@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 8aaf0b25a20f24739bb556583cd020d8f11eaf2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fbe62cf00422710e18a6b112adc08f19ea03177b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88549520"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858349"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Javy
 
@@ -24,7 +24,7 @@ V tomto rychlém startu použijete REST API Azure Face a Java k detekci lidskýc
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" vytvořte prostředek "  target="_blank"> pro vytváření obličeje a vytvořte na Azure Portal prostředek, <span class="docon docon-navigate-external x-hidden-focus"></span> </a> abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
@@ -49,23 +49,7 @@ Otevřete hlavní třídu projektu. Zde přidáte kód potřebný k načtení ob
 
 `import`Na začátek souboru přidejte následující příkazy.
 
-```java
-// This sample uses Apache HttpComponents:
-// http://hc.apache.org/httpcomponents-core-ga/httpcore/apidocs/
-// https://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/
-
-import java.net.URI;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
-```
+:::code language="java" source="~/cognitive-services-quickstart-code/java/Face/rest/detect.java" id="dependencies":::
 
 ### <a name="add-essential-fields"></a>Přidat důležitá pole
 
@@ -75,90 +59,45 @@ Nahraďte **Hlavní** třídu následujícím kódem. Tato data určují, jak se
 
 `faceAttributes`Pole je jednoduše seznamem určitých typů atributů. Určí, které informace se mají načíst o zjištěných plochách.
 
-```Java
-public class Main {
-    // Replace <Subscription Key> with your valid subscription key.
-    private static final String subscriptionKey = "<Subscription Key>";
-
-    private static final String uriBase =
-        "https://<My Endpoint String>.com/face/v1.0/detect";
-
-    private static final String imageWithFaces =
-        "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}";
-
-    private static final String faceAttributes =
-        "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
-```
+:::code language="java" source="~/cognitive-services-quickstart-code/java/Face/rest/detect.java" id="environment":::
 
 ### <a name="call-the-face-detection-rest-api"></a>Volání detekce obličeje REST API
 
 Přidejte metodu **Main** s následujícím kódem. Vytvoří volání REST do Face API k detekci informací o obličejích ve vzdálené imagi ( `faceAttributes` řetězec Určuje, které atributy obličeje mají být načteny). Pak zapíše výstupní data do řetězce JSON.
 
-```Java
-    public static void main(String[] args) {
-        HttpClient httpclient = HttpClientBuilder.create().build();
-
-        try
-        {
-            URIBuilder builder = new URIBuilder(uriBase);
-
-            // Request parameters. All of them are optional.
-            builder.setParameter("returnFaceId", "true");
-            builder.setParameter("returnFaceLandmarks", "false");
-            builder.setParameter("returnFaceAttributes", faceAttributes);
-
-            // Prepare the URI for the REST API call.
-            URI uri = builder.build();
-            HttpPost request = new HttpPost(uri);
-
-            // Request headers.
-            request.setHeader("Content-Type", "application/json");
-            request.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-
-            // Request body.
-            StringEntity reqEntity = new StringEntity(imageWithFaces);
-            request.setEntity(reqEntity);
-
-            // Execute the REST API call and get the response entity.
-            HttpResponse response = httpclient.execute(request);
-            HttpEntity entity = response.getEntity();
-```
+:::code language="java" source="~/cognitive-services-quickstart-code/java/Face/rest/detect.java" id="main":::
 
 ### <a name="parse-the-json-response"></a>Analyzovat odpověď JSON
 
 Přímo pod předchozím kódem přidejte následující blok, který převede vracená data JSON do čitelnějšího formátu před jeho tiskem do konzoly. Nakonec zavřete blok try-catch, metodu **Main** a **hlavní** třídu.
 
-```Java
-            if (entity != null)
-            {
-                // Format and display the JSON response.
-                System.out.println("REST Response:\n");
-
-                String jsonString = EntityUtils.toString(entity).trim();
-                if (jsonString.charAt(0) == '[') {
-                    JSONArray jsonArray = new JSONArray(jsonString);
-                    System.out.println(jsonArray.toString(2));
-                }
-                else if (jsonString.charAt(0) == '{') {
-                    JSONObject jsonObject = new JSONObject(jsonString);
-                    System.out.println(jsonObject.toString(2));
-                } else {
-                    System.out.println(jsonString);
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            // Display error message.
-            System.out.println(e.getMessage());
-        }
-    }
-}
-```
+:::code language="java" source="~/cognitive-services-quickstart-code/java/Face/rest/detect.java" id="print":::
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
 Zkompilujte kód a spusťte jej. Úspěšná odpověď zobrazí tvářená data v snadno čitelném formátu JSON v okně konzoly. Příklad:
+
+```json
+[{
+  "faceRectangle": {
+    "top": 131,
+    "left": 177,
+    "width": 162,
+    "height": 162
+  }
+}]
+```
+
+## <a name="extract-face-attributes"></a>Extrahovat atributy obličeje
+ 
+Chcete-li extrahovat atributy obličeje, použijte model detekce 1 a přidejte `returnFaceAttributes` parametr dotazu.
+
+```java
+builder.setParameter("detectionModel", "detection_01");
+builder.setParameter("returnFaceAttributes", "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise");
+```
+
+Odpověď teď obsahuje atributy obličeje. Příklad:
 
 ```json
 [{

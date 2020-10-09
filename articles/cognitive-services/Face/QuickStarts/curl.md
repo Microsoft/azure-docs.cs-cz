@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 8afb6f018e9c01ee42a9e43cc726a442fa4c8965
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cd7d1a476f09a2fbfffa687a28616c8faeaae22c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88539334"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858264"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Rychlý Start: detekce plošek v obrázku pomocí REST API obličeje a kudrlinkou
 
@@ -23,7 +23,7 @@ V tomto rychlém startu použijete REST API Azure Face s kudrlinkou k detekci li
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" vytvořte prostředek "  target="_blank"> pro vytváření obličeje a vytvořte na Azure Portal prostředek, <span class="docon docon-navigate-external x-hidden-focus"></span> </a> abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
@@ -34,9 +34,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
  
 Použijete příkaz podobný následujícímu pro volání Face API a získání dat atributu Face z obrázku. Nejprve zkopírujte kód do textového editoru &mdash; . před spuštěním příkazu je třeba provést změny určitých částí příkazu.
 
-```shell
-curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://<My Endpoint String>.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
-```
+:::code language="shell" source="~/cognitive-services-quickstart-code/curl/face/detect.sh" id="detection_model_2":::
 
 ### <a name="subscription-key"></a>Klíč předplatného
 Nahraďte `<Subscription Key>` platným klíčem pro odběr obličeje.
@@ -46,14 +44,6 @@ Nahraďte `<Subscription Key>` platným klíčem pro odběr obličeje.
 Adresa URL `https://<My Endpoint String>.com/face/v1.0/detect` indikuje koncový bod Azure Face pro dotazování. Možná budete muset změnit první část této adresy URL tak, aby odpovídala koncovému bodu, který odpovídá vašemu klíči předplatného.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
-
-### <a name="url-query-string"></a>Řetězec dotazu adresy URL
-
-Řetězec dotazu adresy URL koncového bodu obličeje určuje, které atributy obličeje se mají načíst. Tento řetězec možná budete chtít změnit v závislosti na zamýšleném použití.
-
-```
-?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise
-```
 
 ### <a name="image-source-url"></a>Adresa URL zdroje obrázku
 Zdrojová adresa URL označuje obrázek, který se má použít jako vstup. Tuto změnu můžete změnit tak, aby odkazovala na libovolný obrázek, který chcete analyzovat.
@@ -65,6 +55,28 @@ https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
 ## <a name="run-the-command"></a>Spuštěním příkazu
 
 Po provedení změn otevřete příkazový řádek a zadejte nový příkaz. V okně konzoly byste měli vidět informace o tváři jako data JSON. Příklad:
+
+```json
+[
+  {
+    "faceId": "49d55c17-e018-4a42-ba7b-8cbbdfae7c6f",
+    "faceRectangle": {
+      "top": 131,
+      "left": 177,
+      "width": 162,
+      "height": 162
+    }
+  }
+]  
+```
+
+## <a name="extract-face-attributes"></a>Extrahovat atributy obličeje
+ 
+Chcete-li extrahovat atributy obličeje, použijte model detekce 1 a přidejte `returnFaceAttributes` parametr dotazu. Příkaz by měl nyní vypadat takto. Stejně jako dřív vložte klíč předplatného a koncový bod pro svůj obličej.
+
+:::code language="shell" source="~/cognitive-services-quickstart-code/curl/face/detect.sh" id="detection_model_1":::
+
+Vracené informace o tváři teď obsahují atributy obličeje. Příklad:
 
 ```json
 [

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 74fc317dbb97c14c27e6355e100a6e6b5e767363
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e91fd0d94d6f6d87b5e554e27bf9c2a2ba6ccabd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333012"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858468"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>Agent synchronizace dat pro Synchronizace dat SQL
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ Synchronizujte data s SQL Server databáze tak, že nainstalujete a nakonfiguruj
 
 ## <a name="download-and-install"></a>Stažení a instalace
 
-Chcete-li stáhnout agenta synchronizace dat, navštivte [synchronizace dat SQL agenta](https://www.microsoft.com/download/details.aspx?id=27693).
+Chcete-li stáhnout agenta synchronizace dat, navštivte [synchronizace dat SQL agenta](https://www.microsoft.com/download/details.aspx?id=27693). Chcete-li upgradovat agenta synchronizace dat, nainstalujte agenta do stejného umístění jako starý agent a přepište původní.
 
 ### <a name="install-silently"></a>Bezobslužná instalace
 

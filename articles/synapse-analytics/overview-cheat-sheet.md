@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4dd83bdd68773ac594c71767b9e316bdd05a0ae7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 774e503bec3f1f8c4cc5b85bb599230a3397f811
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91620269"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858434"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Tabulka tahák analýzy Azure synapse
 
@@ -29,18 +29,18 @@ List tahák Analytics pro Azure synapse vás provede základními koncepty služ
 Pracovní prostor umožňuje provádět analýzy pomocí SQL a Apache Sparku. Prostředky dostupné pro SQL a Spark Analytics jsou uspořádány do **fondů**SQL a Spark. 
 
 ## <a name="synapse-sql"></a>Synapse SQL
-**Synapse SQL** je schopnost provádět analýzy založené na T-SQL v pracovním prostoru synapse. Synapse SQL má dva modely spotřeby: vyhrazené a bez serveru.  Pro vyhrazený model použijte vyhrazené **fondy SQL**. Pracovní prostor může mít libovolný nubmer z těchto fondů. Chcete-li použít model bez serveru, použijte fond SQL bez serveru s názvem "SQL na vyžádání". Každý pracovní prostor má jeden z těchto fondů.
+**Synapse SQL** je schopnost provádět analýzy založené na T-SQL v pracovním prostoru synapse. Synapse SQL má dva modely spotřeby: vyhrazené a bez serveru.  Pro vyhrazený model použijte vyhrazené **fondy SQL**. Pracovní prostor může obsahovat libovolný počet těchto fondů. Chcete-li použít model bez serveru, použijte fond SQL bez serveru s názvem "SQL na vyžádání". Každý pracovní prostor má jeden z těchto fondů.
 
 ## <a name="apache-spark-for-synapse"></a>Apache Spark pro synapse
 Pokud chcete používat Spark Analytics, vytvářejte a používejte **fondy Sparku** v pracovním prostoru synapse.
 
 ## <a name="sql-terminology"></a>Terminologie SQL
-| Pojem                         | Definice      |
+| Označení                         | Definice      |
 |:---                                 |:---                 |
 | **Požadavek SQL**  |   Operace, jako je dotaz spouštěný prostřednictvím fondu SQL nebo SQL na vyžádání. |
 
 ## <a name="spark-terminology"></a>Terminologie Spark
-| Pojem                         | Definice      |
+| Označení                         | Definice      |
 |:---                                 |:---                 |
 |**Apache Spark pro synapse** | Čas spuštění Sparku používaný ve fondu Spark. Aktuální podporovaná verze je Spark 2,4 s Pythonem 3.6.1, Scala 2.11.12, podpora rozhraní .NET pro Apache Spark 0,5 a rozdílový Lake 0,3.  | 
 | **Fond Apache Spark**  | do pracovního prostoru můžete nasadit prostředky z 0 do N Spark zřízené pomocí jejich odpovídajících databází. Fond Spark se dá automaticky pozastavit, obnovit a škálovat.  |
