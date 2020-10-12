@@ -6,17 +6,17 @@ ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333337"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migrace na prostředky Application Insights na základě pracovního prostoru
 
 Tato příručka vás provede procesem migrace klasického Application Insights prostředku do prostředku založeného na pracovním prostoru. Prostředky založené na pracovním prostoru podporují úplnou integraci mezi Application Insights a Log Analytics. Prostředky založené na pracovních prostorech odesílají Application Insights telemetrie do společného pracovního prostoru Log Analytics, který umožňuje přístup k [nejnovějším funkcím Azure monitor](#new-capabilities) a udržování protokolů aplikací, infrastruktury a platforem v jednom konsolidovaném umístění.
 
-Prostředky založené na pracovním prostoru umožňují v rámci svých prostředků běžné Access Control na základě rolí (RBAC) a eliminují nutnost dotazů mezi aplikacemi a pracovními prostory.
+Prostředky založené na pracovních prostorech umožňují v rámci svých prostředků používat běžné Role-Based Access Control (RBAC) a eliminují nutnost dotazů mezi aplikacemi a pracovními prostory.
 
 **Prostředky založené na pracovním prostoru jsou aktuálně k dispozici ve všech komerčních oblastech a v Azure USA – státní správa.**
 

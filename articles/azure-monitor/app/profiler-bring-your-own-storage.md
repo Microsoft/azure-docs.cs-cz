@@ -7,10 +7,10 @@ ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 719f0cfa0a1f80568acf3231ce3ffab441e5f6b7
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87117389"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Konfigurace Přineste si vlastní úložiště (BYOS) pro Application Insights Profiler a Snapshot Debugger
@@ -23,21 +23,21 @@ Pomocí Přineste si vlastní úložiště se tyto artefakty nahrají do účtu 
 > [!NOTE]
 > Pokud povolujete privátní propojení, je nutné použít vlastní úložiště. Další informace o privátním odkazu pro Application Insights [najdete v dokumentaci.](../platform/private-link-security.md)
 >
-> Pokud povolujete klíče spravované zákazníkem, je nutné použít vlastní úložiště. Další informace o klíčích spravovaných zákazníkem pro Application Insights [najdete v dokumentaci.](../platform/customer-managed-keys.md)
+> Pokud povolujete Customer-Managed klíče, je nutné uvést vlastní úložiště. Další informace o Customer-Managed klíčů pro Application Insights [najdete v dokumentaci.](../platform/customer-managed-keys.md)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Jak bude k účtu úložiště přistup?
 1. Agenti, kteří jsou spuštěni ve vašem Virtual Machines nebo App Service, nahrávají artefakty (profily, snímky a symboly) do kontejnerů objektů BLOB ve vašem účtu. Tento proces zahrnuje kontaktování služby Application Insights Profiler nebo Snapshot Debugger k získání tokenu SAS (sdíleného přístupového podpisu) k novému objektu BLOB ve vašem účtu úložiště.
 1. Služba Application Insights Profiler nebo Snapshot Debugger bude analyzovat příchozí objekt BLOB a zapsat zpět výsledky analýzy a soubory protokolu do úložiště objektů BLOB. V závislosti na dostupné výpočetní kapacitě k tomuto procesu může dojít kdykoli po nahrání.
 1. Když zobrazíte trasování profileru nebo analýzu ladicího programu snímků, služba načte výsledky analýzy z úložiště objektů BLOB.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Ujistěte se, že jste svůj účet úložiště vytvořili ve stejném umístění jako prostředek Application Insights. Například Pokud je prostředek Application Insights Západní USA 2, musí být váš účet úložiště také v Západní USA 2. 
 * Udělte roli Přispěvatel dat objektů BLOB úložiště do aplikace AAD "přístup k důvěryhodnému úložišti diagnostické služby" v účtu úložiště prostřednictvím uživatelského rozhraní Access Control (IAM).
 * Pokud je povolené soukromé propojení, nakonfigurujte další nastavení tak, aby umožňovalo připojení k naší důvěryhodné službě Microsoftu z vašeho Virtual Network. 
 
 ## <a name="how-to-enable-byos"></a>Jak povolit BYOS
 
-### <a name="create-storage-account"></a>Vytvořit účet úložiště
+### <a name="create-storage-account"></a>Vytvoření účtu úložiště
 Vytvořte značku – nový účet úložiště (pokud ho ještě nemáte) ve stejném umístění jako váš Application Insights prostředek.
 Pokud váš Application Insights prostředek je zapnutý `West US 2` , váš účet úložiště musí být v `West US 2` .
 
@@ -229,9 +229,9 @@ Chcete-li nakonfigurovat BYOS pro diagnostiku na úrovni kódu (Profiler/ladicí
 1. Povolte diagnostiku na úrovni kódu (Profiler/ladicí program) na úlohy, které vás zajímají, prostřednictvím Azure Portal. (App Service > Application Insights) _ ![ Obrázek 2,0](media/profiler-bring-your-own-storage/figure-20.png)_ 
  _Obrázek 2,0_
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 ### <a name="template-schema-schema_uri-isnt-supported"></a>Schéma šablony {schema_uri} se nepodporuje.
-* Ujistěte se, že `$schema` je vlastnost šablony platná. Musí splňovat následující vzor:`https://schema.management.azure.com/schemas/{schema_version}/deploymentTemplate.json#`
+* Ujistěte se, že `$schema` je vlastnost šablony platná. Musí splňovat následující vzor: `https://schema.management.azure.com/schemas/{schema_version}/deploymentTemplate.json#`
 * Ujistěte se, že `schema_version` je šablona v rámci platných hodnot: `2014-04-01-preview, 2015-01-01, 2018-05-01, 2019-04-01, 2019-08-01` .
     Chybová zpráva:
     ```powershell
@@ -280,13 +280,13 @@ Obecné Snapshot Debugger řešení potíží najdete v dokumentaci k [řešení
 * Pokud mám povolený Profiler nebo snímek a pak jsem povolil BYOS, budou se moje data migrovat do mého účtu úložiště?
     _Ne, ne._
 
-* Bude BYOS pracovat se šifrováním v klidovém a zákaznickém klíči?
-    _Ano, BYOS je požadavek na to, aby byl Profiler/ladicí program povolený pomocí klíčů manažera zákazníka._
+* Bude BYOS pracovat se šifrováním v klidovém a Customer-Managedm klíči?
+    _Ano, BYOS je požadavek na to, aby byl Profiler/ladicí program povolený pomocí Customer-Manager klíčů._
 
 * Bude BYOS pracovat v prostředí, které je izolované od Internetu?
     _Ano. Ve skutečnosti je BYOS požadavek pro izolované síťové scénáře._
 
-* Bude BYOS pracovat, když byly povoleny oba klíče spravované zákazníkem i privátní propojení? 
+* Bude BYOS pracovat, když byly povoleny oba Customer-Managed klíče i soukromé odkazy? 
     _Ano, může to být možné._
 
 * Pokud jsem povolil BYOS, můžu se zpátky pomocí účtů úložiště diagnostické služby ukládat shromážděná data? 

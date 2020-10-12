@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.openlocfilehash: 84c2ad3a24d944db6a55f3f21e8a2a0c4084d033
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87097619"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Vytváření upozornění pro Azure Cosmos DB pomocí Azure Monitor
@@ -83,7 +83,7 @@ V této části se dozvíte, jak vytvořit výstrahu, když obdržíte stavový 
 
    * Zadejte název akce a jako **typ akce**vyberte **zpráva e-mail/SMS/odeslat/hlas** . Následující snímek obrazovky ukazuje podrobnosti typu akce:
 
-     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Nakonfigurujte typ akce, například e-mailové oznámení pro příjem výstrahy.":::
+     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Konfigurace logiky pro příjem výstrah v případě požadavků s omezeným/429":::
 
 1. Vyplňte část **Podrobnosti pravidla výstrahy** :
 

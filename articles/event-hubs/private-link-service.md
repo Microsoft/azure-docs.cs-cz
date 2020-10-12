@@ -4,10 +4,10 @@ description: Naučte se integrovat Azure Event Hubs se službou Azure Private Li
 ms.date: 08/22/2020
 ms.topic: article
 ms.openlocfilehash: 59167635cfc0d8c1123a47410c87d6b9151f6f62
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334238"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Povolení přístupu k oborům názvů Azure Event Hubs prostřednictvím privátních koncových bodů 
@@ -49,7 +49,7 @@ Váš privátní koncový bod používá privátní IP adresu ve vaší virtuál
 ### <a name="steps"></a>Postup
 Pokud již máte obor názvů Event Hubs, můžete vytvořit připojení k privátnímu propojení pomocí následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. Na panelu hledání zadejte do pole **centra událostí**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
 4. V části **Nastavení** v nabídce vlevo vyberte **sítě** .
@@ -64,7 +64,7 @@ Pokud již máte obor názvů Event Hubs, můžete vytvořit připojení k priv�
 1. V horní části stránky vyberte kartu **připojení privátního koncového bodu** . 
 1. V horní části stránky vyberte tlačítko **+ soukromý koncový bod** .
 
-    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Stránka síť – karta připojení privátního koncového bodu – přidat odkaz na privátní koncový bod":::
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Karta sítě – volba vybraných sítí":::
 7. Na stránce **základy** proveďte tyto kroky: 
     1. Vyberte **předplatné Azure** , ve kterém chcete vytvořit privátní koncový bod. 
     2. Vyberte **skupinu prostředků** pro prostředek privátního koncového bodu.
@@ -201,9 +201,9 @@ Při vytváření privátního koncového bodu musí být připojení schváleno
 
 Existují čtyři stavy zřizování:
 
-| Akce služby | Stav privátního koncového bodu příjemce služby | Popis |
+| Akce služby | Stav privátního koncového bodu příjemce služby | Description |
 |--|--|--|
-| Žádné | Čekající | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
+| Žádná | Čekající | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
 | Schválení | Schválené | Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití. |
 | Odmítnout | Zamítnuto | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu. |
 | Odebrat | Propojení | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění. |

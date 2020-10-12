@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
 ms.openlocfilehash: 6655510a4cfdb88e98319c7fc26c7ae83255bb6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415827"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Kopírování dat z Azure Data Lake Storage Gen1 do Gen2 pomocí Azure Data Factory
@@ -33,9 +33,9 @@ Azure Data Factory nabízí řešení pro přesun spravovaných dat se škálov�
 
 V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data Factory zkopírovat data z Azure Data Lake Storage Gen1 do Azure Data Lake Storage Gen2. Můžete postupovat podle podobných kroků a kopírovat data z jiných typů úložišť dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 * Azure Data Lake Storage Gen1 účet s daty.
 * Azure Storage účet s povoleným Data Lake Storage Gen2em. Pokud nemáte účet úložiště, [vytvořte účet](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM).
 
@@ -52,7 +52,7 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
     * **Název**: zadejte globálně jedinečný název pro objekt pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat \" LoadADLSDemo \" není k dispozici", zadejte jiný název pro datovou továrnu. Použijte například název _**vaše_jméno**_**ADFTutorialDataFactory**. Vytvořte datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
     * **Předplatné**: vyberte předplatné Azure, ve kterém chcete vytvořit datovou továrnu. 
     * **Skupina prostředků**: z rozevíracího seznamu vyberte existující skupinu prostředků. Můžete také vybrat možnost **vytvořit novou** a zadat název skupiny prostředků. Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md). 
-    * **Verze**: vyberte **v2**.
+    * **Verze**: Vyberte **V2**.
     * **Umístění**: vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat používaná datovou továrnou se můžou nacházet v jiných umístěních a oblastech. 
 
 3. Vyberte **Vytvořit**.

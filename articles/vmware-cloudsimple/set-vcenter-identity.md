@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f6f3b10219775adb02d47a91da2573ea99f30ac0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212251"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Nastavení zdrojů identity vCenter pro používání služby Active Directory
@@ -45,9 +45,9 @@ Před [přidáním zdroje identity](#add-an-identity-source-on-vcenter)dočasně
 > [!IMPORTANT]
 > **Služba Active Directory (integrované ověřování systému Windows) není podporována.** Jako zdroj identity se podporuje jenom možnost Active Directory over LDAP.
 
-## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>Přidání místní služby Active Directory jako zdroje identity jednotného přihlašování
+## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>Přidání místní služby Active Directory jako jednoho Sign-On zdroje identity
 
-Pokud chcete nastavit místní službu Active Directory jako zdroj identity jednotného přihlašování, budete potřebovat:
+Pokud chcete nastavit místní službu Active Directory jako jeden Sign-On zdroj identity, budete potřebovat:
 
 * [Připojení VPN typu Site-to-site](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) z místního datacentra do privátního cloudu.
 * IP adresa místního serveru DNS přidaná do vCenter a řadiče služeb platformy (PSC).
@@ -67,10 +67,10 @@ Při nastavování domény služby Active Directory použijte informace v násle
 | **Uživatelské jméno** | ID uživatele v doméně, který má minimální přístup jen pro čtení k základnímu rozlišujícímu názvu pro uživatele a skupiny. |
 | **Heslo** | Heslo uživatele, který je určen uživatelským jménem. |
 
-Pokud máte informace v předchozí tabulce, můžete do vCenter přidat místní službu Active Directory jako zdroj identity jednotného přihlašování.
+Pokud máte informace v předchozí tabulce, můžete přidat místní službu Active Directory jako jeden Sign-On zdroj identity na vCenter.
 
 > [!TIP]
-> Další informace o zdrojích identity jednotného přihlašování najdete na [stránce dokumentace k VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html).
+> Další informace o jednom Sign-On zdroji identity najdete na [stránce dokumentace k VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html).
 
 ## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Nastavení nové služby Active Directory v privátním cloudu
 
@@ -103,9 +103,9 @@ Po nastavení domény služby Active Directory můžete do [vCenter přidat zdro
 
 ## <a name="set-up-active-directory-on-azure"></a>Nastavení služby Active Directory v Azure
 
-Služba Active Directory běžící v Azure je podobná službě Active Directory běžící v místním prostředí.  K nastavení služby Active Directory běžící v Azure jako zdroje identity jednotného přihlašování na vCenter musí mít vCenter Server a PSC připojení k síti Azure Virtual Network, kde jsou spuštěné služby Active Directory.  Toto připojení můžete vytvořit pomocí [azure Virtual Networkho připojení pomocí služby ExpressRoute](azure-expressroute-connection.md) z Azure Virtual Network, kde jsou spuštěné služby Active Directory pro CloudSimple privátní cloud.
+Služba Active Directory běžící v Azure je podobná službě Active Directory běžící v místním prostředí.  Aby bylo možné nastavit službu Active Directory běžící v Azure jako jeden Sign-On zdroj identity na vCenter, musí mít vCenter Server a PSC připojení k síti Azure Virtual Network, kde jsou spuštěné služby Active Directory.  Toto připojení můžete vytvořit pomocí [azure Virtual Networkho připojení pomocí služby ExpressRoute](azure-expressroute-connection.md) z Azure Virtual Network, kde jsou spuštěné služby Active Directory pro CloudSimple privátní cloud.
 
-Po navázání síťového připojení použijte postup v části [Přidání místní služby Active Directory jako zdroje identity jednotného přihlašování](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) a přidejte ho jako zdroj identity.  
+Po navázání síťového připojení postupujte podle kroků v části [Přidání místní služby Active Directory jako jednoho Sign-On zdroje identity](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) a přidejte ho jako zdroj identity.  
 
 ## <a name="add-an-identity-source-on-vcenter"></a>Přidání zdroje identity na vCenter
 

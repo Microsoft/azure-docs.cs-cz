@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: 3747033fcaf65e0c6da07e9f1bb625771958bb4f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319057"
 ---
 # <a name="create-a-custom-voice"></a>Vytvoření vlastního hlasu
@@ -44,7 +44,7 @@ Datové sady se po stisknutí tlačítka Odeslat automaticky ověřují. Ověřo
 
 V následující tabulce jsou uvedeny stavy zpracování pro importované datové sady:
 
-| Stav | Význam |
+| State | Význam |
 | ----- | ------- |
 | Zpracování | Vaše datová sada byla přijata a je zpracovávána. |
 | Úspěšný | Vaše datová sada byla ověřena a lze ji nyní použít k sestavení hlasového modelu. |
@@ -86,7 +86,7 @@ V tabulce školení se zobrazí nová položka, která odpovídá nově vytvoře
 
 Zobrazený stav odráží proces převodu datové sady na hlasový model, jak je znázorněno zde.
 
-| Stav | Význam |
+| State | Význam |
 | ----- | ------- |
 | Zpracování | Probíhá vytváření hlasového modelu. |
 | Úspěšný | Váš hlasový model byl vytvořen a lze jej nasadit. |

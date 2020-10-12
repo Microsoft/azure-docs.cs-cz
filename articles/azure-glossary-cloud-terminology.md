@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 63adb5d6898fd467a0557aa147e54f814c167e72
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400125"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure Glosář: slovník cloudové terminologie na platformě Azure
@@ -66,7 +66,7 @@ Zobrazit [oblasti Azure](best-practices-availability-paired-regions.md)
 
 ## <a name="geo-replication"></a>geografická replikace
 Proces automatické replikace obsahu, jako jsou objekty blob, tabulky a fronty v rámci regionálního páru.  
-Viz [Aktivní geografická replikace pro Azure SQL Database](sql-database/sql-database-geo-replication-overview.md)
+Další informace najdete v tématu [Active Geo-Replication Azure SQL Database](sql-database/sql-database-geo-replication-overview.md)
 <!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
 ## <a name="image"></a>image

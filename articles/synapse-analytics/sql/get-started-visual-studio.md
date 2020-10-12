@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 93c975bbbc69a43f1bd47bd4b1e7b857338ac1c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87089239"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Připojení k synapse SQL pomocí sady Visual Studio a SSDT
@@ -31,7 +31,7 @@ Pomocí sady Visual Studio se můžete dotazovat na fond SQL pomocí Azure synap
 > [!NOTE]
 > SSDT nepodporuje SQL na vyžádání (Preview).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Chcete-li použít tento kurz, musíte mít následující komponenty:
 
 * Existující fond SQL. Pokud ho nemáte, přečtěte si téma [Vytvoření fondu SQL](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) pro dokončení této součásti.

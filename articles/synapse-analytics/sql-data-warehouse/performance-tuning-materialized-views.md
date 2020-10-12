@@ -11,10 +11,10 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.openlocfilehash: 7c7109999d478121ba0251de8e7470bc0f38d64c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90984111"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Optimalizace výkonu s využitím materializovaná zobrazení
@@ -115,7 +115,7 @@ Možnosti snížení počtu materializovaná zobrazení:
 
 - Vyřadit materializovaná zobrazení, která mají nízké využití nebo již nejsou potřebná.  Zakázané zobrazení s materializací není zachováno, ale stále stojí náklady na úložiště.  
 
-- Zkombinujte materializovaná zobrazení vytvořená ve stejných nebo podobných základních tabulkách i v případě, že se jejich data nepřekrývají.  Kombinování zobrazení s materializací může mít za následek větší zobrazení velikosti, než součet samostatných zobrazení, ale náklady na údržbu by se měly snížit.  Příklad:
+- Zkombinujte materializovaná zobrazení vytvořená ve stejných nebo podobných základních tabulkách i v případě, že se jejich data nepřekrývají.  Kombinování zobrazení s materializací může mít za následek větší zobrazení velikosti, než součet samostatných zobrazení, ale náklady na údržbu by se měly snížit.  Například:
 
 ```sql
 

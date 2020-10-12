@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0029f3fbcf96036a247356042e4c39d59f86a224
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88208340"
 ---
-# <a name="automation-guidelines-for-virtual-wan-partners"></a>Pokyny pro automatizaci pro virtuální partneři sítě WAN
+# <a name="automation-guidelines-for-virtual-wan-partners"></a>Automatizační pokyny pro partnery služby Virtual WAN
 
 Tento článek vám pomůže pochopit, jak nastavit prostředí automatizace pro připojení a konfiguraci zařízení pobočky (místní zařízení VPN zákazníka nebo SDWAN CPE) pro Azure Virtual WAN. Pokud jste poskytovatel, který poskytuje Pobočková zařízení, která se můžou řídit připojením VPN přes IPsec/IKEv2 nebo IPsec/IKEv1, je tento článek pro vás.
 

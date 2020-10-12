@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 5840539b6c51a0070a98f03dbda3c596fd5c2516
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91539873"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Kurz: Zabalení a nasazení kontejnerů jako aplikace Service Fabric pomocí Yeomanu
@@ -23,7 +23,7 @@ Tento kurz je druhá část série. V tomto kurzu je pomocí nástroje Yeoman na
 > * Nasadit a spustit aplikaci
 > * Vyčistit aplikaci
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Použijeme image kontejneru odeslané do služby Azure Container Registry, které jsme vytvořili v [části 1](service-fabric-tutorial-create-container-images.md) tohoto kurzu.
 * Musí být [nastavené](service-fabric-tutorial-create-container-images.md) linuxové vývojové prostředí.

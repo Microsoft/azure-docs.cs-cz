@@ -12,10 +12,10 @@ ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
 ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235692"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Naplánování nasazení automatického zřizování uživatelů
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) Automatické zřizování uživatelů zjednodu
 
 Další informace najdete v tématu [Automatizace zřizování a rušení uživatelů při SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md) pro lepší pochopení funkčnosti.
 
-## <a name="learn"></a>Informace
+## <a name="learn"></a>Learn
 
 Zřizování uživatelů vytvoří základ pro průběžné řízení identit a vylepšuje kvalitu obchodních procesů, které spoléhají na data autoritativní identity.
 
@@ -42,7 +42,7 @@ Mezi klíčové výhody povolení automatického zřizování uživatelů patř�
 
 * **Snižte náklady**. Automatické zřizování uživatelů snižuje náklady tím, že se vyhne neefektivitám a lidským chybám přidruženým k ručnímu zřizování. Omezuje nutnost vlastních řešení pro zřizování uživatelů, skriptů a protokolů auditu.
 
-### <a name="licensing"></a>Licencování
+### <a name="licensing"></a>Licensing
 
 Služba Azure AD poskytuje samoobslužnou integraci jakékoli aplikace pomocí šablon poskytovaných v nabídce Galerie aplikací. Úplný seznam licenčních požadavků najdete na [stránce licencování Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -207,7 +207,7 @@ K implementaci automatického zřizování uživatelů musíte definovat atribut
 
 Azure AD podporuje přímé mapování atributů na atributy, poskytuje konstantní hodnoty nebo [výrazy zápisu pro mapování atributů](../app-provisioning/functions-for-customizing-application-data.md). Tato flexibilita vám umožní přesně určit, co bude naplněno v atributu cílového systému. Pomocí [Microsoft Graph API](../app-provisioning/export-import-provisioning-configuration.md) a Graph Exploreru můžete exportovat mapování atributů zřizování uživatelů a schéma do souboru JSON a importovat ho zpátky do Azure AD.
 
-Další informace najdete v tématu [přizpůsobení atributu zřizování uživatelů – mapování pro SaaS aplikace v Azure Active Directory](../app-provisioning/customize-application-attributes.md).
+Další informace najdete v tématu [přizpůsobení zřizování uživatelů Attribute-Mappings pro aplikace SaaS v Azure Active Directory](../app-provisioning/customize-application-attributes.md).
 
 ### <a name="special-considerations-for-user-provisioning"></a>Zvláštní požadavky na zřizování uživatelů
 

@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 51480a49aab2c1277eeb846c593fcb2bc858d1f0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983719"
 ---
 # <a name="about-virtual-hub-routing"></a>Informace o směrováních virtuálních center
@@ -55,7 +55,7 @@ Připojení dynamicky šíří trasy do směrovací tabulky. S připojením VPN,
 
 **Tabulka směrování None** je k dispozici také pro každé virtuální centrum. Rozšiřování do tabulky směrování None znamená, že pro rozšíření od připojení nejsou nutné žádné trasy. Připojení VPN, ExpressRoute a VPN uživatele šíří trasy do stejné sady směrovacích tabulek.
 
-:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Šíření":::
+:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Řídí":::
 
 ### <a name="labels"></a><a name="static"></a>Popisky
 Popisky poskytují mechanismus pro logickou skupinu směrovacích tabulek. To je užitečné hlavně při šíření tras z připojení k několika směrovacím tabulkám. Například výchozí směrovací tabulka má vestavěný popisek s názvem default. Když uživatelé šíří trasy připojení k výchozímu popisku, bude automaticky platit pro všechny výchozí směrovací tabulky napříč všemi rozbočovači ve virtuální síti WAN. 

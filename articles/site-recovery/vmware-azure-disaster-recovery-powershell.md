@@ -8,13 +8,13 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86129913"
 ---
-# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Nastavení zotavení po havárii virtuálních počítačů VMware do Azure pomocí PowerShellu
+# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Nastavení zotavení po havárii virtuálních počítačů VMware do Azure s využitím PowerShellu
 
 V tomto článku se můžete podívat, jak replikovat virtuální počítače VMware a převzít služby při selhání do Azure pomocí Azure PowerShell.
 
@@ -37,7 +37,7 @@ Než začnete, potřebujete:
 
 - Ujistěte se, že rozumíte [komponentám a architektuře řešení](vmware-azure-architecture.md).
 - Zkontrolujte [požadavky na podporu](./vmware-physical-azure-support-matrix.md) pro všechny komponenty.
-- Máte `Az` modul Azure PowerShell. Pokud potřebujete nainstalovat nebo upgradovat Azure PowerShell, postupujte podle pokynů v tomto [Průvodci a nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/install-az-ps).
+- Máte `Az`  modul Azure PowerShell. Pokud potřebujete nainstalovat nebo upgradovat Azure PowerShell, postupujte podle pokynů v tomto [Průvodci a nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="log-into-azure"></a>Přihlášení k Azure
 
@@ -46,7 +46,7 @@ Přihlaste se k předplatnému Azure pomocí rutiny Connect-AzAccount:
 ```azurepowershell
 Connect-AzAccount
 ```
-Vyberte předplatné Azure, do kterého chcete replikovat virtuální počítače VMware. Pomocí rutiny Get-AzSubscription Získejte seznam předplatných Azure, ke kterým máte přístup. Vyberte předplatné Azure, se kterým chcete pracovat pomocí rutiny Select-AzSubscription.
+Vyberte předplatné Azure, do kterého chcete replikovat virtuální počítače VMware. Pomocí rutiny Get-AzSubscription získáte seznam předplatných Azure, ke kterým máte přístup. Vyberte předplatné Azure, se kterým chcete pracovat pomocí rutiny Select-AzSubscription.
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionName "ASR Test Subscription"
@@ -118,7 +118,7 @@ V následujícím příkladu se k určení kontextu trezoru pro relaci PowerShel
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-Jako alternativu k rutině Set-ASRVaultContext může k nastavení kontextu trezoru použít také rutinu Import-AzRecoveryServicesAsrVaultSettingsFile. Zadejte cestu, ve které je soubor registračního klíče trezoru umístěný jako parametr-Path pro rutinu Import-AzRecoveryServicesAsrVaultSettingsFile. Příklad:
+Jako alternativu k rutině Set-ASRVaultContext může k nastavení kontextu trezoru použít také rutinu Import-AzRecoveryServicesAsrVaultSettingsFile. Zadejte cestu, ve které je soubor registračního klíče trezoru umístěný jako parametr-Path pro rutinu Import-AzRecoveryServicesAsrVaultSettingsFile. Například:
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -279,7 +279,7 @@ V tomto kroku se vytvoří dvě zásady replikace. Jedna zásada pro replikaci v
 
 ## <a name="add-a-vcenter-server-and-discover-vms"></a>Přidání serveru vCenter a zjištění virtuálních počítačů
 
-Přidejte vCenter Server podle IP adresy nebo názvu hostitele. Parametr **-port** Určuje port na serveru vCenter, který se má připojit k, parametr **-Name** Určuje popisný název, který se má použít pro Server vCenter, a parametr **-account** Určuje popisovač účtu na konfiguračním serveru, který se má použít ke zjišťování virtuálních počítačů spravovaných serverem vCenter.
+Přidejte vCenter Server podle IP adresy nebo názvu hostitele. Parametr **-port** Určuje port na serveru vCenter, který se má připojit k, parametr **-Name** Určuje popisný název, který se má použít pro Server vCenter, a parametr  **-account** Určuje popisovač účtu na konfiguračním serveru, který se má použít ke zjišťování virtuálních počítačů spravovaných serverem vCenter.
 
 ```azurepowershell
 # The $AccountHandles[0] variable holds details of vCenter_account
@@ -354,7 +354,7 @@ Teď replikujte následující virtuální počítače pomocí nastavení zadan�
 |Virtuální počítač  |Procesový Server        |Účet úložiště              |Účet úložiště protokolů  |Zásady           |Účet pro instalaci služby mobility|Cílová skupina prostředků  | Cílová virtuální síť  |Cílová podsíť  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
 |CentOSVM1       |ConfigurationServer   |Není k dispozici| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |
-|Win2K12VM1       |Škálování – ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
+|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
 |CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| Není k dispozici                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
 
 

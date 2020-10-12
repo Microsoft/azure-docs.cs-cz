@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 714e4484c71b995bee186a2d94dc45c7ff82c50d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908553"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-mailové ověřování heslem jednorázového hesla (Preview)
@@ -71,7 +71,7 @@ Může to trvat několik minut, než se akce přihlášení projeví. Pak budou 
 1.  Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce Azure AD.
 2.  V navigačním podokně vyberte **Azure Active Directory**.
 3.  Vyberte externí **identity**externí  >  **nastavení spolupráce**.
-5.  V části **Povolit jednorázové e-mailové heslo pro hosty (Preview)** vyberte **Ano**.
+5.  V části **Povolit e-mailové One-Time heslo pro hosty (Preview)** vyberte **Ano**.
  
 ### <a name="to-opt-in-using-powershell"></a>Výslovný souhlas s používáním PowerShellu
 
@@ -137,7 +137,7 @@ Může to trvat několik minut, než se akce odsouhlasení projeví. Pokud vypne
 1.  Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce Azure AD.
 2.  V navigačním podokně vyberte **Azure Active Directory**.
 3.  Vyberte externí **identity**externí  >  **nastavení spolupráce**.
-5.  V části **Povolit jednorázové e-mailové heslo pro hosty (Preview)** vyberte **ne**.
+5.  V části **Povolit e-mailové One-Time heslo pro hosty (Preview)** vyberte **ne**.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>Vypnutí verze Preview pomocí PowerShellu
 Pokud ho ještě nemáte, nainstalujte nejnovější modul AzureADPreview (viz [předpoklad: Nainstalujte nejnovější modul AzureADPreview](#prerequisite-install-the-latest-azureadpreview-module) výše). Pak ověřte, že aktuálně existuje zásada jednorázového náhledu hesla, a to spuštěním následujícího:

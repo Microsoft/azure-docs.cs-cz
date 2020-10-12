@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Přečtěte si, jak Visual Studio Code a Azure Dev Spaces vám pomůžou ladit aplikace Kubernetes a rychle je iterovat.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 ms.openlocfilehash: decf61bd55ed15182f030bb02a2fe9c959749556
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88209869"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Jak Visual Studio Code pracuje s Azure Dev Spaces

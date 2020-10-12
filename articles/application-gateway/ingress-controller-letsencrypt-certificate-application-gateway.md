@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: df8722e8160538daa1535711092790dbb2405097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807038"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>Použití certifikátů s LetsEncrypt.org na Application Gateway pro clustery AKS
@@ -58,7 +58,7 @@ Použijte následující postup a nainstalujte si [Správce certifikátů](https
 
     Vytvořte `ClusterIssuer` prostředek. To vyžaduje, `cert-manager` aby reprezentuje `Lets Encrypt` certifikační autoritu, ve které se budou nacházet podepsané certifikáty.
 
-    Pomocí prostředku certifikátů bez oboru názvů `ClusterIssuer` vystaví správce certifikátů certifikáty, které lze spotřebovat z více oborů názvů. `Let’s Encrypt`pomocí ACME protokolu ověří, zda máte pod kontrolou daný název domény a vystavení certifikátu. Další podrobnosti o konfiguraci `ClusterIssuer` vlastností [najdete tady](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html). `ClusterIssuer`vyzve `cert-manager` k vystavování certifikátů pomocí `Lets Encrypt` přípravného prostředí, které se používá pro testování (kořenový certifikát, který není přítomen v úložištích prohlížeče nebo klientů).
+    Pomocí prostředku certifikátů bez oboru názvů `ClusterIssuer` vystaví správce certifikátů certifikáty, které lze spotřebovat z více oborů názvů. `Let’s Encrypt` pomocí ACME protokolu ověří, zda máte pod kontrolou daný název domény a vystavení certifikátu. Další podrobnosti o konfiguraci `ClusterIssuer` vlastností [najdete tady](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html). `ClusterIssuer` vyzve `cert-manager` k vystavování certifikátů pomocí `Lets Encrypt` přípravného prostředí, které se používá pro testování (kořenový certifikát, který není přítomen v úložištích prohlížeče nebo klientů).
 
     Výchozí typ výzvy v YAML níže je `http01` . Další výzvy jsou zdokumentovány na [typech letsencrypt.org-Challenge](https://letsencrypt.org/docs/challenge-types/)
 
@@ -133,8 +133,8 @@ Použijte následující postup a nainstalujte si [Správce certifikátů](https
 4. Provozní certifikát
 
     Po úspěšném dokončení instalace můžete přepnout na produkční server, který je k instalaci:
-    1. Nahraďte pracovní poznámku u svého prostředku příchozího přenosu pomocí:`certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
-    1. Odstraňte stávající pracovní `ClusterIssuer` postup, který jste vytvořili v předchozím kroku, a vytvořte nový tak, že nahradíte Acme Server z CLUSTERISSUER YAML výše.`https://acme-v02.api.letsencrypt.org/directory`
+    1. Nahraďte pracovní poznámku u svého prostředku příchozího přenosu pomocí: `certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
+    1. Odstraňte stávající pracovní `ClusterIssuer` postup, který jste vytvořili v předchozím kroku, a vytvořte nový tak, že nahradíte Acme Server z CLUSTERISSUER YAML výše. `https://acme-v02.api.letsencrypt.org/directory`
 
 5. Vypršení platnosti a obnovení certifikátu
 

@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
 ms.openlocfilehash: 7257246f618e3028534f3ebd60eaf6f94a3a4720
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092503"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB kompatibilita Gremlin
@@ -33,7 +33,7 @@ Modul Azure Cosmos DB Graph úzce sleduje specifikace kroků procházení [Apach
 
 * ***Řazení podle vlastností pole*** `order().by(<array property>)` není podporováno. Podporuje se řazení pouze podle primitivních typů.
 
-* ***Neprimitivní typy JSON*** nejsou podporovány. Použijte `string` `number` typy, nebo `true` / `false` . `null`hodnoty nejsou podporovány. 
+* ***Neprimitivní typy JSON*** nejsou podporovány. Použijte `string` `number` typy, nebo `true` / `false` . `null` hodnoty nejsou podporovány. 
 
 * Serializátor ***GraphSONv3*** se v tuto chvíli nepodporuje. `GraphSONv2`V konfiguraci připojení použijte třídy serializátoru, čtecího zařízení a zapisovače. Výsledky vracené rozhraním API Azure Cosmos DB Gremlin nemají stejný formát jako formát GraphSON. 
 
@@ -45,7 +45,7 @@ Modul Azure Cosmos DB Graph úzce sleduje specifikace kroků procházení [Apach
 
 * **Využití indexu pro dotazy Gremlin pomocí `.V()` kroků středního přecházení**: v současné době pouze první `.V()` volání průchodu použije index k vyřešení všech filtrů nebo predikátů, které jsou k nim připojeny. Následná volání nebudou vyhledávat v indexu, což může zvýšit latenci a náklady na dotaz.
     
-    Předpokládá se výchozí indexování. typický dotaz Read Gremlin, který začíná `.V()` krokem, by v rámci svých připojených kroků filtrování používal parametry, jako je `.has()` nebo `.where()` pro optimalizaci nákladů a výkonu dotazu. Příklad:
+    Předpokládá se výchozí indexování. typický dotaz Read Gremlin, který začíná `.V()` krokem, by v rámci svých připojených kroků filtrování používal parametry, jako je `.has()` nebo `.where()` pro optimalizaci nákladů a výkonu dotazu. Například:
 
     ```java
     g.V().has('category', 'A')

@@ -11,10 +11,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
 ms.openlocfilehash: f5523c513cc0bdd08c43bdbed5046bf662f1a3e5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88206576"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Aktivační událost Azure Functions zahřívání
@@ -227,11 +227,11 @@ Aktivační událost zahřívání není v jazyce Java podporována jako atribut
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `WarmupTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-| **textový** | Není k dispozici| Požadováno – musí být nastavené na `warmupTrigger` . |
-| **směr** | Není k dispozici| Požadováno – musí být nastavené na `in` . |
-| **Jméno** | Není k dispozici| Požadováno – název proměnné použitý v kódu funkce.|
+| **textový** | neuvedeno| Požadováno – musí být nastavené na `warmupTrigger` . |
+| **směr** | neuvedeno| Požadováno – musí být nastavené na `in` . |
+| **Jméno** | neuvedeno| Požadováno – název proměnné použitý v kódu funkce.|
 
 ## <a name="trigger---usage"></a>Aktivační událost – využití
 

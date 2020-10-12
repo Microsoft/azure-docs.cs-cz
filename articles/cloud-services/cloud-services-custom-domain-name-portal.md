@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092724"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurace vlastního názvu domény pro cloudovou službu Azure
@@ -62,7 +62,7 @@ Chcete-li vytvořit záznam CNAME, je nutné přidat novou položku do tabulky D
 
        ![část rychlý přehled znázorňující adresu URL webu][csurl]
 
-       **ANI**
+       **OR**
    * Nainstalujte a nakonfigurujte [Azure PowerShell](/powershell/azure/)a pak použijte tento příkaz:
 
        ```powershell
@@ -95,7 +95,7 @@ Pokud chcete vytvořit záznam A, musíte nejdřív najít virtuální IP adresu
 
        ![část rychlý přehled znázorňující virtuální IP adresu][vip]
 
-       **ANI**
+       **OR**
    * Nainstalujte a nakonfigurujte [Azure PowerShell](/powershell/azure/)a pak použijte tento příkaz:
 
        ```powershell

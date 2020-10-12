@@ -7,10 +7,10 @@ ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 838d6244127bc1b3609ab5e925e54dbab7fe3a2d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212698"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Aktivační událost Azure Cosmos DB pro Azure Functions 2. x a vyšší
@@ -217,11 +217,11 @@ Z [běhové knihovny Functions jazyka Java](/java/api/overview/azure/functions/r
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `CosmosDBTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový** | Není k dispozici | Musí být nastaven na hodnotu `cosmosDBTrigger` . |
-|**směr** | Není k dispozici | Musí být nastaven na hodnotu `in` . Tento parametr se nastaví automaticky při vytvoření triggeru v Azure Portal. |
-|**Jméno** | Není k dispozici | Název proměnné použitý v kódu funkce, který představuje seznam dokumentů se změnami. |
+|**textový** | neuvedeno | Musí být nastaven na hodnotu `cosmosDBTrigger` . |
+|**směr** | neuvedeno | Musí být nastaven na hodnotu `in` . Tento parametr se nastaví automaticky při vytvoření triggeru v Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné použitý v kódu funkce, který představuje seznam dokumentů se změnami. |
 |**connectionStringSetting**|**ConnectionStringSetting** | Název nastavení aplikace, které obsahuje připojovací řetězec, který se používá pro připojení k monitorovanému účtu Azure Cosmos DB. |
 |**Databáze**|**DatabaseName**  | Název databáze Azure Cosmos DB s monitorovanou kolekcí. |
 |**collectionName** |**Název kolekce** | Název monitorované kolekce. |

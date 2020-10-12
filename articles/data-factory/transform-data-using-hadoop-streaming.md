@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: 5acfef94a98f105a7cc09c5b72b65e8c228ed87d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83844605"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity streamování Hadoop v Azure Data Factory
@@ -69,10 +69,10 @@ Pokud Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data
 
 ## <a name="syntax-details"></a>Podrobnosti syntaxe
 
-| Vlastnost          | Popis                              | Vyžadováno |
+| Vlastnost          | Popis                              | Povinné |
 | ----------------- | ---------------------------------------- | -------- |
 | name              | Název aktivity                     | Yes      |
-| description       | Text popisující, k čemu se aktivita používá | No       |
+| Popis       | Text popisující, k čemu se aktivita používá | No       |
 | typ              | Pro aktivitu streamování Hadoop je typ aktivity HDInsightStreaming | Yes      |
 | linkedServiceName | Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Yes      |
 | Mapper            | Určuje název spustitelného souboru mapovače. | Yes      |

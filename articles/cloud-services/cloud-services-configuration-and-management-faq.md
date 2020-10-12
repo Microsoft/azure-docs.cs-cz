@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
 ms.openlocfilehash: 477f38e18f1bee881e4a9df23dd37048f39549be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092741"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s konfigurací a správou pro Azure Cloud Services: nejčastější dotazy
@@ -192,13 +192,13 @@ Microsoft nepřetržitě monitoruje servery, sítě a aplikace a detekuje hrozby
 Systémy Windows 10 a Windows Server 2016 obsahují podporu protokolu HTTP/2 na straně klienta i serveru. Pokud se klient (prohlížeč) připojuje k serveru IIS přes TLS, který vyjednává HTTP/2 přes rozšíření TLS, nemusíte provádět žádnou změnu na straně serveru. Důvodem je, že přes TLS se ve výchozím nastavení pošle hlavička H2-14 určující použití HTTP/2. Pokud na druhé straně váš klient posílá hlavičku upgradu pro upgrade na HTTP/2, pak je potřeba provést změnu níže na straně serveru, aby se zajistilo, že upgrade funguje a že skončíte s připojením HTTP/2. 
 
 1. Spusťte regedit.exe.
-2. Přejděte do klíče registru: HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+2. Přejděte do klíče registru: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Vytvořte novou hodnotu DWORD s názvem **DuoEnabled**.
 4. Nastavte jeho hodnotu na 1.
 5. Restartujte server.
 6. Ve svém **výchozím** webu a v části **Bindings (vazby**) vytvořte novou vazbu TLS s právě vytvořeným certifikátem podepsaným svým držitelem. 
 
-Další informace najdete tady:
+Další informace naleznete v tématech:
 
 - [HTTP/2 ve službě IIS](https://blogs.iis.net/davidso/http2)
 - [Video: HTTP/2 ve Windows 10: prohlížeč, aplikace a webový server](https://channel9.msdn.com/Events/Build/2015/3-88)
@@ -231,7 +231,7 @@ Společnost Microsoft se skládá z striktního procesu, který neumožní inter
 K této chybě může dojít, pokud použijete soubor RDP z počítače, který je připojený k Azure Active Directory. Pokud chcete tento problém vyřešit, postupujte následovně:
 
 1. Klikněte pravým tlačítkem na soubor RDP, který jste stáhli, a pak vyberte **Upravit**.
-2. Přidat "&#92;" jako předponu před uživatelské jméno. Použijte například **.\username** místo **uživatelského jména**.
+2. Přidat "&#92;" jako předponu před uživatelské jméno. Použijte například **.\username** místo  **uživatelského jména**.
 
 ## <a name="scaling"></a>Škálování
 

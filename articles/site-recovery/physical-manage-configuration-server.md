@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86132498"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzického serveru
@@ -33,13 +33,13 @@ Tabulka shrnuje předpoklady pro nasazení místního počítače konfigurační
 | Volné místo na disku (disk pro uchování) | 600 GB|
 | Operační systém  | Windows Server 2012 R2 <br> Windows Server 2016 |
 | Národní prostředí operačního systému | Angličtina (USA)|
-| Verze VMware vSphere PowerCLI | Není požadováno|
+| Verze VMware vSphere PowerCLI | Nevyžadováno|
 | Role Windows Serveru | Nepovolujte tyto role: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V |
 | Zásady skupiny| Nepovolujte tyto zásady skupiny: <br> -Zakázat přístup k příkazovému řádku <br> – Zakázat přístup k nástrojům pro úpravu registru <br> – Logika vztahu důvěryhodnosti pro přílohy souborů <br> -Zapnout provádění skriptu <br> [Další informace](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
-| IIS | -Žádný předdefinovaný výchozí web <br> -Povolit [anonymní ověřování](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br> -Povolit nastavení [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10))  <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443.<br>|
+| IIS | -Žádný předdefinovaný výchozí web <br> -Povolit  [anonymní ověřování](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br> -Povolit nastavení [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10))  <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443.<br>|
 | Typ síťové karty | VMXNET3 (při nasazení jako virtuální počítač VMware) |
 | Typ IP adresy | Static |
-| Přístup k internetu | Server potřebuje přístup k těmto adresám URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> – *. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi(nevyžaduje se pro procesové servery se škálováním na více instancí) <br> - time.nist.gov <br> - time.windows.com |
+| Přístup k internetu | Server potřebuje přístup k těmto adresám URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> – *. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (nevyžaduje se pro procesové servery se škálováním na více instancí) <br> - time.nist.gov <br> - time.windows.com |
 | Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat)|
 
 ## <a name="download-the-latest-installation-file"></a>Stažení nejnovějšího instalačního souboru
@@ -217,7 +217,7 @@ Nastavení proxy serveru pro počítač konfiguračního serveru můžete upravi
 
 ## <a name="upgrade-a-configuration-server"></a>Upgrade konfiguračního serveru
 
-Aktualizace konfiguračního serveru spustíte spuštěním kumulativních aktualizací. Aktualizace je možné použít až pro N-4 verze. Příklad:
+Aktualizace konfiguračního serveru spustíte spuštěním kumulativních aktualizací. Aktualizace je možné použít až pro N-4 verze. Například:
 
 - Pokud používáte 9,7, 9,8, 9,9 nebo 9,10, můžete upgradovat přímo na 9,11.
 - Pokud používáte 9,6 nebo starší verzi a chcete upgradovat na 9,11, musíte nejdřív upgradovat na verzi 9,7. před 9,11.
@@ -288,7 +288,7 @@ Proveďte upgrade serveru následujícím způsobem:
     `Remove-AzSiteRecoveryFabric -Fabric $Fabric [-Force]`
 
 > [!NOTE]
-> Možnost **-Force** v příkazu Remove-AzSiteRecoveryFabric lze použít k vynucení odebrání nebo odstranění konfiguračního serveru.
+> Možnost **-Force** v Remove-AzSiteRecoveryFabric lze použít k vynucení odebrání nebo odstranění konfiguračního serveru.
 
 ## <a name="renew-tlsssl-certificates"></a>Obnovení certifikátů TLS/SSL
 Konfigurační server má integrovaný webový server, který orchestruje aktivity služby mobility, procesových serverů a hlavních cílových serverů, které jsou k ní připojené. Webový server používá k ověřování klientů certifikát TLS/SSL. Platnost certifikátu vyprší po třech letech a může být kdykoli obnovena.

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 439523fe55f231548ebc80ebc5d3b53c2f0d6e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808142"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Vytvoření aplikační brány s interním nástrojem pro vyrovnávání zatížení (interního nástroje)
@@ -36,7 +36,7 @@ Tenhle článek vás provede kroky konfigurace aplikační brány s ILB.
 * **Naslouchací proces:** Naslouchací proces má front-end port, protokol (Http nebo Https, s rozlišením malých a velkých písmen) a název certifikátu SSL (pokud se konfiguruje přesměrování zpracování SSL).
 * **Pravidlo:** Pravidlo váže naslouchací proces a fond back-end serverů a definuje, ke kterému fondu back-end serverů se má provoz směrovat při volání příslušného naslouchacího procesu. V tuhle chvíli se podporuje jenom *základní* pravidlo. *Základní* pravidlo je distribuce zatížení pomocí kruhového dotazování.
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 Rozdíl mezi použitím nástrojů Azure Classic a Azure Resource Manager je v tom, v jakém pořadí tvoříte službu Application Gateway, a v položkách, které konfigurujete.
 S Resource Managerem se všechny položky, které tvoří službu Application Gateway, konfigurují individuálně, potom se spojí dohromady a vytvoří prostředek služby Application Gateway.
@@ -52,7 +52,7 @@ Toto jsou kroky, které se musí provést k vytvoření služby Application Gate
 
 Ujistěte se, že jste přepnuli režim prostředí PowerShell tak, aby se mohly použít rutiny Azure Resource Manageru. Další informace najdete v tématu [Použití prostředí Windows PowerShell s Resource Managerem](../powershell-azure-resource-manager.md).
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 ```powershell
 Connect-AzAccount
@@ -92,7 +92,7 @@ V předchozím příkladu jsme vytvořili skupinu prostředků s názvem "appgw-
 
 Následující příklad ukazuje, jak vytvořit virtuální síť pomocí Resource Managera:
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 ```powershell
 $subnetconfig = New-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
@@ -118,7 +118,7 @@ Tento krok přiřadí objekt podsítě k proměnné $subnet pro další kroky.
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Vytvořte objekt konfigurace aplikační brány 
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 ```powershell
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
@@ -203,7 +203,7 @@ Chcete-li odstranit Aplikační bránu, je třeba provést následující kroky 
 2. Pomocí rutiny `Remove-AzApplicationGateway` bránu odeberte.
 3. Zkontrolujte odstranění brány pomocí rutiny `Get-AzureApplicationGateway`.
 
-### <a name="step-1"></a>Step 1
+### <a name="step-1"></a>Krok 1
 
 Získejte objekt služby Application Gateway a přidružte ho k proměnné „$getgw“.
 
@@ -262,6 +262,6 @@ Pokud chcete konfigurovat přesměrování zpracování SSL, přejděte do čás
 
 Pokud chcete další informace o obecných možnostech vyrovnávání zatížení, přečtěte si část:
 
-* [Nástroj pro vyrovnávání zatížení Azure](https://azure.microsoft.com/documentation/services/load-balancer/)
+* [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 

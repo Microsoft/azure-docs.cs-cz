@@ -13,10 +13,10 @@ ms.reviewer: maghan
 manager: anandsub
 ms.custom: devx-track-python
 ms.openlocfilehash: a42c7d911793e1b4ef4183c5d1f02f8be7d4ded3
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87872289"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Transformujte data spuštěním aktivity Pythonu v Azure Databricks
@@ -66,13 +66,13 @@ Následující tabulka obsahuje popis vlastností JSON použitých v definici JS
 
 |Vlastnost|Popis|Povinné|
 |---|---|---|
-|name|Název aktivity v kanálu.|Ano|
-|description|Text popisující, co aktivita dělá.|Ne|
-|typ|Pro aktivitu Python datacihly je typ aktivity DatabricksSparkPython.|Ano|
-|linkedServiceName|Název propojené služby datacihly, na které běží aktivita Pythonu Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md)   .|Ano|
-|pythonFile|Identifikátor URI souboru Pythonu, který má být spuštěn. Jsou podporovány pouze DBFS cesty.|Ano|
-|parameters|Parametry příkazového řádku, které budou předány souboru Python. Toto je pole řetězců.|Ne|
-|Knihovna|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole <řetězec, objekt>|Ne|
+|name|Název aktivity v kanálu.|Yes|
+|Popis|Text popisující, co aktivita dělá.|No|
+|typ|Pro aktivitu Python datacihly je typ aktivity DatabricksSparkPython.|Yes|
+|linkedServiceName|Název propojené služby datacihly, na které běží aktivita Pythonu Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md)   .|Yes|
+|pythonFile|Identifikátor URI souboru Pythonu, který má být spuštěn. Jsou podporovány pouze DBFS cesty.|Yes|
+|parameters|Parametry příkazového řádku, které budou předány souboru Python. Toto je pole řetězců.|No|
+|knihovny|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole <řetězec, objekt>|No|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Podporované knihovny pro aktivity datacihly
 

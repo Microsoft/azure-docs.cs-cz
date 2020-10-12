@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
 ms.openlocfilehash: a4923e48c890a50d642d937f014e466e998171cf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90896627"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Kurz: nasazení modelu strojového učení pomocí návrháře
@@ -99,7 +99,7 @@ Až se dokončí zřizování služby AKS, vraťte se do kanálu Inferencing v r
 
 1. Vyberte **Nasadit**.
     
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Snímek obrazovky ukazující, jak nastavit nový koncový bod v reálném čase":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Snímek obrazovky ukazující, kde najít tlačítko vytvořit kanál":::
 
     Po dokončení nasazení se zobrazí oznámení o úspěchu nad plátnem. Může to trvat několik minut.
 

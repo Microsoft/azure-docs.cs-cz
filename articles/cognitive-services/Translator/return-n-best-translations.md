@@ -12,10 +12,10 @@ ms.date: 12/14/2017
 ms.author: swmachan
 ROBOTS: NOINDEX
 ms.openlocfilehash: 1fe370070aa97befb418d27def32725bf0a148b3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83592674"
 ---
 # <a name="how-to-return-n-best-translations"></a>Jak vracet N-nejlepší překlady
@@ -28,7 +28,7 @@ Metoda vrátí až maxTranslations alternativy, kde je rozdíl dodáván z N-nej
 
 Podpis je:
 
-**Syntaxe**
+**Syntax**
 
 | C# |
 |:---|

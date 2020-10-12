@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.openlocfilehash: b428ffc0122f13ef15f870ce734b54fe6707f582
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983961"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace NetSuite pro Automatické zřizování uživatelů
@@ -48,7 +48,7 @@ Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, co
 V této části se seznámíte s připojením k rozhraní API pro zřizování uživatelských účtů ve službě Azure AD a konfigurací služby zřizování k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v NetSuite na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP] 
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Netsuite, a to podle pokynů uvedených v tématu [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
+> Můžete se také rozhodnout povolit pro Netsuite jednu Sign-On založenou na SAML, a to podle pokynů uvedených v [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
 
 ### <a name="to-configure-user-account-provisioning"></a>Konfigurace zřizování uživatelských účtů:
 
@@ -88,7 +88,7 @@ Spustí počáteční synchronizaci všech uživatelů nebo skupin přiřazenýc
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -7,10 +7,10 @@ ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 6a75b0c5b30f60afe51eebc395d21b7c05e8af7f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212765"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB výstupní vazby pro Azure Functions 2. x a vyšší
@@ -564,11 +564,11 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `CosmosDB` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový**     | Není k dispozici | Musí být nastaven na hodnotu `cosmosDB` .        |
-|**směr**     | Není k dispozici | Musí být nastaven na hodnotu `out` .         |
-|**Jméno**     | Není k dispozici | Název parametru vazby, který představuje dokument ve funkci.  |
+|**textový**     | neuvedeno | Musí být nastaven na hodnotu `cosmosDB` .        |
+|**směr**     | neuvedeno | Musí být nastaven na hodnotu `out` .         |
+|**Jméno**     | neuvedeno | Název parametru vazby, který představuje dokument ve funkci.  |
 |**Databáze** | **DatabaseName**|Databáze obsahující kolekci, ve které je dokument vytvořen.     |
 |**collectionName** |**Název kolekce**  | Název kolekce, ve které je dokument vytvořen. |
 |**createIfNotExists**  |**CreateIfNotExists**    | Logická hodnota určující, zda je kolekce vytvořena, pokud neexistuje. Výchozí hodnota je *false* , protože nové kolekce jsou vytvořeny s rezervovanou propustností, která má vliv na náklady. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).  |
@@ -589,7 +589,7 @@ Ve výchozím nastavení platí, že při zápisu do výstupního parametru ve f
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba | Referenční informace |
+| Vazba | Odkaz |
 |---|---|
 | CosmosDB | [Kódy chyb CosmosDB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
@@ -614,11 +614,11 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------|
 |GatewayMode|brána|Režim připojení, který funkce používá při připojování ke službě Azure Cosmos DB. Možnosti jsou `Direct` a `Gateway`|
 |Protokol|Https|Protokol připojení, který funkce používá při připojení ke službě Azure Cosmos DB.  Přečtěte si [zde pro vysvětlení obou režimů](../cosmos-db/performance-tips.md#networking) .|
-|leasePrefix|Není k dispozici|Předpona zapůjčení pro použití ve všech funkcích aplikace|
+|leasePrefix|neuvedeno|Předpona zapůjčení pro použití ve všech funkcích aplikace|
 
 ## <a name="next-steps"></a>Další kroky
 

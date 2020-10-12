@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.openlocfilehash: 239d1da028a06d4272ed9b22b624413394aa142f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212990"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
@@ -64,7 +64,7 @@ Informace o tom, jak používat Application Insights, najdete v [dokumentaci k A
 
 Následující oblasti Application Insights mohou být užitečné při vyhodnocování chování, výkonu a chyb ve vašich funkcích:
 
-| Prověřování | Popis |
+| Prověřování | Description |
 | ---- | ----------- |
 | **[Selhání](../azure-monitor/app/asp-net-exceptions.md)** |  Vytvářejte grafy a výstrahy na základě selhání funkcí a výjimek serveru. **Název operace** je název funkce. Pokud neimplementujete vlastní telemetrie pro závislosti, neobjeví se chyby v závislostech. |
 | **[Výkon](../azure-monitor/app/performance-counters.md)** | Analyzujte problémy s výkonem zobrazením využití prostředků a propustnosti na **instance rolí cloudu**. Tato data můžou být užitečná pro scénáře ladění, kde funkce bogging své základní prostředky. |
@@ -138,7 +138,7 @@ Protokolovací nástroj Azure Functions zahrnuje i *úroveň protokolu* s každ�
 |LogLevel    |Kód|
 |------------|---|
 |Trasování       | 0 |
-|Ladění       | 1 |
+|Ladit       | 1 |
 |Informace | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |
@@ -724,7 +724,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 --setting-names SCALE_CONTROLLER_LOGGING_ENABLED
 ```
 
-## <a name="disable-built-in-logging"></a>Zakázat integrované protokolování
+## <a name="disable-built-in-logging"></a>Zákaz integrovaného protokolování
 
 Pokud povolíte Application Insights, zakažte integrované protokolování, které používá Azure Storage. Integrované protokolování je užitečné pro testování s využitím lehkých úloh, ale není určené pro použití v produkčním prostředí s vysokou zátěží. Pro produkční monitorování doporučujeme Application Insights. Pokud se v produkčním prostředí používá integrované protokolování, může být záznam protokolování neúplný z důvodu omezování Azure Storage.
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 0652c49acf58a52244cc27ae3e59120ac7f03858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807103"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Instalace AGIC (příchozího adaptéru Application Gateway) pomocí existující Application Gateway
@@ -79,7 +79,7 @@ Postupujte podle [pokynů pro instalaci služby AAD pod](https://github.com/Azur
 Dál musíme vytvořit identitu Azure a dát jí oprávnění ARM.
 Pomocí [Cloud Shell](https://shell.azure.com/) můžete spustit všechny následující příkazy a vytvořit identitu:
 
-1. Vytvořte identitu Azure **ve stejné skupině prostředků jako uzly AKS**. Je důležité vybrat správnou skupinu prostředků. Skupina prostředků požadovaná v příkazu *níže není ta, na* kterou se odkazuje v podokně AKS Portal. Toto je skupina prostředků `aks-agentpool` virtuálních počítačů. Obvykle se skupina prostředků spouští s `MC_` a obsahuje název vaší AKS. Např.:`MC_resourceGroup_aksABCD_westus`
+1. Vytvořte identitu Azure **ve stejné skupině prostředků jako uzly AKS**. Je důležité vybrat správnou skupinu prostředků. Skupina prostředků požadovaná v příkazu *níže není ta, na* kterou se odkazuje v podokně AKS Portal. Toto je skupina prostředků `aks-agentpool` virtuálních počítačů. Obvykle se skupina prostředků spouští s `MC_` a obsahuje název vaší AKS. Např.: `MC_resourceGroup_aksABCD_westus`
 
     ```azurecli
     az identity create -g <agent-pool-resource-group> -n <identity-name>
@@ -91,9 +91,9 @@ Pomocí [Cloud Shell](https://shell.azure.com/) můžete spustit všechny násle
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
-1. Udělte identitě `Contributor` přístup k vašemu Application Gateway. Za tímto účelem budete potřebovat ID Application Gateway, který bude vypadat přibližně takto:`/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
+1. Udělte identitě `Contributor` přístup k vašemu Application Gateway. Za tímto účelem budete potřebovat ID Application Gateway, který bude vypadat přibližně takto: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
 
-    Seznam ID Application Gateway v předplatném získáte pomocí:`az network application-gateway list --query '[].id'`
+    Seznam ID Application Gateway v předplatném získáte pomocí: `az network application-gateway list --query '[].id'`
 
     ```azurecli
     az role assignment create \
@@ -102,7 +102,7 @@ Pomocí [Cloud Shell](https://shell.azure.com/) můžete spustit všechny násle
         --scope <App-Gateway-ID>
     ```
 
-1. Udělte identitě `Reader` přístup ke skupině prostředků Application Gateway. ID skupiny prostředků by vypadalo takto: `/subscriptions/A/resourceGroups/B` . Všechny skupiny prostředků můžete získat takto:`az group list --query '[].id'`
+1. Udělte identitě `Reader` přístup ke skupině prostředků Application Gateway. ID skupiny prostředků by vypadalo takto: `/subscriptions/A/resourceGroups/B` . Všechny skupiny prostředků můžete získat takto: `az group list --query '[].id'`
 
     ```azurecli
     az role assignment create \
@@ -245,8 +245,8 @@ Stažený soubor zip bude mít šablony JSON, bash a PowerShellové skripty, kte
 
 ### <a name="example-scenario"></a>Ukázkový scénář
 Pojďme se podívat na imaginární Application Gateway, který spravuje provoz dvou webů:
-  - `dev.contoso.com`– hostovaná na novém AKS pomocí Application Gateway a AGIC
-  - `prod.contoso.com`– hostovaná v [sadě škálování virtuálních počítačů Azure](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
+  - `dev.contoso.com` – hostovaná na novém AKS pomocí Application Gateway a AGIC
+  - `prod.contoso.com` – hostovaná v [sadě škálování virtuálních počítačů Azure](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
 
 Ve výchozím nastavení předpokládá AGIC 100% vlastnictví Application Gateway, na které se odkazuje. AGIC Přepisuje veškerou konfiguraci služby App Gateway. Pokud jsme museli ručně vytvořit naslouchací proces pro `prod.contoso.com` (na Application Gateway), aniž byste ho definovali v rámci Kubernetes příchozího přenosu dat, AGIC `prod.contoso.com` během několika sekund tuto konfiguraci odstraní.
 

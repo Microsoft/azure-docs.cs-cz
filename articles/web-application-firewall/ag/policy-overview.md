@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
 ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86143831"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Přehled zásad firewallu webových aplikací Azure (WAF)
@@ -33,9 +33,9 @@ Pokud chcete použít jednu zásadu pro všechny lokality, můžete k ní přidr
 
 ## <a name="per-site-waf-policy"></a>Zásady WAF podle webu
 
-Pomocí zásad pro WAF pro jednotlivé lokality můžete chránit několik lokalit s různými požadavky na zabezpečení za jednou WAF pomocí zásad pro jednotlivé lokality. Pokud máte například pět webů za vaší WAF, můžete mít pět samostatných zásad WAF (jeden pro každý naslouchací proces) pro přizpůsobení vyloučení, vlastních pravidel, spravovaných sad pravidel a všech dalších nastavení WAF pro jednotlivé lokality.
+S využitím zásad WAF pro jednotlivé weby můžete zajistit ochranu několika webů s různými požadavky na zabezpečení za jediným WAF. Například pokud je za vaším WAF pět webů, můžete mít pět samostatných zásad WAF (pro každý naslouchací proces jednu) a přizpůsobit vyloučení, vlastní pravidla, spravované sady pravidel a všechna ostatní nastavení WAF pro jednotlivé weby.
 
-Řekněme, že se na aplikační bráně nastavila globální zásada. Pak použijete pro naslouchací proces v této aplikační bráně jinou zásadu. Zásady naslouchacího procesu se teď projeví jenom u tohoto naslouchacího procesu. Globální zásady služby Application Gateway se stále vztahují na všechny ostatní naslouchací procesy a pravidla na základě cest, ke kterým nejsou přiřazená konkrétní zásada.
+Řekněme, že pro vaši službu Application Gateway platí globální zásady. Pak pro naslouchací proces v této službě Application Gateway použijete jiné zásady. Zásady tohoto naslouchacího procesu teď platí pouze pro tento naslouchací proces. Pro všechny ostatní naslouchací procesy a pravidla založená na cestě, ke kterým nejsou přiřazené konkrétní zásady, stále platí globální zásady služby Application Gateway.
 
 ## <a name="per-uri-policy"></a>Zásady pro identifikátor URI
 

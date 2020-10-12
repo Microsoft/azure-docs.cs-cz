@@ -7,10 +7,10 @@ ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 67e1f1dff43939ce7ef279db57bee4b18bd12dc8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213952"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Aktivační událost Azure Blob Storage pro Azure Functions
@@ -275,12 +275,12 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `BlobTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový** | Není k dispozici | Musí být nastaven na hodnotu `blobTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
-|**směr** | Není k dispozici | Musí být nastaven na hodnotu `in` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. Výjimky jsou uvedeny v části [použití](#usage) . |
-|**Jméno** | Není k dispozici | Název proměnné, která představuje objekt BLOB v kódu funkce. |
-|**program** | **Blobpath cestou** |[Kontejner](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) , který se má monitorovat  Může se jednat o [vzor názvu objektu BLOB](#blob-name-patterns). |
+|**textový** | neuvedeno | Musí být nastaven na hodnotu `blobTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
+|**směr** | neuvedeno | Musí být nastaven na hodnotu `in` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. Výjimky jsou uvedeny v části [použití](#usage) . |
+|**Jméno** | neuvedeno | Název proměnné, která představuje objekt BLOB v kódu funkce. |
+|**dílčí** | **Blobpath cestou** |[Kontejner](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) , který se má monitorovat  Může se jednat o [vzor názvu objektu BLOB](#blob-name-patterns). |
 |**vázán** | **Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage` .<br><br>Připojovací řetězec musí být pro účet úložiště pro obecné účely, nikoli [účet Blob Storage](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

@@ -12,10 +12,10 @@ ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: cf6616dcc3935946ad4a7213263bb20281d25354
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90896780"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Kurz: Použití automatizovaného strojového učení k předvídání taxislužby tarifů
@@ -206,7 +206,7 @@ K automatickému učení modelu proveďte následující kroky:
 
 Definujte parametr experimentu a nastavení modelu pro školení. Zobrazí úplný seznam [Nastavení](how-to-configure-auto-train.md). Odeslání experimentu s těmito výchozími nastaveními bude trvat přibližně 5-20 min, ale pokud budete chtít kratší dobu běhu, snižte `experiment_timeout_hours` parametr.
 
-|Vlastnost| Hodnota v tomto kurzu |Description|
+|Vlastnost| Hodnota v tomto kurzu |Popis|
 |----|----|---|
 |**iteration_timeout_minutes**|2|Časový limit pro každou iteraci v minutách Snižte tuto hodnotu pro snížení celkové doby běhu.|
 |**experiment_timeout_hours**|0.3|Maximální doba v hodinách, po kterou můžou všechny iterace v kombinaci trvat, než se experiment ukončí.|

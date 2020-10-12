@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82780432"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Vytvoření clusteru selhalo s InvalidNetworkConfigurationErrorCode ve službě Azure HDInsight
@@ -54,7 +54,7 @@ Popis chyby obsahuje "připojení k účtu Azure Storage se nepovedlo nebo se ne
 
 ### <a name="cause"></a>Příčina
 
-Azure Storage a SQL nemají pevné IP adresy, proto musíme Povolit odchozí připojení ke všem IP adresám, aby bylo možné získat přístup k těmto službám. Přesný postup řešení závisí na tom, jestli jste nastavili skupinu zabezpečení sítě (NSG) nebo uživatelsky definovaná pravidla (UDR). Podrobnosti o těchto konfiguracích najdete v části [řízení síťového provozu pomocí služby HDInsight se skupinami zabezpečení sítě a uživatelsky definovanými trasami](../control-network-traffic.md) .
+Azure Storage a SQL nemají pevné IP adresy, proto musíme Povolit odchozí připojení ke všem IP adresám, aby bylo možné získat přístup k těmto službám. Přesné kroky řešení závisí na tom, jestli jste nastavili skupinu zabezpečení sítě (NSG) nebo pravidla User-Defined (UDR). Podrobnosti o těchto konfiguracích najdete v části [řízení síťového provozu pomocí služby HDInsight se skupinami zabezpečení sítě a uživatelsky definovanými trasami](../control-network-traffic.md) .
 
 ### <a name="resolution"></a>Řešení
 
@@ -101,7 +101,7 @@ Ověřte, že je 168.63.129.16 ve vlastním řetězci DNS. Servery DNS v rámci 
     cat /etc/resolv.conf | grep nameserver*
     ```
 
-    Mělo by se vám zobrazit přibližně toto:
+    Měli byste vidět přibližně toto:
 
     ```output
     nameserver 168.63.129.16

@@ -11,10 +11,10 @@ ms.date: 3/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1e6965e15b7482935148ae7fcd2edf0f3cc722b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83738553"
 ---
 # <a name="user-profile-attributes"></a>Atributy profilu uživatele
@@ -35,23 +35,23 @@ Následující tabulka uvádí atributy [typu prostředku uživatele](https://do
 - Pokud se atribut dá použít v toku uživatele
 - Pokud se atribut dá použít ve vlastní zásadě [Azure AD Technical Profile](active-directory-technical-profile.md) a v jaké části ( &lt; InputClaims &gt; , &lt; OutputClaims &gt; nebo &lt; PersistedClaims &gt; )
 
-|Name     |Typ     |Description|portál Azure|Toky uživatele|Vlastní zásady|
+|Název     |Typ     |Description|portál Azure|Toky uživatele|Vlastní zásady|
 |---------|---------|----------|------------|----------|-------------|
 |accountEnabled  |Logická hodnota|Zda je uživatelský účet povolený nebo zakázaný: **true** , pokud je účet povolený, v opačném případě **false**.|Yes|No|Trvalý výstup|
 |ageGroup        |Řetězec|Věková skupina uživatele. Možné hodnoty: null, undefined, nezletilý, dospělý, NotAdult.|Yes|No|Trvalý výstup|
 |alternativeSecurityId ([identity](manage-user-accounts-graph-api.md#identities-property))|Řetězec|Jediná identita uživatele od externího zprostředkovatele identity.|No|No|Vstup, trvalý výstup|
 |alternativeSecurityIds ([identity](manage-user-accounts-graph-api.md#identities-property))|alternativní kolekce securityId|Kolekce uživatelských identit od externích zprostředkovatelů identity.|No|No|Trvalý výstup|
-|city            |Řetězec|Město, ve kterém se uživatel nachází Maximální délka 128.|Ano|Ano|Trvalý výstup|
+|city            |Řetězec|Město, ve kterém se uživatel nachází Maximální délka 128.|Yes|Yes|Trvalý výstup|
 |consentProvidedForMinor|Řetězec|Zda byl souhlas poskytnut pro méně závažná. Povolené hodnoty: null, uděleno, zamítnuto nebo notRequired.|Yes|No|Trvalý výstup|
-|country         |Řetězec|Země nebo oblast, ve které se uživatel nachází. Příklad: "US" nebo "UK". Maximální délka 128.|Ano|Ano|Trvalý výstup|
+|country         |Řetězec|Země nebo oblast, ve které se uživatel nachází. Příklad: "US" nebo "UK". Maximální délka 128.|Yes|Yes|Trvalý výstup|
 |createdDateTime|DateTime|Datum vytvoření objektu uživatele. Jen pro čtení.|No|No|Trvalý výstup|
 |creationType    |Řetězec|Pokud byl uživatelský účet vytvořen jako místní účet pro klienta Azure Active Directory B2C, hodnota je LocalAccount nebo nameCoexistence. Jen pro čtení.|No|No|Trvalý výstup|
 |dateOfBirth     |Datum|Datum narození.|No|No|Trvalý výstup|
 |Oddělení      |Řetězec|Název oddělení, ve kterém uživatel pracuje. Maximální délka 64.|Yes|No|Trvalý výstup|
-|displayName     |Řetězec|Zobrazované jméno uživatele Maximální délka 256.|Ano|Ano|Trvalý výstup|
+|displayName     |Řetězec|Zobrazované jméno uživatele Maximální délka 256.|Yes|Yes|Trvalý výstup|
 |facsimileTelephoneNumber<sup>1</sup>|Řetězec|Telefonní číslo počítačového faxu uživatele podniku.|Yes|No|Trvalý výstup|
-|givenName       |Řetězec|Křestní jméno (křestní jméno) uživatele. Maximální délka 64.|Ano|Ano|Trvalý výstup|
-|jobTitle        |Řetězec|Pracovní pozice uživatele Maximální délka 128.|Ano|Ano|Trvalý výstup|
+|givenName       |Řetězec|Křestní jméno (křestní jméno) uživatele. Maximální délka 64.|Yes|Yes|Trvalý výstup|
+|jobTitle        |Řetězec|Pracovní pozice uživatele Maximální délka 128.|Yes|Yes|Trvalý výstup|
 |immutableId     |Řetězec|Identifikátor, který se obvykle používá pro uživatele migrované z místní služby Active Directory.|No|No|Trvalý výstup|
 |legalAgeGroupClassification|Řetězec|Právní klasifikace věkové skupiny. Je určena jen pro čtení a vypočítáno na základě vlastností ageGroup a consentProvidedForMinor. Povolené hodnoty: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult a dospělý.|Yes|No|Trvalý výstup|
 |legalCountry<sup>1</sup>  |Řetězec|Země/oblast pro zákonné účely.|No|No|Trvalý výstup|
@@ -71,19 +71,19 @@ Následující tabulka uvádí atributy [typu prostředku uživatele](https://do
 |signInNames. userName ([identity](manage-user-accounts-graph-api.md#identities-property)) |Řetězec|Jedinečné uživatelské jméno uživatele místního účtu v adresáři. Tuto hodnotu použijte k vytvoření nebo získání uživatele s konkrétním přihlašovacím jménem. Zadání tohoto parametru v PersistedClaims samostatně během operace patch odstraní další typy signInNames. Pokud chcete přidat nový typ signInNames, musíte také zachovat existující signInNames.|No|No|Vstup, trvalý výstup|
 |signInNames. phoneNumber ([identity](manage-user-accounts-graph-api.md#identities-property)) |Řetězec|Jedinečné telefonní číslo uživatele místního účtu v adresáři. Tuto hodnotu použijte k vytvoření nebo získání uživatele s konkrétním telefonním číslem přihlášení. Zadání tohoto parametru v PersistedClaims samostatně během operace patch odstraní další typy signInNames. Pokud chcete přidat nový typ signInNames, musíte také zachovat existující signInNames.|No|No|Vstup, trvalý výstup|
 |signInNames. emailAddress ([identity](manage-user-accounts-graph-api.md#identities-property))|Řetězec|Jedinečná e-mailová adresa uživatele místního účtu v adresáři Toto použijte k vytvoření nebo získání uživatele s konkrétní přihlašovací e-mailovou adresou. Zadání tohoto parametru v PersistedClaims samostatně během operace patch odstraní další typy signInNames. Pokud chcete přidat nový typ signInNames, musíte také zachovat existující signInNames.|No|No|Vstup, trvalý výstup|
-|state           |Řetězec|Kraj v adrese uživatele Maximální délka 128.|Ano|Ano|Trvalý výstup|
-|streetAddress   |Řetězec|Ulice na adrese uživatele místo podnikání. Maximální délka 1024.|Ano|Ano|Trvalý výstup|
+|state           |Řetězec|Kraj v adrese uživatele Maximální délka 128.|Yes|Yes|Trvalý výstup|
+|streetAddress   |Řetězec|Ulice na adrese uživatele místo podnikání. Maximální délka 1024.|Yes|Yes|Trvalý výstup|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|Řetězec|Sekundární telefonní číslo uživatele, které se používá pro službu Multi-Factor Authentication.|Yes|No|Trvalý výstup|
 |strongAuthenticationEmailAddress<sup>1</sup>|Řetězec|Adresa SMTP pro uživatele Příklad: " bob@contoso.com " Tento atribut se používá pro přihlášení pomocí zásad uživatelského jména, aby se uložila e-mailová adresa uživatele. E-mailová adresa se pak použije v toku resetování hesla.|Yes|No|Trvalý výstup|
 |strongAuthenticationPhoneNumber<sup>1</sup>|Řetězec|Primární telefonní číslo uživatele, které se používá pro službu Multi-Factor Authentication.|Yes|No|Trvalý výstup|
-|surname         |Řetězec|Příjmení uživatele (název rodiny nebo příjmení). Maximální délka 64.|Ano|Ano|Trvalý výstup|
+|surname         |Řetězec|Příjmení uživatele (název rodiny nebo příjmení). Maximální délka 64.|Yes|Yes|Trvalý výstup|
 |telephoneNumber (první položka businessPhones)|Řetězec|Primární telefonní číslo místa podnikání uživatele|Yes|No|Trvalý výstup|
 |userPrincipalName (Hlavní název uživatele)    |Řetězec|Hlavní název uživatele (UPN) Hlavní název uživatele (UPN) je přihlašovací jméno pro uživatele ve stylu internetu na základě standardu RFC 822 pro Internet. Doména musí být přítomna v kolekci ověřených domén klienta. Tato vlastnost je při vytvoření účtu povinná. Neměnný|No|No|Vstup, trvalý výstup|
 |usageLocation   |Řetězec|Vyžadováno pro uživatele, kteří budou mít přiřazené licence z důvodu právního požadavku na kontrolu dostupnosti služeb v zemích nebo oblastech. Nelze nabývat hodnoty null. Dvoumístné označení země/oblasti (ISO standard 3166). Příklady: "US", "JP" a "GB".|Yes|No|Trvalý výstup|
 |userType        |Řetězec|Řetězcová hodnota, která se dá použít ke klasifikaci uživatelských typů v adresáři. Hodnota musí být členem. Jen pro čtení.|Jen pro čtení|No|Trvalý výstup|
 |userState (externalUserState)<sup>2</sup>|Řetězec|Pouze pro účet Azure AD B2B označuje, zda je pozvánka PendingAcceptance nebo přijata.|No|No|Trvalý výstup|
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|Zobrazuje časové razítko poslední změny vlastnosti UserState.|No|No|Trvalý výstup|
-|<sup>1</sup> Nepodporováno Microsoft Graph<br><sup>2</sup> . Neměl by se používat s Azure AD B2C||||||
+|<sup>1 </sup> Nepodporováno Microsoft Graph<br><sup>2 </sup> . Neměl by se používat s Azure AD B2C||||||
 
 
 ## <a name="extension-attributes"></a>Atributy rozšíření

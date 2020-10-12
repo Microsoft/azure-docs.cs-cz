@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 09/24/2020
 ms.openlocfilehash: 5df596560e97ea9dba38dca4d4ca58e38caabd37
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333949"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Nastavení protokolů Azure Monitor a shromažďování diagnostických dat pro Azure Logic Apps
@@ -114,7 +114,7 @@ Když ukládáte informace o událostech a datech modulu runtime v [protokolech 
 
    1. Jakmile budete mít hotovo, vyberte **Uložit**.
 
-   Příklad:
+   Například:
 
    ![Vyberte Log Analytics pracovní prostor a data pro protokolování](./media/monitor-logic-apps-log-analytics/send-diagnostics-data-log-analytics-workspace.png)
 
@@ -181,7 +181,7 @@ Společně s protokoly Azure Monitor můžete pomocí diagnostických dat aplika
 * [Archivace protokolů prostředků Azure do účtu úložiště](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 * [Streamování protokolů platformy Azure do Azure Event Hubs](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)
 
-Sledování v reálném čase můžete získat pomocí telemetrie a analýz z jiných služeb, jako je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/platform/powerbi.md). Příklad:
+Sledování v reálném čase můžete získat pomocí telemetrie a analýz z jiných služeb, jako je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/platform/powerbi.md). Například:
 
 * [Streamování dat z Event Hubs do Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analyzujte streamovaná data pomocí Stream Analytics a vytvořte řídicí panel analýzy v reálném čase v Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)

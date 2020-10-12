@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 01c400f51cce85ef39e9d39bcad1221253c6942d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89071206"
 ---
 # <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Zotavení po havárii a geografická distribuce v Azure Durable Functions
@@ -20,10 +20,10 @@ V Durable Functions je veškerý stav trvale v Azure Storage ve výchozím nasta
 
 Orchestrace a entity se můžou aktivovat pomocí [klientských funkcí](durable-functions-types-features-overview.md#client-functions) , které se SPOUŠTĚJÍ přes HTTP, nebo jedním z dalších podporovaných Azure Functions typů triggerů. Můžou se taky aktivovat pomocí [integrovaných rozhraní API http](durable-functions-http-features.md#built-in-http-apis). V zájmu zjednodušení se tento článek zaměřuje na scénáře zahrnující Azure Storage a triggery funkcí založené na protokolu HTTP a možnosti zvýšení dostupnosti a minimalizace výpadků během aktivit zotavení po havárii. Další typy triggerů, například triggery Service Bus nebo Cosmos DB, nebudou výslovně pokryty.
 
-Následující scénáře jsou založené na konfiguracích aktivní – pasivní, protože se řídí využitím Azure Storage. Tento model se skládá z nasazení zálohovací (pasivní) aplikace Function App do jiné oblasti. Traffic Manager bude monitorovat primární (aktivní) aplikaci funkcí pro dostupnost protokolu HTTP. Dojde k převzetí služeb při selhání v aplikaci Function App, pokud primární selže. Další informace najdete v tématu [Priorita směrování provozu](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method) v [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/).
+Následující scénáře jsou založené na konfiguracích Active-Passive, protože se řídí využitím Azure Storage. Tento model se skládá z nasazení zálohovací (pasivní) aplikace Function App do jiné oblasti. Traffic Manager bude monitorovat primární (aktivní) aplikaci funkcí pro dostupnost protokolu HTTP. Dojde k převzetí služeb při selhání v aplikaci Function App, pokud primární selže. Další informace najdete v tématu věnovaném [metodě Traffic-Routing priority](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method) v [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/).
 
 > [!NOTE]
-> - Navrhovaná konfigurace aktivní – pasivní zajišťuje, že klient bude vždycky schopný aktivovat nové orchestrace přes HTTP. V důsledku toho, že mají dvě aplikace Function App sdílí stejné centrum úloh v úložišti, budou některé transakce úložiště na pozadí distribuovány mezi oběma. Tato konfigurace proto u sekundární aplikace Function App naplní nějaké náklady na výstup.
+> - Navrhovaná konfigurace Active-Passive zajišťuje, že klient bude vždycky schopný aktivovat nové orchestrace přes HTTP. V důsledku toho, že mají dvě aplikace Function App sdílí stejné centrum úloh v úložišti, budou některé transakce úložiště na pozadí distribuovány mezi oběma. Tato konfigurace proto u sekundární aplikace Function App naplní nějaké náklady na výstup.
 > - Základní účet úložiště a centrum úloh se vytvoří v primární oblasti a sdílí se s oběma aplikacemi funkcí.
 > - Všechny aplikace Function App, které jsou redundantním nasazením, musí v případě aktivace pomocí protokolu HTTP sdílet stejné přístupové klíče funkce. Modul runtime Functions zveřejňuje [rozhraní API pro správu](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) , které umožňuje uživatelům programově přidávat, odstraňovat a aktualizovat klíče funkcí. Správa klíčů je také možné použít [Azure Resource Manager rozhraní API](https://www.markheath.net/post/managing-azure-functions-keys-2).
 

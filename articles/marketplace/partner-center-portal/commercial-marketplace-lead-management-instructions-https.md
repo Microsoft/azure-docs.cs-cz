@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
 ms.openlocfilehash: 3cdbe1f3428418f082d53febca950a6a443fe5ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86120361"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Použití koncového bodu HTTPS ke správě potenciálních zákazníků z obchodu na webu Marketplace
@@ -173,7 +173,7 @@ Tento článek vysvětluje, jak vytvořit nový tok v Power automatu pro generov
    - **Tělo**: ze seznamu pro výběr dynamického obsahu přidejte do textu e-mailu požadované informace. Použijte například LastName, FirstName, E-mail a společnost. Až budete s nastavením e-mailového oznámení hotovi, vypadá to jako na příkladu na následující obrazovce.
 
 
-       ![Příklad e-mailových oznámení](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
+       ![Příklad e-mailového oznámení](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
 
 1. Kliknutím na **Uložit** dokončete tok. Vytvoří se adresa URL POST protokolu HTTP a je dostupná v okně **při přijetí požadavku HTTP** . Zkopírujte tuto adresu URL pomocí ovládacího prvku kopírování, který je umístěn napravo od adresy URL HTTP POST. Použití tohoto ovládacího prvku je důležité, takže nemůžete přijít o žádnou část celé adresy URL. Tuto adresu URL uložte, protože ji budete potřebovat při konfiguraci správy potenciálních zákazníků na portálu pro publikování.
 
@@ -219,7 +219,7 @@ Konfiguraci můžete otestovat pomocí [post](https://app.getpostman.com/app/dow
     >[!NOTE] 
     >Pokud nevidíte e-mail od testu, zkontrolujte nevyžádanou poštu a složky Nevyžádaná pošta. Na následující obrazovce si všimnete pouze popisků polí, které jste přidali při konfiguraci e-mailového oznámení. Pokud se jednalo o skutečného zájemce vygenerovaného vaší nabídkou, zobrazí se vám také aktuální informace z kontaktu zájemce v textu a na řádku předmětu.
 
-   ![E-mail přijat](./media/commercial-marketplace-lead-management-instructions-https/email-received.png)
+   ![Doručený e-mail](./media/commercial-marketplace-lead-management-instructions-https/email-received.png)
 
 ## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Konfigurace nabídky pro odeslání zájemců do koncového bodu HTTPS
 

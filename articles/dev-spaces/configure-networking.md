@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Popisuje požadavky na síť pro provozování Azure Dev Spaces ve službě Azure Kubernetes.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, CNI, kubenet, SDN, Network
 ms.openlocfilehash: 0d9ebbec3e3c07a466acb58e88b67e6a32a20edb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88214175"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Konfigurace sítě pro Azure Dev Spaces v různých topologiích sítě

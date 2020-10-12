@@ -7,21 +7,21 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
 ms.openlocfilehash: cb785a6d988772ba160806621e44900d630b7e61
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88225712"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB cenové úrovně
 
 Server Azure Database for MariaDB můžete vytvořit v jedné ze tří různých cenových úrovní: optimalizováno Basic, Pro obecné účely a paměť. Cenové úrovně jsou rozlišené o množství výpočtů v virtuální jádra, které se dá zřídit, paměť na vCore a technologie úložiště, která se používá k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru MariaDB. Server může mít jednu nebo více databází.
 
-| Prostředek | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
+| Prostředek | **Basic** | **Obecné použití** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
 | Generování výpočtů | Gen 5 |Gen 5 | Gen 5 |
 | Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
-| Paměť na vCore | 2 GB | 5 GB | 10 GB |
+| Paměť na vCore | 2 GB | 5 GB | 10 GB |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
 | Doba uchování zálohy databáze | 7 až 35 dní | 7 až 35 dní | 7 až 35 dní |
 
@@ -30,8 +30,8 @@ Pokud chcete zvolit cenovou úroveň, použijte jako výchozí bod následujíc�
 | Cenová úroveň | Cílová zátěž |
 |:-------------|:-----------------|
 | Základní | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
-| Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. Mezi příklady patří servery pro hostování webových a mobilních aplikací a dalších podnikových aplikací.|
-| Optimalizováno pro paměť | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakční nebo analytické aplikace.|
+| Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. K příkladům patří servery, které hostují webové, mobilní a další podnikové aplikace.|
+| Optimalizováno pro paměť | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. K příkladům patří servery, které zpracovávají data v reálném čase, a transakční nebo analytické aplikace vyžadující vysoký výkon.|
 
 Po vytvoření serveru se dá změnit nebo snížit počet virtuální jádra a cenová úroveň (s výjimkou a od úrovně Basic) během několika sekund. Velikost úložiště můžete také nezávisle upravovat a dobu uchovávání záloh nahoru nebo dolů bez výpadků aplikací. Po vytvoření serveru nejde typ úložiště zálohy změnit. Další informace najdete v části [Scale Resources](#scale-resources) .
 
@@ -47,7 +47,7 @@ Výpočetní prostředky se poskytují jako virtuální jádra, což představuj
 |:---|:----------|:--------------------|:---------------------|
 | Typ úložiště | Základní úložiště | Pro obecné účely úložiště | Pro obecné účely úložiště |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
-| Velikost přírůstku úložiště | 1 GB | 1 GB | 1 GB |
+| Velikost přírůstku úložiště | 1 GB | 1 GB | 1 GB |
 | IOPS | Proměnná |3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 6000 IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 6000 IOPS |
 
 Můžete přidat další úložnou kapacitu během a po vytvoření serveru a nechat systém, aby automaticky rozšiřoval úložiště na základě spotřeby úložiště vašich úloh.
@@ -67,7 +67,7 @@ Zvýšili jsme limity úložiště v našich Pro obecné účely a paměťově o
 |:-------------|:--------------------|:---------------------|
 | Typ úložiště | Premium Storage Azure | Premium Storage Azure |
 | Velikost úložiště | 32 GB až 16 TB| 32 až 16 TB |
-| Velikost přírůstku úložiště | 1 GB | 1 GB |
+| Velikost přírůstku úložiště | 1 GB | 1 GB |
 | IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS| 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS |
 
 > [!IMPORTANT]

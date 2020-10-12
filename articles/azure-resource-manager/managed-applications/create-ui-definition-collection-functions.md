@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: 2a075c5c99f457681cd49e75014487bf9cca263c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096962"
 ---
 # <a name="createuidefinition-collection-functions"></a>Funkce kolekce CreateUiDefinition
@@ -98,7 +98,7 @@ Předpokládá `element1` se `null` nebo není definován. Následující přík
 "[empty(steps('demoStep').element1)]"
 ```
 
-## <a name="filter"></a>filtrování
+## <a name="filter"></a>filter
 
 Po použití logiky filtrování poskytnuté jako funkce lambda vrátí nové pole. První parametr je pole, které se má použít pro filtrování. Druhý parametr je funkce lambda, která určuje logiku filtrování.
 

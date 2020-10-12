@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: b2bb351de292ff2015cdcbd388155063a86a7359
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653575"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analýza sestavy Plánovač nasazení služby Azure Site Recovery
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analýza sestavy Plánovače nasazení služby Azure Site Recovery
 Tento článek popisuje listy v sestavě aplikace Excel vygenerované Plánovačem nasazení služby Azure Site Recovery pro scénář nasazení Hyper-V do Azure.
 
 ## <a name="on-premises-summary"></a>On-premises summary (Přehled místního prostředí)
@@ -99,7 +99,7 @@ Informace o tom, proč se k replikaci vyžaduje volné místo, najdete v části
 ### <a name="maximum-copy-frequency"></a>Maximální frekvence kopírování
 Pro replikaci musí být nastavena doporučená maximální frekvence kopírování, aby se zajistil požadovaný cíl bodu obnovení. Výchozí hodnota je pět minut. Pro dosažení lepšího cíle bodu obnovení můžete frekvenci kopírování nastavit na 30 sekund.
 
-### <a name="what-if-analysis"></a>Analýza „co kdyby“
+### <a name="what-if-analysis"></a>Citlivostní analýza
 ![Analýza „co kdyby“](media/hyper-v-deployment-planner-analyze-report/what-if-analysis-h2a.png) Tato analýza ukazuje, ke kolika narušením by mohlo dojít během období profilace, pokud nastavíte menší šířku pásma pro splnění požadovaného cíle bodu obnovení pouze 90 % času. Každý den může dojít k jednomu nebo několika narušením cíle bodu obnovení. Graf ukazuje pro každý den špičku cíle bodu obnovení. Na základě této analýzy se můžete rozhodnout, jestli je se zadanou menší šířkou pásma přijatelný počet narušení cíle bodu obnovení ve všech dnech a denní dosažená špička cíle bodu obnovení. Pokud je to přijatelné, můžete pro replikaci přidělit menší šířku pásma. Pokud ne, podle návrhu přidělte větší šířku pásma pro splnění požadovaného cíle bodu obnovení 100 % času. 
 
 ### <a name="recommendation-for-successful-initial-replication"></a>Doporučení pro úspěšnou počáteční replikaci
