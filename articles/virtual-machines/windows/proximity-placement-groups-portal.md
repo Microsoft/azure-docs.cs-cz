@@ -1,5 +1,5 @@
 ---
-title: Vytvoření skupiny umístění blízkosti pomocí portálu
+title: Vytvoření skupiny umístění bezkontaktní komunikace pomocí portálu
 description: Naučte se vytvořit skupinu umístění blízkosti pomocí Azure Portal.
 author: cynthn
 ms.service: virtual-machines
@@ -8,13 +8,13 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: cynthn
 ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82190397"
 ---
-# <a name="create-a-proximity-placement-group-using-the-portal"></a>Vytvoření skupiny umístění blízkosti pomocí portálu
+# <a name="create-a-proximity-placement-group-using-the-portal"></a>Vytvoření skupiny umístění bezkontaktní komunikace pomocí portálu
 
 Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste je nasadit v rámci [skupiny umístění blízkosti](co-location.md#proximity-placement-groups).
 

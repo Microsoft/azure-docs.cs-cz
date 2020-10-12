@@ -7,10 +7,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/30/2018
 ms.openlocfilehash: 4bb6ee60df291c1939d3bb0d72a9b3992be9b3c0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132139"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>Osvědčené postupy pro správu sestavení U-SQL v kanálu CI/CD
@@ -82,7 +82,7 @@ Databázi U-SQL můžete nasadit pomocí databázového projektu U-SQL nebo `.us
 
 ### <a name="deploy-a-u-sql-database-in-azure-devops"></a>Nasazení databáze U-SQL v Azure DevOps
 
-`PackageDeploymentTool.exe`poskytuje rozhraní pro programování a příkazový řádek, která usnadňují nasazení databází U-SQL. Sada SDK je součástí [balíčku NuGet U-SQL SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), který se nachází na adrese `build/runtime/PackageDeploymentTool.exe` .
+`PackageDeploymentTool.exe` poskytuje rozhraní pro programování a příkazový řádek, která usnadňují nasazení databází U-SQL. Sada SDK je součástí [balíčku NuGet U-SQL SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), který se nachází na adrese `build/runtime/PackageDeploymentTool.exe` .
 
 V Azure DevOps můžete k nastavení kanálu automatizace pro obnovení databáze U-SQL použít úlohu příkazového řádku a tuto sadu SDK. [Přečtěte si další informace o sadě SDK a o tom, jak vytvořit kanál CI/CD pro nasazení databáze U-SQL](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-azure-pipelines).
 

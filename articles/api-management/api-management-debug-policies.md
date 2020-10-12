@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
 ms.openlocfilehash: 4eb32243df219d721d7baae80984c45d0fc4cf25
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91341875"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>Ladění zásad Azure API Management v Visual Studio Code
@@ -59,7 +59,7 @@ Upravte požadavek HTTP v editoru podle vašeho testovacího scénáře. Potom k
 
 ![Odeslat žádost o test](media/api-management-debug-policies/rest-client.png)
 
-## <a name="debug-policies"></a>Zásady ladění
+## <a name="debug-policies"></a>Ladění zásad
 Po odeslání požadavku na test HTTP rozšíření otevře okno ladění, které zobrazuje efektivní zásady této operace, a zastaví první efektivní zásadu. 
 
 ![zásady ladění](media/api-management-debug-policies/main-window.png)

@@ -4,10 +4,10 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: fede4d6c71e45b119e500d4c9c6f91765d052036
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84676790"
 ---
 # <a name="object-functions-for-arm-templates"></a>Funkce objektů pro šablony ARM
@@ -18,7 +18,7 @@ Správce prostředků poskytuje několik funkcí pro práci s objekty v šablon�
 * [empty](#empty)
 * [průnik](#intersection)
 * [JSON](#json)
-* [časový](#length)
+* [length](#length)
 * [sjednocovací](#union)
 
 ## <a name="contains"></a>obsahuje
@@ -93,14 +93,14 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| stringTrue | Logická hodnota | True |
-| stringFalse | Logická hodnota | False |
-| objectTrue | Logická hodnota | True |
-| objectFalse | Logická hodnota | False |
-| arrayTrue | Logická hodnota | True |
-| arrayFalse | Logická hodnota | False |
+| stringTrue | Logická hodnota | Ano |
+| stringFalse | Logická hodnota | Nepravda |
+| objectTrue | Logická hodnota | Ano |
+| objectFalse | Logická hodnota | Nepravda |
+| arrayTrue | Logická hodnota | Ano |
+| arrayFalse | Logická hodnota | Nepravda |
 
 ## <a name="empty"></a>empty
 
@@ -161,11 +161,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayEmpty | Logická hodnota | True |
-| objectEmpty | Logická hodnota | True |
-| stringEmpty | Logická hodnota | True |
+| arrayEmpty | Logická hodnota | Ano |
+| objectEmpty | Logická hodnota | Ano |
+| stringEmpty | Logická hodnota | Ano |
 
 ## <a name="intersection"></a>průnik
 
@@ -228,7 +228,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | objectOutput | Objekt | {"One": "a", "tři": "c"} |
 | arrayOutput | Pole | ["Two", "tři"] |
@@ -296,9 +296,9 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| jsonOutput1 | Logická hodnota | True |
+| jsonOutput1 | Logická hodnota | Ano |
 | jsonOutput2 | Objekt | {"a": "b"} |
 | paramOutput | Objekt | {"a": "demo hodnota"}
 
@@ -372,7 +372,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
@@ -439,7 +439,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | objectOutput | Objekt | {"One": "a", "Two": "b", "tři": "C2", "čtyři": "d", "5": "e"} |
 | arrayOutput | Pole | ["One", "Two", "tři", "čtyři"] |

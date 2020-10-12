@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 8483fd2a1b33330b868fb21d71922377e906e6c8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85958417"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Osvědčené postupy pro fondy SQL ve službě Azure synapse Analytics
@@ -71,7 +71,7 @@ Chcete-li maximalizovat propustnost při použití textových souborů gzip, roz
 
 Základová databáze není pro dotazy optimální. Základní tabulky pro fondy SQL aktuálně podporují pouze soubory objektů BLOB v Azure a Azure Data Lake úložiště. Tyto soubory nemají k dispozici žádné výpočetní prostředky. V důsledku toho fondy SQL nemůžou přesměrovat tuto práci a musí číst celý soubor načtením do tempdb, aby mohli data číst.
 
-Pokud máte několik dotazů na dotazování na tato data, je lepší načíst tato data jednou a používat dotazy k použití místní tabulky. Další základní pokyny jsou uvedené v [příručce k používání základního](data-loading-best-practices.md) článku.
+Pokud máte několik dotazů na dotazování na tato data, je lepší načíst tato data jednou a používat dotazy k použití místní tabulky. Další základní pokyny jsou uvedené v  [příručce k používání základního](data-loading-best-practices.md) článku.
 
 ## <a name="hash-distribute-large-tables"></a>Distribuujte velké tabulky pomocí hodnot hash
 
@@ -171,7 +171,7 @@ Další informace o třídách prostředků najdete v článku [třídy prostře
 
 Pokud si všimnete delšího zpoždění v dotazech uživatele, můžou být vaši uživatelé spuštěni ve větších třídách prostředků. Tento scénář podporuje spotřebu slotů souběžnosti, což může způsobit, že se další dotazy zařadí do fronty.  Chcete-li zjistit, zda jsou dotazy uživatelů zařazeny do fronty, spusťte příkaz `SELECT * FROM sys.dm_pdw_waits` a zjistěte, zda jsou vráceny nějaké řádky.
 
-[Třídy prostředků pro správu úloh](../sql-data-warehouse/resource-classes-for-workload-management.md) a články pro [Sys. dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) vám poskytnou další informace.
+[Třídy prostředků pro správu úloh](../sql-data-warehouse/resource-classes-for-workload-management.md) a [Sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) články vám poskytnou další informace.
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>Použijte zobrazení dynamických zpráv k monitorování a optimalizaci dotazů
 
@@ -180,7 +180,7 @@ Fondy SQL mají několik zobrazení dynamické správyů, které se dají použ�
 - [Monitorování vaší úlohy pomocí DMV](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 - [POPISEK](develop-label.md)
-- [OPTION](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [NASTAVENÍ](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)

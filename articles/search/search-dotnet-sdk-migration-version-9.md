@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7726877efcb72caf5bb4c92e2e1c65e5df68f270
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89002704"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Upgrade na Azure Search .NET SDK verze 9
@@ -152,7 +152,7 @@ Vlastnosti, které drží volitelné hodnoty těchto typů, jsou nyní explicitn
 
 ### <a name="removed-facetresults-and-hithighlights"></a>Odebrané FacetResults a HitHighlights
 
-`FacetResults`Třídy a byly `HitHighlights` odebrány. Výsledky omezující vlastnosti se teď zadávají jako `IDictionary<string, IList<FacetResult>>` a zvýrazní se `IDictionary<string, IList<string>>` . Rychlý způsob, jak vyřešit chyby sestavení zavedené touto změnou, je přidat `using` aliasy v horní části každého souboru, který používá odebrané typy. Příklad:
+`FacetResults`Třídy a byly `HitHighlights` odebrány. Výsledky omezující vlastnosti se teď zadávají jako `IDictionary<string, IList<FacetResult>>` a zvýrazní se `IDictionary<string, IList<string>>` . Rychlý způsob, jak vyřešit chyby sestavení zavedené touto změnou, je přidat `using` aliasy v horní části každého souboru, který používá odebrané typy. Například:
 
 ```csharp
 using FacetResults = System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<Models.FacetResult>>;

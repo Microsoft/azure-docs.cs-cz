@@ -14,10 +14,10 @@ caps.latest.revision: 17
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: e53c10395ec3168e656633cc43fb2d01902209fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79534724"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>NetworkTrafficRules schéma definice Azure Cloud Services
@@ -64,16 +64,16 @@ Element AllowAllTraffic
 
 [Element FromRole](#FromRole)
 
-##  <a name="networktrafficrules-element"></a><a name="NetworkTrafficRules"></a>Element NetworkTrafficRules
+##  <a name="networktrafficrules-element"></a><a name="NetworkTrafficRules"></a> Element NetworkTrafficRules
 `NetworkTrafficRules`Element určuje, které role mohou komunikovat s koncovým bodem v jiné roli. Služba může obsahovat jednu `NetworkTrafficRules` definici.
 
-##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a>Element OnlyAllowTrafficTo
+##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a> Element OnlyAllowTrafficTo
 `OnlyAllowTrafficTo`Element popisuje kolekci cílových koncových bodů a rolí, které s nimi můžou komunikovat. Můžete zadat více `OnlyAllowTrafficTo` uzlů.
 
-##  <a name="destinations-element"></a><a name="Destinations"></a>Cílová element
+##  <a name="destinations-element"></a><a name="Destinations"></a> Cílová element
 `Destinations`Prvek popisuje kolekci RoleEndpoints, než může být oznámeno.
 
-##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a>Element RoleEndpoint
+##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a> Element RoleEndpoint
 `RoleEndpoint`Element popisuje koncový bod role, který umožňuje komunikaci s. `RoleEndpoint`Pokud je v roli více než jeden koncový bod, můžete zadat více prvků.
 
 | Atribut      | Typ     | Popis |
@@ -84,14 +84,14 @@ Element AllowAllTraffic
 ## <a name="allowalltraffic-element"></a>Element AllowAllTraffic
 `AllowAllTraffic`Element je pravidlo, které umožňuje všem rolím komunikovat s koncovými body definovanými v `Destinations` uzlu.
 
-##  <a name="whensource-element"></a><a name="WhenSource"></a>Element WhenSource
+##  <a name="whensource-element"></a><a name="WhenSource"></a> Element WhenSource
 `WhenSource`Prvek popisuje kolekci rolí, než může komunikovat s koncovými body definovanými v `Destinations` uzlu.
 
 | Atribut | Typ     | Popis |
 | --------- | -------- | ----------- |
 | `matches` | `string` | Povinná hodnota. Určuje pravidlo, které se má použít při povolování komunikace. Jediná platná hodnota je aktuálně `AnyRule` .|
   
-##  <a name="fromrole-element"></a><a name="FromRole"></a>Element FromRole
+##  <a name="fromrole-element"></a><a name="FromRole"></a> Element FromRole
 `FromRole`Prvek určuje role, které mohou komunikovat s koncovými body definovanými v `Destinations` uzlu. `FromRole`Pokud existuje více než jedna role, která může komunikovat s koncovými body, můžete zadat více prvků.
 
 | Atribut  | Typ     | Popis |

@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 05/20/2020
 ms.openlocfilehash: 9038630a2623a8b20ddfcf98899ce9a89f16bdc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84673356"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper Server nemůže vytvořit kvorum ve službě Azure HDInsight.
@@ -57,7 +57,7 @@ Message
 
 * Vyhledání serverů Zookeeper ze souboru/etc/hosts nebo z uživatelského rozhraní Ambari
 * Spusťte následující příkaz
-  * `echo stat | nc <ZOOKEEPER_HOST_IP> 2181`(nebo 2182)  
+  * `echo stat | nc <ZOOKEEPER_HOST_IP> 2181` (nebo 2182)  
   * Port 2181 je instance Apache Zookeeper
   * Port 2182 se používá v Zookeeper HDInsight (k poskytování HA pro služby, které nejsou nativně HA).
   * Pokud příkaz nezobrazuje žádný výstup, znamená to, že servery Zookeeper nejsou spuštěné.
@@ -105,12 +105,12 @@ Node count: 133212
 * Uzly Zookeeper jsou nakonfigurované tak, aby automaticky vymazaly staré snímky.
 * Ve výchozím nastavení se zachovají posledních 30 snímků.
 * Počet uchovávaných snímků je řízen konfiguračním klíčem `autopurge.snapRetainCount` . Tato vlastnost je k dispozici v následujících souborech:
-  * `/etc/zookeeper/conf/zoo.cfg`pro Hadoop Zookeeper
-  * `/etc/hdinsight-zookeeper/conf/zoo.cfg`pro HDInsight Zookeeper
+  * `/etc/zookeeper/conf/zoo.cfg` pro Hadoop Zookeeper
+  * `/etc/hdinsight-zookeeper/conf/zoo.cfg` pro HDInsight Zookeeper
 * Nastavte `autopurge.snapRetainCount` na hodnotu 3 a restartujte Zookeeper servery.
   * Konfiguraci Hadoop Zookeeper můžete aktualizovat a službu je možné restartovat prostřednictvím Ambari.
   * Ruční zastavení a restartování HDInsight Zookeeper
-    * `sudo lsof -i :2182`vám poskytne ID procesu, který se má ukončit.
+    * `sudo lsof -i :2182` vám poskytne ID procesu, který se má ukončit.
     * `sudo python /opt/startup_scripts/startup_hdinsight_zookeeper.py`
 * Nemazat snímky ručně – ruční odstranění snímků by mohlo způsobit ztrátu dat.
 

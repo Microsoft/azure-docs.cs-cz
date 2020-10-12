@@ -12,10 +12,10 @@ ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18
 ms.openlocfilehash: b0574c41042e172af78365bb273c81729ce204ab
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88749314"
 ---
 # <a name="speech-service-supported-regions"></a>Oblasti podporované službou Speech
@@ -48,7 +48,7 @@ Použijete-li [sadu Speech SDK](speech-sdk.md), oblasti jsou určeny **identifik
 
 Dostupné oblasti pro **rozpoznávání záměrů** prostřednictvím sady Speech SDK jsou následující:
 
-| Globální oblast | Region           | Identifikátor oblasti |
+| Globální oblast | Oblast           | Identifikátor oblasti |
 | ------------- | ---------------- | -------------------- |
 | Asie          | Východní Asie        | `eastasia`           |
 | Asie          | Southeast Asia   | `southeastasia`      |
@@ -69,7 +69,7 @@ Toto je podmnožina oblastí publikování, které podporuje [služba Language U
 
 [Sada Speech SDK](speech-sdk.md) podporuje možnosti **hlasového asistenta** v těchto oblastech:
 
-| Region         | Identifikátor oblasti |
+| Oblast         | Identifikátor oblasti |
 | -------------- | -------------------- |
 | USA – západ        | `westus`             |
 | Západní USA 2      | `westus2`            |

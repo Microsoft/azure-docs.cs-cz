@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.openlocfilehash: 32e9da592d4c8f3997d5b1844065bf550d7d7d48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82207509"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Ruční vytvoření a použití svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
@@ -59,7 +59,7 @@ ID prostředku disku se zobrazí po úspěšném dokončení příkazu, jak je z
 
 ## <a name="mount-disk-as-volume"></a>Připojit disk jako svazek
 
-Pokud chcete připojit disk Azure do složky pod, nakonfigurujte svazek ve specifikaci kontejneru. Vytvořte nový soubor `azure-disk-pod.yaml` s názvem s následujícím obsahem. Aktualizujte `diskName` název disku, který jste vytvořili v předchozím kroku, a `diskURI` s ID disku zobrazeným ve výstupu příkazu pro vytvoření disku. V případě potřeby aktualizujte `mountPath` cestu, která je cesta k disku Azure připojeného k části pod. V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
+Pokud chcete připojit disk Azure do svého zařízení pod, nakonfigurujte svazek ve specifikaci kontejneru. Vytvořte nový soubor s názvem `azure-disk-pod.yaml` s následujícím obsahem. Aktualizujte `diskName` název disku, který jste vytvořili v předchozím kroku, a `diskURI` s ID disku zobrazeným ve výstupu příkazu pro vytvoření disku. V případě potřeby aktualizujte `mountPath` cestu, která je cesta k disku Azure připojeného k části pod. V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
 
 ```yaml
 apiVersion: v1

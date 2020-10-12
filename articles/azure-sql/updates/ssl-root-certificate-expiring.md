@@ -8,10 +8,10 @@ ms.subservice: service
 ms.topic: conceptual
 ms.date: 09/13/2020
 ms.openlocfilehash: a273b9aaae083bb4566d289e9680b50c686d4e9b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342248"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-sql-database--sql-managed-instance"></a>Porozumění změnám v kořenové CA změna Azure SQL Database & SQL Managed instance
@@ -61,7 +61,7 @@ Pokud nepoužíváte protokol SSL/TLS, nejsou nutné žádné akce týkající s
 Pokud kořenový certifikát neaktualizujete před 30. listopadu 2020, vaše aplikace, které se připojují přes protokol SSL/TLS, a ověření kořenového certifikátu nebudou moct komunikovat s Azure SQL Database & spravované instance SQL a aplikace budou mít problémy s připojením ke službě Azure SQL Database & SQL Managed instance.
 
 ### <a name="do-i-need-to-plan-a-maintenance-downtime-for-this-changebr"></a>Musím pro tuto změnu naplánovat výpadky údržby?<BR>
-No. Vzhledem k tomu, že se tato změna dá připojit k serveru jenom na straně klienta, pro tuto změnu není potřeba žádné prostoje údržby.
+Ne. Vzhledem k tomu, že se tato změna dá připojit k serveru jenom na straně klienta, pro tuto změnu není potřeba žádné prostoje údržby.
 
 ### <a name="what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020"></a>Co když mi po 26. října 2020 nemůžete získat plánované výpadky této změny?
 Vzhledem k tomu, že klienti, kteří se používají pro připojení k serveru, musí aktualizovat informace o certifikátu, jak je popsáno [v části Oprava](./ssl-root-certificate-expiring.md#what-do-i-need-to-do-to-maintain-connectivity), v tomto případě nepotřebujeme v tomto případě výpadek serveru.

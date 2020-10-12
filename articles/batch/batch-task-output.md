@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85965106"
 ---
 # <a name="persist-job-and-task-output"></a>Trvalý výstup úloh a funkcí
@@ -59,7 +59,7 @@ Můžete chtít implementovat konvence souborů sami, pokud chcete osvědčené 
 
 Můžete také implementovat vlastní kompletní řešení pro přesun souborů. Tento postup použijte v těchto případech:
 
-- Chcete zachovat data úkolu do jiného úložiště dat než Azure Storage. Pokud chcete nahrát soubory do úložiště dat, jako je Azure SQL nebo Azure datalake, můžete vytvořit vlastní skript nebo spustitelný soubor, který se odešle do tohoto umístění. Pak ji můžete zavolat na příkazovém řádku po spuštění vašeho primárního spustitelného souboru. V uzlu Windows například můžete zavolat tyto dva příkazy:`doMyWork.exe && uploadMyFilesToSql.exe`
+- Chcete zachovat data úkolu do jiného úložiště dat než Azure Storage. Pokud chcete nahrát soubory do úložiště dat, jako je Azure SQL nebo Azure datalake, můžete vytvořit vlastní skript nebo spustitelný soubor, který se odešle do tohoto umístění. Pak ji můžete zavolat na příkazovém řádku po spuštění vašeho primárního spustitelného souboru. V uzlu Windows například můžete zavolat tyto dva příkazy: `doMyWork.exe && uploadMyFilesToSql.exe`
 - Chcete provést příkaz k vrácení se změnami nebo prvotní nahrání počátečních výsledků.
 - Chcete udržovat detailní kontrolu nad zpracováním chyb. Například můžete chtít implementovat vlastní řešení, pokud chcete použít akce závislosti úloh k provedení určitých akcí odeslání na základě kódů ukončení úlohy. Další informace o akcích závislostí úkolů najdete v tématu [Vytváření závislostí úloh pro spouštění úloh, které jsou závislé na jiných úkolech](batch-task-dependencies.md).
 

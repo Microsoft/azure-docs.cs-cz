@@ -7,10 +7,10 @@ author: rboucher
 ms.author: robb
 ms.date: 06/16/2020
 ms.openlocfilehash: 462358ab967d4ba26a265d7b5f401b995223815e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85959838"
 ---
 # <a name="saved-queries-in-azure-monitor-log-analytics"></a>Uložené dotazy v Azure Monitor Log Analytics
@@ -86,7 +86,7 @@ Dialog podporuje seskupení podle:
 
 Hodnoty seskupení také fungují jako aktivní obsah. Kliknutí na jednu z hodnot na levé straně obrazovky posouvá zobrazení dotazů doprava na položku, na kterou jste klikli.
 
-### <a name="filter"></a>Filtr
+### <a name="filter"></a>Filtrovat
 
 Můžete také filtrovat dotazy podle výše zmíněných hodnot GroupBy. V dialogovém okně příklad dotazu jsou filtry nalezeny v horní části.
 

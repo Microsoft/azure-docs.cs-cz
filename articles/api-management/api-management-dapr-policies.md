@@ -7,10 +7,10 @@ ms.date: 9/13/2020
 ms.topic: article
 ms.service: api-management
 ms.openlocfilehash: d537040be4ed4cbf961a4621980d3d290e306359
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91341879"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management zásady integrace Dapr
@@ -37,7 +37,7 @@ template:
 ```
 
 
-## <a name="distributed-application-runtime-dapr-integration-policies"></a>Zásady integrace s modulem runtime distribuovaných aplikací (Dapr)
+## <a name="distributed-application-runtime-dapr-integration-policies"></a>Zásady integrace Dapr (Distributed Application Runtime)
 
 -  [Odeslat požadavek na službu](api-management-dapr-policies.md#invoke): používá modul runtime Dapr k vyhledání a spolehlivé komunikaci s mikroslužbou Dapr. Další informace o vyvolání služby v Dapr najdete v popisu v tomto souboru [Readme](https://github.com/dapr/docs/blob/master/concepts/service-invocation/README.md#service-invocation) .
 -  [Odeslat zprávu do publikace nebo dílčího tématu](api-management-dapr-policies.md#pubsub): používá modul runtime Dapr k publikování zprávy do tématu publikovat/odběr. Další informace o publikování a odběru zpráv v Dapr najdete v popisu v tomto souboru [Readme](https://github.com/dapr/docs/blob/master/concepts/publish-subscribe-messaging/README.md) .
@@ -243,7 +243,7 @@ Oddíl "back-end" je prázdný a žádost není předána do back-endu.
 
 | Atribut        | Popis                     | Povinné | Výchozí |
 |------------------|---------------------------------|----------|---------|
-| jméno            | Název cílové vazby Musí odpovídat názvu vazeb [definovaných](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#bindings-structure) v Dapr.           | Yes      | Není k dispozici     |
+| name            | Název cílové vazby Musí odpovídat názvu vazeb [definovaných](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#bindings-structure) v Dapr.           | Yes      | Není k dispozici     |
 | operation       | Název cílové operace (konkrétní vazba). Provede mapování na vlastnost [Operation](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) v Dapr. | No | Žádné |
 | ignorovat – chyba     | Pokud se nastaví `true` pokyn, aby se při přijetí chyby ["on-error"](api-management-error-handling-policies.md) z modulu runtime Dapr | No | `false` |
 | Response – proměnná – Název | Název položky kolekce [Variables](api-management-policy-expressions.md#ContextVariables) , která se má použít pro uložení odpovědi z modulu runtime Dapr | No | Žádné |

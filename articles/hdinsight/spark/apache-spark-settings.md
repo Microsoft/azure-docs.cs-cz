@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82188153"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurace nastavení Apache Sparku
@@ -29,7 +29,7 @@ Počet virtuálních počítačů a velikostí virtuálních počítačů pro uz
 
 Pro svůj cluster použijte nejlepší verzi Sparku.  Služba HDInsight zahrnuje několik verzí Spark i HDInsight.  Každá verze Sparku obsahuje sadu výchozích nastavení clusteru.  
 
-Když vytváříte nový cluster, existuje několik verzí Spark, ze kterých si můžete vybrat. Zobrazí úplný seznam [komponent a verzí HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
+Když vytváříte nový cluster, existuje několik verzí Spark, ze kterých si můžete vybrat. Zobrazí úplný seznam  [komponent a verzí HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
 
 > [!NOTE]  
 > Výchozí verze Apache Spark ve službě HDInsight se může změnit bez předchozího upozornění. Pokud máte závislost verze, společnost Microsoft doporučuje zadat tuto konkrétní verzi při vytváření clusterů pomocí sady .NET SDK, Azure PowerShell a Azure Classic CLI.
@@ -90,7 +90,7 @@ Tři klíčové parametry, které se často upravují pro optimalizaci konfigura
 > [!NOTE]  
 > Tyto tři konfigurační parametry lze nakonfigurovat na úrovni clusteru (pro všechny aplikace, které jsou spuštěny v clusteru) a také jsou určeny pro každou jednotlivou aplikaci.
 
-Dalším zdrojem informací o prostředcích, které používají vykonavatelé Spark, je uživatelské rozhraní aplikace Spark.  V uživatelském rozhraní zobrazí **vykonavatelé** zobrazení souhrnných a podrobných informací o konfiguraci a spotřebovaných prostředcích.  Určete, jestli se mají změnit hodnoty prováděcích modulů pro celý cluster, nebo konkrétní sada spuštění úloh.
+Dalším zdrojem informací o prostředcích, které používají vykonavatelé Spark, je uživatelské rozhraní aplikace Spark.  V uživatelském rozhraní zobrazí  **vykonavatelé** zobrazení souhrnných a podrobných informací o konfiguraci a spotřebovaných prostředcích.  Určete, jestli se mají změnit hodnoty prováděcích modulů pro celý cluster, nebo konkrétní sada spuštění úloh.
 
 ![Prováděče Spark](./media/apache-spark-settings/apache-spark-executors.png)
 
@@ -125,7 +125,7 @@ PŘÍZe řídí maximální součet paměti využívané kontejnery na jednotliv
 
 Clustery Spark v HDInsight ve výchozím nastavení zahrnují několik součástí. Každá z těchto součástí zahrnuje výchozí hodnoty konfigurace, které můžete podle potřeby přepsat.
 
-|Součást |Popis|
+|Komponenta |Popis|
 |---|---|
 |Spark Core|Spark Core, SQL Spark, rozhraní API pro streamování Sparku, GraphX a Apache Spark MLlib.|
 |Anaconda|Správce balíčků Pythonu.|

@@ -12,10 +12,10 @@ ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: c6bcf6f228049c4f5c4d1cd0d22cb69fb9677c1a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342591"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>Sledování experimentů Azure Databricks ML pomocí MLflow a Azure Machine Learning (Preview)
@@ -172,7 +172,7 @@ mlflow.sklearn.log_model(model, artifact_path = "model",
 
 Až budete připraveni vytvořit koncový bod pro vaše modely ML. Můžete nasadit jako, 
 
-* Webová služba vyAzure Machine Learning požadavek-odpověď pro interaktivní bodování. Toto nasazení umožňuje využít a použít správu modelů Azure Machine Learning a možnosti detekce posunu dat pro produkční modely. 
+* Webová služba Azure Machine Learning Request-Response pro interaktivní bodování. Toto nasazení umožňuje využít a použít správu modelů Azure Machine Learning a možnosti detekce posunu dat pro produkční modely. 
 
 * Objekty modelu MLFlow, které se dají použít v kanálech streamování nebo Batch jako funkce Pythonu nebo PANDAS UDF v Azure Databricks pracovním prostoru.
 

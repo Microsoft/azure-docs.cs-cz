@@ -7,10 +7,10 @@ ms.date: 11/02/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 24a411403fc139a7e7fa6644690c57a3b2729bf5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89002279"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Průvodce převodem webových rolí a rolí pracovních procesů na Service Fabric bezstavových služeb
@@ -33,10 +33,10 @@ Podobně jako role pracovního procesu představuje webová role také nestavov�
 
 | **Aplikace** | **Podporováno** | **Cesta migrace** |
 | --- | --- | --- |
-| ASP.NET – webové formuláře |Ne |Převést na ASP.NET Core 1 MVC |
+| ASP.NET – webové formuláře |No |Převést na ASP.NET Core 1 MVC |
 | ASP.NET MVC |S migrací |Upgrade na ASP.NET Core 1 MVC |
 | Rozhraní API pro ASP.NET Web |S migrací |Použití samoobslužného serveru nebo ASP.NET Core 1 |
-| ASP.NET Core 1 |Ano |– |
+| ASP.NET Core 1 |Yes |Není k dispozici |
 
 ## <a name="entry-point-api-and-lifecycle"></a>Rozhraní API a životní cyklus vstupního bodu
 Role pracovního procesu a rozhraní API služby Service Fabric nabízejí podobné vstupní body: 
@@ -44,9 +44,9 @@ Role pracovního procesu a rozhraní API služby Service Fabric nabízejí podob
 | **Vstupní bod** | **Role pracovního procesu** | **Služba Service Fabric** |
 | --- | --- | --- |
 | Zpracování |`Run()` |`RunAsync()` |
-| Spuštění virtuálního počítače |`OnStart()` |– |
-| Zastavení virtuálního počítače |`OnStop()` |– |
-| Otevřít naslouchací proces pro požadavky klientů |– |<ul><li> `CreateServiceInstanceListener()` pro bezstavové</li><li>`CreateServiceReplicaListener()` pro stav</li></ul> |
+| Spuštění virtuálního počítače |`OnStart()` |Není k dispozici |
+| Zastavení virtuálního počítače |`OnStop()` |Není k dispozici |
+| Otevřít naslouchací proces pro požadavky klientů |Není k dispozici |<ul><li> `CreateServiceInstanceListener()` pro bezstavové</li><li>`CreateServiceReplicaListener()` pro stav</li></ul> |
 
 ### <a name="worker-role"></a>Role pracovního procesu
 ```csharp
@@ -115,8 +115,8 @@ Rozhraní Cloud Services API prostředí poskytuje informace a funkce pro aktuá
 | Nastavení konfigurace a oznámení o změně |`RoleEnvironment` |`CodePackageActivationContext` |
 | Místní úložiště |`RoleEnvironment` |`CodePackageActivationContext` |
 | Informace o koncovém bodu |`RoleInstance` <ul><li>Aktuální instance: `RoleEnvironment.CurrentRoleInstance`</li><li>Další role a instance: `RoleEnvironment.Roles`</li> |<ul><li>`NodeContext` pro aktuální adresu uzlu</li><li>`FabricClient` a `ServicePartitionResolver` pro zjišťování koncových bodů služby</li> |
-| Emulace prostředí |`RoleEnvironment.IsEmulated` |– |
-| Současná událost změny |`RoleEnvironment` |– |
+| Emulace prostředí |`RoleEnvironment.IsEmulated` |Není k dispozici |
+| Současná událost změny |`RoleEnvironment` |Není k dispozici |
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
 Nastavení konfigurace v Cloud Services jsou nastavena pro roli virtuálního počítače a platí pro všechny instance této role virtuálního počítače. Tato nastavení jsou páry klíč-hodnota nastavené v souborech ServiceConfiguration. *. cscfg a dají se získat přímo prostřednictvím RoleEnvironment. V Service Fabric se nastavení aplikují jednotlivě na každou službu a na každou aplikaci, nikoli na virtuální počítač, protože virtuální počítač může hostovat několik služeb a aplikací. Služba se skládá ze tří balíčků:

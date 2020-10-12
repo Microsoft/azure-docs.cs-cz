@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: b560b02544eeb96167e68ed305d4d9942d2b1e0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82232968"
 ---
 # <a name="self-hosted-gateway-overview"></a>Přehled brány v místním prostředí
@@ -55,7 +55,7 @@ Ve spravovaných branách **nejsou k dispozici** následující funkce bran pro 
 - Opětovné vyjednávání klientského certifikátu. To znamená, že pro klienty rozhraní API pro [ověřování klienta](api-management-howto-mutual-certificates-for-clients.md) musí být certifikáty přítomné jako součást počáteční metody handshake protokolu TLS. Pokud chcete zajistit, aby se při konfiguraci vlastního názvu hostitele pro samoobslužnou bránu povolilo nastavení certifikátu klienta vyjednat.
 - Integrovaná mezipaměť. V tomto [dokumentu](api-management-howto-cache-external.md) se dozvíte, jak používat externí mezipaměť v samoobslužných branách.
 
-## <a name="connectivity-to-azure"></a>Připojení k Azure
+## <a name="connectivity-to-azure"></a>Možnosti připojení k Azure
 
 Samoobslužné brány vyžadují odchozí připojení TCP/IP k Azure na portu 443. Každá brána v místním prostředí musí být přidružená k jedné API Management službě a nakonfigurovaná přes rovinu správy. Samoobslužná brána používá připojení k Azure pro:
 

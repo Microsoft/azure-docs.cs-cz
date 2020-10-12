@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86219959"
 ---
 # <a name="notification-hubs-templates"></a>Šablony Notification Hubs
@@ -145,7 +145,7 @@ V následující tabulce je uveden jazyk povolený v šablonách:
 
 Výrazy mohou být libovolné z předchozích forem.
 
-Při použití zřetězení musí být celý výraz ohraničený pomocí `{}` . Například `{$(prop) + ‘ - ’ + $(prop2)}`.
+Při použití zřetězení musí být celý výraz ohraničený pomocí `{}` . Například, `{$(prop) + ‘ - ’ + $(prop2)}`.
 
 Například následující šablona není platnou šablonou XML:
 

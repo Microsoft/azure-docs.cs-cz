@@ -4,10 +4,10 @@ description: V tomto článku se dozvíte, jak nastavit vnořenou virtualizaci n
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 319695088e967dc3156ecab5c1b9458e77fcc186
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91251470"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Povolit vnořenou virtualizaci na virtuálním počítači šablony v Azure Lab Services
@@ -25,7 +25,7 @@ Další informace o vnořené virtualizaci naleznete v následujících článc�
 - [Vnořená virtualizace v Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)
 - [Jak povolit vnořenou virtualizaci na virtuálním počítači Azure](../virtual-machines/windows/nested-virtualization.md)
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Před nastavením testovacího prostředí s vnořenou virtualizací je zde několik věcí, které je potřeba vzít v úvahu.
 

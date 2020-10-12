@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: dpalled
 ms.openlocfilehash: c3948a5bdfce583384992fb87bf40e9e7251974d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342375"
 ---
-# <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Synchronizace modelů mezi digitálními vlákna Azure a Time Series Insights Gen2
+# <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Synchronizace modelů mezi Azure Digital Twins a Time Series Insights Gen2
 
 Tento článek vysvětluje osvědčené postupy a nástroje, které se používají k překladu modelu assetu v Azure Digital nevlákens (ADT) na model assetů v Azure Time Series Insights (TSI).  Tento článek je druhou částí série kurzů se dvěma částmi, které objasňují integraci digitálních vláken Azure s Azure Time Series Insights. Integrace digitálních vláken Azure s Time Series Insights umožňuje archivaci a sledování historie telemetrií a počítaných vlastností digitálních vláken. Tato série kurzů se zaměřuje na vývojáře, kteří pracují na integraci Time Series Insights s využitím digitálních vláken Azure. Část 1 vysvětluje  [, jak vytvořit datový kanál, který přináší data skutečného časového seriálu z digitálních vláken Azure do Time Series Insights](https://docs.microsoft.com/azure/digital-twins/how-to-integrate-time-series-insights) a tato druhá část série kurzů vysvětluje synchronizaci modelů prostředků mezi digitálními a Time Series Insightsmi Azure. Tento kurz vysvětluje osvědčené postupy při výběru a stanovení konvence vytváření názvů pro ID služby Time Series ID (TS ID) a ruční vytváření hierarchií v modelu časové řady (TSM).
 

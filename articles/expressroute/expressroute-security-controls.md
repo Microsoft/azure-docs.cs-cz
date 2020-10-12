@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: duau
 ms.openlocfilehash: 24057de44f3d28df96bcb93e89af9c3afa6fa3c6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89394903"
 ---
 # <a name="security-controls-for-azure-expressroute"></a>Ovládací prvky zabezpečení pro Azure ExpressRoute
@@ -24,10 +24,10 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Exp
 
 | Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Podpora koncového bodu služby| – |  |
-| Podpora vkládání virtuální sítě| – | |
+| Podpora koncového bodu služby| Není k dispozici |  |
+| Podpora vkládání virtuální sítě| Není k dispozici | |
 | Izolace sítě a podpora brány firewall| Yes | Každý zákazník je obsažen ve své vlastní doméně směrování a je připojen k jeho vlastní virtuální síti. |
-| Podpora vynuceného tunelování| – | Přes Border Gateway Protocol (BGP). |
+| Podpora vynuceného tunelování| Není k dispozici | Přes Border Gateway Protocol (BGP). |
 
 ## <a name="monitoring--logging"></a>Monitorování protokolování &
 
@@ -48,10 +48,10 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Azure Exp
 
 | Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft |  – | ExpressRoute neukládá zákaznická data. |
-| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | – |  |
-| Šifrování na úrovni sloupce (Azure Data Services)| – | |
-| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| No | |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft |  Není k dispozici | ExpressRoute neukládá zákaznická data. |
+| Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Není k dispozici |  |
+| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici | |
+| Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování VNet-VNet)| No | |
 | Zašifrovaná volání rozhraní API| Yes | Prostřednictvím [Azure Resource Manager](../azure-resource-manager/index.yml) a HTTPS. |
 
 

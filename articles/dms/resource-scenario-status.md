@@ -13,10 +13,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
 ms.openlocfilehash: 77c54d6ea463b5a8a4952d243886b80f38312d27
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291482"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Stav migračních scénářů, které podporuje Azure Database Migration Service
@@ -48,20 +48,20 @@ Následující tabulka ukazuje podporu offline migrací Azure Database Migration
 | Cíl  | Zdroj | Podpora | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
-|   | SLUŽBA RDS SQL | X |  |
-|   | Oracle | X |  |
+|   | SLUŽBA RDS SQL | × |  |
+|   | Oracle | × |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
-|   | SLUŽBA RDS SQL | X |  |
-|   | Oracle | X |   |
+|   | SLUŽBA RDS SQL | × |  |
+|   | Oracle | × |   |
 | **Virtuální počítač Azure SQL** | SQL Server | ✔ | GA |
-|   | Oracle | X |   |
+|   | Oracle | × |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
-| **Azure DB for MySQL** | MySQL | X |   |
-|   | Služba RDS MySQL | X |   |
-| **Azure DB pro PostgreSQL – jeden server** | PostgreSQL | X |
-|  | PostgreSQL RDS | X |   |
-| **Azure DB pro PostgreSQL – škálovatelné (Citus)** | PostgreSQL | X |
-|  | PostgreSQL RDS | X |   |
+| **Azure DB for MySQL** | MySQL | × |   |
+|   | Služba RDS MySQL | × |   |
+| **Azure DB pro PostgreSQL – jeden server** | PostgreSQL | × |
+|  | PostgreSQL RDS | × |   |
+| **Azure DB pro PostgreSQL – škálovatelné (Citus)** | PostgreSQL | × |
+|  | PostgreSQL RDS | × |   |
 
 ### <a name="online-continuous-sync-migration-support"></a>Podpora migrace online (nepřetržitá synchronizace)
 
@@ -71,12 +71,12 @@ Následující tabulka uvádí Azure Database Migration Service podporu pro onli
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | SLUŽBA RDS SQL | ✔ | GA |
-|   | Oracle | X |  |
+|   | Oracle | × |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
 |   | SLUŽBA RDS SQL | ✔ | GA |
-|   | Oracle | X |  |
-| **Virtuální počítač Azure SQL** | SQL Server | X |   |
-|   | Oracle  | X |  |
+|   | Oracle | × |  |
+| **Virtuální počítač Azure SQL** | SQL Server | × |   |
+|   | Oracle  | × |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
 | **Azure DB for MySQL** | MySQL | ✔ | GA |
 |   | Služba RDS MySQL | ✔ | GA |

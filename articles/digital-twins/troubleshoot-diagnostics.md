@@ -8,10 +8,10 @@ ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723924"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Řešení potíží se službou Azure Digital nevláken: protokolování diagnostiky
@@ -49,7 +49,7 @@ Tady je postup povolení nastavení diagnostiky instance digitálního vlákna A
     
 4. Uložte nová nastavení. 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Snímek obrazovky zobrazující stránku nastavení diagnostiky, kde uživatel vyplnil název nastavení diagnostiky a provedl některé výběry zaškrtávacích políček pro podrobnosti kategorie a podrobnosti o cíli. Tlačítko Uložit je zvýrazněno.":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Snímek obrazovky zobrazující stránku nastavení diagnostiky a tlačítko, které se má přidat":::
 
 Nové nastavení se projeví přibližně po dobu 10 minut. Po této konfiguraci se protokoly zobrazí na stránce **nastavení diagnostiky na stránce nastavení diagnostiky** pro vaši instanci. 
 
@@ -57,7 +57,7 @@ Nové nastavení se projeví přibližně po dobu 10 minut. Po této konfiguraci
 
 Tady jsou další podrobnosti o kategoriích protokolů, které se dají vybrat v části **Podrobnosti o kategorii** při nastavování nastavení diagnostiky.
 
-| Kategorie protokolu | Popis |
+| Kategorie protokolu | Description |
 | --- | --- |
 | ADTModelsOperation | Protokolovat všechna volání rozhraní API týkající se modelů |
 | ADTQueryOperation | Protokolování všech volání rozhraní API vztahujících se k dotazům |

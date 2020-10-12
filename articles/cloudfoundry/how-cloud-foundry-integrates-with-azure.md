@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
 ms.openlocfilehash: f3b84ba1c3571e3660d1d71a0167a7489c6ec4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82145128"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integrace Cloud Foundry s Azure
@@ -40,7 +40,7 @@ Zóna dostupnosti Azure dosahuje HA tím, že do dvou a datových center umíst�
 ## <a name="2-network-routing"></a>2. síťové směrování
 Ve výchozím nastavení se nástroj pro vyrovnávání zatížení Azure Basic používá pro příchozí požadavky na CF API/aplikace a předává je do Gorouters. Komponenty CF, jako je Diegu mozek, MySQL, ERT, mohou také použít nástroj pro vyrovnávání zatížení k vyvážení provozu pro HA. Azure také poskytuje sadu plně spravovaných řešení vyrovnávání zatížení. Pokud hledáte zpracování pomocí protokolu TLS/SSL ("snižování zátěže SSL") nebo na požadavky HTTP/HTTPS, zvažte Application Gateway. Pro zajištění vysoké dostupnosti a škálovatelnosti vyrovnávání zatížení ve vrstvě 4 zvažte standardní nástroj pro vyrovnávání zatížení.
 ### <a name="azure-application-gateway-"></a>Application Gateway Azure *
-[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) nabízí různé možnosti vyrovnávání zatížení vrstvy 7, včetně snižování zátěže SSL, koncového a koncového protokolu TLS, brány firewall webových aplikací, spřažení relací na základě souborů cookie a dalších. Application Gateway můžete [nakonfigurovat v Cloud Foundry Open Source](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). Pro PCF si Projděte zpráva k [vydání verze PCF 2,1](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) pro test ověření koncepce.
+[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) nabízí různé možnosti vyrovnávání zatížení vrstvy 7, včetně snižování zátěže SSL, koncového a koncového protokolu TLS, brány firewall webových aplikací, spřažení relací na základě souborů cookie a dalších. Application Gateway můžete [nakonfigurovat v Cloud Foundry Open Source](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). Pro PCF si Projděte zpráva k  [vydání verze PCF 2,1](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) pro test ověření koncepce.
 
 ### <a name="azure-standard-load-balancer-"></a>Standard Load Balancer Azure *
 Azure Load Balancer je nástroj pro vyrovnávání zatížení vrstvy 4. Slouží k distribuci provozu mezi instancemi služeb v sadě s vyrovnáváním zatížení. Standardní verze poskytuje [Pokročilé funkce](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) nad základní verzí. Například 1. Maximální limit back-end fondu je vyvolán z 100 na 1000 virtuálních počítačů.  2. Koncové body teď podporují více skupin dostupnosti místo jedné skupiny dostupnosti.  3. Další funkce, jako jsou porty HA, rozsáhlejší monitorovací data atd. Pokud přesouváte do zóny dostupnosti Azure, vyžaduje se standardní nástroj pro vyrovnávání zatížení. Pro nové nasazení doporučujeme začít s Azure Standard Load Balancer. 

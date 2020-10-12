@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
 ms.openlocfilehash: 7b5be20bb8b5eb1d56c1214104037d5d824445b3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132343"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>Pochopení kódu Apache Spark pro vývojáře U-SQL
@@ -100,7 +100,7 @@ Pokud potřebujete transformovat skript odkazující na knihovny služby pro roz
 
 Vzhledem k tomu, že systém typů U-SQL je založen na systému typů .NET a Spark má svůj vlastní systém typů, který je ovlivněn vazbou jazyka hostitele, bude nutné zajistit, aby typy, na kterých pracujete, byly blízko a pro určité typy, rozsahy typů, přesnost a/nebo měřítko mohou být mírně odlišné. Kromě toho jsou U-SQL a Spark zpracovávány `null` hodnoty odlišně.
 
-### <a name="data-types"></a>Datové typy
+### <a name="data-types"></a>Typy dat
 
 Následující tabulka poskytuje ekvivalentní typy v Spark, Scala a PySpark pro daný typ U-SQL.
 
@@ -126,7 +126,7 @@ Následující tabulka poskytuje ekvivalentní typy v Spark, Scala a PySpark pro
 |`SQL.MAP<K,V>`   |`MapType(keyType, valueType, valueContainsNull)` |`scala.collection.Map` | `MapType(keyType, valueType, valueContainsNull=True)`|
 |`SQL.ARRAY<T>`   |`ArrayType(elementType, containsNull)` |`scala.collection.Seq` | `ArrayType(elementType, containsNull=True)`|
 
-Další informace najdete tady:
+Další informace naleznete v tématech:
 
 - [org. Apache. spark. SQL. Types](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.types.package)
 - [Typy Spark SQL a dataframes](https://spark.apache.org/docs/latest/sql-ref-datatypes.html)
@@ -160,14 +160,14 @@ Základní jazyk U-SQL transformuje sady řádků a je založen na SQL. Následu
 - `SELECT`/`FROM`/`WHERE`/`GROUP BY`+ Agregace +`HAVING`/`ORDER BY`+`FETCH`
 - `INNER`/`OUTER`/`CROSS`/`SEMI``JOIN`výrazy
 - `CROSS`/`OUTER``APPLY`výrazy
-- `PIVOT`/`UNPIVOT`Expression
-- `VALUES`konstruktor sady řádků
+- `PIVOT`/`UNPIVOT` Expression
+- `VALUES` konstruktor sady řádků
 
-- Nastavit výrazy`UNION`/`OUTER UNION`/`INTERSECT`/`EXCEPT`
+- Nastavit výrazy `UNION`/`OUTER UNION`/`INTERSECT`/`EXCEPT`
 
 U-SQL navíc poskytuje nejrůznější skalární výrazy založené na SQL, jako je například
 
-- `OVER`výrazy okna
+- `OVER` výrazy okna
 - celá řada předdefinovaných agregačních funkcí a funkcí řazení ( `SUM` `FIRST` atd.)
 - Některé z nejoblíbenějších skalárních výrazů SQL: `CASE` , `LIKE` , ( `NOT` ) `IN` , `AND` `OR` atd.
 
@@ -214,7 +214,7 @@ Nástroj pro optimalizaci dotazů založený na ceně Sparku má své vlastní f
 ## <a name="next-steps"></a>Další kroky
 
 - [Principy formátů dat Spark pro vývojáře U-SQL](understand-spark-data-formats.md)
-- [.NET for Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
+- [.NET pro Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
 - [Upgradujte řešení pro analýzu velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md)
 - [Transformuje data pomocí aktivity Sparku v Azure Data Factory](../data-factory/transform-data-using-spark.md)
 - [Transformuje data pomocí aktivity podregistru Hadoop v Azure Data Factory](../data-factory/transform-data-using-hadoop-hive.md)

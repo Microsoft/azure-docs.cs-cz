@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bfe24ff38446fa0d0ccea96799e6f42b561713bf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89002806"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Upgrade na Azure Kognitivní hledání .NET SDK verze 10
@@ -112,7 +112,7 @@ var webApiSkill = new WebApiSkill(
 
 Shaper dovednost teď může z vnořených kontextů umožňovat vstupní konsolidaci. Pro povolení této změny jsme změnili `InputFieldMappingEntry` tak, aby mohla být vytvořena instance zadáním pouze `Source` vlastnosti, nebo `SourceContext` `Inputs` vlastností a.
 
-Pravděpodobně nebudete muset dělat žádné změny kódu; Upozorňujeme však, že je povolena pouze jedna z těchto dvou kombinací. To znamená:
+Pravděpodobně nebudete muset dělat žádné změny kódu; Upozorňujeme však, že je povolena pouze jedna z těchto dvou kombinací. To znamená, že:
 
 - Vytváření je `InputFieldMappingEntry` platné pouze v případě, že je `Source` inicializována pouze inicializace.
 - Vytváření `InputFieldMappingEntry` je platné pouze v případě `SourceContext` , `Inputs` že jsou inicializovány.

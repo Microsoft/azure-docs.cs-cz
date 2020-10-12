@@ -10,10 +10,10 @@ caps.latest.revision: 12
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79528417"
 ---
 # <a name="azure-cloud-services-config-role-schema"></a>Schéma role konfigurace Azure Cloud Services
@@ -22,7 +22,7 @@ ms.locfileid: "79528417"
 
 Další informace o schématu konfigurace služby Azure najdete v tématu [schéma konfigurace cloudové služby (Classic)](schema-cscfg-file.md). Další informace o schématu definice služby Azure najdete v tématu [schéma definice cloudové služby (Classic)](schema-csdef-file.md).
 
-##  <a name="role-element"></a><a name="Role"></a>Element role
+##  <a name="role-element"></a><a name="Role"></a> Element role
 Následující příklad ukazuje `Role` prvek a jeho podřízené prvky.
 
 ```xml 
@@ -48,7 +48,7 @@ Následující tabulka popisuje atributy `Role` prvku.
 
 Následující tabulka popisuje podřízené prvky `Role` elementu.
 
-| Prvek | Popis |
+| Element | Popis |
 | ------- | ----------- |
 | Instance | Povinná hodnota. Určuje počet instancí, které mají být pro roli nasazeny. Počet instancí je definován celým číslem pro `count` atribut.|
 | Nastavení   | Nepovinný parametr. Určuje název nastavení a hodnotu v kolekci nastavení pro roli. Název nastavení je definován řetězcem pro `name` atribut a hodnota nastavení je definována řetězcem pro `value` atribut.|

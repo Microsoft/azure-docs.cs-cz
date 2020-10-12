@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
 ms.openlocfilehash: 10851754bda73fc769e613153582e491265ebb71
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85963236"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Shromažďování čítačů výkonu pro aplikace pro Linux v Azure Monitor 
@@ -44,8 +44,8 @@ Položky v ověřovacím souboru jsou popsány v následující tabulce.
 | Vlastnost | Popis |
 |:--|:--|
 | Port | Představuje aktuální port, na kterém naslouchá instance MySQL. Port 0 určuje, zda jsou následující vlastnosti použity pro výchozí instanci. |
-| Adresa vazby| Aktuální adresa BIND pro MySQL. |
-| uživatelské jméno| Uživatel MySQL, který slouží k monitorování instance serveru MySQL. |
+| Bind-Address| Aktuální adresa BIND pro MySQL. |
+| username| Uživatel MySQL, který slouží k monitorování instance serveru MySQL. |
 | Heslo kódované v kódování Base64| Heslo uživatele pro monitorování MySQL kódovaného ve formátu base64. |
 | AutoUpdate| Určuje, jestli se mají znovu vyhledat změny v souboru my. CNF a přepsat ověřovací soubor MySQL OMI při upgradu poskytovatele MySQL OMI. |
 
@@ -54,7 +54,7 @@ Soubor s ověřováním MySQL OMI může definovat výchozí instanci a číslo 
 
 Následující tabulka obsahuje příklad nastavení instance. 
 
-| Description | Soubor |
+| Popis | File |
 |:--|:--|
 | Výchozí instance a instance s portem 3308. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | Výchozí instance a instance s portem 3308 a jiným uživatelským jménem a heslem. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |

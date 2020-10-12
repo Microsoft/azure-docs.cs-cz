@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
 ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723856"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Pravidla shromažďování dat v Azure Monitor (Preview)
@@ -40,7 +40,7 @@ Následující diagram znázorňuje komponenty pravidla shromažďování dat a 
 ### <a name="data-source-types"></a>Typy zdroje dat
 Každý zdroj dat má typ zdroje dat. Každý typ definuje jedinečnou sadu vlastností, které musí být zadány pro každý zdroj dat. Typy zdrojů dat, které jsou aktuálně k dispozici, jsou uvedeny v následující tabulce.
 
-| Typ zdroje dat | Popis | 
+| Typ zdroje dat | Description | 
 |:---|:---|
 | přípona | Zdroj dat založený na rozšíření virtuálních počítačů |
 | Čítače výkonu | Čítače výkonu pro systémy Windows i Linux |

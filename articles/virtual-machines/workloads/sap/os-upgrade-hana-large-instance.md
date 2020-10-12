@@ -14,10 +14,10 @@ ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82192412"
 ---
 # <a name="operating-system-upgrade"></a>Upgrade operačního systému
@@ -95,7 +95,7 @@ SAP ve velkých instancích Azure HANA (typ I) může být po upgradu v nespouš
 
 
 *   Provést `multipath -ll` příkaz.
-*   Získejte ID logické jednotky (LUN), jejíž velikost je přibližně 50G, nebo použijte příkaz:`fdisk -l | grep mapper`
+*   Získejte ID logické jednotky (LUN), jejíž velikost je přibližně 50G, nebo použijte příkaz: `fdisk -l | grep mapper`
 *   Aktualizuje `/etc/default/grub_installdevice` soubor řádek `/dev/mapper/<LUN ID>` . Příklad:/dev/Mapper/3600a09803830372f483f495242534a56
 >[!NOTE]
 >ID logické jednotky (LUN) se liší od serveru k serveru.
@@ -110,7 +110,7 @@ SAP ve velkých instancích Azure HANA (typ I) může být po upgradu v nespouš
 ```
 lsmod | grep -i edac 
 ```
-* Zakázat moduly připojením následujících řádků k souboru`/etc/modprobe.d/blacklist.conf`
+* Zakázat moduly připojením následujících řádků k souboru `/etc/modprobe.d/blacklist.conf`
 ```
 blacklist sb_edac
 blacklist edac_core
@@ -121,8 +121,8 @@ Aby se změny projevily, je potřeba restartovat počítač. Spusťte `lsmod` p�
 ### <a name="kernel-parameters"></a>Parametry jádra
    Ujistěte se, že je použito správné nastavení pro `transparent_hugepage` , `numa_balancing` , a `processor.max_cstate` `ignore_ce` `intel_idle.max_cstate` .
 
-* intel_idle. max_cstate = 1
-* procesor. max_cstate = 1
+* intel_idle intel_idle.max_cstate = 1
+* processor.max_cstate = 1
 * transparent_hugepage = nikdy
 * numa_balancing = zakázat
 * MCE = ignore_ce
@@ -130,7 +130,7 @@ Aby se změny projevily, je potřeba restartovat počítač. Spusťte `lsmod` p�
 
 #### <a name="execution-steps"></a>Kroky provedení
 
-* Přidat tyto parametry do `GRB_CMDLINE_LINUX` řádku v souboru`/etc/default/grub`
+* Přidat tyto parametry do `GRB_CMDLINE_LINUX` řádku v souboru `/etc/default/grub`
 ```
 intel_idle.max_cstate=1 processor.max_cstate=1 transparent_hugepage=never numa_balancing=disable mce=ignore_ce
 ```

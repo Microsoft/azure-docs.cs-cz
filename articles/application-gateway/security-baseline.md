@@ -8,10 +8,10 @@ ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: b470fa72518f805c10403931280bdec96bda0fbe
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226535"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>Základní hodnoty zabezpečení Azure pro Azure Application Gateway
@@ -983,7 +983,7 @@ Nakonfigurujte nastavení diagnostiky pro nasazení služby Azure Application Ga
 
 **Pokyny**: v Azure Application Gateway neukládají zákaznická data. Pokud ale používáte vlastní definice zásad Azure, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
 
-Azure DevOps Services využívá mnoho funkcí úložiště Azure k zajištění dostupnosti dat v případě selhání hardwaru, přerušení služby nebo havárie v oblasti. Kromě toho tým Azure DevOps sleduje postupy, které chrání data před náhodným nebo škodlivým odstraněním.
+Sada Azure DevOps Services využívá řadu funkcí úložiště Azure k zajištění dostupnosti dat v případě selhání hardwaru, přerušení služeb nebo havárie v oblasti. Tým Azure DevOps nadto dodržuje postupy, které chrání data před náhodným nebo nepřátelským odstraněním.
 
 * [Pochopení dostupnosti dat v Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
 

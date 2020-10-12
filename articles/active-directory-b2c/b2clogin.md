@@ -12,10 +12,10 @@ ms.date: 07/17/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 53d41b5024b29a8c6c394d65a3ce36f8bb878fc2
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90524976"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Nastavte adresy URL pro přesměrování na b2clogin.com pro Azure Active Directory B2C
@@ -82,7 +82,7 @@ Pro adresy URL pro přesměrování b2clogin.com můžete použít dva formáty.
 https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-Druhá možnost používá název domény tenanta ve formátu `your-tenant-name.onmicrosoft.com` . Příklad:
+Druhá možnost používá název domény tenanta ve formátu `your-tenant-name.onmicrosoft.com` . Například:
 
 ```
 https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: faf13f580f6600e761cdaa9927fee4efa2b5995f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87500176"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrace na vývojové nástroje založené na Azure Resource Manager pro clustery HDInsight
@@ -31,21 +31,21 @@ HDInsight používá nástroje pro HDInsight založené na službě Azure Servic
 
 Níže jsou uvedené základní příkazy pro práci s HDInsight prostřednictvím klasického rozhraní příkazového řádku Azure:
 
-* `azure hdinsight cluster create`– Vytvoří nový cluster HDInsight.
-* `azure hdinsight cluster delete`– Odstraní existující cluster HDInsight.
-* `azure hdinsight cluster show`-Zobrazit informace o existujícím clusteru
-* `azure hdinsight cluster list`– vypisuje clustery HDInsight pro vaše předplatné Azure.
+* `azure hdinsight cluster create` – Vytvoří nový cluster HDInsight.
+* `azure hdinsight cluster delete` – Odstraní existující cluster HDInsight.
+* `azure hdinsight cluster show` -Zobrazit informace o existujícím clusteru
+* `azure hdinsight cluster list` – vypisuje clustery HDInsight pro vaše předplatné Azure.
 
 Pomocí `-h` přepínače zkontrolujte parametry a přepínače, které jsou k dispozici pro jednotlivé příkazy.
 
 ### <a name="new-commands"></a>Nové příkazy
 K dispozici jsou nové příkazy Azure Resource Manager:
 
-* `azure hdinsight cluster resize`-dynamicky mění počet uzlů pracovního procesu v clusteru.
-* `azure hdinsight cluster enable-http-access`– povolí přístup HTTPs ke clusteru (ve výchozím nastavení zapnuté).
-* `azure hdinsight cluster disable-http-access`– zakáže přístup HTTPs ke clusteru.
-* `azure hdinsight script-action`-poskytuje příkazy pro vytváření a správu akcí skriptů v clusteru.
-* `azure hdinsight config`-obsahuje příkazy pro vytvoření konfiguračního souboru, který lze použít s `hdinsight cluster create` příkazem k zadání informací o konfiguraci.
+* `azure hdinsight cluster resize` -dynamicky mění počet uzlů pracovního procesu v clusteru.
+* `azure hdinsight cluster enable-http-access` – povolí přístup HTTPs ke clusteru (ve výchozím nastavení zapnuté).
+* `azure hdinsight cluster disable-http-access` – zakáže přístup HTTPs ke clusteru.
+* `azure hdinsight script-action` -poskytuje příkazy pro vytváření a správu akcí skriptů v clusteru.
+* `azure hdinsight config` -obsahuje příkazy pro vytvoření konfiguračního souboru, který lze použít s `hdinsight cluster create` příkazem k zadání informací o konfiguraci.
 
 ### <a name="deprecated-commands"></a>Zastaralé příkazy
 Použijete-li `azure hdinsight job` příkazy k odeslání úloh do clusteru HDInsight, nejsou tyto příkazy k dispozici prostřednictvím příkazů Správce prostředků. Pokud potřebujete programově odesílat úlohy do služby HDInsight ze skriptů, místo toho byste měli použít rozhraní REST API poskytovaná službou HDInsight. Další informace o odesílání úloh pomocí rozhraní REST API najdete v následujících dokumentech.
@@ -59,26 +59,26 @@ Informace o dalších způsobech, jak spustit Apache Hadoop MapReduce, Apache Hi
 ### <a name="examples"></a>Příklady
 **Vytvoření clusteru**
 
-* Old – příkaz (ASM) –`azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
-* Nový příkaz –`azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Old – příkaz (ASM) – `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Nový příkaz – `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
 
 **Odstranění clusteru**
 
-* Old – příkaz (ASM) –`azure hdinsight cluster delete myhdicluster`
-* Nový příkaz –`azure hdinsight cluster delete mycluster -g myresourcegroup`
+* Old – příkaz (ASM) – `azure hdinsight cluster delete myhdicluster`
+* Nový příkaz – `azure hdinsight cluster delete mycluster -g myresourcegroup`
 
 **Výpis clusterů**
 
-* Old – příkaz (ASM) –`azure hdinsight cluster list`
-* Nový příkaz –`azure hdinsight cluster list`
+* Old – příkaz (ASM) – `azure hdinsight cluster list`
+* Nový příkaz – `azure hdinsight cluster list`
 
 > [!NOTE]  
 > Pro příkaz list, který určuje skupinu prostředků pomocí, `-g` vrátí jenom clustery v zadané skupině prostředků.
 
 **Zobrazit informace o clusteru**
 
-* Old – příkaz (ASM) –`azure hdinsight cluster show myhdicluster`
-* Nový příkaz –`azure hdinsight cluster show myhdicluster -g myresourcegroup`
+* Old – příkaz (ASM) – `azure hdinsight cluster show myhdicluster`
+* Nový příkaz – `azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Migrace Azure PowerShell do Azure Resource Manager
 Obecné informace o Azure PowerShell v režimu Azure Resource Manager najdete v části [použití Azure PowerShell s Azure Resource Manager](../powershell-azure-resource-manager.md).

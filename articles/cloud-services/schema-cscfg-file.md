@@ -10,10 +10,10 @@ caps.latest.revision: 35
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: cb77181e00c97b7f426429793f17af3cb5e84ebe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79534741"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Schéma konfigurace pro Azure Cloud Services (soubor. cscfg)
@@ -51,7 +51,7 @@ Následující témata popisují schéma pro `ServiceConfiguration` element:
 ## <a name="service-configuration-namespace"></a>Obor názvů konfigurace služby
 Obor názvů XML pro konfigurační soubor služby je: `http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration` .
 
-##  <a name="serviceconfiguration-element"></a><a name="ServiceConfiguration"></a>Element ServiceConfiguration
+##  <a name="serviceconfiguration-element"></a><a name="ServiceConfiguration"></a> Element ServiceConfiguration
 `ServiceConfiguration`Element je element nejvyšší úrovně konfiguračního souboru služby.
 
 Následující tabulka popisuje atributy `ServiceConfiguration` prvku. Všechny hodnoty atributů jsou typy řetězců.

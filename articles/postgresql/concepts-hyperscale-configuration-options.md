@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 7/1/2020
 ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85964511"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL – možnosti konfigurace Citus (AutoScale)
@@ -75,20 +75,20 @@ Skupiny serverů Citus () jsou k dispozici v následujících oblastech Azure:
 
 * Jižní
     * Střední Kanada
-    * USA – střed
-    * USA – východ
+    * Střední USA
+    * East US
     * USA – východ 2
     * USA – středosever
-    * USA – západ 2
+    * Západní USA 2
 * Asie a Tichomoří:
     * Austrálie – východ
-    * Japonsko – východ
+    * Japan East
     * Jižní Korea – střed
-    * Jihovýchodní Asie
+    * Southeast Asia
 * Evropským
     * Severní Evropa
     * Spojené království – jih
-    * Západní Evropa
+    * West Europe
 
 Některé z těchto oblastí se nemusí zpočátku aktivovat ve všech předplatných Azure. Pokud chcete použít oblast ze seznamu výše a nevidíte ji v předplatném, nebo pokud chcete použít oblast, která není v tomto seznamu, otevřete [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

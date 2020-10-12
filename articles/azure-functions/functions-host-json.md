@@ -4,10 +4,10 @@ description: Referenční dokumentace pro Azure Functions host.jsv souboru s mod
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 400ff6f9db421552b2b2736ea48265deefe676ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321845"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Referenční informace k souboru host.json pro Azure Functions 2.x a novější 
@@ -145,19 +145,19 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 > [!NOTE]
 > Vzorkování protokolu může způsobit, že se některá spuštění v okně monitorování Application Insights neprojeví. Chcete-li se vyhnout vzorkování protokolu, přidejte `excludedTypes: "Request"` k `samplingSettings` hodnotě.
 
-| Vlastnost | Výchozí | Popis |
+| Vlastnost | Výchozí | Description |
 | --------- | --------- | --------- | 
-| samplingSettings | Není k dispozici | Viz [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
+| samplingSettings | neuvedeno | Viz [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | enableLiveMetrics | true | Povoluje shromažďování živých metrik. |
 | enableDependencyTracking | true | Povolí sledování závislostí. |
 | enablePerformanceCountersCollection | true | Povolí shromažďování čítačů výkonu Kudu. |
 | liveMetricsInitializationDelay | 00:00:15 | Pouze pro interní použití. |
-| httpAutoCollectionOptions | Není k dispozici | Viz [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
-| snapshotConfiguration | Není k dispozici | Viz [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
+| httpAutoCollectionOptions | neuvedeno | Viz [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
+| snapshotConfiguration | neuvedeno | Viz [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
 
-|Vlastnost | Výchozí | Popis |
+|Vlastnost | Výchozí | Description |
 | --------- | --------- | --------- | 
 | isEnabled | true | Povolí nebo zakáže vzorkování. | 
 | maxTelemetryItemsPerSecond | 20 | Cílový počet položek telemetrie protokolovaných za sekundu na každém hostiteli serveru. Pokud vaše aplikace běží na mnoha hostitelích, snižte tuto hodnotu tak, aby zůstala v rámci celkové cílové míry provozu. | 
@@ -173,7 +173,7 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights. httpAutoCollectionOptions
 
-|Vlastnost | Výchozí | Popis |
+|Vlastnost | Výchozí | Description |
 | --------- | --------- | --------- | 
 | enableHttpTriggerExtendedInfoCollection | true | Povoluje nebo zakazuje rozšířené informace o požadavku HTTP pro aktivační události protokolu HTTP: příchozí hlavičky žádostí o relaci, podpora klíčů pro více instrumentací, metoda HTTP, cesta a odpověď. |
 | enableW3CDistributedTracing | true | Povolí nebo zakáže podporu protokolu W3C Distributed Tracing Protocol (a zapne starší verzi schématu korelace). Pokud `enableHttpTriggerExtendedInfoCollection` má hodnotu true, je ve výchozím nastavení povolená. Pokud `enableHttpTriggerExtendedInfoCollection` je hodnota false, vztahuje se tento příznak pouze na odchozí požadavky, nikoli na příchozí požadavky. |
@@ -183,7 +183,7 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 
 Další informace o snímcích najdete v tématu [ladění snímků při výjimkách v aplikacích .NET](../azure-monitor/app/snapshot-debugger.md) a řešení potíží s [povolením Application Insights Snapshot Debugger nebo zobrazením snímků](../azure-monitor/app/snapshot-debugger-troubleshoot.md).
 
-|Vlastnost | Výchozí | Popis |
+|Vlastnost | Výchozí | Description |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | Koncový bod, který se používá pro připojení ke službě Application Insights Snapshot Debugger. Pokud je null, použije se výchozí koncový bod. |
 | captureSnapshotMemoryWeight | 0,5 | Váha přidělená aktuální velikosti paměti procesu při kontrole, zda je k dispozici dostatek paměti pro pořízení snímku. Očekávaná hodnota je větší než 0 správný zlomek (0 < CaptureSnapshotMemoryWeight < 1). |
@@ -275,7 +275,7 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------| 
 |enabled|true|Určuje, jestli je funkce povolená. | 
 |healthCheckInterval|10 sekund|Časový interval mezi pravidelnými kontrolami stavu pozadí. | 
@@ -307,12 +307,12 @@ Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](fun
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definuje, jakou úroveň protokolování souborů je povoleno.  Možnosti jsou `never` , `always` , `debugOnly` . |
-|logLevel|Není k dispozici|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x a novější postupují podle ASP.NET Core rozložení pro filtrování kategorií protokolů. Toto nastavení umožňuje filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
-|konzola|Není k dispozici| Nastavení protokolování [konzoly](#console) . |
-|applicationInsights|Není k dispozici| Nastavení [applicationInsights](#applicationinsights) |
+|logLevel|neuvedeno|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x a novější postupují podle ASP.NET Core rozložení pro filtrování kategorií protokolů. Toto nastavení umožňuje filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
+|konzola|neuvedeno| Nastavení protokolování [konzoly](#console) . |
+|applicationInsights|neuvedeno| Nastavení [applicationInsights](#applicationinsights) |
 
 ## <a name="console"></a>konzola
 
@@ -330,7 +330,7 @@ Toto nastavení je podřízenou položkou [protokolování](#logging). Řídí p
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------| 
 |isEnabled|false (nepravda)|Povolí nebo zakáže protokolování konzoly.| 
 
@@ -374,13 +374,13 @@ Nastavení konfigurace pro chování zámku typu singleton. Další informace na
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|Období, pro které jsou přijímány zámky na úrovni funkce. Automatické obnovení zámků.| 
 |listenerLockPeriod|00:01:00|Období, pro které jsou pořízeny zámky naslouchacího procesu.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Časový interval, který se používá pro obnovení zámku naslouchacího procesu, pokud se nepovedlo získat zámek naslouchacího procesu při spuštění.| 
 |lockAcquisitionTimeout|00:01:00|Maximální doba, po kterou se modul runtime pokusí získat zámek.| 
-|lockAcquisitionPollingInterval|Není k dispozici|Interval mezi pokusy o získání zámku.| 
+|lockAcquisitionPollingInterval|neuvedeno|Interval mezi pokusy o získání zámku.| 
 
 ## <a name="version"></a>verze
 

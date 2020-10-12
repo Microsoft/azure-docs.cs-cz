@@ -4,10 +4,10 @@ description: Tento článek obsahuje odpovědi na nejčastější dotazy týkaj�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ca35d70bc1106e46df4e3c68889b03679fd54b86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85443294"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Laboratoře učebny v Azure Lab Services – nejčastější dotazy (FAQ)
@@ -19,7 +19,7 @@ Získejte odpovědi na některé nejčastější dotazy týkající se učebn La
 Kvóta, kterou nastavíte pro testovací prostředí, je určena pro každého studenta po celou dobu trvání testovacího prostředí. A [plánovaná doba spuštění virtuálních počítačů](how-to-create-schedules.md) se nepočítá s kvótou přidělenou uživateli. Kvóta je určena pro dobu mimo plánované hodiny, kterou student stráví na virtuálních počítačích.  Další informace o kvótách najdete v tématu [nastavení kvót pro uživatele](how-to-configure-student-usage.md#set-quotas-for-users).
 
 ### <a name="if-educator-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Pokud Educator zapne virtuální počítač studenta, má vliv na kvótu studenta? 
-Ne. Nejedná se o. Když se Educator zapne na virtuálním počítači studenta, neovlivní to kvótu, která je přidělena studentovi. 
+Ne. Žádnou. Když se Educator zapne na virtuálním počítači studenta, neovlivní to kvótu, která je přidělena studentovi. 
 
 ## <a name="schedules"></a>Plány
 
