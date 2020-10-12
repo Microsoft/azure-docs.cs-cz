@@ -9,10 +9,10 @@ ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
 ms.openlocfilehash: 4f6a6dd28662c98c89dad39da3fd5c967f227dc3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87084041"
 ---
 Azure COMPUTE nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka. Izolované velikosti fungují v reálném čase a pracují na konkrétní generaci hardwaru a při vyřazení hardwaru budou zastaralé.
@@ -41,7 +41,7 @@ Vzhledem k tomu, že velikosti izolovaného virtuálního počítače jsou velik
 | Standard_DS15_v2<sup>1</sup> | 15. května 2020 |
 | Standard_D15_v2<sup>1</sup>  | 15. května 2020 |
 
-<sup>1</sup> podrobnosti o Standard_DS15_v2 a Standard_D15_v2 programu pro vyřazení z izolaci najdete v tématu Nejčastější dotazy.
+<sup>1</sup>  podrobnosti o Standard_DS15_v2 a Standard_D15_v2 programu pro vyřazení z izolaci najdete v tématu Nejčastější dotazy.
 
 
 ## <a name="faq"></a>Časté otázky

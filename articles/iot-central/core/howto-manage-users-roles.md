@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: c00f9d8baa55ef0d0cf6322ee71f22e739e6acdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80365508"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>Správa uživatelů a rolí v aplikaci IoT Central
@@ -25,7 +25,7 @@ Pokud chcete získat přístup k části **Správa** a používat ji, musíte b�
 
 Každý uživatel musí mít uživatelský účet, aby se mohl přihlásit a získat přístup k aplikaci Azure IoT Central. Účty Microsoft a účty Azure Active Directory jsou podporované ve službě Azure IoT Central. Azure Active Directory skupiny se v Azure IoT Central aktuálně nepodporují.
 
-Další informace najdete v tématu [účet Microsoft nápovědu](https://support.microsoft.com/products/microsoft-account?category=manage-account) a [rychlé zprovoznění: přidání nových uživatelů do Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
+Další informace najdete v tématu [účet Microsoft nápovědu](https://support.microsoft.com/products/microsoft-account?category=manage-account) a  [rychlé zprovoznění: přidání nových uživatelů do Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
 
 1. Chcete-li přidat uživatele do aplikace IoT Central, v části **Správa** klikněte na stránku **Uživatelé** .
     
@@ -95,7 +95,7 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádná     |
+| Zobrazit | Žádné     |
 | Spravovat | Zobrazit <br/> Další závislosti: zobrazení instancí zařízení  |
 | Úplné řízení | Zobrazit, spravovat <br/> Další závislosti: zobrazení instancí zařízení |
 
@@ -103,7 +103,7 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádná <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení |
+| Zobrazit | Žádné <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení |
 | Aktualizace | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
 | Vytvořit | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
 | Odstranit | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení a skupin zařízení  |
@@ -114,7 +114,7 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádná <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení |
+| Zobrazit | Žádné <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení |
 | Aktualizace | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení   |
 | Vytvořit | Zobrazit, aktualizovat <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení   |
 | Odstranit | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení a instancí zařízení   |
@@ -124,9 +124,9 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Čtení instance | Žádná <br/> Další závislosti: zobrazení šablon zařízení, skupin zařízení, instancí zařízení |
-| Spravovat instanci | Žádná |
-| Číst globální | Žádná   |
+| Čtení instance | Žádné <br/> Další závislosti: zobrazení šablon zařízení, skupin zařízení, instancí zařízení |
+| Spravovat instanci | Žádné |
+| Číst globální | Žádné   |
 | Spravovat globální | Číst globální |
 | Úplné řízení | Čtení instance, Správa instance, čtení globálních prostředků, Správa globálních prostředků. <br/> Další závislosti: zobrazení šablon zařízení, skupin zařízení, instancí zařízení |
 
@@ -134,18 +134,18 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádná <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení |
+| Zobrazit | Žádné <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení |
 | Aktualizace | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení |
 | Vytvořit | Zobrazit, aktualizovat <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení |
 | Odstranit | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení |
-| Spuštění | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení; Aktualizace instancí zařízení; Spouštění příkazů na instancích zařízení |
+| Spuštěním | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení; Aktualizace instancí zařízení; Spouštění příkazů na instancích zařízení |
 | Úplné řízení | Zobrazit, aktualizovat, vytvořit, odstranit, spustit <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení a skupin zařízení; Aktualizace instancí zařízení; Spouštění příkazů na instancích zařízení |
 
 **Oprávnění pravidel**
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádná <br/> Další závislosti: zobrazení šablon zařízení |
+| Zobrazit | Žádné <br/> Další závislosti: zobrazení šablon zařízení |
 | Aktualizace | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení |
 | Vytvořit | Zobrazit, aktualizovat <br/> Další závislosti: zobrazení šablon zařízení |
 | Odstranit | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení |
@@ -157,7 +157,7 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádná     |
+| Zobrazit | Žádné     |
 | Aktualizace | Zobrazit   |
 | Kopírovat | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení, skupin zařízení, řídicích panelů, exportu dat, brandingování, odkazů na nápovědě, vlastních rolí, pravidel |
 | Odstranit | Zobrazit   |
@@ -167,7 +167,7 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádná     |
+| Zobrazit | Žádné     |
 | Export | Zobrazit <br/> Další závislosti: zobrazení šablon zařízení, instancí zařízení, skupin zařízení, řídicích panelů, exportu dat, brandingování, odkazů na nápovědě, vlastních rolí, pravidel |
 | Úplné řízení | Zobrazit, exportovat <br/> Další závislosti: zobrazení šablon zařízení, skupin zařízení, řídicích panelů aplikací, exportu dat, brandingování, odkazů na nápovědě, vlastních rolí, pravidel |
 
@@ -175,7 +175,7 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Spravovat | Žádná     |
+| Spravovat | Žádné     |
 | Úplné řízení | Spravovat |
 
 #### <a name="managing-users-and-roles"></a>Správa uživatelů a rolí
@@ -184,7 +184,7 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádná |
+| Zobrazit | Žádné |
 | Aktualizace | Zobrazit |
 | Vytvořit | Zobrazit, aktualizovat |
 | Odstranit | Zobrazit |
@@ -194,7 +194,7 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádná <br/> Další závislosti: zobrazení vlastních rolí |
+| Zobrazit | Žádné <br/> Další závislosti: zobrazení vlastních rolí |
 | Přidat | Zobrazit <br/> Další závislosti: zobrazení vlastních rolí |
 | Odstranit | Zobrazit <br/> Další závislosti: zobrazení vlastních rolí |
 | Úplné řízení | Zobrazit, přidat, odstranit <br/> Další závislosti: zobrazení vlastních rolí |
@@ -208,7 +208,7 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádná     |
+| Zobrazit | Žádné     |
 | Aktualizace | Zobrazit   |
 | Vytvořit | Zobrazit, aktualizovat |
 | Odstranit | Zobrazit   |
@@ -218,7 +218,7 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádná     |
+| Zobrazit | Žádné     |
 | Aktualizace | Zobrazit   |
 | Vytvořit | Zobrazit, aktualizovat   |
 | Odstranit | Zobrazit   |
@@ -228,7 +228,7 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádná     |
+| Zobrazit | Žádné     |
 | Aktualizace | Zobrazit   |
 | Úplné řízení | Zobrazit, aktualizovat |
 
@@ -236,7 +236,7 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádná     |
+| Zobrazit | Žádné     |
 | Aktualizace | Zobrazit   |
 | Úplné řízení | Zobrazit, aktualizovat |
 
@@ -246,7 +246,7 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádná     |
+| Zobrazit | Žádné     |
 | Aktualizace | Zobrazit   |
 | Vytvořit | Zobrazit, aktualizovat  |
 | Odstranit | Zobrazit   |
@@ -256,7 +256,7 @@ Při definování vlastní role zvolíte sadu oprávnění, které uživatel ud�
 
 | Name | Závislosti |
 | ---- | -------- |
-| Zobrazit | Žádná     |
+| Zobrazit | Žádné     |
 | Vytvořit | Zobrazit   |
 | Odstranit | Zobrazit   |
 | Úplné řízení | Zobrazit, vytvořit, odstranit |

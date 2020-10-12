@@ -9,10 +9,10 @@ ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/22/2019
 ms.openlocfilehash: 5de1d99442f307fc7850114915851f994258b537
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87845897"
 ---
 # <a name="additional-settings-for-azure-api-for-fhir"></a>Další nastavení pro Azure API pro FHIR
@@ -40,7 +40,7 @@ V rámci instalace může být vhodné povolit protokolování diagnostiky, aby 
 ## <a name="use-custom-headers-to-add-data-to-audit-logs"></a>Použití vlastních hlaviček k přidání dat do protokolů auditu
 V rozhraní API Azure pro FHIR možná budete chtít zahrnout do protokolů Další informace, které pocházejí z volajícího systému. Pokud chcete tyto informace zahrnout, můžete použít vlastní hlavičky.
 
-Vlastní hlavičky můžete použít k zachycení několika typů informací. Příklad:
+Vlastní hlavičky můžete použít k zachycení několika typů informací. Například:
 
 * Informace o identitě nebo autorizaci
 * Původ volajícího

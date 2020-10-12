@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: sagupt
 ms.openlocfilehash: e446fca11e029e28e44ada884efd071f3142514c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86518075"
 ---
 # <a name="configure-periodic-summary-for-recommendations"></a>Konfigurace pravidelného Shrnutí pro doporučení
@@ -54,7 +54,7 @@ Tady je postup pro vytvoření **vydigest doporučení:**
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o doporučeních služby Advisor najdete v těchto tématech:
-* [Úvod do Azure Advisor](advisor-overview.md)
+* [Seznámení s Azure Advisorem](advisor-overview.md)
 * [Začínáme se službou Advisor](advisor-get-started.md)
 * [Doporučení pro náklady na poradce](advisor-cost-recommendations.md)
 * [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)

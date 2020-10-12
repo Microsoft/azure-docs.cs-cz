@@ -16,13 +16,13 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
 ms.openlocfilehash: b48ff1043ae8128a5cbfdcbba0548d89b5af2624
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88565838"
 ---
-# <a name="permissions-in-azure-sentinel"></a>Oprávnění v Azure Sentinel
+# <a name="permissions-in-azure-sentinel"></a>Oprávnění ve službě Azure Sentinel
 
 Služba Azure Sentinel používá [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) k poskytování [integrovaných rolí](../role-based-access-control/built-in-roles.md)   , které se dají přiřadit uživatelům, skupinám a službám v Azure.
 
@@ -78,9 +78,9 @@ Například uživatel, který má přiřazenou roli správce **Sentinel Azure** 
 
 ## <a name="roles-and-allowed-actions"></a>Role a povolené akce
 
-V následující tabulce najdete Souhrn rolí a povolených akcí v Azure Sentinel. 
+V následující tabulce najdete souhrn rolí a povolených akcí pro Azure Sentinel. 
 
-| Role | Vytvoření a spuštění playbooky| Vytváření a úpravy sešitů, analytických pravidel a dalších prostředků Sentinel Azure | Spravovat incidenty (zavřít, přiřadit atd.) | Zobrazení dat, incidentů, sešitů a dalších prostředků Sentinel Azure |
+| Role | Vytváření a spouštění playbooků| Vytváření a úpravy sešitů, analytických pravidel a jiných prostředků Azure Sentinelu | Spravovat incidenty (zavřít, přiřadit atd.) | Zobrazení dat, incidentů, sešitů a dalších prostředků Sentinel Azure |
 |---|---|---|---|---|
 | Azure Sentinel Reader (čtenář) | -- | -- | -- | &#10003; |
 | Azure Sentinel Responder | -- | -- | &#10003; | &#10003; |

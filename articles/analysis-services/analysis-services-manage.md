@@ -8,10 +8,10 @@ ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84015498"
 ---
 # <a name="manage-analysis-services"></a>Správa služby Analysis Services
@@ -56,7 +56,7 @@ Pokud chcete získat nejnovější funkce a využít nejplynulejší prostředí
     ![Připojení v SQL Server Management Studiu](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
 ## <a name="server-administrators-and-database-users"></a>Správci serveru a uživatelé databáze
-V Azure Analysis Services existují dva typy uživatelů, správci serveru a uživatelé databáze. Oba typy uživatelů musí být ve vašem Azure Active Directory a musí být zadány e-mailovou adresou organizace nebo hlavním jménem uživatele. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
+V Azure Analysis Services existují dva typy uživatelů, správci serveru a uživatelé databáze. Oba typy uživatelů musí být ve vašem Azure Active Directory a musí být zadány e-mailovou adresou organizace nebo hlavním jménem uživatele. Další informace najdete v článku o [ověřování a uživatelských oprávněních](analysis-services-manage-users.md).
 
 
 ## <a name="troubleshooting-connection-problems"></a>Řešení potíží s připojením

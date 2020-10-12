@@ -9,10 +9,10 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f3cc8495f673c8b428aa9e6ace2747a70c5b0847
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88556243"
 ---
 # <a name="msix-app-attach-glossary"></a>Glosář připojení aplikace MSIX
@@ -106,7 +106,7 @@ Defázování upozorní operační systém, že balíček MSIX nebo aplikace, kt
 
 . CIM je nová přípona souboru přidružená k systému souborů kompozitních imagí (CimFS). Připojení a odpojení souborů CIM je rychlejší pro soubory VHD. CIM také spotřebovává méně procesoru a paměti než virtuální pevný disk.
 
-Následující tabulka představuje porovnání výkonu mezi VHD a CimFS. Tato čísla byla výsledkem testovacího běhu s 800 MB souborů v každém formátu spuštěném na DSv4 počítači.
+Následující tabulka představuje porovnání výkonu mezi VHD a CimFS. Tato čísla byla výsledkem testovacího běhu s 500 300 MB souborů v každém formátu spuštěném na DSv4 počítači.
 
 |  Specifikace                          | VHD                    | CimFS   |
 |---------------------------------|--------------------------|-----------|

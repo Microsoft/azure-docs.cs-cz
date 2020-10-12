@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
 ms.openlocfilehash: 3f8a5bdc9e1240303216df1dec31c78a560c55eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87086490"
 ---
 # <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>Spouštění úloh Apache Sqoop pomocí Azure PowerShell ve službě HDInsight
@@ -21,7 +21,7 @@ ms.locfileid: "87086490"
 
 Naučte se používat Azure PowerShell ke spouštění úloh Apache Sqoop v Azure HDInsight k importu a exportu dat mezi clusterem HDInsight a Azure SQL Database nebo SQL Server.  Tento článek je pokračováním [v použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní stanice s Azure PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/) installed.
 
@@ -277,7 +277,7 @@ HDInsight se systémem Linux nabízí tato omezení:
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste se naučili, jak používat Sqoop. Další informace naleznete v tématu:
+Nyní jste se naučili, jak používat Sqoop. Další informace najdete v následujících tématech:
 
 * [Použití Apache Oozie se službou HDInsight](../hdinsight-use-oozie-linux-mac.md): použijte akci Sqoop v pracovním postupu Oozie.
 * [Nahrávání dat do HDInsight](../hdinsight-upload-data.md): Najděte další metody pro nahrávání dat do služby HDInsight nebo Azure Blob Storage.

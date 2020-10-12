@@ -4,10 +4,10 @@ description: Naučte se vytvářet prostředí s více virtuálními počítači
 ms.topic: article
 ms.date: 08/12/2020
 ms.openlocfilehash: 97659d4ab95fdbe75460161d0ceed71a1cb5cf82
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88182404"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Vytvoření prostředí více virtuálních počítačů a prostředků PaaS pomocí šablony Azure Resource Manageru
@@ -62,7 +62,7 @@ Pro uspořádání šablon Azure Resource Manager v úložišti je potřeba prov
 
 Po vytvoření a konfiguraci úložiště ho můžete přidat do testovacího prostředí pomocí Azure Portal:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 1. V seznamu cvičení vyberte testovací prostředí, které chcete.
 1. V podokně s **přehledem** testovacího prostředí vyberte **Konfigurace a zásady**.
@@ -109,7 +109,7 @@ V další části se seznámíte s vytvářením prostředí ze šablony Azure R
 
 Po přidání šablony Azure Resource Manager do testovacího prostředí mohou uživatelé testovacího prostředí vytvořit prostředí v Azure Portal pomocí následujících kroků:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
 ms.openlocfilehash: 47ed723ecfc544673ac8aa6374c27ae5a7cf166b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852102"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Volání Webhooku s klasickou výstrahou metriky v Azure Monitor
@@ -79,7 +79,7 @@ Operace POST obsahuje následující datovou část a schéma JSON pro všechny 
 | časové razítko |Y | |Čas, kdy byla výstraha aktivována. |
 | id |Y | |Každé pravidlo výstrahy má jedinečné ID. |
 | name |Y | |Název výstrahy |
-| description |Y | |Popis výstrahy |
+| Popis |Y | |Popis výstrahy |
 | conditionType |Y |Metrika, událost |Podporují se dva typy výstrah: metrika a událost. Výstrahy metriky jsou založené na podmínce metriky. Výstrahy událostí jsou založené na události v protokolu aktivit. Tuto hodnotu použijte, chcete-li ověřit, zda je výstraha založena na metrikě nebo události. |
 | pomocné |Y | |Konkrétní pole, která se mají kontrolovat v závislosti na hodnotě **conditionType** |
 | metricName |Pro výstrahy metriky | |Název metriky, která definuje, co pravidlo monitoruje. |

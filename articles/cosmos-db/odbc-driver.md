@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
 ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87084819"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojení k Azure Cosmos DB pomocí nástrojů BI Analytics s ovladačem ODBC
@@ -56,27 +56,16 @@ Pojďme začít s ovladačem ODBC.
 
 1. V okně **Azure Cosmos DB ODBC ovladače SDN nastavení** zadejte následující informace: 
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-dsn-setup.png" alt-text="Azure Cosmos DB okno nastavení DSN ovladače ODBC":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-dsn-setup.png" alt-text="Azure Cosmos DB správce zdrojů dat ODBC":::
     - **Název zdroje dat**: vlastní popisný název DSN ODBC. Tento název je jedinečný pro váš Azure Cosmos DB účet, proto ho pojmenujte, pokud máte více účtů.
     - **Popis**: stručný popis zdroje dat.
     - **Host**: identifikátor URI pro váš účet Azure Cosmos DB. To můžete načíst ze stránky Azure Cosmos DB klíče v Azure Portal, jak je znázorněno na následujícím snímku obrazovky. 
     - **Přístupový klíč**: primární nebo sekundární klíč, který je jen pro čtení a zápis, nebo jen pro čtení ze stránky Azure Cosmos DB klíče v Azure Portal, jak je znázorněno na následujícím snímku obrazovky. Pokud se název DSN používá pro zpracování dat a vytváření sestav jen pro čtení, doporučujeme použít klíč jen pro čtení.
-    :::image type="content" source="./media/odbc-driver/odbc-cosmos-account-keys.png" alt-text="Stránka Azure Cosmos DB klíče":::
-    - **Šifrovat přístupový klíč pro**: vyberte nejlepší volbu na základě uživatelů tohoto počítače. 
-    
-1. Klikněte na tlačítko **test** a ujistěte se, že se můžete připojit k účtu Azure Cosmos DB. 
-
-1.  Klikněte na **Rozšířené možnosti** a nastavte následující hodnoty:
-    *  **REST API verze**: vyberte [verzi REST API](/rest/api/cosmos-db/) pro vaše operace. Výchozí hodnota je 2015-12-16. Pokud máte kontejnery s [velkými klíči oddílů](large-partition-keys.md) a vyžadujete REST API verze 2018-12-31:
-        - Zadejte **2018-12-31** pro REST API verzi.
-        - V nabídce **Start** zadejte příkaz regedit a vyhledejte a otevřete aplikaci **Editor registru** .
-        - V editoru registru přejděte na cestu: **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
-        - Vytvořte nový podklíč se stejným názvem jako název DSN, např. "účet contoso ODBC DSN".
-        - Přejděte do podklíče "účet" ODBC DSN "účtu contoso.
+    :::image type="content" source="./media/odbc-driver/odbc-cosmos-account-keys.png" alt-text="Azure Cosmos DB správce zdrojů dat ODBC" ODBC DSN "účtu contoso.
         - Kliknutím pravým tlačítkem přidáte novou **řetězcovou** hodnotu:
             - Název hodnoty: **IgnoreSessionToken**
             - Data hodnoty: **1** 
-             :::image type="content" source="./media/odbc-driver/cosmos-odbc-edit-registry.png" alt-text="nastavení editoru registru":::
+             :::image type="content" source="./media/odbc-driver/cosmos-odbc-edit-registry.png" alt-text="Azure Cosmos DB správce zdrojů dat ODBC":::
     - **Konzistence dotazů**: vyberte [úroveň konzistence](consistency-levels.md) pro vaše operace. Výchozí hodnota je Session.
     - **Počet opakování**: zadejte počet opakování operace, pokud se počáteční žádost nedokončila z důvodu omezení rychlosti služby.
     - **Soubor schématu**: tady máte několik možností.
@@ -86,7 +75,7 @@ Pojďme začít s ovladačem ODBC.
 
 1. Po dokončení a zavření okna **Azure Cosmos DB nastavení DSN ovladače ODBC** se nový uživatel DSN přidá na kartu uživatelské DSN.
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-user-dsn.png" alt-text="Nový Azure Cosmos DB DSN ODBC na kartě uživatelské DSN":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-user-dsn.png" alt-text="Azure Cosmos DB správce zdrojů dat ODBC":::
 
 ## <a name="step-3-create-a-schema-definition-using-the-container-mapping-method"></a><a id="#container-mapping"></a>Krok 3: vytvoření definice schématu pomocí metody mapování kontejnerů
 
@@ -94,7 +83,7 @@ Existují dva typy metod vzorkování, které lze použít: **mapování kontejn
 
 1. Po dokončení kroků 1-4 v tématu [připojení k databázi Azure Cosmos](#connect)klikněte na **editor schémat** v okně **Nastavení DSN ovladače Azure Cosmos DB ODBC** .
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-schema-editor.png" alt-text="Tlačítko editoru schématu v okně Azure Cosmos DB nastavení DSN ovladače ODBC":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-schema-editor.png" alt-text="Azure Cosmos DB správce zdrojů dat ODBC":::
 1. V okně **editor schémat** klikněte na **vytvořit nový**.
     V okně **generovat schéma** se zobrazí všechny kontejnery v účtu Azure Cosmos DB. 
 
@@ -162,7 +151,7 @@ Nastavením připojení připojeného serveru můžete zadat dotaz na Azure Cosm
     
 Pokud chcete zobrazit nový název propojeného serveru, aktualizujte seznam propojených serverů.
 
-:::image type="content" source="./media/odbc-driver/odbc-driver-linked-server-ssms.png" alt-text="Odkazovaný server v SSMS":::
+:::image type="content" source="./media/odbc-driver/odbc-driver-linked-server-ssms.png" alt-text="Azure Cosmos DB správce zdrojů dat ODBC":::
 
 ### <a name="query-linked-database"></a>Dotaz na propojenou databázi
 
@@ -196,7 +185,7 @@ V rámci procesu vzorkování můžete definovat a vytvářet zobrazení. Tato z
 
 Chcete-li vytvořit zobrazení pro data, v okně **editor schémat** klikněte ve sloupci **definice zobrazení** na položku **Přidat** na řádku kontejneru a proveďte ukázku. 
 
-:::image type="content" source="./media/odbc-driver/odbc-driver-create-view.png" alt-text="Vytvoření zobrazení dat":::
+:::image type="content" source="./media/odbc-driver/odbc-driver-create-view.png" alt-text="Azure Cosmos DB správce zdrojů dat ODBC":::
 
 
 Pak v okně **definice zobrazení** proveďte následující:
@@ -205,7 +194,7 @@ Pak v okně **definice zobrazení** proveďte následující:
 
 1. V okně **Upravit zobrazení** zadejte Azure Cosmos DB dotaz. Musí se jednat o [Azure Cosmos DB dotaz SQL](how-to-sql-query.md), například `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"` a pak klikněte na tlačítko **OK**.
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-create-view-2.png" alt-text="Přidat dotaz při vytváření zobrazení":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-create-view-2.png" alt-text="Azure Cosmos DB správce zdrojů dat ODBC":::
 
 
 V takovém případě můžete vytvořit mnoho zobrazení. Po dokončení definování zobrazení pak můžete data vzorkovat. 
@@ -218,21 +207,21 @@ Pomocí nového názvu DSN se můžete připojit k Azure Cosmos DB pomocí libov
 
 1. Klikněte na **získat data**.
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data.png" alt-text="Načtení dat v Power BI Desktopu":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data.png" alt-text="Azure Cosmos DB správce zdrojů dat ODBC":::
 
 1. V okně **získat data** klikněte na **jiný**  |  **ODBC**  |  **připojit**.
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-2.png" alt-text="Zvolit zdroj dat ODBC ve Power BI získat data":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-2.png" alt-text="Azure Cosmos DB správce zdrojů dat ODBC":::
 
 1. V okně **z rozhraní ODBC** vyberte název zdroje dat, který jste vytvořili, a pak klikněte na **OK**. **Rozšířené položky možností** můžete nechat prázdné.
 
-   :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-3.png" alt-text="Zvolit název zdroje dat (DSN) ve Power BI získat data":::
+   :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-3.png" alt-text="Azure Cosmos DB správce zdrojů dat ODBC":::
 
 1. V okně **přístup ke zdroji dat pomocí ovladače ODBC** vyberte **výchozí nebo vlastní** a potom klikněte na **připojit**. Nemusíte zahrnovat **vlastnosti připojovacího řetězce přihlašovacích údajů**.
 
 1. V okně **navigátor** rozbalte v levém podokně databázi, schéma a pak vyberte tabulku. Podokno výsledků obsahuje data pomocí schématu, které jste vytvořili.
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-4.png" alt-text="Vybrat tabulku v Power BI získat data":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-4.png" alt-text="Azure Cosmos DB správce zdrojů dat ODBC":::
 
 1. Chcete-li vizualizovat data v Power BI ploše, zaškrtněte políčko před názvem tabulky a potom klikněte na tlačítko **načíst**.
 
@@ -240,7 +229,7 @@ Pomocí nového názvu DSN se můžete připojit k Azure Cosmos DB pomocí libov
 
 1. Vizuály teď můžete vytvářet pomocí Power BI kliknutím na kartu Sestava :::image type="icon" source="./media/odbc-driver/odbc-driver-report-tab.png"::: , kliknutím na **Nový vizuál**a přizpůsobením dlaždice. Další informace o vytváření vizualizací v Power BI Desktop najdete v tématu [typy vizualizací v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/). 
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se zobrazí následující chyba, ujistěte se, že hodnoty pro **hostitele** a **přístupová oprávnění** , které jste zkopírovali Azure Portal v [kroku 2](#connect) jsou správné, a pak to zkuste znovu. Použijte tlačítka Kopírovat napravo od **hostitele** a přístupové hodnoty **klíčů** v Azure Portal ke zkopírování hodnoty bez chyb.
 

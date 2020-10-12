@@ -14,10 +14,10 @@ ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
 ms.openlocfilehash: ba93591ade730c4e9c9bdb6a42232e71e10d6469
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87850147"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Použití Twilio pro hlasové funkce a možnosti SMS v Pythonu
@@ -216,7 +216,7 @@ print(str(response))
 
 Další informace o TwiML najdete v tématu [https://www.twilio.com/docs/api/twiml][twiml_reference] .
 
-Jakmile budete mít aplikaci Python nastavenou tak, aby poskytovala odpovědi TwiML, použijte adresu URL aplikace jako adresu URL předanou `client.calls.create` metodě. Například pokud máte webovou aplikaci s názvem **MyTwiML** nasazenou do hostované služby Azure, můžete použít její adresu URL jako Webhook, jak je znázorněno v následujícím příkladu:
+Jakmile budete mít aplikaci Python nastavenou tak, aby poskytovala odpovědi TwiML, použijte adresu URL aplikace jako adresu URL předanou `client.calls.create`  metodě. Například pokud máte webovou aplikaci s názvem **MyTwiML** nasazenou do hostované služby Azure, můžete použít její adresu URL jako Webhook, jak je znázorněno v následujícím příkladu:
 
 ```python
 from twilio.rest import TwilioRestClient

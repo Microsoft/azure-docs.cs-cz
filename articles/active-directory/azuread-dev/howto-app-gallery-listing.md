@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 40d299049a0a1bbff81c412a5beb84f28e64ff46
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706298"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uvedení aplikace v galerii aplikací služby Azure Active Directory
@@ -35,7 +35,7 @@ Tento článek ukazuje, jak zobrazit seznam aplikací v galerii aplikací Azure 
 - Mezi vzájemné zákazníky získáte Podrobný kurz konfigurace.
 - Zákazníci, kteří používají systém pro správu identit mezi doménami ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)), můžou použít zřizování pro stejnou aplikaci.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 - Pro federované aplikace (otevřené ID a SAML/WS) musí aplikace podporovat model software jako služba (SaaS), aby mohl být uvedený v galerii aplikací Azure AD. Aplikace podnikové Galerie musí podporovat více zákaznických konfigurací a ne žádného konkrétního zákazníka.
 - Pro otevřené ID Connect musí být aplikace víceklientské a musí být pro aplikaci správně implementovaná [Architektura souhlasu služby Azure AD](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) . Uživatel může odeslat žádost o přihlášení ke společnému koncovému bodu, aby každý zákazník mohl poskytnout souhlas k aplikaci. Můžete řídit přístup uživatelů na základě ID tenanta a hlavního názvu uživatele (UPN) přijatého v tokenu.
@@ -101,7 +101,7 @@ Pokud chcete zobrazit seznam aplikací v galerii aplikací Azure AD, musíte nej
 
 - **Saml 2,0** nebo **WS-** dodaný: Pokud vaše aplikace podporuje SAML 2,0, můžete ji integrovat přímo s klientem Azure AD podle [pokynů pro přidání vlastní aplikace](../manage-apps/view-applications-portal.md).
 
-  ![Výpis aplikace SAML 2,0 nebo WS-v galerii](./media/howto-app-gallery-listing/saml.png)
+  ![Výpis aplikace SAML 2,0 nebo WS-Fed v galerii](./media/howto-app-gallery-listing/saml.png)
 
   * Pokud chcete přidat aplikaci do seznamu v galerii pomocí **SAML 2,0** nebo **WS-** dodávání, vyberte **SAML 2.0/WS-** dodaný, jak je znázorněno na obrázku.
 
@@ -146,7 +146,7 @@ Tady je postup pro aplikace vyžadované zákazníky.
 
 ## <a name="timelines"></a>Časové osy
 
-Časová osa pro proces výpisu aplikace SAML 2,0 nebo WS-nakrmená v galerii je 7 až 10 pracovních dnů.
+Časová osa pro proces výpisu aplikace SAML 2,0 nebo WS-Fed v galerii je 7 až 10 pracovních dnů.
 
   ![Časová osa pro výpis aplikace SAML v galerii](./media/howto-app-gallery-listing/timeline.png)
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: 3f317276ae92e6121d519553b7883677dab89705
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852187"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak používat pojmenované hodnoty v zásadách Azure API Management
@@ -36,11 +36,11 @@ Každá instance API Management služby má kolekci párů klíč/hodnota, kter�
 
 Pojmenované hodnoty mohou obsahovat řetězce literálů a [výrazy zásad](./api-management-policy-expressions.md). Například hodnota `Expression` je výraz zásady, který vrací řetězec obsahující aktuální datum a čas. Pojmenovaná hodnota `Credential` je označena jako tajná, takže její hodnota se ve výchozím nastavení nezobrazí.
 
-| Název       | Hodnota                      | Tajný kód | Značky          |
+| Name       | Hodnota                      | Tajný kód | Značky          |
 | ---------- | -------------------------- | ------ | ------------- |
-| Hodnota      | 42                         | Ne  | důležitá – čísla |
+| Hodnota      | 42                         | Nepravda  | důležitá – čísla |
 | Přihlašovací údaj | ••••••••••••••••••••••     | Ano   | security      |
-| Výraz | @ (DateTime. Now. ToString ()) | Ne  |               |
+| Výraz | @ (DateTime. Now. ToString ()) | Nepravda  |               |
 
 > [!NOTE]
 > Místo pojmenovaných hodnot uložených v rámci služby API Management můžete použít hodnoty uložené ve službě [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) , jak je znázorněno v tomto [příkladu](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml).
@@ -84,7 +84,7 @@ Chcete-li použít pojmenovanou hodnotu v zásadě, umístěte svůj název do d
 
 V tomto příkladu `ContosoHeader` se používá jako název záhlaví v `set-header` zásadě a `ContosoHeaderValue` používá se jako hodnota této hlavičky. Když se tato zásada vyhodnotí během žádosti nebo odpovědi na bránu API Management `{{ContosoHeader}}` a `{{ContosoHeaderValue}}` nahradí se jejich příslušnými hodnotami.
 
-Pojmenované hodnoty lze použít jako úplný atribut nebo hodnoty prvků, jak je znázorněno v předchozím příkladu, ale mohou být také vloženy do nebo kombinovány s částí textového výrazu literálu, jak je znázorněno v následujícím příkladu:`<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
+Pojmenované hodnoty lze použít jako úplný atribut nebo hodnoty prvků, jak je znázorněno v předchozím příkladu, ale mohou být také vloženy do nebo kombinovány s částí textového výrazu literálu, jak je znázorněno v následujícím příkladu: `<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
 
 Pojmenované hodnoty mohou obsahovat také výrazy zásad. V následujícím příkladu `ExpressionProperty` je použit.
 

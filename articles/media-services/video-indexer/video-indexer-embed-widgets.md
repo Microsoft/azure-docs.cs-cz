@@ -12,10 +12,10 @@ ms.date: 08/10/2020
 ms.author: juliako
 ms.custom: devx-track-js
 ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91268617"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Vložení Video Indexer widgetů do aplikací
@@ -208,7 +208,7 @@ Pokud používáte přehrávač videa, který není Azure Media Player, je nutn�
     ```
 
 2. Vložte widget Cognitive Insights.
-3. Implementujte komunikaci pro přehrávač prostřednictvím naslouchání události „zpráva“. Příklad:
+3. Implementujte komunikaci pro přehrávač prostřednictvím naslouchání události „zpráva“. Například:
 
     ```javascript
     <script>
@@ -271,7 +271,7 @@ Všimněte si, že je tato možnost relevantní jenom v případech, když přeh
 
 Pokud vložíte přehrávač Video Indexeru, můžete zvolit velikost přehrávače zadáním velikosti prvku iframe.
 
-Příklad:
+Například:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
@@ -291,7 +291,7 @@ Ve výchozím nastavení se přehrávač začne přehrávat ve videu. Můžete s
 
 Podívejte se na úložiště [ukázek kódu](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets) , které obsahuje ukázky pro video indexer rozhraní API a widgety:
 
-| Soubor nebo složka                       | Popis                                |
+| Soubor nebo složka                       | Description                                |
 |-----------------------------------|--------------------------------------------|
 | `azure-media-player`              | Načíst video indexerer ve vlastním Azure Media Player.                        |
 | `azure-media-player-vi-insights`  | Vložte VI přehledů s vlastní Azure Media Player.                             |

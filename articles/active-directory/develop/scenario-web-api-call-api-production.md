@@ -12,10 +12,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: aea3a173fd07b66021d35142a84499ae9c66c014
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86518194"
 ---
 # <a name="a-web-api-that-calls-web-apis-move-to-production"></a>Webové rozhraní API, které volá webová rozhraní API: Přesun do produkčního prostředí
@@ -28,6 +28,6 @@ Po získání tokenu pro volání webových rozhraní API můžete aplikaci pře
 
 Teď, když znáte základy volání webových rozhraní API z vlastního webového rozhraní API, může vás zajímat následující kurz, který popisuje kód, který se používá k vytvoření chráněného webového rozhraní API, které volá webová rozhraní API.
 
-| Ukázka | Platforma | Popis |
+| Ukázka | Platforma | Description |
 |--------|----------|-------------|
 | [Active-Directory-aspnetcore-WebApi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) kapitola 1 | ASP.NET Core webové rozhraní API, Desktop (WPF) | ASP.NET Core volání webového rozhraní API Microsoft Graph, které voláte z aplikace WPF pomocí technologie Microsoft Identity Platform (v 2.0). |

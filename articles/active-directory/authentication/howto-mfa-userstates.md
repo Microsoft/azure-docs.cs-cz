@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 1b1ff8a54037392ac01402056ada0f3040dbd123
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89068928"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Povolení vícefaktorového ověřování Azure pro jednotlivé uživatele za účelem zabezpečení událostí přihlášení
@@ -43,9 +43,9 @@ Stav uživatele odráží, jestli ho správce zaregistroval v Multi-Factor Authe
 
 | State | Popis | Ovlivněné starší verze ověřování | Ovlivněné aplikace v prohlížeči | Moderní ověřování ovlivněno |
 |:---:| --- |:---:|:--:|:--:|
-| Zakázáno | Výchozí stav pro uživatele, který není zaregistrovaný v rámci Multi-Factor Authentication Azure pro jednotlivé uživatele. | Ne | Ne | Ne |
-| Povoleno | Uživatel je zaregistrovaný v Multi-Factor Authentication Azure pro jednotlivé uživatele, ale může i nadále používat heslo pro starší verze ověřování. Pokud uživatel ještě nezaregistroval metody ověřování MFA, obdrží výzvu k registraci při příštím přihlášení pomocí moderního ověřování (například přes webový prohlížeč). | No. Starší verze ověřování pokračuje v práci až do dokončení procesu registrace. | Yes. Po vypršení platnosti relace se vyžaduje registrace služby Azure Multi-Factor Authentication.| Yes. Po vypršení platnosti přístupového tokenu se vyžaduje registrace Azure Multi-Factor Authentication. |
-| Vynuceno | Uživatel je zaregistrovaný pro každého uživatele v Azure Multi-Factor Authentication. Pokud uživatel ještě nezaregistroval metody ověřování, obdrží výzvu k registraci při příštím přihlášení pomocí moderního ověřování (například přes webový prohlížeč). Uživatelé, kteří dokončí registraci v *povoleném* stavu, se automaticky přesunou do stavu *vynutilo* . | Yes. Aplikace vyžadují hesla aplikací. | Yes. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. | Yes. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. |
+| Zakázáno | Výchozí stav pro uživatele, který není zaregistrovaný v rámci Multi-Factor Authentication Azure pro jednotlivé uživatele. | No | No | No |
+| Povoleno | Uživatel je zaregistrovaný v Multi-Factor Authentication Azure pro jednotlivé uživatele, ale může i nadále používat heslo pro starší verze ověřování. Pokud uživatel ještě nezaregistroval metody ověřování MFA, obdrží výzvu k registraci při příštím přihlášení pomocí moderního ověřování (například přes webový prohlížeč). | Ne. Starší verze ověřování pokračuje v práci až do dokončení procesu registrace. | Ano. Po vypršení platnosti relace se vyžaduje registrace služby Azure Multi-Factor Authentication.| Ano. Po vypršení platnosti přístupového tokenu se vyžaduje registrace Azure Multi-Factor Authentication. |
+| Vynuceno | Uživatel je zaregistrovaný pro každého uživatele v Azure Multi-Factor Authentication. Pokud uživatel ještě nezaregistroval metody ověřování, obdrží výzvu k registraci při příštím přihlášení pomocí moderního ověřování (například přes webový prohlížeč). Uživatelé, kteří dokončí registraci v *povoleném* stavu, se automaticky přesunou do stavu *vynutilo* . | Ano. Aplikace vyžadují hesla aplikací. | Ano. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. | Ano. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. |
 
 Všichni uživatelé začínají *zakázáni*. Když zaregistrujete uživatele v Multi-Factor Authentication Azure pro jednotlivé uživatele, jejich stav se změní na *povoleno*. Když se uživatelé s povoleným přihlášením a dokončí proces registrace, jejich stav se změní na *vynutilo*. Správci mohou přesouvat uživatele mezi stavy, včetně *Vynutilosti* *povoleno* nebo *zakázáno*.
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 4a53dd803b22899b7dd15db0aa1ff411641a11dc
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88183254"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Použití Azure Resource Manager skriptů založených na sadě SDK ke správě zařízení StorSimple
@@ -25,7 +25,7 @@ K dispozici jsou následující ukázkové skripty pro automatizaci různých ú
 
 #### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>Tabulka ukázkových skriptů založených na sadě Azure Resource Manager SDK
 
-| Skript Azure Resource Manager                    | Popis                                                                                                                                                                                                       |
+| Skript Azure Resource Manager                    | Description                                                                                                                                                                                                       |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | Tento skript vám umožní ověřit, že zařízení StorSimple mění šifrovací klíč dat služby.                                                                                                           |
 | [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | Tento skript vytvoří StorSimple Cloud Appliance 8010 nebo 8020. Cloudové zařízení se pak dá nakonfigurovat a zaregistrovat ve službě StorSimple Data Manager.                                                       |
@@ -49,7 +49,7 @@ K dispozici jsou následující ukázkové skripty pro automatizaci různých ú
 
 V této části se používá ukázkový skript a podrobnosti o různých krocích potřebných ke spuštění skriptu.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 

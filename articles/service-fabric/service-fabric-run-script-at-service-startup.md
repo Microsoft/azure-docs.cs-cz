@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: atsenthi
 ms.openlocfilehash: a25f16f08ab8ae9564363f179d19d4b30c5315fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75464287"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Spuštění skriptu spuštění služby jako místní uživatel nebo systémový účet
@@ -131,7 +131,7 @@ Potom v části **ServiceManifestImport** nakonfigurujte zásadu, která použij
 ```
 
 > [!NOTE]
-> U clusterů se systémem Linux můžete spustit službu nebo vstupní bod instalace jako **kořenový adresář**, a to tak, že zadáte **AccountType** jako **LocalSystem**.
+> U clusterů se systémem Linux můžete spustit službu nebo vstupní bod instalace jako **kořenový adresář**, a to tak, že zadáte  **AccountType** jako **LocalSystem**.
 
 ## <a name="run-a-script-from-the-setup-entry-point"></a>Spuštění skriptu z vstupního bodu instalace
 Teď do projektu přidejte spouštěcí skript, který se spustí s oprávněními správce. 

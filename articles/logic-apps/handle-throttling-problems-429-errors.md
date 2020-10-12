@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87086434"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Zpracování potíží s omezením (429-počet chybných požadavků) v Azure Logic Apps
@@ -22,7 +22,7 @@ V [Azure Logic Apps](../logic-apps/logic-apps-overview.md)vaše aplikace logiky 
 Tady jsou některé běžné typy omezení, které vaše aplikace logiky může mít:
 
 * [Aplikace logiky](#logic-app-throttling)
-* [Konektor](#connector-throttling)
+* [Připojovací](#connector-throttling)
 * [Cílová služba nebo systém](#destination-throttling)
 
 <a name="logic-app-throttling"></a>

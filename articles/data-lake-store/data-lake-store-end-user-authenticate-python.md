@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref, devx-track-python
 ms.openlocfilehash: c3262a2802da8dbd50fc05f7aa2fea71623c9b42
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87872187"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Ověřování koncových uživatelů pomocí Azure Data Lake Storage Gen1 s využitím Pythonu
@@ -19,7 +19,7 @@ ms.locfileid: "87872187"
 > * [Pomocí Javy](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [Pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [Pomocí Pythonu](data-lake-store-end-user-authenticate-python.md)
-> * [Pomocí rozhraní REST API](data-lake-store-end-user-authenticate-rest-api.md)
+> * [Použití REST API](data-lake-store-end-user-authenticate-rest-api.md)
 >
 >
 

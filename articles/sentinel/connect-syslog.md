@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
 ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88566144"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Shromažďování dat ze zdrojů se systémem Linux pomocí protokolu syslog
@@ -113,7 +113,7 @@ Azure Sentinel může použít Machine Learning (ML) na data syslog k identifika
  
 Tato detekce vyžaduje specifickou konfiguraci konektoru dat syslog: 
 
-1. V kroku 5 v předchozím postupu se ujistěte, že jsou jako zařízení, která chcete monitorovat, vybraná možnost **auth** i **authpriv** . U možností závažnosti nechte výchozí nastavení tak, aby byly všechny vybrané. Příklad:
+1. V kroku 5 v předchozím postupu se ujistěte, že jsou jako zařízení, která chcete monitorovat, vybraná možnost **auth** i **authpriv** . U možností závažnosti nechte výchozí nastavení tak, aby byly všechny vybrané. Například:
     
     > [!div class="mx-imgBorder"]
     > ![Zařízení požadovaná pro detekci přihlášení neobvyklé SSH](./media/connect-syslog/facilities-ssh-detection.png)

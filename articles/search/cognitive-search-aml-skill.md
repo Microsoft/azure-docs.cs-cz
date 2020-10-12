@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.openlocfilehash: 6a3916a41635a1c76bddbb092294f6d362fc6050
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88924707"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>AML dovednosti v kanálu pro rozšíření Azure Kognitivní hledání
@@ -29,7 +29,7 @@ Podobně jako v případě integrovaných dovedností mají **AML** dovednosti v
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Pracovní prostor AML](../machine-learning/concept-workspace.md)
 * [Azure Kubernetes Service AML Target COMPUTE](../machine-learning/concept-compute-target.md) v tomto pracovním prostoru s [nasazeným modelem](../machine-learning/how-to-deploy-azure-kubernetes-service.md)
@@ -43,7 +43,7 @@ Microsoft. dovednosti. Custom. AmlSkill
 
 U parametrů se rozlišují malá a velká písmena. Parametry, které se rozhodnete použít, závisí na tom [, jaké ověřování vaše služba AML vyžaduje](#WhatSkillParametersToUse) .
 
-| Název parametru | Popis |
+| Název parametru | Description |
 |--------------------|-------------|
 | `uri` | (Vyžaduje se pro [ověřování a ověření klíče](#WhatSkillParametersToUse)) [Identifikátor URI pro vyhodnocování služby AML](../machine-learning/how-to-consume-web-service.md) , na kterou se pošle datová část _JSON_ Je povoleno pouze schéma identifikátoru URI **protokolu HTTPS** . |
 | `key` | (Vyžadováno pro [ověření klíče](#WhatSkillParametersToUse)) [Klíč pro službu AML](../machine-learning/how-to-consume-web-service.md#authentication-with-keys) |

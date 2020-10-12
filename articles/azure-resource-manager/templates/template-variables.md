@@ -4,17 +4,17 @@ description: Popisuje definování proměnných v šabloně Azure Resource Manag
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75483814"
 ---
-# <a name="variables-in-azure-resource-manager-template"></a>Proměnné v šabloně Azure Resource Manager
+# <a name="variables-in-azure-resource-manager-template"></a>Proměnné v šabloně Azure Resource Manageru
 
 Tento článek popisuje, jak definovat a používat proměnné v šabloně Azure Resource Manager. K zjednodušení šablony můžete použít proměnné. Místo opakujících se složitých výrazů v rámci šablony definujete proměnnou, která obsahuje složitý výraz. Pak na tuto proměnnou odkazujete podle potřeby v rámci šablony.
 
-Správce prostředků vyřeší proměnné před spuštěním operací nasazení. Všude, kde se v šabloně používá proměnná, Správce prostředků ji nahradí přeloženou hodnotou.
+Správce prostředků vyřeší proměnné před spuštěním operací nasazení. Všude, kde je proměnná v šabloně použitá, ji Resource Manager nahradí vyřešenou hodnotou.
 
 ## <a name="define-variable"></a>Definovat proměnnou
 
@@ -85,7 +85,7 @@ Chcete-li načíst nastavení pro zadané prostředí, použijte proměnnou a pa
 
 Následující příklady ukazují scénáře použití proměnných.
 
-|Šablona  |Description  |
+|Šablona  |Popis  |
 |---------|---------|
 | [Definice proměnných](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Ukazuje různé typy proměnných. Šablona neimplementuje žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |
 | [konfigurační proměnná](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Ukazuje použití proměnné definující konfigurační hodnoty. Šablona neimplementuje žádné prostředky. Vytvoří proměnné hodnoty a vrátí tyto hodnoty. |

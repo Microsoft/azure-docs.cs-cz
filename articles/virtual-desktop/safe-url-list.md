@@ -7,10 +7,10 @@ ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f9f68d3734cd7de83a2ddd376caefa410c619d61
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291105"
 ---
 # <a name="safe-url-list"></a>Seznam bezpečných adres URL
@@ -31,8 +31,8 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Aktivace Windows|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Podpora Azure Portal|AzureCloud|
-| 169.254.169.254 | 80 | [Koncový bod služby metadat instance Azure](../virtual-machines/windows/instance-metadata-service.md) | – |
-| 168.63.129.16 | 80 | [Monitorování stavu hostitele relace](../virtual-network/security-overview.md#azure-platform-considerations) | – |
+| 169.254.169.254 | 80 | [Koncový bod služby metadat instance Azure](../virtual-machines/windows/instance-metadata-service.md) | Není k dispozici |
+| 168.63.129.16 | 80 | [Monitorování stavu hostitele relace](../virtual-network/security-overview.md#azure-platform-considerations) | Není k dispozici |
 
 >[!IMPORTANT]
 >Virtuální počítač s Windows teď podporuje značku plně kvalifikovaného názvu domény. Další informace najdete v tématu [použití Azure firewall k ochraně nasazení virtuálních ploch](../firewall/protect-windows-virtual-desktop.md)v systému Windows.

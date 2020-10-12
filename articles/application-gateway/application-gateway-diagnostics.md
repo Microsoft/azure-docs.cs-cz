@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: f752604b86634948954dd670d0b7f4edb5b3e2be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86517871"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Stav back-endu a diagnostické protokoly pro Application Gateway
@@ -173,7 +173,7 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
 |httpVersion     | Verze protokolu HTTP požadavku.        |
 |receivedBytes     | Velikost přijatého paketu (v bajtech)        |
 |sentBytes| Velikost odeslaného paketu (v bajtech).|
-|timeTaken| Doba (v milisekundách), kterou vyžaduje zpracování žádosti a odpověď, která má být odeslána. Počítá se jako interval od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že časové pole obvykle zahrnuje dobu, po kterou se pakety požadavků a odpovědí cestují po síti. |
+|timeTaken| Doba (v milisekundách), kterou vyžaduje zpracování žádosti a odpověď, která má být odeslána. Počítá se jako interval od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že pole Time-Taken obvykle obsahuje čas, kdy se pakety požadavků a odpovědí cestují po síti. |
 |sslEnabled| Zda komunikace s back-end fondy používala protokol TLS/SSL. Platné hodnoty jsou zapnuté a vypnuté.|
 |Hostitel| Název hostitele, se kterým se odeslal požadavek na back-end Server. Pokud je přepsán back-end hostname, tento název bude odpovídat.|
 |originalHost| Název hostitele, se kterým Application Gateway požadavek přijal z klienta.|
@@ -216,7 +216,7 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
 |httpVersion     | Verze protokolu HTTP požadavku.        |
 |receivedBytes     | Velikost přijatého paketu (v bajtech)        |
 |sentBytes| Velikost odeslaného paketu (v bajtech).|
-|timeTaken| Doba (v **sekundách**), kterou vyžaduje zpracování žádosti a odpověď, která má být odeslána. Počítá se jako interval od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že časové pole obvykle zahrnuje dobu, po kterou se pakety požadavků a odpovědí cestují po síti. |
+|timeTaken| Doba (v **sekundách**), kterou vyžaduje zpracování žádosti a odpověď, která má být odeslána. Počítá se jako interval od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že pole Time-Taken obvykle obsahuje čas, kdy se pakety požadavků a odpovědí cestují po síti. |
 |sslEnabled| Zda komunikace se fondy back-end používala protokol TLS. Platné hodnoty jsou zapnuté a vypnuté.|
 |sslCipher| Šifrovací sada používaná pro komunikaci TLS (Pokud je povolený protokol TLS).|
 |sslProtocol| Používá se protokol SSL/TLS (Pokud je povolený protokol TLS).|

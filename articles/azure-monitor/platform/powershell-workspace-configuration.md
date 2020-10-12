@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
 ms.openlocfilehash: d0bbde0ee4fd0eaf7387abaf6d548dc563e5b715
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86515440"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Vytvoření a konfigurace pracovního prostoru Log Analytics v Azure Monitor pomocí prostředí PowerShell
@@ -21,7 +21,7 @@ Tento článek obsahuje dva ukázky kódu, které ukazují, jak vytvořit a nako
 > Log Analytics se dřív volala Operational Insights, což znamená, proč se jedná o název, který se používá v rutinách.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tyto příklady pracují s verzí 1.0.0 nebo novějším v modulu AZ. OperationalInsights.
 
 ## <a name="create-workspace"></a>Vytvoření pracovního prostoru
@@ -197,7 +197,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 
 Ve výše uvedeném příkladu byl regexDelimiter definován jako \\ n pro nový řádek. Oddělovač protokolu může být také časovým razítkem.  Podporované formáty:
 
-| Formát | Formát regulárního výrazu JSON používá dvě `\\` pro každý `\` standardní regulární výraz, takže pokud se testování v aplikaci Regex zmenší `\\` na`\` |
+| Formát | Formát regulárního výrazu JSON používá dvě `\\` pro každý `\` standardní regulární výraz, takže pokud se testování v aplikaci Regex zmenší `\\` na `\` |
 | --- | --- |
 | `YYYY-MM-DD HH:MM:SS` | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` |
 | `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\d)|[0-9])/(([0-3]\\d)|(\\d))/((\\d{2})|(\\d{4}))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\s(AM|PM|am|pm)` |
