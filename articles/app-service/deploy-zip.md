@@ -6,10 +6,10 @@ ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
 ms.openlocfilehash: e2959403d2e5db38d03013e798fe299d56837227
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962107"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Nasazení aplikace pro Azure App Service pomocí souboru ZIP nebo WAR
@@ -31,7 +31,7 @@ Nasazení souboru WAR nasadí váš soubor [War](https://wikipedia.org/wiki/WAR_
 > [!NOTE]
 > Při použití `ZipDeploy` se soubory zkopírují jenom v případě, že se jejich časová razítka neshodují s tím, co už je nasazené Generování souboru ZIP pomocí procesu sestavení, který ukládá do mezipaměti výstupy, může mít za následek rychlejší nasazení. Další informace najdete v tématu [nasazení ze souboru ZIP nebo adresy URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku [vytvořte aplikaci App Service](./index.yml)nebo použijte aplikaci, kterou jste vytvořili pro jiný kurz.
 

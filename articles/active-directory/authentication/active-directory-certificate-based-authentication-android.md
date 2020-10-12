@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7dd4c95c3c02f4b4a807b5238aa61e76ecb56e3e
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88716414"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Azure Active Directory ověřování pomocí certifikátů v Androidu
@@ -33,7 +33,7 @@ Tato funkce je dostupná ve verzi Preview v Office 365 USA a v federálních pl�
 
 ## <a name="microsoft-mobile-applications-support"></a>Podpora mobilních aplikací Microsoftu
 
-| Aplikace | Podpora |
+| Apps | Podpora |
 | --- | --- |
 | Aplikace Azure Information Protection |![Zaškrtněte, Pokud označíte podporu pro tuto aplikaci.][1] |
 | Intune Portál společnosti |![Zaškrtněte, Pokud označíte podporu pro tuto aplikaci.][1] |

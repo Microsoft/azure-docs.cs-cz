@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086398"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Osvědčené postupy pro službu Azure Maps Route
@@ -21,7 +21,7 @@ Rozhraní API pro trasy tras a směrovací matice v Azure Maps [Route Service](h
 
 > [!div class="checklist"]
 > * Volba mezi rozhraními API pro trasy tras a směrovacím rozhraním API pro matici
-> * Vyžádání historických a předpokládaných časů cestování na základě dat v reálném čase a historických dat o provozu
+> * Vyžádat si historické a predikované dojezdové časy na základě aktuálních i historických dat o provozu
 > * Podrobnosti o trasách, jako je čas a vzdálenost, pro celou trasu a všechny fáze trasy
 > * Vyžádat trasu pro komerční vozidlo, jako je nákladní vůz
 > * Požadovat informace o přenosech podél trasy, jako jsou informace o zaseknutí a záplatcích
@@ -30,7 +30,7 @@ Rozhraní API pro trasy tras a směrovací matice v Azure Maps [Route Service](h
 > * Optimalizujte alternativní trasy pomocí pomocných bodů. Můžete například nabídnout alternativní trasy, které předají elektricky zpoplatněné trakční vozidlo.
 > * Použití [Route Service](https://docs.microsoft.com/rest/api/maps/route) s Azure Maps Web SDK
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
@@ -63,7 +63,7 @@ Tady je porovnání, ve kterém se zobrazují některé možnosti směrových ce
 | Získat směr směrování | 1 | | X | X | |
 | Pokyny pro odeslání trasy | 1 | X | X | X | X |
 | Batch – itinerář trasy | 700 | | X | X | |
-| Vyjednaná matice směrování | 700 | | X | | |
+| Vyjednaná matice směrování | 700 | | × | | |
 
 Další informace o možnostech směrování u elektrických vozidel najdete v našem kurzu o [Směrování elektrických vozidel pomocí Azure Notebooks s Pythonem](tutorial-ev-routing.md).
 
@@ -205,7 +205,7 @@ Tuto možnost lze použít k obarvení oddílů při vykreslování mapy, jako n
 
 ![Barevné oddíly vykreslené na mapě](media/how-to-use-best-practices-for-routing/show-traffic-sections-img.png)
 
-## <a name="calculate-and-optimize-a-multi-stop-route"></a>Výpočet a optimalizace vícenásobného zastavení trasy
+## <a name="calculate-and-optimize-a-multi-stop-route"></a>Výpočet a optimalizace trasy s několika zastávkami
 
 Azure Maps v současné době poskytuje dvě formy optimalizace tras:
 
@@ -282,7 +282,7 @@ Sada Azure Maps Web SDK poskytuje [modul služby](https://docs.microsoft.com/jav
 Pokud se chcete dozvědět víc, přečtěte si:
 
 > [!div class="nextstepaction"]
-> [Služba směrování Azure Maps](https://docs.microsoft.com/rest/api/maps/route)
+> [Služba Azure Maps Route](https://docs.microsoft.com/rest/api/maps/route)
 
 > [!div class="nextstepaction"]
 > [Jak používat modul služby](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)

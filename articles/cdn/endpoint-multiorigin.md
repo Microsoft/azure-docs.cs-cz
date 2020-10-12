@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 9/06/2020
 ms.author: allensu
 ms.openlocfilehash: f9293206526778f8c3de8a368a1916a2cb3f88c2
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504669"
 ---
 # <a name="azure-cdn-endpoint-multi-origin-preview"></a>Azure CDN koncový bod s více zdroji (Preview)
@@ -42,7 +42,7 @@ Nastavte jednu nebo více skupin původu a vyberte výchozí skupinu původní. 
 
 4. Chcete-li povolit více zdrojů, potřebujete alespoň jednu skupinu zdrojů. Vyberte **vytvořit zdrojovou skupinu**:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-2.png" alt-text="Nastavení zdroje" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-2.png" alt-text="Koncový bod CDN" border="true":::
 
 5. V části **přidat zdrojovou konfiguraci skupiny** zadejte nebo vyberte následující informace:
 
@@ -56,7 +56,7 @@ Nastavte jednu nebo více skupin původu a vyberte výchozí skupinu původní. 
    | PROBE – metoda      | Vyberte **head** nebo **Get**.                                           |
    | Výchozí skupina původních souborů | Zaškrtněte políčko, které chcete nastavit jako výchozí skupinu původních souborů.
     
-   :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-3.png" alt-text="Přidat skupinu původu" border="true":::
+   :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-3.png" alt-text="Koncový bod CDN" border="true":::
 
 6. Vyberte **Přidat**.
 
@@ -64,7 +64,7 @@ Nastavte jednu nebo více skupin původu a vyberte výchozí skupinu původní. 
 
 1. V nastavení zdroje pro koncový bod vyberte **+ vytvořit počátek**:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-5.png" alt-text="Vytvořit počátek" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-5.png" alt-text="Koncový bod CDN" border="true":::
 
 2. V konfiguraci **Přidat zdroj** zadejte nebo vyberte následující informace:
 
@@ -82,13 +82,13 @@ Nastavte jednu nebo více skupin původu a vyberte výchozí skupinu původní. 
     > [!NOTE]
     > Když se v rámci skupiny zdrojů vytvoří počátek, musí se mu poskytnout priorita a váha. Pokud má skupina původních zdrojů pouze jeden počátek, výchozí priorita a váha jsou nastaveny na hodnotu 1. Provoz se směruje na nejvyšší prioritu, pokud je zdroj v pořádku. Pokud je zjištěno, že původ není v pořádku, připojení se přesměrují na jiný počátek v pořadí podle priority. Pokud mají dva zdroje stejné priority, bude provoz distribuován podle váhy zadané pro původní zdroj. 
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-6.png" alt-text="Přidat další zdroj" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-6.png" alt-text="Koncový bod CDN" border="true":::
 
 3. Vyberte **Přidat**.
 
 4. Vyberte **Konfigurovat počátek** a nastavte původní cestu pro všechny zdroje:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="Konfigurovat zdrojovou cestu" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="Koncový bod CDN" border="true":::
 
 5. Vyberte **OK**.
 
@@ -98,27 +98,27 @@ Až budete mít několik zdrojů původu a skupinu původních, můžete přidat
 
 1. V nastavení původ koncového bodu Azure CDN vyberte název skupiny původní, kterou chcete nakonfigurovat:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="Konfigurace původních a nastavení skupiny původních" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="Koncový bod CDN" border="true":::
 
 2. Ve **skupině původ aktualizace**vyberte **+ Vybrat počátek**:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-9.png" alt-text="Aktualizovat skupinu původu" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-9.png" alt-text="Koncový bod CDN" border="true":::
 
 4. V rozevíracím seznamu vyberte počátek, který se má přidat do skupiny, a vyberte **OK**.
 
 5. Ověřte, že zdroj byl přidán do skupiny, a pak vyberte **Uložit**:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-10.png" alt-text="Ověřit další počátek přidaný do skupiny" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-10.png" alt-text="Koncový bod CDN" border="true":::
 
 ## <a name="remove-origin-from-origin-group"></a>Odebrat původ z původní skupiny
 
 1. V nastavení původ koncového bodu Azure CDN vyberte název skupiny původních:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="Odebrat počátek ze skupiny" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="Koncový bod CDN" border="true":::
 
 2. Chcete-li odebrat počátek ze skupiny původ, vyberte ikonu odpadkového koše vedle zdroje a vyberte **Uložit**:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="Počátek aktualizace zdroje původní skupiny" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="Koncový bod CDN" border="true":::
 
 ## <a name="override-origin-group-with-rules-engine"></a>Přepsat původovou skupinu pomocí stroje pravidel
 
@@ -128,7 +128,7 @@ Distribuci provozu do jiné skupiny podle adresy URL požadavku.
 
 1. V koncovém bodě CDN vyberte v části **Nastavení**možnost **modul pravidel** :
 
-:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="Modul pravidel" border="true":::
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="Koncový bod CDN" border="true":::
 
 2. Vyberte **+ Přidat pravidlo**.
 
@@ -144,7 +144,7 @@ Distribuci provozu do jiné skupiny podle adresy URL požadavku.
 
 8. V části **Skupina původ**vyberte skupinu původ v rozevíracím seznamu.
 
-:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="Podmínky stroje pravidel" border="true":::
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="Koncový bod CDN" border="true":::
 
 Pro všechny příchozí požadavky, pokud cesta URL obsahuje **/images**, se požadavek přiřadí do skupiny původ v části akce **(myorigingroup)**. 
 

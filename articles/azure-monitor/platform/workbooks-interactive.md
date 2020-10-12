@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: mbullwin
 ms.openlocfilehash: 33da3cd8a72bb4d93011c348db65c5b4d9e687ed
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87461419"
 ---
 # <a name="interactive-workbooks"></a>Interaktivní sešity
@@ -45,13 +45,13 @@ Uživatel může například mít mřížku, která zobrazuje seznam požadavků
     | order by AllRequests desc
     ```
 
-5. `Run query`zobrazení výsledků
+5. `Run query` zobrazení výsledků
 6. Vyberte ikonu _Upřesnit nastavení_ v zápatí dotazu (ikona vypadá jako ozubené kolo). Otevře se podokno Upřesnit nastavení.
 7. Ověřte nastavení: `When an item is selected, export a parameter` .
 8. V kontrolovaném nastavení vyberte *Přidat parametr* a vyplňte ho informacemi níže.
-    1. Pole, které se má exportovat:`Request`
-    2. Název parametru:`SelectedRequest`
-    3. Výchozí hodnota:`All requests`
+    1. Pole, které se má exportovat: `Request`
+    2. Název parametru: `SelectedRequest`
+    3. Výchozí hodnota: `All requests`
 9. Vyberte možnost Uložit.
 
     ![Snímek obrazovky znázorňující rozšířený editor s nastavením pro export polí jako parametrů](./media/workbooks-interactive/export-parameters-add.png)
@@ -64,7 +64,7 @@ Uživatel může například mít mřížku, která zobrazuje seznam požadavků
     | where name == '{SelectedRequest}' or 'All Requests' == '{SelectedRequest}'
     | summarize ['{SelectedRequest}'] = count() by bin(timestamp, 1h)
     ```
-13. `Run query`pro zobrazení výsledků.
+13. `Run query` pro zobrazení výsledků.
 14. Změňte _vizualizaci_ na `Area chart` .
 15. Zvolte řádek, který chcete vybrat v první mřížce. Všimněte si, jak plošný graf níže filtruje vybraný požadavek.
 
@@ -99,11 +99,11 @@ Pracovní sešity umožňují autorům přidat interaktivitu prostřednictvím s
     | order by Count desc
     ```
 
-5. `Run query`zobrazení výsledků
+5. `Run query` zobrazení výsledků
 6. Vyberte _Nastavení sloupce_ a otevřete tak podokno nastavení.
 7. V části _sloupce_ nastavte:
-    1. _Ukázka_ -sloupcový Renderer: `Link` , zobrazení pro otevření: `Cell Details` , popisek odkazu:`Sample`
-    2. _Count_ -Column Renderer: `Bar` , barevná paleta: `Blue` , minimální hodnota:`0`
+    1. _Ukázka_ -sloupcový Renderer: `Link` , zobrazení pro otevření: `Cell Details` , popisek odkazu: `Sample`
+    2. _Count_ -Column Renderer: `Bar` , barevná paleta: `Blue` , minimální hodnota: `0`
     3. Vykreslovací modul sloupců _požadavků_ :`Automatic`
     4. Pokud chcete použít změny, klikněte na _Uložit a zavřít_ .
 
@@ -118,8 +118,8 @@ Pracovní sešity umožňují autorům přidat interaktivitu prostřednictvím s
 | Akce propojení | Akce při kliknutí |
 |:------------- |:-------------|
 | `Generic Details` | Zobrazuje hodnoty řádků na kartě kontextu v tabulce vlastností. |
-| `Cell Details` | Zobrazuje hodnotu buňky na kartě kontextu v tabulce vlastností. užitečné, pokud buňka obsahuje dynamický typ s informacemi (například JSON s vlastnostmi žádosti, jako je umístění, instance role atd.). |
-| `Cell Details` | Zobrazuje hodnotu buňky na kartě kontextu v tabulce vlastností. užitečné, pokud buňka obsahuje dynamický typ s informacemi (například JSON s vlastnostmi žádosti, jako je umístění, instance role atd.). |
+| `Cell Details` | Zobrazuje hodnotu buňky na kartě kontextu v tabulce vlastností. Užitečné, pokud buňka obsahuje dynamický typ s informacemi (například JSON s vlastnostmi žádosti, jako je umístění, instance role atd.). |
+| `Cell Details` | Zobrazuje hodnotu buňky na kartě kontextu v tabulce vlastností. Užitečné, pokud buňka obsahuje dynamický typ s informacemi (například JSON s vlastnostmi žádosti, jako je umístění, instance role atd.). |
 | `Custom Event Details` | Otevře Application Insights podrobnosti hledání s ID vlastní události ( `itemId` ) v buňce. |
 | `* Details` | Podobně jako v podrobnostech o vlastních událostech, s výjimkou závislostí, výjimek, zobrazení stránky, požadavků a trasování. |
 | `Custom Event User Flows` | Otevře Application Insights Toky uživatelů prostředí, které se v buňce Překlopí na vlastní název události. |
@@ -137,30 +137,30 @@ Sešit umožňuje uživatelům, aby se na základě hodnot parametrů zobrazoval
 1. Postupujte podle kroků uvedených v části [Nastavení interaktivity na řádku mřížky](#setting-up-interactivity-on-grid-row-click) a nastavte dvě interaktivní ovládací prvky.
 2. Přidejte nový parametr v horní části:
     1. Název: `ShowDetails`
-    2. Typ parametru:`Drop down`
-    3. Požadovanou`checked`
-    4. Získat data z:`JSON`
-    5. Vstup JSON:`["Yes", "No"]`
+    2. Typ parametru: `Drop down`
+    3. Požadovanou `checked`
+    4. Získat data z: `JSON`
+    5. Vstup JSON: `["Yes", "No"]`
     6. Uložením potvrďte změny.
 
     ![Po výběru tlačítka Přidat parametr se zobrazí podokno upravit parametr.](./media/workbooks-interactive/edit-parameter.png)
 
-3. Nastavte hodnotu parametru na`Yes`
+3. Nastavte hodnotu parametru na `Yes`
 
     ![Nad tlačítkem hotové úpravy je rozevírací seznam, který vám umožní nastavit hodnotu parametru.](./media/workbooks-interactive/set-parameter.png)
 
 4. V ovládacím prvku dotaz s plošným grafem vyberte ikonu _Upřesnit nastavení_ (ikona ozubeného kolečka).
-5. Ověřte nastavení`Make this item conditionally visible`
-    1. Tato položka se zobrazí, pokud `ShowDetails` hodnota `equals` parametru`Yes`
+5. Ověřte nastavení `Make this item conditionally visible`
+    1. Tato položka se zobrazí, pokud `ShowDetails` hodnota `equals` parametru `Yes`
 6. Vyberte _hotové úpravy_ a potvrďte změny.
 7. Na panelu nástrojů sešitu vyberte _hotové úpravy_ a přejděte do režimu čtení.
 8. Přepněte hodnotu parametru `ShowDetails` na `No` . Všimněte si, že graf uvedený níže zmizí.
 
-Následující obrázek ukazuje viditelný případ, kde `ShowDetails` je`Yes`
+Následující obrázek ukazuje viditelný případ, kde `ShowDetails` je `Yes`
 
 ![Snímek obrazovky znázorňující podmíněný přehled, kde je graf viditelný](./media/workbooks-interactive/interactivity-conditional-visibility-visible.png)
 
-Následující obrázek ukazuje skrytý případ, kde `ShowDetails` je`No`
+Následující obrázek ukazuje skrytý případ, kde `ShowDetails` je `No`
 
 ![Snímek obrazovky znázorňující podmíněný přehled, kde je graf skrytý](./media/workbooks-interactive/interactivity-conditional-visibility-invisible.png)
 

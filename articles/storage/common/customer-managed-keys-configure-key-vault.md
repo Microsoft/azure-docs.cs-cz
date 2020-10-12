@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 0991992a6138d263dfb4d200c9555a8d53366d70
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994930"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Konfigurace šifrování pomocí klíčů spravovaných zákazníkem uložených v Azure Key Vault
@@ -157,7 +157,7 @@ az keyvault key create \
 
 ---
 
-## <a name="configure-encryption-with-customer-managed-keys"></a>Konfigurace šifrování pomocí klíčů spravovaných zákazníkem
+## <a name="configure-encryption-with-customer-managed-keys"></a>Konfigurace šifrování s využitím klíčů spravovaných zákazníkem
 
 V dalším kroku nakonfigurujte účet Azure Storage tak, aby používal klíče spravované zákazníkem s Azure Key Vault, a pak zadejte klíč, který chcete přidružit k účtu úložiště.
 
@@ -190,7 +190,7 @@ Pokud chcete konfigurovat klíče spravované zákazníkem pomocí automatickýc
 
 Po zadání klíče Azure Portal indikuje, že je povolená Automatická aktualizace verze klíče, a zobrazuje verzi klíče, která se právě používá pro šifrování.
 
-:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="Snímek obrazovky s automatickou aktualizací aktivované verze klíče":::
+:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="Snímek obrazovky ukazující, jak povolit ochranu vyprázdnit při vytváření trezoru klíčů":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

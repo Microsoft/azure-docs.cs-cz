@@ -8,17 +8,17 @@ ms.date: 07/20/2020
 ms.author: surmb
 ms.topic: conceptual
 ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87474321"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostování více webů ve službě Application Gateway
 
-Hostování více webů umožňuje konfigurovat více než jednu webovou aplikaci na stejném portu služby Application Gateway. Umožňuje pro nasazení nakonfigurovat efektivnější topologii přidáním až 100 webů do jedné aplikační brány. Každou stránku lze přesměrovat na vlastní back-endový fond. Například tři domény, contoso.com, fabrikam.com a adatum.com, odkazují na IP adresu služby Application Gateway. Vytvořili jste tři naslouchací procesy pro více webů a nakonfigurujete každého naslouchacího procesu pro příslušný port a nastavení protokolu. 
+Hostování více webů umožňuje konfigurovat více než jednu webovou aplikaci na stejném portu služby Application Gateway. Díky možnosti přidat do jedné služby Application Gateway více než 100 webů můžete nakonfigurovat efektivnější topologii vašich nasazení. Každou stránku lze přesměrovat na vlastní back-endový fond. Příklad: na IP adresu služby Application Gateway odkazují tři domény – contoso.com, fabrikam.com a adatum.com. Můžete vytvořit tři naslouchací procesy pro více webů a jednotlivé naslouchací procesy nakonfigurovat pro příslušené nastavení portu a protokolu. 
 
-Můžete také definovat názvy hostitelů se zástupnými znaky v rámci naslouchacího procesu pro více webů a až 5 názvů hostitelů na naslouchací proces. Další informace najdete v tématu [názvy hostitelů se zástupnými znaky v naslouchacího procesu](#wildcard-host-names-in-listener-preview).
+V naslouchacím procesu pro více webů můžete také definovat názvy hostitelů se zástupnými znaky a až 5 názvů hostitelů na naslouchací proces. Další informace najdete v tématu [názvy hostitelů se zástupnými znaky v naslouchacího procesu](#wildcard-host-names-in-listener-preview).
 
 :::image type="content" source="./media/multiple-site-overview/multisite.png" alt-text="Application Gateway více lokalit":::
 
@@ -35,7 +35,7 @@ Application Gateway umožňuje směrování na hostiteli pomocí naslouchacího 
 
 Pomocí zástupného znaku v názvu hostitele můžete vyhledat více názvů hostitelů v rámci jednoho naslouchacího procesu. `*.contoso.com`Můžete například porovnat s, stejně `ecom.contoso.com` `b2b.contoso.com` jako `customer1.b2b.contoso.com` a tak dále. Pomocí pole názvů hostitelů můžete pro naslouchací proces nakonfigurovat více než jeden název hostitele, aby bylo možné směrovat požadavky do back-endu fondu. Naslouchací proces může například obsahovat, `contoso.com, fabrikam.com` který bude přijímat žádosti pro názvy hostitelů.
 
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Naslouchací proces se zástupnými znaky":::
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Application Gateway více lokalit":::
 
 >[!NOTE]
 > Tato funkce je ve verzi Preview a je dostupná jenom pro Standard_v2 a WAF_v2 SKU Application Gateway. Další informace o verzi Preview najdete v tématu věnovaném [podmínkám použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -50,16 +50,16 @@ V rozhraní příkazového [řádku Azure](tutorial-multiple-sites-cli.md)je nut
 
 ### <a name="allowed-characters-in-the-host-names-field"></a>Povolené znaky v poli názvy hostitelů:
 
-* `(A-Z,a-z,0-9)`– alfanumerické znaky
-* `-`– spojovník nebo mínus
-* `.`– tečka jako oddělovač
-*   `*`– může odpovídat více znakům v povoleném rozsahu.
-*   `?`– může odpovídat jednomu znaku v povoleném rozsahu.
+* `(A-Z,a-z,0-9)` – alfanumerické znaky
+* `-` – spojovník nebo mínus
+* `.` – tečka jako oddělovač
+*   `*` – může odpovídat více znakům v povoleném rozsahu.
+*   `?` – může odpovídat jednomu znaku v povoleném rozsahu.
 
 ### <a name="conditions-for-using-wildcard-characters-and-multiple-host-names-in-a-listener"></a>Podmínky použití zástupných znaků a více názvů hostitelů v naslouchací službě:
 
 *   V jednom naslouchací službě můžete uvést až 5 názvů hostitelů.
-*   Hvězdičku `*` lze v rámci názvu doménového stylu nebo názvu hostitele zmínit pouze jednou. Například Component1 *. component2*. component3. `(*.contoso-*.com)`je platný.
+*   Hvězdičku `*` lze v rámci názvu doménového stylu nebo názvu hostitele zmínit pouze jednou. Například Component1 *. component2*. component3. `(*.contoso-*.com)` je platný.
 *   Název hostitele může obsahovat jenom dvě hvězdičky `*` . Například `*.contoso.*` je platný a `*.contoso.*.*.com` je neplatný.
 *   Název hostitele může obsahovat maximálně 4 zástupných znaků. Například `????.contoso.com` , `w??.contoso*.edu.*` jsou platné, ale `????.contoso.*` neplatné.
 *   Použití hvězdičky `*` a otazníku `?` společně v součásti názvu hostitele ( `*?` nebo `?*` nebo `**` ) je neplatné. Například `*?.contoso.com` a `**.contoso.com` jsou neplatné.

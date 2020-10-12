@@ -4,10 +4,10 @@ description: Naučte se konfigurovat šifrování úložiště Azure používan�
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.openlocfilehash: 3c1d1531084deeabbe9a8d261e93554a2c691eb6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87433546"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>Šifrování Azure Storage používaného testovacím prostředím v Azure DevTest Labs
@@ -28,10 +28,10 @@ Každé testovací prostředí vytvořené v Azure DevTest Labs se vytvoří s p
     :::image type="content" source="./media/encrypt-storage/overview-resource-group-link.png" alt-text="Výběr skupiny prostředků na stránce Přehled":::
 1. Vyberte účet Azure Storage testovacího prostředí. Konvence pojmenování pro účet úložiště v testovacím prostředí je: `a<labNameWithoutInvalidCharacters><4-digit number>` . Například pokud je název testovacího prostředí `contosolab` , může být název účtu úložiště `acontosolab7576` . 
 
-    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Ve skupině prostředků testovacího prostředí vyberte účet úložiště.":::
+    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Výběr skupiny prostředků na stránce Přehled":::
 3. Na stránce **účet úložiště** vyberte v nabídce vlevo možnost **Průzkumník služby Storage (Preview)** a pak vyberte **kontejnery objektů BLOB** pro nalezení relevantního obsahu souvisejícího s testovacím prostředím. 
 
-   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Storage Explorer (Preview)" lightbox="./media/encrypt-storage/storage-explorer.png":::
+   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Výběr skupiny prostředků na stránce Přehled" lightbox="./media/encrypt-storage/storage-explorer.png":::
 
 ## <a name="encrypt-the-lab-storage-account"></a>Šifrování účtu úložiště testovacího prostředí
 Azure Storage automaticky šifruje vaše data, když se trvale uloží do cloudu. Šifrování Azure Storage chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů vaší organizace. Další informace najdete v tématu [Azure Storage šifrování pro](../storage/common/storage-service-encryption.md)neaktivní neaktivní data.

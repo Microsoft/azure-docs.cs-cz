@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: f991e38c184fe44f63af63809deb14eda22f8f4c
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88716720"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication
@@ -33,7 +33,7 @@ Pokud dojde k chybám s rozšířením NPS pro Azure Multi-Factor Authentication
 | **HTTPS_COMMUNICATION_ERROR** | Server NPS nemůže přijmout odpovědi z Azure MFA. Ověřte, že brány firewall jsou otevřené obousměrně pro provoz do a z. https://adnotifications.windowsazure.com |
 | **HTTP_CONNECT_ERROR** | Na serveru, na kterém je spuštěno rozšíření serveru NPS, ověřte, že máte přístup k  `https://adnotifications.windowsazure.com` a `https://login.microsoftonline.com/` . Pokud se tyto lokality nenačte, vyřešte potíže s připojením na tomto serveru. |
 | **Rozšíření serveru NPS pro Azure MFA:** <br> Rozšíření serveru NPS pro Azure MFA provádí sekundární ověřování pouze pro žádosti RADIUS ve stavu AccessAccept. Byl přijat požadavek na uživatelské jméno uživatele se stavem odpovědi AccessReject, ignorování požadavku. | Tato chyba obvykle odráží selhání ověřování ve službě AD nebo to, že server NPS nemůže přijímat odpovědi z Azure AD. Ověřte, že brány firewall jsou pro přenos do a z `https://adnotifications.windowsazure.com` a `https://login.microsoftonline.com` pomocí portů 80 a 443 obousměrné. Je také důležité ověřit, že na kartě Telefonické připojení v části oprávnění k přístupu k síti je nastavení nastaveno na možnost řídit přístup prostřednictvím zásad sítě NPS. Tato chyba se může také aktivovat, pokud uživatel nemá přiřazenou licenci. |
-| **REGISTRY_CONFIG_ERROR** | V registru aplikace chybí klíč, což může být způsobeno tím, že se [powershellový skript](howto-mfa-nps-extension.md#install-the-nps-extension) po instalaci nespustil. Chybová zpráva by měla obsahovat chybějící klíč. Ujistěte se, že máte klíč pod HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. |
+| **REGISTRY_CONFIG_ERROR** | V registru aplikace chybí klíč, což může být způsobeno tím, že se [powershellový skript](howto-mfa-nps-extension.md#install-the-nps-extension) po instalaci nespustil. Chybová zpráva by měla obsahovat chybějící klíč. Ujistěte se, že máte klíč pod HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa. |
 | **REQUEST_FORMAT_ERROR** <br> Požadavek protokolu RADIUS neobsahuje povinný atribut userName\Identifier protokolu RADIUS. Ověření, že server NPS přijímá žádosti RADIUS | Tato chyba obvykle odráží problém instalace. Rozšíření serveru NPS musí být nainstalováno na servery NPS, které mohou přijímat žádosti RADIUS. Servery NPS, které se instalují jako závislosti pro služby, jako je RDG a RRAS, neobdrží žádosti RADIUS. Rozšíření serveru NPS nefunguje při instalaci těchto instalací a chybách, protože nemůže přečíst podrobnosti žádosti o ověření. |
 | **REQUEST_MISSING_CODE** | Ujistěte se, že šifrovací protokol hesel mezi servery NPS a servery NAS podporuje sekundární metodu ověřování, kterou používáte. Protokol **PAP** podporuje všechny metody ověřování Azure MFA v cloudu: telefonní hovor, jednosměrná textová zpráva, oznámení o mobilní aplikaci a ověřovací kód mobilní aplikace. Protokol **CHAPv2** a **EAP** podporují telefonní hovor a oznámení mobilní aplikace. |
 | **USERNAME_CANONICALIZATION_ERROR** | Ověřte, zda se uživatel nachází v místní instanci služby Active Directory a zda má služba NPS oprávnění pro přístup k tomuto adresáři. Pokud používáte vztahy důvěryhodnosti mezi doménovými strukturami, [požádejte](#contact-microsoft-support) o další pomoc podporu. |
@@ -107,7 +107,7 @@ Pokud potřebujete další pomoc, kontaktujte odborníka na podporu prostřednic
 
 Chcete-li shromáždit protokoly ladění pro podporu diagnostiky, použijte následující postup na serveru NPS:
 
-1. Otevřete Editor registru a přejděte do HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa sady **VERBOSE_LOG** na **hodnotu true** .
+1. Otevřete Editor registru a přejděte na HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa nastavit **VERBOSE_LOG** na **hodnotu true** .
 2. Otevřete příkazový řádek správce a spusťte tyto příkazy:
 
    ```
@@ -131,5 +131,5 @@ Chcete-li shromáždit protokoly ladění pro podporu diagnostiky, použijte ná
    Start .
    ```
 
-5. Otevřete Editor registru a přejděte do HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa sady **VERBOSE_LOG** na **hodnotu false** .
+5. Otevřete Editor registru a přejděte na HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa nastavit **VERBOSE_LOG** na **hodnotu false** .
 6. Zip obsah složky C:\NPS a připojte soubor zip k případu podpory.

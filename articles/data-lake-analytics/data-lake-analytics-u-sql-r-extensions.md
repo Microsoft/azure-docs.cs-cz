@@ -7,10 +7,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
 ms.openlocfilehash: 1c054dcfe12ad1d2098fc5352183839704e39330
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87127396"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Rozšíří se skripty U-SQL s kódem R v Azure Data Lake Analytics
@@ -92,7 +92,7 @@ DECLARE @PartitionCount int = 10;
 
 * Řetězcové a číselné sloupce z jazyka U-SQL jsou převáděny tak, jak jsou mezi R dataframe a U-SQL [podporované typy: `double` , `string` , `bool` , `integer` , `byte` ].
 * `Factor`Datový typ není podporován v U-SQL.
-* `byte[]`musí být serializován jako kódovaný v kódování Base64 `string` .
+* `byte[]` musí být serializován jako kódovaný v kódování Base64 `string` .
 * Řetězce u-SQL je možné převést na faktory v kódu R. po vytvoření vstupního datového rámce U-SQL vytvořte vstupní datový rámec R nebo nastavením parametru pro snížení `stringsAsFactors: true` .
 
 ### <a name="schemas"></a>Schémata

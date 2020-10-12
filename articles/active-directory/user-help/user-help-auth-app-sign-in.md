@@ -12,10 +12,10 @@ ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 19e441334395f600c3adaa867660345164537f96
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88799447"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Přihlaste se ke svým účtům pomocí aplikace Microsoft Authenticator.
@@ -55,7 +55,7 @@ Otevřete aplikaci Microsoft Authenticator, pokračujte na svůj pracovní nebo 
 - **Pokud jste už aplikaci používali pro dvoustupňové ověřování**, můžete klepnutím na dlaždici účet zobrazit zobrazení celého účtu na celé obrazovce. Pak klepnutím na **Povolit přihlášení k telefonu** zapněte přihlášení telefonem.
 - **Pokud svůj pracovní nebo školní účet nemůžete najít** na obrazovce **účty** aplikace, znamená to, že jste ho ještě nepřidali do aplikace. Přidejte svůj pracovní nebo školní účet podle kroků v [nápovědě k přidání pracovního nebo školního účtu](user-help-auth-app-add-work-school-account.md).
 
-Po zapnutí telefonického přihlášení se můžete přihlásit jenom pomocí aplikace Microsoft Authenticator. Zde je uveden postup:
+Po zapnutí telefonického přihlášení se můžete přihlásit jenom pomocí aplikace Microsoft Authenticator. Jak na to:
 
 1. Přihlaste se ke svému pracovnímu nebo školnímu účtu.
 
