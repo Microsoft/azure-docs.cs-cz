@@ -17,10 +17,10 @@ ms.date: 08/25/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8f389581d8fbeb912507b303c46109dd08fcab8d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88871512"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Příprava infrastruktury Azure pro SAP HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro SAP ASCS/SCS
@@ -174,7 +174,7 @@ Uvedená konfigurace se spoléhá na [skupiny umístění v blízkosti Azure (PP
 > Skupiny umístění v blízkosti Azure jsou předpokladem pro použití sdíleného disku Azure.
  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s instalací, přečtěte si tento článek:
 
@@ -192,9 +192,9 @@ Názvy hostitelů a IP adresy pro uvedený scénář jsou:
 | --- | --- | --- |---| ---|
 | cluster ASCS/SCS prvního uzlu clusteru |PR1-ASCS-10 |10.0.0.4 |PR1-ASCS-avset |PR1PPG |
 | druhý cluster uzlu clusteru ASCS/SCS |PR1-ASCS-11 |10.0.0.5 |PR1-ASCS-avset |PR1PPG |
-| Název sítě s clustery | pr1clust |10.0.0.42 (**pouze** pro cluster se Win 2016) | Není k dispozici | Není k dispozici |
-| Název sítě clusteru ASCS | pr1-ascscl |10.0.0.43 | Není k dispozici | Není k dispozici |
-| Název sítě clusteru OLAJÍCÍCH (**jenom** pro ERS2) | pr1-erscl |10.0.0.44 | Není k dispozici | Není k dispozici |
+| Název sítě s clustery | pr1clust |10.0.0.42 (**pouze** pro cluster se Win 2016) | neuvedeno | neuvedeno |
+| Název sítě clusteru ASCS | pr1-ascscl |10.0.0.43 | neuvedeno | neuvedeno |
+| Název sítě clusteru OLAJÍCÍCH (**jenom** pro ERS2) | pr1-erscl |10.0.0.44 | neuvedeno | neuvedeno |
 
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Vytvoření interního nástroje pro vyrovnávání zatížení Azure

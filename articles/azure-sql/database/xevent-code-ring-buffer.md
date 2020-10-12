@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: 57449b0bbd39b6ea04ecae5a3ad766ae5687ca0b
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619827"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Cílový kód cyklické vyrovnávací paměti pro rozšířené události v Azure SQL Database
@@ -28,15 +28,15 @@ Chcete vytvořit kompletní ukázku kódu pro nejsnadnější rychlý způsob, j
 Toto téma představuje ukázku kódu Transact-SQL, který:
 
 1. Vytvoří tabulku s daty, která se mají demonstrovat.
-2. Vytvoří relaci pro existující rozšířenou událost, konkrétně **SqlServer. sql_statement_starting**.
+2. Vytvoří relaci pro existující rozšířenou událost, konkrétně **SqlServer.sql_statement_starting**.
 
    * Událost je omezená na příkazy SQL, které obsahují konkrétní řetězec aktualizace: **příkaz jako% Update tabEmployee%**.
-   * Rozhodne odeslat výstup události do cíle typu Ring buffer, jmenovitě  **package0. ring_buffer**.
+   * Rozhodne odeslat výstup události do cíle typu Ring buffer, konkrétně  **package0.ring_buffer**.
 3. Spustí relaci události.
 4. Vydává několik jednoduchých příkazů SQL UPDATE.
 5. Vydá příkaz SQL SELECT, který načte výstup události z kruhové vyrovnávací paměti.
 
-   * jsou připojeni **Sys. dm_xe_database_session_targets** a další zobrazení dynamické správy (zobrazení dynamické správy).
+   * jsou připojeni **Sys.dm_xe_database_session_targets** a další zobrazení dynamické správy (zobrazení dynamické správy).
 6. Zastaví relaci události.
 7. Uvolní cíl kruhové vyrovnávací paměti pro uvolnění prostředků.
 8. Zruší relaci události a ukázkovou tabulku.
@@ -57,8 +57,8 @@ Toto téma představuje ukázku kódu Transact-SQL, který:
 
 S velmi drobnými úpravami se dá spustit následující ukázka kódu Ring bufferu buď Azure SQL Database, nebo Microsoft SQL Server. Rozdíl je přítomnost uzlu ' _database ' v názvu některých zobrazení dynamické správy (zobrazení dynamické správy), která se používá v klauzuli FROM v kroku 5. Například:
 
-* sys. dm_xe<strong>_database</strong>_session_targets
-* sys. dm_xe_session_targets
+* sys.dm_xe<strong>_database</strong>_session_targets
+* sys.dm_xe_session_targets
 
 &nbsp;
 

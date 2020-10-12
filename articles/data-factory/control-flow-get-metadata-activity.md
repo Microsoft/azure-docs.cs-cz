@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jingwang
 ms.openlocfilehash: e32115c590d73f5c93f322d3bd542096f2964a4c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297602"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získat aktivitu metadat v Azure Data Factory
@@ -44,7 +44,7 @@ Aktivita získat metadata přebírá datovou sadu jako vstup a vrací informace 
 
 **File Storage**
 
-| Konektory/metadata | itemName<br>(soubor/složka) | itemType<br>(soubor/složka) | velikost<br>souborů | vytvářejí<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>složky |contentMD5<br>souborů | – struktura<br/>souborů | Sloupců<br>souborů | neexistuje<br>(soubor/složka) |
+| Konektory/metadata | itemName<br>(soubor/složka) | itemType<br>(soubor/složka) | size<br>souborů | vytvářejí<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>složky |contentMD5<br>souborů | – struktura<br/>souborů | Sloupců<br>souborů | neexistuje<br>(soubor/složka) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Cloudové úložiště Googlu](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
@@ -76,11 +76,11 @@ Aktivita získat metadata přebírá datovou sadu jako vstup a vrací informace 
 
 Můžete zadat následující typy metadat v seznamu pole získat aktivitu metadat pro načtení odpovídajících informací:
 
-| Typ metadat | Popis |
+| Typ metadat | Description |
 |:--- |:--- |
 | itemName | Název souboru nebo složky |
 | itemType | Typ souboru nebo složky Vrácená hodnota je `File` nebo `Folder` . |
-| velikost | Velikost souboru (v bajtech) Platí pouze pro soubory. |
+| size | Velikost souboru (v bajtech) Platí pouze pro soubory. |
 | vytvářejí | Datum a čas vytvoření souboru nebo složky. |
 | lastModified | Datum a čas poslední změny souboru nebo složky |
 | childItems | Seznam podsložek a souborů v dané složce. Platí pouze pro složky. Vrácená hodnota je seznam názvů a typů jednotlivých podřízených položek. |

@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
 ms.openlocfilehash: 967fdae49f904f6c1cb450b637a8dbc5c481b135
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776880"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Spolupráce s ostatními autory a editory
@@ -35,7 +35,7 @@ Následující diagram znázorňuje tok z pohledu autora pro přihlášení k po
 > [!div class="mx-imgBorder"]
 > ![Následující diagram znázorňuje tok z pohledu autora pro přihlášení k portálu QnA Maker a použití rozhraní API pro vytváření obsahu.](../media/qnamaker-how-to-collaborate-knowledge-base/rbac-flow-from-portal-to-service.png)
 
-|Postup|Popis|
+|Postup|Description|
 |--|--|
 |1|Portál získá token pro QnA Maker prostředek.|
 |2|Portál volá příslušné rozhraní API pro vytváření QnA Maker (APIM), které předá token místo klíčů.|

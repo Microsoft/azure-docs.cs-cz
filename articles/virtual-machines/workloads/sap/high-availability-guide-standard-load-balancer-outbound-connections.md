@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
 ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836118"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích SAP pro vysokou dostupnost
@@ -176,7 +176,7 @@ Proxy server můžete použít k povolení volání Pacemaker do veřejného kon
 ### <a name="important-considerations"></a>Důležité informace
 
   - Pokud již existuje podnikový proxy server, můžete směrovat odchozí volání na veřejné koncové body. Odchozí volání veřejných koncových bodů procházejí podnikovým řídicím bodem.  
-  - Ujistěte se, že konfigurace proxy serveru umožňuje odchozí připojení k rozhraní API pro správu Azure: `https://management.azure.com` a`https://login.microsoftonline.com`  
+  - Ujistěte se, že konfigurace proxy serveru umožňuje odchozí připojení k rozhraní API pro správu Azure: `https://management.azure.com` a `https://login.microsoftonline.com`  
   - Ujistěte se, že existuje trasa z virtuálních počítačů do proxy serveru.  
   - Proxy bude zpracovávat pouze volání HTTP/HTTPS. Pokud je potřeba provést odchozí volání do veřejného koncového bodu přes různé protokoly (například RFC), bude potřeba alternativní řešení.  
   - Řešení proxy musí být vysoce dostupné, aby nedošlo k nestabilitě v clusteru Pacemaker.  
@@ -224,7 +224,7 @@ Pokud chcete, aby služba Pacemaker komunikovala s rozhraním API pro správu Az
 
 Pokud je odchozí provoz směrován přes bránu firewall jiného výrobce:
 
-- Pokud používáte Azure plot agent, ujistěte se, že konfigurace brány firewall umožňuje odchozí připojení k rozhraní API pro správu Azure: `https://management.azure.com` a`https://login.microsoftonline.com`   
+- Pokud používáte Azure plot agent, ujistěte se, že konfigurace brány firewall umožňuje odchozí připojení k rozhraní API pro správu Azure: `https://management.azure.com` a `https://login.microsoftonline.com`   
 - Pokud používáte infrastrukturu aktualizace veřejného cloudu Azure SUSE k instalaci aktualizací a oprav, přečtěte si téma [infrastruktura aktualizace veřejného cloudu azure 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/) .
 
 ## <a name="next-steps"></a>Další kroky

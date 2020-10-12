@@ -4,10 +4,10 @@ description: Exportujte data o využití a diagnostiku do úložiště v Microso
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324331"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
@@ -36,7 +36,7 @@ Průběžný export **nepodporuje** následující funkce a konfigurace služby 
 
 * [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md).
 
-## <a name="create-a-continuous-export"></a><a name="setup"></a>Vytvoření průběžného exportu
+## <a name="create-a-continuous-export"></a><a name="setup"></a> Vytvoření průběžného exportu
 
 1. V Application Insights prostředek pro aplikaci v části konfigurovat na levé straně otevřete průběžný export a klikněte na **Přidat**:
 
@@ -81,7 +81,7 @@ Pokud chcete export zastavit trvale, odstraňte ho. Tím nedojde k odstranění 
 ### <a name="cant-add-or-change-an-export"></a>Nelze přidat nebo změnit export?
 * K přidání nebo změně exportů potřebujete přístupová práva vlastníka, přispěvatele nebo přispěvatele Application Insights. [Přečtěte si o rolích][roles].
 
-## <a name="what-events-do-you-get"></a><a name="analyze"></a>Jaké události získáte?
+## <a name="what-events-do-you-get"></a><a name="analyze"></a> Jaké události získáte?
 Exportovaná data jsou nezpracovaná telemetrie z vaší aplikace, s výjimkou toho, že přidáváme data o umístění, která počítáme z IP adresy klienta.
 
 Data Zahozená [vzorkováním](./sampling.md) nejsou obsažena v exportovaných datech.
@@ -95,7 +95,7 @@ Data také obsahují výsledky všech [webových testů dostupnosti](./monitor-w
 >
 >
 
-## <a name="inspect-the-data"></a><a name="get"></a>Kontrola dat
+## <a name="inspect-the-data"></a><a name="get"></a> Kontrola dat
 Úložiště si můžete prohlédnout přímo na portálu. V levém horním rohu klikněte na domů v horní části, kde se říká "služby Azure" vybrat **účty úložiště**, vyberte název účtu úložiště, na stránce Přehled vyberte **objekty blob** v části služby a nakonec vyberte název kontejneru.
 
 Chcete-li zkontrolovat službu Azure Storage v aplikaci Visual Studio, otevřete **zobrazení**, **Průzkumník cloudu**. (Pokud nemáte příkaz nabídky, musíte nainstalovat sadu Azure SDK: otevřete dialogové okno **Nový projekt** , rozbalte položku Visual C#/Cloud a vyberte možnost **získat Microsoft Azure SDK pro .NET**.)
@@ -114,10 +114,10 @@ $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}
 
 Kde
 
-* `blobCreationTimeUtc`je čas, kdy byl objekt BLOB vytvořen v interním přípravném úložišti.
-* `blobDeliveryTimeUtc`je čas, kdy se objekt BLOB kopíruje do cílového úložiště pro export
+* `blobCreationTimeUtc` je čas, kdy byl objekt BLOB vytvořen v interním přípravném úložišti.
+* `blobDeliveryTimeUtc` je čas, kdy se objekt BLOB kopíruje do cílového úložiště pro export
 
-## <a name="data-format"></a><a name="format"></a>Formát dat
+## <a name="data-format"></a><a name="format"></a> Formát dat
 * Každý objekt BLOB je textový soubor, který obsahuje více řádků oddělených znakem \n. Obsahuje telemetrii zpracovávanou za časové období zhruba půl minuty.
 * Každý řádek představuje datový bod telemetrie, jako je například požadavek nebo zobrazení stránky.
 * Každý řádek je neformátovaný dokument JSON. Chcete-li zobrazit řádky, otevřete objekt BLOB v aplikaci Visual Studio a vyberte možnost **Upravit**  >  **Rozšířené**  >  **soubory formátu**:
@@ -197,10 +197,10 @@ V případě větších škálování zvažte clustery [HDInsight](https://azure
   * Pro aplikace s vysokým provozem jsou navíc přiděleny další jednotky oddílu. V takovém případě každá jednotka vytvoří objekt BLOB každou minutu.
 * *Znovu vygeneroval (a) klíč do úložiště nebo změnil název kontejneru a teď export nefunguje.*
 
-    Upravte export a otevřete kartu exportovat cíl. ponechte stejné úložiště jako předtím a kliknutím na OK potvrďte. Export se restartuje. Pokud byla změna během posledních několika dní, ztratíte data.
+    Upravte export a otevřete kartu exportovat cíl. Vyberte stejné úložiště jako předtím a kliknutím na OK potvrďte. Export se restartuje. Pokud byla změna během posledních několika dní, ztratíte data.
 * *Můžu pozastavit export?*
 
-    Yes. Klikněte na Zakázat.
+    Ano. Klikněte na Zakázat.
 
 ## <a name="code-samples"></a>Ukázky kódů
 

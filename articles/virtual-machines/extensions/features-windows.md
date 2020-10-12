@@ -16,10 +16,10 @@ ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87829080"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření a funkce virtuálních počítačů pro Windows
@@ -42,7 +42,7 @@ K dispozici je několik různých rozšíření virtuálních počítačů Azure
 
 Kromě rozšíření specifických pro procesy je k dispozici rozšíření vlastních skriptů pro virtuální počítače s Windows i Linux. Rozšíření vlastních skriptů pro Windows umožňuje spuštění libovolného skriptu PowerShellu na virtuálním počítači. Vlastní skripty jsou užitečné pro navrhování nasazení Azure, která vyžadují konfiguraci, a to nad rámec toho, co můžou využít nativní nástroje Azure. Další informace najdete v tématu [rozšíření vlastních skriptů pro virtuální počítače s Windows](custom-script-windows.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro zpracování rozšíření na virtuálním počítači potřebujete nainstalovaného agenta Azure Windows. Některá jednotlivá rozšíření mají požadavky, jako je například přístup k prostředkům nebo závislostem.
 
@@ -254,7 +254,7 @@ Přesunutí **příkazu k provedení** vlastnosti do **chráněné** konfigurace
 
 Na virtuálním počítači Azure s IaaS, který používá rozšíření, se můžou v konzole certifikáty zobrazovat certifikáty, které mají předmět **_generátoru certifikátů Windows Azure CRP_**. Na klasickém virtuálním počítači RDFE mají tyto certifikáty **_pro rozšíření název subjektu Windows Azure Service Management_**.
 
-Tyto certifikáty zabezpečují komunikaci mezi virtuálním počítačem a jeho hostitelem během přenosu chráněných nastavení (hesla, jiných přihlašovacích údajů) používaných rozšířeními. Certifikáty jsou sestaveny řadičem infrastruktury Azure a předány agentovi virtuálního počítače. Pokud každý den zastavíte a spustíte virtuální počítač, může řadič prostředků infrastruktury vytvořit nový certifikát. Certifikát je uložen v úložišti osobních certifikátů počítače. Tyto certifikáty je možné odstranit. Agent virtuálního počítače znovu vytvoří certifikáty v případě potřeby.
+Tyto certifikáty zabezpečují komunikaci mezi virtuálním počítačem a jeho hostitelem během přenosu chráněných nastavení (hesla, jiné přihlašovací údaje) používaných rozšířeními. Certifikáty jsou sestaveny kontrolerem prostředků infrastruktury Azure a předány agentovi virtuálního počítače. Pokud každý den virtuální počítač zastavíte a spustíte, může kontroler prostředků infrastruktury vytvořit nový certifikát. Certifikát je uložený v úložišti osobních certifikátů počítače. Tyto certifikáty je možné odstranit. Agent virtuálního počítače znovu vytvoří certifikáty v případě potřeby.
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>Jak se aktualizují agenti a rozšíření?
 
@@ -421,7 +421,7 @@ Můžete také odebrat rozšíření v Azure Portal následujícím způsobem:
 4. Vyberte možnost **odinstalovat**.
 
 ## <a name="common-vm-extensions-reference"></a>Referenční informace o běžných rozšířeních virtuálních počítačů
-| Název rozšíření | Popis | Další informace |
+| Název rozšíření | Description | Další informace |
 | --- | --- | --- |
 | Rozšíření vlastních skriptů pro virtuální počítače |Spouštění skriptů na virtuálním počítači Azure |[Rozšíření vlastních skriptů pro virtuální počítače](custom-script-windows.md) |
 | Rozšíření DSC pro Windows |Rozšíření PowerShell DSC (Konfigurace požadovaného stavu) |[Rozšíření DSC pro Windows](dsc-overview.md) |

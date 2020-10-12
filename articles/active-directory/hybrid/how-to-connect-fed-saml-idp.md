@@ -15,20 +15,20 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cd95d01c9b49bb6002c00c805dc82dcf30941e3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295033"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Použití zprostředkovatele identity (IdP) SAML 2.0 pro Jednotné přihlašování
 
-Tento dokument obsahuje informace o použití zprostředkovatele identity založeného na profilu SAML 2,0 kompatibilního s protokolem SAML jako preferovaného poskytovatele služby tokenů zabezpečení (STS) nebo zprostředkovatele identity. Tento scénář je užitečný, když už máte adresář uživatele a úložiště hesel místně, ke kterým se dá dostat pomocí SAML 2,0. Tento existující adresář uživatele se dá použít k přihlášení k Microsoft 365 a dalším prostředkům zabezpečeným službou Azure AD. Profil SAML 2,0 SP-Lite vychází z široce používaného standardu federovaného identity Security Assertion Markup Language (SAML), který poskytuje rozhraní pro přihlášení a atribut pro výměnu atributů.
+Tento dokument obsahuje informace o použití zprostředkovatele identity na základě profilu SP-Lite kompatibilního s SAML 2,0 jako preferovaného poskytovatele služby tokenů zabezpečení (STS) nebo zprostředkovatele identity. Tento scénář je užitečný, když už máte adresář uživatele a úložiště hesel místně, ke kterým se dá dostat pomocí SAML 2,0. Tento existující adresář uživatele se dá použít k přihlášení k Microsoft 365 a dalším prostředkům zabezpečeným službou Azure AD. Profil SP-Lite SAML 2,0 vychází z široce používaného standardu federovaného identity Security Assertion Markup Language (SAML), který poskytuje rozhraní pro přihlašování a výměnu atributů.
 
 >[!NOTE]
 >Seznam zprostředkovatelů identity třetích stran, které byly testovány pro použití se službou Azure AD, najdete v [seznamu kompatibility federace Azure AD](how-to-connect-fed-compatibility.md) .
 
-Microsoft podporuje toto přihlašování jako integraci cloudové služby Microsoftu, jako je například Microsoft 365, s správně nakonfigurovaným IdPem založeným na profilech SAML 2,0. Zprostředkovatelé identit SAML 2,0 jsou produkty třetích stran, a proto společnost Microsoft neposkytuje podporu pro nasazení, konfiguraci a řešení potíží s osvědčenými postupy, které se týkají. Po správném nakonfigurování se integrace se zprostředkovatelem identity SAML 2,0 může testovat ke správné konfiguraci pomocí nástroje Microsoft Connectivity Analyzer, který je podrobněji popsaný níže. Další informace o poskytovateli identity založeném na profilu SAML 2,0 SP-Lite si požádejte o organizaci, která ji dodala.
+Microsoft podporuje toto přihlašování jako integraci cloudové služby Microsoftu, jako je například Microsoft 365, s správně nakonfigurovaným IdPem založeným na profilech SAML 2,0. Zprostředkovatelé identit SAML 2,0 jsou produkty třetích stran, a proto společnost Microsoft neposkytuje podporu pro nasazení, konfiguraci a řešení potíží s osvědčenými postupy, které se týkají. Po správném nakonfigurování se integrace se zprostředkovatelem identity SAML 2,0 může testovat ke správné konfiguraci pomocí nástroje Microsoft Connectivity Analyzer, který je podrobněji popsaný níže. Další informace o poskytovateli identity založeném na profilu SAML 2,0 SP-Lite, požádejte o organizaci, která ji dodala.
 
 > [!IMPORTANT]
 > V tomto scénáři přihlášení s poskytovateli identity SAML 2,0 jsou k dispozici pouze omezená sada klientů, mezi které patří:
@@ -276,7 +276,7 @@ Další informace o registraci New-MsolUser, [/Previous-Versions/Azure/dn194096 
 >Hodnota "UserPrinciplName" se musí shodovat s hodnotou, kterou odešlete za "IDPEmail" v deklaraci SAML 2,0 a hodnota "ImmutableID" se musí shodovat s hodnotou odeslanou v kontrolním výrazu "NameID".
 
 ## <a name="verify-single-sign-on-with-your-saml-20-idp"></a>Ověření jednotného přihlašování s využitím SAML 2,0 IDP
-Než ověříte a spravujete jednotné přihlašování (označované také jako federace identit), zkontrolujte informace a proveďte kroky v následujících článcích a nastavte jednotné přihlašování pomocí zprostředkovatele identity založeného na standardu SAML 2,0 SP-Lite:
+Než ověříte a spravujete jednotné přihlašování (označované také jako federace identit), zkontrolujte informace a proveďte kroky v následujících článcích a nastavte jednotné přihlašování s vaším poskytovatelem identity založeném na SP-Lite SAML 2,0:
 
 
 1.  Zkontrolovali jste požadavky na protokol SAML 2,0 pro Azure AD.
@@ -286,7 +286,7 @@ Než ověříte a spravujete jednotné přihlašování (označované také jako
 5.  Byl zřízen známý objekt zabezpečení testovacího uživatele pro Azure Active Directory (Microsoft 365) buď pomocí prostředí Windows PowerShell nebo Azure AD Connect.
 6.  Nakonfigurujte synchronizaci adresářů pomocí [Azure AD Connect](whatis-hybrid-identity.md).
 
-Po nastavení jednotného přihlašování pomocí poskytovatele identity založeného na SAML 2,0 SP-Lite byste měli ověřit, že funguje správně.
+Po nastavení jednotného přihlašování pomocí poskytovatele identity založeného na SP-Lite SAML 2,0 byste měli ověřit, že funguje správně.
 
 >[!NOTE]
 >Pokud jste převedli doménu místo přidání, může to trvat až 24 hodin, než se nastaví jednotné přihlašování.

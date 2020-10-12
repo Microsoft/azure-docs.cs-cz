@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
 ms.openlocfilehash: 7cd368df1f2a94c8f49454530e7f5997f2659a32
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323770"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Vytváření aplikací Java pro Apache HBA
@@ -103,7 +103,7 @@ V této části je uvedeno, že projekt potřebuje komponenty **HBA-Client** a *
 | Verze clusteru HDInsight | Verze Apache HBA, které se mají použít |
 | --- | --- |
 | 3,6 | 1.1.2 |
-| 4.0 | 2.0.0 |
+| 4,0 | 2.0.0 |
 
 Další informace o verzích a součástech služby HDInsight najdete v tématu [co jsou různé Apache Hadoop komponenty dostupné v HDInsight](../hdinsight-component-versioning.md).
 

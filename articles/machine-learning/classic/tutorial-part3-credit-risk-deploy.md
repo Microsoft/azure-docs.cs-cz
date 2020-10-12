@@ -10,10 +10,10 @@ ms.subservice: studio
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.openlocfilehash: 148a3deb23219036f2fd9d8fe4dad93e9fb96b9b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91348420"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Kurz 3: nasazení modelu úvěrového rizika – Azure Machine Learning Studio (Classic)
@@ -180,7 +180,7 @@ Klasickou webovou službu můžete testovat buď v **Machine Learning Studio (Cl
 Novou webovou službu můžete testovat jenom na portálu **Machine Learning Web Services** .
 
 > [!TIP]
-> Při testování na portálu Azure Machine Learning Web Services můžete mít portál vytvořit ukázková data, která můžete použít k otestování služby Request-Response. Na stránce **Konfigurace** vyberte možnost Ano, pokud chcete **ukázková data povolit?**. Když na stránce **test** otevřete kartu požadavek-odpověď, vyplní portál ukázková data přijatá z původní datové sady kreditového rizika.
+> Při testování na portálu Azure Machine Learning Web Services můžete mít portál vytvořit ukázková data, která můžete použít k otestování služby Request-Response. Na stránce **Konfigurace** vyberte možnost Ano, pokud chcete **ukázková data povolit?**. Když na stránce **test** otevřete kartu Request-Response, na portálu se vyplní ukázková data z původní datové sady úvěrového rizika.
 
 ### <a name="test-a-classic-web-service"></a>Testování klasické webové služby
 

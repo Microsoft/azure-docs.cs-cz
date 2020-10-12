@@ -9,10 +9,10 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 823b16dcaf113136b10fdaa054da20840b99f02d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297041"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Použití sady Visual Studio 2019 k vývoji a ladění modulů pro Azure IoT Edge
@@ -232,7 +232,7 @@ V článku Rychlý start, pomocí kterého jste nastavili své zařízení IoT E
 
 ## <a name="view-generated-data"></a>Zobrazit vygenerovaná data
 
-1. Pokud chcete monitorovat zprávu D2C pro konkrétní zařízení IoT-Edge, vyberte ho v centru IoT v **Průzkumníku cloudu** a potom v okně **Akce** klikněte na **Spustit sledování vestavěného koncového bodu události** .
+1. Pokud chcete monitorovat zprávu D2C pro konkrétní IoT-Edge zařízení, vyberte ji v centru IoT v **Průzkumníku cloudu** a potom v okně **Akce** klikněte na **Spustit sledování vestavěného koncového bodu události** .
 
 1. Chcete-li zastavit monitorování dat, vyberte možnost **Zastavit sledování vestavěného koncového bodu události** v okně **Akce** .
 

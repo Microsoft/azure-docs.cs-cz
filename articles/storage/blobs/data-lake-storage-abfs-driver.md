@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: e9c56f59d6dd64002632a5f74e9f39c51293caab
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836356"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Ovladač systému souborů objektů BLOB v Azure (ABFS): vyhrazený ovladač Azure Storage pro Hadoop
@@ -31,7 +31,7 @@ Existují však některé funkce, které musí ovladač stále provádět:
 
 ### <a name="uri-scheme-to-reference-data"></a>Schéma identifikátoru URI pro referenční data
 
-Ovladač ABFS je v souladu s dalšími implementacemi systému souborů v rámci systému Hadoop a definuje vlastní schéma identifikátoru URI, aby bylo možné prostředky (adresáře a soubory) rozlišit. Schéma identifikátoru URI je popsáno v [části použití Azure Data Lake Storage Gen2 identifikátor URI](./data-lake-storage-introduction-abfs-uri.md). Struktura identifikátoru URI je:`abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
+Ovladač ABFS je v souladu s dalšími implementacemi systému souborů v rámci systému Hadoop a definuje vlastní schéma identifikátoru URI, aby bylo možné prostředky (adresáře a soubory) rozlišit. Schéma identifikátoru URI je popsáno v [části použití Azure Data Lake Storage Gen2 identifikátor URI](./data-lake-storage-introduction-abfs-uri.md). Struktura identifikátoru URI je: `abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
 
 Pomocí výše uvedeného formátu identifikátoru URI se k odkazování na tyto prostředky dají použít standardní nástroje a architektury Hadoop:
 
@@ -42,7 +42,7 @@ hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows
 
 Ovladač ABFS interně překládá prostředky zadané v identifikátoru URI do souborů a adresářů a provádí volání REST API Azure Data Lake Storage s těmito odkazy.
 
-### <a name="authentication"></a>Ověřování uživatelů
+### <a name="authentication"></a>Authentication
 
 Ovladač ABFS podporuje dvě formy ověřování, aby mohla aplikace Hadoop bezpečně přistupovat k prostředkům, které jsou obsaženy v účtu s podporou Data Lake Storage Gen2. Úplné podrobnosti o dostupných schématech ověřování jsou k dispozici v [Azure Storage příručce zabezpečení](security-recommendations.md). Jsou to tyto:
 

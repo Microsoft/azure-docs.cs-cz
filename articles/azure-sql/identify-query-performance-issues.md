@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: jrasnick, sstein
 ms.date: 03/10/2020
 ms.openlocfilehash: afc142ec9de0e275d505276d959cfac3e652c55d
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619759"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Zjistitelné typy kritických bodů výkonu dotazů ve službě Azure SQL Database
@@ -153,8 +153,8 @@ Pomalé dotazování, které nesouvisí s podoptimálními plány dotazů a chyb
 - Zjišťování omezení prostředků pomocí [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#reaching-resource-limits)
 - Zjištění potíží s prostředky pomocí [zobrazení dynamické správy](database/monitoring-with-dmvs.md):
 
-  - [Sys. dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV vrátí pro databázi spotřebu CPU, vstupně-výstupních operací a paměti. U každého intervalu 15 sekund existuje jeden řádek, a to i v případě, že databáze neobsahuje žádné aktivity. Historická data se uchovávají po dobu jedné hodiny.
-  - [Sys. resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV vrátí využití CPU a data úložiště pro Azure SQL Database. Data se shromažďují a agregují v intervalech po pěti minutách.
+  - [Sys.dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV vrací pro databázi spotřebu CPU, vstupně-výstupních operací a paměti. U každého intervalu 15 sekund existuje jeden řádek, a to i v případě, že databáze neobsahuje žádné aktivity. Historická data se uchovávají po dobu jedné hodiny.
+  - [Sys.resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV vrátí využití CPU a data úložiště pro Azure SQL Database. Data se shromažďují a agregují v intervalech po pěti minutách.
   - [Mnoho jednotlivých dotazů, které kumulativně využívají vysoký procesor](database/monitoring-with-dmvs.md#many-individual-queries-that-cumulatively-consume-high-cpu)
 
 Pokud problém identifikujete jako nedostatečný prostředek, můžete upgradovat prostředky a zvýšit tak kapacitu vaší databáze, aby se zvýšila nároky na procesor. Další informace najdete v tématu [škálování jednotlivých prostředků databáze ve Azure SQL Database](database/single-database-scale.md) a [škálování prostředků elastického fondu v Azure SQL Database](database/elastic-pool-scale.md). Informace o škálování spravované instance najdete v tématu [omezení prostředků na úrovni služby](managed-instance/resource-limits.md#service-tier-characteristics) .
@@ -203,16 +203,16 @@ Po zrušení neoptimálního plánu a problémů *souvisejících* s výkonem, k
 Tyto metody se běžně používají k zobrazení hlavních kategorií typů čekání:
 
 - Použití Intelligent Insights k identifikaci dotazů se snížením výkonu kvůli [nárůstu počtu čekání](database/intelligent-insights-troubleshoot-performance.md#increased-wait-statistic)
-- Pomocí [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) můžete najít statistiku čekání pro každý dotaz v průběhu času. V úložišti dotazů jsou typy čekání kombinovány do kategorií čekání. Můžete najít mapování kategorií čekání na typy čekání v [Sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
-- Pomocí [Sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) můžete vracet informace o všech čekáních zjištěných vlákny, které byly provedeny během operace dotazu. Pomocí tohoto agregovaného zobrazení můžete diagnostikovat problémy s výkonem Azure SQL Database a také s konkrétními dotazy a dávkami. Dotazy můžou čekat na prostředky, čekání nebo externí čekání.
-- Pomocí [Sys. dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) můžete vracet informace o frontě úloh, které čekají na určitý prostředek.
+- Pomocí [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) můžete najít statistiku čekání pro každý dotaz v průběhu času. V úložišti dotazů jsou typy čekání kombinovány do kategorií čekání. Můžete najít mapování kategorií čekání na typy čekání v [Sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
+- Pomocí [Sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) můžete vracet informace o všech čekáních zjištěných vlákny během operace dotazu. Pomocí tohoto agregovaného zobrazení můžete diagnostikovat problémy s výkonem Azure SQL Database a také s konkrétními dotazy a dávkami. Dotazy můžou čekat na prostředky, čekání nebo externí čekání.
+- Pomocí [Sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) můžete vracet informace o frontě úloh, které čekají na určitý prostředek.
 
 V případě scénářů s vysokým využitím procesoru se v úložišti dotazů a v statistikách čekání nemusí projevit využití CPU, pokud:
 
 - Vysoce náročné dotazy využívající procesor jsou pořád spuštěné.
 - Dotazy s vysokým využitím procesoru byly spuštěny, když došlo k převzetí služeb při selhání.
 
-Zobrazení dynamické správy, které sledují úložiště dotazů a statistiky čekání zobrazují výsledky pouze pro úspěšně dokončené a časované dotazy. Nezobrazují data pro aktuálně zpracovávané příkazy, dokud se nedokončí příkazy. Pomocí zobrazení dynamické správy [Sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) můžete sledovat aktuálně zpracovávané dotazy a přidruženou dobu pracovního procesu.
+Zobrazení dynamické správy, které sledují úložiště dotazů a statistiky čekání zobrazují výsledky pouze pro úspěšně dokončené a časované dotazy. Nezobrazují data pro aktuálně zpracovávané příkazy, dokud se nedokončí příkazy. Pomocí [Sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) zobrazení dynamické správy můžete sledovat aktuálně zpracovávané dotazy a přidruženou dobu pracovního procesu.
 
 > [!TIP]
 > Další nástroje:

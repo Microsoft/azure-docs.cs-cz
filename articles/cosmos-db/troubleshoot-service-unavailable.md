@@ -8,10 +8,10 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 749592b778612c6903c9c15e336de3fb00978199
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88870863"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-service-unavailable-exceptions"></a>Diagnostika a řešení potíží s nedostupnými výjimkami služby Azure Cosmos DB
@@ -24,7 +24,7 @@ Následující seznam obsahuje známé příčiny a řešení nedostupných výj
 Ověřte, zda jsou všechny [požadované porty](performance-tips-dotnet-sdk-v3-sql.md#networking) povoleny.
 
 ### <a name="client-side-transient-connectivity-issues"></a>Problémy s přechodným připojením na straně klienta
-Pokud dochází k přechodným problémům s připojením, které způsobují vypršení časových limitů, můžou být nedostupné výjimky. Trasování zásobníku související s tímto scénářem obvykle bude obsahovat `TransportException` chybu. Příklad:
+Pokud dochází k přechodným problémům s připojením, které způsobují vypršení časových limitů, můžou být nedostupné výjimky. Trasování zásobníku související s tímto scénářem obvykle bude obsahovat `TransportException` chybu. Například:
 
 ```C#
 TransportException: A client transport error occurred: The request timed out while waiting for a server response. 

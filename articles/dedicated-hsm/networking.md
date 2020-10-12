@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91359150"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Vyhrazené sítě HSM v Azure
@@ -39,7 +39,7 @@ Než zřídíte vyhrazené zařízení HSM, zákazníci nejdřív budou muset vy
 
 ### <a name="subnets"></a>Podsítě
 
-Podsítě segmentují virtuální síť do samostatných adresních prostorů použitelných prostředky Azure, které do nich umístíte. Vyhrazené HSM se nasadí do podsítě ve virtuální síti. Každé vyhrazené zařízení HSM, které je nasazeno v podsíti zákazníka, obdrží privátní IP adresu z této podsítě. Podsíť, ve které je nasazené zařízení HSM, musí být explicitně delegovaná na službu: Microsoft. HardwareSecurityModules/dedicatedHSMs. Tím je uděleno určité oprávnění ke službě HSM pro nasazení do podsítě. Delegování na vyhrazené HSM ukládá určitá omezení zásad v podsíti. Skupiny zabezpečení sítě (skupin zabezpečení sítě) a uživatelsky definované trasy (udr) aktuálně nejsou v delegovaných podsítích podporovány. V důsledku toho se po delegování podsítě na vyhrazené HSM dá použít jenom k nasazení prostředků HSM. Nasazení jakýchkoli dalších zákaznických prostředků do podsítě se nezdaří.
+Podsítě segmentují virtuální síť do samostatných adresních prostorů použitelných prostředky Azure, které do nich umístíte. Vyhrazené HSM se nasadí do podsítě ve virtuální síti. Každé vyhrazené zařízení HSM, které je nasazeno v podsíti zákazníka, obdrží privátní IP adresu z této podsítě. Podsíť, ve které je nasazené zařízení HSM, musí být explicitně delegovaná na službu: Microsoft. HardwareSecurityModules/dedicatedHSMs. Tím je uděleno určité oprávnění ke službě HSM pro nasazení do podsítě. Delegování na vyhrazené HSM ukládá určitá omezení zásad v podsíti. V delegovaných podsítích nejsou aktuálně podporovány skupiny zabezpečení sítě (skupin zabezpečení sítě) a trasy User-Defined (udr). V důsledku toho se po delegování podsítě na vyhrazené HSM dá použít jenom k nasazení prostředků HSM. Nasazení jakýchkoli dalších zákaznických prostředků do podsítě se nezdaří.
 
 
 ### <a name="expressroute-gateway"></a>ExpressRoute bránu

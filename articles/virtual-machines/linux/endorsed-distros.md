@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 08/02/2020
+ms.date: 10/09/2020
 ms.author: guybo
-ms.openlocfilehash: f945c58b256c2a024a62b15a1bca1841483e1849
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1417635c0e510badd191e99786f49dfb509c8206
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279429"
+ms.locfileid: "91893403"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Schválené distribuce Linux v Azure
 
@@ -37,7 +37,7 @@ Agent Azure Linux je již předinstalovaný na Azure Marketplace imagí a je obv
 | CentOS podle neautorizovaných vln softwaru |CentOS 6. x, 7. x, 8. x |CentOS 6,3: [stažení v lis](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: v jádru |Balíček: v [úložišti](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> CoreOS je teď [konec životnosti](https://coreos.com/os/eol/) od 26. května 2020. |Již není k dispozici | | |
 | Debian podle credativ |8.x, 9.x |V jádru |Balíček: v úložišti v části "waagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
-|Flatcar Container Linux od Kinvolk| Stabilní, beta verze| V jádru | WA-Linux-agent je už nainstalovaný v/usr/share/OEM/bin/waagent |
+|Flatcar Container Linux od Kinvolk| Pro, stabilní, beta verze| V jádru | WA-Linux-agent je už nainstalovaný v/usr/share/OEM/bin/waagent |
 | Oracle Linux Oracle |6.x, 7.x, 8.x |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | [Red Hat Enterprise Linux se Red Hat](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x, 7.x, 8.x |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise podle SUSE |SLES/SLES pro SAP 11. x, 12. x, 15. x <br/> [Životní cyklus SUSE veřejné cloudové image](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |V jádru |Balíček<p> 11 v [cloudu: úložiště nástrojů](https://build.opensuse.org/project/show/Cloud:Tools)<br>pro 12 zahrnuté v modulu "veřejný cloud" v části "Python-Azure-Agent"<br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
@@ -58,6 +58,7 @@ Ve většině případů zjistíte, že tyto jádra jsou předem nainstalované 
 - [Debian Cloud kernel – k dispozici s imagemi Debian 10 a Debian 9 v Azure](https://wiki.debian.org/Cloud/MicrosoftAzure)
 - [Jádro Azure-Tuned SLES](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
 - [Jádro Azure-Tuned Ubuntu](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+- [Flatcar Container Linux pro](https://azuremarketplace.microsoft.com/marketplace/apps/kinvolk.flatcar_pro)
 
 ## <a name="partners"></a>Partneři
 

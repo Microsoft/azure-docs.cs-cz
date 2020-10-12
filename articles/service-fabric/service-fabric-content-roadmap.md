@@ -4,10 +4,10 @@ description: Přečtěte si o základních konceptech a hlavních oblastech Azur
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.openlocfilehash: d09d774ed32c98222b71423ca733f1b4294957ef
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836696"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Chcete se dozvědět o Service Fabric?
@@ -66,7 +66,7 @@ Proč mají stavové mikroslužby spolu s bezstavovým mikroslužbami? Existují
 ## <a name="supported-programming-models"></a>Podporované programovací modely
 Service Fabric nabízí několik způsobů, jak psát a spravovat vaše služby. Služby mohou používat rozhraní Service Fabric API k plnému využití funkcí platformy a architektur aplikací. Služby také mohou být všechny zkompilované spustitelné programy napsané v jakémkoli jazyce a jsou hostovány v clusteru Service Fabric. Další informace najdete v tématu [podporované programovací modely](service-fabric-choose-framework.md).
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Kontejnery
 Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy. Service Fabric mohou také nasazovat služby v [kontejnerech](service-fabric-containers-overview.md). Důležité je, že můžete kombinovat služby v procesech a službách v kontejnerech ve stejné aplikaci. Service Fabric podporuje nasazení kontejnerů Linux a kontejnerů Windows v systému Windows Server 2016. V kontejnerech můžete nasadit existující aplikace, bezstavové služby nebo stavové služby. 
 
 ### <a name="reliable-services"></a>Reliable Services
@@ -75,7 +75,7 @@ Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy.
 ### <a name="reliable-actors"></a>Reliable Actors
 Technologie [Reliable Actors](service-fabric-reliable-actors-introduction.md) , která je postavená na Reliable Services, je rozhraní aplikace, které implementuje vzor virtuálního objektu actor na základě vzoru návrhu objektu actor. Rozhraní Reliable actor používá nezávislé jednotky COMPUTE a State s jedním vláknovým spouštěním nazvaným Actors. Rozhraní Reliable Actors poskytuje vestavěnou komunikaci pro objekty actor a trvalá nastavení trvalých stavů a škálování na více systémů.
 
-### <a name="aspnet-core"></a>ASP.NET Core
+### <a name="aspnet-core"></a>Jádro ASP.NET
 Service Fabric se integruje s [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) jako první třída programovací model pro vytváření webových aplikací a aplikací API.  ASP.NET Core lze použít dvěma různými způsoby v Service Fabric:
 
 - Hostuje se jako spustitelný soubor hosta. Používá se hlavně ke spouštění existujících aplikací ASP.NET Core v Service Fabric bez jakýchkoli změn kódu.

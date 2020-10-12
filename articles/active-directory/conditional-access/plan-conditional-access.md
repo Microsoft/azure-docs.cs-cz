@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258672"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Plánování nasazení podmíněného přístupu
@@ -493,7 +493,7 @@ Jakmile shromáždíte informace, podívejte se na následující zdroje informa
 
 * [Problémy s přihlašováním pomocí podmíněného přístupu](troubleshoot-conditional-access.md) – pochopení neočekávaných výsledků přihlašování souvisejících s podmíněným přístupem pomocí chybových zpráv a protokolu přihlášení k Azure AD.
 
-* [Pomocí nástroje citlivosti](troubleshoot-conditional-access-what-if.md) k tomu můžete pochopit, proč se zásada nebo nepoužila pro uživatele v určité situaci, nebo jestli se zásada uplatní ve známém stavu.
+* [Použití nástroje What-If](troubleshoot-conditional-access-what-if.md) – Pochopte, proč zásada byla nebo nebyla pro uživatele v konkrétní situaci použita nebo zda se zásada použila ve známém stavu.
 
 ## <a name="next-steps"></a>Další kroky
 

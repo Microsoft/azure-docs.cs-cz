@@ -12,10 +12,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 9ae4970383802adad755fff4a6ce382db6ce32fe
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619912"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – požadavky na zabezpečení při přesunu dat
@@ -149,7 +149,7 @@ V podniku je **podniková brána firewall** provozována v centrálním směrova
 
 Následující tabulka obsahuje požadavky na **Odchozí porty** a domény pro **podnikovou bránu firewall**.
 
-| Názvy domén | Odchozí porty | Popis |
+| Názvy domén | Odchozí porty | Description |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Vyžadovaná bránou pro připojení k pohybovým službám dat v Data Factory |
 | `*.core.windows.net` | 443 | Používá se bránou k připojení k Azure Storage účtu při použití funkce [dvoufázové kopírování](data-factory-copy-activity-performance.md#staged-copy) . | 
@@ -162,7 +162,7 @@ Následující tabulka obsahuje požadavky na **Odchozí porty** a domény pro *
 
 Následující tabulka uvádí požadavky na **porty** pro **bránu Windows Firewall**.
 
-| Příchozí porty | Popis | 
+| Příchozí porty | Description | 
 | ------------- | ----------- | 
 | 8050 (TCP) | Vyžaduje aplikaci Správce přihlašovacích údajů k bezpečnému nastavení přihlašovacích údajů pro místní úložiště dat v bráně. | 
 

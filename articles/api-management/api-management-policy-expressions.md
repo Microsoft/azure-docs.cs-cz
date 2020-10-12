@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844236"
 ---
 # <a name="api-management-policy-expressions"></a>API Management výrazy zásad
@@ -33,12 +33,12 @@ Další informace najdete tady:
 - Pokud chcete stáhnout příkazy zásad, přečtěte si úložiště GitHub [API-Management-Samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) .
 
 
-## <a name="syntax"></a><a name="Syntax"></a>Syntaktick
+## <a name="syntax"></a><a name="Syntax"></a> Syntaktick
 Výrazy jednoho příkazu jsou uzavřeny v `@(expression)` , kde `expression` je ve správném formátu C# příkaz výrazu.
 
 Výrazy s více příkazy jsou uzavřeny v `@{expression}` . Všechny cesty kódu v rámci výrazů vícenásobného příkazu musí končit `return` příkazem.
 
-## <a name="examples"></a><a name="PolicyExpressionsExamples"></a>4.6
+## <a name="examples"></a><a name="PolicyExpressionsExamples"></a> 4.6
 
 ```
 @(true)
@@ -71,7 +71,7 @@ Výrazy lze použít jako hodnoty atributů nebo textové hodnoty v jakékoli [z
 > [!IMPORTANT]
 > Když použijete výrazy zásad, je při definování zásady k dispozici jenom omezené ověření výrazů zásad. Za běhu jsou výrazy spouštěné bránou, takže všechny výjimky vygenerované výrazy zásad mají za následek chybu za běhu.
 
-## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a>Typy .NET Framework povolené ve výrazech zásad
+## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a> Typy .NET Framework povolené ve výrazech zásad
 Následující tabulka uvádí typy .NET Framework a jejich členy, které jsou povoleny ve výrazech zásad.
 
 |Typ|Podporovaní členové|
@@ -156,7 +156,7 @@ Následující tabulka uvádí typy .NET Framework a jejich členy, které jsou 
 |System. Security. Cryptography. SymmetricAlgorithm|Vše|
 |System. Security. Cryptography. X509Certificates. PublicKey|Vše|
 |System. Security. Cryptography. X509Certificates. RSACertificateExtensions|Vše|
-|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Název|
+|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Name|
 |System. Security. Cryptography. X509Certificates. certifikátu x509|Vše|
 |System. Security. Cryptography. X509Certificates. X509Certificate2|Vše|
 |System. Security. Cryptography. X509Certificates. X509ContentType|Vše|
@@ -205,7 +205,7 @@ Následující tabulka uvádí typy .NET Framework a jejich členy, které jsou 
 |System.Xml. LINQ. XText|Vše|
 |System.Xml.XmlNodeType|Vše|
 
-## <a name="context-variable"></a><a name="ContextVariables"></a>Kontextová proměnná
+## <a name="context-variable"></a><a name="ContextVariables"></a> Kontextová proměnná
 Proměnná s názvem `context` je implicitně dostupná ve všech [výrazech](api-management-policy-expressions.md#Syntax)zásad. Jeho členové poskytují informace, které jsou užitečné pro `\request` . Všichni `context` Členové jsou jen pro čtení.
 
 |Kontextová proměnná|Povolené metody, vlastnosti a hodnoty parametrů|

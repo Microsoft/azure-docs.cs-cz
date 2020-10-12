@@ -11,10 +11,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3471b9988b154ccb38dc56545e769a7179a4026f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258722"
 ---
 # <a name="legacy-user-flow-versions-in-azure-active-directory-b2c"></a>Starší verze uživatelských toků v Azure Active Directory B2C
@@ -28,7 +28,7 @@ V následující tabulce, pokud tok uživatele není identifikován jako **dopor
 
 ## <a name="v1"></a>V1
 
-| Tok uživatele | Doporučeno | Popis |
+| Tok uživatele | Doporučeno | Description |
 | --------- | ----------- | ----------- |
 | Resetování hesla | Yes | Umožňuje uživateli zvolit nové heslo po ověření e-mailu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](custom-policy-multi-factor-authentication.md)</li><li>Nastavení kompatibility tokenů</li><li>[Požadavky na složitost hesla](user-flow-password-complexity.md)</li></ul> |
 | Úpravy profilu | Yes | Umožňuje uživateli nakonfigurovat své atributy uživatele. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li></ul> |
@@ -39,13 +39,13 @@ V následující tabulce, pokud tok uživatele není identifikován jako **dopor
 
 ## <a name="v11"></a>Verze 1.1
 
-| Tok uživatele | Doporučeno | Popis |
+| Tok uživatele | Doporučeno | Description |
 | --------- | ----------- | ----------- |
 | Resetování hesla v 1.1 | No | Umožní uživateli zvolit nové heslo po ověření e-mailu (k dispozici nové rozložení stránky). Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](custom-policy-multi-factor-authentication.md)</li><li>Nastavení kompatibility tokenů</li><li>[Požadavky na složitost hesla](user-flow-password-complexity.md)</li></ul> |
 
 ## <a name="v2"></a>V2
 
-| Tok uživatele | Doporučeno | Popis |
+| Tok uživatele | Doporučeno | Description |
 | --------- | ----------- | ----------- |
 | Resetování hesla v2 | No | Umožňuje uživateli zvolit nové heslo po ověření e-mailu. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Vícefaktorové ověřování](custom-policy-multi-factor-authentication.md)</li><li>Nastavení kompatibility tokenů</li><li>[Ověřování věku](basic-age-gating.md)</li><li>[požadavky na složitost hesla](user-flow-password-complexity.md)</li></ul> |
 | Úprava profilu v2 | Yes | Umožňuje uživateli nakonfigurovat své atributy uživatele. Pomocí tohoto toku uživatelů můžete nakonfigurovat: <ul><li>[Životnost tokenu](tokens-overview.md)</li><li>Nastavení kompatibility tokenů</li><li>Chování relace</li></ul> |

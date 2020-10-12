@@ -4,10 +4,10 @@ description: Popisuje funkce, které jsou k dispozici pro použití s artefakty 
 ms.date: 08/27/2020
 ms.topic: reference
 ms.openlocfilehash: fe984ee7664b0d50fb891d946f9f40a200ccce09
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89050756"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funkce pro použití s plány Azure
@@ -34,9 +34,9 @@ Vrátí objekt vlastností naplněný pomocí tohoto výstupu artefaktů podrobn
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| artefakt |Ano |řetězec |Název artefaktu podrobného plánu |
+| artefakt |Yes |řetězec |Název artefaktu podrobného plánu |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -123,10 +123,10 @@ Kombinuje více řetězcových hodnot a vrátí zřetězený řetězec.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| řetězec1 |Ano |řetězec |První hodnota pro zřetězení |
-| Další argumenty |Ne |řetězec |Další hodnoty v sekvenčním pořadí pro zřetězení |
+| řetězec1 |Yes |řetězec |První hodnota pro zřetězení |
+| Další argumenty |No |řetězec |Další hodnoty v sekvenčním pořadí pro zřetězení |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -148,9 +148,9 @@ Vrátí hodnotu parametru podrobného plánu. Zadaný název parametru musí bý
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
+| parameterName |Yes |řetězec |Název parametru, který se má vrátit. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -269,9 +269,9 @@ Vrátí objekt, který představuje zadaný artefakt skupiny prostředků. Na ro
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Povinné | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| zástupný znak |Ano |řetězec |Zástupný název artefaktu skupiny prostředků, který se má vrátit |
+| zástupný znak |Yes |řetězec |Zástupný název artefaktu skupiny prostředků, který se má vrátit |
 
 ### <a name="return-value"></a>Vrácená hodnota
 

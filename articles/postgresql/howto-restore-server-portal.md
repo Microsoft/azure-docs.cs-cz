@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: debdbf6e08af7b9005336231abd6c998a871c525
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708080"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Postup zálohování a obnovení serveru v Azure Database for PostgreSQL-Single server pomocí Azure Portal
@@ -33,7 +33,7 @@ Při vytváření serveru prostřednictvím Azure Portal v okně **cenová úrov
 Další informace o nastavení těchto hodnot během vytváření najdete v [rychlém startu Azure Database for PostgreSQL serveru](quickstart-create-server-database-portal.md).
 
 Dobu uchovávání záloh serveru lze změnit pomocí následujících kroků:
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Vyberte svůj server Azure Database for PostgreSQL. Tato akce otevře stránku s **přehledem** .
 3. V nabídce v části **Nastavení**vyberte **cenová úroveň** . Pomocí posuvníku můžete změnit **dobu uchovávání záloh** na svou předvolbu mezi 7 a 35 dny.
 Na snímku obrazovky níže byl zvýšen na 34 dní.

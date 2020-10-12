@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
 ms.openlocfilehash: 695539e4739002480b3622eb217ef920d4cb34e2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357484"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>Analýza pomocí SQL Server databáze pomocí Azure Machine Learning Studio (Classic)
@@ -40,9 +40,9 @@ Chcete-li získat přístup k databázi SQL Server v Azure Machine Learning Stud
 
 Pomocí stažení a spuštění instalačního balíčku MSI z [webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717)můžete také nainstalovat prostředí IR před časem. Soubor MSI se dá použít taky k upgradu existujícího IR na nejnovější verzi, kde se zachovají všechna nastavení.
 
-Integration Runtime Data Factory v místním prostředí má následující požadavky:
+Data Factory Self-Hosted Integration Runtime má následující požadavky:
 
-* Data Factory integrace v místním prostředí vyžaduje 64 operační systém s .NET Framework 4.6.1 nebo vyšším.
+* Integrace Data Factory Self-Hosted vyžaduje 64 operační systém s .NET Framework 4.6.1 nebo vyšším.
 * Podporované verze operačních systémů Windows jsou Windows 10, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016. 
 * Doporučená konfigurace pro počítač s INFRAČERVENým přenosem je minimálně 2 GHz, 4 jádro procesoru, 8 GB paměti RAM a disk pro 80 GB.
 * Pokud se hostitelský počítač přepne do režimu hibernace, přestane IR reagovat na požadavky na data. Proto nakonfigurujte v počítači vhodné schéma napájení před instalací IR. Pokud je počítač nakonfigurovaný do režimu hibernace, zobrazí se při instalaci infračerveného přenosu zpráva.

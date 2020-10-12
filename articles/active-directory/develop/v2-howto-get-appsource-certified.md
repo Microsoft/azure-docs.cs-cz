@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 65d6151536eb92e2ab9b740a99984fb0b5977cab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91256870"
 ---
 # <a name="get-appsource-certified-for-azure-active-directory"></a>Získání AppSource certifikace pro Azure Active Directory
@@ -102,7 +102,7 @@ V případě, že se při zřizování uživatele/společnosti může provést r
 
 Další informace o zkušebním prostředí AppSource najdete v [tomto videu](https://aka.ms/trialexperienceforwebapps). 
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
 Pro integraci služby Azure AD používáme pro poskytování podpory [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) s komunitou.
 

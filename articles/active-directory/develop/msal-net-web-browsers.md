@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: bf51f39a789b91a4cb0b88eb8bb1f2989bec7358
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165817"
 ---
 # <a name="using-web-browsers-msalnet"></a>Používání webových prohlížečů (MSAL.NET)
@@ -41,19 +41,19 @@ Je důležité si uvědomit, že při interaktivním získání tokenu se obsah 
 
 MSAL.NET je knihovna s více architekturami a má kód specifický pro rozhraní, který je hostitelem prohlížeče v ovládacím prvku uživatelského rozhraní (například v klasickém rozhraní .NET používá WinForms, v Xamarin používá nativní mobilní ovládací prvky atd.). Tento ovládací prvek se nazývá `embedded` webové uživatelské rozhraní. Alternativně je MSAL.NET také možné aktivovat prohlížeč operačního systému.
 
-Obecně se doporučuje použít výchozí platformu a obvykle se jedná o systémový prohlížeč. Prohlížeč systému je lepší při zapamatování uživatelů, kteří se předtím přihlásili. Pokud potřebujete toto chování změnit, použijte`WithUseEmbeddedWebView(bool)`
+Obecně se doporučuje použít výchozí platformu a obvykle se jedná o systémový prohlížeč. Prohlížeč systému je lepší při zapamatování uživatelů, kteří se předtím přihlásili. Pokud potřebujete toto chování změnit, použijte `WithUseEmbeddedWebView(bool)`
 
 ### <a name="at-a-glance"></a>Na první pohled
 
 | Rozhraní .NET Framework        | Vložené | Systém | Výchozí |
 | ------------- |-------------| -----| ----- |
 | .NET Classic     | Yes | Ano ^ | Vložené |
-| .NET Core     | Ne | Ano ^ | Systém |
-| .NET Standard | Ne | Ano ^ | Systém |
-| UPW | Ano | Ne | Vložené |
-| Xamarin.Android | Ano | Ano  | Systém |
-| Xamarin.iOS | Ano | Ano  | Systém |
-| Xamarin.Mac| Ano | Ne | Vložené |
+| .NET Core     | No | Ano ^ | Systém |
+| .NET Standard | No | Ano ^ | Systém |
+| UWP | Yes | No | Vložené |
+| Xamarin.Android | Yes | Yes  | Systém |
+| Xamarin.iOS | Yes | Yes  | Systém |
+| Xamarin.Mac| Yes | No | Vložené |
 
 ^ Vyžaduje " http://localhost " identifikátor URI přesměrování
 

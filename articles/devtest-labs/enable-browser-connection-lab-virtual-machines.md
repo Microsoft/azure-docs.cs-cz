@@ -4,10 +4,10 @@ description: DevTest Labs se teď integruje s Azure bastionu, jako vlastník tes
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 28a3c11f3df578265f9746a173fcb3029a132b26
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88870489"
 ---
 # <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>Povolit připojení prohlížeče na Azure DevTest Labs virtuálních počítačích 
@@ -18,7 +18,7 @@ Jako vlastník testovacího prostředí můžete povolit přístup ke všem virt
 
 Tento článek popisuje, jak povolit připojení prohlížeče na virtuálních počítačích testovacího prostředí.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 - Buď nasaďte hostitele bastionu v existující virtuální síti testovacího prostředí **(nebo)** připojte testovací prostředí k bastionu nakonfigurované virtuální síti.
 Informace o tom, jak nasadit hostitele bastionu ve virtuální síti, najdete v tématu  [Vytvoření hostitele Azure bastionu](../bastion/bastion-create-host-portal.md). Při vytváření hostitele bastionu vyberte virtuální síť testovacího prostředí. 
 - Uživatel testovacího prostředí musí mít roli **Čtenář** na hostiteli bastionu a virtuální síti s nakonfigurovaným bastionu. 
@@ -31,7 +31,7 @@ Nejprve je třeba vytvořit druhou podsíť ve virtuální síti bastionu, proto
 ## <a name="enable-vm-creation-in-the-subnet"></a>Povolit vytvoření virtuálního počítače v podsíti
 Nyní povolte vytváření virtuálních počítačů v této podsíti pomocí následujících kroků: 
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V levé navigační nabídce vyberte **všechny služby** . 
 1. Ze seznamu vyberte **DevTest Labs**. 
 1. V seznamu cvičení vyberte *testovací prostředí*. 

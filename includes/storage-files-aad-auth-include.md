@@ -9,10 +9,10 @@ ms.date: 07/30/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 1da1cfff05418219fdf5217b612103e50efca05d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87841959"
 ---
 [Soubory Azure](../articles/storage/files/storage-files-introduction.md) podporují ověřování na základě identity přes protokol SMB (Server Message Block) prostřednictvím [místních Active Directory Domain Services (služba AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) a [Azure Active Directory Domain Services (Azure služba AD DS)](../articles/active-directory-domain-services/overview.md). Tento článek se zaměřuje na to, jak můžou sdílené složky Azure používat doménové služby, a to buď místně, nebo v Azure, k podpoře přístupu na základě identity ke sdíleným složkám Azure přes protokol SMB. Povolení přístupu na základě identity pro sdílené složky Azure vám umožní nahradit stávající souborové servery službou Azure Shared File, aniž byste museli stávající adresářovou službu nahradit, a přitom zajistit bezproblémové uživatelské oprávnění ke sdíleným složkám. 

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: e531349e8f404380d9f0601caa3b66557c297062
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936829"
 ---
 # <a name="delete-azure-arc-enabled-sql-managed-instance"></a>Odstranit spravovanou instanci SQL s podporou ARC Azure
@@ -52,7 +52,7 @@ Deleted demo-mi from namespace arc
 
 ## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>Uvolnit deklarace identity trvalého svazku Kubernetes (PVC)
 
-Odstraněním spravované instance SQL se neodstraní přidružené [virtuální okruhy](https://kubernetes.io/docs/concepts/storage/persistent-volumes/). Toto chování je úmyslné. Záměrem je pomáhat uživateli získat přístup k souborům databáze v případě, že odstranění instance bylo nechtěné. Odstraňování trvalých virtuálních okruhů není povinné. Doporučuje se to ale. Pokud tyto virtuální okruhy neuvolníte, nakonec se ukončí s chybami, protože cluster Kubernetes nemá dostatek místa na disku. Pokud chcete znovu získat trvalé virtuální okruhy, proveďte následující kroky:
+Odstraněním spravované instance SQL se neodstraní přidružené [virtuální okruhy](https://kubernetes.io/docs/concepts/storage/persistent-volumes/). Toto chování je úmyslné. Záměrem je pomoct uživateli získat přístup k souborům databáze v případě, že odstranění instance bylo nechtěné. Odstraňování deklarací identity trvalých svazků není povinné. Doporučuje se to ale. Pokud tyto virtuální okruhy neuvolníte, nakonec se ukončí s chybami, protože cluster Kubernetes nemá dostatek místa na disku. Pokud chcete získat zpět deklarace identity trvalých svazků, proveďte následující kroky:
 
 ### <a name="1-list-the-pvcs-for-the-server-group-you-deleted"></a>1. vypíšete okruhy PVC pro skupinu serverů, kterou jste odstranili.
 Pokud chcete zobrazit seznam virtuálních okruhů, spusťte následující příkaz:
@@ -76,13 +76,13 @@ Obecný formát tohoto příkazu je:
 kubectl delete pvc <name of pvc>
 ```
 
-Příklad:
+Například:
 ```console
 kubectl delete pvc data-demo-mi-0 -n arc
 kubectl delete pvc logs-demo-mi-0 -n arc
 ```
 
-Každý z těchto příkazů kubectl ověří úspěšné odstranění trvalého virtuálního okruhu. Příklad:
+Každý z těchto příkazů kubectl ověří úspěšné odstranění trvalého virtuálního okruhu. Například:
 ```console
 persistentvolumeclaim "data-demo-mi-0" deleted
 persistentvolumeclaim "logs-demo-mi-0" deleted

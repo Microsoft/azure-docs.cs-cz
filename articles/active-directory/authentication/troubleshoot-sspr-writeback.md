@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50e202d26574c0fc8adfeb7f73eb150ebb1781af
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89663857"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Řešení potíží se zpětným zápisem pro Samoobslužné resetování hesla ve službě Azure Active Directory
@@ -104,29 +104,29 @@ Azure AD Connect vyžaduje pro zpětný zápis hesla služba AD DS **resetován�
 1. Přihlaste se k serveru Azure AD Connect a spusťte **Synchronization Service Manager** výběrem možnosti **Spustit**  >  **synchronizaci služby**.
 1. Na kartě **konektory** vyberte konektor on-premises **Active Directory Domain Services** a pak vyberte **vlastnosti**.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="Synchronization Service Manager zobrazení úprav vlastností" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="Restartování služby Azure AD Sync pomocí grafického uživatelského rozhraní" border="false":::
   
 1. V automaticky otevíraném okně vyberte **připojit k doménové struktuře služby Active Directory** a poznamenejte si vlastnost **uživatelské jméno** . Tato vlastnost je účet služba AD DS, který Azure AD Connect používá k provedení synchronizace adresářů.
 
     Aby Azure AD Connect mohl provést zpětný zápis hesla, musí mít účet služba AD DS oprávnění resetovat heslo. Oprávnění k tomuto uživatelskému účtu zkontrolujete v následujících krocích.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager-properties.png" alt-text="Hledání uživatelského účtu služby Active Directory služby synchronizace" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager-properties.png" alt-text="Restartování služby Azure AD Sync pomocí grafického uživatelského rozhraní" border="false":::
   
 1. Přihlaste se k místnímu řadiči domény a spusťte aplikaci **Uživatelé a počítače služby Active Directory** .
 1. Vyberte **zobrazení** a ujistěte se, že je povolená možnost **Pokročilé funkce** .  
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-advanced-features.png" alt-text="Uživatelé a počítače služby Active Directory zobrazují pokročilé funkce" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-advanced-features.png" alt-text="Restartování služby Azure AD Sync pomocí grafického uživatelského rozhraní" border="false":::
   
 1. Vyhledejte služba AD DS uživatelský účet, který chcete ověřit. Klikněte pravým tlačítkem na název účtu a vyberte **vlastnosti**.  
 1. V automaticky otevíraném okně přejdete na kartu **zabezpečení** a vyberte **Upřesnit**.  
 1. V místním okně **Upřesnit nastavení zabezpečení pro správce** přejděte na kartu **efektivní přístup** .
 1. Zvolte **Vybrat uživatele**, vyberte účet služba AD DS používaný v Azure AD Connect a pak vyberte **Zobrazit efektivní přístup**.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-effective-access.png" alt-text="Karta platného přístupu zobrazující účet synchronizace" border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-effective-access.png" alt-text="Restartování služby Azure AD Sync pomocí grafického uživatelského rozhraní" border="false":::
   
 1. Posuňte se dolů a vyhledejte **heslo pro resetování**. Pokud má položka značku zaškrtnutí, má účet služba AD DS oprávnění resetovat heslo vybraného uživatelského účtu služby Active Directory.  
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/check-permissions.png" alt-text="Ověřuje se, jestli má účet synchronizace oprávnění resetovat heslo." border="false":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/check-permissions.png" alt-text="Restartování služby Azure AD Sync pomocí grafického uživatelského rozhraní" border="false":::
 
 ## <a name="common-password-writeback-errors"></a>Běžné chyby zpětného zápisu hesla
 
@@ -150,7 +150,7 @@ Osvědčeným postupem při odstraňování potíží se zpětným zápisem hesl
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>Pokud je zdrojem události ADSync
 
-| Kód | Název nebo zpráva | Popis |
+| Kód | Název nebo zpráva | Description |
 | --- | --- | --- |
 | 6329 | BAIL: MMS (4924) 0x80230619: "omezení brání změně hesla na aktuálně zadaný." | K této události dojde, když se služba zpětného zápisu hesla pokusí nastavit heslo v místním adresáři, které nesplňuje stáří hesla, historii, složitost nebo požadavky na filtrování domény. <br> <br> Pokud máte minimální stáří hesla a v časovém intervalu jste nedávno změnili heslo, nebudete moct znovu změnit heslo, dokud nedosáhne zadaného stáří ve vaší doméně. Pro účely testování musí být minimální stáří nastavené na 0. <br> <br> Pokud máte povolené požadavky na historii hesel, musíte vybrat heslo, které se nepoužilo v posledních *n* časech, kde *N* je nastavení historie hesel. Pokud vyberete heslo, které se v posledních *N* časech používalo, zobrazí se v tomto případě chyba. Pro účely testování by měla být historie hesel nastavená na 0. <br> <br> Pokud máte požadavky na složitost hesla, budou všechny tyto zásady vynutily, když se uživatel pokusí změnit nebo resetovat heslo. <br> <br> Pokud máte povolené filtry hesel a uživatel vybere heslo, které nesplňuje kritéria filtrování, operace obnovení nebo změny se nezdařila. |
 | 6329 | MMS (3040): admaexport. cpp (2837): Server neobsahuje ovládací prvek zásad hesel LDAP. | K tomuto problému dochází, pokud se na řadičích domény nepovoluje LDAP_SERVER_POLICY_HINTS_OID Control (1.2.840.113556.1.4.2066). Chcete-li použít funkci zpětného zápisu hesla, je nutné povolit ovládací prvek. K tomu je potřeba, aby řadiče domény byly na Windows serveru 2008 R2 nebo novějším. |
@@ -158,7 +158,7 @@ Osvědčeným postupem při odstraňování potíží se zpětným zápisem hesl
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Pokud je zdrojem události PasswordResetService
 
-| Kód | Název nebo zpráva | Popis |
+| Kód | Název nebo zpráva | Description |
 | --- | --- | --- |
 | 31001 | PasswordResetStart | Tato událost označuje, že místní služba zjistila požadavek na resetování hesla pro federované, předávací ověřování nebo uživatele synchronizující hodnotu hash hesla, které pocházejí z cloudu. Tato událost představuje první událost při každé operaci zpětného zápisu hesla a obnovení. |
 | 31002 | PasswordResetSuccess | Tato událost označuje, že uživatel během operace resetování hesla vybral nové heslo. Zjistili jsme, že toto heslo splňuje požadavky na heslo společnosti. Heslo se úspěšně zapsalo zpátky do místního prostředí Active Directory. |
@@ -217,7 +217,7 @@ Abychom vám mohli správně pomoct, požádáme o to, abyste při otevírání 
 * **Kód podpory**: Jaký byl kód podpory, který byl vygenerován při uživateli, který chybu viděl?
    * Chcete-li najít tento kód, reprodukování chyby a potom vyberte odkaz na **Kód podpory** v dolní části obrazovky a odešlete pracovníkovi podpory identifikátor GUID, který je výsledkem.
 
-    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="Kód podpory je umístěný v pravém dolním rohu okna webového prohlížeče.":::
+    :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="Restartování služby Azure AD Sync pomocí grafického uživatelského rozhraní":::
 
   * Pokud se nacházíte na stránce bez kódu podpory v dolní části, vyberte F12, vyhledejte identifikátor SID a CID a odešlete tyto dva výsledky technickému pracovníkovi podpory.
 * **Datum, čas a časové pásmo**: zahrnuje přesné datum a čas v *časovém pásmu* , ke kterému došlo k chybě.

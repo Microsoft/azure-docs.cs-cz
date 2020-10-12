@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: b9550f365eb11ffff87add041824504488c0de15
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619929"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Víceklientské aplikace s nástroji elastické databáze a zabezpečením na úrovni řádků
@@ -254,7 +254,7 @@ GO
 ```
 
 > [!TIP]
-> Ve složitém projektu může být nutné přidat predikát na stovky tabulek, což může být zdlouhavé. K dispozici je uložená procedura pomocníka, která automaticky generuje zásadu zabezpečení a přidá predikát do všech tabulek ve schématu. Další informace najdete v blogovém příspěvku v tématu [použití zabezpečení na úrovni řádků pro všechny tabulky pomocníka (blog)](https://techcommunity.microsoft.com/t5/sql-server/apply-row-level-security-to-all-tables-helper-script/ba-p/384360).
+> Ve složitém projektu může být nutné přidat predikát na stovky tabulek, což může být zdlouhavé. K dispozici je uložená procedura pomocníka, která automaticky generuje zásadu zabezpečení a přidá predikát do všech tabulek ve schématu. Další informace najdete v blogovém příspěvku na stránce [použít Row-Level zabezpečení pro všechny tabulky – Pomocný skript (blog)](https://techcommunity.microsoft.com/t5/sql-server/apply-row-level-security-to-all-tables-helper-script/ba-p/384360).
 
 Když teď ukázkovou aplikaci znovu spustíte, klienti uvidí jenom řádky, které do nich patří. Kromě toho aplikace nemůže vkládat řádky, které patří do jiných klientů než z toho, který je aktuálně připojen k databázi horizontálních oddílů. Aplikace také nemůže aktualizovat TenantId ve všech řádcích, které může vidět. Pokud se aplikace pokusí udělat jednu, vyvolá se DbUpdateException.
 
@@ -303,7 +303,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 
 > [!NOTE]
 > Pokud použijete výchozí omezení pro Entity Framework projekt, doporučujeme *Nezahrnovat sloupec* TenantId do datového modelu EF. Toto doporučení je způsobeno tím, že Entity Framework dotazy automaticky poskytnou výchozí hodnoty, které přepíší výchozí omezení vytvořená v T-SQL, které používají \_ kontext relace.
-> Chcete-li použít výchozí omezení v ukázkovém projektu, například byste měli odebrat TenantId z DataClasses.cs (a spustit příkaz Přidat-migraci v konzole správce balíčků) a použít T-SQL, abyste zajistili, že pole v databázových tabulkách existuje pouze. V tomto případě EF při vkládání dat automaticky dodává nesprávné výchozí hodnoty.
+> Chcete-li použít výchozí omezení v ukázkovém projektu, například byste měli odebrat TenantId z DataClasses.cs (a spustit Add-Migration v konzole správce balíčků) a použít T-SQL, abyste zajistili, že pole existuje pouze v databázových tabulkách. V tomto případě EF při vkládání dat automaticky dodává nesprávné výchozí hodnoty.
 
 ### <a name="optional-enable-a-superuser-to-access-all-rows"></a>Volitelné Povolit *uživateli* přístup ke všem řádkům
 
@@ -342,13 +342,13 @@ GO
 ### <a name="maintenance"></a>Údržba
 
 - **Přidávání nových horizontálních oddílů**: spusťte skript T-SQL, který povolí RLS na všech nových horizontálních oddílů, jinak se dotazy na tyto horizontálních oddílů nefiltrují.
-- **Přidávání nových tabulek**: Pokud se vytvoří nová tabulka, přidejte do zásad zabezpečení na všech horizontálních oddílů predikát Filter a Block. Jinak se dotazy na novou tabulku nefiltrují. Toto sčítání může být automatizováno pomocí triggeru DDL, jak je popsáno v tématu [použití zabezpečení na úrovni řádků automaticky u nově vytvořených tabulek (blog)](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393).
+- **Přidávání nových tabulek**: Pokud se vytvoří nová tabulka, přidejte do zásad zabezpečení na všech horizontálních oddílů predikát Filter a Block. Jinak se dotazy na novou tabulku nefiltrují. Toto sčítání může být automatizováno pomocí triggeru DDL, jak je popsáno v tématu [použití Row-Level zabezpečení automaticky u nově vytvořených tabulek (blog)](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393).
 
 ## <a name="summary"></a>Shrnutí
 
 Nástroje elastické databáze a zabezpečení na úrovni řádků lze použít společně k horizontálnímu navýšení kapacity datové vrstvy aplikace s podporou pro více tenantů i pro jednoho tenanta horizontálních oddílů. Více tenantů horizontálních oddílů se dá použít k efektivnějšímu ukládání dat. Tato efektivita je vyslovovaná tam, kde velký počet klientů obsahuje jenom několik řádků dat. Jeden tenant horizontálních oddílů může podporovat klienty úrovně Premium, kteří mají přísnější požadavky na výkon a izolaci. Další informace najdete v referenčních informacích o [zabezpečení na úrovni řádků][rls].
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Co je elastický fond Azure?](elastic-pool-overview.md)
 - [Horizontální navýšení kapacity s Azure SQL Database](elastic-scale-introduction.md)

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
 ms.openlocfilehash: c7ed1a8fceeddecb942edb541c6112492a6e5a2d
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91410436"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>Kurz: nasazení spravovaného clusteru Service Fabric (Preview)
@@ -29,7 +29,7 @@ Tato část řady se zabývá těmito postupy:
 > * Nasazení spravovaného clusteru Service Fabric
 > * Přidání typu primárního uzlu do clusteru
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -67,7 +67,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ### <a name="create-a-service-fabric-managed-cluster"></a>Vytvoření spravovaného clusteru Service Fabric
 
-V tomto kroku vytvoříte Service Fabric spravovaný cluster pomocí příkazu PowerShellu New-AzServiceFabricManagedCluster. Následující příklad vytvoří ve skupině prostředků s názvem myResourceGroup cluster s názvem myCluster. Tato skupina prostředků se vytvořila v předchozím kroku v oblasti eastus2.
+V tomto kroku vytvoříte Service Fabric spravovaný cluster pomocí příkazu New-AzServiceFabricManagedCluster PowerShellu. Následující příklad vytvoří ve skupině prostředků s názvem myResourceGroup cluster s názvem myCluster. Tato skupina prostředků se vytvořila v předchozím kroku v oblasti eastus2.
 
 Pro tento krok zadejte vlastní hodnoty pro následující parametry:
 

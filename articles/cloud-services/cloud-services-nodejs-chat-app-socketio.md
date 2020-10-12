@@ -11,10 +11,10 @@ ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-js
 ms.openlocfilehash: a3f661aa31511c5f1cf35d2e3c0429af6ab0c997
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327523"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Vytvoření aplikace Node.js chatu pomocí Socket.IO v cloudové službě Azure
@@ -124,7 +124,7 @@ Po uložení změn do **server.js**pomocí následujících kroků nainstalujte 
     ```
 
    > [!NOTE]
-   > Pokud narazíte na problémy s emulátorem spouštění, např.: Start-AzureEmulator: došlo k neočekávané chybě.  Podrobnosti: došlo k neočekávané chybě. objekt komunikace, System. ServiceModel. Channels. kanálu ServiceChannel, nelze použít pro komunikaci, protože je ve stavu Faulted.
+   > Pokud narazíte na problémy s emulátorem spouštění, například: Start-AzureEmulator: došlo k neočekávané chybě.  Podrobnosti: došlo k neočekávané chybě. objekt komunikace, System. ServiceModel. Channels. kanálu ServiceChannel, nelze použít pro komunikaci, protože je ve stavu Faulted.
    >
    > Přeinstalujte AzureAuthoringTools v 2.7.1 a AzureComputeEmulator v 2,7 – zajistěte shodu verzí.
 
@@ -139,7 +139,7 @@ Po uložení změn do **server.js**pomocí následujících kroků nainstalujte 
     PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
     ```
 
-5. Pokud chcete nasadit aplikaci do Azure, použijte rutinu **Publish-AzureServiceProject** . Příklad:
+5. Pokud chcete nasadit aplikaci do Azure, použijte rutinu **Publish-AzureServiceProject** . Například:
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch

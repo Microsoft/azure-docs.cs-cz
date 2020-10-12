@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
 ms.openlocfilehash: 0c6129a24e6ed083114971df5f254eca54924400
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936390"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Normalizace v Azure Sentinel
@@ -97,7 +97,7 @@ Dostupné analyzátory času dotazů jsou k dispozici v [oficiálním úložišt
 
     1. **Kategorie**: můžete vybrat existující kategorii nebo vytvořit novou kategorii (například *NormalizedNetworkSessionsParsers*).
     
-        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="Uložit analyzátor":::
+        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="Nainstalovat nový analyzátor":::
 
 Aby bylo možné správně použít analyzátory, je nutné také nainstalovat prázdný analyzátor schématu sítě (který vytvoří prázdné tabulkové zobrazení všech polí schématu síťové relace) a meta-analyzátor sítě (který sjednotí všechny povolené analyzátory k vytvoření jednoho zobrazení dat z různých zdrojů v síťovém schématu). Instalace těchto dvou analyzátorů se provádí podobným způsobem jako u výše uvedených kroků.
 
@@ -107,15 +107,13 @@ Při ukládání funkce dotazu může být nutné zavřít Průzkumníka dotazů
 
 Jakmile je povoleno, můžete použít meta-parser k dotazování sjednoceného zobrazení na všechny aktuálně povolené analyzátory. Provedete to tak, že přejdete na stránku protokoly ověřovacích protokolů a zadáte dotaz meta-parser:
 
-:::image type="content" source="./media/normalization/query-parser.png" alt-text="Dotazování analyzátoru":::
+:::image type="content" source="./media/normalization/query-parser.png" alt-text="Nainstalovat nový analyzátor":::
  
 K meta analyzátoru nebo k jednotlivým analyzátorům můžete přistupovat pomocí Průzkumníku dotazů na stránce protokoly Sentinel kliknutím na Průzkumník dotazů:
 
-:::image type="content" source="./media/normalization/query-explorer.png" alt-text="Průzkumník dotazů":::
+:::image type="content" source="./media/normalization/query-explorer.png" alt-text="Nainstalovat nový analyzátor" a vyhledejte složku ' NormalizedNetworkParsers ' (nebo název kategorie, který jste zvolili při vytváření analyzátorů):
 
-V pravém podokně rozbalte část "uložené dotazy" a vyhledejte složku ' NormalizedNetworkParsers ' (nebo název kategorie, který jste zvolili při vytváření analyzátorů):
-
-:::image type="content" source="./media/normalization/find-parser.png" alt-text="Najít analyzátor":::
+:::image type="content" source="./media/normalization/find-parser.png" alt-text="Nainstalovat nový analyzátor":::
 
 Můžete kliknout na každý jednotlivý analyzátor a zobrazit základní funkci, kterou používá, a spustit ji (nebo k ní přistupovat přímo pomocí aliasu, jak je popsáno výše). Všimněte si, že některé analyzátory mohou zachovat původní pole vedle sebe do normalizovaných polí pro usnadnění práce. To lze snadno upravit v dotazu analyzátoru.
 
@@ -124,11 +122,11 @@ Můžete kliknout na každý jednotlivý analyzátor a zobrazit základní funkc
 Výše uvedený postup můžete opakovat (hledání analyzátoru v Průzkumníku dotazů), kliknout na příslušný analyzátor a zobrazit jeho implementaci funkce.
 Můžete se například rozhodnout upravit meta analyzátor a přidat nebo odebrat jednotlivé analyzátory.
 
-:::image type="content" source="./media/normalization/customize-parser.png" alt-text="Přizpůsobení analyzátoru":::
+:::image type="content" source="./media/normalization/customize-parser.png" alt-text="Nainstalovat nový analyzátor":::
  
 Po změně funkce klikněte znovu na Uložit a použijte stejný název, alias a kategorii. Otevře se dialogové okno pro přepsání – stiskněte OK:
 
-:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="Opravdu":::
+:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="Nainstalovat nový analyzátor":::
 
 #### <a name="additional-information"></a>Další informace
 
