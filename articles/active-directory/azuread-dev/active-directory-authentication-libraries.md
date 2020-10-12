@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: cd31171d04dcf0102472e71fdcdc058471d79fb0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117715"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Knihovny ADAL (Azure Active Directory Authentication Library)
@@ -56,7 +56,7 @@ Knihovna Azure Active Directory Authentication Library (ADAL) v 1.0 umožňuje v
 | .NET |OWIN pro WS-Federation |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.WsFederation) |[GitHub](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.WsFederation) |[Webová aplikace MVC](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet) | |
 | .NET |Rozšíření identity protokolu pro .NET 4,5 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Protocol.Extensions) |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
 | .NET |Obslužná rutina JWT pro .NET 4,5 |[NuGet](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt) |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | | |
-| Node.js |Azure AD Passport |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Webové rozhraní API](../develop/authentication-flows-app-scenarios.md)| |
+| Node.js |Azure AD Passport |[npm](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Web API](../develop/authentication-flows-app-scenarios.md)| |
 
 ## <a name="scenarios"></a>Scénáře
 

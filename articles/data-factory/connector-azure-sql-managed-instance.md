@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 09/21/2020
 ms.openlocfilehash: 3a9216c665cfdcdaf07980ace0399fd927885262
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332113"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>Kopírování dat do a ze spravované instance SQL Azure pomocí Azure Data Factory
@@ -648,7 +648,7 @@ Když se data zkopírují do spravované instance SQL a z ní, používají se k
 | binární |Byte [] |
 | bit |Logická hodnota |
 | char |Řetězec, znak [] |
-| datum |DateTime |
+| date |DateTime |
 | Datum a čas |DateTime |
 | datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |

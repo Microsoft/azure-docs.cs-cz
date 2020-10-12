@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: a5c7296a0e7b7f6ea33c1f4a669675efd90f9e9a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261716"
 ---
 # <a name="understanding-layers-in-the-azure-maps-power-bi-visual"></a>Principy vrstev v Azure Maps Power BI vizuálu
@@ -87,15 +87,15 @@ Změňte způsob zobrazení dat na mapě:
 > [Přidání vrstvy bublin](power-bi-visual-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
-> [Přidat vrstvu pruhového grafu](power-bi-visual-add-bar-chart-layer.md)
+> [Přidání vrstvy pruhového grafu](power-bi-visual-add-bar-chart-layer.md)
 
 Přidat k mapě další kontext:
 
 > [!div class="nextstepaction"]
-> [Přidat referenční vrstvu](power-bi-visual-add-reference-layer.md)
+> [Přidání referenční vrstvy](power-bi-visual-add-reference-layer.md)
 
 > [!div class="nextstepaction"]
 > [Přidání vrstvy dlaždic](power-bi-visual-add-tile-layer.md)
 
 > [!div class="nextstepaction"]
-> [Zobrazit provoz v reálném čase](power-bi-visual-show-real-time-traffic.md)
+> [Zobrazení provozu v reálném čase](power-bi-visual-show-real-time-traffic.md)

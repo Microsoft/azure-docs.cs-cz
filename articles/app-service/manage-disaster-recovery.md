@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073741"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>Přesunutí aplikace App Service do jiné oblasti
@@ -17,13 +17,13 @@ Tento článek popisuje, jak přenést prostředky App Service zpátky do online
 
 Prostředky App Service jsou specifické pro oblast a nelze je přesouvat mezi oblastmi. Aplikaci musíte obnovit do nové aplikace v jiné oblasti a pak vytvořit konfigurace zrcadlení nebo prostředky pro novou aplikaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Žádné [Obnovení ze snímku](app-service-web-restore-snapshots.md) obvykle vyžaduje úroveň **Premium** , ale v režimu zotavení po havárii je automaticky povolen pro vaši ovlivněnou aplikaci, a to bez ohledu na to, ve které vrstvě se ovlivněná aplikace nachází.
 
 ## <a name="prepare"></a>Příprava
 
-Identifikujte všechny App Service prostředky, které aktuálně používá ovlivněná aplikace. Příklad:
+Identifikujte všechny App Service prostředky, které aktuálně používá ovlivněná aplikace. Například:
 
 - Aplikace služby App Service
 - [Plány služby App Service](overview-hosting-plans.md)
@@ -67,7 +67,7 @@ Pokud chcete jenom obnovit soubory z ovlivněné aplikace bez obnovení, použij
 
     ![Snímek obrazovky ovlivněné stránky aplikace Upozornění je zobrazeno, ale není zvýrazněno. Místo toho se zvýrazní položka profilu získat publikování.](media/manage-disaster-recovery/get-publish-profile.png)
 
-1. Otevřete stažený soubor a vyhledejte profil publikování, který obsahuje `ReadOnly - FTP` název. Toto je profil zotavení po havárii. Příklad:
+1. Otevřete stažený soubor a vyhledejte profil publikování, který obsahuje `ReadOnly - FTP` název. Toto je profil zotavení po havárii. Například:
 
     ```xml
     <publishProfile profileName="%app-name% - ReadOnly - FTP" publishMethod="FTP" publishUrl="ftp://%ftp-site%/site/wwwroot" ftpPassiveMode="True" userName="%app-name%\$%app-name%" userPWD="" destinationAppUrl="http://%app-name%.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites">
@@ -78,7 +78,7 @@ Pokud chcete jenom obnovit soubory z ovlivněné aplikace bez obnovení, použij
     Zkopírujte tři hodnoty atributu: 
         
     - `publishUrl`: název hostitele FTP
-    - `userName`a `userPWD` : přihlašovací údaje FTP
+    - `userName` a `userPWD` : přihlašovací údaje FTP
 
 1. Použijte klienta FTP podle vašeho výběru a připojte se k hostiteli FTP ovlivněné aplikace pomocí názvu hostitele a přihlašovacích údajů.
 

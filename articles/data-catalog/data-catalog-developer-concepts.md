@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: b65697c224f612a1bc9d5bfa193355832cafd73f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88799243"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog koncepce pro vývojáře
@@ -74,7 +74,7 @@ UŽIVATELSKÉ prostředí pak může zvolit, jak se má kombinace zobrazit. Exis
 Jak je uvedeno v části klíčové koncepty, model **Azure Data Catalogho** objektu obsahuje položky, které mohou být prostředky nebo anotace. Položky mají vlastnosti, které mohou být volitelné nebo povinné. Některé vlastnosti se vztahují na všechny položky. Některé vlastnosti se vztahují na všechny prostředky. Některé vlastnosti se vztahují pouze na konkrétní typy prostředků.
 
 ### <a name="system-properties"></a>Systémové vlastnosti
-<table><tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentáře</b></td></tr><tr><td>časové razítko</td><td>DateTime</td><td>Čas poslední změny položky Toto pole je generováno serverem při vložení položky a pokaždé, když je položka aktualizována. Hodnota této vlastnosti se ignoruje při vstupu operací publikování.</td></tr><tr><td>ID</td><td>Identifikátor URI</td><td>Absolutní adresa URL položky (jen pro čtení) Jedná se o jedinečný adresovatelný identifikátor URI pro položku.  Hodnota této vlastnosti se ignoruje při vstupu operací publikování.</td></tr><tr><td>typ</td><td>String</td><td>Typ prostředku (jen pro čtení).</td></tr><tr><td>značk</td><td>String</td><td>Řetězec odpovídající verzi položky, kterou lze použít pro optimistické řízení souběžnosti při provádění operací, které aktualizují položky v katalogu. "*" lze použít k vyhledání libovolné hodnoty.</td></tr></table>
+<table><tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentáře</b></td></tr><tr><td>časové razítko</td><td>DateTime</td><td>Čas poslední změny položky Toto pole je generováno serverem při vložení položky a pokaždé, když je položka aktualizována. Hodnota této vlastnosti se ignoruje při vstupu operací publikování.</td></tr><tr><td>ID</td><td>Identifikátor URI</td><td>Absolutní adresa URL položky (jen pro čtení) Jedná se o jedinečný adresovatelný identifikátor URI pro položku.  Hodnota této vlastnosti se ignoruje při vstupu operací publikování.</td></tr><tr><td>typ</td><td>Řetězec</td><td>Typ prostředku (jen pro čtení).</td></tr><tr><td>značk</td><td>Řetězec</td><td>Řetězec odpovídající verzi položky, kterou lze použít pro optimistické řízení souběžnosti při provádění operací, které aktualizují položky v katalogu. "*" lze použít k vyhledání libovolné hodnoty.</td></tr></table>
 
 ### <a name="common-properties"></a>Společné vlastnosti
 Tyto vlastnosti se vztahují na všechny typy kořenového prostředku a všechny typy poznámek.
@@ -88,21 +88,21 @@ Tyto vlastnosti se vztahují na všechny typy kořenového prostředku a všechn
 <p>
 Tyto vlastnosti se vztahují na všechny typy kořenových prostředků.
 
-<table><tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentáře</b></td></tr><tr><td>name</td><td>String</td><td>Název odvozený z informací o umístění zdroje dat</td></tr><tr><td>pevná</td><td>DataSourceLocation</td><td>Jedinečně popisuje zdroj dat a je jedním z identifikátorů pro daný prostředek. (Viz oddíl Dual identity).  Struktura DSL se liší podle protokolu a typu zdroje.</td></tr><tr><td>Datového</td><td>DataSourceInfo</td><td>Další podrobnosti o typu assetu.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Popisuje uživatele, který tento Asset naposledy zaregistroval.  Obsahuje jedinečné ID pro uživatele (UPN) a zobrazované jméno (lastName a firstName).</td></tr><tr><td>containerID</td><td>String</td><td>ID prostředku kontejneru pro zdroj dat Tato vlastnost není pro typ kontejneru podporována.</td></tr></table>
+<table><tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentáře</b></td></tr><tr><td>name</td><td>Řetězec</td><td>Název odvozený z informací o umístění zdroje dat</td></tr><tr><td>pevná</td><td>DataSourceLocation</td><td>Jedinečně popisuje zdroj dat a je jedním z identifikátorů pro daný prostředek. (Viz oddíl Dual identity).  Struktura DSL se liší podle protokolu a typu zdroje.</td></tr><tr><td>Datového</td><td>DataSourceInfo</td><td>Další podrobnosti o typu assetu.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Popisuje uživatele, který tento Asset naposledy zaregistroval.  Obsahuje jedinečné ID pro uživatele (UPN) a zobrazované jméno (lastName a firstName).</td></tr><tr><td>containerID</td><td>Řetězec</td><td>ID prostředku kontejneru pro zdroj dat Tato vlastnost není pro typ kontejneru podporována.</td></tr></table>
 
 ### <a name="common-non-singleton-annotation-properties"></a>Běžné vlastnosti anotace nesouvisející s jedním prvkem
 Tyto vlastnosti se vztahují na všechny typy poznámek bez typu Singleton (poznámky, které mohou být pro jednotlivé prostředky povoleny více).
 
 <table>
 <tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentáře</b></td></tr>
-<tr><td>key</td><td>String</td><td>Uživatelem zadaný klíč, který jedinečně identifikuje anotaci v aktuální kolekci. Délka klíče nesmí překročit 256 znaků.</td></tr>
+<tr><td>key</td><td>Řetězec</td><td>Uživatelem zadaný klíč, který jedinečně identifikuje anotaci v aktuální kolekci. Délka klíče nesmí překročit 256 znaků.</td></tr>
 </table>
 
 ### <a name="root-asset-types"></a>Typy kořenového prostředku
 Typy kořenového prostředku jsou tyto typy, které představují různé typy datových assetů, které mohou být registrovány v katalogu. U každého kořenového typu existuje zobrazení, které popisuje prostředky a poznámky, které jsou zahrnuty v zobrazení. Při publikování assetu pomocí REST API by měl být v odpovídajícím segmentu adresy URL {view_name} použit název zobrazení.
 
-<table><tr><td><b>Typ prostředku (název zobrazení)</b></td><td><b>Další vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Povolené poznámky</b></td><td><b>Komentáře</b></td></tr><tr><td>Tabulka ("tabulky")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Schéma<p>ColumnDescription<p>ColumnTag<p> Odborník<p>Náhled<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentace<p></td><td>Tabulka představuje jakákoli tabulková data.  Například: tabulka SQL, zobrazení SQL, Analysis Services tabulková tabulka, Analysis Services multidimenzionální dimenze, tabulka Oracle atd.   </td></tr><tr><td>Measure ("míry")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ představuje míru Analysis Services.</td></tr><tr><td></td><td>měrné</td><td>Sloupec</td><td></td><td>Metadata popisující míru</td></tr><tr><td></td><td>-Počítané </td><td>Logická hodnota</td><td></td><td>Určuje, zda je míra vypočítána.</td></tr><tr><td></td><td>Skupina</td><td>String</td><td></td><td>Fyzický kontejner pro měření</td></tr><td>Klíčový ukazatel výkonu (KPI)</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace</td><td></td></tr><tr><td></td><td>Skupina</td><td>String</td><td></td><td>Fyzický kontejner pro měření</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>Číselný výraz MDX nebo výpočet, který vrací cílovou hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>Číselný výraz MDX, který vrací skutečnou hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>Výraz MDX, který představuje stav klíčového ukazatele výkonu v určeném časovém okamžiku.</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>Výraz MDX, který vyhodnocuje hodnotu klíčového ukazatele výkonu v čase. Trend může být libovolné kritérium založené na čase, které je užitečné v konkrétním obchodním kontextu.</td>
-<tr><td>Sestava ("sestavy")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ představuje sestavu SQL Server Reporting Services. </td></tr><tr><td></td><td>assetCreatedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>String</td><td></td><td></td></tr><tr><td>Kontejner ("kontejnery")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ představuje kontejner dalších prostředků, jako je SQL Database, kontejner objektů blob Azure nebo model Analysis Services.</td></tr></table>
+<table><tr><td><b>Typ prostředku (název zobrazení)</b></td><td><b>Další vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Povolené poznámky</b></td><td><b>Komentáře</b></td></tr><tr><td>Tabulka ("tabulky")</td><td></td><td></td><td>Description<p>FriendlyName<p>Značka<p>Schéma<p>ColumnDescription<p>ColumnTag<p> Odborník<p>Preview<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentace<p></td><td>Tabulka představuje jakákoli tabulková data.  Například: tabulka SQL, zobrazení SQL, Analysis Services tabulková tabulka, Analysis Services multidimenzionální dimenze, tabulka Oracle atd.   </td></tr><tr><td>Measure ("míry")</td><td></td><td></td><td>Description<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ představuje míru Analysis Services.</td></tr><tr><td></td><td>měrné</td><td>Sloupec</td><td></td><td>Metadata popisující míru</td></tr><tr><td></td><td>-Počítané </td><td>Logická hodnota</td><td></td><td>Určuje, zda je míra vypočítána.</td></tr><tr><td></td><td>Skupina</td><td>Řetězec</td><td></td><td>Fyzický kontejner pro měření</td></tr><td>Klíčový ukazatel výkonu (KPI)</td><td></td><td></td><td>Description<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace</td><td></td></tr><tr><td></td><td>Skupina</td><td>Řetězec</td><td></td><td>Fyzický kontejner pro měření</td></tr><tr><td></td><td>goalExpression</td><td>Řetězec</td><td></td><td>Číselný výraz MDX nebo výpočet, který vrací cílovou hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>valueExpression</td><td>Řetězec</td><td></td><td>Číselný výraz MDX, který vrací skutečnou hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>statusExpression</td><td>Řetězec</td><td></td><td>Výraz MDX, který představuje stav klíčového ukazatele výkonu v určeném časovém okamžiku.</td></tr><tr><td></td><td>trendExpression</td><td>Řetězec</td><td></td><td>Výraz MDX, který vyhodnocuje hodnotu klíčového ukazatele výkonu v čase. Trend může být libovolné kritérium založené na čase, které je užitečné v konkrétním obchodním kontextu.</td>
+<tr><td>Sestava ("sestavy")</td><td></td><td></td><td>Description<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ představuje sestavu SQL Server Reporting Services. </td></tr><tr><td></td><td>assetCreatedDate</td><td>Řetězec</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Řetězec</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Řetězec</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Řetězec</td><td></td><td></td></tr><tr><td>Kontejner ("kontejnery")</td><td></td><td></td><td>Description<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ představuje kontejner dalších prostředků, jako je SQL Database, kontejner objektů blob Azure nebo model Analysis Services.</td></tr></table>
 
 ### <a name="annotation-types"></a>Typy poznámek
 Typy poznámek reprezentují typy metadat, které mohou být přiřazeny jiným typům v rámci katalogu.
@@ -111,7 +111,7 @@ Typy poznámek reprezentují typy metadat, které mohou být přiřazeny jiným 
 <tr><td><b>Typ anotace (název vnořeného zobrazení)</b></td><td><b>Další vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentáře</b></td></tr>
 
 <tr><td>Popis ("popisy")</td><td></td><td></td><td>Tato vlastnost obsahuje popis prostředku. Každý uživatel systému může přidat svůj vlastní popis.  Pouze tento uživatel může upravit objekt Description.  (Správci a vlastníci prostředků mohou odstranit objekt Description, ale Neupravovat ho). Systém uchovává popisy uživatelů samostatně.  Proto je k dispozici pole popisů každého assetu (jeden pro každého uživatele, který přispěl ke své znalosti o assetu, kromě možného toho, který obsahuje informace odvozené ze zdroje dat).</td></tr>
-<tr><td></td><td>description</td><td>řetězec</td><td>Krátký popis (2-3 řádků) prostředku</td></tr>
+<tr><td></td><td>Popis</td><td>řetězec</td><td>Krátký popis (2-3 řádků) prostředku</td></tr>
 
 <tr><td>Tag ("značky")</td><td></td><td></td><td>Tato vlastnost definuje značku pro určitý Asset. Každý uživatel systému může do prostředku přidat více značek.  Pouze uživatel, který vytvořil objekty značek, je může upravovat.  (Správci a vlastníci prostředků mohou odstranit objekt značky, ale Neupravovat ho). Systém uchovává značky uživatelů samostatně.  Proto je v každém prostředku pole objektů značek.</td></tr>
 <tr><td></td><td>značka</td><td>řetězec</td><td>Značka popisující prostředek.</td></tr>
@@ -123,12 +123,12 @@ Typy poznámek reprezentují typy metadat, které mohou být přiřazeny jiným 
 <tr><td></td><td>columns</td><td>Sloupec []</td><td>Pole objektů sloupce. Popisují sloupec s informacemi odvozenými ze zdroje dat.</td></tr>
 
 <tr><td>ColumnDescription ("columnDescriptions")</td><td></td><td></td><td>Tato vlastnost obsahuje popis sloupce.  Každý uživatel systému může přidat vlastní popisy pro více sloupců (maximálně jeden pro každý sloupec). Pouze uživatel, který vytvořil objekty ColumnDescription, je může upravit.  (Správci a vlastníci prostředků mohou odstranit objekt ColumnDescription, ale ne ho upravovat). Systém uchovává popisy sloupců těchto uživatelů samostatně.  Proto je k dispozici pole objektů ColumnDescription u každého assetu (jeden pro každý sloupec pro každého uživatele, který přispěl jejich znalosti o sloupci kromě možného toho, který obsahuje informace odvozené ze zdroje dat).  ColumnDescription se dá volně svázat se schématem, aby se mohl dostat mimo synchronizaci. ColumnDescription může popsat sloupec, který už ve schématu neexistuje.  Je až do zapisovače, aby bylo možné zachovat popis a schéma v synchronizaci.  Zdroj dat může mít také informace o popiscích sloupců a jsou další objekty ColumnDescription, které by se vytvořily při spuštění tohoto nástroje.</td></tr>
-<tr><td></td><td>columnName</td><td>String</td><td>Název sloupce, na který tento popis odkazuje</td></tr>
-<tr><td></td><td>description</td><td>String</td><td>krátký popis (2-3 řádků) sloupce.</td></tr>
+<tr><td></td><td>columnName</td><td>Řetězec</td><td>Název sloupce, na který tento popis odkazuje</td></tr>
+<tr><td></td><td>Popis</td><td>Řetězec</td><td>krátký popis (2-3 řádků) sloupce.</td></tr>
 
 <tr><td>ColumnTag ("columnTags")</td><td></td><td></td><td>Tato vlastnost obsahuje značku pro sloupec. Každý uživatel systému může do daného sloupce přidat více značek a může přidat značky pro více sloupců. Pouze uživatel, který vytvořil objekty ColumnTag, je může upravit. (Správci a vlastníci prostředků mohou odstranit objekt ColumnTag, ale ne ho upravovat). Systém zachovává značky sloupců těchto uživatelů samostatně.  Proto je pro každý Asset k dispozici pole ColumnTag objektů.  ColumnTag se dá volně svázat se schématem, aby se mohl dostat mimo synchronizaci. ColumnTag může popsat sloupec, který už ve schématu neexistuje.  Je až do zapisovače, aby bylo možné zachovat značku sloupce a schéma v synchronizaci.</td></tr>
-<tr><td></td><td>columnName</td><td>String</td><td>Název sloupce, na který se tato značka odkazuje</td></tr>
-<tr><td></td><td>značka</td><td>String</td><td>Značka popisující sloupec</td></tr>
+<tr><td></td><td>columnName</td><td>Řetězec</td><td>Název sloupce, na který se tato značka odkazuje</td></tr>
+<tr><td></td><td>značka</td><td>Řetězec</td><td>Značka popisující sloupec</td></tr>
 
 <tr><td>Expert (experti)</td><td></td><td></td><td>Tato vlastnost obsahuje uživatele, který se považuje za odborníka v datové sadě. Bublinová stanoviska expertů (popisy) k hornímu okraji uživatelského rozhraní při výpisu popisu. Každý uživatel může zadat své odborníky. Pouze tento uživatel může upravit objekt Experts. (Správci a vlastníci prostředků mohou odstranit odborníka na objekty, ale ne upravovat).</td></tr>
 <tr><td></td><td>odborník</td><td>SecurityPrincipal</td><td></td></tr>
@@ -142,7 +142,7 @@ Typy poznámek reprezentují typy metadat, které mohou být přiřazeny jiným 
 
 <tr><td>TableDataProfile ("tableDataProfiles")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>numberOfRows</td></td><td>int</td><td>Počet řádků v sadě dat</td></tr>
-<tr><td></td><td>velikost</td><td>long</td><td>Velikost datové sady v bajtech  </td></tr>
+<tr><td></td><td>size</td><td>long</td><td>Velikost datové sady v bajtech  </td></tr>
 <tr><td></td><td>schemaModifiedTime</td><td>řetězec</td><td>Čas poslední úpravy schématu</td></tr>
 <tr><td></td><td>dataModifiedTime</td><td>řetězec</td><td>Čas poslední změny datové sady (přidání, změna nebo odstranění dat)</td></tr>
 
@@ -150,8 +150,8 @@ Typy poznámek reprezentují typy metadat, které mohou být přiřazeny jiným 
 <tr><td></td><td>columns</td></td><td>ColumnDataProfile[]</td><td>Pole profilů dat sloupců</td></tr>
 
 <tr><td>ColumnDataClassification ("columnDataClassifications")</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>columnName</td><td>String</td><td>Název sloupce, na který se tato klasifikace odkazuje</td></tr>
-<tr><td></td><td>klasifikace</td><td>String</td><td>Klasifikace dat v tomto sloupci</td></tr>
+<tr><td></td><td>columnName</td><td>Řetězec</td><td>Název sloupce, na který se tato klasifikace odkazuje</td></tr>
+<tr><td></td><td>klasifikace</td><td>Řetězec</td><td>Klasifikace dat v tomto sloupci</td></tr>
 
 <tr><td>Dokumentace ("dokumentace")</td><td></td><td></td><td>K danému prostředku může být přidružena pouze jedna dokumentace.</td></tr>
 <tr><td></td><td>mimeType</td><td>řetězec</td><td>Typ MIME obsahu</td></tr>
@@ -257,7 +257,7 @@ V rámci **Azure Data Catalog** Preview se v seznamu oprávnění podporuje jeno
 
 Ve výchozím nastavení má každý ověřený uživatel právo **číst** pro jakoukoli položku v katalogu, pokud není viditelnost omezen na sadu objektů zabezpečení v oprávněních.
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 Žádosti o **vložení** a **odeslání** položky zobrazení lze použít k řízení rolí a oprávnění: Kromě datové části položky mohou být pro dvě systémové vlastnosti zadány **role** a **oprávnění**.
 
 > [!NOTE]

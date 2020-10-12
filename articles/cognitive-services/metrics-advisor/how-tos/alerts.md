@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 870b412a1fa5d362ac7b5be1df6c92d95c2936ca
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90977780"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Postupy: Konfigurace výstrah a získání oznámení pomocí zavěšení
@@ -88,11 +88,11 @@ Pokud chcete vytvořit službu Azure DevOps Hook, budete muset přidat následuj
 Přejít na stránku podrobností metriky, kde najdete část **Nastavení výstrah** v levém dolním rohu stránky s podrobnostmi metrik. Obsahuje seznam všech nastavení výstrah, která se vztahují na vybranou konfiguraci zjišťování. Při vytvoření nové konfigurace detekce není k dispozici žádné nastavení výstrahy a nebudou odeslány žádné výstrahy.  
 K úpravě nastavení výstrah můžete použít ikony **Přidat**, **Upravit** a **Odstranit** .
 
-:::image type="content" source="../media/alerts/alert-setting.png" alt-text="Položka nabídky nastavení výstrah":::
+:::image type="content" source="../media/alerts/alert-setting.png" alt-text="okno pro vytvoření webového zavěšení.":::
 
 Kliknutím na tlačítka **Přidat** nebo **Upravit** zobrazíte okno pro přidání nebo úpravu nastavení výstrah.
 
-:::image type="content" source="../media/alerts/edit-alert.png" alt-text="Přidat nebo upravit nastavení výstrah":::
+:::image type="content" source="../media/alerts/edit-alert.png" alt-text="okno pro vytvoření webového zavěšení.":::
 
 **Název nastavení výstrahy**: název tohoto nastavení výstrahy. Zobrazí se v nadpisu e-mailu s výstrahou.
 
@@ -131,10 +131,10 @@ Selektor **operátoru** je logický vztah jednotlivých sekcí, aby bylo možné
 
 |Operátor  |Popis  |
 |---------|---------|
-|AND     | Odeslat výstrahu pouze v případě, že řada odpovídá jednotlivým částem výstrahy a všechny datové body jsou anomálie. Pokud mají metriky různé názvy dimenzí, výstraha se nikdy neaktivuje.         |
+|A     | Odeslat výstrahu pouze v případě, že řada odpovídá jednotlivým částem výstrahy a všechny datové body jsou anomálie. Pokud mají metriky různé názvy dimenzí, výstraha se nikdy neaktivuje.         |
 |NEBO     | Odeslat výstrahu, pokud alespoň jedna část obsahuje anomálie.         |
 
-:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="Operator pro více oddílů nastavení výstrahy":::
+:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="okno pro vytvoření webového zavěšení.":::
 
 ## <a name="next-steps"></a>Další kroky
 

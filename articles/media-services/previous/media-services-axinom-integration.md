@@ -17,10 +17,10 @@ ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1f486bfe7cb96e81cef2da64552be5ddfd87990b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264687"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Distribuce licencí Widevine pro Azure Media Services pomocí Axinomu
@@ -58,7 +58,7 @@ Dynamickou ochranu CENC můžete nakonfigurovat pomocí více DRM pro PŘERUŠOV
 
 Důvody, proč Azure Active Directory nelze použít jako STS pro licenční server Widevine pro Axinom, najdete v části [generování tokenu JWT](media-services-axinom-integration.md#jwt-token-generation) .
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 1. K vygenerování klíče obsahu pro konfiguraci služby doručování klíčů je nutné použít Axinom zadaného klíčového počátečního klíče (8888000000000000000000000000000000000000) a vygenerované nebo vybrané ID klíče. Axinom License Server vystavuje všechny licence obsahující klíče obsahu založené na stejném počátečním klíči, který je platný pro testování i pro produkční prostředí.
 2. Adresa URL pro získání licence Widevine pro testování: [https://drm-widevine-licensing.axtest.net/AcquireLicense](https://drm-widevine-licensing.axtest.net/AcquireLicense) . Jsou povoleny protokoly HTTP a HTTS.
 
@@ -146,7 +146,7 @@ Licenční server Axinom Widevine
 <add key="ax:keyseed" value="8888000000000000000000000000000000000000" />
 ```
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 1. I když služba pro doručování licencí PlayReady v AMS vyžaduje "Bearer =" před ověřovacím tokenem, Axinom licenční server Widevine ho nepoužívá.
 2. Axinom Communications Key se používá jako podpisový klíč. Klíč je řetězec v šestnáctkové soustavě, ale musí být zpracován jako série bajtů, nikoli String při kódování. Toho je dosaženo metodou ConvertHexStringToByteArray.
 
@@ -188,7 +188,7 @@ public static string GetKeyID(string dashUrl)
 }
 ```
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 S nejnovějším přidáním podpory Widevine do obou Azure Media Services Content Protection a Azure Media Player je možné implementovat streamování POMLČKy + multi-Native-DRM (PlayReady + Widevine) s licenční službou PlayReady v AMS i serverem Widevine License Server od Axinom pro následující moderní prohlížeče:
 

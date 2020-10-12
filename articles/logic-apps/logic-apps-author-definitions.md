@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 9163071237041d7c8510a644c573e3763434bb0c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87060669"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Vytváření, úpravy nebo rozšiřování souborů JSON pro definice pracovních postupů aplikací logiky v Azure Logic Apps
@@ -28,7 +28,7 @@ Pokud s Logic Apps začínáte, přečtěte si, [jak vytvořit svou první aplik
 
 ## <a name="edit-json---azure-portal"></a>Upravit Azure Portal JSON
 
-1. Přihlaste se na portál <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
+1. Přihlaste se k <a href="https://portal.azure.com" target="_blank">portálu Azure Portal</a>.
 
 2. V nabídce vlevo vyberte **všechny služby**.
 Do vyhledávacího pole Najděte "Logic Apps" a potom z výsledků vyberte svou aplikaci logiky.
@@ -149,7 +149,7 @@ Nejprve pracovní postup získá seznam článků. Pracovní postup potom použ�
 
 *   [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md)Funkce zkontroluje, jestli kategorie odpovídá známé definované kategorii.
 
-*   Po získání vyhovující kategorie se v příkladu položka z mapy načte pomocí hranatých závorek:`parameters[...]`
+*   Po získání vyhovující kategorie se v příkladu položka z mapy načte pomocí hranatých závorek: `parameters[...]`
 
 ``` json
 {

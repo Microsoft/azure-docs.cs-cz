@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 4443b0f479079a4722a5d62fea40afcb4a58632d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261752"
 ---
 # <a name="add-a-bubble-layer"></a>Přidání vrstvy bublin
@@ -49,7 +49,7 @@ Pokud se pole předává do kontejneru **Velikost** v podokně **pole** , bublin
 |---------------------|--------------|
 | Minimální velikost            | Minimální velikost bublin při škálování dat|
 | Maximální velikost            | Maximální velikost bublin při škálování dat|
-| Size – metoda škálování | Algoritmus škálování používaný k určení relativní velikosti bublin.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;• Lineární rozsah vstupních dat lineárně mapovaných na minimum a maximální velikost. (výchozí)<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Log – rozsah vstupních datových logarithmically mapovaných na minimum a maximální velikost.<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Krychlový-Bézierovo – zadejte hodnoty x1, Y1, X2, Y2 křivky krychle, která umožňuje vytvořit vlastní metodu škálování. |
+| Size – metoda škálování | Algoritmus škálování používaný k určení relativní velikosti bublin.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;• Lineární rozsah vstupních dat lineárně mapovaných na minimum a maximální velikost. (výchozí)<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Log – rozsah vstupních datových logarithmically mapovaných na minimum a maximální velikost.<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Cubic-Bezier – zadáním hodnot x1, Y1, X2, Y2 Cubic-Bezier křivky vytvořte vlastní metodu škálování. |
 
 Když je **Metoda škálování velikosti** nastavená na **protokol**, zpřístupní se následující možnosti.
 
@@ -67,25 +67,25 @@ Pokud je **Metoda škálování velikosti** nastavená na **krychlové**, budou 
 | Y2      | Parametr Y2 Bézierovy křivky krychle |
 
 > [!TIP]
-> [https://cubic-bezier.com/](https://cubic-bezier.com/)má užitečný nástroj pro vytváření parametrů pro křivky krychlových a Bézierových čar.
+> [https://cubic-bezier.com/](https://cubic-bezier.com/) má užitečný nástroj pro vytváření parametrů pro Cubic-Bezier křivky.
 
 ## <a name="next-steps"></a>Další kroky
 
 Změňte způsob zobrazení dat na mapě:
 
 > [!div class="nextstepaction"]
-> [Přidat vrstvu pruhového grafu](power-bi-visual-add-bar-chart-layer.md)
+> [Přidání vrstvy pruhového grafu](power-bi-visual-add-bar-chart-layer.md)
 
 Přidat k mapě další kontext:
 
 > [!div class="nextstepaction"]
-> [Přidat referenční vrstvu](power-bi-visual-add-reference-layer.md)
+> [Přidání referenční vrstvy](power-bi-visual-add-reference-layer.md)
 
 > [!div class="nextstepaction"]
 > [Přidání vrstvy dlaždic](power-bi-visual-add-tile-layer.md)
 
 > [!div class="nextstepaction"]
-> [Zobrazit provoz v reálném čase](power-bi-visual-show-real-time-traffic.md)
+> [Zobrazení provozu v reálném čase](power-bi-visual-show-real-time-traffic.md)
 
 Přizpůsobení vizuálu:
 

@@ -13,10 +13,10 @@ ms.date: 07/16/2020
 ms.author: aahi
 keywords: místní, Docker, kontejner, identifikace
 ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91461508"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Instalace a spuštění kontejnerů obličeje (Preview)
@@ -26,7 +26,7 @@ ms.locfileid: "91461508"
 
 Azure Cognitive Services Face API poskytuje kontejner pro Linux Docker, který detekuje a analyzuje lidské obličeje na obrázcích. Také identifikuje atributy, které zahrnují orientační orientační prvky, jako jsou například nos a oči, pohlaví, věk a další funkce obličeje v počítači. Kromě detekce může ploška kontrolovat, jestli dvě plošky ve stejné imagi nebo v různých imagích jsou stejné pomocí skóre spolehlivosti. Ploška také může porovnat plošky s databází a zjistit, zda již existuje podobný vzhled nebo identický obličej. Můžete také uspořádat podobné plošky do skupin pomocí sdílených vizuálních vlastností.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,7 +50,7 @@ V následující tabulce jsou popsány minimální a doporučené PROCESORy a pa
 
 | Kontejner | Minimum | Doporučeno | Transakcí za sekundu<br>(Minimum, maximum)|
 |-----------|---------|-------------|--|
-|Tvář | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |10, 20|
+|Rozpoznávání tváře | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |10, 20|
 
 * Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
 * Transakcí za sekundu (TPS).
@@ -63,7 +63,7 @@ K dispozici jsou image kontejneru pro službu obličeje.
 
 | Kontejner | Repository |
 |-----------|------------|
-| Tvář | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
+| Rozpoznávání tváře | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -142,7 +142,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů služeb obličeje. Souhrn:
 

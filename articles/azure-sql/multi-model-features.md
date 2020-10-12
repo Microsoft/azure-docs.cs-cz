@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
 ms.openlocfilehash: 59a709a206eb29b875272674ee19e414023cc37f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073307"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Možnosti více modelů Azure SQL Database & spravované instance SQL
@@ -142,7 +142,7 @@ CREATE TABLE Collection (
 
 Tuto strukturu klíč-hodnota můžete přizpůsobit tak, aby vyhovovala vašim potřebám bez jakýchkoli omezení. Jako příklad může být hodnota dokumentu XML namísto `nvarchar(max)` typu, pokud je hodnota dokument JSON, můžete vložit `CHECK` omezení, které ověří platnost obsahu JSON. V dalších sloupcích můžete zadat libovolný počet hodnot, které se vztahují k jednomu klíči, Přidat vypočítané sloupce a indexy pro zjednodušení a optimalizaci přístupu k datům, definovat tabulku jako paměť/optimalizované tabulky pouze pro zajištění lepšího výkonu atd.
 
-Podívejte se, [jak BWin používá OLTP v paměti k dosažení nedřívějšího výkonu a škálování](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) pro své řešení ASP.NET pro ukládání do mezipaměti, které dosáhlo 1.200.000 dávek za sekundu, jako příklad, jak se relační model dá efektivně použít jako řešení páru klíč-hodnota v praxi.
+Podívejte se, [jak BWin používá In-Memory OLTP k dosažení nedřívějšího výkonu a škálování](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) pro své řešení ASP.NET pro ukládání do mezipaměti, které dosáhlo 1.200.000 dávek za sekundu, jako příklad, jak se relační model dá efektivně použít jako řešení páru klíč-hodnota v praxi.
 
 ## <a name="next-steps"></a>Další kroky
 

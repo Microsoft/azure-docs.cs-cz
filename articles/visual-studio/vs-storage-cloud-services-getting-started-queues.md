@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 9f0a3c3a96a73bd71a9b0c769a3ceff85ae428f1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89017613"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Začínáme s Azure Queue Storage a připojenými službami sady Visual Studio (projekty cloudových služeb)
@@ -149,8 +149,8 @@ int? cachedMessageCount = messageQueue.ApproximateMessageCount;
 Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
-## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Použití vzoru Async-await s běžnými rozhraními API fronty Azure
-Tento příklad ukazuje použití vzoru Async-await s běžnými rozhraními API fronty Azure. Ukázka volá asynchronní verzi každé z těchto metod, kterou lze zobrazit **asynchronní** po opravě každé metody. Pokud je použita asynchronní metoda, vzorek Async-await pozastaví místní spuštění, dokud se volání nedokončí. Toto chování umožňuje aktuálnímu vláknu provádět další úkoly, které pomáhají zabránit vzniku kritických bodů výkonu a zvyšují celkovou odezvu aplikace. Další podrobnosti o použití vzoru Async-Await v rozhraní .NET najdete v tématu [Async a Await (C# a Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx).
+## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Použití vzorů Async-Await s běžnými rozhraními API fronty Azure
+Tento příklad ukazuje, jak použít vzor Async-Await s běžnými rozhraními API fronty Azure. Ukázka volá asynchronní verzi každé z těchto metod, kterou lze zobrazit **asynchronní** po opravě každé metody. Pokud je použita asynchronní metoda, vzorek Async-await pozastaví místní spuštění, dokud se volání nedokončí. Toto chování umožňuje aktuálnímu vláknu provádět další úkoly, které pomáhají zabránit vzniku kritických bodů výkonu a zvyšují celkovou odezvu aplikace. Další podrobnosti o použití vzoru Async-Await v rozhraní .NET najdete v tématu [Async a Await (C# a Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx).
 
 ```csharp
 // Create a message to put in the queue

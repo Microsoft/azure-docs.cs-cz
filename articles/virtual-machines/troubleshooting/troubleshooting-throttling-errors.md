@@ -14,10 +14,10 @@ ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
 ms.openlocfilehash: b1cc8a43423ecd33218948aaa001fc34877eac60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074283"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Řešení chyb způsobených omezováním rozhraní API 
@@ -32,7 +32,7 @@ Když klient rozhraní API Azure získá chybu omezování, stav HTTP je 429 př
 
 ## <a name="call-rate-informational-response-headers"></a>Hlavičky informativních odpovědí v kurzu volání 
 
-| Hlavička                            | Formát hodnoty                           | Příklad                               | Popis                                                                                                                                                                                               |
+| Záhlaví                            | Formát hodnoty                           | Příklad                               | Description                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-MS-ratelimit-zbývající – prostředek |```<source RP>/<policy or bucket>;<count>```| Microsoft. COMPUTE/HighCostGet3Min; 159 | Zbývající počet volání rozhraní API pro zásady omezování zahrnující kontejner prostředků nebo skupinu operací včetně cíle této žádosti                                                                   |
 | x-MS-Request-poplatek               | ```<count>```                             | 1                                     | Počet volání, která se účtují za tento požadavek HTTP, směrem k příslušnému limitu zásad. Většinou se jedná o 1. Požadavky na dávky, například pro škálování sady škálování virtuálních počítačů, můžou účtovat víc počtů. |
@@ -93,7 +93,7 @@ Rutiny PowerShellu používají rozhraní REST API, které můžou klienti snadn
 
 - Neprovádějte nepodmíněné chyby rozhraní API služby Azure Service API a okamžitě nebo hned znovu. Běžným výskytem je, aby se kód klienta dostal do rychlé smyčky opakování při výskytu chyby, která není znovu schopná. Opakované pokusy budou nakonec vyčerpat povolený limit volání pro skupinu cílových operací a ovlivnit ostatní klienty daného předplatného. 
 - V případech automatizace rozhraní API ve velkém rozsahu zvažte implementaci proaktivní omezování na straně klienta, když počet dostupných volání pro skupinu cílových operací klesne pod určitou nízkou prahovou hodnotu. 
-- Při sledování asynchronních operací respektují pomocné parametry záhlaví opakování. 
+- Při sledování asynchronních operací respektuje Retry-After tipů hlaviček. 
 - Pokud kód klienta potřebuje informace o konkrétním virtuálním počítači, Dotazujte ho přímo místo na výpis všech virtuálních počítačů v nadřazené skupině prostředků nebo na celé předplatné a pak na straně klienta vyberte potřebný virtuální počítač. 
 - Pokud klientský kód potřebuje virtuální počítače, disky a snímky z konkrétního umístění Azure, místo dotazování na všechny virtuální počítače předplatného a filtrování podle umístění na straně klienta: `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` dotaz na výpočetní koncové body poskytovatele prostředků Compute. 
 -   Když vytváříte nebo aktualizujete prostředky rozhraní API na základě těchto virtuálních počítačů a virtuálních počítačů, je mnohem efektivnější sledovat vrácenou asynchronní operaci do dokončení, než dotazování na samotné adrese URL prostředku (na základě `provisioningState` ).

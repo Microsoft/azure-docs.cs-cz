@@ -12,10 +12,10 @@ ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.openlocfilehash: 306c3771c0392bbc97260a726e153cfd385cebcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84782122"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Problém s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD
@@ -66,4 +66,4 @@ Pokud se uživateli v protokolech zřizování zobrazí zpráva "přeskočeno", 
   * **Mapování atributů pro skupiny:** Zřizování názvu skupiny a podrobností skupiny, a to i u členů, pokud jsou podporovány pro některé aplikace. Tuto funkci můžete povolit nebo zakázat povolením nebo zakázáním **mapování** pro objekty skupiny zobrazené na kartě **zřizování** . Pokud jsou skupiny zřizování povoleny, nezapomeňte zkontrolovat mapování atributů, aby se zajistilo, že se pro "odpovídající ID" používá příslušné pole. Může to být zobrazované jméno nebo e-mailový alias), protože skupina a její členové se nezřídí, pokud je vlastnost Matching prázdná nebo není naplněná pro skupinu ve službě Azure AD.
 
 ## <a name="next-steps"></a>Další kroky
-[Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](user-provisioning.md)
+[Automatizace zřizování a rušení uživatelů pro aplikace SaaS pomocí Azure Active Directory](user-provisioning.md)

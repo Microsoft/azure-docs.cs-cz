@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
 ms.openlocfilehash: c608f357eb1eff9fd36e583b98d26250a71cb923
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515682"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>Použití DistCp ke kopírování dat mezi objekty blob Azure Storage a Azure Data Lake Storage Gen1

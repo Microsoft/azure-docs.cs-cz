@@ -14,10 +14,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116389"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Proč aktualizovat na Microsoft Identity Platform (v2.0)?
@@ -61,7 +61,7 @@ Souhlas správce, který se provádí jménem organizace, pořád vyžaduje stat
 
 U aplikací využívajících koncový bod verze 1.0 se aplikace může chovat jako **prostředek**nebo příjemce tokenů. Prostředek může definovat počet **oborů** nebo **oAuth2Permissions** , které rozumí, a umožnit tak klientským aplikacím žádat o tokeny z daného prostředku na určitou sadu oborů. Jako příklad prostředku zvažte Microsoft Graph rozhraní API:
 
-* Identifikátor prostředku nebo `AppID URI` :`https://graph.microsoft.com/`
+* Identifikátor prostředku nebo `AppID URI` : `https://graph.microsoft.com/`
 * Rozsahy nebo `oAuth2Permissions` : `Directory.Read` , `Directory.Write` a tak dále.
 
 To platí pro koncový bod Microsoft Identity Platform. Aplikace se může stále chovat jako prostředek, definovat obory a identifikovat pomocí identifikátoru URI. Klientské aplikace si stále můžou vyžádat přístup k těmto oborům. Nicméně způsob, jakým klient požaduje tato oprávnění, se změnil.

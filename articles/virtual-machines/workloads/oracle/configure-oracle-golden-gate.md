@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.openlocfilehash: 24dfe52b7f08d93dfba70c7b63812eac53431d5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274788"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementace Oracle Zlaté brány na virtuálním počítači Azure Linux 
@@ -384,7 +384,7 @@ Pokud chcete stáhnout a připravit software pro Oracle zlatou bránu, proveďte
    ```
 
 ### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>Příprava klienta a virtuálního počítače na spouštění X11 (jenom pro klienty se systémem Windows)
-Toto je volitelný krok. Tento krok můžete přeskočit, pokud používáte klienta se systémem Linux nebo pokud již máte instalační program X11.
+Tento krok je volitelný. Tento krok můžete přeskočit, pokud používáte klienta se systémem Linux nebo pokud již máte instalační program X11.
 
 1. Stáhněte si a Xming do počítače s Windows:
 

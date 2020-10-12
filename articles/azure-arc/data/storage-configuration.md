@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: c1560325f21fd60e6bdb2a64eb987359a7246ff2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317323"
 ---
 # <a name="storage-configuration"></a>Konfigurace úložiště
@@ -175,14 +175,14 @@ Při vytváření instance pomocí `azdata arc sql mi create` příkazů nebo `a
 
 Následující tabulka uvádí cesty uvnitř kontejneru spravované instance Azure SQL, který je namapovaný na trvalý svazek pro data a protokoly:
 
-|Název parametru, krátký název|Cesta uvnitř kontejneru MSSQL-MIAA|Popis|
+|Název parametru, krátký název|Cesta uvnitř kontejneru MSSQL-MIAA|Description|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt|Obsahuje adresáře pro instalaci MSSQL a další systémové procesy. Adresář MSSQL obsahuje výchozí data (včetně transakčních protokolů), protokol chyb & záložní adresáře.|
 |`--storage-class-logs`, `-scl`|/var/log|Obsahuje adresáře, které ukládají výstup konzoly (stderr, stdout), další informace o protokolování procesů uvnitř kontejneru.|
 
 Následující tabulka uvádí cesty uvnitř kontejneru instance PostgreSQL, který je namapovaný na trvalý svazek pro data a protokoly:
 
-|Název parametru, krátký název|Cesta uvnitř kontejneru Postgres|Popis|
+|Název parametru, krátký název|Cesta uvnitř kontejneru Postgres|Description|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt/postgresql|Obsahuje data a adresáře protokolu pro instalaci Postgres.|
 |`--storage-class-logs`, `-scl`|/var/log|Obsahuje adresáře, které ukládají výstup konzoly (stderr, stdout), další informace o protokolování procesů uvnitř kontejneru.|

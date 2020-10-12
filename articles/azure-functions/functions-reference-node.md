@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: bd5eea6d97ca5ff20622c651b2c6ee75f9014d55
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317172"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 Kontext předaný do funkce zpřístupňuje `executionContext` vlastnost, což je objekt s následujícími vlastnostmi:
 
-| Název vlastnosti  | Typ  | Popis |
+| Název vlastnosti  | Typ  | Description |
 |---------|---------|---------|
 | `invocationId` | Řetězec | Poskytuje jedinečný identifikátor pro konkrétní vyvolání funkce. |
 | `functionName` | Řetězec | Poskytuje název běžící funkce. |
@@ -451,7 +451,7 @@ Následující tabulka uvádí aktuální podporované verze Node.js pro každou
 
 | Verze funkcí | Verze uzlu (Windows) | Verze uzlu (Linux) |
 |---|---| --- |
-| verze | 6.11.2 (uzamčeno modulem runtime) | Není k dispozici |
+| verze | 6.11.2 (uzamčeno modulem runtime) | neuvedeno |
 | 2.x  | ~ 8<br/>~ 10 (doporučeno)<br/>~ 12<sup>*</sup> | ~ 8 (doporučeno)<br/>~ 10  |
 | 3.x | ~ 10<br/>~ 12 (doporučeno)  | ~ 10<br/>~ 12 (doporučeno) |
 

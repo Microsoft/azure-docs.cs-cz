@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
 ms.openlocfilehash: 7d453fba37e62e8528ae7b4ea86d1604973b84a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87051990"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Vysoká dostupnost IBM Db2 LUW na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Pacemaker
@@ -33,7 +33,7 @@ Podporované verze IBM Db2 jsou 10,5 a novější, jak je popsáno v části SAP
 
 Než začnete s instalací, přečtěte si následující poznámky a dokumentace SAP:
 
-| Poznámka SAP | Popis |
+| Poznámka SAP | Description |
 | --- | --- |
 | [1928533] | Aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure |
 | [2015553] | SAP v Azure: požadavky na podporu |
@@ -327,7 +327,7 @@ Následující položky jsou s předponou buď:
 > - Pro SLES 15/15 SP1 musí být verze aspoň Resource-Agents-4.3.0184.6 ee15eb2-4.13.1.  
 >
 > Všimněte si, že tato změna bude vyžadovat krátké výpadky.  
-> V případě existujících clusterů Pacemaker se v případě, že konfigurace již změnila tak, aby používala socat, jak je popsáno v tématu [posílení zabezpečení zjišťování služby Azure Load Balancer](https://www.suse.com/support/kb/doc/?id=7024128), není nutné okamžitě přepínat na agenta prostředků Azure-9,1.
+> U existujících clusterů Pacemaker se v případě, že konfigurace již změnila tak, aby používala socat, jak je popsáno v tématu [posílení zabezpečení azure Load-Balancer](https://www.suse.com/support/kb/doc/?id=7024128), neexistuje žádný požadavek na přepnutí přímo do agenta prostředků Azure-No.
 
 **[1]** IBM Db2 hadr – konfigurace Pacemaker pro konkrétní:
 <pre><code># Put Pacemaker into maintenance mode
@@ -478,7 +478,7 @@ Pokud jste instalaci provedli předtím, než jste vytvořili konfiguraci Db2 HA
 
 Použijte konfigurační nástroj J2EE ke kontrole nebo aktualizaci adresy URL JDBC. Vzhledem k tomu, že nástroj J2EE Configuration Tool je grafický nástroj, je nutné mít nainstalovaný X Server:
  
-1. Přihlaste se k primárnímu aplikačnímu serveru instance J2EE a spusťte:`sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
+1. Přihlaste se k primárnímu aplikačnímu serveru instance J2EE a spusťte:   `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. V levém rámci vyberte **úložiště zabezpečení**.
 1. V pravém rámečku Vyberte klíč JDBC/Pool/ \<SAPSID> /URL..
 1. Změňte název hostitele v adrese URL JDBC na název virtuálního hostitele.
@@ -495,7 +495,7 @@ Archivace protokolu je prováděna pouze v primární databázi. Pokud změníte
 
 Doporučujeme nakonfigurovat společnou sdílenou složku NFS, do které se zapisují protokoly z obou uzlů. Sdílená složka systému souborů NFS musí být vysoce dostupná. 
 
-Pro přenosy nebo adresář profilu můžete použít existující sdílené složky systému souborů NFS s vysokou dostupností. Další informace najdete tady:
+Pro přenosy nebo adresář profilu můžete použít existující sdílené složky systému souborů NFS s vysokou dostupností. Další informace naleznete v tématech:
 
 - [Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server][nfs-ha] 
 - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](./high-availability-guide-suse-netapp-files.md)

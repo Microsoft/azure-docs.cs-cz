@@ -4,10 +4,10 @@ description: Popisuje vlastnosti a schéma, které jsou k dispozici pro všechny
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: 7ddc7c78c5a9e5ba2a57b21c45fb9fab65056ee9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105876"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid schéma událostí
@@ -78,11 +78,11 @@ Všechny události mají stejné následující data nejvyšší úrovně:
 | Vlastnost | Typ | Vyžadováno | Popis |
 | -------- | ---- | -------- | ----------- |
 | téma | řetězec | Ne, ale v případě zahrnutí, se musí přesně shodovat s Event Gridým tématem Azure Resource Manager ID. Pokud není zahrnutý, Event Grid na událost zařadí razítko. | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| závislosti | řetězec | Yes | Cesta k předmětu události, kterou definuje vydavatel. |
-| Typ | řetězec | Yes | Jeden z registrovaných typů události pro tento zdroj události. |
+| subject | řetězec | Yes | Cesta k předmětu události, kterou definuje vydavatel. |
+| eventType | řetězec | Yes | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Yes | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Yes | Jedinečný identifikátor události |
-| data | odkazy objektů | No | Data události specifická pro poskytovatele prostředků. |
+| data | object | No | Data události specifická pro poskytovatele prostředků. |
 | dataVersion | řetězec | Ne, ale bude označena prázdnou hodnotou. | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Nepožadováno, ale pokud je součástí, musí přesně odpovídat schématu Event Grid `metadataVersion` (aktuálně jenom `1` ). Pokud není zahrnutý, Event Grid na událost zařadí razítko. | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 

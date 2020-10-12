@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 924aff8f2ba3d796b65f52494845f3b10018065c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87063982"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft. Common. Section – element uživatelského rozhraní
@@ -45,7 +45,7 @@ Ovládací prvek, který seskupí jeden nebo více prvků pod záhlavím.
 
 ## <a name="remarks"></a>Poznámky
 
-- `elements`musí mít alespoň jeden element a může mít všechny typy elementů s výjimkou `Microsoft.Common.Section` .
+- `elements` musí mít alespoň jeden element a může mít všechny typy elementů s výjimkou `Microsoft.Common.Section` .
 - Tento prvek nepodporuje `toolTip` vlastnost.
 
 ## <a name="sample-output"></a>Ukázkový výstup

@@ -9,10 +9,10 @@ author: timsander1
 ms.author: tisande
 ms.custom: seodec18
 ms.openlocfilehash: 18a9f97d2cee9dd17345a1c8c0ae0efe442d79a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85799390"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Připojení k účtu Azure Cosmos pomocí studia 3T
@@ -32,89 +32,42 @@ Pokud chcete přidat účet Azure Cosmos do Správce připojení studia 3T, pou�
 
 2. Kliknutím na **připojit** otevřete Správce připojení a pak klikněte na **nové připojení** .
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectionManager.png" alt-text="Snímek obrazovky Správce připojení Studio 3T":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManager.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce":::
 3. V okně **nové připojení** na kartě **Server** zadejte hostitele (FQDN) účtu Azure Cosmos a portu.
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerServerTab.png" alt-text="Snímek obrazovky s kartou serveru správce připojení Studio 3T":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerServerTab.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce":::
 4. V okně **nové připojení** na kartě **ověřování** vyberte možnost režim ověřování **Basic (MONGODB-CR nebo SCARM-SHA-1)** a zadejte uživatelské jméno a heslo.  Přijměte výchozí ověřovací databázi (správce) nebo zadejte vlastní hodnotu.
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png" alt-text="Snímek obrazovky s kartou pro ověření Správce připojení Studio 3T":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce":::
 5. V okně **nové připojení** na kartě **SSL** zaškrtněte políčko **používat protokol SSL pro připojení** a přepínač pro **příjem certifikátů SSL přihlášený držitelem** .
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerSSLTab.png" alt-text="Snímek obrazovky s kartou SSL pro správce připojení Studio 3T":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerSSLTab.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce":::
 6. Kliknutím na tlačítko **Testovat připojení** ověřte informace o připojení, kliknutím na tlačítko **OK** se vraťte do okna nové připojení a pak klikněte na **Uložit**.
 
-    :::image type="content" source="./media/mongodb-mongochef/TestConnectionResults.png" alt-text="Snímek obrazovky okna 3T test Connection pro Studio":::
+    :::image type="content" source="./media/mongodb-mongochef/TestConnectionResults.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce":::
 
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Použití studia 3T k vytvoření databáze, kolekce a dokumentů
 Pokud chcete vytvořit databázi, kolekci a dokumenty pomocí nástroje Studio 3T, proveďte následující kroky:
 
 1. V **programu Správce připojení**zvýrazněte připojení a klikněte na **připojit**.
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectToAccount.png" alt-text="Snímek obrazovky Správce připojení Studio 3T":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectToAccount.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce":::
 2. Klikněte pravým tlačítkem na hostitele a vyberte **Přidat databázi**.  Zadejte název databáze a klikněte na tlačítko **OK**.
 
-    :::image type="content" source="./media/mongodb-mongochef/AddDatabase1.png" alt-text="Snímek obrazovky s možností přidání databáze Studio 3T":::
+    :::image type="content" source="./media/mongodb-mongochef/AddDatabase1.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce":::
 3. Klikněte pravým tlačítkem na databázi a vyberte **přidat kolekci**.  Zadejte název kolekce a klikněte na **vytvořit**.
 
-    :::image type="content" source="./media/mongodb-mongochef/AddCollection.png" alt-text="Snímek obrazovky s možností přidání kolekce v Studio 3T":::
+    :::image type="content" source="./media/mongodb-mongochef/AddCollection.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce":::
 4. Klikněte na položku nabídky **kolekce** a pak klikněte na **Přidat dokument**.
 
-    :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="Snímek obrazovky s položkou nabídky přidat dokument v Studio 3T":::
-5. V dialogovém okně Přidat dokument vložte následující příkaz a klikněte na tlačítko **Přidat dokument**.
-
-    ```json
-    {
-        "_id": "AndersenFamily",
-        "lastName": "Andersen",
-        "parents": [
-            { "firstName": "Thomas" },
-            { "firstName": "Mary Kay"}
-        ],
-        "children": [
-            {
-                "firstName": "Henriette Thaulow", "gender": "female", "grade": 5,
-                "pets": [{ "givenName": "Fluffy" }]
-            }
-        ],
-        "address": { "state": "WA", "county": "King", "city": "seattle" },
-        "isRegistered": true
-    }
-    ```
-    
-6. Přidat další dokument, tentokrát s následujícím obsahem:
-
-    ```json
-    {
-        "_id": "WakefieldFamily",
-        "parents": [
-            { "familyName": "Wakefield", "givenName": "Robin" },
-            { "familyName": "Miller", "givenName": "Ben" }
-        ],
-        "children": [
-            {
-                "familyName": "Merriam",
-                "givenName": "Jesse",
-                "gender": "female", "grade": 1,
-                "pets": [
-                    { "givenName": "Goofy" },
-                    { "givenName": "Shadow" }
-                ]
-            },
-            {
-                "familyName": "Miller",
-                "givenName": "Lisa",
-                "gender": "female",
-                "grade": 8 }
-        ],
-        "address": { "state": "NY", "county": "Manhattan", "city": "NY" },
+    :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce" },
         "isRegistered": false
     }
     ```
 
 7. Spustí ukázkový dotaz. Hledejte například skupiny s názvem ' Andersen ' a vraťte pole nadřazených a státních stavů.
 
-    :::image type="content" source="./media/mongodb-mongochef/QueryDocument1.png" alt-text="Snímek obrazovky s výsledky dotazu Mongo":::
+    :::image type="content" source="./media/mongodb-mongochef/QueryDocument1.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce":::
 
 ## <a name="next-steps"></a>Další kroky
 

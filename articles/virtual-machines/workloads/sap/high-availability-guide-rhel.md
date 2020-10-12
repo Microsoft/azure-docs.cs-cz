@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
 ms.openlocfilehash: 3ea8be2bbf3296f97ca0562a2d8e72bfe7a77d3b
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87760477"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux
@@ -69,14 +69,14 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP
 * [Dokumentace produktu pro úložiště Red Hat Gluster](https://access.redhat.com/documentation/red_hat_gluster_storage/)
 * [SAP NetWeaver v clusteru Pacemaker](https://access.redhat.com/articles/3150081)
 * Obecná dokumentace k RHEL
-  * [Přehled doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Správa doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Referenční informace k doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Přehled Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Správa Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Referenční informace o Add-On vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Konfigurace ASCS/OLAJÍCÍCH pro SAP NetWeaver se samostatnými prostředky v RHEL 7,5](https://access.redhat.com/articles/3569681)
-  * [Konfigurace SAP S/4HANA ASCS/OLAJÍCÍCH se samostatným serverem fronty 2 (ENSA2) v Pacemaker v RHEL](https://access.redhat.com/articles/3974941)
+  * [Konfigurace SAP S/4HANA ASCS/OLAJÍCÍCH se samostatným serverem fronty 2 (ENSA2) v Pacemaker v RHEL ](https://access.redhat.com/articles/3974941)
 * Dokumentace k RHEL specifické pro Azure:
   * [Zásady podpory pro RHEL clustery s vysokou dostupností – Microsoft Azure Virtual Machines jako členové clusteru](https://access.redhat.com/articles/3131341)
-  * [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) cluster s vysokou dostupností v Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) High-Availability clusteru v Microsoft Azure](https://access.redhat.com/articles/3252491)
 
 ## <a name="overview"></a>Přehled
 
@@ -161,10 +161,10 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster. Následn�
 1. Vytvoření skupiny dostupnosti  
    Nastavit maximální aktualizační doménu
 1. Vytvořit virtuální počítač 1  
-   Použijte minimálně RHEL 7. v tomto příkladu se jedná o bitovou kopii Red Hat Enterprise Linux 7,4.<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Použijte minimálně RHEL 7. v tomto příkladu se jedná o bitovou kopii Red Hat Enterprise Linux 7,4. <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Vybrat skupinu dostupnosti vytvořenou dříve  
 1. Vytvořit virtuální počítač 2  
-   Použijte minimálně RHEL 7. v tomto příkladu se jedná o bitovou kopii Red Hat Enterprise Linux 7,4.<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Použijte minimálně RHEL 7. v tomto příkladu se jedná o bitovou kopii Red Hat Enterprise Linux 7,4. <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Vybrat skupinu dostupnosti vytvořenou dříve  
 1. Přidejte alespoň jeden datový disk do obou virtuálních počítačů.  
    Datové disky se používají pro `<SAPSID`> adresář/usr/SAP/
@@ -244,7 +244,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster. Následn�
 > Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)  
 
 > [!IMPORTANT]
-> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](../../../load-balancer/load-balancer-custom-probe-overview.md).
+> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net.IPv4.tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](../../../load-balancer/load-balancer-custom-probe-overview.md).
 
 ### <a name="create-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 
@@ -545,7 +545,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    </code></pre>
 
    SAP představilo podporu pro front-Server 2, včetně replikace, od SAP NW 7,52. Počínaje platformou ABAP 1809 se ve výchozím nastavení nainstaluje služba fronty serveru 2. Podporu služby zařazení serveru 2 pro frontu najdete v tématu SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416) .
-   Pokud používáte architekturu serveru fronty 2 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), nainstalujte agenta prostředků Resource-Agents-SAP-4.1.1 -12. el7. x86_64 nebo novější a definujte prostředky následujícím způsobem:
+   Pokud používáte architekturu Server 2 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), nainstalujte agenta prostředků – agenti-SAP-4.1.1-12.el7.x86_64 nebo novější a definujte prostředky následujícím způsobem:
 
 <pre><code>sudo pcs property set maintenance-mode=true
    

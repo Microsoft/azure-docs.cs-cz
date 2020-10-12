@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: f983c0f5fc951376246fdbed9869211c8b495402
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90977951"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption s využitím Azure AD (předchozí verze)
@@ -129,7 +129,7 @@ Pomocí kroků z [portálu use vytvořte aplikaci Azure Active Directory a insta
 3. [Získejte ID aplikace a ověřovací klíč](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in). 
      - Ověřovací klíč je tajný klíč klienta a používá se jako AadClientSecret pro set-AzVMDiskEncryptionExtension. 
         - Ověřovací klíč používá aplikace jako přihlašovací údaje pro přihlášení ke službě Azure AD. V Azure Portal se tento tajný klíč nazývá klíče, ale nemá žádný vztah k trezorům klíčů. Zabezpečte tento tajný klíč správně. 
-     - ID aplikace bude použito později jako AadClientId pro set-AzVMDiskEncryptionExtension a jako ServicePrincipalName pro set-AzKeyVaultAccessPolicy. 
+     - ID aplikace bude použito později jako AadClientId pro Set-AzVMDiskEncryptionExtension a jako ServicePrincipalName pro set-AzKeyVaultAccessPolicy. 
 
 ## <a name="set-the-key-vault-access-policy-for-the-azure-ad-app"></a>Nastavte zásady přístupu trezoru klíčů pro aplikaci Azure AD.
 Pro zápis šifrovacích tajných klíčů do zadaného Key Vault Azure Disk Encryption potřebuje ID klienta a tajný klíč klienta Azure Active Directory aplikace, který má oprávnění k zápisu tajných kódů do Key Vault. 
