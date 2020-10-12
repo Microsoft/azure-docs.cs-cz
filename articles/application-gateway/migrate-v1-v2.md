@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
 ms.openlocfilehash: 653e432ca445451fc9da7155137052b9916d0d92
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91311593"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrace služby Azure Application Gateway a firewall webových aplikací z verze V1 na verzi 2
@@ -57,7 +57,7 @@ V závislosti na nastaveních a preferencích místního prostředí PowerShellu
 
 Pokud chcete zjistit, jestli máte nainstalované moduly Azure AZ, spusťte `Get-InstalledModule -Name az` . Pokud nevidíte žádné nainstalované moduly AZ, můžete použít `Install-Script` metodu.
 
-### <a name="install-using-the-install-script-method"></a>Instalace pomocí metody install-Script
+### <a name="install-using-the-install-script-method"></a>Instalace pomocí metody Install-Script
 
 Pokud chcete použít tuto možnost, musíte mít v počítači nainstalované moduly AZ pro Azure. Pokud jsou nainstalovány, následující příkaz zobrazí chybu. Můžete buď odinstalovat moduly AZ pro Azure, nebo použít jinou možnost ke stažení skriptu ručně a jeho spuštění.
   
@@ -182,7 +182,7 @@ Ano.
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Přepíná skript Azure PowerShell také přenos dat z mé brány V1 na nově vytvořenou bránu v2?
 
-No. Azure PowerShell skript migruje pouze konfiguraci. Skutečná migrace provozu je vaší zodpovědností a vaším ovládacím prvkem.
+Ne. Azure PowerShell skript migruje pouze konfiguraci. Skutečná migrace provozu je vaší zodpovědností a vaším ovládacím prvkem.
 
 ### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Je nová brána v2 vytvořená o správné velikosti skriptu Azure PowerShell pro zpracování všech přenosů, které aktuálně obsluhuje moje brána v1?
 
@@ -190,11 +190,11 @@ Skript Azure PowerShell vytvoří novou bránu v2, která má odpovídající ve
 
 ### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Nakonfigurovali jsem moji bránu V1, aby odesílala protokoly do služby Azure Storage. Replikuje tento skript tuto konfiguraci pro v2?
 
-No. Skript nereplikuje tuto konfiguraci pro v2. Je nutné přidat konfiguraci protokolu odděleně od migrované brány v2.
+Ne. Skript nereplikuje tuto konfiguraci pro v2. Je nutné přidat konfiguraci protokolu odděleně od migrované brány v2.
 
 ### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>Podporuje tento skript certifikáty nahrané do služby Azure webtrezor?
 
-No. V současné době skript nepodporuje certifikáty v trezoru klíčů. To se ale zvažuje i v budoucí verzi.
+Ne. V současné době skript nepodporuje certifikáty v trezoru klíčů. To se ale zvažuje i v budoucí verzi.
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Narazili jsme na některé problémy s použitím tohoto skriptu. Jak získám pomoc?
   

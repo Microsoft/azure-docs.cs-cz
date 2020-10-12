@@ -10,10 +10,10 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
 ms.openlocfilehash: d4a7f1453ec686cfa16d260101ba81f429ce1da0
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89469452"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Rychlý Start pro PowerShell v Azure Cloud Shell
@@ -292,7 +292,7 @@ Případně můžete k `Get-Command *az* -Module Az.*` Získání dostupných p�
 
 Můžete spustit `Install-Module` pro instalaci modulů z [Galerie prostředí PowerShell][gallery].
 
-## <a name="get-help"></a>Získat nápovědu
+## <a name="get-help"></a>Get-Help
 
 Zadejte `Get-Help` , chcete-li získat informace o PowerShellu v Azure Cloud Shell.
 

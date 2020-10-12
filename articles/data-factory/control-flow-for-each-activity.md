@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.openlocfilehash: 35d61e896a395c3044a51780fef72d54c211a31f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417183"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Aktivita ForEach v Azure Data Factory
@@ -23,7 +23,7 @@ ms.locfileid: "81417183"
 
 Aktivita ForEach definuje tok řízení opakování ve vašem kanálu. Tato aktivita se používá k opakování v kolekci a spouští zadané aktivity ve smyčce. Implementace smyčky této aktivity se podobá struktuře smyčky Foreach v programovacích jazycích.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 Vlastnosti jsou popsány dále v tomto článku. Vlastnost Items je kolekce a každá položka v kolekci je odkazována pomocí příkazu, jak je `@item()` znázorněno v následující syntaxi:  
 
 ```json
@@ -70,7 +70,7 @@ Vlastnosti jsou popsány dále v tomto článku. Vlastnost Items je kolekce a ka
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Vyžadováno
+Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
 name | Název aktivity for-each. | Řetězec | Ano
 typ | Musí být nastaven na **foreach** | Řetězec | Ano
@@ -195,7 +195,7 @@ V aktivitě ForEach zadejte pole, které se má iterovat pro **položky**vlastno
 Je možné iterovat více aktivit (například aktivity kopírování a webu) v aktivitě ForEach. V tomto scénáři doporučujeme, abyste do samostatného kanálu vyčerpali více aktivit. Pak můžete použít [aktivitu ExecutePipeline](control-flow-execute-pipeline-activity.md) v kanálu s aktivitou foreach k vyvolání samostatného kanálu s více aktivitami. 
 
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>Syntaxe
 
 ```json
 {

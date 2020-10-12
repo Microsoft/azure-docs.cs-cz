@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: b342731b953f7b68f8fcd9e55c49c907e5e8cc5d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973496"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Kurz: integrace Atlassian cloudu s Azure Active Directory
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Atlassian Cloud s Azure Active Directo
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Atlassian cloudu pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -114,7 +114,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![SAML v Azure](./media/atlassian-cloud-tutorial/saml-in-azure.png)
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** přejděte dolů k části **Nastavení cloudu Atlassian** .
+1. Na stránce **nastavit jednu Sign-On s SAML se** posuňte dolů k **Nastavení cloudu Atlassian** .
    
    a. Kliknout na **konfigurační adresy URL**
 
@@ -128,7 +128,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![ID entity a SS](./media/atlassian-cloud-tutorial/entity-id-and-ss.png)
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte si certifikát a uložte ho do svého počítače.
 
    ![podpisový certifikát](./media/atlassian-cloud-tutorial/certificate.png)
 
@@ -136,7 +136,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. **Přidání/uložení** konfigurace SAML v Atlassian
 
-1. Pokud chcete nakonfigurovat aplikaci v režimu **IDPed** , upravte **základní konfigurační oddíl SAML** na stránce **nastavit jednotné přihlašování s SAML** v Azure a otevřete **stránku jednotného přihlašování SAML** na portálu pro správu Atlassian.
+1. Pokud chcete nakonfigurovat aplikaci v režimu spuštěném v **IDP** , upravte **základní konfigurační oddíl SAML** na stránce **nastavit jeden Sign-On se** stránkou SAML v Azure a na portálu pro správu Atlassian otevřete **stránku jednotného přihlašování SAML** .
 
    a. Zkopírujte hodnotu **ID entity SP** z Atlassian a vložte ji do pole **identifikátor (ID entity)** v Azure a nastavte ji jako výchozí.
    
@@ -150,7 +150,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Obrázek adres URL](./media/atlassian-cloud-tutorial/urls.png)
    
-1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** , upravte **základní část konfigurace SAML** v tématu **nastavení jednotného přihlašování pomocí stránky SAML** v Azure. Zkopírujte **adresu URL instance** (z kroku 1) a vložte ji do pole **Adresa URL pro přihlášení** v Azure.
+1. Pokud chcete nakonfigurovat aplikaci v režimu **SP** iniciované, upravte **základní konfigurační oddíl SAML** na stránce **nastavit jeden Sign-On se** stránkou SAML v Azure. Zkopírujte **adresu URL instance** (z kroku 1) a vložte ji do pole **Adresa URL pro přihlášení** v Azure.
 
    ![tlačítko Upravit v adresách URL](./media/atlassian-cloud-tutorial/edit-button.png)
 

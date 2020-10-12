@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 08/25/2020
 ms.author: aahi
 ms.openlocfilehash: a0557c3ccf6510ab3ee2ae29cbef1fc754473345
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88933014"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Postupy: zjištění mínění pomocí rozhraní API pro analýzu textu
@@ -23,13 +23,13 @@ Funkce Analýza mínění rozhraní API pro analýzu textu vyhodnotí text a vr�
 
 Po odeslání požadavku na analýzu mínění vrátí rozhraní API popisky mínění (například "negativní", "neutrální" a "pozitivní") a hodnocení spolehlivosti na větě a na úrovni dokumentu.
 
-Analýza mínění podporuje široké spektrum jazyků, ve verzi Preview. Další informace najdete v tématu [podporované jazyky](../text-analytics-supported-languages.md).
+Analýza mínění podporuje široké spektrum jazyků, ve verzi Preview. Další informace najdete v části o [podporovaných jazycích](../text-analytics-supported-languages.md).
 
 ## <a name="sentiment-analysis-versions-and-features"></a>Analýza mínění verze a funkce
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Funkce                                   | Analýza mínění V3 | Analýza mínění v 3.1 (Preview) |
+| Příznak                                   | Analýza mínění V3 | Analýza mínění v 3.1 (Preview) |
 |-------------------------------------------|-----------------------|-----------------------------------|
 | Metody pro jednotlivé a dávkové požadavky    | X                     | X                                 |
 | Mínění skóre a popisky             | X                     | X                                 |
@@ -90,7 +90,7 @@ Vytvořte žádost POST. V následujících referenčních odkazech můžete [po
 
 ### <a name="request-endpoints"></a>Koncové body požadavku
 
-Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Příklad:
+Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Například:
 
 > [!NOTE]
 > Klíč a koncový bod pro váš Analýza textu prostředek najdete na webu Azure Portal. Budou se nacházet na stránce **rychlý Start** prostředku v části **Správa prostředků**. 
@@ -103,7 +103,7 @@ Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza 
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment`
 
-Chcete-li získat názory výsledků dolování, je nutné zahrnout `opinionMining=true` parametr. Příklad:
+Chcete-li získat názory výsledků dolování, je nutné zahrnout `opinionMining=true` parametr. Například:
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment?opinionMining=true`
 

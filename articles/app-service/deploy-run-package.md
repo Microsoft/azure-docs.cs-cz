@@ -4,10 +4,10 @@ description: Nasaďte balíček ZIP vaší aplikace s nedělitelnost. Zlepšení
 ms.topic: article
 ms.date: 01/14/2020
 ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77920718"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Spuštění aplikace v Azure App Service přímo z balíčku ZIP
@@ -37,11 +37,11 @@ Naproti tomu, když spouštíte přímo z balíčku, soubory v balíčku nejsou 
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITE_RUN_FROM_PACKAGE="1"
 ```
 
-`WEBSITE_RUN_FROM_PACKAGE="1"`umožňuje spustit aplikaci z místního balíčku aplikace. Můžete také [Spustit ze vzdáleného balíčku](#run-from-external-url-instead).
+`WEBSITE_RUN_FROM_PACKAGE="1"` umožňuje spustit aplikaci z místního balíčku aplikace. Můžete také [Spustit ze vzdáleného balíčku](#run-from-external-url-instead).
 
 ## <a name="run-the-package"></a>Spustit balíček
 
-Nejjednodušší způsob, jak balíček v App Service spustit, je pomocí příkazu Azure CLI [AZ WebApp Deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) . Příklad:
+Nejjednodušší způsob, jak balíček v App Service spustit, je pomocí příkazu Azure CLI [AZ WebApp Deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) . Například:
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src <filename>.zip
@@ -63,7 +63,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 Pokud publikujete aktualizovaný balíček se stejným názvem pro úložiště objektů blob, musíte restartovat aplikaci, aby se aktualizovaný balíček načetl do App Service.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 - Spuštění přímo z balíčku zpřístupňuje jen `wwwroot` pro čtení. Pokud se aplikace pokusí zapisovat soubory do tohoto adresáře, dojde k chybě.
 - Formáty TAR a GZIP se nepodporují.

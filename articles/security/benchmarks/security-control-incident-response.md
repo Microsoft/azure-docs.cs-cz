@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 993793d21e6253188dfc199d8701cbe117503517
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81408423"
 ---
 # <a name="security-control-incident-response"></a>Řízení zabezpečení: reakce na incidenty
@@ -36,7 +36,7 @@ Vytvořte si Průvodce odpověďmi na incidenty pro vaši organizaci. Zajistěte
 
 | ID Azure | ID služby CI | Zodpovědní |
 |--|--|--|
-| 10.2 | 19,8 | Zákazník |
+| 10,2 | 19,8 | Zákazník |
 
 Security Center přiřadí každému upozornění závažnosti, které vám pomůžou určit, které výstrahy by se měly prozkoumat jako první. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění. 
 

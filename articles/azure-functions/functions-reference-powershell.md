@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
 ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89071155"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
@@ -126,7 +126,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Níže jsou uvedené platné parametry pro volání `Push-OutputBinding` :
 
-| Název | Typ | Pozice | Popis |
+| Název | Typ | Pozice | Description |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Řetězec | 1 | Název výstupní vazby, kterou chcete nastavit. |
 | **`-Value`** | Objekt | 2 | Hodnota výstupní vazby, kterou chcete nastavit, která je přijímána z ByValue kanálu. |
@@ -145,7 +145,7 @@ Podporovány jsou i tyto společné parametry:
 
 Další informace najdete v tématu [o CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-#### <a name="push-outputbinding-example-http-responses"></a>Příklad push-OutputBinding: odpovědi HTTP
+#### <a name="push-outputbinding-example-http-responses"></a>Příklad Push-OutputBinding: odpovědi HTTP
 
 Aktivační událost protokolu HTTP vrátí odpověď pomocí výstupní vazby s názvem `response` . V následujícím příkladu má výstupní vazba `response` hodnotu "výstupní #1":
 
@@ -174,7 +174,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 }) -Clobber
 ```
 
-#### <a name="push-outputbinding-example-queue-output-binding"></a>Příklad push-OutputBinding: Queue Output Binding
+#### <a name="push-outputbinding-example-queue-output-binding"></a>Příklad Push-OutputBinding: Queue Output Binding
 
 `Push-OutputBinding` slouží k odesílání dat do výstupních vazeb, jako je například [Výstupní vazba Azure Queue Storage](functions-bindings-storage-queue-output.md). V následujícím příkladu má zpráva zapsaná do fronty hodnotu "výstupní #1":
 
@@ -236,7 +236,7 @@ Protokolování funkcí prostředí PowerShell funguje jako běžné protokolov�
 | Chyba | **`Write-Error`** |
 | Upozornění | **`Write-Warning`**  | 
 | Informační | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informační | Zapisuje do protokolování na úrovni _informací_ . |
-| Ladění | **`Write-Debug`** |
+| Ladit | **`Write-Debug`** |
 | Trasování | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 Kromě těchto rutin se vše zapsané do kanálu přesměruje na `Information` úroveň protokolu a zobrazí se s výchozím formátováním PowerShellu.
@@ -470,7 +470,7 @@ Když aktualizujete soubor requirements.psd1, po restartování se nainstalují 
 
 Pomocí následujících nastavení aplikace můžete změnit způsob stažení a instalace spravovaných závislostí. Upgrade vaší aplikace se spouští v rámci nástroje `MDMaxBackgroundUpgradePeriod` a proces upgradu se dokončí přibližně v `MDNewSnapshotCheckPeriod` .
 
-| Nastavení Function App              | Výchozí hodnota             | Popis                                         |
+| Nastavení Function App              | Výchozí hodnota             | Description                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
 | **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 dnů)     | Každý pracovní proces PowerShellu inicializuje kontrolu upgradů modulů na Galerie prostředí PowerShell spuštění procesu a každé z nich `MDMaxBackgroundUpgradePeriod` . Když je v Galerie prostředí PowerShell k dispozici nová verze modulu, nainstaluje se do systému souborů a zpřístupní se pro pracovní procesy prostředí PowerShell. Snížením této hodnoty umožníte, aby aplikace Function App získala novější verze modulu, ale také zvyšuje využití prostředků aplikace (v/v sítě, CPU, úložiště). Zvýšením této hodnoty se sníží využití prostředků aplikace, ale může také dojít k zpoždění doručení nových verzí modulu do aplikace. | 
 | **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 hodina)       | Až se v systému souborů nainstalují nové verze modulů, musí se všechny pracovní procesy PowerShellu restartovat. Restartování pracovních procesů PowerShell ovlivní dostupnost vaší aplikace, protože může přerušit aktuální spuštění funkce. Dokud nebudou všechny pracovní procesy prostředí PowerShell restartovány, mohou být vyvolány funkce buď staré, nebo nové verze modulu. Restart všech pracovních procesů PowerShellu se dokončil v rámci `MDNewSnapshotCheckPeriod` . Zvýšením této hodnoty se zkrátí frekvence přerušení, ale může se prodloužit i čas, kdy volání funkcí používají buď starou, nebo nové verze modulu, které nejsou deterministické. |

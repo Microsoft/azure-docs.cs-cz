@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86527825"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Obnovení svazku StorSimple ze zálohovacího skladu
@@ -59,9 +59,9 @@ Pro obnovení na základě heatmapu se vztahují následující upozornění:
 
 Rutiny Windows PowerShellu se v Update 4 dají použít k dotazování na spouštění úloh pro vystavování, zrušení úlohy pro dehydrataci a získání stavu úlohy pro dosazování.
 
-* `Get-HcsRehydrationJob`– Tato rutina načte stav úlohy opětovného nasazování. Pro jeden svazek se aktivuje jediná úloha pro vysazování.
+* `Get-HcsRehydrationJob` – Tato rutina načte stav úlohy opětovného nasazování. Pro jeden svazek se aktivuje jediná úloha pro vysazování.
 
-* `Set-HcsRehydrationJob`– Tato rutina umožňuje pozastavit, zastavit a obnovit úlohu opětovného nasazování, když probíhá dosazování.
+* `Set-HcsRehydrationJob` – Tato rutina umožňuje pozastavit, zastavit a obnovit úlohu opětovného nasazování, když probíhá dosazování.
 
 Další informace o rutinách pro vysazování najdete v referenčních informacích k [rutinám Windows PowerShellu pro StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
 

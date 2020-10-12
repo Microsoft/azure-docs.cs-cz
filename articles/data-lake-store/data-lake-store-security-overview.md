@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
 ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192831"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Zabezpečení v Azure Data Lake Storage Gen1
@@ -111,7 +111,7 @@ Můžete povolit auditování přístupu k datům a diagnostické protokolován�
 
 Další informace o práci s diagnostickými protokoly pomocí Data Lake Storage Gen1 najdete v tématu [přístup k diagnostickým protokolům pro data Lake Storage Gen1](data-lake-store-diagnostic-logs.md).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Podnikoví zákazníci požadují cloudovou platformu pro analýzu dat, která je zabezpečená a snadno použitelná. Data Lake Storage Gen1 je navržená tak, aby vám pomohla vyřešit tyto požadavky prostřednictvím správy identit a ověřování prostřednictvím Azure Active Directory integrace, ověřování na základě seznamů ACL, izolace sítě, šifrování dat při přenosu a v klidovém provozu a auditování.
 

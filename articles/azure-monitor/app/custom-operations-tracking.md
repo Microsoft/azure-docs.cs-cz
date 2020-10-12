@@ -6,10 +6,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 42a5318325f9961483465357403089755feb130d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88933303"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Sledování vlastních operací pomocí sady Application Insights .NET SDK
@@ -214,7 +214,7 @@ Můžete taky chtít korelovat ID operace Application Insights s ID žádosti ú
 #### <a name="enqueue"></a>Zařazování
 Vzhledem k tomu, že fronty úložiště podporují rozhraní API protokolu HTTP, jsou všechny operace s frontou automaticky sledovány Application Insights. V mnoha případech by měla být tato instrumentace dostatečná. Chcete-li však korelovat trasování na straně spotřebitele pomocí trasování od výrobce, je nutné předat nějaký kontext korelace podobně jako v protokolu HTTP pro korelaci. 
 
-Tento příklad ukazuje, jak sledovat `Enqueue` operaci. Další možnosti:
+Tento příklad ukazuje, jak sledovat `Enqueue` operaci. Můžete:
 
  - **Korelace pokusů (pokud existují)**: všichni mají jednu společnou nadřazenou položku, která je `Enqueue` operace. V opačném případě jsou sledovány jako podřízené položky příchozího požadavku. Pokud fronta obsahuje více logických požadavků, může být obtížné zjistit, které volání vedlo k opakovaným pokusům.
  - **Korelace protokolů úložiště (Pokud je potřeba a v případě potřeby)**: jsou ve vztahu k Application Insights telemetrie.

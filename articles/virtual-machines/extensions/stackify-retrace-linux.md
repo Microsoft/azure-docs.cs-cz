@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088848"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Rozšíření agenta Stackify retracee pro Linux
@@ -37,7 +37,7 @@ Přetrasování je jediný nástroj, který poskytuje všechny následující fu
 
 Toto rozšíření poskytuje instalační cestu pro agenta pro Linux pro opětovné trasování. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém 
 
@@ -148,7 +148,7 @@ Při umístění JSON rozšíření v kořenovém adresáři šablony obsahuje n
 ```
 
 
-## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
+## <a name="powershell-deployment"></a>Nasazení PowerShellu
 
 `Set-AzVMExtension`Příkaz se dá použít k nasazení rozšíření virtuálního počítače Stackify Retrace agenta pro Linux do existujícího virtuálního počítače. Před spuštěním příkazu musí být veřejné a privátní konfigurace uložené v zatřiďovací tabulce PowerShellu.
 

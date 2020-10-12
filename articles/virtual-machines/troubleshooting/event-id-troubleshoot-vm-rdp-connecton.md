@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088593"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Řešení potíží s připojením RDP virtuálních počítačů Azure podle ID události 
@@ -57,7 +57,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Název protokolu:**      Souborů <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Datum:**          *čas* <br />
-**ID události:** 1058 <br />
+**ID události:**      1058 <br />
 **Kategorie úlohy:** NTato <br />
 **Úroveň:**         Chyba <br />
 **Klíčová slova:**      Standardním <br />
@@ -68,7 +68,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Název protokolu:**      Souborů <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Datum:**          *čas* <br />
-**ID události:** 1058 <br />
+**ID události:**      1058 <br />
 **Kategorie úlohy:** NTato <br />
 **Úroveň:**         Chyba <br />
 **Klíčová slova:**      Standardním <br />
@@ -79,7 +79,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Název protokolu:**      Souborů <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Datum:**          *čas* <br />
-**ID události:** 1057 <br />
+**ID události:**      1057 <br />
 **Kategorie úlohy:** NTato <br />
 **Úroveň:**         Chyba <br />
 **Klíčová slova:**      Standardním <br />
@@ -96,8 +96,8 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 **Název protokolu:**      Souborů <br />
 **Zdroj:**        Schannel <br />
-**Datum:** – <br />
-**ID události:** 36870 <br />
+**Datum:**          – <br />
+**ID události:**      36870 <br />
 **Kategorie úlohy:** NTato <br />
 **Úroveň:**         Chyba <br />
 **Klíčov**       <br />
@@ -218,8 +218,8 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 **Název protokolu:**      Souborů <br />
 **Zdroj:**        Schannel <br />
-**Datum:** – <br />
-**ID události:** 36871 <br />
+**Datum:**          – <br />
+**ID události:**      36871 <br />
 **Kategorie úlohy:** NTato <br />
 **Úroveň:**         Chyba <br />
 **Klíčov**       <br />
@@ -249,7 +249,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 **Název protokolu:**      Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-SessionBroker <br />
 **Datum:**          *čas* <br />
-**ID události:** 2056 <br />
+**ID události:**      2056 <br />
 **Kategorie úlohy:** (109) <br />
 **Úroveň:**         Chyba <br />
 **Klíčov**       <br />
@@ -265,7 +265,7 @@ Přihlášení k databázi se nezdařilo.
 **Název protokolu:**      Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
 **Zdroj:**        Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
 **Datum:**          *čas* <br />
-**ID události:** 1296 <br />
+**ID události:**      1296 <br />
 **Kategorie úlohy:** (104) <br />
 **Úroveň:**         Chyba <br />
 **Klíčov**       <br />
@@ -274,8 +274,8 @@ Přihlášení k databázi se nezdařilo.
 **Popis:** Nepovedlo se najít popis události s ID 1296 ze zdroje Microsoft-Windows-TerminalServices-SessionBroker-Client. Buď není v místním počítači nainstalována komponenta, která vyvolává tuto událost, nebo je instalace poškozena. Součást můžete nainstalovat nebo opravit v místním počítači.
 Pokud událost vznikla v jiném počítači, informace o zobrazení byly uloženy spolu s událostí.
 V rámci této události byly zahrnuty následující informace:  <br />
-*textové* <br />
-*textové* <br />
+*text* <br />
+*text* <br />
 Zprostředkovatel připojení k vzdálené ploše není připravená na komunikaci RPC.
 
 ### <a name="cause"></a>Příčina

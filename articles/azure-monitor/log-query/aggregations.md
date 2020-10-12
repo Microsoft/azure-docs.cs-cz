@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77670300"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Agregace v Azure Monitorch dotazech protokolu
@@ -22,7 +22,7 @@ ms.locfileid: "77670300"
 
 Tento článek popisuje agregační funkce v Azure Monitorch dotazech protokolů, které nabízejí užitečné způsoby analýzy dat. Všechny tyto funkce fungují s `summarize` operátorem, který vytváří tabulku s agregovanými výsledky vstupní tabulky.
 
-## <a name="counts"></a>Výčt
+## <a name="counts"></a>Počty
 
 ### <a name="count"></a>count
 Spočítá počet řádků v sadě výsledků po použití libovolných filtrů. Následující příklad vrátí celkový počet řádků v tabulce _perf_ za posledních 30 minut. Výsledek se vrátí do sloupce s názvem *count_* , pokud mu nepřiřadíte konkrétní název:
@@ -121,7 +121,7 @@ Perf
 
 To může ukazovat na to, že některé procesory počítačů mají podobné mediány, ale zatímco některé z nich jsou u mediánu konstantní, další počítače oznámily mnohem nižší a vyšší hodnoty procesoru, což znamená, že se v nich vyskytly špičky
 
-### <a name="variance"></a>Rozptyl
+### <a name="variance"></a>Variance
 Chcete-li přímo vyhodnotit odchylku hodnoty, použijte metody směrodatné odchylky a odchylky:
 
 ```Kusto

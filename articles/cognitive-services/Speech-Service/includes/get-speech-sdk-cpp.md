@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 5a06a0663601c221dd456b9cf4437cb9f32a18f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81399916"
 ---
 :::row:::
     :::column span="3":::
-        Sada C++ Speech SDK je k dispozici v systémech Windows, Linux a macOS. Další informace najdete v tématu <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft. cognitiveservices Account. Speech <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+        Sada C++ Speech SDK je k dispozici v systémech Windows, Linux a macOS. Další informace najdete v tématu <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft. cognitiveservices Account. Speech <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
     :::column-end:::
     :::column:::
         <br>
@@ -35,7 +35,7 @@ Install-Package Microsoft.CognitiveServices.Speech
 
 Alternativně je možné sadu C++ Speech SDK nainstalovat z binárních souborů. Stáhněte si sadu SDK jako <a href="https://aka.ms/csspeech/linuxbinary" target="_blank">balíček <span class="docon docon-navigate-external x-hidden-focus"></span> . tar</a> a rozbalte soubory v adresáři dle vašeho výběru. Obsah tohoto balíčku (který zahrnuje hlavičkové soubory pro architektury cílové platformy x86 i x64) je strukturovaný takto:
 
-  | Cesta                   | Popis                                          |
+  | Cesta                   | Description                                          |
   |------------------------|------------------------------------------------------|
   | `license.md`           | Licence                                              |
   | `ThirdPartyNotices.md` | Oznámení třetích stran                                  |
@@ -45,6 +45,6 @@ Alternativně je možné sadu C++ Speech SDK nainstalovat z binárních souborů
 
   Chcete-li vytvořit aplikaci, zkopírujte nebo přesuňte požadované binární soubory (a knihovny) do vývojového prostředí. Zahrňte je podle požadavků v procesu sestavení.
 
-#### <a name="additional-resources"></a>Další materiály a zdroje informací
+#### <a name="additional-resources"></a>Další zdroje
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp" target="_blank">Zdrojový kód v rychlém startu pro Windows, Linux a macOS<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp" target="_blank">Zdrojový kód v rychlém startu pro Windows, Linux a macOS <span class="docon docon-navigate-external x-hidden-focus"></span></a>

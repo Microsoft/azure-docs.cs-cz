@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77670198"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Spojení v Azure Monitor dotazy protokolu
@@ -39,7 +39,7 @@ SecurityEvent
 
 V tomto příkladu se první datová sada filtruje pro všechny přihlašovací události. Je spojen s druhou datovou sadou, která filtruje všechny události odhlášení. Mezi plánované sloupce patří _Computer_, _account_, _TargetLogonId_a _TimeGenerated_. Datové sady jsou korelují sdíleným sloupcem, _TargetLogonId_. Výstupem je jeden záznam na korelační, který má jak přihlašovací, tak i čas odhlášení.
 
-Pokud obě datové sady mají sloupce se stejnými názvy, budou mít sloupce datové sady na pravé straně číslo indexu, takže v tomto příkladu by se v tomto příkladu zobrazily _TargetLogonId_ s hodnotami z tabulky na levé straně a _TargetLogonId1_ s hodnotami z tabulky na pravé straně. V tomto případě byl druhý sloupec _TargetLogonId1_ odebraný pomocí `project-away` operátoru.
+Pokud obě datové sady mají sloupce se stejnými názvy, budou mít sloupce datové sady na pravé straně číslo indexu, takže v tomto příkladu by se v tomto příkladu zobrazily _TargetLogonId_ s hodnotami z tabulky na levé straně a _TargetLogonId1_  s hodnotami z tabulky na pravé straně. V tomto případě byl druhý sloupec _TargetLogonId1_ odebraný pomocí `project-away` operátoru.
 
 > [!NOTE]
 > Chcete-li zvýšit výkon, zachovejte pouze příslušné sloupce připojených datových sad pomocí `project` operátoru.
@@ -79,7 +79,7 @@ SecurityEvent
 ## <a name="join-kinds"></a>Typy spojení
 Zadejte typ spojení s argumentem _druh_ . Každý typ provádí odlišnou shodu mezi záznamy v daných tabulkách, jak je popsáno v následující tabulce.
 
-| Typ spojení | Description |
+| Typ spojení | Popis |
 |:---|:---|
 | innerunique | Toto je výchozí režim připojení. Nejprve jsou nalezeny hodnoty odpovídající sloupce v levé tabulce a duplicitní hodnoty budou odebrány.  Pak se sada jedinečných hodnot bude shodovat s pravou tabulkou. |
 | vnořen | Ve výsledcích jsou zahrnuty pouze vyhovující záznamy v obou tabulkách. |

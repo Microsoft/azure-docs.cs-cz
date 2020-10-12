@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
 ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77670283"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Zápis rozšířených dotazů v Azure Monitor
@@ -69,7 +69,7 @@ Event
 ```
 
 ## <a name="print"></a>Tisk
-`print`Vrátí tabulku s jedním sloupcem a jedním řádkem, která zobrazuje výsledek výpočtu. To se často používá v případech, kdy potřebujete jednoduchý výpočet. Pokud například chcete najít aktuální čas v souboru PST a přidat sloupec s nástrojem EST:
+`print` Vrátí tabulku s jedním sloupcem a jedním řádkem, která zobrazuje výsledek výpočtu. To se často používá v případech, kdy potřebujete jednoduchý výpočet. Pokud například chcete najít aktuální čas v souboru PST a přidat sloupec s nástrojem EST:
 
 ```Kusto
 print nowPst = now()-8h
@@ -77,7 +77,7 @@ print nowPst = now()-8h
 ```
 
 ## <a name="datatable"></a>Objekt
-`datatable`umožňuje definovat sadu dat. Zadáte schéma a sadu hodnot a potom předáte tabulku do všech dalších prvků dotazu. Pokud například chcete vytvořit tabulku využití paměti RAM a vypočítat průměrnou hodnotu za hodinu:
+`datatable` umožňuje definovat sadu dat. Zadáte schéma a sadu hodnot a potom předáte tabulku do všech dalších prvků dotazu. Pokud například chcete vytvořit tabulku využití paměti RAM a vypočítat průměrnou hodnotu za hodinu:
 
 ```Kusto
 datatable (TimeGenerated: datetime, usage_percent: double)

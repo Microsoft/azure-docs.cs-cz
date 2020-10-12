@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: 232bc43440979a08da4a0e77d9b49bf56fdb0ae4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374030"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Nejčastější dotazy k Azure Disk Encryption pro virtuální počítače se systémem Linux
@@ -101,7 +101,7 @@ Existují předpoklady pro Azure Disk Encryption. Další informace o vytvořen�
 Existují předpoklady pro Azure Disk Encryption. Pokud chcete vytvořit aplikaci Azure Active Directory, vytvořit nový trezor klíčů nebo nastavit existující Trezor klíčů pro přístup k šifrování disku, abyste mohli povolit šifrování a chránit tajné klíče a klíče, přečtěte si téma [Azure Disk Encryption s obsahem Azure AD](disk-encryption-linux-aad.md) . Další informace o scénářích podpory klíčového šifrovacího klíče najdete v tématu [Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption s Azure AD](disk-encryption-key-vault-aad.md).
 
 ## <a name="is-azure-disk-encryption-using-an-azure-ad-app-previous-release-still-supported"></a>Je Azure Disk Encryption používání aplikace Azure AD (předchozí verze) stále podporovaná?
-Yes. Šifrování disku pomocí aplikace Azure AD se pořád podporuje. Při šifrování nových virtuálních počítačů se ale doporučuje použít místo šifrování v aplikaci Azure AD novou metodu. 
+Ano. Šifrování disku pomocí aplikace Azure AD se pořád podporuje. Při šifrování nových virtuálních počítačů se ale doporučuje použít místo šifrování v aplikaci Azure AD novou metodu. 
 
 ## <a name="can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app"></a>Můžu migrovat virtuální počítače, které byly zašifrované pomocí aplikace Azure AD pro šifrování bez aplikace Azure AD?
   V současné době není k dispozici přímá migrační cesta pro počítače, které byly zašifrované pomocí aplikace Azure AD pro šifrování bez aplikace Azure AD. Kromě toho neexistuje Přímá cesta ze šifrování bez aplikace služby Azure AD pro šifrování pomocí aplikace AD. 

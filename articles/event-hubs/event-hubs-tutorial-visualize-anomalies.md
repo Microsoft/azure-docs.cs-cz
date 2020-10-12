@@ -4,10 +4,10 @@ description: 'Kurz: vizualizace anomálií dat v reálném čase odeslaných do 
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: 1394f9bedfdfc3715090bdb8a9028d2654a1e4e3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934051"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Kurz: Vizualizace datových anomálií v událostech v reálném čase odesílaných do služby Azure Event Hubs
@@ -180,7 +180,7 @@ Teď můžete streamovat data do svého centra událostí. Pokud chcete tato dat
 
    ![Snímek obrazovky předvádějící vytvoření nové úlohy Azure Stream Analytics.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    Pro zbývající pole můžete použít výchozí hodnoty. Klikněte na možnost **Vytvořit**. 
+    Pro zbývající pole můžete použít výchozí hodnoty. Klikněte na **Vytvořit**. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 

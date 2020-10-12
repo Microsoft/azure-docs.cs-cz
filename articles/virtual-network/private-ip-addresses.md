@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
 ms.openlocfilehash: 13688b73c0cd73e13e407f1b75beb8dda61a754f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84172372"
 ---
 # <a name="private-ip-addresses"></a>Privátní IP adresy
@@ -26,9 +26,9 @@ Privátní IP adresy umožňují komunikaci mezi prostředky v Azure.
 
 Prostředky můžou být:
 * Služby Azure, jako například:
-    * Síťová rozhraní virtuálního počítače
+    * síťová rozhraní virtuálních počítačů,
     * Interní nástroje pro vyrovnávání zatížení
-    * Application Gateway
+    * brány Application Gateway.
 * Ve [virtuální síti](virtual-networks-overview.md).
 * Místní síť prostřednictvím brány VPN nebo okruhu ExpressRoute.
 
@@ -97,9 +97,9 @@ Lze také zobrazit možné metody přidělení, které lze použít:
 
 | Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamická | Static |
 | --- | --- | --- | --- |
-| Virtuální počítač |Síťové rozhraní |Ano |Ano |
-| Nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
-| Application Gateway |Konfigurace front-endu |Ano |Ano |
+| Virtuální počítač |Síťové rozhraní |Yes |Yes |
+| Nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Yes |Yes |
+| Application Gateway |Konfigurace front-endu |Yes |Yes |
 
 ## <a name="limits"></a>Omezení
 Omezení IP adres najdete v úplné sadě [omezení pro sítě](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) v Azure. Omezení platí pro jednotlivé oblasti a jednotlivá předplatná. Pokud chcete zvýšit výchozí omezení na základě vašich obchodních potřeb, obraťte se na [podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .

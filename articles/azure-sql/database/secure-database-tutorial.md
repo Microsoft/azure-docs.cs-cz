@@ -11,10 +11,10 @@ ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
 ms.openlocfilehash: bec60875561a9d821642d850c27e47d4f906aba3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885416"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Kurz: zabezpečení databáze v Azure SQL Database
@@ -210,7 +210,7 @@ Postup přidání uživatele s ověřováním Azure AD:
    ```
 
 > [!NOTE]
-> Uživatelé Azure AD jsou označeni v metadatech databáze s typem `E (EXTERNAL_USER)` a typem `X (EXTERNAL_GROUPS)` pro skupiny. Další informace najdete v tématu [Sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
+> Uživatelé Azure AD jsou označeni v metadatech databáze s typem `E (EXTERNAL_USER)` a typem `X (EXTERNAL_GROUPS)` pro skupiny. Další informace najdete v tématu [Sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
 
 ### <a name="secure-connection-strings"></a>Zabezpečené připojovací řetězce
 
@@ -235,7 +235,7 @@ Postup při kopírování zabezpečeného připojovacího řetězce:
 
 Azure SQL Database poskytuje funkce zabezpečení, které jsou k dispozici pomocí Azure Portal. Tyto funkce jsou dostupné jak pro databázi, tak pro server, s výjimkou maskování dat, která je k dispozici pouze v databázi. Další informace najdete v tématu [Azure Defender pro SQL](azure-defender-for-sql.md), [auditování](../../azure-sql/database/auditing-overview.md), [Maskování dynamických dat](dynamic-data-masking-overview.md)a [transparentní šifrování dat](transparent-data-encryption-tde-overview.md).
 
-### <a name="azure-defender-for-sql"></a>Azure Defender pro SQL
+### <a name="azure-defender-for-sql"></a>Azure Defender for SQL
 
 Funkce Azure Defender pro SQL detekuje potenciální hrozby při jejich výskytu a poskytuje výstrahy zabezpečení pro aktivity neobvyklé. Uživatelé mohou tyto podezřelé události prozkoumat pomocí funkce auditování a určit, zda má událost přístup, porušení nebo zneužití dat v databázi. Uživatelům se taky poskytuje přehled zabezpečení, který obsahuje posouzení ohrožení zabezpečení a nástroj pro zjišťování a zjišťování dat.
 
@@ -250,7 +250,7 @@ Povolení služby Azure Defender pro SQL:
 
 1. Na stránce **SQL Server** najděte část **zabezpečení** a vyberte **Security Center**.
 
-   1. Pokud chcete tuto funkci povolit, vyberte **v** části **Azure Defender pro SQL** . Vyberte účet úložiště pro ukládání výsledků posouzení ohrožení zabezpečení. Potom vyberte **Uložit**.
+   1. Pokud chcete tuto funkci povolit, vyberte **v** části **Azure Defender pro SQL** . Vyberte účet úložiště pro ukládání výsledků posouzení ohrožení zabezpečení. Pak vyberte **Uložit**.
 
       ![Navigační podokno](./media/secure-database-tutorial/threat-settings.png)
 
@@ -336,7 +336,7 @@ Povolení nebo ověření šifrování:
     ![Transparentní šifrování dat](./media/secure-database-tutorial/encryption-settings.png)
 
 > [!NOTE]
-> Chcete-li zobrazit stav šifrování, připojte se k databázi pomocí [SSMS](connect-query-ssms.md) a Dotazujte `encryption_state` sloupec zobrazení [Sys. dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) . Stav `3` označuje, že databáze je zašifrovaná.
+> Pokud chcete zobrazit stav šifrování, připojte se k databázi pomocí [SSMS](connect-query-ssms.md) a Dotazujte `encryption_state` sloupec zobrazení [Sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) . Stav `3` označuje, že databáze je zašifrovaná.
 
 ## <a name="next-steps"></a>Další kroky
 

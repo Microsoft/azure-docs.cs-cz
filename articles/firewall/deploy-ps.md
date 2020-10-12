@@ -8,10 +8,10 @@ ms.date: 08/28/2020
 ms.author: victorh
 ms.topic: how-to
 ms.openlocfilehash: c720d7c261421ade9dfce01f0b116123dcab1e55
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89071699"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Nasazení a konfigurace Azure Firewall pomocí Azure PowerShell
@@ -87,7 +87,7 @@ $testVnet = New-AzVirtualNetwork -Name Test-FW-VN -ResourceGroupName Test-FW-RG 
 Teď vytvoříte virtuální počítače pro jump server a server úloh a umístíte je do příslušných podsítí.
 Po zobrazení výzvy zadejte pro virtuální počítač uživatelské jméno a heslo.
 
-Vytvořte virtuální počítač s odkazem na SRV.
+Vytvořte virtuální počítač s Srv-Jump.
 
 ```azurepowershell
 New-AzVm `

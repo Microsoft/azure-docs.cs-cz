@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 9210c54305427c82d5666d68573fd3af41e8cef7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90972193"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Vytváření a Správa oborů šifrování (Preview)
@@ -179,7 +179,7 @@ Informace o tom, jak nakonfigurovat šifrování Azure Storage pomocí klíčů 
 
 Pokud chcete zobrazit obory šifrování pro účet úložiště v Azure Portal, přejděte do nastavení **obory šifrování** pro účet úložiště. V tomto podokně můžete povolit nebo zakázat rozsah šifrování nebo změnit klíč pro rozsah šifrování.
 
-:::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="Snímek obrazovky zobrazující seznam rozsahů šifrování v Azure Portal":::
+:::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="Snímek obrazovky znázorňující vytvoření oboru šifrování v Azure Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -223,7 +223,7 @@ Pokud chcete vytvořit kontejner s výchozím rozsahem šifrování v Azure Port
 1. V rozevíracím seznamu **Rozsah šifrování** vyberte výchozí rozsah šifrování pro kontejner.
 1. Pokud chcete vyžadovat, aby všechny objekty BLOB v kontejneru používaly výchozí rozsah šifrování, zaškrtněte políčko pro **použití tohoto oboru šifrování pro všechny objekty BLOB v kontejneru**. Pokud je toto políčko zaškrtnuté, nemůže jednotlivý objekt BLOB v kontejneru přepsat výchozí rozsah šifrování.
 
-    :::image type="content" source="media/encryption-scope-manage/create-container-default-encryption-scope.png" alt-text="Snímek obrazovky s kontejnerem s výchozím rozsahem šifrování":::
+    :::image type="content" source="media/encryption-scope-manage/create-container-default-encryption-scope.png" alt-text="Snímek obrazovky znázorňující vytvoření oboru šifrování v Azure Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -277,7 +277,7 @@ Pokud chcete nahrát objekt BLOB s rozsahem šifrování zadaným v Azure Portal
 1. Najděte rozevírací oddíl **Rozsah šifrování** . Ve výchozím nastavení je objekt BLOB vytvořen s výchozím rozsahem šifrování pro kontejner, pokud byl zadán. Pokud kontejner vyžaduje, aby objekty blob používaly výchozí obor šifrování, je tato část zakázaná.
 1. Pokud chcete pro objekt blob, který nahráváte, zadat jiný obor, vyberte **Zvolit existující obor**a v rozevíracím seznamu vyberte požadovaný obor.
 
-    :::image type="content" source="media/encryption-scope-manage/upload-blob-encryption-scope.png" alt-text="Snímek obrazovky ukazující, jak nahrát objekt BLOB s rozsahem šifrování":::
+    :::image type="content" source="media/encryption-scope-manage/upload-blob-encryption-scope.png" alt-text="Snímek obrazovky znázorňující vytvoření oboru šifrování v Azure Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

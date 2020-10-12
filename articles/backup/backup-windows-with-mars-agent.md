@@ -4,10 +4,10 @@ description: K zálohování počítačů s Windows použijte agenta Microsoft A
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052218"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Zálohování souborů a složek Windows serveru do Azure
@@ -30,13 +30,13 @@ V tomto článku se dozvíte, jak:
 * [Ověřte přístup k Internetu](install-mars-agent.md#verify-internet-access) na počítačích, které chcete zálohovat.
 * Pokud není nainstalovaný agent MARS, zjistěte, jak ho nainstalovat [tady](install-mars-agent.md).
 
-## <a name="create-a-backup-policy"></a>Vytvoření zásady zálohování
+## <a name="create-a-backup-policy"></a>Vytvoření zásad zálohování
 
 Zásady zálohování určují, kdy pořizovat snímky dat k vytvoření bodů obnovení. Také určuje, jak dlouho mají být body obnovení uchovávány. Pomocí agenta MARS nakonfigurujete zásady zálohování.
 
 Azure Backup automaticky nebere v úvahu letní čas (letní čas). Toto výchozí nastavení může způsobit nesoulad mezi skutečným časem a plánovaným časem zálohování.
 
-Vytvoření zásady zálohování:
+Vytvoření zásad zálohování:
 
 1. Po stažení a registraci agenta MARS otevřete konzolu agenta. Najdete ho vyhledáním **Microsoft Azure Backup** ve svém počítači.  
 

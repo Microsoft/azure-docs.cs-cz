@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 2a729caefe698b13833098ba48df9d4bfbd97356
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77665695"
 ---
 # <a name="resource-expression-in-azure-monitor-log-query"></a>výraz prostředku () v dotazu Azure Monitor protokolu
@@ -18,11 +18,11 @@ ms.locfileid: "77665695"
 `resource`Výraz se používá v Azure monitor dotazu [vymezeném na prostředek](scope.md#query-scope) pro načtení dat z jiných prostředků. 
 
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
 `resource(`*RID*`)`
 
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Argumenty
 
 - *Identifikátor*: ID prostředku prostředku.
 

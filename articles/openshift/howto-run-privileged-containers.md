@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: ARO, OpenShift, aquasec, TwistLock, Red Hat
 ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78271366"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Spouštění privilegovaných kontejnerů v clusteru Azure Red Hat OpenShift
@@ -169,7 +169,7 @@ pak spusťte:
 oc create -f twistlock_route.yaml
 ```
 
-Adresu URL přiřazenou ke konzole TwistLock můžete získat pomocí tohoto příkazu:`oc get route twistlock-console -n twistlock`
+Adresu URL přiřazenou ke konzole TwistLock můžete získat pomocí tohoto příkazu: `oc get route twistlock-console -n twistlock`
 
 ### <a name="configure-console"></a>Konfigurovat konzolu
 

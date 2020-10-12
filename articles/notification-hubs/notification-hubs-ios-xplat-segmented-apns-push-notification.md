@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
 ms.openlocfilehash: 585bdfdd7033f75e5beeba7246c8fbdd03a5e6e8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86530028"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Kurz: odeslání nabízených oznámení na konkrétní zařízení s iOS pomocí Azure Notification Hubs
@@ -39,7 +39,7 @@ V tomto kurzu provedete následující kroky:
 > * Odeslat oznámení ze zařízení
 > * Spuštění aplikace a generování oznámení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Toto téma se sestavuje v aplikaci, kterou jste vytvořili v [kurzu: nabízená oznámení do aplikací pro iOS pomocí Azure Notification Hubs][get-started]. Před zahájením tohoto kurzu musíte mít již dokončený [kurz: nabízená oznámení do aplikací pro iOS pomocí Azure Notification Hubs][get-started].
 
@@ -145,7 +145,7 @@ Prvním krokem je přidání prvků uživatelského rozhraní do stávajícího 
     ```
 
 8. V `didFinishLaunchingWithOptions` metodě v `AppDelegate.m` přidejte kód pro inicializaci instance oznámení na začátku metody.  
-    `HUBNAME`a `HUBLISTENACCESS` (definované `hubinfo.h` ) by již měly mít `<hub name>` `<connection string with listen access>` zástupné symboly a nahrazeny názvem vašeho centra oznámení a připojovacím řetězcem pro *DefaultListenSharedAccessSignature* , které jste získali dříve.
+    `HUBNAME` a `HUBLISTENACCESS` (definované `hubinfo.h` ) by již měly mít `<hub name>` `<connection string with listen access>` zástupné symboly a nahrazeny názvem vašeho centra oznámení a připojovacím řetězcem pro *DefaultListenSharedAccessSignature* , které jste získali dříve.
 
     ```objc
     self.notifications = [[Notifications alloc] initWithConnectionString:HUBLISTENACCESS HubName:HUBNAME];

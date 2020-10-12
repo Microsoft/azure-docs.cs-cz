@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/30/2019
 ms.author: erhopf
 ms.openlocfilehash: ffefde7d692950fc272ab2502ad8afe254bf48f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73590561"
 ---
 Následující omezení platí pro počet Cognitive Servicesch prostředků na předplatné Azure. Každé z Cognitive Services může mít další omezení, další informace najdete v tématu [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/).

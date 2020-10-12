@@ -11,10 +11,10 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 228fa18fef0f681437fd2c0c87e3114d14977a49
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462645"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Nejčastější dotazy k Azure synapse Analytics (dříve SQL DW)
@@ -85,7 +85,7 @@ A. Je podporováno mnoho funkcí. Funkce, které nejsou podporované, najdete v 
 
 Otázka: Podporuje synapse fond SQL rozhraní REST API?
 
-A. Yes. Většina funkcí REST, které je možné používat s SQL Database, je k dispozici také v synapse fondu SQL. Informace o rozhraní API najdete v rámci stránek nebo [databází](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)v dokumentaci k REST.
+A. Ano. Většina funkcí REST, které je možné používat s SQL Database, je k dispozici také v synapse fondu SQL. Informace o rozhraní API najdete v rámci stránek nebo [databází](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)v dokumentaci k REST.
 
 ## <a name="loading"></a>Načítá
 

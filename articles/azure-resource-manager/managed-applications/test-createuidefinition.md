@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78250181"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Otestování rozhraní portálu pro Azure Managed Applications
@@ -20,7 +20,7 @@ Po [vytvoření createUiDefinition.jspro soubor](create-uidefinition-overview.md
 
 * **createUiDefinition.jsv** souboru. Pokud tento soubor nemáte, zkopírujte [ukázkový soubor](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json).
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Předplatné Azure. Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="use-sandbox"></a>Použít izolovaný prostor
 
@@ -36,7 +36,7 @@ Po [vytvoření createUiDefinition.jspro soubor](create-uidefinition-overview.md
 
    ![Zobrazit formulář](./media/test-createuidefinition/show-ui-form.png)
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se formulář po výběru **náhledu**nezobrazí, může dojít k chybě syntaxe. Vyhledejte červený indikátor na pravém posuvníku a přejděte k němu.
 

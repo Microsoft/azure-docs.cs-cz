@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77617080"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>Sledování a řešení potíží na straně HANA
@@ -75,7 +75,7 @@ Jednou z nejdůležitějších kontrol SAP HANA v systému Linux je ujistit se, 
 
 Následující příkaz pro Linux by neměl vracet hodnotu Nothing: **ot-QA | grep ulimit.** Pokud se zdá, že _ulimit_ je nainstalovaný, okamžitě ho odinstalujte.
 
-## <a name="memory"></a>Memory (Paměť)
+## <a name="memory"></a>Paměť
 
 Můžete si všimnout, že velikost paměti přidělená SAP HANA databáze je vyšší, než se očekávalo. Následující výstrahy indikují problémy s vysokým využitím paměti:
 

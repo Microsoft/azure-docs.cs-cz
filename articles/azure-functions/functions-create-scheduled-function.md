@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 9e542c493c02174364072f91d092f05ad9ec69cf
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973088"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Vytvoření funkce v Azure aktivované časovačem
@@ -36,15 +36,15 @@ Vaše nová aplikace Function App je připravena k použití. V dalším kroku v
 
 1. Ve vaší aplikaci Function App vyberte **funkce**a pak vyberte **+ Přidat** . 
 
-   :::image type="content" source="./media/functions-create-scheduled-function/function-add-function.png" alt-text="Přidejte funkci do Azure Portal." border="true":::
+   :::image type="content" source="./media/functions-create-scheduled-function/function-add-function.png" alt-text="Aplikace Function App byla úspěšně vytvořena." border="true":::
 
 1. Vyberte šablonu **triggeru časovače** . 
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-select-timer-trigger.png" alt-text="Vyberte aktivační událost časovače v Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-select-timer-trigger.png" alt-text="Aplikace Function App byla úspěšně vytvořena." border="true":::
 
 1. Nakonfigurujte novou aktivační událost s nastavením uvedenými v tabulce pod obrázkem a pak vyberte **vytvořit funkci**.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="Snímek obrazovky s vybranou šablonou triggeru časovače zobrazuje novou stránku funkce." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="Aplikace Function App byla úspěšně vytvořena." border="true":::
     
     | Nastavení | Navrhovaná hodnota | Popis |
     |---|---|---|
@@ -55,11 +55,11 @@ Vaše nová aplikace Function App je připravena k použití. V dalším kroku v
 
 1. Ve své funkci vyberte **Code + test** a rozbalte protokoly.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-test-timer-trigger.png" alt-text="Otestujte Trigger časovače v Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-test-timer-trigger.png" alt-text="Aplikace Function App byla úspěšně vytvořena." border="true":::
 
 1. Ověřte provádění zobrazením informací zapsaných do protokolů.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-view-timer-logs.png" alt-text="Zobrazit Trigger časovače v Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-view-timer-logs.png" alt-text="Aplikace Function App byla úspěšně vytvořena." border="true":::
 
 Teď můžete změnit plán funkce tak, aby se spouštěla jednou za hodinu (a ne jednou za minutu).
 
@@ -69,11 +69,11 @@ Teď můžete změnit plán funkce tak, aby se spouštěla jednou za hodinu (a n
 
 1. Vyberte **časovač (myTimer)**.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-update-timer-schedule.png" alt-text="Aktualizujte plán časovače v Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-update-timer-schedule.png" alt-text="Aplikace Function App byla úspěšně vytvořena." border="true":::
 
 1. Aktualizujte hodnotu **plánu** na `0 0 */1 * * *` a pak vyberte **Uložit**.  
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="Aktualizace plánu časovače funkcí na webu Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="Aplikace Function App byla úspěšně vytvořena." border="true":::
 
 Teď máte funkci, která se spouští jednou za hodinu, a to za hodinu.
 

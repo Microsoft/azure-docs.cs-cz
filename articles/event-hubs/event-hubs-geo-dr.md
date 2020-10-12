@@ -4,10 +4,10 @@ description: Použití geografických oblastí k převzetí služeb při selhán
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1807c22645c3246f4cf18d723fc19da475e4d4f4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934068"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geografická zotavení po havárii 
@@ -45,10 +45,10 @@ Podporovány jsou následující kombinace primárních a sekundárních oborů 
 
 | Primární obor názvů | Sekundární obor názvů | Podporováno | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Ano | 
-| Standard | Vyhrazená | Ano | 
-| Vyhrazená | Vyhrazená | Ano | 
-| Vyhrazená | Standard | Ne | 
+| Standard | Standard | Yes | 
+| Standard | Vyhrazená | Yes | 
+| Vyhrazená | Vyhrazená | Yes | 
+| Vyhrazená | Standard | No | 
 
 > [!NOTE]
 > Obory názvů, které jsou ve stejném vyhrazeném clusteru, nelze spárovat. Obory názvů, které jsou v samostatných clusterech, můžete spárovat. 
@@ -94,7 +94,7 @@ Pokud jste udělali chybu; například jste spároval nesprávné oblasti při p
 - Postup potřebný ke spuštění ukázkového kódu. 
 - Odeslat a přijmout z aktuálního primárního oboru názvů 
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Vezměte v úvahu následující skutečnosti:
 
