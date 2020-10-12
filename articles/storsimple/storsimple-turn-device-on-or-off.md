@@ -9,10 +9,10 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c8f4269235c494ff9dd8d1bf8e0ef940562f8927
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515271"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Zapnutí nebo vypnutí zařízení řady StorSimple 8000
@@ -86,12 +86,12 @@ Výpadek napájení nebo přerušení může vypnout zařízení StorSimple. Vý
 * [Jenom zařízení s primární skříňkou](#8100)
 * [Zařízení s EBOD skříní](#8600)
 
-### <a name="device-with-primary-enclosure-only"></a>Jenom zařízení s primární skříňkou<a name="8100"></a>
+### <a name="device-with-primary-enclosure-only"></a>Jenom zařízení s primární skříňkou <a name="8100"></a>
 Systém může pokračovat v běžném provozu, pokud dojde ke snížení výkonu některého z jeho zdrojů napájení. Chcete-li však zajistit vysokou dostupnost zařízení, obnovte napájení podle potřeby co nejdříve.
 
 Pokud dojde k výpadku napájení nebo přerušení napájení u napájení, systém se vypne přesně podle pořadí. Po obnovení napájení se systém automaticky zapne.
 
-### <a name="device-with-ebod-enclosure"></a>Zařízení s EBOD skříní<a name="8600"></a>
+### <a name="device-with-ebod-enclosure"></a>Zařízení s EBOD skříní <a name="8600"></a>
 #### <a name="power-loss-on-one-power-supply"></a>Výpadek napájení u jednoho zdroje napájení
 Systém může pokračovat v běžném provozu, pokud dojde ke snížení výkonu některého z jeho napájení v primární skříni nebo skříni EBOD. Chcete-li však zajistit vysokou dostupnost zařízení, obnovte napájení podle potřeby co nejdříve.
 
@@ -140,7 +140,7 @@ Běžící zařízení StorSimple může být potřeba vypnout, pokud se právě
 * [Zařízení s primární skříňkou](#8100a)
 * [Zařízení s EBOD skříní](#8600a)
 
-### <a name="device-with-primary-enclosure"></a>Zařízení s primární skříňkou<a name="8100a"></a>
+### <a name="device-with-primary-enclosure"></a>Zařízení s primární skříňkou <a name="8100a"></a>
 Pokud chcete zařízení vypnout podle pořadí a řízeného způsobu, můžete to provést prostřednictvím Azure Portal nebo přes Windows PowerShell pro StorSimple. 
 
 > [!IMPORTANT]
@@ -152,7 +152,7 @@ Pokud chcete zařízení vypnout podle pořadí a řízeného způsobu, můžete
 
 Po přístupu k Windows PowerShell pro StorSimple nebo Azure Portal postupujte podle kroků v části [vypnutí zařízení StorSimple](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device). 
 
-### <a name="device-with-ebod-enclosure"></a>Zařízení s EBOD skříní<a name="8600a"></a>
+### <a name="device-with-ebod-enclosure"></a>Zařízení s EBOD skříní <a name="8600a"></a>
 > [!IMPORTANT]
 > Před vypnutím primární skříně a skříně EBOD zajistěte, aby byly všechny součásti zařízení v dobrém stavu. V Azure Portal přejděte na **zařízení**  >  **monitor**  >  **stav hardwaru**a ověřte, zda jsou všechny součásti v pořádku.
 

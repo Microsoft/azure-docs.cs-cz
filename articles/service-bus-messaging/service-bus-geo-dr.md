@@ -4,10 +4,10 @@ description: Použití geografických oblastí k převzetí služeb při selhán
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 8c203ed197c1e5bfb15cfb503a04df79b85c630e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372519"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geografické zotavení po havárii
@@ -17,7 +17,7 @@ Při výpadku provozu celé oblasti Azure nebo Datacenter (Pokud se nepoužívaj
 Funkce geografického zotavení po havárii je globálně dostupná pro SKU Service Bus Premium. 
 
 >[!NOTE]
-> Geografické zotavení po havárii v současné době zajišťuje, že se při párování zkopírují metadata (fronty, témata, odběry, filtry) z primárního oboru názvů do sekundárního oboru názvů.
+> Geo-Disaster Recovery v současné době zajišťuje, aby se při párování zkopírovaly metadata (fronty, témata, odběry, filtry) z primárního oboru názvů do sekundárního oboru názvů.
 
 ## <a name="outages-and-disasters"></a>Výpadky a havárie
 
@@ -107,7 +107,7 @@ Pokud jste udělali chybu; například jste spároval nesprávné oblasti při p
 
 Pokud máte scénář, ve kterém nemůžete změnit připojení výrobců a uživatelů, můžete název oboru názvů použít jako název aliasu. Tady najdete [ukázkový kód na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR_existing_namespace_name).
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>ukázky
 
 [Ukázky na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) ukazují, jak nastavit a iniciovat převzetí služeb při selhání. Tyto ukázky ukazují následující koncepty:
 
@@ -117,7 +117,7 @@ Pokud máte scénář, ve kterém nemůžete změnit připojení výrobců a už
 - Postup nebo umožnění geografického zotavení po havárii prostřednictvím PowerShellu nebo rozhraní příkazového řádku.
 - [Odeslat a přijmout](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1) z aktuálního primárního nebo sekundárního oboru názvů pomocí aliasu
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Vezměte v úvahu následující skutečnosti:
 

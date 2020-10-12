@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c0dfa06e2ece2ba4631c0d5681b066ab0134daba
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085663"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Zkoumání dat v tabulkách Hivu pomocí dotazů Hivu
@@ -34,11 +34,11 @@ V tomto článku se předpokládá, že máte následující:
 * Pokud potřebujete pokyny k odeslání dotazů na podregistr, přečtěte si téma [odeslání dotazů na podregistr](move-hive-tables.md#submit) .
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>Ukázkové skripty pro dotaz na podregistr pro zkoumání dat
-1. Získá počet pozorování na oddíl.`SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-2. Získá počet pozorování za den.`SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
+1. Získá počet pozorování na oddíl.  `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
+2. Získá počet pozorování za den.  `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
 3. Získat úrovně ve sloupci kategorií  
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-4. Získá počet úrovní v kombinaci dvou kategorií sloupců.`SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+4. Získá počet úrovní v kombinaci dvou kategorií sloupců.  `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
 5. Získat distribuci pro číselné sloupce  
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 6. Extrakce záznamů z spojení dvou tabulek

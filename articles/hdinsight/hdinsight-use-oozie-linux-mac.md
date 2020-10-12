@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
 ms.openlocfilehash: 1e88fc64ea297f70f56478588312675fb233f221
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085935"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Apache Haddopem k definování a spuštění pracovního procesu v linuxové službě Azure HDInsight
@@ -37,7 +37,7 @@ Oozie můžete použít také k plánování úloh, které jsou specifické pro 
 
 * **Azure SQL Database**.  Viz téma [Vytvoření databáze v Azure SQL Database Azure Portal](../sql-database/sql-database-get-started.md).  V tomto článku se používá databáze s názvem **oozietest**.
 
-* Schéma identifikátoru URI pro primární úložiště clusterů. `wasb://`pro Azure Storage pro `abfs://` Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` . Viz také [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md).
+* Schéma identifikátoru URI pro primární úložiště clusterů. `wasb://` pro Azure Storage pro `abfs://` Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI by byl `wasbs://` . Viz také [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="example-workflow"></a>Ukázkový pracovní postup
 
@@ -306,7 +306,7 @@ Definice úlohy popisuje, kde najít workflow.xml. Popisuje také místo, kde na
     |Hodnota zástupného textu| Nahrazená hodnota|
     |---|---|
     |wasbs://mycontainer \@ mystorageaccount.blob.Core.Windows.NET| Hodnota přijatá z kroku 1.|
-    |admin| Přihlašovací jméno pro cluster HDInsight, pokud není správce.|
+    |správce| Přihlašovací jméno pro cluster HDInsight, pokud není správce.|
     |serverName| Název serveru Azure SQL Database.|
     |sqlLogin| Přihlášení k serveru Azure SQL Database.|
     |sqlPassword| Přihlašovací heslo serveru Azure SQL Database.|
@@ -491,7 +491,7 @@ Pomocí REST API Oozie můžete vytvářet vlastní nástroje, které pracují s
 
 * **Identifikátor URI**: přístup k REST API můžete získat mimo cluster na adrese `https://CLUSTERNAME.azurehdinsight.net/oozie` .
 
-* **Ověřování**: k ověření použijte rozhraní API. účet http clusteru (správce) a heslo. Příklad:
+* **Ověřování**: k ověření použijte rozhraní API. účet http clusteru (správce) a heslo. Například:
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions

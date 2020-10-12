@@ -4,10 +4,10 @@ description: Přečtěte si, jak Azure Service Bus podporuje rozšířený proto
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: c91c7965b94216f3f3bcb47e0cb652ce22a0217a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88066334"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Podpora AMQP 1,0 v Service Bus
@@ -65,12 +65,12 @@ V tuto chvíli jsou známy následující klientské knihovny pro práci s Servi
 | Java |Klient JMS (Java Message Service) Apache Qpid<br/>Klient Java software SwiftMQ v IIT softwaru |
 | C |Apache Qpid Proton-C |
 | PHP |Apache Qpid Proton – PHP |
-| Python |Apache Qpid Proton – Python |
+| Python |Proton-Python Apache Qpid |
 | C# |AMQP .NET Lite |
 
 **Obrázek 2: tabulka klientských knihoven AMQP 1,0**
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 * AMQP 1,0 je otevřený a spolehlivý protokol pro zasílání zpráv, který můžete použít k vytváření hybridních aplikací pro různé platformy. AMQP 1,0 je OASIS Standard.
 * Podpora AMQP 1,0 je teď k dispozici v Azure Service Bus a také Service Bus pro Windows Server (Service Bus 1,1). Ceny jsou stejné jako u existujících protokolů.
 

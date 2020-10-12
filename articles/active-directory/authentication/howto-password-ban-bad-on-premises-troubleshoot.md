@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25199aeb7a3ed6332e74ad05835a8c4fca763c00
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116457"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Řešení potíží: místní ochrana heslem Azure AD
@@ -50,7 +50,7 @@ Hlavním příznakem tohoto problému jsou 30018 události v protokolu událost�
 
 1. Ujistěte se, že je doménová struktura a všechny proxy servery zaregistrované u stejného tenanta Azure.
 
-   Tento požadavek můžete ověřit spuštěním `Get-AzureADPasswordProtectionProxy` `Get-AzureADPasswordProtectionDCAgent` rutin prostředí PowerShell a potom porovnejte `AzureTenant` vlastnost jednotlivých vrácených položek. Pro správnou operaci musí být nahlášený název tenanta stejný ve všech agentech DC a proxy serverech.
+   Tento požadavek můžete ověřit spuštěním  `Get-AzureADPasswordProtectionProxy` `Get-AzureADPasswordProtectionDCAgent` rutin prostředí PowerShell a potom porovnejte `AzureTenant` vlastnost jednotlivých vrácených položek. Pro správnou operaci musí být nahlášený název tenanta stejný ve všech agentech DC a proxy serverech.
 
    Pokud neshoda s registrací tenanta Azure existuje, můžete tento problém vyřešit spuštěním `Register-AzureADPasswordProtectionProxy` rutin a/nebo `Register-AzureADPasswordProtectionForest` PowerShellu podle potřeby a tím, že použijete přihlašovací údaje ze stejného tenanta Azure pro všechny registrace.
 
@@ -84,7 +84,7 @@ The forest has not been registered with Azure. Password policies cannot be downl
 
 Existují dva možné příčiny tohoto problému.
 
-1. Doménová struktura není zaregistrovaná. Pokud chcete tento problém vyřešit, spusťte prosím příkaz Register-AzureADPasswordProtectionForest, jak je popsáno v tématu [požadavky na nasazení](howto-password-ban-bad-on-premises-deploy.md).
+1. Doménová struktura není zaregistrovaná. Chcete-li tento problém vyřešit, spusťte prosím příkaz Register-AzureADPasswordProtectionForest, jak je popsáno v tématu [požadavky na nasazení](howto-password-ban-bad-on-premises-deploy.md).
 1. Byla zaregistrována doménová struktura, ale agent řadiče domény nemůže dešifrovat registrační data doménové struktury. Tento případ má stejnou hlavní příčinu jako problém #2 uvedený výše v části [Agent DC není schopen šifrovat nebo dešifrovat soubory zásad hesel](howto-password-ban-bad-on-premises-troubleshoot.md#dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files). Snadným způsobem, jak tuto teoretickou potvrdit, je to, že se tato chyba zobrazí jenom v agentech DC, které běží na řadičích domény s Windows Serverem 2012 nebo Windows server 2012R2, zatímco agenti DC spuštěné v systému Windows Server 2016 a novějších řadičích domény jsou přesné. Alternativní řešení je stejné: Upgradujte všechny řadiče domény na Windows Server 2016 nebo novější.
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Jsou přijímána slabá hesla, ale neměla by být

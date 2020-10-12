@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
 ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87047486"
 ---
 # <a name="animated-character-detection-preview"></a>Detekce animovaných postav (Preview)
@@ -208,7 +208,7 @@ Podívejte se na animované znaky ve vygenerovaném souboru JSON.
 
 ## <a name="limitations"></a>Omezení
 
-* V současné době není schopnost "Identifikace animace" v oblasti východní Asie podporovaná.
+* V současné době není schopnost "Identifikace animace" v oblasti East-Asia podporována.
 * Znaky, které se zdají být malé nebo daleko ve videu, nemusí být správně identifikovány, pokud kvalita videa není nízká.
 * Doporučení je použití modelu na sadu animovaných znaků (například na animovanou řadu).
 

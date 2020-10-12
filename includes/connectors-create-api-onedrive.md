@@ -5,13 +5,13 @@ author: ecfan
 ms.author: estfan
 ms.date: 07/21/2020
 ms.openlocfilehash: 27df83552b450b7657c0595d1d419001df98148c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87040247"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet [OneDrivu](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) 
 
@@ -19,7 +19,7 @@ Předtím, než budete moci použít svůj účet OneDrivu s Logic Apps, musíte
 
 Pomocí těchto kroků autorizujte Logic Apps připojení k účtu OneDrive:  
 
-1. Přihlaste se k webu Azure Portal. 
+1. Přihlaste se k portálu Azure. 
 
 1. V části **služby Azure**vyberte **Logic Apps**. Pak v seznamu vyberte název vaší aplikace logiky.
 

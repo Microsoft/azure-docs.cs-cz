@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: a692f4dd86d110f7f0a91a862a7b16ac28345de5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084524"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark ve službě Azure HDInsight
@@ -159,7 +159,7 @@ Jak bylo uvedeno výše, `%sh` překladač není podporován od HDInsight 4,0 a 
 
 Uživatelé privilegovaných domén mohou použít `Shiro.ini` soubor k řízení přístupu k uživatelskému rozhraní překladače. Pouze tito uživatelé mohou vytvořit nové `%sh` překladače a nastavit oprávnění u každého nového `%sh` překladače. K řízení přístupu pomocí `shiro.ini` souboru použijte následující postup:
 
-1. Definujte novou roli pomocí existujícího názvu skupiny domén. V následujícím příkladu `adminGroupName` je skupina privilegovaných uživatelů v AAD. V názvu skupiny Nepoužívejte speciální znaky ani prázdné znaky. Znaky po `=` poskytnutí oprávnění pro tuto roli. `*`znamená, že skupina má úplná oprávnění.
+1. Definujte novou roli pomocí existujícího názvu skupiny domén. V následujícím příkladu `adminGroupName` je skupina privilegovaných uživatelů v AAD. V názvu skupiny Nepoužívejte speciální znaky ani prázdné znaky. Znaky po `=` poskytnutí oprávnění pro tuto roli. `*` znamená, že skupina má úplná oprávnění.
 
     ```
     [roles]
@@ -197,7 +197,7 @@ Pokud chcete službu ověřit z Ambari, přejděte do `https://CLUSTERNAME.azure
 
 Chcete-li ověřit službu z příkazového řádku, SSH k hlavnímu uzlu. Přepněte uživatele na Zeppelin pomocí příkazu `sudo su zeppelin` . Stavové příkazy:
 
-|Příkaz |Description |
+|Příkaz |Popis |
 |---|---|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|Stav služby.|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|Verze služby|

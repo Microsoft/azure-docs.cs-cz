@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 04/07/2020
 ms.author: mimart
 ms.openlocfilehash: 818f33abfdb0655d96c0a8873a43903ee972b3bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82925396"
 ---
 ## <a name="register-an-azure-ad-app"></a>Registrace aplikace Azure AD
@@ -45,4 +45,4 @@ Pokud chcete získat `family_name` `given_name` deklarace identity a ze služby 
 1. Vyberte **přidat volitelnou deklaraci identity**.
 1. Jako **typ tokenu**vyberte **ID**.
 1. Vyberte volitelné deklarace identity, které chcete přidat, `family_name` a `given_name` .
-1. Klikněte na tlačítko **Add** (Přidat).
+1. Klikněte na **Přidat**.

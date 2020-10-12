@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84709041"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError výjimky pro Apache Spark ve službě Azure HDInsight
@@ -194,7 +194,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 ### <a name="cause"></a>Příčina
 
-`java.lang.OutOfMemoryError: unable to create new native thread`Hlavní operační systém nemůže přiřadit více nativních vláken pro JVMs. Potvrzuje, že je tato výjimka způsobena porušením limitu počtu vláken pro procesy.
+`java.lang.OutOfMemoryError: unable to create new native thread` Hlavní operační systém nemůže přiřadit více nativních vláken pro JVMs. Potvrzuje, že je tato výjimka způsobena porušením limitu počtu vláken pro procesy.
 
 Při neočekávaném ukončení serveru Livy se také ukončí všechna připojení ke clusterům Spark, což znamená, že všechny úlohy a související data budou ztracena. V rámci mechanismu obnovení relace HDP 2,6 Livy ukládá podrobnosti o relaci v Zookeeper po obnovení serveru Livy.
 
@@ -239,7 +239,7 @@ Všechny položky odstraňte pomocí kroků popsaných níže.
 1. Počkejte, než se výše uvedený příkaz dokončí, a kurzorem vraťte výzvu a pak restartujte službu Livy z Ambari, která by měla být úspěšná.
 
 > [!NOTE]
-> `DELETE`relace Livy po dokončení jejího provádění. Relace Livy Batch se neodstraní automaticky hned po dokončení aplikace Spark, což je záměrné. Relace Livy je entita vytvořená požadavkem POST proti serveru Livy REST. `DELETE`K odstranění této entity je potřeba volání. Nebo bychom měli počkat na navázání GC.
+> `DELETE` relace Livy po dokončení jejího provádění. Relace Livy Batch se neodstraní automaticky hned po dokončení aplikace Spark, což je záměrné. Relace Livy je entita vytvořená požadavkem POST proti serveru Livy REST. `DELETE`K odstranění této entity je potřeba volání. Nebo bychom měli počkat na navázání GC.
 
 ---
 

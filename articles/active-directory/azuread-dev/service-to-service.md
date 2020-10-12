@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 179034533d90dbbb6ca362fc6f72996f32873729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80154759"
 ---
 # <a name="service-to-service-apps"></a>Aplikace Service-to-Service
@@ -59,7 +59,7 @@ Tok popsaný níže předpokládá, že uživatel byl ověřen v jiné aplikaci 
 
 Podívejte se na ukázky kódu pro procesy démona nebo serverové aplikace do webového rozhraní API: [aplikace serveru nebo démona do webového rozhraní API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
-## <a name="app-registration"></a>Registrace aplikace
+## <a name="app-registration"></a>Registrace aplikací
 
 * Jeden tenant – pro případy identity aplikace i delegovaného uživatele musí být démon nebo serverová aplikace zaregistrované ve stejném adresáři v Azure AD. Webové rozhraní API je možné nakonfigurovat tak, aby vystavilo sadu oprávnění, která slouží k omezení přístupu démona nebo serveru k jeho prostředkům. Pokud se používá typ identity delegovaný uživatel, musí serverová aplikace vybrat požadovaná oprávnění. Na stránce **oprávnění rozhraní API** pro registraci aplikace po výběru možnosti **Přidat oprávnění** a zvolení rodiny rozhraní API zvolte **delegovaná oprávnění**a pak vyberte vaše oprávnění. Tento krok není nutný, pokud se používá typ identity aplikace.
 * Více tenantů – nejprve je démon nebo serverová aplikace nakonfigurovaná tak, aby označovala oprávnění, která vyžaduje, aby byla funkční. Tento seznam požadovaných oprávnění se zobrazí v dialogovém okně, když uživatel nebo správce v cílovém adresáři udělí souhlas s aplikací a zpřístupní ji pro jejich organizaci. Některé aplikace vyžadují oprávnění na úrovni uživatele, ke kterým může udělit každý uživatel v organizaci souhlas. Jiné aplikace vyžadují oprávnění na úrovni správce, kterým uživatel v organizaci nemůže udělit souhlas. Pouze správce adresáře může udělit souhlas aplikacím, které vyžadují tuto úroveň oprávnění. Když uživatel nebo správce souhlasí, obě webová rozhraní API se zaregistrují ve svém adresáři.

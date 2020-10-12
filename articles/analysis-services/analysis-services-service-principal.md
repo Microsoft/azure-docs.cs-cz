@@ -8,10 +8,10 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86077367"
 ---
 # <a name="automation-with-service-principals"></a>Automatizace s využitím instančních objektů
@@ -24,14 +24,14 @@ Analysis Services taky podporuje operace prováděné spravovanými identitami p
 
 ## <a name="create-service-principals"></a>Vytvoření instančních objektů
  
-Instanční objekty se dají vytvořit v Azure Portal nebo pomocí PowerShellu. Další informace naleznete v tématu:
+Instanční objekty se dají vytvořit v Azure Portal nebo pomocí PowerShellu. Další informace najdete v následujících tématech:
 
 [Vytvoření instančního objektu – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Vytvoření instančního objektu – PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>Ukládat přihlašovací údaje a prostředky certifikátů v Azure Automation
 
-Přihlašovací údaje instančního objektu a certifikáty je možné bezpečně ukládat v Azure Automation pro operace sady Runbook. Další informace naleznete v tématu:
+Přihlašovací údaje instančního objektu a certifikáty je možné bezpečně ukládat v Azure Automation pro operace sady Runbook. Další informace najdete v následujících tématech:
 
 [Prostředky přihlašovacích údajů v Azure Automation](../automation/automation-credentials.md)   
 [Prostředky certifikátů ve službě Azure Automation](../automation/automation-certificates.md)
@@ -50,7 +50,7 @@ V připojovacích řetězcích se dá použít identifikátor appID a heslo nebo
 
 #### <a name="using-azanalysisservices-module"></a><a name="azmodule"></a>Použití modulu AZ. AnalysisServices
 
-Při použití instančního objektu pro operace správy prostředků pomocí modulu [AZ. AnalysisServices](/powershell/module/az.analysisservices) použijte `Connect-AzAccount` rutinu. 
+Při použití instančního objektu pro operace správy prostředků pomocí modulu [AZ. AnalysisServices](/powershell/module/az.analysisservices)  použijte `Connect-AzAccount` rutinu. 
 
 V následujícím příkladu appID a Password slouží k provádění operací roviny řízení pro synchronizaci do replik jen pro čtení a horizontálního navýšení nebo navýšení kapacity:
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: d5e867849d17a489fad37d09215905d23fb0ed6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514257"
 ---
 # <a name="contact-microsoft-support"></a>Kontaktovat podporu Microsoftu
@@ -37,7 +37,7 @@ V závislosti na [plánu podpory](https://azure.microsoft.com/support/plans/)mů
    1. V rozevíracím seznamu **typ problému** vyberte možnost **technický**.
    2. Automaticky se zvolí aktuální **předplatné**, typ **služby** a **prostředek** (Služba StorSimple Device Manager Service). 
    3. V rozevíracím seznamu vyberte **plán podpory** , pokud máte k vašemu předplatnému k dispozici několik plánů. K povolení technické podpory potřebujete placený plán podpory.
-   4. Klikněte na **Další**.
+   4. Klikněte na **Next** (Další).
 
        ![Kontaktovat podporu společnosti Microsoft prostřednictvím nového portálu](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
@@ -49,7 +49,7 @@ V závislosti na [plánu podpory](https://azure.microsoft.com/support/plans/)mů
     4. Zadejte datum a čas spuštění problému.
     5. V části **nahrání souboru**klikněte na ikonu složky a přejděte do balíčku pro podporu.
     6. Podívejte se na **sdílené diagnostické informace**.
-    7. Klikněte na **Další**.
+    7. Klikněte na **Next** (Další).
 
        ![Kontaktovat podporu společnosti Microsoft prostřednictvím nového portálu](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 

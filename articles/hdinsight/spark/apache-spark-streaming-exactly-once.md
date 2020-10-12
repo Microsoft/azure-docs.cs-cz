@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2018
 ms.openlocfilehash: 8e0037f6aea4aef53efc192066027e0a0143bda1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086173"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Vytváření úloh Apache Spark streamování s právě jedním zpracováním událostí
@@ -47,15 +47,15 @@ V Azure můžou Azure Event Hubs i [Apache Kafka](https://kafka.apache.org/) v H
 
 Ve streamování Spark mají zdroje, jako je Event Hubs a Kafka, *spolehlivé přijímače*, kde každý příjemce sleduje svůj průběh čtení zdroje. Spolehlivý přijímač uchovává svůj stav do úložiště odolného proti chybám, a to buď v [Apache Zookeeper](https://zookeeper.apache.org/) , nebo ve kontrolním bodu Spark streamování zapsaným na HDFS. Pokud takový přijímač neuspěje a později se restartuje, může se tam, kde se přestal, nacházet.
 
-### <a name="use-the-write-ahead-log"></a>Použijte protokol zápisu předem.
+### <a name="use-the-write-ahead-log"></a>Použití protokolu Write-Ahead
 
-Služba Spark streamování podporuje použití protokolu pro zápis do paměti, kdy každá přijatá událost je nejdřív zapsaná do adresáře kontrolního bodu Sparku v úložišti odolném proti chybám a pak se uloží do odolné distribuované datové sady (RDD). V Azure je úložiště odolné proti chybám HDFS v Azure Storage nebo Azure Data Lake Storage. V aplikaci pro streamování Sparku je protokol pro zápis k dispozici pro všechny příjemce nastavením `spark.streaming.receiver.writeAheadLog.enable` nastavení konfigurace na `true` . Protokol zápisu vpřed poskytuje odolnost proti chybám při selhání ovladače i prováděcích modulů.
+Služba Spark Stream podporuje použití protokolu Write-Ahead, kde se každá přijatá událost nejdřív do úložiště odolného proti chybám zapisuje do adresáře kontrolního bodu Sparku a pak se uloží do odolné distribuované datové sady (RDD). V Azure je úložiště odolné proti chybám HDFS v Azure Storage nebo Azure Data Lake Storage. V aplikaci pro streamování Sparku je protokol Write-Ahead povolený pro všechny přijímače nastavením `spark.streaming.receiver.writeAheadLog.enable` nastavení konfigurace na `true` . Protokol Write-Ahead poskytuje odolnost proti chybám při selhání ovladače i prováděcích modulů.
 
 Pro pracovníky, kteří spouštějí úlohy s daty události, je každá RDD podle definice replikovaná i distribuovaná napříč více procesy. Pokud úloha selže, protože v pracovním procesu došlo k chybě, úloha bude restartována v jiném pracovním procesu, který má repliku dat události, takže dojde ke ztrátě události.
 
 ### <a name="use-checkpoints-for-drivers"></a>Použití kontrolních bodů pro ovladače
 
-Ovladače úlohy je potřeba spustit znovu. Pokud ovladač, který spouští aplikaci streamování Sparku, selže, poběží se všemi běžícími přijímači, úlohami a všemi RDD uloženými daty události. V takovém případě musíte být schopni Uložit průběh úlohy, abyste ji mohli později obnovit. K tomu je potřeba vytvořit kontrolní bod orientovaného acyklického grafu (DAG) DStream v pravidelných intervalech do úložiště odolného proti chybám. Metadata DAG obsahují konfiguraci, která se používá k vytvoření aplikace pro streamování, operací, které definují aplikaci, a všech dávek, které jsou ve frontě, ale ještě nedokončené. Tato metadata umožňují restartování ovladače, který selhal, z informací kontrolního bodu. Po restartování ovladače se spustí noví příjemci, kteří sami obnoví data události zpátky do RDD z protokolu s zápisem předem.
+Ovladače úlohy je potřeba spustit znovu. Pokud ovladač, který spouští aplikaci streamování Sparku, selže, poběží se všemi běžícími přijímači, úlohami a všemi RDD uloženými daty události. V takovém případě musíte být schopni Uložit průběh úlohy, abyste ji mohli později obnovit. K tomu je potřeba vytvořit kontrolní bod orientovaného acyklického grafu (DAG) DStream v pravidelných intervalech do úložiště odolného proti chybám. Metadata DAG obsahují konfiguraci, která se používá k vytvoření aplikace pro streamování, operací, které definují aplikaci, a všech dávek, které jsou ve frontě, ale ještě nedokončené. Tato metadata umožňují restartování ovladače, který selhal, z informací kontrolního bodu. Po restartování ovladače se spustí noví příjemci, kteří sami obnoví data události zpátky do RDD z protokolu Write-Ahead.
 
 Kontrolní body jsou povolené ve streamování Sparku ve dvou krocích.
 

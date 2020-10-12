@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84707136"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Přesun dat z SAP HANA pomocí Azure Data Factory
@@ -61,7 +61,7 @@ Vlastnost | Popis | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
 server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá přizpůsobený port, zadejte `server:port` . | řetězec | Yes
 authenticationType | Typ ověřování. | . "Basic" nebo "Windows" | Yes 
-uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Yes
+username | Jméno uživatele, který má přístup k serveru SAP | řetězec | Yes
 heslo | Heslo pro tohoto uživatele. | řetězec | Yes
 gatewayName | Název brány, kterou by služba Data Factory měla použít pro připojení k místní instanci SAP HANA | řetězec | Yes
 encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetězec | No
@@ -287,16 +287,16 @@ TINYINT | Byte
 SMALLINT | Int16
 INT | Int32
 BIGINT | Int64
-REÁLNÉ | Jeden
-KLEPAT | Jeden
-NOTACI | Desetinné číslo
+REÁLNÉ | Jednoduché
+KLEPAT | Jednoduché
+NOTACI | Decimal
 DATOVÉHO | Byte
 VARCHAR | Řetězec
 NVARCHAR | Řetězec
 DATOVÝ typ CLOB | Byte []
 ALPHANUM | Řetězec
 PŘÍZNAKY | Byte []
-DATE (Datum) | DateTime
+DATE | DateTime
 ČAS | TimeSpan
 ČASOVÉ razítko | DateTime
 SECONDDATE | DateTime

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
 ms.openlocfilehash: 4730f05adc2625ac576f5963f68d8e3ca8ede355
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331501"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Rozšíření Log Analytics pro virtuální počítače pro Windows
@@ -43,9 +43,9 @@ Následující tabulka poskytuje mapování verze rozšíření virtuálního po
 | 10.20.18011 | 1.0.18011 | Červenec 2019 | <ul><li> Drobné opravy chyb a ustálená vylepšení </li><li> Zvýšení MaxExpressionDepth na 10000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | Červen 2019 | <ul><li> Drobné opravy chyb a ustálená vylepšení </li><li> Přidání možnosti zakázat výchozí pověření při vytváření připojení k proxy (podpora pro WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
 | 10.19.13515 | 1.0.13515 | Březen 2019 | <ul><li>Menší stabilizace oprav </li></ul> |
-| 10.19.10006 | Není k dispozici | DEC 2018 | <ul><li> Menší stabilizace oprav </li></ul> | 
-| 8.0.11136 | Není k dispozici | Září 2018 |  <ul><li> Přidání podpory pro zjištění změny ID prostředku při přesunu virtuálního počítače </li><li> Přidání podpory pro ID prostředku pro vytváření sestav při použití jiné než rozšíření Instalace </li></ul>| 
-| 8.0.11103 | Není k dispozici |  Duben 2018 | |
+| 10.19.10006 | neuvedeno | DEC 2018 | <ul><li> Menší stabilizace oprav </li></ul> | 
+| 8.0.11136 | neuvedeno | Září 2018 |  <ul><li> Přidání podpory pro zjištění změny ID prostředku při přesunu virtuálního počítače </li><li> Přidání podpory pro ID prostředku pro vytváření sestav při použití jiné než rozšíření Instalace </li></ul>| 
+| 8.0.11103 | neuvedeno |  Duben 2018 | |
 | 8.0.11081 | 1.0.11081 | Listopadu 2017 | | 
 | 8.0.11072 | 1.0.11072 | Září 2017 | |
 | 8.0.11049 | 1.0.11049 | Únor 2017 | |

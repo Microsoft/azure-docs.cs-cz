@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 896caae2dfd79c4678ffb34c531fb56835e9bd66
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90886842"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
@@ -43,25 +43,25 @@ DATE_BUCKET (datePart, number, date, origin)
 |---|---|
 |**dnu**|**DD**, **d**|  
 |**týden**|**týden**, **WW**|  
-|**hodiny**|**HH**|  
-|**za**|**mi**, **n**|  
-|**první**|**SS**, **s**|  
+|**hodiny**|**hh**|  
+|**minute**|**mi**, **n**|  
+|**second**|**SS**, **s**|  
 |**komponentu**|**Arial**|  
 
-*Automatické*
+*číslo*
 
 Celé číslo, které určuje šířku kontejneru v kombinaci s argumentem *datePart* . To představuje šířku kontejnerů DataParts od počátečního času. **`This argument cannot be a negative integer value`**. 
 
-*datum*
+*Datum*
 
 Výraz, který může být přeložen na jednu z následujících hodnot:
 
-+ **datum**
-+ **datetime**
++ **Datum**
++ **hodnotu**
 + **DateTimeOffset**
 + **datetime2**
 + **smalldatetime**
-+ **time**
++ **interval**
 
 Pro *Datum* `DATE_BUCKET` bude akceptovat výraz sloupce, výraz nebo uživatelsky definovaná proměnná, pokud se přeloží na některý z výše uvedených typů dat.
 
@@ -69,12 +69,12 @@ Pro *Datum* `DATE_BUCKET` bude akceptovat výraz sloupce, výraz nebo uživatels
 
 Volitelný výraz, který lze přeložit na jednu z následujících hodnot:
 
-+ **datum**
-+ **datetime**
++ **Datum**
++ **hodnotu**
 + **DateTimeOffset**
 + **datetime2**
 + **smalldatetime**
-+ **time**
++ **interval**
 
 Datový typ `Origin` by měl odpovídat datovému typu `Date` parametru. 
 

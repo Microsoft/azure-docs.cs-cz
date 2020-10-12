@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90976003"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Vizualizace dat vzdáleného monitorování pomocí Power BI
@@ -38,7 +38,7 @@ Tento kurz vás provede postupem připojení dat řešení vzdáleného monitoro
 
 4. Na této stránce přehledu klikněte na položku, která má typ "Azure Cosmos DB účet", a poté se na stránku s přehledem Cosmos DB datového proudu pro toto řešení IoT povede.
 
-    ![Skupina prostředků](./media/iot-accelerators-integrate-data-powerbi/resource_groups.png)
+    ![Resource Group](./media/iot-accelerators-integrate-data-powerbi/resource_groups.png)
 
 5. Na panelu vlevo klikněte na oddíl klíče a poznamenejte si následující hodnoty, které se mají použít v Power BI:
 

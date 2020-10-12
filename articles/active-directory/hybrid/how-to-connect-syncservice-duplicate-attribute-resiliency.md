@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d1d364089d5df24cfc4e7a75c3fd6b81248f0cd6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313307"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Synchronizace identit a odolnost duplicitních atributů
@@ -66,7 +66,7 @@ Pokud chcete zjistit, jestli je funkce pro vašeho tenanta povolená, můžete t
 `Get-MsolDirSyncFeatures -Feature DuplicateProxyAddressResiliency`
 
 > [!NOTE]
-> Rutinu Set-MsolDirSyncFeature už nemůžete použít k proaktivní aktivaci funkce odolnosti duplicitních atributů předtím, než je pro vašeho tenanta zapnutá. Aby bylo možné funkci otestovat, budete muset vytvořit nového tenanta Azure Active Directory.
+> Nemůžete už používat rutinu Set-MsolDirSyncFeature k proaktivnímu povolení funkce odolnosti atributu před tím, než je pro vašeho tenanta zapnutá. Aby bylo možné funkci otestovat, budete muset vytvořit nového tenanta Azure Active Directory.
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>Identifikace objektů s DirSyncProvisioningErrors
 V současné době existují dvě metody identifikace objektů, které mají tyto chyby kvůli konfliktům duplicitních vlastností, Azure Active Directory PowerShellu a [centru pro správu Microsoft 365](https://admin.microsoft.com). Existují plány pro další vytváření sestav na základě portálu v budoucnu.
@@ -85,7 +85,7 @@ Pak použijte následující rutiny a operátory k zobrazení chyb různými zp�
 2. [Podle typu vlastnosti](#by-property-type)
 3. [Konfliktní hodnota](#by-conflicting-value)
 4. [Použití vyhledávání řetězců](#using-a-string-search)
-5. Standard
+5. Sorted
 6. [V omezeném množství nebo všech](#in-a-limited-quantity-or-all)
 
 #### <a name="see-all"></a>Zobrazit vše
@@ -145,7 +145,7 @@ Následující článek popisuje různé strategie řešení potíží a řešen
 **Základní chování:**
 
 1. Objekty s konkrétními konfiguracemi atributů nadále obdrží chyby exportu, a to na rozdíl od duplicitních atributů, které jsou v karanténě.  
-   Příklad:
+   Například:
    
     a. Ve službě AD se vytvoří nový uživatel s hlavním názvem uživatele (UPN) **jana \@ contoso.com** a ProxyAddress **SMTP: Jan \@ contoso.com**
    
@@ -157,7 +157,7 @@ Následující článek popisuje různé strategie řešení potíží a řešen
 **Sestava portálu Office**:
 
 1. Podrobná chybová zpráva pro dva objekty v sadě konfliktů hlavního názvu uživatele (UPN) je stejná. To značí, že se změnil hlavní název uživatele (UPN) i v karanténě, pokud ve skutečnosti pouze jeden z nich změnil data.
-2. Podrobná chybová zpráva pro konflikt hlavního názvu uživatele (UPN) zobrazuje špatný parametr DisplayName pro uživatele, který měl své hlavní název uživatele změněn nebo v karanténě. Příklad:
+2. Podrobná chybová zpráva pro konflikt hlavního názvu uživatele (UPN) zobrazuje špatný parametr DisplayName pro uživatele, který měl své hlavní název uživatele změněn nebo v karanténě. Například:
    
     a. **Uživatel A** nejprve synchronizuje s hlavním názvem uživatele **(UPN) = User \@ contoso.com**.
    

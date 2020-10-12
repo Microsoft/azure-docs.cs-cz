@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: f2a50872fdb71419a0c3f068712ec67523a098e0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708647"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>Požadavky a předpoklady pro použití replikace mezi oblastmi 
@@ -40,7 +40,7 @@ Všimněte si následujících požadavků a důležitých informací o [použí
 * Ruční snímky můžete odstranit ve zdrojovém svazku relace replikace, pokud je relace replikace aktivní nebo přerušená a také po odstranění vztahu replikace. Ruční snímky pro cílový svazek nemůžete odstranit, dokud není přerušený vztah replikace.
 
 ## <a name="next-steps"></a>Další kroky
-* [Vytvoření partnerského vztahu replikace](cross-region-replication-create-peering.md)
+* [Vytvoření peeringu replikace](cross-region-replication-create-peering.md)
 * [Zobrazení stavu vztahu replikace](cross-region-replication-display-health-status.md)
 * [Správa zotavení po havárii](cross-region-replication-manage-disaster-recovery.md)
 * [Metriky replikace svazků](azure-netapp-files-metrics.md#replication)

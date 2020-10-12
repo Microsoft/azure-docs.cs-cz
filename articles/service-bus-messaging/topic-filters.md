@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak můžou předplatitelé definovat, 
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 5df343ff63c01a7cf10315b758e3d6fba8ac5674
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88066742"
 ---
 # <a name="topic-filters-and-actions"></a>Akce a filtry témat
@@ -30,7 +30,7 @@ Service Bus podporuje tři podmínky filtru:
      - **ReplyTo**
      - **ReplyToSessionId**
      - **SessionId** 
-     - **Schopn**
+     - **Záměr**
      - jakékoli uživatelsky definované vlastnosti. 
      
      Shoda existuje, pokud je hodnota doručené zprávy pro vlastnost rovna hodnotě zadané ve filtru korelace. U řetězcových výrazů porovnávání rozlišuje velká a malá písmena. Pokud zadáte více vlastností shody, filtr je zkombinuje jako logický operátor AND, což znamená, že aby se filtr shodoval, všechny podmínky se musí shodovat.
@@ -43,7 +43,7 @@ Složitá pravidla filtru vyžadují kapacitu zpracování. Konkrétně použit�
 
 Pomocí podmínek filtru SQL můžete definovat akci, která může opatřit poznámky zprávou přidáním, odebráním nebo nahrazením vlastností a jejich hodnot. Akce [používá výraz podobný jazyku SQL](service-bus-messaging-sql-filter.md) , který je volně vylibové na SYNTAXI příkazu SQL Update. Tato akce se provádí ve zprávě poté, co byla shodná a před tím, než je vybrána zpráva v rámci předplatného. Změny vlastností zprávy jsou pro zprávu zkopírovanou do předplatného soukromé.
 
-## <a name="usage-patterns"></a>Vzorce použití
+## <a name="usage-patterns"></a>Vzory využití
 
 Nejjednodušším scénářem použití pro téma je to, že každé předplatné získá kopii každé zprávy odeslané do tématu, které povoluje vzor všesměrového vysílání.
 
